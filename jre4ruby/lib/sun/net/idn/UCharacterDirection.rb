@@ -1,0 +1,122 @@
+require "rjava"
+
+# 
+# DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
+# 
+# This code is free software; you can redistribute it and/or modify it
+# under the terms of the GNU General Public License version 2 only, as
+# published by the Free Software Foundation.  Sun designates this
+# particular file as subject to the "Classpath" exception as provided
+# by Sun in the LICENSE file that accompanied this code.
+# 
+# This code is distributed in the hope that it will be useful, but WITHOUT
+# ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
+# FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
+# version 2 for more details (a copy is included in the LICENSE file that
+# accompanied this code).
+# 
+# You should have received a copy of the GNU General Public License version
+# 2 along with this work; if not, write to the Free Software Foundation,
+# Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
+# 
+# Please contact Sun Microsystems, Inc., 4150 Network Circle, Santa Clara,
+# CA 95054 USA or visit www.sun.com if you need additional information or
+# have any questions.
+# 
+# 
+# 
+# 
+# Copyright (C) 1996-2004, International Business Machines Corporation and    *
+# others. All Rights Reserved.                                                *
+# 
+# 
+# CHANGELOG
+# 2005-05-19 Edward Wang
+# - copy this file from icu4jsrc_3_2/src/com/ibm/icu/lang/UCharacterDirection.java
+# - move from package com.ibm.icu.lang to package sun.net.idn
+module Sun::Net::Idn
+  module UCharacterDirectionImports
+    class_module.module_eval {
+      include ::Java::Lang
+      include ::Sun::Net::Idn
+    }
+  end
+  
+  # 
+  # Enumerated Unicode character linguistic direction constants.
+  # Used as return results from <a href=UCharacter.html>UCharacter</a>
+  # <p>
+  # This class is not subclassable
+  # </p>
+  # @author Syn Wee Quek
+  # @stable ICU 2.1
+  class UCharacterDirection 
+    include_class_members UCharacterDirectionImports
+    include UCharacterEnums::ECharacterDirection
+    
+    typesig { [] }
+    # private constructor =========================================
+    # /CLOVER:OFF
+    # 
+    # Private constructor to prevent initialisation
+    def initialize
+    end
+    
+    class_module.module_eval {
+      typesig { [::Java::Int] }
+      # /CLOVER:ON
+      # 
+      # Gets the name of the argument direction
+      # @param dir direction type to retrieve name
+      # @return directional name
+      # @stable ICU 2.1
+      def to_s(dir)
+        case (dir)
+        when LEFT_TO_RIGHT
+          return "Left-to-Right"
+        when RIGHT_TO_LEFT
+          return "Right-to-Left"
+        when EUROPEAN_NUMBER
+          return "European Number"
+        when EUROPEAN_NUMBER_SEPARATOR
+          return "European Number Separator"
+        when EUROPEAN_NUMBER_TERMINATOR
+          return "European Number Terminator"
+        when ARABIC_NUMBER
+          return "Arabic Number"
+        when COMMON_NUMBER_SEPARATOR
+          return "Common Number Separator"
+        when BLOCK_SEPARATOR
+          return "Paragraph Separator"
+        when SEGMENT_SEPARATOR
+          return "Segment Separator"
+        when WHITE_SPACE_NEUTRAL
+          return "Whitespace"
+        when OTHER_NEUTRAL
+          return "Other Neutrals"
+        when LEFT_TO_RIGHT_EMBEDDING
+          return "Left-to-Right Embedding"
+        when LEFT_TO_RIGHT_OVERRIDE
+          return "Left-to-Right Override"
+        when RIGHT_TO_LEFT_ARABIC
+          return "Right-to-Left Arabic"
+        when RIGHT_TO_LEFT_EMBEDDING
+          return "Right-to-Left Embedding"
+        when RIGHT_TO_LEFT_OVERRIDE
+          return "Right-to-Left Override"
+        when POP_DIRECTIONAL_FORMAT
+          return "Pop Directional Format"
+        when DIR_NON_SPACING_MARK
+          return "Non-Spacing Mark"
+        when BOUNDARY_NEUTRAL
+          return "Boundary Neutral"
+        end
+        return "Unassigned"
+      end
+    }
+    
+    private
+    alias_method :initialize__ucharacter_direction, :initialize
+  end
+  
+end
