@@ -1,7 +1,7 @@
 --- !ruby/object:Gem::Specification 
 name: jre4ruby
 version: !ruby/object:Gem::Version 
-  version: 1.0.4
+  version: 1.0.5
 platform: ruby
 authors: []
 
@@ -11,8 +11,17 @@ cert_chain: []
 
 date: 2009-07-17 00:00:00 +02:00
 default_executable: 
-dependencies: []
-
+dependencies: 
+- !ruby/object:Gem::Dependency 
+  name: neelance-java2ruby
+  type: :runtime
+  version_requirement: 
+  version_requirements: !ruby/object:Gem::Requirement 
+    requirements: 
+    - - ">="
+      - !ruby/object:Gem::Version 
+        version: "0"
+    version: 
 description: 
 email: 
 executables: []
