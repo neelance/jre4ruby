@@ -1,5 +1,5 @@
 --- !ruby/object:Gem::Specification 
-name: jre4ruby
+name: jre4ruby2
 version: !ruby/object:Gem::Version 
   version: 1.0.3
 platform: ruby
