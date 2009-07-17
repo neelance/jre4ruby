@@ -1,7 +1,7 @@
 --- !ruby/object:Gem::Specification 
 name: jre4ruby
 version: !ruby/object:Gem::Version 
-  version: 1.0.3
+  version: 1.0.4
 platform: ruby
 authors: []
 
@@ -23,6 +23,7 @@ extra_rdoc_files: []
 
 files: 
 - jre4ruby.rb
+- LICENSE
 - jre4ruby/lib/sun/util/BuddhistCalendar.rb
 - jre4ruby/lib/sun/util/ResourceBundleEnumeration.rb
 - jre4ruby/lib/sun/util/EmptyListResourceBundle.rb

@@ -2,8 +2,8 @@ task :gemspec do
   File.open("jre4ruby.gemspec", "w") do |file|
     file.write Gem::Specification.new { |s|
       s.name = "jre4ruby"
-      s.version = "1.0.3"
-      s.files = ["jre4ruby.rb"] + Dir.glob("jre4ruby/lib/**/*.*") + Dir.glob("jre4ruby/fix/**/*.*") + Dir.glob("jre4ruby/rep/**/*.*")
+      s.version = "1.0.4"
+      s.files = ["jre4ruby.rb", "LICENSE"] + Dir.glob("jre4ruby/lib/**/*.*") + Dir.glob("jre4ruby/fix/**/*.*") + Dir.glob("jre4ruby/rep/**/*.*")
       s.homepage = %q{http://github.com/neelance/jre4ruby/}
       s.has_rdoc = true
       s.rdoc_options = ["--charset=UTF-8"]
