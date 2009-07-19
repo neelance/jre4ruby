@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 1997-2003 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -34,7 +33,6 @@ module Sun::Security::X509
     }
   end
   
-  # 
   # Represent the GeneralSubtrees ASN.1 object.
   # <p>
   # The ASN.1 for this is
@@ -76,7 +74,6 @@ module Sun::Security::X509
     }
     
     typesig { [] }
-    # 
     # The default constructor for the class.
     def initialize
       @trees = nil
@@ -90,7 +87,6 @@ module Sun::Security::X509
     end
     
     typesig { [DerValue] }
-    # 
     # Create the object from the passed DER encoded form.
     # 
     # @param val the DER encoded form of the same.
@@ -153,7 +149,6 @@ module Sun::Security::X509
     end
     
     typesig { [] }
-    # 
     # Return a printable string of the GeneralSubtree.
     def to_s
       s = "   GeneralSubtrees:\n" + (@trees.to_s).to_s + "\n"
@@ -161,7 +156,6 @@ module Sun::Security::X509
     end
     
     typesig { [DerOutputStream] }
-    # 
     # Encode the GeneralSubtrees.
     # 
     # @params out the DerOutputStrean to encode this object to.
@@ -177,7 +171,6 @@ module Sun::Security::X509
     end
     
     typesig { [Object] }
-    # 
     # Compare two general subtrees by comparing the subtrees
     # of each.
     # 
@@ -200,7 +193,6 @@ module Sun::Security::X509
     end
     
     typesig { [::Java::Int] }
-    # 
     # Return the GeneralNameInterface form of the GeneralName in one of
     # the GeneralSubtrees.
     # 
@@ -219,7 +211,6 @@ module Sun::Security::X509
     }
     
     typesig { [] }
-    # 
     # minimize this GeneralSubtrees by removing all redundant entries.
     # Internal method used by intersect and reduce.
     def minimize
@@ -279,7 +270,6 @@ module Sun::Security::X509
     end
     
     typesig { [GeneralNameInterface] }
-    # 
     # create a subtree containing an instance of the input
     # name type that widens all other names of that type.
     # 
@@ -321,7 +311,6 @@ module Sun::Security::X509
     end
     
     typesig { [GeneralSubtrees] }
-    # 
     # intersect this GeneralSubtrees with other.  This function
     # is used in merging permitted NameConstraints.  The operation
     # is performed as follows:
@@ -464,18 +453,18 @@ module Sun::Security::X509
       # same type in this to this
       i_ = 0
       while i_ < other.size
-        other_entry_gs_ = other.get(i_)
-        other_entry_ = get_general_name_interface(other_entry_gs_)
+        other_entry_gs = other.get(i_)
+        other_entry = get_general_name_interface(other_entry_gs)
         diff_type = false
-        j__ = 0
-        while j__ < size
-          this_entry_ = get_general_name_interface(j__)
-          case (this_entry_.constrains(other_entry_))
+        j = 0
+        while j < size
+          this_entry = get_general_name_interface(j)
+          case (this_entry.constrains(other_entry))
           when NAME_DIFF_TYPE
             diff_type = true
             # continue to see if we find something later of the
             # same type
-            ((j__ += 1) - 1)
+            ((j += 1) - 1)
             next
             diff_type = false # we found an entry of the same type
             # break because we know we won't be adding it to
@@ -485,14 +474,14 @@ module Sun::Security::X509
             # break because we know we won't be adding it to
             # this now
           else
-            ((j__ += 1) - 1)
+            ((j += 1) - 1)
             next
           end
           break
-          ((j__ += 1) - 1)
+          ((j += 1) - 1)
         end
         if (diff_type)
-          add(other_entry_gs_)
+          add(other_entry_gs)
         end
         ((i_ += 1) - 1)
       end
@@ -501,7 +490,6 @@ module Sun::Security::X509
     end
     
     typesig { [GeneralSubtrees] }
-    # 
     # construct union of this GeneralSubtrees with other.
     # 
     # @param other GeneralSubtrees to be united with this
@@ -519,7 +507,6 @@ module Sun::Security::X509
     end
     
     typesig { [GeneralSubtrees] }
-    # 
     # reduce this GeneralSubtrees by contents of another.  This function
     # is used in merging excluded NameConstraints with permitted NameConstraints
     # to obtain a minimal form of permitted NameConstraints.  It is an

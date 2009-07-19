@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Portions Copyright 2003-2005 Sun Microsystems, Inc.  All Rights Reserved.
 # 
 # Copyright  (c) 2002 Graz University of Technology. All rights reserved.
@@ -54,7 +53,6 @@ module Sun::Security::Pkcs11::Wrapper
     }
   end
   
-  # 
   # This class contains onyl static methods. It is the place for all functions
   # that are used by several classes in this package.
   # 
@@ -95,13 +93,11 @@ module Sun::Security::Pkcs11::Wrapper
       const_set_lazy(:ObjectClassIds) { HashMap.new }
       const_attr_reader  :ObjectClassIds
       
-      # 
       # For converting numbers to their hex presentation.
       const_set_lazy(:HEX_DIGITS) { "0123456789ABCDEF".to_char_array }
       const_attr_reader  :HEX_DIGITS
       
       typesig { [::Java::Long] }
-      # 
       # Converts a long value to a hexadecimal String of length 16. Includes
       # leading zeros if necessary.
       # 
@@ -121,7 +117,6 @@ module Sun::Security::Pkcs11::Wrapper
       end
       
       typesig { [::Java::Int] }
-      # 
       # Converts a int value to a hexadecimal String of length 8. Includes
       # leading zeros if necessary.
       # 
@@ -141,7 +136,6 @@ module Sun::Security::Pkcs11::Wrapper
       end
       
       typesig { [::Java::Long] }
-      # 
       # converts a long value to a hexadecimal String
       # 
       # @param value the long value to be converted
@@ -151,7 +145,6 @@ module Sun::Security::Pkcs11::Wrapper
       end
       
       typesig { [Array.typed(::Java::Byte)] }
-      # 
       # Converts a byte array to a hexadecimal String. Each byte is presented by
       # its two digit hex-code; 0x0A -> "0a", 0x00 -> "00". No leading "0x" is
       # included in the result.
@@ -177,7 +170,6 @@ module Sun::Security::Pkcs11::Wrapper
       end
       
       typesig { [::Java::Long] }
-      # 
       # converts a long value to a binary String
       # 
       # @param value the long value to be converted
@@ -187,7 +179,6 @@ module Sun::Security::Pkcs11::Wrapper
       end
       
       typesig { [Array.typed(::Java::Byte)] }
-      # 
       # converts a byte array to a binary String
       # 
       # @param value the byte array to be converted
@@ -249,7 +240,6 @@ module Sun::Security::Pkcs11::Wrapper
       const_attr_reader  :SlotInfoFlags
       
       typesig { [::Java::Long] }
-      # 
       # converts the long value flags to a SlotInfoFlag string
       # 
       # @param flags the flags to be converted
@@ -262,7 +252,6 @@ module Sun::Security::Pkcs11::Wrapper
       const_attr_reader  :TokenInfoFlags
       
       typesig { [::Java::Long] }
-      # 
       # converts long value flags to a TokenInfoFlag string
       # 
       # @param flags the flags to be converted
@@ -275,7 +264,6 @@ module Sun::Security::Pkcs11::Wrapper
       const_attr_reader  :SessionInfoFlags
       
       typesig { [::Java::Long] }
-      # 
       # converts the long value flags to a SessionInfoFlag string
       # 
       # @param flags the flags to be converted
@@ -285,7 +273,6 @@ module Sun::Security::Pkcs11::Wrapper
       end
       
       typesig { [::Java::Long] }
-      # 
       # converts the long value state to a SessionState string
       # 
       # @param state the state to be converted
@@ -320,7 +307,6 @@ module Sun::Security::Pkcs11::Wrapper
       const_attr_reader  :MechanismInfoFlags
       
       typesig { [::Java::Long] }
-      # 
       # converts the long value flags to a MechanismInfoFlag string
       # 
       # @param flags the flags to be converted
@@ -391,7 +377,6 @@ module Sun::Security::Pkcs11::Wrapper
       end
       
       typesig { [Array.typed(::Java::Byte), Array.typed(::Java::Byte)] }
-      # 
       # Check the given arrays for equalitiy. This method considers both arrays as
       # equal, if both are <code>null</code> or both have the same length and
       # contain exactly the same byte values.
@@ -407,7 +392,6 @@ module Sun::Security::Pkcs11::Wrapper
       end
       
       typesig { [Array.typed(::Java::Char), Array.typed(::Java::Char)] }
-      # 
       # Check the given arrays for equalitiy. This method considers both arrays as
       # equal, if both are <code>null</code> or both have the same length and
       # contain exactly the same char values.
@@ -423,7 +407,6 @@ module Sun::Security::Pkcs11::Wrapper
       end
       
       typesig { [CK_DATE, CK_DATE] }
-      # 
       # Check the given dates for equalitiy. This method considers both dates as
       # equal, if both are <code>null</code> or both contain exactly the same char
       # values.
@@ -449,7 +432,6 @@ module Sun::Security::Pkcs11::Wrapper
       end
       
       typesig { [Array.typed(::Java::Byte)] }
-      # 
       # Calculate a hash code for the given byte array.
       # 
       # @param array The byte array.
@@ -469,7 +451,6 @@ module Sun::Security::Pkcs11::Wrapper
       end
       
       typesig { [Array.typed(::Java::Char)] }
-      # 
       # Calculate a hash code for the given char array.
       # 
       # @param array The char array.
@@ -489,7 +470,6 @@ module Sun::Security::Pkcs11::Wrapper
       end
       
       typesig { [CK_DATE] }
-      # 
       # Calculate a hash code for the given date object.
       # 
       # @param date The date object.

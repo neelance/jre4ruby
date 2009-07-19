@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # reserved comment block
 # DO NOT REMOVE OR ALTER!
 # 
@@ -53,7 +52,6 @@ module Sun::Security::Pkcs11::Wrapper
     }
   end
   
-  # 
   # class CK_ECDH2_DERIVE_PARAMS provides the parameters to the
   # CKM_ECMQV_DERIVE mechanism.<p>
   # <B>PKCS#11 structure:</B>
@@ -75,7 +73,6 @@ module Sun::Security::Pkcs11::Wrapper
   class CK_ECDH2_DERIVE_PARAMS 
     include_class_members CK_ECDH2_DERIVE_PARAMSImports
     
-    # 
     # <B>PKCS#11:</B>
     # <PRE>
     # CK_EC_KDF_TYPE kdf;
@@ -86,7 +83,6 @@ module Sun::Security::Pkcs11::Wrapper
     alias_method :attr_kdf=, :kdf=
     undef_method :kdf=
     
-    # 
     # <B>PKCS#11:</B>
     # <PRE>
     # CK_ULONG ulSharedDataLen;
@@ -98,7 +94,6 @@ module Sun::Security::Pkcs11::Wrapper
     alias_method :attr_p_shared_data=, :p_shared_data=
     undef_method :p_shared_data=
     
-    # 
     # <B>PKCS#11:</B>
     # <PRE>
     # CK_ULONG ulPublicDataLen;
@@ -110,7 +105,6 @@ module Sun::Security::Pkcs11::Wrapper
     alias_method :attr_p_public_data=, :p_public_data=
     undef_method :p_public_data=
     
-    # 
     # <B>PKCS#11:</B>
     # <PRE>
     # CK_ULONG ulPrivateDataLen;
@@ -121,7 +115,6 @@ module Sun::Security::Pkcs11::Wrapper
     alias_method :attr_ul_private_data_len=, :ul_private_data_len=
     undef_method :ul_private_data_len=
     
-    # 
     # <B>PKCS#11:</B>
     # <PRE>
     # CK_OBJECT_HANDLE hPrivateData;
@@ -132,7 +125,6 @@ module Sun::Security::Pkcs11::Wrapper
     alias_method :attr_h_private_data=, :h_private_data=
     undef_method :h_private_data=
     
-    # 
     # <B>PKCS#11:</B>
     # <PRE>
     # CK_ULONG ulPublicDataLen2;
@@ -145,7 +137,6 @@ module Sun::Security::Pkcs11::Wrapper
     undef_method :p_public_data2=
     
     typesig { [] }
-    # 
     # Returns the string representation of CK_PKCS5_PBKD2_PARAMS.
     # 
     # @return the string representation of CK_PKCS5_PBKD2_PARAMS

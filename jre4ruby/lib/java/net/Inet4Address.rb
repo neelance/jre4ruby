@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 2000-2006 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -34,7 +33,6 @@ module Java::Net
     }
   end
   
-  # 
   # This class represents an Internet Protocol version 4 (IPv4) address.
   # Defined by <a href="http://www.ietf.org/rfc/rfc790.txt">
   # <i>RFC&nbsp;790: Assigned Numbers</i></a>,
@@ -100,7 +98,6 @@ module Java::Net
       const_set_lazy(:SerialVersionUID) { 3286316764910316507 }
       const_attr_reader  :SerialVersionUID
       
-      # 
       # Perform initializations.
       when_class_loaded do
         init
@@ -139,7 +136,6 @@ module Java::Net
     end
     
     typesig { [] }
-    # 
     # Replaces the object to be serialized with an InetAddress object.
     # 
     # @return the alternate object to be serialized.
@@ -151,7 +147,6 @@ module Java::Net
       inet = InetAddress.new
       inet.attr_host_name = self.attr_host_name
       inet.attr_address = self.attr_address
-      # 
       # Prior to 1.4 an InetAddress was created with a family
       # based on the platform AF_INET value (usually 2).
       # For compatibility reasons we must therefore write the
@@ -161,7 +156,6 @@ module Java::Net
     end
     
     typesig { [] }
-    # 
     # Utility routine to check if the InetAddress is an
     # IP multicast address. IP multicast address is a Class D
     # address i.e first four bits of the address are 1110.
@@ -173,7 +167,6 @@ module Java::Net
     end
     
     typesig { [] }
-    # 
     # Utility routine to check if the InetAddress in a wildcard address.
     # @return a <code>boolean</code> indicating if the Inetaddress is
     # a wildcard address.
@@ -183,7 +176,6 @@ module Java::Net
     end
     
     class_module.module_eval {
-      # 
       # Utility routine to check if the InetAddress is a loopback address.
       # 
       # @return a <code>boolean</code> indicating if the InetAddress is
@@ -202,7 +194,6 @@ module Java::Net
     end
     
     typesig { [] }
-    # 
     # Utility routine to check if the InetAddress is an link local address.
     # 
     # @return a <code>boolean</code> indicating if the InetAddress is
@@ -217,7 +208,6 @@ module Java::Net
     end
     
     typesig { [] }
-    # 
     # Utility routine to check if the InetAddress is a site local address.
     # 
     # @return a <code>boolean</code> indicating if the InetAddress is
@@ -232,7 +222,6 @@ module Java::Net
     end
     
     typesig { [] }
-    # 
     # Utility routine to check if the multicast address has global scope.
     # 
     # @return a <code>boolean</code> indicating if the address has
@@ -246,7 +235,6 @@ module Java::Net
     end
     
     typesig { [] }
-    # 
     # Utility routine to check if the multicast address has node scope.
     # 
     # @return a <code>boolean</code> indicating if the address has
@@ -259,7 +247,6 @@ module Java::Net
     end
     
     typesig { [] }
-    # 
     # Utility routine to check if the multicast address has link scope.
     # 
     # @return a <code>boolean</code> indicating if the address has
@@ -272,7 +259,6 @@ module Java::Net
     end
     
     typesig { [] }
-    # 
     # Utility routine to check if the multicast address has site scope.
     # 
     # @return a <code>boolean</code> indicating if the address has
@@ -285,7 +271,6 @@ module Java::Net
     end
     
     typesig { [] }
-    # 
     # Utility routine to check if the multicast address has organization scope.
     # 
     # @return a <code>boolean</code> indicating if the address has
@@ -299,7 +284,6 @@ module Java::Net
     end
     
     typesig { [] }
-    # 
     # Returns the raw IP address of this <code>InetAddress</code>
     # object. The result is in network byte order: the highest order
     # byte of the address is in <code>getAddress()[0]</code>.
@@ -315,7 +299,6 @@ module Java::Net
     end
     
     typesig { [] }
-    # 
     # Returns the IP address string in textual presentation form.
     # 
     # @return  the raw IP address in a string format.
@@ -325,7 +308,6 @@ module Java::Net
     end
     
     typesig { [] }
-    # 
     # Returns a hashcode for this IP address.
     # 
     # @return  a hash code value for this IP address.
@@ -334,7 +316,6 @@ module Java::Net
     end
     
     typesig { [Object] }
-    # 
     # Compares this object against the specified object.
     # The result is <code>true</code> if and only if the argument is
     # not <code>null</code> and it represents the same IP address as
@@ -369,7 +350,6 @@ module Java::Net
       
       JNI.native_method :Java_java_net_Inet4Address_init, [:pointer, :long], :void
       typesig { [] }
-      # 
       # Perform class load-time initializations.
       def init
         JNI.__send__(:Java_java_net_Inet4Address_init, JNI.env, self.jni_id)

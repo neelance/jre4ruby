@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 1996-2006 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -38,7 +37,6 @@ module Sun::Security::Util
     }
   end
   
-  # 
   # A DER input stream, used for parsing ASN.1 DER-encoded data such as
   # that found in X.509 certificates.  DER is a subset of BER/1, which has
   # the advantage that it allows only a single encoding of primitive data.
@@ -62,7 +60,6 @@ module Sun::Security::Util
   class DerInputStream 
     include_class_members DerInputStreamImports
     
-    # 
     # This version only supports fully buffered DER.  This is easy to
     # work with, though if large objects are manipulated DER becomes
     # awkward to deal with.  That's where BER is useful, since BER
@@ -81,7 +78,6 @@ module Sun::Security::Util
     undef_method :tag=
     
     typesig { [Array.typed(::Java::Byte)] }
-    # 
     # Create a DER input stream from a data buffer.  The buffer is not
     # copied, it is shared.  Accordingly, the buffer should be treated
     # as read-only.
@@ -94,7 +90,6 @@ module Sun::Security::Util
     end
     
     typesig { [Array.typed(::Java::Byte), ::Java::Int, ::Java::Int] }
-    # 
     # Create a DER input stream from part of a data buffer.
     # The buffer is not copied, it is shared.  Accordingly, the
     # buffer should be treated as read-only.
@@ -111,7 +106,6 @@ module Sun::Security::Util
     end
     
     typesig { [Array.typed(::Java::Byte), ::Java::Int, ::Java::Int] }
-    # 
     # private helper routine
     def init(data, offset, len)
       if ((offset + 2 > data.attr_length) || (offset + len > data.attr_length))
@@ -138,7 +132,6 @@ module Sun::Security::Util
     end
     
     typesig { [::Java::Int, ::Java::Boolean] }
-    # 
     # Creates a new DER input stream from part of this input stream.
     # 
     # @param len how long a chunk of the current input stream to use,
@@ -157,7 +150,6 @@ module Sun::Security::Util
     end
     
     typesig { [] }
-    # 
     # Return what has been written to this DerInputStream
     # as a byte array. Useful for debugging.
     def to_byte_array
@@ -165,7 +157,6 @@ module Sun::Security::Util
     end
     
     typesig { [] }
-    # 
     # PRIMITIVES -- these are "universal" ASN.1 simple types.
     # 
     # INTEGER, ENUMERATED, BIT STRING, OCTET STRING, NULL
@@ -186,7 +177,6 @@ module Sun::Security::Util
     end
     
     typesig { [] }
-    # 
     # Get a integer from the input stream as a BigInteger object.
     # 
     # @return the integer held in this DER input stream.
@@ -198,7 +188,6 @@ module Sun::Security::Util
     end
     
     typesig { [] }
-    # 
     # Returns an ASN.1 INTEGER value as a positive BigInteger.
     # This is just to deal with implementations that incorrectly encode
     # some values as negative.
@@ -212,7 +201,6 @@ module Sun::Security::Util
     end
     
     typesig { [] }
-    # 
     # Get an enumerated from the input stream.
     # 
     # @return the integer held in this DER input stream.
@@ -224,7 +212,6 @@ module Sun::Security::Util
     end
     
     typesig { [] }
-    # 
     # Get a bit string from the input stream. Padded bits (if any)
     # will be stripped off before the bit string is returned.
     def get_bit_string
@@ -235,7 +222,6 @@ module Sun::Security::Util
     end
     
     typesig { [] }
-    # 
     # Get a bit string from the input stream.  The bit string need
     # not be byte-aligned.
     def get_unaligned_bit_string
@@ -243,7 +229,6 @@ module Sun::Security::Util
         raise IOException.new("DER input not a bit string")
       end
       length = get_length(@buffer) - 1
-      # 
       # First byte = number of excess bits in the last octet of the
       # representation.
       valid_bits = length * 8 - @buffer.read
@@ -255,7 +240,6 @@ module Sun::Security::Util
     end
     
     typesig { [] }
-    # 
     # Returns an ASN.1 OCTET STRING from the input stream.
     def get_octet_string
       if (!(@buffer.read).equal?(DerValue.attr_tag_octet_string))
@@ -270,7 +254,6 @@ module Sun::Security::Util
     end
     
     typesig { [Array.typed(::Java::Byte)] }
-    # 
     # Returns the asked number of bytes from the input stream.
     def get_bytes(val)
       if ((!(val.attr_length).equal?(0)) && (!(@buffer.read(val)).equal?(val.attr_length)))
@@ -279,7 +262,6 @@ module Sun::Security::Util
     end
     
     typesig { [] }
-    # 
     # Reads an encoded null value from the input stream.
     def get_null
       if (!(@buffer.read).equal?(DerValue.attr_tag_null) || !(@buffer.read).equal?(0))
@@ -288,14 +270,12 @@ module Sun::Security::Util
     end
     
     typesig { [] }
-    # 
     # Reads an X.200 style Object Identifier from the stream.
     def get_oid
       return ObjectIdentifier.new(self)
     end
     
     typesig { [::Java::Int] }
-    # 
     # Return a sequence of encoded entities.  ASN.1 sequences are
     # ordered, and they are often used, like a "struct" in C or C++,
     # to group data values.  They may have optional or context
@@ -313,7 +293,6 @@ module Sun::Security::Util
     end
     
     typesig { [::Java::Int] }
-    # 
     # Return a set of encoded entities.  ASN.1 sets are unordered,
     # though DER may specify an order for some kinds of sets (such
     # as the attributes in an X.500 relative distinguished name)
@@ -331,7 +310,6 @@ module Sun::Security::Util
     end
     
     typesig { [::Java::Int, ::Java::Boolean] }
-    # 
     # Return a set of encoded entities.  ASN.1 sets are unordered,
     # though DER may specify an order for some kinds of sets (such
     # as the attributes in an X.500 relative distinguished name)
@@ -352,7 +330,6 @@ module Sun::Security::Util
     end
     
     typesig { [::Java::Int] }
-    # 
     # Read a "vector" of values ... set or sequence have the
     # same encoding, except for the initial tag, so both use
     # this same helper routine.
@@ -382,7 +359,6 @@ module Sun::Security::Util
         # used only for missing optionals
         return Array.typed(DerValue).new(0) { nil }
       end
-      # 
       # Create a temporary stream from which to read the data,
       # unless it's not really needed.
       if ((@buffer.available).equal?(len))
@@ -390,7 +366,6 @@ module Sun::Security::Util
       else
         newstr = sub_stream(len, true)
       end
-      # 
       # Pull values out of the stream.
       vec = Vector.new(start_len)
       value = nil
@@ -401,7 +376,6 @@ module Sun::Security::Util
       if (!(newstr.available).equal?(0))
         raise IOException.new("extra data at end of vector")
       end
-      # 
       # Now stick them into the array we're returning.
       i = 0
       max = vec.size
@@ -415,7 +389,6 @@ module Sun::Security::Util
     end
     
     typesig { [] }
-    # 
     # Get a single DER-encoded value from the input stream.
     # It can often be useful to pull a value from the stream
     # and defer parsing it.  For example, you can pull a nested
@@ -426,51 +399,43 @@ module Sun::Security::Util
     end
     
     typesig { [] }
-    # 
     # Read a string that was encoded as a UTF8String DER value.
     def get_utf8string
       return read_string(DerValue.attr_tag_utf8string, "UTF-8", "UTF8")
     end
     
     typesig { [] }
-    # 
     # Read a string that was encoded as a PrintableString DER value.
     def get_printable_string
       return read_string(DerValue.attr_tag_printable_string, "Printable", "ASCII")
     end
     
     typesig { [] }
-    # 
     # Read a string that was encoded as a T61String DER value.
     def get_t61string
-      # 
       # Works for common characters between T61 and ASCII.
       return read_string(DerValue.attr_tag_t61string, "T61", "ISO-8859-1")
     end
     
     typesig { [] }
-    # 
     # Read a string that was encoded as a IA5tring DER value.
     def get_ia5string
       return read_string(DerValue.attr_tag_ia5string, "IA5", "ASCII")
     end
     
     typesig { [] }
-    # 
     # Read a string that was encoded as a BMPString DER value.
     def get_bmpstring
       return read_string(DerValue.attr_tag_bmpstring, "BMP", "UnicodeBigUnmarked")
     end
     
     typesig { [] }
-    # 
     # Read a string that was encoded as a GeneralString DER value.
     def get_general_string
       return read_string(DerValue.attr_tag_general_string, "General", "ASCII")
     end
     
     typesig { [::Java::Byte, String, String] }
-    # 
     # Private helper routine to read an encoded string from the input
     # stream.
     # @param stringTag the tag for the type of string to read
@@ -490,7 +455,6 @@ module Sun::Security::Util
     end
     
     typesig { [] }
-    # 
     # Get a UTC encoded time value from the input stream.
     def get_utctime
       if (!(@buffer.read).equal?(DerValue.attr_tag_utc_time))
@@ -500,7 +464,6 @@ module Sun::Security::Util
     end
     
     typesig { [] }
-    # 
     # Get a Generalized encoded time value from the input stream.
     def get_generalized_time
       if (!(@buffer.read).equal?(DerValue.attr_tag_generalized_time))
@@ -510,7 +473,6 @@ module Sun::Security::Util
     end
     
     typesig { [] }
-    # 
     # Get a byte from the input stream.
     # 
     # package private
@@ -531,7 +493,6 @@ module Sun::Security::Util
     
     class_module.module_eval {
       typesig { [InputStream] }
-      # 
       # Get a length from the input stream, allowing for at most 32 bits of
       # encoding to be used.  (Not the same as getting a tagged integer!)
       # 
@@ -542,7 +503,6 @@ module Sun::Security::Util
       end
       
       typesig { [::Java::Int, InputStream] }
-      # 
       # Get a length from the input stream, allowing for at most 32 bits of
       # encoding to be used.  (Not the same as getting a tagged integer!)
       # 
@@ -558,7 +518,6 @@ module Sun::Security::Util
         else
           # long form or indefinite
           tmp &= 0x7f
-          # 
           # NOTE:  tmp == 0 indicates indefinite length encoded data.
           # tmp > 4 indicates more than 4Gb of data.
           if ((tmp).equal?(0))
@@ -579,7 +538,6 @@ module Sun::Security::Util
     }
     
     typesig { [::Java::Int] }
-    # 
     # Mark the current position in the buffer, so that
     # a later call to <code>reset</code> will return here.
     def mark(value)
@@ -587,7 +545,6 @@ module Sun::Security::Util
     end
     
     typesig { [] }
-    # 
     # Return to the position of the last <code>mark</code>
     # call.  A mark is implicitly set at the beginning of
     # the stream when it is created.
@@ -596,7 +553,6 @@ module Sun::Security::Util
     end
     
     typesig { [] }
-    # 
     # Returns the number of bytes available for reading.
     # This is most useful for testing whether the stream is
     # empty.

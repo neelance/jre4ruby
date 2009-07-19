@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 2000-2006 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -38,7 +37,6 @@ module Sun::Security::X509
     }
   end
   
-  # 
   # This class represents the Inhibit Any-Policy Extension.
   # 
   # <p>The inhibit any-policy extension can be used in certificates issued
@@ -72,13 +70,11 @@ module Sun::Security::X509
       const_set_lazy(:Debug) { Debug.get_instance("certpath") }
       const_attr_reader  :Debug
       
-      # 
       # Identifier for this attribute, to be used with the
       # get, set, delete methods of Certificate, x509 type.
       const_set_lazy(:IDENT) { "x509.info.extensions.InhibitAnyPolicy" }
       const_attr_reader  :IDENT
       
-      # 
       # Object identifier for "any-policy"
       
       def any_policy_id
@@ -99,7 +95,6 @@ module Sun::Security::X509
         end
       end
       
-      # 
       # Attribute names.
       const_set_lazy(:NAME) { "InhibitAnyPolicy" }
       const_attr_reader  :NAME
@@ -124,7 +119,6 @@ module Sun::Security::X509
     end
     
     typesig { [::Java::Int] }
-    # 
     # Default constructor for this object.
     # 
     # @param skipCerts specifies the depth of the certification path.
@@ -147,7 +141,6 @@ module Sun::Security::X509
     end
     
     typesig { [Boolean, Object] }
-    # 
     # Create the extension from the passed DER encoded value of the same.
     # 
     # @param critical criticality flag to use.  Must be true for this
@@ -184,7 +177,6 @@ module Sun::Security::X509
     end
     
     typesig { [] }
-    # 
     # Return user readable form of extension.
     def to_s
       s = (super).to_s + "InhibitAnyPolicy: " + (@skip_certs).to_s + "\n"
@@ -192,7 +184,6 @@ module Sun::Security::X509
     end
     
     typesig { [OutputStream] }
-    # 
     # Encode this extension value to the output stream.
     # 
     # @param out the DerOutputStream to encode the extension to.
@@ -208,7 +199,6 @@ module Sun::Security::X509
     end
     
     typesig { [String, Object] }
-    # 
     # Set the attribute value.
     # 
     # @param name name of attribute to set. Must be SKIP_CERTS.
@@ -236,7 +226,6 @@ module Sun::Security::X509
     end
     
     typesig { [String] }
-    # 
     # Get the attribute value.
     # 
     # @param name name of attribute to get.  Must be SKIP_CERTS.
@@ -252,7 +241,6 @@ module Sun::Security::X509
     end
     
     typesig { [String] }
-    # 
     # Delete the attribute value.
     # 
     # @param name name of attribute to delete. Must be SKIP_CERTS.
@@ -268,7 +256,6 @@ module Sun::Security::X509
     end
     
     typesig { [] }
-    # 
     # Return an enumeration of names of attributes existing within this
     # attribute.
     # 
@@ -280,7 +267,6 @@ module Sun::Security::X509
     end
     
     typesig { [] }
-    # 
     # Return the name of this attribute.
     # 
     # @returns name of attribute.

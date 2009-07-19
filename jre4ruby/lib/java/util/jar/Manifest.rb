@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 1997-2006 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -39,7 +38,6 @@ module Java::Util::Jar
     }
   end
   
-  # 
   # The Manifest class is used to maintain Manifest entry names and their
   # associated Attributes. There are main Manifest Attributes as well as
   # per-entry Attributes. For information on the Manifest format, please
@@ -69,7 +67,6 @@ module Java::Util::Jar
     undef_method :entries=
     
     typesig { [] }
-    # 
     # Constructs a new, empty Manifest.
     def initialize
       @attr = Attributes.new
@@ -77,7 +74,6 @@ module Java::Util::Jar
     end
     
     typesig { [InputStream] }
-    # 
     # Constructs a new Manifest from the specified input stream.
     # 
     # @param is the input stream containing manifest data
@@ -89,7 +85,6 @@ module Java::Util::Jar
     end
     
     typesig { [Manifest] }
-    # 
     # Constructs a new Manifest that is a copy of the specified Manifest.
     # 
     # @param man the Manifest to copy
@@ -101,7 +96,6 @@ module Java::Util::Jar
     end
     
     typesig { [] }
-    # 
     # Returns the main Attributes for the Manifest.
     # @return the main Attributes for the Manifest
     def get_main_attributes
@@ -109,7 +103,6 @@ module Java::Util::Jar
     end
     
     typesig { [] }
-    # 
     # Returns a Map of the entries contained in this Manifest. Each entry
     # is represented by a String name (key) and associated Attributes (value).
     # The Map permits the {@code null} key, but no entry with a null key is
@@ -122,7 +115,6 @@ module Java::Util::Jar
     end
     
     typesig { [String] }
-    # 
     # Returns the Attributes for the specified entry name.
     # This method is defined as:
     # <pre>
@@ -148,7 +140,6 @@ module Java::Util::Jar
     end
     
     typesig { [] }
-    # 
     # Clears the main Attributes as well as the entries in this Manifest.
     def clear
       @attr.clear
@@ -156,7 +147,6 @@ module Java::Util::Jar
     end
     
     typesig { [OutputStream] }
-    # 
     # Writes the Manifest to the specified OutputStream.
     # Attributes.Name.MANIFEST_VERSION must be set in
     # MainAttributes prior to invoking this method.
@@ -189,7 +179,6 @@ module Java::Util::Jar
     
     class_module.module_eval {
       typesig { [StringBuffer] }
-      # 
       # Adds line breaks to enforce a maximum 72 bytes per line.
       def make72_safe(line)
         length_ = line.length
@@ -206,7 +195,6 @@ module Java::Util::Jar
     }
     
     typesig { [InputStream] }
-    # 
     # Reads the Manifest from the specified InputStream. The entry
     # names and attributes read will be merged in with the current
     # manifest entries.
@@ -299,7 +287,6 @@ module Java::Util::Jar
     end
     
     typesig { [Object] }
-    # 
     # Returns true if the specified Object is also a Manifest and has
     # the same main Attributes and entries.
     # 
@@ -316,14 +303,12 @@ module Java::Util::Jar
     end
     
     typesig { [] }
-    # 
     # Returns the hash code for this Manifest.
     def hash_code
       return @attr.hash_code + @entries.hash_code
     end
     
     typesig { [] }
-    # 
     # Returns a shallow copy of this Manifest.  The shallow copy is
     # implemented as follows:
     # <pre>
@@ -335,7 +320,6 @@ module Java::Util::Jar
     end
     
     class_module.module_eval {
-      # 
       # A fast buffered input stream for parsing manifest files.
       const_set_lazy(:FastInputStream) { Class.new(FilterInputStream) do
         include_class_members Manifest
@@ -407,7 +391,6 @@ module Java::Util::Jar
         end
         
         typesig { [Array.typed(::Java::Byte), ::Java::Int, ::Java::Int] }
-        # 
         # Reads 'len' bytes from the input stream, or until an end-of-line
         # is reached. Returns the number of bytes read.
         def read_line(b, off, len)

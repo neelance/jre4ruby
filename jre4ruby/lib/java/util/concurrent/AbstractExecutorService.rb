@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
 # This code is free software; you can redistribute it and/or modify it
@@ -41,7 +40,6 @@ module Java::Util::Concurrent
     }
   end
   
-  # 
   # Provides default implementations of {@link ExecutorService}
   # execution methods. This class implements the <tt>submit</tt>,
   # <tt>invokeAny</tt> and <tt>invokeAll</tt> methods using a
@@ -77,7 +75,6 @@ module Java::Util::Concurrent
     include ExecutorService
     
     typesig { [Runnable, T] }
-    # 
     # Returns a <tt>RunnableFuture</tt> for the given runnable and default
     # value.
     # 
@@ -93,7 +90,6 @@ module Java::Util::Concurrent
     end
     
     typesig { [Callable] }
-    # 
     # Returns a <tt>RunnableFuture</tt> for the given callable task.
     # 
     # @param callable the callable task being wrapped
@@ -137,7 +133,6 @@ module Java::Util::Concurrent
     end
     
     typesig { [Collection, ::Java::Boolean, ::Java::Long] }
-    # 
     # the main mechanics of invokeAny.
     def do_invoke_any(tasks, timed, nanos)
       if ((tasks).nil?)
@@ -208,7 +203,7 @@ module Java::Util::Concurrent
         raise ee
       ensure
         futures.each do |f|
-          f_.cancel(true)
+          f.cancel(true)
         end
       end
     end
@@ -217,7 +212,7 @@ module Java::Util::Concurrent
     def invoke_any(tasks)
       begin
         return do_invoke_any(tasks, false, 0)
-      rescue TimeoutException => cannotHappen
+      rescue TimeoutException => cannot_happen
         raise AssertError if not (false)
         return nil
       end
@@ -242,9 +237,9 @@ module Java::Util::Concurrent
           execute(f)
         end
         futures.each do |f|
-          if (!f_.is_done)
+          if (!f.is_done)
             begin
-              f_.get
+              f.get
             rescue CancellationException => ignore
             rescue ExecutionException => ignore
             end
@@ -255,7 +250,7 @@ module Java::Util::Concurrent
       ensure
         if (!done)
           futures.each do |f|
-            f__.cancel(true)
+            f.cancel(true)
           end
         end
       end
@@ -298,9 +293,9 @@ module Java::Util::Concurrent
             rescue TimeoutException => toe
               return futures
             end
-            now_ = System.nano_time
-            nanos -= now_ - last_time
-            last_time = now_
+            now = System.nano_time
+            nanos -= now - last_time
+            last_time = now
           end
         end
         done = true
@@ -308,7 +303,7 @@ module Java::Util::Concurrent
       ensure
         if (!done)
           futures.each do |f|
-            f_.cancel(true)
+            f.cancel(true)
           end
         end
       end

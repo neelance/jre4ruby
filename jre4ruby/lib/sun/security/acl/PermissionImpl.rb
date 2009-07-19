@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 1996-1999 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -33,7 +32,6 @@ module Sun::Security::Acl
     }
   end
   
-  # 
   # The PermissionImpl class implements the permission
   # interface for permissions that are strings.
   # @author Satish Dharmaraj
@@ -48,7 +46,6 @@ module Sun::Security::Acl
     undef_method :permission=
     
     typesig { [String] }
-    # 
     # Construct a permission object using a string.
     # @param permission the stringified version of the permission.
     def initialize(permission)
@@ -57,7 +54,6 @@ module Sun::Security::Acl
     end
     
     typesig { [Object] }
-    # 
     # This function returns true if the object passed matches the permission
     # represented in this interface.
     # @param another The Permission object to compare with.
@@ -72,7 +68,6 @@ module Sun::Security::Acl
     end
     
     typesig { [] }
-    # 
     # Prints a stringified version of the permission.
     # @return the string representation of the Permission.
     def to_s
@@ -80,7 +75,6 @@ module Sun::Security::Acl
     end
     
     typesig { [] }
-    # 
     # Returns a hashcode for this PermissionImpl.
     # 
     # @return a hashcode for this PermissionImpl.

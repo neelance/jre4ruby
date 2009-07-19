@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 1997-2006 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -34,7 +33,6 @@ module Sun::Security::Util
     }
   end
   
-  # 
   # This class is used to compute digests on sections of the Manifest.
   class ManifestDigester 
     include_class_members ManifestDigesterImports
@@ -99,7 +97,6 @@ module Sun::Security::Util
     }
     
     typesig { [::Java::Int, Position] }
-    # 
     # find a section in the manifest.
     # 
     # @param offset should point to the starting offset with in the

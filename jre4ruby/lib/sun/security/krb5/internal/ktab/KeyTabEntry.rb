@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
 # This code is free software; you can redistribute it and/or modify it
@@ -37,7 +36,6 @@ module Sun::Security::Krb5::Internal::Ktab
     }
   end
   
-  # 
   # This class represents a Key Table entry. Each entry contains the service principal of
   # the key, time stamp, key version and secret key itself.
   # 

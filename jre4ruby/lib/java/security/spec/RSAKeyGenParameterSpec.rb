@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 1999 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -33,7 +32,6 @@ module Java::Security::Spec
     }
   end
   
-  # 
   # This class specifies the set of parameters used to generate an RSA
   # key pair.
   # 
@@ -59,19 +57,16 @@ module Java::Security::Spec
     undef_method :public_exponent=
     
     class_module.module_eval {
-      # 
       # The public-exponent value F0 = 3.
       const_set_lazy(:F0) { BigInteger.value_of(3) }
       const_attr_reader  :F0
       
-      # 
       # The public exponent-value F4 = 65537.
       const_set_lazy(:F4) { BigInteger.value_of(65537) }
       const_attr_reader  :F4
     }
     
     typesig { [::Java::Int, BigInteger] }
-    # 
     # Constructs a new <code>RSAParameterSpec</code> object from the
     # given keysize and public-exponent value.
     # 
@@ -85,7 +80,6 @@ module Java::Security::Spec
     end
     
     typesig { [] }
-    # 
     # Returns the keysize.
     # 
     # @return the keysize.
@@ -94,7 +88,6 @@ module Java::Security::Spec
     end
     
     typesig { [] }
-    # 
     # Returns the public-exponent value.
     # 
     # @return the public-exponent value.

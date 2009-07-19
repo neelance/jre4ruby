@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 2005-2006 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -33,7 +32,6 @@ module Java::Lang::Management
     }
   end
   
-  # 
   # Information about an object monitor lock.  An object monitor is locked
   # when entering a synchronization block or method on that object.
   # 
@@ -60,7 +58,6 @@ module Java::Lang::Management
     undef_method :stack_frame=
     
     typesig { [String, ::Java::Int, ::Java::Int, StackTraceElement] }
-    # 
     # Construct a <tt>MonitorInfo</tt> object.
     # 
     # @param className the fully qualified name of the class of the lock object.
@@ -88,7 +85,6 @@ module Java::Lang::Management
     end
     
     typesig { [] }
-    # 
     # Returns the depth in the stack trace where the object monitor
     # was locked.  The depth is the index to the <tt>StackTraceElement</tt>
     # array returned in the {@link ThreadInfo#getStackTrace} method.
@@ -100,7 +96,6 @@ module Java::Lang::Management
     end
     
     typesig { [] }
-    # 
     # Returns the stack frame that locked the object monitor.
     # 
     # @return <tt>StackTraceElement</tt> that locked the object monitor,
@@ -111,7 +106,6 @@ module Java::Lang::Management
     
     class_module.module_eval {
       typesig { [CompositeData] }
-      # 
       # Returns a <tt>MonitorInfo</tt> object represented by the
       # given <tt>CompositeData</tt>.
       # The given <tt>CompositeData</tt> must contain the following attributes

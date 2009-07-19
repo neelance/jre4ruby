@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 2003-2007 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -55,7 +54,6 @@ module Sun::Security::Ssl
     }
   end
   
-  # 
   # This is Kerberos option in the client key exchange message
   # (CLIENT -> SERVER). It holds the Kerberos ticket and the encrypted
   # premaster secret encrypted with the session key sealed in the ticket.
@@ -103,7 +101,6 @@ module Sun::Security::Ssl
     undef_method :local_principal=
     
     typesig { [String, ::Java::Boolean, AccessControlContext, ProtocolVersion, SecureRandom] }
-    # 
     # Creates an instance of KerberosClientKeyExchange consisting of the
     # Kerberos service ticket, authenticator and encrypted premaster secret.
     # Called by client handshaker.
@@ -134,7 +131,6 @@ module Sun::Security::Ssl
     end
     
     typesig { [ProtocolVersion, ProtocolVersion, SecureRandom, HandshakeInStream, Array.typed(KerberosKey)] }
-    # 
     # Creates an instance of KerberosClientKeyExchange from its ASN.1 encoding.
     # Used by ServerHandshaker to verify and obtain premaster secret.
     # 
@@ -163,7 +159,6 @@ module Sun::Security::Ssl
         ticket_sname = t.attr_sname
         ticket_realm = t.attr_realm
         server_principal = server_keys[0].get_principal.get_name
-        # 
         # permission to access and use the secret key of the Kerberized
         # "host" service is done in ServerHandshaker.getKerberosKeys()
         # to ensure server has the permission to use the secret key
@@ -204,7 +199,7 @@ module Sun::Security::Ssl
         raise e
       rescue Exception => e
         if (!(self.attr_debug).nil? && Debug.is_on("handshake"))
-          System.out.println("KerberosWrapper error getting session key," + " generating random secret (" + (e_.get_message).to_s + ")")
+          System.out.println("KerberosWrapper error getting session key," + " generating random secret (" + (e.get_message).to_s + ")")
         end
         session_key = nil
       end
@@ -324,9 +319,9 @@ module Sun::Security::Ssl
           end
           return ticket
         rescue PrivilegedActionException => e
-          ioe_ = IOException.new("Attempt to obtain kerberos service ticket for " + server_principal + " failed!")
-          ioe_.init_cause(e_)
-          raise ioe_
+          ioe = IOException.new("Attempt to obtain kerberos service ticket for " + server_principal + " failed!")
+          ioe.init_cause(e)
+          raise ioe
         end
       end
     }

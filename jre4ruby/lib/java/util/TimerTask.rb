@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 1999-2004 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -31,7 +30,6 @@ module Java::Util
     }
   end
   
-  # 
   # A task that can be scheduled for one-time or repeated execution by a Timer.
   # 
   # @author  Josh Bloch
@@ -41,7 +39,6 @@ module Java::Util
     include_class_members TimerTaskImports
     include Runnable
     
-    # 
     # This object is used to control access to the TimerTask internals.
     attr_accessor :lock
     alias_method :attr_lock, :lock
@@ -49,7 +46,6 @@ module Java::Util
     alias_method :attr_lock=, :lock=
     undef_method :lock=
     
-    # 
     # The state of this task, chosen from the constants below.
     attr_accessor :state
     alias_method :attr_state, :state
@@ -58,30 +54,25 @@ module Java::Util
     undef_method :state=
     
     class_module.module_eval {
-      # 
       # This task has not yet been scheduled.
       const_set_lazy(:VIRGIN) { 0 }
       const_attr_reader  :VIRGIN
       
-      # 
       # This task is scheduled for execution.  If it is a non-repeating task,
       # it has not yet been executed.
       const_set_lazy(:SCHEDULED) { 1 }
       const_attr_reader  :SCHEDULED
       
-      # 
       # This non-repeating task has already executed (or is currently
       # executing) and has not been cancelled.
       const_set_lazy(:EXECUTED) { 2 }
       const_attr_reader  :EXECUTED
       
-      # 
       # This task has been cancelled (with a call to TimerTask.cancel).
       const_set_lazy(:CANCELLED) { 3 }
       const_attr_reader  :CANCELLED
     }
     
-    # 
     # Next execution time for this task in the format returned by
     # System.currentTimeMillis, assuming this task is scheduled for execution.
     # For repeating tasks, this field is updated prior to each task execution.
@@ -91,7 +82,6 @@ module Java::Util
     alias_method :attr_next_execution_time=, :next_execution_time=
     undef_method :next_execution_time=
     
-    # 
     # Period in milliseconds for repeating tasks.  A positive value indicates
     # fixed-rate execution.  A negative value indicates fixed-delay execution.
     # A value of 0 indicates a non-repeating task.
@@ -102,7 +92,6 @@ module Java::Util
     undef_method :period=
     
     typesig { [] }
-    # 
     # Creates a new timer task.
     def initialize
       @lock = Object.new
@@ -112,14 +101,12 @@ module Java::Util
     end
     
     typesig { [] }
-    # 
     # The action to be performed by this timer task.
     def run
       raise NotImplementedError
     end
     
     typesig { [] }
-    # 
     # Cancels this timer task.  If the task has been scheduled for one-time
     # execution and has not yet run, or has not yet been scheduled, it will
     # never run.  If the task has been scheduled for repeated execution, it
@@ -149,7 +136,6 @@ module Java::Util
     end
     
     typesig { [] }
-    # 
     # Returns the <i>scheduled</i> execution time of the most recent
     # <i>actual</i> execution of this task.  (If this method is invoked
     # while task execution is in progress, the return value is the scheduled

@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 2005-2007 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -32,7 +31,6 @@ module Sun::Security::Internal::Interfaces
     }
   end
   
-  # 
   # An SSL/TLS master secret key. It is a <code>SecretKey</code> that optionally
   # contains protocol version information that is used to detect version
   # rollback attacks during the SSL/TLS handshake.
@@ -54,7 +52,6 @@ module Sun::Security::Internal::Interfaces
     }
     
     typesig { [] }
-    # 
     # Returns the major version number encapsulated in the premaster secret
     # this master secret was derived from, or -1 if it is not available.
     # 
@@ -67,7 +64,6 @@ module Sun::Security::Internal::Interfaces
     end
     
     typesig { [] }
-    # 
     # Returns the minor version number encapsulated in the premaster secret
     # this master secret was derived from, or -1 if it is not available.
     # 

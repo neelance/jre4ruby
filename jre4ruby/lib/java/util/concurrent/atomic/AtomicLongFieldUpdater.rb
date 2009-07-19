@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
 # This code is free software; you can redistribute it and/or modify it
@@ -42,7 +41,6 @@ module Java::Util::Concurrent::Atomic
     }
   end
   
-  # 
   # A reflection-based utility that enables atomic updates to
   # designated {@code volatile long} fields of designated classes.
   # This class is designed for use in atomic data structures in which
@@ -64,7 +62,6 @@ module Java::Util::Concurrent::Atomic
     
     class_module.module_eval {
       typesig { [Class, String] }
-      # 
       # Creates and returns an updater for objects with the given field.
       # The Class argument is needed to check that reflective types and
       # generic types match.
@@ -86,13 +83,11 @@ module Java::Util::Concurrent::Atomic
     }
     
     typesig { [] }
-    # 
     # Protected do-nothing constructor for use by subclasses.
     def initialize
     end
     
     typesig { [Object, ::Java::Long, ::Java::Long] }
-    # 
     # Atomically sets the field of the given object managed by this updater
     # to the given updated value if the current value {@code ==} the
     # expected value. This method is guaranteed to be atomic with respect to
@@ -110,7 +105,6 @@ module Java::Util::Concurrent::Atomic
     end
     
     typesig { [Object, ::Java::Long, ::Java::Long] }
-    # 
     # Atomically sets the field of the given object managed by this updater
     # to the given updated value if the current value {@code ==} the
     # expected value. This method is guaranteed to be atomic with respect to
@@ -132,7 +126,6 @@ module Java::Util::Concurrent::Atomic
     end
     
     typesig { [Object, ::Java::Long] }
-    # 
     # Sets the field of the given object managed by this updater to the
     # given updated value. This operation is guaranteed to act as a volatile
     # store with respect to subsequent invocations of {@code compareAndSet}.
@@ -144,7 +137,6 @@ module Java::Util::Concurrent::Atomic
     end
     
     typesig { [Object, ::Java::Long] }
-    # 
     # Eventually sets the field of the given object managed by this
     # updater to the given updated value.
     # 
@@ -156,7 +148,6 @@ module Java::Util::Concurrent::Atomic
     end
     
     typesig { [Object] }
-    # 
     # Gets the current value held in the field of the given object managed
     # by this updater.
     # 
@@ -167,7 +158,6 @@ module Java::Util::Concurrent::Atomic
     end
     
     typesig { [Object, ::Java::Long] }
-    # 
     # Atomically sets the field of the given object managed by this updater
     # to the given value and returns the old value.
     # 
@@ -184,7 +174,6 @@ module Java::Util::Concurrent::Atomic
     end
     
     typesig { [Object] }
-    # 
     # Atomically increments by one the current value of the field of the
     # given object managed by this updater.
     # 
@@ -201,7 +190,6 @@ module Java::Util::Concurrent::Atomic
     end
     
     typesig { [Object] }
-    # 
     # Atomically decrements by one the current value of the field of the
     # given object managed by this updater.
     # 
@@ -218,7 +206,6 @@ module Java::Util::Concurrent::Atomic
     end
     
     typesig { [Object, ::Java::Long] }
-    # 
     # Atomically adds the given value to the current value of the field of
     # the given object managed by this updater.
     # 
@@ -236,7 +223,6 @@ module Java::Util::Concurrent::Atomic
     end
     
     typesig { [Object] }
-    # 
     # Atomically increments by one the current value of the field of the
     # given object managed by this updater.
     # 
@@ -253,7 +239,6 @@ module Java::Util::Concurrent::Atomic
     end
     
     typesig { [Object] }
-    # 
     # Atomically decrements by one the current value of the field of the
     # given object managed by this updater.
     # 
@@ -270,7 +255,6 @@ module Java::Util::Concurrent::Atomic
     end
     
     typesig { [Object, ::Java::Long] }
-    # 
     # Atomically adds the given value to the current value of the field of
     # the given object managed by this updater.
     # 

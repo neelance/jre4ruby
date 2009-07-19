@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 1997-2005 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -33,7 +32,6 @@ module Sun::Security::X509
     }
   end
   
-  # 
   # Lists all the object identifiers of the X509 extensions of the PKIX profile.
   # 
   # <p>Extensions are addiitonal attributes which can be inserted in a X509

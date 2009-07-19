@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 2004-2005 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -34,7 +33,6 @@ module Sun::Security::Krb5::Internal::Crypto
     }
   end
   
-  # 
   # Class with static methods for doing AES operations.
   # 
   # @author Seema Malkani
@@ -85,7 +83,6 @@ module Sun::Security::Krb5::Internal::Crypto
       end
       
       typesig { [Array.typed(::Java::Byte), ::Java::Int, Array.typed(::Java::Byte), Array.typed(::Java::Byte), ::Java::Int, ::Java::Int] }
-      # 
       # Decrypt ciphertext; do not remove confounder, padding, or check
       # checksum
       def decrypt_raw(base_key, usage, ivec, ciphertext, start, len)

@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 1996-2006 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -59,8 +58,6 @@ module Java::Util
     }
   end
   
-  # 
-  # 
   # Resource bundles contain locale-specific objects.
   # When your program needs a locale-specific resource,
   # a <code>String</code> for example, your program can load it
@@ -302,7 +299,6 @@ module Java::Util
       end.new_local(self) }
       const_attr_reader  :NONEXISTENT_BUNDLE
       
-      # 
       # The cache is a map from cache keys (with bundle base name, locale, and
       # class loader) to either a resource bundle or NONEXISTENT_BUNDLE wrapped by a
       # BundleReference.
@@ -316,7 +312,6 @@ module Java::Util
       const_set_lazy(:CacheList) { ConcurrentHashMap.new(INITIAL_CACHE_SIZE) }
       const_attr_reader  :CacheList
       
-      # 
       # This ConcurrentMap is used to keep multiple threads from loading the
       # same bundle concurrently.  The table entries are <CacheKey, Thread>
       # where CacheKey is the key for the bundle that is under construction
@@ -325,13 +320,11 @@ module Java::Util
       const_set_lazy(:UnderConstruction) { ConcurrentHashMap.new }
       const_attr_reader  :UnderConstruction
       
-      # 
       # Queue for reference objects referring to class loaders or bundles.
       const_set_lazy(:ReferenceQueue) { ReferenceQueue.new }
       const_attr_reader  :ReferenceQueue
     }
     
-    # 
     # The parent bundle of this bundle.
     # The parent bundle is searched by {@link #getObject getObject}
     # when this bundle does not contain a particular resource.
@@ -341,7 +334,6 @@ module Java::Util
     alias_method :attr_parent=, :parent=
     undef_method :parent=
     
-    # 
     # The locale for this bundle.
     attr_accessor :locale
     alias_method :attr_locale, :locale
@@ -349,7 +341,6 @@ module Java::Util
     alias_method :attr_locale=, :locale=
     undef_method :locale=
     
-    # 
     # The base bundle name for this bundle.
     attr_accessor :name
     alias_method :attr_name, :name
@@ -357,7 +348,6 @@ module Java::Util
     alias_method :attr_name=, :name=
     undef_method :name=
     
-    # 
     # The flag indicating this bundle has expired in the cache.
     attr_accessor :expired
     alias_method :attr_expired, :expired
@@ -365,7 +355,6 @@ module Java::Util
     alias_method :attr_expired=, :expired=
     undef_method :expired=
     
-    # 
     # The back link to the cache key. null if this bundle isn't in
     # the cache (yet) or has expired.
     attr_accessor :cache_key
@@ -374,7 +363,6 @@ module Java::Util
     alias_method :attr_cache_key=, :cache_key=
     undef_method :cache_key=
     
-    # 
     # A Set of the keys contained only in this ResourceBundle.
     attr_accessor :key_set
     alias_method :attr_key_set, :key_set
@@ -383,7 +371,6 @@ module Java::Util
     undef_method :key_set=
     
     typesig { [] }
-    # 
     # Sole constructor.  (For invocation by subclass constructors, typically
     # implicit.)
     def initialize
@@ -396,7 +383,6 @@ module Java::Util
     end
     
     typesig { [String] }
-    # 
     # Gets a string for the given key from this resource bundle or one of its parents.
     # Calling this method is equivalent to calling
     # <blockquote>
@@ -413,7 +399,6 @@ module Java::Util
     end
     
     typesig { [String] }
-    # 
     # Gets a string array for the given key from this resource bundle or one of its parents.
     # Calling this method is equivalent to calling
     # <blockquote>
@@ -430,7 +415,6 @@ module Java::Util
     end
     
     typesig { [String] }
-    # 
     # Gets an object for the given key from this resource bundle or one of its parents.
     # This method first tries to obtain the object from this resource bundle using
     # {@link #handleGetObject(java.lang.String) handleGetObject}.
@@ -456,7 +440,6 @@ module Java::Util
     end
     
     typesig { [] }
-    # 
     # Returns the locale of this resource bundle. This method can be used after a
     # call to getBundle() to determine whether the resource bundle returned really
     # corresponds to the requested locale or is a fallback.
@@ -468,7 +451,6 @@ module Java::Util
     
     class_module.module_eval {
       typesig { [] }
-      # 
       # Automatic determination of the ClassLoader to be used to load
       # resources on behalf of the client.  N.B. The client is getLoader's
       # caller's caller.
@@ -496,7 +478,6 @@ module Java::Util
         JNI.__send__(:Java_java_util_ResourceBundle_getClassContext, JNI.env, self.jni_id)
       end
       
-      # 
       # A wrapper of ClassLoader.getSystemClassLoader().
       const_set_lazy(:RBClassLoader) { Class.new(ClassLoader) do
         include_class_members ResourceBundle
@@ -561,7 +542,6 @@ module Java::Util
     }
     
     typesig { [ResourceBundle] }
-    # 
     # Sets the parent bundle of this bundle.
     # The parent bundle is searched by {@link #getObject getObject}
     # when this bundle does not contain a particular resource.
@@ -573,7 +553,6 @@ module Java::Util
     end
     
     class_module.module_eval {
-      # 
       # Key used for cached resource bundles.  The key checks the base
       # name, the locale, and the class loader to determine if the
       # resource is a match to the requested one. The loader may be
@@ -805,7 +784,6 @@ module Java::Util
         alias_method :initialize__cache_key, :initialize
       end }
       
-      # 
       # The common interface to get a CacheKey in LoaderReference and
       # BundleReference.
       const_set_lazy(:CacheKeyReference) { Module.new do
@@ -817,7 +795,6 @@ module Java::Util
         end
       end }
       
-      # 
       # References to class loaders are weak references, so that they can be
       # garbage collected when nobody else is using them. The ResourceBundle
       # class has no reason to keep class loaders alive.
@@ -847,7 +824,6 @@ module Java::Util
         alias_method :initialize__loader_reference, :initialize
       end }
       
-      # 
       # References to bundles are soft references so that they can be garbage
       # collected when they have no hard references.
       const_set_lazy(:BundleReference) { Class.new(SoftReference) do
@@ -877,7 +853,6 @@ module Java::Util
       end }
       
       typesig { [String] }
-      # 
       # Gets a resource bundle using the specified base name, the default locale,
       # and the caller's class loader. Calling this method is equivalent to calling
       # <blockquote>
@@ -900,7 +875,6 @@ module Java::Util
       end
       
       typesig { [String, Control] }
-      # 
       # Returns a resource bundle using the specified base name, the
       # default locale and the specified control. Calling this method
       # is equivalent to calling
@@ -939,7 +913,6 @@ module Java::Util
       end
       
       typesig { [String, Locale] }
-      # 
       # Gets a resource bundle using the specified base name and locale,
       # and the caller's class loader. Calling this method is equivalent to calling
       # <blockquote>
@@ -965,7 +938,6 @@ module Java::Util
       end
       
       typesig { [String, Locale, Control] }
-      # 
       # Returns a resource bundle using the specified base name, target
       # locale and control, and the caller's class loader. Calling this
       # method is equivalent to calling
@@ -1007,7 +979,6 @@ module Java::Util
       end
       
       typesig { [String, Locale, ClassLoader] }
-      # 
       # Gets a resource bundle using the specified base name, locale, and class loader.
       # 
       # <p><a name="default_behavior"/>
@@ -1132,7 +1103,6 @@ module Java::Util
       end
       
       typesig { [String, Locale, ClassLoader, Control] }
-      # 
       # Returns a resource bundle using the specified base name, target
       # locale, class loader and control. Unlike the {@linkplain
       # #getBundle(String, Locale, ClassLoader) <code>getBundle</code>
@@ -1420,7 +1390,6 @@ module Java::Util
       end
       
       typesig { [JavaList] }
-      # 
       # Checks if the given <code>List</code> is not null, not empty,
       # not having null in its elements.
       def check_list(a)
@@ -1502,9 +1471,9 @@ module Java::Util
                 if ((bundle.attr_parent).equal?(parent))
                   return bundle
                 end
-                bundle_ref_ = CacheList.get(cache_key)
-                if (!(bundle_ref_).nil? && (bundle_ref_.get).equal?(bundle))
-                  CacheList.remove(cache_key, bundle_ref_)
+                bundle_ref = CacheList.get(cache_key)
+                if (!(bundle_ref).nil? && (bundle_ref.get).equal?(bundle))
+                  CacheList.remove(cache_key, bundle_ref)
                 end
               end
             end
@@ -1578,7 +1547,6 @@ module Java::Util
       end
       
       typesig { [ResourceBundle] }
-      # 
       # Determines whether any of resource bundles in the parent chain,
       # including the leaf, have expired.
       def has_valid_parent_chain(bundle)
@@ -1600,7 +1568,6 @@ module Java::Util
       end
       
       typesig { [CacheKey] }
-      # 
       # Declares the beginning of actual resource bundle loading. This method
       # returns true if the declaration is successful and the current thread has
       # been put in underConstruction. If someone else has already begun
@@ -1633,7 +1600,6 @@ module Java::Util
       end
       
       typesig { [CacheKey] }
-      # 
       # Declares the end of the bundle loading. This method calls notifyAll
       # for those who are waiting for this completion.
       def end_loading(const_key)
@@ -1649,7 +1615,6 @@ module Java::Util
       end
       
       typesig { [String, Locale, Exception] }
-      # 
       # Throw a MissingResourceException with proper message
       def throw_missing_resource_exception(base_name, locale, cause)
         # If the cause is a MissingResourceException, avoid creating
@@ -1663,7 +1628,6 @@ module Java::Util
       end
       
       typesig { [CacheKey, Control] }
-      # 
       # Finds a bundle in the cache. Any expired bundles are marked as
       # `expired' and removed from the cache upon return.
       # 
@@ -1763,7 +1727,6 @@ module Java::Util
       end
       
       typesig { [CacheKey, ResourceBundle, Control] }
-      # 
       # Put a new bundle in the cache.
       # 
       # @param cacheKey the key for the resource bundle
@@ -1819,7 +1782,6 @@ module Java::Util
       end
       
       typesig { [] }
-      # 
       # Removes all resource bundles from the cache that have been loaded
       # using the caller's class loader.
       # 
@@ -1830,7 +1792,6 @@ module Java::Util
       end
       
       typesig { [ClassLoader] }
-      # 
       # Removes all resource bundles from the cache that have been loaded
       # using the given class loader.
       # 
@@ -1852,7 +1813,6 @@ module Java::Util
     }
     
     typesig { [String] }
-    # 
     # Gets an object for the given key from this resource bundle.
     # Returns null if this resource bundle does not contain an
     # object for the given key.
@@ -1865,7 +1825,6 @@ module Java::Util
     end
     
     typesig { [] }
-    # 
     # Returns an enumeration of the keys.
     # 
     # @return an <code>Enumeration</code> of the keys contained in
@@ -1875,7 +1834,6 @@ module Java::Util
     end
     
     typesig { [String] }
-    # 
     # Determines whether the given <code>key</code> is contained in
     # this <code>ResourceBundle</code> or its parent bundles.
     # 
@@ -1902,7 +1860,6 @@ module Java::Util
     end
     
     typesig { [] }
-    # 
     # Returns a <code>Set</code> of all keys contained in this
     # <code>ResourceBundle</code> and its parent bundles.
     # 
@@ -1920,7 +1877,6 @@ module Java::Util
     end
     
     typesig { [] }
-    # 
     # Returns a <code>Set</code> of the keys contained <em>only</em>
     # in this <code>ResourceBundle</code>.
     # 
@@ -1956,7 +1912,6 @@ module Java::Util
     end
     
     class_module.module_eval {
-      # 
       # <code>ResourceBundle.Control</code> defines a set of callback methods
       # that are invoked by the {@link ResourceBundle#getBundle(String,
       # Locale, ClassLoader, Control) ResourceBundle.getBundle} factory
@@ -2106,7 +2061,6 @@ module Java::Util
         include_class_members ResourceBundle
         
         class_module.module_eval {
-          # 
           # The default format <code>List</code>, which contains the strings
           # <code>"java.class"</code> and <code>"java.properties"</code>, in
           # this order. This <code>List</code> is {@linkplain
@@ -2116,7 +2070,6 @@ module Java::Util
           const_set_lazy(:FORMAT_DEFAULT) { Collections.unmodifiable_list(Arrays.as_list("java.class", "java.properties")) }
           const_attr_reader  :FORMAT_DEFAULT
           
-          # 
           # The class-only format <code>List</code> containing
           # <code>"java.class"</code>. This <code>List</code> is {@linkplain
           # Collections#unmodifiableList(List) unmodifiable}.
@@ -2125,7 +2078,6 @@ module Java::Util
           const_set_lazy(:FORMAT_CLASS) { Collections.unmodifiable_list(Arrays.as_list("java.class")) }
           const_attr_reader  :FORMAT_CLASS
           
-          # 
           # The properties-only format <code>List</code> containing
           # <code>"java.properties"</code>. This <code>List</code> is
           # {@linkplain Collections#unmodifiableList(List) unmodifiable}.
@@ -2134,7 +2086,6 @@ module Java::Util
           const_set_lazy(:FORMAT_PROPERTIES) { Collections.unmodifiable_list(Arrays.as_list("java.properties")) }
           const_attr_reader  :FORMAT_PROPERTIES
           
-          # 
           # The time-to-live constant for not caching loaded resource bundle
           # instances.
           # 
@@ -2142,7 +2093,6 @@ module Java::Util
           const_set_lazy(:TTL_DONT_CACHE) { -1 }
           const_attr_reader  :TTL_DONT_CACHE
           
-          # 
           # The time-to-live constant for disabling the expiration control
           # for loaded resource bundle instances in the cache.
           # 
@@ -2155,7 +2105,6 @@ module Java::Util
         }
         
         typesig { [] }
-        # 
         # Sole constructor. (For invocation by subclass constructors,
         # typically implicit.)
         def initialize
@@ -2163,7 +2112,6 @@ module Java::Util
         
         class_module.module_eval {
           typesig { [JavaList] }
-          # 
           # Returns a <code>ResourceBundle.Control</code> in which the {@link
           # #getFormats(String) getFormats} method returns the specified
           # <code>formats</code>. The <code>formats</code> must be equal to
@@ -2199,7 +2147,6 @@ module Java::Util
           end
           
           typesig { [JavaList] }
-          # 
           # Returns a <code>ResourceBundle.Control</code> in which the {@link
           # #getFormats(String) getFormats} method returns the specified
           # <code>formats</code> and the {@link
@@ -2235,7 +2182,6 @@ module Java::Util
         }
         
         typesig { [String] }
-        # 
         # Returns a <code>List</code> of <code>String</code>s containing
         # formats to be used to load resource bundles for the given
         # <code>baseName</code>. The <code>ResourceBundle.getBundle</code>
@@ -2276,7 +2222,6 @@ module Java::Util
         end
         
         typesig { [String, Locale] }
-        # 
         # Returns a <code>List</code> of <code>Locale</code>s as candidate
         # locales for <code>baseName</code> and <code>locale</code>. This
         # method is called by the <code>ResourceBundle.getBundle</code>
@@ -2368,7 +2313,6 @@ module Java::Util
         end
         
         typesig { [String, Locale] }
-        # 
         # Returns a <code>Locale</code> to be used as a fallback locale for
         # further resource bundle searches by the
         # <code>ResourceBundle.getBundle</code> factory method. This method
@@ -2412,7 +2356,6 @@ module Java::Util
         end
         
         typesig { [String, Locale, String, ClassLoader, ::Java::Boolean] }
-        # 
         # Instantiates a resource bundle for the given bundle name of the
         # given format and locale, using the given class loader if
         # necessary. This method returns <code>null</code> if there is no
@@ -2563,7 +2506,7 @@ module Java::Util
                   alias_method :initialize_anonymous, :initialize
                 end.new_local(self))
               rescue PrivilegedActionException => e
-                raise e_.get_exception
+                raise e.get_exception
               end
               if (!(stream).nil?)
                 begin
@@ -2580,7 +2523,6 @@ module Java::Util
         end
         
         typesig { [String, Locale] }
-        # 
         # Returns the time-to-live (TTL) value for resource bundles that
         # are loaded under this
         # <code>ResourceBundle.Control</code>. Positive time-to-live values
@@ -2633,7 +2575,6 @@ module Java::Util
         end
         
         typesig { [String, Locale, String, ClassLoader, ResourceBundle, ::Java::Long] }
-        # 
         # Determines if the expired <code>bundle</code> in the cache needs
         # to be reloaded based on the loading time given by
         # <code>loadTime</code> or some other criteria. The method returns
@@ -2720,7 +2661,6 @@ module Java::Util
         end
         
         typesig { [String, Locale] }
-        # 
         # Converts the given <code>baseName</code> and <code>locale</code>
         # to the bundle name. This method is called from the default
         # implementation of the {@link #newBundle(String, Locale, String,
@@ -2785,7 +2725,6 @@ module Java::Util
         end
         
         typesig { [String, String] }
-        # 
         # Converts the given <code>bundleName</code> to the form required
         # by the {@link ClassLoader#getResource ClassLoader.getResource}
         # method by replacing all occurrences of <code>'.'</code> in

@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 2000-2006 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -40,7 +39,6 @@ module Sun::Security::Jgss::Krb5
     }
   end
   
-  # 
   # Krb5 Mechanism plug in for JGSS
   # This is the properties object required by the JGSS framework.
   # All mechanism specific information is defined here.

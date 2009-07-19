@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 2005-2007 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -33,7 +32,6 @@ module Sun::Security::Internal::Spec
     }
   end
   
-  # 
   # Parameters for SSL/TLS key material generation.
   # This class is used to initialize KeyGenerator of the type
   # "TlsKeyMaterial". The keys returned by such KeyGenerators will be
@@ -177,7 +175,6 @@ module Sun::Security::Internal::Spec
     }
     
     typesig { [] }
-    # 
     # Returns the master secret.
     # 
     # @return the master secret.
@@ -186,7 +183,6 @@ module Sun::Security::Internal::Spec
     end
     
     typesig { [] }
-    # 
     # Returns the major version number.
     # 
     # @return the major version number.
@@ -195,7 +191,6 @@ module Sun::Security::Internal::Spec
     end
     
     typesig { [] }
-    # 
     # Returns the minor version number.
     # 
     # @return the minor version number.
@@ -204,7 +199,6 @@ module Sun::Security::Internal::Spec
     end
     
     typesig { [] }
-    # 
     # Returns a copy of the client's random value.
     # 
     # @return a copy of the client's random value.
@@ -213,7 +207,6 @@ module Sun::Security::Internal::Spec
     end
     
     typesig { [] }
-    # 
     # Returns a copy of the server's random value.
     # 
     # @return a copy of the server's random value.
@@ -222,7 +215,6 @@ module Sun::Security::Internal::Spec
     end
     
     typesig { [] }
-    # 
     # Returns the cipher algorithm.
     # 
     # @return the cipher algorithm.
@@ -231,7 +223,6 @@ module Sun::Security::Internal::Spec
     end
     
     typesig { [] }
-    # 
     # Returns the length in bytes of the encryption key to be generated.
     # 
     # @return the length in bytes of the encryption key to be generated.
@@ -240,7 +231,6 @@ module Sun::Security::Internal::Spec
     end
     
     typesig { [] }
-    # 
     # Returns the length in bytes of the expanded encryption key to be generated.
     # 
     # @return the length in bytes of the expanded encryption key to be generated.
@@ -249,7 +239,6 @@ module Sun::Security::Internal::Spec
     end
     
     typesig { [] }
-    # 
     # Returns the length in bytes of the initialization vector to be generated.
     # 
     # @return the length in bytes of the initialization vector to be generated.
@@ -258,7 +247,6 @@ module Sun::Security::Internal::Spec
     end
     
     typesig { [] }
-    # 
     # Returns the length in bytes of the MAC key to be generated.
     # 
     # @return the length in bytes of the MAC key to be generated.

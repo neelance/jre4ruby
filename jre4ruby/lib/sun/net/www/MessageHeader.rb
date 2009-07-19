@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 1995-2005 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -88,7 +87,6 @@ module Sun::Net::Www
     end
     
     typesig { [] }
-    # 
     # Reset a message header (all key/values removed)
     def reset
       synchronized(self) do
@@ -100,7 +98,6 @@ module Sun::Net::Www
     end
     
     typesig { [String] }
-    # 
     # Find the value that corresponds to this key.
     # It finds only the first occurrence of the key.
     # @param k the key to find.
@@ -115,10 +112,10 @@ module Sun::Net::Www
             end
           end
         else
-          i_ = @nkeys
-          while (i_ -= 1) >= 0
-            if (k.equals_ignore_case(@keys[i_]))
-              return @values[i_]
+          i = @nkeys
+          while (i -= 1) >= 0
+            if (k.equals_ignore_case(@keys[i]))
+              return @values[i]
             end
           end
         end
@@ -188,13 +185,13 @@ module Sun::Net::Www
             end
           end
         else
-          i_ = @nkeys
-          while (i_ -= 1) >= 0
-            if (k.equals_ignore_case(@keys[i_]))
+          i = @nkeys
+          while (i -= 1) >= 0
+            if (k.equals_ignore_case(@keys[i]))
               if (found_v)
-                return @values[i_]
+                return @values[i]
               else
-                if ((@values[i_]).equal?(v))
+                if ((@values[i]).equal?(v))
                   found_v = true
                 end
               end
@@ -296,7 +293,6 @@ module Sun::Net::Www
     }
     
     typesig { [String] }
-    # 
     # return an Iterator that returns all values of a particular
     # key in sequence
     def multi_value_iterator(k)
@@ -345,8 +341,8 @@ module Sun::Net::Www
         i_ = key_set_.iterator
         while i_.has_next
           key = i_.next
-          l_ = m.get(key)
-          m.put(key, Collections.unmodifiable_list(l_))
+          l = m.get(key)
+          m.put(key, Collections.unmodifiable_list(l))
         end
         return Collections.unmodifiable_map(m)
       end
@@ -438,7 +434,6 @@ module Sun::Net::Www
     end
     
     typesig { [String] }
-    # 
     # Remove the key from the header. If there are multiple values under
     # the same key, they are all removed.
     # Nothing is done if the key doesn't exist.
@@ -461,18 +456,18 @@ module Sun::Net::Www
             ((i += 1) - 1)
           end
         else
-          i_ = 0
-          while i_ < @nkeys
-            while (k.equals_ignore_case(@keys[i_]) && i_ < @nkeys)
-              j_ = i_
-              while j_ < @nkeys - 1
-                @keys[j_] = @keys[j_ + 1]
-                @values[j_] = @values[j_ + 1]
-                ((j_ += 1) - 1)
+          i = 0
+          while i < @nkeys
+            while (k.equals_ignore_case(@keys[i]) && i < @nkeys)
+              j = i
+              while j < @nkeys - 1
+                @keys[j] = @keys[j + 1]
+                @values[j] = @values[j + 1]
+                ((j += 1) - 1)
               end
               ((@nkeys -= 1) + 1)
             end
-            ((i_ += 1) - 1)
+            ((i += 1) - 1)
           end
         end
       end

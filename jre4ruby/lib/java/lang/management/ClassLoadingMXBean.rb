@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 2003-2004 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -31,7 +30,6 @@ module Java::Lang::Management
     }
   end
   
-  # 
   # The management interface for the class loading system of
   # the Java virtual machine.
   # 
@@ -61,7 +59,6 @@ module Java::Lang::Management
     include_class_members ClassLoadingMXBeanImports
     
     typesig { [] }
-    # 
     # Returns the total number of classes that have been loaded since
     # the Java virtual machine has started execution.
     # 
@@ -71,7 +68,6 @@ module Java::Lang::Management
     end
     
     typesig { [] }
-    # 
     # Returns the number of classes that are currently loaded in the
     # Java virtual machine.
     # 
@@ -81,7 +77,6 @@ module Java::Lang::Management
     end
     
     typesig { [] }
-    # 
     # Returns the total number of classes unloaded since the Java virtual machine
     # has started execution.
     # 
@@ -91,7 +86,6 @@ module Java::Lang::Management
     end
     
     typesig { [] }
-    # 
     # Tests if the verbose output for the class loading system is enabled.
     # 
     # @return <tt>true</tt> if the verbose output for the class loading
@@ -101,7 +95,6 @@ module Java::Lang::Management
     end
     
     typesig { [::Java::Boolean] }
-    # 
     # Enables or disables the verbose output for the class loading
     # system.  The verbose output information and the output stream
     # to which the verbose information is emitted are implementation

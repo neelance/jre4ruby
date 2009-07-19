@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 2002-2004 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -70,7 +69,6 @@ module Sun::Misc
     
     class_module.module_eval {
       typesig { [String] }
-      # 
       # A case insensitive hash code method to go with the case insensitive
       # compare() method.
       # 

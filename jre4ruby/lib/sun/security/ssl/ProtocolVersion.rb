@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 2002-2007 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -31,7 +30,6 @@ module Sun::Security::Ssl
     }
   end
   
-  # 
   # Type safe enum for an SSL/TLS protocol version. Instances are obtained
   # using the static factory methods or by referencing the static members
   # in this class. Member variables are final and can be accessed without
@@ -162,7 +160,6 @@ module Sun::Security::Ssl
       end
       
       typesig { [::Java::Int, ::Java::Int] }
-      # 
       # Return a ProtocolVersion with the specified major and minor version
       # numbers. Never throws exceptions.
       def value_of(major, minor)
@@ -173,7 +170,6 @@ module Sun::Security::Ssl
       end
       
       typesig { [String] }
-      # 
       # Return a ProtocolVersion for the given name.
       # 
       # @exception IllegalArgumentException if name is null or does not

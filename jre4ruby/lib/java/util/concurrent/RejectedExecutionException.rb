@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
 # This code is free software; you can redistribute it and/or modify it
@@ -40,7 +39,6 @@ module Java::Util::Concurrent
     }
   end
   
-  # 
   # Exception thrown by an {@link Executor} when a task cannot be
   # accepted for execution.
   # 
@@ -55,7 +53,6 @@ module Java::Util::Concurrent
     }
     
     typesig { [] }
-    # 
     # Constructs a <tt>RejectedExecutionException</tt> with no detail message.
     # The cause is not initialized, and may subsequently be
     # initialized by a call to {@link #initCause(Throwable) initCause}.
@@ -64,7 +61,6 @@ module Java::Util::Concurrent
     end
     
     typesig { [String] }
-    # 
     # Constructs a <tt>RejectedExecutionException</tt> with the
     # specified detail message. The cause is not initialized, and may
     # subsequently be initialized by a call to {@link
@@ -76,7 +72,6 @@ module Java::Util::Concurrent
     end
     
     typesig { [String, Exception] }
-    # 
     # Constructs a <tt>RejectedExecutionException</tt> with the
     # specified detail message and cause.
     # 
@@ -88,7 +83,6 @@ module Java::Util::Concurrent
     end
     
     typesig { [Exception] }
-    # 
     # Constructs a <tt>RejectedExecutionException</tt> with the
     # specified cause.  The detail message is set to: <pre> (cause ==
     # null ? null : cause.toString())</pre> (which typically contains

@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 1996-1997 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -41,7 +40,6 @@ module Sun::Misc
     include_class_members CompareImports
     
     typesig { [Object, Object] }
-    # 
     # doCompare
     # 
     # @param  obj1 first object to compare.

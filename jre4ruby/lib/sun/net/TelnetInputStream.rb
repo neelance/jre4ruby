@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 1994-1995 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -32,7 +31,6 @@ module Sun::Net
     }
   end
   
-  # 
   # This class provides input and output streams for telnet clients.
   # This class overrides read to do CRLF processing as specified in
   # RFC 854. The class assumes it is running on a system where lines
@@ -159,7 +157,6 @@ module Sun::Net
     end
     
     typesig { [Array.typed(::Java::Byte), ::Java::Int, ::Java::Int] }
-    # 
     # Read into a byte array at offset <i>off</i> for length <i>length</i>
     # bytes.
     def read(bytes, off, length)

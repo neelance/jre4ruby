@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 1997-1999 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -32,7 +31,6 @@ module Java::Security
     }
   end
   
-  # 
   # <p> This class defines the <i>Service Provider Interface</i> (<b>SPI</b>)
   # for the <code>KeyPairGenerator</code> class, which is used to generate
   # pairs of public and private keys.
@@ -56,7 +54,6 @@ module Java::Security
     include_class_members KeyPairGeneratorSpiImports
     
     typesig { [::Java::Int, SecureRandom] }
-    # 
     # Initializes the key pair generator for a certain keysize, using
     # the default parameter set.
     # 
@@ -73,7 +70,6 @@ module Java::Security
     end
     
     typesig { [AlgorithmParameterSpec, SecureRandom] }
-    # 
     # Initializes the key pair generator using the specified parameter
     # set and user-provided source of randomness.
     # 
@@ -99,7 +95,6 @@ module Java::Security
     end
     
     typesig { [] }
-    # 
     # Generates a key pair. Unless an initialization method is called
     # using a KeyPairGenerator interface, algorithm-specific defaults
     # will be used. This will generate a new key pair every time it

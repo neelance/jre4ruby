@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 1997-2007 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -32,7 +31,6 @@ module Java::Util
     }
   end
   
-  # 
   # Hash table based implementation of the <tt>Map</tt> interface.  This
   # implementation provides all of the optional map operations, and permits
   # <tt>null</tt> values and the <tt>null</tt> key.  (The <tt>HashMap</tt>
@@ -132,25 +130,21 @@ module Java::Util
     include Serializable
     
     class_module.module_eval {
-      # 
       # The default initial capacity - MUST be a power of two.
       const_set_lazy(:DEFAULT_INITIAL_CAPACITY) { 16 }
       const_attr_reader  :DEFAULT_INITIAL_CAPACITY
       
-      # 
       # The maximum capacity, used if a higher value is implicitly specified
       # by either of the constructors with arguments.
       # MUST be a power of two <= 1<<30.
       const_set_lazy(:MAXIMUM_CAPACITY) { 1 << 30 }
       const_attr_reader  :MAXIMUM_CAPACITY
       
-      # 
       # The load factor used when none specified in constructor.
       const_set_lazy(:DEFAULT_LOAD_FACTOR) { 0.75 }
       const_attr_reader  :DEFAULT_LOAD_FACTOR
     }
     
-    # 
     # The table, resized as necessary. Length MUST Always be a power of two.
     attr_accessor :table
     alias_method :attr_table, :table
@@ -158,7 +152,6 @@ module Java::Util
     alias_method :attr_table=, :table=
     undef_method :table=
     
-    # 
     # The number of key-value mappings contained in this map.
     attr_accessor :size
     alias_method :attr_size, :size
@@ -166,7 +159,6 @@ module Java::Util
     alias_method :attr_size=, :size=
     undef_method :size=
     
-    # 
     # The next size value at which to resize (capacity * load factor).
     # @serial
     attr_accessor :threshold
@@ -175,7 +167,6 @@ module Java::Util
     alias_method :attr_threshold=, :threshold=
     undef_method :threshold=
     
-    # 
     # The load factor for the hash table.
     # 
     # @serial
@@ -185,7 +176,6 @@ module Java::Util
     alias_method :attr_load_factor=, :load_factor=
     undef_method :load_factor=
     
-    # 
     # The number of times this HashMap has been structurally modified
     # Structural modifications are those that change the number of mappings in
     # the HashMap or otherwise modify its internal structure (e.g.,
@@ -198,7 +188,6 @@ module Java::Util
     undef_method :mod_count=
     
     typesig { [::Java::Int, ::Java::Float] }
-    # 
     # Constructs an empty <tt>HashMap</tt> with the specified initial
     # capacity and load factor.
     # 
@@ -236,7 +225,6 @@ module Java::Util
     end
     
     typesig { [::Java::Int] }
-    # 
     # Constructs an empty <tt>HashMap</tt> with the specified initial
     # capacity and the default load factor (0.75).
     # 
@@ -247,7 +235,6 @@ module Java::Util
     end
     
     typesig { [] }
-    # 
     # Constructs an empty <tt>HashMap</tt> with the default initial capacity
     # (16) and the default load factor (0.75).
     def initialize
@@ -266,7 +253,6 @@ module Java::Util
     end
     
     typesig { [Map] }
-    # 
     # Constructs a new <tt>HashMap</tt> with the same mappings as the
     # specified <tt>Map</tt>.  The <tt>HashMap</tt> is created with
     # default load factor (0.75) and an initial capacity sufficient to
@@ -292,7 +278,6 @@ module Java::Util
     
     class_module.module_eval {
       typesig { [::Java::Int] }
-      # 
       # Applies a supplemental hash function to a given hashCode, which
       # defends against poor quality hash functions.  This is critical
       # because HashMap uses power-of-two length hash tables, that
@@ -307,7 +292,6 @@ module Java::Util
       end
       
       typesig { [::Java::Int, ::Java::Int] }
-      # 
       # Returns index for hash code h.
       def index_for(h, length)
         return h & (length - 1)
@@ -315,7 +299,6 @@ module Java::Util
     }
     
     typesig { [] }
-    # 
     # Returns the number of key-value mappings in this map.
     # 
     # @return the number of key-value mappings in this map
@@ -324,7 +307,6 @@ module Java::Util
     end
     
     typesig { [] }
-    # 
     # Returns <tt>true</tt> if this map contains no key-value mappings.
     # 
     # @return <tt>true</tt> if this map contains no key-value mappings
@@ -333,7 +315,6 @@ module Java::Util
     end
     
     typesig { [Object] }
-    # 
     # Returns the value to which the specified key is mapped,
     # or {@code null} if this map contains no mapping for the key.
     # 
@@ -366,7 +347,6 @@ module Java::Util
     end
     
     typesig { [] }
-    # 
     # Offloaded version of get() to look up null keys.  Null keys map
     # to index 0.  This null case is split out into separate methods
     # for the sake of performance in the two most commonly used
@@ -384,7 +364,6 @@ module Java::Util
     end
     
     typesig { [Object] }
-    # 
     # Returns <tt>true</tt> if this map contains a mapping for the
     # specified key.
     # 
@@ -396,7 +375,6 @@ module Java::Util
     end
     
     typesig { [Object] }
-    # 
     # Returns the entry associated with the specified key in the
     # HashMap.  Returns null if the HashMap contains no mapping
     # for the key.
@@ -414,7 +392,6 @@ module Java::Util
     end
     
     typesig { [Object, Object] }
-    # 
     # Associates the specified value with the specified key in this map.
     # If the map previously contained a mapping for the key, the old
     # value is replaced.
@@ -448,7 +425,6 @@ module Java::Util
     end
     
     typesig { [Object] }
-    # 
     # Offloaded version of put for null keys
     def put_for_null_key(value)
       e = @table[0]
@@ -467,7 +443,6 @@ module Java::Util
     end
     
     typesig { [Object, Object] }
-    # 
     # This method is used instead of put by constructors and
     # pseudoconstructors (clone, readObject).  It does not resize the table,
     # check for comodification, etc.  It calls createEntry rather than
@@ -475,7 +450,6 @@ module Java::Util
     def put_for_create(key, value)
       hash_ = ((key).nil?) ? 0 : hash(key.hash_code)
       i = index_for(hash_, @table.attr_length)
-      # 
       # Look for preexisting entry for key.  This will never happen for
       # clone or deserialize.  It will only happen for construction if the
       # input Map is a sorted map whose ordering is inconsistent w/ equals.
@@ -501,7 +475,6 @@ module Java::Util
     end
     
     typesig { [::Java::Int] }
-    # 
     # Rehashes the contents of this map into a new array with a
     # larger capacity.  This method is called automatically when the
     # number of keys in this map reaches its threshold.
@@ -528,7 +501,6 @@ module Java::Util
     end
     
     typesig { [Array.typed(Entry)] }
-    # 
     # Transfers all entries from current table to newTable.
     def transfer(new_table)
       src = @table
@@ -551,7 +523,6 @@ module Java::Util
     end
     
     typesig { [Map] }
-    # 
     # Copies all of the mappings from the specified map to this map.
     # These mappings will replace any mappings that this map had for
     # any of the keys currently in the specified map.
@@ -563,7 +534,6 @@ module Java::Util
       if ((num_keys_to_be_added).equal?(0))
         return
       end
-      # 
       # Expand the map if the map if the number of mappings to be added
       # is greater than or equal to threshold.  This is conservative; the
       # obvious condition is (m.size() + size) >= threshold, but this
@@ -592,7 +562,6 @@ module Java::Util
     end
     
     typesig { [Object] }
-    # 
     # Removes the mapping for the specified key from this map if present.
     # 
     # @param  key key whose mapping is to be removed from the map
@@ -606,7 +575,6 @@ module Java::Util
     end
     
     typesig { [Object] }
-    # 
     # Removes and returns the entry associated with the specified key
     # in the HashMap.  Returns null if the HashMap contains no mapping
     # for this key.
@@ -636,7 +604,6 @@ module Java::Util
     end
     
     typesig { [Object] }
-    # 
     # Special version of remove for EntrySet.
     def remove_mapping(o)
       if (!(o.is_a?(Map::Entry)))
@@ -668,7 +635,6 @@ module Java::Util
     end
     
     typesig { [] }
-    # 
     # Removes all of the mappings from this map.
     # The map will be empty after this call returns.
     def clear
@@ -683,7 +649,6 @@ module Java::Util
     end
     
     typesig { [Object] }
-    # 
     # Returns <tt>true</tt> if this map maps one or more keys to the
     # specified value.
     # 
@@ -710,7 +675,6 @@ module Java::Util
     end
     
     typesig { [] }
-    # 
     # Special-case code for containsValue with null argument
     def contains_null_value
       tab = @table
@@ -729,7 +693,6 @@ module Java::Util
     end
     
     typesig { [] }
-    # 
     # Returns a shallow copy of this <tt>HashMap</tt> instance: the keys and
     # values themselves are not cloned.
     # 
@@ -780,7 +743,6 @@ module Java::Util
         undef_method :hash=
         
         typesig { [::Java::Int, Object, Object, Entry] }
-        # 
         # Creates new entry.
         def initialize(h, k, v, n)
           @key = nil
@@ -839,7 +801,6 @@ module Java::Util
         end
         
         typesig { [HashMap] }
-        # 
         # This method is invoked whenever the value in an entry is
         # overwritten by an invocation of put(k,v) for a key k that's already
         # in the HashMap.
@@ -847,7 +808,6 @@ module Java::Util
         end
         
         typesig { [HashMap] }
-        # 
         # This method is invoked whenever the entry is
         # removed from the table.
         def record_removal(m)
@@ -859,7 +819,6 @@ module Java::Util
     }
     
     typesig { [::Java::Int, Object, Object, ::Java::Int] }
-    # 
     # Adds a new entry with the specified key, value and hash code to
     # the specified bucket.  It is the responsibility of this
     # method to resize the table if appropriate.
@@ -874,7 +833,6 @@ module Java::Util
     end
     
     typesig { [::Java::Int, Object, Object, ::Java::Int] }
-    # 
     # Like addEntry except that this version is used when creating entries
     # as part of Map construction or "pseudo-construction" (cloning,
     # deserialization).  This version needn't worry about resizing the table.
@@ -1056,7 +1014,6 @@ module Java::Util
     undef_method :entry_set=
     
     typesig { [] }
-    # 
     # Returns a {@link Set} view of the keys contained in this map.
     # The set is backed by the map, so changes to the map are
     # reflected in the set, and vice-versa.  If the map is modified
@@ -1114,7 +1071,6 @@ module Java::Util
     }
     
     typesig { [] }
-    # 
     # Returns a {@link Collection} view of the values contained in this map.
     # The collection is backed by the map, so changes to the map are
     # reflected in the collection, and vice-versa.  If the map is
@@ -1167,7 +1123,6 @@ module Java::Util
     }
     
     typesig { [] }
-    # 
     # Returns a {@link Set} view of the mappings contained in this map.
     # The set is backed by the map, so changes to the map are
     # reflected in the set, and vice-versa.  If the map is modified
@@ -1238,7 +1193,6 @@ module Java::Util
     }
     
     typesig { [Java::Io::ObjectOutputStream] }
-    # 
     # Save the state of the <tt>HashMap</tt> instance to a stream (i.e.,
     # serialize it).
     # 
@@ -1272,7 +1226,6 @@ module Java::Util
     }
     
     typesig { [Java::Io::ObjectInputStream] }
-    # 
     # Reconstitute the <tt>HashMap</tt> instance from a stream (i.e.,
     # deserialize it).
     def read_object(s)

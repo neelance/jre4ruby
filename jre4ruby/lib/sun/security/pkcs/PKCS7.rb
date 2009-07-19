@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 1996-2006 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -48,7 +47,6 @@ module Sun::Security::Pkcs
     }
   end
   
-  # 
   # PKCS7 as defined in RSA Laboratories PKCS7 Technical Note. Profile
   # Supports only <tt>SignedData</tt> ContentInfo
   # type, where to the type of data signed is plain Data.
@@ -116,7 +114,6 @@ module Sun::Security::Pkcs
     undef_method :cert_issuer_names=
     
     typesig { [InputStream] }
-    # 
     # Unmarshals a PKCS7 block from its encoded form, parsing the
     # encoded bytes from the InputStream.
     # 
@@ -140,7 +137,6 @@ module Sun::Security::Pkcs
     end
     
     typesig { [DerInputStream] }
-    # 
     # Unmarshals a PKCS7 block from its encoded form, parsing the
     # encoded bytes from the DerInputStream.
     # 
@@ -160,7 +156,6 @@ module Sun::Security::Pkcs
     end
     
     typesig { [Array.typed(::Java::Byte)] }
-    # 
     # Unmarshals a PKCS7 block from its encoded form, parsing the
     # encoded bytes.
     # 
@@ -187,7 +182,6 @@ module Sun::Security::Pkcs
     end
     
     typesig { [DerInputStream] }
-    # 
     # Parses a PKCS#7 block.
     def parse(derin)
       begin
@@ -209,7 +203,6 @@ module Sun::Security::Pkcs
     end
     
     typesig { [DerInputStream, ::Java::Boolean] }
-    # 
     # Parses a PKCS#7 block.
     # 
     # @param derin the ASN.1 encoding of the PKCS#7 block.
@@ -236,7 +229,6 @@ module Sun::Security::Pkcs
     end
     
     typesig { [Array.typed(AlgorithmId), ContentInfo, Array.typed(X509Certificate), Array.typed(SignerInfo)] }
-    # 
     # Construct an initialized PKCS7 block.
     # 
     # @param digestAlgorithmIds the message digest algorithm identifiers.
@@ -285,13 +277,13 @@ module Sun::Security::Pkcs
             bais = nil
           end
         rescue CertificateException => ce
-          pe = ParsingException.new(ce_.get_message)
-          pe.init_cause(ce_)
+          pe = ParsingException.new(ce.get_message)
+          pe.init_cause(ce)
           raise pe
         rescue IOException => ioe
-          pe_ = ParsingException.new(ioe.get_message)
-          pe_.init_cause(ioe)
-          raise pe_
+          pe = ParsingException.new(ioe.get_message)
+          pe.init_cause(ioe)
+          raise pe
         ensure
           if (!(bais).nil?)
             bais.close
@@ -330,7 +322,6 @@ module Sun::Security::Pkcs
       rescue CertificateException => ce
         # do nothing
       end
-      # 
       # check if certificates (implicit tag) are provided
       # (certificates are OPTIONAL)
       if (((dis.peek_byte)).equal?(0xa0))
@@ -351,13 +342,13 @@ module Sun::Security::Pkcs
               bais = nil
             end
           rescue CertificateException => ce
-            pe_ = ParsingException.new(ce_.get_message)
-            pe_.init_cause(ce_)
-            raise pe_
+            pe = ParsingException.new(ce.get_message)
+            pe.init_cause(ce)
+            raise pe
           rescue IOException => ioe
-            pe__ = ParsingException.new(ioe.get_message)
-            pe__.init_cause(ioe)
-            raise pe__
+            pe = ParsingException.new(ioe.get_message)
+            pe.init_cause(ioe)
+            raise pe
           ensure
             if (!(bais).nil?)
               bais.close
@@ -371,45 +362,44 @@ module Sun::Security::Pkcs
         crl_vals = dis.get_set(1, true)
         len = crl_vals.attr_length
         @crls = Array.typed(X509CRL).new(len) { nil }
-        i__ = 0
-        while i__ < len
-          bais_ = nil
+        i_ = 0
+        while i_ < len
+          bais = nil
           begin
             if ((certfac).nil?)
-              @crls[i__] = X509CRLImpl.new(crl_vals[i__])
+              @crls[i_] = X509CRLImpl.new(crl_vals[i_])
             else
-              encoded_ = crl_vals[i__].to_byte_array
-              bais_ = ByteArrayInputStream.new(encoded_)
-              @crls[i__] = certfac.generate_crl(bais_)
-              bais_.close
-              bais_ = nil
+              encoded = crl_vals[i_].to_byte_array
+              bais = ByteArrayInputStream.new(encoded)
+              @crls[i_] = certfac.generate_crl(bais)
+              bais.close
+              bais = nil
             end
           rescue CRLException => e
-            pe___ = ParsingException.new(e_.get_message)
-            pe___.init_cause(e_)
-            raise pe___
+            pe = ParsingException.new(e.get_message)
+            pe.init_cause(e)
+            raise pe
           ensure
-            if (!(bais_).nil?)
-              bais_.close
+            if (!(bais).nil?)
+              bais.close
             end
           end
-          ((i__ += 1) - 1)
+          ((i_ += 1) - 1)
         end
       end
       # signerInfos
       signer_info_vals = dis.get_set(1)
       len = signer_info_vals.attr_length
       @signer_infos = Array.typed(SignerInfo).new(len) { nil }
-      i___ = 0
-      while i___ < len
-        in_ = signer_info_vals[i___].to_der_input_stream
-        @signer_infos[i___] = SignerInfo.new(in_)
-        ((i___ += 1) - 1)
+      i_ = 0
+      while i_ < len
+        in_ = signer_info_vals[i_].to_der_input_stream
+        @signer_infos[i_] = SignerInfo.new(in_)
+        ((i_ += 1) - 1)
       end
     end
     
     typesig { [DerValue] }
-    # 
     # Parses an old-style SignedData encoding (for backwards
     # compatibility with JDK1.1.x).
     def parse_old_signed_data(val)
@@ -456,13 +446,13 @@ module Sun::Security::Pkcs
             bais = nil
           end
         rescue CertificateException => ce
-          pe = ParsingException.new(ce_.get_message)
-          pe.init_cause(ce_)
+          pe = ParsingException.new(ce.get_message)
+          pe.init_cause(ce)
           raise pe
         rescue IOException => ioe
-          pe_ = ParsingException.new(ioe.get_message)
-          pe_.init_cause(ioe)
-          raise pe_
+          pe = ParsingException.new(ioe.get_message)
+          pe.init_cause(ioe)
+          raise pe
         ensure
           if (!(bais).nil?)
             bais.close
@@ -485,7 +475,6 @@ module Sun::Security::Pkcs
     end
     
     typesig { [OutputStream] }
-    # 
     # Encodes the signed data to an output stream.
     # 
     # @param out the output stream to write the encoded data to.
@@ -497,7 +486,6 @@ module Sun::Security::Pkcs
     end
     
     typesig { [DerOutputStream] }
-    # 
     # Encodes the signed data to a DerOutputStream.
     # 
     # @param out the DerOutputStream to write the encoded data to.
@@ -546,7 +534,6 @@ module Sun::Security::Pkcs
     end
     
     typesig { [SignerInfo, Array.typed(::Java::Byte)] }
-    # 
     # This verifies a given SignerInfo.
     # 
     # @param info the signer information.
@@ -559,7 +546,6 @@ module Sun::Security::Pkcs
     end
     
     typesig { [Array.typed(::Java::Byte)] }
-    # 
     # Returns all signerInfos which self-verify.
     # 
     # @param bytes the DER encoded content information.
@@ -585,7 +571,6 @@ module Sun::Security::Pkcs
     end
     
     typesig { [] }
-    # 
     # Returns all signerInfos which self-verify.
     # 
     # @exception NoSuchAlgorithmException on unrecognized algorithms.
@@ -595,7 +580,6 @@ module Sun::Security::Pkcs
     end
     
     typesig { [] }
-    # 
     # Returns the version number of this PKCS7 block.
     # @return the version or null if version is not specified
     # for the content type.
@@ -604,7 +588,6 @@ module Sun::Security::Pkcs
     end
     
     typesig { [] }
-    # 
     # Returns the message digest algorithms specified in this PKCS7 block.
     # @return the array of Digest Algorithms or null if none are specified
     # for the content type.
@@ -613,14 +596,12 @@ module Sun::Security::Pkcs
     end
     
     typesig { [] }
-    # 
     # Returns the content information specified in this PKCS7 block.
     def get_content_info
       return @content_info
     end
     
     typesig { [] }
-    # 
     # Returns the X.509 certificates listed in this PKCS7 block.
     # @return a clone of the array of X.509 certificates or null if
     # none are specified for the content type.
@@ -633,7 +614,6 @@ module Sun::Security::Pkcs
     end
     
     typesig { [] }
-    # 
     # Returns the X.509 crls listed in this PKCS7 block.
     # @return a clone of the array of X.509 crls or null if none
     # are specified for the content type.
@@ -646,7 +626,6 @@ module Sun::Security::Pkcs
     end
     
     typesig { [] }
-    # 
     # Returns the signer's information specified in this PKCS7 block.
     # @return the array of Signer Infos or null if none are specified
     # for the content type.
@@ -655,7 +634,6 @@ module Sun::Security::Pkcs
     end
     
     typesig { [BigInteger, X500Name] }
-    # 
     # Returns the X.509 certificate listed in this PKCS7 block
     # which has a matching serial number and Issuer name, or
     # null if one is not found.
@@ -681,7 +659,6 @@ module Sun::Security::Pkcs
     end
     
     typesig { [] }
-    # 
     # Populate array of Issuer DNs from certificates and convert
     # each Principal to type X500Name if necessary.
     def populate_cert_issuer_names
@@ -712,7 +689,6 @@ module Sun::Security::Pkcs
     end
     
     typesig { [] }
-    # 
     # Returns the PKCS7 block in a printable string form.
     def to_s
       out = ""
@@ -730,33 +706,32 @@ module Sun::Security::Pkcs
       end
       if (!(@certificates).nil?)
         out += "PKCS7 :: certificates: \n"
-        i_ = 0
-        while i_ < @certificates.attr_length
-          out += "\t" + (i_).to_s + ".   " + (@certificates[i_]).to_s + "\n"
-          ((i_ += 1) - 1)
+        i = 0
+        while i < @certificates.attr_length
+          out += "\t" + (i).to_s + ".   " + (@certificates[i]).to_s + "\n"
+          ((i += 1) - 1)
         end
       end
       if (!(@crls).nil?)
         out += "PKCS7 :: crls: \n"
-        i__ = 0
-        while i__ < @crls.attr_length
-          out += "\t" + (i__).to_s + ".   " + (@crls[i__]).to_s + "\n"
-          ((i__ += 1) - 1)
+        i = 0
+        while i < @crls.attr_length
+          out += "\t" + (i).to_s + ".   " + (@crls[i]).to_s + "\n"
+          ((i += 1) - 1)
         end
       end
       if (!(@signer_infos).nil?)
         out += "PKCS7 :: signer infos: \n"
-        i___ = 0
-        while i___ < @signer_infos.attr_length
-          out += (("\t" + (i___).to_s + ".  " + (@signer_infos[i___]).to_s + "\n")).to_s
-          ((i___ += 1) - 1)
+        i = 0
+        while i < @signer_infos.attr_length
+          out += (("\t" + (i).to_s + ".  " + (@signer_infos[i]).to_s + "\n")).to_s
+          ((i += 1) - 1)
         end
       end
       return out
     end
     
     typesig { [] }
-    # 
     # Returns true if this is a JDK1.1.x-style PKCS#7 block, and false
     # otherwise.
     def is_old_style

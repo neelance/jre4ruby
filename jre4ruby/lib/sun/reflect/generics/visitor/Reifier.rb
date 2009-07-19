@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 2003-2005 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -36,7 +35,6 @@ module Sun::Reflect::Generics::Visitor
     }
   end
   
-  # 
   # Visitor that converts AST to reified types.
   class Reifier 
     include_class_members ReifierImports
@@ -68,7 +66,6 @@ module Sun::Reflect::Generics::Visitor
     
     class_module.module_eval {
       typesig { [GenericsFactory] }
-      # 
       # Factory method. The resulting visitor will convert an AST
       # representing generic signatures into corresponding reflective
       # objects, using the provided factory, <tt>f</tt>.
@@ -96,7 +93,6 @@ module Sun::Reflect::Generics::Visitor
     end
     
     typesig { [] }
-    # 
     # Accessor for the result of the last visit by this visitor,
     # @return The type computed by this visitor based on its last
     # visit

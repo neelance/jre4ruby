@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 2003-2007 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -37,7 +36,6 @@ module Sun::Security::Pkcs11
     }
   end
   
-  # 
   # SecretKeyFactory implementation class. This class currently supports
   # DES, DESede, AES, ARCFOUR, and Blowfish.
   # 
@@ -115,7 +113,6 @@ module Sun::Security::Pkcs11
       end
       
       typesig { [Token, Key, String] }
-      # 
       # Convert an arbitrary key of algorithm into a P11Key of provider.
       # Used engineTranslateKey(), P11Cipher.init(), and P11Mac.init().
       def convert_key(token, key, algorithm)
@@ -147,17 +144,17 @@ module Sun::Security::Pkcs11
             return p11key
           end
         end
-        p11key_ = token.attr_secret_cache.get(key)
-        if (!(p11key_).nil?)
-          return p11key_
+        p11key = token.attr_secret_cache.get(key)
+        if (!(p11key).nil?)
+          return p11key
         end
         if ((("RAW" == key.get_format)).equal?(false))
           raise InvalidKeyException.new("Encoded format must be RAW")
         end
         encoded = key.get_encoded
-        p11key_ = create_key(token, encoded, algorithm, algorithm_type)
-        token.attr_secret_cache.put(key, p11key_)
-        return p11key_
+        p11key = create_key(token, encoded, algorithm, algorithm_type)
+        token.attr_secret_cache.put(key, p11key)
+        return p11key
       end
       
       typesig { [Array.typed(::Java::Byte), ::Java::Int] }
@@ -263,8 +260,8 @@ module Sun::Security::Pkcs11
         else
           if (@algorithm.equals_ignore_case("DESede"))
             if (key_spec.is_a?(DESedeKeySpec))
-              key_bytes_ = (key_spec).get_key
-              key_spec = SecretKeySpec.new(key_bytes_, "DESede")
+              key_bytes = (key_spec).get_key
+              key_spec = SecretKeySpec.new(key_bytes, "DESede")
               return engine_generate_secret(key_spec)
             end
           end
@@ -312,7 +309,7 @@ module Sun::Security::Pkcs11
                 return DESedeKeySpec.new(get_key_bytes(key))
               end
             rescue InvalidKeyException => e
-              raise InvalidKeySpecException.new(e_)
+              raise InvalidKeySpecException.new(e)
             end
           end
         end

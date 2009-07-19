@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 1996-2005 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -33,7 +32,6 @@ module Sun::Security::Pkcs
     }
   end
   
-  # 
   # A ContentInfo type, as defined in PKCS#7.
   # 
   # @author Benjamin Renaud
@@ -280,7 +278,6 @@ module Sun::Security::Pkcs
         self.attr_encrypted_data_oid = ObjectIdentifier.new_internal(self.attr_crdata)
         self.attr_old_signed_data_oid = ObjectIdentifier.new_internal(OLD_SDATA)
         self.attr_old_data_oid = ObjectIdentifier.new_internal(OLD_DATA)
-        # 
         # The ASN.1 systax for the Netscape Certificate Sequence
         # data type is defined
         # <a href=http://wp.netscape.com/eng/security/comm4-cert-download.html>
@@ -312,7 +309,6 @@ module Sun::Security::Pkcs
     end
     
     typesig { [Array.typed(::Java::Byte)] }
-    # 
     # Make a contentInfo of type data.
     def initialize(bytes)
       @content_type = nil
@@ -323,14 +319,12 @@ module Sun::Security::Pkcs
     end
     
     typesig { [DerInputStream] }
-    # 
     # Parses a PKCS#7 content info.
     def initialize(derin)
       initialize__content_info(derin, false)
     end
     
     typesig { [DerInputStream, ::Java::Boolean] }
-    # 
     # Parses a PKCS#7 content info.
     # 
     # <p>This constructor is used only for backwards compatibility with
@@ -412,7 +406,6 @@ module Sun::Security::Pkcs
     end
     
     typesig { [] }
-    # 
     # Returns a byte array representation of the data held in
     # the content field.
     def get_content_bytes

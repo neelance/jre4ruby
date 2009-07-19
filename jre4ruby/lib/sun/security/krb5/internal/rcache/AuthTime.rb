@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
 # This code is free software; you can redistribute it and/or modify it
@@ -35,7 +34,6 @@ module Sun::Security::Krb5::Internal::Rcache
     }
   end
   
-  # 
   # The class represents the timestamp in authenticator.
   # 
   # @author Yanni Zhang
@@ -55,7 +53,6 @@ module Sun::Security::Krb5::Internal::Rcache
     undef_method :cusec=
     
     typesig { [::Java::Long, ::Java::Int] }
-    # 
     # Constructs a new <code>AuthTime</code>.
     # @param time time from the <code>Authenticator</code>.
     # @param cusec microsecond field from the <code>Authenticator</code>.
@@ -67,7 +64,6 @@ module Sun::Security::Krb5::Internal::Rcache
     end
     
     typesig { [Object] }
-    # 
     # Compares if an object equals to an <code>AuthTime</code> object.
     # @param o an object.
     # @return true if two objects are equivalent, otherwise, return false.
@@ -81,7 +77,6 @@ module Sun::Security::Krb5::Internal::Rcache
     end
     
     typesig { [] }
-    # 
     # Returns a hash code for this <code>AuthTime</code> object.
     # 
     # @return  a <code>hash code</code> value for this object.

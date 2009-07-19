@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 1996-2003 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -31,7 +30,6 @@ module Java::Security::Acl
     }
   end
   
-  # 
   # This is an exception that is thrown whenever the modification of an object
   # (such as an Access Control List) is only allowed to be done by an owner of
   # the object, but the Principal attempting the modification is not an owner.
@@ -46,7 +44,6 @@ module Java::Security::Acl
     }
     
     typesig { [] }
-    # 
     # Constructs a NotOwnerException.
     def initialize
       super()

@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
 # This code is free software; you can redistribute it and/or modify it
@@ -42,7 +41,6 @@ module Java::Util::Concurrent
     }
   end
   
-  # 
   # A synchronization aid that allows one or more threads to wait until
   # a set of operations being performed in other threads completes.
   # 
@@ -165,7 +163,6 @@ module Java::Util::Concurrent
     include_class_members CountDownLatchImports
     
     class_module.module_eval {
-      # 
       # Synchronization control For CountDownLatch.
       # Uses AQS state to represent count.
       const_set_lazy(:Sync) { Class.new(AbstractQueuedSynchronizer) do
@@ -219,7 +216,6 @@ module Java::Util::Concurrent
     undef_method :sync=
     
     typesig { [::Java::Int] }
-    # 
     # Constructs a {@code CountDownLatch} initialized with the given count.
     # 
     # @param count the number of times {@link #countDown} must be invoked
@@ -234,7 +230,6 @@ module Java::Util::Concurrent
     end
     
     typesig { [] }
-    # 
     # Causes the current thread to wait until the latch has counted down to
     # zero, unless the thread is {@linkplain Thread#interrupt interrupted}.
     # 
@@ -265,7 +260,6 @@ module Java::Util::Concurrent
     end
     
     typesig { [::Java::Long, TimeUnit] }
-    # 
     # Causes the current thread to wait until the latch has counted down to
     # zero, unless the thread is {@linkplain Thread#interrupt interrupted},
     # or the specified waiting time elapses.
@@ -310,7 +304,6 @@ module Java::Util::Concurrent
     end
     
     typesig { [] }
-    # 
     # Decrements the count of the latch, releasing all waiting threads if
     # the count reaches zero.
     # 
@@ -324,7 +317,6 @@ module Java::Util::Concurrent
     end
     
     typesig { [] }
-    # 
     # Returns the current count.
     # 
     # <p>This method is typically used for debugging and testing purposes.
@@ -335,7 +327,6 @@ module Java::Util::Concurrent
     end
     
     typesig { [] }
-    # 
     # Returns a string identifying this latch, as well as its state.
     # The state, in brackets, includes the String {@code "Count ="}
     # followed by the current count.

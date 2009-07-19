@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 2000-2007 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -41,7 +40,6 @@ module Sun::Security::Jgss::Krb5
     }
   end
   
-  # 
   # This class represents a token emitted by the GSSContext.wrap()
   # call. It is a MessageToken except that it also contains plaintext
   # or encrypted data at the end. A wrapToken has certain other rules
@@ -57,12 +55,10 @@ module Sun::Security::Jgss::Krb5
     include_class_members WrapTokenImports
     
     class_module.module_eval {
-      # 
       # The size of the random confounder used in a WrapToken.
       const_set_lazy(:CONFOUNDER_SIZE) { 8 }
       const_attr_reader  :CONFOUNDER_SIZE
       
-      # 
       # The padding used with a WrapToken. All data is padded to the
       # next multiple of 8 bytes, even if its length is already
       # multiple of 8.
@@ -74,7 +70,6 @@ module Sun::Security::Jgss::Krb5
       const_attr_reader  :Pads
     }
     
-    # 
     # A token may come in either in an InputStream or as a
     # byte[]. Store a reference to it in either case and process
     # it's data only later when getData() is called and
@@ -110,7 +105,6 @@ module Sun::Security::Jgss::Krb5
     alias_method :attr_token_len=, :token_len=
     undef_method :token_len=
     
-    # 
     # Application data may come from an InputStream or from a
     # byte[]. However, it will always be stored and processed as a
     # byte[] since
@@ -161,7 +155,6 @@ module Sun::Security::Jgss::Krb5
     undef_method :privacy=
     
     typesig { [Krb5Context, Array.typed(::Java::Byte), ::Java::Int, ::Java::Int, MessageProp] }
-    # 
     # Constructs a WrapToken from token bytes obtained from the
     # peer.
     # @param context the mechanism context associated with this
@@ -209,7 +202,6 @@ module Sun::Security::Jgss::Krb5
     end
     
     typesig { [Krb5Context, InputStream, MessageProp] }
-    # 
     # Constructs a WrapToken from token bytes read on the fly from
     # an InputStream.
     # @param context the mechanism context associated with this
@@ -249,7 +241,6 @@ module Sun::Security::Jgss::Krb5
       # Will need the token bytes again when extracting data
       @is = is
       @privacy = prop.get_privacy
-      # 
       # debug("WrapToken Cons: gssHeader.getMechTokenLength=" +
       # getGSSHeader().getMechTokenLength());
       # debug("\n                token size="
@@ -260,7 +251,6 @@ module Sun::Security::Jgss::Krb5
     end
     
     typesig { [] }
-    # 
     # Obtains the application data that was transmitted in this
     # WrapToken.
     # @return a byte array containing the application data
@@ -276,7 +266,6 @@ module Sun::Security::Jgss::Krb5
     end
     
     typesig { [Array.typed(::Java::Byte), ::Java::Int] }
-    # 
     # Obtains the application data that was transmitted in this
     # WrapToken, writing it into an application provided output
     # array.
@@ -296,7 +285,6 @@ module Sun::Security::Jgss::Krb5
     end
     
     typesig { [Array.typed(::Java::Byte), ::Java::Int] }
-    # 
     # Helper routine to obtain the application data transmitted in
     # this WrapToken. It is called if the WrapToken was constructed
     # with a byte array as input.
@@ -317,7 +305,6 @@ module Sun::Security::Jgss::Krb5
       # Do decryption if this token was privacy protected.
       if (@privacy)
         self.attr_cipher_helper.decrypt_data(self, @token_bytes, data_pos, @data_size, data_buf, data_buf_offset)
-        # 
         # debug("\t\tDecrypted data is [" +
         # getHexBytes(confounder) + " " +
         # getHexBytes(dataBuf, dataBufOffset,
@@ -343,7 +330,6 @@ module Sun::Security::Jgss::Krb5
         # debugbuf, 0, debugbuf.length);
         # debug("\t\tData is: " + getHexBytes(debugbuf, debugbuf.length));
       end
-      # 
       # Make sure sign and sequence number are not corrupt
       if (!verify_sign_and_seq_number(@confounder, data_buf, data_buf_offset, @data_size - CONFOUNDER_SIZE - @padding.attr_length, @padding))
         raise GSSException.new(GSSException::BAD_MIC, -1, "Corrupt checksum or sequence number in Wrap token")
@@ -351,7 +337,6 @@ module Sun::Security::Jgss::Krb5
     end
     
     typesig { [Array.typed(::Java::Byte), ::Java::Int] }
-    # 
     # Helper routine to obtain the application data transmitted in
     # this WrapToken. It is called if the WrapToken was constructed
     # with an Inputstream.
@@ -400,7 +385,6 @@ module Sun::Security::Jgss::Krb5
       rescue IOException => e
         raise GSSException.new(GSSException::DEFECTIVE_TOKEN, -1, (get_token_name(get_token_id)).to_s + ": " + (e.get_message).to_s)
       end
-      # 
       # Make sure sign and sequence number are not corrupt
       if (!verify_sign_and_seq_number(@confounder, data_buf, data_buf_offset, @data_size - CONFOUNDER_SIZE - @padding.attr_length, @padding))
         raise GSSException.new(GSSException::BAD_MIC, -1, "Corrupt checksum or sequence number in Wrap token")
@@ -408,7 +392,6 @@ module Sun::Security::Jgss::Krb5
     end
     
     typesig { [::Java::Int] }
-    # 
     # Helper routine to pick the right padding for a certain length
     # of application data. Every application message has some
     # padding between 1 and 8 bytes.
@@ -460,14 +443,12 @@ module Sun::Security::Jgss::Krb5
       @data_bytes = data_bytes
       @data_offset = data_offset
       @data_len = data_len
-      # 
       # debug("\nWrapToken cons: data to wrap is [" +
       # getHexBytes(confounder) + " " +
       # getHexBytes(dataBytes, dataOffset, dataLen) + " " +
       # // padding is never null for Wrap
       # getHexBytes(padding) + "]\n");
       gen_sign_and_seq_number(prop, @confounder, data_bytes, data_offset, data_len, @padding)
-      # 
       # If the application decides to ask for privacy when the context
       # did not negotiate for it, do not provide it. The peer might not
       # have support for it. The app will realize this with a call to

@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 2000-2007 Sun Microsystems, Inc.  All Rights Reserved.
 # 
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
@@ -35,7 +34,6 @@ module Java::Nio::Channels
     }
   end
   
-  # 
   # Checked exception received by a thread when another thread interrupts it
   # while it is blocked in an I/O operation upon a channel.  Before this
   # exception is thrown the channel will have been closed and the interrupt
@@ -51,7 +49,6 @@ module Java::Nio::Channels
     }
     
     typesig { [] }
-    # 
     # Constructs an instance of this class.
     def initialize
       super()

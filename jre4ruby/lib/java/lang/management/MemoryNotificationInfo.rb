@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 2003-2006 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -33,7 +32,6 @@ module Java::Lang::Management
     }
   end
   
-  # 
   # The information about a memory notification.
   # 
   # <p>
@@ -130,7 +128,6 @@ module Java::Lang::Management
     undef_method :count=
     
     class_module.module_eval {
-      # 
       # Notification type denoting that
       # the memory usage of a memory pool has
       # reached or exceeded its
@@ -144,7 +141,6 @@ module Java::Lang::Management
       const_set_lazy(:MEMORY_THRESHOLD_EXCEEDED) { "java.management.memory.threshold.exceeded" }
       const_attr_reader  :MEMORY_THRESHOLD_EXCEEDED
       
-      # 
       # Notification type denoting that
       # the memory usage of a memory pool is greater than or equal to its
       # <a href="MemoryPoolMXBean.html#CollectionThreshold">
@@ -159,7 +155,6 @@ module Java::Lang::Management
     }
     
     typesig { [String, MemoryUsage, ::Java::Long] }
-    # 
     # Constructs a <tt>MemoryNotificationInfo</tt> object.
     # 
     # @param poolName The name of the memory pool which triggers this notification.
@@ -192,7 +187,6 @@ module Java::Lang::Management
     end
     
     typesig { [] }
-    # 
     # Returns the name of the memory pool that triggers this notification.
     # The memory pool usage has crossed a threshold.
     # 
@@ -202,7 +196,6 @@ module Java::Lang::Management
     end
     
     typesig { [] }
-    # 
     # Returns the memory usage of the memory pool
     # when this notification was constructed.
     # 
@@ -213,7 +206,6 @@ module Java::Lang::Management
     end
     
     typesig { [] }
-    # 
     # Returns the number of times that the memory usage has crossed
     # a threshold when the notification was constructed.
     # For usage threshold notifications, this count will be the
@@ -231,7 +223,6 @@ module Java::Lang::Management
     
     class_module.module_eval {
       typesig { [CompositeData] }
-      # 
       # Returns a <tt>MemoryNotificationInfo</tt> object represented by the
       # given <tt>CompositeData</tt>.
       # The given <tt>CompositeData</tt> must contain

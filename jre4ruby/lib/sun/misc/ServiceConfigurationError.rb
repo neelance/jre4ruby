@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 1999-2000 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -31,7 +30,6 @@ module Sun::Misc
     }
   end
   
-  # 
   # Error thrown when something goes wrong while looking up service providers.
   # In particular, this error will be thrown in the following situations:
   # 
@@ -48,14 +46,12 @@ module Sun::Misc
     include_class_members ServiceConfigurationErrorImports
     
     typesig { [String] }
-    # 
     # Constructs a new instance with the specified detail string.
     def initialize(msg)
       super(msg)
     end
     
     typesig { [Exception] }
-    # 
     # Constructs a new instance that wraps the specified throwable.
     def initialize(x)
       super(x)

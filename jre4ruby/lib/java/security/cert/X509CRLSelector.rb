@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 2000-2006 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -39,7 +38,6 @@ module Java::Security::Cert
     }
   end
   
-  # 
   # A <code>CRLSelector</code> that selects <code>X509CRLs</code> that
   # match all specified criteria. This class is particularly useful when
   # selecting CRLs from a <code>CertStore</code> to check revocation status
@@ -118,7 +116,6 @@ module Java::Security::Cert
     undef_method :cert_checking=
     
     typesig { [] }
-    # 
     # Creates an <code>X509CRLSelector</code>. Initially, no criteria are set
     # so any <code>X509CRL</code> will match.
     def initialize
@@ -131,7 +128,6 @@ module Java::Security::Cert
     end
     
     typesig { [Collection] }
-    # 
     # Sets the issuerNames criterion. The issuer distinguished name in the
     # <code>X509CRL</code> must match at least one of the specified
     # distinguished names. If <code>null</code>, any issuer distinguished name
@@ -172,7 +168,6 @@ module Java::Security::Cert
     end
     
     typesig { [Collection] }
-    # 
     # <strong>Note:</strong> use {@linkplain #setIssuers(Collection)} instead
     # or only specify the byte array form of distinguished names when using
     # this method. See {@link #addIssuerName(String)} for more information.
@@ -246,7 +241,6 @@ module Java::Security::Cert
     end
     
     typesig { [X500Principal] }
-    # 
     # Adds a name to the issuerNames criterion. The issuer distinguished
     # name in the <code>X509CRL</code> must match at least one of the specified
     # distinguished names.
@@ -263,7 +257,6 @@ module Java::Security::Cert
     end
     
     typesig { [String] }
-    # 
     # <strong>Denigrated</strong>, use
     # {@linkplain #addIssuer(X500Principal)} or
     # {@linkplain #addIssuerName(byte[])} instead. This method should not be
@@ -287,7 +280,6 @@ module Java::Security::Cert
     end
     
     typesig { [Array.typed(::Java::Byte)] }
-    # 
     # Adds a name to the issuerNames criterion. The issuer distinguished
     # name in the <code>X509CRL</code> must match at least one of the specified
     # distinguished names.
@@ -316,7 +308,6 @@ module Java::Security::Cert
     end
     
     typesig { [Object, X500Principal] }
-    # 
     # A private method that adds a name (String or byte array) to the
     # issuerNames criterion. The issuer distinguished
     # name in the <code>X509CRL</code> must match at least one of the specified
@@ -338,7 +329,6 @@ module Java::Security::Cert
     
     class_module.module_eval {
       typesig { [Collection] }
-      # 
       # Clone and check an argument of the form passed to
       # setIssuerNames. Throw an IOException if the argument is malformed.
       # 
@@ -366,7 +356,6 @@ module Java::Security::Cert
       end
       
       typesig { [Collection] }
-      # 
       # Clone an argument of the form passed to setIssuerNames.
       # Throw a RuntimeException if the argument is malformed.
       # <p>
@@ -389,7 +378,6 @@ module Java::Security::Cert
       end
       
       typesig { [Collection] }
-      # 
       # Parse an argument of the form passed to setIssuerNames,
       # returning a Collection of issuerX500Principals.
       # Throw an IOException if the argument is malformed.
@@ -420,7 +408,6 @@ module Java::Security::Cert
     }
     
     typesig { [BigInteger] }
-    # 
     # Sets the minCRLNumber criterion. The <code>X509CRL</code> must have a
     # CRL number extension whose value is greater than or equal to the
     # specified value. If <code>null</code>, no minCRLNumber check will be
@@ -432,7 +419,6 @@ module Java::Security::Cert
     end
     
     typesig { [BigInteger] }
-    # 
     # Sets the maxCRLNumber criterion. The <code>X509CRL</code> must have a
     # CRL number extension whose value is less than or equal to the
     # specified value. If <code>null</code>, no maxCRLNumber check will be
@@ -444,7 +430,6 @@ module Java::Security::Cert
     end
     
     typesig { [Date] }
-    # 
     # Sets the dateAndTime criterion. The specified date must be
     # equal to or later than the value of the thisUpdate component
     # of the <code>X509CRL</code> and earlier than the value of the
@@ -467,7 +452,6 @@ module Java::Security::Cert
     end
     
     typesig { [X509Certificate] }
-    # 
     # Sets the certificate being checked. This is not a criterion. Rather,
     # it is optional information that may help a <code>CertStore</code>
     # find CRLs that would be relevant when checking revocation for the
@@ -482,7 +466,6 @@ module Java::Security::Cert
     end
     
     typesig { [] }
-    # 
     # Returns the issuerNames criterion. The issuer distinguished
     # name in the <code>X509CRL</code> must match at least one of the specified
     # distinguished names. If the value returned is <code>null</code>, any
@@ -503,7 +486,6 @@ module Java::Security::Cert
     end
     
     typesig { [] }
-    # 
     # Returns a copy of the issuerNames criterion. The issuer distinguished
     # name in the <code>X509CRL</code> must match at least one of the specified
     # distinguished names. If the value returned is <code>null</code>, any
@@ -533,7 +515,6 @@ module Java::Security::Cert
     end
     
     typesig { [] }
-    # 
     # Returns the minCRLNumber criterion. The <code>X509CRL</code> must have a
     # CRL number extension whose value is greater than or equal to the
     # specified value. If <code>null</code>, no minCRLNumber check will be done.
@@ -544,7 +525,6 @@ module Java::Security::Cert
     end
     
     typesig { [] }
-    # 
     # Returns the maxCRLNumber criterion. The <code>X509CRL</code> must have a
     # CRL number extension whose value is less than or equal to the
     # specified value. If <code>null</code>, no maxCRLNumber check will be
@@ -556,7 +536,6 @@ module Java::Security::Cert
     end
     
     typesig { [] }
-    # 
     # Returns the dateAndTime criterion. The specified date must be
     # equal to or later than the value of the thisUpdate component
     # of the <code>X509CRL</code> and earlier than the value of the
@@ -577,7 +556,6 @@ module Java::Security::Cert
     end
     
     typesig { [] }
-    # 
     # Returns the certificate being checked. This is not a criterion. Rather,
     # it is optional information that may help a <code>CertStore</code>
     # find CRLs that would be relevant when checking revocation for the
@@ -591,7 +569,6 @@ module Java::Security::Cert
     end
     
     typesig { [] }
-    # 
     # Returns a printable representation of the <code>X509CRLSelector</code>.
     # 
     # @return a <code>String</code> describing the contents of the
@@ -623,7 +600,6 @@ module Java::Security::Cert
     end
     
     typesig { [CRL] }
-    # 
     # Decides whether a <code>CRL</code> should be selected.
     # 
     # @param crl the <code>CRL</code> to be checked
@@ -711,7 +687,6 @@ module Java::Security::Cert
     end
     
     typesig { [] }
-    # 
     # Returns a copy of this object.
     # 
     # @return the copy

@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 1995-2006 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -35,7 +34,6 @@ module Java::Net
     }
   end
   
-  # 
   # The abstract class <code>SocketImpl</code> is a common superclass
   # of all classes that actually implement sockets. It is used to
   # create both client and server sockets.
@@ -49,7 +47,6 @@ module Java::Net
     include_class_members SocketImplImports
     include SocketOptions
     
-    # 
     # The actual Socket object.
     attr_accessor :socket
     alias_method :attr_socket, :socket
@@ -63,7 +60,6 @@ module Java::Net
     alias_method :attr_server_socket=, :server_socket=
     undef_method :server_socket=
     
-    # 
     # The file descriptor object for this socket.
     attr_accessor :fd
     alias_method :attr_fd, :fd
@@ -71,7 +67,6 @@ module Java::Net
     alias_method :attr_fd=, :fd=
     undef_method :fd=
     
-    # 
     # The IP address of the remote end of this socket.
     attr_accessor :address
     alias_method :attr_address, :address
@@ -79,7 +74,6 @@ module Java::Net
     alias_method :attr_address=, :address=
     undef_method :address=
     
-    # 
     # The port number on the remote host to which this socket is connected.
     attr_accessor :port
     alias_method :attr_port, :port
@@ -87,7 +81,6 @@ module Java::Net
     alias_method :attr_port=, :port=
     undef_method :port=
     
-    # 
     # The local port number to which this socket is connected.
     attr_accessor :localport
     alias_method :attr_localport, :localport
@@ -96,7 +89,6 @@ module Java::Net
     undef_method :localport=
     
     typesig { [::Java::Boolean] }
-    # 
     # Creates either a stream or a datagram socket.
     # 
     # @param      stream   if <code>true</code>, create a stream socket;
@@ -108,7 +100,6 @@ module Java::Net
     end
     
     typesig { [String, ::Java::Int] }
-    # 
     # Connects this socket to the specified port on the named host.
     # 
     # @param      host   the name of the remote host.
@@ -120,7 +111,6 @@ module Java::Net
     end
     
     typesig { [InetAddress, ::Java::Int] }
-    # 
     # Connects this socket to the specified port number on the specified host.
     # 
     # @param      address   the IP address of the remote host.
@@ -132,7 +122,6 @@ module Java::Net
     end
     
     typesig { [SocketAddress, ::Java::Int] }
-    # 
     # Connects this socket to the specified port number on the specified host.
     # A timeout of zero is interpreted as an infinite timeout. The connection
     # will then block until established or an error occurs.
@@ -147,7 +136,6 @@ module Java::Net
     end
     
     typesig { [InetAddress, ::Java::Int] }
-    # 
     # Binds this socket to the specified local IP address and port number.
     # 
     # @param      host   an IP address that belongs to a local interface.
@@ -158,7 +146,6 @@ module Java::Net
     end
     
     typesig { [::Java::Int] }
-    # 
     # Sets the maximum queue length for incoming connection indications
     # (a request to connect) to the <code>count</code> argument. If a
     # connection indication arrives when the queue is full, the
@@ -171,7 +158,6 @@ module Java::Net
     end
     
     typesig { [SocketImpl] }
-    # 
     # Accepts a connection.
     # 
     # @param      s   the accepted connection.
@@ -182,7 +168,6 @@ module Java::Net
     end
     
     typesig { [] }
-    # 
     # Returns an input stream for this socket.
     # 
     # @return     a stream for reading from this socket.
@@ -193,7 +178,6 @@ module Java::Net
     end
     
     typesig { [] }
-    # 
     # Returns an output stream for this socket.
     # 
     # @return     an output stream for writing to this socket.
@@ -204,7 +188,6 @@ module Java::Net
     end
     
     typesig { [] }
-    # 
     # Returns the number of bytes that can be read from this socket
     # without blocking.
     # 
@@ -217,7 +200,6 @@ module Java::Net
     end
     
     typesig { [] }
-    # 
     # Closes this socket.
     # 
     # @exception  IOException  if an I/O error occurs when closing this socket.
@@ -226,7 +208,6 @@ module Java::Net
     end
     
     typesig { [] }
-    # 
     # Places the input stream for this socket at "end of stream".
     # Any data sent to this socket is acknowledged and then
     # silently discarded.
@@ -245,7 +226,6 @@ module Java::Net
     end
     
     typesig { [] }
-    # 
     # Disables the output stream for this socket.
     # For a TCP socket, any previously written data will be sent
     # followed by TCP's normal connection termination sequence.
@@ -265,7 +245,6 @@ module Java::Net
     end
     
     typesig { [] }
-    # 
     # Returns the value of this socket's <code>fd</code> field.
     # 
     # @return  the value of this socket's <code>fd</code> field.
@@ -275,7 +254,6 @@ module Java::Net
     end
     
     typesig { [] }
-    # 
     # Returns the value of this socket's <code>address</code> field.
     # 
     # @return  the value of this socket's <code>address</code> field.
@@ -285,7 +263,6 @@ module Java::Net
     end
     
     typesig { [] }
-    # 
     # Returns the value of this socket's <code>port</code> field.
     # 
     # @return  the value of this socket's <code>port</code> field.
@@ -295,7 +272,6 @@ module Java::Net
     end
     
     typesig { [] }
-    # 
     # Returns whether or not this SocketImpl supports sending
     # urgent data. By default, false is returned
     # unless the method is overridden in a sub-class
@@ -308,7 +284,6 @@ module Java::Net
     end
     
     typesig { [::Java::Int] }
-    # 
     # Send one byte of urgent data on the socket.
     # The byte to be sent is the low eight bits of the parameter
     # @param data The byte of data to send
@@ -320,7 +295,6 @@ module Java::Net
     end
     
     typesig { [] }
-    # 
     # Returns the value of this socket's <code>localport</code> field.
     # 
     # @return  the value of this socket's <code>localport</code> field.
@@ -350,7 +324,6 @@ module Java::Net
     end
     
     typesig { [] }
-    # 
     # Returns the address and port of this socket as a <code>String</code>.
     # 
     # @return  a string representation of this socket.
@@ -366,7 +339,6 @@ module Java::Net
     end
     
     typesig { [::Java::Int, ::Java::Int, ::Java::Int] }
-    # 
     # Sets performance preferences for this socket.
     # 
     # <p> Sockets use the TCP/IP protocol by default.  Some implementations

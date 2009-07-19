@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 1997-2006 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -37,7 +36,6 @@ module Sun::Security::X509
     }
   end
   
-  # 
   # This class defines the X509Key attribute for the Certificate.
   # 
   # @author Amit Kapoor
@@ -48,13 +46,11 @@ module Sun::Security::X509
     include CertAttrSet
     
     class_module.module_eval {
-      # 
       # Identifier for this attribute, to be used with the
       # get, set, delete methods of Certificate, x509 type.
       const_set_lazy(:IDENT) { "x509.info.key" }
       const_attr_reader  :IDENT
       
-      # 
       # Sub attributes name for this CertAttrSet.
       const_set_lazy(:NAME) { "key" }
       const_attr_reader  :NAME
@@ -71,7 +67,6 @@ module Sun::Security::X509
     undef_method :key=
     
     typesig { [PublicKey] }
-    # 
     # Default constructor for the certificate attribute.
     # 
     # @param key the X509Key
@@ -81,7 +76,6 @@ module Sun::Security::X509
     end
     
     typesig { [DerInputStream] }
-    # 
     # Create the object, decoding the values from the passed DER stream.
     # 
     # @param in the DerInputStream to read the X509Key from.
@@ -93,7 +87,6 @@ module Sun::Security::X509
     end
     
     typesig { [InputStream] }
-    # 
     # Create the object, decoding the values from the passed stream.
     # 
     # @param in the InputStream to read the X509Key from.
@@ -105,7 +98,6 @@ module Sun::Security::X509
     end
     
     typesig { [] }
-    # 
     # Return the key as printable string.
     def to_s
       if ((@key).nil?)
@@ -115,7 +107,6 @@ module Sun::Security::X509
     end
     
     typesig { [OutputStream] }
-    # 
     # Encode the key in DER form to the stream.
     # 
     # @param out the OutputStream to marshal the contents to.
@@ -127,7 +118,6 @@ module Sun::Security::X509
     end
     
     typesig { [String, Object] }
-    # 
     # Set the attribute value.
     def set(name, obj)
       if (name.equals_ignore_case(KEY))
@@ -138,7 +128,6 @@ module Sun::Security::X509
     end
     
     typesig { [String] }
-    # 
     # Get the attribute value.
     def get(name)
       if (name.equals_ignore_case(KEY))
@@ -149,7 +138,6 @@ module Sun::Security::X509
     end
     
     typesig { [String] }
-    # 
     # Delete the attribute value.
     def delete(name)
       if (name.equals_ignore_case(KEY))
@@ -160,7 +148,6 @@ module Sun::Security::X509
     end
     
     typesig { [] }
-    # 
     # Return an enumeration of names of attributes existing within this
     # attribute.
     def get_elements
@@ -170,7 +157,6 @@ module Sun::Security::X509
     end
     
     typesig { [] }
-    # 
     # Return the name of this attribute.
     def get_name
       return (NAME)

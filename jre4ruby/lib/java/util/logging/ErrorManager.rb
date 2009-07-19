@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 2001-2004 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -31,7 +30,6 @@ module Java::Util::Logging
     }
   end
   
-  # 
   # ErrorManager objects can be attached to Handlers to process
   # any error that occur on a Handler during Logging.
   # <p>
@@ -49,7 +47,6 @@ module Java::Util::Logging
     undef_method :reported=
     
     class_module.module_eval {
-      # 
       # We declare standard error codes for important categories of errors.
       # 
       # 
@@ -58,34 +55,28 @@ module Java::Util::Logging
       const_set_lazy(:GENERIC_FAILURE) { 0 }
       const_attr_reader  :GENERIC_FAILURE
       
-      # 
       # WRITE_FAILURE is used when a write to an output stream fails.
       const_set_lazy(:WRITE_FAILURE) { 1 }
       const_attr_reader  :WRITE_FAILURE
       
-      # 
       # FLUSH_FAILURE is used when a flush to an output stream fails.
       const_set_lazy(:FLUSH_FAILURE) { 2 }
       const_attr_reader  :FLUSH_FAILURE
       
-      # 
       # CLOSE_FAILURE is used when a close of an output stream fails.
       const_set_lazy(:CLOSE_FAILURE) { 3 }
       const_attr_reader  :CLOSE_FAILURE
       
-      # 
       # OPEN_FAILURE is used when an open of an output stream fails.
       const_set_lazy(:OPEN_FAILURE) { 4 }
       const_attr_reader  :OPEN_FAILURE
       
-      # 
       # FORMAT_FAILURE is used when formatting fails for any reason.
       const_set_lazy(:FORMAT_FAILURE) { 5 }
       const_attr_reader  :FORMAT_FAILURE
     }
     
     typesig { [String, Exception, ::Java::Int] }
-    # 
     # The error method is called when a Handler failure occurs.
     # <p>
     # This method may be overriden in subclasses.  The default

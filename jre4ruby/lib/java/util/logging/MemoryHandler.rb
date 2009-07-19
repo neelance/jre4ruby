@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 2000-2004 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -31,7 +30,6 @@ module Java::Util::Logging
     }
   end
   
-  # 
   # <tt>Handler</tt> that buffers requests in a circular buffer in memory.
   # <p>
   # Normally this <tt>Handler</tt> simply stores incoming <tt>LogRecords</tt>
@@ -138,7 +136,6 @@ module Java::Util::Logging
     end
     
     typesig { [] }
-    # 
     # Create a <tt>MemoryHandler</tt> and configure it based on
     # <tt>LogManager</tt> configuration properties.
     def initialize
@@ -173,7 +170,6 @@ module Java::Util::Logging
     end
     
     typesig { [Handler, ::Java::Int, Level] }
-    # 
     # Create a <tt>MemoryHandler</tt>.
     # <p>
     # The <tt>MemoryHandler</tt> is configured based on <tt>LogManager</tt>
@@ -209,7 +205,6 @@ module Java::Util::Logging
     end
     
     typesig { [LogRecord] }
-    # 
     # Store a <tt>LogRecord</tt> in an internal buffer.
     # <p>
     # If there is a <tt>Filter</tt>, its <tt>isLoggable</tt>
@@ -243,7 +238,6 @@ module Java::Util::Logging
     end
     
     typesig { [] }
-    # 
     # Push any buffered output to the target <tt>Handler</tt>.
     # <p>
     # The buffer is then cleared.
@@ -263,7 +257,6 @@ module Java::Util::Logging
     end
     
     typesig { [] }
-    # 
     # Causes a flush on the target <tt>Handler</tt>.
     # <p>
     # Note that the current contents of the <tt>MemoryHandler</tt>
@@ -273,7 +266,6 @@ module Java::Util::Logging
     end
     
     typesig { [] }
-    # 
     # Close the <tt>Handler</tt> and free all associated resources.
     # This will also close the target <tt>Handler</tt>.
     # 
@@ -285,7 +277,6 @@ module Java::Util::Logging
     end
     
     typesig { [Level] }
-    # 
     # Set the <tt>pushLevel</tt>.  After a <tt>LogRecord</tt> is copied
     # into our internal buffer, if its level is greater than or equal to
     # the <tt>pushLevel</tt>, then <tt>push</tt> will be called.
@@ -303,7 +294,6 @@ module Java::Util::Logging
     end
     
     typesig { [] }
-    # 
     # Get the <tt>pushLevel</tt>.
     # 
     # @return the value of the <tt>pushLevel</tt>
@@ -314,7 +304,6 @@ module Java::Util::Logging
     end
     
     typesig { [LogRecord] }
-    # 
     # Check if this <tt>Handler</tt> would actually log a given
     # <tt>LogRecord</tt> into its internal buffer.
     # <p>

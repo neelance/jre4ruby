@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 1998-2006 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -31,7 +30,6 @@ module Sun::Security::Action
     }
   end
   
-  # 
   # A convenience class for retrieving the string value of a system
   # property as a privileged action.
   # 
@@ -67,7 +65,6 @@ module Sun::Security::Action
     undef_method :default_val=
     
     typesig { [String] }
-    # 
     # Constructor that takes the name of the system property whose
     # string value needs to be determined.
     # 
@@ -79,7 +76,6 @@ module Sun::Security::Action
     end
     
     typesig { [String, String] }
-    # 
     # Constructor that takes the name of the system property and the default
     # value of that property.
     # 
@@ -93,7 +89,6 @@ module Sun::Security::Action
     end
     
     typesig { [] }
-    # 
     # Determines the string value of the system property whose
     # name was specified in the constructor.
     # 

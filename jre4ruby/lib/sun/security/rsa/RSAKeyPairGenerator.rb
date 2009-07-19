@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 2003-2008 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -36,7 +35,6 @@ module Sun::Security::Rsa
     }
   end
   
-  # 
   # RSA keypair generation. Standard algorithm, minimum key length 512 bit.
   # We generate two random primes until we find two where phi is relative
   # prime to the public exponent. Default exponent is 65537. It has only bit 0

@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 1996-2006 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -58,7 +57,6 @@ module Java::Text
     }
   end
   
-  # 
   # <code>DateFormatSymbols</code> is a public class for encapsulating
   # localizable date-time formatting data, such as the names of the
   # months, the names of the days of the week, and the time zone data.
@@ -108,7 +106,6 @@ module Java::Text
     include Cloneable
     
     typesig { [] }
-    # 
     # Construct a DateFormatSymbols object by loading format data from
     # resources for the default locale. This constructor can only
     # construct instances for the locales supported by the Java
@@ -136,7 +133,6 @@ module Java::Text
     end
     
     typesig { [Locale] }
-    # 
     # Construct a DateFormatSymbols object by loading format data from
     # resources for the given locale. This constructor can only
     # construct instances for the locales supported by the Java
@@ -163,7 +159,6 @@ module Java::Text
       initialize_data(locale)
     end
     
-    # 
     # Era strings. For example: "AD" and "BC".  An array of 2 strings,
     # indexed by <code>Calendar.BC</code> and <code>Calendar.AD</code>.
     # @serial
@@ -173,7 +168,6 @@ module Java::Text
     alias_method :attr_eras=, :eras=
     undef_method :eras=
     
-    # 
     # Month strings. For example: "January", "February", etc.  An array
     # of 13 strings (some calendars have 13 months), indexed by
     # <code>Calendar.JANUARY</code>, <code>Calendar.FEBRUARY</code>, etc.
@@ -184,7 +178,6 @@ module Java::Text
     alias_method :attr_months=, :months=
     undef_method :months=
     
-    # 
     # Short month strings. For example: "Jan", "Feb", etc.  An array of
     # 13 strings (some calendars have 13 months), indexed by
     # <code>Calendar.JANUARY</code>, <code>Calendar.FEBRUARY</code>, etc.
@@ -196,7 +189,6 @@ module Java::Text
     alias_method :attr_short_months=, :short_months=
     undef_method :short_months=
     
-    # 
     # Weekday strings. For example: "Sunday", "Monday", etc.  An array
     # of 8 strings, indexed by <code>Calendar.SUNDAY</code>,
     # <code>Calendar.MONDAY</code>, etc.
@@ -208,7 +200,6 @@ module Java::Text
     alias_method :attr_weekdays=, :weekdays=
     undef_method :weekdays=
     
-    # 
     # Short weekday strings. For example: "Sun", "Mon", etc.  An array
     # of 8 strings, indexed by <code>Calendar.SUNDAY</code>,
     # <code>Calendar.MONDAY</code>, etc.
@@ -220,7 +211,6 @@ module Java::Text
     alias_method :attr_short_weekdays=, :short_weekdays=
     undef_method :short_weekdays=
     
-    # 
     # AM and PM strings. For example: "AM" and "PM".  An array of
     # 2 strings, indexed by <code>Calendar.AM</code> and
     # <code>Calendar.PM</code>.
@@ -231,7 +221,6 @@ module Java::Text
     alias_method :attr_ampms=, :ampms=
     undef_method :ampms=
     
-    # 
     # Localized names of time zones in this locale.  This is a
     # two-dimensional array of strings of size <em>n</em> by <em>m</em>,
     # where <em>m</em> is at least 5.  Each of the <em>n</em> rows is an
@@ -261,7 +250,6 @@ module Java::Text
     alias_method :attr_zone_strings=, :zone_strings=
     undef_method :zone_strings=
     
-    # 
     # Indicates that zoneStrings is set externally with setZoneStrings() method.
     attr_accessor :is_zone_strings_set
     alias_method :attr_is_zone_strings_set, :is_zone_strings_set
@@ -270,14 +258,12 @@ module Java::Text
     undef_method :is_zone_strings_set=
     
     class_module.module_eval {
-      # 
       # Unlocalized date-time pattern characters. For example: 'y', 'd', etc.
       # All locales use the same these unlocalized pattern characters.
       const_set_lazy(:PatternChars) { "GyMdkHmsSEDFwWahKzZ" }
       const_attr_reader  :PatternChars
     }
     
-    # 
     # Localized date-time pattern characters. For example, a locale may
     # wish to use 'u' rather than 'y' to represent years in its date format
     # pattern strings.
@@ -292,7 +278,6 @@ module Java::Text
     alias_method :attr_local_pattern_chars=, :local_pattern_chars=
     undef_method :local_pattern_chars=
     
-    # 
     # The locale which is used for initializing this DateFormatSymbols object.
     # 
     # @since 1.6
@@ -309,7 +294,6 @@ module Java::Text
       const_attr_reader  :SerialVersionUID
       
       typesig { [] }
-      # 
       # Returns an array of all locales for which the
       # <code>getInstance</code> methods of this class can return
       # localized instances.
@@ -328,7 +312,6 @@ module Java::Text
       end
       
       typesig { [] }
-      # 
       # Gets the <code>DateFormatSymbols</code> instance for the default
       # locale.  This method provides access to <code>DateFormatSymbols</code>
       # instances for locales supported by the Java runtime itself as well
@@ -342,7 +325,6 @@ module Java::Text
       end
       
       typesig { [Locale] }
-      # 
       # Gets the <code>DateFormatSymbols</code> instance for the specified
       # locale.  This method provides access to <code>DateFormatSymbols</code>
       # instances for locales supported by the Java runtime itself as well
@@ -368,7 +350,6 @@ module Java::Text
     }
     
     typesig { [] }
-    # 
     # Gets era strings. For example: "AD" and "BC".
     # @return the era strings.
     def get_eras
@@ -376,7 +357,6 @@ module Java::Text
     end
     
     typesig { [Array.typed(String)] }
-    # 
     # Sets era strings. For example: "AD" and "BC".
     # @param newEras the new era strings.
     def set_eras(new_eras)
@@ -384,7 +364,6 @@ module Java::Text
     end
     
     typesig { [] }
-    # 
     # Gets month strings. For example: "January", "February", etc.
     # @return the month strings.
     def get_months
@@ -392,7 +371,6 @@ module Java::Text
     end
     
     typesig { [Array.typed(String)] }
-    # 
     # Sets month strings. For example: "January", "February", etc.
     # @param newMonths the new month strings.
     def set_months(new_months)
@@ -400,7 +378,6 @@ module Java::Text
     end
     
     typesig { [] }
-    # 
     # Gets short month strings. For example: "Jan", "Feb", etc.
     # @return the short month strings.
     def get_short_months
@@ -408,7 +385,6 @@ module Java::Text
     end
     
     typesig { [Array.typed(String)] }
-    # 
     # Sets short month strings. For example: "Jan", "Feb", etc.
     # @param newShortMonths the new short month strings.
     def set_short_months(new_short_months)
@@ -416,7 +392,6 @@ module Java::Text
     end
     
     typesig { [] }
-    # 
     # Gets weekday strings. For example: "Sunday", "Monday", etc.
     # @return the weekday strings. Use <code>Calendar.SUNDAY</code>,
     # <code>Calendar.MONDAY</code>, etc. to index the result array.
@@ -425,7 +400,6 @@ module Java::Text
     end
     
     typesig { [Array.typed(String)] }
-    # 
     # Sets weekday strings. For example: "Sunday", "Monday", etc.
     # @param newWeekdays the new weekday strings. The array should
     # be indexed by <code>Calendar.SUNDAY</code>,
@@ -435,7 +409,6 @@ module Java::Text
     end
     
     typesig { [] }
-    # 
     # Gets short weekday strings. For example: "Sun", "Mon", etc.
     # @return the short weekday strings. Use <code>Calendar.SUNDAY</code>,
     # <code>Calendar.MONDAY</code>, etc. to index the result array.
@@ -444,7 +417,6 @@ module Java::Text
     end
     
     typesig { [Array.typed(String)] }
-    # 
     # Sets short weekday strings. For example: "Sun", "Mon", etc.
     # @param newShortWeekdays the new short weekday strings. The array should
     # be indexed by <code>Calendar.SUNDAY</code>,
@@ -454,7 +426,6 @@ module Java::Text
     end
     
     typesig { [] }
-    # 
     # Gets ampm strings. For example: "AM" and "PM".
     # @return the ampm strings.
     def get_am_pm_strings
@@ -462,7 +433,6 @@ module Java::Text
     end
     
     typesig { [Array.typed(String)] }
-    # 
     # Sets ampm strings. For example: "AM" and "PM".
     # @param newAmpms the new ampm strings.
     def set_am_pm_strings(new_ampms)
@@ -470,7 +440,6 @@ module Java::Text
     end
     
     typesig { [] }
-    # 
     # Gets time zone strings.  Use of this method is discouraged; use
     # {@link java.util.TimeZone#getDisplayName() TimeZone.getDisplayName()}
     # instead.
@@ -512,7 +481,6 @@ module Java::Text
     end
     
     typesig { [Array.typed(Array.typed(String))] }
-    # 
     # Sets time zone strings.  The argument must be a
     # two-dimensional array of strings of size <em>n</em> by <em>m</em>,
     # where <em>m</em> is at least 5.  Each of the <em>n</em> rows is an
@@ -555,7 +523,6 @@ module Java::Text
     end
     
     typesig { [] }
-    # 
     # Gets localized date-time pattern characters. For example: 'u', 't', etc.
     # @return the localized date-time pattern characters.
     def get_local_pattern_chars
@@ -563,7 +530,6 @@ module Java::Text
     end
     
     typesig { [String] }
-    # 
     # Sets localized date-time pattern characters. For example: 'u', 't', etc.
     # @param newLocalPatternChars the new localized date-time
     # pattern characters.
@@ -572,7 +538,6 @@ module Java::Text
     end
     
     typesig { [] }
-    # 
     # Overrides Cloneable
     def clone
       begin
@@ -585,7 +550,6 @@ module Java::Text
     end
     
     typesig { [] }
-    # 
     # Override hashCode.
     # Generates a hash code for the DateFormatSymbols object.
     def hash_code
@@ -600,7 +564,6 @@ module Java::Text
     end
     
     typesig { [Object] }
-    # 
     # Override equals
     def equals(obj)
       if ((self).equal?(obj))
@@ -620,7 +583,6 @@ module Java::Text
       const_set_lazy(:MillisPerHour) { 60 * 60 * 1000 }
       const_attr_reader  :MillisPerHour
       
-      # 
       # Cache to hold the FormatData and TimeZoneNames ResourceBundles
       # of a Locale.
       
@@ -635,7 +597,6 @@ module Java::Text
       alias_method :attr_cached_locale_data=, :cached_locale_data=
       
       typesig { [Locale] }
-      # 
       # Look up resource data for the desiredLocale in the cache; update the
       # cache if necessary.
       def cache_lookup(desired_locale)
@@ -687,7 +648,6 @@ module Java::Text
     end
     
     typesig { [String] }
-    # 
     # Package private: used by SimpleDateFormat
     # Gets the index for the given time zone ID to obtain the time zone
     # strings for formatting. The time zone ID is just for programmatic
@@ -709,7 +669,6 @@ module Java::Text
     end
     
     typesig { [] }
-    # 
     # Wrapper method to the getZoneStrings(), which is called from inside
     # the java.text package and not to mutate the returned arrays, so that
     # it does not need to create a defensive copy.
@@ -745,7 +704,6 @@ module Java::Text
     end
     
     typesig { [Array.typed(String)] }
-    # 
     # Clones an array of Strings.
     # @param srcArray the source array to be cloned.
     # @param count the number of elements in the given source array.
@@ -757,7 +715,6 @@ module Java::Text
     end
     
     typesig { [DateFormatSymbols, DateFormatSymbols] }
-    # 
     # Clones all the data members from the source DateFormatSymbols to
     # the target DateFormatSymbols. This is only for subclasses.
     # @param src the source DateFormatSymbols.
@@ -785,7 +742,6 @@ module Java::Text
     end
     
     typesig { [Array.typed(String), Array.typed(String)] }
-    # 
     # Compares the equality of the two arrays of String.
     # @param current this String array.
     # @param other that String array.
@@ -802,7 +758,6 @@ module Java::Text
     end
     
     typesig { [ObjectOutputStream] }
-    # 
     # Write out the default serializable data, after ensuring the
     # <code>zoneStrings</code> field is initialized in order to make
     # sure the backward compatibility.
@@ -816,7 +771,6 @@ module Java::Text
     end
     
     class_module.module_eval {
-      # 
       # Obtains a DateFormatSymbols instance from a DateFormatSymbolsProvider
       # implementation.
       const_set_lazy(:DateFormatSymbolsGetter) { Class.new do

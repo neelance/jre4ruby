@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 1994-2006 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -30,7 +29,6 @@ module Java::Lang
     }
   end
   
-  # 
   # The {@code Integer} class wraps a value of the primitive type
   # {@code int} in an object. An object of type {@code Integer}
   # contains a single field whose type is {@code int}.
@@ -56,19 +54,16 @@ module Java::Lang
     include JavaComparable
     
     class_module.module_eval {
-      # 
       # A constant holding the minimum value an {@code int} can
       # have, -2<sup>31</sup>.
       const_set_lazy(:MIN_VALUE) { -0x80000000 }
       const_attr_reader  :MIN_VALUE
       
-      # 
       # A constant holding the maximum value an {@code int} can
       # have, 2<sup>31</sup>-1.
       const_set_lazy(:MAX_VALUE) { 0x7fffffff }
       const_attr_reader  :MAX_VALUE
       
-      # 
       # The {@code Class} instance representing the primitive type
       # {@code int}.
       # 
@@ -76,13 +71,11 @@ module Java::Lang
       const_set_lazy(:TYPE) { Class.get_primitive_class("int") }
       const_attr_reader  :TYPE
       
-      # 
       # All possible chars for representing a number as a String
       const_set_lazy(:Digits) { Array.typed(::Java::Char).new([Character.new(?0.ord), Character.new(?1.ord), Character.new(?2.ord), Character.new(?3.ord), Character.new(?4.ord), Character.new(?5.ord), Character.new(?6.ord), Character.new(?7.ord), Character.new(?8.ord), Character.new(?9.ord), Character.new(?a.ord), Character.new(?b.ord), Character.new(?c.ord), Character.new(?d.ord), Character.new(?e.ord), Character.new(?f.ord), Character.new(?g.ord), Character.new(?h.ord), Character.new(?i.ord), Character.new(?j.ord), Character.new(?k.ord), Character.new(?l.ord), Character.new(?m.ord), Character.new(?n.ord), Character.new(?o.ord), Character.new(?p.ord), Character.new(?q.ord), Character.new(?r.ord), Character.new(?s.ord), Character.new(?t.ord), Character.new(?u.ord), Character.new(?v.ord), Character.new(?w.ord), Character.new(?x.ord), Character.new(?y.ord), Character.new(?z.ord)]) }
       const_attr_reader  :Digits
       
       typesig { [::Java::Int, ::Java::Int] }
-      # 
       # Returns a string representation of the first argument in the
       # radix specified by the second argument.
       # 
@@ -151,7 +144,6 @@ module Java::Lang
       end
       
       typesig { [::Java::Int] }
-      # 
       # Returns a string representation of the integer argument as an
       # unsigned integer in base&nbsp;16.
       # 
@@ -189,7 +181,6 @@ module Java::Lang
       end
       
       typesig { [::Java::Int] }
-      # 
       # Returns a string representation of the integer argument as an
       # unsigned integer in base&nbsp;8.
       # 
@@ -221,7 +212,6 @@ module Java::Lang
       end
       
       typesig { [::Java::Int] }
-      # 
       # Returns a string representation of the integer argument as an
       # unsigned integer in base&nbsp;2.
       # 
@@ -246,7 +236,6 @@ module Java::Lang
       end
       
       typesig { [::Java::Int, ::Java::Int] }
-      # 
       # Convert the integer to an unsigned number.
       def to_unsigned_string(i, shift)
         buf = CharArray.new(32)
@@ -305,7 +294,6 @@ module Java::Lang
       end
       
       typesig { [::Java::Int, ::Java::Int, Array.typed(::Java::Char)] }
-      # 
       # Places characters representing the integer i into the
       # character array buf. The characters are placed into
       # the buffer backwards starting with the least significant
@@ -363,7 +351,6 @@ module Java::Lang
       end
       
       typesig { [String, ::Java::Int] }
-      # 
       # Parses the string argument as a signed integer in the radix
       # specified by the second argument. The characters in the string
       # must all be digits of the specified radix (as determined by
@@ -470,7 +457,6 @@ module Java::Lang
       end
       
       typesig { [String] }
-      # 
       # Parses the string argument as a signed decimal integer. The
       # characters in the string must all be decimal digits, except
       # that the first character may be an ASCII minus sign {@code '-'}
@@ -489,7 +475,6 @@ module Java::Lang
       end
       
       typesig { [String, ::Java::Int] }
-      # 
       # Returns an {@code Integer} object holding the value
       # extracted from the specified {@code String} when parsed
       # with the radix given by the second argument. The first argument
@@ -518,7 +503,6 @@ module Java::Lang
       end
       
       typesig { [String] }
-      # 
       # Returns an {@code Integer} object holding the
       # value of the specified {@code String}. The argument is
       # interpreted as representing a signed decimal integer, exactly
@@ -568,7 +552,6 @@ module Java::Lang
       end }
       
       typesig { [::Java::Int] }
-      # 
       # Returns an {@code Integer} instance representing the specified
       # {@code int} value.  If a new {@code Integer} instance is not
       # required, this method should generally be used in preference to
@@ -589,7 +572,6 @@ module Java::Lang
       end
     }
     
-    # 
     # The value of the {@code Integer}.
     # 
     # @serial
@@ -600,7 +582,6 @@ module Java::Lang
     undef_method :value=
     
     typesig { [::Java::Int] }
-    # 
     # Constructs a newly allocated {@code Integer} object that
     # represents the specified {@code int} value.
     # 
@@ -613,7 +594,6 @@ module Java::Lang
     end
     
     typesig { [String] }
-    # 
     # Constructs a newly allocated {@code Integer} object that
     # represents the {@code int} value indicated by the
     # {@code String} parameter. The string is converted to an
@@ -632,7 +612,6 @@ module Java::Lang
     end
     
     typesig { [] }
-    # 
     # Returns the value of this {@code Integer} as a
     # {@code byte}.
     def byte_value
@@ -640,7 +619,6 @@ module Java::Lang
     end
     
     typesig { [] }
-    # 
     # Returns the value of this {@code Integer} as a
     # {@code short}.
     def short_value
@@ -648,7 +626,6 @@ module Java::Lang
     end
     
     typesig { [] }
-    # 
     # Returns the value of this {@code Integer} as an
     # {@code int}.
     def int_value
@@ -656,7 +633,6 @@ module Java::Lang
     end
     
     typesig { [] }
-    # 
     # Returns the value of this {@code Integer} as a
     # {@code long}.
     def long_value
@@ -664,7 +640,6 @@ module Java::Lang
     end
     
     typesig { [] }
-    # 
     # Returns the value of this {@code Integer} as a
     # {@code float}.
     def float_value
@@ -672,7 +647,6 @@ module Java::Lang
     end
     
     typesig { [] }
-    # 
     # Returns the value of this {@code Integer} as a
     # {@code double}.
     def double_value
@@ -680,7 +654,6 @@ module Java::Lang
     end
     
     typesig { [] }
-    # 
     # Returns a {@code String} object representing this
     # {@code Integer}'s value. The value is converted to signed
     # decimal representation and returned as a string, exactly as if
@@ -694,7 +667,6 @@ module Java::Lang
     end
     
     typesig { [] }
-    # 
     # Returns a hash code for this {@code Integer}.
     # 
     # @return  a hash code value for this object, equal to the
@@ -705,7 +677,6 @@ module Java::Lang
     end
     
     typesig { [Object] }
-    # 
     # Compares this object to the specified object.  The result is
     # {@code true} if and only if the argument is not
     # {@code null} and is an {@code Integer} object that
@@ -723,7 +694,6 @@ module Java::Lang
     
     class_module.module_eval {
       typesig { [String] }
-      # 
       # Determines the integer value of the system property with the
       # specified name.
       # 
@@ -755,7 +725,6 @@ module Java::Lang
       end
       
       typesig { [String, ::Java::Int] }
-      # 
       # Determines the integer value of the system property with the
       # specified name.
       # 
@@ -801,7 +770,6 @@ module Java::Lang
       end
       
       typesig { [String, JavaInteger] }
-      # 
       # Returns the integer value of the system property with the
       # specified name.  The first argument is treated as the name of a
       # system property.  System properties are accessible through the
@@ -853,7 +821,6 @@ module Java::Lang
       end
       
       typesig { [String] }
-      # 
       # Decodes a {@code String} into an {@code Integer}.
       # Accepts decimal, hexadecimal, and octal numbers given
       # by the following grammar:
@@ -940,7 +907,6 @@ module Java::Lang
     }
     
     typesig { [JavaInteger] }
-    # 
     # Compares two {@code Integer} objects numerically.
     # 
     # @param   anotherInteger   the {@code Integer} to be compared.
@@ -969,7 +935,6 @@ module Java::Lang
       const_attr_reader  :SIZE
       
       typesig { [::Java::Int] }
-      # 
       # Returns an {@code int} value with at most a single one-bit, in the
       # position of the highest-order ("leftmost") one-bit in the specified
       # {@code int} value.  Returns zero if the specified value has no
@@ -991,7 +956,6 @@ module Java::Lang
       end
       
       typesig { [::Java::Int] }
-      # 
       # Returns an {@code int} value with at most a single one-bit, in the
       # position of the lowest-order ("rightmost") one-bit in the specified
       # {@code int} value.  Returns zero if the specified value has no
@@ -1008,7 +972,6 @@ module Java::Lang
       end
       
       typesig { [::Java::Int] }
-      # 
       # Returns the number of zero bits preceding the highest-order
       # ("leftmost") one-bit in the two's complement binary representation
       # of the specified {@code int} value.  Returns 32 if the
@@ -1054,7 +1017,6 @@ module Java::Lang
       end
       
       typesig { [::Java::Int] }
-      # 
       # Returns the number of zero bits following the lowest-order ("rightmost")
       # one-bit in the two's complement binary representation of the specified
       # {@code int} value.  Returns 32 if the specified value has no
@@ -1097,7 +1059,6 @@ module Java::Lang
       end
       
       typesig { [::Java::Int] }
-      # 
       # Returns the number of one-bits in the two's complement binary
       # representation of the specified {@code int} value.  This function is
       # sometimes referred to as the <i>population count</i>.
@@ -1116,7 +1077,6 @@ module Java::Lang
       end
       
       typesig { [::Java::Int, ::Java::Int] }
-      # 
       # Returns the value obtained by rotating the two's complement binary
       # representation of the specified {@code int} value left by the
       # specified number of bits.  (Bits shifted out of the left hand, or
@@ -1138,7 +1098,6 @@ module Java::Lang
       end
       
       typesig { [::Java::Int, ::Java::Int] }
-      # 
       # Returns the value obtained by rotating the two's complement binary
       # representation of the specified {@code int} value right by the
       # specified number of bits.  (Bits shifted out of the right hand, or
@@ -1160,7 +1119,6 @@ module Java::Lang
       end
       
       typesig { [::Java::Int] }
-      # 
       # Returns the value obtained by reversing the order of the bits in the
       # two's complement binary representation of the specified {@code int}
       # value.
@@ -1178,7 +1136,6 @@ module Java::Lang
       end
       
       typesig { [::Java::Int] }
-      # 
       # Returns the signum function of the specified {@code int} value.  (The
       # return value is -1 if the specified value is negative; 0 if the
       # specified value is zero; and 1 if the specified value is positive.)
@@ -1191,7 +1148,6 @@ module Java::Lang
       end
       
       typesig { [::Java::Int] }
-      # 
       # Returns the value obtained by reversing the order of the bytes in the
       # two's complement representation of the specified {@code int} value.
       # 

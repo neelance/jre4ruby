@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
 # This code is free software; you can redistribute it and/or modify it
@@ -40,7 +39,6 @@ module Java::Util::Concurrent
     }
   end
   
-  # 
   # A delayed result-bearing action that can be cancelled.
   # Usually a scheduled future is the result of scheduling
   # a task with a {@link ScheduledExecutorService}.

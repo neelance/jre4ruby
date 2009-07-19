@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 2000-2007 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -33,7 +32,6 @@ module Java::Nio
     }
   end
   
-  # 
   # A short buffer.
   # 
   # <p> This class defines four categories of operations upon
@@ -304,7 +302,6 @@ module Java::Nio
     
     class_module.module_eval {
       typesig { [::Java::Int] }
-      # 
       # Allocates a new short buffer.
       # 
       # <p> The new buffer's position will be zero, its limit will be its
@@ -327,7 +324,6 @@ module Java::Nio
       end
       
       typesig { [Array.typed(::Java::Short), ::Java::Int, ::Java::Int] }
-      # 
       # Wraps a short array into a buffer.
       # 
       # <p> The new buffer will be backed by the given short array;
@@ -366,7 +362,6 @@ module Java::Nio
       end
       
       typesig { [Array.typed(::Java::Short)] }
-      # 
       # Wraps a short array into a buffer.
       # 
       # <p> The new buffer will be backed by the given short array;
@@ -387,7 +382,6 @@ module Java::Nio
     }
     
     typesig { [] }
-    # 
     # Creates a new short buffer whose content is a shared subsequence of
     # this buffer's content.
     # 
@@ -408,7 +402,6 @@ module Java::Nio
     end
     
     typesig { [] }
-    # 
     # Creates a new short buffer that shares this buffer's content.
     # 
     # <p> The content of the new buffer will be that of this buffer.  Changes
@@ -427,7 +420,6 @@ module Java::Nio
     end
     
     typesig { [] }
-    # 
     # Creates a new, read-only short buffer that shares this buffer's
     # content.
     # 
@@ -463,7 +455,6 @@ module Java::Nio
     end
     
     typesig { [::Java::Short] }
-    # 
     # Relative <i>put</i> method&nbsp;&nbsp;<i>(optional operation)</i>.
     # 
     # <p> Writes the given short into this buffer at the current
@@ -484,7 +475,6 @@ module Java::Nio
     end
     
     typesig { [::Java::Int] }
-    # 
     # Absolute <i>get</i> method.  Reads the short at the given
     # index. </p>
     # 
@@ -501,7 +491,6 @@ module Java::Nio
     end
     
     typesig { [::Java::Int, ::Java::Short] }
-    # 
     # Absolute <i>put</i> method&nbsp;&nbsp;<i>(optional operation)</i>.
     # 
     # <p> Writes the given short into this buffer at the given
@@ -590,7 +579,6 @@ module Java::Nio
     end
     
     typesig { [Array.typed(::Java::Short)] }
-    # 
     # Relative bulk <i>get</i> method.
     # 
     # <p> This method transfers shorts from this buffer into the given
@@ -668,7 +656,6 @@ module Java::Nio
     end
     
     typesig { [Array.typed(::Java::Short), ::Java::Int, ::Java::Int] }
-    # 
     # Relative bulk <i>put</i> method&nbsp;&nbsp;<i>(optional operation)</i>.
     # 
     # <p> This method transfers shorts into this buffer from the given
@@ -732,7 +719,6 @@ module Java::Nio
     end
     
     typesig { [Array.typed(::Java::Short)] }
-    # 
     # Relative bulk <i>put</i> method&nbsp;&nbsp;<i>(optional operation)</i>.
     # 
     # <p> This method transfers the entire content of the given source
@@ -771,7 +757,6 @@ module Java::Nio
     end
     
     typesig { [] }
-    # 
     # Returns the short array that backs this
     # buffer&nbsp;&nbsp;<i>(optional operation)</i>.
     # 
@@ -800,7 +785,6 @@ module Java::Nio
     end
     
     typesig { [] }
-    # 
     # Returns the offset within this buffer's backing array of the first
     # element of the buffer&nbsp;&nbsp;<i>(optional operation)</i>.
     # 
@@ -830,7 +814,6 @@ module Java::Nio
     end
     
     typesig { [] }
-    # 
     # Compacts this buffer&nbsp;&nbsp;<i>(optional operation)</i>.
     # 
     # <p> The shorts between the buffer's current position and its limit,
@@ -873,7 +856,6 @@ module Java::Nio
     end
     
     typesig { [] }
-    # 
     # Tells whether or not this short buffer is direct. </p>
     # 
     # @return  <tt>true</tt> if, and only if, this buffer is direct
@@ -882,7 +864,6 @@ module Java::Nio
     end
     
     typesig { [] }
-    # 
     # Returns a string summarizing the state of this buffer.  </p>
     # 
     # @return  A summary string
@@ -900,7 +881,6 @@ module Java::Nio
     end
     
     typesig { [] }
-    # 
     # Returns the current hash code of this buffer.
     # 
     # <p> The hash code of a short buffer depends only upon its remaining
@@ -924,7 +904,6 @@ module Java::Nio
     end
     
     typesig { [Object] }
-    # 
     # Tells whether or not this buffer is equal to another object.
     # 
     # <p> Two short buffers are equal if, and only if,
@@ -981,7 +960,6 @@ module Java::Nio
     end
     
     typesig { [ShortBuffer] }
-    # 
     # Compares this buffer to another.
     # 
     # <p> Two short buffers are compared by comparing their sequences of

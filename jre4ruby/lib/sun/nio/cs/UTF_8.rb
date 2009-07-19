@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 2000-2008 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -158,14 +157,14 @@ module Sun::Nio::Cs
               # always 1
               return CoderResult.malformed_for_length(1)
             when 3
-              b1 = src.get
+              self.attr_b1 = src.get
               b2 = src.get # no need to lookup b3
-              return CoderResult.malformed_for_length((((b1).equal?(0xe0) && ((b2 & 0xe0)).equal?(0x80)) || is_not_continuation(b2)) ? 1 : 2)
+              return CoderResult.malformed_for_length((((self.attr_b1).equal?(0xe0) && ((b2 & 0xe0)).equal?(0x80)) || is_not_continuation(b2)) ? 1 : 2)
             when 4
               # we don't care the speed here
-              b1 = src.get & 0xff
-              b2 = src.get & 0xff
-              if (b1 > 0xf4 || ((b1).equal?(0xf0) && (b2 < 0x90 || b2 > 0xbf)) || ((b1).equal?(0xf4) && !((b2 & 0xf0)).equal?(0x80)) || is_not_continuation(b2))
+              self.attr_b1 = src.get & 0xff
+              self.attr_b2 = src.get & 0xff
+              if (self.attr_b1 > 0xf4 || ((self.attr_b1).equal?(0xf0) && (self.attr_b2 < 0x90 || self.attr_b2 > 0xbf)) || ((self.attr_b1).equal?(0xf4) && !((self.attr_b2 & 0xf0)).equal?(0x80)) || is_not_continuation(self.attr_b2))
                 return CoderResult.malformed_for_length(1)
               end
               if (is_not_continuation(src.get))
@@ -249,12 +248,12 @@ module Sun::Nio::Cs
                   if (sl - sp < 3 || dp >= dl)
                     return xflow(src, sp, sl, dst, dp, 3)
                   end
-                  b2_ = sa[sp + 1]
+                  b2 = sa[sp + 1]
                   b3 = sa[sp + 2]
-                  if (is_malformed3(b1, b2_, b3))
+                  if (is_malformed3(b1, b2, b3))
                     return malformed(src, sp, dst, dp, 3)
                   end
-                  da[((dp += 1) - 1)] = RJava.cast_to_char((((b1 << 12) ^ (b2_ << 6) ^ b3) ^ 0x1f80))
+                  da[((dp += 1) - 1)] = RJava.cast_to_char((((b1 << 12) ^ (b2 << 6) ^ b3) ^ 0x1f80))
                   sp += 3
                 else
                   if (((b1 >> 3)).equal?(-2))
@@ -262,11 +261,11 @@ module Sun::Nio::Cs
                     if (sl - sp < 4 || dl - dp < 2)
                       return xflow(src, sp, sl, dst, dp, 4)
                     end
-                    b2__ = sa[sp + 1]
-                    b3_ = sa[sp + 2]
+                    b2 = sa[sp + 1]
+                    b3 = sa[sp + 2]
                     b4 = sa[sp + 3]
-                    uc = ((b1 & 0x7) << 18) | ((b2__ & 0x3f) << 12) | ((b3_ & 0x3f) << 6) | (b4 & 0x3f)
-                    if (is_malformed4(b2__, b3_, b4) || !Surrogate.needed_for(uc))
+                    uc = ((b1 & 0x7) << 18) | ((b2 & 0x3f) << 12) | ((b3 & 0x3f) << 6) | (b4 & 0x3f)
+                    if (is_malformed4(b2, b3, b4) || !Surrogate.needed_for(uc))
                       return malformed(src, sp, dst, dp, 4)
                     end
                     da[((dp += 1) - 1)] = Surrogate.high(uc)
@@ -313,12 +312,12 @@ module Sun::Nio::Cs
                   if (limit_ - mark < 3 || dst.remaining < 1)
                     return xflow(src, mark, 3)
                   end
-                  b2_ = src.get
+                  b2 = src.get
                   b3 = src.get
-                  if (is_malformed3(b1, b2_, b3))
+                  if (is_malformed3(b1, b2, b3))
                     return malformed(src, mark, 3)
                   end
-                  dst.put(RJava.cast_to_char((((b1 << 12) ^ (b2_ << 6) ^ b3) ^ 0x1f80)))
+                  dst.put(RJava.cast_to_char((((b1 << 12) ^ (b2 << 6) ^ b3) ^ 0x1f80)))
                   mark += 3
                 else
                   if (((b1 >> 3)).equal?(-2))
@@ -326,11 +325,11 @@ module Sun::Nio::Cs
                     if (limit_ - mark < 4 || dst.remaining < 2)
                       return xflow(src, mark, 4)
                     end
-                    b2__ = src.get
-                    b3_ = src.get
+                    b2 = src.get
+                    b3 = src.get
                     b4 = src.get
-                    uc = ((b1 & 0x7) << 18) | ((b2__ & 0x3f) << 12) | ((b3_ & 0x3f) << 6) | (b4 & 0x3f)
-                    if (is_malformed4(b2__, b3_, b4) || !Surrogate.needed_for(uc))
+                    uc = ((b1 & 0x7) << 18) | ((b2 & 0x3f) << 12) | ((b3 & 0x3f) << 6) | (b4 & 0x3f)
+                    if (is_malformed4(b2, b3, b4) || !Surrogate.needed_for(uc))
                       # shortest form check
                       return malformed(src, mark, 4)
                     end

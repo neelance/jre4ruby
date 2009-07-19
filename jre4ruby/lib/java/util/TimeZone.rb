@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 1996-2005 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -51,7 +50,6 @@ module Java::Util
     }
   end
   
-  # 
   # <code>TimeZone</code> represents a time zone offset, and also figures out daylight
   # savings.
   # 
@@ -139,7 +137,6 @@ module Java::Util
     include Cloneable
     
     typesig { [] }
-    # 
     # Sole constructor.  (For invocation by subclass constructors, typically
     # implicit.)
     def initialize
@@ -147,7 +144,6 @@ module Java::Util
     end
     
     class_module.module_eval {
-      # 
       # A style specifier for <code>getDisplayName()</code> indicating
       # a short name, such as "PST."
       # @see #LONG
@@ -155,7 +151,6 @@ module Java::Util
       const_set_lazy(:SHORT) { 0 }
       const_attr_reader  :SHORT
       
-      # 
       # A style specifier for <code>getDisplayName()</code> indicating
       # a long name, such as "Pacific Standard Time."
       # @see #SHORT
@@ -173,7 +168,6 @@ module Java::Util
       const_set_lazy(:ONE_DAY) { 24 * ONE_HOUR }
       const_attr_reader  :ONE_DAY
       
-      # 
       # Cache to hold the SimpleDateFormat objects for a Locale.
       
       def cached_locale_data
@@ -192,7 +186,6 @@ module Java::Util
     }
     
     typesig { [::Java::Int, ::Java::Int, ::Java::Int, ::Java::Int, ::Java::Int, ::Java::Int] }
-    # 
     # Gets the time zone offset, for current date, modified in case of
     # daylight savings. This is the offset to add to UTC to get local time.
     # <p>
@@ -219,7 +212,6 @@ module Java::Util
     end
     
     typesig { [::Java::Long] }
-    # 
     # Returns the offset of this time zone from UTC at the specified
     # date. If Daylight Saving Time is in effect at the specified
     # date, the offset value is adjusted with the amount of daylight
@@ -243,7 +235,6 @@ module Java::Util
     end
     
     typesig { [::Java::Long, Array.typed(::Java::Int)] }
-    # 
     # Gets the raw GMT offset and the amount of daylight saving of this
     # time zone at the given time.
     # @param date the milliseconds (since January 1, 1970,
@@ -272,7 +263,6 @@ module Java::Util
     end
     
     typesig { [::Java::Int] }
-    # 
     # Sets the base time zone offset to GMT.
     # This is the offset to add to UTC to get local time.
     # <p>
@@ -288,7 +278,6 @@ module Java::Util
     end
     
     typesig { [] }
-    # 
     # Returns the amount of time in milliseconds to add to UTC to get
     # standard time in this time zone. Because this value is not
     # affected by daylight saving time, it is called <I>raw
@@ -308,7 +297,6 @@ module Java::Util
     end
     
     typesig { [] }
-    # 
     # Gets the ID of this time zone.
     # @return the ID of this time zone.
     def get_id
@@ -316,7 +304,6 @@ module Java::Util
     end
     
     typesig { [String] }
-    # 
     # Sets the time zone ID. This does not change any other data in
     # the time zone object.
     # @param ID the new time zone ID.
@@ -328,7 +315,6 @@ module Java::Util
     end
     
     typesig { [] }
-    # 
     # Returns a name of this time zone suitable for presentation to the user
     # in the default locale.
     # This method returns the long name, not including daylight savings.
@@ -342,7 +328,6 @@ module Java::Util
     end
     
     typesig { [Locale] }
-    # 
     # Returns a name of this time zone suitable for presentation to the user
     # in the specified locale.
     # This method returns the long name, not including daylight savings.
@@ -357,7 +342,6 @@ module Java::Util
     end
     
     typesig { [::Java::Boolean, ::Java::Int] }
-    # 
     # Returns a name of this time zone suitable for presentation to the user
     # in the default locale.
     # If the display name is not available for the locale, then this
@@ -372,7 +356,6 @@ module Java::Util
     end
     
     typesig { [::Java::Boolean, ::Java::Int, Locale] }
-    # 
     # Returns a name of this time zone suitable for presentation to the user
     # in the specified locale.
     # If the display name is not available for the locale,
@@ -448,19 +431,18 @@ module Java::Util
             return names
           end
         end
-        names_ = TimeZoneNameUtility.retrieve_display_names(id, locale)
-        if (!(names_).nil?)
-          per_locale_ = ConcurrentHashMap.new
-          per_locale_.put(locale, names_)
-          ref = SoftReference.new(per_locale_)
+        names = TimeZoneNameUtility.retrieve_display_names(id, locale)
+        if (!(names).nil?)
+          per_locale = ConcurrentHashMap.new
+          per_locale.put(locale, names)
+          ref = SoftReference.new(per_locale)
           display_names.put(id, ref)
         end
-        return names_
+        return names
       end
     }
     
     typesig { [] }
-    # 
     # Returns the amount of time to be added to local standard time
     # to get local wall clock time.
     # <p>
@@ -482,7 +464,6 @@ module Java::Util
     end
     
     typesig { [] }
-    # 
     # Queries if this time zone uses daylight savings time.
     # <p>
     # If an underlying <code>TimeZone</code> implementation subclass
@@ -497,7 +478,6 @@ module Java::Util
     end
     
     typesig { [Date] }
-    # 
     # Queries if the given date is in daylight savings time in
     # this time zone.
     # @param date the given Date.
@@ -509,7 +489,6 @@ module Java::Util
     
     class_module.module_eval {
       typesig { [String] }
-      # 
       # Gets the <code>TimeZone</code> for the given ID.
       # 
       # @param ID the ID for a <code>TimeZone</code>, either an abbreviation
@@ -538,7 +517,6 @@ module Java::Util
       end
       
       typesig { [::Java::Int] }
-      # 
       # Gets the available IDs according to the given time zone offset in milliseconds.
       # 
       # @param rawOffset the given time zone GMT offset in milliseconds.
@@ -553,7 +531,6 @@ module Java::Util
       end
       
       typesig { [] }
-      # 
       # Gets all the available IDs supported.
       # @return an array of IDs.
       def get_available_ids
@@ -564,7 +541,6 @@ module Java::Util
       
       JNI.native_method :Java_java_util_TimeZone_getSystemTimeZoneID, [:pointer, :long, :long, :long], :long
       typesig { [String, String] }
-      # 
       # Gets the platform defined TimeZone ID.
       def get_system_time_zone_id(java_home, country)
         JNI.__send__(:Java_java_util_TimeZone_getSystemTimeZoneID, JNI.env, self.jni_id, java_home.jni_id, country.jni_id)
@@ -572,7 +548,6 @@ module Java::Util
       
       JNI.native_method :Java_java_util_TimeZone_getSystemGMTOffsetID, [:pointer, :long], :long
       typesig { [] }
-      # 
       # Gets the custom time zone ID based on the GMT offset of the
       # platform. (e.g., "GMT+08:00")
       def get_system_gmtoffset_id
@@ -580,7 +555,6 @@ module Java::Util
       end
       
       typesig { [] }
-      # 
       # Gets the default <code>TimeZone</code> for this host.
       # The source of the default <code>TimeZone</code>
       # may vary with implementation.
@@ -591,7 +565,6 @@ module Java::Util
       end
       
       typesig { [] }
-      # 
       # Returns the reference to the default TimeZone object. This
       # method doesn't create a clone.
       def get_default_ref
@@ -686,7 +659,6 @@ module Java::Util
       end
       
       typesig { [TimeZone] }
-      # 
       # Sets the <code>TimeZone</code> that is
       # returned by the <code>getDefault</code> method.  If <code>zone</code>
       # is null, reset the default to the value it had originally when the
@@ -705,7 +677,6 @@ module Java::Util
     }
     
     typesig { [TimeZone] }
-    # 
     # Returns true if this zone has the same rule and offset as another zone.
     # That is, if this zone differs only in ID, if at all.  Returns false
     # if the other zone is null.
@@ -718,7 +689,6 @@ module Java::Util
     end
     
     typesig { [] }
-    # 
     # Creates a copy of this <code>TimeZone</code>.
     # 
     # @return a clone of this <code>TimeZone</code>
@@ -733,7 +703,6 @@ module Java::Util
     end
     
     class_module.module_eval {
-      # 
       # The null constant as a TimeZone.
       const_set_lazy(:NO_TIMEZONE) { nil }
       const_attr_reader  :NO_TIMEZONE
@@ -775,7 +744,6 @@ module Java::Util
       const_attr_reader  :GMT_ID_LENGTH
       
       typesig { [String] }
-      # 
       # Parses a custom time zone identifier and returns a corresponding zone.
       # This method doesn't support the RFC 822 time zone format. (e.g., +hhmm)
       # 

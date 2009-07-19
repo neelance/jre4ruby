@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 2003-2004 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -36,7 +35,6 @@ module Sun::Reflect::Generics::Repository
     }
   end
   
-  # 
   # This class represents the generic type information for a generic
   # declaration.
   # The code is not dependent on a particular reflective implementation.

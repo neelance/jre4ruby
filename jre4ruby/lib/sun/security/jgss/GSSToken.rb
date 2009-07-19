@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 2005 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -36,14 +35,12 @@ module Sun::Security::Jgss
     }
   end
   
-  # 
   # Utilities for processing GSS Tokens.
   class GSSToken 
     include_class_members GSSTokenImports
     
     class_module.module_eval {
       typesig { [::Java::Int, Array.typed(::Java::Byte)] }
-      # 
       # Copies an integer value to a byte array in little endian form.
       # @param value the integer value to write
       # @param array the byte array into which the integer must be copied. It
@@ -54,7 +51,6 @@ module Sun::Security::Jgss
       end
       
       typesig { [::Java::Int, Array.typed(::Java::Byte), ::Java::Int] }
-      # 
       # Copies an integer value to a byte array in little endian form.
       # @param value the integer value to write
       # @param array the byte array into which the integer must be copied. It
@@ -82,7 +78,6 @@ module Sun::Security::Jgss
       end
       
       typesig { [Array.typed(::Java::Byte), ::Java::Int, ::Java::Int] }
-      # 
       # Reads an integer value from a byte array in little endian form. This
       # method allows the reading of two byte values as well as four bytes
       # values both of which are needed in the Kerberos v5 GSS-API mechanism.
@@ -117,7 +112,6 @@ module Sun::Security::Jgss
       end
       
       typesig { [::Java::Int, OutputStream] }
-      # 
       # Writes a two byte integer value to a OutputStream.
       # 
       # @param val the integer value. It will lose the high-order two bytes.
@@ -129,7 +123,6 @@ module Sun::Security::Jgss
       end
       
       typesig { [::Java::Int, Array.typed(::Java::Byte), ::Java::Int] }
-      # 
       # Writes a two byte integer value to a byte array.
       # 
       # @param val the integer value. It will lose the high-order two bytes.
@@ -142,7 +135,6 @@ module Sun::Security::Jgss
       end
       
       typesig { [InputStream] }
-      # 
       # Reads a two byte integer value from an InputStream.
       # 
       # @param is the InputStream to read from
@@ -154,7 +146,6 @@ module Sun::Security::Jgss
       end
       
       typesig { [Array.typed(::Java::Byte), ::Java::Int] }
-      # 
       # Reads a two byte integer value from a byte array.
       # 
       # @param src the byte arra to read from
@@ -165,7 +156,6 @@ module Sun::Security::Jgss
       end
       
       typesig { [InputStream, Array.typed(::Java::Byte)] }
-      # 
       # Blocks till the required number of bytes have been read from the
       # input stream.
       # 
@@ -179,7 +169,6 @@ module Sun::Security::Jgss
       end
       
       typesig { [InputStream, Array.typed(::Java::Byte), ::Java::Int, ::Java::Int] }
-      # 
       # Blocks till the required number of bytes have been read from the
       # input stream.
       # 

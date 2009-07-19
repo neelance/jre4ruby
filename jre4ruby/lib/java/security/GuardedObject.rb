@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 1997-2004 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -31,7 +30,6 @@ module Java::Security
     }
   end
   
-  # 
   # A GuardedObject is an object that is used to protect access to
   # another object.
   # 
@@ -90,7 +88,6 @@ module Java::Security
     end
     
     typesig { [] }
-    # 
     # Retrieves the guarded object, or throws an exception if access
     # to the guarded object is denied by the guard.
     # 
@@ -106,7 +103,6 @@ module Java::Security
     end
     
     typesig { [Java::Io::ObjectOutputStream] }
-    # 
     # Writes this object out to a stream (i.e., serializes it).
     # We check the guard if there is one.
     def write_object(oos)

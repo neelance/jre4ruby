@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 2000-2006 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -45,7 +44,6 @@ module Sun::Security::Provider::Certpath
     }
   end
   
-  # 
   # A <code>CertStore</code> that retrieves <code>Certificates</code> and
   # <code>CRL</code>s from a <code>Collection</code>.
   # <p>
@@ -91,7 +89,6 @@ module Sun::Security::Provider::Certpath
     undef_method :coll=
     
     typesig { [CertStoreParameters] }
-    # 
     # Creates a <code>CertStore</code> with the specified parameters.
     # For this class, the parameters object must be an instance of
     # <code>CollectionCertStoreParameters</code>. The <code>Collection</code>
@@ -111,7 +108,6 @@ module Sun::Security::Provider::Certpath
     end
     
     typesig { [CertSelector] }
-    # 
     # Returns a <code>Collection</code> of <code>Certificate</code>s that
     # match the specified selector. If no <code>Certificate</code>s
     # match the selector, an empty <code>Collection</code> will be returned.
@@ -141,9 +137,9 @@ module Sun::Security::Provider::Certpath
             end
           else
             while (i.has_next)
-              o_ = i.next
-              if (o_.is_a?(Certificate))
-                result.add(o_)
+              o = i.next
+              if (o.is_a?(Certificate))
+                result.add(o)
               end
             end
           end
@@ -156,7 +152,6 @@ module Sun::Security::Provider::Certpath
     end
     
     typesig { [CRLSelector] }
-    # 
     # Returns a <code>Collection</code> of <code>CRL</code>s that
     # match the specified selector. If no <code>CRL</code>s
     # match the selector, an empty <code>Collection</code> will be returned.
@@ -186,9 +181,9 @@ module Sun::Security::Provider::Certpath
             end
           else
             while (i.has_next)
-              o_ = i.next
-              if (o_.is_a?(CRL))
-                result.add(o_)
+              o = i.next
+              if (o.is_a?(CRL))
+                result.add(o)
               end
             end
           end

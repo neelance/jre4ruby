@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 2003-2006 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -31,7 +30,6 @@ module Java::Util
     }
   end
   
-  # 
   # Private implementation class for EnumSet, for "jumbo" enum types
   # (i.e., those with more than 64 elements).
   # 
@@ -41,7 +39,6 @@ module Java::Util
   class JumboEnumSet < JumboEnumSetImports.const_get :EnumSet
     include_class_members JumboEnumSetImports
     
-    # 
     # Bit vector representation of this set.  The ith bit of the jth
     # element of this array represents the  presence of universe[64*j +i]
     # in this set.
@@ -108,7 +105,6 @@ module Java::Util
     end
     
     typesig { [] }
-    # 
     # Returns an iterator over the elements contained in this set.  The
     # iterator traverses the elements in their <i>natural order</i> (which is
     # the order in which the enum constants are declared). The returned
@@ -126,7 +122,6 @@ module Java::Util
         include_class_members JumboEnumSet
         include Iterator
         
-        # 
         # A bit vector representing the elements in the current "word"
         # of the set not yet returned by this iterator.
         attr_accessor :unseen
@@ -135,7 +130,6 @@ module Java::Util
         alias_method :attr_unseen=, :unseen=
         undef_method :unseen=
         
-        # 
         # The index corresponding to unseen in the elements array.
         attr_accessor :unseen_index
         alias_method :attr_unseen_index, :unseen_index
@@ -143,7 +137,6 @@ module Java::Util
         alias_method :attr_unseen_index=, :unseen_index=
         undef_method :unseen_index=
         
-        # 
         # The bit representing the last element returned by this iterator
         # but not removed, or zero if no such element exists.
         attr_accessor :last_returned
@@ -152,7 +145,6 @@ module Java::Util
         alias_method :attr_last_returned=, :last_returned=
         undef_method :last_returned=
         
-        # 
         # The index corresponding to lastReturned in the elements array.
         attr_accessor :last_returned_index
         alias_method :attr_last_returned_index, :last_returned_index
@@ -204,7 +196,6 @@ module Java::Util
     }
     
     typesig { [] }
-    # 
     # Returns the number of elements in this set.
     # 
     # @return the number of elements in this set
@@ -213,7 +204,6 @@ module Java::Util
     end
     
     typesig { [] }
-    # 
     # Returns <tt>true</tt> if this set contains no elements.
     # 
     # @return <tt>true</tt> if this set contains no elements
@@ -222,7 +212,6 @@ module Java::Util
     end
     
     typesig { [Object] }
-    # 
     # Returns <tt>true</tt> if this set contains the specified element.
     # 
     # @param e element to be checked for containment in this collection
@@ -262,7 +251,6 @@ module Java::Util
     end
     
     typesig { [Object] }
-    # 
     # Removes the specified element from this set if it is present.
     # 
     # @param e element to be removed from this set, if present
@@ -315,7 +303,6 @@ module Java::Util
     end
     
     typesig { [Collection] }
-    # 
     # Adds all of the elements in the specified collection to this set.
     # 
     # @param c collection whose elements are to be added to this set
@@ -343,7 +330,6 @@ module Java::Util
     end
     
     typesig { [Collection] }
-    # 
     # Removes from this set all of its elements that are contained in
     # the specified collection.
     # 
@@ -367,7 +353,6 @@ module Java::Util
     end
     
     typesig { [Collection] }
-    # 
     # Retains only the elements in this set that are contained in the
     # specified collection.
     # 
@@ -393,7 +378,6 @@ module Java::Util
     end
     
     typesig { [] }
-    # 
     # Removes all of the elements from this set.
     def clear
       Arrays.fill(@elements, 0)
@@ -401,7 +385,6 @@ module Java::Util
     end
     
     typesig { [Object] }
-    # 
     # Compares the specified object with this set for equality.  Returns
     # <tt>true</tt> if the given object is also a set, the two sets have
     # the same size, and every member of the given set is contained in
@@ -421,7 +404,6 @@ module Java::Util
     end
     
     typesig { [] }
-    # 
     # Recalculates the size of the set.  Returns true if it's changed.
     def recalculate_size
       old_size = @size

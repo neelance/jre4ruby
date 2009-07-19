@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 1996-2006 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -56,7 +55,6 @@ module Java::Text
     }
   end
   
-  # 
   # <code>DecimalFormat</code> is a concrete subclass of
   # <code>NumberFormat</code> that formats decimal numbers. It has a variety of
   # features designed to make it possible to parse and format numbers in any
@@ -380,7 +378,6 @@ module Java::Text
     include_class_members DecimalFormatImports
     
     typesig { [] }
-    # 
     # Creates a DecimalFormat using the default pattern and symbols
     # for the default locale. This is a convenient way to obtain a
     # DecimalFormat when internationalization is not the main concern.
@@ -460,7 +457,6 @@ module Java::Text
     end
     
     typesig { [String] }
-    # 
     # Creates a DecimalFormat using the given pattern and the symbols
     # for the default locale. This is a convenient way to obtain a
     # DecimalFormat when internationalization is not the main concern.
@@ -531,7 +527,6 @@ module Java::Text
     end
     
     typesig { [String, DecimalFormatSymbols] }
-    # 
     # Creates a DecimalFormat using the given pattern and symbols.
     # Use this constructor when you need to completely customize the
     # behavior of the format.
@@ -646,7 +641,6 @@ module Java::Text
     end
     
     typesig { [::Java::Double, StringBuffer, FieldPosition] }
-    # 
     # Formats a double to produce a string.
     # @param number    The double to format
     # @param result    where the text is to be appended
@@ -663,7 +657,6 @@ module Java::Text
     end
     
     typesig { [::Java::Double, StringBuffer, FieldDelegate] }
-    # 
     # Formats a double to produce a string.
     # @param number    The double to format
     # @param result    where the text is to be appended
@@ -697,9 +690,9 @@ module Java::Text
         else
           append(result, @positive_prefix, delegate, get_positive_prefix_field_positions, Field::SIGN)
         end
-        i_field_start_ = result.length
+        i_field_start = result.length
         result.append(@symbols.get_infinity)
-        delegate.formatted(INTEGER_FIELD, Field::INTEGER, Field::INTEGER, i_field_start_, result.length, result)
+        delegate.formatted(INTEGER_FIELD, Field::INTEGER, Field::INTEGER, i_field_start, result.length, result)
         if (is_negative)
           append(result, @negative_suffix, delegate, get_negative_suffix_field_positions, Field::SIGN)
         else
@@ -723,7 +716,6 @@ module Java::Text
     end
     
     typesig { [::Java::Long, StringBuffer, FieldPosition] }
-    # 
     # Format a long to produce a string.
     # @param number    The long to format
     # @param result    where the text is to be appended
@@ -740,7 +732,6 @@ module Java::Text
     end
     
     typesig { [::Java::Long, StringBuffer, FieldDelegate] }
-    # 
     # Format a long to produce a string.
     # @param number    The long to format
     # @param result    where the text is to be appended
@@ -802,7 +793,6 @@ module Java::Text
     end
     
     typesig { [BigDecimal, StringBuffer, FieldPosition] }
-    # 
     # Formats a BigDecimal to produce a string.
     # @param number    The BigDecimal to format
     # @param result    where the text is to be appended
@@ -819,7 +809,6 @@ module Java::Text
     end
     
     typesig { [BigDecimal, StringBuffer, FieldDelegate] }
-    # 
     # Formats a BigDecimal to produce a string.
     # @param number    The BigDecimal to format
     # @param result    where the text is to be appended
@@ -847,7 +836,6 @@ module Java::Text
     end
     
     typesig { [BigInteger, StringBuffer, FieldPosition] }
-    # 
     # Format a BigInteger to produce a string.
     # @param number    The BigInteger to format
     # @param result    where the text is to be appended
@@ -864,7 +852,6 @@ module Java::Text
     end
     
     typesig { [BigInteger, StringBuffer, FieldDelegate, ::Java::Boolean] }
-    # 
     # Format a BigInteger to produce a string.
     # @param number    The BigInteger to format
     # @param result    where the text is to be appended
@@ -909,7 +896,6 @@ module Java::Text
     end
     
     typesig { [Object] }
-    # 
     # Formats an Object producing an <code>AttributedCharacterIterator</code>.
     # You can use the returned <code>AttributedCharacterIterator</code>
     # to build the resulting String, as well as to determine information
@@ -955,7 +941,6 @@ module Java::Text
     end
     
     typesig { [StringBuffer, FieldDelegate, ::Java::Boolean, ::Java::Boolean, ::Java::Int, ::Java::Int, ::Java::Int, ::Java::Int] }
-    # 
     # Complete the formatting of a finite number.  On entry, the digitList must
     # be filled in with the correct digits.
     def subformat(result, delegate, is_negative, is_integer, max_int_digits, min_int_digits, max_fra_digits, min_fra_digits)
@@ -1110,7 +1095,7 @@ module Java::Text
         end
         delegate.formatted(Field::EXPONENT, Field::EXPONENT, e_field_start, result.length, result)
       else
-        i_field_start_ = result.length
+        i_field_start = result.length
         # Output the integer portion.  Here 'count' is the total
         # number of integer digits we will display, including both
         # leading zeros required to satisfy getMinimumIntegerDigits,
@@ -1129,9 +1114,9 @@ module Java::Text
           digit_index = @digit_list.attr_decimal_at - count
         end
         size_before_integer_part = result.length
-        i___ = count - 1
-        while i___ >= 0
-          if (i___ < @digit_list.attr_decimal_at && digit_index < @digit_list.attr_count)
+        i = count - 1
+        while i >= 0
+          if (i < @digit_list.attr_decimal_at && digit_index < @digit_list.attr_count)
             # Output a real digit
             result.append(RJava.cast_to_char((@digit_list.attr_digits[((digit_index += 1) - 1)] + zero_delta)))
           else
@@ -1141,12 +1126,12 @@ module Java::Text
           # Output grouping separator if necessary.  Don't output a
           # grouping separator if i==0 though; that's at the end of
           # the integer part.
-          if (is_grouping_used && i___ > 0 && (!(@grouping_size).equal?(0)) && ((i___ % @grouping_size).equal?(0)))
+          if (is_grouping_used && i > 0 && (!(@grouping_size).equal?(0)) && ((i % @grouping_size).equal?(0)))
             g_start = result.length
             result.append(grouping)
             delegate.formatted(Field::GROUPING_SEPARATOR, Field::GROUPING_SEPARATOR, g_start, result.length, result)
           end
-          (i___ -= 1)
+          (i -= 1)
         end
         # Determine whether or not there are any printable fractional
         # digits.  If we've used up the digits we know there aren't.
@@ -1157,7 +1142,7 @@ module Java::Text
         if (!fraction_present && (result.length).equal?(size_before_integer_part))
           result.append(zero)
         end
-        delegate.formatted(INTEGER_FIELD, Field::INTEGER, Field::INTEGER, i_field_start_, result.length, result)
+        delegate.formatted(INTEGER_FIELD, Field::INTEGER, Field::INTEGER, i_field_start, result.length, result)
         # Output the decimal separator if we always do so.
         s_start = result.length
         if (@decimal_separator_always_shown || fraction_present)
@@ -1166,24 +1151,24 @@ module Java::Text
         if (!(s_start).equal?(result.length))
           delegate.formatted(Field::DECIMAL_SEPARATOR, Field::DECIMAL_SEPARATOR, s_start, result.length, result)
         end
-        f_field_start_ = result.length
-        i____ = 0
-        while i____ < max_fra_digits
+        f_field_start = result.length
+        i_ = 0
+        while i_ < max_fra_digits
           # Here is where we escape from the loop.  We escape if we've
           # output the maximum fraction digits (specified in the for
           # expression above).
           # We also stop when we've output the minimum digits and either:
           # we have an integer, so there is no fractional stuff to
           # display, or we're out of significant digits.
-          if (i____ >= min_fra_digits && (is_integer || digit_index >= @digit_list.attr_count))
+          if (i_ >= min_fra_digits && (is_integer || digit_index >= @digit_list.attr_count))
             break
           end
           # Output leading fractional zeros. These are zeros that come
           # after the decimal but before any significant digits. These
           # are only output if abs(number being formatted) < 1.0.
-          if (-1 - i____ > (@digit_list.attr_decimal_at - 1))
+          if (-1 - i_ > (@digit_list.attr_decimal_at - 1))
             result.append(zero)
-            (i____ += 1)
+            (i_ += 1)
             next
           end
           # Output a digit, if we have any precision left, or a
@@ -1193,10 +1178,10 @@ module Java::Text
           else
             result.append(zero)
           end
-          (i____ += 1)
+          (i_ += 1)
         end
         # Record field information for caller.
-        delegate.formatted(FRACTION_FIELD, Field::FRACTION, Field::FRACTION, f_field_start_, result.length, result)
+        delegate.formatted(FRACTION_FIELD, Field::FRACTION, Field::FRACTION, f_field_start, result.length, result)
       end
       if (is_negative)
         append(result, @negative_suffix, delegate, get_negative_suffix_field_positions, Field::SIGN)
@@ -1207,7 +1192,6 @@ module Java::Text
     end
     
     typesig { [StringBuffer, String, FieldDelegate, Array.typed(FieldPosition), Format::Field] }
-    # 
     # Appends the String <code>string</code> to <code>result</code>.
     # <code>delegate</code> is notified of all  the
     # <code>FieldPosition</code>s in <code>positions</code>.
@@ -1238,7 +1222,6 @@ module Java::Text
     end
     
     typesig { [String, ParsePosition] }
-    # 
     # Parses text from a string to produce a <code>Number</code>.
     # <p>
     # The method attempts to parse text starting at the index given by
@@ -1389,7 +1372,6 @@ module Java::Text
     end
     
     typesig { [] }
-    # 
     # Return a BigInteger multiplier.
     def get_big_integer_multiplier
       if ((@big_integer_multiplier).nil?)
@@ -1405,7 +1387,6 @@ module Java::Text
     undef_method :big_integer_multiplier=
     
     typesig { [] }
-    # 
     # Return a BigDecimal multiplier.
     def get_big_decimal_multiplier
       if ((@big_decimal_multiplier).nil?)
@@ -1432,7 +1413,6 @@ module Java::Text
     }
     
     typesig { [String, ParsePosition, String, String, DigitList, ::Java::Boolean, Array.typed(::Java::Boolean)] }
-    # 
     # Parse the given text into a number.  The text is parsed beginning at
     # parsePosition, until an unparseable character is seen.
     # @param text The string to parse.
@@ -1637,7 +1617,6 @@ module Java::Text
     end
     
     typesig { [] }
-    # 
     # Returns a copy of the decimal format symbols, which is generally not
     # changed by the programmer or user.
     # @return a copy of the desired DecimalFormatSymbols
@@ -1652,7 +1631,6 @@ module Java::Text
     end
     
     typesig { [DecimalFormatSymbols] }
-    # 
     # Sets the decimal format symbols, which is generally not changed
     # by the programmer or user.
     # @param newSymbols desired DecimalFormatSymbols
@@ -1668,7 +1646,6 @@ module Java::Text
     end
     
     typesig { [] }
-    # 
     # Get the positive prefix.
     # <P>Examples: +123, $123, sFr123
     def get_positive_prefix
@@ -1676,7 +1653,6 @@ module Java::Text
     end
     
     typesig { [String] }
-    # 
     # Set the positive prefix.
     # <P>Examples: +123, $123, sFr123
     def set_positive_prefix(new_value)
@@ -1686,7 +1662,6 @@ module Java::Text
     end
     
     typesig { [] }
-    # 
     # Returns the FieldPositions of the fields in the prefix used for
     # positive numbers. This is not used if the user has explicitly set
     # a positive prefix via <code>setPositivePrefix</code>. This is
@@ -1705,7 +1680,6 @@ module Java::Text
     end
     
     typesig { [] }
-    # 
     # Get the negative prefix.
     # <P>Examples: -123, ($123) (with negative suffix), sFr-123
     def get_negative_prefix
@@ -1713,7 +1687,6 @@ module Java::Text
     end
     
     typesig { [String] }
-    # 
     # Set the negative prefix.
     # <P>Examples: -123, ($123) (with negative suffix), sFr-123
     def set_negative_prefix(new_value)
@@ -1722,7 +1695,6 @@ module Java::Text
     end
     
     typesig { [] }
-    # 
     # Returns the FieldPositions of the fields in the prefix used for
     # negative numbers. This is not used if the user has explicitly set
     # a negative prefix via <code>setNegativePrefix</code>. This is
@@ -1741,7 +1713,6 @@ module Java::Text
     end
     
     typesig { [] }
-    # 
     # Get the positive suffix.
     # <P>Example: 123%
     def get_positive_suffix
@@ -1749,7 +1720,6 @@ module Java::Text
     end
     
     typesig { [String] }
-    # 
     # Set the positive suffix.
     # <P>Example: 123%
     def set_positive_suffix(new_value)
@@ -1758,7 +1728,6 @@ module Java::Text
     end
     
     typesig { [] }
-    # 
     # Returns the FieldPositions of the fields in the suffix used for
     # positive numbers. This is not used if the user has explicitly set
     # a positive suffix via <code>setPositiveSuffix</code>. This is
@@ -1777,7 +1746,6 @@ module Java::Text
     end
     
     typesig { [] }
-    # 
     # Get the negative suffix.
     # <P>Examples: -123%, ($123) (with positive suffixes)
     def get_negative_suffix
@@ -1785,7 +1753,6 @@ module Java::Text
     end
     
     typesig { [String] }
-    # 
     # Set the negative suffix.
     # <P>Examples: 123%
     def set_negative_suffix(new_value)
@@ -1794,7 +1761,6 @@ module Java::Text
     end
     
     typesig { [] }
-    # 
     # Returns the FieldPositions of the fields in the suffix used for
     # negative numbers. This is not used if the user has explicitly set
     # a negative suffix via <code>setNegativeSuffix</code>. This is
@@ -1813,7 +1779,6 @@ module Java::Text
     end
     
     typesig { [] }
-    # 
     # Gets the multiplier for use in percent, per mille, and similar
     # formats.
     # 
@@ -1823,7 +1788,6 @@ module Java::Text
     end
     
     typesig { [::Java::Int] }
-    # 
     # Sets the multiplier for use in percent, per mille, and similar
     # formats.
     # For a percent format, set the multiplier to 100 and the suffixes to
@@ -1842,7 +1806,6 @@ module Java::Text
     end
     
     typesig { [] }
-    # 
     # Return the grouping size. Grouping size is the number of digits between
     # grouping separators in the integer portion of a number.  For example,
     # in the number "123,456.78", the grouping size is 3.
@@ -1854,7 +1817,6 @@ module Java::Text
     end
     
     typesig { [::Java::Int] }
-    # 
     # Set the grouping size. Grouping size is the number of digits between
     # grouping separators in the integer portion of a number.  For example,
     # in the number "123,456.78", the grouping size is 3.
@@ -1868,7 +1830,6 @@ module Java::Text
     end
     
     typesig { [] }
-    # 
     # Allows you to get the behavior of the decimal separator with integers.
     # (The decimal separator will always appear with decimals.)
     # <P>Example: Decimal ON: 12345 -> 12345.; OFF: 12345 -> 12345
@@ -1877,7 +1838,6 @@ module Java::Text
     end
     
     typesig { [::Java::Boolean] }
-    # 
     # Allows you to set the behavior of the decimal separator with integers.
     # (The decimal separator will always appear with decimals.)
     # <P>Example: Decimal ON: 12345 -> 12345.; OFF: 12345 -> 12345
@@ -1886,7 +1846,6 @@ module Java::Text
     end
     
     typesig { [] }
-    # 
     # Returns whether the {@link #parse(java.lang.String, java.text.ParsePosition)}
     # method returns <code>BigDecimal</code>. The default value is false.
     # @see #setParseBigDecimal
@@ -1896,7 +1855,6 @@ module Java::Text
     end
     
     typesig { [::Java::Boolean] }
-    # 
     # Sets whether the {@link #parse(java.lang.String, java.text.ParsePosition)}
     # method returns <code>BigDecimal</code>.
     # @see #isParseBigDecimal
@@ -1906,7 +1864,6 @@ module Java::Text
     end
     
     typesig { [] }
-    # 
     # Standard override; no change in semantics.
     def clone
       begin
@@ -1920,7 +1877,6 @@ module Java::Text
     end
     
     typesig { [Object] }
-    # 
     # Overrides equals
     def equals(obj)
       if ((obj).nil?)
@@ -1934,7 +1890,6 @@ module Java::Text
     end
     
     typesig { [] }
-    # 
     # Overrides hashCode
     def hash_code
       return super * 37 + @positive_prefix.hash_code
@@ -1942,7 +1897,6 @@ module Java::Text
     end
     
     typesig { [] }
-    # 
     # Synthesizes a pattern string that represents the current state
     # of this Format object.
     # @see #applyPattern
@@ -1951,7 +1905,6 @@ module Java::Text
     end
     
     typesig { [] }
-    # 
     # Synthesizes a localized pattern string that represents the current
     # state of this Format object.
     # @see #applyPattern
@@ -1960,7 +1913,6 @@ module Java::Text
     end
     
     typesig { [] }
-    # 
     # Expand the affix pattern strings into the expanded affix strings.  If any
     # affix pattern string is null, do not expand it.  This method should be
     # called any time the symbols or the affix patterns change in order to keep
@@ -1987,7 +1939,6 @@ module Java::Text
     end
     
     typesig { [String, StringBuffer] }
-    # 
     # Expand an affix pattern into an affix string.  All characters in the
     # pattern are literal unless prefixed by QUOTE.  The following characters
     # after QUOTE are recognized: PATTERN_PERCENT, PATTERN_PER_MILLE,
@@ -2031,7 +1982,6 @@ module Java::Text
     end
     
     typesig { [String] }
-    # 
     # Expand an affix pattern into an array of FieldPositions describing
     # how the pattern would be expanded.
     # All characters in the
@@ -2095,10 +2045,10 @@ module Java::Text
             if ((positions).nil?)
               positions = ArrayList.new(2)
             end
-            fp_ = FieldPosition.new(field_id, field)
-            fp_.set_begin_index(string_index)
-            fp_.set_end_index(string_index + 1)
-            positions.add(fp_)
+            fp = FieldPosition.new(field_id, field)
+            fp.set_begin_index(string_index)
+            fp.set_end_index(string_index + 1)
+            positions.add(fp)
           end
         end
         ((string_index += 1) - 1)
@@ -2110,7 +2060,6 @@ module Java::Text
     end
     
     typesig { [StringBuffer, String, String, ::Java::Boolean] }
-    # 
     # Appends an affix pattern to the given StringBuffer, quoting special
     # characters as needed.  Uses the internal affix pattern, if that exists,
     # or the literal affix, if the internal affix pattern is null.  The
@@ -2169,7 +2118,6 @@ module Java::Text
     end
     
     typesig { [StringBuffer, String, ::Java::Boolean] }
-    # 
     # Append an affix to the given StringBuffer, using quotes if
     # there are special characters.  Single quotes themselves must be
     # escaped in either case.
@@ -2202,7 +2150,6 @@ module Java::Text
     end
     
     typesig { [::Java::Boolean] }
-    # 
     # Does the real work of generating a pattern.
     def to_pattern(localized)
       result = StringBuffer.new
@@ -2262,7 +2209,6 @@ module Java::Text
     end
     
     typesig { [String] }
-    # 
     # Apply the given pattern to this Format object.  A pattern is a
     # short-hand specification for the various formatting properties.
     # These properties can also be changed individually through the
@@ -2287,7 +2233,6 @@ module Java::Text
     end
     
     typesig { [String] }
-    # 
     # Apply the given pattern to this Format object.  The pattern
     # is assumed to be in a localized notation. A pattern is a
     # short-hand specification for the various formatting properties.
@@ -2313,7 +2258,6 @@ module Java::Text
     end
     
     typesig { [String, ::Java::Boolean] }
-    # 
     # Does the real work of applying a pattern.
     def apply_pattern(pattern, localized)
       zero_digit = PATTERN_ZERO_DIGIT
@@ -2636,7 +2580,6 @@ module Java::Text
     end
     
     typesig { [::Java::Int] }
-    # 
     # Sets the maximum number of digits allowed in the integer portion of a
     # number.
     # For formatting numbers other than <code>BigInteger</code> and
@@ -2653,7 +2596,6 @@ module Java::Text
     end
     
     typesig { [::Java::Int] }
-    # 
     # Sets the minimum number of digits allowed in the integer portion of a
     # number.
     # For formatting numbers other than <code>BigInteger</code> and
@@ -2670,7 +2612,6 @@ module Java::Text
     end
     
     typesig { [::Java::Int] }
-    # 
     # Sets the maximum number of digits allowed in the fraction portion of a
     # number.
     # For formatting numbers other than <code>BigInteger</code> and
@@ -2687,7 +2628,6 @@ module Java::Text
     end
     
     typesig { [::Java::Int] }
-    # 
     # Sets the minimum number of digits allowed in the fraction portion of a
     # number.
     # For formatting numbers other than <code>BigInteger</code> and
@@ -2704,7 +2644,6 @@ module Java::Text
     end
     
     typesig { [] }
-    # 
     # Gets the maximum number of digits allowed in the integer portion of a
     # number.
     # For formatting numbers other than <code>BigInteger</code> and
@@ -2716,7 +2655,6 @@ module Java::Text
     end
     
     typesig { [] }
-    # 
     # Gets the minimum number of digits allowed in the integer portion of a
     # number.
     # For formatting numbers other than <code>BigInteger</code> and
@@ -2728,7 +2666,6 @@ module Java::Text
     end
     
     typesig { [] }
-    # 
     # Gets the maximum number of digits allowed in the fraction portion of a
     # number.
     # For formatting numbers other than <code>BigInteger</code> and
@@ -2740,7 +2677,6 @@ module Java::Text
     end
     
     typesig { [] }
-    # 
     # Gets the minimum number of digits allowed in the fraction portion of a
     # number.
     # For formatting numbers other than <code>BigInteger</code> and
@@ -2752,7 +2688,6 @@ module Java::Text
     end
     
     typesig { [] }
-    # 
     # Gets the currency used by this decimal format when formatting
     # currency values.
     # The currency is obtained by calling
@@ -2766,7 +2701,6 @@ module Java::Text
     end
     
     typesig { [Currency] }
-    # 
     # Sets the currency used by this number format when formatting
     # currency values. This does not update the minimum or maximum
     # number of fraction digits used by the number format.
@@ -2787,7 +2721,6 @@ module Java::Text
     end
     
     typesig { [] }
-    # 
     # Gets the {@link java.math.RoundingMode} used in this DecimalFormat.
     # 
     # @return The <code>RoundingMode</code> used for this DecimalFormat.
@@ -2798,7 +2731,6 @@ module Java::Text
     end
     
     typesig { [RoundingMode] }
-    # 
     # Sets the {@link java.math.RoundingMode} used in this DecimalFormat.
     # 
     # @param roundingMode The <code>RoundingMode</code> to be used
@@ -2814,7 +2746,6 @@ module Java::Text
     end
     
     typesig { [] }
-    # 
     # Adjusts the minimum and maximum fraction digits to values that
     # are reasonable for the currency's default fraction digits.
     def adjust_for_currency_default_fraction_digits
@@ -2843,7 +2774,6 @@ module Java::Text
     end
     
     typesig { [ObjectInputStream] }
-    # 
     # Reads the default serializable fields from the stream and performs
     # validations and adjustments for older serialized versions. The
     # validations and adjustments are:
@@ -2919,7 +2849,6 @@ module Java::Text
     alias_method :attr_digit_list=, :digit_list=
     undef_method :digit_list=
     
-    # 
     # The symbol used as a prefix when formatting positive numbers, e.g. "+".
     # 
     # @serial
@@ -2930,7 +2859,6 @@ module Java::Text
     alias_method :attr_positive_prefix=, :positive_prefix=
     undef_method :positive_prefix=
     
-    # 
     # The symbol used as a suffix when formatting positive numbers.
     # This is often an empty string.
     # 
@@ -2942,7 +2870,6 @@ module Java::Text
     alias_method :attr_positive_suffix=, :positive_suffix=
     undef_method :positive_suffix=
     
-    # 
     # The symbol used as a prefix when formatting negative numbers, e.g. "-".
     # 
     # @serial
@@ -2953,7 +2880,6 @@ module Java::Text
     alias_method :attr_negative_prefix=, :negative_prefix=
     undef_method :negative_prefix=
     
-    # 
     # The symbol used as a suffix when formatting negative numbers.
     # This is often an empty string.
     # 
@@ -2965,7 +2891,6 @@ module Java::Text
     alias_method :attr_negative_suffix=, :negative_suffix=
     undef_method :negative_suffix=
     
-    # 
     # The prefix pattern for non-negative numbers.  This variable corresponds
     # to <code>positivePrefix</code>.
     # 
@@ -2985,7 +2910,6 @@ module Java::Text
     alias_method :attr_pos_prefix_pattern=, :pos_prefix_pattern=
     undef_method :pos_prefix_pattern=
     
-    # 
     # The suffix pattern for non-negative numbers.  This variable corresponds
     # to <code>positiveSuffix</code>.  This variable is analogous to
     # <code>posPrefixPattern</code>; see that variable for further
@@ -2999,7 +2923,6 @@ module Java::Text
     alias_method :attr_pos_suffix_pattern=, :pos_suffix_pattern=
     undef_method :pos_suffix_pattern=
     
-    # 
     # The prefix pattern for negative numbers.  This variable corresponds
     # to <code>negativePrefix</code>.  This variable is analogous to
     # <code>posPrefixPattern</code>; see that variable for further
@@ -3013,7 +2936,6 @@ module Java::Text
     alias_method :attr_neg_prefix_pattern=, :neg_prefix_pattern=
     undef_method :neg_prefix_pattern=
     
-    # 
     # The suffix pattern for negative numbers.  This variable corresponds
     # to <code>negativeSuffix</code>.  This variable is analogous to
     # <code>posPrefixPattern</code>; see that variable for further
@@ -3027,7 +2949,6 @@ module Java::Text
     alias_method :attr_neg_suffix_pattern=, :neg_suffix_pattern=
     undef_method :neg_suffix_pattern=
     
-    # 
     # The multiplier for use in percent, per mille, etc.
     # 
     # @serial
@@ -3038,7 +2959,6 @@ module Java::Text
     alias_method :attr_multiplier=, :multiplier=
     undef_method :multiplier=
     
-    # 
     # The number of digits between grouping separators in the integer
     # portion of a number.  Must be greater than 0 if
     # <code>NumberFormat.groupingUsed</code> is true.
@@ -3065,7 +2985,6 @@ module Java::Text
     alias_method :attr_decimal_separator_always_shown=, :decimal_separator_always_shown=
     undef_method :decimal_separator_always_shown=
     
-    # 
     # If true, parse returns BigDecimal wherever possible.
     # 
     # @serial
@@ -3077,7 +2996,6 @@ module Java::Text
     alias_method :attr_parse_big_decimal=, :parse_big_decimal=
     undef_method :parse_big_decimal=
     
-    # 
     # True if this object represents a currency format.  This determines
     # whether the monetary decimal separator is used instead of the normal one.
     attr_accessor :is_currency_format
@@ -3086,7 +3004,6 @@ module Java::Text
     alias_method :attr_is_currency_format=, :is_currency_format=
     undef_method :is_currency_format=
     
-    # 
     # The <code>DecimalFormatSymbols</code> object used by this format.
     # It contains the symbols used to format numbers, e.g. the grouping separator,
     # decimal separator, and so on.
@@ -3124,7 +3041,6 @@ module Java::Text
     alias_method :attr_positive_prefix_field_positions=, :positive_prefix_field_positions=
     undef_method :positive_prefix_field_positions=
     
-    # 
     # FieldPositions describing the positive suffix String. This is
     # lazily created. Use <code>getPositiveSuffixFieldPositions</code>
     # when needed.
@@ -3134,7 +3050,6 @@ module Java::Text
     alias_method :attr_positive_suffix_field_positions=, :positive_suffix_field_positions=
     undef_method :positive_suffix_field_positions=
     
-    # 
     # FieldPositions describing the negative prefix String. This is
     # lazily created. Use <code>getNegativePrefixFieldPositions</code>
     # when needed.
@@ -3144,7 +3059,6 @@ module Java::Text
     alias_method :attr_negative_prefix_field_positions=, :negative_prefix_field_positions=
     undef_method :negative_prefix_field_positions=
     
-    # 
     # FieldPositions describing the negative suffix String. This is
     # lazily created. Use <code>getNegativeSuffixFieldPositions</code>
     # when needed.
@@ -3154,7 +3068,6 @@ module Java::Text
     alias_method :attr_negative_suffix_field_positions=, :negative_suffix_field_positions=
     undef_method :negative_suffix_field_positions=
     
-    # 
     # The minimum number of digits used to display the exponent when a number is
     # formatted in exponential notation.  This field is ignored if
     # <code>useExponentialNotation</code> is not true.
@@ -3183,7 +3096,6 @@ module Java::Text
     alias_method :attr_maximum_integer_digits=, :maximum_integer_digits=
     undef_method :maximum_integer_digits=
     
-    # 
     # The minimum number of digits allowed in the integer portion of a
     # <code>BigInteger</code> or <code>BigDecimal</code> number.
     # <code>minimumIntegerDigits</code> must be less than or equal to
@@ -3198,7 +3110,6 @@ module Java::Text
     alias_method :attr_minimum_integer_digits=, :minimum_integer_digits=
     undef_method :minimum_integer_digits=
     
-    # 
     # The maximum number of digits allowed in the fractional portion of a
     # <code>BigInteger</code> or <code>BigDecimal</code> number.
     # <code>maximumFractionDigits</code> must be greater than or equal to
@@ -3213,7 +3124,6 @@ module Java::Text
     alias_method :attr_maximum_fraction_digits=, :maximum_fraction_digits=
     undef_method :maximum_fraction_digits=
     
-    # 
     # The minimum number of digits allowed in the fractional portion of a
     # <code>BigInteger</code> or <code>BigDecimal</code> number.
     # <code>minimumFractionDigits</code> must be less than or equal to
@@ -3228,7 +3138,6 @@ module Java::Text
     alias_method :attr_minimum_fraction_digits=, :minimum_fraction_digits=
     undef_method :minimum_fraction_digits=
     
-    # 
     # The {@link java.math.RoundingMode} used in this DecimalFormat.
     # 
     # @serial
@@ -3245,7 +3154,6 @@ module Java::Text
       const_attr_reader  :CurrentSerialVersion
     }
     
-    # 
     # The internal serial version which says which version was written.
     # Possible values are:
     # <ul>
@@ -3305,7 +3213,6 @@ module Java::Text
       const_set_lazy(:PATTERN_MINUS) { Character.new(?-.ord) }
       const_attr_reader  :PATTERN_MINUS
       
-      # 
       # The CURRENCY_SIGN is the standard Unicode symbol for currency.  It
       # is used in patterns and substituted with either the currency symbol,
       # or if it is doubled, with the international currency symbol.  If the
@@ -3348,7 +3255,6 @@ module Java::Text
       const_set_lazy(:SerialVersionUID) { 864413376551465018 }
       const_attr_reader  :SerialVersionUID
       
-      # 
       # Cache to hold the NumberPattern of a Locale.
       
       def cached_locale_data

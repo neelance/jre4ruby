@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 1997-2003 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -36,7 +35,6 @@ module Sun::Security::X509
     }
   end
   
-  # 
   # This class defines the certificate policy set ASN.1 object.
   # 
   # @author Amit Kapoor
@@ -51,7 +49,6 @@ module Sun::Security::X509
     undef_method :ids=
     
     typesig { [Vector] }
-    # 
     # The default constructor for this class.
     # 
     # @param ids the sequence of CertificatePolicyId's.
@@ -61,7 +58,6 @@ module Sun::Security::X509
     end
     
     typesig { [DerInputStream] }
-    # 
     # Create the object from the DerValue.
     # 
     # @param in the passed DerInputStream.
@@ -79,7 +75,6 @@ module Sun::Security::X509
     end
     
     typesig { [] }
-    # 
     # Return printable form of the object.
     def to_s
       s = "CertificatePolicySet:[\n" + (@ids.to_s).to_s + "]\n"
@@ -87,7 +82,6 @@ module Sun::Security::X509
     end
     
     typesig { [DerOutputStream] }
-    # 
     # Encode the policy set to the output stream.
     # 
     # @param out the DerOutputStream to encode the data to.
@@ -102,7 +96,6 @@ module Sun::Security::X509
     end
     
     typesig { [] }
-    # 
     # Return the sequence of CertificatePolicyIds.
     # 
     # @return A List containing the CertificatePolicyId objects.

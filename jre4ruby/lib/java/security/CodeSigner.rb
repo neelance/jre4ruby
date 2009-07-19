@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 2003-2004 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -33,7 +32,6 @@ module Java::Security
     }
   end
   
-  # 
   # This class encapsulates information about a code signer.
   # It is immutable.
   # 
@@ -48,7 +46,6 @@ module Java::Security
       const_attr_reader  :SerialVersionUID
     }
     
-    # 
     # The signer's certificate path.
     # 
     # @serial
@@ -58,7 +55,6 @@ module Java::Security
     alias_method :attr_signer_cert_path=, :signer_cert_path=
     undef_method :signer_cert_path=
     
-    # 
     # The signature timestamp.
     # 
     # @serial
@@ -68,7 +64,6 @@ module Java::Security
     alias_method :attr_timestamp=, :timestamp=
     undef_method :timestamp=
     
-    # 
     # Hash code for this code signer.
     attr_accessor :myhash
     alias_method :attr_myhash, :myhash
@@ -77,7 +72,6 @@ module Java::Security
     undef_method :myhash=
     
     typesig { [CertPath, Timestamp] }
-    # 
     # Constructs a CodeSigner object.
     # 
     # @param signerCertPath The signer's certificate path.
@@ -99,7 +93,6 @@ module Java::Security
     end
     
     typesig { [] }
-    # 
     # Returns the signer's certificate path.
     # 
     # @return A certificate path.
@@ -108,7 +101,6 @@ module Java::Security
     end
     
     typesig { [] }
-    # 
     # Returns the signature timestamp.
     # 
     # @return The timestamp or <code>null</code> if none is present.
@@ -117,7 +109,6 @@ module Java::Security
     end
     
     typesig { [] }
-    # 
     # Returns the hash code value for this code signer.
     # The hash code is generated using the signer's certificate path and the
     # timestamp, if present.
@@ -135,7 +126,6 @@ module Java::Security
     end
     
     typesig { [Object] }
-    # 
     # Tests for equality between the specified object and this
     # code signer. Two code signers are considered equal if their
     # signer certificate paths are equal and if their timestamps are equal,
@@ -166,7 +156,6 @@ module Java::Security
     end
     
     typesig { [] }
-    # 
     # Returns a string describing this code signer.
     # 
     # @return A string comprising the signer's certificate and a timestamp,

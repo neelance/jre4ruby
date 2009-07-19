@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 2005-2006 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -40,7 +39,6 @@ module Sun::Security::Jgss::Spnego
     }
   end
   
-  # 
   # SpNego Mechanism plug in for JGSS
   # This is the properties object required by the JGSS framework.
   # All mechanism specific information is defined here.
@@ -97,8 +95,8 @@ module Sun::Security::Jgss::Spnego
               krb_cred = cred
               Krb5MechFactory.check_init_cred_permission(krb_cred.get_name)
             else
-              krb_cred_ = cred
-              Krb5MechFactory.check_accept_cred_permission(krb_cred_.get_name, name)
+              krb_cred = cred
+              Krb5MechFactory.check_accept_cred_permission(krb_cred.get_name, name)
             end
           end
         end

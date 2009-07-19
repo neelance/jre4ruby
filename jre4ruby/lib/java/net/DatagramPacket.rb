@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 1995-2006 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -31,7 +30,6 @@ module Java::Net
     }
   end
   
-  # 
   # This class represents a datagram packet.
   # <p>
   # Datagram packets are used to implement a connectionless packet
@@ -48,7 +46,6 @@ module Java::Net
     include_class_members DatagramPacketImports
     
     class_module.module_eval {
-      # 
       # Perform class initialization
       when_class_loaded do
         Java::Security::AccessController.do_privileged(Sun::Security::Action::LoadLibraryAction.new("net"))
@@ -56,7 +53,6 @@ module Java::Net
       end
     }
     
-    # 
     # The fields of this class are package-private since DatagramSocketImpl
     # classes needs to access them.
     attr_accessor :buf
@@ -96,7 +92,6 @@ module Java::Net
     undef_method :port=
     
     typesig { [Array.typed(::Java::Byte), ::Java::Int, ::Java::Int] }
-    # 
     # Constructs a <code>DatagramPacket</code> for receiving packets of
     # length <code>length</code>, specifying an offset into the buffer.
     # <p>
@@ -121,7 +116,6 @@ module Java::Net
     end
     
     typesig { [Array.typed(::Java::Byte), ::Java::Int] }
-    # 
     # Constructs a <code>DatagramPacket</code> for receiving packets of
     # length <code>length</code>.
     # <p>
@@ -135,7 +129,6 @@ module Java::Net
     end
     
     typesig { [Array.typed(::Java::Byte), ::Java::Int, ::Java::Int, InetAddress, ::Java::Int] }
-    # 
     # Constructs a datagram packet for sending packets of length
     # <code>length</code> with offset <code>ioffset</code>to the
     # specified port number on the specified host. The
@@ -163,7 +156,6 @@ module Java::Net
     end
     
     typesig { [Array.typed(::Java::Byte), ::Java::Int, ::Java::Int, SocketAddress] }
-    # 
     # Constructs a datagram packet for sending packets of length
     # <code>length</code> with offset <code>ioffset</code>to the
     # specified port number on the specified host. The
@@ -190,7 +182,6 @@ module Java::Net
     end
     
     typesig { [Array.typed(::Java::Byte), ::Java::Int, InetAddress, ::Java::Int] }
-    # 
     # Constructs a datagram packet for sending packets of length
     # <code>length</code> to the specified port number on the specified
     # host. The <code>length</code> argument must be less than or equal
@@ -206,7 +197,6 @@ module Java::Net
     end
     
     typesig { [Array.typed(::Java::Byte), ::Java::Int, SocketAddress] }
-    # 
     # Constructs a datagram packet for sending packets of length
     # <code>length</code> to the specified port number on the specified
     # host. The <code>length</code> argument must be less than or equal
@@ -223,7 +213,6 @@ module Java::Net
     end
     
     typesig { [] }
-    # 
     # Returns the IP address of the machine to which this datagram is being
     # sent or from which the datagram was received.
     # 
@@ -238,7 +227,6 @@ module Java::Net
     end
     
     typesig { [] }
-    # 
     # Returns the port number on the remote host to which this datagram is
     # being sent or from which the datagram was received.
     # 
@@ -252,7 +240,6 @@ module Java::Net
     end
     
     typesig { [] }
-    # 
     # Returns the data buffer. The data received or the data to be sent
     # starts from the <code>offset</code> in the buffer,
     # and runs for <code>length</code> long.
@@ -266,7 +253,6 @@ module Java::Net
     end
     
     typesig { [] }
-    # 
     # Returns the offset of the data to be sent or the offset of the
     # data received.
     # 
@@ -281,7 +267,6 @@ module Java::Net
     end
     
     typesig { [] }
-    # 
     # Returns the length of the data to be sent or the length of the
     # data received.
     # 
@@ -295,7 +280,6 @@ module Java::Net
     end
     
     typesig { [Array.typed(::Java::Byte), ::Java::Int, ::Java::Int] }
-    # 
     # Set the data buffer for this packet. This sets the
     # data, length and offset of the packet.
     # 
@@ -327,7 +311,6 @@ module Java::Net
     end
     
     typesig { [InetAddress] }
-    # 
     # Sets the IP address of the machine to which this datagram
     # is being sent.
     # @param iaddr the <code>InetAddress</code>
@@ -340,7 +323,6 @@ module Java::Net
     end
     
     typesig { [::Java::Int] }
-    # 
     # Sets the port number on the remote host to which this datagram
     # is being sent.
     # @param iport the port number
@@ -356,7 +338,6 @@ module Java::Net
     end
     
     typesig { [SocketAddress] }
-    # 
     # Sets the SocketAddress (usually IP address + port number) of the remote
     # host to which this datagram is being sent.
     # 
@@ -381,7 +362,6 @@ module Java::Net
     end
     
     typesig { [] }
-    # 
     # Gets the SocketAddress (usually IP address + port number) of the remote
     # host that this packet is being sent to or is coming from.
     # 
@@ -395,7 +375,6 @@ module Java::Net
     end
     
     typesig { [Array.typed(::Java::Byte)] }
-    # 
     # Set the data buffer for this packet. With the offset of
     # this DatagramPacket set to 0, and the length set to
     # the length of <code>buf</code>.
@@ -421,7 +400,6 @@ module Java::Net
     end
     
     typesig { [::Java::Int] }
-    # 
     # Set the length for this packet. The length of the packet is
     # the number of bytes from the packet's data buffer that will be
     # sent, or the number of bytes of the packet's data buffer that
@@ -451,7 +429,6 @@ module Java::Net
     class_module.module_eval {
       JNI.native_method :Java_java_net_DatagramPacket_init, [:pointer, :long], :void
       typesig { [] }
-      # 
       # Perform class load-time initializations.
       def init
         JNI.__send__(:Java_java_net_DatagramPacket_init, JNI.env, self.jni_id)

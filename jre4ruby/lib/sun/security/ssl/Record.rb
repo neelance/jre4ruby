@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 1996-2007 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -31,7 +30,6 @@ module Sun::Security::Ssl
     }
   end
   
-  # 
   # SSL/TLS records, as pulled off (and put onto) a TCP stream.  This is
   # the base interface, which defines common information and interfaces
   # used by both Input and Output records.
@@ -41,7 +39,6 @@ module Sun::Security::Ssl
     include_class_members RecordImports
     
     class_module.module_eval {
-      # 
       # There are four SSL record types, which are part of the interface
       # to this level (along with the maximum record size)
       # 

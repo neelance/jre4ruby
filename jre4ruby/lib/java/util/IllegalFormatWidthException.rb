@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 2003 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -31,7 +30,6 @@ module Java::Util
     }
   end
   
-  # 
   # Unchecked exception thrown when the format width is a negative value other
   # than <tt>-1</tt> or is otherwise unsupported.
   # 
@@ -51,7 +49,6 @@ module Java::Util
     undef_method :w=
     
     typesig { [::Java::Int] }
-    # 
     # Constructs an instance of this class with the specified width.
     # 
     # @param  w
@@ -63,7 +60,6 @@ module Java::Util
     end
     
     typesig { [] }
-    # 
     # Returns the width
     # 
     # @return  The width

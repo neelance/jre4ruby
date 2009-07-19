@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 2000-2004 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -34,7 +33,6 @@ module Java::Nio::Channels
     }
   end
   
-  # 
   # A multiplexor of {@link SelectableChannel} objects.
   # 
   # <p> A selector may be created by invoking the {@link #open open} method of
@@ -208,14 +206,12 @@ module Java::Nio::Channels
     include_class_members SelectorImports
     
     typesig { [] }
-    # 
     # Initializes a new instance of this class.
     def initialize
     end
     
     class_module.module_eval {
       typesig { [] }
-      # 
       # Opens a selector.
       # 
       # <p> The new selector is created by invoking the {@link
@@ -233,7 +229,6 @@ module Java::Nio::Channels
     }
     
     typesig { [] }
-    # 
     # Tells whether or not this selector is open.  </p>
     # 
     # @return <tt>true</tt> if, and only if, this selector is open
@@ -242,7 +237,6 @@ module Java::Nio::Channels
     end
     
     typesig { [] }
-    # 
     # Returns the provider that created this channel.  </p>
     # 
     # @return  The provider that created this channel
@@ -251,7 +245,6 @@ module Java::Nio::Channels
     end
     
     typesig { [] }
-    # 
     # Returns this selector's key set.
     # 
     # <p> The key set is not directly modifiable.  A key is removed only after
@@ -270,7 +263,6 @@ module Java::Nio::Channels
     end
     
     typesig { [] }
-    # 
     # Returns this selector's selected-key set.
     # 
     # <p> Keys may be removed from, but not directly added to, the
@@ -288,7 +280,6 @@ module Java::Nio::Channels
     end
     
     typesig { [] }
-    # 
     # Selects a set of keys whose corresponding channels are ready for I/O
     # operations.
     # 
@@ -312,7 +303,6 @@ module Java::Nio::Channels
     end
     
     typesig { [::Java::Long] }
-    # 
     # Selects a set of keys whose corresponding channels are ready for I/O
     # operations.
     # 
@@ -346,7 +336,6 @@ module Java::Nio::Channels
     end
     
     typesig { [] }
-    # 
     # Selects a set of keys whose corresponding channels are ready for I/O
     # operations.
     # 
@@ -368,7 +357,6 @@ module Java::Nio::Channels
     end
     
     typesig { [] }
-    # 
     # Causes the first selection operation that has not yet returned to return
     # immediately.
     # 
@@ -391,7 +379,6 @@ module Java::Nio::Channels
     end
     
     typesig { [] }
-    # 
     # Closes this selector.
     # 
     # <p> If a thread is currently blocked in one of this selector's selection

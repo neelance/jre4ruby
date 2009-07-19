@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 1995-2003 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -39,7 +38,6 @@ module Sun::Net::Www::Protocol::Http
     }
   end
   
-  # 
   # AuthenticationInfo: Encapsulate the information needed to
   # authenticate a user to a server.
   # 
@@ -66,7 +64,6 @@ module Sun::Net::Www::Protocol::Http
       const_set_lazy(:PROXY_AUTHENTICATION) { Character.new(?p.ord) }
       const_attr_reader  :PROXY_AUTHENTICATION
       
-      # 
       # If true, then simultaneous authentication requests to the same realm/proxy
       # are serialized, in order to avoid a user having to type the same username/passwords
       # repeatedly, via the Authenticator. Default is false, which means that this
@@ -130,7 +127,6 @@ module Sun::Net::Www::Protocol::Http
     end
     
     class_module.module_eval {
-      # 
       # requests is used to ensure that interaction with the
       # Authenticator for a particular realm is single threaded.
       # ie. if multiple threads need to get credentials from the user
@@ -281,7 +277,6 @@ module Sun::Net::Www::Protocol::Http
     end
     
     typesig { [::Java::Char, ::Java::Char, URL, String] }
-    # 
     # Constructor used to limit the authorization to the path within
     # the URL. Use this constructor for origin server entries.
     def initialize(type, auth_type, url, realm)
@@ -315,7 +310,6 @@ module Sun::Net::Www::Protocol::Http
     
     class_module.module_eval {
       typesig { [String] }
-      # 
       # reduce the path to the root of where we think the
       # authorization begins. This could get shorter as
       # the url is traversed up following a successful challenge.
@@ -334,7 +328,6 @@ module Sun::Net::Www::Protocol::Http
       end
       
       typesig { [URL] }
-      # 
       # Returns info for the URL, for an HTTP server auth.  Used when we
       # don't yet know the realm
       # (i.e. when we're preemptively setting the auth).
@@ -348,7 +341,6 @@ module Sun::Net::Www::Protocol::Http
       end
       
       typesig { [URL, String, ::Java::Char] }
-      # 
       # Returns info for the URL, for an HTTP server auth.  Used when we
       # do know the realm (i.e. when we're responding to a challenge).
       # In this case we do not use the path because the protection space
@@ -368,7 +360,6 @@ module Sun::Net::Www::Protocol::Http
       end
       
       typesig { [String, URL] }
-      # 
       # Return the AuthenticationInfo object from the cache if it's path is
       # a substring of the supplied URLs path.
       def get_auth(key, url)
@@ -380,7 +371,6 @@ module Sun::Net::Www::Protocol::Http
       end
       
       typesig { [String, ::Java::Int] }
-      # 
       # Returns a firewall authentication, for the given host/port.  Used
       # for preemptive header-setting. Note, the protocol field is always
       # blank for proxies.
@@ -391,7 +381,6 @@ module Sun::Net::Www::Protocol::Http
       end
       
       typesig { [String, ::Java::Int, String, ::Java::Char] }
-      # 
       # Returns a firewall authentication, for the given host/port and realm.
       # Used in response to a challenge. Note, the protocol field is always
       # blank for proxies.
@@ -407,7 +396,6 @@ module Sun::Net::Www::Protocol::Http
     }
     
     typesig { [] }
-    # 
     # Add this authentication to the cache
     def add_to_cache
       self.attr_cache.put(cache_key(true), self)
@@ -428,7 +416,6 @@ module Sun::Net::Www::Protocol::Http
     end
     
     typesig { [] }
-    # 
     # Remove this authentication from the cache
     def remove_from_cache
       self.attr_cache.remove(cache_key(true), self)
@@ -438,14 +425,12 @@ module Sun::Net::Www::Protocol::Http
     end
     
     typesig { [] }
-    # 
     # @return true if this authentication supports preemptive authorization
     def supports_preemptive_authorization
       raise NotImplementedError
     end
     
     typesig { [] }
-    # 
     # @return the name of the HTTP header this authentication wants set.
     # This is used for preemptive authorization.
     def get_header_name
@@ -453,7 +438,6 @@ module Sun::Net::Www::Protocol::Http
     end
     
     typesig { [URL, String] }
-    # 
     # Calculates and returns the authentication header value based
     # on the stored authentication parameters. If the calculation does not depend
     # on the URL or the request method then these parameters are ignored.
@@ -466,7 +450,6 @@ module Sun::Net::Www::Protocol::Http
     end
     
     typesig { [HttpURLConnection, HeaderParser, String] }
-    # 
     # Set header(s) on the given connection.  Subclasses must override
     # This will only be called for
     # definitive (i.e. non-preemptive) authorization.
@@ -479,7 +462,6 @@ module Sun::Net::Www::Protocol::Http
     end
     
     typesig { [String] }
-    # 
     # Check if the header indicates that the current auth. parameters are stale.
     # If so, then replace the relevant field with the new value
     # and return true. Otherwise return false.
@@ -491,7 +473,6 @@ module Sun::Net::Www::Protocol::Http
     end
     
     typesig { [String, String, URL] }
-    # 
     # Check for any expected authentication information in the response
     # from the server
     def check_response(header, method, url)
@@ -499,7 +480,6 @@ module Sun::Net::Www::Protocol::Http
     end
     
     typesig { [::Java::Boolean] }
-    # 
     # Give a key for hash table lookups.
     # @param includeRealm if you want the realm considered.  Preemptively
     # setting an authorization is done before the realm is known.

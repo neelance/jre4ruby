@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 1996-2003 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -31,7 +30,6 @@ module Java::Util
     }
   end
   
-  # 
   # <p>
   # The root class from which all event state objects shall be derived.
   # <p>
@@ -49,7 +47,6 @@ module Java::Util
       const_attr_reader  :SerialVersionUID
     }
     
-    # 
     # The object on which the Event initially occurred.
     attr_accessor :source
     alias_method :attr_source, :source
@@ -58,7 +55,6 @@ module Java::Util
     undef_method :source=
     
     typesig { [Object] }
-    # 
     # Constructs a prototypical Event.
     # 
     # @param    source    The object on which the Event initially occurred.
@@ -72,7 +68,6 @@ module Java::Util
     end
     
     typesig { [] }
-    # 
     # The object on which the Event initially occurred.
     # 
     # @return   The object on which the Event initially occurred.
@@ -81,7 +76,6 @@ module Java::Util
     end
     
     typesig { [] }
-    # 
     # Returns a String representation of this EventObject.
     # 
     # @return  A a String representation of this EventObject.

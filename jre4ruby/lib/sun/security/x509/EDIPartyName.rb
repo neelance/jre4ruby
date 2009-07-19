@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 1997-2004 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -33,7 +32,6 @@ module Sun::Security::X509
     }
   end
   
-  # 
   # This class defines the EDIPartyName of the GeneralName choice.
   # The ASN.1 syntax for this is:
   # <pre>
@@ -78,7 +76,6 @@ module Sun::Security::X509
     undef_method :myhash=
     
     typesig { [String, String] }
-    # 
     # Create the EDIPartyName object from the specified names.
     # 
     # @param assignerName the name of the assigner
@@ -92,7 +89,6 @@ module Sun::Security::X509
     end
     
     typesig { [String] }
-    # 
     # Create the EDIPartyName object from the specified name.
     # 
     # @param partyName the name of the EDI party.
@@ -104,7 +100,6 @@ module Sun::Security::X509
     end
     
     typesig { [DerValue] }
-    # 
     # Create the EDIPartyName object from the passed encoded Der value.
     # 
     # @param derValue the encoded DER EDIPartyName.
@@ -141,14 +136,12 @@ module Sun::Security::X509
     end
     
     typesig { [] }
-    # 
     # Return the type of the GeneralName.
     def get_type
       return (GeneralNameInterface::NAME_EDI)
     end
     
     typesig { [DerOutputStream] }
-    # 
     # Encode the EDI party name into the DerOutputStream.
     # 
     # @param out the DER stream to encode the EDIPartyName to.
@@ -172,7 +165,6 @@ module Sun::Security::X509
     end
     
     typesig { [] }
-    # 
     # Return the assignerName
     # 
     # @returns String assignerName
@@ -181,7 +173,6 @@ module Sun::Security::X509
     end
     
     typesig { [] }
-    # 
     # Return the partyName
     # 
     # @returns String partyName
@@ -190,7 +181,6 @@ module Sun::Security::X509
     end
     
     typesig { [Object] }
-    # 
     # Compare this EDIPartyName with another.  Does a byte-string
     # comparison without regard to type of the partyName and
     # the assignerName.
@@ -224,7 +214,6 @@ module Sun::Security::X509
     end
     
     typesig { [] }
-    # 
     # Returns the hash code value for this EDIPartyName.
     # 
     # @return a hash code value.
@@ -239,14 +228,12 @@ module Sun::Security::X509
     end
     
     typesig { [] }
-    # 
     # Return the printable string.
     def to_s
       return ("EDIPartyName: " + ((((@assigner).nil?) ? "" : ("  nameAssigner = " + @assigner + ","))).to_s + "  partyName = " + @party)
     end
     
     typesig { [GeneralNameInterface] }
-    # 
     # Return constraint type:<ul>
     # <li>NAME_DIFF_TYPE = -1: input name is different type from name (i.e. does not constrain)
     # <li>NAME_MATCH = 0: input name matches name
@@ -275,7 +262,6 @@ module Sun::Security::X509
     end
     
     typesig { [] }
-    # 
     # Return subtree depth of this name for purposes of determining
     # NameConstraints minimum and maximum bounds and for calculating
     # path lengths in name subtrees.

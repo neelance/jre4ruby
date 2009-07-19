@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Portions Copyright 1996-2005 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -53,7 +52,6 @@ module Sun::Util::Resources
     }
   end
   
-  # 
   # Provides information about and access to resource bundles in the
   # sun.text.resources and sun.util.resources package.
   # 
@@ -66,7 +64,6 @@ module Sun::Util::Resources
       const_set_lazy(:LocaleDataJarName) { "localedata.jar" }
       const_attr_reader  :LocaleDataJarName
       
-      # 
       # Lazy load available locales.
       const_set_lazy(:AvailableLocales) { Class.new do
         include_class_members LocaleData
@@ -85,7 +82,6 @@ module Sun::Util::Resources
       end }
       
       typesig { [] }
-      # 
       # Returns a list of the installed locales. Currently, this simply returns
       # the list of locales for which a sun.text.resources.FormatData bundle
       # exists. This bundle family happens to be the one with the broadest
@@ -95,7 +91,6 @@ module Sun::Util::Resources
       end
       
       typesig { [Locale] }
-      # 
       # Gets a calendar data resource bundle, using privileges
       # to allow accessing a sun.* package.
       def get_calendar_data(locale)
@@ -103,7 +98,6 @@ module Sun::Util::Resources
       end
       
       typesig { [Locale] }
-      # 
       # Gets a currency names resource bundle, using privileges
       # to allow accessing a sun.* package.
       def get_currency_names(locale)
@@ -111,7 +105,6 @@ module Sun::Util::Resources
       end
       
       typesig { [Locale] }
-      # 
       # Gets a locale names resource bundle, using privileges
       # to allow accessing a sun.* package.
       def get_locale_names(locale)
@@ -119,7 +112,6 @@ module Sun::Util::Resources
       end
       
       typesig { [Locale] }
-      # 
       # Gets a time zone names resource bundle, using privileges
       # to allow accessing a sun.* package.
       def get_time_zone_names(locale)
@@ -127,7 +119,6 @@ module Sun::Util::Resources
       end
       
       typesig { [Locale] }
-      # 
       # Gets a collation data resource bundle, using privileges
       # to allow accessing a sun.* package.
       def get_collation_data(locale)
@@ -135,7 +126,6 @@ module Sun::Util::Resources
       end
       
       typesig { [Locale] }
-      # 
       # Gets a date format data resource bundle, using privileges
       # to allow accessing a sun.* package.
       def get_date_format_data(locale)
@@ -143,7 +133,6 @@ module Sun::Util::Resources
       end
       
       typesig { [Locale] }
-      # 
       # Gets a number format data resource bundle, using privileges
       # to allow accessing a sun.* package.
       def get_number_format_data(locale)
@@ -195,7 +184,6 @@ module Sun::Util::Resources
         }
         
         typesig { [String, Locale] }
-        # 
         # This method overrides the default implementation to search
         # from a prebaked locale string list to determin the candidate
         # locale list.
@@ -226,7 +214,6 @@ module Sun::Util::Resources
         end
         
         typesig { [String, Locale] }
-        # 
         # Overrides "getFallbackLocale" to return null so
         # that the fallback locale will be null.
         # @param baseName the resource bundle base name.
@@ -250,7 +237,6 @@ module Sun::Util::Resources
       end }
       
       typesig { [] }
-      # 
       # Returns true if the non European resources jar file exists in jre
       # extension directory.
       # @returns true if the jar file is there. Otherwise, returns false.
@@ -282,7 +268,6 @@ module Sun::Util::Resources
       end
       
       typesig { [] }
-      # 
       # This method gets the locale string list from LocaleDataMetaInfo class and
       # then contructs the Locale array based on the locale string returned above.
       # @returns the Locale array for the supported locale of JRE.

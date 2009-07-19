@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 2003-2004 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -31,7 +30,6 @@ module Java::Util
     }
   end
   
-  # 
   # Unchecked exception thrown when the argument corresponding to the format
   # specifier is of an incompatible type.
   # 
@@ -61,7 +59,6 @@ module Java::Util
     undef_method :arg=
     
     typesig { [::Java::Char, Class] }
-    # 
     # Constructs an instance of this class with the mismatched conversion and
     # the corresponding argument class.
     # 
@@ -82,7 +79,6 @@ module Java::Util
     end
     
     typesig { [] }
-    # 
     # Returns the inapplicable conversion.
     # 
     # @return  The inapplicable conversion
@@ -91,7 +87,6 @@ module Java::Util
     end
     
     typesig { [] }
-    # 
     # Returns the class of the mismatched argument.
     # 
     # @return   The class of the mismatched argument

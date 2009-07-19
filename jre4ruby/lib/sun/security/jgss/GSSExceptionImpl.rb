@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 2000-2006 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -32,7 +31,6 @@ module Sun::Security::Jgss
     }
   end
   
-  # 
   # This class helps overcome a limitation of the org.ietf.jgss.GSSException
   # class that does not allow the thrower to set a string corresponding to
   # the major code.
@@ -51,7 +49,6 @@ module Sun::Security::Jgss
     undef_method :major_message=
     
     typesig { [::Java::Int, Oid] }
-    # 
     # A constructor that takes the majorCode as well as the mech oid that
     # will be appended to the standard message defined in its super class.
     def initialize(major_code, mech)
@@ -61,7 +58,6 @@ module Sun::Security::Jgss
     end
     
     typesig { [::Java::Int, String] }
-    # 
     # A constructor that takes the majorCode as well as the message that
     # corresponds to it.
     def initialize(major_code, major_message)
@@ -71,7 +67,6 @@ module Sun::Security::Jgss
     end
     
     typesig { [::Java::Int, Exception] }
-    # 
     # A constructor that takes the majorCode and the exception cause.
     def initialize(major_code, cause)
       @major_message = nil
@@ -80,7 +75,6 @@ module Sun::Security::Jgss
     end
     
     typesig { [::Java::Int, String, Exception] }
-    # 
     # A constructor that takes the majorCode, the message that
     # corresponds to it, and the exception cause.
     def initialize(major_code, major_message, cause)
@@ -89,7 +83,6 @@ module Sun::Security::Jgss
     end
     
     typesig { [] }
-    # 
     # Returns the message that was embedded in this object, otherwise it
     # returns the default message that an org.ietf.jgss.GSSException
     # generates.

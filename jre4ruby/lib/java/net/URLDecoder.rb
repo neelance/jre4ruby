@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 1998-2006 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -32,7 +31,6 @@ module Java::Net
     }
   end
   
-  # 
   # Utility class for HTML form decoding. This class contains static methods
   # for decoding a String from the <CODE>application/x-www-form-urlencoded</CODE>
   # MIME format.
@@ -95,7 +93,6 @@ module Java::Net
       alias_method :attr_dflt_enc_name=, :dflt_enc_name=
       
       typesig { [String] }
-      # 
       # Decodes a <code>x-www-form-urlencoded</code> string.
       # The platform's default encoding is used to determine what characters
       # are represented by any consecutive sequences of the form
@@ -116,7 +113,6 @@ module Java::Net
       end
       
       typesig { [String, String] }
-      # 
       # Decodes a <code>application/x-www-form-urlencoded</code> string using a specific
       # encoding scheme.
       # The supplied encoding is used to determine
@@ -157,7 +153,6 @@ module Java::Net
             ((i += 1) - 1)
             need_to_change = true
           when Character.new(?%.ord)
-            # 
             # Starting with this instance of %, process all
             # consecutive substrings of the form %xy. Each
             # substring %xy will yield a byte. Convert all

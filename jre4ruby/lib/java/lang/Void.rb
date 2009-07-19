@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 1996-2006 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -30,7 +29,6 @@ module Java::Lang
     }
   end
   
-  # 
   # The {@code Void} class is an uninstantiable placeholder class to hold a
   # reference to the {@code Class} object representing the Java keyword
   # void.
@@ -41,7 +39,6 @@ module Java::Lang
     include_class_members VoidImports
     
     class_module.module_eval {
-      # 
       # The {@code Class} object representing the pseudo-type corresponding to
       # the keyword {@code void}.
       const_set_lazy(:TYPE) { Class.get_primitive_class("void") }
@@ -49,7 +46,6 @@ module Java::Lang
     }
     
     typesig { [] }
-    # 
     # The Void class cannot be instantiated.
     def initialize
     end

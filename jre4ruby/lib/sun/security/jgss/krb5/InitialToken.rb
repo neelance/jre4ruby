@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 2000-2006 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -128,7 +127,6 @@ module Sun::Security::Jgss::Krb5
         undef_method :flags=
         
         typesig { [Krb5Context, Credentials, Credentials] }
-        # 
         # Called on the initiator side when creating the
         # InitSecContextToken.
         def initialize(context, tgt, service_ticket)
@@ -212,12 +210,10 @@ module Sun::Security::Jgss::Krb5
               perm = DelegationPermission.new(buf.to_s)
               sm.check_permission(perm)
             end
-            # 
             # Write 1 in little endian but in two bytes
             # for DlgOpt
             @checksum_bytes[((pos += 1) - 1)] = 0x1
             @checksum_bytes[((pos += 1) - 1)] = 0x0
-            # 
             # Write the length of the delegated credential in little
             # endian but in two bytes for Dlgth
             if (krb_cred_message.attr_length > 0xffff)
@@ -231,7 +227,6 @@ module Sun::Security::Jgss::Krb5
         end
         
         typesig { [Krb5Context, Checksum, EncryptionKey] }
-        # 
         # Called on the acceptor side when reading an InitSecContextToken.
         # 
         # XXX Passing in Checksum is not required. byte[] can
@@ -276,7 +271,6 @@ module Sun::Security::Jgss::Krb5
           end
           @flags = read_little_endian(@checksum_bytes, 20, 4)
           if ((@flags & CHECKSUM_DELEG_FLAG) > 0)
-            # 
             # XXX
             # if ((checksumBytes[24] != (byte)0x01) &&
             # (checksumBytes[25] != (byte)0x00))

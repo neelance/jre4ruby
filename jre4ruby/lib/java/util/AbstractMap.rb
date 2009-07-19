@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 1997-2007 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -32,7 +31,6 @@ module Java::Util
     }
   end
   
-  # 
   # This class provides a skeletal implementation of the <tt>Map</tt>
   # interface, to minimize the effort required to implement this interface.
   # 
@@ -74,7 +72,6 @@ module Java::Util
     include Map
     
     typesig { [] }
-    # 
     # Sole constructor.  (For invocation by subclass constructors, typically
     # implicit.)
     def initialize
@@ -93,7 +90,6 @@ module Java::Util
     end
     
     typesig { [] }
-    # 
     # {@inheritDoc}
     # 
     # <p>This implementation returns <tt>size() == 0</tt>.
@@ -102,7 +98,6 @@ module Java::Util
     end
     
     typesig { [Object] }
-    # 
     # {@inheritDoc}
     # 
     # <p>This implementation iterates over <tt>entrySet()</tt> searching
@@ -124,8 +119,8 @@ module Java::Util
         end
       else
         while (i.has_next)
-          e_ = i.next
-          if ((value == e_.get_value))
+          e = i.next
+          if ((value == e.get_value))
             return true
           end
         end
@@ -134,7 +129,6 @@ module Java::Util
     end
     
     typesig { [Object] }
-    # 
     # {@inheritDoc}
     # 
     # <p>This implementation iterates over <tt>entrySet()</tt> searching
@@ -157,8 +151,8 @@ module Java::Util
         end
       else
         while (i.has_next)
-          e_ = i.next
-          if ((key == e_.get_key))
+          e = i.next
+          if ((key == e.get_key))
             return true
           end
         end
@@ -167,7 +161,6 @@ module Java::Util
     end
     
     typesig { [Object] }
-    # 
     # {@inheritDoc}
     # 
     # <p>This implementation iterates over <tt>entrySet()</tt> searching
@@ -190,9 +183,9 @@ module Java::Util
         end
       else
         while (i.has_next)
-          e_ = i.next
-          if ((key == e_.get_key))
-            return e_.get_value
+          e = i.next
+          if ((key == e.get_key))
+            return e.get_value
           end
         end
       end
@@ -216,7 +209,6 @@ module Java::Util
     end
     
     typesig { [Object] }
-    # 
     # {@inheritDoc}
     # 
     # <p>This implementation iterates over <tt>entrySet()</tt> searching for an
@@ -248,9 +240,9 @@ module Java::Util
         end
       else
         while ((correct_entry).nil? && i.has_next)
-          e_ = i.next
-          if ((key == e_.get_key))
-            correct_entry = e_
+          e = i.next
+          if ((key == e.get_key))
+            correct_entry = e
           end
         end
       end
@@ -286,7 +278,6 @@ module Java::Util
     end
     
     typesig { [] }
-    # 
     # {@inheritDoc}
     # 
     # <p>This implementation calls <tt>entrySet().clear()</tt>.
@@ -318,7 +309,6 @@ module Java::Util
     undef_method :values=
     
     typesig { [] }
-    # 
     # {@inheritDoc}
     # 
     # <p>This implementation returns a set that subclasses {@link AbstractSet}.
@@ -413,7 +403,6 @@ module Java::Util
     end
     
     typesig { [] }
-    # 
     # {@inheritDoc}
     # 
     # <p>This implementation returns a collection that subclasses {@link
@@ -570,7 +559,6 @@ module Java::Util
     end
     
     typesig { [] }
-    # 
     # Returns the hash code value for this map.  The hash code of a map is
     # defined to be the sum of the hash codes of each entry in the map's
     # <tt>entrySet()</tt> view.  This ensures that <tt>m1.equals(m2)</tt>
@@ -596,7 +584,6 @@ module Java::Util
     end
     
     typesig { [] }
-    # 
     # Returns a string representation of this map.  The string representation
     # consists of a list of key-value mappings in the order returned by the
     # map's <tt>entrySet</tt> view's iterator, enclosed in braces
@@ -629,7 +616,6 @@ module Java::Util
     end
     
     typesig { [] }
-    # 
     # Returns a shallow copy of this <tt>AbstractMap</tt> instance: the keys
     # and values themselves are not cloned.
     # 
@@ -643,7 +629,6 @@ module Java::Util
     
     class_module.module_eval {
       typesig { [Object, Object] }
-      # 
       # Utility method for SimpleEntry and SimpleImmutableEntry.
       # Test for equality, checking for nulls.
       def eq(o1, o2)
@@ -688,7 +673,6 @@ module Java::Util
         undef_method :value=
         
         typesig { [Object, Object] }
-        # 
         # Creates an entry representing a mapping from the specified
         # key to the specified value.
         # 
@@ -702,7 +686,6 @@ module Java::Util
         end
         
         typesig { [Entry] }
-        # 
         # Creates an entry representing the same mapping as the
         # specified entry.
         # 
@@ -715,7 +698,6 @@ module Java::Util
         end
         
         typesig { [] }
-        # 
         # Returns the key corresponding to this entry.
         # 
         # @return the key corresponding to this entry
@@ -724,7 +706,6 @@ module Java::Util
         end
         
         typesig { [] }
-        # 
         # Returns the value corresponding to this entry.
         # 
         # @return the value corresponding to this entry
@@ -733,7 +714,6 @@ module Java::Util
         end
         
         typesig { [Object] }
-        # 
         # Replaces the value corresponding to this entry with the specified
         # value.
         # 
@@ -746,7 +726,6 @@ module Java::Util
         end
         
         typesig { [Object] }
-        # 
         # Compares the specified object with this entry for equality.
         # Returns {@code true} if the given object is also a map entry and
         # the two entries represent the same mapping.  More formally, two
@@ -775,7 +754,6 @@ module Java::Util
         end
         
         typesig { [] }
-        # 
         # Returns the hash code value for this map entry.  The hash code
         # of a map entry {@code e} is defined to be: <pre>
         # (e.getKey()==null   ? 0 : e.getKey().hashCode()) ^
@@ -792,7 +770,6 @@ module Java::Util
         end
         
         typesig { [] }
-        # 
         # Returns a String representation of this map entry.  This
         # implementation returns the string representation of this
         # entry's key followed by the equals character ("<tt>=</tt>")
@@ -807,7 +784,6 @@ module Java::Util
         alias_method :initialize__simple_entry, :initialize
       end }
       
-      # 
       # An Entry maintaining an immutable key and value.  This class
       # does not support method <tt>setValue</tt>.  This class may be
       # convenient in methods that return thread-safe snapshots of
@@ -837,7 +813,6 @@ module Java::Util
         undef_method :value=
         
         typesig { [Object, Object] }
-        # 
         # Creates an entry representing a mapping from the specified
         # key to the specified value.
         # 
@@ -851,7 +826,6 @@ module Java::Util
         end
         
         typesig { [Entry] }
-        # 
         # Creates an entry representing the same mapping as the
         # specified entry.
         # 
@@ -864,7 +838,6 @@ module Java::Util
         end
         
         typesig { [] }
-        # 
         # Returns the key corresponding to this entry.
         # 
         # @return the key corresponding to this entry
@@ -873,7 +846,6 @@ module Java::Util
         end
         
         typesig { [] }
-        # 
         # Returns the value corresponding to this entry.
         # 
         # @return the value corresponding to this entry
@@ -882,7 +854,6 @@ module Java::Util
         end
         
         typesig { [Object] }
-        # 
         # Replaces the value corresponding to this entry with the specified
         # value (optional operation).  This implementation simply throws
         # <tt>UnsupportedOperationException</tt>, as this class implements
@@ -896,7 +867,6 @@ module Java::Util
         end
         
         typesig { [Object] }
-        # 
         # Compares the specified object with this entry for equality.
         # Returns {@code true} if the given object is also a map entry and
         # the two entries represent the same mapping.  More formally, two
@@ -925,7 +895,6 @@ module Java::Util
         end
         
         typesig { [] }
-        # 
         # Returns the hash code value for this map entry.  The hash code
         # of a map entry {@code e} is defined to be: <pre>
         # (e.getKey()==null   ? 0 : e.getKey().hashCode()) ^
@@ -942,7 +911,6 @@ module Java::Util
         end
         
         typesig { [] }
-        # 
         # Returns a String representation of this map entry.  This
         # implementation returns the string representation of this
         # entry's key followed by the equals character ("<tt>=</tt>")

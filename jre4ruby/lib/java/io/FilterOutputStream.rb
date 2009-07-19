@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 1994-1999 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -31,7 +30,6 @@ module Java::Io
     }
   end
   
-  # 
   # This class is the superclass of all classes that filter output
   # streams. These streams sit on top of an already existing output
   # stream (the <i>underlying</i> output stream) which it uses as its
@@ -49,7 +47,6 @@ module Java::Io
   class FilterOutputStream < FilterOutputStreamImports.const_get :OutputStream
     include_class_members FilterOutputStreamImports
     
-    # 
     # The underlying output stream to be filtered.
     attr_accessor :out
     alias_method :attr_out, :out
@@ -58,7 +55,6 @@ module Java::Io
     undef_method :out=
     
     typesig { [OutputStream] }
-    # 
     # Creates an output stream filter built on top of the specified
     # underlying output stream.
     # 
@@ -73,7 +69,6 @@ module Java::Io
     end
     
     typesig { [::Java::Int] }
-    # 
     # Writes the specified <code>byte</code> to this output stream.
     # <p>
     # The <code>write</code> method of <code>FilterOutputStream</code>
@@ -89,7 +84,6 @@ module Java::Io
     end
     
     typesig { [Array.typed(::Java::Byte)] }
-    # 
     # Writes <code>b.length</code> bytes to this output stream.
     # <p>
     # The <code>write</code> method of <code>FilterOutputStream</code>
@@ -109,7 +103,6 @@ module Java::Io
     end
     
     typesig { [Array.typed(::Java::Byte), ::Java::Int, ::Java::Int] }
-    # 
     # Writes <code>len</code> bytes from the specified
     # <code>byte</code> array starting at offset <code>off</code> to
     # this output stream.
@@ -140,7 +133,6 @@ module Java::Io
     end
     
     typesig { [] }
-    # 
     # Flushes this output stream and forces any buffered output bytes
     # to be written out to the stream.
     # <p>
@@ -154,7 +146,6 @@ module Java::Io
     end
     
     typesig { [] }
-    # 
     # Closes this output stream and releases any system resources
     # associated with the stream.
     # <p>

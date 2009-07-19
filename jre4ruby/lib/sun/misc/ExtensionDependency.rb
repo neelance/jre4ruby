@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 1999-2006 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -49,7 +48,6 @@ module Sun::Misc
     }
   end
   
-  # 
   # <p>
   # This class checks dependent extensions a particular jar file may have
   # declared through its manifest attributes.
@@ -88,7 +86,6 @@ module Sun::Misc
       alias_method :attr_providers=, :providers=
       
       typesig { [ExtensionInstallationProvider] }
-      # 
       # <p>
       # Register an ExtensionInstallationProvider. The provider is responsible
       # for handling the installation (upgrade) of any missing extensions.
@@ -104,7 +101,6 @@ module Sun::Misc
       end
       
       typesig { [ExtensionInstallationProvider] }
-      # 
       # <p>
       # Unregister a previously installed installation provider
       # </p>
@@ -115,7 +111,6 @@ module Sun::Misc
       end
       
       typesig { [JarFile] }
-      # 
       # <p>
       # Checks the dependencies of the jar file on installed extension.
       # </p>
@@ -137,7 +132,6 @@ module Sun::Misc
     }
     
     typesig { [JarFile] }
-    # 
     # Check for all declared required extensions in the jar file
     # manifest.
     def check_extensions(jar)
@@ -182,7 +176,6 @@ module Sun::Misc
     end
     
     typesig { [String, Attributes] }
-    # 
     # <p>
     # Check that a particular dependency on an extension is satisfied.
     # </p>
@@ -203,7 +196,6 @@ module Sun::Misc
     end
     
     typesig { [String, Attributes] }
-    # 
     # <p>
     # Check if a particular extension is part of the currently installed
     # extensions.
@@ -223,7 +215,7 @@ module Sun::Misc
         rescue FileNotFoundException => e
           debug_exception(e)
         rescue IOException => e
-          debug_exception(e_)
+          debug_exception(e)
         end
         return false
       else
@@ -235,7 +227,7 @@ module Sun::Misc
           # compare the installed versus the requested extension
           installed_exts = get_installed_extensions
         rescue IOException => e
-          debug_exception(e__)
+          debug_exception(e)
           return false
         end
         i = 0
@@ -245,9 +237,9 @@ module Sun::Misc
               return true
             end
           rescue FileNotFoundException => e
-            debug_exception(e___)
+            debug_exception(e)
           rescue IOException => e
-            debug_exception(e____)
+            debug_exception(e)
             # let's continue with the next installed extension
           end
           ((i += 1) - 1)
@@ -257,7 +249,6 @@ module Sun::Misc
     end
     
     typesig { [String, Attributes, JavaFile] }
-    # 
     # <p>
     # Check if the requested extension described by the attributes
     # in the manifest under the key extensionName is compatible with
@@ -330,7 +321,6 @@ module Sun::Misc
     end
     
     typesig { [ExtensionInfo, ExtensionInfo] }
-    # 
     # <p>
     # An required extension is missing, if an ExtensionInstallationProvider is
     # registered, delegate the installation of that particular extension to it.
@@ -365,7 +355,6 @@ module Sun::Misc
     end
     
     typesig { [String] }
-    # 
     # <p>
     # Checks if the extension, that is specified in the extension-list in
     # the applet jar manifest, is already installed (i.e. exists in the
@@ -427,7 +416,6 @@ module Sun::Misc
     
     class_module.module_eval {
       typesig { [] }
-      # 
       # <p>
       # @return the java.ext.dirs property as a list of directory
       # </p>
@@ -454,7 +442,6 @@ module Sun::Misc
       end
       
       typesig { [Array.typed(JavaFile)] }
-      # 
       # <p>
       # Scan the directories and return all files installed in those
       # </p>
@@ -486,7 +473,6 @@ module Sun::Misc
     }
     
     typesig { [] }
-    # 
     # <p>
     # @return the list of installed extensions jar files
     # </p>
@@ -518,7 +504,6 @@ module Sun::Misc
     end
     
     typesig { [Launcher::ExtClassLoader] }
-    # 
     # <p>
     # Add the newly installed jar file to the extension class loader.
     # </p>
@@ -577,7 +562,7 @@ module Sun::Misc
       rescue MalformedURLException => e
         e.print_stack_trace
       rescue IOException => e
-        e_.print_stack_trace
+        e.print_stack_trace
         # let's continue with the next installed extension
       end
       return Boolean::TRUE

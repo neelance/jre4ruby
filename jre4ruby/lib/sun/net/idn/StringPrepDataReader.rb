@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
 # This code is free software; you can redistribute it and/or modify it
@@ -51,7 +50,6 @@ module Sun::Net::Idn
     }
   end
   
-  # 
   # @author ram
   # 
   # To change the template for this generated type comment go to
@@ -61,7 +59,6 @@ module Sun::Net::Idn
     include ICUBinary::Authenticate
     
     typesig { [InputStream] }
-    # 
     # <p>private constructor.</p>
     # @param inputStream ICU uprop.dat file input stream
     # @exception IOException throw if data file fails authentication
@@ -128,7 +125,6 @@ module Sun::Net::Idn
     undef_method :unicode_version=
     
     class_module.module_eval {
-      # 
       # File format version that this class understands.
       # No guarantees are made if a older version is used
       # see store.c of gennorm for more information and values

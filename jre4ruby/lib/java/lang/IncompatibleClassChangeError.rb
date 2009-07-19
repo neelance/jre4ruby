@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 1994-1997 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -30,7 +29,6 @@ module Java::Lang
     }
   end
   
-  # 
   # Thrown when an incompatible class change has occurred to some class
   # definition. The definition of some class, on which the currently
   # executing method depends, has since changed.
@@ -41,7 +39,6 @@ module Java::Lang
     include_class_members IncompatibleClassChangeErrorImports
     
     typesig { [] }
-    # 
     # Constructs an <code>IncompatibleClassChangeError</code> with no
     # detail message.
     def initialize
@@ -49,7 +46,6 @@ module Java::Lang
     end
     
     typesig { [String] }
-    # 
     # Constructs an <code>IncompatibleClassChangeError</code> with the
     # specified detail message.
     # 

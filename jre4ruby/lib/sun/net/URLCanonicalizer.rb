@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 1996 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -31,7 +30,6 @@ module Sun::Net
     }
   end
   
-  # 
   # Helper class to map URL "abbreviations" to real URLs.
   # The default implementation supports the following mappings:
   # ftp.mumble.bar/... => ftp://ftp.mumble.bar/...
@@ -49,13 +47,11 @@ module Sun::Net
     include_class_members URLCanonicalizerImports
     
     typesig { [] }
-    # 
     # Creates the default canonicalizer instance.
     def initialize
     end
     
     typesig { [String] }
-    # 
     # Given a possibly abbreviated URL (missing a protocol name, typically),
     # this method's job is to transform that URL into a canonical form,
     # by including a protocol name and additional syntax, if necessary.
@@ -85,7 +81,6 @@ module Sun::Net
     end
     
     typesig { [String] }
-    # 
     # Given a possibly abbreviated URL, this predicate function returns
     # true if it appears that the URL contains a protocol name
     def has_protocol_name(url)
@@ -111,7 +106,6 @@ module Sun::Net
     end
     
     typesig { [String] }
-    # 
     # Returns true if the URL is just a single name, no periods or
     # slashes, false otherwise
     def is_simple_host_name(url)

@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 1995-2004 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -174,7 +173,6 @@ module Sun::Net::Www::Protocol::JavaFile
     end
     
     typesig { [] }
-    # 
     # Note: the semantics of FileURLConnection object is that the
     # results of the various URLConnection calls, such as
     # getContentType, getInputStream or getContentLength reflect
@@ -225,7 +223,6 @@ module Sun::Net::Www::Protocol::JavaFile
             self.attr_properties.add(self.attr_content_type, @content_type)
           end
           self.attr_properties.add(self.attr_content_length, String.value_of(@length))
-          # 
           # Format the last-modified field into the preferred
           # Internet standard - ie: fixed-length subset of that
           # defined by RFC 1123

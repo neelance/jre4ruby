@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 2003-2006 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -34,7 +33,6 @@ module Sun::Security::Action
     }
   end
   
-  # 
   # A convenience PrivilegedAction class for setting the properties of
   # a provider. See the SunRsaSign provider for a usage example.
   # 

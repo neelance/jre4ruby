@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 2003-2004 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -31,7 +30,6 @@ module Java::Util::Logging
     }
   end
   
-  # 
   # The management interface for the logging facility.
   # 
   # <p>There is a single global instance of the <tt>LoggingMXBean</tt>.
@@ -58,7 +56,6 @@ module Java::Util::Logging
     include_class_members LoggingMXBeanImports
     
     typesig { [] }
-    # 
     # Returns the list of currently registered loggers. This method
     # calls {@link LogManager#getLoggerNames} and returns a list
     # of the logger names.
@@ -70,7 +67,6 @@ module Java::Util::Logging
     end
     
     typesig { [String] }
-    # 
     # Gets the name of the log level associated with the specified logger.
     # If the specified logger does not exist, <tt>null</tt>
     # is returned.
@@ -98,7 +94,6 @@ module Java::Util::Logging
     end
     
     typesig { [String, String] }
-    # 
     # Sets the specified logger to the specified new level.
     # If the <tt>levelName</tt> is not <tt>null</tt>, the level
     # of the specified logger is set to the parsed <tt>Level</tt>
@@ -126,7 +121,6 @@ module Java::Util::Logging
     end
     
     typesig { [String] }
-    # 
     # Returns the name of the parent for the specified logger.
     # If the specified logger does not exist, <tt>null</tt> is returned.
     # If the specified logger is the root <tt>Logger</tt> in the namespace,

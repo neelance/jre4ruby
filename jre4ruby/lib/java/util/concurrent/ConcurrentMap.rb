@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
 # This code is free software; you can redistribute it and/or modify it
@@ -41,7 +40,6 @@ module Java::Util::Concurrent
     }
   end
   
-  # 
   # A {@link java.util.Map} providing additional atomic
   # <tt>putIfAbsent</tt>, <tt>remove</tt>, and <tt>replace</tt> methods.
   # 
@@ -65,7 +63,6 @@ module Java::Util::Concurrent
     include Map
     
     typesig { [Object, Object] }
-    # 
     # If the specified key is not already associated
     # with a value, associate it with the given value.
     # This is equivalent to
@@ -96,7 +93,6 @@ module Java::Util::Concurrent
     end
     
     typesig { [Object, Object] }
-    # 
     # Removes the entry for a key only if currently mapped to a given value.
     # This is equivalent to
     # <pre>
@@ -120,7 +116,6 @@ module Java::Util::Concurrent
     end
     
     typesig { [Object, Object, Object] }
-    # 
     # Replaces the entry for a key only if currently mapped to a given value.
     # This is equivalent to
     # <pre>
@@ -147,7 +142,6 @@ module Java::Util::Concurrent
     end
     
     typesig { [Object, Object] }
-    # 
     # Replaces the entry for a key only if currently mapped to some value.
     # This is equivalent to
     # <pre>

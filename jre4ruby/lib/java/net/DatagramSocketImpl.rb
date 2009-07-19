@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 1996-2006 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -34,7 +33,6 @@ module Java::Net
     }
   end
   
-  # 
   # Abstract datagram and multicast socket implementation base class.
   # @author Pavani Diwanji
   # @since  JDK1.1
@@ -42,7 +40,6 @@ module Java::Net
     include_class_members DatagramSocketImplImports
     include SocketOptions
     
-    # 
     # The local port number.
     attr_accessor :local_port
     alias_method :attr_local_port, :local_port
@@ -50,7 +47,6 @@ module Java::Net
     alias_method :attr_local_port=, :local_port=
     undef_method :local_port=
     
-    # 
     # The file descriptor object.
     attr_accessor :fd
     alias_method :attr_fd, :fd
@@ -59,7 +55,6 @@ module Java::Net
     undef_method :fd=
     
     typesig { [] }
-    # 
     # Creates a datagram socket.
     # @exception SocketException if there is an error in the
     # underlying protocol, such as a TCP error.
@@ -68,7 +63,6 @@ module Java::Net
     end
     
     typesig { [::Java::Int, InetAddress] }
-    # 
     # Binds a datagram socket to a local port and address.
     # @param lport the local port
     # @param laddr the local address
@@ -79,7 +73,6 @@ module Java::Net
     end
     
     typesig { [DatagramPacket] }
-    # 
     # Sends a datagram packet. The packet contains the data and the
     # destination address to send the packet to.
     # @param p the packet to be sent.
@@ -93,7 +86,6 @@ module Java::Net
     end
     
     typesig { [InetAddress, ::Java::Int] }
-    # 
     # Connects a datagram socket to a remote destination. This associates the remote
     # address with the local socket so that datagrams may only be sent to this destination
     # and received from this destination. This may be overridden to call a native
@@ -113,14 +105,12 @@ module Java::Net
     end
     
     typesig { [] }
-    # 
     # Disconnects a datagram socket from its remote destination.
     # @since 1.4
     def disconnect
     end
     
     typesig { [InetAddress] }
-    # 
     # Peek at the packet to see who it is from. Updates the specified <code>InetAddress</code>
     # to the address which the packet came from.
     # @param i an InetAddress object
@@ -134,7 +124,6 @@ module Java::Net
     end
     
     typesig { [DatagramPacket] }
-    # 
     # Peek at the packet to see who it is from. The data is copied into the specified
     # <code>DatagramPacket</code>. The data is returned,
     # but not consumed, so that a subsequent peekData/receive operation
@@ -151,7 +140,6 @@ module Java::Net
     end
     
     typesig { [DatagramPacket] }
-    # 
     # Receive the datagram packet.
     # @param p the Packet Received.
     # @exception IOException if an I/O exception occurs
@@ -164,7 +152,6 @@ module Java::Net
     end
     
     typesig { [::Java::Byte] }
-    # 
     # Set the TTL (time-to-live) option.
     # @param ttl a byte specifying the TTL value
     # 
@@ -177,7 +164,6 @@ module Java::Net
     end
     
     typesig { [] }
-    # 
     # Retrieve the TTL (time-to-live) option.
     # 
     # @exception IOException if an I/O exception occurs
@@ -190,7 +176,6 @@ module Java::Net
     end
     
     typesig { [::Java::Int] }
-    # 
     # Set the TTL (time-to-live) option.
     # @param ttl an <tt>int</tt> specifying the time-to-live value
     # @exception IOException if an I/O exception occurs
@@ -201,7 +186,6 @@ module Java::Net
     end
     
     typesig { [] }
-    # 
     # Retrieve the TTL (time-to-live) option.
     # @exception IOException if an I/O exception occurs
     # while retrieving the time-to-live option
@@ -212,7 +196,6 @@ module Java::Net
     end
     
     typesig { [InetAddress] }
-    # 
     # Join the multicast group.
     # @param inetaddr multicast address to join.
     # @exception IOException if an I/O exception occurs
@@ -222,7 +205,6 @@ module Java::Net
     end
     
     typesig { [InetAddress] }
-    # 
     # Leave the multicast group.
     # @param inetaddr multicast address to leave.
     # @exception IOException if an I/O exception occurs
@@ -232,7 +214,6 @@ module Java::Net
     end
     
     typesig { [SocketAddress, NetworkInterface] }
-    # 
     # Join the multicast group.
     # @param mcastaddr address to join.
     # @param netIf specifies the local interface to receive multicast
@@ -245,7 +226,6 @@ module Java::Net
     end
     
     typesig { [SocketAddress, NetworkInterface] }
-    # 
     # Leave the multicast group.
     # @param mcastaddr address to leave.
     # @param netIf specified the local interface to leave the group at
@@ -257,14 +237,12 @@ module Java::Net
     end
     
     typesig { [] }
-    # 
     # Close the socket.
     def close
       raise NotImplementedError
     end
     
     typesig { [] }
-    # 
     # Gets the local port.
     # @return an <tt>int</tt> representing the local port value
     def get_local_port
@@ -272,7 +250,6 @@ module Java::Net
     end
     
     typesig { [] }
-    # 
     # Gets the datagram socket file descriptor.
     # @return a <tt>FileDescriptor</tt> object representing the datagram socket
     # file descriptor

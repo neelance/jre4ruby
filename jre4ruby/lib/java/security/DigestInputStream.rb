@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 1996-1999 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -37,7 +36,6 @@ module Java::Security
     }
   end
   
-  # 
   # A transparent stream that updates the associated message digest using
   # the bits going through the stream.
   # 
@@ -75,7 +73,6 @@ module Java::Security
     alias_method :attr_on=, :on=
     undef_method :on=
     
-    # 
     # The message digest associated with this stream.
     attr_accessor :digest
     alias_method :attr_digest, :digest
@@ -84,7 +81,6 @@ module Java::Security
     undef_method :digest=
     
     typesig { [InputStream, MessageDigest] }
-    # 
     # Creates a digest input stream, using the specified input stream
     # and message digest.
     # 
@@ -100,7 +96,6 @@ module Java::Security
     end
     
     typesig { [] }
-    # 
     # Returns the message digest associated with this stream.
     # 
     # @return the message digest associated with this stream.
@@ -110,7 +105,6 @@ module Java::Security
     end
     
     typesig { [MessageDigest] }
-    # 
     # Associates the specified message digest with this stream.
     # 
     # @param digest the message digest to be associated with this stream.
@@ -120,7 +114,6 @@ module Java::Security
     end
     
     typesig { [] }
-    # 
     # Reads a byte, and updates the message digest (if the digest
     # function is on).  That is, this method reads a byte from the
     # input stream, blocking until the byte is actually read. If the
@@ -142,7 +135,6 @@ module Java::Security
     end
     
     typesig { [Array.typed(::Java::Byte), ::Java::Int, ::Java::Int] }
-    # 
     # Reads into a byte array, and updates the message digest (if the
     # digest function is on).  That is, this method reads up to
     # <code>len</code> bytes from the input stream into the array
@@ -179,7 +171,6 @@ module Java::Security
     end
     
     typesig { [::Java::Boolean] }
-    # 
     # Turns the digest function on or off. The default is on.  When
     # it is on, a call to one of the <code>read</code> methods results in an
     # update on the message digest.  But when it is off, the message
@@ -192,7 +183,6 @@ module Java::Security
     end
     
     typesig { [] }
-    # 
     # Prints a string representation of this digest input stream and
     # its associated message digest object.
     def to_s

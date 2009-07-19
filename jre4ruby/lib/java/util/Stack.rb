@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 1994-2005 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -31,7 +30,6 @@ module Java::Util
     }
   end
   
-  # 
   # The <code>Stack</code> class represents a last-in-first-out
   # (LIFO) stack of objects. It extends class <tt>Vector</tt> with five
   # operations that allow a vector to be treated as a stack. The usual
@@ -54,14 +52,12 @@ module Java::Util
     include_class_members StackImports
     
     typesig { [] }
-    # 
     # Creates an empty Stack.
     def initialize
       super()
     end
     
     typesig { [Object] }
-    # 
     # Pushes an item onto the top of this stack. This has exactly
     # the same effect as:
     # <blockquote><pre>
@@ -76,7 +72,6 @@ module Java::Util
     end
     
     typesig { [] }
-    # 
     # Removes the object at the top of this stack and returns that
     # object as the value of this function.
     # 
@@ -94,7 +89,6 @@ module Java::Util
     end
     
     typesig { [] }
-    # 
     # Looks at the object at the top of this stack without removing it
     # from the stack.
     # 
@@ -112,7 +106,6 @@ module Java::Util
     end
     
     typesig { [] }
-    # 
     # Tests if this stack is empty.
     # 
     # @return  <code>true</code> if and only if this stack contains
@@ -122,7 +115,6 @@ module Java::Util
     end
     
     typesig { [Object] }
-    # 
     # Returns the 1-based position where an object is on this stack.
     # If the object <tt>o</tt> occurs as an item in this stack, this
     # method returns the distance from the top of the stack of the

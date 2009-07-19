@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 2005-2006 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -37,7 +36,6 @@ module Sun::Security::Jgss::Wrapper
     }
   end
   
-  # 
   # Defines the Sun NativeGSS provider for plugging in the
   # native GSS mechanisms to Java GSS.
   # 

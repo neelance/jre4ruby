@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 2000-2004 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -38,7 +37,6 @@ module Java::Nio::Channels::Spi
     }
   end
   
-  # 
   # Base implementation class for selectors.
   # 
   # <p> This class encapsulates the low-level machinery required to implement
@@ -85,7 +83,6 @@ module Java::Nio::Channels::Spi
     undef_method :provider=
     
     typesig { [SelectorProvider] }
-    # 
     # Initializes a new instance of this class.  </p>
     def initialize(provider)
       @selector_open = nil
@@ -114,7 +111,6 @@ module Java::Nio::Channels::Spi
     end
     
     typesig { [] }
-    # 
     # Closes this selector.
     # 
     # <p> If the selector has already been closed then this method returns
@@ -133,7 +129,6 @@ module Java::Nio::Channels::Spi
     end
     
     typesig { [] }
-    # 
     # Closes this selector.
     # 
     # <p> This method is invoked by the {@link #close close} method in order
@@ -158,7 +153,6 @@ module Java::Nio::Channels::Spi
     end
     
     typesig { [] }
-    # 
     # Returns the provider that created this channel.
     # 
     # @return  The provider that created this channel
@@ -167,7 +161,6 @@ module Java::Nio::Channels::Spi
     end
     
     typesig { [] }
-    # 
     # Retrieves this selector's cancelled-key set.
     # 
     # <p> This set should only be used while synchronized upon it.  </p>
@@ -178,7 +171,6 @@ module Java::Nio::Channels::Spi
     end
     
     typesig { [AbstractSelectableChannel, ::Java::Int, Object] }
-    # 
     # Registers the given channel with this selector.
     # 
     # <p> This method is invoked by a channel's {@link
@@ -201,7 +193,6 @@ module Java::Nio::Channels::Spi
     end
     
     typesig { [AbstractSelectionKey] }
-    # 
     # Removes the given key from its channel's key set.
     # 
     # <p> This method must be invoked by the selector for each channel that it
@@ -221,7 +212,6 @@ module Java::Nio::Channels::Spi
     undef_method :interruptor=
     
     typesig { [] }
-    # 
     # Marks the beginning of an I/O operation that might block indefinitely.
     # 
     # <p> This method should be invoked in tandem with the {@link #end end}
@@ -261,7 +251,6 @@ module Java::Nio::Channels::Spi
     end
     
     typesig { [] }
-    # 
     # Marks the end of an I/O operation that might block indefinitely.
     # 
     # <p> This method should be invoked in tandem with the {@link #begin begin}

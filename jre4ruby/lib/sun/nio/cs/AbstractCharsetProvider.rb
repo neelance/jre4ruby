@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 2000-2004 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -40,7 +39,6 @@ module Sun::Nio::Cs
     }
   end
   
-  # 
   # Abstract base class for charset providers.
   # 
   # @author Mark Reinhold
@@ -186,9 +184,9 @@ module Sun::Nio::Cs
       # Instantiate the charset and cache it
       begin
         c = Class.for_name(@package_prefix + "." + cln, true, self.get_class.get_class_loader)
-        cs_ = c.new_instance
-        @cache.put(csn, SoftReference.new(cs_))
-        return cs_
+        cs = c.new_instance
+        @cache.put(csn, SoftReference.new(cs))
+        return cs
       rescue ClassNotFoundException => x
         return nil
       rescue IllegalAccessException => x

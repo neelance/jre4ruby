@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 2005 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -39,7 +38,6 @@ module Sun::Security::Provider
     }
   end
   
-  # 
   # This class wraps the PolicyFile subclass implementation of Policy
   # inside a PolicySpi implementation that is available from the SUN provider
   # via the Policy.getInstance calls.

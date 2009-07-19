@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 1997-2005 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -40,8 +39,6 @@ module Java::Util::Jar
     }
   end
   
-  # 
-  # 
   # @author      Roland Schemers
   class JarVerifier 
     include_class_members JarVerifierImports
@@ -155,7 +152,6 @@ module Java::Util::Jar
     end
     
     typesig { [JarEntry, ManifestEntryVerifier] }
-    # 
     # This method scans to see which entry we're parsing and
     # keeps various state information depending on what type of
     # file is being parsed.
@@ -167,7 +163,6 @@ module Java::Util::Jar
         Debug.println("beginEntry " + (je.get_name).to_s)
       end
       name = je.get_name
-      # 
       # Assumptions:
       # 1. The manifest should be the first entry in the META-INF directory.
       # 2. The .SF/.DSA files follow the manifest, before any normal entries
@@ -219,7 +214,6 @@ module Java::Util::Jar
     end
     
     typesig { [::Java::Int, ManifestEntryVerifier] }
-    # 
     # update a single byte.
     def update(b, mev)
       if (!(b).equal?(-1))
@@ -234,7 +228,6 @@ module Java::Util::Jar
     end
     
     typesig { [::Java::Int, Array.typed(::Java::Byte), ::Java::Int, ::Java::Int, ManifestEntryVerifier] }
-    # 
     # update an array of bytes.
     def update(n, b, off, len, mev)
       if (!(n).equal?(-1))
@@ -249,7 +242,6 @@ module Java::Util::Jar
     end
     
     typesig { [ManifestEntryVerifier] }
-    # 
     # called when we reach the end of entry in one of the read() methods.
     def process_entry(mev)
       if (!@parsing_block_or_sf)
@@ -286,7 +278,7 @@ module Java::Util::Jar
             return
           end
           # now we are parsing a signature block file
-          key_ = uname.substring(0, uname.last_index_of("."))
+          key = uname.substring(0, uname.last_index_of("."))
           if ((@signer_cache).nil?)
             @signer_cache = ArrayList.new
           end
@@ -298,24 +290,24 @@ module Java::Util::Jar
               end
             end
           end
-          sfv_ = SignatureFileVerifier.new(@signer_cache, @man_dig, uname, @baos.to_byte_array)
-          if (sfv_.need_signature_file_bytes)
+          sfv = SignatureFileVerifier.new(@signer_cache, @man_dig, uname, @baos.to_byte_array)
+          if (sfv.need_signature_file_bytes)
             # see if we have already parsed an external .SF file
-            bytes_ = @sig_file_data.get(key_)
-            if ((bytes_).nil?)
+            bytes = @sig_file_data.get(key)
+            if ((bytes).nil?)
               # put this block on queue for later processing
               # since we don't have the .SF bytes yet
               # (uname, block);
               if (!(Debug).nil?)
                 Debug.println("adding pending block")
               end
-              @pending_blocks.add(sfv_)
+              @pending_blocks.add(sfv)
               return
             else
-              sfv_.set_signature_file(bytes_)
+              sfv.set_signature_file(bytes)
             end
           end
-          sfv_.process(@sig_file_signers)
+          sfv.process(@sig_file_signers)
         rescue Sun::Security::Pkcs::ParsingException => pe
           if (!(Debug).nil?)
             Debug.println("processEntry caught: " + (pe).to_s)
@@ -346,7 +338,6 @@ module Java::Util::Jar
     end
     
     typesig { [String] }
-    # 
     # Return an array of java.security.cert.Certificate objects for
     # the given file in the jar.
     def get_certs(name)
@@ -354,7 +345,6 @@ module Java::Util::Jar
     end
     
     typesig { [String] }
-    # 
     # return an array of CodeSigner objects for
     # the given file in the jar. this array is not cloned.
     def get_code_signers(name)
@@ -363,7 +353,6 @@ module Java::Util::Jar
     
     class_module.module_eval {
       typesig { [Array.typed(CodeSigner)] }
-      # 
       # Convert an array of signers into an array of concatenated certificate
       # arrays.
       def map_signers_to_cert_array(signers)
@@ -382,7 +371,6 @@ module Java::Util::Jar
     }
     
     typesig { [] }
-    # 
     # returns true if there no files to verify.
     # should only be called after all the META-INF entries
     # have been processed.
@@ -391,7 +379,6 @@ module Java::Util::Jar
     end
     
     typesig { [] }
-    # 
     # called to let us know we have processed all the
     # META-INF entries, and if we re-read one of them, don't
     # re-process it. Also gets rid of any data structures

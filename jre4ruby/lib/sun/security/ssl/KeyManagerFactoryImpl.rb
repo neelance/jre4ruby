@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 1999-2007 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -60,7 +59,6 @@ module Sun::Security::Ssl
     end
     
     typesig { [] }
-    # 
     # Returns one key manager for each type of key material.
     def engine_get_key_managers
       if (!@is_initialized)

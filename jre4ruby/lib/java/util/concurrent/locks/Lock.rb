@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
 # This code is free software; you can redistribute it and/or modify it
@@ -41,7 +40,6 @@ module Java::Util::Concurrent::Locks
     }
   end
   
-  # 
   # {@code Lock} implementations provide more extensive locking
   # operations than can be obtained using {@code synchronized} methods
   # and statements.  They allow more flexible structuring, may have
@@ -171,7 +169,6 @@ module Java::Util::Concurrent::Locks
     include_class_members LockImports
     
     typesig { [] }
-    # 
     # Acquires the lock.
     # 
     # <p>If the lock is not available then the current thread becomes
@@ -190,7 +187,6 @@ module Java::Util::Concurrent::Locks
     end
     
     typesig { [] }
-    # 
     # Acquires the lock unless the current thread is
     # {@linkplain Thread#interrupt interrupted}.
     # 
@@ -240,7 +236,6 @@ module Java::Util::Concurrent::Locks
     end
     
     typesig { [] }
-    # 
     # Acquires the lock only if it is free at the time of invocation.
     # 
     # <p>Acquires the lock if it is available and returns immediately
@@ -271,7 +266,6 @@ module Java::Util::Concurrent::Locks
     end
     
     typesig { [::Java::Long, TimeUnit] }
-    # 
     # Acquires the lock if it is free within the given waiting time and the
     # current thread has not been {@linkplain Thread#interrupt interrupted}.
     # 
@@ -333,7 +327,6 @@ module Java::Util::Concurrent::Locks
     end
     
     typesig { [] }
-    # 
     # Releases the lock.
     # 
     # <p><b>Implementation Considerations</b>
@@ -349,7 +342,6 @@ module Java::Util::Concurrent::Locks
     end
     
     typesig { [] }
-    # 
     # Returns a new {@link Condition} instance that is bound to this
     # {@code Lock} instance.
     # 

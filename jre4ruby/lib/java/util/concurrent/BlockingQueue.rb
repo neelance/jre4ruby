@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
 # This code is free software; you can redistribute it and/or modify it
@@ -42,7 +41,6 @@ module Java::Util::Concurrent
     }
   end
   
-  # 
   # A {@link java.util.Queue} that additionally supports operations
   # that wait for the queue to become non-empty when retrieving an
   # element, and wait for space to become available in the queue when
@@ -186,7 +184,6 @@ module Java::Util::Concurrent
     include Queue
     
     typesig { [Object] }
-    # 
     # Inserts the specified element into this queue if it is possible to do
     # so immediately without violating capacity restrictions, returning
     # <tt>true</tt> upon success and throwing an
@@ -208,7 +205,6 @@ module Java::Util::Concurrent
     end
     
     typesig { [Object] }
-    # 
     # Inserts the specified element into this queue if it is possible to do
     # so immediately without violating capacity restrictions, returning
     # <tt>true</tt> upon success and <tt>false</tt> if no space is currently
@@ -229,7 +225,6 @@ module Java::Util::Concurrent
     end
     
     typesig { [Object] }
-    # 
     # Inserts the specified element into this queue, waiting if necessary
     # for space to become available.
     # 
@@ -245,7 +240,6 @@ module Java::Util::Concurrent
     end
     
     typesig { [Object, ::Java::Long, TimeUnit] }
-    # 
     # Inserts the specified element into this queue, waiting up to the
     # specified wait time if necessary for space to become available.
     # 
@@ -267,7 +261,6 @@ module Java::Util::Concurrent
     end
     
     typesig { [] }
-    # 
     # Retrieves and removes the head of this queue, waiting if necessary
     # until an element becomes available.
     # 
@@ -278,7 +271,6 @@ module Java::Util::Concurrent
     end
     
     typesig { [::Java::Long, TimeUnit] }
-    # 
     # Retrieves and removes the head of this queue, waiting up to the
     # specified wait time if necessary for an element to become available.
     # 
@@ -294,7 +286,6 @@ module Java::Util::Concurrent
     end
     
     typesig { [] }
-    # 
     # Returns the number of additional elements that this queue can ideally
     # (in the absence of memory or resource constraints) accept without
     # blocking, or <tt>Integer.MAX_VALUE</tt> if there is no intrinsic
@@ -311,7 +302,6 @@ module Java::Util::Concurrent
     end
     
     typesig { [Object] }
-    # 
     # Removes a single instance of the specified element from this queue,
     # if it is present.  More formally, removes an element <tt>e</tt> such
     # that <tt>o.equals(e)</tt>, if this queue contains one or more such
@@ -329,7 +319,6 @@ module Java::Util::Concurrent
     end
     
     typesig { [Object] }
-    # 
     # Returns <tt>true</tt> if this queue contains the specified element.
     # More formally, returns <tt>true</tt> if and only if this queue contains
     # at least one element <tt>e</tt> such that <tt>o.equals(e)</tt>.
@@ -344,7 +333,6 @@ module Java::Util::Concurrent
     end
     
     typesig { [Collection] }
-    # 
     # Removes all available elements from this queue and adds them
     # to the given collection.  This operation may be more
     # efficient than repeatedly polling this queue.  A failure
@@ -371,7 +359,6 @@ module Java::Util::Concurrent
     end
     
     typesig { [Collection, ::Java::Int] }
-    # 
     # Removes at most the given number of available elements from
     # this queue and adds them to the given collection.  A failure
     # encountered while attempting to add elements to

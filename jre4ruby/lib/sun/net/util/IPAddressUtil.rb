@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 2004-2005 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -45,7 +44,6 @@ module Sun::Net::Util
       const_attr_reader  :INT16SZ
       
       typesig { [String] }
-      # 
       # Converts IPv4 address in its textual presentation form
       # into its numeric binary form.
       # 
@@ -61,7 +59,6 @@ module Sun::Net::Util
         begin
           case (s.attr_length)
           when 1
-            # 
             # When only one part is given, the value is stored directly in
             # the network address without any byte rearrangement.
             val = Long.parse_long(s[0])
@@ -73,7 +70,6 @@ module Sun::Net::Util
             res[2] = (((val & 0xffff) >> 8) & 0xff)
             res[3] = (val & 0xff)
           when 2
-            # 
             # When a two part address is supplied, the last part is
             # interpreted as a 24-bit quantity and placed in the right
             # most three bytes of the network address. This makes the
@@ -92,7 +88,6 @@ module Sun::Net::Util
             res[2] = (((val & 0xffff) >> 8) & 0xff)
             res[3] = (val & 0xff)
           when 3
-            # 
             # When a three part address is specified, the last part is
             # interpreted as a 16-bit quantity and placed in the right
             # most two bytes of the network address. This makes the
@@ -114,18 +109,17 @@ module Sun::Net::Util
             res[2] = ((val >> 8) & 0xff)
             res[3] = (val & 0xff)
           when 4
-            # 
             # When four parts are specified, each is interpreted as a
             # byte of data and assigned, from left to right, to the
             # four bytes of an IPv4 address.
-            i_ = 0
-            while i_ < 4
-              val = JavaInteger.parse_int(s[i_])
+            i = 0
+            while i < 4
+              val = JavaInteger.parse_int(s[i])
               if (val < 0 || val > 0xff)
                 return nil
               end
-              res[i_] = (val & 0xff)
-              ((i_ += 1) - 1)
+              res[i] = (val & 0xff)
+              ((i += 1) - 1)
             end
           else
             return nil
@@ -137,7 +131,6 @@ module Sun::Net::Util
       end
       
       typesig { [String] }
-      # 
       # Convert IPv6 presentation level address to network order binary form.
       # credit:
       # Converted from C code from Solaris 8 (inet_pton)
@@ -270,7 +263,6 @@ module Sun::Net::Util
       end
       
       typesig { [String] }
-      # 
       # @param src a String representing an IPv4 address in textual format
       # @return a boolean indicating whether src is an IPv4 literal address
       def is_ipv4literal_address(src)
@@ -278,7 +270,6 @@ module Sun::Net::Util
       end
       
       typesig { [String] }
-      # 
       # @param src a String representing an IPv6 address in textual format
       # @return a boolean indicating whether src is an IPv6 literal address
       def is_ipv6literal_address(src)
@@ -286,7 +277,6 @@ module Sun::Net::Util
       end
       
       typesig { [Array.typed(::Java::Byte)] }
-      # 
       # Convert IPv4-Mapped address to IPv4 address. Both input and
       # returned value are in network order binary form.
       # 
@@ -302,7 +292,6 @@ module Sun::Net::Util
       end
       
       typesig { [Array.typed(::Java::Byte)] }
-      # 
       # Utility routine to check if the InetAddress is an
       # IPv4 mapped IPv6 address.
       # 

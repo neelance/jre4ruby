@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 1997-2005 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -41,7 +40,6 @@ module Sun::Net::Www::Protocol::Http
     }
   end
   
-  # 
   # DigestAuthentication: Encapsulate an http server authentication using
   # the "Digest" scheme, as described in RFC2069 and updated in RFC2617
   # 
@@ -314,7 +312,6 @@ module Sun::Net::Www::Protocol::Http
     undef_method :params=
     
     typesig { [::Java::Boolean, URL, String, String, PasswordAuthentication, Parameters] }
-    # 
     # Create a DigestAuthentication
     def initialize(is_proxy, url, realm, auth_method, pw, params)
       @auth_method = nil
@@ -336,14 +333,12 @@ module Sun::Net::Www::Protocol::Http
     end
     
     typesig { [] }
-    # 
     # @return true if this authentication supports preemptive authorization
     def supports_preemptive_authorization
       return true
     end
     
     typesig { [] }
-    # 
     # @return the name of the HTTP header this authentication wants set
     def get_header_name
       if ((self.attr_type).equal?(SERVER_AUTHENTICATION))
@@ -354,7 +349,6 @@ module Sun::Net::Www::Protocol::Http
     end
     
     typesig { [URL, String] }
-    # 
     # Reclaculates the request-digest and returns it.
     # @return the value of the HTTP header this authentication wants set
     def get_header_value(url, method)
@@ -362,7 +356,6 @@ module Sun::Net::Www::Protocol::Http
     end
     
     typesig { [String] }
-    # 
     # Check if the header indicates that the current auth. parameters are stale.
     # If so, then replace the relevant field with the new value
     # and return true. Otherwise return false.
@@ -384,7 +377,6 @@ module Sun::Net::Www::Protocol::Http
     end
     
     typesig { [HttpURLConnection, HeaderParser, String] }
-    # 
     # Set header(s) on the given connection.
     # @param conn The connection to apply the header(s) to
     # @param p A source of header values for this connection, if needed.
@@ -577,13 +569,13 @@ module Sun::Net::Www::Protocol::Http
       end
       digest_ = md.digest
       res = StringBuffer.new(digest_.attr_length * 2)
-      i_ = 0
-      while i_ < digest_.attr_length
-        hashchar = ((digest_[i_] >> 4) & 0xf)
+      i = 0
+      while i < digest_.attr_length
+        hashchar = ((digest_[i] >> 4) & 0xf)
         res.append(CharArray[hashchar])
-        hashchar = (digest_[i_] & 0xf)
+        hashchar = (digest_[i] & 0xf)
         res.append(CharArray[hashchar])
-        ((i_ += 1) - 1)
+        ((i += 1) - 1)
       end
       return res.to_s
     end

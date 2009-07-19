@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Portions Copyright 2003-2005 Sun Microsystems, Inc.  All Rights Reserved.
 # 
 # Copyright  (c) 2002 Graz University of Technology. All rights reserved.
@@ -52,7 +51,6 @@ module Sun::Security::Pkcs11::Wrapper
     }
   end
   
-  # 
   # class CK_VERSION describes the version of a Cryptoki interface, a Cryptoki
   # library, or an SSL implementation, or the hardware or firmware version of a
   # slot or token.<p>
@@ -69,7 +67,6 @@ module Sun::Security::Pkcs11::Wrapper
   class CK_VERSION 
     include_class_members CK_VERSIONImports
     
-    # 
     # <B>PKCS#11:</B>
     # <PRE>
     # CK_BYTE major;
@@ -102,7 +99,6 @@ module Sun::Security::Pkcs11::Wrapper
     end
     
     typesig { [] }
-    # 
     # Returns the string representation of CK_VERSION.
     # 
     # @return the string representation of CK_VERSION

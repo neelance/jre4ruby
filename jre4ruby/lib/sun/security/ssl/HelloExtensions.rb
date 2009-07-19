@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 2006-2008 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -36,7 +35,6 @@ module Sun::Security::Ssl
     }
   end
   
-  # 
   # This file contains all the classes relevant to TLS Extensions for the
   # ClientHello and ServerHello messages. The extension mechanism and
   # several extensions are defined in RFC 3546. Additional extensions are

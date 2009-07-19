@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 1996-2005 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -31,7 +30,6 @@ module Java::Io
     }
   end
   
-  # 
   # A character stream whose source is a string.
   # 
   # @author      Mark Reinhold
@@ -64,7 +62,6 @@ module Java::Io
     undef_method :mark=
     
     typesig { [String] }
-    # 
     # Creates a new string reader.
     # 
     # @param s  String providing the character stream.
@@ -89,7 +86,6 @@ module Java::Io
     end
     
     typesig { [] }
-    # 
     # Reads a single character.
     # 
     # @return     The character read, or -1 if the end of the stream has been
@@ -107,7 +103,6 @@ module Java::Io
     end
     
     typesig { [Array.typed(::Java::Char), ::Java::Int, ::Java::Int] }
-    # 
     # Reads characters into a portion of an array.
     # 
     # @param      cbuf  Destination buffer
@@ -139,7 +134,6 @@ module Java::Io
     end
     
     typesig { [::Java::Long] }
-    # 
     # Skips the specified number of characters in the stream. Returns
     # the number of characters that were skipped.
     # 
@@ -169,7 +163,6 @@ module Java::Io
     end
     
     typesig { [] }
-    # 
     # Tells whether this stream is ready to be read.
     # 
     # @return True if the next read() is guaranteed not to block for input
@@ -183,14 +176,12 @@ module Java::Io
     end
     
     typesig { [] }
-    # 
     # Tells whether this stream supports the mark() operation, which it does.
     def mark_supported
       return true
     end
     
     typesig { [::Java::Int] }
-    # 
     # Marks the present position in the stream.  Subsequent calls to reset()
     # will reposition the stream to this point.
     # 
@@ -213,7 +204,6 @@ module Java::Io
     end
     
     typesig { [] }
-    # 
     # Resets the stream to the most recent mark, or to the beginning of the
     # string if it has never been marked.
     # 
@@ -226,7 +216,6 @@ module Java::Io
     end
     
     typesig { [] }
-    # 
     # Closes the stream and releases any system resources associated with
     # it. Once the stream has been closed, further read(),
     # ready(), mark(), or reset() invocations will throw an IOException.

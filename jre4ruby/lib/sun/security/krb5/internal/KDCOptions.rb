@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
 # This code is free software; you can redistribute it and/or modify it
@@ -40,7 +39,6 @@ module Sun::Security::Krb5::Internal
     }
   end
   
-  # 
   # Implements the ASN.1 KDCOptions type.
   # 
   # <xmp>
@@ -228,7 +226,6 @@ module Sun::Security::Krb5::Internal
     end
     
     typesig { [Array.typed(::Java::Boolean)] }
-    # 
     # Constructs a KDCOptions from the specified bit settings.
     # 
     # @param data the bits to be set for the KDCOptions.
@@ -255,7 +252,6 @@ module Sun::Security::Krb5::Internal
     end
     
     typesig { [Array.typed(::Java::Byte)] }
-    # 
     # Constructs a KDCOptions from the passed bit settings.
     # 
     # @param options the bits to be set for the KDCOptions.
@@ -273,7 +269,6 @@ module Sun::Security::Krb5::Internal
     
     class_module.module_eval {
       typesig { [DerInputStream, ::Java::Byte, ::Java::Boolean] }
-      # 
       # Parse (unmarshal) a KDCOptions from a DER input stream.  This form
       # parsing might be used when expanding a value which is part of
       # a constructed sequence and uses explicitly tagged type.
@@ -300,7 +295,6 @@ module Sun::Security::Krb5::Internal
     }
     
     typesig { [::Java::Int, ::Java::Boolean] }
-    # 
     # Sets the value(true/false) for one of the <code>KDCOptions</code>.
     # 
     # @param option an option bit.
@@ -312,7 +306,6 @@ module Sun::Security::Krb5::Internal
     end
     
     typesig { [::Java::Int] }
-    # 
     # Gets the value(true/false) for one of the <code>KDCOptions</code>.
     # 
     # @param option an option bit.
@@ -327,7 +320,6 @@ module Sun::Security::Krb5::Internal
     def set_default
       begin
         config = Config.get_instance
-        # 
         # First see if the IBM hex format is being used.
         # If not, try the Sun's string (boolean) format.
         options = config.get_default_int_value("kdc_default_options", "libdefaults")

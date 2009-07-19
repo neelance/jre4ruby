@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 1997-2006 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -36,7 +35,6 @@ module Java::Security
     }
   end
   
-  # 
   # This class defines the <i>Service Provider Interface</i> (<b>SPI</b>)
   # for the <code>Signature</code> class, which is used to provide the
   # functionality of a digital signature algorithm. Digital signatures are used
@@ -53,7 +51,6 @@ module Java::Security
   class SignatureSpi 
     include_class_members SignatureSpiImports
     
-    # 
     # Application-specified source of randomness.
     attr_accessor :app_random
     alias_method :attr_app_random, :app_random
@@ -62,7 +59,6 @@ module Java::Security
     undef_method :app_random=
     
     typesig { [PublicKey] }
-    # 
     # Initializes this signature object with the specified
     # public key for verification operations.
     # 
@@ -76,7 +72,6 @@ module Java::Security
     end
     
     typesig { [PrivateKey] }
-    # 
     # Initializes this signature object with the specified
     # private key for signing operations.
     # 
@@ -90,7 +85,6 @@ module Java::Security
     end
     
     typesig { [PrivateKey, SecureRandom] }
-    # 
     # Initializes this signature object with the specified
     # private key and source of randomness for signing operations.
     # 
@@ -109,7 +103,6 @@ module Java::Security
     end
     
     typesig { [::Java::Byte] }
-    # 
     # Updates the data to be signed or verified
     # using the specified byte.
     # 
@@ -122,7 +115,6 @@ module Java::Security
     end
     
     typesig { [Array.typed(::Java::Byte), ::Java::Int, ::Java::Int] }
-    # 
     # Updates the data to be signed or verified, using the
     # specified array of bytes, starting at the specified offset.
     # 
@@ -137,7 +129,6 @@ module Java::Security
     end
     
     typesig { [ByteBuffer] }
-    # 
     # Updates the data to be signed or verified using the specified
     # ByteBuffer. Processes the <code>data.remaining()</code> bytes
     # starting at at <code>data.position()</code>.
@@ -160,11 +151,11 @@ module Java::Security
           input.position(lim)
         else
           len = input.remaining
-          b_ = Array.typed(::Java::Byte).new(JCAUtil.get_temp_array_size(len)) { 0 }
+          b = Array.typed(::Java::Byte).new(JCAUtil.get_temp_array_size(len)) { 0 }
           while (len > 0)
-            chunk = Math.min(len, b_.attr_length)
-            input.get(b_, 0, chunk)
-            engine_update(b_, 0, chunk)
+            chunk = Math.min(len, b.attr_length)
+            input.get(b, 0, chunk)
+            engine_update(b, 0, chunk)
             len -= chunk
           end
         end
@@ -176,7 +167,6 @@ module Java::Security
     end
     
     typesig { [] }
-    # 
     # Returns the signature bytes of all the data
     # updated so far.
     # The format of the signature depends on the underlying
@@ -192,7 +182,6 @@ module Java::Security
     end
     
     typesig { [Array.typed(::Java::Byte), ::Java::Int, ::Java::Int] }
-    # 
     # Finishes this signature operation and stores the resulting signature
     # bytes in the provided buffer <code>outbuf</code>, starting at
     # <code>offset</code>.
@@ -244,7 +233,6 @@ module Java::Security
     end
     
     typesig { [Array.typed(::Java::Byte)] }
-    # 
     # Verifies the passed-in signature.
     # 
     # @param sigBytes the signature bytes to be verified.
@@ -260,7 +248,6 @@ module Java::Security
     end
     
     typesig { [Array.typed(::Java::Byte), ::Java::Int, ::Java::Int] }
-    # 
     # Verifies the passed-in signature in the specified array
     # of bytes, starting at the specified offset.
     # 
@@ -285,7 +272,6 @@ module Java::Security
     end
     
     typesig { [String, Object] }
-    # 
     # Sets the specified algorithm parameter to the specified
     # value. This method supplies a general-purpose mechanism through
     # which it is possible to set the various parameters of this object.
@@ -313,7 +299,6 @@ module Java::Security
     end
     
     typesig { [AlgorithmParameterSpec] }
-    # 
     # <p>This method is overridden by providers to initialize
     # this signature engine with the specified parameter set.
     # 
@@ -330,7 +315,6 @@ module Java::Security
     end
     
     typesig { [] }
-    # 
     # <p>This method is overridden by providers to return the
     # parameters used with this signature engine, or null
     # if this signature engine does not use any parameters.
@@ -352,7 +336,6 @@ module Java::Security
     end
     
     typesig { [String] }
-    # 
     # Gets the value of the specified algorithm parameter.
     # This method supplies a general-purpose mechanism through which it
     # is possible to get the various parameters of this object. A parameter
@@ -378,7 +361,6 @@ module Java::Security
     end
     
     typesig { [] }
-    # 
     # Returns a clone if the implementation is cloneable.
     # 
     # @return a clone if the implementation is cloneable.

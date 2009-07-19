@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 1996-2006 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -43,7 +42,6 @@ module Sun::Security::Pkcs
     }
   end
   
-  # 
   # A SignerInfo, as defined in PKCS#7's signedData type.
   # 
   # @author Benjamin Renaud
@@ -138,14 +136,12 @@ module Sun::Security::Pkcs
     end
     
     typesig { [DerInputStream] }
-    # 
     # Parses a PKCS#7 signer info.
     def initialize(derin)
       initialize__signer_info(derin, false)
     end
     
     typesig { [DerInputStream, ::Java::Boolean] }
-    # 
     # Parses a PKCS#7 signer info.
     # 
     # <p>This constructor is used only for backwards compatibility with
@@ -215,7 +211,6 @@ module Sun::Security::Pkcs
     end
     
     typesig { [OutputStream] }
-    # 
     # DER encode this object onto an output stream.
     # Implements the <code>DerEncoder</code> interface.
     # 
@@ -247,14 +242,12 @@ module Sun::Security::Pkcs
     end
     
     typesig { [PKCS7] }
-    # 
     # Returns the (user) certificate pertaining to this SignerInfo.
     def get_certificate(block)
       return block.get_certificate(@certificate_serial_number, @issuer_name)
     end
     
     typesig { [PKCS7] }
-    # 
     # Returns the certificate chain pertaining to this SignerInfo.
     def get_certificate_chain(block)
       user_cert = nil
@@ -396,7 +389,7 @@ module Sun::Security::Pkcs
       rescue IOException => e
         raise SignatureException.new("IO error verifying signature:\n" + (e.get_message).to_s)
       rescue InvalidKeyException => e
-        raise SignatureException.new("InvalidKey: " + (e_.get_message).to_s)
+        raise SignatureException.new("InvalidKey: " + (e.get_message).to_s)
       end
       return nil
     end

@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 1996-2006 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -31,7 +30,6 @@ module Java::Net
     }
   end
   
-  # 
   # Interface of methods to get/set socket options.  This interface is
   # implemented by: <B>SocketImpl</B> and  <B>DatagramSocketImpl</B>.
   # Subclasses of these should override the methods
@@ -48,7 +46,6 @@ module Java::Net
     include_class_members SocketOptionsImports
     
     typesig { [::Java::Int, Object] }
-    # 
     # Enable/disable the option specified by <I>optID</I>.  If the option
     # is to be enabled, and it takes an option-specific "value",  this is
     # passed in <I>value</I>.  The actual type of value is option-specific,
@@ -93,7 +90,6 @@ module Java::Net
     end
     
     typesig { [::Java::Int] }
-    # 
     # Fetch the value of an option.
     # Binary options will return java.lang.Boolean(true)
     # if enabled, java.lang.Boolean(false) if disabled, e.g.:
@@ -130,7 +126,6 @@ module Java::Net
     end
     
     class_module.module_eval {
-      # 
       # The java-supported BSD-style options.
       # 
       # 
@@ -145,7 +140,6 @@ module Java::Net
       const_set_lazy(:TCP_NODELAY) { 0x1 }
       const_attr_reader  :TCP_NODELAY
       
-      # 
       # Fetch the local address binding of a socket (this option cannot
       # be "set" only "gotten", since sockets are bound at creation time,
       # and so the locally bound address cannot be changed).  The default local
@@ -172,7 +166,6 @@ module Java::Net
       const_set_lazy(:SO_REUSEADDR) { 0x4 }
       const_attr_reader  :SO_REUSEADDR
       
-      # 
       # Sets SO_BROADCAST for a socket. This option enables and disables
       # the ability of the process to send broadcast messages. It is supported
       # for only datagram sockets and only on networks that support
@@ -205,21 +198,18 @@ module Java::Net
       const_set_lazy(:IP_MULTICAST_IF2) { 0x1f }
       const_attr_reader  :IP_MULTICAST_IF2
       
-      # 
       # This option enables or disables local loopback of multicast datagrams.
       # This option is enabled by default for Multicast Sockets.
       # @since 1.4
       const_set_lazy(:IP_MULTICAST_LOOP) { 0x12 }
       const_attr_reader  :IP_MULTICAST_LOOP
       
-      # 
       # This option sets the type-of-service or traffic class field
       # in the IP header for a TCP or UDP socket.
       # @since 1.4
       const_set_lazy(:IP_TOS) { 0x3 }
       const_attr_reader  :IP_TOS
       
-      # 
       # Specify a linger-on-close timeout.  This option disables/enables
       # immediate return from a <B>close()</B> of a TCP Socket.  Enabling
       # this option with a non-zero Integer <I>timeout</I> means that a
@@ -258,7 +248,6 @@ module Java::Net
       const_set_lazy(:SO_TIMEOUT) { 0x1006 }
       const_attr_reader  :SO_TIMEOUT
       
-      # 
       # Set a hint the size of the underlying buffers used by the
       # platform for outgoing network I/O. When used in set, this is a
       # suggestion to the kernel from the application about the size of
@@ -275,7 +264,6 @@ module Java::Net
       const_set_lazy(:SO_SNDBUF) { 0x1001 }
       const_attr_reader  :SO_SNDBUF
       
-      # 
       # Set a hint the size of the underlying buffers used by the
       # platform for incoming network I/O. When used in set, this is a
       # suggestion to the kernel from the application about the size of
@@ -293,7 +281,6 @@ module Java::Net
       const_set_lazy(:SO_RCVBUF) { 0x1002 }
       const_attr_reader  :SO_RCVBUF
       
-      # 
       # When the keepalive option is set for a TCP socket and no data
       # has been exchanged across the socket in either direction for
       # 2 hours (NOTE: the actual value is implementation dependent),
@@ -316,7 +303,6 @@ module Java::Net
       const_set_lazy(:SO_KEEPALIVE) { 0x8 }
       const_attr_reader  :SO_KEEPALIVE
       
-      # 
       # When the OOBINLINE option is set, any TCP urgent data received on
       # the socket will be received through the socket input stream.
       # When the option is disabled (which is the default) urgent data

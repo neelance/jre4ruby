@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 1995-1997 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -32,7 +31,6 @@ module Java::Net
     }
   end
   
-  # 
   # Thrown to indicate that a malformed URL has occurred. Either no
   # legal protocol could be found in a specification string or the
   # string could not be parsed.
@@ -43,14 +41,12 @@ module Java::Net
     include_class_members MalformedURLExceptionImports
     
     typesig { [] }
-    # 
     # Constructs a <code>MalformedURLException</code> with no detail message.
     def initialize
       super()
     end
     
     typesig { [String] }
-    # 
     # Constructs a <code>MalformedURLException</code> with the
     # specified detail message.
     # 

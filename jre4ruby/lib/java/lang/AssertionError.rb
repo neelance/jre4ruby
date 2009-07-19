@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 2000-2006 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -30,7 +29,6 @@ module Java::Lang
     }
   end
   
-  # 
   # Thrown to indicate that an assertion has failed.
   # 
   # <p>The seven one-argument public constructors provided by this
@@ -50,14 +48,12 @@ module Java::Lang
     include_class_members AssertionErrorImports
     
     typesig { [] }
-    # 
     # Constructs an AssertionError with no detail message.
     def initialize
       super()
     end
     
     typesig { [String] }
-    # 
     # This internal constructor does no processing on its string argument,
     # even if it is a null reference.  The public constructors will
     # never call this constructor with a null argument.
@@ -66,7 +62,6 @@ module Java::Lang
     end
     
     typesig { [Object] }
-    # 
     # Constructs an AssertionError with its detail message derived
     # from the specified object, which is converted to a string as
     # defined in <i>The Java Language Specification, Second
@@ -85,7 +80,6 @@ module Java::Lang
     end
     
     typesig { [::Java::Boolean] }
-    # 
     # Constructs an AssertionError with its detail message derived
     # from the specified <code>boolean</code>, which is converted to
     # a string as defined in <i>The Java Language Specification,
@@ -97,7 +91,6 @@ module Java::Lang
     end
     
     typesig { [::Java::Char] }
-    # 
     # Constructs an AssertionError with its detail message derived
     # from the specified <code>char</code>, which is converted to a
     # string as defined in <i>The Java Language Specification, Second
@@ -109,7 +102,6 @@ module Java::Lang
     end
     
     typesig { [::Java::Int] }
-    # 
     # Constructs an AssertionError with its detail message derived
     # from the specified <code>int</code>, which is converted to a
     # string as defined in <i>The Java Language Specification, Second
@@ -121,7 +113,6 @@ module Java::Lang
     end
     
     typesig { [::Java::Long] }
-    # 
     # Constructs an AssertionError with its detail message derived
     # from the specified <code>long</code>, which is converted to a
     # string as defined in <i>The Java Language Specification, Second
@@ -133,7 +124,6 @@ module Java::Lang
     end
     
     typesig { [::Java::Float] }
-    # 
     # Constructs an AssertionError with its detail message derived
     # from the specified <code>float</code>, which is converted to a
     # string as defined in <i>The Java Language Specification, Second
@@ -145,7 +135,6 @@ module Java::Lang
     end
     
     typesig { [::Java::Double] }
-    # 
     # Constructs an AssertionError with its detail message derived
     # from the specified <code>double</code>, which is converted to a
     # string as defined in <i>The Java Language Specification, Second

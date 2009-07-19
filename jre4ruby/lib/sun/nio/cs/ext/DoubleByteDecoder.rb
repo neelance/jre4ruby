@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 2002-2005 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -45,7 +44,6 @@ module Sun::Nio::Cs::Ext
     alias_method :attr_index1=, :index1=
     undef_method :index1=
     
-    # 
     # 2nd level index, provided by subclass
     # every string has 0x10*(end-start+1) characters.
     attr_accessor :index2
@@ -202,7 +200,6 @@ module Sun::Nio::Cs::Ext
     end
     
     typesig { [::Java::Int] }
-    # 
     # Can be changed by subclass
     def decode_single(b)
       if (b >= 0)

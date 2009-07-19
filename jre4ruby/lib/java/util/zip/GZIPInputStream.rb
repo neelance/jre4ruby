@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 1996-2006 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -36,7 +35,6 @@ module Java::Util::Zip
     }
   end
   
-  # 
   # This class implements a stream filter for reading compressed data in
   # the GZIP file format.
   # 
@@ -45,7 +43,6 @@ module Java::Util::Zip
   class GZIPInputStream < GZIPInputStreamImports.const_get :InflaterInputStream
     include_class_members GZIPInputStreamImports
     
-    # 
     # CRC-32 for uncompressed data.
     attr_accessor :crc
     alias_method :attr_crc, :crc
@@ -53,7 +50,6 @@ module Java::Util::Zip
     alias_method :attr_crc=, :crc=
     undef_method :crc=
     
-    # 
     # Indicates end of input stream.
     attr_accessor :eos
     alias_method :attr_eos, :eos
@@ -68,7 +64,6 @@ module Java::Util::Zip
     undef_method :closed=
     
     typesig { [] }
-    # 
     # Check to make sure that this stream has not been closed
     def ensure_open
       if (@closed)
@@ -77,7 +72,6 @@ module Java::Util::Zip
     end
     
     typesig { [InputStream, ::Java::Int] }
-    # 
     # Creates a new input stream with the specified buffer size.
     # @param in the input stream
     # @param size the input buffer size
@@ -98,7 +92,6 @@ module Java::Util::Zip
     end
     
     typesig { [InputStream] }
-    # 
     # Creates a new input stream with a default buffer size.
     # @param in the input stream
     # @exception IOException if an I/O error has occurred
@@ -107,7 +100,6 @@ module Java::Util::Zip
     end
     
     typesig { [Array.typed(::Java::Byte), ::Java::Int, ::Java::Int] }
-    # 
     # Reads uncompressed data into an array of bytes. If <code>len</code> is not
     # zero, the method will block until some input can be decompressed; otherwise,
     # no bytes are read and <code>0</code> is returned.
@@ -138,7 +130,6 @@ module Java::Util::Zip
     end
     
     typesig { [] }
-    # 
     # Closes this input stream and releases any system resources associated
     # with the stream.
     # @exception IOException if an I/O error has occurred
@@ -151,12 +142,10 @@ module Java::Util::Zip
     end
     
     class_module.module_eval {
-      # 
       # GZIP header magic number.
       const_set_lazy(:GZIP_MAGIC) { 0x8b1f }
       const_attr_reader  :GZIP_MAGIC
       
-      # 
       # File header flags.
       const_set_lazy(:FTEXT) { 1 }
       const_attr_reader  :FTEXT
@@ -221,7 +210,6 @@ module Java::Util::Zip
     end
     
     typesig { [] }
-    # 
     # Reads GZIP member trailer.
     def read_trailer
       in_ = self.attr_in
@@ -237,7 +225,6 @@ module Java::Util::Zip
     end
     
     typesig { [InputStream] }
-    # 
     # Reads unsigned integer in Intel byte order.
     def read_uint(in_)
       s = read_ushort(in_)
@@ -245,7 +232,6 @@ module Java::Util::Zip
     end
     
     typesig { [InputStream] }
-    # 
     # Reads unsigned short in Intel byte order.
     def read_ushort(in_)
       b = read_ubyte(in_)
@@ -253,7 +239,6 @@ module Java::Util::Zip
     end
     
     typesig { [InputStream] }
-    # 
     # Reads unsigned byte.
     def read_ubyte(in_)
       b = in_.read
@@ -274,7 +259,6 @@ module Java::Util::Zip
     undef_method :tmpbuf=
     
     typesig { [InputStream, ::Java::Int] }
-    # 
     # Skips bytes of input data blocking until all bytes are skipped.
     # Does not assume that the input stream is capable of seeking.
     def skip_bytes(in_, n)

@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 2000-2005 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -41,7 +40,6 @@ module Sun::Util::Calendar
     }
   end
   
-  # 
   # <code>ZoneInfo</code> is an implementation subclass of {@link
   # java.util.TimeZone TimeZone} that represents GMT offsets and
   # daylight saving time transitions of a time zone.
@@ -100,7 +98,6 @@ module Sun::Util::Calendar
       const_attr_reader  :Gcal
     }
     
-    # 
     # The raw GMT offset in milliseconds between this zone and GMT.
     # Negative offsets are to the west of Greenwich.  To obtain local
     # <em>standard</em> time, add the offset to GMT time.
@@ -111,7 +108,6 @@ module Sun::Util::Calendar
     alias_method :attr_raw_offset=, :raw_offset=
     undef_method :raw_offset=
     
-    # 
     # Difference in milliseconds from the original GMT offset in case
     # the raw offset value has been modified by calling {@link
     # #setRawOffset}. The initial value is 0.
@@ -122,7 +118,6 @@ module Sun::Util::Calendar
     alias_method :attr_raw_offset_diff=, :raw_offset_diff=
     undef_method :raw_offset_diff=
     
-    # 
     # A CRC32 value of all pairs of transition time (in milliseconds
     # in <code>long</code>) in local time and its GMT offset (in
     # seconds in <code>int</code>) in the chronological order. Byte
@@ -135,7 +130,6 @@ module Sun::Util::Calendar
     alias_method :attr_checksum=, :checksum=
     undef_method :checksum=
     
-    # 
     # The amount of time in milliseconds saved during daylight saving
     # time. If <code>useDaylight</code> is false, this value is 0.
     # @serial
@@ -145,7 +139,6 @@ module Sun::Util::Calendar
     alias_method :attr_dst_savings=, :dst_savings=
     undef_method :dst_savings=
     
-    # 
     # This array describes transitions of GMT offsets of this time
     # zone, including both raw offset changes and daylight saving
     # time changes.
@@ -172,7 +165,6 @@ module Sun::Util::Calendar
     alias_method :attr_transitions=, :transitions=
     undef_method :transitions=
     
-    # 
     # This array holds all unique offset values in
     # milliseconds. Index values to this array are stored in the
     # transitions array elements.
@@ -183,7 +175,6 @@ module Sun::Util::Calendar
     alias_method :attr_offsets=, :offsets=
     undef_method :offsets=
     
-    # 
     # SimpleTimeZone parameter values. It has to have either 8 for
     # {@link java.util.SimpleTimeZone#SimpleTimeZone(int, String,
     # int, int , int , int , int , int , int , int , int) the
@@ -198,7 +189,6 @@ module Sun::Util::Calendar
     alias_method :attr_simple_time_zone_params=, :simple_time_zone_params=
     undef_method :simple_time_zone_params=
     
-    # 
     # True if the raw GMT offset value would change after the time
     # zone data has been generated; false, otherwise. The default
     # value is false.
@@ -209,7 +199,6 @@ module Sun::Util::Calendar
     alias_method :attr_will_gmtoffset_change=, :will_gmtoffset_change=
     undef_method :will_gmtoffset_change=
     
-    # 
     # True if the object has been modified after its instantiation.
     attr_accessor :dirty
     alias_method :attr_dirty, :dirty
@@ -223,7 +212,6 @@ module Sun::Util::Calendar
     }
     
     typesig { [] }
-    # 
     # A constructor.
     def initialize
       @raw_offset = 0
@@ -243,14 +231,12 @@ module Sun::Util::Calendar
     end
     
     typesig { [String, ::Java::Int] }
-    # 
     # A Constructor for CustomID.
     def initialize(id, raw_offset)
       initialize__zone_info(id, raw_offset, 0, 0, nil, nil, nil, false)
     end
     
     typesig { [String, ::Java::Int, ::Java::Int, ::Java::Int, Array.typed(::Java::Long), Array.typed(::Java::Int), Array.typed(::Java::Int), ::Java::Boolean] }
-    # 
     # Constructs a ZoneInfo instance.
     # 
     # @param ID time zone name
@@ -290,7 +276,6 @@ module Sun::Util::Calendar
     end
     
     typesig { [::Java::Long] }
-    # 
     # Returns the difference in milliseconds between local time and UTC
     # of given time, taking into account both the raw offset and the
     # effect of daylight savings.
@@ -332,23 +317,23 @@ module Sun::Util::Calendar
       # prior to the transition table, returns the raw offset.
       # should support LMT.
       if (index < 0)
-        offset_ = get_last_raw_offset
+        offset = get_last_raw_offset
         if (!(offsets).nil?)
-          offsets[0] = offset_
+          offsets[0] = offset
           offsets[1] = 0
         end
-        return offset_
+        return offset
       end
       if (index < @transitions.attr_length)
         val = @transitions[index]
-        offset__ = @offsets[RJava.cast_to_int((val & OFFSET_MASK))] + @raw_offset_diff
+        offset = @offsets[RJava.cast_to_int((val & OFFSET_MASK))] + @raw_offset_diff
         if (!(offsets).nil?)
           dst = RJava.cast_to_int(((val >> DST_NSHIFT) & 0xf))
           save = ((dst).equal?(0)) ? 0 : @offsets[dst]
-          offsets[0] = offset__ - save
+          offsets[0] = offset - save
           offsets[1] = save
         end
-        return offset__
+        return offset
       end
       # beyond the transitions, delegate to SimpleTimeZone if there
       # is a rule; otherwise, return rawOffset.
@@ -366,12 +351,12 @@ module Sun::Util::Calendar
         end
         return rawoffset + dstoffset
       end
-      offset___ = get_last_raw_offset
+      offset = get_last_raw_offset
       if (!(offsets).nil?)
-        offsets[0] = offset___
+        offsets[0] = offset
         offsets[1] = 0
       end
-      return offset___
+      return offset
     end
     
     typesig { [::Java::Long, ::Java::Int] }
@@ -409,7 +394,6 @@ module Sun::Util::Calendar
     end
     
     typesig { [::Java::Int, ::Java::Int, ::Java::Int, ::Java::Int, ::Java::Int, ::Java::Int] }
-    # 
     # Returns the difference in milliseconds between local time and
     # UTC, taking into account both the raw offset and the effect of
     # daylight savings, for the specified date and time.  This method
@@ -460,7 +444,6 @@ module Sun::Util::Calendar
     end
     
     typesig { [::Java::Int] }
-    # 
     # Sets the base time zone offset from GMT. This operation
     # modifies all the transitions of this ZoneInfo object, including
     # historical ones, if applicable.
@@ -481,7 +464,6 @@ module Sun::Util::Calendar
     end
     
     typesig { [] }
-    # 
     # Returns the GMT offset of the current date. This GMT offset
     # value is not modified during Daylight Saving Time.
     # 
@@ -507,14 +489,12 @@ module Sun::Util::Calendar
     end
     
     typesig { [] }
-    # 
     # Queries if this time zone uses Daylight Saving Time in the last known rule.
     def use_daylight_time
       return (!(@simple_time_zone_params).nil?)
     end
     
     typesig { [Date] }
-    # 
     # Queries if the specified date is in Daylight Saving Time.
     def in_daylight_time(date)
       if ((date).nil?)
@@ -542,7 +522,6 @@ module Sun::Util::Calendar
     end
     
     typesig { [] }
-    # 
     # Returns the amount of time in milliseconds that the clock is advanced
     # during daylight saving time is in effect in its last daylight saving time rule.
     # 
@@ -576,7 +555,6 @@ module Sun::Util::Calendar
     
     class_module.module_eval {
       typesig { [] }
-      # 
       # Gets all available IDs supported in the Java run-time.
       # 
       # @return an array of time zone IDs.
@@ -595,7 +573,6 @@ module Sun::Util::Calendar
       end
       
       typesig { [::Java::Int] }
-      # 
       # Gets all available IDs that have the same value as the
       # specified raw GMT offset.
       # 
@@ -648,7 +625,6 @@ module Sun::Util::Calendar
       end
       
       typesig { [String] }
-      # 
       # Gets the ZoneInfo for the given ID.
       # 
       # @param ID the ID for a ZoneInfo. See TimeZone for detail.
@@ -687,7 +663,6 @@ module Sun::Util::Calendar
     undef_method :last_rule=
     
     typesig { [] }
-    # 
     # Returns a SimpleTimeZone object representing the last GMT
     # offset and DST schedule or null if this time zone doesn't
     # observe DST.
@@ -701,7 +676,6 @@ module Sun::Util::Calendar
     end
     
     typesig { [] }
-    # 
     # Returns a SimpleTimeZone object that represents the last
     # known daylight saving time rules.
     # 
@@ -718,7 +692,6 @@ module Sun::Util::Calendar
     end
     
     typesig { [] }
-    # 
     # Returns a copy of this <code>ZoneInfo</code>.
     def clone
       zi = super
@@ -727,7 +700,6 @@ module Sun::Util::Calendar
     end
     
     typesig { [] }
-    # 
     # Returns a hash code value calculated from the GMT offset and
     # transitions.
     # @return a hash code of this time zone
@@ -736,7 +708,6 @@ module Sun::Util::Calendar
     end
     
     typesig { [Object] }
-    # 
     # Compares the equity of two ZoneInfo objects.
     # 
     # @param obj the object to be compared with
@@ -754,7 +725,6 @@ module Sun::Util::Calendar
     end
     
     typesig { [TimeZone] }
-    # 
     # Returns true if this zone has the same raw GMT offset value and
     # transition table as another zone info. If the specified
     # TimeZone object is not a ZoneInfo instance, this method returns
@@ -801,7 +771,6 @@ module Sun::Util::Calendar
       alias_method :attr_alias_table=, :alias_table=
       
       typesig { [] }
-      # 
       # Returns a Map from alias time zone IDs to their standard
       # time zone IDs.
       # 

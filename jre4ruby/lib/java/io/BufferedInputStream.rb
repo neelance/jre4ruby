@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 1994-2006 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -32,7 +31,6 @@ module Java::Io
     }
   end
   
-  # 
   # A <code>BufferedInputStream</code> adds
   # functionality to another input stream-namely,
   # the ability to buffer the input and to
@@ -68,7 +66,6 @@ module Java::Io
       alias_method :attr_default_buffer_size=, :default_buffer_size=
     }
     
-    # 
     # The internal buffer array where the data is stored. When necessary,
     # it may be replaced by another array of
     # a different size.
@@ -79,7 +76,6 @@ module Java::Io
     undef_method :buf=
     
     class_module.module_eval {
-      # 
       # Atomic updater to provide compareAndSet for buf. This is
       # necessary because closes can be asynchronous. We use nullness
       # of buf[] as primary indicator that this stream is closed. (The
@@ -88,7 +84,6 @@ module Java::Io
       const_attr_reader  :BufUpdater
     }
     
-    # 
     # The index one greater than the index of the last valid byte in
     # the buffer.
     # This value is always
@@ -102,7 +97,6 @@ module Java::Io
     alias_method :attr_count=, :count=
     undef_method :count=
     
-    # 
     # The current position in the buffer. This is the index of the next
     # character to be read from the <code>buf</code> array.
     # <p>
@@ -122,7 +116,6 @@ module Java::Io
     alias_method :attr_pos=, :pos=
     undef_method :pos=
     
-    # 
     # The value of the <code>pos</code> field at the time the last
     # <code>mark</code> method was called.
     # <p>
@@ -154,7 +147,6 @@ module Java::Io
     alias_method :attr_markpos=, :markpos=
     undef_method :markpos=
     
-    # 
     # The maximum read ahead allowed after a call to the
     # <code>mark</code> method before subsequent calls to the
     # <code>reset</code> method fail.
@@ -172,7 +164,6 @@ module Java::Io
     undef_method :marklimit=
     
     typesig { [] }
-    # 
     # Check to make sure that underlying input stream has not been
     # nulled out due to close; if not return it;
     def get_in_if_open
@@ -184,7 +175,6 @@ module Java::Io
     end
     
     typesig { [] }
-    # 
     # Check to make sure that buffer has not been nulled out due to
     # close; if not return it;
     def get_buf_if_open
@@ -196,7 +186,6 @@ module Java::Io
     end
     
     typesig { [InputStream] }
-    # 
     # Creates a <code>BufferedInputStream</code>
     # and saves its  argument, the input stream
     # <code>in</code>, for later use. An internal
@@ -208,7 +197,6 @@ module Java::Io
     end
     
     typesig { [InputStream, ::Java::Int] }
-    # 
     # Creates a <code>BufferedInputStream</code>
     # with the specified buffer size,
     # and saves its  argument, the input stream
@@ -234,7 +222,6 @@ module Java::Io
     end
     
     typesig { [] }
-    # 
     # Fills the buffer with more data, taking into account
     # shuffling and other tricks for dealing with marks.
     # Assumes that it is being called by a synchronized method.
@@ -289,7 +276,6 @@ module Java::Io
     end
     
     typesig { [] }
-    # 
     # See
     # the general contract of the <code>read</code>
     # method of <code>InputStream</code>.
@@ -313,7 +299,6 @@ module Java::Io
     end
     
     typesig { [Array.typed(::Java::Byte), ::Java::Int, ::Java::Int] }
-    # 
     # Read characters into a portion of an array, reading from the underlying
     # stream at most once if necessary.
     def read1(b, off, len)
@@ -339,7 +324,6 @@ module Java::Io
     end
     
     typesig { [Array.typed(::Java::Byte), ::Java::Int, ::Java::Int] }
-    # 
     # Reads bytes from this byte-input stream into the specified byte array,
     # starting at the given offset.
     # 
@@ -405,7 +389,6 @@ module Java::Io
     end
     
     typesig { [::Java::Long] }
-    # 
     # See the general contract of the <code>skip</code>
     # method of <code>InputStream</code>.
     # 
@@ -439,7 +422,6 @@ module Java::Io
     end
     
     typesig { [] }
-    # 
     # Returns an estimate of the number of bytes that can be read (or
     # skipped over) from this input stream without blocking by the next
     # invocation of a method for this input stream. The next invocation might be
@@ -462,7 +444,6 @@ module Java::Io
     end
     
     typesig { [::Java::Int] }
-    # 
     # See the general contract of the <code>mark</code>
     # method of <code>InputStream</code>.
     # 
@@ -477,7 +458,6 @@ module Java::Io
     end
     
     typesig { [] }
-    # 
     # See the general contract of the <code>reset</code>
     # method of <code>InputStream</code>.
     # <p>
@@ -503,7 +483,6 @@ module Java::Io
     end
     
     typesig { [] }
-    # 
     # Tests if this input stream supports the <code>mark</code>
     # and <code>reset</code> methods. The <code>markSupported</code>
     # method of <code>BufferedInputStream</code> returns
@@ -518,7 +497,6 @@ module Java::Io
     end
     
     typesig { [] }
-    # 
     # Closes this input stream and releases any system resources
     # associated with the stream.
     # Once the stream has been closed, further read(), available(), reset(),

@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 1995-2007 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -31,7 +30,6 @@ module Java::Lang
     }
   end
   
-  # 
   # The {@link ProcessBuilder#start()} and
   # {@link Runtime#exec(String[],String[],File) Runtime.exec}
   # methods create a native process and return an instance of a
@@ -73,7 +71,6 @@ module Java::Lang
     include_class_members ProcessImports
     
     typesig { [] }
-    # 
     # Returns the output stream connected to the normal input of the
     # subprocess.  Output to the stream is piped into the standard
     # input stream of the process represented by this {@code Process}
@@ -89,7 +86,6 @@ module Java::Lang
     end
     
     typesig { [] }
-    # 
     # Returns the input stream connected to the normal output of the
     # subprocess.  The stream obtains data piped from the standard
     # output stream of the process represented by this {@code
@@ -106,7 +102,6 @@ module Java::Lang
     end
     
     typesig { [] }
-    # 
     # Returns the input stream connected to the error output stream of
     # the subprocess.  The stream obtains data piped from the error
     # output stream of the process represented by this {@code Process}
@@ -123,7 +118,6 @@ module Java::Lang
     end
     
     typesig { [] }
-    # 
     # Causes the current thread to wait, if necessary, until the
     # process represented by this {@code Process} object has
     # terminated.  This method returns immediately if the subprocess
@@ -143,7 +137,6 @@ module Java::Lang
     end
     
     typesig { [] }
-    # 
     # Returns the exit value for the subprocess.
     # 
     # @return the exit value of the subprocess represented by this
@@ -156,7 +149,6 @@ module Java::Lang
     end
     
     typesig { [] }
-    # 
     # Kills the subprocess. The subprocess represented by this
     # {@code Process} object is forcibly terminated.
     def destroy

@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 2003-2004 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -31,7 +30,6 @@ module Java::Lang::Management
     }
   end
   
-  # 
   # The management interface for the compilation system of
   # the Java virtual machine.
   # 
@@ -61,7 +59,6 @@ module Java::Lang::Management
     include_class_members CompilationMXBeanImports
     
     typesig { [] }
-    # 
     # Returns the name of the Just-in-time (JIT) compiler.
     # 
     # @return the name of the JIT compiler.
@@ -70,7 +67,6 @@ module Java::Lang::Management
     end
     
     typesig { [] }
-    # 
     # Tests if the Java virtual machine supports the monitoring of
     # compilation time.
     # 
@@ -81,7 +77,6 @@ module Java::Lang::Management
     end
     
     typesig { [] }
-    # 
     # Returns the approximate accumlated elapsed time (in milliseconds)
     # spent in compilation.
     # If multiple threads are used for compilation, this value is

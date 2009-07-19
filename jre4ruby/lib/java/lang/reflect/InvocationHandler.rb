@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 1999-2006 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -31,7 +30,6 @@ module Java::Lang::Reflect
     }
   end
   
-  # 
   # {@code InvocationHandler} is the interface implemented by
   # the <i>invocation handler</i> of a proxy instance.
   # 
@@ -47,7 +45,6 @@ module Java::Lang::Reflect
     include_class_members InvocationHandlerImports
     
     typesig { [Object, Method, Array.typed(Object)] }
-    # 
     # Processes a method invocation on a proxy instance and returns
     # the result.  This method will be invoked on an invocation handler
     # when a method is invoked on a proxy instance that it is

@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 2003 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -31,7 +30,6 @@ module Java::Lang::Reflect
     }
   end
   
-  # 
   # Type is the common superinterface for all types in the Java
   # programming language. These include raw types, parameterized types,
   # array types, type variables and primitive types.

@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 1996-2006 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -31,7 +30,6 @@ module Java::Util::Zip
     }
   end
   
-  # 
   # This class provides support for general purpose decompression using the
   # popular ZLIB compression library. The ZLIB compression library was
   # initially developed as part of the PNG graphics standard and is not
@@ -121,7 +119,6 @@ module Java::Util::Zip
     }
     
     typesig { [::Java::Boolean] }
-    # 
     # Creates a new decompressor. If the parameter 'nowrap' is true then
     # the ZLIB header and checksum fields will not be used. This provides
     # compatibility with the compression format used by both GZIP and PKZIP.
@@ -142,14 +139,12 @@ module Java::Util::Zip
     end
     
     typesig { [] }
-    # 
     # Creates a new decompressor.
     def initialize
       initialize__inflater(false)
     end
     
     typesig { [Array.typed(::Java::Byte), ::Java::Int, ::Java::Int] }
-    # 
     # Sets input data for decompression. Should be called whenever
     # needsInput() returns true indicating that more input data is
     # required.
@@ -172,7 +167,6 @@ module Java::Util::Zip
     end
     
     typesig { [Array.typed(::Java::Byte)] }
-    # 
     # Sets input data for decompression. Should be called whenever
     # needsInput() returns true indicating that more input data is
     # required.
@@ -183,7 +177,6 @@ module Java::Util::Zip
     end
     
     typesig { [Array.typed(::Java::Byte), ::Java::Int, ::Java::Int] }
-    # 
     # Sets the preset dictionary to the given array of bytes. Should be
     # called when inflate() returns 0 and needsDictionary() returns true
     # indicating that a preset dictionary is required. The method getAdler()
@@ -207,7 +200,6 @@ module Java::Util::Zip
     end
     
     typesig { [Array.typed(::Java::Byte)] }
-    # 
     # Sets the preset dictionary to the given array of bytes. Should be
     # called when inflate() returns 0 and needsDictionary() returns true
     # indicating that a preset dictionary is required. The method getAdler()
@@ -220,7 +212,6 @@ module Java::Util::Zip
     end
     
     typesig { [] }
-    # 
     # Returns the total number of bytes remaining in the input buffer.
     # This can be used to find out what bytes still remain in the input
     # buffer after decompression has finished.
@@ -232,7 +223,6 @@ module Java::Util::Zip
     end
     
     typesig { [] }
-    # 
     # Returns true if no data remains in the input buffer. This can
     # be used to determine if #setInput should be called in order
     # to provide more input.
@@ -244,7 +234,6 @@ module Java::Util::Zip
     end
     
     typesig { [] }
-    # 
     # Returns true if a preset dictionary is needed for decompression.
     # @return true if a preset dictionary is needed for decompression
     # @see Inflater#setDictionary
@@ -255,7 +244,6 @@ module Java::Util::Zip
     end
     
     typesig { [] }
-    # 
     # Returns true if the end of the compressed data stream has been
     # reached.
     # @return true if the end of the compressed data stream has been
@@ -267,7 +255,6 @@ module Java::Util::Zip
     end
     
     typesig { [Array.typed(::Java::Byte), ::Java::Int, ::Java::Int] }
-    # 
     # Uncompresses bytes into specified buffer. Returns actual number
     # of bytes uncompressed. A return value of 0 indicates that
     # needsInput() or needsDictionary() should be called in order to
@@ -294,7 +281,6 @@ module Java::Util::Zip
     end
     
     typesig { [Array.typed(::Java::Byte)] }
-    # 
     # Uncompresses bytes into specified buffer. Returns actual number
     # of bytes uncompressed. A return value of 0 indicates that
     # needsInput() or needsDictionary() should be called in order to
@@ -311,7 +297,6 @@ module Java::Util::Zip
     end
     
     typesig { [] }
-    # 
     # Returns the ADLER-32 value of the uncompressed data.
     # @return the ADLER-32 value of the uncompressed data
     def get_adler
@@ -322,7 +307,6 @@ module Java::Util::Zip
     end
     
     typesig { [] }
-    # 
     # Returns the total number of compressed bytes input so far.
     # 
     # <p>Since the number of bytes may be greater than
@@ -335,7 +319,6 @@ module Java::Util::Zip
     end
     
     typesig { [] }
-    # 
     # Returns the total number of compressed bytes input so far.</p>
     # 
     # @return the total (non-negative) number of compressed bytes input so far
@@ -348,7 +331,6 @@ module Java::Util::Zip
     end
     
     typesig { [] }
-    # 
     # Returns the total number of uncompressed bytes output so far.
     # 
     # <p>Since the number of bytes may be greater than
@@ -361,7 +343,6 @@ module Java::Util::Zip
     end
     
     typesig { [] }
-    # 
     # Returns the total number of uncompressed bytes output so far.</p>
     # 
     # @return the total (non-negative) number of uncompressed bytes output so far
@@ -374,7 +355,6 @@ module Java::Util::Zip
     end
     
     typesig { [] }
-    # 
     # Resets inflater so that a new set of input data can be processed.
     def reset
       synchronized(self) do
@@ -387,7 +367,6 @@ module Java::Util::Zip
     end
     
     typesig { [] }
-    # 
     # Closes the decompressor and discards any unprocessed input.
     # This method should be called when the decompressor is no longer
     # being used, but will also be called automatically by the finalize()
@@ -404,7 +383,6 @@ module Java::Util::Zip
     end
     
     typesig { [] }
-    # 
     # Closes the decompressor when garbage is collected.
     def finalize
       end

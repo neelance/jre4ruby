@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 2003-2007 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -35,7 +34,6 @@ module Sun::Security::Ssl
     }
   end
   
-  # 
   # A OutputRecord class extension which uses external ByteBuffers
   # or the internal ByteArrayOutputStream for data manipulations.
   # <P>
@@ -61,7 +59,6 @@ module Sun::Security::Ssl
     undef_method :finished_msg=
     
     typesig { [::Java::Byte, SSLEngineImpl] }
-    # 
     # All handshake hashing is done by the superclass
     # 
     # 
@@ -79,7 +76,6 @@ module Sun::Security::Ssl
     
     class_module.module_eval {
       typesig { [::Java::Byte] }
-      # 
       # Get the size of the buffer we need for records of the specified
       # type.
       # <P>
@@ -114,7 +110,6 @@ module Sun::Security::Ssl
     end
     
     typesig { [MAC, ByteBuffer] }
-    # 
     # Calculate the MAC value, storing the result either in
     # the internal buffer, or at the end of the destination
     # ByteBuffer.
@@ -128,7 +123,6 @@ module Sun::Security::Ssl
     def add_mac(signer, bb)
       if (!(signer._maclen).equal?(0))
         hash = signer.compute(content_type, bb)
-        # 
         # position was advanced to limit in compute above.
         # 
         # Mark next area as writable (above layers should have
@@ -140,7 +134,6 @@ module Sun::Security::Ssl
     end
     
     typesig { [CipherBox, ByteBuffer] }
-    # 
     # Encrypt a ByteBuffer.
     # 
     # We assume that the higher levels have assured us enough
@@ -154,32 +147,27 @@ module Sun::Security::Ssl
     end
     
     typesig { [OutputStream, Array.typed(::Java::Byte), ::Java::Int, ::Java::Int] }
-    # 
     # Override the actual write below.  We do things this way to be
     # consistent with InputRecord.  InputRecord may try to write out
     # data to the peer, and *then* throw an Exception.  This forces
     # data to be generated/output before the exception is ever
     # generated.
     def write_buffer(s, buf, off, len)
-      # 
       # Copy data out of buffer, it's ready to go.
       net_bb = ByteBuffer.allocate(len).put(buf, 0, len).flip
       @writer.put_outbound_data(net_bb)
     end
     
     typesig { [MAC, CipherBox] }
-    # 
     # Main method for writing non-application data.
     # We MAC/encrypt, then send down for processing.
     def write(write_mac, write_cipher)
-      # 
       # Sanity check.
       case (content_type)
       when self.attr_ct_change_cipher_spec, self.attr_ct_alert, self.attr_ct_handshake
       else
         raise RuntimeException.new("unexpected byte buffers")
       end
-      # 
       # Don't bother to really write empty records.  We went this
       # far to drive the handshake machinery, for correctness; not
       # writing empty records improves performance by cutting CPU
@@ -198,21 +186,17 @@ module Sun::Security::Ssl
     end
     
     typesig { [EngineArgs, MAC, CipherBox] }
-    # 
     # Main wrap/write driver.
     def write(ea, write_mac, write_cipher)
-      # 
       # sanity check to make sure someone didn't inadvertantly
       # send us an impossible combination we don't know how
       # to process.
       raise AssertError if not (((content_type).equal?(self.attr_ct_application_data)))
-      # 
       # Have we set the MAC's yet?  If not, we're not ready
       # to process application data yet.
       if ((write_mac).equal?(MAC::NULL))
         return
       end
-      # 
       # Don't bother to really write empty records.  We went this
       # far to drive the handshake machinery, for correctness; not
       # writing empty records improves performance by cutting CPU
@@ -223,12 +207,10 @@ module Sun::Security::Ssl
       if ((length).equal?(0))
         return
       end
-      # 
       # Copy out existing buffer values.
       dst_bb = ea.attr_net_data
       dst_pos = dst_bb.position
       dst_lim = dst_bb.limit
-      # 
       # Where to put the data.  Jump over the header.
       # 
       # Don't need to worry about SSLv2 rewrites, if we're here,
@@ -236,14 +218,12 @@ module Sun::Security::Ssl
       dst_data = dst_pos + self.attr_header_size
       dst_bb.position(dst_data)
       ea.gather(length)
-      # 
       # "flip" but skip over header again, add MAC & encrypt
       # addMAC will expand the limit to reflect the new
       # data.
       dst_bb.limit(dst_bb.position)
       dst_bb.position(dst_data)
       add_mac(write_mac, dst_bb)
-      # 
       # Encrypt may pad, so again the limit may have changed.
       dst_bb.limit(dst_bb.position)
       dst_bb.position(dst_data)
@@ -255,14 +235,12 @@ module Sun::Security::Ssl
         end
       end
       packet_length = dst_bb.limit - dst_data
-      # 
       # Finish out the record header.
       dst_bb.put(dst_pos, content_type)
       dst_bb.put(dst_pos + 1, self.attr_protocol_version.attr_major)
       dst_bb.put(dst_pos + 2, self.attr_protocol_version.attr_minor)
       dst_bb.put(dst_pos + 3, (packet_length >> 8))
       dst_bb.put(dst_pos + 4, packet_length)
-      # 
       # Position was already set by encrypt() above.
       dst_bb.limit(dst_lim)
       return

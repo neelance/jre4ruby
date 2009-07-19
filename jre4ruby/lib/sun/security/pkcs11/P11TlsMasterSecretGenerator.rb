@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 2005-2007 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -37,7 +36,6 @@ module Sun::Security::Pkcs11
     }
   end
   
-  # 
   # KeyGenerator for the SSL/TLS master secret.
   # 
   # @author  Andreas Sterbenz

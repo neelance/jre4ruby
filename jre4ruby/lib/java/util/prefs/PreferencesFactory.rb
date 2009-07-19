@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 2000-2005 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -32,7 +31,6 @@ module Java::Util::Prefs
     }
   end
   
-  # 
   # A factory object that generates Preferences objects.  Providers of
   # new {@link Preferences} implementations should provide corresponding
   # <tt>PreferencesFactory</tt> implementations so that the new
@@ -50,7 +48,6 @@ module Java::Util::Prefs
     include_class_members PreferencesFactoryImports
     
     typesig { [] }
-    # 
     # Returns the system root preference node.  (Multiple calls on this
     # method will return the same object reference.)
     def system_root
@@ -58,7 +55,6 @@ module Java::Util::Prefs
     end
     
     typesig { [] }
-    # 
     # Returns the user root preference node corresponding to the calling
     # user.  In a server, the returned value will typically depend on
     # some implicit client-context.

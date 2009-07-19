@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 1997-2006 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -34,7 +33,6 @@ module Java::Util::Jar
     }
   end
   
-  # 
   # The <code>JarInputStream</code> class is used to read the contents of
   # a JAR file from any input stream. It extends the class
   # <code>java.util.zip.ZipInputStream</code> with support for reading
@@ -73,7 +71,6 @@ module Java::Util::Jar
     undef_method :mev=
     
     typesig { [InputStream] }
-    # 
     # Creates a new <code>JarInputStream</code> and reads the optional
     # manifest. If a manifest is present, also attempts to verify
     # the signatures if the JarInputStream is signed.
@@ -84,7 +81,6 @@ module Java::Util::Jar
     end
     
     typesig { [InputStream, ::Java::Boolean] }
-    # 
     # Creates a new <code>JarInputStream</code> and reads the optional
     # manifest. If a manifest is present and verify is true, also attempts
     # to verify the signatures if the JarInputStream is signed.
@@ -132,7 +128,6 @@ module Java::Util::Jar
     end
     
     typesig { [] }
-    # 
     # Returns the <code>Manifest</code> for this JAR file, or
     # <code>null</code> if none.
     # 
@@ -143,7 +138,6 @@ module Java::Util::Jar
     end
     
     typesig { [] }
-    # 
     # Reads the next ZIP file entry and positions the stream at the
     # beginning of the entry data. If verification has been enabled,
     # any invalid signature detected while positioning the stream for
@@ -175,7 +169,6 @@ module Java::Util::Jar
     end
     
     typesig { [] }
-    # 
     # Reads the next JAR file entry and positions the stream at the
     # beginning of the entry data. If verification has been enabled,
     # any invalid signature detected while positioning the stream for
@@ -190,7 +183,6 @@ module Java::Util::Jar
     end
     
     typesig { [Array.typed(::Java::Byte), ::Java::Int, ::Java::Int] }
-    # 
     # Reads from the current JAR file entry into an array of bytes.
     # If <code>len</code> is not zero, the method
     # blocks until some input is available; otherwise, no
@@ -225,7 +217,6 @@ module Java::Util::Jar
     end
     
     typesig { [String] }
-    # 
     # Creates a new <code>JarEntry</code> (<code>ZipEntry</code>) for the
     # specified JAR file entry name. The manifest attributes of
     # the specified JAR file entry name will be copied to the new

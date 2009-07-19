@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 1996-2007 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -38,7 +37,6 @@ module Sun::Security::Ssl
     }
   end
   
-  # 
   # This is the client key exchange message (CLIENT --> SERVER) used with
   # all RSA key exchanges; it holds the RSA-encrypted pre-master secret.
   # 
@@ -50,7 +48,6 @@ module Sun::Security::Ssl
     include_class_members RSAClientKeyExchangeImports
     
     class_module.module_eval {
-      # 
       # The TLS spec says that the version in the RSA premaster secret must
       # be the maximum version supported by the client (i.e. the version it
       # requested in its client hello version). However, we (and other
@@ -71,7 +68,6 @@ module Sun::Security::Ssl
       return self.attr_ht_client_key_exchange
     end
     
-    # 
     # The following field values were encrypted with the server's public
     # key (or temp key from server key exchange msg) and are presented
     # here in DECRYPTED form.
@@ -132,7 +128,6 @@ module Sun::Security::Ssl
     end
     
     typesig { [ProtocolVersion, HandshakeInStream, ::Java::Int, PrivateKey] }
-    # 
     # Server gets the PKCS #1 (block format 02) data, decrypts
     # it with its private key.
     def initialize(current_version, input, message_size, private_key)
@@ -157,7 +152,6 @@ module Sun::Security::Ssl
         cipher.init(Cipher::UNWRAP_MODE, private_key)
         @pre_master = cipher.unwrap(@encrypted, "TlsRsaPremasterSecret", Cipher::SECRET_KEY)
       rescue Exception => e
-        # 
         # Bogus decrypted ClientKeyExchange? If so, conjure a
         # a random preMaster secret that will fail later during
         # Finished message processing. This is a countermeasure against

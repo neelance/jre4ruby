@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 2000-2005 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -67,7 +66,6 @@ module Sun::Util
     end
     
     typesig { [TimeZone] }
-    # 
     # Constructs a BuddhistCalendar based on the current time
     # in the given time zone with the default locale.
     # @param zone the given time zone.
@@ -78,7 +76,6 @@ module Sun::Util
     end
     
     typesig { [Locale] }
-    # 
     # Constructs a BuddhistCalendar based on the current time
     # in the default time zone with the given locale.
     # @param aLocale the given locale.
@@ -89,7 +86,6 @@ module Sun::Util
     end
     
     typesig { [TimeZone, Locale] }
-    # 
     # Constructs a BuddhistCalendar based on the current time
     # in the given time zone with the given locale.
     # @param zone the given time zone.
@@ -113,7 +109,6 @@ module Sun::Util
     end
     
     typesig { [] }
-    # 
     # Override hashCode.
     # Generates the hash code for the BuddhistCalendar object
     def hash_code
@@ -121,7 +116,6 @@ module Sun::Util
     end
     
     typesig { [::Java::Int] }
-    # 
     # Gets the value for a given time field.
     # @param field the given time field.
     # @return the value for the given time field.
@@ -133,7 +127,6 @@ module Sun::Util
     end
     
     typesig { [::Java::Int, ::Java::Int] }
-    # 
     # Sets the time field with the given value.
     # @param field the given time field.
     # @param value the value to be set for the given time field.
@@ -146,7 +139,6 @@ module Sun::Util
     end
     
     typesig { [::Java::Int, ::Java::Int] }
-    # 
     # Adds the specified (signed) amount of time to the given time field.
     # @param field the time field.
     # @param amount the amount of date or time to be added to the field.
@@ -161,7 +153,6 @@ module Sun::Util
     end
     
     typesig { [::Java::Int, ::Java::Int] }
-    # 
     # Add to field a signed amount without changing larger fields.
     # A negative roll amount means to subtract from field without changing
     # larger fields.
@@ -247,7 +238,6 @@ module Sun::Util
     end
     
     typesig { [::Java::Int] }
-    # 
     # Returns the maximum value that this field could have, given the
     # current date.  For example, with the date "Feb 3, 2540" and the
     # <code>DAY_OF_MONTH</code> field, the actual maximum is 28; for

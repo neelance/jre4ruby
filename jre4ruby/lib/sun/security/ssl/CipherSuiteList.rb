@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 2002-2007 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -34,7 +33,6 @@ module Sun::Security::Ssl
     }
   end
   
-  # 
   # A list of CipherSuites. Also maintains the lists of supported and
   # default ciphersuites and supports I/O from handshake streams.
   # 
@@ -98,7 +96,6 @@ module Sun::Security::Ssl
     end
     
     typesig { [CipherSuite] }
-    # 
     # Create a CipherSuiteList with a single element.
     def initialize(suite)
       @cipher_suites = nil
@@ -109,7 +106,6 @@ module Sun::Security::Ssl
     end
     
     typesig { [Array.typed(String)] }
-    # 
     # Construct a CipherSuiteList from a array of names. We don't bother
     # to eliminate duplicates.
     # 
@@ -149,7 +145,6 @@ module Sun::Security::Ssl
     end
     
     typesig { [HandshakeInStream] }
-    # 
     # Read a CipherSuiteList from a HandshakeInStream in V3 ClientHello
     # format. Does not check if the listed ciphersuites are known or
     # supported.
@@ -170,7 +165,6 @@ module Sun::Security::Ssl
     end
     
     typesig { [CipherSuite] }
-    # 
     # Return whether this list contains the given CipherSuite.
     def contains(suite)
       return @cipher_suites.contains(suite)
@@ -194,14 +188,12 @@ module Sun::Security::Ssl
     end
     
     typesig { [] }
-    # 
     # Return an Iterator for the CipherSuites in this list.
     def iterator
       return @cipher_suites.iterator
     end
     
     typesig { [] }
-    # 
     # Return a reference to the internal Collection of CipherSuites.
     # The Collection MUST NOT be modified.
     def collection
@@ -209,14 +201,12 @@ module Sun::Security::Ssl
     end
     
     typesig { [] }
-    # 
     # Return the number of CipherSuites in this list.
     def size
       return @cipher_suites.size
     end
     
     typesig { [] }
-    # 
     # Return an array with the names of the CipherSuites in this list.
     def to_string_array
       synchronized(self) do
@@ -237,7 +227,6 @@ module Sun::Security::Ssl
     end
     
     typesig { [HandshakeOutStream] }
-    # 
     # Write this list to an HandshakeOutStream in V3 ClientHello format.
     def send(s)
       suite_bytes = Array.typed(::Java::Byte).new(@cipher_suites.size * 2) { 0 }
@@ -252,7 +241,6 @@ module Sun::Security::Ssl
     
     class_module.module_eval {
       typesig { [] }
-      # 
       # Clear cache of available ciphersuites. If we support all ciphers
       # internally, there is no need to clear the cache and calling this
       # method has no effect.
@@ -268,7 +256,6 @@ module Sun::Security::Ssl
       end
       
       typesig { [::Java::Int] }
-      # 
       # Return the list of all available CipherSuites with a priority of
       # minPriority or above.
       # Should be called with the Class lock held.
@@ -289,7 +276,6 @@ module Sun::Security::Ssl
       end
       
       typesig { [] }
-      # 
       # Return supported CipherSuites in preference order.
       def get_supported
         synchronized(self) do
@@ -301,7 +287,6 @@ module Sun::Security::Ssl
       end
       
       typesig { [] }
-      # 
       # Return default enabled CipherSuites in preference order.
       def get_default
         synchronized(self) do

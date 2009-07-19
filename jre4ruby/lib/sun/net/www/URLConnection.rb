@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 1995-2006 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -38,7 +37,6 @@ module Sun::Net::Www
     }
   end
   
-  # 
   # A class to represent an active connection to an object
   # represented by a URL.
   # @author  James Gosling
@@ -104,7 +102,6 @@ module Sun::Net::Www
     end
     
     typesig { [String, String] }
-    # 
     # The following three methods addRequestProperty, getRequestProperty,
     # and getRequestProperties were copied from the superclass implementation
     # before it was changed by CR:6230836, to maintain backward compatibility.
@@ -144,7 +141,6 @@ module Sun::Net::Www
     end
     
     typesig { [::Java::Int] }
-    # 
     # Return the key for the nth header field. Returns null if
     # there are fewer than n fields.  This can be used to iterate
     # through all the headers in the message.
@@ -159,7 +155,6 @@ module Sun::Net::Www
     end
     
     typesig { [::Java::Int] }
-    # 
     # Return the value for the nth header field. Returns null if
     # there are fewer than n fields.  This can be used in conjunction
     # with getHeaderFieldKey to iterate through all the headers in the message.
@@ -197,7 +192,6 @@ module Sun::Net::Www
             end
           end
         end
-        # 
         # If the Mime header had a Content-encoding field and its value
         # was not one of the values that essentially indicate no
         # encoding, we force the content type to be unknown. This will
@@ -213,7 +207,6 @@ module Sun::Net::Www
     end
     
     typesig { [String] }
-    # 
     # Set the content type of this URL to a specific value.
     # @param   type    The content type to use.  One of the
     # content_* static variables in this
@@ -253,7 +246,6 @@ module Sun::Net::Www
     end
     
     typesig { [] }
-    # 
     # Returns true if the data associated with this URL can be cached.
     def can_cache
       return self.attr_url.get_file.index_of(Character.new(??.ord)) < 0
@@ -262,7 +254,6 @@ module Sun::Net::Www
     end
     
     typesig { [] }
-    # 
     # Call this to close the connection and flush any remaining data.
     # Overriders must remember to call super.close()
     def close

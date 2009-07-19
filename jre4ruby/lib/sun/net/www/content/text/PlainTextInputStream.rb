@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 1996 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -33,7 +32,6 @@ module Sun::Net::Www::Content::Text
     }
   end
   
-  # 
   # PlainTextInputStream class extends the FilterInputStream class.
   # Currently all calls to the PlainTextInputStream object will call
   # the corresponding methods in the FilterInputStream class.  Hence
@@ -44,7 +42,6 @@ module Sun::Net::Www::Content::Text
     include_class_members PlainTextInputStreamImports
     
     typesig { [InputStream] }
-    # 
     # Calls FilterInputStream's constructor.
     # @param an InputStream
     def initialize(is)

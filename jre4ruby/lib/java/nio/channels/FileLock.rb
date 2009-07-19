@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 2001 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -32,7 +31,6 @@ module Java::Nio::Channels
     }
   end
   
-  # 
   # A token representing a lock on a region of a file.
   # 
   # <p> A file-lock object is created each time a lock is acquired on a file via
@@ -145,7 +143,6 @@ module Java::Nio::Channels
     undef_method :shared=
     
     typesig { [FileChannel, ::Java::Long, ::Java::Long, ::Java::Boolean] }
-    # 
     # Initializes a new instance of this class.  </p>
     # 
     # @param  channel
@@ -186,7 +183,6 @@ module Java::Nio::Channels
     end
     
     typesig { [] }
-    # 
     # Returns the file channel upon whose file this lock is held.  </p>
     # 
     # @return  The file channel
@@ -195,7 +191,6 @@ module Java::Nio::Channels
     end
     
     typesig { [] }
-    # 
     # Returns the position within the file of the first byte of the locked
     # region.
     # 
@@ -209,7 +204,6 @@ module Java::Nio::Channels
     end
     
     typesig { [] }
-    # 
     # Returns the size of the locked region in bytes.
     # 
     # <p> A locked region need not be contained within, or even overlap, the
@@ -222,7 +216,6 @@ module Java::Nio::Channels
     end
     
     typesig { [] }
-    # 
     # Tells whether this lock is shared.  </p>
     # 
     # @return <tt>true</tt> if lock is shared,
@@ -232,7 +225,6 @@ module Java::Nio::Channels
     end
     
     typesig { [::Java::Long, ::Java::Long] }
-    # 
     # Tells whether or not this lock overlaps the given lock range.  </p>
     # 
     # @return  <tt>true</tt> if, and only if, this lock and the given lock
@@ -248,7 +240,6 @@ module Java::Nio::Channels
     end
     
     typesig { [] }
-    # 
     # Tells whether or not this lock is valid.
     # 
     # <p> A lock object remains valid until it is released or the associated
@@ -260,7 +251,6 @@ module Java::Nio::Channels
     end
     
     typesig { [] }
-    # 
     # Releases this lock.
     # 
     # <p> If this lock object is valid then invoking this method releases the
@@ -278,7 +268,6 @@ module Java::Nio::Channels
     end
     
     typesig { [] }
-    # 
     # Returns a string describing the range, type, and validity of this lock.
     # 
     # @return  A descriptive string

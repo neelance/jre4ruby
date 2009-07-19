@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 1996-2006 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -32,7 +31,6 @@ module Java::Io
     }
   end
   
-  # 
   # A description of a Serializable field from a Serializable class.  An array
   # of ObjectStreamFields is used to declare the Serializable fields of a class.
   # 
@@ -87,7 +85,6 @@ module Java::Io
     undef_method :offset=
     
     typesig { [String, Class] }
-    # 
     # Create a Serializable field with the specified type.  This field should
     # be documented with a <code>serialField</code> tag.
     # 
@@ -98,7 +95,6 @@ module Java::Io
     end
     
     typesig { [String, Class, ::Java::Boolean] }
-    # 
     # Creates an ObjectStreamField representing a serializable field with the
     # given name and type.  If unshared is false, values of the represented
     # field are serialized and deserialized in the default manner--if the
@@ -132,7 +128,6 @@ module Java::Io
     end
     
     typesig { [String, String, ::Java::Boolean] }
-    # 
     # Creates an ObjectStreamField representing a field with the given name,
     # signature and unshared setting.
     def initialize(name, signature, unshared)
@@ -174,7 +169,6 @@ module Java::Io
     end
     
     typesig { [Field, ::Java::Boolean, ::Java::Boolean] }
-    # 
     # Creates an ObjectStreamField representing the given field with the
     # specified unshared setting.  For compatibility with the behavior of
     # earlier serialization implementations, a "showType" parameter is
@@ -197,7 +191,6 @@ module Java::Io
     end
     
     typesig { [] }
-    # 
     # Get the name of this field.
     # 
     # @return  a <code>String</code> representing the name of the serializable
@@ -207,7 +200,6 @@ module Java::Io
     end
     
     typesig { [] }
-    # 
     # Get the type of the field.  If the type is non-primitive and this
     # <code>ObjectStreamField</code> was obtained from a deserialized {@link
     # ObjectStreamClass} instance, then <code>Object.class</code> is returned.
@@ -221,7 +213,6 @@ module Java::Io
     end
     
     typesig { [] }
-    # 
     # Returns character encoding of field type.  The encoding is as follows:
     # <blockquote><pre>
     # B            byte
@@ -244,7 +235,6 @@ module Java::Io
     end
     
     typesig { [] }
-    # 
     # Return the JVM type signature.
     # 
     # @return  null if this field has a primitive type.
@@ -255,7 +245,6 @@ module Java::Io
     end
     
     typesig { [] }
-    # 
     # Offset of field within instance data.
     # 
     # @return  the offset of this field
@@ -267,7 +256,6 @@ module Java::Io
     end
     
     typesig { [::Java::Int] }
-    # 
     # Offset within instance data.
     # 
     # @param   offset the offset of the field
@@ -279,7 +267,6 @@ module Java::Io
     end
     
     typesig { [] }
-    # 
     # Return true if this field has a primitive type.
     # 
     # @return  true if and only if this field corresponds to a primitive type
@@ -291,7 +278,6 @@ module Java::Io
     end
     
     typesig { [] }
-    # 
     # Returns boolean value indicating whether or not the serializable field
     # represented by this ObjectStreamField instance is unshared.
     # 
@@ -301,7 +287,6 @@ module Java::Io
     end
     
     typesig { [Object] }
-    # 
     # Compare this field with another <code>ObjectStreamField</code>.  Return
     # -1 if this is smaller, 0 if equal, 1 if greater.  Types that are
     # primitives are "smaller" than object types.  If equal, the field names
@@ -318,14 +303,12 @@ module Java::Io
     end
     
     typesig { [] }
-    # 
     # Return a string that describes this field.
     def to_s
       return @signature + (Character.new(?\s.ord)).to_s + @name
     end
     
     typesig { [] }
-    # 
     # Returns field represented by this ObjectStreamField, or null if
     # ObjectStreamField is not associated with an actual field.
     def get_field
@@ -333,7 +316,6 @@ module Java::Io
     end
     
     typesig { [] }
-    # 
     # Returns JVM type signature of field (similar to getTypeString, except
     # that signature strings are returned for primitive fields as well).
     def get_signature

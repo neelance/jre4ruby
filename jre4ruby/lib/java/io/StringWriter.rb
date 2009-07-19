@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 1996-2004 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -31,7 +30,6 @@ module Java::Io
     }
   end
   
-  # 
   # A character stream that collects its output in a string buffer, which can
   # then be used to construct a string.
   # <p>
@@ -51,7 +49,6 @@ module Java::Io
     undef_method :buf=
     
     typesig { [] }
-    # 
     # Create a new string writer using the default initial string-buffer
     # size.
     def initialize
@@ -62,7 +59,6 @@ module Java::Io
     end
     
     typesig { [::Java::Int] }
-    # 
     # Create a new string writer using the specified initial string-buffer
     # size.
     # 
@@ -83,14 +79,12 @@ module Java::Io
     end
     
     typesig { [::Java::Int] }
-    # 
     # Write a single character.
     def write(c)
       @buf.append(RJava.cast_to_char(c))
     end
     
     typesig { [Array.typed(::Java::Char), ::Java::Int, ::Java::Int] }
-    # 
     # Write a portion of an array of characters.
     # 
     # @param  cbuf  Array of characters
@@ -108,14 +102,12 @@ module Java::Io
     end
     
     typesig { [String] }
-    # 
     # Write a string.
     def write(str)
       @buf.append(str)
     end
     
     typesig { [String, ::Java::Int, ::Java::Int] }
-    # 
     # Write a portion of a string.
     # 
     # @param  str  String to be written
@@ -126,7 +118,6 @@ module Java::Io
     end
     
     typesig { [CharSequence] }
-    # 
     # Appends the specified character sequence to this writer.
     # 
     # <p> An invocation of this method of the form <tt>out.append(csq)</tt>
@@ -159,7 +150,6 @@ module Java::Io
     end
     
     typesig { [CharSequence, ::Java::Int, ::Java::Int] }
-    # 
     # Appends a subsequence of the specified character sequence to this writer.
     # 
     # <p> An invocation of this method of the form <tt>out.append(csq, start,
@@ -197,7 +187,6 @@ module Java::Io
     end
     
     typesig { [::Java::Char] }
-    # 
     # Appends the specified character to this writer.
     # 
     # <p> An invocation of this method of the form <tt>out.append(c)</tt>
@@ -218,14 +207,12 @@ module Java::Io
     end
     
     typesig { [] }
-    # 
     # Return the buffer's current value as a string.
     def to_s
       return @buf.to_s
     end
     
     typesig { [] }
-    # 
     # Return the string buffer itself.
     # 
     # @return StringBuffer holding the current buffer value.
@@ -234,13 +221,11 @@ module Java::Io
     end
     
     typesig { [] }
-    # 
     # Flush the stream.
     def flush
     end
     
     typesig { [] }
-    # 
     # Closing a <tt>StringWriter</tt> has no effect. The methods in this
     # class can be called after the stream has been closed without generating
     # an <tt>IOException</tt>.

@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 1997-2003 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -31,7 +30,6 @@ module Java::Security
     }
   end
   
-  # 
   # <p> This exception is thrown by the AccessController to indicate
   # that a requested access (to a critical system resource such as the
   # file system or the network) is denied.
@@ -60,7 +58,6 @@ module Java::Security
     undef_method :perm=
     
     typesig { [String] }
-    # 
     # Constructs an <code>AccessControlException</code> with the
     # specified, detailed message.
     # 
@@ -71,7 +68,6 @@ module Java::Security
     end
     
     typesig { [String, Permission] }
-    # 
     # Constructs an <code>AccessControlException</code> with the
     # specified, detailed message, and the requested permission that caused
     # the exception.
@@ -85,7 +81,6 @@ module Java::Security
     end
     
     typesig { [] }
-    # 
     # Gets the Permission object associated with this exeception, or
     # null if there was no corresponding Permission object.
     # 

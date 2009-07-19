@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
 # This code is free software; you can redistribute it and/or modify it
@@ -43,7 +42,6 @@ module Java::Util::Concurrent
     }
   end
   
-  # 
   # An optionally-bounded {@linkplain BlockingQueue blocking queue} based on
   # linked nodes.
   # This queue orders elements FIFO (first-in-first-out).
@@ -82,7 +80,6 @@ module Java::Util::Concurrent
       const_set_lazy(:SerialVersionUID) { -6903933977591709194 }
       const_attr_reader  :SerialVersionUID
       
-      # 
       # A variant of the "two lock queue" algorithm.  The putLock gates
       # entry to put (and offer), and has an associated condition for
       # waiting puts.  Similarly for the takeLock.  The "count" field
@@ -182,7 +179,6 @@ module Java::Util::Concurrent
     undef_method :not_full=
     
     typesig { [] }
-    # 
     # Signals a waiting take. Called only from put/offer (which do not
     # otherwise ordinarily lock takeLock.)
     def signal_not_empty
@@ -196,7 +192,6 @@ module Java::Util::Concurrent
     end
     
     typesig { [] }
-    # 
     # Signals a waiting put. Called only from take/poll.
     def signal_not_full
       put_lock = @put_lock
@@ -209,7 +204,6 @@ module Java::Util::Concurrent
     end
     
     typesig { [Object] }
-    # 
     # Creates a node and links it at end of queue.
     # @param x the item
     def insert(x)
@@ -217,7 +211,6 @@ module Java::Util::Concurrent
     end
     
     typesig { [] }
-    # 
     # Removes a node from head of queue,
     # @return the node
     def extract
@@ -229,7 +222,6 @@ module Java::Util::Concurrent
     end
     
     typesig { [] }
-    # 
     # Lock to prevent both puts and takes.
     def fully_lock
       @put_lock.lock
@@ -237,7 +229,6 @@ module Java::Util::Concurrent
     end
     
     typesig { [] }
-    # 
     # Unlock to allow both puts and takes.
     def fully_unlock
       @take_lock.unlock
@@ -245,7 +236,6 @@ module Java::Util::Concurrent
     end
     
     typesig { [] }
-    # 
     # Creates a <tt>LinkedBlockingQueue</tt> with a capacity of
     # {@link Integer#MAX_VALUE}.
     def initialize
@@ -253,7 +243,6 @@ module Java::Util::Concurrent
     end
     
     typesig { [::Java::Int] }
-    # 
     # Creates a <tt>LinkedBlockingQueue</tt> with the given (fixed) capacity.
     # 
     # @param capacity the capacity of this queue
@@ -282,7 +271,6 @@ module Java::Util::Concurrent
     end
     
     typesig { [Collection] }
-    # 
     # Creates a <tt>LinkedBlockingQueue</tt> with a capacity of
     # {@link Integer#MAX_VALUE}, initially containing the elements of the
     # given collection,
@@ -327,7 +315,6 @@ module Java::Util::Concurrent
     end
     
     typesig { [Object] }
-    # 
     # Inserts the specified element at the tail of this queue, waiting if
     # necessary for space to become available.
     # 
@@ -344,7 +331,6 @@ module Java::Util::Concurrent
       count = @count
       put_lock.lock_interruptibly
       begin
-        # 
         # Note that count is used in wait guard even though it is
         # not protected by lock. This works because count can
         # only decrease at this point (all other puts are shut
@@ -374,7 +360,6 @@ module Java::Util::Concurrent
     end
     
     typesig { [Object, ::Java::Long, TimeUnit] }
-    # 
     # Inserts the specified element at the tail of this queue, waiting if
     # necessary up to the specified wait time for space to become available.
     # 
@@ -421,7 +406,6 @@ module Java::Util::Concurrent
     end
     
     typesig { [Object] }
-    # 
     # Inserts the specified element at the tail of this queue if it is
     # possible to do so immediately without exceeding the queue's capacity,
     # returning <tt>true</tt> upon success and <tt>false</tt> if this queue
@@ -573,7 +557,6 @@ module Java::Util::Concurrent
     end
     
     typesig { [Object] }
-    # 
     # Removes a single instance of the specified element from this queue,
     # if it is present.  More formally, removes an element <tt>e</tt> such
     # that <tt>o.equals(e)</tt>, if this queue contains one or more such
@@ -617,7 +600,6 @@ module Java::Util::Concurrent
     end
     
     typesig { [] }
-    # 
     # Returns an array containing all of the elements in this queue, in
     # proper sequence.
     # 
@@ -647,7 +629,6 @@ module Java::Util::Concurrent
     end
     
     typesig { [Array.typed(T)] }
-    # 
     # Returns an array containing all of the elements in this queue, in
     # proper sequence; the runtime type of the returned array is that of
     # the specified array.  If the queue fits in the specified array, it
@@ -715,7 +696,6 @@ module Java::Util::Concurrent
     end
     
     typesig { [] }
-    # 
     # Atomically removes all of the elements from this queue.
     # The queue will be empty after this call returns.
     def clear
@@ -733,7 +713,6 @@ module Java::Util::Concurrent
     end
     
     typesig { [Collection] }
-    # 
     # @throws UnsupportedOperationException {@inheritDoc}
     # @throws ClassCastException            {@inheritDoc}
     # @throws NullPointerException          {@inheritDoc}
@@ -771,7 +750,6 @@ module Java::Util::Concurrent
     end
     
     typesig { [Collection, ::Java::Int] }
-    # 
     # @throws UnsupportedOperationException {@inheritDoc}
     # @throws ClassCastException            {@inheritDoc}
     # @throws NullPointerException          {@inheritDoc}
@@ -810,7 +788,6 @@ module Java::Util::Concurrent
     end
     
     typesig { [] }
-    # 
     # Returns an iterator over the elements in this queue in proper sequence.
     # The returned <tt>Iterator</tt> is a "weakly consistent" iterator that
     # will never throw {@link ConcurrentModificationException},
@@ -829,7 +806,6 @@ module Java::Util::Concurrent
         include_class_members LinkedBlockingQueue
         include Iterator
         
-        # 
         # Basic weak-consistent iterator.  At all times hold the next
         # item to hand out so that if hasNext() reports true, we will
         # still have it to return even if lost race with a take etc.
@@ -940,7 +916,6 @@ module Java::Util::Concurrent
     }
     
     typesig { [Java::Io::ObjectOutputStream] }
-    # 
     # Save the state to a stream (that is, serialize it).
     # 
     # @serialData The capacity is emitted (int), followed by all of
@@ -966,7 +941,6 @@ module Java::Util::Concurrent
     end
     
     typesig { [Java::Io::ObjectInputStream] }
-    # 
     # Reconstitute this queue instance from a stream (that is,
     # deserialize it).
     # @param s the stream

@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 1995-2001 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -35,7 +34,6 @@ module Sun::Misc
     }
   end
   
-  # 
   # This class implements a Berkeley uu character decoder. This decoder
   # was made famous by the uudecode program.
   # 
@@ -84,7 +82,6 @@ module Sun::Misc
   class UUDecoder < UUDecoderImports.const_get :CharacterDecoder
     include_class_members UUDecoderImports
     
-    # 
     # This string contains the name that was in the buffer being decoded.
     attr_accessor :buffer_name
     alias_method :attr_buffer_name, :buffer_name
@@ -92,7 +89,6 @@ module Sun::Misc
     alias_method :attr_buffer_name=, :buffer_name=
     undef_method :buffer_name=
     
-    # 
     # Represents UNIX(tm) mode bits. Generally three octal digits
     # representing read, write, and execute permission of the owner,
     # group owner, and  others. They should be interpreted as the bit groups:
@@ -107,14 +103,12 @@ module Sun::Misc
     undef_method :mode=
     
     typesig { [] }
-    # 
     # UU encoding specifies 3 bytes per atom.
     def bytes_per_atom
       return (3)
     end
     
     typesig { [] }
-    # 
     # All UU lines have 45 bytes on them, for line length of 15*4+1 or 61
     # characters per line.
     def bytes_per_line
@@ -129,7 +123,6 @@ module Sun::Misc
     undef_method :decoder_buffer=
     
     typesig { [PushbackInputStream, OutputStream, ::Java::Int] }
-    # 
     # Decode a UU atom. Note that if l is less than 3 we don't write
     # the extra bits, however the encoder always encodes 4 character
     # groups even when they are not needed.
@@ -166,7 +159,6 @@ module Sun::Misc
     end
     
     typesig { [PushbackInputStream, OutputStream] }
-    # 
     # For uuencoded buffers, the data begins with a line of the form:
     # begin MODE FILENAME
     # This line always starts in column 1.
@@ -175,7 +167,6 @@ module Sun::Misc
       q = StringBuffer.new(32)
       r = nil
       saw_new_line = false
-      # 
       # This works by ripping through the buffer until it finds a 'begin'
       # line or the end of the buffer.
       saw_new_line = true
@@ -192,7 +183,6 @@ module Sun::Misc
         end
         saw_new_line = ((c).equal?(Character.new(?\n.ord))) || ((c).equal?(Character.new(?\r.ord)))
       end
-      # 
       # Now we think its begin, (we've seen ^be) so verify it here.
       while ((!(c).equal?(Character.new(?\n.ord))) && (!(c).equal?(Character.new(?\r.ord))))
         c = in_stream.read
@@ -209,7 +199,6 @@ module Sun::Misc
       end
       @mode = JavaInteger.parse_int(r.substring(4, 7))
       @buffer_name = (r.substring(r.index_of(Character.new(?\s.ord), 6) + 1)).to_s
-      # 
       # Check for \n after \r
       if ((c).equal?(Character.new(?\r.ord)))
         c = in_stream.read
@@ -220,7 +209,6 @@ module Sun::Misc
     end
     
     typesig { [PushbackInputStream, OutputStream] }
-    # 
     # In uuencoded buffers, encoded lines start with a character that
     # represents the number of bytes encoded in this line. The last
     # line of input is always a line that starts with a single space
@@ -250,7 +238,6 @@ module Sun::Misc
     end
     
     typesig { [PushbackInputStream, OutputStream] }
-    # 
     # Find the end of the line for the next operation.
     # The following sequences are recognized as end-of-line
     # CR, CR LF, or LF
@@ -275,7 +262,6 @@ module Sun::Misc
     end
     
     typesig { [PushbackInputStream, OutputStream] }
-    # 
     # UUencoded files have a buffer suffix which consists of the word
     # end. This line should immediately follow the line with a single
     # space in it.

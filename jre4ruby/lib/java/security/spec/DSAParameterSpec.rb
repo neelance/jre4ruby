@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 1997-1999 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -32,7 +31,6 @@ module Java::Security::Spec
     }
   end
   
-  # 
   # This class specifies the set of parameters used with the DSA algorithm.
   # 
   # @author Jan Luehe
@@ -65,7 +63,6 @@ module Java::Security::Spec
     undef_method :g=
     
     typesig { [BigInteger, BigInteger, BigInteger] }
-    # 
     # Creates a new DSAParameterSpec with the specified parameter values.
     # 
     # @param p the prime.
@@ -83,7 +80,6 @@ module Java::Security::Spec
     end
     
     typesig { [] }
-    # 
     # Returns the prime <code>p</code>.
     # 
     # @return the prime <code>p</code>.
@@ -92,7 +88,6 @@ module Java::Security::Spec
     end
     
     typesig { [] }
-    # 
     # Returns the sub-prime <code>q</code>.
     # 
     # @return the sub-prime <code>q</code>.
@@ -101,7 +96,6 @@ module Java::Security::Spec
     end
     
     typesig { [] }
-    # 
     # Returns the base <code>g</code>.
     # 
     # @return the base <code>g</code>.

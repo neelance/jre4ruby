@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 2003-2004 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -33,7 +32,6 @@ module Sun::Util::Calendar
     }
   end
   
-  # 
   # The <code>AbstractCalendar</code> class provides a framework for
   # implementing a concrete calendar system.
   # 
@@ -290,7 +288,6 @@ module Sun::Util::Calendar
     end
     
     typesig { [] }
-    # 
     # Returns 7 in this default implementation.
     # 
     # @return 7
@@ -320,7 +317,6 @@ module Sun::Util::Calendar
     
     class_module.module_eval {
       typesig { [::Java::Long, ::Java::Int] }
-      # 
       # Returns a date of the given day of week before the given fixed
       # date.
       # 
@@ -332,7 +328,6 @@ module Sun::Util::Calendar
       end
       
       typesig { [::Java::Long, ::Java::Int] }
-      # 
       # Returns a date of the given day of week that is closest to and
       # after the given fixed date.
       # 
@@ -344,7 +339,6 @@ module Sun::Util::Calendar
       end
       
       typesig { [::Java::Long, ::Java::Int] }
-      # 
       # Returns a date of the given day of week on or before the given fixed
       # date.
       # 
@@ -363,7 +357,6 @@ module Sun::Util::Calendar
     }
     
     typesig { [CalendarDate] }
-    # 
     # Returns the fixed date calculated with the specified calendar
     # date. If the specified date is not normalized, its date fields
     # are normalized.
@@ -377,7 +370,6 @@ module Sun::Util::Calendar
     end
     
     typesig { [CalendarDate, ::Java::Long] }
-    # 
     # Calculates calendar fields from the specified fixed date. This
     # method stores the calculated calendar field values in the specified
     # <code>CalendarDate</code>.

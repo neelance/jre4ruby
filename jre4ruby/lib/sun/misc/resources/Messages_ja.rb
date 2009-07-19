@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 2003-2005 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -31,7 +30,6 @@ module Sun::Misc::Resources
     }
   end
   
-  # 
   # <p> This class represents the <code>ResourceBundle</code>
   # for sun.misc.
   # 
@@ -40,7 +38,6 @@ module Sun::Misc::Resources
     include_class_members Messages_jaImports
     
     typesig { [] }
-    # 
     # Returns the contents of this <code>ResourceBundle</code>.
     # <p>
     # @return the contents of this <code>ResourceBundle</code>.

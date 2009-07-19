@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 2003-2004 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -92,7 +91,6 @@ module Sun::Reflect::Generics::ReflectiveObjects
     
     class_module.module_eval {
       typesig { [Class, Array.typed(Type), Type] }
-      # 
       # Static factory. Given a (generic) class, actual type arguments
       # and an owner type, creates a parameterized type.
       # This class can be instantiated with a a raw type that does not
@@ -121,7 +119,6 @@ module Sun::Reflect::Generics::ReflectiveObjects
     }
     
     typesig { [] }
-    # 
     # Returns an array of <tt>Type</tt> objects representing the actual type
     # arguments to this type.
     # 
@@ -142,7 +139,6 @@ module Sun::Reflect::Generics::ReflectiveObjects
     end
     
     typesig { [] }
-    # 
     # Returns the <tt>Type</tt> object representing the class or interface
     # that declared this type.
     # 
@@ -153,7 +149,6 @@ module Sun::Reflect::Generics::ReflectiveObjects
     end
     
     typesig { [] }
-    # 
     # Returns a <tt>Type</tt> object representing the type that this type
     # is a member of.  For example, if this type is <tt>O<T>.I<S></tt>,
     # return a representation of <tt>O<T></tt>.
@@ -173,7 +168,6 @@ module Sun::Reflect::Generics::ReflectiveObjects
     end
     
     typesig { [Object] }
-    # 
     # From the JavaDoc for java.lang.reflect.ParameterizedType
     # "Instances of classes that implement this interface must
     # implement an equals() method that equates any two instances

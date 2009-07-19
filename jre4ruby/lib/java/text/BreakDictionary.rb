@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 1999-2003 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -52,7 +51,6 @@ module Java::Text
     }
   end
   
-  # 
   # This is the class that represents the list of known words used by
   # DictionaryBasedBreakIterator.  The conceptual data structure used
   # here is a trie: there is a node hanging off the root node for every
@@ -83,7 +81,6 @@ module Java::Text
       alias_method :attr_supported_version=, :supported_version=
     }
     
-    # 
     # Maps from characters to column numbers.  The main use of this is to
     # avoid making room in the array for empty columns.
     attr_accessor :column_map
@@ -98,7 +95,6 @@ module Java::Text
     alias_method :attr_supplementary_char_column_map=, :supplementary_char_column_map=
     undef_method :supplementary_char_column_map=
     
-    # 
     # The number of actual columns in the table
     attr_accessor :num_cols
     alias_method :attr_num_cols, :num_cols
@@ -106,7 +102,6 @@ module Java::Text
     alias_method :attr_num_cols=, :num_cols=
     undef_method :num_cols=
     
-    # 
     # Columns are organized into groups of 32.  This says how many
     # column groups.  (We could calculate this, but we store the
     # value to avoid having to repeatedly calculate it.)
@@ -116,7 +111,6 @@ module Java::Text
     alias_method :attr_num_col_groups=, :num_col_groups=
     undef_method :num_col_groups=
     
-    # 
     # The actual compressed state table.  Each conceptual row represents
     # a state, and the cells in it contain the row numbers of the states
     # to transition to for each possible letter.  0 is used to indicate
@@ -132,7 +126,6 @@ module Java::Text
     alias_method :attr_table=, :table=
     undef_method :table=
     
-    # 
     # This index maps logical row numbers to physical row numbers
     attr_accessor :row_index
     alias_method :attr_row_index, :row_index
@@ -140,7 +133,6 @@ module Java::Text
     alias_method :attr_row_index=, :row_index=
     undef_method :row_index=
     
-    # 
     # A bitmap is used to tell which cells in the comceptual table are
     # populated.  This array contains all the unique bit combinations
     # in that bitmap.  If the table is more than 32 columns wide,
@@ -151,7 +143,6 @@ module Java::Text
     alias_method :attr_row_index_flags=, :row_index_flags=
     undef_method :row_index_flags=
     
-    # 
     # This index maps from a logical row number into the bitmap table above.
     # (This keeps us from storing duplicate bitmap combinations.)  Since there
     # are a lot of rows with only one populated cell, instead of wasting space
@@ -164,7 +155,6 @@ module Java::Text
     alias_method :attr_row_index_flags_index=, :row_index_flags_index=
     undef_method :row_index_flags_index=
     
-    # 
     # For each logical row, this index contains a constant that is added to
     # the logical column number to get the physical column number
     attr_accessor :row_index_shifts
@@ -343,7 +333,6 @@ module Java::Text
     end
     
     typesig { [::Java::Int, ::Java::Int] }
-    # 
     # Returns the value in the cell with the specified (logical) row and
     # column numbers.  In DictionaryBasedBreakIterator, the row number is
     # a state number, the column number is an input, and the return value
@@ -368,7 +357,6 @@ module Java::Text
     end
     
     typesig { [::Java::Int, ::Java::Int] }
-    # 
     # Given (logical) row and column numbers, returns true if the
     # cell in that position is populated
     def cell_is_populated(row, col)
@@ -390,7 +378,6 @@ module Java::Text
     end
     
     typesig { [::Java::Int, ::Java::Int] }
-    # 
     # Implementation of getNextState() when we know the specified cell is
     # populated.
     # @param row The PHYSICAL row number of the cell

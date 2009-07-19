@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 2000-2001 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -35,7 +34,6 @@ module Sun::Nio::Cs
     }
   end
   
-  # 
   # Utility class for dealing with surrogates.
   # 
   # @author Mark Reinhold
@@ -74,28 +72,24 @@ module Sun::Nio::Cs
       const_attr_reader  :UCS4_MAX
       
       typesig { [::Java::Int] }
-      # 
       # Tells whether or not the given UTF-16 value is a high surrogate.
       def is_high(c)
         return (MIN_HIGH <= c) && (c <= MAX_HIGH)
       end
       
       typesig { [::Java::Int] }
-      # 
       # Tells whether or not the given UTF-16 value is a low surrogate.
       def is_low(c)
         return (MIN_LOW <= c) && (c <= MAX_LOW)
       end
       
       typesig { [::Java::Int] }
-      # 
       # Tells whether or not the given UTF-16 value is a surrogate character,
       def is(c)
         return (MIN <= c) && (c <= MAX)
       end
       
       typesig { [::Java::Int] }
-      # 
       # Tells whether or not the given UCS-4 character must be represented as a
       # surrogate pair in UTF-16.
       def needed_for(uc)
@@ -103,7 +97,6 @@ module Sun::Nio::Cs
       end
       
       typesig { [::Java::Int] }
-      # 
       # Returns the high UTF-16 surrogate for the given UCS-4 character.
       def high(uc)
         raise AssertError if not (needed_for(uc))
@@ -111,7 +104,6 @@ module Sun::Nio::Cs
       end
       
       typesig { [::Java::Int] }
-      # 
       # Returns the low UTF-16 surrogate for the given UCS-4 character.
       def low(uc)
         raise AssertError if not (needed_for(uc))
@@ -119,14 +111,12 @@ module Sun::Nio::Cs
       end
       
       typesig { [::Java::Char, ::Java::Char] }
-      # 
       # Converts the given surrogate pair into a 32-bit UCS-4 character.
       def to_ucs4(c, d)
         raise AssertError if not (is_high(c) && is_low(d))
         return (((c & 0x3ff) << 10) | (d & 0x3ff)) + 0x10000
       end
       
-      # 
       # Surrogate parsing support.  Charset implementations may use instances of
       # this class to handle the details of parsing UTF-16 surrogate pairs.
       const_set_lazy(:Parser) { Class.new do
@@ -159,7 +149,6 @@ module Sun::Nio::Cs
         undef_method :is_pair=
         
         typesig { [] }
-        # 
         # Returns the UCS-4 character previously parsed.
         def character
           raise AssertError if not (((@error).nil?))
@@ -167,7 +156,6 @@ module Sun::Nio::Cs
         end
         
         typesig { [] }
-        # 
         # Tells whether or not the previously-parsed UCS-4 character was
         # originally represented by a surrogate pair.
         def is_pair
@@ -176,7 +164,6 @@ module Sun::Nio::Cs
         end
         
         typesig { [] }
-        # 
         # Returns the number of UTF-16 characters consumed by the previous
         # parse.
         def increment
@@ -185,7 +172,6 @@ module Sun::Nio::Cs
         end
         
         typesig { [] }
-        # 
         # If the previous parse operation detected an error, return the object
         # describing that error.
         def error
@@ -194,7 +180,6 @@ module Sun::Nio::Cs
         end
         
         typesig { [] }
-        # 
         # Returns an unmappable-input result object, with the appropriate
         # input length, for the previously-parsed character.
         def unmappable_result
@@ -203,7 +188,6 @@ module Sun::Nio::Cs
         end
         
         typesig { [::Java::Char, CharBuffer] }
-        # 
         # Parses a UCS-4 character from the given source buffer, handling
         # surrogates.
         # 
@@ -242,7 +226,6 @@ module Sun::Nio::Cs
         end
         
         typesig { [::Java::Char, Array.typed(::Java::Char), ::Java::Int, ::Java::Int] }
-        # 
         # Parses a UCS-4 character from the given source buffer, handling
         # surrogates.
         # 
@@ -287,7 +270,6 @@ module Sun::Nio::Cs
         alias_method :initialize__parser, :initialize
       end }
       
-      # 
       # Surrogate generation support.  Charset implementations may use instances
       # of this class to handle the details of generating UTF-16 surrogate
       # pairs.
@@ -306,7 +288,6 @@ module Sun::Nio::Cs
         undef_method :error=
         
         typesig { [] }
-        # 
         # If the previous generation operation detected an error, return the
         # object describing that error.
         def error
@@ -315,7 +296,6 @@ module Sun::Nio::Cs
         end
         
         typesig { [::Java::Int, ::Java::Int, CharBuffer] }
-        # 
         # Generates one or two UTF-16 characters to represent the given UCS-4
         # character.
         # 
@@ -361,7 +341,6 @@ module Sun::Nio::Cs
         end
         
         typesig { [::Java::Int, ::Java::Int, Array.typed(::Java::Char), ::Java::Int, ::Java::Int] }
-        # 
         # Generates one or two UTF-16 characters to represent the given UCS-4
         # character.
         # 

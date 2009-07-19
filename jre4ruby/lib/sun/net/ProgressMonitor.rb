@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 2004 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -34,7 +33,6 @@ module Sun::Net
     }
   end
   
-  # 
   # ProgressMonitor is a class for monitoring progress in network input stream.
   # 
   # @author Stanley Man-Kit Ho
@@ -43,7 +41,6 @@ module Sun::Net
     
     class_module.module_eval {
       typesig { [] }
-      # 
       # Return default ProgressMonitor.
       def get_default
         synchronized(self) do
@@ -52,7 +49,6 @@ module Sun::Net
       end
       
       typesig { [ProgressMonitor] }
-      # 
       # Change default ProgressMonitor implementation.
       def set_default(m)
         synchronized(self) do
@@ -63,7 +59,6 @@ module Sun::Net
       end
       
       typesig { [ProgressMeteringPolicy] }
-      # 
       # Change progress metering policy.
       def set_metering_policy(policy)
         synchronized(self) do
@@ -75,7 +70,6 @@ module Sun::Net
     }
     
     typesig { [] }
-    # 
     # Return a snapshot of the ProgressSource list
     def get_progress_sources
       snapshot = ArrayList.new
@@ -95,7 +89,6 @@ module Sun::Net
     end
     
     typesig { [] }
-    # 
     # Return update notification threshold
     def get_progress_update_threshold
       synchronized(self) do
@@ -104,7 +97,6 @@ module Sun::Net
     end
     
     typesig { [URL, String] }
-    # 
     # Return true if metering should be turned on
     # for a particular URL input stream.
     def should_meter_input(url, method)
@@ -112,7 +104,6 @@ module Sun::Net
     end
     
     typesig { [ProgressSource] }
-    # 
     # Register progress source when progress is began.
     def register_source(pi)
       synchronized((@progress_source_list)) do
@@ -143,7 +134,6 @@ module Sun::Net
     end
     
     typesig { [ProgressSource] }
-    # 
     # Unregister progress source when progress is finished.
     def unregister_source(pi)
       synchronized((@progress_source_list)) do
@@ -177,7 +167,6 @@ module Sun::Net
     end
     
     typesig { [ProgressSource] }
-    # 
     # Progress source is updated.
     def update_progress(pi)
       synchronized((@progress_source_list)) do
@@ -207,7 +196,6 @@ module Sun::Net
     end
     
     typesig { [ProgressListener] }
-    # 
     # Add progress listener in progress monitor.
     def add_progress_listener(l)
       synchronized((@progress_listener_list)) do
@@ -216,7 +204,6 @@ module Sun::Net
     end
     
     typesig { [ProgressListener] }
-    # 
     # Remove progress listener from progress monitor.
     def remove_progress_listener(l)
       synchronized((@progress_listener_list)) do
@@ -274,14 +261,12 @@ module Sun::Net
     alias_method :initialize__progress_monitor, :initialize
   end
   
-  # 
   # Default progress metering policy.
   class DefaultProgressMeteringPolicy 
     include_class_members ProgressMonitorImports
     include ProgressMeteringPolicy
     
     typesig { [URL, String] }
-    # 
     # Return true if metering should be turned on for a particular network input stream.
     def should_meter_input(url, method)
       # By default, no URL input stream is metered for
@@ -290,7 +275,6 @@ module Sun::Net
     end
     
     typesig { [] }
-    # 
     # Return update notification threshold.
     def get_progress_update_threshold
       # 8K - same as default I/O buffer size

@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 2003 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -32,7 +31,6 @@ module Sun::Security::Provider
     }
   end
   
-  # 
   # Implementation for the MD2 algorithm, see RFC1319. It is very slow and
   # not particular secure. It is only supported to be able to verify
   # RSA/Verisign root certificates signed using MD2withRSA. It should not
@@ -66,7 +64,6 @@ module Sun::Security::Provider
     undef_method :c_bytes=
     
     typesig { [] }
-    # 
     # Create a new MD2 digest. Called by the JCA framework
     def initialize
       @x = nil

@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 1994-2004 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -31,7 +30,6 @@ module Java::Util
     }
   end
   
-  # 
   # This class represents an observable object, or "data"
   # in the model-view paradigm. It can be subclassed to represent an
   # object that the application wants to have observed.
@@ -88,7 +86,6 @@ module Java::Util
     end
     
     typesig { [Observer] }
-    # 
     # Adds an observer to the set of observers for this object, provided
     # that it is not the same as some observer already in the set.
     # The order in which notifications will be delivered to multiple
@@ -108,7 +105,6 @@ module Java::Util
     end
     
     typesig { [Observer] }
-    # 
     # Deletes an observer from the set of observers of this object.
     # Passing <CODE>null</CODE> to this method will have no effect.
     # @param   o   the observer to be deleted.
@@ -119,7 +115,6 @@ module Java::Util
     end
     
     typesig { [] }
-    # 
     # If this object has changed, as indicated by the
     # <code>hasChanged</code> method, then notify all of its observers
     # and then call the <code>clearChanged</code> method to
@@ -139,7 +134,6 @@ module Java::Util
     end
     
     typesig { [Object] }
-    # 
     # If this object has changed, as indicated by the
     # <code>hasChanged</code> method, then notify all of its observers
     # and then call the <code>clearChanged</code> method to indicate
@@ -153,7 +147,6 @@ module Java::Util
     # @see     java.util.Observable#hasChanged()
     # @see     java.util.Observer#update(java.util.Observable, java.lang.Object)
     def notify_observers(arg)
-      # 
       # a temporary array buffer, used as a snapshot of the state of
       # current Observers.
       arr_local = nil
@@ -183,7 +176,6 @@ module Java::Util
     end
     
     typesig { [] }
-    # 
     # Clears the observer list so that this object no longer has any observers.
     def delete_observers
       synchronized(self) do
@@ -192,7 +184,6 @@ module Java::Util
     end
     
     typesig { [] }
-    # 
     # Marks this <tt>Observable</tt> object as having been changed; the
     # <tt>hasChanged</tt> method will now return <tt>true</tt>.
     def set_changed
@@ -202,7 +193,6 @@ module Java::Util
     end
     
     typesig { [] }
-    # 
     # Indicates that this object has no longer changed, or that it has
     # already notified all of its observers of its most recent change,
     # so that the <tt>hasChanged</tt> method will now return <tt>false</tt>.
@@ -218,7 +208,6 @@ module Java::Util
     end
     
     typesig { [] }
-    # 
     # Tests if this object has changed.
     # 
     # @return  <code>true</code> if and only if the <code>setChanged</code>
@@ -234,7 +223,6 @@ module Java::Util
     end
     
     typesig { [] }
-    # 
     # Returns the number of observers of this <tt>Observable</tt> object.
     # 
     # @return  the number of observers of this object.

@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 2000-2005 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -32,7 +31,6 @@ module Sun::Util::Calendar
     }
   end
   
-  # 
   # Gregorian calendar implementation.
   # 
   # @author Masayoshi Okutsu

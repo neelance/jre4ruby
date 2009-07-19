@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 1997-2006 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -33,7 +32,6 @@ module Java::Text
     }
   end
   
-  # 
   # An AttributedString holds text and related attribute information. It
   # may be used as the actual data storage in some cases where a text
   # reader wants to access attributed text through the AttributedCharacterIterator
@@ -161,7 +159,6 @@ module Java::Text
     end
     
     typesig { [String] }
-    # 
     # Constructs an AttributedString instance with the given text.
     # @param text The text for this attributed string.
     # @exception NullPointerException if <code>text</code> is null.
@@ -179,7 +176,6 @@ module Java::Text
     end
     
     typesig { [String, Map] }
-    # 
     # Constructs an AttributedString instance with the given text and attributes.
     # @param text The text for this attributed string.
     # @param attributes The attributes that apply to the entire string.
@@ -222,7 +218,6 @@ module Java::Text
     end
     
     typesig { [AttributedCharacterIterator] }
-    # 
     # Constructs an AttributedString instance with the given attributed
     # text represented by AttributedCharacterIterator.
     # @param text The text for this attributed string.
@@ -235,7 +230,6 @@ module Java::Text
     end
     
     typesig { [AttributedCharacterIterator, ::Java::Int, ::Java::Int] }
-    # 
     # Constructs an AttributedString instance with the subrange of
     # the given attributed text represented by
     # AttributedCharacterIterator. If the given range produces an
@@ -256,7 +250,6 @@ module Java::Text
     end
     
     typesig { [AttributedCharacterIterator, ::Java::Int, ::Java::Int, Array.typed(Attribute)] }
-    # 
     # Constructs an AttributedString instance with the subrange of
     # the given attributed text represented by
     # AttributedCharacterIterator.  Only attributes that match the
@@ -367,7 +360,6 @@ module Java::Text
     end
     
     typesig { [Attribute, Object] }
-    # 
     # Adds an attribute to the entire string.
     # @param attribute the attribute key
     # @param value the value of the attribute; may be null
@@ -386,7 +378,6 @@ module Java::Text
     end
     
     typesig { [Attribute, Object, ::Java::Int, ::Java::Int] }
-    # 
     # Adds an attribute to a subrange of the string.
     # @param attribute the attribute key
     # @param value The value of the attribute. May be null.
@@ -407,7 +398,6 @@ module Java::Text
     end
     
     typesig { [Map, ::Java::Int, ::Java::Int] }
-    # 
     # Adds a set of attributes to a subrange of the string.
     # @param attributes The attributes to be added to the string.
     # @param beginIndex Index of the first character of the range.
@@ -480,7 +470,6 @@ module Java::Text
     end
     
     typesig { [::Java::Int, ::Java::Boolean] }
-    # 
     # Ensures there is a run break at offset, returning the index of
     # the run. If this results in splitting a run, two things can happen:
     # <ul>
@@ -524,30 +513,30 @@ module Java::Text
       end
       # make copies of the attribute information of the old run that the new one used to be part of
       # use temporary variables so things remain consistent in case of an exception
-      new_run_attributes_ = nil
-      new_run_attribute_values_ = nil
+      new_run_attributes = nil
+      new_run_attribute_values = nil
       if (copy_attrs)
         old_run_attributes = @run_attributes[run_index - 1]
         old_run_attribute_values = @run_attribute_values[run_index - 1]
         if (!(old_run_attributes).nil?)
-          new_run_attributes_ = old_run_attributes.clone
+          new_run_attributes = old_run_attributes.clone
         end
         if (!(old_run_attribute_values).nil?)
-          new_run_attribute_values_ = old_run_attribute_values.clone
+          new_run_attribute_values = old_run_attribute_values.clone
         end
       end
       # now actually break up the run
       ((@run_count += 1) - 1)
-      i_ = @run_count - 1
-      while i_ > run_index
-        @run_starts[i_] = @run_starts[i_ - 1]
-        @run_attributes[i_] = @run_attributes[i_ - 1]
-        @run_attribute_values[i_] = @run_attribute_values[i_ - 1]
-        ((i_ -= 1) + 1)
+      i = @run_count - 1
+      while i > run_index
+        @run_starts[i] = @run_starts[i - 1]
+        @run_attributes[i] = @run_attributes[i - 1]
+        @run_attribute_values[i] = @run_attribute_values[i - 1]
+        ((i -= 1) + 1)
       end
       @run_starts[run_index] = offset
-      @run_attributes[run_index] = new_run_attributes_
-      @run_attribute_values[run_index] = new_run_attribute_values_
+      @run_attributes[run_index] = new_run_attributes
+      @run_attribute_values[run_index] = new_run_attribute_values
       return run_index
     end
     
@@ -585,7 +574,6 @@ module Java::Text
     end
     
     typesig { [] }
-    # 
     # Creates an AttributedCharacterIterator instance that provides access to the entire contents of
     # this string.
     # 
@@ -595,7 +583,6 @@ module Java::Text
     end
     
     typesig { [Array.typed(Attribute)] }
-    # 
     # Creates an AttributedCharacterIterator instance that provides access to
     # selected contents of this string.
     # Information about attributes not listed in attributes that the
@@ -610,7 +597,6 @@ module Java::Text
     end
     
     typesig { [Array.typed(Attribute), ::Java::Int, ::Java::Int] }
-    # 
     # Creates an AttributedCharacterIterator instance that provides access to
     # selected contents of this string.
     # Information about attributes not listed in attributes that the
@@ -680,11 +666,11 @@ module Java::Text
         end
         text_length = length
         if (end_index < text_length)
-          curr_index_ = run_index
-          run_limit = (curr_index_ < @run_count - 1) ? @run_starts[curr_index_ + 1] : text_length
-          while (run_limit <= end_index && values_match(value, get_attribute(attribute, curr_index_ + 1)))
-            ((curr_index_ += 1) - 1)
-            run_limit = (curr_index_ < @run_count - 1) ? @run_starts[curr_index_ + 1] : text_length
+          curr_index = run_index
+          run_limit = (curr_index < @run_count - 1) ? @run_starts[curr_index + 1] : text_length
+          while (run_limit <= end_index && values_match(value, get_attribute(attribute, curr_index + 1)))
+            ((curr_index += 1) - 1)
+            run_limit = (curr_index < @run_count - 1) ? @run_starts[curr_index + 1] : text_length
           end
           if (run_limit > end_index)
             # annotation's range ends after iterator's range
@@ -723,7 +709,6 @@ module Java::Text
     }
     
     typesig { [StringBuffer, CharacterIterator] }
-    # 
     # Appends the contents of the CharacterIterator iterator into the
     # StringBuffer buf.
     def append_contents(buf, iterator_)
@@ -736,7 +721,6 @@ module Java::Text
     end
     
     typesig { [Map, ::Java::Int] }
-    # 
     # Sets the attributes for the range from offset to the next run break
     # (typically the end of the text) to the ones specified in attrs.
     # This is only meant to be called from the constructor!
@@ -762,7 +746,6 @@ module Java::Text
     
     class_module.module_eval {
       typesig { [Map, Map] }
-      # 
       # Returns true if the attributes specified in last and attrs differ.
       def maps_differ(last, attrs)
         if ((last).nil?)

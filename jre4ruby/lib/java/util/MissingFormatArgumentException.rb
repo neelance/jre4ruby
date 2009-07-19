@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 2003 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -31,7 +30,6 @@ module Java::Util
     }
   end
   
-  # 
   # Unchecked exception thrown when there is a format specifier which does not
   # have a corresponding argument or if an argument index refers to an argument
   # that does not exist.
@@ -56,7 +54,6 @@ module Java::Util
     undef_method :s=
     
     typesig { [String] }
-    # 
     # Constructs an instance of this class with the unmatched format
     # specifier.
     # 
@@ -72,7 +69,6 @@ module Java::Util
     end
     
     typesig { [] }
-    # 
     # Returns the unmatched format specifier.
     # 
     # @return  The unmatched format specifier

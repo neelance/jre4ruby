@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 2002-2006 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -33,7 +32,6 @@ module Java::Lang
     }
   end
   
-  # 
   # The <code>Character</code> class wraps a value of the primitive
   # type <code>char</code> in an object. An object of type
   # <code>Character</code> contains a single field whose type is
@@ -126,7 +124,6 @@ module Java::Lang
     include JavaComparable
     
     class_module.module_eval {
-      # 
       # The minimum radix available for conversion to and from strings.
       # The constant value of this field is the smallest value permitted
       # for the radix argument in radix-conversion methods such as the
@@ -141,7 +138,6 @@ module Java::Lang
       const_set_lazy(:MIN_RADIX) { 2 }
       const_attr_reader  :MIN_RADIX
       
-      # 
       # The maximum radix available for conversion to and from strings.
       # The constant value of this field is the largest value permitted
       # for the radix argument in radix-conversion methods such as the
@@ -156,7 +152,6 @@ module Java::Lang
       const_set_lazy(:MAX_RADIX) { 36 }
       const_attr_reader  :MAX_RADIX
       
-      # 
       # The constant value of this field is the smallest value of type
       # <code>char</code>, <code>'&#92;u0000'</code>.
       # 
@@ -164,7 +159,6 @@ module Java::Lang
       const_set_lazy(:MIN_VALUE) { Character.new(0x0000) }
       const_attr_reader  :MIN_VALUE
       
-      # 
       # The constant value of this field is the largest value of type
       # <code>char</code>, <code>'&#92;uFFFF'</code>.
       # 
@@ -172,7 +166,6 @@ module Java::Lang
       const_set_lazy(:MAX_VALUE) { Character.new(0xffff) }
       const_attr_reader  :MAX_VALUE
       
-      # 
       # The <code>Class</code> instance representing the primitive type
       # <code>char</code>.
       # 
@@ -180,7 +173,6 @@ module Java::Lang
       const_set_lazy(:TYPE) { Class.get_primitive_class("char") }
       const_attr_reader  :TYPE
       
-      # 
       # Normative general types
       # 
       # 
@@ -192,307 +184,256 @@ module Java::Lang
       const_set_lazy(:UNASSIGNED) { 0 }
       const_attr_reader  :UNASSIGNED
       
-      # 
       # General category "Lu" in the Unicode specification.
       # @since   1.1
       const_set_lazy(:UPPERCASE_LETTER) { 1 }
       const_attr_reader  :UPPERCASE_LETTER
       
-      # 
       # General category "Ll" in the Unicode specification.
       # @since   1.1
       const_set_lazy(:LOWERCASE_LETTER) { 2 }
       const_attr_reader  :LOWERCASE_LETTER
       
-      # 
       # General category "Lt" in the Unicode specification.
       # @since   1.1
       const_set_lazy(:TITLECASE_LETTER) { 3 }
       const_attr_reader  :TITLECASE_LETTER
       
-      # 
       # General category "Lm" in the Unicode specification.
       # @since   1.1
       const_set_lazy(:MODIFIER_LETTER) { 4 }
       const_attr_reader  :MODIFIER_LETTER
       
-      # 
       # General category "Lo" in the Unicode specification.
       # @since   1.1
       const_set_lazy(:OTHER_LETTER) { 5 }
       const_attr_reader  :OTHER_LETTER
       
-      # 
       # General category "Mn" in the Unicode specification.
       # @since   1.1
       const_set_lazy(:NON_SPACING_MARK) { 6 }
       const_attr_reader  :NON_SPACING_MARK
       
-      # 
       # General category "Me" in the Unicode specification.
       # @since   1.1
       const_set_lazy(:ENCLOSING_MARK) { 7 }
       const_attr_reader  :ENCLOSING_MARK
       
-      # 
       # General category "Mc" in the Unicode specification.
       # @since   1.1
       const_set_lazy(:COMBINING_SPACING_MARK) { 8 }
       const_attr_reader  :COMBINING_SPACING_MARK
       
-      # 
       # General category "Nd" in the Unicode specification.
       # @since   1.1
       const_set_lazy(:DECIMAL_DIGIT_NUMBER) { 9 }
       const_attr_reader  :DECIMAL_DIGIT_NUMBER
       
-      # 
       # General category "Nl" in the Unicode specification.
       # @since   1.1
       const_set_lazy(:LETTER_NUMBER) { 10 }
       const_attr_reader  :LETTER_NUMBER
       
-      # 
       # General category "No" in the Unicode specification.
       # @since   1.1
       const_set_lazy(:OTHER_NUMBER) { 11 }
       const_attr_reader  :OTHER_NUMBER
       
-      # 
       # General category "Zs" in the Unicode specification.
       # @since   1.1
       const_set_lazy(:SPACE_SEPARATOR) { 12 }
       const_attr_reader  :SPACE_SEPARATOR
       
-      # 
       # General category "Zl" in the Unicode specification.
       # @since   1.1
       const_set_lazy(:LINE_SEPARATOR) { 13 }
       const_attr_reader  :LINE_SEPARATOR
       
-      # 
       # General category "Zp" in the Unicode specification.
       # @since   1.1
       const_set_lazy(:PARAGRAPH_SEPARATOR) { 14 }
       const_attr_reader  :PARAGRAPH_SEPARATOR
       
-      # 
       # General category "Cc" in the Unicode specification.
       # @since   1.1
       const_set_lazy(:CONTROL) { 15 }
       const_attr_reader  :CONTROL
       
-      # 
       # General category "Cf" in the Unicode specification.
       # @since   1.1
       const_set_lazy(:FORMAT) { 16 }
       const_attr_reader  :FORMAT
       
-      # 
       # General category "Co" in the Unicode specification.
       # @since   1.1
       const_set_lazy(:PRIVATE_USE) { 18 }
       const_attr_reader  :PRIVATE_USE
       
-      # 
       # General category "Cs" in the Unicode specification.
       # @since   1.1
       const_set_lazy(:SURROGATE) { 19 }
       const_attr_reader  :SURROGATE
       
-      # 
       # General category "Pd" in the Unicode specification.
       # @since   1.1
       const_set_lazy(:DASH_PUNCTUATION) { 20 }
       const_attr_reader  :DASH_PUNCTUATION
       
-      # 
       # General category "Ps" in the Unicode specification.
       # @since   1.1
       const_set_lazy(:START_PUNCTUATION) { 21 }
       const_attr_reader  :START_PUNCTUATION
       
-      # 
       # General category "Pe" in the Unicode specification.
       # @since   1.1
       const_set_lazy(:END_PUNCTUATION) { 22 }
       const_attr_reader  :END_PUNCTUATION
       
-      # 
       # General category "Pc" in the Unicode specification.
       # @since   1.1
       const_set_lazy(:CONNECTOR_PUNCTUATION) { 23 }
       const_attr_reader  :CONNECTOR_PUNCTUATION
       
-      # 
       # General category "Po" in the Unicode specification.
       # @since   1.1
       const_set_lazy(:OTHER_PUNCTUATION) { 24 }
       const_attr_reader  :OTHER_PUNCTUATION
       
-      # 
       # General category "Sm" in the Unicode specification.
       # @since   1.1
       const_set_lazy(:MATH_SYMBOL) { 25 }
       const_attr_reader  :MATH_SYMBOL
       
-      # 
       # General category "Sc" in the Unicode specification.
       # @since   1.1
       const_set_lazy(:CURRENCY_SYMBOL) { 26 }
       const_attr_reader  :CURRENCY_SYMBOL
       
-      # 
       # General category "Sk" in the Unicode specification.
       # @since   1.1
       const_set_lazy(:MODIFIER_SYMBOL) { 27 }
       const_attr_reader  :MODIFIER_SYMBOL
       
-      # 
       # General category "So" in the Unicode specification.
       # @since   1.1
       const_set_lazy(:OTHER_SYMBOL) { 28 }
       const_attr_reader  :OTHER_SYMBOL
       
-      # 
       # General category "Pi" in the Unicode specification.
       # @since   1.4
       const_set_lazy(:INITIAL_QUOTE_PUNCTUATION) { 29 }
       const_attr_reader  :INITIAL_QUOTE_PUNCTUATION
       
-      # 
       # General category "Pf" in the Unicode specification.
       # @since   1.4
       const_set_lazy(:FINAL_QUOTE_PUNCTUATION) { 30 }
       const_attr_reader  :FINAL_QUOTE_PUNCTUATION
       
-      # 
       # Error flag. Use int (code point) to avoid confusion with U+FFFF.
       const_set_lazy(:ERROR) { -0x1 }
       const_attr_reader  :ERROR
       
-      # 
       # Undefined bidirectional character type. Undefined <code>char</code>
       # values have undefined directionality in the Unicode specification.
       # @since 1.4
       const_set_lazy(:DIRECTIONALITY_UNDEFINED) { -1 }
       const_attr_reader  :DIRECTIONALITY_UNDEFINED
       
-      # 
       # Strong bidirectional character type "L" in the Unicode specification.
       # @since 1.4
       const_set_lazy(:DIRECTIONALITY_LEFT_TO_RIGHT) { 0 }
       const_attr_reader  :DIRECTIONALITY_LEFT_TO_RIGHT
       
-      # 
       # Strong bidirectional character type "R" in the Unicode specification.
       # @since 1.4
       const_set_lazy(:DIRECTIONALITY_RIGHT_TO_LEFT) { 1 }
       const_attr_reader  :DIRECTIONALITY_RIGHT_TO_LEFT
       
-      # 
       # Strong bidirectional character type "AL" in the Unicode specification.
       # @since 1.4
       const_set_lazy(:DIRECTIONALITY_RIGHT_TO_LEFT_ARABIC) { 2 }
       const_attr_reader  :DIRECTIONALITY_RIGHT_TO_LEFT_ARABIC
       
-      # 
       # Weak bidirectional character type "EN" in the Unicode specification.
       # @since 1.4
       const_set_lazy(:DIRECTIONALITY_EUROPEAN_NUMBER) { 3 }
       const_attr_reader  :DIRECTIONALITY_EUROPEAN_NUMBER
       
-      # 
       # Weak bidirectional character type "ES" in the Unicode specification.
       # @since 1.4
       const_set_lazy(:DIRECTIONALITY_EUROPEAN_NUMBER_SEPARATOR) { 4 }
       const_attr_reader  :DIRECTIONALITY_EUROPEAN_NUMBER_SEPARATOR
       
-      # 
       # Weak bidirectional character type "ET" in the Unicode specification.
       # @since 1.4
       const_set_lazy(:DIRECTIONALITY_EUROPEAN_NUMBER_TERMINATOR) { 5 }
       const_attr_reader  :DIRECTIONALITY_EUROPEAN_NUMBER_TERMINATOR
       
-      # 
       # Weak bidirectional character type "AN" in the Unicode specification.
       # @since 1.4
       const_set_lazy(:DIRECTIONALITY_ARABIC_NUMBER) { 6 }
       const_attr_reader  :DIRECTIONALITY_ARABIC_NUMBER
       
-      # 
       # Weak bidirectional character type "CS" in the Unicode specification.
       # @since 1.4
       const_set_lazy(:DIRECTIONALITY_COMMON_NUMBER_SEPARATOR) { 7 }
       const_attr_reader  :DIRECTIONALITY_COMMON_NUMBER_SEPARATOR
       
-      # 
       # Weak bidirectional character type "NSM" in the Unicode specification.
       # @since 1.4
       const_set_lazy(:DIRECTIONALITY_NONSPACING_MARK) { 8 }
       const_attr_reader  :DIRECTIONALITY_NONSPACING_MARK
       
-      # 
       # Weak bidirectional character type "BN" in the Unicode specification.
       # @since 1.4
       const_set_lazy(:DIRECTIONALITY_BOUNDARY_NEUTRAL) { 9 }
       const_attr_reader  :DIRECTIONALITY_BOUNDARY_NEUTRAL
       
-      # 
       # Neutral bidirectional character type "B" in the Unicode specification.
       # @since 1.4
       const_set_lazy(:DIRECTIONALITY_PARAGRAPH_SEPARATOR) { 10 }
       const_attr_reader  :DIRECTIONALITY_PARAGRAPH_SEPARATOR
       
-      # 
       # Neutral bidirectional character type "S" in the Unicode specification.
       # @since 1.4
       const_set_lazy(:DIRECTIONALITY_SEGMENT_SEPARATOR) { 11 }
       const_attr_reader  :DIRECTIONALITY_SEGMENT_SEPARATOR
       
-      # 
       # Neutral bidirectional character type "WS" in the Unicode specification.
       # @since 1.4
       const_set_lazy(:DIRECTIONALITY_WHITESPACE) { 12 }
       const_attr_reader  :DIRECTIONALITY_WHITESPACE
       
-      # 
       # Neutral bidirectional character type "ON" in the Unicode specification.
       # @since 1.4
       const_set_lazy(:DIRECTIONALITY_OTHER_NEUTRALS) { 13 }
       const_attr_reader  :DIRECTIONALITY_OTHER_NEUTRALS
       
-      # 
       # Strong bidirectional character type "LRE" in the Unicode specification.
       # @since 1.4
       const_set_lazy(:DIRECTIONALITY_LEFT_TO_RIGHT_EMBEDDING) { 14 }
       const_attr_reader  :DIRECTIONALITY_LEFT_TO_RIGHT_EMBEDDING
       
-      # 
       # Strong bidirectional character type "LRO" in the Unicode specification.
       # @since 1.4
       const_set_lazy(:DIRECTIONALITY_LEFT_TO_RIGHT_OVERRIDE) { 15 }
       const_attr_reader  :DIRECTIONALITY_LEFT_TO_RIGHT_OVERRIDE
       
-      # 
       # Strong bidirectional character type "RLE" in the Unicode specification.
       # @since 1.4
       const_set_lazy(:DIRECTIONALITY_RIGHT_TO_LEFT_EMBEDDING) { 16 }
       const_attr_reader  :DIRECTIONALITY_RIGHT_TO_LEFT_EMBEDDING
       
-      # 
       # Strong bidirectional character type "RLO" in the Unicode specification.
       # @since 1.4
       const_set_lazy(:DIRECTIONALITY_RIGHT_TO_LEFT_OVERRIDE) { 17 }
       const_attr_reader  :DIRECTIONALITY_RIGHT_TO_LEFT_OVERRIDE
       
-      # 
       # Weak bidirectional character type "PDF" in the Unicode specification.
       # @since 1.4
       const_set_lazy(:DIRECTIONALITY_POP_DIRECTIONAL_FORMAT) { 18 }
       const_attr_reader  :DIRECTIONALITY_POP_DIRECTIONAL_FORMAT
       
-      # 
       # The minimum value of a Unicode high-surrogate code unit in the
       # UTF-16 encoding. A high-surrogate is also known as a
       # <i>leading-surrogate</i>.
@@ -501,7 +442,6 @@ module Java::Lang
       const_set_lazy(:MIN_HIGH_SURROGATE) { Character.new(0xD800) }
       const_attr_reader  :MIN_HIGH_SURROGATE
       
-      # 
       # The maximum value of a Unicode high-surrogate code unit in the
       # UTF-16 encoding. A high-surrogate is also known as a
       # <i>leading-surrogate</i>.
@@ -510,7 +450,6 @@ module Java::Lang
       const_set_lazy(:MAX_HIGH_SURROGATE) { Character.new(0xDBFF) }
       const_attr_reader  :MAX_HIGH_SURROGATE
       
-      # 
       # The minimum value of a Unicode low-surrogate code unit in the
       # UTF-16 encoding. A low-surrogate is also known as a
       # <i>trailing-surrogate</i>.
@@ -519,7 +458,6 @@ module Java::Lang
       const_set_lazy(:MIN_LOW_SURROGATE) { Character.new(0xDC00) }
       const_attr_reader  :MIN_LOW_SURROGATE
       
-      # 
       # The maximum value of a Unicode low-surrogate code unit in the
       # UTF-16 encoding. A low-surrogate is also known as a
       # <i>trailing-surrogate</i>.
@@ -528,42 +466,36 @@ module Java::Lang
       const_set_lazy(:MAX_LOW_SURROGATE) { Character.new(0xDFFF) }
       const_attr_reader  :MAX_LOW_SURROGATE
       
-      # 
       # The minimum value of a Unicode surrogate code unit in the UTF-16 encoding.
       # 
       # @since 1.5
       const_set_lazy(:MIN_SURROGATE) { MIN_HIGH_SURROGATE }
       const_attr_reader  :MIN_SURROGATE
       
-      # 
       # The maximum value of a Unicode surrogate code unit in the UTF-16 encoding.
       # 
       # @since 1.5
       const_set_lazy(:MAX_SURROGATE) { MAX_LOW_SURROGATE }
       const_attr_reader  :MAX_SURROGATE
       
-      # 
       # The minimum value of a supplementary code point.
       # 
       # @since 1.5
       const_set_lazy(:MIN_SUPPLEMENTARY_CODE_POINT) { 0x10000 }
       const_attr_reader  :MIN_SUPPLEMENTARY_CODE_POINT
       
-      # 
       # The minimum value of a Unicode code point.
       # 
       # @since 1.5
       const_set_lazy(:MIN_CODE_POINT) { 0x0 }
       const_attr_reader  :MIN_CODE_POINT
       
-      # 
       # The maximum value of a Unicode code point.
       # 
       # @since 1.5
       const_set_lazy(:MAX_CODE_POINT) { 0x10ffff }
       const_attr_reader  :MAX_CODE_POINT
       
-      # 
       # Instances of this class represent particular subsets of the Unicode
       # character set.  The only family of subsets defined in the
       # <code>Character</code> class is <code>{@link Character.UnicodeBlock
@@ -581,7 +513,6 @@ module Java::Lang
         undef_method :name=
         
         typesig { [String] }
-        # 
         # Constructs a new <code>Subset</code> instance.
         # 
         # @exception NullPointerException if name is <code>null</code>
@@ -595,7 +526,6 @@ module Java::Lang
         end
         
         typesig { [Object] }
-        # 
         # Compares two <code>Subset</code> objects for equality.
         # This method returns <code>true</code> if and only if
         # <code>this</code> and the argument refer to the same
@@ -606,7 +536,6 @@ module Java::Lang
         end
         
         typesig { [] }
-        # 
         # Returns the standard hash code as defined by the
         # <code>{@link Object#hashCode}</code> method.  This method
         # is <code>final</code> in order to ensure that the
@@ -617,7 +546,6 @@ module Java::Lang
         end
         
         typesig { [] }
-        # 
         # Returns the name of this subset.
         def to_s
           return @name
@@ -627,7 +555,6 @@ module Java::Lang
         alias_method :initialize__subset, :initialize
       end }
       
-      # 
       # A family of character subsets representing the character blocks in the
       # Unicode specification. Character blocks generally define characters
       # used for a specific script or purpose. A character is contained by
@@ -651,7 +578,6 @@ module Java::Lang
         }
         
         typesig { [String] }
-        # 
         # Create a UnicodeBlock with the given identifier name.
         # This name must be the same as the block identifier.
         def initialize(id_name)
@@ -660,7 +586,6 @@ module Java::Lang
         end
         
         typesig { [String, String] }
-        # 
         # Create a UnicodeBlock with the given identifier name and
         # alias name.
         def initialize(id_name, alias_)
@@ -669,7 +594,6 @@ module Java::Lang
         end
         
         typesig { [String, Array.typed(String)] }
-        # 
         # Create a UnicodeBlock with the given identifier name and
         # alias names.
         def initialize(id_name, alias_name)
@@ -684,49 +608,41 @@ module Java::Lang
         end
         
         class_module.module_eval {
-          # 
           # Constant for the "Basic Latin" Unicode character block.
           # @since 1.2
           const_set_lazy(:BASIC_LATIN) { UnicodeBlock.new("BASIC_LATIN", Array.typed(String).new(["Basic Latin", "BasicLatin"])) }
           const_attr_reader  :BASIC_LATIN
           
-          # 
           # Constant for the "Latin-1 Supplement" Unicode character block.
           # @since 1.2
           const_set_lazy(:LATIN_1_SUPPLEMENT) { UnicodeBlock.new("LATIN_1_SUPPLEMENT", Array.typed(String).new(["Latin-1 Supplement", "Latin-1Supplement"])) }
           const_attr_reader  :LATIN_1_SUPPLEMENT
           
-          # 
           # Constant for the "Latin Extended-A" Unicode character block.
           # @since 1.2
           const_set_lazy(:LATIN_EXTENDED_A) { UnicodeBlock.new("LATIN_EXTENDED_A", Array.typed(String).new(["Latin Extended-A", "LatinExtended-A"])) }
           const_attr_reader  :LATIN_EXTENDED_A
           
-          # 
           # Constant for the "Latin Extended-B" Unicode character block.
           # @since 1.2
           const_set_lazy(:LATIN_EXTENDED_B) { UnicodeBlock.new("LATIN_EXTENDED_B", Array.typed(String).new(["Latin Extended-B", "LatinExtended-B"])) }
           const_attr_reader  :LATIN_EXTENDED_B
           
-          # 
           # Constant for the "IPA Extensions" Unicode character block.
           # @since 1.2
           const_set_lazy(:IPA_EXTENSIONS) { UnicodeBlock.new("IPA_EXTENSIONS", Array.typed(String).new(["IPA Extensions", "IPAExtensions"])) }
           const_attr_reader  :IPA_EXTENSIONS
           
-          # 
           # Constant for the "Spacing Modifier Letters" Unicode character block.
           # @since 1.2
           const_set_lazy(:SPACING_MODIFIER_LETTERS) { UnicodeBlock.new("SPACING_MODIFIER_LETTERS", Array.typed(String).new(["Spacing Modifier Letters", "SpacingModifierLetters"])) }
           const_attr_reader  :SPACING_MODIFIER_LETTERS
           
-          # 
           # Constant for the "Combining Diacritical Marks" Unicode character block.
           # @since 1.2
           const_set_lazy(:COMBINING_DIACRITICAL_MARKS) { UnicodeBlock.new("COMBINING_DIACRITICAL_MARKS", Array.typed(String).new(["Combining Diacritical Marks", "CombiningDiacriticalMarks"])) }
           const_attr_reader  :COMBINING_DIACRITICAL_MARKS
           
-          # 
           # Constant for the "Greek and Coptic" Unicode character block.
           # <p>
           # This block was previously known as the "Greek" block.
@@ -735,145 +651,121 @@ module Java::Lang
           const_set_lazy(:GREEK) { UnicodeBlock.new("GREEK", Array.typed(String).new(["Greek and Coptic", "GreekandCoptic"])) }
           const_attr_reader  :GREEK
           
-          # 
           # Constant for the "Cyrillic" Unicode character block.
           # @since 1.2
           const_set_lazy(:CYRILLIC) { UnicodeBlock.new("CYRILLIC") }
           const_attr_reader  :CYRILLIC
           
-          # 
           # Constant for the "Armenian" Unicode character block.
           # @since 1.2
           const_set_lazy(:ARMENIAN) { UnicodeBlock.new("ARMENIAN") }
           const_attr_reader  :ARMENIAN
           
-          # 
           # Constant for the "Hebrew" Unicode character block.
           # @since 1.2
           const_set_lazy(:HEBREW) { UnicodeBlock.new("HEBREW") }
           const_attr_reader  :HEBREW
           
-          # 
           # Constant for the "Arabic" Unicode character block.
           # @since 1.2
           const_set_lazy(:ARABIC) { UnicodeBlock.new("ARABIC") }
           const_attr_reader  :ARABIC
           
-          # 
           # Constant for the "Devanagari" Unicode character block.
           # @since 1.2
           const_set_lazy(:DEVANAGARI) { UnicodeBlock.new("DEVANAGARI") }
           const_attr_reader  :DEVANAGARI
           
-          # 
           # Constant for the "Bengali" Unicode character block.
           # @since 1.2
           const_set_lazy(:BENGALI) { UnicodeBlock.new("BENGALI") }
           const_attr_reader  :BENGALI
           
-          # 
           # Constant for the "Gurmukhi" Unicode character block.
           # @since 1.2
           const_set_lazy(:GURMUKHI) { UnicodeBlock.new("GURMUKHI") }
           const_attr_reader  :GURMUKHI
           
-          # 
           # Constant for the "Gujarati" Unicode character block.
           # @since 1.2
           const_set_lazy(:GUJARATI) { UnicodeBlock.new("GUJARATI") }
           const_attr_reader  :GUJARATI
           
-          # 
           # Constant for the "Oriya" Unicode character block.
           # @since 1.2
           const_set_lazy(:ORIYA) { UnicodeBlock.new("ORIYA") }
           const_attr_reader  :ORIYA
           
-          # 
           # Constant for the "Tamil" Unicode character block.
           # @since 1.2
           const_set_lazy(:TAMIL) { UnicodeBlock.new("TAMIL") }
           const_attr_reader  :TAMIL
           
-          # 
           # Constant for the "Telugu" Unicode character block.
           # @since 1.2
           const_set_lazy(:TELUGU) { UnicodeBlock.new("TELUGU") }
           const_attr_reader  :TELUGU
           
-          # 
           # Constant for the "Kannada" Unicode character block.
           # @since 1.2
           const_set_lazy(:KANNADA) { UnicodeBlock.new("KANNADA") }
           const_attr_reader  :KANNADA
           
-          # 
           # Constant for the "Malayalam" Unicode character block.
           # @since 1.2
           const_set_lazy(:MALAYALAM) { UnicodeBlock.new("MALAYALAM") }
           const_attr_reader  :MALAYALAM
           
-          # 
           # Constant for the "Thai" Unicode character block.
           # @since 1.2
           const_set_lazy(:THAI) { UnicodeBlock.new("THAI") }
           const_attr_reader  :THAI
           
-          # 
           # Constant for the "Lao" Unicode character block.
           # @since 1.2
           const_set_lazy(:LAO) { UnicodeBlock.new("LAO") }
           const_attr_reader  :LAO
           
-          # 
           # Constant for the "Tibetan" Unicode character block.
           # @since 1.2
           const_set_lazy(:TIBETAN) { UnicodeBlock.new("TIBETAN") }
           const_attr_reader  :TIBETAN
           
-          # 
           # Constant for the "Georgian" Unicode character block.
           # @since 1.2
           const_set_lazy(:GEORGIAN) { UnicodeBlock.new("GEORGIAN") }
           const_attr_reader  :GEORGIAN
           
-          # 
           # Constant for the "Hangul Jamo" Unicode character block.
           # @since 1.2
           const_set_lazy(:HANGUL_JAMO) { UnicodeBlock.new("HANGUL_JAMO", Array.typed(String).new(["Hangul Jamo", "HangulJamo"])) }
           const_attr_reader  :HANGUL_JAMO
           
-          # 
           # Constant for the "Latin Extended Additional" Unicode character block.
           # @since 1.2
           const_set_lazy(:LATIN_EXTENDED_ADDITIONAL) { UnicodeBlock.new("LATIN_EXTENDED_ADDITIONAL", Array.typed(String).new(["Latin Extended Additional", "LatinExtendedAdditional"])) }
           const_attr_reader  :LATIN_EXTENDED_ADDITIONAL
           
-          # 
           # Constant for the "Greek Extended" Unicode character block.
           # @since 1.2
           const_set_lazy(:GREEK_EXTENDED) { UnicodeBlock.new("GREEK_EXTENDED", Array.typed(String).new(["Greek Extended", "GreekExtended"])) }
           const_attr_reader  :GREEK_EXTENDED
           
-          # 
           # Constant for the "General Punctuation" Unicode character block.
           # @since 1.2
           const_set_lazy(:GENERAL_PUNCTUATION) { UnicodeBlock.new("GENERAL_PUNCTUATION", Array.typed(String).new(["General Punctuation", "GeneralPunctuation"])) }
           const_attr_reader  :GENERAL_PUNCTUATION
           
-          # 
           # Constant for the "Superscripts and Subscripts" Unicode character block.
           # @since 1.2
           const_set_lazy(:SUPERSCRIPTS_AND_SUBSCRIPTS) { UnicodeBlock.new("SUPERSCRIPTS_AND_SUBSCRIPTS", Array.typed(String).new(["Superscripts and Subscripts", "SuperscriptsandSubscripts"])) }
           const_attr_reader  :SUPERSCRIPTS_AND_SUBSCRIPTS
           
-          # 
           # Constant for the "Currency Symbols" Unicode character block.
           # @since 1.2
           const_set_lazy(:CURRENCY_SYMBOLS) { UnicodeBlock.new("CURRENCY_SYMBOLS", Array.typed(String).new(["Currency Symbols", "CurrencySymbols"])) }
           const_attr_reader  :CURRENCY_SYMBOLS
           
-          # 
           # Constant for the "Combining Diacritical Marks for Symbols" Unicode character block.
           # <p>
           # This block was previously known as "Combining Marks for Symbols".
@@ -881,205 +773,171 @@ module Java::Lang
           const_set_lazy(:COMBINING_MARKS_FOR_SYMBOLS) { UnicodeBlock.new("COMBINING_MARKS_FOR_SYMBOLS", Array.typed(String).new(["Combining Diacritical Marks for Symbols", "CombiningDiacriticalMarksforSymbols", "Combining Marks for Symbols", "CombiningMarksforSymbols"])) }
           const_attr_reader  :COMBINING_MARKS_FOR_SYMBOLS
           
-          # 
           # Constant for the "Letterlike Symbols" Unicode character block.
           # @since 1.2
           const_set_lazy(:LETTERLIKE_SYMBOLS) { UnicodeBlock.new("LETTERLIKE_SYMBOLS", Array.typed(String).new(["Letterlike Symbols", "LetterlikeSymbols"])) }
           const_attr_reader  :LETTERLIKE_SYMBOLS
           
-          # 
           # Constant for the "Number Forms" Unicode character block.
           # @since 1.2
           const_set_lazy(:NUMBER_FORMS) { UnicodeBlock.new("NUMBER_FORMS", Array.typed(String).new(["Number Forms", "NumberForms"])) }
           const_attr_reader  :NUMBER_FORMS
           
-          # 
           # Constant for the "Arrows" Unicode character block.
           # @since 1.2
           const_set_lazy(:ARROWS) { UnicodeBlock.new("ARROWS") }
           const_attr_reader  :ARROWS
           
-          # 
           # Constant for the "Mathematical Operators" Unicode character block.
           # @since 1.2
           const_set_lazy(:MATHEMATICAL_OPERATORS) { UnicodeBlock.new("MATHEMATICAL_OPERATORS", Array.typed(String).new(["Mathematical Operators", "MathematicalOperators"])) }
           const_attr_reader  :MATHEMATICAL_OPERATORS
           
-          # 
           # Constant for the "Miscellaneous Technical" Unicode character block.
           # @since 1.2
           const_set_lazy(:MISCELLANEOUS_TECHNICAL) { UnicodeBlock.new("MISCELLANEOUS_TECHNICAL", Array.typed(String).new(["Miscellaneous Technical", "MiscellaneousTechnical"])) }
           const_attr_reader  :MISCELLANEOUS_TECHNICAL
           
-          # 
           # Constant for the "Control Pictures" Unicode character block.
           # @since 1.2
           const_set_lazy(:CONTROL_PICTURES) { UnicodeBlock.new("CONTROL_PICTURES", Array.typed(String).new(["Control Pictures", "ControlPictures"])) }
           const_attr_reader  :CONTROL_PICTURES
           
-          # 
           # Constant for the "Optical Character Recognition" Unicode character block.
           # @since 1.2
           const_set_lazy(:OPTICAL_CHARACTER_RECOGNITION) { UnicodeBlock.new("OPTICAL_CHARACTER_RECOGNITION", Array.typed(String).new(["Optical Character Recognition", "OpticalCharacterRecognition"])) }
           const_attr_reader  :OPTICAL_CHARACTER_RECOGNITION
           
-          # 
           # Constant for the "Enclosed Alphanumerics" Unicode character block.
           # @since 1.2
           const_set_lazy(:ENCLOSED_ALPHANUMERICS) { UnicodeBlock.new("ENCLOSED_ALPHANUMERICS", Array.typed(String).new(["Enclosed Alphanumerics", "EnclosedAlphanumerics"])) }
           const_attr_reader  :ENCLOSED_ALPHANUMERICS
           
-          # 
           # Constant for the "Box Drawing" Unicode character block.
           # @since 1.2
           const_set_lazy(:BOX_DRAWING) { UnicodeBlock.new("BOX_DRAWING", Array.typed(String).new(["Box Drawing", "BoxDrawing"])) }
           const_attr_reader  :BOX_DRAWING
           
-          # 
           # Constant for the "Block Elements" Unicode character block.
           # @since 1.2
           const_set_lazy(:BLOCK_ELEMENTS) { UnicodeBlock.new("BLOCK_ELEMENTS", Array.typed(String).new(["Block Elements", "BlockElements"])) }
           const_attr_reader  :BLOCK_ELEMENTS
           
-          # 
           # Constant for the "Geometric Shapes" Unicode character block.
           # @since 1.2
           const_set_lazy(:GEOMETRIC_SHAPES) { UnicodeBlock.new("GEOMETRIC_SHAPES", Array.typed(String).new(["Geometric Shapes", "GeometricShapes"])) }
           const_attr_reader  :GEOMETRIC_SHAPES
           
-          # 
           # Constant for the "Miscellaneous Symbols" Unicode character block.
           # @since 1.2
           const_set_lazy(:MISCELLANEOUS_SYMBOLS) { UnicodeBlock.new("MISCELLANEOUS_SYMBOLS", Array.typed(String).new(["Miscellaneous Symbols", "MiscellaneousSymbols"])) }
           const_attr_reader  :MISCELLANEOUS_SYMBOLS
           
-          # 
           # Constant for the "Dingbats" Unicode character block.
           # @since 1.2
           const_set_lazy(:DINGBATS) { UnicodeBlock.new("DINGBATS") }
           const_attr_reader  :DINGBATS
           
-          # 
           # Constant for the "CJK Symbols and Punctuation" Unicode character block.
           # @since 1.2
           const_set_lazy(:CJK_SYMBOLS_AND_PUNCTUATION) { UnicodeBlock.new("CJK_SYMBOLS_AND_PUNCTUATION", Array.typed(String).new(["CJK Symbols and Punctuation", "CJKSymbolsandPunctuation"])) }
           const_attr_reader  :CJK_SYMBOLS_AND_PUNCTUATION
           
-          # 
           # Constant for the "Hiragana" Unicode character block.
           # @since 1.2
           const_set_lazy(:HIRAGANA) { UnicodeBlock.new("HIRAGANA") }
           const_attr_reader  :HIRAGANA
           
-          # 
           # Constant for the "Katakana" Unicode character block.
           # @since 1.2
           const_set_lazy(:KATAKANA) { UnicodeBlock.new("KATAKANA") }
           const_attr_reader  :KATAKANA
           
-          # 
           # Constant for the "Bopomofo" Unicode character block.
           # @since 1.2
           const_set_lazy(:BOPOMOFO) { UnicodeBlock.new("BOPOMOFO") }
           const_attr_reader  :BOPOMOFO
           
-          # 
           # Constant for the "Hangul Compatibility Jamo" Unicode character block.
           # @since 1.2
           const_set_lazy(:HANGUL_COMPATIBILITY_JAMO) { UnicodeBlock.new("HANGUL_COMPATIBILITY_JAMO", Array.typed(String).new(["Hangul Compatibility Jamo", "HangulCompatibilityJamo"])) }
           const_attr_reader  :HANGUL_COMPATIBILITY_JAMO
           
-          # 
           # Constant for the "Kanbun" Unicode character block.
           # @since 1.2
           const_set_lazy(:KANBUN) { UnicodeBlock.new("KANBUN") }
           const_attr_reader  :KANBUN
           
-          # 
           # Constant for the "Enclosed CJK Letters and Months" Unicode character block.
           # @since 1.2
           const_set_lazy(:ENCLOSED_CJK_LETTERS_AND_MONTHS) { UnicodeBlock.new("ENCLOSED_CJK_LETTERS_AND_MONTHS", Array.typed(String).new(["Enclosed CJK Letters and Months", "EnclosedCJKLettersandMonths"])) }
           const_attr_reader  :ENCLOSED_CJK_LETTERS_AND_MONTHS
           
-          # 
           # Constant for the "CJK Compatibility" Unicode character block.
           # @since 1.2
           const_set_lazy(:CJK_COMPATIBILITY) { UnicodeBlock.new("CJK_COMPATIBILITY", Array.typed(String).new(["CJK Compatibility", "CJKCompatibility"])) }
           const_attr_reader  :CJK_COMPATIBILITY
           
-          # 
           # Constant for the "CJK Unified Ideographs" Unicode character block.
           # @since 1.2
           const_set_lazy(:CJK_UNIFIED_IDEOGRAPHS) { UnicodeBlock.new("CJK_UNIFIED_IDEOGRAPHS", Array.typed(String).new(["CJK Unified Ideographs", "CJKUnifiedIdeographs"])) }
           const_attr_reader  :CJK_UNIFIED_IDEOGRAPHS
           
-          # 
           # Constant for the "Hangul Syllables" Unicode character block.
           # @since 1.2
           const_set_lazy(:HANGUL_SYLLABLES) { UnicodeBlock.new("HANGUL_SYLLABLES", Array.typed(String).new(["Hangul Syllables", "HangulSyllables"])) }
           const_attr_reader  :HANGUL_SYLLABLES
           
-          # 
           # Constant for the "Private Use Area" Unicode character block.
           # @since 1.2
           const_set_lazy(:PRIVATE_USE_AREA) { UnicodeBlock.new("PRIVATE_USE_AREA", Array.typed(String).new(["Private Use Area", "PrivateUseArea"])) }
           const_attr_reader  :PRIVATE_USE_AREA
           
-          # 
           # Constant for the "CJK Compatibility Ideographs" Unicode character block.
           # @since 1.2
           const_set_lazy(:CJK_COMPATIBILITY_IDEOGRAPHS) { UnicodeBlock.new("CJK_COMPATIBILITY_IDEOGRAPHS", Array.typed(String).new(["CJK Compatibility Ideographs", "CJKCompatibilityIdeographs"])) }
           const_attr_reader  :CJK_COMPATIBILITY_IDEOGRAPHS
           
-          # 
           # Constant for the "Alphabetic Presentation Forms" Unicode character block.
           # @since 1.2
           const_set_lazy(:ALPHABETIC_PRESENTATION_FORMS) { UnicodeBlock.new("ALPHABETIC_PRESENTATION_FORMS", Array.typed(String).new(["Alphabetic Presentation Forms", "AlphabeticPresentationForms"])) }
           const_attr_reader  :ALPHABETIC_PRESENTATION_FORMS
           
-          # 
           # Constant for the "Arabic Presentation Forms-A" Unicode character block.
           # @since 1.2
           const_set_lazy(:ARABIC_PRESENTATION_FORMS_A) { UnicodeBlock.new("ARABIC_PRESENTATION_FORMS_A", Array.typed(String).new(["Arabic Presentation Forms-A", "ArabicPresentationForms-A"])) }
           const_attr_reader  :ARABIC_PRESENTATION_FORMS_A
           
-          # 
           # Constant for the "Combining Half Marks" Unicode character block.
           # @since 1.2
           const_set_lazy(:COMBINING_HALF_MARKS) { UnicodeBlock.new("COMBINING_HALF_MARKS", Array.typed(String).new(["Combining Half Marks", "CombiningHalfMarks"])) }
           const_attr_reader  :COMBINING_HALF_MARKS
           
-          # 
           # Constant for the "CJK Compatibility Forms" Unicode character block.
           # @since 1.2
           const_set_lazy(:CJK_COMPATIBILITY_FORMS) { UnicodeBlock.new("CJK_COMPATIBILITY_FORMS", Array.typed(String).new(["CJK Compatibility Forms", "CJKCompatibilityForms"])) }
           const_attr_reader  :CJK_COMPATIBILITY_FORMS
           
-          # 
           # Constant for the "Small Form Variants" Unicode character block.
           # @since 1.2
           const_set_lazy(:SMALL_FORM_VARIANTS) { UnicodeBlock.new("SMALL_FORM_VARIANTS", Array.typed(String).new(["Small Form Variants", "SmallFormVariants"])) }
           const_attr_reader  :SMALL_FORM_VARIANTS
           
-          # 
           # Constant for the "Arabic Presentation Forms-B" Unicode character block.
           # @since 1.2
           const_set_lazy(:ARABIC_PRESENTATION_FORMS_B) { UnicodeBlock.new("ARABIC_PRESENTATION_FORMS_B", Array.typed(String).new(["Arabic Presentation Forms-B", "ArabicPresentationForms-B"])) }
           const_attr_reader  :ARABIC_PRESENTATION_FORMS_B
           
-          # 
           # Constant for the "Halfwidth and Fullwidth Forms" Unicode character block.
           # @since 1.2
           const_set_lazy(:HALFWIDTH_AND_FULLWIDTH_FORMS) { UnicodeBlock.new("HALFWIDTH_AND_FULLWIDTH_FORMS", Array.typed(String).new(["Halfwidth and Fullwidth Forms", "HalfwidthandFullwidthForms"])) }
           const_attr_reader  :HALFWIDTH_AND_FULLWIDTH_FORMS
           
-          # 
           # Constant for the "Specials" Unicode character block.
           # @since 1.2
           const_set_lazy(:SPECIALS) { UnicodeBlock.new("SPECIALS") }
           const_attr_reader  :SPECIALS
           
-          # 
           # @deprecated As of J2SE 5, use {@link #HIGH_SURROGATES},
           # {@link #HIGH_PRIVATE_USE_SURROGATES}, and
           # {@link #LOW_SURROGATES}. These new constants match
@@ -1089,349 +947,291 @@ module Java::Lang
           const_set_lazy(:SURROGATES_AREA) { UnicodeBlock.new("SURROGATES_AREA") }
           const_attr_reader  :SURROGATES_AREA
           
-          # 
           # Constant for the "Syriac" Unicode character block.
           # @since 1.4
           const_set_lazy(:SYRIAC) { UnicodeBlock.new("SYRIAC") }
           const_attr_reader  :SYRIAC
           
-          # 
           # Constant for the "Thaana" Unicode character block.
           # @since 1.4
           const_set_lazy(:THAANA) { UnicodeBlock.new("THAANA") }
           const_attr_reader  :THAANA
           
-          # 
           # Constant for the "Sinhala" Unicode character block.
           # @since 1.4
           const_set_lazy(:SINHALA) { UnicodeBlock.new("SINHALA") }
           const_attr_reader  :SINHALA
           
-          # 
           # Constant for the "Myanmar" Unicode character block.
           # @since 1.4
           const_set_lazy(:MYANMAR) { UnicodeBlock.new("MYANMAR") }
           const_attr_reader  :MYANMAR
           
-          # 
           # Constant for the "Ethiopic" Unicode character block.
           # @since 1.4
           const_set_lazy(:ETHIOPIC) { UnicodeBlock.new("ETHIOPIC") }
           const_attr_reader  :ETHIOPIC
           
-          # 
           # Constant for the "Cherokee" Unicode character block.
           # @since 1.4
           const_set_lazy(:CHEROKEE) { UnicodeBlock.new("CHEROKEE") }
           const_attr_reader  :CHEROKEE
           
-          # 
           # Constant for the "Unified Canadian Aboriginal Syllabics" Unicode character block.
           # @since 1.4
           const_set_lazy(:UNIFIED_CANADIAN_ABORIGINAL_SYLLABICS) { UnicodeBlock.new("UNIFIED_CANADIAN_ABORIGINAL_SYLLABICS", Array.typed(String).new(["Unified Canadian Aboriginal Syllabics", "UnifiedCanadianAboriginalSyllabics"])) }
           const_attr_reader  :UNIFIED_CANADIAN_ABORIGINAL_SYLLABICS
           
-          # 
           # Constant for the "Ogham" Unicode character block.
           # @since 1.4
           const_set_lazy(:OGHAM) { UnicodeBlock.new("OGHAM") }
           const_attr_reader  :OGHAM
           
-          # 
           # Constant for the "Runic" Unicode character block.
           # @since 1.4
           const_set_lazy(:RUNIC) { UnicodeBlock.new("RUNIC") }
           const_attr_reader  :RUNIC
           
-          # 
           # Constant for the "Khmer" Unicode character block.
           # @since 1.4
           const_set_lazy(:KHMER) { UnicodeBlock.new("KHMER") }
           const_attr_reader  :KHMER
           
-          # 
           # Constant for the "Mongolian" Unicode character block.
           # @since 1.4
           const_set_lazy(:MONGOLIAN) { UnicodeBlock.new("MONGOLIAN") }
           const_attr_reader  :MONGOLIAN
           
-          # 
           # Constant for the "Braille Patterns" Unicode character block.
           # @since 1.4
           const_set_lazy(:BRAILLE_PATTERNS) { UnicodeBlock.new("BRAILLE_PATTERNS", Array.typed(String).new(["Braille Patterns", "BraillePatterns"])) }
           const_attr_reader  :BRAILLE_PATTERNS
           
-          # 
           # Constant for the "CJK Radicals Supplement" Unicode character block.
           # @since 1.4
           const_set_lazy(:CJK_RADICALS_SUPPLEMENT) { UnicodeBlock.new("CJK_RADICALS_SUPPLEMENT", Array.typed(String).new(["CJK Radicals Supplement", "CJKRadicalsSupplement"])) }
           const_attr_reader  :CJK_RADICALS_SUPPLEMENT
           
-          # 
           # Constant for the "Kangxi Radicals" Unicode character block.
           # @since 1.4
           const_set_lazy(:KANGXI_RADICALS) { UnicodeBlock.new("KANGXI_RADICALS", Array.typed(String).new(["Kangxi Radicals", "KangxiRadicals"])) }
           const_attr_reader  :KANGXI_RADICALS
           
-          # 
           # Constant for the "Ideographic Description Characters" Unicode character block.
           # @since 1.4
           const_set_lazy(:IDEOGRAPHIC_DESCRIPTION_CHARACTERS) { UnicodeBlock.new("IDEOGRAPHIC_DESCRIPTION_CHARACTERS", Array.typed(String).new(["Ideographic Description Characters", "IdeographicDescriptionCharacters"])) }
           const_attr_reader  :IDEOGRAPHIC_DESCRIPTION_CHARACTERS
           
-          # 
           # Constant for the "Bopomofo Extended" Unicode character block.
           # @since 1.4
           const_set_lazy(:BOPOMOFO_EXTENDED) { UnicodeBlock.new("BOPOMOFO_EXTENDED", Array.typed(String).new(["Bopomofo Extended", "BopomofoExtended"])) }
           const_attr_reader  :BOPOMOFO_EXTENDED
           
-          # 
           # Constant for the "CJK Unified Ideographs Extension A" Unicode character block.
           # @since 1.4
           const_set_lazy(:CJK_UNIFIED_IDEOGRAPHS_EXTENSION_A) { UnicodeBlock.new("CJK_UNIFIED_IDEOGRAPHS_EXTENSION_A", Array.typed(String).new(["CJK Unified Ideographs Extension A", "CJKUnifiedIdeographsExtensionA"])) }
           const_attr_reader  :CJK_UNIFIED_IDEOGRAPHS_EXTENSION_A
           
-          # 
           # Constant for the "Yi Syllables" Unicode character block.
           # @since 1.4
           const_set_lazy(:YI_SYLLABLES) { UnicodeBlock.new("YI_SYLLABLES", Array.typed(String).new(["Yi Syllables", "YiSyllables"])) }
           const_attr_reader  :YI_SYLLABLES
           
-          # 
           # Constant for the "Yi Radicals" Unicode character block.
           # @since 1.4
           const_set_lazy(:YI_RADICALS) { UnicodeBlock.new("YI_RADICALS", Array.typed(String).new(["Yi Radicals", "YiRadicals"])) }
           const_attr_reader  :YI_RADICALS
           
-          # 
           # Constant for the "Cyrillic Supplementary" Unicode character block.
           # @since 1.5
           const_set_lazy(:CYRILLIC_SUPPLEMENTARY) { UnicodeBlock.new("CYRILLIC_SUPPLEMENTARY", Array.typed(String).new(["Cyrillic Supplementary", "CyrillicSupplementary"])) }
           const_attr_reader  :CYRILLIC_SUPPLEMENTARY
           
-          # 
           # Constant for the "Tagalog" Unicode character block.
           # @since 1.5
           const_set_lazy(:TAGALOG) { UnicodeBlock.new("TAGALOG") }
           const_attr_reader  :TAGALOG
           
-          # 
           # Constant for the "Hanunoo" Unicode character block.
           # @since 1.5
           const_set_lazy(:HANUNOO) { UnicodeBlock.new("HANUNOO") }
           const_attr_reader  :HANUNOO
           
-          # 
           # Constant for the "Buhid" Unicode character block.
           # @since 1.5
           const_set_lazy(:BUHID) { UnicodeBlock.new("BUHID") }
           const_attr_reader  :BUHID
           
-          # 
           # Constant for the "Tagbanwa" Unicode character block.
           # @since 1.5
           const_set_lazy(:TAGBANWA) { UnicodeBlock.new("TAGBANWA") }
           const_attr_reader  :TAGBANWA
           
-          # 
           # Constant for the "Limbu" Unicode character block.
           # @since 1.5
           const_set_lazy(:LIMBU) { UnicodeBlock.new("LIMBU") }
           const_attr_reader  :LIMBU
           
-          # 
           # Constant for the "Tai Le" Unicode character block.
           # @since 1.5
           const_set_lazy(:TAI_LE) { UnicodeBlock.new("TAI_LE", Array.typed(String).new(["Tai Le", "TaiLe"])) }
           const_attr_reader  :TAI_LE
           
-          # 
           # Constant for the "Khmer Symbols" Unicode character block.
           # @since 1.5
           const_set_lazy(:KHMER_SYMBOLS) { UnicodeBlock.new("KHMER_SYMBOLS", Array.typed(String).new(["Khmer Symbols", "KhmerSymbols"])) }
           const_attr_reader  :KHMER_SYMBOLS
           
-          # 
           # Constant for the "Phonetic Extensions" Unicode character block.
           # @since 1.5
           const_set_lazy(:PHONETIC_EXTENSIONS) { UnicodeBlock.new("PHONETIC_EXTENSIONS", Array.typed(String).new(["Phonetic Extensions", "PhoneticExtensions"])) }
           const_attr_reader  :PHONETIC_EXTENSIONS
           
-          # 
           # Constant for the "Miscellaneous Mathematical Symbols-A" Unicode character block.
           # @since 1.5
           const_set_lazy(:MISCELLANEOUS_MATHEMATICAL_SYMBOLS_A) { UnicodeBlock.new("MISCELLANEOUS_MATHEMATICAL_SYMBOLS_A", Array.typed(String).new(["Miscellaneous Mathematical Symbols-A", "MiscellaneousMathematicalSymbols-A"])) }
           const_attr_reader  :MISCELLANEOUS_MATHEMATICAL_SYMBOLS_A
           
-          # 
           # Constant for the "Supplemental Arrows-A" Unicode character block.
           # @since 1.5
           const_set_lazy(:SUPPLEMENTAL_ARROWS_A) { UnicodeBlock.new("SUPPLEMENTAL_ARROWS_A", Array.typed(String).new(["Supplemental Arrows-A", "SupplementalArrows-A"])) }
           const_attr_reader  :SUPPLEMENTAL_ARROWS_A
           
-          # 
           # Constant for the "Supplemental Arrows-B" Unicode character block.
           # @since 1.5
           const_set_lazy(:SUPPLEMENTAL_ARROWS_B) { UnicodeBlock.new("SUPPLEMENTAL_ARROWS_B", Array.typed(String).new(["Supplemental Arrows-B", "SupplementalArrows-B"])) }
           const_attr_reader  :SUPPLEMENTAL_ARROWS_B
           
-          # 
           # Constant for the "Miscellaneous Mathematical Symbols-B" Unicode character block.
           # @since 1.5
           const_set_lazy(:MISCELLANEOUS_MATHEMATICAL_SYMBOLS_B) { UnicodeBlock.new("MISCELLANEOUS_MATHEMATICAL_SYMBOLS_B", Array.typed(String).new(["Miscellaneous Mathematical Symbols-B", "MiscellaneousMathematicalSymbols-B"])) }
           const_attr_reader  :MISCELLANEOUS_MATHEMATICAL_SYMBOLS_B
           
-          # 
           # Constant for the "Supplemental Mathematical Operators" Unicode character block.
           # @since 1.5
           const_set_lazy(:SUPPLEMENTAL_MATHEMATICAL_OPERATORS) { UnicodeBlock.new("SUPPLEMENTAL_MATHEMATICAL_OPERATORS", Array.typed(String).new(["Supplemental Mathematical Operators", "SupplementalMathematicalOperators"])) }
           const_attr_reader  :SUPPLEMENTAL_MATHEMATICAL_OPERATORS
           
-          # 
           # Constant for the "Miscellaneous Symbols and Arrows" Unicode character block.
           # @since 1.5
           const_set_lazy(:MISCELLANEOUS_SYMBOLS_AND_ARROWS) { UnicodeBlock.new("MISCELLANEOUS_SYMBOLS_AND_ARROWS", Array.typed(String).new(["Miscellaneous Symbols and Arrows", "MiscellaneousSymbolsandArrows"])) }
           const_attr_reader  :MISCELLANEOUS_SYMBOLS_AND_ARROWS
           
-          # 
           # Constant for the "Katakana Phonetic Extensions" Unicode character block.
           # @since 1.5
           const_set_lazy(:KATAKANA_PHONETIC_EXTENSIONS) { UnicodeBlock.new("KATAKANA_PHONETIC_EXTENSIONS", Array.typed(String).new(["Katakana Phonetic Extensions", "KatakanaPhoneticExtensions"])) }
           const_attr_reader  :KATAKANA_PHONETIC_EXTENSIONS
           
-          # 
           # Constant for the "Yijing Hexagram Symbols" Unicode character block.
           # @since 1.5
           const_set_lazy(:YIJING_HEXAGRAM_SYMBOLS) { UnicodeBlock.new("YIJING_HEXAGRAM_SYMBOLS", Array.typed(String).new(["Yijing Hexagram Symbols", "YijingHexagramSymbols"])) }
           const_attr_reader  :YIJING_HEXAGRAM_SYMBOLS
           
-          # 
           # Constant for the "Variation Selectors" Unicode character block.
           # @since 1.5
           const_set_lazy(:VARIATION_SELECTORS) { UnicodeBlock.new("VARIATION_SELECTORS", Array.typed(String).new(["Variation Selectors", "VariationSelectors"])) }
           const_attr_reader  :VARIATION_SELECTORS
           
-          # 
           # Constant for the "Linear B Syllabary" Unicode character block.
           # @since 1.5
           const_set_lazy(:LINEAR_B_SYLLABARY) { UnicodeBlock.new("LINEAR_B_SYLLABARY", Array.typed(String).new(["Linear B Syllabary", "LinearBSyllabary"])) }
           const_attr_reader  :LINEAR_B_SYLLABARY
           
-          # 
           # Constant for the "Linear B Ideograms" Unicode character block.
           # @since 1.5
           const_set_lazy(:LINEAR_B_IDEOGRAMS) { UnicodeBlock.new("LINEAR_B_IDEOGRAMS", Array.typed(String).new(["Linear B Ideograms", "LinearBIdeograms"])) }
           const_attr_reader  :LINEAR_B_IDEOGRAMS
           
-          # 
           # Constant for the "Aegean Numbers" Unicode character block.
           # @since 1.5
           const_set_lazy(:AEGEAN_NUMBERS) { UnicodeBlock.new("AEGEAN_NUMBERS", Array.typed(String).new(["Aegean Numbers", "AegeanNumbers"])) }
           const_attr_reader  :AEGEAN_NUMBERS
           
-          # 
           # Constant for the "Old Italic" Unicode character block.
           # @since 1.5
           const_set_lazy(:OLD_ITALIC) { UnicodeBlock.new("OLD_ITALIC", Array.typed(String).new(["Old Italic", "OldItalic"])) }
           const_attr_reader  :OLD_ITALIC
           
-          # 
           # Constant for the "Gothic" Unicode character block.
           # @since 1.5
           const_set_lazy(:GOTHIC) { UnicodeBlock.new("GOTHIC") }
           const_attr_reader  :GOTHIC
           
-          # 
           # Constant for the "Ugaritic" Unicode character block.
           # @since 1.5
           const_set_lazy(:UGARITIC) { UnicodeBlock.new("UGARITIC") }
           const_attr_reader  :UGARITIC
           
-          # 
           # Constant for the "Deseret" Unicode character block.
           # @since 1.5
           const_set_lazy(:DESERET) { UnicodeBlock.new("DESERET") }
           const_attr_reader  :DESERET
           
-          # 
           # Constant for the "Shavian" Unicode character block.
           # @since 1.5
           const_set_lazy(:SHAVIAN) { UnicodeBlock.new("SHAVIAN") }
           const_attr_reader  :SHAVIAN
           
-          # 
           # Constant for the "Osmanya" Unicode character block.
           # @since 1.5
           const_set_lazy(:OSMANYA) { UnicodeBlock.new("OSMANYA") }
           const_attr_reader  :OSMANYA
           
-          # 
           # Constant for the "Cypriot Syllabary" Unicode character block.
           # @since 1.5
           const_set_lazy(:CYPRIOT_SYLLABARY) { UnicodeBlock.new("CYPRIOT_SYLLABARY", Array.typed(String).new(["Cypriot Syllabary", "CypriotSyllabary"])) }
           const_attr_reader  :CYPRIOT_SYLLABARY
           
-          # 
           # Constant for the "Byzantine Musical Symbols" Unicode character block.
           # @since 1.5
           const_set_lazy(:BYZANTINE_MUSICAL_SYMBOLS) { UnicodeBlock.new("BYZANTINE_MUSICAL_SYMBOLS", Array.typed(String).new(["Byzantine Musical Symbols", "ByzantineMusicalSymbols"])) }
           const_attr_reader  :BYZANTINE_MUSICAL_SYMBOLS
           
-          # 
           # Constant for the "Musical Symbols" Unicode character block.
           # @since 1.5
           const_set_lazy(:MUSICAL_SYMBOLS) { UnicodeBlock.new("MUSICAL_SYMBOLS", Array.typed(String).new(["Musical Symbols", "MusicalSymbols"])) }
           const_attr_reader  :MUSICAL_SYMBOLS
           
-          # 
           # Constant for the "Tai Xuan Jing Symbols" Unicode character block.
           # @since 1.5
           const_set_lazy(:TAI_XUAN_JING_SYMBOLS) { UnicodeBlock.new("TAI_XUAN_JING_SYMBOLS", Array.typed(String).new(["Tai Xuan Jing Symbols", "TaiXuanJingSymbols"])) }
           const_attr_reader  :TAI_XUAN_JING_SYMBOLS
           
-          # 
           # Constant for the "Mathematical Alphanumeric Symbols" Unicode character block.
           # @since 1.5
           const_set_lazy(:MATHEMATICAL_ALPHANUMERIC_SYMBOLS) { UnicodeBlock.new("MATHEMATICAL_ALPHANUMERIC_SYMBOLS", Array.typed(String).new(["Mathematical Alphanumeric Symbols", "MathematicalAlphanumericSymbols"])) }
           const_attr_reader  :MATHEMATICAL_ALPHANUMERIC_SYMBOLS
           
-          # 
           # Constant for the "CJK Unified Ideographs Extension B" Unicode character block.
           # @since 1.5
           const_set_lazy(:CJK_UNIFIED_IDEOGRAPHS_EXTENSION_B) { UnicodeBlock.new("CJK_UNIFIED_IDEOGRAPHS_EXTENSION_B", Array.typed(String).new(["CJK Unified Ideographs Extension B", "CJKUnifiedIdeographsExtensionB"])) }
           const_attr_reader  :CJK_UNIFIED_IDEOGRAPHS_EXTENSION_B
           
-          # 
           # Constant for the "CJK Compatibility Ideographs Supplement" Unicode character block.
           # @since 1.5
           const_set_lazy(:CJK_COMPATIBILITY_IDEOGRAPHS_SUPPLEMENT) { UnicodeBlock.new("CJK_COMPATIBILITY_IDEOGRAPHS_SUPPLEMENT", Array.typed(String).new(["CJK Compatibility Ideographs Supplement", "CJKCompatibilityIdeographsSupplement"])) }
           const_attr_reader  :CJK_COMPATIBILITY_IDEOGRAPHS_SUPPLEMENT
           
-          # 
           # Constant for the "Tags" Unicode character block.
           # @since 1.5
           const_set_lazy(:TAGS) { UnicodeBlock.new("TAGS") }
           const_attr_reader  :TAGS
           
-          # 
           # Constant for the "Variation Selectors Supplement" Unicode character block.
           # @since 1.5
           const_set_lazy(:VARIATION_SELECTORS_SUPPLEMENT) { UnicodeBlock.new("VARIATION_SELECTORS_SUPPLEMENT", Array.typed(String).new(["Variation Selectors Supplement", "VariationSelectorsSupplement"])) }
           const_attr_reader  :VARIATION_SELECTORS_SUPPLEMENT
           
-          # 
           # Constant for the "Supplementary Private Use Area-A" Unicode character block.
           # @since 1.5
           const_set_lazy(:SUPPLEMENTARY_PRIVATE_USE_AREA_A) { UnicodeBlock.new("SUPPLEMENTARY_PRIVATE_USE_AREA_A", Array.typed(String).new(["Supplementary Private Use Area-A", "SupplementaryPrivateUseArea-A"])) }
           const_attr_reader  :SUPPLEMENTARY_PRIVATE_USE_AREA_A
           
-          # 
           # Constant for the "Supplementary Private Use Area-B" Unicode character block.
           # @since 1.5
           const_set_lazy(:SUPPLEMENTARY_PRIVATE_USE_AREA_B) { UnicodeBlock.new("SUPPLEMENTARY_PRIVATE_USE_AREA_B", Array.typed(String).new(["Supplementary Private Use Area-B", "SupplementaryPrivateUseArea-B"])) }
           const_attr_reader  :SUPPLEMENTARY_PRIVATE_USE_AREA_B
           
-          # 
           # Constant for the "High Surrogates" Unicode character block.
           # This block represents codepoint values in the high surrogate
           # range: 0xD800 through 0xDB7F
@@ -1440,7 +1240,6 @@ module Java::Lang
           const_set_lazy(:HIGH_SURROGATES) { UnicodeBlock.new("HIGH_SURROGATES", Array.typed(String).new(["High Surrogates", "HighSurrogates"])) }
           const_attr_reader  :HIGH_SURROGATES
           
-          # 
           # Constant for the "High Private Use Surrogates" Unicode character block.
           # This block represents codepoint values in the high surrogate
           # range: 0xDB80 through 0xDBFF
@@ -1449,7 +1248,6 @@ module Java::Lang
           const_set_lazy(:HIGH_PRIVATE_USE_SURROGATES) { UnicodeBlock.new("HIGH_PRIVATE_USE_SURROGATES", Array.typed(String).new(["High Private Use Surrogates", "HighPrivateUseSurrogates"])) }
           const_attr_reader  :HIGH_PRIVATE_USE_SURROGATES
           
-          # 
           # Constant for the "Low Surrogates" Unicode character block.
           # This block represents codepoint values in the high surrogate
           # range: 0xDC00 through 0xDFFF
@@ -1615,7 +1413,6 @@ module Java::Lang
           const_attr_reader  :Blocks
           
           typesig { [::Java::Char] }
-          # 
           # Returns the object representing the Unicode block containing the
           # given character, or <code>null</code> if the character is not a
           # member of a defined block.
@@ -1636,7 +1433,6 @@ module Java::Lang
           end
           
           typesig { [::Java::Int] }
-          # 
           # Returns the object representing the Unicode block
           # containing the given character (Unicode code point), or
           # <code>null</code> if the character is not a member of a
@@ -1674,7 +1470,6 @@ module Java::Lang
           end
           
           typesig { [String] }
-          # 
           # Returns the UnicodeBlock with the given name. Block
           # names are determined by The Unicode Standard. The file
           # Blocks-&lt;version&gt;.txt defines blocks for a particular
@@ -1723,7 +1518,6 @@ module Java::Lang
       end }
     }
     
-    # 
     # The value of the <code>Character</code>.
     # 
     # @serial
@@ -1740,7 +1534,6 @@ module Java::Lang
     }
     
     typesig { [::Java::Char] }
-    # 
     # Constructs a newly allocated <code>Character</code> object that
     # represents the specified <code>char</code> value.
     # 
@@ -1778,7 +1571,6 @@ module Java::Lang
       end }
       
       typesig { [::Java::Char] }
-      # 
       # Returns a <tt>Character</tt> instance representing the specified
       # <tt>char</tt> value.
       # If a new <tt>Character</tt> instance is not required, this method
@@ -1800,7 +1592,6 @@ module Java::Lang
     }
     
     typesig { [] }
-    # 
     # Returns the value of this <code>Character</code> object.
     # @return  the primitive <code>char</code> value represented by
     # this object.
@@ -1809,7 +1600,6 @@ module Java::Lang
     end
     
     typesig { [] }
-    # 
     # Returns a hash code for this <code>Character</code>.
     # @return  a hash code value for this object.
     def hash_code
@@ -1817,7 +1607,6 @@ module Java::Lang
     end
     
     typesig { [Object] }
-    # 
     # Compares this object against the specified object.
     # The result is <code>true</code> if and only if the argument is not
     # <code>null</code> and is a <code>Character</code> object that
@@ -1834,7 +1623,6 @@ module Java::Lang
     end
     
     typesig { [] }
-    # 
     # Returns a <code>String</code> object representing this
     # <code>Character</code>'s value.  The result is a string of
     # length 1 whose sole component is the primitive
@@ -1849,7 +1637,6 @@ module Java::Lang
     
     class_module.module_eval {
       typesig { [::Java::Char] }
-      # 
       # Returns a <code>String</code> object representing the
       # specified <code>char</code>.  The result is a string of length
       # 1 consisting solely of the specified <code>char</code>.
@@ -1862,7 +1649,6 @@ module Java::Lang
       end
       
       typesig { [::Java::Int] }
-      # 
       # Determines whether the specified code point is a valid Unicode
       # code point value in the range of <code>0x0000</code> to
       # <code>0x10FFFF</code> inclusive. This method is equivalent to
@@ -1882,7 +1668,6 @@ module Java::Lang
       end
       
       typesig { [::Java::Int] }
-      # 
       # Determines whether the specified character (Unicode code point)
       # is in the supplementary character range. The method call is
       # equivalent to the expression:
@@ -1899,7 +1684,6 @@ module Java::Lang
       end
       
       typesig { [::Java::Char] }
-      # 
       # Determines if the given <code>char</code> value is a
       # high-surrogate code unit (also known as <i>leading-surrogate
       # code unit</i>). Such values do not represent characters by
@@ -1924,7 +1708,6 @@ module Java::Lang
       end
       
       typesig { [::Java::Char] }
-      # 
       # Determines if the given <code>char</code> value is a
       # low-surrogate code unit (also known as <i>trailing-surrogate code
       # unit</i>). Such values do not represent characters by themselves,
@@ -1946,7 +1729,6 @@ module Java::Lang
       end
       
       typesig { [::Java::Char, ::Java::Char] }
-      # 
       # Determines whether the specified pair of <code>char</code>
       # values is a valid surrogate pair. This method is equivalent to
       # the expression:
@@ -1965,7 +1747,6 @@ module Java::Lang
       end
       
       typesig { [::Java::Int] }
-      # 
       # Determines the number of <code>char</code> values needed to
       # represent the specified character (Unicode code point). If the
       # specified character is equal to or greater than 0x10000, then
@@ -1985,7 +1766,6 @@ module Java::Lang
       end
       
       typesig { [::Java::Char, ::Java::Char] }
-      # 
       # Converts the specified surrogate pair to its supplementary code
       # point value. This method does not validate the specified
       # surrogate pair. The caller must validate it using {@link
@@ -2001,7 +1781,6 @@ module Java::Lang
       end
       
       typesig { [CharSequence, ::Java::Int] }
-      # 
       # Returns the code point at the given index of the
       # <code>CharSequence</code>. If the <code>char</code> value at
       # the given index in the <code>CharSequence</code> is in the
@@ -2036,7 +1815,6 @@ module Java::Lang
       end
       
       typesig { [Array.typed(::Java::Char), ::Java::Int] }
-      # 
       # Returns the code point at the given index of the
       # <code>char</code> array. If the <code>char</code> value at
       # the given index in the <code>char</code> array is in the
@@ -2061,7 +1839,6 @@ module Java::Lang
       end
       
       typesig { [Array.typed(::Java::Char), ::Java::Int, ::Java::Int] }
-      # 
       # Returns the code point at the given index of the
       # <code>char</code> array, where only array elements with
       # <code>index</code> less than <code>limit</code> can be used. If
@@ -2107,7 +1884,6 @@ module Java::Lang
       end
       
       typesig { [CharSequence, ::Java::Int] }
-      # 
       # Returns the code point preceding the given index of the
       # <code>CharSequence</code>. If the <code>char</code> value at
       # <code>(index - 1)</code> in the <code>CharSequence</code> is in
@@ -2141,7 +1917,6 @@ module Java::Lang
       end
       
       typesig { [Array.typed(::Java::Char), ::Java::Int] }
-      # 
       # Returns the code point preceding the given index of the
       # <code>char</code> array. If the <code>char</code> value at
       # <code>(index - 1)</code> in the <code>char</code> array is in
@@ -2166,7 +1941,6 @@ module Java::Lang
       end
       
       typesig { [Array.typed(::Java::Char), ::Java::Int, ::Java::Int] }
-      # 
       # Returns the code point preceding the given index of the
       # <code>char</code> array, where only array elements with
       # <code>index</code> greater than or equal to <code>start</code>
@@ -2214,7 +1988,6 @@ module Java::Lang
       end
       
       typesig { [::Java::Int, Array.typed(::Java::Char), ::Java::Int] }
-      # 
       # Converts the specified character (Unicode code point) to its
       # UTF-16 representation. If the specified code point is a BMP
       # (Basic Multilingual Plane or Plane 0) value, the same value is
@@ -2257,7 +2030,6 @@ module Java::Lang
       end
       
       typesig { [::Java::Int] }
-      # 
       # Converts the specified character (Unicode code point) to its
       # UTF-16 representation stored in a <code>char</code> array. If
       # the specified code point is a BMP (Basic Multilingual Plane or
@@ -2292,7 +2064,6 @@ module Java::Lang
       end
       
       typesig { [CharSequence, ::Java::Int, ::Java::Int] }
-      # 
       # Returns the number of Unicode code points in the text range of
       # the specified char sequence. The text range begins at the
       # specified <code>beginIndex</code> and extends to the
@@ -2333,7 +2104,6 @@ module Java::Lang
       end
       
       typesig { [Array.typed(::Java::Char), ::Java::Int, ::Java::Int] }
-      # 
       # Returns the number of Unicode code points in a subarray of the
       # <code>char</code> array argument. The <code>offset</code>
       # argument is the index of the first <code>char</code> of the
@@ -2375,7 +2145,6 @@ module Java::Lang
       end
       
       typesig { [CharSequence, ::Java::Int, ::Java::Int] }
-      # 
       # Returns the index within the given char sequence that is offset
       # from the given <code>index</code> by <code>codePointOffset</code>
       # code points. Unpaired surrogates within the text range given by
@@ -2417,17 +2186,17 @@ module Java::Lang
             raise IndexOutOfBoundsException.new
           end
         else
-          i_ = 0
-          i_ = code_point_offset
-          while x > 0 && i_ < 0
+          i = 0
+          i = code_point_offset
+          while x > 0 && i < 0
             if (is_low_surrogate(seq.char_at((x -= 1))))
               if (x > 0 && is_high_surrogate(seq.char_at(x - 1)))
                 ((x -= 1) + 1)
               end
             end
-            ((i_ += 1) - 1)
+            ((i += 1) - 1)
           end
-          if (i_ < 0)
+          if (i < 0)
             raise IndexOutOfBoundsException.new
           end
         end
@@ -2435,7 +2204,6 @@ module Java::Lang
       end
       
       typesig { [Array.typed(::Java::Char), ::Java::Int, ::Java::Int, ::Java::Int, ::Java::Int] }
-      # 
       # Returns the index within the given <code>char</code> subarray
       # that is offset from the given <code>index</code> by
       # <code>codePointOffset</code> code points. The
@@ -2493,17 +2261,17 @@ module Java::Lang
             raise IndexOutOfBoundsException.new
           end
         else
-          i_ = 0
-          i_ = code_point_offset
-          while x > start && i_ < 0
+          i = 0
+          i = code_point_offset
+          while x > start && i < 0
             if (is_low_surrogate(a[(x -= 1)]))
               if (x > start && is_high_surrogate(a[x - 1]))
                 ((x -= 1) + 1)
               end
             end
-            ((i_ += 1) - 1)
+            ((i += 1) - 1)
           end
-          if (i_ < 0)
+          if (i < 0)
             raise IndexOutOfBoundsException.new
           end
         end
@@ -2511,7 +2279,6 @@ module Java::Lang
       end
       
       typesig { [::Java::Char] }
-      # 
       # Determines if the specified character is a lowercase character.
       # <p>
       # A character is lowercase if its general category type, provided
@@ -2545,7 +2312,6 @@ module Java::Lang
       end
       
       typesig { [::Java::Int] }
-      # 
       # Determines if the specified character (Unicode code point) is a
       # lowercase character.
       # <p>
@@ -2576,7 +2342,6 @@ module Java::Lang
       end
       
       typesig { [::Java::Char] }
-      # 
       # Determines if the specified character is an uppercase character.
       # <p>
       # A character is uppercase if its general category type, provided by
@@ -2610,7 +2375,6 @@ module Java::Lang
       end
       
       typesig { [::Java::Int] }
-      # 
       # Determines if the specified character (Unicode code point) is an uppercase character.
       # <p>
       # A character is uppercase if its general category type, provided by
@@ -2639,7 +2403,6 @@ module Java::Lang
       end
       
       typesig { [::Java::Char] }
-      # 
       # Determines if the specified character is a titlecase character.
       # <p>
       # A character is a titlecase character if its general
@@ -2680,7 +2443,6 @@ module Java::Lang
       end
       
       typesig { [::Java::Int] }
-      # 
       # Determines if the specified character (Unicode code point) is a titlecase character.
       # <p>
       # A character is a titlecase character if its general
@@ -2716,7 +2478,6 @@ module Java::Lang
       end
       
       typesig { [::Java::Char] }
-      # 
       # Determines if the specified character is a digit.
       # <p>
       # A character is a digit if its general category type, provided
@@ -2755,7 +2516,6 @@ module Java::Lang
       end
       
       typesig { [::Java::Int] }
-      # 
       # Determines if the specified character (Unicode code point) is a digit.
       # <p>
       # A character is a digit if its general category type, provided
@@ -2789,7 +2549,6 @@ module Java::Lang
       end
       
       typesig { [::Java::Char] }
-      # 
       # Determines if a character is defined in Unicode.
       # <p>
       # A character is defined if at least one of the following is true:
@@ -2818,7 +2577,6 @@ module Java::Lang
       end
       
       typesig { [::Java::Int] }
-      # 
       # Determines if a character (Unicode code point) is defined in Unicode.
       # <p>
       # A character is defined if at least one of the following is true:
@@ -2842,7 +2600,6 @@ module Java::Lang
       end
       
       typesig { [::Java::Char] }
-      # 
       # Determines if the specified character is a letter.
       # <p>
       # A character is considered to be a letter if its general
@@ -2881,7 +2638,6 @@ module Java::Lang
       end
       
       typesig { [::Java::Int] }
-      # 
       # Determines if the specified character (Unicode code point) is a letter.
       # <p>
       # A character is considered to be a letter if its general
@@ -2914,7 +2670,6 @@ module Java::Lang
       end
       
       typesig { [::Java::Char] }
-      # 
       # Determines if the specified character is a letter or digit.
       # <p>
       # A character is considered to be a letter or digit if either
@@ -2942,7 +2697,6 @@ module Java::Lang
       end
       
       typesig { [::Java::Int] }
-      # 
       # Determines if the specified character (Unicode code point) is a letter or digit.
       # <p>
       # A character is considered to be a letter or digit if either
@@ -2963,7 +2717,6 @@ module Java::Lang
       end
       
       typesig { [::Java::Char] }
-      # 
       # Determines if the specified character is permissible as the first
       # character in a Java identifier.
       # <p>
@@ -2992,7 +2745,6 @@ module Java::Lang
       end
       
       typesig { [::Java::Char] }
-      # 
       # Determines if the specified character may be part of a Java
       # identifier as other than the first character.
       # <p>
@@ -3027,7 +2779,6 @@ module Java::Lang
       end
       
       typesig { [::Java::Char] }
-      # 
       # Determines if the specified character is
       # permissible as the first character in a Java identifier.
       # <p>
@@ -3058,7 +2809,6 @@ module Java::Lang
       end
       
       typesig { [::Java::Int] }
-      # 
       # Determines if the character (Unicode code point) is
       # permissible as the first character in a Java identifier.
       # <p>
@@ -3087,7 +2837,6 @@ module Java::Lang
       end
       
       typesig { [::Java::Char] }
-      # 
       # Determines if the specified character may be part of a Java
       # identifier as other than the first character.
       # <p>
@@ -3124,7 +2873,6 @@ module Java::Lang
       end
       
       typesig { [::Java::Int] }
-      # 
       # Determines if the character (Unicode code point) may be part of a Java
       # identifier as other than the first character.
       # <p>
@@ -3157,7 +2905,6 @@ module Java::Lang
       end
       
       typesig { [::Java::Char] }
-      # 
       # Determines if the specified character is permissible as the
       # first character in a Unicode identifier.
       # <p>
@@ -3186,7 +2933,6 @@ module Java::Lang
       end
       
       typesig { [::Java::Int] }
-      # 
       # Determines if the specified character (Unicode code point) is permissible as the
       # first character in a Unicode identifier.
       # <p>
@@ -3210,7 +2956,6 @@ module Java::Lang
       end
       
       typesig { [::Java::Char] }
-      # 
       # Determines if the specified character may be part of a Unicode
       # identifier as other than the first character.
       # <p>
@@ -3245,7 +2990,6 @@ module Java::Lang
       end
       
       typesig { [::Java::Int] }
-      # 
       # Determines if the specified character (Unicode code point) may be part of a Unicode
       # identifier as other than the first character.
       # <p>
@@ -3274,7 +3018,6 @@ module Java::Lang
       end
       
       typesig { [::Java::Char] }
-      # 
       # Determines if the specified character should be regarded as
       # an ignorable character in a Java identifier or a Unicode identifier.
       # <p>
@@ -3309,7 +3052,6 @@ module Java::Lang
       end
       
       typesig { [::Java::Int] }
-      # 
       # Determines if the specified character (Unicode code point) should be regarded as
       # an ignorable character in a Java identifier or a Unicode identifier.
       # <p>
@@ -3339,7 +3081,6 @@ module Java::Lang
       end
       
       typesig { [::Java::Char] }
-      # 
       # Converts the character argument to lowercase using case
       # mapping information from the UnicodeData file.
       # <p>
@@ -3370,7 +3111,6 @@ module Java::Lang
       end
       
       typesig { [::Java::Int] }
-      # 
       # Converts the character (Unicode code point) argument to
       # lowercase using case mapping information from the UnicodeData
       # file.
@@ -3399,7 +3139,6 @@ module Java::Lang
       end
       
       typesig { [::Java::Char] }
-      # 
       # Converts the character argument to uppercase using case mapping
       # information from the UnicodeData file.
       # <p>
@@ -3430,7 +3169,6 @@ module Java::Lang
       end
       
       typesig { [::Java::Int] }
-      # 
       # Converts the character (Unicode code point) argument to
       # uppercase using case mapping information from the UnicodeData
       # file.
@@ -3459,7 +3197,6 @@ module Java::Lang
       end
       
       typesig { [::Java::Char] }
-      # 
       # Converts the character argument to titlecase using case mapping
       # information from the UnicodeData file. If a character has no
       # explicit titlecase mapping and is not itself a titlecase char
@@ -3491,7 +3228,6 @@ module Java::Lang
       end
       
       typesig { [::Java::Int] }
-      # 
       # Converts the character (Unicode code point) argument to titlecase using case mapping
       # information from the UnicodeData file. If a character has no
       # explicit titlecase mapping and is not itself a titlecase char
@@ -3518,7 +3254,6 @@ module Java::Lang
       end
       
       typesig { [::Java::Char, ::Java::Int] }
-      # 
       # Returns the numeric value of the character <code>ch</code> in the
       # specified radix.
       # <p>
@@ -3560,7 +3295,6 @@ module Java::Lang
       end
       
       typesig { [::Java::Int, ::Java::Int] }
-      # 
       # Returns the numeric value of the specified character (Unicode
       # code point) in the specified radix.
       # 
@@ -3598,7 +3332,6 @@ module Java::Lang
       end
       
       typesig { [::Java::Char] }
-      # 
       # Returns the <code>int</code> value that the specified Unicode
       # character represents. For example, the character
       # <code>'&#92;u216C'</code> (the roman numeral fifty) will return
@@ -3636,7 +3369,6 @@ module Java::Lang
       end
       
       typesig { [::Java::Int] }
-      # 
       # Returns the <code>int</code> value that the specified
       # character (Unicode code point) represents. For example, the character
       # <code>'&#92;u216C'</code> (the Roman numeral fifty) will return
@@ -3669,7 +3401,6 @@ module Java::Lang
       end
       
       typesig { [::Java::Char] }
-      # 
       # Determines if the specified character is ISO-LATIN-1 white space.
       # This method returns <code>true</code> for the following five
       # characters only:
@@ -3697,7 +3428,6 @@ module Java::Lang
       end
       
       typesig { [::Java::Char] }
-      # 
       # Determines if the specified character is a Unicode space character.
       # A character is considered to be a space character if and only if
       # it is specified to be a space character by the Unicode standard. This
@@ -3724,7 +3454,6 @@ module Java::Lang
       end
       
       typesig { [::Java::Int] }
-      # 
       # Determines if the specified character (Unicode code point) is a
       # Unicode space character.  A character is considered to be a
       # space character if and only if it is specified to be a space
@@ -3747,7 +3476,6 @@ module Java::Lang
       end
       
       typesig { [::Java::Char] }
-      # 
       # Determines if the specified character is white space according to Java.
       # A character is a Java whitespace character if and only if it satisfies
       # one of the following criteria:
@@ -3782,7 +3510,6 @@ module Java::Lang
       end
       
       typesig { [::Java::Int] }
-      # 
       # Determines if the specified character (Unicode code point) is
       # white space according to Java.  A character is a Java
       # whitespace character if and only if it satisfies one of the
@@ -3814,7 +3541,6 @@ module Java::Lang
       end
       
       typesig { [::Java::Char] }
-      # 
       # Determines if the specified character is an ISO control
       # character.  A character is considered to be an ISO control
       # character if its code is in the range <code>'&#92;u0000'</code>
@@ -3838,7 +3564,6 @@ module Java::Lang
       end
       
       typesig { [::Java::Int] }
-      # 
       # Determines if the referenced character (Unicode code point) is an ISO control
       # character.  A character is considered to be an ISO control
       # character if its code is in the range <code>'&#92;u0000'</code>
@@ -3856,7 +3581,6 @@ module Java::Lang
       end
       
       typesig { [::Java::Char] }
-      # 
       # Returns a value indicating a character's general category.
       # 
       # <p><b>Note:</b> This method cannot handle <a
@@ -3903,7 +3627,6 @@ module Java::Lang
       end
       
       typesig { [::Java::Int] }
-      # 
       # Returns a value indicating a character's general category.
       # 
       # @param   codePoint the character (Unicode code point) to be tested.
@@ -3945,7 +3668,6 @@ module Java::Lang
       end
       
       typesig { [::Java::Int, ::Java::Int] }
-      # 
       # Determines the character representation for a specific digit in
       # the specified radix. If the value of <code>radix</code> is not a
       # valid radix, or the value of <code>digit</code> is not a valid
@@ -3982,7 +3704,6 @@ module Java::Lang
       end
       
       typesig { [::Java::Char] }
-      # 
       # Returns the Unicode directionality property for the given
       # character.  Character directionality is used to calculate the
       # visual ordering of text. The directionality value of undefined
@@ -4023,7 +3744,6 @@ module Java::Lang
       end
       
       typesig { [::Java::Int] }
-      # 
       # Returns the Unicode directionality property for the given
       # character (Unicode code point).  Character directionality is
       # used to calculate the visual ordering of text. The
@@ -4060,7 +3780,6 @@ module Java::Lang
       end
       
       typesig { [::Java::Char] }
-      # 
       # Determines whether the character is mirrored according to the
       # Unicode specification.  Mirrored characters should have their
       # glyphs horizontally mirrored when displayed in text that is
@@ -4083,7 +3802,6 @@ module Java::Lang
       end
       
       typesig { [::Java::Int] }
-      # 
       # Determines whether the specified character (Unicode code point)
       # is mirrored according to the Unicode specification.  Mirrored
       # characters should have their glyphs horizontally mirrored when
@@ -4103,7 +3821,6 @@ module Java::Lang
     }
     
     typesig { [Character] }
-    # 
     # Compares two <code>Character</code> objects numerically.
     # 
     # @param   anotherCharacter   the <code>Character</code> to be compared.
@@ -4123,7 +3840,6 @@ module Java::Lang
     
     class_module.module_eval {
       typesig { [::Java::Int] }
-      # 
       # Converts the character (Unicode code point) argument to uppercase using
       # information from the UnicodeData file.
       # <p>
@@ -4143,7 +3859,6 @@ module Java::Lang
       end
       
       typesig { [::Java::Int] }
-      # 
       # Converts the character (Unicode code point) argument to uppercase using case
       # mapping information from the SpecialCasing file in the Unicode
       # specification. If a character has no explicit uppercase
@@ -4159,7 +3874,6 @@ module Java::Lang
         return CharacterData.of(code_point).to_upper_case_char_array(code_point)
       end
       
-      # 
       # The number of bits used to represent a <tt>char</tt> value in unsigned
       # binary form.
       # 
@@ -4168,7 +3882,6 @@ module Java::Lang
       const_attr_reader  :SIZE
       
       typesig { [::Java::Char] }
-      # 
       # Returns the value obtained by reversing the order of the bytes in the
       # specified <tt>char</tt> value.
       # 

@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 1996-2007 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -78,13 +77,11 @@ module Sun::Security::Ssl
     end
     
     typesig { [Array.typed(::Java::Byte), ::Java::Int, ::Java::Int] }
-    # 
     # Write the data out, NOW.
     def write(b, off, len)
       synchronized(self) do
         # check if the Socket is invalid (error or closed)
         @c.check_write
-        # 
         # Always flush at the end of each application level record.
         # This lets application synchronize read and write streams
         # however they like; if we buffered here, they couldn't.
@@ -109,7 +106,6 @@ module Sun::Security::Ssl
     end
     
     typesig { [::Java::Int] }
-    # 
     # Write one byte now.
     def write(i)
       synchronized(self) do
@@ -119,7 +115,6 @@ module Sun::Security::Ssl
     end
     
     typesig { [] }
-    # 
     # Socket close is already synchronized, no need to block here.
     def close
       @c.close

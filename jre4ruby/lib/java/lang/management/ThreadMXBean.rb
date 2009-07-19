@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 2003-2006 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -32,7 +31,6 @@ module Java::Lang::Management
     }
   end
   
-  # 
   # The management interface for the thread system of
   # the Java virtual machine.
   # 
@@ -124,7 +122,6 @@ module Java::Lang::Management
     include_class_members ThreadMXBeanImports
     
     typesig { [] }
-    # 
     # Returns the current number of live threads including both
     # daemon and non-daemon threads.
     # 
@@ -134,7 +131,6 @@ module Java::Lang::Management
     end
     
     typesig { [] }
-    # 
     # Returns the peak live thread count since the Java virtual machine
     # started or peak was reset.
     # 
@@ -144,7 +140,6 @@ module Java::Lang::Management
     end
     
     typesig { [] }
-    # 
     # Returns the total number of threads created and also started
     # since the Java virtual machine started.
     # 
@@ -154,7 +149,6 @@ module Java::Lang::Management
     end
     
     typesig { [] }
-    # 
     # Returns the current number of live daemon threads.
     # 
     # @return the current number of live daemon threads.
@@ -163,7 +157,6 @@ module Java::Lang::Management
     end
     
     typesig { [] }
-    # 
     # Returns all live thread IDs.
     # Some threads included in the returned array
     # may have been terminated when this method returns.
@@ -178,7 +171,6 @@ module Java::Lang::Management
     end
     
     typesig { [::Java::Long] }
-    # 
     # Returns the thread info for a thread of the specified
     # <tt>id</tt> with no stack trace.
     # This method is equivalent to calling:
@@ -219,7 +211,6 @@ module Java::Lang::Management
     end
     
     typesig { [Array.typed(::Java::Long)] }
-    # 
     # Returns the thread info for each thread
     # whose ID is in the input array <tt>ids</tt> with no stack trace.
     # This method is equivalent to calling:
@@ -259,7 +250,6 @@ module Java::Lang::Management
     end
     
     typesig { [::Java::Long, ::Java::Int] }
-    # 
     # Returns a thread info for a thread of the specified <tt>id</tt>,
     # with stack trace of a specified number of stack trace elements.
     # The <tt>maxDepth</tt> parameter indicates the maximum number of
@@ -308,7 +298,6 @@ module Java::Lang::Management
     end
     
     typesig { [Array.typed(::Java::Long), ::Java::Int] }
-    # 
     # Returns the thread info for each thread
     # whose ID is in the input array <tt>ids</tt>,
     # with stack trace of a specified number of stack trace elements.
@@ -362,7 +351,6 @@ module Java::Lang::Management
     end
     
     typesig { [] }
-    # 
     # Tests if the Java virtual machine supports thread contention monitoring.
     # 
     # @return
@@ -374,7 +362,6 @@ module Java::Lang::Management
     end
     
     typesig { [] }
-    # 
     # Tests if thread contention monitoring is enabled.
     # 
     # @return <tt>true</tt> if thread contention monitoring is enabled;
@@ -389,7 +376,6 @@ module Java::Lang::Management
     end
     
     typesig { [::Java::Boolean] }
-    # 
     # Enables or disables thread contention monitoring.
     # Thread contention monitoring is disabled by default.
     # 
@@ -409,7 +395,6 @@ module Java::Lang::Management
     end
     
     typesig { [] }
-    # 
     # Returns the total CPU time for the current thread in nanoseconds.
     # The returned value is of nanoseconds precision but
     # not necessarily nanoseconds accuracy.
@@ -440,7 +425,6 @@ module Java::Lang::Management
     end
     
     typesig { [] }
-    # 
     # Returns the CPU time that the current thread has executed
     # in user mode in nanoseconds.
     # The returned value is of nanoseconds precision but
@@ -469,7 +453,6 @@ module Java::Lang::Management
     end
     
     typesig { [::Java::Long] }
-    # 
     # Returns the total CPU time for a thread of the specified ID in nanoseconds.
     # The returned value is of nanoseconds precision but
     # not necessarily nanoseconds accuracy.
@@ -508,7 +491,6 @@ module Java::Lang::Management
     end
     
     typesig { [::Java::Long] }
-    # 
     # Returns the CPU time that a thread of the specified ID
     # has executed in user mode in nanoseconds.
     # The returned value is of nanoseconds precision but
@@ -545,7 +527,6 @@ module Java::Lang::Management
     end
     
     typesig { [] }
-    # 
     # Tests if the Java virtual machine implementation supports CPU time
     # measurement for any thread.
     # A Java virtual machine implementation that supports CPU time
@@ -562,7 +543,6 @@ module Java::Lang::Management
     end
     
     typesig { [] }
-    # 
     # Tests if the Java virtual machine supports CPU time
     # measurement for the current thread.
     # This method returns <tt>true</tt> if {@link #isThreadCpuTimeSupported}
@@ -578,7 +558,6 @@ module Java::Lang::Management
     end
     
     typesig { [] }
-    # 
     # Tests if thread CPU time measurement is enabled.
     # 
     # @return <tt>true</tt> if thread CPU time measurement is enabled;
@@ -595,7 +574,6 @@ module Java::Lang::Management
     end
     
     typesig { [::Java::Boolean] }
-    # 
     # Enables or disables thread CPU time measurement.  The default
     # is platform dependent.
     # 
@@ -617,7 +595,6 @@ module Java::Lang::Management
     end
     
     typesig { [] }
-    # 
     # Finds cycles of threads that are in deadlock waiting to acquire
     # object monitors. That is, threads that are blocked waiting to enter a
     # synchronization block or waiting to reenter a synchronization block
@@ -654,7 +631,6 @@ module Java::Lang::Management
     end
     
     typesig { [] }
-    # 
     # Resets the peak thread count to the current number of
     # live threads.
     # 
@@ -669,7 +645,6 @@ module Java::Lang::Management
     end
     
     typesig { [] }
-    # 
     # Finds cycles of threads that are in deadlock waiting to acquire
     # object monitors or
     # <a href="LockInfo.html#OwnableSynchronizer">ownable synchronizers</a>.
@@ -700,7 +675,6 @@ module Java::Lang::Management
     end
     
     typesig { [] }
-    # 
     # Tests if the Java virtual machine supports monitoring of
     # object monitor usage.
     # 
@@ -717,7 +691,6 @@ module Java::Lang::Management
     end
     
     typesig { [] }
-    # 
     # Tests if the Java virtual machine supports monitoring of
     # <a href="LockInfo.html#OwnableSynchronizer">
     # ownable synchronizer</a> usage.
@@ -735,7 +708,6 @@ module Java::Lang::Management
     end
     
     typesig { [Array.typed(::Java::Long), ::Java::Boolean, ::Java::Boolean] }
-    # 
     # Returns the thread info for each thread
     # whose ID is in the input array <tt>ids</tt>, with stack trace
     # and synchronization information.
@@ -817,7 +789,6 @@ module Java::Lang::Management
     end
     
     typesig { [::Java::Boolean, ::Java::Boolean] }
-    # 
     # Returns the thread info for all live threads with stack trace
     # and synchronization information.
     # Some threads included in the returned array

@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 2003 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -33,7 +32,6 @@ module Sun::Misc
     }
   end
   
-  # 
   # The class <code>FpUtils</code> contains static utility methods for
   # manipulating and inspecting <code>float</code> and
   # <code>double</code> floating-point numbers.  These methods include
@@ -45,7 +43,6 @@ module Sun::Misc
     include_class_members FpUtilsImports
     
     typesig { [] }
-    # 
     # The methods in this class are reasonably implemented using
     # direct or indirect bit-level manipulation of floating-point
     # values.  However, having access to the IEEE 754 recommended
@@ -162,7 +159,6 @@ module Sun::Misc
       # 
       # Returns unbiased exponent of a <code>double</code>.
       def get_exponent(d)
-        # 
         # Bitwise convert d to long, mask out exponent bits, shift
         # to the right and then subtract out double's bias adjust to
         # get true exponent value.
@@ -170,10 +166,8 @@ module Sun::Misc
       end
       
       typesig { [::Java::Float] }
-      # 
       # Returns unbiased exponent of a <code>float</code>.
       def get_exponent(f)
-        # 
         # Bitwise convert f to integer, mask out exponent bits, shift
         # to the right and then subtract out float's bias adjust to
         # get true exponent value
@@ -181,7 +175,6 @@ module Sun::Misc
       end
       
       typesig { [::Java::Int] }
-      # 
       # Returns a floating-point power of two in the normal range.
       def power_of_two_d(n)
         raise AssertError if not ((n >= DoubleConsts::MIN_EXPONENT && n <= DoubleConsts::MAX_EXPONENT))
@@ -189,7 +182,6 @@ module Sun::Misc
       end
       
       typesig { [::Java::Int] }
-      # 
       # Returns a floating-point power of two in the normal range.
       def power_of_two_f(n)
         raise AssertError if not ((n >= FloatConsts::MIN_EXPONENT && n <= FloatConsts::MAX_EXPONENT))
@@ -197,7 +189,6 @@ module Sun::Misc
       end
       
       typesig { [::Java::Double, ::Java::Double] }
-      # 
       # Returns the first floating-point argument with the sign of the
       # second floating-point argument.  Note that unlike the {@link
       # FpUtils#copySign(double, double) copySign} method, this method
@@ -216,7 +207,6 @@ module Sun::Misc
       end
       
       typesig { [::Java::Float, ::Java::Float] }
-      # 
       # Returns the first floating-point argument with the sign of the
       # second floating-point argument.  Note that unlike the {@link
       # FpUtils#copySign(float, float) copySign} method, this method
@@ -249,7 +239,6 @@ module Sun::Misc
       end
       
       typesig { [::Java::Float] }
-      # 
       # Returns <code>true</code> if the argument is a finite
       # floating-point value; returns <code>false</code> otherwise (for
       # NaN and infinity arguments).
@@ -262,7 +251,6 @@ module Sun::Misc
       end
       
       typesig { [::Java::Double] }
-      # 
       # Returns <code>true</code> if the specified number is infinitely
       # large in magnitude, <code>false</code> otherwise.
       # 
@@ -278,7 +266,6 @@ module Sun::Misc
       end
       
       typesig { [::Java::Float] }
-      # 
       # Returns <code>true</code> if the specified number is infinitely
       # large in magnitude, <code>false</code> otherwise.
       # 
@@ -294,7 +281,6 @@ module Sun::Misc
       end
       
       typesig { [::Java::Double] }
-      # 
       # Returns <code>true</code> if the specified number is a
       # Not-a-Number (NaN) value, <code>false</code> otherwise.
       # 
@@ -310,7 +296,6 @@ module Sun::Misc
       end
       
       typesig { [::Java::Float] }
-      # 
       # Returns <code>true</code> if the specified number is a
       # Not-a-Number (NaN) value, <code>false</code> otherwise.
       # 
@@ -326,7 +311,6 @@ module Sun::Misc
       end
       
       typesig { [::Java::Double, ::Java::Double] }
-      # 
       # Returns <code>true</code> if the unordered relation holds
       # between the two arguments.  When two floating-point values are
       # unordered, one value is neither less than, equal to, nor
@@ -342,7 +326,6 @@ module Sun::Misc
       end
       
       typesig { [::Java::Float, ::Java::Float] }
-      # 
       # Returns <code>true</code> if the unordered relation holds
       # between the two arguments.  When two floating-point values are
       # unordered, one value is neither less than, equal to, nor
@@ -358,7 +341,6 @@ module Sun::Misc
       end
       
       typesig { [::Java::Double] }
-      # 
       # Returns unbiased exponent of a <code>double</code>; for
       # subnormal values, the number is treated as if it were
       # normalized.  That is for all finite, non-zero, positive numbers
@@ -396,7 +378,6 @@ module Sun::Misc
             return -(1 << 28) # -(2^28)
           else
             transducer = Double.double_to_raw_long_bits(d)
-            # 
             # To avoid causing slow arithmetic on subnormals,
             # the scaling to determine when d's significand
             # is normalized is done in integer arithmetic.
@@ -418,8 +399,6 @@ module Sun::Misc
             raise AssertError if not ((exponent >= DoubleConsts::MIN_EXPONENT - (DoubleConsts::SIGNIFICAND_WIDTH - 1) && exponent < DoubleConsts::MIN_EXPONENT))
             return exponent
           end
-          raise AssertError if not ((exponent >= DoubleConsts::MIN_EXPONENT && exponent <= DoubleConsts::MAX_EXPONENT))
-          return exponent
         else
           raise AssertError if not ((exponent >= DoubleConsts::MIN_EXPONENT && exponent <= DoubleConsts::MAX_EXPONENT))
           return exponent
@@ -428,7 +407,6 @@ module Sun::Misc
       end
       
       typesig { [::Java::Float] }
-      # 
       # Returns unbiased exponent of a <code>float</code>; for
       # subnormal values, the number is treated as if it were
       # normalized.  That is for all finite, non-zero, positive numbers
@@ -466,7 +444,6 @@ module Sun::Misc
             return -(1 << 28) # -(2^28)
           else
             transducer = Float.float_to_raw_int_bits(f)
-            # 
             # To avoid causing slow arithmetic on subnormals,
             # the scaling to determine when f's significand
             # is normalized is done in integer arithmetic.
@@ -488,8 +465,6 @@ module Sun::Misc
             raise AssertError if not ((exponent >= FloatConsts::MIN_EXPONENT - (FloatConsts::SIGNIFICAND_WIDTH - 1) && exponent < FloatConsts::MIN_EXPONENT))
             return exponent
           end
-          raise AssertError if not ((exponent >= FloatConsts::MIN_EXPONENT && exponent <= FloatConsts::MAX_EXPONENT))
-          return exponent
         else
           raise AssertError if not ((exponent >= FloatConsts::MIN_EXPONENT && exponent <= FloatConsts::MAX_EXPONENT))
           return exponent
@@ -498,7 +473,6 @@ module Sun::Misc
       end
       
       typesig { [::Java::Double, ::Java::Int] }
-      # 
       # The scalb operation should be reasonably fast; however, there
       # are tradeoffs in writing a method to minimize the worst case
       # performance and writing a method to minimize the time for
@@ -565,7 +539,6 @@ module Sun::Misc
       # @return <code>d * </code>2<sup><code>scale_factor</code></sup>
       # @author Joseph D. Darcy
       def scalb(d, scale_factor)
-        # 
         # This method does not need to be declared strictfp to
         # compute the same correct result on all platforms.  When
         # scaling up, it does not matter what order the
@@ -634,7 +607,6 @@ module Sun::Misc
       end
       
       typesig { [::Java::Float, ::Java::Int] }
-      # 
       # Return <code>f </code>&times;
       # 2<sup><code>scale_factor</code></sup> rounded as if performed
       # by a single correctly rounded floating-point multiply to a
@@ -674,7 +646,6 @@ module Sun::Misc
         max_scale = FloatConsts::MAX_EXPONENT + -FloatConsts::MIN_EXPONENT + FloatConsts::SIGNIFICAND_WIDTH + 1
         # Make sure scaling factor is in a reasonable range
         scale_factor = Math.max(Math.min(scale_factor, max_scale), -max_scale)
-        # 
         # Since + MAX_SCALE for float fits well within the double
         # exponent range and + float -> double conversion is exact
         # the multiplication below will be exact. Therefore, the
@@ -686,7 +657,6 @@ module Sun::Misc
       end
       
       typesig { [::Java::Double, ::Java::Double] }
-      # 
       # Returns the floating-point number adjacent to the first
       # argument in the direction of the second argument.  If both
       # arguments compare as equal the second argument is returned.
@@ -726,7 +696,6 @@ module Sun::Misc
       # direction of <code>direction</code>.
       # @author Joseph D. Darcy
       def next_after(start, direction)
-        # 
         # The cases:
         # 
         # nextAfter(+infinity, 0)  == MAX_VALUE
@@ -748,7 +717,6 @@ module Sun::Misc
             # Add +0.0 to get rid of a -0.0 (+0.0 + -0.0 => +0.0)
             # then bitwise convert start to integer.
             transducer = Double.double_to_raw_long_bits(start + 0.0)
-            # 
             # IEEE 754 floating-point numbers are lexicographically
             # ordered if treated as signed- magnitude integers .
             # Since Java's integers are two's complement,
@@ -770,7 +738,6 @@ module Sun::Misc
               else
                 if (transducer < 0)
                   (transducer += 1)
-                # 
                 # transducer==0, the result is -MIN_VALUE
                 # 
                 # The transition from zero (implicitly
@@ -788,7 +755,6 @@ module Sun::Misc
       end
       
       typesig { [::Java::Float, ::Java::Double] }
-      # 
       # Returns the floating-point number adjacent to the first
       # argument in the direction of the second argument.  If both
       # arguments compare as equal, the second argument is returned.
@@ -828,7 +794,6 @@ module Sun::Misc
       # direction of <code>direction</code>.
       # @author Joseph D. Darcy
       def next_after(start, direction)
-        # 
         # The cases:
         # 
         # nextAfter(+infinity, 0)  == MAX_VALUE
@@ -850,7 +815,6 @@ module Sun::Misc
             # Add +0.0 to get rid of a -0.0 (+0.0 + -0.0 => +0.0)
             # then bitwise convert start to integer.
             transducer = Float.float_to_raw_int_bits(start + 0.0)
-            # 
             # IEEE 754 floating-point numbers are lexicographically
             # ordered if treated as signed- magnitude integers .
             # Since Java's integers are two's complement,
@@ -872,7 +836,6 @@ module Sun::Misc
               else
                 if (transducer < 0)
                   (transducer += 1)
-                # 
                 # transducer==0, the result is -MIN_VALUE
                 # 
                 # The transition from zero (implicitly
@@ -890,7 +853,6 @@ module Sun::Misc
       end
       
       typesig { [::Java::Double] }
-      # 
       # Returns the floating-point value adjacent to <code>d</code> in
       # the direction of positive infinity.  This method is
       # semantically equivalent to <code>nextAfter(d,
@@ -924,7 +886,6 @@ module Sun::Misc
       end
       
       typesig { [::Java::Float] }
-      # 
       # Returns the floating-point value adjacent to <code>f</code> in
       # the direction of positive infinity.  This method is
       # semantically equivalent to <code>nextAfter(f,
@@ -958,7 +919,6 @@ module Sun::Misc
       end
       
       typesig { [::Java::Double] }
-      # 
       # Returns the floating-point value adjacent to <code>d</code> in
       # the direction of negative infinity.  This method is
       # semantically equivalent to <code>nextAfter(d,
@@ -995,7 +955,6 @@ module Sun::Misc
       end
       
       typesig { [::Java::Float] }
-      # 
       # Returns the floating-point value adjacent to <code>f</code> in
       # the direction of negative infinity.  This method is
       # semantically equivalent to <code>nextAfter(f,
@@ -1032,7 +991,6 @@ module Sun::Misc
       end
       
       typesig { [::Java::Double, ::Java::Double] }
-      # 
       # Returns the first floating-point argument with the sign of the
       # second floating-point argument.  For this method, a NaN
       # <code>sign</code> argument is always treated as if it were
@@ -1049,7 +1007,6 @@ module Sun::Misc
       end
       
       typesig { [::Java::Float, ::Java::Float] }
-      # 
       # Returns the first floating-point argument with the sign of the
       # second floating-point argument.  For this method, a NaN
       # <code>sign</code> argument is always treated as if it were
@@ -1065,7 +1022,6 @@ module Sun::Misc
       end
       
       typesig { [::Java::Double] }
-      # 
       # Returns the size of an ulp of the argument.  An ulp of a
       # <code>double</code> value is the positive distance between this
       # floating-point value and the <code>double</code> value next
@@ -1115,7 +1071,6 @@ module Sun::Misc
       end
       
       typesig { [::Java::Float] }
-      # 
       # Returns the size of an ulp of the argument.  An ulp of a
       # <code>float</code> value is the positive distance between this
       # floating-point value and the <code>float</code> value next
@@ -1165,7 +1120,6 @@ module Sun::Misc
       end
       
       typesig { [::Java::Double] }
-      # 
       # Returns the signum function of the argument; zero if the argument
       # is zero, 1.0 if the argument is greater than zero, -1.0 if the
       # argument is less than zero.
@@ -1186,7 +1140,6 @@ module Sun::Misc
       end
       
       typesig { [::Java::Float] }
-      # 
       # Returns the signum function of the argument; zero if the argument
       # is zero, 1.0f if the argument is greater than zero, -1.0f if the
       # argument is less than zero.

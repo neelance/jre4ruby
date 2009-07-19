@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 2005 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -35,7 +34,6 @@ module Sun::Security::Krb5::Internal::Crypto
     }
   end
   
-  # 
   # Class with static methods for doing RC4-HMAC operations.
   # 
   # @author Seema Malkani

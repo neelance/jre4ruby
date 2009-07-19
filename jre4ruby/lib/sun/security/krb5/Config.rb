@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Portions Copyright 2000-2007 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -48,14 +47,12 @@ module Sun::Security::Krb5
     }
   end
   
-  # 
   # This class maintains key-value pairs of Kerberos configurable constants
   # from configuration file or from user specified system properties.
   class Config 
     include_class_members ConfigImports
     
     class_module.module_eval {
-      # 
       # Only allow a single instance of Config.
       
       def singleton
@@ -69,7 +66,6 @@ module Sun::Security::Krb5
       alias_method :attr_singleton=, :singleton=
     }
     
-    # 
     # Hashtable used to store configuration infomation.
     attr_accessor :stanza_table
     alias_method :attr_stanza_table, :stanza_table
@@ -119,7 +115,6 @@ module Sun::Security::Krb5
       end
       
       typesig { [] }
-      # 
       # Gets an instance of Config class. One and only one instance (the
       # singleton) is returned.
       # 
@@ -137,7 +132,6 @@ module Sun::Security::Krb5
       end
       
       typesig { [] }
-      # 
       # Refresh and reload the Configuration. This could involve,
       # for example reading the Configuration file again or getting
       # the java.security.krb5.* system properties again.
@@ -155,12 +149,10 @@ module Sun::Security::Krb5
     }
     
     typesig { [] }
-    # 
     # Private constructor - can not be instantiated externally.
     def initialize
       @stanza_table = nil
       @default_realm = nil
-      # 
       # If these two system properties are being specified by the user,
       # we ignore configuration file. If either one system property is
       # specified, we throw exception. If neither of them are specified,
@@ -171,7 +163,6 @@ module Sun::Security::Krb5
         raise KrbException.new("System property java.security.krb5.kdc and " + "java.security.krb5.realm both must be set or " + "neither must be set.")
       end
       if (!(kdchost).nil?)
-        # 
         # If configuration information is only specified by
         # properties java.security.krb5.kdc and
         # java.security.krb5.realm, we put both in the hashtable
@@ -198,7 +189,6 @@ module Sun::Security::Krb5
     end
     
     typesig { [String] }
-    # 
     # Gets the default int value for the specified name.
     # @param name the name.
     # @return the default Integer, null is returned if no such name and
@@ -223,7 +213,6 @@ module Sun::Security::Krb5
     end
     
     typesig { [String, String] }
-    # 
     # Gets the default int value for the specified name in the specified
     # section. <br>This method is quicker by using section name as the
     # search key.
@@ -251,7 +240,6 @@ module Sun::Security::Krb5
     end
     
     typesig { [String] }
-    # 
     # Gets the default string value for the specified name.
     # @param name the name.
     # @return the default value, null is returned if it cannot be found.
@@ -264,7 +252,6 @@ module Sun::Security::Krb5
     end
     
     typesig { [String, Hashtable] }
-    # 
     # This method does the real job to recursively search through the
     # stanzaTable.
     # @param k the key string.
@@ -312,7 +299,6 @@ module Sun::Security::Krb5
     end
     
     typesig { [String, String] }
-    # 
     # Gets the default string value for the specified name in the
     # specified section.
     # <br>This method is quicker by using the section name as the search key.
@@ -323,7 +309,6 @@ module Sun::Security::Krb5
       stanza_name = nil
       result = nil
       sub_table = nil
-      # 
       # In the situation when kdc is specified by
       # java.security.krb5.kdc, we get the kdc from [libdefaults] in
       # hashtable.
@@ -372,7 +357,6 @@ module Sun::Security::Krb5
     end
     
     typesig { [String] }
-    # 
     # Gets the default boolean value for the specified name.
     # @param name the name.
     # @return the default boolean value, false is returned if it cannot be
@@ -392,7 +376,6 @@ module Sun::Security::Krb5
     end
     
     typesig { [String, String] }
-    # 
     # Gets the default boolean value for the specified name in the
     # specified section.
     # <br>This method is quicker by using the section name as the search key.
@@ -410,7 +393,6 @@ module Sun::Security::Krb5
     end
     
     typesig { [String] }
-    # 
     # Parses a string to an integer. The convertible strings include the
     # string representations of positive integers, negative integers, and
     # hex decimal integers.  Valid inputs are, e.g., -1234, +1234,
@@ -427,8 +409,8 @@ module Sun::Security::Krb5
         return JavaInteger.parse_int(temp)
       else
         if (input.starts_with("0x"))
-          temp_ = input.substring(2)
-          chars = temp_.to_char_array
+          temp = input.substring(2)
+          chars = temp.to_char_array
           if (chars.attr_length > 8)
             raise NumberFormatException.new
           else
@@ -507,7 +489,6 @@ module Sun::Security::Krb5
     end
     
     typesig { [String, String] }
-    # 
     # Finds the matching value in the hashtable.
     def find(key1, key2)
       result = nil
@@ -519,7 +500,6 @@ module Sun::Security::Krb5
     end
     
     typesig { [] }
-    # 
     # Reads name/value pairs to the memory from the configuration
     # file. The default location of the configuration file is in java home
     # directory.
@@ -616,7 +596,6 @@ module Sun::Security::Krb5
     end
     
     typesig { [Vector] }
-    # 
     # Parses stanza names and values from configuration file to
     # stanzaTable (Hashtable). Hashtable key would be stanza names,
     # (libdefaults, realms, domain_realms, etc), and the hashtable value
@@ -645,31 +624,31 @@ module Sun::Security::Krb5
           end
         else
           if (line.equals_ignore_case("[capaths]"))
-            count_ = i + 1
-            while count_ < v.size + 1
+            count = i + 1
+            while count < v.size + 1
               # find the next stanza name
-              if (((count_).equal?(v.size)) || (v.element_at(count_).starts_with("[")))
-                temp_ = Hashtable.new
-                temp_ = parse_realm_field(v, i + 1, count_)
-                table.put("capaths", temp_)
-                i = count_ - 1
+              if (((count).equal?(v.size)) || (v.element_at(count).starts_with("[")))
+                temp = Hashtable.new
+                temp = parse_realm_field(v, i + 1, count)
+                table.put("capaths", temp)
+                i = count - 1
                 break
               end
-              ((count_ += 1) - 1)
+              ((count += 1) - 1)
             end
           else
             if (line.starts_with("[") && line.ends_with("]"))
               key = line.substring(1, line.length - 1)
-              count__ = i + 1
-              while count__ < v.size + 1
+              count = i + 1
+              while count < v.size + 1
                 # find the next stanza name
-                if (((count__).equal?(v.size)) || (v.element_at(count__).starts_with("[")))
-                  temp__ = parse_field(v, i + 1, count__)
-                  table.put(key, temp__)
-                  i = count__ - 1
+                if (((count).equal?(v.size)) || (v.element_at(count).starts_with("[")))
+                  temp = parse_field(v, i + 1, count)
+                  table.put(key, temp)
+                  i = count - 1
                   break
                 end
-                ((count__ += 1) - 1)
+                ((count += 1) - 1)
               end
             end
           end
@@ -680,7 +659,6 @@ module Sun::Security::Krb5
     end
     
     typesig { [] }
-    # 
     # Gets the default configuration file name. The file will be searched
     # in a list of possible loations in the following order:
     # 1. the location and file name defined by system property
@@ -698,8 +676,8 @@ module Sun::Security::Krb5
         end
       else
         name = (Java::Security::AccessController.do_privileged(Sun::Security::Action::GetPropertyAction.new("java.home")) + JavaFile.attr_separator).to_s + "lib" + (JavaFile.attr_separator).to_s + "security" + (JavaFile.attr_separator).to_s + "krb5.conf"
-        temp_ = Java::Security::AccessController.do_privileged(FileExistsAction.new(name))
-        if (temp_)
+        temp = Java::Security::AccessController.do_privileged(FileExistsAction.new(name))
+        if (temp)
           return name
         else
           osname = Java::Security::AccessController.do_privileged(Sun::Security::Action::GetPropertyAction.new("os.name"))
@@ -740,7 +718,6 @@ module Sun::Security::Krb5
     end
     
     typesig { [Vector, ::Java::Int, ::Java::Int] }
-    # 
     # Parses key-value pairs under a stanza name.
     def parse_field(v, start, end_)
       table = Hashtable.new
@@ -764,7 +741,6 @@ module Sun::Security::Krb5
     end
     
     typesig { [Vector, ::Java::Int, ::Java::Int] }
-    # 
     # Parses key-value pairs under [realms].  The key would be the realm
     # name, the value would be another hashtable which contains
     # information for the realm given within a pair of braces.
@@ -813,7 +789,6 @@ module Sun::Security::Krb5
     end
     
     typesig { [Vector, ::Java::Int, ::Java::Int] }
-    # 
     # Parses key-value pairs within each braces under [realms].
     def parse_realm_field_ex(v, start, end_)
       table = Hashtable.new
@@ -847,7 +822,6 @@ module Sun::Security::Krb5
     end
     
     typesig { [String, Vector] }
-    # 
     # Compares the key with the known keys to see if it exists.
     def exists(key, v)
       exists_ = false
@@ -862,7 +836,6 @@ module Sun::Security::Krb5
     end
     
     typesig { [] }
-    # 
     # For testing purpose. This method lists all information being parsed from
     # the configuration file to the hashtable.
     def list_table
@@ -910,7 +883,6 @@ module Sun::Security::Krb5
     end
     
     typesig { [String] }
-    # 
     # Returns the default encryption types.
     def default_etype(enctypes)
       default_enctypes = nil
@@ -962,10 +934,10 @@ module Sun::Security::Krb5
       end
       if (self.attr_debug)
         System.out.print("default etypes for " + enctypes + ":")
-        i__ = 0
-        while i__ < etype.attr_length
-          System.out.print(" " + (etype[i__]).to_s)
-          ((i__ += 1) - 1)
+        i = 0
+        while i < etype.attr_length
+          System.out.print(" " + (etype[i]).to_s)
+          ((i += 1) - 1)
         end
         System.out.println(".")
       end
@@ -973,7 +945,6 @@ module Sun::Security::Krb5
     end
     
     typesig { [String] }
-    # 
     # Get the etype and checksum value for the specified encryption and
     # checksum type.
     # 
@@ -1071,7 +1042,6 @@ module Sun::Security::Krb5
     end
     
     typesig { [String] }
-    # 
     # Resets the default kdc realm.
     # We do not need to synchronize these methods since assignments are atomic
     def reset_default_realm(realm)
@@ -1082,7 +1052,6 @@ module Sun::Security::Krb5
     end
     
     typesig { [] }
-    # 
     # Check to use addresses in tickets
     # use addresses if "no_addresses" or "noaddresses" is set to false
     def use_addresses
@@ -1099,14 +1068,12 @@ module Sun::Security::Krb5
     end
     
     typesig { [] }
-    # 
     # Gets default realm.
     def get_default_realm
       return get_default("default_realm", "libdefaults")
     end
     
     typesig { [String] }
-    # 
     # Returns a list of KDC's with each KDC separated by a space
     # 
     # @param realm the realm for which the master KDC is desired

@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 1996-2007 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -33,7 +32,6 @@ module Sun::Security::Ssl
     }
   end
   
-  # 
   # Signature implementation for the SSL/TLS RSA Signature variant with both
   # MD5 and SHA-1 MessageDigests. Used for explicit RSA server authentication
   # (RSA signed server key exchange for RSA_EXPORT and DHE_RSA) and RSA client
@@ -91,7 +89,6 @@ module Sun::Security::Ssl
     
     class_module.module_eval {
       typesig { [] }
-      # 
       # Get an implementation for the RSA signature. Follows the standard
       # JCA getInstance() model, so it return the implementation from the
       # provider with the highest precedence, which may be this class.
@@ -100,7 +97,6 @@ module Sun::Security::Ssl
       end
       
       typesig { [] }
-      # 
       # Get an internal implementation for the RSA signature. Used for RSA
       # client authentication, which needs the ability to set the digests
       # to externally provided values via the setHashes() method.
@@ -109,7 +105,6 @@ module Sun::Security::Ssl
       end
       
       typesig { [Signature, MessageDigest, MessageDigest] }
-      # 
       # Set the MD5 and SHA hashes to the provided objects.
       def set_hashes(sig, md5, sha)
         sig.set_parameter("hashes", Array.typed(MessageDigest).new([md5, sha]))
@@ -117,7 +112,6 @@ module Sun::Security::Ssl
     }
     
     typesig { [] }
-    # 
     # Reset the MessageDigests unless they are already reset.
     def reset
       if ((@is_reset).equal?(false))

@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 1996-2002 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -33,14 +32,12 @@ module Java::Util::Zip
     }
   end
   
-  # 
   # This class implements a stream filter for writing compressed data in
   # the GZIP file format.
   # @author      David Connelly
   class GZIPOutputStream < GZIPOutputStreamImports.const_get :DeflaterOutputStream
     include_class_members GZIPOutputStreamImports
     
-    # 
     # CRC-32 of uncompressed data.
     attr_accessor :crc
     alias_method :attr_crc, :crc
@@ -49,19 +46,16 @@ module Java::Util::Zip
     undef_method :crc=
     
     class_module.module_eval {
-      # 
       # GZIP header magic number.
       const_set_lazy(:GZIP_MAGIC) { 0x8b1f }
       const_attr_reader  :GZIP_MAGIC
       
-      # 
       # Trailer size in bytes.
       const_set_lazy(:TRAILER_SIZE) { 8 }
       const_attr_reader  :TRAILER_SIZE
     }
     
     typesig { [OutputStream, ::Java::Int] }
-    # 
     # Creates a new output stream with the specified buffer size.
     # @param out the output stream
     # @param size the output buffer size
@@ -77,7 +71,6 @@ module Java::Util::Zip
     end
     
     typesig { [OutputStream] }
-    # 
     # Creates a new output stream with a default buffer size.
     # @param out the output stream
     # @exception IOException If an I/O error has occurred.
@@ -86,7 +79,6 @@ module Java::Util::Zip
     end
     
     typesig { [Array.typed(::Java::Byte), ::Java::Int, ::Java::Int] }
-    # 
     # Writes array of bytes to the compressed output stream. This method
     # will block until all the bytes are written.
     # @param buf the data to be written
@@ -101,7 +93,6 @@ module Java::Util::Zip
     end
     
     typesig { [] }
-    # 
     # Finishes writing compressed data to the output stream without closing
     # the underlying stream. Use this method when applying multiple filters
     # in succession to the same output stream.
@@ -131,7 +122,6 @@ module Java::Util::Zip
     end
     
     class_module.module_eval {
-      # 
       # Writes GZIP member header.
       # 
       # Magic number (short)
@@ -154,7 +144,6 @@ module Java::Util::Zip
     end
     
     typesig { [Array.typed(::Java::Byte), ::Java::Int] }
-    # 
     # Writes GZIP member trailer to a byte array, starting at a given
     # offset.
     def write_trailer(buf, offset)
@@ -163,7 +152,6 @@ module Java::Util::Zip
     end
     
     typesig { [::Java::Int, Array.typed(::Java::Byte), ::Java::Int] }
-    # 
     # Writes integer in Intel byte order to a byte array, starting at a
     # given offset.
     def write_int(i, buf, offset)
@@ -172,7 +160,6 @@ module Java::Util::Zip
     end
     
     typesig { [::Java::Int, Array.typed(::Java::Byte), ::Java::Int] }
-    # 
     # Writes short integer in Intel byte order to a byte array, starting
     # at a given offset
     def write_short(s, buf, offset)

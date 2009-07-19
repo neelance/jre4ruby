@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 1995-2006 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -45,7 +44,6 @@ module Java::Net
     }
   end
   
-  # 
   # Utility class for HTML form encoding. This class contains static methods
   # for converting a String to the <CODE>application/x-www-form-urlencoded</CODE> MIME
   # format. For more information about HTML form encoding, consult the HTML
@@ -176,14 +174,12 @@ module Java::Net
     }
     
     typesig { [] }
-    # 
     # You can't call the constructor.
     def initialize
     end
     
     class_module.module_eval {
       typesig { [String] }
-      # 
       # Translates a string into <code>x-www-form-urlencoded</code>
       # format. This method uses the platform's default encoding
       # as the encoding scheme to obtain the bytes for unsafe characters.
@@ -204,7 +200,6 @@ module Java::Net
       end
       
       typesig { [String, String] }
-      # 
       # Translates a string into <code>application/x-www-form-urlencoded</code>
       # format using a specific encoding scheme. This method uses the
       # supplied encoding scheme to obtain the bytes for unsafe
@@ -256,7 +251,6 @@ module Java::Net
             # convert to external encoding before hex conversion
             begin
               char_array_writer.write(c)
-              # 
               # If this character represents the start of a Unicode
               # surrogate pair, then pass in two characters. It's not
               # clear what should be done if a bytes reserved in the
@@ -264,16 +258,13 @@ module Java::Net
               # surrogate pair. For now, just treat it as if it were
               # any other character.
               if (c >= 0xd800 && c <= 0xdbff)
-                # 
                 # System.out.println(Integer.toHexString(c)
                 # + " is high surrogate");
                 if ((i + 1) < s.length)
                   d = RJava.cast_to_int(s.char_at(i + 1))
-                  # 
                   # System.out.println("\tExamining "
                   # + Integer.toHexString(d));
                   if (d >= 0xdc00 && d <= 0xdfff)
-                    # 
                     # System.out.println("\t"
                     # + Integer.toHexString(d)
                     # + " is low surrogate");

@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 2000-2007 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -56,7 +55,6 @@ module Sun::Security::Provider::Certpath
     }
   end
   
-  # 
   # This class implements the PKIX validation algorithm for certification
   # paths consisting exclusively of <code>X509Certificates</code>. It uses
   # the specified input parameter set (which must be a
@@ -97,7 +95,6 @@ module Sun::Security::Provider::Certpath
     undef_method :basic_checker=
     
     typesig { [] }
-    # 
     # Default constructor.
     def initialize
       @test_date = nil
@@ -108,7 +105,6 @@ module Sun::Security::Provider::Certpath
     end
     
     typesig { [CertPath, CertPathParameters] }
-    # 
     # Validates a certification path consisting exclusively of
     # <code>X509Certificate</code>s using the PKIX validation algorithm,
     # which uses the specified input parameter set.
@@ -170,7 +166,7 @@ module Sun::Security::Provider::Certpath
       # We iterate through the set of trust anchors until we find
       # one that works at which time we stop iterating
       anchors.each do |anchor|
-        trusted_cert = anchor_.get_trusted_cert
+        trusted_cert = anchor.get_trusted_cert
         if (!(trusted_cert).nil?)
           if (!(Debug).nil?)
             Debug.println("PKIXCertPathValidator.engineValidate() " + "anchor.getTrustedCert() != null")
@@ -190,9 +186,9 @@ module Sun::Security::Provider::Certpath
         end
         begin
           root_node = PolicyNodeImpl.new(nil, PolicyChecker::ANY_POLICY, nil, false, Collections.singleton(PolicyChecker::ANY_POLICY), false)
-          policy_tree = do_validate(anchor_, cp, cert_list, pkix_param, root_node)
+          policy_tree = do_validate(anchor, cp, cert_list, pkix_param, root_node)
           # if this anchor works, return success
-          return PKIXCertPathValidatorResult.new(anchor_, policy_tree, @basic_checker.get_public_key)
+          return PKIXCertPathValidatorResult.new(anchor, policy_tree, @basic_checker.get_public_key)
         rescue CertPathValidatorException => cpe
           # remember this exception
           last_exception = cpe
@@ -208,7 +204,6 @@ module Sun::Security::Provider::Certpath
     end
     
     typesig { [X509Certificate, X509Certificate] }
-    # 
     # Internal method to do some simple checks to see if a given cert is
     # worth trying to validate in the chain.
     def is_worth_trying(trusted_cert, first_cert)
@@ -235,7 +230,6 @@ module Sun::Security::Provider::Certpath
     end
     
     typesig { [PKIXParameters] }
-    # 
     # Internal method to setup the internal state
     def populate_variables(pkix_param)
       # default value for testDate is current time
@@ -248,7 +242,6 @@ module Sun::Security::Provider::Certpath
     end
     
     typesig { [TrustAnchor, CertPath, JavaList, PKIXParameters, PolicyNodeImpl] }
-    # 
     # Internal method to actually validate a constructed path.
     # 
     # @return the valid policy tree

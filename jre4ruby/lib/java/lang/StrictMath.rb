@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 1999-2006 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -32,7 +31,6 @@ module Java::Lang
     }
   end
   
-  # 
   # The class {@code StrictMath} contains methods for performing basic
   # numeric operations such as the elementary exponential, logarithm,
   # square root, and trigonometric functions.
@@ -68,19 +66,16 @@ module Java::Lang
     include_class_members StrictMathImports
     
     typesig { [] }
-    # 
     # Don't let anyone instantiate this class.
     def initialize
     end
     
     class_module.module_eval {
-      # 
       # The {@code double} value that is closer than any other to
       # <i>e</i>, the base of the natural logarithms.
       const_set_lazy(:E) { 2.7182818284590452354 }
       const_attr_reader  :E
       
-      # 
       # The {@code double} value that is closer than any other to
       # <i>pi</i>, the ratio of the circumference of a circle to its
       # diameter.
@@ -89,7 +84,6 @@ module Java::Lang
       
       JNI.native_method :Java_java_lang_StrictMath_sin, [:pointer, :long, :double], :double
       typesig { [::Java::Double] }
-      # 
       # Returns the trigonometric sine of an angle. Special cases:
       # <ul><li>If the argument is NaN or an infinity, then the
       # result is NaN.
@@ -104,7 +98,6 @@ module Java::Lang
       
       JNI.native_method :Java_java_lang_StrictMath_cos, [:pointer, :long, :double], :double
       typesig { [::Java::Double] }
-      # 
       # Returns the trigonometric cosine of an angle. Special cases:
       # <ul><li>If the argument is NaN or an infinity, then the
       # result is NaN.</ul>
@@ -117,7 +110,6 @@ module Java::Lang
       
       JNI.native_method :Java_java_lang_StrictMath_tan, [:pointer, :long, :double], :double
       typesig { [::Java::Double] }
-      # 
       # Returns the trigonometric tangent of an angle. Special cases:
       # <ul><li>If the argument is NaN or an infinity, then the result
       # is NaN.
@@ -132,7 +124,6 @@ module Java::Lang
       
       JNI.native_method :Java_java_lang_StrictMath_asin, [:pointer, :long, :double], :double
       typesig { [::Java::Double] }
-      # 
       # Returns the arc sine of a value; the returned angle is in the
       # range -<i>pi</i>/2 through <i>pi</i>/2.  Special cases:
       # <ul><li>If the argument is NaN or its absolute value is greater
@@ -148,7 +139,6 @@ module Java::Lang
       
       JNI.native_method :Java_java_lang_StrictMath_acos, [:pointer, :long, :double], :double
       typesig { [::Java::Double] }
-      # 
       # Returns the arc cosine of a value; the returned angle is in the
       # range 0.0 through <i>pi</i>.  Special case:
       # <ul><li>If the argument is NaN or its absolute value is greater
@@ -162,7 +152,6 @@ module Java::Lang
       
       JNI.native_method :Java_java_lang_StrictMath_atan, [:pointer, :long, :double], :double
       typesig { [::Java::Double] }
-      # 
       # Returns the arc tangent of a value; the returned angle is in the
       # range -<i>pi</i>/2 through <i>pi</i>/2.  Special cases:
       # <ul><li>If the argument is NaN, then the result is NaN.
@@ -176,7 +165,6 @@ module Java::Lang
       end
       
       typesig { [::Java::Double] }
-      # 
       # Converts an angle measured in degrees to an approximately
       # equivalent angle measured in radians.  The conversion from
       # degrees to radians is generally inexact.
@@ -189,7 +177,6 @@ module Java::Lang
       end
       
       typesig { [::Java::Double] }
-      # 
       # Converts an angle measured in radians to an approximately
       # equivalent angle measured in degrees.  The conversion from
       # radians to degrees is generally inexact; users should
@@ -205,7 +192,6 @@ module Java::Lang
       
       JNI.native_method :Java_java_lang_StrictMath_exp, [:pointer, :long, :double], :double
       typesig { [::Java::Double] }
-      # 
       # Returns Euler's number <i>e</i> raised to the power of a
       # {@code double} value. Special cases:
       # <ul><li>If the argument is NaN, the result is NaN.
@@ -223,7 +209,6 @@ module Java::Lang
       
       JNI.native_method :Java_java_lang_StrictMath_log, [:pointer, :long, :double], :double
       typesig { [::Java::Double] }
-      # 
       # Returns the natural logarithm (base <i>e</i>) of a {@code double}
       # value. Special cases:
       # <ul><li>If the argument is NaN or less than zero, then the result
@@ -242,7 +227,6 @@ module Java::Lang
       
       JNI.native_method :Java_java_lang_StrictMath_log10, [:pointer, :long, :double], :double
       typesig { [::Java::Double] }
-      # 
       # Returns the base 10 logarithm of a {@code double} value.
       # Special cases:
       # 
@@ -265,7 +249,6 @@ module Java::Lang
       
       JNI.native_method :Java_java_lang_StrictMath_sqrt, [:pointer, :long, :double], :double
       typesig { [::Java::Double] }
-      # 
       # Returns the correctly rounded positive square root of a
       # {@code double} value.
       # Special cases:
@@ -286,7 +269,6 @@ module Java::Lang
       
       JNI.native_method :Java_java_lang_StrictMath_cbrt, [:pointer, :long, :double], :double
       typesig { [::Java::Double] }
-      # 
       # Returns the cube root of a {@code double} value.  For
       # positive finite {@code x}, {@code cbrt(-x) ==
       # -cbrt(x)}; that is, the cube root of a negative value is
@@ -314,7 +296,6 @@ module Java::Lang
       
       JNI.native_method :Java_java_lang_StrictMath_IEEEremainder, [:pointer, :long, :double, :double], :double
       typesig { [::Java::Double, ::Java::Double] }
-      # 
       # Computes the remainder operation on two arguments as prescribed
       # by the IEEE 754 standard.
       # The remainder value is mathematically equal to
@@ -341,7 +322,6 @@ module Java::Lang
       
       JNI.native_method :Java_java_lang_StrictMath_ceil, [:pointer, :long, :double], :double
       typesig { [::Java::Double] }
-      # 
       # Returns the smallest (closest to negative infinity)
       # {@code double} value that is greater than or equal to the
       # argument and is equal to a mathematical integer. Special cases:
@@ -364,7 +344,6 @@ module Java::Lang
       
       JNI.native_method :Java_java_lang_StrictMath_floor, [:pointer, :long, :double], :double
       typesig { [::Java::Double] }
-      # 
       # Returns the largest (closest to positive infinity)
       # {@code double} value that is less than or equal to the
       # argument and is equal to a mathematical integer. Special cases:
@@ -383,7 +362,6 @@ module Java::Lang
       end
       
       typesig { [::Java::Double] }
-      # 
       # Returns the {@code double} value that is closest in value
       # to the argument and is equal to a mathematical integer. If two
       # {@code double} values that are mathematical integers are
@@ -399,7 +377,6 @@ module Java::Lang
       # equal to a mathematical integer.
       # @author Joseph D. Darcy
       def rint(a)
-        # 
         # If the absolute value of a is not less than 2^52, it
         # is either a finite integer (the double format does not have
         # enough significand bits for a number that large to have any
@@ -435,7 +412,6 @@ module Java::Lang
       
       JNI.native_method :Java_java_lang_StrictMath_atan2, [:pointer, :long, :double, :double], :double
       typesig { [::Java::Double, ::Java::Double] }
-      # 
       # Returns the angle <i>theta</i> from the conversion of rectangular
       # coordinates ({@code x},&nbsp;{@code y}) to polar
       # coordinates (r,&nbsp;<i>theta</i>).
@@ -489,7 +465,6 @@ module Java::Lang
       
       JNI.native_method :Java_java_lang_StrictMath_pow, [:pointer, :long, :double, :double], :double
       typesig { [::Java::Double, ::Java::Double] }
-      # 
       # Returns the value of the first argument raised to the power of the
       # second argument. Special cases:
       # 
@@ -613,7 +588,6 @@ module Java::Lang
       end
       
       typesig { [::Java::Float] }
-      # 
       # Returns the closest {@code int} to the argument. The
       # result is rounded to an integer by adding 1/2, taking the
       # floor of the result, and casting the result to type {@code int}.
@@ -639,7 +613,6 @@ module Java::Lang
       end
       
       typesig { [::Java::Double] }
-      # 
       # Returns the closest {@code long} to the argument. The result
       # is rounded to an integer by adding 1/2, taking the floor of the
       # result, and casting the result to type {@code long}. In other
@@ -686,7 +659,6 @@ module Java::Lang
       end
       
       typesig { [] }
-      # 
       # Returns a {@code double} value with a positive sign, greater
       # than or equal to {@code 0.0} and less than {@code 1.0}.
       # Returned values are chosen pseudorandomly with (approximately)
@@ -714,7 +686,6 @@ module Java::Lang
       end
       
       typesig { [::Java::Int] }
-      # 
       # Returns the absolute value of an {@code int} value..
       # If the argument is not negative, the argument is returned.
       # If the argument is negative, the negation of the argument is returned.
@@ -731,7 +702,6 @@ module Java::Lang
       end
       
       typesig { [::Java::Long] }
-      # 
       # Returns the absolute value of a {@code long} value.
       # If the argument is not negative, the argument is returned.
       # If the argument is negative, the negation of the argument is returned.
@@ -748,7 +718,6 @@ module Java::Lang
       end
       
       typesig { [::Java::Float] }
-      # 
       # Returns the absolute value of a {@code float} value.
       # If the argument is not negative, the argument is returned.
       # If the argument is negative, the negation of the argument is returned.
@@ -767,7 +736,6 @@ module Java::Lang
       end
       
       typesig { [::Java::Double] }
-      # 
       # Returns the absolute value of a {@code double} value.
       # If the argument is not negative, the argument is returned.
       # If the argument is negative, the negation of the argument is returned.
@@ -786,7 +754,6 @@ module Java::Lang
       end
       
       typesig { [::Java::Int, ::Java::Int] }
-      # 
       # Returns the greater of two {@code int} values. That is, the
       # result is the argument closer to the value of
       # {@link Integer#MAX_VALUE}. If the arguments have the same value,
@@ -800,7 +767,6 @@ module Java::Lang
       end
       
       typesig { [::Java::Long, ::Java::Long] }
-      # 
       # Returns the greater of two {@code long} values. That is, the
       # result is the argument closer to the value of
       # {@link Long#MAX_VALUE}. If the arguments have the same value,
@@ -836,7 +802,6 @@ module Java::Lang
       alias_method :attr_negative_zero_double_bits=, :negative_zero_double_bits=
       
       typesig { [::Java::Float, ::Java::Float] }
-      # 
       # Returns the greater of two {@code float} values.  That is,
       # the result is the argument closer to positive infinity. If the
       # arguments have the same value, the result is that same
@@ -860,7 +825,6 @@ module Java::Lang
       end
       
       typesig { [::Java::Double, ::Java::Double] }
-      # 
       # Returns the greater of two {@code double} values.  That
       # is, the result is the argument closer to positive infinity. If
       # the arguments have the same value, the result is that same
@@ -884,7 +848,6 @@ module Java::Lang
       end
       
       typesig { [::Java::Int, ::Java::Int] }
-      # 
       # Returns the smaller of two {@code int} values. That is,
       # the result the argument closer to the value of
       # {@link Integer#MIN_VALUE}.  If the arguments have the same
@@ -898,7 +861,6 @@ module Java::Lang
       end
       
       typesig { [::Java::Long, ::Java::Long] }
-      # 
       # Returns the smaller of two {@code long} values. That is,
       # the result is the argument closer to the value of
       # {@link Long#MIN_VALUE}. If the arguments have the same
@@ -912,7 +874,6 @@ module Java::Lang
       end
       
       typesig { [::Java::Float, ::Java::Float] }
-      # 
       # Returns the smaller of two {@code float} values.  That is,
       # the result is the value closer to negative infinity. If the
       # arguments have the same value, the result is that same
@@ -936,7 +897,6 @@ module Java::Lang
       end
       
       typesig { [::Java::Double, ::Java::Double] }
-      # 
       # Returns the smaller of two {@code double} values.  That
       # is, the result is the value closer to negative infinity. If the
       # arguments have the same value, the result is that same
@@ -960,7 +920,6 @@ module Java::Lang
       end
       
       typesig { [::Java::Double] }
-      # 
       # Returns the size of an ulp of the argument.  An ulp of a
       # {@code double} value is the positive distance between this
       # floating-point value and the {@code double} value next
@@ -987,7 +946,6 @@ module Java::Lang
       end
       
       typesig { [::Java::Float] }
-      # 
       # Returns the size of an ulp of the argument.  An ulp of a
       # {@code float} value is the positive distance between this
       # floating-point value and the {@code float} value next
@@ -1014,7 +972,6 @@ module Java::Lang
       end
       
       typesig { [::Java::Double] }
-      # 
       # Returns the signum function of the argument; zero if the argument
       # is zero, 1.0 if the argument is greater than zero, -1.0 if the
       # argument is less than zero.
@@ -1035,7 +992,6 @@ module Java::Lang
       end
       
       typesig { [::Java::Float] }
-      # 
       # Returns the signum function of the argument; zero if the argument
       # is zero, 1.0f if the argument is greater than zero, -1.0f if the
       # argument is less than zero.
@@ -1057,7 +1013,6 @@ module Java::Lang
       
       JNI.native_method :Java_java_lang_StrictMath_sinh, [:pointer, :long, :double], :double
       typesig { [::Java::Double] }
-      # 
       # Returns the hyperbolic sine of a {@code double} value.
       # The hyperbolic sine of <i>x</i> is defined to be
       # (<i>e<sup>x</sup>&nbsp;-&nbsp;e<sup>-x</sup></i>)/2
@@ -1085,7 +1040,6 @@ module Java::Lang
       
       JNI.native_method :Java_java_lang_StrictMath_cosh, [:pointer, :long, :double], :double
       typesig { [::Java::Double] }
-      # 
       # Returns the hyperbolic cosine of a {@code double} value.
       # The hyperbolic cosine of <i>x</i> is defined to be
       # (<i>e<sup>x</sup>&nbsp;+&nbsp;e<sup>-x</sup></i>)/2
@@ -1112,7 +1066,6 @@ module Java::Lang
       
       JNI.native_method :Java_java_lang_StrictMath_tanh, [:pointer, :long, :double], :double
       typesig { [::Java::Double] }
-      # 
       # Returns the hyperbolic tangent of a {@code double} value.
       # The hyperbolic tangent of <i>x</i> is defined to be
       # (<i>e<sup>x</sup>&nbsp;-&nbsp;e<sup>-x</sup></i>)/(<i>e<sup>x</sup>&nbsp;+&nbsp;e<sup>-x</sup></i>),
@@ -1146,7 +1099,6 @@ module Java::Lang
       
       JNI.native_method :Java_java_lang_StrictMath_hypot, [:pointer, :long, :double, :double], :double
       typesig { [::Java::Double, ::Java::Double] }
-      # 
       # Returns sqrt(<i>x</i><sup>2</sup>&nbsp;+<i>y</i><sup>2</sup>)
       # without intermediate overflow or underflow.
       # 
@@ -1172,7 +1124,6 @@ module Java::Lang
       
       JNI.native_method :Java_java_lang_StrictMath_expm1, [:pointer, :long, :double], :double
       typesig { [::Java::Double] }
-      # 
       # Returns <i>e</i><sup>x</sup>&nbsp;-1.  Note that for values of
       # <i>x</i> near 0, the exact sum of
       # {@code expm1(x)}&nbsp;+&nbsp;1 is much closer to the true
@@ -1203,7 +1154,6 @@ module Java::Lang
       
       JNI.native_method :Java_java_lang_StrictMath_log1p, [:pointer, :long, :double], :double
       typesig { [::Java::Double] }
-      # 
       # Returns the natural logarithm of the sum of the argument and 1.
       # Note that for small values {@code x}, the result of
       # {@code log1p(x)} is much closer to the true result of ln(1
@@ -1236,7 +1186,6 @@ module Java::Lang
       end
       
       typesig { [::Java::Double, ::Java::Double] }
-      # 
       # Returns the first floating-point argument with the sign of the
       # second floating-point argument.  For this method, a NaN
       # {@code sign} argument is always treated as if it were
@@ -1252,7 +1201,6 @@ module Java::Lang
       end
       
       typesig { [::Java::Float, ::Java::Float] }
-      # 
       # Returns the first floating-point argument with the sign of the
       # second floating-point argument.  For this method, a NaN
       # {@code sign} argument is always treated as if it were
@@ -1268,7 +1216,6 @@ module Java::Lang
       end
       
       typesig { [::Java::Float] }
-      # 
       # Returns the unbiased exponent used in the representation of a
       # {@code float}.  Special cases:
       # 
@@ -1285,7 +1232,6 @@ module Java::Lang
       end
       
       typesig { [::Java::Double] }
-      # 
       # Returns the unbiased exponent used in the representation of a
       # {@code double}.  Special cases:
       # 
@@ -1302,7 +1248,6 @@ module Java::Lang
       end
       
       typesig { [::Java::Double, ::Java::Double] }
-      # 
       # Returns the floating-point number adjacent to the first
       # argument in the direction of the second argument.  If both
       # arguments compare as equal the second argument is returned.
@@ -1345,7 +1290,6 @@ module Java::Lang
       end
       
       typesig { [::Java::Float, ::Java::Double] }
-      # 
       # Returns the floating-point number adjacent to the first
       # argument in the direction of the second argument.  If both
       # arguments compare as equal a value equivalent to the second argument
@@ -1387,7 +1331,6 @@ module Java::Lang
       end
       
       typesig { [::Java::Double] }
-      # 
       # Returns the floating-point value adjacent to {@code d} in
       # the direction of positive infinity.  This method is
       # semantically equivalent to {@code nextAfter(d,
@@ -1416,7 +1359,6 @@ module Java::Lang
       end
       
       typesig { [::Java::Float] }
-      # 
       # Returns the floating-point value adjacent to {@code f} in
       # the direction of positive infinity.  This method is
       # semantically equivalent to {@code nextAfter(f,
@@ -1445,7 +1387,6 @@ module Java::Lang
       end
       
       typesig { [::Java::Double, ::Java::Int] }
-      # 
       # Return {@code d} &times;
       # 2<sup>{@code scaleFactor}</sup> rounded as if performed
       # by a single correctly rounded floating-point multiply to a
@@ -1479,7 +1420,6 @@ module Java::Lang
       end
       
       typesig { [::Java::Float, ::Java::Int] }
-      # 
       # Return {@code f} &times;
       # 2<sup>{@code scaleFactor}</sup> rounded as if performed
       # by a single correctly rounded floating-point multiply to a

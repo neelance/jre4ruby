@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 1995 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -31,7 +30,6 @@ module Sun::Misc
     }
   end
   
-  # 
   # A Timer object is used by algorithms that require timed events.
   # For example, in an animation loop, a timer would help in
   # determining when to change frames.
@@ -91,7 +89,6 @@ module Sun::Misc
   class Timer 
     include_class_members TimerImports
     
-    # 
     # This is the owner of the timer.  Its tick method is
     # called when the timer ticks.
     attr_accessor :owner
@@ -100,7 +97,6 @@ module Sun::Misc
     alias_method :attr_owner=, :owner=
     undef_method :owner=
     
-    # 
     # This is the interval of time in ms.
     attr_accessor :interval
     alias_method :attr_interval, :interval
@@ -108,7 +104,6 @@ module Sun::Misc
     alias_method :attr_interval=, :interval=
     undef_method :interval=
     
-    # 
     # This variable is used for two different purposes.
     # This is done in order to save space.
     # If 'stopped' is true, this variable holds the time
@@ -121,7 +116,6 @@ module Sun::Misc
     alias_method :attr_sleep_until=, :sleep_until=
     undef_method :sleep_until=
     
-    # 
     # This is the time remaining before the timer ticks.  It
     # is only valid if 'stopped' is true.  If the timer is
     # continued, the next tick will happen remaingTime
@@ -132,7 +126,6 @@ module Sun::Misc
     alias_method :attr_remaining_time=, :remaining_time=
     undef_method :remaining_time=
     
-    # 
     # True iff the timer is in regular mode.
     attr_accessor :regular
     alias_method :attr_regular, :regular
@@ -140,7 +133,6 @@ module Sun::Misc
     alias_method :attr_regular=, :regular=
     undef_method :regular=
     
-    # 
     # True iff the timer has been stopped.
     attr_accessor :stopped
     alias_method :attr_stopped, :stopped
@@ -182,7 +174,6 @@ module Sun::Misc
     }
     
     typesig { [Timeable, ::Java::Long] }
-    # 
     # Creates a timer object that is owned by 'owner' and
     # with the interval 'interval' milliseconds.  The new timer
     # object is stopped and is regular.  getRemainingTime()
@@ -212,7 +203,6 @@ module Sun::Misc
     end
     
     typesig { [] }
-    # 
     # Returns true if this timer is stopped.
     def is_stopped
       synchronized(self) do
@@ -221,7 +211,6 @@ module Sun::Misc
     end
     
     typesig { [] }
-    # 
     # Stops the timer.  The amount of time the timer has already
     # delayed is saved so if the timer is continued, it will only
     # delay for the amount of time remaining.
@@ -245,7 +234,6 @@ module Sun::Misc
     end
     
     typesig { [] }
-    # 
     # Continue the timer.  The next tick will come at getRemainingTime()
     # milliseconds later.  If the timer is not stopped, this
     # call will be a no-op.
@@ -271,7 +259,6 @@ module Sun::Misc
     end
     
     typesig { [] }
-    # 
     # Resets the timer's remaining time to the timer's interval.
     # If the timer's running state is not altered.
     def reset
@@ -283,7 +270,6 @@ module Sun::Misc
     end
     
     typesig { [] }
-    # 
     # Returns the time at which the timer was last stopped.  The
     # return value is valid only if the timer is stopped.
     def get_stop_time
@@ -293,7 +279,6 @@ module Sun::Misc
     end
     
     typesig { [] }
-    # 
     # Returns the timer's interval.
     def get_interval
       synchronized(self) do
@@ -302,7 +287,6 @@ module Sun::Misc
     end
     
     typesig { [::Java::Long] }
-    # 
     # Changes the timer's interval.  The new interval setting
     # does not take effect until after the next tick.
     # This method does not alter the remaining time or the
@@ -315,7 +299,6 @@ module Sun::Misc
     end
     
     typesig { [] }
-    # 
     # Returns the remaining time before the timer's next tick.
     # The return value is valid only if timer is stopped.
     def get_remaining_time
@@ -325,7 +308,6 @@ module Sun::Misc
     end
     
     typesig { [::Java::Long] }
-    # 
     # Sets the remaining time before the timer's next tick.
     # This method does not alter the timer's running state.
     # This method is MT-safe; i.e. it is synchronized but for
@@ -347,7 +329,6 @@ module Sun::Misc
     end
     
     typesig { [::Java::Boolean] }
-    # 
     # In regular mode, a timer ticks at the specified interval,
     # regardless of how long the owner's tick() method takes.
     # While the timer is running, no ticks are ever discarded.
@@ -364,7 +345,6 @@ module Sun::Misc
     end
     
     typesig { [] }
-    # 
     # This method is used only for testing purposes.
     def get_timer_thread
       return TimerThread.attr_timer_thread
@@ -374,8 +354,6 @@ module Sun::Misc
     alias_method :initialize__timer, :initialize
   end
   
-  # 
-  # 
   # This class implements the timer queue and is exclusively used by the
   # Timer class.  There are only two methods exported to the Timer class -
   # enqueue, for inserting a timer into queue and dequeue, for removing
@@ -398,7 +376,6 @@ module Sun::Misc
     include_class_members TimerImports
     
     class_module.module_eval {
-      # 
       # Set to true to get debugging output.
       
       def debug
@@ -411,7 +388,6 @@ module Sun::Misc
       end
       alias_method :attr_debug=, :debug=
       
-      # 
       # This is a handle to the thread managing the thread queue.
       
       def timer_thread
@@ -424,7 +400,6 @@ module Sun::Misc
       end
       alias_method :attr_timer_thread=, :timer_thread=
       
-      # 
       # This flag is set if the timer thread has been notified
       # while it was in the timed wait.  This flag allows the
       # timer thread to tell whether or not the wait completed.
@@ -503,7 +478,6 @@ module Sun::Misc
       alias_method :attr_timer_queue=, :timer_queue=
       
       typesig { [Timer] }
-      # 
       # Uses timer.sleepUntil to determine where in the queue
       # to insert the timer object.
       # A new ticker thread is created only if the timer
@@ -542,7 +516,6 @@ module Sun::Misc
       end
       
       typesig { [Timer] }
-      # 
       # If the timer is not in the queue, returns false;
       # otherwise removes the timer from the timer queue and returns true.
       # Assumes the caller has the TimerThread monitor.
@@ -582,7 +555,6 @@ module Sun::Misc
       end
       
       typesig { [Timer] }
-      # 
       # Inserts the timer back into the queue.  This method
       # is used by a callback thread after it has called the
       # timer owner's tick() method.  This method recomputes
@@ -609,8 +581,6 @@ module Sun::Misc
     alias_method :initialize__timer_thread, :initialize
   end
   
-  # 
-  # 
   # This class implements a simple thread whose only purpose is to call a
   # timer owner's tick() method.  A small fixed-sized pool of threads is
   # maintained and is protected by the class monitor.  If the pool is
@@ -624,12 +594,10 @@ module Sun::Misc
     include_class_members TimerImports
     
     class_module.module_eval {
-      # 
       # Maximum size of the thread pool.
       const_set_lazy(:MAX_POOL_SIZE) { 3 }
       const_attr_reader  :MAX_POOL_SIZE
       
-      # 
       # Number of threads in the pool.
       
       def cur_pool_size
@@ -642,7 +610,6 @@ module Sun::Misc
       end
       alias_method :attr_cur_pool_size=, :cur_pool_size=
       
-      # 
       # The pool of timer threads.
       
       def pool
@@ -656,7 +623,6 @@ module Sun::Misc
       alias_method :attr_pool=, :pool=
     }
     
-    # 
     # Is used when linked into the thread pool.
     attr_accessor :next
     alias_method :attr_next, :next
@@ -664,7 +630,6 @@ module Sun::Misc
     alias_method :attr_next=, :next=
     undef_method :next=
     
-    # 
     # This is the handle to the timer whose owner's
     # tick() method will be called.
     attr_accessor :timer
@@ -673,7 +638,6 @@ module Sun::Misc
     alias_method :attr_timer=, :timer=
     undef_method :timer=
     
-    # 
     # The value of a timer's sleepUntil value is captured here.
     # This is used to determine whether or not the timer should
     # be reinserted into the queue.  If the timer's sleepUntil
@@ -686,7 +650,6 @@ module Sun::Misc
     
     class_module.module_eval {
       typesig { [Timer, ::Java::Long] }
-      # 
       # Creates a new callback thread to call the timer owner's
       # tick() method.  A thread is taken from the pool if one
       # is available, otherwise, a new thread is created.
@@ -714,7 +677,6 @@ module Sun::Misc
     }
     
     typesig { [] }
-    # 
     # Returns false if the thread should simply exit;
     # otherwise the thread is returned the pool, where
     # it waits to be notified.  (I did try to use the

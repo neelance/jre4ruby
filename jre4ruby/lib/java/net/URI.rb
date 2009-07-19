@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 2000-2006 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -592,7 +591,6 @@ module Java::Net
     alias_method :attr_decoded_scheme_specific_part=, :decoded_scheme_specific_part=
     undef_method :decoded_scheme_specific_part=
     
-    # 
     # The string form of this URI.
     # 
     # @serial
@@ -717,7 +715,6 @@ module Java::Net
     end
     
     typesig { [String, String, String, ::Java::Int, String, String, String] }
-    # 
     # Constructs a hierarchical URI from the given components.
     # 
     # <p> If a scheme is given then the path, if also given, must either be
@@ -813,7 +810,6 @@ module Java::Net
     end
     
     typesig { [String, String, String, String, String] }
-    # 
     # Constructs a hierarchical URI from the given components.
     # 
     # <p> If a scheme is given then the path, if also given, must either be
@@ -897,7 +893,6 @@ module Java::Net
     end
     
     typesig { [String, String, String, String] }
-    # 
     # Constructs a hierarchical URI from the given components.
     # 
     # <p> A component may be left undefined by passing <tt>null</tt>.
@@ -923,7 +918,6 @@ module Java::Net
     end
     
     typesig { [String, String, String] }
-    # 
     # Constructs a URI from the given components.
     # 
     # <p> A component may be left undefined by passing <tt>null</tt>.
@@ -982,7 +976,6 @@ module Java::Net
     
     class_module.module_eval {
       typesig { [String] }
-      # 
       # Creates a URI by parsing the given string.
       # 
       # <p> This convenience factory method works as if by invoking the {@link
@@ -1078,7 +1071,6 @@ module Java::Net
     end
     
     typesig { [] }
-    # 
     # Normalizes this URI's path.
     # 
     # <p> If this URI is opaque, or if its path is already in normal form,
@@ -1119,7 +1111,6 @@ module Java::Net
     end
     
     typesig { [URI] }
-    # 
     # Resolves the given URI against this URI.
     # 
     # <p> If the given URI is already absolute, or if this URI is opaque, then
@@ -1177,7 +1168,6 @@ module Java::Net
     end
     
     typesig { [String] }
-    # 
     # Constructs a new URI by parsing the given string and then resolving it
     # against this URI.
     # 
@@ -1198,7 +1188,6 @@ module Java::Net
     end
     
     typesig { [URI] }
-    # 
     # Relativizes the given URI against this URI.
     # 
     # <p> The relativization of the given URI against this URI is computed as
@@ -1228,7 +1217,6 @@ module Java::Net
     end
     
     typesig { [] }
-    # 
     # Constructs a URL from this URI.
     # 
     # <p> This convenience method works as if invoking it were equivalent to
@@ -1269,7 +1257,6 @@ module Java::Net
     end
     
     typesig { [] }
-    # 
     # Tells whether or not this URI is absolute.
     # 
     # <p> A URI is absolute if, and only if, it has a scheme component. </p>
@@ -1280,7 +1267,6 @@ module Java::Net
     end
     
     typesig { [] }
-    # 
     # Tells whether or not this URI is opaque.
     # 
     # <p> A URI is opaque if, and only if, it is absolute and its
@@ -1294,7 +1280,6 @@ module Java::Net
     end
     
     typesig { [] }
-    # 
     # Returns the raw scheme-specific part of this URI.  The scheme-specific
     # part is never undefined, though it may be empty.
     # 
@@ -1309,7 +1294,6 @@ module Java::Net
     end
     
     typesig { [] }
-    # 
     # Returns the decoded scheme-specific part of this URI.
     # 
     # <p> The string returned by this method is equal to that returned by the
@@ -1327,7 +1311,6 @@ module Java::Net
     end
     
     typesig { [] }
-    # 
     # Returns the raw authority component of this URI.
     # 
     # <p> The authority component of a URI, if defined, only contains the
@@ -1344,7 +1327,6 @@ module Java::Net
     end
     
     typesig { [] }
-    # 
     # Returns the decoded authority component of this URI.
     # 
     # <p> The string returned by this method is equal to that returned by the
@@ -1361,7 +1343,6 @@ module Java::Net
     end
     
     typesig { [] }
-    # 
     # Returns the raw user-information component of this URI.
     # 
     # <p> The user-information component of a URI, if defined, only contains
@@ -1375,7 +1356,6 @@ module Java::Net
     end
     
     typesig { [] }
-    # 
     # Returns the decoded user-information component of this URI.
     # 
     # <p> The string returned by this method is equal to that returned by the
@@ -1392,7 +1372,6 @@ module Java::Net
     end
     
     typesig { [] }
-    # 
     # Returns the host component of this URI.
     # 
     # <p> The host component of a URI, if defined, will have one of the
@@ -1432,7 +1411,6 @@ module Java::Net
     end
     
     typesig { [] }
-    # 
     # Returns the port number of this URI.
     # 
     # <p> The port component of a URI, if defined, is a non-negative
@@ -1445,7 +1423,6 @@ module Java::Net
     end
     
     typesig { [] }
-    # 
     # Returns the raw path component of this URI.
     # 
     # <p> The path component of a URI, if defined, only contains the slash
@@ -1460,7 +1437,6 @@ module Java::Net
     end
     
     typesig { [] }
-    # 
     # Returns the decoded path component of this URI.
     # 
     # <p> The string returned by this method is equal to that returned by the
@@ -1477,7 +1453,6 @@ module Java::Net
     end
     
     typesig { [] }
-    # 
     # Returns the raw query component of this URI.
     # 
     # <p> The query component of a URI, if defined, only contains legal URI
@@ -1490,7 +1465,6 @@ module Java::Net
     end
     
     typesig { [] }
-    # 
     # Returns the decoded query component of this URI.
     # 
     # <p> The string returned by this method is equal to that returned by the
@@ -1507,7 +1481,6 @@ module Java::Net
     end
     
     typesig { [] }
-    # 
     # Returns the raw fragment component of this URI.
     # 
     # <p> The fragment component of a URI, if defined, only contains legal URI
@@ -1520,7 +1493,6 @@ module Java::Net
     end
     
     typesig { [] }
-    # 
     # Returns the decoded fragment component of this URI.
     # 
     # <p> The string returned by this method is equal to that returned by the
@@ -1633,7 +1605,6 @@ module Java::Net
     end
     
     typesig { [] }
-    # 
     # Returns a hash-code value for this URI.  The hash code is based upon all
     # of the URI's components, and satisfies the general contract of the
     # {@link java.lang.Object#hashCode() Object.hashCode} method.
@@ -1663,7 +1634,6 @@ module Java::Net
     end
     
     typesig { [URI] }
-    # 
     # Compares this URI to another object, which must be a URI.
     # 
     # <p> When comparing corresponding components of two URIs, if one
@@ -1782,7 +1752,6 @@ module Java::Net
     end
     
     typesig { [] }
-    # 
     # Returns the content of this URI as a string.
     # 
     # <p> If this URI was created by invoking one of the constructors in this
@@ -1801,7 +1770,6 @@ module Java::Net
     end
     
     typesig { [] }
-    # 
     # Returns the content of this URI as a US-ASCII string.
     # 
     # <p> If this URI does not contain any characters in the <i>other</i>
@@ -1836,7 +1804,6 @@ module Java::Net
     end
     
     typesig { [ObjectInputStream] }
-    # 
     # Reconstitutes a URI from the given serial stream.
     # 
     # <p> The {@link java.io.ObjectInputStream#defaultReadObject()} method is
@@ -2239,34 +2206,34 @@ module Java::Net
         if (!(child.attr_scheme).nil?)
           return child
         end
-        ru_ = URI.new # Resolved URI
-        ru_.attr_scheme = base.attr_scheme
-        ru_.attr_query = child.attr_query
-        ru_.attr_fragment = child.attr_fragment
+        ru = URI.new # Resolved URI
+        ru.attr_scheme = base.attr_scheme
+        ru.attr_query = child.attr_query
+        ru.attr_fragment = child.attr_fragment
         # 5.2 (4): Authority
         if ((child.attr_authority).nil?)
-          ru_.attr_authority = base.attr_authority
-          ru_.attr_host = base.attr_host
-          ru_.attr_user_info = base.attr_user_info
-          ru_.attr_port = base.attr_port
+          ru.attr_authority = base.attr_authority
+          ru.attr_host = base.attr_host
+          ru.attr_user_info = base.attr_user_info
+          ru.attr_port = base.attr_port
           cp = ((child.attr_path).nil?) ? "" : child.attr_path
           if ((cp.length > 0) && ((cp.char_at(0)).equal?(Character.new(?/.ord))))
             # 5.2 (5): Child path is absolute
-            ru_.attr_path = child.attr_path
+            ru.attr_path = child.attr_path
           else
             # 5.2 (6): Resolve relative path
-            ru_.attr_path = resolve_path(base.attr_path, cp, base.is_absolute)
+            ru.attr_path = resolve_path(base.attr_path, cp, base.is_absolute)
           end
         else
-          ru_.attr_authority = child.attr_authority
-          ru_.attr_host = child.attr_host
-          ru_.attr_user_info = child.attr_user_info
-          ru_.attr_host = child.attr_host
-          ru_.attr_port = child.attr_port
-          ru_.attr_path = child.attr_path
+          ru.attr_authority = child.attr_authority
+          ru.attr_host = child.attr_host
+          ru.attr_user_info = child.attr_user_info
+          ru.attr_host = child.attr_host
+          ru.attr_port = child.attr_port
+          ru.attr_path = child.attr_path
         end
         # 5.2 (7): Recombine (nothing to do here)
-        return ru_
+        return ru
       end
       
       typesig { [URI] }
@@ -3341,16 +3308,16 @@ module Java::Net
               end
             end
           end
-          q_ = scan(p, n, "", "?#") # DEVIATION: May be empty
-          check_chars(p, q_, L_PATH, H_PATH, "path")
-          self.attr_path = substring(p, q_)
-          p = q_
+          q = scan(p, n, "", "?#") # DEVIATION: May be empty
+          check_chars(p, q, L_PATH, H_PATH, "path")
+          self.attr_path = substring(p, q)
+          p = q
           if (at(p, n, Character.new(??.ord)))
             ((p += 1) - 1)
-            q_ = scan(p, n, "", "#")
-            check_chars(p, q_, L_URIC, H_URIC, "query")
-            self.attr_query = substring(p, q_)
-            p = q_
+            q = scan(p, n, "", "#")
+            check_chars(p, q, L_URIC, H_URIC, "query")
+            self.attr_query = substring(p, q)
+            p = q
           end
           return p
         end

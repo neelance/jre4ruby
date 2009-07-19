@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Portions Copyright 2000-2007 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -62,7 +61,6 @@ module Sun::Security::Krb5::Internal::Crypto
     end
     
     typesig { [Array.typed(::Java::Byte), Array.typed(::Java::Byte), ::Java::Int] }
-    # 
     # Encrypts the data using DES in CBC mode.
     # @param data the buffer for plain text.
     # @param key the key to encrypt the data.
@@ -75,7 +73,6 @@ module Sun::Security::Krb5::Internal::Crypto
     end
     
     typesig { [Array.typed(::Java::Byte), Array.typed(::Java::Byte), Array.typed(::Java::Byte), ::Java::Int] }
-    # 
     # Encrypts the data using DES in CBC mode.
     # @param data the buffer for plain text.
     # @param key the key to encrypt the data.
@@ -84,7 +81,6 @@ module Sun::Security::Krb5::Internal::Crypto
     # 
     # @modified by Yanni Zhang, Feb 24 00.
     def encrypt(data, key, ivec, usage)
-      # 
       # To meet export control requirements, double check that the
       # key being used is no longer than 64 bits.
       # 
@@ -127,7 +123,6 @@ module Sun::Security::Krb5::Internal::Crypto
     end
     
     typesig { [Array.typed(::Java::Byte), Array.typed(::Java::Byte), ::Java::Int] }
-    # 
     # Decrypts the data using DES in CBC mode.
     # @param cipher the input buffer.
     # @param key the key to decrypt the data.
@@ -139,7 +134,6 @@ module Sun::Security::Krb5::Internal::Crypto
     end
     
     typesig { [Array.typed(::Java::Byte), Array.typed(::Java::Byte), Array.typed(::Java::Byte), ::Java::Int] }
-    # 
     # Decrypts the data using DES in CBC mode.
     # @param cipher the input buffer.
     # @param key the key to decrypt the data.
@@ -147,7 +141,6 @@ module Sun::Security::Krb5::Internal::Crypto
     # 
     # @modified by Yanni Zhang, Dec 6 99.
     def decrypt(cipher, key, ivec, usage)
-      # 
       # To meet export control requirements, double check that the
       # key being used is no longer than 64 bits.
       # 
@@ -196,7 +189,6 @@ module Sun::Security::Krb5::Internal::Crypto
     end
     
     typesig { [Array.typed(::Java::Byte)] }
-    # 
     # // Not used.
     # public void setChecksum(byte[] data, int size) throws KrbCryptoException{
     # resetChecksumField(data);

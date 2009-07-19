@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 1995-2007 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -38,7 +37,6 @@ module Java::Net
     }
   end
   
-  # 
   # Default Socket Implementation. This implementation does
   # not implement any security checks.
   # Note this class should <b>NOT</b> be public.
@@ -133,7 +131,6 @@ module Java::Net
     undef_method :reset_lock=
     
     class_module.module_eval {
-      # 
       # Load net library into runtime.
       when_class_loaded do
         Java::Security::AccessController.do_privileged(Sun::Security::Action::LoadLibraryAction.new("net"))
@@ -141,7 +138,6 @@ module Java::Net
     }
     
     typesig { [::Java::Boolean] }
-    # 
     # Creates a socket with a boolean that specifies whether this
     # is a stream socket (true) or an unconnected UDP socket (false).
     def create(stream)
@@ -158,7 +154,6 @@ module Java::Net
     end
     
     typesig { [String, ::Java::Int] }
-    # 
     # Creates a socket and connects it to the specified port on
     # the specified host.
     # @param host the specified host
@@ -176,7 +171,7 @@ module Java::Net
           pending = e
         end
       rescue UnknownHostException => e
-        pending = e_
+        pending = e
       end
       # everything failed
       close
@@ -184,7 +179,6 @@ module Java::Net
     end
     
     typesig { [InetAddress, ::Java::Int] }
-    # 
     # Creates a socket and connects it to the specified address on
     # the specified port.
     # @param address the address
@@ -203,7 +197,6 @@ module Java::Net
     end
     
     typesig { [SocketAddress, ::Java::Int] }
-    # 
     # Creates a socket and connects it to the specified address on
     # the specified port.
     # @param address the address
@@ -314,7 +307,6 @@ module Java::Net
         return @timeout
       end
       ret = 0
-      # 
       # The native socketGetOption() knows about 3 options.
       # The 32 bit value it returns will be interpreted according
       # to what we're asking.  A return of -1 means it understands
@@ -349,8 +341,6 @@ module Java::Net
         else
           return ret
         end
-        ret = socket_get_option(opt, nil)
-        return Boolean.value_of(!(ret).equal?(-1))
       when SO_KEEPALIVE
         ret = socket_get_option(opt, nil)
         return Boolean.value_of(!(ret).equal?(-1))
@@ -360,7 +350,6 @@ module Java::Net
     end
     
     typesig { [InetAddress, ::Java::Int, ::Java::Int] }
-    # 
     # The workhorse of the connection operation.  Tries several times to
     # establish a connection to the given <host, port>.  If unsuccessful,
     # throws an IOException indicating what went wrong.
@@ -389,7 +378,6 @@ module Java::Net
     end
     
     typesig { [InetAddress, ::Java::Int] }
-    # 
     # Binds the socket to the specified address of the specified local port.
     # @param address the address
     # @param port the port
@@ -406,7 +394,6 @@ module Java::Net
     end
     
     typesig { [::Java::Int] }
-    # 
     # Listens, for a specified amount of time, for connections.
     # @param count the amount of time to listen for connections
     def listen(count)
@@ -416,7 +403,6 @@ module Java::Net
     end
     
     typesig { [SocketImpl] }
-    # 
     # Accepts connections.
     # @param s the connection
     def accept(s)
@@ -429,7 +415,6 @@ module Java::Net
     end
     
     typesig { [] }
-    # 
     # Gets an InputStream for this socket.
     def get_input_stream
       synchronized(self) do
@@ -452,7 +437,6 @@ module Java::Net
     end
     
     typesig { [] }
-    # 
     # Gets an OutputStream for this socket.
     def get_output_stream
       synchronized(self) do
@@ -487,20 +471,17 @@ module Java::Net
     end
     
     typesig { [] }
-    # 
     # Returns the number of bytes that can be read without blocking.
     def available
       synchronized(self) do
         if (is_closed_or_pending)
           raise IOException.new("Stream closed.")
         end
-        # 
         # If connection has been reset then return 0 to indicate
         # there are no buffered bytes.
         if (is_connection_reset)
           return 0
         end
-        # 
         # If no bytes available and we were previously notified
         # of a connection reset then we move to the reset state.
         # 
@@ -527,7 +508,6 @@ module Java::Net
     end
     
     typesig { [] }
-    # 
     # Closes the socket.
     def close
       synchronized((@fd_lock)) do
@@ -537,7 +517,6 @@ module Java::Net
               return
             end
             @close_pending = true
-            # 
             # We close the FileDescriptor in two-steps - first the
             # "pre-close" which closes the socket but doesn't
             # release the underlying file descriptor. This operation
@@ -552,7 +531,6 @@ module Java::Net
             self.attr_fd = nil
             return
           else
-            # 
             # If a thread has acquired the fd and a close
             # isn't pending then use a deferred close.
             # Also decrement fdUseCount to signal the last
@@ -577,7 +555,6 @@ module Java::Net
     end
     
     typesig { [] }
-    # 
     # Shutdown read-half of the socket connection;
     def shutdown_input
       if (!(self.attr_fd).nil?)
@@ -590,7 +567,6 @@ module Java::Net
     end
     
     typesig { [] }
-    # 
     # Shutdown write-half of the socket connection;
     def shutdown_output
       if (!(self.attr_fd).nil?)
@@ -613,14 +589,12 @@ module Java::Net
     end
     
     typesig { [] }
-    # 
     # Cleans up if the user forgets to close it.
     def finalize
       close
     end
     
     typesig { [] }
-    # 
     # "Acquires" and returns the FileDescriptor for this impl
     # 
     # A corresponding releaseFD is required to "release" the
@@ -633,7 +607,6 @@ module Java::Net
     end
     
     typesig { [] }
-    # 
     # "Release" the FileDescriptor for this impl.
     # 
     # If the use count goes to -1 then the socket is closed.
@@ -684,10 +657,8 @@ module Java::Net
     end
     
     typesig { [] }
-    # 
     # Return true if already closed or close is pending
     def is_closed_or_pending
-      # 
       # Lock on fdLock to ensure that we wait if a
       # close is in progress.
       synchronized((@fd_lock)) do
@@ -700,14 +671,12 @@ module Java::Net
     end
     
     typesig { [] }
-    # 
     # Return the current value of SO_TIMEOUT
     def get_timeout
       return @timeout
     end
     
     typesig { [] }
-    # 
     # "Pre-close" a socket by dup'ing the file descriptor - this enables
     # the socket to be closed without releasing the file descriptor.
     def socket_pre_close
@@ -715,7 +684,6 @@ module Java::Net
     end
     
     typesig { [] }
-    # 
     # Close the socket (and release the file descriptor).
     def socket_close
       socket_close0(false)

@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 1994-2007 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -40,7 +39,6 @@ module Java::Lang
     }
   end
   
-  # 
   # A <i>thread</i> is a thread of execution in a program. The Java
   # Virtual Machine allows an application to have multiple threads of
   # execution running concurrently.
@@ -249,7 +247,6 @@ module Java::Lang
     alias_method :attr_thread_locals=, :thread_locals=
     undef_method :thread_locals=
     
-    # 
     # InheritableThreadLocal values pertaining to this thread. This map is
     # maintained by the InheritableThreadLocal class.
     attr_accessor :inheritable_thread_locals
@@ -258,7 +255,6 @@ module Java::Lang
     alias_method :attr_inheritable_thread_locals=, :inheritable_thread_locals=
     undef_method :inheritable_thread_locals=
     
-    # 
     # The requested stack size for this thread, or 0 if the creator did
     # not specify a stack size.  It is up to the VM to do whatever it
     # likes with this number; some VMs will ignore it.
@@ -268,7 +264,6 @@ module Java::Lang
     alias_method :attr_stack_size=, :stack_size=
     undef_method :stack_size=
     
-    # 
     # JVM-private state that persists after native thread termination.
     attr_accessor :native_park_event_pointer
     alias_method :attr_native_park_event_pointer, :native_park_event_pointer
@@ -276,7 +271,6 @@ module Java::Lang
     alias_method :attr_native_park_event_pointer=, :native_park_event_pointer=
     undef_method :native_park_event_pointer=
     
-    # 
     # Thread ID
     attr_accessor :tid
     alias_method :attr_tid, :tid
@@ -315,7 +309,6 @@ module Java::Lang
       end
     }
     
-    # 
     # The argument supplied to the current call to
     # java.util.concurrent.locks.LockSupport.park.
     # Set by (private) java.util.concurrent.locks.LockSupport.setBlocker
@@ -350,17 +343,14 @@ module Java::Lang
     end
     
     class_module.module_eval {
-      # 
       # The minimum priority that a thread can have.
       const_set_lazy(:MIN_PRIORITY) { 1 }
       const_attr_reader  :MIN_PRIORITY
       
-      # 
       # The default priority that is assigned to a thread.
       const_set_lazy(:NORM_PRIORITY) { 5 }
       const_attr_reader  :NORM_PRIORITY
       
-      # 
       # The maximum priority that a thread can have.
       const_set_lazy(:MAX_PRIORITY) { 10 }
       const_attr_reader  :MAX_PRIORITY
@@ -383,7 +373,6 @@ module Java::Lang
     class_module.module_eval {
       JNI.native_method :Java_java_lang_Thread_currentThread, [:pointer, :long], :long
       typesig { [] }
-      # 
       # Returns a reference to the currently executing thread object.
       # 
       # @return  the currently executing thread.
@@ -393,7 +382,6 @@ module Java::Lang
       
       JNI.native_method :Java_java_lang_Thread_yield, [:pointer, :long], :void
       typesig { [] }
-      # 
       # Causes the currently executing thread object to temporarily pause
       # and allow other threads to execute.
       def yield
@@ -402,7 +390,6 @@ module Java::Lang
       
       JNI.native_method :Java_java_lang_Thread_sleep, [:pointer, :long, :int64], :void
       typesig { [::Java::Long] }
-      # 
       # Causes the currently executing thread to sleep (temporarily cease
       # execution) for the specified number of milliseconds, subject to
       # the precision and accuracy of system timers and schedulers. The thread
@@ -418,7 +405,6 @@ module Java::Lang
       end
       
       typesig { [::Java::Long, ::Java::Int] }
-      # 
       # Causes the currently executing thread to sleep (cease execution)
       # for the specified number of milliseconds plus the specified number
       # of nanoseconds, subject to the precision and accuracy of system
@@ -449,7 +435,6 @@ module Java::Lang
     }
     
     typesig { [JavaThreadGroup, Runnable, String, ::Java::Long] }
-    # 
     # Initializes a Thread.
     # 
     # @param g the Thread group
@@ -476,7 +461,6 @@ module Java::Lang
       # checkAccess regardless of whether or not threadgroup is
       # explicitly passed in.
       g.check_access
-      # 
       # Do we have the required permissions?
       if (!(security).nil?)
         if (is_ccloverridden(get_class))
@@ -506,7 +490,6 @@ module Java::Lang
     end
     
     typesig { [] }
-    # 
     # Allocates a new <code>Thread</code> object. This constructor has
     # the same effect as <code>Thread(null, null,</code>
     # <i>gname</i><code>)</code>, where <b><i>gname</i></b> is
@@ -542,7 +525,6 @@ module Java::Lang
     end
     
     typesig { [Runnable] }
-    # 
     # Allocates a new <code>Thread</code> object. This constructor has
     # the same effect as <code>Thread(null, target,</code>
     # <i>gname</i><code>)</code>, where <i>gname</i> is
@@ -579,7 +561,6 @@ module Java::Lang
     end
     
     typesig { [JavaThreadGroup, Runnable] }
-    # 
     # Allocates a new <code>Thread</code> object. This constructor has
     # the same effect as <code>Thread(group, target,</code>
     # <i>gname</i><code>)</code>, where <i>gname</i> is
@@ -619,7 +600,6 @@ module Java::Lang
     end
     
     typesig { [String] }
-    # 
     # Allocates a new <code>Thread</code> object. This constructor has
     # the same effect as <code>Thread(null, null, name)</code>.
     # 
@@ -653,7 +633,6 @@ module Java::Lang
     end
     
     typesig { [JavaThreadGroup, String] }
-    # 
     # Allocates a new <code>Thread</code> object. This constructor has
     # the same effect as <code>Thread(group, null, name)</code>
     # 
@@ -690,7 +669,6 @@ module Java::Lang
     end
     
     typesig { [Runnable, String] }
-    # 
     # Allocates a new <code>Thread</code> object. This constructor has
     # the same effect as <code>Thread(null, target, name)</code>.
     # 
@@ -725,7 +703,6 @@ module Java::Lang
     end
     
     typesig { [JavaThreadGroup, Runnable, String] }
-    # 
     # Allocates a new <code>Thread</code> object so that it has
     # <code>target</code> as its run object, has the specified
     # <code>name</code> as its name, and belongs to the thread group
@@ -806,7 +783,6 @@ module Java::Lang
     end
     
     typesig { [JavaThreadGroup, Runnable, String, ::Java::Long] }
-    # 
     # Allocates a new <code>Thread</code> object so that it has
     # <code>target</code> as its run object, has the specified
     # <code>name</code> as its name, belongs to the thread group referred to
@@ -890,7 +866,6 @@ module Java::Lang
     end
     
     typesig { [] }
-    # 
     # Causes this thread to begin execution; the Java Virtual Machine
     # calls the <code>run</code> method of this thread.
     # <p>
@@ -909,7 +884,6 @@ module Java::Lang
     # @see        #stop()
     def start
       synchronized(self) do
-        # 
         # This method is not invoked for the main method thread or "system"
         # group threads created/set up by the VM. Any new functionality added
         # to this method in the future may have to also be added to the VM.
@@ -933,7 +907,6 @@ module Java::Lang
     end
     
     typesig { [] }
-    # 
     # If this thread was constructed using a separate
     # <code>Runnable</code> run object, then that
     # <code>Runnable</code> object's <code>run</code> method is called;
@@ -951,7 +924,6 @@ module Java::Lang
     end
     
     typesig { [] }
-    # 
     # This method is called by the system to give a Thread
     # a chance to clean up before it actually exits.
     def exit
@@ -970,7 +942,6 @@ module Java::Lang
     end
     
     typesig { [] }
-    # 
     # Forces the thread to stop executing.
     # <p>
     # If there is a security manager installed, its <code>checkAccess</code>
@@ -1045,7 +1016,6 @@ module Java::Lang
     end
     
     typesig { [Exception] }
-    # 
     # Forces the thread to stop executing.
     # <p>
     # If there is a security manager installed, the <code>checkAccess</code>
@@ -1100,7 +1070,6 @@ module Java::Lang
     end
     
     typesig { [Exception] }
-    # 
     # Common impl for stop() and stop(Throwable).
     def stop1(th)
       synchronized(self) do
@@ -1128,7 +1097,6 @@ module Java::Lang
     end
     
     typesig { [] }
-    # 
     # Interrupts this thread.
     # 
     # <p> Unless the current thread is interrupting itself, which is
@@ -1183,7 +1151,6 @@ module Java::Lang
     
     class_module.module_eval {
       typesig { [] }
-      # 
       # Tests whether the current thread has been interrupted.  The
       # <i>interrupted status</i> of the thread is cleared by this method.  In
       # other words, if this method were to be called twice in succession, the
@@ -1205,7 +1172,6 @@ module Java::Lang
     }
     
     typesig { [] }
-    # 
     # Tests whether this thread has been interrupted.  The <i>interrupted
     # status</i> of the thread is unaffected by this method.
     # 
@@ -1223,7 +1189,6 @@ module Java::Lang
     
     JNI.native_method :Java_java_lang_Thread_isInterrupted, [:pointer, :long, :int8], :int8
     typesig { [::Java::Boolean] }
-    # 
     # Tests if some Thread has been interrupted.  The interrupted state
     # is reset or not based on the value of ClearInterrupted that is
     # passed.
@@ -1232,7 +1197,6 @@ module Java::Lang
     end
     
     typesig { [] }
-    # 
     # Throws {@link NoSuchMethodError}.
     # 
     # @deprecated This method was originally designed to destroy this
@@ -1254,7 +1218,6 @@ module Java::Lang
     
     JNI.native_method :Java_java_lang_Thread_isAlive, [:pointer, :long], :int8
     typesig { [] }
-    # 
     # Tests if this thread is alive. A thread is alive if it has
     # been started and has not yet died.
     # 
@@ -1265,7 +1228,6 @@ module Java::Lang
     end
     
     typesig { [] }
-    # 
     # Suspends this thread.
     # <p>
     # First, the <code>checkAccess</code> method of this thread is called
@@ -1294,7 +1256,6 @@ module Java::Lang
     end
     
     typesig { [] }
-    # 
     # Resumes a suspended thread.
     # <p>
     # First, the <code>checkAccess</code> method of this thread is called
@@ -1319,7 +1280,6 @@ module Java::Lang
     end
     
     typesig { [::Java::Int] }
-    # 
     # Changes the priority of this thread.
     # <p>
     # First the <code>checkAccess</code> method of this thread is called
@@ -1357,7 +1317,6 @@ module Java::Lang
     end
     
     typesig { [] }
-    # 
     # Returns this thread's priority.
     # 
     # @return  this thread's priority.
@@ -1367,7 +1326,6 @@ module Java::Lang
     end
     
     typesig { [String] }
-    # 
     # Changes the name of this thread to be equal to the argument
     # <code>name</code>.
     # <p>
@@ -1386,7 +1344,6 @@ module Java::Lang
     end
     
     typesig { [] }
-    # 
     # Returns this thread's name.
     # 
     # @return  this thread's name.
@@ -1396,7 +1353,6 @@ module Java::Lang
     end
     
     typesig { [] }
-    # 
     # Returns the thread group to which this thread belongs.
     # This method returns null if this thread has died
     # (been stopped).
@@ -1408,7 +1364,6 @@ module Java::Lang
     
     class_module.module_eval {
       typesig { [] }
-      # 
       # Returns the number of active threads in the current thread's thread
       # group.
       # 
@@ -1419,7 +1374,6 @@ module Java::Lang
       end
       
       typesig { [Array.typed(JavaThread)] }
-      # 
       # Copies into the specified array every active thread in
       # the current thread's thread group and its subgroups. This method simply
       # calls the <code>enumerate</code> method of the current thread's thread
@@ -1444,7 +1398,6 @@ module Java::Lang
     
     JNI.native_method :Java_java_lang_Thread_countStackFrames, [:pointer, :long], :int32
     typesig { [] }
-    # 
     # Counts the number of stack frames in this thread. The thread must
     # be suspended.
     # 
@@ -1459,7 +1412,6 @@ module Java::Lang
     end
     
     typesig { [::Java::Long] }
-    # 
     # Waits at most <code>millis</code> milliseconds for this thread to
     # die. A timeout of <code>0</code> means to wait forever.
     # 
@@ -1492,7 +1444,6 @@ module Java::Lang
     end
     
     typesig { [::Java::Long, ::Java::Int] }
-    # 
     # Waits at most <code>millis</code> milliseconds plus
     # <code>nanos</code> nanoseconds for this thread to die.
     # 
@@ -1519,7 +1470,6 @@ module Java::Lang
     end
     
     typesig { [] }
-    # 
     # Waits for this thread to die.
     # 
     # @exception  InterruptedException if any thread has interrupted
@@ -1531,7 +1481,6 @@ module Java::Lang
     
     class_module.module_eval {
       typesig { [] }
-      # 
       # Prints a stack trace of the current thread to the standard error stream.
       # This method is used only for debugging.
       # 
@@ -1542,7 +1491,6 @@ module Java::Lang
     }
     
     typesig { [::Java::Boolean] }
-    # 
     # Marks this thread as either a daemon thread or a user thread. The
     # Java Virtual Machine exits when the only threads running are all
     # daemon threads.
@@ -1570,7 +1518,6 @@ module Java::Lang
     end
     
     typesig { [] }
-    # 
     # Tests if this thread is a daemon thread.
     # 
     # @return  <code>true</code> if this thread is a daemon thread;
@@ -1581,7 +1528,6 @@ module Java::Lang
     end
     
     typesig { [] }
-    # 
     # Determines if the currently running thread has permission to
     # modify this thread.
     # <p>
@@ -1600,7 +1546,6 @@ module Java::Lang
     end
     
     typesig { [] }
-    # 
     # Returns a string representation of this thread, including the
     # thread's name, priority, and thread group.
     # 
@@ -1615,7 +1560,6 @@ module Java::Lang
     end
     
     typesig { [] }
-    # 
     # Returns the context ClassLoader for this Thread. The context
     # ClassLoader is provided by the creator of the thread for use
     # by code running in this thread when loading classes and resources.
@@ -1658,7 +1602,6 @@ module Java::Lang
     end
     
     typesig { [ClassLoader] }
-    # 
     # Sets the context ClassLoader for this Thread. The context
     # ClassLoader can be set when a thread is created, and allows
     # the creator of the thread to provide the appropriate class loader
@@ -1689,7 +1632,6 @@ module Java::Lang
     class_module.module_eval {
       JNI.native_method :Java_java_lang_Thread_holdsLock, [:pointer, :long, :long], :int8
       typesig { [Object] }
-      # 
       # Returns <tt>true</tt> if and only if the current thread holds the
       # monitor lock on the specified object.
       # 
@@ -1713,7 +1655,6 @@ module Java::Lang
     }
     
     typesig { [] }
-    # 
     # Returns an array of stack trace elements representing the stack dump
     # of this thread.  This method will return a zero-length array if
     # this thread has not started or has terminated.
@@ -1775,7 +1716,6 @@ module Java::Lang
     
     class_module.module_eval {
       typesig { [] }
-      # 
       # Returns a map of stack traces for all live threads.
       # The map keys are threads and each map value is an array of
       # <tt>StackTraceElement</tt> that represents the stack dump
@@ -1839,7 +1779,6 @@ module Java::Lang
       const_attr_reader  :SubclassAudits
       
       typesig { [Class] }
-      # 
       # Verifies that this (possibly subclass) instance can be constructed
       # without violating security constraints: the subclass must not override
       # security-sensitive non-final methods, or else the
@@ -1852,7 +1791,6 @@ module Java::Lang
         synchronized((SubclassAudits)) do
           result = SubclassAudits.get(cl)
           if ((result).nil?)
-            # 
             # Note: only new Boolean instances (i.e., not Boolean.TRUE or
             # Boolean.FALSE) must be used as cache values, otherwise cache
             # entry will pin associated class.
@@ -1864,7 +1802,6 @@ module Java::Lang
       end
       
       typesig { [Class] }
-      # 
       # Performs reflective checks on given subclass to verify that it doesn't
       # override security-sensitive non-final methods.  Returns true if the
       # subclass overrides any of the methods, false otherwise.
@@ -1919,7 +1856,6 @@ module Java::Lang
     }
     
     typesig { [] }
-    # 
     # Returns the identifier of this Thread.  The thread ID is a positive
     # <tt>long</tt> number generated when this thread was created.
     # The thread ID is unique and remains unchanged during its lifetime.
@@ -1950,7 +1886,6 @@ module Java::Lang
       const_set_lazy(:TERMINATED) { State::TERMINATED }
       const_attr_reader  :TERMINATED
       
-      # 
       # A thread state.  A thread can be in one of the following states:
       # <ul>
       # <li>{@link #NEW}<br>
@@ -1987,12 +1922,10 @@ module Java::Lang
         include_class_members JavaThread
         
         class_module.module_eval {
-          # 
           # Thread state for a thread which has not yet started.
           const_set_lazy(:NEW) { State.new.set_value_name("NEW") }
           const_attr_reader  :NEW
           
-          # 
           # Thread state for a runnable thread.  A thread in the runnable
           # state is executing in the Java virtual machine but it may
           # be waiting for other resources from the operating system
@@ -2000,7 +1933,6 @@ module Java::Lang
           const_set_lazy(:RUNNABLE) { State.new.set_value_name("RUNNABLE") }
           const_attr_reader  :RUNNABLE
           
-          # 
           # Thread state for a thread blocked waiting for a monitor lock.
           # A thread in the blocked state is waiting for a monitor lock
           # to enter a synchronized block/method or
@@ -2009,7 +1941,6 @@ module Java::Lang
           const_set_lazy(:BLOCKED) { State.new.set_value_name("BLOCKED") }
           const_attr_reader  :BLOCKED
           
-          # 
           # Thread state for a waiting thread.
           # A thread is in the waiting state due to calling one of the
           # following methods:
@@ -2030,7 +1961,6 @@ module Java::Lang
           const_set_lazy(:WAITING) { State.new.set_value_name("WAITING") }
           const_attr_reader  :WAITING
           
-          # 
           # Thread state for a waiting thread with a specified waiting time.
           # A thread is in the timed waiting state due to calling one of
           # the following methods with a specified positive waiting time:
@@ -2044,7 +1974,6 @@ module Java::Lang
           const_set_lazy(:TIMED_WAITING) { State.new.set_value_name("TIMED_WAITING") }
           const_attr_reader  :TIMED_WAITING
           
-          # 
           # Thread state for a terminated thread.
           # The thread has completed execution.
           const_set_lazy(:TERMINATED) { State.new.set_value_name("TERMINATED") }
@@ -2079,7 +2008,6 @@ module Java::Lang
     }
     
     typesig { [] }
-    # 
     # Returns the state of this thread.
     # This method is designed for use in monitoring of the system state,
     # not for synchronization control.
@@ -2118,7 +2046,6 @@ module Java::Lang
         include_class_members JavaThread
         
         typesig { [JavaThread, Exception] }
-        # 
         # Method invoked when the given thread terminates due to the
         # given uncaught exception.
         # <p>Any exception thrown by this method will be ignored by the
@@ -2152,7 +2079,6 @@ module Java::Lang
       alias_method :attr_default_uncaught_exception_handler=, :default_uncaught_exception_handler=
       
       typesig { [UncaughtExceptionHandler] }
-      # 
       # Set the default handler invoked when a thread abruptly terminates
       # due to an uncaught exception, and no other handler has been defined
       # for that thread.
@@ -2194,7 +2120,6 @@ module Java::Lang
       end
       
       typesig { [] }
-      # 
       # Returns the default handler invoked when a thread abruptly terminates
       # due to an uncaught exception. If the returned value is <tt>null</tt>,
       # there is no default.
@@ -2206,7 +2131,6 @@ module Java::Lang
     }
     
     typesig { [] }
-    # 
     # Returns the handler invoked when this thread abruptly terminates
     # due to an uncaught exception. If this thread has not had an
     # uncaught exception handler explicitly set then this thread's
@@ -2218,7 +2142,6 @@ module Java::Lang
     end
     
     typesig { [UncaughtExceptionHandler] }
-    # 
     # Set the handler invoked when this thread abruptly terminates
     # due to an uncaught exception.
     # <p>A thread can take full control of how it responds to uncaught
@@ -2238,7 +2161,6 @@ module Java::Lang
     end
     
     typesig { [Exception] }
-    # 
     # Dispatch an uncaught exception to the handler. This method is
     # intended to be called only by the JVM.
     def dispatch_uncaught_exception(e)

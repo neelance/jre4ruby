@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 1995-2004 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -32,7 +31,6 @@ module Sun::Misc
     }
   end
   
-  # 
   # A "Ref" is an indirect reference to an object that the garbage collector
   # knows about.  An application should override the reconstitute() method with one
   # that will construct the object based on information in the Ref, often by
@@ -57,7 +55,6 @@ module Sun::Misc
     undef_method :soft=
     
     typesig { [] }
-    # 
     # Returns a pointer to the object referenced by this Ref.  If the object
     # has been thrown away by the garbage collector, it will be
     # reconstituted. This method does everything necessary to ensure that the garbage
@@ -76,7 +73,6 @@ module Sun::Misc
     end
     
     typesig { [] }
-    # 
     # Returns a pointer to the object referenced by this Ref by
     # reconstituting it from some external source (such as a file).  This method should not
     # bother with caching since the method get() will deal with that.
@@ -90,7 +86,6 @@ module Sun::Misc
     end
     
     typesig { [] }
-    # 
     # Flushes the cached object.  Forces the next invocation of get() to
     # invoke reconstitute().
     def flush
@@ -104,7 +99,6 @@ module Sun::Misc
     end
     
     typesig { [Object] }
-    # 
     # Sets the thing to the specified object.
     # @param thing the specified object
     def set_thing(thing)
@@ -115,7 +109,6 @@ module Sun::Misc
     end
     
     typesig { [] }
-    # 
     # Checks to see what object is being pointed at by this Ref and returns it.
     def check
       synchronized(self) do
@@ -128,14 +121,12 @@ module Sun::Misc
     end
     
     typesig { [] }
-    # 
     # Constructs a new Ref.
     def initialize
       @soft = nil
     end
     
     typesig { [Object] }
-    # 
     # Constructs a new Ref that initially points to thing.
     def initialize(thing)
       @soft = nil

@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 2000-2001 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -32,7 +31,6 @@ module Java::Security::Cert
     }
   end
   
-  # 
   # This class represents the successful result of the PKIX certification
   # path builder algorithm. All certification paths that are built and
   # returned using this algorithm are also validated according to the PKIX
@@ -71,7 +69,6 @@ module Java::Security::Cert
     undef_method :cert_path=
     
     typesig { [CertPath, TrustAnchor, PolicyNode, PublicKey] }
-    # 
     # Creates an instance of <code>PKIXCertPathBuilderResult</code>
     # containing the specified parameters.
     # 
@@ -94,7 +91,6 @@ module Java::Security::Cert
     end
     
     typesig { [] }
-    # 
     # Returns the built and validated certification path. The
     # <code>CertPath</code> object does not include the trust anchor.
     # Instead, use the {@link #getTrustAnchor() getTrustAnchor()} method to
@@ -108,7 +104,6 @@ module Java::Security::Cert
     end
     
     typesig { [] }
-    # 
     # Return a printable representation of this
     # <code>PKIXCertPathBuilderResult</code>.
     # 

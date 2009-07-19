@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Portions Copyright 2003 Sun Microsystems, Inc.  All Rights Reserved.
 # 
 # Copyright  (c) 2002 Graz University of Technology. All rights reserved.
@@ -53,7 +52,6 @@ module Sun::Security::Pkcs11::Wrapper
     }
   end
   
-  # 
   # This is the superclass of all checked exceptions used by this package. An
   # exception of this class indicates that a function call to the underlying
   # PKCS#11 module returned a value not equal to CKR_OK. The application can get
@@ -67,7 +65,6 @@ module Sun::Security::Pkcs11::Wrapper
   class PKCS11Exception < PKCS11ExceptionImports.const_get :Exception
     include_class_members PKCS11ExceptionImports
     
-    # 
     # The code of the error which was the reason for this exception.
     attr_accessor :error_code_
     alias_method :attr_error_code_, :error_code_
@@ -89,7 +86,6 @@ module Sun::Security::Pkcs11::Wrapper
     }
     
     typesig { [::Java::Long] }
-    # 
     # Constructor taking the error code as defined for the CKR_* constants
     # in PKCS#11.
     def initialize(error_code)
@@ -99,7 +95,6 @@ module Sun::Security::Pkcs11::Wrapper
     end
     
     typesig { [] }
-    # 
     # This method gets the corresponding text error message from
     # a property file. If this file is not available, it returns the error
     # code as a hex-string.
@@ -117,7 +112,6 @@ module Sun::Security::Pkcs11::Wrapper
     end
     
     typesig { [] }
-    # 
     # Returns the PKCS#11 error code.
     # 
     # @return The error code; e.g. 0x00000030.

@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # reserved comment block
 # DO NOT REMOVE OR ALTER!
 # 
@@ -53,7 +52,6 @@ module Sun::Security::Pkcs11::Wrapper
     }
   end
   
-  # 
   # This is the superclass of all runtime exception used by this library.
   # For instance, Runtime exceptions occur, if an internal error in the native
   # part of the wrapper occurs.
@@ -64,7 +62,6 @@ module Sun::Security::Pkcs11::Wrapper
     include_class_members PKCS11RuntimeExceptionImports
     
     typesig { [] }
-    # 
     # Empty constructor.
     # 
     # @preconditions
@@ -74,7 +71,6 @@ module Sun::Security::Pkcs11::Wrapper
     end
     
     typesig { [String] }
-    # 
     # Constructor taking a string that describes the reason of the exception
     # in more detail.
     # 
@@ -86,7 +82,6 @@ module Sun::Security::Pkcs11::Wrapper
     end
     
     typesig { [Exception] }
-    # 
     # Constructor taking an other exception to wrap.
     # 
     # @param encapsulatedException The other exception the wrap into this.
@@ -97,7 +92,6 @@ module Sun::Security::Pkcs11::Wrapper
     end
     
     typesig { [String, Exception] }
-    # 
     # Constructor taking a message for this exception and an other exception to
     # wrap.
     # 

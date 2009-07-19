@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 1999-2007 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -38,7 +37,6 @@ module Sun::Security::Ssl
     }
   end
   
-  # 
   # An implemention of X509KeyManager backed by a KeyStore.
   # 
   # The backing KeyStore is inspected when this object is constructed.
@@ -77,7 +75,6 @@ module Sun::Security::Ssl
       const_attr_reader  :STRING0
     }
     
-    # 
     # The credentials from the KeyStore as
     # Map: String(alias) -> X509Credentials(credentials)
     attr_accessor :credentials_map
@@ -86,7 +83,6 @@ module Sun::Security::Ssl
     alias_method :attr_credentials_map=, :credentials_map=
     undef_method :credentials_map=
     
-    # 
     # Cached server aliases for the case issuers == null.
     # (in the current JSSE implementation, issuers are always null for
     # server certs). See chooseServerAlias() for details.
@@ -99,7 +95,6 @@ module Sun::Security::Ssl
     undef_method :server_alias_cache=
     
     class_module.module_eval {
-      # 
       # Basic container for credentials implemented as an inner class.
       const_set_lazy(:X509Credentials) { Class.new do
         include_class_members SunX509KeyManagerImpl
@@ -198,7 +193,6 @@ module Sun::Security::Ssl
     end
     
     typesig { [String] }
-    # 
     # Returns the certificate chain associated with the given alias.
     # 
     # @return the certificate chain (ordered with the user's certificate first
@@ -216,7 +210,6 @@ module Sun::Security::Ssl
     end
     
     typesig { [String] }
-    # 
     # Returns the key associated with the given alias
     def get_private_key(alias_)
       if ((alias_).nil?)
@@ -231,12 +224,10 @@ module Sun::Security::Ssl
     end
     
     typesig { [Array.typed(String), Array.typed(Principal), Socket] }
-    # 
     # Choose an alias to authenticate the client side of a secure
     # socket given the public key type and the list of
     # certificate issuer authorities recognized by the peer (if any).
     def choose_client_alias(key_types, issuers, socket)
-      # 
       # We currently don't do anything with socket, but
       # someday we might.  It might be a useful hint for
       # selecting one of the aliases we get back from
@@ -256,7 +247,6 @@ module Sun::Security::Ssl
     end
     
     typesig { [Array.typed(String), Array.typed(Principal), SSLEngine] }
-    # 
     # Choose an alias to authenticate the client side of an
     # <code>SSLEngine</code> connection given the public key type
     # and the list of certificate issuer authorities recognized by
@@ -264,19 +254,16 @@ module Sun::Security::Ssl
     # 
     # @since 1.5
     def choose_engine_client_alias(key_type, issuers, engine)
-      # 
       # If we ever start using socket as a selection criteria,
       # we'll need to adjust this.
       return choose_client_alias(key_type, issuers, nil)
     end
     
     typesig { [String, Array.typed(Principal), Socket] }
-    # 
     # Choose an alias to authenticate the server side of a secure
     # socket given the public key type and the list of
     # certificate issuer authorities recognized by the peer (if any).
     def choose_server_alias(key_type, issuers, socket)
-      # 
       # We currently don't do anything with socket, but
       # someday we might.  It might be a useful hint for
       # selecting one of the aliases we get back from
@@ -305,7 +292,6 @@ module Sun::Security::Ssl
     end
     
     typesig { [String, Array.typed(Principal), SSLEngine] }
-    # 
     # Choose an alias to authenticate the server side of an
     # <code>SSLEngine</code> connection given the public key type
     # and the list of certificate issuer authorities recognized by
@@ -313,14 +299,12 @@ module Sun::Security::Ssl
     # 
     # @since 1.5
     def choose_engine_server_alias(key_type, issuers, engine)
-      # 
       # If we ever start using socket as a selection criteria,
       # we'll need to adjust this.
       return choose_server_alias(key_type, issuers, nil)
     end
     
     typesig { [String, Array.typed(Principal)] }
-    # 
     # Get the matching aliases for authenticating the client side of a secure
     # socket given the public key type and the list of
     # certificate issuer authorities recognized by the peer (if any).
@@ -329,7 +313,6 @@ module Sun::Security::Ssl
     end
     
     typesig { [String, Array.typed(Principal)] }
-    # 
     # Get the matching aliases for authenticating the server side of a secure
     # socket given the public key type and the list of
     # certificate issuer authorities recognized by the peer (if any).
@@ -338,7 +321,6 @@ module Sun::Security::Ssl
     end
     
     typesig { [String, Array.typed(Principal)] }
-    # 
     # Get the matching aliases for authenticating the either side of a secure
     # socket given the public key type and the list of
     # certificate issuer authorities recognized by the peer (if any).
@@ -416,7 +398,6 @@ module Sun::Security::Ssl
     
     class_module.module_eval {
       typesig { [Array.typed(Principal)] }
-      # 
       # Convert an array of Principals to an array of X500Principals, if
       # possible. Principals that cannot be converted are ignored.
       def convert_principals(principals)

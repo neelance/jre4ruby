@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 2003-2004 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -39,7 +38,6 @@ module Java::Util
     }
   end
   
-  # 
   # A class used to aid in Properties load and save in XML. Keeping this
   # code outside of Properties helps reduce the number of classes loaded
   # when Properties is loaded.
@@ -58,7 +56,6 @@ module Java::Util
       const_set_lazy(:PROPS_DTD) { "<?xml version=\"1.0\" encoding=\"UTF-8\"?>" + "<!-- DTD for properties -->" + "<!ELEMENT properties ( comment?, entry* ) >" + "<!ATTLIST properties" + " version CDATA #FIXED \"1.0\">" + "<!ELEMENT comment (#PCDATA) >" + "<!ELEMENT entry (#PCDATA) >" + "<!ATTLIST entry " + " key CDATA #REQUIRED>" }
       const_attr_reader  :PROPS_DTD
       
-      # 
       # Version number for the format of exported properties files.
       const_set_lazy(:EXTERNAL_XML_VERSION) { "1.0" }
       const_attr_reader  :EXTERNAL_XML_VERSION

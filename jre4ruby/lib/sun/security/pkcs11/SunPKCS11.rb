@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 2003-2007 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -48,7 +47,6 @@ module Sun::Security::Pkcs11
     }
   end
   
-  # 
   # PKCS#11 provider main class.
   # 
   # @author  Andreas Sterbenz
@@ -197,7 +195,6 @@ module Sun::Security::Pkcs11
     }
     
     typesig { [String, InputStream] }
-    # 
     # @deprecated use new SunPKCS11(String) or new SunPKCS11(InputStream) instead
     def initialize(config_name, config_stream)
       @p11 = nil
@@ -225,7 +222,6 @@ module Sun::Security::Pkcs11
       use_secmod = @config.get_nss_use_secmod
       nss_use_secmod_trust = @config.get_nss_use_secmod_trust
       nss_module = nil
-      # 
       # Initialization via Secmod. The way this works is as follows:
       # SunPKCS11 is either in normal mode or in NSS Secmod mode.
       # Secmod is activated by specifying one or more of the following
@@ -253,9 +249,9 @@ module Sun::Security::Pkcs11
               end
             end
             if (!(nss_library_directory).nil?)
-              s_ = secmod.get_lib_dir
-              if ((!(s_).nil?) && (((s_ == nss_library_directory)).equal?(false)))
-                raise ProviderException.new("NSS library directory " + nss_library_directory + " invalid, NSS already initialized with " + s_)
+              s = secmod.get_lib_dir
+              if ((!(s).nil?) && (((s == nss_library_directory)).equal?(false)))
+                raise ProviderException.new("NSS library directory " + nss_library_directory + " invalid, NSS already initialized with " + s)
               end
             end
           else
@@ -375,10 +371,10 @@ module Sun::Security::Pkcs11
           tmp_pkcs11 = PKCS11.get_instance(library, function_list, init_args, @config.get_omit_initialize)
         rescue PKCS11Exception => e
           if (!(Debug).nil?)
-            Debug.println("Multi-threaded initialization failed: " + (e__).to_s)
+            Debug.println("Multi-threaded initialization failed: " + (e).to_s)
           end
           if ((@config.get_allow_single_threaded_modules).equal?(false))
-            raise e__
+            raise e
           end
           # fall back to single threaded access
           if ((nss_args).nil?)
@@ -423,9 +419,9 @@ module Sun::Security::Pkcs11
         end
       rescue Exception => e
         if ((@config.get_handle_startup_errors).equal?(Config::ERR_IGNORE_ALL))
-          raise UnsupportedOperationException.new("Initialization failed", e___)
+          raise UnsupportedOperationException.new("Initialization failed", e)
         else
-          raise ProviderException.new("Initialization failed", e___)
+          raise ProviderException.new("Initialization failed", e)
         end
       end
     end
@@ -940,10 +936,10 @@ module Sun::Security::Pkcs11
         typesig { [] }
         define_method :run do
           supported_algs.entry_set.each do |entry|
-            d = entry.get_key
+            d_ = entry.get_key
             mechanism = entry.get_value.int_value
-            s = d.service(token, mechanism)
-            put_service(s)
+            s_ = d_.service(token, mechanism)
+            put_service(s_)
           end
           if ((!((token.attr_token_info.attr_flags & CKF_RNG)).equal?(0)) && self.attr_config.is_enabled(PCKM_SECURERANDOM) && !token.attr_session_manager.low_max_sessions)
             # do not register SecureRandom if the token does
@@ -1164,7 +1160,6 @@ module Sun::Security::Pkcs11
     }
     
     typesig { [Subject, CallbackHandler] }
-    # 
     # Log in to this provider.
     # 
     # <p> If the token expects a PIN to be supplied by the caller,
@@ -1231,7 +1226,7 @@ module Sun::Security::Pkcs11
           my_handler.handle(callbacks)
         rescue Exception => e
           le = LoginException.new("Unable to perform password callback")
-          le.init_cause(e_)
+          le.init_cause(e)
           raise le
         end
         pin = pcall.get_password
@@ -1264,9 +1259,9 @@ module Sun::Security::Pkcs11
             fle.init_cause(pe)
             raise fle
           else
-            le_ = LoginException.new
-            le_.init_cause(pe)
-            raise le_
+            le = LoginException.new
+            le.init_cause(pe)
+            raise le
           end
         end
       ensure
@@ -1279,7 +1274,6 @@ module Sun::Security::Pkcs11
     end
     
     typesig { [] }
-    # 
     # Log out from this provider
     # 
     # @exception LoginException if the logout operation fails
@@ -1338,7 +1332,6 @@ module Sun::Security::Pkcs11
     end
     
     typesig { [CallbackHandler] }
-    # 
     # Set a <code>CallbackHandler</code>
     # 
     # <p> The provider uses this handler if one is not passed to the
@@ -1436,7 +1429,6 @@ module Sun::Security::Pkcs11
     end
     
     class_module.module_eval {
-      # 
       # Serialized representation of the SunPKCS11 provider.
       const_set_lazy(:SunPKCS11Rep) { Class.new do
         include_class_members SunPKCS11

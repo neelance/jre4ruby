@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 2000-2001 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -31,7 +30,6 @@ module Java::Security::Cert
     }
   end
   
-  # 
   # A specification of the result of a certification path builder algorithm.
   # All results returned by the {@link CertPathBuilder#build
   # CertPathBuilder.build} method must implement this interface.
@@ -59,7 +57,6 @@ module Java::Security::Cert
     include Cloneable
     
     typesig { [] }
-    # 
     # Returns the built certification path.
     # 
     # @return the certification path (never <code>null</code>)
@@ -68,7 +65,6 @@ module Java::Security::Cert
     end
     
     typesig { [] }
-    # 
     # Makes a copy of this <code>CertPathBuilderResult</code>. Changes to the
     # copy will not affect the original and vice versa.
     # 

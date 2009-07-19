@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 1994-2004 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -41,7 +40,6 @@ module Sun::Net::Ftp
     }
   end
   
-  # 
   # This class implements the FTP client.
   # 
   # @author      Jonathan Payne
@@ -174,7 +172,6 @@ module Sun::Net::Ftp
       end
       
       typesig { [] }
-      # 
       # @return the host to use, or null if none has been specified
       def get_ftp_proxy_host
         return Java::Security::AccessController.do_privileged(Class.new(Java::Security::PrivilegedAction.class == Class ? Java::Security::PrivilegedAction : Object) do
@@ -209,7 +206,6 @@ module Sun::Net::Ftp
       end
       
       typesig { [] }
-      # 
       # @return the proxy port to use.  Will default reasonably if not set.
       def get_ftp_proxy_port
         result = Array.typed(::Java::Int).new([80])
@@ -283,7 +279,6 @@ module Sun::Net::Ftp
     }
     
     typesig { [] }
-    # 
     # issue the QUIT command to the FTP server and close the connection.
     # 
     # @exception       FtpProtocolException if an error occured
@@ -295,7 +290,6 @@ module Sun::Net::Ftp
     end
     
     typesig { [String] }
-    # 
     # Send a command to the FTP server.
     # 
     # @param   cmd     String containing the command
@@ -319,7 +313,6 @@ module Sun::Net::Ftp
     end
     
     typesig { [String] }
-    # 
     # Send a command to the FTP server and check for success.
     # 
     # @param   cmd     String containing the command
@@ -332,7 +325,6 @@ module Sun::Net::Ftp
     end
     
     typesig { [] }
-    # 
     # Read the reply from the FTP server.
     # 
     # @return          FTP_SUCCESS or FTP_ERROR depending on success
@@ -362,7 +354,6 @@ module Sun::Net::Ftp
     end
     
     typesig { [] }
-    # 
     # Tries to open a Data Connection in "PASSIVE" mode by issuing a EPSV or
     # PASV command then opening a Socket to the specified address & port
     # 
@@ -373,7 +364,6 @@ module Sun::Net::Ftp
       server_answer = nil
       port = 0
       dest = nil
-      # 
       # Here is the idea:
       # 
       # - First we want to try the new (and IPv6 compatible) EPSV command
@@ -429,22 +419,22 @@ module Sun::Net::Ftp
         # 
         # The regular expression is a bit more complex this time, because the
         # parenthesis are optionals and we have to use 3 groups.
-        p_ = Pattern.compile("227 .* \\(?(\\d{1,3},\\d{1,3},\\d{1,3},\\d{1,3}),(\\d{1,3}),(\\d{1,3})\\)?")
-        m_ = p_.matcher(server_answer)
-        if (!m_.find)
+        p = Pattern.compile("227 .* \\(?(\\d{1,3},\\d{1,3},\\d{1,3},\\d{1,3}),(\\d{1,3}),(\\d{1,3})\\)?")
+        m = p.matcher(server_answer)
+        if (!m.find)
           raise FtpProtocolException.new("PASV failed : " + server_answer)
         end
         # Get port number out of group 2 & 3
-        port = JavaInteger.parse_int(m_.group(3)) + (JavaInteger.parse_int(m_.group(2)) << 8)
+        port = JavaInteger.parse_int(m.group(3)) + (JavaInteger.parse_int(m.group(2)) << 8)
         # IP address is simple
-        s_ = m_.group(1).replace(Character.new(?,.ord), Character.new(?..ord))
-        dest = InetSocketAddress.new(s_, port)
+        s = m.group(1).replace(Character.new(?,.ord), Character.new(?..ord))
+        dest = InetSocketAddress.new(s, port)
       end
       # Got everything, let's open the socket!
-      s__ = nil
+      s = nil
       if (!(self.attr_proxy).nil?)
         if ((self.attr_proxy.type).equal?(Proxy::Type::SOCKS))
-          s__ = AccessController.do_privileged(Class.new(PrivilegedAction.class == Class ? PrivilegedAction : Object) do
+          s = AccessController.do_privileged(Class.new(PrivilegedAction.class == Class ? PrivilegedAction : Object) do
             extend LocalClass
             include_class_members FtpClient
             include PrivilegedAction if PrivilegedAction.class == Module
@@ -463,32 +453,31 @@ module Sun::Net::Ftp
             alias_method :initialize_anonymous, :initialize
           end.new_local(self))
         else
-          s__ = Socket.new(Proxy::NO_PROXY)
+          s = Socket.new(Proxy::NO_PROXY)
         end
       else
-        s__ = Socket.new
+        s = Socket.new
       end
       if (self.attr_connect_timeout >= 0)
-        s__.connect(dest, self.attr_connect_timeout)
+        s.connect(dest, self.attr_connect_timeout)
       else
         if (self.attr_default_connect_timeout > 0)
-          s__.connect(dest, self.attr_default_connect_timeout)
+          s.connect(dest, self.attr_default_connect_timeout)
         else
-          s__.connect(dest)
+          s.connect(dest)
         end
       end
       if (self.attr_read_timeout >= 0)
-        s__.set_so_timeout(self.attr_read_timeout)
+        s.set_so_timeout(self.attr_read_timeout)
       else
         if (self.attr_default_so_timeout > 0)
-          s__.set_so_timeout(self.attr_default_so_timeout)
+          s.set_so_timeout(self.attr_default_so_timeout)
         end
       end
-      return s__
+      return s
     end
     
     typesig { [String] }
-    # 
     # Tries to open a Data Connection with the server. It will first try a passive
     # mode connection, then, if it fails, a more traditional PORT command
     # 
@@ -604,7 +593,6 @@ module Sun::Net::Ftp
     end
     
     typesig { [String, ::Java::Int] }
-    # 
     # Open a FTP connection to host <i>host</i> on port <i>port</i>.
     # 
     # @param   host    the hostname of the ftp server
@@ -620,7 +608,6 @@ module Sun::Net::Ftp
     end
     
     typesig { [String, String] }
-    # 
     # login user to a host with username <i>user</i> and password
     # <i>password</i>
     # 
@@ -638,7 +625,6 @@ module Sun::Net::Ftp
       if ((issue_command("USER " + user)).equal?(self.attr_ftp_error))
         raise FtpLoginException.new("user " + user + " : " + (get_response_string).to_s)
       end
-      # 
       # Checks for "331 User name okay, need password." answer
       if ((@last_reply_code).equal?(331))
         if (((password).nil?) || ((password.length).equal?(0)) || ((issue_command("PASS " + password)).equal?(self.attr_ftp_error)))
@@ -666,7 +652,6 @@ module Sun::Net::Ftp
     end
     
     typesig { [String] }
-    # 
     # GET a file from the FTP server
     # 
     # @param   filename        name of the file to retrieve
@@ -677,7 +662,7 @@ module Sun::Net::Ftp
       s = nil
       begin
         s = open_data_connection("RETR " + filename)
-      rescue FileNotFoundException => fileException
+      rescue FileNotFoundException => file_exception
         # Well, "/" might not be the file delimitor for this
         # particular ftp server, so let's try a series of
         # "cd" commands to get to the right place.
@@ -710,7 +695,6 @@ module Sun::Net::Ftp
     end
     
     typesig { [String] }
-    # 
     # PUT a file to the FTP server
     # 
     # @param   filename        name of the file to store
@@ -725,7 +709,6 @@ module Sun::Net::Ftp
     end
     
     typesig { [String] }
-    # 
     # Append to a file on the FTP server
     # 
     # @param   filename        name of the file to append to
@@ -740,7 +723,6 @@ module Sun::Net::Ftp
     end
     
     typesig { [] }
-    # 
     # LIST files in the current directory on a remote FTP server
     # 
     # @return  the <code>InputStream</code> to read the list from
@@ -750,7 +732,6 @@ module Sun::Net::Ftp
     end
     
     typesig { [String] }
-    # 
     # List (NLST) file names on a remote FTP server
     # 
     # @param   path    pathname to the directory to list, null for current
@@ -768,7 +749,6 @@ module Sun::Net::Ftp
     end
     
     typesig { [String] }
-    # 
     # CD to a specific directory on a remote FTP server
     # 
     # @param   remoteDirectory path of the directory to CD to
@@ -782,21 +762,18 @@ module Sun::Net::Ftp
     end
     
     typesig { [] }
-    # 
     # CD to the parent directory on a remote FTP server
     def cd_up
       issue_command_check("CDUP")
     end
     
     typesig { [] }
-    # 
     # Print working directory of remote FTP server
     # 
     # @exception FtpProtocolException if the command fails
     def pwd
       answ = nil
       issue_command_check("PWD")
-      # 
       # answer will be of the following format :
       # 
       # 257 "/" is current directory.
@@ -808,7 +785,6 @@ module Sun::Net::Ftp
     end
     
     typesig { [] }
-    # 
     # Set transfer type to 'I'
     # 
     # @exception FtpProtocolException if the command fails
@@ -818,7 +794,6 @@ module Sun::Net::Ftp
     end
     
     typesig { [] }
-    # 
     # Set transfer type to 'A'
     # 
     # @exception FtpProtocolException if the command fails
@@ -828,7 +803,6 @@ module Sun::Net::Ftp
     end
     
     typesig { [String, String] }
-    # 
     # Rename a file on the ftp server
     # 
     # @exception FtpProtocolException if the command fails
@@ -838,7 +812,6 @@ module Sun::Net::Ftp
     end
     
     typesig { [] }
-    # 
     # Get the "System string" from the FTP server
     # 
     # @exception       FtpProtocolException if it fails
@@ -853,7 +826,6 @@ module Sun::Net::Ftp
     end
     
     typesig { [] }
-    # 
     # Send a No-operation command. It's usefull for testing the connection status
     # 
     # @exception FtpProtocolException if the command fails
@@ -862,7 +834,6 @@ module Sun::Net::Ftp
     end
     
     typesig { [] }
-    # 
     # Reinitialize the USER parameters on the FTp server
     # 
     # @exception FtpProtocolException if the command fails
@@ -872,7 +843,6 @@ module Sun::Net::Ftp
     end
     
     typesig { [String] }
-    # 
     # New FTP client connected to host <i>host</i>.
     # 
     # @param   host    Hostname of the FTP server
@@ -895,7 +865,6 @@ module Sun::Net::Ftp
     end
     
     typesig { [String, ::Java::Int] }
-    # 
     # New FTP client connected to host <i>host</i>, port <i>port</i>.
     # 
     # @param   host    Hostname of the FTP server
@@ -954,7 +923,6 @@ module Sun::Net::Ftp
     
     typesig { [] }
     def finalize
-      # 
       # Do not call the "normal" closeServer() as we want finalization
       # to be as efficient as possible
       if (server_is_open)

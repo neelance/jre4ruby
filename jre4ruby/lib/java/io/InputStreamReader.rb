@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 1996-2005 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -34,7 +33,6 @@ module Java::Io
     }
   end
   
-  # 
   # An InputStreamReader is a bridge from byte streams to character streams: It
   # reads bytes and decodes them into characters using a specified {@link
   # java.nio.charset.Charset <code>charset</code>}.  The charset that it uses
@@ -71,7 +69,6 @@ module Java::Io
     undef_method :sd=
     
     typesig { [InputStream] }
-    # 
     # Creates an InputStreamReader that uses the default charset.
     # 
     # @param  in   An InputStream
@@ -87,7 +84,6 @@ module Java::Io
     end
     
     typesig { [InputStream, String] }
-    # 
     # Creates an InputStreamReader that uses the named charset.
     # 
     # @param  in
@@ -109,7 +105,6 @@ module Java::Io
     end
     
     typesig { [InputStream, Charset] }
-    # 
     # Creates an InputStreamReader that uses the given charset. </p>
     # 
     # @param  in       An InputStream
@@ -127,7 +122,6 @@ module Java::Io
     end
     
     typesig { [InputStream, CharsetDecoder] }
-    # 
     # Creates an InputStreamReader that uses the given charset decoder.  </p>
     # 
     # @param  in       An InputStream
@@ -145,7 +139,6 @@ module Java::Io
     end
     
     typesig { [] }
-    # 
     # Returns the name of the character encoding being used by this stream.
     # 
     # <p> If the encoding has an historical name then that name is returned;
@@ -169,7 +162,6 @@ module Java::Io
     end
     
     typesig { [] }
-    # 
     # Reads a single character.
     # 
     # @return The character read, or -1 if the end of the stream has been
@@ -181,7 +173,6 @@ module Java::Io
     end
     
     typesig { [Array.typed(::Java::Char), ::Java::Int, ::Java::Int] }
-    # 
     # Reads characters into a portion of an array.
     # 
     # @param      cbuf     Destination buffer
@@ -197,7 +188,6 @@ module Java::Io
     end
     
     typesig { [] }
-    # 
     # Tells whether this stream is ready to be read.  An InputStreamReader is
     # ready if its input buffer is not empty, or if bytes are available to be
     # read from the underlying byte stream.

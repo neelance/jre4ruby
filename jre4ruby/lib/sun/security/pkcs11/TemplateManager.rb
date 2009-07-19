@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 2003 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -34,7 +33,6 @@ module Sun::Security::Pkcs11
     }
   end
   
-  # 
   # TemplateManager class.
   # 
   # Not all PKCS#11 tokens are created equal. One token may require that one
@@ -177,7 +175,6 @@ module Sun::Security::Pkcs11
     end
     
     class_module.module_eval {
-      # 
       # Nested class representing a template identifier.
       const_set_lazy(:TemplateKey) { Class.new do
         include_class_members TemplateManager
@@ -249,7 +246,6 @@ module Sun::Security::Pkcs11
         alias_method :initialize__template_key, :initialize
       end }
       
-      # 
       # Nested class representing template attributes.
       const_set_lazy(:Template) { Class.new do
         include_class_members TemplateManager
@@ -289,7 +285,6 @@ module Sun::Security::Pkcs11
         
         class_module.module_eval {
           typesig { [Array.typed(CK_ATTRIBUTE), Array.typed(CK_ATTRIBUTE)] }
-          # 
           # Combine two sets of attributes. The second set has precedence
           # over the first and overrides its settings.
           def combine(attrs1, attrs2)

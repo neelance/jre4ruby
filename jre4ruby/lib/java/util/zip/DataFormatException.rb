@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 1996 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -31,7 +30,6 @@ module Java::Util::Zip
     }
   end
   
-  # 
   # Signals that a data format error has occurred.
   # 
   # @author      David Connelly
@@ -39,14 +37,12 @@ module Java::Util::Zip
     include_class_members DataFormatExceptionImports
     
     typesig { [] }
-    # 
     # Constructs a DataFormatException with no detail message.
     def initialize
       super()
     end
     
     typesig { [String] }
-    # 
     # Constructs a DataFormatException with the specified detail message.
     # A detail message is a String that describes this particular exception.
     # @param s the String containing a detail message

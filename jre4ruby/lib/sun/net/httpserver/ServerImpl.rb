@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 2005-2007 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -43,7 +42,6 @@ module Sun::Net::Httpserver
     }
   end
   
-  # 
   # Provides implementation for both HTTP and HTTPS
   class ServerImpl 
     include_class_members ServerImplImports
@@ -521,27 +519,27 @@ module Sun::Net::Httpserver
                   begin
                     if (key.is_readable)
                       closed = false
-                      chan_ = key.channel
+                      chan = key.channel
                       conn = key.attachment
                       # interestOps will be restored at end of read
                       key.interest_ops(0)
-                      handle(chan_, conn)
+                      handle(chan, conn)
                     else
                       raise AssertError if not (false)
                     end
                   rescue IOException => e
-                    conn_ = key.attachment
+                    conn = key.attachment
                     self.attr_logger.log(Level::FINER, "Dispatcher (2)", e)
-                    conn_.close
+                    conn.close
                   end
                 end
               end
             rescue CancelledKeyException => e
-              self.attr_logger.log(Level::FINER, "Dispatcher (3)", e_)
+              self.attr_logger.log(Level::FINER, "Dispatcher (3)", e)
             rescue IOException => e
-              self.attr_logger.log(Level::FINER, "Dispatcher (4)", e__)
+              self.attr_logger.log(Level::FINER, "Dispatcher (4)", e)
             rescue Exception => e
-              self.attr_logger.log(Level::FINER, "Dispatcher (7)", e___)
+              self.attr_logger.log(Level::FINER, "Dispatcher (7)", e)
             end
           end
         end
@@ -946,7 +944,6 @@ module Sun::Net::Httpserver
     end
     
     class_module.module_eval {
-      # 
       # TimerTask run every CLOCK_TICK ms
       const_set_lazy(:ServerTimerTask) { Class.new(TimerTask) do
         extend LocalClass
@@ -964,9 +961,9 @@ module Sun::Net::Httpserver
               end
             end
             to_close.each do |c|
-              self.attr_idle_connections.remove(c_)
-              self.attr_all_connections.remove(c_)
-              c_.close
+              self.attr_idle_connections.remove(c)
+              self.attr_all_connections.remove(c)
+              c.close
             end
           end
         end

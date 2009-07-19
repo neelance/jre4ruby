@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 2000-2006 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -52,7 +51,6 @@ module Java::Nio::Charset
     }
   end
   
-  # 
   # A named mapping between sequences of sixteen-bit Unicode <a
   # href="../../lang/Character.html#unicode">code units</a> and sequences of
   # bytes.  This class defines methods for creating decoders and encoders and
@@ -289,7 +287,6 @@ module Java::Nio::Charset
       end
       
       typesig { [String] }
-      # 
       # Checks that the given string is a legal charset name. </p>
       # 
       # @param  s
@@ -586,9 +583,9 @@ module Java::Nio::Charset
               # Extended charsets not available
               # (charsets.jar not present)
             rescue InstantiationException => x
-              raise JavaError.new(x_)
+              raise JavaError.new(x)
             rescue IllegalAccessException => x
-              raise JavaError.new(x__)
+              raise JavaError.new(x)
             end
             return nil
           end
@@ -650,7 +647,6 @@ module Java::Nio::Charset
       end
       
       typesig { [String] }
-      # 
       # Tells whether the named charset is supported. </p>
       # 
       # @param  charsetName
@@ -670,7 +666,6 @@ module Java::Nio::Charset
       end
       
       typesig { [String] }
-      # 
       # Returns a charset object for the named charset. </p>
       # 
       # @param  charsetName
@@ -709,7 +704,6 @@ module Java::Nio::Charset
       end
       
       typesig { [] }
-      # 
       # Constructs a sorted map from canonical charset names to charset objects.
       # 
       # <p> The map returned by this method will have one entry for each charset
@@ -774,7 +768,6 @@ module Java::Nio::Charset
       alias_method :attr_default_charset=, :default_charset=
       
       typesig { [] }
-      # 
       # Returns the default charset of this Java virtual machine.
       # 
       # <p> The default charset is determined during virtual-machine startup and
@@ -822,7 +815,6 @@ module Java::Nio::Charset
     undef_method :alias_set=
     
     typesig { [String, Array.typed(String)] }
-    # 
     # Initializes a new charset with the given canonical name and alias
     # set. </p>
     # 
@@ -850,7 +842,6 @@ module Java::Nio::Charset
     end
     
     typesig { [] }
-    # 
     # Returns this charset's canonical name. </p>
     # 
     # @return  The canonical name of this charset
@@ -859,7 +850,6 @@ module Java::Nio::Charset
     end
     
     typesig { [] }
-    # 
     # Returns a set containing this charset's aliases. </p>
     # 
     # @return  An immutable set of this charset's aliases
@@ -879,7 +869,6 @@ module Java::Nio::Charset
     end
     
     typesig { [] }
-    # 
     # Returns this charset's human-readable name for the default locale.
     # 
     # <p> The default implementation of this method simply returns this
@@ -892,7 +881,6 @@ module Java::Nio::Charset
     end
     
     typesig { [] }
-    # 
     # Tells whether or not this charset is registered in the <a
     # href="http://www.iana.org/assignments/character-sets">IANA Charset
     # Registry</a>.  </p>
@@ -904,7 +892,6 @@ module Java::Nio::Charset
     end
     
     typesig { [Locale] }
-    # 
     # Returns this charset's human-readable name for the given locale.
     # 
     # <p> The default implementation of this method simply returns this
@@ -920,7 +907,6 @@ module Java::Nio::Charset
     end
     
     typesig { [Charset] }
-    # 
     # Tells whether or not this charset contains the given charset.
     # 
     # <p> A charset <i>C</i> is said to <i>contain</i> a charset <i>D</i> if,
@@ -948,7 +934,6 @@ module Java::Nio::Charset
     end
     
     typesig { [] }
-    # 
     # Constructs a new decoder for this charset. </p>
     # 
     # @return  A new decoder for this charset
@@ -957,7 +942,6 @@ module Java::Nio::Charset
     end
     
     typesig { [] }
-    # 
     # Constructs a new encoder for this charset. </p>
     # 
     # @return  A new encoder for this charset
@@ -969,7 +953,6 @@ module Java::Nio::Charset
     end
     
     typesig { [] }
-    # 
     # Tells whether or not this charset supports encoding.
     # 
     # <p> Nearly all charsets support encoding.  The primary exceptions are
@@ -986,7 +969,6 @@ module Java::Nio::Charset
     end
     
     typesig { [ByteBuffer] }
-    # 
     # Convenience method that decodes bytes in this charset into Unicode
     # characters.
     # 
@@ -1019,7 +1001,6 @@ module Java::Nio::Charset
     end
     
     typesig { [CharBuffer] }
-    # 
     # Convenience method that encodes Unicode characters into bytes in this
     # charset.
     # 
@@ -1052,7 +1033,6 @@ module Java::Nio::Charset
     end
     
     typesig { [String] }
-    # 
     # Convenience method that encodes a string into bytes in this charset.
     # 
     # <p> An invocation of this method upon a charset <tt>cs</tt> returns the
@@ -1069,7 +1049,6 @@ module Java::Nio::Charset
     end
     
     typesig { [Charset] }
-    # 
     # Compares this charset to another.
     # 
     # <p> Charsets are ordered by their canonical names, without regard to
@@ -1085,7 +1064,6 @@ module Java::Nio::Charset
     end
     
     typesig { [] }
-    # 
     # Computes a hashcode for this charset. </p>
     # 
     # @return  An integer hashcode
@@ -1094,7 +1072,6 @@ module Java::Nio::Charset
     end
     
     typesig { [Object] }
-    # 
     # Tells whether or not this object is equal to another.
     # 
     # <p> Two charsets are equal if, and only if, they have the same canonical
@@ -1113,7 +1090,6 @@ module Java::Nio::Charset
     end
     
     typesig { [] }
-    # 
     # Returns a string describing this charset. </p>
     # 
     # @return  A string describing this charset

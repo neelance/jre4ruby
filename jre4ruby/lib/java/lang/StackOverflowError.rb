@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 1994-1997 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -30,7 +29,6 @@ module Java::Lang
     }
   end
   
-  # 
   # Thrown when a stack overflow occurs because an application
   # recurses too deeply.
   # 
@@ -40,14 +38,12 @@ module Java::Lang
     include_class_members StackOverflowErrorImports
     
     typesig { [] }
-    # 
     # Constructs a <code>StackOverflowError</code> with no detail message.
     def initialize
       super()
     end
     
     typesig { [String] }
-    # 
     # Constructs a <code>StackOverflowError</code> with the specified
     # detail message.
     # 

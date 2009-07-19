@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 2000 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -31,7 +30,6 @@ module Java::Net
     }
   end
   
-  # 
   # Signals that a timeout has occurred on a socket read or accept.
   # 
   # @since   1.4
@@ -39,7 +37,6 @@ module Java::Net
     include_class_members SocketTimeoutExceptionImports
     
     typesig { [String] }
-    # 
     # Constructs a new SocketTimeoutException with a detail
     # message.
     # @param msg the detail message
@@ -48,7 +45,6 @@ module Java::Net
     end
     
     typesig { [] }
-    # 
     # Construct a new SocketTimeoutException with no detailed message.
     def initialize
       super()

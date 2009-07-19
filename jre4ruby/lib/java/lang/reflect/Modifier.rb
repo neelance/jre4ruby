@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 1996-2004 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -34,7 +33,6 @@ module Java::Lang::Reflect
     }
   end
   
-  # 
   # The Modifier class provides {@code static} methods and
   # constants to decode class and member access modifiers.  The sets of
   # modifiers are represented as integers with distinct bit positions
@@ -57,7 +55,6 @@ module Java::Lang::Reflect
     include_class_members ModifierImports
     
     class_module.module_eval {
-      # 
       # Bootstrapping protocol between java.lang and java.lang.reflect
       # packages
       when_class_loaded do
@@ -66,7 +63,6 @@ module Java::Lang::Reflect
       end
       
       typesig { [::Java::Int] }
-      # 
       # Return {@code true} if the integer argument includes the
       # {@code public} modifier, {@code false} otherwise.
       # 
@@ -78,7 +74,6 @@ module Java::Lang::Reflect
       end
       
       typesig { [::Java::Int] }
-      # 
       # Return {@code true} if the integer argument includes the
       # {@code private} modifier, {@code false} otherwise.
       # 
@@ -90,7 +85,6 @@ module Java::Lang::Reflect
       end
       
       typesig { [::Java::Int] }
-      # 
       # Return {@code true} if the integer argument includes the
       # {@code protected} modifier, {@code false} otherwise.
       # 
@@ -102,7 +96,6 @@ module Java::Lang::Reflect
       end
       
       typesig { [::Java::Int] }
-      # 
       # Return {@code true} if the integer argument includes the
       # {@code static} modifier, {@code false} otherwise.
       # 
@@ -114,7 +107,6 @@ module Java::Lang::Reflect
       end
       
       typesig { [::Java::Int] }
-      # 
       # Return {@code true} if the integer argument includes the
       # {@code final} modifier, {@code false} otherwise.
       # 
@@ -126,7 +118,6 @@ module Java::Lang::Reflect
       end
       
       typesig { [::Java::Int] }
-      # 
       # Return {@code true} if the integer argument includes the
       # {@code synchronized} modifier, {@code false} otherwise.
       # 
@@ -138,7 +129,6 @@ module Java::Lang::Reflect
       end
       
       typesig { [::Java::Int] }
-      # 
       # Return {@code true} if the integer argument includes the
       # {@code volatile} modifier, {@code false} otherwise.
       # 
@@ -150,7 +140,6 @@ module Java::Lang::Reflect
       end
       
       typesig { [::Java::Int] }
-      # 
       # Return {@code true} if the integer argument includes the
       # {@code transient} modifier, {@code false} otherwise.
       # 
@@ -162,7 +151,6 @@ module Java::Lang::Reflect
       end
       
       typesig { [::Java::Int] }
-      # 
       # Return {@code true} if the integer argument includes the
       # {@code native} modifier, {@code false} otherwise.
       # 
@@ -174,7 +162,6 @@ module Java::Lang::Reflect
       end
       
       typesig { [::Java::Int] }
-      # 
       # Return {@code true} if the integer argument includes the
       # {@code interface} modifier, {@code false} otherwise.
       # 
@@ -186,7 +173,6 @@ module Java::Lang::Reflect
       end
       
       typesig { [::Java::Int] }
-      # 
       # Return {@code true} if the integer argument includes the
       # {@code abstract} modifier, {@code false} otherwise.
       # 
@@ -198,7 +184,6 @@ module Java::Lang::Reflect
       end
       
       typesig { [::Java::Int] }
-      # 
       # Return {@code true} if the integer argument includes the
       # {@code strictfp} modifier, {@code false} otherwise.
       # 
@@ -210,7 +195,6 @@ module Java::Lang::Reflect
       end
       
       typesig { [::Java::Int] }
-      # 
       # Return a string describing the access modifier flags in
       # the specified modifier. For example:
       # <blockquote><pre>
@@ -288,7 +272,6 @@ module Java::Lang::Reflect
         return ""
       end
       
-      # 
       # Access modifier flag constants from <em>The Java Virtual
       # Machine Specification, Second Edition</em>, tables 4.1, 4.4,
       # 4.5, and 4.7.
@@ -299,67 +282,56 @@ module Java::Lang::Reflect
       const_set_lazy(:PUBLIC) { 0x1 }
       const_attr_reader  :PUBLIC
       
-      # 
       # The {@code int} value representing the {@code private}
       # modifier.
       const_set_lazy(:PRIVATE) { 0x2 }
       const_attr_reader  :PRIVATE
       
-      # 
       # The {@code int} value representing the {@code protected}
       # modifier.
       const_set_lazy(:PROTECTED) { 0x4 }
       const_attr_reader  :PROTECTED
       
-      # 
       # The {@code int} value representing the {@code static}
       # modifier.
       const_set_lazy(:STATIC) { 0x8 }
       const_attr_reader  :STATIC
       
-      # 
       # The {@code int} value representing the {@code final}
       # modifier.
       const_set_lazy(:FINAL) { 0x10 }
       const_attr_reader  :FINAL
       
-      # 
       # The {@code int} value representing the {@code synchronized}
       # modifier.
       const_set_lazy(:SYNCHRONIZED) { 0x20 }
       const_attr_reader  :SYNCHRONIZED
       
-      # 
       # The {@code int} value representing the {@code volatile}
       # modifier.
       const_set_lazy(:VOLATILE) { 0x40 }
       const_attr_reader  :VOLATILE
       
-      # 
       # The {@code int} value representing the {@code transient}
       # modifier.
       const_set_lazy(:TRANSIENT) { 0x80 }
       const_attr_reader  :TRANSIENT
       
-      # 
       # The {@code int} value representing the {@code native}
       # modifier.
       const_set_lazy(:NATIVE) { 0x100 }
       const_attr_reader  :NATIVE
       
-      # 
       # The {@code int} value representing the {@code interface}
       # modifier.
       const_set_lazy(:INTERFACE) { 0x200 }
       const_attr_reader  :INTERFACE
       
-      # 
       # The {@code int} value representing the {@code abstract}
       # modifier.
       const_set_lazy(:ABSTRACT) { 0x400 }
       const_attr_reader  :ABSTRACT
       
-      # 
       # The {@code int} value representing the {@code strictfp}
       # modifier.
       const_set_lazy(:STRICT) { 0x800 }

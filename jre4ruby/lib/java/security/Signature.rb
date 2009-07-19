@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 1996-2006 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -47,7 +46,6 @@ module Java::Security
     }
   end
   
-  # 
   # This Signature class is used to provide applications the functionality
   # of a digital signature algorithm. Digital signatures are used for
   # authentication and integrity assurance of digital data.
@@ -108,7 +106,6 @@ module Java::Security
       const_attr_reader  :Debug
     }
     
-    # 
     # The algorithm for this signature object.
     # This value is used to map an OID to the particular algorithm.
     # The mapping is done in AlgorithmObject.algOID(String algorithm)
@@ -126,26 +123,22 @@ module Java::Security
     undef_method :provider=
     
     class_module.module_eval {
-      # 
       # Possible {@link #state} value, signifying that
       # this signature object has not yet been initialized.
       const_set_lazy(:UNINITIALIZED) { 0 }
       const_attr_reader  :UNINITIALIZED
       
-      # 
       # Possible {@link #state} value, signifying that
       # this signature object has been initialized for signing.
       const_set_lazy(:SIGN) { 2 }
       const_attr_reader  :SIGN
       
-      # 
       # Possible {@link #state} value, signifying that
       # this signature object has been initialized for verification.
       const_set_lazy(:VERIFY) { 3 }
       const_attr_reader  :VERIFY
     }
     
-    # 
     # Current state of this signature object.
     attr_accessor :state
     alias_method :attr_state, :state
@@ -154,7 +147,6 @@ module Java::Security
     undef_method :state=
     
     typesig { [String] }
-    # 
     # Creates a Signature object for the specified algorithm.
     # 
     # @param algorithm the standard string name of the algorithm.
@@ -185,7 +177,6 @@ module Java::Security
       const_attr_reader  :RsaIds
       
       typesig { [String] }
-      # 
       # Returns a Signature object that implements the specified signature
       # algorithm.
       # 
@@ -300,7 +291,6 @@ module Java::Security
       end
       
       typesig { [String, String] }
-      # 
       # Returns a Signature object that implements the specified signature
       # algorithm.
       # 
@@ -350,7 +340,6 @@ module Java::Security
       end
       
       typesig { [String, Provider] }
-      # 
       # Returns a Signature object that implements the specified
       # signature algorithm.
       # 
@@ -413,7 +402,6 @@ module Java::Security
     }
     
     typesig { [] }
-    # 
     # Returns the provider of this signature object.
     # 
     # @return the provider of this signature object
@@ -428,7 +416,6 @@ module Java::Security
     end
     
     typesig { [PublicKey] }
-    # 
     # Initializes this object for verification. If this method is called
     # again with a different argument, it negates the effect
     # of this call.
@@ -443,7 +430,6 @@ module Java::Security
     end
     
     typesig { [Certificate] }
-    # 
     # Initializes this object for verification, using the public key from
     # the given certificate.
     # <p>If the certificate is of type X.509 and has a <i>key usage</i>
@@ -484,7 +470,6 @@ module Java::Security
     end
     
     typesig { [PrivateKey] }
-    # 
     # Initialize this object for signing. If this method is called
     # again with a different argument, it negates the effect
     # of this call.
@@ -499,7 +484,6 @@ module Java::Security
     end
     
     typesig { [PrivateKey, SecureRandom] }
-    # 
     # Initialize this object for signing. If this method is called
     # again with a different argument, it negates the effect
     # of this call.
@@ -516,7 +500,6 @@ module Java::Security
     end
     
     typesig { [] }
-    # 
     # Returns the signature bytes of all the data updated.
     # The format of the signature depends on the underlying
     # signature scheme.
@@ -541,7 +524,6 @@ module Java::Security
     end
     
     typesig { [Array.typed(::Java::Byte), ::Java::Int, ::Java::Int] }
-    # 
     # Finishes the signature operation and stores the resulting signature
     # bytes in the provided buffer <code>outbuf</code>, starting at
     # <code>offset</code>.
@@ -582,7 +564,6 @@ module Java::Security
     end
     
     typesig { [Array.typed(::Java::Byte)] }
-    # 
     # Verifies the passed-in signature.
     # 
     # <p>A call to this method resets this signature object to the state
@@ -607,7 +588,6 @@ module Java::Security
     end
     
     typesig { [Array.typed(::Java::Byte), ::Java::Int, ::Java::Int] }
-    # 
     # Verifies the passed-in signature in the specified array
     # of bytes, starting at the specified offset.
     # 
@@ -645,7 +625,6 @@ module Java::Security
     end
     
     typesig { [::Java::Byte] }
-    # 
     # Updates the data to be signed or verified by a byte.
     # 
     # @param b the byte to use for the update.
@@ -661,7 +640,6 @@ module Java::Security
     end
     
     typesig { [Array.typed(::Java::Byte)] }
-    # 
     # Updates the data to be signed or verified, using the specified
     # array of bytes.
     # 
@@ -674,7 +652,6 @@ module Java::Security
     end
     
     typesig { [Array.typed(::Java::Byte), ::Java::Int, ::Java::Int] }
-    # 
     # Updates the data to be signed or verified, using the specified
     # array of bytes, starting at the specified offset.
     # 
@@ -693,7 +670,6 @@ module Java::Security
     end
     
     typesig { [ByteBuffer] }
-    # 
     # Updates the data to be signed or verified using the specified
     # ByteBuffer. Processes the <code>data.remaining()</code> bytes
     # starting at at <code>data.position()</code>.
@@ -716,7 +692,6 @@ module Java::Security
     end
     
     typesig { [] }
-    # 
     # Returns the name of the algorithm for this signature object.
     # 
     # @return the name of the algorithm for this signature object.
@@ -725,7 +700,6 @@ module Java::Security
     end
     
     typesig { [] }
-    # 
     # Returns a string representation of this signature object,
     # providing information that includes the state of the object
     # and the name of the algorithm used.
@@ -745,7 +719,6 @@ module Java::Security
     end
     
     typesig { [String, Object] }
-    # 
     # Sets the specified algorithm parameter to the specified value.
     # This method supplies a general-purpose mechanism through
     # which it is possible to set the various parameters of this object.
@@ -774,7 +747,6 @@ module Java::Security
     end
     
     typesig { [AlgorithmParameterSpec] }
-    # 
     # Initializes this signature engine with the specified parameter set.
     # 
     # @param params the parameters
@@ -788,7 +760,6 @@ module Java::Security
     end
     
     typesig { [] }
-    # 
     # Returns the parameters used with this signature object.
     # 
     # <p>The returned parameters may be the same that were used to initialize
@@ -807,7 +778,6 @@ module Java::Security
     end
     
     typesig { [String] }
-    # 
     # Gets the value of the specified algorithm parameter. This method
     # supplies a general-purpose mechanism through which it is possible to
     # get the various parameters of this object. A parameter may be any
@@ -834,7 +804,6 @@ module Java::Security
     end
     
     typesig { [] }
-    # 
     # Returns a clone if the implementation is cloneable.
     # 
     # @return a clone if the implementation is cloneable.
@@ -850,7 +819,6 @@ module Java::Security
     end
     
     class_module.module_eval {
-      # 
       # The following class allows providers to extend from SignatureSpi
       # rather than from Signature. It represents a Signature with an
       # encapsulated, provider-supplied SPI object (of type SignatureSpi).
@@ -922,7 +890,6 @@ module Java::Security
         end
         
         typesig { [] }
-        # 
         # Returns a clone if the delegate is cloneable.
         # 
         # @return a clone if the delegate is cloneable.
@@ -978,7 +945,6 @@ module Java::Security
         }
         
         typesig { [] }
-        # 
         # Choose the Spi from the first provider available. Used if
         # delayed provider selection is not possible because initSign()/
         # initVerify() is not the first method called.
@@ -1023,11 +989,11 @@ module Java::Security
                 last_exception = e
               end
             end
-            e_ = ProviderException.new("Could not construct SignatureSpi instance")
+            e = ProviderException.new("Could not construct SignatureSpi instance")
             if (!(last_exception).nil?)
-              e_.init_cause(last_exception)
+              e.init_cause(last_exception)
             end
-            raise e_
+            raise e
           end
         end
         
@@ -1276,7 +1242,7 @@ module Java::Security
           rescue IllegalBlockSizeException => e
             raise SignatureException.new("doFinal() failed", e)
           rescue BadPaddingException => e
-            raise SignatureException.new("doFinal() failed", e_)
+            raise SignatureException.new("doFinal() failed", e)
           end
         end
         
@@ -1292,7 +1258,7 @@ module Java::Security
             # return false rather than throwing exception
             return false
           rescue IllegalBlockSizeException => e
-            raise SignatureException.new("doFinal() failed", e_)
+            raise SignatureException.new("doFinal() failed", e)
           end
         end
         

@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 2000-2006 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -34,7 +33,6 @@ module Java::Util::Logging
     }
   end
   
-  # 
   # A Logger object is used to log messages for a specific
   # system or application component.  Loggers are normally named,
   # using a hierarchical dot-separated namespace.  Logger names
@@ -294,7 +292,6 @@ module Java::Util::Logging
       const_set_lazy(:GLOBAL_LOGGER_NAME) { "global" }
       const_attr_reader  :GLOBAL_LOGGER_NAME
       
-      # 
       # The "global" Logger object is provided as a convenience to developers
       # who are making casual use of the Logging package.  Developers
       # who are making serious use of the logging package (for example
@@ -313,7 +310,6 @@ module Java::Util::Logging
     }
     
     typesig { [String, String] }
-    # 
     # Protected method to construct a logger for a named subsystem.
     # <p>
     # The logger will be initially configured with a null Level
@@ -397,7 +393,6 @@ module Java::Util::Logging
     
     class_module.module_eval {
       typesig { [String] }
-      # 
       # Find or create a logger for a named subsystem.  If a logger has
       # already been created with the given name it is returned.  Otherwise
       # a new logger is created.
@@ -422,7 +417,6 @@ module Java::Util::Logging
       end
       
       typesig { [String, String] }
-      # 
       # Find or create a logger for a named subsystem.  If a logger has
       # already been created with the given name it is returned.  Otherwise
       # a new logger is created.
@@ -468,7 +462,6 @@ module Java::Util::Logging
       end
       
       typesig { [] }
-      # 
       # Create an anonymous Logger.  The newly created Logger is not
       # registered in the LogManager namespace.  There will be no
       # access checks on updates to the logger.
@@ -499,7 +492,6 @@ module Java::Util::Logging
       end
       
       typesig { [String] }
-      # 
       # Create an anonymous Logger.  The newly created Logger is not
       # registered in the LogManager namespace.  There will be no
       # access checks on updates to the logger.
@@ -534,7 +526,6 @@ module Java::Util::Logging
     }
     
     typesig { [] }
-    # 
     # Retrieve the localization resource bundle for this
     # logger for the current default locale.  Note that if
     # the result is null, then the Logger will use a resource
@@ -546,7 +537,6 @@ module Java::Util::Logging
     end
     
     typesig { [] }
-    # 
     # Retrieve the localization resource bundle name for this
     # logger.  Note that if the result is null, then the Logger
     # will use a resource bundle name inherited from its parent.
@@ -557,7 +547,6 @@ module Java::Util::Logging
     end
     
     typesig { [Filter] }
-    # 
     # Set a filter to control output on this Logger.
     # <P>
     # After passing the initial "level" check, the Logger will
@@ -575,7 +564,6 @@ module Java::Util::Logging
     end
     
     typesig { [] }
-    # 
     # Get the current filter for this Logger.
     # 
     # @return  a filter object (may be null)
@@ -586,7 +574,6 @@ module Java::Util::Logging
     end
     
     typesig { [LogRecord] }
-    # 
     # Log a LogRecord.
     # <p>
     # All the other logging methods in this class call through
@@ -658,7 +645,6 @@ module Java::Util::Logging
     end
     
     typesig { [Level, String, Object] }
-    # 
     # Log a message, with one object parameter.
     # <p>
     # If the logger is currently enabled for the given message
@@ -679,7 +665,6 @@ module Java::Util::Logging
     end
     
     typesig { [Level, String, Array.typed(Object)] }
-    # 
     # Log a message, with an array of object arguments.
     # <p>
     # If the logger is currently enabled for the given message
@@ -699,7 +684,6 @@ module Java::Util::Logging
     end
     
     typesig { [Level, String, Exception] }
-    # 
     # Log a message, with associated Throwable information.
     # <p>
     # If the logger is currently enabled for the given message
@@ -750,7 +734,6 @@ module Java::Util::Logging
     end
     
     typesig { [Level, String, String, String, Object] }
-    # 
     # Log a message, specifying source class and method,
     # with a single object parameter to the log message.
     # <p>
@@ -776,7 +759,6 @@ module Java::Util::Logging
     end
     
     typesig { [Level, String, String, String, Array.typed(Object)] }
-    # 
     # Log a message, specifying source class and method,
     # with an array of object arguments.
     # <p>
@@ -801,7 +783,6 @@ module Java::Util::Logging
     end
     
     typesig { [Level, String, String, String, Exception] }
-    # 
     # Log a message, specifying source class and method,
     # with associated Throwable information.
     # <p>
@@ -847,7 +828,6 @@ module Java::Util::Logging
     end
     
     typesig { [Level, String, String, String, String] }
-    # 
     # Log a message, specifying source class, method, and resource bundle name
     # with no arguments.
     # <p>
@@ -876,7 +856,6 @@ module Java::Util::Logging
     end
     
     typesig { [Level, String, String, String, String, Object] }
-    # 
     # Log a message, specifying source class, method, and resource bundle name,
     # with a single object parameter to the log message.
     # <p>
@@ -908,7 +887,6 @@ module Java::Util::Logging
     end
     
     typesig { [Level, String, String, String, String, Array.typed(Object)] }
-    # 
     # Log a message, specifying source class, method, and resource bundle name,
     # with an array of object arguments.
     # <p>
@@ -939,7 +917,6 @@ module Java::Util::Logging
     end
     
     typesig { [Level, String, String, String, String, Exception] }
-    # 
     # Log a message, specifying source class, method, and resource bundle name,
     # with associated Throwable information.
     # <p>
@@ -995,7 +972,6 @@ module Java::Util::Logging
     end
     
     typesig { [String, String, Object] }
-    # 
     # Log a method entry, with one parameter.
     # <p>
     # This is a convenience method that can be used to log entry
@@ -1015,7 +991,6 @@ module Java::Util::Logging
     end
     
     typesig { [String, String, Array.typed(Object)] }
-    # 
     # Log a method entry, with an array of parameters.
     # <p>
     # This is a convenience method that can be used to log entry
@@ -1045,7 +1020,6 @@ module Java::Util::Logging
     end
     
     typesig { [String, String] }
-    # 
     # Log a method return.
     # <p>
     # This is a convenience method that can be used to log returning
@@ -1062,7 +1036,6 @@ module Java::Util::Logging
     end
     
     typesig { [String, String, Object] }
-    # 
     # Log a method return, with result object.
     # <p>
     # This is a convenience method that can be used to log returning
@@ -1082,7 +1055,6 @@ module Java::Util::Logging
     end
     
     typesig { [String, String, Exception] }
-    # 
     # Log throwing an exception.
     # <p>
     # This is a convenience method to log that a method is
@@ -1133,7 +1105,6 @@ module Java::Util::Logging
     end
     
     typesig { [String] }
-    # 
     # Log a WARNING message.
     # <p>
     # If the logger is currently enabled for the WARNING message
@@ -1149,7 +1120,6 @@ module Java::Util::Logging
     end
     
     typesig { [String] }
-    # 
     # Log an INFO message.
     # <p>
     # If the logger is currently enabled for the INFO message
@@ -1165,7 +1135,6 @@ module Java::Util::Logging
     end
     
     typesig { [String] }
-    # 
     # Log a CONFIG message.
     # <p>
     # If the logger is currently enabled for the CONFIG message
@@ -1181,7 +1150,6 @@ module Java::Util::Logging
     end
     
     typesig { [String] }
-    # 
     # Log a FINE message.
     # <p>
     # If the logger is currently enabled for the FINE message
@@ -1197,7 +1165,6 @@ module Java::Util::Logging
     end
     
     typesig { [String] }
-    # 
     # Log a FINER message.
     # <p>
     # If the logger is currently enabled for the FINER message
@@ -1213,7 +1180,6 @@ module Java::Util::Logging
     end
     
     typesig { [String] }
-    # 
     # Log a FINEST message.
     # <p>
     # If the logger is currently enabled for the FINEST message
@@ -1254,7 +1220,6 @@ module Java::Util::Logging
     end
     
     typesig { [] }
-    # 
     # Get the log Level that has been specified for this Logger.
     # The result may be null, which means that this logger's
     # effective level will be inherited from its parent.
@@ -1265,7 +1230,6 @@ module Java::Util::Logging
     end
     
     typesig { [Level] }
-    # 
     # Check if a message of the given level would actually be logged
     # by this logger.  This check is based on the Loggers effective level,
     # which may be inherited from its parent.
@@ -1280,7 +1244,6 @@ module Java::Util::Logging
     end
     
     typesig { [] }
-    # 
     # Get the name for this logger.
     # @return logger name.  Will be null for anonymous Loggers.
     def get_name
@@ -1288,7 +1251,6 @@ module Java::Util::Logging
     end
     
     typesig { [Handler] }
-    # 
     # Add a log Handler to receive logging messages.
     # <p>
     # By default, Loggers also send their output to their parent logger.
@@ -1311,7 +1273,6 @@ module Java::Util::Logging
     end
     
     typesig { [Handler] }
-    # 
     # Remove a log Handler.
     # <P>
     # Returns silently if the given Handler is not found or is null
@@ -1333,7 +1294,6 @@ module Java::Util::Logging
     end
     
     typesig { [] }
-    # 
     # Get the Handlers associated with this logger.
     # <p>
     # @return  an array of all registered Handlers
@@ -1347,7 +1307,6 @@ module Java::Util::Logging
     end
     
     typesig { [::Java::Boolean] }
-    # 
     # Specify whether or not this logger should send its output
     # to it's parent Logger.  This means that any LogRecords will
     # also be written to the parent's Handlers, and potentially
@@ -1365,7 +1324,6 @@ module Java::Util::Logging
     end
     
     typesig { [] }
-    # 
     # Discover whether or not this logger is sending its output
     # to its parent logger.
     # 
@@ -1468,7 +1426,6 @@ module Java::Util::Logging
     end
     
     typesig { [] }
-    # 
     # Return the parent for this Logger.
     # <p>
     # This method returns the nearest extant parent in the namespace.
@@ -1487,7 +1444,6 @@ module Java::Util::Logging
     end
     
     typesig { [Logger] }
-    # 
     # Set the parent for this Logger.  This method is used by
     # the LogManager to update a Logger when the namespace changes.
     # <p>

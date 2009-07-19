@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 1997-2006 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -30,7 +29,6 @@ module Java::Lang
     }
   end
   
-  # 
   # Thrown to indicate that the requested operation is not supported.<p>
   # 
   # This class is a member of the
@@ -43,14 +41,12 @@ module Java::Lang
     include_class_members UnsupportedOperationExceptionImports
     
     typesig { [] }
-    # 
     # Constructs an UnsupportedOperationException with no detail message.
     def initialize
       super()
     end
     
     typesig { [String] }
-    # 
     # Constructs an UnsupportedOperationException with the specified
     # detail message.
     # 
@@ -60,7 +56,6 @@ module Java::Lang
     end
     
     typesig { [String, Exception] }
-    # 
     # Constructs a new exception with the specified detail message and
     # cause.
     # 
@@ -80,7 +75,6 @@ module Java::Lang
     end
     
     typesig { [Exception] }
-    # 
     # Constructs a new exception with the specified cause and a detail
     # message of <tt>(cause==null ? null : cause.toString())</tt> (which
     # typically contains the class and detail message of <tt>cause</tt>).

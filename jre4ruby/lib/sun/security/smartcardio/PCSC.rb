@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 2005-2006 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -33,7 +32,6 @@ module Sun::Security::Smartcardio
     }
   end
   
-  # 
   # Access to native PC/SC functions and definition of PC/SC constants.
   # Initialization and platform specific PC/SC constants are handled in
   # the platform specific superclass.

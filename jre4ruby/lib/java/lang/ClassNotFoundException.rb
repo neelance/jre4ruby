@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 1995-2004 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -30,7 +29,6 @@ module Java::Lang
     }
   end
   
-  # 
   # Thrown when an application tries to load in a class through its
   # string name using:
   # <ul>
@@ -58,13 +56,11 @@ module Java::Lang
     include_class_members ClassNotFoundExceptionImports
     
     class_module.module_eval {
-      # 
       # use serialVersionUID from JDK 1.1.X for interoperability
       const_set_lazy(:SerialVersionUID) { 9176873029745254542 }
       const_attr_reader  :SerialVersionUID
     }
     
-    # 
     # This field holds the exception ex if the
     # ClassNotFoundException(String s, Throwable ex) constructor was
     # used to instantiate the object
@@ -77,7 +73,6 @@ module Java::Lang
     undef_method :ex=
     
     typesig { [] }
-    # 
     # Constructs a <code>ClassNotFoundException</code> with no detail message.
     def initialize
       @ex = nil
@@ -85,7 +80,6 @@ module Java::Lang
     end
     
     typesig { [String] }
-    # 
     # Constructs a <code>ClassNotFoundException</code> with the
     # specified detail message.
     # 
@@ -96,7 +90,6 @@ module Java::Lang
     end
     
     typesig { [String, Exception] }
-    # 
     # Constructs a <code>ClassNotFoundException</code> with the
     # specified detail message and optional exception that was
     # raised while loading the class.
@@ -111,7 +104,6 @@ module Java::Lang
     end
     
     typesig { [] }
-    # 
     # Returns the exception that was raised if an error occurred while
     # attempting to load the class. Otherwise, returns <tt>null</tt>.
     # 
@@ -126,7 +118,6 @@ module Java::Lang
     end
     
     typesig { [] }
-    # 
     # Returns the cause of this exception (the exception that was raised
     # if an error occurred while attempting to load the class; otherwise
     # <tt>null</tt>).

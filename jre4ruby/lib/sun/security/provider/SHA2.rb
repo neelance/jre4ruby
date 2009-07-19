@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 2002-2006 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -31,7 +30,6 @@ module Sun::Security::Provider
     }
   end
   
-  # 
   # This class implements the Secure Hash Algorithm SHA-256 developed by
   # the National Institute of Standards and Technology along with the
   # National Security Agency.
@@ -70,7 +68,6 @@ module Sun::Security::Provider
     undef_method :state=
     
     typesig { [] }
-    # 
     # Creates a new SHA object.
     def initialize
       @w = nil
@@ -82,7 +79,6 @@ module Sun::Security::Provider
     end
     
     typesig { [SHA2] }
-    # 
     # Creates a SHA2 object.with state (for cloning)
     def initialize(base)
       @w = nil
@@ -98,7 +94,6 @@ module Sun::Security::Provider
     end
     
     typesig { [] }
-    # 
     # Resets the buffers and hash value to start a new hash.
     def impl_reset
       @state[0] = 0x6a09e667
@@ -125,7 +120,6 @@ module Sun::Security::Provider
     
     class_module.module_eval {
       typesig { [::Java::Int, ::Java::Int, ::Java::Int] }
-      # 
       # logical function ch(x,y,z) as defined in spec:
       # @return (x and y) xor ((complement x) and z)
       # @param x int
@@ -136,7 +130,6 @@ module Sun::Security::Provider
       end
       
       typesig { [::Java::Int, ::Java::Int, ::Java::Int] }
-      # 
       # logical function maj(x,y,z) as defined in spec:
       # @return (x and y) xor (x and z) xor (y and z)
       # @param x int
@@ -147,7 +140,6 @@ module Sun::Security::Provider
       end
       
       typesig { [::Java::Int, ::Java::Int] }
-      # 
       # logical function R(x,s) - right shift
       # @return x right shift for s times
       # @param x int
@@ -157,7 +149,6 @@ module Sun::Security::Provider
       end
       
       typesig { [::Java::Int, ::Java::Int] }
-      # 
       # logical function S(x,s) - right rotation
       # @return x circular right shift for s times
       # @param x int
@@ -167,7 +158,6 @@ module Sun::Security::Provider
       end
       
       typesig { [::Java::Int] }
-      # 
       # logical function sigma0(x) - xor of results of right rotations
       # @return S(x,2) xor S(x,13) xor S(x,22)
       # @param x int
@@ -176,7 +166,6 @@ module Sun::Security::Provider
       end
       
       typesig { [::Java::Int] }
-      # 
       # logical function sigma1(x) - xor of results of right rotations
       # @return S(x,6) xor S(x,11) xor S(x,25)
       # @param x int
@@ -185,7 +174,6 @@ module Sun::Security::Provider
       end
       
       typesig { [::Java::Int] }
-      # 
       # logical function delta0(x) - xor of results of right shifts/rotations
       # @return int
       # @param x int
@@ -194,7 +182,6 @@ module Sun::Security::Provider
       end
       
       typesig { [::Java::Int] }
-      # 
       # logical function delta1(x) - xor of results of right shifts/rotations
       # @return int
       # @param x int
@@ -204,7 +191,6 @@ module Sun::Security::Provider
     }
     
     typesig { [Array.typed(::Java::Byte), ::Java::Int] }
-    # 
     # Process the current block to update the state variable state.
     def impl_compress(buf, ofs)
       b2i_big64(buf, ofs, @w)

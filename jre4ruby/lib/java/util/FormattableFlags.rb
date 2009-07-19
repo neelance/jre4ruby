@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 2004 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -48,7 +47,6 @@ module Java::Util
     end
     
     class_module.module_eval {
-      # 
       # Left-justifies the output.  Spaces (<tt>'&#92;u0020'</tt>) will be added
       # at the end of the converted value as required to fill the minimum width
       # of the field.  If this flag is not set then the output will be

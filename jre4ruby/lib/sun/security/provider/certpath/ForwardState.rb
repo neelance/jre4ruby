@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 2000-2006 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -51,7 +50,6 @@ module Sun::Security::Provider::Certpath
     }
   end
   
-  # 
   # A specification of a forward PKIX validation state
   # which is initialized by each build and updated each time a
   # certificate is added to the current path.
@@ -87,7 +85,6 @@ module Sun::Security::Provider::Certpath
     alias_method :attr_subject_names_traversed=, :subject_names_traversed=
     undef_method :subject_names_traversed=
     
-    # 
     # The number of intermediate CA certs which have been traversed so
     # far in the path
     attr_accessor :traversed_cacerts
@@ -126,7 +123,6 @@ module Sun::Security::Provider::Certpath
     undef_method :key_params_needed_flag=
     
     typesig { [] }
-    # 
     # Returns a boolean flag indicating if the state is initial
     # (just starting)
     # 
@@ -136,7 +132,6 @@ module Sun::Security::Provider::Certpath
     end
     
     typesig { [] }
-    # 
     # Return boolean flag indicating whether a public key that needs to inherit
     # key parameters has been encountered.
     # 
@@ -147,7 +142,6 @@ module Sun::Security::Provider::Certpath
     end
     
     typesig { [] }
-    # 
     # Display state for debugging purposes
     def to_s
       sb = StringBuffer.new
@@ -169,14 +163,12 @@ module Sun::Security::Provider::Certpath
     end
     
     typesig { [JavaList] }
-    # 
     # Initialize the state.
     # 
     # @param certPathCheckers the list of user-defined PKIXCertPathCheckers
     def init_state(cert_path_checkers)
       @subject_names_traversed = HashSet.new
       @traversed_cacerts = 0
-      # 
       # Populate forwardCheckers with every user-defined checker
       # that supports forward checking and initialize the forwardCheckers
       @forward_checkers = ArrayList.new
@@ -192,7 +184,6 @@ module Sun::Security::Provider::Certpath
     end
     
     typesig { [X509Certificate] }
-    # 
     # Update the state with the next certificate added to the path.
     # 
     # @param cert the certificate which is used to update the state
@@ -211,7 +202,6 @@ module Sun::Security::Provider::Certpath
       # update issuer DN
       @issuer_dn = cert.get_issuer_x500principal
       if (!X509CertImpl.is_self_issued(cert))
-        # 
         # update traversedCACerts only if this is a non-self-issued
         # intermediate CA cert
         if (!@init && !(cert.get_basic_constraints).equal?(-1))
@@ -245,7 +235,6 @@ module Sun::Security::Provider::Certpath
     end
     
     typesig { [] }
-    # 
     # Clone current state. The state is cloned as each cert is
     # added to the path. This is necessary if backtracking occurs,
     # and a prior state needs to be restored.
@@ -265,7 +254,6 @@ module Sun::Security::Provider::Certpath
             li.set(checker.clone)
           end
         end
-        # 
         # Shallow copy traversed names. There is no need to
         # deep copy contents, since the elements of the Set
         # are never modified by subsequent calls to updateState().

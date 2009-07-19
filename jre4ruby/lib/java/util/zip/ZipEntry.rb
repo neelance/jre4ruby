@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 1995-2005 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -32,7 +31,6 @@ module Java::Util::Zip
     }
   end
   
-  # 
   # This class is used to represent a ZIP file entry.
   # 
   # @author      David Connelly
@@ -103,7 +101,6 @@ module Java::Util::Zip
       const_set_lazy(:STORED) { 0 }
       const_attr_reader  :STORED
       
-      # 
       # Compression method for compressed (deflated) entries.
       const_set_lazy(:DEFLATED) { 8 }
       const_attr_reader  :DEFLATED
@@ -121,7 +118,6 @@ module Java::Util::Zip
     }
     
     typesig { [String] }
-    # 
     # Creates a new zip entry with the specified name.
     # 
     # @param name the entry name
@@ -147,7 +143,6 @@ module Java::Util::Zip
     end
     
     typesig { [ZipEntry] }
-    # 
     # Creates a new zip entry with fields taken from the specified
     # zip entry.
     # @param e a zip Entry object
@@ -171,7 +166,6 @@ module Java::Util::Zip
     end
     
     typesig { [String, ::Java::Long] }
-    # 
     # Creates a new zip entry for the given name with fields initialized
     # from the specified jzentry data.
     def initialize(name, jzentry)
@@ -194,7 +188,6 @@ module Java::Util::Zip
     end
     
     typesig { [::Java::Long] }
-    # 
     # Creates a new zip entry with fields initialized from the specified
     # jzentry data.
     def initialize(jzentry)
@@ -210,7 +203,6 @@ module Java::Util::Zip
     end
     
     typesig { [] }
-    # 
     # Returns the name of the entry.
     # @return the name of the entry
     def get_name
@@ -218,7 +210,6 @@ module Java::Util::Zip
     end
     
     typesig { [::Java::Long] }
-    # 
     # Sets the modification time of the entry.
     # @param time the entry modification time in number of milliseconds
     # since the epoch
@@ -228,7 +219,6 @@ module Java::Util::Zip
     end
     
     typesig { [] }
-    # 
     # Returns the modification time of the entry, or -1 if not specified.
     # @return the modification time of the entry, or -1 if not specified
     # @see #setTime(long)
@@ -237,7 +227,6 @@ module Java::Util::Zip
     end
     
     typesig { [::Java::Long] }
-    # 
     # Sets the uncompressed size of the entry data.
     # @param size the uncompressed size in bytes
     # @exception IllegalArgumentException if the specified size is less
@@ -251,7 +240,6 @@ module Java::Util::Zip
     end
     
     typesig { [] }
-    # 
     # Returns the uncompressed size of the entry data, or -1 if not known.
     # @return the uncompressed size of the entry data, or -1 if not known
     # @see #setSize(long)
@@ -260,7 +248,6 @@ module Java::Util::Zip
     end
     
     typesig { [] }
-    # 
     # Returns the size of the compressed entry data, or -1 if not known.
     # In the case of a stored entry, the compressed size will be the same
     # as the uncompressed size of the entry.
@@ -271,7 +258,6 @@ module Java::Util::Zip
     end
     
     typesig { [::Java::Long] }
-    # 
     # Sets the size of the compressed entry data.
     # @param csize the compressed size to set to
     # @see #getCompressedSize()
@@ -280,7 +266,6 @@ module Java::Util::Zip
     end
     
     typesig { [::Java::Long] }
-    # 
     # Sets the CRC-32 checksum of the uncompressed entry data.
     # @param crc the CRC-32 value
     # @exception IllegalArgumentException if the specified CRC-32 value is
@@ -294,7 +279,6 @@ module Java::Util::Zip
     end
     
     typesig { [] }
-    # 
     # Returns the CRC-32 checksum of the uncompressed entry data, or -1 if
     # not known.
     # @return the CRC-32 checksum of the uncompressed entry data, or -1 if
@@ -305,7 +289,6 @@ module Java::Util::Zip
     end
     
     typesig { [::Java::Int] }
-    # 
     # Sets the compression method for the entry.
     # @param method the compression method, either STORED or DEFLATED
     # @exception IllegalArgumentException if the specified compression
@@ -319,7 +302,6 @@ module Java::Util::Zip
     end
     
     typesig { [] }
-    # 
     # Returns the compression method of the entry, or -1 if not specified.
     # @return the compression method of the entry, or -1 if not specified
     # @see #setMethod(int)
@@ -328,7 +310,6 @@ module Java::Util::Zip
     end
     
     typesig { [Array.typed(::Java::Byte)] }
-    # 
     # Sets the optional extra field data for the entry.
     # @param extra the extra field data bytes
     # @exception IllegalArgumentException if the length of the specified
@@ -342,7 +323,6 @@ module Java::Util::Zip
     end
     
     typesig { [] }
-    # 
     # Returns the extra field data for the entry, or null if none.
     # @return the extra field data for the entry, or null if none
     # @see #setExtra(byte[])
@@ -351,7 +331,6 @@ module Java::Util::Zip
     end
     
     typesig { [String] }
-    # 
     # Sets the optional comment string for the entry.
     # @param comment the comment string
     # @exception IllegalArgumentException if the length of the specified
@@ -365,7 +344,6 @@ module Java::Util::Zip
     end
     
     typesig { [] }
-    # 
     # Returns the comment string for the entry, or null if none.
     # @return the comment string for the entry, or null if none
     # @see #setComment(String)
@@ -374,7 +352,6 @@ module Java::Util::Zip
     end
     
     typesig { [] }
-    # 
     # Returns true if this is a directory entry. A directory entry is
     # defined to be one whose name ends with a '/'.
     # @return true if this is a directory entry
@@ -383,7 +360,6 @@ module Java::Util::Zip
     end
     
     typesig { [] }
-    # 
     # Returns a string representation of the ZIP entry.
     def to_s
       return get_name
@@ -391,7 +367,6 @@ module Java::Util::Zip
     
     class_module.module_eval {
       typesig { [::Java::Long] }
-      # 
       # Converts DOS time to Java time (number of milliseconds since epoch).
       def dos_to_java_time(dtime)
         d = Date.new(RJava.cast_to_int((((dtime >> 25) & 0x7f) + 80)), RJava.cast_to_int((((dtime >> 21) & 0xf) - 1)), RJava.cast_to_int(((dtime >> 16) & 0x1f)), RJava.cast_to_int(((dtime >> 11) & 0x1f)), RJava.cast_to_int(((dtime >> 5) & 0x3f)), RJava.cast_to_int(((dtime << 1) & 0x3e)))
@@ -399,7 +374,6 @@ module Java::Util::Zip
       end
       
       typesig { [::Java::Long] }
-      # 
       # Converts Java time to DOS time.
       def java_to_dos_time(time)
         d = Date.new(time)
@@ -412,21 +386,19 @@ module Java::Util::Zip
     }
     
     typesig { [] }
-    # 
     # Returns the hash code value for this entry.
     def hash_code
       return @name.hash_code
     end
     
     typesig { [] }
-    # 
     # Returns a copy of this entry.
     def clone
       begin
         e = super
         e.attr_extra = ((@extra).nil?) ? nil : @extra.clone
         return e
-      rescue CloneNotSupportedException => e
+      rescue CloneNotSupportedException => e_
         # This should never happen, since we are Cloneable
         raise InternalError.new
       end

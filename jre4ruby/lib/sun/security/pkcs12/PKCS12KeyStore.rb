@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 1999-2007 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -65,7 +64,6 @@ module Sun::Security::Pkcs12
     }
   end
   
-  # 
   # This class provides the keystore implementation referred to as "PKCS12".
   # Implements the PKCS#12 PFX protected using the Password privacy mode.
   # The contents are protected using Password integrity mode.
@@ -356,7 +354,6 @@ module Sun::Security::Pkcs12
       end }
     }
     
-    # 
     # Private keys and certificates are stored in a hashtable.
     # Hash entries are keyed by alias names.
     attr_accessor :entries
@@ -378,7 +375,6 @@ module Sun::Security::Pkcs12
     undef_method :certs=
     
     typesig { [String, Array.typed(::Java::Char)] }
-    # 
     # Returns the key associated with the given alias, using the given
     # password to recover it.
     # 
@@ -424,7 +420,6 @@ module Sun::Security::Pkcs12
         cipher.init(Cipher::DECRYPT_MODE, skey, alg_params)
         private_key_info = cipher.do_final(encrypted_key)
         kspec = PKCS8EncodedKeySpec.new(private_key_info)
-        # 
         # Parse the key algorithm and then use a JCA key factory
         # to create the private key.
         val_ = DerValue.new(private_key_info)
@@ -436,15 +431,14 @@ module Sun::Security::Pkcs12
         kfac = KeyFactory.get_instance(alg_name)
         key = kfac.generate_private(kspec)
       rescue Exception => e
-        uke_ = UnrecoverableKeyException.new("Get Key failed: " + (e.get_message).to_s)
-        uke_.init_cause(e)
-        raise uke_
+        uke = UnrecoverableKeyException.new("Get Key failed: " + (e.get_message).to_s)
+        uke.init_cause(e)
+        raise uke
       end
       return key
     end
     
     typesig { [String] }
-    # 
     # Returns the certificate chain associated with the given alias.
     # 
     # @param alias the alias name
@@ -468,7 +462,6 @@ module Sun::Security::Pkcs12
     end
     
     typesig { [String] }
-    # 
     # Returns the certificate associated with the given alias.
     # 
     # <p>If the given alias name identifies a
@@ -496,7 +489,6 @@ module Sun::Security::Pkcs12
     end
     
     typesig { [String] }
-    # 
     # Returns the creation date of the entry identified by the given alias.
     # 
     # @param alias the alias name
@@ -513,7 +505,6 @@ module Sun::Security::Pkcs12
     end
     
     typesig { [String, Key, Array.typed(::Java::Char), Array.typed(Certificate)] }
-    # 
     # Assigns the given key to the given alias, protecting it with the given
     # password.
     # 
@@ -572,7 +563,6 @@ module Sun::Security::Pkcs12
     end
     
     typesig { [String, Array.typed(::Java::Byte), Array.typed(Certificate)] }
-    # 
     # Assigns the given key (that has already been protected) to the given
     # alias.
     # 
@@ -617,7 +607,6 @@ module Sun::Security::Pkcs12
     end
     
     typesig { [] }
-    # 
     # Generate random salt
     def get_salt
       # Generate a random salt.
@@ -630,7 +619,6 @@ module Sun::Security::Pkcs12
     end
     
     typesig { [String] }
-    # 
     # Generate PBE Algorithm Parameters
     def get_algorithm_parameters(algorithm)
       alg_params = nil
@@ -648,7 +636,6 @@ module Sun::Security::Pkcs12
     end
     
     typesig { [DerInputStream] }
-    # 
     # parse Algorithm Parameters
     def parse_alg_parameters(in_)
       alg_params = nil
@@ -675,7 +662,6 @@ module Sun::Security::Pkcs12
     end
     
     typesig { [Array.typed(::Java::Char)] }
-    # 
     # Generate PBE key
     def get_pbekey(password)
       skey = nil
@@ -692,7 +678,6 @@ module Sun::Security::Pkcs12
     end
     
     typesig { [Array.typed(::Java::Byte), Array.typed(::Java::Char)] }
-    # 
     # Encrypt private key using Password-based encryption (PBE)
     # as defined in PKCS#5.
     # 
@@ -724,7 +709,6 @@ module Sun::Security::Pkcs12
     end
     
     typesig { [String, Certificate] }
-    # 
     # Assigns the given certificate to the given alias.
     # 
     # <p>If the given alias already exists in this keystore and identifies a
@@ -749,7 +733,6 @@ module Sun::Security::Pkcs12
     end
     
     typesig { [String] }
-    # 
     # Deletes the entry identified by the given alias from this keystore.
     # 
     # @param alias the alias name
@@ -762,7 +745,6 @@ module Sun::Security::Pkcs12
     end
     
     typesig { [] }
-    # 
     # Lists all the alias names of this keystore.
     # 
     # @return enumeration of the alias names
@@ -771,7 +753,6 @@ module Sun::Security::Pkcs12
     end
     
     typesig { [String] }
-    # 
     # Checks if the given alias exists in this keystore.
     # 
     # @param alias the alias name
@@ -782,7 +763,6 @@ module Sun::Security::Pkcs12
     end
     
     typesig { [] }
-    # 
     # Retrieves the number of entries in this keystore.
     # 
     # @return the number of entries in this keystore
@@ -791,7 +771,6 @@ module Sun::Security::Pkcs12
     end
     
     typesig { [String] }
-    # 
     # Returns true if the entry identified by the given alias is a
     # <i>key entry</i>, and false otherwise.
     # 
@@ -807,7 +786,6 @@ module Sun::Security::Pkcs12
     end
     
     typesig { [String] }
-    # 
     # Returns true if the entry identified by the given alias is a
     # <i>trusted certificate entry</i>, and false otherwise.
     # 
@@ -819,7 +797,6 @@ module Sun::Security::Pkcs12
     end
     
     typesig { [Certificate] }
-    # 
     # Returns the (alias) name of the first keystore entry whose certificate
     # matches the given certificate.
     # 
@@ -851,7 +828,6 @@ module Sun::Security::Pkcs12
     end
     
     typesig { [OutputStream, Array.typed(::Java::Char)] }
-    # 
     # Stores this keystore to the given output stream, and protects its
     # integrity with the given password.
     # 
@@ -910,7 +886,6 @@ module Sun::Security::Pkcs12
     end
     
     typesig { [Array.typed(::Java::Byte)] }
-    # 
     # Generate Hash.
     def generate_hash(data)
       digest = nil
@@ -927,7 +902,6 @@ module Sun::Security::Pkcs12
     end
     
     typesig { [Array.typed(::Java::Char), Array.typed(::Java::Byte)] }
-    # 
     # Calculate MAC using HMAC algorithm (required for password integrity)
     # 
     # Hash-based MAC algorithm combines secret key with message digest to
@@ -959,7 +933,6 @@ module Sun::Security::Pkcs12
     end
     
     typesig { [Array.typed(Certificate)] }
-    # 
     # Validate Certificate Chain
     def validate_chain(cert_chain)
       i = 0
@@ -975,7 +948,6 @@ module Sun::Security::Pkcs12
     end
     
     typesig { [String, Array.typed(::Java::Byte)] }
-    # 
     # Create PKCS#12 Attributes, friendlyName and localKeyId.
     # 
     # Although attributes are optional, they could be required.
@@ -1050,7 +1022,6 @@ module Sun::Security::Pkcs12
     end
     
     typesig { [Array.typed(::Java::Char)] }
-    # 
     # Create EncryptedData content type, that contains EncryptedContentInfo.
     # Includes certificates in individual SafeBags of type CertBag.
     # Each CertBag may include pkcs12 attributes
@@ -1131,7 +1102,6 @@ module Sun::Security::Pkcs12
     end
     
     typesig { [] }
-    # 
     # Create SafeContent Data content type.
     # Includes encrypted private key in a SafeBag of type PKCS8ShroudedKeyBag.
     # Each PKCS8ShroudedKeyBag includes pkcs12 attributes
@@ -1170,7 +1140,6 @@ module Sun::Security::Pkcs12
     end
     
     typesig { [Array.typed(::Java::Byte), Array.typed(::Java::Char)] }
-    # 
     # Encrypt the contents using Password-based (PBE) encryption
     # as defined in PKCS #5.
     # 
@@ -1212,7 +1181,6 @@ module Sun::Security::Pkcs12
     end
     
     typesig { [InputStream, Array.typed(::Java::Char)] }
-    # 
     # Loads the keystore from the given input stream.
     # 
     # <p>If a password is given, it is used to check the integrity of the
@@ -1246,7 +1214,6 @@ module Sun::Security::Pkcs12
           raise IOException.new("PKCS12 keystore not in version 3 format")
         end
         @entries.clear
-        # 
         # Read the authSafe.
         auth_safe_data = nil
         auth_safe = ContentInfo.new(s)
@@ -1262,7 +1229,6 @@ module Sun::Security::Pkcs12
         count = safe_contents_array.attr_length
         # reset the count at the start
         @private_key_count = 0
-        # 
         # Spin over the ContentInfos.
         i = 0
         while i < count
@@ -1338,17 +1304,16 @@ module Sun::Security::Pkcs12
               raise SecurityException.new("Failed PKCS12" + " integrity checking")
             end
           rescue Exception => e
-            ioe_ = IOException.new("Integrity check failed: " + (e_).to_s)
-            ioe_.init_cause(e_)
-            raise ioe_
+            ioe = IOException.new("Integrity check failed: " + (e).to_s)
+            ioe.init_cause(e)
+            raise ioe
           end
         end
-        # 
         # Match up private keys with certificate chains.
         list = @key_list.to_array(Array.typed(KeyEntry).new(@key_list.size) { nil })
-        m_ = 0
-        while m_ < list.attr_length
-          entry = list[m_]
+        m = 0
+        while m < list.attr_length
+          entry = list[m]
           if (!(entry.attr_key_id).nil?)
             chain = ArrayList.new
             cert = @certs.get(KeyId.new(entry.attr_key_id))
@@ -1365,7 +1330,7 @@ module Sun::Security::Pkcs12
               entry.attr_chain = chain.to_array(Array.typed(Certificate).new(chain.size) { nil })
             end
           end
-          ((m_ += 1) - 1)
+          ((m += 1) - 1)
         end
         @certs.clear
         @key_list.clear
@@ -1376,7 +1341,6 @@ module Sun::Security::Pkcs12
     def load_safe_contents(stream, password)
       safe_bags = stream.get_sequence(2)
       count = safe_bags.attr_length
-      # 
       # Spin over the SafeBags.
       i = 0
       while i < count
@@ -1435,7 +1399,7 @@ module Sun::Security::Pkcs12
             begin
               val_set = vs.get_set(1)
             rescue IOException => e
-              raise IOException.new("Attribute " + (attr_id).to_s + " should have a value " + (e_.get_message).to_s)
+              raise IOException.new("Attribute " + (attr_id).to_s + " should have a value " + (e.get_message).to_s)
             end
             if ((attr_id == self.attr_pkcs9friendly_name_oid))
               alias_ = (val_set[0].get_bmpstring).to_s
@@ -1449,7 +1413,6 @@ module Sun::Security::Pkcs12
             ((j += 1) - 1)
           end
         end
-        # 
         # As per PKCS12 v1.0 friendlyname (alias) and localKeyId (keyId)
         # are optional PKCS12 bagAttributes. But entries in the keyStore
         # are identified by their alias. Hence we need to have an
@@ -1494,7 +1457,7 @@ module Sun::Security::Pkcs12
           @entries.put(alias_.to_lower_case, entry)
         else
           if (bag_item.is_a?(X509Certificate))
-            cert_ = bag_item
+            cert = bag_item
             # Insert a localKeyID for the corresponding cert
             # Note: This is a workaround to allow null localKeyID
             # attribute in pkcs12 with one private key entry and
@@ -1508,18 +1471,18 @@ module Sun::Security::Pkcs12
             if (!(key_id).nil?)
               keyid = KeyId.new(key_id)
               if (!@certs.contains_key(keyid))
-                @certs.put(keyid, cert_)
+                @certs.put(keyid, cert)
               end
             end
             if (!(alias_).nil?)
               if (!@certs.contains_key(alias_))
-                @certs.put(alias_, cert_)
+                @certs.put(alias_, cert)
               end
             end
-            subject_dn = cert_.get_subject_x500principal
+            subject_dn = cert.get_subject_x500principal
             if (!(subject_dn).nil?)
               if (!@certs.contains_key(subject_dn))
-                @certs.put(subject_dn, cert_)
+                @certs.put(subject_dn, cert)
               end
             end
           end

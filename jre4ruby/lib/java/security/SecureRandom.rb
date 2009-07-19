@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 1996-2006 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -35,7 +34,6 @@ module Java::Security
     }
   end
   
-  # 
   # This class provides a cryptographically strong random number
   # generator (RNG).
   # 
@@ -88,7 +86,6 @@ module Java::Security
   class SecureRandom < Java::Util::Random
     include_class_members SecureRandomImports
     
-    # 
     # The provider.
     # 
     # @serial
@@ -99,7 +96,6 @@ module Java::Security
     alias_method :attr_provider=, :provider=
     undef_method :provider=
     
-    # 
     # The provider implementation.
     # 
     # @serial
@@ -110,7 +106,6 @@ module Java::Security
     alias_method :attr_secure_random_spi=, :secure_random_spi=
     undef_method :secure_random_spi=
     
-    # 
     # The algorithm name of null if unknown.
     # 
     # @serial
@@ -136,7 +131,6 @@ module Java::Security
     }
     
     typesig { [] }
-    # 
     # Constructs a secure random number generator (RNG) implementing the
     # default random number algorithm.
     # 
@@ -163,7 +157,6 @@ module Java::Security
     # This self-seeding will not occur if <code>setSeed</code> was
     # previously called.
     def initialize
-      # 
       # This call to our superclass constructor will result in a call
       # to our own <code>setSeed</code> method, which will return
       # immediately when it is passed zero.
@@ -183,7 +176,6 @@ module Java::Security
     end
     
     typesig { [Array.typed(::Java::Byte)] }
-    # 
     # Constructs a secure random number generator (RNG) implementing the
     # default random number algorithm.
     # The SecureRandom instance is seeded with the specified seed bytes.
@@ -256,7 +248,6 @@ module Java::Security
     end
     
     typesig { [SecureRandomSpi, Provider] }
-    # 
     # Creates a SecureRandom object.
     # 
     # @param secureRandomSpi the SecureRandom implementation.
@@ -286,7 +277,6 @@ module Java::Security
     
     class_module.module_eval {
       typesig { [String] }
-      # 
       # Returns a SecureRandom object that implements the specified
       # Random Number Generator (RNG) algorithm.
       # 
@@ -327,7 +317,6 @@ module Java::Security
       end
       
       typesig { [String, String] }
-      # 
       # Returns a SecureRandom object that implements the specified
       # Random Number Generator (RNG) algorithm.
       # 
@@ -375,7 +364,6 @@ module Java::Security
       end
       
       typesig { [String, Provider] }
-      # 
       # Returns a SecureRandom object that implements the specified
       # Random Number Generator (RNG) algorithm.
       # 
@@ -417,14 +405,12 @@ module Java::Security
     }
     
     typesig { [] }
-    # 
     # Returns the SecureRandomSpi of this SecureRandom object.
     def get_secure_random_spi
       return @secure_random_spi
     end
     
     typesig { [] }
-    # 
     # Returns the provider of this SecureRandom object.
     # 
     # @return the provider of this SecureRandom object.
@@ -433,7 +419,6 @@ module Java::Security
     end
     
     typesig { [] }
-    # 
     # Returns the name of the algorithm implemented by this SecureRandom
     # object.
     # 
@@ -445,7 +430,6 @@ module Java::Security
     end
     
     typesig { [Array.typed(::Java::Byte)] }
-    # 
     # Reseeds this random object. The given seed supplements, rather than
     # replaces, the existing seed. Thus, repeated calls are guaranteed
     # never to reduce randomness.
@@ -460,7 +444,6 @@ module Java::Security
     end
     
     typesig { [::Java::Long] }
-    # 
     # Reseeds this random object, using the eight bytes contained
     # in the given <code>long seed</code>. The given seed supplements,
     # rather than replaces, the existing seed. Thus, repeated calls
@@ -473,7 +456,6 @@ module Java::Security
     # 
     # @see #getSeed
     def set_seed(seed)
-      # 
       # Ignore call from super constructor (as well as any other calls
       # unfortunate enough to be passing 0).  It's critical that we
       # ignore call from superclass constructor, as digest has not
@@ -484,7 +466,6 @@ module Java::Security
     end
     
     typesig { [Array.typed(::Java::Byte)] }
-    # 
     # Generates a user-specified number of random bytes.
     # 
     # <p> If a call to <code>setSeed</code> had not occurred previously,
@@ -500,7 +481,6 @@ module Java::Security
     end
     
     typesig { [::Java::Int] }
-    # 
     # Generates an integer containing the user-specified number of
     # pseudo-random bits (right justified, with leading zeros).  This
     # method overrides a <code>java.util.Random</code> method, and serves
@@ -528,7 +508,6 @@ module Java::Security
     
     class_module.module_eval {
       typesig { [::Java::Int] }
-      # 
       # Returns the given number of seed bytes, computed using the seed
       # generation algorithm that this class uses to seed itself.  This
       # call may be used to seed other random number generators.
@@ -553,7 +532,6 @@ module Java::Security
     }
     
     typesig { [::Java::Int] }
-    # 
     # Returns the given number of seed bytes, computed using the seed
     # generation algorithm that this class uses to seed itself.  This
     # call may be used to seed other random number generators.
@@ -567,7 +545,6 @@ module Java::Security
     
     class_module.module_eval {
       typesig { [::Java::Long] }
-      # 
       # Helper function to convert a long into a byte array (least significant
       # byte first).
       def long_to_byte_array(l)
@@ -582,7 +559,6 @@ module Java::Security
       end
       
       typesig { [] }
-      # 
       # Gets a default PRNG algorithm by looking through all registered
       # providers. Returns the first PRNG algorithm of the first provider that
       # has registered a SecureRandom implementation, or null if none of the
@@ -612,7 +588,6 @@ module Java::Security
     alias_method :attr_state=, :state=
     undef_method :state=
     
-    # 
     # @serial
     attr_accessor :digest
     alias_method :attr_digest, :digest
@@ -620,7 +595,6 @@ module Java::Security
     alias_method :attr_digest=, :digest=
     undef_method :digest=
     
-    # 
     # @serial
     # 
     # We know that the MessageDigest class does not implement
@@ -633,7 +607,6 @@ module Java::Security
     alias_method :attr_random_bytes=, :random_bytes=
     undef_method :random_bytes=
     
-    # 
     # @serial
     attr_accessor :random_bytes_used
     alias_method :attr_random_bytes_used, :random_bytes_used
@@ -641,7 +614,6 @@ module Java::Security
     alias_method :attr_random_bytes_used=, :random_bytes_used=
     undef_method :random_bytes_used=
     
-    # 
     # @serial
     attr_accessor :counter
     alias_method :attr_counter, :counter

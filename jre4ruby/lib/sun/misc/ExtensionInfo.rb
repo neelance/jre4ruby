@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 1999-2004 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -38,7 +37,6 @@ module Sun::Misc
     }
   end
   
-  # 
   # This class holds all necessary information to install or
   # upgrade a extension on the user's disk
   # 
@@ -47,7 +45,6 @@ module Sun::Misc
     include_class_members ExtensionInfoImports
     
     class_module.module_eval {
-      # 
       # <p>
       # public static values returned by the isCompatible method
       # </p>
@@ -67,7 +64,6 @@ module Sun::Misc
       const_attr_reader  :INCOMPATIBLE
     }
     
-    # 
     # <p>
     # attributes fully describer an extension. The underlying described
     # extension may be installed and requested.
@@ -127,7 +123,6 @@ module Sun::Misc
     }
     
     typesig { [] }
-    # 
     # <p>
     # Create a new uninitialized extension information object
     # </p>
@@ -143,7 +138,6 @@ module Sun::Misc
     end
     
     typesig { [String, Attributes] }
-    # 
     # <p>
     # Create and initialize an extension information object.
     # The initialization uses the attributes passed as being
@@ -214,7 +208,6 @@ module Sun::Misc
     end
     
     typesig { [ExtensionInfo] }
-    # 
     # <p>
     # @return true if the extension described by this extension information
     # is compatible with the extension described by the extension
@@ -269,7 +262,6 @@ module Sun::Misc
     end
     
     typesig { [] }
-    # 
     # <p>
     # helper method to print sensible information on the undelying described
     # extension
@@ -279,7 +271,6 @@ module Sun::Misc
     end
     
     typesig { [String, String] }
-    # 
     # <p>
     # helper method to compare two versions.
     # version are in the x.y.z.t pattern.
@@ -296,7 +287,6 @@ module Sun::Misc
     end
     
     typesig { [String, String] }
-    # 
     # <p>
     # helper method to compare two versions.
     # version are in the x.y.z.t pattern.

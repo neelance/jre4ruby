@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Portions Copyright 2000-2006 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -50,7 +49,6 @@ module Sun::Security::Krb5
     include_class_members KrbKdcReqImports
     
     class_module.module_eval {
-      # 
       # Default port for a KDC.
       const_set_lazy(:DEFAULT_KDC_PORT) { Krb5::KDC_INET_DEFAULT_PORT }
       const_attr_reader  :DEFAULT_KDC_PORT
@@ -76,7 +74,6 @@ module Sun::Security::Krb5
       alias_method :attr_udp_pref_limit=, :udp_pref_limit=
       
       when_class_loaded do
-        # 
         # Get default timeout.
         timeout = -1
         begin
@@ -112,7 +109,6 @@ module Sun::Security::Krb5
     undef_method :ibuf=
     
     typesig { [String] }
-    # 
     # Sends the provided data to the KDC of the specified realm.
     # Returns the response from the KDC.
     # Default realm/KDC is used if realm is null.
@@ -138,7 +134,6 @@ module Sun::Security::Krb5
           raise KrbException.new(Krb5::KRB_ERR_GENERIC, "Cannot find default realm")
         end
       end
-      # 
       # Get timeout.
       timeout = get_kdc_timeout(realm)
       kdc_list = cfg.get_kdclist(realm)
@@ -174,10 +169,8 @@ module Sun::Security::Krb5
       end
       saved_exception = nil
       port = Krb5::KDC_INET_DEFAULT_PORT
-      # 
       # Get timeout.
       timeout = get_kdc_timeout(realm)
-      # 
       # Get port number for this KDC.
       str_tok = StringTokenizer.new(temp_kdc, ":")
       kdc = str_tok.next_token
@@ -267,10 +260,8 @@ module Sun::Security::Krb5
           if (@use_tcp)
             kdc_client = TCPClient.new(@kdc, @port)
             begin
-              # 
               # Send the data to the kdc.
               kdc_client.send(@obuf)
-              # 
               # And get a response.
               ibuf = kdc_client.receive
             ensure
@@ -281,18 +272,16 @@ module Sun::Security::Krb5
             # get the response
             i = 1
             while i <= DEFAULT_KDC_RETRY_LIMIT
-              kdc_client_ = UDPClient.new(@kdc, @port, @timeout)
+              kdc_client = UDPClient.new(@kdc, @port, @timeout)
               if (DEBUG)
                 System.out.println(">>> KDCCommunication: kdc=" + @kdc + ((@use_tcp ? " TCP:" : " UDP:")).to_s + (@port).to_s + ", timeout=" + (@timeout).to_s + ",Attempt =" + (i).to_s + ", #bytes=" + (@obuf.attr_length).to_s)
               end
               begin
-                # 
                 # Send the data to the kdc.
-                kdc_client_.send(@obuf)
-                # 
+                kdc_client.send(@obuf)
                 # And get a response.
                 begin
-                  ibuf = kdc_client_.receive
+                  ibuf = kdc_client.receive
                   break
                 rescue SocketTimeoutException => se
                   if (DEBUG)
@@ -304,7 +293,7 @@ module Sun::Security::Krb5
                   end
                 end
               ensure
-                kdc_client_.close
+                kdc_client.close
               end
               ((i += 1) - 1)
             end
@@ -318,7 +307,6 @@ module Sun::Security::Krb5
     }
     
     typesig { [String] }
-    # 
     # Returns a timeout value for the KDC of the given realm.
     # A KDC-specific timeout, if specified in the config file,
     # overrides the default timeout (which may also be specified

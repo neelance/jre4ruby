@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 2005-2007 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -524,7 +523,6 @@ module Sun::Net::Httpserver
     end
     
     typesig { [] }
-    # 
     # PP
     def get_connection
       return @connection
@@ -561,7 +559,6 @@ module Sun::Net::Httpserver
     alias_method :initialize__exchange_impl, :initialize
   end
   
-  # 
   # An OutputStream which wraps another stream
   # which is supplied either at creation time, or sometime later.
   # If a caller/user tries to write to this stream before

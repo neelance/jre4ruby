@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 1996-2003 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -31,7 +30,6 @@ module Java::Security
     }
   end
   
-  # 
   # This exception is thrown when a particular cryptographic algorithm is
   # requested but is not available in the environment.
   # 
@@ -45,7 +43,6 @@ module Java::Security
     }
     
     typesig { [] }
-    # 
     # Constructs a NoSuchAlgorithmException with no detail
     # message. A detail message is a String that describes this
     # particular exception.
@@ -54,7 +51,6 @@ module Java::Security
     end
     
     typesig { [String] }
-    # 
     # Constructs a NoSuchAlgorithmException with the specified
     # detail message. A detail message is a String that describes
     # this particular exception, which may, for example, specify which
@@ -66,7 +62,6 @@ module Java::Security
     end
     
     typesig { [String, Exception] }
-    # 
     # Creates a <code>NoSuchAlgorithmException</code> with the specified
     # detail message and cause.
     # 
@@ -81,7 +76,6 @@ module Java::Security
     end
     
     typesig { [Exception] }
-    # 
     # Creates a <code>NoSuchAlgorithmException</code> with the specified cause
     # and a detail message of <tt>(cause==null ? null : cause.toString())</tt>
     # (which typically contains the class and detail message of

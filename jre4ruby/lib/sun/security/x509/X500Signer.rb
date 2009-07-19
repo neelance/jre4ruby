@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 1996-2003 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -35,7 +34,6 @@ module Sun::Security::X509
     }
   end
   
-  # 
   # This class provides a binding between a Signature object and an
   # authenticated X.500 name (from an X.509 certificate chain), which
   # is needed in many public key signing applications.
@@ -60,7 +58,6 @@ module Sun::Security::X509
     }
     
     typesig { [Array.typed(::Java::Byte), ::Java::Int, ::Java::Int] }
-    # 
     # Called for each chunk of the data being signed.  That
     # is, you can present the data in many chunks, so that
     # it doesn't need to be in a single sequential buffer.
@@ -74,7 +71,6 @@ module Sun::Security::X509
     end
     
     typesig { [] }
-    # 
     # Produces the signature for the data processed by update().
     # 
     # @exception SignatureException on errors.
@@ -83,21 +79,18 @@ module Sun::Security::X509
     end
     
     typesig { [] }
-    # 
     # Returns the algorithm used to sign.
     def get_algorithm_id
       return @algid
     end
     
     typesig { [] }
-    # 
     # Returns the name of the signing agent.
     def get_signer
       return @agent
     end
     
     typesig { [Signature, X500Name] }
-    # 
     # Constructs a binding between a signature and an X500 name
     # from an X.509 certificate.
     # 

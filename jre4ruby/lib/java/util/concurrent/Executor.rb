@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
 # This code is free software; you can redistribute it and/or modify it
@@ -40,7 +39,6 @@ module Java::Util::Concurrent
     }
   end
   
-  # 
   # An object that executes submitted {@link Runnable} tasks. This
   # interface provides a way of decoupling task submission from the
   # mechanics of how each task will be run, including details of thread
@@ -133,7 +131,6 @@ module Java::Util::Concurrent
     include_class_members ExecutorImports
     
     typesig { [Runnable] }
-    # 
     # Executes the given command at some time in the future.  The command
     # may execute in a new thread, in a pooled thread, or in the calling
     # thread, at the discretion of the <tt>Executor</tt> implementation.

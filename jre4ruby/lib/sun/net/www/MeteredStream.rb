@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 1994-2004 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -101,7 +100,6 @@ module Sun::Net::Www
     typesig { [::Java::Int] }
     def just_read(n)
       if ((n).equal?(-1))
-        # 
         # don't close automatically when mark is set and is valid;
         # cannot reset() after close()
         if (!is_marked)
@@ -110,7 +108,6 @@ module Sun::Net::Www
         return
       end
       @count += n
-      # 
       # If read beyond the markLimit, invalidate the mark
       if (@count - @marked_count > @mark_limit)
         @mark_limit = -1
@@ -131,7 +128,6 @@ module Sun::Net::Www
     end
     
     typesig { [] }
-    # 
     # Returns true if the mark is valid, false otherwise
     def is_marked
       if (@mark_limit < 0)
@@ -218,7 +214,6 @@ module Sun::Net::Www
           return
         end
         super(read_limit)
-        # 
         # mark the count to restore upon reset
         @marked_count = @count
         @mark_limit = read_limit

@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 1997-2007 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -31,7 +30,6 @@ module Java::Util
     }
   end
   
-  # 
   # An iterator for lists that allows the programmer
   # to traverse the list in either direction, modify
   # the list during iteration, and obtain the iterator's
@@ -81,7 +79,6 @@ module Java::Util
     end
     
     typesig { [] }
-    # 
     # Returns the next element in the list and advances the cursor position.
     # This method may be called repeatedly to iterate through the list,
     # or intermixed with calls to {@link #previous} to go back and forth.
@@ -95,7 +92,6 @@ module Java::Util
     end
     
     typesig { [] }
-    # 
     # Returns {@code true} if this list iterator has more elements when
     # traversing the list in the reverse direction.  (In other words,
     # returns {@code true} if {@link #previous} would return an element
@@ -108,7 +104,6 @@ module Java::Util
     end
     
     typesig { [] }
-    # 
     # Returns the previous element in the list and moves the cursor
     # position backwards.  This method may be called repeatedly to
     # iterate through the list backwards, or intermixed with calls to
@@ -124,7 +119,6 @@ module Java::Util
     end
     
     typesig { [] }
-    # 
     # Returns the index of the element that would be returned by a
     # subsequent call to {@link #next}. (Returns list size if the list
     # iterator is at the end of the list.)
@@ -137,7 +131,6 @@ module Java::Util
     end
     
     typesig { [] }
-    # 
     # Returns the index of the element that would be returned by a
     # subsequent call to {@link #previous}. (Returns -1 if the list
     # iterator is at the beginning of the list.)
@@ -169,7 +162,6 @@ module Java::Util
     end
     
     typesig { [Object] }
-    # 
     # Replaces the last element returned by {@link #next} or
     # {@link #previous} with the specified element (optional operation).
     # This call can be made only if neither {@link #remove} nor {@link
@@ -193,7 +185,6 @@ module Java::Util
     end
     
     typesig { [Object] }
-    # 
     # Inserts the specified element into the list (optional operation).
     # The element is inserted immediately before the next element that
     # would be returned by {@link #next}, if any, and after the next

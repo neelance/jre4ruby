@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 1996-2007 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -32,7 +31,6 @@ module Sun::Security::Ssl
     }
   end
   
-  # 
   # Encapsulates an SSL session ID.  SSL Session IDs are not reused by
   # servers during the lifetime of any sessions it created.  Sessions may
   # be used by many connections, either concurrently (for example, two

@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 2003-2004 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -36,7 +35,6 @@ module Sun::Security::Provider::Certpath
     }
   end
   
-  # 
   # This class can be used to generate an OCSP request and send it over
   # an outputstream. Currently we do not support signing requests
   # The OCSP Request is specified in RFC 2560 and
@@ -108,7 +106,6 @@ module Sun::Security::Provider::Certpath
     undef_method :cert_id=
     
     typesig { [X509CertImpl, X509CertImpl] }
-    # 
     # Constructs an OCSPRequest. This constructor is used
     # to construct an unsigned OCSP Request for a single user cert.
     # 

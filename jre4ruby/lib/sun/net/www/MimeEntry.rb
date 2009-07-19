@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 1994-2002 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -106,7 +105,6 @@ module Sun::Net::Www
     }
     
     typesig { [String] }
-    # 
     # Construct an empty entry of the given type and subtype.
     def initialize(type)
       # Default action is UNKNOWN so clients can decide what the default
@@ -115,7 +113,6 @@ module Sun::Net::Www
     end
     
     typesig { [String, String, String] }
-    # 
     # The next two constructors are used only by the deprecated
     # PlatformMimeTable classes or, in last case, is called by the public
     # constructor.  They are kept here anticipating putting support for
@@ -316,7 +313,6 @@ module Sun::Net::Www
     end
     
     typesig { [Java::Net::URLConnection, InputStream, MimeTable] }
-    # 
     # Invoke the MIME type specific behavior for this MIME type.
     # Returned value can be one of several types:
     # <ol>
@@ -351,8 +347,6 @@ module Sun::Net::Www
           thread_name = (thread_name.substring(0, fst)).to_s
         end
         return MimeLauncher.new(self, urlc, is, mt.get_temp_file_template, thread_name)
-        # REMIND: What do do here?
-        return nil
       when LOAD_INTO_BROWSER
         # REMIND: invoke the content handler?
         # may be the right thing to do, may not be -- short term
@@ -363,23 +357,19 @@ module Sun::Net::Www
         rescue Exception => e
           return nil
         end
-        thread_name_ = @command
-        fst_ = thread_name_.index_of(Character.new(?\s.ord))
-        if (fst_ > 0)
-          thread_name_ = (thread_name_.substring(0, fst_)).to_s
+        thread_name = @command
+        fst = thread_name.index_of(Character.new(?\s.ord))
+        if (fst > 0)
+          thread_name = (thread_name.substring(0, fst)).to_s
         end
-        return MimeLauncher.new(self, urlc, is, mt.get_temp_file_template, thread_name_)
-        # REMIND: What do do here?
-        return nil
+        return MimeLauncher.new(self, urlc, is, mt.get_temp_file_template, thread_name)
       when LAUNCH_APPLICATION
-        thread_name__ = @command
-        fst__ = thread_name__.index_of(Character.new(?\s.ord))
-        if (fst__ > 0)
-          thread_name__ = (thread_name__.substring(0, fst__)).to_s
+        thread_name = @command
+        fst = thread_name.index_of(Character.new(?\s.ord))
+        if (fst > 0)
+          thread_name = (thread_name.substring(0, fst)).to_s
         end
-        return MimeLauncher.new(self, urlc, is, mt.get_temp_file_template, thread_name__)
-        # REMIND: What do do here?
-        return nil
+        return MimeLauncher.new(self, urlc, is, mt.get_temp_file_template, thread_name)
       when UNKNOWN
         # REMIND: What do do here?
         return nil

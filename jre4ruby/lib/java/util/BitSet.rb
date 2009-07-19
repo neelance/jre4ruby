@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 1995-2007 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -35,7 +34,6 @@ module Java::Util
     }
   end
   
-  # 
   # This class implements a vector of bits that grows as needed. Each
   # component of the bit set has a {@code boolean} value. The
   # bits of a {@code BitSet} are indexed by nonnegative integers.
@@ -70,7 +68,6 @@ module Java::Util
     include Java::Io::Serializable
     
     class_module.module_eval {
-      # 
       # BitSets are packed into arrays of "words."  Currently a word is
       # a long, which consists of 64 bits, requiring 6 address bits.
       # The choice of word size is determined purely by performance concerns.
@@ -87,7 +84,6 @@ module Java::Util
       const_set_lazy(:WORD_MASK) { -0x1 }
       const_attr_reader  :WORD_MASK
       
-      # 
       # @serialField bits long[]
       # 
       # The bits in this BitSet.  The ith bit is stored in bits[i/64] at
@@ -97,7 +93,6 @@ module Java::Util
       const_attr_reader  :SerialPersistentFields
     }
     
-    # 
     # The internal field corresponding to the serialField "bits".
     attr_accessor :words
     alias_method :attr_words, :words
@@ -105,7 +100,6 @@ module Java::Util
     alias_method :attr_words=, :words=
     undef_method :words=
     
-    # 
     # The number of words in the logical size of this BitSet.
     attr_accessor :words_in_use
     alias_method :attr_words_in_use, :words_in_use
@@ -113,7 +107,6 @@ module Java::Util
     alias_method :attr_words_in_use=, :words_in_use=
     undef_method :words_in_use=
     
-    # 
     # Whether the size of "words" is user-specified.  If so, we assume
     # the user knows what he's doing and try harder to preserve it.
     attr_accessor :size_is_sticky
@@ -128,7 +121,6 @@ module Java::Util
       const_attr_reader  :SerialVersionUID
       
       typesig { [::Java::Int] }
-      # 
       # Given a bit index, return word index containing it.
       def word_index(bit_index)
         return bit_index >> ADDRESS_BITS_PER_WORD
@@ -136,7 +128,6 @@ module Java::Util
     }
     
     typesig { [] }
-    # 
     # Every public method must preserve these invariants.
     def check_invariants
       raise AssertError if not (((@words_in_use).equal?(0) || !(@words[@words_in_use - 1]).equal?(0)))
@@ -145,7 +136,6 @@ module Java::Util
     end
     
     typesig { [] }
-    # 
     # Sets the field wordsInUse to the logical size in words of the bit set.
     # WARNING:This method assumes that the number of words actually in use is
     # less than or equal to the current value of wordsInUse!
@@ -163,7 +153,6 @@ module Java::Util
     end
     
     typesig { [] }
-    # 
     # Creates a new bit set. All bits are initially {@code false}.
     def initialize
       @words = nil
@@ -174,7 +163,6 @@ module Java::Util
     end
     
     typesig { [::Java::Int] }
-    # 
     # Creates a bit set whose initial size is large enough to explicitly
     # represent bits with indices in the range {@code 0} through
     # {@code nbits-1}. All bits are initially {@code false}.
@@ -200,7 +188,6 @@ module Java::Util
     end
     
     typesig { [Array.typed(::Java::Long)] }
-    # 
     # Creates a bit set using words as the internal representation.
     # The last word (if there is one) must be non-zero.
     def initialize(words)
@@ -213,7 +200,6 @@ module Java::Util
     end
     
     typesig { [::Java::Int] }
-    # 
     # Ensures that the BitSet can hold enough words.
     # @param wordsRequired the minimum acceptable number of words.
     def ensure_capacity(words_required)
@@ -226,7 +212,6 @@ module Java::Util
     end
     
     typesig { [::Java::Int] }
-    # 
     # Ensures that the BitSet can accommodate a given wordIndex,
     # temporarily violating the invariants.  The caller must
     # restore the invariants before returning to the user,
@@ -242,7 +227,6 @@ module Java::Util
     
     class_module.module_eval {
       typesig { [::Java::Int, ::Java::Int] }
-      # 
       # Checks that fromIndex ... toIndex is a valid range of bit indices.
       def check_range(from_index, to_index)
         if (from_index < 0)
@@ -258,7 +242,6 @@ module Java::Util
     }
     
     typesig { [::Java::Int] }
-    # 
     # Sets the bit at the specified index to the complement of its
     # current value.
     # 
@@ -277,7 +260,6 @@ module Java::Util
     end
     
     typesig { [::Java::Int, ::Java::Int] }
-    # 
     # Sets each bit from the specified {@code fromIndex} (inclusive) to the
     # specified {@code toIndex} (exclusive) to the complement of its current
     # value.
@@ -319,7 +301,6 @@ module Java::Util
     end
     
     typesig { [::Java::Int] }
-    # 
     # Sets the bit at the specified index to {@code true}.
     # 
     # @param  bitIndex a bit index
@@ -336,7 +317,6 @@ module Java::Util
     end
     
     typesig { [::Java::Int, ::Java::Boolean] }
-    # 
     # Sets the bit at the specified index to the specified value.
     # 
     # @param  bitIndex a bit index
@@ -352,7 +332,6 @@ module Java::Util
     end
     
     typesig { [::Java::Int, ::Java::Int] }
-    # 
     # Sets the bits from the specified {@code fromIndex} (inclusive) to the
     # specified {@code toIndex} (exclusive) to {@code true}.
     # 
@@ -393,7 +372,6 @@ module Java::Util
     end
     
     typesig { [::Java::Int, ::Java::Int, ::Java::Boolean] }
-    # 
     # Sets the bits from the specified {@code fromIndex} (inclusive) to the
     # specified {@code toIndex} (exclusive) to the specified value.
     # 
@@ -413,7 +391,6 @@ module Java::Util
     end
     
     typesig { [::Java::Int] }
-    # 
     # Sets the bit specified by the index to {@code false}.
     # 
     # @param  bitIndex the index of the bit to be cleared
@@ -433,7 +410,6 @@ module Java::Util
     end
     
     typesig { [::Java::Int, ::Java::Int] }
-    # 
     # Sets the bits from the specified {@code fromIndex} (inclusive) to the
     # specified {@code toIndex} (exclusive) to {@code false}.
     # 
@@ -480,7 +456,6 @@ module Java::Util
     end
     
     typesig { [] }
-    # 
     # Sets all of the bits in this BitSet to {@code false}.
     # 
     # @since 1.4
@@ -491,7 +466,6 @@ module Java::Util
     end
     
     typesig { [::Java::Int] }
-    # 
     # Returns the value of the bit with the specified index. The value
     # is {@code true} if the bit with the index {@code bitIndex}
     # is currently set in this {@code BitSet}; otherwise, the result
@@ -510,7 +484,6 @@ module Java::Util
     end
     
     typesig { [::Java::Int, ::Java::Int] }
-    # 
     # Returns a new {@code BitSet} composed of bits from this {@code BitSet}
     # from {@code fromIndex} (inclusive) to {@code toIndex} (exclusive).
     # 
@@ -556,7 +529,6 @@ module Java::Util
     end
     
     typesig { [::Java::Int] }
-    # 
     # Returns the index of the first bit that is set to {@code true}
     # that occurs on or after the specified starting index. If no such
     # bit exists then {@code -1} is returned.
@@ -596,7 +568,6 @@ module Java::Util
     end
     
     typesig { [::Java::Int] }
-    # 
     # Returns the index of the first bit that is set to {@code false}
     # that occurs on or after the specified starting index.
     # 
@@ -628,7 +599,6 @@ module Java::Util
     end
     
     typesig { [] }
-    # 
     # Returns the "logical size" of this {@code BitSet}: the index of
     # the highest set bit in the {@code BitSet} plus one. Returns zero
     # if the {@code BitSet} contains no set bits.
@@ -643,7 +613,6 @@ module Java::Util
     end
     
     typesig { [] }
-    # 
     # Returns true if this {@code BitSet} contains no bits that are set
     # to {@code true}.
     # 
@@ -654,7 +623,6 @@ module Java::Util
     end
     
     typesig { [BitSet] }
-    # 
     # Returns true if the specified {@code BitSet} has any bits set to
     # {@code true} that are also set to {@code true} in this {@code BitSet}.
     # 
@@ -674,7 +642,6 @@ module Java::Util
     end
     
     typesig { [] }
-    # 
     # Returns the number of bits set to {@code true} in this {@code BitSet}.
     # 
     # @return the number of bits set to {@code true} in this {@code BitSet}
@@ -690,7 +657,6 @@ module Java::Util
     end
     
     typesig { [BitSet] }
-    # 
     # Performs a logical <b>AND</b> of this target bit set with the
     # argument bit set. This bit set is modified so that each bit in it
     # has the value {@code true} if and only if it both initially
@@ -716,7 +682,6 @@ module Java::Util
     end
     
     typesig { [BitSet] }
-    # 
     # Performs a logical <b>OR</b> of this bit set with the bit set
     # argument. This bit set is modified so that a bit in it has the
     # value {@code true} if and only if it either already had the
@@ -748,7 +713,6 @@ module Java::Util
     end
     
     typesig { [BitSet] }
-    # 
     # Performs a logical <b>XOR</b> of this bit set with the bit set
     # argument. This bit set is modified so that a bit in it has the
     # value {@code true} if and only if one of the following
@@ -782,7 +746,6 @@ module Java::Util
     end
     
     typesig { [BitSet] }
-    # 
     # Clears all of the bits in this {@code BitSet} whose corresponding
     # bit is set in the specified {@code BitSet}.
     # 
@@ -801,7 +764,6 @@ module Java::Util
     end
     
     typesig { [] }
-    # 
     # Returns a hash code value for this bit set. The hash code
     # depends only on which bits have been set within this
     # <code>BitSet</code>. The algorithm used to compute it may
@@ -836,7 +798,6 @@ module Java::Util
     end
     
     typesig { [] }
-    # 
     # Returns the number of bits of space actually in use by this
     # {@code BitSet} to represent bit values.
     # The maximum element in the set is the size - 1st element.
@@ -847,7 +808,6 @@ module Java::Util
     end
     
     typesig { [Object] }
-    # 
     # Compares this object against the specified object.
     # The result is {@code true} if and only if the argument is
     # not {@code null} and is a {@code Bitset} object that has
@@ -885,7 +845,6 @@ module Java::Util
     end
     
     typesig { [] }
-    # 
     # Cloning this {@code BitSet} produces a new {@code BitSet}
     # that is equal to it.
     # The clone of the bit set is another bit set that has exactly the
@@ -908,7 +867,6 @@ module Java::Util
     end
     
     typesig { [] }
-    # 
     # Attempts to reduce internal storage used for the bits in this bit set.
     # Calling this method may, but is not required to, affect the value
     # returned by a subsequent call to the {@link #size()} method.
@@ -920,7 +878,6 @@ module Java::Util
     end
     
     typesig { [ObjectOutputStream] }
-    # 
     # Save the state of the {@code BitSet} instance to a stream (i.e.,
     # serialize it).
     def write_object(s)
@@ -934,7 +891,6 @@ module Java::Util
     end
     
     typesig { [ObjectInputStream] }
-    # 
     # Reconstitute the {@code BitSet} instance from a stream (i.e.,
     # deserialize it).
     def read_object(s)
@@ -950,7 +906,6 @@ module Java::Util
     end
     
     typesig { [] }
-    # 
     # Returns a string representation of this bit set. For every index
     # for which this {@code BitSet} contains a bit in the set
     # state, the decimal representation of that index is included in

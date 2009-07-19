@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 2003-2006 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -35,7 +34,6 @@ module Sun::Security::Util
     }
   end
   
-  # 
   # A utility class for reading passwords
   class Password 
     include_class_members PasswordImports
@@ -123,7 +121,6 @@ module Sun::Security::Util
       end
       
       typesig { [Array.typed(::Java::Char)] }
-      # 
       # Change a password read from Console.readPassword() into
       # its original bytes.
       # 

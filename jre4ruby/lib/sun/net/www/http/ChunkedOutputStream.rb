@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 2004-2007 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -32,7 +31,6 @@ module Sun::Net::Www::Http
     }
   end
   
-  # 
   # OutputStream that sends the output to the underlying stream using chunked
   # encoding as specified in RFC 2068.
   # 
@@ -123,7 +121,6 @@ module Sun::Net::Www::Http
     end
     
     typesig { [Array.typed(::Java::Byte), ::Java::Boolean] }
-    # 
     # If flushAll is true, then all data is flushed in one chunk.
     # 
     # If false and the size of the buffer data exceeds the preferred
@@ -181,7 +178,6 @@ module Sun::Net::Www::Http
     end
     
     typesig { [] }
-    # 
     # Check if we have enough data for a chunk and if so flush to the
     # underlying output stream.
     def check_flush

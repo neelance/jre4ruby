@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 1995-1997 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -30,7 +29,6 @@ module Java::Lang
     }
   end
   
-  # 
   # Thrown when an application tries to use the Java <code>new</code>
   # construct to instantiate an abstract class or an interface.
   # <p>
@@ -44,14 +42,12 @@ module Java::Lang
     include_class_members InstantiationErrorImports
     
     typesig { [] }
-    # 
     # Constructs an <code>InstantiationError</code> with no detail  message.
     def initialize
       super()
     end
     
     typesig { [String] }
-    # 
     # Constructs an <code>InstantiationError</code> with the specified
     # detail message.
     # 

@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
 # This code is free software; you can redistribute it and/or modify it
@@ -41,7 +40,6 @@ module Java::Util::Concurrent
     }
   end
   
-  # 
   # A cancellable asynchronous computation.  This class provides a base
   # implementation of {@link Future}, with methods to start and cancel
   # a computation, query to see if the computation is complete, and
@@ -75,7 +73,6 @@ module Java::Util::Concurrent
     undef_method :sync=
     
     typesig { [Callable] }
-    # 
     # Creates a <tt>FutureTask</tt> that will, upon running, execute the
     # given <tt>Callable</tt>.
     # 
@@ -90,7 +87,6 @@ module Java::Util::Concurrent
     end
     
     typesig { [Runnable, Object] }
-    # 
     # Creates a <tt>FutureTask</tt> that will, upon running, execute the
     # given <tt>Runnable</tt>, and arrange that <tt>get</tt> will return the
     # given result on successful completion.
@@ -122,21 +118,18 @@ module Java::Util::Concurrent
     end
     
     typesig { [] }
-    # 
     # @throws CancellationException {@inheritDoc}
     def get
       return @sync.inner_get
     end
     
     typesig { [::Java::Long, TimeUnit] }
-    # 
     # @throws CancellationException {@inheritDoc}
     def get(timeout, unit)
       return @sync.inner_get(unit.to_nanos(timeout))
     end
     
     typesig { [] }
-    # 
     # Protected method invoked when this task transitions to state
     # <tt>isDone</tt> (whether normally or via cancellation). The
     # default implementation does nothing.  Subclasses may override
@@ -148,7 +141,6 @@ module Java::Util::Concurrent
     end
     
     typesig { [Object] }
-    # 
     # Sets the result of this Future to the given value unless
     # this future has already been set or has been cancelled.
     # This method is invoked internally by the <tt>run</tt> method
@@ -159,7 +151,6 @@ module Java::Util::Concurrent
     end
     
     typesig { [Exception] }
-    # 
     # Causes this future to report an <tt>ExecutionException</tt>
     # with the given throwable as its cause, unless this Future has
     # already been set or has been cancelled.
@@ -184,7 +175,6 @@ module Java::Util::Concurrent
     end
     
     typesig { [] }
-    # 
     # Executes the computation without setting its result, and then
     # resets this Future to initial state, failing to do so if the
     # computation encounters an exception or is cancelled.  This is
@@ -196,7 +186,6 @@ module Java::Util::Concurrent
     end
     
     class_module.module_eval {
-      # 
       # Synchronization control for FutureTask. Note that this must be
       # a non-static inner class in order to invoke the protected
       # <tt>done</tt> method. For clarity, all inner class support
@@ -249,7 +238,6 @@ module Java::Util::Concurrent
         alias_method :attr_exception=, :exception=
         undef_method :exception=
         
-        # 
         # The thread running task. When nulled after set/cancel, this
         # indicates that the results are accessible.  Must be
         # volatile, to ensure visibility upon completion.
@@ -275,14 +263,12 @@ module Java::Util::Concurrent
         end
         
         typesig { [::Java::Int] }
-        # 
         # Implements AQS base acquire to succeed if ran or cancelled
         def try_acquire_shared(ignore)
           return inner_is_done ? 1 : -1
         end
         
         typesig { [::Java::Int] }
-        # 
         # Implements AQS base release to always signal after setting
         # final done status by nulling runner thread.
         def try_release_shared(ignore)

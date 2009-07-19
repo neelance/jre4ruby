@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 2003-2008 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -178,7 +177,6 @@ module Sun::Security::Pkcs11
     undef_method :nss_trust_type=
     
     class_module.module_eval {
-      # 
       # The underlying token may contain multiple certs belonging to the
       # same "personality" (for example, a signing cert and encryption cert),
       # all sharing the same CKA_LABEL.  These must be resolved
@@ -313,7 +311,6 @@ module Sun::Security::Pkcs11
         alias_method :initialize__alias_info, :initialize
       end }
       
-      # 
       # callback handler for passing password to Provider.login method
       const_set_lazy(:PasswordCallbackHandler) { Class.new do
         include_class_members P11KeyStore
@@ -354,7 +351,6 @@ module Sun::Security::Pkcs11
         alias_method :initialize__password_callback_handler, :initialize
       end }
       
-      # 
       # getTokenObject return value.
       # 
       # if object is not found, type is set to null.
@@ -403,7 +399,6 @@ module Sun::Security::Pkcs11
     end
     
     typesig { [String, Array.typed(::Java::Char)] }
-    # 
     # Returns the key associated with the given alias.
     # The key must have been associated with
     # the alias by a call to <code>setKeyEntry</code>,
@@ -438,9 +433,9 @@ module Sun::Security::Pkcs11
               return load_pkey(session, h.attr_handle)
             end
           else
-            h_ = get_token_object(session, ATTR_CLASS_SKEY, nil, alias_)
-            if ((h_.attr_type).equal?(ATTR_CLASS_SKEY))
-              return load_skey(session, h_.attr_handle)
+            h = get_token_object(session, ATTR_CLASS_SKEY, nil, alias_)
+            if ((h.attr_type).equal?(ATTR_CLASS_SKEY))
+              return load_skey(session, h.attr_handle)
             end
           end
           # did not find anything
@@ -456,7 +451,6 @@ module Sun::Security::Pkcs11
     end
     
     typesig { [String] }
-    # 
     # Returns the certificate chain associated with the given alias.
     # The certificate chain must have been associated with the alias
     # by a call to <code>setKeyEntry</code>,
@@ -480,7 +474,6 @@ module Sun::Security::Pkcs11
     end
     
     typesig { [String] }
-    # 
     # Returns the certificate associated with the given alias.
     # 
     # <p> If the given alias name identifies an entry
@@ -512,7 +505,6 @@ module Sun::Security::Pkcs11
     end
     
     typesig { [String] }
-    # 
     # Returns the creation date of the entry identified by the given alias.
     # 
     # @param alias the alias name
@@ -525,7 +517,6 @@ module Sun::Security::Pkcs11
     end
     
     typesig { [String, Key, Array.typed(::Java::Char), Array.typed(Certificate)] }
-    # 
     # Assigns the given key to the given alias, protecting it with the given
     # password.
     # 
@@ -584,7 +575,6 @@ module Sun::Security::Pkcs11
     end
     
     typesig { [String, Array.typed(::Java::Byte), Array.typed(Certificate)] }
-    # 
     # Assigns the given key (that has already been protected) to the given
     # alias.
     # 
@@ -610,7 +600,6 @@ module Sun::Security::Pkcs11
     end
     
     typesig { [String, Certificate] }
-    # 
     # Assigns the given certificate to the given alias.
     # 
     # <p> If the given alias identifies an existing entry
@@ -640,7 +629,6 @@ module Sun::Security::Pkcs11
     end
     
     typesig { [String] }
-    # 
     # Deletes the entry identified by the given alias from this keystore.
     # 
     # @param alias the alias name
@@ -658,7 +646,6 @@ module Sun::Security::Pkcs11
     end
     
     typesig { [String] }
-    # 
     # XXX - not sure whether to keep this
     def delete_entry(alias_)
       alias_info = @alias_map.get(alias_)
@@ -691,7 +678,6 @@ module Sun::Security::Pkcs11
     end
     
     typesig { [] }
-    # 
     # Lists all the alias names of this keystore.
     # 
     # @return enumeration of the alias names
@@ -706,7 +692,6 @@ module Sun::Security::Pkcs11
     end
     
     typesig { [String] }
-    # 
     # Checks if the given alias exists in this keystore.
     # 
     # @param alias the alias name
@@ -720,7 +705,6 @@ module Sun::Security::Pkcs11
     end
     
     typesig { [] }
-    # 
     # Retrieves the number of entries in this keystore.
     # 
     # @return the number of entries in this keystore
@@ -732,7 +716,6 @@ module Sun::Security::Pkcs11
     end
     
     typesig { [String] }
-    # 
     # Returns true if the entry identified by the given alias
     # was created by a call to <code>setKeyEntry</code>,
     # or created by a call to <code>setEntry</code> with a
@@ -754,7 +737,6 @@ module Sun::Security::Pkcs11
     end
     
     typesig { [String] }
-    # 
     # Returns true if the entry identified by the given alias
     # was created by a call to <code>setCertificateEntry</code>,
     # or created by a call to <code>setEntry</code> with a
@@ -776,7 +758,6 @@ module Sun::Security::Pkcs11
     end
     
     typesig { [Certificate] }
-    # 
     # Returns the (alias) name of the first keystore entry whose certificate
     # matches the given certificate.
     # 
@@ -814,7 +795,6 @@ module Sun::Security::Pkcs11
     end
     
     typesig { [OutputStream, Array.typed(::Java::Char)] }
-    # 
     # engineStore currently is a No-op.
     # Entries are stored to the token during engineSetEntry
     # 
@@ -833,7 +813,6 @@ module Sun::Security::Pkcs11
     end
     
     typesig { [KeyStore::LoadStoreParameter] }
-    # 
     # engineStore currently is a No-op.
     # Entries are stored to the token during engineSetEntry
     # 
@@ -852,7 +831,6 @@ module Sun::Security::Pkcs11
     end
     
     typesig { [InputStream, Array.typed(::Java::Char)] }
-    # 
     # Loads the keystore.
     # 
     # @param stream the input stream, which must be <code>null</code>
@@ -894,19 +872,18 @@ module Sun::Security::Pkcs11
           ioe.init_cause(le)
           raise ioe
         rescue KeyStoreException => kse
-          ioe_ = IOException.new("load failed")
-          ioe_.init_cause(kse)
-          raise ioe_
+          ioe = IOException.new("load failed")
+          ioe.init_cause(kse)
+          raise ioe
         rescue PKCS11Exception => pe
-          ioe__ = IOException.new("load failed")
-          ioe__.init_cause(pe)
-          raise ioe__
+          ioe = IOException.new("load failed")
+          ioe.init_cause(pe)
+          raise ioe
         end
       end
     end
     
     typesig { [KeyStore::LoadStoreParameter] }
-    # 
     # Loads the keystore using the given
     # <code>KeyStore.LoadStoreParameter</code>.
     # 
@@ -975,9 +952,9 @@ module Sun::Security::Pkcs11
         rescue LoginException => e
           raise IOException.new("load failed", e)
         rescue KeyStoreException => e
-          raise IOException.new("load failed", e_)
+          raise IOException.new("load failed", e)
         rescue PKCS11Exception => e
-          raise IOException.new("load failed", e__)
+          raise IOException.new("load failed", e)
         end
       end
     end
@@ -999,7 +976,6 @@ module Sun::Security::Pkcs11
     end
     
     typesig { [String, KeyStore::ProtectionParameter] }
-    # 
     # Get a <code>KeyStore.Entry</code> for the specified alias
     # 
     # @param alias get the <code>KeyStore.Entry</code> for this alias
@@ -1055,11 +1031,11 @@ module Sun::Security::Pkcs11
               if (!(Debug).nil?)
                 Debug.println("engineGetEntry found private key entry")
               end
-              h_ = get_token_object(session, ATTR_CLASS_PKEY, alias_info.attr_id, nil)
-              if (!(h_.attr_type).equal?(ATTR_CLASS_PKEY))
+              h = get_token_object(session, ATTR_CLASS_PKEY, alias_info.attr_id, nil)
+              if (!(h.attr_type).equal?(ATTR_CLASS_PKEY))
                 raise KeyStoreException.new("expected but could not find private key")
               else
-                pkey = load_pkey(session, h_.attr_handle)
+                pkey = load_pkey(session, h.attr_handle)
                 chain = alias_info.attr_chain
                 if ((!(pkey).nil?) && (!(chain).nil?))
                   return KeyStore::PrivateKeyEntry.new(pkey, chain)
@@ -1081,7 +1057,6 @@ module Sun::Security::Pkcs11
     end
     
     typesig { [String, KeyStore::Entry, KeyStore::ProtectionParameter] }
-    # 
     # Save a <code>KeyStore.Entry</code> under the specified alias.
     # 
     # <p> If an entry already exists for the specified alias,
@@ -1139,7 +1114,7 @@ module Sun::Security::Pkcs11
           rescue PKCS11Exception => e
             raise KeyStoreException.new(e)
           rescue CertificateException => e
-            raise KeyStoreException.new(e_)
+            raise KeyStoreException.new(e)
           end
         else
           if (entry.is_a?(KeyStore::PrivateKeyEntry))
@@ -1196,7 +1171,7 @@ module Sun::Security::Pkcs11
                   store_skey(alias_, ske)
                 end
               rescue PKCS11Exception => pe
-                raise KeyStoreException.new(pe_)
+                raise KeyStoreException.new(pe)
               end
             else
               raise KeyStoreException.new(UnsupportedOperationException.new("unsupported entry type: " + (entry.get_class.get_name).to_s))
@@ -1212,9 +1187,9 @@ module Sun::Security::Pkcs11
               dump_token_map
             end
           rescue PKCS11Exception => pe
-            raise KeyStoreException.new(pe__)
+            raise KeyStoreException.new(pe)
           rescue CertificateException => ce
-            raise KeyStoreException.new(ce_)
+            raise KeyStoreException.new(ce)
           end
         end
         if (!(Debug).nil?)
@@ -1224,7 +1199,6 @@ module Sun::Security::Pkcs11
     end
     
     typesig { [String, Class] }
-    # 
     # Determines if the keystore <code>Entry</code> for the specified
     # <code>alias</code> is an instance or subclass of the specified
     # <code>entryClass</code>.
@@ -1370,8 +1344,8 @@ module Sun::Security::Pkcs11
             key_type = "DH"
             attrs = Array.typed(CK_ATTRIBUTE).new([CK_ATTRIBUTE.new(CKA_PRIME)])
             @token.attr_p11._c_get_attribute_value(session.id, o_handle, attrs)
-            prime_ = attrs[0].get_big_integer
-            key_length = prime_.bit_length
+            prime = attrs[0].get_big_integer
+            key_length = prime.bit_length
             return P11Key.private_key(session, o_handle, key_type, key_length, nil)
           else
             if ((k_type).equal?(CKK_EC))
@@ -1383,7 +1357,7 @@ module Sun::Security::Pkcs11
                 key_length = params.get_curve.get_field.get_field_size
               rescue IOException => e
                 # we do not want to accept key with unsupported parameters
-                raise KeyStoreException.new("Unsupported parameters", e_)
+                raise KeyStoreException.new("Unsupported parameters", e)
               end
               return P11Key.private_key(session, o_handle, "EC", key_length, nil)
             else
@@ -1398,7 +1372,6 @@ module Sun::Security::Pkcs11
     end
     
     typesig { [String] }
-    # 
     # return true if update occurred
     def update_skey(alias_)
       session = nil
@@ -1424,7 +1397,6 @@ module Sun::Security::Pkcs11
     end
     
     typesig { [String, Array.typed(::Java::Byte), Array.typed(X509Certificate), ::Java::Boolean] }
-    # 
     # XXX  On ibutton, when you C_SetAttribute(CKA_ID) for a private key
     # it not only changes the CKA_ID of the private key,
     # it changes the CKA_ID of the corresponding cert too.
@@ -1485,8 +1457,8 @@ module Sun::Security::Pkcs11
         # finally update CKA_ID for private key
         # 
         # ibutton may have already done this (that is ok)
-        attrs_ = Array.typed(CK_ATTRIBUTE).new([CK_ATTRIBUTE.new(CKA_ID, alias_)])
-        @token.attr_p11._c_set_attribute_value(session.id, p_key_handle, attrs_)
+        attrs = Array.typed(CK_ATTRIBUTE).new([CK_ATTRIBUTE.new(CKA_ID, alias_)])
+        @token.attr_p11._c_set_attribute_value(session.id, p_key_handle, attrs)
         if (!(Debug).nil?)
           Debug.println("updatePkey set new alias [" + alias_ + "] for private key entry")
         end
@@ -1527,11 +1499,11 @@ module Sun::Security::Pkcs11
           end
         else
           # session key - convert to token key and set CKA_ID
-          attrs_ = Array.typed(CK_ATTRIBUTE).new([ATTR_TOKEN_TRUE, CK_ATTRIBUTE.new(CKA_ID, alias_), ])
+          attrs = Array.typed(CK_ATTRIBUTE).new([ATTR_TOKEN_TRUE, CK_ATTRIBUTE.new(CKA_ID, alias_), ])
           if (!(attribute).nil?)
-            attrs_ = add_attribute(attrs_, attribute)
+            attrs = add_attribute(attrs, attribute)
           end
-          @token.attr_p11._c_copy_object(session.id, key.attr_key_id, attrs_)
+          @token.attr_p11._c_copy_object(session.id, key.attr_key_id, attrs)
           if (!(Debug).nil?)
             Debug.println("updateP11Pkey copied private session key " + "for [" + alias_ + "] to token entry")
           end
@@ -1700,26 +1672,26 @@ module Sun::Security::Pkcs11
         else
           if (key.is_a?(DHPrivateKey))
             dh_key = key
-            id_attrs_ = get_id_attributes(key, public_key, false, use_ndb)
-            if ((id_attrs_[0]).nil?)
-              id_attrs_[0] = CK_ATTRIBUTE.new(CKA_ID, alias_)
+            id_attrs = get_id_attributes(key, public_key, false, use_ndb)
+            if ((id_attrs[0]).nil?)
+              id_attrs[0] = CK_ATTRIBUTE.new(CKA_ID, alias_)
             end
-            attrs = Array.typed(CK_ATTRIBUTE).new([ATTR_TOKEN_TRUE, ATTR_CLASS_PKEY, ATTR_PRIVATE_TRUE, CK_ATTRIBUTE.new(CKA_KEY_TYPE, CKK_DH), id_attrs_[0], CK_ATTRIBUTE.new(CKA_PRIME, dh_key.get_params.get_p), CK_ATTRIBUTE.new(CKA_BASE, dh_key.get_params.get_g), CK_ATTRIBUTE.new(CKA_VALUE, dh_key.get_x), ])
-            if (!(id_attrs_[1]).nil?)
-              attrs = add_attribute(attrs, id_attrs_[1])
+            attrs = Array.typed(CK_ATTRIBUTE).new([ATTR_TOKEN_TRUE, ATTR_CLASS_PKEY, ATTR_PRIVATE_TRUE, CK_ATTRIBUTE.new(CKA_KEY_TYPE, CKK_DH), id_attrs[0], CK_ATTRIBUTE.new(CKA_PRIME, dh_key.get_params.get_p), CK_ATTRIBUTE.new(CKA_BASE, dh_key.get_params.get_g), CK_ATTRIBUTE.new(CKA_VALUE, dh_key.get_x), ])
+            if (!(id_attrs[1]).nil?)
+              attrs = add_attribute(attrs, id_attrs[1])
             end
             attrs = @token.get_attributes(TemplateManager::O_IMPORT, CKO_PRIVATE_KEY, CKK_DH, attrs)
           else
             if (key.is_a?(ECPrivateKey))
               ec_key = key
-              id_attrs__ = get_id_attributes(key, public_key, false, use_ndb)
-              if ((id_attrs__[0]).nil?)
-                id_attrs__[0] = CK_ATTRIBUTE.new(CKA_ID, alias_)
+              id_attrs = get_id_attributes(key, public_key, false, use_ndb)
+              if ((id_attrs[0]).nil?)
+                id_attrs[0] = CK_ATTRIBUTE.new(CKA_ID, alias_)
               end
               encoded_params = ECParameters.encode_parameters(ec_key.get_params)
-              attrs = Array.typed(CK_ATTRIBUTE).new([ATTR_TOKEN_TRUE, ATTR_CLASS_PKEY, ATTR_PRIVATE_TRUE, CK_ATTRIBUTE.new(CKA_KEY_TYPE, CKK_EC), id_attrs__[0], CK_ATTRIBUTE.new(CKA_VALUE, ec_key.get_s), CK_ATTRIBUTE.new(CKA_EC_PARAMS, encoded_params), ])
-              if (!(id_attrs__[1]).nil?)
-                attrs = add_attribute(attrs, id_attrs__[1])
+              attrs = Array.typed(CK_ATTRIBUTE).new([ATTR_TOKEN_TRUE, ATTR_CLASS_PKEY, ATTR_PRIVATE_TRUE, CK_ATTRIBUTE.new(CKA_KEY_TYPE, CKK_EC), id_attrs[0], CK_ATTRIBUTE.new(CKA_VALUE, ec_key.get_s), CK_ATTRIBUTE.new(CKA_EC_PARAMS, encoded_params), ])
+              if (!(id_attrs[1]).nil?)
+                attrs = add_attribute(attrs, id_attrs[1])
               end
               attrs = @token.get_attributes(TemplateManager::O_IMPORT, CKO_PRIVATE_KEY, CKK_EC, attrs)
               if (!(Debug).nil?)
@@ -1728,8 +1700,8 @@ module Sun::Security::Pkcs11
             else
               if (key.is_a?(P11Key))
                 # sensitive/non-extractable P11Key
-                p11key_ = key
-                if (!(p11key_.attr_token).equal?(@token))
+                p11key = key
+                if (!(p11key.attr_token).equal?(@token))
                   raise KeyStoreException.new("Cannot move sensitive keys across tokens")
                 end
                 netscape_db = nil
@@ -1740,11 +1712,11 @@ module Sun::Security::Pkcs11
                   # CKR_ATTRIBUTE_READ_ONLY.
                   # But if we did not specify it, they would fail with
                   # CKA_TEMPLATE_INCOMPLETE, so leave this code in here.
-                  id_attrs___ = get_id_attributes(key, public_key, false, true)
-                  netscape_db = id_attrs___[1]
+                  id_attrs = get_id_attributes(key, public_key, false, true)
+                  netscape_db = id_attrs[1]
                 end
                 # Update the key object.
-                update_p11pkey(alias_, netscape_db, p11key_)
+                update_p11pkey(alias_, netscape_db, p11key)
                 store_chain(alias_, pke.get_certificate_chain)
                 return
               else
@@ -1783,15 +1755,14 @@ module Sun::Security::Pkcs11
         if (!(Debug).nil?)
           Debug.println("creating RSAPrivateKey attrs")
         end
-        rsa_key_ = key
-        attrs = Array.typed(CK_ATTRIBUTE).new([ATTR_TOKEN_TRUE, ATTR_CLASS_PKEY, ATTR_PRIVATE_TRUE, CK_ATTRIBUTE.new(CKA_KEY_TYPE, CKK_RSA), CK_ATTRIBUTE.new(CKA_ID, alias_), CK_ATTRIBUTE.new(CKA_MODULUS, rsa_key_.get_modulus), CK_ATTRIBUTE.new(CKA_PRIVATE_EXPONENT, rsa_key_.get_private_exponent)])
+        rsa_key = key
+        attrs = Array.typed(CK_ATTRIBUTE).new([ATTR_TOKEN_TRUE, ATTR_CLASS_PKEY, ATTR_PRIVATE_TRUE, CK_ATTRIBUTE.new(CKA_KEY_TYPE, CKK_RSA), CK_ATTRIBUTE.new(CKA_ID, alias_), CK_ATTRIBUTE.new(CKA_MODULUS, rsa_key.get_modulus), CK_ATTRIBUTE.new(CKA_PRIVATE_EXPONENT, rsa_key.get_private_exponent)])
         attrs = @token.get_attributes(TemplateManager::O_IMPORT, CKO_PRIVATE_KEY, CKK_RSA, attrs)
       end
       return attrs
     end
     
     typesig { [PrivateKey, PublicKey, ::Java::Boolean, ::Java::Boolean] }
-    # 
     # Compute the CKA_ID and/or CKA_NETSCAPE_DB attributes that should be
     # used for this private key. It uses the same algorithm to calculate the
     # values as NSS. The public and private keys MUST match for the result to
@@ -1824,12 +1795,12 @@ module Sun::Security::Pkcs11
           end
         else
           if ((alg == "DH") && (public_key.is_a?(DHPublicKey)))
-            y_ = (public_key).get_y
+            y = (public_key).get_y
             if (id_)
-              attrs[0] = CK_ATTRIBUTE.new(CKA_ID, sha1(get_magnitude(y_)))
+              attrs[0] = CK_ATTRIBUTE.new(CKA_ID, sha1(get_magnitude(y)))
             end
             if (netscape_db)
-              attrs[1] = CK_ATTRIBUTE.new(CKA_NETSCAPE_DB, y_)
+              attrs[1] = CK_ATTRIBUTE.new(CKA_NETSCAPE_DB, y)
             end
           else
             if ((alg == "EC") && (public_key.is_a?(ECPublicKey)))
@@ -1853,7 +1824,6 @@ module Sun::Security::Pkcs11
     end
     
     typesig { [Array.typed(::Java::Byte)] }
-    # 
     # return true if cert destroyed
     def destroy_cert(cka_id)
       session = nil
@@ -1874,7 +1844,6 @@ module Sun::Security::Pkcs11
     end
     
     typesig { [Array.typed(::Java::Byte)] }
-    # 
     # return true if chain destroyed
     def destroy_chain(cka_id)
       session = nil
@@ -1947,7 +1916,6 @@ module Sun::Security::Pkcs11
     end
     
     typesig { [String] }
-    # 
     # return true if secret key destroyed
     def destroy_skey(alias_)
       session = nil
@@ -1968,7 +1936,6 @@ module Sun::Security::Pkcs11
     end
     
     typesig { [Array.typed(::Java::Byte)] }
-    # 
     # return true if private key destroyed
     def destroy_pkey(cka_id)
       session = nil
@@ -1989,7 +1956,6 @@ module Sun::Security::Pkcs11
     end
     
     typesig { [String, X509Certificate] }
-    # 
     # build [alias + issuer + serialNumber] string from a cert
     def get_id(alias_, cert)
       issuer = cert.get_issuer_x500principal
@@ -1999,7 +1965,6 @@ module Sun::Security::Pkcs11
     
     class_module.module_eval {
       typesig { [Array.typed(::Java::Byte)] }
-      # 
       # build CKA_ID string from bytes
       def get_id(bytes)
         printable = true
@@ -2024,7 +1989,6 @@ module Sun::Security::Pkcs11
     }
     
     typesig { [Session, CK_ATTRIBUTE, Array.typed(::Java::Byte), String] }
-    # 
     # find an object on the token
     # 
     # @param type either ATTR_CLASS_CERT, ATTR_CLASS_PKEY, or ATTR_CLASS_SKEY
@@ -2087,7 +2051,6 @@ module Sun::Security::Pkcs11
     end
     
     typesig { [] }
-    # 
     # Create a mapping of all key pairs, trusted certs, and secret keys
     # on the token into logical KeyStore entries unambiguously
     # accessible via an alias.
@@ -2134,7 +2097,7 @@ module Sun::Security::Pkcs11
           cka_label = nil
           cka_id = nil
           begin
-            @token.attr_p11._c_get_attribute_value(session.id, handle_, attrs)
+            @token.attr_p11._c_get_attribute_value(session.id, handle, attrs)
             if (!(attrs[0].attr_p_value).nil?)
               # there is a CKA_LABEL
               cka_label = (String.new(attrs[0].get_char_array)).to_s
@@ -2149,7 +2112,7 @@ module Sun::Security::Pkcs11
           end
           # get CKA_ID
           attrs = Array.typed(CK_ATTRIBUTE).new([CK_ATTRIBUTE.new(CKA_ID)])
-          @token.attr_p11._c_get_attribute_value(session.id, handle_, attrs)
+          @token.attr_p11._c_get_attribute_value(session.id, handle, attrs)
           if ((attrs[0].attr_p_value).nil?)
             if ((cka_label).nil?)
               # no cka_label nor cka_id - ignore
@@ -2162,7 +2125,7 @@ module Sun::Security::Pkcs11
             end
             cka_id = attrs[0].get_byte_array
           end
-          cert = load_cert(session, handle_)
+          cert = load_cert(session, handle)
           # get CKA_TRUSTED
           cka_trusted = false
           if (@use_secmod_trust)
@@ -2170,10 +2133,10 @@ module Sun::Security::Pkcs11
           else
             if (self.attr_cka_trusted_supported)
               begin
-                @token.attr_p11._c_get_attribute_value(session.id, handle_, trusted_attr)
+                @token.attr_p11._c_get_attribute_value(session.id, handle, trusted_attr)
                 cka_trusted = trusted_attr[0].get_boolean
               rescue PKCS11Exception => pe
-                if ((pe_.get_error_code).equal?(CKR_ATTRIBUTE_TYPE_INVALID))
+                if ((pe.get_error_code).equal?(CKR_ATTRIBUTE_TYPE_INVALID))
                   # XXX  NSS, ibutton, sca1000
                   self.attr_cka_trusted_supported = false
                   if (!(Debug).nil?)
@@ -2202,14 +2165,14 @@ module Sun::Security::Pkcs11
         handles = find_objects(session, attrs)
         handles.each do |handle|
           attrs = Array.typed(CK_ATTRIBUTE).new([CK_ATTRIBUTE.new(CKA_LABEL)])
-          @token.attr_p11._c_get_attribute_value(session.id, handle__, attrs)
+          @token.attr_p11._c_get_attribute_value(session.id, handle, attrs)
           if (!(attrs[0].attr_p_value).nil?)
             # there is a CKA_LABEL
-            cka_label_ = String.new(attrs[0].get_char_array)
-            if (!s_key_set.contains(cka_label_))
-              s_key_set.add(cka_label_)
+            cka_label = String.new(attrs[0].get_char_array)
+            if (!s_key_set.contains(cka_label))
+              s_key_set.add(cka_label)
             else
-              raise KeyStoreException.new("invalid KeyStore state: " + "found multiple secret keys sharing same " + "CKA_LABEL [" + cka_label_ + "]")
+              raise KeyStoreException.new("invalid KeyStore state: " + "found multiple secret keys sharing same " + "CKA_LABEL [" + cka_label + "]")
             end
           end
         end
@@ -2224,7 +2187,6 @@ module Sun::Security::Pkcs11
     end
     
     typesig { [ArrayList, HashMap] }
-    # 
     # for each private key CKA_ID, find corresponding cert with same CKA_ID.
     # if found cert, see if cert CKA_LABEL is unique.
     # if CKA_LABEL unique, map private key/cert alias to that CKA_LABEL.
@@ -2277,7 +2239,6 @@ module Sun::Security::Pkcs11
     end
     
     typesig { [ArrayList, HashMap] }
-    # 
     # for each cert not matched with a private key but is CKA_TRUSTED:
     # if CKA_LABEL unique, map cert to CKA_LABEL.
     # if CKA_LABEL not unique, map cert to [label+issuer+serialNum]
@@ -2304,10 +2265,10 @@ module Sun::Security::Pkcs11
       cert_labels.each do |certLabel|
         info_set = cert_map.get(cert_label)
         info_set.each do |aliasInfo|
-          if ((alias_info_.attr_matched).equal?(true))
+          if ((alias_info.attr_matched).equal?(true))
             # already found a private key match for this cert -
             # just continue
-            alias_info_.attr_trusted = false
+            alias_info.attr_trusted = false
             next
           end
           # cert in this aliasInfo is not matched yet
@@ -2315,9 +2276,9 @@ module Sun::Security::Pkcs11
           # if CKA_TRUSTED_SUPPORTED == true,
           # then check if cert is trusted
           if (self.attr_cka_trusted_supported)
-            if (alias_info_.attr_trusted)
+            if (alias_info.attr_trusted)
               # trusted certificate
-              if ((map_trusted_cert(cert_label, alias_info_, info_set)).equal?(true))
+              if ((map_trusted_cert(cert_label, alias_info, info_set)).equal?(true))
                 shared_label = true
               end
             end
@@ -2345,7 +2306,6 @@ module Sun::Security::Pkcs11
     end
     
     typesig { [HashSet] }
-    # 
     # If the secret key shares a CKA_LABEL with another entry,
     # throw an exception
     def map_secret_keys(s_key_set)

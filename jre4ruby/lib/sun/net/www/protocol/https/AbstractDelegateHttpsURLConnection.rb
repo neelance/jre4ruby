@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 2001-2006 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -40,7 +39,6 @@ module Sun::Net::Www::Protocol::Https
     }
   end
   
-  # 
   # HTTPS URL connection support.
   # We need this delegate because HttpsURLConnection is a subclass of
   # java.net.HttpURLConnection. We will avoid copying over the code from
@@ -69,7 +67,6 @@ module Sun::Net::Www::Protocol::Https
     end
     
     typesig { [URL] }
-    # 
     # No user application is able to call these routines, as no one
     # should ever get access to an instance of
     # DelegateHttpsURLConnection (sun.* or com.*)
@@ -88,7 +85,6 @@ module Sun::Net::Www::Protocol::Https
     end
     
     typesig { [URL, ::Java::Boolean] }
-    # 
     # Obtain a HttpClient object. Use the cached copy if specified.
     # 
     # Note: this method is changed from protected to public because
@@ -104,7 +100,6 @@ module Sun::Net::Www::Protocol::Https
     end
     
     typesig { [URL, String, ::Java::Int] }
-    # 
     # Create a new HttpClient object, set up so that it uses
     # per-instance proxying to the given HTTP proxy.  This
     # bypasses the cache of HTTP client objects/connections.
@@ -121,7 +116,6 @@ module Sun::Net::Www::Protocol::Https
     end
     
     typesig { [URL, String, ::Java::Int, ::Java::Boolean] }
-    # 
     # Obtain a HttpClient object, set up so that it uses per-instance
     # proxying to the given HTTP proxy. Use the cached copy of HTTP
     # client objects/connections if specified.
@@ -153,21 +147,18 @@ module Sun::Net::Www::Protocol::Https
     end
     
     typesig { [] }
-    # 
     # Used by subclass to access "connected" variable.
     def is_connected
       return self.attr_connected
     end
     
     typesig { [::Java::Boolean] }
-    # 
     # Used by subclass to access "connected" variable.
     def set_connected(conn)
       self.attr_connected = conn
     end
     
     typesig { [] }
-    # 
     # Implements the HTTP protocol handler's "connect" method,
     # establishing an SSL connection to the server as necessary.
     def connect
@@ -198,7 +189,6 @@ module Sun::Net::Www::Protocol::Https
     end
     
     typesig { [] }
-    # 
     # Returns the cipher suite in use on this connection.
     def get_cipher_suite
       if (!(self.attr_cached_response).nil?)
@@ -212,7 +202,6 @@ module Sun::Net::Www::Protocol::Https
     end
     
     typesig { [] }
-    # 
     # Returns the certificate chain the client sent to the
     # server, or null if the client did not authenticate.
     def get_local_certificates
@@ -232,7 +221,6 @@ module Sun::Net::Www::Protocol::Https
     end
     
     typesig { [] }
-    # 
     # Returns the server's certificate chain, or throws
     # SSLPeerUnverified Exception if
     # the server did not authenticate.
@@ -253,7 +241,6 @@ module Sun::Net::Www::Protocol::Https
     end
     
     typesig { [] }
-    # 
     # Returns the server's X.509 certificate chain, or null if
     # the server did not authenticate.
     def get_server_certificate_chain
@@ -268,7 +255,6 @@ module Sun::Net::Www::Protocol::Https
     end
     
     typesig { [] }
-    # 
     # Returns the server's principal, or throws SSLPeerUnverifiedException
     # if the server did not authenticate.
     def get_peer_principal
@@ -283,7 +269,6 @@ module Sun::Net::Www::Protocol::Https
     end
     
     typesig { [] }
-    # 
     # Returns the principal the client sent to the
     # server, or null if the client did not authenticate.
     def get_local_principal

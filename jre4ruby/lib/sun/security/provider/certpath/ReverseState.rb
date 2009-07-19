@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 2000-2006 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -49,7 +48,6 @@ module Sun::Security::Provider::Certpath
     }
   end
   
-  # 
   # A specification of a reverse PKIX validation state
   # which is initialized by each build and updated each time a
   # certificate is added to the current path.
@@ -174,7 +172,6 @@ module Sun::Security::Provider::Certpath
     undef_method :crl_sign=
     
     typesig { [] }
-    # 
     # Returns a boolean flag indicating if the state is initial
     # (just starting)
     # 
@@ -184,7 +181,6 @@ module Sun::Security::Provider::Certpath
     end
     
     typesig { [] }
-    # 
     # Display state for debugging purposes
     def to_s
       sb = StringBuffer.new
@@ -212,7 +208,6 @@ module Sun::Security::Provider::Certpath
     end
     
     typesig { [::Java::Int, ::Java::Boolean, ::Java::Boolean, ::Java::Boolean, JavaList] }
-    # 
     # Initialize the state.
     # 
     # @param maxPathLen The maximum number of CA certs in a path, where -1
@@ -222,7 +217,6 @@ module Sun::Security::Provider::Certpath
     # @param anyPolicyInhibited True, if any policy is inhibited.
     # @param certPathCheckers the list of user-defined PKIXCertPathCheckers
     def init_state(max_path_len, explicit_policy_required, policy_mapping_inhibited, any_policy_inhibited, cert_path_checkers)
-      # 
       # Initialize number of remainingCACerts.
       # Note that -1 maxPathLen implies unlimited.
       # 0 implies only an EE cert is acceptable.
@@ -254,7 +248,6 @@ module Sun::Security::Provider::Certpath
       init_exp_pol_set = HashSet.new(1)
       init_exp_pol_set.add(PolicyChecker::ANY_POLICY)
       @root_node = PolicyNodeImpl.new(nil, PolicyChecker::ANY_POLICY, nil, false, init_exp_pol_set, false)
-      # 
       # Initialize each user-defined checker
       if (!(cert_path_checkers).nil?)
         # Shallow copy the checkers
@@ -272,7 +265,6 @@ module Sun::Security::Provider::Certpath
     end
     
     typesig { [TrustAnchor] }
-    # 
     # Update the state with the specified trust anchor.
     # 
     # @param anchor the most-trusted CA
@@ -289,7 +281,6 @@ module Sun::Security::Provider::Certpath
     end
     
     typesig { [PublicKey, X500Principal] }
-    # 
     # Update the state. This method is used when the most-trusted CA is
     # a trusted public-key and caName, instead of a trusted cert.
     # 
@@ -303,7 +294,6 @@ module Sun::Security::Provider::Certpath
     end
     
     typesig { [X509Certificate] }
-    # 
     # Update the state with the next certificate added to the path.
     # 
     # @param cert the certificate which is used to update the state
@@ -321,7 +311,6 @@ module Sun::Security::Provider::Certpath
       end
       # update subject public key
       @pub_key = new_key
-      # 
       # if this is a trusted cert (init == true), then we
       # don't update any of the remaining fields
       if (@init)
@@ -349,14 +338,12 @@ module Sun::Security::Provider::Certpath
       @policy_mapping = PolicyChecker.merge_policy_mapping(@policy_mapping, icert)
       @inhibit_any_policy = PolicyChecker.merge_inhibit_any_policy(@inhibit_any_policy, icert)
       ((@cert_index += 1) - 1)
-      # 
       # Update remaining CA certs
       @remaining_cacerts = ConstraintsChecker.merge_basic_constraints(cert, @remaining_cacerts)
       @init = false
     end
     
     typesig { [] }
-    # 
     # Returns a boolean flag indicating if a key lacking necessary key
     # algorithm parameters has been encountered.
     # 
@@ -368,7 +355,6 @@ module Sun::Security::Provider::Certpath
     end
     
     typesig { [] }
-    # 
     # Clone current state. The state is cloned as each cert is
     # added to the path. This is necessary if backtracking occurs,
     # and a prior state needs to be restored.

@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 2000-2001 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -35,7 +34,6 @@ module Java::Nio::Channels
     }
   end
   
-  # 
   # A selectable channel for stream-oriented listening sockets.
   # 
   # <p> Server-socket channels are not a complete abstraction of listening
@@ -65,7 +63,6 @@ module Java::Nio::Channels
     include_class_members ServerSocketChannelImports
     
     typesig { [SelectorProvider] }
-    # 
     # Initializes a new instance of this class.
     def initialize(provider)
       super(provider)
@@ -73,7 +70,6 @@ module Java::Nio::Channels
     
     class_module.module_eval {
       typesig { [] }
-      # 
       # Opens a server-socket channel.
       # 
       # <p> The new channel is created by invoking the {@link
@@ -96,7 +92,6 @@ module Java::Nio::Channels
     }
     
     typesig { [] }
-    # 
     # Returns an operation set identifying this channel's supported
     # operations.
     # 
@@ -123,7 +118,6 @@ module Java::Nio::Channels
     end
     
     typesig { [] }
-    # 
     # Accepts a connection made to this channel's socket.
     # 
     # <p> If this channel is in non-blocking mode then this method will

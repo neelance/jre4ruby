@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 2005-2006 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -36,7 +35,6 @@ module Sun::Security::Jgss::Spnego
     }
   end
   
-  # 
   # Implements the SPNEGO NegTokenTarg token
   # as specified in RFC 2478
   # 
@@ -152,9 +150,9 @@ module Sun::Security::Jgss::Spnego
               if (DEBUG)
                 System.out.println("SpNegoToken NegTokenTarg: " + "sending additional token for MS Interop")
               end
-              rsp_token_ = DerOutputStream.new
-              rsp_token_.put_octet_string(@response_token)
-              targ_token.write(DerValue.create_tag(DerValue::TAG_CONTEXT, true, 0x3), rsp_token_)
+              rsp_token = DerOutputStream.new
+              rsp_token.put_octet_string(@response_token)
+              targ_token.write(DerValue.create_tag(DerValue::TAG_CONTEXT, true, 0x3), rsp_token)
             end
           end
         end

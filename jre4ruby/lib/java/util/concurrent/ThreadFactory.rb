@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
 # This code is free software; you can redistribute it and/or modify it
@@ -40,7 +39,6 @@ module Java::Util::Concurrent
     }
   end
   
-  # 
   # An object that creates new threads on demand.  Using thread factories
   # removes hardwiring of calls to {@link Thread#Thread(Runnable) new Thread},
   # enabling applications to use special thread subclasses, priorities, etc.
@@ -64,7 +62,6 @@ module Java::Util::Concurrent
     include_class_members ThreadFactoryImports
     
     typesig { [Runnable] }
-    # 
     # Constructs a new {@code Thread}.  Implementations may also initialize
     # priority, name, daemon status, {@code ThreadGroup}, etc.
     # 

@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 1994-1998 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -31,7 +30,6 @@ module Java::Util
     }
   end
   
-  # 
   # A class can implement the <code>Observer</code> interface when it
   # wants to be informed of changes in observable objects.
   # 
@@ -42,7 +40,6 @@ module Java::Util
     include_class_members ObserverImports
     
     typesig { [Observable, Object] }
-    # 
     # This method is called whenever the observed object is changed. An
     # application calls an <tt>Observable</tt> object's
     # <code>notifyObservers</code> method to have all the object's

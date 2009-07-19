@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Portions Copyright 2004-2007 Sun Microsystems, Inc.  All Rights Reserved.
 # 
 # 
@@ -49,7 +48,6 @@ module Sun::Security::Krb5::Internal::Crypto::Dk
     }
   end
   
-  # 
   # Implements Derive Key cryptography functionality as defined in RFC 3961.
   # http://www.ietf.org/rfc/rfc3961.txt
   # 
@@ -95,7 +93,6 @@ module Sun::Security::Krb5::Internal::Crypto::Dk
     end
     
     typesig { [Array.typed(::Java::Byte), ::Java::Int, Array.typed(::Java::Byte), Array.typed(::Java::Byte), Array.typed(::Java::Byte), ::Java::Int, ::Java::Int] }
-    # 
     # From RFC 3961.
     # 
     # encryption function       conf = random string of length c
@@ -193,7 +190,6 @@ module Sun::Security::Krb5::Internal::Crypto::Dk
     end
     
     typesig { [Array.typed(::Java::Byte), ::Java::Int, Array.typed(::Java::Byte), Array.typed(::Java::Byte), ::Java::Int, ::Java::Int] }
-    # 
     # Performs encryption using given key only; does not add
     # confounder, padding, or checksum. Incoming data to be encrypted
     # assumed to have the correct blocksize.
@@ -220,7 +216,6 @@ module Sun::Security::Krb5::Internal::Crypto::Dk
     end
     
     typesig { [Array.typed(::Java::Byte), ::Java::Int, Array.typed(::Java::Byte), Array.typed(::Java::Byte), ::Java::Int, ::Java::Int] }
-    # 
     # Decrypts data using specified key and initial vector.
     # @param baseKey encryption key to use
     # @param ciphertext  encrypted data to be decrypted
@@ -247,7 +242,6 @@ module Sun::Security::Krb5::Internal::Crypto::Dk
     end
     
     typesig { [Array.typed(::Java::Byte), ::Java::Int, Array.typed(::Java::Byte), Array.typed(::Java::Byte), ::Java::Int, ::Java::Int] }
-    # 
     # @param baseKey key from which keys are to be derived using usage
     # @param ciphertext  E(Ke, conf | plaintext | padding, ivec) | H1[1..h]
     def decrypt(base_key, usage, ivec, ciphertext, start, len)
@@ -392,7 +386,6 @@ module Sun::Security::Krb5::Internal::Crypto::Dk
     end
     
     typesig { [Array.typed(::Java::Byte), Array.typed(::Java::Byte)] }
-    # 
     # From RFC 3961.
     # 
     # DR(Key, Constant) = k-truncate(E(Key, Constant,
@@ -515,7 +508,6 @@ module Sun::Security::Krb5::Internal::Crypto::Dk
           # Mask off values using &0xff to get only the lower byte
           # Use >>> to avoid sign extension
           bval = ((((in_[((inbits - 1) - (msbit >> 3)) % inbits] & 0xff) << 8) | (in_[((inbits) - (msbit >> 3)) % inbits] & 0xff)) >> ((msbit & 7) + 1)) & 0xff
-          # 
           # System.err.println("((" +
           # ((in[((inbits-1)-(msbit>>>3))%inbits]&0xff)<<8)
           # + "|" + (in[((inbits)-(msbit>>>3))%inbits]&0xff) + ")"

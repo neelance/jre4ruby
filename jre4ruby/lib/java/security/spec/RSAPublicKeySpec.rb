@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 1998-2001 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -32,7 +31,6 @@ module Java::Security::Spec
     }
   end
   
-  # 
   # This class specifies an RSA public key.
   # 
   # @author Jan Luehe
@@ -61,7 +59,6 @@ module Java::Security::Spec
     undef_method :public_exponent=
     
     typesig { [BigInteger, BigInteger] }
-    # 
     # Creates a new RSAPublicKeySpec.
     # 
     # @param modulus the modulus
@@ -74,7 +71,6 @@ module Java::Security::Spec
     end
     
     typesig { [] }
-    # 
     # Returns the modulus.
     # 
     # @return the modulus
@@ -83,7 +79,6 @@ module Java::Security::Spec
     end
     
     typesig { [] }
-    # 
     # Returns the public exponent.
     # 
     # @return the public exponent

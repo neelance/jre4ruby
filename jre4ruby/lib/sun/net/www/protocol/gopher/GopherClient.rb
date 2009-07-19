@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 1996-2004 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -67,7 +66,6 @@ module Sun::Net::Www::Protocol::Gopher
       end
       alias_method :attr_use_gopher_proxy=, :use_gopher_proxy=
       
-      # 
       # @deprecated
       
       def gopher_proxy_host
@@ -80,7 +78,6 @@ module Sun::Net::Www::Protocol::Gopher
       end
       alias_method :attr_gopher_proxy_host=, :gopher_proxy_host=
       
-      # 
       # @deprecated
       
       def gopher_proxy_port
@@ -143,7 +140,6 @@ module Sun::Net::Www::Protocol::Gopher
     
     class_module.module_eval {
       typesig { [] }
-      # 
       # @return true if gopher connections should go through a proxy, according
       # to system properties.
       def get_use_gopher_proxy
@@ -151,7 +147,6 @@ module Sun::Net::Www::Protocol::Gopher
       end
       
       typesig { [] }
-      # 
       # @return the proxy host to use, or null if nothing is set.
       def get_gopher_proxy_host
         host = Java::Security::AccessController.do_privileged(Sun::Security::Action::GetPropertyAction.new("gopherProxyHost"))
@@ -162,7 +157,6 @@ module Sun::Net::Www::Protocol::Gopher
       end
       
       typesig { [] }
-      # 
       # @return the proxy port to use.  Will default reasonably.
       def get_gopher_proxy_port
         return Java::Security::AccessController.do_privileged(Sun::Security::Action::GetIntegerAction.new("gopherProxyPort", 80)).int_value
@@ -303,9 +297,9 @@ module Sun::Net::Www::Protocol::Gopher
         else
           if (!(d).nil?)
             if (dp >= d.attr_length)
-              nd_ = CharArray.new(dp + 10)
-              System.arraycopy(d, 0, nd_, 0, dp)
-              d = nd_
+              nd = CharArray.new(dp + 10)
+              System.arraycopy(d, 0, nd, 0, dp)
+              d = nd
             end
             d[dp] = RJava.cast_to_char(c)
           end
@@ -336,18 +330,18 @@ module Sun::Net::Www::Protocol::Gopher
             rescue Exception => e
             end
           else
-            ps_ = PrintStream.new(@os, false, self.attr_encoding)
+            ps = PrintStream.new(@os, false, self.attr_encoding)
             title = nil
             if ((@gtype).equal?(Character.new(?7.ord)))
               title = "Results of searching for \"" + (@gkey.substring(qpos + 1)).to_s + "\" on " + (@u.get_host).to_s
             else
               title = "Gopher directory " + @gkey + " from " + (@u.get_host).to_s
             end
-            ps_.print("<html><head><title>")
-            ps_.print(title)
-            ps_.print("</title></head>\n<body>\n<H1>")
-            ps_.print(title)
-            ps_.print("</h1><dl compact>\n")
+            ps.print("<html><head><title>")
+            ps.print(title)
+            ps.print("</title></head>\n<body>\n<H1>")
+            ps.print(title)
+            ps.print("</h1><dl compact>\n")
             ds = DataInputStream.new(self.attr_server_input)
             s = nil
             while (!((s = (ds.read_line).to_s)).nil?)
@@ -368,23 +362,23 @@ module Sun::Net::Www::Protocol::Gopher
               end
               port = t3 + 1 < len ? ":" + (s.substring(t3 + 1, len)).to_s : ""
               host = t2 + 1 < t3 ? s.substring(t2 + 1, t3) : @u.get_host
-              ps_.print("<dt><a href=\"gopher://" + host + port + "/" + (s.substring(0, 1)).to_s + (encode_percent(s.substring(t1 + 1, t2))).to_s + "\">\n")
-              ps_.print("<img align=middle border=0 width=25 height=32 src=")
+              ps.print("<dt><a href=\"gopher://" + host + port + "/" + (s.substring(0, 1)).to_s + (encode_percent(s.substring(t1 + 1, t2))).to_s + "\">\n")
+              ps.print("<img align=middle border=0 width=25 height=32 src=")
               case (key)
               when Character.new(?0.ord)
-                ps_.print(System.get_property("java.net.ftp.imagepath.text"))
+                ps.print(System.get_property("java.net.ftp.imagepath.text"))
               when Character.new(?1.ord)
-                ps_.print(System.get_property("java.net.ftp.imagepath.directory"))
+                ps.print(System.get_property("java.net.ftp.imagepath.directory"))
               when Character.new(?g.ord)
-                ps_.print(System.get_property("java.net.ftp.imagepath.gif"))
+                ps.print(System.get_property("java.net.ftp.imagepath.gif"))
               else
-                ps_.print(System.get_property("java.net.ftp.imagepath.file"))
+                ps.print(System.get_property("java.net.ftp.imagepath.file"))
               end
-              ps_.print(".gif align=middle><dd>\n")
-              ps_.print((s.substring(1, t1)).to_s + "</a>\n")
+              ps.print(".gif align=middle><dd>\n")
+              ps.print((s.substring(1, t1)).to_s + "</a>\n")
             end
-            ps_.print("</dl></body>\n")
-            ps_.close
+            ps.print("</dl></body>\n")
+            ps.close
           end
         end
       rescue UnsupportedEncodingException => e

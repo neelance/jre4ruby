@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 2000-2003 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -30,7 +29,6 @@ module Java::Lang
     }
   end
   
-  # 
   # A <tt>CharSequence</tt> is a readable sequence of <code>char</code> values. This
   # interface provides uniform, read-only access to many different kinds of
   # <code>char</code> sequences.
@@ -55,7 +53,6 @@ module Java::Lang
     include_class_members CharSequenceImports
     
     typesig { [] }
-    # 
     # Returns the length of this character sequence.  The length is the number
     # of 16-bit <code>char</code>s in the sequence.</p>
     # 
@@ -65,7 +62,6 @@ module Java::Lang
     end
     
     typesig { [::Java::Int] }
-    # 
     # Returns the <code>char</code> value at the specified index.  An index ranges from zero
     # to <tt>length() - 1</tt>.  The first <code>char</code> value of the sequence is at
     # index zero, the next at index one, and so on, as for array
@@ -87,7 +83,6 @@ module Java::Lang
     end
     
     typesig { [::Java::Int, ::Java::Int] }
-    # 
     # Returns a new <code>CharSequence</code> that is a subsequence of this sequence.
     # The subsequence starts with the <code>char</code> value at the specified index and
     # ends with the <code>char</code> value at index <tt>end - 1</tt>.  The length
@@ -109,7 +104,6 @@ module Java::Lang
     end
     
     typesig { [] }
-    # 
     # Returns a string containing the characters in this sequence in the same
     # order as this sequence.  The length of the string will be the length of
     # this sequence. </p>

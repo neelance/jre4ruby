@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 2003-2006 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -47,7 +46,6 @@ module Sun::Nio
     include_class_members ByteBufferedImports
     
     typesig { [] }
-    # 
     # Returns the <tt>ByteBuffer</tt> behind this object, if this particular
     # instance has one. An implementation of <tt>getByteBuffer()</tt> is allowed
     # to return <tt>null</tt> for any reason.

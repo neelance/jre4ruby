@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 1994-1997 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -30,7 +29,6 @@ module Java::Lang
     }
   end
   
-  # 
   # Thrown if an application tries to create an array with negative size.
   # 
   # @author  unascribed
@@ -39,7 +37,6 @@ module Java::Lang
     include_class_members NegativeArraySizeExceptionImports
     
     typesig { [] }
-    # 
     # Constructs a <code>NegativeArraySizeException</code> with no
     # detail message.
     def initialize
@@ -47,7 +44,6 @@ module Java::Lang
     end
     
     typesig { [String] }
-    # 
     # Constructs a <code>NegativeArraySizeException</code> with the
     # specified detail message.
     # 

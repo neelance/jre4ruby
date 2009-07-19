@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 1994-2005 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -31,7 +30,6 @@ module Sun::Misc
     }
   end
   
-  # 
   # ConditionLock is a Lock with a built in state variable.  This class
   # provides the ability to wait for the state variable to be set to a
   # desired value and then acquire the lock.<p>
@@ -53,7 +51,6 @@ module Sun::Misc
     undef_method :state=
     
     typesig { [] }
-    # 
     # Creates a ConditionLock.
     def initialize
       @state = 0
@@ -62,7 +59,6 @@ module Sun::Misc
     end
     
     typesig { [::Java::Int] }
-    # 
     # Creates a ConditionLock in an initialState.
     def initialize(initial_state)
       @state = 0
@@ -72,7 +68,6 @@ module Sun::Misc
     end
     
     typesig { [::Java::Int] }
-    # 
     # Acquires the lock when the state variable equals the desired state.
     # 
     # @param desiredState the desired state
@@ -88,7 +83,6 @@ module Sun::Misc
     end
     
     typesig { [::Java::Int] }
-    # 
     # Releases the lock, and sets the state to a new value.
     # @param newState the new state
     def unlock_with(new_state)

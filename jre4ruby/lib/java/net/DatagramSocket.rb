@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 1995-2007 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -37,7 +36,6 @@ module Java::Net
     }
   end
   
-  # 
   # This class represents a socket for sending and receiving datagram packets.
   # 
   # <p>A datagram socket is the sending or receiving point for a packet
@@ -71,7 +69,6 @@ module Java::Net
   class DatagramSocket 
     include_class_members DatagramSocketImports
     
-    # 
     # Various states of this socket.
     attr_accessor :created
     alias_method :attr_created, :created
@@ -97,7 +94,6 @@ module Java::Net
     alias_method :attr_close_lock=, :close_lock=
     undef_method :close_lock=
     
-    # 
     # The implementation of this DatagramSocket.
     attr_accessor :impl
     alias_method :attr_impl, :impl
@@ -105,7 +101,6 @@ module Java::Net
     alias_method :attr_impl=, :impl=
     undef_method :impl=
     
-    # 
     # Are we using an older DatagramSocketImpl?
     attr_accessor :old_impl
     alias_method :attr_old_impl, :old_impl
@@ -114,7 +109,6 @@ module Java::Net
     undef_method :old_impl=
     
     class_module.module_eval {
-      # 
       # Connection state:
       # ST_NOT_CONNECTED = socket not connected
       # ST_CONNECTED = socket connected
@@ -135,7 +129,6 @@ module Java::Net
     alias_method :attr_connect_state=, :connect_state=
     undef_method :connect_state=
     
-    # 
     # Connected address & port
     attr_accessor :connected_address
     alias_method :attr_connected_address, :connected_address
@@ -150,7 +143,6 @@ module Java::Net
     undef_method :connected_port=
     
     typesig { [InetAddress, ::Java::Int] }
-    # 
     # Connects this socket to a remote socket address (IP address + port number).
     # Binds socket if not already bound.
     # <p>
@@ -199,7 +191,6 @@ module Java::Net
     end
     
     typesig { [] }
-    # 
     # Constructs a datagram socket and binds it to any available port
     # on the local host machine.  The socket will be bound to the
     # {@link InetAddress#isAnyLocalAddress wildcard} address,
@@ -238,7 +229,6 @@ module Java::Net
     end
     
     typesig { [DatagramSocketImpl] }
-    # 
     # Creates an unbound datagram socket with the specified
     # DatagramSocketImpl.
     # 
@@ -263,7 +253,6 @@ module Java::Net
     end
     
     typesig { [SocketAddress] }
-    # 
     # Creates a datagram socket, bound to the specified local
     # socket address.
     # <p>
@@ -303,7 +292,6 @@ module Java::Net
     end
     
     typesig { [::Java::Int] }
-    # 
     # Constructs a datagram socket and binds it to the specified port
     # on the local host machine.  The socket will be bound to the
     # {@link InetAddress#isAnyLocalAddress wildcard} address,
@@ -327,7 +315,6 @@ module Java::Net
     end
     
     typesig { [::Java::Int, InetAddress] }
-    # 
     # Creates a datagram socket, bound to the specified local
     # address.  The local port must be between 0 and 65535 inclusive.
     # If the IP address is 0.0.0.0, the socket will be bound to the
@@ -419,7 +406,6 @@ module Java::Net
     end
     
     typesig { [] }
-    # 
     # Get the <code>DatagramSocketImpl</code> attached to this socket,
     # creating it if necessary.
     # 
@@ -435,7 +421,6 @@ module Java::Net
     end
     
     typesig { [SocketAddress] }
-    # 
     # Binds this DatagramSocket to a specific address & port.
     # <p>
     # If the address is <code>null</code>, then the system will pick up
@@ -482,7 +467,6 @@ module Java::Net
     end
     
     typesig { [InetAddress, ::Java::Int] }
-    # 
     # Connects the socket to a remote address for this socket. When a
     # socket is connected to a remote address, packets may only be
     # sent to or received from that address. By default a datagram
@@ -526,7 +510,6 @@ module Java::Net
     end
     
     typesig { [SocketAddress] }
-    # 
     # Connects this socket to a remote socket address (IP address + port number).
     # <p>
     # @param   addr    The remote address.
@@ -550,7 +533,6 @@ module Java::Net
     end
     
     typesig { [] }
-    # 
     # Disconnects the socket. This does nothing if the socket is not
     # connected.
     # 
@@ -570,7 +552,6 @@ module Java::Net
     end
     
     typesig { [] }
-    # 
     # Returns the binding state of the socket.
     # 
     # @return true if the socket successfully bound to an address
@@ -580,7 +561,6 @@ module Java::Net
     end
     
     typesig { [] }
-    # 
     # Returns the connection state of the socket.
     # 
     # @return true if the socket successfully connected to a server
@@ -590,7 +570,6 @@ module Java::Net
     end
     
     typesig { [] }
-    # 
     # Returns the address to which this socket is connected. Returns
     # <code>null</code> if the socket is not connected.
     # 
@@ -600,7 +579,6 @@ module Java::Net
     end
     
     typesig { [] }
-    # 
     # Returns the port number to which this socket is connected.
     # Returns <code>-1</code> if the socket is not connected.
     # 
@@ -610,7 +588,6 @@ module Java::Net
     end
     
     typesig { [] }
-    # 
     # Returns the address of the endpoint this socket is connected to, or
     # <code>null</code> if it is unconnected.
     # 
@@ -629,7 +606,6 @@ module Java::Net
     end
     
     typesig { [] }
-    # 
     # Returns the address of the endpoint this socket is bound to, or
     # <code>null</code> if it is not bound yet.
     # 
@@ -650,7 +626,6 @@ module Java::Net
     end
     
     typesig { [DatagramPacket] }
-    # 
     # Sends a datagram packet from this socket. The
     # <code>DatagramPacket</code> includes information indicating the
     # data to be sent, its length, the IP address of the remote host,
@@ -729,7 +704,6 @@ module Java::Net
     end
     
     typesig { [DatagramPacket] }
-    # 
     # Receives a datagram packet from this socket. When this method
     # returns, the <code>DatagramPacket</code>'s buffer is filled with
     # the data received. The datagram packet also contains the sender's
@@ -812,11 +786,11 @@ module Java::Net
             while (!stop)
               # peek at the packet to see who it is from.
               peek_address = InetAddress.new
-              peek_port_ = get_impl.peek(peek_address)
-              if ((!(@connected_address == peek_address)) || (!(@connected_port).equal?(peek_port_)))
+              peek_port = get_impl.peek(peek_address)
+              if ((!(@connected_address == peek_address)) || (!(@connected_port).equal?(peek_port)))
                 # throw the packet away and silently continue
-                tmp_ = DatagramPacket.new(Array.typed(::Java::Byte).new(1) { 0 }, 1)
-                get_impl.receive(tmp_)
+                tmp = DatagramPacket.new(Array.typed(::Java::Byte).new(1) { 0 }, 1)
+                get_impl.receive(tmp)
               else
                 stop = true
               end
@@ -830,7 +804,6 @@ module Java::Net
     end
     
     typesig { [] }
-    # 
     # Gets the local address to which the socket is bound.
     # 
     # <p>If there is a security manager, its
@@ -866,7 +839,6 @@ module Java::Net
     end
     
     typesig { [] }
-    # 
     # Returns the port number on the local host to which this socket
     # is bound.
     # 
@@ -907,7 +879,6 @@ module Java::Net
     end
     
     typesig { [] }
-    # 
     # Retrieve setting for SO_TIMEOUT.  0 returns implies that the
     # option is disabled (i.e., timeout of infinity).
     # 
@@ -934,7 +905,6 @@ module Java::Net
     end
     
     typesig { [::Java::Int] }
-    # 
     # Sets the SO_SNDBUF option to the specified value for this
     # <tt>DatagramSocket</tt>. The SO_SNDBUF option is used by the
     # network implementation as a hint to size the underlying
@@ -975,7 +945,6 @@ module Java::Net
     end
     
     typesig { [] }
-    # 
     # Get value of the SO_SNDBUF option for this <tt>DatagramSocket</tt>, that is the
     # buffer size used by the platform for output on this <tt>DatagramSocket</tt>.
     # 
@@ -998,7 +967,6 @@ module Java::Net
     end
     
     typesig { [::Java::Int] }
-    # 
     # Sets the SO_RCVBUF option to the specified value for this
     # <tt>DatagramSocket</tt>. The SO_RCVBUF option is used by the
     # the network implementation as a hint to size the underlying
@@ -1038,7 +1006,6 @@ module Java::Net
     end
     
     typesig { [] }
-    # 
     # Get value of the SO_RCVBUF option for this <tt>DatagramSocket</tt>, that is the
     # buffer size used by the platform for input on this <tt>DatagramSocket</tt>.
     # 
@@ -1060,7 +1027,6 @@ module Java::Net
     end
     
     typesig { [::Java::Boolean] }
-    # 
     # Enable/disable the SO_REUSEADDR socket option.
     # <p>
     # For UDP sockets it may be necessary to bind more than one
@@ -1108,7 +1074,6 @@ module Java::Net
     end
     
     typesig { [] }
-    # 
     # Tests if SO_REUSEADDR is enabled.
     # 
     # @return a <code>boolean</code> indicating whether or not SO_REUSEADDR is enabled.
@@ -1127,7 +1092,6 @@ module Java::Net
     end
     
     typesig { [::Java::Boolean] }
-    # 
     # Enable/disable SO_BROADCAST.
     # @param on     whether or not to have broadcast turned on.
     # @exception SocketException if there is an error
@@ -1144,7 +1108,6 @@ module Java::Net
     end
     
     typesig { [] }
-    # 
     # Tests if SO_BROADCAST is enabled.
     # @return a <code>boolean</code> indicating whether or not SO_BROADCAST is enabled.
     # @exception SocketException if there is an error
@@ -1161,7 +1124,6 @@ module Java::Net
     end
     
     typesig { [::Java::Int] }
-    # 
     # Sets traffic class or type-of-service octet in the IP
     # datagram header for datagrams sent from this DatagramSocket.
     # As the underlying network implementation may ignore this
@@ -1209,7 +1171,6 @@ module Java::Net
     end
     
     typesig { [] }
-    # 
     # Gets traffic class or type-of-service in the IP datagram
     # header for packets sent from this DatagramSocket.
     # <p>
@@ -1234,7 +1195,6 @@ module Java::Net
     end
     
     typesig { [] }
-    # 
     # Closes this datagram socket.
     # <p>
     # Any thread currently blocked in {@link #receive} upon this socket
@@ -1256,7 +1216,6 @@ module Java::Net
     end
     
     typesig { [] }
-    # 
     # Returns whether the socket is closed or not.
     # 
     # @return true if the socket has been closed
@@ -1268,7 +1227,6 @@ module Java::Net
     end
     
     typesig { [] }
-    # 
     # Returns the unique {@link java.nio.channels.DatagramChannel} object
     # associated with this datagram socket, if any.
     # 
@@ -1286,7 +1244,6 @@ module Java::Net
     end
     
     class_module.module_eval {
-      # 
       # User defined factory for all datagram sockets.
       
       def factory
@@ -1300,7 +1257,6 @@ module Java::Net
       alias_method :attr_factory=, :factory=
       
       typesig { [DatagramSocketImplFactory] }
-      # 
       # Sets the datagram socket implementation factory for the
       # application. The factory can be specified only once.
       # <p>

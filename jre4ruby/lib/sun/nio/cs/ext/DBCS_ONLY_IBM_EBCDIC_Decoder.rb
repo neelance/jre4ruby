@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 2006 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -36,7 +35,6 @@ module Sun::Nio::Cs::Ext
     }
   end
   
-  # 
   # An abstract base class for subclasses which decode
   # IBM double byte only ebcdic host encodings such as ibm
   # code pages 834 835 837 300,... etc

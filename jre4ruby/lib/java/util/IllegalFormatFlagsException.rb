@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 2003 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -31,7 +30,6 @@ module Java::Util
     }
   end
   
-  # 
   # Unchecked exception thrown when an illegal combination flags is given.
   # 
   # <p> Unless otherwise specified, passing a <tt>null</tt> argument to any
@@ -54,7 +52,6 @@ module Java::Util
     undef_method :flags=
     
     typesig { [String] }
-    # 
     # Constructs an instance of this class with the specified flags.
     # 
     # @param  f
@@ -69,7 +66,6 @@ module Java::Util
     end
     
     typesig { [] }
-    # 
     # Returns the set of flags which contains an illegal combination.
     # 
     # @return  The flags

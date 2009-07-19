@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 1996-2006 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -52,7 +51,6 @@ module Java::Util
     }
   end
   
-  # 
   # <code>GregorianCalendar</code> is a concrete subclass of
   # <code>Calendar</code> and provides the standard calendar system
   # used by most of the world.
@@ -302,7 +300,6 @@ module Java::Util
     include_class_members GregorianCalendarImports
     
     class_module.module_eval {
-      # 
       # Implementation Notes
       # 
       # The epoch is the number of days or milliseconds from some defined
@@ -340,7 +337,6 @@ module Java::Util
       const_set_lazy(:BC) { 0 }
       const_attr_reader  :BC
       
-      # 
       # Value of the {@link #ERA} field indicating
       # the period before the common era, the same value as {@link #BC}.
       # 
@@ -348,7 +344,6 @@ module Java::Util
       const_set_lazy(:BCE) { 0 }
       const_attr_reader  :BCE
       
-      # 
       # Value of the <code>ERA</code> field indicating
       # the common era (Anno Domini), also known as CE.
       # The sequence of years at the transition from <code>BC</code> to <code>AD</code> is
@@ -358,7 +353,6 @@ module Java::Util
       const_set_lazy(:AD) { 1 }
       const_attr_reader  :AD
       
-      # 
       # Value of the {@link #ERA} field indicating
       # the common era, the same value as {@link #AD}.
       # 
@@ -399,7 +393,6 @@ module Java::Util
       const_set_lazy(:ONE_WEEK) { 7 * ONE_DAY }
       const_attr_reader  :ONE_WEEK
       
-      # 
       # <pre>
       # Greatest       Least
       # Field name        Minimum   Minimum     Maximum     Maximum
@@ -538,7 +531,6 @@ module Java::Util
     alias_method :attr_gregorian_cutover=, :gregorian_cutover=
     undef_method :gregorian_cutover=
     
-    # 
     # The fixed date of the gregorianCutover.
     attr_accessor :gregorian_cutover_date
     alias_method :attr_gregorian_cutover_date, :gregorian_cutover_date
@@ -556,7 +548,6 @@ module Java::Util
     alias_method :attr_gregorian_cutover_year=, :gregorian_cutover_year=
     undef_method :gregorian_cutover_year=
     
-    # 
     # The normalized year of the gregorianCutover in Julian, with 0
     # representing 1 BCE, -1 representing 2 BCE, etc.
     attr_accessor :gregorian_cutover_year_julian
@@ -565,7 +556,6 @@ module Java::Util
     alias_method :attr_gregorian_cutover_year_julian=, :gregorian_cutover_year_julian=
     undef_method :gregorian_cutover_year_julian=
     
-    # 
     # gdate always has a sun.util.calendar.Gregorian.Date instance to
     # avoid overhead of creating it. The assumption is that most
     # applications will need only Gregorian calendar calculations.
@@ -575,7 +565,6 @@ module Java::Util
     alias_method :attr_gdate=, :gdate=
     undef_method :gdate=
     
-    # 
     # Reference to either gdate or a JulianCalendar.Date
     # instance. After calling complete(), this value is guaranteed to
     # be set.
@@ -585,7 +574,6 @@ module Java::Util
     alias_method :attr_cdate=, :cdate=
     undef_method :cdate=
     
-    # 
     # The CalendarSystem used to calculate the date in cdate. After
     # calling complete(), this value is guaranteed to be set and
     # consistent with the cdate value.
@@ -595,7 +583,6 @@ module Java::Util
     alias_method :attr_calsys=, :calsys=
     undef_method :calsys=
     
-    # 
     # Temporary int[2] to get time zone offsets. zoneOffsets[0] gets
     # the GMT offset value and zoneOffsets[1] gets the DST saving
     # value.
@@ -605,7 +592,6 @@ module Java::Util
     alias_method :attr_zone_offsets=, :zone_offsets=
     undef_method :zone_offsets=
     
-    # 
     # Temporary storage for saving original fields[] values in
     # non-lenient mode.
     attr_accessor :original_fields
@@ -627,7 +613,6 @@ module Java::Util
     end
     
     typesig { [TimeZone] }
-    # 
     # Constructs a <code>GregorianCalendar</code> based on the current time
     # in the given time zone with the default locale.
     # 
@@ -637,7 +622,6 @@ module Java::Util
     end
     
     typesig { [Locale] }
-    # 
     # Constructs a <code>GregorianCalendar</code> based on the current time
     # in the default time zone with the given locale.
     # 
@@ -648,7 +632,6 @@ module Java::Util
     end
     
     typesig { [TimeZone, Locale] }
-    # 
     # Constructs a <code>GregorianCalendar</code> based on the current time
     # in the given time zone with the given locale.
     # 
@@ -676,7 +659,6 @@ module Java::Util
     end
     
     typesig { [::Java::Int, ::Java::Int, ::Java::Int] }
-    # 
     # Constructs a <code>GregorianCalendar</code> with the given date set
     # in the default time zone with the default locale.
     # 
@@ -689,7 +671,6 @@ module Java::Util
     end
     
     typesig { [::Java::Int, ::Java::Int, ::Java::Int, ::Java::Int, ::Java::Int] }
-    # 
     # Constructs a <code>GregorianCalendar</code> with the given date
     # and time set for the default time zone with the default locale.
     # 
@@ -706,7 +687,6 @@ module Java::Util
     end
     
     typesig { [::Java::Int, ::Java::Int, ::Java::Int, ::Java::Int, ::Java::Int, ::Java::Int] }
-    # 
     # Constructs a GregorianCalendar with the given date
     # and time set for the default time zone with the default locale.
     # 
@@ -725,7 +705,6 @@ module Java::Util
     end
     
     typesig { [::Java::Int, ::Java::Int, ::Java::Int, ::Java::Int, ::Java::Int, ::Java::Int, ::Java::Int] }
-    # 
     # Constructs a <code>GregorianCalendar</code> with the given date
     # and time set for the default time zone with the default locale.
     # 
@@ -836,7 +815,6 @@ module Java::Util
     end
     
     typesig { [] }
-    # 
     # Gets the Gregorian Calendar change date.  This is the point when the
     # switch from Julian dates to Gregorian dates occurred. Default is
     # October 15, 1582 (Gregorian). Previous to this, dates will be in the Julian
@@ -848,7 +826,6 @@ module Java::Util
     end
     
     typesig { [::Java::Int] }
-    # 
     # Determines if the given year is a leap year. Returns <code>true</code> if
     # the given year is a leap year. To specify BC year numbers,
     # <code>1 - year number</code> must be given. For example, year BC 4 is
@@ -879,7 +856,6 @@ module Java::Util
     end
     
     typesig { [Object] }
-    # 
     # Compares this <code>GregorianCalendar</code> to the specified
     # <code>Object</code>. The result is <code>true</code> if and
     # only if the argument is a <code>GregorianCalendar</code> object
@@ -897,14 +873,12 @@ module Java::Util
     end
     
     typesig { [] }
-    # 
     # Generates the hash code for this <code>GregorianCalendar</code> object.
     def hash_code
       return super ^ RJava.cast_to_int(@gregorian_cutover_date)
     end
     
     typesig { [::Java::Int, ::Java::Int] }
-    # 
     # Adds the specified (signed) amount of time to the given calendar field,
     # based on the calendar's rules.
     # 
@@ -970,7 +944,7 @@ module Java::Util
       else
         if ((field).equal?(MONTH))
           month = internal_get(MONTH) + amount
-          year_ = internal_get(YEAR)
+          year = internal_get(YEAR)
           y_amount = 0
           if (month >= 0)
             y_amount = month / 12
@@ -979,23 +953,23 @@ module Java::Util
           end
           if (!(y_amount).equal?(0))
             if ((internal_get_era).equal?(CE))
-              year_ += y_amount
-              if (year_ > 0)
-                set(YEAR, year_)
+              year += y_amount
+              if (year > 0)
+                set(YEAR, year)
               else
                 # year <= 0
-                set(YEAR, 1 - year_)
+                set(YEAR, 1 - year)
                 # if year == 0, you get 1 BCE
                 set(ERA, BCE)
               end
             else
               # era == BCE
-              year_ -= y_amount
-              if (year_ > 0)
-                set(YEAR, year_)
+              year -= y_amount
+              if (year > 0)
+                set(YEAR, year)
               else
                 # year <= 0
-                set(YEAR, 1 - year_)
+                set(YEAR, 1 - year)
                 # if year == 0, you get 1 CE
                 set(ERA, CE)
               end
@@ -1096,7 +1070,6 @@ module Java::Util
     end
     
     typesig { [::Java::Int, ::Java::Boolean] }
-    # 
     # Adds or subtracts (up/down) a single unit of time on the given time
     # field without changing larger fields.
     # <p>
@@ -1118,7 +1091,6 @@ module Java::Util
     end
     
     typesig { [::Java::Int, ::Java::Int] }
-    # 
     # Adds a signed amount to the specified calendar field without changing larger fields.
     # A negative roll amount means to subtract from field without changing
     # larger fields. If the specified amount is 0, this method performs nothing.
@@ -1216,6 +1188,7 @@ module Java::Util
           internal_set(ZONE_OFFSET, zone_offset - saving)
           internal_set(DST_OFFSET, saving)
           return
+        when MONTH
           # Rolling the month involves both pinning the final value to [0, 11]
           # and adjusting the DAY_OF_MONTH if necessary.  We only adjust the
           # DAY_OF_MONTH if, after updating the MONTH field, it is illegal.
@@ -1237,17 +1210,18 @@ module Java::Util
             # We need to take care of different lengths in
             # year and month due to the cutover.
             year_length = get_actual_maximum(MONTH) + 1
-            mon_ = (internal_get(MONTH) + amount) % year_length
-            if (mon_ < 0)
-              mon_ += year_length
+            mon = (internal_get(MONTH) + amount) % year_length
+            if (mon < 0)
+              mon += year_length
             end
-            set(MONTH, mon_)
-            month_len_ = get_actual_maximum(DAY_OF_MONTH)
-            if (internal_get(DAY_OF_MONTH) > month_len_)
-              set(DAY_OF_MONTH, month_len_)
+            set(MONTH, mon)
+            month_len = get_actual_maximum(DAY_OF_MONTH)
+            if (internal_get(DAY_OF_MONTH) > month_len)
+              set(DAY_OF_MONTH, month_len)
             end
           end
           return
+        when WEEK_OF_YEAR
           y = @cdate.get_normalized_year
           max = get_actual_maximum(WEEK_OF_YEAR)
           set(DAY_OF_WEEK, internal_get(DAY_OF_WEEK))
@@ -1274,7 +1248,7 @@ module Java::Util
             throw :break_case, :thrown
           end
           # Handle cutover here.
-          fd_ = get_current_fixed_date
+          fd = get_current_fixed_date
           cal = nil
           if ((@gregorian_cutover_year).equal?(@gregorian_cutover_year_julian))
             cal = get_cutover_calendar_system
@@ -1285,38 +1259,39 @@ module Java::Util
               cal = get_julian_calendar_system
             end
           end
-          day1_ = fd_ - (7 * (woy - min))
+          day1 = fd - (7 * (woy - min))
           # Make sure that the min week has the current DAY_OF_WEEK
-          if (!(cal.get_year_from_fixed_date(day1_)).equal?(y))
+          if (!(cal.get_year_from_fixed_date(day1)).equal?(y))
             ((min += 1) - 1)
           end
           # Make sure the same thing for the max week
-          fd_ += 7 * (max - woy)
-          cal = (fd_ >= @gregorian_cutover_date) ? Gcal : get_julian_calendar_system
-          if (!(cal.get_year_from_fixed_date(fd_)).equal?(y))
+          fd += 7 * (max - woy)
+          cal = (fd >= @gregorian_cutover_date) ? Gcal : get_julian_calendar_system
+          if (!(cal.get_year_from_fixed_date(fd)).equal?(y))
             ((max -= 1) + 1)
           end
           # value: the new WEEK_OF_YEAR which must be converted
           # to month and day of month.
           value = get_rolled_value(woy, amount, min, max) - 1
-          d_ = get_calendar_date(day1_ + value * 7)
-          set(MONTH, d_.get_month - 1)
-          set(DAY_OF_MONTH, d_.get_day_of_month)
+          d = get_calendar_date(day1 + value * 7)
+          set(MONTH, d.get_month - 1)
+          set(DAY_OF_MONTH, d.get_day_of_month)
           return
+        when WEEK_OF_MONTH
           is_cutover_year_ = is_cutover_year(@cdate.get_normalized_year)
           # dow: relative day of week from first day of week
           dow = internal_get(DAY_OF_WEEK) - get_first_day_of_week
           if (dow < 0)
             dow += 7
           end
-          fd__ = get_current_fixed_date
+          fd = get_current_fixed_date
           month1 = 0 # fixed date of the first day (usually 1) of the month
           month_length_ = 0 # actual month length
           if (is_cutover_year_)
-            month1 = get_fixed_date_month1(@cdate, fd__)
+            month1 = get_fixed_date_month1(@cdate, fd)
             month_length_ = actual_month_length
           else
-            month1 = fd__ - internal_get(DAY_OF_MONTH) + 1
+            month1 = fd - internal_get(DAY_OF_MONTH) + 1
             month_length_ = @calsys.get_month_length(@cdate)
           end
           # the first day of week of the month.
@@ -1328,9 +1303,9 @@ module Java::Util
           end
           max = get_actual_maximum(field)
           # value: the new WEEK_OF_MONTH value
-          value_ = get_rolled_value(internal_get(field), amount, 1, max) - 1
+          value = get_rolled_value(internal_get(field), amount, 1, max) - 1
           # nfd: fixed date of the rolled date
-          nfd = month_day1st + value_ * 7 + dow
+          nfd = month_day1st + value * 7 + dow
           # Unlike WEEK_OF_YEAR, we need to change day of week if the
           # nfd is out of the month.
           if (nfd < month1)
@@ -1344,40 +1319,43 @@ module Java::Util
           if (is_cutover_year_)
             # If we are in the cutover year, convert nfd to
             # its calendar date and use dayOfMonth.
-            d__ = get_calendar_date(nfd)
-            day_of_month = d__.get_day_of_month
+            d = get_calendar_date(nfd)
+            day_of_month = d.get_day_of_month
           else
             day_of_month = RJava.cast_to_int((nfd - month1)) + 1
           end
           set(DAY_OF_MONTH, day_of_month)
           return
+        when DAY_OF_MONTH
           if (!is_cutover_year(@cdate.get_normalized_year))
             max = @calsys.get_month_length(@cdate)
             throw :break_case, :thrown
           end
           # Cutover year handling
-          fd___ = get_current_fixed_date
-          month1_ = get_fixed_date_month1(@cdate, fd___)
+          fd = get_current_fixed_date
+          month1 = get_fixed_date_month1(@cdate, fd)
           # It may not be a regular month. Convert the date and range to
           # the relative values, perform the roll, and
           # convert the result back to the rolled date.
-          value__ = get_rolled_value(RJava.cast_to_int((fd___ - month1_)), amount, 0, actual_month_length - 1)
-          d___ = get_calendar_date(month1_ + value__)
-          raise AssertError if not ((d___.get_month - 1).equal?(internal_get(MONTH)))
-          set(DAY_OF_MONTH, d___.get_day_of_month)
+          value = get_rolled_value(RJava.cast_to_int((fd - month1)), amount, 0, actual_month_length - 1)
+          d = get_calendar_date(month1 + value)
+          raise AssertError if not ((d.get_month - 1).equal?(internal_get(MONTH)))
+          set(DAY_OF_MONTH, d.get_day_of_month)
           return
+        when DAY_OF_YEAR
           max = get_actual_maximum(field)
           if (!is_cutover_year(@cdate.get_normalized_year))
             throw :break_case, :thrown
           end
           # Handle cutover here.
-          fd____ = get_current_fixed_date
-          jan1 = fd____ - internal_get(DAY_OF_YEAR) + 1
-          value___ = get_rolled_value(RJava.cast_to_int((fd____ - jan1)) + 1, amount, min, max)
-          d____ = get_calendar_date(jan1 + value___ - 1)
-          set(MONTH, d____.get_month - 1)
-          set(DAY_OF_MONTH, d____.get_day_of_month)
+          fd = get_current_fixed_date
+          jan1 = fd - internal_get(DAY_OF_YEAR) + 1
+          value = get_rolled_value(RJava.cast_to_int((fd - jan1)) + 1, amount, min, max)
+          d = get_calendar_date(jan1 + value - 1)
+          set(MONTH, d.get_month - 1)
+          set(DAY_OF_MONTH, d.get_day_of_month)
           return
+        when DAY_OF_WEEK
           if (!is_cutover_year(@cdate.get_normalized_year))
             # If the week of year is in the same year, we can
             # just change DAY_OF_WEEK.
@@ -1396,26 +1374,27 @@ module Java::Util
           if ((amount).equal?(0))
             return
           end
-          fd_____ = get_current_fixed_date
-          dow_first = @calsys.get_day_of_week_date_on_or_before(fd_____, get_first_day_of_week)
-          fd_____ += amount
-          if (fd_____ < dow_first)
-            fd_____ += 7
+          fd = get_current_fixed_date
+          dow_first = @calsys.get_day_of_week_date_on_or_before(fd, get_first_day_of_week)
+          fd += amount
+          if (fd < dow_first)
+            fd += 7
           else
-            if (fd_____ >= dow_first + 7)
-              fd_____ -= 7
+            if (fd >= dow_first + 7)
+              fd -= 7
             end
           end
-          d_____ = get_calendar_date(fd_____)
-          set(ERA, (d_____.get_normalized_year <= 0 ? BCE : CE))
-          set(d_____.get_year, d_____.get_month - 1, d_____.get_day_of_month)
+          d = get_calendar_date(fd)
+          set(ERA, (d.get_normalized_year <= 0 ? BCE : CE))
+          set(d.get_year, d.get_month - 1, d.get_day_of_month)
           return
+        when DAY_OF_WEEK_IN_MONTH
           min = 1 # after normalized, min should be 1.
           if (!is_cutover_year(@cdate.get_normalized_year))
             dom = internal_get(DAY_OF_MONTH)
-            month_length__ = @calsys.get_month_length(@cdate)
-            last_days = month_length__ % 7
-            max = month_length__ / 7
+            month_length_ = @calsys.get_month_length(@cdate)
+            last_days = month_length_ % 7
+            max = month_length_ / 7
             x = (dom - 1) % 7
             if (x < last_days)
               ((max += 1) - 1)
@@ -1424,836 +1403,21 @@ module Java::Util
             throw :break_case, :thrown
           end
           # Cutover year handling
-          fd______ = get_current_fixed_date
-          month1__ = get_fixed_date_month1(@cdate, fd______)
-          month_length___ = actual_month_length
-          last_days_ = month_length___ % 7
-          max = month_length___ / 7
-          x_ = RJava.cast_to_int((fd______ - month1__)) % 7
-          if (x_ < last_days_)
+          fd = get_current_fixed_date
+          month1 = get_fixed_date_month1(@cdate, fd)
+          month_length_ = actual_month_length
+          last_days = month_length_ % 7
+          max = month_length_ / 7
+          x = RJava.cast_to_int((fd - month1)) % 7
+          if (x < last_days)
             ((max += 1) - 1)
           end
-          value____ = get_rolled_value(internal_get(field), amount, min, max) - 1
-          fd______ = month1__ + value____ * 7 + x_
-          cal_ = (fd______ >= @gregorian_cutover_date) ? Gcal : get_julian_calendar_system
-          d______ = cal_.new_calendar_date(TimeZone::NO_TIMEZONE)
-          cal_.get_calendar_date_from_fixed_date(d______, fd______)
-          set(DAY_OF_MONTH, d______.get_day_of_month)
-          return
-        when MONTH
-          # Rolling the month involves both pinning the final value to [0, 11]
-          # and adjusting the DAY_OF_MONTH if necessary.  We only adjust the
-          # DAY_OF_MONTH if, after updating the MONTH field, it is illegal.
-          # E.g., <jan31>.roll(MONTH, 1) -> <feb28> or <feb29>.
-          if (!is_cutover_year(@cdate.get_normalized_year))
-            mon__ = (internal_get(MONTH) + amount) % 12
-            if (mon__ < 0)
-              mon__ += 12
-            end
-            set(MONTH, mon__)
-            # Keep the day of month in the range.  We don't want to spill over
-            # into the next month; e.g., we don't want jan31 + 1 mo -> feb31 ->
-            # mar3.
-            month_len__ = month_length(mon__)
-            if (internal_get(DAY_OF_MONTH) > month_len__)
-              set(DAY_OF_MONTH, month_len__)
-            end
-          else
-            # We need to take care of different lengths in
-            # year and month due to the cutover.
-            year_length_ = get_actual_maximum(MONTH) + 1
-            mon___ = (internal_get(MONTH) + amount) % year_length_
-            if (mon___ < 0)
-              mon___ += year_length_
-            end
-            set(MONTH, mon___)
-            month_len___ = get_actual_maximum(DAY_OF_MONTH)
-            if (internal_get(DAY_OF_MONTH) > month_len___)
-              set(DAY_OF_MONTH, month_len___)
-            end
-          end
-          return
-          y_ = @cdate.get_normalized_year
-          max = get_actual_maximum(WEEK_OF_YEAR)
-          set(DAY_OF_WEEK, internal_get(DAY_OF_WEEK))
-          woy_ = internal_get(WEEK_OF_YEAR)
-          value_____ = woy_ + amount
-          if (!is_cutover_year(y_))
-            # If the new value is in between min and max
-            # (exclusive), then we can use the value.
-            if (value_____ > min && value_____ < max)
-              set(WEEK_OF_YEAR, value_____)
-              return
-            end
-            fd_______ = get_current_fixed_date
-            # Make sure that the min week has the current DAY_OF_WEEK
-            day1__ = fd_______ - (7 * (woy_ - min))
-            if (!(@calsys.get_year_from_fixed_date(day1__)).equal?(y_))
-              ((min += 1) - 1)
-            end
-            # Make sure the same thing for the max week
-            fd_______ += 7 * (max - internal_get(WEEK_OF_YEAR))
-            if (!(@calsys.get_year_from_fixed_date(fd_______)).equal?(y_))
-              ((max -= 1) + 1)
-            end
-            throw :break_case, :thrown
-          end
-          # Handle cutover here.
-          fd________ = get_current_fixed_date
-          cal__ = nil
-          if ((@gregorian_cutover_year).equal?(@gregorian_cutover_year_julian))
-            cal__ = get_cutover_calendar_system
-          else
-            if ((y_).equal?(@gregorian_cutover_year))
-              cal__ = Gcal
-            else
-              cal__ = get_julian_calendar_system
-            end
-          end
-          day1___ = fd________ - (7 * (woy_ - min))
-          # Make sure that the min week has the current DAY_OF_WEEK
-          if (!(cal__.get_year_from_fixed_date(day1___)).equal?(y_))
-            ((min += 1) - 1)
-          end
-          # Make sure the same thing for the max week
-          fd________ += 7 * (max - woy_)
-          cal__ = (fd________ >= @gregorian_cutover_date) ? Gcal : get_julian_calendar_system
-          if (!(cal__.get_year_from_fixed_date(fd________)).equal?(y_))
-            ((max -= 1) + 1)
-          end
-          # value: the new WEEK_OF_YEAR which must be converted
-          # to month and day of month.
-          value_____ = get_rolled_value(woy_, amount, min, max) - 1
-          d_______ = get_calendar_date(day1___ + value_____ * 7)
-          set(MONTH, d_______.get_month - 1)
-          set(DAY_OF_MONTH, d_______.get_day_of_month)
-          return
-          is_cutover_year__ = is_cutover_year(@cdate.get_normalized_year)
-          # dow: relative day of week from first day of week
-          dow_ = internal_get(DAY_OF_WEEK) - get_first_day_of_week
-          if (dow_ < 0)
-            dow_ += 7
-          end
-          fd_________ = get_current_fixed_date
-          month1___ = 0 # fixed date of the first day (usually 1) of the month
-          month_length____ = 0 # actual month length
-          if (is_cutover_year__)
-            month1___ = get_fixed_date_month1(@cdate, fd_________)
-            month_length____ = actual_month_length
-          else
-            month1___ = fd_________ - internal_get(DAY_OF_MONTH) + 1
-            month_length____ = @calsys.get_month_length(@cdate)
-          end
-          # the first day of week of the month.
-          month_day1st_ = @calsys.get_day_of_week_date_on_or_before(month1___ + 6, get_first_day_of_week)
-          # if the week has enough days to form a week, the
-          # week starts from the previous month.
-          if (RJava.cast_to_int((month_day1st_ - month1___)) >= get_minimal_days_in_first_week)
-            month_day1st_ -= 7
-          end
-          max = get_actual_maximum(field)
-          # value: the new WEEK_OF_MONTH value
-          value______ = get_rolled_value(internal_get(field), amount, 1, max) - 1
-          # nfd: fixed date of the rolled date
-          nfd_ = month_day1st_ + value______ * 7 + dow_
-          # Unlike WEEK_OF_YEAR, we need to change day of week if the
-          # nfd is out of the month.
-          if (nfd_ < month1___)
-            nfd_ = month1___
-          else
-            if (nfd_ >= (month1___ + month_length____))
-              nfd_ = month1___ + month_length____ - 1
-            end
-          end
-          day_of_month_ = 0
-          if (is_cutover_year__)
-            # If we are in the cutover year, convert nfd to
-            # its calendar date and use dayOfMonth.
-            d________ = get_calendar_date(nfd_)
-            day_of_month_ = d________.get_day_of_month
-          else
-            day_of_month_ = RJava.cast_to_int((nfd_ - month1___)) + 1
-          end
-          set(DAY_OF_MONTH, day_of_month_)
-          return
-          if (!is_cutover_year(@cdate.get_normalized_year))
-            max = @calsys.get_month_length(@cdate)
-            throw :break_case, :thrown
-          end
-          # Cutover year handling
-          fd__________ = get_current_fixed_date
-          month1____ = get_fixed_date_month1(@cdate, fd__________)
-          # It may not be a regular month. Convert the date and range to
-          # the relative values, perform the roll, and
-          # convert the result back to the rolled date.
-          value_______ = get_rolled_value(RJava.cast_to_int((fd__________ - month1____)), amount, 0, actual_month_length - 1)
-          d_________ = get_calendar_date(month1____ + value_______)
-          raise AssertError if not ((d_________.get_month - 1).equal?(internal_get(MONTH)))
-          set(DAY_OF_MONTH, d_________.get_day_of_month)
-          return
-          max = get_actual_maximum(field)
-          if (!is_cutover_year(@cdate.get_normalized_year))
-            throw :break_case, :thrown
-          end
-          # Handle cutover here.
-          fd___________ = get_current_fixed_date
-          jan1_ = fd___________ - internal_get(DAY_OF_YEAR) + 1
-          value________ = get_rolled_value(RJava.cast_to_int((fd___________ - jan1_)) + 1, amount, min, max)
-          d__________ = get_calendar_date(jan1_ + value________ - 1)
-          set(MONTH, d__________.get_month - 1)
-          set(DAY_OF_MONTH, d__________.get_day_of_month)
-          return
-          if (!is_cutover_year(@cdate.get_normalized_year))
-            # If the week of year is in the same year, we can
-            # just change DAY_OF_WEEK.
-            week_of_year_ = internal_get(WEEK_OF_YEAR)
-            if (week_of_year_ > 1 && week_of_year_ < 52)
-              set(WEEK_OF_YEAR, week_of_year_) # update stamp[WEEK_OF_YEAR]
-              max = SATURDAY
-              throw :break_case, :thrown
-            end
-          end
-          # We need to handle it in a different way around year
-          # boundaries and in the cutover year. Note that
-          # changing era and year values violates the roll
-          # rule: not changing larger calendar fields...
-          amount %= 7
-          if ((amount).equal?(0))
-            return
-          end
-          fd____________ = get_current_fixed_date
-          dow_first_ = @calsys.get_day_of_week_date_on_or_before(fd____________, get_first_day_of_week)
-          fd____________ += amount
-          if (fd____________ < dow_first_)
-            fd____________ += 7
-          else
-            if (fd____________ >= dow_first_ + 7)
-              fd____________ -= 7
-            end
-          end
-          d___________ = get_calendar_date(fd____________)
-          set(ERA, (d___________.get_normalized_year <= 0 ? BCE : CE))
-          set(d___________.get_year, d___________.get_month - 1, d___________.get_day_of_month)
-          return
-          min = 1 # after normalized, min should be 1.
-          if (!is_cutover_year(@cdate.get_normalized_year))
-            dom_ = internal_get(DAY_OF_MONTH)
-            month_length_____ = @calsys.get_month_length(@cdate)
-            last_days__ = month_length_____ % 7
-            max = month_length_____ / 7
-            x__ = (dom_ - 1) % 7
-            if (x__ < last_days__)
-              ((max += 1) - 1)
-            end
-            set(DAY_OF_WEEK, internal_get(DAY_OF_WEEK))
-            throw :break_case, :thrown
-          end
-          # Cutover year handling
-          fd_____________ = get_current_fixed_date
-          month1_____ = get_fixed_date_month1(@cdate, fd_____________)
-          month_length______ = actual_month_length
-          last_days___ = month_length______ % 7
-          max = month_length______ / 7
-          x___ = RJava.cast_to_int((fd_____________ - month1_____)) % 7
-          if (x___ < last_days___)
-            ((max += 1) - 1)
-          end
-          value_________ = get_rolled_value(internal_get(field), amount, min, max) - 1
-          fd_____________ = month1_____ + value_________ * 7 + x___
-          cal___ = (fd_____________ >= @gregorian_cutover_date) ? Gcal : get_julian_calendar_system
-          d____________ = cal___.new_calendar_date(TimeZone::NO_TIMEZONE)
-          cal___.get_calendar_date_from_fixed_date(d____________, fd_____________)
-          set(DAY_OF_MONTH, d____________.get_day_of_month)
-          return
-        when WEEK_OF_YEAR
-          y__ = @cdate.get_normalized_year
-          max = get_actual_maximum(WEEK_OF_YEAR)
-          set(DAY_OF_WEEK, internal_get(DAY_OF_WEEK))
-          woy__ = internal_get(WEEK_OF_YEAR)
-          value__________ = woy__ + amount
-          if (!is_cutover_year(y__))
-            # If the new value is in between min and max
-            # (exclusive), then we can use the value.
-            if (value__________ > min && value__________ < max)
-              set(WEEK_OF_YEAR, value__________)
-              return
-            end
-            fd______________ = get_current_fixed_date
-            # Make sure that the min week has the current DAY_OF_WEEK
-            day1____ = fd______________ - (7 * (woy__ - min))
-            if (!(@calsys.get_year_from_fixed_date(day1____)).equal?(y__))
-              ((min += 1) - 1)
-            end
-            # Make sure the same thing for the max week
-            fd______________ += 7 * (max - internal_get(WEEK_OF_YEAR))
-            if (!(@calsys.get_year_from_fixed_date(fd______________)).equal?(y__))
-              ((max -= 1) + 1)
-            end
-            throw :break_case, :thrown
-          end
-          # Handle cutover here.
-          fd_______________ = get_current_fixed_date
-          cal____ = nil
-          if ((@gregorian_cutover_year).equal?(@gregorian_cutover_year_julian))
-            cal____ = get_cutover_calendar_system
-          else
-            if ((y__).equal?(@gregorian_cutover_year))
-              cal____ = Gcal
-            else
-              cal____ = get_julian_calendar_system
-            end
-          end
-          day1_____ = fd_______________ - (7 * (woy__ - min))
-          # Make sure that the min week has the current DAY_OF_WEEK
-          if (!(cal____.get_year_from_fixed_date(day1_____)).equal?(y__))
-            ((min += 1) - 1)
-          end
-          # Make sure the same thing for the max week
-          fd_______________ += 7 * (max - woy__)
-          cal____ = (fd_______________ >= @gregorian_cutover_date) ? Gcal : get_julian_calendar_system
-          if (!(cal____.get_year_from_fixed_date(fd_______________)).equal?(y__))
-            ((max -= 1) + 1)
-          end
-          # value: the new WEEK_OF_YEAR which must be converted
-          # to month and day of month.
-          value__________ = get_rolled_value(woy__, amount, min, max) - 1
-          d_____________ = get_calendar_date(day1_____ + value__________ * 7)
-          set(MONTH, d_____________.get_month - 1)
-          set(DAY_OF_MONTH, d_____________.get_day_of_month)
-          return
-          is_cutover_year___ = is_cutover_year(@cdate.get_normalized_year)
-          # dow: relative day of week from first day of week
-          dow__ = internal_get(DAY_OF_WEEK) - get_first_day_of_week
-          if (dow__ < 0)
-            dow__ += 7
-          end
-          fd________________ = get_current_fixed_date
-          month1______ = 0 # fixed date of the first day (usually 1) of the month
-          month_length_______ = 0 # actual month length
-          if (is_cutover_year___)
-            month1______ = get_fixed_date_month1(@cdate, fd________________)
-            month_length_______ = actual_month_length
-          else
-            month1______ = fd________________ - internal_get(DAY_OF_MONTH) + 1
-            month_length_______ = @calsys.get_month_length(@cdate)
-          end
-          # the first day of week of the month.
-          month_day1st__ = @calsys.get_day_of_week_date_on_or_before(month1______ + 6, get_first_day_of_week)
-          # if the week has enough days to form a week, the
-          # week starts from the previous month.
-          if (RJava.cast_to_int((month_day1st__ - month1______)) >= get_minimal_days_in_first_week)
-            month_day1st__ -= 7
-          end
-          max = get_actual_maximum(field)
-          # value: the new WEEK_OF_MONTH value
-          value___________ = get_rolled_value(internal_get(field), amount, 1, max) - 1
-          # nfd: fixed date of the rolled date
-          nfd__ = month_day1st__ + value___________ * 7 + dow__
-          # Unlike WEEK_OF_YEAR, we need to change day of week if the
-          # nfd is out of the month.
-          if (nfd__ < month1______)
-            nfd__ = month1______
-          else
-            if (nfd__ >= (month1______ + month_length_______))
-              nfd__ = month1______ + month_length_______ - 1
-            end
-          end
-          day_of_month__ = 0
-          if (is_cutover_year___)
-            # If we are in the cutover year, convert nfd to
-            # its calendar date and use dayOfMonth.
-            d______________ = get_calendar_date(nfd__)
-            day_of_month__ = d______________.get_day_of_month
-          else
-            day_of_month__ = RJava.cast_to_int((nfd__ - month1______)) + 1
-          end
-          set(DAY_OF_MONTH, day_of_month__)
-          return
-          if (!is_cutover_year(@cdate.get_normalized_year))
-            max = @calsys.get_month_length(@cdate)
-            throw :break_case, :thrown
-          end
-          # Cutover year handling
-          fd_________________ = get_current_fixed_date
-          month1_______ = get_fixed_date_month1(@cdate, fd_________________)
-          # It may not be a regular month. Convert the date and range to
-          # the relative values, perform the roll, and
-          # convert the result back to the rolled date.
-          value____________ = get_rolled_value(RJava.cast_to_int((fd_________________ - month1_______)), amount, 0, actual_month_length - 1)
-          d_______________ = get_calendar_date(month1_______ + value____________)
-          raise AssertError if not ((d_______________.get_month - 1).equal?(internal_get(MONTH)))
-          set(DAY_OF_MONTH, d_______________.get_day_of_month)
-          return
-          max = get_actual_maximum(field)
-          if (!is_cutover_year(@cdate.get_normalized_year))
-            throw :break_case, :thrown
-          end
-          # Handle cutover here.
-          fd__________________ = get_current_fixed_date
-          jan1__ = fd__________________ - internal_get(DAY_OF_YEAR) + 1
-          value_____________ = get_rolled_value(RJava.cast_to_int((fd__________________ - jan1__)) + 1, amount, min, max)
-          d________________ = get_calendar_date(jan1__ + value_____________ - 1)
-          set(MONTH, d________________.get_month - 1)
-          set(DAY_OF_MONTH, d________________.get_day_of_month)
-          return
-          if (!is_cutover_year(@cdate.get_normalized_year))
-            # If the week of year is in the same year, we can
-            # just change DAY_OF_WEEK.
-            week_of_year__ = internal_get(WEEK_OF_YEAR)
-            if (week_of_year__ > 1 && week_of_year__ < 52)
-              set(WEEK_OF_YEAR, week_of_year__) # update stamp[WEEK_OF_YEAR]
-              max = SATURDAY
-              throw :break_case, :thrown
-            end
-          end
-          # We need to handle it in a different way around year
-          # boundaries and in the cutover year. Note that
-          # changing era and year values violates the roll
-          # rule: not changing larger calendar fields...
-          amount %= 7
-          if ((amount).equal?(0))
-            return
-          end
-          fd___________________ = get_current_fixed_date
-          dow_first__ = @calsys.get_day_of_week_date_on_or_before(fd___________________, get_first_day_of_week)
-          fd___________________ += amount
-          if (fd___________________ < dow_first__)
-            fd___________________ += 7
-          else
-            if (fd___________________ >= dow_first__ + 7)
-              fd___________________ -= 7
-            end
-          end
-          d_________________ = get_calendar_date(fd___________________)
-          set(ERA, (d_________________.get_normalized_year <= 0 ? BCE : CE))
-          set(d_________________.get_year, d_________________.get_month - 1, d_________________.get_day_of_month)
-          return
-          min = 1 # after normalized, min should be 1.
-          if (!is_cutover_year(@cdate.get_normalized_year))
-            dom__ = internal_get(DAY_OF_MONTH)
-            month_length________ = @calsys.get_month_length(@cdate)
-            last_days____ = month_length________ % 7
-            max = month_length________ / 7
-            x____ = (dom__ - 1) % 7
-            if (x____ < last_days____)
-              ((max += 1) - 1)
-            end
-            set(DAY_OF_WEEK, internal_get(DAY_OF_WEEK))
-            throw :break_case, :thrown
-          end
-          # Cutover year handling
-          fd____________________ = get_current_fixed_date
-          month1________ = get_fixed_date_month1(@cdate, fd____________________)
-          month_length_________ = actual_month_length
-          last_days_____ = month_length_________ % 7
-          max = month_length_________ / 7
-          x_____ = RJava.cast_to_int((fd____________________ - month1________)) % 7
-          if (x_____ < last_days_____)
-            ((max += 1) - 1)
-          end
-          value______________ = get_rolled_value(internal_get(field), amount, min, max) - 1
-          fd____________________ = month1________ + value______________ * 7 + x_____
-          cal_____ = (fd____________________ >= @gregorian_cutover_date) ? Gcal : get_julian_calendar_system
-          d__________________ = cal_____.new_calendar_date(TimeZone::NO_TIMEZONE)
-          cal_____.get_calendar_date_from_fixed_date(d__________________, fd____________________)
-          set(DAY_OF_MONTH, d__________________.get_day_of_month)
-          return
-        when WEEK_OF_MONTH
-          is_cutover_year____ = is_cutover_year(@cdate.get_normalized_year)
-          # dow: relative day of week from first day of week
-          dow___ = internal_get(DAY_OF_WEEK) - get_first_day_of_week
-          if (dow___ < 0)
-            dow___ += 7
-          end
-          fd_____________________ = get_current_fixed_date
-          month1_________ = 0 # fixed date of the first day (usually 1) of the month
-          month_length__________ = 0 # actual month length
-          if (is_cutover_year____)
-            month1_________ = get_fixed_date_month1(@cdate, fd_____________________)
-            month_length__________ = actual_month_length
-          else
-            month1_________ = fd_____________________ - internal_get(DAY_OF_MONTH) + 1
-            month_length__________ = @calsys.get_month_length(@cdate)
-          end
-          # the first day of week of the month.
-          month_day1st___ = @calsys.get_day_of_week_date_on_or_before(month1_________ + 6, get_first_day_of_week)
-          # if the week has enough days to form a week, the
-          # week starts from the previous month.
-          if (RJava.cast_to_int((month_day1st___ - month1_________)) >= get_minimal_days_in_first_week)
-            month_day1st___ -= 7
-          end
-          max = get_actual_maximum(field)
-          # value: the new WEEK_OF_MONTH value
-          value_______________ = get_rolled_value(internal_get(field), amount, 1, max) - 1
-          # nfd: fixed date of the rolled date
-          nfd___ = month_day1st___ + value_______________ * 7 + dow___
-          # Unlike WEEK_OF_YEAR, we need to change day of week if the
-          # nfd is out of the month.
-          if (nfd___ < month1_________)
-            nfd___ = month1_________
-          else
-            if (nfd___ >= (month1_________ + month_length__________))
-              nfd___ = month1_________ + month_length__________ - 1
-            end
-          end
-          day_of_month___ = 0
-          if (is_cutover_year____)
-            # If we are in the cutover year, convert nfd to
-            # its calendar date and use dayOfMonth.
-            d___________________ = get_calendar_date(nfd___)
-            day_of_month___ = d___________________.get_day_of_month
-          else
-            day_of_month___ = RJava.cast_to_int((nfd___ - month1_________)) + 1
-          end
-          set(DAY_OF_MONTH, day_of_month___)
-          return
-          if (!is_cutover_year(@cdate.get_normalized_year))
-            max = @calsys.get_month_length(@cdate)
-            throw :break_case, :thrown
-          end
-          # Cutover year handling
-          fd______________________ = get_current_fixed_date
-          month1__________ = get_fixed_date_month1(@cdate, fd______________________)
-          # It may not be a regular month. Convert the date and range to
-          # the relative values, perform the roll, and
-          # convert the result back to the rolled date.
-          value________________ = get_rolled_value(RJava.cast_to_int((fd______________________ - month1__________)), amount, 0, actual_month_length - 1)
-          d____________________ = get_calendar_date(month1__________ + value________________)
-          raise AssertError if not ((d____________________.get_month - 1).equal?(internal_get(MONTH)))
-          set(DAY_OF_MONTH, d____________________.get_day_of_month)
-          return
-          max = get_actual_maximum(field)
-          if (!is_cutover_year(@cdate.get_normalized_year))
-            throw :break_case, :thrown
-          end
-          # Handle cutover here.
-          fd_______________________ = get_current_fixed_date
-          jan1___ = fd_______________________ - internal_get(DAY_OF_YEAR) + 1
-          value_________________ = get_rolled_value(RJava.cast_to_int((fd_______________________ - jan1___)) + 1, amount, min, max)
-          d_____________________ = get_calendar_date(jan1___ + value_________________ - 1)
-          set(MONTH, d_____________________.get_month - 1)
-          set(DAY_OF_MONTH, d_____________________.get_day_of_month)
-          return
-          if (!is_cutover_year(@cdate.get_normalized_year))
-            # If the week of year is in the same year, we can
-            # just change DAY_OF_WEEK.
-            week_of_year___ = internal_get(WEEK_OF_YEAR)
-            if (week_of_year___ > 1 && week_of_year___ < 52)
-              set(WEEK_OF_YEAR, week_of_year___) # update stamp[WEEK_OF_YEAR]
-              max = SATURDAY
-              throw :break_case, :thrown
-            end
-          end
-          # We need to handle it in a different way around year
-          # boundaries and in the cutover year. Note that
-          # changing era and year values violates the roll
-          # rule: not changing larger calendar fields...
-          amount %= 7
-          if ((amount).equal?(0))
-            return
-          end
-          fd________________________ = get_current_fixed_date
-          dow_first___ = @calsys.get_day_of_week_date_on_or_before(fd________________________, get_first_day_of_week)
-          fd________________________ += amount
-          if (fd________________________ < dow_first___)
-            fd________________________ += 7
-          else
-            if (fd________________________ >= dow_first___ + 7)
-              fd________________________ -= 7
-            end
-          end
-          d______________________ = get_calendar_date(fd________________________)
-          set(ERA, (d______________________.get_normalized_year <= 0 ? BCE : CE))
-          set(d______________________.get_year, d______________________.get_month - 1, d______________________.get_day_of_month)
-          return
-          min = 1 # after normalized, min should be 1.
-          if (!is_cutover_year(@cdate.get_normalized_year))
-            dom___ = internal_get(DAY_OF_MONTH)
-            month_length___________ = @calsys.get_month_length(@cdate)
-            last_days______ = month_length___________ % 7
-            max = month_length___________ / 7
-            x______ = (dom___ - 1) % 7
-            if (x______ < last_days______)
-              ((max += 1) - 1)
-            end
-            set(DAY_OF_WEEK, internal_get(DAY_OF_WEEK))
-            throw :break_case, :thrown
-          end
-          # Cutover year handling
-          fd_________________________ = get_current_fixed_date
-          month1___________ = get_fixed_date_month1(@cdate, fd_________________________)
-          month_length____________ = actual_month_length
-          last_days_______ = month_length____________ % 7
-          max = month_length____________ / 7
-          x_______ = RJava.cast_to_int((fd_________________________ - month1___________)) % 7
-          if (x_______ < last_days_______)
-            ((max += 1) - 1)
-          end
-          value__________________ = get_rolled_value(internal_get(field), amount, min, max) - 1
-          fd_________________________ = month1___________ + value__________________ * 7 + x_______
-          cal______ = (fd_________________________ >= @gregorian_cutover_date) ? Gcal : get_julian_calendar_system
-          d_______________________ = cal______.new_calendar_date(TimeZone::NO_TIMEZONE)
-          cal______.get_calendar_date_from_fixed_date(d_______________________, fd_________________________)
-          set(DAY_OF_MONTH, d_______________________.get_day_of_month)
-          return
-        when DAY_OF_MONTH
-          if (!is_cutover_year(@cdate.get_normalized_year))
-            max = @calsys.get_month_length(@cdate)
-            throw :break_case, :thrown
-          end
-          # Cutover year handling
-          fd__________________________ = get_current_fixed_date
-          month1____________ = get_fixed_date_month1(@cdate, fd__________________________)
-          # It may not be a regular month. Convert the date and range to
-          # the relative values, perform the roll, and
-          # convert the result back to the rolled date.
-          value___________________ = get_rolled_value(RJava.cast_to_int((fd__________________________ - month1____________)), amount, 0, actual_month_length - 1)
-          d________________________ = get_calendar_date(month1____________ + value___________________)
-          raise AssertError if not ((d________________________.get_month - 1).equal?(internal_get(MONTH)))
-          set(DAY_OF_MONTH, d________________________.get_day_of_month)
-          return
-          max = get_actual_maximum(field)
-          if (!is_cutover_year(@cdate.get_normalized_year))
-            throw :break_case, :thrown
-          end
-          # Handle cutover here.
-          fd___________________________ = get_current_fixed_date
-          jan1____ = fd___________________________ - internal_get(DAY_OF_YEAR) + 1
-          value____________________ = get_rolled_value(RJava.cast_to_int((fd___________________________ - jan1____)) + 1, amount, min, max)
-          d_________________________ = get_calendar_date(jan1____ + value____________________ - 1)
-          set(MONTH, d_________________________.get_month - 1)
-          set(DAY_OF_MONTH, d_________________________.get_day_of_month)
-          return
-          if (!is_cutover_year(@cdate.get_normalized_year))
-            # If the week of year is in the same year, we can
-            # just change DAY_OF_WEEK.
-            week_of_year____ = internal_get(WEEK_OF_YEAR)
-            if (week_of_year____ > 1 && week_of_year____ < 52)
-              set(WEEK_OF_YEAR, week_of_year____) # update stamp[WEEK_OF_YEAR]
-              max = SATURDAY
-              throw :break_case, :thrown
-            end
-          end
-          # We need to handle it in a different way around year
-          # boundaries and in the cutover year. Note that
-          # changing era and year values violates the roll
-          # rule: not changing larger calendar fields...
-          amount %= 7
-          if ((amount).equal?(0))
-            return
-          end
-          fd____________________________ = get_current_fixed_date
-          dow_first____ = @calsys.get_day_of_week_date_on_or_before(fd____________________________, get_first_day_of_week)
-          fd____________________________ += amount
-          if (fd____________________________ < dow_first____)
-            fd____________________________ += 7
-          else
-            if (fd____________________________ >= dow_first____ + 7)
-              fd____________________________ -= 7
-            end
-          end
-          d__________________________ = get_calendar_date(fd____________________________)
-          set(ERA, (d__________________________.get_normalized_year <= 0 ? BCE : CE))
-          set(d__________________________.get_year, d__________________________.get_month - 1, d__________________________.get_day_of_month)
-          return
-          min = 1 # after normalized, min should be 1.
-          if (!is_cutover_year(@cdate.get_normalized_year))
-            dom____ = internal_get(DAY_OF_MONTH)
-            month_length_____________ = @calsys.get_month_length(@cdate)
-            last_days________ = month_length_____________ % 7
-            max = month_length_____________ / 7
-            x________ = (dom____ - 1) % 7
-            if (x________ < last_days________)
-              ((max += 1) - 1)
-            end
-            set(DAY_OF_WEEK, internal_get(DAY_OF_WEEK))
-            throw :break_case, :thrown
-          end
-          # Cutover year handling
-          fd_____________________________ = get_current_fixed_date
-          month1_____________ = get_fixed_date_month1(@cdate, fd_____________________________)
-          month_length______________ = actual_month_length
-          last_days_________ = month_length______________ % 7
-          max = month_length______________ / 7
-          x_________ = RJava.cast_to_int((fd_____________________________ - month1_____________)) % 7
-          if (x_________ < last_days_________)
-            ((max += 1) - 1)
-          end
-          value_____________________ = get_rolled_value(internal_get(field), amount, min, max) - 1
-          fd_____________________________ = month1_____________ + value_____________________ * 7 + x_________
-          cal_______ = (fd_____________________________ >= @gregorian_cutover_date) ? Gcal : get_julian_calendar_system
-          d___________________________ = cal_______.new_calendar_date(TimeZone::NO_TIMEZONE)
-          cal_______.get_calendar_date_from_fixed_date(d___________________________, fd_____________________________)
-          set(DAY_OF_MONTH, d___________________________.get_day_of_month)
-          return
-        when DAY_OF_YEAR
-          max = get_actual_maximum(field)
-          if (!is_cutover_year(@cdate.get_normalized_year))
-            throw :break_case, :thrown
-          end
-          # Handle cutover here.
-          fd______________________________ = get_current_fixed_date
-          jan1_____ = fd______________________________ - internal_get(DAY_OF_YEAR) + 1
-          value______________________ = get_rolled_value(RJava.cast_to_int((fd______________________________ - jan1_____)) + 1, amount, min, max)
-          d____________________________ = get_calendar_date(jan1_____ + value______________________ - 1)
-          set(MONTH, d____________________________.get_month - 1)
-          set(DAY_OF_MONTH, d____________________________.get_day_of_month)
-          return
-          if (!is_cutover_year(@cdate.get_normalized_year))
-            # If the week of year is in the same year, we can
-            # just change DAY_OF_WEEK.
-            week_of_year_____ = internal_get(WEEK_OF_YEAR)
-            if (week_of_year_____ > 1 && week_of_year_____ < 52)
-              set(WEEK_OF_YEAR, week_of_year_____) # update stamp[WEEK_OF_YEAR]
-              max = SATURDAY
-              throw :break_case, :thrown
-            end
-          end
-          # We need to handle it in a different way around year
-          # boundaries and in the cutover year. Note that
-          # changing era and year values violates the roll
-          # rule: not changing larger calendar fields...
-          amount %= 7
-          if ((amount).equal?(0))
-            return
-          end
-          fd_______________________________ = get_current_fixed_date
-          dow_first_____ = @calsys.get_day_of_week_date_on_or_before(fd_______________________________, get_first_day_of_week)
-          fd_______________________________ += amount
-          if (fd_______________________________ < dow_first_____)
-            fd_______________________________ += 7
-          else
-            if (fd_______________________________ >= dow_first_____ + 7)
-              fd_______________________________ -= 7
-            end
-          end
-          d_____________________________ = get_calendar_date(fd_______________________________)
-          set(ERA, (d_____________________________.get_normalized_year <= 0 ? BCE : CE))
-          set(d_____________________________.get_year, d_____________________________.get_month - 1, d_____________________________.get_day_of_month)
-          return
-          min = 1 # after normalized, min should be 1.
-          if (!is_cutover_year(@cdate.get_normalized_year))
-            dom_____ = internal_get(DAY_OF_MONTH)
-            month_length_______________ = @calsys.get_month_length(@cdate)
-            last_days__________ = month_length_______________ % 7
-            max = month_length_______________ / 7
-            x__________ = (dom_____ - 1) % 7
-            if (x__________ < last_days__________)
-              ((max += 1) - 1)
-            end
-            set(DAY_OF_WEEK, internal_get(DAY_OF_WEEK))
-            throw :break_case, :thrown
-          end
-          # Cutover year handling
-          fd________________________________ = get_current_fixed_date
-          month1______________ = get_fixed_date_month1(@cdate, fd________________________________)
-          month_length________________ = actual_month_length
-          last_days___________ = month_length________________ % 7
-          max = month_length________________ / 7
-          x___________ = RJava.cast_to_int((fd________________________________ - month1______________)) % 7
-          if (x___________ < last_days___________)
-            ((max += 1) - 1)
-          end
-          value_______________________ = get_rolled_value(internal_get(field), amount, min, max) - 1
-          fd________________________________ = month1______________ + value_______________________ * 7 + x___________
-          cal________ = (fd________________________________ >= @gregorian_cutover_date) ? Gcal : get_julian_calendar_system
-          d______________________________ = cal________.new_calendar_date(TimeZone::NO_TIMEZONE)
-          cal________.get_calendar_date_from_fixed_date(d______________________________, fd________________________________)
-          set(DAY_OF_MONTH, d______________________________.get_day_of_month)
-          return
-        when DAY_OF_WEEK
-          if (!is_cutover_year(@cdate.get_normalized_year))
-            # If the week of year is in the same year, we can
-            # just change DAY_OF_WEEK.
-            week_of_year______ = internal_get(WEEK_OF_YEAR)
-            if (week_of_year______ > 1 && week_of_year______ < 52)
-              set(WEEK_OF_YEAR, week_of_year______) # update stamp[WEEK_OF_YEAR]
-              max = SATURDAY
-              throw :break_case, :thrown
-            end
-          end
-          # We need to handle it in a different way around year
-          # boundaries and in the cutover year. Note that
-          # changing era and year values violates the roll
-          # rule: not changing larger calendar fields...
-          amount %= 7
-          if ((amount).equal?(0))
-            return
-          end
-          fd_________________________________ = get_current_fixed_date
-          dow_first______ = @calsys.get_day_of_week_date_on_or_before(fd_________________________________, get_first_day_of_week)
-          fd_________________________________ += amount
-          if (fd_________________________________ < dow_first______)
-            fd_________________________________ += 7
-          else
-            if (fd_________________________________ >= dow_first______ + 7)
-              fd_________________________________ -= 7
-            end
-          end
-          d_______________________________ = get_calendar_date(fd_________________________________)
-          set(ERA, (d_______________________________.get_normalized_year <= 0 ? BCE : CE))
-          set(d_______________________________.get_year, d_______________________________.get_month - 1, d_______________________________.get_day_of_month)
-          return
-          min = 1 # after normalized, min should be 1.
-          if (!is_cutover_year(@cdate.get_normalized_year))
-            dom______ = internal_get(DAY_OF_MONTH)
-            month_length_________________ = @calsys.get_month_length(@cdate)
-            last_days____________ = month_length_________________ % 7
-            max = month_length_________________ / 7
-            x____________ = (dom______ - 1) % 7
-            if (x____________ < last_days____________)
-              ((max += 1) - 1)
-            end
-            set(DAY_OF_WEEK, internal_get(DAY_OF_WEEK))
-            throw :break_case, :thrown
-          end
-          # Cutover year handling
-          fd__________________________________ = get_current_fixed_date
-          month1_______________ = get_fixed_date_month1(@cdate, fd__________________________________)
-          month_length__________________ = actual_month_length
-          last_days_____________ = month_length__________________ % 7
-          max = month_length__________________ / 7
-          x_____________ = RJava.cast_to_int((fd__________________________________ - month1_______________)) % 7
-          if (x_____________ < last_days_____________)
-            ((max += 1) - 1)
-          end
-          value________________________ = get_rolled_value(internal_get(field), amount, min, max) - 1
-          fd__________________________________ = month1_______________ + value________________________ * 7 + x_____________
-          cal_________ = (fd__________________________________ >= @gregorian_cutover_date) ? Gcal : get_julian_calendar_system
-          d________________________________ = cal_________.new_calendar_date(TimeZone::NO_TIMEZONE)
-          cal_________.get_calendar_date_from_fixed_date(d________________________________, fd__________________________________)
-          set(DAY_OF_MONTH, d________________________________.get_day_of_month)
-          return
-        when DAY_OF_WEEK_IN_MONTH
-          min = 1 # after normalized, min should be 1.
-          if (!is_cutover_year(@cdate.get_normalized_year))
-            dom_______ = internal_get(DAY_OF_MONTH)
-            month_length___________________ = @calsys.get_month_length(@cdate)
-            last_days______________ = month_length___________________ % 7
-            max = month_length___________________ / 7
-            x______________ = (dom_______ - 1) % 7
-            if (x______________ < last_days______________)
-              ((max += 1) - 1)
-            end
-            set(DAY_OF_WEEK, internal_get(DAY_OF_WEEK))
-            throw :break_case, :thrown
-          end
-          # Cutover year handling
-          fd___________________________________ = get_current_fixed_date
-          month1________________ = get_fixed_date_month1(@cdate, fd___________________________________)
-          month_length____________________ = actual_month_length
-          last_days_______________ = month_length____________________ % 7
-          max = month_length____________________ / 7
-          x_______________ = RJava.cast_to_int((fd___________________________________ - month1________________)) % 7
-          if (x_______________ < last_days_______________)
-            ((max += 1) - 1)
-          end
-          value_________________________ = get_rolled_value(internal_get(field), amount, min, max) - 1
-          fd___________________________________ = month1________________ + value_________________________ * 7 + x_______________
-          cal__________ = (fd___________________________________ >= @gregorian_cutover_date) ? Gcal : get_julian_calendar_system
-          d_________________________________ = cal__________.new_calendar_date(TimeZone::NO_TIMEZONE)
-          cal__________.get_calendar_date_from_fixed_date(d_________________________________, fd___________________________________)
-          set(DAY_OF_MONTH, d_________________________________.get_day_of_month)
+          value = get_rolled_value(internal_get(field), amount, min, max) - 1
+          fd = month1 + value * 7 + x
+          cal = (fd >= @gregorian_cutover_date) ? Gcal : get_julian_calendar_system
+          d = cal.new_calendar_date(TimeZone::NO_TIMEZONE)
+          cal.get_calendar_date_from_fixed_date(d, fd)
+          set(DAY_OF_MONTH, d.get_day_of_month)
           return
         end
       end
@@ -2261,7 +1425,6 @@ module Java::Util
     end
     
     typesig { [::Java::Int] }
-    # 
     # Returns the minimum value for the given calendar field of this
     # <code>GregorianCalendar</code> instance. The minimum value is
     # defined as the smallest value returned by the {@link
@@ -2284,7 +1447,6 @@ module Java::Util
     end
     
     typesig { [::Java::Int] }
-    # 
     # Returns the maximum value for the given calendar field of this
     # <code>GregorianCalendar</code> instance. The maximum value is
     # defined as the largest value returned by the {@link
@@ -2326,7 +1488,6 @@ module Java::Util
     end
     
     typesig { [::Java::Int] }
-    # 
     # Returns the highest minimum value for the given calendar field
     # of this <code>GregorianCalendar</code> instance. The highest
     # minimum value is defined as the largest value returned by
@@ -2355,7 +1516,6 @@ module Java::Util
     end
     
     typesig { [::Java::Int] }
-    # 
     # Returns the lowest maximum value for the given calendar field
     # of this <code>GregorianCalendar</code> instance. The lowest
     # maximum value is defined as the smallest value returned by
@@ -2388,7 +1548,6 @@ module Java::Util
     end
     
     typesig { [::Java::Int] }
-    # 
     # Returns the minimum value that this calendar field could have,
     # taking into consideration the given time value and the current
     # values of the
@@ -2428,7 +1587,6 @@ module Java::Util
     end
     
     typesig { [::Java::Int] }
-    # 
     # Returns the maximum value that this calendar field could have,
     # taking into consideration the given time value and the current
     # values of the
@@ -2488,8 +1646,8 @@ module Java::Util
           month_length_ = gc.actual_month_length
           month_end = gc.get_fixed_date_month1(gc.attr_cdate, fd) + month_length_ - 1
           # Convert the fixed date to its calendar date.
-          d_ = gc.get_calendar_date(month_end)
-          value = d_.get_day_of_month
+          d = gc.get_calendar_date(month_end)
+          value = d.get_day_of_month
         when DAY_OF_YEAR
           if (!gc.is_cutover_year(normalized_year))
             value = cal.get_year_length(date)
@@ -2508,19 +1666,19 @@ module Java::Util
             end
           end
           # January 1 of the next year may or may not exist.
-          next_jan1_ = Gcal.get_fixed_date((normalized_year += 1), 1, 1, nil)
-          if (next_jan1_ < @gregorian_cutover_date)
-            next_jan1_ = @gregorian_cutover_date
+          next_jan1 = Gcal.get_fixed_date((normalized_year += 1), 1, 1, nil)
+          if (next_jan1 < @gregorian_cutover_date)
+            next_jan1 = @gregorian_cutover_date
           end
           raise AssertError if not (jan1 <= cal.get_fixed_date(date.get_normalized_year, date.get_month, date.get_day_of_month, date))
-          raise AssertError if not (next_jan1_ >= cal.get_fixed_date(date.get_normalized_year, date.get_month, date.get_day_of_month, date))
-          value = RJava.cast_to_int((next_jan1_ - jan1))
+          raise AssertError if not (next_jan1 >= cal.get_fixed_date(date.get_normalized_year, date.get_month, date.get_day_of_month, date))
+          value = RJava.cast_to_int((next_jan1 - jan1))
         when WEEK_OF_YEAR
           if (!gc.is_cutover_year(normalized_year))
             # Get the day of week of January 1 of the year
-            d__ = cal.new_calendar_date(TimeZone::NO_TIMEZONE)
-            d__.set_date(date.get_year, BaseCalendar::JANUARY, 1)
-            day_of_week = cal.get_day_of_week(d__)
+            d = cal.new_calendar_date(TimeZone::NO_TIMEZONE)
+            d.set_date(date.get_year, BaseCalendar::JANUARY, 1)
+            day_of_week = cal.get_day_of_week(d)
             # Normalize the day of week with the firstDayOfWeek value
             day_of_week -= get_first_day_of_week
             if (day_of_week < 0)
@@ -2540,23 +1698,23 @@ module Java::Util
           value = gc.get(WEEK_OF_YEAR)
         when WEEK_OF_MONTH
           if (!gc.is_cutover_year(normalized_year))
-            d___ = cal.new_calendar_date(nil)
-            d___.set_date(date.get_year, date.get_month, 1)
-            day_of_week_ = cal.get_day_of_week(d___)
-            month_length__ = cal.get_month_length(d___)
-            day_of_week_ -= get_first_day_of_week
-            if (day_of_week_ < 0)
-              day_of_week_ += 7
+            d = cal.new_calendar_date(nil)
+            d.set_date(date.get_year, date.get_month, 1)
+            day_of_week = cal.get_day_of_week(d)
+            month_length_ = cal.get_month_length(d)
+            day_of_week -= get_first_day_of_week
+            if (day_of_week < 0)
+              day_of_week += 7
             end
-            n_days_first_week = 7 - day_of_week_ # # of days in the first week
+            n_days_first_week = 7 - day_of_week # # of days in the first week
             value = 3
             if (n_days_first_week >= get_minimal_days_in_first_week)
               ((value += 1) - 1)
             end
-            month_length__ -= n_days_first_week + 7 * 3
-            if (month_length__ > 0)
+            month_length_ -= n_days_first_week + 7 * 3
+            if (month_length_ > 0)
               ((value += 1) - 1)
-              if (month_length__ > 7)
+              if (month_length_ > 7)
                 ((value += 1) - 1)
               end
             end
@@ -2578,11 +1736,11 @@ module Java::Util
           dow1 = 0
           dow = date.get_day_of_week
           if (!gc.is_cutover_year(normalized_year))
-            d____ = date.clone
-            ndays = cal.get_month_length(d____)
-            d____.set_day_of_month(1)
-            cal.normalize(d____)
-            dow1 = d____.get_day_of_week
+            d = date.clone
+            ndays = cal.get_month_length(d)
+            d.set_day_of_month(1)
+            cal.normalize(d)
+            dow1 = d.get_day_of_week
           else
             # Let a cloned GregorianCalendar take care of the cutover cases.
             if ((gc).equal?(self))
@@ -2634,20 +1792,20 @@ module Java::Util
             end
           else
             mincal = gc.get_time_in_millis >= @gregorian_cutover ? Gcal : get_julian_calendar_system
-            d_____ = mincal.get_calendar_date(Long::MIN_VALUE, get_zone)
-            max_end_ = (cal.get_day_of_year(d_____) - 1) * 24 + d_____.get_hours
-            max_end_ *= 60
-            max_end_ += d_____.get_minutes
-            max_end_ *= 60
-            max_end_ += d_____.get_seconds
-            max_end_ *= 1000
-            max_end_ += d_____.get_millis
-            value = d_____.get_year
+            d = mincal.get_calendar_date(Long::MIN_VALUE, get_zone)
+            max_end = (cal.get_day_of_year(d) - 1) * 24 + d.get_hours
+            max_end *= 60
+            max_end += d.get_minutes
+            max_end *= 60
+            max_end += d.get_seconds
+            max_end *= 1000
+            max_end += d.get_millis
+            value = d.get_year
             if (value <= 0)
               raise AssertError if not ((mincal).equal?(Gcal))
               value = 1 - value
             end
-            if (current < max_end_)
+            if (current < max_end)
               ((value -= 1) + 1)
             end
           end
@@ -2659,7 +1817,6 @@ module Java::Util
     end
     
     typesig { [] }
-    # 
     # Returns the millisecond offset from the beginning of this
     # year. This Calendar object must have been normalized.
     def get_year_offset_in_millis
@@ -2762,7 +1919,6 @@ module Java::Util
     undef_method :cached_fixed_date=
     
     typesig { [] }
-    # 
     # Converts the time value (millisecond offset from the <a
     # href="Calendar.html#Epoch">Epoch</a>) to calendar field values.
     # The time is <em>not</em>
@@ -2791,7 +1947,6 @@ module Java::Util
     end
     
     typesig { [::Java::Int, ::Java::Int] }
-    # 
     # This computeFields implements the conversion from UTC
     # (millisecond offset from the Epoch) to calendar
     # field values. fieldMask specifies which fields to change the
@@ -2987,23 +2142,23 @@ module Java::Util
               end
             end
           else
-            cal_for_jan1_ = @calsys
+            cal_for_jan1 = @calsys
             next_year = normalized_year + 1
             if ((next_year).equal?((@gregorian_cutover_year_julian + 1)) && next_year < @gregorian_cutover_year)
               # In case the gap is more than one year.
               next_year = @gregorian_cutover_year
             end
             if ((next_year).equal?(@gregorian_cutover_year))
-              cal_for_jan1_ = get_cutover_calendar_system
+              cal_for_jan1 = get_cutover_calendar_system
             end
-            next_jan1_ = cal_for_jan1_.get_fixed_date(next_year, BaseCalendar::JANUARY, 1, nil)
-            if (next_jan1_ < fixed_date)
-              next_jan1_ = @gregorian_cutover_date
-              cal_for_jan1_ = Gcal
+            next_jan1 = cal_for_jan1.get_fixed_date(next_year, BaseCalendar::JANUARY, 1, nil)
+            if (next_jan1 < fixed_date)
+              next_jan1 = @gregorian_cutover_date
+              cal_for_jan1 = Gcal
             end
-            next_jan1st_ = cal_for_jan1_.get_day_of_week_date_on_or_before(next_jan1_ + 6, get_first_day_of_week)
-            ndays_ = RJava.cast_to_int((next_jan1st_ - next_jan1_))
-            if (ndays_ >= get_minimal_days_in_first_week && fixed_date >= (next_jan1st_ - 7))
+            next_jan1st = cal_for_jan1.get_day_of_week_date_on_or_before(next_jan1 + 6, get_first_day_of_week)
+            ndays = RJava.cast_to_int((next_jan1st - next_jan1))
+            if (ndays >= get_minimal_days_in_first_week && fixed_date >= (next_jan1st - 7))
               # The first days forms a week in which the date is included.
               week_of_year = 1
             end
@@ -3017,7 +2172,6 @@ module Java::Util
     end
     
     typesig { [::Java::Long, ::Java::Long] }
-    # 
     # Returns the number of weeks in a period between fixedDay1 and
     # fixedDate. The getFirstDayOfWeek-getMinimalDaysInFirstWeek rule
     # is applied to calculate the number of weeks.
@@ -3042,7 +2196,6 @@ module Java::Util
     end
     
     typesig { [] }
-    # 
     # Converts calendar field values to the time value (millisecond
     # offset from the <a href="Calendar.html#Epoch">Epoch</a>).
     # 
@@ -3211,25 +2364,24 @@ module Java::Util
       self.attr_time = millis
       mask = compute_fields(field_mask | get_set_state_fields, tz_mask)
       if (!is_lenient)
-        field_ = 0
-        while field_ < FIELD_COUNT
-          if (!is_externally_set(field_))
-            ((field_ += 1) - 1)
+        field = 0
+        while field < FIELD_COUNT
+          if (!is_externally_set(field))
+            ((field += 1) - 1)
             next
           end
-          if (!(@original_fields[field_]).equal?(internal_get(field_)))
+          if (!(@original_fields[field]).equal?(internal_get(field)))
             # Restore the original field values
             System.arraycopy(@original_fields, 0, self.attr_fields, 0, self.attr_fields.attr_length)
-            raise IllegalArgumentException.new(get_field_name(field_))
+            raise IllegalArgumentException.new(get_field_name(field))
           end
-          ((field_ += 1) - 1)
+          ((field += 1) - 1)
         end
       end
       set_fields_normalized(mask)
     end
     
     typesig { [BaseCalendar, ::Java::Int, ::Java::Int] }
-    # 
     # Computes the fixed date under either the Gregorian or the
     # Julian calendar, using the given year and the specified calendar fields.
     # 
@@ -3330,26 +2482,25 @@ module Java::Util
           fixed_date += internal_get(DAY_OF_YEAR)
           ((fixed_date -= 1) + 1)
         else
-          first_day_of_week_ = cal.get_day_of_week_date_on_or_before(fixed_date + 6, get_first_day_of_week)
+          first_day_of_week = cal.get_day_of_week_date_on_or_before(fixed_date + 6, get_first_day_of_week)
           # If we have enough days in the first week, then move
           # to the previous week.
-          if ((first_day_of_week_ - fixed_date) >= get_minimal_days_in_first_week)
-            first_day_of_week_ -= 7
+          if ((first_day_of_week - fixed_date) >= get_minimal_days_in_first_week)
+            first_day_of_week -= 7
           end
           if (is_field_set(field_mask, DAY_OF_WEEK))
-            day_of_week_ = internal_get(DAY_OF_WEEK)
-            if (!(day_of_week_).equal?(get_first_day_of_week))
-              first_day_of_week_ = cal.get_day_of_week_date_on_or_before(first_day_of_week_ + 6, day_of_week_)
+            day_of_week = internal_get(DAY_OF_WEEK)
+            if (!(day_of_week).equal?(get_first_day_of_week))
+              first_day_of_week = cal.get_day_of_week_date_on_or_before(first_day_of_week + 6, day_of_week)
             end
           end
-          fixed_date = first_day_of_week_ + 7 * (internal_get(WEEK_OF_YEAR) - 1)
+          fixed_date = first_day_of_week + 7 * (internal_get(WEEK_OF_YEAR) - 1)
         end
       end
       return fixed_date
     end
     
     typesig { [] }
-    # 
     # Returns this object if it's normalized (all fields and time are
     # in sync). Otherwise, a cloned object is returned after calling
     # complete() in lenient mode.
@@ -3368,7 +2519,6 @@ module Java::Util
     
     class_module.module_eval {
       typesig { [] }
-      # 
       # Returns the Julian calendar system instance (singleton). 'jcal'
       # and 'jeras' are set upon the return.
       def get_julian_calendar_system
@@ -3383,7 +2533,6 @@ module Java::Util
     }
     
     typesig { [] }
-    # 
     # Returns the calendar system for dates before the cutover date
     # in the cutover year. If the cutover date is January 1, the
     # method returns Gregorian. Otherwise, Julian.
@@ -3396,7 +2545,6 @@ module Java::Util
     end
     
     typesig { [::Java::Int] }
-    # 
     # Determines if the specified year (normalized) is the Gregorian
     # cutover year. This object must have been normalized.
     def is_cutover_year(normalized_year)
@@ -3405,7 +2553,6 @@ module Java::Util
     end
     
     typesig { [BaseCalendar::Date, ::Java::Long] }
-    # 
     # Returns the fixed date of the first day of the year (usually
     # January 1) before the specified date.
     # 
@@ -3430,7 +2577,6 @@ module Java::Util
     end
     
     typesig { [BaseCalendar::Date, ::Java::Long] }
-    # 
     # Returns the fixed date of the first date of the month (usually
     # the 1st of the month) before the specified date.
     # 
@@ -3465,7 +2611,6 @@ module Java::Util
     end
     
     typesig { [::Java::Long] }
-    # 
     # Returns a CalendarDate produced from the specified fixed date.
     # 
     # @param fd the fixed date
@@ -3477,7 +2622,6 @@ module Java::Util
     end
     
     typesig { [] }
-    # 
     # Returns the Gregorian cutover date as a BaseCalendar.Date. The
     # date is a Gregorian date.
     def get_gregorian_cutover_date
@@ -3485,7 +2629,6 @@ module Java::Util
     end
     
     typesig { [] }
-    # 
     # Returns the day before the Gregorian cutover date as a
     # BaseCalendar.Date. The date is a Julian date.
     def get_last_julian_date
@@ -3493,7 +2636,6 @@ module Java::Util
     end
     
     typesig { [::Java::Int, ::Java::Int] }
-    # 
     # Returns the length of the specified month in the specified
     # year. The year number must be normalized.
     # 
@@ -3503,7 +2645,6 @@ module Java::Util
     end
     
     typesig { [::Java::Int] }
-    # 
     # Returns the length of the specified month in the year provided
     # by internalGet(YEAR).
     # 
@@ -3538,7 +2679,6 @@ module Java::Util
     end
     
     typesig { [::Java::Int] }
-    # 
     # Returns the length (in days) of the specified year. The year
     # must be normalized.
     def year_length(year)
@@ -3546,7 +2686,6 @@ module Java::Util
     end
     
     typesig { [] }
-    # 
     # Returns the length (in days) of the year provided by
     # internalGet(YEAR).
     def year_length
@@ -3558,7 +2697,6 @@ module Java::Util
     end
     
     typesig { [] }
-    # 
     # After adjustments such as add(MONTH), add(YEAR), we don't want the
     # month to jump around.  E.g., we don't want Jan 31 + 1 month to go to Mar
     # 3, we want it to go to Feb 28.  Adjustments which might run into this
@@ -3579,7 +2717,6 @@ module Java::Util
     end
     
     typesig { [] }
-    # 
     # Returns the fixed date value of this object. The time value and
     # calendar fields must be in synch.
     def get_current_fixed_date
@@ -3588,7 +2725,6 @@ module Java::Util
     
     class_module.module_eval {
       typesig { [::Java::Int, ::Java::Int, ::Java::Int, ::Java::Int] }
-      # 
       # Returns the new value after 'roll'ing the specified value and amount.
       def get_rolled_value(value, amount, min_, max_)
         raise AssertError if not (value >= min_ && value <= max_)
@@ -3608,7 +2744,6 @@ module Java::Util
     }
     
     typesig { [] }
-    # 
     # Returns the ERA.  We need a special method for this because the
     # default ERA is CE, but a zero (unset) ERA is BCE.
     def internal_get_era
@@ -3616,7 +2751,6 @@ module Java::Util
     end
     
     typesig { [ObjectInputStream] }
-    # 
     # Updates internal state.
     def read_object(stream)
       stream.default_read_object

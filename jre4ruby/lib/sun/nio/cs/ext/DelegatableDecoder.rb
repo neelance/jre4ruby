@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 2004 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -34,7 +33,6 @@ module Sun::Nio::Cs::Ext
     }
   end
   
-  # 
   # A decoder that can be delegated to by another decoder
   # when normal inheritance cannot be used.
   # Used by autodecting decoders.

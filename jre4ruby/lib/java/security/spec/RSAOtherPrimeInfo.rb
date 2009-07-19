@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 2001 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -32,7 +31,6 @@ module Java::Security::Spec
     }
   end
   
-  # 
   # This class represents the triplet (prime, exponent, and coefficient)
   # inside RSA's OtherPrimeInfo structure, as defined in the PKCS#1 v2.1.
   # The ASN.1 syntax of RSA's OtherPrimeInfo is as follows:
@@ -75,7 +73,6 @@ module Java::Security::Spec
     undef_method :crt_coefficient=
     
     typesig { [BigInteger, BigInteger, BigInteger] }
-    # 
     # Creates a new <code>RSAOtherPrimeInfo</code>
     # given the prime, primeExponent, and
     # crtCoefficient as defined in PKCS#1.
@@ -106,7 +103,6 @@ module Java::Security::Spec
     end
     
     typesig { [] }
-    # 
     # Returns the prime.
     # 
     # @return the prime.
@@ -115,7 +111,6 @@ module Java::Security::Spec
     end
     
     typesig { [] }
-    # 
     # Returns the prime's exponent.
     # 
     # @return the primeExponent.
@@ -124,7 +119,6 @@ module Java::Security::Spec
     end
     
     typesig { [] }
-    # 
     # Returns the prime's crtCoefficient.
     # 
     # @return the crtCoefficient.

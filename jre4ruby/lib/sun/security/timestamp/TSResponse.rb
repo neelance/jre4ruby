@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 2003-2004 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -41,7 +40,6 @@ module Sun::Security::Timestamp
     }
   end
   
-  # 
   # This class provides the response corresponding to a timestamp request,
   # as defined in
   # <a href="http://www.ietf.org/rfc/rfc3161.txt">RFC 3161</a>.
@@ -118,27 +116,22 @@ module Sun::Security::Timestamp
       const_set_lazy(:GRANTED) { 0 }
       const_attr_reader  :GRANTED
       
-      # 
       # The requested timestamp was granted with some modifications.
       const_set_lazy(:GRANTED_WITH_MODS) { 1 }
       const_attr_reader  :GRANTED_WITH_MODS
       
-      # 
       # The requested timestamp was not granted.
       const_set_lazy(:REJECTION) { 2 }
       const_attr_reader  :REJECTION
       
-      # 
       # The requested timestamp has not yet been processed.
       const_set_lazy(:WAITING) { 3 }
       const_attr_reader  :WAITING
       
-      # 
       # A warning that a certificate revocation is imminent.
       const_set_lazy(:REVOCATION_WARNING) { 4 }
       const_attr_reader  :REVOCATION_WARNING
       
-      # 
       # Notification that a certificate revocation has occurred.
       const_set_lazy(:REVOCATION_NOTIFICATION) { 5 }
       const_attr_reader  :REVOCATION_NOTIFICATION
@@ -149,38 +142,31 @@ module Sun::Security::Timestamp
       const_set_lazy(:BAD_ALG) { 0 }
       const_attr_reader  :BAD_ALG
       
-      # 
       # The requested transaction is not permitted or supported.
       const_set_lazy(:BAD_REQUEST) { 2 }
       const_attr_reader  :BAD_REQUEST
       
-      # 
       # The data submitted has the wrong format.
       const_set_lazy(:BAD_DATA_FORMAT) { 5 }
       const_attr_reader  :BAD_DATA_FORMAT
       
-      # 
       # The TSA's time source is not available.
       const_set_lazy(:TIME_NOT_AVAILABLE) { 14 }
       const_attr_reader  :TIME_NOT_AVAILABLE
       
-      # 
       # The requested TSA policy is not supported by the TSA.
       const_set_lazy(:UNACCEPTED_POLICY) { 15 }
       const_attr_reader  :UNACCEPTED_POLICY
       
-      # 
       # The requested extension is not supported by the TSA.
       const_set_lazy(:UNACCEPTED_EXTENSION) { 16 }
       const_attr_reader  :UNACCEPTED_EXTENSION
       
-      # 
       # The additional information requested could not be understood or is not
       # available.
       const_set_lazy(:ADD_INFO_NOT_AVAILABLE) { 17 }
       const_attr_reader  :ADD_INFO_NOT_AVAILABLE
       
-      # 
       # The request cannot be handled due to system failure.
       const_set_lazy(:SYSTEM_FAILURE) { 25 }
       const_attr_reader  :SYSTEM_FAILURE
@@ -220,7 +206,6 @@ module Sun::Security::Timestamp
     undef_method :ts_token=
     
     typesig { [Array.typed(::Java::Byte)] }
-    # 
     # Constructs an object to store the response to a timestamp request.
     # 
     # @param status A buffer containing the ASN.1 BER encoded response.
@@ -236,14 +221,12 @@ module Sun::Security::Timestamp
     end
     
     typesig { [] }
-    # 
     # Retrieve the status code returned by the TSA.
     def get_status_code
       return @status
     end
     
     typesig { [] }
-    # 
     # Retrieve the status messages returned by the TSA.
     # 
     # @return If null then no status messages were received.
@@ -252,7 +235,6 @@ module Sun::Security::Timestamp
     end
     
     typesig { [] }
-    # 
     # Retrieve the failure code returned by the TSA.
     # 
     # @return If -1 then no failure code was received.
@@ -308,7 +290,6 @@ module Sun::Security::Timestamp
     end
     
     typesig { [] }
-    # 
     # Retrieve the timestamp token returned by the TSA.
     # 
     # @return If null then no token was received.
@@ -317,7 +298,6 @@ module Sun::Security::Timestamp
     end
     
     typesig { [] }
-    # 
     # Retrieve the ASN.1 BER encoded timestamp token returned by the TSA.
     # 
     # @return If null then no token was received.
@@ -326,7 +306,6 @@ module Sun::Security::Timestamp
     end
     
     typesig { [Array.typed(::Java::Byte)] }
-    # 
     # Parses the timestamp response.
     # 
     # @param status A buffer containing the ASN.1 BER encoded response.

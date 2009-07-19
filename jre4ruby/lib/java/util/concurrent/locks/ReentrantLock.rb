@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
 # This code is free software; you can redistribute it and/or modify it
@@ -43,7 +42,6 @@ module Java::Util::Concurrent::Locks
     }
   end
   
-  # 
   # A reentrant mutual exclusion {@link Lock} with the same basic
   # behavior and semantics as the implicit monitor lock accessed using
   # {@code synchronized} methods and statements, but with extended
@@ -128,7 +126,6 @@ module Java::Util::Concurrent::Locks
     undef_method :sync=
     
     class_module.module_eval {
-      # 
       # Base of synchronization control for this lock. Subclassed
       # into fair and nonfair versions below. Uses AQS state to
       # represent the number of holds on the lock.
@@ -141,7 +138,6 @@ module Java::Util::Concurrent::Locks
         }
         
         typesig { [] }
-        # 
         # Performs {@link Lock#lock}. The main reason for subclassing
         # is to allow fast path for nonfair version.
         def lock
@@ -149,7 +145,6 @@ module Java::Util::Concurrent::Locks
         end
         
         typesig { [::Java::Int] }
-        # 
         # Performs non-fair tryLock.  tryAcquire is
         # implemented in subclasses, but both need nonfair
         # try for trylock method.
@@ -219,7 +214,6 @@ module Java::Util::Concurrent::Locks
         end
         
         typesig { [Java::Io::ObjectInputStream] }
-        # 
         # Reconstitutes this lock instance from a stream.
         # @param s the stream
         def read_object(s)
@@ -236,7 +230,6 @@ module Java::Util::Concurrent::Locks
         alias_method :initialize__sync, :initialize
       end }
       
-      # 
       # Sync object for non-fair locks
       const_set_lazy(:NonfairSync) { Class.new(Sync) do
         include_class_members ReentrantLock
@@ -247,7 +240,6 @@ module Java::Util::Concurrent::Locks
         }
         
         typesig { [] }
-        # 
         # Performs lock.  Try immediate barge, backing up to normal
         # acquire on failure.
         def lock
@@ -272,7 +264,6 @@ module Java::Util::Concurrent::Locks
         alias_method :initialize__nonfair_sync, :initialize
       end }
       
-      # 
       # Sync object for fair locks
       const_set_lazy(:FairSync) { Class.new(Sync) do
         include_class_members ReentrantLock
@@ -288,7 +279,6 @@ module Java::Util::Concurrent::Locks
         end
         
         typesig { [::Java::Int] }
-        # 
         # Fair version of tryAcquire.  Don't grant access unless
         # recursive call or no waiters or is first.
         def try_acquire(acquires)
@@ -323,7 +313,6 @@ module Java::Util::Concurrent::Locks
     }
     
     typesig { [] }
-    # 
     # Creates an instance of {@code ReentrantLock}.
     # This is equivalent to using {@code ReentrantLock(false)}.
     def initialize
@@ -332,7 +321,6 @@ module Java::Util::Concurrent::Locks
     end
     
     typesig { [::Java::Boolean] }
-    # 
     # Creates an instance of {@code ReentrantLock} with the
     # given fairness policy.
     # 
@@ -343,7 +331,6 @@ module Java::Util::Concurrent::Locks
     end
     
     typesig { [] }
-    # 
     # Acquires the lock.
     # 
     # <p>Acquires the lock if it is not held by another thread and returns
@@ -361,7 +348,6 @@ module Java::Util::Concurrent::Locks
     end
     
     typesig { [] }
-    # 
     # Acquires the lock unless the current thread is
     # {@linkplain Thread#interrupt interrupted}.
     # 
@@ -411,7 +397,6 @@ module Java::Util::Concurrent::Locks
     end
     
     typesig { [] }
-    # 
     # Acquires the lock only if it is not held by another thread at the time
     # of invocation.
     # 
@@ -441,7 +426,6 @@ module Java::Util::Concurrent::Locks
     end
     
     typesig { [::Java::Long, TimeUnit] }
-    # 
     # Acquires the lock if it is not held by another thread within the given
     # waiting time and the current thread has not been
     # {@linkplain Thread#interrupt interrupted}.
@@ -514,7 +498,6 @@ module Java::Util::Concurrent::Locks
     end
     
     typesig { [] }
-    # 
     # Attempts to release this lock.
     # 
     # <p>If the current thread is the holder of this lock then the hold
@@ -529,7 +512,6 @@ module Java::Util::Concurrent::Locks
     end
     
     typesig { [] }
-    # 
     # Returns a {@link Condition} instance for use with this
     # {@link Lock} instance.
     # 
@@ -572,7 +554,6 @@ module Java::Util::Concurrent::Locks
     end
     
     typesig { [] }
-    # 
     # Queries the number of holds on this lock by the current thread.
     # 
     # <p>A thread has a hold on a lock for each lock action that is not
@@ -606,7 +587,6 @@ module Java::Util::Concurrent::Locks
     end
     
     typesig { [] }
-    # 
     # Queries if this lock is held by the current thread.
     # 
     # <p>Analogous to the {@link Thread#holdsLock} method for built-in
@@ -653,7 +633,6 @@ module Java::Util::Concurrent::Locks
     end
     
     typesig { [] }
-    # 
     # Queries if this lock is held by any thread. This method is
     # designed for use in monitoring of the system state,
     # not for synchronization control.
@@ -665,7 +644,6 @@ module Java::Util::Concurrent::Locks
     end
     
     typesig { [] }
-    # 
     # Returns {@code true} if this lock has fairness set true.
     # 
     # @return {@code true} if this lock has fairness set true
@@ -674,7 +652,6 @@ module Java::Util::Concurrent::Locks
     end
     
     typesig { [] }
-    # 
     # Returns the thread that currently owns this lock, or
     # {@code null} if not owned. When this method is called by a
     # thread that is not the owner, the return value reflects a
@@ -691,7 +668,6 @@ module Java::Util::Concurrent::Locks
     end
     
     typesig { [] }
-    # 
     # Queries whether any threads are waiting to acquire this lock. Note that
     # because cancellations may occur at any time, a {@code true}
     # return does not guarantee that any other thread will ever
@@ -705,7 +681,6 @@ module Java::Util::Concurrent::Locks
     end
     
     typesig { [JavaThread] }
-    # 
     # Queries whether the given thread is waiting to acquire this
     # lock. Note that because cancellations may occur at any time, a
     # {@code true} return does not guarantee that this thread
@@ -720,7 +695,6 @@ module Java::Util::Concurrent::Locks
     end
     
     typesig { [] }
-    # 
     # Returns an estimate of the number of threads waiting to
     # acquire this lock.  The value is only an estimate because the number of
     # threads may change dynamically while this method traverses
@@ -734,7 +708,6 @@ module Java::Util::Concurrent::Locks
     end
     
     typesig { [] }
-    # 
     # Returns a collection containing threads that may be waiting to
     # acquire this lock.  Because the actual set of threads may change
     # dynamically while constructing this result, the returned
@@ -749,7 +722,6 @@ module Java::Util::Concurrent::Locks
     end
     
     typesig { [Condition] }
-    # 
     # Queries whether any threads are waiting on the given condition
     # associated with this lock. Note that because timeouts and
     # interrupts may occur at any time, a {@code true} return does
@@ -774,7 +746,6 @@ module Java::Util::Concurrent::Locks
     end
     
     typesig { [Condition] }
-    # 
     # Returns an estimate of the number of threads waiting on the
     # given condition associated with this lock. Note that because
     # timeouts and interrupts may occur at any time, the estimate
@@ -799,7 +770,6 @@ module Java::Util::Concurrent::Locks
     end
     
     typesig { [Condition] }
-    # 
     # Returns a collection containing those threads that may be
     # waiting on the given condition associated with this lock.
     # Because the actual set of threads may change dynamically while
@@ -826,7 +796,6 @@ module Java::Util::Concurrent::Locks
     end
     
     typesig { [] }
-    # 
     # Returns a string identifying this lock, as well as its lock state.
     # The state, in brackets, includes either the String {@code "Unlocked"}
     # or the String {@code "Locked by"} followed by the

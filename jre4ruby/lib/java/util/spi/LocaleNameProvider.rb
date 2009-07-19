@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 2005 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -32,7 +31,6 @@ module Java::Util::Spi
     }
   end
   
-  # 
   # An abstract class for service providers that
   # provide localized names for the
   # {@link java.util.Locale Locale} class.
@@ -42,7 +40,6 @@ module Java::Util::Spi
     include_class_members LocaleNameProviderImports
     
     typesig { [] }
-    # 
     # Sole constructor.  (For invocation by subclass constructors, typically
     # implicit.)
     def initialize
@@ -50,7 +47,6 @@ module Java::Util::Spi
     end
     
     typesig { [String, Locale] }
-    # 
     # Returns a localized name for the given ISO 639 language code and the
     # given locale that is appropriate for display to the user.
     # For example, if <code>languageCode</code> is "fr" and <code>locale</code>
@@ -76,7 +72,6 @@ module Java::Util::Spi
     end
     
     typesig { [String, Locale] }
-    # 
     # Returns a localized name for the given ISO 3166 country code and the
     # given locale that is appropriate for display to the user.
     # For example, if <code>countryCode</code> is "FR" and <code>locale</code>
@@ -102,7 +97,6 @@ module Java::Util::Spi
     end
     
     typesig { [String, Locale] }
-    # 
     # Returns a localized name for the given variant code and the given locale that
     # is appropriate for display to the user.
     # If the name returned cannot be localized according to <code>locale</code>,

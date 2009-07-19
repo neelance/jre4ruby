@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 1997 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -31,7 +30,6 @@ module Sun::Security::X509
     }
   end
   
-  # 
   # This class is used to parse attribute names like "x509.info.extensions".
   # 
   # @author Amit Kapoor
@@ -59,7 +57,6 @@ module Sun::Security::X509
     undef_method :suffix=
     
     typesig { [String] }
-    # 
     # Default constructor for the class. Name is of the form
     # "x509.info.extensions".
     # 
@@ -77,14 +74,12 @@ module Sun::Security::X509
     end
     
     typesig { [] }
-    # 
     # Return the prefix of the name.
     def get_prefix
       return (@prefix)
     end
     
     typesig { [] }
-    # 
     # Return the suffix of the name.
     def get_suffix
       return (@suffix)

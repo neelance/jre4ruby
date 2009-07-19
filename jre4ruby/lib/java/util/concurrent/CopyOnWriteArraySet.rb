@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
 # This code is free software; you can redistribute it and/or modify it
@@ -41,7 +40,6 @@ module Java::Util::Concurrent
     }
   end
   
-  # 
   # A {@link java.util.Set} that uses an internal {@link CopyOnWriteArrayList}
   # for all of its operations.  Thus, it shares the same basic properties:
   # <ul>
@@ -107,7 +105,6 @@ module Java::Util::Concurrent
     undef_method :al=
     
     typesig { [] }
-    # 
     # Creates an empty set.
     def initialize
       @al = nil
@@ -116,7 +113,6 @@ module Java::Util::Concurrent
     end
     
     typesig { [Collection] }
-    # 
     # Creates a set containing all of the elements of the specified
     # collection.
     # 
@@ -130,7 +126,6 @@ module Java::Util::Concurrent
     end
     
     typesig { [] }
-    # 
     # Returns the number of elements in this set.
     # 
     # @return the number of elements in this set
@@ -139,7 +134,6 @@ module Java::Util::Concurrent
     end
     
     typesig { [] }
-    # 
     # Returns <tt>true</tt> if this set contains no elements.
     # 
     # @return <tt>true</tt> if this set contains no elements
@@ -148,7 +142,6 @@ module Java::Util::Concurrent
     end
     
     typesig { [Object] }
-    # 
     # Returns <tt>true</tt> if this set contains the specified element.
     # More formally, returns <tt>true</tt> if and only if this set
     # contains an element <tt>e</tt> such that
@@ -161,7 +154,6 @@ module Java::Util::Concurrent
     end
     
     typesig { [] }
-    # 
     # Returns an array containing all of the elements in this set.
     # If this set makes any guarantees as to what order its elements
     # are returned by its iterator, this method must return the
@@ -181,7 +173,6 @@ module Java::Util::Concurrent
     end
     
     typesig { [Array.typed(T)] }
-    # 
     # Returns an array containing all of the elements in this set; the
     # runtime type of the returned array is that of the specified array.
     # If the set fits in the specified array, it is returned therein.
@@ -227,7 +218,6 @@ module Java::Util::Concurrent
     end
     
     typesig { [] }
-    # 
     # Removes all of the elements from this set.
     # The set will be empty after this call returns.
     def clear
@@ -235,7 +225,6 @@ module Java::Util::Concurrent
     end
     
     typesig { [Object] }
-    # 
     # Removes the specified element from this set if it is present.
     # More formally, removes an element <tt>e</tt> such that
     # <tt>(o==null&nbsp;?&nbsp;e==null&nbsp;:&nbsp;o.equals(e))</tt>,
@@ -251,7 +240,6 @@ module Java::Util::Concurrent
     end
     
     typesig { [Object] }
-    # 
     # Adds the specified element to this set if it is not already present.
     # More formally, adds the specified element <tt>e</tt> to this set if
     # the set contains no element <tt>e2</tt> such that
@@ -267,7 +255,6 @@ module Java::Util::Concurrent
     end
     
     typesig { [Collection] }
-    # 
     # Returns <tt>true</tt> if this set contains all of the elements of the
     # specified collection.  If the specified collection is also a set, this
     # method returns <tt>true</tt> if it is a <i>subset</i> of this set.
@@ -282,7 +269,6 @@ module Java::Util::Concurrent
     end
     
     typesig { [Collection] }
-    # 
     # Adds all of the elements in the specified collection to this set if
     # they're not already present.  If the specified collection is also a
     # set, the <tt>addAll</tt> operation effectively modifies this set so
@@ -299,7 +285,6 @@ module Java::Util::Concurrent
     end
     
     typesig { [Collection] }
-    # 
     # Removes from this set all of its elements that are contained in the
     # specified collection.  If the specified collection is also a set,
     # this operation effectively modifies this set so that its value is the
@@ -318,7 +303,6 @@ module Java::Util::Concurrent
     end
     
     typesig { [Collection] }
-    # 
     # Retains only the elements in this set that are contained in the
     # specified collection.  In other words, removes from this set all of
     # its elements that are not contained in the specified collection.  If
@@ -339,7 +323,6 @@ module Java::Util::Concurrent
     end
     
     typesig { [] }
-    # 
     # Returns an iterator over the elements contained in this set
     # in the order in which these elements were added.
     # 
@@ -354,7 +337,6 @@ module Java::Util::Concurrent
     end
     
     typesig { [Object] }
-    # 
     # Compares the specified object with this set for equality.
     # Returns {@code true} if the specified object is the same object
     # as this object, or if it is also a {@link Set} and the elements
@@ -401,14 +383,13 @@ module Java::Util::Concurrent
             (i += 1)
           end
           return false
-        end == :thrown or break
+        end
       end
       return (k).equal?(len)
     end
     
     class_module.module_eval {
       typesig { [Object, Object] }
-      # 
       # Test for equality, coping with nulls.
       def eq(o1, o2)
         return ((o1).nil? ? (o2).nil? : (o1 == o2))

@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 1997-2007 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -32,7 +31,6 @@ module Java::Util
     }
   end
   
-  # 
   # This class contains various methods for manipulating arrays (such as
   # sorting and searching).  This class also contains a static factory
   # that allows arrays to be viewed as lists.
@@ -81,7 +79,6 @@ module Java::Util
       end
       
       typesig { [Array.typed(::Java::Long), ::Java::Int, ::Java::Int] }
-      # 
       # Sorts the specified range of the specified array of longs into
       # ascending numerical order.  The range to be sorted extends from index
       # <tt>fromIndex</tt>, inclusive, to index <tt>toIndex</tt>, exclusive.
@@ -106,7 +103,6 @@ module Java::Util
       end
       
       typesig { [Array.typed(::Java::Int)] }
-      # 
       # Sorts the specified array of ints into ascending numerical order.
       # The sorting algorithm is a tuned quicksort, adapted from Jon
       # L. Bentley and M. Douglas McIlroy's "Engineering a Sort Function",
@@ -120,7 +116,6 @@ module Java::Util
       end
       
       typesig { [Array.typed(::Java::Int), ::Java::Int, ::Java::Int] }
-      # 
       # Sorts the specified range of the specified array of ints into
       # ascending numerical order.  The range to be sorted extends from index
       # <tt>fromIndex</tt>, inclusive, to index <tt>toIndex</tt>, exclusive.
@@ -145,7 +140,6 @@ module Java::Util
       end
       
       typesig { [Array.typed(::Java::Short)] }
-      # 
       # Sorts the specified array of shorts into ascending numerical order.
       # The sorting algorithm is a tuned quicksort, adapted from Jon
       # L. Bentley and M. Douglas McIlroy's "Engineering a Sort Function",
@@ -159,7 +153,6 @@ module Java::Util
       end
       
       typesig { [Array.typed(::Java::Short), ::Java::Int, ::Java::Int] }
-      # 
       # Sorts the specified range of the specified array of shorts into
       # ascending numerical order.  The range to be sorted extends from index
       # <tt>fromIndex</tt>, inclusive, to index <tt>toIndex</tt>, exclusive.
@@ -184,7 +177,6 @@ module Java::Util
       end
       
       typesig { [Array.typed(::Java::Char)] }
-      # 
       # Sorts the specified array of chars into ascending numerical order.
       # The sorting algorithm is a tuned quicksort, adapted from Jon
       # L. Bentley and M. Douglas McIlroy's "Engineering a Sort Function",
@@ -198,7 +190,6 @@ module Java::Util
       end
       
       typesig { [Array.typed(::Java::Char), ::Java::Int, ::Java::Int] }
-      # 
       # Sorts the specified range of the specified array of chars into
       # ascending numerical order.  The range to be sorted extends from index
       # <tt>fromIndex</tt>, inclusive, to index <tt>toIndex</tt>, exclusive.
@@ -223,7 +214,6 @@ module Java::Util
       end
       
       typesig { [Array.typed(::Java::Byte)] }
-      # 
       # Sorts the specified array of bytes into ascending numerical order.
       # The sorting algorithm is a tuned quicksort, adapted from Jon
       # L. Bentley and M. Douglas McIlroy's "Engineering a Sort Function",
@@ -237,7 +227,6 @@ module Java::Util
       end
       
       typesig { [Array.typed(::Java::Byte), ::Java::Int, ::Java::Int] }
-      # 
       # Sorts the specified range of the specified array of bytes into
       # ascending numerical order.  The range to be sorted extends from index
       # <tt>fromIndex</tt>, inclusive, to index <tt>toIndex</tt>, exclusive.
@@ -262,7 +251,6 @@ module Java::Util
       end
       
       typesig { [Array.typed(::Java::Double)] }
-      # 
       # Sorts the specified array of doubles into ascending numerical order.
       # <p>
       # The <code>&lt;</code> relation does not provide a total order on
@@ -291,7 +279,6 @@ module Java::Util
       end
       
       typesig { [Array.typed(::Java::Double), ::Java::Int, ::Java::Int] }
-      # 
       # Sorts the specified range of the specified array of doubles into
       # ascending numerical order.  The range to be sorted extends from index
       # <tt>fromIndex</tt>, inclusive, to index <tt>toIndex</tt>, exclusive.
@@ -330,7 +317,6 @@ module Java::Util
       end
       
       typesig { [Array.typed(::Java::Float)] }
-      # 
       # Sorts the specified array of floats into ascending numerical order.
       # <p>
       # The <code>&lt;</code> relation does not provide a total order on
@@ -359,7 +345,6 @@ module Java::Util
       end
       
       typesig { [Array.typed(::Java::Float), ::Java::Int, ::Java::Int] }
-      # 
       # Sorts the specified range of the specified array of floats into
       # ascending numerical order.  The range to be sorted extends from index
       # <tt>fromIndex</tt>, inclusive, to index <tt>toIndex</tt>, exclusive.
@@ -400,7 +385,6 @@ module Java::Util
       typesig { [Array.typed(::Java::Double), ::Java::Int, ::Java::Int] }
       def sort2(a, from_index, to_index)
         neg_zero_bits = Double.double_to_long_bits(-0.0)
-        # 
         # The sort is done in three phases to avoid the expense of using
         # NaN and -0.0 aware comparisons during the main sort.
         # 
@@ -441,7 +425,6 @@ module Java::Util
       typesig { [Array.typed(::Java::Float), ::Java::Int, ::Java::Int] }
       def sort2(a, from_index, to_index)
         neg_zero_bits = Float.float_to_int_bits(-0.0)
-        # 
         # The sort is done in three phases to avoid the expense of using
         # NaN and -0.0 aware comparisons during the main sort.
         # 
@@ -480,7 +463,6 @@ module Java::Util
       end
       
       typesig { [Array.typed(::Java::Long), ::Java::Int, ::Java::Int] }
-      # 
       # The code for each of the seven primitive types is largely identical.
       # C'est la vie.
       # 
@@ -539,23 +521,22 @@ module Java::Util
           swap(x, ((b += 1) - 1), ((c -= 1) + 1))
         end
         # Swap partition elements back to middle
-        s_ = 0
-        n_ = off + len
-        s_ = Math.min(a - off, b - a)
-        vecswap(x, off, b - s_, s_)
-        s_ = Math.min(d - c, n_ - d - 1)
-        vecswap(x, b, n_ - s_, s_)
+        s = 0
+        n = off + len
+        s = Math.min(a - off, b - a)
+        vecswap(x, off, b - s, s)
+        s = Math.min(d - c, n - d - 1)
+        vecswap(x, b, n - s, s)
         # Recursively sort non-partition-elements
-        if ((s_ = b - a) > 1)
-          sort1(x, off, s_)
+        if ((s = b - a) > 1)
+          sort1(x, off, s)
         end
-        if ((s_ = d - c) > 1)
-          sort1(x, n_ - s_, s_)
+        if ((s = d - c) > 1)
+          sort1(x, n - s, s)
         end
       end
       
       typesig { [Array.typed(::Java::Long), ::Java::Int, ::Java::Int] }
-      # 
       # Swaps x[a] with x[b].
       def swap(x, a, b)
         t = x[a]
@@ -564,7 +545,6 @@ module Java::Util
       end
       
       typesig { [Array.typed(::Java::Long), ::Java::Int, ::Java::Int, ::Java::Int] }
-      # 
       # Swaps x[a .. (a+n-1)] with x[b .. (b+n-1)].
       def vecswap(x, a, b, n)
         i = 0
@@ -577,14 +557,12 @@ module Java::Util
       end
       
       typesig { [Array.typed(::Java::Long), ::Java::Int, ::Java::Int, ::Java::Int] }
-      # 
       # Returns the index of the median of the three indexed longs.
       def med3(x, a, b, c)
         return (x[a] < x[b] ? (x[b] < x[c] ? b : x[a] < x[c] ? c : a) : (x[b] > x[c] ? b : x[a] > x[c] ? c : a))
       end
       
       typesig { [Array.typed(::Java::Int), ::Java::Int, ::Java::Int] }
-      # 
       # Sorts the specified sub-array of integers into ascending order.
       def sort1(x, off, len)
         # Insertion sort on smallest arrays
@@ -639,23 +617,22 @@ module Java::Util
           swap(x, ((b += 1) - 1), ((c -= 1) + 1))
         end
         # Swap partition elements back to middle
-        s_ = 0
-        n_ = off + len
-        s_ = Math.min(a - off, b - a)
-        vecswap(x, off, b - s_, s_)
-        s_ = Math.min(d - c, n_ - d - 1)
-        vecswap(x, b, n_ - s_, s_)
+        s = 0
+        n = off + len
+        s = Math.min(a - off, b - a)
+        vecswap(x, off, b - s, s)
+        s = Math.min(d - c, n - d - 1)
+        vecswap(x, b, n - s, s)
         # Recursively sort non-partition-elements
-        if ((s_ = b - a) > 1)
-          sort1(x, off, s_)
+        if ((s = b - a) > 1)
+          sort1(x, off, s)
         end
-        if ((s_ = d - c) > 1)
-          sort1(x, n_ - s_, s_)
+        if ((s = d - c) > 1)
+          sort1(x, n - s, s)
         end
       end
       
       typesig { [Array.typed(::Java::Int), ::Java::Int, ::Java::Int] }
-      # 
       # Swaps x[a] with x[b].
       def swap(x, a, b)
         t = x[a]
@@ -664,7 +641,6 @@ module Java::Util
       end
       
       typesig { [Array.typed(::Java::Int), ::Java::Int, ::Java::Int, ::Java::Int] }
-      # 
       # Swaps x[a .. (a+n-1)] with x[b .. (b+n-1)].
       def vecswap(x, a, b, n)
         i = 0
@@ -677,14 +653,12 @@ module Java::Util
       end
       
       typesig { [Array.typed(::Java::Int), ::Java::Int, ::Java::Int, ::Java::Int] }
-      # 
       # Returns the index of the median of the three indexed integers.
       def med3(x, a, b, c)
         return (x[a] < x[b] ? (x[b] < x[c] ? b : x[a] < x[c] ? c : a) : (x[b] > x[c] ? b : x[a] > x[c] ? c : a))
       end
       
       typesig { [Array.typed(::Java::Short), ::Java::Int, ::Java::Int] }
-      # 
       # Sorts the specified sub-array of shorts into ascending order.
       def sort1(x, off, len)
         # Insertion sort on smallest arrays
@@ -739,23 +713,22 @@ module Java::Util
           swap(x, ((b += 1) - 1), ((c -= 1) + 1))
         end
         # Swap partition elements back to middle
-        s_ = 0
-        n_ = off + len
-        s_ = Math.min(a - off, b - a)
-        vecswap(x, off, b - s_, s_)
-        s_ = Math.min(d - c, n_ - d - 1)
-        vecswap(x, b, n_ - s_, s_)
+        s = 0
+        n = off + len
+        s = Math.min(a - off, b - a)
+        vecswap(x, off, b - s, s)
+        s = Math.min(d - c, n - d - 1)
+        vecswap(x, b, n - s, s)
         # Recursively sort non-partition-elements
-        if ((s_ = b - a) > 1)
-          sort1(x, off, s_)
+        if ((s = b - a) > 1)
+          sort1(x, off, s)
         end
-        if ((s_ = d - c) > 1)
-          sort1(x, n_ - s_, s_)
+        if ((s = d - c) > 1)
+          sort1(x, n - s, s)
         end
       end
       
       typesig { [Array.typed(::Java::Short), ::Java::Int, ::Java::Int] }
-      # 
       # Swaps x[a] with x[b].
       def swap(x, a, b)
         t = x[a]
@@ -764,7 +737,6 @@ module Java::Util
       end
       
       typesig { [Array.typed(::Java::Short), ::Java::Int, ::Java::Int, ::Java::Int] }
-      # 
       # Swaps x[a .. (a+n-1)] with x[b .. (b+n-1)].
       def vecswap(x, a, b, n)
         i = 0
@@ -777,14 +749,12 @@ module Java::Util
       end
       
       typesig { [Array.typed(::Java::Short), ::Java::Int, ::Java::Int, ::Java::Int] }
-      # 
       # Returns the index of the median of the three indexed shorts.
       def med3(x, a, b, c)
         return (x[a] < x[b] ? (x[b] < x[c] ? b : x[a] < x[c] ? c : a) : (x[b] > x[c] ? b : x[a] > x[c] ? c : a))
       end
       
       typesig { [Array.typed(::Java::Char), ::Java::Int, ::Java::Int] }
-      # 
       # Sorts the specified sub-array of chars into ascending order.
       def sort1(x, off, len)
         # Insertion sort on smallest arrays
@@ -839,23 +809,22 @@ module Java::Util
           swap(x, ((b += 1) - 1), ((c -= 1) + 1))
         end
         # Swap partition elements back to middle
-        s_ = 0
-        n_ = off + len
-        s_ = Math.min(a - off, b - a)
-        vecswap(x, off, b - s_, s_)
-        s_ = Math.min(d - c, n_ - d - 1)
-        vecswap(x, b, n_ - s_, s_)
+        s = 0
+        n = off + len
+        s = Math.min(a - off, b - a)
+        vecswap(x, off, b - s, s)
+        s = Math.min(d - c, n - d - 1)
+        vecswap(x, b, n - s, s)
         # Recursively sort non-partition-elements
-        if ((s_ = b - a) > 1)
-          sort1(x, off, s_)
+        if ((s = b - a) > 1)
+          sort1(x, off, s)
         end
-        if ((s_ = d - c) > 1)
-          sort1(x, n_ - s_, s_)
+        if ((s = d - c) > 1)
+          sort1(x, n - s, s)
         end
       end
       
       typesig { [Array.typed(::Java::Char), ::Java::Int, ::Java::Int] }
-      # 
       # Swaps x[a] with x[b].
       def swap(x, a, b)
         t = x[a]
@@ -864,7 +833,6 @@ module Java::Util
       end
       
       typesig { [Array.typed(::Java::Char), ::Java::Int, ::Java::Int, ::Java::Int] }
-      # 
       # Swaps x[a .. (a+n-1)] with x[b .. (b+n-1)].
       def vecswap(x, a, b, n)
         i = 0
@@ -877,14 +845,12 @@ module Java::Util
       end
       
       typesig { [Array.typed(::Java::Char), ::Java::Int, ::Java::Int, ::Java::Int] }
-      # 
       # Returns the index of the median of the three indexed chars.
       def med3(x, a, b, c)
         return (x[a] < x[b] ? (x[b] < x[c] ? b : x[a] < x[c] ? c : a) : (x[b] > x[c] ? b : x[a] > x[c] ? c : a))
       end
       
       typesig { [Array.typed(::Java::Byte), ::Java::Int, ::Java::Int] }
-      # 
       # Sorts the specified sub-array of bytes into ascending order.
       def sort1(x, off, len)
         # Insertion sort on smallest arrays
@@ -939,23 +905,22 @@ module Java::Util
           swap(x, ((b += 1) - 1), ((c -= 1) + 1))
         end
         # Swap partition elements back to middle
-        s_ = 0
-        n_ = off + len
-        s_ = Math.min(a - off, b - a)
-        vecswap(x, off, b - s_, s_)
-        s_ = Math.min(d - c, n_ - d - 1)
-        vecswap(x, b, n_ - s_, s_)
+        s = 0
+        n = off + len
+        s = Math.min(a - off, b - a)
+        vecswap(x, off, b - s, s)
+        s = Math.min(d - c, n - d - 1)
+        vecswap(x, b, n - s, s)
         # Recursively sort non-partition-elements
-        if ((s_ = b - a) > 1)
-          sort1(x, off, s_)
+        if ((s = b - a) > 1)
+          sort1(x, off, s)
         end
-        if ((s_ = d - c) > 1)
-          sort1(x, n_ - s_, s_)
+        if ((s = d - c) > 1)
+          sort1(x, n - s, s)
         end
       end
       
       typesig { [Array.typed(::Java::Byte), ::Java::Int, ::Java::Int] }
-      # 
       # Swaps x[a] with x[b].
       def swap(x, a, b)
         t = x[a]
@@ -964,7 +929,6 @@ module Java::Util
       end
       
       typesig { [Array.typed(::Java::Byte), ::Java::Int, ::Java::Int, ::Java::Int] }
-      # 
       # Swaps x[a .. (a+n-1)] with x[b .. (b+n-1)].
       def vecswap(x, a, b, n)
         i = 0
@@ -977,14 +941,12 @@ module Java::Util
       end
       
       typesig { [Array.typed(::Java::Byte), ::Java::Int, ::Java::Int, ::Java::Int] }
-      # 
       # Returns the index of the median of the three indexed bytes.
       def med3(x, a, b, c)
         return (x[a] < x[b] ? (x[b] < x[c] ? b : x[a] < x[c] ? c : a) : (x[b] > x[c] ? b : x[a] > x[c] ? c : a))
       end
       
       typesig { [Array.typed(::Java::Double), ::Java::Int, ::Java::Int] }
-      # 
       # Sorts the specified sub-array of doubles into ascending order.
       def sort1(x, off, len)
         # Insertion sort on smallest arrays
@@ -1039,23 +1001,22 @@ module Java::Util
           swap(x, ((b += 1) - 1), ((c -= 1) + 1))
         end
         # Swap partition elements back to middle
-        s_ = 0
-        n_ = off + len
-        s_ = Math.min(a - off, b - a)
-        vecswap(x, off, b - s_, s_)
-        s_ = Math.min(d - c, n_ - d - 1)
-        vecswap(x, b, n_ - s_, s_)
+        s = 0
+        n = off + len
+        s = Math.min(a - off, b - a)
+        vecswap(x, off, b - s, s)
+        s = Math.min(d - c, n - d - 1)
+        vecswap(x, b, n - s, s)
         # Recursively sort non-partition-elements
-        if ((s_ = b - a) > 1)
-          sort1(x, off, s_)
+        if ((s = b - a) > 1)
+          sort1(x, off, s)
         end
-        if ((s_ = d - c) > 1)
-          sort1(x, n_ - s_, s_)
+        if ((s = d - c) > 1)
+          sort1(x, n - s, s)
         end
       end
       
       typesig { [Array.typed(::Java::Double), ::Java::Int, ::Java::Int] }
-      # 
       # Swaps x[a] with x[b].
       def swap(x, a, b)
         t = x[a]
@@ -1064,7 +1025,6 @@ module Java::Util
       end
       
       typesig { [Array.typed(::Java::Double), ::Java::Int, ::Java::Int, ::Java::Int] }
-      # 
       # Swaps x[a .. (a+n-1)] with x[b .. (b+n-1)].
       def vecswap(x, a, b, n)
         i = 0
@@ -1077,14 +1037,12 @@ module Java::Util
       end
       
       typesig { [Array.typed(::Java::Double), ::Java::Int, ::Java::Int, ::Java::Int] }
-      # 
       # Returns the index of the median of the three indexed doubles.
       def med3(x, a, b, c)
         return (x[a] < x[b] ? (x[b] < x[c] ? b : x[a] < x[c] ? c : a) : (x[b] > x[c] ? b : x[a] > x[c] ? c : a))
       end
       
       typesig { [Array.typed(::Java::Float), ::Java::Int, ::Java::Int] }
-      # 
       # Sorts the specified sub-array of floats into ascending order.
       def sort1(x, off, len)
         # Insertion sort on smallest arrays
@@ -1139,23 +1097,22 @@ module Java::Util
           swap(x, ((b += 1) - 1), ((c -= 1) + 1))
         end
         # Swap partition elements back to middle
-        s_ = 0
-        n_ = off + len
-        s_ = Math.min(a - off, b - a)
-        vecswap(x, off, b - s_, s_)
-        s_ = Math.min(d - c, n_ - d - 1)
-        vecswap(x, b, n_ - s_, s_)
+        s = 0
+        n = off + len
+        s = Math.min(a - off, b - a)
+        vecswap(x, off, b - s, s)
+        s = Math.min(d - c, n - d - 1)
+        vecswap(x, b, n - s, s)
         # Recursively sort non-partition-elements
-        if ((s_ = b - a) > 1)
-          sort1(x, off, s_)
+        if ((s = b - a) > 1)
+          sort1(x, off, s)
         end
-        if ((s_ = d - c) > 1)
-          sort1(x, n_ - s_, s_)
+        if ((s = d - c) > 1)
+          sort1(x, n - s, s)
         end
       end
       
       typesig { [Array.typed(::Java::Float), ::Java::Int, ::Java::Int] }
-      # 
       # Swaps x[a] with x[b].
       def swap(x, a, b)
         t = x[a]
@@ -1164,7 +1121,6 @@ module Java::Util
       end
       
       typesig { [Array.typed(::Java::Float), ::Java::Int, ::Java::Int, ::Java::Int] }
-      # 
       # Swaps x[a .. (a+n-1)] with x[b .. (b+n-1)].
       def vecswap(x, a, b, n)
         i = 0
@@ -1177,14 +1133,12 @@ module Java::Util
       end
       
       typesig { [Array.typed(::Java::Float), ::Java::Int, ::Java::Int, ::Java::Int] }
-      # 
       # Returns the index of the median of the three indexed floats.
       def med3(x, a, b, c)
         return (x[a] < x[b] ? (x[b] < x[c] ? b : x[a] < x[c] ? c : a) : (x[b] > x[c] ? b : x[a] > x[c] ? c : a))
       end
       
       typesig { [Array.typed(Object)] }
-      # 
       # Sorts the specified array of objects into ascending order, according to
       # the {@linkplain Comparable natural ordering}
       # of its elements.  All elements in the array
@@ -1210,7 +1164,6 @@ module Java::Util
       end
       
       typesig { [Array.typed(Object), ::Java::Int, ::Java::Int] }
-      # 
       # Sorts the specified range of the specified array of objects into
       # ascending order, according to the
       # {@linkplain Comparable natural ordering} of its
@@ -1247,14 +1200,12 @@ module Java::Util
         merge_sort(aux, a, from_index, to_index, -from_index)
       end
       
-      # 
       # Tuning parameter: list size at or below which insertion sort will be
       # used in preference to mergesort or quicksort.
       const_set_lazy(:INSERTIONSORT_THRESHOLD) { 7 }
       const_attr_reader  :INSERTIONSORT_THRESHOLD
       
       typesig { [Array.typed(Object), Array.typed(Object), ::Java::Int, ::Java::Int, ::Java::Int] }
-      # 
       # Src is the source array that starts at index 0
       # Dest is the (possibly larger) array destination with a possible offset
       # low is the index in dest to start sorting
@@ -1290,21 +1241,20 @@ module Java::Util
           return
         end
         # Merge sorted halves (now in src) into dest
-        i_ = dest_low
+        i = dest_low
         p = low
         q = mid
-        while i_ < dest_high
+        while i < dest_high
           if (q >= high || p < mid && ((src[p]) <=> src[q]) <= 0)
-            dest[i_] = src[((p += 1) - 1)]
+            dest[i] = src[((p += 1) - 1)]
           else
-            dest[i_] = src[((q += 1) - 1)]
+            dest[i] = src[((q += 1) - 1)]
           end
-          ((i_ += 1) - 1)
+          ((i += 1) - 1)
         end
       end
       
       typesig { [Array.typed(Object), ::Java::Int, ::Java::Int] }
-      # 
       # Swaps x[a] with x[b].
       def swap(x, a, b)
         t = x[a]
@@ -1313,7 +1263,6 @@ module Java::Util
       end
       
       typesig { [Array.typed(T), Comparator] }
-      # 
       # Sorts the specified array of objects according to the order induced by
       # the specified comparator.  All elements in the array must be
       # <i>mutually comparable</i> by the specified comparator (that is,
@@ -1344,7 +1293,6 @@ module Java::Util
       end
       
       typesig { [Array.typed(T), ::Java::Int, ::Java::Int, Comparator] }
-      # 
       # Sorts the specified range of the specified array of objects according
       # to the order induced by the specified comparator.  The range to be
       # sorted extends from index <tt>fromIndex</tt>, inclusive, to index
@@ -1385,7 +1333,6 @@ module Java::Util
       end
       
       typesig { [Array.typed(Object), Array.typed(Object), ::Java::Int, ::Java::Int, ::Java::Int, Comparator] }
-      # 
       # Src is the source array that starts at index 0
       # Dest is the (possibly larger) array destination with a possible offset
       # low is the index in dest to start sorting
@@ -1421,21 +1368,20 @@ module Java::Util
           return
         end
         # Merge sorted halves (now in src) into dest
-        i_ = dest_low
+        i = dest_low
         p = low
         q = mid
-        while i_ < dest_high
+        while i < dest_high
           if (q >= high || p < mid && c.compare(src[p], src[q]) <= 0)
-            dest[i_] = src[((p += 1) - 1)]
+            dest[i] = src[((p += 1) - 1)]
           else
-            dest[i_] = src[((q += 1) - 1)]
+            dest[i] = src[((q += 1) - 1)]
           end
-          ((i_ += 1) - 1)
+          ((i += 1) - 1)
         end
       end
       
       typesig { [::Java::Int, ::Java::Int, ::Java::Int] }
-      # 
       # Check that fromIndex and toIndex are in range, and throw an
       # appropriate exception if they aren't.
       def range_check(array_len, from_index, to_index)
@@ -1475,7 +1421,6 @@ module Java::Util
       end
       
       typesig { [Array.typed(::Java::Long), ::Java::Int, ::Java::Int, ::Java::Long] }
-      # 
       # Searches a range of
       # the specified array of longs for the specified value using the
       # binary search algorithm.
@@ -1533,7 +1478,6 @@ module Java::Util
       end
       
       typesig { [Array.typed(::Java::Int), ::Java::Int] }
-      # 
       # Searches the specified array of ints for the specified value using the
       # binary search algorithm.  The array must be sorted (as
       # by the {@link #sort(int[])} method) prior to making this call.  If it
@@ -1556,7 +1500,6 @@ module Java::Util
       end
       
       typesig { [Array.typed(::Java::Int), ::Java::Int, ::Java::Int, ::Java::Int] }
-      # 
       # Searches a range of
       # the specified array of ints for the specified value using the
       # binary search algorithm.
@@ -1614,7 +1557,6 @@ module Java::Util
       end
       
       typesig { [Array.typed(::Java::Short), ::Java::Short] }
-      # 
       # Searches the specified array of shorts for the specified value using
       # the binary search algorithm.  The array must be sorted
       # (as by the {@link #sort(short[])} method) prior to making this call.  If
@@ -1637,7 +1579,6 @@ module Java::Util
       end
       
       typesig { [Array.typed(::Java::Short), ::Java::Int, ::Java::Int, ::Java::Short] }
-      # 
       # Searches a range of
       # the specified array of shorts for the specified value using
       # the binary search algorithm.
@@ -1695,7 +1636,6 @@ module Java::Util
       end
       
       typesig { [Array.typed(::Java::Char), ::Java::Char] }
-      # 
       # Searches the specified array of chars for the specified value using the
       # binary search algorithm.  The array must be sorted (as
       # by the {@link #sort(char[])} method) prior to making this call.  If it
@@ -1718,7 +1658,6 @@ module Java::Util
       end
       
       typesig { [Array.typed(::Java::Char), ::Java::Int, ::Java::Int, ::Java::Char] }
-      # 
       # Searches a range of
       # the specified array of chars for the specified value using the
       # binary search algorithm.
@@ -1776,7 +1715,6 @@ module Java::Util
       end
       
       typesig { [Array.typed(::Java::Byte), ::Java::Byte] }
-      # 
       # Searches the specified array of bytes for the specified value using the
       # binary search algorithm.  The array must be sorted (as
       # by the {@link #sort(byte[])} method) prior to making this call.  If it
@@ -1799,7 +1737,6 @@ module Java::Util
       end
       
       typesig { [Array.typed(::Java::Byte), ::Java::Int, ::Java::Int, ::Java::Byte] }
-      # 
       # Searches a range of
       # the specified array of bytes for the specified value using the
       # binary search algorithm.
@@ -1857,7 +1794,6 @@ module Java::Util
       end
       
       typesig { [Array.typed(::Java::Double), ::Java::Double] }
-      # 
       # Searches the specified array of doubles for the specified value using
       # the binary search algorithm.  The array must be sorted
       # (as by the {@link #sort(double[])} method) prior to making this call.
@@ -1881,7 +1817,6 @@ module Java::Util
       end
       
       typesig { [Array.typed(::Java::Double), ::Java::Int, ::Java::Int, ::Java::Double] }
-      # 
       # Searches a range of
       # the specified array of doubles for the specified value using
       # the binary search algorithm.
@@ -1956,7 +1891,6 @@ module Java::Util
       end
       
       typesig { [Array.typed(::Java::Float), ::Java::Float] }
-      # 
       # Searches the specified array of floats for the specified value using
       # the binary search algorithm.  The array must be sorted
       # (as by the {@link #sort(float[])} method) prior to making this call.  If
@@ -1980,7 +1914,6 @@ module Java::Util
       end
       
       typesig { [Array.typed(::Java::Float), ::Java::Int, ::Java::Int, ::Java::Float] }
-      # 
       # Searches a range of
       # the specified array of floats for the specified value using
       # the binary search algorithm.
@@ -2055,7 +1988,6 @@ module Java::Util
       end
       
       typesig { [Array.typed(Object), Object] }
-      # 
       # Searches the specified array for the specified object using the binary
       # search algorithm.  The array must be sorted into ascending order
       # according to the
@@ -2087,7 +2019,6 @@ module Java::Util
       end
       
       typesig { [Array.typed(Object), ::Java::Int, ::Java::Int, Object] }
-      # 
       # Searches a range of
       # the specified array for the specified object using the binary
       # search algorithm.
@@ -2154,7 +2085,6 @@ module Java::Util
       end
       
       typesig { [Array.typed(T), T, Comparator] }
-      # 
       # Searches the specified array for the specified object using the binary
       # search algorithm.  The array must be sorted into ascending order
       # according to the specified comparator (as by the
@@ -2187,7 +2117,6 @@ module Java::Util
       end
       
       typesig { [Array.typed(T), ::Java::Int, ::Java::Int, T, Comparator] }
-      # 
       # Searches a range of
       # the specified array for the specified object using the binary
       # search algorithm.
@@ -2292,7 +2221,6 @@ module Java::Util
       end
       
       typesig { [Array.typed(::Java::Int), Array.typed(::Java::Int)] }
-      # 
       # Returns <tt>true</tt> if the two specified arrays of ints are
       # <i>equal</i> to one another.  Two arrays are considered equal if both
       # arrays contain the same number of elements, and all corresponding pairs
@@ -2325,7 +2253,6 @@ module Java::Util
       end
       
       typesig { [Array.typed(::Java::Short), Array.typed(::Java::Short)] }
-      # 
       # Returns <tt>true</tt> if the two specified arrays of shorts are
       # <i>equal</i> to one another.  Two arrays are considered equal if both
       # arrays contain the same number of elements, and all corresponding pairs
@@ -2358,7 +2285,6 @@ module Java::Util
       end
       
       typesig { [Array.typed(::Java::Char), Array.typed(::Java::Char)] }
-      # 
       # Returns <tt>true</tt> if the two specified arrays of chars are
       # <i>equal</i> to one another.  Two arrays are considered equal if both
       # arrays contain the same number of elements, and all corresponding pairs
@@ -2391,7 +2317,6 @@ module Java::Util
       end
       
       typesig { [Array.typed(::Java::Byte), Array.typed(::Java::Byte)] }
-      # 
       # Returns <tt>true</tt> if the two specified arrays of bytes are
       # <i>equal</i> to one another.  Two arrays are considered equal if both
       # arrays contain the same number of elements, and all corresponding pairs
@@ -2424,7 +2349,6 @@ module Java::Util
       end
       
       typesig { [Array.typed(::Java::Boolean), Array.typed(::Java::Boolean)] }
-      # 
       # Returns <tt>true</tt> if the two specified arrays of booleans are
       # <i>equal</i> to one another.  Two arrays are considered equal if both
       # arrays contain the same number of elements, and all corresponding pairs
@@ -2457,7 +2381,6 @@ module Java::Util
       end
       
       typesig { [Array.typed(::Java::Double), Array.typed(::Java::Double)] }
-      # 
       # Returns <tt>true</tt> if the two specified arrays of doubles are
       # <i>equal</i> to one another.  Two arrays are considered equal if both
       # arrays contain the same number of elements, and all corresponding pairs
@@ -2496,7 +2419,6 @@ module Java::Util
       end
       
       typesig { [Array.typed(::Java::Float), Array.typed(::Java::Float)] }
-      # 
       # Returns <tt>true</tt> if the two specified arrays of floats are
       # <i>equal</i> to one another.  Two arrays are considered equal if both
       # arrays contain the same number of elements, and all corresponding pairs
@@ -2535,7 +2457,6 @@ module Java::Util
       end
       
       typesig { [Array.typed(Object), Array.typed(Object)] }
-      # 
       # Returns <tt>true</tt> if the two specified arrays of Objects are
       # <i>equal</i> to one another.  The two arrays are considered equal if
       # both arrays contain the same number of elements, and all corresponding
@@ -2589,7 +2510,6 @@ module Java::Util
       end
       
       typesig { [Array.typed(::Java::Long), ::Java::Int, ::Java::Int, ::Java::Long] }
-      # 
       # Assigns the specified long value to each element of the specified
       # range of the specified array of longs.  The range to be filled
       # extends from index <tt>fromIndex</tt>, inclusive, to index
@@ -2615,7 +2535,6 @@ module Java::Util
       end
       
       typesig { [Array.typed(::Java::Int), ::Java::Int] }
-      # 
       # Assigns the specified int value to each element of the specified array
       # of ints.
       # 
@@ -2631,7 +2550,6 @@ module Java::Util
       end
       
       typesig { [Array.typed(::Java::Int), ::Java::Int, ::Java::Int, ::Java::Int] }
-      # 
       # Assigns the specified int value to each element of the specified
       # range of the specified array of ints.  The range to be filled
       # extends from index <tt>fromIndex</tt>, inclusive, to index
@@ -2657,7 +2575,6 @@ module Java::Util
       end
       
       typesig { [Array.typed(::Java::Short), ::Java::Short] }
-      # 
       # Assigns the specified short value to each element of the specified array
       # of shorts.
       # 
@@ -2673,7 +2590,6 @@ module Java::Util
       end
       
       typesig { [Array.typed(::Java::Short), ::Java::Int, ::Java::Int, ::Java::Short] }
-      # 
       # Assigns the specified short value to each element of the specified
       # range of the specified array of shorts.  The range to be filled
       # extends from index <tt>fromIndex</tt>, inclusive, to index
@@ -2699,7 +2615,6 @@ module Java::Util
       end
       
       typesig { [Array.typed(::Java::Char), ::Java::Char] }
-      # 
       # Assigns the specified char value to each element of the specified array
       # of chars.
       # 
@@ -2715,7 +2630,6 @@ module Java::Util
       end
       
       typesig { [Array.typed(::Java::Char), ::Java::Int, ::Java::Int, ::Java::Char] }
-      # 
       # Assigns the specified char value to each element of the specified
       # range of the specified array of chars.  The range to be filled
       # extends from index <tt>fromIndex</tt>, inclusive, to index
@@ -2741,7 +2655,6 @@ module Java::Util
       end
       
       typesig { [Array.typed(::Java::Byte), ::Java::Byte] }
-      # 
       # Assigns the specified byte value to each element of the specified array
       # of bytes.
       # 
@@ -2757,7 +2670,6 @@ module Java::Util
       end
       
       typesig { [Array.typed(::Java::Byte), ::Java::Int, ::Java::Int, ::Java::Byte] }
-      # 
       # Assigns the specified byte value to each element of the specified
       # range of the specified array of bytes.  The range to be filled
       # extends from index <tt>fromIndex</tt>, inclusive, to index
@@ -2783,7 +2695,6 @@ module Java::Util
       end
       
       typesig { [Array.typed(::Java::Boolean), ::Java::Boolean] }
-      # 
       # Assigns the specified boolean value to each element of the specified
       # array of booleans.
       # 
@@ -2799,7 +2710,6 @@ module Java::Util
       end
       
       typesig { [Array.typed(::Java::Boolean), ::Java::Int, ::Java::Int, ::Java::Boolean] }
-      # 
       # Assigns the specified boolean value to each element of the specified
       # range of the specified array of booleans.  The range to be filled
       # extends from index <tt>fromIndex</tt>, inclusive, to index
@@ -2825,7 +2735,6 @@ module Java::Util
       end
       
       typesig { [Array.typed(::Java::Double), ::Java::Double] }
-      # 
       # Assigns the specified double value to each element of the specified
       # array of doubles.
       # 
@@ -2841,7 +2750,6 @@ module Java::Util
       end
       
       typesig { [Array.typed(::Java::Double), ::Java::Int, ::Java::Int, ::Java::Double] }
-      # 
       # Assigns the specified double value to each element of the specified
       # range of the specified array of doubles.  The range to be filled
       # extends from index <tt>fromIndex</tt>, inclusive, to index
@@ -2867,7 +2775,6 @@ module Java::Util
       end
       
       typesig { [Array.typed(::Java::Float), ::Java::Float] }
-      # 
       # Assigns the specified float value to each element of the specified array
       # of floats.
       # 
@@ -2883,7 +2790,6 @@ module Java::Util
       end
       
       typesig { [Array.typed(::Java::Float), ::Java::Int, ::Java::Int, ::Java::Float] }
-      # 
       # Assigns the specified float value to each element of the specified
       # range of the specified array of floats.  The range to be filled
       # extends from index <tt>fromIndex</tt>, inclusive, to index
@@ -2909,7 +2815,6 @@ module Java::Util
       end
       
       typesig { [Array.typed(Object), Object] }
-      # 
       # Assigns the specified Object reference to each element of the specified
       # array of Objects.
       # 
@@ -2927,7 +2832,6 @@ module Java::Util
       end
       
       typesig { [Array.typed(Object), ::Java::Int, ::Java::Int, Object] }
-      # 
       # Assigns the specified Object reference to each element of the specified
       # range of the specified array of Objects.  The range to be filled
       # extends from index <tt>fromIndex</tt>, inclusive, to index
@@ -2978,7 +2882,6 @@ module Java::Util
       end
       
       typesig { [Array.typed(U), ::Java::Int, Class] }
-      # 
       # Copies the specified array, truncating or padding with nulls (if necessary)
       # so the copy has the specified length.  For all indices that are
       # valid in both the original array and the copy, the two arrays will
@@ -3006,7 +2909,6 @@ module Java::Util
       end
       
       typesig { [Array.typed(::Java::Byte), ::Java::Int] }
-      # 
       # Copies the specified array, truncating or padding with zeros (if necessary)
       # so the copy has the specified length.  For all indices that are
       # valid in both the original array and the copy, the two arrays will
@@ -3029,7 +2931,6 @@ module Java::Util
       end
       
       typesig { [Array.typed(::Java::Short), ::Java::Int] }
-      # 
       # Copies the specified array, truncating or padding with zeros (if necessary)
       # so the copy has the specified length.  For all indices that are
       # valid in both the original array and the copy, the two arrays will
@@ -3052,7 +2953,6 @@ module Java::Util
       end
       
       typesig { [Array.typed(::Java::Int), ::Java::Int] }
-      # 
       # Copies the specified array, truncating or padding with zeros (if necessary)
       # so the copy has the specified length.  For all indices that are
       # valid in both the original array and the copy, the two arrays will
@@ -3075,7 +2975,6 @@ module Java::Util
       end
       
       typesig { [Array.typed(::Java::Long), ::Java::Int] }
-      # 
       # Copies the specified array, truncating or padding with zeros (if necessary)
       # so the copy has the specified length.  For all indices that are
       # valid in both the original array and the copy, the two arrays will
@@ -3098,7 +2997,6 @@ module Java::Util
       end
       
       typesig { [Array.typed(::Java::Char), ::Java::Int] }
-      # 
       # Copies the specified array, truncating or padding with null characters (if necessary)
       # so the copy has the specified length.  For all indices that are valid
       # in both the original array and the copy, the two arrays will contain
@@ -3121,7 +3019,6 @@ module Java::Util
       end
       
       typesig { [Array.typed(::Java::Float), ::Java::Int] }
-      # 
       # Copies the specified array, truncating or padding with zeros (if necessary)
       # so the copy has the specified length.  For all indices that are
       # valid in both the original array and the copy, the two arrays will
@@ -3144,7 +3041,6 @@ module Java::Util
       end
       
       typesig { [Array.typed(::Java::Double), ::Java::Int] }
-      # 
       # Copies the specified array, truncating or padding with zeros (if necessary)
       # so the copy has the specified length.  For all indices that are
       # valid in both the original array and the copy, the two arrays will
@@ -3167,7 +3063,6 @@ module Java::Util
       end
       
       typesig { [Array.typed(::Java::Boolean), ::Java::Int] }
-      # 
       # Copies the specified array, truncating or padding with <tt>false</tt> (if necessary)
       # so the copy has the specified length.  For all indices that are
       # valid in both the original array and the copy, the two arrays will
@@ -3190,7 +3085,6 @@ module Java::Util
       end
       
       typesig { [Array.typed(T), ::Java::Int, ::Java::Int] }
-      # 
       # Copies the specified range of the specified array into a new array.
       # The initial index of the range (<tt>from</tt>) must lie between zero
       # and <tt>original.length</tt>, inclusive.  The value at
@@ -3222,7 +3116,6 @@ module Java::Util
       end
       
       typesig { [Array.typed(U), ::Java::Int, ::Java::Int, Class] }
-      # 
       # Copies the specified range of the specified array into a new array.
       # The initial index of the range (<tt>from</tt>) must lie between zero
       # and <tt>original.length</tt>, inclusive.  The value at
@@ -3263,7 +3156,6 @@ module Java::Util
       end
       
       typesig { [Array.typed(::Java::Byte), ::Java::Int, ::Java::Int] }
-      # 
       # Copies the specified range of the specified array into a new array.
       # The initial index of the range (<tt>from</tt>) must lie between zero
       # and <tt>original.length</tt>, inclusive.  The value at
@@ -3299,7 +3191,6 @@ module Java::Util
       end
       
       typesig { [Array.typed(::Java::Short), ::Java::Int, ::Java::Int] }
-      # 
       # Copies the specified range of the specified array into a new array.
       # The initial index of the range (<tt>from</tt>) must lie between zero
       # and <tt>original.length</tt>, inclusive.  The value at
@@ -3335,7 +3226,6 @@ module Java::Util
       end
       
       typesig { [Array.typed(::Java::Int), ::Java::Int, ::Java::Int] }
-      # 
       # Copies the specified range of the specified array into a new array.
       # The initial index of the range (<tt>from</tt>) must lie between zero
       # and <tt>original.length</tt>, inclusive.  The value at
@@ -3371,7 +3261,6 @@ module Java::Util
       end
       
       typesig { [Array.typed(::Java::Long), ::Java::Int, ::Java::Int] }
-      # 
       # Copies the specified range of the specified array into a new array.
       # The initial index of the range (<tt>from</tt>) must lie between zero
       # and <tt>original.length</tt>, inclusive.  The value at
@@ -3407,7 +3296,6 @@ module Java::Util
       end
       
       typesig { [Array.typed(::Java::Char), ::Java::Int, ::Java::Int] }
-      # 
       # Copies the specified range of the specified array into a new array.
       # The initial index of the range (<tt>from</tt>) must lie between zero
       # and <tt>original.length</tt>, inclusive.  The value at
@@ -3443,7 +3331,6 @@ module Java::Util
       end
       
       typesig { [Array.typed(::Java::Float), ::Java::Int, ::Java::Int] }
-      # 
       # Copies the specified range of the specified array into a new array.
       # The initial index of the range (<tt>from</tt>) must lie between zero
       # and <tt>original.length</tt>, inclusive.  The value at
@@ -3479,7 +3366,6 @@ module Java::Util
       end
       
       typesig { [Array.typed(::Java::Double), ::Java::Int, ::Java::Int] }
-      # 
       # Copies the specified range of the specified array into a new array.
       # The initial index of the range (<tt>from</tt>) must lie between zero
       # and <tt>original.length</tt>, inclusive.  The value at
@@ -3515,7 +3401,6 @@ module Java::Util
       end
       
       typesig { [Array.typed(::Java::Boolean), ::Java::Int, ::Java::Int] }
-      # 
       # Copies the specified range of the specified array into a new array.
       # The initial index of the range (<tt>from</tt>) must lie between zero
       # and <tt>original.length</tt>, inclusive.  The value at
@@ -3571,7 +3456,6 @@ module Java::Util
         return ArrayList.new(a)
       end
       
-      # 
       # @serial include
       const_set_lazy(:ArrayList) { Class.new(AbstractList) do
         include_class_members Arrays
@@ -3645,12 +3529,12 @@ module Java::Util
               ((i += 1) - 1)
             end
           else
-            i_ = 0
-            while i_ < @a.attr_length
-              if ((o == @a[i_]))
-                return i_
+            i = 0
+            while i < @a.attr_length
+              if ((o == @a[i]))
+                return i
               end
-              ((i_ += 1) - 1)
+              ((i += 1) - 1)
             end
           end
           return -1
@@ -3666,7 +3550,6 @@ module Java::Util
       end }
       
       typesig { [Array.typed(::Java::Long)] }
-      # 
       # Returns a hash code based on the contents of the specified array.
       # For any two <tt>long</tt> arrays <tt>a</tt> and <tt>b</tt>
       # such that <tt>Arrays.equals(a, b)</tt>, it is also the case that
@@ -3694,7 +3577,6 @@ module Java::Util
       end
       
       typesig { [Array.typed(::Java::Int)] }
-      # 
       # Returns a hash code based on the contents of the specified array.
       # For any two non-null <tt>int</tt> arrays <tt>a</tt> and <tt>b</tt>
       # such that <tt>Arrays.equals(a, b)</tt>, it is also the case that
@@ -3721,7 +3603,6 @@ module Java::Util
       end
       
       typesig { [Array.typed(::Java::Short)] }
-      # 
       # Returns a hash code based on the contents of the specified array.
       # For any two <tt>short</tt> arrays <tt>a</tt> and <tt>b</tt>
       # such that <tt>Arrays.equals(a, b)</tt>, it is also the case that
@@ -3748,7 +3629,6 @@ module Java::Util
       end
       
       typesig { [Array.typed(::Java::Char)] }
-      # 
       # Returns a hash code based on the contents of the specified array.
       # For any two <tt>char</tt> arrays <tt>a</tt> and <tt>b</tt>
       # such that <tt>Arrays.equals(a, b)</tt>, it is also the case that
@@ -3775,7 +3655,6 @@ module Java::Util
       end
       
       typesig { [Array.typed(::Java::Byte)] }
-      # 
       # Returns a hash code based on the contents of the specified array.
       # For any two <tt>byte</tt> arrays <tt>a</tt> and <tt>b</tt>
       # such that <tt>Arrays.equals(a, b)</tt>, it is also the case that
@@ -3802,7 +3681,6 @@ module Java::Util
       end
       
       typesig { [Array.typed(::Java::Boolean)] }
-      # 
       # Returns a hash code based on the contents of the specified array.
       # For any two <tt>boolean</tt> arrays <tt>a</tt> and <tt>b</tt>
       # such that <tt>Arrays.equals(a, b)</tt>, it is also the case that
@@ -3829,7 +3707,6 @@ module Java::Util
       end
       
       typesig { [Array.typed(::Java::Float)] }
-      # 
       # Returns a hash code based on the contents of the specified array.
       # For any two <tt>float</tt> arrays <tt>a</tt> and <tt>b</tt>
       # such that <tt>Arrays.equals(a, b)</tt>, it is also the case that
@@ -3856,7 +3733,6 @@ module Java::Util
       end
       
       typesig { [Array.typed(::Java::Double)] }
-      # 
       # Returns a hash code based on the contents of the specified array.
       # For any two <tt>double</tt> arrays <tt>a</tt> and <tt>b</tt>
       # such that <tt>Arrays.equals(a, b)</tt>, it is also the case that
@@ -3884,7 +3760,6 @@ module Java::Util
       end
       
       typesig { [Array.typed(Object)] }
-      # 
       # Returns a hash code based on the contents of the specified array.  If
       # the array contains other arrays as elements, the hash code is based on
       # their identities rather than their contents.  It is therefore
@@ -3916,7 +3791,6 @@ module Java::Util
       end
       
       typesig { [Array.typed(Object)] }
-      # 
       # Returns a hash code based on the "deep contents" of the specified
       # array.  If the array contains other arrays as elements, the
       # hash code is based on their contents and so on, ad infinitum.
@@ -3996,7 +3870,6 @@ module Java::Util
       end
       
       typesig { [Array.typed(Object), Array.typed(Object)] }
-      # 
       # Returns <tt>true</tt> if the two specified arrays are <i>deeply
       # equal</i> to one another.  Unlike the {@link #equals(Object[],Object[])}
       # method, this method is appropriate for use with nested arrays of
@@ -4099,7 +3972,6 @@ module Java::Util
       end
       
       typesig { [Array.typed(::Java::Long)] }
-      # 
       # Returns a string representation of the contents of the specified array.
       # The string representation consists of a list of the array's elements,
       # enclosed in square brackets (<tt>"[]"</tt>).  Adjacent elements are
@@ -4133,7 +4005,6 @@ module Java::Util
       end
       
       typesig { [Array.typed(::Java::Int)] }
-      # 
       # Returns a string representation of the contents of the specified array.
       # The string representation consists of a list of the array's elements,
       # enclosed in square brackets (<tt>"[]"</tt>).  Adjacent elements are
@@ -4167,7 +4038,6 @@ module Java::Util
       end
       
       typesig { [Array.typed(::Java::Short)] }
-      # 
       # Returns a string representation of the contents of the specified array.
       # The string representation consists of a list of the array's elements,
       # enclosed in square brackets (<tt>"[]"</tt>).  Adjacent elements are
@@ -4201,7 +4071,6 @@ module Java::Util
       end
       
       typesig { [Array.typed(::Java::Char)] }
-      # 
       # Returns a string representation of the contents of the specified array.
       # The string representation consists of a list of the array's elements,
       # enclosed in square brackets (<tt>"[]"</tt>).  Adjacent elements are
@@ -4235,7 +4104,6 @@ module Java::Util
       end
       
       typesig { [Array.typed(::Java::Byte)] }
-      # 
       # Returns a string representation of the contents of the specified array.
       # The string representation consists of a list of the array's elements,
       # enclosed in square brackets (<tt>"[]"</tt>).  Adjacent elements
@@ -4269,7 +4137,6 @@ module Java::Util
       end
       
       typesig { [Array.typed(::Java::Boolean)] }
-      # 
       # Returns a string representation of the contents of the specified array.
       # The string representation consists of a list of the array's elements,
       # enclosed in square brackets (<tt>"[]"</tt>).  Adjacent elements are
@@ -4303,7 +4170,6 @@ module Java::Util
       end
       
       typesig { [Array.typed(::Java::Float)] }
-      # 
       # Returns a string representation of the contents of the specified array.
       # The string representation consists of a list of the array's elements,
       # enclosed in square brackets (<tt>"[]"</tt>).  Adjacent elements are
@@ -4337,7 +4203,6 @@ module Java::Util
       end
       
       typesig { [Array.typed(::Java::Double)] }
-      # 
       # Returns a string representation of the contents of the specified array.
       # The string representation consists of a list of the array's elements,
       # enclosed in square brackets (<tt>"[]"</tt>).  Adjacent elements are
@@ -4371,7 +4236,6 @@ module Java::Util
       end
       
       typesig { [Array.typed(Object)] }
-      # 
       # Returns a string representation of the contents of the specified array.
       # If the array contains other arrays as elements, they are converted to
       # strings by the {@link Object#toString} method inherited from
@@ -4408,7 +4272,6 @@ module Java::Util
       end
       
       typesig { [Array.typed(Object)] }
-      # 
       # Returns a string representation of the "deep contents" of the specified
       # array.  If the array contains other arrays as elements, the string
       # representation contains their contents and so on.  This method is

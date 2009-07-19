@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 2003-2007 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -39,7 +38,6 @@ module Sun::Security::Ssl
     }
   end
   
-  # 
   # This is the Kerberos premaster secret in the Kerberos client key
   # exchange message (CLIENT --> SERVER); it holds the
   # Kerberos-encrypted pre-master secret. The secret is encrypted using the
@@ -70,7 +68,6 @@ module Sun::Security::Ssl
     undef_method :encrypted=
     
     typesig { [ProtocolVersion, SecureRandom, EncryptionKey] }
-    # 
     # Constructor used by client to generate premaster secret.
     # 
     # Client randomly creates a pre-master secret and encrypts it
@@ -99,7 +96,6 @@ module Sun::Security::Ssl
     end
     
     typesig { [ProtocolVersion, ProtocolVersion, SecureRandom, HandshakeInStream, EncryptionKey] }
-    # 
     # Constructor used by server to decrypt encrypted premaster secret.
     # The protocol version in preMaster[0,1] must match either currentVersion
     # or clientVersion, otherwise, the premaster secret is set to
@@ -155,7 +151,6 @@ module Sun::Security::Ssl
       # the second case, which is why we cannot use object references
       # equality in this special case
       version_mismatch = (!(@protocol_version).equal?(current_version)) && (!(@protocol_version.attr_v).equal?(client_version.attr_v))
-      # 
       # Bogus decrypted ClientKeyExchange? If so, conjure a
       # a random preMaster secret that will fail later during
       # Finished message processing. This is a countermeasure against
@@ -177,7 +172,6 @@ module Sun::Security::Ssl
     end
     
     typesig { [ProtocolVersion, SecureRandom] }
-    # 
     # Used by server to generate premaster secret in case of
     # problem decoding ticket.
     # 

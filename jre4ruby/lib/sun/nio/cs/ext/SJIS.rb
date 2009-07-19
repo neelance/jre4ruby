@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 2002-2006 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -187,7 +186,6 @@ module Sun::Nio::Cs::Ext
             # the only invalid JIS value in our table.
             return 0
           end
-          # 
           # This algorithm for converting from JIS to SJIS comes from
           # Ken Lunde's "Understanding Japanese Information Processing",
           # pg 163.

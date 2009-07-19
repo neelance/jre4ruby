@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 1995-1997 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -30,7 +29,6 @@ module Java::Lang
     }
   end
   
-  # 
   # Thrown to indicate that an index of some sort (such as to an array, to a
   # string, or to a vector) is out of range.
   # <p>
@@ -42,7 +40,6 @@ module Java::Lang
     include_class_members IndexOutOfBoundsExceptionImports
     
     typesig { [] }
-    # 
     # Constructs an <code>IndexOutOfBoundsException</code> with no
     # detail message.
     def initialize
@@ -50,7 +47,6 @@ module Java::Lang
     end
     
     typesig { [String] }
-    # 
     # Constructs an <code>IndexOutOfBoundsException</code> with the
     # specified detail message.
     # 

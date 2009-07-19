@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 2006 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -76,7 +75,6 @@ module Sun::Net::Httpserver
     end
     
     typesig { [HttpExchange, Filter::Chain] }
-    # 
     # The filter's implementation, which is invoked by the server
     def do_filter(t, chain)
       if (!(@authenticator).nil?)

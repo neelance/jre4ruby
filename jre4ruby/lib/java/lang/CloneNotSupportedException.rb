@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 1995-1997 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -30,7 +29,6 @@ module Java::Lang
     }
   end
   
-  # 
   # Thrown to indicate that the <code>clone</code> method in class
   # <code>Object</code> has been called to clone an object, but that
   # the object's class does not implement the <code>Cloneable</code>
@@ -48,7 +46,6 @@ module Java::Lang
     include_class_members CloneNotSupportedExceptionImports
     
     typesig { [] }
-    # 
     # Constructs a <code>CloneNotSupportedException</code> with no
     # detail message.
     def initialize
@@ -56,7 +53,6 @@ module Java::Lang
     end
     
     typesig { [String] }
-    # 
     # Constructs a <code>CloneNotSupportedException</code> with the
     # specified detail message.
     # 

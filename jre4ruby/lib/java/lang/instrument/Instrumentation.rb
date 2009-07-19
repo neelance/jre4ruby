@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 2003-2006 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -34,7 +33,6 @@ module Java::Lang::Instrument
     }
   end
   
-  # 
   # Copyright 2003 Wily Technology, Inc.
   # 
   # 
@@ -73,7 +71,6 @@ module Java::Lang::Instrument
     include_class_members InstrumentationImports
     
     typesig { [ClassFileTransformer, ::Java::Boolean] }
-    # 
     # Registers the supplied transformer. All future class definitions
     # will be seen by the transformer, except definitions of classes upon which any
     # registered transformer is dependent.
@@ -104,7 +101,6 @@ module Java::Lang::Instrument
     end
     
     typesig { [ClassFileTransformer] }
-    # 
     # Registers the supplied transformer.
     # <P>
     # Same as <code>addTransformer(transformer, false)</code>.
@@ -117,7 +113,6 @@ module Java::Lang::Instrument
     end
     
     typesig { [ClassFileTransformer] }
-    # 
     # Unregisters the supplied transformer. Future class definitions will
     # not be shown to the transformer. Removes the most-recently-added matching
     # instance of the transformer. Due to the multi-threaded nature of
@@ -134,7 +129,6 @@ module Java::Lang::Instrument
     end
     
     typesig { [] }
-    # 
     # Returns whether or not the current JVM configuration supports retransformation
     # of classes.
     # The ability to retransform an already loaded class is an optional capability
@@ -155,7 +149,6 @@ module Java::Lang::Instrument
     end
     
     typesig { [Class] }
-    # 
     # Retransform the supplied set of classes.
     # 
     # <P>
@@ -268,7 +261,6 @@ module Java::Lang::Instrument
     end
     
     typesig { [] }
-    # 
     # Returns whether or not the current JVM configuration supports redefinition
     # of classes.
     # The ability to redefine an already loaded class is an optional capability
@@ -288,7 +280,6 @@ module Java::Lang::Instrument
     end
     
     typesig { [ClassDefinition] }
-    # 
     # Redefine the supplied set of classes using the supplied class files.
     # 
     # <P>
@@ -357,7 +348,6 @@ module Java::Lang::Instrument
     end
     
     typesig { [Class] }
-    # 
     # Determines whether a class is modifiable by
     # {@linkplain #retransformClasses retransformation}
     # or {@linkplain #redefineClasses redefinition}.
@@ -386,7 +376,6 @@ module Java::Lang::Instrument
     end
     
     typesig { [] }
-    # 
     # Returns an array of all classes currently loaded by the JVM.
     # 
     # @return an array containing all the classes loaded by the JVM, zero-length if there are none
@@ -395,7 +384,6 @@ module Java::Lang::Instrument
     end
     
     typesig { [ClassLoader] }
-    # 
     # Returns an array of all classes for which <code>loader</code> is an initiating loader.
     # If the supplied loader is <code>null</code>, classes initiated by the bootstrap class
     # loader are returned.
@@ -408,7 +396,6 @@ module Java::Lang::Instrument
     end
     
     typesig { [Object] }
-    # 
     # Returns an implementation-specific approximation of the amount of storage consumed by
     # the specified object. The result may include some or all of the object's overhead,
     # and thus is useful for comparison within an implementation but not between implementations.
@@ -423,7 +410,6 @@ module Java::Lang::Instrument
     end
     
     typesig { [JarFile] }
-    # 
     # Specifies a JAR file with instrumentation classes to be defined by the
     # bootstrap class loader.
     # 
@@ -474,7 +460,6 @@ module Java::Lang::Instrument
     end
     
     typesig { [JarFile] }
-    # 
     # Specifies a JAR file with instrumentation classes to be defined by the
     # system class loader.
     # 
@@ -534,7 +519,6 @@ module Java::Lang::Instrument
     end
     
     typesig { [] }
-    # 
     # Returns whether the current JVM configuration supports
     # {@linkplain #setNativeMethodPrefix(ClassFileTransformer,String)
     # setting a native method prefix}.
@@ -556,7 +540,6 @@ module Java::Lang::Instrument
     end
     
     typesig { [ClassFileTransformer, String] }
-    # 
     # This method modifies the failure handling of
     # native method resolution by allowing retry
     # with a prefix applied to the name.

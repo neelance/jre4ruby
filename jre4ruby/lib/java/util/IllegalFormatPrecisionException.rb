@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 2003 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -31,7 +30,6 @@ module Java::Util
     }
   end
   
-  # 
   # Unchecked exception thrown when the precision is a negative value other than
   # <tt>-1</tt>, the conversion does not support a precision, or the value is
   # otherwise unsupported.
@@ -52,7 +50,6 @@ module Java::Util
     undef_method :p=
     
     typesig { [::Java::Int] }
-    # 
     # Constructs an instance of this class with the specified precision.
     # 
     # @param  p
@@ -64,7 +61,6 @@ module Java::Util
     end
     
     typesig { [] }
-    # 
     # Returns the precision
     # 
     # @return  The precision

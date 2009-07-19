@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 2003 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -32,7 +31,6 @@ module Java::Io
     }
   end
   
-  # 
   # A <tt>Closeable</tt> is a source or destination of data that can be closed.
   # The close method is invoked to release resources that the object is
   # holding (such as open files).
@@ -42,7 +40,6 @@ module Java::Io
     include_class_members CloseableImports
     
     typesig { [] }
-    # 
     # Closes this stream and releases any system resources associated
     # with it. If the stream is already closed then invoking this
     # method has no effect.

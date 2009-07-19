@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 1996-2004 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -47,7 +46,6 @@ module Sun::Security::Pkcs
     }
   end
   
-  # 
   # Holds a PKCS#8 key, for example a private key
   # 
   # @author Dave Brownell
@@ -90,7 +88,6 @@ module Sun::Security::Pkcs
     }
     
     typesig { [] }
-    # 
     # Default constructor.  The key constructed must have its key
     # and algorithm initialized before it may be used, for example
     # by using <code>decode</code>.
@@ -101,7 +98,6 @@ module Sun::Security::Pkcs
     end
     
     typesig { [AlgorithmId, Array.typed(::Java::Byte)] }
-    # 
     # Build and initialize as a "default" key.  All PKCS#8 key
     # data is stored and transmitted losslessly, but no knowledge
     # about this particular algorithm is available.
@@ -116,7 +112,6 @@ module Sun::Security::Pkcs
     
     class_module.module_eval {
       typesig { [DerValue] }
-      # 
       # Binary backwards compatibility. New uses should call parseKey().
       def parse(in_)
         key = nil
@@ -128,7 +123,6 @@ module Sun::Security::Pkcs
       end
       
       typesig { [DerValue] }
-      # 
       # Construct PKCS#8 subject public key from a DER value.  If
       # the runtime environment is configured with a specific class for
       # this kind of key, a subclass is returned.  Otherwise, a generic
@@ -165,7 +159,6 @@ module Sun::Security::Pkcs
     }
     
     typesig { [] }
-    # 
     # Parse the key bits.  This may be redefined by subclasses to take
     # advantage of structure within the key.  For example, RSA public
     # keys encapsulate two unsigned integers (modulus and exponent) as
@@ -184,12 +177,10 @@ module Sun::Security::Pkcs
     
     class_module.module_eval {
       typesig { [AlgorithmId, Array.typed(::Java::Byte)] }
-      # 
       # Factory interface, building the kind of key associated with this
       # specific algorithm ID or else returning this generic base class.
       # See the description above.
       def build_pkcs8key(algid, key)
-        # 
         # Use the algid and key parameters to produce the ASN.1 encoding
         # of the key, which will then be used as the input to the
         # key factory.
@@ -206,7 +197,6 @@ module Sun::Security::Pkcs
         rescue InvalidKeySpecException => e
           # Return generic PKCS8Key with opaque key data (see below)
         end
-        # 
         # Try again using JDK1.1-style for backwards compatibility.
         classname = ""
         begin
@@ -256,28 +246,24 @@ module Sun::Security::Pkcs
     }
     
     typesig { [] }
-    # 
     # Returns the algorithm to be used with this key.
     def get_algorithm
       return @algid.get_name
     end
     
     typesig { [] }
-    # 
     # Returns the algorithm ID to be used with this key.
     def get_algorithm_id
       return @algid
     end
     
     typesig { [DerOutputStream] }
-    # 
     # PKCS#8 sequence on the DER output stream.
     def encode(out)
       encode(out, @algid, @key)
     end
     
     typesig { [] }
-    # 
     # Returns the DER-encoded form of the key as a byte array.
     def get_encoded
       synchronized(self) do
@@ -291,14 +277,12 @@ module Sun::Security::Pkcs
     end
     
     typesig { [] }
-    # 
     # Returns the format for this key: "PKCS#8"
     def get_format
       return "PKCS#8"
     end
     
     typesig { [] }
-    # 
     # Returns the DER-encoded form of the key as a byte array.
     # 
     # @exception InvalidKeyException if an encoding error occurs.
@@ -317,7 +301,6 @@ module Sun::Security::Pkcs
     end
     
     typesig { [] }
-    # 
     # Returns a printable representation of the key
     def to_s
       encoder = HexDumpEncoder.new
@@ -325,7 +308,6 @@ module Sun::Security::Pkcs
     end
     
     typesig { [InputStream] }
-    # 
     # Initialize an PKCS8Key object from an input stream.  The data
     # on that input stream must be encoded using DER, obeying the
     # PKCS#8 format: a sequence consisting of a version, an algorithm
@@ -374,7 +356,6 @@ module Sun::Security::Pkcs
     end
     
     typesig { [ObjectInputStream] }
-    # 
     # Serialization read ... PKCS#8 keys serialize as
     # themselves, and they're parsed when they get read back.
     def read_object(stream)
@@ -388,7 +369,6 @@ module Sun::Security::Pkcs
     
     class_module.module_eval {
       typesig { [DerOutputStream, AlgorithmId, Array.typed(::Java::Byte)] }
-      # 
       # Produce PKCS#8 encoding from algorithm id and key material.
       def encode(out, algid, key)
         tmp = DerOutputStream.new
@@ -400,7 +380,6 @@ module Sun::Security::Pkcs
     }
     
     typesig { [Object] }
-    # 
     # Compares two private keys. This returns false if the object with which
     # to compare is not of type <code>Key</code>.
     # Otherwise, the encoding of this key object is compared with the
@@ -441,7 +420,6 @@ module Sun::Security::Pkcs
     end
     
     typesig { [] }
-    # 
     # Calculates a hash code value for this object. Objects
     # which are equal will also have the same hashcode.
     def hash_code

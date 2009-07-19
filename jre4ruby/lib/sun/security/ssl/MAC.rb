@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 1996-2007 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -37,7 +36,6 @@ module Sun::Security::Ssl
     }
   end
   
-  # 
   # This class computes the "Message Authentication Code" (MAC) for each
   # SSL message.  This is essentially a shared-secret signature, used to
   # provide integrity protection for SSL messages.  The MAC is actually
@@ -122,7 +120,6 @@ module Sun::Security::Ssl
     end
     
     typesig { [MacAlg, ProtocolVersion, SecretKey] }
-    # 
     # Set up, configured for the given SSL/TLS MAC type and version.
     def initialize(mac_alg, protocol_version, key)
       @mac_alg = nil
@@ -154,14 +151,12 @@ module Sun::Security::Ssl
     end
     
     typesig { [] }
-    # 
     # Returns the length of the MAC.
     def _maclen
       return @mac_size
     end
     
     typesig { [::Java::Byte, Array.typed(::Java::Byte), ::Java::Int, ::Java::Int] }
-    # 
     # Computes and returns the MAC for the data in this byte array.
     # 
     # @param type record type
@@ -173,7 +168,6 @@ module Sun::Security::Ssl
     end
     
     typesig { [::Java::Byte, ByteBuffer] }
-    # 
     # Compute and returns the MAC for the remaining data
     # in this ByteBuffer.
     # 
@@ -198,7 +192,6 @@ module Sun::Security::Ssl
     end
     
     typesig { [::Java::Byte, ByteBuffer, Array.typed(::Java::Byte), ::Java::Int, ::Java::Int] }
-    # 
     # Compute based on either buffer type, either bb.position/limit
     # or buf/offset/len.
     def compute(type, bb, buf, offset, len)

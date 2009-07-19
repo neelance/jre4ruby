@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Portions Copyright 2003-2006 Sun Microsystems, Inc.  All Rights Reserved.
 # 
 # Copyright  (c) 2002 Graz University of Technology. All rights reserved.
@@ -53,7 +52,6 @@ module Sun::Security::Pkcs11::Wrapper
     }
   end
   
-  # 
   # class CK_ATTRIBUTE includes the type, value and length of an attribute.<p>
   # <B>PKCS#11 structure:</B>
   # <PRE>
@@ -209,7 +207,6 @@ module Sun::Security::Pkcs11::Wrapper
       return (@p_value).long_value
     end
     
-    # 
     # <B>PKCS#11:</B>
     # <PRE>
     # CK_ATTRIBUTE_TYPE type;
@@ -220,7 +217,6 @@ module Sun::Security::Pkcs11::Wrapper
     alias_method :attr_type=, :type=
     undef_method :type=
     
-    # 
     # <B>PKCS#11:</B>
     # <PRE>
     # CK_VOID_PTR pValue;
@@ -233,7 +229,6 @@ module Sun::Security::Pkcs11::Wrapper
     undef_method :p_value=
     
     typesig { [] }
-    # 
     # Returns the string representation of CK_ATTRIBUTE.
     # 
     # @return the string representation of CK_ATTRIBUTE

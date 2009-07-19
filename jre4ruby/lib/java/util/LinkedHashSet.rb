@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 2000-2006 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -31,7 +30,6 @@ module Java::Util
     }
   end
   
-  # 
   # <p>Hash table and linked list implementation of the <tt>Set</tt> interface,
   # with predictable iteration order.  This implementation differs from
   # <tt>HashSet</tt> in that it maintains a doubly-linked list running through
@@ -131,7 +129,6 @@ module Java::Util
     }
     
     typesig { [::Java::Int, ::Java::Float] }
-    # 
     # Constructs a new, empty linked hash set with the specified initial
     # capacity and load factor.
     # 
@@ -144,7 +141,6 @@ module Java::Util
     end
     
     typesig { [::Java::Int] }
-    # 
     # Constructs a new, empty linked hash set with the specified initial
     # capacity and the default load factor (0.75).
     # 
@@ -156,7 +152,6 @@ module Java::Util
     end
     
     typesig { [] }
-    # 
     # Constructs a new, empty linked hash set with the default initial
     # capacity (16) and load factor (0.75).
     def initialize
@@ -164,7 +159,6 @@ module Java::Util
     end
     
     typesig { [Collection] }
-    # 
     # Constructs a new linked hash set with the same elements as the
     # specified collection.  The linked hash set is created with an initial
     # capacity sufficient to hold the elements in the specified collection

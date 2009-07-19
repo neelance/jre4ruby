@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 2005 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -32,7 +31,6 @@ module Sun::Reflect::Misc
     }
   end
   
-  # 
   # Create a trampoline class.
   class FieldUtil 
     include_class_members FieldUtilImports

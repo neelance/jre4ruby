@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 1997-2006 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -35,7 +34,6 @@ module Java::Security
     }
   end
   
-  # 
   # This class extends ClassLoader with additional support for defining
   # classes with an associated code source and permissions which are
   # retrieved by the system policy by default.
@@ -45,7 +43,6 @@ module Java::Security
   class SecureClassLoader < SecureClassLoaderImports.const_get :ClassLoader
     include_class_members SecureClassLoaderImports
     
-    # 
     # If initialization succeed this is set to true and security checks will
     # succeed. Otherwise the object is not initialized and the object is
     # useless.
@@ -68,7 +65,6 @@ module Java::Security
     }
     
     typesig { [ClassLoader] }
-    # 
     # Creates a new SecureClassLoader using the specified parent
     # class loader for delegation.
     # 
@@ -96,7 +92,6 @@ module Java::Security
     end
     
     typesig { [] }
-    # 
     # Creates a new SecureClassLoader using the default parent class
     # loader for delegation.
     # 
@@ -123,7 +118,6 @@ module Java::Security
     end
     
     typesig { [String, Array.typed(::Java::Byte), ::Java::Int, ::Java::Int, CodeSource] }
-    # 
     # Converts an array of bytes into an instance of class Class,
     # with an optional CodeSource. Before the
     # class can be used it must be resolved.
@@ -163,7 +157,6 @@ module Java::Security
     end
     
     typesig { [String, Java::Nio::ByteBuffer, CodeSource] }
-    # 
     # Converts a {@link java.nio.ByteBuffer <tt>ByteBuffer</tt>}
     # into an instance of class <tt>Class</tt>, with an optional CodeSource.
     # Before the class can be used it must be resolved.
@@ -198,7 +191,6 @@ module Java::Security
     end
     
     typesig { [CodeSource] }
-    # 
     # Returns the permissions for the given CodeSource object.
     # <p>
     # This method is invoked by the defineClass method which takes
@@ -214,7 +206,6 @@ module Java::Security
     end
     
     typesig { [CodeSource] }
-    # 
     # Returned cached ProtectionDomain for the specified CodeSource.
     def get_protection_domain(cs)
       if ((cs).nil?)
@@ -239,7 +230,6 @@ module Java::Security
     end
     
     typesig { [] }
-    # 
     # Check to make sure the class loader has been initialized.
     def check
       if (!@initialized)

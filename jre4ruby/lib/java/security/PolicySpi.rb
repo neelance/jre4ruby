@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 2005 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -31,7 +30,6 @@ module Java::Security
     }
   end
   
-  # 
   # This class defines the <i>Service Provider Interface</i> (<b>SPI</b>)
   # for the <code>Policy</code> class.
   # All the abstract methods in this class must be implemented by each
@@ -49,7 +47,6 @@ module Java::Security
     include_class_members PolicySpiImports
     
     typesig { [ProtectionDomain, Permission] }
-    # 
     # Check whether the policy has granted a Permission to a ProtectionDomain.
     # 
     # @param domain the ProtectionDomain to check.
@@ -63,7 +60,6 @@ module Java::Security
     end
     
     typesig { [] }
-    # 
     # Refreshes/reloads the policy configuration. The behavior of this method
     # depends on the implementation. For example, calling <code>refresh</code>
     # on a file-based policy will cause the file to be re-read.
@@ -75,7 +71,6 @@ module Java::Security
     end
     
     typesig { [CodeSource] }
-    # 
     # Return a PermissionCollection object containing the set of
     # permissions granted to the specified CodeSource.
     # 
@@ -98,7 +93,6 @@ module Java::Security
     end
     
     typesig { [ProtectionDomain] }
-    # 
     # Return a PermissionCollection object containing the set of
     # permissions granted to the specified ProtectionDomain.
     # 

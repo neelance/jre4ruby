@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 2005-2006 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -37,7 +36,6 @@ module Sun::Net::Httpserver
     }
   end
   
-  # 
   # encapsulates all the connection specific state for a HTTP/S connection
   # one of these is hung from the selector attachment and is used to locate
   # everything from that.
@@ -213,19 +211,19 @@ module Sun::Net::Httpserver
             @rawout.close
           end
         rescue IOException => e
-          ServerImpl.dprint(e_)
+          ServerImpl.dprint(e)
         end
         begin
           if (!(@ssl_streams).nil?)
             @ssl_streams.close
           end
         rescue IOException => e
-          ServerImpl.dprint(e__)
+          ServerImpl.dprint(e)
         end
         begin
           @chan.close
         rescue IOException => e
-          ServerImpl.dprint(e___)
+          ServerImpl.dprint(e)
         end
       end
     end

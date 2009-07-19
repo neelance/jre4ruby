@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
 # This code is free software; you can redistribute it and/or modify it
@@ -42,7 +41,6 @@ module Java::Util::Concurrent
     }
   end
   
-  # 
   # An unbounded {@linkplain BlockingQueue blocking queue} of
   # <tt>Delayed</tt> elements, in which an element can only be taken
   # when its delay has expired.  The <em>head</em> of the queue is that
@@ -90,7 +88,6 @@ module Java::Util::Concurrent
     undef_method :q=
     
     typesig { [] }
-    # 
     # Creates a new <tt>DelayQueue</tt> that is initially empty.
     def initialize
       @lock = nil
@@ -103,7 +100,6 @@ module Java::Util::Concurrent
     end
     
     typesig { [Collection] }
-    # 
     # Creates a <tt>DelayQueue</tt> initially containing the elements of the
     # given collection of {@link Delayed} instances.
     # 
@@ -122,7 +118,6 @@ module Java::Util::Concurrent
     end
     
     typesig { [Object] }
-    # 
     # Inserts the specified element into this delay queue.
     # 
     # @param e the element to add
@@ -133,7 +128,6 @@ module Java::Util::Concurrent
     end
     
     typesig { [Object] }
-    # 
     # Inserts the specified element into this delay queue.
     # 
     # @param e the element to add
@@ -155,7 +149,6 @@ module Java::Util::Concurrent
     end
     
     typesig { [Object] }
-    # 
     # Inserts the specified element into this delay queue. As the queue is
     # unbounded this method will never block.
     # 
@@ -166,7 +159,6 @@ module Java::Util::Concurrent
     end
     
     typesig { [Object, ::Java::Long, TimeUnit] }
-    # 
     # Inserts the specified element into this delay queue. As the queue is
     # unbounded this method will never block.
     # 
@@ -180,7 +172,6 @@ module Java::Util::Concurrent
     end
     
     typesig { [] }
-    # 
     # Retrieves and removes the head of this queue, or returns <tt>null</tt>
     # if this queue has no elements with an expired delay.
     # 
@@ -207,7 +198,6 @@ module Java::Util::Concurrent
     end
     
     typesig { [] }
-    # 
     # Retrieves and removes the head of this queue, waiting if necessary
     # until an element with an expired delay is available on this queue.
     # 
@@ -241,7 +231,6 @@ module Java::Util::Concurrent
     end
     
     typesig { [::Java::Long, TimeUnit] }
-    # 
     # Retrieves and removes the head of this queue, waiting if necessary
     # until an element with an expired delay is available on this queue,
     # or the specified wait time expires.
@@ -290,7 +279,6 @@ module Java::Util::Concurrent
     end
     
     typesig { [] }
-    # 
     # Retrieves, but does not remove, the head of this queue, or
     # returns <tt>null</tt> if this queue is empty.  Unlike
     # <tt>poll</tt>, if no expired elements are available in the queue,
@@ -321,7 +309,6 @@ module Java::Util::Concurrent
     end
     
     typesig { [Collection] }
-    # 
     # @throws UnsupportedOperationException {@inheritDoc}
     # @throws ClassCastException            {@inheritDoc}
     # @throws NullPointerException          {@inheritDoc}
@@ -355,7 +342,6 @@ module Java::Util::Concurrent
     end
     
     typesig { [Collection, ::Java::Int] }
-    # 
     # @throws UnsupportedOperationException {@inheritDoc}
     # @throws ClassCastException            {@inheritDoc}
     # @throws NullPointerException          {@inheritDoc}
@@ -392,7 +378,6 @@ module Java::Util::Concurrent
     end
     
     typesig { [] }
-    # 
     # Atomically removes all of the elements from this delay queue.
     # The queue will be empty after this call returns.
     # Elements with an unexpired delay are not waited for; they are
@@ -408,7 +393,6 @@ module Java::Util::Concurrent
     end
     
     typesig { [] }
-    # 
     # Always returns <tt>Integer.MAX_VALUE</tt> because
     # a <tt>DelayQueue</tt> is not capacity constrained.
     # 
@@ -418,7 +402,6 @@ module Java::Util::Concurrent
     end
     
     typesig { [] }
-    # 
     # Returns an array containing all of the elements in this queue.
     # The returned array elements are in no particular order.
     # 
@@ -441,7 +424,6 @@ module Java::Util::Concurrent
     end
     
     typesig { [Array.typed(T)] }
-    # 
     # Returns an array containing all of the elements in this queue; the
     # runtime type of the returned array is that of the specified array.
     # The returned array elements are in no particular order.
@@ -487,7 +469,6 @@ module Java::Util::Concurrent
     end
     
     typesig { [Object] }
-    # 
     # Removes a single instance of the specified element from this
     # queue, if it is present, whether or not it has expired.
     def remove(o)
@@ -501,7 +482,6 @@ module Java::Util::Concurrent
     end
     
     typesig { [] }
-    # 
     # Returns an iterator over all the elements (both expired and
     # unexpired) in this queue. The iterator does not return the
     # elements in any particular order.  The returned
@@ -517,7 +497,6 @@ module Java::Util::Concurrent
     end
     
     class_module.module_eval {
-      # 
       # Snapshot iterator that works off copy of underlying q array.
       const_set_lazy(:Itr) { Class.new do
         extend LocalClass

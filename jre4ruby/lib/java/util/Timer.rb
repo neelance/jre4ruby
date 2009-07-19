@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 1999-2007 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -32,7 +31,6 @@ module Java::Util
     }
   end
   
-  # 
   # A facility for threads to schedule tasks for future execution in a
   # background thread.  Tasks may be scheduled for one-time execution, or for
   # repeated execution at regular intervals.
@@ -92,7 +90,6 @@ module Java::Util
   class Timer 
     include_class_members TimerImports
     
-    # 
     # The timer task queue.  This data structure is shared with the timer
     # thread.  The timer produces tasks, via its various schedule calls,
     # and the timer thread consumes, executing timer tasks as appropriate,
@@ -103,7 +100,6 @@ module Java::Util
     alias_method :attr_queue=, :queue=
     undef_method :queue=
     
-    # 
     # The timer thread.
     attr_accessor :thread
     alias_method :attr_thread, :thread
@@ -111,7 +107,6 @@ module Java::Util
     alias_method :attr_thread=, :thread=
     undef_method :thread=
     
-    # 
     # This object causes the timer's task execution thread to exit
     # gracefully when there are no live references to the Timer object and no
     # tasks in the timer queue.  It is used in preference to a finalizer on
@@ -124,7 +119,6 @@ module Java::Util
     undef_method :thread_reaper=
     
     class_module.module_eval {
-      # 
       # This ID is used to generate thread names.  (It could be replaced
       # by an AtomicInteger as soon as they become available.)
       
@@ -147,7 +141,6 @@ module Java::Util
     }
     
     typesig { [] }
-    # 
     # Creates a new timer.  The associated thread does <i>not</i>
     # {@linkplain Thread#setDaemon run as a daemon}.
     def initialize
@@ -155,7 +148,6 @@ module Java::Util
     end
     
     typesig { [::Java::Boolean] }
-    # 
     # Creates a new timer whose associated thread may be specified to
     # {@linkplain Thread#setDaemon run as a daemon}.
     # A daemon thread is called for if the timer will be used to
@@ -169,7 +161,6 @@ module Java::Util
     end
     
     typesig { [String] }
-    # 
     # Creates a new timer whose associated thread has the specified name.
     # The associated thread does <i>not</i>
     # {@linkplain Thread#setDaemon run as a daemon}.
@@ -206,7 +197,6 @@ module Java::Util
     end
     
     typesig { [String, ::Java::Boolean] }
-    # 
     # Creates a new timer whose associated thread has the specified name,
     # and may be specified to
     # {@linkplain Thread#setDaemon run as a daemon}.
@@ -245,7 +235,6 @@ module Java::Util
     end
     
     typesig { [TimerTask, ::Java::Long] }
-    # 
     # Schedules the specified task for execution after the specified delay.
     # 
     # @param task  task to be scheduled.
@@ -262,7 +251,6 @@ module Java::Util
     end
     
     typesig { [TimerTask, Date] }
-    # 
     # Schedules the specified task for execution at the specified time.  If
     # the time is in the past, the task is scheduled for immediate execution.
     # 
@@ -276,7 +264,6 @@ module Java::Util
     end
     
     typesig { [TimerTask, ::Java::Long, ::Java::Long] }
-    # 
     # Schedules the specified task for repeated <i>fixed-delay execution</i>,
     # beginning after the specified delay.  Subsequent executions take place
     # at approximately regular intervals separated by the specified period.
@@ -316,7 +303,6 @@ module Java::Util
     end
     
     typesig { [TimerTask, Date, ::Java::Long] }
-    # 
     # Schedules the specified task for repeated <i>fixed-delay execution</i>,
     # beginning at the specified time. Subsequent executions take place at
     # approximately regular intervals, separated by the specified period.
@@ -352,7 +338,6 @@ module Java::Util
     end
     
     typesig { [TimerTask, ::Java::Long, ::Java::Long] }
-    # 
     # Schedules the specified task for repeated <i>fixed-rate execution</i>,
     # beginning after the specified delay.  Subsequent executions take place
     # at approximately regular intervals, separated by the specified period.
@@ -393,7 +378,6 @@ module Java::Util
     end
     
     typesig { [TimerTask, Date, ::Java::Long] }
-    # 
     # Schedules the specified task for repeated <i>fixed-rate execution</i>,
     # beginning at the specified time. Subsequent executions take place at
     # approximately regular intervals, separated by the specified period.
@@ -430,7 +414,6 @@ module Java::Util
     end
     
     typesig { [TimerTask, ::Java::Long, ::Java::Long] }
-    # 
     # Schedule the specified timer task for execution at the specified
     # time with the specified period, in milliseconds.  If period is
     # positive, the task is scheduled for repeated execution; if period is
@@ -465,7 +448,6 @@ module Java::Util
     end
     
     typesig { [] }
-    # 
     # Terminates this timer, discarding any currently scheduled tasks.
     # Does not interfere with a currently executing task (if it exists).
     # Once a timer has been terminated, its execution thread terminates
@@ -487,7 +469,6 @@ module Java::Util
     end
     
     typesig { [] }
-    # 
     # Removes all cancelled tasks from this timer's task queue.  <i>Calling
     # this method has no effect on the behavior of the timer</i>, but
     # eliminates the references to the cancelled tasks from the queue.
@@ -528,7 +509,6 @@ module Java::Util
     alias_method :initialize__timer, :initialize
   end
   
-  # 
   # This "helper class" implements the timer's task execution thread, which
   # waits for tasks on the timer queue, executions them when they fire,
   # reschedules repeating tasks, and removes cancelled tasks and spent
@@ -536,7 +516,6 @@ module Java::Util
   class TimerThread < TimerImports.const_get :JavaThread
     include_class_members TimerImports
     
-    # 
     # This flag is set to false by the reaper to inform us that there
     # are no more live references to our Timer object.  Once this flag
     # is true and there are no more tasks in our queue, there is no
@@ -548,7 +527,6 @@ module Java::Util
     alias_method :attr_new_tasks_may_be_scheduled=, :new_tasks_may_be_scheduled=
     undef_method :new_tasks_may_be_scheduled=
     
-    # 
     # Our Timer's queue.  We store this reference in preference to
     # a reference to the Timer so the reference graph remains acyclic.
     # Otherwise, the Timer would never be garbage-collected and this
@@ -582,7 +560,6 @@ module Java::Util
     end
     
     typesig { [] }
-    # 
     # The main timer loop.  (See class comment.)
     def main_loop
       while (true)
@@ -637,7 +614,6 @@ module Java::Util
     alias_method :initialize__timer_thread, :initialize
   end
   
-  # 
   # This class represents a timer task queue: a priority queue of TimerTasks,
   # ordered on nextExecutionTime.  Each Timer object has one of these, which it
   # shares with its TimerThread.  Internally this class uses a heap, which
@@ -646,7 +622,6 @@ module Java::Util
   class TaskQueue 
     include_class_members TimerImports
     
-    # 
     # Priority queue represented as a balanced binary heap: the two children
     # of queue[n] are queue[2*n] and queue[2*n+1].  The priority queue is
     # ordered on the nextExecutionTime field: The TimerTask with the lowest
@@ -659,7 +634,6 @@ module Java::Util
     alias_method :attr_queue=, :queue=
     undef_method :queue=
     
-    # 
     # The number of tasks in the priority queue.  (The tasks are stored in
     # queue[1] up to queue[size]).
     attr_accessor :size
@@ -669,14 +643,12 @@ module Java::Util
     undef_method :size=
     
     typesig { [] }
-    # 
     # Returns the number of tasks currently on the queue.
     def size
       return @size
     end
     
     typesig { [TimerTask] }
-    # 
     # Adds a new task to the priority queue.
     def add(task)
       # Grow backing store if necessary
@@ -688,7 +660,6 @@ module Java::Util
     end
     
     typesig { [] }
-    # 
     # Return the "head task" of the priority queue.  (The head task is an
     # task with the lowest nextExecutionTime.)
     def get_min
@@ -696,7 +667,6 @@ module Java::Util
     end
     
     typesig { [::Java::Int] }
-    # 
     # Return the ith task in the priority queue, where i ranges from 1 (the
     # head task, which is returned by getMin) to the number of tasks on the
     # queue, inclusive.
@@ -705,7 +675,6 @@ module Java::Util
     end
     
     typesig { [] }
-    # 
     # Remove the head task from the priority queue.
     def remove_min
       @queue[1] = @queue[@size]
@@ -714,7 +683,6 @@ module Java::Util
     end
     
     typesig { [::Java::Int] }
-    # 
     # Removes the ith element from queue without regard for maintaining
     # the heap invariant.  Recall that queue is one-based, so
     # 1 <= i <= size.
@@ -725,7 +693,6 @@ module Java::Util
     end
     
     typesig { [::Java::Long] }
-    # 
     # Sets the nextExecutionTime associated with the head task to the
     # specified value, and adjusts priority queue accordingly.
     def reschedule_min(new_time)
@@ -734,14 +701,12 @@ module Java::Util
     end
     
     typesig { [] }
-    # 
     # Returns true if the priority queue contains no elements.
     def is_empty
       return (@size).equal?(0)
     end
     
     typesig { [] }
-    # 
     # Removes all elements from the priority queue.
     def clear
       # Null out task references to prevent memory leak
@@ -754,7 +719,6 @@ module Java::Util
     end
     
     typesig { [::Java::Int] }
-    # 
     # Establishes the heap invariant (described above) assuming the heap
     # satisfies the invariant except possibly for the leaf-node indexed by k
     # (which may have a nextExecutionTime less than its parent's).
@@ -776,7 +740,6 @@ module Java::Util
     end
     
     typesig { [::Java::Int] }
-    # 
     # Establishes the heap invariant (described above) in the subtree
     # rooted at k, which is assumed to satisfy the heap invariant except
     # possibly for node k itself (which may have a nextExecutionTime greater
@@ -802,7 +765,6 @@ module Java::Util
     end
     
     typesig { [] }
-    # 
     # Establishes the heap invariant (described above) in the entire tree,
     # assuming nothing about the order of the elements prior to the call.
     def heapify

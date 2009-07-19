@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 2006-2007 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -37,7 +36,6 @@ module Sun::Security::Ssl
     }
   end
   
-  # 
   # Helper class for the ECDH key exchange. It generates the appropriate
   # ephemeral keys as necessary and performs the actual shared secret derivation.
   # 
@@ -103,7 +101,6 @@ module Sun::Security::Ssl
     end
     
     typesig { [] }
-    # 
     # Gets the public key of this end of the key exchange.
     def get_public_key
       return @public_key
@@ -135,7 +132,7 @@ module Sun::Security::Ssl
       rescue GeneralSecurityException => e
         raise RuntimeException.new("Could not generate secret", e)
       rescue Java::Io::IOException => e
-        raise RuntimeException.new("Could not generate secret", e_)
+        raise RuntimeException.new("Could not generate secret", e)
       end
     end
     

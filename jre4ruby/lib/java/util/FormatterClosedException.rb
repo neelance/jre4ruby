@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 2003 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -31,7 +30,6 @@ module Java::Util
     }
   end
   
-  # 
   # Unchecked exception thrown when the formatter has been closed.
   # 
   # <p> Unless otherwise specified, passing a <tt>null</tt> argument to any
@@ -48,7 +46,6 @@ module Java::Util
     }
     
     typesig { [] }
-    # 
     # Constructs an instance of this class.
     def initialize
       super()

@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 1996-2006 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -32,7 +31,6 @@ module Java::Security
     }
   end
   
-  # 
   # This class is used to represent an Identity that can also digitally
   # sign data.
   # 
@@ -56,7 +54,6 @@ module Java::Security
       const_attr_reader  :SerialVersionUID
     }
     
-    # 
     # The signer's private key.
     # 
     # @serial
@@ -67,7 +64,6 @@ module Java::Security
     undef_method :private_key=
     
     typesig { [] }
-    # 
     # Creates a signer. This constructor should only be used for
     # serialization.
     def initialize
@@ -76,7 +72,6 @@ module Java::Security
     end
     
     typesig { [String] }
-    # 
     # Creates a signer with the specified identity name.
     # 
     # @param name the identity name.
@@ -86,7 +81,6 @@ module Java::Security
     end
     
     typesig { [String, IdentityScope] }
-    # 
     # Creates a signer with the specified identity name and scope.
     # 
     # @param name the identity name.
@@ -101,7 +95,6 @@ module Java::Security
     end
     
     typesig { [] }
-    # 
     # Returns this signer's private key.
     # 
     # <p>First, if there is a security manager, its <code>checkSecurityAccess</code>
@@ -122,7 +115,6 @@ module Java::Security
     end
     
     typesig { [KeyPair] }
-    # 
     # Sets the key pair (public key and private key) for this signer.
     # 
     # <p>First, if there is a security manager, its <code>checkSecurityAccess</code>
@@ -186,7 +178,6 @@ module Java::Security
     end
     
     typesig { [] }
-    # 
     # Returns a string of information about the signer.
     # 
     # @return a string of information about the signer.

@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 1998-2003 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -35,7 +34,6 @@ module Sun::Security::Provider
     }
   end
   
-  # 
   # <p>This class provides a crytpographically strong pseudo-random number
   # generator based on the SHA-1 hash algorithm.
   # 
@@ -62,7 +60,6 @@ module Sun::Security::Provider
       const_set_lazy(:SerialVersionUID) { 3581829991155417889 }
       const_attr_reader  :SerialVersionUID
       
-      # 
       # This static object will be seeded by SeedGenerator, and used
       # to seed future instances of SecureRandom
       
@@ -105,7 +102,6 @@ module Sun::Security::Provider
     undef_method :rem_count=
     
     typesig { [] }
-    # 
     # This empty constructor automatically seeds the generator.  We attempt
     # to provide sufficient seed bytes to completely randomize the internal
     # state of the generator (20 bytes).  Note, however, that our seed
@@ -126,7 +122,6 @@ module Sun::Security::Provider
     end
     
     typesig { [Array.typed(::Java::Byte)] }
-    # 
     # This constructor is used to instatiate the private seeder object
     # with a given seed from the SeedGenerator.
     # 
@@ -141,7 +136,6 @@ module Sun::Security::Provider
     end
     
     typesig { [Array.typed(::Java::Byte)] }
-    # 
     # This call, used by the constructors, instantiates the SHA digest
     # and sets the seed, if given.
     def init(seed)
@@ -156,7 +150,6 @@ module Sun::Security::Provider
     end
     
     typesig { [::Java::Int] }
-    # 
     # Returns the given number of seed bytes, computed using the seed
     # generation algorithm that this class uses to seed itself.  This
     # call may be used to seed other random number generators.  While
@@ -178,7 +171,6 @@ module Sun::Security::Provider
     end
     
     typesig { [Array.typed(::Java::Byte)] }
-    # 
     # Reseeds this random object. The given seed supplements, rather than
     # replaces, the existing seed. Thus, repeated calls are guaranteed
     # never to reduce randomness.
@@ -227,7 +219,6 @@ module Sun::Security::Provider
     }
     
     typesig { [Array.typed(::Java::Byte)] }
-    # 
     # Generates a user-specified number of random bytes.
     # 
     # @param bytes the array to be filled in with random bytes.
@@ -269,11 +260,11 @@ module Sun::Security::Provider
           # How many bytes?
           todo = (result.attr_length - index) > DIGEST_SIZE ? DIGEST_SIZE : result.attr_length - index
           # Copy the bytes, zero the buffer
-          i_ = 0
-          while i_ < todo
-            result[((index += 1) - 1)] = output[i_]
-            output[i_] = 0
-            ((i_ += 1) - 1)
+          i = 0
+          while i < todo
+            result[((index += 1) - 1)] = output[i]
+            output[i] = 0
+            ((i += 1) - 1)
           end
           @rem_count += todo
         end
@@ -284,7 +275,6 @@ module Sun::Security::Provider
     end
     
     typesig { [Java::Io::ObjectInputStream] }
-    # 
     # readObject is called to restore the state of the random object from
     # a stream.  We have to create a new instance of MessageDigest, because
     # it is not included in the stream (it is marked "transient").

@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 1997-2006 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -56,7 +55,6 @@ module Sun::Security::Tools
     }
   end
   
-  # 
   # PolicyTool may be used by users and administrators to configure the
   # overall java security policy (currently stored in the policy file).
   # Using PolicyTool administators may add and remove policies from
@@ -115,7 +113,6 @@ module Sun::Security::Tools
       const_set_lazy(:NOPARAMS) { Array.typed(Class).new([]) }
       const_attr_reader  :NOPARAMS
       
-      # 
       # All of the policy entries are read in from the
       # policy file and stored here.  Updates to the policy entries
       # using addEntry() and removeEntry() are made here.  To ultimately save
@@ -187,7 +184,6 @@ module Sun::Security::Tools
     }
     
     typesig { [] }
-    # 
     # default constructor
     def initialize
       @warnings = nil
@@ -206,21 +202,18 @@ module Sun::Security::Tools
     end
     
     typesig { [] }
-    # 
     # get the PolicyFileName
     def get_policy_file_name
       return self.attr_policy_file_name
     end
     
     typesig { [String] }
-    # 
     # set the PolicyFileName
     def set_policy_file_name(policy_file_name)
       self.attr_policy_file_name = policy_file_name
     end
     
     typesig { [] }
-    # 
     # clear keyStore info
     def clear_key_store_info
       @key_store_name = nil
@@ -231,35 +224,30 @@ module Sun::Security::Tools
     end
     
     typesig { [] }
-    # 
     # get the keyStore URL name
     def get_key_store_name
       return @key_store_name
     end
     
     typesig { [] }
-    # 
     # get the keyStore Type
     def get_key_store_type
       return @key_store_type
     end
     
     typesig { [] }
-    # 
     # get the keyStore Provider
     def get_key_store_provider
       return @key_store_provider
     end
     
     typesig { [] }
-    # 
     # get the keyStore password URL
     def get_key_store_pwd_url
       return @key_store_pwd_url
     end
     
     typesig { [String] }
-    # 
     # Open and read a policy file
     def open_policy(filename)
       @new_warning = false
@@ -312,41 +300,41 @@ module Sun::Security::Tools
             verify_principal(pe.get_principal_class, pe.get_principal_name)
           rescue ClassNotFoundException => fnfe
             @new_warning = true
-            form_ = MessageFormat.new(Rb.get_string("Warning: Class not found: class"))
-            source_ = Array.typed(Object).new([pe.get_principal_class])
-            @warnings.add_element(form_.format(source_))
+            form = MessageFormat.new(Rb.get_string("Warning: Class not found: class"))
+            source = Array.typed(Object).new([pe.get_principal_class])
+            @warnings.add_element(form.format(source))
           end
         end
         # check to see if the Permissions are valid
         perms = ge.permission_elements
         while (perms.has_more_elements)
-          pe_ = perms.next_element
+          pe = perms.next_element
           begin
-            verify_permission(pe_.attr_permission, pe_.attr_name, pe_.attr_action)
+            verify_permission(pe.attr_permission, pe.attr_name, pe.attr_action)
           rescue ClassNotFoundException => fnfe
             @new_warning = true
-            form__ = MessageFormat.new(Rb.get_string("Warning: Class not found: class"))
-            source__ = Array.typed(Object).new([pe_.attr_permission])
-            @warnings.add_element(form__.format(source__))
+            form = MessageFormat.new(Rb.get_string("Warning: Class not found: class"))
+            source = Array.typed(Object).new([pe.attr_permission])
+            @warnings.add_element(form.format(source))
           rescue InvocationTargetException => ite
             @new_warning = true
-            form___ = MessageFormat.new(Rb.get_string("Warning: Invalid argument(s) for constructor: arg"))
-            source___ = Array.typed(Object).new([pe_.attr_permission])
-            @warnings.add_element(form___.format(source___))
+            form = MessageFormat.new(Rb.get_string("Warning: Invalid argument(s) for constructor: arg"))
+            source = Array.typed(Object).new([pe.attr_permission])
+            @warnings.add_element(form.format(source))
           end
           # see if all the permission signers have public keys
-          if (!(pe_.attr_signed_by).nil?)
-            signers_ = parse_signers(pe_.attr_signed_by)
-            i_ = 0
-            while i_ < signers_.attr_length
-              pub_key_ = get_public_key_alias(signers_[i_])
-              if ((pub_key_).nil?)
+          if (!(pe.attr_signed_by).nil?)
+            signers = parse_signers(pe.attr_signed_by)
+            i = 0
+            while i < signers.attr_length
+              pub_key = get_public_key_alias(signers[i])
+              if ((pub_key).nil?)
                 @new_warning = true
-                form____ = MessageFormat.new(Rb.get_string("Warning: A public key for alias " + "'signers[i]' does not exist.  " + "Make sure a KeyStore is properly configured."))
-                source____ = Array.typed(Object).new([signers_[i_]])
-                @warnings.add_element(form____.format(source____))
+                form = MessageFormat.new(Rb.get_string("Warning: A public key for alias " + "'signers[i]' does not exist.  " + "Make sure a KeyStore is properly configured."))
+                source = Array.typed(Object).new([signers[i]])
+                @warnings.add_element(form.format(source))
               end
-              ((i_ += 1) - 1)
+              ((i += 1) - 1)
             end
           end
         end
@@ -358,7 +346,6 @@ module Sun::Security::Tools
     end
     
     typesig { [String] }
-    # 
     # Save a policy to a file
     def save_policy(filename)
       # save the policy entries to a file
@@ -371,7 +358,6 @@ module Sun::Security::Tools
     end
     
     typesig { [String, String, String, String] }
-    # 
     # Open the KeyStore
     def open_key_store(name, type, provider, pwd_url)
       if ((name).nil? && (type).nil? && (provider).nil? && (pwd_url).nil?)
@@ -423,7 +409,6 @@ module Sun::Security::Tools
     end
     
     typesig { [PolicyEntry, ::Java::Int] }
-    # 
     # Add a Grant entry to the overall policy at the specified index.
     # A policy entry consists of a CodeSource.
     def add_entry(pe, index)
@@ -441,7 +426,6 @@ module Sun::Security::Tools
     end
     
     typesig { [PolicyEntry, PolicyParser::PrincipalEntry, ::Java::Int] }
-    # 
     # Add a Principal entry to an existing PolicyEntry at the specified index.
     # A Principal entry consists of a class, and name.
     # 
@@ -463,7 +447,6 @@ module Sun::Security::Tools
     end
     
     typesig { [PolicyEntry, PolicyParser::PermissionEntry, ::Java::Int] }
-    # 
     # Add a Permission entry to an existing PolicyEntry at the specified index.
     # A Permission entry consists of a permission, name, and actions.
     # 
@@ -485,7 +468,6 @@ module Sun::Security::Tools
     end
     
     typesig { [PolicyEntry, PolicyParser::PermissionEntry] }
-    # 
     # Remove a Permission entry from an existing PolicyEntry.
     def remove_perm_entry(pe, perm)
       # remove the Permission from the GrantEntry
@@ -495,7 +477,6 @@ module Sun::Security::Tools
     end
     
     typesig { [PolicyEntry] }
-    # 
     # remove an entry from the overall policy
     def remove_entry(pe)
       @parser.remove(pe.get_grant_entry)
@@ -504,7 +485,6 @@ module Sun::Security::Tools
     end
     
     typesig { [] }
-    # 
     # retrieve all Policy Entries
     def get_entry
       if (@policy_entries.size > 0)
@@ -520,7 +500,6 @@ module Sun::Security::Tools
     end
     
     typesig { [String] }
-    # 
     # Retrieve the public key mapped to a particular name.
     # If the key has expired, a KeyException is thrown.
     def get_public_key_alias(name)
@@ -536,7 +515,6 @@ module Sun::Security::Tools
     end
     
     typesig { [] }
-    # 
     # Retrieve all the alias names stored in the certificate database
     def get_public_key_alias
       num_aliases = 0
@@ -564,7 +542,6 @@ module Sun::Security::Tools
     end
     
     typesig { [String] }
-    # 
     # This method parses a single string of signers separated by commas
     # ("jordan, duke, pippen") into an array of individual strings.
     def parse_signers(signed_by)
@@ -600,7 +577,6 @@ module Sun::Security::Tools
     end
     
     typesig { [String, String] }
-    # 
     # Check to see if the Principal contents are OK
     def verify_principal(type, name)
       if ((type == PolicyParser::PrincipalEntry::WILDCARD_CLASS) || (type == PolicyParser::REPLACE_NAME))
@@ -624,7 +600,6 @@ module Sun::Security::Tools
     end
     
     typesig { [String, String, String] }
-    # 
     # Check to see if the Permission contents are OK
     def verify_permission(type, name, actions)
       # XXX we might want to keep a hash of created factories...
@@ -674,7 +649,6 @@ module Sun::Security::Tools
     
     class_module.module_eval {
       typesig { [Array.typed(String)] }
-      # 
       # Parse command line arguments.
       def parse_args(args)
         # parse flags
@@ -707,7 +681,6 @@ module Sun::Security::Tools
       end
       
       typesig { [Array.typed(String)] }
-      # 
       # run the PolicyTool
       def main(args)
         parse_args(args)
@@ -728,7 +701,6 @@ module Sun::Security::Tools
     alias_method :initialize__policy_tool, :initialize
   end
   
-  # 
   # Each entry in the policy configuration file is represented by a
   # PolicyEntry object.
   # 
@@ -769,7 +741,6 @@ module Sun::Security::Tools
     undef_method :testing=
     
     typesig { [PolicyTool, PolicyParser::GrantEntry] }
-    # 
     # Create a PolicyEntry object from the information read in
     # from a policy file.
     def initialize(tool, ge)
@@ -794,21 +765,18 @@ module Sun::Security::Tools
     end
     
     typesig { [] }
-    # 
     # get the codesource associated with this PolicyEntry
     def get_code_source
       return @codesource
     end
     
     typesig { [] }
-    # 
     # get the GrantEntry associated with this PolicyEntry
     def get_grant_entry
       return @grant_entry
     end
     
     typesig { [] }
-    # 
     # convert the header portion, i.e. codebase, signer, principals, of
     # this policy entry into a string
     def header_to_string
@@ -821,7 +789,6 @@ module Sun::Security::Tools
     end
     
     typesig { [] }
-    # 
     # convert the Codebase/signer portion of this policy entry into a string
     def codebase_to_string
       string_entry = String.new
@@ -838,7 +805,6 @@ module Sun::Security::Tools
     end
     
     typesig { [] }
-    # 
     # convert the Principals portion of this policy entry into a string
     def principals_to_string
       result = ""
@@ -858,7 +824,6 @@ module Sun::Security::Tools
     end
     
     typesig { [Permission] }
-    # 
     # convert this policy entry into a PolicyParser.PermissionEntry
     def to_permission_entry(perm)
       actions = nil
@@ -874,7 +839,6 @@ module Sun::Security::Tools
     alias_method :initialize__policy_entry, :initialize
   end
   
-  # 
   # The main window for the PolicyTool
   class ToolWindow < PolicyToolImports.const_get :Frame
     include_class_members PolicyToolImports
@@ -980,7 +944,6 @@ module Sun::Security::Tools
     undef_method :tool=
     
     typesig { [PolicyTool] }
-    # 
     # Constructor
     def initialize(tool)
       @tool = nil
@@ -989,7 +952,6 @@ module Sun::Security::Tools
     end
     
     typesig { [] }
-    # 
     # Initialize the PolicyTool window with the necessary components
     def init_window
       # create the top menu bar
@@ -1066,9 +1028,9 @@ module Sun::Security::Tools
         @tool.attr_warnings.add_element(fnfe.to_s)
       rescue Exception => e
         # add blank policy listing
-        list__ = JavaList.new(40, false)
-        list__.add_action_listener(PolicyListListener.new(@tool, self))
-        init_policy_list(list__)
+        list_ = JavaList.new(40, false)
+        list_.add_action_listener(PolicyListListener.new(@tool, self))
+        init_policy_list(list_)
         @tool.set_policy_file_name(nil)
         @tool.attr_modified = false
         set_visible(true)
@@ -1080,7 +1042,6 @@ module Sun::Security::Tools
     end
     
     typesig { [Container, Component, ::Java::Int, ::Java::Int, ::Java::Int, ::Java::Int, ::Java::Int, ::Java::Double, ::Java::Double, ::Java::Int, Insets] }
-    # 
     # Add a component to the PolicyTool window
     def add_new_component(container, component, index, gridx, gridy, gridwidth, gridheight, weightx, weighty, fill, is)
       # add the component at the specified gridbag index
@@ -1102,7 +1063,6 @@ module Sun::Security::Tools
     end
     
     typesig { [Container, Component, ::Java::Int, ::Java::Int, ::Java::Int, ::Java::Int, ::Java::Int, ::Java::Double, ::Java::Double, ::Java::Int] }
-    # 
     # Add a component to the PolicyTool window without external padding
     def add_new_component(container, component, index, gridx, gridy, gridwidth, gridheight, weightx, weighty, fill)
       # delegate with "null" external padding
@@ -1110,7 +1070,6 @@ module Sun::Security::Tools
     end
     
     typesig { [JavaList] }
-    # 
     # Init the policy_entry_list TEXTAREA component in the
     # PolicyTool window
     def init_policy_list(policy_list)
@@ -1119,7 +1078,6 @@ module Sun::Security::Tools
     end
     
     typesig { [JavaList] }
-    # 
     # Replace the policy_entry_list TEXTAREA component in the
     # PolicyTool window with an updated one.
     def replace_policy_list(policy_list)
@@ -1136,7 +1094,6 @@ module Sun::Security::Tools
     end
     
     typesig { [Array.typed(String)] }
-    # 
     # display the main PolicyTool window
     def display_tool_window(args)
       set_title(PolicyTool.attr_rb.get_string("Policy Tool"))
@@ -1153,7 +1110,6 @@ module Sun::Security::Tools
     end
     
     typesig { [Window, String] }
-    # 
     # displays a dialog box describing an error which occurred.
     def display_error_dialog(w, error)
       ed = ToolDialog.new(PolicyTool.attr_rb.get_string("Error"), @tool, self, true)
@@ -1171,7 +1127,6 @@ module Sun::Security::Tools
     end
     
     typesig { [Window, Exception] }
-    # 
     # displays a dialog box describing an error which occurred.
     def display_error_dialog(w, t)
       if (t.is_a?(NoDisplayException))
@@ -1181,7 +1136,6 @@ module Sun::Security::Tools
     end
     
     typesig { [Window, String] }
-    # 
     # displays a dialog box describing the status of an event
     def display_status_dialog(w, status)
       sd = ToolDialog.new(PolicyTool.attr_rb.get_string("Status"), @tool, self, true)
@@ -1199,7 +1153,6 @@ module Sun::Security::Tools
     end
     
     typesig { [Window] }
-    # 
     # display the warning log
     def display_warning_log(w)
       wd = ToolDialog.new(PolicyTool.attr_rb.get_string("Warning"), @tool, self, true)
@@ -1297,7 +1250,6 @@ module Sun::Security::Tools
     alias_method :initialize__tool_window, :initialize
   end
   
-  # 
   # General dialog window
   class ToolDialog < PolicyToolImports.const_get :Dialog
     include_class_members PolicyToolImports
@@ -1636,7 +1588,6 @@ module Sun::Security::Tools
     
     class_module.module_eval {
       typesig { [String, ::Java::Boolean] }
-      # 
       # get the Perm instance based on either the (shortened) class name
       # or the fully qualified class name
       def get_perm(clazz, full_class_name)
@@ -1658,7 +1609,6 @@ module Sun::Security::Tools
       end
       
       typesig { [String, ::Java::Boolean] }
-      # 
       # get the Prin instance based on either the (shortened) class name
       # or the fully qualified class name
       def get_prin(clazz, full_class_name)
@@ -1681,7 +1631,6 @@ module Sun::Security::Tools
     }
     
     typesig { [String, ::Java::Int] }
-    # 
     # ask user if they want to overwrite an existing file
     def display_over_write_file_dialog(filename, next_event)
       # find where the PolicyTool gui is
@@ -1706,7 +1655,6 @@ module Sun::Security::Tools
     end
     
     typesig { [::Java::Boolean] }
-    # 
     # pop up a dialog so the user can enter info to add a new PolicyEntry
     # - if edit is TRUE, then the user is editing an existing entry
     # and we should display the original info as well.
@@ -1817,7 +1765,6 @@ module Sun::Security::Tools
     end
     
     typesig { [] }
-    # 
     # Read all the Policy information data in the dialog box
     # and construct a PolicyEntry object with it.
     def get_policy_entry_from_dialog
@@ -1859,7 +1806,6 @@ module Sun::Security::Tools
     end
     
     typesig { [::Java::Int] }
-    # 
     # display a dialog box for the user to enter KeyStore information
     def key_store_dialog(mode)
       # find where the PolicyTool gui is
@@ -1905,7 +1851,6 @@ module Sun::Security::Tools
     end
     
     typesig { [::Java::Boolean, ::Java::Boolean] }
-    # 
     # display a dialog box for the user to input Principal info
     # 
     # if editPolicyEntry is false, then we are adding Principals to
@@ -1976,7 +1921,6 @@ module Sun::Security::Tools
     end
     
     typesig { [::Java::Boolean, ::Java::Boolean] }
-    # 
     # display a dialog box for the user to input Permission info
     # 
     # if editPolicyEntry is false, then we are adding Permissions to
@@ -2067,7 +2011,6 @@ module Sun::Security::Tools
     end
     
     typesig { [] }
-    # 
     # construct a Principal object from the Principal Info Dialog Box
     def get_prin_from_dialog
       tf = get_component(PRD_PRIN_TEXTFIELD)
@@ -2100,7 +2043,6 @@ module Sun::Security::Tools
     end
     
     typesig { [] }
-    # 
     # construct a Permission object from the Permission Info Dialog Box
     def get_perm_from_dialog
       tf = get_component(PD_PERM_TEXTFIELD)
@@ -2166,7 +2108,6 @@ module Sun::Security::Tools
     end
     
     typesig { [] }
-    # 
     # confirm that the user REALLY wants to remove the Policy Entry
     def display_confirm_remove_policy_entry
       # find the entry to be removed
@@ -2215,7 +2156,6 @@ module Sun::Security::Tools
     end
     
     typesig { [::Java::Int] }
-    # 
     # perform SAVE AS
     def display_save_as_dialog(next_event)
       # pop up a dialog box for the user to enter a filename.
@@ -2280,7 +2220,6 @@ module Sun::Security::Tools
     end
     
     typesig { [::Java::Int] }
-    # 
     # ask user if they want to save changes
     def display_user_save(select_)
       if ((@tool.attr_modified).equal?(true))
@@ -2311,7 +2250,6 @@ module Sun::Security::Tools
     end
     
     typesig { [PolicyTool, ToolWindow, ToolDialog, ::Java::Int] }
-    # 
     # when the user sees the 'YES', 'NO', 'CANCEL' buttons on the
     # displayUserSave dialog, and the click on one of them,
     # we need to continue the originally requested action
@@ -2343,15 +2281,15 @@ module Sun::Security::Tools
           tool.open_policy(nil)
         rescue Exception => ee
           tool.attr_modified = false
-          tw.display_error_dialog(nil, ee_)
+          tw.display_error_dialog(nil, ee)
         end
         # display the policy entries via the policy list textarea
-        list_ = JavaList.new(40, false)
-        list_.add_action_listener(PolicyListListener.new(tool, tw))
-        tw.replace_policy_list(list_)
+        list = JavaList.new(40, false)
+        list.add_action_listener(PolicyListListener.new(tool, tw))
+        tw.replace_policy_list(list)
         # display null policy filename and keystore
-        new_filename_ = tw.get_component(tw.attr_mw_filename_textfield)
-        new_filename_.set_text("")
+        new_filename = tw.get_component(tw.attr_mw_filename_textfield)
+        new_filename.set_text("")
         tw.set_visible(true)
       when ToolDialog::OPEN
         # pop up a dialog box for the user to enter a filename.
@@ -2385,21 +2323,21 @@ module Sun::Security::Tools
           # open the policy file
           tool.open_policy(policy_file)
           # display the policy entries via the policy list textarea
-          list_ = JavaList.new(40, false)
-          list_.add_action_listener(PolicyListListener.new(tool, tw))
+          self.attr_list = JavaList.new(40, false)
+          self.attr_list.add_action_listener(PolicyListListener.new(tool, tw))
           entries = tool.get_entry
           if (!(entries).nil?)
             i = 0
             while i < entries.attr_length
-              list_.add(entries[i].header_to_string)
+              self.attr_list.add(entries[i].header_to_string)
               ((i += 1) - 1)
             end
           end
-          tw.replace_policy_list(list_)
+          tw.replace_policy_list(self.attr_list)
           tool.attr_modified = false
           # display the new policy filename
-          new_filename_ = tw.get_component(tw.attr_mw_filename_textfield)
-          new_filename_.set_text(policy_file)
+          self.attr_new_filename = tw.get_component(tw.attr_mw_filename_textfield)
+          self.attr_new_filename.set_text(policy_file)
           tw.set_visible(true)
           # inform user of warnings
           if ((tool.attr_new_warning).equal?(true))
@@ -2407,14 +2345,14 @@ module Sun::Security::Tools
           end
         rescue Exception => e
           # add blank policy listing
-          list_ = JavaList.new(40, false)
-          list_.add_action_listener(PolicyListListener.new(tool, tw))
-          tw.replace_policy_list(list_)
+          self.attr_list = JavaList.new(40, false)
+          self.attr_list.add_action_listener(PolicyListListener.new(tool, tw))
+          tw.replace_policy_list(self.attr_list)
           tool.set_policy_file_name(nil)
           tool.attr_modified = false
           # display a null policy filename
-          new_filename_ = tw.get_component(tw.attr_mw_filename_textfield)
-          new_filename_.set_text("")
+          self.attr_new_filename = tw.get_component(tw.attr_mw_filename_textfield)
+          self.attr_new_filename.set_text("")
           tw.set_visible(true)
           # display the error
           form = MessageFormat.new(PolicyTool.attr_rb.get_string("Could not open policy file: policyFile: e.toString()"))
@@ -2425,7 +2363,6 @@ module Sun::Security::Tools
     end
     
     typesig { [Perm, Choice, TextField] }
-    # 
     # Return a Menu list of names for a given permission
     # 
     # If inputPerm's TARGETS are null, then this means TARGETS are
@@ -2458,7 +2395,6 @@ module Sun::Security::Tools
     end
     
     typesig { [Perm, Choice, TextField] }
-    # 
     # Return a Menu list of actions for a given permission
     # 
     # If inputPerm's ACTIONS are null, then this means ACTIONS are
@@ -2519,7 +2455,6 @@ module Sun::Security::Tools
     alias_method :initialize__tool_dialog, :initialize
   end
   
-  # 
   # Event handler for the PolicyTool window
   class ToolWindowListener 
     include_class_members PolicyToolImports
@@ -2578,7 +2513,6 @@ module Sun::Security::Tools
     alias_method :initialize__tool_window_listener, :initialize
   end
   
-  # 
   # Event handler for the Policy List
   class PolicyListListener 
     include_class_members PolicyToolImports
@@ -2615,7 +2549,6 @@ module Sun::Security::Tools
     alias_method :initialize__policy_list_listener, :initialize
   end
   
-  # 
   # Event handler for the File Menu
   class FileMenuListener 
     include_class_members PolicyToolImports
@@ -2652,15 +2585,15 @@ module Sun::Security::Tools
       else
         if ((PolicyTool.attr_collator.compare(e.get_action_command, @tw.attr_new_policy_file)).equal?(0))
           # ask user if they want to save changes
-          td_ = ToolDialog.new(PolicyTool.attr_rb.get_string("Save Changes"), @tool, @tw, true)
-          td_.display_user_save(td_.attr_new)
+          td = ToolDialog.new(PolicyTool.attr_rb.get_string("Save Changes"), @tool, @tw, true)
+          td.display_user_save(td.attr_new)
           # the above method will perform the NEW as long as the
           # user does not CANCEL the request
         else
           if ((PolicyTool.attr_collator.compare(e.get_action_command, @tw.attr_open_policy_file)).equal?(0))
             # ask user if they want to save changes
-            td__ = ToolDialog.new(PolicyTool.attr_rb.get_string("Save Changes"), @tool, @tw, true)
-            td__.display_user_save(td__.attr_open)
+            td = ToolDialog.new(PolicyTool.attr_rb.get_string("Save Changes"), @tool, @tw, true)
+            td.display_user_save(td.attr_open)
             # the above method will perform the OPEN as long as the
             # user does not CANCEL the request
           else
@@ -2670,8 +2603,8 @@ module Sun::Security::Tools
               # if there is no filename, do a SAVE_AS
               if ((filename).nil? || (filename.length).equal?(0))
                 # user wants to SAVE AS
-                td___ = ToolDialog.new(PolicyTool.attr_rb.get_string("Save As"), @tool, @tw, true)
-                td___.display_save_as_dialog(td___.attr_noaction)
+                td = ToolDialog.new(PolicyTool.attr_rb.get_string("Save As"), @tool, @tw, true)
+                td.display_save_as_dialog(td.attr_noaction)
               else
                 begin
                   # save the policy entries to a file
@@ -2693,8 +2626,8 @@ module Sun::Security::Tools
             else
               if ((PolicyTool.attr_collator.compare(e.get_action_command, @tw.attr_save_as_policy_file)).equal?(0))
                 # user wants to SAVE AS
-                td____ = ToolDialog.new(PolicyTool.attr_rb.get_string("Save As"), @tool, @tw, true)
-                td____.display_save_as_dialog(td____.attr_noaction)
+                td = ToolDialog.new(PolicyTool.attr_rb.get_string("Save As"), @tool, @tw, true)
+                td.display_save_as_dialog(td.attr_noaction)
               else
                 if ((PolicyTool.attr_collator.compare(e.get_action_command, @tw.attr_view_warnings)).equal?(0))
                   @tw.display_warning_log(nil)
@@ -2710,7 +2643,6 @@ module Sun::Security::Tools
     alias_method :initialize__file_menu_listener, :initialize
   end
   
-  # 
   # Event handler for the main window buttons and Edit Menu
   class MainWindowListener 
     include_class_members PolicyToolImports
@@ -2752,25 +2684,25 @@ module Sun::Security::Tools
             return
           end
           # ask the user if they really want to remove the policy entry
-          td_ = ToolDialog.new(PolicyTool.attr_rb.get_string("Remove Policy Entry"), @tool, @tw, true)
-          td_.display_confirm_remove_policy_entry
+          td = ToolDialog.new(PolicyTool.attr_rb.get_string("Remove Policy Entry"), @tool, @tw, true)
+          td.display_confirm_remove_policy_entry
         else
           if ((PolicyTool.attr_collator.compare(e.get_action_command, @tw.attr_edit_policy_entry)).equal?(0))
             # get the selected entry
-            list_ = @tw.get_component(@tw.attr_mw_policy_list)
-            index_ = list_.get_selected_index
-            if (index_ < 0)
+            list = @tw.get_component(@tw.attr_mw_policy_list)
+            index = list.get_selected_index
+            if (index < 0)
               @tw.display_error_dialog(nil, Exception.new(PolicyTool.attr_rb.get_string("No Policy Entry selected")))
               return
             end
             # display the permission list for a policy entry
-            td__ = ToolDialog.new(PolicyTool.attr_rb.get_string("Policy Entry"), @tool, @tw, true)
-            td__.display_policy_entry_dialog(true)
+            td = ToolDialog.new(PolicyTool.attr_rb.get_string("Policy Entry"), @tool, @tw, true)
+            td.display_policy_entry_dialog(true)
           else
             if ((PolicyTool.attr_collator.compare(e.get_action_command, @tw.attr_edit_keystore)).equal?(0))
               # display a dialog box for the user to enter keystore info
-              td___ = ToolDialog.new(PolicyTool.attr_rb.get_string("KeyStore"), @tool, @tw, true)
-              td___.key_store_dialog(td___.attr_edit_keystore)
+              td = ToolDialog.new(PolicyTool.attr_rb.get_string("KeyStore"), @tool, @tw, true)
+              td.key_store_dialog(td.attr_edit_keystore)
             end
           end
         end
@@ -2781,7 +2713,6 @@ module Sun::Security::Tools
     alias_method :initialize__main_window_listener, :initialize
   end
   
-  # 
   # Event handler for OverWriteFileOKButton button
   class OverWriteFileOKButtonListener 
     include_class_members PolicyToolImports
@@ -2868,7 +2799,6 @@ module Sun::Security::Tools
     alias_method :initialize__over_write_file_okbutton_listener, :initialize
   end
   
-  # 
   # Event handler for AddEntryDoneButton button
   # 
   # -- if edit is TRUE, then we are EDITing an existing PolicyEntry
@@ -2962,7 +2892,6 @@ module Sun::Security::Tools
     alias_method :initialize__add_entry_done_button_listener, :initialize
   end
   
-  # 
   # Event handler for ChangeKeyStoreOKButton button
   class ChangeKeyStoreOKButtonListener 
     include_class_members PolicyToolImports
@@ -3018,7 +2947,6 @@ module Sun::Security::Tools
     alias_method :initialize__change_key_store_okbutton_listener, :initialize
   end
   
-  # 
   # Event handler for AddPrinButton button
   class AddPrinButtonListener 
     include_class_members PolicyToolImports
@@ -3070,7 +2998,6 @@ module Sun::Security::Tools
     alias_method :initialize__add_prin_button_listener, :initialize
   end
   
-  # 
   # Event handler for AddPermButton button
   class AddPermButtonListener 
     include_class_members PolicyToolImports
@@ -3122,7 +3049,6 @@ module Sun::Security::Tools
     alias_method :initialize__add_perm_button_listener, :initialize
   end
   
-  # 
   # Event handler for AddPrinOKButton button
   class NewPolicyPrinOKButtonListener 
     include_class_members PolicyToolImports
@@ -3208,7 +3134,6 @@ module Sun::Security::Tools
     alias_method :initialize__new_policy_prin_okbutton_listener, :initialize
   end
   
-  # 
   # Event handler for AddPermOKButton button
   class NewPolicyPermOKButtonListener 
     include_class_members PolicyToolImports
@@ -3294,7 +3219,6 @@ module Sun::Security::Tools
     alias_method :initialize__new_policy_perm_okbutton_listener, :initialize
   end
   
-  # 
   # Event handler for RemovePrinButton button
   class RemovePrinButtonListener 
     include_class_members PolicyToolImports
@@ -3353,7 +3277,6 @@ module Sun::Security::Tools
     alias_method :initialize__remove_prin_button_listener, :initialize
   end
   
-  # 
   # Event handler for RemovePermButton button
   class RemovePermButtonListener 
     include_class_members PolicyToolImports
@@ -3412,7 +3335,6 @@ module Sun::Security::Tools
     alias_method :initialize__remove_perm_button_listener, :initialize
   end
   
-  # 
   # Event handler for Edit Principal button
   # 
   # We need the editPolicyEntry boolean to tell us if the user is
@@ -3476,7 +3398,6 @@ module Sun::Security::Tools
     alias_method :initialize__edit_prin_button_listener, :initialize
   end
   
-  # 
   # Event handler for Edit Permission button
   # 
   # We need the editPolicyEntry boolean to tell us if the user is
@@ -3540,7 +3461,6 @@ module Sun::Security::Tools
     alias_method :initialize__edit_perm_button_listener, :initialize
   end
   
-  # 
   # Event handler for Principal Popup Menu
   class PrincipalTypeMenuListener 
     include_class_members PolicyToolImports
@@ -3579,9 +3499,9 @@ module Sun::Security::Tools
       # set the text in the textfield and also modify the
       # pull-down choice menus to reflect the correct possible
       # set of names and actions
-      input_prin_ = @td.get_prin(e.get_item, false)
-      if (!(input_prin_).nil?)
-        prin_field.set_text(input_prin_.attr_full_class)
+      input_prin = @td.get_prin(e.get_item, false)
+      if (!(input_prin).nil?)
+        prin_field.set_text(input_prin.attr_full_class)
       end
     end
     
@@ -3589,7 +3509,6 @@ module Sun::Security::Tools
     alias_method :initialize__principal_type_menu_listener, :initialize
   end
   
-  # 
   # Event handler for Permission Popup Menu
   class PermissionMenuListener 
     include_class_members PolicyToolImports
@@ -3636,21 +3555,20 @@ module Sun::Security::Tools
       # set the text in the textfield and also modify the
       # pull-down choice menus to reflect the correct possible
       # set of names and actions
-      input_perm_ = @td.get_perm(e.get_item, false)
-      if ((input_perm_).nil?)
+      input_perm = @td.get_perm(e.get_item, false)
+      if ((input_perm).nil?)
         perm_field.set_text("")
       else
-        perm_field.set_text(input_perm_.attr_full_class)
+        perm_field.set_text(input_perm.attr_full_class)
       end
-      @td.set_permission_names(input_perm_, names, name_field)
-      @td.set_permission_actions(input_perm_, actions, actions_field)
+      @td.set_permission_names(input_perm, names, name_field)
+      @td.set_permission_actions(input_perm, actions, actions_field)
     end
     
     private
     alias_method :initialize__permission_menu_listener, :initialize
   end
   
-  # 
   # Event handler for Permission Name Popup Menu
   class PermissionNameMenuListener 
     include_class_members PolicyToolImports
@@ -3683,7 +3601,6 @@ module Sun::Security::Tools
     alias_method :initialize__permission_name_menu_listener, :initialize
   end
   
-  # 
   # Event handler for Permission Actions Popup Menu
   class PermissionActionsMenuListener 
     include_class_members PolicyToolImports
@@ -3722,7 +3639,6 @@ module Sun::Security::Tools
     alias_method :initialize__permission_actions_menu_listener, :initialize
   end
   
-  # 
   # Event handler for all the children dialogs/windows
   class ChildWindowListener 
     include_class_members PolicyToolImports
@@ -3775,7 +3691,6 @@ module Sun::Security::Tools
     alias_method :initialize__child_window_listener, :initialize
   end
   
-  # 
   # Event handler for CancelButton button
   class CancelButtonListener 
     include_class_members PolicyToolImports
@@ -3803,7 +3718,6 @@ module Sun::Security::Tools
     alias_method :initialize__cancel_button_listener, :initialize
   end
   
-  # 
   # Event handler for ErrorOKButton button
   class ErrorOKButtonListener 
     include_class_members PolicyToolImports
@@ -3831,7 +3745,6 @@ module Sun::Security::Tools
     alias_method :initialize__error_okbutton_listener, :initialize
   end
   
-  # 
   # Event handler for StatusOKButton button
   class StatusOKButtonListener 
     include_class_members PolicyToolImports
@@ -3859,7 +3772,6 @@ module Sun::Security::Tools
     alias_method :initialize__status_okbutton_listener, :initialize
   end
   
-  # 
   # Event handler for UserSaveYes button
   class UserSaveYesButtonListener 
     include_class_members PolicyToolImports
@@ -3933,7 +3845,6 @@ module Sun::Security::Tools
     alias_method :initialize__user_save_yes_button_listener, :initialize
   end
   
-  # 
   # Event handler for UserSaveNoButton
   class UserSaveNoButtonListener 
     include_class_members PolicyToolImports
@@ -3988,7 +3899,6 @@ module Sun::Security::Tools
     alias_method :initialize__user_save_no_button_listener, :initialize
   end
   
-  # 
   # Event handler for UserSaveCancelButton
   class UserSaveCancelButtonListener 
     include_class_members PolicyToolImports
@@ -4018,7 +3928,6 @@ module Sun::Security::Tools
     alias_method :initialize__user_save_cancel_button_listener, :initialize
   end
   
-  # 
   # Event handler for ConfirmRemovePolicyEntryOKButtonListener
   class ConfirmRemovePolicyEntryOKButtonListener 
     include_class_members PolicyToolImports
@@ -4079,7 +3988,6 @@ module Sun::Security::Tools
     alias_method :initialize__confirm_remove_policy_entry_okbutton_listener, :initialize
   end
   
-  # 
   # Just a special name, so that the codes dealing with this exception knows
   # it's special, and does not pop out a warning box.
   class NoDisplayException < PolicyToolImports.const_get :RuntimeException
@@ -4094,7 +4002,6 @@ module Sun::Security::Tools
     alias_method :initialize__no_display_exception, :initialize
   end
   
-  # 
   # This is a java.awt.List that bind an Object to each String it holds.
   class TaggedList < PolicyToolImports.const_get :JavaList
     include_class_members PolicyToolImports
@@ -4155,7 +4062,6 @@ module Sun::Security::Tools
     alias_method :initialize__tagged_list, :initialize
   end
   
-  # 
   # Convenience Principal Classes
   class Prin 
     include_class_members PolicyToolImports
@@ -4208,7 +4114,6 @@ module Sun::Security::Tools
     alias_method :initialize__x500prin, :initialize
   end
   
-  # 
   # Convenience Permission Classes
   class Perm 
     include_class_members PolicyToolImports

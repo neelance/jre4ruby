@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 2000 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -33,7 +32,6 @@ module Sun::Security::Jgss::Spi
     }
   end
   
-  # 
   # This interface is implemented by a mechanism specific credential
   # element. A GSSCredential is conceptually a container class of several
   # credential elements from different mechanisms.
@@ -48,7 +46,6 @@ module Sun::Security::Jgss::Spi
     end
     
     typesig { [] }
-    # 
     # Called to invalidate this credential element and release
     # any system recourses and cryptographic information owned
     # by the credential.
@@ -59,7 +56,6 @@ module Sun::Security::Jgss::Spi
     end
     
     typesig { [] }
-    # 
     # Returns the principal name for this credential. The name
     # is in mechanism specific format.
     # 
@@ -70,7 +66,6 @@ module Sun::Security::Jgss::Spi
     end
     
     typesig { [] }
-    # 
     # Returns the init lifetime remaining.
     # 
     # @return the init lifetime remaining in seconds
@@ -80,7 +75,6 @@ module Sun::Security::Jgss::Spi
     end
     
     typesig { [] }
-    # 
     # Returns the accept lifetime remaining.
     # 
     # @return the accept lifetime remaining in seconds
@@ -90,7 +84,6 @@ module Sun::Security::Jgss::Spi
     end
     
     typesig { [] }
-    # 
     # Determines if this credential element can be used by a context
     # initiator.
     # @return true if it can be used for initiating contexts
@@ -99,7 +92,6 @@ module Sun::Security::Jgss::Spi
     end
     
     typesig { [] }
-    # 
     # Determines if this credential element can be used by a context
     # acceptor.
     # @return true if it can be used for accepting contexts
@@ -108,7 +100,6 @@ module Sun::Security::Jgss::Spi
     end
     
     typesig { [] }
-    # 
     # Returns the oid representing the underlying credential
     # mechanism oid.
     # 

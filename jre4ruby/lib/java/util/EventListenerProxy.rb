@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 2000-2004 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -31,7 +30,6 @@ module Java::Util
     }
   end
   
-  # 
   # An abstract wrapper class for an EventListener class which associates a set
   # of additional parameters with the listener. Subclasses must provide the
   # storage and accessor methods for the additional arguments or parameters.
@@ -68,7 +66,6 @@ module Java::Util
     undef_method :listener=
     
     typesig { [EventListener] }
-    # 
     # @param listener The listener object.
     def initialize(listener)
       @listener = nil
@@ -76,7 +73,6 @@ module Java::Util
     end
     
     typesig { [] }
-    # 
     # @return The listener associated with this proxy.
     def get_listener
       return @listener

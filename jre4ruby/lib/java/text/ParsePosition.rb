@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 1996-2002 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -42,7 +41,6 @@ module Java::Text
     }
   end
   
-  # 
   # <code>ParsePosition</code> is a simple class used by <code>Format</code>
   # and its subclasses to keep track of the current position during parsing.
   # The <code>parseObject</code> method in the various <code>Format</code>
@@ -58,7 +56,6 @@ module Java::Text
   class ParsePosition 
     include_class_members ParsePositionImports
     
-    # 
     # Input: the place you start parsing.
     # <br>Output: position where the parse stopped.
     # This is designed to be used serially,
@@ -76,7 +73,6 @@ module Java::Text
     undef_method :error_index=
     
     typesig { [] }
-    # 
     # Retrieve the current parse position.  On input to a parse method, this
     # is the index of the character at which parsing will begin; on output, it
     # is the index of the character following the last character parsed.
@@ -85,14 +81,12 @@ module Java::Text
     end
     
     typesig { [::Java::Int] }
-    # 
     # Set the current parse position.
     def set_index(index)
       @index = index
     end
     
     typesig { [::Java::Int] }
-    # 
     # Create a new ParsePosition with the given initial index.
     def initialize(index)
       @index = 0
@@ -101,7 +95,6 @@ module Java::Text
     end
     
     typesig { [::Java::Int] }
-    # 
     # Set the index at which a parse error occurred.  Formatters
     # should set this before returning an error code from their
     # parseObject method.  The default value is -1 if this is not set.
@@ -111,7 +104,6 @@ module Java::Text
     end
     
     typesig { [] }
-    # 
     # Retrieve the index at which an error occurred, or -1 if the
     # error index has not been set.
     # @since 1.2
@@ -120,7 +112,6 @@ module Java::Text
     end
     
     typesig { [Object] }
-    # 
     # Overrides equals
     def equals(obj)
       if ((obj).nil?)
@@ -134,7 +125,6 @@ module Java::Text
     end
     
     typesig { [] }
-    # 
     # Returns a hash code for this ParsePosition.
     # @return a hash code value for this object
     def hash_code
@@ -142,7 +132,6 @@ module Java::Text
     end
     
     typesig { [] }
-    # 
     # Return a string representation of this ParsePosition.
     # @return  a string representation of this object
     def to_s

@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 1996-2005 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -31,7 +30,6 @@ module Java::Io
     }
   end
   
-  # 
   # Thrown when an instance is required to have a Serializable interface.
   # The serialization runtime or the class of the instance can throw
   # this exception. The argument should be the name of the class.
@@ -47,7 +45,6 @@ module Java::Io
     }
     
     typesig { [String] }
-    # 
     # Constructs a NotSerializableException object with message string.
     # 
     # @param classname Class of the instance being serialized/deserialized.
@@ -56,7 +53,6 @@ module Java::Io
     end
     
     typesig { [] }
-    # 
     # Constructs a NotSerializableException object.
     def initialize
       super()

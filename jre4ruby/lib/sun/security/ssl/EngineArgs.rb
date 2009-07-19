@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 2004-2007 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -33,7 +32,6 @@ module Sun::Security::Ssl
     }
   end
   
-  # 
   # A multi-purpose class which handles all of the SSLEngine arguments.
   # It validates arguments, checks for RO conditions, does space
   # calculations, performs scatter/gather, etc.
@@ -42,7 +40,6 @@ module Sun::Security::Ssl
   class EngineArgs 
     include_class_members EngineArgsImports
     
-    # 
     # Keep track of the input parameters.
     attr_accessor :net_data
     alias_method :attr_net_data, :net_data
@@ -69,7 +66,6 @@ module Sun::Security::Ssl
     alias_method :attr_len=, :len=
     undef_method :len=
     
-    # 
     # The initial pos/limit conditions.  This is useful because we can
     # quickly calculate the amount consumed/produced in successful
     # operations, or easily return the buffers to their pre-error
@@ -98,7 +94,6 @@ module Sun::Security::Ssl
     alias_method :attr_app_lims=, :app_lims=
     undef_method :app_lims=
     
-    # 
     # Sum total of the space remaining in all of the appData buffers
     attr_accessor :app_remaining
     alias_method :attr_app_remaining, :app_remaining
@@ -113,7 +108,6 @@ module Sun::Security::Ssl
     undef_method :wrap_method=
     
     typesig { [Array.typed(ByteBuffer), ::Java::Int, ::Java::Int, ByteBuffer] }
-    # 
     # Called by the SSLEngine.wrap() method.
     def initialize(app_data, offset, len, net_data)
       @net_data = nil
@@ -131,7 +125,6 @@ module Sun::Security::Ssl
     end
     
     typesig { [ByteBuffer, Array.typed(ByteBuffer), ::Java::Int, ::Java::Int] }
-    # 
     # Called by the SSLEngine.unwrap() method.
     def initialize(net_data, app_data, offset, len)
       @net_data = nil
@@ -149,7 +142,6 @@ module Sun::Security::Ssl
     end
     
     typesig { [ByteBuffer, Array.typed(ByteBuffer), ::Java::Int, ::Java::Int] }
-    # 
     # The main initialization method for the arguments.  Most
     # of them are pretty obvious as to what they do.
     # 
@@ -178,7 +170,6 @@ module Sun::Security::Ssl
         if ((app_data[i]).nil?)
           raise IllegalArgumentException.new("appData[" + (i).to_s + "] == null")
         end
-        # 
         # If we're unwrapping, then check to make sure our
         # destination bufffers are writable.
         if (!@wrap_method && app_data[i].is_read_only)
@@ -189,7 +180,6 @@ module Sun::Security::Ssl
         @app_lims[i] = app_data[i].limit
         ((i += 1) - 1)
       end
-      # 
       # Ok, looks like we have a good set of args, let's
       # store the rest of this stuff.
       @net_data = net_data
@@ -199,7 +189,6 @@ module Sun::Security::Ssl
     end
     
     typesig { [::Java::Int] }
-    # 
     # Given spaceLeft bytes to transfer, gather up that much data
     # from the appData buffers (starting at offset in the array),
     # and transfer it into the netData buffer.
@@ -217,7 +206,6 @@ module Sun::Security::Ssl
     end
     
     typesig { [ByteBuffer] }
-    # 
     # Using the supplied buffer, scatter the data into the appData buffers
     # (starting at offset in the array).
     # 
@@ -241,7 +229,6 @@ module Sun::Security::Ssl
     end
     
     typesig { [] }
-    # 
     # Calculate the bytesConsumed/byteProduced.  Aren't you glad
     # we saved this off earlier?
     def delta_net
@@ -249,7 +236,6 @@ module Sun::Security::Ssl
     end
     
     typesig { [] }
-    # 
     # Calculate the bytesConsumed/byteProduced.  Aren't you glad
     # we saved this off earlier?
     def delta_app
@@ -263,7 +249,6 @@ module Sun::Security::Ssl
     end
     
     typesig { [] }
-    # 
     # In the case of Exception, we want to reset the positions
     # to appear as though no data has been consumed or produced.
     def reset_pos
@@ -276,7 +261,6 @@ module Sun::Security::Ssl
     end
     
     typesig { [] }
-    # 
     # We are doing lots of ByteBuffer manipulations, in which case
     # we need to make sure that the limits get set back correctly.
     # This is one of the last things to get done before returning to

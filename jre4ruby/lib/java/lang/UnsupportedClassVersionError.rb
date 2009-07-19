@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 1998-1999 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -30,7 +29,6 @@ module Java::Lang
     }
   end
   
-  # 
   # Thrown when the Java Virtual Machine attempts to read a class
   # file and determines that the major and minor version numbers
   # in the file are not supported.
@@ -40,7 +38,6 @@ module Java::Lang
     include_class_members UnsupportedClassVersionErrorImports
     
     typesig { [] }
-    # 
     # Constructs a <code>UnsupportedClassVersionError</code>
     # with no detail message.
     def initialize
@@ -48,7 +45,6 @@ module Java::Lang
     end
     
     typesig { [String] }
-    # 
     # Constructs a <code>UnsupportedClassVersionError</code> with
     # the specified detail message.
     # 

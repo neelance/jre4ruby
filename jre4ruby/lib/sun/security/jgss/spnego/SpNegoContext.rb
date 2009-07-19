@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 2005-2006 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -39,7 +38,6 @@ module Sun::Security::Jgss::Spnego
     }
   end
   
-  # 
   # Implements the mechanism specific context class for SPNEGO
   # GSS-API mechanism
   # 
@@ -50,7 +48,6 @@ module Sun::Security::Jgss::Spnego
     include GSSContextSpi
     
     class_module.module_eval {
-      # 
       # The different states that this context can be in.
       const_set_lazy(:STATE_NEW) { 1 }
       const_attr_reader  :STATE_NEW
@@ -91,7 +88,6 @@ module Sun::Security::Jgss::Spnego
       const_attr_reader  :CHECKSUM_INTEG_FLAG
     }
     
-    # 
     # Optional features that the application can set and their default
     # values.
     attr_accessor :cred_deleg_state
@@ -199,7 +195,6 @@ module Sun::Security::Jgss::Spnego
     }
     
     typesig { [SpNegoMechFactory, GSSNameSpi, GSSCredentialSpi, ::Java::Int] }
-    # 
     # Constructor for SpNegoContext to be called on the context initiator's
     # side.
     def initialize(factory, peer_name, my_cred, lifetime)
@@ -234,7 +229,6 @@ module Sun::Security::Jgss::Spnego
     end
     
     typesig { [SpNegoMechFactory, GSSCredentialSpi] }
-    # 
     # Constructor for SpNegoContext to be called on the context acceptor's
     # side.
     def initialize(factory, my_cred)
@@ -264,7 +258,6 @@ module Sun::Security::Jgss::Spnego
     end
     
     typesig { [SpNegoMechFactory, Array.typed(::Java::Byte)] }
-    # 
     # Constructor for SpNegoContext to import a previously exported context.
     def initialize(factory, inter_process_token)
       @state = STATE_NEW
@@ -288,7 +281,6 @@ module Sun::Security::Jgss::Spnego
     end
     
     typesig { [::Java::Boolean] }
-    # 
     # Requests that confidentiality be available.
     def request_conf(value)
       if ((@state).equal?(STATE_NEW) && is_initiator)
@@ -297,14 +289,12 @@ module Sun::Security::Jgss::Spnego
     end
     
     typesig { [] }
-    # 
     # Is confidentiality available?
     def get_conf_state
       return @conf_state
     end
     
     typesig { [::Java::Boolean] }
-    # 
     # Requests that integrity be available.
     def request_integ(value)
       if ((@state).equal?(STATE_NEW) && is_initiator)
@@ -313,14 +303,12 @@ module Sun::Security::Jgss::Spnego
     end
     
     typesig { [] }
-    # 
     # Is integrity available?
     def get_integ_state
       return @integ_state
     end
     
     typesig { [::Java::Boolean] }
-    # 
     # Requests that credential delegation be done during context
     # establishment.
     def request_cred_deleg(value)
@@ -330,7 +318,6 @@ module Sun::Security::Jgss::Spnego
     end
     
     typesig { [] }
-    # 
     # Is credential delegation enabled?
     def get_cred_deleg_state
       if (!(@mech_context).nil? && ((@state).equal?(STATE_IN_PROCESS) || (@state).equal?(STATE_DONE)))
@@ -341,7 +328,6 @@ module Sun::Security::Jgss::Spnego
     end
     
     typesig { [::Java::Boolean] }
-    # 
     # Requests that mutual authentication be done during context
     # establishment. Since this is fromm the client's perspective, it
     # essentially requests that the server be authenticated.
@@ -352,7 +338,6 @@ module Sun::Security::Jgss::Spnego
     end
     
     typesig { [] }
-    # 
     # Is mutual authentication enabled? Since this is from the client's
     # perspective, it essentially meas that the server is being
     # authenticated.
@@ -391,7 +376,6 @@ module Sun::Security::Jgss::Spnego
     end
     
     typesig { [] }
-    # 
     # Returns the mechanism oid.
     # 
     # @return the Oid of this context
@@ -419,7 +403,6 @@ module Sun::Security::Jgss::Spnego
     end
     
     typesig { [] }
-    # 
     # Tests if this is the initiator side of the context.
     # 
     # @return boolean indicating if this is initiator (true)
@@ -429,7 +412,6 @@ module Sun::Security::Jgss::Spnego
     end
     
     typesig { [] }
-    # 
     # Tests if the context can be used for per-message service.
     # Context may allow the calls to the per-message service
     # functions before being fully established.
@@ -441,7 +423,6 @@ module Sun::Security::Jgss::Spnego
     end
     
     typesig { [InputStream, ::Java::Int] }
-    # 
     # Initiator context establishment call. This method may be
     # required to be called several times. A CONTINUE_NEEDED return
     # call indicates that more calls are needed after the next token
@@ -543,8 +524,8 @@ module Sun::Security::Jgss::Spnego
               mech_token = _gss_init_sec_context(accept_token)
               # verify MIC
               if (!GSSUtil.use_msinterop)
-                mic_token_ = targ_token.get_mech_list_mic
-                if (!verify_mech_list_mic(@der_mech_types, mic_token_))
+                mic_token = targ_token.get_mech_list_mic
+                if (!verify_mech_list_mic(@der_mech_types, mic_token))
                   raise GSSException.new(error_code, -1, "verification of MIC on MechList Failed!")
                 end
               end
@@ -581,15 +562,14 @@ module Sun::Security::Jgss::Spnego
         gss_exception.init_cause(e)
         raise gss_exception
       rescue IOException => e
-        gss_exception_ = GSSException.new(GSSException::FAILURE, -1, e_.get_message)
-        gss_exception_.init_cause(e_)
-        raise gss_exception_
+        gss_exception = GSSException.new(GSSException::FAILURE, -1, e.get_message)
+        gss_exception.init_cause(e)
+        raise gss_exception
       end
       return ret_val
     end
     
     typesig { [InputStream, ::Java::Int] }
-    # 
     # Acceptor's context establishment call. This method may be
     # required to be called several times. A CONTINUE_NEEDED return
     # call indicates that more calls are needed after the next token
@@ -632,7 +612,6 @@ module Sun::Security::Jgss::Spnego
           end
           # get the mechanism token
           mech_token = init_token.get_mech_token
-          # 
           # Select the best match between the list of mechs
           # that the initiator requested and the list that
           # the acceptor will support.
@@ -692,8 +671,8 @@ module Sun::Security::Jgss::Spnego
             # read the token
             client_token = Array.typed(::Java::Byte).new(is.available) { 0 }
             SpNegoToken.read_fully(is, client_token)
-            accept_token_ = _gss_accept_sec_context(client_token)
-            if ((accept_token_).nil?)
+            accept_token = _gss_accept_sec_context(client_token)
+            if ((accept_token).nil?)
               valid = false
             end
             # determine negotiated result status
@@ -710,12 +689,12 @@ module Sun::Security::Jgss::Spnego
               @state = STATE_DONE
             end
             # generate SPNEGO token
-            targ_token_ = NegTokenTarg.new(nego_result.ordinal, nil, accept_token_, nil)
+            targ_token = NegTokenTarg.new(nego_result.ordinal, nil, accept_token, nil)
             if (DEBUG)
-              System.out.println("SpNegoContext.acceptSecContext: " + "sending token of type = " + (SpNegoToken.get_token_name(targ_token_.get_type)).to_s)
+              System.out.println("SpNegoContext.acceptSecContext: " + "sending token of type = " + (SpNegoToken.get_token_name(targ_token.get_type)).to_s)
             end
             # get the encoded token
-            ret_val = targ_token_.get_encoded
+            ret_val = targ_token.get_encoded
           else
             # XXX Use logging API
             if (DEBUG)
@@ -735,7 +714,6 @@ module Sun::Security::Jgss::Spnego
     end
     
     typesig { [] }
-    # 
     # obtain the available mechanisms
     def get_available_mechs
       if (!(@my_cred).nil?)
@@ -748,7 +726,6 @@ module Sun::Security::Jgss::Spnego
     end
     
     typesig { [Array.typed(Oid)] }
-    # 
     # get ther DER encoded MechList
     def get_encoded_mechs(mech_set)
       mech = DerOutputStream.new
@@ -766,7 +743,6 @@ module Sun::Security::Jgss::Spnego
     end
     
     typesig { [] }
-    # 
     # get the context flags
     def get_context_flags
       flags = 0
@@ -820,7 +796,6 @@ module Sun::Security::Jgss::Spnego
     end
     
     typesig { [Array.typed(::Java::Byte)] }
-    # 
     # generate MIC on mechList
     def generate_mech_list_mic(mech_types)
       # sanity check the required input
@@ -855,7 +830,6 @@ module Sun::Security::Jgss::Spnego
     end
     
     typesig { [Array.typed(::Java::Byte), Array.typed(::Java::Byte)] }
-    # 
     # verify MIC on MechList
     def verify_mech_list_mic(mech_types, token)
       # sanity check the input
@@ -888,7 +862,6 @@ module Sun::Security::Jgss::Spnego
     end
     
     typesig { [Array.typed(::Java::Byte)] }
-    # 
     # call gss_init_sec_context for the corresponding underlying mechanism
     def _gss_init_sec_context(token)
       tok = nil
@@ -920,7 +893,6 @@ module Sun::Security::Jgss::Spnego
     end
     
     typesig { [Array.typed(::Java::Byte)] }
-    # 
     # call gss_accept_sec_context for the corresponding underlying mechanism
     def _gss_accept_sec_context(token)
       if ((@mech_context).nil?)
@@ -939,7 +911,6 @@ module Sun::Security::Jgss::Spnego
     
     class_module.module_eval {
       typesig { [Array.typed(Oid), Array.typed(Oid)] }
-      # 
       # This routine compares the recieved mechset to the mechset that
       # this server can support. It looks sequentially through the mechset
       # and the first one that matches what the server can support is
@@ -988,7 +959,6 @@ module Sun::Security::Jgss::Spnego
     end
     
     typesig { [ChannelBinding] }
-    # 
     # Sets the channel bindings to be used during context
     # establishment.
     def set_channel_binding(channel_binding)
@@ -1001,7 +971,6 @@ module Sun::Security::Jgss::Spnego
     end
     
     typesig { [::Java::Boolean] }
-    # 
     # Anonymity is a little different in that after an application
     # requests anonymity it will want to know whether the mechanism
     # can support it or not, prior to sending any tokens across for
@@ -1023,7 +992,6 @@ module Sun::Security::Jgss::Spnego
     end
     
     typesig { [::Java::Int] }
-    # 
     # Requests the desired lifetime. Can only be used on the context
     # initiator's side.
     def request_lifetime(lifetime)
@@ -1033,7 +1001,6 @@ module Sun::Security::Jgss::Spnego
     end
     
     typesig { [] }
-    # 
     # The lifetime remaining for this context.
     def get_lifetime
       if (!(@mech_context).nil?)
@@ -1049,7 +1016,6 @@ module Sun::Security::Jgss::Spnego
     end
     
     typesig { [::Java::Boolean] }
-    # 
     # Requests that sequence checking be done on the GSS wrap and MIC
     # tokens.
     def request_sequence_det(value)
@@ -1059,7 +1025,6 @@ module Sun::Security::Jgss::Spnego
     end
     
     typesig { [] }
-    # 
     # Is sequence checking enabled on the GSS Wrap and MIC tokens?
     # We enable sequence checking if replay detection is enabled.
     def get_sequence_det_state
@@ -1067,7 +1032,6 @@ module Sun::Security::Jgss::Spnego
     end
     
     typesig { [::Java::Boolean] }
-    # 
     # Requests that replay detection be done on the GSS wrap and MIC
     # tokens.
     def request_replay_det(value)
@@ -1077,7 +1041,6 @@ module Sun::Security::Jgss::Spnego
     end
     
     typesig { [] }
-    # 
     # Is replay detection enabled on the GSS wrap and MIC tokens?
     # We enable replay detection if sequence checking is enabled.
     def get_replay_det_state
@@ -1117,7 +1080,6 @@ module Sun::Security::Jgss::Spnego
     end
     
     typesig { [] }
-    # 
     # Returns the delegated credential for the context. This
     # is an optional feature of contexts which not all
     # mechanisms will support. A context can be requested to

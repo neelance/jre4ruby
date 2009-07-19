@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 2003 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -33,7 +32,6 @@ module Java::Security::Spec
     }
   end
   
-  # 
   # This immutable class defines an elliptic curve (EC) prime
   # finite field.
   # 
@@ -53,7 +51,6 @@ module Java::Security::Spec
     undef_method :p=
     
     typesig { [BigInteger] }
-    # 
     # Creates an elliptic curve prime finite field
     # with the specified prime <code>p</code>.
     # @param p the prime.
@@ -69,7 +66,6 @@ module Java::Security::Spec
     end
     
     typesig { [] }
-    # 
     # Returns the field size in bits which is size of prime p
     # for this prime finite field.
     # @return the field size in bits.
@@ -78,7 +74,6 @@ module Java::Security::Spec
     end
     
     typesig { [] }
-    # 
     # Returns the prime <code>p</code> of this prime finite field.
     # @return the prime.
     def get_p
@@ -86,7 +81,6 @@ module Java::Security::Spec
     end
     
     typesig { [Object] }
-    # 
     # Compares this prime finite field for equality with the
     # specified object.
     # @param obj the object to be compared.
@@ -103,7 +97,6 @@ module Java::Security::Spec
     end
     
     typesig { [] }
-    # 
     # Returns a hash code value for this prime finite field.
     # @return a hash code value.
     def hash_code

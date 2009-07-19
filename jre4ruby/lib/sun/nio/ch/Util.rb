@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 2000-2007 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -111,8 +110,8 @@ module Sun::Nio::Ch
         # Otherwise replace a smaller one in the cache if such exists
         i_ = 0
         while i_ < TEMP_BUF_POOL_SIZE
-          ref_ = (self.attr_buffer_pool[i_].get)
-          in_cache_buf = ref_.get
+          ref = (self.attr_buffer_pool[i_].get)
+          in_cache_buf = ref.get
           if (((in_cache_buf).nil?) || (buf.capacity > in_cache_buf.capacity))
             self.attr_buffer_pool[i_].set(SoftReference.new(buf))
             return

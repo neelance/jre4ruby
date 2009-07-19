@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 1996-2005 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -31,7 +30,6 @@ module Java::Io
     }
   end
   
-  # 
   # Thrown when control information that was read from an object stream
   # violates internal consistency checks.
   # 
@@ -46,7 +44,6 @@ module Java::Io
     }
     
     typesig { [String] }
-    # 
     # Create a StreamCorruptedException and list a reason why thrown.
     # 
     # @param reason  String describing the reason for the exception.
@@ -55,7 +52,6 @@ module Java::Io
     end
     
     typesig { [] }
-    # 
     # Create a StreamCorruptedException and list no reason why thrown.
     def initialize
       super()

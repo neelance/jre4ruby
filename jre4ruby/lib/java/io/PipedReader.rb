@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 1996-2006 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -31,7 +30,6 @@ module Java::Io
     }
   end
   
-  # 
   # Piped character-input streams.
   # 
   # @author      Mark Reinhold
@@ -74,13 +72,11 @@ module Java::Io
     undef_method :write_side=
     
     class_module.module_eval {
-      # 
       # The size of the pipe's circular input buffer.
       const_set_lazy(:DEFAULT_PIPE_SIZE) { 1024 }
       const_attr_reader  :DEFAULT_PIPE_SIZE
     }
     
-    # 
     # The circular buffer into which incoming data is placed.
     attr_accessor :buffer
     alias_method :attr_buffer, :buffer
@@ -88,7 +84,6 @@ module Java::Io
     alias_method :attr_buffer=, :buffer=
     undef_method :buffer=
     
-    # 
     # The index of the position in the circular buffer at which the
     # next character of data will be stored when received from the connected
     # piped writer. <code>in&lt;0</code> implies the buffer is empty,
@@ -99,7 +94,6 @@ module Java::Io
     alias_method :attr_in=, :in=
     undef_method :in=
     
-    # 
     # The index of the position in the circular buffer at which the next
     # character of data will be read by this piped reader.
     attr_accessor :out
@@ -109,7 +103,6 @@ module Java::Io
     undef_method :out=
     
     typesig { [PipedWriter] }
-    # 
     # Creates a <code>PipedReader</code> so
     # that it is connected to the piped writer
     # <code>src</code>. Data written to <code>src</code>
@@ -122,7 +115,6 @@ module Java::Io
     end
     
     typesig { [PipedWriter, ::Java::Int] }
-    # 
     # Creates a <code>PipedReader</code> so that it is connected
     # to the piped writer <code>src</code> and uses the specified
     # pipe size for the pipe's buffer. Data written to <code>src</code>
@@ -153,7 +145,6 @@ module Java::Io
     end
     
     typesig { [] }
-    # 
     # Creates a <code>PipedReader</code> so
     # that it is not yet {@linkplain #connect(java.io.PipedWriter)
     # connected}. It must be {@linkplain java.io.PipedWriter#connect(
@@ -178,7 +169,6 @@ module Java::Io
     end
     
     typesig { [::Java::Int] }
-    # 
     # Creates a <code>PipedReader</code> so that it is not yet
     # {@link #connect(java.io.PipedWriter) connected} and uses
     # the specified pipe size for the pipe's buffer.
@@ -216,7 +206,6 @@ module Java::Io
     end
     
     typesig { [PipedWriter] }
-    # 
     # Causes this piped reader to be connected
     # to the piped  writer <code>src</code>.
     # If this object is already connected to some
@@ -244,7 +233,6 @@ module Java::Io
     end
     
     typesig { [::Java::Int] }
-    # 
     # Receives a char of data. This method will block if no input is
     # available.
     def receive(c)
@@ -285,7 +273,6 @@ module Java::Io
     end
     
     typesig { [Array.typed(::Java::Char), ::Java::Int, ::Java::Int] }
-    # 
     # Receives data into an array of characters.  This method will
     # block until some input is available.
     def receive(c, off, len)
@@ -297,7 +284,6 @@ module Java::Io
     end
     
     typesig { [] }
-    # 
     # Notifies all waiting threads that the last character of data has been
     # received.
     def received_last
@@ -308,7 +294,6 @@ module Java::Io
     end
     
     typesig { [] }
-    # 
     # Reads the next character of data from this piped stream.
     # If no character is available because the end of the stream
     # has been reached, the value <code>-1</code> is returned.
@@ -365,7 +350,6 @@ module Java::Io
     end
     
     typesig { [Array.typed(::Java::Char), ::Java::Int, ::Java::Int] }
-    # 
     # Reads up to <code>len</code> characters of data from this piped
     # stream into an array of characters. Less than <code>len</code> characters
     # will be read if the end of the data stream is reached or if
@@ -425,7 +409,6 @@ module Java::Io
     end
     
     typesig { [] }
-    # 
     # Tell whether this stream is ready to be read.  A piped character
     # stream is ready if the circular buffer is not empty.
     # 
@@ -454,7 +437,6 @@ module Java::Io
     end
     
     typesig { [] }
-    # 
     # Closes this piped stream and releases any system resources
     # associated with the stream.
     # 

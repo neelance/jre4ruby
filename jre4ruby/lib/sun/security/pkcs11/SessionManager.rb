@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 2003-2006 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -35,7 +34,6 @@ module Sun::Security::Pkcs11
     }
   end
   
-  # 
   # Session manager. There is one session manager object per PKCS#11
   # provider. It allows code to checkout a session, release it
   # back to the pool, or force it to be closed.

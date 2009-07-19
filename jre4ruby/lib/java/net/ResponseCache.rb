@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 2003-2006 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -35,7 +34,6 @@ module Java::Net
     }
   end
   
-  # 
   # Represents implementations of URLConnection caches. An instance of
   # such a class can be registered with the system by doing
   # ResponseCache.setDefault(ResponseCache), and the system will call
@@ -66,7 +64,6 @@ module Java::Net
     include_class_members ResponseCacheImports
     
     class_module.module_eval {
-      # 
       # The system wide cache that provides access to a url
       # caching mechanism.
       # 
@@ -84,7 +81,6 @@ module Java::Net
       alias_method :attr_the_response_cache=, :the_response_cache=
       
       typesig { [] }
-      # 
       # Gets the system-wide response cache.
       # 
       # @throws  SecurityException
@@ -105,7 +101,6 @@ module Java::Net
       end
       
       typesig { [ResponseCache] }
-      # 
       # Sets (or unsets) the system-wide cache.
       # 
       # Note: non-standard procotol handlers may ignore this setting.
@@ -131,7 +126,6 @@ module Java::Net
     }
     
     typesig { [URI, String, Map] }
-    # 
     # Retrieve the cached response based on the requesting uri,
     # request method and request headers. Typically this method is
     # called by the protocol handler before it sends out the request
@@ -159,7 +153,6 @@ module Java::Net
     end
     
     typesig { [URI, URLConnection] }
-    # 
     # The protocol handler calls this method after a resource has
     # been retrieved, and the ResponseCache must decide whether or
     # not to store the resource in its cache. If the resource is to

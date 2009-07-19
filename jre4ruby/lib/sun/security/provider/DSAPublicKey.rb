@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 1996-2005 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -46,7 +45,6 @@ module Sun::Security::Provider
     }
   end
   
-  # 
   # An X.509 public key for the Digital Signature Algorithm.
   # 
   # @author Benjamin Renaud
@@ -74,7 +72,6 @@ module Sun::Security::Provider
     undef_method :y=
     
     typesig { [] }
-    # 
     # Keep this constructor for backwards compatibility with JDK1.1.
     def initialize
       @y = nil
@@ -82,7 +79,6 @@ module Sun::Security::Provider
     end
     
     typesig { [BigInteger, BigInteger, BigInteger, BigInteger] }
-    # 
     # Make a DSA public key out of a public key and three parameters.
     # The p, q, and g parameters may be null, but if so, parameters will need
     # to be supplied from some other source before this key can be used in
@@ -108,7 +104,6 @@ module Sun::Security::Provider
     end
     
     typesig { [Array.typed(::Java::Byte)] }
-    # 
     # Make a DSA public key from its DER encoding (X.509).
     def initialize(encoded)
       @y = nil
@@ -117,7 +112,6 @@ module Sun::Security::Provider
     end
     
     typesig { [] }
-    # 
     # Returns the DSA parameters associated with this key, or null if the
     # parameters could not be parsed.
     def get_params
@@ -139,7 +133,6 @@ module Sun::Security::Provider
     end
     
     typesig { [] }
-    # 
     # Get the raw public value, y, without the parameters.
     # 
     # @see getParameters

@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 2003-2006 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -33,7 +32,6 @@ module Java::Security::Spec
     }
   end
   
-  # 
   # This immutable class holds the necessary values needed to represent
   # an elliptic curve.
   # 
@@ -97,7 +95,6 @@ module Java::Security::Spec
     }
     
     typesig { [ECField, BigInteger, BigInteger] }
-    # 
     # Creates an elliptic curve with the specified elliptic field
     # <code>field</code> and the coefficients <code>a</code> and
     # <code>b</code>.
@@ -113,7 +110,6 @@ module Java::Security::Spec
     end
     
     typesig { [ECField, BigInteger, BigInteger, Array.typed(::Java::Byte)] }
-    # 
     # Creates an elliptic curve with the specified elliptic field
     # <code>field</code>, the coefficients <code>a</code> and
     # <code>b</code>, and the <code>seed</code> used for curve generation.
@@ -154,7 +150,6 @@ module Java::Security::Spec
     end
     
     typesig { [] }
-    # 
     # Returns the finite field <code>field</code> that this
     # elliptic curve is over.
     # @return the field <code>field</code> that this curve
@@ -164,7 +159,6 @@ module Java::Security::Spec
     end
     
     typesig { [] }
-    # 
     # Returns the first coefficient <code>a</code> of the
     # elliptic curve.
     # @return the first coefficient <code>a</code>.
@@ -173,7 +167,6 @@ module Java::Security::Spec
     end
     
     typesig { [] }
-    # 
     # Returns the second coefficient <code>b</code> of the
     # elliptic curve.
     # @return the second coefficient <code>b</code>.
@@ -182,7 +175,6 @@ module Java::Security::Spec
     end
     
     typesig { [] }
-    # 
     # Returns the seeding bytes <code>seed</code> used
     # during curve generation. May be null if not specified.
     # @return the seeding bytes <code>seed</code>. A new
@@ -196,7 +188,6 @@ module Java::Security::Spec
     end
     
     typesig { [Object] }
-    # 
     # Compares this elliptic curve for equality with the
     # specified object.
     # @param obj the object to be compared.
@@ -217,7 +208,6 @@ module Java::Security::Spec
     end
     
     typesig { [] }
-    # 
     # Returns a hash code value for this elliptic curve.
     # @return a hash code value.
     def hash_code

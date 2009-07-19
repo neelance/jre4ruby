@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 1994-2005 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -60,7 +59,6 @@ module Java::Lang
     }
   end
   
-  # 
   # A class loader is an object that is responsible for loading classes. The
   # class <tt>ClassLoader</tt> is an abstract class.  Given the <a
   # href="#name">binary name</a> of a class, a class loader should attempt to
@@ -235,7 +233,6 @@ module Java::Lang
     undef_method :packages=
     
     typesig { [ClassLoader] }
-    # 
     # Creates a new class loader using the specified parent class loader for
     # delegation.
     # 
@@ -275,7 +272,6 @@ module Java::Lang
     end
     
     typesig { [] }
-    # 
     # Creates a new class loader using the <tt>ClassLoader</tt> returned by
     # the method {@link #getSystemClassLoader()
     # <tt>getSystemClassLoader()</tt>} as the parent class loader.
@@ -332,7 +328,6 @@ module Java::Lang
     end
     
     typesig { [String, ::Java::Boolean] }
-    # 
     # Loads the class with the specified <a href="#name">binary name</a>.  The
     # default implementation of this method searches for classes in the
     # following order:
@@ -432,7 +427,6 @@ module Java::Lang
     end
     
     typesig { [String] }
-    # 
     # Finds the class with the specified <a href="#name">binary name</a>.
     # This method should be overridden by class loader implementations that
     # follow the delegation model for loading classes, and will be invoked by
@@ -454,7 +448,6 @@ module Java::Lang
     end
     
     typesig { [Array.typed(::Java::Byte), ::Java::Int, ::Java::Int] }
-    # 
     # Converts an array of bytes into an instance of class <tt>Class</tt>.
     # Before the <tt>Class</tt> can be used it must be resolved.  This method
     # is deprecated in favor of the version that takes a <a
@@ -493,7 +486,6 @@ module Java::Lang
     end
     
     typesig { [String, Array.typed(::Java::Byte), ::Java::Int, ::Java::Int] }
-    # 
     # Converts an array of bytes into an instance of class <tt>Class</tt>.
     # Before the <tt>Class</tt> can be used it must be resolved.
     # 
@@ -622,7 +614,6 @@ module Java::Lang
     end
     
     typesig { [String, Array.typed(::Java::Byte), ::Java::Int, ::Java::Int, ProtectionDomain] }
-    # 
     # Converts an array of bytes into an instance of class <tt>Class</tt>,
     # with an optional <tt>ProtectionDomain</tt>.  If the domain is
     # <tt>null</tt>, then a default domain will be assigned to the class as
@@ -702,7 +693,6 @@ module Java::Lang
     end
     
     typesig { [String, Java::Nio::ByteBuffer, ProtectionDomain] }
-    # 
     # Converts a {@link java.nio.ByteBuffer <tt>ByteBuffer</tt>}
     # into an instance of class <tt>Class</tt>,
     # with an optional <tt>ProtectionDomain</tt>.  If the domain is
@@ -783,9 +773,9 @@ module Java::Lang
       begin
         c = define_class2(name, b, b.position, len, protection_domain, source)
       rescue ClassFormatError => cfe
-        tb_ = Array.typed(::Java::Byte).new(len) { 0 }
-        b.get(tb_) # get bytes out of byte buffer.
-        c = define_transformed_class(name, tb_, 0, len, protection_domain, cfe, source)
+        tb = Array.typed(::Java::Byte).new(len) { 0 }
+        b.get(tb) # get bytes out of byte buffer.
+        c = define_transformed_class(name, tb, 0, len, protection_domain, cfe, source)
       end
       post_define_class(c, protection_domain)
       return c
@@ -854,7 +844,6 @@ module Java::Lang
     end
     
     typesig { [Array.typed(Java::Security::Cert::Certificate), Array.typed(Java::Security::Cert::Certificate)] }
-    # 
     # check to make sure the certs for the new class (certs) are the same as
     # the certs for the first class inserted in the package (pcerts)
     def compare_certs(pcerts, certs)
@@ -889,13 +878,13 @@ module Java::Lang
       i_ = 0
       while i_ < pcerts.attr_length
         match = false
-        j_ = 0
-        while j_ < certs.attr_length
-          if ((pcerts[i_] == certs[j_]))
+        j = 0
+        while j < certs.attr_length
+          if ((pcerts[i_] == certs[j]))
             match = true
             break
           end
-          ((j_ += 1) - 1)
+          ((j += 1) - 1)
         end
         if (!match)
           return false
@@ -906,7 +895,6 @@ module Java::Lang
     end
     
     typesig { [Class] }
-    # 
     # Links the specified class.  This (misleadingly named) method may be
     # used by a class loader to link a class.  If the class <tt>c</tt> has
     # already been linked, then this method simply returns. Otherwise, the
@@ -934,7 +922,6 @@ module Java::Lang
     end
     
     typesig { [String] }
-    # 
     # Finds a class with the specified <a href="#name">binary name</a>,
     # loading it if necessary.
     # 
@@ -991,7 +978,6 @@ module Java::Lang
     end
     
     typesig { [String] }
-    # 
     # Returns the class with the given <a href="#name">binary name</a> if this
     # loader has been recorded by the Java virtual machine as an initiating
     # loader of a class with that <a href="#name">binary name</a>.  Otherwise
@@ -1019,7 +1005,6 @@ module Java::Lang
     end
     
     typesig { [Class, Array.typed(Object)] }
-    # 
     # Sets the signers of a class.  This should be invoked after defining a
     # class.  </p>
     # 
@@ -1072,7 +1057,6 @@ module Java::Lang
     end
     
     typesig { [String] }
-    # 
     # Finds all the resources with the given name. A resource is some data
     # (images, audio, text, etc) that can be accessed by class code in a way
     # that is independent of the location of the code.
@@ -1109,7 +1093,6 @@ module Java::Lang
     end
     
     typesig { [String] }
-    # 
     # Finds the resource with the given name. Class loader implementations
     # should override this method to specify where to find resources.  </p>
     # 
@@ -1125,7 +1108,6 @@ module Java::Lang
     end
     
     typesig { [String] }
-    # 
     # Returns an enumeration of {@link java.net.URL <tt>URL</tt>} objects
     # representing all the resources with the given name. Class loader
     # implementations should override this method to specify where to load
@@ -1147,7 +1129,6 @@ module Java::Lang
     
     class_module.module_eval {
       typesig { [String] }
-      # 
       # Find a resource of the specified name from the search path used to load
       # classes.  This method locates the resource through the system class
       # loader (see {@link #getSystemClassLoader()}).  </p>
@@ -1168,7 +1149,6 @@ module Java::Lang
       end
       
       typesig { [String] }
-      # 
       # Finds all resources of the specified name from the search path used to
       # load classes.  The resources thus found are returned as an
       # {@link java.util.Enumeration <tt>Enumeration</tt>} of {@link
@@ -1196,7 +1176,6 @@ module Java::Lang
       end
       
       typesig { [String] }
-      # 
       # Find resources from the VM's built-in classloader.
       def get_bootstrap_resource(name)
         ucp = get_bootstrap_class_path
@@ -1205,7 +1184,6 @@ module Java::Lang
       end
       
       typesig { [String] }
-      # 
       # Find resources from the VM's built-in classloader.
       def get_bootstrap_resources(name)
         e = get_bootstrap_class_path.get_resources(name)
@@ -1256,7 +1234,6 @@ module Java::Lang
     }
     
     typesig { [String] }
-    # 
     # Returns an input stream for reading the specified resource.
     # 
     # <p> The search order is described in the documentation for {@link
@@ -1280,7 +1257,6 @@ module Java::Lang
     
     class_module.module_eval {
       typesig { [String] }
-      # 
       # Open for reading, a resource of the specified name from the search path
       # used to load classes.  This method locates the resource through the
       # system class loader (see {@link #getSystemClassLoader()}).  </p>
@@ -1344,7 +1320,6 @@ module Java::Lang
     
     class_module.module_eval {
       typesig { [] }
-      # 
       # Returns the system class loader for delegation.  This is the default
       # delegation parent for new <tt>ClassLoader</tt> instances, and is
       # typically the class loader used to start the application.
@@ -1560,7 +1535,6 @@ module Java::Lang
     end
     
     typesig { [String] }
-    # 
     # Returns a <tt>Package</tt> that has been defined by this class loader
     # or any of its ancestors.  </p>
     # 
@@ -1589,7 +1563,6 @@ module Java::Lang
     end
     
     typesig { [] }
-    # 
     # Returns all of the <tt>Packages</tt> defined by this class loader and
     # its ancestors.  </p>
     # 
@@ -1644,7 +1617,6 @@ module Java::Lang
     end
     
     class_module.module_eval {
-      # 
       # The inner class NativeLibrary denotes a loaded native library instance.
       # Every classloader contains a vector of loaded native libraries in the
       # private field <tt>nativeLibraries</tt>.  The native libraries loaded
@@ -1910,8 +1882,8 @@ module Java::Lang
         end
         i = 0
         while i < self.attr_sys_paths.attr_length
-          libfile_ = JavaFile.new(self.attr_sys_paths[i], System.map_library_name(name))
-          if (load_library0(from_class, libfile_))
+          libfile = JavaFile.new(self.attr_sys_paths[i], System.map_library_name(name))
+          if (load_library0(from_class, libfile))
             return
           end
           ((i += 1) - 1)
@@ -1919,8 +1891,8 @@ module Java::Lang
         if (!(loader).nil?)
           i_ = 0
           while i_ < self.attr_usr_paths.attr_length
-            libfile__ = JavaFile.new(self.attr_usr_paths[i_], System.map_library_name(name))
-            if (load_library0(from_class, libfile__))
+            libfile = JavaFile.new(self.attr_usr_paths[i_], System.map_library_name(name))
+            if (load_library0(from_class, libfile))
               return
             end
             ((i_ += 1) - 1)
@@ -1989,9 +1961,9 @@ module Java::Lang
             n = self.attr_native_library_context.size
             i_ = 0
             while i_ < n
-              lib_ = self.attr_native_library_context.element_at(i_)
-              if ((name == lib_.attr_name))
-                if ((loader).equal?(lib_.attr_from_class.get_class_loader))
+              lib = self.attr_native_library_context.element_at(i_)
+              if ((name == lib.attr_name))
+                if ((loader).equal?(lib.attr_from_class.get_class_loader))
                   return true
                 else
                   raise UnsatisfiedLinkError.new("Native Library " + name + " is being loaded in another classloader")
@@ -1999,16 +1971,16 @@ module Java::Lang
               end
               ((i_ += 1) - 1)
             end
-            lib__ = NativeLibrary.new(from_class, name)
-            self.attr_native_library_context.push(lib__)
+            lib = NativeLibrary.new(from_class, name)
+            self.attr_native_library_context.push(lib)
             begin
-              lib__.load(name)
+              lib.load(name)
             ensure
               self.attr_native_library_context.pop
             end
-            if (!(lib__.attr_handle).equal?(0))
+            if (!(lib.attr_handle).equal?(0))
               self.attr_loaded_library_names.add_element(name)
-              libs.add_element(lib__)
+              libs.add_element(lib)
               return true
             end
             return false
@@ -2066,7 +2038,6 @@ module Java::Lang
     undef_method :class_assertion_status=
     
     typesig { [::Java::Boolean] }
-    # 
     # Sets the default assertion status for this class loader.  This setting
     # determines whether classes loaded by this class loader and initialized
     # in the future will have assertions enabled or disabled by default.
@@ -2090,7 +2061,6 @@ module Java::Lang
     end
     
     typesig { [String, ::Java::Boolean] }
-    # 
     # Sets the package default assertion status for the named package.  The
     # package default assertion status determines the assertion status for
     # classes initialized in the future that belong to the named package or
@@ -2136,7 +2106,6 @@ module Java::Lang
     end
     
     typesig { [String, ::Java::Boolean] }
-    # 
     # Sets the desired assertion status for the named top-level class in this
     # class loader and any nested classes contained therein.  This setting
     # takes precedence over the class loader's default assertion status, and
@@ -2167,7 +2136,6 @@ module Java::Lang
     end
     
     typesig { [] }
-    # 
     # Sets the default assertion status for this class loader to
     # <tt>false</tt> and discards any package defaults or class assertion
     # status settings associated with the class loader.  This method is
@@ -2178,7 +2146,6 @@ module Java::Lang
     # @since  1.4
     def clear_assertion_status
       synchronized(self) do
-        # 
         # Whether or not "Java assertion maps" are initialized, set
         # them to empty maps, effectively ignoring any present settings.
         @class_assertion_status = HashMap.new
@@ -2188,7 +2155,6 @@ module Java::Lang
     end
     
     typesig { [String] }
-    # 
     # Returns the assertion status that would be assigned to the specified
     # class if it were to be initialized at the time this method is invoked.
     # If the named class has had its assertion status set, the most recent

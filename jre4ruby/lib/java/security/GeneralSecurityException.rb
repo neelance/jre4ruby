@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 1997-2003 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -31,7 +30,6 @@ module Java::Security
     }
   end
   
-  # 
   # The <code>GeneralSecurityException</code> class is a generic
   # security exception class that provides type safety for all the
   # security-related exception classes that extend from it.
@@ -46,14 +44,12 @@ module Java::Security
     }
     
     typesig { [] }
-    # 
     # Constructs a GeneralSecurityException with no detail message.
     def initialize
       super()
     end
     
     typesig { [String] }
-    # 
     # Constructs a GeneralSecurityException with the specified detail
     # message.
     # A detail message is a String that describes this particular
@@ -65,7 +61,6 @@ module Java::Security
     end
     
     typesig { [String, Exception] }
-    # 
     # Creates a <code>GeneralSecurityException</code> with the specified
     # detail message and cause.
     # 
@@ -80,7 +75,6 @@ module Java::Security
     end
     
     typesig { [Exception] }
-    # 
     # Creates a <code>GeneralSecurityException</code> with the specified cause
     # and a detail message of <tt>(cause==null ? null : cause.toString())</tt>
     # (which typically contains the class and detail message of

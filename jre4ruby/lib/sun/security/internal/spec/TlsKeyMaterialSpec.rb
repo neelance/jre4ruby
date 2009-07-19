@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 2005-2007 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -34,7 +33,6 @@ module Sun::Security::Internal::Spec
     }
   end
   
-  # 
   # KeySpec class for SSL/TLS key material.
   # 
   # <p>Instances of this class are returned by the <code>generateKey()</code>
@@ -91,7 +89,6 @@ module Sun::Security::Internal::Spec
     undef_method :server_iv=
     
     typesig { [SecretKey, SecretKey] }
-    # 
     # Constructs a new TlsKeymaterialSpec from the client and server MAC
     # keys.
     # This call is equivalent to
@@ -106,7 +103,6 @@ module Sun::Security::Internal::Spec
     end
     
     typesig { [SecretKey, SecretKey, SecretKey, SecretKey] }
-    # 
     # Constructs a new TlsKeymaterialSpec from the client and server MAC
     # keys and client and server cipher keys.
     # This call is equivalent to
@@ -123,7 +119,6 @@ module Sun::Security::Internal::Spec
     end
     
     typesig { [SecretKey, SecretKey, SecretKey, IvParameterSpec, SecretKey, IvParameterSpec] }
-    # 
     # Constructs a new TlsKeymaterialSpec from the client and server MAC
     # keys, client and server cipher keys, and client and server
     # initialization vectors.
@@ -155,7 +150,6 @@ module Sun::Security::Internal::Spec
     end
     
     typesig { [] }
-    # 
     # Returns <code>TlsKeyMaterial</code>.
     # 
     # @return <code>TlsKeyMaterial</code>.
@@ -164,7 +158,6 @@ module Sun::Security::Internal::Spec
     end
     
     typesig { [] }
-    # 
     # Returns <code>null</code> because keys of this type have no encoding.
     # 
     # @return <code>null</code> because keys of this type have no encoding.
@@ -173,7 +166,6 @@ module Sun::Security::Internal::Spec
     end
     
     typesig { [] }
-    # 
     # Returns <code>null</code> because keys of this type have no encoding.
     # 
     # @return <code>null</code> because keys of this type have no encoding.
@@ -182,7 +174,6 @@ module Sun::Security::Internal::Spec
     end
     
     typesig { [] }
-    # 
     # Returns the client MAC key.
     # 
     # @return the client MAC key.
@@ -191,7 +182,6 @@ module Sun::Security::Internal::Spec
     end
     
     typesig { [] }
-    # 
     # Return the server MAC key.
     # 
     # @return the server MAC key.
@@ -200,7 +190,6 @@ module Sun::Security::Internal::Spec
     end
     
     typesig { [] }
-    # 
     # Return the client cipher key (or null).
     # 
     # @return the client cipher key (or null).
@@ -209,7 +198,6 @@ module Sun::Security::Internal::Spec
     end
     
     typesig { [] }
-    # 
     # Return the client initialization vector (or null).
     # 
     # @return the client initialization vector (or null).
@@ -218,7 +206,6 @@ module Sun::Security::Internal::Spec
     end
     
     typesig { [] }
-    # 
     # Return the server cipher key (or null).
     # 
     # @return the server cipher key (or null).
@@ -227,7 +214,6 @@ module Sun::Security::Internal::Spec
     end
     
     typesig { [] }
-    # 
     # Return the server initialization vector (or null).
     # 
     # @return the server initialization vector (or null).

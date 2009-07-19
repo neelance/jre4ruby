@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
 # This code is free software; you can redistribute it and/or modify it
@@ -42,7 +41,6 @@ module Java::Util::Concurrent
     }
   end
   
-  # 
   # A scalable concurrent {@link ConcurrentNavigableMap} implementation.
   # The map is sorted according to the {@linkplain Comparable natural
   # ordering} of its keys, or by a {@link Comparator} provided at map
@@ -100,7 +98,6 @@ module Java::Util::Concurrent
     include Java::Io::Serializable
     
     class_module.module_eval {
-      # 
       # This class implements a tree-like two-dimensionally linked skip
       # list in which the index levels are represented in separate
       # nodes from the base nodes holding data.  There are two reasons
@@ -327,19 +324,16 @@ module Java::Util::Concurrent
       const_set_lazy(:SerialVersionUID) { -8627078645895051609 }
       const_attr_reader  :SerialVersionUID
       
-      # 
       # Generates the initial random seed for the cheaper per-instance
       # random number generators used in randomLevel.
       const_set_lazy(:SeedGenerator) { Random.new }
       const_attr_reader  :SeedGenerator
       
-      # 
       # Special value used to identify base-level header
       const_set_lazy(:BASE_HEADER) { Object.new }
       const_attr_reader  :BASE_HEADER
     }
     
-    # 
     # The topmost head index of the skiplist.
     attr_accessor :head
     alias_method :attr_head, :head
@@ -347,7 +341,6 @@ module Java::Util::Concurrent
     alias_method :attr_head=, :head=
     undef_method :head=
     
-    # 
     # The comparator used to maintain order in this map, or null
     # if using natural ordering.
     # @serial
@@ -357,7 +350,6 @@ module Java::Util::Concurrent
     alias_method :attr_comparator=, :comparator=
     undef_method :comparator=
     
-    # 
     # Seed for simple random number generator.  Not volatile since it
     # doesn't matter too much if different threads don't see updates.
     attr_accessor :random_seed
@@ -395,7 +387,6 @@ module Java::Util::Concurrent
     undef_method :descending_map=
     
     typesig { [] }
-    # 
     # Initializes or resets state. Needed by constructors, clone,
     # clear, readObject. and ConcurrentSkipListSet.clone.
     # (Note that comparator must be separately initialized.)
@@ -415,7 +406,6 @@ module Java::Util::Concurrent
     }
     
     typesig { [HeadIndex, HeadIndex] }
-    # 
     # compareAndSet head node
     def cas_head(cmp, val)
       return HeadUpdater.compare_and_set(self, cmp, val)
@@ -451,7 +441,6 @@ module Java::Util::Concurrent
         undef_method :next=
         
         typesig { [Object, Object, Node] }
-        # 
         # Creates a new regular node.
         def initialize(key, value, next_)
           @key = nil
@@ -463,7 +452,6 @@ module Java::Util::Concurrent
         end
         
         typesig { [Node] }
-        # 
         # Creates a new marker node. A marker is distinguished by
         # having its value field point to itself.  Marker nodes also
         # have null keys, a fact that is exploited in a few places,
@@ -489,21 +477,18 @@ module Java::Util::Concurrent
         }
         
         typesig { [Object, Object] }
-        # 
         # compareAndSet value field
         def cas_value(cmp, val)
           return self.class::ValueUpdater.compare_and_set(self, cmp, val)
         end
         
         typesig { [Node, Node] }
-        # 
         # compareAndSet next field
         def cas_next(cmp, val)
           return self.class::NextUpdater.compare_and_set(self, cmp, val)
         end
         
         typesig { [] }
-        # 
         # Returns true if this node is a marker. This method isn't
         # actually called in any current code checking for markers
         # because callers will have already read value field and need
@@ -516,7 +501,6 @@ module Java::Util::Concurrent
         end
         
         typesig { [] }
-        # 
         # Returns true if this node is the header of base-level list.
         # @return true if this node is header node
         def is_base_header
@@ -524,7 +508,6 @@ module Java::Util::Concurrent
         end
         
         typesig { [Node] }
-        # 
         # Tries to append a deletion marker to this node.
         # @param f the assumed current successor of this node
         # @return true if successful
@@ -533,14 +516,12 @@ module Java::Util::Concurrent
         end
         
         typesig { [Node, Node] }
-        # 
         # Helps out a deletion by appending marker or unlinking from
         # predecessor. This is called during traversals when value
         # field seen to be null.
         # @param b predecessor
         # @param f successor
         def help_delete(b, f)
-          # 
           # Rechecking links and then doing only one of the
           # help-out stages per call tends to minimize CAS
           # interference among helping threads.
@@ -555,7 +536,6 @@ module Java::Util::Concurrent
         end
         
         typesig { [] }
-        # 
         # Returns value if this node contains a valid key-value pair,
         # else null.
         # @return this node's value if it isn't a marker or header or
@@ -569,7 +549,6 @@ module Java::Util::Concurrent
         end
         
         typesig { [] }
-        # 
         # Creates and returns a new SimpleImmutableEntry holding current
         # mapping if this node holds a valid value, else null.
         # @return new entry or null
@@ -614,7 +593,6 @@ module Java::Util::Concurrent
         undef_method :right=
         
         typesig { [Node, Index, Index] }
-        # 
         # Creates index node with given values.
         def initialize(node, down, right)
           @node = nil
@@ -632,14 +610,12 @@ module Java::Util::Concurrent
         }
         
         typesig { [Index, Index] }
-        # 
         # compareAndSet right field
         def cas_right(cmp, val)
           return self.class::RightUpdater.compare_and_set(self, cmp, val)
         end
         
         typesig { [] }
-        # 
         # Returns true if the node this indexes has been deleted.
         # @return true if indexed node is known to be deleted
         def indexes_deleted_node
@@ -647,7 +623,6 @@ module Java::Util::Concurrent
         end
         
         typesig { [Index, Index] }
-        # 
         # Tries to CAS newSucc as successor.  To minimize races with
         # unlink that may lose this index node, if the node being
         # indexed is known to be deleted, it doesn't try to link in.
@@ -661,7 +636,6 @@ module Java::Util::Concurrent
         end
         
         typesig { [Index] }
-        # 
         # Tries to CAS right field to skip over apparent successor
         # succ.  Fails (forcing a retraversal by caller) if this node
         # is known to be deleted.
@@ -748,7 +722,6 @@ module Java::Util::Concurrent
     }
     
     typesig { [Object] }
-    # 
     # If using comparator, return a ComparableUsingComparator, else
     # cast key as Comparable, which may cause ClassCastException,
     # which is propagated back to caller.
@@ -764,7 +737,6 @@ module Java::Util::Concurrent
     end
     
     typesig { [Object, Object] }
-    # 
     # Compares using comparator or natural ordering. Used when the
     # ComparableUsingComparator approach doesn't apply.
     def compare(k1, k2)
@@ -777,7 +749,6 @@ module Java::Util::Concurrent
     end
     
     typesig { [Object, Object, Object] }
-    # 
     # Returns true if given key greater than or equal to least and
     # strictly less than fence, bypassing either test if least or
     # fence are null. Needed mainly in submap operations.
@@ -789,7 +760,6 @@ module Java::Util::Concurrent
     end
     
     typesig { [Object, Object, Object] }
-    # 
     # Returns true if given key greater than or equal to least and less
     # or equal to fence. Needed mainly in submap operations.
     def in_open_range(key, least, fence)
@@ -844,7 +814,6 @@ module Java::Util::Concurrent
     end
     
     typesig { [JavaComparable] }
-    # 
     # Returns node holding key or null if no such, clearing out any
     # deleted nodes seen along the way.  Repeatedly traverses at
     # base-level looking for key starting at predecessor returned
@@ -924,7 +893,6 @@ module Java::Util::Concurrent
     end
     
     typesig { [Object] }
-    # 
     # Specialized variant of findNode to perform Map.get. Does a weak
     # traversal, not bothering to fix any deleted index nodes,
     # returning early if it happens to see key in index, and passing
@@ -973,8 +941,8 @@ module Java::Util::Concurrent
       while !(n).nil?
         if (!((k = n.attr_key)).nil?)
           if (((c = (key <=> k))).equal?(0))
-            v_ = n.attr_value
-            return (!(v_).nil?) ? v_ : get_using_find_node(key)
+            v = n.attr_value
+            return (!(v).nil?) ? v : get_using_find_node(key)
           else
             if (c < 0)
               break
@@ -987,13 +955,11 @@ module Java::Util::Concurrent
     end
     
     typesig { [JavaComparable] }
-    # 
     # Performs map.get via findNode.  Used as a backup if doGet
     # encounters an in-progress deletion.
     # @param key the key
     # @return the value, or null if absent
     def get_using_find_node(key)
-      # 
       # Loop needed here and elsewhere in case value field goes
       # null just as it is about to be returned, in which case we
       # lost a race with a deletion, so must retry.
@@ -1069,7 +1035,6 @@ module Java::Util::Concurrent
     end
     
     typesig { [] }
-    # 
     # Returns a random level for inserting a new node.
     # Hardwired to k=1, p=0.5, max 31 (see above and
     # Pugh's "Skip List Cookbook", sec 3.4).
@@ -1094,7 +1059,6 @@ module Java::Util::Concurrent
     end
     
     typesig { [Node, ::Java::Int] }
-    # 
     # Creates and adds index nodes for the given node.
     # @param z the node
     # @param level the level of the index
@@ -1120,11 +1084,11 @@ module Java::Util::Concurrent
         # direction.
         level = max + 1
         idxs = Array.typed(Index).new(level + 1) { nil }
-        idx_ = nil
-        i_ = 1
-        while i_ <= level
-          idxs[i_] = idx_ = Index.new(z, idx_, nil)
-          (i_ += 1)
+        idx = nil
+        i = 1
+        while i <= level
+          idxs[i] = idx = Index.new(z, idx, nil)
+          (i += 1)
         end
         oldh = nil
         k = 0
@@ -1153,7 +1117,6 @@ module Java::Util::Concurrent
     end
     
     typesig { [Index, HeadIndex, ::Java::Int] }
-    # 
     # Adds given index nodes from given level down to 1.
     # @param idx the topmost index node being inserted
     # @param h the value of head to use to insert. This must be
@@ -1291,7 +1254,6 @@ module Java::Util::Concurrent
     end
     
     typesig { [] }
-    # 
     # Possibly reduce head level if it has no nodes.  This method can
     # (rarely) make mistakes, in which case levels can disappear even
     # though they are about to contain index nodes. This impacts
@@ -1341,7 +1303,6 @@ module Java::Util::Concurrent
     end
     
     typesig { [] }
-    # 
     # Removes first entry; returns its snapshot.
     # @return null if empty, else snapshot of first entry
     def do_remove_first_entry
@@ -1372,7 +1333,6 @@ module Java::Util::Concurrent
     end
     
     typesig { [] }
-    # 
     # Clears out index nodes associated with deleted first entry.
     def clear_index_to_first
       loop do
@@ -1398,7 +1358,6 @@ module Java::Util::Concurrent
     # Specialized version of find to get last valid node.
     # @return last node or null if empty
     def find_last
-      # 
       # findPredecessor can't be used to traverse index level
       # because this doesn't use comparisons.  So traversals of
       # both levels are folded together.
@@ -1447,7 +1406,6 @@ module Java::Util::Concurrent
     end
     
     typesig { [] }
-    # 
     # Specialized variant of findPredecessor to get predecessor of last
     # valid node.  Needed when removing the last entry.  It is possible
     # that all successors of returned node will have been deleted upon
@@ -1480,7 +1438,6 @@ module Java::Util::Concurrent
     end
     
     typesig { [] }
-    # 
     # Removes last entry; returns its snapshot.
     # Specialized variant of doRemove.
     # @return null if empty, else snapshot of last entry
@@ -1594,7 +1551,6 @@ module Java::Util::Concurrent
     end
     
     typesig { [Object, ::Java::Int] }
-    # 
     # Returns SimpleImmutableEntry for results of findNear.
     # @param key the key
     # @param rel the relation -- OR'ed combination of EQ, LT, GT
@@ -1631,7 +1587,6 @@ module Java::Util::Concurrent
     end
     
     typesig { [Comparator] }
-    # 
     # Constructs a new, empty map, sorted according to the specified
     # comparator.
     # 
@@ -1652,7 +1607,6 @@ module Java::Util::Concurrent
     end
     
     typesig { [Map] }
-    # 
     # Constructs a new map containing the same mappings as the given map,
     # sorted according to the {@linkplain Comparable natural ordering} of
     # the keys.
@@ -1677,7 +1631,6 @@ module Java::Util::Concurrent
     end
     
     typesig { [SortedMap] }
-    # 
     # Constructs a new map containing the same mappings and using the
     # same ordering as the specified sorted map.
     # 
@@ -1700,7 +1653,6 @@ module Java::Util::Concurrent
     end
     
     typesig { [] }
-    # 
     # Returns a shallow copy of this <tt>ConcurrentSkipListMap</tt>
     # instance. (The keys and values themselves are not cloned.)
     # 
@@ -1718,7 +1670,6 @@ module Java::Util::Concurrent
     end
     
     typesig { [SortedMap] }
-    # 
     # Streamlined bulk insertion to initialize from elements of
     # given sorted map.  Call only from constructor or clone
     # method.
@@ -1807,14 +1758,12 @@ module Java::Util::Concurrent
     end
     
     typesig { [Java::Io::ObjectInputStream] }
-    # 
     # Reconstitute the map from a stream.
     def read_object(s)
       # Read in the Comparator and any hidden stuff
       s.default_read_object
       # Reset transients
       initialize_
-      # 
       # This is nearly identical to buildFromSorted, but is
       # distinct because readObject calls can't be nicely adapted
       # as the kind of iterator needed by buildFromSorted. (They
@@ -1890,7 +1839,6 @@ module Java::Util::Concurrent
     end
     
     typesig { [Object] }
-    # 
     # Returns the value to which the specified key is mapped,
     # or {@code null} if this map contains no mapping for the key.
     # 
@@ -1908,7 +1856,6 @@ module Java::Util::Concurrent
     end
     
     typesig { [Object, Object] }
-    # 
     # Associates the specified value with the specified key in this map.
     # If the map previously contained a mapping for the key, the old
     # value is replaced.
@@ -1928,7 +1875,6 @@ module Java::Util::Concurrent
     end
     
     typesig { [Object] }
-    # 
     # Removes the mapping for the specified key from this map if present.
     # 
     # @param  key key for which mapping should be removed
@@ -1942,7 +1888,6 @@ module Java::Util::Concurrent
     end
     
     typesig { [Object] }
-    # 
     # Returns <tt>true</tt> if this map maps one or more keys to the
     # specified value.  This operation requires time linear in the
     # map size.
@@ -1967,7 +1912,6 @@ module Java::Util::Concurrent
     end
     
     typesig { [] }
-    # 
     # Returns the number of key-value mappings in this map.  If this map
     # contains more than <tt>Integer.MAX_VALUE</tt> elements, it
     # returns <tt>Integer.MAX_VALUE</tt>.
@@ -1995,7 +1939,6 @@ module Java::Util::Concurrent
     end
     
     typesig { [] }
-    # 
     # Returns <tt>true</tt> if this map contains no key-value mappings.
     # @return <tt>true</tt> if this map contains no key-value mappings
     def is_empty
@@ -2003,7 +1946,6 @@ module Java::Util::Concurrent
     end
     
     typesig { [] }
-    # 
     # Removes all of the mappings from this map.
     def clear
       initialize_
@@ -2051,7 +1993,6 @@ module Java::Util::Concurrent
     end
     
     typesig { [] }
-    # 
     # Returns a {@link Collection} view of the values contained in this map.
     # The collection's iterator returns the values in ascending order
     # of the corresponding keys.
@@ -2074,7 +2015,6 @@ module Java::Util::Concurrent
     end
     
     typesig { [] }
-    # 
     # Returns a {@link Set} view of the mappings contained in this map.
     # The set's iterator returns the entries in ascending key order.
     # The set is backed by the map, so changes to the map are
@@ -2141,8 +2081,8 @@ module Java::Util::Concurrent
           end
         end
         m.entry_set.each do |e|
-          k = e_.get_key
-          v = e_.get_value
+          k = e.get_key
+          v = e.get_value
           if ((k).nil? || (v).nil? || !(v == get(k)))
             return false
           end
@@ -2173,7 +2113,6 @@ module Java::Util::Concurrent
     end
     
     typesig { [Object, Object] }
-    # 
     # {@inheritDoc}
     # 
     # @throws ClassCastException if the specified key cannot be compared
@@ -2190,7 +2129,6 @@ module Java::Util::Concurrent
     end
     
     typesig { [Object, Object, Object] }
-    # 
     # {@inheritDoc}
     # 
     # @throws ClassCastException if the specified key cannot be compared
@@ -2219,7 +2157,6 @@ module Java::Util::Concurrent
     end
     
     typesig { [Object, Object] }
-    # 
     # {@inheritDoc}
     # 
     # @return the previous value associated with the specified key,
@@ -2251,7 +2188,6 @@ module Java::Util::Concurrent
     end
     
     typesig { [] }
-    # 
     # @throws NoSuchElementException {@inheritDoc}
     def first_key
       n = find_first
@@ -2262,7 +2198,6 @@ module Java::Util::Concurrent
     end
     
     typesig { [] }
-    # 
     # @throws NoSuchElementException {@inheritDoc}
     def last_key
       n = find_last
@@ -2273,7 +2208,6 @@ module Java::Util::Concurrent
     end
     
     typesig { [Object, ::Java::Boolean, Object, ::Java::Boolean] }
-    # 
     # @throws ClassCastException {@inheritDoc}
     # @throws NullPointerException if {@code fromKey} or {@code toKey} is null
     # @throws IllegalArgumentException {@inheritDoc}
@@ -2285,7 +2219,6 @@ module Java::Util::Concurrent
     end
     
     typesig { [Object, ::Java::Boolean] }
-    # 
     # @throws ClassCastException {@inheritDoc}
     # @throws NullPointerException if {@code toKey} is null
     # @throws IllegalArgumentException {@inheritDoc}
@@ -2297,7 +2230,6 @@ module Java::Util::Concurrent
     end
     
     typesig { [Object, ::Java::Boolean] }
-    # 
     # @throws ClassCastException {@inheritDoc}
     # @throws NullPointerException if {@code fromKey} is null
     # @throws IllegalArgumentException {@inheritDoc}
@@ -2309,7 +2241,6 @@ module Java::Util::Concurrent
     end
     
     typesig { [Object, Object] }
-    # 
     # @throws ClassCastException {@inheritDoc}
     # @throws NullPointerException if {@code fromKey} or {@code toKey} is null
     # @throws IllegalArgumentException {@inheritDoc}
@@ -2318,7 +2249,6 @@ module Java::Util::Concurrent
     end
     
     typesig { [Object] }
-    # 
     # @throws ClassCastException {@inheritDoc}
     # @throws NullPointerException if {@code toKey} is null
     # @throws IllegalArgumentException {@inheritDoc}
@@ -2327,7 +2257,6 @@ module Java::Util::Concurrent
     end
     
     typesig { [Object] }
-    # 
     # @throws ClassCastException {@inheritDoc}
     # @throws NullPointerException if {@code fromKey} is null
     # @throws IllegalArgumentException {@inheritDoc}
@@ -2350,7 +2279,6 @@ module Java::Util::Concurrent
     end
     
     typesig { [Object] }
-    # 
     # @throws ClassCastException {@inheritDoc}
     # @throws NullPointerException if the specified key is null
     def lower_key(key)
@@ -2359,7 +2287,6 @@ module Java::Util::Concurrent
     end
     
     typesig { [Object] }
-    # 
     # Returns a key-value mapping associated with the greatest key
     # less than or equal to the given key, or <tt>null</tt> if there
     # is no such key. The returned entry does <em>not</em> support
@@ -2373,7 +2300,6 @@ module Java::Util::Concurrent
     end
     
     typesig { [Object] }
-    # 
     # @param key the key
     # @throws ClassCastException {@inheritDoc}
     # @throws NullPointerException if the specified key is null
@@ -2383,7 +2309,6 @@ module Java::Util::Concurrent
     end
     
     typesig { [Object] }
-    # 
     # Returns a key-value mapping associated with the least key
     # greater than or equal to the given key, or <tt>null</tt> if
     # there is no such entry. The returned entry does <em>not</em>
@@ -2396,7 +2321,6 @@ module Java::Util::Concurrent
     end
     
     typesig { [Object] }
-    # 
     # @throws ClassCastException {@inheritDoc}
     # @throws NullPointerException if the specified key is null
     def ceiling_key(key)
@@ -2405,7 +2329,6 @@ module Java::Util::Concurrent
     end
     
     typesig { [Object] }
-    # 
     # Returns a key-value mapping associated with the least key
     # strictly greater than the given key, or <tt>null</tt> if there
     # is no such key. The returned entry does <em>not</em> support
@@ -2419,7 +2342,6 @@ module Java::Util::Concurrent
     end
     
     typesig { [Object] }
-    # 
     # @param key the key
     # @throws ClassCastException {@inheritDoc}
     # @throws NullPointerException if the specified key is null
@@ -2429,7 +2351,6 @@ module Java::Util::Concurrent
     end
     
     typesig { [] }
-    # 
     # Returns a key-value mapping associated with the least
     # key in this map, or <tt>null</tt> if the map is empty.
     # The returned entry does <em>not</em> support
@@ -2448,7 +2369,6 @@ module Java::Util::Concurrent
     end
     
     typesig { [] }
-    # 
     # Returns a key-value mapping associated with the greatest
     # key in this map, or <tt>null</tt> if the map is empty.
     # The returned entry does <em>not</em> support
@@ -2467,7 +2387,6 @@ module Java::Util::Concurrent
     end
     
     typesig { [] }
-    # 
     # Removes and returns a key-value mapping associated with
     # the least key in this map, or <tt>null</tt> if the map is empty.
     # The returned entry does <em>not</em> support
@@ -2477,7 +2396,6 @@ module Java::Util::Concurrent
     end
     
     typesig { [] }
-    # 
     # Removes and returns a key-value mapping associated with
     # the greatest key in this map, or <tt>null</tt> if the map is empty.
     # The returned entry does <em>not</em> support
@@ -2990,7 +2908,6 @@ module Java::Util::Concurrent
         alias_method :initialize__entry_set, :initialize
       end }
       
-      # 
       # Submaps returned by {@link ConcurrentSkipListMap} submap operations
       # represent a subrange of mappings of their underlying
       # maps. Instances of this class support all methods of their
@@ -3074,7 +2991,6 @@ module Java::Util::Concurrent
         undef_method :values_view=
         
         typesig { [ConcurrentSkipListMap, Object, ::Java::Boolean, Object, ::Java::Boolean, ::Java::Boolean] }
-        # 
         # Creates a new submap, initializing all fields
         def initialize(map, from_key, from_inclusive, to_key, to_inclusive, is_descending)
           @m = nil
@@ -3137,7 +3053,6 @@ module Java::Util::Concurrent
         end
         
         typesig { [ConcurrentSkipListMap::Node] }
-        # 
         # Returns true if node key is less than upper bound of range
         def is_before_end(n)
           if ((n).nil?)
@@ -3159,7 +3074,6 @@ module Java::Util::Concurrent
         end
         
         typesig { [] }
-        # 
         # Returns lowest node. This node might not be in range, so
         # most usages need to check bounds
         def lo_node
@@ -3175,7 +3089,6 @@ module Java::Util::Concurrent
         end
         
         typesig { [] }
-        # 
         # Returns highest node. This node might not be in range, so
         # most usages need to check bounds
         def hi_node
@@ -3191,7 +3104,6 @@ module Java::Util::Concurrent
         end
         
         typesig { [] }
-        # 
         # Returns lowest absolute key (ignoring directonality)
         def lowest_key
           n = lo_node
@@ -3203,7 +3115,6 @@ module Java::Util::Concurrent
         end
         
         typesig { [] }
-        # 
         # Returns highest absolute key (ignoring directonality)
         def highest_key
           n = hi_node
@@ -3281,7 +3192,6 @@ module Java::Util::Concurrent
         end
         
         typesig { [Object, ::Java::Int] }
-        # 
         # Submap version of ConcurrentSkipListMap.getNearEntry
         def get_near_entry(key, rel)
           if (@is_descending)
@@ -3333,9 +3243,9 @@ module Java::Util::Concurrent
           end
           if (too_high(key))
             if (!((rel & @m.attr_lt)).equal?(0))
-              n_ = hi_node
-              if (!(n_).nil?)
-                last = n_.attr_key
+              n = hi_node
+              if (!(n).nil?)
+                last = n.attr_key
                 if (in_bounds(last))
                   return last
                 end
@@ -3344,12 +3254,12 @@ module Java::Util::Concurrent
             return nil
           end
           loop do
-            n__ = @m.find_near(key, rel)
-            if ((n__).nil? || !in_bounds(n__.attr_key))
+            n = @m.find_near(key, rel)
+            if ((n).nil? || !in_bounds(n.attr_key))
               return nil
             end
-            k = n__.attr_key
-            v = n__.get_valid_value
+            k = n.attr_key
+            v = n.get_valid_value
             if (!(v).nil?)
               return k
             end
@@ -3469,7 +3379,6 @@ module Java::Util::Concurrent
         end
         
         typesig { [Object, ::Java::Boolean, Object, ::Java::Boolean] }
-        # 
         # Utility to create submaps, where given bounds override
         # unbounded(null) ones and/or are checked against bounded ones.
         def new_sub_map(from_key, from_inclusive, to_key, to_inclusive)
@@ -3498,8 +3407,8 @@ module Java::Util::Concurrent
               to_key = @hi
               to_inclusive = @hi_inclusive
             else
-              c_ = @m.compare(to_key, @hi)
-              if (c_ > 0 || ((c_).equal?(0) && !@hi_inclusive && to_inclusive))
+              c = @m.compare(to_key, @hi)
+              if (c > 0 || ((c).equal?(0) && !@hi_inclusive && to_inclusive))
                 raise IllegalArgumentException.new("key out of range")
               end
             end
@@ -3668,7 +3577,6 @@ module Java::Util::Concurrent
         end
         
         class_module.module_eval {
-          # 
           # Variant of main Iter class to traverse through submaps.
           const_set_lazy(:SubMapIter) { Class.new do
             extend LocalClass

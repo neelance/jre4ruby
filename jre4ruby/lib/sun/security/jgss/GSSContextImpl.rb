@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 2000-2006 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -40,7 +39,6 @@ module Sun::Security::Jgss
     }
   end
   
-  # 
   # This class represents the JGSS security context and its associated
   # operations.  JGSS security contexts are established between
   # peers using locally established credentials.  Multiple contexts
@@ -226,7 +224,6 @@ module Sun::Security::Jgss
     undef_method :req_anon_state=
     
     typesig { [GSSManagerImpl, GSSName, Oid, GSSCredential, ::Java::Int] }
-    # 
     # Creates a GSSContextImp on the context initiator's side.
     def initialize(gss_manager, peer, mech, my_cred, lifetime)
       @gss_manager = nil
@@ -263,7 +260,6 @@ module Sun::Security::Jgss
     end
     
     typesig { [GSSManagerImpl, GSSCredential] }
-    # 
     # Creates a GSSContextImpl on the context acceptor's side.
     def initialize(gss_manager, my_cred)
       @gss_manager = nil
@@ -291,7 +287,6 @@ module Sun::Security::Jgss
     end
     
     typesig { [GSSManagerImpl, Array.typed(::Java::Byte)] }
-    # 
     # Creates a GSSContextImpl out of a previously exported
     # GSSContext.
     # 
@@ -324,7 +319,6 @@ module Sun::Security::Jgss
     
     typesig { [Array.typed(::Java::Byte), ::Java::Int, ::Java::Int] }
     def init_sec_context(input_buf, offset, len)
-      # 
       # Size of ByteArrayOutputStream will double each time that extra
       # bytes are to be written. Usually, without delegation, a GSS
       # initial token containing the Kerberos AP-REQ is between 400 and
@@ -408,7 +402,6 @@ module Sun::Security::Jgss
     
     typesig { [Array.typed(::Java::Byte), ::Java::Int, ::Java::Int] }
     def accept_sec_context(in_tok, offset, len)
-      # 
       # Usually initial GSS token containing a Kerberos AP-REP is less
       # than 100 bytes.
       bos = ByteArrayOutputStream.new(100)
@@ -429,7 +422,6 @@ module Sun::Security::Jgss
           # mechOid will be null for an acceptor's context
           gss_header = GSSHeader.new(in_stream)
           in_token_len = gss_header.get_mech_token_length
-          # 
           # Convert ObjectIdentifier to Oid
           @obj_id = gss_header.get_oid
           @mech_oid = Oid.new(@obj_id.to_s)

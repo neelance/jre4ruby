@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 1999-2006 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -41,7 +40,6 @@ module Java::Lang::Reflect
     }
   end
   
-  # 
   # {@code Proxy} provides static methods for creating dynamic proxy
   # classes and instances, and it is also the superclass of all
   # dynamic proxy classes created by those methods.
@@ -298,7 +296,6 @@ module Java::Lang::Reflect
       alias_method :attr_proxy_classes=, :proxy_classes=
     }
     
-    # 
     # the invocation handler for this proxy instance.
     # @serial
     attr_accessor :h
@@ -308,14 +305,12 @@ module Java::Lang::Reflect
     undef_method :h=
     
     typesig { [] }
-    # 
     # Prohibits instantiation.
     def initialize
       @h = nil
     end
     
     typesig { [InvocationHandler] }
-    # 
     # Constructs a new {@code Proxy} instance from a subclass
     # (typically, a dynamic proxy class) with the specified value
     # for its invocation handler.
@@ -328,7 +323,6 @@ module Java::Lang::Reflect
     
     class_module.module_eval {
       typesig { [ClassLoader, Class] }
-      # 
       # Returns the {@code java.lang.Class} object for a proxy class
       # given a class loader and an array of interfaces.  The proxy class
       # will be defined by the specified class loader and will implement
@@ -411,7 +405,6 @@ module Java::Lang::Reflect
         interface_set = HashSet.new # for detecting duplicates
         i = 0
         while i < interfaces.attr_length
-          # 
           # Verify that the class loader resolves the name of this
           # interface to the same Class object.
           interface_name = interfaces[i].get_name
@@ -423,13 +416,11 @@ module Java::Lang::Reflect
           if (!(interface_class).equal?(interfaces[i]))
             raise IllegalArgumentException.new((interfaces[i]).to_s + " is not visible from class loader")
           end
-          # 
           # Verify that the Class object actually represents an
           # interface.
           if (!interface_class.is_interface)
             raise IllegalArgumentException.new((interface_class.get_name).to_s + " is not an interface")
           end
-          # 
           # Verify that this interface is not a duplicate.
           if (interface_set.contains(interface_class))
             raise IllegalArgumentException.new("repeated interface: " + (interface_class.get_name).to_s)
@@ -438,7 +429,6 @@ module Java::Lang::Reflect
           interface_names[i] = interface_name
           ((i += 1) - 1)
         end
-        # 
         # Using string representations of the proxy interfaces as
         # keys in the proxy class cache (instead of their Class
         # objects) is sufficient because we require the proxy
@@ -447,7 +437,6 @@ module Java::Lang::Reflect
         # representation of a class makes for an implicit weak
         # reference to the class.
         key = Arrays.as_list(interface_names)
-        # 
         # Find or create the proxy class cache for the class loader.
         cache = nil
         synchronized((self.attr_loader_to_cache)) do
@@ -456,12 +445,10 @@ module Java::Lang::Reflect
             cache = HashMap.new
             self.attr_loader_to_cache.put(loader, cache)
           end
-          # 
           # This mapping will remain valid for the duration of this
           # method, without further synchronization, because the mapping
           # will only be removed if the class loader becomes unreachable.
         end
-        # 
         # Look up the list of interfaces in the proxy class cache using
         # the key.  This lookup will result in one of three possible
         # kinds of values:
@@ -472,7 +459,6 @@ module Java::Lang::Reflect
         # or a weak reference to a Class object, if a proxy class for
         # the list of interfaces has already been generated.
         synchronized((cache)) do
-          # 
           # Note that we need not worry about reaping the cache for
           # entries with cleared weak references because if a proxy class
           # has been garbage collected, its class loader will have been
@@ -492,14 +478,12 @@ module Java::Lang::Reflect
                 begin
                   cache.wait
                 rescue InterruptedException => e
-                  # 
                   # The class generation that we are waiting for should
                   # take a small, bounded time, so we can safely ignore
                   # thread interrupts here.
                 end
                 next
               else
-                # 
                 # No proxy class for this list of interfaces has been
                 # generated or is being generated, so we will go and
                 # generate it now.  Mark it as pending generation.
@@ -511,7 +495,6 @@ module Java::Lang::Reflect
         end
         begin
           proxy_pkg = nil # package to define proxy class in
-          # 
           # Record the package of a non-public proxy interface so that the
           # proxy class will be defined in the same package.  Verify that
           # all non-public proxy interfaces are in the same package.
@@ -536,14 +519,12 @@ module Java::Lang::Reflect
             # if no non-public proxy interfaces,
             proxy_pkg = "" # use the unnamed package
           end
-          # 
           # Choose a name for the proxy class to generate.
           num = 0
           synchronized((self.attr_next_unique_number_lock)) do
             num = ((self.attr_next_unique_number += 1) - 1)
           end
           proxy_name = proxy_pkg + ProxyClassNamePrefix + (num).to_s
-          # 
           # Verify that the class loader hasn't already
           # defined a class with the chosen name.
           # 
@@ -553,18 +534,16 @@ module Java::Lang::Reflect
           begin
             proxy_class = define_class0(loader, proxy_name, proxy_class_file, 0, proxy_class_file.attr_length)
           rescue ClassFormatError => e
-            # 
             # A ClassFormatError here means that (barring bugs in the
             # proxy class generation code) there was some other
             # invalid aspect of the arguments supplied to the proxy
             # class creation (such as virtual machine limitations
             # exceeded).
-            raise IllegalArgumentException.new(e__.to_s)
+            raise IllegalArgumentException.new(e.to_s)
           end
           # add to set of all generated proxy classes, for isProxyClass
           self.attr_proxy_classes.put(proxy_class, nil)
         ensure
-          # 
           # We must clean up the "pending generation" state of the proxy
           # class cache entry somehow.  If a proxy class was successfully
           # generated, store it in the cache (with a weak reference);
@@ -583,7 +562,6 @@ module Java::Lang::Reflect
       end
       
       typesig { [ClassLoader, Array.typed(Class), InvocationHandler] }
-      # 
       # Returns an instance of a proxy class for the specified interfaces
       # that dispatches method invocations to the specified invocation
       # handler.  This method is equivalent to:
@@ -615,10 +593,8 @@ module Java::Lang::Reflect
         if ((h).nil?)
           raise NullPointerException.new
         end
-        # 
         # Look up or generate the designated proxy class.
         cl = get_proxy_class(loader, interfaces)
-        # 
         # Invoke its constructor with the designated invocation handler.
         begin
           cons = cl.get_constructor(ConstructorParams)
@@ -626,16 +602,15 @@ module Java::Lang::Reflect
         rescue NoSuchMethodException => e
           raise InternalError.new(e.to_s)
         rescue IllegalAccessException => e
-          raise InternalError.new(e_.to_s)
+          raise InternalError.new(e.to_s)
         rescue InstantiationException => e
-          raise InternalError.new(e__.to_s)
+          raise InternalError.new(e.to_s)
         rescue InvocationTargetException => e
-          raise InternalError.new(e___.to_s)
+          raise InternalError.new(e.to_s)
         end
       end
       
       typesig { [Class] }
-      # 
       # Returns true if and only if the specified class was dynamically
       # generated to be a proxy class using the {@code getProxyClass}
       # method or the {@code newProxyInstance} method.
@@ -656,7 +631,6 @@ module Java::Lang::Reflect
       end
       
       typesig { [Object] }
-      # 
       # Returns the invocation handler for the specified proxy instance.
       # 
       # @param   proxy the proxy instance to return the invocation handler for
@@ -664,7 +638,6 @@ module Java::Lang::Reflect
       # @throws  IllegalArgumentException if the argument is not a
       # proxy instance
       def get_invocation_handler(proxy)
-        # 
         # Verify that the object is actually a proxy instance.
         if (!is_proxy_class(proxy.get_class))
           raise IllegalArgumentException.new("not a proxy instance")

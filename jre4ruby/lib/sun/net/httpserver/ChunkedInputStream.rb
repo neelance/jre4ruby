@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 2005 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -194,7 +193,6 @@ module Sun::Net::Httpserver
     end
     
     typesig { [] }
-    # 
     # returns the number of bytes available to read in the current chunk
     # which may be less than the real amount, but we'll live with that
     # limitation for the moment. It only affects potential efficiency

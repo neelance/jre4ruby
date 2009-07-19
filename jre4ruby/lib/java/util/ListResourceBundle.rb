@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 1996-2005 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -45,7 +44,6 @@ module Java::Util
     }
   end
   
-  # 
   # <code>ListResourceBundle</code> is an abstract subclass of
   # <code>ResourceBundle</code> that manages resources for a locale
   # in a convenient and easy to use list. See <code>ResourceBundle</code> for
@@ -115,7 +113,6 @@ module Java::Util
     include_class_members ListResourceBundleImports
     
     typesig { [] }
-    # 
     # Sole constructor.  (For invocation by subclass constructors, typically
     # implicit.)
     def initialize
@@ -138,7 +135,6 @@ module Java::Util
     end
     
     typesig { [] }
-    # 
     # Returns an <code>Enumeration</code> of the keys contained in
     # this <code>ResourceBundle</code> and its parent bundles.
     # 
@@ -155,7 +151,6 @@ module Java::Util
     end
     
     typesig { [] }
-    # 
     # Returns a <code>Set</code> of the keys contained
     # <em>only</em> in this <code>ResourceBundle</code>.
     # 
@@ -171,7 +166,6 @@ module Java::Util
     end
     
     typesig { [] }
-    # 
     # Returns an array in which each item is a pair of objects in an
     # <code>Object</code> array. The first element of each pair is
     # the key, which must be a <code>String</code>, and the second

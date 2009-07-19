@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 2005-2006 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -34,7 +33,6 @@ module Sun::Security::Krb5::Internal
     }
   end
   
-  # 
   # Implements the ASN.1 ETYPE-INFO-ENTRY type.
   # 
   # ETYPE-INFO2-ENTRY    ::= SEQUENCE {
@@ -110,7 +108,6 @@ module Sun::Security::Krb5::Internal
     end
     
     typesig { [DerValue] }
-    # 
     # Constructs a ETypeInfo2 object.
     # @param encoding a DER-encoded data.
     # @exception Asn1Exception if an error occurs while decoding an
@@ -151,7 +148,6 @@ module Sun::Security::Krb5::Internal
     end
     
     typesig { [] }
-    # 
     # Encodes this object to an OutputStream.
     # 
     # @return byte array of the encoded data.

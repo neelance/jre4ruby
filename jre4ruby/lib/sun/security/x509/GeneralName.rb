@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 1997-2004 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -33,7 +32,6 @@ module Sun::Security::X509
     }
   end
   
-  # 
   # This class implements the ASN.1 GeneralName object class.
   # <p>
   # The ASN.1 syntax for this is:
@@ -63,7 +61,6 @@ module Sun::Security::X509
     undef_method :name=
     
     typesig { [GeneralNameInterface] }
-    # 
     # Default constructor for the class.
     # 
     # @param name the selected CHOICE from the list.
@@ -77,7 +74,6 @@ module Sun::Security::X509
     end
     
     typesig { [DerValue] }
-    # 
     # Create the object from its DER encoded value.
     # 
     # @param encName the DER encoded GeneralName.
@@ -86,7 +82,6 @@ module Sun::Security::X509
     end
     
     typesig { [DerValue, ::Java::Boolean] }
-    # 
     # Create the object from its DER encoded value.
     # 
     # @param encName the DER encoded GeneralName.
@@ -158,14 +153,12 @@ module Sun::Security::X509
     end
     
     typesig { [] }
-    # 
     # Return the type of the general name.
     def get_type
       return @name.get_type
     end
     
     typesig { [] }
-    # 
     # Return the GeneralNameInterface name.
     def get_name
       # XXXX May want to consider cloning this
@@ -173,14 +166,12 @@ module Sun::Security::X509
     end
     
     typesig { [] }
-    # 
     # Return the name as user readable string
     def to_s
       return @name.to_s
     end
     
     typesig { [Object] }
-    # 
     # Compare this GeneralName with another
     # 
     # @param other GeneralName to compare to this
@@ -201,7 +192,6 @@ module Sun::Security::X509
     end
     
     typesig { [] }
-    # 
     # Returns the hash code for this GeneralName.
     # 
     # @return a hash code value.
@@ -210,7 +200,6 @@ module Sun::Security::X509
     end
     
     typesig { [DerOutputStream] }
-    # 
     # Encode the name to the specified DerOutputStream.
     # 
     # @param out the DerOutputStream to encode the the GeneralName to.

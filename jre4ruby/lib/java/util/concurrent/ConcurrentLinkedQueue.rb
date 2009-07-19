@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
 # This code is free software; you can redistribute it and/or modify it
@@ -42,7 +41,6 @@ module Java::Util::Concurrent
     }
   end
   
-  # 
   # An unbounded thread-safe {@linkplain Queue queue} based on linked nodes.
   # This queue orders elements FIFO (first-in-first-out).
   # The <em>head</em> of the queue is that element that has been on the
@@ -93,7 +91,6 @@ module Java::Util::Concurrent
       const_set_lazy(:SerialVersionUID) { 196745693267521676 }
       const_attr_reader  :SerialVersionUID
       
-      # 
       # This is a straight adaptation of Michael & Scott algorithm.
       # For explanation, read the paper.  The only (minor) algorithmic
       # difference is that this version supports lazy deletion of
@@ -197,7 +194,6 @@ module Java::Util::Concurrent
       return HeadUpdater.compare_and_set(self, cmp, val)
     end
     
-    # 
     # Pointer to header node, initialized to a dummy node.  The first
     # actual node is at head.getNext().
     attr_accessor :head
@@ -214,7 +210,6 @@ module Java::Util::Concurrent
     undef_method :tail=
     
     typesig { [] }
-    # 
     # Creates a <tt>ConcurrentLinkedQueue</tt> that is initially empty.
     def initialize
       @head = nil
@@ -225,7 +220,6 @@ module Java::Util::Concurrent
     end
     
     typesig { [Collection] }
-    # 
     # Creates a <tt>ConcurrentLinkedQueue</tt>
     # initially containing the elements of the given collection,
     # added in traversal order of the collection's iterator.
@@ -256,7 +250,6 @@ module Java::Util::Concurrent
     end
     
     typesig { [Object] }
-    # 
     # Inserts the specified element at the tail of this queue.
     # 
     # @return <tt>true</tt> (as specified by {@link Queue#offer})
@@ -337,7 +330,6 @@ module Java::Util::Concurrent
     end
     
     typesig { [] }
-    # 
     # Returns the first actual (non-header) node on list.  This is yet
     # another variant of poll/peek; here returning out the first
     # node, not element (so we cannot collapse with peek() without
@@ -367,7 +359,6 @@ module Java::Util::Concurrent
     end
     
     typesig { [] }
-    # 
     # Returns <tt>true</tt> if this queue contains no elements.
     # 
     # @return <tt>true</tt> if this queue contains no elements
@@ -376,7 +367,6 @@ module Java::Util::Concurrent
     end
     
     typesig { [] }
-    # 
     # Returns the number of elements in this queue.  If this queue
     # contains more than <tt>Integer.MAX_VALUE</tt> elements, returns
     # <tt>Integer.MAX_VALUE</tt>.
@@ -403,7 +393,6 @@ module Java::Util::Concurrent
     end
     
     typesig { [Object] }
-    # 
     # Returns <tt>true</tt> if this queue contains the specified element.
     # More formally, returns <tt>true</tt> if and only if this queue contains
     # at least one element <tt>e</tt> such that <tt>o.equals(e)</tt>.
@@ -426,7 +415,6 @@ module Java::Util::Concurrent
     end
     
     typesig { [Object] }
-    # 
     # Removes a single instance of the specified element from this queue,
     # if it is present.  More formally, removes an element <tt>e</tt> such
     # that <tt>o.equals(e)</tt>, if this queue contains one or more such
@@ -452,7 +440,6 @@ module Java::Util::Concurrent
     end
     
     typesig { [] }
-    # 
     # Returns an array containing all of the elements in this queue, in
     # proper sequence.
     # 
@@ -479,7 +466,6 @@ module Java::Util::Concurrent
     end
     
     typesig { [Array.typed(T)] }
-    # 
     # Returns an array containing all of the elements in this queue, in
     # proper sequence; the runtime type of the returned array is that of
     # the specified array.  If the queue fits in the specified array, it
@@ -536,9 +522,9 @@ module Java::Util::Concurrent
       al = ArrayList.new
       q = first
       while !(q).nil?
-        item_ = q.get_item
-        if (!(item_).nil?)
-          al.add(item_)
+        item = q.get_item
+        if (!(item).nil?)
+          al.add(item)
         end
         q = q.get_next
       end
@@ -546,7 +532,6 @@ module Java::Util::Concurrent
     end
     
     typesig { [] }
-    # 
     # Returns an iterator over the elements in this queue in proper sequence.
     # The returned iterator is a "weakly consistent" iterator that
     # will never throw {@link ConcurrentModificationException},
@@ -565,7 +550,6 @@ module Java::Util::Concurrent
         include_class_members ConcurrentLinkedQueue
         include Iterator
         
-        # 
         # Next node to return item for.
         attr_accessor :next_node
         alias_method :attr_next_node, :next_node
@@ -573,7 +557,6 @@ module Java::Util::Concurrent
         alias_method :attr_next_node=, :next_node=
         undef_method :next_node=
         
-        # 
         # nextItem holds on to item fields because once we claim
         # that an element exists in hasNext(), we must return it in
         # the following next() call even if it was in the process of
@@ -584,7 +567,6 @@ module Java::Util::Concurrent
         alias_method :attr_next_item=, :next_item=
         undef_method :next_item=
         
-        # 
         # Node of the last returned item, to support remove.
         attr_accessor :last_ret
         alias_method :attr_last_ret, :last_ret
@@ -601,7 +583,6 @@ module Java::Util::Concurrent
         end
         
         typesig { [] }
-        # 
         # Moves to next valid node and returns item to return for
         # next(), or null if no such.
         def advance
@@ -656,7 +637,6 @@ module Java::Util::Concurrent
     }
     
     typesig { [Java::Io::ObjectOutputStream] }
-    # 
     # Save the state to a stream (that is, serialize it).
     # 
     # @serialData All of the elements (each an <tt>E</tt>) in
@@ -679,7 +659,6 @@ module Java::Util::Concurrent
     end
     
     typesig { [Java::Io::ObjectInputStream] }
-    # 
     # Reconstitute the Queue instance from a stream (that is,
     # deserialize it).
     # @param s the stream

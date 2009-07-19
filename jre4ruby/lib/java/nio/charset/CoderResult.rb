@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 2001-2002 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -35,7 +34,6 @@ module Java::Nio::Charset
     }
   end
   
-  # 
   # A description of the result state of a coder.
   # 
   # <p> A charset coder, that is, either a decoder or an encoder, consumes bytes
@@ -128,7 +126,6 @@ module Java::Nio::Charset
     end
     
     typesig { [] }
-    # 
     # Returns a string describing this coder result.
     # 
     # @return  A descriptive string
@@ -138,7 +135,6 @@ module Java::Nio::Charset
     end
     
     typesig { [] }
-    # 
     # Tells whether or not this object describes an underflow condition.  </p>
     # 
     # @return  <tt>true</tt> if, and only if, this object denotes underflow
@@ -147,7 +143,6 @@ module Java::Nio::Charset
     end
     
     typesig { [] }
-    # 
     # Tells whether or not this object describes an overflow condition.  </p>
     # 
     # @return  <tt>true</tt> if, and only if, this object denotes overflow
@@ -156,7 +151,6 @@ module Java::Nio::Charset
     end
     
     typesig { [] }
-    # 
     # Tells whether or not this object describes an error condition.  </p>
     # 
     # @return  <tt>true</tt> if, and only if, this object denotes either a
@@ -166,7 +160,6 @@ module Java::Nio::Charset
     end
     
     typesig { [] }
-    # 
     # Tells whether or not this object describes a malformed-input error.
     # </p>
     # 
@@ -177,7 +170,6 @@ module Java::Nio::Charset
     end
     
     typesig { [] }
-    # 
     # Tells whether or not this object describes an unmappable-character
     # error.  </p>
     # 
@@ -188,7 +180,6 @@ module Java::Nio::Charset
     end
     
     typesig { [] }
-    # 
     # Returns the length of the erroneous input described by this
     # object&nbsp;&nbsp;<i>(optional operation)</i>.  </p>
     # 
@@ -205,14 +196,12 @@ module Java::Nio::Charset
     end
     
     class_module.module_eval {
-      # 
       # Result object indicating underflow, meaning that either the input buffer
       # has been completely consumed or, if the input buffer is not yet empty,
       # that additional input is required.  </p>
       const_set_lazy(:UNDERFLOW) { CoderResult.new(CR_UNDERFLOW, 0) }
       const_attr_reader  :UNDERFLOW
       
-      # 
       # Result object indicating overflow, meaning that there is insufficient
       # room in the output buffer.  </p>
       const_set_lazy(:OVERFLOW) { CoderResult.new(CR_OVERFLOW, 0) }
@@ -294,7 +283,6 @@ module Java::Nio::Charset
       alias_method :attr_malformed_cache=, :malformed_cache=
       
       typesig { [::Java::Int] }
-      # 
       # Static factory method that returns the unique object describing a
       # malformed-input error of the given length.  </p>
       # 
@@ -332,7 +320,6 @@ module Java::Nio::Charset
       alias_method :attr_unmappable_cache=, :unmappable_cache=
       
       typesig { [::Java::Int] }
-      # 
       # Static factory method that returns the unique result object describing
       # an unmappable-character error of the given length.  </p>
       # 
@@ -343,7 +330,6 @@ module Java::Nio::Charset
     }
     
     typesig { [] }
-    # 
     # Throws an exception appropriate to the result described by this object.
     # </p>
     # 

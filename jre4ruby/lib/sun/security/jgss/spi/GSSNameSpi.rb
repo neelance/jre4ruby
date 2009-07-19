@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 2000-2005 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -33,7 +32,6 @@ module Sun::Security::Jgss::Spi
     }
   end
   
-  # 
   # This interface is implemented by a mechanism specific name element. A
   # GSSName is conceptually a container class of several name elements from
   # different mechanisms.
@@ -48,7 +46,6 @@ module Sun::Security::Jgss::Spi
     end
     
     typesig { [GSSNameSpi] }
-    # 
     # Equals method for the GSSNameSpi objects.
     # If either name denotes an anonymous principal, the call should
     # return false.
@@ -62,7 +59,6 @@ module Sun::Security::Jgss::Spi
     end
     
     typesig { [Object] }
-    # 
     # Compares this <code>GSSNameSpi</code> object to another Object
     # that might be a <code>GSSNameSpi</code>. The behaviour is exactly
     # the same as in {@link #equals(GSSNameSpi) equals} except that
@@ -77,7 +73,6 @@ module Sun::Security::Jgss::Spi
     end
     
     typesig { [] }
-    # 
     # Returns a hashcode value for this GSSNameSpi.
     # 
     # @return a hashCode value
@@ -86,7 +81,6 @@ module Sun::Security::Jgss::Spi
     end
     
     typesig { [] }
-    # 
     # Returns a flat name representation for this object. The name
     # format is defined in RFC 2078.
     # 
@@ -98,7 +92,6 @@ module Sun::Security::Jgss::Spi
     end
     
     typesig { [] }
-    # 
     # Get the mechanism type that this NameElement corresponds to.
     # 
     # @return the Oid of the mechanism type
@@ -107,7 +100,6 @@ module Sun::Security::Jgss::Spi
     end
     
     typesig { [] }
-    # 
     # Returns a string representation for this name. The printed
     # name type can be obtained by calling getStringNameType().
     # 
@@ -119,7 +111,6 @@ module Sun::Security::Jgss::Spi
     end
     
     typesig { [] }
-    # 
     # Returns the oid describing the format of the printable name.
     # 
     # @return the Oid for the format of the printed name
@@ -128,7 +119,6 @@ module Sun::Security::Jgss::Spi
     end
     
     typesig { [] }
-    # 
     # Indicates if this name object represents an Anonymous name.
     def is_anonymous_name
       raise NotImplementedError

@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 2000 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -37,21 +36,18 @@ module Sun::Net::Spi::Nameservice::Dns
     include NameServiceDescriptor
     
     typesig { [] }
-    # 
     # Create a new instance of the corresponding name service.
     def create_name_service
       return DNSNameService.new
     end
     
     typesig { [] }
-    # 
     # Returns this service provider's name
     def get_provider_name
       return "sun"
     end
     
     typesig { [] }
-    # 
     # Returns this name service type
     # "dns" "nis" etc
     def get_type

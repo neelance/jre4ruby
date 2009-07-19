@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 2000-2002 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -33,7 +32,6 @@ module Sun::Nio::Ch
     }
   end
   
-  # 
   # An interface that allows translation (and more!).
   # 
   # @since 1.4
@@ -51,7 +49,6 @@ module Sun::Nio::Ch
     end
     
     typesig { [::Java::Int, SelectionKeyImpl] }
-    # 
     # Adds the specified ops if present in interestOps. The specified
     # ops are turned on without affecting the other ops.
     # 
@@ -63,7 +60,6 @@ module Sun::Nio::Ch
     end
     
     typesig { [::Java::Int, SelectionKeyImpl] }
-    # 
     # Sets the specified ops if present in interestOps. The specified
     # ops are turned on, and all other ops are turned off.
     # 

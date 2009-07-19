@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 1997-2000 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -33,7 +32,6 @@ module Sun::Security::X509
     }
   end
   
-  # 
   # This class implements the RFC822Name as required by the GeneralNames
   # ASN.1 object.
   # 
@@ -53,7 +51,6 @@ module Sun::Security::X509
     undef_method :name=
     
     typesig { [DerValue] }
-    # 
     # Create the RFC822Name object from the passed encoded Der value.
     # 
     # @param derValue the encoded DER RFC822Name.
@@ -65,7 +62,6 @@ module Sun::Security::X509
     end
     
     typesig { [String] }
-    # 
     # Create the RFC822Name object with the specified name.
     # 
     # @param name the RFC822Name.
@@ -77,7 +73,6 @@ module Sun::Security::X509
     end
     
     typesig { [String] }
-    # 
     # Parse an RFC822Name string to see if it is a valid
     # addr-spec according to IETF RFC822 and RFC2459:
     # [local-part@]domain
@@ -108,21 +103,18 @@ module Sun::Security::X509
     end
     
     typesig { [] }
-    # 
     # Return the type of the GeneralName.
     def get_type
       return (GeneralNameInterface::NAME_RFC822)
     end
     
     typesig { [] }
-    # 
     # Return the actual name value of the GeneralName.
     def get_name
       return @name
     end
     
     typesig { [DerOutputStream] }
-    # 
     # Encode the RFC822 name into the DerOutputStream.
     # 
     # @param out the DER stream to encode the RFC822Name to.
@@ -132,14 +124,12 @@ module Sun::Security::X509
     end
     
     typesig { [] }
-    # 
     # Convert the name into user readable string.
     def to_s
       return ("RFC822Name: " + @name)
     end
     
     typesig { [Object] }
-    # 
     # Compares this name with another, for equality.
     # 
     # @return true iff the names are equivalent
@@ -158,7 +148,6 @@ module Sun::Security::X509
     end
     
     typesig { [] }
-    # 
     # Returns the hash code value for this object.
     # 
     # @return a hash code value for this object.
@@ -167,7 +156,6 @@ module Sun::Security::X509
     end
     
     typesig { [GeneralNameInterface] }
-    # 
     # Return constraint type:<ul>
     # <li>NAME_DIFF_TYPE = -1: input name is different type from name (i.e. does not constrain)
     # <li>NAME_MATCH = 0: input name matches name
@@ -248,7 +236,6 @@ module Sun::Security::X509
     end
     
     typesig { [] }
-    # 
     # Return subtree depth of this name for purposes of determining
     # NameConstraints minimum and maximum bounds.
     # 

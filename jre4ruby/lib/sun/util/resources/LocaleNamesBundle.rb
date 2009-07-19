@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 2005 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -34,7 +33,6 @@ module Sun::Util::Resources
     }
   end
   
-  # 
   # Implements ResourceBundle for LocaleNames bundles that don't provide
   # the complete set of locale names.
   class LocaleNamesBundle < LocaleNamesBundleImports.const_get :OpenListResourceBundle

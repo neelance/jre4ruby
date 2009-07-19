@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 2000-2001 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -33,7 +32,6 @@ module Java::Nio::Channels
     }
   end
   
-  # 
   # A channel that can write bytes from a sequence of buffers.
   # 
   # <p> A <i>gathering</i> write operation writes, in a single invocation, a
@@ -53,7 +51,6 @@ module Java::Nio::Channels
     include WritableByteChannel
     
     typesig { [Array.typed(ByteBuffer), ::Java::Int, ::Java::Int] }
-    # 
     # Writes a sequence of bytes to this channel from a subsequence of the
     # given buffers.
     # 
@@ -131,7 +128,6 @@ module Java::Nio::Channels
     end
     
     typesig { [Array.typed(ByteBuffer)] }
-    # 
     # Writes a sequence of bytes to this channel from the given buffers.
     # 
     # <p> An invocation of this method of the form <tt>c.write(srcs)</tt>

@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 1994-2003 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -30,7 +29,6 @@ module Java::Lang
     }
   end
   
-  # 
   # Thrown to indicate that a method has been passed an illegal or
   # inappropriate argument.
   # 
@@ -41,7 +39,6 @@ module Java::Lang
     include_class_members IllegalArgumentExceptionImports
     
     typesig { [] }
-    # 
     # Constructs an <code>IllegalArgumentException</code> with no
     # detail message.
     def initialize
@@ -49,7 +46,6 @@ module Java::Lang
     end
     
     typesig { [String] }
-    # 
     # Constructs an <code>IllegalArgumentException</code> with the
     # specified detail message.
     # 
@@ -59,7 +55,6 @@ module Java::Lang
     end
     
     typesig { [String, Exception] }
-    # 
     # Constructs a new exception with the specified detail message and
     # cause.
     # 
@@ -79,7 +74,6 @@ module Java::Lang
     end
     
     typesig { [Exception] }
-    # 
     # Constructs a new exception with the specified cause and a detail
     # message of <tt>(cause==null ? null : cause.toString())</tt> (which
     # typically contains the class and detail message of <tt>cause</tt>).

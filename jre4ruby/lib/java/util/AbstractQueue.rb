@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
 # This code is free software; you can redistribute it and/or modify it
@@ -40,7 +39,6 @@ module Java::Util
     }
   end
   
-  # 
   # This class provides skeletal implementations of some {@link Queue}
   # operations. The implementations in this class are appropriate when
   # the base implementation does <em>not</em> allow <tt>null</tt>
@@ -71,14 +69,12 @@ module Java::Util
     include Queue
     
     typesig { [] }
-    # 
     # Constructor for use by subclasses.
     def initialize
       super()
     end
     
     typesig { [Object] }
-    # 
     # Inserts the specified element into this queue if it is possible to do so
     # immediately without violating capacity restrictions, returning
     # <tt>true</tt> upon success and throwing an <tt>IllegalStateException</tt>
@@ -106,7 +102,6 @@ module Java::Util
     end
     
     typesig { [] }
-    # 
     # Retrieves and removes the head of this queue.  This method differs
     # from {@link #poll poll} only in that it throws an exception if this
     # queue is empty.
@@ -126,7 +121,6 @@ module Java::Util
     end
     
     typesig { [] }
-    # 
     # Retrieves, but does not remove, the head of this queue.  This method
     # differs from {@link #peek peek} only in that it throws an exception if
     # this queue is empty.
@@ -146,7 +140,6 @@ module Java::Util
     end
     
     typesig { [] }
-    # 
     # Removes all of the elements from this queue.
     # The queue will be empty after this call returns.
     # 
@@ -158,7 +151,6 @@ module Java::Util
     end
     
     typesig { [Collection] }
-    # 
     # Adds all of the elements in the specified collection to this
     # queue.  Attempts to addAll of a queue to itself result in
     # <tt>IllegalArgumentException</tt>. Further, the behavior of

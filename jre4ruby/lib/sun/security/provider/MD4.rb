@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 2005-2006 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -32,7 +31,6 @@ module Sun::Security::Provider
     }
   end
   
-  # 
   # The MD4 class is used to compute an MD4 message digest over a given
   # buffer of bytes. It is an implementation of the RSA Data Security Inc
   # MD4 algorithim as described in internet RFC 1320.
@@ -172,7 +170,6 @@ module Sun::Security::Provider
     end
     
     typesig { [] }
-    # 
     # Reset the state of this object.
     def impl_reset
       # Load magic initialization constants.
@@ -183,7 +180,6 @@ module Sun::Security::Provider
     end
     
     typesig { [Array.typed(::Java::Byte), ::Java::Int] }
-    # 
     # Perform the final computations, any buffered bytes are added
     # to the digest, the count is added to the digest, and the resulting
     # digest is stored.
@@ -219,7 +215,6 @@ module Sun::Security::Provider
     }
     
     typesig { [Array.typed(::Java::Byte), ::Java::Int] }
-    # 
     # This is where the functions come together as the generic MD4
     # transformation operation. It consumes sixteen
     # bytes from the buffer, beginning at the specified offset.

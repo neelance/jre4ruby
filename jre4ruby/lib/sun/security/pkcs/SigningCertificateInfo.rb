@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 2003-2004 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -38,7 +37,6 @@ module Sun::Security::Pkcs
     }
   end
   
-  # 
   # This class represents a signing certificate attribute.
   # Its attribute value is defined by the following ASN.1 definition.
   # <pre>

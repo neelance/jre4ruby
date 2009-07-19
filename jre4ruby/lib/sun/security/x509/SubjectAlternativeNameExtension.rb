@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 1997-2006 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -35,7 +34,6 @@ module Sun::Security::X509
     }
   end
   
-  # 
   # This represents the Subject Alternative Name Extension.
   # 
   # This extension, if present, allows the subject to specify multiple
@@ -60,13 +58,11 @@ module Sun::Security::X509
     include CertAttrSet
     
     class_module.module_eval {
-      # 
       # Identifier for this attribute, to be used with the
       # get, set, delete methods of Certificate, x509 type.
       const_set_lazy(:IDENT) { "x509.info.extensions.SubjectAlternativeName" }
       const_attr_reader  :IDENT
       
-      # 
       # Attribute names.
       const_set_lazy(:NAME) { "SubjectAlternativeName" }
       const_attr_reader  :NAME
@@ -95,7 +91,6 @@ module Sun::Security::X509
     end
     
     typesig { [GeneralNames] }
-    # 
     # Create a SubjectAlternativeNameExtension with the passed GeneralNames.
     # The extension is marked non-critical.
     # 
@@ -106,7 +101,6 @@ module Sun::Security::X509
     end
     
     typesig { [Boolean, GeneralNames] }
-    # 
     # Create a SubjectAlternativeNameExtension with the specified
     # criticality and GeneralNames.
     # 
@@ -124,7 +118,6 @@ module Sun::Security::X509
     end
     
     typesig { [] }
-    # 
     # Create a default SubjectAlternativeNameExtension. The extension
     # is marked non-critical.
     def initialize
@@ -137,7 +130,6 @@ module Sun::Security::X509
     end
     
     typesig { [Boolean, Object] }
-    # 
     # Create the extension from the passed DER encoded value.
     # 
     # @param critical true if the extension is to be treated as critical.
@@ -160,7 +152,6 @@ module Sun::Security::X509
     end
     
     typesig { [] }
-    # 
     # Returns a printable representation of the SubjectAlternativeName.
     def to_s
       result = (super).to_s + "SubjectAlternativeName [\n"
@@ -176,7 +167,6 @@ module Sun::Security::X509
     end
     
     typesig { [OutputStream] }
-    # 
     # Write the extension to the OutputStream.
     # 
     # @param out the OutputStream to write the extension to.
@@ -193,7 +183,6 @@ module Sun::Security::X509
     end
     
     typesig { [String, Object] }
-    # 
     # Set the attribute value.
     def set(name, obj)
       if (name.equals_ignore_case(SUBJECT_NAME))
@@ -208,7 +197,6 @@ module Sun::Security::X509
     end
     
     typesig { [String] }
-    # 
     # Get the attribute value.
     def get(name)
       if (name.equals_ignore_case(SUBJECT_NAME))
@@ -219,7 +207,6 @@ module Sun::Security::X509
     end
     
     typesig { [String] }
-    # 
     # Delete the attribute value.
     def delete(name)
       if (name.equals_ignore_case(SUBJECT_NAME))
@@ -231,7 +218,6 @@ module Sun::Security::X509
     end
     
     typesig { [] }
-    # 
     # Return an enumeration of names of attributes existing within this
     # attribute.
     def get_elements
@@ -241,7 +227,6 @@ module Sun::Security::X509
     end
     
     typesig { [] }
-    # 
     # Return the name of this attribute.
     def get_name
       return (NAME)

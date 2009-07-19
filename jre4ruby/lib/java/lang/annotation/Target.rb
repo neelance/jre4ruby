@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 2003-2004 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -31,7 +30,6 @@ module Java::Lang::Annotation
     }
   end
   
-  # 
   # Indicates the kinds of program element to which an annotation type
   # is applicable.  If a Target meta-annotation is not present on an
   # annotation type declaration, the declared type may be used on any

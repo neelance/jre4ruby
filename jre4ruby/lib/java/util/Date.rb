@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 1994-2006 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -43,7 +42,6 @@ module Java::Util
     }
   end
   
-  # 
   # The class <code>Date</code> represents a specific instant
   # in time, with millisecond precision.
   # <p>
@@ -158,7 +156,6 @@ module Java::Util
     alias_method :attr_fast_time=, :fast_time=
     undef_method :fast_time=
     
-    # 
     # If cdate is null, then fastTime indicates the time in millis.
     # If cdate.isNormalized() is true, then fastTime and cdate are in
     # synch. Otherwise, fastTime is ignored, and cdate indicates the
@@ -190,7 +187,6 @@ module Java::Util
     }
     
     typesig { [] }
-    # 
     # Allocates a <code>Date</code> object and initializes it so that
     # it represents the time at which it was allocated, measured to the
     # nearest millisecond.
@@ -201,7 +197,6 @@ module Java::Util
     end
     
     typesig { [::Java::Long] }
-    # 
     # Allocates a <code>Date</code> object and initializes it to
     # represent the specified number of milliseconds since the
     # standard base time known as "the epoch", namely January 1,
@@ -216,7 +211,6 @@ module Java::Util
     end
     
     typesig { [::Java::Int, ::Java::Int, ::Java::Int] }
-    # 
     # Allocates a <code>Date</code> object and initializes it so that
     # it represents midnight, local time, at the beginning of the day
     # specified by the <code>year</code>, <code>month</code>, and
@@ -234,7 +228,6 @@ module Java::Util
     end
     
     typesig { [::Java::Int, ::Java::Int, ::Java::Int, ::Java::Int, ::Java::Int] }
-    # 
     # Allocates a <code>Date</code> object and initializes it so that
     # it represents the instant at the start of the minute specified by
     # the <code>year</code>, <code>month</code>, <code>date</code>,
@@ -256,7 +249,6 @@ module Java::Util
     end
     
     typesig { [::Java::Int, ::Java::Int, ::Java::Int, ::Java::Int, ::Java::Int, ::Java::Int] }
-    # 
     # Allocates a <code>Date</code> object and initializes it so that
     # it represents the instant at the start of the second specified
     # by the <code>year</code>, <code>month</code>, <code>date</code>,
@@ -296,7 +288,6 @@ module Java::Util
     end
     
     typesig { [String] }
-    # 
     # Allocates a <code>Date</code> object and initializes it so that
     # it represents the date and time indicated by the string
     # <code>s</code>, which is interpreted as if by the
@@ -312,7 +303,6 @@ module Java::Util
     end
     
     typesig { [] }
-    # 
     # Return a copy of this object.
     def clone
       d = nil
@@ -328,7 +318,6 @@ module Java::Util
     
     class_module.module_eval {
       typesig { [::Java::Int, ::Java::Int, ::Java::Int, ::Java::Int, ::Java::Int, ::Java::Int] }
-      # 
       # Determines the date and time based on the arguments. The
       # arguments are interpreted as a year, month, day of the month,
       # hour of the day, minute within the hour, and second within the
@@ -376,7 +365,6 @@ module Java::Util
       end
       
       typesig { [String] }
-      # 
       # Attempts to interpret the string <tt>s</tt> as a representation
       # of a date and time. If the attempt is successful, the time
       # indicated is returned represented as the distance, measured in
@@ -733,7 +721,6 @@ module Java::Util
     }
     
     typesig { [] }
-    # 
     # Returns a value that is the result of subtracting 1900 from the
     # year that contains or begins with the instant in time represented
     # by this <code>Date</code> object, as interpreted in the local
@@ -748,7 +735,6 @@ module Java::Util
     end
     
     typesig { [::Java::Int] }
-    # 
     # Sets the year of this <tt>Date</tt> object to be the specified
     # value plus 1900. This <code>Date</code> object is modified so
     # that it represents a point in time within the specified year,
@@ -767,7 +753,6 @@ module Java::Util
     end
     
     typesig { [] }
-    # 
     # Returns a number representing the month that contains or begins
     # with the instant in time represented by this <tt>Date</tt> object.
     # The value returned is between <code>0</code> and <code>11</code>,
@@ -782,7 +767,6 @@ module Java::Util
     end
     
     typesig { [::Java::Int] }
-    # 
     # Sets the month of this date to the specified value. This
     # <tt>Date</tt> object is modified so that it represents a point
     # in time within the specified month, with the year, date, hour,
@@ -814,7 +798,6 @@ module Java::Util
     end
     
     typesig { [] }
-    # 
     # Returns the day of the month represented by this <tt>Date</tt> object.
     # The value returned is between <code>1</code> and <code>31</code>
     # representing the day of the month that contains or begins with the
@@ -831,7 +814,6 @@ module Java::Util
     end
     
     typesig { [::Java::Int] }
-    # 
     # Sets the day of the month of this <tt>Date</tt> object to the
     # specified value. This <tt>Date</tt> object is modified so that
     # it represents a point in time within the specified day of the
@@ -850,7 +832,6 @@ module Java::Util
     end
     
     typesig { [] }
-    # 
     # Returns the day of the week represented by this date. The
     # returned value (<tt>0</tt> = Sunday, <tt>1</tt> = Monday,
     # <tt>2</tt> = Tuesday, <tt>3</tt> = Wednesday, <tt>4</tt> =
@@ -868,7 +849,6 @@ module Java::Util
     end
     
     typesig { [] }
-    # 
     # Returns the hour represented by this <tt>Date</tt> object. The
     # returned value is a number (<tt>0</tt> through <tt>23</tt>)
     # representing the hour within the day that contains or begins
@@ -884,7 +864,6 @@ module Java::Util
     end
     
     typesig { [::Java::Int] }
-    # 
     # Sets the hour of this <tt>Date</tt> object to the specified value.
     # This <tt>Date</tt> object is modified so that it represents a point
     # in time within the specified hour of the day, with the year, month,
@@ -900,7 +879,6 @@ module Java::Util
     end
     
     typesig { [] }
-    # 
     # Returns the number of minutes past the hour represented by this date,
     # as interpreted in the local time zone.
     # The value returned is between <code>0</code> and <code>59</code>.
@@ -914,7 +892,6 @@ module Java::Util
     end
     
     typesig { [::Java::Int] }
-    # 
     # Sets the minutes of this <tt>Date</tt> object to the specified value.
     # This <tt>Date</tt> object is modified so that it represents a point
     # in time within the specified minute of the hour, with the year, month,
@@ -930,7 +907,6 @@ module Java::Util
     end
     
     typesig { [] }
-    # 
     # Returns the number of seconds past the minute represented by this date.
     # The value returned is between <code>0</code> and <code>61</code>. The
     # values <code>60</code> and <code>61</code> can only occur on those
@@ -945,7 +921,6 @@ module Java::Util
     end
     
     typesig { [::Java::Int] }
-    # 
     # Sets the seconds of this <tt>Date</tt> to the specified value.
     # This <tt>Date</tt> object is modified so that it represents a
     # point in time within the specified second of the minute, with
@@ -961,7 +936,6 @@ module Java::Util
     end
     
     typesig { [] }
-    # 
     # Returns the number of milliseconds since January 1, 1970, 00:00:00 GMT
     # represented by this <tt>Date</tt> object.
     # 
@@ -980,7 +954,6 @@ module Java::Util
     end
     
     typesig { [::Java::Long] }
-    # 
     # Sets this <code>Date</code> object to represent a point in time that is
     # <code>time</code> milliseconds after January 1, 1970 00:00:00 GMT.
     # 
@@ -991,7 +964,6 @@ module Java::Util
     end
     
     typesig { [Date] }
-    # 
     # Tests if this date is before the specified date.
     # 
     # @param   when   a date.
@@ -1005,7 +977,6 @@ module Java::Util
     end
     
     typesig { [Date] }
-    # 
     # Tests if this date is after the specified date.
     # 
     # @param   when   a date.
@@ -1019,7 +990,6 @@ module Java::Util
     end
     
     typesig { [Object] }
-    # 
     # Compares two dates for equality.
     # The result is <code>true</code> if and only if the argument is
     # not <code>null</code> and is a <code>Date</code> object that
@@ -1039,7 +1009,6 @@ module Java::Util
     
     class_module.module_eval {
       typesig { [Date] }
-      # 
       # Returns the millisecond value of this <code>Date</code> object
       # without affecting its internal state.
       def get_millis_of(date)
@@ -1052,7 +1021,6 @@ module Java::Util
     }
     
     typesig { [Date] }
-    # 
     # Compares two Dates for ordering.
     # 
     # @param   anotherDate   the <code>Date</code> to be compared.
@@ -1069,7 +1037,6 @@ module Java::Util
     end
     
     typesig { [] }
-    # 
     # Returns a hash code value for this object. The result is the
     # exclusive OR of the two halves of the primitive <tt>long</tt>
     # value returned by the {@link Date#getTime}
@@ -1084,7 +1051,6 @@ module Java::Util
     end
     
     typesig { [] }
-    # 
     # Converts this <code>Date</code> object to a <code>String</code>
     # of the form:
     # <blockquote><pre>
@@ -1139,7 +1105,6 @@ module Java::Util
     
     class_module.module_eval {
       typesig { [StringBuilder, String] }
-      # 
       # Converts the given name to its 3-letter abbreviation (e.g.,
       # "monday" -> "Mon") and stored the abbreviation in the given
       # <code>StringBuilder</code>.
@@ -1151,7 +1116,6 @@ module Java::Util
     }
     
     typesig { [] }
-    # 
     # Creates a string representation of this <tt>Date</tt> object in an
     # implementation-dependent form. The intent is that the form should
     # be familiar to the user of the Java application, wherever it may
@@ -1172,7 +1136,6 @@ module Java::Util
     end
     
     typesig { [] }
-    # 
     # Creates a string representation of this <tt>Date</tt> object of
     # the form:
     # <blockquote<pre>
@@ -1219,7 +1182,6 @@ module Java::Util
     end
     
     typesig { [] }
-    # 
     # Returns the offset, measured in minutes, for the local time zone
     # relative to UTC that is appropriate for the time represented by
     # this <code>Date</code> object.
@@ -1292,8 +1254,8 @@ module Java::Util
       tz = TimeZone.get_default_ref
       if (!(tz).equal?(@cdate.get_zone))
         @cdate.set_zone(tz)
-        cal_ = get_calendar_system(@cdate)
-        cal_.get_calendar_date(@fast_time, @cdate)
+        cal = get_calendar_system(@cdate)
+        cal.get_calendar_date(@fast_time, @cdate)
       end
       return @cdate
     end
@@ -1330,17 +1292,17 @@ module Java::Util
         date = cal.get_calendar_date(@fast_time, tz)
         return date
       end
-      cal_ = get_calendar_system(y)
-      if (!(cal_).equal?(get_calendar_system(date)))
-        date = cal_.new_calendar_date(tz)
+      cal = get_calendar_system(y)
+      if (!(cal).equal?(get_calendar_system(date)))
+        date = cal.new_calendar_date(tz)
         date.set_normalized_date(y, m, d).set_time_of_day(hh, mm, ss, ms)
       end
       # Perform the GregorianCalendar-style normalization.
-      @fast_time = cal_.get_time(date)
+      @fast_time = cal.get_time(date)
       # In case the normalized date requires the other calendar
       # system, we need to recalculate it using the other one.
       ncal = get_calendar_system(@fast_time)
-      if (!(ncal).equal?(cal_))
+      if (!(ncal).equal?(cal))
         date = ncal.new_calendar_date(tz)
         date.set_normalized_date(y, m, d).set_time_of_day(hh, mm, ss, ms)
         @fast_time = ncal.get_time(date)
@@ -1350,7 +1312,6 @@ module Java::Util
     
     class_module.module_eval {
       typesig { [::Java::Int] }
-      # 
       # Returns the Gregorian or Julian calendar system to use with the
       # given date. Use Gregorian from October 15, 1582.
       # 
@@ -1397,7 +1358,6 @@ module Java::Util
     }
     
     typesig { [ObjectOutputStream] }
-    # 
     # Save the state of this object to a stream (i.e., serialize it).
     # 
     # @serialData The value returned by <code>getTime()</code>
@@ -1408,7 +1368,6 @@ module Java::Util
     end
     
     typesig { [ObjectInputStream] }
-    # 
     # Reconstitute this object from a stream (i.e., deserialize it).
     def read_object(s)
       @fast_time = s.read_long

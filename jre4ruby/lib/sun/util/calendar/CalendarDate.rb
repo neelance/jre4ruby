@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 2000-2003 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -34,7 +33,6 @@ module Sun::Util::Calendar
     }
   end
   
-  # 
   # The <code>CalendarDate</code> class represents a specific instant
   # in time by calendar date and time fields that are multiple cycles
   # in different time unites. The semantics of each calendar field is
@@ -213,7 +211,6 @@ module Sun::Util::Calendar
     end
     
     typesig { [Era] }
-    # 
     # Sets the era of the date to the specified era. The default
     # implementation of this method accepts any Era value, including
     # <code>null</code>.
@@ -257,7 +254,6 @@ module Sun::Util::Calendar
     end
     
     typesig { [] }
-    # 
     # Returns whether the year represented by this
     # <code>CalendarDate</code> is a leap year. If leap years are
     # not applicable to the calendar system, this method always
@@ -327,7 +323,6 @@ module Sun::Util::Calendar
     end
     
     typesig { [] }
-    # 
     # Returns the day of week value. If this CalendarDate is not
     # normalized, {@link #FIELD_UNDEFINED} is returned.
     # 
@@ -518,7 +513,6 @@ module Sun::Util::Calendar
     end
     
     typesig { [CalendarDate] }
-    # 
     # Returns whether the specified date is the same date of this
     # <code>CalendarDate</code>. The time of the day fields are
     # ignored for the comparison.
@@ -564,7 +558,6 @@ module Sun::Util::Calendar
     end
     
     typesig { [] }
-    # 
     # Returns a copy of this <code>CalendarDate</code>. The
     # <code>TimeZone</code> object, if any, is not cloned.
     # 
@@ -579,7 +572,6 @@ module Sun::Util::Calendar
     end
     
     typesig { [] }
-    # 
     # Converts calendar date values to a <code>String</code> in the
     # following format.
     # <pre>

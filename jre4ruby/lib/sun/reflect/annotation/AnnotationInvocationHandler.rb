@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 2003-2004 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -38,7 +37,6 @@ module Sun::Reflect::Annotation
     }
   end
   
-  # 
   # InvocationHandler for dynamic proxy implementation of Annotation.
   # 
   # @author  Josh Bloch
@@ -102,7 +100,6 @@ module Sun::Reflect::Annotation
     end
     
     typesig { [Object] }
-    # 
     # This method, which clones its array argument, would not be necessary
     # if Cloneable had a public clone method.
     def clone_array(array)
@@ -144,7 +141,6 @@ module Sun::Reflect::Annotation
     end
     
     typesig { [] }
-    # 
     # Implementation of dynamicProxy.toString()
     def to_string_impl
       result = StringBuffer.new(128)
@@ -168,7 +164,6 @@ module Sun::Reflect::Annotation
     
     class_module.module_eval {
       typesig { [Object] }
-      # 
       # Translates a member value (in "dynamic proxy return form") into a string
       def member_value_to_string(value)
         type = value.get_class
@@ -206,7 +201,6 @@ module Sun::Reflect::Annotation
     }
     
     typesig { [Object] }
-    # 
     # Implementation of dynamicProxy.equals(Object o)
     def equals_impl(o)
       if ((o).equal?(self))
@@ -228,7 +222,7 @@ module Sun::Reflect::Annotation
           rescue InvocationTargetException => e
             return false
           rescue IllegalAccessException => e
-            raise AssertionError.new(e_)
+            raise AssertionError.new(e)
           end
         end
         if (!member_value_equals(our_value, his_value))
@@ -239,7 +233,6 @@ module Sun::Reflect::Annotation
     end
     
     typesig { [Object] }
-    # 
     # Returns an object's invocation handler if that object is a dynamic
     # proxy with a handler of type AnnotationInvocationHandler.
     # Returns null otherwise.
@@ -255,7 +248,6 @@ module Sun::Reflect::Annotation
     
     class_module.module_eval {
       typesig { [Object, Object] }
-      # 
       # Returns true iff the two member values in "dynamic proxy return form"
       # are equal using the appropriate equality function depending on the
       # member type.  The two values will be of the same type unless one of
@@ -306,7 +298,6 @@ module Sun::Reflect::Annotation
     }
     
     typesig { [] }
-    # 
     # Returns the member methods for our annotation type.  These are
     # obtained lazily and cached, as they're expensive to obtain
     # and we only need them if our equals method is invoked (which should
@@ -344,7 +335,6 @@ module Sun::Reflect::Annotation
     undef_method :member_methods=
     
     typesig { [] }
-    # 
     # Implementation of dynamicProxy.hashCode()
     def hash_code_impl
       result = 0
@@ -356,7 +346,6 @@ module Sun::Reflect::Annotation
     
     class_module.module_eval {
       typesig { [Object] }
-      # 
       # Computes hashCode of a member value (in "dynamic proxy return form")
       def member_value_hash_code(value)
         type = value.get_class

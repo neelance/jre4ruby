@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 1996-2000 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -30,7 +29,6 @@ module Java::Lang
     }
   end
   
-  # 
   # Signals that an unexpected exception has occurred in a static initializer.
   # An <code>ExceptionInInitializerError</code> is thrown to indicate that an
   # exception occurred during evaluation of a static initializer or the
@@ -49,13 +47,11 @@ module Java::Lang
     include_class_members ExceptionInInitializerErrorImports
     
     class_module.module_eval {
-      # 
       # Use serialVersionUID from JDK 1.1.X for interoperability
       const_set_lazy(:SerialVersionUID) { 1521711792217232256 }
       const_attr_reader  :SerialVersionUID
     }
     
-    # 
     # This field holds the exception if the
     # ExceptionInInitializerError(Throwable thrown) constructor was
     # used to instantiate the object
@@ -68,7 +64,6 @@ module Java::Lang
     undef_method :exception=
     
     typesig { [] }
-    # 
     # Constructs an <code>ExceptionInInitializerError</code> with
     # <code>null</code> as its detail message string and with no saved
     # throwable object.
@@ -80,7 +75,6 @@ module Java::Lang
     end
     
     typesig { [Exception] }
-    # 
     # Constructs a new <code>ExceptionInInitializerError</code> class by
     # saving a reference to the <code>Throwable</code> object thrown for
     # later retrieval by the {@link #getException()} method. The detail
@@ -95,7 +89,6 @@ module Java::Lang
     end
     
     typesig { [String] }
-    # 
     # Constructs an ExceptionInInitializerError with the specified detail
     # message string.  A detail message is a String that describes this
     # particular exception. The detail message string is saved for later
@@ -111,7 +104,6 @@ module Java::Lang
     end
     
     typesig { [] }
-    # 
     # Returns the exception that occurred during a static initialization that
     # caused this error to be created.
     # 
@@ -128,7 +120,6 @@ module Java::Lang
     end
     
     typesig { [] }
-    # 
     # Returns the cause of this error (the exception that occurred
     # during a static initialization that caused this error to be created).
     # 

@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 1996-2006 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -34,7 +33,6 @@ module Java::Security
     }
   end
   
-  # 
   # <p>This class represents a scope for identities. It is an Identity
   # itself, and therefore has a name and can have a scope. It can also
   # optionally have a public key and associated certificates.
@@ -120,7 +118,6 @@ module Java::Security
     }
     
     typesig { [] }
-    # 
     # This constructor is used for serialization only and should not
     # be used by subclasses.
     def initialize
@@ -128,7 +125,6 @@ module Java::Security
     end
     
     typesig { [String] }
-    # 
     # Constructs a new identity scope with the specified name.
     # 
     # @param name the scope name.
@@ -137,7 +133,6 @@ module Java::Security
     end
     
     typesig { [String, IdentityScope] }
-    # 
     # Constructs a new identity scope with the specified name and scope.
     # 
     # @param name the scope name.
@@ -151,7 +146,6 @@ module Java::Security
     
     class_module.module_eval {
       typesig { [] }
-      # 
       # Returns the system's identity scope.
       # 
       # @return the system's identity scope.
@@ -165,7 +159,6 @@ module Java::Security
       end
       
       typesig { [IdentityScope] }
-      # 
       # Sets the system's identity scope.
       # 
       # <p>First, if there is a security manager, its
@@ -188,7 +181,6 @@ module Java::Security
     }
     
     typesig { [] }
-    # 
     # Returns the number of identities within this identity scope.
     # 
     # @return the number of identities within this identity scope.
@@ -197,7 +189,6 @@ module Java::Security
     end
     
     typesig { [String] }
-    # 
     # Returns the identity in this scope with the specified name (if any).
     # 
     # @param name the name of the identity to be retrieved.
@@ -209,7 +200,6 @@ module Java::Security
     end
     
     typesig { [Principal] }
-    # 
     # Retrieves the identity whose name is the same as that of the
     # specified principal. (Note: Identity implements Principal.)
     # 
@@ -224,7 +214,6 @@ module Java::Security
     end
     
     typesig { [PublicKey] }
-    # 
     # Retrieves the identity with the specified public key.
     # 
     # @param key the public key for the identity to be returned.
@@ -236,7 +225,6 @@ module Java::Security
     end
     
     typesig { [Identity] }
-    # 
     # Adds an identity to this identity scope.
     # 
     # @param identity the identity to be added.
@@ -250,7 +238,6 @@ module Java::Security
     end
     
     typesig { [Identity] }
-    # 
     # Removes an identity from this identity scope.
     # 
     # @param identity the identity to be removed.
@@ -262,7 +249,6 @@ module Java::Security
     end
     
     typesig { [] }
-    # 
     # Returns an enumeration of all identities in this identity scope.
     # 
     # @return an enumeration of all identities in this identity scope.
@@ -271,7 +257,6 @@ module Java::Security
     end
     
     typesig { [] }
-    # 
     # Returns a string representation of this identity scope, including
     # its name, its scope name, and the number of identities in this
     # identity scope.

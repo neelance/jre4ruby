@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 1997-2004 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -34,7 +33,6 @@ module Java::Security
     }
   end
   
-  # 
   # This class defines the <i>Service Provider Interface</i> (<b>SPI</b>)
   # for the <code>AlgorithmParameters</code> class, which is used to manage
   # algorithm parameters.
@@ -55,7 +53,6 @@ module Java::Security
     include_class_members AlgorithmParametersSpiImports
     
     typesig { [AlgorithmParameterSpec] }
-    # 
     # Initializes this parameters object using the parameters
     # specified in <code>paramSpec</code>.
     # 
@@ -69,7 +66,6 @@ module Java::Security
     end
     
     typesig { [Array.typed(::Java::Byte)] }
-    # 
     # Imports the specified parameters and decodes them
     # according to the primary decoding format for parameters.
     # The primary decoding format for parameters is ASN.1, if an ASN.1
@@ -83,7 +79,6 @@ module Java::Security
     end
     
     typesig { [Array.typed(::Java::Byte), String] }
-    # 
     # Imports the parameters from <code>params</code> and
     # decodes them according to the specified decoding format.
     # If <code>format</code> is null, the
@@ -101,7 +96,6 @@ module Java::Security
     end
     
     typesig { [Class] }
-    # 
     # Returns a (transparent) specification of this parameters
     # object.
     # <code>paramSpec</code> identifies the specification class in which
@@ -122,7 +116,6 @@ module Java::Security
     end
     
     typesig { [] }
-    # 
     # Returns the parameters in their primary encoding format.
     # The primary encoding format for parameters is ASN.1, if an ASN.1
     # specification for this type of parameters exists.
@@ -135,7 +128,6 @@ module Java::Security
     end
     
     typesig { [String] }
-    # 
     # Returns the parameters encoded in the specified format.
     # If <code>format</code> is null, the
     # primary encoding format for parameters is used. The primary encoding
@@ -152,7 +144,6 @@ module Java::Security
     end
     
     typesig { [] }
-    # 
     # Returns a formatted string describing the parameters.
     # 
     # @return a formatted string describing the parameters.

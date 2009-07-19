@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 1997-2006 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -35,7 +34,6 @@ module Java::Security
     }
   end
   
-  # 
   # An AccessControlContext is used to make system resource access decisions
   # based on the context it encapsulates.
   # 
@@ -143,7 +141,6 @@ module Java::Security
     }
     
     typesig { [Array.typed(ProtectionDomain)] }
-    # 
     # Create an AccessControlContext with the given set of ProtectionDomains.
     # Context must not be null. Duplicate domains will be removed from the
     # context.
@@ -181,7 +178,6 @@ module Java::Security
     end
     
     typesig { [AccessControlContext, DomainCombiner] }
-    # 
     # Create a new <code>AccessControlContext</code> with the given
     # <code>AccessControlContext</code> and <code>DomainCombiner</code>.
     # This constructor associates the provided
@@ -223,7 +219,6 @@ module Java::Security
     end
     
     typesig { [Array.typed(ProtectionDomain), DomainCombiner] }
-    # 
     # package private for AccessController
     def initialize(context, combiner)
       @context = nil
@@ -237,7 +232,6 @@ module Java::Security
     end
     
     typesig { [Array.typed(ProtectionDomain), ::Java::Boolean] }
-    # 
     # package private constructor for AccessController.getContext()
     def initialize(context, is_privileged)
       @context = nil
@@ -249,14 +243,12 @@ module Java::Security
     end
     
     typesig { [] }
-    # 
     # Returns true if this context is privileged.
     def is_privileged
       return @is_privileged
     end
     
     typesig { [] }
-    # 
     # get the assigned combiner from the privileged or inherited context
     def get_assigned_combiner
       acc = nil
@@ -272,7 +264,6 @@ module Java::Security
     end
     
     typesig { [] }
-    # 
     # Get the <code>DomainCombiner</code> associated with this
     # <code>AccessControlContext</code>.
     # 
@@ -295,7 +286,6 @@ module Java::Security
     end
     
     typesig { [Permission] }
-    # 
     # Determines whether the access request indicated by the
     # specified permission should be allowed or denied, based on
     # the security policy currently in effect, and the context in
@@ -341,15 +331,14 @@ module Java::Security
           if ((@context).nil?)
             self.attr_debug.println("domain (context is null)")
           else
-            i_ = 0
-            while i_ < @context.attr_length
-              self.attr_debug.println("domain " + (i_).to_s + " " + (@context[i_]).to_s)
-              ((i_ += 1) - 1)
+            i = 0
+            while i < @context.attr_length
+              self.attr_debug.println("domain " + (i).to_s + " " + (@context[i]).to_s)
+              ((i += 1) - 1)
             end
           end
         end
       end
-      # 
       # iterate through the ProtectionDomains in the context.
       # Stop at the first one that doesn't allow the
       # requested permission (throwing an exception).
@@ -361,9 +350,9 @@ module Java::Security
       if ((@context).nil?)
         return
       end
-      i__ = 0
-      while i__ < @context.attr_length
-        if (!(@context[i__]).nil? && !@context[i__].implies(perm))
+      i = 0
+      while i < @context.attr_length
+        if (!(@context[i]).nil? && !@context[i].implies(perm))
           if (dump_debug)
             self.attr_debug.println("access denied " + (perm).to_s)
           end
@@ -375,7 +364,7 @@ module Java::Security
               self.attr_debug.println("access denied " + (perm).to_s)
             end
             JavaThread.current_thread.dump_stack
-            pd = @context[i__]
+            pd = @context[i]
             db = self.attr_debug
             AccessController.do_privileged(Class.new(PrivilegedAction.class == Class ? PrivilegedAction : Object) do
               extend LocalClass
@@ -399,7 +388,7 @@ module Java::Security
           end
           raise AccessControlException.new("access denied " + (perm).to_s, perm)
         end
-        ((i__ += 1) - 1)
+        ((i += 1) - 1)
       end
       # allow if all of them allowed access
       if (dump_debug)
@@ -409,7 +398,6 @@ module Java::Security
     end
     
     typesig { [] }
-    # 
     # Take the stack-based context (this) and combine it with the
     # privileged or inherited context, if need be.
     def optimize
@@ -474,7 +462,7 @@ module Java::Security
             end
             pd[((n += 1) - 1)] = sd
           end
-        end == :thrown or break
+        end
         ((i += 1) - 1)
       end
       # if length isn't equal, we need to shorten the array
@@ -519,7 +507,6 @@ module Java::Security
     end
     
     typesig { [Object] }
-    # 
     # Checks two AccessControlContext objects for equality.
     # Checks that <i>obj</i> is
     # an AccessControlContext and has the same set of ProtectionDomains
@@ -560,7 +547,6 @@ module Java::Security
     typesig { [AccessControlContext] }
     def contains_all_pds(that)
       match = false
-      # 
       # ProtectionDomains within an ACC currently cannot be null
       # and this is enforced by the constructor and the various
       # optimize methods. However, historically this logic made attempts
@@ -579,12 +565,12 @@ module Java::Security
         else
           this_pd_class = this_pd.get_class
           that_pd = nil
-          j_ = 0
-          while (j_ < that.attr_context.attr_length) && !match
-            that_pd = that.attr_context[j_]
+          j = 0
+          while (j < that.attr_context.attr_length) && !match
+            that_pd = that.attr_context[j]
             # Class check required to avoid PD exposure (4285406)
             match = (!(that_pd).nil? && (this_pd_class).equal?(that_pd.get_class) && (this_pd == that_pd))
-            ((j_ += 1) - 1)
+            ((j += 1) - 1)
           end
         end
         if (!match)
@@ -596,7 +582,6 @@ module Java::Security
     end
     
     typesig { [] }
-    # 
     # Returns the hash code value for this context. The hash code
     # is computed by exclusive or-ing the hash code of all the protection
     # domains in the context together.

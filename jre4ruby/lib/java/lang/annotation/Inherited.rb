@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 2003-2004 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -31,7 +30,6 @@ module Java::Lang::Annotation
     }
   end
   
-  # 
   # Indicates that an annotation type is automatically inherited.  If
   # an Inherited meta-annotation is present on an annotation type
   # declaration, and the user queries the annotation type on a class

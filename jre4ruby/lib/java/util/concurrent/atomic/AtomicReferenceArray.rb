@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
 # This code is free software; you can redistribute it and/or modify it
@@ -42,7 +41,6 @@ module Java::Util::Concurrent::Atomic
     }
   end
   
-  # 
   # An array of object references in which elements may be updated
   # atomically.  See the {@link java.util.concurrent.atomic} package
   # specification for description of the properties of atomic
@@ -83,7 +81,6 @@ module Java::Util::Concurrent::Atomic
     end
     
     typesig { [::Java::Int] }
-    # 
     # Creates a new AtomicReferenceArray of given length.
     # @param length the length of the array
     def initialize(length)
@@ -96,7 +93,6 @@ module Java::Util::Concurrent::Atomic
     end
     
     typesig { [Array.typed(Object)] }
-    # 
     # Creates a new AtomicReferenceArray with the same length as, and
     # all elements copied from, the given array.
     # 
@@ -123,7 +119,6 @@ module Java::Util::Concurrent::Atomic
     end
     
     typesig { [] }
-    # 
     # Returns the length of the array.
     # 
     # @return the length of the array
@@ -132,7 +127,6 @@ module Java::Util::Concurrent::Atomic
     end
     
     typesig { [::Java::Int] }
-    # 
     # Gets the current value at position {@code i}.
     # 
     # @param i the index
@@ -142,7 +136,6 @@ module Java::Util::Concurrent::Atomic
     end
     
     typesig { [::Java::Int, Object] }
-    # 
     # Sets the element at position {@code i} to the given value.
     # 
     # @param i the index
@@ -152,7 +145,6 @@ module Java::Util::Concurrent::Atomic
     end
     
     typesig { [::Java::Int, Object] }
-    # 
     # Eventually sets the element at position {@code i} to the given value.
     # 
     # @param i the index
@@ -163,7 +155,6 @@ module Java::Util::Concurrent::Atomic
     end
     
     typesig { [::Java::Int, Object] }
-    # 
     # Atomically sets the element at position {@code i} to the given
     # value and returns the old value.
     # 
@@ -180,7 +171,6 @@ module Java::Util::Concurrent::Atomic
     end
     
     typesig { [::Java::Int, Object, Object] }
-    # 
     # Atomically sets the element at position {@code i} to the given
     # updated value if the current value {@code ==} the expected value.
     # @param i the index
@@ -193,7 +183,6 @@ module Java::Util::Concurrent::Atomic
     end
     
     typesig { [::Java::Int, Object, Object] }
-    # 
     # Atomically sets the element at position {@code i} to the given
     # updated value if the current value {@code ==} the expected value.
     # 
@@ -210,7 +199,6 @@ module Java::Util::Concurrent::Atomic
     end
     
     typesig { [] }
-    # 
     # Returns the String representation of the current values of array.
     # @return the String representation of the current values of array.
     def to_s

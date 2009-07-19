@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 2000-2006 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -32,7 +31,6 @@ module Java::Nio::Channels::Spi
     }
   end
   
-  # 
   # Base implementation class for selection keys.
   # 
   # <p> This class tracks the validity of the key and implements cancellation.
@@ -44,7 +42,6 @@ module Java::Nio::Channels::Spi
     include_class_members AbstractSelectionKeyImports
     
     typesig { [] }
-    # 
     # Initializes a new instance of this class.  </p>
     def initialize
       @valid = false
@@ -70,7 +67,6 @@ module Java::Nio::Channels::Spi
     end
     
     typesig { [] }
-    # 
     # Cancels this key.
     # 
     # <p> If this key has not yet been cancelled then it is added to its

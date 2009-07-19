@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 2005 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -54,7 +53,6 @@ module Sun::Reflect::Misc
       end
       
       typesig { [Class, Class, Object, ::Java::Int] }
-      # 
       # Reflection.ensureMemberAccess is overly-restrictive
       # due to a bug. We awkwardly work around it for now.
       def ensure_member_access(current_class, member_class, target, modifiers)
@@ -62,21 +60,17 @@ module Sun::Reflect::Misc
           mods = modifiers
           mods = mods & (~Modifier::PROTECTED)
           mods = mods | Modifier::PUBLIC
-          # 
           # See if we fail because of class modifiers
           Reflection.ensure_member_access(current_class, member_class, target, mods)
           begin
-            # 
             # We're still here so class access was ok.
             # Now try with default field access.
             mods = mods & (~Modifier::PUBLIC)
             Reflection.ensure_member_access(current_class, member_class, target, mods)
-            # 
             # We're still here so access is ok without
             # checking for protected.
             return
           rescue IllegalAccessException => e
-            # 
             # Access failed but we're 'protected' so
             # if the test below succeeds then we're ok.
             if (is_subclass_of(current_class, member_class))

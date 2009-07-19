@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 2002-2006 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -240,7 +239,6 @@ module Sun::Nio::Cs::Ext
     end
     
     typesig { [::Java::Char] }
-    # 
     # Can be changed by subclass
     def encode_double(ch)
       offset = @index1[((ch & 0xff00) >> 8)] << 8
@@ -248,7 +246,6 @@ module Sun::Nio::Cs::Ext
     end
     
     typesig { [::Java::Char] }
-    # 
     # Can be changed by subclass
     def encode_single(input_char)
       if (input_char < 0x80)
@@ -259,7 +256,6 @@ module Sun::Nio::Cs::Ext
     end
     
     typesig { [::Java::Char, ::Java::Char] }
-    # 
     # Protected method which should be overridden by concrete DBCS
     # CharsetEncoder classes which included supplementary characters
     # within their mapping coverage.

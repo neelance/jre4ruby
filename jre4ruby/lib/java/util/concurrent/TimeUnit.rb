@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
 # This code is free software; you can redistribute it and/or modify it
@@ -40,7 +39,6 @@ module Java::Util::Concurrent
     }
   end
   
-  # 
   # A <tt>TimeUnit</tt> represents time durations at a given unit of
   # granularity and provides utility methods to convert across units,
   # and to perform timing and delay operations in these units.  A
@@ -123,7 +121,6 @@ module Java::Util::Concurrent
       const_attr_reader  :MAX
       
       typesig { [::Java::Long, ::Java::Long, ::Java::Long] }
-      # 
       # Scale d by m, checking for overflow.
       # This has a short name to make above code more readable.
       def x(d, m, over)
@@ -165,7 +162,6 @@ module Java::Util::Concurrent
     end
     
     typesig { [::Java::Long] }
-    # 
     # Equivalent to <tt>NANOSECONDS.convert(duration, this)</tt>.
     # @param duration the duration
     # @return the converted duration,
@@ -177,7 +173,6 @@ module Java::Util::Concurrent
     end
     
     typesig { [::Java::Long] }
-    # 
     # Equivalent to <tt>MICROSECONDS.convert(duration, this)</tt>.
     # @param duration the duration
     # @return the converted duration,
@@ -189,7 +184,6 @@ module Java::Util::Concurrent
     end
     
     typesig { [::Java::Long] }
-    # 
     # Equivalent to <tt>MILLISECONDS.convert(duration, this)</tt>.
     # @param duration the duration
     # @return the converted duration,
@@ -201,7 +195,6 @@ module Java::Util::Concurrent
     end
     
     typesig { [::Java::Long] }
-    # 
     # Equivalent to <tt>SECONDS.convert(duration, this)</tt>.
     # @param duration the duration
     # @return the converted duration,
@@ -213,7 +206,6 @@ module Java::Util::Concurrent
     end
     
     typesig { [::Java::Long] }
-    # 
     # Equivalent to <tt>MINUTES.convert(duration, this)</tt>.
     # @param duration the duration
     # @return the converted duration,
@@ -226,7 +218,6 @@ module Java::Util::Concurrent
     end
     
     typesig { [::Java::Long] }
-    # 
     # Equivalent to <tt>HOURS.convert(duration, this)</tt>.
     # @param duration the duration
     # @return the converted duration,
@@ -239,7 +230,6 @@ module Java::Util::Concurrent
     end
     
     typesig { [::Java::Long] }
-    # 
     # Equivalent to <tt>DAYS.convert(duration, this)</tt>.
     # @param duration the duration
     # @return the converted duration
@@ -250,7 +240,6 @@ module Java::Util::Concurrent
     end
     
     typesig { [::Java::Long, ::Java::Long] }
-    # 
     # Utility to compute the excess-nanosecond argument to wait,
     # sleep, join.
     # @param d the duration
@@ -261,7 +250,6 @@ module Java::Util::Concurrent
     end
     
     typesig { [Object, ::Java::Long] }
-    # 
     # Performs a timed <tt>Object.wait</tt> using this time unit.
     # This is a convenience method that converts timeout arguments
     # into the form required by the <tt>Object.wait</tt> method.
@@ -291,7 +279,6 @@ module Java::Util::Concurrent
     end
     
     typesig { [JavaThread, ::Java::Long] }
-    # 
     # Performs a timed <tt>Thread.join</tt> using this time unit.
     # This is a convenience method that converts time arguments into the
     # form required by the <tt>Thread.join</tt> method.
@@ -309,7 +296,6 @@ module Java::Util::Concurrent
     end
     
     typesig { [::Java::Long] }
-    # 
     # Performs a <tt>Thread.sleep</tt> using this unit.
     # This is a convenience method that converts time arguments into the
     # form required by the <tt>Thread.sleep</tt> method.

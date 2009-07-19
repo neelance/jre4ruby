@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 2004 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -36,7 +35,6 @@ module Sun::Nio::Cs
     }
   end
   
-  # 
   # Abstract base class for fast charset providers.
   # 
   # @author Mark Reinhold
@@ -110,11 +108,11 @@ module Sun::Nio::Cs
         ca = CharArray.new(n)
         i_ = 0
         while i_ < n
-          c_ = s.char_at(i_)
-          if (((c_ - Character.new(?A.ord)) | (Character.new(?Z.ord) - c_)) >= 0)
-            ca[i_] = RJava.cast_to_char((c_ + 0x20))
+          c = s.char_at(i_)
+          if (((c - Character.new(?A.ord)) | (Character.new(?Z.ord) - c)) >= 0)
+            ca[i_] = RJava.cast_to_char((c + 0x20))
           else
-            ca[i_] = RJava.cast_to_char(c_)
+            ca[i_] = RJava.cast_to_char(c)
           end
           ((i_ += 1) - 1)
         end

@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 1997-2000 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -35,7 +34,6 @@ module Sun::Net::Www::Protocol::Jar
     }
   end
   
-  # 
   # Jar URL Handler
   class Handler < Java::Net::URLStreamHandler
     include_class_members HandlerImports

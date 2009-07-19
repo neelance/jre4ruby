@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 1997-2002 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -31,7 +30,6 @@ module Java::Text
     }
   end
   
-  # 
   # An Annotation object is used as a wrapper for a text attribute value if
   # the attribute has annotation characteristics. These characteristics are:
   # <ul>
@@ -62,7 +60,6 @@ module Java::Text
     include_class_members AnnotationImports
     
     typesig { [Object] }
-    # 
     # Constructs an annotation record with the given value, which
     # may be null.
     # @param value The value of the attribute
@@ -72,14 +69,12 @@ module Java::Text
     end
     
     typesig { [] }
-    # 
     # Returns the value of the attribute, which may be null.
     def get_value
       return @value
     end
     
     typesig { [] }
-    # 
     # Returns the String representation of this Annotation.
     def to_s
       return (get_class.get_name).to_s + "[value=" + (@value).to_s + "]"

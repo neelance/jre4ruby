@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 1994-1999 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -41,7 +40,6 @@ module Sun::Net::Www
     }
   end
   
-  # 
   # Debugging utilities
   # 
   # public void list(PrintStream out) {
@@ -146,7 +144,6 @@ module Sun::Net::Www
     
     class_module.module_eval {
       typesig { [] }
-      # 
       # Get the single instance of this class.  First use will load the
       # table from a data file.
       def get_default_table
@@ -259,7 +256,6 @@ module Sun::Net::Www
     end
     
     typesig { [String] }
-    # 
     # Locate a MimeEntry by the file extension that has been associated
     # with it. Parses general file names, and URLs.
     def find_by_file_name(fname)
@@ -279,7 +275,6 @@ module Sun::Net::Www
     end
     
     typesig { [String] }
-    # 
     # Locate a MimeEntry by the file extension that has been associated
     # with it.
     def find_by_ext(file_extension)
@@ -379,7 +374,6 @@ module Sun::Net::Www
     end
     
     typesig { [String, String] }
-    # 
     # Table format:
     # 
     # <entry> ::= <table_tag> | <type_entry>

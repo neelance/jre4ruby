@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 2006 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -34,7 +33,6 @@ module Java::Util::Zip
     }
   end
   
-  # 
   # Implements an output stream filter for uncompressing data stored in the
   # "deflate" compression format.
   # 
@@ -83,7 +81,6 @@ module Java::Util::Zip
     undef_method :closed=
     
     typesig { [] }
-    # 
     # Checks to make sure that this stream has not been closed.
     def ensure_open
       if (@closed)
@@ -92,7 +89,6 @@ module Java::Util::Zip
     end
     
     typesig { [OutputStream] }
-    # 
     # Creates a new output stream with a default decompressor and buffer
     # size.
     # 
@@ -104,7 +100,6 @@ module Java::Util::Zip
     end
     
     typesig { [OutputStream, Inflater] }
-    # 
     # Creates a new output stream with the specified decompressor and a
     # default buffer size.
     # 
@@ -116,7 +111,6 @@ module Java::Util::Zip
     end
     
     typesig { [OutputStream, Inflater, ::Java::Int] }
-    # 
     # Creates a new output stream with the specified decompressor and
     # buffer size.
     # 
@@ -151,7 +145,6 @@ module Java::Util::Zip
     end
     
     typesig { [] }
-    # 
     # Writes any remaining uncompressed data to the output stream and closes
     # the underlying output stream.
     # 
@@ -169,7 +162,6 @@ module Java::Util::Zip
     end
     
     typesig { [] }
-    # 
     # Flushes this output stream, forcing any pending buffered output bytes to be
     # written.
     # 
@@ -203,7 +195,6 @@ module Java::Util::Zip
     end
     
     typesig { [] }
-    # 
     # Finishes writing uncompressed data to the output stream without closing
     # the underlying stream.  Use this method when applying multiple filters in
     # succession to the same output stream.
@@ -220,7 +211,6 @@ module Java::Util::Zip
     end
     
     typesig { [::Java::Int] }
-    # 
     # Writes a byte to the uncompressed output stream.
     # 
     # @param b a single byte of compressed data to decompress and write to
@@ -235,7 +225,6 @@ module Java::Util::Zip
     end
     
     typesig { [Array.typed(::Java::Byte), ::Java::Int, ::Java::Int] }
-    # 
     # Writes an array of bytes to the uncompressed output stream.
     # 
     # @param b buffer containing compressed data to decompress and write to

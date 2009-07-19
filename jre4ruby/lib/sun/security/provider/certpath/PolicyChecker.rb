@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 2000-2006 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -49,7 +48,6 @@ module Sun::Security::Provider::Certpath
     }
   end
   
-  # 
   # PolicyChecker is a <code>PKIXCertPathChecker</code> that checks policy
   # information on a PKIX certificate, namely certificate policies, policy
   # mappings, policy constraints and policy qualifiers.
@@ -145,7 +143,6 @@ module Sun::Security::Provider::Certpath
     }
     
     typesig { [JavaSet, ::Java::Int, ::Java::Boolean, ::Java::Boolean, ::Java::Boolean, ::Java::Boolean, PolicyNodeImpl] }
-    # 
     # Constructs a Policy Checker.
     # 
     # @param initialPolicies Set of initial policies
@@ -186,7 +183,6 @@ module Sun::Security::Provider::Certpath
     end
     
     typesig { [::Java::Boolean] }
-    # 
     # Initializes the internal state of the checker from parameters
     # specified in the constructor
     # 
@@ -205,7 +201,6 @@ module Sun::Security::Provider::Certpath
     end
     
     typesig { [] }
-    # 
     # Checks if forward checking is supported. Forward checking refers
     # to the ability of the PKIXCertPathChecker to perform its checks
     # when presented with certificates in the forward direction (from
@@ -217,7 +212,6 @@ module Sun::Security::Provider::Certpath
     end
     
     typesig { [] }
-    # 
     # Gets an immutable Set of the OID strings for the extensions that
     # the PKIXCertPathChecker supports (i.e. recognizes, is able to
     # process), or null if no extensions are
@@ -239,7 +233,6 @@ module Sun::Security::Provider::Certpath
     end
     
     typesig { [Certificate, Collection] }
-    # 
     # Performs the policy processing checks on the certificate using its
     # internal state.
     # 
@@ -259,7 +252,6 @@ module Sun::Security::Provider::Certpath
     end
     
     typesig { [X509Certificate] }
-    # 
     # Internal method to run through all the checks.
     # 
     # @param currCert the certificate to be processed
@@ -300,7 +292,6 @@ module Sun::Security::Provider::Certpath
     
     class_module.module_eval {
       typesig { [::Java::Int, X509CertImpl, ::Java::Boolean] }
-      # 
       # Merges the specified explicitPolicy value with the
       # requireExplicitPolicy field of the <code>PolicyConstraints</code>
       # extension obtained from the certificate. An explicitPolicy
@@ -349,7 +340,6 @@ module Sun::Security::Provider::Certpath
       end
       
       typesig { [::Java::Int, X509CertImpl] }
-      # 
       # Merges the specified policyMapping value with the
       # inhibitPolicyMapping field of the <code>PolicyConstraints</code>
       # extension obtained from the certificate. A policyMapping
@@ -390,7 +380,6 @@ module Sun::Security::Provider::Certpath
       end
       
       typesig { [::Java::Int, X509CertImpl] }
-      # 
       # Merges the specified inhibitAnyPolicy value with the
       # SkipCerts value of the InhibitAnyPolicy
       # extension obtained from the certificate.
@@ -430,7 +419,6 @@ module Sun::Security::Provider::Certpath
       end
       
       typesig { [::Java::Int, JavaSet, ::Java::Int, ::Java::Int, ::Java::Int, ::Java::Boolean, PolicyNodeImpl, X509CertImpl, ::Java::Boolean] }
-      # 
       # Processes certificate policies in the certificate.
       # 
       # @param certIndex the index of the certificate
@@ -560,7 +548,6 @@ module Sun::Security::Provider::Certpath
       end
       
       typesig { [::Java::Int, JavaSet, PolicyNodeImpl] }
-      # 
       # Rewrite leaf nodes at the end of validation as described in RFC 3280
       # section 6.1.5: Step (g)(iii). Leaf nodes with anyPolicy are replaced
       # by nodes explicitly representing initial policies not already
@@ -598,14 +585,13 @@ module Sun::Security::Provider::Certpath
           any_qualifiers = any_node.get_policy_qualifiers
           initial.each do |policy|
             expected_policies = Collections.singleton(policy)
-            node_ = PolicyNodeImpl.new(parent_node, policy, any_qualifiers, any_critical, expected_policies, false)
+            node = PolicyNodeImpl.new(parent_node, policy, any_qualifiers, any_critical, expected_policies, false)
           end
         end
         return root_node
       end
       
       typesig { [::Java::Int, ::Java::Boolean, ::Java::Boolean, PolicyNodeImpl, String, JavaSet, ::Java::Boolean] }
-      # 
       # Finds the policy nodes of depth (certIndex-1) where curPolicy
       # is in the expected policy set and creates a new child node
       # appropriately. If matchAny is true, then a value of ANY_POLICY
@@ -675,7 +661,6 @@ module Sun::Security::Provider::Certpath
       end
       
       typesig { [X509CertImpl, ::Java::Int, ::Java::Int, PolicyNodeImpl, ::Java::Boolean, JavaSet] }
-      # 
       # Processes policy mappings in the certificate.
       # 
       # @param currCert the Certificate to be processed
@@ -751,7 +736,7 @@ module Sun::Security::Provider::Certpath
                 cur_any_node_parent = cur_any_node.get_parent
                 exp_pols = HashSet.new
                 exp_pols.add(subject_domain)
-                cur_node_ = PolicyNodeImpl.new(cur_any_node_parent, issuer_domain, any_quals, policies_critical, exp_pols, true)
+                cur_node = PolicyNodeImpl.new(cur_any_node_parent, issuer_domain, any_quals, policies_critical, exp_pols, true)
               end
             end
           end
@@ -770,7 +755,6 @@ module Sun::Security::Provider::Certpath
       end
       
       typesig { [PolicyNodeImpl, ::Java::Int, JavaSet, CertificatePoliciesExtension] }
-      # 
       # Removes those nodes which do not intersect with the initial policies
       # specified by the user.
       # 
@@ -822,7 +806,6 @@ module Sun::Security::Provider::Certpath
     }
     
     typesig { [] }
-    # 
     # Gets the root node of the valid policy tree, or null if the
     # valid policy tree is null. Marks each node of the returned tree
     # immutable and thread-safe.

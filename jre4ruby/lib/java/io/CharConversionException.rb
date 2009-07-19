@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 1996-1999 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -31,7 +30,6 @@ module Java::Io
     }
   end
   
-  # 
   # Base class for character conversion exceptions.
   # 
   # @author      Asmus Freytag
@@ -40,14 +38,12 @@ module Java::Io
     include_class_members CharConversionExceptionImports
     
     typesig { [] }
-    # 
     # This provides no detailed message.
     def initialize
       super()
     end
     
     typesig { [String] }
-    # 
     # This provides a detailed message.
     # 
     # @param s the detailed message associated with the exception.

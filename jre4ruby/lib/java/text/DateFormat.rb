@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 1996-2005 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -55,7 +54,6 @@ module Java::Text
     }
   end
   
-  # 
   # DateFormat is an abstract class for date/time formatting subclasses which
   # formats and parses dates or time in a language-independent manner.
   # The date/time formatting subclass, such as SimpleDateFormat, allows for
@@ -145,7 +143,6 @@ module Java::Text
   class DateFormat < DateFormatImports.const_get :Format
     include_class_members DateFormatImports
     
-    # 
     # The calendar that <code>DateFormat</code> uses to produce the time field
     # values needed to implement date and time formatting.  Subclasses should
     # initialize this to a calendar appropriate for the locale associated with
@@ -157,7 +154,6 @@ module Java::Text
     alias_method :attr_calendar=, :calendar=
     undef_method :calendar=
     
-    # 
     # The number formatter that <code>DateFormat</code> uses to format numbers
     # in dates and times.  Subclasses should initialize this to a number format
     # appropriate for the locale associated with this <code>DateFormat</code>.
@@ -169,31 +165,26 @@ module Java::Text
     undef_method :number_format=
     
     class_module.module_eval {
-      # 
       # Useful constant for ERA field alignment.
       # Used in FieldPosition of date/time formatting.
       const_set_lazy(:ERA_FIELD) { 0 }
       const_attr_reader  :ERA_FIELD
       
-      # 
       # Useful constant for YEAR field alignment.
       # Used in FieldPosition of date/time formatting.
       const_set_lazy(:YEAR_FIELD) { 1 }
       const_attr_reader  :YEAR_FIELD
       
-      # 
       # Useful constant for MONTH field alignment.
       # Used in FieldPosition of date/time formatting.
       const_set_lazy(:MONTH_FIELD) { 2 }
       const_attr_reader  :MONTH_FIELD
       
-      # 
       # Useful constant for DATE field alignment.
       # Used in FieldPosition of date/time formatting.
       const_set_lazy(:DATE_FIELD) { 3 }
       const_attr_reader  :DATE_FIELD
       
-      # 
       # Useful constant for one-based HOUR_OF_DAY field alignment.
       # Used in FieldPosition of date/time formatting.
       # HOUR_OF_DAY1_FIELD is used for the one-based 24-hour clock.
@@ -201,7 +192,6 @@ module Java::Text
       const_set_lazy(:HOUR_OF_DAY1_FIELD) { 4 }
       const_attr_reader  :HOUR_OF_DAY1_FIELD
       
-      # 
       # Useful constant for zero-based HOUR_OF_DAY field alignment.
       # Used in FieldPosition of date/time formatting.
       # HOUR_OF_DAY0_FIELD is used for the zero-based 24-hour clock.
@@ -209,61 +199,51 @@ module Java::Text
       const_set_lazy(:HOUR_OF_DAY0_FIELD) { 5 }
       const_attr_reader  :HOUR_OF_DAY0_FIELD
       
-      # 
       # Useful constant for MINUTE field alignment.
       # Used in FieldPosition of date/time formatting.
       const_set_lazy(:MINUTE_FIELD) { 6 }
       const_attr_reader  :MINUTE_FIELD
       
-      # 
       # Useful constant for SECOND field alignment.
       # Used in FieldPosition of date/time formatting.
       const_set_lazy(:SECOND_FIELD) { 7 }
       const_attr_reader  :SECOND_FIELD
       
-      # 
       # Useful constant for MILLISECOND field alignment.
       # Used in FieldPosition of date/time formatting.
       const_set_lazy(:MILLISECOND_FIELD) { 8 }
       const_attr_reader  :MILLISECOND_FIELD
       
-      # 
       # Useful constant for DAY_OF_WEEK field alignment.
       # Used in FieldPosition of date/time formatting.
       const_set_lazy(:DAY_OF_WEEK_FIELD) { 9 }
       const_attr_reader  :DAY_OF_WEEK_FIELD
       
-      # 
       # Useful constant for DAY_OF_YEAR field alignment.
       # Used in FieldPosition of date/time formatting.
       const_set_lazy(:DAY_OF_YEAR_FIELD) { 10 }
       const_attr_reader  :DAY_OF_YEAR_FIELD
       
-      # 
       # Useful constant for DAY_OF_WEEK_IN_MONTH field alignment.
       # Used in FieldPosition of date/time formatting.
       const_set_lazy(:DAY_OF_WEEK_IN_MONTH_FIELD) { 11 }
       const_attr_reader  :DAY_OF_WEEK_IN_MONTH_FIELD
       
-      # 
       # Useful constant for WEEK_OF_YEAR field alignment.
       # Used in FieldPosition of date/time formatting.
       const_set_lazy(:WEEK_OF_YEAR_FIELD) { 12 }
       const_attr_reader  :WEEK_OF_YEAR_FIELD
       
-      # 
       # Useful constant for WEEK_OF_MONTH field alignment.
       # Used in FieldPosition of date/time formatting.
       const_set_lazy(:WEEK_OF_MONTH_FIELD) { 13 }
       const_attr_reader  :WEEK_OF_MONTH_FIELD
       
-      # 
       # Useful constant for AM_PM field alignment.
       # Used in FieldPosition of date/time formatting.
       const_set_lazy(:AM_PM_FIELD) { 14 }
       const_attr_reader  :AM_PM_FIELD
       
-      # 
       # Useful constant for one-based HOUR field alignment.
       # Used in FieldPosition of date/time formatting.
       # HOUR1_FIELD is used for the one-based 12-hour clock.
@@ -271,7 +251,6 @@ module Java::Text
       const_set_lazy(:HOUR1_FIELD) { 15 }
       const_attr_reader  :HOUR1_FIELD
       
-      # 
       # Useful constant for zero-based HOUR field alignment.
       # Used in FieldPosition of date/time formatting.
       # HOUR0_FIELD is used for the zero-based 12-hour clock.
@@ -279,7 +258,6 @@ module Java::Text
       const_set_lazy(:HOUR0_FIELD) { 16 }
       const_attr_reader  :HOUR0_FIELD
       
-      # 
       # Useful constant for TIMEZONE field alignment.
       # Used in FieldPosition of date/time formatting.
       const_set_lazy(:TIMEZONE_FIELD) { 17 }
@@ -291,7 +269,6 @@ module Java::Text
     }
     
     typesig { [Object, StringBuffer, FieldPosition] }
-    # 
     # Overrides Format.
     # Formats a time object into a time string. Examples of time objects
     # are a time value expressed in milliseconds and a Date object.
@@ -328,7 +305,6 @@ module Java::Text
     end
     
     typesig { [Date, StringBuffer, FieldPosition] }
-    # 
     # Formats a Date into a date/time string.
     # @param date a Date to be formatted into a date/time string.
     # @param toAppendTo the string buffer for the returning date/time string.
@@ -354,7 +330,6 @@ module Java::Text
     end
     
     typesig { [Date] }
-    # 
     # Formats a Date into a date/time string.
     # @param date the time value to be formatted into a time string.
     # @return the formatted time string.
@@ -363,7 +338,6 @@ module Java::Text
     end
     
     typesig { [String] }
-    # 
     # Parses text from the beginning of the given string to produce a date.
     # The method may not use the entire text of the given string.
     # <p>
@@ -384,7 +358,6 @@ module Java::Text
     end
     
     typesig { [String, ParsePosition] }
-    # 
     # Parse a date/time string according to the given parse position.  For
     # example, a time text "07/10/96 4:5 PM, PDT" will be parsed into a Date
     # that is equivalent to Date(837039928046).
@@ -408,7 +381,6 @@ module Java::Text
     end
     
     typesig { [String, ParsePosition] }
-    # 
     # Parses text from a string to produce a <code>Date</code>.
     # <p>
     # The method attempts to parse text starting at the index given by
@@ -436,33 +408,27 @@ module Java::Text
     end
     
     class_module.module_eval {
-      # 
       # Constant for full style pattern.
       const_set_lazy(:FULL) { 0 }
       const_attr_reader  :FULL
       
-      # 
       # Constant for long style pattern.
       const_set_lazy(:LONG) { 1 }
       const_attr_reader  :LONG
       
-      # 
       # Constant for medium style pattern.
       const_set_lazy(:MEDIUM) { 2 }
       const_attr_reader  :MEDIUM
       
-      # 
       # Constant for short style pattern.
       const_set_lazy(:SHORT) { 3 }
       const_attr_reader  :SHORT
       
-      # 
       # Constant for default style pattern.  Its value is MEDIUM.
       const_set_lazy(:DEFAULT) { MEDIUM }
       const_attr_reader  :DEFAULT
       
       typesig { [] }
-      # 
       # Gets the time formatter with the default formatting style
       # for the default locale.
       # @return a time formatter.
@@ -471,7 +437,6 @@ module Java::Text
       end
       
       typesig { [::Java::Int] }
-      # 
       # Gets the time formatter with the given formatting style
       # for the default locale.
       # @param style the given formatting style. For example,
@@ -482,7 +447,6 @@ module Java::Text
       end
       
       typesig { [::Java::Int, Locale] }
-      # 
       # Gets the time formatter with the given formatting style
       # for the given locale.
       # @param style the given formatting style. For example,
@@ -494,7 +458,6 @@ module Java::Text
       end
       
       typesig { [] }
-      # 
       # Gets the date formatter with the default formatting style
       # for the default locale.
       # @return a date formatter.
@@ -503,7 +466,6 @@ module Java::Text
       end
       
       typesig { [::Java::Int] }
-      # 
       # Gets the date formatter with the given formatting style
       # for the default locale.
       # @param style the given formatting style. For example,
@@ -514,7 +476,6 @@ module Java::Text
       end
       
       typesig { [::Java::Int, Locale] }
-      # 
       # Gets the date formatter with the given formatting style
       # for the given locale.
       # @param style the given formatting style. For example,
@@ -526,7 +487,6 @@ module Java::Text
       end
       
       typesig { [] }
-      # 
       # Gets the date/time formatter with the default formatting style
       # for the default locale.
       # @return a date/time formatter.
@@ -535,7 +495,6 @@ module Java::Text
       end
       
       typesig { [::Java::Int, ::Java::Int] }
-      # 
       # Gets the date/time formatter with the given date and time
       # formatting styles for the default locale.
       # @param dateStyle the given date formatting style. For example,
@@ -548,7 +507,6 @@ module Java::Text
       end
       
       typesig { [::Java::Int, ::Java::Int, Locale] }
-      # 
       # Gets the date/time formatter with the given formatting styles
       # for the given locale.
       # @param dateStyle the given date formatting style.
@@ -560,7 +518,6 @@ module Java::Text
       end
       
       typesig { [] }
-      # 
       # Get a default date/time formatter that uses the SHORT style for both the
       # date and the time.
       def get_instance
@@ -568,7 +525,6 @@ module Java::Text
       end
       
       typesig { [] }
-      # 
       # Returns an array of all locales for which the
       # <code>get*Instance</code> methods of this class can return
       # localized instances.
@@ -587,7 +543,6 @@ module Java::Text
     }
     
     typesig { [Calendar] }
-    # 
     # Set the calendar to be used by this date format.  Initially, the default
     # calendar for the specified or default locale is used.
     # @param newCalendar the new Calendar to be used by the date format
@@ -596,7 +551,6 @@ module Java::Text
     end
     
     typesig { [] }
-    # 
     # Gets the calendar associated with this date/time formatter.
     # @return the calendar associated with this date/time formatter.
     def get_calendar
@@ -604,7 +558,6 @@ module Java::Text
     end
     
     typesig { [NumberFormat] }
-    # 
     # Allows you to set the number formatter.
     # @param newNumberFormat the given new NumberFormat.
     def set_number_format(new_number_format)
@@ -612,7 +565,6 @@ module Java::Text
     end
     
     typesig { [] }
-    # 
     # Gets the number formatter which this date/time formatter uses to
     # format and parse a time.
     # @return the number formatter which this date/time formatter uses.
@@ -621,7 +573,6 @@ module Java::Text
     end
     
     typesig { [TimeZone] }
-    # 
     # Sets the time zone for the calendar of this DateFormat object.
     # @param zone the given new time zone.
     def set_time_zone(zone)
@@ -629,7 +580,6 @@ module Java::Text
     end
     
     typesig { [] }
-    # 
     # Gets the time zone.
     # @return the time zone associated with the calendar of DateFormat.
     def get_time_zone
@@ -637,7 +587,6 @@ module Java::Text
     end
     
     typesig { [::Java::Boolean] }
-    # 
     # Specify whether or not date/time parsing is to be lenient.  With
     # lenient parsing, the parser may use heuristics to interpret inputs that
     # do not precisely match this object's format.  With strict parsing,
@@ -649,14 +598,12 @@ module Java::Text
     end
     
     typesig { [] }
-    # 
     # Tell whether date/time parsing is to be lenient.
     def is_lenient
       return @calendar.is_lenient
     end
     
     typesig { [] }
-    # 
     # Overrides hashCode
     def hash_code
       return @number_format.hash_code
@@ -664,7 +611,6 @@ module Java::Text
     end
     
     typesig { [Object] }
-    # 
     # Overrides equals
     def equals(obj)
       if ((self).equal?(obj))
@@ -679,7 +625,6 @@ module Java::Text
     end
     
     typesig { [] }
-    # 
     # Overrides Cloneable
     def clone
       other = super
@@ -690,7 +635,6 @@ module Java::Text
     
     class_module.module_eval {
       typesig { [::Java::Int, ::Java::Int, ::Java::Int, Locale] }
-      # 
       # Creates a DateFormat with the given time and/or date style in the given
       # locale.
       # @param timeStyle a value from 0 to 3 indicating the time format,
@@ -733,7 +677,6 @@ module Java::Text
     }
     
     typesig { [] }
-    # 
     # Create a new date format.
     def initialize
       @calendar = nil
@@ -742,7 +685,6 @@ module Java::Text
     end
     
     class_module.module_eval {
-      # 
       # Defines constants that are used as attribute keys in the
       # <code>AttributedCharacterIterator</code> returned
       # from <code>DateFormat.formatToCharacterIterator</code> and as
@@ -780,7 +722,6 @@ module Java::Text
         
         class_module.module_eval {
           typesig { [::Java::Int] }
-          # 
           # Returns the <code>Field</code> constant that corresponds to
           # the <code>Calendar</code> constant <code>calendarField</code>.
           # If there is no direct mapping between the <code>Calendar</code>
@@ -800,7 +741,6 @@ module Java::Text
         }
         
         typesig { [String, ::Java::Int] }
-        # 
         # Creates a <code>Field</code>.
         # 
         # @param name the name of the <code>Field</code>
@@ -823,7 +763,6 @@ module Java::Text
         end
         
         typesig { [] }
-        # 
         # Returns the <code>Calendar</code> field associated with this
         # attribute. For example, if this represents the hours field of
         # a <code>Calendar</code>, this would return
@@ -837,7 +776,6 @@ module Java::Text
         end
         
         typesig { [] }
-        # 
         # Resolves instances being deserialized to the predefined constants.
         # 
         # @throws InvalidObjectException if the constant could not be
@@ -856,7 +794,6 @@ module Java::Text
         end
         
         class_module.module_eval {
-          # 
           # The constants
           # 
           # 
@@ -864,92 +801,75 @@ module Java::Text
           const_set_lazy(:ERA) { Field.new("era", Calendar::ERA) }
           const_attr_reader  :ERA
           
-          # 
           # Constant identifying the year field.
           const_set_lazy(:YEAR) { Field.new("year", Calendar::YEAR) }
           const_attr_reader  :YEAR
           
-          # 
           # Constant identifying the month field.
           const_set_lazy(:MONTH) { Field.new("month", Calendar::MONTH) }
           const_attr_reader  :MONTH
           
-          # 
           # Constant identifying the day of month field.
           const_set_lazy(:DAY_OF_MONTH) { Field.new("day of month", Calendar::DAY_OF_MONTH) }
           const_attr_reader  :DAY_OF_MONTH
           
-          # 
           # Constant identifying the hour of day field, where the legal values
           # are 1 to 24.
           const_set_lazy(:HOUR_OF_DAY1) { Field.new("hour of day 1", -1) }
           const_attr_reader  :HOUR_OF_DAY1
           
-          # 
           # Constant identifying the hour of day field, where the legal values
           # are 0 to 23.
           const_set_lazy(:HOUR_OF_DAY0) { Field.new("hour of day", Calendar::HOUR_OF_DAY) }
           const_attr_reader  :HOUR_OF_DAY0
           
-          # 
           # Constant identifying the minute field.
           const_set_lazy(:MINUTE) { Field.new("minute", Calendar::MINUTE) }
           const_attr_reader  :MINUTE
           
-          # 
           # Constant identifying the second field.
           const_set_lazy(:SECOND) { Field.new("second", Calendar::SECOND) }
           const_attr_reader  :SECOND
           
-          # 
           # Constant identifying the millisecond field.
           const_set_lazy(:MILLISECOND) { Field.new("millisecond", Calendar::MILLISECOND) }
           const_attr_reader  :MILLISECOND
           
-          # 
           # Constant identifying the day of week field.
           const_set_lazy(:DAY_OF_WEEK) { Field.new("day of week", Calendar::DAY_OF_WEEK) }
           const_attr_reader  :DAY_OF_WEEK
           
-          # 
           # Constant identifying the day of year field.
           const_set_lazy(:DAY_OF_YEAR) { Field.new("day of year", Calendar::DAY_OF_YEAR) }
           const_attr_reader  :DAY_OF_YEAR
           
-          # 
           # Constant identifying the day of week field.
           const_set_lazy(:DAY_OF_WEEK_IN_MONTH) { Field.new("day of week in month", Calendar::DAY_OF_WEEK_IN_MONTH) }
           const_attr_reader  :DAY_OF_WEEK_IN_MONTH
           
-          # 
           # Constant identifying the week of year field.
           const_set_lazy(:WEEK_OF_YEAR) { Field.new("week of year", Calendar::WEEK_OF_YEAR) }
           const_attr_reader  :WEEK_OF_YEAR
           
-          # 
           # Constant identifying the week of month field.
           const_set_lazy(:WEEK_OF_MONTH) { Field.new("week of month", Calendar::WEEK_OF_MONTH) }
           const_attr_reader  :WEEK_OF_MONTH
           
-          # 
           # Constant identifying the time of day indicator
           # (e.g. "a.m." or "p.m.") field.
           const_set_lazy(:AM_PM) { Field.new("am pm", Calendar::AM_PM) }
           const_attr_reader  :AM_PM
           
-          # 
           # Constant identifying the hour field, where the legal values are
           # 1 to 12.
           const_set_lazy(:HOUR1) { Field.new("hour 1", -1) }
           const_attr_reader  :HOUR1
           
-          # 
           # Constant identifying the hour field, where the legal values are
           # 0 to 11.
           const_set_lazy(:HOUR0) { Field.new("hour", Calendar::HOUR) }
           const_attr_reader  :HOUR0
           
-          # 
           # Constant identifying the time zone field.
           const_set_lazy(:TIME_ZONE) { Field.new("time zone", -1) }
           const_attr_reader  :TIME_ZONE
@@ -959,7 +879,6 @@ module Java::Text
         alias_method :initialize__field, :initialize
       end }
       
-      # 
       # Obtains a DateFormat instance from a DateFormatProvider
       # implementation.
       const_set_lazy(:DateFormatGetter) { Class.new do

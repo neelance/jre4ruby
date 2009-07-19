@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 2000-2006 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -50,7 +49,6 @@ module Sun::Security::Provider::Certpath
     }
   end
   
-  # 
   # A {@link java.security.cert.CertPath CertPath} (certification path)
   # consisting exclusively of
   # {@link java.security.cert.X509Certificate X509Certificate}s.
@@ -73,7 +71,6 @@ module Sun::Security::Provider::Certpath
       const_attr_reader  :SerialVersionUID
     }
     
-    # 
     # List of certificates in this chain
     attr_accessor :certs
     alias_method :attr_certs, :certs
@@ -82,7 +79,6 @@ module Sun::Security::Provider::Certpath
     undef_method :certs=
     
     class_module.module_eval {
-      # 
       # The names of our encodings.  PkiPath is the default.
       const_set_lazy(:COUNT_ENCODING) { "count" }
       const_attr_reader  :COUNT_ENCODING
@@ -102,7 +98,6 @@ module Sun::Security::Provider::Certpath
     }
     
     typesig { [JavaList] }
-    # 
     # Creates an <code>X509CertPath</code> from a <code>List</code> of
     # <code>X509Certificate</code>s.
     # <p>
@@ -129,7 +124,6 @@ module Sun::Security::Provider::Certpath
     end
     
     typesig { [InputStream] }
-    # 
     # Creates an <code>X509CertPath</code>, reading the encoded form
     # from an <code>InputStream</code>. The data is assumed to be in
     # the default encoding.
@@ -141,7 +135,6 @@ module Sun::Security::Provider::Certpath
     end
     
     typesig { [InputStream, String] }
-    # 
     # Creates an <code>X509CertPath</code>, reading the encoded form
     # from an InputStream. The data is assumed to be in the specified
     # encoding.
@@ -166,7 +159,6 @@ module Sun::Security::Provider::Certpath
     
     class_module.module_eval {
       typesig { [InputStream] }
-      # 
       # Parse a PKIPATH format CertPath from an InputStream. Return an
       # unmodifiable List of the certificates.
       # 
@@ -202,7 +194,6 @@ module Sun::Security::Provider::Certpath
       end
       
       typesig { [InputStream] }
-      # 
       # Parse a PKCS#7 format CertPath from an InputStream. Return an
       # unmodifiable List of the certificates.
       # 
@@ -240,7 +231,6 @@ module Sun::Security::Provider::Certpath
       end
       
       typesig { [InputStream] }
-      # 
       # Reads the entire contents of an InputStream into a byte array.
       # 
       # @param is the InputStream to read from
@@ -257,7 +247,6 @@ module Sun::Security::Provider::Certpath
     }
     
     typesig { [] }
-    # 
     # Returns the encoded form of this certification path, using the
     # default encoding.
     # 
@@ -269,7 +258,6 @@ module Sun::Security::Provider::Certpath
     end
     
     typesig { [] }
-    # 
     # Encode the CertPath using PKIPATH format.
     # 
     # @return a byte array containing the binary encoding of the PkiPath object
@@ -302,7 +290,6 @@ module Sun::Security::Provider::Certpath
     end
     
     typesig { [] }
-    # 
     # Encode the CertPath using PKCS#7 format.
     # 
     # @return a byte array containing the binary encoding of the PKCS#7 object
@@ -319,7 +306,6 @@ module Sun::Security::Provider::Certpath
     end
     
     typesig { [String] }
-    # 
     # Returns the encoded form of this certification path, using the
     # specified encoding.
     # 
@@ -341,7 +327,6 @@ module Sun::Security::Provider::Certpath
     
     class_module.module_eval {
       typesig { [] }
-      # 
       # Returns the encodings supported by this certification path, with the
       # default encoding first.
       # 
@@ -353,7 +338,6 @@ module Sun::Security::Provider::Certpath
     }
     
     typesig { [] }
-    # 
     # Returns an iteration of the encodings supported by this certification
     # path, with the default encoding first.
     # <p>
@@ -368,7 +352,6 @@ module Sun::Security::Provider::Certpath
     end
     
     typesig { [] }
-    # 
     # Returns the list of certificates in this certification path.
     # The <code>List</code> returned must be immutable and thread-safe.
     # 

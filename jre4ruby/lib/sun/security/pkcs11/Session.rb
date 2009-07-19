@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 2003-2005 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -35,7 +34,6 @@ module Sun::Security::Pkcs11
     }
   end
   
-  # 
   # A session object. Sessions are obtained via the SessionManager,
   # see there for details. Most code will only ever need one method in
   # this class, the id() method to obtain the session id.

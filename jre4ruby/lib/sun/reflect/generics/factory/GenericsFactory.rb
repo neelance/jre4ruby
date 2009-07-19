@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 2003-2006 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -36,7 +35,6 @@ module Sun::Reflect::Generics::Factory
     }
   end
   
-  # 
   # A factory interface for reflective objects representing generic types.
   # Implementors (such as core reflection or JDI, or possibly javadoc
   # will manufacture instances of (potentially) different classes
@@ -53,7 +51,6 @@ module Sun::Reflect::Generics::Factory
     include_class_members GenericsFactoryImports
     
     typesig { [String, Array.typed(FieldTypeSignature)] }
-    # 
     # Returns a new type variable declaration. Note that <tt>name</tt>
     # may be empty (but not <tt>null</tt>). If <tt>bounds</tt> is
     # empty, a bound of <tt>java.lang.Object</tt> is used.
@@ -68,7 +65,6 @@ module Sun::Reflect::Generics::Factory
     end
     
     typesig { [Type, Array.typed(Type), Type] }
-    # 
     # Return an instance of the <tt>ParameterizedType</tt> interface
     # that corresponds to a generic type instantiation of the
     # generic declaration <tt>declaration</tt> with actual type arguments
@@ -100,7 +96,6 @@ module Sun::Reflect::Generics::Factory
     end
     
     typesig { [String] }
-    # 
     # Returns the type variable with name <tt>name</tt>, if such
     # a type variable is declared in the
     # scope used to create this factory.
@@ -114,7 +109,6 @@ module Sun::Reflect::Generics::Factory
     end
     
     typesig { [Array.typed(FieldTypeSignature), Array.typed(FieldTypeSignature)] }
-    # 
     # Returns a new wildcard type variable. If
     # <tt>ubs</tt> is empty, a bound of <tt>java.lang.Object</tt> is used.
     # @param ubs An array of abstract syntax trees representing
@@ -135,7 +129,6 @@ module Sun::Reflect::Generics::Factory
     end
     
     typesig { [Type] }
-    # 
     # Returns a (possibly generic) array type.
     # If the component type is a parameterized type, it must
     # only have unbounded wildcard arguemnts, otherwise
@@ -151,7 +144,6 @@ module Sun::Reflect::Generics::Factory
     end
     
     typesig { [] }
-    # 
     # Returns the reflective representation of type <tt>byte</tt>.
     # @return the reflective representation of type <tt>byte</tt>.
     def make_byte
@@ -159,7 +151,6 @@ module Sun::Reflect::Generics::Factory
     end
     
     typesig { [] }
-    # 
     # Returns the reflective representation of type <tt>boolean</tt>.
     # @return the reflective representation of type <tt>boolean</tt>.
     def make_bool
@@ -167,7 +158,6 @@ module Sun::Reflect::Generics::Factory
     end
     
     typesig { [] }
-    # 
     # Returns the reflective representation of type <tt>short</tt>.
     # @return the reflective representation of type <tt>short</tt>.
     def make_short
@@ -175,7 +165,6 @@ module Sun::Reflect::Generics::Factory
     end
     
     typesig { [] }
-    # 
     # Returns the reflective representation of type <tt>char</tt>.
     # @return the reflective representation of type <tt>char</tt>.
     def make_char
@@ -183,7 +172,6 @@ module Sun::Reflect::Generics::Factory
     end
     
     typesig { [] }
-    # 
     # Returns the reflective representation of type <tt>int</tt>.
     # @return the reflective representation of type <tt>int</tt>.
     def make_int
@@ -191,7 +179,6 @@ module Sun::Reflect::Generics::Factory
     end
     
     typesig { [] }
-    # 
     # Returns the reflective representation of type <tt>long</tt>.
     # @return the reflective representation of type <tt>long</tt>.
     def make_long
@@ -199,7 +186,6 @@ module Sun::Reflect::Generics::Factory
     end
     
     typesig { [] }
-    # 
     # Returns the reflective representation of type <tt>float</tt>.
     # @return the reflective representation of type <tt>float</tt>.
     def make_float
@@ -207,7 +193,6 @@ module Sun::Reflect::Generics::Factory
     end
     
     typesig { [] }
-    # 
     # Returns the reflective representation of type <tt>double</tt>.
     # @return the reflective representation of type <tt>double</tt>.
     def make_double
@@ -215,7 +200,6 @@ module Sun::Reflect::Generics::Factory
     end
     
     typesig { [] }
-    # 
     # Returns the reflective representation of <tt>void</tt>.
     # @return the reflective representation of <tt>void</tt>.
     def make_void

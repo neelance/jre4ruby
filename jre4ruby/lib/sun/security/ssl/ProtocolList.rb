@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 2002-2007 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -32,7 +31,6 @@ module Sun::Security::Ssl
     }
   end
   
-  # 
   # A list of ProtocolVersions. Also maintains the list of supported protocols.
   # Instances of this class are immutable. Some member variables are final
   # and can be accessed directly without method accessors.
@@ -106,7 +104,6 @@ module Sun::Security::Ssl
     end
     
     typesig { [ProtocolVersion] }
-    # 
     # Return whether this list contains the specified protocol version.
     # SSLv2Hello is not a real protocol version we support, we always
     # return false for it.
@@ -118,7 +115,6 @@ module Sun::Security::Ssl
     end
     
     typesig { [] }
-    # 
     # Return an array with the names of the ProtocolVersions in this list.
     def to_string_array
       synchronized(self) do
@@ -140,7 +136,6 @@ module Sun::Security::Ssl
     
     class_module.module_eval {
       typesig { [] }
-      # 
       # Return the list of default enabled protocols. Currently, this
       # is identical to the supported protocols.
       def get_default
@@ -148,7 +143,6 @@ module Sun::Security::Ssl
       end
       
       typesig { [] }
-      # 
       # Return the list of supported protocols.
       def get_supported
         return SUPPORTED

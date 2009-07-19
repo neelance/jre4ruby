@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 1997-2006 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -32,7 +31,6 @@ module Sun::Security::Util
     }
   end
   
-  # 
   # Compare two byte arrays in lexicographical order.
   # 
   # @author D. N. Hoover
@@ -41,7 +39,6 @@ module Sun::Security::Util
     include Comparator
     
     typesig { [Array.typed(::Java::Byte), Array.typed(::Java::Byte)] }
-    # 
     # Perform lexicographical comparison of two byte arrays,
     # regarding each byte as unsigned.  That is, compare array entries
     # in order until they differ--the array with the smaller entry

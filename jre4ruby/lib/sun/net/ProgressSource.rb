@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 2004 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -32,7 +31,6 @@ module Sun::Net
     }
   end
   
-  # 
   # ProgressSource represents the source of progress changes.
   # 
   # @author Stanley Man-Kit Ho
@@ -167,14 +165,12 @@ module Sun::Net
     undef_method :progress_monitor=
     
     typesig { [URL, String] }
-    # 
     # Construct progress source object.
     def initialize(url, method)
       initialize__progress_source(url, method, -1)
     end
     
     typesig { [URL, String, ::Java::Int] }
-    # 
     # Construct progress source object.
     def initialize(url, method, expected)
       @url = nil
@@ -209,28 +205,24 @@ module Sun::Net
     end
     
     typesig { [] }
-    # 
     # Close progress source.
     def close
       @state = State::DELETE
     end
     
     typesig { [] }
-    # 
     # Return URL of progress source.
     def get_url
       return @url
     end
     
     typesig { [] }
-    # 
     # Return method of URL.
     def get_method
       return @method
     end
     
     typesig { [] }
-    # 
     # Return content type of URL.
     def get_content_type
       return @content_type
@@ -243,42 +235,36 @@ module Sun::Net
     end
     
     typesig { [] }
-    # 
     # Return current progress.
     def get_progress
       return @progress
     end
     
     typesig { [] }
-    # 
     # Return expected maximum progress; -1 if expected is unknown.
     def get_expected
       return @expected
     end
     
     typesig { [] }
-    # 
     # Return state.
     def get_state
       return @state
     end
     
     typesig { [] }
-    # 
     # Begin progress tracking.
     def begin_tracking
       @progress_monitor.register_source(self)
     end
     
     typesig { [] }
-    # 
     # Finish progress tracking.
     def finish_tracking
       @progress_monitor.unregister_source(self)
     end
     
     typesig { [::Java::Int, ::Java::Int] }
-    # 
     # Update progress.
     def update_progress(latest_progress, expected_progress)
       @last_progress = @progress

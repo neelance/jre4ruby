@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 1996-2006 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -34,7 +33,6 @@ module Sun::Security::Provider
     }
   end
   
-  # 
   # An implementation of IdentityScope as a persistent identity
   # database.
   # 
@@ -80,7 +78,6 @@ module Sun::Security::Provider
     end
     
     typesig { [JavaFile] }
-    # 
     # Construct a new, empty database with a specified source file.
     # 
     # @param file the source file.
@@ -90,7 +87,6 @@ module Sun::Security::Provider
     end
     
     typesig { [String] }
-    # 
     # Construct a new, empty database.
     def initialize(name)
       @source_file = nil
@@ -101,7 +97,6 @@ module Sun::Security::Provider
     
     class_module.module_eval {
       typesig { [InputStream] }
-      # 
       # Initialize an identity database from a stream. The stream should
       # contain data to initialized a serialized IdentityDatabase
       # object.
@@ -120,10 +115,10 @@ module Sun::Security::Provider
           error("The version of the database is obsolete. Cannot initialize.")
         rescue InvalidClassException => e
           # this may happen in developers workspaces happen.
-          debug("This should not be happening.", e_)
+          debug("This should not be happening.", e)
           error("Unable to initialize system identity scope: " + " InvalidClassException. \nThis is most likely due to " + "a serialization versioning problem: a class used in " + "key management was obsoleted")
         rescue StreamCorruptedException => e
-          debug("The serialization stream is corrupted. Unable to load.", e__)
+          debug("The serialization stream is corrupted. Unable to load.", e)
           error("Unable to initialize system identity scope." + " StreamCorruptedException.")
         end
         if ((db).nil?)
@@ -133,7 +128,6 @@ module Sun::Security::Provider
       end
       
       typesig { [JavaFile] }
-      # 
       # Initialize an IdentityDatabase from file.
       # 
       # @param f the filename where the identity database is stored.
@@ -151,14 +145,12 @@ module Sun::Security::Provider
     }
     
     typesig { [] }
-    # 
     # @return the number of identities in the database.
     def size
       return @identities.size
     end
     
     typesig { [String] }
-    # 
     # @param name the name of the identity to be retrieved.
     # 
     # @return the identity named name, or null if there are
@@ -172,7 +164,6 @@ module Sun::Security::Provider
     end
     
     typesig { [PublicKey] }
-    # 
     # Get an identity by key.
     # 
     # @param name the key of the identity to be retrieved.
@@ -207,7 +198,6 @@ module Sun::Security::Provider
     end
     
     typesig { [Identity] }
-    # 
     # Adds an identity to the database.
     # 
     # @param identity the identity to be added.
@@ -232,7 +222,6 @@ module Sun::Security::Provider
     end
     
     typesig { [Identity] }
-    # 
     # Removes an identity to the database.
     def remove_identity(identity)
       local_check("remove.identity")
@@ -244,28 +233,24 @@ module Sun::Security::Provider
     end
     
     typesig { [] }
-    # 
     # @return an enumeration of all identities in the database.
     def identities
       return @identities.elements
     end
     
     typesig { [JavaFile] }
-    # 
     # Set the source file for this database.
     def set_source_file(f)
       @source_file = f
     end
     
     typesig { [] }
-    # 
     # @return the source file for this database.
     def get_source_file
       return @source_file
     end
     
     typesig { [OutputStream] }
-    # 
     # Save the database in its current state to an output stream.
     # 
     # @param os the output stream to which the database should be serialized.
@@ -284,7 +269,6 @@ module Sun::Security::Provider
     end
     
     typesig { [JavaFile] }
-    # 
     # Save the database to a file.
     # 
     # @exception IOException if an IO exception is raised by stream
@@ -296,7 +280,6 @@ module Sun::Security::Provider
     end
     
     typesig { [] }
-    # 
     # Saves the database to the default source file.
     # 
     # @exception KeyManagementException when there is no default source
@@ -310,7 +293,6 @@ module Sun::Security::Provider
     
     class_module.module_eval {
       typesig { [] }
-      # 
       # This method returns the file from which to initialize the
       # system database.
       def system_database_file
@@ -347,7 +329,6 @@ module Sun::Security::Provider
       end
       
       typesig { [] }
-      # 
       # This method initializes the system's identity database. The
       # canonical location is
       # <user.home>/identitydatabase.obj. This is settable through
@@ -369,14 +350,13 @@ module Sun::Security::Provider
           debug("Error initializing identity database: " + (db_file).to_s, e)
           return
         rescue InvalidParameterException => e
-          debug("Error trying to instantiate a system identities db in " + (db_file).to_s, e_)
+          debug("Error trying to instantiate a system identities db in " + (db_file).to_s, e)
           return
         end
       end
     }
     
     typesig { [] }
-    # 
     # private static File securityPropFile(String filename) {
     # // maybe check for a system property which will specify where to
     # // look.
@@ -423,7 +403,6 @@ module Sun::Security::Provider
     end
     
     typesig { [] }
-    # 
     # Returns a parsable name for identity: identityName.scopeName
     def local_full_name
       parsable = get_name
@@ -434,7 +413,6 @@ module Sun::Security::Provider
     end
     
     typesig { [Java::Io::ObjectOutputStream] }
-    # 
     # Serialization write.
     def write_object(stream)
       synchronized(self) do

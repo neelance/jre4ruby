@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 1999-2003 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -45,7 +44,6 @@ module Java::Text
     }
   end
   
-  # 
   # This class contains the static state of a RuleBasedCollator: The various
   # tables that are used by the collation routines.  Several RuleBasedCollators
   # can share a single RBCollationTables object, easing memory requirements and
@@ -102,14 +100,12 @@ module Java::Text
         include_class_members RBCollationTables
         
         typesig { [] }
-        # 
         # Private constructor.  Prevents anyone else besides RBTableBuilder
         # from gaining direct access to the internals of this class.
         def initialize
         end
         
         typesig { [::Java::Boolean, ::Java::Boolean, UCompactIntArray, Vector, Vector, IntHashtable, ::Java::Short, ::Java::Short] }
-        # 
         # This function is used by RBTableBuilder to fill in all the members of this
         # object.  (Effectively, the builder class functions as a "friend" of this
         # class, but to avoid changing too much of the logic, it carries around "shadow"
@@ -142,7 +138,6 @@ module Java::Text
     }
     
     typesig { [] }
-    # 
     # Gets the table-based rules for the collation object.
     # @return returns the collation rules that the table collation object
     # was created from.
@@ -185,7 +180,6 @@ module Java::Text
     end
     
     typesig { [::Java::Int] }
-    # 
     # Returns true if this character appears anywhere in a contracting
     # character sequence.  (Used by CollationElementIterator.setOffset().)
     def used_in_contract_seq(c)
@@ -193,7 +187,6 @@ module Java::Text
     end
     
     typesig { [::Java::Int] }
-    # 
     # Return the maximum length of any expansion sequences that end
     # with the specified comparison order.
     # 
@@ -223,7 +216,6 @@ module Java::Text
     end
     
     typesig { [::Java::Int] }
-    # 
     # Get the entry of hash table of the expanding string in the collation
     # table.
     # @param idx the index of the expanding string value list
@@ -232,7 +224,6 @@ module Java::Text
     end
     
     typesig { [::Java::Int] }
-    # 
     # Get the comarison order of a character from the collation table.
     # @return the comparison order of a character.
     def get_unicode_order(ch)
@@ -251,7 +242,6 @@ module Java::Text
     
     class_module.module_eval {
       typesig { [StringBuffer, ::Java::Int, ::Java::Int] }
-      # 
       # Reverse a string.
       # 
       # shemran/Note: this is used for secondary order value reverse, no

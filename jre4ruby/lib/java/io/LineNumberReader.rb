@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 1996-2006 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -31,7 +30,6 @@ module Java::Io
     }
   end
   
-  # 
   # A buffered character-input stream that keeps track of line numbers.  This
   # class defines methods {@link #setLineNumber(int)} and {@link
   # #getLineNumber()} for setting and getting the current line number
@@ -83,7 +81,6 @@ module Java::Io
     undef_method :marked_skip_lf=
     
     typesig { [Reader] }
-    # 
     # Create a new line-numbering reader, using the default input-buffer
     # size.
     # 
@@ -101,7 +98,6 @@ module Java::Io
     end
     
     typesig { [Reader, ::Java::Int] }
-    # 
     # Create a new line-numbering reader, reading characters into a buffer of
     # the given size.
     # 
@@ -122,7 +118,6 @@ module Java::Io
     end
     
     typesig { [::Java::Int] }
-    # 
     # Set the current line number.
     # 
     # @param  lineNumber
@@ -134,7 +129,6 @@ module Java::Io
     end
     
     typesig { [] }
-    # 
     # Get the current line number.
     # 
     # @return  The current line number
@@ -145,7 +139,6 @@ module Java::Io
     end
     
     typesig { [] }
-    # 
     # Read a single character.  <a href="#lt">Line terminators</a> are
     # compressed into single newline ('\n') characters.  Whenever a line
     # terminator is read the current line number is incremented.
@@ -180,7 +173,6 @@ module Java::Io
     end
     
     typesig { [Array.typed(::Java::Char), ::Java::Int, ::Java::Int] }
-    # 
     # Read characters into a portion of an array.  Whenever a <a
     # href="#lt">line terminator</a> is read the current line number is
     # incremented.
@@ -228,7 +220,6 @@ module Java::Io
     end
     
     typesig { [] }
-    # 
     # Read a line of text.  Whenever a <a href="#lt">line terminator</a> is
     # read the current line number is incremented.
     # 
@@ -263,7 +254,6 @@ module Java::Io
     undef_method :skip_buffer=
     
     typesig { [::Java::Long] }
-    # 
     # Skip characters.
     # 
     # @param  n
@@ -298,7 +288,6 @@ module Java::Io
     end
     
     typesig { [::Java::Int] }
-    # 
     # Mark the present position in the stream.  Subsequent calls to reset()
     # will attempt to reposition the stream to this point, and will also reset
     # the line number appropriately.
@@ -319,7 +308,6 @@ module Java::Io
     end
     
     typesig { [] }
-    # 
     # Reset the stream to the most recent mark.
     # 
     # @throws  IOException

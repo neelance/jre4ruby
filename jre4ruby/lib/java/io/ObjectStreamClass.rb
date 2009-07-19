@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 1996-2006 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -56,7 +55,6 @@ module Java::Io
     }
   end
   
-  # 
   # Serialization's descriptor for classes.  It contains the name and
   # serialVersionUID of the class.  The ObjectStreamClass for a specific class
   # loaded in this Java VM can be found/created using the lookup method.
@@ -175,7 +173,6 @@ module Java::Io
     alias_method :attr_has_write_object_data=, :has_write_object_data=
     undef_method :has_write_object_data=
     
-    # 
     # true if desc has externalizable data written in block data format; this
     # must be true by default to accommodate ObjectInputStream subclasses which
     # override readClassDescriptor() to return class descriptors obtained from
@@ -308,7 +305,6 @@ module Java::Io
     class_module.module_eval {
       JNI.native_method :Java_java_io_ObjectStreamClass_initNative, [:pointer, :long], :void
       typesig { [] }
-      # 
       # Initializes native code.
       def init_native
         JNI.__send__(:Java_java_io_ObjectStreamClass_initNative, JNI.env, self.jni_id)
@@ -319,7 +315,6 @@ module Java::Io
       end
       
       typesig { [Class] }
-      # 
       # Find the descriptor for a class that can be serialized.  Creates an
       # ObjectStreamClass instance if one does not exist yet for class. Null is
       # returned if the specified class does not implement java.io.Serializable
@@ -332,7 +327,6 @@ module Java::Io
       end
       
       typesig { [Class] }
-      # 
       # Returns the descriptor for any class, regardless of whether it
       # implements {@link Serializable}.
       # 
@@ -345,7 +339,6 @@ module Java::Io
     }
     
     typesig { [] }
-    # 
     # Returns the name of the class described by this descriptor.
     # This method returns the name of the class in the format that
     # is used by the {@link Class#getName} method.
@@ -356,7 +349,6 @@ module Java::Io
     end
     
     typesig { [] }
-    # 
     # Return the serialVersionUID for this class.  The serialVersionUID
     # defines a set of classes all with the same name that have evolved from a
     # common root class and agree to be serialized and deserialized using a
@@ -389,7 +381,6 @@ module Java::Io
     end
     
     typesig { [] }
-    # 
     # Return the class in the local VM that this version is mapped to.  Null
     # is returned if there is no corresponding local class.
     # 
@@ -399,7 +390,6 @@ module Java::Io
     end
     
     typesig { [] }
-    # 
     # Return an array of the fields of this serializable class.
     # 
     # @return  an array containing an element for each persistent field of
@@ -411,7 +401,6 @@ module Java::Io
     end
     
     typesig { [String] }
-    # 
     # Get the field of this class by name.
     # 
     # @param   name the name of the data field to look for
@@ -422,7 +411,6 @@ module Java::Io
     end
     
     typesig { [] }
-    # 
     # Return a string describing this ObjectStreamClass.
     def to_s
       return @name + ": static final long serialVersionUID = " + (get_serial_version_uid).to_s + "L;"
@@ -430,7 +418,6 @@ module Java::Io
     
     class_module.module_eval {
       typesig { [Class, ::Java::Boolean] }
-      # 
       # Looks up and returns class descriptor for given class, or null if class
       # is non-serializable and "all" is set to false.
       # 
@@ -472,7 +459,6 @@ module Java::Io
         if (entry.is_a?(EntryFuture))
           future = entry
           if ((future.get_owner).equal?(JavaThread.current_thread))
-            # 
             # Handle nested call situation described by 4803747: waiting
             # for future value to be set by a lookup() call further up the
             # stack will result in deadlock, so calculate and set the
@@ -510,7 +496,6 @@ module Java::Io
         end
       end
       
-      # 
       # Placeholder used in class descriptor and field reflector lookup tables
       # for an entry in the process of being initialized.  (Internal) callers
       # which receive an EntryFuture belonging to another thread as the result
@@ -538,7 +523,6 @@ module Java::Io
         undef_method :entry=
         
         typesig { [Object] }
-        # 
         # Attempts to set the value contained by this EntryFuture.  If the
         # EntryFuture's value has not been set already, then the value is
         # saved, any callers blocked in the get() method are notified, and
@@ -556,7 +540,6 @@ module Java::Io
         end
         
         typesig { [] }
-        # 
         # Returns the value contained by this EntryFuture, blocking if
         # necessary until a value is set.
         def get
@@ -595,7 +578,6 @@ module Java::Io
         end
         
         typesig { [] }
-        # 
         # Returns the thread that created this EntryFuture.
         def get_owner
           return @owner
@@ -613,7 +595,6 @@ module Java::Io
     }
     
     typesig { [Class] }
-    # 
     # Creates local class descriptor representing given class.
     def initialize(cl)
       @cl = nil
@@ -727,7 +708,6 @@ module Java::Io
     end
     
     typesig { [] }
-    # 
     # Creates blank class descriptor which should be initialized via a
     # subsequent call to initProxy(), initNonProxy() or readNonProxy().
     def initialize
@@ -760,7 +740,6 @@ module Java::Io
     end
     
     typesig { [Class, ClassNotFoundException, ObjectStreamClass] }
-    # 
     # Initializes class descriptor representing a proxy class.
     def init_proxy(cl, resolve_ex, super_desc)
       @cl = cl
@@ -786,7 +765,6 @@ module Java::Io
     end
     
     typesig { [ObjectStreamClass, Class, ClassNotFoundException, ObjectStreamClass] }
-    # 
     # Initializes class descriptor representing a non-proxy class.
     def init_non_proxy(model, cl, resolve_ex, super_desc)
       @cl = cl
@@ -841,7 +819,6 @@ module Java::Io
     end
     
     typesig { [ObjectInputStream] }
-    # 
     # Reads non-proxy class descriptor information from given input stream.
     # The resulting class descriptor is not fully functional; it can only be
     # used as input to the ObjectInputStream.resolveClass() and
@@ -884,7 +861,6 @@ module Java::Io
     end
     
     typesig { [ObjectOutputStream] }
-    # 
     # Writes non-proxy class descriptor information to given output stream.
     def write_non_proxy(out)
       out.write_utf(@name)
@@ -922,7 +898,6 @@ module Java::Io
     end
     
     typesig { [] }
-    # 
     # Returns ClassNotFoundException (if any) thrown while attempting to
     # resolve local class corresponding to this class descriptor.
     def get_resolve_exception
@@ -930,7 +905,6 @@ module Java::Io
     end
     
     typesig { [] }
-    # 
     # Throws an InvalidClassException if object instances referencing this
     # class descriptor should not be allowed to deserialize.  This method does
     # not apply to deserialization of enum constants.
@@ -943,7 +917,6 @@ module Java::Io
     end
     
     typesig { [] }
-    # 
     # Throws an InvalidClassException if objects whose class is represented by
     # this descriptor should not be allowed to serialize.  This method does
     # not apply to serialization of enum constants.
@@ -956,7 +929,6 @@ module Java::Io
     end
     
     typesig { [] }
-    # 
     # Throws an InvalidClassException if objects whose class is represented by
     # this descriptor should not be permitted to use default serialization
     # (e.g., if the class declares serializable fields that do not correspond
@@ -971,7 +943,6 @@ module Java::Io
     end
     
     typesig { [] }
-    # 
     # Returns superclass descriptor.  Note that on the receiving side, the
     # superclass descriptor may be bound to a class that is not a superclass
     # of the subclass descriptor's bound class.
@@ -980,7 +951,6 @@ module Java::Io
     end
     
     typesig { [] }
-    # 
     # Returns the "local" class descriptor for the class associated with this
     # class descriptor (i.e., the result of
     # ObjectStreamClass.lookup(this.forClass())) or null if there is no class
@@ -990,7 +960,6 @@ module Java::Io
     end
     
     typesig { [::Java::Boolean] }
-    # 
     # Returns arrays of ObjectStreamFields representing the serializable
     # fields of the represented class.  If copy is true, a clone of this class
     # descriptor's field array is returned, otherwise the array itself is
@@ -1000,7 +969,6 @@ module Java::Io
     end
     
     typesig { [String, Class] }
-    # 
     # Looks up a serializable field of the represented class by name and type.
     # A specified type of null matches all types, Object.class matches all
     # non-primitive types, and any other non-null type matches assignable
@@ -1024,7 +992,6 @@ module Java::Io
     end
     
     typesig { [] }
-    # 
     # Returns true if class descriptor represents a dynamic proxy class, false
     # otherwise.
     def is_proxy
@@ -1032,7 +999,6 @@ module Java::Io
     end
     
     typesig { [] }
-    # 
     # Returns true if class descriptor represents an enum type, false
     # otherwise.
     def is_enum
@@ -1040,7 +1006,6 @@ module Java::Io
     end
     
     typesig { [] }
-    # 
     # Returns true if represented class implements Externalizable, false
     # otherwise.
     def is_externalizable
@@ -1048,7 +1013,6 @@ module Java::Io
     end
     
     typesig { [] }
-    # 
     # Returns true if represented class implements Serializable, false
     # otherwise.
     def is_serializable
@@ -1056,7 +1020,6 @@ module Java::Io
     end
     
     typesig { [] }
-    # 
     # Returns true if class descriptor represents externalizable class that
     # has written its data in 1.2 (block data) format, false otherwise.
     def has_block_external_data
@@ -1064,7 +1027,6 @@ module Java::Io
     end
     
     typesig { [] }
-    # 
     # Returns true if class descriptor represents serializable (but not
     # externalizable) class which has written its data via a custom
     # writeObject() method, false otherwise.
@@ -1073,7 +1035,6 @@ module Java::Io
     end
     
     typesig { [] }
-    # 
     # Returns true if represented class is serializable/externalizable and can
     # be instantiated by the serialization runtime--i.e., if it is
     # externalizable and defines a public no-arg constructor, or if it is
@@ -1084,7 +1045,6 @@ module Java::Io
     end
     
     typesig { [] }
-    # 
     # Returns true if represented class is serializable (but not
     # externalizable) and defines a conformant writeObject method.  Otherwise,
     # returns false.
@@ -1093,7 +1053,6 @@ module Java::Io
     end
     
     typesig { [] }
-    # 
     # Returns true if represented class is serializable (but not
     # externalizable) and defines a conformant readObject method.  Otherwise,
     # returns false.
@@ -1102,7 +1061,6 @@ module Java::Io
     end
     
     typesig { [] }
-    # 
     # Returns true if represented class is serializable (but not
     # externalizable) and defines a conformant readObjectNoData method.
     # Otherwise, returns false.
@@ -1111,7 +1069,6 @@ module Java::Io
     end
     
     typesig { [] }
-    # 
     # Returns true if represented class is serializable or externalizable and
     # defines a conformant writeReplace method.  Otherwise, returns false.
     def has_write_replace_method
@@ -1119,7 +1076,6 @@ module Java::Io
     end
     
     typesig { [] }
-    # 
     # Returns true if represented class is serializable or externalizable and
     # defines a conformant readResolve method.  Otherwise, returns false.
     def has_read_resolve_method
@@ -1127,7 +1083,6 @@ module Java::Io
     end
     
     typesig { [] }
-    # 
     # Creates a new instance of the represented class.  If the class is
     # externalizable, invokes its public no-arg constructor; otherwise, if the
     # class is serializable, invokes the no-arg constructor of the first
@@ -1149,7 +1104,6 @@ module Java::Io
     end
     
     typesig { [Object, ObjectOutputStream] }
-    # 
     # Invokes the writeObject method of the represented serializable class.
     # Throws UnsupportedOperationException if this class descriptor is not
     # associated with a class, or if the class is externalizable,
@@ -1175,7 +1129,6 @@ module Java::Io
     end
     
     typesig { [Object, ObjectInputStream] }
-    # 
     # Invokes the readObject method of the represented serializable class.
     # Throws UnsupportedOperationException if this class descriptor is not
     # associated with a class, or if the class is externalizable,
@@ -1205,7 +1158,6 @@ module Java::Io
     end
     
     typesig { [Object] }
-    # 
     # Invokes the readObjectNoData method of the represented serializable
     # class.  Throws UnsupportedOperationException if this class descriptor is
     # not associated with a class, or if the class is externalizable,
@@ -1231,7 +1183,6 @@ module Java::Io
     end
     
     typesig { [Object] }
-    # 
     # Invokes the writeReplace method of the represented serializable class and
     # returns the result.  Throws UnsupportedOperationException if this class
     # descriptor is not associated with a class, or if the class is
@@ -1258,7 +1209,6 @@ module Java::Io
     end
     
     typesig { [Object] }
-    # 
     # Invokes the readResolve method of the represented serializable class and
     # returns the result.  Throws UnsupportedOperationException if this class
     # descriptor is not associated with a class, or if the class is
@@ -1285,7 +1235,6 @@ module Java::Io
     end
     
     class_module.module_eval {
-      # 
       # Class representing the portion of an object's serialized form allotted
       # to data described by a given class descriptor.  If "hasData" is false,
       # the object's serialized form does not contain data associated with the
@@ -1321,7 +1270,6 @@ module Java::Io
     }
     
     typesig { [] }
-    # 
     # Returns array of ClassDataSlot instances representing the data layout
     # (including superclass data) for serialized objects described by this
     # class descriptor.  ClassDataSlots are ordered by inheritance with those
@@ -1371,10 +1319,10 @@ module Java::Io
         d = d.attr_super_desc
       end
       # add "no data" slot for any leftover unmatched classes
-      c__ = start
-      while !(c__).equal?(end_)
-        slots.add(ClassDataSlot.new(ObjectStreamClass.lookup(c__, true), false))
-        c__ = c__.get_superclass
+      c = start
+      while !(c).equal?(end_)
+        slots.add(ClassDataSlot.new(ObjectStreamClass.lookup(c, true), false))
+        c = c.get_superclass
       end
       # order slots from superclass -> subclass
       Collections.reverse(slots)
@@ -1382,7 +1330,6 @@ module Java::Io
     end
     
     typesig { [] }
-    # 
     # Returns aggregate size (in bytes) of marshalled primitive field values
     # for represented class.
     def get_prim_data_size
@@ -1390,7 +1337,6 @@ module Java::Io
     end
     
     typesig { [] }
-    # 
     # Returns number of non-primitive serializable fields of represented
     # class.
     def get_num_obj_fields
@@ -1398,7 +1344,6 @@ module Java::Io
     end
     
     typesig { [Object, Array.typed(::Java::Byte)] }
-    # 
     # Fetches the serializable primitive field values of object obj and
     # marshals them into byte array buf starting at offset 0.  It is the
     # responsibility of the caller to ensure that obj is of the proper type if
@@ -1408,7 +1353,6 @@ module Java::Io
     end
     
     typesig { [Object, Array.typed(::Java::Byte)] }
-    # 
     # Sets the serializable primitive fields of object obj using values
     # unmarshalled from byte array buf starting at offset 0.  It is the
     # responsibility of the caller to ensure that obj is of the proper type if
@@ -1418,7 +1362,6 @@ module Java::Io
     end
     
     typesig { [Object, Array.typed(Object)] }
-    # 
     # Fetches the serializable object field values of object obj and stores
     # them in array vals starting at offset 0.  It is the responsibility of
     # the caller to ensure that obj is of the proper type if non-null.
@@ -1427,7 +1370,6 @@ module Java::Io
     end
     
     typesig { [Object, Array.typed(Object)] }
-    # 
     # Sets the serializable object fields of object obj using values from
     # array vals starting at offset 0.  It is the responsibility of the caller
     # to ensure that obj is of the proper type if non-null.
@@ -1436,7 +1378,6 @@ module Java::Io
     end
     
     typesig { [] }
-    # 
     # Calculates and sets serializable field offsets, as well as primitive
     # data size and object field count totals.  Throws InvalidClassException
     # if fields are illegally ordered.
@@ -1475,7 +1416,6 @@ module Java::Io
     end
     
     typesig { [Class] }
-    # 
     # If given class is the same as the class associated with this class
     # descriptor, returns reference to this class descriptor.  Otherwise,
     # returns variant of this class descriptor bound to given class.
@@ -1494,7 +1434,6 @@ module Java::Io
     
     class_module.module_eval {
       typesig { [Class] }
-      # 
       # Returns public no-arg constructor of given class, or null if none found.
       # Access checks are disabled on the returned constructor (if any), since
       # the defining class may still be non-public.
@@ -1509,7 +1448,6 @@ module Java::Io
       end
       
       typesig { [Class] }
-      # 
       # Returns subclass-accessible no-arg constructor of first non-serializable
       # superclass, or null if none found.  Access checks are disabled on the
       # returned constructor (if any).
@@ -1535,7 +1473,6 @@ module Java::Io
       end
       
       typesig { [Class, String, Array.typed(Class), Class] }
-      # 
       # Returns non-static, non-abstract method with given signature provided it
       # is defined by or accessible (via inheritance) by the given class, or
       # null if no match found.  Access checks are disabled on the returned
@@ -1572,7 +1509,6 @@ module Java::Io
       end
       
       typesig { [Class, String, Array.typed(Class), Class] }
-      # 
       # Returns non-static private method with given signature defined by given
       # class, or null if none found.  Access checks are disabled on the
       # returned method (if any).
@@ -1588,7 +1524,6 @@ module Java::Io
       end
       
       typesig { [Class, Class] }
-      # 
       # Returns true if classes are defined in the same runtime package, false
       # otherwise.
       def package_equals(cl1, cl2)
@@ -1596,7 +1531,6 @@ module Java::Io
       end
       
       typesig { [Class] }
-      # 
       # Returns package name of given class.
       def get_package_name(cl)
         s = cl.get_name
@@ -1609,7 +1543,6 @@ module Java::Io
       end
       
       typesig { [String, String] }
-      # 
       # Compares class names for equality, ignoring package names.  Returns true
       # if class names equal, false otherwise.
       def class_names_equal(name1, name2)
@@ -1619,7 +1552,6 @@ module Java::Io
       end
       
       typesig { [Class] }
-      # 
       # Returns JVM type signature for given class.
       def get_class_signature(cl)
         sbuf = StringBuilder.new
@@ -1672,7 +1604,6 @@ module Java::Io
       end
       
       typesig { [Array.typed(Class), Class] }
-      # 
       # Returns JVM type signature for given list of parameters and return type.
       def get_method_signature(param_types, ret_type)
         sbuf = StringBuilder.new
@@ -1688,7 +1619,6 @@ module Java::Io
       end
       
       typesig { [Exception] }
-      # 
       # Convenience method for throwing an exception that is either a
       # RuntimeException, Error, or of some unexpected type (in which case it is
       # wrapped inside an IOException).
@@ -1707,7 +1637,6 @@ module Java::Io
       end
       
       typesig { [Class] }
-      # 
       # Returns ObjectStreamField array describing the serializable fields of
       # the given class.  Serializable fields backed by an actual field of the
       # class are represented by ObjectStreamFields with corresponding non-null
@@ -1727,7 +1656,6 @@ module Java::Io
       end
       
       typesig { [Class] }
-      # 
       # Returns serializable fields of given class as defined explicitly by a
       # "serialPersistentFields" field, or null if no appropriate
       # "serialPersistentFields" field is defined.  Serializable fields backed
@@ -1781,7 +1709,6 @@ module Java::Io
       end
       
       typesig { [Class] }
-      # 
       # Returns array of ObjectStreamFields corresponding to all non-static
       # non-transient fields declared by given class.  Each ObjectStreamField
       # contains a Field object for the field it represents.  If no default
@@ -1802,7 +1729,6 @@ module Java::Io
       end
       
       typesig { [Class] }
-      # 
       # Returns explicit serial version UID value declared by given class, or
       # null if none.
       def get_declared_suid(cl)
@@ -1819,7 +1745,6 @@ module Java::Io
       end
       
       typesig { [Class] }
-      # 
       # Computes the default serial version UID value for the given class.
       def compute_default_suid(cl)
         if (!Serializable.class.is_assignable_from(cl) || Proxy.is_proxy_class(cl))
@@ -1830,7 +1755,6 @@ module Java::Io
           dout = DataOutputStream.new(bout)
           dout.write_utf(cl.get_name)
           class_mods = cl.get_modifiers & (Modifier::PUBLIC | Modifier::FINAL | Modifier::INTERFACE | Modifier::ABSTRACT)
-          # 
           # compensate for javac bug in which ABSTRACT bit was set for an
           # interface only if the interface declared methods
           methods = cl.get_declared_methods
@@ -1839,7 +1763,6 @@ module Java::Io
           end
           dout.write_int(class_mods)
           if (!cl.is_array)
-            # 
             # compensate for change in 1.2FCS in which
             # Class.getInterfaces() was modified to return Cloneable and
             # Serializable for array classes.
@@ -1859,10 +1782,10 @@ module Java::Io
           end
           fields = cl.get_declared_fields
           field_sigs = Array.typed(MemberSignature).new(fields.attr_length) { nil }
-          i__ = 0
-          while i__ < fields.attr_length
-            field_sigs[i__] = MemberSignature.new(fields[i__])
-            ((i__ += 1) - 1)
+          i = 0
+          while i < fields.attr_length
+            field_sigs[i] = MemberSignature.new(fields[i])
+            ((i += 1) - 1)
           end
           Arrays.sort(field_sigs, Class.new(Comparator.class == Class ? Comparator : Object) do
             extend LocalClass
@@ -1884,16 +1807,16 @@ module Java::Io
             private
             alias_method :initialize_anonymous, :initialize
           end.new_local(self))
-          i___ = 0
-          while i___ < field_sigs.attr_length
-            sig = field_sigs[i___]
+          i_ = 0
+          while i_ < field_sigs.attr_length
+            sig = field_sigs[i_]
             mods = sig.attr_member.get_modifiers & (Modifier::PUBLIC | Modifier::PRIVATE | Modifier::PROTECTED | Modifier::STATIC | Modifier::FINAL | Modifier::VOLATILE | Modifier::TRANSIENT)
             if ((((mods & Modifier::PRIVATE)).equal?(0)) || (((mods & (Modifier::STATIC | Modifier::TRANSIENT))).equal?(0)))
               dout.write_utf(sig.attr_name)
               dout.write_int(mods)
               dout.write_utf(sig.attr_signature)
             end
-            ((i___ += 1) - 1)
+            ((i_ += 1) - 1)
           end
           if (has_static_initializer(cl))
             dout.write_utf("<clinit>")
@@ -1902,10 +1825,10 @@ module Java::Io
           end
           cons = cl.get_declared_constructors
           cons_sigs = Array.typed(MemberSignature).new(cons.attr_length) { nil }
-          i____ = 0
-          while i____ < cons.attr_length
-            cons_sigs[i____] = MemberSignature.new(cons[i____])
-            ((i____ += 1) - 1)
+          i__ = 0
+          while i__ < cons.attr_length
+            cons_sigs[i__] = MemberSignature.new(cons[i__])
+            ((i__ += 1) - 1)
           end
           Arrays.sort(cons_sigs, Class.new(Comparator.class == Class ? Comparator : Object) do
             extend LocalClass
@@ -1927,22 +1850,22 @@ module Java::Io
             private
             alias_method :initialize_anonymous, :initialize
           end.new_local(self))
-          i_____ = 0
-          while i_____ < cons_sigs.attr_length
-            sig_ = cons_sigs[i_____]
-            mods_ = sig_.attr_member.get_modifiers & (Modifier::PUBLIC | Modifier::PRIVATE | Modifier::PROTECTED | Modifier::STATIC | Modifier::FINAL | Modifier::SYNCHRONIZED | Modifier::NATIVE | Modifier::ABSTRACT | Modifier::STRICT)
-            if (((mods_ & Modifier::PRIVATE)).equal?(0))
+          i___ = 0
+          while i___ < cons_sigs.attr_length
+            sig = cons_sigs[i___]
+            mods = sig.attr_member.get_modifiers & (Modifier::PUBLIC | Modifier::PRIVATE | Modifier::PROTECTED | Modifier::STATIC | Modifier::FINAL | Modifier::SYNCHRONIZED | Modifier::NATIVE | Modifier::ABSTRACT | Modifier::STRICT)
+            if (((mods & Modifier::PRIVATE)).equal?(0))
               dout.write_utf("<init>")
-              dout.write_int(mods_)
-              dout.write_utf(sig_.attr_signature.replace(Character.new(?/.ord), Character.new(?..ord)))
+              dout.write_int(mods)
+              dout.write_utf(sig.attr_signature.replace(Character.new(?/.ord), Character.new(?..ord)))
             end
-            ((i_____ += 1) - 1)
+            ((i___ += 1) - 1)
           end
           meth_sigs = Array.typed(MemberSignature).new(methods.attr_length) { nil }
-          i______ = 0
-          while i______ < methods.attr_length
-            meth_sigs[i______] = MemberSignature.new(methods[i______])
-            ((i______ += 1) - 1)
+          i____ = 0
+          while i____ < methods.attr_length
+            meth_sigs[i____] = MemberSignature.new(methods[i____])
+            ((i____ += 1) - 1)
           end
           Arrays.sort(meth_sigs, Class.new(Comparator.class == Class ? Comparator : Object) do
             extend LocalClass
@@ -1968,44 +1891,42 @@ module Java::Io
             private
             alias_method :initialize_anonymous, :initialize
           end.new_local(self))
-          i_______ = 0
-          while i_______ < meth_sigs.attr_length
-            sig__ = meth_sigs[i_______]
-            mods__ = sig__.attr_member.get_modifiers & (Modifier::PUBLIC | Modifier::PRIVATE | Modifier::PROTECTED | Modifier::STATIC | Modifier::FINAL | Modifier::SYNCHRONIZED | Modifier::NATIVE | Modifier::ABSTRACT | Modifier::STRICT)
-            if (((mods__ & Modifier::PRIVATE)).equal?(0))
-              dout.write_utf(sig__.attr_name)
-              dout.write_int(mods__)
-              dout.write_utf(sig__.attr_signature.replace(Character.new(?/.ord), Character.new(?..ord)))
+          i_____ = 0
+          while i_____ < meth_sigs.attr_length
+            sig = meth_sigs[i_____]
+            mods = sig.attr_member.get_modifiers & (Modifier::PUBLIC | Modifier::PRIVATE | Modifier::PROTECTED | Modifier::STATIC | Modifier::FINAL | Modifier::SYNCHRONIZED | Modifier::NATIVE | Modifier::ABSTRACT | Modifier::STRICT)
+            if (((mods & Modifier::PRIVATE)).equal?(0))
+              dout.write_utf(sig.attr_name)
+              dout.write_int(mods)
+              dout.write_utf(sig.attr_signature.replace(Character.new(?/.ord), Character.new(?..ord)))
             end
-            ((i_______ += 1) - 1)
+            ((i_____ += 1) - 1)
           end
           dout.flush
           md = MessageDigest.get_instance("SHA")
           hash_bytes = md.digest(bout.to_byte_array)
           hash = 0
-          i________ = Math.min(hash_bytes.attr_length, 8) - 1
-          while i________ >= 0
-            hash = (hash << 8) | (hash_bytes[i________] & 0xff)
-            ((i________ -= 1) + 1)
+          i______ = Math.min(hash_bytes.attr_length, 8) - 1
+          while i______ >= 0
+            hash = (hash << 8) | (hash_bytes[i______] & 0xff)
+            ((i______ -= 1) + 1)
           end
           return hash
         rescue IOException => ex
           raise InternalError.new
         rescue NoSuchAlgorithmException => ex
-          raise SecurityException.new(ex_.get_message)
+          raise SecurityException.new(ex.get_message)
         end
       end
       
       JNI.native_method :Java_java_io_ObjectStreamClass_hasStaticInitializer, [:pointer, :long, :long], :int8
       typesig { [Class] }
-      # 
       # Returns true if the given class defines a static initializer method,
       # false otherwise.
       def has_static_initializer(cl)
         JNI.__send__(:Java_java_io_ObjectStreamClass_hasStaticInitializer, JNI.env, self.jni_id, cl.jni_id) != 0
       end
       
-      # 
       # Class for computing and caching field/constructor/method signatures
       # during serialVersionUID calculation.
       const_set_lazy(:MemberSignature) { Class.new do
@@ -2063,7 +1984,6 @@ module Java::Io
         alias_method :initialize__member_signature, :initialize
       end }
       
-      # 
       # Class for setting and retrieving serializable field values in batch.
       # 
       # REMIND: dynamically generate these?
@@ -2119,7 +2039,6 @@ module Java::Io
         undef_method :types=
         
         typesig { [Array.typed(ObjectStreamField)] }
-        # 
         # Constructs FieldReflector capable of setting/getting values from the
         # subset of fields whose ObjectStreamFields contain non-null
         # reflective Field objects.  ObjectStreamFields with null Fields are
@@ -2155,7 +2074,6 @@ module Java::Io
         end
         
         typesig { [] }
-        # 
         # Returns list of ObjectStreamFields representing fields operated on
         # by this reflector.  The shared/unshared values and Field objects
         # contained by ObjectStreamFields in the list reflect their bindings
@@ -2165,7 +2083,6 @@ module Java::Io
         end
         
         typesig { [Object, Array.typed(::Java::Byte)] }
-        # 
         # Fetches the serializable primitive field values of object obj and
         # marshals them into byte array buf starting at offset 0.  The caller
         # is responsible for ensuring that obj is of the proper type.
@@ -2205,7 +2122,6 @@ module Java::Io
         end
         
         typesig { [Object, Array.typed(::Java::Byte)] }
-        # 
         # Sets the serializable primitive fields of object obj using values
         # unmarshalled from byte array buf starting at offset 0.  The caller
         # is responsible for ensuring that obj is of the proper type.
@@ -2246,7 +2162,6 @@ module Java::Io
         end
         
         typesig { [Object, Array.typed(Object)] }
-        # 
         # Fetches the serializable object field values of object obj and
         # stores them in array vals starting at offset 0.  The caller is
         # responsible for ensuring that obj is of the proper type.
@@ -2270,7 +2185,6 @@ module Java::Io
         end
         
         typesig { [Object, Array.typed(Object)] }
-        # 
         # Sets the serializable object fields of object obj using values from
         # array vals starting at offset 0.  The caller is responsible for
         # ensuring that obj is of the proper type; however, attempts to set a
@@ -2307,7 +2221,6 @@ module Java::Io
       end }
       
       typesig { [Array.typed(ObjectStreamField), ObjectStreamClass] }
-      # 
       # Matches given set of serializable fields with serializable fields
       # described by the given local class descriptor, and returns a
       # FieldReflector instance capable of setting/getting values from the
@@ -2379,7 +2292,6 @@ module Java::Io
         end
       end
       
-      # 
       # FieldReflector cache lookup key.  Keys are considered equal if they
       # refer to the same class and equivalent field formats.
       const_set_lazy(:FieldReflectorKey) { Class.new(WeakReference) do
@@ -2445,7 +2357,6 @@ module Java::Io
       end }
       
       typesig { [Array.typed(ObjectStreamField), ObjectStreamClass] }
-      # 
       # Matches given set of serializable fields with serializable fields
       # obtained from the given local class descriptor (which contain bindings
       # to reflective Field objects).  Returns list of ObjectStreamFields in
@@ -2457,7 +2368,6 @@ module Java::Io
       # conflicts exist between the two sets of fields.
       def match_fields(fields, local_desc)
         local_fields = (!(local_desc).nil?) ? local_desc.attr_fields : NO_FIELDS
-        # 
         # Even if fields == localFields, we cannot simply return localFields
         # here.  In previous implementations of serialization,
         # ObjectStreamField.getType() returned Object.class if the
@@ -2497,7 +2407,6 @@ module Java::Io
       end
       
       typesig { [ReferenceQueue, ConcurrentMap] }
-      # 
       # Removes from the specified map any keys that have been enqueued
       # on the specified reference queue.
       def process_queue(queue, map)
@@ -2507,12 +2416,10 @@ module Java::Io
         end
       end
       
-      # 
       # Weak key for Class objects.
       const_set_lazy(:WeakClassKey) { Class.new(WeakReference) do
         include_class_members ObjectStreamClass
         
-        # 
         # saved value of the referent's identity hash code, to maintain
         # a consistent hash code after the referent has been cleared
         attr_accessor :hash
@@ -2522,7 +2429,6 @@ module Java::Io
         undef_method :hash=
         
         typesig { [Class, ReferenceQueue] }
-        # 
         # Create a new WeakClassKey to the given object, registered
         # with a queue.
         def initialize(cl, ref_queue)
@@ -2532,14 +2438,12 @@ module Java::Io
         end
         
         typesig { [] }
-        # 
         # Returns the identity hash code of the original referent.
         def hash_code
           return @hash
         end
         
         typesig { [Object] }
-        # 
         # Returns true if the given object is this identical
         # WeakClassKey instance, or, if this object's referent has not
         # been cleared, if the given object is another WeakClassKey

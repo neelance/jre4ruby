@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 1994-2006 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -30,7 +29,6 @@ module Java::Lang
     }
   end
   
-  # 
   # The Boolean class wraps a value of the primitive type
   # {@code boolean} in an object. An object of type
   # {@code Boolean} contains a single field whose type is
@@ -50,19 +48,16 @@ module Java::Lang
     include JavaComparable
     
     class_module.module_eval {
-      # 
       # The {@code Boolean} object corresponding to the primitive
       # value {@code true}.
       const_set_lazy(:TRUE) { Boolean.new(true) }
       const_attr_reader  :TRUE
       
-      # 
       # The {@code Boolean} object corresponding to the primitive
       # value {@code false}.
       const_set_lazy(:FALSE) { Boolean.new(false) }
       const_attr_reader  :FALSE
       
-      # 
       # The Class object representing the primitive type boolean.
       # 
       # @since   JDK1.1
@@ -70,7 +65,6 @@ module Java::Lang
       const_attr_reader  :TYPE
     }
     
-    # 
     # The value of the Boolean.
     # 
     # @serial
@@ -87,7 +81,6 @@ module Java::Lang
     }
     
     typesig { [::Java::Boolean] }
-    # 
     # Allocates a {@code Boolean} object representing the
     # {@code value} argument.
     # 
@@ -103,7 +96,6 @@ module Java::Lang
     end
     
     typesig { [String] }
-    # 
     # Allocates a {@code Boolean} object representing the value
     # {@code true} if the string argument is not {@code null}
     # and is equal, ignoring case, to the string {@code "true"}.
@@ -121,7 +113,6 @@ module Java::Lang
     
     class_module.module_eval {
       typesig { [String] }
-      # 
       # Parses the string argument as a boolean.  The {@code boolean}
       # returned represents the value {@code true} if the string argument
       # is not {@code null} and is equal, ignoring case, to the string
@@ -139,7 +130,6 @@ module Java::Lang
     }
     
     typesig { [] }
-    # 
     # Returns the value of this {@code Boolean} object as a boolean
     # primitive.
     # 
@@ -150,7 +140,6 @@ module Java::Lang
     
     class_module.module_eval {
       typesig { [::Java::Boolean] }
-      # 
       # Returns a {@code Boolean} instance representing the specified
       # {@code boolean} value.  If the specified {@code boolean} value
       # is {@code true}, this method returns {@code Boolean.TRUE};
@@ -168,7 +157,6 @@ module Java::Lang
       end
       
       typesig { [String] }
-      # 
       # Returns a {@code Boolean} with a value represented by the
       # specified string.  The {@code Boolean} returned represents a
       # true value if the string argument is not {@code null}
@@ -181,7 +169,6 @@ module Java::Lang
       end
       
       typesig { [::Java::Boolean] }
-      # 
       # Returns a {@code String} object representing the specified
       # boolean.  If the specified boolean is {@code true}, then
       # the string {@code "true"} will be returned, otherwise the
@@ -196,7 +183,6 @@ module Java::Lang
     }
     
     typesig { [] }
-    # 
     # Returns a {@code String} object representing this Boolean's
     # value.  If this object represents the value {@code true},
     # a string equal to {@code "true"} is returned. Otherwise, a
@@ -208,7 +194,6 @@ module Java::Lang
     end
     
     typesig { [] }
-    # 
     # Returns a hash code for this {@code Boolean} object.
     # 
     # @return  the integer {@code 1231} if this object represents
@@ -219,7 +204,6 @@ module Java::Lang
     end
     
     typesig { [Object] }
-    # 
     # Returns {@code true} if and only if the argument is not
     # {@code null} and is a {@code Boolean} object that
     # represents the same {@code boolean} value as this object.
@@ -236,7 +220,6 @@ module Java::Lang
     
     class_module.module_eval {
       typesig { [String] }
-      # 
       # Returns {@code true} if and only if the system property
       # named by the argument exists and is equal to the string
       # {@code "true"}. (Beginning with version 1.0.2 of the
@@ -264,7 +247,6 @@ module Java::Lang
     }
     
     typesig { [Boolean] }
-    # 
     # Compares this {@code Boolean} instance with another.
     # 
     # @param   b the {@code Boolean} instance to be compared

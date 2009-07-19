@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 1999-2005 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -45,7 +44,6 @@ module Sun::Misc
     }
   end
   
-  # 
   # ProxyGenerator contains the code to generate a dynamic proxy class
   # for the java.lang.reflect.Proxy API.
   # 
@@ -58,7 +56,6 @@ module Sun::Misc
     include_class_members ProxyGeneratorImports
     
     class_module.module_eval {
-      # 
       # In the comments below, "JVMS" refers to The Java Virtual Machine
       # Specification Second Edition and "JLS" refers to the original
       # version of The Java Language Specification, unless otherwise
@@ -71,7 +68,6 @@ module Sun::Misc
       const_set_lazy(:CLASSFILE_MINOR_VERSION) { 0 }
       const_attr_reader  :CLASSFILE_MINOR_VERSION
       
-      # 
       # beginning of constants copied from
       # sun.tools.java.RuntimeConstants (which no longer exists):
       # 
@@ -430,7 +426,6 @@ module Sun::Misc
       const_attr_reader  :SaveGeneratedFiles
       
       typesig { [String, Array.typed(Class)] }
-      # 
       # Generate a proxy class given a name and a list of proxy interfaces.
       def generate_proxy_class(name, interfaces)
         gen = ProxyGenerator.new(name, interfaces)
@@ -545,7 +540,6 @@ module Sun::Misc
     alias_method :attr_methods=, :methods=
     undef_method :methods=
     
-    # 
     # maps method signature string to list of ProxyMethod objects for
     # proxy methods with that signature
     attr_accessor :proxy_methods
@@ -562,7 +556,6 @@ module Sun::Misc
     undef_method :proxy_method_count=
     
     typesig { [String, Array.typed(Class)] }
-    # 
     # Construct a ProxyGenerator to generate a proxy class with the
     # specified name and for the given interfaces.
     # 
@@ -581,7 +574,6 @@ module Sun::Misc
     end
     
     typesig { [] }
-    # 
     # Generate a class file for the proxy class.  This method drives the
     # class file generation process.
     def generate_class_file
@@ -598,7 +590,6 @@ module Sun::Misc
       add_proxy_method(self.attr_hash_code_method, Object.class)
       add_proxy_method(self.attr_equals_method, Object.class)
       add_proxy_method(self.attr_to_string_method, Object.class)
-      # 
       # Now record all of the methods from the proxy interfaces, giving
       # earlier interfaces precedence over later ones with duplicate
       # methods.
@@ -612,7 +603,6 @@ module Sun::Misc
         end
         ((i += 1) - 1)
       end
-      # 
       # For each set of proxy methods with the same signature,
       # verify that the methods' return types are compatible.
       @proxy_methods.values.each do |sigmethods|
@@ -622,20 +612,20 @@ module Sun::Misc
       # Step 2: Assemble FieldInfo and MethodInfo structs for all of
       # fields and methods in the class we are generating.
       begin
-        methods.add(generate_constructor)
+        @methods.add(generate_constructor)
         @proxy_methods.values.each do |sigmethods|
-          sigmethods_.each do |pm|
+          sigmethods.each do |pm|
             # add static field for method's Method object
             @fields.add(FieldInfo.new_local(self, pm.attr_method_field_name, "Ljava/lang/reflect/Method;", ACC_PRIVATE | ACC_STATIC))
             # generate code for proxy method and add it
-            methods.add(pm.generate_method)
+            @methods.add(pm.generate_method)
           end
         end
-        methods.add(generate_static_initializer)
+        @methods.add(generate_static_initializer)
       rescue IOException => e
         raise InternalError.new("unexpected I/O Exception")
       end
-      if (methods.size > 65535)
+      if (@methods.size > 65535)
         raise IllegalArgumentException.new("method limit exceeded")
       end
       if (@fields.size > 65535)
@@ -654,14 +644,12 @@ module Sun::Misc
         @cp.get_class(dot_to_slash(@interfaces[i_].get_name))
         ((i_ += 1) - 1)
       end
-      # 
       # Disallow new constant pool additions beyond this point, since
       # we are about to write the final constant pool table.
       @cp.set_read_only
       bout = ByteArrayOutputStream.new
       dout = DataOutputStream.new(bout)
       begin
-        # 
         # Write all the items of the "ClassFile" structure.
         # See JVMS section 4.1.
         # 
@@ -693,9 +681,9 @@ module Sun::Misc
           f.write(dout)
         end
         # u2 methods_count;
-        dout.write_short(methods.size)
+        dout.write_short(@methods.size)
         # method_info methods[methods_count];
-        methods.each do |m|
+        @methods.each do |m|
           m.write(dout)
         end
         # u2 attributes_count;
@@ -707,7 +695,6 @@ module Sun::Misc
     end
     
     typesig { [Method, Class] }
-    # 
     # Add another method to be proxied, either by creating a new
     # ProxyMethod object or augmenting an old one for a duplicate
     # method.
@@ -729,7 +716,6 @@ module Sun::Misc
       if (!(sigmethods).nil?)
         sigmethods.each do |pm|
           if ((return_type).equal?(pm.attr_return_type))
-            # 
             # Found a match: reduce exception types to the
             # greatest set of exceptions that can thrown
             # compatibly with the throws clauses of both
@@ -751,7 +737,6 @@ module Sun::Misc
     
     class_module.module_eval {
       typesig { [JavaList] }
-      # 
       # For a given set of proxy methods with the same signature, check
       # that their return types are compatible according to the Proxy
       # specification.
@@ -760,14 +745,12 @@ module Sun::Misc
       # of the return types must be reference types, and there must be
       # one return type that is assignable to each of the rest of them.
       def check_return_types(methods)
-        # 
         # If there is only one method with a given signature, there
         # cannot be a conflict.  This is the only case in which a
         # primitive (or void) return type is allowed.
         if (methods.size < 2)
           return
         end
-        # 
         # List of return types that are not yet known to be
         # assignable from ("covered" by) any of the others.
         uncovered_return_types = LinkedList.new
@@ -778,20 +761,17 @@ module Sun::Misc
               raise IllegalArgumentException.new("methods with same signature " + (get_friendly_method_signature(pm.attr_method_name, pm.attr_parameter_types)).to_s + " but incompatible return types: " + (new_return_type.get_name).to_s + " and others")
             end
             added = false
-            # 
             # Compare the new return type to the existing uncovered
             # return types.
             liter = uncovered_return_types.list_iterator
             while (liter.has_next)
               uncovered_return_type = liter.next
-              # 
               # If an existing uncovered return type is assignable
               # to this new one, then we can forget the new one.
               if (new_return_type.is_assignable_from(uncovered_return_type))
                 raise AssertError if not (!added)
                 throw :next_next_new_return_type, :thrown
               end
-              # 
               # If the new return type is assignable to an existing
               # uncovered one, then should replace the existing one
               # with the new one (or just forget the existing one,
@@ -806,25 +786,22 @@ module Sun::Misc
                 end
               end
             end
-            # 
             # If we got through the list of existing uncovered return
             # types without an assignability relationship, then add
             # the new return type to the list of uncovered ones.
             if (!added)
               uncovered_return_types.add(new_return_type)
             end
-          end == :thrown or break
+          end
         end
-        # 
         # We shouldn't end up with more than one return type that is
         # not assignable from any of the others.
         if (uncovered_return_types.size > 1)
-          pm_ = methods.get(0)
-          raise IllegalArgumentException.new("methods with same signature " + (get_friendly_method_signature(pm_.attr_method_name, pm_.attr_parameter_types)).to_s + " but incompatible return types: " + (uncovered_return_types).to_s)
+          pm = methods.get(0)
+          raise IllegalArgumentException.new("methods with same signature " + (get_friendly_method_signature(pm.attr_method_name, pm.attr_parameter_types)).to_s + " but incompatible return types: " + (uncovered_return_types).to_s)
         end
       end
       
-      # 
       # A FieldInfo object contains information about a particular field
       # in the class being generated.  The class mirrors the data items of
       # the "field_info" structure of the class file format (see JVMS 4.5).
@@ -858,7 +835,6 @@ module Sun::Misc
           @name = name
           @descriptor = descriptor
           @access_flags = access_flags
-          # 
           # Make sure that constant pool indexes are reserved for the
           # following items before starting to write the final class file.
           self.attr_cp.get_utf8(name)
@@ -867,7 +843,6 @@ module Sun::Misc
         
         typesig { [DataOutputStream] }
         def write(out)
-          # 
           # Write all the items of the "field_info" structure.
           # See JVMS section 4.5.
           # 
@@ -885,7 +860,6 @@ module Sun::Misc
         alias_method :initialize__field_info, :initialize
       end }
       
-      # 
       # An ExceptionTableEntry object holds values for the data items of
       # an entry in the "exception_table" item of the "Code" attribute of
       # "method_info" structures (see JVMS 4.7.3).
@@ -932,7 +906,6 @@ module Sun::Misc
         alias_method :initialize__exception_table_entry, :initialize
       end }
       
-      # 
       # A MethodInfo object contains information about a particular method
       # in the class being generated.  This class mirrors the data items of
       # the "method_info" structure of the class file format (see JVMS 4.6).
@@ -1001,7 +974,6 @@ module Sun::Misc
           @name = name
           @descriptor = descriptor
           @access_flags = access_flags
-          # 
           # Make sure that constant pool indexes are reserved for the
           # following items before starting to write the final class file.
           self.attr_cp.get_utf8(name)
@@ -1012,7 +984,6 @@ module Sun::Misc
         
         typesig { [DataOutputStream] }
         def write(out)
-          # 
           # Write all the items of the "method_info" structure.
           # See JVMS section 4.6.
           # 
@@ -1070,7 +1041,6 @@ module Sun::Misc
         alias_method :initialize__method_info, :initialize
       end }
       
-      # 
       # A ProxyMethod object represents a proxy method in the proxy class
       # being generated: a method whose implementation will encode and
       # dispatch invocations to the proxy instance's invocation handler.
@@ -1131,7 +1101,6 @@ module Sun::Misc
         end
         
         typesig { [] }
-        # 
         # Return a MethodInfo object for this method, including generating
         # the code and exception table entry.
         def generate_method
@@ -1205,16 +1174,15 @@ module Sun::Misc
           minfo.attr_max_stack = 10
           minfo.attr_max_locals = RJava.cast_to_short((local_slot0 + 1))
           minfo.attr_declared_exceptions = Array.typed(::Java::Short).new(@exception_types.attr_length) { 0 }
-          i__ = 0
-          while i__ < @exception_types.attr_length
-            minfo.attr_declared_exceptions[i__] = self.attr_cp.get_class(dot_to_slash(@exception_types[i__].get_name))
-            ((i__ += 1) - 1)
+          i_ = 0
+          while i_ < @exception_types.attr_length
+            minfo.attr_declared_exceptions[i_] = self.attr_cp.get_class(dot_to_slash(@exception_types[i_].get_name))
+            ((i_ += 1) - 1)
           end
           return minfo
         end
         
         typesig { [Class, ::Java::Int, DataOutputStream] }
-        # 
         # Generate code for wrapping an argument of the given type
         # whose value can be found at the specified local variable
         # index, in order for it to be passed (as an Object) to the
@@ -1248,7 +1216,6 @@ module Sun::Misc
         end
         
         typesig { [Class, DataOutputStream] }
-        # 
         # Generate code for unwrapping a return value of the given
         # type from the invocation handler's "invoke" method (as type
         # Object) to its correct type.  The code is written to the
@@ -1285,7 +1252,6 @@ module Sun::Misc
         end
         
         typesig { [DataOutputStream] }
-        # 
         # Generate code for initializing the static field that stores
         # the Method object for this proxy method.  The code is written
         # to the supplied stream.
@@ -1321,7 +1287,6 @@ module Sun::Misc
     }
     
     typesig { [] }
-    # 
     # Generate the constructor method for the proxy class.
     def generate_constructor
       minfo = MethodInfo.new_local(self, "<init>", "(Ljava/lang/reflect/InvocationHandler;)V", ACC_PUBLIC)
@@ -1338,7 +1303,6 @@ module Sun::Misc
     end
     
     typesig { [] }
-    # 
     # Generate the static initializer method for the proxy class.
     def generate_static_initializer
       minfo = MethodInfo.new_local(self, "<clinit>", "()V", ACC_STATIC)
@@ -1387,7 +1351,6 @@ module Sun::Misc
     end
     
     typesig { [::Java::Int, DataOutputStream] }
-    # 
     # =============== Code Generation Utility Methods ===============
     # 
     # 
@@ -1444,7 +1407,6 @@ module Sun::Misc
     end
     
     typesig { [::Java::Int, ::Java::Int, ::Java::Int, DataOutputStream] }
-    # 
     # Generate code for a load or store instruction for the given local
     # variable.  The code is written to the supplied stream.
     # 
@@ -1461,7 +1423,6 @@ module Sun::Misc
           out.write_byte(opcode)
           out.write_byte(lvar & 0xff)
         else
-          # 
           # Use the "wide" instruction modifier for local variable
           # indexes that do not fit into an unsigned byte.
           out.write_byte(Opc_wide)
@@ -1472,7 +1433,6 @@ module Sun::Misc
     end
     
     typesig { [::Java::Int, DataOutputStream] }
-    # 
     # Generate code for an "ldc" instruction for the given constant pool
     # index (the "ldc_w" instruction is used if the index does not fit
     # into an unsigned byte).  The code is written to the supplied stream.
@@ -1488,7 +1448,6 @@ module Sun::Misc
     end
     
     typesig { [::Java::Int, DataOutputStream] }
-    # 
     # Generate code to push a constant integer value on to the operand
     # stack, using the "iconst_<i>", "bipush", or "sipush" instructions
     # depending on the size of the value.  The code is written to the
@@ -1512,7 +1471,6 @@ module Sun::Misc
     end
     
     typesig { [Class, DataOutputStream] }
-    # 
     # Generate code to invoke the Class.forName with the name of the given
     # class to get its Class object at runtime.  The code is written to
     # the supplied stream.  Note that the code generated by this method
@@ -1525,7 +1483,6 @@ module Sun::Misc
     
     class_module.module_eval {
       typesig { [String] }
-      # 
       # ==================== General Utility Methods ====================
       # 
       # 
@@ -1539,7 +1496,6 @@ module Sun::Misc
       end
       
       typesig { [Array.typed(Class), Class] }
-      # 
       # Return the "method descriptor" string for a method with the given
       # parameter types and return type.  See JVMS section 4.3.3.
       def get_method_descriptor(parameter_types, return_type)
@@ -1547,7 +1503,6 @@ module Sun::Misc
       end
       
       typesig { [Array.typed(Class)] }
-      # 
       # Return the list of "parameter descriptor" strings enclosed in
       # parentheses corresponding to the given parameter types (in other
       # words, a method descriptor without a return descriptor).  This
@@ -1565,7 +1520,6 @@ module Sun::Misc
       end
       
       typesig { [Class] }
-      # 
       # Return the "field type" string for the given type, appropriate for
       # a field descriptor, a parameter descriptor, or a return descriptor
       # other than "void".  See JVMS section 4.3.2.
@@ -1574,7 +1528,6 @@ module Sun::Misc
           return PrimitiveTypeInfo.get(type).attr_base_type_string
         else
           if (type.is_array)
-            # 
             # According to JLS 20.3.2, the getName() method on Class does
             # return the VM type descriptor format for array classes (only);
             # using that should be quicker than the otherwise obvious code:
@@ -1588,7 +1541,6 @@ module Sun::Misc
       end
       
       typesig { [String, Array.typed(Class)] }
-      # 
       # Returns a human-readable string representing the signature of a
       # method with the given name and parameter types.
       def get_friendly_method_signature(name, parameter_types)
@@ -1616,7 +1568,6 @@ module Sun::Misc
       end
       
       typesig { [Class] }
-      # 
       # Return the number of abstract "words", or consecutive local variable
       # indexes, required to contain a value of the given type.  See JVMS
       # section 3.6.1.
@@ -1633,7 +1584,6 @@ module Sun::Misc
       end
       
       typesig { [Array.typed(Class), Array.typed(Class), JavaList] }
-      # 
       # Add to the given list all of the types in the "from" array that
       # are not already contained in the list and are assignable to at
       # least one of the types in the "with" array.
@@ -1659,7 +1609,6 @@ module Sun::Misc
       end
       
       typesig { [Array.typed(Class)] }
-      # 
       # Given the exceptions declared in the throws clause of a proxy method,
       # compute the exceptions that need to be caught from the invocation
       # handler's invoke method and rethrown intact in the method's
@@ -1689,7 +1638,6 @@ module Sun::Misc
           catch(:next_next_exception) do
             ex = exceptions[i]
             if (ex.is_assignable_from(Exception.class))
-              # 
               # If Throwable is declared to be thrown by the proxy method,
               # then no catch blocks are necessary, because the invoke
               # can, at most, throw Throwable anyway.
@@ -1697,26 +1645,22 @@ module Sun::Misc
               break
             else
               if (!Exception.class.is_assignable_from(ex))
-                # 
                 # Ignore types that cannot be thrown by the invoke method.
                 ((i += 1) - 1)
                 next
               end
             end
-            # 
             # Compare this exception against the current list of
             # exceptions that need to be caught:
             j = 0
             while j < unique_list.size
               ex2 = unique_list.get(j)
               if (ex2.is_assignable_from(ex))
-                # 
                 # if a superclass of this exception is already on
                 # the list to catch, then ignore this one and continue;
                 throw :next_next_exception, :thrown
               else
                 if (ex.is_assignable_from(ex2))
-                  # 
                   # if a subclass of this exception is on the list
                   # to catch, then remove it;
                   unique_list.remove(j)
@@ -1727,13 +1671,12 @@ module Sun::Misc
             end
             # This exception is unique (so far): add it to the list to catch.
             unique_list.add(ex)
-          end == :thrown or break
+          end
           ((i += 1) - 1)
         end
         return unique_list
       end
       
-      # 
       # A PrimitiveTypeInfo object contains assorted information about
       # a primitive type in its public fields.  The struct for a particular
       # primitive type can be obtained using the static "get" method.
@@ -1830,7 +1773,6 @@ module Sun::Misc
         alias_method :initialize__primitive_type_info, :initialize
       end }
       
-      # 
       # A ConstantPool object represents the constant pool of a class file
       # being generated.  This representation of a constant pool is designed
       # specifically for use by ProxyGenerator; in particular, it assumes
@@ -1848,7 +1790,6 @@ module Sun::Misc
       const_set_lazy(:ConstantPool) { Class.new do
         include_class_members ProxyGenerator
         
-        # 
         # list of constant pool entries, in constant pool index order.
         # 
         # This list is used when writing the constant pool to a stream
@@ -1860,7 +1801,6 @@ module Sun::Misc
         alias_method :attr_pool=, :pool=
         undef_method :pool=
         
-        # 
         # maps constant pool data of all types to constant pool indexes.
         # 
         # This map is used to look up the index of an existing entry for
@@ -1879,7 +1819,6 @@ module Sun::Misc
         undef_method :read_only=
         
         typesig { [String] }
-        # 
         # Get or assign the index for a CONSTANT_Utf8 entry.
         def get_utf8(s)
           if ((s).nil?)
@@ -1889,21 +1828,18 @@ module Sun::Misc
         end
         
         typesig { [::Java::Int] }
-        # 
         # Get or assign the index for a CONSTANT_Integer entry.
         def get_integer(i)
           return get_value(i)
         end
         
         typesig { [::Java::Float] }
-        # 
         # Get or assign the index for a CONSTANT_Float entry.
         def get_float(f)
           return get_value(Float.new(f))
         end
         
         typesig { [String] }
-        # 
         # Get or assign the index for a CONSTANT_Class entry.
         def get_class(name)
           utf8index = get_utf8(name)
@@ -1911,7 +1847,6 @@ module Sun::Misc
         end
         
         typesig { [String] }
-        # 
         # Get or assign the index for a CONSTANT_String entry.
         def get_string(s)
           utf8index = get_utf8(s)
@@ -1919,7 +1854,6 @@ module Sun::Misc
         end
         
         typesig { [String, String, String] }
-        # 
         # Get or assign the index for a CONSTANT_FieldRef entry.
         def get_field_ref(class_name, name, descriptor)
           class_index = get_class(class_name)
@@ -1928,7 +1862,6 @@ module Sun::Misc
         end
         
         typesig { [String, String, String] }
-        # 
         # Get or assign the index for a CONSTANT_MethodRef entry.
         def get_method_ref(class_name, name, descriptor)
           class_index = get_class(class_name)
@@ -1937,7 +1870,6 @@ module Sun::Misc
         end
         
         typesig { [String, String, String] }
-        # 
         # Get or assign the index for a CONSTANT_InterfaceMethodRef entry.
         def get_interface_method_ref(class_name, name, descriptor)
           class_index = get_class(class_name)
@@ -1946,7 +1878,6 @@ module Sun::Misc
         end
         
         typesig { [String, String] }
-        # 
         # Get or assign the index for a CONSTANT_NameAndType entry.
         def get_name_and_type(name, descriptor)
           name_index = get_utf8(name)
@@ -1955,7 +1886,6 @@ module Sun::Misc
         end
         
         typesig { [] }
-        # 
         # Set this ConstantPool instance to be "read only".
         # 
         # After this method has been called, further requests to get
@@ -1966,7 +1896,6 @@ module Sun::Misc
         end
         
         typesig { [OutputStream] }
-        # 
         # Write this constant pool to a stream as part of
         # the class file format.
         # 
@@ -1983,11 +1912,9 @@ module Sun::Misc
         end
         
         typesig { [Entry] }
-        # 
         # Add a new constant pool entry and return its index.
         def add_entry(entry)
           @pool.add(entry)
-          # 
           # Note that this way of determining the index of the
           # added entry is wrong if this pool supports
           # CONSTANT_Long or CONSTANT_Double entries.
@@ -1998,7 +1925,6 @@ module Sun::Misc
         end
         
         typesig { [Object] }
-        # 
         # Get or assign the index for an entry of a type that contains
         # a direct value.  The type of the given object determines the
         # type of the desired entry as follows:
@@ -2023,7 +1949,6 @@ module Sun::Misc
         end
         
         typesig { [IndirectEntry] }
-        # 
         # Get or assign the index for an entry of a type that contains
         # references to other constant pool entries.
         def get_indirect(e)
@@ -2041,7 +1966,6 @@ module Sun::Misc
         end
         
         class_module.module_eval {
-          # 
           # Entry is the abstact superclass of all constant pool entry types
           # that can be stored in the "pool" list; its purpose is to define a
           # common method for writing constant pool entries to a class file.
@@ -2061,7 +1985,6 @@ module Sun::Misc
             alias_method :initialize__entry, :initialize
           end }
           
-          # 
           # ValueEntry represents a constant pool entry of a type that
           # contains a direct value (see the comments for the "getValue"
           # method for a list of such types).
@@ -2118,7 +2041,6 @@ module Sun::Misc
             alias_method :initialize__value_entry, :initialize
           end }
           
-          # 
           # IndirectEntry represents a constant pool entry of a type that
           # references other constant pool entries, i.e., the following types:
           # 
@@ -2154,7 +2076,6 @@ module Sun::Misc
             undef_method :index1=
             
             typesig { [::Java::Int, ::Java::Short] }
-            # 
             # Construct an IndirectEntry for a constant pool entry type
             # that contains one index of another entry.
             def initialize(tag, index)
@@ -2168,7 +2089,6 @@ module Sun::Misc
             end
             
             typesig { [::Java::Int, ::Java::Short, ::Java::Short] }
-            # 
             # Construct an IndirectEntry for a constant pool entry type
             # that contains two indexes for other entries.
             def initialize(tag, index0, index1)
@@ -2185,7 +2105,6 @@ module Sun::Misc
             def write(out)
               out.write_byte(@tag)
               out.write_short(@index0)
-              # 
               # If this entry type contains two indexes, write
               # out the second, too.
               if ((@tag).equal?(CONSTANT_FIELD) || (@tag).equal?(CONSTANT_METHOD) || (@tag).equal?(CONSTANT_INTERFACEMETHOD) || (@tag).equal?(CONSTANT_NAMEANDTYPE))

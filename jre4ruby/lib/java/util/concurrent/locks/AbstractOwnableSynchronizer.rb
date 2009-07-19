@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
 # This code is free software; you can redistribute it and/or modify it
@@ -40,7 +39,6 @@ module Java::Util::Concurrent::Locks
     }
   end
   
-  # 
   # A synchronizer that may be exclusively owned by a thread.  This
   # class provides a basis for creating locks and related synchronizers
   # that may entail a notion of ownership.  The
@@ -62,13 +60,11 @@ module Java::Util::Concurrent::Locks
     }
     
     typesig { [] }
-    # 
     # Empty constructor for use by subclasses.
     def initialize
       @exclusive_owner_thread = nil
     end
     
-    # 
     # The current owner of exclusive mode synchronization.
     attr_accessor :exclusive_owner_thread
     alias_method :attr_exclusive_owner_thread, :exclusive_owner_thread
@@ -77,7 +73,6 @@ module Java::Util::Concurrent::Locks
     undef_method :exclusive_owner_thread=
     
     typesig { [JavaThread] }
-    # 
     # Sets the thread that currently owns exclusive access. A
     # <tt>null</tt> argument indicates that no thread owns access.
     # This method does not otherwise impose any synchronization or
@@ -87,7 +82,6 @@ module Java::Util::Concurrent::Locks
     end
     
     typesig { [] }
-    # 
     # Returns the thread last set by
     # <tt>setExclusiveOwnerThread</tt>, or <tt>null</tt> if never
     # set.  This method does not otherwise impose any synchronization

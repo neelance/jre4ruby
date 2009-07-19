@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 1994-2007 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -33,7 +32,6 @@ module Java::Io
     }
   end
   
-  # 
   # A <code>FileInputStream</code> obtains input bytes
   # from a file in a file system. What files
   # are  available depends on the host environment.
@@ -98,7 +96,6 @@ module Java::Io
     }
     
     typesig { [String] }
-    # 
     # Creates a <code>FileInputStream</code> by
     # opening a connection to an actual file,
     # the file named by the path name <code>name</code>
@@ -129,7 +126,6 @@ module Java::Io
     end
     
     typesig { [JavaFile] }
-    # 
     # Creates a <code>FileInputStream</code> by
     # opening a connection to an actual file,
     # the file named by the <code>File</code>
@@ -178,7 +174,6 @@ module Java::Io
     end
     
     typesig { [FileDescriptor] }
-    # 
     # Creates a <code>FileInputStream</code> by using the file descriptor
     # <code>fdObj</code>, which represents an existing connection to an
     # actual file in the file system.
@@ -213,7 +208,6 @@ module Java::Io
         security.check_read(fd_obj)
       end
       @fd = fd_obj
-      # 
       # FileDescriptor is being shared by streams.
       # Ensure that it's GC'ed only when all the streams/channels are done
       # using it.
@@ -222,7 +216,6 @@ module Java::Io
     
     JNI.native_method :Java_java_io_FileInputStream_open, [:pointer, :long, :long], :void
     typesig { [String] }
-    # 
     # Opens the specified file for reading.
     # @param name the name of the file
     def open(name)
@@ -231,7 +224,6 @@ module Java::Io
     
     JNI.native_method :Java_java_io_FileInputStream_read, [:pointer, :long], :int32
     typesig { [] }
-    # 
     # Reads a byte of data from this input stream. This method blocks
     # if no input is yet available.
     # 
@@ -244,7 +236,6 @@ module Java::Io
     
     JNI.native_method :Java_java_io_FileInputStream_readBytes, [:pointer, :long, :long, :int32, :int32], :int32
     typesig { [Array.typed(::Java::Byte), ::Java::Int, ::Java::Int] }
-    # 
     # Reads a subarray as a sequence of bytes.
     # @param b the data to be written
     # @param off the start offset in the data
@@ -255,7 +246,6 @@ module Java::Io
     end
     
     typesig { [Array.typed(::Java::Byte)] }
-    # 
     # Reads up to <code>b.length</code> bytes of data from this input
     # stream into an array of bytes. This method blocks until some input
     # is available.
@@ -270,7 +260,6 @@ module Java::Io
     end
     
     typesig { [Array.typed(::Java::Byte), ::Java::Int, ::Java::Int] }
-    # 
     # Reads up to <code>len</code> bytes of data from this input stream
     # into an array of bytes. If <code>len</code> is not zero, the method
     # blocks until some input is available; otherwise, no
@@ -293,7 +282,6 @@ module Java::Io
     
     JNI.native_method :Java_java_io_FileInputStream_skip, [:pointer, :long, :int64], :int64
     typesig { [::Java::Long] }
-    # 
     # Skips over and discards <code>n</code> bytes of data from the
     # input stream.
     # 
@@ -320,7 +308,6 @@ module Java::Io
     
     JNI.native_method :Java_java_io_FileInputStream_available, [:pointer, :long], :int32
     typesig { [] }
-    # 
     # Returns an estimate of the number of remaining bytes that can be read (or
     # skipped over) from this input stream without blocking by the next
     # invocation of a method for this input stream. The next invocation might be
@@ -340,7 +327,6 @@ module Java::Io
     end
     
     typesig { [] }
-    # 
     # Closes this file input stream and releases any system resources
     # associated with the stream.
     # 
@@ -359,17 +345,14 @@ module Java::Io
         @closed = true
       end
       if (!(@channel).nil?)
-        # 
         # Decrement the FD use count associated with the channel
         # The use count is incremented whenever a new channel
         # is obtained from this stream.
         @fd.decrement_and_get_use_count
         @channel.close
       end
-      # 
       # Decrement the FD use count associated with this stream
       use_count = @fd.decrement_and_get_use_count
-      # 
       # If FileDescriptor is still in use by another stream, the finalizer
       # will not close it.
       if ((use_count <= 0) || !is_running_finalize)
@@ -378,7 +361,6 @@ module Java::Io
     end
     
     typesig { [] }
-    # 
     # Returns the <code>FileDescriptor</code>
     # object  that represents the connection to
     # the actual file in the file system being
@@ -395,7 +377,6 @@ module Java::Io
     end
     
     typesig { [] }
-    # 
     # Returns the unique {@link java.nio.channels.FileChannel FileChannel}
     # object associated with this file input stream.
     # 
@@ -414,7 +395,6 @@ module Java::Io
       synchronized((self)) do
         if ((@channel).nil?)
           @channel = FileChannelImpl.open(@fd, true, false, self)
-          # 
           # Increment fd's use count. Invoking the channel's close()
           # method will result in decrementing the use count set for
           # the channel.
@@ -445,7 +425,6 @@ module Java::Io
     }
     
     typesig { [] }
-    # 
     # Ensures that the <code>close</code> method of this file input stream is
     # called when there are no more references to it.
     # 
@@ -453,7 +432,6 @@ module Java::Io
     # @see        java.io.FileInputStream#close()
     def finalize
       if ((!(@fd).nil?) && (!(@fd).equal?(@fd.attr_in)))
-        # 
         # Finalizer should not release the FileDescriptor if another
         # stream is still using it. If the user directly invokes
         # close() then the FileDescriptor is also released.

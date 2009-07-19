@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 2000-2007 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -52,7 +51,6 @@ module Sun::Security::Provider::Certpath
     }
   end
   
-  # 
   # This class represents a forward builder, which is able to retrieve
   # matching certificates from CertStores and verify a particular certificate
   # against a ForwardState.
@@ -123,7 +121,6 @@ module Sun::Security::Provider::Certpath
     undef_method :search_all_cert_stores=
     
     typesig { [PKIXBuilderParameters, X500Principal, ::Java::Boolean] }
-    # 
     # Initialize the builder with the input parameters.
     # 
     # @param params the parameter set used to build a certification path
@@ -157,7 +154,6 @@ module Sun::Security::Provider::Certpath
     end
     
     typesig { [State, JavaList] }
-    # 
     # Retrieves all certs from the specified CertStores that satisfy the
     # requirements specified in the parameters and the current
     # PKIX state (name constraints, policy constraints, etc).
@@ -170,12 +166,10 @@ module Sun::Security::Provider::Certpath
         Debug.println("ForwardBuilder.getMatchingCerts()...")
       end
       curr_state = current_state
-      # 
       # We store certs in a Set because we don't want duplicates.
       # As each cert is added, it is sorted based on the PKIXCertComparator
       # algorithm.
       certs = TreeSet.new(@comparator)
-      # 
       # Only look for EE certs if search has just started.
       if (curr_state.is_initial)
         get_matching_eecerts(curr_state, cert_stores, certs)
@@ -185,14 +179,12 @@ module Sun::Security::Provider::Certpath
     end
     
     typesig { [ForwardState, JavaList, Collection] }
-    # 
     # Retrieves all end-entity certificates which satisfy constraints
     # and requirements specified in the parameters and PKIX state.
     def get_matching_eecerts(current_state, cert_stores, ee_certs)
       if (!(Debug).nil?)
         Debug.println("ForwardBuilder.getMatchingEECerts()...")
       end
-      # 
       # Compose a certificate matching rule to filter out
       # certs which don't satisfy constraints
       # 
@@ -201,15 +193,12 @@ module Sun::Security::Provider::Certpath
       # state. Since selector never changes, cache local copy & reuse.
       if ((@ee_selector).nil?)
         @ee_selector = self.attr_target_cert_constraints.clone
-        # 
         # Match on certificate validity date
         @ee_selector.set_certificate_valid(self.attr_date)
-        # 
         # Policy processing optimizations
         if (self.attr_build_params.is_explicit_policy_required)
           @ee_selector.set_policy(get_matching_policies)
         end
-        # 
         # Require EE certs
         @ee_selector.set_basic_constraints(-2)
       end
@@ -218,7 +207,6 @@ module Sun::Security::Provider::Certpath
     end
     
     typesig { [ForwardState, JavaList, Collection] }
-    # 
     # Retrieves all CA certificates which satisfy constraints
     # and requirements specified in the parameters and PKIX state.
     def get_matching_cacerts(current_state, cert_stores, ca_certs)
@@ -226,7 +214,6 @@ module Sun::Security::Provider::Certpath
         Debug.println("ForwardBuilder.getMatchingCACerts()...")
       end
       initial_size = ca_certs.size
-      # 
       # Compose a CertSelector to filter out
       # certs which do not satisfy requirements.
       sel = nil
@@ -238,16 +225,13 @@ module Sun::Security::Provider::Certpath
         end
         if ((@ca_target_selector).nil?)
           @ca_target_selector = self.attr_target_cert_constraints.clone
-          # 
           # Match on certificate validity date
           @ca_target_selector.set_certificate_valid(self.attr_date)
-          # 
           # Policy processing optimizations
           if (self.attr_build_params.is_explicit_policy_required)
             @ca_target_selector.set_policy(get_matching_policies)
           end
         end
-        # 
         # Require CA certs with a pathLenConstraint that allows
         # at least as many CA certs that have already been traversed
         @ca_target_selector.set_basic_constraints(current_state.attr_traversed_cacerts)
@@ -255,30 +239,24 @@ module Sun::Security::Provider::Certpath
       else
         if ((@ca_selector).nil?)
           @ca_selector = X509CertSelector.new
-          # 
           # Match on certificate validity date.
           @ca_selector.set_certificate_valid(self.attr_date)
-          # 
           # Policy processing optimizations
           if (self.attr_build_params.is_explicit_policy_required)
             @ca_selector.set_policy(get_matching_policies)
           end
         end
-        # 
         # Match on subject (issuer of previous cert)
         @ca_selector.set_subject(current_state.attr_issuer_dn)
-        # 
         # Match on subjectNamesTraversed (both DNs and AltNames)
         # (checks that current cert's name constraints permit it
         # to certify all the DNs and AltNames that have been traversed)
         CertPathHelper.set_path_to_names(@ca_selector, current_state.attr_subject_names_traversed)
-        # 
         # Require CA certs with a pathLenConstraint that allows
         # at least as many CA certs that have already been traversed
         @ca_selector.set_basic_constraints(current_state.attr_traversed_cacerts)
         sel = @ca_selector
       end
-      # 
       # Check if any of the trusted certs could be a match.
       # Since we are not validating the trusted cert, we can't
       # re-use the selector we've built up (sel) - we need
@@ -301,7 +279,6 @@ module Sun::Security::Provider::Certpath
           end
         end
       end
-      # 
       # If we have already traversed as many CA certs as the maxPathLength
       # will allow us to, then we don't bother looking through these
       # certificate pairs. If maxPathLength has a value of -1, this
@@ -326,7 +303,6 @@ module Sun::Security::Provider::Certpath
     end
     
     typesig { [AuthorityInfoAccessExtension, Collection] }
-    # 
     # Download Certificates from the given AIA and add them to the
     # specified Collection.
     def get_certs(aia_ext, certs)
@@ -359,7 +335,6 @@ module Sun::Security::Provider::Certpath
     end
     
     class_module.module_eval {
-      # 
       # This inner class compares 2 PKIX certificates according to which
       # should be tried first when building a path from the target.
       # The preference order is as follows:
@@ -417,7 +392,6 @@ module Sun::Security::Provider::Certpath
         end
         
         typesig { [X509Certificate, X509Certificate] }
-        # 
         # @param oCert1 First X509Certificate to be compared
         # @param oCert2 Second X509Certificate to be compared
         # @return -1 if oCert1 is preferable to oCert2, or
@@ -506,24 +480,24 @@ module Sun::Security::Provider::Certpath
             Debug.println(self.class::METHOD_NME + " NAMING ANCESTOR TEST...")
           end
           @trusted_subject_dns.each do |tSubject|
-            t_subject_name_ = X500Name.as_x500name(t_subject_)
-            distance_tto1_ = Builder.distance(t_subject_name_, c_issuer1name, JavaInteger::MAX_VALUE)
-            distance_tto2_ = Builder.distance(t_subject_name_, c_issuer2name, JavaInteger::MAX_VALUE)
+            t_subject_name = X500Name.as_x500name(t_subject)
+            distance_tto1 = Builder.distance(t_subject_name, c_issuer1name, JavaInteger::MAX_VALUE)
+            distance_tto2 = Builder.distance(t_subject_name, c_issuer2name, JavaInteger::MAX_VALUE)
             if (!(Debug).nil?)
-              Debug.println(self.class::METHOD_NME + " distanceTto1: " + (distance_tto1_).to_s)
-              Debug.println(self.class::METHOD_NME + " distanceTto2: " + (distance_tto2_).to_s)
+              Debug.println(self.class::METHOD_NME + " distanceTto1: " + (distance_tto1).to_s)
+              Debug.println(self.class::METHOD_NME + " distanceTto2: " + (distance_tto2).to_s)
             end
-            if (distance_tto1_ < 0 || distance_tto2_ < 0)
-              if ((distance_tto1_).equal?(distance_tto2_))
+            if (distance_tto1 < 0 || distance_tto2 < 0)
+              if ((distance_tto1).equal?(distance_tto2))
                 return -1
               else
-                if (distance_tto1_ < 0 && distance_tto2_ >= 0)
+                if (distance_tto1 < 0 && distance_tto2 >= 0)
                   return -1
                 else
-                  if (distance_tto1_ >= 0 && distance_tto2_ < 0)
+                  if (distance_tto1 >= 0 && distance_tto2 < 0)
                     return 1
                   else
-                    if (distance_tto1_ > distance_tto2_)
+                    if (distance_tto1 > distance_tto2)
                       return -1
                     else
                       return 1
@@ -540,17 +514,17 @@ module Sun::Security::Provider::Certpath
             Debug.println(self.class::METHOD_NME + " SAME NAMESPACE AS TRUSTED TEST...")
           end
           @trusted_subject_dns.each do |tSubject|
-            t_subject_name__ = X500Name.as_x500name(t_subject__)
-            t_ao1 = t_subject_name__.common_ancestor(c_issuer1name)
-            t_ao2 = t_subject_name__.common_ancestor(c_issuer2name)
+            t_subject_name = X500Name.as_x500name(t_subject)
+            t_ao1 = t_subject_name.common_ancestor(c_issuer1name)
+            t_ao2 = t_subject_name.common_ancestor(c_issuer2name)
             if (!(Debug).nil?)
               Debug.println(self.class::METHOD_NME + " tAo1: " + (String.value_of(t_ao1)).to_s)
               Debug.println(self.class::METHOD_NME + " tAo2: " + (String.value_of(t_ao2)).to_s)
             end
             if (!(t_ao1).nil? || !(t_ao2).nil?)
               if (!(t_ao1).nil? && !(t_ao2).nil?)
-                hops_tto1 = Builder.hops(t_subject_name__, c_issuer1name, JavaInteger::MAX_VALUE)
-                hops_tto2 = Builder.hops(t_subject_name__, c_issuer2name, JavaInteger::MAX_VALUE)
+                hops_tto1 = Builder.hops(t_subject_name, c_issuer1name, JavaInteger::MAX_VALUE)
+                hops_tto2 = Builder.hops(t_subject_name, c_issuer2name, JavaInteger::MAX_VALUE)
                 if (!(Debug).nil?)
                   Debug.println(self.class::METHOD_NME + " hopsTto1: " + (hops_tto1).to_s)
                   Debug.println(self.class::METHOD_NME + " hopsTto2: " + (hops_tto2).to_s)
@@ -612,7 +586,6 @@ module Sun::Security::Provider::Certpath
     }
     
     typesig { [X509Certificate, State, JavaList] }
-    # 
     # Verifies a matching certificate.
     # 
     # This method executes the validation steps in the PKIX path
@@ -641,7 +614,6 @@ module Sun::Security::Provider::Certpath
         Debug.println("ForwardBuilder.verifyCert(SN: " + (Debug.to_hex_string(cert.get_serial_number)).to_s + "\n  Issuer: " + (cert.get_issuer_x500principal).to_s + ")" + "\n  Subject: " + (cert.get_subject_x500principal).to_s + ")")
       end
       curr_state = current_state
-      # 
       # check for looping - abort a loop if
       # ((we encounter the same certificate twice) AND
       # ((policyMappingInhibited = true) OR (no policy mapping
@@ -672,7 +644,6 @@ module Sun::Security::Provider::Certpath
       is_trusted_cert = @trusted_certs.contains(cert)
       # we don't perform any validation of the trusted cert
       if (!is_trusted_cert)
-        # 
         # Check CRITICAL private extensions for user checkers that
         # support forward checking (forwardCheckers) and remove
         # ones we know how to check.
@@ -683,20 +654,18 @@ module Sun::Security::Provider::Certpath
         curr_state.attr_forward_checkers.each do |checker|
           checker.check(cert, unres_crit_exts)
         end
-        # 
         # Remove extensions from user checkers that don't support
         # forward checking. After this step, we will have removed
         # all extensions that all user checkers are capable of
         # processing.
         self.attr_build_params.get_cert_path_checkers.each do |checker|
-          if (!checker_.is_forward_checking_supported)
-            supported_exts = checker_.get_supported_extensions
+          if (!checker.is_forward_checking_supported)
+            supported_exts = checker.get_supported_extensions
             if (!(supported_exts).nil?)
               unres_crit_exts.remove_all(supported_exts)
             end
           end
         end
-        # 
         # Look at the remaining extensions and remove any ones we know how
         # to check. If there are any left, throw an exception!
         if (!unres_crit_exts.is_empty)
@@ -714,7 +683,6 @@ module Sun::Security::Provider::Certpath
           end
         end
       end
-      # 
       # if this is the target certificate (init=true), then we are
       # not able to do any more verification, so just return
       if (curr_state.is_initial)
@@ -726,11 +694,9 @@ module Sun::Security::Provider::Certpath
         if ((cert.get_basic_constraints).equal?(-1))
           raise CertificateException.new("cert is NOT a CA cert")
         end
-        # 
         # Check keyUsage extension
         KeyChecker.verify_cakey_usage(cert)
       end
-      # 
       # the following checks are performed even when the cert
       # is a trusted cert, since we are only extracting the
       # subjectDN, and publicKey from the cert
@@ -751,7 +717,6 @@ module Sun::Security::Provider::Certpath
           end
         end
       end
-      # 
       # Check signature only if no key requiring key parameters has been
       # encountered.
       if (!curr_state.key_params_needed)
@@ -760,7 +725,6 @@ module Sun::Security::Provider::Certpath
     end
     
     typesig { [X509Certificate] }
-    # 
     # Verifies whether the input certificate completes the path.
     # Checks the cert against each trust anchor that was specified, in order,
     # and returns true as soon as it finds a valid anchor.
@@ -799,7 +763,6 @@ module Sun::Security::Provider::Certpath
             next
           end
         end
-        # 
         # Check signature
         begin
           # NOTE: the DSA public key in the buildParams may lack

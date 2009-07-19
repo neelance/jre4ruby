@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 1995-2004 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -31,7 +30,6 @@ module Java::Io
     }
   end
   
-  # 
   # This class is an input stream filter that provides the added
   # functionality of keeping track of the current line number.
   # <p>
@@ -79,7 +77,6 @@ module Java::Io
     undef_method :mark_push_back=
     
     typesig { [InputStream] }
-    # 
     # Constructs a newline number input stream that reads its input
     # from the specified input stream.
     # 
@@ -95,7 +92,6 @@ module Java::Io
     end
     
     typesig { [] }
-    # 
     # Reads the next byte of data from this input stream. The value
     # byte is returned as an <code>int</code> in the range
     # <code>0</code> to <code>255</code>. If no byte is available
@@ -140,7 +136,6 @@ module Java::Io
     end
     
     typesig { [Array.typed(::Java::Byte), ::Java::Int, ::Java::Int] }
-    # 
     # Reads up to <code>len</code> bytes of data from this input stream
     # into an array of bytes. This method blocks until some input is available.
     # <p>
@@ -191,7 +186,6 @@ module Java::Io
     end
     
     typesig { [::Java::Long] }
-    # 
     # Skips over and discards <code>n</code> bytes of data from this
     # input stream. The <code>skip</code> method may, for a variety of
     # reasons, end up skipping over some smaller number of bytes,
@@ -227,7 +221,6 @@ module Java::Io
     end
     
     typesig { [::Java::Int] }
-    # 
     # Sets the line number to the specified argument.
     # 
     # @param      lineNumber   the new line number.
@@ -237,7 +230,6 @@ module Java::Io
     end
     
     typesig { [] }
-    # 
     # Returns the current line number.
     # 
     # @return     the current line number.
@@ -247,7 +239,6 @@ module Java::Io
     end
     
     typesig { [] }
-    # 
     # Returns the number of bytes that can be read from this input
     # stream without blocking.
     # <p>
@@ -269,7 +260,6 @@ module Java::Io
     end
     
     typesig { [::Java::Int] }
-    # 
     # Marks the current position in this input stream. A subsequent
     # call to the <code>reset</code> method repositions this stream at
     # the last marked position so that subsequent reads re-read the same bytes.
@@ -290,7 +280,6 @@ module Java::Io
     end
     
     typesig { [] }
-    # 
     # Repositions this stream to the position at the time the
     # <code>mark</code> method was last called on this input stream.
     # <p>

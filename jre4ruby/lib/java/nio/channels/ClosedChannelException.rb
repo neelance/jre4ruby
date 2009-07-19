@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 2000-2007 Sun Microsystems, Inc.  All Rights Reserved.
 # 
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
@@ -35,7 +34,6 @@ module Java::Nio::Channels
     }
   end
   
-  # 
   # Checked exception thrown when an attempt is made to invoke or complete an
   # I/O operation upon channel that is closed, or at least closed to that
   # operation.  That this exception is thrown does not necessarily imply that
@@ -52,7 +50,6 @@ module Java::Nio::Channels
     }
     
     typesig { [] }
-    # 
     # Constructs an instance of this class.
     def initialize
       super()

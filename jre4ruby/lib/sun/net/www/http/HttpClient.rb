@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 1994-2007 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -44,7 +43,6 @@ module Sun::Net::Www::Http
     }
   end
   
-  # 
   # @author Herb Jellinek
   # @author Dave Brown
   class HttpClient < HttpClientImports.const_get :NetworkClient
@@ -282,7 +280,6 @@ module Sun::Net::Www::Http
     
     class_module.module_eval {
       typesig { [] }
-      # 
       # A NOP method kept for backwards binary compatibility
       # @deprecated -- system properties are no longer cached.
       def reset_properties
@@ -314,7 +311,6 @@ module Sun::Net::Www::Http
     }
     
     typesig { [] }
-    # 
     # @return true iff http keep alive is set (i.e. enabled).  Defaults
     # to true if the system property http.keepAlive isn't set.
     def get_http_keep_alive_set
@@ -444,7 +440,6 @@ module Sun::Net::Www::Http
     }
     
     typesig { [URL, String, ::Java::Int, ::Java::Boolean] }
-    # 
     # This constructor gives "ultimate" flexibility, including the ability
     # to bypass implicit proxying.  Sometimes we need to be using tunneling
     # (transport or network level) instead of proxying (application level),
@@ -580,7 +575,6 @@ module Sun::Net::Www::Http
     end
     
     typesig { [] }
-    # 
     # Close an idle connection to this URL (if it exists in the
     # cache).
     def close_idle_connection
@@ -606,7 +600,6 @@ module Sun::Net::Www::Http
     end
     
     typesig { [] }
-    # 
     # Returns true if the http request should be tunneled through proxy.
     # An example where this is the case is Https.
     def needs_tunneling
@@ -614,14 +607,12 @@ module Sun::Net::Www::Http
     end
     
     typesig { [] }
-    # 
     # Returns true if this httpclient is from cache
     def is_cached_connection
       return @cached_http_client
     end
     
     typesig { [] }
-    # 
     # Finish any work left after the socket connection is
     # established.  In the normal http case, it's a NO-OP. Subclass
     # may need to override this. An example is Https, where for
@@ -633,7 +624,6 @@ module Sun::Net::Www::Http
     end
     
     typesig { [InetSocketAddress] }
-    # 
     # call openServer in a privileged block
     def privileged_open_server(server)
       synchronized(self) do
@@ -664,14 +654,12 @@ module Sun::Net::Www::Http
     end
     
     typesig { [String, ::Java::Int] }
-    # 
     # call super.openServer
     def super_open_server(proxy_host, proxy_port)
       NetworkClient.instance_method(:open_server).bind(self).call(proxy_host, proxy_port)
     end
     
     typesig { [String, ::Java::Int] }
-    # 
     # call super.openServer in a privileged block
     def privileged_super_open_server(proxy_host, proxy_port)
       synchronized(self) do
@@ -763,7 +751,6 @@ module Sun::Net::Www::Http
       if (((file_name).nil?) || ((file_name.length).equal?(0)))
         file_name = "/"
       end
-      # 
       # proxyDisabled is set by subclass HttpsClient!
       if (@using_proxy && !@proxy_disabled)
         # Do not use URLStreamHandler.toExternalForm as the fragment
@@ -793,7 +780,6 @@ module Sun::Net::Www::Http
     end
     
     typesig { [MessageHeader] }
-    # 
     # @deprecated
     def write_requests(head)
       @requests = head
@@ -924,11 +910,9 @@ module Sun::Net::Www::Http
             end
           else
             if (!(b[7]).equal?(Character.new(?0.ord)))
-              # 
               # We're talking 1.1 or later. Keep persistent until
               # the server says to close.
               if (!(keep).nil?)
-                # 
                 # The only Connection token we understand is close.
                 # Paranoia: if there is any Connection header then
                 # treat as non-persistent.
@@ -985,7 +969,6 @@ module Sun::Net::Www::Http
         return parse_httpheader(responses, pi, httpuc)
       end
       cl = -1
-      # 
       # Set things up to parse the entity body of the reply.
       # We should be smarter about avoid pointless work when
       # the HTTP method and response code indicate there will be
@@ -997,7 +980,6 @@ module Sun::Net::Www::Http
       end
       if (!(te).nil? && te.equals_ignore_case("chunked"))
         self.attr_server_input = ChunkedInputStream.new(self.attr_server_input, self, responses)
-        # 
         # If keep alive not specified then close after the stream
         # has completed.
         if (@keep_alive_connections <= 1)
@@ -1008,7 +990,6 @@ module Sun::Net::Www::Http
         end
         @failed_once = false
       else
-        # 
         # If it's a keep alive connection then we will keep
         # (alive if :-
         # 1. content-length is specified, or
@@ -1129,7 +1110,6 @@ module Sun::Net::Www::Http
     end
     
     typesig { [] }
-    # 
     # @return the proxy host being used for this client, or null
     # if we're not going through a proxy
     def get_proxy_host_used
@@ -1141,7 +1121,6 @@ module Sun::Net::Www::Http
     end
     
     typesig { [] }
-    # 
     # @return the proxy port being used for this client.  Meaningless
     # if getProxyHostUsed() gives null.
     def get_proxy_port_used

@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 2004 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -35,7 +34,6 @@ module Sun::Net
     }
   end
   
-  # 
   # This class allows for centralized access to Networking properties.
   # Default values are loaded from the file jre/lib/net.properties
   # 
@@ -85,7 +83,6 @@ module Sun::Net
     
     class_module.module_eval {
       typesig { [] }
-      # 
       # Loads the default networking system properties
       # the file is in jre/lib/net.properties
       def load_default_properties
@@ -108,7 +105,6 @@ module Sun::Net
       end
       
       typesig { [String] }
-      # 
       # Get a networking system property. If no system property was defined
       # returns the default value, if it exists, otherwise returns
       # <code>null</code>.
@@ -129,7 +125,6 @@ module Sun::Net
       end
       
       typesig { [String, ::Java::Int] }
-      # 
       # Get an Integer networking system property. If no system property was
       # defined returns the default value, if it exists, otherwise returns
       # <code>null</code>.
@@ -157,7 +152,6 @@ module Sun::Net
       end
       
       typesig { [String] }
-      # 
       # Get a Boolean networking system property. If no system property was
       # defined returns the default value, if it exists, otherwise returns
       # <code>null</code>.

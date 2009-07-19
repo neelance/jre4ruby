@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 1996-2006 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -35,7 +34,6 @@ module Java::Util::Zip
     }
   end
   
-  # 
   # This class implements a stream filter for uncompressing data in the
   # "deflate" compression format. It is also used as the basis for other
   # decompression filters, such as GZIPInputStream.
@@ -45,7 +43,6 @@ module Java::Util::Zip
   class InflaterInputStream < InflaterInputStreamImports.const_get :FilterInputStream
     include_class_members InflaterInputStreamImports
     
-    # 
     # Decompressor for this stream.
     attr_accessor :inf
     alias_method :attr_inf, :inf
@@ -53,7 +50,6 @@ module Java::Util::Zip
     alias_method :attr_inf=, :inf=
     undef_method :inf=
     
-    # 
     # Input buffer for decompression.
     attr_accessor :buf
     alias_method :attr_buf, :buf
@@ -61,7 +57,6 @@ module Java::Util::Zip
     alias_method :attr_buf=, :buf=
     undef_method :buf=
     
-    # 
     # Length of input buffer.
     attr_accessor :len
     alias_method :attr_len, :len
@@ -83,7 +78,6 @@ module Java::Util::Zip
     undef_method :reach_eof=
     
     typesig { [] }
-    # 
     # Check to make sure that this stream has not been closed
     def ensure_open
       if (@closed)
@@ -92,7 +86,6 @@ module Java::Util::Zip
     end
     
     typesig { [InputStream, Inflater, ::Java::Int] }
-    # 
     # Creates a new input stream with the specified decompressor and
     # buffer size.
     # @param in the input stream
@@ -126,7 +119,6 @@ module Java::Util::Zip
     end
     
     typesig { [InputStream, Inflater] }
-    # 
     # Creates a new input stream with the specified decompressor and a
     # default buffer size.
     # @param in the input stream
@@ -142,7 +134,6 @@ module Java::Util::Zip
     undef_method :uses_default_inflater=
     
     typesig { [InputStream] }
-    # 
     # Creates a new input stream with a default decompressor and buffer size.
     # @param in the input stream
     def initialize(in_)
@@ -157,7 +148,6 @@ module Java::Util::Zip
     undef_method :single_byte_buf=
     
     typesig { [] }
-    # 
     # Reads a byte of uncompressed data. This method will block until
     # enough input is available for decompression.
     # @return the byte read, or -1 if end of compressed input is reached
@@ -168,7 +158,6 @@ module Java::Util::Zip
     end
     
     typesig { [Array.typed(::Java::Byte), ::Java::Int, ::Java::Int] }
-    # 
     # Reads uncompressed data into an array of bytes. If <code>len</code> is not
     # zero, the method will block until some input can be decompressed; otherwise,
     # no bytes are read and <code>0</code> is returned.
@@ -215,7 +204,6 @@ module Java::Util::Zip
     end
     
     typesig { [] }
-    # 
     # Returns 0 after EOF has been reached, otherwise always return 1.
     # <p>
     # Programs should not count on this method to return the actual number
@@ -239,7 +227,6 @@ module Java::Util::Zip
     undef_method :b=
     
     typesig { [::Java::Long] }
-    # 
     # Skips specified number of bytes of uncompressed data.
     # @param n the number of bytes to skip
     # @return the actual number of bytes skipped.
@@ -268,7 +255,6 @@ module Java::Util::Zip
     end
     
     typesig { [] }
-    # 
     # Closes this input stream and releases any system resources associated
     # with the stream.
     # @exception IOException if an I/O error has occurred
@@ -283,7 +269,6 @@ module Java::Util::Zip
     end
     
     typesig { [] }
-    # 
     # Fills input buffer with more data to decompress.
     # @exception IOException if an I/O error has occurred
     def fill
@@ -296,7 +281,6 @@ module Java::Util::Zip
     end
     
     typesig { [] }
-    # 
     # Tests if this input stream supports the <code>mark</code> and
     # <code>reset</code> methods. The <code>markSupported</code>
     # method of <code>InflaterInputStream</code> returns
@@ -311,7 +295,6 @@ module Java::Util::Zip
     end
     
     typesig { [::Java::Int] }
-    # 
     # Marks the current position in this input stream.
     # 
     # <p> The <code>mark</code> method of <code>InflaterInputStream</code>
@@ -326,7 +309,6 @@ module Java::Util::Zip
     end
     
     typesig { [] }
-    # 
     # Repositions this stream to the position at the time the
     # <code>mark</code> method was last called on this input stream.
     # 

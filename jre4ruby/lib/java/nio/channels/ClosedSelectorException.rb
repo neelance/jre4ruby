@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 2000-2007 Sun Microsystems, Inc.  All Rights Reserved.
 # 
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
@@ -35,7 +34,6 @@ module Java::Nio::Channels
     }
   end
   
-  # 
   # Unchecked exception thrown when an attempt is made to invoke an I/O
   # operation upon a closed selector.
   # 
@@ -49,7 +47,6 @@ module Java::Nio::Channels
     }
     
     typesig { [] }
-    # 
     # Constructs an instance of this class.
     def initialize
       super()

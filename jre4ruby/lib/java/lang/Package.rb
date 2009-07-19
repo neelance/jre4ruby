@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 1997-2006 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -51,7 +50,6 @@ module Java::Lang
     }
   end
   
-  # 
   # {@code Package} objects contain version information
   # about the implementation and specification of a Java package.
   # This versioning information is retrieved and made available
@@ -109,7 +107,6 @@ module Java::Lang
     include Java::Lang::Reflect::AnnotatedElement
     
     typesig { [] }
-    # 
     # Return the name of this package.
     # 
     # @return  The fully-qualified name of this package as defined in the
@@ -121,7 +118,6 @@ module Java::Lang
     end
     
     typesig { [] }
-    # 
     # Return the title of the specification that this package implements.
     # @return the specification title, null is returned if it is not known.
     def get_specification_title
@@ -129,7 +125,6 @@ module Java::Lang
     end
     
     typesig { [] }
-    # 
     # Returns the version number of the specification
     # that this package implements.
     # This version string must be a sequence of nonnegative decimal
@@ -142,7 +137,6 @@ module Java::Lang
     end
     
     typesig { [] }
-    # 
     # Return the name of the organization, vendor,
     # or company that owns and maintains the specification
     # of the classes that implement this package.
@@ -152,7 +146,6 @@ module Java::Lang
     end
     
     typesig { [] }
-    # 
     # Return the title of this package.
     # @return the title of the implementation, null is returned if it is not known.
     def get_implementation_title
@@ -160,7 +153,6 @@ module Java::Lang
     end
     
     typesig { [] }
-    # 
     # Return the version of this implementation. It consists of any string
     # assigned by the vendor of this implementation and does
     # not have any particular syntax specified or expected by the Java
@@ -173,7 +165,6 @@ module Java::Lang
     end
     
     typesig { [] }
-    # 
     # Returns the name of the organization,
     # vendor or company that provided this implementation.
     # @return the vendor that implemented this package..
@@ -182,7 +173,6 @@ module Java::Lang
     end
     
     typesig { [] }
-    # 
     # Returns true if this package is sealed.
     # 
     # @return true if the package is sealed, false otherwise
@@ -191,7 +181,6 @@ module Java::Lang
     end
     
     typesig { [URL] }
-    # 
     # Returns true if this package is sealed with respect to the specified
     # code source url.
     # 
@@ -202,7 +191,6 @@ module Java::Lang
     end
     
     typesig { [String] }
-    # 
     # Compare this package's specification version with a
     # desired version. It returns true if
     # this packages specification version number is greater than or equal
@@ -265,7 +253,6 @@ module Java::Lang
     
     class_module.module_eval {
       typesig { [String] }
-      # 
       # Find a package by name in the callers {@code ClassLoader} instance.
       # The callers {@code ClassLoader} instance is used to find the package
       # instance corresponding to the named class. If the callers
@@ -290,7 +277,6 @@ module Java::Lang
       end
       
       typesig { [] }
-      # 
       # Get all the packages currently known for the caller's {@code ClassLoader}
       # instance.  Those packages correspond to classes loaded via or accessible by
       # name to that {@code ClassLoader} instance.  If the caller's
@@ -311,7 +297,6 @@ module Java::Lang
       end
       
       typesig { [Class] }
-      # 
       # Get the package for the specified class.
       # The class's class loader is used to find the package instance
       # corresponding to the specified class. If the class loader
@@ -346,7 +331,6 @@ module Java::Lang
     }
     
     typesig { [] }
-    # 
     # Return the hash code computed from the package name.
     # @return the hash code computed from the package name.
     def hash_code
@@ -354,7 +338,6 @@ module Java::Lang
     end
     
     typesig { [] }
-    # 
     # Returns the string representation of this Package.
     # Its value is the string "package " and the package name.
     # If the package title is defined it is appended.
@@ -401,7 +384,6 @@ module Java::Lang
     end
     
     typesig { [Class] }
-    # 
     # @throws NullPointerException {@inheritDoc}
     # @since 1.5
     def get_annotation(annotation_class)
@@ -409,7 +391,6 @@ module Java::Lang
     end
     
     typesig { [Class] }
-    # 
     # @throws NullPointerException {@inheritDoc}
     # @since 1.5
     def is_annotation_present(annotation_class)
@@ -417,21 +398,18 @@ module Java::Lang
     end
     
     typesig { [] }
-    # 
     # @since 1.5
     def get_annotations
       return get_package_info.get_annotations
     end
     
     typesig { [] }
-    # 
     # @since 1.5
     def get_declared_annotations
       return get_package_info.get_declared_annotations
     end
     
     typesig { [String, String, String, String, String, String, String, URL, ClassLoader] }
-    # 
     # Construct a package instance with the specified version
     # information.
     # @param pkgName the name of the package
@@ -465,7 +443,6 @@ module Java::Lang
     end
     
     typesig { [String, Manifest, URL, ClassLoader] }
-    # 
     # Construct a package using the attributes from the specified manifest.
     # 
     # @param name the package name
@@ -541,7 +518,6 @@ module Java::Lang
     
     class_module.module_eval {
       typesig { [String] }
-      # 
       # Returns the loaded system package for the specified name.
       def get_system_package(name)
         synchronized((self.attr_pkgs)) do
@@ -558,7 +534,6 @@ module Java::Lang
       end
       
       typesig { [] }
-      # 
       # Return an array of loaded system packages.
       def get_system_packages
         # First, update the system package map with new package names
@@ -624,7 +599,6 @@ module Java::Lang
       end
       
       typesig { [String] }
-      # 
       # Returns the Manifest for the specified JAR file name.
       def load_manifest(fn)
         begin
@@ -687,7 +661,6 @@ module Java::Lang
       end
     }
     
-    # 
     # Private storage for the package name and attributes.
     attr_accessor :pkg_name
     alias_method :attr_pkg_name, :pkg_name

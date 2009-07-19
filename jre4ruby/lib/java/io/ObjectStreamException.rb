@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 1996-2005 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -31,7 +30,6 @@ module Java::Io
     }
   end
   
-  # 
   # Superclass of all exceptions specific to Object Stream classes.
   # 
   # @author  unascribed
@@ -45,7 +43,6 @@ module Java::Io
     }
     
     typesig { [String] }
-    # 
     # Create an ObjectStreamException with the specified argument.
     # 
     # @param classname the detailed message for the exception
@@ -54,7 +51,6 @@ module Java::Io
     end
     
     typesig { [] }
-    # 
     # Create an ObjectStreamException.
     def initialize
       super()

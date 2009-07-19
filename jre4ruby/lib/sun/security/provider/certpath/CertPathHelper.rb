@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 2002-2006 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -34,7 +33,6 @@ module Sun::Security::Provider::Certpath
     }
   end
   
-  # 
   # Helper class that allows access to Sun specific known-public methods in the
   # java.security.cert package. It relies on a subclass in the
   # java.security.cert packages that is initialized before any of these methods
@@ -47,7 +45,6 @@ module Sun::Security::Provider::Certpath
     include_class_members CertPathHelperImports
     
     class_module.module_eval {
-      # 
       # Object used to tunnel the calls. Initialized by CertPathHelperImpl.
       
       def instance

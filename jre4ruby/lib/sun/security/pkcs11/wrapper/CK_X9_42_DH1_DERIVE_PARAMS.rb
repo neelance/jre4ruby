@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # reserved comment block
 # DO NOT REMOVE OR ALTER!
 # 
@@ -53,7 +52,6 @@ module Sun::Security::Pkcs11::Wrapper
     }
   end
   
-  # 
   # class CK_X9_42_DH1_DERIVE_PARAMS provides the parameters to the
   # CKM_X9_42_DH_DERIVE mechanism.<p>
   # <B>PKCS#11 structure:</B>
@@ -71,7 +69,6 @@ module Sun::Security::Pkcs11::Wrapper
   class CK_X9_42_DH1_DERIVE_PARAMS 
     include_class_members CK_X9_42_DH1_DERIVE_PARAMSImports
     
-    # 
     # <B>PKCS#11:</B>
     # <PRE>
     # CK_X9_42_DH_KDF_TYPE kdf;
@@ -82,7 +79,6 @@ module Sun::Security::Pkcs11::Wrapper
     alias_method :attr_kdf=, :kdf=
     undef_method :kdf=
     
-    # 
     # <B>PKCS#11:</B>
     # <PRE>
     # CK_ULONG ulOtherInfoLen;
@@ -94,7 +90,6 @@ module Sun::Security::Pkcs11::Wrapper
     alias_method :attr_p_other_info=, :p_other_info=
     undef_method :p_other_info=
     
-    # 
     # <B>PKCS#11:</B>
     # <PRE>
     # CK_ULONG ulPublicDataLen;
@@ -107,7 +102,6 @@ module Sun::Security::Pkcs11::Wrapper
     undef_method :p_public_data=
     
     typesig { [] }
-    # 
     # Returns the string representation of CK_PKCS5_PBKD2_PARAMS.
     # 
     # @return the string representation of CK_PKCS5_PBKD2_PARAMS

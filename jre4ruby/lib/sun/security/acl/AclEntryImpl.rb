@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 1996-2006 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -35,7 +34,6 @@ module Sun::Security::Acl
     }
   end
   
-  # 
   # This is a class that describes one entry that associates users
   # or groups with permissions in the ACL.
   # The entry may be used as a way of granting or denying permissions.
@@ -63,7 +61,6 @@ module Sun::Security::Acl
     undef_method :negative=
     
     typesig { [Principal] }
-    # 
     # Construct an ACL entry that associates a user with permissions
     # in the ACL.
     # @param user The user that is associated with this entry.
@@ -75,7 +72,6 @@ module Sun::Security::Acl
     end
     
     typesig { [] }
-    # 
     # Construct a null ACL entry
     def initialize
       @user = nil
@@ -84,7 +80,6 @@ module Sun::Security::Acl
     end
     
     typesig { [Principal] }
-    # 
     # Sets the principal in the entity. If a group or a
     # principal had already been set, a false value is
     # returned, otherwise a true value is returned.
@@ -100,7 +95,6 @@ module Sun::Security::Acl
     end
     
     typesig { [] }
-    # 
     # This method sets the ACL to have negative permissions.
     # That is the user or group is denied the permission set
     # specified in the entry.
@@ -109,14 +103,12 @@ module Sun::Security::Acl
     end
     
     typesig { [] }
-    # 
     # Returns true if this is a negative ACL.
     def is_negative
       return @negative
     end
     
     typesig { [Permission] }
-    # 
     # A principal or a group can be associated with multiple
     # permissions. This method adds a permission to the ACL entry.
     # @param permission The permission to be associated with
@@ -132,7 +124,6 @@ module Sun::Security::Acl
     end
     
     typesig { [Permission] }
-    # 
     # The method disassociates the permission from the Principal
     # or the Group in this ACL entry.
     # @param permission The permission to be disassociated with
@@ -144,7 +135,6 @@ module Sun::Security::Acl
     end
     
     typesig { [Permission] }
-    # 
     # Checks if the passed permission is part of the allowed
     # permission set in this entry.
     # @param permission The permission that has to be part of
@@ -156,14 +146,12 @@ module Sun::Security::Acl
     end
     
     typesig { [] }
-    # 
     # return an enumeration of the permissions in this ACL entry.
     def permissions
       return @permission_set.elements
     end
     
     typesig { [] }
-    # 
     # Return a string representation of  the contents of the ACL entry.
     def to_s
       s = StringBuffer.new
@@ -190,7 +178,6 @@ module Sun::Security::Acl
     end
     
     typesig { [] }
-    # 
     # Clones an AclEntry.
     def clone
       synchronized(self) do
@@ -203,7 +190,6 @@ module Sun::Security::Acl
     end
     
     typesig { [] }
-    # 
     # Return the Principal associated in this ACL entry.
     # The method returns null if the entry uses a group
     # instead of a principal.

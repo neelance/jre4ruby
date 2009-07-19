@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 1998-2006 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -31,7 +30,6 @@ module Java::Util
     }
   end
   
-  # 
   # A {@link NavigableSet} implementation based on a {@link TreeMap}.
   # The elements are ordered using their {@linkplain Comparable natural
   # ordering}, or by a {@link Comparator} provided at set creation
@@ -99,7 +97,6 @@ module Java::Util
     include Cloneable
     include Java::Io::Serializable
     
-    # 
     # The backing map.
     attr_accessor :m
     alias_method :attr_m, :m
@@ -114,7 +111,6 @@ module Java::Util
     }
     
     typesig { [NavigableMap] }
-    # 
     # Constructs a set backed by the specified navigable map.
     def initialize(m)
       @m = nil
@@ -123,7 +119,6 @@ module Java::Util
     end
     
     typesig { [] }
-    # 
     # Constructs a new, empty tree set, sorted according to the
     # natural ordering of its elements.  All elements inserted into
     # the set must implement the {@link Comparable} interface.
@@ -140,7 +135,6 @@ module Java::Util
     end
     
     typesig { [Comparator] }
-    # 
     # Constructs a new, empty tree set, sorted according to the specified
     # comparator.  All elements inserted into the set must be <i>mutually
     # comparable</i> by the specified comparator: {@code comparator.compare(e1,
@@ -157,7 +151,6 @@ module Java::Util
     end
     
     typesig { [Collection] }
-    # 
     # Constructs a new tree set containing the elements in the specified
     # collection, sorted according to the <i>natural ordering</i> of its
     # elements.  All elements inserted into the set must implement the
@@ -176,7 +169,6 @@ module Java::Util
     end
     
     typesig { [SortedSet] }
-    # 
     # Constructs a new tree set containing the same elements and
     # using the same ordering as the specified sorted set.
     # 
@@ -188,7 +180,6 @@ module Java::Util
     end
     
     typesig { [] }
-    # 
     # Returns an iterator over the elements in this set in ascending order.
     # 
     # @return an iterator over the elements in this set in ascending order
@@ -197,7 +188,6 @@ module Java::Util
     end
     
     typesig { [] }
-    # 
     # Returns an iterator over the elements in this set in descending order.
     # 
     # @return an iterator over the elements in this set in descending order
@@ -207,14 +197,12 @@ module Java::Util
     end
     
     typesig { [] }
-    # 
     # @since 1.6
     def descending_set
       return TreeSet.new(@m.descending_map)
     end
     
     typesig { [] }
-    # 
     # Returns the number of elements in this set (its cardinality).
     # 
     # @return the number of elements in this set (its cardinality)
@@ -223,7 +211,6 @@ module Java::Util
     end
     
     typesig { [] }
-    # 
     # Returns {@code true} if this set contains no elements.
     # 
     # @return {@code true} if this set contains no elements
@@ -232,7 +219,6 @@ module Java::Util
     end
     
     typesig { [Object] }
-    # 
     # Returns {@code true} if this set contains the specified element.
     # More formally, returns {@code true} if and only if this set
     # contains an element {@code e} such that
@@ -250,7 +236,6 @@ module Java::Util
     end
     
     typesig { [Object] }
-    # 
     # Adds the specified element to this set if it is not already present.
     # More formally, adds the specified element {@code e} to this set if
     # the set contains no element {@code e2} such that
@@ -271,7 +256,6 @@ module Java::Util
     end
     
     typesig { [Object] }
-    # 
     # Removes the specified element from this set if it is present.
     # More formally, removes an element {@code e} such that
     # <tt>(o==null&nbsp;?&nbsp;e==null&nbsp;:&nbsp;o.equals(e))</tt>,
@@ -292,7 +276,6 @@ module Java::Util
     end
     
     typesig { [] }
-    # 
     # Removes all of the elements from this set.
     # The set will be empty after this call returns.
     def clear
@@ -300,7 +283,6 @@ module Java::Util
     end
     
     typesig { [Collection] }
-    # 
     # Adds all of the elements in the specified collection to this set.
     # 
     # @param c collection containing elements to be added to this set
@@ -326,7 +308,6 @@ module Java::Util
     end
     
     typesig { [Object, ::Java::Boolean, Object, ::Java::Boolean] }
-    # 
     # @throws ClassCastException {@inheritDoc}
     # @throws NullPointerException if {@code fromElement} or {@code toElement}
     # is null and this set uses natural ordering, or its comparator
@@ -338,7 +319,6 @@ module Java::Util
     end
     
     typesig { [Object, ::Java::Boolean] }
-    # 
     # @throws ClassCastException {@inheritDoc}
     # @throws NullPointerException if {@code toElement} is null and
     # this set uses natural ordering, or its comparator does
@@ -350,7 +330,6 @@ module Java::Util
     end
     
     typesig { [Object, ::Java::Boolean] }
-    # 
     # @throws ClassCastException {@inheritDoc}
     # @throws NullPointerException if {@code fromElement} is null and
     # this set uses natural ordering, or its comparator does
@@ -362,7 +341,6 @@ module Java::Util
     end
     
     typesig { [Object, Object] }
-    # 
     # @throws ClassCastException {@inheritDoc}
     # @throws NullPointerException if {@code fromElement} or
     # {@code toElement} is null and this set uses natural ordering,
@@ -373,7 +351,6 @@ module Java::Util
     end
     
     typesig { [Object] }
-    # 
     # @throws ClassCastException {@inheritDoc}
     # @throws NullPointerException if {@code toElement} is null
     # and this set uses natural ordering, or its comparator does
@@ -384,7 +361,6 @@ module Java::Util
     end
     
     typesig { [Object] }
-    # 
     # @throws ClassCastException {@inheritDoc}
     # @throws NullPointerException if {@code fromElement} is null
     # and this set uses natural ordering, or its comparator does
@@ -400,14 +376,12 @@ module Java::Util
     end
     
     typesig { [] }
-    # 
     # @throws NoSuchElementException {@inheritDoc}
     def first
       return @m.first_key
     end
     
     typesig { [] }
-    # 
     # @throws NoSuchElementException {@inheritDoc}
     def last
       return @m.last_key
@@ -426,7 +400,6 @@ module Java::Util
     end
     
     typesig { [Object] }
-    # 
     # @throws ClassCastException {@inheritDoc}
     # @throws NullPointerException if the specified element is null
     # and this set uses natural ordering, or its comparator
@@ -437,7 +410,6 @@ module Java::Util
     end
     
     typesig { [Object] }
-    # 
     # @throws ClassCastException {@inheritDoc}
     # @throws NullPointerException if the specified element is null
     # and this set uses natural ordering, or its comparator
@@ -448,7 +420,6 @@ module Java::Util
     end
     
     typesig { [Object] }
-    # 
     # @throws ClassCastException {@inheritDoc}
     # @throws NullPointerException if the specified element is null
     # and this set uses natural ordering, or its comparator
@@ -459,7 +430,6 @@ module Java::Util
     end
     
     typesig { [] }
-    # 
     # @since 1.6
     def poll_first
       e = @m.poll_first_entry
@@ -467,7 +437,6 @@ module Java::Util
     end
     
     typesig { [] }
-    # 
     # @since 1.6
     def poll_last
       e = @m.poll_last_entry
@@ -475,7 +444,6 @@ module Java::Util
     end
     
     typesig { [] }
-    # 
     # Returns a shallow copy of this {@code TreeSet} instance. (The elements
     # themselves are not cloned.)
     # 
@@ -492,7 +460,6 @@ module Java::Util
     end
     
     typesig { [Java::Io::ObjectOutputStream] }
-    # 
     # Save the state of the {@code TreeSet} instance to a stream (that is,
     # serialize it).
     # 
@@ -518,7 +485,6 @@ module Java::Util
     end
     
     typesig { [Java::Io::ObjectInputStream] }
-    # 
     # Reconstitute the {@code TreeSet} instance from a stream (that is,
     # deserialize it).
     def read_object(s)

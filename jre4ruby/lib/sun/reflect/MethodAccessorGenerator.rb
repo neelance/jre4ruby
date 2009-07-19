@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 2001 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -433,7 +432,7 @@ module Sun::Reflect
           rescue InstantiationException => e
             raise InternalError.new.init_cause(e)
           rescue IllegalAccessException => e
-            raise InternalError.new.init_cause(e_)
+            raise InternalError.new.init_cause(e)
           end
         end
         
@@ -598,14 +597,14 @@ module Sun::Reflect
           # dup
           # invokespecial <IllegalArgumentException ctor>
           # athrow
-          l_ = nil # unboxing label
+          l = nil # unboxing label
           next_param_label = Label.new
           j = 0
           while j < self.attr_primitive_types.attr_length
             c = self.attr_primitive_types[j]
             if (can_widen_to(c, param_type))
-              if (!(l_).nil?)
-                l_.bind
+              if (!(l).nil?)
+                l.bind
               end
               # Emit checking and unboxing code for this type
               if (@is_constructor)
@@ -614,8 +613,8 @@ module Sun::Reflect
                 cb.opc_aload_3
               end
               cb.opc_instanceof(index_for_primitive_type(c))
-              l_ = Label.new
-              cb.opc_ifeq(l_)
+              l = Label.new
+              cb.opc_ifeq(l)
               if (@is_constructor)
                 cb.opc_aload_2
               else
@@ -628,13 +627,13 @@ module Sun::Reflect
             end
             ((j += 1) - 1)
           end
-          if ((l_).nil?)
+          if ((l).nil?)
             raise InternalError.new("Must have found at least identity conversion")
           end
           # Fell through; given object is null or invalid. According to
           # the spec, we can throw IllegalArgumentException for both of
           # these cases.
-          l_.bind
+          l.bind
           cb.opc_new(self.attr_illegal_argument_class)
           cb.opc_dup
           cb.opc_invokespecial(self.attr_illegal_argument_ctor_idx, 0, 0)
@@ -778,12 +777,12 @@ module Sun::Reflect
               num = (self.attr_serialization_constructor_symnum += 1)
               return "sun/reflect/GeneratedSerializationConstructorAccessor" + (num).to_s
             else
-              num_ = (self.attr_constructor_symnum += 1)
-              return "sun/reflect/GeneratedConstructorAccessor" + (num_).to_s
+              num = (self.attr_constructor_symnum += 1)
+              return "sun/reflect/GeneratedConstructorAccessor" + (num).to_s
             end
           else
-            num__ = (self.attr_method_symnum += 1)
-            return "sun/reflect/GeneratedMethodAccessor" + (num__).to_s
+            num = (self.attr_method_symnum += 1)
+            return "sun/reflect/GeneratedMethodAccessor" + (num).to_s
           end
         end
       end

@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
 # This code is free software; you can redistribute it and/or modify it
@@ -48,7 +47,6 @@ module Sun::Net::Idn
     }
   end
   
-  # 
   # Ported code from ICU punycode.c
   # @author ram
   # 
@@ -130,7 +128,6 @@ module Sun::Net::Idn
         return count + (((BASE - TMIN + 1) * delta) / (delta + SKEW))
       end
       
-      # 
       # basicToDigit[] contains the numeric value of a basic code
       # point (for use in representing integers) in the range 0 to
       # BASE-1, or -1 if b is does not represent a value.
@@ -152,7 +149,6 @@ module Sun::Net::Idn
       end
       
       typesig { [::Java::Int, ::Java::Boolean] }
-      # 
       # digitToBasic() returns the basic code point whose value
       # (when used for representing integers) is d, which must be in the
       # range 0 to BASE-1. The lowercase form is used unless the uppercase flag is
@@ -172,7 +168,6 @@ module Sun::Net::Idn
       end
       
       typesig { [StringBuffer, Array.typed(::Java::Boolean)] }
-      # 
       # Converts Unicode to Punycode.
       # The input string must not contain single, unpaired surrogates.
       # The output will be represented as an array of ASCII code points.
@@ -201,7 +196,6 @@ module Sun::Net::Idn
         dest_capacity = MAX_CP_COUNT
         dest = CharArray.new(dest_capacity)
         result = StringBuffer.new
-        # 
         # Handle the basic code points and
         # convert extended ones to UTF-32 in cpBuffer (caseFlag in sign bit):
         src_cpcount = dest_length = 0
@@ -243,7 +237,6 @@ module Sun::Net::Idn
           end
           (dest_length += 1)
         end
-        # 
         # handledCPCount is the number of code points that have been handled
         # basicLength is the number of basic code points
         # destLength is the number of chars that have been output
@@ -256,7 +249,6 @@ module Sun::Net::Idn
         # no op
         handled_cpcount = basic_length
         while handled_cpcount < src_cpcount
-          # 
           # All non-basic code points < n have been handled already.
           # Find the next larger one:
           m = 0x7fffffff
@@ -269,7 +261,6 @@ module Sun::Net::Idn
             end
             (j += 1)
           end
-          # 
           # Increase delta enough to advance the decoder's
           # <n,i> state to <m,0>, but guard against overflow:
           if (m - n > (0x7fffffff - MAX_CP_COUNT - delta) / (handled_cpcount + 1))
@@ -348,7 +339,6 @@ module Sun::Net::Idn
       end
       
       typesig { [StringBuffer, Array.typed(::Java::Boolean)] }
-      # 
       # Converts Punycode to Unicode.
       # The Unicode string will be at most as long as the Punycode string.
       # 
@@ -377,7 +367,6 @@ module Sun::Net::Idn
         b = 0
         dest_capacity = MAX_CP_COUNT
         dest = CharArray.new(dest_capacity)
-        # 
         # Handle the basic code points:
         # Let basicLength be the number of input code points
         # before the last delimiter, or 0 if there is none,
@@ -408,7 +397,6 @@ module Sun::Net::Idn
         i = 0
         bias = INITIAL_BIAS
         first_supplementary_index = 1000000000
-        # 
         # Main decoding loop:
         # Start just after the last delimiter if any
         # basic code points were copied; start at the beginning otherwise.
@@ -416,7 +404,6 @@ module Sun::Net::Idn
         # no op
         in_ = basic_length > 0 ? basic_length + 1 : 0
         while in_ < src_length
-          # 
           # in is the index of the next character to be consumed, and
           # destCPCount is the number of code points in the output array.
           # 
@@ -460,13 +447,11 @@ module Sun::Net::Idn
             w *= BASE - t
             k += BASE
           end
-          # 
           # Modification from sample code:
           # Increments destCPCount here,
           # where needed instead of in for() loop tail.
           (dest_cpcount += 1)
           bias = adapt_bias(i - oldi, dest_cpcount, ((oldi).equal?(0)))
-          # 
           # i was supposed to wrap around from (incremented) destCPCount to 0,
           # incrementing n each time, so we'll fix that now:
           if (i / dest_cpcount > (0x7fffffff - n))
@@ -485,7 +470,6 @@ module Sun::Net::Idn
           cp_length = UTF16.get_char_count(n)
           if ((dest_length + cp_length) < dest_capacity)
             code_unit_index = 0
-            # 
             # Handle indexes when supplementary code points are present.
             # 
             # In almost all cases, there will be only BMP code points before i

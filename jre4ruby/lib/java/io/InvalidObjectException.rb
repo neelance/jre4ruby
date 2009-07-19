@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 1996-2005 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -31,7 +30,6 @@ module Java::Io
     }
   end
   
-  # 
   # Indicates that one or more deserialized objects failed validation
   # tests.  The argument should provide the reason for the failure.
   # 
@@ -49,7 +47,6 @@ module Java::Io
     }
     
     typesig { [String] }
-    # 
     # Constructs an <code>InvalidObjectException</code>.
     # @param reason Detailed message explaining the reason for the failure.
     # 

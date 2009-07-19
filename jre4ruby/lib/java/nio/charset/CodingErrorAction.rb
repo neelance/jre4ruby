@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 2001-2002 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -31,7 +30,6 @@ module Java::Nio::Charset
     }
   end
   
-  # 
   # A typesafe enumeration for coding-error actions.
   # 
   # <p> Instances of this class are used to specify how malformed-input and
@@ -59,20 +57,17 @@ module Java::Nio::Charset
     end
     
     class_module.module_eval {
-      # 
       # Action indicating that a coding error is to be handled by dropping the
       # erroneous input and resuming the coding operation.  </p>
       const_set_lazy(:IGNORE) { CodingErrorAction.new("IGNORE") }
       const_attr_reader  :IGNORE
       
-      # 
       # Action indicating that a coding error is to be handled by dropping the
       # erroneous input, appending the coder's replacement value to the output
       # buffer, and resuming the coding operation.  </p>
       const_set_lazy(:REPLACE) { CodingErrorAction.new("REPLACE") }
       const_attr_reader  :REPLACE
       
-      # 
       # Action indicating that a coding error is to be reported, either by
       # returning a {@link CoderResult} object or by throwing a {@link
       # CharacterCodingException}, whichever is appropriate for the method
@@ -82,7 +77,6 @@ module Java::Nio::Charset
     }
     
     typesig { [] }
-    # 
     # Returns a string describing this action.  </p>
     # 
     # @return  A descriptive string

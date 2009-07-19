@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
 # This code is free software; you can redistribute it and/or modify it
@@ -41,7 +40,6 @@ module Java::Util::Concurrent
     }
   end
   
-  # 
   # A {@link ConcurrentMap} supporting {@link NavigableMap} operations,
   # and recursively so for its navigable sub-maps.
   # 
@@ -59,7 +57,6 @@ module Java::Util::Concurrent
     include NavigableMap
     
     typesig { [Object, ::Java::Boolean, Object, ::Java::Boolean] }
-    # 
     # @throws ClassCastException       {@inheritDoc}
     # @throws NullPointerException     {@inheritDoc}
     # @throws IllegalArgumentException {@inheritDoc}
@@ -68,7 +65,6 @@ module Java::Util::Concurrent
     end
     
     typesig { [Object, ::Java::Boolean] }
-    # 
     # @throws ClassCastException       {@inheritDoc}
     # @throws NullPointerException     {@inheritDoc}
     # @throws IllegalArgumentException {@inheritDoc}
@@ -77,7 +73,6 @@ module Java::Util::Concurrent
     end
     
     typesig { [Object, ::Java::Boolean] }
-    # 
     # @throws ClassCastException       {@inheritDoc}
     # @throws NullPointerException     {@inheritDoc}
     # @throws IllegalArgumentException {@inheritDoc}
@@ -86,7 +81,6 @@ module Java::Util::Concurrent
     end
     
     typesig { [Object, Object] }
-    # 
     # @throws ClassCastException       {@inheritDoc}
     # @throws NullPointerException     {@inheritDoc}
     # @throws IllegalArgumentException {@inheritDoc}
@@ -95,7 +89,6 @@ module Java::Util::Concurrent
     end
     
     typesig { [Object] }
-    # 
     # @throws ClassCastException       {@inheritDoc}
     # @throws NullPointerException     {@inheritDoc}
     # @throws IllegalArgumentException {@inheritDoc}
@@ -104,7 +97,6 @@ module Java::Util::Concurrent
     end
     
     typesig { [Object] }
-    # 
     # @throws ClassCastException       {@inheritDoc}
     # @throws NullPointerException     {@inheritDoc}
     # @throws IllegalArgumentException {@inheritDoc}
@@ -113,7 +105,6 @@ module Java::Util::Concurrent
     end
     
     typesig { [] }
-    # 
     # Returns a reverse order view of the mappings contained in this map.
     # The descending map is backed by this map, so changes to the map are
     # reflected in the descending map, and vice-versa.
@@ -129,7 +120,6 @@ module Java::Util::Concurrent
     end
     
     typesig { [] }
-    # 
     # Returns a {@link NavigableSet} view of the keys contained in this map.
     # The set's iterator returns the keys in ascending order.
     # The set is backed by the map, so changes to the map are
@@ -152,7 +142,6 @@ module Java::Util::Concurrent
     end
     
     typesig { [] }
-    # 
     # Returns a {@link NavigableSet} view of the keys contained in this map.
     # The set's iterator returns the keys in ascending order.
     # The set is backed by the map, so changes to the map are
@@ -177,7 +166,6 @@ module Java::Util::Concurrent
     end
     
     typesig { [] }
-    # 
     # Returns a reverse order {@link NavigableSet} view of the keys contained in this map.
     # The set's iterator returns the keys in descending order.
     # The set is backed by the map, so changes to the map are

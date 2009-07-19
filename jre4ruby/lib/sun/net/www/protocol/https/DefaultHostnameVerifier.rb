@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 2005 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -33,7 +32,6 @@ module Sun::Net::Www::Protocol::Https
     }
   end
   
-  # 
   # <code>HostnameVerifier</code> provides a callback mechanism so that
   # implementers of this interface can supply a policy for
   # handling the case where the host to connect to and

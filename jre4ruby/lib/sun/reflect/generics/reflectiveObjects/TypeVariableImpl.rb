@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 2003-2004 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -37,7 +36,6 @@ module Sun::Reflect::Generics::ReflectiveObjects
     }
   end
   
-  # 
   # Implementation of <tt>java.lang.reflect.TypeVariable</tt> interface
   # for core reflection.
   class TypeVariableImpl < TypeVariableImplImports.const_get :LazyReflectiveObjectGenerator
@@ -100,7 +98,6 @@ module Sun::Reflect::Generics::ReflectiveObjects
     
     class_module.module_eval {
       typesig { [T, String, Array.typed(FieldTypeSignature), GenericsFactory] }
-      # 
       # Factory method.
       # @param decl - the reflective object that declared the type variable
       # that this method should create
@@ -117,7 +114,6 @@ module Sun::Reflect::Generics::ReflectiveObjects
     }
     
     typesig { [] }
-    # 
     # Returns an array of <tt>Type</tt> objects representing the
     # upper bound(s) of this type variable.  Note that if no upper bound is
     # explicitly declared, the upper bound is <tt>Object</tt>.
@@ -160,7 +156,6 @@ module Sun::Reflect::Generics::ReflectiveObjects
     end
     
     typesig { [] }
-    # 
     # Returns the <tt>GenericDeclaration</tt>  object representing the
     # generic declaration that declared this type variable.
     # 
@@ -172,7 +167,6 @@ module Sun::Reflect::Generics::ReflectiveObjects
     end
     
     typesig { [] }
-    # 
     # Returns the name of this type variable, as it occurs in the source code.
     # 
     # @return the name of this type variable, as it appears in the source code

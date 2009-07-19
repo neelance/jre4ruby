@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 1997-2007 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -32,7 +31,6 @@ module Java::Security
     }
   end
   
-  # 
   # <p> The AccessController class is used for access control operations
   # and decisions.
   # 
@@ -241,7 +239,6 @@ module Java::Security
     include_class_members AccessControllerImports
     
     typesig { [] }
-    # 
     # Don't allow anyone to instantiate an AccessController
     def initialize
     end
@@ -249,7 +246,6 @@ module Java::Security
     class_module.module_eval {
       JNI.native_method "Java_java_security_AccessController_doPrivileged__L#{PrivilegedAction.jni_name}_2".to_sym, [:pointer, :long, :long], :long
       typesig { [PrivilegedAction] }
-      # 
       # Performs the specified <code>PrivilegedAction</code> with privileges
       # enabled. The action is performed with <i>all</i> of the permissions
       # possessed by the caller's protection domain.
@@ -275,7 +271,6 @@ module Java::Security
       end
       
       typesig { [PrivilegedAction] }
-      # 
       # Performs the specified <code>PrivilegedAction</code> with privileges
       # enabled. The action is performed with <i>all</i> of the permissions
       # possessed by the caller's protection domain.
@@ -307,7 +302,6 @@ module Java::Security
       
       JNI.native_method "Java_java_security_AccessController_doPrivileged__L#{PrivilegedAction.jni_name}_2L#{AccessControlContext.jni_name}_2".to_sym, [:pointer, :long, :long, :long], :long
       typesig { [PrivilegedAction, AccessControlContext] }
-      # 
       # Performs the specified <code>PrivilegedAction</code> with privileges
       # enabled and restricted by the specified
       # <code>AccessControlContext</code>.
@@ -339,7 +333,6 @@ module Java::Security
       
       JNI.native_method "Java_java_security_AccessController_doPrivileged__L#{PrivilegedExceptionAction.jni_name}_2".to_sym, [:pointer, :long, :long], :long
       typesig { [PrivilegedExceptionAction] }
-      # 
       # Performs the specified <code>PrivilegedExceptionAction</code> with
       # privileges enabled.  The action is performed with <i>all</i> of the
       # permissions possessed by the caller's protection domain.
@@ -367,7 +360,6 @@ module Java::Security
       end
       
       typesig { [PrivilegedExceptionAction] }
-      # 
       # Performs the specified <code>PrivilegedExceptionAction</code> with
       # privileges enabled.  The action is performed with <i>all</i> of the
       # permissions possessed by the caller's protection domain.
@@ -401,10 +393,8 @@ module Java::Security
       end
       
       typesig { [DomainCombiner] }
-      # 
       # preserve the combiner across the doPrivileged call
       def preserve_combiner(combiner)
-        # 
         # callerClass[0] = Reflection.getCallerClass
         # callerClass[1] = AccessController.preserveCombiner
         # callerClass[2] = AccessController.doPrivileged
@@ -436,7 +426,6 @@ module Java::Security
       
       JNI.native_method "Java_java_security_AccessController_doPrivileged__L#{PrivilegedExceptionAction.jni_name}_2L#{AccessControlContext.jni_name}_2".to_sym, [:pointer, :long, :long, :long], :long
       typesig { [PrivilegedExceptionAction, AccessControlContext] }
-      # 
       # Performs the specified <code>PrivilegedExceptionAction</code> with
       # privileges enabled and restricted by the specified
       # <code>AccessControlContext</code>.  The action is performed with the
@@ -470,7 +459,6 @@ module Java::Security
       
       JNI.native_method :Java_java_security_AccessController_getStackAccessControlContext, [:pointer, :long], :long
       typesig { [] }
-      # 
       # Returns the AccessControl context. i.e., it gets
       # the protection domains of all the callers on the stack,
       # starting at the first class with a non-null
@@ -484,7 +472,6 @@ module Java::Security
       
       JNI.native_method :Java_java_security_AccessController_getInheritedAccessControlContext, [:pointer, :long], :long
       typesig { [] }
-      # 
       # Returns the "inherited" AccessControl context. This is the context
       # that existed when the thread was created. Package private so
       # AccessControlContext can use it.
@@ -493,7 +480,6 @@ module Java::Security
       end
       
       typesig { [] }
-      # 
       # This method takes a "snapshot" of the current calling context, which
       # includes the current Thread's inherited AccessControlContext,
       # and places it in an AccessControlContext object. This context may then
@@ -514,7 +500,6 @@ module Java::Security
       end
       
       typesig { [Permission] }
-      # 
       # Determines whether the access request indicated by the
       # specified permission should be allowed or denied, based on
       # the current AccessControlContext and security policy.

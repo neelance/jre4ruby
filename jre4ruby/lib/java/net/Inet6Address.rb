@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 2000-2006 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -38,7 +37,6 @@ module Java::Net
     }
   end
   
-  # 
   # This class represents an Internet Protocol version 6 (IPv6) address.
   # Defined by <a href="http://www.ietf.org/rfc/rfc2373.txt">
   # <i>RFC&nbsp;2373: IP Version 6 Addressing Architecture</i></a>.
@@ -176,7 +174,6 @@ module Java::Net
       const_attr_reader  :INADDRSZ
     }
     
-    # 
     # cached scope_id - for link-local address use only.
     attr_accessor :cached_scope_id
     alias_method :attr_cached_scope_id, :cached_scope_id
@@ -184,7 +181,6 @@ module Java::Net
     alias_method :attr_cached_scope_id=, :cached_scope_id=
     undef_method :cached_scope_id=
     
-    # 
     # Holds a 128-bit (16 bytes) IPv6 address.
     # 
     # @serial
@@ -194,7 +190,6 @@ module Java::Net
     alias_method :attr_ipaddress=, :ipaddress=
     undef_method :ipaddress=
     
-    # 
     # scope_id. The scope specified when the object is created. If the object is created
     # with an interface name, then the scope_id is not determined until the time it is needed.
     attr_accessor :scope_id
@@ -203,7 +198,6 @@ module Java::Net
     alias_method :attr_scope_id=, :scope_id=
     undef_method :scope_id=
     
-    # 
     # This will be set to true when the scope_id field contains a valid
     # integer scope_id.
     attr_accessor :scope_id_set
@@ -212,7 +206,6 @@ module Java::Net
     alias_method :attr_scope_id_set=, :scope_id_set=
     undef_method :scope_id_set=
     
-    # 
     # scoped interface. scope_id is derived from this as the scope_id of the first
     # address whose scope is the same as this address for the named interface.
     attr_accessor :scope_ifname
@@ -221,7 +214,6 @@ module Java::Net
     alias_method :attr_scope_ifname=, :scope_ifname=
     undef_method :scope_ifname=
     
-    # 
     # set if the object is constructed with a scoped interface instead of a
     # numeric scope id.
     attr_accessor :scope_ifname_set
@@ -234,7 +226,6 @@ module Java::Net
       const_set_lazy(:SerialVersionUID) { 6880410070516793377 }
       const_attr_reader  :SerialVersionUID
       
-      # 
       # Perform initializations.
       when_class_loaded do
         init
@@ -350,7 +341,6 @@ module Java::Net
     
     class_module.module_eval {
       typesig { [String, Array.typed(::Java::Byte), NetworkInterface] }
-      # 
       # Create an Inet6Address in the exact manner of {@link InetAddress#getByAddress(String,byte[])}
       # except that the IPv6 scope_id is set to the value corresponding to the given interface
       # for the address type specified in <code>addr</code>.
@@ -382,7 +372,6 @@ module Java::Net
       end
       
       typesig { [String, Array.typed(::Java::Byte), ::Java::Int] }
-      # 
       # Create an Inet6Address in the exact manner of {@link InetAddress#getByAddress(String,byte[])}
       # except that the IPv6 scope_id is set to the given numeric value.
       # The scope_id is not checked to determine if it corresponds to any interface on the system.
@@ -507,7 +496,6 @@ module Java::Net
     end
     
     typesig { [ObjectInputStream] }
-    # 
     # restore the state of this object from stream
     # including the scope information, only if the
     # scoped interface name is valid on this system
@@ -546,7 +534,6 @@ module Java::Net
     end
     
     typesig { [] }
-    # 
     # Utility routine to check if the InetAddress is an IP multicast
     # address. 11111111 at the start of the address identifies the
     # address as being a multicast address.
@@ -559,7 +546,6 @@ module Java::Net
     end
     
     typesig { [] }
-    # 
     # Utility routine to check if the InetAddress in a wildcard address.
     # @return a <code>boolean</code> indicating if the Inetaddress is
     # a wildcard address.
@@ -575,7 +561,6 @@ module Java::Net
     end
     
     typesig { [] }
-    # 
     # Utility routine to check if the InetAddress is a loopback address.
     # 
     # @return a <code>boolean</code> indicating if the InetAddress is
@@ -592,7 +577,6 @@ module Java::Net
     end
     
     typesig { [] }
-    # 
     # Utility routine to check if the InetAddress is an link local address.
     # 
     # @return a <code>boolean</code> indicating if the InetAddress is
@@ -603,7 +587,6 @@ module Java::Net
     end
     
     typesig { [] }
-    # 
     # Utility routine to check if the InetAddress is a site local address.
     # 
     # @return a <code>boolean</code> indicating if the InetAddress is
@@ -614,7 +597,6 @@ module Java::Net
     end
     
     typesig { [] }
-    # 
     # Utility routine to check if the multicast address has global scope.
     # 
     # @return a <code>boolean</code> indicating if the address has
@@ -626,7 +608,6 @@ module Java::Net
     end
     
     typesig { [] }
-    # 
     # Utility routine to check if the multicast address has node scope.
     # 
     # @return a <code>boolean</code> indicating if the address has
@@ -638,7 +619,6 @@ module Java::Net
     end
     
     typesig { [] }
-    # 
     # Utility routine to check if the multicast address has link scope.
     # 
     # @return a <code>boolean</code> indicating if the address has
@@ -650,7 +630,6 @@ module Java::Net
     end
     
     typesig { [] }
-    # 
     # Utility routine to check if the multicast address has site scope.
     # 
     # @return a <code>boolean</code> indicating if the address has
@@ -662,7 +641,6 @@ module Java::Net
     end
     
     typesig { [] }
-    # 
     # Utility routine to check if the multicast address has organization scope.
     # 
     # @return a <code>boolean</code> indicating if the address has
@@ -675,7 +653,6 @@ module Java::Net
     end
     
     typesig { [] }
-    # 
     # Returns the raw IP address of this <code>InetAddress</code>
     # object. The result is in network byte order: the highest order
     # byte of the address is in <code>getAddress()[0]</code>.
@@ -686,7 +663,6 @@ module Java::Net
     end
     
     typesig { [] }
-    # 
     # Returns the numeric scopeId, if this instance is associated with
     # an interface. If no scoped_id is set, the returned value is zero.
     # 
@@ -697,7 +673,6 @@ module Java::Net
     end
     
     typesig { [] }
-    # 
     # Returns the scoped interface, if this instance was created with
     # with a scoped interface.
     # 
@@ -708,7 +683,6 @@ module Java::Net
     end
     
     typesig { [] }
-    # 
     # Returns the IP address string in textual presentation. If the instance was created
     # specifying a scope identifier then the scope id is appended to the IP address preceded by
     # a "%" (per-cent) character. This can be either a numeric value or a string, depending on which
@@ -729,7 +703,6 @@ module Java::Net
     end
     
     typesig { [] }
-    # 
     # Returns a hashcode for this IP address.
     # 
     # @return  a hash code value for this IP address.
@@ -754,7 +727,6 @@ module Java::Net
     end
     
     typesig { [Object] }
-    # 
     # Compares this object against the specified object.
     # The result is <code>true</code> if and only if the argument is
     # not <code>null</code> and it represents the same IP address as
@@ -785,7 +757,6 @@ module Java::Net
     end
     
     typesig { [] }
-    # 
     # Utility routine to check if the InetAddress is an
     # IPv4 compatible IPv6 address.
     # 
@@ -805,7 +776,6 @@ module Java::Net
       const_attr_reader  :INT16SZ
       
       typesig { [Array.typed(::Java::Byte)] }
-      # 
       # Convert IPv6 binary address into presentation (printable) format.
       # 
       # @param src a byte array representing the IPv6 numeric address
@@ -827,14 +797,12 @@ module Java::Net
       
       JNI.native_method :Java_java_net_Inet6Address_init, [:pointer, :long], :void
       typesig { [] }
-      # 
       # Perform class load-time initializations.
       def init
         JNI.__send__(:Java_java_net_Inet6Address_init, JNI.env, self.jni_id)
       end
     }
     
-    # 
     # Following field is only used during (de)/serialization
     attr_accessor :ifname
     alias_method :attr_ifname, :ifname
@@ -843,7 +811,6 @@ module Java::Net
     undef_method :ifname=
     
     typesig { [Java::Io::ObjectOutputStream] }
-    # 
     # default behavior is overridden in order to write the
     # scope_ifname field as a String, rather than a NetworkInterface
     # which is not serializable

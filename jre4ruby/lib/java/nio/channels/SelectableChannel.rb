@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 2000-2001 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -34,7 +33,6 @@ module Java::Nio::Channels
     }
   end
   
-  # 
   # A channel that can be multiplexed via a {@link Selector}.
   # 
   # <p> In order to be used with a selector, an instance of this class must
@@ -96,14 +94,12 @@ module Java::Nio::Channels
     include Channel
     
     typesig { [] }
-    # 
     # Initializes a new instance of this class.
     def initialize
       super()
     end
     
     typesig { [] }
-    # 
     # Returns the provider that created this channel.
     # 
     # @return  The provider that created this channel
@@ -112,7 +108,6 @@ module Java::Nio::Channels
     end
     
     typesig { [] }
-    # 
     # Returns an <a href="SelectionKey.html#opsets">operation set</a>
     # identifying this channel's supported operations.  The bits that are set
     # in this integer value denote exactly the operations that are valid for
@@ -145,7 +140,6 @@ module Java::Nio::Channels
     end
     
     typesig { [Selector] }
-    # 
     # sync(keySet) { return isRegistered; }
     # 
     # Retrieves the key representing the channel's registration with the given
@@ -159,7 +153,6 @@ module Java::Nio::Channels
     end
     
     typesig { [Selector, ::Java::Int, Object] }
-    # 
     # sync(keySet) { return findKey(sel); }
     # 
     # Registers this channel with the given selector, returning a selection
@@ -225,7 +218,6 @@ module Java::Nio::Channels
     end
     
     typesig { [Selector, ::Java::Int] }
-    # 
     # sync(regLock) {
     # sync(keySet) { look for selector }
     # if (channel found) { set interest ops -- may block in selector;
@@ -281,7 +273,6 @@ module Java::Nio::Channels
     end
     
     typesig { [::Java::Boolean] }
-    # 
     # Adjusts this channel's blocking mode.
     # 
     # <p> If this channel is registered with one or more selectors then an
@@ -317,7 +308,6 @@ module Java::Nio::Channels
     end
     
     typesig { [] }
-    # 
     # sync(regLock) {
     # sync(keySet) { throw IBME if block && isRegistered; }
     # change mode;
@@ -335,7 +325,6 @@ module Java::Nio::Channels
     end
     
     typesig { [] }
-    # 
     # Retrieves the object upon which the {@link #configureBlocking
     # configureBlocking} and {@link #register register} methods synchronize.
     # This is often useful in the implementation of adaptors that require a

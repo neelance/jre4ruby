@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 2005 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -37,7 +36,6 @@ module Sun::Security::X509
     }
   end
   
-  # 
   # Represents the Freshest CRL Extension.
   # 
   # <p>
@@ -62,14 +60,12 @@ module Sun::Security::X509
     include_class_members FreshestCRLExtensionImports
     
     class_module.module_eval {
-      # 
       # Attribute name.
       const_set_lazy(:NAME) { "FreshestCRL" }
       const_attr_reader  :NAME
     }
     
     typesig { [JavaList] }
-    # 
     # Creates a freshest CRL extension.
     # The criticality is set to false.
     # 
@@ -79,7 +75,6 @@ module Sun::Security::X509
     end
     
     typesig { [Boolean, Object] }
-    # 
     # Creates the extension from the passed DER encoded value of the same.
     # 
     # @param critical true if the extension is to be treated as critical.
@@ -90,7 +85,6 @@ module Sun::Security::X509
     end
     
     typesig { [OutputStream] }
-    # 
     # Writes the extension to the DerOutputStream.
     # 
     # @param out the DerOutputStream to write the extension to.

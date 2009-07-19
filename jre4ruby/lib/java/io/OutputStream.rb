@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 1994-2004 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -31,7 +30,6 @@ module Java::Io
     }
   end
   
-  # 
   # This abstract class is the superclass of all classes representing
   # an output stream of bytes. An output stream accepts output bytes
   # and sends them to some sink.
@@ -54,7 +52,6 @@ module Java::Io
     include Flushable
     
     typesig { [::Java::Int] }
-    # 
     # Writes the specified byte to this output stream. The general
     # contract for <code>write</code> is that one byte is written
     # to the output stream. The byte to be written is the eight
@@ -73,7 +70,6 @@ module Java::Io
     end
     
     typesig { [Array.typed(::Java::Byte)] }
-    # 
     # Writes <code>b.length</code> bytes from the specified byte array
     # to this output stream. The general contract for <code>write(b)</code>
     # is that it should have exactly the same effect as the call
@@ -87,7 +83,6 @@ module Java::Io
     end
     
     typesig { [Array.typed(::Java::Byte), ::Java::Int, ::Java::Int] }
-    # 
     # Writes <code>len</code> bytes from the specified byte array
     # starting at offset <code>off</code> to this output stream.
     # The general contract for <code>write(b, off, len)</code> is that
@@ -134,7 +129,6 @@ module Java::Io
     end
     
     typesig { [] }
-    # 
     # Flushes this output stream and forces any buffered output bytes
     # to be written out. The general contract of <code>flush</code> is
     # that calling it is an indication that, if any bytes previously
@@ -155,7 +149,6 @@ module Java::Io
     end
     
     typesig { [] }
-    # 
     # Closes this output stream and releases any system resources
     # associated with this stream. The general contract of <code>close</code>
     # is that it closes the output stream. A closed stream cannot perform

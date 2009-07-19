@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 1999-2006 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -32,7 +31,6 @@ module Java::Util::Regex
     }
   end
   
-  # 
   # Unchecked exception thrown to indicate a syntax error in a
   # regular-expression pattern.
   # 
@@ -61,7 +59,6 @@ module Java::Util::Regex
     undef_method :index=
     
     typesig { [String, String, ::Java::Int] }
-    # 
     # Constructs a new instance of this class.
     # 
     # @param  desc
@@ -84,7 +81,6 @@ module Java::Util::Regex
     end
     
     typesig { [] }
-    # 
     # Retrieves the error index.
     # 
     # @return  The approximate index in the pattern of the error,
@@ -94,7 +90,6 @@ module Java::Util::Regex
     end
     
     typesig { [] }
-    # 
     # Retrieves the description of the error.
     # 
     # @return  The description of the error
@@ -103,7 +98,6 @@ module Java::Util::Regex
     end
     
     typesig { [] }
-    # 
     # Retrieves the erroneous regular-expression pattern.
     # 
     # @return  The erroneous pattern
@@ -117,7 +111,6 @@ module Java::Util::Regex
     }
     
     typesig { [] }
-    # 
     # Returns a multi-line string containing the description of the syntax
     # error and its index, the erroneous regular-expression pattern, and a
     # visual indication of the error index within the pattern.

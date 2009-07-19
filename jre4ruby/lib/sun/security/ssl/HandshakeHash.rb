@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 2002-2007 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -32,7 +31,6 @@ module Sun::Security::Ssl
     }
   end
   
-  # 
   # Abstraction for the SSL/TLS hash of all handshake messages that is
   # maintained to verify the integrity of the negotiation. Internally,
   # it consists of an MD5 and an SHA1 digest. They are used in the client
@@ -55,7 +53,6 @@ module Sun::Security::Ssl
     undef_method :sha=
     
     typesig { [::Java::Boolean] }
-    # 
     # Create a new HandshakeHash. needCertificateVerify indicates whether
     # a hash for the certificate verify message is required.
     def initialize(need_certificate_verify)
@@ -83,7 +80,6 @@ module Sun::Security::Ssl
     end
     
     typesig { [] }
-    # 
     # Reset the remaining digests. Note this does *not* reset the numbe of
     # digest clones that can be obtained. Digests that have already been
     # cloned and are gone remain gone.
@@ -93,14 +89,12 @@ module Sun::Security::Ssl
     end
     
     typesig { [] }
-    # 
     # Return a new MD5 digest updated with all data hashed so far.
     def get_md5clone
       return clone_digest(@md5)
     end
     
     typesig { [] }
-    # 
     # Return a new SHA digest updated with all data hashed so far.
     def get_shaclone
       return clone_digest(@sha)
@@ -122,7 +116,6 @@ module Sun::Security::Ssl
     alias_method :initialize__handshake_hash, :initialize
   end
   
-  # 
   # A wrapper for MessageDigests that simulates cloning of non-cloneable
   # digests. It uses the standard MessageDigest API and therefore can be used
   # transparently in place of a regular digest.
@@ -151,7 +144,6 @@ module Sun::Security::Ssl
     include_class_members HandshakeHashImports
     include Cloneable
     
-    # 
     # The individual MessageDigests. Initially, all elements are non-null.
     # When clone() is called, the non-null element with the maximum index is
     # returned and the array element set to null.
@@ -178,7 +170,6 @@ module Sun::Security::Ssl
     
     class_module.module_eval {
       typesig { [String, ::Java::Int] }
-      # 
       # Return a MessageDigest for the given algorithm that can be cloned the
       # specified number of times. If the default implementation supports
       # cloning, it is returned. Otherwise, an instance of this class is
@@ -196,7 +187,6 @@ module Sun::Security::Ssl
     }
     
     typesig { [] }
-    # 
     # Check if this object is still usable. If it has already been cloned the
     # maximum number of times, there are no digests left and this object can no
     # longer be used.
@@ -250,7 +240,6 @@ module Sun::Security::Ssl
     end
     
     typesig { [] }
-    # 
     # Reset all digests after a digest() call. digests[0] has already been
     # implicitly reset by the digest() call and does not need to be reset
     # again.

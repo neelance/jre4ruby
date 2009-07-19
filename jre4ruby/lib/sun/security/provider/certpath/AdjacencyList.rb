@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 2000-2006 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -35,7 +34,6 @@ module Sun::Security::Provider::Certpath
     }
   end
   
-  # 
   # An AdjacencyList is used to store the history of certification paths
   # attempted in constructing a path from an initiator to a target. The
   # AdjacencyList is initialized with a <code>List</code> of
@@ -105,7 +103,6 @@ module Sun::Security::Provider::Certpath
     undef_method :m_orig_list=
     
     typesig { [JavaList] }
-    # 
     # Constructs a new <code>AdjacencyList</code> based on the specified
     # <code>List</code>. See the example above.
     # 
@@ -120,7 +117,6 @@ module Sun::Security::Provider::Certpath
     end
     
     typesig { [] }
-    # 
     # Gets an <code>Iterator</code> to iterate over the set of
     # <code>BuildStep</code>s in build-order. Any attempts to change
     # the list through the remove method will fail.
@@ -131,7 +127,6 @@ module Sun::Security::Provider::Certpath
     end
     
     typesig { [JavaList, ::Java::Int, BuildStep] }
-    # 
     # Recursive, private method which actually builds the step list from
     # the given adjacency list. <code>Follow</code> is the parent BuildStep
     # that we followed to get here, and if it's null, it means that we're
@@ -182,8 +177,8 @@ module Sun::Security::Provider::Certpath
             # we'll have to make some guesses...
             possibles = ArrayList.new
             l.each do |v|
-              if ((v_.get_throwable).nil?)
-                possibles.add(v_)
+              if ((v.get_throwable).nil?)
+                possibles.add(v)
               end
             end
             if ((possibles.size).equal?(1))
@@ -212,14 +207,14 @@ module Sun::Security::Provider::Certpath
             # Note that we'll only find a SUCCEED case when we're
             # looking at the last possible path, so we don't need to
             # consider success in the while loop
-            if (!(v__.get_index).equal?(-1))
-              if (!(the_list.get(v__.get_index).size).equal?(0))
+            if (!(v.get_index).equal?(-1))
+              if (!(the_list.get(v.get_index).size).equal?(0))
                 # If the entry we're looking at doesn't have an
                 # index of -1, and doesn't lead to an empty list,
                 # then it's something we follow!
-                bs = BuildStep.new(v__, BuildStep::FOLLOW)
+                bs = BuildStep.new(v, BuildStep::FOLLOW)
                 @m_step_list.add(bs)
-                success = build_list(the_list, v__.get_index, bs)
+                success = build_list(the_list, v.get_index, bs)
               end
             end
           end
@@ -244,7 +239,6 @@ module Sun::Security::Provider::Certpath
     end
     
     typesig { [] }
-    # 
     # Prints out a string representation of this AdjacencyList.
     # 
     # @return String representation

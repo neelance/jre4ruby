@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 2003-2007 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -35,7 +34,6 @@ module Java::Lang
     }
   end
   
-  # 
   # This is the common base class of all Java language enumeration types.
   # 
   # @author  Josh Bloch
@@ -47,7 +45,6 @@ module Java::Lang
     include JavaComparable
     include Serializable
     
-    # 
     # The name of this enum constant, as declared in the enum declaration.
     # Most programmers should use the {@link #toString} method rather than
     # accessing this field.
@@ -58,7 +55,6 @@ module Java::Lang
     undef_method :name=
     
     typesig { [] }
-    # 
     # Returns the name of this enum constant, exactly as declared in its
     # enum declaration.
     # 
@@ -73,7 +69,6 @@ module Java::Lang
       return @name
     end
     
-    # 
     # The ordinal of this enumeration constant (its position
     # in the enum declaration, where the initial constant is assigned
     # an ordinal of zero).
@@ -88,7 +83,6 @@ module Java::Lang
     undef_method :ordinal=
     
     typesig { [] }
-    # 
     # Returns the ordinal of this enumeration constant (its position
     # in its enum declaration, where the initial constant is assigned
     # an ordinal of zero).
@@ -103,7 +97,6 @@ module Java::Lang
     end
     
     typesig { [String, ::Java::Int] }
-    # 
     # Sole constructor.  Programmers cannot invoke this constructor.
     # It is for use by code emitted by the compiler in response to
     # enum type declarations.
@@ -121,7 +114,6 @@ module Java::Lang
     end
     
     typesig { [] }
-    # 
     # Returns the name of this enum constant, as contained in the
     # declaration.  This method may be overridden, though it typically
     # isn't necessary or desirable.  An enum type should override this
@@ -133,7 +125,6 @@ module Java::Lang
     end
     
     typesig { [Object] }
-    # 
     # Returns true if the specified object is equal to this
     # enum constant.
     # 
@@ -145,7 +136,6 @@ module Java::Lang
     end
     
     typesig { [] }
-    # 
     # Returns a hash code for this enum constant.
     # 
     # @return a hash code for this enum constant.
@@ -154,7 +144,6 @@ module Java::Lang
     end
     
     typesig { [] }
-    # 
     # Throws CloneNotSupportedException.  This guarantees that enums
     # are never cloned, which is necessary to preserve their "singleton"
     # status.
@@ -165,7 +154,6 @@ module Java::Lang
     end
     
     typesig { [Object] }
-    # 
     # Compares this enum with the specified object for order.  Returns a
     # negative integer, zero, or a positive integer as this object is less
     # than, equal to, or greater than the specified object.
@@ -184,7 +172,6 @@ module Java::Lang
     end
     
     typesig { [] }
-    # 
     # Returns the Class object corresponding to this enum constant's
     # enum type.  Two enum constants e1 and  e2 are of the
     # same enum type if and only if
@@ -203,7 +190,6 @@ module Java::Lang
     
     class_module.module_eval {
       typesig { [Class, String] }
-      # 
       # Returns the enum constant of the specified enum type with the
       # specified name.  The name must match exactly an identifier used
       # to declare an enum constant in this type.  (Extraneous whitespace
@@ -233,13 +219,11 @@ module Java::Lang
     }
     
     typesig { [] }
-    # 
     # enum classes cannot have finalize methods.
     def finalize
     end
     
     typesig { [ObjectInputStream] }
-    # 
     # prevent default deserialization
     def read_object(in_)
       raise InvalidObjectException.new("can't deserialize enum")

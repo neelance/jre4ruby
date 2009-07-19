@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 2002-2007 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -32,7 +31,6 @@ module Sun::Security::Ssl
     }
   end
   
-  # 
   # The "KeyManager" for ephemeral RSA keys. Ephemeral DH and ECDH keys
   # are handled by the DHCrypt and ECDHCrypt classes, respectively.
   # 
@@ -49,7 +47,6 @@ module Sun::Security::Ssl
       const_attr_reader  :INDEX_RSA1024
     }
     
-    # 
     # Current cached RSA KeyPairs. Elements are never null.
     # Indexed via the the constants above.
     attr_accessor :keys
@@ -65,7 +62,6 @@ module Sun::Security::Ssl
     end
     
     typesig { [::Java::Boolean, SecureRandom] }
-    # 
     # Get a temporary RSA KeyPair.
     def get_rsakey_pair(export, random)
       length = 0
@@ -94,7 +90,6 @@ module Sun::Security::Ssl
     end
     
     class_module.module_eval {
-      # 
       # Inner class to handle storage of ephemeral KeyPairs.
       const_set_lazy(:EphemeralKeyPair) { Class.new do
         include_class_members EphemeralKeyManager
@@ -137,14 +132,12 @@ module Sun::Security::Ssl
         end
         
         typesig { [] }
-        # 
         # Check if the KeyPair can still be used.
         def is_valid
           return (!(@key_pair).nil?) && (@uses < self.class::MAX_USE) && (System.current_time_millis < @expiration_time)
         end
         
         typesig { [] }
-        # 
         # Return the KeyPair or null if it is invalid.
         def get_key_pair
           if ((is_valid).equal?(false))

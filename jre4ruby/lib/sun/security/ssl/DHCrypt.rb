@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 1996-2007 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -37,7 +36,6 @@ module Sun::Security::Ssl
     }
   end
   
-  # 
   # This class implements the Diffie-Hellman key exchange algorithm.
   # D-H means combining your private key with your partners public key to
   # generate a number. The peer does the same with its private key and our
@@ -129,7 +127,6 @@ module Sun::Security::Ssl
     end
     
     typesig { [BigInteger, BigInteger, SecureRandom] }
-    # 
     # Generate a Diffie-Hellman keypair using the specified parameters.
     # 
     # @param modulus the Diffie-Hellman modulus P
@@ -184,14 +181,12 @@ module Sun::Security::Ssl
     end
     
     typesig { [] }
-    # 
     # Gets the public key of this end of the key exchange.
     def get_public_key
       return @public_value
     end
     
     typesig { [BigInteger] }
-    # 
     # Get the secret data that has been agreed on through Diffie-Hellman
     # key agreement protocol.  Note that in the two party protocol, if
     # the peer keys are already known, no other data needs to be sent in

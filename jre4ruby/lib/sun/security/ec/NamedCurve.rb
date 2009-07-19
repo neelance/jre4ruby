@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 2006 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -38,7 +37,6 @@ module Sun::Security::Ec
     }
   end
   
-  # 
   # Repository for well-known Elliptic Curve parameters. It is used by both
   # the SunPKCS11 and SunJSSE code.
   # 

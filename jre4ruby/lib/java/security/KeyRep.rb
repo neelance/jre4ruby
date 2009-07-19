@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 2003-2006 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -37,7 +36,6 @@ module Java::Security
     }
   end
   
-  # 
   # Standardized representation for serialized Key objects.
   # 
   # <p>
@@ -72,7 +70,6 @@ module Java::Security
       const_set_lazy(:PRIVATE) { Type::PRIVATE }
       const_attr_reader  :PRIVATE
       
-      # 
       # Key type.
       # 
       # @since 1.5
@@ -129,7 +126,6 @@ module Java::Security
       const_attr_reader  :RAW
     }
     
-    # 
     # Either one of Type.SECRET, Type.PUBLIC, or Type.PRIVATE
     # 
     # @serial
@@ -139,7 +135,6 @@ module Java::Security
     alias_method :attr_type=, :type=
     undef_method :type=
     
-    # 
     # The Key algorithm
     # 
     # @serial
@@ -149,7 +144,6 @@ module Java::Security
     alias_method :attr_algorithm=, :algorithm=
     undef_method :algorithm=
     
-    # 
     # The Key encoding format
     # 
     # @serial
@@ -159,7 +153,6 @@ module Java::Security
     alias_method :attr_format=, :format=
     undef_method :format=
     
-    # 
     # The encoded Key bytes
     # 
     # @serial
@@ -170,7 +163,6 @@ module Java::Security
     undef_method :encoded=
     
     typesig { [Type, String, String, Array.typed(::Java::Byte)] }
-    # 
     # Construct the alternate Key class.
     # 
     # <p>
@@ -203,7 +195,6 @@ module Java::Security
     end
     
     typesig { [] }
-    # 
     # Resolve the Key object.
     # 
     # <p> This method supports three Type/format combinations:
@@ -236,8 +227,8 @@ module Java::Security
             return f.generate_public(X509EncodedKeySpec.new(@encoded))
           else
             if ((@type).equal?(Type::PRIVATE) && (PKCS8 == @format))
-              f_ = KeyFactory.get_instance(@algorithm)
-              return f_.generate_private(PKCS8EncodedKeySpec.new(@encoded))
+              f = KeyFactory.get_instance(@algorithm)
+              return f.generate_private(PKCS8EncodedKeySpec.new(@encoded))
             else
               raise NotSerializableException.new("unrecognized type/format combination: " + (@type).to_s + "/" + @format)
             end
@@ -246,9 +237,9 @@ module Java::Security
       rescue NotSerializableException => nse
         raise nse
       rescue Exception => e
-        nse_ = NotSerializableException.new("java.security.Key: " + "[" + (@type).to_s + "] " + "[" + @algorithm + "] " + "[" + @format + "]")
-        nse_.init_cause(e)
-        raise nse_
+        nse = NotSerializableException.new("java.security.Key: " + "[" + (@type).to_s + "] " + "[" + @algorithm + "] " + "[" + @format + "]")
+        nse.init_cause(e)
+        raise nse
       end
     end
     

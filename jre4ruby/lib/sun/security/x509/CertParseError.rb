@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 1996-2004 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -31,7 +30,6 @@ module Sun::Security::X509
     }
   end
   
-  # 
   # CertException indicates one of a variety of certificate problems.
   # @deprecated use one of the Exceptions defined in the
   # java.security.cert package.

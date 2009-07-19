@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 2003 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -31,7 +30,6 @@ module Java::Util
     }
   end
   
-  # 
   # Unchecked exception thrown when the format width is required.
   # 
   # <p> Unless otherwise specified, passing a <tt>null</tt> argument to anyg
@@ -54,7 +52,6 @@ module Java::Util
     undef_method :s=
     
     typesig { [String] }
-    # 
     # Constructs an instance of this class with the specified format
     # specifier.
     # 
@@ -70,7 +67,6 @@ module Java::Util
     end
     
     typesig { [] }
-    # 
     # Returns the format specifier which does not have a width.
     # 
     # @return  The format specifier which does not have a width

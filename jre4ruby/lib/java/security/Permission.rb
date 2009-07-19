@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 1997-2003 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -31,7 +30,6 @@ module Java::Security
     }
   end
   
-  # 
   # Abstract class for representing access to a system resource.
   # All permissions have a name (whose interpretation depends on the subclass),
   # as well as abstract functions for defining the semantics of the
@@ -83,7 +81,6 @@ module Java::Security
     undef_method :name=
     
     typesig { [String] }
-    # 
     # Constructs a permission with the specified name.
     # 
     # @param name name of the Permission object being created.
@@ -93,7 +90,6 @@ module Java::Security
     end
     
     typesig { [Object] }
-    # 
     # Implements the guard interface for a permission. The
     # <code>SecurityManager.checkPermission</code> method is called,
     # passing this permission object as the permission to check.
@@ -117,7 +113,6 @@ module Java::Security
     end
     
     typesig { [Permission] }
-    # 
     # Checks if the specified permission's actions are "implied by"
     # this object's actions.
     # <P>
@@ -137,7 +132,6 @@ module Java::Security
     end
     
     typesig { [Object] }
-    # 
     # Checks two Permission objects for equality.
     # <P>
     # Do not use the <code>equals</code> method for making access control
@@ -151,7 +145,6 @@ module Java::Security
     end
     
     typesig { [] }
-    # 
     # Returns the hash code value for this Permission object.
     # <P>
     # The required <code>hashCode</code> behavior for Permission Objects is
@@ -175,7 +168,6 @@ module Java::Security
     end
     
     typesig { [] }
-    # 
     # Returns the name of this Permission.
     # For example, in the case of a <code>java.io.FilePermission</code>,
     # the name will be a pathname.
@@ -186,7 +178,6 @@ module Java::Security
     end
     
     typesig { [] }
-    # 
     # Returns the actions as a String. This is abstract
     # so subclasses can defer creating a String representation until
     # one is needed. Subclasses should always return actions in what they
@@ -208,7 +199,6 @@ module Java::Security
     end
     
     typesig { [] }
-    # 
     # Returns an empty PermissionCollection for a given Permission object, or null if
     # one is not defined. Subclasses of class Permission should
     # override this if they need to store their permissions in a particular
@@ -226,7 +216,6 @@ module Java::Security
     end
     
     typesig { [] }
-    # 
     # Returns a string describing this Permission.  The convention is to
     # specify the class name, the permission name, and the actions in
     # the following format: '("ClassName" "name" "actions")'.

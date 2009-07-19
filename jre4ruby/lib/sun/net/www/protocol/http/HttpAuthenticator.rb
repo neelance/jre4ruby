@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 1996-2004 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -32,7 +31,6 @@ module Sun::Net::Www::Protocol::Http
     }
   end
   
-  # 
   # An interface for all objects that implement HTTP authentication.
   # See the HTTP spec for details on how this works in general.
   # A single class or object can implement an arbitrary number of
@@ -50,7 +48,6 @@ module Sun::Net::Www::Protocol::Http
     include_class_members HttpAuthenticatorImports
     
     typesig { [String] }
-    # 
     # Indicate whether the specified authentication scheme is
     # supported.  In accordance with HTTP specifications, the
     # scheme name should be checked in a case-insensitive fashion.
@@ -59,7 +56,6 @@ module Sun::Net::Www::Protocol::Http
     end
     
     typesig { [URL, String, String] }
-    # 
     # Returns the String that should be included in the HTTP
     # <B>Authorization</B> field.  Return null if no info was
     # supplied or could be found.

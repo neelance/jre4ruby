@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Portions Copyright 1996-2007 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -34,7 +33,6 @@ module Java::Math
     }
   end
   
-  # 
   # Immutable, arbitrary-precision signed decimal numbers.  A
   # {@code BigDecimal} consists of an arbitrary precision integer
   # <i>unscaled value</i> and a 32-bit integer <i>scale</i>.  If zero
@@ -221,7 +219,6 @@ module Java::Math
     include_class_members BigDecimalImports
     include JavaComparable
     
-    # 
     # The unscaled value of this BigDecimal, as returned by {@link
     # #unscaledValue}.
     # 
@@ -233,7 +230,6 @@ module Java::Math
     alias_method :attr_int_val=, :int_val=
     undef_method :int_val=
     
-    # 
     # The scale of this BigDecimal, as returned by {@link #scale}.
     # 
     # @serial
@@ -260,7 +256,6 @@ module Java::Math
     alias_method :attr_precision=, :precision=
     undef_method :precision=
     
-    # 
     # Used to store the canonical string representation, if computed.
     attr_accessor :string_cache
     alias_method :attr_string_cache, :string_cache
@@ -269,14 +264,12 @@ module Java::Math
     undef_method :string_cache=
     
     class_module.module_eval {
-      # 
       # Sentinel value for {@link #intCompact} indicating the
       # significand information is only available from {@code intVal}.
       const_set_lazy(:INFLATED) { Long::MIN_VALUE }
       const_attr_reader  :INFLATED
     }
     
-    # 
     # If the absolute value of the significand of this BigDecimal is
     # less than or equal to {@code Long.MAX_VALUE}, the value can be
     # compactly stored in this field and used in computations.
@@ -311,14 +304,12 @@ module Java::Math
       const_set_lazy(:ZERO) { ZeroThroughTen[0] }
       const_attr_reader  :ZERO
       
-      # 
       # The value 1, with a scale of 0.
       # 
       # @since  1.5
       const_set_lazy(:ONE) { ZeroThroughTen[1] }
       const_attr_reader  :ONE
       
-      # 
       # The value 10, with a scale of 0.
       # 
       # @since  1.5
@@ -523,7 +514,6 @@ module Java::Math
     end
     
     typesig { [Array.typed(::Java::Char), ::Java::Int, ::Java::Int, MathContext] }
-    # 
     # Translates a character array representation of a
     # {@code BigDecimal} into a {@code BigDecimal}, accepting the
     # same sequence of characters as the {@link #BigDecimal(String)}
@@ -553,7 +543,6 @@ module Java::Math
     end
     
     typesig { [Array.typed(::Java::Char)] }
-    # 
     # Translates a character array representation of a
     # {@code BigDecimal} into a {@code BigDecimal}, accepting the
     # same sequence of characters as the {@link #BigDecimal(String)}
@@ -573,7 +562,6 @@ module Java::Math
     end
     
     typesig { [Array.typed(::Java::Char), MathContext] }
-    # 
     # Translates a character array representation of a
     # {@code BigDecimal} into a {@code BigDecimal}, accepting the
     # same sequence of characters as the {@link #BigDecimal(String)}
@@ -597,7 +585,6 @@ module Java::Math
     end
     
     typesig { [String] }
-    # 
     # Translates the string representation of a {@code BigDecimal}
     # into a {@code BigDecimal}.  The string representation consists
     # of an optional sign, {@code '+'} (<tt> '&#92;u002B'</tt>) or
@@ -711,7 +698,6 @@ module Java::Math
     end
     
     typesig { [String, MathContext] }
-    # 
     # Translates the string representation of a {@code BigDecimal}
     # into a {@code BigDecimal}, accepting the same strings as the
     # {@link #BigDecimal(String)} constructor, with rounding
@@ -732,7 +718,6 @@ module Java::Math
     end
     
     typesig { [::Java::Double] }
-    # 
     # Translates a {@code double} into a {@code BigDecimal} which
     # is the exact decimal representation of the {@code double}'s
     # binary floating-point value.  The scale of the returned
@@ -828,7 +813,6 @@ module Java::Math
     end
     
     typesig { [::Java::Double, MathContext] }
-    # 
     # Translates a {@code double} into a {@code BigDecimal}, with
     # rounding according to the context settings.  The scale of the
     # {@code BigDecimal} is the smallest value such that
@@ -853,7 +837,6 @@ module Java::Math
     end
     
     typesig { [BigInteger] }
-    # 
     # Translates a {@code BigInteger} into a {@code BigDecimal}.
     # The scale of the {@code BigDecimal} is zero.
     # 
@@ -877,7 +860,6 @@ module Java::Math
     end
     
     typesig { [BigInteger, MathContext] }
-    # 
     # Translates a {@code BigInteger} into a {@code BigDecimal}
     # rounding according to the context settings.  The scale of the
     # {@code BigDecimal} is zero.
@@ -906,7 +888,6 @@ module Java::Math
     end
     
     typesig { [BigInteger, ::Java::Int] }
-    # 
     # Translates a {@code BigInteger} unscaled value and an
     # {@code int} scale into a {@code BigDecimal}.  The value of
     # the {@code BigDecimal} is
@@ -934,7 +915,6 @@ module Java::Math
     end
     
     typesig { [BigInteger, ::Java::Int, MathContext] }
-    # 
     # Translates a {@code BigInteger} unscaled value and an
     # {@code int} scale into a {@code BigDecimal}, with rounding
     # according to the context settings.  The value of the
@@ -967,7 +947,6 @@ module Java::Math
     end
     
     typesig { [::Java::Int] }
-    # 
     # Translates an {@code int} into a {@code BigDecimal}.  The
     # scale of the {@code BigDecimal} is zero.
     # 
@@ -989,7 +968,6 @@ module Java::Math
     end
     
     typesig { [::Java::Int, MathContext] }
-    # 
     # Translates an {@code int} into a {@code BigDecimal}, with
     # rounding according to the context settings.  The scale of the
     # {@code BigDecimal}, before any rounding, is zero.
@@ -1017,7 +995,6 @@ module Java::Math
     end
     
     typesig { [::Java::Long] }
-    # 
     # Translates a {@code long} into a {@code BigDecimal}.  The
     # scale of the {@code BigDecimal} is zero.
     # 
@@ -1042,7 +1019,6 @@ module Java::Math
     end
     
     typesig { [::Java::Long, MathContext] }
-    # 
     # Translates a {@code long} into a {@code BigDecimal}, with
     # rounding according to the context settings.  The scale of the
     # {@code BigDecimal}, before any rounding, is zero.
@@ -1074,7 +1050,6 @@ module Java::Math
     end
     
     typesig { [::Java::Long, ::Java::Int] }
-    # 
     # Trusted internal constructor
     def initialize(val, scale)
       @int_val = nil
@@ -1092,7 +1067,6 @@ module Java::Math
     end
     
     typesig { [BigInteger, ::Java::Long, ::Java::Int] }
-    # 
     # Trusted internal constructor
     def initialize(int_val, val, scale)
       @int_val = nil
@@ -1135,7 +1109,6 @@ module Java::Math
       end
       
       typesig { [::Java::Long] }
-      # 
       # Translates a {@code long} value into a {@code BigDecimal}
       # with a scale of zero.  This {@literal "static factory method"}
       # is provided in preference to a ({@code long}) constructor
@@ -1149,7 +1122,6 @@ module Java::Math
       end
       
       typesig { [::Java::Double] }
-      # 
       # Translates a {@code double} into a {@code BigDecimal}, using
       # the {@code double}'s canonical string representation provided
       # by the {@link Double#toString(double)} method.
@@ -1192,7 +1164,6 @@ module Java::Math
       # inflated check into the overflow computation.
       if (!(x).equal?(INFLATED) && !(y).equal?(INFLATED))
         sum = x + y
-        # 
         # If the sum is not an overflowed value, continue to use
         # the compact representation.  if either of x or y is
         # INFLATED, the sum should also be regarded as an
@@ -1207,7 +1178,6 @@ module Java::Math
     end
     
     typesig { [BigDecimal, MathContext] }
-    # 
     # Returns a {@code BigDecimal} whose value is {@code (this + augend)},
     # with rounding according to the context settings.
     # 
@@ -1270,7 +1240,6 @@ module Java::Math
     end
     
     typesig { [BigDecimal, BigDecimal, ::Java::Long, MathContext] }
-    # 
     # Returns an array of length two, the sum of whose entries is
     # equal to the rounded sum of the {@code BigDecimal} arguments.
     # 
@@ -1304,13 +1273,11 @@ module Java::Math
         big = augend
         small = lhs
       end
-      # 
       # This is the estimated scale of an ulp of the result; it
       # assumes that the result doesn't have a carry-out on a true
       # add (e.g. 999 + 1 => 1000) or any subtractive cancellation
       # on borrowing (e.g. 100 - 1.2 => 98.8)
       est_result_ulp_scale = big.attr_scale - big.precision + mc.attr_precision
-      # 
       # The low-order digit position of big is big.scale().  This
       # is true regardless of whether big has a positive or
       # negative scale.  The high-order digit position of small is
@@ -1331,7 +1298,6 @@ module Java::Math
     end
     
     typesig { [BigDecimal] }
-    # 
     # Returns a {@code BigDecimal} whose value is {@code (this -
     # subtrahend)}, and whose scale is {@code max(this.scale(),
     # subtrahend.scale())}.
@@ -1347,7 +1313,6 @@ module Java::Math
       # inflated check into the overflow computation.
       if (!(x).equal?(INFLATED) && !(y).equal?(INFLATED))
         difference = x - y
-        # 
         # If the difference is not an overflowed value, continue
         # to use the compact representation.  if either of x or y
         # is INFLATED, the difference should also be regarded as
@@ -1362,7 +1327,6 @@ module Java::Math
     end
     
     typesig { [BigDecimal, MathContext] }
-    # 
     # Returns a {@code BigDecimal} whose value is {@code (this - subtrahend)},
     # with rounding according to the context settings.
     # 
@@ -1388,7 +1352,6 @@ module Java::Math
     end
     
     typesig { [BigDecimal] }
-    # 
     # Returns a {@code BigDecimal} whose value is <tt>(this &times;
     # multiplicand)</tt>, and whose scale is {@code (this.scale() +
     # multiplicand.scale())}.
@@ -1402,7 +1365,6 @@ module Java::Math
       # Might be able to do a more clever check incorporating the
       # inflated check into the overflow computation.
       if (!(x).equal?(INFLATED) && !(y).equal?(INFLATED))
-        # 
         # If the product is not an overflowed value, continue
         # to use the compact representation.  if either of x or y
         # is INFLATED, the product should also be regarded as
@@ -1419,7 +1381,6 @@ module Java::Math
     end
     
     typesig { [BigDecimal, MathContext] }
-    # 
     # Returns a {@code BigDecimal} whose value is <tt>(this &times;
     # multiplicand)</tt>, with rounding according to the context settings.
     # 
@@ -1438,7 +1399,6 @@ module Java::Math
     end
     
     typesig { [BigDecimal, ::Java::Int, ::Java::Int] }
-    # 
     # Returns a {@code BigDecimal} whose value is {@code (this /
     # divisor)}, and whose scale is as specified.  If rounding must
     # be performed to generate a result with the specified scale, the
@@ -1466,14 +1426,12 @@ module Java::Math
     # @see    #ROUND_HALF_EVEN
     # @see    #ROUND_UNNECESSARY
     def divide(divisor, scale_, rounding_mode)
-      # 
       # IMPLEMENTATION NOTE: This method *must* return a new object
       # since dropDigits uses divide to generate a value whose
       # scale is then modified.
       if (rounding_mode < ROUND_UP || rounding_mode > ROUND_UNNECESSARY)
         raise IllegalArgumentException.new("Invalid rounding mode")
       end
-      # 
       # Rescale dividend or divisor (whichever can be "upscaled" to
       # produce correctly scaled quotient).
       # Take care to detect out-of-range scales
@@ -1579,7 +1537,6 @@ module Java::Math
     end
     
     typesig { [BigDecimal, ::Java::Int, RoundingMode] }
-    # 
     # Returns a {@code BigDecimal} whose value is {@code (this /
     # divisor)}, and whose scale is as specified.  If rounding must
     # be performed to generate a result with the specified scale, the
@@ -1599,7 +1556,6 @@ module Java::Math
     end
     
     typesig { [BigDecimal, ::Java::Int] }
-    # 
     # Returns a {@code BigDecimal} whose value is {@code (this /
     # divisor)}, and whose scale is {@code this.scale()}.  If
     # rounding must be performed to generate a result with the given
@@ -1630,7 +1586,6 @@ module Java::Math
     end
     
     typesig { [BigDecimal, RoundingMode] }
-    # 
     # Returns a {@code BigDecimal} whose value is {@code (this /
     # divisor)}, and whose scale is {@code this.scale()}.  If
     # rounding must be performed to generate a result with the given
@@ -1649,7 +1604,6 @@ module Java::Math
     end
     
     typesig { [BigDecimal] }
-    # 
     # Returns a {@code BigDecimal} whose value is {@code (this /
     # divisor)}, and whose preferred scale is {@code (this.scale() -
     # divisor.scale())}; if the exact quotient cannot be
@@ -1663,7 +1617,6 @@ module Java::Math
     # @since 1.5
     # @author Joseph D. Darcy
     def divide(divisor)
-      # 
       # Handle zero cases first.
       if ((divisor.signum).equal?(0))
         # x/0
@@ -1681,7 +1634,6 @@ module Java::Math
       else
         self.inflate
         divisor.inflate
-        # 
         # If the quotient this/divisor has a terminating decimal
         # expansion, the expansion can have no more than
         # (a.precision() + ceil(10*b.precision)/3) digits.
@@ -1708,7 +1660,6 @@ module Java::Math
     end
     
     typesig { [BigDecimal, MathContext] }
-    # 
     # Returns a {@code BigDecimal} whose value is {@code (this /
     # divisor)}, with rounding according to the context settings.
     # 
@@ -1787,7 +1738,6 @@ module Java::Math
     end
     
     typesig { [BigDecimal] }
-    # 
     # Returns a {@code BigDecimal} whose value is the integer part
     # of the quotient {@code (this / divisor)} rounded down.  The
     # preferred scale of the result is {@code (this.scale() -
@@ -1824,7 +1774,6 @@ module Java::Math
     end
     
     typesig { [BigDecimal, MathContext] }
-    # 
     # Returns a {@code BigDecimal} whose value is the integer part
     # of {@code (this / divisor)}.  Since the integer part of the
     # exact quotient does not depend on the rounding mode, the
@@ -1851,7 +1800,6 @@ module Java::Math
       end
       # Calculate preferred scale
       preferred_scale = RJava.cast_to_int(Math.max(Math.min(self.scale - divisor.scale, JavaInteger::MAX_VALUE), JavaInteger::MIN_VALUE))
-      # 
       # Perform a normal divide to mc.precision digits.  If the
       # remainder has absolute value less than the divisor, the
       # integer portion of the quotient fits into mc.precision
@@ -1860,7 +1808,6 @@ module Java::Math
       result = self.divide(divisor, MathContext.new(mc.attr_precision, RoundingMode::DOWN))
       result_scale = result.scale
       if (result.scale < 0)
-        # 
         # Result is an integer. See if quotient represents the
         # full integer portion of the exact quotient; if it does,
         # the computed remainder will be less than the divisor.
@@ -1872,7 +1819,6 @@ module Java::Math
         end
       else
         if (result.scale > 0)
-          # 
           # Integer portion of quotient will fit into precision
           # digits; recompute quotient to scale 0 to avoid double
           # rounding and then try to adjust, if necessary.
@@ -1889,7 +1835,6 @@ module Java::Math
     end
     
     typesig { [BigDecimal] }
-    # 
     # Returns a {@code BigDecimal} whose value is {@code (this % divisor)}.
     # 
     # <p>The remainder is given by
@@ -1907,7 +1852,6 @@ module Java::Math
     end
     
     typesig { [BigDecimal, MathContext] }
-    # 
     # Returns a {@code BigDecimal} whose value is {@code (this %
     # divisor)}, with rounding according to the context settings.
     # The {@code MathContext} settings affect the implicit divide
@@ -1936,7 +1880,6 @@ module Java::Math
     end
     
     typesig { [BigDecimal] }
-    # 
     # Returns a two-element {@code BigDecimal} array containing the
     # result of {@code divideToIntegralValue} followed by the result of
     # {@code remainder} on the two operands.
@@ -1964,7 +1907,6 @@ module Java::Math
     end
     
     typesig { [BigDecimal, MathContext] }
-    # 
     # Returns a two-element {@code BigDecimal} array containing the
     # result of {@code divideToIntegralValue} followed by the result of
     # {@code remainder} on the two operands calculated with rounding
@@ -2001,7 +1943,6 @@ module Java::Math
     end
     
     typesig { [::Java::Int] }
-    # 
     # Returns a {@code BigDecimal} whose value is
     # <tt>(this<sup>n</sup>)</tt>, The power is computed exactly, to
     # unlimited precision.
@@ -2029,7 +1970,6 @@ module Java::Math
     end
     
     typesig { [::Java::Int, MathContext] }
-    # 
     # Returns a {@code BigDecimal} whose value is
     # <tt>(this<sup>n</sup>)</tt>.  The current implementation uses
     # the core algorithm defined in ANSI standard X3.274-1996 with
@@ -2130,7 +2070,6 @@ module Java::Math
     end
     
     typesig { [] }
-    # 
     # Returns a {@code BigDecimal} whose value is the absolute value
     # of this {@code BigDecimal}, and whose scale is
     # {@code this.scale()}.
@@ -2141,7 +2080,6 @@ module Java::Math
     end
     
     typesig { [MathContext] }
-    # 
     # Returns a {@code BigDecimal} whose value is the absolute value
     # of this {@code BigDecimal}, with rounding according to the
     # context settings.
@@ -2156,7 +2094,6 @@ module Java::Math
     end
     
     typesig { [] }
-    # 
     # Returns a {@code BigDecimal} whose value is {@code (-this)},
     # and whose scale is {@code this.scale()}.
     # 
@@ -2173,7 +2110,6 @@ module Java::Math
     end
     
     typesig { [MathContext] }
-    # 
     # Returns a {@code BigDecimal} whose value is {@code (-this)},
     # with rounding according to the context settings.
     # 
@@ -2187,7 +2123,6 @@ module Java::Math
     end
     
     typesig { [] }
-    # 
     # Returns a {@code BigDecimal} whose value is {@code (+this)}, and whose
     # scale is {@code this.scale()}.
     # 
@@ -2203,7 +2138,6 @@ module Java::Math
     end
     
     typesig { [MathContext] }
-    # 
     # Returns a {@code BigDecimal} whose value is {@code (+this)},
     # with rounding according to the context settings.
     # 
@@ -2226,7 +2160,6 @@ module Java::Math
     end
     
     typesig { [] }
-    # 
     # Returns the signum function of this {@code BigDecimal}.
     # 
     # @return -1, 0, or 1 as the value of this {@code BigDecimal}
@@ -2236,7 +2169,6 @@ module Java::Math
     end
     
     typesig { [] }
-    # 
     # Returns the <i>scale</i> of this {@code BigDecimal}.  If zero
     # or positive, the scale is the number of digits to the right of
     # the decimal point.  If negative, the unscaled value of the
@@ -2250,7 +2182,6 @@ module Java::Math
     end
     
     typesig { [] }
-    # 
     # Returns the <i>precision</i> of this {@code BigDecimal}.  (The
     # precision is the number of digits in the unscaled value.)
     # 
@@ -2268,7 +2199,6 @@ module Java::Math
     end
     
     typesig { [] }
-    # 
     # Returns a {@code BigInteger} whose value is the <i>unscaled
     # value</i> of this {@code BigDecimal}.  (Computes <tt>(this *
     # 10<sup>this.scale()</sup>)</tt>.)
@@ -2288,14 +2218,12 @@ module Java::Math
       const_set_lazy(:ROUND_UP) { 0 }
       const_attr_reader  :ROUND_UP
       
-      # 
       # Rounding mode to round towards zero.  Never increments the digit
       # prior to a discarded fraction (i.e., truncates).  Note that this
       # rounding mode never increases the magnitude of the calculated value.
       const_set_lazy(:ROUND_DOWN) { 1 }
       const_attr_reader  :ROUND_DOWN
       
-      # 
       # Rounding mode to round towards positive infinity.  If the
       # {@code BigDecimal} is positive, behaves as for
       # {@code ROUND_UP}; if negative, behaves as for
@@ -2304,7 +2232,6 @@ module Java::Math
       const_set_lazy(:ROUND_CEILING) { 2 }
       const_attr_reader  :ROUND_CEILING
       
-      # 
       # Rounding mode to round towards negative infinity.  If the
       # {@code BigDecimal} is positive, behave as for
       # {@code ROUND_DOWN}; if negative, behave as for
@@ -2313,7 +2240,6 @@ module Java::Math
       const_set_lazy(:ROUND_FLOOR) { 3 }
       const_attr_reader  :ROUND_FLOOR
       
-      # 
       # Rounding mode to round towards {@literal "nearest neighbor"}
       # unless both neighbors are equidistant, in which case round up.
       # Behaves as for {@code ROUND_UP} if the discarded fraction is
@@ -2323,7 +2249,6 @@ module Java::Math
       const_set_lazy(:ROUND_HALF_UP) { 4 }
       const_attr_reader  :ROUND_HALF_UP
       
-      # 
       # Rounding mode to round towards {@literal "nearest neighbor"}
       # unless both neighbors are equidistant, in which case round
       # down.  Behaves as for {@code ROUND_UP} if the discarded
@@ -2332,7 +2257,6 @@ module Java::Math
       const_set_lazy(:ROUND_HALF_DOWN) { 5 }
       const_attr_reader  :ROUND_HALF_DOWN
       
-      # 
       # Rounding mode to round towards the {@literal "nearest neighbor"}
       # unless both neighbors are equidistant, in which case, round
       # towards the even neighbor.  Behaves as for
@@ -2344,7 +2268,6 @@ module Java::Math
       const_set_lazy(:ROUND_HALF_EVEN) { 6 }
       const_attr_reader  :ROUND_HALF_EVEN
       
-      # 
       # Rounding mode to assert that the requested operation has an exact
       # result, hence no rounding is necessary.  If this rounding mode is
       # specified on an operation that yields an inexact result, an
@@ -2376,7 +2299,6 @@ module Java::Math
     end
     
     typesig { [::Java::Int, RoundingMode] }
-    # 
     # Returns a {@code BigDecimal} whose scale is the specified
     # value, and whose unscaled value is determined by multiplying or
     # dividing this {@code BigDecimal}'s unscaled value by the
@@ -2409,7 +2331,6 @@ module Java::Math
     end
     
     typesig { [::Java::Int, ::Java::Int] }
-    # 
     # Returns a {@code BigDecimal} whose scale is the specified
     # value, and whose unscaled value is determined by multiplying or
     # dividing this {@code BigDecimal}'s unscaled value by the
@@ -2482,7 +2403,6 @@ module Java::Math
     end
     
     typesig { [::Java::Int] }
-    # 
     # Returns a {@code BigDecimal} whose scale is the specified
     # value, and whose value is numerically equal to this
     # {@code BigDecimal}'s.  Throws an {@code ArithmeticException}
@@ -2550,7 +2470,6 @@ module Java::Math
     end
     
     typesig { [::Java::Int] }
-    # 
     # Returns a {@code BigDecimal} which is equivalent to this one
     # with the decimal point moved {@code n} places to the right.
     # If {@code n} is non-negative, the call merely subtracts
@@ -2577,7 +2496,6 @@ module Java::Math
     end
     
     typesig { [::Java::Int] }
-    # 
     # Returns a BigDecimal whose numerical value is equal to
     # ({@code this} * 10<sup>n</sup>).  The scale of
     # the result is {@code (this.scale() - n)}.
@@ -2594,7 +2512,6 @@ module Java::Math
     end
     
     typesig { [] }
-    # 
     # Returns a {@code BigDecimal} which is numerically equal to
     # this one but with any trailing zeros removed from the
     # representation.  For example, stripping the trailing zeros from
@@ -2659,7 +2576,6 @@ module Java::Math
     end
     
     typesig { [Object] }
-    # 
     # Compares this {@code BigDecimal} with the specified
     # {@code Object} for equality.  Unlike {@link
     # #compareTo(BigDecimal) compareTo}, this method considers two
@@ -2689,7 +2605,6 @@ module Java::Math
     end
     
     typesig { [BigDecimal] }
-    # 
     # Returns the minimum of this {@code BigDecimal} and
     # {@code val}.
     # 
@@ -2704,7 +2619,6 @@ module Java::Math
     end
     
     typesig { [BigDecimal] }
-    # 
     # Returns the maximum of this {@code BigDecimal} and {@code val}.
     # 
     # @param  val value with which the maximum is to be computed.
@@ -2845,7 +2759,6 @@ module Java::Math
     end
     
     typesig { [] }
-    # 
     # Returns a string representation of this {@code BigDecimal},
     # using engineering notation if an exponent is needed.
     # 
@@ -2873,7 +2786,6 @@ module Java::Math
     end
     
     typesig { [] }
-    # 
     # Returns a string representation of this {@code BigDecimal}
     # without an exponent field.  For values with a positive scale,
     # the number of digits to the right of the decimal point is used
@@ -2951,7 +2863,6 @@ module Java::Math
     end
     
     typesig { [] }
-    # 
     # Converts this {@code BigDecimal} to a {@code BigInteger}.
     # This conversion is analogous to a <a
     # href="http://java.sun.com/docs/books/jls/second_edition/html/conversions.doc.html#25363"><i>narrowing
@@ -2974,7 +2885,6 @@ module Java::Math
     end
     
     typesig { [] }
-    # 
     # Converts this {@code BigDecimal} to a {@code BigInteger},
     # checking for lost information.  An exception is thrown if this
     # {@code BigDecimal} has a nonzero fractional part.
@@ -2989,7 +2899,6 @@ module Java::Math
     end
     
     typesig { [] }
-    # 
     # Converts this {@code BigDecimal} to a {@code long}.  This
     # conversion is analogous to a <a
     # href="http://java.sun.com/docs/books/jls/second_edition/html/conversions.doc.html#25363"><i>narrowing
@@ -3010,7 +2919,6 @@ module Java::Math
     end
     
     typesig { [] }
-    # 
     # Converts this {@code BigDecimal} to a {@code long}, checking
     # for lost information.  If this {@code BigDecimal} has a
     # nonzero fractional part or is out of the possible range for a
@@ -3078,7 +2986,6 @@ module Java::Math
     }
     
     typesig { [] }
-    # 
     # Converts this {@code BigDecimal} to an {@code int}.  This
     # conversion is analogous to a <a
     # href="http://java.sun.com/docs/books/jls/second_edition/html/conversions.doc.html#25363"><i>narrowing
@@ -3099,7 +3006,6 @@ module Java::Math
     end
     
     typesig { [] }
-    # 
     # Converts this {@code BigDecimal} to an {@code int}, checking
     # for lost information.  If this {@code BigDecimal} has a
     # nonzero fractional part or is out of the possible range for an
@@ -3120,7 +3026,6 @@ module Java::Math
     end
     
     typesig { [] }
-    # 
     # Converts this {@code BigDecimal} to a {@code short}, checking
     # for lost information.  If this {@code BigDecimal} has a
     # nonzero fractional part or is out of the possible range for a
@@ -3141,7 +3046,6 @@ module Java::Math
     end
     
     typesig { [] }
-    # 
     # Converts this {@code BigDecimal} to a {@code byte}, checking
     # for lost information.  If this {@code BigDecimal} has a
     # nonzero fractional part or is out of the possible range for a
@@ -3162,7 +3066,6 @@ module Java::Math
     end
     
     typesig { [] }
-    # 
     # Converts this {@code BigDecimal} to a {@code float}.
     # This conversion is similar to the <a
     # href="http://java.sun.com/docs/books/jls/second_edition/html/conversions.doc.html#25363"><i>narrowing
@@ -3187,7 +3090,6 @@ module Java::Math
     end
     
     typesig { [] }
-    # 
     # Converts this {@code BigDecimal} to a {@code double}.
     # This conversion is similar to the <a
     # href="http://java.sun.com/docs/books/jls/second_edition/html/conversions.doc.html#25363"><i>narrowing
@@ -3212,7 +3114,6 @@ module Java::Math
     end
     
     typesig { [] }
-    # 
     # Returns the size of an ulp, a unit in the last place, of this
     # {@code BigDecimal}.  An ulp of a nonzero {@code BigDecimal}
     # value is the positive distance between this value and the
@@ -3343,7 +3244,6 @@ module Java::Math
     
     class_module.module_eval {
       typesig { [::Java::Int] }
-      # 
       # Return 10 to the power n, as a {@code BigInteger}.
       # 
       # @param  n the power of ten to be returned (>=0)
@@ -3377,7 +3277,6 @@ module Java::Math
       alias_method :attr_tenpowers=, :tenpowers=
       
       typesig { [::Java::Long, ::Java::Int] }
-      # 
       # Compute val * 10 ^ n; return this product if it is
       # representable as a long, INFLATED otherwise.
       def long_ten_to_the(val, n)
@@ -3424,7 +3323,6 @@ module Java::Math
     }
     
     typesig { [] }
-    # 
     # Assign appropriate BigInteger to intVal field if intVal is
     # null, i.e. the compact representation is in use.
     def inflate
@@ -3436,7 +3334,6 @@ module Java::Math
     
     class_module.module_eval {
       typesig { [Array.typed(BigDecimal)] }
-      # 
       # Match the scales of two {@code BigDecimal}s to align their
       # least significant digits.
       # 
@@ -3460,7 +3357,6 @@ module Java::Math
     }
     
     typesig { [Java::Io::ObjectInputStream] }
-    # 
     # Reconstitute the {@code BigDecimal} instance from a stream (that is,
     # deserialize it).
     # 
@@ -3480,7 +3376,6 @@ module Java::Math
     end
     
     typesig { [Java::Io::ObjectOutputStream] }
-    # 
     # Serialize this {@code BigDecimal} to the stream in question
     # 
     # @param s the stream to serialize to.
@@ -3492,7 +3387,6 @@ module Java::Math
     end
     
     typesig { [] }
-    # 
     # Returns the length of this {@code BigDecimal}, in decimal digits.
     # 
     # Notes:
@@ -3555,7 +3449,6 @@ module Java::Math
     }
     
     typesig { [::Java::Int] }
-    # 
     # Returns the length of an unsigned {@code int}, in decimal digits.
     # @param i the {@code int} (treated as unsigned)
     # @return the length of the unscaled value, in decimal digits
@@ -3581,7 +3474,6 @@ module Java::Math
     end
     
     typesig { [::Java::Long] }
-    # 
     # Remove insignificant trailing zeros from this
     # {@code BigDecimal} until the preferred scale is reached or no
     # more zeros can be removed.  If the preferred scale is less than
@@ -3620,7 +3512,6 @@ module Java::Math
     end
     
     typesig { [::Java::Long] }
-    # 
     # Check a scale for Underflow or Overflow.  If this BigDecimal is
     # uninitialized or initialized and nonzero, throw an exception if
     # the scale is out of range.  If this is zero, saturate the scale
@@ -3648,7 +3539,6 @@ module Java::Math
     end
     
     typesig { [MathContext] }
-    # 
     # Round an operand; used only if digits &gt; 0.  Does not change
     # {@code this}; if rounding is needed a new {@code BigDecimal}
     # is created and returned.
@@ -3685,7 +3575,6 @@ module Java::Math
     end
     
     typesig { [MathContext] }
-    # 
     # Returns a {@code BigDecimal} rounded according to the
     # MathContext settings; used only if {@code mc.precision > 0}.
     # Does not change {@code this}; if rounding is needed a new
@@ -3716,7 +3605,6 @@ module Java::Math
     end
     
     typesig { [MathContext, ::Java::Int] }
-    # 
     # Removes digits from the significand of a {@code BigDecimal},
     # rounding according to the MathContext settings.  Does not
     # change {@code this}; a new {@code BigDecimal} is always
@@ -3751,7 +3639,6 @@ module Java::Math
       end
       
       typesig { [String, BigDecimal] }
-      # 
       # Internal printing routine
       def print(name, bd)
         System.err.format("%s:\tintCompact %d\tintVal %d\tscale %d\tprecision %d%n", name, bd.attr_int_compact, bd.attr_int_val, bd.attr_scale, bd.attr_precision)
@@ -3759,7 +3646,6 @@ module Java::Math
     }
     
     typesig { [] }
-    # 
     # Check internal invariants of this BigDecimal.  These invariants
     # include:
     # 

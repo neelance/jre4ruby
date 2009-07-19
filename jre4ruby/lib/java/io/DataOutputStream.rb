@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 1994-2004 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -31,7 +30,6 @@ module Java::Io
     }
   end
   
-  # 
   # A data output stream lets an application write primitive Java data
   # types to an output stream in a portable way. An application can
   # then use a data input stream to read the data back in.
@@ -43,7 +41,6 @@ module Java::Io
     include_class_members DataOutputStreamImports
     include DataOutput
     
-    # 
     # The number of bytes written to the data output stream so far.
     # If this counter overflows, it will be wrapped to Integer.MAX_VALUE.
     attr_accessor :written
@@ -52,7 +49,6 @@ module Java::Io
     alias_method :attr_written=, :written=
     undef_method :written=
     
-    # 
     # bytearr is initialized on demand by writeUTF
     attr_accessor :bytearr
     alias_method :attr_bytearr, :bytearr
@@ -61,7 +57,6 @@ module Java::Io
     undef_method :bytearr=
     
     typesig { [OutputStream] }
-    # 
     # Creates a new data output stream to write data to the specified
     # underlying output stream. The counter <code>written</code> is
     # set to zero.
@@ -79,7 +74,6 @@ module Java::Io
     end
     
     typesig { [::Java::Int] }
-    # 
     # Increases the written counter by the specified value
     # until it reaches Integer.MAX_VALUE.
     def inc_count(value)
@@ -91,7 +85,6 @@ module Java::Io
     end
     
     typesig { [::Java::Int] }
-    # 
     # Writes the specified byte (the low eight bits of the argument
     # <code>b</code>) to the underlying output stream. If no exception
     # is thrown, the counter <code>written</code> is incremented by
@@ -110,7 +103,6 @@ module Java::Io
     end
     
     typesig { [Array.typed(::Java::Byte), ::Java::Int, ::Java::Int] }
-    # 
     # Writes <code>len</code> bytes from the specified byte array
     # starting at offset <code>off</code> to the underlying output stream.
     # If no exception is thrown, the counter <code>written</code> is
@@ -129,7 +121,6 @@ module Java::Io
     end
     
     typesig { [] }
-    # 
     # Flushes this data output stream. This forces any buffered output
     # bytes to be written out to the stream.
     # <p>
@@ -144,7 +135,6 @@ module Java::Io
     end
     
     typesig { [::Java::Boolean] }
-    # 
     # Writes a <code>boolean</code> to the underlying output stream as
     # a 1-byte value. The value <code>true</code> is written out as the
     # value <code>(byte)1</code>; the value <code>false</code> is
@@ -161,7 +151,6 @@ module Java::Io
     end
     
     typesig { [::Java::Int] }
-    # 
     # Writes out a <code>byte</code> to the underlying output stream as
     # a 1-byte value. If no exception is thrown, the counter
     # <code>written</code> is incremented by <code>1</code>.
@@ -175,7 +164,6 @@ module Java::Io
     end
     
     typesig { [::Java::Int] }
-    # 
     # Writes a <code>short</code> to the underlying output stream as two
     # bytes, high byte first. If no exception is thrown, the counter
     # <code>written</code> is incremented by <code>2</code>.
@@ -190,7 +178,6 @@ module Java::Io
     end
     
     typesig { [::Java::Int] }
-    # 
     # Writes a <code>char</code> to the underlying output stream as a
     # 2-byte value, high byte first. If no exception is thrown, the
     # counter <code>written</code> is incremented by <code>2</code>.
@@ -205,7 +192,6 @@ module Java::Io
     end
     
     typesig { [::Java::Int] }
-    # 
     # Writes an <code>int</code> to the underlying output stream as four
     # bytes, high byte first. If no exception is thrown, the counter
     # <code>written</code> is incremented by <code>4</code>.
@@ -228,7 +214,6 @@ module Java::Io
     undef_method :write_buffer=
     
     typesig { [::Java::Long] }
-    # 
     # Writes a <code>long</code> to the underlying output stream as eight
     # bytes, high byte first. In no exception is thrown, the counter
     # <code>written</code> is incremented by <code>8</code>.
@@ -250,7 +235,6 @@ module Java::Io
     end
     
     typesig { [::Java::Float] }
-    # 
     # Converts the float argument to an <code>int</code> using the
     # <code>floatToIntBits</code> method in class <code>Float</code>,
     # and then writes that <code>int</code> value to the underlying
@@ -267,7 +251,6 @@ module Java::Io
     end
     
     typesig { [::Java::Double] }
-    # 
     # Converts the double argument to a <code>long</code> using the
     # <code>doubleToLongBits</code> method in class <code>Double</code>,
     # and then writes that <code>long</code> value to the underlying
@@ -284,7 +267,6 @@ module Java::Io
     end
     
     typesig { [String] }
-    # 
     # Writes out the string to the underlying output stream as a
     # sequence of bytes. Each character in the string is written out, in
     # sequence, by discarding its high eight bits. If no exception is
@@ -305,7 +287,6 @@ module Java::Io
     end
     
     typesig { [String] }
-    # 
     # Writes a string to the underlying output stream as a sequence of
     # characters. Each character is written to the data output stream as
     # if by the <code>writeChar</code> method. If no exception is
@@ -329,7 +310,6 @@ module Java::Io
     end
     
     typesig { [String] }
-    # 
     # Writes a string to the underlying output stream using
     # <a href="DataInput.html#modified-utf-8">modified UTF-8</a>
     # encoding in a machine-independent manner.
@@ -353,7 +333,6 @@ module Java::Io
     
     class_module.module_eval {
       typesig { [String, DataOutput] }
-      # 
       # Writes a string to the specified DataOutput using
       # <a href="DataInput.html#modified-utf-8">modified UTF-8</a>
       # encoding in a machine-independent manner.
@@ -439,7 +418,6 @@ module Java::Io
     }
     
     typesig { [] }
-    # 
     # Returns the current value of the counter <code>written</code>,
     # the number of bytes written to this data output stream so far.
     # If the counter overflows, it will be wrapped to Integer.MAX_VALUE.

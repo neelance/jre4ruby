@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 1996-2005 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -58,7 +57,6 @@ module Java::Text
     }
   end
   
-  # 
   # <code>SimpleDateFormat</code> is a concrete class for formatting and
   # parsing dates in a locale-sensitive manner. It allows for formatting
   # (date -> text), parsing (text -> date), and normalization.
@@ -357,7 +355,6 @@ module Java::Text
       const_attr_reader  :CurrentSerialVersion
     }
     
-    # 
     # The version of the serialized data on the stream.  Possible values:
     # <ul>
     # <li><b>0</b> or not present on stream: JDK 1.1.3.  This version
@@ -376,7 +373,6 @@ module Java::Text
     alias_method :attr_serial_version_on_stream=, :serial_version_on_stream=
     undef_method :serial_version_on_stream=
     
-    # 
     # The pattern string of this formatter.  This is always a non-localized
     # pattern.  May not be null.  See class documentation for details.
     # @serial
@@ -386,7 +382,6 @@ module Java::Text
     alias_method :attr_pattern=, :pattern=
     undef_method :pattern=
     
-    # 
     # The compiled pattern.
     attr_accessor :compiled_pattern
     alias_method :attr_compiled_pattern, :compiled_pattern
@@ -395,7 +390,6 @@ module Java::Text
     undef_method :compiled_pattern=
     
     class_module.module_eval {
-      # 
       # Tags for the compiled pattern.
       const_set_lazy(:TAG_QUOTE_ASCII_CHAR) { 100 }
       const_attr_reader  :TAG_QUOTE_ASCII_CHAR
@@ -404,7 +398,6 @@ module Java::Text
       const_attr_reader  :TAG_QUOTE_CHARS
     }
     
-    # 
     # Locale dependent digit zero.
     # @see #zeroPaddingNumber
     # @see java.text.DecimalFormatSymbols#getZeroDigit
@@ -414,7 +407,6 @@ module Java::Text
     alias_method :attr_zero_digit=, :zero_digit=
     undef_method :zero_digit=
     
-    # 
     # The symbols used by this formatter for week names, month names,
     # etc.  May not be null.
     # @serial
@@ -425,7 +417,6 @@ module Java::Text
     alias_method :attr_format_data=, :format_data=
     undef_method :format_data=
     
-    # 
     # We map dates with two-digit years into the century starting at
     # <code>defaultCenturyStart</code>, which may be any date.  May
     # not be null.
@@ -455,7 +446,6 @@ module Java::Text
       const_set_lazy(:GMT) { "GMT" }
       const_attr_reader  :GMT
       
-      # 
       # Cache to hold the DateTimePatterns of a Locale.
       
       def cached_locale_data
@@ -468,7 +458,6 @@ module Java::Text
       end
       alias_method :attr_cached_locale_data=, :cached_locale_data=
       
-      # 
       # Cache NumberFormat instances with Locale key.
       
       def cached_number_format_data
@@ -482,7 +471,6 @@ module Java::Text
       alias_method :attr_cached_number_format_data=, :cached_number_format_data=
     }
     
-    # 
     # The Locale used to instantiate this
     # <code>SimpleDateFormat</code>. The value may be null if this object
     # has been created by an older <code>SimpleDateFormat</code> and
@@ -496,7 +484,6 @@ module Java::Text
     alias_method :attr_locale=, :locale=
     undef_method :locale=
     
-    # 
     # Indicates whether this <code>SimpleDateFormat</code> should use
     # the DateFormatSymbols. If true, the format and parse methods
     # use the DateFormatSymbols values. If false, the format and
@@ -509,7 +496,6 @@ module Java::Text
     undef_method :use_date_format_symbols=
     
     typesig { [] }
-    # 
     # Constructs a <code>SimpleDateFormat</code> using the default pattern and
     # date format symbols for the default locale.
     # <b>Note:</b> This constructor may not support all locales.
@@ -520,7 +506,6 @@ module Java::Text
     end
     
     typesig { [String] }
-    # 
     # Constructs a <code>SimpleDateFormat</code> using the given pattern and
     # the default date format symbols for the default locale.
     # <b>Note:</b> This constructor may not support all locales.
@@ -535,7 +520,6 @@ module Java::Text
     end
     
     typesig { [String, Locale] }
-    # 
     # Constructs a <code>SimpleDateFormat</code> using the given pattern and
     # the default date format symbols for the given locale.
     # <b>Note:</b> This constructor may not support all locales.
@@ -569,7 +553,6 @@ module Java::Text
     end
     
     typesig { [String, DateFormatSymbols] }
-    # 
     # Constructs a <code>SimpleDateFormat</code> using the given pattern and
     # date format symbols.
     # 
@@ -695,7 +678,6 @@ module Java::Text
     end
     
     typesig { [String] }
-    # 
     # Returns the compiled form of the given pattern. The syntax of
     # the compiled pattern is:
     # <blockquote>
@@ -878,15 +860,14 @@ module Java::Text
         encode(last_tag, count, compiled_pattern)
       end
       # Copy the compiled pattern to a char array
-      len_ = compiled_pattern.length
-      r = CharArray.new(len_)
-      compiled_pattern.get_chars(0, len_, r, 0)
+      len = compiled_pattern.length
+      r = CharArray.new(len)
+      compiled_pattern.get_chars(0, len, r, 0)
       return r
     end
     
     class_module.module_eval {
       typesig { [::Java::Int, ::Java::Int, StringBuilder] }
-      # 
       # Encodes the given tag and length and puts encoded char(s) into buffer.
       def encode(tag, length_, buffer)
         if (length_ < 255)
@@ -918,7 +899,6 @@ module Java::Text
     end
     
     typesig { [Date] }
-    # 
     # Sets the 100-year period 2-digit years will be interpreted as being in
     # to begin on the date the user specifies.
     # 
@@ -931,7 +911,6 @@ module Java::Text
     end
     
     typesig { [] }
-    # 
     # Returns the beginning date of the 100-year period 2-digit years are interpreted
     # as being within.
     # 
@@ -944,7 +923,6 @@ module Java::Text
     end
     
     typesig { [Date, StringBuffer, FieldPosition] }
-    # 
     # Formats the given <code>Date</code> into a date/time string and appends
     # the result to the given <code>StringBuffer</code>.
     # 
@@ -987,7 +965,6 @@ module Java::Text
     end
     
     typesig { [Object] }
-    # 
     # Formats an Object producing an <code>AttributedCharacterIterator</code>.
     # You can use the returned <code>AttributedCharacterIterator</code>
     # to build the resulting String, as well as to determine information
@@ -1037,7 +1014,6 @@ module Java::Text
     }
     
     typesig { [::Java::Int, ::Java::Int, FieldDelegate, StringBuffer, ::Java::Boolean] }
-    # 
     # Private member function that does the real date/time formatting.
     def sub_format(pattern_char_index, count, delegate, buffer, use_date_format_symbols_)
       max_int_count = JavaInteger::MAX_VALUE
@@ -1196,7 +1172,6 @@ module Java::Text
     end
     
     typesig { [::Java::Int, ::Java::Int, ::Java::Int, StringBuffer] }
-    # 
     # Formats a number with the specified minimum and maximum number of digits.
     def zero_padding_number(value, min_digits, max_digits, buffer)
       # Optimization for 1, 2 and 4 digit numbers. This should
@@ -1245,7 +1220,6 @@ module Java::Text
     end
     
     typesig { [String, ParsePosition] }
-    # 
     # Parses text from a string to produce a <code>Date</code>.
     # <p>
     # The method attempts to parse text starting at the index given by
@@ -1371,7 +1345,6 @@ module Java::Text
     end
     
     typesig { [String, ::Java::Int, ::Java::Int, Array.typed(String)] }
-    # 
     # Private code-size reduction function used by subParse.
     # @param text the time text being parsed.
     # @param start where to start parsing.
@@ -1409,7 +1382,6 @@ module Java::Text
     end
     
     typesig { [String, ::Java::Int, ::Java::Int, Map] }
-    # 
     # Performs the same thing as matchString(String, int, int,
     # String[]). This method takes a Map<String, Integer> instead of
     # String[].
@@ -1460,7 +1432,6 @@ module Java::Text
     end
     
     typesig { [String, ::Java::Int] }
-    # 
     # find time zone 'text' matched zoneStrings and set to internal
     # calendar.
     def sub_parse_zone_string(text, start)
@@ -1522,7 +1493,6 @@ module Java::Text
     end
     
     typesig { [String, ::Java::Int, ::Java::Int, ::Java::Int, ::Java::Boolean, Array.typed(::Java::Boolean), ParsePosition] }
-    # 
     # Private member function that converts the parsed date strings into
     # timeFields. Returns -start (for ParsePosition) if failed.
     # @param text the time text to be parsed.
@@ -1609,9 +1579,9 @@ module Java::Text
           # calendar might have text representations for year values,
           # such as "\u5143" in JapaneseImperialCalendar.
           style = (count >= 4) ? Calendar::LONG : Calendar::SHORT
-          map_ = self.attr_calendar.get_display_names(field, style, @locale)
-          if (!(map_).nil?)
-            if ((index = match_string(text, start, field, map_)) > 0)
+          map = self.attr_calendar.get_display_names(field, style, @locale)
+          if (!(map).nil?)
+            if ((index = match_string(text, start, field, map)) > 0)
               return index
             end
           end
@@ -1663,8 +1633,8 @@ module Java::Text
               end
             end
           else
-            map__ = self.attr_calendar.get_display_names(field, Calendar::ALL_STYLES, @locale)
-            if ((index = match_string(text, start, field, map__)) > 0)
+            map = self.attr_calendar.get_display_names(field, Calendar::ALL_STYLES, @locale)
+            if ((index = match_string(text, start, field, map)) > 0)
               return index
             end
           end
@@ -1684,9 +1654,9 @@ module Java::Text
         if (use_date_format_symbols_)
           # Want to be able to parse both short and long forms.
           # Try count == 4 (DDDD) first:
-          new_start_ = 0
-          if ((new_start_ = match_string(text, start, Calendar::DAY_OF_WEEK, @format_data.get_weekdays)) > 0)
-            return new_start_
+          new_start = 0
+          if ((new_start = match_string(text, start, Calendar::DAY_OF_WEEK, @format_data.get_weekdays)) > 0)
+            return new_start
           else
             # DDDD failed, now try DDD
             if ((index = match_string(text, start, Calendar::DAY_OF_WEEK, @format_data.get_short_weekdays)) > 0)
@@ -1696,23 +1666,10 @@ module Java::Text
         else
           styles = Array.typed(::Java::Int).new([Calendar::LONG, Calendar::SHORT])
           styles.each do |style|
-            map___ = self.attr_calendar.get_display_names(field, style_, @locale)
-            if ((index = match_string(text, start, field, map___)) > 0)
+            map = self.attr_calendar.get_display_names(field, style, @locale)
+            if ((index = match_string(text, start, field, map)) > 0)
               return index
             end
-          end
-        end
-        orig_pos.attr_error_index = pos.attr_index
-        return -1
-        # 'a' - AM_PM
-        if (use_date_format_symbols_)
-          if ((index = match_string(text, start, Calendar::AM_PM, @format_data.get_am_pm_strings)) > 0)
-            return index
-          end
-        else
-          map____ = self.attr_calendar.get_display_names(field, Calendar::ALL_STYLES, @locale)
-          if ((index = match_string(text, start, field, map____)) > 0)
-            return index
           end
         end
         orig_pos.attr_error_index = pos.attr_index
@@ -1724,8 +1681,8 @@ module Java::Text
             return index
           end
         else
-          map_____ = self.attr_calendar.get_display_names(field, Calendar::ALL_STYLES, @locale)
-          if ((index = match_string(text, start, field, map_____)) > 0)
+          map = self.attr_calendar.get_display_names(field, Calendar::ALL_STYLES, @locale)
+          if ((index = match_string(text, start, field, map)) > 0)
             return index
           end
         end
@@ -1773,23 +1730,23 @@ module Java::Text
           end
           # Look for hours.
           begin
-            c_ = text.char_at((pos.attr_index += 1))
-            if (c_ < Character.new(?0.ord) || c_ > Character.new(?9.ord))
+            c = text.char_at((pos.attr_index += 1))
+            if (c < Character.new(?0.ord) || c > Character.new(?9.ord))
               # must be from '0' to '9'.
               orig_pos.attr_error_index = pos.attr_index
               return -1 # Wasn't actually a number.
             else
-              num = c_ - Character.new(?0.ord)
+              num = c - Character.new(?0.ord)
             end
             if (!(text.char_at((pos.attr_index += 1))).equal?(Character.new(?:.ord)))
-              c_ = text.char_at(pos.attr_index)
-              if (c_ < Character.new(?0.ord) || c_ > Character.new(?9.ord))
+              c = text.char_at(pos.attr_index)
+              if (c < Character.new(?0.ord) || c > Character.new(?9.ord))
                 # must be from '0' to '9'.
                 orig_pos.attr_error_index = pos.attr_index
                 return -1 # Wasn't actually a number.
               else
                 num *= 10
-                num += c_ - Character.new(?0.ord)
+                num += c - Character.new(?0.ord)
                 ((pos.attr_index += 1) - 1)
               end
             end
@@ -1808,21 +1765,21 @@ module Java::Text
           # Look for minutes.
           offset = num * 60
           begin
-            c__ = text.char_at((pos.attr_index += 1))
-            if (c__ < Character.new(?0.ord) || c__ > Character.new(?9.ord))
+            c_ = text.char_at((pos.attr_index += 1))
+            if (c_ < Character.new(?0.ord) || c_ > Character.new(?9.ord))
               # must be from '0' to '9'.
               orig_pos.attr_error_index = pos.attr_index
               return -1 # Wasn't actually a number.
             else
-              num = c__ - Character.new(?0.ord)
-              c__ = text.char_at((pos.attr_index += 1))
-              if (c__ < Character.new(?0.ord) || c__ > Character.new(?9.ord))
+              num = c_ - Character.new(?0.ord)
+              c_ = text.char_at((pos.attr_index += 1))
+              if (c_ < Character.new(?0.ord) || c_ > Character.new(?9.ord))
                 # must be from '0' to '9'.
                 orig_pos.attr_error_index = pos.attr_index
                 return -1 # Wasn't actually a number.
               else
                 num *= 10
-                num += c__ - Character.new(?0.ord)
+                num += c_ - Character.new(?0.ord)
               end
             end
             if (num > 59)
@@ -1861,21 +1818,21 @@ module Java::Text
             end
             # Look for hh.
             hours = 0
-            c___ = text.char_at((pos.attr_index += 1))
-            if (c___ < Character.new(?0.ord) || c___ > Character.new(?9.ord))
+            c = text.char_at((pos.attr_index += 1))
+            if (c < Character.new(?0.ord) || c > Character.new(?9.ord))
               # must be from '0' to '9'.
               orig_pos.attr_error_index = pos.attr_index
               return -1 # Wasn't actually a number.
             else
-              hours = c___ - Character.new(?0.ord)
-              c___ = text.char_at((pos.attr_index += 1))
-              if (c___ < Character.new(?0.ord) || c___ > Character.new(?9.ord))
+              hours = c - Character.new(?0.ord)
+              c = text.char_at((pos.attr_index += 1))
+              if (c < Character.new(?0.ord) || c > Character.new(?9.ord))
                 # must be from '0' to '9'.
                 orig_pos.attr_error_index = pos.attr_index
                 return -1 # Wasn't actually a number.
               else
                 hours *= 10
-                hours += c___ - Character.new(?0.ord)
+                hours += c - Character.new(?0.ord)
               end
             end
             if (hours > 23)
@@ -1884,21 +1841,21 @@ module Java::Text
             end
             # Look for mm.
             minutes = 0
-            c___ = text.char_at((pos.attr_index += 1))
-            if (c___ < Character.new(?0.ord) || c___ > Character.new(?9.ord))
+            c = text.char_at((pos.attr_index += 1))
+            if (c < Character.new(?0.ord) || c > Character.new(?9.ord))
               # must be from '0' to '9'.
               orig_pos.attr_error_index = pos.attr_index
               return -1 # Wasn't actually a number.
             else
-              minutes = c___ - Character.new(?0.ord)
-              c___ = text.char_at((pos.attr_index += 1))
-              if (c___ < Character.new(?0.ord) || c___ > Character.new(?9.ord))
+              minutes = c - Character.new(?0.ord)
+              c = text.char_at((pos.attr_index += 1))
+              if (c < Character.new(?0.ord) || c > Character.new(?9.ord))
                 # must be from '0' to '9'.
                 orig_pos.attr_error_index = pos.attr_index
                 return -1 # Wasn't actually a number.
               else
                 minutes *= 10
-                minutes += c___ - Character.new(?0.ord)
+                minutes += c - Character.new(?0.ord)
               end
             end
             if (minutes > 59)
@@ -1971,7 +1928,6 @@ module Java::Text
     end
     
     typesig { [String, String, String] }
-    # 
     # Translates a pattern, mapping each character in the from string to the
     # corresponding character in the to string.
     # 
@@ -2009,7 +1965,6 @@ module Java::Text
     end
     
     typesig { [] }
-    # 
     # Returns a pattern string describing this date format.
     # 
     # @return a pattern string describing this date format.
@@ -2018,7 +1973,6 @@ module Java::Text
     end
     
     typesig { [] }
-    # 
     # Returns a localized pattern string describing this date format.
     # 
     # @return a localized pattern string describing this date format.
@@ -2027,7 +1981,6 @@ module Java::Text
     end
     
     typesig { [String] }
-    # 
     # Applies the given pattern string to this date format.
     # 
     # @param pattern the new date and time pattern for this date format
@@ -2039,7 +1992,6 @@ module Java::Text
     end
     
     typesig { [String] }
-    # 
     # Applies the given localized pattern string to this date format.
     # 
     # @param pattern a String to be mapped to the new date and time format
@@ -2053,7 +2005,6 @@ module Java::Text
     end
     
     typesig { [] }
-    # 
     # Gets a copy of the date and time format symbols of this date format.
     # 
     # @return the date and time format symbols of this date format
@@ -2063,7 +2014,6 @@ module Java::Text
     end
     
     typesig { [DateFormatSymbols] }
-    # 
     # Sets the date and time format symbols of this date format.
     # 
     # @param newFormatSymbols the new date and time format symbols
@@ -2075,7 +2025,6 @@ module Java::Text
     end
     
     typesig { [] }
-    # 
     # Creates a copy of this <code>SimpleDateFormat</code>. This also
     # clones the format's date format symbols.
     # 
@@ -2087,7 +2036,6 @@ module Java::Text
     end
     
     typesig { [] }
-    # 
     # Returns the hash code value for this <code>SimpleDateFormat</code> object.
     # 
     # @return the hash code value for this <code>SimpleDateFormat</code> object.
@@ -2097,7 +2045,6 @@ module Java::Text
     end
     
     typesig { [Object] }
-    # 
     # Compares the given object with this <code>SimpleDateFormat</code> for
     # equality.
     # 
@@ -2112,7 +2059,6 @@ module Java::Text
     end
     
     typesig { [ObjectInputStream] }
-    # 
     # After reading an object from the input stream, the format
     # pattern in the object is verified.
     # <p>

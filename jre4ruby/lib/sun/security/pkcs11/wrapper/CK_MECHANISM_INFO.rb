@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # reserved comment block
 # DO NOT REMOVE OR ALTER!
 # 
@@ -53,7 +52,6 @@ module Sun::Security::Pkcs11::Wrapper
     }
   end
   
-  # 
   # class CK_MECHANISM_INFO provides information about a particular mechanism.
   # <p>
   # <B>PKCS#11 structure:</B>
@@ -70,7 +68,6 @@ module Sun::Security::Pkcs11::Wrapper
   class CK_MECHANISM_INFO 
     include_class_members CK_MECHANISM_INFOImports
     
-    # 
     # <B>PKCS#11:</B>
     # <PRE>
     # CK_ULONG ulMinKeySize;
@@ -81,7 +78,6 @@ module Sun::Security::Pkcs11::Wrapper
     alias_method :attr_ul_min_key_size=, :ul_min_key_size=
     undef_method :ul_min_key_size=
     
-    # 
     # <B>PKCS#11:</B>
     # <PRE>
     # CK_ULONG ulMaxKeySize;
@@ -92,7 +88,6 @@ module Sun::Security::Pkcs11::Wrapper
     alias_method :attr_ul_max_key_size=, :ul_max_key_size=
     undef_method :ul_max_key_size=
     
-    # 
     # <B>PKCS#11:</B>
     # <PRE>
     # CK_FLAGS flags;
@@ -114,7 +109,6 @@ module Sun::Security::Pkcs11::Wrapper
     end
     
     typesig { [] }
-    # 
     # Returns the string representation of CK_MECHANISM_INFO.
     # 
     # @return the string representation of CK_MECHANISM_INFO

@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 2003-2004 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -31,7 +30,6 @@ module Java::Lang::Reflect
     }
   end
   
-  # 
   # ParameterizedType represents a parameterized type such as
   # Collection&lt;String&gt;.
   # 
@@ -53,7 +51,6 @@ module Java::Lang::Reflect
     include Type
     
     typesig { [] }
-    # 
     # Returns an array of {@code Type} objects representing the actual type
     # arguments to this type.
     # 
@@ -74,7 +71,6 @@ module Java::Lang::Reflect
     end
     
     typesig { [] }
-    # 
     # Returns the {@code Type} object representing the class or interface
     # that declared this type.
     # 
@@ -86,7 +82,6 @@ module Java::Lang::Reflect
     end
     
     typesig { [] }
-    # 
     # Returns a {@code Type} object representing the type that this type
     # is a member of.  For example, if this type is {@code O<T>.I<S>},
     # return a representation of {@code O<T>}.

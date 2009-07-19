@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 1999 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -31,7 +30,6 @@ module Sun::Misc
     }
   end
   
-  # 
   # This interface defines the contract a extension installation capable
   # provided to the extension installation dependency mechanism to
   # install new extensions on the user's disk
@@ -41,7 +39,6 @@ module Sun::Misc
     include_class_members ExtensionInstallationProviderImports
     
     typesig { [ExtensionInfo, ExtensionInfo] }
-    # 
     # <p>
     # Request the installation of an extension in the extension directory
     # </p>

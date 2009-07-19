@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 1995-1997 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -30,7 +29,6 @@ module Java::Lang
     }
   end
   
-  # 
   # Thrown to indicate that the Java Virtual Machine is broken or has
   # run out of resources necessary for it to continue operating.
   # 
@@ -41,14 +39,12 @@ module Java::Lang
     include_class_members VirtualMachineErrorImports
     
     typesig { [] }
-    # 
     # Constructs a <code>VirtualMachineError</code> with no detail message.
     def initialize
       super()
     end
     
     typesig { [String] }
-    # 
     # Constructs a <code>VirtualMachineError</code> with the specified
     # detail message.
     # 

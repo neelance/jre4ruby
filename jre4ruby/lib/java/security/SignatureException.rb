@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 1996-2003 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -31,7 +30,6 @@ module Java::Security
     }
   end
   
-  # 
   # This is the generic Signature exception.
   # 
   # @author Benjamin Renaud
@@ -44,7 +42,6 @@ module Java::Security
     }
     
     typesig { [] }
-    # 
     # Constructs a SignatureException with no detail message. A
     # detail message is a String that describes this particular
     # exception.
@@ -53,7 +50,6 @@ module Java::Security
     end
     
     typesig { [String] }
-    # 
     # Constructs a SignatureException with the specified detail
     # message.  A detail message is a String that describes this
     # particular exception.
@@ -64,7 +60,6 @@ module Java::Security
     end
     
     typesig { [String, Exception] }
-    # 
     # Creates a <code>SignatureException</code> with the specified
     # detail message and cause.
     # 
@@ -79,7 +74,6 @@ module Java::Security
     end
     
     typesig { [Exception] }
-    # 
     # Creates a <code>SignatureException</code> with the specified cause
     # and a detail message of <tt>(cause==null ? null : cause.toString())</tt>
     # (which typically contains the class and detail message of

@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 1997-2006 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -38,7 +37,6 @@ module Java::Net
     }
   end
   
-  # 
   # A URL Connection to a Java ARchive (JAR) file or an entry in a JAR
   # file.
   # 
@@ -157,7 +155,6 @@ module Java::Net
     alias_method :attr_entry_name=, :entry_name=
     undef_method :entry_name=
     
-    # 
     # The connection to the JAR file URL, if the connection has been
     # initiated. This should be set by connect.
     attr_accessor :jar_file_urlconnection
@@ -167,7 +164,6 @@ module Java::Net
     undef_method :jar_file_urlconnection=
     
     typesig { [URL] }
-    # 
     # Creates the new JarURLConnection to the specified URL.
     # @param url the URL
     # @throws MalformedURLException if no legal protocol
@@ -187,7 +183,6 @@ module Java::Net
     def parse_specs(url)
       spec = url.get_file
       separator = spec.index_of("!/")
-      # 
       # REMIND: we don't handle nested JAR URLs
       if ((separator).equal?(-1))
         raise MalformedURLException.new("no !/ found in url spec:" + spec)
@@ -202,7 +197,6 @@ module Java::Net
     end
     
     typesig { [] }
-    # 
     # Returns the URL for the Jar file for this connection.
     # 
     # @return the URL for the Jar file for this connection.
@@ -211,7 +205,6 @@ module Java::Net
     end
     
     typesig { [] }
-    # 
     # Return the entry name for this connection. This method
     # returns null if the JAR file URL corresponding to this
     # connection points to a JAR file and not a JAR file entry.
@@ -222,7 +215,6 @@ module Java::Net
     end
     
     typesig { [] }
-    # 
     # Return the JAR file for this connection.
     # 
     # @return the JAR file for this connection. If the connection is
@@ -238,7 +230,6 @@ module Java::Net
     end
     
     typesig { [] }
-    # 
     # Returns the Manifest for this connection, or null if none.
     # 
     # @return the manifest object corresponding to the JAR file object
@@ -253,7 +244,6 @@ module Java::Net
     end
     
     typesig { [] }
-    # 
     # Return the JAR entry object for this connection, if any. This
     # method returns null if the JAR file URL corresponding to this
     # connection points to a JAR file and not a JAR file entry.
@@ -271,7 +261,6 @@ module Java::Net
     end
     
     typesig { [] }
-    # 
     # Return the Attributes object for this connection if the URL
     # for it points to a JAR file entry, null otherwise.
     # 
@@ -288,7 +277,6 @@ module Java::Net
     end
     
     typesig { [] }
-    # 
     # Returns the main Attributes for the JAR file for this
     # connection.
     # 
@@ -306,7 +294,6 @@ module Java::Net
     end
     
     typesig { [] }
-    # 
     # Return the Certificate object for this connection if the URL
     # for it points to a JAR file entry, null otherwise. This method
     # can only be called once

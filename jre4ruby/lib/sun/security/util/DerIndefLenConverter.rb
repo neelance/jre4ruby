@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 1998-2006 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -33,7 +32,6 @@ module Sun::Security::Util
     }
   end
   
-  # 
   # A package private utility class to convert indefinite length DER
   # encoded byte arrays to definite length DER encoded byte arrays.
   # 
@@ -134,7 +132,6 @@ module Sun::Security::Util
     }
     
     typesig { [] }
-    # 
     # Default package private constructor
     def initialize
       @data = nil
@@ -149,7 +146,6 @@ module Sun::Security::Util
     
     class_module.module_eval {
       typesig { [::Java::Int] }
-      # 
       # Checks whether the given length byte is of the form
       # <em>Indefinite</em>.
       # 
@@ -163,7 +159,6 @@ module Sun::Security::Util
     }
     
     typesig { [] }
-    # 
     # Parse the tag and if it is an end-of-contents tag then
     # add the current position to the <code>eocList</code> vector.
     def parse_tag
@@ -202,7 +197,6 @@ module Sun::Security::Util
     end
     
     typesig { [] }
-    # 
     # Write the tag and if it is an end-of-contents tag
     # then skip the tag and its 1 byte length of zero.
     def write_tag
@@ -219,7 +213,6 @@ module Sun::Security::Util
     end
     
     typesig { [] }
-    # 
     # Parse the length and if it is an indefinite length then add
     # the current position to the <code>ndefsList</code> vector.
     def parse_length
@@ -252,7 +245,6 @@ module Sun::Security::Util
     end
     
     typesig { [] }
-    # 
     # Write the length and if it is an indefinite length
     # then calculate the definite length from the positions
     # of the indefinite length and its matching EOC terminator.
@@ -379,14 +371,12 @@ module Sun::Security::Util
     end
     
     typesig { [::Java::Int] }
-    # 
     # Parse the value;
     def parse_value(cur_len)
       @data_pos += cur_len
     end
     
     typesig { [::Java::Int] }
-    # 
     # Write the value;
     def write_value(cur_len)
       i = 0
@@ -397,7 +387,6 @@ module Sun::Security::Util
     end
     
     typesig { [Array.typed(::Java::Byte)] }
-    # 
     # Converts a indefinite length DER encoded byte array to
     # a definte length DER encoding.
     # 

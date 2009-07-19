@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 1996-2006 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -33,7 +32,6 @@ module Sun::Security::Provider
     }
   end
   
-  # 
   # Defines the entries of the SUN provider.
   # 
   # Algorithms supported, and their names:
@@ -80,7 +78,6 @@ module Sun::Security::Provider
     class_module.module_eval {
       typesig { [Map] }
       def put_entries(map)
-        # 
         # SecureRandom
         # 
         # Register these first to speed up "new SecureRandom()",
@@ -98,7 +95,6 @@ module Sun::Security::Provider
         if (native_available && !use_urandom)
           map.put("SecureRandom.NativePRNG", "sun.security.provider.NativePRNG")
         end
-        # 
         # Signature engines
         map.put("Signature.SHA1withDSA", "sun.security.provider.DSA$SHA1withDSA")
         map.put("Signature.NONEwithDSA", "sun.security.provider.DSA$RawDSA")
@@ -117,13 +113,11 @@ module Sun::Security::Provider
         map.put("Alg.Alias.Signature.1.2.840.10040.4.3", "SHA1withDSA")
         map.put("Alg.Alias.Signature.1.3.14.3.2.13", "SHA1withDSA")
         map.put("Alg.Alias.Signature.1.3.14.3.2.27", "SHA1withDSA")
-        # 
         # Key Pair Generator engines
         map.put("KeyPairGenerator.DSA", "sun.security.provider.DSAKeyPairGenerator")
         map.put("Alg.Alias.KeyPairGenerator.OID.1.2.840.10040.4.1", "DSA")
         map.put("Alg.Alias.KeyPairGenerator.1.2.840.10040.4.1", "DSA")
         map.put("Alg.Alias.KeyPairGenerator.1.3.14.3.2.12", "DSA")
-        # 
         # Digest engines
         map.put("MessageDigest.MD2", "sun.security.provider.MD2")
         map.put("MessageDigest.MD5", "sun.security.provider.MD5")
@@ -133,53 +127,41 @@ module Sun::Security::Provider
         map.put("MessageDigest.SHA-256", "sun.security.provider.SHA2")
         map.put("MessageDigest.SHA-384", "sun.security.provider.SHA5$SHA384")
         map.put("MessageDigest.SHA-512", "sun.security.provider.SHA5$SHA512")
-        # 
         # Algorithm Parameter Generator engines
         map.put("AlgorithmParameterGenerator.DSA", "sun.security.provider.DSAParameterGenerator")
-        # 
         # Algorithm Parameter engines
         map.put("AlgorithmParameters.DSA", "sun.security.provider.DSAParameters")
         map.put("Alg.Alias.AlgorithmParameters.1.3.14.3.2.12", "DSA")
         map.put("Alg.Alias.AlgorithmParameters.1.2.840.10040.4.1", "DSA")
-        # 
         # Key factories
         map.put("KeyFactory.DSA", "sun.security.provider.DSAKeyFactory")
         map.put("Alg.Alias.KeyFactory.1.3.14.3.2.12", "DSA")
         map.put("Alg.Alias.KeyFactory.1.2.840.10040.4.1", "DSA")
-        # 
         # Certificates
         map.put("CertificateFactory.X.509", "sun.security.provider.X509Factory")
         map.put("Alg.Alias.CertificateFactory.X509", "X.509")
-        # 
         # KeyStore
         map.put("KeyStore.JKS", "sun.security.provider.JavaKeyStore$JKS")
         map.put("KeyStore.CaseExactJKS", "sun.security.provider.JavaKeyStore$CaseExactJKS")
-        # 
         # Policy
         map.put("Policy.JavaPolicy", "sun.security.provider.PolicySpiFile")
-        # 
         # Configuration
         map.put("Configuration.JavaLoginConfig", "sun.security.provider.ConfigSpiFile")
-        # 
         # CertPathBuilder
         map.put("CertPathBuilder.PKIX", "sun.security.provider.certpath.SunCertPathBuilder")
         map.put("CertPathBuilder.PKIX ValidationAlgorithm", "RFC3280")
-        # 
         # CertPathValidator
         map.put("CertPathValidator.PKIX", "sun.security.provider.certpath.PKIXCertPathValidator")
         map.put("CertPathValidator.PKIX ValidationAlgorithm", "RFC3280")
-        # 
         # CertStores
         map.put("CertStore.LDAP", "sun.security.provider.certpath.LDAPCertStore")
         map.put("CertStore.LDAP LDAPSchema", "RFC2587")
         map.put("CertStore.Collection", "sun.security.provider.certpath.CollectionCertStore")
         map.put("CertStore.com.sun.security.IndexedCollection", "sun.security.provider.certpath.IndexedCollectionCertStore")
-        # 
         # KeySize
         map.put("Signature.SHA1withDSA KeySize", "1024")
         map.put("KeyPairGenerator.DSA KeySize", "1024")
         map.put("AlgorithmParameterGenerator.DSA KeySize", "1024")
-        # 
         # Implementation type: software or hardware
         map.put("Signature.SHA1withDSA ImplementedIn", "Software")
         map.put("KeyPairGenerator.DSA ImplementedIn", "Software")

@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 2003-2006 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -32,7 +31,6 @@ module Java::Lang::Instrument
     }
   end
   
-  # 
   # Copyright 2003 Wily Technology, Inc.
   # 
   # 
@@ -53,7 +51,6 @@ module Java::Lang::Instrument
     include_class_members ClassFileTransformerImports
     
     typesig { [ClassLoader, String, Class, ProtectionDomain, Array.typed(::Java::Byte)] }
-    # 
     # The implementation of this method may transform the supplied class file and
     # return a new replacement class file.
     # 

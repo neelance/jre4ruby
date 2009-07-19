@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 2000-2001 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -31,7 +30,6 @@ module Java::Security::Cert
     }
   end
   
-  # 
   # A specification of <code>CertStore</code> parameters.
   # <p>
   # The purpose of this interface is to group (and provide type safety for)
@@ -56,7 +54,6 @@ module Java::Security::Cert
     include Cloneable
     
     typesig { [] }
-    # 
     # Makes a copy of this <code>CertStoreParameters</code>.
     # <p>
     # The precise meaning of "copy" may depend on the class of

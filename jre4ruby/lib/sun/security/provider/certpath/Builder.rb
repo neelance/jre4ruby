@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 2000-2006 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -44,7 +43,6 @@ module Sun::Security::Provider::Certpath
     }
   end
   
-  # 
   # Abstract class representing a builder, which is able to retrieve
   # matching certificates and is able to verify a particular certificate.
   # 
@@ -90,7 +88,6 @@ module Sun::Security::Provider::Certpath
     undef_method :target_cert_constraints=
     
     class_module.module_eval {
-      # 
       # Flag indicating whether support for the caIssuers field of the
       # Authority Information Access extension shall be enabled. Currently
       # disabled by default for compatibility reasons.
@@ -99,7 +96,6 @@ module Sun::Security::Provider::Certpath
     }
     
     typesig { [PKIXBuilderParameters, X500Principal] }
-    # 
     # Initialize the builder with the input parameters.
     # 
     # @param params the parameter set used to build a certification path
@@ -118,7 +114,6 @@ module Sun::Security::Provider::Certpath
     end
     
     typesig { [State, JavaList] }
-    # 
     # Retrieves certificates from the list of certStores using the buildParams
     # and the currentState as a filter
     # 
@@ -129,7 +124,6 @@ module Sun::Security::Provider::Certpath
     end
     
     typesig { [X509Certificate, State, JavaList] }
-    # 
     # Verifies the cert against the currentState, using the certPathList
     # generated thus far to help with loop detection
     # 
@@ -141,7 +135,6 @@ module Sun::Security::Provider::Certpath
     end
     
     typesig { [X509Certificate] }
-    # 
     # Verifies whether the input certificate completes the path.
     # When building forward, a trust anchor will complete the path.
     # When building reverse, the target certificate will complete the path.
@@ -153,7 +146,6 @@ module Sun::Security::Provider::Certpath
     end
     
     typesig { [X509Certificate, LinkedList] }
-    # 
     # Adds the certificate to the certPathList
     # 
     # @param cert the certificate to be added
@@ -163,7 +155,6 @@ module Sun::Security::Provider::Certpath
     end
     
     typesig { [LinkedList] }
-    # 
     # Removes final certificate from the certPathList
     # 
     # @param certPathList the certification path list
@@ -173,7 +164,6 @@ module Sun::Security::Provider::Certpath
     
     class_module.module_eval {
       typesig { [GeneralNameInterface, GeneralNameInterface, ::Java::Int] }
-      # 
       # get distance of one GeneralName from another
       # 
       # @param base GeneralName at base of subtree
@@ -213,7 +203,6 @@ module Sun::Security::Provider::Certpath
       end
       
       typesig { [GeneralNameInterface, GeneralNameInterface, ::Java::Int] }
-      # 
       # get hop distance of one GeneralName from another in links where
       # the names need not have an ancestor/descendant relationship.
       # For example, the hop distance from ou=D,ou=C,o=B,c=US to
@@ -276,7 +265,6 @@ module Sun::Security::Provider::Certpath
       end
       
       typesig { [NameConstraintsExtension, X509Certificate, GeneralNameInterface] }
-      # 
       # Determine how close a given certificate gets you toward
       # a given target.
       # 
@@ -385,8 +373,8 @@ module Sun::Security::Provider::Certpath
           return -1
         end
         i = 0
-        n_ = permitted.size
-        while i < n_
+        n = permitted.size
+        while i < n
           per_name = permitted.get(i).get_name.get_name
           distance_ = distance(per_name, target, -1)
           if (distance_ >= 0)
@@ -400,7 +388,6 @@ module Sun::Security::Provider::Certpath
     }
     
     typesig { [] }
-    # 
     # This method can be used as an optimization to filter out
     # certificates that do not have policies which are valid.
     # It returns the set of policies (String OIDs) that should exist in
@@ -435,7 +422,6 @@ module Sun::Security::Provider::Certpath
     end
     
     typesig { [X509CertSelector, Collection, Collection, ::Java::Boolean] }
-    # 
     # Search the specified CertStores and add all certificates matching
     # selector to resultCerts. Self-signed certs are not useful here
     # and therefore ignored.
@@ -488,7 +474,6 @@ module Sun::Security::Provider::Certpath
     
     class_module.module_eval {
       typesig { [CertStore] }
-      # 
       # Returns true if CertStore is local. Currently, returns true if
       # type is Collection or if it has been initialized with
       # CollectionCertStoreParameters. A new API method should be added

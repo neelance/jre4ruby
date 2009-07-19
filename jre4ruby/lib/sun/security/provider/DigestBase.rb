@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 2003-2006 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -34,7 +33,6 @@ module Sun::Security::Provider
     }
   end
   
-  # 
   # Common base message digest implementation for the Sun provider.
   # It implements all the JCA methods as suitable for a Java message digest
   # implementation of an algorithm based on a compression function (as all
@@ -110,7 +108,6 @@ module Sun::Security::Provider
     undef_method :bytes_processed=
     
     typesig { [String, ::Java::Int, ::Java::Int] }
-    # 
     # Main constructor.
     def initialize(algorithm, digest_length, block_size)
       @one_byte = nil
@@ -128,7 +125,6 @@ module Sun::Security::Provider
     end
     
     typesig { [DigestBase] }
-    # 
     # Constructor for cloning. Replicates common data.
     def initialize(base)
       @one_byte = nil
@@ -244,7 +240,6 @@ module Sun::Security::Provider
     end
     
     typesig { [Array.typed(::Java::Byte), ::Java::Int] }
-    # 
     # Core compression function. Processes blockSize bytes at a time
     # and updates the state of this object.
     def impl_compress(b, ofs)
@@ -252,7 +247,6 @@ module Sun::Security::Provider
     end
     
     typesig { [Array.typed(::Java::Byte), ::Java::Int] }
-    # 
     # Return the digest. Subclasses do not need to reset() themselves,
     # DigestBase calls implReset() when necessary.
     def impl_digest(out, ofs)
@@ -260,7 +254,6 @@ module Sun::Security::Provider
     end
     
     typesig { [] }
-    # 
     # Reset subclass specific state to their initial values. DigestBase
     # calls this method when necessary.
     def impl_reset
@@ -268,7 +261,6 @@ module Sun::Security::Provider
     end
     
     typesig { [] }
-    # 
     # Clone this digest. Should be implemented as "return new MyDigest(this)".
     # That constructor should first call "super(baseDigest)" and then copy
     # subclass specific data.

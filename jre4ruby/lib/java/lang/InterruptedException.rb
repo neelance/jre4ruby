@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 1995-2005 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -30,7 +29,6 @@ module Java::Lang
     }
   end
   
-  # 
   # Thrown when a thread is waiting, sleeping, or otherwise occupied,
   # and the thread is interrupted, either before or during the activity.
   # Occasionally a method may wish to test whether the current
@@ -54,14 +52,12 @@ module Java::Lang
     include_class_members InterruptedExceptionImports
     
     typesig { [] }
-    # 
     # Constructs an <code>InterruptedException</code> with no detail  message.
     def initialize
       super()
     end
     
     typesig { [String] }
-    # 
     # Constructs an <code>InterruptedException</code> with the
     # specified detail message.
     # 

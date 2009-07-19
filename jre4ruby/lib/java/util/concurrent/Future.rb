@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
 # This code is free software; you can redistribute it and/or modify it
@@ -40,7 +39,6 @@ module Java::Util::Concurrent
     }
   end
   
-  # 
   # A <tt>Future</tt> represents the result of an asynchronous
   # computation.  Methods are provided to check if the computation is
   # complete, to wait for its completion, and to retrieve the result of
@@ -103,7 +101,6 @@ module Java::Util::Concurrent
     include_class_members FutureImports
     
     typesig { [::Java::Boolean] }
-    # 
     # Attempts to cancel execution of this task.  This attempt will
     # fail if the task has already completed, has already been cancelled,
     # or could not be cancelled for some other reason. If successful,
@@ -128,7 +125,6 @@ module Java::Util::Concurrent
     end
     
     typesig { [] }
-    # 
     # Returns <tt>true</tt> if this task was cancelled before it completed
     # normally.
     # 
@@ -138,7 +134,6 @@ module Java::Util::Concurrent
     end
     
     typesig { [] }
-    # 
     # Returns <tt>true</tt> if this task completed.
     # 
     # Completion may be due to normal termination, an exception, or
@@ -151,7 +146,6 @@ module Java::Util::Concurrent
     end
     
     typesig { [] }
-    # 
     # Waits if necessary for the computation to complete, and then
     # retrieves its result.
     # 
@@ -166,7 +160,6 @@ module Java::Util::Concurrent
     end
     
     typesig { [::Java::Long, TimeUnit] }
-    # 
     # Waits if necessary for at most the given time for the computation
     # to complete, and then retrieves its result, if available.
     # 

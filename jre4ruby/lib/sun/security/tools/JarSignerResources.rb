@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 2000-2005 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -31,7 +30,6 @@ module Sun::Security::Tools
     }
   end
   
-  # 
   # <p> This class represents the <code>ResourceBundle</code>
   # for JarSigner.
   class JarSignerResources < Java::Util::ListResourceBundle
@@ -44,7 +42,6 @@ module Sun::Security::Tools
     }
     
     typesig { [] }
-    # 
     # Returns the contents of this <code>ResourceBundle</code>.
     # 
     # <p>

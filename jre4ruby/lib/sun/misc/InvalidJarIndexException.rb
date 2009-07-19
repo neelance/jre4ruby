@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 1999 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -32,7 +31,6 @@ module Sun::Misc
     }
   end
   
-  # 
   # Thrown if the URLClassLoader finds the INDEX.LIST file of
   # a jar file contains incorrect information.
   # 
@@ -42,7 +40,6 @@ module Sun::Misc
     include_class_members InvalidJarIndexExceptionImports
     
     typesig { [] }
-    # 
     # Constructs an <code>InvalidJarIndexException</code> with no
     # detail message.
     def initialize
@@ -50,7 +47,6 @@ module Sun::Misc
     end
     
     typesig { [String] }
-    # 
     # Constructs an <code>InvalidJarIndexException</code> with the
     # specified detail message.
     # 

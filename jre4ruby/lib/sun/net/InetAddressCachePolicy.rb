@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 1998-2006 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -99,7 +98,6 @@ module Sun::Net
       end
       alias_method :attr_negative_cache_policy=, :negative_cache_policy=
       
-      # 
       # Whether or not the cache policy for successful lookups was set
       # using a property (cmd line).
       
@@ -113,7 +111,6 @@ module Sun::Net
       end
       alias_method :attr_set=, :set=
       
-      # 
       # Whether or not the cache policy for negative lookups was set
       # using a property (cmd line).
       
@@ -127,7 +124,6 @@ module Sun::Net
       end
       alias_method :attr_negative_set=, :negative_set=
       
-      # 
       # Initialize
       when_class_loaded do
         self.attr_set = false
@@ -232,7 +228,6 @@ module Sun::Net
       end
       
       typesig { [::Java::Int] }
-      # 
       # Sets the cache policy for successful lookups if the user has not
       # already specified a cache policy for it using a
       # command-property.
@@ -240,7 +235,6 @@ module Sun::Net
       # should be cached
       def set_if_not_set(new_policy)
         synchronized(self) do
-          # 
           # When setting the new value we may want to signal that the
           # cache should be flushed, though this doesn't seem strictly
           # necessary.
@@ -252,7 +246,6 @@ module Sun::Net
       end
       
       typesig { [::Java::Int] }
-      # 
       # Sets the cache policy for negative lookups if the user has not
       # already specified a cache policy for it using a
       # command-property.
@@ -260,7 +253,6 @@ module Sun::Net
       # should be cached
       def set_negative_if_not_set(new_policy)
         synchronized(self) do
-          # 
           # When setting the new value we may want to signal that the
           # cache should be flushed, though this doesn't seem strictly
           # necessary.
@@ -275,7 +267,6 @@ module Sun::Net
       
       typesig { [::Java::Int, ::Java::Int] }
       def check_value(new_policy, old_policy)
-        # 
         # If malicious code gets a hold of this method, prevent
         # setting the cache policy to something laxer or some
         # invalid negative value.

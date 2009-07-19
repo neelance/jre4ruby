@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 2004-2006 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -216,7 +215,6 @@ module Sun::Security::Jgss::Krb5
     }
     
     typesig { [::Java::Int, Krb5Context, Array.typed(::Java::Byte), ::Java::Int, ::Java::Int, MessageProp] }
-    # 
     # Constructs a MessageToken from a byte array. If there are more bytes
     # in the array than needed, the extra bytes are simply ignroed.
     # 
@@ -234,7 +232,6 @@ module Sun::Security::Jgss::Krb5
     end
     
     typesig { [::Java::Int, Krb5Context, InputStream, MessageProp] }
-    # 
     # Constructs a MessageToken from an InputStream. Bytes will be read on
     # demand and the thread might block if there are not enough bytes to
     # complete the token.
@@ -305,7 +302,6 @@ module Sun::Security::Jgss::Krb5
     end
     
     typesig { [] }
-    # 
     # Used to obtain the token id that was contained in this token.
     # @return the token id in the token
     def get_token_id
@@ -313,7 +309,6 @@ module Sun::Security::Jgss::Krb5
     end
     
     typesig { [] }
-    # 
     # Used to obtain the key_usage type for this token.
     # @return the key_usage for the token
     def get_key_usage
@@ -321,7 +316,6 @@ module Sun::Security::Jgss::Krb5
     end
     
     typesig { [] }
-    # 
     # Used to determine if this token contains any encrypted data.
     # @return true if it contains any encrypted data, false if there is only
     # plaintext data or if there is no data.
@@ -330,7 +324,6 @@ module Sun::Security::Jgss::Krb5
     end
     
     typesig { [MessageProp, Array.typed(::Java::Byte), ::Java::Int, ::Java::Int] }
-    # 
     # Generates the checksum field and the sequence number field.
     # 
     # @param prop the MessageProp structure
@@ -379,7 +372,6 @@ module Sun::Security::Jgss::Krb5
     end
     
     typesig { [Array.typed(::Java::Byte), ::Java::Int, ::Java::Int] }
-    # 
     # Verifies the validity of checksum field
     # 
     # @param data the application data
@@ -401,7 +393,6 @@ module Sun::Security::Jgss::Krb5
     end
     
     typesig { [Array.typed(::Java::Byte), ::Java::Int, Array.typed(::Java::Byte), ::Java::Int] }
-    # 
     # Rotate bytes as per the "RRC" (Right Rotation Count) received.
     # Our implementation does not do any rotates when sending, only
     # when receiving, we rotate left as per the RRC count, to revert it.
@@ -443,7 +434,6 @@ module Sun::Security::Jgss::Krb5
     end
     
     typesig { [Array.typed(::Java::Byte), ::Java::Int, ::Java::Int] }
-    # 
     # Computes the checksum based on the algorithm stored in the
     # tokenHeader.
     # 
@@ -474,7 +464,6 @@ module Sun::Security::Jgss::Krb5
     end
     
     typesig { [::Java::Int, Krb5Context] }
-    # 
     # Constructs an empty MessageToken for the local context to send to
     # the peer. It also increments the local sequence number in the
     # Krb5Context instance it uses after obtaining the object lock for
@@ -507,7 +496,6 @@ module Sun::Security::Jgss::Krb5
       @seq_number_data = nil
       @token_header = nil
       @cipher_helper = nil
-      # 
       # debug("\n============================");
       # debug("\nMySessionKey=" +
       # getHexBytes(context.getMySessionKey().getBytes()));
@@ -531,7 +519,6 @@ module Sun::Security::Jgss::Krb5
     end
     
     typesig { [OutputStream] }
-    # 
     # Encodes a GSSHeader and this token onto an OutputStream.
     # 
     # @param os the OutputStream to which this should be written
@@ -547,7 +534,6 @@ module Sun::Security::Jgss::Krb5
     end
     
     typesig { [] }
-    # 
     # Obtains the size of this token. Note that this excludes the size of
     # the GSSHeader.
     # @return token size
@@ -665,7 +651,6 @@ module Sun::Security::Jgss::Krb5
         end
         
         typesig { [InputStream, MessageProp, ::Java::Int] }
-        # 
         # Constructs a MessageTokenHeader by reading it from an InputStream
         # and sets the appropriate confidentiality and quality of protection
         # values in a MessageProp structure.
@@ -679,7 +664,6 @@ module Sun::Security::Jgss::Krb5
           @bytes = Array.typed(::Java::Byte).new(TOKEN_HEADER_SIZE) { 0 }
           read_fully(is, @bytes, 0, TOKEN_HEADER_SIZE)
           @token_id = read_int(@bytes, TOKEN_ID_POS)
-          # 
           # Validate new GSS TokenHeader
           # 
           # valid acceptor_flag is set
@@ -725,7 +709,6 @@ module Sun::Security::Jgss::Krb5
         end
         
         typesig { [OutputStream] }
-        # 
         # Encodes this MessageTokenHeader onto an OutputStream
         # @param os the OutputStream to write to
         # @throws IOException is an error occurs while writing
@@ -734,7 +717,6 @@ module Sun::Security::Jgss::Krb5
         end
         
         typesig { [] }
-        # 
         # Returns the token id for the message token.
         # @return the token id
         # @see sun.security.jgss.krb5.Krb5Token#MIC_ID_v2
@@ -744,7 +726,6 @@ module Sun::Security::Jgss::Krb5
         end
         
         typesig { [] }
-        # 
         # Returns the bytes of this header.
         # @return 8 bytes that form this header
         def get_bytes

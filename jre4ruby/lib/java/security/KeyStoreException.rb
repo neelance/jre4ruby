@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 1997-2003 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -31,7 +30,6 @@ module Java::Security
     }
   end
   
-  # 
   # This is the generic KeyStore exception.
   # 
   # @author Jan Luehe
@@ -47,7 +45,6 @@ module Java::Security
     }
     
     typesig { [] }
-    # 
     # Constructs a KeyStoreException with no detail message.  (A
     # detail message is a String that describes this particular
     # exception.)
@@ -56,7 +53,6 @@ module Java::Security
     end
     
     typesig { [String] }
-    # 
     # Constructs a KeyStoreException with the specified detail
     # message.  (A detail message is a String that describes this
     # particular exception.)
@@ -67,7 +63,6 @@ module Java::Security
     end
     
     typesig { [String, Exception] }
-    # 
     # Creates a <code>KeyStoreException</code> with the specified
     # detail message and cause.
     # 
@@ -82,7 +77,6 @@ module Java::Security
     end
     
     typesig { [Exception] }
-    # 
     # Creates a <code>KeyStoreException</code> with the specified cause
     # and a detail message of <tt>(cause==null ? null : cause.toString())</tt>
     # (which typically contains the class and detail message of

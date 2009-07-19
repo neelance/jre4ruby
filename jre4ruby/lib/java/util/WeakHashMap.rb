@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 1998-2007 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -33,7 +32,6 @@ module Java::Util
     }
   end
   
-  # 
   # A hashtable-based <tt>Map</tt> implementation with <em>weak keys</em>.
   # An entry in a <tt>WeakHashMap</tt> will automatically be removed when
   # its key is no longer in ordinary use.  More precisely, the presence of a
@@ -135,25 +133,21 @@ module Java::Util
     include Map
     
     class_module.module_eval {
-      # 
       # The default initial capacity -- MUST be a power of two.
       const_set_lazy(:DEFAULT_INITIAL_CAPACITY) { 16 }
       const_attr_reader  :DEFAULT_INITIAL_CAPACITY
       
-      # 
       # The maximum capacity, used if a higher value is implicitly specified
       # by either of the constructors with arguments.
       # MUST be a power of two <= 1<<30.
       const_set_lazy(:MAXIMUM_CAPACITY) { 1 << 30 }
       const_attr_reader  :MAXIMUM_CAPACITY
       
-      # 
       # The load factor used when none specified in constructor.
       const_set_lazy(:DEFAULT_LOAD_FACTOR) { 0.75 }
       const_attr_reader  :DEFAULT_LOAD_FACTOR
     }
     
-    # 
     # The table, resized as necessary. Length MUST Always be a power of two.
     attr_accessor :table
     alias_method :attr_table, :table
@@ -161,7 +155,6 @@ module Java::Util
     alias_method :attr_table=, :table=
     undef_method :table=
     
-    # 
     # The number of key-value mappings contained in this weak hash map.
     attr_accessor :size
     alias_method :attr_size, :size
@@ -169,7 +162,6 @@ module Java::Util
     alias_method :attr_size=, :size=
     undef_method :size=
     
-    # 
     # The next size value at which to resize (capacity * load factor).
     attr_accessor :threshold
     alias_method :attr_threshold, :threshold
@@ -177,7 +169,6 @@ module Java::Util
     alias_method :attr_threshold=, :threshold=
     undef_method :threshold=
     
-    # 
     # The load factor for the hash table.
     attr_accessor :load_factor
     alias_method :attr_load_factor, :load_factor
@@ -185,7 +176,6 @@ module Java::Util
     alias_method :attr_load_factor=, :load_factor=
     undef_method :load_factor=
     
-    # 
     # Reference queue for cleared WeakEntries
     attr_accessor :queue
     alias_method :attr_queue, :queue
@@ -193,7 +183,6 @@ module Java::Util
     alias_method :attr_queue=, :queue=
     undef_method :queue=
     
-    # 
     # The number of times this WeakHashMap has been structurally modified.
     # Structural modifications are those that change the number of
     # mappings in the map or otherwise modify its internal structure
@@ -213,7 +202,6 @@ module Java::Util
     end
     
     typesig { [::Java::Int, ::Java::Float] }
-    # 
     # Constructs a new, empty <tt>WeakHashMap</tt> with the given initial
     # capacity and the given load factor.
     # 
@@ -251,7 +239,6 @@ module Java::Util
     end
     
     typesig { [::Java::Int] }
-    # 
     # Constructs a new, empty <tt>WeakHashMap</tt> with the given initial
     # capacity and the default load factor (0.75).
     # 
@@ -262,7 +249,6 @@ module Java::Util
     end
     
     typesig { [] }
-    # 
     # Constructs a new, empty <tt>WeakHashMap</tt> with the default initial
     # capacity (16) and load factor (0.75).
     def initialize
@@ -282,7 +268,6 @@ module Java::Util
     end
     
     typesig { [Map] }
-    # 
     # Constructs a new <tt>WeakHashMap</tt> with the same mappings as the
     # specified map.  The <tt>WeakHashMap</tt> is created with the default
     # load factor (0.75) and an initial capacity sufficient to hold the
@@ -304,21 +289,18 @@ module Java::Util
       const_attr_reader  :NULL_KEY
       
       typesig { [Object] }
-      # 
       # Use NULL_KEY for key if it is null.
       def mask_null(key)
         return ((key).nil?) ? NULL_KEY : key
       end
       
       typesig { [Object] }
-      # 
       # Returns internal representation of null key back to caller as null.
       def unmask_null(key)
         return ((key).equal?(NULL_KEY)) ? nil : key
       end
       
       typesig { [Object, Object] }
-      # 
       # Checks for equality of non-null reference x and possibly-null y.  By
       # default uses Object.equals.
       def eq(x, y)
@@ -326,7 +308,6 @@ module Java::Util
       end
       
       typesig { [::Java::Int, ::Java::Int] }
-      # 
       # Returns index for hash code h.
       def index_for(h, length)
         return h & (length - 1)
@@ -334,7 +315,6 @@ module Java::Util
     }
     
     typesig { [] }
-    # 
     # Expunges stale entries from the table.
     def expunge_stale_entries
       x = nil
@@ -366,7 +346,6 @@ module Java::Util
     end
     
     typesig { [] }
-    # 
     # Returns the table after first expunging stale entries.
     def get_table
       expunge_stale_entries
@@ -374,7 +353,6 @@ module Java::Util
     end
     
     typesig { [] }
-    # 
     # Returns the number of key-value mappings in this map.
     # This result is a snapshot, and may not reflect unprocessed
     # entries that will be removed before next attempted access
@@ -388,7 +366,6 @@ module Java::Util
     end
     
     typesig { [] }
-    # 
     # Returns <tt>true</tt> if this map contains no key-value mappings.
     # This result is a snapshot, and may not reflect unprocessed
     # entries that will be removed before next attempted access
@@ -398,7 +375,6 @@ module Java::Util
     end
     
     typesig { [Object] }
-    # 
     # Returns the value to which the specified key is mapped,
     # or {@code null} if this map contains no mapping for the key.
     # 
@@ -430,7 +406,6 @@ module Java::Util
     end
     
     typesig { [Object] }
-    # 
     # Returns <tt>true</tt> if this map contains a mapping for the
     # specified key.
     # 
@@ -442,7 +417,6 @@ module Java::Util
     end
     
     typesig { [Object] }
-    # 
     # Returns the entry associated with the specified key in this map.
     # Returns null if the map contains no mapping for this key.
     def get_entry(key)
@@ -458,7 +432,6 @@ module Java::Util
     end
     
     typesig { [Object, Object] }
-    # 
     # Associates the specified value with the specified key in this map.
     # If the map previously contained a mapping for this key, the old
     # value is replaced.
@@ -495,7 +468,6 @@ module Java::Util
     end
     
     typesig { [::Java::Int] }
-    # 
     # Rehashes the contents of this map into a new array with a
     # larger capacity.  This method is called automatically when the
     # number of keys in this map reaches its threshold.
@@ -518,7 +490,6 @@ module Java::Util
       new_table_ = new_table(new_capacity)
       transfer(old_table, new_table_)
       @table = new_table_
-      # 
       # If ignoring null elements and processing ref queue caused massive
       # shrinkage, then restore old table.  This should be rare, but avoids
       # unbounded expansion of garbage-filled tables.
@@ -557,7 +528,6 @@ module Java::Util
     end
     
     typesig { [Map] }
-    # 
     # Copies all of the mappings from the specified map to this map.
     # These mappings will replace any mappings that this map had for any
     # of the keys currently in the specified map.
@@ -569,7 +539,6 @@ module Java::Util
       if ((num_keys_to_be_added).equal?(0))
         return
       end
-      # 
       # Expand the map if the map if the number of mappings to be added
       # is greater than or equal to threshold.  This is conservative; the
       # obvious condition is (m.size() + size) >= threshold, but this
@@ -596,7 +565,6 @@ module Java::Util
     end
     
     typesig { [Object] }
-    # 
     # Removes the mapping for a key from this weak hash map if it is present.
     # More formally, if this map contains a mapping from key <tt>k</tt> to
     # value <tt>v</tt> such that <code>(key==null ?  k==null :
@@ -672,7 +640,6 @@ module Java::Util
     end
     
     typesig { [] }
-    # 
     # Removes all of the mappings from this map.
     # The map will be empty after this call returns.
     def clear
@@ -691,7 +658,6 @@ module Java::Util
     end
     
     typesig { [Object] }
-    # 
     # Returns <tt>true</tt> if this map maps one or more keys to the
     # specified value.
     # 
@@ -717,7 +683,6 @@ module Java::Util
     end
     
     typesig { [] }
-    # 
     # Special-case code for containsValue with null argument
     def contains_null_value
       tab = get_table
@@ -735,7 +700,6 @@ module Java::Util
     end
     
     class_module.module_eval {
-      # 
       # The entries in this hash table extend WeakReference, using its main ref
       # field as the key.
       const_set_lazy(:Entry) { Class.new(WeakReference) do
@@ -761,7 +725,6 @@ module Java::Util
         undef_method :next=
         
         typesig { [Object, Object, ReferenceQueue, ::Java::Int, Entry] }
-        # 
         # Creates new entry.
         def initialize(key, value, queue, hash, next_)
           @value = nil
@@ -853,7 +816,6 @@ module Java::Util
         alias_method :attr_expected_mod_count=, :expected_mod_count=
         undef_method :expected_mod_count=
         
-        # 
         # Strong reference needed to avoid disappearance of key
         # between hasNext and next
         attr_accessor :next_key
@@ -862,7 +824,6 @@ module Java::Util
         alias_method :attr_next_key=, :next_key=
         undef_method :next_key=
         
-        # 
         # Strong reference needed to avoid disappearance of key
         # between nextEntry() and any use of the entry
         attr_accessor :current_key
@@ -1002,7 +963,6 @@ module Java::Util
     undef_method :entry_set=
     
     typesig { [] }
-    # 
     # Returns a {@link Set} view of the keys contained in this map.
     # The set is backed by the map, so changes to the map are
     # reflected in the set, and vice-versa.  If the map is modified
@@ -1065,7 +1025,6 @@ module Java::Util
     }
     
     typesig { [] }
-    # 
     # Returns a {@link Collection} view of the values contained in this map.
     # The collection is backed by the map, so changes to the map are
     # reflected in the collection, and vice-versa.  If the map is
@@ -1118,7 +1077,6 @@ module Java::Util
     }
     
     typesig { [] }
-    # 
     # Returns a {@link Set} view of the mappings contained in this map.
     # The set is backed by the map, so changes to the map are
     # reflected in the set, and vice-versa.  If the map is modified

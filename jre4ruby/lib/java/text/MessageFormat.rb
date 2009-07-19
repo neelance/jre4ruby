@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 1996-2006 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -51,7 +50,6 @@ module Java::Text
     }
   end
   
-  # 
   # <code>MessageFormat</code> provides a means to produce concatenated
   # messages in a language-neutral way. Use this to construct messages
   # displayed for end users.
@@ -356,7 +354,6 @@ module Java::Text
     }
     
     typesig { [String] }
-    # 
     # Constructs a MessageFormat for the default locale and the
     # specified pattern.
     # The constructor first sets the locale, then parses the pattern and
@@ -384,7 +381,6 @@ module Java::Text
     end
     
     typesig { [String, Locale] }
-    # 
     # Constructs a MessageFormat for the specified locale and
     # pattern.
     # The constructor first sets the locale, then parses the pattern and
@@ -414,7 +410,6 @@ module Java::Text
     end
     
     typesig { [Locale] }
-    # 
     # Sets the locale to be used when creating or comparing subformats.
     # This affects subsequent calls
     # <ul>
@@ -435,7 +430,6 @@ module Java::Text
     end
     
     typesig { [] }
-    # 
     # Gets the locale that's used when creating or comparing subformats.
     # 
     # @return the locale used when creating or comparing subformats
@@ -444,7 +438,6 @@ module Java::Text
     end
     
     typesig { [String] }
-    # 
     # Sets the pattern used by this message format.
     # The method parses the pattern and creates a list of subformats
     # for the format elements contained in it.
@@ -529,7 +522,6 @@ module Java::Text
     end
     
     typesig { [] }
-    # 
     # Returns a pattern representing the current state of the message format.
     # The string is constructed from internal information and therefore
     # does not necessarily equal the previously applied pattern.
@@ -626,7 +618,6 @@ module Java::Text
     end
     
     typesig { [Array.typed(Format)] }
-    # 
     # Sets the formats to use for the values passed into
     # <code>format</code> methods or returned from <code>parse</code>
     # methods. The indices of elements in <code>newFormats</code>
@@ -660,7 +651,6 @@ module Java::Text
     end
     
     typesig { [Array.typed(Format)] }
-    # 
     # Sets the formats to use for the format elements in the
     # previously set pattern string.
     # The order of formats in <code>newFormats</code> corresponds to
@@ -694,7 +684,6 @@ module Java::Text
     end
     
     typesig { [::Java::Int, Format] }
-    # 
     # Sets the format to use for the format elements within the
     # previously set pattern string that use the given argument
     # index.
@@ -722,7 +711,6 @@ module Java::Text
     end
     
     typesig { [::Java::Int, Format] }
-    # 
     # Sets the format to use for the format element with the given
     # format element index within the previously set pattern string.
     # The format element index is the zero-based number of the format
@@ -743,7 +731,6 @@ module Java::Text
     end
     
     typesig { [] }
-    # 
     # Gets the formats used for the values passed into
     # <code>format</code> methods or returned from <code>parse</code>
     # methods. The indices of elements in the returned array
@@ -781,7 +768,6 @@ module Java::Text
     end
     
     typesig { [] }
-    # 
     # Gets the formats used for the format elements in the
     # previously set pattern string.
     # The order of formats in the returned array corresponds to
@@ -803,7 +789,6 @@ module Java::Text
     end
     
     typesig { [Array.typed(Object), StringBuffer, FieldPosition] }
-    # 
     # Formats an array of objects and appends the <code>MessageFormat</code>'s
     # pattern, with format elements replaced by the formatted objects, to the
     # provided <code>StringBuffer</code>.
@@ -873,7 +858,6 @@ module Java::Text
     
     class_module.module_eval {
       typesig { [String, Object] }
-      # 
       # Creates a MessageFormat with the given pattern and uses it
       # to format the given arguments. This is equivalent to
       # <blockquote>
@@ -913,7 +897,6 @@ module Java::Text
     end
     
     typesig { [Object] }
-    # 
     # Formats an array of objects and inserts them into the
     # <code>MessageFormat</code>'s pattern, producing an
     # <code>AttributedCharacterIterator</code>.
@@ -961,7 +944,6 @@ module Java::Text
     end
     
     typesig { [String, ParsePosition] }
-    # 
     # Parses the string.
     # 
     # <p>Caveats: The parse may fail in a number of circumstances.
@@ -1049,9 +1031,9 @@ module Java::Text
         end
         (i_ += 1)
       end
-      len_ = @pattern.length - pattern_offset
-      if ((len_).equal?(0) || @pattern.region_matches(pattern_offset, source, source_offset, len_))
-        pos.attr_index = source_offset + len_
+      len = @pattern.length - pattern_offset
+      if ((len).equal?(0) || @pattern.region_matches(pattern_offset, source, source_offset, len))
+        pos.attr_index = source_offset + len
       else
         pos.attr_error_index = source_offset
         return nil # leave index as is to signal error
@@ -1060,7 +1042,6 @@ module Java::Text
     end
     
     typesig { [String] }
-    # 
     # Parses text from the beginning of the given string to produce an object
     # array.
     # The method may not use the entire text of the given string.
@@ -1083,7 +1064,6 @@ module Java::Text
     end
     
     typesig { [String, ParsePosition] }
-    # 
     # Parses text from a string to produce an object array.
     # <p>
     # The method attempts to parse text starting at the index given by
@@ -1111,7 +1091,6 @@ module Java::Text
     end
     
     typesig { [] }
-    # 
     # Creates and returns a copy of this object.
     # 
     # @return a clone of this instance.
@@ -1133,7 +1112,6 @@ module Java::Text
     end
     
     typesig { [Object] }
-    # 
     # Equality comparison between two message format objects
     def equals(obj)
       if ((self).equal?(obj))
@@ -1148,14 +1126,12 @@ module Java::Text
     end
     
     typesig { [] }
-    # 
     # Generates a hash code for the message format object.
     def hash_code
       return @pattern.hash_code # enough for reasonable distribution
     end
     
     class_module.module_eval {
-      # 
       # Defines constants that are used as attribute keys in the
       # <code>AttributedCharacterIterator</code> returned
       # from <code>MessageFormat.formatToCharacterIterator</code>.
@@ -1171,7 +1147,6 @@ module Java::Text
         }
         
         typesig { [String] }
-        # 
         # Creates a Field with the specified name.
         # 
         # @param name Name of the attribute
@@ -1180,7 +1155,6 @@ module Java::Text
         end
         
         typesig { [] }
-        # 
         # Resolves instances being deserialized to the predefined constants.
         # 
         # @throws InvalidObjectException if the constant could not be
@@ -1194,7 +1168,6 @@ module Java::Text
         end
         
         class_module.module_eval {
-          # 
           # The constants
           # 
           # 
@@ -1222,7 +1195,6 @@ module Java::Text
     alias_method :attr_locale=, :locale=
     undef_method :locale=
     
-    # 
     # The string that the formatted values are to be plugged into.  In other words, this
     # is the pattern supplied on construction with all of the {} expressions taken out.
     # @serial
@@ -1238,7 +1210,6 @@ module Java::Text
       const_attr_reader  :INITIAL_FORMATS
     }
     
-    # 
     # An array of formatters, which are used to format the arguments.
     # @serial
     attr_accessor :formats
@@ -1247,7 +1218,6 @@ module Java::Text
     alias_method :attr_formats=, :formats=
     undef_method :formats=
     
-    # 
     # The positions where the results of formatting each argument are to be inserted
     # into the pattern.
     # @serial
@@ -1257,7 +1227,6 @@ module Java::Text
     alias_method :attr_offsets=, :offsets=
     undef_method :offsets=
     
-    # 
     # The argument numbers corresponding to each formatter.  (The formatters are stored
     # in the order they occur in the pattern, not in the order in which the arguments
     # are specified.)
@@ -1268,7 +1237,6 @@ module Java::Text
     alias_method :attr_argument_numbers=, :argument_numbers=
     undef_method :argument_numbers=
     
-    # 
     # One less than the number of entries in <code>offsets</code>.  Can also be thought of
     # as the index of the highest-numbered element in <code>offsets</code> that is being used.
     # All of these arrays should have the same number of elements being used as <code>offsets</code>
@@ -1281,7 +1249,6 @@ module Java::Text
     undef_method :max_offset=
     
     typesig { [Array.typed(Object), StringBuffer, FieldPosition, JavaList] }
-    # 
     # Internal routine used by format. If <code>characterIterators</code> is
     # non-null, AttributedCharacterIterator will be created from the
     # subformats as necessary. If <code>characterIterators</code> is null
@@ -1397,7 +1364,6 @@ module Java::Text
     end
     
     typesig { [StringBuffer, CharacterIterator] }
-    # 
     # Convenience method to append all the characters in
     # <code>iterator</code> to the StringBuffer <code>result</code>.
     def append(result, iterator)
@@ -1571,7 +1537,6 @@ module Java::Text
     }
     
     typesig { [ObjectInputStream] }
-    # 
     # After reading an object from the input stream, do a simple verification
     # to maintain class invariants.
     # @throws InvalidObjectException if the objects read from the stream is invalid.

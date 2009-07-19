@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 2005 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -34,7 +33,6 @@ module Java::Text::Spi
     }
   end
   
-  # 
   # An abstract class for service providers that
   # provide concrete implementations of the
   # {@link java.text.DateFormat DateFormat} class.
@@ -44,7 +42,6 @@ module Java::Text::Spi
     include_class_members DateFormatProviderImports
     
     typesig { [] }
-    # 
     # Sole constructor.  (For invocation by subclass constructors, typically
     # implicit.)
     def initialize
@@ -52,7 +49,6 @@ module Java::Text::Spi
     end
     
     typesig { [::Java::Int, Locale] }
-    # 
     # Returns a new <code>DateFormat</code> instance which formats time
     # with the given formatting style for the specified locale.
     # @param style the given formatting style.  Either one of
@@ -74,7 +70,6 @@ module Java::Text::Spi
     end
     
     typesig { [::Java::Int, Locale] }
-    # 
     # Returns a new <code>DateFormat</code> instance which formats date
     # with the given formatting style for the specified locale.
     # @param style the given formatting style.  Either one of
@@ -96,7 +91,6 @@ module Java::Text::Spi
     end
     
     typesig { [::Java::Int, ::Java::Int, Locale] }
-    # 
     # Returns a new <code>DateFormat</code> instance which formats date and time
     # with the given formatting style for the specified locale.
     # @param dateStyle the given date formatting style.  Either one of

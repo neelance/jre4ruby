@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 2003 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -31,7 +30,6 @@ module Java::Security::Spec
     }
   end
   
-  # 
   # This immutable class specifies the set of parameters used for
   # generating elliptic curve (EC) domain parameters.
   # 
@@ -51,7 +49,6 @@ module Java::Security::Spec
     undef_method :name=
     
     typesig { [String] }
-    # 
     # Creates a parameter specification for EC parameter
     # generation using a standard (or predefined) name
     # <code>stdName</code> in order to generate the corresponding
@@ -71,7 +68,6 @@ module Java::Security::Spec
     end
     
     typesig { [] }
-    # 
     # Returns the standard or predefined name of the
     # to-be-generated EC domain parameters.
     # @return the standard or predefined name.

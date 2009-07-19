@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Portions Copyright 2000-2006 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -46,7 +45,6 @@ module Sun::Security::Krb5::Internal::Ktab
     }
   end
   
-  # 
   # This class represents key table. The key table functions deal with storing
   # and retrieving service keys for use in authentication exchanges.
   # 
@@ -112,7 +110,6 @@ module Sun::Security::Krb5::Internal::Ktab
       end
       
       typesig { [JavaFile] }
-      # 
       # Gets the single instance of KeyTab class.
       # @param file the key tab file.
       # @return single instance of KeyTab;
@@ -147,7 +144,6 @@ module Sun::Security::Krb5::Internal::Ktab
       end
       
       typesig { [] }
-      # 
       # Gets the single instance of KeyTab class.
       # @return single instance of KeyTab; return null if default keytab file
       # does not exist, or error occurs while reading data from the file.
@@ -167,7 +163,6 @@ module Sun::Security::Krb5::Internal::Ktab
       end
       
       typesig { [] }
-      # 
       # The location of keytab file will be read from the configuration file
       # If it is not specified, consider user.home as the keytab file's
       # default location.
@@ -262,7 +257,6 @@ module Sun::Security::Krb5::Internal::Ktab
     end
     
     typesig { [PrincipalName] }
-    # 
     # Reads the service key from the keytab file.
     # @param service the PrincipalName of the requested service.
     # @return the last service key in the keytab
@@ -290,7 +284,6 @@ module Sun::Security::Krb5::Internal::Ktab
     end
     
     typesig { [PrincipalName] }
-    # 
     # Reads all keys for a service from the keytab file that have
     # etypes that have been configured for use.
     # @param service the PrincipalName of the requested service
@@ -336,37 +329,37 @@ module Sun::Security::Krb5::Internal::Ktab
         # Either no supported types specified in default_tkt_enctypes
         # or no default_tkt_enctypes entry at all. For both cases,
         # just return supported keys in the order retrieved
-        i_ = 0
-        while i_ < size_
-          ret_val[((pos += 1) - 1)] = keys.get(i_)
-          ((i_ += 1) - 1)
+        i = 0
+        while i < size_
+          ret_val[((pos += 1) - 1)] = keys.get(i)
+          ((i += 1) - 1)
         end
       else
         j = 0
         while j < etypes.attr_length && pos < size_
           target = etypes[j]
-          i__ = 0
-          while i__ < size_ && pos < size_
-            k = keys.get(i__)
+          i = 0
+          while i < size_ && pos < size_
+            k = keys.get(i)
             if (!(k).nil? && (k.get_etype).equal?(target))
               if (DEBUG)
                 System.out.println((pos).to_s + ": " + (k).to_s)
               end
               ret_val[((pos += 1) - 1)] = k
-              keys.set(i__, nil) # Cleared from consideration
+              keys.set(i, nil) # Cleared from consideration
             end
-            ((i__ += 1) - 1)
+            ((i += 1) - 1)
           end
           ((j += 1) - 1)
         end
         # copy the rest
-        i___ = 0
-        while i___ < size_ && pos < size_
-          k = keys.get(i___)
+        i = 0
+        while i < size_ && pos < size_
+          k = keys.get(i)
           if (!(k).nil?)
             ret_val[((pos += 1) - 1)] = k
           end
-          ((i___ += 1) - 1)
+          ((i += 1) - 1)
         end
       end
       if (!(pos).equal?(size_))
@@ -376,7 +369,6 @@ module Sun::Security::Krb5::Internal::Ktab
     end
     
     typesig { [PrincipalName] }
-    # 
     # Searches for the service entry in the keytab file.
     # The etype of the key must be one that has been configured
     # to be used.
@@ -411,7 +403,6 @@ module Sun::Security::Krb5::Internal::Ktab
     }
     
     typesig { [PrincipalName, Array.typed(::Java::Char)] }
-    # 
     # Adds a new entry in the key table.
     # @param service the service which will have a new entry in the key table.
     # @param psswd the password which generates the key.
@@ -441,7 +432,6 @@ module Sun::Security::Krb5::Internal::Ktab
     end
     
     typesig { [PrincipalName, ::Java::Int] }
-    # 
     # Retrieves the key table entry with the specified service name.
     # @param service the service which may have an entry in the key table.
     # @return -1 if the entry is not found, else return the entry index
@@ -463,7 +453,6 @@ module Sun::Security::Krb5::Internal::Ktab
     end
     
     typesig { [] }
-    # 
     # Gets the list of service entries in key table.
     # @return array of <code>KeyTabEntry</code>.
     def get_entries
@@ -482,7 +471,6 @@ module Sun::Security::Krb5::Internal::Ktab
     
     class_module.module_eval {
       typesig { [] }
-      # 
       # Creates a new default key table.
       def create
         synchronized(self) do
@@ -492,7 +480,6 @@ module Sun::Security::Krb5::Internal::Ktab
       end
       
       typesig { [String] }
-      # 
       # Creates a new default key table.
       def create(name)
         synchronized(self) do
@@ -506,7 +493,6 @@ module Sun::Security::Krb5::Internal::Ktab
     }
     
     typesig { [] }
-    # 
     # Saves the file at the directory.
     def save
       synchronized(self) do
@@ -522,7 +508,6 @@ module Sun::Security::Krb5::Internal::Ktab
     end
     
     typesig { [PrincipalName] }
-    # 
     # Removes an entry from the key table.
     # @param service the service <code>PrincipalName</code>.
     def delete_entry(service)
@@ -533,7 +518,6 @@ module Sun::Security::Krb5::Internal::Ktab
     end
     
     typesig { [JavaFile] }
-    # 
     # Creates key table file version.
     # @param file the key table file.
     # @exception IOException.

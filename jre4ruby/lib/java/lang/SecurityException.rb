@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 1995-2003 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -30,7 +29,6 @@ module Java::Lang
     }
   end
   
-  # 
   # Thrown by the security manager to indicate a security violation.
   # 
   # @author  unascribed
@@ -45,14 +43,12 @@ module Java::Lang
     }
     
     typesig { [] }
-    # 
     # Constructs a <code>SecurityException</code> with no detail  message.
     def initialize
       super()
     end
     
     typesig { [String] }
-    # 
     # Constructs a <code>SecurityException</code> with the specified
     # detail message.
     # 
@@ -62,7 +58,6 @@ module Java::Lang
     end
     
     typesig { [String, Exception] }
-    # 
     # Creates a <code>SecurityException</code> with the specified
     # detail message and cause.
     # 
@@ -77,7 +72,6 @@ module Java::Lang
     end
     
     typesig { [Exception] }
-    # 
     # Creates a <code>SecurityException</code> with the specified cause
     # and a detail message of <tt>(cause==null ? null : cause.toString())</tt>
     # (which typically contains the class and detail message of

@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
 # This code is free software; you can redistribute it and/or modify it
@@ -135,7 +134,6 @@ module Sun::Security::Krb5::Internal::Crypto
       end
       
       typesig { [Array.typed(::Java::Byte), Array.typed(::Java::Byte), Array.typed(::Java::Byte), Array.typed(::Java::Byte), ::Java::Boolean] }
-      # 
       # Creates a DES cipher in Electronic Codebook mode, with no padding.
       # @param input plain text.
       # @param output the buffer for the result.
@@ -167,14 +165,13 @@ module Sun::Security::Krb5::Internal::Crypto
           result = cipher.do_final(input)
           System.arraycopy(result, 0, output, 0, result.attr_length)
         rescue GeneralSecurityException => e
-          ke_ = KrbCryptoException.new(e_.get_message)
-          ke_.init_cause(e_)
-          raise ke_
+          ke = KrbCryptoException.new(e.get_message)
+          ke.init_cause(e)
+          raise ke
         end
       end
       
       typesig { [Array.typed(::Java::Char)] }
-      # 
       # Generates DES key from the password.
       # @param password a char[] used to create the key.
       # @return DES key.
@@ -226,9 +223,9 @@ module Sun::Security::Krb5::Internal::Crypto
         newkey = des_cksum(long2octet(key), passwd_bytes, long2octet(key))
         key = octet2long(set_parity(newkey))
         if (bad_key(key))
-          temp_ = long2octet(key)
-          temp_[7] ^= 0xf0
-          key = octet2long(temp_)
+          temp = long2octet(key)
+          temp[7] ^= 0xf0
+          key = octet2long(temp)
         end
         # clear-up sensitive information
         if (!(cbytes).nil?)
@@ -241,7 +238,6 @@ module Sun::Security::Krb5::Internal::Crypto
       end
       
       typesig { [Array.typed(::Java::Byte), Array.typed(::Java::Byte), Array.typed(::Java::Byte)] }
-      # 
       # Encrypts the message blocks using DES CBC and output the
       # final block of 8-byte ciphertext.
       # @param ivec Initialization vector.
@@ -274,15 +270,14 @@ module Sun::Security::Krb5::Internal::Crypto
             ((i += 1) - 1)
           end
         rescue GeneralSecurityException => e
-          ke_ = KrbCryptoException.new(e_.get_message)
-          ke_.init_cause(e_)
-          raise ke_
+          ke = KrbCryptoException.new(e.get_message)
+          ke.init_cause(e)
+          raise ke
         end
         return result
       end
       
       typesig { [Array.typed(::Java::Byte)] }
-      # 
       # Pads the data so that its length is a multiple of 8 bytes.
       # @param data the raw data.
       # @return the data being padded.

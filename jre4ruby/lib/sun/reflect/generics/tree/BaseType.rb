@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 2003 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -31,7 +30,6 @@ module Sun::Reflect::Generics::Tree
     }
   end
   
-  # 
   # Common superinterface for all nodes representing a primitive type.
   # Corresponds to the production of the same name in the JVMS
   # section on signatures.

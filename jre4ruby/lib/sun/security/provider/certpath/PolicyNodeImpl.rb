@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 2000-2006 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -36,7 +35,6 @@ module Sun::Security::Provider::Certpath
     }
   end
   
-  # 
   # Implements the <code>PolicyNode</code> interface.
   # <p>
   # This class provides an implementation of the <code>PolicyNode</code>
@@ -53,7 +51,6 @@ module Sun::Security::Provider::Certpath
     include PolicyNode
     
     class_module.module_eval {
-      # 
       # Use to specify the special policy "Any Policy"
       const_set_lazy(:ANY_POLICY) { "2.5.29.32.0" }
       const_attr_reader  :ANY_POLICY
@@ -118,7 +115,6 @@ module Sun::Security::Provider::Certpath
     undef_method :is_immutable=
     
     typesig { [PolicyNodeImpl, String, JavaSet, ::Java::Boolean, JavaSet, ::Java::Boolean] }
-    # 
     # Constructor which takes a <code>PolicyNodeImpl</code> representing the
     # parent in the Policy Tree to this node. If null, this is the
     # root of the tree. The constructor also takes the associated data
@@ -174,7 +170,6 @@ module Sun::Security::Provider::Certpath
     end
     
     typesig { [PolicyNodeImpl, PolicyNodeImpl] }
-    # 
     # Alternate constructor which makes a new node with the policy data
     # in an existing <code>PolicyNodeImpl</code>.
     # 
@@ -221,7 +216,6 @@ module Sun::Security::Provider::Certpath
     end
     
     typesig { [] }
-    # 
     # Return a printable representation of the PolicyNode.
     # Starting at the node on which this method is called,
     # it recurses through the tree and prints out each node.
@@ -243,7 +237,6 @@ module Sun::Security::Provider::Certpath
     end
     
     typesig { [] }
-    # 
     # Sets the immutability flag of this node and all of its children
     # to true.
     def set_immutable
@@ -257,7 +250,6 @@ module Sun::Security::Provider::Certpath
     end
     
     typesig { [PolicyNodeImpl] }
-    # 
     # Private method sets a child node. This is called from the child's
     # constructor.
     # 
@@ -270,7 +262,6 @@ module Sun::Security::Provider::Certpath
     end
     
     typesig { [String] }
-    # 
     # Adds an expectedPolicy to the expected policy set.
     # If this is the original expected policy set initialized
     # by the constructor, then the expected policy set is cleared
@@ -289,7 +280,6 @@ module Sun::Security::Provider::Certpath
     end
     
     typesig { [::Java::Int] }
-    # 
     # Removes all paths which don't reach the specified depth.
     # 
     # @param depth an int representing the desired minimum depth of all paths
@@ -314,7 +304,6 @@ module Sun::Security::Provider::Certpath
     end
     
     typesig { [PolicyNode] }
-    # 
     # Deletes the specified child node of this node, if it exists.
     # 
     # @param childNode the child node to be deleted
@@ -326,7 +315,6 @@ module Sun::Security::Provider::Certpath
     end
     
     typesig { [] }
-    # 
     # Returns a copy of the tree, without copying the policy-related data,
     # rooted at the node on which this was called.
     # 
@@ -345,7 +333,6 @@ module Sun::Security::Provider::Certpath
     end
     
     typesig { [::Java::Int] }
-    # 
     # Returns all nodes at the specified depth in the tree.
     # 
     # @param depth an int representing the depth of the desired nodes
@@ -357,7 +344,6 @@ module Sun::Security::Provider::Certpath
     end
     
     typesig { [::Java::Int, JavaSet] }
-    # 
     # Add all nodes at depth depth to set and return the Set.
     # Internal recursion helper.
     def get_policy_nodes(depth, set)
@@ -372,7 +358,6 @@ module Sun::Security::Provider::Certpath
     end
     
     typesig { [::Java::Int, String, ::Java::Boolean] }
-    # 
     # Finds all nodes at the specified depth whose expected_policy_set
     # contains the specified expected OID (if matchAny is false)
     # or the special OID "any value" (if matchAny is true).
@@ -412,7 +397,6 @@ module Sun::Security::Provider::Certpath
     end
     
     typesig { [::Java::Int, String] }
-    # 
     # Finds all nodes at the specified depth that contains the
     # specified valid OID
     # 
@@ -445,7 +429,6 @@ module Sun::Security::Provider::Certpath
     }
     
     typesig { [] }
-    # 
     # Prints out some data on this node.
     def as_string
       if ((@m_parent).nil?)

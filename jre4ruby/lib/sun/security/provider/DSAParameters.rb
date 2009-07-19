@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 1997-2006 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -41,7 +40,6 @@ module Sun::Security::Provider
     }
   end
   
-  # 
   # This class implements the parameter set used by the
   # Digital Signature Algorithm as specified in the FIPS 186
   # standard.
@@ -135,7 +133,6 @@ module Sun::Security::Provider
     end
     
     typesig { [] }
-    # 
     # Returns a formatted string describing the parameters.
     def engine_to_string
       return "\n\tp: " + (Debug.to_hex_string(@p)).to_s + "\n\tq: " + (Debug.to_hex_string(@q)).to_s + "\n\tg: " + (Debug.to_hex_string(@g)).to_s + "\n"

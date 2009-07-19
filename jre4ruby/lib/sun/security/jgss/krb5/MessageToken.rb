@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 2000-2006 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -40,7 +39,6 @@ module Sun::Security::Jgss::Krb5
     }
   end
   
-  # 
   # This class is a base class for other token definitions that pertain to
   # per-message GSS-API calls. Conceptually GSS-API has two types of
   # per-message tokens: WrapToken and MicToken. They differ in the respect
@@ -85,7 +83,6 @@ module Sun::Security::Jgss::Krb5
       const_set_lazy(:TOKEN_NO_CKSUM_SIZE) { 16 }
       const_attr_reader  :TOKEN_NO_CKSUM_SIZE
       
-      # 
       # Filler data as defined in the specification of the Kerberos v5 GSS-API
       # Mechanism.
       const_set_lazy(:FILLER) { 0xffff }
@@ -206,7 +203,6 @@ module Sun::Security::Jgss::Krb5
     undef_method :cipher_helper=
     
     typesig { [::Java::Int, Krb5Context, Array.typed(::Java::Byte), ::Java::Int, ::Java::Int, MessageProp] }
-    # 
     # Constructs a MessageToken from a byte array. If there are more bytes
     # in the array than needed, the extra bytes are simply ignroed.
     # 
@@ -224,7 +220,6 @@ module Sun::Security::Jgss::Krb5
     end
     
     typesig { [::Java::Int, Krb5Context, InputStream, MessageProp] }
-    # 
     # Constructs a MessageToken from an InputStream. Bytes will be read on
     # demand and the thread might block if there are not enough bytes to
     # complete the token.
@@ -283,7 +278,6 @@ module Sun::Security::Jgss::Krb5
     end
     
     typesig { [] }
-    # 
     # Used to obtain the GSSHeader that was at the start of this
     # token.
     def get_gssheader
@@ -291,7 +285,6 @@ module Sun::Security::Jgss::Krb5
     end
     
     typesig { [] }
-    # 
     # Used to obtain the token id that was contained in this token.
     # @return the token id in the token
     def get_token_id
@@ -299,7 +292,6 @@ module Sun::Security::Jgss::Krb5
     end
     
     typesig { [] }
-    # 
     # Used to obtain the encrypted sequence number in this token.
     # @return the encrypted sequence number in the token
     def get_enc_seq_number
@@ -307,7 +299,6 @@ module Sun::Security::Jgss::Krb5
     end
     
     typesig { [] }
-    # 
     # Used to obtain the checksum that was contained in this token.
     # @return the checksum in the token
     def get_checksum
@@ -315,7 +306,6 @@ module Sun::Security::Jgss::Krb5
     end
     
     typesig { [] }
-    # 
     # Used to determine if this token contains any encrypted data.
     # @return true if it contains any encrypted data, false if there is only
     # plaintext data or if there is no data.
@@ -324,7 +314,6 @@ module Sun::Security::Jgss::Krb5
     end
     
     typesig { [MessageProp, Array.typed(::Java::Byte), Array.typed(::Java::Byte), ::Java::Int, ::Java::Int, Array.typed(::Java::Byte)] }
-    # 
     # Generates the checksum field and the encrypted sequence number
     # field. The encrypted sequence number uses the 8 bytes of the checksum
     # as an initial vector in a fixed DesCbc algorithm.
@@ -398,7 +387,6 @@ module Sun::Security::Jgss::Krb5
     end
     
     typesig { [Array.typed(::Java::Byte), Array.typed(::Java::Byte), ::Java::Int, ::Java::Int, Array.typed(::Java::Byte)] }
-    # 
     # Verifies that the checksum field and sequence number direction bytes
     # are valid and consistent with the application data.
     # 
@@ -453,7 +441,6 @@ module Sun::Security::Jgss::Krb5
     end
     
     typesig { [Array.typed(::Java::Byte), Array.typed(::Java::Byte), ::Java::Int, ::Java::Int, Array.typed(::Java::Byte)] }
-    # 
     # Computes the checksum based on the algorithm stored in the
     # tokenHeader.
     # 
@@ -491,7 +478,6 @@ module Sun::Security::Jgss::Krb5
     end
     
     typesig { [::Java::Int, Krb5Context] }
-    # 
     # Constructs an empty MessageToken for the local context to send to
     # the peer. It also increments the local sequence number in the
     # Krb5Context instance it uses after obtaining the object lock for
@@ -520,7 +506,6 @@ module Sun::Security::Jgss::Krb5
       @enc_seq_number = nil
       @seq_number_data = nil
       @cipher_helper = nil
-      # 
       # debug("\n============================");
       # debug("\nMySessionKey=" +
       # getHexBytes(context.getMySessionKey().getBytes()));
@@ -542,7 +527,6 @@ module Sun::Security::Jgss::Krb5
     end
     
     typesig { [OutputStream] }
-    # 
     # Encodes a GSSHeader and this token onto an OutputStream.
     # 
     # @param os the OutputStream to which this should be written
@@ -558,7 +542,6 @@ module Sun::Security::Jgss::Krb5
     end
     
     typesig { [] }
-    # 
     # Obtains the size of this token. Note that this excludes the size of
     # the GSSHeader.
     # @return token size
@@ -579,7 +562,6 @@ module Sun::Security::Jgss::Krb5
     }
     
     typesig { [::Java::Boolean, ::Java::Int] }
-    # 
     # Obtains the conext key that is associated with this token.
     # @return the context key
     # 
@@ -655,7 +637,6 @@ module Sun::Security::Jgss::Krb5
         undef_method :bytes=
         
         typesig { [::Java::Int, ::Java::Boolean, ::Java::Int] }
-        # 
         # Constructs a MessageTokenHeader for the specified token type with
         # appropriate checksum and encryption algorithms fields.
         # 
@@ -683,7 +664,6 @@ module Sun::Security::Jgss::Krb5
         end
         
         typesig { [InputStream, MessageProp] }
-        # 
         # Constructs a MessageTokenHeader by reading it from an InputStream
         # and sets the appropriate confidentiality and quality of protection
         # values in a MessageProp structure.
@@ -716,7 +696,6 @@ module Sun::Security::Jgss::Krb5
         end
         
         typesig { [OutputStream] }
-        # 
         # Encodes this MessageTokenHeader onto an OutputStream
         # @param os the OutputStream to write to
         # @throws IOException is an error occurs while writing
@@ -725,7 +704,6 @@ module Sun::Security::Jgss::Krb5
         end
         
         typesig { [] }
-        # 
         # Returns the token id for the message token.
         # @return the token id
         # @see sun.security.jgss.krb5.Krb5Token#MIC_ID
@@ -735,7 +713,6 @@ module Sun::Security::Jgss::Krb5
         end
         
         typesig { [] }
-        # 
         # Returns the sign algorithm for the message token.
         # @return the sign algorithm
         # @see sun.security.jgss.krb5.MessageToken#SIGN_DES_MAC
@@ -745,7 +722,6 @@ module Sun::Security::Jgss::Krb5
         end
         
         typesig { [] }
-        # 
         # Returns the seal algorithm for the message token.
         # @return the seal algorithm
         # @see sun.security.jgss.krb5.MessageToken#SEAL_ALG_DES
@@ -755,7 +731,6 @@ module Sun::Security::Jgss::Krb5
         end
         
         typesig { [] }
-        # 
         # Returns the bytes of this header.
         # @return 8 bytes that form this header
         def get_bytes

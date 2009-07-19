@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 1997-2006 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -31,7 +30,6 @@ module Java::Util
     }
   end
   
-  # 
   # This class provides a skeletal implementation of the <tt>Set</tt>
   # interface to minimize the effort required to implement this
   # interface. <p>
@@ -64,7 +62,6 @@ module Java::Util
     include JavaSet
     
     typesig { [] }
-    # 
     # Sole constructor.  (For invocation by subclass constructors, typically
     # implicit.)
     def initialize
@@ -110,7 +107,6 @@ module Java::Util
     end
     
     typesig { [] }
-    # 
     # Returns the hash code value for this set.  The hash code of a set is
     # defined to be the sum of the hash codes of the elements in the set,
     # where the hash code of a <tt>null</tt> element is defined to be zero.
@@ -139,7 +135,6 @@ module Java::Util
     end
     
     typesig { [Collection] }
-    # 
     # Removes from this set all of its elements that are contained in the
     # specified collection (optional operation).  If the specified
     # collection is also a set, this operation effectively modifies this
@@ -181,10 +176,10 @@ module Java::Util
           modified |= remove(i.next)
         end
       else
-        i_ = iterator
-        while i_.has_next
-          if (c.contains(i_.next))
-            i_.remove
+        i = iterator
+        while i.has_next
+          if (c.contains(i.next))
+            i.remove
             modified = true
           end
         end

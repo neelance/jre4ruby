@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 1996-2006 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -31,7 +30,6 @@ module Java::Io
     }
   end
   
-  # 
   # A character-stream reader that allows characters to be pushed back into the
   # stream.
   # 
@@ -55,7 +53,6 @@ module Java::Io
     undef_method :pos=
     
     typesig { [Reader, ::Java::Int] }
-    # 
     # Creates a new pushback reader with a pushback buffer of the given size.
     # 
     # @param   in   The reader from which characters will be read
@@ -73,7 +70,6 @@ module Java::Io
     end
     
     typesig { [Reader] }
-    # 
     # Creates a new pushback reader with a one-character pushback buffer.
     # 
     # @param   in  The reader from which characters will be read
@@ -90,7 +86,6 @@ module Java::Io
     end
     
     typesig { [] }
-    # 
     # Reads a single character.
     # 
     # @return     The character read, or -1 if the end of the stream has been
@@ -109,7 +104,6 @@ module Java::Io
     end
     
     typesig { [Array.typed(::Java::Char), ::Java::Int, ::Java::Int] }
-    # 
     # Reads characters into a portion of an array.
     # 
     # @param      cbuf  Destination buffer
@@ -159,7 +153,6 @@ module Java::Io
     end
     
     typesig { [::Java::Int] }
-    # 
     # Pushes back a single character by copying it to the front of the
     # pushback buffer. After this method returns, the next character to be read
     # will have the value <code>(char)c</code>.
@@ -179,7 +172,6 @@ module Java::Io
     end
     
     typesig { [Array.typed(::Java::Char), ::Java::Int, ::Java::Int] }
-    # 
     # Pushes back a portion of an array of characters by copying it to the
     # front of the pushback buffer.  After this method returns, the next
     # character to be read will have the value <code>cbuf[off]</code>, the
@@ -204,7 +196,6 @@ module Java::Io
     end
     
     typesig { [Array.typed(::Java::Char)] }
-    # 
     # Pushes back an array of characters by copying it to the front of the
     # pushback buffer.  After this method returns, the next character to be
     # read will have the value <code>cbuf[0]</code>, the character after that
@@ -219,7 +210,6 @@ module Java::Io
     end
     
     typesig { [] }
-    # 
     # Tells whether this stream is ready to be read.
     # 
     # @exception  IOException  If an I/O error occurs
@@ -231,7 +221,6 @@ module Java::Io
     end
     
     typesig { [::Java::Int] }
-    # 
     # Marks the present position in the stream. The <code>mark</code>
     # for class <code>PushbackReader</code> always throws an exception.
     # 
@@ -241,7 +230,6 @@ module Java::Io
     end
     
     typesig { [] }
-    # 
     # Resets the stream. The <code>reset</code> method of
     # <code>PushbackReader</code> always throws an exception.
     # 
@@ -251,7 +239,6 @@ module Java::Io
     end
     
     typesig { [] }
-    # 
     # Tells whether this stream supports the mark() operation, which it does
     # not.
     def mark_supported
@@ -259,7 +246,6 @@ module Java::Io
     end
     
     typesig { [] }
-    # 
     # Closes the stream and releases any system resources associated with
     # it. Once the stream has been closed, further read(),
     # unread(), ready(), or skip() invocations will throw an IOException.
@@ -272,7 +258,6 @@ module Java::Io
     end
     
     typesig { [::Java::Long] }
-    # 
     # Skips characters.  This method will block until some characters are
     # available, an I/O error occurs, or the end of the stream is reached.
     # 

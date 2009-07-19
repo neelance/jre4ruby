@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 2000-2007 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -59,7 +58,6 @@ module Sun::Security::Provider::Certpath
     }
   end
   
-  # 
   # CrlRevocationChecker is a <code>PKIXCertPathChecker</code> that checks
   # revocation status information on a PKIX certificate using CRLs obtained
   # from one or more <code>CertStores</code>. This is based on section 6.3
@@ -139,7 +137,6 @@ module Sun::Security::Provider::Certpath
     }
     
     typesig { [TrustAnchor, PKIXParameters] }
-    # 
     # Creates a <code>CrlRevocationChecker</code>.
     # 
     # @param anchor anchor selected to validate the target certificate
@@ -150,7 +147,6 @@ module Sun::Security::Provider::Certpath
     end
     
     typesig { [TrustAnchor, PKIXParameters, Collection] }
-    # 
     # Creates a <code>CrlRevocationChecker</code>, allowing
     # extra certificates to be supplied beyond those contained
     # in the <code>PKIXParameters</code>.
@@ -194,7 +190,6 @@ module Sun::Security::Provider::Certpath
     end
     
     typesig { [::Java::Boolean] }
-    # 
     # Initializes the internal state of the checker from parameters
     # specified in the constructor
     def init(forward)
@@ -225,7 +220,6 @@ module Sun::Security::Provider::Certpath
     end
     
     typesig { [Certificate, Collection] }
-    # 
     # Performs the revocation status check on the certificate using
     # its internal state.
     # 
@@ -248,7 +242,6 @@ module Sun::Security::Provider::Certpath
     end
     
     typesig { [X509Certificate, PublicKey, ::Java::Boolean] }
-    # 
     # Performs the revocation status check on the certificate using
     # the provided state variables, as well as the constant internal
     # data.
@@ -268,7 +261,6 @@ module Sun::Security::Provider::Certpath
     
     class_module.module_eval {
       typesig { [X509Certificate] }
-      # 
       # Checks that a cert can be used to verify a CRL.
       # 
       # @param currCert an X509Certificate to check
@@ -287,14 +279,12 @@ module Sun::Security::Provider::Certpath
     }
     
     typesig { [X509Certificate, PublicKey, ::Java::Boolean, ::Java::Boolean] }
-    # 
     # Internal method to start the verification of a cert
     def verify_revocation_status(curr_cert, prev_key, sign_flag, allow_separate_key)
       verify_revocation_status(curr_cert, prev_key, sign_flag, allow_separate_key, nil)
     end
     
     typesig { [X509Certificate, PublicKey, ::Java::Boolean, ::Java::Boolean, JavaSet] }
-    # 
     # Internal method to start the verification of a cert
     # @param stackedCerts a <code>Set</code> of <code>X509Certificate</code>s>
     # whose revocation status depends on the
@@ -368,10 +358,10 @@ module Sun::Security::Provider::Certpath
       reason_code = 0
       entry = nil
       @m_approved_crls.each do |crl|
-        e_ = crl_.get_revoked_certificate(curr_cert)
-        if (!(e_).nil?)
+        e = crl.get_revoked_certificate(curr_cert)
+        if (!(e).nil?)
           begin
-            entry = X509CRLEntryImpl.to_impl(e_)
+            entry = X509CRLEntryImpl.to_impl(e)
             reason = entry.get_reason_code
             # if reasonCode extension is absent, this is equivalent
             # to a reasonCode value of unspecified (0)
@@ -382,7 +372,6 @@ module Sun::Security::Provider::Certpath
           if (!(Debug).nil?)
             Debug.println("CrlRevocationChecker.verifyRevocationStatus" + " CRL entry: " + (entry.to_s).to_s)
           end
-          # 
           # Abort CRL validation and throw exception if there are any
           # unrecognized critical CRL entry extensions (see section
           # 5.3 of RFC 3280).
@@ -404,7 +393,6 @@ module Sun::Security::Provider::Certpath
     end
     
     typesig { [X509Certificate, PublicKey, ::Java::Boolean, JavaSet] }
-    # 
     # We have a cert whose revocation status couldn't be verified by
     # a CRL issued by the cert that issued the CRL. See if we can
     # find a valid CRL issued by a separate key that can verify the
@@ -450,7 +438,6 @@ module Sun::Security::Provider::Certpath
     end
     
     typesig { [X509Certificate, PublicKey, JavaSet] }
-    # 
     # Tries to find a CertPath that establishes a key that can be
     # used to verify the revocation status of a given certificate.
     # Ignores keys that have previously been tried. Throws a
@@ -496,7 +483,7 @@ module Sun::Security::Provider::Certpath
         begin
           builder_params = PKIXBuilderParameters.new(new_anchors, cert_sel)
         rescue InvalidAlgorithmParameterException => iape
-          raise RuntimeException.new(iape_) # should never occur
+          raise RuntimeException.new(iape) # should never occur
         end
         builder_params.set_initial_policies(@m_params.get_initial_policies)
         builder_params.set_cert_stores(@m_stores)
@@ -602,15 +589,15 @@ module Sun::Security::Provider::Certpath
             return
           rescue CertPathValidatorException => cpve
             # If it is revoked, rethrow exception
-            if (cpve_.is_a?(CertificateRevokedException))
-              raise cpve_
+            if (cpve.is_a?(CertificateRevokedException))
+              raise cpve
             end
             # Otherwise, ignore the exception and
             # try to get another key.
           end
           bad_keys.add(new_key)
         rescue InvalidAlgorithmParameterException => iape
-          raise CertPathValidatorException.new(iape__)
+          raise CertPathValidatorException.new(iape)
         rescue CertPathBuilderException => cpbe
           raise CertPathValidatorException.new("Could not determine revocation status", cpbe)
         end
@@ -618,7 +605,6 @@ module Sun::Security::Provider::Certpath
     end
     
     class_module.module_eval {
-      # 
       # This inner class extends the X509CertSelector to add an additional
       # check to make sure the subject public key isn't on a particular list.
       # This class is used by buildToNewKey() to make sure the builder doesn't
@@ -633,7 +619,6 @@ module Sun::Security::Provider::Certpath
         undef_method :bad_key_set=
         
         typesig { [JavaSet] }
-        # 
         # Creates a new <code>RejectKeySelector</code>.
         # 
         # @param badPublicKeys a <code>Set</code> of
@@ -647,7 +632,6 @@ module Sun::Security::Provider::Certpath
         end
         
         typesig { [Certificate] }
-        # 
         # Decides whether a <code>Certificate</code> should be selected.
         # 
         # @param cert the <code>Certificate</code> to be checked
@@ -670,7 +654,6 @@ module Sun::Security::Provider::Certpath
         end
         
         typesig { [] }
-        # 
         # Return a printable representation of the <code>CertSelector</code>.
         # 
         # @return a <code>String</code> describing the contents of the
@@ -689,7 +672,6 @@ module Sun::Security::Provider::Certpath
       end }
       
       typesig { [::Java::Int] }
-      # 
       # Return a String describing the reasonCode value
       def reason_to_string(reason_code)
         case (reason_code)
@@ -716,7 +698,6 @@ module Sun::Security::Provider::Certpath
     }
     
     typesig { [JavaSet, X509Certificate, ::Java::Boolean, PublicKey, Array.typed(::Java::Boolean)] }
-    # 
     # Internal method that verifies a set of possible_crls,
     # and sees if each is approved, based on the cert.
     # 
@@ -748,9 +729,9 @@ module Sun::Security::Provider::Certpath
         dpf = DistributionPointFetcher.get_instance
         t = points.iterator
         while t.has_next && !(Arrays == reasons_mask)
-          point_ = t.next
+          point = t.next
           crls.each do |crl|
-            if (dpf.verify_crl(cert_impl, point_, crl, reasons_mask, sign_flag, prev_key, @m_sig_provider, @m_anchor, @m_stores))
+            if (dpf.verify_crl(cert_impl, point, crl, reasons_mask, sign_flag, prev_key, @m_sig_provider, @m_anchor, @m_stores))
               results.add(crl)
             end
           end
@@ -766,7 +747,6 @@ module Sun::Security::Provider::Certpath
     end
     
     class_module.module_eval {
-      # 
       # Indicates that the certificate has been revoked.
       const_set_lazy(:CertificateRevokedException) { Class.new(CertPathValidatorException) do
         include_class_members CrlRevocationChecker

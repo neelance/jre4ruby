@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 1996-1999 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -43,7 +42,6 @@ module Java::Text
     }
   end
   
-  # 
   # Utility class for normalizing and merging patterns for collation.
   # Patterns are strings of the form <entry>*, where <entry> has the
   # form:
@@ -65,7 +63,6 @@ module Java::Text
     include_class_members MergeCollationImports
     
     typesig { [String] }
-    # 
     # Creates from a pattern
     # @exception ParseException If the input pattern is incorrect.
     def initialize(pattern)
@@ -86,14 +83,12 @@ module Java::Text
     end
     
     typesig { [] }
-    # 
     # recovers current pattern
     def get_pattern
       return get_pattern(true)
     end
     
     typesig { [::Java::Boolean] }
-    # 
     # recovers current pattern.
     # @param withWhiteSpace puts spacing around the entries, and \n
     # before & and <
@@ -126,12 +121,12 @@ module Java::Text
         (i += 1)
       end
       if (!(ext_list).nil?)
-        last_ = find_last_with_no_extension(i - 1)
-        j_ = ext_list.size - 1
-        while j_ >= 0
-          tmp = (ext_list.get(j_))
-          tmp.add_to_buffer(result, false, with_white_space, last_)
-          ((j_ -= 1) + 1)
+        last = find_last_with_no_extension(i - 1)
+        j = ext_list.size - 1
+        while j >= 0
+          tmp = (ext_list.get(j))
+          tmp.add_to_buffer(result, false, with_white_space, last)
+          ((j -= 1) + 1)
         end
         ext_list = nil
       end
@@ -152,7 +147,6 @@ module Java::Text
     end
     
     typesig { [] }
-    # 
     # emits the pattern for collation builder.
     # @return emits the string in the format understable to the collation
     # builder.
@@ -161,7 +155,6 @@ module Java::Text
     end
     
     typesig { [::Java::Boolean] }
-    # 
     # emits the pattern for collation builder.
     # @param withWhiteSpace puts spacing around the entries, and \n
     # before & and <
@@ -181,7 +174,6 @@ module Java::Text
     end
     
     typesig { [String] }
-    # 
     # sets the pattern.
     def set_pattern(pattern)
       @patterns.clear
@@ -189,7 +181,6 @@ module Java::Text
     end
     
     typesig { [String] }
-    # 
     # adds a pattern to the current one.
     # @param pattern the new pattern to be added
     def add_pattern(pattern)
@@ -205,7 +196,6 @@ module Java::Text
     end
     
     typesig { [] }
-    # 
     # gets count of separate entries
     # @return the size of pattern entries
     def get_count
@@ -213,7 +203,6 @@ module Java::Text
     end
     
     typesig { [::Java::Int] }
-    # 
     # gets count of separate entries
     # @param index the offset of the desired pattern entry
     # @return the requested pattern entry
@@ -251,7 +240,6 @@ module Java::Text
     alias_method :attr_excess=, :excess=
     undef_method :excess=
     
-    # 
     # When building a MergeCollation, we need to do lots of searches to see
     # whether a given entry is already in the table.  Since we're using an
     # array, this would make the algorithm O(N*N).  To speed things up, we
@@ -283,7 +271,6 @@ module Java::Text
     undef_method :bytemask=
     
     typesig { [PatternEntry] }
-    # 
     # If the strength is RESET, then just change the lastEntry to
     # be the current. (If the current is not in patterns, signal an error).
     # If not, then remove the current entry, and add it after lastEntry

@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 2002-2006 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -41,7 +40,6 @@ module Sun::Security::X509
     }
   end
   
-  # 
   # RDNs are a set of {attribute = value} assertions.  Some of those
   # attributes are "distinguished" (unique w/in context).  Order is
   # never relevant.
@@ -93,7 +91,6 @@ module Sun::Security::X509
     undef_method :canonical_string=
     
     typesig { [String] }
-    # 
     # Constructs an RDN from its printable representation.
     # 
     # An RDN may consist of one or multiple Attribute Value Assertions (AVAs),
@@ -108,7 +105,6 @@ module Sun::Security::X509
     end
     
     typesig { [String, Map] }
-    # 
     # Constructs an RDN from its printable representation.
     # 
     # An RDN may consist of one or multiple Attribute Value Assertions (AVAs),
@@ -130,14 +126,12 @@ module Sun::Security::X509
       next_plus = name.index_of(Character.new(?+.ord))
       while (next_plus >= 0)
         quote_count += X500Name.count_quotes(name, search_offset, next_plus)
-        # 
         # We have encountered an AVA delimiter (plus sign).
         # If the plus sign in the RDN under consideration is
         # preceded by a backslash (escape), or by a double quote, it
         # is part of the AVA. Otherwise, it is used as a separator, to
         # delimit the AVA under consideration from any subsequent AVAs.
         if (next_plus > 0 && !(name.char_at(next_plus - 1)).equal?(Character.new(?\\.ord)) && !(quote_count).equal?(1))
-          # 
           # Plus sign is a separator
           ava_string = name.substring(ava_offset, next_plus)
           if ((ava_string.length).equal?(0))
@@ -155,17 +149,16 @@ module Sun::Security::X509
         next_plus = name.index_of(Character.new(?+.ord), search_offset)
       end
       # parse last or only AVA
-      ava_string_ = name.substring(ava_offset)
-      if ((ava_string_.length).equal?(0))
+      ava_string = name.substring(ava_offset)
+      if ((ava_string.length).equal?(0))
         raise IOException.new("empty AVA in RDN \"" + name + "\"")
       end
-      ava_ = AVA.new(StringReader.new(ava_string_), keyword_map)
-      ava_vec.add(ava_)
+      ava = AVA.new(StringReader.new(ava_string), keyword_map)
+      ava_vec.add(ava)
       @assertion = ava_vec.to_array(Array.typed(AVA).new(ava_vec.size) { nil })
     end
     
     typesig { [String, String] }
-    # 
     # Constructs an RDN from its printable representation.
     # 
     # An RDN may consist of one or multiple Attribute Value Assertions (AVAs),
@@ -180,7 +173,6 @@ module Sun::Security::X509
     end
     
     typesig { [String, String, Map] }
-    # 
     # Constructs an RDN from its printable representation.
     # 
     # An RDN may consist of one or multiple Attribute Value Assertions (AVAs),
@@ -203,14 +195,12 @@ module Sun::Security::X509
       ava_vec = ArrayList.new(3)
       next_plus = name.index_of(Character.new(?+.ord))
       while (next_plus >= 0)
-        # 
         # We have encountered an AVA delimiter (plus sign).
         # If the plus sign in the RDN under consideration is
         # preceded by a backslash (escape), or by a double quote, it
         # is part of the AVA. Otherwise, it is used as a separator, to
         # delimit the AVA under consideration from any subsequent AVAs.
         if (next_plus > 0 && !(name.char_at(next_plus - 1)).equal?(Character.new(?\\.ord)))
-          # 
           # Plus sign is a separator
           ava_string = name.substring(ava_offset, next_plus)
           if ((ava_string.length).equal?(0))
@@ -226,17 +216,16 @@ module Sun::Security::X509
         next_plus = name.index_of(Character.new(?+.ord), search_offset)
       end
       # parse last or only AVA
-      ava_string_ = name.substring(ava_offset)
-      if ((ava_string_.length).equal?(0))
+      ava_string = name.substring(ava_offset)
+      if ((ava_string.length).equal?(0))
         raise IOException.new("empty AVA in RDN \"" + name + "\"")
       end
-      ava_ = AVA.new(StringReader.new(ava_string_), AVA::RFC2253, keyword_map)
-      ava_vec.add(ava_)
+      ava = AVA.new(StringReader.new(ava_string), AVA::RFC2253, keyword_map)
+      ava_vec.add(ava)
       @assertion = ava_vec.to_array(Array.typed(AVA).new(ava_vec.size) { nil })
     end
     
     typesig { [DerValue] }
-    # 
     # Constructs an RDN from an ASN.1 encoded value.  The encoding
     # of the name in the stream uses DER (a BER/1 subset).
     # 
@@ -260,7 +249,6 @@ module Sun::Security::X509
     end
     
     typesig { [::Java::Int] }
-    # 
     # Creates an empty RDN with slots for specified
     # number of AVAs.
     # 
@@ -299,7 +287,6 @@ module Sun::Security::X509
     end
     
     typesig { [] }
-    # 
     # Return an immutable List of the AVAs in this RDN.
     def avas
       list = @ava_list
@@ -311,7 +298,6 @@ module Sun::Security::X509
     end
     
     typesig { [] }
-    # 
     # Return the number of AVAs in this RDN.
     def size
       return @assertion.attr_length
@@ -335,7 +321,6 @@ module Sun::Security::X509
     end
     
     typesig { [] }
-    # 
     # Calculates a hash code value for the object.  Objects
     # which are equal will also have the same hashcode.
     # 
@@ -345,7 +330,6 @@ module Sun::Security::X509
     end
     
     typesig { [ObjectIdentifier] }
-    # 
     # return specified attribute value from RDN
     # 
     # @params oid ObjectIdentifier of attribute to be found
@@ -362,7 +346,6 @@ module Sun::Security::X509
     end
     
     typesig { [DerOutputStream] }
-    # 
     # Encode the RDN in DER-encoded form.
     # 
     # @param out DerOutputStream to which RDN is to be written
@@ -372,7 +355,6 @@ module Sun::Security::X509
     end
     
     typesig { [] }
-    # 
     # Returns a printable form of this RDN, using RFC 1779 style catenation
     # of attribute/value assertions, and emitting attribute type keywords
     # from RFCs 1779, 2253, and 3280.
@@ -393,7 +375,6 @@ module Sun::Security::X509
     end
     
     typesig { [] }
-    # 
     # Returns a printable form of this RDN using the algorithm defined in
     # RFC 1779. Only RFC 1779 attribute type keywords are emitted.
     def to_rfc1779string
@@ -401,7 +382,6 @@ module Sun::Security::X509
     end
     
     typesig { [Map] }
-    # 
     # Returns a printable form of this RDN using the algorithm defined in
     # RFC 1779. RFC 1779 attribute type keywords are emitted, as well
     # as keywords contained in the OID/keyword map.
@@ -422,7 +402,6 @@ module Sun::Security::X509
     end
     
     typesig { [] }
-    # 
     # Returns a printable form of this RDN using the algorithm defined in
     # RFC 2253. Only RFC 2253 attribute type keywords are emitted.
     def to_rfc2253string
@@ -430,7 +409,6 @@ module Sun::Security::X509
     end
     
     typesig { [Map] }
-    # 
     # Returns a printable form of this RDN using the algorithm defined in
     # RFC 2253. RFC 2253 attribute type keywords are emitted, as well as
     # keywords contained in the OID/keyword map.
@@ -439,7 +417,6 @@ module Sun::Security::X509
     end
     
     typesig { [::Java::Boolean] }
-    # 
     # Returns a printable form of this RDN using the algorithm defined in
     # RFC 2253. Only RFC 2253 attribute type keywords are emitted.
     # If canonical is true, then additional canonicalizations
@@ -458,7 +435,6 @@ module Sun::Security::X509
     
     typesig { [::Java::Boolean, Map] }
     def to_rfc2253string_internal(canonical, oid_map)
-      # 
       # Section 2.2: When converting from an ASN.1 RelativeDistinguishedName
       # to a string, the output consists of the string encodings of each
       # AttributeTypeAndValue (according to 2.3), in any order.
@@ -485,19 +461,19 @@ module Sun::Security::X509
         # order the string type AVA's alphabetically,
         # followed by the oid type AVA's numerically
         ava_list = ArrayList.new(@assertion.attr_length)
-        i_ = 0
-        while i_ < @assertion.attr_length
-          ava_list.add(@assertion[i_])
-          ((i_ += 1) - 1)
+        i = 0
+        while i < @assertion.attr_length
+          ava_list.add(@assertion[i])
+          ((i += 1) - 1)
         end
         Java::Util::Collections.sort(ava_list, AVAComparator.get_instance)
-        i__ = 0
-        while i__ < ava_list.size
-          if (i__ > 0)
+        i_ = 0
+        while i_ < ava_list.size
+          if (i_ > 0)
             relname.append(Character.new(?+.ord))
           end
-          relname.append(ava_list.get(i__).to_rfc2253canonical_string)
-          ((i__ += 1) - 1)
+          relname.append(ava_list.get(i_).to_rfc2253canonical_string)
+          ((i_ += 1) - 1)
         end
       end
       return relname.to_s
@@ -529,7 +505,6 @@ module Sun::Security::X509
     }
     
     typesig { [AVA, AVA] }
-    # 
     # AVA's containing a standard keyword are ordered alphabetically,
     # followed by AVA's containing an OID keyword, ordered numerically
     def compare(a1, a2)

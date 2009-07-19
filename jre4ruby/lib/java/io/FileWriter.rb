@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 1996-2001 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -31,7 +30,6 @@ module Java::Io
     }
   end
   
-  # 
   # Convenience class for writing character files.  The constructors of this
   # class assume that the default character encoding and the default byte-buffer
   # size are acceptable.  To specify these values yourself, construct an
@@ -56,7 +54,6 @@ module Java::Io
     include_class_members FileWriterImports
     
     typesig { [String] }
-    # 
     # Constructs a FileWriter object given a file name.
     # 
     # @param fileName  String The system-dependent filename.
@@ -68,7 +65,6 @@ module Java::Io
     end
     
     typesig { [String, ::Java::Boolean] }
-    # 
     # Constructs a FileWriter object given a file name with a boolean
     # indicating whether or not to append the data written.
     # 
@@ -83,7 +79,6 @@ module Java::Io
     end
     
     typesig { [JavaFile] }
-    # 
     # Constructs a FileWriter object given a File object.
     # 
     # @param file  a File object to write to.
@@ -95,7 +90,6 @@ module Java::Io
     end
     
     typesig { [JavaFile, ::Java::Boolean] }
-    # 
     # Constructs a FileWriter object given a File object. If the second
     # argument is <code>true</code>, then bytes will be written to the end
     # of the file rather than the beginning.
@@ -112,7 +106,6 @@ module Java::Io
     end
     
     typesig { [FileDescriptor] }
-    # 
     # Constructs a FileWriter object associated with a file descriptor.
     # 
     # @param fd  FileDescriptor object to write to.

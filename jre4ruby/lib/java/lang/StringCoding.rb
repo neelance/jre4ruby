@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 2000-2006 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -49,7 +48,6 @@ module Java::Lang
     }
   end
   
-  # 
   # Utility class for string encoding and decoding.
   class StringCoding 
     include_class_members StringCodingImports
@@ -274,7 +272,7 @@ module Java::Lang
         rescue UnsupportedEncodingException => x
           # If this code is hit during VM initialization, MessageUtils is
           # the only way we will be able to get any kind of error message.
-          MessageUtils.err("ISO-8859-1 charset not available: " + (x_.to_s).to_s)
+          MessageUtils.err("ISO-8859-1 charset not available: " + (x.to_s).to_s)
           # If we can not find ISO-8859-1 (a required encoding) then things
           # are seriously wrong with the installation.
           System.exit(1)
@@ -399,7 +397,7 @@ module Java::Lang
         rescue UnsupportedEncodingException => x
           # If this code is hit during VM initialization, MessageUtils is
           # the only way we will be able to get any kind of error message.
-          MessageUtils.err("ISO-8859-1 charset not available: " + (x_.to_s).to_s)
+          MessageUtils.err("ISO-8859-1 charset not available: " + (x.to_s).to_s)
           # If we can not find ISO-8859-1 (a required encoding) then things
           # are seriously wrong with the installation.
           System.exit(1)

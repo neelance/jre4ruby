@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 2000-2007 Sun Microsystems, Inc.  All Rights Reserved.
 # 
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
@@ -35,7 +34,6 @@ module Java::Nio::Channels
     }
   end
   
-  # 
   # Unchecked exception thrown when an attempt is made to acquire a lock on a
   # region of a file that overlaps a region already locked by the same Java
   # virtual machine, or when another thread is already waiting to lock an
@@ -51,7 +49,6 @@ module Java::Nio::Channels
     }
     
     typesig { [] }
-    # 
     # Constructs an instance of this class.
     def initialize
       super()

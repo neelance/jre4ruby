@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 2003-2007 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -35,7 +34,6 @@ module Sun::Security::Pkcs11
     }
   end
   
-  # 
   # KeyGenerator implementation class. This class currently supports
   # DES, DESede, AES, ARCFOUR, and Blowfish.
   # 
@@ -147,9 +145,9 @@ module Sun::Security::Pkcs11
           end
         else
           if ((@mechanism).equal?(CKM_BLOWFISH_KEY_GEN))
-            info_ = token.get_mechanism_info(mechanism)
-            @max_key_size = RJava.cast_to_int(info_.attr_ul_max_key_size) << 3
-            @min_key_size = RJava.cast_to_int(info_.attr_ul_min_key_size) << 3
+            info = token.get_mechanism_info(mechanism)
+            @max_key_size = RJava.cast_to_int(info.attr_ul_max_key_size) << 3
+            @min_key_size = RJava.cast_to_int(info.attr_ul_min_key_size) << 3
             # Explicitly disallow keys shorter than 40-bits for security
             if (@min_key_size < 40)
               @min_key_size = 40

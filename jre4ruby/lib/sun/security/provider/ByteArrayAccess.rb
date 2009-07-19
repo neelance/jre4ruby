@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 2006 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -35,7 +34,6 @@ module Sun::Security::Provider
     }
   end
   
-  # 
   # Optimized methods for converting between byte[] and int[]/long[], both for
   # big endian and little endian byte orders.
   # 
@@ -90,7 +88,6 @@ module Sun::Security::Provider
       end
       
       typesig { [Array.typed(::Java::Byte), ::Java::Int, Array.typed(::Java::Int), ::Java::Int, ::Java::Int] }
-      # 
       # byte[] to int[] conversion, little endian byte order.
       def b2i_little(in_, in_ofs, out, out_ofs, len)
         if (LittleEndianUnaligned)
@@ -165,7 +162,6 @@ module Sun::Security::Provider
       end
       
       typesig { [Array.typed(::Java::Int), ::Java::Int, Array.typed(::Java::Byte), ::Java::Int, ::Java::Int] }
-      # 
       # int[] to byte[] conversion, little endian byte order.
       def i2b_little(in_, in_ofs, out, out_ofs, len)
         if (LittleEndianUnaligned)
@@ -214,7 +210,6 @@ module Sun::Security::Provider
       end
       
       typesig { [Array.typed(::Java::Byte), ::Java::Int, Array.typed(::Java::Int), ::Java::Int, ::Java::Int] }
-      # 
       # byte[] to int[] conversion, big endian byte order.
       def b2i_big(in_, in_ofs, out, out_ofs, len)
         if (LittleEndianUnaligned)
@@ -289,7 +284,6 @@ module Sun::Security::Provider
       end
       
       typesig { [Array.typed(::Java::Int), ::Java::Int, Array.typed(::Java::Byte), ::Java::Int, ::Java::Int] }
-      # 
       # int[] to byte[] conversion, big endian byte order.
       def i2b_big(in_, in_ofs, out, out_ofs, len)
         if (LittleEndianUnaligned)
@@ -338,7 +332,6 @@ module Sun::Security::Provider
       end
       
       typesig { [Array.typed(::Java::Byte), ::Java::Int, Array.typed(::Java::Long), ::Java::Int, ::Java::Int] }
-      # 
       # byte[] to long[] conversion, big endian byte order.
       def b2l_big(in_, in_ofs, out, out_ofs, len)
         if (LittleEndianUnaligned)
@@ -402,7 +395,6 @@ module Sun::Security::Provider
       end
       
       typesig { [Array.typed(::Java::Long), ::Java::Int, Array.typed(::Java::Byte), ::Java::Int, ::Java::Int] }
-      # 
       # long[] to byte[] conversion, big endian byte order.
       def l2b_big(in_, in_ofs, out, out_ofs, len)
         len += out_ofs

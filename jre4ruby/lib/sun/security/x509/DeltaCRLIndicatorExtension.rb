@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 2005 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -36,7 +35,6 @@ module Sun::Security::X509
     }
   end
   
-  # 
   # Represents the Delta CRL Indicator Extension.
   # 
   # <p>
@@ -66,7 +64,6 @@ module Sun::Security::X509
     include_class_members DeltaCRLIndicatorExtensionImports
     
     class_module.module_eval {
-      # 
       # Attribute name.
       const_set_lazy(:NAME) { "DeltaCRLIndicator" }
       const_attr_reader  :NAME
@@ -76,7 +73,6 @@ module Sun::Security::X509
     }
     
     typesig { [::Java::Int] }
-    # 
     # Creates a delta CRL indicator extension with the integer value .
     # The criticality is set to true.
     # 
@@ -86,7 +82,6 @@ module Sun::Security::X509
     end
     
     typesig { [BigInteger] }
-    # 
     # Creates a delta CRL indictor extension with the BigInteger value .
     # The criticality is set to true.
     # 
@@ -96,7 +91,6 @@ module Sun::Security::X509
     end
     
     typesig { [Boolean, Object] }
-    # 
     # Creates the extension from the passed DER encoded value of the same.
     # 
     # @param critical true if the extension is to be treated as critical.
@@ -108,7 +102,6 @@ module Sun::Security::X509
     end
     
     typesig { [OutputStream] }
-    # 
     # Writes the extension to the DerOutputStream.
     # 
     # @param out the DerOutputStream to write the extension to.

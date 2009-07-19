@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 1998-2004 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -31,7 +30,6 @@ module Java::Lang
     }
   end
   
-  # 
   # This class extends <tt>ThreadLocal</tt> to provide inheritance of values
   # from parent thread to child thread: when a child thread is created, the
   # child receives initial values for all inheritable thread-local variables
@@ -52,7 +50,6 @@ module Java::Lang
     include_class_members InheritableThreadLocalImports
     
     typesig { [Object] }
-    # 
     # Computes the child's initial value for this inheritable thread-local
     # variable as a function of the parent's value at the time the child
     # thread is created.  This method is called from within the parent
@@ -68,7 +65,6 @@ module Java::Lang
     end
     
     typesig { [JavaThread] }
-    # 
     # Get the map associated with a ThreadLocal.
     # 
     # @param t the current thread
@@ -77,7 +73,6 @@ module Java::Lang
     end
     
     typesig { [JavaThread, Object] }
-    # 
     # Create the map associated with a ThreadLocal.
     # 
     # @param t the current thread

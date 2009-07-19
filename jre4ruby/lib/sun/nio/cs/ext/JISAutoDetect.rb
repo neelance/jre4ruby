@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 2003-2004 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -95,7 +94,6 @@ module Sun::Nio::Cs::Ext
     end
     
     typesig { [] }
-    # 
     # accessor methods used to share byte masking tables
     # with the sun.io JISAutoDetect implementation
     def get_byte_mask1
@@ -288,7 +286,6 @@ module Sun::Nio::Cs::Ext
         
         class_module.module_eval {
           typesig { [] }
-          # 
           # Returned Shift_JIS Charset name is OS dependent
           def get_sjisname
             os_name = AccessController.do_privileged(GetPropertyAction.new("os.name"))
@@ -304,7 +301,6 @@ module Sun::Nio::Cs::Ext
           end
           
           typesig { [] }
-          # 
           # Returned EUC-JP Charset name is OS dependent
           def get_eucjpname
             os_name = AccessController.do_privileged(GetPropertyAction.new("os.name"))

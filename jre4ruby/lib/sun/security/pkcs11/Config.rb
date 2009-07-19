@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 2003-2006 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -38,7 +37,6 @@ module Sun::Security::Pkcs11
     }
   end
   
-  # 
   # Configuration container and file parsing.
   # 
   # @author  Andreas Sterbenz
@@ -688,7 +686,6 @@ module Sun::Security::Pkcs11
     end
     
     typesig { [] }
-    # 
     # Parsing helper methods
     def next_token
       token = @st.next_token
@@ -855,7 +852,6 @@ module Sun::Security::Pkcs11
     end
     
     typesig { [String] }
-    # 
     # individual entry parsing methods
     def parse_library(keyword)
       check_dup(keyword)
@@ -954,7 +950,7 @@ module Sun::Security::Pkcs11
       if (DEBUG)
         System.out.print("mechanisms: [")
         mechs.each do |mech|
-          System.out.print(Functions.get_mechanism_name(mech_))
+          System.out.print(Functions.get_mechanism_name(mech))
           System.out.print(", ")
         end
         System.out.println("]")

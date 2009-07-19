@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 1997-2006 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -33,7 +32,6 @@ module Sun::Security::Util
     }
   end
   
-  # 
   # A packed array of booleans.
   # 
   # @author Joshua Bloch
@@ -70,7 +68,6 @@ module Sun::Security::Util
     }
     
     typesig { [::Java::Int] }
-    # 
     # Creates a BitArray of the specified size, initialized to zeros.
     def initialize(length)
       @repn = nil
@@ -83,7 +80,6 @@ module Sun::Security::Util
     end
     
     typesig { [::Java::Int, Array.typed(::Java::Byte)] }
-    # 
     # Creates a BitArray of the specified size, initialized from the
     # specified byte array.  The most significant bit of a[0] gets
     # index zero in the BitArray.  The array a must be large enough
@@ -102,7 +98,6 @@ module Sun::Security::Util
       rep_length = ((length + BITS_PER_UNIT - 1) / BITS_PER_UNIT)
       unused_bits = rep_length * BITS_PER_UNIT - length
       bit_mask = (0xff << unused_bits)
-      # 
       # normalize the representation:
       # 1. discard extra bytes
       # 2. zero out extra bits in the last byte
@@ -114,7 +109,6 @@ module Sun::Security::Util
     end
     
     typesig { [Array.typed(::Java::Boolean)] }
-    # 
     # Create a BitArray whose bits are those of the given array
     # of Booleans.
     def initialize(bits)
@@ -130,7 +124,6 @@ module Sun::Security::Util
     end
     
     typesig { [BitArray] }
-    # 
     # Copy constructor (for cloning).
     def initialize(ba)
       @repn = nil
@@ -140,7 +133,6 @@ module Sun::Security::Util
     end
     
     typesig { [::Java::Int] }
-    # 
     # Returns the indexed bit in this BitArray.
     def get(index)
       if (index < 0 || index >= @length)
@@ -150,7 +142,6 @@ module Sun::Security::Util
     end
     
     typesig { [::Java::Int, ::Java::Boolean] }
-    # 
     # Sets the indexed bit in this BitArray.
     def set(index, value)
       if (index < 0 || index >= @length)
@@ -166,14 +157,12 @@ module Sun::Security::Util
     end
     
     typesig { [] }
-    # 
     # Returns the length of this BitArray.
     def length
       return @length
     end
     
     typesig { [] }
-    # 
     # Returns a Byte array containing the contents of this BitArray.
     # The bit stored at index zero in this BitArray will be copied
     # into the most significant bit of the zeroth element of the
@@ -208,7 +197,6 @@ module Sun::Security::Util
     end
     
     typesig { [] }
-    # 
     # Return a boolean array with the same bit values a this BitArray.
     def to_boolean_array
       bits = Array.typed(::Java::Boolean).new(@length) { false }
@@ -221,7 +209,6 @@ module Sun::Security::Util
     end
     
     typesig { [] }
-    # 
     # Returns a hash code value for this bit array.
     # 
     # @return  a hash code value for this bit array.
@@ -249,7 +236,6 @@ module Sun::Security::Util
     }
     
     typesig { [] }
-    # 
     # Returns a string representation of this BitArray.
     def to_s
       out = ByteArrayOutputStream.new

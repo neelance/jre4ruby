@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 2002-2006 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -35,7 +34,6 @@ module Sun::Security::Provider::Certpath
     }
   end
   
-  # 
   # A <code>CertStore</code> that retrieves <code>Certificates</code> and
   # <code>CRL</code>s from a <code>Collection</code>.
   # <p>
@@ -98,7 +96,6 @@ module Sun::Security::Provider::Certpath
   class IndexedCollectionCertStore < IndexedCollectionCertStoreImports.const_get :CertStoreSpi
     include_class_members IndexedCollectionCertStoreImports
     
-    # 
     # Map X500Principal(subject) -> X509Certificate | List of X509Certificate
     attr_accessor :cert_subjects
     alias_method :attr_cert_subjects, :cert_subjects
@@ -106,7 +103,6 @@ module Sun::Security::Provider::Certpath
     alias_method :attr_cert_subjects=, :cert_subjects=
     undef_method :cert_subjects=
     
-    # 
     # Map X500Principal(issuer) -> X509CRL | List of X509CRL
     attr_accessor :crl_issuers
     alias_method :attr_crl_issuers, :crl_issuers
@@ -114,7 +110,6 @@ module Sun::Security::Provider::Certpath
     alias_method :attr_crl_issuers=, :crl_issuers=
     undef_method :crl_issuers=
     
-    # 
     # Sets of non-X509 certificates and CRLs
     attr_accessor :other_certificates
     alias_method :attr_other_certificates, :other_certificates
@@ -129,7 +124,6 @@ module Sun::Security::Provider::Certpath
     undef_method :other_crls=
     
     typesig { [CertStoreParameters] }
-    # 
     # Creates a <code>CertStore</code> with the specified parameters.
     # For this class, the parameters object must be an instance of
     # <code>CollectionCertStoreParameters</code>.
@@ -154,7 +148,6 @@ module Sun::Security::Provider::Certpath
     end
     
     typesig { [Collection] }
-    # 
     # Index the specified Collection copying all references to Certificates
     # and CRLs.
     def build_index(coll)
@@ -196,7 +189,6 @@ module Sun::Security::Provider::Certpath
     end
     
     typesig { [X509Certificate] }
-    # 
     # Add an X509Certificate to the index.
     def index_certificate(cert)
       subject = cert.get_subject_x500principal
@@ -212,17 +204,16 @@ module Sun::Security::Provider::Certpath
           list.add(old_entry)
           @cert_subjects.put(subject, list)
         else
-          list_ = old_entry
-          if ((list_.contains(cert)).equal?(false))
-            list_.add(cert)
+          list = old_entry
+          if ((list.contains(cert)).equal?(false))
+            list.add(cert)
           end
-          @cert_subjects.put(subject, list_)
+          @cert_subjects.put(subject, list)
         end
       end
     end
     
     typesig { [X509CRL] }
-    # 
     # Add an X509CRL to the index.
     def index_crl(crl)
       issuer = crl.get_issuer_x500principal
@@ -238,17 +229,16 @@ module Sun::Security::Provider::Certpath
           list.add(old_entry)
           @crl_issuers.put(issuer, list)
         else
-          list_ = old_entry
-          if ((list_.contains(crl)).equal?(false))
-            list_.add(crl)
+          list = old_entry
+          if ((list.contains(crl)).equal?(false))
+            list.add(crl)
           end
-          @crl_issuers.put(issuer, list_)
+          @crl_issuers.put(issuer, list)
         end
       end
     end
     
     typesig { [CertSelector] }
-    # 
     # Returns a <code>Collection</code> of <code>Certificate</code>s that
     # match the specified selector. If no <code>Certificate</code>s
     # match the selector, an empty <code>Collection</code> will be returned.
@@ -268,14 +258,14 @@ module Sun::Security::Provider::Certpath
         return matches
       end
       if ((selector.is_a?(X509CertSelector)).equal?(false))
-        matches_ = HashSet.new
-        match_x509certs(selector, matches_)
+        matches = HashSet.new
+        match_x509certs(selector, matches)
         @other_certificates.each do |cert|
           if (selector.match(cert))
-            matches_.add(cert)
+            matches.add(cert)
           end
         end
-        return matches_
+        return matches
       end
       if (@cert_subjects.is_empty)
         return Collections.empty_set
@@ -304,23 +294,22 @@ module Sun::Security::Provider::Certpath
           end
         else
           list = entry
-          matches__ = HashSet.new(16)
+          matches = HashSet.new(16)
           list.each do |cert|
-            if (x509selector.match(cert_))
-              matches__.add(cert_)
+            if (x509selector.match(cert))
+              matches.add(cert)
             end
           end
-          return matches__
+          return matches
         end
       end
       # cannot use index, iterate all
-      matches___ = HashSet.new(16)
-      match_x509certs(x509selector, matches___)
-      return matches___
+      matches = HashSet.new(16)
+      match_x509certs(x509selector, matches)
+      return matches
     end
     
     typesig { [CertSelector, Collection] }
-    # 
     # Iterate through all the X509Certificates and add matches to the
     # collection.
     def match_x509certs(selector, matches)
@@ -333,8 +322,8 @@ module Sun::Security::Provider::Certpath
         else
           list = obj
           list.each do |cert|
-            if (selector.match(cert_))
-              matches.add(cert_)
+            if (selector.match(cert))
+              matches.add(cert)
             end
           end
         end
@@ -342,7 +331,6 @@ module Sun::Security::Provider::Certpath
     end
     
     typesig { [CRLSelector] }
-    # 
     # Returns a <code>Collection</code> of <code>CRL</code>s that
     # match the specified selector. If no <code>CRL</code>s
     # match the selector, an empty <code>Collection</code> will be returned.
@@ -361,14 +349,14 @@ module Sun::Security::Provider::Certpath
         return matches
       end
       if ((selector.is_a?(X509CRLSelector)).equal?(false))
-        matches_ = HashSet.new
-        match_x509crls(selector, matches_)
+        matches = HashSet.new
+        match_x509crls(selector, matches)
         @other_crls.each do |crl|
           if (selector.match(crl))
-            matches_.add(crl)
+            matches.add(crl)
           end
         end
-        return matches_
+        return matches
       end
       if (@crl_issuers.is_empty)
         return Collections.empty_set
@@ -377,38 +365,37 @@ module Sun::Security::Provider::Certpath
       # see if the issuer is specified
       issuers = x509selector.get_issuers
       if (!(issuers).nil?)
-        matches__ = HashSet.new(16)
+        matches = HashSet.new(16)
         issuers.each do |issuer|
           entry = @crl_issuers.get(issuer)
           if ((entry).nil?)
             # empty
           else
             if (entry.is_a?(X509CRL))
-              crl_ = entry
-              if (x509selector.match(crl_))
-                matches__.add(crl_)
+              crl = entry
+              if (x509selector.match(crl))
+                matches.add(crl)
               end
             else
               # List
               list = entry
               list.each do |crl|
-                if (x509selector.match(crl__))
-                  matches__.add(crl__)
+                if (x509selector.match(crl))
+                  matches.add(crl)
                 end
               end
             end
           end
         end
-        return matches__
+        return matches
       end
       # cannot use index, iterate all
-      matches___ = HashSet.new(16)
-      match_x509crls(x509selector, matches___)
-      return matches___
+      matches = HashSet.new(16)
+      match_x509crls(x509selector, matches)
+      return matches
     end
     
     typesig { [CRLSelector, Collection] }
-    # 
     # Iterate through all the X509CRLs and add matches to the
     # collection.
     def match_x509crls(selector, matches)
@@ -421,8 +408,8 @@ module Sun::Security::Provider::Certpath
         else
           list = obj
           list.each do |crl|
-            if (selector.match(crl_))
-              matches.add(crl_)
+            if (selector.match(crl))
+              matches.add(crl)
             end
           end
         end

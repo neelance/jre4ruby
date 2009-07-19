@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Portions Copyright 2000-2006 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -47,7 +46,6 @@ module Sun::Security::Krb5::Internal
     }
   end
   
-  # 
   # Implements the ASN.1 HostAddresses type.
   # 
   # <xmp>
@@ -218,7 +216,6 @@ module Sun::Security::Krb5::Internal
     end
     
     typesig { [DerValue] }
-    # 
     # Constructs a new <code>HostAddresses</code> object.
     # @param encoding a single DER-encoded value.
     # @exception Asn1Exception if an error occurs while decoding an
@@ -241,7 +238,6 @@ module Sun::Security::Krb5::Internal
     end
     
     typesig { [] }
-    # 
     # Encodes a <code>HostAddresses</code> object.
     # @return byte array of encoded <code>HostAddresses</code> object.
     # @exception Asn1Exception if an error occurs while decoding an
@@ -264,7 +260,6 @@ module Sun::Security::Krb5::Internal
     
     class_module.module_eval {
       typesig { [DerInputStream, ::Java::Byte, ::Java::Boolean] }
-      # 
       # Parse (unmarshal) a <code>HostAddresses</code> from a DER input stream.
       # This form
       # parsing might be used when expanding a value which is part of
@@ -291,7 +286,6 @@ module Sun::Security::Krb5::Internal
     }
     
     typesig { [CCacheOutputStream] }
-    # 
     # Writes data field values in <code>HostAddresses</code> in FCC
     # format to a <code>CCacheOutputStream</code>.
     # 
@@ -333,7 +327,6 @@ module Sun::Security::Krb5::Internal
     
     class_module.module_eval {
       typesig { [] }
-      # 
       # Returns all the IP addresses of the local host.
       def get_local_addresses
         hostname = nil
@@ -370,7 +363,6 @@ module Sun::Security::Krb5::Internal
     }
     
     typesig { [Array.typed(InetAddress)] }
-    # 
     # Creates a new HostAddresses instance from the supplied list
     # of InetAddresses.
     def initialize(inet_addresses)

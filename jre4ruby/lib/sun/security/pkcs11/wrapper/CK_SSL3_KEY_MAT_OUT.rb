@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # reserved comment block
 # DO NOT REMOVE OR ALTER!
 # 
@@ -53,7 +52,6 @@ module Sun::Security::Pkcs11::Wrapper
     }
   end
   
-  # 
   # class CK_SSL3_KEY_MAT_OUT contains the resulting key handles and
   # initialization vectors after performing a C_DeriveKey function with the
   # CKM_SSL3_KEY_AND_MAC_DERIVE mechanism.<p>
@@ -74,7 +72,6 @@ module Sun::Security::Pkcs11::Wrapper
   class CK_SSL3_KEY_MAT_OUT 
     include_class_members CK_SSL3_KEY_MAT_OUTImports
     
-    # 
     # <B>PKCS#11:</B>
     # <PRE>
     # CK_OBJECT_HANDLE hClientMacSecret;
@@ -85,7 +82,6 @@ module Sun::Security::Pkcs11::Wrapper
     alias_method :attr_h_client_mac_secret=, :h_client_mac_secret=
     undef_method :h_client_mac_secret=
     
-    # 
     # <B>PKCS#11:</B>
     # <PRE>
     # CK_OBJECT_HANDLE hServerMacSecret;
@@ -96,7 +92,6 @@ module Sun::Security::Pkcs11::Wrapper
     alias_method :attr_h_server_mac_secret=, :h_server_mac_secret=
     undef_method :h_server_mac_secret=
     
-    # 
     # <B>PKCS#11:</B>
     # <PRE>
     # CK_OBJECT_HANDLE hClientKey;
@@ -107,7 +102,6 @@ module Sun::Security::Pkcs11::Wrapper
     alias_method :attr_h_client_key=, :h_client_key=
     undef_method :h_client_key=
     
-    # 
     # <B>PKCS#11:</B>
     # <PRE>
     # CK_OBJECT_HANDLE hServerKey;
@@ -118,7 +112,6 @@ module Sun::Security::Pkcs11::Wrapper
     alias_method :attr_h_server_key=, :h_server_key=
     undef_method :h_server_key=
     
-    # 
     # <B>PKCS#11:</B>
     # <PRE>
     # CK_BYTE_PTR pIVClient;
@@ -129,7 +122,6 @@ module Sun::Security::Pkcs11::Wrapper
     alias_method :attr_p_ivclient=, :p_ivclient=
     undef_method :p_ivclient=
     
-    # 
     # <B>PKCS#11:</B>
     # <PRE>
     # CK_BYTE_PTR pIVServer;
@@ -141,7 +133,6 @@ module Sun::Security::Pkcs11::Wrapper
     undef_method :p_ivserver=
     
     typesig { [] }
-    # 
     # Returns the string representation of CK_SSL3_KEY_MAT_OUT.
     # 
     # @return the string representation of CK_SSL3_KEY_MAT_OUT

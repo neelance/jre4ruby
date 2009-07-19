@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 1996-2005 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -43,7 +42,6 @@ module Java::Text
     }
   end
   
-  # 
   # <code>Format</code> is an abstract base class for formatting locale-sensitive
   # information such as dates, messages, and numbers.
   # 
@@ -143,14 +141,12 @@ module Java::Text
     }
     
     typesig { [] }
-    # 
     # Sole constructor.  (For invocation by subclass constructors, typically
     # implicit.)
     def initialize
     end
     
     typesig { [Object] }
-    # 
     # Formats an object to produce a string. This is equivalent to
     # <blockquote>
     # {@link #format(Object, StringBuffer, FieldPosition) format}<code>(obj,
@@ -166,7 +162,6 @@ module Java::Text
     end
     
     typesig { [Object, StringBuffer, FieldPosition] }
-    # 
     # Formats an object and appends the resulting text to a given string
     # buffer.
     # If the <code>pos</code> argument identifies a field used by the format,
@@ -188,7 +183,6 @@ module Java::Text
     end
     
     typesig { [Object] }
-    # 
     # Formats an Object producing an <code>AttributedCharacterIterator</code>.
     # You can use the returned <code>AttributedCharacterIterator</code>
     # to build the resulting String, as well as to determine information
@@ -215,7 +209,6 @@ module Java::Text
     end
     
     typesig { [String, ParsePosition] }
-    # 
     # Parses text from a string to produce an object.
     # <p>
     # The method attempts to parse text starting at the index given by
@@ -240,7 +233,6 @@ module Java::Text
     end
     
     typesig { [String] }
-    # 
     # Parses text from the beginning of the given string to produce an object.
     # The method may not use the entire text of the given string.
     # 
@@ -258,7 +250,6 @@ module Java::Text
     end
     
     typesig { [] }
-    # 
     # Creates and returns a copy of this object.
     # 
     # @return a clone of this instance.
@@ -272,7 +263,6 @@ module Java::Text
     end
     
     typesig { [String] }
-    # 
     # Convenience methods for creating AttributedCharacterIterators from
     # different parameters.
     # 
@@ -288,7 +278,6 @@ module Java::Text
     end
     
     typesig { [Array.typed(AttributedCharacterIterator)] }
-    # 
     # Creates an <code>AttributedCharacterIterator</code> containg the
     # concatenated contents of the passed in
     # <code>AttributedCharacterIterator</code>s.
@@ -303,7 +292,6 @@ module Java::Text
     end
     
     typesig { [String, AttributedCharacterIterator::Attribute, Object] }
-    # 
     # Returns an AttributedCharacterIterator with the String
     # <code>string</code> and additional key/value pair <code>key</code>,
     # <code>value</code>.
@@ -319,7 +307,6 @@ module Java::Text
     end
     
     typesig { [AttributedCharacterIterator, AttributedCharacterIterator::Attribute, Object] }
-    # 
     # Creates an AttributedCharacterIterator with the contents of
     # <code>iterator</code> and the additional attribute <code>key</code>
     # <code>value</code>.
@@ -335,7 +322,6 @@ module Java::Text
     end
     
     class_module.module_eval {
-      # 
       # Defines constants that are used as attribute keys in the
       # <code>AttributedCharacterIterator</code> returned
       # from <code>Format.formatToCharacterIterator</code> and as
@@ -352,7 +338,6 @@ module Java::Text
         }
         
         typesig { [String] }
-        # 
         # Creates a Field with the specified name.
         # 
         # @param name Name of the attribute
@@ -364,7 +349,6 @@ module Java::Text
         alias_method :initialize__field, :initialize
       end }
       
-      # 
       # FieldDelegate is notified by the various <code>Format</code>
       # implementations as they are formatting the Objects. This allows for
       # storage of the individual sections of the formatted String for
@@ -380,7 +364,6 @@ module Java::Text
         include_class_members Format
         
         typesig { [Format::Field, Object, ::Java::Int, ::Java::Int, StringBuffer] }
-        # 
         # Notified when a particular region of the String is formatted. This
         # method will be invoked if there is no corresponding integer field id
         # matching <code>attr</code>.
@@ -396,7 +379,6 @@ module Java::Text
         end
         
         typesig { [::Java::Int, Format::Field, Object, ::Java::Int, ::Java::Int, StringBuffer] }
-        # 
         # Notified when a particular region of the String is formatted.
         # 
         # @param fieldID Identifies the field by integer

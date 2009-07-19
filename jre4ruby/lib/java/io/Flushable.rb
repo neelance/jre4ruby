@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 2004 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -32,7 +31,6 @@ module Java::Io
     }
   end
   
-  # 
   # A <tt>Flushable</tt> is a destination of data that can be flushed.  The
   # flush method is invoked to write any buffered output to the underlying
   # stream.
@@ -42,7 +40,6 @@ module Java::Io
     include_class_members FlushableImports
     
     typesig { [] }
-    # 
     # Flushes this stream by writing any buffered output to the underlying
     # stream.
     # 

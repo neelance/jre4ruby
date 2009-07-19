@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 2003-2005 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -37,7 +36,6 @@ module Sun::Security::Pkcs11
     }
   end
   
-  # 
   # MessageDigest implementation class. This class currently supports
   # MD2, MD5, SHA-1, SHA-256, SHA-384, and SHA-512.
   # 

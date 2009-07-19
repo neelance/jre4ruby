@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 1997-2006 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -39,7 +38,6 @@ module Java::Security
     }
   end
   
-  # 
   # The UnresolvedPermission class is used to hold Permissions that
   # were "unresolved" when the Policy was initialized.
   # An unresolved permission is one whose actual Permission class
@@ -115,7 +113,6 @@ module Java::Security
       const_attr_reader  :Debug
     }
     
-    # 
     # The class name of the Permission class that will be
     # created when this unresolved permission is resolved.
     # 
@@ -126,7 +123,6 @@ module Java::Security
     alias_method :attr_type=, :type=
     undef_method :type=
     
-    # 
     # The permission name.
     # 
     # @serial
@@ -136,7 +132,6 @@ module Java::Security
     alias_method :attr_name=, :name=
     undef_method :name=
     
-    # 
     # The actions of the permission.
     # 
     # @serial
@@ -153,7 +148,6 @@ module Java::Security
     undef_method :certs=
     
     typesig { [String, String, String, Array.typed(Java::Security::Cert::Certificate)] }
-    # 
     # Creates a new UnresolvedPermission containing the permission
     # information needed later to actually create a Permission of the
     # specified class, when the permission is resolved.
@@ -240,7 +234,6 @@ module Java::Security
     }
     
     typesig { [Permission, Array.typed(Java::Security::Cert::Certificate)] }
-    # 
     # try and resolve this permission using the class loader of the permission
     # that was passed in.
     def resolve(p, certs)
@@ -286,15 +279,15 @@ module Java::Security
         else
           if (!(@name).nil? && (@actions).nil?)
             begin
-              c___ = pc.get_constructor(PARAMS1)
-              return c___.new_instance(Array.typed(Object).new([@name]))
+              c = pc.get_constructor(PARAMS1)
+              return c.new_instance(Array.typed(Object).new([@name]))
             rescue NoSuchMethodException => ne
-              c____ = pc.get_constructor(PARAMS2)
-              return c____.new_instance(Array.typed(Object).new([@name, @actions]))
+              c_ = pc.get_constructor(PARAMS2)
+              return c_.new_instance(Array.typed(Object).new([@name, @actions]))
             end
           else
-            c_____ = pc.get_constructor(PARAMS2)
-            return c_____.new_instance(Array.typed(Object).new([@name, @actions]))
+            c = pc.get_constructor(PARAMS2)
+            return c.new_instance(Array.typed(Object).new([@name, @actions]))
           end
         end
       rescue NoSuchMethodException => nsme
@@ -313,7 +306,6 @@ module Java::Security
     end
     
     typesig { [Permission] }
-    # 
     # This method always returns false for unresolved permissions.
     # That is, an UnresolvedPermission is never considered to
     # imply another permission.
@@ -326,7 +318,6 @@ module Java::Security
     end
     
     typesig { [Object] }
-    # 
     # Checks two UnresolvedPermission objects for equality.
     # Checks that <i>obj</i> is an UnresolvedPermission, and has
     # the same type (class) name, permission name, actions, and
@@ -416,7 +407,6 @@ module Java::Security
     end
     
     typesig { [] }
-    # 
     # Returns the hash code value for this object.
     # 
     # @return a hash code value for this object.
@@ -432,7 +422,6 @@ module Java::Security
     end
     
     typesig { [] }
-    # 
     # Returns the canonical string representation of the actions,
     # which currently is the empty string "", since there are no actions for
     # an UnresolvedPermission. That is, the actions for the
@@ -446,7 +435,6 @@ module Java::Security
     end
     
     typesig { [] }
-    # 
     # Get the type (class name) of the underlying permission that
     # has not been resolved.
     # 
@@ -459,7 +447,6 @@ module Java::Security
     end
     
     typesig { [] }
-    # 
     # Get the target name of the underlying permission that
     # has not been resolved.
     # 
@@ -473,7 +460,6 @@ module Java::Security
     end
     
     typesig { [] }
-    # 
     # Get the actions for the underlying permission that
     # has not been resolved.
     # 
@@ -487,7 +473,6 @@ module Java::Security
     end
     
     typesig { [] }
-    # 
     # Get the signer certificates (without any supporting chain)
     # for the underlying permission that has not been resolved.
     # 
@@ -501,7 +486,6 @@ module Java::Security
     end
     
     typesig { [] }
-    # 
     # Returns a string describing this UnresolvedPermission.  The convention
     # is to specify the class name, the permission name, and the actions, in
     # the following format: '(unresolved "ClassName" "name" "actions")'.
@@ -512,7 +496,6 @@ module Java::Security
     end
     
     typesig { [] }
-    # 
     # Returns a new PermissionCollection object for storing
     # UnresolvedPermission  objects.
     # <p>
@@ -523,7 +506,6 @@ module Java::Security
     end
     
     typesig { [Java::Io::ObjectOutputStream] }
-    # 
     # Writes this object out to a stream (i.e., serializes it).
     # 
     # @serialData An initial <code>String</code> denoting the
@@ -563,7 +545,6 @@ module Java::Security
     end
     
     typesig { [Java::Io::ObjectInputStream] }
-    # 
     # Restores this object from a stream (i.e., deserializes it).
     def read_object(ois)
       cf = nil
@@ -610,7 +591,7 @@ module Java::Security
         begin
           @certs[i] = cf.generate_certificate(bais)
         rescue CertificateException => ce
-          raise IOException.new(ce_.get_message)
+          raise IOException.new(ce.get_message)
         end
         bais.close
         ((i += 1) - 1)

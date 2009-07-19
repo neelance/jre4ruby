@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 1995-2006 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -40,7 +39,6 @@ module Java::Util
     }
   end
   
-  # 
   # The <code>Properties</code> class represents a persistent set of
   # properties. The <code>Properties</code> can be saved to a stream
   # or loaded from a stream. Each key and its corresponding value in
@@ -120,13 +118,11 @@ module Java::Util
     include_class_members PropertiesImports
     
     class_module.module_eval {
-      # 
       # use serialVersionUID from JDK 1.1.X for interoperability
       const_set_lazy(:SerialVersionUID) { 4112578634029874840 }
       const_attr_reader  :SerialVersionUID
     }
     
-    # 
     # A property list that contains default values for any keys not
     # found in this property list.
     # 
@@ -138,14 +134,12 @@ module Java::Util
     undef_method :defaults=
     
     typesig { [] }
-    # 
     # Creates an empty property list with no default values.
     def initialize
       initialize__properties(nil)
     end
     
     typesig { [Properties] }
-    # 
     # Creates an empty property list with the specified defaults.
     # 
     # @param   defaults   the defaults.
@@ -156,7 +150,6 @@ module Java::Util
     end
     
     typesig { [String, String] }
-    # 
     # Calls the <tt>Hashtable</tt> method <code>put</code>. Provided for
     # parallelism with the <tt>getProperty</tt> method. Enforces use of
     # strings for property keys and values. The value returned is the
@@ -175,7 +168,6 @@ module Java::Util
     end
     
     typesig { [Reader] }
-    # 
     # Reads a property list (key and element pairs) from the input
     # character stream in a simple line-oriented format.
     # <p>
@@ -335,7 +327,6 @@ module Java::Util
     end
     
     typesig { [InputStream] }
-    # 
     # Reads a property list (key and element pairs) from the input
     # byte stream. The input stream is in a simple line-oriented
     # format as specified in
@@ -596,7 +587,6 @@ module Java::Util
     }
     
     typesig { [Array.typed(::Java::Char), ::Java::Int, ::Java::Int, Array.typed(::Java::Char)] }
-    # 
     # Converts encoded &#92;uxxxx to unicode chars
     # and changes special saved chars to their original forms
     def load_convert(in_, off, len, convt_buf)
@@ -660,7 +650,6 @@ module Java::Util
     end
     
     typesig { [String, ::Java::Boolean, ::Java::Boolean] }
-    # 
     # Converts unicodes to encoded &#92;uxxxx and escapes
     # special characters with a preceding slash
     def save_convert(the_string, escape_space, escape_unicode)
@@ -770,7 +759,6 @@ module Java::Util
     }
     
     typesig { [OutputStream, String] }
-    # 
     # Calls the <code>store(OutputStream out, String comments)</code> method
     # and suppresses IOExceptions that were thrown.
     # 
@@ -795,7 +783,6 @@ module Java::Util
     end
     
     typesig { [Writer, String] }
-    # 
     # Writes this property list (key and element pairs) in this
     # <code>Properties</code> table to the output character stream in a
     # format suitable for using the {@link #load(java.io.Reader) load(Reader)}
@@ -847,7 +834,6 @@ module Java::Util
     end
     
     typesig { [OutputStream, String] }
-    # 
     # Writes this property list (key and element pairs) in this
     # <code>Properties</code> table to the output stream in a format suitable
     # for loading into a <code>Properties</code> table using the
@@ -912,7 +898,6 @@ module Java::Util
     end
     
     typesig { [InputStream] }
-    # 
     # Loads all of the properties represented by the XML document on the
     # specified input stream into this properties table.
     # 
@@ -944,7 +929,6 @@ module Java::Util
     end
     
     typesig { [OutputStream, String] }
-    # 
     # Emits an XML document representing all of the properties contained
     # in this table.
     # 
@@ -973,7 +957,6 @@ module Java::Util
     end
     
     typesig { [OutputStream, String, String] }
-    # 
     # Emits an XML document representing all of the properties contained
     # in this table, using the specified encoding.
     # 
@@ -1009,7 +992,6 @@ module Java::Util
     end
     
     typesig { [String] }
-    # 
     # Searches for the property with the specified key in this property list.
     # If the key is not found in this property list, the default property list,
     # and its defaults, recursively, are then checked. The method returns
@@ -1026,7 +1008,6 @@ module Java::Util
     end
     
     typesig { [String, String] }
-    # 
     # Searches for the property with the specified key in this property list.
     # If the key is not found in this property list, the default property list,
     # and its defaults, recursively, are then checked. The method returns the
@@ -1044,7 +1025,6 @@ module Java::Util
     end
     
     typesig { [] }
-    # 
     # Returns an enumeration of all the keys in this property list,
     # including distinct keys in the default property list if a key
     # of the same name has not already been found from the main
@@ -1064,7 +1044,6 @@ module Java::Util
     end
     
     typesig { [] }
-    # 
     # Returns a set of keys in this property list where
     # the key and its corresponding value are strings,
     # including distinct keys in the default property list if a key
@@ -1088,7 +1067,6 @@ module Java::Util
     end
     
     typesig { [PrintStream] }
-    # 
     # Prints this property list out to the specified output stream.
     # This method is useful for debugging.
     # 
@@ -1111,7 +1089,6 @@ module Java::Util
     end
     
     typesig { [PrintWriter] }
-    # 
     # Prints this property list out to the specified output stream.
     # This method is useful for debugging.
     # 
@@ -1140,7 +1117,6 @@ module Java::Util
     end
     
     typesig { [Hashtable] }
-    # 
     # Enumerates all key/value pairs in the specified hashtable.
     # @param h the hashtable
     # @throws ClassCastException if any of the property keys
@@ -1159,7 +1135,6 @@ module Java::Util
     end
     
     typesig { [Hashtable] }
-    # 
     # Enumerates all key/value pairs in the specified hashtable
     # and omits the property if the key or value is not a string.
     # @param h the hashtable
@@ -1181,7 +1156,6 @@ module Java::Util
     
     class_module.module_eval {
       typesig { [::Java::Int] }
-      # 
       # Convert a nibble to a hex character
       # @param   nibble  the nibble to convert.
       def to_hex(nibble)

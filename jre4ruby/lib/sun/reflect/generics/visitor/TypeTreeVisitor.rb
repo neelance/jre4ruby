@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 2003 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -32,13 +31,11 @@ module Sun::Reflect::Generics::Visitor
     }
   end
   
-  # 
   # Visit a TypeTree and produce a result of type T.
   module TypeTreeVisitor
     include_class_members TypeTreeVisitorImports
     
     typesig { [] }
-    # 
     # Returns the result of the visit.
     # @return the result of the visit
     def get_result

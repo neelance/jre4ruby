@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 1995-2000 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -30,7 +29,6 @@ module Java::Lang
     }
   end
   
-  # 
   # An <code>Error</code> is a subclass of <code>Throwable</code>
   # that indicates serious problems that a reasonable application
   # should not try to catch. Most such errors are abnormal conditions.
@@ -55,7 +53,6 @@ module Java::Lang
     }
     
     typesig { [] }
-    # 
     # Constructs a new error with <code>null</code> as its detail message.
     # The cause is not initialized, and may subsequently be initialized by a
     # call to {@link #initCause}.
@@ -64,7 +61,6 @@ module Java::Lang
     end
     
     typesig { [String] }
-    # 
     # Constructs a new error with the specified detail message.  The
     # cause is not initialized, and may subsequently be initialized by
     # a call to {@link #initCause}.
@@ -76,7 +72,6 @@ module Java::Lang
     end
     
     typesig { [String, Exception] }
-    # 
     # Constructs a new error with the specified detail message and
     # cause.  <p>Note that the detail message associated with
     # <code>cause</code> is <i>not</i> automatically incorporated in
@@ -94,7 +89,6 @@ module Java::Lang
     end
     
     typesig { [Exception] }
-    # 
     # Constructs a new error with the specified cause and a detail
     # message of <tt>(cause==null ? null : cause.toString())</tt> (which
     # typically contains the class and detail message of <tt>cause</tt>).

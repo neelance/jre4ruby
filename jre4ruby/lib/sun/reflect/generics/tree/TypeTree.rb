@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 2003 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -39,7 +38,6 @@ module Sun::Reflect::Generics::Tree
     include Tree
     
     typesig { [TypeTreeVisitor] }
-    # 
     # Accept method for the visitor pattern.
     # @param v - a <tt>TypeTreeVisitor</tt> that will process this
     # tree

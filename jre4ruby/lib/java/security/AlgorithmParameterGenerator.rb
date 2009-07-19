@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 1997-2006 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -32,7 +31,6 @@ module Java::Security
     }
   end
   
-  # 
   # The <code>AlgorithmParameterGenerator</code> class is used to generate a
   # set of
   # parameters to be used with a certain algorithm. Parameter generators
@@ -103,7 +101,6 @@ module Java::Security
     undef_method :algorithm=
     
     typesig { [AlgorithmParameterGeneratorSpi, Provider, String] }
-    # 
     # Creates an AlgorithmParameterGenerator object.
     # 
     # @param paramGenSpi the delegate
@@ -119,7 +116,6 @@ module Java::Security
     end
     
     typesig { [] }
-    # 
     # Returns the standard name of the algorithm this parameter
     # generator is associated with.
     # 
@@ -130,7 +126,6 @@ module Java::Security
     
     class_module.module_eval {
       typesig { [String] }
-      # 
       # Returns an AlgorithmParameterGenerator object for generating
       # a set of parameters to be used with the specified algorithm.
       # 
@@ -167,7 +162,6 @@ module Java::Security
       end
       
       typesig { [String, String] }
-      # 
       # Returns an AlgorithmParameterGenerator object for generating
       # a set of parameters to be used with the specified algorithm.
       # 
@@ -210,7 +204,6 @@ module Java::Security
       end
       
       typesig { [String, Provider] }
-      # 
       # Returns an AlgorithmParameterGenerator object for generating
       # a set of parameters to be used with the specified algorithm.
       # 
@@ -249,7 +242,6 @@ module Java::Security
     }
     
     typesig { [] }
-    # 
     # Returns the provider of this algorithm parameter generator object.
     # 
     # @return the provider of this algorithm parameter generator object
@@ -258,7 +250,6 @@ module Java::Security
     end
     
     typesig { [::Java::Int] }
-    # 
     # Initializes this parameter generator for a certain size.
     # To create the parameters, the <code>SecureRandom</code>
     # implementation of the highest-priority installed provider is used as
@@ -273,7 +264,6 @@ module Java::Security
     end
     
     typesig { [::Java::Int, SecureRandom] }
-    # 
     # Initializes this parameter generator for a certain size and source
     # of randomness.
     # 
@@ -284,7 +274,6 @@ module Java::Security
     end
     
     typesig { [AlgorithmParameterSpec] }
-    # 
     # Initializes this parameter generator with a set of algorithm-specific
     # parameter generation values.
     # To generate the parameters, the <code>SecureRandom</code>
@@ -303,7 +292,6 @@ module Java::Security
     end
     
     typesig { [AlgorithmParameterSpec, SecureRandom] }
-    # 
     # Initializes this parameter generator with a set of algorithm-specific
     # parameter generation values.
     # 
@@ -317,7 +305,6 @@ module Java::Security
     end
     
     typesig { [] }
-    # 
     # Generates the parameters.
     # 
     # @return the new AlgorithmParameters object.

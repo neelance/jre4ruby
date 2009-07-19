@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 2005 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -31,7 +30,6 @@ module Sun::Net::Httpserver
     }
   end
   
-  # 
   # A Http error
   class HttpError < HttpErrorImports.const_get :RuntimeException
     include_class_members HttpErrorImports

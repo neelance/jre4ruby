@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 1996-1999 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -31,7 +30,6 @@ module Java::Util
     }
   end
   
-  # 
   # A tagging interface that all event listener interfaces must extend.
   # @since JDK1.1
   module EventListener

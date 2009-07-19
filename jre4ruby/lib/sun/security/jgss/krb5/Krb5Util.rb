@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 2003-2007 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -43,7 +42,6 @@ module Sun::Security::Jgss::Krb5
     }
   end
   
-  # 
   # Utilities for obtaining and converting Kerberos tickets.
   class Krb5Util 
     include_class_members Krb5UtilImports
@@ -54,7 +52,6 @@ module Sun::Security::Jgss::Krb5
     }
     
     typesig { [] }
-    # 
     # Default constructor
     def initialize
       # Cannot create one of these
@@ -62,7 +59,6 @@ module Sun::Security::Jgss::Krb5
     
     class_module.module_eval {
       typesig { [::Java::Int, String, String, String, AccessControlContext] }
-      # 
       # Retrieve the service ticket for serverPrincipal from caller's Subject
       # or from Subject obtained by logging in, or if not found, via the
       # Ticket Granting Service using the TGT obtained from the Subject.
@@ -122,7 +118,6 @@ module Sun::Security::Jgss::Krb5
       end
       
       typesig { [::Java::Int, String, String, AccessControlContext] }
-      # 
       # Retrieves the ticket corresponding to the client/server principal
       # pair from the Subject in the specified AccessControlContext.
       # If the ticket can not be found in the Subject, and if
@@ -141,7 +136,6 @@ module Sun::Security::Jgss::Krb5
       end
       
       typesig { [::Java::Int, AccessControlContext] }
-      # 
       # Retrieves the caller's Subject, or Subject obtained by logging in
       # via the specified caller.
       # 
@@ -162,7 +156,6 @@ module Sun::Security::Jgss::Krb5
       end
       
       typesig { [::Java::Int, String, AccessControlContext] }
-      # 
       # Retrieves the keys for the specified server principal from
       # the Subject in the specified AccessControlContext.
       # If the ticket can not be found in the Subject, and if

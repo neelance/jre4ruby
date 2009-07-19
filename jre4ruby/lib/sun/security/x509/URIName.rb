@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 1997-2004 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -35,7 +34,6 @@ module Sun::Security::X509
     }
   end
   
-  # 
   # This class implements the URIName as required by the GeneralNames
   # ASN.1 object.
   # <p>
@@ -111,7 +109,6 @@ module Sun::Security::X509
     undef_method :host_ip=
     
     typesig { [DerValue] }
-    # 
     # Create the URIName object from the passed encoded Der value.
     # 
     # @param derValue the encoded DER URIName.
@@ -121,7 +118,6 @@ module Sun::Security::X509
     end
     
     typesig { [String] }
-    # 
     # Create the URIName object with the specified name.
     # 
     # @param name the URIName.
@@ -171,7 +167,6 @@ module Sun::Security::X509
     
     class_module.module_eval {
       typesig { [DerValue] }
-      # 
       # Create the URIName object with the specified name constraint. URI
       # name constraints syntax is different than SubjectAltNames, etc. See
       # 4.2.1.11 of RFC 3280.
@@ -217,14 +212,12 @@ module Sun::Security::X509
     end
     
     typesig { [] }
-    # 
     # Return the type of the GeneralName.
     def get_type
       return GeneralNameInterface::NAME_URI
     end
     
     typesig { [DerOutputStream] }
-    # 
     # Encode the URI name into the DerOutputStream.
     # 
     # @param out the DER stream to encode the URIName to.
@@ -234,14 +227,12 @@ module Sun::Security::X509
     end
     
     typesig { [] }
-    # 
     # Convert the name into user readable string.
     def to_s
       return "URIName: " + (@uri.to_s).to_s
     end
     
     typesig { [Object] }
-    # 
     # Compares this name with another, for equality.
     # 
     # @return true iff the names are equivalent according to RFC2459.
@@ -257,21 +248,18 @@ module Sun::Security::X509
     end
     
     typesig { [] }
-    # 
     # Returns the URIName as a java.net.URI object
     def get_uri
       return @uri
     end
     
     typesig { [] }
-    # 
     # Returns this URI name.
     def get_name
       return @uri.to_s
     end
     
     typesig { [] }
-    # 
     # Return the scheme name portion of a URIName
     # 
     # @returns scheme portion of full name
@@ -280,7 +268,6 @@ module Sun::Security::X509
     end
     
     typesig { [] }
-    # 
     # Return the host name or IP address portion of the URIName
     # 
     # @returns host name or IP address portion of full name
@@ -289,7 +276,6 @@ module Sun::Security::X509
     end
     
     typesig { [] }
-    # 
     # Return the host object type; if host name is a
     # DNSName, then this host object does not include any
     # initial "." on the name.
@@ -304,7 +290,6 @@ module Sun::Security::X509
     end
     
     typesig { [] }
-    # 
     # Returns the hash code value for this object.
     # 
     # @return a hash code value for this object.
@@ -313,7 +298,6 @@ module Sun::Security::X509
     end
     
     typesig { [GeneralNameInterface] }
-    # 
     # Return type of constraint inputName places on this name:<ul>
     # <li>NAME_DIFF_TYPE = -1: input name is different type from name
     # (i.e. does not constrain).
@@ -392,7 +376,6 @@ module Sun::Security::X509
     end
     
     typesig { [] }
-    # 
     # Return subtree depth of this name for purposes of determining
     # NameConstraints minimum and maximum bounds and for calculating
     # path lengths in name subtrees.

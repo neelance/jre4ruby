@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 2005-2006 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -35,7 +34,6 @@ module Sun::Security::Jgss
     }
   end
   
-  # 
   # A Configuration implementation especially designed for JGSS.
   # 
   # @author weijun.wang
@@ -67,7 +65,6 @@ module Sun::Security::Jgss
     }
     
     typesig { [::Java::Int, Oid] }
-    # 
     # A new instance of LoginConfigImpl must be created for each login request
     # since it's only used by a single (caller, mech) pair
     # @param caller defined in GSSUtil as CALLER_XXX final fields
@@ -104,7 +101,6 @@ module Sun::Security::Jgss
     end
     
     typesig { [String] }
-    # 
     # @param name Almost useless, since the (caller, mech) is already passed
     # into constructor. The only use will be detecting OTHER which
     # is called in LoginContext
@@ -180,7 +176,6 @@ module Sun::Security::Jgss
     end
     
     typesig { [] }
-    # 
     # Default value for a caller-mech pair when no entry is defined in
     # the system-wide Configuration object.
     def get_default_configuration_entry

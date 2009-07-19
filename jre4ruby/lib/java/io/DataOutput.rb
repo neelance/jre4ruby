@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 1995-2006 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -31,7 +30,6 @@ module Java::Io
     }
   end
   
-  # 
   # The <code>DataOutput</code> interface provides
   # for converting data from any of the Java
   # primitive types to a series of bytes and
@@ -55,7 +53,6 @@ module Java::Io
     include_class_members DataOutputImports
     
     typesig { [::Java::Int] }
-    # 
     # Writes to the output stream the eight
     # low-order bits of the argument <code>b</code>.
     # The 24 high-order  bits of <code>b</code>
@@ -68,7 +65,6 @@ module Java::Io
     end
     
     typesig { [Array.typed(::Java::Byte)] }
-    # 
     # Writes to the output stream all the bytes in array <code>b</code>.
     # If <code>b</code> is <code>null</code>,
     # a <code>NullPointerException</code> is thrown.
@@ -85,7 +81,6 @@ module Java::Io
     end
     
     typesig { [Array.typed(::Java::Byte), ::Java::Int, ::Java::Int] }
-    # 
     # Writes <code>len</code> bytes from array
     # <code>b</code>, in order,  to
     # the output stream.  If <code>b</code>
@@ -109,7 +104,6 @@ module Java::Io
     end
     
     typesig { [::Java::Boolean] }
-    # 
     # Writes a <code>boolean</code> value to this output stream.
     # If the argument <code>v</code>
     # is <code>true</code>, the value <code>(byte)1</code>
@@ -128,7 +122,6 @@ module Java::Io
     end
     
     typesig { [::Java::Int] }
-    # 
     # Writes to the output stream the eight low-
     # order bits of the argument <code>v</code>.
     # The 24 high-order bits of <code>v</code>
@@ -147,7 +140,6 @@ module Java::Io
     end
     
     typesig { [::Java::Int] }
-    # 
     # Writes two bytes to the output
     # stream to represent the value of the argument.
     # The byte values to be written, in the  order
@@ -169,7 +161,6 @@ module Java::Io
     end
     
     typesig { [::Java::Int] }
-    # 
     # Writes a <code>char</code> value, which
     # is comprised of two bytes, to the
     # output stream.
@@ -192,7 +183,6 @@ module Java::Io
     end
     
     typesig { [::Java::Int] }
-    # 
     # Writes an <code>int</code> value, which is
     # comprised of four bytes, to the output stream.
     # The byte values to be written, in the  order
@@ -215,7 +205,6 @@ module Java::Io
     end
     
     typesig { [::Java::Long] }
-    # 
     # Writes a <code>long</code> value, which is
     # comprised of eight bytes, to the output stream.
     # The byte values to be written, in the  order
@@ -243,7 +232,6 @@ module Java::Io
     end
     
     typesig { [::Java::Float] }
-    # 
     # Writes a <code>float</code> value,
     # which is comprised of four bytes, to the output stream.
     # It does this as if it first converts this
@@ -264,7 +252,6 @@ module Java::Io
     end
     
     typesig { [::Java::Double] }
-    # 
     # Writes a <code>double</code> value,
     # which is comprised of eight bytes, to the output stream.
     # It does this as if it first converts this
@@ -285,7 +272,6 @@ module Java::Io
     end
     
     typesig { [String] }
-    # 
     # Writes a string to the output stream.
     # For every character in the string
     # <code>s</code>,  taken in order, one byte
@@ -309,7 +295,6 @@ module Java::Io
     end
     
     typesig { [String] }
-    # 
     # Writes every character in the string <code>s</code>,
     # to the output stream, in order,
     # two bytes per character. If <code>s</code>
@@ -331,7 +316,6 @@ module Java::Io
     end
     
     typesig { [String] }
-    # 
     # Writes two bytes of length information
     # to the output stream, followed
     # by the

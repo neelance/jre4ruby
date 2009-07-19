@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Portions Copyright 2005-2007 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -50,7 +49,6 @@ module Sun::Util::Resources
     }
   end
   
-  # 
   # Subclass of <code>ResourceBundle</code> which mimics
   # <code>ListResourceBundle</code>, but provides more hooks
   # for specialized subclass behavior. For general description,
@@ -63,7 +61,6 @@ module Sun::Util::Resources
     include_class_members OpenListResourceBundleImports
     
     typesig { [] }
-    # 
     # Sole constructor.  (For invocation by subclass constructors, typically
     # implicit.)
     def initialize
@@ -83,7 +80,6 @@ module Sun::Util::Resources
     end
     
     typesig { [] }
-    # 
     # Implementation of ResourceBundle.getKeys.
     def get_keys
       parent = self.attr_parent
@@ -91,7 +87,6 @@ module Sun::Util::Resources
     end
     
     typesig { [] }
-    # 
     # Returns a set of keys provided in this resource bundle
     def handle_get_keys
       load_lookup_tables_if_necessary
@@ -99,21 +94,18 @@ module Sun::Util::Resources
     end
     
     typesig { [] }
-    # 
     # Returns the parent bundle
     def get_parent
       return self.attr_parent
     end
     
     typesig { [] }
-    # 
     # See ListResourceBundle class description.
     def get_contents
       raise NotImplementedError
     end
     
     typesig { [] }
-    # 
     # Load lookup tables if they haven't been loaded already.
     def load_lookup_tables_if_necessary
       if ((@lookup).nil?)
@@ -122,7 +114,6 @@ module Sun::Util::Resources
     end
     
     typesig { [] }
-    # 
     # We lazily load the lookup hashtable.  This function does the
     # loading.
     def load_lookup
@@ -148,7 +139,6 @@ module Sun::Util::Resources
     end
     
     typesig { [::Java::Int] }
-    # 
     # Lets subclasses provide specialized Map implementations.
     # Default uses HashMap.
     def create_map(size)

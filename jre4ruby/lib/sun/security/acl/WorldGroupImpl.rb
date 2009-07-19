@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 1996 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -32,7 +31,6 @@ module Sun::Security::Acl
     }
   end
   
-  # 
   # This class implements a group of principals.
   # @author Satish Dharmaraj
   class WorldGroupImpl < WorldGroupImplImports.const_get :GroupImpl
@@ -44,7 +42,6 @@ module Sun::Security::Acl
     end
     
     typesig { [Principal] }
-    # 
     # returns true for all passed principals
     # @param member The principal whose membership must be checked in this Group.
     # @return true always since this is the "world" group.

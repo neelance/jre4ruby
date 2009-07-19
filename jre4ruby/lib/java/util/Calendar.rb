@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 1996-2007 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -58,7 +57,6 @@ module Java::Util
     }
   end
   
-  # 
   # The <code>Calendar</code> class is an abstract class that provides methods
   # for converting between a specific instant in time and a set of {@link
   # #fields calendar fields} such as <code>YEAR</code>, <code>MONTH</code>,
@@ -367,13 +365,11 @@ module Java::Util
       const_set_lazy(:ERA) { 0 }
       const_attr_reader  :ERA
       
-      # 
       # Field number for <code>get</code> and <code>set</code> indicating the
       # year. This is a calendar-specific value; see subclass documentation.
       const_set_lazy(:YEAR) { 1 }
       const_attr_reader  :YEAR
       
-      # 
       # Field number for <code>get</code> and <code>set</code> indicating the
       # month. This is a calendar-specific value. The first month of
       # the year in the Gregorian and Julian calendars is
@@ -396,7 +392,6 @@ module Java::Util
       const_set_lazy(:MONTH) { 2 }
       const_attr_reader  :MONTH
       
-      # 
       # Field number for <code>get</code> and <code>set</code> indicating the
       # week number within the current year.  The first week of the year, as
       # defined by <code>getFirstDayOfWeek()</code> and
@@ -409,7 +404,6 @@ module Java::Util
       const_set_lazy(:WEEK_OF_YEAR) { 3 }
       const_attr_reader  :WEEK_OF_YEAR
       
-      # 
       # Field number for <code>get</code> and <code>set</code> indicating the
       # week number within the current month.  The first week of the month, as
       # defined by <code>getFirstDayOfWeek()</code> and
@@ -422,7 +416,6 @@ module Java::Util
       const_set_lazy(:WEEK_OF_MONTH) { 4 }
       const_attr_reader  :WEEK_OF_MONTH
       
-      # 
       # Field number for <code>get</code> and <code>set</code> indicating the
       # day of the month. This is a synonym for <code>DAY_OF_MONTH</code>.
       # The first day of the month has value 1.
@@ -431,7 +424,6 @@ module Java::Util
       const_set_lazy(:DATE) { 5 }
       const_attr_reader  :DATE
       
-      # 
       # Field number for <code>get</code> and <code>set</code> indicating the
       # day of the month. This is a synonym for <code>DATE</code>.
       # The first day of the month has value 1.
@@ -440,13 +432,11 @@ module Java::Util
       const_set_lazy(:DAY_OF_MONTH) { 5 }
       const_attr_reader  :DAY_OF_MONTH
       
-      # 
       # Field number for <code>get</code> and <code>set</code> indicating the day
       # number within the current year.  The first day of the year has value 1.
       const_set_lazy(:DAY_OF_YEAR) { 6 }
       const_attr_reader  :DAY_OF_YEAR
       
-      # 
       # Field number for <code>get</code> and <code>set</code> indicating the day
       # of the week.  This field takes values <code>SUNDAY</code>,
       # <code>MONDAY</code>, <code>TUESDAY</code>, <code>WEDNESDAY</code>,
@@ -462,7 +452,6 @@ module Java::Util
       const_set_lazy(:DAY_OF_WEEK) { 7 }
       const_attr_reader  :DAY_OF_WEEK
       
-      # 
       # Field number for <code>get</code> and <code>set</code> indicating the
       # ordinal number of the day of the week within the current month. Together
       # with the <code>DAY_OF_WEEK</code> field, this uniquely specifies a day
@@ -487,7 +476,6 @@ module Java::Util
       const_set_lazy(:DAY_OF_WEEK_IN_MONTH) { 8 }
       const_attr_reader  :DAY_OF_WEEK_IN_MONTH
       
-      # 
       # Field number for <code>get</code> and <code>set</code> indicating
       # whether the <code>HOUR</code> is before or after noon.
       # E.g., at 10:04:15.250 PM the <code>AM_PM</code> is <code>PM</code>.
@@ -498,7 +486,6 @@ module Java::Util
       const_set_lazy(:AM_PM) { 9 }
       const_attr_reader  :AM_PM
       
-      # 
       # Field number for <code>get</code> and <code>set</code> indicating the
       # hour of the morning or afternoon. <code>HOUR</code> is used for the
       # 12-hour clock (0 - 11). Noon and midnight are represented by 0, not by 12.
@@ -509,7 +496,6 @@ module Java::Util
       const_set_lazy(:HOUR) { 10 }
       const_attr_reader  :HOUR
       
-      # 
       # Field number for <code>get</code> and <code>set</code> indicating the
       # hour of the day. <code>HOUR_OF_DAY</code> is used for the 24-hour clock.
       # E.g., at 10:04:15.250 PM the <code>HOUR_OF_DAY</code> is 22.
@@ -518,28 +504,24 @@ module Java::Util
       const_set_lazy(:HOUR_OF_DAY) { 11 }
       const_attr_reader  :HOUR_OF_DAY
       
-      # 
       # Field number for <code>get</code> and <code>set</code> indicating the
       # minute within the hour.
       # E.g., at 10:04:15.250 PM the <code>MINUTE</code> is 4.
       const_set_lazy(:MINUTE) { 12 }
       const_attr_reader  :MINUTE
       
-      # 
       # Field number for <code>get</code> and <code>set</code> indicating the
       # second within the minute.
       # E.g., at 10:04:15.250 PM the <code>SECOND</code> is 15.
       const_set_lazy(:SECOND) { 13 }
       const_attr_reader  :SECOND
       
-      # 
       # Field number for <code>get</code> and <code>set</code> indicating the
       # millisecond within the second.
       # E.g., at 10:04:15.250 PM the <code>MILLISECOND</code> is 250.
       const_set_lazy(:MILLISECOND) { 14 }
       const_attr_reader  :MILLISECOND
       
-      # 
       # Field number for <code>get</code> and <code>set</code>
       # indicating the raw offset from GMT in milliseconds.
       # <p>
@@ -550,7 +532,6 @@ module Java::Util
       const_set_lazy(:ZONE_OFFSET) { 15 }
       const_attr_reader  :ZONE_OFFSET
       
-      # 
       # Field number for <code>get</code> and <code>set</code> indicating the
       # daylight savings offset in milliseconds.
       # <p>
@@ -561,146 +542,122 @@ module Java::Util
       const_set_lazy(:DST_OFFSET) { 16 }
       const_attr_reader  :DST_OFFSET
       
-      # 
       # The number of distinct fields recognized by <code>get</code> and <code>set</code>.
       # Field numbers range from <code>0..FIELD_COUNT-1</code>.
       const_set_lazy(:FIELD_COUNT) { 17 }
       const_attr_reader  :FIELD_COUNT
       
-      # 
       # Value of the {@link #DAY_OF_WEEK} field indicating
       # Sunday.
       const_set_lazy(:SUNDAY) { 1 }
       const_attr_reader  :SUNDAY
       
-      # 
       # Value of the {@link #DAY_OF_WEEK} field indicating
       # Monday.
       const_set_lazy(:MONDAY) { 2 }
       const_attr_reader  :MONDAY
       
-      # 
       # Value of the {@link #DAY_OF_WEEK} field indicating
       # Tuesday.
       const_set_lazy(:TUESDAY) { 3 }
       const_attr_reader  :TUESDAY
       
-      # 
       # Value of the {@link #DAY_OF_WEEK} field indicating
       # Wednesday.
       const_set_lazy(:WEDNESDAY) { 4 }
       const_attr_reader  :WEDNESDAY
       
-      # 
       # Value of the {@link #DAY_OF_WEEK} field indicating
       # Thursday.
       const_set_lazy(:THURSDAY) { 5 }
       const_attr_reader  :THURSDAY
       
-      # 
       # Value of the {@link #DAY_OF_WEEK} field indicating
       # Friday.
       const_set_lazy(:FRIDAY) { 6 }
       const_attr_reader  :FRIDAY
       
-      # 
       # Value of the {@link #DAY_OF_WEEK} field indicating
       # Saturday.
       const_set_lazy(:SATURDAY) { 7 }
       const_attr_reader  :SATURDAY
       
-      # 
       # Value of the {@link #MONTH} field indicating the
       # first month of the year in the Gregorian and Julian calendars.
       const_set_lazy(:JANUARY) { 0 }
       const_attr_reader  :JANUARY
       
-      # 
       # Value of the {@link #MONTH} field indicating the
       # second month of the year in the Gregorian and Julian calendars.
       const_set_lazy(:FEBRUARY) { 1 }
       const_attr_reader  :FEBRUARY
       
-      # 
       # Value of the {@link #MONTH} field indicating the
       # third month of the year in the Gregorian and Julian calendars.
       const_set_lazy(:MARCH) { 2 }
       const_attr_reader  :MARCH
       
-      # 
       # Value of the {@link #MONTH} field indicating the
       # fourth month of the year in the Gregorian and Julian calendars.
       const_set_lazy(:APRIL) { 3 }
       const_attr_reader  :APRIL
       
-      # 
       # Value of the {@link #MONTH} field indicating the
       # fifth month of the year in the Gregorian and Julian calendars.
       const_set_lazy(:MAY) { 4 }
       const_attr_reader  :MAY
       
-      # 
       # Value of the {@link #MONTH} field indicating the
       # sixth month of the year in the Gregorian and Julian calendars.
       const_set_lazy(:JUNE) { 5 }
       const_attr_reader  :JUNE
       
-      # 
       # Value of the {@link #MONTH} field indicating the
       # seventh month of the year in the Gregorian and Julian calendars.
       const_set_lazy(:JULY) { 6 }
       const_attr_reader  :JULY
       
-      # 
       # Value of the {@link #MONTH} field indicating the
       # eighth month of the year in the Gregorian and Julian calendars.
       const_set_lazy(:AUGUST) { 7 }
       const_attr_reader  :AUGUST
       
-      # 
       # Value of the {@link #MONTH} field indicating the
       # ninth month of the year in the Gregorian and Julian calendars.
       const_set_lazy(:SEPTEMBER) { 8 }
       const_attr_reader  :SEPTEMBER
       
-      # 
       # Value of the {@link #MONTH} field indicating the
       # tenth month of the year in the Gregorian and Julian calendars.
       const_set_lazy(:OCTOBER) { 9 }
       const_attr_reader  :OCTOBER
       
-      # 
       # Value of the {@link #MONTH} field indicating the
       # eleventh month of the year in the Gregorian and Julian calendars.
       const_set_lazy(:NOVEMBER) { 10 }
       const_attr_reader  :NOVEMBER
       
-      # 
       # Value of the {@link #MONTH} field indicating the
       # twelfth month of the year in the Gregorian and Julian calendars.
       const_set_lazy(:DECEMBER) { 11 }
       const_attr_reader  :DECEMBER
       
-      # 
       # Value of the {@link #MONTH} field indicating the
       # thirteenth month of the year. Although <code>GregorianCalendar</code>
       # does not use this value, lunar calendars do.
       const_set_lazy(:UNDECIMBER) { 12 }
       const_attr_reader  :UNDECIMBER
       
-      # 
       # Value of the {@link #AM_PM} field indicating the
       # period of the day from midnight to just before noon.
       const_set_lazy(:AM) { 0 }
       const_attr_reader  :AM
       
-      # 
       # Value of the {@link #AM_PM} field indicating the
       # period of the day from noon to just before midnight.
       const_set_lazy(:PM) { 1 }
       const_attr_reader  :PM
       
-      # 
       # A style specifier for {@link #getDisplayNames(int, int, Locale)
       # getDisplayNames} indicating names in all styles, such as
       # "January" and "Jan".
@@ -711,7 +668,6 @@ module Java::Util
       const_set_lazy(:ALL_STYLES) { 0 }
       const_attr_reader  :ALL_STYLES
       
-      # 
       # A style specifier for {@link #getDisplayName(int, int, Locale)
       # getDisplayName} and {@link #getDisplayNames(int, int, Locale)
       # getDisplayNames} indicating a short name, such as "Jan".
@@ -721,7 +677,6 @@ module Java::Util
       const_set_lazy(:SHORT) { 1 }
       const_attr_reader  :SHORT
       
-      # 
       # A style specifier for {@link #getDisplayName(int, int, Locale)
       # getDisplayName} and {@link #getDisplayNames(int, int, Locale)
       # getDisplayNames} indicating a long name, such as "January".
@@ -753,7 +708,6 @@ module Java::Util
     alias_method :attr_fields=, :fields=
     undef_method :fields=
     
-    # 
     # The flags which tell if a specified calendar field for the calendar is set.
     # A new object has no fields set.  After the first call to a method
     # which generates the fields, they all remain set after that.
@@ -766,7 +720,6 @@ module Java::Util
     alias_method :attr_is_set=, :is_set=
     undef_method :is_set=
     
-    # 
     # Pseudo-time-stamps which specify when each field was set. There
     # are two special values, UNSET and COMPUTED. Values from
     # MINIMUM_USER_SET to Integer.MAX_VALUE are legal user set values.
@@ -776,7 +729,6 @@ module Java::Util
     alias_method :attr_stamp=, :stamp=
     undef_method :stamp=
     
-    # 
     # The currently set time for this calendar, expressed in milliseconds after
     # January 1, 1970, 0:00:00 GMT.
     # @see #isTimeSet
@@ -787,7 +739,6 @@ module Java::Util
     alias_method :attr_time=, :time=
     undef_method :time=
     
-    # 
     # True if then the value of <code>time</code> is valid.
     # The time is made invalid by a change to an item of <code>field[]</code>.
     # @see #time
@@ -798,7 +749,6 @@ module Java::Util
     alias_method :attr_is_time_set=, :is_time_set=
     undef_method :is_time_set=
     
-    # 
     # True if <code>fields[]</code> are in sync with the currently set time.
     # If false, then the next attempt to get the value of a field will
     # force a recomputation of all fields from the current value of
@@ -810,7 +760,6 @@ module Java::Util
     alias_method :attr_are_fields_set=, :are_fields_set=
     undef_method :are_fields_set=
     
-    # 
     # True if all fields have been set.
     # @serial
     attr_accessor :are_all_fields_set
@@ -819,7 +768,6 @@ module Java::Util
     alias_method :attr_are_all_fields_set=, :are_all_fields_set=
     undef_method :are_all_fields_set=
     
-    # 
     # <code>True</code> if this calendar allows out-of-range field values during computation
     # of <code>time</code> from <code>fields[]</code>.
     # @see #setLenient
@@ -831,7 +779,6 @@ module Java::Util
     alias_method :attr_lenient=, :lenient=
     undef_method :lenient=
     
-    # 
     # The <code>TimeZone</code> used by this calendar. <code>Calendar</code>
     # uses the time zone data to translate between locale and GMT time.
     # @serial
@@ -841,7 +788,6 @@ module Java::Util
     alias_method :attr_zone=, :zone=
     undef_method :zone=
     
-    # 
     # <code>True</code> if zone references to a shared TimeZone object.
     attr_accessor :shared_zone
     alias_method :attr_shared_zone, :shared_zone
@@ -849,7 +795,6 @@ module Java::Util
     alias_method :attr_shared_zone=, :shared_zone=
     undef_method :shared_zone=
     
-    # 
     # The first day of the week, with possible values <code>SUNDAY</code>,
     # <code>MONDAY</code>, etc.  This is a locale-dependent value.
     # @serial
@@ -859,7 +804,6 @@ module Java::Util
     alias_method :attr_first_day_of_week=, :first_day_of_week=
     undef_method :first_day_of_week=
     
-    # 
     # The number of days required for the first week in a month or year,
     # with possible values from 1 to 7.  This is a locale-dependent value.
     # @serial
@@ -870,7 +814,6 @@ module Java::Util
     undef_method :minimal_days_in_first_week=
     
     class_module.module_eval {
-      # 
       # Cache to hold the firstDayOfWeek and minimalDaysInFirstWeek
       # of a Locale.
       
@@ -890,25 +833,21 @@ module Java::Util
       const_set_lazy(:UNSET) { 0 }
       const_attr_reader  :UNSET
       
-      # 
       # The value of the corresponding fields[] has been calculated internally.
       const_set_lazy(:COMPUTED) { 1 }
       const_attr_reader  :COMPUTED
       
-      # 
       # The value of the corresponding fields[] has been set externally. Stamp
       # values which are greater than 1 represents the (pseudo) time when the
       # corresponding fields[] value was set.
       const_set_lazy(:MINIMUM_USER_STAMP) { 2 }
       const_attr_reader  :MINIMUM_USER_STAMP
       
-      # 
       # The mask value that represents all of the fields.
       const_set_lazy(:ALL_FIELDS) { (1 << FIELD_COUNT) - 1 }
       const_attr_reader  :ALL_FIELDS
     }
     
-    # 
     # The next available value for <code>stamp[]</code>, an internal array.
     # This actually should not be written out to the stream, and will probably
     # be removed from the stream in the near future.  In the meantime,
@@ -933,7 +872,6 @@ module Java::Util
       const_attr_reader  :CurrentSerialVersion
     }
     
-    # 
     # The version of the serialized data on the stream.  Possible values:
     # <dl>
     # <dt><b>0</b> or not present on stream</dt>
@@ -1020,7 +958,6 @@ module Java::Util
     }
     
     typesig { [] }
-    # 
     # Constructs a Calendar with the default time zone
     # and locale.
     # @see     TimeZone#getDefault
@@ -1030,7 +967,6 @@ module Java::Util
     end
     
     typesig { [TimeZone, Locale] }
-    # 
     # Constructs a calendar with the specified time zone and locale.
     # 
     # @param zone the time zone to use
@@ -1059,7 +995,6 @@ module Java::Util
     
     class_module.module_eval {
       typesig { [] }
-      # 
       # Gets a calendar using the default time zone and locale. The
       # <code>Calendar</code> returned is based on the current time
       # in the default time zone with the default locale.
@@ -1072,7 +1007,6 @@ module Java::Util
       end
       
       typesig { [TimeZone] }
-      # 
       # Gets a calendar using the specified time zone and default locale.
       # The <code>Calendar</code> returned is based on the current time
       # in the given time zone with the default locale.
@@ -1084,7 +1018,6 @@ module Java::Util
       end
       
       typesig { [Locale] }
-      # 
       # Gets a calendar using the default time zone and specified locale.
       # The <code>Calendar</code> returned is based on the current time
       # in the default time zone with the given locale.
@@ -1098,7 +1031,6 @@ module Java::Util
       end
       
       typesig { [TimeZone, Locale] }
-      # 
       # Gets a calendar with the specified time zone and locale.
       # The <code>Calendar</code> returned is based on the current time
       # in the given time zone with the given locale.
@@ -1126,7 +1058,6 @@ module Java::Util
       end
       
       typesig { [] }
-      # 
       # Returns an array of all locales for which the <code>getInstance</code>
       # methods of this class can return localized instances.
       # The array returned must contain at least a <code>Locale</code>
@@ -1142,7 +1073,6 @@ module Java::Util
     }
     
     typesig { [] }
-    # 
     # Converts the current calendar field values in {@link #fields fields[]}
     # to the millisecond time value
     # {@link #time}.
@@ -1154,7 +1084,6 @@ module Java::Util
     end
     
     typesig { [] }
-    # 
     # Converts the current millisecond time value {@link #time}
     # to calendar field values in {@link #fields fields[]}.
     # This allows you to sync up the calendar field values with
@@ -1168,7 +1097,6 @@ module Java::Util
     end
     
     typesig { [] }
-    # 
     # Returns a <code>Date</code> object representing this
     # <code>Calendar</code>'s time value (millisecond offset from the <a
     # href="#Epoch">Epoch</a>").
@@ -1181,7 +1109,6 @@ module Java::Util
     end
     
     typesig { [Date] }
-    # 
     # Sets this Calendar's time with the given <code>Date</code>.
     # <p>
     # Note: Calling <code>setTime()</code> with
@@ -1196,7 +1123,6 @@ module Java::Util
     end
     
     typesig { [] }
-    # 
     # Returns this Calendar's time value in milliseconds.
     # 
     # @return the current time as UTC milliseconds from the epoch.
@@ -1210,7 +1136,6 @@ module Java::Util
     end
     
     typesig { [::Java::Long] }
-    # 
     # Sets this Calendar's current time from the given long value.
     # 
     # @param millis the new time in UTC milliseconds from the epoch.
@@ -1230,7 +1155,6 @@ module Java::Util
     end
     
     typesig { [::Java::Int] }
-    # 
     # Returns the value of the given calendar field. In lenient mode,
     # all calendar fields are normalized. In non-lenient mode, all
     # calendar fields are validated and this method throws an
@@ -1251,7 +1175,6 @@ module Java::Util
     end
     
     typesig { [::Java::Int] }
-    # 
     # Returns the value of the given calendar field. This method does
     # not involve normalization or validation of the field value.
     # 
@@ -1263,7 +1186,6 @@ module Java::Util
     end
     
     typesig { [::Java::Int, ::Java::Int] }
-    # 
     # Sets the value of the given calendar field. This method does
     # not affect any setting state of the field in this
     # <code>Calendar</code> instance.
@@ -1279,7 +1201,6 @@ module Java::Util
     end
     
     typesig { [::Java::Int, ::Java::Int] }
-    # 
     # Sets the given calendar field to the given value. The value is not
     # interpreted by this method regardless of the leniency mode.
     # 
@@ -1307,7 +1228,6 @@ module Java::Util
     end
     
     typesig { [::Java::Int, ::Java::Int, ::Java::Int] }
-    # 
     # Sets the values for the calendar fields <code>YEAR</code>,
     # <code>MONTH</code>, and <code>DAY_OF_MONTH</code>.
     # Previous values of other calendar fields are retained.  If this is not desired,
@@ -1327,7 +1247,6 @@ module Java::Util
     end
     
     typesig { [::Java::Int, ::Java::Int, ::Java::Int, ::Java::Int, ::Java::Int] }
-    # 
     # Sets the values for the calendar fields <code>YEAR</code>,
     # <code>MONTH</code>, <code>DAY_OF_MONTH</code>,
     # <code>HOUR_OF_DAY</code>, and <code>MINUTE</code>.
@@ -1352,7 +1271,6 @@ module Java::Util
     end
     
     typesig { [::Java::Int, ::Java::Int, ::Java::Int, ::Java::Int, ::Java::Int, ::Java::Int] }
-    # 
     # Sets the values for the fields <code>YEAR</code>, <code>MONTH</code>,
     # <code>DAY_OF_MONTH</code>, <code>HOUR</code>, <code>MINUTE</code>, and
     # <code>SECOND</code>.
@@ -1379,7 +1297,6 @@ module Java::Util
     end
     
     typesig { [] }
-    # 
     # Sets all the calendar field values and the time value
     # (millisecond offset from the <a href="#Epoch">Epoch</a>) of
     # this <code>Calendar</code> undefined. This means that {@link
@@ -1403,7 +1320,6 @@ module Java::Util
     end
     
     typesig { [::Java::Int] }
-    # 
     # Sets the given calendar field value and the time value
     # (millisecond offset from the <a href="#Epoch">Epoch</a>) of
     # this <code>Calendar</code> undefined. This means that {@link
@@ -1432,7 +1348,6 @@ module Java::Util
     end
     
     typesig { [::Java::Int] }
-    # 
     # Determines if the given calendar field has a value set,
     # including cases that the value has been set by internal fields
     # calculations triggered by a <code>get</code> method call.
@@ -1444,7 +1359,6 @@ module Java::Util
     end
     
     typesig { [::Java::Int, ::Java::Int, Locale] }
-    # 
     # Returns the string representation of the calendar
     # <code>field</code> value in the given <code>style</code> and
     # <code>locale</code>.  If no string representation is
@@ -1500,7 +1414,6 @@ module Java::Util
     end
     
     typesig { [::Java::Int, ::Java::Int, Locale] }
-    # 
     # Returns a <code>Map</code> containing all names of the calendar
     # <code>field</code> in the given <code>style</code> and
     # <code>locale</code> and their corresponding field values. For
@@ -1613,7 +1526,6 @@ module Java::Util
     end
     
     typesig { [] }
-    # 
     # Fills in any unset fields in the calendar fields. First, the {@link
     # #computeTime()} method is called if the time value (millisecond offset
     # from the <a href="#Epoch">Epoch</a>) has not been calculated from
@@ -1630,7 +1542,6 @@ module Java::Util
     end
     
     typesig { [::Java::Int] }
-    # 
     # Returns whether the value of the specified calendar field has been set
     # externally by calling one of the setter methods rather than by the
     # internal time calculation.
@@ -1647,7 +1558,6 @@ module Java::Util
     end
     
     typesig { [] }
-    # 
     # Returns a field mask (bit mask) indicating all calendar fields that
     # have the state of externally or internally set.
     # 
@@ -1665,7 +1575,6 @@ module Java::Util
     end
     
     typesig { [::Java::Int] }
-    # 
     # Sets the state of the specified calendar fields to
     # <em>computed</em>. This state means that the specified calendar fields
     # have valid values that have been set by internal time calculation
@@ -1687,24 +1596,23 @@ module Java::Util
         end
         @are_fields_set = @are_all_fields_set = true
       else
-        i_ = 0
-        while i_ < @fields.attr_length
+        i = 0
+        while i < @fields.attr_length
           if (((field_mask & 1)).equal?(1))
-            @stamp[i_] = COMPUTED
-            @is_set[i_] = true
+            @stamp[i] = COMPUTED
+            @is_set[i] = true
           else
-            if (@are_all_fields_set && !@is_set[i_])
+            if (@are_all_fields_set && !@is_set[i])
               @are_all_fields_set = false
             end
           end
           field_mask >>= 1
-          ((i_ += 1) - 1)
+          ((i += 1) - 1)
         end
       end
     end
     
     typesig { [::Java::Int] }
-    # 
     # Sets the state of the calendar fields that are <em>not</em> specified
     # by <code>fieldMask</code> to <em>unset</em>. If <code>fieldMask</code>
     # specifies all the calendar fields, then the state of this
@@ -1737,7 +1645,6 @@ module Java::Util
     end
     
     typesig { [] }
-    # 
     # Returns whether the calendar fields are partially in sync with the time
     # value or fully in sync but not stamp values are not normalized yet.
     def is_partially_normalized
@@ -1745,7 +1652,6 @@ module Java::Util
     end
     
     typesig { [] }
-    # 
     # Returns whether the calendar fields are fully in sync with the time
     # value.
     def is_fully_normalized
@@ -1753,7 +1659,6 @@ module Java::Util
     end
     
     typesig { [] }
-    # 
     # Marks this Calendar as not sync'd.
     def set_unnormalized
       @are_fields_set = @are_all_fields_set = false
@@ -1761,7 +1666,6 @@ module Java::Util
     
     class_module.module_eval {
       typesig { [::Java::Int, ::Java::Int] }
-      # 
       # Returns whether the specified <code>field</code> is on in the
       # <code>fieldMask</code>.
       def is_field_set(field_mask, field)
@@ -1770,7 +1674,6 @@ module Java::Util
     }
     
     typesig { [] }
-    # 
     # Returns a field mask indicating which calendar field values
     # to be used to calculate the time value. The calendar fields are
     # returned as a bit mask, each bit of which corresponds to a field, i.e.,
@@ -1928,7 +1831,6 @@ module Java::Util
     
     class_module.module_eval {
       typesig { [::Java::Int, ::Java::Int] }
-      # 
       # Returns the pseudo-time-stamp for two fields, given their
       # individual pseudo-time-stamps.  If either of the fields
       # is unset, then the aggregate is unset.  Otherwise, the
@@ -1942,7 +1844,6 @@ module Java::Util
     }
     
     typesig { [Object] }
-    # 
     # Compares this <code>Calendar</code> to the specified
     # <code>Object</code>.  The result is <code>true</code> if and only if
     # the argument is a <code>Calendar</code> object of the same calendar
@@ -1979,7 +1880,6 @@ module Java::Util
     end
     
     typesig { [] }
-    # 
     # Returns a hash code for this calendar.
     # 
     # @return a hash code value for this object.
@@ -1992,7 +1892,6 @@ module Java::Util
     end
     
     typesig { [Object] }
-    # 
     # Returns whether this <code>Calendar</code> represents a time
     # before the time represented by the specified
     # <code>Object</code>. This method is equivalent to:
@@ -2012,7 +1911,6 @@ module Java::Util
     end
     
     typesig { [Object] }
-    # 
     # Returns whether this <code>Calendar</code> represents a time
     # after the time represented by the specified
     # <code>Object</code>. This method is equivalent to:
@@ -2032,7 +1930,6 @@ module Java::Util
     end
     
     typesig { [Calendar] }
-    # 
     # Compares the time values (millisecond offsets from the <a
     # href="#Epoch">Epoch</a>) represented by two
     # <code>Calendar</code> objects.
@@ -2055,7 +1952,6 @@ module Java::Util
     end
     
     typesig { [::Java::Int, ::Java::Int] }
-    # 
     # Adds or subtracts the specified amount of time to the given calendar field,
     # based on the calendar's rules. For example, to subtract 5 days from
     # the current time of the calendar, you can achieve it by calling:
@@ -2070,7 +1966,6 @@ module Java::Util
     end
     
     typesig { [::Java::Int, ::Java::Boolean] }
-    # 
     # Adds or subtracts (up/down) a single unit of time on the given time
     # field without changing larger fields. For example, to roll the current
     # date up by one day, you can achieve it by calling:
@@ -2094,7 +1989,6 @@ module Java::Util
     end
     
     typesig { [::Java::Int, ::Java::Int] }
-    # 
     # Adds the specified (signed) amount to the specified calendar field
     # without changing larger fields.  A negative amount means to roll
     # down.
@@ -2124,7 +2018,6 @@ module Java::Util
     end
     
     typesig { [TimeZone] }
-    # 
     # Sets the time zone with the given time zone value.
     # 
     # @param value the given time zone.
@@ -2143,7 +2036,6 @@ module Java::Util
     end
     
     typesig { [] }
-    # 
     # Gets the time zone.
     # 
     # @return the time zone object associated with this calendar.
@@ -2158,21 +2050,18 @@ module Java::Util
     end
     
     typesig { [] }
-    # 
     # Returns the time zone (without cloning).
     def get_zone
       return @zone
     end
     
     typesig { [::Java::Boolean] }
-    # 
     # Sets the sharedZone flag to <code>shared</code>.
     def set_zone_shared(shared)
       @shared_zone = shared
     end
     
     typesig { [::Java::Boolean] }
-    # 
     # Specifies whether or not date/time interpretation is to be lenient.  With
     # lenient interpretation, a date such as "February 942, 1996" will be
     # treated as being equivalent to the 941st day after February 1, 1996.
@@ -2188,7 +2077,6 @@ module Java::Util
     end
     
     typesig { [] }
-    # 
     # Tells whether date/time interpretation is to be lenient.
     # 
     # @return <code>true</code> if the interpretation mode of this calendar is lenient;
@@ -2199,7 +2087,6 @@ module Java::Util
     end
     
     typesig { [::Java::Int] }
-    # 
     # Sets what the first day of the week is; e.g., <code>SUNDAY</code> in the U.S.,
     # <code>MONDAY</code> in France.
     # 
@@ -2215,7 +2102,6 @@ module Java::Util
     end
     
     typesig { [] }
-    # 
     # Gets what the first day of the week is; e.g., <code>SUNDAY</code> in the U.S.,
     # <code>MONDAY</code> in France.
     # 
@@ -2227,7 +2113,6 @@ module Java::Util
     end
     
     typesig { [::Java::Int] }
-    # 
     # Sets what the minimal days required in the first week of the year are;
     # For example, if the first week is defined as one that contains the first
     # day of the first month of a year, call this method with value 1. If it
@@ -2245,7 +2130,6 @@ module Java::Util
     end
     
     typesig { [] }
-    # 
     # Gets what the minimal days required in the first week of the year are;
     # e.g., if the first week is defined as one that contains the first day
     # of the first month of a year, this method returns 1. If
@@ -2259,7 +2143,6 @@ module Java::Util
     end
     
     typesig { [::Java::Int] }
-    # 
     # Returns the minimum value for the given calendar field of this
     # <code>Calendar</code> instance. The minimum value is defined as
     # the smallest value returned by the {@link #get(int) get} method
@@ -2278,7 +2161,6 @@ module Java::Util
     end
     
     typesig { [::Java::Int] }
-    # 
     # Returns the maximum value for the given calendar field of this
     # <code>Calendar</code> instance. The maximum value is defined as
     # the largest value returned by the {@link #get(int) get} method
@@ -2297,7 +2179,6 @@ module Java::Util
     end
     
     typesig { [::Java::Int] }
-    # 
     # Returns the highest minimum value for the given calendar field
     # of this <code>Calendar</code> instance. The highest minimum
     # value is defined as the largest value returned by {@link
@@ -2317,7 +2198,6 @@ module Java::Util
     end
     
     typesig { [::Java::Int] }
-    # 
     # Returns the lowest maximum value for the given calendar field
     # of this <code>Calendar</code> instance. The lowest maximum
     # value is defined as the smallest value returned by {@link
@@ -2341,7 +2221,6 @@ module Java::Util
     end
     
     typesig { [::Java::Int] }
-    # 
     # Returns the minimum value that the specified calendar field
     # could have, given the time value of this <code>Calendar</code>.
     # 
@@ -2388,7 +2267,6 @@ module Java::Util
     end
     
     typesig { [::Java::Int] }
-    # 
     # Returns the maximum value that the specified calendar field
     # could have, given the time value of this
     # <code>Calendar</code>. For example, the actual maximum value of
@@ -2442,7 +2320,6 @@ module Java::Util
     end
     
     typesig { [] }
-    # 
     # Creates and returns a copy of this object.
     # 
     # @return a copy of this object.
@@ -2472,7 +2349,6 @@ module Java::Util
       const_attr_reader  :FIELD_NAME
       
       typesig { [::Java::Int] }
-      # 
       # Returns the name of the specified calendar field.
       # 
       # @param field the calendar field
@@ -2485,7 +2361,6 @@ module Java::Util
     }
     
     typesig { [] }
-    # 
     # Return a string representation of this calendar. This method
     # is intended to be used only for debugging purposes, and the
     # format of the returned string may vary between implementations.
@@ -2530,7 +2405,6 @@ module Java::Util
     }
     
     typesig { [Locale] }
-    # 
     # Both firstDayOfWeek and minimalDaysInFirstWeek are locale-dependent.
     # They are used to figure out the week count for a specific date for
     # a given locale. These must be set when a Calendar is constructed.
@@ -2551,7 +2425,6 @@ module Java::Util
     end
     
     typesig { [] }
-    # 
     # Recomputes the time and updates the status fields isTimeSet
     # and areFieldsSet.  Callers should check isTimeSet and only
     # call this method if isTimeSet is false.
@@ -2581,7 +2454,6 @@ module Java::Util
     }
     
     typesig { [] }
-    # 
     # Adjusts the stamp[] values before nextStamp overflow. nextStamp
     # is set to the next stamp value upon the return.
     def adjust_stamp
@@ -2619,7 +2491,6 @@ module Java::Util
     end
     
     typesig { [] }
-    # 
     # Sets the WEEK_OF_MONTH and WEEK_OF_YEAR fields to new values with the
     # new parameter value if they have been calculated internally.
     def invalidate_week_fields
@@ -2648,7 +2519,6 @@ module Java::Util
     end
     
     typesig { [ObjectOutputStream] }
-    # 
     # Save the state of this object to a stream (i.e., serialize it).
     # 
     # Ideally, <code>Calendar</code> would only write out its state data and
@@ -2715,7 +2585,6 @@ module Java::Util
     }
     
     typesig { [ObjectInputStream] }
-    # 
     # Reconstitutes this object from a stream (i.e., deserialize it).
     def read_object(stream)
       input = stream

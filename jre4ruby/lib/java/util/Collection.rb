@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 1997-2006 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -31,7 +30,6 @@ module Java::Util
     }
   end
   
-  # 
   # The root interface in the <i>collection hierarchy</i>.  A collection
   # represents a group of objects, known as its <i>elements</i>.  Some
   # collections allow duplicate elements and others do not.  Some are ordered
@@ -142,7 +140,6 @@ module Java::Util
     end
     
     typesig { [] }
-    # 
     # Returns <tt>true</tt> if this collection contains no elements.
     # 
     # @return <tt>true</tt> if this collection contains no elements
@@ -151,7 +148,6 @@ module Java::Util
     end
     
     typesig { [Object] }
-    # 
     # Returns <tt>true</tt> if this collection contains the specified element.
     # More formally, returns <tt>true</tt> if and only if this collection
     # contains at least one element <tt>e</tt> such that
@@ -169,7 +165,6 @@ module Java::Util
     end
     
     typesig { [] }
-    # 
     # Returns an iterator over the elements in this collection.  There are no
     # guarantees concerning the order in which the elements are returned
     # (unless this collection is an instance of some class that provides a
@@ -181,7 +176,6 @@ module Java::Util
     end
     
     typesig { [] }
-    # 
     # Returns an array containing all of the elements in this collection.
     # If this collection makes any guarantees as to what order its elements
     # are returned by its iterator, this method must return the elements in
@@ -201,7 +195,6 @@ module Java::Util
     end
     
     typesig { [Array.typed(T)] }
-    # 
     # Returns an array containing all of the elements in this collection;
     # the runtime type of the returned array is that of the specified array.
     # If the collection fits in the specified array, it is returned therein.
@@ -285,7 +278,6 @@ module Java::Util
     end
     
     typesig { [Object] }
-    # 
     # Removes a single instance of the specified element from this
     # collection, if it is present (optional operation).  More formally,
     # removes an element <tt>e</tt> such that
@@ -327,7 +319,6 @@ module Java::Util
     end
     
     typesig { [Collection] }
-    # 
     # Adds all of the elements in the specified collection to this collection
     # (optional operation).  The behavior of this operation is undefined if
     # the specified collection is modified while the operation is in progress.
@@ -355,7 +346,6 @@ module Java::Util
     end
     
     typesig { [Collection] }
-    # 
     # Removes all of this collection's elements that are also contained in the
     # specified collection (optional operation).  After this call returns,
     # this collection will contain no elements in common with the specified
@@ -379,7 +369,6 @@ module Java::Util
     end
     
     typesig { [Collection] }
-    # 
     # Retains only the elements in this collection that are contained in the
     # specified collection (optional operation).  In other words, removes from
     # this collection all of its elements that are not contained in the
@@ -402,7 +391,6 @@ module Java::Util
     end
     
     typesig { [] }
-    # 
     # Removes all of the elements from this collection (optional operation).
     # The collection will be empty after this method returns.
     # 
@@ -451,7 +439,6 @@ module Java::Util
     end
     
     typesig { [] }
-    # 
     # Returns the hash code value for this collection.  While the
     # <tt>Collection</tt> interface adds no stipulations to the general
     # contract for the <tt>Object.hashCode</tt> method, programmers should

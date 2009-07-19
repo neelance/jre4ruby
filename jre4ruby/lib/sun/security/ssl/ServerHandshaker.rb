@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 1996-2007 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -49,7 +48,6 @@ module Sun::Security::Ssl
     }
   end
   
-  # 
   # ServerHandshaker does the protocol handshaking from the point
   # of view of a server.  It is driven asychronously by handshake messages
   # as delivered by the parent Handshaker class, and also uses
@@ -92,7 +90,6 @@ module Sun::Security::Ssl
     alias_method :attr_need_client_verify=, :need_client_verify=
     undef_method :need_client_verify=
     
-    # 
     # For exportable ciphersuites using non-exportable key sizes, we use
     # ephemeral RSA keys. We could also do anonymous RSA in the same way
     # but there are no such ciphersuites currently defined.
@@ -108,7 +105,6 @@ module Sun::Security::Ssl
     alias_method :attr_temp_public_key=, :temp_public_key=
     undef_method :temp_public_key=
     
-    # 
     # For anonymous and ephemeral Diffie-Hellman key exchange, we use
     # ephemeral Diffie-Hellman keys.
     attr_accessor :dh
@@ -139,7 +135,6 @@ module Sun::Security::Ssl
     undef_method :supported_curves=
     
     typesig { [SSLSocketImpl, SSLContextImpl, ProtocolList, ::Java::Byte] }
-    # 
     # Constructor ... use the keys found in the auth context.
     def initialize(socket, context, enabled_protocols, client_auth)
       @do_client_auth = 0
@@ -159,7 +154,6 @@ module Sun::Security::Ssl
     end
     
     typesig { [SSLEngineImpl, SSLContextImpl, ProtocolList, ::Java::Byte] }
-    # 
     # Constructor ... use the keys found in the auth context.
     def initialize(engine, context, enabled_protocols, client_auth)
       @do_client_auth = 0
@@ -179,7 +173,6 @@ module Sun::Security::Ssl
     end
     
     typesig { [::Java::Byte] }
-    # 
     # As long as handshaking has not started, we can change
     # whether client authentication is required.  Otherwise,
     # we will need to wait for the next handshake.
@@ -188,7 +181,6 @@ module Sun::Security::Ssl
     end
     
     typesig { [::Java::Byte, ::Java::Int] }
-    # 
     # This routine handles all the server side handshake messages, one at
     # a time.  Given the message type (and in some cases the pending cipher
     # spec) it parses the type-specific message.  Then it calls a function
@@ -197,7 +189,6 @@ module Sun::Security::Ssl
     # It updates the state machine as each message is processed, and writes
     # responses as needed using the connection in the constructor.
     def process_message(type, message_len)
-      # 
       # In SSLv3 and TLS, messages follow strictly increasing
       # numerical order _except_ for one annoying special case.
       if ((self.attr_state > type) && (!(self.attr_state).equal?(HandshakeMessage.attr_ht_client_key_exchange) && !(type).equal?(HandshakeMessage.attr_ht_certificate_verify)))
@@ -206,7 +197,6 @@ module Sun::Security::Ssl
       case (type)
       when HandshakeMessage.attr_ht_client_hello
         ch = ClientHello.new(self.attr_input, message_len)
-        # 
         # send it off for processing.
         self.client_hello(ch)
       when HandshakeMessage.attr_ht_certificate
@@ -219,7 +209,6 @@ module Sun::Security::Ssl
         pre_master_secret = nil
         case (self.attr_key_exchange)
         when K_RSA, K_RSA_EXPORT
-          # 
           # The client's pre-master secret is decrypted using
           # either the server's normal private RSA key, or the
           # temporary one used for non-export or signing-only
@@ -229,7 +218,6 @@ module Sun::Security::Ssl
         when K_KRB5, K_KRB5_EXPORT
           pre_master_secret = self.client_key_exchange(KerberosClientKeyExchange.new(self.attr_protocol_version, @client_requested_version, self.attr_ssl_context.get_secure_random, self.attr_input, @kerberos_keys))
         when K_DHE_RSA, K_DHE_DSS, K_DH_ANON
-          # 
           # The pre-master secret is derived using the normal
           # Diffie-Hellman calculation.   Note that the main
           # protocol difference in these five flavors is in how
@@ -240,7 +228,6 @@ module Sun::Security::Ssl
         else
           raise SSLProtocolException.new("Unrecognized key exchange: " + (self.attr_key_exchange).to_s)
         end
-        # 
         # All keys are calculated from the premaster secret
         # and the exchanged nonces in the same way.
         calculate_keys(pre_master_secret, @client_requested_version)
@@ -251,7 +238,6 @@ module Sun::Security::Ssl
       else
         raise SSLProtocolException.new("Illegal server handshake msg, " + (type).to_s)
       end
-      # 
       # Move the state machine forward except for that annoying
       # special case.  This means that clients could send extra
       # cert verify messages; not a problem so long as all of
@@ -262,7 +248,6 @@ module Sun::Security::Ssl
     end
     
     typesig { [ClientHello] }
-    # 
     # ClientHello presents the server with a bunch of options, to which the
     # server replies with a ServerHello listing the ones which this session
     # will use.  If needed, it also writes its Certificate plus in some cases
@@ -275,11 +260,9 @@ module Sun::Security::Ssl
       if (!(self.attr_debug).nil? && Debug.is_on("handshake"))
         mesg.print(System.out)
       end
-      # 
       # Always make sure this entire record has been digested before we
       # start emitting output, to ensure correct digesting order.
       self.attr_input.digest_now
-      # 
       # FIRST, construct the ServerHello using the options and priorities
       # from the ClientHello.  Update the (pending) cipher spec as we do
       # so, and save the client's version to protect against rollback
@@ -303,7 +286,6 @@ module Sun::Security::Ssl
       end
       set_version(selected_version)
       m1.attr_protocol_version = self.attr_protocol_version
-      # 
       # random ... save client and server values for later use
       # in computing the master secret (from pre-master secret)
       # and thence the other crypto keys.
@@ -317,14 +299,12 @@ module Sun::Security::Ssl
       self.attr_svr_random = RandomCookie.new(self.attr_ssl_context.get_secure_random)
       m1.attr_svr_random = self.attr_svr_random
       self.attr_session = nil # forget about the current session
-      # 
       # Here we go down either of two paths:  (a) the fast one, where
       # the client's asked to rejoin an existing session, and the server
       # permits this; (b) the other one, where a new session is created.
       if (!(mesg.attr_session_id.length).equal?(0))
         # client is trying to resume a session, let's see...
         previous = (self.attr_ssl_context.engine_get_server_session_context).get(mesg.attr_session_id.get_id)
-        # 
         # Check if we can use the fast path, resuming a session.  We
         # can do so iff we have a valid record for that session, and
         # the cipher suite for that session was on the list which the
@@ -398,17 +378,17 @@ module Sun::Security::Ssl
             end
           end
           if (self.attr_resuming_session)
-            suite_ = previous.get_suite
+            suite = previous.get_suite
             # verify that the ciphersuite from the cached session
             # is in the list of client requested ciphersuites and
             # we have it enabled
-            if (((is_enabled(suite_)).equal?(false)) || ((mesg.get_cipher_suites.contains(suite_)).equal?(false)))
+            if (((is_enabled(suite)).equal?(false)) || ((mesg.get_cipher_suites.contains(suite)).equal?(false)))
               self.attr_resuming_session = false
             else
               # everything looks ok, set the ciphersuite
               # this should be done last when we are sure we
               # will resume
-              set_cipher_suite(suite_)
+              set_cipher_suite(suite)
             end
           end
           if (self.attr_resuming_session)
@@ -419,7 +399,6 @@ module Sun::Security::Ssl
           end
         end
       end # else client did not try to resume
-      # 
       # If client hasn't specified a session we can resume, start a
       # new one and choose its cipher suite and compression options.
       # Unless new session creation is disabled for this connection!
@@ -441,7 +420,6 @@ module Sun::Security::Ssl
         System.out.println("Cipher suite:  " + (self.attr_session.get_suite).to_s)
       end
       m1.write(self.attr_output)
-      # 
       # If we are resuming a session, we finish writing handshake
       # messages right now and then finish.
       if (self.attr_resuming_session)
@@ -449,7 +427,6 @@ module Sun::Security::Ssl
         send_change_cipher_and_finish(false)
         return
       end
-      # 
       # SECOND, write the server Certificate(s) if we need to.
       # 
       # NOTE:  while an "anonymous RSA" mode is explicitly allowed by
@@ -464,7 +441,6 @@ module Sun::Security::Ssl
             raise RuntimeException.new("no certificates")
           end
           m2 = CertificateMsg.new(@certs)
-          # 
           # Set local certs in the SSLSession, output
           # debug info, and then actually write to the client.
           self.attr_session.set_local_certificates(@certs)
@@ -482,7 +458,6 @@ module Sun::Security::Ssl
           end
         end
       end
-      # 
       # THIRD, the ServerKeyExchange message ... iff it's needed.
       # 
       # It's usually needed unless there's an encryption-capable
@@ -500,7 +475,7 @@ module Sun::Security::Ssl
             m3 = RSA_ServerKeyExchange.new(@temp_public_key, @private_key, self.attr_clnt_random, self.attr_svr_random, self.attr_ssl_context.get_secure_random)
             @private_key = @temp_private_key
           rescue GeneralSecurityException => e
-            throw_sslexception("Error generating RSA server key exchange", e__)
+            throw_sslexception("Error generating RSA server key exchange", e)
             m3 = nil # make compiler happy
           end
         else
@@ -511,7 +486,7 @@ module Sun::Security::Ssl
         begin
           m3 = DH_ServerKeyExchange.new(@dh, @private_key, self.attr_clnt_random.attr_random_bytes, self.attr_svr_random.attr_random_bytes, self.attr_ssl_context.get_secure_random)
         rescue GeneralSecurityException => e
-          throw_sslexception("Error generating DH server key exchange", e___)
+          throw_sslexception("Error generating DH server key exchange", e)
           m3 = nil # make compiler happy
         end
       when K_DH_ANON
@@ -520,7 +495,7 @@ module Sun::Security::Ssl
         begin
           m3 = ECDH_ServerKeyExchange.new(@ecdh, @private_key, self.attr_clnt_random.attr_random_bytes, self.attr_svr_random.attr_random_bytes, self.attr_ssl_context.get_secure_random)
         rescue GeneralSecurityException => e
-          throw_sslexception("Error generating ECDH server key exchange", e____)
+          throw_sslexception("Error generating ECDH server key exchange", e)
           m3 = nil # make compiler happy
         end
       when K_ECDH_RSA, K_ECDH_ECDSA
@@ -535,7 +510,6 @@ module Sun::Security::Ssl
         end
         m3.write(self.attr_output)
       end
-      # 
       # FOURTH, the CertificateRequest message.  The details of
       # the message can be affected by the key exchange algorithm
       # in use.  For example, certs with fixed Diffie-Hellman keys
@@ -558,14 +532,12 @@ module Sun::Security::Ssl
           m4.write(self.attr_output)
         end
       end
-      # 
       # FIFTH, say ServerHelloDone.
       m5 = ServerHelloDone.new
       if (!(self.attr_debug).nil? && Debug.is_on("handshake"))
         m5.print(System.out)
       end
       m5.write(self.attr_output)
-      # 
       # Flush any buffered messages so the client will see them.
       # Ideally, all the messages above go in a single network level
       # message to the client.  Without big Certificate chains, it's
@@ -574,7 +546,6 @@ module Sun::Security::Ssl
     end
     
     typesig { [ClientHello] }
-    # 
     # Choose cipher suite from among those supported by client. Sets
     # the cipherSuite and keyExchange variables.
     def choose_cipher_suite(mesg)
@@ -596,7 +567,6 @@ module Sun::Security::Ssl
     end
     
     typesig { [CipherSuite] }
-    # 
     # Set the given CipherSuite, if possible. Return the result.
     # The call succeeds if the CipherSuite is available and we have
     # the necessary certificates to complete the handshake. We don't
@@ -610,7 +580,6 @@ module Sun::Security::Ssl
     # This method is called from chooseCipherSuite() in this class
     # and SSLServerSocketImpl.checkEnabledSuites() (as a sanity check).
     def try_set_cipher_suite(suite)
-      # 
       # If we're resuming a session we know we can
       # support this key exchange algorithm and in fact
       # have already cached the result of it in
@@ -704,7 +673,6 @@ module Sun::Security::Ssl
     end
     
     typesig { [::Java::Boolean] }
-    # 
     # Get some "ephemeral" RSA keys for this context. This means
     # generating them if it's not already been done.
     # 
@@ -724,11 +692,9 @@ module Sun::Security::Ssl
     end
     
     typesig { [::Java::Boolean] }
-    # 
     # Acquire some "ephemeral" Diffie-Hellman  keys for this handshake.
     # We don't reuse these, for improved forward secrecy.
     def setup_ephemeral_dhkeys(export)
-      # 
       # Diffie-Hellman keys ... we use 768 bit private keys due
       # to the "use twice as many key bits as bits you want secret"
       # rule of thumb, assuming we want the same size premaster
@@ -773,7 +739,6 @@ module Sun::Security::Ssl
     end
     
     typesig { [String] }
-    # 
     # Retrieve the server key and certificate for the specified algorithm
     # from the KeyManager and set the instance variables.
     # 
@@ -824,7 +789,6 @@ module Sun::Security::Ssl
     end
     
     typesig { [] }
-    # 
     # Retrieve the Kerberos key for the specified server principal
     # from the JAAS configuration file.
     # 
@@ -886,7 +850,6 @@ module Sun::Security::Ssl
     end
     
     typesig { [KerberosClientKeyExchange] }
-    # 
     # For Kerberos ciphers, the premaster secret is encrypted using
     # the session key. See RFC 2712.
     def client_key_exchange(mesg)
@@ -901,7 +864,6 @@ module Sun::Security::Ssl
     end
     
     typesig { [DHClientKeyExchange] }
-    # 
     # Diffie Hellman key exchange is used when the server presented
     # D-H parameters in its certificate (signed using RSA or DSS/DSA),
     # or else the server presented no certificate but sent D-H params
@@ -930,7 +892,6 @@ module Sun::Security::Ssl
     end
     
     typesig { [CertificateVerify] }
-    # 
     # Client wrote a message to verify the certificate it sent earlier.
     # 
     # Note that this certificate isn't involved in key exchange.  Client
@@ -956,7 +917,6 @@ module Sun::Security::Ssl
     end
     
     typesig { [Finished] }
-    # 
     # Client writes "finished" at the end of its handshake, after cipher
     # spec is changed.   We verify it and then send ours.
     # 
@@ -966,7 +926,6 @@ module Sun::Security::Ssl
       if (!(self.attr_debug).nil? && Debug.is_on("handshake"))
         mesg.print(System.out)
       end
-      # 
       # Verify if client did send the certificate when client
       # authentication was required, otherwise server should not proceed
       if ((@do_client_auth).equal?(SSLEngineImpl.attr_clauth_required))
@@ -974,13 +933,11 @@ module Sun::Security::Ssl
         # ciphersuites, or Kerberos principal for Kerberos ciphersuites
         self.attr_session.get_peer_principal
       end
-      # 
       # Verify if client did send clientCertificateVerify message following
       # the client Certificate, otherwise server should not proceed
       if (@need_client_verify)
         fatal_se(Alerts.attr_alert_handshake_failure, "client did not send certificate verify message")
       end
-      # 
       # Verify the client's message with the "before" digest of messages,
       # and forget about continuing to use that digest.
       verified = mesg.verify(self.attr_protocol_version, self.attr_handshake_hash, Finished::CLIENT, self.attr_session.get_master_secret)
@@ -988,7 +945,6 @@ module Sun::Security::Ssl
         fatal_se(Alerts.attr_alert_handshake_failure, "client 'finished' message doesn't verify")
         # NOTREACHED
       end
-      # 
       # OK, it verified.  If we're doing the full handshake, add that
       # "Finished" message to the hash of handshake messages, then send
       # the change_cipher_spec and Finished message.
@@ -996,7 +952,6 @@ module Sun::Security::Ssl
         self.attr_input.digest_now
         send_change_cipher_and_finish(true)
       end
-      # 
       # Update the session cache only after the handshake completed, else
       # we're open to an attack against a partially completed handshake.
       self.attr_session.set_last_accessed_time(System.current_time_millis)
@@ -1013,18 +968,15 @@ module Sun::Security::Ssl
     end
     
     typesig { [::Java::Boolean] }
-    # 
     # Compute finished message with the "server" digest (and then forget
     # about that digest, it can't be used again).
     def send_change_cipher_and_finish(finished_tag)
       self.attr_output.flush
       mesg = Finished.new(self.attr_protocol_version, self.attr_handshake_hash, Finished::SERVER, self.attr_session.get_master_secret)
-      # 
       # Send the change_cipher_spec record; then our Finished handshake
       # message will be the last handshake message.  Flush, and now we
       # are ready for application data!!
       send_change_cipher_spec(mesg, finished_tag)
-      # 
       # Update state machine so client MUST send 'finished' next
       # The update should only take place if it is not in the fast
       # handshake mode since the server has to wait for a finished
@@ -1035,21 +987,18 @@ module Sun::Security::Ssl
     end
     
     typesig { [] }
-    # 
     # Returns a HelloRequest message to kickstart renegotiations
     def get_kickstart_message
       return HelloRequest.new
     end
     
     typesig { [::Java::Byte] }
-    # 
     # Fault detected during handshake.
     def handshake_alert(description)
       message = Alerts.alert_description(description)
       if (!(self.attr_debug).nil? && Debug.is_on("handshake"))
         System.out.println("SSL -- handshake alert:  " + message)
       end
-      # 
       # It's ok to get a no_certificate alert from a client of which
       # we *requested* authentication information.
       # However, if we *required* it, then this is not acceptable.
@@ -1063,7 +1012,6 @@ module Sun::Security::Ssl
     end
     
     typesig { [RSAClientKeyExchange] }
-    # 
     # RSA key exchange is normally used.  The client encrypts a "pre-master
     # secret" with the server's public key, from the Certificate (or else
     # ServerKeyExchange) message that was sent to it by the server.  That's
@@ -1076,7 +1024,6 @@ module Sun::Security::Ssl
     end
     
     typesig { [CertificateMsg] }
-    # 
     # Verify the certificate sent by the client. We'll only get one if we
     # sent a CertificateRequest to request client authentication. If we
     # are in TLS mode, the client may send a message with no certificates
@@ -1088,7 +1035,6 @@ module Sun::Security::Ssl
       end
       peer_certs = mesg.get_certificate_chain
       if ((peer_certs.attr_length).equal?(0))
-        # 
         # If the client authentication is only *REQUESTED* (e.g.
         # not *REQUIRED*, this is an acceptable condition.)
         if ((@do_client_auth).equal?(SSLEngineImpl.attr_clauth_requested))

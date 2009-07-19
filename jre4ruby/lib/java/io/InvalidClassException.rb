@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 1996-2006 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -31,7 +30,6 @@ module Java::Io
     }
   end
   
-  # 
   # Thrown when the Serialization runtime detects one of the following
   # problems with a Class.
   # <UL>
@@ -51,7 +49,6 @@ module Java::Io
       const_attr_reader  :SerialVersionUID
     }
     
-    # 
     # Name of the invalid class.
     # 
     # @serial Name of the invalid class.
@@ -62,7 +59,6 @@ module Java::Io
     undef_method :classname=
     
     typesig { [String] }
-    # 
     # Report an InvalidClassException for the reason specified.
     # 
     # @param reason  String describing the reason for the exception.
@@ -72,7 +68,6 @@ module Java::Io
     end
     
     typesig { [String, String] }
-    # 
     # Constructs an InvalidClassException object.
     # 
     # @param cname   a String naming the invalid class.
@@ -84,7 +79,6 @@ module Java::Io
     end
     
     typesig { [] }
-    # 
     # Produce the message and include the classname, if present.
     def get_message
       if ((@classname).nil?)

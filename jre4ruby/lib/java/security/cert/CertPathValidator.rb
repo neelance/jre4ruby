@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 2000-2006 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -41,7 +40,6 @@ module Java::Security::Cert
     }
   end
   
-  # 
   # A class for validating certification paths (also known as certificate
   # chains).
   # <p>
@@ -79,7 +77,6 @@ module Java::Security::Cert
     include_class_members CertPathValidatorImports
     
     class_module.module_eval {
-      # 
       # Constant to lookup in the Security properties file to determine
       # the default certpathvalidator type. In the Security properties file,
       # the default certpathvalidator type is given as:
@@ -112,7 +109,6 @@ module Java::Security::Cert
     undef_method :algorithm=
     
     typesig { [CertPathValidatorSpi, Provider, String] }
-    # 
     # Creates a <code>CertPathValidator</code> object of the given algorithm,
     # and encapsulates the given provider implementation (SPI object) in it.
     # 
@@ -130,7 +126,6 @@ module Java::Security::Cert
     
     class_module.module_eval {
       typesig { [String] }
-      # 
       # Returns a <code>CertPathValidator</code> object that implements the
       # specified algorithm.
       # 
@@ -163,7 +158,6 @@ module Java::Security::Cert
       end
       
       typesig { [String, String] }
-      # 
       # Returns a <code>CertPathValidator</code> object that implements the
       # specified algorithm.
       # 
@@ -203,7 +197,6 @@ module Java::Security::Cert
       end
       
       typesig { [String, Provider] }
-      # 
       # Returns a <code>CertPathValidator</code> object that implements the
       # specified algorithm.
       # 
@@ -239,7 +232,6 @@ module Java::Security::Cert
     }
     
     typesig { [] }
-    # 
     # Returns the <code>Provider</code> of this
     # <code>CertPathValidator</code>.
     # 
@@ -249,7 +241,6 @@ module Java::Security::Cert
     end
     
     typesig { [] }
-    # 
     # Returns the algorithm name of this <code>CertPathValidator</code>.
     # 
     # @return the algorithm name of this <code>CertPathValidator</code>
@@ -258,7 +249,6 @@ module Java::Security::Cert
     end
     
     typesig { [CertPath, CertPathParameters] }
-    # 
     # Validates the specified certification path using the specified
     # algorithm parameter set.
     # <p>
@@ -282,7 +272,6 @@ module Java::Security::Cert
     
     class_module.module_eval {
       typesig { [] }
-      # 
       # Returns the default <code>CertPathValidator</code> type as specified in
       # the Java security properties file, or the string &quot;PKIX&quot;
       # if no such property exists. The Java security properties file is

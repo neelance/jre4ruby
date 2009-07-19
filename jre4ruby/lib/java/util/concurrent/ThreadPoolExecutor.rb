@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
 # This code is free software; you can redistribute it and/or modify it
@@ -43,7 +42,6 @@ module Java::Util::Concurrent
     }
   end
   
-  # 
   # An {@link ExecutorService} that executes each submitted task using
   # one of possibly several pooled threads, normally configured
   # using {@link Executors} factory methods.
@@ -319,7 +317,6 @@ module Java::Util::Concurrent
   class ThreadPoolExecutor < ThreadPoolExecutorImports.const_get :AbstractExecutorService
     include_class_members ThreadPoolExecutorImports
     
-    # 
     # The main pool control state, ctl, is an atomic integer packing
     # two conceptual fields
     # workerCount, indicating the effective number of threads
@@ -421,7 +418,6 @@ module Java::Util::Concurrent
       end
       
       typesig { [::Java::Int, ::Java::Int] }
-      # 
       # Bit field accessors that don't require unpacking ctl.
       # These depend on the bit layout and on workerCount being never negative.
       def run_state_less_than(c, s)
@@ -440,21 +436,18 @@ module Java::Util::Concurrent
     }
     
     typesig { [::Java::Int] }
-    # 
     # Attempt to CAS-increment the workerCount field of ctl.
     def compare_and_increment_worker_count(expect)
       return @ctl.compare_and_set(expect, expect + 1)
     end
     
     typesig { [::Java::Int] }
-    # 
     # Attempt to CAS-decrement the workerCount field of ctl.
     def compare_and_decrement_worker_count(expect)
       return @ctl.compare_and_set(expect, expect - 1)
     end
     
     typesig { [] }
-    # 
     # Decrements the workerCount field of ctl. This is called only on
     # abrupt termination of a thread (see processWorkerExit). Other
     # decrements are performed within getTask.
@@ -463,7 +456,6 @@ module Java::Util::Concurrent
       end while (!compare_and_decrement_worker_count(@ctl.get))
     end
     
-    # 
     # The queue used for holding tasks and handing off to worker
     # threads.  We do not require that workQueue.poll() returning
     # null necessarily means that workQueue.isEmpty(), so rely
@@ -479,7 +471,6 @@ module Java::Util::Concurrent
     alias_method :attr_work_queue=, :work_queue=
     undef_method :work_queue=
     
-    # 
     # Lock held on access to workers set and related bookkeeping.
     # While we could use a concurrent set of some sort, it turns out
     # to be generally preferable to use a lock. Among the reasons is
@@ -497,7 +488,6 @@ module Java::Util::Concurrent
     alias_method :attr_main_lock=, :main_lock=
     undef_method :main_lock=
     
-    # 
     # Set containing all worker threads in pool. Accessed only when
     # holding mainLock.
     attr_accessor :workers
@@ -506,7 +496,6 @@ module Java::Util::Concurrent
     alias_method :attr_workers=, :workers=
     undef_method :workers=
     
-    # 
     # Wait condition to support awaitTermination
     attr_accessor :termination
     alias_method :attr_termination, :termination
@@ -514,7 +503,6 @@ module Java::Util::Concurrent
     alias_method :attr_termination=, :termination=
     undef_method :termination=
     
-    # 
     # Tracks largest attained pool size. Accessed only under
     # mainLock.
     attr_accessor :largest_pool_size
@@ -523,7 +511,6 @@ module Java::Util::Concurrent
     alias_method :attr_largest_pool_size=, :largest_pool_size=
     undef_method :largest_pool_size=
     
-    # 
     # Counter for completed tasks. Updated only on termination of
     # worker threads. Accessed only under mainLock.
     attr_accessor :completed_task_count
@@ -532,7 +519,6 @@ module Java::Util::Concurrent
     alias_method :attr_completed_task_count=, :completed_task_count=
     undef_method :completed_task_count=
     
-    # 
     # All user control parameters are declared as volatiles so that
     # ongoing actions are based on freshest values, but without need
     # for locking, since no internal invariants depend on them
@@ -555,7 +541,6 @@ module Java::Util::Concurrent
     alias_method :attr_thread_factory=, :thread_factory=
     undef_method :thread_factory=
     
-    # 
     # Handler called when saturated or shutdown in execute.
     attr_accessor :handler
     alias_method :attr_handler, :handler
@@ -563,7 +548,6 @@ module Java::Util::Concurrent
     alias_method :attr_handler=, :handler=
     undef_method :handler=
     
-    # 
     # Timeout in nanoseconds for idle threads waiting for work.
     # Threads use this timeout when there are more than corePoolSize
     # present or if allowCoreThreadTimeOut. Otherwise they wait
@@ -574,7 +558,6 @@ module Java::Util::Concurrent
     alias_method :attr_keep_alive_time=, :keep_alive_time=
     undef_method :keep_alive_time=
     
-    # 
     # If false (default), core threads stay alive even when idle.
     # If true, core threads use keepAliveTime to time out waiting
     # for work.
@@ -584,7 +567,6 @@ module Java::Util::Concurrent
     alias_method :attr_allow_core_thread_time_out=, :allow_core_thread_time_out=
     undef_method :allow_core_thread_time_out=
     
-    # 
     # Core pool size is the minimum number of workers to keep alive
     # (and not allow to time out etc) unless allowCoreThreadTimeOut
     # is set, in which case the minimum is zero.
@@ -594,7 +576,6 @@ module Java::Util::Concurrent
     alias_method :attr_core_pool_size=, :core_pool_size=
     undef_method :core_pool_size=
     
-    # 
     # Maximum pool size. Note that the actual maximum is internally
     # bounded by CAPACITY.
     attr_accessor :maximum_pool_size
@@ -604,12 +585,10 @@ module Java::Util::Concurrent
     undef_method :maximum_pool_size=
     
     class_module.module_eval {
-      # 
       # The default rejected execution handler
       const_set_lazy(:DefaultHandler) { AbortPolicy.new }
       const_attr_reader  :DefaultHandler
       
-      # 
       # Permission required for callers of shutdown and shutdownNow.
       # We additionally require (see checkShutdownAccess) that callers
       # have permission to actually interrupt threads in the worker set
@@ -631,7 +610,6 @@ module Java::Util::Concurrent
       const_set_lazy(:ShutdownPerm) { RuntimePermission.new("modifyThread") }
       const_attr_reader  :ShutdownPerm
       
-      # 
       # Class Worker mainly maintains interrupt control state for
       # threads running tasks, along with other minor bookkeeping.
       # This class opportunistically extends AbstractQueuedSynchronizer
@@ -648,7 +626,6 @@ module Java::Util::Concurrent
         include Runnable
         
         class_module.module_eval {
-          # 
           # This class will never be serialized, but we provide a
           # serialVersionUID to suppress a javac warning.
           const_set_lazy(:SerialVersionUID) { 6138294804551838833 }
@@ -677,7 +654,6 @@ module Java::Util::Concurrent
         undef_method :completed_tasks=
         
         typesig { [Runnable] }
-        # 
         # Creates with given first task and thread from ThreadFactory.
         # @param firstTask the first task (null if none)
         def initialize(first_task)
@@ -746,7 +722,6 @@ module Java::Util::Concurrent
     }
     
     typesig { [::Java::Int] }
-    # 
     # Methods for setting control state
     # 
     # 
@@ -765,7 +740,6 @@ module Java::Util::Concurrent
     end
     
     typesig { [] }
-    # 
     # Transitions to TERMINATED state if either (SHUTDOWN and pool
     # and queue empty) or (STOP and pool empty).  If otherwise
     # eligible to terminate but workerCount is nonzero, interrupts an
@@ -804,7 +778,6 @@ module Java::Util::Concurrent
     end
     
     typesig { [] }
-    # 
     # Methods for controlling interrupts to worker threads.
     # 
     # 
@@ -831,7 +804,6 @@ module Java::Util::Concurrent
     end
     
     typesig { [] }
-    # 
     # Interrupts all threads, even if active. Ignores SecurityExceptions
     # (in which case some threads may remain uninterrupted).
     def interrupt_workers
@@ -850,7 +822,6 @@ module Java::Util::Concurrent
     end
     
     typesig { [::Java::Boolean] }
-    # 
     # Interrupts threads that might be waiting for tasks (as
     # indicated by not being locked) so they can check for
     # termination or configuration changes. Ignores
@@ -892,7 +863,6 @@ module Java::Util::Concurrent
     end
     
     typesig { [] }
-    # 
     # Common form of interruptIdleWorkers, to avoid having to
     # remember what the boolean argument means.
     def interrupt_idle_workers
@@ -905,7 +875,6 @@ module Java::Util::Concurrent
     }
     
     typesig { [] }
-    # 
     # Ensures that unless the pool is stopping, the current thread
     # does not have its interrupt set. This requires a double-check
     # of state in case the interrupt was cleared concurrently with a
@@ -917,7 +886,6 @@ module Java::Util::Concurrent
     end
     
     typesig { [Runnable] }
-    # 
     # Misc utilities, most of which are also exported to
     # ScheduledThreadPoolExecutor
     # 
@@ -929,7 +897,6 @@ module Java::Util::Concurrent
     end
     
     typesig { [] }
-    # 
     # Performs any further cleanup following run state transition on
     # invocation of shutdown.  A no-op here, but used by
     # ScheduledThreadPoolExecutor to cancel delayed tasks.
@@ -937,7 +904,6 @@ module Java::Util::Concurrent
     end
     
     typesig { [::Java::Boolean] }
-    # 
     # State check needed by ScheduledThreadPoolExecutor to
     # enable running tasks during shutdown.
     # 
@@ -948,7 +914,6 @@ module Java::Util::Concurrent
     end
     
     typesig { [] }
-    # 
     # Drains the task queue into a new list, normally using
     # drainTo. But if the queue is a DelayQueue or any other kind of
     # queue for which poll or drainTo may fail to remove some
@@ -968,7 +933,6 @@ module Java::Util::Concurrent
     end
     
     typesig { [Runnable, ::Java::Boolean] }
-    # 
     # Methods for creating, running and cleaning up after workers
     # 
     # 
@@ -1018,7 +982,7 @@ module Java::Util::Concurrent
                 throw :next_retry, :thrown
               end
             end
-          end == :thrown or break
+          end
         end
       end
       w = Worker.new_local(self, first_task)
@@ -1029,9 +993,9 @@ module Java::Util::Concurrent
         # Recheck while holding lock.
         # Back out on ThreadFactory failure or if
         # shut down before lock acquired.
-        c_ = @ctl.get
-        rs_ = run_state_of(c_)
-        if ((t).nil? || (rs_ >= SHUTDOWN && !((rs_).equal?(SHUTDOWN) && (first_task).nil?)))
+        c = @ctl.get
+        rs = run_state_of(c)
+        if ((t).nil? || (rs >= SHUTDOWN && !((rs).equal?(SHUTDOWN) && (first_task).nil?)))
           decrement_worker_count
           try_terminate
           return false
@@ -1057,7 +1021,6 @@ module Java::Util::Concurrent
     end
     
     typesig { [Worker, ::Java::Boolean] }
-    # 
     # Performs cleanup and bookkeeping for a dying worker. Called
     # only from worker threads. Unless completedAbruptly is set,
     # assumes that workerCount has already been adjusted to account
@@ -1099,7 +1062,6 @@ module Java::Util::Concurrent
     end
     
     typesig { [] }
-    # 
     # Performs blocking or timed wait for a task, depending on
     # current configuration settings, or returns null if this worker
     # must exit because of any of:
@@ -1146,15 +1108,14 @@ module Java::Util::Concurrent
               return r
             end
             timed_out = true
-          rescue InterruptedException => retry
+          rescue InterruptedException => retry_
             timed_out = false
           end
-        end == :thrown or break
+        end
       end
     end
     
     typesig { [Worker] }
-    # 
     # Main worker run loop.  Repeatedly gets tasks from queue and
     # executes them, while coping with a number of issues:
     # 
@@ -1213,11 +1174,11 @@ module Java::Util::Concurrent
               thrown = x
               raise x
             rescue JavaError => x
-              thrown = x_
-              raise x_
+              thrown = x
+              raise x
             rescue Exception => x
-              thrown = x__
-              raise JavaError.new(x__)
+              thrown = x
+              raise JavaError.new(x)
             ensure
               after_execute(task, thrown)
             end
@@ -1263,7 +1224,6 @@ module Java::Util::Concurrent
     end
     
     typesig { [::Java::Int, ::Java::Int, ::Java::Long, TimeUnit, BlockingQueue, ThreadFactory] }
-    # 
     # Creates a new {@code ThreadPoolExecutor} with the given initial
     # parameters and default rejected execution handler.
     # 
@@ -1292,7 +1252,6 @@ module Java::Util::Concurrent
     end
     
     typesig { [::Java::Int, ::Java::Int, ::Java::Long, TimeUnit, BlockingQueue, RejectedExecutionHandler] }
-    # 
     # Creates a new {@code ThreadPoolExecutor} with the given initial
     # parameters and default thread factory.
     # 
@@ -1321,7 +1280,6 @@ module Java::Util::Concurrent
     end
     
     typesig { [::Java::Int, ::Java::Int, ::Java::Long, TimeUnit, BlockingQueue, ThreadFactory, RejectedExecutionHandler] }
-    # 
     # Creates a new {@code ThreadPoolExecutor} with the given initial
     # parameters.
     # 
@@ -1381,7 +1339,6 @@ module Java::Util::Concurrent
     end
     
     typesig { [Runnable] }
-    # 
     # Executes the given task sometime in the future.  The task
     # may execute in a new thread or in an existing pooled thread.
     # 
@@ -1398,7 +1355,6 @@ module Java::Util::Concurrent
       if ((command).nil?)
         raise NullPointerException.new
       end
-      # 
       # Proceed in 3 steps:
       # 
       # 1. If fewer than corePoolSize threads are running, try to
@@ -1441,7 +1397,6 @@ module Java::Util::Concurrent
     end
     
     typesig { [] }
-    # 
     # Initiates an orderly shutdown in which previously submitted
     # tasks are executed, but no new tasks will be accepted.
     # Invocation has no additional effect if already shut down.
@@ -1462,7 +1417,6 @@ module Java::Util::Concurrent
     end
     
     typesig { [] }
-    # 
     # Attempts to stop all actively executing tasks, halts the
     # processing of waiting tasks, and returns a list of the tasks
     # that were awaiting execution. These tasks are drained (removed)
@@ -1496,7 +1450,6 @@ module Java::Util::Concurrent
     end
     
     typesig { [] }
-    # 
     # Returns true if this executor is in the process of terminating
     # after {@link #shutdown} or {@link #shutdownNow} but has not
     # completely terminated.  This method may be useful for
@@ -1537,7 +1490,6 @@ module Java::Util::Concurrent
     end
     
     typesig { [] }
-    # 
     # Invokes {@code shutdown} when this executor is no longer
     # referenced and it has no threads.
     def finalize
@@ -1545,7 +1497,6 @@ module Java::Util::Concurrent
     end
     
     typesig { [ThreadFactory] }
-    # 
     # Sets the thread factory used to create new threads.
     # 
     # @param threadFactory the new thread factory
@@ -1559,7 +1510,6 @@ module Java::Util::Concurrent
     end
     
     typesig { [] }
-    # 
     # Returns the thread factory used to create new threads.
     # 
     # @return the current thread factory
@@ -1569,7 +1519,6 @@ module Java::Util::Concurrent
     end
     
     typesig { [RejectedExecutionHandler] }
-    # 
     # Sets a new handler for unexecutable tasks.
     # 
     # @param handler the new handler
@@ -1583,7 +1532,6 @@ module Java::Util::Concurrent
     end
     
     typesig { [] }
-    # 
     # Returns the current handler for unexecutable tasks.
     # 
     # @return the current handler
@@ -1593,7 +1541,6 @@ module Java::Util::Concurrent
     end
     
     typesig { [::Java::Int] }
-    # 
     # Sets the core number of threads.  This overrides any value set
     # in the constructor.  If the new value is smaller than the
     # current value, excess existing threads will be terminated when
@@ -1628,7 +1575,6 @@ module Java::Util::Concurrent
     end
     
     typesig { [] }
-    # 
     # Returns the core number of threads.
     # 
     # @return the core number of threads
@@ -1638,7 +1584,6 @@ module Java::Util::Concurrent
     end
     
     typesig { [] }
-    # 
     # Starts a core thread, causing it to idly wait for work. This
     # overrides the default policy of starting core threads only when
     # new tasks are executed. This method will return {@code false}
@@ -1650,7 +1595,6 @@ module Java::Util::Concurrent
     end
     
     typesig { [] }
-    # 
     # Starts all core threads, causing them to idly wait for work. This
     # overrides the default policy of starting core threads only when
     # new tasks are executed.
@@ -1665,7 +1609,6 @@ module Java::Util::Concurrent
     end
     
     typesig { [] }
-    # 
     # Returns true if this pool allows core threads to time out and
     # terminate if no tasks arrive within the keepAlive time, being
     # replaced if needed when new tasks arrive. When true, the same
@@ -1682,7 +1625,6 @@ module Java::Util::Concurrent
     end
     
     typesig { [::Java::Boolean] }
-    # 
     # Sets the policy governing whether core threads may time out and
     # terminate if no tasks arrive within the keep-alive time, being
     # replaced if needed when new tasks arrive. When false, core
@@ -1711,7 +1653,6 @@ module Java::Util::Concurrent
     end
     
     typesig { [::Java::Int] }
-    # 
     # Sets the maximum allowed number of threads. This overrides any
     # value set in the constructor. If the new value is smaller than
     # the current value, excess existing threads will be
@@ -1733,7 +1674,6 @@ module Java::Util::Concurrent
     end
     
     typesig { [] }
-    # 
     # Returns the maximum allowed number of threads.
     # 
     # @return the maximum allowed number of threads
@@ -1743,7 +1683,6 @@ module Java::Util::Concurrent
     end
     
     typesig { [::Java::Long, TimeUnit] }
-    # 
     # Sets the time limit for which threads may remain idle before
     # being terminated.  If there are more than the core number of
     # threads currently in the pool, after waiting this amount of
@@ -1772,7 +1711,6 @@ module Java::Util::Concurrent
     end
     
     typesig { [TimeUnit] }
-    # 
     # Returns the thread keep-alive time, which is the amount of time
     # that threads in excess of the core pool size may remain
     # idle before being terminated.
@@ -1798,7 +1736,6 @@ module Java::Util::Concurrent
     end
     
     typesig { [Runnable] }
-    # 
     # Removes this task from the executor's internal queue if it is
     # present, thus causing it not to be run if it has not already
     # started.
@@ -1820,7 +1757,6 @@ module Java::Util::Concurrent
     end
     
     typesig { [] }
-    # 
     # Tries to remove from the work queue all {@link Future}
     # tasks that have been cancelled. This method can be useful as a
     # storage reclamation operation, that has no other impact on
@@ -1839,13 +1775,13 @@ module Java::Util::Concurrent
             it.remove
           end
         end
-      rescue ConcurrentModificationException => fallThrough
+      rescue ConcurrentModificationException => fall_through
         # Take slow path if we encounter interference during traversal.
         # Make copy for traversal and call remove for cancelled entries.
         # The slow path is more likely to be O(N*N).
         q.to_array.each do |r|
-          if (r_.is_a?(Future) && (r_).is_cancelled)
-            q.remove(r_)
+          if (r.is_a?(Future) && (r).is_cancelled)
+            q.remove(r)
           end
         end
       end
@@ -1871,7 +1807,6 @@ module Java::Util::Concurrent
     end
     
     typesig { [] }
-    # 
     # Returns the approximate number of threads that are actively
     # executing tasks.
     # 
@@ -1893,7 +1828,6 @@ module Java::Util::Concurrent
     end
     
     typesig { [] }
-    # 
     # Returns the largest number of threads that have ever
     # simultaneously been in the pool.
     # 
@@ -1909,7 +1843,6 @@ module Java::Util::Concurrent
     end
     
     typesig { [] }
-    # 
     # Returns the approximate total number of tasks that have ever been
     # scheduled for execution. Because the states of tasks and
     # threads may change dynamically during computation, the returned
@@ -1934,7 +1867,6 @@ module Java::Util::Concurrent
     end
     
     typesig { [] }
-    # 
     # Returns the approximate total number of tasks that have
     # completed execution. Because the states of tasks and threads
     # may change dynamically during computation, the returned value
@@ -1975,7 +1907,6 @@ module Java::Util::Concurrent
     end
     
     typesig { [Runnable, Exception] }
-    # 
     # Method invoked upon completion of execution of the given Runnable.
     # This method is invoked by the thread that executed the task. If
     # non-null, the Throwable is the uncaught {@code RuntimeException}
@@ -2024,7 +1955,6 @@ module Java::Util::Concurrent
     end
     
     typesig { [] }
-    # 
     # Method invoked when the Executor has terminated.  Default
     # implementation does nothing. Note: To properly nest multiple
     # overridings, subclasses should generally invoke
@@ -2044,13 +1974,11 @@ module Java::Util::Concurrent
         include RejectedExecutionHandler
         
         typesig { [] }
-        # 
         # Creates a {@code CallerRunsPolicy}.
         def initialize
         end
         
         typesig { [Runnable, ThreadPoolExecutor] }
-        # 
         # Executes task r in the caller's thread, unless the executor
         # has been shut down, in which case the task is discarded.
         # 
@@ -2066,7 +1994,6 @@ module Java::Util::Concurrent
         alias_method :initialize__caller_runs_policy, :initialize
       end }
       
-      # 
       # A handler for rejected tasks that throws a
       # {@code RejectedExecutionException}.
       const_set_lazy(:AbortPolicy) { Class.new do
@@ -2074,13 +2001,11 @@ module Java::Util::Concurrent
         include RejectedExecutionHandler
         
         typesig { [] }
-        # 
         # Creates an {@code AbortPolicy}.
         def initialize
         end
         
         typesig { [Runnable, ThreadPoolExecutor] }
-        # 
         # Always throws RejectedExecutionException.
         # 
         # @param r the runnable task requested to be executed
@@ -2094,7 +2019,6 @@ module Java::Util::Concurrent
         alias_method :initialize__abort_policy, :initialize
       end }
       
-      # 
       # A handler for rejected tasks that silently discards the
       # rejected task.
       const_set_lazy(:DiscardPolicy) { Class.new do
@@ -2102,13 +2026,11 @@ module Java::Util::Concurrent
         include RejectedExecutionHandler
         
         typesig { [] }
-        # 
         # Creates a {@code DiscardPolicy}.
         def initialize
         end
         
         typesig { [Runnable, ThreadPoolExecutor] }
-        # 
         # Does nothing, which has the effect of discarding task r.
         # 
         # @param r the runnable task requested to be executed
@@ -2120,7 +2042,6 @@ module Java::Util::Concurrent
         alias_method :initialize__discard_policy, :initialize
       end }
       
-      # 
       # A handler for rejected tasks that discards the oldest unhandled
       # request and then retries {@code execute}, unless the executor
       # is shut down, in which case the task is discarded.
@@ -2129,13 +2050,11 @@ module Java::Util::Concurrent
         include RejectedExecutionHandler
         
         typesig { [] }
-        # 
         # Creates a {@code DiscardOldestPolicy} for the given executor.
         def initialize
         end
         
         typesig { [Runnable, ThreadPoolExecutor] }
-        # 
         # Obtains and ignores the next task that the executor
         # would otherwise execute, if one is immediately available,
         # and then retries execution of task r, unless the executor

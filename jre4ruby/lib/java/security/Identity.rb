@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 1996-2006 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -33,7 +32,6 @@ module Java::Security
     }
   end
   
-  # 
   # <p>This class represents identities: real-world objects such as people,
   # companies or organizations whose identities can be authenticated using
   # their public keys. Identities may also be more abstract (or concrete)
@@ -71,7 +69,6 @@ module Java::Security
       const_attr_reader  :SerialVersionUID
     }
     
-    # 
     # The name for this identity.
     # 
     # @serial
@@ -81,7 +78,6 @@ module Java::Security
     alias_method :attr_name=, :name=
     undef_method :name=
     
-    # 
     # The public key for this identity.
     # 
     # @serial
@@ -91,7 +87,6 @@ module Java::Security
     alias_method :attr_public_key=, :public_key=
     undef_method :public_key=
     
-    # 
     # Generic, descriptive information about the identity.
     # 
     # @serial
@@ -101,7 +96,6 @@ module Java::Security
     alias_method :attr_info=, :info=
     undef_method :info=
     
-    # 
     # The scope of the identity.
     # 
     # @serial
@@ -111,7 +105,6 @@ module Java::Security
     alias_method :attr_scope=, :scope=
     undef_method :scope=
     
-    # 
     # The certificates for this identity.
     # 
     # @serial
@@ -122,14 +115,12 @@ module Java::Security
     undef_method :certificates=
     
     typesig { [] }
-    # 
     # Constructor for serialization only.
     def initialize
       initialize__identity("restoring...")
     end
     
     typesig { [String, IdentityScope] }
-    # 
     # Constructs an identity with the specified name and scope.
     # 
     # @param name the identity name.
@@ -146,7 +137,6 @@ module Java::Security
     end
     
     typesig { [String] }
-    # 
     # Constructs an identity with the specified name and no scope.
     # 
     # @param name the identity name.
@@ -160,7 +150,6 @@ module Java::Security
     end
     
     typesig { [] }
-    # 
     # Returns this identity's name.
     # 
     # @return the name of this identity.
@@ -169,7 +158,6 @@ module Java::Security
     end
     
     typesig { [] }
-    # 
     # Returns this identity's scope.
     # 
     # @return the scope of this identity.
@@ -178,7 +166,6 @@ module Java::Security
     end
     
     typesig { [] }
-    # 
     # Returns this identity's public key.
     # 
     # @return the public key for this identity.
@@ -189,7 +176,6 @@ module Java::Security
     end
     
     typesig { [PublicKey] }
-    # 
     # Sets this identity's public key. The old key and all of this
     # identity's certificates are removed by this operation.
     # 
@@ -217,7 +203,6 @@ module Java::Security
     end
     
     typesig { [String] }
-    # 
     # Specifies a general information string for this identity.
     # 
     # <p>First, if there is a security manager, its <code>checkSecurityAccess</code>
@@ -238,7 +223,6 @@ module Java::Security
     end
     
     typesig { [] }
-    # 
     # Returns general information previously specified for this identity.
     # 
     # @return general information about this identity.
@@ -249,7 +233,6 @@ module Java::Security
     end
     
     typesig { [Certificate] }
-    # 
     # Adds a certificate for this identity. If the identity has a public
     # key, the public key in the certificate must be the same, and if
     # the identity does not have a public key, the identity's
@@ -301,7 +284,6 @@ module Java::Security
     end
     
     typesig { [Certificate] }
-    # 
     # Removes a certificate from this identity.
     # 
     # <p>First, if there is a security manager, its <code>checkSecurityAccess</code>
@@ -326,7 +308,6 @@ module Java::Security
     end
     
     typesig { [] }
-    # 
     # Returns a copy of all the certificates for this identity.
     # 
     # @return a copy of all the certificates for this identity.
@@ -341,7 +322,6 @@ module Java::Security
     end
     
     typesig { [Object] }
-    # 
     # Tests for equality between the specified object and this identity.
     # This first tests to see if the entities actually refer to the same
     # object, in which case it returns true. Next, it checks to see if
@@ -371,7 +351,6 @@ module Java::Security
     end
     
     typesig { [Identity] }
-    # 
     # Tests for equality between the specified identity and this identity.
     # This method should be overriden by subclasses to test for equality.
     # The default behavior is to return true if the names and public keys
@@ -399,7 +378,6 @@ module Java::Security
     end
     
     typesig { [] }
-    # 
     # Returns a parsable name for identity: identityName.scopeName
     def full_name
       parsable = @name
@@ -410,7 +388,6 @@ module Java::Security
     end
     
     typesig { [] }
-    # 
     # Returns a short string describing this identity, telling its
     # name and its scope (if any).
     # 
@@ -436,7 +413,6 @@ module Java::Security
     end
     
     typesig { [::Java::Boolean] }
-    # 
     # Returns a string representation of this identity, with
     # optionally more details than that provided by the
     # <code>toString</code> method without any arguments.
@@ -500,7 +476,6 @@ module Java::Security
     end
     
     typesig { [] }
-    # 
     # Returns a hashcode for this identity.
     # 
     # @return a hashcode for this identity.

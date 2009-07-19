@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 1999-2007 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -34,7 +33,6 @@ module Sun::Security::Ssl
     }
   end
   
-  # 
   # This class has be shamefully lifted from sun.security.util.Debug
   # 
   # @author Gary Ellison
@@ -97,7 +95,6 @@ module Sun::Security::Ssl
       end
       
       typesig { [String] }
-      # 
       # Get a Debug object corresponding to whether or not the given
       # option is set. Set the prefix to be the same as option.
       def get_instance(option)
@@ -105,7 +102,6 @@ module Sun::Security::Ssl
       end
       
       typesig { [String, String] }
-      # 
       # Get a Debug object corresponding to whether or not the given
       # option is set. Set the prefix to be prefix.
       def get_instance(option, prefix)
@@ -119,7 +115,6 @@ module Sun::Security::Ssl
       end
       
       typesig { [String] }
-      # 
       # True if the property "javax.net.debug" contains the
       # string "option".
       def is_on(option)
@@ -146,7 +141,6 @@ module Sun::Security::Ssl
     }
     
     typesig { [String] }
-    # 
     # print a message to stderr that is prefixed with the prefix
     # created from the call to getInstance.
     def println(message)
@@ -154,7 +148,6 @@ module Sun::Security::Ssl
     end
     
     typesig { [] }
-    # 
     # print a blank line to stderr that is prefixed with the prefix.
     def println
       System.err.println(@prefix + ":")
@@ -162,7 +155,6 @@ module Sun::Security::Ssl
     
     class_module.module_eval {
       typesig { [String, String] }
-      # 
       # print a message to stderr that is prefixed with the prefix.
       def println(prefix, message)
         System.err.println(prefix + ": " + message)
@@ -187,7 +179,6 @@ module Sun::Security::Ssl
       end
       
       typesig { [String, ::Java::Boolean] }
-      # 
       # Return the value of the boolean System property propName.
       # 
       # Note use of doPrivileged(). Do make accessible to applications.

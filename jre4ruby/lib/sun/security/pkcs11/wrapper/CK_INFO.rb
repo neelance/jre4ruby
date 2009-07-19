@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # reserved comment block
 # DO NOT REMOVE OR ALTER!
 # 
@@ -53,7 +52,6 @@ module Sun::Security::Pkcs11::Wrapper
     }
   end
   
-  # 
   # class  CK_INFO provides general information about Cryptoki.<p>
   # <B>PKCS#11 structure:</B>
   # <PRE>
@@ -71,7 +69,6 @@ module Sun::Security::Pkcs11::Wrapper
   class CK_INFO 
     include_class_members CK_INFOImports
     
-    # 
     # Cryptoki interface version number<p>
     # <B>PKCS#11:</B>
     # <PRE>
@@ -83,7 +80,6 @@ module Sun::Security::Pkcs11::Wrapper
     alias_method :attr_cryptoki_version=, :cryptoki_version=
     undef_method :cryptoki_version=
     
-    # 
     # ID of the Cryptoki library manufacturer. must be blank
     # padded - only the first 32 chars will be used<p>
     # <B>PKCS#11:</B>
@@ -96,7 +92,6 @@ module Sun::Security::Pkcs11::Wrapper
     alias_method :attr_manufacturer_id=, :manufacturer_id=
     undef_method :manufacturer_id=
     
-    # 
     # bit flags reserved for future versions. must be zero<p>
     # <B>PKCS#11:</B>
     # <PRE>
@@ -121,7 +116,6 @@ module Sun::Security::Pkcs11::Wrapper
     alias_method :attr_library_description=, :library_description=
     undef_method :library_description=
     
-    # 
     # Cryptoki library version number<p>
     # <B>PKCS#11:</B>
     # <PRE>
@@ -148,7 +142,6 @@ module Sun::Security::Pkcs11::Wrapper
     end
     
     typesig { [] }
-    # 
     # Returns the string representation of CK_INFO.
     # 
     # @return the string representation of CK_INFO

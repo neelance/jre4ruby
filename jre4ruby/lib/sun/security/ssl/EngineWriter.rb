@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 2003-2007 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -37,12 +36,10 @@ module Sun::Security::Ssl
     }
   end
   
-  # 
   # A class to help abstract away SSLEngine writing synchronization.
   class EngineWriter 
     include_class_members EngineWriterImports
     
-    # 
     # Outgoing handshake Data waiting for a ride is stored here.
     # Normal application data is written directly into the outbound
     # buffer, but handshake data can be written out at any time,
@@ -80,7 +77,6 @@ module Sun::Security::Ssl
     end
     
     typesig { [ByteBuffer] }
-    # 
     # Upper levels assured us we had room for at least one packet of data.
     # As per the SSLEngine spec, we only return one SSL packets worth of
     # data.
@@ -90,7 +86,6 @@ module Sun::Security::Ssl
       bb_in = msg
       raise AssertError if not ((dst_bb.remaining >= bb_in.remaining))
       dst_bb.put(bb_in)
-      # 
       # If we have more data in the queue, it's either
       # a finished message, or an indication that we need
       # to call wrap again.
@@ -108,19 +103,16 @@ module Sun::Security::Ssl
     end
     
     typesig { [EngineOutputRecord, MAC, CipherBox] }
-    # 
     # Properly orders the output of the data written to the wrap call.
     # This is only handshake data, application data goes through the
     # other writeRecord.
     def write_record(output_record, write_mac, write_cipher)
       synchronized(self) do
-        # 
         # Only output if we're still open.
         if (@outbound_closed)
           raise IOException.new("writer side was already closed.")
         end
         output_record.write(write_mac, write_cipher)
-        # 
         # Did our handshakers notify that we just sent the
         # Finished message?
         # 
@@ -132,7 +124,6 @@ module Sun::Security::Ssl
     end
     
     typesig { [EngineArgs, ::Java::Boolean] }
-    # 
     # Output the packet info.
     def dump_packet(ea, hs_data)
       begin
@@ -148,7 +139,6 @@ module Sun::Security::Ssl
     end
     
     typesig { [EngineOutputRecord, EngineArgs, MAC, CipherBox] }
-    # 
     # Properly orders the output of the data written to the wrap call.
     # Only app data goes through here, handshake data goes through
     # the other writeRecord.
@@ -158,13 +148,11 @@ module Sun::Security::Ssl
     # Return any determined status.
     def write_record(output_record, ea, write_mac, write_cipher)
       synchronized(self) do
-        # 
         # If we have data ready to go, output this first before
         # trying to consume app data.
         if (has_outbound_data_internal)
           hss = get_outbound_data(ea.attr_net_data)
           if (!(Debug).nil? && Debug.is_on("packet"))
-            # 
             # We could have put the dump in
             # OutputRecord.write(OutputStream), but let's actually
             # output when it's actually output by the SSLEngine.
@@ -172,7 +160,6 @@ module Sun::Security::Ssl
           end
           return hss
         end
-        # 
         # If we are closed, no more app data can be output.
         # Only existing handshake data (above) can be obtained.
         if (@outbound_closed)
@@ -182,7 +169,6 @@ module Sun::Security::Ssl
         if (!(Debug).nil? && Debug.is_on("packet"))
           dump_packet(ea, false)
         end
-        # 
         # No way new outbound handshake data got here if we're
         # locked properly.
         # 
@@ -192,7 +178,6 @@ module Sun::Security::Ssl
     end
     
     typesig { [ByteBuffer] }
-    # 
     # We already hold "this" lock, this is the callback from the
     # outputRecord.write() above.  We already know this
     # writer can accept more data (outboundClosed == false),
@@ -202,7 +187,6 @@ module Sun::Security::Ssl
     end
     
     typesig { [ByteBuffer] }
-    # 
     # This is for the really rare case that someone is writing from
     # the *InputRecord* before we know what to do with it.
     def put_outbound_data_sync(bytes)
@@ -215,7 +199,6 @@ module Sun::Security::Ssl
     end
     
     typesig { [] }
-    # 
     # Non-synch'd version of this method, called by internals
     def has_outbound_data_internal
       return (!(@outbound_list.size).equal?(0))

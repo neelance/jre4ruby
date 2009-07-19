@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 2002-2004 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -75,7 +74,6 @@ module Sun::Nio::Cs::Ext
         undef_method :ms950dec=
         
         typesig { [::Java::Int, ::Java::Int] }
-        # 
         # Note current decoder decodes 0x8BC2 --> U+F53A
         # ie. maps to Unicode PUA.
         # Unaccounted discrepancy between this mapping
@@ -108,7 +106,6 @@ module Sun::Nio::Cs::Ext
         undef_method :ms950enc=
         
         typesig { [::Java::Char] }
-        # 
         # Note current encoder encodes U+F53A --> 0x8BC2
         # Published MS HKSCS mappings show
         # U+5C22 <--> 0x8BC2

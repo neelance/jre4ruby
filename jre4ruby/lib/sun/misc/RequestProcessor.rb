@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 1996 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -31,7 +30,6 @@ module Sun::Misc
     }
   end
   
-  # 
   # The request processor allows functors (Request instances) to be created
   # in arbitrary threads, and to be posted for execution in a non-restricted
   # thread.
@@ -65,7 +63,6 @@ module Sun::Misc
       alias_method :attr_dispatcher=, :dispatcher=
       
       typesig { [Request] }
-      # 
       # Queues a Request instance for execution by the request procesor
       # thread.
       def post_request(req)
@@ -75,7 +72,6 @@ module Sun::Misc
     }
     
     typesig { [] }
-    # 
     # Process requests as they are queued.
     def run
       lazy_initialize
@@ -100,7 +96,6 @@ module Sun::Misc
     
     class_module.module_eval {
       typesig { [] }
-      # 
       # This method initiates the request processor thread.  It is safe
       # to call it after the thread has been started.  It provides a way for
       # clients to deliberately control the context in which the request
@@ -116,7 +111,6 @@ module Sun::Misc
       end
       
       typesig { [] }
-      # 
       # This method performs lazy initialization.
       def lazy_initialize
         synchronized(self) do

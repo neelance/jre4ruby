@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 1996-2003 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -31,7 +30,6 @@ module Java::Security
     }
   end
   
-  # 
   # This exception, designed for use by the JCA/JCE engine classes,
   # is thrown when an invalid parameter is passed
   # to a method.
@@ -46,7 +44,6 @@ module Java::Security
     }
     
     typesig { [] }
-    # 
     # Constructs an InvalidParameterException with no detail message.
     # A detail message is a String that describes this particular
     # exception.
@@ -55,7 +52,6 @@ module Java::Security
     end
     
     typesig { [String] }
-    # 
     # Constructs an InvalidParameterException with the specified
     # detail message.  A detail message is a String that describes
     # this particular exception.

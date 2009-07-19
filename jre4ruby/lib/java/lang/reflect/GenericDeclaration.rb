@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 2003-2004 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -31,7 +30,6 @@ module Java::Lang::Reflect
     }
   end
   
-  # 
   # A common interface for all entities that declare type variables.
   # 
   # @since 1.5
@@ -39,7 +37,6 @@ module Java::Lang::Reflect
     include_class_members GenericDeclarationImports
     
     typesig { [] }
-    # 
     # Returns an array of {@code TypeVariable} objects that
     # represent the type variables declared by the generic
     # declaration represented by this {@code GenericDeclaration}

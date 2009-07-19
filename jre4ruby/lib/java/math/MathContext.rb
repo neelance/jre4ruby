@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Portions Copyright 2003-2007 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -35,7 +34,6 @@ module Java::Math
     }
   end
   
-  # 
   # Immutable objects which encapsulate the context settings which
   # describe certain rules for numerical operators, such as those
   # implemented by the {@link BigDecimal} class.
@@ -88,7 +86,6 @@ module Java::Math
       const_set_lazy(:UNLIMITED) { MathContext.new(0, RoundingMode::HALF_UP) }
       const_attr_reader  :UNLIMITED
       
-      # 
       # A {@code MathContext} object with a precision setting
       # matching the IEEE 754R Decimal32 format, 7 digits, and a
       # rounding mode of {@link RoundingMode#HALF_EVEN HALF_EVEN}, the
@@ -96,7 +93,6 @@ module Java::Math
       const_set_lazy(:DECIMAL32) { MathContext.new(7, RoundingMode::HALF_EVEN) }
       const_attr_reader  :DECIMAL32
       
-      # 
       # A {@code MathContext} object with a precision setting
       # matching the IEEE 754R Decimal64 format, 16 digits, and a
       # rounding mode of {@link RoundingMode#HALF_EVEN HALF_EVEN}, the
@@ -104,7 +100,6 @@ module Java::Math
       const_set_lazy(:DECIMAL64) { MathContext.new(16, RoundingMode::HALF_EVEN) }
       const_attr_reader  :DECIMAL64
       
-      # 
       # A {@code MathContext} object with a precision setting
       # matching the IEEE 754R Decimal128 format, 34 digits, and a
       # rounding mode of {@link RoundingMode#HALF_EVEN HALF_EVEN}, the
@@ -129,7 +124,6 @@ module Java::Math
     alias_method :attr_precision=, :precision=
     undef_method :precision=
     
-    # 
     # The rounding algorithm to be used for an operation.
     # 
     # @see RoundingMode
@@ -140,7 +134,6 @@ module Java::Math
     alias_method :attr_rounding_mode=, :rounding_mode=
     undef_method :rounding_mode=
     
-    # 
     # Lookaside for the rounding points (the numbers which determine
     # whether the coefficient of a number will require rounding).
     # These will be present if {@code precision > 0} and
@@ -181,7 +174,6 @@ module Java::Math
     end
     
     typesig { [::Java::Int, RoundingMode] }
-    # 
     # Constructs a new {@code MathContext} with a specified
     # precision and rounding mode.
     # 
@@ -211,7 +203,6 @@ module Java::Math
     end
     
     typesig { [String] }
-    # 
     # Constructs a new {@code MathContext} from a string.
     # 
     # The string must be in the same format as that produced by the
@@ -264,7 +255,6 @@ module Java::Math
     end
     
     typesig { [] }
-    # 
     # Returns the {@code precision} setting.
     # This value is always non-negative.
     # 
@@ -275,7 +265,6 @@ module Java::Math
     end
     
     typesig { [] }
-    # 
     # Returns the roundingMode setting.
     # This will be one of
     # {@link  RoundingMode#CEILING},
@@ -294,7 +283,6 @@ module Java::Math
     end
     
     typesig { [Object] }
-    # 
     # Compares this {@code MathContext} with the specified
     # {@code Object} for equality.
     # 
@@ -313,7 +301,6 @@ module Java::Math
     end
     
     typesig { [] }
-    # 
     # Returns the hash code for this {@code MathContext}.
     # 
     # @return hash code for this {@code MathContext}
@@ -322,7 +309,6 @@ module Java::Math
     end
     
     typesig { [] }
-    # 
     # Returns the string representation of this {@code MathContext}.
     # The {@code String} returned represents the settings of the
     # {@code MathContext} object as two space-delimited words
@@ -372,8 +358,8 @@ module Java::Math
         raise Java::Io::StreamCorruptedException.new(message)
       end
       if ((@rounding_mode).nil?)
-        message_ = "MathContext: null roundingMode in stream"
-        raise Java::Io::StreamCorruptedException.new(message_)
+        message = "MathContext: null roundingMode in stream"
+        raise Java::Io::StreamCorruptedException.new(message)
       end
       # Set the lookaside, if applicable
       if (@precision <= MAX_LOOKASIDE)

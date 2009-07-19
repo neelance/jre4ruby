@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 1996-2004 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -33,7 +32,6 @@ module Java::Security::Acl
     }
   end
   
-  # 
   # This interface is used to represent a group of principals. (A principal
   # represents an entity such as an individual user or a company). <p>
   # 
@@ -49,7 +47,6 @@ module Java::Security::Acl
     include Principal
     
     typesig { [Principal] }
-    # 
     # Adds the specified member to the group.
     # 
     # @param user the principal to add to this group.
@@ -61,7 +58,6 @@ module Java::Security::Acl
     end
     
     typesig { [Principal] }
-    # 
     # Removes the specified member from the group.
     # 
     # @param user the principal to remove from this group.
@@ -73,7 +69,6 @@ module Java::Security::Acl
     end
     
     typesig { [Principal] }
-    # 
     # Returns true if the passed principal is a member of the group.
     # This method does a recursive search, so if a principal belongs to a
     # group which is a member of this group, true is returned.
@@ -87,7 +82,6 @@ module Java::Security::Acl
     end
     
     typesig { [] }
-    # 
     # Returns an enumeration of the members in the group.
     # The returned objects can be instances of either Principal
     # or Group (which is a subclass of Principal).

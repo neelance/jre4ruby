@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 1997-2006 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -31,7 +30,6 @@ module Java::Util
     }
   end
   
-  # 
   # An iterator over a collection.  {@code Iterator} takes the place of
   # {@link Enumeration} in the Java Collections Framework.  Iterators
   # differ from enumerations in two ways:
@@ -56,7 +54,6 @@ module Java::Util
     include_class_members IteratorImports
     
     typesig { [] }
-    # 
     # Returns {@code true} if the iteration has more elements.
     # (In other words, returns {@code true} if {@link #next} would
     # return an element rather than throwing an exception.)
@@ -67,7 +64,6 @@ module Java::Util
     end
     
     typesig { [] }
-    # 
     # Returns the next element in the iteration.
     # 
     # @return the next element in the iteration
@@ -77,7 +73,6 @@ module Java::Util
     end
     
     typesig { [] }
-    # 
     # Removes from the underlying collection the last element returned
     # by this iterator (optional operation).  This method can be called
     # only once per call to {@link #next}.  The behavior of an iterator

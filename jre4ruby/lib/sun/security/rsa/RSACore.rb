@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 2003-2006 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -37,7 +36,6 @@ module Sun::Security::Rsa
     }
   end
   
-  # 
   # Core of the RSA implementation. Has code to perform public and private key
   # RSA operations (with and without CRT for private key ops). Private CRT ops
   # also support blinding to twart timing attacks.
@@ -59,7 +57,6 @@ module Sun::Security::Rsa
     
     class_module.module_eval {
       typesig { [BigInteger] }
-      # 
       # Return the number of bytes required to store the magnitude byte[] of
       # this BigInteger. Do not count a 0x00 byte toByteArray() would
       # prefix for 2's complement form.
@@ -69,7 +66,6 @@ module Sun::Security::Rsa
       end
       
       typesig { [RSAKey] }
-      # 
       # Return the number of bytes required to store the modulus of this
       # RSA key.
       def get_byte_length(key)
@@ -89,14 +85,12 @@ module Sun::Security::Rsa
       end
       
       typesig { [Array.typed(::Java::Byte), RSAPublicKey] }
-      # 
       # Perform an RSA public key operation.
       def rsa(msg, key)
         return crypt(msg, key.get_modulus, key.get_public_exponent)
       end
       
       typesig { [Array.typed(::Java::Byte), RSAPrivateKey] }
-      # 
       # Perform an RSA private key operation. Uses CRT if the key is a
       # CRT key.
       def rsa(msg, key)
@@ -108,7 +102,6 @@ module Sun::Security::Rsa
       end
       
       typesig { [Array.typed(::Java::Byte), BigInteger, BigInteger] }
-      # 
       # RSA public key ops and non-CRT private key ops. Simple modPow().
       def crypt(msg, n, exp)
         m = parse_msg(msg, n)
@@ -117,7 +110,6 @@ module Sun::Security::Rsa
       end
       
       typesig { [Array.typed(::Java::Byte), RSAPrivateCrtKey] }
-      # 
       # RSA private key operations with CRT. Algorithm and variable naming
       # are taken from PKCS#1 v2.1, section 5.1.2.
       # 
@@ -168,7 +160,6 @@ module Sun::Security::Rsa
       end
       
       typesig { [Array.typed(::Java::Byte), BigInteger] }
-      # 
       # Parse the msg into a BigInteger and check against the modulus n.
       def parse_msg(msg, n)
         m = BigInteger.new(1, msg)
@@ -179,7 +170,6 @@ module Sun::Security::Rsa
       end
       
       typesig { [BigInteger, ::Java::Int] }
-      # 
       # Return the encoding of this BigInteger that is exactly len bytes long.
       # Prefix/strip off leading 0x00 bytes if necessary.
       # Precondition: bi must fit into len bytes
@@ -197,9 +187,9 @@ module Sun::Security::Rsa
         end
         # must be smaller
         raise AssertError if not ((n < len))
-        t_ = Array.typed(::Java::Byte).new(len) { 0 }
-        System.arraycopy(b, 0, t_, (len - n), n)
-        return t_
+        t = Array.typed(::Java::Byte).new(len) { 0 }
+        System.arraycopy(b, 0, t, (len - n), n)
+        return t
       end
       
       # globally enable/disable use of blinding
@@ -217,7 +207,6 @@ module Sun::Security::Rsa
       const_set_lazy(:BlindingCache) { WeakHashMap.new }
       const_attr_reader  :BlindingCache
       
-      # 
       # Set of blinding parameters for a given RSA key.
       # 
       # The RSA modulus is usually unique, so we index by modulus in
@@ -281,7 +270,6 @@ module Sun::Security::Rsa
       end }
       
       typesig { [RSAPrivateCrtKey] }
-      # 
       # Return valid RSA blinding parameters for the given private key.
       # Use cached parameters if available. If not, generate new parameters
       # and cache.

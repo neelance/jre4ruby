@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 1995-2006 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -32,7 +31,6 @@ module Java::Lang
     }
   end
   
-  # 
   # Every Java application has a single instance of class
   # <code>Runtime</code> that allows the application to interface with
   # the environment in which the application is running. The current
@@ -59,7 +57,6 @@ module Java::Lang
       alias_method :attr_current_runtime=, :current_runtime=
       
       typesig { [] }
-      # 
       # Returns the runtime object associated with the current Java application.
       # Most of the methods of class <code>Runtime</code> are instance
       # methods and must be invoked with respect to the current runtime object.
@@ -77,7 +74,6 @@ module Java::Lang
     end
     
     typesig { [::Java::Int] }
-    # 
     # Terminates the currently running Java virtual machine by initiating its
     # shutdown sequence.  This method never returns normally.  The argument
     # serves as a status code; by convention, a nonzero status code indicates
@@ -125,7 +121,6 @@ module Java::Lang
     end
     
     typesig { [JavaThread] }
-    # 
     # Registers a new virtual-machine shutdown hook.
     # 
     # <p> The Java virtual machine <i>shuts down</i> in response to two kinds
@@ -227,7 +222,6 @@ module Java::Lang
     end
     
     typesig { [JavaThread] }
-    # 
     # De-registers a previously-registered virtual-machine shutdown hook. <p>
     # 
     # @param hook the hook to remove
@@ -255,7 +249,6 @@ module Java::Lang
     end
     
     typesig { [::Java::Int] }
-    # 
     # Forcibly terminates the currently running Java virtual machine.  This
     # method never returns normally.
     # 
@@ -292,7 +285,6 @@ module Java::Lang
     
     class_module.module_eval {
       typesig { [::Java::Boolean] }
-      # 
       # Enable or disable finalization on exit; doing so specifies that the
       # finalizers of all objects that have finalizers that have not yet been
       # automatically invoked are to be run before the Java runtime exits.
@@ -331,7 +323,6 @@ module Java::Lang
     }
     
     typesig { [String] }
-    # 
     # Executes the specified string command in a separate process.
     # 
     # <p>This is a convenience method.  An invocation of the form
@@ -364,7 +355,6 @@ module Java::Lang
     end
     
     typesig { [String, Array.typed(String)] }
-    # 
     # Executes the specified string command in a separate process with the
     # specified environment.
     # 
@@ -405,7 +395,6 @@ module Java::Lang
     end
     
     typesig { [String, Array.typed(String), JavaFile] }
-    # 
     # Executes the specified string command in a separate process with the
     # specified environment and working directory.
     # 
@@ -469,7 +458,6 @@ module Java::Lang
     end
     
     typesig { [Array.typed(String)] }
-    # 
     # Executes the specified command and arguments in a separate process.
     # 
     # <p>This is a convenience method.  An invocation of the form
@@ -504,7 +492,6 @@ module Java::Lang
     end
     
     typesig { [Array.typed(String), Array.typed(String)] }
-    # 
     # Executes the specified command and arguments in a separate process
     # with the specified environment.
     # 
@@ -547,7 +534,6 @@ module Java::Lang
     end
     
     typesig { [Array.typed(String), Array.typed(String), JavaFile] }
-    # 
     # Executes the specified command and arguments in a separate process with
     # the specified environment and working directory.
     # 
@@ -630,7 +616,6 @@ module Java::Lang
     
     JNI.native_method :Java_java_lang_Runtime_availableProcessors, [:pointer, :long], :int32
     typesig { [] }
-    # 
     # Returns the number of processors available to the Java virtual machine.
     # 
     # <p> This value may change during a particular invocation of the virtual
@@ -647,7 +632,6 @@ module Java::Lang
     
     JNI.native_method :Java_java_lang_Runtime_freeMemory, [:pointer, :long], :int64
     typesig { [] }
-    # 
     # Returns the amount of free memory in the Java Virtual Machine.
     # Calling the
     # <code>gc</code> method may result in increasing the value returned
@@ -661,7 +645,6 @@ module Java::Lang
     
     JNI.native_method :Java_java_lang_Runtime_totalMemory, [:pointer, :long], :int64
     typesig { [] }
-    # 
     # Returns the total amount of memory in the Java virtual machine.
     # The value returned by this method may vary over time, depending on
     # the host environment.
@@ -677,7 +660,6 @@ module Java::Lang
     
     JNI.native_method :Java_java_lang_Runtime_maxMemory, [:pointer, :long], :int64
     typesig { [] }
-    # 
     # Returns the maximum amount of memory that the Java virtual machine will
     # attempt to use.  If there is no inherent limit then the value {@link
     # java.lang.Long#MAX_VALUE} will be returned. </p>
@@ -691,7 +673,6 @@ module Java::Lang
     
     JNI.native_method :Java_java_lang_Runtime_gc, [:pointer, :long], :void
     typesig { [] }
-    # 
     # Runs the garbage collector.
     # Calling this method suggests that the Java virtual machine expend
     # effort toward recycling unused objects in order to make the memory
@@ -720,7 +701,6 @@ module Java::Lang
     }
     
     typesig { [] }
-    # 
     # Runs the finalization methods of any objects pending finalization.
     # Calling this method suggests that the Java virtual machine expend
     # effort toward running the <code>finalize</code> methods of objects
@@ -743,7 +723,6 @@ module Java::Lang
     
     JNI.native_method :Java_java_lang_Runtime_traceInstructions, [:pointer, :long, :int8], :void
     typesig { [::Java::Boolean] }
-    # 
     # Enables/Disables tracing of instructions.
     # If the <code>boolean</code> argument is <code>true</code>, this
     # method suggests that the Java virtual machine emit debugging
@@ -766,7 +745,6 @@ module Java::Lang
     
     JNI.native_method :Java_java_lang_Runtime_traceMethodCalls, [:pointer, :long, :int8], :void
     typesig { [::Java::Boolean] }
-    # 
     # Enables/Disables tracing of method calls.
     # If the <code>boolean</code> argument is <code>true</code>, this
     # method suggests that the Java virtual machine emit debugging
@@ -786,7 +764,6 @@ module Java::Lang
     end
     
     typesig { [String] }
-    # 
     # Loads the specified filename as a dynamic library. The filename
     # argument must be a complete path name,
     # (for example
@@ -832,7 +809,6 @@ module Java::Lang
     end
     
     typesig { [String] }
-    # 
     # Loads the dynamic library with the specified library name.
     # A file containing native code is loaded from the local file system
     # from a place where library files are conventionally obtained. The
@@ -887,7 +863,6 @@ module Java::Lang
     end
     
     typesig { [InputStream] }
-    # 
     # Creates a localized version of an input stream. This method takes
     # an <code>InputStream</code> and returns an <code>InputStream</code>
     # equivalent to the argument in all respects except that it is
@@ -912,7 +887,6 @@ module Java::Lang
     end
     
     typesig { [OutputStream] }
-    # 
     # Creates a localized version of an output stream. This method
     # takes an <code>OutputStream</code> and returns an
     # <code>OutputStream</code> equivalent to the argument in all respects

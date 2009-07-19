@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 1997-2007 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -54,7 +53,6 @@ module Sun::Security::X509
     }
   end
   
-  # 
   # <p>
   # An implmentation for X509 CRL (Certificate Revocation List).
   # <p>
@@ -187,7 +185,6 @@ module Sun::Security::X509
     alias_method :attr_read_only=, :read_only=
     undef_method :read_only=
     
-    # 
     # PublicKey that has previously been used to successfully verify
     # the signature of this CRL. Null if the CRL has not
     # yet been verified (successfully).
@@ -197,7 +194,6 @@ module Sun::Security::X509
     alias_method :attr_verified_public_key=, :verified_public_key=
     undef_method :verified_public_key=
     
-    # 
     # If verifiedPublicKey is not null, name of the provider used to
     # successfully verify the signature of this CRL, or the
     # empty String if no provider was explicitly specified.
@@ -208,7 +204,6 @@ module Sun::Security::X509
     undef_method :verified_provider=
     
     typesig { [] }
-    # 
     # Not to be used. As it would lead to cases of uninitialized
     # CRL objects.
     def initialize
@@ -242,7 +237,6 @@ module Sun::Security::X509
     end
     
     typesig { [Array.typed(::Java::Byte)] }
-    # 
     # Unmarshals an X.509 CRL from its encoded form, parsing the encoded
     # bytes.  This form of constructor is used by agents which
     # need to examine and use CRL contents. Note that the buffer
@@ -288,7 +282,6 @@ module Sun::Security::X509
     end
     
     typesig { [DerValue] }
-    # 
     # Unmarshals an X.509 CRL from an DER value.
     # 
     # @param val a DER value holding at least one CRL
@@ -330,7 +323,6 @@ module Sun::Security::X509
     end
     
     typesig { [InputStream] }
-    # 
     # Unmarshals an X.509 CRL from an input stream. Only one CRL
     # is expected at the end of the input stream.
     # 
@@ -373,7 +365,6 @@ module Sun::Security::X509
     end
     
     typesig { [X500Name, Date, Date] }
-    # 
     # Initial CRL constructor, no revoked certs, and no extensions.
     # 
     # @param issuer the name of the CA issuing this CRL.
@@ -413,7 +404,6 @@ module Sun::Security::X509
     end
     
     typesig { [X500Name, Date, Date, Array.typed(X509CRLEntry)] }
-    # 
     # CRL constructor, revoked certs, no extensions.
     # 
     # @param issuer the name of the CA issuing this CRL.
@@ -476,7 +466,6 @@ module Sun::Security::X509
     end
     
     typesig { [X500Name, Date, Date, Array.typed(X509CRLEntry), CRLExtensions] }
-    # 
     # CRL constructor, revoked certs and extensions.
     # 
     # @param issuer the name of the CA issuing this CRL.
@@ -495,7 +484,6 @@ module Sun::Security::X509
     end
     
     typesig { [] }
-    # 
     # Returned the encoding as an uncloned byte array. Callers must
     # guarantee that they neither modify it nor expose it to untrusted
     # code.
@@ -507,7 +495,6 @@ module Sun::Security::X509
     end
     
     typesig { [] }
-    # 
     # Returns the ASN.1 DER encoded form of this CRL.
     # 
     # @exception CRLException if an encoding error occurs.
@@ -516,7 +503,6 @@ module Sun::Security::X509
     end
     
     typesig { [OutputStream] }
-    # 
     # Encodes the "to-be-signed" CRL to the OutputStream.
     # 
     # @param out the OutputStream to write to.
@@ -565,7 +551,6 @@ module Sun::Security::X509
     end
     
     typesig { [PublicKey] }
-    # 
     # Verifies that this CRL was signed using the
     # private key that corresponds to the given public key.
     # 
@@ -582,7 +567,6 @@ module Sun::Security::X509
     end
     
     typesig { [PublicKey, String] }
-    # 
     # Verifies that this CRL was signed using the
     # private key that corresponds to the given public key,
     # and that the signature verification was computed by
@@ -632,7 +616,6 @@ module Sun::Security::X509
     end
     
     typesig { [PrivateKey, String] }
-    # 
     # Encodes an X.509 CRL, and signs it using the given key.
     # 
     # @param key the private key used for signing.
@@ -649,7 +632,6 @@ module Sun::Security::X509
     end
     
     typesig { [PrivateKey, String, String] }
-    # 
     # Encodes an X.509 CRL, and signs it using the given key.
     # 
     # @param key the private key used for signing.
@@ -697,7 +679,6 @@ module Sun::Security::X509
     end
     
     typesig { [] }
-    # 
     # Returns a printable string of this CRL.
     # 
     # @return value of this CRL in a printable form.
@@ -731,10 +712,10 @@ module Sun::Security::X509
         all_exts = @extensions.get_all_extensions
         objs = all_exts.to_array
         sb.append("\nCRL Extensions: " + (objs.attr_length).to_s)
-        i_ = 0
-        while i_ < objs.attr_length
-          sb.append("\n[" + ((i_ + 1)).to_s + "]: ")
-          ext = objs[i_]
+        i = 0
+        while i < objs.attr_length
+          sb.append("\n[" + ((i + 1)).to_s + "]: ")
+          ext = objs[i]
           begin
             if ((OIDMap.get_class(ext.get_extension_id)).nil?)
               sb.append(ext.to_s)
@@ -752,7 +733,7 @@ module Sun::Security::X509
           rescue Exception => e
             sb.append(", Error parsing this extension")
           end
-          ((i_ += 1) - 1)
+          ((i += 1) - 1)
         end
       end
       if (!(@signature).nil?)
@@ -765,7 +746,6 @@ module Sun::Security::X509
     end
     
     typesig { [Certificate] }
-    # 
     # Checks whether the given certificate is on this CRL.
     # 
     # @param cert the certificate to check for.
@@ -781,7 +761,6 @@ module Sun::Security::X509
     end
     
     typesig { [] }
-    # 
     # Gets the version number from this CRL.
     # The ASN.1 definition for this is:
     # <pre>
@@ -795,7 +774,6 @@ module Sun::Security::X509
     end
     
     typesig { [] }
-    # 
     # Gets the issuer distinguished name from this CRL.
     # The issuer name identifies the entity who has signed (and
     # issued the CRL). The issuer name field contains an
@@ -827,7 +805,6 @@ module Sun::Security::X509
     end
     
     typesig { [] }
-    # 
     # Return the issuer as X500Principal. Overrides method in X509CRL
     # to provide a slightly more efficient version.
     def get_issuer_x500principal
@@ -838,7 +815,6 @@ module Sun::Security::X509
     end
     
     typesig { [] }
-    # 
     # Gets the thisUpdate date from the CRL.
     # The ASN.1 definition for this is:
     # 
@@ -848,7 +824,6 @@ module Sun::Security::X509
     end
     
     typesig { [] }
-    # 
     # Gets the nextUpdate date from the CRL.
     # 
     # @return the nextUpdate date from the CRL, or null if
@@ -861,7 +836,6 @@ module Sun::Security::X509
     end
     
     typesig { [BigInteger] }
-    # 
     # Gets the CRL entry with the given serial number from this CRL.
     # 
     # @return the entry with the given serial number, or <code>null</code> if
@@ -877,7 +851,6 @@ module Sun::Security::X509
     end
     
     typesig { [X509Certificate] }
-    # 
     # Gets the CRL entry for the given certificate.
     def get_revoked_certificate(cert)
       if (@revoked_certs.is_empty)
@@ -888,7 +861,6 @@ module Sun::Security::X509
     end
     
     typesig { [] }
-    # 
     # Gets all the revoked certificates from the CRL.
     # A Set of X509CRLEntry.
     # 
@@ -904,7 +876,6 @@ module Sun::Security::X509
     end
     
     typesig { [] }
-    # 
     # Gets the DER encoded CRL information, the
     # <code>tbsCertList</code> from this CRL.
     # This can be used to verify the signature independently.
@@ -921,7 +892,6 @@ module Sun::Security::X509
     end
     
     typesig { [] }
-    # 
     # Gets the raw Signature bits from the CRL.
     # 
     # @return the signature.
@@ -935,7 +905,6 @@ module Sun::Security::X509
     end
     
     typesig { [] }
-    # 
     # Gets the signature algorithm name for the CRL
     # signature algorithm. For example, the string "SHA1withDSA".
     # The ASN.1 definition for this is:
@@ -957,7 +926,6 @@ module Sun::Security::X509
     end
     
     typesig { [] }
-    # 
     # Gets the signature algorithm OID string from the CRL.
     # An OID is represented by a set of positive whole number separated
     # by ".", that means,<br>
@@ -978,7 +946,6 @@ module Sun::Security::X509
     end
     
     typesig { [] }
-    # 
     # Gets the DER encoded signature algorithm parameters from this
     # CRL's signature algorithm. In most cases, the signature
     # algorithm parameters are null, the parameters are usually
@@ -998,7 +965,6 @@ module Sun::Security::X509
     end
     
     typesig { [] }
-    # 
     # return the AuthorityKeyIdentifier, if any.
     # 
     # @returns AuthorityKeyIdentifier or null
@@ -1015,7 +981,6 @@ module Sun::Security::X509
     end
     
     typesig { [] }
-    # 
     # return the AuthorityKeyIdentifierExtension, if any.
     # 
     # @returns AuthorityKeyIdentifierExtension or null (if no such extension)
@@ -1026,7 +991,6 @@ module Sun::Security::X509
     end
     
     typesig { [] }
-    # 
     # return the CRLNumberExtension, if any.
     # 
     # @returns CRLNumberExtension or null (if no such extension)
@@ -1037,7 +1001,6 @@ module Sun::Security::X509
     end
     
     typesig { [] }
-    # 
     # return the CRL number from the CRLNumberExtension, if any.
     # 
     # @returns number or null (if no such extension)
@@ -1053,7 +1016,6 @@ module Sun::Security::X509
     end
     
     typesig { [] }
-    # 
     # return the DeltaCRLIndicatorExtension, if any.
     # 
     # @returns DeltaCRLIndicatorExtension or null (if no such extension)
@@ -1064,7 +1026,6 @@ module Sun::Security::X509
     end
     
     typesig { [] }
-    # 
     # return the base CRL number from the DeltaCRLIndicatorExtension, if any.
     # 
     # @returns number or null (if no such extension)
@@ -1080,7 +1041,6 @@ module Sun::Security::X509
     end
     
     typesig { [] }
-    # 
     # return the IssuerAlternativeNameExtension, if any.
     # 
     # @returns IssuerAlternativeNameExtension or null (if no such extension)
@@ -1091,7 +1051,6 @@ module Sun::Security::X509
     end
     
     typesig { [] }
-    # 
     # return the IssuingDistributionPointExtension, if any.
     # 
     # @returns IssuingDistributionPointExtension or null
@@ -1103,7 +1062,6 @@ module Sun::Security::X509
     end
     
     typesig { [] }
-    # 
     # Return true if a critical extension is found that is
     # not supported, otherwise return false.
     def has_unsupported_critical_extension
@@ -1114,7 +1072,6 @@ module Sun::Security::X509
     end
     
     typesig { [] }
-    # 
     # Gets a Set of the extension(s) marked CRITICAL in the
     # CRL. In the returned set, each extension is represented by
     # its OID string.
@@ -1135,7 +1092,6 @@ module Sun::Security::X509
     end
     
     typesig { [] }
-    # 
     # Gets a Set of the extension(s) marked NON-CRITICAL in the
     # CRL. In the returned set, each extension is represented by
     # its OID string.
@@ -1156,7 +1112,6 @@ module Sun::Security::X509
     end
     
     typesig { [String] }
-    # 
     # Gets the DER encoded OCTET string for the extension value
     # (<code>extnValue</code>) identified by the passed in oid String.
     # The <code>oid</code> string is
@@ -1206,7 +1161,6 @@ module Sun::Security::X509
     end
     
     typesig { [ObjectIdentifier] }
-    # 
     # get an extension
     # 
     # @param oid ObjectIdentifier of extension desired
@@ -1221,7 +1175,6 @@ module Sun::Security::X509
     end
     
     typesig { [DerValue] }
-    # 
     # Parses an X.509 CRL, should be used only by constructors.
     def parse(val)
       # check if can over write the certificate
@@ -1335,7 +1288,6 @@ module Sun::Security::X509
     
     class_module.module_eval {
       typesig { [X509CRL] }
-      # 
       # Extract the issuer X500Principal from an X509CRL. Parses the encoded
       # form of the CRL to preserve the principal's ASN.1 encoding.
       # 
@@ -1362,7 +1314,6 @@ module Sun::Security::X509
       end
       
       typesig { [X509CRL] }
-      # 
       # Returned the encoding of the given certificate for internal use.
       # Callers must guarantee that they neither modify it nor expose it
       # to untrusted code. Uses getEncodedInternal() if the certificate
@@ -1376,7 +1327,6 @@ module Sun::Security::X509
       end
       
       typesig { [X509CRL] }
-      # 
       # Utility method to convert an arbitrary instance of X509CRL
       # to a X509CRLImpl. Does a cast if possible, otherwise reparses
       # the encoding.
@@ -1390,7 +1340,6 @@ module Sun::Security::X509
     }
     
     typesig { [X509CRLEntryImpl, X500Principal] }
-    # 
     # Returns the X500 certificate issuer DN of a CRL entry.
     # 
     # @param entry the entry to check
@@ -1409,7 +1358,6 @@ module Sun::Security::X509
     end
     
     class_module.module_eval {
-      # 
       # Immutable X.509 Certificate Issuer DN and serial number pair
       const_set_lazy(:X509IssuerSerial) { Class.new do
         include_class_members X509CRLImpl
@@ -1433,7 +1381,6 @@ module Sun::Security::X509
         undef_method :hashcode=
         
         typesig { [X500Principal, BigInteger] }
-        # 
         # Create an X509IssuerSerial.
         # 
         # @param issuer the issuer DN
@@ -1447,14 +1394,12 @@ module Sun::Security::X509
         end
         
         typesig { [X509Certificate] }
-        # 
         # Construct an X509IssuerSerial from an X509Certificate.
         def initialize(cert)
           initialize__x509issuer_serial(cert.get_issuer_x500principal, cert.get_serial_number)
         end
         
         typesig { [] }
-        # 
         # Returns the issuer.
         # 
         # @return the issuer
@@ -1463,7 +1408,6 @@ module Sun::Security::X509
         end
         
         typesig { [] }
-        # 
         # Returns the serial number.
         # 
         # @return the serial number
@@ -1472,7 +1416,6 @@ module Sun::Security::X509
         end
         
         typesig { [Object] }
-        # 
         # Compares this X509Serial with another and returns true if they
         # are equivalent.
         # 
@@ -1493,7 +1436,6 @@ module Sun::Security::X509
         end
         
         typesig { [] }
-        # 
         # Returns a hash code value for this X509IssuerSerial.
         # 
         # @return the hash code value

@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 1996-2006 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -42,7 +41,6 @@ module Sun::Security::Util
     }
   end
   
-  # 
   # Output stream marshaling DER-encoded data.  This is eventually provided
   # in the form of a byte array; there is no advance limit on the size of
   # that byte array.
@@ -60,7 +58,6 @@ module Sun::Security::Util
     include DerEncoder
     
     typesig { [::Java::Int] }
-    # 
     # Construct an DER output stream.
     # 
     # @param size how large a buffer to preallocate.
@@ -69,14 +66,12 @@ module Sun::Security::Util
     end
     
     typesig { [] }
-    # 
     # Construct an DER output stream.
     def initialize
       super()
     end
     
     typesig { [::Java::Byte, Array.typed(::Java::Byte)] }
-    # 
     # Writes tagged, pre-marshaled data.  This calcuates and encodes
     # the length, so that the output data is the standard triple of
     # { tag, length, data } used by all DER values.
@@ -91,7 +86,6 @@ module Sun::Security::Util
     end
     
     typesig { [::Java::Byte, DerOutputStream] }
-    # 
     # Writes tagged data using buffer-to-buffer copy.  As above,
     # this writes a standard DER record.  This is often used when
     # efficiently encapsulating values in sequences.
@@ -106,7 +100,6 @@ module Sun::Security::Util
     end
     
     typesig { [::Java::Byte, DerOutputStream] }
-    # 
     # Writes implicitly tagged data using buffer-to-buffer copy.  As above,
     # this writes a standard DER record.  This is often used when
     # efficiently encapsulating implicitly tagged values.
@@ -128,14 +121,12 @@ module Sun::Security::Util
     end
     
     typesig { [DerValue] }
-    # 
     # Marshals pre-encoded DER value onto the output stream.
     def put_der_value(val)
       val.encode(self)
     end
     
     typesig { [::Java::Boolean] }
-    # 
     # PRIMITIVES -- these are "universal" ASN.1 simple types.
     # 
     # BOOLEAN, INTEGER, BIT STRING, OCTET STRING, NULL
@@ -155,7 +146,6 @@ module Sun::Security::Util
     end
     
     typesig { [::Java::Int] }
-    # 
     # Marshals a DER enumerated on the output stream.
     # @param i the enumerated value.
     def put_enumerated(i)
@@ -164,7 +154,6 @@ module Sun::Security::Util
     end
     
     typesig { [BigInteger] }
-    # 
     # Marshals a DER integer on the output stream.
     # 
     # @param i the integer in the form of a BigInteger.
@@ -176,7 +165,6 @@ module Sun::Security::Util
     end
     
     typesig { [JavaInteger] }
-    # 
     # Marshals a DER integer on the output stream.
     # @param i the integer in the form of an Integer.
     def put_integer(i)
@@ -184,7 +172,6 @@ module Sun::Security::Util
     end
     
     typesig { [::Java::Int] }
-    # 
     # Marshals a DER integer on the output stream.
     # @param i the integer.
     def put_integer(i)
@@ -217,14 +204,14 @@ module Sun::Security::Util
       else
         if ((bytes[0]).equal?(0x0))
           # Eliminate redundant 0x00
-          j_ = 0
-          while j_ < 3
-            if (((bytes[j_]).equal?(0x0)) && (((bytes[j_ + 1] & 0x80)).equal?(0)))
+          j = 0
+          while j < 3
+            if (((bytes[j]).equal?(0x0)) && (((bytes[j + 1] & 0x80)).equal?(0)))
               ((start += 1) - 1)
             else
               break
             end
-            ((j_ += 1) - 1)
+            ((j += 1) - 1)
           end
         end
       end
@@ -237,7 +224,6 @@ module Sun::Security::Util
     end
     
     typesig { [Array.typed(::Java::Byte)] }
-    # 
     # Marshals a DER bit string on the output stream. The bit
     # string must be byte-aligned.
     # 
@@ -250,7 +236,6 @@ module Sun::Security::Util
     end
     
     typesig { [BitArray] }
-    # 
     # Marshals a DER bit string on the output stream.
     # The bit strings need not be byte-aligned.
     # 
@@ -264,7 +249,6 @@ module Sun::Security::Util
     end
     
     typesig { [BitArray] }
-    # 
     # Marshals a truncated DER bit string on the output stream.
     # The bit strings need not be byte-aligned.
     # 
@@ -274,7 +258,6 @@ module Sun::Security::Util
     end
     
     typesig { [Array.typed(::Java::Byte)] }
-    # 
     # DER-encodes an ASN.1 OCTET STRING value on the output stream.
     # 
     # @param octets the octet string
@@ -283,7 +266,6 @@ module Sun::Security::Util
     end
     
     typesig { [] }
-    # 
     # Marshals a DER "null" value on the output stream.  These are
     # often used to indicate optional values which have been omitted.
     def put_null
@@ -292,7 +274,6 @@ module Sun::Security::Util
     end
     
     typesig { [ObjectIdentifier] }
-    # 
     # Marshals an object identifier (OID) on the output stream.
     # Corresponds to the ASN.1 "OBJECT IDENTIFIER" construct.
     def put_oid(oid)
@@ -300,7 +281,6 @@ module Sun::Security::Util
     end
     
     typesig { [Array.typed(DerValue)] }
-    # 
     # Marshals a sequence on the output stream.  This supports both
     # the ASN.1 "SEQUENCE" (zero to N values) and "SEQUENCE OF"
     # (one to N values) constructs.
@@ -316,7 +296,6 @@ module Sun::Security::Util
     end
     
     typesig { [Array.typed(DerValue)] }
-    # 
     # Marshals the contents of a set on the output stream without
     # ordering the elements.  Ok for BER encoding, but not for DER
     # encoding.
@@ -334,7 +313,6 @@ module Sun::Security::Util
     end
     
     typesig { [::Java::Byte, Array.typed(DerEncoder)] }
-    # 
     # Marshals the contents of a set on the output stream.  Sets
     # are semantically unordered, but DER requires that encodings of
     # set elements be sorted into ascending lexicographical order
@@ -348,7 +326,6 @@ module Sun::Security::Util
     end
     
     typesig { [::Java::Byte, Array.typed(DerEncoder)] }
-    # 
     # Marshals the contents of a set on the output stream.  Sets
     # are semantically unordered, but DER requires that encodings of
     # set elements be sorted into ascending tag order
@@ -362,7 +339,6 @@ module Sun::Security::Util
     end
     
     class_module.module_eval {
-      # 
       # Lexicographical order comparison on byte arrays, for ordering
       # elements of a SET OF objects in DER encoding.
       
@@ -376,7 +352,6 @@ module Sun::Security::Util
       end
       alias_method :attr_lex_order=, :lex_order=
       
-      # 
       # Tag order comparison on byte arrays, for ordering elements of
       # SET objects in DER encoding.
       
@@ -392,7 +367,6 @@ module Sun::Security::Util
     }
     
     typesig { [::Java::Byte, Array.typed(DerEncoder), Comparator] }
-    # 
     # Marshals a the contents of a set on the output stream with the
     # encodings of its sorted in increasing order.
     # 
@@ -423,52 +397,44 @@ module Sun::Security::Util
     end
     
     typesig { [String] }
-    # 
     # Marshals a string as a DER encoded UTF8String.
     def put_utf8string(s)
       write_string(s, DerValue.attr_tag_utf8string, "UTF8")
     end
     
     typesig { [String] }
-    # 
     # Marshals a string as a DER encoded PrintableString.
     def put_printable_string(s)
       write_string(s, DerValue.attr_tag_printable_string, "ASCII")
     end
     
     typesig { [String] }
-    # 
     # Marshals a string as a DER encoded T61String.
     def put_t61string(s)
-      # 
       # Works for characters that are defined in both ASCII and
       # T61.
       write_string(s, DerValue.attr_tag_t61string, "ISO-8859-1")
     end
     
     typesig { [String] }
-    # 
     # Marshals a string as a DER encoded IA5String.
     def put_ia5string(s)
       write_string(s, DerValue.attr_tag_ia5string, "ASCII")
     end
     
     typesig { [String] }
-    # 
     # Marshals a string as a DER encoded BMPString.
     def put_bmpstring(s)
       write_string(s, DerValue.attr_tag_bmpstring, "UnicodeBigUnmarked")
     end
     
     typesig { [String] }
-    # 
     # Marshals a string as a DER encoded GeneralString.
     def put_general_string(s)
       write_string(s, DerValue.attr_tag_general_string, "ASCII")
     end
     
     typesig { [String, ::Java::Byte, String] }
-    # 
     # Private helper routine for writing DER encoded string values.
     # @param s the string to write
     # @param stringTag one of the DER string tags that indicate which
@@ -483,7 +449,6 @@ module Sun::Security::Util
     end
     
     typesig { [Date] }
-    # 
     # Marshals a DER UTC time/date value.
     # 
     # <P>YYMMDDhhmmss{Z|+hhmm|-hhmm} ... emits only using Zulu time
@@ -493,7 +458,6 @@ module Sun::Security::Util
     end
     
     typesig { [Date] }
-    # 
     # Marshals a DER Generalized Time/date value.
     # 
     # <P>YYYYMMDDhhmmss{Z|+hhmm|-hhmm} ... emits only using Zulu time
@@ -503,14 +467,12 @@ module Sun::Security::Util
     end
     
     typesig { [Date, ::Java::Byte] }
-    # 
     # Private helper routine for marshalling a DER UTC/Generalized
     # time/date value. If the tag specified is not that for UTC Time
     # then it defaults to Generalized Time.
     # @param d the date to be marshalled
     # @param tag the tag for UTC Time or Generalized Time
     def put_time(d, tag)
-      # 
       # Format the date.
       tz = TimeZone.get_time_zone("GMT")
       pattern = nil
@@ -523,7 +485,6 @@ module Sun::Security::Util
       sdf = SimpleDateFormat.new(pattern)
       sdf.set_time_zone(tz)
       time = (sdf.format(d)).get_bytes("ISO-8859-1")
-      # 
       # Write the formatted date.
       write(tag)
       put_length(time.attr_length)
@@ -531,7 +492,6 @@ module Sun::Security::Util
     end
     
     typesig { [::Java::Int] }
-    # 
     # Put the encoding of the length in the stream.
     # 
     # @params len the length of the attribute.
@@ -567,7 +527,6 @@ module Sun::Security::Util
     end
     
     typesig { [::Java::Byte, ::Java::Boolean, ::Java::Byte] }
-    # 
     # Put the tag of the attribute in the stream.
     # 
     # @params class the tag class type, one of UNIVERSAL, CONTEXT,
@@ -584,7 +543,6 @@ module Sun::Security::Util
     end
     
     typesig { [OutputStream] }
-    # 
     # Write the current contents of this <code>DerOutputStream</code>
     # to an <code>OutputStream</code>.
     # 

@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 1999 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -32,7 +31,6 @@ module Java::Security::Interfaces
     }
   end
   
-  # 
   # The interface to an RSA public or private key.
   # 
   # @author Jan Luehe
@@ -45,7 +43,6 @@ module Java::Security::Interfaces
     include_class_members RSAKeyImports
     
     typesig { [] }
-    # 
     # Returns the modulus.
     # 
     # @return the modulus

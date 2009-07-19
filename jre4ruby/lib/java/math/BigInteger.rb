@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Portions Copyright 1996-2007 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -36,7 +35,6 @@ module Java::Math
     }
   end
   
-  # 
   # Immutable arbitrary-precision integers.  All operations behave as if
   # BigIntegers were represented in two's-complement notation (like Java's
   # primitive integer types).  BigInteger provides analogues to all of Java's
@@ -102,7 +100,6 @@ module Java::Math
     include_class_members BigIntegerImports
     include JavaComparable
     
-    # 
     # The signum of this BigInteger: -1 for negative, 0 for zero, or
     # 1 for positive.  Note that the BigInteger zero <i>must</i> have
     # a signum of 0.  This is necessary to ensures that there is exactly one
@@ -115,7 +112,6 @@ module Java::Math
     alias_method :attr_signum=, :signum=
     undef_method :signum=
     
-    # 
     # The magnitude of this BigInteger, in <i>big-endian</i> order: the
     # zeroth element of this array is the most-significant int of the
     # magnitude.  The magnitude must be "minimal" in that the most-significant
@@ -144,7 +140,6 @@ module Java::Math
     alias_method :attr_bit_count=, :bit_count=
     undef_method :bit_count=
     
-    # 
     # The bitLength of this BigInteger, as returned by bitLength(), or -1
     # (either value is acceptable).
     # 
@@ -156,7 +151,6 @@ module Java::Math
     alias_method :attr_bit_length=, :bit_length=
     undef_method :bit_length=
     
-    # 
     # The lowest set bit of this BigInteger, as returned by getLowestSetBit(),
     # or -2 (either value is acceptable).
     # 
@@ -168,7 +162,6 @@ module Java::Math
     alias_method :attr_lowest_set_bit=, :lowest_set_bit=
     undef_method :lowest_set_bit=
     
-    # 
     # The index of the lowest-order byte in the magnitude of this BigInteger
     # that contains a nonzero byte, or -2 (either value is acceptable).  The
     # least significant byte has int-number 0, the next byte in order of
@@ -181,7 +174,6 @@ module Java::Math
     alias_method :attr_first_nonzero_byte_num=, :first_nonzero_byte_num=
     undef_method :first_nonzero_byte_num=
     
-    # 
     # The index of the lowest-order int in the magnitude of this BigInteger
     # that contains a nonzero int, or -2 (either value is acceptable).  The
     # least significant int has int-number 0, the next int in order of
@@ -193,7 +185,6 @@ module Java::Math
     undef_method :first_nonzero_int_num=
     
     class_module.module_eval {
-      # 
       # This mask is used to obtain the value of an int as if it were unsigned.
       const_set_lazy(:LONG_MASK) { 0xffffffff }
       const_attr_reader  :LONG_MASK
@@ -237,7 +228,6 @@ module Java::Math
     end
     
     typesig { [Array.typed(::Java::Int)] }
-    # 
     # This private constructor translates an int array containing the
     # two's-complement binary representation of a BigInteger into a
     # BigInteger. The input array is assumed to be in <i>big-endian</i>
@@ -269,7 +259,6 @@ module Java::Math
     end
     
     typesig { [::Java::Int, Array.typed(::Java::Byte)] }
-    # 
     # Translates the sign-magnitude representation of a BigInteger into a
     # BigInteger.  The sign is represented as an integer signum value: -1 for
     # negative, 0 for zero, or 1 for positive.  The magnitude is a byte array
@@ -313,7 +302,6 @@ module Java::Math
     end
     
     typesig { [::Java::Int, Array.typed(::Java::Int)] }
-    # 
     # A constructor for internal use that translates the sign-magnitude
     # representation of a BigInteger into a BigInteger. It checks the
     # arguments and copies the magnitude so this constructor would be
@@ -347,7 +335,6 @@ module Java::Math
     end
     
     typesig { [String, ::Java::Int] }
-    # 
     # Translates the String representation of a BigInteger in the
     # specified radix into a BigInteger.  The String representation
     # consists of an optional minus followed by a sequence of one or
@@ -569,7 +556,6 @@ module Java::Math
     }
     
     typesig { [String] }
-    # 
     # Translates the decimal String representation of a BigInteger into a
     # BigInteger.  The String representation consists of an optional minus
     # sign followed by a sequence of one or more decimal digits.  The
@@ -586,7 +572,6 @@ module Java::Math
     end
     
     typesig { [::Java::Int, Random] }
-    # 
     # Constructs a randomly generated BigInteger, uniformly distributed over
     # the range {@code 0} to (2<sup>{@code numBits}</sup> - 1), inclusive.
     # The uniformity of the distribution assumes that a fair source of random
@@ -621,7 +606,6 @@ module Java::Math
     }
     
     typesig { [::Java::Int, ::Java::Int, Random] }
-    # 
     # Constructs a randomly generated positive BigInteger that is probably
     # prime, with the specified bitLength.
     # 
@@ -674,7 +658,6 @@ module Java::Math
       const_attr_reader  :DEFAULT_PRIME_CERTAINTY
       
       typesig { [::Java::Int, Random] }
-      # 
       # Returns a positive BigInteger that is probably prime, with the
       # specified bitLength. The probability that a BigInteger returned
       # by this method is composite does not exceed 2<sup>-100</sup>.
@@ -695,7 +678,6 @@ module Java::Math
       end
       
       typesig { [::Java::Int, ::Java::Int, Random] }
-      # 
       # Find a random number of the specified bitLength that is probably prime.
       # This method is used for smaller primes, its performance degrades on
       # larger bitlengths.
@@ -740,7 +722,6 @@ module Java::Math
       const_attr_reader  :SMALL_PRIME_PRODUCT
       
       typesig { [::Java::Int, ::Java::Int, Random] }
-      # 
       # Find a random number of the specified bitLength that is probably prime.
       # This method is more appropriate for larger bitlengths since it uses
       # a sieve to eliminate most composites before using a more expensive
@@ -767,7 +748,6 @@ module Java::Math
     }
     
     typesig { [] }
-    # 
     # Returns the first integer greater than this {@code BigInteger} that
     # is probably prime.  The probability that the number returned by this
     # method is composite does not exceed 2<sup>-100</sup>. This method will
@@ -830,7 +810,6 @@ module Java::Math
     end
     
     typesig { [::Java::Int, Random] }
-    # 
     # Returns {@code true} if this BigInteger is probably prime,
     # {@code false} if it's definitely composite.
     # 
@@ -877,7 +856,6 @@ module Java::Math
     end
     
     typesig { [] }
-    # 
     # Returns true iff this BigInteger is a Lucas-Lehmer probable prime.
     # 
     # The following assumptions are made:
@@ -898,7 +876,6 @@ module Java::Math
     
     class_module.module_eval {
       typesig { [::Java::Int, BigInteger] }
-      # 
       # Computes Jacobi(p,n).
       # Assumes n positive, odd, n>=3.
       def jacobi_symbol(p, n)
@@ -1025,7 +1002,6 @@ module Java::Math
     }
     
     typesig { [::Java::Int, Random] }
-    # 
     # Returns true iff this BigInteger passes the specified number of
     # Miller-Rabin tests. This test is taken from the DSA spec (NIST FIPS
     # 186-2).
@@ -1064,7 +1040,6 @@ module Java::Math
     end
     
     typesig { [Array.typed(::Java::Int), ::Java::Int] }
-    # 
     # This private constructor differs from its public cousin
     # with the arguments reversed in two ways: it assumes that its
     # arguments are correct, and it doesn't copy the magnitude array.
@@ -1087,7 +1062,6 @@ module Java::Math
     end
     
     typesig { [Array.typed(::Java::Byte), ::Java::Int] }
-    # 
     # This private constructor is for internal use and assumes that its
     # arguments are correct.
     def initialize(magnitude, signum)
@@ -1109,7 +1083,6 @@ module Java::Math
     end
     
     typesig { [MutableBigInteger, ::Java::Int] }
-    # 
     # This private constructor is for internal use in converting
     # from a MutableBigInteger object into a BigInteger.
     def initialize(val, sign)
@@ -1167,7 +1140,6 @@ module Java::Math
     }
     
     typesig { [::Java::Long] }
-    # 
     # Constructs a BigInteger with the specified value, which may not be zero.
     def initialize(val)
       @signum = 0
@@ -1202,7 +1174,6 @@ module Java::Math
     
     class_module.module_eval {
       typesig { [Array.typed(::Java::Int)] }
-      # 
       # Returns a BigInteger with the given two's complement representation.
       # Assumes that the input array will not be modified (the returned
       # BigInteger will reference the input array if feasible).
@@ -1249,26 +1220,22 @@ module Java::Math
         end
       end
       
-      # 
       # The BigInteger constant zero.
       # 
       # @since   1.2
       const_set_lazy(:ZERO) { BigInteger.new(Array.typed(::Java::Int).new(0) { 0 }, 0) }
       const_attr_reader  :ZERO
       
-      # 
       # The BigInteger constant one.
       # 
       # @since   1.2
       const_set_lazy(:ONE) { value_of(1) }
       const_attr_reader  :ONE
       
-      # 
       # The BigInteger constant two.  (Not exported.)
       const_set_lazy(:TWO) { value_of(2) }
       const_attr_reader  :TWO
       
-      # 
       # The BigInteger constant ten.
       # 
       # @since   1.5
@@ -1305,7 +1272,6 @@ module Java::Math
     
     class_module.module_eval {
       typesig { [Array.typed(::Java::Int), Array.typed(::Java::Int)] }
-      # 
       # Adds the contents of the int arrays x and y. This method allocates
       # a new int array to hold the answer and returns a reference to that
       # array.
@@ -1351,7 +1317,6 @@ module Java::Math
     }
     
     typesig { [BigInteger] }
-    # 
     # Returns a BigInteger whose value is {@code (this - val)}.
     # 
     # @param  val value to be subtracted from this BigInteger.
@@ -1378,7 +1343,6 @@ module Java::Math
     
     class_module.module_eval {
       typesig { [Array.typed(::Java::Int), Array.typed(::Java::Int)] }
-      # 
       # Subtracts the contents of the second int arrays (little) from the
       # first (big).  The first int array (big) must represent a larger number
       # than the second.  This method allocates the space necessary to hold the
@@ -1407,7 +1371,6 @@ module Java::Math
     }
     
     typesig { [BigInteger] }
-    # 
     # Returns a BigInteger whose value is {@code (this * val)}.
     # 
     # @param  val value to be multiplied by this BigInteger.
@@ -1422,7 +1385,6 @@ module Java::Math
     end
     
     typesig { [Array.typed(::Java::Int), ::Java::Int, Array.typed(::Java::Int), ::Java::Int, Array.typed(::Java::Int)] }
-    # 
     # Multiplies int arrays x and y to the specified lengths and places
     # the result into z.
     def multiply_to_len(x, xlen, y, ylen, z)
@@ -1448,9 +1410,9 @@ module Java::Math
         j_ = ystart
         k_ = ystart + 1 + i
         while j_ >= 0
-          product_ = (y[j_] & LONG_MASK) * (x[i] & LONG_MASK) + (z[k_] & LONG_MASK) + carry
-          z[k_] = RJava.cast_to_int(product_)
-          carry = product_ >> 32
+          product = (y[j_] & LONG_MASK) * (x[i] & LONG_MASK) + (z[k_] & LONG_MASK) + carry
+          z[k_] = RJava.cast_to_int(product)
+          carry = product >> 32
           ((j_ -= 1) + 1)
           ((k_ -= 1) + 1)
         end
@@ -1461,7 +1423,6 @@ module Java::Math
     end
     
     typesig { [] }
-    # 
     # Returns a BigInteger whose value is {@code (this<sup>2</sup>)}.
     # 
     # @return {@code this<sup>2</sup>}
@@ -1475,11 +1436,9 @@ module Java::Math
     
     class_module.module_eval {
       typesig { [Array.typed(::Java::Int), ::Java::Int, Array.typed(::Java::Int)] }
-      # 
       # Squares the contents of the int array x. The result is placed into the
       # int array z.  The contents of x are not changed.
       def square_to_len(x, len, z)
-        # 
         # The algorithm used here is adapted from Colin Plumb's C library.
         # Technique: Consider the partial products in the multiplication
         # of "abcde" by itself:
@@ -1546,7 +1505,6 @@ module Java::Math
     }
     
     typesig { [BigInteger] }
-    # 
     # Returns a BigInteger whose value is {@code (this / val)}.
     # 
     # @param  val value by which this BigInteger is to be divided.
@@ -1562,7 +1520,6 @@ module Java::Math
     end
     
     typesig { [BigInteger] }
-    # 
     # Returns an array of two BigIntegers containing {@code (this / val)}
     # followed by {@code (this % val)}.
     # 
@@ -1585,7 +1542,6 @@ module Java::Math
     end
     
     typesig { [BigInteger] }
-    # 
     # Returns a BigInteger whose value is {@code (this % val)}.
     # 
     # @param  val value by which this BigInteger is to be divided, and the
@@ -1602,7 +1558,6 @@ module Java::Math
     end
     
     typesig { [::Java::Int] }
-    # 
     # Returns a BigInteger whose value is <tt>(this<sup>exponent</sup>)</tt>.
     # Note that {@code exponent} is an integer rather than a BigInteger.
     # 
@@ -1635,7 +1590,6 @@ module Java::Math
     end
     
     typesig { [BigInteger] }
-    # 
     # Returns a BigInteger whose value is the greatest common divisor of
     # {@code abs(this)} and {@code abs(val)}.  Returns 0 if
     # {@code this==0 && val==0}.
@@ -1658,7 +1612,6 @@ module Java::Math
     
     class_module.module_eval {
       typesig { [Array.typed(::Java::Int), ::Java::Int, ::Java::Int] }
-      # 
       # Left shift int array a up to len by n bits. Returns the array that
       # results from the shift since space may have to be reallocated.
       def left_shift(a, len, n)
@@ -1681,14 +1634,14 @@ module Java::Math
             primitive_left_shift(result, result.attr_length, n_bits)
             return result
           else
-            result_ = Array.typed(::Java::Int).new(n_ints + len + 1) { 0 }
-            i_ = 0
-            while i_ < len
-              result_[i_] = a[i_]
-              ((i_ += 1) - 1)
+            result = Array.typed(::Java::Int).new(n_ints + len + 1) { 0 }
+            i = 0
+            while i < len
+              result[i] = a[i]
+              ((i += 1) - 1)
             end
-            primitive_right_shift(result_, result_.attr_length, 32 - n_bits)
-            return result_
+            primitive_right_shift(result, result.attr_length, 32 - n_bits)
+            return result
           end
         end
       end
@@ -1728,7 +1681,6 @@ module Java::Math
       end
       
       typesig { [Array.typed(::Java::Int), ::Java::Int] }
-      # 
       # Calculate bitlength of contents of the first len elements an int array,
       # assuming there are no leading zero ints.
       def bit_length(val, len)
@@ -1740,7 +1692,6 @@ module Java::Math
     }
     
     typesig { [] }
-    # 
     # Returns a BigInteger whose value is the absolute value of this
     # BigInteger.
     # 
@@ -1750,7 +1701,6 @@ module Java::Math
     end
     
     typesig { [] }
-    # 
     # Returns a BigInteger whose value is {@code (-this)}.
     # 
     # @return {@code -this}
@@ -1759,7 +1709,6 @@ module Java::Math
     end
     
     typesig { [] }
-    # 
     # Returns the signum function of this BigInteger.
     # 
     # @return -1, 0 or 1 as the value of this BigInteger is negative, zero or
@@ -1788,7 +1737,6 @@ module Java::Math
     end
     
     typesig { [BigInteger, BigInteger] }
-    # 
     # Returns a BigInteger whose value is
     # <tt>(this<sup>exponent</sup> mod m)</tt>.  (Unlike {@code pow}, this
     # method permits negative exponents.)
@@ -1825,7 +1773,6 @@ module Java::Math
         # odd modulus
         result = base.odd_mod_pow(exponent, m)
       else
-        # 
         # Even modulus.  Tear it into an "odd part" (m1) and power of two
         # (m2), exponentiate mod m1, manually exponentiate mod m2, and
         # use Chinese Remainder Theorem to combine results.
@@ -1867,7 +1814,6 @@ module Java::Math
     # Returns a BigInteger whose value is x to the power of y mod z.
     # Assumes: z is odd && x < z.
     def odd_mod_pow(y, z)
-      # 
       # The algorithm is adapted from Colin Plumb's C library.
       # 
       # The window algorithm:
@@ -1980,25 +1926,25 @@ module Java::Math
       b = mont_reduce(b, mod_, mod_len, inv)
       # Set t to high half of b
       t = Array.typed(::Java::Int).new(mod_len) { 0 }
-      i__ = 0
-      while i__ < mod_len
-        t[i__] = b[i__]
-        ((i__ += 1) - 1)
+      i_ = 0
+      while i_ < mod_len
+        t[i_] = b[i_]
+        ((i_ += 1) - 1)
       end
       # Fill in the table with odd powers of the base
-      i___ = 1
-      while i___ < tblmask
-        prod = multiply_to_len(t, mod_len, table[i___ - 1], mod_len, nil)
-        table[i___] = mont_reduce(prod, mod_, mod_len, inv)
-        ((i___ += 1) - 1)
+      i__ = 1
+      while i__ < tblmask
+        prod = multiply_to_len(t, mod_len, table[i__ - 1], mod_len, nil)
+        table[i__] = mont_reduce(prod, mod_, mod_len, inv)
+        ((i__ += 1) - 1)
       end
       # Pre load the window that slides over the exponent
       bitpos = 1 << ((ebits - 1) & (32 - 1))
       buf = 0
       elen = exp.attr_length
       e_index = 0
-      i____ = 0
-      while i____ <= wbits
+      i___ = 0
+      while i___ <= wbits
         buf = (buf << 1) | ((!((exp[e_index] & bitpos)).equal?(0)) ? 1 : 0)
         bitpos >>= 1
         if ((bitpos).equal?(0))
@@ -2006,7 +1952,7 @@ module Java::Math
           bitpos = 1 << (32 - 1)
           ((elen -= 1) + 1)
         end
-        ((i____ += 1) - 1)
+        ((i___ += 1) - 1)
       end
       multpos = ebits
       # The first iteration, which is hoisted out of the main loop
@@ -2075,25 +2021,24 @@ module Java::Math
         end
       end
       # Convert result out of Montgomery form and return
-      t2_ = Array.typed(::Java::Int).new(2 * mod_len) { 0 }
+      t2 = Array.typed(::Java::Int).new(2 * mod_len) { 0 }
+      i____ = 0
+      while i____ < mod_len
+        t2[i____ + mod_len] = b[i____]
+        ((i____ += 1) - 1)
+      end
+      b = mont_reduce(t2, mod_, mod_len, inv)
+      t2 = Array.typed(::Java::Int).new(mod_len) { 0 }
       i_____ = 0
       while i_____ < mod_len
-        t2_[i_____ + mod_len] = b[i_____]
+        t2[i_____] = b[i_____]
         ((i_____ += 1) - 1)
       end
-      b = mont_reduce(t2_, mod_, mod_len, inv)
-      t2_ = Array.typed(::Java::Int).new(mod_len) { 0 }
-      i______ = 0
-      while i______ < mod_len
-        t2_[i______] = b[i______]
-        ((i______ += 1) - 1)
-      end
-      return BigInteger.new(1, t2_)
+      return BigInteger.new(1, t2)
     end
     
     class_module.module_eval {
       typesig { [Array.typed(::Java::Int), Array.typed(::Java::Int), ::Java::Int, ::Java::Int] }
-      # 
       # Montgomery reduce n, modulo mod.  This reduces modulo mod and divides
       # by 2^(32*mlen). Adapted from Colin Plumb's C library.
       def mont_reduce(n, mod_, mlen, inv)
@@ -2116,7 +2061,6 @@ module Java::Math
       end
       
       typesig { [Array.typed(::Java::Int), Array.typed(::Java::Int), ::Java::Int] }
-      # 
       # Returns -1, 0 or +1 as big-endian unsigned int array arg1 is less than,
       # equal to, or greater than arg2 up to length len.
       def int_array_cmp_to_len(arg1, arg2, len)
@@ -2136,7 +2080,6 @@ module Java::Math
       end
       
       typesig { [Array.typed(::Java::Int), Array.typed(::Java::Int), ::Java::Int] }
-      # 
       # Subtracts two numbers of same length, returning borrow.
       def sub_n(a, b, len)
         sum = 0
@@ -2148,7 +2091,6 @@ module Java::Math
       end
       
       typesig { [Array.typed(::Java::Int), Array.typed(::Java::Int), ::Java::Int, ::Java::Int, ::Java::Int] }
-      # 
       # Multiply an array by one word k and add to result, return the carry
       def mul_add(out, in_, offset, len, k)
         k_long = k & LONG_MASK
@@ -2165,7 +2107,6 @@ module Java::Math
       end
       
       typesig { [Array.typed(::Java::Int), ::Java::Int, ::Java::Int, ::Java::Int] }
-      # 
       # Add one word to the number a mlen words into a. Return the resulting
       # carry.
       def add_one(a, offset, mlen, carry)
@@ -2191,10 +2132,8 @@ module Java::Math
     }
     
     typesig { [BigInteger, ::Java::Int] }
-    # 
     # Returns a BigInteger whose value is (this ** exponent) mod (2**p)
     def mod_pow2(exponent, p)
-      # 
       # Perform exponentiation using repeated squaring trick, chopping off
       # high order bits as indicated by modulus.
       result = value_of(1)
@@ -2217,7 +2156,6 @@ module Java::Math
     end
     
     typesig { [::Java::Int] }
-    # 
     # Returns a BigInteger whose value is this mod(2**p).
     # Assumes that this {@code BigInteger >= 0} and {@code p > 0}.
     def mod2(p)
@@ -2239,7 +2177,6 @@ module Java::Math
     end
     
     typesig { [BigInteger] }
-    # 
     # Returns a BigInteger whose value is {@code (this}<sup>-1</sup> {@code mod m)}.
     # 
     # @param  m the modulus.
@@ -2301,26 +2238,25 @@ module Java::Math
           ((i += 1) - 1)
         end
       else
-        i_ = 0
+        i = 0
         n_bits2 = 32 - n_bits
         high_bits = @mag[0] >> n_bits2
         if (!(high_bits).equal?(0))
           new_mag = Array.typed(::Java::Int).new(mag_len + n_ints + 1) { 0 }
-          new_mag[((i_ += 1) - 1)] = high_bits
+          new_mag[((i += 1) - 1)] = high_bits
         else
           new_mag = Array.typed(::Java::Int).new(mag_len + n_ints) { 0 }
         end
         j = 0
         while (j < mag_len - 1)
-          new_mag[((i_ += 1) - 1)] = @mag[((j += 1) - 1)] << n_bits | @mag[j] >> n_bits2
+          new_mag[((i += 1) - 1)] = @mag[((j += 1) - 1)] << n_bits | @mag[j] >> n_bits2
         end
-        new_mag[i_] = @mag[j] << n_bits
+        new_mag[i] = @mag[j] << n_bits
       end
       return BigInteger.new(new_mag, @signum)
     end
     
     typesig { [::Java::Int] }
-    # 
     # Returns a BigInteger whose value is {@code (this >> n)}.  Sign
     # extension is performed.  The shift distance, {@code n}, may be
     # negative, in which case this method performs a left shift.
@@ -2353,28 +2289,28 @@ module Java::Math
           ((i += 1) - 1)
         end
       else
-        i_ = 0
+        i = 0
         high_bits = @mag[0] >> n_bits
         if (!(high_bits).equal?(0))
           new_mag = Array.typed(::Java::Int).new(mag_len - n_ints) { 0 }
-          new_mag[((i_ += 1) - 1)] = high_bits
+          new_mag[((i += 1) - 1)] = high_bits
         else
           new_mag = Array.typed(::Java::Int).new(mag_len - n_ints - 1) { 0 }
         end
         n_bits2 = 32 - n_bits
         j = 0
         while (j < mag_len - n_ints - 1)
-          new_mag[((i_ += 1) - 1)] = (@mag[((j += 1) - 1)] << n_bits2) | (@mag[j] >> n_bits)
+          new_mag[((i += 1) - 1)] = (@mag[((j += 1) - 1)] << n_bits2) | (@mag[j] >> n_bits)
         end
       end
       if (@signum < 0)
         # Find out whether any one-bits were shifted off the end.
         ones_lost = false
-        i__ = mag_len - 1
-        j_ = mag_len - n_ints
-        while i__ >= j_ && !ones_lost
-          ones_lost = (!(@mag[i__]).equal?(0))
-          ((i__ -= 1) + 1)
+        i = mag_len - 1
+        j = mag_len - n_ints
+        while i >= j && !ones_lost
+          ones_lost = (!(@mag[i]).equal?(0))
+          ((i -= 1) + 1)
         end
         if (!ones_lost && !(n_bits).equal?(0))
           ones_lost = (!(@mag[mag_len - n_ints - 1] << (32 - n_bits)).equal?(0))
@@ -2421,7 +2357,6 @@ module Java::Math
     end
     
     typesig { [BigInteger] }
-    # 
     # Returns a BigInteger whose value is {@code (this | val)}.  (This method
     # returns a negative BigInteger if and only if either this or val is
     # negative.)
@@ -2439,7 +2374,6 @@ module Java::Math
     end
     
     typesig { [BigInteger] }
-    # 
     # Returns a BigInteger whose value is {@code (this ^ val)}.  (This method
     # returns a negative BigInteger if and only if exactly one of this and
     # val are negative.)
@@ -2457,7 +2391,6 @@ module Java::Math
     end
     
     typesig { [] }
-    # 
     # Returns a BigInteger whose value is {@code (~this)}.  (This method
     # returns a negative value if and only if this BigInteger is
     # non-negative.)
@@ -2474,7 +2407,6 @@ module Java::Math
     end
     
     typesig { [BigInteger] }
-    # 
     # Returns a BigInteger whose value is {@code (this & ~val)}.  This
     # method, which is equivalent to {@code and(val.not())}, is provided as
     # a convenience for masking operations.  (This method returns a negative
@@ -2510,7 +2442,6 @@ module Java::Math
     end
     
     typesig { [::Java::Int] }
-    # 
     # Returns a BigInteger whose value is equivalent to this BigInteger
     # with the designated bit set.  (Computes {@code (this | (1<<n))}.)
     # 
@@ -2533,7 +2464,6 @@ module Java::Math
     end
     
     typesig { [::Java::Int] }
-    # 
     # Returns a BigInteger whose value is equivalent to this BigInteger
     # with the designated bit cleared.
     # (Computes {@code (this & ~(1<<n))}.)
@@ -2557,7 +2487,6 @@ module Java::Math
     end
     
     typesig { [::Java::Int] }
-    # 
     # Returns a BigInteger whose value is equivalent to this BigInteger
     # with the designated bit flipped.
     # (Computes {@code (this ^ (1<<n))}.)
@@ -2581,7 +2510,6 @@ module Java::Math
     end
     
     typesig { [] }
-    # 
     # Returns the index of the rightmost (lowest-order) one bit in this
     # BigInteger (the number of zero bits to the right of the rightmost
     # one bit).  Returns -1 if this BigInteger contains no one bits.
@@ -2589,7 +2517,6 @@ module Java::Math
     # 
     # @return index of the rightmost one bit in this BigInteger.
     def get_lowest_set_bit
-      # 
       # Initialize lowestSetBit field the first time this method is
       # executed. This method depends on the atomicity of int modifies;
       # without this guarantee, it would have to be synchronized.
@@ -2622,7 +2549,6 @@ module Java::Math
     # @return number of bits in the minimal two's-complement
     # representation of this BigInteger, <i>excluding</i> a sign bit.
     def bit_length
-      # 
       # Initialize bitLength field the first time this method is executed.
       # This method depends on the atomicity of int modifies; without
       # this guarantee, it would have to be synchronized.
@@ -2651,14 +2577,12 @@ module Java::Math
     
     class_module.module_eval {
       typesig { [::Java::Int] }
-      # 
       # bitLen(val) is the number of bits in val.
       def bit_len(w)
         # Binary search - decision tree (5 tests, rarely 6)
         return (w < 1 << 15 ? (w < 1 << 7 ? (w < 1 << 3 ? (w < 1 << 1 ? (w < 1 << 0 ? (w < 0 ? 32 : 0) : 1) : (w < 1 << 2 ? 2 : 3)) : (w < 1 << 5 ? (w < 1 << 4 ? 4 : 5) : (w < 1 << 6 ? 6 : 7))) : (w < 1 << 11 ? (w < 1 << 9 ? (w < 1 << 8 ? 8 : 9) : (w < 1 << 10 ? 10 : 11)) : (w < 1 << 13 ? (w < 1 << 12 ? 12 : 13) : (w < 1 << 14 ? 14 : 15)))) : (w < 1 << 23 ? (w < 1 << 19 ? (w < 1 << 17 ? (w < 1 << 16 ? 16 : 17) : (w < 1 << 18 ? 18 : 19)) : (w < 1 << 21 ? (w < 1 << 20 ? 20 : 21) : (w < 1 << 22 ? 22 : 23))) : (w < 1 << 27 ? (w < 1 << 25 ? (w < 1 << 24 ? 24 : 25) : (w < 1 << 26 ? 26 : 27)) : (w < 1 << 29 ? (w < 1 << 28 ? 28 : 29) : (w < 1 << 30 ? 30 : 31)))))
       end
       
-      # 
       # trailingZeroTable[i] is the number of trailing zero bits in the binary
       # representation of i.
       const_set_lazy(:TrailingZeroTable) { Array.typed(::Java::Byte).new([-25, 0, 1, 0, 2, 0, 1, 0, 3, 0, 1, 0, 2, 0, 1, 0, 4, 0, 1, 0, 2, 0, 1, 0, 3, 0, 1, 0, 2, 0, 1, 0, 5, 0, 1, 0, 2, 0, 1, 0, 3, 0, 1, 0, 2, 0, 1, 0, 4, 0, 1, 0, 2, 0, 1, 0, 3, 0, 1, 0, 2, 0, 1, 0, 6, 0, 1, 0, 2, 0, 1, 0, 3, 0, 1, 0, 2, 0, 1, 0, 4, 0, 1, 0, 2, 0, 1, 0, 3, 0, 1, 0, 2, 0, 1, 0, 5, 0, 1, 0, 2, 0, 1, 0, 3, 0, 1, 0, 2, 0, 1, 0, 4, 0, 1, 0, 2, 0, 1, 0, 3, 0, 1, 0, 2, 0, 1, 0, 7, 0, 1, 0, 2, 0, 1, 0, 3, 0, 1, 0, 2, 0, 1, 0, 4, 0, 1, 0, 2, 0, 1, 0, 3, 0, 1, 0, 2, 0, 1, 0, 5, 0, 1, 0, 2, 0, 1, 0, 3, 0, 1, 0, 2, 0, 1, 0, 4, 0, 1, 0, 2, 0, 1, 0, 3, 0, 1, 0, 2, 0, 1, 0, 6, 0, 1, 0, 2, 0, 1, 0, 3, 0, 1, 0, 2, 0, 1, 0, 4, 0, 1, 0, 2, 0, 1, 0, 3, 0, 1, 0, 2, 0, 1, 0, 5, 0, 1, 0, 2, 0, 1, 0, 3, 0, 1, 0, 2, 0, 1, 0, 4, 0, 1, 0, 2, 0, 1, 0, 3, 0, 1, 0, 2, 0, 1, 0]) }
@@ -2666,7 +2590,6 @@ module Java::Math
     }
     
     typesig { [] }
-    # 
     # Returns the number of bits in the two's complement representation
     # of this BigInteger that differ from its sign bit.  This method is
     # useful when implementing bit-vector style sets atop BigIntegers.
@@ -2674,7 +2597,6 @@ module Java::Math
     # @return number of bits in the two's complement representation
     # of this BigInteger that differ from its sign bit.
     def bit_count
-      # 
       # Initialize bitCount field the first time this method is executed.
       # This method depends on the atomicity of int modifies; without
       # this guarantee, it would have to be synchronized.
@@ -2784,7 +2706,6 @@ module Java::Math
     
     class_module.module_eval {
       typesig { [Array.typed(::Java::Int), Array.typed(::Java::Int)] }
-      # 
       # Returns -1, 0 or +1 as big-endian unsigned int array arg1 is
       # less than, equal to, or greater than arg2.
       def int_array_cmp(arg1, arg2)
@@ -2812,7 +2733,6 @@ module Java::Math
     }
     
     typesig { [Object] }
-    # 
     # Compares this BigInteger with the specified Object for equality.
     # 
     # @param  x Object to which this BigInteger is to be compared.
@@ -2841,7 +2761,6 @@ module Java::Math
     end
     
     typesig { [BigInteger] }
-    # 
     # Returns the minimum of this BigInteger and {@code val}.
     # 
     # @param  val value with which the minimum is to be computed.
@@ -2852,7 +2771,6 @@ module Java::Math
     end
     
     typesig { [BigInteger] }
-    # 
     # Returns the maximum of this BigInteger and {@code val}.
     # 
     # @param  val value with which the maximum is to be computed.
@@ -2879,7 +2797,6 @@ module Java::Math
     end
     
     typesig { [::Java::Int] }
-    # 
     # Returns the String representation of this BigInteger in the
     # given radix.  If the radix is outside the range from {@link
     # Character#MIN_RADIX} to {@link Character#MAX_RADIX} inclusive,
@@ -2964,7 +2881,6 @@ module Java::Math
     }
     
     typesig { [] }
-    # 
     # Returns the decimal String representation of this BigInteger.
     # The digit-to-character mapping provided by
     # {@code Character.forDigit} is used, and a minus sign is
@@ -2980,7 +2896,6 @@ module Java::Math
     end
     
     typesig { [] }
-    # 
     # Returns a byte array containing the two's-complement
     # representation of this BigInteger.  The byte array will be in
     # <i>big-endian</i> byte-order: the most significant byte is in
@@ -3015,7 +2930,6 @@ module Java::Math
     end
     
     typesig { [] }
-    # 
     # Converts this BigInteger to an {@code int}.  This
     # conversion is analogous to a <a
     # href="http://java.sun.com/docs/books/jls/second_edition/html/conversions.doc.html#25363"><i>narrowing
@@ -3036,7 +2950,6 @@ module Java::Math
     end
     
     typesig { [] }
-    # 
     # Converts this BigInteger to a {@code long}.  This
     # conversion is analogous to a <a
     # href="http://java.sun.com/docs/books/jls/second_edition/html/conversions.doc.html#25363"><i>narrowing
@@ -3061,7 +2974,6 @@ module Java::Math
     end
     
     typesig { [] }
-    # 
     # Converts this BigInteger to a {@code float}.  This
     # conversion is similar to the <a
     # href="http://java.sun.com/docs/books/jls/second_edition/html/conversions.doc.html#25363"><i>narrowing
@@ -3082,7 +2994,6 @@ module Java::Math
     end
     
     typesig { [] }
-    # 
     # Converts this BigInteger to a {@code double}.  This
     # conversion is similar to the <a
     # href="http://java.sun.com/docs/books/jls/second_edition/html/conversions.doc.html#25363"><i>narrowing
@@ -3104,7 +3015,6 @@ module Java::Math
     
     class_module.module_eval {
       typesig { [Array.typed(::Java::Int)] }
-      # 
       # Returns a copy of the input array stripped of any leading zero bytes.
       def strip_leading_zero_ints(val)
         byte_length = val.attr_length
@@ -3124,7 +3034,6 @@ module Java::Math
       end
       
       typesig { [Array.typed(::Java::Int)] }
-      # 
       # Returns the input array stripped of any leading zero bytes.
       # Since the source is trusted the copying may be skipped.
       def trusted_strip_leading_zero_ints(val)
@@ -3149,7 +3058,6 @@ module Java::Math
       end
       
       typesig { [Array.typed(::Java::Byte)] }
-      # 
       # Returns a copy of the input array stripped of any leading zero bytes.
       def strip_leading_zero_bytes(a)
         byte_length = a.attr_length
@@ -3179,7 +3087,6 @@ module Java::Math
       end
       
       typesig { [Array.typed(::Java::Byte)] }
-      # 
       # Takes an array a representing a negative 2's-complement number and
       # returns the minimal (no leading zero bytes) unsigned whose value is -a.
       def make_positive(a)
@@ -3233,7 +3140,6 @@ module Java::Math
       end
       
       typesig { [Array.typed(::Java::Int)] }
-      # 
       # Takes an array a representing a negative 2's-complement number and
       # returns the minimal (no leading zero ints) unsigned whose value is -a.
       def make_positive(a)
@@ -3267,7 +3173,6 @@ module Java::Math
         return result
       end
       
-      # 
       # The following two arrays are used for fast String conversions.  Both
       # are indexed by radix.  The first is the number of digits of the given
       # radix that can fit in a Java long without "going negative", i.e., the
@@ -3299,7 +3204,6 @@ module Java::Math
       end
       alias_method :attr_long_radix=, :long_radix=
       
-      # 
       # These two arrays are the integer analogue of above.
       
       def digits_per_int
@@ -3325,7 +3229,6 @@ module Java::Math
     }
     
     typesig { [] }
-    # 
     # These routines provide access to the two's complement representation
     # of BigIntegers.
     # 
@@ -3349,7 +3252,6 @@ module Java::Math
     end
     
     typesig { [::Java::Int] }
-    # 
     # Returns the specified int of the little-endian two's complement
     # representation (int 0 is the least significant).  The int number can
     # be arbitrarily high (values are logically preceded by infinitely many
@@ -3366,12 +3268,10 @@ module Java::Math
     end
     
     typesig { [] }
-    # 
     # Returns the index of the int that contains the first nonzero int in the
     # little-endian binary representation of the magnitude (int 0 is the
     # least significant). If the magnitude is zero, return value is undefined.
     def first_nonzero_int_num
-      # 
       # Initialize firstNonzeroIntNum field the first time this method is
       # executed. This method depends on the atomicity of int modifies;
       # without this guarantee, it would have to be synchronized.
@@ -3392,7 +3292,6 @@ module Java::Math
       const_set_lazy(:SerialVersionUID) { -8287574255936472291 }
       const_attr_reader  :SerialVersionUID
       
-      # 
       # Serializable fields for BigInteger.
       # 
       # @serialField signum  int
@@ -3411,13 +3310,11 @@ module Java::Math
     }
     
     typesig { [Java::Io::ObjectInputStream] }
-    # 
     # Reconstitute the {@code BigInteger} instance from a stream (that is,
     # deserialize it). The magnitude is read in as an array of bytes
     # for historical reasons, but it is converted to an array of ints
     # and the byte array is discarded.
     def read_object(s)
-      # 
       # In order to maintain compatibility with previous serialized forms,
       # the magnitude of a BigInteger is serialized as an array of bytes.
       # The magnitude field is used as a temporary store for the byte array
@@ -3438,11 +3335,11 @@ module Java::Math
         raise Java::Io::StreamCorruptedException.new(message)
       end
       if (!(((magnitude.attr_length).equal?(0))).equal?(((@signum).equal?(0))))
-        message_ = "BigInteger: signum-magnitude mismatch"
+        message = "BigInteger: signum-magnitude mismatch"
         if (fields.defaulted("magnitude"))
-          message_ = "BigInteger: Magnitude not present in stream"
+          message = "BigInteger: Magnitude not present in stream"
         end
-        raise Java::Io::StreamCorruptedException.new(message_)
+        raise Java::Io::StreamCorruptedException.new(message)
       end
       # Set "cached computation" fields to their initial values
       @bit_count = @bit_length = -1
@@ -3452,7 +3349,6 @@ module Java::Math
     end
     
     typesig { [ObjectOutputStream] }
-    # 
     # Save the {@code BigInteger} instance to a stream.
     # The magnitude of a BigInteger is serialized as a byte array for
     # historical reasons.
@@ -3473,7 +3369,6 @@ module Java::Math
     end
     
     typesig { [] }
-    # 
     # Returns the mag array as an array of bytes.
     def mag_serialized_form
       bit_len_ = ((@mag.attr_length).equal?(0) ? 0 : ((@mag.attr_length - 1) << 5) + bit_len(@mag[0]))

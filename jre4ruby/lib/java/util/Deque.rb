@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
 # This code is free software; you can redistribute it and/or modify it
@@ -40,7 +39,6 @@ module Java::Util
     }
   end
   
-  # 
   # A linear collection that supports element insertion and removal at
   # both ends.  The name <i>deque</i> is short for "double ended queue"
   # and is usually pronounced "deck".  Most <tt>Deque</tt>
@@ -199,7 +197,6 @@ module Java::Util
     include Queue
     
     typesig { [Object] }
-    # 
     # Inserts the specified element at the front of this deque if it is
     # possible to do so immediately without violating capacity restrictions.
     # When using a capacity-restricted deque, it is generally preferable to
@@ -219,7 +216,6 @@ module Java::Util
     end
     
     typesig { [Object] }
-    # 
     # Inserts the specified element at the end of this deque if it is
     # possible to do so immediately without violating capacity restrictions.
     # When using a capacity-restricted deque, it is generally preferable to
@@ -241,7 +237,6 @@ module Java::Util
     end
     
     typesig { [Object] }
-    # 
     # Inserts the specified element at the front of this deque unless it would
     # violate capacity restrictions.  When using a capacity-restricted deque,
     # this method is generally preferable to the {@link #addFirst} method,
@@ -261,7 +256,6 @@ module Java::Util
     end
     
     typesig { [Object] }
-    # 
     # Inserts the specified element at the end of this deque unless it would
     # violate capacity restrictions.  When using a capacity-restricted deque,
     # this method is generally preferable to the {@link #addLast} method,
@@ -281,7 +275,6 @@ module Java::Util
     end
     
     typesig { [] }
-    # 
     # Retrieves and removes the first element of this deque.  This method
     # differs from {@link #pollFirst pollFirst} only in that it throws an
     # exception if this deque is empty.
@@ -293,7 +286,6 @@ module Java::Util
     end
     
     typesig { [] }
-    # 
     # Retrieves and removes the last element of this deque.  This method
     # differs from {@link #pollLast pollLast} only in that it throws an
     # exception if this deque is empty.
@@ -305,7 +297,6 @@ module Java::Util
     end
     
     typesig { [] }
-    # 
     # Retrieves and removes the first element of this deque,
     # or returns <tt>null</tt> if this deque is empty.
     # 
@@ -315,7 +306,6 @@ module Java::Util
     end
     
     typesig { [] }
-    # 
     # Retrieves and removes the last element of this deque,
     # or returns <tt>null</tt> if this deque is empty.
     # 
@@ -325,7 +315,6 @@ module Java::Util
     end
     
     typesig { [] }
-    # 
     # Retrieves, but does not remove, the first element of this deque.
     # 
     # This method differs from {@link #peekFirst peekFirst} only in that it
@@ -338,7 +327,6 @@ module Java::Util
     end
     
     typesig { [] }
-    # 
     # Retrieves, but does not remove, the last element of this deque.
     # This method differs from {@link #peekLast peekLast} only in that it
     # throws an exception if this deque is empty.
@@ -350,7 +338,6 @@ module Java::Util
     end
     
     typesig { [] }
-    # 
     # Retrieves, but does not remove, the first element of this deque,
     # or returns <tt>null</tt> if this deque is empty.
     # 
@@ -360,7 +347,6 @@ module Java::Util
     end
     
     typesig { [] }
-    # 
     # Retrieves, but does not remove, the last element of this deque,
     # or returns <tt>null</tt> if this deque is empty.
     # 
@@ -370,7 +356,6 @@ module Java::Util
     end
     
     typesig { [Object] }
-    # 
     # Removes the first occurrence of the specified element from this deque.
     # If the deque does not contain the element, it is unchanged.
     # More formally, removes the first element <tt>e</tt> such that
@@ -390,7 +375,6 @@ module Java::Util
     end
     
     typesig { [Object] }
-    # 
     # Removes the last occurrence of the specified element from this deque.
     # If the deque does not contain the element, it is unchanged.
     # More formally, removes the last element <tt>e</tt> such that
@@ -437,7 +421,6 @@ module Java::Util
     end
     
     typesig { [Object] }
-    # 
     # Inserts the specified element into the queue represented by this deque
     # (in other words, at the tail of this deque) if it is possible to do so
     # immediately without violating capacity restrictions, returning
@@ -462,7 +445,6 @@ module Java::Util
     end
     
     typesig { [] }
-    # 
     # Retrieves and removes the head of the queue represented by this deque
     # (in other words, the first element of this deque).
     # This method differs from {@link #poll poll} only in that it throws an
@@ -477,7 +459,6 @@ module Java::Util
     end
     
     typesig { [] }
-    # 
     # Retrieves and removes the head of the queue represented by this deque
     # (in other words, the first element of this deque), or returns
     # <tt>null</tt> if this deque is empty.
@@ -491,7 +472,6 @@ module Java::Util
     end
     
     typesig { [] }
-    # 
     # Retrieves, but does not remove, the head of the queue represented by
     # this deque (in other words, the first element of this deque).
     # This method differs from {@link #peek peek} only in that it throws an
@@ -506,7 +486,6 @@ module Java::Util
     end
     
     typesig { [] }
-    # 
     # Retrieves, but does not remove, the head of the queue represented by
     # this deque (in other words, the first element of this deque), or
     # returns <tt>null</tt> if this deque is empty.
@@ -544,7 +523,6 @@ module Java::Util
     end
     
     typesig { [] }
-    # 
     # Pops an element from the stack represented by this deque.  In other
     # words, removes and returns the first element of this deque.
     # 
@@ -581,7 +559,6 @@ module Java::Util
     end
     
     typesig { [Object] }
-    # 
     # Returns <tt>true</tt> if this deque contains the specified element.
     # More formally, returns <tt>true</tt> if and only if this deque contains
     # at least one element <tt>e</tt> such that
@@ -598,7 +575,6 @@ module Java::Util
     end
     
     typesig { [] }
-    # 
     # Returns the number of elements in this deque.
     # 
     # @return the number of elements in this deque
@@ -607,7 +583,6 @@ module Java::Util
     end
     
     typesig { [] }
-    # 
     # Returns an iterator over the elements in this deque in proper sequence.
     # The elements will be returned in order from first (head) to last (tail).
     # 
@@ -617,7 +592,6 @@ module Java::Util
     end
     
     typesig { [] }
-    # 
     # Returns an iterator over the elements in this deque in reverse
     # sequential order.  The elements will be returned in order from
     # last (tail) to first (head).

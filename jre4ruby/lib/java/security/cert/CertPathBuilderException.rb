@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 2000-2003 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -32,7 +31,6 @@ module Java::Security::Cert
     }
   end
   
-  # 
   # An exception indicating one of a variety of problems encountered when
   # building a certification path with a <code>CertPathBuilder</code>.
   # <p>
@@ -61,7 +59,6 @@ module Java::Security::Cert
     }
     
     typesig { [] }
-    # 
     # Creates a <code>CertPathBuilderException</code> with <code>null</code>
     # as its detail message.
     def initialize
@@ -69,7 +66,6 @@ module Java::Security::Cert
     end
     
     typesig { [String] }
-    # 
     # Creates a <code>CertPathBuilderException</code> with the given
     # detail message. The detail message is a <code>String</code> that
     # describes this particular exception in more detail.
@@ -80,7 +76,6 @@ module Java::Security::Cert
     end
     
     typesig { [Exception] }
-    # 
     # Creates a <code>CertPathBuilderException</code> that wraps the specified
     # throwable. This allows any exception to be converted into a
     # <code>CertPathBuilderException</code>, while retaining information
@@ -97,7 +92,6 @@ module Java::Security::Cert
     end
     
     typesig { [String, Exception] }
-    # 
     # Creates a <code>CertPathBuilderException</code> with the specified
     # detail message and cause.
     # 

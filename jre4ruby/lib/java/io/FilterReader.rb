@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 1996-2005 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -31,7 +30,6 @@ module Java::Io
     }
   end
   
-  # 
   # Abstract class for reading filtered character streams.
   # The abstract class <code>FilterReader</code> itself
   # provides default methods that pass all requests to
@@ -44,7 +42,6 @@ module Java::Io
   class FilterReader < FilterReaderImports.const_get :Reader
     include_class_members FilterReaderImports
     
-    # 
     # The underlying character-input stream.
     attr_accessor :in
     alias_method :attr_in, :in
@@ -53,7 +50,6 @@ module Java::Io
     undef_method :in=
     
     typesig { [Reader] }
-    # 
     # Creates a new filtered reader.
     # 
     # @param in  a Reader object providing the underlying stream.
@@ -65,7 +61,6 @@ module Java::Io
     end
     
     typesig { [] }
-    # 
     # Reads a single character.
     # 
     # @exception  IOException  If an I/O error occurs
@@ -74,7 +69,6 @@ module Java::Io
     end
     
     typesig { [Array.typed(::Java::Char), ::Java::Int, ::Java::Int] }
-    # 
     # Reads characters into a portion of an array.
     # 
     # @exception  IOException  If an I/O error occurs
@@ -83,7 +77,6 @@ module Java::Io
     end
     
     typesig { [::Java::Long] }
-    # 
     # Skips characters.
     # 
     # @exception  IOException  If an I/O error occurs
@@ -92,7 +85,6 @@ module Java::Io
     end
     
     typesig { [] }
-    # 
     # Tells whether this stream is ready to be read.
     # 
     # @exception  IOException  If an I/O error occurs
@@ -101,14 +93,12 @@ module Java::Io
     end
     
     typesig { [] }
-    # 
     # Tells whether this stream supports the mark() operation.
     def mark_supported
       return @in.mark_supported
     end
     
     typesig { [::Java::Int] }
-    # 
     # Marks the present position in the stream.
     # 
     # @exception  IOException  If an I/O error occurs
@@ -117,7 +107,6 @@ module Java::Io
     end
     
     typesig { [] }
-    # 
     # Resets the stream.
     # 
     # @exception  IOException  If an I/O error occurs

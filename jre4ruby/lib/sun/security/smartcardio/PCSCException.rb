@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 2005 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -31,7 +30,6 @@ module Sun::Security::Smartcardio
     }
   end
   
-  # 
   # Exception for PC/SC errors. The native code portion checks the return value
   # of the SCard* functions. If it indicates an error, the native code constructs
   # an instance of this exception, throws it, and returns to Java.

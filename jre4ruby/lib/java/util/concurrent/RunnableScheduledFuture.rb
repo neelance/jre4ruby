@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
 # This code is free software; you can redistribute it and/or modify it
@@ -40,7 +39,6 @@ module Java::Util::Concurrent
     }
   end
   
-  # 
   # A {@link ScheduledFuture} that is {@link Runnable}. Successful
   # execution of the <tt>run</tt> method causes completion of the
   # <tt>Future</tt> and allows access to its results.
@@ -55,7 +53,6 @@ module Java::Util::Concurrent
     include ScheduledFuture
     
     typesig { [] }
-    # 
     # Returns true if this is a periodic task. A periodic task may
     # re-run according to some schedule. A non-periodic task can be
     # run only once.

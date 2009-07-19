@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 1997-2006 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -39,7 +38,6 @@ module Sun::Security::Provider
     }
   end
   
-  # 
   # This class provides the keystore implementation referred to as "JKS".
   # 
   # @author Jan Luehe
@@ -162,7 +160,6 @@ module Sun::Security::Provider
       end }
     }
     
-    # 
     # Private keys and certificates are stored in a hashtable.
     # Hash entries are keyed by alias names.
     attr_accessor :entries
@@ -187,7 +184,6 @@ module Sun::Security::Provider
     end
     
     typesig { [String, Array.typed(::Java::Char)] }
-    # 
     # Returns the key associated with the given alias, using the given
     # password to recover it.
     # 
@@ -222,7 +218,6 @@ module Sun::Security::Provider
     end
     
     typesig { [String] }
-    # 
     # Returns the certificate chain associated with the given alias.
     # 
     # @param alias the alias name
@@ -246,7 +241,6 @@ module Sun::Security::Provider
     end
     
     typesig { [String] }
-    # 
     # Returns the certificate associated with the given alias.
     # 
     # <p>If the given alias name identifies a
@@ -278,7 +272,6 @@ module Sun::Security::Provider
     end
     
     typesig { [String] }
-    # 
     # Returns the creation date of the entry identified by the given alias.
     # 
     # @param alias the alias name
@@ -299,7 +292,6 @@ module Sun::Security::Provider
     end
     
     typesig { [String, Key, Array.typed(::Java::Char), Array.typed(Certificate)] }
-    # 
     # Assigns the given private key to the given alias, protecting
     # it with the given password as defined in PKCS8.
     # 
@@ -348,7 +340,6 @@ module Sun::Security::Provider
     end
     
     typesig { [String, Array.typed(::Java::Byte), Array.typed(Certificate)] }
-    # 
     # Assigns the given key (that has already been protected) to the given
     # alias.
     # 
@@ -392,7 +383,6 @@ module Sun::Security::Provider
     end
     
     typesig { [String, Certificate] }
-    # 
     # Assigns the given certificate to the given alias.
     # 
     # <p>If the given alias already exists in this keystore and identifies a
@@ -419,7 +409,6 @@ module Sun::Security::Provider
     end
     
     typesig { [String] }
-    # 
     # Deletes the entry identified by the given alias from this keystore.
     # 
     # @param alias the alias name
@@ -432,7 +421,6 @@ module Sun::Security::Provider
     end
     
     typesig { [] }
-    # 
     # Lists all the alias names of this keystore.
     # 
     # @return enumeration of the alias names
@@ -441,7 +429,6 @@ module Sun::Security::Provider
     end
     
     typesig { [String] }
-    # 
     # Checks if the given alias exists in this keystore.
     # 
     # @param alias the alias name
@@ -452,7 +439,6 @@ module Sun::Security::Provider
     end
     
     typesig { [] }
-    # 
     # Retrieves the number of entries in this keystore.
     # 
     # @return the number of entries in this keystore
@@ -461,7 +447,6 @@ module Sun::Security::Provider
     end
     
     typesig { [String] }
-    # 
     # Returns true if the entry identified by the given alias is a
     # <i>key entry</i>, and false otherwise.
     # 
@@ -477,7 +462,6 @@ module Sun::Security::Provider
     end
     
     typesig { [String] }
-    # 
     # Returns true if the entry identified by the given alias is a
     # <i>trusted certificate entry</i>, and false otherwise.
     # 
@@ -493,7 +477,6 @@ module Sun::Security::Provider
     end
     
     typesig { [Certificate] }
-    # 
     # Returns the (alias) name of the first keystore entry whose certificate
     # matches the given certificate.
     # 
@@ -531,7 +514,6 @@ module Sun::Security::Provider
     end
     
     typesig { [OutputStream, Array.typed(::Java::Char)] }
-    # 
     # Stores this keystore to the given output stream, and protects its
     # integrity with the given password.
     # 
@@ -545,7 +527,6 @@ module Sun::Security::Provider
     # the keystore data could not be stored
     def engine_store(stream, password)
       synchronized((@entries)) do
-        # 
         # KEYSTORE FORMAT:
         # 
         # Magic number (big-endian integer),
@@ -631,7 +612,6 @@ module Sun::Security::Provider
             dos.write(encoded)
           end
         end
-        # 
         # Write the keyed hash which is used to detect tampering with
         # the keystore (such as deleting or modifying key or
         # certificate entries).
@@ -642,7 +622,6 @@ module Sun::Security::Provider
     end
     
     typesig { [InputStream, Array.typed(::Java::Char)] }
-    # 
     # Loads the keystore from the given input stream.
     # 
     # <p>If a password is given, it is used to check the integrity of the
@@ -752,26 +731,26 @@ module Sun::Security::Provider
           else
             if ((tag).equal?(2))
               # trusted certificate entry
-              entry_ = TrustedCertEntry.new
+              entry = TrustedCertEntry.new
               # Read the alias
               alias_ = (dis.read_utf).to_s
               # Read the (entry creation) date
-              entry_.attr_date = Date.new(dis.read_long)
+              entry.attr_date = Date.new(dis.read_long)
               # Read the trusted certificate
               if ((x_version).equal?(2))
                 # read the certificate type, and instantiate a
                 # certificate factory of that type (reuse
                 # existing factory if possible)
-                cert_type_ = dis.read_utf
-                if (cfs.contains_key(cert_type_))
+                cert_type = dis.read_utf
+                if (cfs.contains_key(cert_type))
                   # reuse certificate factory
-                  cf = cfs.get(cert_type_)
+                  cf = cfs.get(cert_type)
                 else
                   # create new certificate factory
-                  cf = CertificateFactory.get_instance(cert_type_)
+                  cf = CertificateFactory.get_instance(cert_type)
                   # store the certificate factory so we can
                   # reuse it later
-                  cfs.put(cert_type_, cf)
+                  cfs.put(cert_type, cf)
                 end
               end
               begin
@@ -781,17 +760,16 @@ module Sun::Security::Provider
               end
               dis.read_fully(encoded)
               bais = ByteArrayInputStream.new(encoded)
-              entry_.attr_cert = cf.generate_certificate(bais)
+              entry.attr_cert = cf.generate_certificate(bais)
               bais.close
               # Add the entry to the list
-              @entries.put(alias_, entry_)
+              @entries.put(alias_, entry)
             else
               raise IOException.new("Unrecognized keystore entry")
             end
           end
           ((i += 1) - 1)
         end
-        # 
         # If a password has been provided, we check the keyed digest
         # at the end. If this check fails, the store has been tampered
         # with
@@ -814,7 +792,6 @@ module Sun::Security::Provider
     end
     
     typesig { [Array.typed(::Java::Char)] }
-    # 
     # To guard against tampering with the keystore, we append a keyed
     # hash with a bit of whitener.
     def get_pre_keyed_hash(password)

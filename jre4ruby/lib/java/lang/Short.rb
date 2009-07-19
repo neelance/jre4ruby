@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 1996-2006 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -30,7 +29,6 @@ module Java::Lang
     }
   end
   
-  # 
   # The {@code Short} class wraps a value of primitive type {@code
   # short} in an object.  An object of type {@code Short} contains a
   # single field whose type is {@code short}.
@@ -49,26 +47,22 @@ module Java::Lang
     include JavaComparable
     
     class_module.module_eval {
-      # 
       # A constant holding the minimum value a {@code short} can
       # have, -2<sup>15</sup>.
       const_set_lazy(:MIN_VALUE) { -32768 }
       const_attr_reader  :MIN_VALUE
       
-      # 
       # A constant holding the maximum value a {@code short} can
       # have, 2<sup>15</sup>-1.
       const_set_lazy(:MAX_VALUE) { 32767 }
       const_attr_reader  :MAX_VALUE
       
-      # 
       # The {@code Class} instance representing the primitive type
       # {@code short}.
       const_set_lazy(:TYPE) { Class.get_primitive_class("short") }
       const_attr_reader  :TYPE
       
       typesig { [::Java::Short] }
-      # 
       # Returns a new {@code String} object representing the
       # specified {@code short}. The radix is assumed to be 10.
       # 
@@ -80,7 +74,6 @@ module Java::Lang
       end
       
       typesig { [String, ::Java::Int] }
-      # 
       # Parses the string argument as a signed {@code short} in the
       # radix specified by the second argument. The characters in the
       # string must all be digits, of the specified radix (as
@@ -125,7 +118,6 @@ module Java::Lang
       end
       
       typesig { [String] }
-      # 
       # Parses the string argument as a signed decimal {@code
       # short}. The characters in the string must all be decimal
       # digits, except that the first character may be an ASCII minus
@@ -146,7 +138,6 @@ module Java::Lang
       end
       
       typesig { [String, ::Java::Int] }
-      # 
       # Returns a {@code Short} object holding the value
       # extracted from the specified {@code String} when parsed
       # with the radix given by the second argument. The first argument
@@ -175,7 +166,6 @@ module Java::Lang
       end
       
       typesig { [String] }
-      # 
       # Returns a {@code Short} object holding the
       # value given by the specified {@code String}. The argument
       # is interpreted as representing a signed decimal
@@ -225,7 +215,6 @@ module Java::Lang
       end }
       
       typesig { [::Java::Short] }
-      # 
       # Returns a {@code Short} instance representing the specified
       # {@code short} value.
       # If a new {@code Short} instance is not required, this method
@@ -248,7 +237,6 @@ module Java::Lang
       end
       
       typesig { [String] }
-      # 
       # Decodes a {@code String} into a {@code Short}.
       # Accepts decimal, hexadecimal, and octal numbers given by
       # the following grammar:
@@ -297,7 +285,6 @@ module Java::Lang
       end
     }
     
-    # 
     # The value of the {@code Short}.
     # 
     # @serial
@@ -308,7 +295,6 @@ module Java::Lang
     undef_method :value=
     
     typesig { [::Java::Short] }
-    # 
     # Constructs a newly allocated {@code Short} object that
     # represents the specified {@code short} value.
     # 
@@ -321,7 +307,6 @@ module Java::Lang
     end
     
     typesig { [String] }
-    # 
     # Constructs a newly allocated {@code Short} object that
     # represents the {@code short} value indicated by the
     # {@code String} parameter. The string is converted to a
@@ -340,7 +325,6 @@ module Java::Lang
     end
     
     typesig { [] }
-    # 
     # Returns the value of this {@code Short} as a
     # {@code byte}.
     def byte_value
@@ -348,7 +332,6 @@ module Java::Lang
     end
     
     typesig { [] }
-    # 
     # Returns the value of this {@code Short} as a
     # {@code short}.
     def short_value
@@ -356,7 +339,6 @@ module Java::Lang
     end
     
     typesig { [] }
-    # 
     # Returns the value of this {@code Short} as an
     # {@code int}.
     def int_value
@@ -364,7 +346,6 @@ module Java::Lang
     end
     
     typesig { [] }
-    # 
     # Returns the value of this {@code Short} as a
     # {@code long}.
     def long_value
@@ -372,7 +353,6 @@ module Java::Lang
     end
     
     typesig { [] }
-    # 
     # Returns the value of this {@code Short} as a
     # {@code float}.
     def float_value
@@ -380,7 +360,6 @@ module Java::Lang
     end
     
     typesig { [] }
-    # 
     # Returns the value of this {@code Short} as a
     # {@code double}.
     def double_value
@@ -388,7 +367,6 @@ module Java::Lang
     end
     
     typesig { [] }
-    # 
     # Returns a {@code String} object representing this
     # {@code Short}'s value.  The value is converted to signed
     # decimal representation and returned as a string, exactly as if
@@ -402,14 +380,12 @@ module Java::Lang
     end
     
     typesig { [] }
-    # 
     # Returns a hash code for this {@code Short}.
     def hash_code
       return RJava.cast_to_int(@value)
     end
     
     typesig { [Object] }
-    # 
     # Compares this object to the specified object.  The result is
     # {@code true} if and only if the argument is not
     # {@code null} and is a {@code Short} object that
@@ -426,7 +402,6 @@ module Java::Lang
     end
     
     typesig { [Short] }
-    # 
     # Compares two {@code Short} objects numerically.
     # 
     # @param   anotherShort   the {@code Short} to be compared.
@@ -443,7 +418,6 @@ module Java::Lang
     end
     
     class_module.module_eval {
-      # 
       # The number of bits used to represent a {@code short} value in two's
       # complement binary form.
       # @since 1.5
@@ -451,7 +425,6 @@ module Java::Lang
       const_attr_reader  :SIZE
       
       typesig { [::Java::Short] }
-      # 
       # Returns the value obtained by reversing the order of the bytes in the
       # two's complement representation of the specified {@code short} value.
       # 

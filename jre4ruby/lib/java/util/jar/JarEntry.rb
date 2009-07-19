@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 1997-2005 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -35,7 +34,6 @@ module Java::Util::Jar
     }
   end
   
-  # 
   # This class is used to represent a JAR file entry.
   class JarEntry < JarEntryImports.const_get :ZipEntry
     include_class_members JarEntryImports
@@ -59,7 +57,6 @@ module Java::Util::Jar
     undef_method :signers=
     
     typesig { [String] }
-    # 
     # Creates a new <code>JarEntry</code> for the specified JAR file
     # entry name.
     # 
@@ -75,7 +72,6 @@ module Java::Util::Jar
     end
     
     typesig { [ZipEntry] }
-    # 
     # Creates a new <code>JarEntry</code> with fields taken from the
     # specified <code>ZipEntry</code> object.
     # @param ze the <code>ZipEntry</code> object to create the
@@ -88,7 +84,6 @@ module Java::Util::Jar
     end
     
     typesig { [JarEntry] }
-    # 
     # Creates a new <code>JarEntry</code> with fields taken from the
     # specified <code>JarEntry</code> object.
     # 
@@ -101,7 +96,6 @@ module Java::Util::Jar
     end
     
     typesig { [] }
-    # 
     # Returns the <code>Manifest</code> <code>Attributes</code> for this
     # entry, or <code>null</code> if none.
     # 
@@ -112,7 +106,6 @@ module Java::Util::Jar
     end
     
     typesig { [] }
-    # 
     # Returns the <code>Certificate</code> objects for this entry, or
     # <code>null</code> if none. This method can only be called once
     # the <code>JarEntry</code> has been completely verified by reading
@@ -133,7 +126,6 @@ module Java::Util::Jar
     end
     
     typesig { [] }
-    # 
     # Returns the <code>CodeSigner</code> objects for this entry, or
     # <code>null</code> if none. This method can only be called once
     # the <code>JarEntry</code> has been completely verified by reading

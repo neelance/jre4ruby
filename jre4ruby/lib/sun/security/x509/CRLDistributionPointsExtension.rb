@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 2002-2006 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -37,7 +36,6 @@ module Sun::Security::X509
     }
   end
   
-  # 
   # Represent the CRL Distribution Points Extension (OID = 2.5.29.31).
   # <p>
   # The CRL distribution points extension identifies how CRL information
@@ -86,13 +84,11 @@ module Sun::Security::X509
     include CertAttrSet
     
     class_module.module_eval {
-      # 
       # Identifier for this attribute, to be used with the
       # get, set, delete methods of Certificate, x509 type.
       const_set_lazy(:IDENT) { "x509.info.extensions.CRLDistributionPoints" }
       const_attr_reader  :IDENT
       
-      # 
       # Attribute name.
       const_set_lazy(:NAME) { "CRLDistributionPoints" }
       const_attr_reader  :NAME
@@ -101,7 +97,6 @@ module Sun::Security::X509
       const_attr_reader  :POINTS
     }
     
-    # 
     # The List of DistributionPoint objects.
     attr_accessor :distribution_points
     alias_method :attr_distribution_points, :distribution_points
@@ -116,7 +111,6 @@ module Sun::Security::X509
     undef_method :extension_name=
     
     typesig { [JavaList] }
-    # 
     # Create a CRLDistributionPointsExtension from a List of
     # DistributionPoint; the criticality is set to false.
     # 
@@ -127,7 +121,6 @@ module Sun::Security::X509
     end
     
     typesig { [::Java::Boolean, JavaList] }
-    # 
     # Create a CRLDistributionPointsExtension from a List of
     # DistributionPoint.
     # 
@@ -139,7 +132,6 @@ module Sun::Security::X509
     end
     
     typesig { [ObjectIdentifier, ::Java::Boolean, JavaList, String] }
-    # 
     # Creates the extension (also called by the subclass).
     def initialize(extension_id, is_critical, distribution_points, extension_name)
       @distribution_points = nil
@@ -153,7 +145,6 @@ module Sun::Security::X509
     end
     
     typesig { [Boolean, Object] }
-    # 
     # Create the extension from the passed DER encoded value of the same.
     # 
     # @param critical true if the extension is to be treated as critical.
@@ -164,7 +155,6 @@ module Sun::Security::X509
     end
     
     typesig { [ObjectIdentifier, Boolean, Object, String] }
-    # 
     # Creates the extension (also called by the subclass).
     def initialize(extension_id, critical, value, extension_name)
       @distribution_points = nil
@@ -190,14 +180,12 @@ module Sun::Security::X509
     end
     
     typesig { [] }
-    # 
     # Return the name of this attribute.
     def get_name
       return @extension_name
     end
     
     typesig { [OutputStream] }
-    # 
     # Write the extension to the DerOutputStream.
     # 
     # @param out the DerOutputStream to write the extension to.
@@ -207,7 +195,6 @@ module Sun::Security::X509
     end
     
     typesig { [OutputStream, ObjectIdentifier, ::Java::Boolean] }
-    # 
     # Write the extension to the DerOutputStream.
     # (Also called by the subclass)
     def encode(out, extension_id, is_critical)
@@ -222,7 +209,6 @@ module Sun::Security::X509
     end
     
     typesig { [String, Object] }
-    # 
     # Set the attribute value.
     def set(name, obj)
       if (name.equals_ignore_case(POINTS))
@@ -237,7 +223,6 @@ module Sun::Security::X509
     end
     
     typesig { [String] }
-    # 
     # Get the attribute value.
     def get(name)
       if (name.equals_ignore_case(POINTS))
@@ -248,7 +233,6 @@ module Sun::Security::X509
     end
     
     typesig { [String] }
-    # 
     # Delete the attribute value.
     def delete(name)
       if (name.equals_ignore_case(POINTS))
@@ -260,7 +244,6 @@ module Sun::Security::X509
     end
     
     typesig { [] }
-    # 
     # Return an enumeration of names of attributes existing within this
     # attribute.
     def get_elements
@@ -286,7 +269,6 @@ module Sun::Security::X509
     end
     
     typesig { [] }
-    # 
     # Return the extension as user readable string.
     def to_s
       return (super).to_s + @extension_name + " [\n  " + (@distribution_points).to_s + "]\n"

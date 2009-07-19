@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 1995-1999 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -31,7 +30,6 @@ module Java::Net
     }
   end
   
-  # 
   # This interface defines a factory for socket implementations. It
   # is used by the classes <code>Socket</code> and
   # <code>ServerSocket</code> to create actual socket
@@ -45,7 +43,6 @@ module Java::Net
     include_class_members SocketImplFactoryImports
     
     typesig { [] }
-    # 
     # Creates a new <code>SocketImpl</code> instance.
     # 
     # @return  a new instance of <code>SocketImpl</code>.

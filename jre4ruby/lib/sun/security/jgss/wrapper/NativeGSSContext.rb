@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 2005 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -43,7 +42,6 @@ module Sun::Security::Jgss::Wrapper
     }
   end
   
-  # 
   # This class is essentially a wrapper class for the gss_ctx_id_t
   # structure of the native GSS library.
   # @author Valerie Peng
@@ -192,8 +190,8 @@ module Sun::Security::Jgss::Wrapper
             mech = mech_list[0]
           end
         else
-          ntok_ = NegTokenTarg.new(token)
-          mech = ntok_.get_supported_mech
+          ntok = NegTokenTarg.new(token)
+          mech = ntok.get_supported_mech
         end
         return mech
       end

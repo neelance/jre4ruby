@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 2001-2004 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -109,7 +108,6 @@ module Sun::Reflect
     end
     
     typesig { [Method] }
-    # 
     # Copying routines, needed to quickly fabricate new Field,
     # Method, and Constructor objects from templates
     # 

@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
 # This code is free software; you can redistribute it and/or modify it
@@ -72,7 +71,6 @@ module Sun::Security::Krb5::Internal::Crypto
     end
     
     typesig { [Array.typed(::Java::Byte), Array.typed(::Java::Byte), ::Java::Int] }
-    # 
     # Encrypts data using DES in CBC mode with CRC32.
     # @param data the data to be encrypted.
     # @param key  the secret key to encrypt the data. It is also used as initialization vector during cipher block chaining.
@@ -84,7 +82,6 @@ module Sun::Security::Krb5::Internal::Crypto
     end
     
     typesig { [Array.typed(::Java::Byte), Array.typed(::Java::Byte), ::Java::Int] }
-    # 
     # Decrypts data with provided key using DES in CBC mode with CRC32.
     # @param cipher the cipher text to be decrypted.
     # @param key  the secret key to decrypt the data.

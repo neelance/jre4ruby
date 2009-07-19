@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 1998-2006 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -31,7 +30,6 @@ module Java::Util
     }
   end
   
-  # 
   # A {@link Set} that further provides a <i>total ordering</i> on its elements.
   # The elements are ordered using their {@linkplain Comparable natural
   # ordering}, or by a {@link Comparator} typically provided at sorted
@@ -114,7 +112,6 @@ module Java::Util
     include JavaSet
     
     typesig { [] }
-    # 
     # Returns the comparator used to order the elements in this set,
     # or <tt>null</tt> if this set uses the {@linkplain Comparable
     # natural ordering} of its elements.
@@ -127,7 +124,6 @@ module Java::Util
     end
     
     typesig { [Object, Object] }
-    # 
     # Returns a view of the portion of this set whose elements range
     # from <tt>fromElement</tt>, inclusive, to <tt>toElement</tt>,
     # exclusive.  (If <tt>fromElement</tt> and <tt>toElement</tt> are
@@ -162,7 +158,6 @@ module Java::Util
     end
     
     typesig { [Object] }
-    # 
     # Returns a view of the portion of this set whose elements are
     # strictly less than <tt>toElement</tt>.  The returned set is
     # backed by this set, so changes in the returned set are
@@ -191,7 +186,6 @@ module Java::Util
     end
     
     typesig { [Object] }
-    # 
     # Returns a view of the portion of this set whose elements are
     # greater than or equal to <tt>fromElement</tt>.  The returned
     # set is backed by this set, so changes in the returned set are
@@ -220,7 +214,6 @@ module Java::Util
     end
     
     typesig { [] }
-    # 
     # Returns the first (lowest) element currently in this set.
     # 
     # @return the first (lowest) element currently in this set
@@ -230,7 +223,6 @@ module Java::Util
     end
     
     typesig { [] }
-    # 
     # Returns the last (highest) element currently in this set.
     # 
     # @return the last (highest) element currently in this set

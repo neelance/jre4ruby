@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 1996-2005 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -33,7 +32,6 @@ module Sun::Misc
     }
   end
   
-  # 
   # Queue: implements a simple queue mechanism.  Allows for enumeration of the
   # elements.
   # 
@@ -67,7 +65,6 @@ module Sun::Misc
     end
     
     typesig { [Object] }
-    # 
     # Enqueue an object.
     def enqueue(obj)
       synchronized(self) do
@@ -87,7 +84,6 @@ module Sun::Misc
     end
     
     typesig { [] }
-    # 
     # Dequeue the oldest object on the queue.  Will wait indefinitely.
     # 
     # @return    the oldest object on the queue.
@@ -98,7 +94,6 @@ module Sun::Misc
     end
     
     typesig { [::Java::Long] }
-    # 
     # Dequeue the oldest object on the queue.
     # @param timeOut the number of milliseconds to wait for something
     # to arrive.
@@ -124,7 +119,6 @@ module Sun::Misc
     end
     
     typesig { [] }
-    # 
     # Is the queue empty?
     # @return true if the queue is empty.
     def is_empty
@@ -134,7 +128,6 @@ module Sun::Misc
     end
     
     typesig { [] }
-    # 
     # Returns an enumeration of the elements in Last-In, First-Out
     # order. Use the Enumeration methods on the returned object to
     # fetch the elements sequentially.
@@ -145,7 +138,6 @@ module Sun::Misc
     end
     
     typesig { [] }
-    # 
     # Returns an enumeration of the elements in First-In, First-Out
     # order. Use the Enumeration methods on the returned object to
     # fetch the elements sequentially.

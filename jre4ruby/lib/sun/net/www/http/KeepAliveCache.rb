@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 1996-2006 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -37,7 +36,6 @@ module Sun::Net::Www::Http
     }
   end
   
-  # 
   # A class that implements a cache of idle Http connections for keep-alive
   # 
   # @author Stephen R. Pietrowicz (NCSA)
@@ -91,7 +89,6 @@ module Sun::Net::Www::Http
     undef_method :keep_alive_timer=
     
     typesig { [] }
-    # 
     # Constructor
     def initialize
       @keep_alive_timer = nil
@@ -100,7 +97,6 @@ module Sun::Net::Www::Http
     end
     
     typesig { [URL, Object, HttpClient] }
-    # 
     # Register this URL and HttpClient (that supports keep-alive) with the cache
     # @param url  The URL contains info about the host and port
     # @param http The HttpClient to be cached
@@ -188,7 +184,6 @@ module Sun::Net::Www::Http
     end
     
     typesig { [URL, Object] }
-    # 
     # Check to see if this URL has a cached HttpClient
     def get(url, obj)
       synchronized(self) do
@@ -232,9 +227,9 @@ module Sun::Net::Www::Http
               i = 0
               i = 0
               while i < v.size
-                e_ = v.element_at(i)
-                if ((current_time - e_.attr_idle_start_time) > v.attr_nap)
-                  h = e_.attr_hc
+                e = v.element_at(i)
+                if ((current_time - e.attr_idle_start_time) > v.attr_nap)
+                  h = e.attr_hc
                   h.close_server
                 else
                   break
@@ -257,7 +252,6 @@ module Sun::Net::Www::Http
     end
     
     typesig { [Java::Io::ObjectOutputStream] }
-    # 
     # Do not serialize this class!
     def write_object(stream)
       raise NotSerializableException.new
@@ -331,7 +325,6 @@ module Sun::Net::Www::Http
     end
     
     typesig { [Java::Io::ObjectOutputStream] }
-    # 
     # Do not serialize this class!
     def write_object(stream)
       raise NotSerializableException.new
@@ -391,7 +384,6 @@ module Sun::Net::Www::Http
     end
     
     typesig { [Object] }
-    # 
     # Determine whether or not two objects of this type are equal
     def equals(obj)
       if (((obj.is_a?(KeepAliveKey))).equal?(false))
@@ -402,7 +394,6 @@ module Sun::Net::Www::Http
     end
     
     typesig { [] }
-    # 
     # The hashCode() for this object is the string hashCode() of
     # concatenation of the protocol, host name and port.
     def hash_code

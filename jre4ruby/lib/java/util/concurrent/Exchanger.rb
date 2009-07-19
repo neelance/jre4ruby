@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
 # This code is free software; you can redistribute it and/or modify it
@@ -43,7 +42,6 @@ module Java::Util::Concurrent
     }
   end
   
-  # 
   # A synchronization point at which threads can pair and swap elements
   # within pairs.  Each thread presents some object on entry to the
   # {@link #exchange exchange} method, matches with a partner thread,
@@ -110,7 +108,6 @@ module Java::Util::Concurrent
     include_class_members ExchangerImports
     
     class_module.module_eval {
-      # 
       # Algorithm Description:
       # 
       # The basic idea is to maintain a "slot", which is a reference to
@@ -219,7 +216,6 @@ module Java::Util::Concurrent
       const_set_lazy(:NCPU) { Runtime.get_runtime.available_processors }
       const_attr_reader  :NCPU
       
-      # 
       # The capacity of the arena.  Set to a value that provides more
       # than enough space to handle contention.  On small machines
       # most slots won't be used, but it is still not wasted because
@@ -232,14 +228,12 @@ module Java::Util::Concurrent
       const_set_lazy(:CAPACITY) { 32 }
       const_attr_reader  :CAPACITY
       
-      # 
       # The value of "max" that will hold all threads without
       # contention.  When this value is less than CAPACITY, some
       # otherwise wasted expansion can be avoided.
       const_set_lazy(:FULL) { Math.max(0, Math.min(CAPACITY, NCPU / 2) - 1) }
       const_attr_reader  :FULL
       
-      # 
       # The number of times to spin (doing nothing except polling a
       # memory location) before blocking or giving up while waiting to
       # be fulfilled.  Should be zero on uniprocessors.  On
@@ -254,7 +248,6 @@ module Java::Util::Concurrent
       const_set_lazy(:SPINS) { ((NCPU).equal?(1)) ? 0 : 2000 }
       const_attr_reader  :SPINS
       
-      # 
       # The number of times to spin before blocking in timed waits.
       # Timed waits spin more slowly because checking the time takes
       # time.  The best value relies mainly on the relative rate of
@@ -263,7 +256,6 @@ module Java::Util::Concurrent
       const_set_lazy(:TIMED_SPINS) { SPINS / 20 }
       const_attr_reader  :TIMED_SPINS
       
-      # 
       # Sentinel item representing cancellation of a wait due to
       # interruption, timeout, or elapsed spin-waits.  This value is
       # placed in holes on cancellation, and used as a return value
@@ -271,14 +263,12 @@ module Java::Util::Concurrent
       const_set_lazy(:CANCEL) { Object.new }
       const_attr_reader  :CANCEL
       
-      # 
       # Value representing null arguments/returns from public
       # methods.  This disambiguates from internal requirement that
       # holes start out as null to mean they are not yet set.
       const_set_lazy(:NULL_ITEM) { Object.new }
       const_attr_reader  :NULL_ITEM
       
-      # 
       # Nodes hold partially exchanged data.  This class
       # opportunistically subclasses AtomicReference to represent the
       # hole.  So get() returns hole, and compareAndSet CAS'es value
@@ -302,7 +292,6 @@ module Java::Util::Concurrent
         undef_method :waiter=
         
         typesig { [Object] }
-        # 
         # Creates node with given item and empty hole.
         # @param item the item
         def initialize(item)
@@ -316,7 +305,6 @@ module Java::Util::Concurrent
         alias_method :initialize__node, :initialize
       end }
       
-      # 
       # A Slot is an AtomicReference with heuristic padding to lessen
       # cache effects of this heavily CAS'ed location.  While the
       # padding adds noticeable space, all slots are created only on
@@ -442,7 +430,6 @@ module Java::Util::Concurrent
       end }
     }
     
-    # 
     # Slot array.  Elements are lazily initialized when needed.
     # Declared volatile to enable double-checked lazy construction.
     attr_accessor :arena
@@ -451,7 +438,6 @@ module Java::Util::Concurrent
     alias_method :attr_arena=, :arena=
     undef_method :arena=
     
-    # 
     # The maximum slot index being used.  The value sometimes
     # increases when a thread experiences too many CAS contentions,
     # and sometimes decreases when a spin-wait elapses.  Changes
@@ -464,7 +450,6 @@ module Java::Util::Concurrent
     undef_method :max=
     
     typesig { [Object, ::Java::Boolean, ::Java::Long] }
-    # 
     # Main exchange function, handling the different policy variants.
     # Uses Object, not "V" as argument and return value to simplify
     # handling of sentinel values.  Callers from public methods decode
@@ -513,13 +498,13 @@ module Java::Util::Concurrent
             else
               if ((fails += 1) > 1)
                 # Allow 2 fails on 1st slot
-                m_ = @max.get
-                if (fails > 3 && m_ < FULL && @max.compare_and_set(m_, m_ + 1))
-                  index = m_ + 1
+                m = @max.get
+                if (fails > 3 && m < FULL && @max.compare_and_set(m, m + 1))
+                  index = m + 1
                    # Grow on 3rd failed slot
                 else
                   if ((index -= 1) < 0)
-                    index = m_
+                    index = m
                   end
                 end # Circularly traverse
               end
@@ -530,7 +515,6 @@ module Java::Util::Concurrent
     end
     
     typesig { [] }
-    # 
     # Returns a hash index for the current thread.  Uses a one-step
     # FNV-1a hash code (http://www.isthe.com/chongo/tech/comp/fnv/)
     # based on the current thread's Thread.getId().  These hash codes
@@ -567,7 +551,6 @@ module Java::Util::Concurrent
     end
     
     typesig { [::Java::Int] }
-    # 
     # Creates a new slot at given index.  Called only when the slot
     # appears to be null.  Relies on double-check using builtin
     # locks, since they rarely contend.  This in turn relies on the
@@ -587,7 +570,6 @@ module Java::Util::Concurrent
     
     class_module.module_eval {
       typesig { [Node, Slot] }
-      # 
       # Tries to cancel a wait for the given node waiting in the given
       # slot, if so, helping clear the node from its slot to avoid
       # garbage retention.
@@ -633,7 +615,6 @@ module Java::Util::Concurrent
       end
       
       typesig { [Node, Slot] }
-      # 
       # Waits for (by spinning and/or blocking) and gets the hole
       # filled in by another thread.  Fails if interrupted before
       # hole filled.
@@ -680,7 +661,6 @@ module Java::Util::Concurrent
     }
     
     typesig { [Node, Slot, ::Java::Long] }
-    # 
     # Waits for (at index 0) and gets the hole filled in by another
     # thread.  Fails if timed out or interrupted before hole filled.
     # Same basic logic as untimed version, but a bit messier.
@@ -727,7 +707,6 @@ module Java::Util::Concurrent
     end
     
     typesig { [Node] }
-    # 
     # Sweeps through arena checking for any waiting threads.  Called
     # only upon return from timeout while waiting in slot 0.  When a
     # thread gives up on a timed wait, it is possible that a
@@ -762,7 +741,6 @@ module Java::Util::Concurrent
     end
     
     typesig { [] }
-    # 
     # Creates a new Exchanger.
     def initialize
       @arena = Array.typed(Slot).new(CAPACITY) { nil }
@@ -770,7 +748,6 @@ module Java::Util::Concurrent
     end
     
     typesig { [Object] }
-    # 
     # Waits for another thread to arrive at this exchange point (unless
     # the current thread is {@linkplain Thread#interrupt interrupted}),
     # and then transfers the given object to it, receiving its object
@@ -817,7 +794,6 @@ module Java::Util::Concurrent
     end
     
     typesig { [Object, ::Java::Long, TimeUnit] }
-    # 
     # Waits for another thread to arrive at this exchange point (unless
     # the current thread is {@linkplain Thread#interrupt interrupted} or
     # the specified waiting time elapses), and then transfers the given

@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 2000-2007 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -39,7 +38,6 @@ module Java::Util::Logging
     }
   end
   
-  # 
   # There is a single global LogManager object that is used to
   # maintain a set of shared state about Loggers and log services.
   # <p>
@@ -250,7 +248,7 @@ module Java::Util::Logging
               end
             rescue Exception => ex
               System.err.println("Could not load Logmanager \"" + cname + "\"")
-              ex_.print_stack_trace
+              ex.print_stack_trace
             end
             if ((self.attr_manager).nil?)
               self.attr_manager = LogManager.new
@@ -311,7 +309,6 @@ module Java::Util::Logging
     }
     
     typesig { [] }
-    # 
     # Protected constructor.  This is protected so that container applications
     # (such as J2EE containers) can subclass the object.  It is non-public as
     # it is intended that there only be one LogManager object, whose value is
@@ -337,7 +334,6 @@ module Java::Util::Logging
     
     class_module.module_eval {
       typesig { [] }
-      # 
       # Return the global LogManager object.
       def get_log_manager
         if (!(self.attr_manager).nil?)
@@ -389,7 +385,6 @@ module Java::Util::Logging
     end
     
     typesig { [PropertyChangeListener] }
-    # 
     # Adds an event listener to be invoked when the logging
     # properties are re-read. Adding multiple instances of
     # the same event Listener results in multiple entries
@@ -408,7 +403,6 @@ module Java::Util::Logging
     end
     
     typesig { [PropertyChangeListener] }
-    # 
     # Removes an event listener for property change events.
     # If the same listener instance has been added to the listener table
     # through multiple invocations of <CODE>addPropertyChangeListener</CODE>,
@@ -505,8 +499,8 @@ module Java::Util::Logging
               logger.add_handler(hdl)
             rescue Exception => ex
               System.err.println("Can't load log handler \"" + word + "\"")
-              System.err.println("" + (ex_).to_s)
-              ex_.print_stack_trace
+              System.err.println("" + (ex).to_s)
+              ex.print_stack_trace
             end
             ((i += 1) - 1)
           end
@@ -524,7 +518,6 @@ module Java::Util::Logging
     end
     
     typesig { [Logger] }
-    # 
     # Add a named logger.  This does nothing and returns false if a logger
     # with the same name is already registered.
     # <p>
@@ -693,7 +686,6 @@ module Java::Util::Logging
     end
     
     typesig { [String] }
-    # 
     # Method to find a named logger.
     # <p>
     # Note that since untrusted code may create loggers with
@@ -719,7 +711,6 @@ module Java::Util::Logging
     end
     
     typesig { [] }
-    # 
     # Get an enumeration of known logger names.
     # <p>
     # Note:  Loggers may be added dynamically as new classes are loaded.
@@ -733,7 +724,6 @@ module Java::Util::Logging
     end
     
     typesig { [] }
-    # 
     # Reinitialize the logging properties and reread the logging configuration.
     # <p>
     # The same rules are used for locating the configuration properties
@@ -768,7 +758,7 @@ module Java::Util::Logging
           end
         rescue Exception => ex
           System.err.println("Logging configuration class \"" + cname + "\" failed")
-          System.err.println("" + (ex_).to_s)
+          System.err.println("" + (ex).to_s)
           # keep going and useful config file.
         end
       end
@@ -794,7 +784,6 @@ module Java::Util::Logging
     end
     
     typesig { [] }
-    # 
     # Reset the logging configuration.
     # <p>
     # For all named loggers, the reset operation removes and closes
@@ -879,7 +868,6 @@ module Java::Util::Logging
     end
     
     typesig { [InputStream] }
-    # 
     # Reinitialize the logging properties and reread the logging configuration
     # from the given stream, which should be in java.util.Properties format.
     # A PropertyChangeEvent will be fired after the properties are read.
@@ -923,7 +911,6 @@ module Java::Util::Logging
     end
     
     typesig { [String] }
-    # 
     # Get the value of a logging property.
     # The method returns null if the property is not found.
     # @param name      property name
@@ -1065,7 +1052,6 @@ module Java::Util::Logging
     undef_method :our_permission=
     
     typesig { [] }
-    # 
     # Check that the current context is trusted to modify the logging
     # configuration.  This requires LoggingPermission("control").
     # <p>
@@ -1221,7 +1207,6 @@ module Java::Util::Logging
       end
       alias_method :attr_logging_mxbean=, :logging_mxbean=
       
-      # 
       # String representation of the
       # {@link javax.management.ObjectName} for {@link LoggingMXBean}.
       # @since 1.5
@@ -1229,7 +1214,6 @@ module Java::Util::Logging
       const_attr_reader  :LOGGING_MXBEAN_NAME
       
       typesig { [] }
-      # 
       # Returns <tt>LoggingMXBean</tt> for managing loggers.
       # The <tt>LoggingMXBean</tt> can also obtained from the
       # {@link java.lang.management.ManagementFactory#getPlatformMBeanServer

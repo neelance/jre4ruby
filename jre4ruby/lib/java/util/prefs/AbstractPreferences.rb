@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 2000-2006 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -127,7 +126,6 @@ module Java::Util::Prefs
   class AbstractPreferences < AbstractPreferencesImports.const_get :Preferences
     include_class_members AbstractPreferencesImports
     
-    # 
     # Our name relative to parent.
     attr_accessor :name
     alias_method :attr_name, :name
@@ -135,7 +133,6 @@ module Java::Util::Prefs
     alias_method :attr_name=, :name=
     undef_method :name=
     
-    # 
     # Our absolute path name.
     attr_accessor :absolute_path
     alias_method :attr_absolute_path, :absolute_path
@@ -143,7 +140,6 @@ module Java::Util::Prefs
     alias_method :attr_absolute_path=, :absolute_path=
     undef_method :absolute_path=
     
-    # 
     # Our parent node.
     attr_accessor :parent
     alias_method :attr_parent, :parent
@@ -151,7 +147,6 @@ module Java::Util::Prefs
     alias_method :attr_parent=, :parent=
     undef_method :parent=
     
-    # 
     # Our root node.
     attr_accessor :root
     alias_method :attr_root, :root
@@ -173,7 +168,6 @@ module Java::Util::Prefs
     alias_method :attr_new_node=, :new_node=
     undef_method :new_node=
     
-    # 
     # All known unremoved children of this node.  (This "cache" is consulted
     # prior to calling childSpi() or getChild().
     attr_accessor :kid_cache
@@ -182,7 +176,6 @@ module Java::Util::Prefs
     alias_method :attr_kid_cache=, :kid_cache=
     undef_method :kid_cache=
     
-    # 
     # This field is used to keep track of whether or not this node has
     # been removed.  Once it's set to true, it will never be reset to false.
     attr_accessor :removed
@@ -191,7 +184,6 @@ module Java::Util::Prefs
     alias_method :attr_removed=, :removed=
     undef_method :removed=
     
-    # 
     # Registered preference change listeners.
     attr_accessor :pref_listeners
     alias_method :attr_pref_listeners, :pref_listeners
@@ -199,7 +191,6 @@ module Java::Util::Prefs
     alias_method :attr_pref_listeners=, :pref_listeners=
     undef_method :pref_listeners=
     
-    # 
     # Registered node change listeners.
     attr_accessor :node_listeners
     alias_method :attr_node_listeners, :node_listeners
@@ -207,7 +198,6 @@ module Java::Util::Prefs
     alias_method :attr_node_listeners=, :node_listeners=
     undef_method :node_listeners=
     
-    # 
     # An object whose monitor is used to lock this node.  This object
     # is used in preference to the node itself to reduce the likelihood of
     # intentional or unintentional denial of service due to a locked node.
@@ -220,7 +210,6 @@ module Java::Util::Prefs
     undef_method :lock=
     
     typesig { [AbstractPreferences, String] }
-    # 
     # Creates a preference node with the specified parent and the specified
     # name relative to its parent.
     # 
@@ -270,7 +259,6 @@ module Java::Util::Prefs
     end
     
     typesig { [String, String] }
-    # 
     # Implements the <tt>put</tt> method as per the specification in
     # {@link Preferences#put(String,String)}.
     # 
@@ -308,7 +296,6 @@ module Java::Util::Prefs
     end
     
     typesig { [String, String] }
-    # 
     # Implements the <tt>get</tt> method as per the specification in
     # {@link Preferences#get(String,String)}.
     # 
@@ -348,7 +335,6 @@ module Java::Util::Prefs
     end
     
     typesig { [String] }
-    # 
     # Implements the <tt>remove(String)</tt> method as per the specification
     # in {@link Preferences#remove(String)}.
     # 
@@ -372,7 +358,6 @@ module Java::Util::Prefs
     end
     
     typesig { [] }
-    # 
     # Implements the <tt>clear</tt> method as per the specification in
     # {@link Preferences#clear()}.
     # 
@@ -397,7 +382,6 @@ module Java::Util::Prefs
     end
     
     typesig { [String, ::Java::Int] }
-    # 
     # Implements the <tt>putInt</tt> method as per the specification in
     # {@link Preferences#putInt(String,int)}.
     # 
@@ -417,7 +401,6 @@ module Java::Util::Prefs
     end
     
     typesig { [String, ::Java::Int] }
-    # 
     # Implements the <tt>getInt</tt> method as per the specification in
     # {@link Preferences#getInt(String,int)}.
     # 
@@ -452,7 +435,6 @@ module Java::Util::Prefs
     end
     
     typesig { [String, ::Java::Long] }
-    # 
     # Implements the <tt>putLong</tt> method as per the specification in
     # {@link Preferences#putLong(String,long)}.
     # 
@@ -472,7 +454,6 @@ module Java::Util::Prefs
     end
     
     typesig { [String, ::Java::Long] }
-    # 
     # Implements the <tt>getLong</tt> method as per the specification in
     # {@link Preferences#getLong(String,long)}.
     # 
@@ -507,7 +488,6 @@ module Java::Util::Prefs
     end
     
     typesig { [String, ::Java::Boolean] }
-    # 
     # Implements the <tt>putBoolean</tt> method as per the specification in
     # {@link Preferences#putBoolean(String,boolean)}.
     # 
@@ -527,7 +507,6 @@ module Java::Util::Prefs
     end
     
     typesig { [String, ::Java::Boolean] }
-    # 
     # Implements the <tt>getBoolean</tt> method as per the specification in
     # {@link Preferences#getBoolean(String,boolean)}.
     # 
@@ -567,7 +546,6 @@ module Java::Util::Prefs
     end
     
     typesig { [String, ::Java::Float] }
-    # 
     # Implements the <tt>putFloat</tt> method as per the specification in
     # {@link Preferences#putFloat(String,float)}.
     # 
@@ -587,7 +565,6 @@ module Java::Util::Prefs
     end
     
     typesig { [String, ::Java::Float] }
-    # 
     # Implements the <tt>getFloat</tt> method as per the specification in
     # {@link Preferences#getFloat(String,float)}.
     # 
@@ -622,7 +599,6 @@ module Java::Util::Prefs
     end
     
     typesig { [String, ::Java::Double] }
-    # 
     # Implements the <tt>putDouble</tt> method as per the specification in
     # {@link Preferences#putDouble(String,double)}.
     # 
@@ -642,7 +618,6 @@ module Java::Util::Prefs
     end
     
     typesig { [String, ::Java::Double] }
-    # 
     # Implements the <tt>getDouble</tt> method as per the specification in
     # {@link Preferences#getDouble(String,double)}.
     # 
@@ -677,7 +652,6 @@ module Java::Util::Prefs
     end
     
     typesig { [String, Array.typed(::Java::Byte)] }
-    # 
     # Implements the <tt>putByteArray</tt> method as per the specification in
     # {@link Preferences#putByteArray(String,byte[])}.
     # 
@@ -693,7 +667,6 @@ module Java::Util::Prefs
     end
     
     typesig { [String, Array.typed(::Java::Byte)] }
-    # 
     # Implements the <tt>getByteArray</tt> method as per the specification in
     # {@link Preferences#getByteArray(String,byte[])}.
     # 
@@ -723,7 +696,6 @@ module Java::Util::Prefs
     end
     
     typesig { [] }
-    # 
     # Implements the <tt>keys</tt> method as per the specification in
     # {@link Preferences#keys()}.
     # 
@@ -747,7 +719,6 @@ module Java::Util::Prefs
     end
     
     typesig { [] }
-    # 
     # Implements the <tt>children</tt> method as per the specification in
     # {@link Preferences#childrenNames()}.
     # 
@@ -788,7 +759,6 @@ module Java::Util::Prefs
     }
     
     typesig { [] }
-    # 
     # Returns all known unremoved children of this node.
     # 
     # @return all known unremoved children of this node.
@@ -802,7 +772,6 @@ module Java::Util::Prefs
     }
     
     typesig { [] }
-    # 
     # Implements the <tt>parent</tt> method as per the specification in
     # {@link Preferences#parent()}.
     # 
@@ -823,7 +792,6 @@ module Java::Util::Prefs
     end
     
     typesig { [String] }
-    # 
     # Implements the <tt>node</tt> method as per the specification in
     # {@link Preferences#node(String)}.
     # 
@@ -887,7 +855,6 @@ module Java::Util::Prefs
     end
     
     typesig { [StringTokenizer] }
-    # 
     # tokenizer contains <name> {'/' <name>}*
     def node(path)
       token = path.next_token
@@ -919,7 +886,6 @@ module Java::Util::Prefs
     end
     
     typesig { [String] }
-    # 
     # Implements the <tt>nodeExists</tt> method as per the specification in
     # {@link Preferences#nodeExists(String)}.
     # 
@@ -958,7 +924,6 @@ module Java::Util::Prefs
     end
     
     typesig { [StringTokenizer] }
-    # 
     # tokenizer contains <name> {'/' <name>}*
     def node_exists(path)
       token = path.next_token
@@ -986,8 +951,6 @@ module Java::Util::Prefs
     end
     
     typesig { [] }
-    # 
-    # 
     # Implements the <tt>removeNode()</tt> method as per the specification in
     # {@link Preferences#removeNode()}.
     # 
@@ -1028,7 +991,6 @@ module Java::Util::Prefs
     end
     
     typesig { [] }
-    # 
     # Called with locks on all nodes on path from parent of "removal root"
     # to this (including the former but excluding the latter).
     def remove_node2
@@ -1062,7 +1024,6 @@ module Java::Util::Prefs
     end
     
     typesig { [] }
-    # 
     # Implements the <tt>name</tt> method as per the specification in
     # {@link Preferences#name()}.
     # 
@@ -1075,7 +1036,6 @@ module Java::Util::Prefs
     end
     
     typesig { [] }
-    # 
     # Implements the <tt>absolutePath</tt> method as per the specification in
     # {@link Preferences#absolutePath()}.
     # 
@@ -1090,7 +1050,6 @@ module Java::Util::Prefs
     end
     
     typesig { [] }
-    # 
     # Implements the <tt>isUserNode</tt> method as per the specification in
     # {@link Preferences#isUserNode()}.
     # 
@@ -1232,7 +1191,6 @@ module Java::Util::Prefs
     end
     
     typesig { [String] }
-    # 
     # Return the value associated with the specified key at this preference
     # node, or <tt>null</tt> if there is no association for this key, or the
     # association cannot be determined at this time.  It is guaranteed that
@@ -1255,7 +1213,6 @@ module Java::Util::Prefs
     end
     
     typesig { [String] }
-    # 
     # Remove the association (if any) for the specified key at this
     # preference node.  It is guaranteed that <tt>key</tt> is non-null.
     # Also, it is guaranteed that this node has not been removed.
@@ -1267,7 +1224,6 @@ module Java::Util::Prefs
     end
     
     typesig { [] }
-    # 
     # Removes this preference node, invalidating it and any preferences that
     # it contains.  The named child will have no descendants at the time this
     # invocation is made (i.e., the {@link Preferences#removeNode()} method
@@ -1293,7 +1249,6 @@ module Java::Util::Prefs
     end
     
     typesig { [] }
-    # 
     # Returns all of the keys that have an associated value in this
     # preference node.  (The returned array will be of size zero if
     # this node has no preferences.)  It is guaranteed that this node has not
@@ -1314,7 +1269,6 @@ module Java::Util::Prefs
     end
     
     typesig { [] }
-    # 
     # Returns the names of the children of this preference node.  (The
     # returned array will be of size zero if this node has no children.)
     # This method need not return the names of any nodes already cached,
@@ -1336,7 +1290,6 @@ module Java::Util::Prefs
     end
     
     typesig { [String] }
-    # 
     # Returns the named child if it exists, or <tt>null</tt> if it does not.
     # It is guaranteed that <tt>nodeName</tt> is non-null, non-empty,
     # does not contain the slash character ('/'), and is no longer than
@@ -1380,7 +1333,6 @@ module Java::Util::Prefs
     end
     
     typesig { [String] }
-    # 
     # Returns the named child of this preference node, creating it if it does
     # not already exist.  It is guaranteed that <tt>name</tt> is non-null,
     # non-empty, does not contain the slash character ('/'), and is no longer
@@ -1415,14 +1367,12 @@ module Java::Util::Prefs
     end
     
     typesig { [] }
-    # 
     # Returns the absolute path name of this preferences node.
     def to_s
       return ((self.is_user_node ? "User" : "System")).to_s + " Preference Node: " + (self.absolute_path).to_s
     end
     
     typesig { [] }
-    # 
     # Implements the <tt>sync</tt> method as per the specification in
     # {@link Preferences#sync()}.
     # 
@@ -1463,7 +1413,6 @@ module Java::Util::Prefs
     end
     
     typesig { [] }
-    # 
     # This method is invoked with this node locked.  The contract of this
     # method is to synchronize any cached preferences stored at this node
     # with any stored in the backing store.  (It is perfectly possible that
@@ -1485,7 +1434,6 @@ module Java::Util::Prefs
     end
     
     typesig { [] }
-    # 
     # Implements the <tt>flush</tt> method as per the specification in
     # {@link Preferences#flush()}.
     # 
@@ -1528,7 +1476,6 @@ module Java::Util::Prefs
     end
     
     typesig { [] }
-    # 
     # This method is invoked with this node locked.  The contract of this
     # method is to force any cached changes in the contents of this
     # preference node to the backing store, guaranteeing their persistence.
@@ -1551,7 +1498,6 @@ module Java::Util::Prefs
     end
     
     typesig { [] }
-    # 
     # Returns <tt>true</tt> iff this node (or an ancestor) has been
     # removed with the {@link #removeNode()} method.  This method
     # locks this node prior to returning the contents of the private
@@ -1566,7 +1512,6 @@ module Java::Util::Prefs
     end
     
     class_module.module_eval {
-      # 
       # Queue of pending notification events.  When a preference or node
       # change event for which there are one or more listeners occurs,
       # it is placed on this queue and the queue is notified.  A background
@@ -1576,7 +1521,6 @@ module Java::Util::Prefs
       const_set_lazy(:EventQueue) { LinkedList.new }
       const_attr_reader  :EventQueue
       
-      # 
       # These two classes are used to distinguish NodeChangeEvents on
       # eventQueue so the event dispatch thread knows whether to call
       # childAdded or childRemoved.
@@ -1616,7 +1560,6 @@ module Java::Util::Prefs
         alias_method :initialize__node_removed_event, :initialize
       end }
       
-      # 
       # A single background thread ("the event notification thread") monitors
       # the event queue and delivers events that are placed on the queue.
       const_set_lazy(:EventDispatchThread) { Class.new(JavaThread) do
@@ -1650,19 +1593,19 @@ module Java::Util::Prefs
               end
             else
               nce = event
-              listeners_ = src.node_listeners
+              listeners = src.node_listeners
               if (nce.is_a?(NodeAddedEvent))
-                i_ = 0
-                while i_ < listeners_.attr_length
-                  listeners_[i_].child_added(nce)
-                  ((i_ += 1) - 1)
+                i = 0
+                while i < listeners.attr_length
+                  listeners[i].child_added(nce)
+                  ((i += 1) - 1)
                 end
               else
                 # assert nce instanceof NodeRemovedEvent;
-                i__ = 0
-                while i__ < listeners_.attr_length
-                  listeners_[i__].child_removed(nce)
-                  ((i__ += 1) - 1)
+                i = 0
+                while i < listeners.attr_length
+                  listeners[i].child_removed(nce)
+                  ((i += 1) - 1)
                 end
               end
             end
@@ -1690,7 +1633,6 @@ module Java::Util::Prefs
       alias_method :attr_event_dispatch_thread=, :event_dispatch_thread=
       
       typesig { [] }
-      # 
       # This method starts the event dispatch thread the first time it
       # is called.  The event dispatch thread will be started only
       # if someone registers a listener.
@@ -1707,7 +1649,6 @@ module Java::Util::Prefs
     }
     
     typesig { [] }
-    # 
     # Return this node's preference/node change listeners.  Even though
     # we're using a copy-on-write lists, we use synchronized accessors to
     # ensure information transmission from the writing thread to the
@@ -1726,7 +1667,6 @@ module Java::Util::Prefs
     end
     
     typesig { [String, String] }
-    # 
     # Enqueue a preference change event for delivery to registered
     # preference change listeners unless there are no registered
     # listeners.  Invoked with this.lock held.
@@ -1740,7 +1680,6 @@ module Java::Util::Prefs
     end
     
     typesig { [Preferences] }
-    # 
     # Enqueue a "node added" event for delivery to registered node change
     # listeners unless there are no registered listeners.  Invoked with
     # this.lock held.
@@ -1754,7 +1693,6 @@ module Java::Util::Prefs
     end
     
     typesig { [Preferences] }
-    # 
     # Enqueue a "node removed" event for delivery to registered node change
     # listeners unless there are no registered listeners.  Invoked with
     # this.lock held.
@@ -1768,7 +1706,6 @@ module Java::Util::Prefs
     end
     
     typesig { [OutputStream] }
-    # 
     # Implements the <tt>exportNode</tt> method as per the specification in
     # {@link Preferences#exportNode(OutputStream)}.
     # 
@@ -1782,7 +1719,6 @@ module Java::Util::Prefs
     end
     
     typesig { [OutputStream] }
-    # 
     # Implements the <tt>exportSubtree</tt> method as per the specification in
     # {@link Preferences#exportSubtree(OutputStream)}.
     # 

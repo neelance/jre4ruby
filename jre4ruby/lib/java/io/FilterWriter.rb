@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 1996-2005 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -31,7 +30,6 @@ module Java::Io
     }
   end
   
-  # 
   # Abstract class for writing filtered character streams.
   # The abstract class <code>FilterWriter</code> itself
   # provides default methods that pass all requests to the
@@ -44,7 +42,6 @@ module Java::Io
   class FilterWriter < FilterWriterImports.const_get :Writer
     include_class_members FilterWriterImports
     
-    # 
     # The underlying character-output stream.
     attr_accessor :out
     alias_method :attr_out, :out
@@ -53,7 +50,6 @@ module Java::Io
     undef_method :out=
     
     typesig { [Writer] }
-    # 
     # Create a new filtered writer.
     # 
     # @param out  a Writer object to provide the underlying stream.
@@ -65,7 +61,6 @@ module Java::Io
     end
     
     typesig { [::Java::Int] }
-    # 
     # Writes a single character.
     # 
     # @exception  IOException  If an I/O error occurs
@@ -74,7 +69,6 @@ module Java::Io
     end
     
     typesig { [Array.typed(::Java::Char), ::Java::Int, ::Java::Int] }
-    # 
     # Writes a portion of an array of characters.
     # 
     # @param  cbuf  Buffer of characters to be written
@@ -87,7 +81,6 @@ module Java::Io
     end
     
     typesig { [String, ::Java::Int, ::Java::Int] }
-    # 
     # Writes a portion of a string.
     # 
     # @param  str  String to be written
@@ -100,7 +93,6 @@ module Java::Io
     end
     
     typesig { [] }
-    # 
     # Flushes the stream.
     # 
     # @exception  IOException  If an I/O error occurs

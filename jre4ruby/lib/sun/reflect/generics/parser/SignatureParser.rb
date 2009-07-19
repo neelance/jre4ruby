@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 2003-2005 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -34,7 +33,6 @@ module Sun::Reflect::Generics::Parser
     }
   end
   
-  # 
   # Parser for type signatures, as defined in the Java Virtual
   # // Machine Specification (JVMS) chapter 4.
   # Converts the signatures into an abstract syntax tree (AST) representation.
@@ -157,7 +155,6 @@ module Sun::Reflect::Generics::Parser
     
     class_module.module_eval {
       typesig { [] }
-      # 
       # Static factory method. Produces a parser instance.
       # @return an instance of <tt>SignatureParser</tt>
       def make
@@ -166,7 +163,6 @@ module Sun::Reflect::Generics::Parser
     }
     
     typesig { [String] }
-    # 
     # Parses a class signature (as defined in the JVMS, chapter 4)
     # and produces an abstract syntax tree representing it.
     # @param s a string representing the input class signature
@@ -183,7 +179,6 @@ module Sun::Reflect::Generics::Parser
     end
     
     typesig { [String] }
-    # 
     # Parses a method signature (as defined in the JVMS, chapter 4)
     # and produces an abstract syntax tree representing it.
     # @param s a string representing the input method signature
@@ -200,7 +195,6 @@ module Sun::Reflect::Generics::Parser
     end
     
     typesig { [String] }
-    # 
     # Parses a type signature
     # and produces an abstract syntax tree representing it.
     # @param s a string representing the input type signature
@@ -319,7 +313,6 @@ module Sun::Reflect::Generics::Parser
         return SimpleClassTypeSignature.make(id, dollar, Array.typed(TypeArgument).new(0) { nil })
       when Character.new(?<.ord)
         return SimpleClassTypeSignature.make(id, dollar, parse_type_arguments)
-        raise error("expected < or ; or /")
       else
         raise error("expected < or ; or /")
       end
@@ -375,31 +368,16 @@ module Sun::Reflect::Generics::Parser
         ub[0] = parse_field_type_signature
         lb[0] = BottomSignature.make # bottom
         return Wildcard.make(ub, lb)
-        advance
-        ub[0] = SimpleClassTypeSignature.make("java.lang.Object", false, ta)
-        lb[0] = BottomSignature.make # bottom
-        return Wildcard.make(ub, lb)
-        advance
-        lb[0] = parse_field_type_signature
-        ub[0] = SimpleClassTypeSignature.make("java.lang.Object", false, ta)
-        return Wildcard.make(ub, lb)
-        return parse_field_type_signature
       when Character.new(?*.ord)
         advance
         ub[0] = SimpleClassTypeSignature.make("java.lang.Object", false, ta)
         lb[0] = BottomSignature.make # bottom
         return Wildcard.make(ub, lb)
-        advance
-        lb[0] = parse_field_type_signature
-        ub[0] = SimpleClassTypeSignature.make("java.lang.Object", false, ta)
-        return Wildcard.make(ub, lb)
-        return parse_field_type_signature
       when Character.new(?-.ord)
         advance
         lb[0] = parse_field_type_signature
         ub[0] = SimpleClassTypeSignature.make("java.lang.Object", false, ta)
         return Wildcard.make(ub, lb)
-        return parse_field_type_signature
       else
         return parse_field_type_signature
       end
@@ -536,16 +514,12 @@ module Sun::Reflect::Generics::Parser
       ts = ArrayList.new
       stop = false
       while (!stop)
-        catch(:break_case) do
-          case (current)
-          when Character.new(?B.ord), Character.new(?C.ord), Character.new(?D.ord), Character.new(?F.ord), Character.new(?I.ord), Character.new(?J.ord), Character.new(?S.ord), Character.new(?Z.ord), Character.new(?L.ord), Character.new(?T.ord), Character.new(?[.ord)
-            ts.add(parse_type_signature)
-            throw :break_case, :thrown
-            stop = true
-          else
-            stop = true
-          end
-        end == :thrown or break
+        case (current)
+        when Character.new(?B.ord), Character.new(?C.ord), Character.new(?D.ord), Character.new(?F.ord), Character.new(?I.ord), Character.new(?J.ord), Character.new(?S.ord), Character.new(?Z.ord), Character.new(?L.ord), Character.new(?T.ord), Character.new(?[.ord)
+          ts.add(parse_type_signature)
+        else
+          stop = true
+        end
       end
       # while( matches(current(),
       # 'B', 'C', 'D', 'F', 'I', 'J', 'S', 'Z', 'L', 'T', '[')

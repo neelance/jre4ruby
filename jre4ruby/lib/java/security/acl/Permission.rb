@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 1996 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -31,7 +30,6 @@ module Java::Security::Acl
     }
   end
   
-  # 
   # This interface represents a permission, such as that used to grant
   # a particular type of access to a resource.
   # 
@@ -40,7 +38,6 @@ module Java::Security::Acl
     include_class_members PermissionImports
     
     typesig { [Object] }
-    # 
     # Returns true if the object passed matches the permission represented
     # in this interface.
     # 
@@ -52,7 +49,6 @@ module Java::Security::Acl
     end
     
     typesig { [] }
-    # 
     # Prints a string representation of this permission.
     # 
     # @return the string representation of the permission.

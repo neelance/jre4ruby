@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 2000-2006 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -40,7 +39,6 @@ module Sun::Security::X509
     }
   end
   
-  # 
   # PolicyInformation is the class that contains a specific certificate policy
   # that is part of the CertificatePoliciesExtension. A
   # CertificatePolicyExtension value consists of a vector of these objects.
@@ -94,7 +92,6 @@ module Sun::Security::X509
     undef_method :policy_qualifiers=
     
     typesig { [CertificatePolicyId, JavaSet] }
-    # 
     # Create an instance of PolicyInformation
     # 
     # @param policyIdentifier the policyIdentifier as a
@@ -113,7 +110,6 @@ module Sun::Security::X509
     end
     
     typesig { [DerValue] }
-    # 
     # Create an instance of PolicyInformation, decoding from
     # the passed DerValue.
     # 
@@ -144,7 +140,6 @@ module Sun::Security::X509
     end
     
     typesig { [Object] }
-    # 
     # Compare this PolicyInformation with another object for equality
     # 
     # @param other object to be compared with this
@@ -161,7 +156,6 @@ module Sun::Security::X509
     end
     
     typesig { [] }
-    # 
     # Returns the hash code for this PolicyInformation.
     # 
     # @return a hash code value.
@@ -172,7 +166,6 @@ module Sun::Security::X509
     end
     
     typesig { [] }
-    # 
     # Return the policyIdentifier value
     # 
     # @return The CertificatePolicyId object containing
@@ -182,7 +175,6 @@ module Sun::Security::X509
     end
     
     typesig { [] }
-    # 
     # Return the policyQualifiers value
     # 
     # @return a Set of PolicyQualifierInfo objects associated
@@ -194,7 +186,6 @@ module Sun::Security::X509
     end
     
     typesig { [String] }
-    # 
     # Get the attribute value.
     def get(name)
       if (name.equals_ignore_case(ID))
@@ -209,7 +200,6 @@ module Sun::Security::X509
     end
     
     typesig { [String, Object] }
-    # 
     # Set the attribute value.
     def set(name, obj)
       if (name.equals_ignore_case(ID))
@@ -242,7 +232,6 @@ module Sun::Security::X509
     end
     
     typesig { [String] }
-    # 
     # Delete the attribute value.
     def delete(name)
       if (name.equals_ignore_case(QUALIFIERS))
@@ -258,7 +247,6 @@ module Sun::Security::X509
     end
     
     typesig { [] }
-    # 
     # Return an enumeration of names of attributes existing within this
     # attribute.
     def get_elements
@@ -269,14 +257,12 @@ module Sun::Security::X509
     end
     
     typesig { [] }
-    # 
     # Return the name of this attribute.
     def get_name
       return NAME
     end
     
     typesig { [] }
-    # 
     # Return a printable representation of the PolicyInformation.
     def to_s
       s = StringBuilder.new("  [" + (@policy_identifier.to_s).to_s)
@@ -285,7 +271,6 @@ module Sun::Security::X509
     end
     
     typesig { [DerOutputStream] }
-    # 
     # Write the PolicyInformation to the DerOutputStream.
     # 
     # @param out the DerOutputStream to write the extension to.

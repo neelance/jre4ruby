@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 1996-2006 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -59,7 +58,6 @@ module Java::Text
     }
   end
   
-  # 
   # The <code>BreakIterator</code> class implements methods for finding
   # the location of boundaries in text. Instances of <code>BreakIterator</code>
   # maintain a current position and scan over text
@@ -239,13 +237,11 @@ module Java::Text
     include Cloneable
     
     typesig { [] }
-    # 
     # Constructor. BreakIterator is stateless and has no default behavior.
     def initialize
     end
     
     typesig { [] }
-    # 
     # Create a copy of this iterator
     # @return A copy of this
     def clone
@@ -257,7 +253,6 @@ module Java::Text
     end
     
     class_module.module_eval {
-      # 
       # DONE is returned by previous(), next(), next(int), preceding(int)
       # and following(int) when either the first or last text boundary has been
       # reached.
@@ -266,7 +261,6 @@ module Java::Text
     }
     
     typesig { [] }
-    # 
     # Returns the first boundary. The iterator's current position is set
     # to the first text boundary.
     # @return The character index of the first text boundary.
@@ -275,7 +269,6 @@ module Java::Text
     end
     
     typesig { [] }
-    # 
     # Returns the last boundary. The iterator's current position is set
     # to the last text boundary.
     # @return The character index of the last text boundary.
@@ -284,7 +277,6 @@ module Java::Text
     end
     
     typesig { [::Java::Int] }
-    # 
     # Returns the nth boundary from the current boundary. If either
     # the first or last text boundary has been reached, it returns
     # <code>BreakIterator.DONE</code> and the current position is set to either
@@ -307,7 +299,6 @@ module Java::Text
     end
     
     typesig { [] }
-    # 
     # Returns the boundary following the current boundary. If the current boundary
     # is the last text boundary, it returns <code>BreakIterator.DONE</code> and
     # the iterator's current position is unchanged. Otherwise, the iterator's
@@ -322,7 +313,6 @@ module Java::Text
     end
     
     typesig { [] }
-    # 
     # Returns the boundary preceding the current boundary. If the current boundary
     # is the first text boundary, it returns <code>BreakIterator.DONE</code> and
     # the iterator's current position is unchanged. Otherwise, the iterator's
@@ -335,7 +325,6 @@ module Java::Text
     end
     
     typesig { [::Java::Int] }
-    # 
     # Returns the first boundary following the specified character offset. If the
     # specified offset equals to the last text boundary, it returns
     # <code>BreakIterator.DONE</code> and the iterator's current position is unchanged.
@@ -353,7 +342,6 @@ module Java::Text
     end
     
     typesig { [::Java::Int] }
-    # 
     # Returns the last boundary preceding the specified character offset. If the
     # specified offset equals to the first text boundary, it returns
     # <code>BreakIterator.DONE</code> and the iterator's current position is unchanged.
@@ -379,7 +367,6 @@ module Java::Text
     end
     
     typesig { [::Java::Int] }
-    # 
     # Returns true if the specified character offset is a text boundary.
     # @param offset the character offset to check.
     # @return <code>true</code> if "offset" is a boundary position,
@@ -402,7 +389,6 @@ module Java::Text
     end
     
     typesig { [] }
-    # 
     # Returns character index of the text boundary that was most
     # recently returned by next(), next(int), previous(), first(), last(),
     # following(int) or preceding(int). If any of these methods returns
@@ -423,7 +409,6 @@ module Java::Text
     end
     
     typesig { [] }
-    # 
     # Get the text being scanned
     # @return the text being scanned
     def get_text
@@ -431,7 +416,6 @@ module Java::Text
     end
     
     typesig { [String] }
-    # 
     # Set a new text string to be scanned.  The current scan
     # position is reset to first().
     # @param newText new text to scan.
@@ -440,7 +424,6 @@ module Java::Text
     end
     
     typesig { [CharacterIterator] }
-    # 
     # Set a new text for scanning.  The current scan
     # position is reset to first().
     # @param newText new text to scan.
@@ -465,7 +448,6 @@ module Java::Text
       const_attr_reader  :IterCache
       
       typesig { [] }
-      # 
       # Returns a new <code>BreakIterator</code> instance
       # for <a href="#word">word breaks</a>
       # for the {@linkplain Locale#getDefault() default locale}.
@@ -475,7 +457,6 @@ module Java::Text
       end
       
       typesig { [Locale] }
-      # 
       # Returns a new <code>BreakIterator</code> instance
       # for <a href="#word">word breaks</a>
       # for the given locale.
@@ -487,7 +468,6 @@ module Java::Text
       end
       
       typesig { [] }
-      # 
       # Returns a new <code>BreakIterator</code> instance
       # for <a href="#line">line breaks</a>
       # for the {@linkplain Locale#getDefault() default locale}.
@@ -497,7 +477,6 @@ module Java::Text
       end
       
       typesig { [Locale] }
-      # 
       # Returns a new <code>BreakIterator</code> instance
       # for <a href="#line">line breaks</a>
       # for the given locale.
@@ -509,7 +488,6 @@ module Java::Text
       end
       
       typesig { [] }
-      # 
       # Returns a new <code>BreakIterator</code> instance
       # for <a href="#character">character breaks</a>
       # for the {@linkplain Locale#getDefault() default locale}.
@@ -519,7 +497,6 @@ module Java::Text
       end
       
       typesig { [Locale] }
-      # 
       # Returns a new <code>BreakIterator</code> instance
       # for <a href="#character">character breaks</a>
       # for the given locale.
@@ -531,7 +508,6 @@ module Java::Text
       end
       
       typesig { [] }
-      # 
       # Returns a new <code>BreakIterator</code> instance
       # for <a href="#sentence">sentence breaks</a>
       # for the {@linkplain Locale#getDefault() default locale}.
@@ -541,7 +517,6 @@ module Java::Text
       end
       
       typesig { [Locale] }
-      # 
       # Returns a new <code>BreakIterator</code> instance
       # for <a href="#sentence">sentence breaks</a>
       # for the given locale.
@@ -563,8 +538,8 @@ module Java::Text
           end
         end
         result = create_break_instance(locale, type, data_name, dictionary_name)
-        cache_ = BreakIteratorCache.new(locale, result)
-        IterCache[type] = SoftReference.new(cache_)
+        cache = BreakIteratorCache.new(locale, result)
+        IterCache[type] = SoftReference.new(cache)
         return result
       end
       
@@ -621,7 +596,6 @@ module Java::Text
       end
       
       typesig { [] }
-      # 
       # Returns an array of all locales for which the
       # <code>get*Instance</code> methods of this class can return
       # localized instances.
@@ -706,7 +680,6 @@ module Java::Text
         return num
       end
       
-      # 
       # Obtains a BreakIterator instance from a BreakIteratorProvider
       # implementation.
       const_set_lazy(:BreakIteratorGetter) { Class.new do

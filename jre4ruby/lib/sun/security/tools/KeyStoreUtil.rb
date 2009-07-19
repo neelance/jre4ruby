@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 2005 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -31,7 +30,6 @@ module Sun::Security::Tools
     }
   end
   
-  # 
   # <p> This class provides several utilities to <code>KeyStore</code>.
   # 
   # @since 1.6.0
@@ -52,7 +50,6 @@ module Sun::Security::Tools
     
     class_module.module_eval {
       typesig { [String] }
-      # 
       # Returns true if KeyStore has a password. This is true except for
       # MSCAPI KeyStores
       def is_windows_key_store(storetype)
@@ -60,7 +57,6 @@ module Sun::Security::Tools
       end
       
       typesig { [String] }
-      # 
       # Returns standard-looking names for storetype
       def nice_store_type_name(storetype)
         if (storetype.equals_ignore_case("Windows-MY"))

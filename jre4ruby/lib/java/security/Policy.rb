@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 1997-2006 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -45,7 +44,6 @@ module Java::Security
     }
   end
   
-  # 
   # A Policy object is responsible for determining whether code executing
   # in the Java runtime environment has permission to perform a
   # security-sensitive operation.
@@ -102,7 +100,6 @@ module Java::Security
     include_class_members PolicyImports
     
     class_module.module_eval {
-      # 
       # A read-only empty PermissionCollection instance.
       # @since 1.6
       const_set_lazy(:UNSUPPORTED_EMPTY_COLLECTION) { UnsupportedEmptyCollection.new }
@@ -148,7 +145,6 @@ module Java::Security
       end
       
       typesig { [] }
-      # 
       # Returns the installed Policy object. This value should not be cached,
       # as it may be changed by a call to <code>setPolicy</code>.
       # This method first calls
@@ -174,7 +170,6 @@ module Java::Security
       end
       
       typesig { [] }
-      # 
       # Returns the installed Policy object, skipping the security check.
       # Used by SecureClassLoader and getPolicy.
       # 
@@ -207,7 +202,6 @@ module Java::Security
             begin
               self.attr_policy = Class.for_name(policy_class).new_instance
             rescue Exception => e
-              # 
               # The policy_class seems to be an extension
               # so we have to bootstrap loading it via a policy
               # provider that is on the bootclasspath
@@ -233,10 +227,10 @@ module Java::Security
                       cl = cl.get_parent
                     end
                     return (!(extcl).nil? ? Class.for_name(pc, true, extcl).new_instance : nil)
-                  rescue Exception => e
+                  rescue Exception => e_
                     if (!(Debug).nil?)
                       Debug.println("policy provider " + pc + " not available")
-                      e.print_stack_trace
+                      e_.print_stack_trace
                     end
                     return nil
                   end
@@ -250,7 +244,6 @@ module Java::Security
                 private
                 alias_method :initialize_anonymous, :initialize
               end.new_local(self))
-              # 
               # if it loaded install it as the policy provider. Otherwise
               # continue to use the system default implementation
               if (!(p).nil?)
@@ -267,7 +260,6 @@ module Java::Security
       end
       
       typesig { [Policy] }
-      # 
       # Sets the system-wide Policy object. This method first calls
       # <code>SecurityManager.checkPermission</code> with a
       # <code>SecurityPermission("setPolicy")</code>
@@ -296,14 +288,12 @@ module Java::Security
       end
       
       typesig { [Policy] }
-      # 
       # Initialize superclass state such that a legacy provider can
       # handle queries for itself.
       # 
       # @since 1.4
       def init_policy(p)
-        policy_domain = AccessController.do_privileged(# 
-        # A policy provider not on the bootclasspath could trigger
+        policy_domain = AccessController.do_privileged(# A policy provider not on the bootclasspath could trigger
         # security checks fulfilling a call to either Policy.implies
         # or Policy.getPermissions. If this does occur the provider
         # must be able to answer for it's own ProtectionDomain
@@ -339,7 +329,6 @@ module Java::Security
           private
           alias_method :initialize_anonymous, :initialize
         end.new_local(self))
-        # 
         # Collect the permissions granted to this protection domain
         # so that the provider can be security checked while processing
         # calls to Policy.implies or Policy.getPermissions.
@@ -367,7 +356,6 @@ module Java::Security
       end
       
       typesig { [String, Policy::Parameters] }
-      # 
       # Returns a Policy object of the specified type.
       # 
       # <p> This method traverses the list of registered security providers,
@@ -413,7 +401,6 @@ module Java::Security
       end
       
       typesig { [String, Policy::Parameters, String] }
-      # 
       # Returns a Policy object of the specified type.
       # 
       # <p> A new Policy object encapsulating the
@@ -467,7 +454,6 @@ module Java::Security
       end
       
       typesig { [String, Policy::Parameters, Provider] }
-      # 
       # Returns a Policy object of the specified type.
       # 
       # <p> A new Policy object encapsulating the
@@ -524,7 +510,6 @@ module Java::Security
     }
     
     typesig { [] }
-    # 
     # Return the Provider of this Policy.
     # 
     # <p> This Policy instance will only have a Provider if it
@@ -539,7 +524,6 @@ module Java::Security
     end
     
     typesig { [] }
-    # 
     # Return the type of this Policy.
     # 
     # <p> This Policy instance will only have a type if it
@@ -554,7 +538,6 @@ module Java::Security
     end
     
     typesig { [] }
-    # 
     # Return Policy parameters.
     # 
     # <p> This Policy instance will only have parameters if it
@@ -569,7 +552,6 @@ module Java::Security
     end
     
     typesig { [CodeSource] }
-    # 
     # Return a PermissionCollection object containing the set of
     # permissions granted to the specified CodeSource.
     # 
@@ -599,7 +581,6 @@ module Java::Security
     end
     
     typesig { [ProtectionDomain] }
-    # 
     # Return a PermissionCollection object containing the set of
     # permissions granted to the specified ProtectionDomain.
     # 
@@ -662,7 +643,6 @@ module Java::Security
     end
     
     typesig { [PermissionCollection, PermissionCollection] }
-    # 
     # add static permissions to provided permission collection
     def add_static_perms(perms, statics)
       if (!(statics).nil?)
@@ -676,7 +656,6 @@ module Java::Security
     end
     
     typesig { [ProtectionDomain, Permission] }
-    # 
     # Evaluates the global policy for the permissions granted to
     # the ProtectionDomain and tests whether the permission is
     # granted.
@@ -712,7 +691,6 @@ module Java::Security
     end
     
     typesig { [] }
-    # 
     # Refreshes/reloads the policy configuration. The behavior of this method
     # depends on the implementation. For example, calling <code>refresh</code>
     # on a file-based policy will cause the file to be re-read.
@@ -724,7 +702,6 @@ module Java::Security
     end
     
     class_module.module_eval {
-      # 
       # This subclass is returned by the getInstance calls.  All Policy calls
       # are delegated to the underlying PolicySpi.
       const_set_lazy(:PolicyDelegate) { Class.new(Policy) do
@@ -806,7 +783,6 @@ module Java::Security
         alias_method :initialize__policy_delegate, :initialize
       end }
       
-      # 
       # This represents a marker interface for Policy parameters.
       # 
       # @since 1.6
@@ -814,7 +790,6 @@ module Java::Security
         include_class_members Policy
       end }
       
-      # 
       # This class represents a read-only empty PermissionCollection object that
       # is returned from the <code>getPermissions(CodeSource)</code> and
       # <code>getPermissions(ProtectionDomain)</code>
@@ -830,7 +805,6 @@ module Java::Security
         undef_method :perms=
         
         typesig { [] }
-        # 
         # Create a read-only empty PermissionCollection object.
         def initialize
           @perms = nil
@@ -840,7 +814,6 @@ module Java::Security
         end
         
         typesig { [Permission] }
-        # 
         # Adds a permission object to the current collection of permission
         # objects.
         # 
@@ -853,7 +826,6 @@ module Java::Security
         end
         
         typesig { [Permission] }
-        # 
         # Checks to see if the specified permission is implied by the
         # collection of Permission objects held in this PermissionCollection.
         # 
@@ -866,7 +838,6 @@ module Java::Security
         end
         
         typesig { [] }
-        # 
         # Returns an enumeration of all the Permission objects in the
         # collection.
         # 

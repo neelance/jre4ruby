@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 2000-2002 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -33,8 +32,6 @@ module Java::Nio
     }
   end
   
-  # 
-  # 
   # A read/write HeapDoubleBuffer.
   class HeapDoubleBuffer < HeapDoubleBufferImports.const_get :DoubleBuffer
     include_class_members HeapDoubleBufferImports
@@ -49,7 +46,6 @@ module Java::Nio
     def initialize(cap, lim)
       # package-private
       super(-1, 0, lim, cap, Array.typed(::Java::Double).new(cap) { 0.0 }, 0)
-      # 
       # hb = new double[cap];
       # offset = 0;
     end
@@ -58,7 +54,6 @@ module Java::Nio
     def initialize(buf, off, len)
       # package-private
       super(-1, off, off + len, buf.attr_length, buf, 0)
-      # 
       # hb = buf;
       # offset = 0;
     end
@@ -66,7 +61,6 @@ module Java::Nio
     typesig { [Array.typed(::Java::Double), ::Java::Int, ::Java::Int, ::Java::Int, ::Java::Int, ::Java::Int] }
     def initialize(buf, mark, pos, lim, cap, off)
       super(mark, pos, lim, cap, buf, off)
-      # 
       # hb = buf;
       # offset = off;
     end
@@ -161,12 +155,12 @@ module Java::Nio
         position(position + n)
       else
         if (src.is_direct)
-          n_ = src.remaining
-          if (n_ > remaining)
+          n = src.remaining
+          if (n > remaining)
             raise BufferOverflowException.new
           end
-          src.get(self.attr_hb, ix(position), n_)
-          position(position + n_)
+          src.get(self.attr_hb, ix(position), n)
+          position(position + n)
         else
           super(src)
         end

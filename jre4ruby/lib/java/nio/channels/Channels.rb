@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 2000-2005 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -51,7 +50,6 @@ module Java::Nio::Channels
     }
   end
   
-  # 
   # Utility methods for channels and streams.
   # 
   # <p> This class defines static methods that support the interoperation of the
@@ -109,7 +107,6 @@ module Java::Nio::Channels
       end
       
       typesig { [WritableByteChannel] }
-      # 
       # Constructs a stream that writes bytes to the given channel.
       # 
       # <p> The <tt>write</tt> methods of the resulting stream will throw an
@@ -447,7 +444,6 @@ module Java::Nio::Channels
       end
       
       typesig { [ReadableByteChannel, String] }
-      # 
       # Constructs a reader that decodes bytes from the given channel according
       # to the named charset.
       # 
@@ -480,7 +476,6 @@ module Java::Nio::Channels
       end
       
       typesig { [WritableByteChannel, CharsetEncoder, ::Java::Int] }
-      # 
       # Constructs a writer that encodes characters using the given encoder and
       # writes the resulting bytes to the given channel.
       # 
@@ -510,7 +505,6 @@ module Java::Nio::Channels
       end
       
       typesig { [WritableByteChannel, String] }
-      # 
       # Constructs a writer that encodes characters according to the named
       # charset and writes the resulting bytes to the given channel.
       # 

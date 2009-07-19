@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 1996-2001 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -31,7 +30,6 @@ module Java::Security
     }
   end
   
-  # 
   # <p>A private key. This interface contains no methods or constants.
   # It merely serves to group (and provide type safety for) all private key
   # interfaces.

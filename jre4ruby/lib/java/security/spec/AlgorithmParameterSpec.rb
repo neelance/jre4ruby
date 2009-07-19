@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 1997-1999 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -31,7 +30,6 @@ module Java::Security::Spec
     }
   end
   
-  # 
   # A (transparent) specification of cryptographic parameters.
   # 
   # <P> This interface contains no methods or constants. Its only purpose

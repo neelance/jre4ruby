@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 1997-2007 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -31,7 +30,6 @@ module Java::Util
     }
   end
   
-  # 
   # An ordered collection (also known as a <i>sequence</i>).  The user of this
   # interface has precise control over where in the list each element is
   # inserted.  The user can access elements by their integer index (position in
@@ -125,7 +123,6 @@ module Java::Util
     end
     
     typesig { [] }
-    # 
     # Returns <tt>true</tt> if this list contains no elements.
     # 
     # @return <tt>true</tt> if this list contains no elements
@@ -134,7 +131,6 @@ module Java::Util
     end
     
     typesig { [Object] }
-    # 
     # Returns <tt>true</tt> if this list contains the specified element.
     # More formally, returns <tt>true</tt> if and only if this list contains
     # at least one element <tt>e</tt> such that
@@ -151,7 +147,6 @@ module Java::Util
     end
     
     typesig { [] }
-    # 
     # Returns an iterator over the elements in this list in proper sequence.
     # 
     # @return an iterator over the elements in this list in proper sequence
@@ -160,7 +155,6 @@ module Java::Util
     end
     
     typesig { [] }
-    # 
     # Returns an array containing all of the elements in this list in proper
     # sequence (from first to last element).
     # 
@@ -180,7 +174,6 @@ module Java::Util
     end
     
     typesig { [Array.typed(T)] }
-    # 
     # Returns an array containing all of the elements in this list in
     # proper sequence (from first to last element); the runtime type of
     # the returned array is that of the specified array.  If the list fits
@@ -249,7 +242,6 @@ module Java::Util
     end
     
     typesig { [Object] }
-    # 
     # Removes the first occurrence of the specified element from this list,
     # if it is present (optional operation).  If this list does not contain
     # the element, it is unchanged.  More formally, removes the element with
@@ -292,7 +284,6 @@ module Java::Util
     end
     
     typesig { [Collection] }
-    # 
     # Appends all of the elements in the specified collection to the end of
     # this list, in the order that they are returned by the specified
     # collection's iterator (optional operation).  The behavior of this
@@ -317,7 +308,6 @@ module Java::Util
     end
     
     typesig { [::Java::Int, Collection] }
-    # 
     # Inserts all of the elements in the specified collection into this
     # list at the specified position (optional operation).  Shifts the
     # element currently at that position (if any) and any subsequent
@@ -348,7 +338,6 @@ module Java::Util
     end
     
     typesig { [Collection] }
-    # 
     # Removes from this list all of its elements that are contained in the
     # specified collection (optional operation).
     # 
@@ -368,7 +357,6 @@ module Java::Util
     end
     
     typesig { [Collection] }
-    # 
     # Retains only the elements in this list that are contained in the
     # specified collection (optional operation).  In other words, removes
     # from this list all of its elements that are not contained in the
@@ -390,7 +378,6 @@ module Java::Util
     end
     
     typesig { [] }
-    # 
     # Removes all of the elements from this list (optional operation).
     # The list will be empty after this call returns.
     # 
@@ -420,7 +407,6 @@ module Java::Util
     end
     
     typesig { [] }
-    # 
     # Returns the hash code value for this list.  The hash code of a list
     # is defined to be the result of the following calculation:
     # <pre>
@@ -454,7 +440,6 @@ module Java::Util
     end
     
     typesig { [::Java::Int, Object] }
-    # 
     # Replaces the element at the specified position in this list with the
     # specified element (optional operation).
     # 
@@ -476,7 +461,6 @@ module Java::Util
     end
     
     typesig { [::Java::Int, Object] }
-    # 
     # Inserts the specified element at the specified position in this list
     # (optional operation).  Shifts the element currently at that position
     # (if any) and any subsequent elements to the right (adds one to their
@@ -499,7 +483,6 @@ module Java::Util
     end
     
     typesig { [::Java::Int] }
-    # 
     # Removes the element at the specified position in this list (optional
     # operation).  Shifts any subsequent elements to the left (subtracts one
     # from their indices).  Returns the element that was removed from the
@@ -536,7 +519,6 @@ module Java::Util
     end
     
     typesig { [Object] }
-    # 
     # Returns the index of the last occurrence of the specified element
     # in this list, or -1 if this list does not contain the element.
     # More formally, returns the highest index <tt>i</tt> such that
@@ -567,7 +549,6 @@ module Java::Util
     end
     
     typesig { [::Java::Int] }
-    # 
     # Returns a list iterator over the elements in this list (in proper
     # sequence), starting at the specified position in the list.
     # The specified index indicates the first element that would be

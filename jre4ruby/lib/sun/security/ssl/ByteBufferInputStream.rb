@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 2003-2007 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -33,7 +32,6 @@ module Sun::Security::Ssl
     }
   end
   
-  # 
   # A simple InputStream which uses ByteBuffers as it's backing store.
   # <P>
   # The only IOException should come if the InputStream has been closed.
@@ -58,7 +56,6 @@ module Sun::Security::Ssl
     end
     
     typesig { [] }
-    # 
     # Returns a byte from the ByteBuffer.
     # 
     # Increments position().
@@ -73,7 +70,6 @@ module Sun::Security::Ssl
     end
     
     typesig { [Array.typed(::Java::Byte)] }
-    # 
     # Returns a byte array from the ByteBuffer.
     # 
     # Increments position().
@@ -85,7 +81,6 @@ module Sun::Security::Ssl
     end
     
     typesig { [Array.typed(::Java::Byte), ::Java::Int, ::Java::Int] }
-    # 
     # Returns a byte array from the ByteBuffer.
     # 
     # Increments position().
@@ -113,7 +108,6 @@ module Sun::Security::Ssl
     end
     
     typesig { [::Java::Long] }
-    # 
     # Skips over and discards <code>n</code> bytes of data from this input
     # stream.
     def skip(n)
@@ -123,7 +117,6 @@ module Sun::Security::Ssl
       if (n <= 0)
         return 0
       end
-      # 
       # ByteBuffers have at most an int, so lose the upper bits.
       # The contract allows this.
       n_int = RJava.cast_to_int(n)
@@ -133,7 +126,6 @@ module Sun::Security::Ssl
     end
     
     typesig { [] }
-    # 
     # Returns the number of bytes that can be read (or skipped over)
     # from this input stream without blocking by the next caller of a
     # method for this input stream.
@@ -145,7 +137,6 @@ module Sun::Security::Ssl
     end
     
     typesig { [] }
-    # 
     # Closes this input stream and releases any system resources associated
     # with the stream.
     # 
@@ -155,7 +146,6 @@ module Sun::Security::Ssl
     end
     
     typesig { [::Java::Int] }
-    # 
     # Marks the current position in this input stream.
     def mark(readlimit)
       synchronized(self) do
@@ -163,7 +153,6 @@ module Sun::Security::Ssl
     end
     
     typesig { [] }
-    # 
     # Repositions this stream to the position at the time the
     # <code>mark</code> method was last called on this input stream.
     def reset
@@ -173,7 +162,6 @@ module Sun::Security::Ssl
     end
     
     typesig { [] }
-    # 
     # Tests if this input stream supports the <code>mark</code> and
     # <code>reset</code> methods.
     def mark_supported

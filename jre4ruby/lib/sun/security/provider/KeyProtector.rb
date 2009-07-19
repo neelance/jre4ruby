@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 1997-2006 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -45,7 +44,6 @@ module Sun::Security::Provider
     }
   end
   
-  # 
   # This is an implementation of a Sun proprietary, exportable algorithm
   # intended for use when protecting (or recovering the cleartext version of)
   # sensitive keys.
@@ -136,7 +134,6 @@ module Sun::Security::Provider
     undef_method :md=
     
     typesig { [Array.typed(::Java::Char)] }
-    # 
     # Creates an instance of this class, and initializes it with the given
     # password.
     # 
@@ -166,7 +163,6 @@ module Sun::Security::Provider
     end
     
     typesig { [] }
-    # 
     # Ensures that the password bytes of this key protector are
     # set to zero when there are no more references to it.
     def finalize
@@ -177,7 +173,6 @@ module Sun::Security::Provider
     end
     
     typesig { [Key] }
-    # 
     # Protects the given plaintext key, using the password provided at
     # construction time.
     def protect(key)
@@ -258,7 +253,6 @@ module Sun::Security::Provider
     end
     
     typesig { [EncryptedPrivateKeyInfo] }
-    # 
     # Recovers the plaintext version of the given key (in protected format),
     # using the password provided at construction time.
     def recover(encr_info)
@@ -273,7 +267,6 @@ module Sun::Security::Provider
         raise UnrecoverableKeyException.new("Unsupported key protection " + "algorithm")
       end
       protected_key = encr_info.get_encrypted_data
-      # 
       # Get the salt associated with this key (the first SALT_LEN bytes of
       # <code>protectedKey</code>)
       salt = Array.typed(::Java::Byte).new(SALT_LEN) { 0 }
@@ -314,7 +307,6 @@ module Sun::Security::Provider
         plain_key[i] = (encr_key[i] ^ xor_key[i])
         ((i += 1) - 1)
       end
-      # 
       # Check the integrity of the recovered key by concatenating it with
       # the password, digesting the concatenation, and comparing the
       # result of the digest operation with the digest provided at the end

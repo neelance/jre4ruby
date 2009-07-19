@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
 # This code is free software; you can redistribute it and/or modify it
@@ -42,7 +41,6 @@ module Java::Util::Concurrent::Locks
     }
   end
   
-  # 
   # {@code Condition} factors out the {@code Object} monitor
   # methods ({@link Object#wait() wait}, {@link Object#notify notify}
   # and {@link Object#notifyAll notifyAll}) into distinct objects to
@@ -184,7 +182,6 @@ module Java::Util::Concurrent::Locks
     include_class_members ConditionImports
     
     typesig { [] }
-    # 
     # Causes the current thread to wait until it is signalled or
     # {@linkplain Thread#interrupt interrupted}.
     # 
@@ -238,7 +235,6 @@ module Java::Util::Concurrent::Locks
     end
     
     typesig { [] }
-    # 
     # Causes the current thread to wait until it is signalled.
     # 
     # <p>The lock associated with this condition is atomically
@@ -276,7 +272,6 @@ module Java::Util::Concurrent::Locks
     end
     
     typesig { [::Java::Long] }
-    # 
     # Causes the current thread to wait until it is signalled or interrupted,
     # or the specified waiting time elapses.
     # 
@@ -366,7 +361,6 @@ module Java::Util::Concurrent::Locks
     end
     
     typesig { [::Java::Long, TimeUnit] }
-    # 
     # Causes the current thread to wait until it is signalled or interrupted,
     # or the specified waiting time elapses. This method is behaviorally
     # equivalent to:<br>
@@ -384,7 +378,6 @@ module Java::Util::Concurrent::Locks
     end
     
     typesig { [Date] }
-    # 
     # Causes the current thread to wait until it is signalled or interrupted,
     # or the specified deadline elapses.
     # 
@@ -460,7 +453,6 @@ module Java::Util::Concurrent::Locks
     end
     
     typesig { [] }
-    # 
     # Wakes up one waiting thread.
     # 
     # <p>If any threads are waiting on this condition then one
@@ -471,7 +463,6 @@ module Java::Util::Concurrent::Locks
     end
     
     typesig { [] }
-    # 
     # Wakes up all waiting threads.
     # 
     # <p>If any threads are waiting on this condition then they are

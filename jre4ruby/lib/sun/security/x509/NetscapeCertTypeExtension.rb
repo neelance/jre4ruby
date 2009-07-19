@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 1998-2006 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -35,7 +34,6 @@ module Sun::Security::X509
     }
   end
   
-  # 
   # Represents Netscape Certificate Type Extension.
   # The details are defined
   # <a href=http://www.netscape.com/eng/security/comm4-cert-exts.html>
@@ -55,13 +53,11 @@ module Sun::Security::X509
     include CertAttrSet
     
     class_module.module_eval {
-      # 
       # Identifier for this attribute, to be used with the
       # get, set, delete methods of Certificate, x509 type.
       const_set_lazy(:IDENT) { "x509.info.extensions.NetscapeCertType" }
       const_attr_reader  :IDENT
       
-      # 
       # Attribute names.
       const_set_lazy(:NAME) { "NetscapeCertType" }
       const_attr_reader  :NAME
@@ -90,7 +86,6 @@ module Sun::Security::X509
       const_set_lazy(:CertType_data) { Array.typed(::Java::Int).new([2, 16, 840, 1, 113730, 1, 1]) }
       const_attr_reader  :CertType_data
       
-      # 
       # Object identifier for the Netscape-Cert-Type extension.
       
       def netscape_cert_type_id
@@ -189,7 +184,6 @@ module Sun::Security::X509
     end
     
     typesig { [::Java::Int] }
-    # 
     # Check if bit is set.
     # 
     # @param position the position in the bit string to check.
@@ -198,7 +192,6 @@ module Sun::Security::X509
     end
     
     typesig { [::Java::Int, ::Java::Boolean] }
-    # 
     # Set the bit at the specified position.
     def set(position, val)
       # enlarge bitString if necessary
@@ -211,7 +204,6 @@ module Sun::Security::X509
     end
     
     typesig { [Array.typed(::Java::Byte)] }
-    # 
     # Create a NetscapeCertTypeExtension with the passed bit settings.
     # The criticality is set to true.
     # 
@@ -226,7 +218,6 @@ module Sun::Security::X509
     end
     
     typesig { [Array.typed(::Java::Boolean)] }
-    # 
     # Create a NetscapeCertTypeExtension with the passed bit settings.
     # The criticality is set to true.
     # 
@@ -241,7 +232,6 @@ module Sun::Security::X509
     end
     
     typesig { [Boolean, Object] }
-    # 
     # Create the extension from the passed DER encoded value of the same.
     # 
     # @param critical true if the extension is to be treated as critical.
@@ -259,7 +249,6 @@ module Sun::Security::X509
     end
     
     typesig { [] }
-    # 
     # Create a default key usage.
     def initialize
       @bit_string = nil
@@ -270,7 +259,6 @@ module Sun::Security::X509
     end
     
     typesig { [String, Object] }
-    # 
     # Set the attribute value.
     def set(name, obj)
       if (!(obj.is_a?(Boolean)))
@@ -282,14 +270,12 @@ module Sun::Security::X509
     end
     
     typesig { [String] }
-    # 
     # Get the attribute value.
     def get(name)
       return Boolean.value_of(is_set(get_position(name)))
     end
     
     typesig { [String] }
-    # 
     # Delete the attribute value.
     def delete(name)
       set(get_position(name), false)
@@ -297,7 +283,6 @@ module Sun::Security::X509
     end
     
     typesig { [] }
-    # 
     # Returns a printable representation of the NetscapeCertType.
     def to_s
       s = (super).to_s + "NetscapeCertType [\n"
@@ -330,7 +315,6 @@ module Sun::Security::X509
     end
     
     typesig { [OutputStream] }
-    # 
     # Write the extension to the DerOutputStream.
     # 
     # @param out the DerOutputStream to write the extension to.
@@ -347,7 +331,6 @@ module Sun::Security::X509
     end
     
     typesig { [] }
-    # 
     # Return an enumeration of names of attributes existing within this
     # attribute.
     def get_elements
@@ -355,14 +338,12 @@ module Sun::Security::X509
     end
     
     typesig { [] }
-    # 
     # Return the name of this attribute.
     def get_name
       return (NAME)
     end
     
     typesig { [] }
-    # 
     # Get a boolean array representing the bits of this extension,
     # as it maps to the KeyUsage extension.
     # @return the bit values of this extension mapped to the bit values

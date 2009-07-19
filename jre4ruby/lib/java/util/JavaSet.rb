@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 1997-2006 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -31,7 +30,6 @@ module Java::Util
     }
   end
   
-  # 
   # A collection that contains no duplicate elements.  More formally, sets
   # contain no pair of elements <code>e1</code> and <code>e2</code> such that
   # <code>e1.equals(e2)</code>, and at most one null element.  As implied by
@@ -103,7 +101,6 @@ module Java::Util
     end
     
     typesig { [] }
-    # 
     # Returns <tt>true</tt> if this set contains no elements.
     # 
     # @return <tt>true</tt> if this set contains no elements
@@ -112,7 +109,6 @@ module Java::Util
     end
     
     typesig { [Object] }
-    # 
     # Returns <tt>true</tt> if this set contains the specified element.
     # More formally, returns <tt>true</tt> if and only if this set
     # contains an element <tt>e</tt> such that
@@ -129,7 +125,6 @@ module Java::Util
     end
     
     typesig { [] }
-    # 
     # Returns an iterator over the elements in this set.  The elements are
     # returned in no particular order (unless this set is an instance of some
     # class that provides a guarantee).
@@ -140,7 +135,6 @@ module Java::Util
     end
     
     typesig { [] }
-    # 
     # Returns an array containing all of the elements in this set.
     # If this set makes any guarantees as to what order its elements
     # are returned by its iterator, this method must return the
@@ -160,7 +154,6 @@ module Java::Util
     end
     
     typesig { [Array.typed(T)] }
-    # 
     # Returns an array containing all of the elements in this set; the
     # runtime type of the returned array is that of the specified array.
     # If the set fits in the specified array, it is returned therein.
@@ -241,7 +234,6 @@ module Java::Util
     end
     
     typesig { [Object] }
-    # 
     # Removes the specified element from this set if it is present
     # (optional operation).  More formally, removes an element <tt>e</tt>
     # such that
@@ -285,7 +277,6 @@ module Java::Util
     end
     
     typesig { [Collection] }
-    # 
     # Adds all of the elements in the specified collection to this set if
     # they're not already present (optional operation).  If the specified
     # collection is also a set, the <tt>addAll</tt> operation effectively
@@ -311,7 +302,6 @@ module Java::Util
     end
     
     typesig { [Collection] }
-    # 
     # Retains only the elements in this set that are contained in the
     # specified collection (optional operation).  In other words, removes
     # from this set all of its elements that are not contained in the
@@ -334,7 +324,6 @@ module Java::Util
     end
     
     typesig { [Collection] }
-    # 
     # Removes from this set all of its elements that are contained in the
     # specified collection (optional operation).  If the specified
     # collection is also a set, this operation effectively modifies this
@@ -357,7 +346,6 @@ module Java::Util
     end
     
     typesig { [] }
-    # 
     # Removes all of the elements from this set (optional operation).
     # The set will be empty after this call returns.
     # 
@@ -385,7 +373,6 @@ module Java::Util
     end
     
     typesig { [] }
-    # 
     # Returns the hash code value for this set.  The hash code of a set is
     # defined to be the sum of the hash codes of the elements in the set,
     # where the hash code of a <tt>null</tt> element is defined to be zero.

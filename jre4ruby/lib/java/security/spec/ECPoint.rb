@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 2003 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -32,7 +31,6 @@ module Java::Security::Spec
     }
   end
   
-  # 
   # This immutable class represents a point on an elliptic curve (EC)
   # in affine coordinates. Other coordinate systems can
   # extend this class to represent this point in other
@@ -57,7 +55,6 @@ module Java::Security::Spec
     undef_method :y=
     
     class_module.module_eval {
-      # 
       # This defines the point at infinity.
       const_set_lazy(:POINT_INFINITY) { ECPoint.new }
       const_attr_reader  :POINT_INFINITY
@@ -73,7 +70,6 @@ module Java::Security::Spec
     end
     
     typesig { [BigInteger, BigInteger] }
-    # 
     # Creates an ECPoint from the specified affine x-coordinate
     # <code>x</code> and affine y-coordinate <code>y</code>.
     # @param x the affine x-coordinate.
@@ -91,7 +87,6 @@ module Java::Security::Spec
     end
     
     typesig { [] }
-    # 
     # Returns the affine x-coordinate <code>x</code>.
     # Note: POINT_INFINITY has a null affine x-coordinate.
     # @return the affine x-coordinate.
@@ -100,7 +95,6 @@ module Java::Security::Spec
     end
     
     typesig { [] }
-    # 
     # Returns the affine y-coordinate <code>y</code>.
     # Note: POINT_INFINITY has a null affine y-coordinate.
     # @return the affine y-coordinate.
@@ -109,7 +103,6 @@ module Java::Security::Spec
     end
     
     typesig { [Object] }
-    # 
     # Compares this elliptic curve point for equality with
     # the specified object.
     # @param obj the object to be compared.
@@ -129,7 +122,6 @@ module Java::Security::Spec
     end
     
     typesig { [] }
-    # 
     # Returns a hash code value for this elliptic curve point.
     # @return a hash code value.
     def hash_code

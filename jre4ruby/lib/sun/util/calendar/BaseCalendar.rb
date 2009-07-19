@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 2003-2004 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -33,7 +32,6 @@ module Sun::Util::Calendar
     }
   end
   
-  # 
   # The <code>BaseCalendar</code> provides basic calendar calculation
   # functions to support the Julian, Gregorian, and Gregorian-based
   # calendar systems.
@@ -379,7 +377,6 @@ module Sun::Util::Calendar
     end
     
     typesig { [CalendarDate] }
-    # 
     # Returns 366 if the specified date is in a leap year, or 365
     # otherwise This method does not perform the normalization with
     # the specified <code>CalendarDate</code>. The
@@ -490,7 +487,6 @@ module Sun::Util::Calendar
     end
     
     typesig { [CalendarDate, ::Java::Long] }
-    # 
     # Calculates calendar fields and store them in the specified
     # <code>CalendarDate</code>.
     # 
@@ -544,7 +540,6 @@ module Sun::Util::Calendar
     end
     
     typesig { [CalendarDate] }
-    # 
     # Returns the day of week of the given Gregorian date.
     def get_day_of_week(date)
       fixed_date = get_fixed_date(date)
@@ -568,7 +563,6 @@ module Sun::Util::Calendar
     end
     
     typesig { [::Java::Long] }
-    # 
     # Returns the Gregorian year number of the given fixed date.
     def get_gregorian_year_from_fixed_date(fixed_date)
       d0 = 0
@@ -610,7 +604,6 @@ module Sun::Util::Calendar
     end
     
     typesig { [CalendarDate] }
-    # 
     # @return true if the specified year is a Gregorian leap year, or
     # false otherwise.
     # @see BaseCalendar#isGregorianLeapYear

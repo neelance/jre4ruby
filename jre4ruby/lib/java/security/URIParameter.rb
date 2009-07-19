@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 2005 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -31,7 +30,6 @@ module Java::Security
     }
   end
   
-  # 
   # A parameter that contains a URI pointing to data intended for a
   # PolicySpi or ConfigurationSpi implementation.
   # 
@@ -48,7 +46,6 @@ module Java::Security
     undef_method :uri=
     
     typesig { [Java::Net::URI] }
-    # 
     # Constructs a URIParameter with the URI pointing to
     # data intended for an SPI implementation.
     # 
@@ -64,7 +61,6 @@ module Java::Security
     end
     
     typesig { [] }
-    # 
     # Returns the URI.
     # 
     # @return uri the URI.

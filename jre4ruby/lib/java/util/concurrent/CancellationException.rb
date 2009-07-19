@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
 # This code is free software; you can redistribute it and/or modify it
@@ -40,7 +39,6 @@ module Java::Util::Concurrent
     }
   end
   
-  # 
   # Exception indicating that the result of a value-producing task,
   # such as a {@link FutureTask}, cannot be retrieved because the task
   # was cancelled.
@@ -56,14 +54,12 @@ module Java::Util::Concurrent
     }
     
     typesig { [] }
-    # 
     # Constructs a <tt>CancellationException</tt> with no detail message.
     def initialize
       super()
     end
     
     typesig { [String] }
-    # 
     # Constructs a <tt>CancellationException</tt> with the specified detail
     # message.
     # 

@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 2003-2005 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -31,7 +30,6 @@ module Java::Util
     }
   end
   
-  # 
   # Unchecked exception thrown when a character with an invalid Unicode code
   # point as defined by {@link Character#isValidCodePoint} is passed to the
   # {@link Formatter}.
@@ -56,7 +54,6 @@ module Java::Util
     undef_method :c=
     
     typesig { [::Java::Int] }
-    # 
     # Constructs an instance of this class with the specified illegal code
     # point as defined by {@link Character#isValidCodePoint}.
     # 
@@ -69,7 +66,6 @@ module Java::Util
     end
     
     typesig { [] }
-    # 
     # Returns the illegal code point as defined by {@link
     # Character#isValidCodePoint}.
     # 

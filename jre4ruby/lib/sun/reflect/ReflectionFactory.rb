@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 2001-2004 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -97,7 +96,6 @@ module Sun::Reflect
       end
       alias_method :attr_lang_reflect_access=, :lang_reflect_access=
       
-      # 
       # "Inflation" mechanism. Loading bytecodes to implement
       # Method.invoke() and Constructor.newInstance() currently costs
       # 3-4x more than an invocation via native code for the first
@@ -139,7 +137,6 @@ module Sun::Reflect
     end
     
     class_module.module_eval {
-      # 
       # A convenience class for acquiring the capability to instantiate
       # reflective objects.  Use this instead of a raw call to {@link
       # #getReflectionFactory} in order to avoid being limited by the
@@ -165,7 +162,6 @@ module Sun::Reflect
       end }
       
       typesig { [] }
-      # 
       # Provides the caller with the capability to instantiate reflective
       # objects.
       # 
@@ -205,7 +201,6 @@ module Sun::Reflect
     end
     
     typesig { [Field, ::Java::Boolean] }
-    # 
     # Note: this routine can cause the declaring class for the field
     # be initialized and therefore must not be called until the
     # first get/set of this field.

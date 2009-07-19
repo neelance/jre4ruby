@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 2002-2007 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -37,7 +36,6 @@ module Sun::Nio::Cs::Ext
     }
   end
   
-  # 
   # Provider for extended charsets.
   class ExtendedCharsets < ExtendedCharsetsImports.const_get :AbstractCharsetProvider
     include_class_members ExtendedCharsetsImports

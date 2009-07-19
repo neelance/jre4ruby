@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 1997-2005 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -31,7 +30,6 @@ module Java::Security::Spec
     }
   end
   
-  # 
   # This class represents a public or private key in encoded format.
   # 
   # @author Jan Luehe
@@ -55,7 +53,6 @@ module Java::Security::Spec
     undef_method :encoded_key=
     
     typesig { [Array.typed(::Java::Byte)] }
-    # 
     # Creates a new EncodedKeySpec with the given encoded key.
     # 
     # @param encodedKey the encoded key. The contents of the
@@ -68,7 +65,6 @@ module Java::Security::Spec
     end
     
     typesig { [] }
-    # 
     # Returns the encoded key.
     # 
     # @return the encoded key. Returns a new array each time
@@ -78,7 +74,6 @@ module Java::Security::Spec
     end
     
     typesig { [] }
-    # 
     # Returns the name of the encoding format associated with this
     # key specification.
     # 

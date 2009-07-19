@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 1996-2006 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -31,7 +30,6 @@ module Java::Lang::Reflect
     }
   end
   
-  # 
   # Member is an interface that reflects identifying information about
   # a single member (a field or a method) or a constructor.
   # 
@@ -45,14 +43,12 @@ module Java::Lang::Reflect
     include_class_members MemberImports
     
     class_module.module_eval {
-      # 
       # Identifies the set of all public members of a class or interface,
       # including inherited members.
       # @see java.lang.SecurityManager#checkMemberAccess
       const_set_lazy(:PUBLIC) { 0 }
       const_attr_reader  :PUBLIC
       
-      # 
       # Identifies the set of declared members of a class or interface.
       # Inherited members are not included.
       # @see java.lang.SecurityManager#checkMemberAccess
@@ -61,7 +57,6 @@ module Java::Lang::Reflect
     }
     
     typesig { [] }
-    # 
     # Returns the Class object representing the class or interface
     # that declares the member or constructor represented by this Member.
     # 
@@ -72,7 +67,6 @@ module Java::Lang::Reflect
     end
     
     typesig { [] }
-    # 
     # Returns the simple name of the underlying member or constructor
     # represented by this Member.
     # 
@@ -82,7 +76,6 @@ module Java::Lang::Reflect
     end
     
     typesig { [] }
-    # 
     # Returns the Java language modifiers for the member or
     # constructor represented by this Member, as an integer.  The
     # Modifier class should be used to decode the modifiers in
@@ -95,7 +88,6 @@ module Java::Lang::Reflect
     end
     
     typesig { [] }
-    # 
     # Returns {@code true} if this member was introduced by
     # the compiler; returns {@code false} otherwise.
     # 

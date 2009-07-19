@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 1995-2005 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -38,7 +37,6 @@ module Sun::Misc
     }
   end
   
-  # 
   # This class defines the encoding half of character encoders.
   # A character encoder is an algorithim for transforming 8 bit binary
   # data into text (generally 7 bit ASCII or 8 bit ISO-Latin-1 text)
@@ -99,7 +97,6 @@ module Sun::Misc
     end
     
     typesig { [OutputStream] }
-    # 
     # Encode the prefix for the entire buffer. By default is simply
     # opens the PrintStream for use by the other functions.
     def encode_buffer_prefix(a_stream)
@@ -107,19 +104,16 @@ module Sun::Misc
     end
     
     typesig { [OutputStream] }
-    # 
     # Encode the suffix for the entire buffer.
     def encode_buffer_suffix(a_stream)
     end
     
     typesig { [OutputStream, ::Java::Int] }
-    # 
     # Encode the prefix that starts every output line.
     def encode_line_prefix(a_stream, a_length)
     end
     
     typesig { [OutputStream] }
-    # 
     # Encode the suffix that ends every output line. By default
     # this method just prints a <newline> into the output stream.
     def encode_line_suffix(a_stream)
@@ -133,7 +127,6 @@ module Sun::Misc
     end
     
     typesig { [InputStream, Array.typed(::Java::Byte)] }
-    # 
     # This method works around the bizarre semantics of BufferedInputStream's
     # read method.
     def read_fully(in_, buffer)
@@ -150,7 +143,6 @@ module Sun::Misc
     end
     
     typesig { [InputStream, OutputStream] }
-    # 
     # Encode bytes from the input stream, and write them as text characters
     # to the output stream. This method will run until it exhausts the
     # input stream, but does not print the line suffix for a final
@@ -185,7 +177,6 @@ module Sun::Misc
     end
     
     typesig { [Array.typed(::Java::Byte), OutputStream] }
-    # 
     # Encode the buffer in <i>aBuffer</i> and write the encoded
     # result to the OutputStream <i>aStream</i>.
     def encode(a_buffer, a_stream)
@@ -194,7 +185,6 @@ module Sun::Misc
     end
     
     typesig { [Array.typed(::Java::Byte)] }
-    # 
     # A 'streamless' version of encode that simply takes a buffer of
     # bytes and returns a string containing the encoded buffer.
     def encode(a_buffer)
@@ -205,7 +195,7 @@ module Sun::Misc
         encode(in_stream, out_stream)
         # explicit ascii->unicode conversion
         ret_val = (out_stream.to_s("8859_1")).to_s
-      rescue Exception => IOException
+      rescue Exception => ioexception
         # This should never happen.
         raise JavaError.new("CharacterEncoder.encode internal error")
       end
@@ -213,7 +203,6 @@ module Sun::Misc
     end
     
     typesig { [ByteBuffer] }
-    # 
     # Return a byte array from the remaining bytes in this ByteBuffer.
     # <P>
     # The ByteBuffer's position will be advanced to ByteBuffer's limit.
@@ -222,11 +211,9 @@ module Sun::Misc
     # byte array backing the ByteBuffer.  If this is not possible, a
     # new byte array will be created.
     def get_bytes(bb)
-      # 
       # This should never return a BufferOverflowException, as we're
       # careful to allocate just the right amount.
       buf = nil
-      # 
       # If it has a usable backing byte buffer, use it.  Use only
       # if the array exactly represents the current ByteBuffer.
       if (bb.has_array)
@@ -237,12 +224,10 @@ module Sun::Misc
         end
       end
       if ((buf).nil?)
-        # 
         # This class doesn't have a concept of encode(buf, len, off),
         # so if we have a partial buffer, we must reallocate
         # space.
         buf = Array.typed(::Java::Byte).new(bb.remaining) { 0 }
-        # 
         # position() automatically updated
         bb.get(buf)
       end
@@ -250,7 +235,6 @@ module Sun::Misc
     end
     
     typesig { [ByteBuffer, OutputStream] }
-    # 
     # Encode the <i>aBuffer</i> ByteBuffer and write the encoded
     # result to the OutputStream <i>aStream</i>.
     # <P>
@@ -261,7 +245,6 @@ module Sun::Misc
     end
     
     typesig { [ByteBuffer] }
-    # 
     # A 'streamless' version of encode that simply takes a ByteBuffer
     # and returns a string containing the encoded buffer.
     # <P>
@@ -272,7 +255,6 @@ module Sun::Misc
     end
     
     typesig { [InputStream, OutputStream] }
-    # 
     # Encode bytes from the input stream, and write them as text characters
     # to the output stream. This method will run until it exhausts the
     # input stream. It differs from encode in that it will add the
@@ -306,7 +288,6 @@ module Sun::Misc
     end
     
     typesig { [Array.typed(::Java::Byte), OutputStream] }
-    # 
     # Encode the buffer in <i>aBuffer</i> and write the encoded
     # result to the OutputStream <i>aStream</i>.
     def encode_buffer(a_buffer, a_stream)
@@ -315,7 +296,6 @@ module Sun::Misc
     end
     
     typesig { [Array.typed(::Java::Byte)] }
-    # 
     # A 'streamless' version of encode that simply takes a buffer of
     # bytes and returns a string containing the encoded buffer.
     def encode_buffer(a_buffer)
@@ -323,7 +303,7 @@ module Sun::Misc
       in_stream = ByteArrayInputStream.new(a_buffer)
       begin
         encode_buffer(in_stream, out_stream)
-      rescue Exception => IOException
+      rescue Exception => ioexception
         # This should never happen.
         raise JavaError.new("CharacterEncoder.encodeBuffer internal error")
       end
@@ -331,7 +311,6 @@ module Sun::Misc
     end
     
     typesig { [ByteBuffer, OutputStream] }
-    # 
     # Encode the <i>aBuffer</i> ByteBuffer and write the encoded
     # result to the OutputStream <i>aStream</i>.
     # <P>
@@ -342,7 +321,6 @@ module Sun::Misc
     end
     
     typesig { [ByteBuffer] }
-    # 
     # A 'streamless' version of encode that simply takes a ByteBuffer
     # and returns a string containing the encoded buffer.
     # <P>

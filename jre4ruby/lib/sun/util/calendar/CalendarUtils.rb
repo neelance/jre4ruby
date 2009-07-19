@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 2003 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -38,7 +37,6 @@ module Sun::Util::Calendar
     
     class_module.module_eval {
       typesig { [::Java::Int] }
-      # 
       # Returns whether the specified year is a leap year in the Gregorian
       # calendar system.
       # 
@@ -51,7 +49,6 @@ module Sun::Util::Calendar
       end
       
       typesig { [::Java::Int] }
-      # 
       # Returns whether the specified year is a leap year in the Julian
       # calendar system. The year number must be a normalized one
       # (e.g., 45 B.C.E. is 1-45).
@@ -65,7 +62,6 @@ module Sun::Util::Calendar
       end
       
       typesig { [::Java::Long, ::Java::Long] }
-      # 
       # Divides two integers and returns the floor of the quotient.
       # For example, <code>floorDivide(-1, 4)</code> returns -1 while
       # -1/4 is 0.
@@ -78,7 +74,6 @@ module Sun::Util::Calendar
       end
       
       typesig { [::Java::Int, ::Java::Int] }
-      # 
       # Divides two integers and returns the floor of the quotient.
       # For example, <code>floorDivide(-1, 4)</code> returns -1 while
       # -1/4 is 0.
@@ -91,7 +86,6 @@ module Sun::Util::Calendar
       end
       
       typesig { [::Java::Int, ::Java::Int, Array.typed(::Java::Int)] }
-      # 
       # Divides two integers and returns the floor of the quotient and
       # the modulus remainder.  For example,
       # <code>floorDivide(-1,4)</code> returns <code>-1</code> with
@@ -114,7 +108,6 @@ module Sun::Util::Calendar
       end
       
       typesig { [::Java::Long, ::Java::Int, Array.typed(::Java::Int)] }
-      # 
       # Divides two integers and returns the floor of the quotient and
       # the modulus remainder.  For example,
       # <code>floorDivide(-1,4)</code> returns <code>-1</code> with
@@ -159,7 +152,6 @@ module Sun::Util::Calendar
       end
       
       typesig { [StringBuilder, ::Java::Int, ::Java::Int] }
-      # 
       # Mimics sprintf(buf, "%0*d", decaimal, width).
       def sprintf0d(sb, value, width)
         d = value

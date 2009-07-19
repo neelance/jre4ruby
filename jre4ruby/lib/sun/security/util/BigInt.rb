@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 1996-2006 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -32,7 +31,6 @@ module Sun::Security::Util
     }
   end
   
-  # 
   # A low-overhead arbitrary-precision <em>unsigned</em> integer.
   # This is intended for use with ASN.1 parsing, and printing of
   # such parsed values.  Convert to "BigInteger" if you need to do
@@ -55,7 +53,6 @@ module Sun::Security::Util
     undef_method :places=
     
     typesig { [Array.typed(::Java::Byte)] }
-    # 
     # Constructs a "Big" integer from a set of (big-endian) bytes.
     # Leading zeroes should be stripped off.
     # 
@@ -67,7 +64,6 @@ module Sun::Security::Util
     end
     
     typesig { [BigInteger] }
-    # 
     # Constructs a "Big" integer from a "BigInteger", which must be
     # positive (or zero) in value.
     def initialize(i)
@@ -90,7 +86,6 @@ module Sun::Security::Util
     end
     
     typesig { [::Java::Int] }
-    # 
     # Constructs a "Big" integer from a normal Java integer.
     # 
     # @param i the java primitive integer
@@ -122,7 +117,6 @@ module Sun::Security::Util
     end
     
     typesig { [] }
-    # 
     # Converts the "big" integer to a java primitive integer.
     # 
     # @excpet NumberFormatException if 32 bits is insufficient.
@@ -140,7 +134,6 @@ module Sun::Security::Util
     end
     
     typesig { [] }
-    # 
     # Returns a hexadecimal printed representation.  The value is
     # formatted to fit on lines of at least 75 characters, with
     # embedded newlines.  Words are separated for readability,
@@ -150,7 +143,6 @@ module Sun::Security::Util
     end
     
     typesig { [] }
-    # 
     # Returns a BigInteger value which supports many arithmetic
     # operations. Assumes negative values will never occur.
     def to_big_integer
@@ -158,7 +150,6 @@ module Sun::Security::Util
     end
     
     typesig { [] }
-    # 
     # Returns the data as a byte array.  The most significant bit
     # of the array is bit zero (as in <code>java.math.BigInteger</code>).
     def to_byte_array
@@ -196,7 +187,6 @@ module Sun::Security::Util
     end
     
     typesig { [Object] }
-    # 
     # Returns true iff the parameter is a numerically equivalent
     # BigInt.
     # 
@@ -209,7 +199,6 @@ module Sun::Security::Util
     end
     
     typesig { [BigInt] }
-    # 
     # Returns true iff the parameter is numerically equivalent.
     # 
     # @param other the BigInt being compared with this one.
@@ -232,7 +221,6 @@ module Sun::Security::Util
     end
     
     typesig { [] }
-    # 
     # Returns a hashcode for this BigInt.
     # 
     # @return a hashcode for this BigInt.

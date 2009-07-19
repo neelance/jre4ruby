@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 2000-2005 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -43,7 +42,6 @@ module Sun::Net::Spi::Nameservice::Dns
     }
   end
   
-  # 
   # A name service provider based on JNDI-DNS.
   class DNSNameService 
     include_class_members DNSNameServiceImports
@@ -190,7 +188,6 @@ module Sun::Net::Spi::Nameservice::Dns
     end
     
     typesig { [DirContext, String, Array.typed(String), ::Java::Int] }
-    # 
     # Resolves the specified entry in DNS.
     # 
     # Canonical name records are recursively resolved (to a maximum
@@ -366,7 +363,7 @@ module Sun::Net::Spi::Nameservice::Dns
               results = resolve(ctx, host + "." + parent_domain, ids, 0)
               break
             rescue UnknownHostException => x
-              uhe = x_
+              uhe = x
               if (using_search_list)
                 break
               end
@@ -388,15 +385,14 @@ module Sun::Net::Spi::Nameservice::Dns
         raise AssertError if not (!(uhe).nil?)
         raise uhe
       end
-      # 
       # Convert the array list into a byte aray list - this
       # filters out any invalid IPv4/IPv6 addresses.
       raise AssertError if not (results.size > 0)
       addrs = Array.typed(InetAddress).new(results.size) { nil }
       count = 0
-      i_ = 0
-      while i_ < results.size
-        addr_string = results.get(i_)
+      i = 0
+      while i < results.size
+        addr_string = results.get(i)
         addr = IPAddressUtil.text_to_numeric_format_v4(addr_string)
         if ((addr).nil?)
           addr = IPAddressUtil.text_to_numeric_format_v6(addr_string)
@@ -404,9 +400,8 @@ module Sun::Net::Spi::Nameservice::Dns
         if (!(addr).nil?)
           addrs[((count += 1) - 1)] = InetAddress.get_by_address(host, addr)
         end
-        ((i_ += 1) - 1)
+        ((i += 1) - 1)
       end
-      # 
       # If addresses are filtered then we need to resize the
       # array. Additionally if all addresses are filtered then
       # we throw an exception.
@@ -415,10 +410,10 @@ module Sun::Net::Spi::Nameservice::Dns
       end
       if (count < results.size)
         tmp = Array.typed(InetAddress).new(count) { nil }
-        i__ = 0
-        while i__ < count
-          tmp[i__] = addrs[i__]
-          ((i__ += 1) - 1)
+        i_ = 0
+        while i_ < count
+          tmp[i_] = addrs[i_]
+          ((i_ += 1) - 1)
         end
         addrs = tmp
       end
@@ -426,7 +421,6 @@ module Sun::Net::Spi::Nameservice::Dns
     end
     
     typesig { [Array.typed(::Java::Byte)] }
-    # 
     # Reverse lookup code. I.E: find a host name from an IP address.
     # IPv4 addresses are mapped in the IN-ADDR.ARPA. top domain, while
     # IPv6 addresses can be in IP6.ARPA or IP6.INT.
@@ -461,10 +455,10 @@ module Sun::Net::Spi::Nameservice::Dns
             # lookups from IP6.INT. to IP6.ARPA., we need to check
             # both. I.E. first the new one, IP6.ARPA, then if it fails
             # the older one, IP6.INT
-            i_ = addr.attr_length - 1
-            while i_ >= 0
-              literalip += (JavaInteger.to_hex_string((addr[i_] & 0xf))).to_s + "." + (JavaInteger.to_hex_string((addr[i_] & 0xf0) >> 4)).to_s + "."
-              ((i_ -= 1) + 1)
+            i = addr.attr_length - 1
+            while i >= 0
+              literalip += (JavaInteger.to_hex_string((addr[i] & 0xf))).to_s + "." + (JavaInteger.to_hex_string((addr[i] & 0xf0) >> 4)).to_s + "."
+              ((i -= 1) + 1)
             end
             ip6lit = literalip + "IP6.ARPA."
             begin
@@ -482,7 +476,7 @@ module Sun::Net::Spi::Nameservice::Dns
           end
         end
       rescue Exception => e
-        raise UnknownHostException.new(e_.get_message)
+        raise UnknownHostException.new(e.get_message)
       end
       # Either we couldn't find it or the address was neither IPv4 or IPv6
       if ((host).nil?)
@@ -509,7 +503,6 @@ module Sun::Net::Spi::Nameservice::Dns
       end
       
       typesig { [JavaList] }
-      # 
       # @return String containing the JNDI-DNS provider URL
       # corresponding to the supplied List of nameservers.
       def create_provider_url(ns_list)
@@ -522,7 +515,6 @@ module Sun::Net::Spi::Nameservice::Dns
       end
       
       typesig { [String] }
-      # 
       # @return String containing the JNDI-DNS provider URL
       # corresponding to the list of nameservers
       # contained in the provided str.

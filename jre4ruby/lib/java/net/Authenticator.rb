@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 1997-2004 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -31,7 +30,6 @@ module Java::Net
     }
   end
   
-  # 
   # The class Authenticator represents an object that knows how to obtain
   # authentication for a network connection.  Usually, it will do this
   # by prompting the user for information.
@@ -133,7 +131,6 @@ module Java::Net
       const_set_lazy(:SERVER) { RequestorType::SERVER }
       const_attr_reader  :SERVER
       
-      # 
       # The type of the entity requesting authentication.
       # 
       # @since 1.5
@@ -141,12 +138,10 @@ module Java::Net
         include_class_members Authenticator
         
         class_module.module_eval {
-          # 
           # Entity requesting authentication is a HTTP proxy server.
           const_set_lazy(:PROXY) { RequestorType.new.set_value_name("PROXY") }
           const_attr_reader  :PROXY
           
-          # 
           # Entity requesting authentication is a HTTP origin server.
           const_set_lazy(:SERVER) { RequestorType.new.set_value_name("SERVER") }
           const_attr_reader  :SERVER
@@ -193,7 +188,6 @@ module Java::Net
     
     class_module.module_eval {
       typesig { [Authenticator] }
-      # 
       # Sets the authenticator that will be used by the networking code
       # when a proxy or an HTTP server asks for authentication.
       # <p>
@@ -224,7 +218,6 @@ module Java::Net
       end
       
       typesig { [InetAddress, ::Java::Int, String, String, String] }
-      # 
       # Ask the authenticator that has been registered with the system
       # for a password.
       # <p>
@@ -273,7 +266,6 @@ module Java::Net
       end
       
       typesig { [String, InetAddress, ::Java::Int, String, String, String] }
-      # 
       # Ask the authenticator that has been registered with the system
       # for a password. This is the preferred method for requesting a password
       # because the hostname can be provided in cases where the InetAddress
@@ -327,7 +319,6 @@ module Java::Net
       end
       
       typesig { [String, InetAddress, ::Java::Int, String, String, String, URL, RequestorType] }
-      # 
       # Ask the authenticator that has been registered with the system
       # for a password.
       # <p>
@@ -386,7 +377,6 @@ module Java::Net
     }
     
     typesig { [] }
-    # 
     # Gets the <code>hostname</code> of the
     # site or proxy requesting authentication, or <code>null</code>
     # if not available.
@@ -399,7 +389,6 @@ module Java::Net
     end
     
     typesig { [] }
-    # 
     # Gets the <code>InetAddress</code> of the
     # site requesting authorization, or <code>null</code>
     # if not available.
@@ -411,7 +400,6 @@ module Java::Net
     end
     
     typesig { [] }
-    # 
     # Gets the port number for the requested connection.
     # @return an <code>int</code> indicating the
     # port for the requested connection.
@@ -420,7 +408,6 @@ module Java::Net
     end
     
     typesig { [] }
-    # 
     # Give the protocol that's requesting the connection.  Often this
     # will be based on a URL, but in a future JDK it could be, for
     # example, "SOCKS" for a password-protected SOCKS5 firewall.
@@ -434,7 +421,6 @@ module Java::Net
     end
     
     typesig { [] }
-    # 
     # Gets the prompt string given by the requestor.
     # 
     # @return the prompt string given by the requestor (realm for
@@ -444,7 +430,6 @@ module Java::Net
     end
     
     typesig { [] }
-    # 
     # Gets the scheme of the requestor (the HTTP scheme
     # for an HTTP firewall, for example).
     # 
@@ -454,7 +439,6 @@ module Java::Net
     end
     
     typesig { [] }
-    # 
     # Called when password authorization is needed.  Subclasses should
     # override the default implementation, which returns null.
     # @return The PasswordAuthentication collected from the
@@ -464,7 +448,6 @@ module Java::Net
     end
     
     typesig { [] }
-    # 
     # Returns the URL that resulted in this
     # request for authentication.
     # 
@@ -476,7 +459,6 @@ module Java::Net
     end
     
     typesig { [] }
-    # 
     # Returns whether the requestor is a Proxy or a Server.
     # 
     # @since 1.5

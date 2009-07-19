@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 2003-2006 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -32,7 +31,6 @@ module Java::Lang::Management
     }
   end
   
-  # 
   # The management interface for the memory system of
   # the Java virtual machine.
   # 
@@ -206,7 +204,6 @@ module Java::Lang::Management
     include_class_members MemoryMXBeanImports
     
     typesig { [] }
-    # 
     # Returns the approximate number of objects for which
     # finalization is pending.
     # 
@@ -217,7 +214,6 @@ module Java::Lang::Management
     end
     
     typesig { [] }
-    # 
     # Returns the current memory usage of the heap that
     # is used for object allocation.  The heap consists
     # of one or more memory pools.  The <tt>used</tt>
@@ -245,7 +241,6 @@ module Java::Lang::Management
     end
     
     typesig { [] }
-    # 
     # Returns the current memory usage of non-heap memory that
     # is used by the Java virtual machine.
     # The non-heap memory consists of one or more memory pools.
@@ -270,7 +265,6 @@ module Java::Lang::Management
     end
     
     typesig { [] }
-    # 
     # Tests if verbose output for the memory system is enabled.
     # 
     # @return <tt>true</tt> if verbose output for the memory
@@ -280,7 +274,6 @@ module Java::Lang::Management
     end
     
     typesig { [::Java::Boolean] }
-    # 
     # Enables or disables verbose output for the memory
     # system.  The verbose output information and the output stream
     # to which the verbose information is emitted are implementation
@@ -302,7 +295,6 @@ module Java::Lang::Management
     end
     
     typesig { [] }
-    # 
     # Runs the garbage collector.
     # The call <code>gc()</code> is effectively equivalent to the
     # call:

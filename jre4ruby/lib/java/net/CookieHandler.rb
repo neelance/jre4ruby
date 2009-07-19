@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 2003-2006 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -35,7 +34,6 @@ module Java::Net
     }
   end
   
-  # 
   # A CookieHandler object provides a callback mechanism to hook up a
   # HTTP state management policy implementation into the HTTP protocol
   # handler. The HTTP state management mechanism specifies a way to
@@ -57,7 +55,6 @@ module Java::Net
     include_class_members CookieHandlerImports
     
     class_module.module_eval {
-      # 
       # The system-wide cookie handler that will apply cookies to the
       # request headers and manage cookies from the response headers.
       # 
@@ -75,7 +72,6 @@ module Java::Net
       alias_method :attr_cookie_handler=, :cookie_handler=
       
       typesig { [] }
-      # 
       # Gets the system-wide cookie handler.
       # 
       # @return the system-wide cookie handler; A null return means
@@ -95,7 +91,6 @@ module Java::Net
       end
       
       typesig { [CookieHandler] }
-      # 
       # Sets (or unsets) the system-wide cookie handler.
       # 
       # Note: non-standard http protocol handlers may ignore this setting.
@@ -118,7 +113,6 @@ module Java::Net
     }
     
     typesig { [URI, Map] }
-    # 
     # Gets all the applicable cookies from a cookie cache for the
     # specified uri in the request header.
     # 
@@ -142,7 +136,6 @@ module Java::Net
     end
     
     typesig { [URI, Map] }
-    # 
     # Sets all the applicable cookies, examples are response header
     # fields that are named Set-Cookie2, present in the response
     # headers into a cookie cache.

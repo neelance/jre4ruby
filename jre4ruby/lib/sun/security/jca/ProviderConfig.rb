@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 2003-2006 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -35,7 +34,6 @@ module Sun::Security::Jca
     }
   end
   
-  # 
   # Class representing a configured provider. Encapsulates configuration
   # (className plus optional argument), the provider loading logic, and
   # the loaded Provider object itself.
@@ -271,7 +269,6 @@ module Sun::Security::Jca
     end
     
     typesig { [] }
-    # 
     # Get the provider object. Loads the provider if it is not already loaded.
     def get_provider
       # volatile variable load
@@ -310,7 +307,6 @@ module Sun::Security::Jca
     end
     
     typesig { [] }
-    # 
     # Load and instantiate the Provider described by this class.
     # 
     # NOTE use of doPrivileged().
@@ -392,7 +388,6 @@ module Sun::Security::Jca
     
     class_module.module_eval {
       typesig { [String] }
-      # 
       # Perform property expansion of the provider value.
       # 
       # NOTE use of doPrivileged().

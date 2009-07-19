@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 2001 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -32,7 +31,6 @@ module Sun::Nio::Ch
     }
   end
   
-  # 
   # Manipulates a native array of pollfd structs.
   # 
   # @author Mike McCloskey

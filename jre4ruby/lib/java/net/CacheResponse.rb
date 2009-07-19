@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 2003-2004 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -35,7 +34,6 @@ module Java::Net
     }
   end
   
-  # 
   # Represent channels for retrieving resources from the
   # ResponseCache. Instances of such a class provide an
   # InputStream that returns the entity body, and also a
@@ -47,7 +45,6 @@ module Java::Net
     include_class_members CacheResponseImports
     
     typesig { [] }
-    # 
     # Returns the response headers as a Map.
     # 
     # @return An immutable Map from response header field names to
@@ -60,7 +57,6 @@ module Java::Net
     end
     
     typesig { [] }
-    # 
     # Returns the response body as an InputStream.
     # 
     # @return an InputStream from which the response body can

@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 1994-2007 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -42,7 +41,6 @@ module Java::Io
     }
   end
   
-  # 
   # An abstract representation of file and directory pathnames.
   # 
   # <p> User interfaces and operating systems use system-dependent <em>pathname
@@ -142,7 +140,6 @@ module Java::Io
     include JavaComparable
     
     class_module.module_eval {
-      # 
       # The FileSystem object representing the platform's local file system.
       
       def fs
@@ -156,7 +153,6 @@ module Java::Io
       alias_method :attr_fs=, :fs=
     }
     
-    # 
     # This abstract pathname's normalized pathname string.  A normalized
     # pathname string uses the default name-separator character and does not
     # contain any duplicate or redundant separators.
@@ -168,7 +164,6 @@ module Java::Io
     alias_method :attr_path=, :path=
     undef_method :path=
     
-    # 
     # The length of this abstract pathname's prefix, or zero if it has no
     # prefix.
     attr_accessor :prefix_length
@@ -178,7 +173,6 @@ module Java::Io
     undef_method :prefix_length=
     
     typesig { [] }
-    # 
     # Returns the length of this abstract pathname's prefix.
     # For use by FileSystem classes.
     def get_prefix_length
@@ -186,7 +180,6 @@ module Java::Io
     end
     
     class_module.module_eval {
-      # 
       # The system-dependent default name-separator character.  This field is
       # initialized to contain the first character of the value of the system
       # property <code>file.separator</code>.  On UNIX systems the value of this
@@ -196,14 +189,12 @@ module Java::Io
       const_set_lazy(:SeparatorChar) { self.attr_fs.get_separator }
       const_attr_reader  :SeparatorChar
       
-      # 
       # The system-dependent default name-separator character, represented as a
       # string for convenience.  This string contains a single character, namely
       # <code>{@link #separatorChar}</code>.
       const_set_lazy(:Separator) { "" + (SeparatorChar).to_s }
       const_attr_reader  :Separator
       
-      # 
       # The system-dependent path-separator character.  This field is
       # initialized to contain the first character of the value of the system
       # property <code>path.separator</code>.  This character is used to
@@ -215,7 +206,6 @@ module Java::Io
       const_set_lazy(:PathSeparatorChar) { self.attr_fs.get_path_separator }
       const_attr_reader  :PathSeparatorChar
       
-      # 
       # The system-dependent path-separator character, represented as a string
       # for convenience.  This string contains a single character, namely
       # <code>{@link #pathSeparatorChar}</code>.
@@ -235,7 +225,6 @@ module Java::Io
     end
     
     typesig { [String, JavaFile] }
-    # 
     # Internal constructor for already-normalized pathname strings.
     # The parameter order is used to disambiguate this method from the
     # public(File, String) constructor.
@@ -249,7 +238,6 @@ module Java::Io
     end
     
     typesig { [String] }
-    # 
     # Creates a new <code>File</code> instance by converting the given
     # pathname string into an abstract pathname.  If the given string is
     # the empty string, then the result is the empty abstract pathname.
@@ -317,7 +305,6 @@ module Java::Io
     end
     
     typesig { [JavaFile, String] }
-    # 
     # Creates a new <code>File</code> instance from a parent abstract
     # pathname and a child pathname string.
     # 
@@ -360,7 +347,6 @@ module Java::Io
     end
     
     typesig { [URI] }
-    # 
     # Creates a new <tt>File</tt> instance by converting the given
     # <tt>file:</tt> URI into an abstract pathname.
     # 
@@ -451,7 +437,6 @@ module Java::Io
     end
     
     typesig { [] }
-    # 
     # Returns the pathname string of this abstract pathname's parent, or
     # <code>null</code> if this pathname does not name a parent directory.
     # 
@@ -475,7 +460,6 @@ module Java::Io
     end
     
     typesig { [] }
-    # 
     # Returns the abstract pathname of this abstract pathname's parent,
     # or <code>null</code> if this pathname does not name a parent
     # directory.
@@ -499,7 +483,6 @@ module Java::Io
     end
     
     typesig { [] }
-    # 
     # Converts this abstract pathname into a pathname string.  The resulting
     # string uses the {@link #separator default name-separator character} to
     # separate the names in the name sequence.
@@ -525,7 +508,6 @@ module Java::Io
     end
     
     typesig { [] }
-    # 
     # Returns the absolute pathname string of this abstract pathname.
     # 
     # <p> If this abstract pathname is already absolute, then the pathname
@@ -552,7 +534,6 @@ module Java::Io
     end
     
     typesig { [] }
-    # 
     # Returns the absolute form of this abstract pathname.  Equivalent to
     # <code>new&nbsp;File(this.{@link #getAbsolutePath})</code>.
     # 
@@ -569,7 +550,6 @@ module Java::Io
     end
     
     typesig { [] }
-    # 
     # Returns the canonical pathname string of this abstract pathname.
     # 
     # <p> A canonical pathname is both absolute and unique.  The precise
@@ -610,7 +590,6 @@ module Java::Io
     end
     
     typesig { [] }
-    # 
     # Returns the canonical form of this abstract pathname.  Equivalent to
     # <code>new&nbsp;File(this.{@link #getCanonicalPath})</code>.
     # 
@@ -652,7 +631,6 @@ module Java::Io
     }
     
     typesig { [] }
-    # 
     # Converts this abstract pathname into a <code>file:</code> URL.  The
     # exact form of the URL is system-dependent.  If it can be determined that
     # the file denoted by this abstract pathname is a directory, then the
@@ -679,7 +657,6 @@ module Java::Io
     end
     
     typesig { [] }
-    # 
     # Constructs a <tt>file:</tt> URI that represents this abstract pathname.
     # 
     # <p> The exact form of the URI is system-dependent.  If it can be
@@ -746,7 +723,6 @@ module Java::Io
     end
     
     typesig { [] }
-    # 
     # Tests whether the application can modify the file denoted by this
     # abstract pathname.
     # 
@@ -768,7 +744,6 @@ module Java::Io
     end
     
     typesig { [] }
-    # 
     # Tests whether the file or directory denoted by this abstract pathname
     # exists.
     # 
@@ -788,7 +763,6 @@ module Java::Io
     end
     
     typesig { [] }
-    # 
     # Tests whether the file denoted by this abstract pathname is a
     # directory.
     # 
@@ -809,7 +783,6 @@ module Java::Io
     end
     
     typesig { [] }
-    # 
     # Tests whether the file denoted by this abstract pathname is a normal
     # file.  A file is <em>normal</em> if it is not a directory and, in
     # addition, satisfies other system-dependent criteria.  Any non-directory
@@ -832,7 +805,6 @@ module Java::Io
     end
     
     typesig { [] }
-    # 
     # Tests whether the file named by this abstract pathname is a hidden
     # file.  The exact definition of <em>hidden</em> is system-dependent.  On
     # UNIX systems, a file is considered to be hidden if its name begins with
@@ -858,7 +830,6 @@ module Java::Io
     end
     
     typesig { [] }
-    # 
     # Returns the time that the file denoted by this abstract pathname was
     # last modified.
     # 
@@ -880,7 +851,6 @@ module Java::Io
     end
     
     typesig { [] }
-    # 
     # Returns the length of the file denoted by this abstract pathname.
     # The return value is unspecified if this pathname denotes a directory.
     # 
@@ -937,7 +907,6 @@ module Java::Io
     end
     
     typesig { [] }
-    # 
     # Deletes the file or directory denoted by this abstract pathname.  If
     # this pathname denotes a directory, then the directory must be empty in
     # order to be deleted.
@@ -958,7 +927,6 @@ module Java::Io
     end
     
     typesig { [] }
-    # 
     # Requests that the file or directory denoted by this abstract
     # pathname be deleted when the virtual machine terminates.
     # Files (or directories) are deleted in the reverse order that
@@ -993,7 +961,6 @@ module Java::Io
     end
     
     typesig { [] }
-    # 
     # Returns an array of strings naming the files and directories in the
     # directory denoted by this abstract pathname.
     # 
@@ -1027,7 +994,6 @@ module Java::Io
     end
     
     typesig { [FilenameFilter] }
-    # 
     # Returns an array of strings naming the files and directories in the
     # directory denoted by this abstract pathname that satisfy the specified
     # filter.  The behavior of this method is the same as that of the
@@ -1070,7 +1036,6 @@ module Java::Io
     end
     
     typesig { [] }
-    # 
     # Returns an array of abstract pathnames denoting the files in the
     # directory denoted by this abstract pathname.
     # 
@@ -1117,7 +1082,6 @@ module Java::Io
     end
     
     typesig { [FilenameFilter] }
-    # 
     # Returns an array of abstract pathnames denoting the files and
     # directories in the directory denoted by this abstract pathname that
     # satisfy the specified filter.  The behavior of this method is the same
@@ -1160,7 +1124,6 @@ module Java::Io
     end
     
     typesig { [FileFilter] }
-    # 
     # Returns an array of abstract pathnames denoting the files and
     # directories in the directory denoted by this abstract pathname that
     # satisfy the specified filter.  The behavior of this method is the same
@@ -1202,7 +1165,6 @@ module Java::Io
     end
     
     typesig { [] }
-    # 
     # Creates the directory named by this abstract pathname.
     # 
     # @return  <code>true</code> if and only if the directory was
@@ -1221,7 +1183,6 @@ module Java::Io
     end
     
     typesig { [] }
-    # 
     # Creates the directory named by this abstract pathname, including any
     # necessary but nonexistent parent directories.  Note that if this
     # operation fails it may have succeeded in creating some of the necessary
@@ -1258,7 +1219,6 @@ module Java::Io
     end
     
     typesig { [JavaFile] }
-    # 
     # Renames the file denoted by this abstract pathname.
     # 
     # <p> Many aspects of the behavior of this method are inherently
@@ -1290,7 +1250,6 @@ module Java::Io
     end
     
     typesig { [::Java::Long] }
-    # 
     # Sets the last-modified time of the file or directory named by this
     # abstract pathname.
     # 
@@ -1327,7 +1286,6 @@ module Java::Io
     end
     
     typesig { [] }
-    # 
     # Marks the file or directory named by this abstract pathname so that
     # only read operations are allowed.  After invoking this method the file
     # or directory is guaranteed not to change until it is either deleted or
@@ -1352,7 +1310,6 @@ module Java::Io
     end
     
     typesig { [::Java::Boolean, ::Java::Boolean] }
-    # 
     # Sets the owner's or everybody's write permission for this abstract
     # pathname.
     # 
@@ -1386,7 +1343,6 @@ module Java::Io
     end
     
     typesig { [::Java::Boolean] }
-    # 
     # A convenience method to set the owner's write permission for this abstract
     # pathname.
     # 
@@ -1415,7 +1371,6 @@ module Java::Io
     end
     
     typesig { [::Java::Boolean, ::Java::Boolean] }
-    # 
     # Sets the owner's or everybody's read permission for this abstract
     # pathname.
     # 
@@ -1452,7 +1407,6 @@ module Java::Io
     end
     
     typesig { [::Java::Boolean] }
-    # 
     # A convenience method to set the owner's read permission for this abstract
     # pathname.
     # 
@@ -1484,7 +1438,6 @@ module Java::Io
     end
     
     typesig { [::Java::Boolean, ::Java::Boolean] }
-    # 
     # Sets the owner's or everybody's execute permission for this abstract
     # pathname.
     # 
@@ -1521,7 +1474,6 @@ module Java::Io
     end
     
     typesig { [::Java::Boolean] }
-    # 
     # A convenience method to set the owner's execute permission for this abstract
     # pathname.
     # 
@@ -1553,7 +1505,6 @@ module Java::Io
     end
     
     typesig { [] }
-    # 
     # Tests whether the application can execute the file denoted by this
     # abstract pathname.
     # 
@@ -1648,7 +1599,6 @@ module Java::Io
     end
     
     typesig { [] }
-    # 
     # Returns the number of unallocated bytes in the partition <a
     # href="#partName">named</a> by this abstract path name.
     # 
@@ -1683,7 +1633,6 @@ module Java::Io
     end
     
     typesig { [] }
-    # 
     # Returns the number of bytes available to this virtual machine on the
     # partition <a href="#partName">named</a> by this abstract pathname.  When
     # possible, this method checks for write permissions and other operating
@@ -1774,7 +1723,6 @@ module Java::Io
       end
       
       typesig { [String, String, JavaFile] }
-      # 
       # <p> Creates a new empty file in the specified directory, using the
       # given prefix and suffix strings to generate its name.  If this method
       # returns successfully then it is guaranteed that:
@@ -1863,7 +1811,6 @@ module Java::Io
       end
       
       typesig { [String, String] }
-      # 
       # Creates an empty file in the default temporary-file directory, using
       # the given prefix and suffix to generate its name.  Invoking this method
       # is equivalent to invoking <code>{@link #createTempFile(java.lang.String,
@@ -1919,7 +1866,6 @@ module Java::Io
     end
     
     typesig { [Object] }
-    # 
     # Tests this abstract pathname for equality with the given object.
     # Returns <code>true</code> if and only if the argument is not
     # <code>null</code> and is an abstract pathname that denotes the same file
@@ -1940,7 +1886,6 @@ module Java::Io
     end
     
     typesig { [] }
-    # 
     # Computes a hash code for this abstract pathname.  Because equality of
     # abstract pathnames is inherently system-dependent, so is the computation
     # of their hash codes.  On UNIX systems, the hash code of an abstract
@@ -1958,7 +1903,6 @@ module Java::Io
     end
     
     typesig { [] }
-    # 
     # Returns the pathname string of this abstract pathname.  This is just the
     # string returned by the <code>{@link #getPath}</code> method.
     # 
@@ -1968,7 +1912,6 @@ module Java::Io
     end
     
     typesig { [Java::Io::ObjectOutputStream] }
-    # 
     # WriteObject is called to save this filename.
     # The separator character is saved also so it can be replaced
     # in case the path is reconstituted on a different host type.
@@ -1982,7 +1925,6 @@ module Java::Io
     end
     
     typesig { [Java::Io::ObjectInputStream] }
-    # 
     # readObject is called to restore this filename.
     # The original separator character is read.  If it is different
     # than the separator character on this system, then the old separator

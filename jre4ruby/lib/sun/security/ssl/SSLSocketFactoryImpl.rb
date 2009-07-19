@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 1997-2007 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -35,7 +34,6 @@ module Sun::Security::Ssl
     }
   end
   
-  # 
   # Implementation of an SSL socket factory.  This provides the public
   # hooks to create SSL sockets, using a "high level" programming
   # interface which encapsulates system security policy defaults rather than
@@ -68,7 +66,6 @@ module Sun::Security::Ssl
     undef_method :context=
     
     typesig { [] }
-    # 
     # Constructor used to instantiate the default factory. This method is
     # only called if the old "ssl.SocketFactory.provider" property in the
     # java.security file is set.
@@ -79,7 +76,6 @@ module Sun::Security::Ssl
     end
     
     typesig { [SSLContextImpl] }
-    # 
     # Constructs an SSL socket factory.
     def initialize(context)
       @context = nil
@@ -88,7 +84,6 @@ module Sun::Security::Ssl
     end
     
     typesig { [] }
-    # 
     # Creates an unconnected socket.
     # 
     # @return the unconnected socket
@@ -98,7 +93,6 @@ module Sun::Security::Ssl
     end
     
     typesig { [String, ::Java::Int] }
-    # 
     # Constructs an SSL connection to a named host at a specified port.
     # This acts as the SSL client, and may authenticate itself or rejoin
     # existing SSL sessions allowed by the authentication context which
@@ -111,7 +105,6 @@ module Sun::Security::Ssl
     end
     
     typesig { [Socket, String, ::Java::Int, ::Java::Boolean] }
-    # 
     # Returns a socket layered over an existing socket to a
     # ServerSocket on the named host, at the given port.  This
     # constructor can be used when tunneling SSL through a proxy. The
@@ -131,7 +124,6 @@ module Sun::Security::Ssl
     end
     
     typesig { [InetAddress, ::Java::Int] }
-    # 
     # Constructs an SSL connection to a server at a specified address
     # and TCP port.  This acts as the SSL client, and may authenticate
     # itself or rejoin existing SSL sessions allowed by the authentication
@@ -144,7 +136,6 @@ module Sun::Security::Ssl
     end
     
     typesig { [String, ::Java::Int, InetAddress, ::Java::Int] }
-    # 
     # Constructs an SSL connection to a named host at a specified port.
     # This acts as the SSL client, and may authenticate itself or rejoin
     # existing SSL sessions allowed by the authentication context which
@@ -155,7 +146,6 @@ module Sun::Security::Ssl
     end
     
     typesig { [InetAddress, ::Java::Int, InetAddress, ::Java::Int] }
-    # 
     # Constructs an SSL connection to a server at a specified address
     # and TCP port.  This acts as the SSL client, and may authenticate
     # itself or rejoin existing SSL sessions allowed by the authentication
@@ -166,7 +156,6 @@ module Sun::Security::Ssl
     end
     
     typesig { [] }
-    # 
     # Returns the subset of the supported cipher suites which are
     # enabled by default.  These cipher suites all provide a minimum
     # quality of service whereby the server authenticates itself
@@ -178,7 +167,6 @@ module Sun::Security::Ssl
     end
     
     typesig { [] }
-    # 
     # Returns the names of the cipher suites which could be enabled for use
     # on an SSL connection.  Normally, only a subset of these will actually
     # be enabled by default, since this list may include cipher suites which

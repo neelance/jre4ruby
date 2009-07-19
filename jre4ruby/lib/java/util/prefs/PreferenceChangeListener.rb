@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 2000 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -31,7 +30,6 @@ module Java::Util::Prefs
     }
   end
   
-  # 
   # A listener for receiving preference change events.
   # 
   # @author  Josh Bloch
@@ -44,7 +42,6 @@ module Java::Util::Prefs
     include Java::Util::EventListener
     
     typesig { [PreferenceChangeEvent] }
-    # 
     # This method gets called when a preference is added, removed or when
     # its value is changed.
     # <p>

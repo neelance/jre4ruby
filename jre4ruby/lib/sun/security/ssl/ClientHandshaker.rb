@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 1996-2007 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -49,7 +48,6 @@ module Sun::Security::Ssl
     }
   end
   
-  # 
   # ClientHandshaker does the protocol handshaking from the point
   # of view of a client.  It is driven asychronously by handshake messages
   # as delivered by the parent Handshaker class, and also uses
@@ -105,7 +103,6 @@ module Sun::Security::Ssl
     alias_method :attr_server_key_exchange_received=, :server_key_exchange_received=
     undef_method :server_key_exchange_received=
     
-    # 
     # The RSA PreMasterSecret needs to know the version of
     # ClientHello that was used on this handshake.  This represents
     # the "max version" this client is supporting.  In the
@@ -119,7 +116,6 @@ module Sun::Security::Ssl
     undef_method :max_protocol_version=
     
     typesig { [SSLSocketImpl, SSLContextImpl, ProtocolList] }
-    # 
     # Constructors
     def initialize(socket, context, enabled_protocols)
       @server_key = nil
@@ -147,7 +143,6 @@ module Sun::Security::Ssl
     end
     
     typesig { [::Java::Byte, ::Java::Int] }
-    # 
     # This routine handles all the client side handshake messages, one at
     # a time.  Given the message type (and in some cases the pending cipher
     # spec) it parses the type-specific message.  Then it calls a function
@@ -187,13 +182,13 @@ module Sun::Security::Ssl
           begin
             self.server_key_exchange(DH_ServerKeyExchange.new(self.attr_input, @server_key, self.attr_clnt_random.attr_random_bytes, self.attr_svr_random.attr_random_bytes, message_len))
           rescue GeneralSecurityException => e
-            throw_sslexception("Server key", e_)
+            throw_sslexception("Server key", e)
           end
         when K_ECDHE_ECDSA, K_ECDHE_RSA, K_ECDH_ANON
           begin
             self.server_key_exchange(ECDH_ServerKeyExchange.new(self.attr_input, @server_key, self.attr_clnt_random.attr_random_bytes, self.attr_svr_random.attr_random_bytes))
           rescue GeneralSecurityException => e
-            throw_sslexception("Server key", e__)
+            throw_sslexception("Server key", e)
           end
         when K_ECDH_ECDSA, K_ECDH_RSA
           raise SSLProtocolException.new("Protocol violation: server sent" + " a server key exchange message for key exchange " + (self.attr_key_exchange).to_s)
@@ -222,7 +217,6 @@ module Sun::Security::Ssl
       else
         raise SSLProtocolException.new("Illegal client handshake msg, " + (type).to_s)
       end
-      # 
       # Move state machine forward if the message handling
       # code didn't already do so
       if (self.attr_state < type)
@@ -231,7 +225,6 @@ module Sun::Security::Ssl
     end
     
     typesig { [HelloRequest] }
-    # 
     # Used by the server to kickstart negotiations -- this requests a
     # "client hello" to renegotiate current cipher specs (e.g. maybe lots
     # of data has been encrypted with the same keys, or the server needs
@@ -240,7 +233,6 @@ module Sun::Security::Ssl
       if (!(self.attr_debug).nil? && Debug.is_on("handshake"))
         mesg.print(System.out)
       end
-      # 
       # Could be (e.g. at connection setup) that we already
       # sent the "client hello" but the server's not seen it.
       if (self.attr_state < HandshakeMessage.attr_ht_client_hello)
@@ -249,7 +241,6 @@ module Sun::Security::Ssl
     end
     
     typesig { [ServerHello] }
-    # 
     # Server chooses session parameters given options created by the
     # client -- basically, cipher options, session id, and someday a
     # set of compression options.
@@ -272,7 +263,6 @@ module Sun::Security::Ssl
       # Set protocolVersion and propagate to SSLSocket and the
       # Handshake streams
       set_version(mesg_version)
-      # 
       # Save server nonce, we always use it to compute connection
       # keys and it's also used to create the master secret if we're
       # creating a new session (i.e. in the full handshake).
@@ -377,7 +367,6 @@ module Sun::Security::Ssl
     end
     
     typesig { [RSA_ServerKeyExchange] }
-    # 
     # Server's own key was either a signing-only key, or was too
     # large for export rules ... this message holds an ephemeral
     # RSA key to use for key exchange.
@@ -393,7 +382,6 @@ module Sun::Security::Ssl
     end
     
     typesig { [DH_ServerKeyExchange] }
-    # 
     # Diffie-Hellman key exchange.  We save the server public key and
     # our own D-H algorithm object so we can defer key calculations
     # until after we've sent the client key exchange message (which
@@ -417,20 +405,17 @@ module Sun::Security::Ssl
     end
     
     typesig { [ServerHelloDone] }
-    # 
     # The server's "Hello Done" message is the client's sign that
     # it's time to do all the hard work.
     def server_hello_done(mesg)
       if (!(self.attr_debug).nil? && Debug.is_on("handshake"))
         mesg.print(System.out)
       end
-      # 
       # Always make sure the input has been digested before we
       # start emitting data, to ensure the hashes are correctly
       # computed for the Finished and CertificateVerify messages
       # which we send (here).
       self.attr_input.digest_now
-      # 
       # FIRST ... if requested, send an appropriate Certificate chain
       # to authenticate the client, and remember the associated private
       # key to sign the CertificateVerify message.
@@ -493,7 +478,6 @@ module Sun::Security::Ssl
           end
         end
         if ((m1).nil?)
-          # 
           # No appropriate cert was found ... report this to the
           # server.  For SSLv3, send the no_certificate alert;
           # TLS uses an empty cert chain instead.
@@ -503,7 +487,6 @@ module Sun::Security::Ssl
             warning_se(Alerts.attr_alert_no_certificate)
           end
         end
-        # 
         # At last ... send any client certificate chain.
         if (!(m1).nil?)
           if (!(self.attr_debug).nil? && Debug.is_on("handshake"))
@@ -512,14 +495,12 @@ module Sun::Security::Ssl
           m1.write(self.attr_output)
         end
       end
-      # 
       # SECOND ... send the client key exchange message.  The
       # procedure used is a function of the cipher suite selected;
       # one is always needed.
       m2 = nil
       case (self.attr_key_exchange)
       when K_RSA, K_RSA_EXPORT
-        # 
         # For RSA key exchange, we randomly generate a new
         # pre-master secret and encrypt it with the server's
         # public key.  Then we save that pre-master secret
@@ -530,7 +511,6 @@ module Sun::Security::Ssl
         key = ((self.attr_key_exchange).equal?(K_RSA)) ? @server_key : @ephemeral_server_key
         m2 = RSAClientKeyExchange.new(self.attr_protocol_version, @max_protocol_version, self.attr_ssl_context.get_secure_random, key)
       when K_DH_RSA, K_DH_DSS
-        # 
         # For DH Key exchange, we only need to make sure the server
         # knows our public key, so we calculate the same pre-master
         # secret.
@@ -560,8 +540,8 @@ module Sun::Security::Ssl
         if ((@server_key.is_a?(ECPublicKey)).equal?(false))
           raise SSLProtocolException.new("Server certificate does not include an EC key")
         end
-        params_ = (@server_key).get_params
-        @ecdh = ECDHCrypt.new(params_, self.attr_ssl_context.get_secure_random)
+        params = (@server_key).get_params
+        @ecdh = ECDHCrypt.new(params, self.attr_ssl_context.get_secure_random)
         m2 = ECDHClientKeyExchange.new(@ecdh.get_public_key)
       when K_KRB5, K_KRB5_EXPORT
         hostname = get_host_se
@@ -581,7 +561,6 @@ module Sun::Security::Ssl
         m2.print(System.out)
       end
       m2.write(self.attr_output)
-      # 
       # THIRD, send a "change_cipher_spec" record followed by the
       # "Finished" message.  We flush the messages we've queued up, to
       # get concurrency between client and server.  The concurrency is
@@ -590,7 +569,6 @@ module Sun::Security::Ssl
       # to protect all records following the change_cipher_spec.
       self.attr_output.do_hashes
       self.attr_output.flush
-      # 
       # We deferred calculating the master secret and this connection's
       # keying data; we do it now.  Deferring this calculation is good
       # from a performance point of view, since it lets us do it during
@@ -613,7 +591,6 @@ module Sun::Security::Ssl
         raise IOException.new("Internal error: unknown key exchange " + (self.attr_key_exchange).to_s)
       end
       calculate_keys(pre_master_secret, nil)
-      # 
       # FOURTH, if we sent a Certificate, we need to send a signed
       # CertificateVerify (unless the key in the client's certificate
       # was a Diffie-Hellman key).).
@@ -637,13 +614,11 @@ module Sun::Security::Ssl
         m3.write(self.attr_output)
         self.attr_output.do_hashes
       end
-      # 
       # OK, that's that!
       send_change_cipher_and_finish(false)
     end
     
     typesig { [Finished] }
-    # 
     # "Finished" is the last handshake message sent.  If we got this
     # far, the MAC has been validated post-decryption.  We validate
     # the two hashes here as an additional sanity check, protecting
@@ -657,7 +632,6 @@ module Sun::Security::Ssl
         fatal_se(Alerts.attr_alert_illegal_parameter, "server 'finished' message doesn't verify")
         # NOTREACHED
       end
-      # 
       # OK, it verified.  If we're doing the fast handshake, add that
       # "Finished" message to the hash of handshake messages, then send
       # our own change_cipher_spec and Finished message for the server
@@ -686,20 +660,17 @@ module Sun::Security::Ssl
     end
     
     typesig { [::Java::Boolean] }
-    # 
     # Send my change-cipher-spec and Finished message ... done as the
     # last handshake act in either the short or long sequences.  In
     # the short one, we've already seen the server's Finished; in the
     # long one, we wait for it now.
     def send_change_cipher_and_finish(finished_tag)
       mesg = Finished.new(self.attr_protocol_version, self.attr_handshake_hash, Finished::CLIENT, self.attr_session.get_master_secret)
-      # 
       # Send the change_cipher_spec message, then the Finished message
       # which we just calculated (and protected using the keys we just
       # calculated).  Server responds with its Finished message, except
       # in the "fast handshake" (resume session) case.
       send_change_cipher_spec(mesg, finished_tag)
-      # 
       # Update state machine so server MUST send 'finished' next.
       # (In "long" handshake case; in short case, we're responding
       # to its message.)
@@ -707,13 +678,11 @@ module Sun::Security::Ssl
     end
     
     typesig { [] }
-    # 
     # Returns a ClientHello message to kickstart renegotiations
     def get_kickstart_message
       mesg = ClientHello.new(self.attr_ssl_context.get_secure_random, self.attr_protocol_version)
       @max_protocol_version = self.attr_protocol_version
       self.attr_clnt_random = mesg.attr_clnt_random
-      # 
       # Try to resume an existing session.  This might be mandatory,
       # given certain API options.
       self.attr_session = (self.attr_ssl_context.engine_get_client_session_context).get(get_host_se, get_port_se)
@@ -756,7 +725,6 @@ module Sun::Security::Ssl
           # record layer) have the correct version
           set_version(session_version)
         end
-        # 
         # don't say much beyond the obvious if we _must_ resume.
         if (!self.attr_enable_new_session)
           if ((self.attr_session).nil?)
@@ -773,7 +741,6 @@ module Sun::Security::Ssl
           raise SSLException.new("No existing session to resume.")
         end
       end
-      # 
       # All we have left to do is fill out the cipher suites.
       # (If this changes, change the 'return' above!)
       mesg.set_cipher_suites(self.attr_enabled_cipher_suites)
@@ -781,7 +748,6 @@ module Sun::Security::Ssl
     end
     
     typesig { [::Java::Byte] }
-    # 
     # Fault detected during handshake.
     def handshake_alert(description)
       message = Alerts.alert_description(description)
@@ -792,7 +758,6 @@ module Sun::Security::Ssl
     end
     
     typesig { [CertificateMsg] }
-    # 
     # Unless we are using an anonymous ciphersuite, the server always
     # sends a certificate message (for the CipherSuites we currently
     # support). The trust manager verifies the chain for us.

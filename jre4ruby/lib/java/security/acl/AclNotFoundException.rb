@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 1996-2003 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -31,7 +30,6 @@ module Java::Security::Acl
     }
   end
   
-  # 
   # This is an exception that is thrown whenever a reference is made to a
   # non-existent ACL (Access Control List).
   # 
@@ -45,7 +43,6 @@ module Java::Security::Acl
     }
     
     typesig { [] }
-    # 
     # Constructs an AclNotFoundException.
     def initialize
       super()

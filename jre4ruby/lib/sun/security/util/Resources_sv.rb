@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 2001-2006 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -31,7 +30,6 @@ module Sun::Security::Util
     }
   end
   
-  # 
   # <p> This class represents the <code>ResourceBundle</code>
   # for javax.security.auth and sun.security.
   class Resources_sv < Java::Util::ListResourceBundle
@@ -94,7 +92,6 @@ module Sun::Security::Util
     }
     
     typesig { [] }
-    # 
     # Returns the contents of this <code>ResourceBundle</code>.
     # 
     # <p>

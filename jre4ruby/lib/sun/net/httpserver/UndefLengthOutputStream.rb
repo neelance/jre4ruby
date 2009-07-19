@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 2007 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -95,8 +94,8 @@ module Sun::Net::Httpserver
         rescue IOException => e
         end
       end
-      e_ = WriteFinishedEvent.new(@t)
-      @t.get_http_context.get_server_impl.add_event(e_)
+      e = WriteFinishedEvent.new(@t)
+      @t.get_http_context.get_server_impl.add_event(e)
     end
     
     private

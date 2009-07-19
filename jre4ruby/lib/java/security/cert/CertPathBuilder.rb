@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 2000-2006 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -41,7 +40,6 @@ module Java::Security::Cert
     }
   end
   
-  # 
   # A class for building certification paths (also known as certificate chains).
   # <p>
   # This class uses a provider-based architecture.
@@ -79,7 +77,6 @@ module Java::Security::Cert
     include_class_members CertPathBuilderImports
     
     class_module.module_eval {
-      # 
       # Constant to lookup in the Security properties file to determine
       # the default certpathbuilder type. In the Security properties file,
       # the default certpathbuilder type is given as:
@@ -112,7 +109,6 @@ module Java::Security::Cert
     undef_method :algorithm=
     
     typesig { [CertPathBuilderSpi, Provider, String] }
-    # 
     # Creates a <code>CertPathBuilder</code> object of the given algorithm,
     # and encapsulates the given provider implementation (SPI object) in it.
     # 
@@ -130,7 +126,6 @@ module Java::Security::Cert
     
     class_module.module_eval {
       typesig { [String] }
-      # 
       # Returns a <code>CertPathBuilder</code> object that implements the
       # specified algorithm.
       # 
@@ -163,7 +158,6 @@ module Java::Security::Cert
       end
       
       typesig { [String, String] }
-      # 
       # Returns a <code>CertPathBuilder</code> object that implements the
       # specified algorithm.
       # 
@@ -203,7 +197,6 @@ module Java::Security::Cert
       end
       
       typesig { [String, Provider] }
-      # 
       # Returns a <code>CertPathBuilder</code> object that implements the
       # specified algorithm.
       # 
@@ -238,7 +231,6 @@ module Java::Security::Cert
     }
     
     typesig { [] }
-    # 
     # Returns the provider of this <code>CertPathBuilder</code>.
     # 
     # @return the provider of this <code>CertPathBuilder</code>
@@ -247,7 +239,6 @@ module Java::Security::Cert
     end
     
     typesig { [] }
-    # 
     # Returns the name of the algorithm of this <code>CertPathBuilder</code>.
     # 
     # @return the name of the algorithm of this <code>CertPathBuilder</code>
@@ -256,7 +247,6 @@ module Java::Security::Cert
     end
     
     typesig { [CertPathParameters] }
-    # 
     # Attempts to build a certification path using the specified algorithm
     # parameter set.
     # 
@@ -272,7 +262,6 @@ module Java::Security::Cert
     
     class_module.module_eval {
       typesig { [] }
-      # 
       # Returns the default <code>CertPathBuilder</code> type as specified in
       # the Java security properties file, or the string &quot;PKIX&quot;
       # if no such property exists. The Java security properties file is

@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 1995-1997 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -30,7 +29,6 @@ module Java::Lang
     }
   end
   
-  # 
   # Thrown when the "verifier" detects that a class file,
   # though well formed, contains some sort of internal inconsistency
   # or security problem.
@@ -41,14 +39,12 @@ module Java::Lang
     include_class_members VerifyErrorImports
     
     typesig { [] }
-    # 
     # Constructs an <code>VerifyError</code> with no detail message.
     def initialize
       super()
     end
     
     typesig { [String] }
-    # 
     # Constructs an <code>VerifyError</code> with the specified detail message.
     # 
     # @param   s   the detail message.

@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 1996-1999 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -31,7 +30,6 @@ module Java::Io
     }
   end
   
-  # 
   # ObjectOutput extends the DataOutput interface to include writing of objects.
   # DataOutput includes methods for output of primitive types, ObjectOutput
   # extends that interface to include objects, arrays, and Strings.
@@ -46,7 +44,6 @@ module Java::Io
     include DataOutput
     
     typesig { [Object] }
-    # 
     # Write an object to the underlying storage or stream.  The
     # class that implements this interface defines how the object is
     # written.
@@ -58,7 +55,6 @@ module Java::Io
     end
     
     typesig { [::Java::Int] }
-    # 
     # Writes a byte. This method will block until the byte is actually
     # written.
     # @param b the byte
@@ -68,7 +64,6 @@ module Java::Io
     end
     
     typesig { [Array.typed(::Java::Byte)] }
-    # 
     # Writes an array of bytes. This method will block until the bytes
     # are actually written.
     # @param b the data to be written
@@ -78,7 +73,6 @@ module Java::Io
     end
     
     typesig { [Array.typed(::Java::Byte), ::Java::Int, ::Java::Int] }
-    # 
     # Writes a sub array of bytes.
     # @param b the data to be written
     # @param off       the start offset in the data
@@ -89,7 +83,6 @@ module Java::Io
     end
     
     typesig { [] }
-    # 
     # Flushes the stream. This will write any buffered
     # output bytes.
     # @exception IOException If an I/O error has occurred.
@@ -98,7 +91,6 @@ module Java::Io
     end
     
     typesig { [] }
-    # 
     # Closes the stream. This method must be called
     # to release any resources associated with the
     # stream.

@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 1994-2003 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -41,7 +40,6 @@ module Sun::Net
     }
   end
   
-  # 
   # This is the base class for network clients.
   # 
   # @author      Jonathan Payne
@@ -169,7 +167,6 @@ module Sun::Net
       end
       
       typesig { [String] }
-      # 
       # Test the named character encoding to verify that it converts ASCII
       # characters correctly. We have to use an ASCII based encoding, or else
       # the NetworkClients will not work correctly in EBCDIC based systems.
@@ -211,7 +208,6 @@ module Sun::Net
     end
     
     typesig { [String, ::Java::Int] }
-    # 
     # Return a socket connected to the server, with any
     # appropriate options pre-established
     def do_connect(server, port)

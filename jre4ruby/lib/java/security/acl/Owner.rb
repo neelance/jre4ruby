@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 1996-1997 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -32,7 +31,6 @@ module Java::Security::Acl
     }
   end
   
-  # 
   # Interface for managing owners of Access Control Lists (ACLs) or ACL
   # configurations. (Note that the Acl interface in the
   # <code> java.security.acl </code> package extends this Owner
@@ -44,7 +42,6 @@ module Java::Security::Acl
     include_class_members OwnerImports
     
     typesig { [Principal, Principal] }
-    # 
     # Adds an owner. Only owners can modify ACL contents. The caller
     # principal must be an owner of the ACL in order to invoke this method.
     # That is, only an owner can add another owner. The initial owner is
@@ -63,7 +60,6 @@ module Java::Security::Acl
     end
     
     typesig { [Principal, Principal] }
-    # 
     # Deletes an owner. If this is the last owner in the ACL, an exception is
     # raised.<p>
     # 
@@ -88,7 +84,6 @@ module Java::Security::Acl
     end
     
     typesig { [Principal] }
-    # 
     # Returns true if the given principal is an owner of the ACL.
     # 
     # @param owner the principal to be checked to determine whether or not

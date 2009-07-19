@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
 # This code is free software; you can redistribute it and/or modify it
@@ -38,7 +37,6 @@ module Sun::Security::Krb5::Internal
     }
   end
   
-  # 
   # Implements the ASN.1 APOptions type.
   # 
   # <xmp>
@@ -94,7 +92,6 @@ module Sun::Security::Krb5::Internal
     
     class_module.module_eval {
       typesig { [DerInputStream, ::Java::Byte, ::Java::Boolean] }
-      # 
       # Parse (unmarshal) an APOptions from a DER input stream.  This form
       # parsing might be used when expanding a value which is part of
       # a constructed sequence and uses explicitly tagged type.

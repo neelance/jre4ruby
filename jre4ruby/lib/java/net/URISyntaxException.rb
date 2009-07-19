@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 2000-2006 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -31,7 +30,6 @@ module Java::Net
     }
   end
   
-  # 
   # Checked exception thrown to indicate that a string could not be parsed as a
   # URI reference.
   # 
@@ -54,7 +52,6 @@ module Java::Net
     undef_method :index=
     
     typesig { [String, String, ::Java::Int] }
-    # 
     # Constructs an instance from the given input string, reason, and error
     # index.
     # 
@@ -83,7 +80,6 @@ module Java::Net
     end
     
     typesig { [String, String] }
-    # 
     # Constructs an instance from the given input string and reason.  The
     # resulting object will have an error index of <tt>-1</tt>.
     # 
@@ -97,7 +93,6 @@ module Java::Net
     end
     
     typesig { [] }
-    # 
     # Returns the input string.
     # 
     # @return  The input string
@@ -106,7 +101,6 @@ module Java::Net
     end
     
     typesig { [] }
-    # 
     # Returns a string explaining why the input string could not be parsed.
     # 
     # @return  The reason string
@@ -115,7 +109,6 @@ module Java::Net
     end
     
     typesig { [] }
-    # 
     # Returns an index into the input string of the position at which the
     # parse error occurred, or <tt>-1</tt> if this position is not known.
     # 
@@ -125,7 +118,6 @@ module Java::Net
     end
     
     typesig { [] }
-    # 
     # Returns a string describing the parse error.  The resulting string
     # consists of the reason string followed by a colon character
     # (<tt>':'</tt>), a space, and the input string.  If the error index is

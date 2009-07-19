@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 2003-2004 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -40,7 +39,6 @@ module Sun::Net::Spi
     }
   end
   
-  # 
   # Supports proxy settings using system properties This proxy selector
   # provides backward compatibility with the old http protocol handler
   # as far as how proxy is set
@@ -54,7 +52,6 @@ module Sun::Net::Spi
     include_class_members DefaultProxySelectorImports
     
     class_module.module_eval {
-      # 
       # This is where we define all the valid System Properties we have to
       # support for each given protocol.
       # The format of this 2 dimensional array is :
@@ -125,7 +122,6 @@ module Sun::Net::Spi
         end
       end
       
-      # 
       # How to deal with "non proxy hosts":
       # since we do have to generate a RegexpPool we don't want to do that if
       # it's not necessary. Therefore we do cache the result, on a per-protocol
@@ -190,7 +186,6 @@ module Sun::Net::Spi
     }
     
     typesig { [URI] }
-    # 
     # select() method. Where all the hard work is done.
     # Build a list of proxies depending on URI.
     # Since we're only providing compatibility with the system properties
@@ -254,13 +249,11 @@ module Sun::Net::Spi
           end
         end
       end
-      # 
       # Let's check the System properties for that protocol
       proto = protocol
       nprop = pinfo
       urlhost = host.to_lower_case
-      p = AccessController.do_privileged(# 
-      # This is one big doPrivileged call, but we're trying to optimize
+      p = AccessController.do_privileged(# This is one big doPrivileged call, but we're trying to optimize
       # the code as much as possible. Since we're checking quite a few
       # System properties it does help having only 1 call to doPrivileged.
       # Be mindful what you do in here though!
@@ -293,7 +286,6 @@ module Sun::Net::Spi
                 ((j += 1) - 1)
               end
               if ((phost).nil? || (phost.length).equal?(0))
-                # 
                 # No system property defined for that
                 # protocol. Let's check System Proxy
                 # settings (Gnome & Windows) if we were
@@ -387,7 +379,6 @@ module Sun::Net::Spi
         alias_method :initialize_anonymous, :initialize
       end.new_local(self))
       proxyl.add(p)
-      # 
       # If no specific property was set for that URI, we should be
       # returning an iterator to an empty List.
       return proxyl

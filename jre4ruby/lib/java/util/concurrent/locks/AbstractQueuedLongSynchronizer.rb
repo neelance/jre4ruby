@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
 # This code is free software; you can redistribute it and/or modify it
@@ -44,7 +43,6 @@ module Java::Util::Concurrent::Locks
     }
   end
   
-  # 
   # A version of {@link AbstractQueuedSynchronizer} in
   # which synchronization state is maintained as a <tt>long</tt>.
   # This class has exactly the same structure, properties, and methods
@@ -70,7 +68,6 @@ module Java::Util::Concurrent::Locks
     }
     
     typesig { [] }
-    # 
     # To keep sources in sync, the remainder of this source file is
     # exactly cloned from AbstractQueuedSynchronizer, replacing class
     # name and changing ints related with sync state to longs. Please
@@ -87,7 +84,6 @@ module Java::Util::Concurrent::Locks
     end
     
     class_module.module_eval {
-      # 
       # Wait queue node class.
       # 
       # <p>The wait queue is a variant of a "CLH" (Craig, Landin, and
@@ -189,14 +185,12 @@ module Java::Util::Concurrent::Locks
           const_set_lazy(:CONDITION) { -2 }
           const_attr_reader  :CONDITION
           
-          # 
           # waitStatus value to indicate the next acquireShared should
           # unconditionally propagate
           const_set_lazy(:PROPAGATE) { -3 }
           const_attr_reader  :PROPAGATE
         }
         
-        # 
         # Status field, taking on only the values:
         # SIGNAL:     The successor of this node is (or will soon be)
         # blocked (via park), so the current node must
@@ -235,7 +229,6 @@ module Java::Util::Concurrent::Locks
         alias_method :attr_wait_status=, :wait_status=
         undef_method :wait_status=
         
-        # 
         # Link to predecessor node that current node/thread relies on
         # for checking waitStatus. Assigned during enqueing, and nulled
         # out (for sake of GC) only upon dequeuing.  Also, upon
@@ -251,7 +244,6 @@ module Java::Util::Concurrent::Locks
         alias_method :attr_prev=, :prev=
         undef_method :prev=
         
-        # 
         # Link to the successor node that the current node/thread
         # unparks upon release. Assigned during enqueuing, adjusted
         # when bypassing cancelled predecessors, and nulled out (for
@@ -269,7 +261,6 @@ module Java::Util::Concurrent::Locks
         alias_method :attr_next=, :next=
         undef_method :next=
         
-        # 
         # The thread that enqueued this node.  Initialized on
         # construction and nulled out after use.
         attr_accessor :thread
@@ -278,7 +269,6 @@ module Java::Util::Concurrent::Locks
         alias_method :attr_thread=, :thread=
         undef_method :thread=
         
-        # 
         # Link to next node waiting on condition, or the special
         # value SHARED.  Because condition queues are accessed only
         # when holding in exclusive mode, we just need a simple
@@ -294,14 +284,12 @@ module Java::Util::Concurrent::Locks
         undef_method :next_waiter=
         
         typesig { [] }
-        # 
         # Returns true if node is waiting in shared mode
         def is_shared
           return (@next_waiter).equal?(self.class::SHARED)
         end
         
         typesig { [] }
-        # 
         # Returns previous node, or throws NullPointerException if null.
         # Use when predecessor cannot be null.  The null check could
         # be elided, but is present to help the VM.
@@ -352,7 +340,6 @@ module Java::Util::Concurrent::Locks
       end }
     }
     
-    # 
     # Head of the wait queue, lazily initialized.  Except for
     # initialization, it is modified only via method setHead.  Note:
     # If head exists, its waitStatus is guaranteed not to be
@@ -363,7 +350,6 @@ module Java::Util::Concurrent::Locks
     alias_method :attr_head=, :head=
     undef_method :head=
     
-    # 
     # Tail of the wait queue, lazily initialized.  Modified only via
     # method enq to add new wait node.
     attr_accessor :tail
@@ -372,7 +358,6 @@ module Java::Util::Concurrent::Locks
     alias_method :attr_tail=, :tail=
     undef_method :tail=
     
-    # 
     # The synchronization state.
     attr_accessor :state
     alias_method :attr_state, :state
@@ -381,7 +366,6 @@ module Java::Util::Concurrent::Locks
     undef_method :state=
     
     typesig { [] }
-    # 
     # Returns the current value of synchronization state.
     # This operation has memory semantics of a <tt>volatile</tt> read.
     # @return current state value
@@ -390,7 +374,6 @@ module Java::Util::Concurrent::Locks
     end
     
     typesig { [::Java::Long] }
-    # 
     # Sets the value of synchronization state.
     # This operation has memory semantics of a <tt>volatile</tt> write.
     # @param newState the new state value
@@ -399,7 +382,6 @@ module Java::Util::Concurrent::Locks
     end
     
     typesig { [::Java::Long, ::Java::Long] }
-    # 
     # Atomically sets synchronization state to the given updated
     # value if the current state value equals the expected value.
     # This operation has memory semantics of a <tt>volatile</tt> read
@@ -425,7 +407,6 @@ module Java::Util::Concurrent::Locks
     }
     
     typesig { [Node] }
-    # 
     # Inserts node into queue, initializing if necessary. See picture above.
     # @param node the node to insert
     # @return node's predecessor
@@ -448,7 +429,6 @@ module Java::Util::Concurrent::Locks
     end
     
     typesig { [Node] }
-    # 
     # Creates and enqueues node for current thread and given mode.
     # 
     # @param mode Node.EXCLUSIVE for exclusive, Node.SHARED for shared
@@ -469,7 +449,6 @@ module Java::Util::Concurrent::Locks
     end
     
     typesig { [Node] }
-    # 
     # Sets head of queue to be node, thus dequeuing. Called only by
     # acquire methods.  Also nulls out unused fields for sake of GC
     # and to suppress unnecessary signals and traversals.
@@ -482,12 +461,10 @@ module Java::Util::Concurrent::Locks
     end
     
     typesig { [Node] }
-    # 
     # Wakes up node's successor, if one exists.
     # 
     # @param node the node
     def unpark_successor(node)
-      # 
       # If status is negative (i.e., possibly needing signal) try
       # to clear in anticipation of signalling.  It is OK if this
       # fails or if status is changed by waiting thread.
@@ -495,7 +472,6 @@ module Java::Util::Concurrent::Locks
       if (ws < 0)
         compare_and_set_wait_status(node, ws, 0)
       end
-      # 
       # Thread to unpark is held in successor, which is normally
       # just the next node.  But if cancelled or apparently null,
       # traverse backwards from tail to find the actual
@@ -517,12 +493,10 @@ module Java::Util::Concurrent::Locks
     end
     
     typesig { [] }
-    # 
     # Release action for shared mode -- signal successor and ensure
     # propagation. (Note: For exclusive mode, release just amounts
     # to calling unparkSuccessor of head if it needs signal.)
     def do_release_shared
-      # 
       # Ensure that a release propagates, even if there are other
       # in-progress acquires/releases.  This proceeds in the usual
       # way of trying to unparkSuccessor of head if it needs
@@ -555,7 +529,6 @@ module Java::Util::Concurrent::Locks
     end
     
     typesig { [Node, ::Java::Long] }
-    # 
     # Sets head of queue, and checks if successor may be waiting
     # in shared mode, if so propagating if either propagate > 0 or
     # PROPAGATE status was set.
@@ -565,7 +538,6 @@ module Java::Util::Concurrent::Locks
     def set_head_and_propagate(node, propagate)
       h = @head # Record old head for check below
       set_head(node)
-      # 
       # Try to signal next queued node if:
       # Propagation was indicated by caller,
       # or was recorded (as h.waitStatus) by a previous operation
@@ -633,7 +605,6 @@ module Java::Util::Concurrent::Locks
     
     class_module.module_eval {
       typesig { [Node, Node] }
-      # 
       # Checks and updates status for a node that failed to acquire.
       # Returns true if thread should block. This is the main signal
       # control in all acquire loops.  Requires that pred == node.prev
@@ -644,13 +615,11 @@ module Java::Util::Concurrent::Locks
       def should_park_after_failed_acquire(pred, node)
         ws = pred.attr_wait_status
         if ((ws).equal?(Node::SIGNAL))
-          # 
           # This node has already set status asking a release
           # to signal it, so it can safely park.
           return true
         end
         if (ws > 0)
-          # 
           # Predecessor was cancelled. Skip over predecessors and
           # indicate retry.
           begin
@@ -658,7 +627,6 @@ module Java::Util::Concurrent::Locks
           end while (pred.attr_wait_status > 0)
           pred.attr_next = node
         else
-          # 
           # waitStatus must be 0 or PROPAGATE.  Indicate that we
           # need a signal, but don't park yet.  Caller will need to
           # retry to make sure it cannot acquire before parking.
@@ -668,7 +636,6 @@ module Java::Util::Concurrent::Locks
       end
       
       typesig { [] }
-      # 
       # Convenience method to interrupt current thread.
       def self_interrupt
         JavaThread.current_thread.interrupt
@@ -676,7 +643,6 @@ module Java::Util::Concurrent::Locks
     }
     
     typesig { [] }
-    # 
     # Convenience method to park and then check if interrupted
     # 
     # @return {@code true} if interrupted
@@ -686,7 +652,6 @@ module Java::Util::Concurrent::Locks
     end
     
     typesig { [Node, ::Java::Long] }
-    # 
     # Various flavors of acquire, varying in exclusive/shared and
     # control modes.  Each is mostly the same, but annoyingly
     # different.  Only a little bit of factoring is possible due to
@@ -725,7 +690,6 @@ module Java::Util::Concurrent::Locks
     end
     
     typesig { [::Java::Long] }
-    # 
     # Acquires in exclusive interruptible mode.
     # @param arg the acquire argument
     def do_acquire_interruptibly(arg)
@@ -752,7 +716,6 @@ module Java::Util::Concurrent::Locks
     end
     
     typesig { [::Java::Long, ::Java::Long] }
-    # 
     # Acquires in exclusive timed mode.
     # 
     # @param arg the acquire argument
@@ -792,7 +755,6 @@ module Java::Util::Concurrent::Locks
     end
     
     typesig { [::Java::Long] }
-    # 
     # Acquires in shared uninterruptible mode.
     # @param arg the acquire argument
     def do_acquire_shared(arg)
@@ -826,7 +788,6 @@ module Java::Util::Concurrent::Locks
     end
     
     typesig { [::Java::Long] }
-    # 
     # Acquires in shared interruptible mode.
     # @param arg the acquire argument
     def do_acquire_shared_interruptibly(arg)
@@ -856,7 +817,6 @@ module Java::Util::Concurrent::Locks
     end
     
     typesig { [::Java::Long, ::Java::Long] }
-    # 
     # Acquires in shared timed mode.
     # 
     # @param arg the acquire argument
@@ -930,7 +890,6 @@ module Java::Util::Concurrent::Locks
     end
     
     typesig { [::Java::Long] }
-    # 
     # Attempts to set the state to reflect a release in exclusive
     # mode.
     # 
@@ -956,7 +915,6 @@ module Java::Util::Concurrent::Locks
     end
     
     typesig { [::Java::Long] }
-    # 
     # Attempts to acquire in shared mode. This method should query if
     # the state of the object permits it to be acquired in the shared
     # mode, and if so to acquire it.
@@ -992,7 +950,6 @@ module Java::Util::Concurrent::Locks
     end
     
     typesig { [::Java::Long] }
-    # 
     # Attempts to set the state to reflect a release in shared mode.
     # 
     # <p>This method is always invoked by the thread performing release.
@@ -1017,7 +974,6 @@ module Java::Util::Concurrent::Locks
     end
     
     typesig { [] }
-    # 
     # Returns {@code true} if synchronization is held exclusively with
     # respect to the current (calling) thread.  This method is invoked
     # upon each call to a non-waiting {@link ConditionObject} method.
@@ -1036,7 +992,6 @@ module Java::Util::Concurrent::Locks
     end
     
     typesig { [::Java::Long] }
-    # 
     # Acquires in exclusive mode, ignoring interrupts.  Implemented
     # by invoking at least once {@link #tryAcquire},
     # returning on success.  Otherwise the thread is queued, possibly
@@ -1054,7 +1009,6 @@ module Java::Util::Concurrent::Locks
     end
     
     typesig { [::Java::Long] }
-    # 
     # Acquires in exclusive mode, aborting if interrupted.
     # Implemented by first checking interrupt status, then invoking
     # at least once {@link #tryAcquire}, returning on
@@ -1077,7 +1031,6 @@ module Java::Util::Concurrent::Locks
     end
     
     typesig { [::Java::Long, ::Java::Long] }
-    # 
     # Attempts to acquire in exclusive mode, aborting if interrupted,
     # and failing if the given timeout elapses.  Implemented by first
     # checking interrupt status, then invoking at least once {@link
@@ -1101,7 +1054,6 @@ module Java::Util::Concurrent::Locks
     end
     
     typesig { [::Java::Long] }
-    # 
     # Releases in exclusive mode.  Implemented by unblocking one or
     # more threads if {@link #tryRelease} returns true.
     # This method can be used to implement method {@link Lock#unlock}.
@@ -1122,7 +1074,6 @@ module Java::Util::Concurrent::Locks
     end
     
     typesig { [::Java::Long] }
-    # 
     # Acquires in shared mode, ignoring interrupts.  Implemented by
     # first invoking at least once {@link #tryAcquireShared},
     # returning on success.  Otherwise the thread is queued, possibly
@@ -1139,7 +1090,6 @@ module Java::Util::Concurrent::Locks
     end
     
     typesig { [::Java::Long] }
-    # 
     # Acquires in shared mode, aborting if interrupted.  Implemented
     # by first checking interrupt status, then invoking at least once
     # {@link #tryAcquireShared}, returning on success.  Otherwise the
@@ -1161,7 +1111,6 @@ module Java::Util::Concurrent::Locks
     end
     
     typesig { [::Java::Long, ::Java::Long] }
-    # 
     # Attempts to acquire in shared mode, aborting if interrupted, and
     # failing if the given timeout elapses.  Implemented by first
     # checking interrupt status, then invoking at least once {@link
@@ -1184,7 +1133,6 @@ module Java::Util::Concurrent::Locks
     end
     
     typesig { [::Java::Long] }
-    # 
     # Releases in shared mode.  Implemented by unblocking one or more
     # threads if {@link #tryReleaseShared} returns true.
     # 
@@ -1217,7 +1165,6 @@ module Java::Util::Concurrent::Locks
     end
     
     typesig { [] }
-    # 
     # Queries whether any threads have ever contended to acquire this
     # synchronizer; that is if an acquire method has ever blocked.
     # 
@@ -1230,7 +1177,6 @@ module Java::Util::Concurrent::Locks
     end
     
     typesig { [] }
-    # 
     # Returns the first (longest-waiting) thread in the queue, or
     # {@code null} if no threads are currently queued.
     # 
@@ -1246,10 +1192,8 @@ module Java::Util::Concurrent::Locks
     end
     
     typesig { [] }
-    # 
     # Version of getFirstQueuedThread called when fastpath fails
     def full_get_first_queued_thread
-      # 
       # The first node is normally head.next. Try to get its
       # thread field, ensuring consistent reads: If thread
       # field is nulled out or s.prev is no longer head, then
@@ -1262,7 +1206,6 @@ module Java::Util::Concurrent::Locks
       if ((!((h = @head)).nil? && !((s = h.attr_next)).nil? && (s.attr_prev).equal?(@head) && !((st = s.attr_thread)).nil?) || (!((h = @head)).nil? && !((s = h.attr_next)).nil? && (s.attr_prev).equal?(@head) && !((st = s.attr_thread)).nil?))
         return st
       end
-      # 
       # Head's next field might not have been set yet, or may have
       # been unset after setHead. So we must check to see if tail
       # is actually first node. If not, we continue on, safely
@@ -1281,7 +1224,6 @@ module Java::Util::Concurrent::Locks
     end
     
     typesig { [JavaThread] }
-    # 
     # Returns true if the given thread is currently queued.
     # 
     # <p>This implementation traverses the queue to determine
@@ -1305,7 +1247,6 @@ module Java::Util::Concurrent::Locks
     end
     
     typesig { [] }
-    # 
     # Returns {@code true} if the apparent first queued thread, if one
     # exists, is waiting in exclusive mode.  If this method returns
     # {@code true}, and the current thread is attempting to acquire in
@@ -1320,7 +1261,6 @@ module Java::Util::Concurrent::Locks
     end
     
     typesig { [] }
-    # 
     # Queries whether any threads have been waiting to acquire longer
     # than the current thread.
     # 
@@ -1396,7 +1336,6 @@ module Java::Util::Concurrent::Locks
     end
     
     typesig { [] }
-    # 
     # Returns a collection containing threads that may be waiting to
     # acquire.  Because the actual set of threads may change
     # dynamically while constructing this result, the returned
@@ -1420,7 +1359,6 @@ module Java::Util::Concurrent::Locks
     end
     
     typesig { [] }
-    # 
     # Returns a collection containing threads that may be waiting to
     # acquire in exclusive mode. This has the same properties
     # as {@link #getQueuedThreads} except that it only returns
@@ -1443,7 +1381,6 @@ module Java::Util::Concurrent::Locks
     end
     
     typesig { [] }
-    # 
     # Returns a collection containing threads that may be waiting to
     # acquire in shared mode. This has the same properties
     # as {@link #getQueuedThreads} except that it only returns
@@ -1466,7 +1403,6 @@ module Java::Util::Concurrent::Locks
     end
     
     typesig { [] }
-    # 
     # Returns a string identifying this synchronizer, as well as its state.
     # The state, in brackets, includes the String {@code "State ="}
     # followed by the current value of {@link #getState}, and either
@@ -1495,7 +1431,6 @@ module Java::Util::Concurrent::Locks
         # If has successor, it must be on queue
         return true
       end
-      # 
       # node.prev can be non-null, but not yet on queue because
       # the CAS to place it on queue can fail. So we have to
       # traverse from tail to make sure it actually made it.  It
@@ -1506,7 +1441,6 @@ module Java::Util::Concurrent::Locks
     end
     
     typesig { [Node] }
-    # 
     # Returns true if node is on sync queue by searching backwards from tail.
     # Called only when needed by isOnSyncQueue.
     # @return true if present
@@ -1524,19 +1458,16 @@ module Java::Util::Concurrent::Locks
     end
     
     typesig { [Node] }
-    # 
     # Transfers a node from a condition queue onto sync queue.
     # Returns true if successful.
     # @param node the node
     # @return true if successfully transferred (else the node was
     # cancelled before signal).
     def transfer_for_signal(node)
-      # 
       # If cannot change waitStatus, the node has been cancelled.
       if (!compare_and_set_wait_status(node, Node::CONDITION, 0))
         return false
       end
-      # 
       # Splice onto queue and try to set waitStatus of predecessor to
       # indicate that thread is (probably) waiting. If cancelled or
       # attempt to set waitStatus fails, wake up to resync (in which
@@ -1550,7 +1481,6 @@ module Java::Util::Concurrent::Locks
     end
     
     typesig { [Node] }
-    # 
     # Transfers node, if necessary, to sync queue after a cancelled
     # wait. Returns true if thread was cancelled before being
     # signalled.
@@ -1562,7 +1492,6 @@ module Java::Util::Concurrent::Locks
         enq(node)
         return true
       end
-      # 
       # If we lost out to a signal(), then we can't proceed
       # until it finishes its enq().  Cancelling during an
       # incomplete transfer is both rare and transient, so just
@@ -1574,7 +1503,6 @@ module Java::Util::Concurrent::Locks
     end
     
     typesig { [Node] }
-    # 
     # Invokes release with current state value; returns saved state.
     # Cancels node and throws exception on failure.
     # @param node the condition node for this wait
@@ -1613,7 +1541,6 @@ module Java::Util::Concurrent::Locks
     end
     
     typesig { [ConditionObject] }
-    # 
     # Queries whether any threads are waiting on the given condition
     # associated with this synchronizer. Note that because timeouts
     # and interrupts may occur at any time, a <tt>true</tt> return
@@ -1636,7 +1563,6 @@ module Java::Util::Concurrent::Locks
     end
     
     typesig { [ConditionObject] }
-    # 
     # Returns an estimate of the number of threads waiting on the
     # given condition associated with this synchronizer. Note that
     # because timeouts and interrupts may occur at any time, the
@@ -1659,7 +1585,6 @@ module Java::Util::Concurrent::Locks
     end
     
     typesig { [ConditionObject] }
-    # 
     # Returns a collection containing those threads that may be
     # waiting on the given condition associated with this
     # synchronizer.  Because the actual set of threads may change
@@ -1682,7 +1607,6 @@ module Java::Util::Concurrent::Locks
     end
     
     class_module.module_eval {
-      # 
       # Condition implementation for a {@link
       # AbstractQueuedLongSynchronizer} serving as the basis of a {@link
       # Lock} implementation.
@@ -1724,7 +1648,6 @@ module Java::Util::Concurrent::Locks
         undef_method :last_waiter=
         
         typesig { [] }
-        # 
         # Creates a new <tt>ConditionObject</tt> instance.
         def initialize
           @first_waiter = nil
@@ -1754,7 +1677,6 @@ module Java::Util::Concurrent::Locks
         end
         
         typesig { [Node] }
-        # 
         # Removes and transfers nodes until hit non-cancelled one or
         # null. Split out from signal in part to encourage compilers
         # to inline the case of no waiters.
@@ -1769,7 +1691,6 @@ module Java::Util::Concurrent::Locks
         end
         
         typesig { [Node] }
-        # 
         # Removes and transfers all nodes.
         # @param first (non-null) the first node on condition queue
         def do_signal_all(first)
@@ -1783,7 +1704,6 @@ module Java::Util::Concurrent::Locks
         end
         
         typesig { [] }
-        # 
         # Unlinks cancelled waiter nodes from condition queue.
         # Called only while holding lock. This is called when
         # cancellation occurred during condition wait, and upon
@@ -1838,7 +1758,6 @@ module Java::Util::Concurrent::Locks
         end
         
         typesig { [] }
-        # 
         # Moves all threads from the wait queue for this condition to
         # the wait queue for the owning lock.
         # 
@@ -1855,7 +1774,6 @@ module Java::Util::Concurrent::Locks
         end
         
         typesig { [] }
-        # 
         # Implements uninterruptible condition wait.
         # <ol>
         # <li> Save lock state returned by {@link #getState}.
@@ -1882,7 +1800,6 @@ module Java::Util::Concurrent::Locks
         end
         
         class_module.module_eval {
-          # 
           # For interruptible waits, we need to track whether to throw
           # InterruptedException, if interrupted while blocked on
           # condition, versus reinterrupt current thread, if
@@ -1898,7 +1815,6 @@ module Java::Util::Concurrent::Locks
         }
         
         typesig { [Node] }
-        # 
         # Checks for interrupt, returning THROW_IE if interrupted
         # before signalled, REINTERRUPT if after signalled, or
         # 0 if not interrupted.
@@ -1907,7 +1823,6 @@ module Java::Util::Concurrent::Locks
         end
         
         typesig { [::Java::Int] }
-        # 
         # Throws InterruptedException, reinterrupts current thread, or
         # does nothing, depending on mode.
         def report_interrupt_after_wait(interrupt_mode)
@@ -1921,7 +1836,6 @@ module Java::Util::Concurrent::Locks
         end
         
         typesig { [] }
-        # 
         # Implements interruptible condition wait.
         # <ol>
         # <li> If current thread is interrupted, throw InterruptedException.
@@ -1960,7 +1874,6 @@ module Java::Util::Concurrent::Locks
         end
         
         typesig { [::Java::Long] }
-        # 
         # Implements timed condition wait.
         # <ol>
         # <li> If current thread is interrupted, throw InterruptedException.
@@ -2007,7 +1920,6 @@ module Java::Util::Concurrent::Locks
         end
         
         typesig { [Date] }
-        # 
         # Implements absolute timed condition wait.
         # <ol>
         # <li> If current thread is interrupted, throw InterruptedException.
@@ -2056,7 +1968,6 @@ module Java::Util::Concurrent::Locks
         end
         
         typesig { [::Java::Long, TimeUnit] }
-        # 
         # Implements timed condition wait.
         # <ol>
         # <li> If current thread is interrupted, throw InterruptedException.
@@ -2122,7 +2033,6 @@ module Java::Util::Concurrent::Locks
         end
         
         typesig { [] }
-        # 
         # Queries whether any threads are waiting on this condition.
         # Implements {@link AbstractQueuedLongSynchronizer#hasWaiters}.
         # 
@@ -2144,7 +2054,6 @@ module Java::Util::Concurrent::Locks
         end
         
         typesig { [] }
-        # 
         # Returns an estimate of the number of threads waiting on
         # this condition.
         # Implements {@link AbstractQueuedLongSynchronizer#getWaitQueueLength}.
@@ -2168,7 +2077,6 @@ module Java::Util::Concurrent::Locks
         end
         
         typesig { [] }
-        # 
         # Returns a collection containing those threads that may be
         # waiting on this Condition.
         # Implements {@link AbstractQueuedLongSynchronizer#getWaitingThreads}.
@@ -2198,7 +2106,6 @@ module Java::Util::Concurrent::Locks
         alias_method :initialize__condition_object, :initialize
       end }
       
-      # 
       # Setup to support compareAndSet. We need to natively implement
       # this here: For the sake of permitting future enhancements, we
       # cannot explicitly subclass AtomicLong, which would be
@@ -2223,14 +2130,12 @@ module Java::Util::Concurrent::Locks
     }
     
     typesig { [Node] }
-    # 
     # CAS head field. Used only by enq.
     def compare_and_set_head(update)
       return UnsafeInstance.compare_and_swap_object(self, HeadOffset, nil, update)
     end
     
     typesig { [Node, Node] }
-    # 
     # CAS tail field. Used only by enq.
     def compare_and_set_tail(expect, update)
       return UnsafeInstance.compare_and_swap_object(self, TailOffset, expect, update)
@@ -2238,14 +2143,12 @@ module Java::Util::Concurrent::Locks
     
     class_module.module_eval {
       typesig { [Node, ::Java::Int, ::Java::Int] }
-      # 
       # CAS waitStatus field of a node.
       def compare_and_set_wait_status(node, expect, update)
         return UnsafeInstance.compare_and_swap_int(node, WaitStatusOffset, expect, update)
       end
       
       typesig { [Node, Node, Node] }
-      # 
       # CAS next field of a node.
       def compare_and_set_next(node, expect, update)
         return UnsafeInstance.compare_and_swap_object(node, NextOffset, expect, update)

@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 2003-2004 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -31,7 +30,6 @@ module Java::Lang::Management
     }
   end
   
-  # 
   # The management interface for the runtime system of
   # the Java virtual machine.
   # 
@@ -64,7 +62,6 @@ module Java::Lang::Management
     include_class_members RuntimeMXBeanImports
     
     typesig { [] }
-    # 
     # Returns the name representing the running Java virtual machine.
     # The returned name string can be any arbitrary string and
     # a Java virtual machine implementation can choose
@@ -78,7 +75,6 @@ module Java::Lang::Management
     end
     
     typesig { [] }
-    # 
     # Returns the Java virtual machine implementation name.
     # This method is equivalent to {@link System#getProperty
     # System.getProperty("java.vm.name")}.
@@ -96,7 +92,6 @@ module Java::Lang::Management
     end
     
     typesig { [] }
-    # 
     # Returns the Java virtual machine implementation vendor.
     # This method is equivalent to {@link System#getProperty
     # System.getProperty("java.vm.vendor")}.
@@ -114,7 +109,6 @@ module Java::Lang::Management
     end
     
     typesig { [] }
-    # 
     # Returns the Java virtual machine implementation version.
     # This method is equivalent to {@link System#getProperty
     # System.getProperty("java.vm.version")}.
@@ -132,7 +126,6 @@ module Java::Lang::Management
     end
     
     typesig { [] }
-    # 
     # Returns the Java virtual machine specification name.
     # This method is equivalent to {@link System#getProperty
     # System.getProperty("java.vm.specification.name")}.
@@ -150,7 +143,6 @@ module Java::Lang::Management
     end
     
     typesig { [] }
-    # 
     # Returns the Java virtual machine specification vendor.
     # This method is equivalent to {@link System#getProperty
     # System.getProperty("java.vm.specification.vendor")}.
@@ -168,7 +160,6 @@ module Java::Lang::Management
     end
     
     typesig { [] }
-    # 
     # Returns the Java virtual machine specification version.
     # This method is equivalent to {@link System#getProperty
     # System.getProperty("java.vm.specification.version")}.
@@ -186,7 +177,6 @@ module Java::Lang::Management
     end
     
     typesig { [] }
-    # 
     # Returns the version of the specification for the management interface
     # implemented by the running Java virtual machine.
     # 
@@ -197,7 +187,6 @@ module Java::Lang::Management
     end
     
     typesig { [] }
-    # 
     # Returns the Java class path that is used by the system class loader
     # to search for class files.
     # This method is equivalent to {@link System#getProperty
@@ -220,7 +209,6 @@ module Java::Lang::Management
     end
     
     typesig { [] }
-    # 
     # Returns the Java library path.
     # This method is equivalent to {@link System#getProperty
     # System.getProperty("java.library.path")}.
@@ -242,7 +230,6 @@ module Java::Lang::Management
     end
     
     typesig { [] }
-    # 
     # Tests if the Java virtual machine supports the boot class path
     # mechanism used by the bootstrap class loader to search for class
     # files.
@@ -254,7 +241,6 @@ module Java::Lang::Management
     end
     
     typesig { [] }
-    # 
     # Returns the boot class path that is used by the bootstrap class loader
     # to search for class files.
     # 
@@ -281,7 +267,6 @@ module Java::Lang::Management
     end
     
     typesig { [] }
-    # 
     # Returns the input arguments passed to the Java virtual machine
     # which does not include the arguments to the <tt>main</tt> method.
     # This method returns an empty list if there is no input argument
@@ -312,7 +297,6 @@ module Java::Lang::Management
     end
     
     typesig { [] }
-    # 
     # Returns the uptime of the Java virtual machine in milliseconds.
     # 
     # @return uptime of the Java virtual machine in milliseconds.
@@ -321,7 +305,6 @@ module Java::Lang::Management
     end
     
     typesig { [] }
-    # 
     # Returns the start time of the Java virtual machine in milliseconds.
     # This method returns the approximate time when the Java virtual
     # machine started.
@@ -332,7 +315,6 @@ module Java::Lang::Management
     end
     
     typesig { [] }
-    # 
     # Returns a map of names and values of all system properties.
     # This method calls {@link System#getProperties} to get all
     # system properties.  Properties whose name or value is not

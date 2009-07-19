@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 2003 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -31,7 +30,6 @@ module Sun::Misc
     }
   end
   
-  # 
   # Utility class for small LRU caches.
   # 
   # @author Mark Reinhold
@@ -102,10 +100,10 @@ module Sun::Misc
         end
       end
       # Create a new object
-      ob_ = create(name)
-      @oa[@oa.attr_length - 1] = ob_
+      ob = create(name)
+      @oa[@oa.attr_length - 1] = ob
       move_to_front(@oa, @oa.attr_length - 1)
-      return ob_
+      return ob
     end
     
     private

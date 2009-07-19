@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 1996-2004 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -33,7 +32,6 @@ module Java::Security::Acl
     }
   end
   
-  # 
   # Interface representing an Access Control List (ACL).  An Access
   # Control List is a data structure used to guard access to
   # resources.<p>
@@ -96,7 +94,6 @@ module Java::Security::Acl
     include Owner
     
     typesig { [Principal, String] }
-    # 
     # Sets the name of this ACL.
     # 
     # @param caller the principal invoking this method. It must be an
@@ -113,7 +110,6 @@ module Java::Security::Acl
     end
     
     typesig { [] }
-    # 
     # Returns the name of this ACL.
     # 
     # @return the name of this ACL.
@@ -124,7 +120,6 @@ module Java::Security::Acl
     end
     
     typesig { [Principal, AclEntry] }
-    # 
     # Adds an ACL entry to this ACL. An entry associates a principal
     # (e.g., an individual or a group) with a set of
     # permissions. Each principal can have at most one positive ACL
@@ -149,7 +144,6 @@ module Java::Security::Acl
     end
     
     typesig { [Principal, AclEntry] }
-    # 
     # Removes an ACL entry from this ACL.
     # 
     # @param caller the principal invoking this method. It must be an
@@ -166,7 +160,6 @@ module Java::Security::Acl
     end
     
     typesig { [Principal] }
-    # 
     # Returns an enumeration for the set of allowed permissions for the
     # specified principal (representing an entity such as an individual or
     # a group). This set of allowed permissions is calculated as
@@ -215,7 +208,6 @@ module Java::Security::Acl
     end
     
     typesig { [] }
-    # 
     # Returns an enumeration of the entries in this ACL. Each element in
     # the enumeration is of type AclEntry.
     # 
@@ -225,7 +217,6 @@ module Java::Security::Acl
     end
     
     typesig { [Principal, Permission] }
-    # 
     # Checks whether or not the specified principal has the specified
     # permission. If it does, true is returned, otherwise false is returned.
     # 
@@ -248,7 +239,6 @@ module Java::Security::Acl
     end
     
     typesig { [] }
-    # 
     # Returns a string representation of the
     # ACL contents.
     # 

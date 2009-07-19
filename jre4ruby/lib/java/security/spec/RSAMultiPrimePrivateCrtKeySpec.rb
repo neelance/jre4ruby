@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 2001-2003 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -32,7 +31,6 @@ module Java::Security::Spec
     }
   end
   
-  # 
   # This class specifies an RSA multi-prime private key, as defined in the
   # PKCS#1 v2.1, using the Chinese Remainder Theorem (CRT) information
   # values for efficiency.
@@ -95,7 +93,6 @@ module Java::Security::Spec
     undef_method :other_prime_info=
     
     typesig { [BigInteger, BigInteger, BigInteger, BigInteger, BigInteger, BigInteger, BigInteger, BigInteger, Array.typed(RSAOtherPrimeInfo)] }
-    # 
     # Creates a new <code>RSAMultiPrimePrivateCrtKeySpec</code>
     # given the modulus, publicExponent, privateExponent,
     # primeP, primeQ, primeExponentP, primeExponentQ,
@@ -175,7 +172,6 @@ module Java::Security::Spec
     end
     
     typesig { [] }
-    # 
     # Returns the public exponent.
     # 
     # @return the public exponent.
@@ -184,7 +180,6 @@ module Java::Security::Spec
     end
     
     typesig { [] }
-    # 
     # Returns the primeP.
     # 
     # @return the primeP.
@@ -193,7 +188,6 @@ module Java::Security::Spec
     end
     
     typesig { [] }
-    # 
     # Returns the primeQ.
     # 
     # @return the primeQ.
@@ -202,7 +196,6 @@ module Java::Security::Spec
     end
     
     typesig { [] }
-    # 
     # Returns the primeExponentP.
     # 
     # @return the primeExponentP.
@@ -211,7 +204,6 @@ module Java::Security::Spec
     end
     
     typesig { [] }
-    # 
     # Returns the primeExponentQ.
     # 
     # @return the primeExponentQ.
@@ -220,7 +212,6 @@ module Java::Security::Spec
     end
     
     typesig { [] }
-    # 
     # Returns the crtCoefficient.
     # 
     # @return the crtCoefficient.
@@ -229,7 +220,6 @@ module Java::Security::Spec
     end
     
     typesig { [] }
-    # 
     # Returns a copy of the otherPrimeInfo or null if there are
     # only two prime factors (p and q).
     # 

@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 1997-2006 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -31,7 +30,6 @@ module Java::Util
     }
   end
   
-  # 
   # This class provides a skeletal implementation of the <tt>Collection</tt>
   # interface, to minimize the effort required to implement this interface. <p>
   # 
@@ -67,7 +65,6 @@ module Java::Util
     include Collection
     
     typesig { [] }
-    # 
     # Sole constructor.  (For invocation by subclass constructors, typically
     # implicit.)
     def initialize
@@ -89,7 +86,6 @@ module Java::Util
     end
     
     typesig { [] }
-    # 
     # {@inheritDoc}
     # 
     # <p>This implementation returns <tt>size() == 0</tt>.
@@ -98,7 +94,6 @@ module Java::Util
     end
     
     typesig { [Object] }
-    # 
     # {@inheritDoc}
     # 
     # <p>This implementation iterates over the elements in the collection,
@@ -125,7 +120,6 @@ module Java::Util
     end
     
     typesig { [] }
-    # 
     # {@inheritDoc}
     # 
     # <p>This implementation returns an array containing all the elements
@@ -163,7 +157,6 @@ module Java::Util
     end
     
     typesig { [Array.typed(T)] }
-    # 
     # {@inheritDoc}
     # 
     # <p>This implementation returns an array containing all the elements
@@ -212,7 +205,6 @@ module Java::Util
     
     class_module.module_eval {
       typesig { [Array.typed(T), Iterator] }
-      # 
       # Reallocates the array being used within toArray when the iterator
       # returned more elements than expected, and finishes filling it from
       # the iterator.
@@ -261,7 +253,6 @@ module Java::Util
     end
     
     typesig { [Object] }
-    # 
     # {@inheritDoc}
     # 
     # <p>This implementation iterates over the collection looking for the
@@ -320,7 +311,6 @@ module Java::Util
     end
     
     typesig { [Collection] }
-    # 
     # {@inheritDoc}
     # 
     # <p>This implementation iterates over the specified collection, and adds
@@ -349,7 +339,6 @@ module Java::Util
     end
     
     typesig { [Collection] }
-    # 
     # {@inheritDoc}
     # 
     # <p>This implementation iterates over this collection, checking each
@@ -382,7 +371,6 @@ module Java::Util
     end
     
     typesig { [Collection] }
-    # 
     # {@inheritDoc}
     # 
     # <p>This implementation iterates over this collection, checking each
@@ -415,7 +403,6 @@ module Java::Util
     end
     
     typesig { [] }
-    # 
     # {@inheritDoc}
     # 
     # <p>This implementation iterates over this collection, removing each

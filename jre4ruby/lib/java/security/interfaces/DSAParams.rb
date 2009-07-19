@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 1996-1998 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -32,7 +31,6 @@ module Java::Security::Interfaces
     }
   end
   
-  # 
   # Interface to a DSA-specific set of key parameters, which defines a
   # DSA <em>key family</em>. DSA (Digital Signature Algorithm) is defined
   # in NIST's FIPS-186.
@@ -47,7 +45,6 @@ module Java::Security::Interfaces
     include_class_members DSAParamsImports
     
     typesig { [] }
-    # 
     # Returns the prime, <code>p</code>.
     # 
     # @return the prime, <code>p</code>.
@@ -56,7 +53,6 @@ module Java::Security::Interfaces
     end
     
     typesig { [] }
-    # 
     # Returns the subprime, <code>q</code>.
     # 
     # @return the subprime, <code>q</code>.
@@ -65,7 +61,6 @@ module Java::Security::Interfaces
     end
     
     typesig { [] }
-    # 
     # Returns the base, <code>g</code>.
     # 
     # @return the base, <code>g</code>.

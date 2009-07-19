@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 1994-2005 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -30,7 +29,6 @@ module Java::Lang
     }
   end
   
-  # 
   # Thrown when an application tries to call an abstract method.
   # Normally, this error is caught by the compiler; this error can
   # only occur at run time if the definition of some class has
@@ -43,14 +41,12 @@ module Java::Lang
     include_class_members AbstractMethodErrorImports
     
     typesig { [] }
-    # 
     # Constructs an <code>AbstractMethodError</code> with no detail  message.
     def initialize
       super()
     end
     
     typesig { [String] }
-    # 
     # Constructs an <code>AbstractMethodError</code> with the specified
     # detail message.
     # 

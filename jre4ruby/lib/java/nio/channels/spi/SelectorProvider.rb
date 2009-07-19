@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 2000-2006 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -42,7 +41,6 @@ module Java::Nio::Channels::Spi
     }
   end
   
-  # 
   # Service-provider class for selectors and selectable channels.
   # 
   # <p> A selector provider is a concrete subclass of this class that has a
@@ -90,7 +88,6 @@ module Java::Nio::Channels::Spi
     }
     
     typesig { [] }
-    # 
     # Initializes a new instance of this class.  </p>
     # 
     # @throws  SecurityException
@@ -117,11 +114,11 @@ module Java::Nio::Channels::Spi
         rescue ClassNotFoundException => x
           raise ServiceConfigurationError.new(nil, x)
         rescue IllegalAccessException => x
-          raise ServiceConfigurationError.new(nil, x_)
+          raise ServiceConfigurationError.new(nil, x)
         rescue InstantiationException => x
-          raise ServiceConfigurationError.new(nil, x__)
+          raise ServiceConfigurationError.new(nil, x)
         rescue SecurityException => x
-          raise ServiceConfigurationError.new(nil, x___)
+          raise ServiceConfigurationError.new(nil, x)
         end
       end
       
@@ -147,7 +144,6 @@ module Java::Nio::Channels::Spi
       end
       
       typesig { [] }
-      # 
       # Returns the system-wide default selector provider for this invocation of
       # the Java virtual machine.
       # 
@@ -216,7 +212,6 @@ module Java::Nio::Channels::Spi
     }
     
     typesig { [] }
-    # 
     # Opens a datagram channel.  </p>
     # 
     # @return  The new channel
@@ -225,7 +220,6 @@ module Java::Nio::Channels::Spi
     end
     
     typesig { [] }
-    # 
     # Opens a pipe.  </p>
     # 
     # @return  The new pipe
@@ -234,7 +228,6 @@ module Java::Nio::Channels::Spi
     end
     
     typesig { [] }
-    # 
     # Opens a selector.  </p>
     # 
     # @return  The new selector
@@ -243,7 +236,6 @@ module Java::Nio::Channels::Spi
     end
     
     typesig { [] }
-    # 
     # Opens a server-socket channel.  </p>
     # 
     # @return  The new channel
@@ -252,7 +244,6 @@ module Java::Nio::Channels::Spi
     end
     
     typesig { [] }
-    # 
     # Opens a socket channel. </p>
     # 
     # @return  The new channel
@@ -261,7 +252,6 @@ module Java::Nio::Channels::Spi
     end
     
     typesig { [] }
-    # 
     # Returns the channel inherited from the entity that created this
     # Java virtual machine.
     # 

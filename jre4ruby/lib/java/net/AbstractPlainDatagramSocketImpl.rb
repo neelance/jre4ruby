@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 1996-2007 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -35,7 +34,6 @@ module Java::Net
     }
   end
   
-  # 
   # Abstract datagram and multicast socket implementation base class.
   # Note: This is not a public class, so that applets cannot call
   # into the implementation directly and hence cannot bypass the
@@ -97,7 +95,6 @@ module Java::Net
     undef_method :ttl=
     
     class_module.module_eval {
-      # 
       # Load net library into runtime.
       when_class_loaded do
         Java::Security::AccessController.do_privileged(Sun::Security::Action::LoadLibraryAction.new("net"))
@@ -105,7 +102,6 @@ module Java::Net
     }
     
     typesig { [] }
-    # 
     # Creates a datagram socket
     def create
       synchronized(self) do
@@ -115,7 +111,6 @@ module Java::Net
     end
     
     typesig { [::Java::Int, InetAddress] }
-    # 
     # Binds a datagram socket to a local port.
     def bind(lport, laddr)
       synchronized(self) do
@@ -129,7 +124,6 @@ module Java::Net
     end
     
     typesig { [DatagramPacket] }
-    # 
     # Sends a datagram packet. The packet contains the data and the
     # destination address to send the packet to.
     # @param packet to be sent.
@@ -138,7 +132,6 @@ module Java::Net
     end
     
     typesig { [InetAddress, ::Java::Int] }
-    # 
     # Connects a datagram socket to a remote destination. This associates the remote
     # address with the local socket so that datagrams may only be sent to this destination
     # and received from this destination.
@@ -152,7 +145,6 @@ module Java::Net
     end
     
     typesig { [] }
-    # 
     # Disconnects a previously connected socket. Does nothing if the socket was
     # not connected already.
     def disconnect
@@ -163,7 +155,6 @@ module Java::Net
     end
     
     typesig { [InetAddress] }
-    # 
     # Peek at the packet to see who it is from.
     # @param return the address which the packet came from.
     def peek(i)
@@ -176,7 +167,6 @@ module Java::Net
     end
     
     typesig { [DatagramPacket] }
-    # 
     # Receive the datagram packet.
     # @param Packet Received.
     def receive(p)
@@ -191,7 +181,6 @@ module Java::Net
     end
     
     typesig { [::Java::Int] }
-    # 
     # Set the TTL (time-to-live) option.
     # @param TTL to be set.
     def set_time_to_live(ttl)
@@ -199,14 +188,12 @@ module Java::Net
     end
     
     typesig { [] }
-    # 
     # Get the TTL (time-to-live) option.
     def get_time_to_live
       raise NotImplementedError
     end
     
     typesig { [::Java::Byte] }
-    # 
     # Set the TTL (time-to-live) option.
     # @param TTL to be set.
     def set_ttl(ttl)
@@ -214,14 +201,12 @@ module Java::Net
     end
     
     typesig { [] }
-    # 
     # Get the TTL (time-to-live) option.
     def get_ttl
       raise NotImplementedError
     end
     
     typesig { [InetAddress] }
-    # 
     # Join the multicast group.
     # @param multicast address to join.
     def join(inetaddr)
@@ -229,7 +214,6 @@ module Java::Net
     end
     
     typesig { [InetAddress] }
-    # 
     # Leave the multicast group.
     # @param multicast address to leave.
     def leave(inetaddr)
@@ -237,7 +221,6 @@ module Java::Net
     end
     
     typesig { [SocketAddress, NetworkInterface] }
-    # 
     # Join the multicast group.
     # @param multicast address to join.
     # @param netIf specifies the local interface to receive multicast
@@ -258,7 +241,6 @@ module Java::Net
     end
     
     typesig { [SocketAddress, NetworkInterface] }
-    # 
     # Leave the multicast group.
     # @param multicast address to leave.
     # @param netIf specified the local interface to leave the group at
@@ -278,7 +260,6 @@ module Java::Net
     end
     
     typesig { [] }
-    # 
     # Close the socket.
     def close
       if (!(self.attr_fd).nil?)
@@ -298,7 +279,6 @@ module Java::Net
     end
     
     typesig { [::Java::Int, Object] }
-    # 
     # set a value - since we only support (setting) binary options
     # here, o must be a Boolean
     def set_option(opt_id, o)
@@ -357,7 +337,6 @@ module Java::Net
     end
     
     typesig { [::Java::Int] }
-    # 
     # get option's state - set or not
     def get_option(opt_id)
       if (is_closed)

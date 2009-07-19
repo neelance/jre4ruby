@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 1996-2006 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -34,7 +33,6 @@ module Sun::Security::Acl
     }
   end
   
-  # 
   # Class implementing the Owner interface. The
   # initial owner principal is configured as
   # part of the constructor.
@@ -57,7 +55,6 @@ module Sun::Security::Acl
     end
     
     typesig { [Principal, Principal] }
-    # 
     # Adds an owner. Owners can modify ACL contents and can disassociate
     # ACLs from the objects they protect in the AclConfig interface.
     # The caller principal must be a part of the owners list of the ACL in
@@ -79,7 +76,6 @@ module Sun::Security::Acl
     end
     
     typesig { [Principal, Principal] }
-    # 
     # Delete owner. If this is the last owner in the ACL, an exception is
     # raised.
     # The caller principal must be a part of the owners list of the ACL in
@@ -98,7 +94,6 @@ module Sun::Security::Acl
           raise NotOwnerException.new
         end
         e = @owner_group.members
-        # 
         # check if there is atleast 2 members left.
         o = e.next_element
         if (e.has_more_elements)
@@ -110,7 +105,6 @@ module Sun::Security::Acl
     end
     
     typesig { [Principal] }
-    # 
     # returns if the given principal belongs to the owner list.
     # @param owner The owner to check if part of the owners list
     # @return true if the passed principal is in the owner list, false if not.

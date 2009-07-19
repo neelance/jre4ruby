@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 2004-2006 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -36,7 +35,6 @@ module Sun::Security::X509
     }
   end
   
-  # 
   # The Authority Information Access Extension (OID = 1.3.6.1.5.5.7.1.1).
   # <p>
   # The AIA extension identifies how to access CA information and services
@@ -68,13 +66,11 @@ module Sun::Security::X509
     include CertAttrSet
     
     class_module.module_eval {
-      # 
       # Identifier for this attribute, to be used with the
       # get, set, delete methods of Certificate, x509 type.
       const_set_lazy(:IDENT) { "x509.info.extensions.AuthorityInfoAccess" }
       const_attr_reader  :IDENT
       
-      # 
       # Attribute name.
       const_set_lazy(:NAME) { "AuthorityInfoAccess" }
       const_attr_reader  :NAME
@@ -83,7 +79,6 @@ module Sun::Security::X509
       const_attr_reader  :DESCRIPTIONS
     }
     
-    # 
     # The List of AccessDescription objects.
     attr_accessor :access_descriptions
     alias_method :attr_access_descriptions, :access_descriptions
@@ -92,7 +87,6 @@ module Sun::Security::X509
     undef_method :access_descriptions=
     
     typesig { [JavaList] }
-    # 
     # Create an AuthorityInfoAccessExtension from a List of
     # AccessDescription; the criticality is set to false.
     # 
@@ -108,7 +102,6 @@ module Sun::Security::X509
     end
     
     typesig { [Boolean, Object] }
-    # 
     # Create the extension from the passed DER encoded value of the same.
     # 
     # @param critical true if the extension is to be treated as critical.
@@ -136,21 +129,18 @@ module Sun::Security::X509
     end
     
     typesig { [] }
-    # 
     # Return the list of AccessDescription objects.
     def get_access_descriptions
       return @access_descriptions
     end
     
     typesig { [] }
-    # 
     # Return the name of this attribute.
     def get_name
       return NAME
     end
     
     typesig { [OutputStream] }
-    # 
     # Write the extension to the DerOutputStream.
     # 
     # @param out the DerOutputStream to write the extension to.
@@ -167,7 +157,6 @@ module Sun::Security::X509
     end
     
     typesig { [String, Object] }
-    # 
     # Set the attribute value.
     def set(name, obj)
       if (name.equals_ignore_case(DESCRIPTIONS))
@@ -182,7 +171,6 @@ module Sun::Security::X509
     end
     
     typesig { [String] }
-    # 
     # Get the attribute value.
     def get(name)
       if (name.equals_ignore_case(DESCRIPTIONS))
@@ -193,7 +181,6 @@ module Sun::Security::X509
     end
     
     typesig { [String] }
-    # 
     # Delete the attribute value.
     def delete(name)
       if (name.equals_ignore_case(DESCRIPTIONS))
@@ -205,7 +192,6 @@ module Sun::Security::X509
     end
     
     typesig { [] }
-    # 
     # Return an enumeration of names of attributes existing within this
     # attribute.
     def get_elements
@@ -231,7 +217,6 @@ module Sun::Security::X509
     end
     
     typesig { [] }
-    # 
     # Return the extension as user readable string.
     def to_s
       return (super).to_s + "AuthorityInfoAccess [\n  " + (@access_descriptions).to_s + "\n]\n"

@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 2005 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -34,7 +33,6 @@ module Java::Text::Spi
     }
   end
   
-  # 
   # An abstract class for service providers that
   # provide concrete implementations of the
   # {@link java.text.NumberFormat NumberFormat} class.
@@ -44,7 +42,6 @@ module Java::Text::Spi
     include_class_members NumberFormatProviderImports
     
     typesig { [] }
-    # 
     # Sole constructor.  (For invocation by subclass constructors, typically
     # implicit.)
     def initialize
@@ -52,7 +49,6 @@ module Java::Text::Spi
     end
     
     typesig { [Locale] }
-    # 
     # Returns a new <code>NumberFormat</code> instance which formats
     # monetary values for the specified locale.
     # 
@@ -69,7 +65,6 @@ module Java::Text::Spi
     end
     
     typesig { [Locale] }
-    # 
     # Returns a new <code>NumberFormat</code> instance which formats
     # integer values for the specified locale.
     # The returned number format is configured to
@@ -92,7 +87,6 @@ module Java::Text::Spi
     end
     
     typesig { [Locale] }
-    # 
     # Returns a new general-purpose <code>NumberFormat</code> instance for
     # the specified locale.
     # 
@@ -109,7 +103,6 @@ module Java::Text::Spi
     end
     
     typesig { [Locale] }
-    # 
     # Returns a new <code>NumberFormat</code> instance which formats
     # percentage values for the specified locale.
     # 

@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 1994-2006 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -63,7 +62,6 @@ module Sun::Net::Www::Protocol::Ftp
     }
   end
   
-  # 
   # This class Opens an FTP input (or output) stream given a URL.
   # It works as a one shot FTP transfer :
   # <UL>
@@ -204,7 +202,6 @@ module Sun::Net::Www::Protocol::Ftp
     undef_method :read_timeout=
     
     class_module.module_eval {
-      # 
       # For FTP URLs we need to have a special InputStream because we
       # need to close 2 sockets after we're done with it :
       # - The Data socket (for the file).
@@ -242,7 +239,6 @@ module Sun::Net::Www::Protocol::Ftp
         alias_method :initialize__ftp_input_stream, :initialize
       end }
       
-      # 
       # For FTP URLs we need to have a special OutputStream because we
       # need to close 2 sockets after we're done with it :
       # - The Data socket (for the file).
@@ -282,7 +278,6 @@ module Sun::Net::Www::Protocol::Ftp
     }
     
     typesig { [URL] }
-    # 
     # Creates an FtpURLConnection from a URL.
     # 
     # @param   url     The <code>URL</code> to retrieve or store.
@@ -291,7 +286,6 @@ module Sun::Net::Www::Protocol::Ftp
     end
     
     typesig { [URL, Proxy] }
-    # 
     # Same as FtpURLconnection(URL) with a per connection proxy specified
     def initialize(url, p)
       @http = nil
@@ -350,7 +344,6 @@ module Sun::Net::Www::Protocol::Ftp
     end
     
     typesig { [] }
-    # 
     # Connects to the FTP server and logs in.
     # 
     # @throws  FtpLoginException if the login is unsuccessful
@@ -457,14 +450,13 @@ module Sun::Net::Www::Protocol::Ftp
           @ftp.login(@user, @password)
         rescue Sun::Net::Ftp::FtpLoginException => e
           @ftp.close_server
-          raise e_
+          raise e
         end
         self.attr_connected = true
       end
     end
     
     typesig { [String] }
-    # 
     # Decodes the path as per the RFC-1738 specifications.
     def decode_path(path)
       i = path.index_of(";type=")
@@ -509,7 +501,6 @@ module Sun::Net::Www::Protocol::Ftp
     end
     
     typesig { [String] }
-    # 
     # As part of RFC-1738 it is specified that the path should be
     # interpreted as a series of FTP CWD commands.
     # This is because, '/' is not necessarly the directory delimiter
@@ -529,7 +520,6 @@ module Sun::Net::Www::Protocol::Ftp
     end
     
     typesig { [] }
-    # 
     # Get the InputStream to retreive the remote file. It will issue the
     # "get" (or "dir") command to the ftp server.
     # 
@@ -625,7 +615,6 @@ module Sun::Net::Www::Protocol::Ftp
     end
     
     typesig { [] }
-    # 
     # Get the OutputStream to store the remote file. It will issue the
     # "put" command to the ftp server.
     # 
@@ -669,7 +658,6 @@ module Sun::Net::Www::Protocol::Ftp
     end
     
     typesig { [] }
-    # 
     # Gets the <code>Permission</code> associated with the host & port.
     # 
     # @return  The <code>Permission</code> object.
@@ -684,7 +672,6 @@ module Sun::Net::Www::Protocol::Ftp
     end
     
     typesig { [String, String] }
-    # 
     # Sets the general request property. If a property with the key already
     # exists, overwrite its value with the new value.
     # 
@@ -713,7 +700,6 @@ module Sun::Net::Www::Protocol::Ftp
     end
     
     typesig { [String] }
-    # 
     # Returns the value of the named general request property for this
     # connection.
     # 

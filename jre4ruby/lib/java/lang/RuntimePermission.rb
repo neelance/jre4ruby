@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 1997-2005 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -34,7 +33,6 @@ module Java::Lang
     }
   end
   
-  # 
   # This class is for runtime permissions. A RuntimePermission
   # contains a name (also referred to as a "target name") but
   # no actions list; you either have the named permission
@@ -340,7 +338,6 @@ module Java::Lang
     }
     
     typesig { [String] }
-    # 
     # Creates a new RuntimePermission with the specified name.
     # The name is the symbolic name of the RuntimePermission, such as
     # "exit", "setFactory", etc. An asterisk
@@ -356,7 +353,6 @@ module Java::Lang
     end
     
     typesig { [String, String] }
-    # 
     # Creates a new RuntimePermission object with the specified name.
     # The name is the symbolic name of the RuntimePermission, and the
     # actions String is currently unused and should be null.

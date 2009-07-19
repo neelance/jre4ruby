@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 2000-2006 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -54,7 +53,6 @@ module Sun::Security::Jgss
     }
   end
   
-  # 
   # The GSSUtilImplementation that knows how to work with the internals of
   # the GSS-API.
   class GSSUtil 
@@ -146,7 +144,6 @@ module Sun::Security::Jgss
       end
       
       typesig { [GSSName, GSSCredential] }
-      # 
       # Note: The current impl only works with Sun's impl of
       # GSSName and GSSCredential since it depends on package
       # private APIs.
@@ -183,7 +180,6 @@ module Sun::Security::Jgss
       end
       
       typesig { [JavaSet, JavaSet] }
-      # 
       # Populates the set credentials with elements from gssCredentials. At
       # the same time, it converts any subclasses of KerberosTicket
       # into KerberosTicket instances and any subclasses of KerberosKey into
@@ -222,7 +218,6 @@ module Sun::Security::Jgss
       end
       
       typesig { [::Java::Int, Oid] }
-      # 
       # Authenticate using the login module from the specified
       # configuration entry.
       # 
@@ -251,7 +246,6 @@ module Sun::Security::Jgss
       end
       
       typesig { [::Java::Int] }
-      # 
       # Determines if the application doesn't mind if the mechanism obtains
       # the required credentials from outside of the current Subject. Our
       # Kerberos v5 mechanism would do a JAAS login on behalf of the
@@ -266,36 +260,30 @@ module Sun::Security::Jgss
         if ((caller).equal?(CALLER_HTTP_NEGOTIATE))
           return false
         end
-        # 
         # Don't use GetBooleanAction because the default value in the JRE
         # (when this is unset) has to treated as true.
         prop_value = AccessController.do_privileged(GetPropertyAction.new("javax.security.auth.useSubjectCredsOnly", "true"))
-        # 
         # This property has to be explicitly set to "false". Invalid
         # values should be ignored and the default "true" assumed.
         return (!prop_value.equals_ignore_case("false"))
       end
       
       typesig { [] }
-      # 
       # Determines the SPNEGO interoperability mode with Microsoft;
       # by default it is set to true.
       # 
       # To disable it, the application indicates this by explicitly setting
       # the system property sun.security.spnego.interop to false.
       def use_msinterop
-        # 
         # Don't use GetBooleanAction because the default value in the JRE
         # (when this is unset) has to treated as true.
         prop_value = AccessController.do_privileged(GetPropertyAction.new("sun.security.spnego.msinterop", "true"))
-        # 
         # This property has to be explicitly set to "false". Invalid
         # values should be ignored and the default "true" assumed.
         return (!prop_value.equals_ignore_case("false"))
       end
       
       typesig { [GSSNameSpi, Oid, ::Java::Boolean, Class] }
-      # 
       # Searches the private credentials of current Subject with the
       # specified criteria and returns the matching GSSCredentialSpi
       # object out of Sun's impl of GSSCredential. Returns null if
@@ -316,9 +304,9 @@ module Sun::Security::Jgss
               result = nil
               if (!(acc_subj).nil?)
                 result = Vector.new
-                iterator = acc_subj.get_private_credentials(GSSCredentialImpl.class).iterator
-                while (iterator.has_next)
-                  cred = iterator.next
+                iterator_ = acc_subj.get_private_credentials(GSSCredentialImpl.class).iterator
+                while (iterator_.has_next)
+                  cred = iterator_.next
                   debug("...Found cred" + (cred).to_s)
                   begin
                     ce = cred.get_element(mech, initiate)

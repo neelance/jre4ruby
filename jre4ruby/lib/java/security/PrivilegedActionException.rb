@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 1998-2001 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -31,7 +30,6 @@ module Java::Security
     }
   end
   
-  # 
   # This exception is thrown by
   # <code>doPrivileged(PrivilegedExceptionAction)</code> and
   # <code>doPrivileged(PrivilegedExceptionAction,
@@ -61,7 +59,6 @@ module Java::Security
       const_attr_reader  :SerialVersionUID
     }
     
-    # 
     # @serial
     attr_accessor :exception
     alias_method :attr_exception, :exception
@@ -70,7 +67,6 @@ module Java::Security
     undef_method :exception=
     
     typesig { [Exception] }
-    # 
     # Constructs a new PrivilegedActionException &quot;wrapping&quot;
     # the specific Exception.
     # 
@@ -82,7 +78,6 @@ module Java::Security
     end
     
     typesig { [] }
-    # 
     # Returns the exception thrown by the privileged computation that
     # resulted in this <code>PrivilegedActionException</code>.
     # 
@@ -101,7 +96,6 @@ module Java::Security
     end
     
     typesig { [] }
-    # 
     # Returns the the cause of this exception (the exception thrown by
     # the privileged computation that resulted in this
     # <code>PrivilegedActionException</code>).

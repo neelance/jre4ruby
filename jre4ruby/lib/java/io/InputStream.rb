@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 1994-2006 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -31,7 +30,6 @@ module Java::Io
     }
   end
   
-  # 
   # This abstract class is the superclass of all classes representing
   # an input stream of bytes.
   # 
@@ -70,7 +68,6 @@ module Java::Io
     }
     
     typesig { [] }
-    # 
     # Reads the next byte of data from the input stream. The value byte is
     # returned as an <code>int</code> in the range <code>0</code> to
     # <code>255</code>. If no byte is available because the end of the stream
@@ -88,7 +85,6 @@ module Java::Io
     end
     
     typesig { [Array.typed(::Java::Byte)] }
-    # 
     # Reads some number of bytes from the input stream and stores them into
     # the buffer array <code>b</code>. The number of bytes actually read is
     # returned as an integer.  This method blocks until input data is
@@ -125,7 +121,6 @@ module Java::Io
     end
     
     typesig { [Array.typed(::Java::Byte), ::Java::Int, ::Java::Int] }
-    # 
     # Reads up to <code>len</code> bytes of data from the input stream into
     # an array of bytes.  An attempt is made to read as many as
     # <code>len</code> bytes, but a smaller number may be read.
@@ -214,7 +209,6 @@ module Java::Io
     end
     
     typesig { [::Java::Long] }
-    # 
     # Skips over and discards <code>n</code> bytes of data from this input
     # stream. The <code>skip</code> method may, for a variety of reasons, end
     # up skipping over some smaller number of bytes, possibly <code>0</code>.
@@ -254,7 +248,6 @@ module Java::Io
     end
     
     typesig { [] }
-    # 
     # Returns an estimate of the number of bytes that can be read (or
     # skipped over) from this input stream without blocking by the next
     # invocation of a method for this input stream. The next invocation
@@ -284,7 +277,6 @@ module Java::Io
     end
     
     typesig { [] }
-    # 
     # Closes this input stream and releases any system resources associated
     # with the stream.
     # 
@@ -296,7 +288,6 @@ module Java::Io
     end
     
     typesig { [::Java::Int] }
-    # 
     # Marks the current position in this input stream. A subsequent call to
     # the <code>reset</code> method repositions this stream at the last marked
     # position so that subsequent reads re-read the same bytes.
@@ -327,7 +318,6 @@ module Java::Io
     end
     
     typesig { [] }
-    # 
     # Repositions this stream to the position at the time the
     # <code>mark</code> method was last called on this input stream.
     # 
@@ -378,7 +368,6 @@ module Java::Io
     end
     
     typesig { [] }
-    # 
     # Tests if this input stream supports the <code>mark</code> and
     # <code>reset</code> methods. Whether or not <code>mark</code> and
     # <code>reset</code> are supported is an invariant property of a

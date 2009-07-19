@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 1997-2006 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -34,7 +33,6 @@ module Java::Security
     }
   end
   
-  # 
   # This class is used as an opaque representation of cryptographic parameters.
   # 
   # <p>An <code>AlgorithmParameters</code> object for managing the parameters
@@ -91,7 +89,6 @@ module Java::Security
     undef_method :initialized=
     
     typesig { [AlgorithmParametersSpi, Provider, String] }
-    # 
     # Creates an AlgorithmParameters object.
     # 
     # @param paramSpi the delegate
@@ -108,7 +105,6 @@ module Java::Security
     end
     
     typesig { [] }
-    # 
     # Returns the name of the algorithm associated with this parameter object.
     # 
     # @return the algorithm name.
@@ -118,7 +114,6 @@ module Java::Security
     
     class_module.module_eval {
       typesig { [String] }
-      # 
       # Returns a parameter object for the specified algorithm.
       # 
       # <p> This method traverses the list of registered security Providers,
@@ -157,7 +152,6 @@ module Java::Security
       end
       
       typesig { [String, String] }
-      # 
       # Returns a parameter object for the specified algorithm.
       # 
       # <p> A new AlgorithmParameters object encapsulating the
@@ -202,7 +196,6 @@ module Java::Security
       end
       
       typesig { [String, Provider] }
-      # 
       # Returns a parameter object for the specified algorithm.
       # 
       # <p> A new AlgorithmParameters object encapsulating the
@@ -243,7 +236,6 @@ module Java::Security
     }
     
     typesig { [] }
-    # 
     # Returns the provider of this parameter object.
     # 
     # @return the provider of this parameter object
@@ -252,7 +244,6 @@ module Java::Security
     end
     
     typesig { [AlgorithmParameterSpec] }
-    # 
     # Initializes this parameter object using the parameters
     # specified in <code>paramSpec</code>.
     # 
@@ -270,7 +261,6 @@ module Java::Security
     end
     
     typesig { [Array.typed(::Java::Byte)] }
-    # 
     # Imports the specified parameters and decodes them according to the
     # primary decoding format for parameters. The primary decoding
     # format for parameters is ASN.1, if an ASN.1 specification for this type
@@ -289,7 +279,6 @@ module Java::Security
     end
     
     typesig { [Array.typed(::Java::Byte), String] }
-    # 
     # Imports the parameters from <code>params</code> and decodes them
     # according to the specified decoding scheme.
     # If <code>format</code> is null, the
@@ -312,7 +301,6 @@ module Java::Security
     end
     
     typesig { [Class] }
-    # 
     # Returns a (transparent) specification of this parameter object.
     # <code>paramSpec</code> identifies the specification class in which
     # the parameters should be returned. It could, for example, be
@@ -336,7 +324,6 @@ module Java::Security
     end
     
     typesig { [] }
-    # 
     # Returns the parameters in their primary encoding format.
     # The primary encoding format for parameters is ASN.1, if an ASN.1
     # specification for this type of parameters exists.
@@ -353,7 +340,6 @@ module Java::Security
     end
     
     typesig { [String] }
-    # 
     # Returns the parameters encoded in the specified scheme.
     # If <code>format</code> is null, the
     # primary encoding format for parameters is used. The primary encoding
@@ -374,7 +360,6 @@ module Java::Security
     end
     
     typesig { [] }
-    # 
     # Returns a formatted string describing the parameters.
     # 
     # @return a formatted string describing the parameters, or null if this

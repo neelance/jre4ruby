@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 2002-2005 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -34,7 +33,6 @@ module Sun::Net::Www::Protocol::Http
     }
   end
   
-  # 
   # This class is used to parse the information in WWW-Authenticate: and Proxy-Authenticate:
   # headers. It searches among multiple header lines and within each header line
   # for the best currently supported scheme. It can also return a HeaderParser
@@ -170,7 +168,6 @@ module Sun::Net::Www::Protocol::Http
     end
     
     typesig { [String, MessageHeader, String] }
-    # 
     # parse a set of authentication headers and choose the preferred scheme
     # that we support for a given host
     def initialize(hdrname, response, host)
@@ -252,9 +249,9 @@ module Sun::Net::Www::Protocol::Http
           ((i += 1) - 1)
         end
         if (i > last_scheme_index)
-          hpn_ = hp.subsequence(last_scheme_index, i)
-          scheme_ = hpn_.find_key(0)
-          @schemes.put(scheme_, SchemeMapValue.new(hpn_, raw))
+          hpn = hp.subsequence(last_scheme_index, i)
+          scheme = hpn.find_key(0)
+          @schemes.put(scheme, SchemeMapValue.new(hpn, raw))
         end
       end
       # choose the best of them, the order is
@@ -271,8 +268,8 @@ module Sun::Net::Www::Protocol::Http
           end
         end
         if ((v).nil?)
-          tmp_ = @schemes.get("kerberos")
-          if (!(tmp_).nil?)
+          tmp = @schemes.get("kerberos")
+          if (!(tmp).nil?)
             # the Kerberos scheme is only observed in MS ISA Server. In
             # fact i think it's a Kerberos-mechnism-only Negotiate.
             # Since the Kerberos scheme is always accompanied with the
@@ -284,9 +281,9 @@ module Sun::Net::Www::Protocol::Http
             # The only chance this line get executed is that the server
             # only suggest the Kerberos scheme.
             if ((@host).nil? || !NegotiateAuthentication.is_supported(@host, "Kerberos"))
-              tmp_ = nil
+              tmp = nil
             end
-            v = tmp_
+            v = tmp
           end
         end
         if ((v).nil?)
@@ -304,7 +301,6 @@ module Sun::Net::Www::Protocol::Http
     end
     
     typesig { [] }
-    # 
     # return a header parser containing the preferred authentication scheme (only).
     # The preferred scheme is the strongest of the schemes proposed by the server.
     # The returned HeaderParser will contain the relevant parameters for that scheme
@@ -313,7 +309,6 @@ module Sun::Net::Www::Protocol::Http
     end
     
     typesig { [] }
-    # 
     # return the name of the preferred scheme
     def scheme
       if (!(@preferred).nil?)
@@ -330,7 +325,6 @@ module Sun::Net::Www::Protocol::Http
     end
     
     typesig { [] }
-    # 
     # returns true is the header exists and contains a recognised scheme
     def is_present
       return !(@preferred).nil?

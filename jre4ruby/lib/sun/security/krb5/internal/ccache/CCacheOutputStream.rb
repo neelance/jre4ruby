@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
 # This code is free software; you can redistribute it and/or modify it
@@ -40,7 +39,6 @@ module Sun::Security::Krb5::Internal::Ccache
     }
   end
   
-  # 
   # This class implements a buffered output stream. It provides functions to write FCC-format data to a disk file.
   # 
   # @author Yanni Zhang
@@ -61,7 +59,6 @@ module Sun::Security::Krb5::Internal::Ccache
     end
     
     typesig { [Credentials] }
-    # 
     # Writes a credentials in FCC format to this cache output stream.
     # 
     # @param creds the credentials to be written to the output stream.

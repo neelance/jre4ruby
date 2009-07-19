@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
 # This code is free software; you can redistribute it and/or modify it
@@ -40,7 +39,6 @@ module Java::Util::Concurrent::Locks
     }
   end
   
-  # 
   # A <tt>ReadWriteLock</tt> maintains a pair of associated {@link
   # Lock locks}, one for read-only operations and one for writing.
   # The {@link #readLock read lock} may be held simultaneously by
@@ -124,7 +122,6 @@ module Java::Util::Concurrent::Locks
     include_class_members ReadWriteLockImports
     
     typesig { [] }
-    # 
     # Returns the lock used for reading.
     # 
     # @return the lock used for reading.
@@ -133,7 +130,6 @@ module Java::Util::Concurrent::Locks
     end
     
     typesig { [] }
-    # 
     # Returns the lock used for writing.
     # 
     # @return the lock used for writing.

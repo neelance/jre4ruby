@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 1997-2006 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -40,7 +39,6 @@ module Sun::Security::X509
     }
   end
   
-  # 
   # This class defines the Extensions attribute for the Certificate.
   # 
   # @author Amit Kapoor
@@ -51,13 +49,11 @@ module Sun::Security::X509
     include CertAttrSet
     
     class_module.module_eval {
-      # 
       # Identifier for this attribute, to be used with the
       # get, set, delete methods of Certificate, x509 type.
       const_set_lazy(:IDENT) { "x509.info.extensions" }
       const_attr_reader  :IDENT
       
-      # 
       # name
       const_set_lazy(:NAME) { "extensions" }
       const_attr_reader  :NAME
@@ -85,7 +81,6 @@ module Sun::Security::X509
     undef_method :unparseable_extensions=
     
     typesig { [] }
-    # 
     # Default constructor.
     def initialize
       @map = Hashtable.new
@@ -94,7 +89,6 @@ module Sun::Security::X509
     end
     
     typesig { [DerInputStream] }
-    # 
     # Create the object, decoding the values from the passed DER stream.
     # 
     # @param in the DerInputStream to read the Extension from.
@@ -175,14 +169,13 @@ module Sun::Security::X509
           raise IOException.new(e.to_s).init_cause(e)
         end
       rescue IOException => e
-        raise e_
+        raise e
       rescue Exception => e
-        raise IOException.new(e__.to_s).init_cause(e__)
+        raise IOException.new(e.to_s).init_cause(e)
       end
     end
     
     typesig { [OutputStream] }
-    # 
     # Encode the extensions in DER form to the stream, setting
     # the context specific tag as needed in the X.509 v3 certificate.
     # 
@@ -194,7 +187,6 @@ module Sun::Security::X509
     end
     
     typesig { [OutputStream, ::Java::Boolean] }
-    # 
     # Encode the extensions in DER form to the stream.
     # 
     # @param out the DerOutputStream to marshal the contents to.
@@ -232,7 +224,6 @@ module Sun::Security::X509
     end
     
     typesig { [String, Object] }
-    # 
     # Set the attribute value.
     # @param name the extension name used in the cache.
     # @param obj the object to set.
@@ -246,7 +237,6 @@ module Sun::Security::X509
     end
     
     typesig { [String] }
-    # 
     # Get the attribute value.
     # @param name the extension name used in the lookup.
     # @exception IOException if named extension is not found.
@@ -259,7 +249,6 @@ module Sun::Security::X509
     end
     
     typesig { [String] }
-    # 
     # Delete the attribute value.
     # @param name the extension name used in the lookup.
     # @exception IOException if named extension is not found.
@@ -272,7 +261,6 @@ module Sun::Security::X509
     end
     
     typesig { [] }
-    # 
     # Return an enumeration of names of attributes existing within this
     # attribute.
     def get_elements
@@ -280,7 +268,6 @@ module Sun::Security::X509
     end
     
     typesig { [] }
-    # 
     # Return a collection view of the extensions.
     # @return a collection view of the extensions in this Certificate.
     def get_all_extensions
@@ -297,14 +284,12 @@ module Sun::Security::X509
     end
     
     typesig { [] }
-    # 
     # Return the name of this attribute.
     def get_name
       return NAME
     end
     
     typesig { [] }
-    # 
     # Return true if a critical extension is found that is
     # not supported, otherwise return false.
     def has_unsupported_critical_extension
@@ -312,7 +297,6 @@ module Sun::Security::X509
     end
     
     typesig { [Object] }
-    # 
     # Compares this CertificateExtensions for equality with the specified
     # object. If the <code>other</code> object is an
     # <code>instanceof</code> <code>CertificateExtensions</code>, then
@@ -360,7 +344,6 @@ module Sun::Security::X509
     end
     
     typesig { [] }
-    # 
     # Returns a hashcode value for this CertificateExtensions.
     # 
     # @return the hashcode value.
@@ -369,7 +352,6 @@ module Sun::Security::X509
     end
     
     typesig { [] }
-    # 
     # Returns a string representation of this <tt>CertificateExtensions</tt>
     # object in the form of a set of entries, enclosed in braces and separated
     # by the ASCII characters "<tt>,&nbsp;</tt>" (comma and space).

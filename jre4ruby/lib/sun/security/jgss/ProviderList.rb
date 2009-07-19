@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 2000-2006 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -48,7 +47,6 @@ module Sun::Security::Jgss
     }
   end
   
-  # 
   # This class stores the list of providers that this
   # GSS-Implementation is configured to use. The GSSManagerImpl class
   # queries this class whenever it needs a mechanism's factory.<p>
@@ -108,7 +106,6 @@ module Sun::Security::Jgss
       const_attr_reader  :DEFAULT_MECH_PROP
       
       when_class_loaded do
-        # 
         # Set the default mechanism. Kerberos v5 is the default
         # mechanism unless it is overridden by a system property.
         # with a valid OID value
@@ -173,7 +170,6 @@ module Sun::Security::Jgss
     end
     
     typesig { [String] }
-    # 
     # Determines if the given provider property represents a GSS-API
     # Oid to MechanismFactory mapping.
     # @return true if this is a GSS-API property, false otherwise.
@@ -200,7 +196,6 @@ module Sun::Security::Jgss
     end
     
     typesig { [Oid, Provider] }
-    # 
     # Obtains a MechanismFactory for a given mechanism. If the
     # specified provider is not null, then the impl from the
     # provider is used. Otherwise, the most preferred impl based
@@ -233,14 +228,13 @@ module Sun::Security::Jgss
         else
           # Use the impl from the specified provider; return null if the
           # the mech is unsupported by the specified provider.
-          entry_ = PreferencesEntry.new(p, mech_oid)
-          return get_mech_factory(entry_, mech_oid)
+          entry = PreferencesEntry.new(p, mech_oid)
+          return get_mech_factory(entry, mech_oid)
         end
       end
     end
     
     typesig { [PreferencesEntry, Oid] }
-    # 
     # Helper routine that uses a preferences entry to obtain an
     # implementation of a MechanismFactory from it.
     # @param e the preferences entry that contains the provider and
@@ -252,13 +246,11 @@ module Sun::Security::Jgss
     # some problem is encountered
     def get_mech_factory(e, mech_oid)
       p = e.get_provider
-      # 
       # See if a MechanismFactory was previously instantiated for
       # this provider and mechanism combination.
       search_entry = PreferencesEntry.new(p, mech_oid)
       ret_val = @factories.get(search_entry)
       if ((ret_val).nil?)
-        # 
         # Apparently not. Now try to instantiate this class from
         # the provider.
         prop = PROV_PROP_PREFIX + (mech_oid.to_s).to_s
@@ -267,7 +259,6 @@ module Sun::Security::Jgss
           ret_val = get_mech_factory_impl(p, class_name, mech_oid, @caller)
           @factories.put(search_entry, ret_val)
         else
-          # 
           # This provider does not support this mechanism.
           # If the application explicitly requested that
           # this provider be used for this mechanism, then
@@ -282,7 +273,6 @@ module Sun::Security::Jgss
     
     class_module.module_eval {
       typesig { [Provider, String, Oid, ::Java::Int] }
-      # 
       # Helper routine to obtain a MechanismFactory implementation
       # from the same class loader as the provider of this
       # implementation.
@@ -294,7 +284,6 @@ module Sun::Security::Jgss
       def get_mech_factory_impl(p, class_name, mech_oid, caller)
         begin
           base_class = Class.for_name(SPI_MECH_FACTORY_TYPE)
-          # 
           # Load the implementation class with the same class loader
           # that was used to load the provider.
           # In order to get the class loader of a class, the
@@ -322,15 +311,15 @@ module Sun::Security::Jgss
         rescue ClassNotFoundException => e
           raise create_gssexception(p, class_name, "cannot be created", e)
         rescue NoSuchMethodException => e
-          raise create_gssexception(p, class_name, "cannot be created", e_)
+          raise create_gssexception(p, class_name, "cannot be created", e)
         rescue InvocationTargetException => e
-          raise create_gssexception(p, class_name, "cannot be created", e__)
+          raise create_gssexception(p, class_name, "cannot be created", e)
         rescue InstantiationException => e
-          raise create_gssexception(p, class_name, "cannot be created", e___)
+          raise create_gssexception(p, class_name, "cannot be created", e)
         rescue IllegalAccessException => e
-          raise create_gssexception(p, class_name, "cannot be created", e____)
+          raise create_gssexception(p, class_name, "cannot be created", e)
         rescue SecurityException => e
-          raise create_gssexception(p, class_name, "cannot be created", e_____)
+          raise create_gssexception(p, class_name, "cannot be created", e)
         end
       end
       
@@ -407,7 +396,6 @@ module Sun::Security::Jgss
     end
     
     typesig { [Provider] }
-    # 
     # Helper routine to go through all properties contined in a
     # provider and add its mechanisms to the list of supported
     # mechanisms. If no default mechanism has been assinged so far,
@@ -439,7 +427,6 @@ module Sun::Security::Jgss
     end
     
     class_module.module_eval {
-      # 
       # Stores a provider and a mechanism oid indicating that the
       # provider should be used for the mechanism. If the mechanism
       # Oid is null, then it indicates that this preference holds for
@@ -501,7 +488,6 @@ module Sun::Security::Jgss
         end
         
         typesig { [Object] }
-        # 
         # Determines if a preference implies another. A preference
         # implies another if the latter is subsumed by the
         # former. e.g., <Provider1, null> implies <Provider1, OidX>
@@ -527,7 +513,6 @@ module Sun::Security::Jgss
         end
         
         typesig { [Oid] }
-        # 
         # Determines if this entry is applicable to the desired
         # mechanism. The entry is applicable to the desired mech if
         # it contains the same oid or if it contains a null oid

@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
 # This code is free software; you can redistribute it and/or modify it
@@ -46,7 +45,6 @@ module Java::Util::Concurrent
     }
   end
   
-  # 
   # A hash table supporting full concurrency of retrievals and
   # adjustable expected concurrency for updates. This class obeys the
   # same functional specification as {@link java.util.Hashtable}, and
@@ -112,7 +110,6 @@ module Java::Util::Concurrent
       const_set_lazy(:SerialVersionUID) { 7249069246763182397 }
       const_attr_reader  :SerialVersionUID
       
-      # 
       # The basic strategy is to subdivide the table among Segments,
       # each of which itself is a concurrently readable hash table.
       # 
@@ -123,19 +120,16 @@ module Java::Util::Concurrent
       const_set_lazy(:DEFAULT_INITIAL_CAPACITY) { 16 }
       const_attr_reader  :DEFAULT_INITIAL_CAPACITY
       
-      # 
       # The default load factor for this table, used when not
       # otherwise specified in a constructor.
       const_set_lazy(:DEFAULT_LOAD_FACTOR) { 0.75 }
       const_attr_reader  :DEFAULT_LOAD_FACTOR
       
-      # 
       # The default concurrency level for this table, used when not
       # otherwise specified in a constructor.
       const_set_lazy(:DEFAULT_CONCURRENCY_LEVEL) { 16 }
       const_attr_reader  :DEFAULT_CONCURRENCY_LEVEL
       
-      # 
       # The maximum capacity, used if a higher value is implicitly
       # specified by either of the constructors with arguments.  MUST
       # be a power of two <= 1<<30 to ensure that entries are indexable
@@ -143,7 +137,6 @@ module Java::Util::Concurrent
       const_set_lazy(:MAXIMUM_CAPACITY) { 1 << 30 }
       const_attr_reader  :MAXIMUM_CAPACITY
       
-      # 
       # The maximum number of segments to allow; used to bound
       # constructor arguments.
       const_set_lazy(:MAX_SEGMENTS) { 1 << 16 }
@@ -169,7 +162,6 @@ module Java::Util::Concurrent
     alias_method :attr_segment_mask=, :segment_mask=
     undef_method :segment_mask=
     
-    # 
     # Shift value for indexing within segments.
     attr_accessor :segment_shift
     alias_method :attr_segment_shift, :segment_shift
@@ -177,7 +169,6 @@ module Java::Util::Concurrent
     alias_method :attr_segment_shift=, :segment_shift=
     undef_method :segment_shift=
     
-    # 
     # The segments, each of which is a specialized hash table
     attr_accessor :segments
     alias_method :attr_segments, :segments
@@ -225,7 +216,6 @@ module Java::Util::Concurrent
     }
     
     typesig { [::Java::Int] }
-    # 
     # Returns the segment that should be used for key with given hash
     # @param hash the hash code for the key
     # @return the segment
@@ -296,7 +286,6 @@ module Java::Util::Concurrent
         alias_method :initialize__hash_entry, :initialize
       end }
       
-      # 
       # Segments are specialized versions of hash tables.  This
       # subclasses from ReentrantLock opportunistically, just to
       # simplify some locking and avoid separate construction.
@@ -305,7 +294,6 @@ module Java::Util::Concurrent
         include Serializable
         
         class_module.module_eval {
-          # 
           # Segments maintain a table of entry lists that are ALWAYS
           # kept in a consistent state, so can be read without locking.
           # Next fields of nodes are immutable (final).  All list
@@ -344,7 +332,6 @@ module Java::Util::Concurrent
           const_attr_reader  :SerialVersionUID
         }
         
-        # 
         # The number of elements in this segment's region.
         attr_accessor :count
         alias_method :attr_count, :count
@@ -352,7 +339,6 @@ module Java::Util::Concurrent
         alias_method :attr_count=, :count=
         undef_method :count=
         
-        # 
         # Number of updates that alter the size of the table. This is
         # used during bulk-read methods to make sure they see a
         # consistent snapshot: If modCounts change during a traversal
@@ -365,7 +351,6 @@ module Java::Util::Concurrent
         alias_method :attr_mod_count=, :mod_count=
         undef_method :mod_count=
         
-        # 
         # The table is rehashed when its size exceeds this threshold.
         # (The value of this field is always <tt>(int)(capacity *
         # loadFactor)</tt>.)
@@ -375,7 +360,6 @@ module Java::Util::Concurrent
         alias_method :attr_threshold=, :threshold=
         undef_method :threshold=
         
-        # 
         # The per-segment table.
         attr_accessor :table
         alias_method :attr_table, :table
@@ -383,7 +367,6 @@ module Java::Util::Concurrent
         alias_method :attr_table=, :table=
         undef_method :table=
         
-        # 
         # The load factor for the hash table.  Even though this value
         # is same for all segments, it is replicated to avoid needing
         # links to outer object.
@@ -414,7 +397,6 @@ module Java::Util::Concurrent
         }
         
         typesig { [Array.typed(HashEntry)] }
-        # 
         # Sets table to new HashEntry array.
         # Call only while holding lock or in constructor.
         def set_table(new_table)
@@ -423,7 +405,6 @@ module Java::Util::Concurrent
         end
         
         typesig { [::Java::Int] }
-        # 
         # Returns properly casted first entry of bin for given hash.
         def get_first(hash)
           tab = @table
@@ -431,7 +412,6 @@ module Java::Util::Concurrent
         end
         
         typesig { [HashEntry] }
-        # 
         # Reads value field of an entry under lock. Called if value
         # field ever appears to be null. This is possible only if a
         # compiler happens to reorder a HashEntry initialization with
@@ -586,7 +566,6 @@ module Java::Util::Concurrent
           if (old_capacity >= MAXIMUM_CAPACITY)
             return
           end
-          # 
           # Reclassify nodes in each list to new Map.  Because we are
           # using power-of-two expansion, the elements from each bin
           # must either stay at same index, or move with a power of two
@@ -629,9 +608,9 @@ module Java::Util::Concurrent
                 # Clone all remaining nodes
                 p = e
                 while !(p).equal?(last_run)
-                  k_ = p.attr_hash & size_mask
-                  n = new_table[k_]
-                  new_table[k_] = HashEntry.new(p.attr_key, p.attr_hash, n, p.attr_value)
+                  k = p.attr_hash & size_mask
+                  n = new_table[k]
+                  new_table[k] = HashEntry.new(p.attr_key, p.attr_hash, n, p.attr_value)
                   p = p.attr_next
                 end
               end
@@ -642,7 +621,6 @@ module Java::Util::Concurrent
         end
         
         typesig { [Object, ::Java::Int, Object] }
-        # 
         # Remove; match on key only if value null, else match both.
         def remove(key, hash, value)
           lock
@@ -764,7 +742,6 @@ module Java::Util::Concurrent
     end
     
     typesig { [::Java::Int, ::Java::Float] }
-    # 
     # Creates a new, empty map with the specified initial capacity
     # and load factor and with the default concurrencyLevel (16).
     # 
@@ -782,7 +759,6 @@ module Java::Util::Concurrent
     end
     
     typesig { [::Java::Int] }
-    # 
     # Creates a new, empty map with the specified initial capacity,
     # and with default load factor (0.75) and concurrencyLevel (16).
     # 
@@ -795,7 +771,6 @@ module Java::Util::Concurrent
     end
     
     typesig { [] }
-    # 
     # Creates a new, empty map with a default initial capacity (16),
     # load factor (0.75) and concurrencyLevel (16).
     def initialize
@@ -803,7 +778,6 @@ module Java::Util::Concurrent
     end
     
     typesig { [Map] }
-    # 
     # Creates a new map with the same mappings as the given map.
     # The map is created with a capacity of 1.5 times the number
     # of mappings in the given map or 16 (whichever is greater),
@@ -816,13 +790,11 @@ module Java::Util::Concurrent
     end
     
     typesig { [] }
-    # 
     # Returns <tt>true</tt> if this map contains no key-value mappings.
     # 
     # @return <tt>true</tt> if this map contains no key-value mappings
     def is_empty
       segments = @segments
-      # 
       # We keep track of per-segment modCounts to avoid ABA
       # problems in which an element in one segment was added and
       # in another removed during traversal, in which case the
@@ -857,7 +829,6 @@ module Java::Util::Concurrent
     end
     
     typesig { [] }
-    # 
     # Returns the number of key-value mappings in this map.  If the
     # map contains more than <tt>Integer.MAX_VALUE</tt> elements, returns
     # <tt>Integer.MAX_VALUE</tt>.
@@ -900,20 +871,20 @@ module Java::Util::Concurrent
       if (!(check).equal?(sum))
         # Resort to locking all segments
         sum = 0
+        i = 0
+        while i < segments.attr_length
+          segments[i].lock
+          (i += 1)
+        end
+        i_ = 0
+        while i_ < segments.attr_length
+          sum += segments[i_].attr_count
+          (i_ += 1)
+        end
         i__ = 0
         while i__ < segments.attr_length
-          segments[i__].lock
+          segments[i__].unlock
           (i__ += 1)
-        end
-        i___ = 0
-        while i___ < segments.attr_length
-          sum += segments[i___].attr_count
-          (i___ += 1)
-        end
-        i____ = 0
-        while i____ < segments.attr_length
-          segments[i____].unlock
-          (i____ += 1)
         end
       end
       if (sum > JavaInteger::MAX_VALUE)
@@ -924,7 +895,6 @@ module Java::Util::Concurrent
     end
     
     typesig { [Object] }
-    # 
     # Returns the value to which the specified key is mapped,
     # or {@code null} if this map contains no mapping for the key.
     # 
@@ -940,7 +910,6 @@ module Java::Util::Concurrent
     end
     
     typesig { [Object] }
-    # 
     # Tests if the specified object is a key in this table.
     # 
     # @param  key   possible key
@@ -954,7 +923,6 @@ module Java::Util::Concurrent
     end
     
     typesig { [Object] }
-    # 
     # Returns <tt>true</tt> if this map maps one or more keys to the
     # specified value. Note: This method requires a full internal
     # traversal of the hash table, and so is much slower than
@@ -989,7 +957,7 @@ module Java::Util::Concurrent
         if (!(mcsum).equal?(0))
           i_ = 0
           while i_ < segments.attr_length
-            c_ = segments[i_].attr_count
+            c = segments[i_].attr_count
             if (!(mc[i_]).equal?(segments[i_].attr_mod_count))
               clean_sweep = false
               break
@@ -1003,33 +971,32 @@ module Java::Util::Concurrent
         (k += 1)
       end
       # Resort to locking all segments
-      i__ = 0
-      while i__ < segments.attr_length
-        segments[i__].lock
-        (i__ += 1)
+      i = 0
+      while i < segments.attr_length
+        segments[i].lock
+        (i += 1)
       end
       found = false
       begin
-        i___ = 0
-        while i___ < segments.attr_length
-          if (segments[i___].contains_value(value))
+        i_ = 0
+        while i_ < segments.attr_length
+          if (segments[i_].contains_value(value))
             found = true
             break
           end
-          (i___ += 1)
+          (i_ += 1)
         end
       ensure
-        i____ = 0
-        while i____ < segments.attr_length
-          segments[i____].unlock
-          (i____ += 1)
+        i__ = 0
+        while i__ < segments.attr_length
+          segments[i__].unlock
+          (i__ += 1)
         end
       end
       return found
     end
     
     typesig { [Object] }
-    # 
     # Legacy method testing if some key maps into the specified value
     # in this table.  This method is identical in functionality to
     # {@link #containsValue}, and exists solely to ensure
@@ -1048,7 +1015,6 @@ module Java::Util::Concurrent
     end
     
     typesig { [Object, Object] }
-    # 
     # Maps the specified key to the specified value in this table.
     # Neither the key nor the value can be null.
     # 
@@ -1069,7 +1035,6 @@ module Java::Util::Concurrent
     end
     
     typesig { [Object, Object] }
-    # 
     # {@inheritDoc}
     # 
     # @return the previous value associated with the specified key,
@@ -1084,7 +1049,6 @@ module Java::Util::Concurrent
     end
     
     typesig { [Map] }
-    # 
     # Copies all of the mappings from the specified map to this one.
     # These mappings replace any mappings that this map had for any of the
     # keys currently in the specified map.
@@ -1097,7 +1061,6 @@ module Java::Util::Concurrent
     end
     
     typesig { [Object] }
-    # 
     # Removes the key (and its corresponding value) from this map.
     # This method does nothing if the key is not in the map.
     # 
@@ -1111,7 +1074,6 @@ module Java::Util::Concurrent
     end
     
     typesig { [Object, Object] }
-    # 
     # {@inheritDoc}
     # 
     # @throws NullPointerException if the specified key is null
@@ -1124,7 +1086,6 @@ module Java::Util::Concurrent
     end
     
     typesig { [Object, Object, Object] }
-    # 
     # {@inheritDoc}
     # 
     # @throws NullPointerException if any of the arguments are null
@@ -1137,7 +1098,6 @@ module Java::Util::Concurrent
     end
     
     typesig { [Object, Object] }
-    # 
     # {@inheritDoc}
     # 
     # @return the previous value associated with the specified key,
@@ -1152,7 +1112,6 @@ module Java::Util::Concurrent
     end
     
     typesig { [] }
-    # 
     # Removes all of the mappings from this map.
     def clear
       i = 0
@@ -1163,7 +1122,6 @@ module Java::Util::Concurrent
     end
     
     typesig { [] }
-    # 
     # Returns a {@link Set} view of the keys contained in this map.
     # The set is backed by the map, so changes to the map are
     # reflected in the set, and vice-versa.  The set supports element
@@ -1184,7 +1142,6 @@ module Java::Util::Concurrent
     end
     
     typesig { [] }
-    # 
     # Returns a {@link Collection} view of the values contained in this map.
     # The collection is backed by the map, so changes to the map are
     # reflected in the collection, and vice-versa.  The collection
@@ -1205,7 +1162,6 @@ module Java::Util::Concurrent
     end
     
     typesig { [] }
-    # 
     # Returns a {@link Set} view of the mappings contained in this map.
     # The set is backed by the map, so changes to the map are
     # reflected in the set, and vice-versa.  The set supports element
@@ -1226,7 +1182,6 @@ module Java::Util::Concurrent
     end
     
     typesig { [] }
-    # 
     # Returns an enumeration of the keys in this table.
     # 
     # @return an enumeration of the keys in this table
@@ -1236,7 +1191,6 @@ module Java::Util::Concurrent
     end
     
     typesig { [] }
-    # 
     # Returns an enumeration of the values in this table.
     # 
     # @return an enumeration of the values in this table
@@ -1402,7 +1356,6 @@ module Java::Util::Concurrent
         alias_method :initialize__value_iterator, :initialize
       end }
       
-      # 
       # Custom Entry class used by EntryIterator.next(), that relays
       # setValue changes to the underlying map.
       const_set_lazy(:WriteThroughEntry) { Class.new(AbstractMap::SimpleEntry) do
@@ -1415,7 +1368,6 @@ module Java::Util::Concurrent
         end
         
         typesig { [V] }
-        # 
         # Set our entry's value and write through to the map. The
         # value to return is somewhat arbitrary here. Since a
         # WriteThroughEntry does not necessarily track asynchronous
@@ -1628,7 +1580,6 @@ module Java::Util::Concurrent
     end
     
     typesig { [Java::Io::ObjectInputStream] }
-    # 
     # Reconstitute the <tt>ConcurrentHashMap</tt> instance from a
     # stream (i.e., deserialize it).
     # @param s the stream

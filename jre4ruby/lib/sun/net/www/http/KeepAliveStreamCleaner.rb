@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 2005-2006 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -37,7 +36,6 @@ module Sun::Net::Www::Http
     }
   end
   
-  # 
   # This class is used to cleanup any remaining data that may be on a KeepAliveStream
   # so that the connection can be cached in the KeepAliveCache.
   # Instances of this class can be used as a FIFO queue for KeepAliveCleanerEntry objects.

@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Portions Copyright 2005-2006 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -43,7 +42,6 @@ module Java::Text
     }
   end
   
-  # 
   # This class provides the method <code>normalize</code> which transforms Unicode
   # text into an equivalent composed or decomposed form, allowing for easier
   # sorting and searching of text.
@@ -132,7 +130,6 @@ module Java::Text
       const_set_lazy(:NFKC) { Form::NFKC }
       const_attr_reader  :NFKC
       
-      # 
       # This enum provides constants of the four Unicode normalization forms
       # that are described in
       # <a href="http://www.unicode.org/unicode/reports/tr15/tr15-23.html">
@@ -144,22 +141,18 @@ module Java::Text
         include_class_members Normalizer
         
         class_module.module_eval {
-          # 
           # Canonical decomposition.
           const_set_lazy(:NFD) { Form.new.set_value_name("NFD") }
           const_attr_reader  :NFD
           
-          # 
           # Canonical decomposition, followed by canonical composition.
           const_set_lazy(:NFC) { Form.new.set_value_name("NFC") }
           const_attr_reader  :NFC
           
-          # 
           # Compatibility decomposition.
           const_set_lazy(:NFKD) { Form.new.set_value_name("NFKD") }
           const_attr_reader  :NFKD
           
-          # 
           # Compatibility decomposition, followed by canonical composition.
           const_set_lazy(:NFKC) { Form.new.set_value_name("NFKC") }
           const_attr_reader  :NFKC
@@ -192,7 +185,6 @@ module Java::Text
       end
       
       typesig { [CharSequence, Form] }
-      # 
       # Normalize a sequence of char values.
       # The sequence will be normalized according to the specified normalization
       # from.
@@ -210,7 +202,6 @@ module Java::Text
       end
       
       typesig { [CharSequence, Form] }
-      # 
       # Determines if the given sequence of char values is normalized.
       # @param src        The sequence of char values to be checked.
       # @param form       The normalization form; one of

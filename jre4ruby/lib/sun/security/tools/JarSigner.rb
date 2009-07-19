@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 1997-2007 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -55,7 +54,6 @@ module Sun::Security::Tools
     }
   end
   
-  # 
   # <p>The jarsigner utility.
   # 
   # @author Roland Schemers
@@ -123,7 +121,6 @@ module Sun::Security::Tools
     alias_method :attr_cert_chain=, :cert_chain=
     undef_method :cert_chain=
     
-    # 
     # private key
     attr_accessor :private_key
     alias_method :attr_private_key, :private_key
@@ -428,7 +425,7 @@ module Sun::Security::Tools
             @scope = IdentityScope.get_system_scope
           rescue Exception => e
             if ((!(@keystore).nil?) || (!(@storepass).nil?))
-              System.out.println(Rb.get_string("jarsigner error: ") + e_.get_message)
+              System.out.println(Rb.get_string("jarsigner error: ") + e.get_message)
               System.exit(1)
             end
           end
@@ -447,9 +444,9 @@ module Sun::Security::Tools
           sign_jar(@jarfile, @alias, args)
         end
       rescue Exception => e
-        System.out.println(Rb.get_string("jarsigner error: ") + e__)
+        System.out.println(Rb.get_string("jarsigner error: ") + e)
         if (@debug)
-          e__.print_stack_trace
+          e.print_stack_trace
         end
         System.exit(1)
       ensure
@@ -467,7 +464,6 @@ module Sun::Security::Tools
     end
     
     typesig { [Array.typed(String)] }
-    # 
     # Parse command line arguments.
     def parse_args(args)
       # parse flags
@@ -753,12 +749,12 @@ module Sun::Security::Tools
           e = entries_vec.elements
           now = System.current_time_millis
           while (e.has_more_elements)
-            je_ = e.next_element
-            name = je_.get_name
-            signers = je_.get_code_signers
+            je = e.next_element
+            name = je.get_name
+            signers = je.get_code_signers
             is_signed = (!(signers).nil?)
             any_signed |= is_signed
-            has_unsigned_entry |= !je_.is_directory && !is_signed && !signature_related(name)
+            has_unsigned_entry |= !je.is_directory && !is_signed && !signature_related(name)
             if (@verbose)
               in_store_or_scope = in_key_store(signers)
               in_store = !((in_store_or_scope & IN_KEYSTORE)).equal?(0)
@@ -766,14 +762,14 @@ module Sun::Security::Tools
               in_manifest = ((!(man.get_attributes(name)).nil?) || (!(man.get_attributes("./" + name)).nil?) || (!(man.get_attributes("/" + name)).nil?))
               System.out.print((is_signed ? Rb.get_string("s") : Rb.get_string(" ")) + (in_manifest ? Rb.get_string("m") : Rb.get_string(" ")) + (in_store ? Rb.get_string("k") : Rb.get_string(" ")) + (in_scope ? Rb.get_string("i") : Rb.get_string(" ")) + Rb.get_string("  "))
               sb = StringBuffer.new
-              s = Long.to_s(je_.get_size)
+              s = Long.to_s(je.get_size)
               i = 6 - s.length
               while i > 0
                 sb.append(Character.new(?\s.ord))
                 (i -= 1)
               end
-              sb.append(s).append(Character.new(?\s.ord)).append(Date.new(je_.get_time).to_s)
-              sb.append(Character.new(?\s.ord)).append(je_.get_name)
+              sb.append(s).append(Character.new(?\s.ord)).append(Date.new(je.get_time).to_s)
+              sb.append(Character.new(?\s.ord)).append(je.get_name)
               System.out.println(sb.to_s)
               if (!(signers).nil? && @showcerts)
                 tab = Rb.get_string("      ")
@@ -796,9 +792,9 @@ module Sun::Security::Tools
               end
             end
             if (is_signed)
-              i__ = 0
-              while i__ < signers.attr_length
-                cert = signers[i__].get_signer_cert_path.get_certificates.get(0)
+              i = 0
+              while i < signers.attr_length
+                cert = signers[i].get_signer_cert_path.get_certificates.get(0)
                 if (cert.is_a?(X509Certificate))
                   check_cert_usage(cert, nil)
                   if (!@showcerts)
@@ -812,7 +808,7 @@ module Sun::Security::Tools
                     end
                   end
                 end
-                ((i__ += 1) - 1)
+                ((i += 1) - 1)
               end
             end
           end
@@ -864,9 +860,9 @@ module Sun::Security::Tools
         end
         System.exit(0)
       rescue Exception => e
-        System.out.println(Rb.get_string("jarsigner: ") + e_)
+        System.out.println(Rb.get_string("jarsigner: ") + e)
         if (@debug)
-          e_.print_stack_trace
+          e.print_stack_trace
         end
       ensure
         # close the resource
@@ -878,7 +874,6 @@ module Sun::Security::Tools
     end
     
     typesig { [Certificate] }
-    # 
     # Display some details about a certificate:
     # 
     # <cert-type> [", " <subject-DN>] [" (" <keystore-entry-alias> ")"]
@@ -933,7 +928,6 @@ module Sun::Security::Tools
     }
     
     typesig { [String, Certificate, ::Java::Boolean, ::Java::Long] }
-    # 
     # Display some details about a certificate:
     # 
     # [<tab>] <cert-type> [", " <subject-DN>] [" (" <keystore-entry-alias> ")"]
@@ -972,23 +966,23 @@ module Sun::Security::Tools
             if ((self.attr_validity_time_form).nil?)
               self.attr_validity_time_form = MessageFormat.new(Rb.get_string("certificate is valid from"))
             end
-            source_ = Array.typed(Object).new([x509cert.get_not_before, not_after])
-            cert_str.append(self.attr_validity_time_form.format(source_))
+            source = Array.typed(Object).new([x509cert.get_not_before, not_after])
+            cert_str.append(self.attr_validity_time_form.format(source))
           end
         rescue CertificateExpiredException => cee
           @has_expired_cert = true
           if ((self.attr_expired_time_form).nil?)
             self.attr_expired_time_form = MessageFormat.new(Rb.get_string("certificate expired on"))
           end
-          source__ = Array.typed(Object).new([not_after])
-          cert_str.append(self.attr_expired_time_form.format(source__))
+          source = Array.typed(Object).new([not_after])
+          cert_str.append(self.attr_expired_time_form.format(source))
         rescue CertificateNotYetValidException => cnyve
           @not_yet_valid_cert = true
           if ((self.attr_not_yet_time_form).nil?)
             self.attr_not_yet_time_form = MessageFormat.new(Rb.get_string("certificate is not valid until"))
           end
-          source___ = Array.typed(Object).new([x509cert.get_not_before])
-          cert_str.append(self.attr_not_yet_time_form.format(source___))
+          source = Array.typed(Object).new([x509cert.get_not_before])
+          cert_str.append(self.attr_not_yet_time_form.format(source))
         end
         cert_str.append("]")
         bad = Array.typed(::Java::Boolean).new(3) { false }
@@ -1139,7 +1133,7 @@ module Sun::Security::Tools
       begin
         fos = FileOutputStream.new(signed_jar_file)
       rescue IOException => ioe
-        error((Rb.get_string("unable to create: ")).to_s + tmp_jar_name, ioe_)
+        error((Rb.get_string("unable to create: ")).to_s + tmp_jar_name, ioe)
       end
       ps = PrintStream.new(fos)
       zos = ZipOutputStream.new(ps)
@@ -1172,7 +1166,6 @@ module Sun::Security::Tools
           mf_file = ZipEntry.new(JarFile::MANIFEST_NAME)
           mf_created = true
         end
-        # 
         # For each entry in jar
         # (except for signature-related META-INF entries),
         # do the following:
@@ -1217,7 +1210,6 @@ module Sun::Security::Tools
           manifest.write(baos)
           new_bytes = baos.to_byte_array
           if (!(mf_raw_bytes).nil? && (old_attr == manifest.get_main_attributes))
-            # 
             # Note:
             # 
             # The Attributes object is based on HashMap and can handle
@@ -1318,29 +1310,29 @@ module Sun::Security::Tools
         # vector
         i = 0
         while i < mf_files.size
-          ze_ = mf_files.element_at(i)
-          if (!ze_.get_name.equals_ignore_case(JarFile::MANIFEST_NAME) && !ze_.get_name.equals_ignore_case(sf_filename) && !ze_.get_name.equals_ignore_case(bk_filename))
-            write_entry(@zip_file, zos, ze_)
+          ze = mf_files.element_at(i)
+          if (!ze.get_name.equals_ignore_case(JarFile::MANIFEST_NAME) && !ze.get_name.equals_ignore_case(sf_filename) && !ze.get_name.equals_ignore_case(bk_filename))
+            write_entry(@zip_file, zos, ze)
           end
           ((i += 1) - 1)
         end
         # Write out all other files
         enum__ = @zip_file.entries
         while enum__.has_more_elements
-          ze__ = enum__.next_element
-          if (!ze__.get_name.starts_with(META_INF))
+          ze = enum__.next_element
+          if (!ze.get_name.starts_with(META_INF))
             if (@verbose)
-              if (!(manifest.get_attributes(ze__.get_name)).nil?)
-                System.out.println(Rb.get_string("  signing: ") + ze__.get_name)
+              if (!(manifest.get_attributes(ze.get_name)).nil?)
+                System.out.println(Rb.get_string("  signing: ") + ze.get_name)
               else
-                System.out.println(Rb.get_string("   adding: ") + ze__.get_name)
+                System.out.println(Rb.get_string("   adding: ") + ze.get_name)
               end
             end
-            write_entry(@zip_file, zos, ze__)
+            write_entry(@zip_file, zos, ze)
           end
         end
       rescue IOException => ioe
-        error(Rb.get_string("unable to sign jar: ") + ioe__, ioe__)
+        error(Rb.get_string("unable to sign jar: ") + ioe, ioe)
       ensure
         # close the resouces
         if (!(@zip_file).nil?)
@@ -1369,9 +1361,9 @@ module Sun::Security::Tools
               error(form.format(source))
             end
           else
-            form_ = MessageFormat.new(Rb.get_string("attempt to rename jarFile to origJar failed"))
-            source_ = Array.typed(Object).new([jar_file, orig_jar])
-            error(form_.format(source_))
+            form = MessageFormat.new(Rb.get_string("attempt to rename jarFile to origJar failed"))
+            source = Array.typed(Object).new([jar_file, orig_jar])
+            error(form.format(source))
           end
         end
       end
@@ -1407,7 +1399,6 @@ module Sun::Security::Tools
     end
     
     typesig { [Array.typed(::Java::Byte)] }
-    # 
     # Find the position of \r\n\r\n inside bs
     def find_header_end(bs)
       i = 0
@@ -1423,7 +1414,6 @@ module Sun::Security::Tools
     end
     
     typesig { [String] }
-    # 
     # signature-related files include:
     # . META-INF/MANIFEST.MF
     # . META-INF/SIG-*
@@ -1459,7 +1449,6 @@ module Sun::Security::Tools
     end
     
     typesig { [ZipFile, ZipEntry, ZipOutputStream] }
-    # 
     # Writes all the bytes for a given entry to the specified output stream.
     def write_bytes(zf, ze, os)
       synchronized(self) do
@@ -1552,7 +1541,6 @@ module Sun::Security::Tools
     end
     
     typesig { [X509Certificate, Array.typed(::Java::Boolean)] }
-    # 
     # Check if userCert is designed to be a code signer
     # @param userCert the certificate to be examined
     # @param bad 3 booleans to show if the KeyUsage, ExtendedKeyUsage,
@@ -1698,24 +1686,24 @@ module Sun::Security::Tools
           else
             if ((@keypass).nil?)
               # Did not work out, so prompt user for key password
-              form_ = MessageFormat.new(Rb.get_string("Enter key password for alias: "))
-              source_ = Array.typed(Object).new([alias_])
-              @keypass = get_pass(form_.format(source_))
+              form = MessageFormat.new(Rb.get_string("Enter key password for alias: "))
+              source = Array.typed(Object).new([alias_])
+              @keypass = get_pass(form.format(source))
               key = @store.get_key(alias_, @keypass)
             end
           end
         end
       rescue NoSuchAlgorithmException => e
-        error(e_.get_message)
+        error(e.get_message)
       rescue UnrecoverableKeyException => e
         error(Rb.get_string("unable to recover key from keystore"))
       rescue KeyStoreException => kse
         # this never happens, because keystore has been loaded
       end
       if (!(key.is_a?(PrivateKey)))
-        form__ = MessageFormat.new(Rb.get_string("key associated with alias not a private key"))
-        source__ = Array.typed(Object).new([alias_])
-        error(form__.format(source__))
+        form = MessageFormat.new(Rb.get_string("key associated with alias not a private key"))
+        source = Array.typed(Object).new([alias_])
+        error(form.format(source))
       else
         @private_key = key
       end
@@ -1755,7 +1743,6 @@ module Sun::Security::Tools
     end
     
     typesig { [ZipFile, ZipEntry] }
-    # 
     # Reads all the bytes for a given zip entry.
     def get_bytes(zf, ze)
       synchronized(self) do
@@ -1779,7 +1766,6 @@ module Sun::Security::Tools
     end
     
     typesig { [ZipFile] }
-    # 
     # Returns manifest entry from given jar file, or null if given jar file
     # does not have a manifest entry.
     def get_manifest_file(zf)
@@ -1798,7 +1784,6 @@ module Sun::Security::Tools
     end
     
     typesig { [ZipEntry, ZipFile, Array.typed(MessageDigest), BASE64Encoder] }
-    # 
     # Computes the digests of a zip entry, and returns them as an array
     # of base64-encoded strings.
     def get_digests(ze, zf, digests, encoder)
@@ -1834,7 +1819,6 @@ module Sun::Security::Tools
     end
     
     typesig { [ZipEntry, ZipFile, Array.typed(MessageDigest), BASE64Encoder] }
-    # 
     # Computes the digests of a zip entry, and returns them as a list of
     # attributes
     def get_digest_attributes(ze, zf, digests, encoder)
@@ -1849,7 +1833,6 @@ module Sun::Security::Tools
     end
     
     typesig { [ZipEntry, ZipFile, Array.typed(MessageDigest), BASE64Encoder, Manifest] }
-    # 
     # Updates the digest attributes of a manifest entry, by adding or
     # replacing digest values.
     # A digest value is added if the manifest entry does not contain a digest
@@ -1888,7 +1871,6 @@ module Sun::Security::Tools
     end
     
     typesig { [String, String] }
-    # 
     # Try to load the specified signing mechanism.
     # The URL class loader is used.
     def load_signing_mechanism(signer_class_name, signer_class_path)
@@ -1961,7 +1943,6 @@ module Sun::Security::Tools
     alias_method :initialize__jar_signer, :initialize
   end
   
-  # 
   # This is a BASE64Encoder that does not insert a default newline at the end of
   # every output line. This is necessary because java.util.jar does its own
   # line management (see Manifest.make72Safe()). Inserting additional new lines
@@ -1970,7 +1951,6 @@ module Sun::Security::Tools
     include_class_members JarSignerImports
     
     typesig { [OutputStream] }
-    # 
     # Encode the suffix that ends every output line.
     def encode_line_suffix(a_stream)
     end
@@ -2024,10 +2004,10 @@ module Sun::Security::Tools
       # create digest of the manifest main attributes
       mde = md.get(ManifestDigester::MF_MAIN_ATTRS, false)
       if (!(mde).nil?)
-        i_ = 0
-        while i_ < digests.attr_length
-          mattr.put_value((digests[i_].get_algorithm).to_s + "-Digest-" + (ManifestDigester::MF_MAIN_ATTRS).to_s, encoder.encode(mde.digest(digests[i_])))
-          ((i_ += 1) - 1)
+        i = 0
+        while i < digests.attr_length
+          mattr.put_value((digests[i].get_algorithm).to_s + "-Digest-" + (ManifestDigester::MF_MAIN_ATTRS).to_s, encoder.encode(mde.digest(digests[i])))
+          ((i += 1) - 1)
         end
       else
         raise IllegalStateException.new("ManifestDigester failed to create " + "Manifest-Main-Attribute entry")
@@ -2041,10 +2021,10 @@ module Sun::Security::Tools
         mde = md.get(name, false)
         if (!(mde).nil?)
           attr = Attributes.new
-          i__ = 0
-          while i__ < digests.attr_length
-            attr.put_value((digests[i__].get_algorithm).to_s + "-Digest", encoder.encode(mde.digest(digests[i__])))
-            ((i__ += 1) - 1)
+          i = 0
+          while i < digests.attr_length
+            attr.put_value((digests[i].get_algorithm).to_s + "-Digest", encoder.encode(mde.digest(digests[i])))
+            ((i += 1) - 1)
           end
           entries.put(name, attr)
         end
@@ -2052,7 +2032,6 @@ module Sun::Security::Tools
     end
     
     typesig { [OutputStream] }
-    # 
     # Writes the SignatureFile to the specified OutputStream.
     # 
     # @param out the output stream
@@ -2062,21 +2041,18 @@ module Sun::Security::Tools
     end
     
     typesig { [] }
-    # 
     # get .SF file name
     def get_meta_name
       return "META-INF/" + @base_name + ".SF"
     end
     
     typesig { [] }
-    # 
     # get base file name
     def get_base_name
       return @base_name
     end
     
     typesig { [PrivateKey, String, Array.typed(X509Certificate), ::Java::Boolean, String, X509Certificate, ContentSigner, Array.typed(String), ZipFile] }
-    # 
     # Generate a signed data block.
     # If a URL or a certificate (containing a URL) for a Timestamping
     # Authority is supplied then a signature timestamp is generated and
@@ -2111,7 +2087,6 @@ module Sun::Security::Tools
         undef_method :block_file_name=
         
         typesig { [SignatureFile, PrivateKey, String, Array.typed(X509Certificate), ::Java::Boolean, String, X509Certificate, ContentSigner, Array.typed(String), ZipFile] }
-        # 
         # Construct a new signature block.
         def initialize(sfg, private_key, sigalg, cert_chain, external_sf, tsa_url, tsa_cert, signing_mechanism, args, zip_file)
           @block = nil
@@ -2129,7 +2104,6 @@ module Sun::Security::Tools
           digest_algorithm = nil
           signature_algorithm = nil
           key_algorithm = private_key.get_algorithm
-          # 
           # If no signature algorithm was specified, we choose a
           # default that is compatible with the private key algorithm.
           if ((sigalg).nil?)
@@ -2182,14 +2156,12 @@ module Sun::Security::Tools
         end
         
         typesig { [] }
-        # 
         # get block file name.
         def get_meta_name
           return @block_file_name
         end
         
         typesig { [OutputStream] }
-        # 
         # Writes the block file to the specified OutputStream.
         # 
         # @param out the output stream
@@ -2207,7 +2179,6 @@ module Sun::Security::Tools
     alias_method :initialize__signature_file, :initialize
   end
   
-  # 
   # This object encapsulates the parameters used to perform content signing.
   class JarSignerParameters 
     include_class_members JarSignerImports
@@ -2262,7 +2233,6 @@ module Sun::Security::Tools
     undef_method :source=
     
     typesig { [Array.typed(String), URI, X509Certificate, Array.typed(::Java::Byte), String, Array.typed(X509Certificate), Array.typed(::Java::Byte), ZipFile] }
-    # 
     # Create a new object.
     def initialize(args, tsa, tsa_certificate, signature, signature_algorithm, signer_certificate_chain, content, source)
       @args = nil
@@ -2287,7 +2257,6 @@ module Sun::Security::Tools
     end
     
     typesig { [] }
-    # 
     # Retrieves the command-line arguments.
     # 
     # @return The command-line arguments. May be null.
@@ -2296,7 +2265,6 @@ module Sun::Security::Tools
     end
     
     typesig { [] }
-    # 
     # Retrieves the identifier for a Timestamping Authority (TSA).
     # 
     # @return The TSA identifier. May be null.
@@ -2305,7 +2273,6 @@ module Sun::Security::Tools
     end
     
     typesig { [] }
-    # 
     # Retrieves the certificate for a Timestamping Authority (TSA).
     # 
     # @return The TSA certificate. May be null.
@@ -2314,7 +2281,6 @@ module Sun::Security::Tools
     end
     
     typesig { [] }
-    # 
     # Retrieves the signature.
     # 
     # @return The non-null signature bytes.
@@ -2323,7 +2289,6 @@ module Sun::Security::Tools
     end
     
     typesig { [] }
-    # 
     # Retrieves the name of the signature algorithm.
     # 
     # @return The non-null string name of the signature algorithm.
@@ -2332,7 +2297,6 @@ module Sun::Security::Tools
     end
     
     typesig { [] }
-    # 
     # Retrieves the signer's X.509 certificate chain.
     # 
     # @return The non-null array of X.509 public-key certificates.
@@ -2341,7 +2305,6 @@ module Sun::Security::Tools
     end
     
     typesig { [] }
-    # 
     # Retrieves the content that was signed.
     # 
     # @return The content bytes. May be null.
@@ -2350,7 +2313,6 @@ module Sun::Security::Tools
     end
     
     typesig { [] }
-    # 
     # Retrieves the original source ZIP file before it was signed.
     # 
     # @return The original ZIP file. May be null.

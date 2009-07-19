@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 2002-2006 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -34,7 +33,6 @@ module Java::Security::Cert
     }
   end
   
-  # 
   # Helper class that allows the Sun CertPath provider to access
   # implementation dependent APIs in CertPath framework.
   # 
@@ -50,7 +48,6 @@ module Java::Security::Cert
     
     class_module.module_eval {
       typesig { [] }
-      # 
       # Initialize the helper framework. This method must be called from
       # the static initializer of each class that is the target of one of
       # the methods in this class. This ensures that the helper if initialized

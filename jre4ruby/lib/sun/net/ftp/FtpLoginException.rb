@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 1994-1995 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -32,7 +31,6 @@ module Sun::Net::Ftp
     }
   end
   
-  # 
   # This exception is thrown when an error is encountered during an
   # FTP login operation.
   # 

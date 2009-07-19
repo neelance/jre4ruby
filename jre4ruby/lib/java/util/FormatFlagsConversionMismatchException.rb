@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 2003 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -31,7 +30,6 @@ module Java::Util
     }
   end
   
-  # 
   # Unchecked exception thrown when a conversion and flag are incompatible.
   # 
   # <p> Unless otherwise specified, passing a <tt>null</tt> argument to any
@@ -60,7 +58,6 @@ module Java::Util
     undef_method :c=
     
     typesig { [String, ::Java::Char] }
-    # 
     # Constructs an instance of this class with the specified flag
     # and conversion.
     # 
@@ -81,7 +78,6 @@ module Java::Util
     end
     
     typesig { [] }
-    # 
     # Returns the incompatible flag.
     # 
     # @return  The flag
@@ -90,7 +86,6 @@ module Java::Util
     end
     
     typesig { [] }
-    # 
     # Returns the incompatible conversion.
     # 
     # @return  The conversion

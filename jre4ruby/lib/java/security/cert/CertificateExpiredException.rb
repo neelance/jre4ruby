@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 1997-2003 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -31,7 +30,6 @@ module Java::Security::Cert
     }
   end
   
-  # 
   # Certificate Expired Exception. This is thrown whenever the current
   # <code>Date</code> or the specified <code>Date</code> is after the
   # <code>notAfter</code> date/time specified in the validity period
@@ -47,7 +45,6 @@ module Java::Security::Cert
     }
     
     typesig { [] }
-    # 
     # Constructs a CertificateExpiredException with no detail message. A
     # detail message is a String that describes this particular
     # exception.
@@ -56,7 +53,6 @@ module Java::Security::Cert
     end
     
     typesig { [String] }
-    # 
     # Constructs a CertificateExpiredException with the specified detail
     # message. A detail message is a String that describes this
     # particular exception.

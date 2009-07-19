@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 2000-2001 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -36,7 +35,6 @@ module Java::Nio::Channels
     }
   end
   
-  # 
   # A selectable channel for datagram-oriented sockets.
   # 
   # 
@@ -78,7 +76,6 @@ module Java::Nio::Channels
     include GatheringByteChannel
     
     typesig { [SelectorProvider] }
-    # 
     # Initializes a new instance of this class.
     def initialize(provider)
       super(provider)
@@ -86,7 +83,6 @@ module Java::Nio::Channels
     
     class_module.module_eval {
       typesig { [] }
-      # 
       # Opens a datagram channel.
       # 
       # <p> The new channel is created by invoking the {@link
@@ -105,7 +101,6 @@ module Java::Nio::Channels
     }
     
     typesig { [] }
-    # 
     # Returns an operation set identifying this channel's supported
     # operations.
     # 
@@ -132,7 +127,6 @@ module Java::Nio::Channels
     end
     
     typesig { [] }
-    # 
     # Tells whether or not this channel's socket is connected.  </p>
     # 
     # @return  <tt>true</tt> if, and only if, this channel's socket
@@ -142,7 +136,6 @@ module Java::Nio::Channels
     end
     
     typesig { [SocketAddress] }
-    # 
     # Connects this channel's socket.
     # 
     # <p> The channel's socket is configured so that it only receives
@@ -193,7 +186,6 @@ module Java::Nio::Channels
     end
     
     typesig { [] }
-    # 
     # Disconnects this channel's socket.
     # 
     # <p> The channel's socket is configured so that it can receive datagrams
@@ -216,7 +208,6 @@ module Java::Nio::Channels
     end
     
     typesig { [ByteBuffer] }
-    # 
     # Receives a datagram via this channel.
     # 
     # <p> If a datagram is immediately available, or if this channel is in
@@ -279,7 +270,6 @@ module Java::Nio::Channels
     end
     
     typesig { [ByteBuffer, SocketAddress] }
-    # 
     # Sends a datagram via this channel.
     # 
     # <p> If this channel is in non-blocking mode and there is sufficient room
@@ -361,7 +351,6 @@ module Java::Nio::Channels
     end
     
     typesig { [Array.typed(ByteBuffer), ::Java::Int, ::Java::Int] }
-    # 
     # Reads a datagram from this channel.
     # 
     # <p> This method may only be invoked if this channel's socket is
@@ -378,7 +367,6 @@ module Java::Nio::Channels
     end
     
     typesig { [Array.typed(ByteBuffer)] }
-    # 
     # Reads a datagram from this channel.
     # 
     # <p> This method may only be invoked if this channel's socket is
@@ -395,7 +383,6 @@ module Java::Nio::Channels
     end
     
     typesig { [ByteBuffer] }
-    # 
     # Writes a datagram to this channel.
     # 
     # <p> This method may only be invoked if this channel's socket is
@@ -410,7 +397,6 @@ module Java::Nio::Channels
     end
     
     typesig { [Array.typed(ByteBuffer), ::Java::Int, ::Java::Int] }
-    # 
     # Writes a datagram to this channel.
     # 
     # <p> This method may only be invoked if this channel's socket is
@@ -431,7 +417,6 @@ module Java::Nio::Channels
     end
     
     typesig { [Array.typed(ByteBuffer)] }
-    # 
     # Writes a datagram to this channel.
     # 
     # <p> This method may only be invoked if this channel's socket is

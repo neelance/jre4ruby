@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Portions Copyright 2003-2005 Sun Microsystems, Inc.  All Rights Reserved.
 # 
 # Copyright  (c) 2002 Graz University of Technology. All rights reserved.
@@ -52,7 +51,6 @@ module Sun::Security::Pkcs11::Wrapper
     }
   end
   
-  # 
   # class CK_TOKEN_INFO provides information about a token.<p>
   # <B>PKCS#11 structure:</B>
   # <PRE>
@@ -353,7 +351,6 @@ module Sun::Security::Pkcs11::Wrapper
     end
     
     typesig { [] }
-    # 
     # Returns the string representation of CK_TOKEN_INFO.
     # 
     # @return the string representation of CK_TOKEN_INFO

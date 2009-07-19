@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 2005-2007 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -33,7 +32,6 @@ module Sun::Security::Internal::Spec
     }
   end
   
-  # 
   # Parameters for the TLS PRF (pseudo-random function). The PRF function
   # is defined in RFC 2246.
   # This class is used to initialize KeyGenerators of the type "TlsPrf".
@@ -72,7 +70,6 @@ module Sun::Security::Internal::Spec
     undef_method :output_length=
     
     typesig { [SecretKey, String, Array.typed(::Java::Byte), ::Java::Int] }
-    # 
     # Constructs a new TlsPrfParameterSpec.
     # 
     # @param secret the secret to use in the calculation (or null)
@@ -100,7 +97,6 @@ module Sun::Security::Internal::Spec
     end
     
     typesig { [] }
-    # 
     # Returns the secret to use in the PRF calculation, or null if there is no
     # secret.
     # 
@@ -111,7 +107,6 @@ module Sun::Security::Internal::Spec
     end
     
     typesig { [] }
-    # 
     # Returns the label to use in the PRF calcuation.
     # 
     # @return the label to use in the PRF calcuation.
@@ -120,7 +115,6 @@ module Sun::Security::Internal::Spec
     end
     
     typesig { [] }
-    # 
     # Returns a copy of the seed to use in the PRF calcuation.
     # 
     # @return a copy of the seed to use in the PRF calcuation.
@@ -129,7 +123,6 @@ module Sun::Security::Internal::Spec
     end
     
     typesig { [] }
-    # 
     # Returns the length in bytes of the output key to be produced.
     # 
     # @return the length in bytes of the output key to be produced.

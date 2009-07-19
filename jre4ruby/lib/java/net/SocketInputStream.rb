@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 1995-2007 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -36,7 +35,6 @@ module Java::Net
     }
   end
   
-  # 
   # This stream extends FileInputStream to implement a
   # SocketInputStream. Note that this class should <b>NOT</b> be
   # public.
@@ -77,7 +75,6 @@ module Java::Net
     undef_method :socket=
     
     typesig { [AbstractPlainSocketImpl] }
-    # 
     # Creates a new SocketInputStream. Can only be called
     # by a Socket. This method needs to hang on to the owner Socket so
     # that the fd will not be closed.
@@ -97,7 +94,6 @@ module Java::Net
     end
     
     typesig { [] }
-    # 
     # Returns the unique {@link java.nio.channels.FileChannel FileChannel}
     # object associated with this file input stream.</p>
     # 
@@ -114,7 +110,6 @@ module Java::Net
     
     JNI.native_method :Java_java_net_SocketInputStream_socketRead0, [:pointer, :long, :long, :long, :int32, :int32, :int32], :int32
     typesig { [FileDescriptor, Array.typed(::Java::Byte), ::Java::Int, ::Java::Int, ::Java::Int] }
-    # 
     # Reads into an array of bytes at the specified offset using
     # the received socket primitive.
     # @param fd the FileDescriptor
@@ -130,7 +125,6 @@ module Java::Net
     end
     
     typesig { [Array.typed(::Java::Byte)] }
-    # 
     # Reads into a byte array data from the socket.
     # @param b the buffer into which the data is read
     # @return the actual number of bytes read, -1 is
@@ -141,7 +135,6 @@ module Java::Net
     end
     
     typesig { [Array.typed(::Java::Byte), ::Java::Int, ::Java::Int] }
-    # 
     # Reads into a byte array <i>b</i> at offset <i>off</i>,
     # <i>length</i> bytes of data.
     # @param b the buffer into which the data is read
@@ -175,12 +168,11 @@ module Java::Net
         if (n > 0)
           return n
         end
-      rescue ConnectionResetException => rstExc
+      rescue ConnectionResetException => rst_exc
         got_reset = true
       ensure
         @impl.release_fd
       end
-      # 
       # We receive a "connection reset" but there may be bytes still
       # buffered on the socket
       if (got_reset)
@@ -191,12 +183,11 @@ module Java::Net
           if (n > 0)
             return n
           end
-        rescue ConnectionResetException => rstExc
+        rescue ConnectionResetException => rst_exc
         ensure
           @impl.release_fd
         end
       end
-      # 
       # If we get here we are at EOF, the socket has been closed,
       # or the connection has been reset.
       if (@impl.is_closed_or_pending)
@@ -213,7 +204,6 @@ module Java::Net
     end
     
     typesig { [] }
-    # 
     # Reads a single byte from the socket.
     def read
       if (@eof)
@@ -228,7 +218,6 @@ module Java::Net
     end
     
     typesig { [::Java::Long] }
-    # 
     # Skips n bytes of input.
     # @param n the number of bytes to skip
     # @return  the actual number of bytes skipped.
@@ -251,14 +240,12 @@ module Java::Net
     end
     
     typesig { [] }
-    # 
     # Returns the number of bytes that can be read without blocking.
     # @return the number of immediately available bytes
     def available
       return @impl.available
     end
     
-    # 
     # Closes the stream.
     attr_accessor :closing
     alias_method :attr_closing, :closing
@@ -289,7 +276,6 @@ module Java::Net
     end
     
     typesig { [] }
-    # 
     # Overrides finalize, the fd is closed by the Socket.
     def finalize
     end
@@ -297,7 +283,6 @@ module Java::Net
     class_module.module_eval {
       JNI.native_method :Java_java_net_SocketInputStream_init, [:pointer, :long], :void
       typesig { [] }
-      # 
       # Perform class load-time initializations.
       def init
         JNI.__send__(:Java_java_net_SocketInputStream_init, JNI.env, self.jni_id)

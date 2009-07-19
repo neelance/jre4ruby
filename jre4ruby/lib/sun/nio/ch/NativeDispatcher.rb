@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 2000-2002 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -32,7 +31,6 @@ module Sun::Nio::Ch
     }
   end
   
-  # 
   # Allows different platforms to call different native methods
   # for read and write operations.
   class NativeDispatcher 

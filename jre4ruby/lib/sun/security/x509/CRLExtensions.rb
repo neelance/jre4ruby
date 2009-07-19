@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 1997-2006 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -42,7 +41,6 @@ module Sun::Security::X509
     }
   end
   
-  # 
   # This class defines the CRL Extensions.
   # It is used for both CRL Extensions and CRL Entry Extensions,
   # which are defined are follows:
@@ -79,7 +77,6 @@ module Sun::Security::X509
     undef_method :unsupported_crit_ext=
     
     typesig { [] }
-    # 
     # Default constructor.
     def initialize
       @map = Hashtable.new
@@ -87,7 +84,6 @@ module Sun::Security::X509
     end
     
     typesig { [DerInputStream] }
-    # 
     # Create the object, decoding the values from the passed DER stream.
     # 
     # @param in the DerInputStream to read the Extension from, i.e. the
@@ -156,7 +152,6 @@ module Sun::Security::X509
     end
     
     typesig { [OutputStream, ::Java::Boolean] }
-    # 
     # Encode the extensions in DER form to the stream.
     # 
     # @param out the DerOutputStream to marshal the contents to.
@@ -193,12 +188,11 @@ module Sun::Security::X509
       rescue IOException => e
         raise CRLException.new("Encoding error: " + (e.to_s).to_s)
       rescue CertificateException => e
-        raise CRLException.new("Encoding error: " + (e_.to_s).to_s)
+        raise CRLException.new("Encoding error: " + (e.to_s).to_s)
       end
     end
     
     typesig { [String] }
-    # 
     # Get the extension with this alias.
     # 
     # @param alias the identifier string for the extension to retrieve.
@@ -217,7 +211,6 @@ module Sun::Security::X509
     end
     
     typesig { [String, Object] }
-    # 
     # Set the extension value with this alias.
     # 
     # @param alias the identifier string for the extension to set.
@@ -228,7 +221,6 @@ module Sun::Security::X509
     end
     
     typesig { [String] }
-    # 
     # Delete the extension value with this alias.
     # 
     # @param alias the identifier string for the extension to delete.
@@ -237,7 +229,6 @@ module Sun::Security::X509
     end
     
     typesig { [] }
-    # 
     # Return an enumeration of the extensions.
     # @return an enumeration of the extensions in this CRL.
     def get_elements
@@ -245,7 +236,6 @@ module Sun::Security::X509
     end
     
     typesig { [] }
-    # 
     # Return a collection view of the extensions.
     # @return a collection view of the extensions in this CRL.
     def get_all_extensions
@@ -253,7 +243,6 @@ module Sun::Security::X509
     end
     
     typesig { [] }
-    # 
     # Return true if a critical extension is found that is
     # not supported, otherwise return false.
     def has_unsupported_critical_extension
@@ -261,7 +250,6 @@ module Sun::Security::X509
     end
     
     typesig { [Object] }
-    # 
     # Compares this CRLExtensions for equality with the specified
     # object. If the <code>other</code> object is an
     # <code>instanceof</code> <code>CRLExtensions</code>, then
@@ -308,7 +296,6 @@ module Sun::Security::X509
     end
     
     typesig { [] }
-    # 
     # Returns a hashcode value for this CRLExtensions.
     # 
     # @return the hashcode value.
@@ -317,7 +304,6 @@ module Sun::Security::X509
     end
     
     typesig { [] }
-    # 
     # Returns a string representation of this <tt>CRLExtensions</tt> object
     # in the form of a set of entries, enclosed in braces and separated
     # by the ASCII characters "<tt>,&nbsp;</tt>" (comma and space).

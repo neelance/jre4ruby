@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 1994-2005 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -31,7 +30,6 @@ module Java::Util
     }
   end
   
-  # 
   # An object that implements the Enumeration interface generates a
   # series of elements, one at a time. Successive calls to the
   # <code>nextElement</code> method return successive elements of the
@@ -67,7 +65,6 @@ module Java::Util
     include_class_members EnumerationImports
     
     typesig { [] }
-    # 
     # Tests if this enumeration contains more elements.
     # 
     # @return  <code>true</code> if and only if this enumeration object
@@ -78,7 +75,6 @@ module Java::Util
     end
     
     typesig { [] }
-    # 
     # Returns the next element of this enumeration if this enumeration
     # object has at least one more element to provide.
     # 

@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 1999-2007 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -31,7 +30,6 @@ module Java::Math
     }
   end
   
-  # 
   # A class used to represent multiprecision integers that makes efficient
   # use of allocated space by allowing a number to occupy only part of
   # an array so that the arrays do not have to be reallocated as often.
@@ -48,7 +46,6 @@ module Java::Math
   class MutableBigInteger 
     include_class_members MutableBigIntegerImports
     
-    # 
     # Holds the magnitude of this MutableBigInteger in big endian order.
     # The magnitude may start at an offset into the value array, and it may
     # end before the length of the value array.
@@ -58,7 +55,6 @@ module Java::Math
     alias_method :attr_value=, :value=
     undef_method :value=
     
-    # 
     # The number of ints of the value array that are currently used
     # to hold the magnitude of this MutableBigInteger. The magnitude starts
     # at an offset and offset + intLen may be less than value.length.
@@ -68,7 +64,6 @@ module Java::Math
     alias_method :attr_int_len=, :int_len=
     undef_method :int_len=
     
-    # 
     # The offset into the value array where the magnitude of this
     # MutableBigInteger begins.
     attr_accessor :offset
@@ -78,7 +73,6 @@ module Java::Math
     undef_method :offset=
     
     class_module.module_eval {
-      # 
       # This mask is used to obtain the value of an int as if it were unsigned.
       const_set_lazy(:LONG_MASK) { 0xffffffff }
       const_attr_reader  :LONG_MASK
@@ -98,7 +92,6 @@ module Java::Math
     end
     
     typesig { [::Java::Int] }
-    # 
     # Construct a new MutableBigInteger with a magnitude specified by
     # the int val.
     def initialize(val)
@@ -111,7 +104,6 @@ module Java::Math
     end
     
     typesig { [Array.typed(::Java::Int), ::Java::Int] }
-    # 
     # Construct a new MutableBigInteger with the specified value array
     # up to the specified length.
     def initialize(val, len)
@@ -123,7 +115,6 @@ module Java::Math
     end
     
     typesig { [Array.typed(::Java::Int)] }
-    # 
     # Construct a new MutableBigInteger with the specified value array
     # up to the length of the array supplied.
     def initialize(val)
@@ -135,7 +126,6 @@ module Java::Math
     end
     
     typesig { [BigInteger] }
-    # 
     # Construct a new MutableBigInteger with a magnitude equal to the
     # specified BigInteger.
     def initialize(b)
@@ -147,7 +137,6 @@ module Java::Math
     end
     
     typesig { [MutableBigInteger] }
-    # 
     # Construct a new MutableBigInteger with a magnitude equal to the
     # specified MutableBigInteger.
     def initialize(val)
@@ -164,7 +153,6 @@ module Java::Math
     end
     
     typesig { [] }
-    # 
     # Clear out a MutableBigInteger for reuse.
     def clear
       @offset = @int_len = 0
@@ -177,14 +165,12 @@ module Java::Math
     end
     
     typesig { [] }
-    # 
     # Set a MutableBigInteger to zero, removing its offset.
     def reset
       @offset = @int_len = 0
     end
     
     typesig { [MutableBigInteger] }
-    # 
     # Compare the magnitude of two MutableBigIntegers. Returns -1, 0 or 1
     # as this MutableBigInteger is numerically less than, equal to, or
     # greater than {@code b}.
@@ -211,7 +197,6 @@ module Java::Math
     end
     
     typesig { [] }
-    # 
     # Return the index of the lowest set bit in this MutableBigInteger. If the
     # magnitude of this MutableBigInteger is zero, -1 is returned.
     def get_lowest_set_bit
@@ -232,7 +217,6 @@ module Java::Math
     end
     
     typesig { [::Java::Int] }
-    # 
     # Return the int in use in this MutableBigInteger at the specified
     # index. This method is not used because it is not inlined on all
     # platforms.
@@ -241,7 +225,6 @@ module Java::Math
     end
     
     typesig { [::Java::Int] }
-    # 
     # Return a long which is equal to the unsigned value of the int in
     # use in this MutableBigInteger at the specified index. This method is
     # not used because it is not inlined on all platforms.
@@ -250,7 +233,6 @@ module Java::Math
     end
     
     typesig { [] }
-    # 
     # Ensure that the MutableBigInteger is in normal form, specifically
     # making sure that there are no leading zeros, and that if the
     # magnitude is zero, then intLen is zero.
@@ -273,7 +255,6 @@ module Java::Math
     end
     
     typesig { [::Java::Int] }
-    # 
     # If this MutableBigInteger cannot hold len words, increase the size
     # of the value array to len words.
     def ensure_capacity(len)
@@ -285,7 +266,6 @@ module Java::Math
     end
     
     typesig { [] }
-    # 
     # Convert this MutableBigInteger into an int array with no leading
     # zeros, of a length that is equal to this MutableBigInteger's intLen.
     def to_int_array
@@ -299,7 +279,6 @@ module Java::Math
     end
     
     typesig { [::Java::Int, ::Java::Int] }
-    # 
     # Sets the int at index+offset in this MutableBigInteger to val.
     # This does not get inlined on all platforms so it is not used
     # as often as originally intended.
@@ -308,7 +287,6 @@ module Java::Math
     end
     
     typesig { [Array.typed(::Java::Int), ::Java::Int] }
-    # 
     # Sets this MutableBigInteger's value array to the specified array.
     # The intLen is set to the specified length.
     def set_value(val, length)
@@ -318,7 +296,6 @@ module Java::Math
     end
     
     typesig { [MutableBigInteger] }
-    # 
     # Sets this MutableBigInteger's value array to a copy of the specified
     # array. The intLen is set to the length of the new array.
     def copy_value(val)
@@ -336,7 +313,6 @@ module Java::Math
     end
     
     typesig { [Array.typed(::Java::Int)] }
-    # 
     # Sets this MutableBigInteger's value array to a copy of the specified
     # array. The intLen is set to the length of the specified array.
     def copy_value(val)
@@ -354,35 +330,30 @@ module Java::Math
     end
     
     typesig { [] }
-    # 
     # Returns true iff this MutableBigInteger has a value of one.
     def is_one
       return ((@int_len).equal?(1)) && ((@value[@offset]).equal?(1))
     end
     
     typesig { [] }
-    # 
     # Returns true iff this MutableBigInteger has a value of zero.
     def is_zero
       return ((@int_len).equal?(0))
     end
     
     typesig { [] }
-    # 
     # Returns true iff this MutableBigInteger is even.
     def is_even
       return ((@int_len).equal?(0)) || (((@value[@offset + @int_len - 1] & 1)).equal?(0))
     end
     
     typesig { [] }
-    # 
     # Returns true iff this MutableBigInteger is odd.
     def is_odd
       return (((@value[@offset + @int_len - 1] & 1)).equal?(1))
     end
     
     typesig { [] }
-    # 
     # Returns true iff this MutableBigInteger is in normal form. A
     # MutableBigInteger is in normal form if it has no leading zeros
     # after the offset, and intLen + offset <= value.length.
@@ -397,7 +368,6 @@ module Java::Math
     end
     
     typesig { [] }
-    # 
     # Returns a String representation of this MutableBigInteger in radix 10.
     def to_s
       b = BigInteger.new(self, 1)
@@ -405,7 +375,6 @@ module Java::Math
     end
     
     typesig { [::Java::Int] }
-    # 
     # Right shift this MutableBigInteger n bits. The MutableBigInteger is left
     # in normal form.
     def right_shift(n)
@@ -428,10 +397,8 @@ module Java::Math
     end
     
     typesig { [::Java::Int] }
-    # 
     # Left shift this MutableBigInteger n bits.
     def left_shift(n)
-      # 
       # If there is enough storage space in this MutableBigInteger already
       # the available space will be used. Space to the right of the used
       # ints in the value array is faster to utilize, so the extra space
@@ -463,22 +430,22 @@ module Java::Math
       else
         if (@value.attr_length - @offset >= new_len)
           # Use space on right
-          i_ = 0
-          while i_ < new_len - @int_len
-            @value[@offset + @int_len + i_] = 0
-            ((i_ += 1) - 1)
+          i = 0
+          while i < new_len - @int_len
+            @value[@offset + @int_len + i] = 0
+            ((i += 1) - 1)
           end
         else
           # Must use space on left
-          i__ = 0
-          while i__ < @int_len
-            @value[i__] = @value[@offset + i__]
-            ((i__ += 1) - 1)
+          i = 0
+          while i < @int_len
+            @value[i] = @value[@offset + i]
+            ((i += 1) - 1)
           end
-          i___ = @int_len
-          while i___ < new_len
-            @value[i___] = 0
-            ((i___ += 1) - 1)
+          i_ = @int_len
+          while i_ < new_len
+            @value[i_] = 0
+            ((i_ += 1) - 1)
           end
           @offset = 0
         end
@@ -495,7 +462,6 @@ module Java::Math
     end
     
     typesig { [Array.typed(::Java::Int), Array.typed(::Java::Int), ::Java::Int] }
-    # 
     # A primitive used for division. This method adds in one multiple of the
     # divisor a back to the dividend result at a specified offset. It is used
     # when qhat was estimated too large, and must be adjusted.
@@ -512,7 +478,6 @@ module Java::Math
     end
     
     typesig { [Array.typed(::Java::Int), Array.typed(::Java::Int), ::Java::Int, ::Java::Int, ::Java::Int] }
-    # 
     # This method is used for division. It multiplies an n word input a by one
     # word input x, and subtracts the n word product from q. This is needed
     # when subtracting qhat*divisor from dividend.
@@ -532,7 +497,6 @@ module Java::Math
     end
     
     typesig { [::Java::Int] }
-    # 
     # Right shift this MutableBigInteger n bits, where n is
     # less than 32.
     # Assumes that intLen > 0, n > 0 for speed
@@ -551,7 +515,6 @@ module Java::Math
     end
     
     typesig { [::Java::Int] }
-    # 
     # Left shift this MutableBigInteger n bits, where n is
     # less than 32.
     # Assumes that intLen > 0, n > 0 for speed
@@ -571,7 +534,6 @@ module Java::Math
     end
     
     typesig { [MutableBigInteger] }
-    # 
     # Adds the contents of two MutableBigInteger objects.The result
     # is placed within this MutableBigInteger.
     # The contents of the addend are not changed.
@@ -622,7 +584,6 @@ module Java::Math
     end
     
     typesig { [MutableBigInteger] }
-    # 
     # Subtracts the smaller of this and b from the larger and places the
     # result into this MutableBigInteger.
     def subtract(b)
@@ -667,7 +628,6 @@ module Java::Math
     end
     
     typesig { [MutableBigInteger] }
-    # 
     # Subtracts the smaller of a and b from the larger and places the result
     # into the larger. Returns 1 if the answer is in a, -1 if in b, 0 if no
     # operation was performed.
@@ -703,7 +663,6 @@ module Java::Math
     end
     
     typesig { [MutableBigInteger, MutableBigInteger] }
-    # 
     # Multiply the contents of two MutableBigInteger objects. The result is
     # placed into MutableBigInteger z. The contents of y are not changed.
     def multiply(y, z)
@@ -735,9 +694,9 @@ module Java::Math
         j_ = y_len - 1
         k_ = y_len + i
         while j_ >= 0
-          product_ = (y.attr_value[j_ + y.attr_offset] & LONG_MASK) * (@value[i + @offset] & LONG_MASK) + (z.attr_value[k_] & LONG_MASK) + carry
-          z.attr_value[k_] = RJava.cast_to_int(product_)
-          carry = product_ >> 32
+          product = (y.attr_value[j_ + y.attr_offset] & LONG_MASK) * (@value[i + @offset] & LONG_MASK) + (z.attr_value[k_] & LONG_MASK) + carry
+          z.attr_value[k_] = RJava.cast_to_int(product)
+          carry = product >> 32
           ((j_ -= 1) + 1)
           ((k_ -= 1) + 1)
         end
@@ -749,7 +708,6 @@ module Java::Math
     end
     
     typesig { [::Java::Int, MutableBigInteger] }
-    # 
     # Multiply the contents of this MutableBigInteger by the word y. The
     # result is placed into z.
     def mul(y, z)
@@ -784,7 +742,6 @@ module Java::Math
     end
     
     typesig { [::Java::Int, MutableBigInteger] }
-    # 
     # This method is used for division of an n word dividend by a one word
     # divisor. The quotient is placed into quotient. The one word divisor is
     # specified by divisor. The value of this MutableBigInteger is the
@@ -845,7 +802,6 @@ module Java::Math
     end
     
     typesig { [MutableBigInteger, MutableBigInteger, MutableBigInteger] }
-    # 
     # Calculates the quotient and remainder of this div b and places them
     # in the MutableBigInteger objects provided.
     # 
@@ -998,7 +954,6 @@ module Java::Math
     end
     
     typesig { [::Java::Long, ::Java::Long] }
-    # 
     # Compare two longs as if they were unsigned.
     # Returns true iff one is bigger than two.
     def unsigned_long_compare(one, two)
@@ -1006,7 +961,6 @@ module Java::Math
     end
     
     typesig { [Array.typed(::Java::Int), ::Java::Long, ::Java::Int] }
-    # 
     # This method divides a long quantity by an int to estimate
     # qhat for two multi precision numbers. It is used when
     # the signed value of n is less than zero.
@@ -1035,7 +989,6 @@ module Java::Math
     end
     
     typesig { [MutableBigInteger] }
-    # 
     # Calculate GCD of this and b. This and b are changed by the computation.
     def hybrid_gcd(b)
       # Use Euclid's algorithm until the numbers are approximately the
@@ -1057,7 +1010,6 @@ module Java::Math
     end
     
     typesig { [MutableBigInteger] }
-    # 
     # Calculate GCD of this and v.
     # Assumes that this and v are not zero.
     def binary_gcd(v)
@@ -1113,7 +1065,6 @@ module Java::Math
     
     class_module.module_eval {
       typesig { [::Java::Int, ::Java::Int] }
-      # 
       # Calculate GCD of a and b interpreted as unsigned integers.
       def binary_gcd(a, b)
         if ((b).equal?(0))
@@ -1161,7 +1112,6 @@ module Java::Math
     }
     
     typesig { [MutableBigInteger] }
-    # 
     # Returns the modInverse of this mod p. This and p are not affected by
     # the operation.
     def mutable_mod_inverse(p)
@@ -1201,7 +1151,6 @@ module Java::Math
     end
     
     typesig { [::Java::Int] }
-    # 
     # Calculate the multiplicative inverse of this mod 2^k.
     def mod_inverse_mp2(k)
       if (is_even)
@@ -1232,7 +1181,6 @@ module Java::Math
     
     class_module.module_eval {
       typesig { [::Java::Int] }
-      # 
       # Returns the multiplicative inverse of val mod 2^32.  Assumes val is odd.
       def inverse_mod32(val)
         # Newton's iteration!
@@ -1245,7 +1193,6 @@ module Java::Math
       end
       
       typesig { [MutableBigInteger, ::Java::Int] }
-      # 
       # Calculate the multiplicative inverse of 2^k mod mod, where mod is odd.
       def mod_inverse_bp2(mod, k)
         # Copy the mod to protect original
@@ -1254,7 +1201,6 @@ module Java::Math
     }
     
     typesig { [MutableBigInteger] }
-    # 
     # Calculate the multiplicative inverse of this mod mod, where mod is odd.
     # This and mod are not changed by the calculation.
     # 
@@ -1303,10 +1249,10 @@ module Java::Math
           c.signed_add(d)
         end
         # Right shift f k times until odd, left shift d k times
-        trailing_zeros_ = f.get_lowest_set_bit
-        f.right_shift(trailing_zeros_)
-        d.left_shift(trailing_zeros_)
-        k += trailing_zeros_
+        trailing_zeros = f.get_lowest_set_bit
+        f.right_shift(trailing_zeros)
+        d.left_shift(trailing_zeros)
+        k += trailing_zeros
       end
       while (c.attr_sign < 0)
         c.signed_add(p)
@@ -1316,7 +1262,6 @@ module Java::Math
     
     class_module.module_eval {
       typesig { [MutableBigInteger, MutableBigInteger, ::Java::Int] }
-      # 
       # The Fixup Algorithm
       # Calculates X such that X = C * 2^(-k) (mod P)
       # Assumes C<P and P is odd.
@@ -1339,10 +1284,10 @@ module Java::Math
         num_bits = k & 0x1f
         if (!(num_bits).equal?(0))
           # V = R * c (mod 2^j)
-          v_ = r * c.attr_value[c.attr_offset + c.attr_int_len - 1]
-          v_ &= ((1 << num_bits) - 1)
+          v = r * c.attr_value[c.attr_offset + c.attr_int_len - 1]
+          v &= ((1 << num_bits) - 1)
           # c = c + (v * p)
-          p.mul(v_, temp)
+          p.mul(v, temp)
           c.add(temp)
           # c = c / 2^j
           c.right_shift(num_bits)
@@ -1356,7 +1301,6 @@ module Java::Math
     }
     
     typesig { [::Java::Int] }
-    # 
     # Uses the extended Euclidean algorithm to compute the modInverse of base
     # mod a modulus that is a power of 2. The modulus is 2^k.
     def euclid_mod_inverse(k)

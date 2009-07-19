@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 2003-2004 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -30,7 +29,6 @@ module Java::Lang
     }
   end
   
-  # 
   # A mutable sequence of characters.  This class provides an API compatible
   # with <code>StringBuffer</code>, but with no guarantee of synchronization.
   # This class is designed for use as a drop-in replacement for
@@ -84,7 +82,6 @@ module Java::Lang
     }
     
     typesig { [] }
-    # 
     # Constructs a string builder with no characters in it and an
     # initial capacity of 16 characters.
     def initialize
@@ -92,7 +89,6 @@ module Java::Lang
     end
     
     typesig { [::Java::Int] }
-    # 
     # Constructs a string builder with no characters in it and an
     # initial capacity specified by the <code>capacity</code> argument.
     # 
@@ -104,7 +100,6 @@ module Java::Lang
     end
     
     typesig { [String] }
-    # 
     # Constructs a string builder initialized to the contents of the
     # specified string. The initial capacity of the string builder is
     # <code>16</code> plus the length of the string argument.
@@ -117,7 +112,6 @@ module Java::Lang
     end
     
     typesig { [CharSequence] }
-    # 
     # Constructs a string builder that contains the same characters
     # as the specified <code>CharSequence</code>. The initial capacity of
     # the string builder is <code>16</code> plus the length of the
@@ -131,7 +125,6 @@ module Java::Lang
     end
     
     typesig { [Object] }
-    # 
     # @see     java.lang.String#valueOf(java.lang.Object)
     # @see     #append(java.lang.String)
     def append(obj)
@@ -161,7 +154,6 @@ module Java::Lang
     end
     
     typesig { [StringBuffer] }
-    # 
     # Appends the specified <tt>StringBuffer</tt> to this sequence.
     # <p>
     # The characters of the <tt>StringBuffer</tt> argument are appended,
@@ -185,7 +177,6 @@ module Java::Lang
     end
     
     typesig { [CharSequence] }
-    # 
     # @throws IndexOutOfBoundsException {@inheritDoc}
     def append(s)
       if ((s).nil?)
@@ -204,7 +195,6 @@ module Java::Lang
     end
     
     typesig { [CharSequence, ::Java::Int, ::Java::Int] }
-    # 
     # @throws     IndexOutOfBoundsException {@inheritDoc}
     def append(s, start, end_)
       super(s, start, end_)
@@ -224,7 +214,6 @@ module Java::Lang
     end
     
     typesig { [::Java::Boolean] }
-    # 
     # @see     java.lang.String#valueOf(boolean)
     # @see     #append(java.lang.String)
     def append(b)
@@ -239,7 +228,6 @@ module Java::Lang
     end
     
     typesig { [::Java::Int] }
-    # 
     # @see     java.lang.String#valueOf(int)
     # @see     #append(java.lang.String)
     def append(i)
@@ -248,7 +236,6 @@ module Java::Lang
     end
     
     typesig { [::Java::Long] }
-    # 
     # @see     java.lang.String#valueOf(long)
     # @see     #append(java.lang.String)
     def append(lng)
@@ -257,7 +244,6 @@ module Java::Lang
     end
     
     typesig { [::Java::Float] }
-    # 
     # @see     java.lang.String#valueOf(float)
     # @see     #append(java.lang.String)
     def append(f)
@@ -266,7 +252,6 @@ module Java::Lang
     end
     
     typesig { [::Java::Double] }
-    # 
     # @see     java.lang.String#valueOf(double)
     # @see     #append(java.lang.String)
     def append(d)
@@ -275,7 +260,6 @@ module Java::Lang
     end
     
     typesig { [::Java::Int] }
-    # 
     # @since 1.5
     def append_code_point(code_point)
       super(code_point)
@@ -283,7 +267,6 @@ module Java::Lang
     end
     
     typesig { [::Java::Int, ::Java::Int] }
-    # 
     # @throws StringIndexOutOfBoundsException {@inheritDoc}
     def delete(start, end_)
       super(start, end_)
@@ -291,7 +274,6 @@ module Java::Lang
     end
     
     typesig { [::Java::Int] }
-    # 
     # @throws StringIndexOutOfBoundsException {@inheritDoc}
     def delete_char_at(index)
       super(index)
@@ -299,7 +281,6 @@ module Java::Lang
     end
     
     typesig { [::Java::Int, ::Java::Int, String] }
-    # 
     # @throws StringIndexOutOfBoundsException {@inheritDoc}
     def replace(start, end_, str)
       super(start, end_, str)
@@ -307,7 +288,6 @@ module Java::Lang
     end
     
     typesig { [::Java::Int, Array.typed(::Java::Char), ::Java::Int, ::Java::Int] }
-    # 
     # @throws StringIndexOutOfBoundsException {@inheritDoc}
     def insert(index, str, offset, len)
       super(index, str, offset, len)
@@ -315,7 +295,6 @@ module Java::Lang
     end
     
     typesig { [::Java::Int, Object] }
-    # 
     # @throws StringIndexOutOfBoundsException {@inheritDoc}
     # @see        java.lang.String#valueOf(java.lang.Object)
     # @see        #insert(int, java.lang.String)
@@ -325,7 +304,6 @@ module Java::Lang
     end
     
     typesig { [::Java::Int, String] }
-    # 
     # @throws StringIndexOutOfBoundsException {@inheritDoc}
     # @see        #length()
     def insert(offset, str)
@@ -334,7 +312,6 @@ module Java::Lang
     end
     
     typesig { [::Java::Int, Array.typed(::Java::Char)] }
-    # 
     # @throws StringIndexOutOfBoundsException {@inheritDoc}
     def insert(offset, str)
       super(offset, str)
@@ -342,7 +319,6 @@ module Java::Lang
     end
     
     typesig { [::Java::Int, CharSequence] }
-    # 
     # @throws IndexOutOfBoundsException {@inheritDoc}
     def insert(dst_offset, s)
       if ((s).nil?)
@@ -355,7 +331,6 @@ module Java::Lang
     end
     
     typesig { [::Java::Int, CharSequence, ::Java::Int, ::Java::Int] }
-    # 
     # @throws IndexOutOfBoundsException {@inheritDoc}
     def insert(dst_offset, s, start, end_)
       super(dst_offset, s, start, end_)
@@ -363,7 +338,6 @@ module Java::Lang
     end
     
     typesig { [::Java::Int, ::Java::Boolean] }
-    # 
     # @throws StringIndexOutOfBoundsException {@inheritDoc}
     # @see        java.lang.String#valueOf(boolean)
     # @see        #insert(int, java.lang.String)
@@ -374,7 +348,6 @@ module Java::Lang
     end
     
     typesig { [::Java::Int, ::Java::Char] }
-    # 
     # @throws IndexOutOfBoundsException {@inheritDoc}
     # @see        #length()
     def insert(offset, c)
@@ -383,7 +356,6 @@ module Java::Lang
     end
     
     typesig { [::Java::Int, ::Java::Int] }
-    # 
     # @throws StringIndexOutOfBoundsException {@inheritDoc}
     # @see        java.lang.String#valueOf(int)
     # @see        #insert(int, java.lang.String)
@@ -393,7 +365,6 @@ module Java::Lang
     end
     
     typesig { [::Java::Int, ::Java::Long] }
-    # 
     # @throws StringIndexOutOfBoundsException {@inheritDoc}
     # @see        java.lang.String#valueOf(long)
     # @see        #insert(int, java.lang.String)
@@ -403,7 +374,6 @@ module Java::Lang
     end
     
     typesig { [::Java::Int, ::Java::Float] }
-    # 
     # @throws StringIndexOutOfBoundsException {@inheritDoc}
     # @see        java.lang.String#valueOf(float)
     # @see        #insert(int, java.lang.String)
@@ -413,7 +383,6 @@ module Java::Lang
     end
     
     typesig { [::Java::Int, ::Java::Double] }
-    # 
     # @throws StringIndexOutOfBoundsException {@inheritDoc}
     # @see        java.lang.String#valueOf(double)
     # @see        #insert(int, java.lang.String)
@@ -423,28 +392,24 @@ module Java::Lang
     end
     
     typesig { [String] }
-    # 
     # @throws NullPointerException {@inheritDoc}
     def index_of(str)
       return index_of(str, 0)
     end
     
     typesig { [String, ::Java::Int] }
-    # 
     # @throws NullPointerException {@inheritDoc}
     def index_of(str, from_index)
       return String.index_of(self.attr_value, 0, self.attr_count, str.to_char_array, 0, str.length, from_index)
     end
     
     typesig { [String] }
-    # 
     # @throws NullPointerException {@inheritDoc}
     def last_index_of(str)
       return last_index_of(str, self.attr_count)
     end
     
     typesig { [String, ::Java::Int] }
-    # 
     # @throws NullPointerException {@inheritDoc}
     def last_index_of(str, from_index)
       return String.last_index_of(self.attr_value, 0, self.attr_count, str.to_char_array, 0, str.length, from_index)
@@ -463,7 +428,6 @@ module Java::Lang
     end
     
     typesig { [Java::Io::ObjectOutputStream] }
-    # 
     # Save the state of the <tt>StringBuilder</tt> instance to a stream
     # (that is, serialize it).
     # 
@@ -480,7 +444,6 @@ module Java::Lang
     end
     
     typesig { [Java::Io::ObjectInputStream] }
-    # 
     # readObject is called to restore the state of the StringBuffer from
     # a stream.
     def read_object(s)

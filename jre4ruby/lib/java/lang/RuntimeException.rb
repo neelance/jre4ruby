@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 1995-2000 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -30,7 +29,6 @@ module Java::Lang
     }
   end
   
-  # 
   # <code>RuntimeException</code> is the superclass of those
   # exceptions that can be thrown during the normal operation of the
   # Java Virtual Machine.
@@ -70,7 +68,6 @@ module Java::Lang
     end
     
     typesig { [String, Exception] }
-    # 
     # Constructs a new runtime exception with the specified detail message and
     # cause.  <p>Note that the detail message associated with
     # <code>cause</code> is <i>not</i> automatically incorporated in

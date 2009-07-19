@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 1996-2002 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -82,7 +81,6 @@ module Sun::Security::Pkcs
     include_class_members PKCS10Imports
     
     typesig { [PublicKey] }
-    # 
     # Constructs an unsigned PKCS #10 certificate request.  Before this
     # request may be used, it must be encoded and signed.  Then it
     # must be retrieved in some conventional format (e.g. string).
@@ -99,7 +97,6 @@ module Sun::Security::Pkcs
     end
     
     typesig { [PublicKey, PKCS10Attributes] }
-    # 
     # Constructs an unsigned PKCS #10 certificate request.  Before this
     # request may be used, it must be encoded and signed.  Then it
     # must be retrieved in some conventional format (e.g. string).
@@ -118,7 +115,6 @@ module Sun::Security::Pkcs
     end
     
     typesig { [Array.typed(::Java::Byte)] }
-    # 
     # Parses an encoded, signed PKCS #10 certificate request, verifying
     # the request's signature as it does so.  This constructor would
     # typically be used by a Certificate Authority, from which a new
@@ -140,7 +136,6 @@ module Sun::Security::Pkcs
       sig_data = nil
       sig = nil
       @encoded = data
-      # 
       # Outer sequence:  request, signature algorithm, signature.
       # Parse, and prepare to verify later.
       in_ = DerInputStream.new(data)
@@ -151,7 +146,6 @@ module Sun::Security::Pkcs
       data = seq[0].to_byte_array # reusing this variable
       id = AlgorithmId.parse(seq[1])
       sig_data = seq[2].get_bit_string
-      # 
       # Inner sequence:  version, name, key, attributes
       serial = nil
       val = nil
@@ -170,7 +164,6 @@ module Sun::Security::Pkcs
       if (!(seq[0].attr_data.available).equal?(0))
         raise IllegalArgumentException.new("illegal PKCS #10 data")
       end
-      # 
       # OK, we parsed it all ... validate the signature using the
       # key and signature algorithm we found.
       begin
@@ -186,7 +179,6 @@ module Sun::Security::Pkcs
     end
     
     typesig { [X500Signer] }
-    # 
     # Create the signed certificate request.  This will later be
     # retrieved in either string or binary format.
     # 
@@ -204,7 +196,6 @@ module Sun::Security::Pkcs
         raise SignatureException.new("request is already signed")
       end
       @subject = requester.get_signer
-      # 
       # Encode cert request info, wrap in a sequence for signing
       scratch = DerOutputStream.new
       scratch.put_integer(BigInteger::ZERO) # PKCS #10 v1.0
@@ -215,15 +206,12 @@ module Sun::Security::Pkcs
       out.write(DerValue.attr_tag_sequence, scratch) # wrap it!
       certificate_request_info = out.to_byte_array
       scratch = out
-      # 
       # Sign it ...
       requester.update(certificate_request_info, 0, certificate_request_info.attr_length)
       sig = requester.sign
-      # 
       # Build guts of SIGNED macro
       requester.get_algorithm_id.encode(scratch) # sig algorithm
       scratch.put_bit_string(sig) # sig
-      # 
       # Wrap those guts in a sequence
       out = DerOutputStream.new
       out.write(DerValue.attr_tag_sequence, scratch)
@@ -231,28 +219,24 @@ module Sun::Security::Pkcs
     end
     
     typesig { [] }
-    # 
     # Returns the subject's name.
     def get_subject_name
       return @subject
     end
     
     typesig { [] }
-    # 
     # Returns the subject's public key.
     def get_subject_public_key_info
       return @subject_public_key_info
     end
     
     typesig { [] }
-    # 
     # Returns the additional attributes requested.
     def get_attributes
       return @attribute_set
     end
     
     typesig { [] }
-    # 
     # Returns the encoded and signed certificate request as a
     # DER-encoded byte array.
     # 
@@ -267,7 +251,6 @@ module Sun::Security::Pkcs
     end
     
     typesig { [PrintStream] }
-    # 
     # Prints an E-Mailable version of the certificate request on the print
     # stream passed.  The format is a common base64 encoded one, supported
     # by most Certificate Authorities because Netscape web servers have
@@ -291,14 +274,12 @@ module Sun::Security::Pkcs
     end
     
     typesig { [] }
-    # 
     # Provides a short description of this request.
     def to_s
       return "[PKCS #10 certificate request:\n" + (@subject_public_key_info.to_s).to_s + " subject: <" + (@subject).to_s + ">" + "\n" + " attributes: " + (@attribute_set.to_s).to_s + "\n]"
     end
     
     typesig { [Object] }
-    # 
     # Compares this object for equality with the specified
     # object. If the <code>other</code> object is an
     # <code>instanceof</code> <code>PKCS10</code>, then
@@ -327,7 +308,6 @@ module Sun::Security::Pkcs
     end
     
     typesig { [] }
-    # 
     # Returns a hashcode value for this certificate request from its
     # encoded form.
     # 

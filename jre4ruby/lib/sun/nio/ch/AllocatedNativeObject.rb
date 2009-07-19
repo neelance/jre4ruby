@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 2000-2001 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -38,7 +37,6 @@ module Sun::Nio::Ch
     include_class_members AllocatedNativeObjectImports
     
     typesig { [::Java::Int, ::Java::Boolean] }
-    # 
     # Allocates a memory area of at least <tt>size</tt> bytes outside of the
     # Java heap and creates a native object for that area.
     # 
@@ -56,7 +54,6 @@ module Sun::Nio::Ch
     end
     
     typesig { [] }
-    # 
     # Frees the native memory area associated with this object.
     def free
       synchronized(self) do

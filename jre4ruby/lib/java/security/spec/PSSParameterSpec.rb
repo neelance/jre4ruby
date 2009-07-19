@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 2001-2006 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -33,7 +32,6 @@ module Java::Security::Spec
     }
   end
   
-  # 
   # This class specifies a parameter spec for RSA-PSS signature scheme,
   # as defined in the
   # <a href="http://www.ietf.org/rfc/rfc3447.txt">PKCS#1 v2.1</a>
@@ -113,7 +111,6 @@ module Java::Security::Spec
     undef_method :trailer_field=
     
     class_module.module_eval {
-      # 
       # The PSS parameter set with all default values.
       # @since 1.5
       const_set_lazy(:DEFAULT) { PSSParameterSpec.new }
@@ -121,7 +118,6 @@ module Java::Security::Spec
     }
     
     typesig { [] }
-    # 
     # Constructs a new <code>PSSParameterSpec</code> as defined in
     # the PKCS #1 standard using the default values.
     def initialize
@@ -133,7 +129,6 @@ module Java::Security::Spec
     end
     
     typesig { [String, String, AlgorithmParameterSpec, ::Java::Int, ::Java::Int] }
-    # 
     # Creates a new <code>PSSParameterSpec</code> as defined in
     # the PKCS #1 standard using the specified message digest,
     # mask generation function, parameters for mask generation
@@ -178,7 +173,6 @@ module Java::Security::Spec
     end
     
     typesig { [::Java::Int] }
-    # 
     # Creates a new <code>PSSParameterSpec</code>
     # using the specified salt length and other default values as
     # defined in PKCS#1.
@@ -200,7 +194,6 @@ module Java::Security::Spec
     end
     
     typesig { [] }
-    # 
     # Returns the message digest algorithm name.
     # 
     # @return the message digest algorithm name.
@@ -210,7 +203,6 @@ module Java::Security::Spec
     end
     
     typesig { [] }
-    # 
     # Returns the mask generation function algorithm name.
     # 
     # @return the mask generation function algorithm name.
@@ -221,7 +213,6 @@ module Java::Security::Spec
     end
     
     typesig { [] }
-    # 
     # Returns the parameters for the mask generation function.
     # 
     # @return the parameters for the mask generation function.
@@ -231,7 +222,6 @@ module Java::Security::Spec
     end
     
     typesig { [] }
-    # 
     # Returns the salt length in bits.
     # 
     # @return the salt length.
@@ -240,7 +230,6 @@ module Java::Security::Spec
     end
     
     typesig { [] }
-    # 
     # Returns the value for the trailer field, i.e. bc in PKCS#1 v2.1.
     # 
     # @return the value for the trailer field, i.e. bc in PKCS#1 v2.1.

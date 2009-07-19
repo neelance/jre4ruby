@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 1996-2006 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -70,7 +69,6 @@ module Sun::Security::Util
     }
     
     typesig { [String] }
-    # 
     # Constructs an object identifier from a string.  This string
     # should be of the form 1.23.34.45.56 etc.
     def initialize(oid)
@@ -107,7 +105,6 @@ module Sun::Security::Util
     end
     
     typesig { [Array.typed(::Java::Int), ::Java::Int] }
-    # 
     # Check if the values make a legal OID. There must be at least 2
     # components and they must be all non-negative. The first component
     # should be 0,1 or 2. When the first component is 0 or 1, the
@@ -138,7 +135,6 @@ module Sun::Security::Util
     end
     
     typesig { [Array.typed(::Java::Int)] }
-    # 
     # Constructs an object ID from an array of integers.  This
     # is used to construct constant object IDs.
     def initialize(values)
@@ -151,7 +147,6 @@ module Sun::Security::Util
     end
     
     typesig { [DerInputStream] }
-    # 
     # Constructs an object ID from an ASN.1 encoded input stream.
     # The encoding of the ID in the stream uses "DER", a BER/1 subset.
     # In this case, that means a triple { typeId, length, data }.
@@ -167,7 +162,6 @@ module Sun::Security::Util
       @string_form = nil
       type_id = 0
       buffer_end = 0
-      # 
       # Object IDs are a "universal" type, and their tag needs only
       # one byte of encoding.  Verify that the tag of this datum
       # is that of an object ID.
@@ -187,7 +181,6 @@ module Sun::Security::Util
     end
     
     typesig { [DerInputBuffer] }
-    # 
     # Build the OID from the rest of a DER input buffer; the tag
     # and length have been removed/verified
     def initialize(buf)
@@ -198,7 +191,6 @@ module Sun::Security::Util
     end
     
     typesig { [Array.typed(::Java::Int), ::Java::Boolean] }
-    # 
     # Private constructor for use by newInternal(). Dummy argument
     # to avoid clash with the public constructor.
     def initialize(components, dummy)
@@ -211,7 +203,6 @@ module Sun::Security::Util
     
     class_module.module_eval {
       typesig { [Array.typed(::Java::Int)] }
-      # 
       # Create a new ObjectIdentifier for internal use. The values are
       # neither checked nor cloned.
       def new_internal(values)
@@ -220,11 +211,9 @@ module Sun::Security::Util
     }
     
     typesig { [DerInputStream, ::Java::Int] }
-    # 
     # Helper function -- get the OID from a stream, after tag and
     # length are verified.
     def init_from_encoding(in_, buffer_end)
-      # 
       # Now get the components ("sub IDs") one at a time.  We fill a
       # temporary buffer, resizing it as needed.
       component = 0
@@ -239,7 +228,6 @@ module Sun::Security::Util
         if (first_subid)
           x = 0
           y = 0
-          # 
           # NOTE:  the allocation quantum is large enough that we know
           # we don't have to reallocate here!
           if (component < 40)
@@ -257,7 +245,6 @@ module Sun::Security::Util
           @component_len = 2
           first_subid = false
         else
-          # 
           # Other components are encoded less exotically.  The only
           # potential trouble is the need to grow the array.
           if (@component_len >= @components.attr_length)
@@ -270,7 +257,6 @@ module Sun::Security::Util
         end
       end
       check_valid_oid(@components, @component_len)
-      # 
       # Final sanity check -- if we didn't use exactly the number of bytes
       # specified, something's quite wrong.
       if (!(in_.available).equal?(buffer_end))
@@ -279,7 +265,6 @@ module Sun::Security::Util
     end
     
     typesig { [DerOutputStream] }
-    # 
     # n.b. the only public interface is DerOutputStream.putOID()
     def encode(out)
       bytes = DerOutputStream.new
@@ -297,7 +282,6 @@ module Sun::Security::Util
         put_component(bytes, @components[i])
         ((i += 1) - 1)
       end
-      # 
       # Now that we've constructed the component, encode
       # it in the stream we were given.
       out.write(DerValue.attr_tag_object_id, bytes)
@@ -305,7 +289,6 @@ module Sun::Security::Util
     
     class_module.module_eval {
       typesig { [DerInputStream] }
-      # 
       # Tricky OID component parsing technique ... note that one bit
       # per octet is lost, this returns at most 28 bits of component.
       # Also, notice this parses in big-endian format.
@@ -328,7 +311,6 @@ module Sun::Security::Util
       end
       
       typesig { [DerOutputStream, ::Java::Int] }
-      # 
       # Reverse of the above routine.  Notice it needs to emit in
       # big-endian form, so it buffers the output until it's ready.
       # (Minimum length encoding is a DER requirement.)
@@ -385,14 +367,12 @@ module Sun::Security::Util
     end
     
     typesig { [ObjectIdentifier] }
-    # 
     # @deprecated Use equals((Object)oid)
     def equals(other)
       return equals(other)
     end
     
     typesig { [Object] }
-    # 
     # Compares this identifier with another, for equality.
     # 
     # @return true iff the names are identical.
@@ -429,7 +409,6 @@ module Sun::Security::Util
     end
     
     typesig { [] }
-    # 
     # Returns a string form of the object ID.  The format is the
     # conventional "dot" notation for such IDs, without any
     # user-friendly descriptive strings, since those strings
@@ -452,7 +431,6 @@ module Sun::Security::Util
       return s
     end
     
-    # 
     # To simplify, we assume no individual component of an object ID is
     # larger than 32 bits.  Then we represent the path from the root as
     # an array that's (usually) only filled at the beginning.

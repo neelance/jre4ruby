@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 2003-2006 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -34,7 +33,6 @@ module Sun::Security::Rsa
     }
   end
   
-  # 
   # Provider class for the RSA signature provider. Supports RSA keyfactory,
   # keypair generation, and RSA signatures.
   # 

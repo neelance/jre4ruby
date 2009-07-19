@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 2000-2001 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -33,7 +32,6 @@ module Java::Nio::Channels
     }
   end
   
-  # 
   # A channel that can read bytes.
   # 
   # <p> Only one read operation upon a readable channel may be in progress at
@@ -52,7 +50,6 @@ module Java::Nio::Channels
     include Channel
     
     typesig { [ByteBuffer] }
-    # 
     # Reads a sequence of bytes from this channel into the given buffer.
     # 
     # <p> An attempt is made to read up to <i>r</i> bytes from the channel,

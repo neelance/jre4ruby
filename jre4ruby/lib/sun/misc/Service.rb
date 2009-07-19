@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 1999-2003 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -43,7 +42,6 @@ module Sun::Misc
     }
   end
   
-  # 
   # A simple service-provider lookup mechanism.  A <i>service</i> is a
   # well-known set of interfaces and (usually abstract) classes.  A <i>service
   # provider</i> is a specific implementation of a service.  The classes in a
@@ -158,7 +156,6 @@ module Sun::Misc
       end
       
       typesig { [Class, URL, BufferedReader, ::Java::Int, JavaList, JavaSet] }
-      # 
       # Parse a single line from the given configuration file, adding the name
       # on the line to both the names list and the returned set iff the name is
       # not already a member of the returned set.
@@ -198,7 +195,6 @@ module Sun::Misc
       end
       
       typesig { [Class, URL, JavaSet] }
-      # 
       # Parse the content of the given URL as a provider-configuration file.
       # 
       # @param  service
@@ -247,7 +243,6 @@ module Sun::Misc
         return names.iterator
       end
       
-      # 
       # Private inner class implementing fully-lazy provider lookup
       const_set_lazy(:LazyIterator) { Class.new do
         include_class_members Service
@@ -340,7 +335,7 @@ module Sun::Misc
           rescue ClassNotFoundException => x
             fail(@service, "Provider " + cn + " not found")
           rescue Exception => x
-            fail(@service, "Provider " + cn + " could not be instantiated: " + (x_).to_s, x_)
+            fail(@service, "Provider " + cn + " could not be instantiated: " + (x).to_s, x)
           end
           return nil
           # This cannot happen
@@ -356,7 +351,6 @@ module Sun::Misc
       end }
       
       typesig { [Class, ClassLoader] }
-      # 
       # Locates and incrementally instantiates the available providers of a
       # given service using the given class loader.
       # 
@@ -398,7 +392,6 @@ module Sun::Misc
       end
       
       typesig { [Class] }
-      # 
       # Locates and incrementally instantiates the available providers of a
       # given service using the context class loader.  This convenience method
       # is equivalent to
@@ -428,7 +421,6 @@ module Sun::Misc
       end
       
       typesig { [Class] }
-      # 
       # Locates and incrementally instantiates the available providers of a
       # given service using the extension class loader.  This convenience method
       # simply locates the extension class loader, call it

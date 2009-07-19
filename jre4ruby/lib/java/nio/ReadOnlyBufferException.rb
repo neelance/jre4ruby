@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 2000-2007 Sun Microsystems, Inc.  All Rights Reserved.
 # 
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
@@ -35,7 +34,6 @@ module Java::Nio
     }
   end
   
-  # 
   # Unchecked exception thrown when a content-mutation method such as
   # <tt>put</tt> or <tt>compact</tt> is invoked upon a read-only buffer.
   # 
@@ -49,7 +47,6 @@ module Java::Nio
     }
     
     typesig { [] }
-    # 
     # Constructs an instance of this class.
     def initialize
       super()

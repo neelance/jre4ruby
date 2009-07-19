@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 2000-2004 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -30,7 +29,6 @@ module Java::Lang
     }
   end
   
-  # 
   # An element in a stack trace, as returned by {@link
   # Throwable#getStackTrace()}.  Each element represents a single stack frame.
   # All stack frames except for the one at the top of the stack represent
@@ -71,7 +69,6 @@ module Java::Lang
     undef_method :line_number=
     
     typesig { [String, String, String, ::Java::Int] }
-    # 
     # Creates a stack trace element representing the specified execution
     # point.
     # 
@@ -108,7 +105,6 @@ module Java::Lang
     end
     
     typesig { [] }
-    # 
     # Returns the name of the source file containing the execution point
     # represented by this stack trace element.  Generally, this corresponds
     # to the <tt>SourceFile</tt> attribute of the relevant <tt>class</tt>
@@ -124,7 +120,6 @@ module Java::Lang
     end
     
     typesig { [] }
-    # 
     # Returns the line number of the source line containing the execution
     # point represented by this stack trace element.  Generally, this is
     # derived from the <tt>LineNumberTable</tt> attribute of the relevant
@@ -139,7 +134,6 @@ module Java::Lang
     end
     
     typesig { [] }
-    # 
     # Returns the fully qualified name of the class containing the
     # execution point represented by this stack trace element.
     # 
@@ -150,7 +144,6 @@ module Java::Lang
     end
     
     typesig { [] }
-    # 
     # Returns the name of the method containing the execution point
     # represented by this stack trace element.  If the execution point is
     # contained in an instance or class initializer, this method will return
@@ -165,7 +158,6 @@ module Java::Lang
     end
     
     typesig { [] }
-    # 
     # Returns true if the method containing the execution point
     # represented by this stack trace element is a native method.
     # 
@@ -176,7 +168,6 @@ module Java::Lang
     end
     
     typesig { [] }
-    # 
     # Returns a string representation of this stack trace element.  The
     # format of this string depends on the implementation, but the following
     # examples may be regarded as typical:
@@ -206,7 +197,6 @@ module Java::Lang
     end
     
     typesig { [Object] }
-    # 
     # Returns true if the specified object is another
     # <tt>StackTraceElement</tt> instance representing the same execution
     # point as this instance.  Two stack trace elements <tt>a</tt> and
@@ -247,7 +237,6 @@ module Java::Lang
     }
     
     typesig { [] }
-    # 
     # Returns a hash code value for this stack trace element.
     def hash_code
       result = 31 * @declaring_class.hash_code + @method_name.hash_code

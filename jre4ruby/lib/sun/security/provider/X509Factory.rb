@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 1998-2006 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -43,7 +42,6 @@ module Sun::Security::Provider
     }
   end
   
-  # 
   # This class defines a certificate factory for X.509 v3 certificates &
   # certification paths, and X.509 v2 certificate revocation lists (CRLs).
   # 
@@ -88,7 +86,6 @@ module Sun::Security::Provider
     }
     
     typesig { [InputStream] }
-    # 
     # Generates an X.509 certificate object and initializes it with
     # the data read from the input stream <code>is</code>.
     # 
@@ -122,19 +119,19 @@ module Sun::Security::Provider
           add_to_cache(CertCache, cert.get_encoded_internal, cert)
           return cert
         else
-          cert_ = nil
+          cert = nil
           # determine if binary or Base64 encoding. If Base64 encoding,
           # the certificate must be bounded at the beginning by
           # "-----BEGIN".
           if (is_base64(is))
             # Base64
             data = base64_to_binary(is)
-            cert_ = X509CertImpl.new(data)
+            cert = X509CertImpl.new(data)
           else
             # binary
-            cert_ = X509CertImpl.new(DerValue.new(is))
+            cert = X509CertImpl.new(DerValue.new(is))
           end
-          return intern(cert_)
+          return intern(cert)
         end
       rescue IOException => ioe
         raise CertificateException.new("Could not parse certificate: " + (ioe.to_s).to_s).init_cause(ioe)
@@ -143,7 +140,6 @@ module Sun::Security::Provider
     
     class_module.module_eval {
       typesig { [InputStream] }
-      # 
       # Read a DER SEQUENCE from an InputStream and return the encoding.
       # If data does not represent a SEQUENCE, it uses indefinite length
       # encoding, or is longer than ENC_MAX_LENGTH, the stream is reset
@@ -164,12 +160,12 @@ module Sun::Security::Provider
           total_length = value_length + 2
         else
           if ((i).equal?(0x81))
-            value_length_ = b[2] & 0xff
-            total_length = value_length_ + 3
+            value_length = b[2] & 0xff
+            total_length = value_length + 3
           else
             if ((i).equal?(0x82))
-              value_length__ = ((b[2] & 0xff) << 8) | (b[3] & 0xff)
-              total_length = value_length__ + 4
+              value_length = ((b[2] & 0xff) << 8) | (b[3] & 0xff)
+              total_length = value_length + 4
             else
               # ignore longer length forms
               in_.reset
@@ -202,7 +198,6 @@ module Sun::Security::Provider
       end
       
       typesig { [InputStream, Array.typed(::Java::Byte), ::Java::Int, ::Java::Int] }
-      # 
       # Read from the stream until length bytes have been read or EOF has
       # been reached. Return the number of bytes actually read.
       def read_fully(in_, buffer, offset, length)
@@ -220,7 +215,6 @@ module Sun::Security::Provider
       end
       
       typesig { [X509Certificate] }
-      # 
       # Return an interned X509CertImpl for the given certificate.
       # If the given X509Certificate or X509CertImpl is already present
       # in the cert cache, the cached object is returned. Otherwise,
@@ -260,7 +254,6 @@ module Sun::Security::Provider
       end
       
       typesig { [X509CRL] }
-      # 
       # Return an interned X509CRLImpl for the given certificate.
       # For more information, see intern(X509Certificate).
       def intern(c)
@@ -291,7 +284,6 @@ module Sun::Security::Provider
       end
       
       typesig { [Cache, Array.typed(::Java::Byte)] }
-      # 
       # Get the X509CertImpl or X509CRLImpl from the cache.
       def get_from_cache(cache, encoding)
         synchronized(self) do
@@ -302,7 +294,6 @@ module Sun::Security::Provider
       end
       
       typesig { [Cache, Array.typed(::Java::Byte), Object] }
-      # 
       # Add the X509CertImpl or X509CRLImpl to the cache.
       def add_to_cache(cache, encoding, value)
         synchronized(self) do
@@ -316,7 +307,6 @@ module Sun::Security::Provider
     }
     
     typesig { [InputStream] }
-    # 
     # Generates a <code>CertPath</code> object and initializes it with
     # the data read from the <code>InputStream</code> inStream. The data
     # is assumed to be in the default encoding.
@@ -353,7 +343,6 @@ module Sun::Security::Provider
     end
     
     typesig { [InputStream, String] }
-    # 
     # Generates a <code>CertPath</code> object and initializes it with
     # the data read from the <code>InputStream</code> inStream. The data
     # is assumed to be in the specified encoding.
@@ -392,7 +381,6 @@ module Sun::Security::Provider
     end
     
     typesig { [JavaList] }
-    # 
     # Generates a <code>CertPath</code> object and initializes it with
     # a <code>List</code> of <code>Certificate</code>s.
     # <p>
@@ -410,7 +398,6 @@ module Sun::Security::Provider
     end
     
     typesig { [] }
-    # 
     # Returns an iteration of the <code>CertPath</code> encodings supported
     # by this certificate factory, with the default encoding first.
     # <p>
@@ -426,7 +413,6 @@ module Sun::Security::Provider
     end
     
     typesig { [InputStream] }
-    # 
     # Returns a (possibly empty) collection view of X.509 certificates read
     # from the given input stream <code>is</code>.
     # 
@@ -452,7 +438,6 @@ module Sun::Security::Provider
     end
     
     typesig { [InputStream] }
-    # 
     # Generates an X.509 certificate revocation list (CRL) object and
     # initializes it with the data read from the given input stream
     # <code>is</code>.
@@ -486,19 +471,19 @@ module Sun::Security::Provider
           add_to_cache(CrlCache, crl.get_encoded_internal, crl)
           return crl
         else
-          crl_ = nil
+          crl = nil
           # determine if binary or Base64 encoding. If Base64 encoding,
           # the CRL must be bounded at the beginning by
           # "-----BEGIN".
           if (is_base64(is))
             # Base64
             data = base64_to_binary(is)
-            crl_ = X509CRLImpl.new(data)
+            crl = X509CRLImpl.new(data)
           else
             # binary
-            crl_ = X509CRLImpl.new(DerValue.new(is))
+            crl = X509CRLImpl.new(DerValue.new(is))
           end
-          return intern(crl_)
+          return intern(crl)
         end
       rescue IOException => ioe
         raise CRLException.new(ioe.get_message)
@@ -506,7 +491,6 @@ module Sun::Security::Provider
     end
     
     typesig { [InputStream] }
-    # 
     # Returns a (possibly empty) collection view of X.509 CRLs read
     # from the given input stream <code>is</code>.
     # 
@@ -532,7 +516,6 @@ module Sun::Security::Provider
     end
     
     typesig { [InputStream] }
-    # 
     # Parses the data in the given input stream as a sequence of DER
     # encoded X.509 certificates (in binary or base 64 encoded format) OR
     # as a single PKCS#7 encoded blob (in binary or base64 encoded format).
@@ -580,7 +563,6 @@ module Sun::Security::Provider
     end
     
     typesig { [InputStream] }
-    # 
     # Parses the data in the given input stream as a sequence of DER encoded
     # X.509 CRLs (in binary or base 64 encoded format) OR as a single PKCS#7
     # encoded blob (in binary or base 64 encoded format).
@@ -623,7 +605,6 @@ module Sun::Security::Provider
     end
     
     typesig { [InputStream] }
-    # 
     # Converts a Base64-encoded X.509 certificate or X.509 CRL or PKCS#7 data
     # to binary encoding.
     # In all cases, the data must be bounded at the beginning by
@@ -662,7 +643,6 @@ module Sun::Security::Provider
     end
     
     typesig { [InputStream] }
-    # 
     # Reads the entire input stream into a byte array.
     def get_total_bytes(is)
       buffer = Array.typed(::Java::Byte).new(8192) { 0 }
@@ -676,7 +656,6 @@ module Sun::Security::Provider
     end
     
     typesig { [InputStream] }
-    # 
     # Determines if input is binary or Base64 encoded.
     def is_base64(is)
       if (is.available >= 10)
@@ -703,7 +682,6 @@ module Sun::Security::Provider
     end
     
     typesig { [BufferedReader] }
-    # 
     # Read a line of text.  A line is considered to be terminated by any one
     # of a line feed ('\n'), a carriage return ('\r'), a carriage return
     # followed immediately by a linefeed, or an end-of-certificate marker.

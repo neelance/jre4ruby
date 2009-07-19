@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 2001-2005 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -394,8 +393,7 @@ module Sun::Nio::Ch
     end
     
     class_module.module_eval {
-      const_set_lazy(:DummyDatagramSocket) { # 
-      # A dummy implementation of DatagramSocketImpl that can be passed to the
+      const_set_lazy(:DummyDatagramSocket) { # A dummy implementation of DatagramSocketImpl that can be passed to the
       # DatagramSocket constructor so that no native resources are allocated in
       # super class.
       Class.new(DatagramSocketImpl.class == Class ? DatagramSocketImpl : Object) do

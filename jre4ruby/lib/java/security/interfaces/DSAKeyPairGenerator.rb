@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 1997-2005 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -32,7 +31,6 @@ module Java::Security::Interfaces
     }
   end
   
-  # 
   # An interface to an object capable of generating DSA key pairs.
   # 
   # <p>The <code>initialize</code> methods may each be called any number
@@ -72,7 +70,6 @@ module Java::Security::Interfaces
     include_class_members DSAKeyPairGeneratorImports
     
     typesig { [DSAParams, SecureRandom] }
-    # 
     # Initializes the key pair generator using the DSA family parameters
     # (p,q and g) and an optional SecureRandom bit source. If a
     # SecureRandom bit source is needed but not supplied, i.e. null, a
@@ -90,7 +87,6 @@ module Java::Security::Interfaces
     end
     
     typesig { [::Java::Int, ::Java::Boolean, SecureRandom] }
-    # 
     # Initializes the key pair generator for a given modulus length
     # (instead of parameters), and an optional SecureRandom bit source.
     # If a SecureRandom bit source is needed but not supplied, i.e.

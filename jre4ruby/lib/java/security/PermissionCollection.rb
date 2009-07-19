@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 1997-2006 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -32,7 +31,6 @@ module Java::Security
     }
   end
   
-  # 
   # Abstract class representing a collection of Permission objects.
   # 
   # <p>With a PermissionCollection, you can:
@@ -112,7 +110,6 @@ module Java::Security
     undef_method :read_only=
     
     typesig { [Permission] }
-    # 
     # Adds a permission object to the current collection of permission objects.
     # 
     # @param permission the Permission object to add.
@@ -124,7 +121,6 @@ module Java::Security
     end
     
     typesig { [Permission] }
-    # 
     # Checks to see if the specified permission is implied by
     # the collection of Permission objects held in this PermissionCollection.
     # 
@@ -137,7 +133,6 @@ module Java::Security
     end
     
     typesig { [] }
-    # 
     # Returns an enumeration of all the Permission objects in the collection.
     # 
     # @return an enumeration of all the Permissions.
@@ -146,7 +141,6 @@ module Java::Security
     end
     
     typesig { [] }
-    # 
     # Marks this PermissionCollection object as "readonly". After
     # a PermissionCollection object
     # is marked as readonly, no new Permission objects can be added to it
@@ -156,7 +150,6 @@ module Java::Security
     end
     
     typesig { [] }
-    # 
     # Returns true if this PermissionCollection object is marked as readonly.
     # If it is readonly, no new Permission objects can be added to it
     # using <code>add</code>.
@@ -171,7 +164,6 @@ module Java::Security
     end
     
     typesig { [] }
-    # 
     # Returns a string describing this PermissionCollection object,
     # providing information about all the permissions it contains.
     # The format is:

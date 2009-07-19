@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 1996-2006 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -31,7 +30,6 @@ module Java::Security
     }
   end
   
-  # 
   # The Key interface is the top-level interface for all keys. It
   # defines the functionality shared by all key objects. All keys
   # have three characteristics:
@@ -119,7 +117,6 @@ module Java::Security
     }
     
     typesig { [] }
-    # 
     # Returns the standard algorithm name for this key. For
     # example, "DSA" would indicate that this key is a DSA key.
     # See Appendix A in the <a href=
@@ -133,7 +130,6 @@ module Java::Security
     end
     
     typesig { [] }
-    # 
     # Returns the name of the primary encoding format of this key,
     # or null if this key does not support encoding.
     # The primary encoding format is
@@ -154,7 +150,6 @@ module Java::Security
     end
     
     typesig { [] }
-    # 
     # Returns the key in its primary encoding format, or null
     # if this key does not support encoding.
     # 

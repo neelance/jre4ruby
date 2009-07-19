@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 1995-2000 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -31,7 +30,6 @@ module Java::Io
     }
   end
   
-  # 
   # Signals that an end of file or end of stream has been reached
   # unexpectedly during input.
   # <p>
@@ -48,7 +46,6 @@ module Java::Io
     include_class_members EOFExceptionImports
     
     typesig { [] }
-    # 
     # Constructs an <code>EOFException</code> with <code>null</code>
     # as its error detail message.
     def initialize
@@ -56,7 +53,6 @@ module Java::Io
     end
     
     typesig { [String] }
-    # 
     # Constructs an <code>EOFException</code> with the specified detail
     # message. The string <code>s</code> may later be retrieved by the
     # <code>{@link java.lang.Throwable#getMessage}</code> method of class

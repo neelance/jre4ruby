@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 2005-2007 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -35,7 +34,6 @@ module Sun::Net::Httpserver
     }
   end
   
-  # 
   # a class which allows the caller to write an arbitrary
   # number of bytes to an underlying stream.
   # normal close() does not close the underlying stream
@@ -150,7 +148,6 @@ module Sun::Net::Httpserver
     end
     
     typesig { [] }
-    # 
     # write out a chunk , and reset the pointers
     # chunk does not have to be CHUNK_SIZE bytes
     # count must == number of user bytes (<= CHUNK_SIZE)
@@ -192,8 +189,8 @@ module Sun::Net::Httpserver
       ensure
         @closed = true
       end
-      e_ = WriteFinishedEvent.new(@t)
-      @t.get_http_context.get_server_impl.add_event(e_)
+      e = WriteFinishedEvent.new(@t)
+      @t.get_http_context.get_server_impl.add_event(e)
     end
     
     typesig { [] }

@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 1997-2006 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -31,7 +30,6 @@ module Java::Util
     }
   end
   
-  # 
   # An object that maps keys to values.  A map cannot contain duplicate keys;
   # each key can map to at most one value.
   # 
@@ -135,7 +133,6 @@ module Java::Util
     end
     
     typesig { [] }
-    # 
     # Returns <tt>true</tt> if this map contains no key-value mappings.
     # 
     # @return <tt>true</tt> if this map contains no key-value mappings
@@ -144,7 +141,6 @@ module Java::Util
     end
     
     typesig { [Object] }
-    # 
     # Returns <tt>true</tt> if this map contains a mapping for the specified
     # key.  More formally, returns <tt>true</tt> if and only if
     # this map contains a mapping for a key <tt>k</tt> such that
@@ -163,7 +159,6 @@ module Java::Util
     end
     
     typesig { [Object] }
-    # 
     # Returns <tt>true</tt> if this map maps one or more keys to the
     # specified value.  More formally, returns <tt>true</tt> if and only if
     # this map contains at least one mapping to a value <tt>v</tt> such that
@@ -183,7 +178,6 @@ module Java::Util
     end
     
     typesig { [Object] }
-    # 
     # Returns the value to which the specified key is mapped,
     # or {@code null} if this map contains no mapping for the key.
     # 
@@ -239,7 +233,6 @@ module Java::Util
     end
     
     typesig { [Object] }
-    # 
     # Removes the mapping for a key from this map if it is present
     # (optional operation).   More formally, if this map contains a mapping
     # from key <tt>k</tt> to value <tt>v</tt> such that
@@ -295,7 +288,6 @@ module Java::Util
     end
     
     typesig { [] }
-    # 
     # Removes all of the mappings from this map (optional operation).
     # The map will be empty after this call returns.
     # 
@@ -326,7 +318,6 @@ module Java::Util
     end
     
     typesig { [] }
-    # 
     # Returns a {@link Collection} view of the values contained in this map.
     # The collection is backed by the map, so changes to the map are
     # reflected in the collection, and vice-versa.  If the map is
@@ -345,7 +336,6 @@ module Java::Util
     end
     
     typesig { [] }
-    # 
     # Returns a {@link Set} view of the mappings contained in this map.
     # The set is backed by the map, so changes to the map are
     # reflected in the set, and vice-versa.  If the map is modified
@@ -365,7 +355,6 @@ module Java::Util
     end
     
     class_module.module_eval {
-      # 
       # A map entry (key-value pair).  The <tt>Map.entrySet</tt> method returns
       # a collection-view of the map, whose elements are of this class.  The
       # <i>only</i> way to obtain a reference to a map entry is from the
@@ -381,7 +370,6 @@ module Java::Util
         include_class_members Map
         
         typesig { [] }
-        # 
         # Returns the key corresponding to this entry.
         # 
         # @return the key corresponding to this entry
@@ -393,7 +381,6 @@ module Java::Util
         end
         
         typesig { [] }
-        # 
         # Returns the value corresponding to this entry.  If the mapping
         # has been removed from the backing map (by the iterator's
         # <tt>remove</tt> operation), the results of this call are undefined.
@@ -407,7 +394,6 @@ module Java::Util
         end
         
         typesig { [Object] }
-        # 
         # Replaces the value corresponding to this entry with the specified
         # value (optional operation).  (Writes through to the map.)  The
         # behavior of this call is undefined if the mapping has already been
@@ -431,7 +417,6 @@ module Java::Util
         end
         
         typesig { [Object] }
-        # 
         # Compares the specified object with this entry for equality.
         # Returns <tt>true</tt> if the given object is also a map entry and
         # the two entries represent the same mapping.  More formally, two
@@ -453,7 +438,6 @@ module Java::Util
         end
         
         typesig { [] }
-        # 
         # Returns the hash code value for this map entry.  The hash code
         # of a map entry <tt>e</tt> is defined to be: <pre>
         # (e.getKey()==null   ? 0 : e.getKey().hashCode()) ^
@@ -492,7 +476,6 @@ module Java::Util
     end
     
     typesig { [] }
-    # 
     # Returns the hash code value for this map.  The hash code of a map is
     # defined to be the sum of the hash codes of each entry in the map's
     # <tt>entrySet()</tt> view.  This ensures that <tt>m1.equals(m2)</tt>

@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 1996-2007 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -35,7 +34,6 @@ module Java::Net
     }
   end
   
-  # 
   # A URLConnection with support for HTTP-specific features. See
   # <A HREF="http://www.w3.org/pub/WWW/Protocols/"> the spec </A> for
   # details.
@@ -64,7 +62,6 @@ module Java::Net
     alias_method :attr_method=, :method=
     undef_method :method=
     
-    # 
     # The chunk-length when using chunked encoding streaming mode for output.
     # A value of <code>-1</code> means chunked encoding is disabled for output.
     # @since 1.5
@@ -74,7 +71,6 @@ module Java::Net
     alias_method :attr_chunk_length=, :chunk_length=
     undef_method :chunk_length=
     
-    # 
     # The fixed content-length when using fixed-length streaming mode.
     # A value of <code>-1</code> means fixed-length streaming mode is disabled
     # for output.
@@ -86,7 +82,6 @@ module Java::Net
     undef_method :fixed_content_length=
     
     typesig { [::Java::Int] }
-    # 
     # Returns the key for the <code>n</code><sup>th</sup> header field.
     # Some implementations may treat the <code>0</code><sup>th</sup>
     # header field as special, i.e. as the status line returned by the HTTP
@@ -101,7 +96,6 @@ module Java::Net
     end
     
     typesig { [::Java::Int] }
-    # 
     # This method is used to enable streaming of a HTTP request body
     # without internal buffering, when the content length is known in
     # advance.
@@ -152,7 +146,6 @@ module Java::Net
     }
     
     typesig { [::Java::Int] }
-    # 
     # This method is used to enable streaming of a HTTP request body
     # without internal buffering, when the content length is <b>not</b>
     # known in advance. In this mode, chunked transfer encoding
@@ -187,7 +180,6 @@ module Java::Net
     end
     
     typesig { [::Java::Int] }
-    # 
     # Returns the value for the <code>n</code><sup>th</sup> header field.
     # Some implementations may treat the <code>0</code><sup>th</sup>
     # header field as special, i.e. as the status line returned by the HTTP
@@ -205,7 +197,6 @@ module Java::Net
       return nil
     end
     
-    # 
     # An <code>int</code> representing the three digit HTTP Status-Code.
     # <ul>
     # <li> 1xx: Informational
@@ -220,7 +211,6 @@ module Java::Net
     alias_method :attr_response_code=, :response_code=
     undef_method :response_code=
     
-    # 
     # The HTTP response message.
     attr_accessor :response_message
     alias_method :attr_response_message, :response_message
@@ -243,7 +233,6 @@ module Java::Net
       alias_method :attr_follow_redirects=, :follow_redirects=
     }
     
-    # 
     # If <code>true</code>, the protocol will automatically follow redirects.
     # If <code>false</code>, the protocol will not automatically follow
     # redirects.
@@ -271,7 +260,6 @@ module Java::Net
     }
     
     typesig { [URL] }
-    # 
     # Constructor for the HttpURLConnection.
     # @param u the URL
     def initialize(u)
@@ -292,7 +280,6 @@ module Java::Net
     
     class_module.module_eval {
       typesig { [::Java::Boolean] }
-      # 
       # Sets whether HTTP redirects  (requests with response code 3xx) should
       # be automatically followed by this class.  True by default.  Applets
       # cannot change this variable.
@@ -319,7 +306,6 @@ module Java::Net
       end
       
       typesig { [] }
-      # 
       # Returns a <code>boolean</code> indicating
       # whether or not HTTP redirects (3xx) should
       # be automatically followed.
@@ -333,7 +319,6 @@ module Java::Net
     }
     
     typesig { [::Java::Boolean] }
-    # 
     # Sets whether HTTP redirects (requests with response code 3xx) should
     # be automatically followed by this <code>HttpURLConnection</code>
     # instance.
@@ -352,7 +337,6 @@ module Java::Net
     end
     
     typesig { [] }
-    # 
     # Returns the value of this <code>HttpURLConnection</code>'s
     # <code>instanceFollowRedirects</code> field.
     # 
@@ -366,7 +350,6 @@ module Java::Net
     end
     
     typesig { [String] }
-    # 
     # Set the method for the URL request, one of:
     # <UL>
     # <LI>GET
@@ -403,7 +386,6 @@ module Java::Net
     end
     
     typesig { [] }
-    # 
     # Get the request method.
     # @return the HTTP request method
     # @see #setRequestMethod(java.lang.String)
@@ -412,7 +394,6 @@ module Java::Net
     end
     
     typesig { [] }
-    # 
     # Gets the status code from an HTTP response message.
     # For example, in the case of the following status lines:
     # <PRE>
@@ -425,12 +406,10 @@ module Java::Net
     # @throws IOException if an error occurred connecting to the server.
     # @return the HTTP Status-Code, or -1
     def get_response_code
-      # 
       # We're got the response code already
       if (!(@response_code).equal?(-1))
         return @response_code
       end
-      # 
       # Ensure that we have connected to the server. Record
       # exception as we need to re-throw it if there isn't
       # a status line.
@@ -440,7 +419,6 @@ module Java::Net
       rescue Exception => e
         exc = e
       end
-      # 
       # If we can't a status-line then re-throw any exception
       # that getInputStream threw.
       status_line = get_header_field(0)
@@ -454,7 +432,6 @@ module Java::Net
         end
         return -1
       end
-      # 
       # Examine the status-line - should be formatted as per
       # section 6.1 of RFC 2616 :-
       # 
@@ -484,7 +461,6 @@ module Java::Net
     end
     
     typesig { [] }
-    # 
     # Gets the HTTP response message, if any, returned along with the
     # response code from a server.  From responses like:
     # <PRE>
@@ -515,7 +491,6 @@ module Java::Net
     end
     
     typesig { [] }
-    # 
     # Indicates that other requests to the server
     # are unlikely in the near future. Calling disconnect()
     # should not imply that this HttpURLConnection
@@ -525,7 +500,6 @@ module Java::Net
     end
     
     typesig { [] }
-    # 
     # Indicates if the connection is going through a proxy.
     # @return a boolean indicating if the connection is
     # using a proxy.
@@ -543,7 +517,6 @@ module Java::Net
     end
     
     typesig { [] }
-    # 
     # Returns the error stream if the connection failed
     # but the server sent useful data nonetheless. The
     # typical example is when an HTTP server responds
@@ -565,7 +538,6 @@ module Java::Net
     end
     
     class_module.module_eval {
-      # 
       # The response codes for HTTP, as of version 1.1.
       # 
       # REMIND: do we want all these??
@@ -576,32 +548,26 @@ module Java::Net
       const_set_lazy(:HTTP_OK) { 200 }
       const_attr_reader  :HTTP_OK
       
-      # 
       # HTTP Status-Code 201: Created.
       const_set_lazy(:HTTP_CREATED) { 201 }
       const_attr_reader  :HTTP_CREATED
       
-      # 
       # HTTP Status-Code 202: Accepted.
       const_set_lazy(:HTTP_ACCEPTED) { 202 }
       const_attr_reader  :HTTP_ACCEPTED
       
-      # 
       # HTTP Status-Code 203: Non-Authoritative Information.
       const_set_lazy(:HTTP_NOT_AUTHORITATIVE) { 203 }
       const_attr_reader  :HTTP_NOT_AUTHORITATIVE
       
-      # 
       # HTTP Status-Code 204: No Content.
       const_set_lazy(:HTTP_NO_CONTENT) { 204 }
       const_attr_reader  :HTTP_NO_CONTENT
       
-      # 
       # HTTP Status-Code 205: Reset Content.
       const_set_lazy(:HTTP_RESET) { 205 }
       const_attr_reader  :HTTP_RESET
       
-      # 
       # HTTP Status-Code 206: Partial Content.
       const_set_lazy(:HTTP_PARTIAL) { 206 }
       const_attr_reader  :HTTP_PARTIAL
@@ -612,27 +578,22 @@ module Java::Net
       const_set_lazy(:HTTP_MULT_CHOICE) { 300 }
       const_attr_reader  :HTTP_MULT_CHOICE
       
-      # 
       # HTTP Status-Code 301: Moved Permanently.
       const_set_lazy(:HTTP_MOVED_PERM) { 301 }
       const_attr_reader  :HTTP_MOVED_PERM
       
-      # 
       # HTTP Status-Code 302: Temporary Redirect.
       const_set_lazy(:HTTP_MOVED_TEMP) { 302 }
       const_attr_reader  :HTTP_MOVED_TEMP
       
-      # 
       # HTTP Status-Code 303: See Other.
       const_set_lazy(:HTTP_SEE_OTHER) { 303 }
       const_attr_reader  :HTTP_SEE_OTHER
       
-      # 
       # HTTP Status-Code 304: Not Modified.
       const_set_lazy(:HTTP_NOT_MODIFIED) { 304 }
       const_attr_reader  :HTTP_NOT_MODIFIED
       
-      # 
       # HTTP Status-Code 305: Use Proxy.
       const_set_lazy(:HTTP_USE_PROXY) { 305 }
       const_attr_reader  :HTTP_USE_PROXY
@@ -643,77 +604,62 @@ module Java::Net
       const_set_lazy(:HTTP_BAD_REQUEST) { 400 }
       const_attr_reader  :HTTP_BAD_REQUEST
       
-      # 
       # HTTP Status-Code 401: Unauthorized.
       const_set_lazy(:HTTP_UNAUTHORIZED) { 401 }
       const_attr_reader  :HTTP_UNAUTHORIZED
       
-      # 
       # HTTP Status-Code 402: Payment Required.
       const_set_lazy(:HTTP_PAYMENT_REQUIRED) { 402 }
       const_attr_reader  :HTTP_PAYMENT_REQUIRED
       
-      # 
       # HTTP Status-Code 403: Forbidden.
       const_set_lazy(:HTTP_FORBIDDEN) { 403 }
       const_attr_reader  :HTTP_FORBIDDEN
       
-      # 
       # HTTP Status-Code 404: Not Found.
       const_set_lazy(:HTTP_NOT_FOUND) { 404 }
       const_attr_reader  :HTTP_NOT_FOUND
       
-      # 
       # HTTP Status-Code 405: Method Not Allowed.
       const_set_lazy(:HTTP_BAD_METHOD) { 405 }
       const_attr_reader  :HTTP_BAD_METHOD
       
-      # 
       # HTTP Status-Code 406: Not Acceptable.
       const_set_lazy(:HTTP_NOT_ACCEPTABLE) { 406 }
       const_attr_reader  :HTTP_NOT_ACCEPTABLE
       
-      # 
       # HTTP Status-Code 407: Proxy Authentication Required.
       const_set_lazy(:HTTP_PROXY_AUTH) { 407 }
       const_attr_reader  :HTTP_PROXY_AUTH
       
-      # 
       # HTTP Status-Code 408: Request Time-Out.
       const_set_lazy(:HTTP_CLIENT_TIMEOUT) { 408 }
       const_attr_reader  :HTTP_CLIENT_TIMEOUT
       
-      # 
       # HTTP Status-Code 409: Conflict.
       const_set_lazy(:HTTP_CONFLICT) { 409 }
       const_attr_reader  :HTTP_CONFLICT
       
-      # 
       # HTTP Status-Code 410: Gone.
       const_set_lazy(:HTTP_GONE) { 410 }
       const_attr_reader  :HTTP_GONE
       
-      # 
       # HTTP Status-Code 411: Length Required.
       const_set_lazy(:HTTP_LENGTH_REQUIRED) { 411 }
       const_attr_reader  :HTTP_LENGTH_REQUIRED
       
-      # 
       # HTTP Status-Code 412: Precondition Failed.
       const_set_lazy(:HTTP_PRECON_FAILED) { 412 }
       const_attr_reader  :HTTP_PRECON_FAILED
       
-      # 
       # HTTP Status-Code 413: Request Entity Too Large.
       const_set_lazy(:HTTP_ENTITY_TOO_LARGE) { 413 }
       const_attr_reader  :HTTP_ENTITY_TOO_LARGE
       
-      # 
       # HTTP Status-Code 414: Request-URI Too Large.
       const_set_lazy(:HTTP_REQ_TOO_LONG) { 414 }
       const_attr_reader  :HTTP_REQ_TOO_LONG
       
-      # 
       # HTTP Status-Code 415: Unsupported Media Type.
       const_set_lazy(:HTTP_UNSUPPORTED_TYPE) { 415 }
       const_attr_reader  :HTTP_UNSUPPORTED_TYPE
@@ -725,32 +671,26 @@ module Java::Net
       const_set_lazy(:HTTP_SERVER_ERROR) { 500 }
       const_attr_reader  :HTTP_SERVER_ERROR
       
-      # 
       # HTTP Status-Code 500: Internal Server Error.
       const_set_lazy(:HTTP_INTERNAL_ERROR) { 500 }
       const_attr_reader  :HTTP_INTERNAL_ERROR
       
-      # 
       # HTTP Status-Code 501: Not Implemented.
       const_set_lazy(:HTTP_NOT_IMPLEMENTED) { 501 }
       const_attr_reader  :HTTP_NOT_IMPLEMENTED
       
-      # 
       # HTTP Status-Code 502: Bad Gateway.
       const_set_lazy(:HTTP_BAD_GATEWAY) { 502 }
       const_attr_reader  :HTTP_BAD_GATEWAY
       
-      # 
       # HTTP Status-Code 503: Service Unavailable.
       const_set_lazy(:HTTP_UNAVAILABLE) { 503 }
       const_attr_reader  :HTTP_UNAVAILABLE
       
-      # 
       # HTTP Status-Code 504: Gateway Timeout.
       const_set_lazy(:HTTP_GATEWAY_TIMEOUT) { 504 }
       const_attr_reader  :HTTP_GATEWAY_TIMEOUT
       
-      # 
       # HTTP Status-Code 505: HTTP Version Not Supported.
       const_set_lazy(:HTTP_VERSION) { 505 }
       const_attr_reader  :HTTP_VERSION

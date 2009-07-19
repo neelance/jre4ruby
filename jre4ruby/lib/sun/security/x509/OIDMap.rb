@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 1997-2005 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -36,7 +35,6 @@ module Sun::Security::X509
     }
   end
   
-  # 
   # This class defines the mapping from OID & name to classes and vice
   # versa.  Used by CertificateExtensions & PKCS10 to get the java
   # classes associated with a particular OID/name.
@@ -154,7 +152,6 @@ module Sun::Security::X509
       end
       
       typesig { [String, ObjectIdentifier, String] }
-      # 
       # Add attributes to the table. For internal use in the static
       # initializer.
       def add_internal(name, oid, class_name)
@@ -163,7 +160,6 @@ module Sun::Security::X509
         NameMap.put(name, info)
       end
       
-      # 
       # Inner class encapsulating the mapping info and Class loading.
       const_set_lazy(:OIDInfo) { Class.new do
         include_class_members OIDMap
@@ -216,7 +212,6 @@ module Sun::Security::X509
         end
         
         typesig { [] }
-        # 
         # Return the Class object associated with this attribute.
         def get_clazz
           begin
@@ -236,7 +231,6 @@ module Sun::Security::X509
       end }
       
       typesig { [String, String, Class] }
-      # 
       # Add a name to lookup table.
       # 
       # @param name the name of the attr
@@ -261,7 +255,6 @@ module Sun::Security::X509
       end
       
       typesig { [ObjectIdentifier] }
-      # 
       # Return user friendly name associated with the OID.
       # 
       # @param oid the name of the object identifier to be returned.
@@ -273,7 +266,6 @@ module Sun::Security::X509
       end
       
       typesig { [String] }
-      # 
       # Return Object identifier for user friendly name.
       # 
       # @param name the user friendly name.
@@ -285,7 +277,6 @@ module Sun::Security::X509
       end
       
       typesig { [String] }
-      # 
       # Return the java class object associated with the user friendly name.
       # 
       # @param name the user friendly name.
@@ -296,7 +287,6 @@ module Sun::Security::X509
       end
       
       typesig { [ObjectIdentifier] }
-      # 
       # Return the java class object associated with the object identifier.
       # 
       # @param oid the name of the object identifier to be returned.

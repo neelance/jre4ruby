@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 1996-2006 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -48,7 +47,6 @@ module Java::Util
     }
   end
   
-  # 
   # <code>PropertyResourceBundle</code> is a concrete subclass of
   # <code>ResourceBundle</code> that manages resources for a locale
   # using a set of static strings from a property file. See
@@ -120,7 +118,6 @@ module Java::Util
     include_class_members PropertyResourceBundleImports
     
     typesig { [InputStream] }
-    # 
     # Creates a property resource bundle from an {@link java.io.InputStream
     # InputStream}.  The property file read with this constructor
     # must be encoded in ISO-8859-1.
@@ -138,7 +135,6 @@ module Java::Util
     end
     
     typesig { [Reader] }
-    # 
     # Creates a property resource bundle from a {@link java.io.Reader
     # Reader}.  Unlike the constructor
     # {@link #PropertyResourceBundle(java.io.InputStream) PropertyResourceBundle(InputStream)},
@@ -167,7 +163,6 @@ module Java::Util
     end
     
     typesig { [] }
-    # 
     # Returns an <code>Enumeration</code> of the keys contained in
     # this <code>ResourceBundle</code> and its parent bundles.
     # 
@@ -180,7 +175,6 @@ module Java::Util
     end
     
     typesig { [] }
-    # 
     # Returns a <code>Set</code> of the keys contained
     # <em>only</em> in this <code>ResourceBundle</code>.
     # 

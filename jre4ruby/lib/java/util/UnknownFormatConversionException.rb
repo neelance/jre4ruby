@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 2003-2005 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -31,7 +30,6 @@ module Java::Util
     }
   end
   
-  # 
   # Unchecked exception thrown when an unknown conversion is given.
   # 
   # <p> Unless otherwise specified, passing a <tt>null</tt> argument to
@@ -54,7 +52,6 @@ module Java::Util
     undef_method :s=
     
     typesig { [String] }
-    # 
     # Constructs an instance of this class with the unknown conversion.
     # 
     # @param  s
@@ -69,7 +66,6 @@ module Java::Util
     end
     
     typesig { [] }
-    # 
     # Returns the unknown conversion.
     # 
     # @return  The unknown conversion.

@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 1996-1998 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -42,7 +41,6 @@ module Java::Text
     }
   end
   
-  # 
   # This is used for building contracting character tables.  entryName
   # is the contracting character name and value is its collation
   # order.

@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
 # This code is free software; you can redistribute it and/or modify it
@@ -40,7 +39,6 @@ module Java::Util
     }
   end
   
-  # 
   # Resizable-array implementation of the {@link Deque} interface.  Array
   # deques have no capacity restrictions; they grow as necessary to support
   # usage.  They are not thread-safe; in the absence of external
@@ -90,7 +88,6 @@ module Java::Util
     include Cloneable
     include Serializable
     
-    # 
     # The array in which the elements of the deque are stored.
     # The capacity of the deque is the length of this array, which is
     # always a power of two. The array is never allowed to become
@@ -105,7 +102,6 @@ module Java::Util
     alias_method :attr_elements=, :elements=
     undef_method :elements=
     
-    # 
     # The index of the element at the head of the deque (which is the
     # element that would be removed by remove() or pop()); or an
     # arbitrary number equal to tail if the deque is empty.
@@ -115,7 +111,6 @@ module Java::Util
     alias_method :attr_head=, :head=
     undef_method :head=
     
-    # 
     # The index at which the next element would be added to the tail
     # of the deque (via addLast(E), add(E), or push(E)).
     attr_accessor :tail
@@ -125,7 +120,6 @@ module Java::Util
     undef_method :tail=
     
     class_module.module_eval {
-      # 
       # The minimum capacity that we'll use for a newly created deque.
       # Must be a power of 2.
       const_set_lazy(:MIN_INITIAL_CAPACITY) { 8 }
@@ -159,7 +153,6 @@ module Java::Util
     end
     
     typesig { [] }
-    # 
     # Double the capacity of this deque.  Call only when full, i.e.,
     # when head and tail have wrapped around to become equal.
     def double_capacity
@@ -180,7 +173,6 @@ module Java::Util
     end
     
     typesig { [Array.typed(T)] }
-    # 
     # Copies the elements from our element array into the specified array,
     # in order (from first to last element in the deque).  It is assumed
     # that the array is large enough to hold all elements in the deque.
@@ -200,7 +192,6 @@ module Java::Util
     end
     
     typesig { [] }
-    # 
     # Constructs an empty array deque with an initial capacity
     # sufficient to hold 16 elements.
     def initialize
@@ -212,7 +203,6 @@ module Java::Util
     end
     
     typesig { [::Java::Int] }
-    # 
     # Constructs an empty array deque with an initial capacity
     # sufficient to hold the specified number of elements.
     # 
@@ -226,7 +216,6 @@ module Java::Util
     end
     
     typesig { [Collection] }
-    # 
     # Constructs a deque containing the elements of the specified
     # collection, in the order they are returned by the collection's
     # iterator.  (The first element returned by the collection's
@@ -264,7 +253,6 @@ module Java::Util
     end
     
     typesig { [Object] }
-    # 
     # Inserts the specified element at the end of this deque.
     # 
     # <p>This method is equivalent to {@link #add}.
@@ -282,7 +270,6 @@ module Java::Util
     end
     
     typesig { [Object] }
-    # 
     # Inserts the specified element at the front of this deque.
     # 
     # @param e the element to add
@@ -294,7 +281,6 @@ module Java::Util
     end
     
     typesig { [Object] }
-    # 
     # Inserts the specified element at the end of this deque.
     # 
     # @param e the element to add
@@ -306,7 +292,6 @@ module Java::Util
     end
     
     typesig { [] }
-    # 
     # @throws NoSuchElementException {@inheritDoc}
     def remove_first
       x = poll_first
@@ -317,7 +302,6 @@ module Java::Util
     end
     
     typesig { [] }
-    # 
     # @throws NoSuchElementException {@inheritDoc}
     def remove_last
       x = poll_last
@@ -352,7 +336,6 @@ module Java::Util
     end
     
     typesig { [] }
-    # 
     # @throws NoSuchElementException {@inheritDoc}
     def get_first
       x = @elements[@head]
@@ -363,7 +346,6 @@ module Java::Util
     end
     
     typesig { [] }
-    # 
     # @throws NoSuchElementException {@inheritDoc}
     def get_last
       x = @elements[(@tail - 1) & (@elements.attr_length - 1)]
@@ -384,7 +366,6 @@ module Java::Util
     end
     
     typesig { [Object] }
-    # 
     # Removes the first occurrence of the specified element in this
     # deque (when traversing the deque from head to tail).
     # If the deque does not contain the element, it is unchanged.
@@ -413,7 +394,6 @@ module Java::Util
     end
     
     typesig { [Object] }
-    # 
     # Removes the last occurrence of the specified element in this
     # deque (when traversing the deque from head to tail).
     # If the deque does not contain the element, it is unchanged.
@@ -457,7 +437,6 @@ module Java::Util
     end
     
     typesig { [Object] }
-    # 
     # Inserts the specified element at the end of this deque.
     # 
     # <p>This method is equivalent to {@link #offerLast}.
@@ -470,7 +449,6 @@ module Java::Util
     end
     
     typesig { [] }
-    # 
     # Retrieves and removes the head of the queue represented by this deque.
     # 
     # This method differs from {@link #poll poll} only in that it throws an
@@ -485,7 +463,6 @@ module Java::Util
     end
     
     typesig { [] }
-    # 
     # Retrieves and removes the head of the queue represented by this deque
     # (in other words, the first element of this deque), or returns
     # <tt>null</tt> if this deque is empty.
@@ -499,7 +476,6 @@ module Java::Util
     end
     
     typesig { [] }
-    # 
     # Retrieves, but does not remove, the head of the queue represented by
     # this deque.  This method differs from {@link #peek peek} only in
     # that it throws an exception if this deque is empty.
@@ -513,7 +489,6 @@ module Java::Util
     end
     
     typesig { [] }
-    # 
     # Retrieves, but does not remove, the head of the queue represented by
     # this deque, or returns <tt>null</tt> if this deque is empty.
     # 
@@ -540,7 +515,6 @@ module Java::Util
     end
     
     typesig { [] }
-    # 
     # Pops an element from the stack represented by this deque.  In other
     # words, removes and returns the first element of this deque.
     # 
@@ -561,7 +535,6 @@ module Java::Util
     end
     
     typesig { [::Java::Int] }
-    # 
     # Removes the element at the specified position in the elements array,
     # adjusting head and tail as necessary.  This can result in motion of
     # elements backwards or forwards in the array.
@@ -622,7 +595,6 @@ module Java::Util
     end
     
     typesig { [] }
-    # 
     # Returns <tt>true</tt> if this deque contains no elements.
     # 
     # @return <tt>true</tt> if this deque contains no elements
@@ -631,7 +603,6 @@ module Java::Util
     end
     
     typesig { [] }
-    # 
     # Returns an iterator over the elements in this deque.  The elements
     # will be ordered from first (head) to last (tail).  This is the same
     # order that elements would be dequeued (via successive calls to
@@ -653,7 +624,6 @@ module Java::Util
         include_class_members ArrayDeque
         include Iterator
         
-        # 
         # Index of element to be returned by subsequent call to next.
         attr_accessor :cursor
         alias_method :attr_cursor, :cursor
@@ -661,7 +631,6 @@ module Java::Util
         alias_method :attr_cursor=, :cursor=
         undef_method :cursor=
         
-        # 
         # Tail recorded at construction (also in remove), to stop
         # iterator and also to check for comodification.
         attr_accessor :fence
@@ -670,7 +639,6 @@ module Java::Util
         alias_method :attr_fence=, :fence=
         undef_method :fence=
         
-        # 
         # Index of element returned by most recent call to next.
         # Reset to -1 if element is deleted by a call to remove.
         attr_accessor :last_ret
@@ -729,7 +697,6 @@ module Java::Util
         include_class_members ArrayDeque
         include Iterator
         
-        # 
         # This class is nearly a mirror-image of DeqIterator, using
         # tail instead of head for initial cursor, and head instead of
         # tail for fence.
@@ -795,7 +762,6 @@ module Java::Util
     }
     
     typesig { [Object] }
-    # 
     # Returns <tt>true</tt> if this deque contains the specified element.
     # More formally, returns <tt>true</tt> if and only if this deque contains
     # at least one element <tt>e</tt> such that <tt>o.equals(e)</tt>.
@@ -819,7 +785,6 @@ module Java::Util
     end
     
     typesig { [Object] }
-    # 
     # Removes a single instance of the specified element from this deque.
     # If the deque does not contain the element, it is unchanged.
     # More formally, removes the first element <tt>e</tt> such that
@@ -836,7 +801,6 @@ module Java::Util
     end
     
     typesig { [] }
-    # 
     # Removes all of the elements from this deque.
     # The deque will be empty after this call returns.
     def clear
@@ -855,7 +819,6 @@ module Java::Util
     end
     
     typesig { [] }
-    # 
     # Returns an array containing all of the elements in this deque
     # in proper sequence (from first to last element).
     # 
@@ -872,7 +835,6 @@ module Java::Util
     end
     
     typesig { [Array.typed(T)] }
-    # 
     # Returns an array containing all of the elements in this deque in
     # proper sequence (from first to last element); the runtime type of the
     # returned array is that of the specified array.  If the deque fits in
@@ -937,14 +899,12 @@ module Java::Util
     end
     
     class_module.module_eval {
-      # 
       # Appease the serialization gods.
       const_set_lazy(:SerialVersionUID) { 2340985798034038923 }
       const_attr_reader  :SerialVersionUID
     }
     
     typesig { [ObjectOutputStream] }
-    # 
     # Serialize this deque.
     # 
     # @serialData The current size (<tt>int</tt>) of the deque,
@@ -964,7 +924,6 @@ module Java::Util
     end
     
     typesig { [ObjectInputStream] }
-    # 
     # Deserialize this deque.
     def read_object(s)
       s.default_read_object

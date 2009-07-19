@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 1996-2006 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -38,7 +37,6 @@ module Sun::Security::Util
     }
   end
   
-  # 
   # DER input buffer ... this is the main abstraction in the DER library
   # which actively works with the "untyped byte stream" abstraction.  It
   # does so with impunity, since it's not intended to be exposed to
@@ -92,7 +90,6 @@ module Sun::Security::Util
     end
     
     typesig { [Object] }
-    # 
     # Compares this DerInputBuffer for equality with the specified
     # object.
     def equals(other)
@@ -123,7 +120,6 @@ module Sun::Security::Util
     end
     
     typesig { [] }
-    # 
     # Returns a hashcode for this DerInputBuffer.
     # 
     # @return a hashcode for this DerInputBuffer.
@@ -148,7 +144,6 @@ module Sun::Security::Util
     end
     
     typesig { [::Java::Int, ::Java::Boolean] }
-    # 
     # Returns the integer which takes up the specified number
     # of bytes in this buffer as a BigInteger.
     # @param len the number of bytes to use.
@@ -173,7 +168,6 @@ module Sun::Security::Util
     end
     
     typesig { [::Java::Int] }
-    # 
     # Returns the integer which takes up the specified number
     # of bytes in this buffer.
     # @throws IOException if the result is not within the valid
@@ -193,7 +187,6 @@ module Sun::Security::Util
     end
     
     typesig { [::Java::Int] }
-    # 
     # Returns the bit string which takes up the specified
     # number of bytes in this buffer.
     def get_bit_string(len)
@@ -219,21 +212,18 @@ module Sun::Security::Util
     end
     
     typesig { [] }
-    # 
     # Returns the bit string which takes up the rest of this buffer.
     def get_bit_string
       return get_bit_string(available)
     end
     
     typesig { [] }
-    # 
     # Returns the bit string which takes up the rest of this buffer.
     # The bit string need not be byte-aligned.
     def get_unaligned_bit_string
       if (self.attr_pos >= self.attr_count)
         return nil
       end
-      # 
       # Just copy the data into an aligned, padded octet buffer,
       # and consume the rest of the buffer.
       len = available
@@ -251,7 +241,6 @@ module Sun::Security::Util
     end
     
     typesig { [::Java::Int] }
-    # 
     # Returns the UTC Time value that takes up the specified number
     # of bytes in this buffer.
     # @param len the number of bytes to use
@@ -266,7 +255,6 @@ module Sun::Security::Util
     end
     
     typesig { [::Java::Int] }
-    # 
     # Returns the Generalized Time value that takes up the specified
     # number of bytes in this buffer.
     # @param len the number of bytes to use
@@ -281,13 +269,11 @@ module Sun::Security::Util
     end
     
     typesig { [::Java::Int, ::Java::Boolean] }
-    # 
     # Private helper routine to extract time from the der value.
     # @param len the number of bytes to use
     # @param generalized true if Generalized Time is to be read, false
     # if UTC Time is to be read.
     def get_time(len, generalized)
-      # 
       # UTC time encoded as ASCII chars:
       # YYMMDDhhmmZ
       # YYMMDDhhmmssZ
@@ -338,7 +324,6 @@ module Sun::Security::Util
       minute = 10 * Character.digit(RJava.cast_to_char(self.attr_buf[((self.attr_pos += 1) - 1)]), 10)
       minute += Character.digit(RJava.cast_to_char(self.attr_buf[((self.attr_pos += 1) - 1)]), 10)
       len -= 10 # YYMMDDhhmm
-      # 
       # We allow for non-encoded seconds, even though the
       # IETF-PKIX specification says that the seconds should
       # always be encoded even if it is zero.
@@ -379,7 +364,6 @@ module Sun::Security::Util
       if ((month).equal?(0) || (day).equal?(0) || month > 12 || day > 31 || hour >= 24 || minute >= 60 || second >= 60)
         raise IOException.new("Parse " + type + " time, invalid format")
       end
-      # 
       # Generalized time can theoretically allow any precision,
       # but we're not supporting that.
       gcal = CalendarSystem.get_gregorian_calendar
@@ -387,7 +371,6 @@ module Sun::Security::Util
       date.set_date(year, month, day)
       date.set_time_of_day(hour, minute, second, millis)
       time = gcal.get_time(date)
-      # 
       # Finally, "Z" or "+hhmm" or "-hhmm" ... offsets change hhmm
       if (!((len).equal?(1) || (len).equal?(5)))
         raise IOException.new("Parse " + type + " time, invalid offset")

@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
 # This code is free software; you can redistribute it and/or modify it
@@ -41,7 +40,6 @@ module Java::Util::Concurrent
     }
   end
   
-  # 
   # A synchronization aid that allows a set of threads to all wait for
   # each other to reach a common barrier point.  CyclicBarriers are
   # useful in programs involving a fixed sized party of threads that
@@ -137,7 +135,6 @@ module Java::Util::Concurrent
     include_class_members CyclicBarrierImports
     
     class_module.module_eval {
-      # 
       # Each use of the barrier is represented as a generation instance.
       # The generation changes whenever the barrier is tripped, or
       # is reset. There can be many generations associated with threads
@@ -201,7 +198,6 @@ module Java::Util::Concurrent
     alias_method :attr_generation=, :generation=
     undef_method :generation=
     
-    # 
     # Number of parties still waiting. Counts down from parties to 0
     # on each generation.  It is reset to parties on each new
     # generation or when broken.
@@ -212,7 +208,6 @@ module Java::Util::Concurrent
     undef_method :count=
     
     typesig { [] }
-    # 
     # Updates state on barrier trip and wakes up everyone.
     # Called only while holding lock.
     def next_generation
@@ -224,7 +219,6 @@ module Java::Util::Concurrent
     end
     
     typesig { [] }
-    # 
     # Sets current barrier generation as broken and wakes up everyone.
     # Called only while holding lock.
     def break_barrier
@@ -234,7 +228,6 @@ module Java::Util::Concurrent
     end
     
     typesig { [::Java::Boolean, ::Java::Long] }
-    # 
     # Main barrier code, covering the various policies.
     def dowait(timed, nanos)
       lock = @lock
@@ -304,7 +297,6 @@ module Java::Util::Concurrent
     end
     
     typesig { [::Java::Int, Runnable] }
-    # 
     # Creates a new <tt>CyclicBarrier</tt> that will trip when the
     # given number of parties (threads) are waiting upon it, and which
     # will execute the given barrier action when the barrier is tripped,
@@ -331,7 +323,6 @@ module Java::Util::Concurrent
     end
     
     typesig { [::Java::Int] }
-    # 
     # Creates a new <tt>CyclicBarrier</tt> that will trip when the
     # given number of parties (threads) are waiting upon it, and
     # does not perform a predefined action when the barrier is tripped.
@@ -344,7 +335,6 @@ module Java::Util::Concurrent
     end
     
     typesig { [] }
-    # 
     # Returns the number of parties required to trip this barrier.
     # 
     # @return the number of parties required to trip this barrier
@@ -353,7 +343,6 @@ module Java::Util::Concurrent
     end
     
     typesig { [] }
-    # 
     # Waits until all {@linkplain #getParties parties} have invoked
     # <tt>await</tt> on this barrier.
     # 
@@ -415,7 +404,6 @@ module Java::Util::Concurrent
     end
     
     typesig { [::Java::Long, TimeUnit] }
-    # 
     # Waits until all {@linkplain #getParties parties} have invoked
     # <tt>await</tt> on this barrier, or the specified waiting time elapses.
     # 
@@ -481,7 +469,6 @@ module Java::Util::Concurrent
     end
     
     typesig { [] }
-    # 
     # Queries if this barrier is in a broken state.
     # 
     # @return {@code true} if one or more parties broke out of this
@@ -499,7 +486,6 @@ module Java::Util::Concurrent
     end
     
     typesig { [] }
-    # 
     # Resets the barrier to its initial state.  If any parties are
     # currently waiting at the barrier, they will return with a
     # {@link BrokenBarrierException}. Note that resets <em>after</em>
@@ -519,7 +505,6 @@ module Java::Util::Concurrent
     end
     
     typesig { [] }
-    # 
     # Returns the number of parties currently waiting at the barrier.
     # This method is primarily useful for debugging and assertions.
     # 

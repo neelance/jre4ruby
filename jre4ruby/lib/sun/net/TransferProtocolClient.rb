@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 1994-2002 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -35,7 +34,6 @@ module Sun::Net
     }
   end
   
-  # 
   # This class implements that basic intefaces of transfer protocols.
   # It is used by subclasses implementing specific protocols.
   # 
@@ -66,7 +64,6 @@ module Sun::Net
     undef_method :last_reply_code=
     
     typesig { [] }
-    # 
     # Pulls the response from the server and returns the code as a
     # number. Returns -1 on failure.
     def read_server_response

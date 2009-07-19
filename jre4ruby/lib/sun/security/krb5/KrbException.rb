@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Portions Copyright 2000-2006 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -140,7 +139,6 @@ module Sun::Security::Krb5
     end
     
     typesig { [] }
-    # 
     # Returns messages like:
     # "Integrity check on decrypted field failed (31) - \
     # Could not decrypt service ticket"

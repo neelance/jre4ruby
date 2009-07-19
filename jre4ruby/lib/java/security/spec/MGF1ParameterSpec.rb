@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 2003-2006 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -32,7 +31,6 @@ module Java::Security::Spec
     }
   end
   
-  # 
   # This class specifies the set of parameters used with mask generation
   # function MGF1 in OAEP Padding and RSA-PSS signature scheme, as
   # defined in the
@@ -64,22 +62,18 @@ module Java::Security::Spec
     include AlgorithmParameterSpec
     
     class_module.module_eval {
-      # 
       # The MGF1ParameterSpec which uses "SHA-1" message digest.
       const_set_lazy(:SHA1) { MGF1ParameterSpec.new("SHA-1") }
       const_attr_reader  :SHA1
       
-      # 
       # The MGF1ParameterSpec which uses "SHA-256" message digest.
       const_set_lazy(:SHA256) { MGF1ParameterSpec.new("SHA-256") }
       const_attr_reader  :SHA256
       
-      # 
       # The MGF1ParameterSpec which uses "SHA-384" message digest.
       const_set_lazy(:SHA384) { MGF1ParameterSpec.new("SHA-384") }
       const_attr_reader  :SHA384
       
-      # 
       # The MGF1ParameterSpec which uses SHA-512 message digest.
       const_set_lazy(:SHA512) { MGF1ParameterSpec.new("SHA-512") }
       const_attr_reader  :SHA512
@@ -92,7 +86,6 @@ module Java::Security::Spec
     undef_method :md_name=
     
     typesig { [String] }
-    # 
     # Constructs a parameter set for mask generation function MGF1
     # as defined in the PKCS #1 standard.
     # 
@@ -108,7 +101,6 @@ module Java::Security::Spec
     end
     
     typesig { [] }
-    # 
     # Returns the algorithm name of the message digest used by the mask
     # generation function.
     # 

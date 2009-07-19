@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 2006 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -37,7 +36,6 @@ module Sun::Net::Httpserver
     }
   end
   
-  # 
   # Implements a cache of java.nio.channels.Selector
   # where Selectors are allocated on demand and placed
   # in a temporary cache for a period of time, so they
@@ -88,7 +86,6 @@ module Sun::Net::Httpserver
     
     class_module.module_eval {
       typesig { [] }
-      # 
       # factory method for creating single instance
       def get_selector_cache
         synchronized((SelectorCache.class)) do

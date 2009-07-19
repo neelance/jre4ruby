@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 1999-2000 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -31,7 +30,6 @@ module Java::Util::Regex
     }
   end
   
-  # 
   # Utility class that implements the standard C ctype functionality.
   # 
   # @author Hong Zhang

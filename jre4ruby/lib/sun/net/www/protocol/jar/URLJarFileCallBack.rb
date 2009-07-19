@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 2001 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -34,7 +33,6 @@ module Sun::Net::Www::Protocol::Jar
     }
   end
   
-  # 
   # This interface is used to call back to sun.plugin package.
   module URLJarFileCallBack
     include_class_members URLJarFileCallBackImports

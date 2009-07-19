@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 1996-1997 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -33,7 +32,6 @@ module Sun::Security::Acl
     }
   end
   
-  # 
   # This class implements the principal interface for the set of all permissions.
   # @author Satish Dharmaraj
   class AllPermissionsImpl < AllPermissionsImplImports.const_get :PermissionImpl
@@ -45,7 +43,6 @@ module Sun::Security::Acl
     end
     
     typesig { [Permission] }
-    # 
     # This function returns true if the permission passed matches the permission represented in
     # this interface.
     # @param another The Permission object to compare with.

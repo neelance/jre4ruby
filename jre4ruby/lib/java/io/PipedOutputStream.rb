@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 1995-2006 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -32,7 +31,6 @@ module Java::Io
     }
   end
   
-  # 
   # A piped output stream can be connected to a piped input stream
   # to create a communications pipe. The piped output stream is the
   # sending end of the pipe. Typically, data is written to a
@@ -61,7 +59,6 @@ module Java::Io
     undef_method :sink=
     
     typesig { [PipedInputStream] }
-    # 
     # Creates a piped output stream connected to the specified piped
     # input stream. Data bytes written to this stream will then be
     # available as input from <code>snk</code>.
@@ -75,7 +72,6 @@ module Java::Io
     end
     
     typesig { [] }
-    # 
     # Creates a piped output stream that is not yet connected to a
     # piped input stream. It must be connected to a piped input stream,
     # either by the receiver or the sender, before being used.
@@ -88,7 +84,6 @@ module Java::Io
     end
     
     typesig { [PipedInputStream] }
-    # 
     # Connects this piped output stream to a receiver. If this object
     # is already connected to some other piped input stream, an
     # <code>IOException</code> is thrown.
@@ -122,7 +117,6 @@ module Java::Io
     end
     
     typesig { [::Java::Int] }
-    # 
     # Writes the specified <code>byte</code> to the piped output stream.
     # <p>
     # Implements the <code>write</code> method of <code>OutputStream</code>.
@@ -139,7 +133,6 @@ module Java::Io
     end
     
     typesig { [Array.typed(::Java::Byte), ::Java::Int, ::Java::Int] }
-    # 
     # Writes <code>len</code> bytes from the specified byte array
     # starting at offset <code>off</code> to this piped output stream.
     # This method blocks until all the bytes are written to the output
@@ -171,7 +164,6 @@ module Java::Io
     end
     
     typesig { [] }
-    # 
     # Flushes this output stream and forces any buffered output bytes
     # to be written out.
     # This will notify any readers that bytes are waiting in the pipe.
@@ -188,7 +180,6 @@ module Java::Io
     end
     
     typesig { [] }
-    # 
     # Closes this piped output stream and releases any system resources
     # associated with this stream. This stream may no longer be used for
     # writing bytes.

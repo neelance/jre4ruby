@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 1997-2004 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -35,7 +34,6 @@ module Java::Net
     }
   end
   
-  # 
   # This class is for various network permissions.
   # A NetPermission contains a name (also referred to as a "target name") but
   # no actions list; you either have the named permission
@@ -164,7 +162,6 @@ module Java::Net
     }
     
     typesig { [String] }
-    # 
     # Creates a new NetPermission with the specified name.
     # The name is the symbolic name of the NetPermission, such as
     # "setDefaultAuthenticator", etc. An asterisk
@@ -180,7 +177,6 @@ module Java::Net
     end
     
     typesig { [String, String] }
-    # 
     # Creates a new NetPermission object with the specified name.
     # The name is the symbolic name of the NetPermission, and the
     # actions String is currently unused and should be null.

@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 1995-2004 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -31,7 +30,6 @@ module Java::Io
     }
   end
   
-  # 
   # This class allows an application to create an input stream in
   # which the bytes read are supplied by the contents of a string.
   # Applications can also read bytes from a byte array by using a
@@ -50,7 +48,6 @@ module Java::Io
   class StringBufferInputStream < StringBufferInputStreamImports.const_get :InputStream
     include_class_members StringBufferInputStreamImports
     
-    # 
     # The string from which bytes are read.
     attr_accessor :buffer
     alias_method :attr_buffer, :buffer
@@ -58,7 +55,6 @@ module Java::Io
     alias_method :attr_buffer=, :buffer=
     undef_method :buffer=
     
-    # 
     # The index of the next character to read from the input stream buffer.
     # 
     # @see        java.io.StringBufferInputStream#buffer
@@ -68,7 +64,6 @@ module Java::Io
     alias_method :attr_pos=, :pos=
     undef_method :pos=
     
-    # 
     # The number of valid characters in the input stream buffer.
     # 
     # @see        java.io.StringBufferInputStream#buffer
@@ -79,7 +74,6 @@ module Java::Io
     undef_method :count=
     
     typesig { [String] }
-    # 
     # Creates a string input stream to read data from the specified string.
     # 
     # @param      s   the underlying input buffer.
@@ -93,7 +87,6 @@ module Java::Io
     end
     
     typesig { [] }
-    # 
     # Reads the next byte of data from this input stream. The value
     # byte is returned as an <code>int</code> in the range
     # <code>0</code> to <code>255</code>. If no byte is available
@@ -113,7 +106,6 @@ module Java::Io
     end
     
     typesig { [Array.typed(::Java::Byte), ::Java::Int, ::Java::Int] }
-    # 
     # Reads up to <code>len</code> bytes of data from this input stream
     # into an array of bytes.
     # <p>
@@ -156,7 +148,6 @@ module Java::Io
     end
     
     typesig { [::Java::Long] }
-    # 
     # Skips <code>n</code> bytes of input from this input stream. Fewer
     # bytes might be skipped if the end of the input stream is reached.
     # 
@@ -176,7 +167,6 @@ module Java::Io
     end
     
     typesig { [] }
-    # 
     # Returns the number of bytes that can be read from the input
     # stream without blocking.
     # 
@@ -189,7 +179,6 @@ module Java::Io
     end
     
     typesig { [] }
-    # 
     # Resets the input stream to begin reading from the first character
     # of this input stream's underlying buffer.
     def reset

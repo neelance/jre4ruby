@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 1996 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -31,7 +30,6 @@ module Sun::Misc
     }
   end
   
-  # 
   # Requests are functor objects; that is, they provide part of the mechanism
   # for deferred function application.
   # 
@@ -40,7 +38,6 @@ module Sun::Misc
     include_class_members RequestImports
     
     typesig { [] }
-    # 
     # The main task of the Request object is to be exectuted from a request
     # queue.
     def execute

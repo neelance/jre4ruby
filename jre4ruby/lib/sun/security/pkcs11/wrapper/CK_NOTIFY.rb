@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # reserved comment block
 # DO NOT REMOVE OR ALTER!
 # 
@@ -53,7 +52,6 @@ module Sun::Security::Pkcs11::Wrapper
     }
   end
   
-  # 
   # interface CK_NOTIFY.<p>
   # 
   # @author Karl Scheibelhofer <Karl.Scheibelhofer@iaik.at>
@@ -62,7 +60,6 @@ module Sun::Security::Pkcs11::Wrapper
     include_class_members CK_NOTIFYImports
     
     typesig { [::Java::Long, ::Java::Long, Object] }
-    # 
     # Method CK_NOTIFY
     # 
     # @param hSession

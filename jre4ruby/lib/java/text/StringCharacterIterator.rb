@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 1996-2002 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -44,7 +43,6 @@ module Java::Text
     }
   end
   
-  # 
   # <code>StringCharacterIterator</code> implements the
   # <code>CharacterIterator</code> protocol for a <code>String</code>.
   # The <code>StringCharacterIterator</code> class iterates over the
@@ -81,14 +79,12 @@ module Java::Text
     undef_method :pos=
     
     typesig { [String] }
-    # 
     # Constructs an iterator with an initial index of 0.
     def initialize(text)
       initialize__string_character_iterator(text, 0)
     end
     
     typesig { [String, ::Java::Int] }
-    # 
     # Constructs an iterator with the specified initial index.
     # 
     # @param  text   The String to be iterated over
@@ -98,7 +94,6 @@ module Java::Text
     end
     
     typesig { [String, ::Java::Int, ::Java::Int, ::Java::Int] }
-    # 
     # Constructs an iterator over the given range of the given string, with the
     # index set at the specified position.
     # 
@@ -127,7 +122,6 @@ module Java::Text
     end
     
     typesig { [String] }
-    # 
     # Reset this iterator to point to a new string.  This package-visible
     # method is used by other java.text classes that want to avoid allocating
     # new StringCharacterIterator objects every time their setText method
@@ -146,7 +140,6 @@ module Java::Text
     end
     
     typesig { [] }
-    # 
     # Implements CharacterIterator.first() for String.
     # @see CharacterIterator#first
     def first
@@ -155,7 +148,6 @@ module Java::Text
     end
     
     typesig { [] }
-    # 
     # Implements CharacterIterator.last() for String.
     # @see CharacterIterator#last
     def last
@@ -168,7 +160,6 @@ module Java::Text
     end
     
     typesig { [::Java::Int] }
-    # 
     # Implements CharacterIterator.setIndex() for String.
     # @see CharacterIterator#setIndex
     def set_index(p)
@@ -180,7 +171,6 @@ module Java::Text
     end
     
     typesig { [] }
-    # 
     # Implements CharacterIterator.current() for String.
     # @see CharacterIterator#current
     def current
@@ -192,7 +182,6 @@ module Java::Text
     end
     
     typesig { [] }
-    # 
     # Implements CharacterIterator.next() for String.
     # @see CharacterIterator#next
     def next
@@ -206,7 +195,6 @@ module Java::Text
     end
     
     typesig { [] }
-    # 
     # Implements CharacterIterator.previous() for String.
     # @see CharacterIterator#previous
     def previous
@@ -219,7 +207,6 @@ module Java::Text
     end
     
     typesig { [] }
-    # 
     # Implements CharacterIterator.getBeginIndex() for String.
     # @see CharacterIterator#getBeginIndex
     def get_begin_index
@@ -227,7 +214,6 @@ module Java::Text
     end
     
     typesig { [] }
-    # 
     # Implements CharacterIterator.getEndIndex() for String.
     # @see CharacterIterator#getEndIndex
     def get_end_index
@@ -235,7 +221,6 @@ module Java::Text
     end
     
     typesig { [] }
-    # 
     # Implements CharacterIterator.getIndex() for String.
     # @see CharacterIterator#getIndex
     def get_index
@@ -243,7 +228,6 @@ module Java::Text
     end
     
     typesig { [Object] }
-    # 
     # Compares the equality of two StringCharacterIterator objects.
     # @param obj the StringCharacterIterator object to be compared with.
     # @return true if the given obj is the same as this
@@ -269,7 +253,6 @@ module Java::Text
     end
     
     typesig { [] }
-    # 
     # Computes a hashcode for this iterator.
     # @return A hash code
     def hash_code
@@ -277,7 +260,6 @@ module Java::Text
     end
     
     typesig { [] }
-    # 
     # Creates a copy of this iterator.
     # @return A copy of this
     def clone

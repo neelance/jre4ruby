@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 2000-2006 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -31,7 +30,6 @@ module Java::Util
     }
   end
   
-  # 
   # Marker interface used by <tt>List</tt> implementations to indicate that
   # they support fast (generally constant time) random access.  The primary
   # purpose of this interface is to allow generic algorithms to alter their

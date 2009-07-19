@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Portions Copyright 2001-2004 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -47,7 +46,6 @@ module Sun::Security::Krb5::Internal
     }
   end
   
-  # 
   # This class is a utility that contains much of the TGS-Exchange
   # protocol. It is used by ../Credentials.java for service ticket
   # acquisition in both the normal and the x-realm case.
@@ -67,7 +65,6 @@ module Sun::Security::Krb5::Internal
       alias_method :attr_debug=, :debug=
       
       typesig { [String, Credentials] }
-      # 
       # Acquires credentials for a specified service using initial credential. Wh
       # en the service has a different realm
       # from the initial credential, we do cross-realm authentication - first, we
@@ -100,7 +97,6 @@ module Sun::Security::Krb5::Internal
           service_realm = local_realm
           sname.set_realm(service_realm)
         end
-        # 
         # if (!localRealm.equalsIgnoreCase(serviceRealm)) { //do cross-realm auth entication
         # if (DEBUG) {
         # System.out.println(">>>DEBUG: Credentails request cross realm ticket for " + "krbtgt/" + serviceRealm + "@" + localRealm);
@@ -155,7 +151,6 @@ module Sun::Security::Krb5::Internal
             if (self.attr_debug)
               System.out.println(">>> Credentials acquireServiceCreds: no tgt; searching backwards")
             end
-            # 
             # No tgt found. Try to get one for a
             # realm as close to the target as possible.
             # That means traversing the realms list backwards.
@@ -180,7 +175,6 @@ module Sun::Security::Krb5::Internal
             end
             break
           end
-          # 
           # We have a tgt. It may or may not be for the target.
           # If it's for the target realm, we're done looking for a tgt.
           new_tgt_realm = (new_tgt.get_server.get_instance_component).to_s
@@ -194,7 +188,6 @@ module Sun::Security::Krb5::Internal
             the_tgt_realm = new_tgt_realm
             break
           end
-          # 
           # The new tgt is not for the target realm.
           # See if the realm of the new tgt is in the list of realms
           # and continue looking from there.
@@ -206,7 +199,6 @@ module Sun::Security::Krb5::Internal
             ((k += 1) - 1)
           end
           if (k < realms.attr_length)
-            # 
             # (re)set the counter so we start looking
             # from the realm we just obtained a tgt for.
             i = k
@@ -216,7 +208,6 @@ module Sun::Security::Krb5::Internal
             end
             next
           else
-            # 
             # The new tgt's realm is not in the heirarchy of realms.
             # It's probably not safe to get a tgt from
             # a tgs that is outside the known list of realms.
@@ -236,7 +227,7 @@ module Sun::Security::Krb5::Internal
             the_creds = service_creds(sname, the_tgt)
           rescue Exception => exc
             if (self.attr_debug)
-              System.out.println(exc__)
+              System.out.println(exc)
             end
             the_creds = nil
           end
@@ -252,7 +243,6 @@ module Sun::Security::Krb5::Internal
       end
       
       typesig { [ServiceName, Credentials] }
-      # 
       # This method does the real job to request the service credential.
       def service_creds(service, ccreds)
         return KrbTgsReq.new(ccreds, service).send_and_get_creds

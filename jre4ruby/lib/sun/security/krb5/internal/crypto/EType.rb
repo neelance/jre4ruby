@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Portions Copyright 2000-2006 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -212,7 +211,6 @@ module Sun::Security::Krb5::Internal::Crypto
       end
       
       typesig { [String] }
-      # 
       # Retrieves the default etypes from the configuration file, or
       # if that's not available, return the built-in list of default etypes.
       # 
@@ -230,7 +228,6 @@ module Sun::Security::Krb5::Internal::Crypto
       end
       
       typesig { [String, Array.typed(EncryptionKey)] }
-      # 
       # Retrieve the default etypes from the configuration file for
       # those etypes for which there are corresponding keys.
       # Used in scenario we have some keys from a keytab with etypes
@@ -262,10 +259,10 @@ module Sun::Security::Krb5::Internal::Crypto
           raise KrbException.new("Do not have keys of types listed in " + config_name + " available; only have keys of following type: " + (keystr.to_s).to_s)
         else
           answer = Array.typed(::Java::Int).new(len) { 0 }
-          i__ = 0
-          while i__ < len
-            answer[i__] = list.get(i__)
-            ((i__ += 1) - 1)
+          i_ = 0
+          while i_ < len
+            answer[i_] = list.get(i_)
+            ((i_ += 1) - 1)
           end
           return answer
         end

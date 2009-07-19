@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # reserved comment block
 # DO NOT REMOVE OR ALTER!
 # 
@@ -53,7 +52,6 @@ module Sun::Security::Pkcs11::Wrapper
     }
   end
   
-  # 
   # class CK_RSA_PKCS_PSS_PARAMS provides the parameters to the CKM_RSA_PKCS_OAEP
   # mechanism.<p>
   # <B>PKCS#11 structure:</B>
@@ -69,7 +67,6 @@ module Sun::Security::Pkcs11::Wrapper
   class CK_RSA_PKCS_PSS_PARAMS 
     include_class_members CK_RSA_PKCS_PSS_PARAMSImports
     
-    # 
     # <B>PKCS#11:</B>
     # <PRE>
     # CK_MECHANISM_TYPE hashAlg;
@@ -80,7 +77,6 @@ module Sun::Security::Pkcs11::Wrapper
     alias_method :attr_hash_alg=, :hash_alg=
     undef_method :hash_alg=
     
-    # 
     # <B>PKCS#11:</B>
     # <PRE>
     # CK_RSA_PKCS_MGF_TYPE mgf;
@@ -91,7 +87,6 @@ module Sun::Security::Pkcs11::Wrapper
     alias_method :attr_mgf=, :mgf=
     undef_method :mgf=
     
-    # 
     # <B>PKCS#11:</B>
     # <PRE>
     # CK_ULONG sLen;
@@ -103,7 +98,6 @@ module Sun::Security::Pkcs11::Wrapper
     undef_method :s_len=
     
     typesig { [] }
-    # 
     # Returns the string representation of CK_PKCS5_PBKD2_PARAMS.
     # 
     # @return the string representation of CK_PKCS5_PBKD2_PARAMS

@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 1997-2006 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -34,7 +33,6 @@ module Sun::Security::X509
     }
   end
   
-  # 
   # Represent a X509 Extension Attribute.
   # 
   # <p>Extensions are additional attributes which can be inserted in a X509
@@ -83,7 +81,6 @@ module Sun::Security::X509
     undef_method :extension_value=
     
     typesig { [] }
-    # 
     # Default constructor.  Used only by sub-classes.
     def initialize
       @extension_id = nil
@@ -92,7 +89,6 @@ module Sun::Security::X509
     end
     
     typesig { [DerValue] }
-    # 
     # Constructs an extension from a DER encoded array of bytes.
     def initialize(der_val)
       @extension_id = nil
@@ -115,7 +111,6 @@ module Sun::Security::X509
     end
     
     typesig { [ObjectIdentifier, ::Java::Boolean, Array.typed(::Java::Byte)] }
-    # 
     # Constructs an Extension from individual components of ObjectIdentifier,
     # criticality and the DER encoded OctetString.
     # 
@@ -135,7 +130,6 @@ module Sun::Security::X509
     end
     
     typesig { [Extension] }
-    # 
     # Constructs an Extension from another extension. To be used for
     # creating decoded subclasses.
     # 
@@ -150,7 +144,6 @@ module Sun::Security::X509
     end
     
     typesig { [DerOutputStream] }
-    # 
     # Write the extension to the DerOutputStream.
     # 
     # @param out the DerOutputStream to write the extension to.
@@ -172,21 +165,18 @@ module Sun::Security::X509
     end
     
     typesig { [] }
-    # 
     # Returns true if extension is critical.
     def is_critical
       return @critical
     end
     
     typesig { [] }
-    # 
     # Returns the ObjectIdentifier of the extension.
     def get_extension_id
       return @extension_id
     end
     
     typesig { [] }
-    # 
     # Returns the extension value as an byte array for further processing.
     # Note, this is the raw DER value of the extension, not the DER
     # encoded octet string which is in the certificate.
@@ -197,7 +187,6 @@ module Sun::Security::X509
     end
     
     typesig { [] }
-    # 
     # Returns the Extension in user readable form.
     def to_s
       s = "ObjectId: " + (@extension_id.to_s).to_s
@@ -216,7 +205,6 @@ module Sun::Security::X509
     }
     
     typesig { [] }
-    # 
     # Returns a hashcode value for this Extension.
     # 
     # @return the hashcode value.
@@ -235,7 +223,6 @@ module Sun::Security::X509
     end
     
     typesig { [Object] }
-    # 
     # Compares this Extension for equality with the specified
     # object. If the <code>other</code> object is an
     # <code>instanceof</code> <code>Extension</code>, then

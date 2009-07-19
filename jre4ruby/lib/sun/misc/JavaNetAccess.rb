@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 2006 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -36,7 +35,6 @@ module Sun::Misc
     include_class_members JavaNetAccessImports
     
     typesig { [URLClassLoader] }
-    # 
     # return the URLClassPath belonging to the given loader
     def get_urlclass_path(u)
       raise NotImplementedError

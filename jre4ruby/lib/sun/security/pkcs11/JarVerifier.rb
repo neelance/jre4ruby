@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 2007 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -61,7 +60,6 @@ module Sun::Security::Pkcs11
       const_attr_reader  :Debug
       
       typesig { [Class] }
-      # 
       # Verify the JAR file is signed by an entity which has a certificate
       # issued by a trusted CA.
       # 

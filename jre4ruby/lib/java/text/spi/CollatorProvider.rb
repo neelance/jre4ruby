@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 2005 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -34,7 +33,6 @@ module Java::Text::Spi
     }
   end
   
-  # 
   # An abstract class for service providers that
   # provide concrete implementations of the
   # {@link java.text.Collator Collator} class.
@@ -44,7 +42,6 @@ module Java::Text::Spi
     include_class_members CollatorProviderImports
     
     typesig { [] }
-    # 
     # Sole constructor.  (For invocation by subclass constructors, typically
     # implicit.)
     def initialize
@@ -52,7 +49,6 @@ module Java::Text::Spi
     end
     
     typesig { [Locale] }
-    # 
     # Returns a new <code>Collator</code> instance for the specified locale.
     # @param locale the desired locale.
     # @return the <code>Collator</code> for the desired locale.

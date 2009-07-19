@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 1997-2003 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -31,7 +30,6 @@ module Java::Security
     }
   end
   
-  # 
   # This is the exception for invalid or inappropriate algorithm parameters.
   # 
   # @author Jan Luehe
@@ -50,7 +48,6 @@ module Java::Security
     }
     
     typesig { [] }
-    # 
     # Constructs an InvalidAlgorithmParameterException with no detail
     # message.
     # A detail message is a String that describes this particular
@@ -60,7 +57,6 @@ module Java::Security
     end
     
     typesig { [String] }
-    # 
     # Constructs an InvalidAlgorithmParameterException with the specified
     # detail message.
     # A detail message is a String that describes this
@@ -72,7 +68,6 @@ module Java::Security
     end
     
     typesig { [String, Exception] }
-    # 
     # Creates a <code>InvalidAlgorithmParameterException</code> with the
     # specified detail message and cause.
     # 
@@ -87,7 +82,6 @@ module Java::Security
     end
     
     typesig { [Exception] }
-    # 
     # Creates a <code>InvalidAlgorithmParameterException</code> with the
     # specified cause and a detail message of
     # <tt>(cause==null ? null : cause.toString())</tt>

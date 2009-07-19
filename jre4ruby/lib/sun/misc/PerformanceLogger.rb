@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 2002 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -36,7 +35,6 @@ module Sun::Misc
     }
   end
   
-  # 
   # This class is intended to be a central place for the jdk to
   # log timing events of interest.  There is pre-defined event
   # of startTime, as well as a general
@@ -195,7 +193,6 @@ module Sun::Misc
       end
       
       typesig { [] }
-      # 
       # Returns status of whether logging is enabled or not.  This is
       # provided as a convenience method so that users do not have to
       # perform the same GetPropertyAction check as above to determine whether
@@ -204,7 +201,6 @@ module Sun::Misc
         return self.attr_perf_logging_on
       end
       
-      # 
       # Internal class used to store time/message data together.
       const_set_lazy(:TimeData) { Class.new do
         include_class_members PerformanceLogger
@@ -244,7 +240,6 @@ module Sun::Misc
       end }
       
       typesig { [] }
-      # 
       # Return the current time, in millis or nanos as appropriate
       def get_current_time
         if (self.attr_use_nano_time)
@@ -255,7 +250,6 @@ module Sun::Misc
       end
       
       typesig { [String] }
-      # 
       # Sets the start time.  Ideally, this is the earliest time available
       # during the startup of a Java applet or application.  This time is
       # later used to analyze the difference between the initial startup
@@ -268,7 +262,6 @@ module Sun::Misc
       end
       
       typesig { [String, ::Java::Long] }
-      # 
       # Sets the start time.
       # This version of the method is
       # given the time to log, instead of expecting this method to
@@ -281,7 +274,6 @@ module Sun::Misc
       end
       
       typesig { [] }
-      # 
       # Gets the start time, which should be the time when
       # the java process started, prior to the VM actually being
       # loaded.
@@ -294,7 +286,6 @@ module Sun::Misc
       end
       
       typesig { [String] }
-      # 
       # Sets the value of a given time and returns the index of the
       # slot that that time was stored in.
       def set_time(message)
@@ -307,7 +298,6 @@ module Sun::Misc
       end
       
       typesig { [String, ::Java::Long] }
-      # 
       # Sets the value of a given time and returns the index of the
       # slot that that time was stored in.
       # This version of the method is
@@ -329,7 +319,6 @@ module Sun::Misc
       end
       
       typesig { [::Java::Int] }
-      # 
       # Returns time at given index.
       def get_time_at_index(index)
         if (logging_enabled)
@@ -340,7 +329,6 @@ module Sun::Misc
       end
       
       typesig { [::Java::Int] }
-      # 
       # Returns message at given index.
       def get_message_at_index(index)
         if (logging_enabled)
@@ -351,7 +339,6 @@ module Sun::Misc
       end
       
       typesig { [Writer] }
-      # 
       # Outputs all data to parameter-specified Writer object
       def output_log(writer)
         if (logging_enabled)
@@ -374,7 +361,6 @@ module Sun::Misc
       end
       
       typesig { [] }
-      # 
       # Outputs all data to whatever location the user specified
       # via sun.perflog command-line parameter.
       def output_log

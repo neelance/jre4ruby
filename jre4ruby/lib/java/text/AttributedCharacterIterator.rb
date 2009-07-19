@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 1997-2004 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -36,7 +35,6 @@ module Java::Text
     }
   end
   
-  # 
   # An AttributedCharacterIterator allows iteration through both text and
   # related attribute information.
   # 
@@ -78,7 +76,6 @@ module Java::Text
     include CharacterIterator
     
     class_module.module_eval {
-      # 
       # Defines attribute keys that are used to identify text attributes. These
       # keys are used in AttributedCharacterIterator and AttributedString.
       # @see AttributedCharacterIterator
@@ -88,7 +85,6 @@ module Java::Text
         include_class_members AttributedCharacterIterator
         include Serializable
         
-        # 
         # The name of this Attribute. The name is used primarily by readResolve
         # to look up the corresponding predefined instance when deserializing
         # an instance.
@@ -106,7 +102,6 @@ module Java::Text
         }
         
         typesig { [String] }
-        # 
         # Constructs an Attribute with the given name.
         def initialize(name)
           @name = nil
@@ -117,7 +112,6 @@ module Java::Text
         end
         
         typesig { [Object] }
-        # 
         # Compares two objects for equality. This version only returns true
         # for <code>x.equals(y)</code> if <code>x</code> and <code>y</code> refer
         # to the same object, and guarantees this for all subclasses.
@@ -126,7 +120,6 @@ module Java::Text
         end
         
         typesig { [] }
-        # 
         # Returns a hash code value for the object. This version is identical to
         # the one in Object, but is also final.
         def hash_code
@@ -134,7 +127,6 @@ module Java::Text
         end
         
         typesig { [] }
-        # 
         # Returns a string representation of the object. This version returns the
         # concatenation of class name, "(", a name identifying the attribute and ")".
         def to_s
@@ -142,14 +134,12 @@ module Java::Text
         end
         
         typesig { [] }
-        # 
         # Returns the name of the attribute.
         def get_name
           return @name
         end
         
         typesig { [] }
-        # 
         # Resolves instances being deserialized to the predefined constants.
         def read_resolve
           if (!(self.get_class).equal?(Attribute.class))
@@ -164,14 +154,12 @@ module Java::Text
         end
         
         class_module.module_eval {
-          # 
           # Attribute key for the language of some text.
           # <p> Values are instances of Locale.
           # @see java.util.Locale
           const_set_lazy(:LANGUAGE) { Attribute.new("language") }
           const_attr_reader  :LANGUAGE
           
-          # 
           # Attribute key for the reading of some text. In languages where the written form
           # and the pronunciation of a word are only loosely related (such as Japanese),
           # it is often necessary to store the reading (pronunciation) along with the
@@ -182,7 +170,6 @@ module Java::Text
           const_set_lazy(:READING) { Attribute.new("reading") }
           const_attr_reader  :READING
           
-          # 
           # Attribute key for input method segments. Input methods often break
           # up text into segments, which usually correspond to words.
           # <p>Values are instances of Annotation holding a null reference.
@@ -201,7 +188,6 @@ module Java::Text
     }
     
     typesig { [] }
-    # 
     # Returns the index of the first character of the run
     # with respect to all attributes containing the current character.
     def get_run_start
@@ -209,7 +195,6 @@ module Java::Text
     end
     
     typesig { [Attribute] }
-    # 
     # Returns the index of the first character of the run
     # with respect to the given attribute containing the current character.
     def get_run_start(attribute)
@@ -217,7 +202,6 @@ module Java::Text
     end
     
     typesig { [JavaSet] }
-    # 
     # Returns the index of the first character of the run
     # with respect to the given attributes containing the current character.
     def get_run_start(attributes)
@@ -225,7 +209,6 @@ module Java::Text
     end
     
     typesig { [] }
-    # 
     # Returns the index of the first character following the run
     # with respect to all attributes containing the current character.
     def get_run_limit
@@ -233,7 +216,6 @@ module Java::Text
     end
     
     typesig { [Attribute] }
-    # 
     # Returns the index of the first character following the run
     # with respect to the given attribute containing the current character.
     def get_run_limit(attribute)
@@ -241,7 +223,6 @@ module Java::Text
     end
     
     typesig { [JavaSet] }
-    # 
     # Returns the index of the first character following the run
     # with respect to the given attributes containing the current character.
     def get_run_limit(attributes)
@@ -249,7 +230,6 @@ module Java::Text
     end
     
     typesig { [] }
-    # 
     # Returns a map with the attributes defined on the current
     # character.
     def get_attributes
@@ -257,7 +237,6 @@ module Java::Text
     end
     
     typesig { [Attribute] }
-    # 
     # Returns the value of the named attribute for the current character.
     # Returns null if the attribute is not defined.
     # @param attribute the key of the attribute whose value is requested.
@@ -266,7 +245,6 @@ module Java::Text
     end
     
     typesig { [] }
-    # 
     # Returns the keys of all attributes defined on the
     # iterator's text range. The set is empty if no
     # attributes are defined.

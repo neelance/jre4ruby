@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 1997-2006 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -41,7 +40,6 @@ module Java::Util::Jar
     }
   end
   
-  # 
   # The <code>JarFile</code> class is used to read the contents of a jar file
   # from any file that can be opened with <code>java.io.RandomAccessFile</code>.
   # It extends the class <code>java.util.zip.ZipFile</code> with support
@@ -109,14 +107,12 @@ module Java::Util::Jar
         SharedSecrets.set_java_util_jar_access(JavaUtilJarAccessImpl.new)
       end
       
-      # 
       # The JAR manifest file name.
       const_set_lazy(:MANIFEST_NAME) { "META-INF/MANIFEST.MF" }
       const_attr_reader  :MANIFEST_NAME
     }
     
     typesig { [String] }
-    # 
     # Creates a new <code>JarFile</code> to read from the specified
     # file <code>name</code>. The <code>JarFile</code> will be verified if
     # it is signed.
@@ -129,7 +125,6 @@ module Java::Util::Jar
     end
     
     typesig { [String, ::Java::Boolean] }
-    # 
     # Creates a new <code>JarFile</code> to read from the specified
     # file <code>name</code>.
     # @param name the name of the jar file to be opened for reading
@@ -143,7 +138,6 @@ module Java::Util::Jar
     end
     
     typesig { [JavaFile] }
-    # 
     # Creates a new <code>JarFile</code> to read from the specified
     # <code>File</code> object. The <code>JarFile</code> will be verified if
     # it is signed.
@@ -156,7 +150,6 @@ module Java::Util::Jar
     end
     
     typesig { [JavaFile, ::Java::Boolean] }
-    # 
     # Creates a new <code>JarFile</code> to read from the specified
     # <code>File</code> object.
     # @param file the jar file to be opened for reading
@@ -170,7 +163,6 @@ module Java::Util::Jar
     end
     
     typesig { [JavaFile, ::Java::Boolean, ::Java::Int] }
-    # 
     # Creates a new <code>JarFile</code> to read from the specified
     # <code>File</code> object in the specified mode.  The mode argument
     # must be either <tt>OPEN_READ</tt> or <tt>OPEN_READ | OPEN_DELETE</tt>.
@@ -198,7 +190,6 @@ module Java::Util::Jar
     end
     
     typesig { [] }
-    # 
     # Returns the jar file manifest, or <code>null</code> if none.
     # 
     # @return the jar file manifest, or <code>null</code> if none
@@ -238,7 +229,6 @@ module Java::Util::Jar
     end
     
     typesig { [String] }
-    # 
     # Returns the <code>JarEntry</code> for the given entry name or
     # <code>null</code> if not found.
     # 
@@ -255,7 +245,6 @@ module Java::Util::Jar
     end
     
     typesig { [String] }
-    # 
     # Returns the <code>ZipEntry</code> for the given entry name or
     # <code>null</code> if not found.
     # 
@@ -276,7 +265,6 @@ module Java::Util::Jar
     end
     
     typesig { [] }
-    # 
     # Returns an enumeration of the zip file entries.
     def entries
       enum_ = super
@@ -358,7 +346,6 @@ module Java::Util::Jar
     }
     
     typesig { [] }
-    # 
     # Ensures that the JarVerifier has been created if one is
     # necessary (i.e., the jar appears to be signed.) This is done as
     # a quick check to avoid processing of the manifest for unsigned
@@ -390,7 +377,6 @@ module Java::Util::Jar
     end
     
     typesig { [] }
-    # 
     # Initializes the verifier object by reading all the manifest
     # entries and passing them to the verifier.
     def initialize_verifier
@@ -440,7 +426,6 @@ module Java::Util::Jar
     end
     
     typesig { [ZipEntry] }
-    # 
     # Reads all the bytes for a given entry. Used to process the
     # META-INF files.
     def get_bytes(ze)
@@ -452,7 +437,6 @@ module Java::Util::Jar
     end
     
     typesig { [ZipEntry] }
-    # 
     # Returns an input stream for reading the contents of the specified
     # zip file entry.
     # @param ze the zip file entry
@@ -600,7 +584,7 @@ module Java::Util::Jar
               end
               @has_class_path_attribute = true
               break
-            end == :thrown or break
+            end
           end
         end
       end
@@ -660,13 +644,13 @@ module Java::Util::Jar
       name = get_name
       local_java_home = self.attr_java_home
       if (name.starts_with(local_java_home))
-        names_ = self.attr_jar_names
-        i_ = 0
-        while i_ < names_.attr_length
-          if (name.ends_with(names_[i_]))
+        names = self.attr_jar_names
+        i = 0
+        while i < names.attr_length
+          if (name.ends_with(names[i]))
             return true
           end
-          ((i_ += 1) - 1)
+          ((i += 1) - 1)
         end
       end
       return false

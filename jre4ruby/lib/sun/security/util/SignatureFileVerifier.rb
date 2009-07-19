@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 1997-2006 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -117,7 +116,6 @@ module Sun::Security::Util
     undef_method :certificate_factory=
     
     typesig { [ArrayList, ManifestDigester, String, Array.typed(::Java::Byte)] }
-    # 
     # Create the named SignatureFileVerifier.
     # 
     # @param name the name of the signature block file (.DSA/.RSA)
@@ -149,14 +147,12 @@ module Sun::Security::Util
     end
     
     typesig { [] }
-    # 
     # returns true if we need the .SF file
     def need_signature_file_bytes
       return (@sf_bytes).nil?
     end
     
     typesig { [String] }
-    # 
     # returns true if we need this .SF file.
     # 
     # @param name the name of the .SF file without the extension
@@ -165,7 +161,6 @@ module Sun::Security::Util
     end
     
     typesig { [Array.typed(::Java::Byte)] }
-    # 
     # used to set the raw bytes of the .SF file when it
     # is external to the signature block file.
     def set_signature_file(sf_bytes)
@@ -174,7 +169,6 @@ module Sun::Security::Util
     
     class_module.module_eval {
       typesig { [String] }
-      # 
       # Utility method used by JarVerifier and JarSigner
       # to determine the signature file names and PKCS7 block
       # files names that are supported
@@ -210,7 +204,6 @@ module Sun::Security::Util
     end
     
     typesig { [Hashtable] }
-    # 
     # process the signature block file. Goes through the .SF file
     # and adds code signers for each section where the .SF section
     # hash was verified against the Manifest section.
@@ -277,7 +270,6 @@ module Sun::Security::Util
     end
     
     typesig { [Manifest, ManifestDigester, BASE64Decoder] }
-    # 
     # See if the whole manifest was signed.
     def verify_manifest_hash(sf, md, decoder)
       mattr = sf.get_main_attributes
@@ -351,7 +343,6 @@ module Sun::Security::Util
     end
     
     typesig { [Attributes, String, ManifestDigester, BASE64Decoder] }
-    # 
     # given the .SF digest header, and the data from the
     # section in the manifest, see if the hashes match.
     # if not, throw a SecurityException.
@@ -418,7 +409,6 @@ module Sun::Security::Util
     end
     
     typesig { [Array.typed(SignerInfo), PKCS7] }
-    # 
     # Given the PKCS7 block and SignerInfo[], create an array of
     # CodeSigner objects. We do this only *once* for a given
     # signature block file.
@@ -447,7 +437,6 @@ module Sun::Security::Util
     end
     
     typesig { [SignerInfo] }
-    # 
     # Examines a signature timestamp token to generate a timestamp object.
     # 
     # Examines the signer's unsigned attributes for a
@@ -497,7 +486,6 @@ module Sun::Security::Util
       const_attr_reader  :Hexc
       
       typesig { [Array.typed(::Java::Byte)] }
-      # 
       # convert a byte array to a hex string for debugging purposes
       # @param data the binary data to be converted to a hex string
       # @return an ASCII hex string
@@ -544,7 +532,6 @@ module Sun::Security::Util
       end
       
       typesig { [Array.typed(CodeSigner), Array.typed(CodeSigner), Array.typed(CodeSigner)] }
-      # 
       # returns true if signer contains exactly the same code signers as
       # oldSigner and newSigner, false otherwise. oldSigner
       # is allowed to be null.

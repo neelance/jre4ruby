@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 2005-2006 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -108,7 +107,6 @@ module Sun::Net::Www::Protocol::Http
     undef_method :negotiator=
     
     typesig { [::Java::Boolean, URL, PasswordAuthentication, String] }
-    # 
     # Constructor used for WWW entries. <code>pw</code> is not used because
     # for GSS there is only one single PasswordAuthentication which is
     # independant of host/port/... info.
@@ -122,7 +120,6 @@ module Sun::Net::Www::Protocol::Http
     end
     
     typesig { [::Java::Boolean, String, ::Java::Int, PasswordAuthentication, String] }
-    # 
     # Constructor used for proxy entries
     def initialize(is_proxy, host, port, pw, scheme)
       @scheme = nil
@@ -134,7 +131,6 @@ module Sun::Net::Www::Protocol::Http
     end
     
     typesig { [] }
-    # 
     # @return true if this authentication supports preemptive authorization
     def supports_preemptive_authorization
       return false
@@ -142,7 +138,6 @@ module Sun::Net::Www::Protocol::Http
     
     class_module.module_eval {
       typesig { [String, String] }
-      # 
       # Find out if a hostname supports Negotiate protocol. In order to find
       # out yes or no, an initialization of a Negotiator object against
       # hostname and scheme is tried. The generated object will be cached
@@ -180,7 +175,6 @@ module Sun::Net::Www::Protocol::Http
     }
     
     typesig { [] }
-    # 
     # @return the name of the HTTP header this authentication wants to set
     def get_header_name
       if ((self.attr_type).equal?(SERVER_AUTHENTICATION))
@@ -191,14 +185,12 @@ module Sun::Net::Www::Protocol::Http
     end
     
     typesig { [URL, String] }
-    # 
     # Not supported. Must use the setHeaders() method
     def get_header_value(url, method)
       raise RuntimeException.new("getHeaderValue not supported")
     end
     
     typesig { [String] }
-    # 
     # Check if the header indicates that the current auth. parameters are stale.
     # If so, then replace the relevant field with the new value
     # and return true. Otherwise return false.
@@ -211,7 +203,6 @@ module Sun::Net::Www::Protocol::Http
     end
     
     typesig { [HttpURLConnection, HeaderParser, String] }
-    # 
     # Set header(s) on the given connection.
     # @param conn The connection to apply the header(s) to
     # @param p A source of header values for this connection, not used because
@@ -237,7 +228,6 @@ module Sun::Net::Www::Protocol::Http
     end
     
     typesig { [] }
-    # 
     # return the first token.
     # @returns the token
     # @throws IOException if <code>Negotiator.getSupported()</code> or
@@ -265,7 +255,6 @@ module Sun::Net::Www::Protocol::Http
     end
     
     typesig { [Array.typed(::Java::Byte)] }
-    # 
     # return more tokens
     # @param token the token to be fed into <code>negotiator.nextToken()</code>
     # @returns the token
@@ -276,7 +265,6 @@ module Sun::Net::Www::Protocol::Http
     end
     
     typesig { [String, String, URL] }
-    # 
     # no-use for Negotiate
     def check_response(header, method, url)
     end
@@ -305,7 +293,6 @@ module Sun::Net::Www::Protocol::Http
     alias_method :initialize__negotiate_authentication, :initialize
   end
   
-  # 
   # This abstract class is a bridge to connect NegotiteAuthentication and
   # NegotiatorImpl, so that JAAS and JGSS calls can be made
   class Negotiator 

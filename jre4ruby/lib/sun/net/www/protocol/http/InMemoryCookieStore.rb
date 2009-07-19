@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 2005 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -43,7 +42,6 @@ module Sun::Net::Www::Protocol::Http
     }
   end
   
-  # 
   # A simple in-memory java.net.CookieStore implementation
   # 
   # @author Edward Wang
@@ -83,7 +81,6 @@ module Sun::Net::Www::Protocol::Http
     undef_method :lock=
     
     typesig { [] }
-    # 
     # The default ctor
     def initialize
       @cookie_jar = nil
@@ -97,7 +94,6 @@ module Sun::Net::Www::Protocol::Http
     end
     
     typesig { [URI, HttpCookie] }
-    # 
     # Add one cookie into cookie store.
     def add(uri, cookie)
       # pre-condition : argument can't be null
@@ -122,7 +118,6 @@ module Sun::Net::Www::Protocol::Http
     end
     
     typesig { [URI] }
-    # 
     # Get all cookies, which:
     # 1) given uri domain-matches with, or, associated with
     # given uri when added to the cookie store.
@@ -147,7 +142,6 @@ module Sun::Net::Www::Protocol::Http
     end
     
     typesig { [] }
-    # 
     # Get all cookies in cookie store, except those have expired
     def get_cookies
       rt = nil
@@ -167,7 +161,6 @@ module Sun::Net::Www::Protocol::Http
     end
     
     typesig { [] }
-    # 
     # Get all URIs, which are associated with at least one cookie
     # of this cookie store.
     def get_uris
@@ -192,7 +185,6 @@ module Sun::Net::Www::Protocol::Http
     end
     
     typesig { [URI, HttpCookie] }
-    # 
     # Remove a cookie from store
     def remove(uri, ck)
       # argument can't be null
@@ -210,7 +202,6 @@ module Sun::Net::Www::Protocol::Http
     end
     
     typesig { [] }
-    # 
     # Remove all cookies in this cookie store.
     def remove_all
       @lock.lock
@@ -310,7 +301,6 @@ module Sun::Net::Www::Protocol::Http
     end
     
     typesig { [URI] }
-    # 
     # for cookie purpose, the effective uri should only be scheme://authority
     # the path will be taken into account when path-match algorithm applied
     def get_effective_uri(uri)

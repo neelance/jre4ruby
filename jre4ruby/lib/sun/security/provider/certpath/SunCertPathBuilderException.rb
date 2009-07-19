@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 2000-2004 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -33,7 +32,6 @@ module Sun::Security::Provider::Certpath
     }
   end
   
-  # 
   # This is a subclass of the generic <code>CertPathBuilderException</code>.
   # It contains an adjacency list with information regarding the unsuccessful
   # paths that the SunCertPathBuilder tried.
@@ -49,7 +47,6 @@ module Sun::Security::Provider::Certpath
       const_attr_reader  :SerialVersionUID
     }
     
-    # 
     # @serial
     attr_accessor :adj_list
     alias_method :attr_adj_list, :adj_list
@@ -58,7 +55,6 @@ module Sun::Security::Provider::Certpath
     undef_method :adj_list=
     
     typesig { [] }
-    # 
     # Constructs a <code>SunCertPathBuilderException</code> with
     # <code>null</code> as its detail message.
     def initialize
@@ -67,7 +63,6 @@ module Sun::Security::Provider::Certpath
     end
     
     typesig { [String] }
-    # 
     # Constructs a <code>SunCertPathBuilderException</code> with the specified
     # detail message. A detail message is a <code>String</code> that
     # describes this particular exception.
@@ -79,7 +74,6 @@ module Sun::Security::Provider::Certpath
     end
     
     typesig { [Exception] }
-    # 
     # Constructs a <code>SunCertPathBuilderException</code> that wraps the
     # specified throwable. This allows any exception to be converted into a
     # <code>SunCertPathBuilderException</code>, while retaining information
@@ -97,7 +91,6 @@ module Sun::Security::Provider::Certpath
     end
     
     typesig { [String, Exception] }
-    # 
     # Creates a <code>SunCertPathBuilderException</code> with the specified
     # detail message and cause.
     # 
@@ -109,7 +102,6 @@ module Sun::Security::Provider::Certpath
     end
     
     typesig { [String, AdjacencyList] }
-    # 
     # Creates a <code>SunCertPathBuilderException</code> withe the specified
     # detail message and adjacency list.
     # 
@@ -121,7 +113,6 @@ module Sun::Security::Provider::Certpath
     end
     
     typesig { [String, Exception, AdjacencyList] }
-    # 
     # Creates a <code>SunCertPathBuilderException</code> with the specified
     # detail message, cause, and adjacency list.
     # 
@@ -134,7 +125,6 @@ module Sun::Security::Provider::Certpath
     end
     
     typesig { [] }
-    # 
     # Returns the adjacency list containing information about the build.
     # 
     # @return the adjacency list containing information about the build

@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
 # This code is free software; you can redistribute it and/or modify it
@@ -40,7 +39,6 @@ module Java::Util::Concurrent
     }
   end
   
-  # 
   # Exception thrown when a blocking operation times out.  Blocking
   # operations for which a timeout is specified need a means to
   # indicate that the timeout has occurred. For many such operations it
@@ -59,7 +57,6 @@ module Java::Util::Concurrent
     }
     
     typesig { [] }
-    # 
     # Constructs a <tt>TimeoutException</tt> with no specified detail
     # message.
     def initialize
@@ -67,7 +64,6 @@ module Java::Util::Concurrent
     end
     
     typesig { [String] }
-    # 
     # Constructs a <tt>TimeoutException</tt> with the specified detail
     # message.
     # 

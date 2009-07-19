@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Portions Copyright 2000-2005 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -111,7 +110,6 @@ module Sun::Security::Krb5::Internal::Crypto
       end
       
       typesig { [] }
-      # 
       # Returns default checksum type.
       def get_instance
         # this method provided for Kerberos applications.

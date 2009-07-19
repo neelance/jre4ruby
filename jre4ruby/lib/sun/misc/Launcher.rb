@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 1998-2005 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -55,7 +54,6 @@ module Sun::Misc
     }
   end
   
-  # 
   # This class is used by the system to launch the main application.
   # Launcher
   class Launcher 
@@ -138,14 +136,12 @@ module Sun::Misc
     end
     
     typesig { [] }
-    # 
     # Returns the class loader used to launch the main application.
     def get_class_loader
       return @loader
     end
     
     class_module.module_eval {
-      # 
       # The class loader used for loading installed extensions.
       const_set_lazy(:ExtClassLoader) { Class.new(URLClassLoader) do
         include_class_members Launcher
@@ -158,7 +154,6 @@ module Sun::Misc
         
         class_module.module_eval {
           typesig { [] }
-          # 
           # create an ExtClassLoader. The ExtClassLoader is created
           # within a context that limits which files it can read
           def get_ext_class_loader
@@ -203,7 +198,6 @@ module Sun::Misc
         end
         
         typesig { [Array.typed(JavaFile)] }
-        # 
         # Creates a new ExtClassLoader for the specified directories.
         def initialize(dirs)
           @dirs = nil
@@ -256,7 +250,6 @@ module Sun::Misc
         }
         
         typesig { [String] }
-        # 
         # Searches the installed extension directories for the specified
         # library name. For each extension directory, we first look for
         # the native library in the subdirectory whose name is the value
@@ -275,9 +268,9 @@ module Sun::Misc
               end
             end
             # Then check the extension directory
-            file_ = JavaFile.new(@dirs[i], name)
-            if (file_.exists)
-              return file_.get_absolute_path
+            file = JavaFile.new(@dirs[i], name)
+            if (file.exists)
+              return file.get_absolute_path
             end
             ((i += 1) - 1)
           end
@@ -298,7 +291,6 @@ module Sun::Misc
         alias_method :initialize__ext_class_loader, :initialize
       end }
       
-      # 
       # The class loader used for loading from java.class.path.
       # runs in a restricted security context.
       const_set_lazy(:AppClassLoader) { Class.new(URLClassLoader) do
@@ -338,14 +330,12 @@ module Sun::Misc
         }
         
         typesig { [Array.typed(URL), ClassLoader] }
-        # 
         # Creates a new AppClassLoader
         def initialize(urls, parent)
           super(urls, parent, self.attr_factory)
         end
         
         typesig { [String, ::Java::Boolean] }
-        # 
         # Override loadClass so we can checkPackageAccess.
         def load_class(name, resolve)
           synchronized(self) do
@@ -361,7 +351,6 @@ module Sun::Misc
         end
         
         typesig { [CodeSource] }
-        # 
         # allow any classes loaded from classpath to exit the VM.
         def get_permissions(codesource)
           perms = super(codesource)
@@ -370,7 +359,6 @@ module Sun::Misc
         end
         
         typesig { [String] }
-        # 
         # This class loader supports dynamic additions to the class path
         # at runtime.
         # 
@@ -383,7 +371,6 @@ module Sun::Misc
         
         class_module.module_eval {
           typesig { [Array.typed(JavaFile)] }
-          # 
           # create a context that can read any directories (recursively)
           # mentioned in the class path. In the case of a jar, it has to
           # be the directory containing the jar, not just the jar, as jar
@@ -533,7 +520,6 @@ module Sun::Misc
         end
       end
       
-      # 
       # The stream handler factory for loading system protocol handlers.
       const_set_lazy(:Factory) { Class.new do
         include_class_members Launcher
@@ -561,9 +547,9 @@ module Sun::Misc
           rescue ClassNotFoundException => e
             e.print_stack_trace
           rescue InstantiationException => e
-            e_.print_stack_trace
+            e.print_stack_trace
           rescue IllegalAccessException => e
-            e__.print_stack_trace
+            e.print_stack_trace
           end
           raise InternalError.new("could not load " + protocol + "system protocol handler")
         end

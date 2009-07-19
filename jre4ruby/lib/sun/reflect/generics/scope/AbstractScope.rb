@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 2003 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -33,7 +32,6 @@ module Sun::Reflect::Generics::Scope
     }
   end
   
-  # 
   # Abstract superclass for lazy scope objects, used when building
   # factories for generic information repositories.
   # The type parameter <tt>D</tt> represents the type of reflective
@@ -71,7 +69,6 @@ module Sun::Reflect::Generics::Scope
     end
     
     typesig { [] }
-    # 
     # Accessor for the receiver - the object whose scope this <tt>Scope</tt>
     # object represents.
     # @return The object whose scope this <tt>Scope</tt> object represents
@@ -89,7 +86,6 @@ module Sun::Reflect::Generics::Scope
     end
     
     typesig { [] }
-    # 
     # Accessor for the enclosing scope, which is computed lazily and cached.
     # @return the enclosing scope
     def get_enclosing_scope
@@ -100,7 +96,6 @@ module Sun::Reflect::Generics::Scope
     end
     
     typesig { [String] }
-    # 
     # Lookup a type variable in the scope, using its name. Returns null if
     # no type variable with this name is declared in this scope or any of its
     # surrounding scopes.

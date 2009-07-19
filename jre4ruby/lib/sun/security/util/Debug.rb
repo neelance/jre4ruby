@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 1998-2007 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -34,7 +33,6 @@ module Sun::Security::Util
     }
   end
   
-  # 
   # A utility class for debuging.
   # 
   # @author Roland Schemers
@@ -114,7 +112,6 @@ module Sun::Security::Util
       end
       
       typesig { [String] }
-      # 
       # Get a Debug object corresponding to whether or not the given
       # option is set. Set the prefix to be the same as option.
       def get_instance(option)
@@ -122,7 +119,6 @@ module Sun::Security::Util
       end
       
       typesig { [String, String] }
-      # 
       # Get a Debug object corresponding to whether or not the given
       # option is set. Set the prefix to be prefix.
       def get_instance(option, prefix)
@@ -136,7 +132,6 @@ module Sun::Security::Util
       end
       
       typesig { [String] }
-      # 
       # True if the system property "security.debug" contains the
       # string "option".
       def is_on(option)
@@ -153,7 +148,6 @@ module Sun::Security::Util
     }
     
     typesig { [String] }
-    # 
     # print a message to stderr that is prefixed with the prefix
     # created from the call to getInstance.
     def println(message)
@@ -161,7 +155,6 @@ module Sun::Security::Util
     end
     
     typesig { [] }
-    # 
     # print a blank line to stderr that is prefixed with the prefix.
     def println
       System.err.println(@prefix + ":")
@@ -169,14 +162,12 @@ module Sun::Security::Util
     
     class_module.module_eval {
       typesig { [String, String] }
-      # 
       # print a message to stderr that is prefixed with the prefix.
       def println(prefix, message)
         System.err.println(prefix + ": " + message)
       end
       
       typesig { [BigInteger] }
-      # 
       # return a hexadecimal printed representation of the specified
       # BigInteger object. the value is formatted to fit on lines of
       # at least 75 characters, with embedded newlines. Words are
@@ -213,7 +204,6 @@ module Sun::Security::Util
       end
       
       typesig { [String] }
-      # 
       # change a string into lower case except permission classes and URLs.
       def marshal(args)
         if (!(args).nil?)
@@ -252,8 +242,8 @@ module Sun::Security::Util
           matcher_ = pattern.matcher(source)
           left = StringBuffer.new
           while (matcher_.find)
-            matched_ = matcher_.group
-            target.append(matched_.replace_first(key_reg, key_str))
+            matched = matcher_.group
+            target.append(matched.replace_first(key_reg, key_str))
             target.append("  ")
             # delete the matched sequence
             matcher_.append_replacement(left, "")

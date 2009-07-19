@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 1996-2002 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -32,7 +31,6 @@ module Sun::Net::Www
     }
   end
   
-  # 
   # public static void main(String[] a) throws Exception {
   # System.out.print("enter line to parse> ");
   # System.out.flush();
@@ -113,7 +111,6 @@ module Sun::Net::Www
     end
     
     typesig { [::Java::Int, ::Java::Int] }
-    # 
     # create a new HeaderParser from this, whose keys (and corresponding values)
     # range from "start" to "end-1"
     def subsequence(start, end_)

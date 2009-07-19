@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 1996-2006 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -40,7 +39,6 @@ module Java::Lang::Reflect
     }
   end
   
-  # 
   # A {@code Field} provides information about, and dynamic access to, a
   # single field of a class or an interface.  The reflected field may
   # be a class (static) field or an instance field.
@@ -177,7 +175,6 @@ module Java::Lang::Reflect
     end
     
     typesig { [Class, String, Class, ::Java::Int, ::Java::Int, String, Array.typed(::Java::Byte)] }
-    # 
     # Package-private constructor used by ReflectAccess to enable
     # instantiation of these objects in Java code from the java.lang
     # package via sun.reflect.LangReflectAccess.
@@ -207,7 +204,6 @@ module Java::Lang::Reflect
     end
     
     typesig { [] }
-    # 
     # Package-private routine (exposed to java.lang.Class via
     # ReflectAccess) which returns a copy of this Field. The copy's
     # "root" field points to this Field.
@@ -228,7 +224,6 @@ module Java::Lang::Reflect
     end
     
     typesig { [] }
-    # 
     # Returns the {@code Class} object representing the class or interface
     # that declares the field represented by this {@code Field} object.
     def get_declaring_class
@@ -236,14 +231,12 @@ module Java::Lang::Reflect
     end
     
     typesig { [] }
-    # 
     # Returns the name of the field represented by this {@code Field} object.
     def get_name
       return @name
     end
     
     typesig { [] }
-    # 
     # Returns the Java language modifiers for the field represented
     # by this {@code Field} object, as an integer. The {@code Modifier} class should
     # be used to decode the modifiers.
@@ -254,7 +247,6 @@ module Java::Lang::Reflect
     end
     
     typesig { [] }
-    # 
     # Returns {@code true} if this field represents an element of
     # an enumerated type; returns {@code false} otherwise.
     # 
@@ -266,7 +258,6 @@ module Java::Lang::Reflect
     end
     
     typesig { [] }
-    # 
     # Returns {@code true} if this field is a synthetic
     # field; returns {@code false} otherwise.
     # 
@@ -278,7 +269,6 @@ module Java::Lang::Reflect
     end
     
     typesig { [] }
-    # 
     # Returns a {@code Class} object that identifies the
     # declared type for the field represented by this
     # {@code Field} object.
@@ -290,7 +280,6 @@ module Java::Lang::Reflect
     end
     
     typesig { [] }
-    # 
     # Returns a {@code Type} object that represents the declared type for
     # the field represented by this {@code Field} object.
     # 
@@ -322,7 +311,6 @@ module Java::Lang::Reflect
     end
     
     typesig { [Object] }
-    # 
     # Compares this {@code Field} against the specified object.  Returns
     # true if the objects are the same.  Two {@code Field} objects are the same if
     # they were declared by the same class and have the same name
@@ -336,7 +324,6 @@ module Java::Lang::Reflect
     end
     
     typesig { [] }
-    # 
     # Returns a hashcode for this {@code Field}.  This is computed as the
     # exclusive-or of the hashcodes for the underlying field's
     # declaring class name and its name.
@@ -345,7 +332,6 @@ module Java::Lang::Reflect
     end
     
     typesig { [] }
-    # 
     # Returns a string describing this {@code Field}.  The format is
     # the access modifiers for the field, if any, followed
     # by the field type, followed by a space, followed by
@@ -368,7 +354,6 @@ module Java::Lang::Reflect
     end
     
     typesig { [] }
-    # 
     # Returns a string describing this {@code Field}, including
     # its generic type.  The format is the access modifiers for the
     # field, if any, followed by the generic field type, followed by
@@ -393,7 +378,6 @@ module Java::Lang::Reflect
     end
     
     typesig { [Object] }
-    # 
     # Returns the value of the field represented by this {@code Field}, on
     # the specified object. The value is automatically wrapped in an
     # object if it has a primitive type.
@@ -443,7 +427,6 @@ module Java::Lang::Reflect
     end
     
     typesig { [Object] }
-    # 
     # Gets the value of a static or instance {@code boolean} field.
     # 
     # @param obj the object to extract the {@code boolean} value
@@ -468,7 +451,6 @@ module Java::Lang::Reflect
     end
     
     typesig { [Object] }
-    # 
     # Gets the value of a static or instance {@code byte} field.
     # 
     # @param obj the object to extract the {@code byte} value
@@ -493,7 +475,6 @@ module Java::Lang::Reflect
     end
     
     typesig { [Object] }
-    # 
     # Gets the value of a static or instance field of type
     # {@code char} or of another primitive type convertible to
     # type {@code char} via a widening conversion.
@@ -520,7 +501,6 @@ module Java::Lang::Reflect
     end
     
     typesig { [Object] }
-    # 
     # Gets the value of a static or instance field of type
     # {@code short} or of another primitive type convertible to
     # type {@code short} via a widening conversion.
@@ -547,7 +527,6 @@ module Java::Lang::Reflect
     end
     
     typesig { [Object] }
-    # 
     # Gets the value of a static or instance field of type
     # {@code int} or of another primitive type convertible to
     # type {@code int} via a widening conversion.
@@ -574,7 +553,6 @@ module Java::Lang::Reflect
     end
     
     typesig { [Object] }
-    # 
     # Gets the value of a static or instance field of type
     # {@code long} or of another primitive type convertible to
     # type {@code long} via a widening conversion.
@@ -601,7 +579,6 @@ module Java::Lang::Reflect
     end
     
     typesig { [Object] }
-    # 
     # Gets the value of a static or instance field of type
     # {@code float} or of another primitive type convertible to
     # type {@code float} via a widening conversion.
@@ -628,7 +605,6 @@ module Java::Lang::Reflect
     end
     
     typesig { [Object] }
-    # 
     # Gets the value of a static or instance field of type
     # {@code double} or of another primitive type convertible to
     # type {@code double} via a widening conversion.
@@ -655,7 +631,6 @@ module Java::Lang::Reflect
     end
     
     typesig { [Object, Object] }
-    # 
     # Sets the field represented by this {@code Field} object on the
     # specified object argument to the specified new value. The new
     # value is automatically unwrapped if the underlying field has a
@@ -724,7 +699,6 @@ module Java::Lang::Reflect
     end
     
     typesig { [Object, ::Java::Boolean] }
-    # 
     # Sets the value of a field as a {@code boolean} on the specified object.
     # This method is equivalent to
     # {@code set(obj, zObj)},
@@ -751,7 +725,6 @@ module Java::Lang::Reflect
     end
     
     typesig { [Object, ::Java::Byte] }
-    # 
     # Sets the value of a field as a {@code byte} on the specified object.
     # This method is equivalent to
     # {@code set(obj, bObj)},
@@ -778,7 +751,6 @@ module Java::Lang::Reflect
     end
     
     typesig { [Object, ::Java::Char] }
-    # 
     # Sets the value of a field as a {@code char} on the specified object.
     # This method is equivalent to
     # {@code set(obj, cObj)},
@@ -805,7 +777,6 @@ module Java::Lang::Reflect
     end
     
     typesig { [Object, ::Java::Short] }
-    # 
     # Sets the value of a field as a {@code short} on the specified object.
     # This method is equivalent to
     # {@code set(obj, sObj)},
@@ -832,7 +803,6 @@ module Java::Lang::Reflect
     end
     
     typesig { [Object, ::Java::Int] }
-    # 
     # Sets the value of a field as an {@code int} on the specified object.
     # This method is equivalent to
     # {@code set(obj, iObj)},
@@ -859,7 +829,6 @@ module Java::Lang::Reflect
     end
     
     typesig { [Object, ::Java::Long] }
-    # 
     # Sets the value of a field as a {@code long} on the specified object.
     # This method is equivalent to
     # {@code set(obj, lObj)},
@@ -886,7 +855,6 @@ module Java::Lang::Reflect
     end
     
     typesig { [Object, ::Java::Float] }
-    # 
     # Sets the value of a field as a {@code float} on the specified object.
     # This method is equivalent to
     # {@code set(obj, fObj)},
@@ -913,7 +881,6 @@ module Java::Lang::Reflect
     end
     
     typesig { [Object, ::Java::Double] }
-    # 
     # Sets the value of a field as a {@code double} on the specified object.
     # This method is equivalent to
     # {@code set(obj, dObj)},
@@ -1021,7 +988,6 @@ module Java::Lang::Reflect
     
     class_module.module_eval {
       typesig { [Class] }
-      # 
       # Utility routine to paper over array type names
       def get_type_name(type)
         if (type.is_array)
@@ -1049,7 +1015,6 @@ module Java::Lang::Reflect
     }
     
     typesig { [Class] }
-    # 
     # @throws NullPointerException {@inheritDoc}
     # @since 1.5
     def get_annotation(annotation_class)
@@ -1065,7 +1030,6 @@ module Java::Lang::Reflect
     }
     
     typesig { [] }
-    # 
     # @since 1.5
     def get_declared_annotations
       return declared_annotations.values.to_array(EMPTY_ANNOTATION_ARRAY)

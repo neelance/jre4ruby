@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 2003-2004 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -31,7 +30,6 @@ module Java::Lang::Annotation
     }
   end
   
-  # 
   # Annotation retention policy.  The constants of this enumerated type
   # describe the various policies for retaining annotations.  They are used
   # in conjunction with the {@link Retention} meta-annotation type to specify
@@ -43,19 +41,16 @@ module Java::Lang::Annotation
     include_class_members RetentionPolicyImports
     
     class_module.module_eval {
-      # 
       # Annotations are to be discarded by the compiler.
       const_set_lazy(:SOURCE) { RetentionPolicy.new.set_value_name("SOURCE") }
       const_attr_reader  :SOURCE
       
-      # 
       # Annotations are to be recorded in the class file by the compiler
       # but need not be retained by the VM at run time.  This is the default
       # behavior.
       const_set_lazy(:CLASS) { RetentionPolicy.new.set_value_name("CLASS") }
       const_attr_reader  :CLASS
       
-      # 
       # Annotations are to be recorded in the class file by the compiler and
       # retained by the VM at run time, so they may be read reflectively.
       # 

@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 2003 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -33,7 +32,6 @@ module Sun::Reflect::Generics::ReflectiveObjects
     }
   end
   
-  # 
   # Common infrastructure for things that lazily generate reflective generics
   # objects.
   # <p> In all these cases, one needs produce a visitor that will, on demand,

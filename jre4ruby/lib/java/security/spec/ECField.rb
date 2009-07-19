@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 2003 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -33,7 +32,6 @@ module Java::Security::Spec
     }
   end
   
-  # 
   # This interface represents an elliptic curve (EC) finite field.
   # All specialized EC fields must implements this interface.
   # 
@@ -47,7 +45,6 @@ module Java::Security::Spec
     include_class_members ECFieldImports
     
     typesig { [] }
-    # 
     # Returns the field size in bits. Note: For prime finite
     # field ECFieldFp, size of prime p in bits is returned.
     # For characteristic 2 finite field ECFieldF2m, m is returned.

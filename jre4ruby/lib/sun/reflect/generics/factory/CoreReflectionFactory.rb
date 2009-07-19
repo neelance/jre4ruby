@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 2003 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -41,7 +40,6 @@ module Sun::Reflect::Generics::Factory
     }
   end
   
-  # 
   # Factory for reflective generic type objects for use by
   # core reflection (java.lang.reflect).
   class CoreReflectionFactory 
@@ -92,7 +90,6 @@ module Sun::Reflect::Generics::Factory
     
     class_module.module_eval {
       typesig { [GenericDeclaration, Scope] }
-      # 
       # Factory for this class. Returns an instance of
       # <tt>CoreReflectionFactory</tt> for the declaration and scope
       # provided.

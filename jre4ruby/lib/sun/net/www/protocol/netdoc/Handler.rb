@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 1996-1998 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -62,7 +61,6 @@ module Sun::Net::Www::Protocol::Netdoc
     }
     
     typesig { [URL] }
-    # 
     # Attempt to find a load the given url using the default (network)
     # documentation location.  If that fails, use the local copy
     def open_connection(u)

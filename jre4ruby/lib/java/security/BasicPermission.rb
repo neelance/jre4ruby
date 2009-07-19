@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 1997-2007 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -43,7 +42,6 @@ module Java::Security
     }
   end
   
-  # 
   # The BasicPermission class extends the Permission class, and
   # can be used as the base class for permissions that want to
   # follow the same naming convention as BasicPermission.
@@ -110,7 +108,6 @@ module Java::Security
     undef_method :exit_vm=
     
     typesig { [String] }
-    # 
     # initialize a BasicPermission object. Common to all constructors.
     def init(name)
       if ((name).nil?)
@@ -141,7 +138,6 @@ module Java::Security
     end
     
     typesig { [String] }
-    # 
     # Creates a new BasicPermission with the specified name.
     # Name is the symbolic name of the permission, such as
     # "setFactory",
@@ -160,7 +156,6 @@ module Java::Security
     end
     
     typesig { [String, String] }
-    # 
     # Creates a new BasicPermission object with the specified name.
     # The name is the symbolic name of the BasicPermission, and the
     # actions String is currently unused.
@@ -179,7 +174,6 @@ module Java::Security
     end
     
     typesig { [Permission] }
-    # 
     # Checks if the specified permission is "implied" by
     # this object.
     # <P>
@@ -219,7 +213,6 @@ module Java::Security
     end
     
     typesig { [Object] }
-    # 
     # Checks two BasicPermission objects for equality.
     # Checks that <i>obj</i>'s class is the same as this object's class
     # and has the same name as this object.
@@ -239,7 +232,6 @@ module Java::Security
     end
     
     typesig { [] }
-    # 
     # Returns the hash code value for this object.
     # The hash code used is the hash code of the name, that is,
     # <code>getName().hashCode()</code>, where <code>getName</code> is
@@ -251,7 +243,6 @@ module Java::Security
     end
     
     typesig { [] }
-    # 
     # Returns the canonical string representation of the actions,
     # which currently is the empty string "", since there are no actions for
     # a BasicPermission.
@@ -262,7 +253,6 @@ module Java::Security
     end
     
     typesig { [] }
-    # 
     # Returns a new PermissionCollection object for storing BasicPermission
     # objects.
     # 
@@ -278,7 +268,6 @@ module Java::Security
     end
     
     typesig { [ObjectInputStream] }
-    # 
     # readObject is called to restore the state of the BasicPermission from
     # a stream.
     def read_object(s)
@@ -288,7 +277,6 @@ module Java::Security
     end
     
     typesig { [] }
-    # 
     # Returns the canonical name of this BasicPermission.
     # All internal invocations of getName should invoke this method, so
     # that the pre-JDK 1.6 "exitVM" and current "exitVM.*" permission are
@@ -303,7 +291,6 @@ module Java::Security
     alias_method :initialize__basic_permission, :initialize
   end
   
-  # 
   # A BasicPermissionCollection stores a collection
   # of BasicPermission permissions. BasicPermission objects
   # must be stored in a manner that allows them to be inserted in any
@@ -330,7 +317,6 @@ module Java::Security
       const_attr_reader  :SerialVersionUID
     }
     
-    # 
     # Key is name, value is permission. All permission objects in
     # collection must be of the same type.
     # Not serialized; see serialization section at end of class.
@@ -340,7 +326,6 @@ module Java::Security
     alias_method :attr_perms=, :perms=
     undef_method :perms=
     
-    # 
     # This is set to <code>true</code> if this BasicPermissionCollection
     # contains a BasicPermission with '*' as its permission name.
     # 
@@ -351,7 +336,6 @@ module Java::Security
     alias_method :attr_all_allowed=, :all_allowed=
     undef_method :all_allowed=
     
-    # 
     # The class to which all BasicPermissions in this
     # BasicPermissionCollection belongs.
     # 
@@ -363,7 +347,6 @@ module Java::Security
     undef_method :perm_class=
     
     typesig { [Class] }
-    # 
     # Create an empty BasicPermissionCollection object.
     def initialize(clazz)
       @perms = nil
@@ -376,7 +359,6 @@ module Java::Security
     end
     
     typesig { [Permission] }
-    # 
     # Adds a permission to the BasicPermissions. The key for the hash is
     # permission.path.
     # 
@@ -421,7 +403,6 @@ module Java::Security
     end
     
     typesig { [Permission] }
-    # 
     # Check and see if this set of permissions implies the permissions
     # expressed in "permission".
     # 
@@ -476,7 +457,6 @@ module Java::Security
     end
     
     typesig { [] }
-    # 
     # Returns an enumeration of all the BasicPermission objects in the
     # container.
     # 
@@ -512,7 +492,6 @@ module Java::Security
     }
     
     typesig { [ObjectOutputStream] }
-    # 
     # @serialData Default fields.
     # 
     # 
@@ -535,7 +514,6 @@ module Java::Security
     end
     
     typesig { [Java::Io::ObjectInputStream] }
-    # 
     # readObject is called to restore the state of the
     # BasicPermissionCollection from a stream.
     def read_object(in_)

@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 2000-2001 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -35,7 +34,6 @@ module Sun::Security::Provider::Certpath
     }
   end
   
-  # 
   # A specification of a PKIX validation state
   # which is initialized by each build and updated each time a
   # certificate is added to the current path.
@@ -48,7 +46,6 @@ module Sun::Security::Provider::Certpath
     include Cloneable
     
     typesig { [X509Certificate] }
-    # 
     # Update the state with the next certificate added to the path.
     # 
     # @param cert the certificate which is used to update the state
@@ -57,14 +54,12 @@ module Sun::Security::Provider::Certpath
     end
     
     typesig { [] }
-    # 
     # Creates and returns a copy of this object
     def clone
       raise NotImplementedError
     end
     
     typesig { [] }
-    # 
     # Returns a boolean flag indicating if the state is initial
     # (just starting)
     # 
@@ -74,7 +69,6 @@ module Sun::Security::Provider::Certpath
     end
     
     typesig { [] }
-    # 
     # Returns a boolean flag indicating if a key lacking necessary key
     # algorithm parameters has been encountered.
     # 

@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 2005-2006 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -42,7 +41,6 @@ module Sun::Net::Httpserver
     }
   end
   
-  # 
   # given a non-blocking SocketChannel, it produces
   # (blocking) streams which encrypt/decrypt the SSL content
   # and handle the SSL handshaking automatically.
@@ -242,14 +240,12 @@ module Sun::Net::Httpserver
     }
     
     typesig { [] }
-    # 
     # cleanup resources allocated inside this object
     def close
       @wrapper.close
     end
     
     typesig { [] }
-    # 
     # return the SSL InputStream
     def get_input_stream
       if ((@is).nil?)
@@ -259,7 +255,6 @@ module Sun::Net::Httpserver
     end
     
     typesig { [] }
-    # 
     # return the SSL OutputStream
     def get_output_stream
       if ((@os).nil?)
@@ -274,7 +269,6 @@ module Sun::Net::Httpserver
     end
     
     typesig { [] }
-    # 
     # request the engine to repeat the handshake on this session
     # the handshake must be driven by reads/writes on the streams
     # Normally, not necessary to call this.
@@ -390,8 +384,8 @@ module Sun::Net::Httpserver
           size = @packet_buf_size
         else
           if ((@app_buf_size).equal?(0))
-            sess_ = @engine.get_session
-            @app_buf_size = sess_.get_application_buffer_size
+            sess = @engine.get_session
+            @app_buf_size = sess.get_application_buffer_size
           end
           if (len > @app_buf_size)
             @app_buf_size = len
@@ -424,7 +418,6 @@ module Sun::Net::Httpserver
     end
     
     class_module.module_eval {
-      # 
       # This is a thin wrapper over SSLEngine and the SocketChannel,
       # which guarantees the ordering of wraps/unwraps with respect to the underlying
       # channel read/writes. It handles the UNDER/OVERFLOW status codes
@@ -678,7 +671,6 @@ module Sun::Net::Httpserver
     }
     
     typesig { [ByteBuffer] }
-    # 
     # send the data in the given ByteBuffer. If a handshake is needed
     # then this is handled within this method. When this call returns,
     # all of the given user data has been sent and any handshake has been
@@ -701,7 +693,6 @@ module Sun::Net::Httpserver
     end
     
     typesig { [ByteBuffer] }
-    # 
     # read data thru the engine into the given ByteBuffer. If the
     # given buffer was not large enough, a new one is allocated
     # and returned. This call handles handshaking automatically.
@@ -788,7 +779,6 @@ module Sun::Net::Httpserver
     end
     
     class_module.module_eval {
-      # 
       # represents an SSL input stream. Multiple https requests can
       # be sent over one stream. closing this stream causes an SSL close
       # input.
@@ -910,7 +900,6 @@ module Sun::Net::Httpserver
         end
         
         typesig { [] }
-        # 
         # close the SSL connection. All data must have been consumed
         # before this is called. Otherwise an exception will be thrown.
         # [Note. May need to revisit this. not quite the normal close() symantics
@@ -944,7 +933,6 @@ module Sun::Net::Httpserver
         alias_method :initialize__input_stream, :initialize
       end }
       
-      # 
       # represents an SSL output stream. plain text data written to this stream
       # is encrypted by the stream. Multiple HTTPS responses can be sent on
       # one stream. closing this stream initiates an SSL closure

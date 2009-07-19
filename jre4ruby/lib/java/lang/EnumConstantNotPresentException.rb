@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 2004 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -30,7 +29,6 @@ module Java::Lang
     }
   end
   
-  # 
   # Thrown when an application tries to access an enum constant by name
   # and the enum type contains no constant with the specified name.
   # 
@@ -39,7 +37,6 @@ module Java::Lang
   class EnumConstantNotPresentException < EnumConstantNotPresentExceptionImports.const_get :RuntimeException
     include_class_members EnumConstantNotPresentExceptionImports
     
-    # 
     # The type of the missing enum constant.
     attr_accessor :enum_type
     alias_method :attr_enum_type, :enum_type
@@ -47,7 +44,6 @@ module Java::Lang
     alias_method :attr_enum_type=, :enum_type=
     undef_method :enum_type=
     
-    # 
     # The name of the missing enum constant.
     attr_accessor :constant_name
     alias_method :attr_constant_name, :constant_name
@@ -56,7 +52,6 @@ module Java::Lang
     undef_method :constant_name=
     
     typesig { [Class, String] }
-    # 
     # Constructs an <tt>EnumConstantNotPresentException</tt> for the
     # specified constant.
     # 
@@ -71,7 +66,6 @@ module Java::Lang
     end
     
     typesig { [] }
-    # 
     # Returns the type of the missing enum constant.
     # 
     # @return the type of the missing enum constant
@@ -80,7 +74,6 @@ module Java::Lang
     end
     
     typesig { [] }
-    # 
     # Returns the name of the missing enum constant.
     # 
     # @return the name of the missing enum constant

@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
 # This code is free software; you can redistribute it and/or modify it
@@ -88,7 +87,6 @@ module Sun::Security::Krb5::Internal::Crypto
     end
     
     typesig { [] }
-    # 
     # Return the digest length in bytes
     def engine_get_digest_length
       return (CRC32_LENGTH)
@@ -128,7 +126,6 @@ module Sun::Security::Krb5::Internal::Crypto
     end
     
     typesig { [::Java::Byte] }
-    # 
     # Update adds the passed byte to the digested data.
     def engine_update(b)
       synchronized(self) do
@@ -140,7 +137,6 @@ module Sun::Security::Krb5::Internal::Crypto
     end
     
     typesig { [Array.typed(::Java::Byte), ::Java::Int, ::Java::Int] }
-    # 
     # Update adds the selected part of an array of bytes to the digest.
     # This version is more efficient than the byte-at-a-time version;
     # it avoids data copies and reduces per-byte call overhead.
@@ -169,7 +165,6 @@ module Sun::Security::Krb5::Internal::Crypto
     end
     
     typesig { [] }
-    # 
     # Initialize the CRC32 information
     def init
       @seed = 0

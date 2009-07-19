@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 1996-1998 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -31,7 +30,6 @@ module Java::Security
     }
   end
   
-  # 
   # This interface represents the abstract notion of a principal, which
   # can be used to represent any entity, such as an individual, a
   # corporation, and a login id.
@@ -43,7 +41,6 @@ module Java::Security
     include_class_members PrincipalImports
     
     typesig { [Object] }
-    # 
     # Compares this principal to the specified object.  Returns true
     # if the object passed in matches the principal represented by
     # the implementation of this interface.
@@ -57,7 +54,6 @@ module Java::Security
     end
     
     typesig { [] }
-    # 
     # Returns a string representation of this principal.
     # 
     # @return a string representation of this principal.
@@ -66,7 +62,6 @@ module Java::Security
     end
     
     typesig { [] }
-    # 
     # Returns a hashcode for this principal.
     # 
     # @return a hashcode for this principal.
@@ -75,7 +70,6 @@ module Java::Security
     end
     
     typesig { [] }
-    # 
     # Returns the name of this principal.
     # 
     # @return the name of this principal.

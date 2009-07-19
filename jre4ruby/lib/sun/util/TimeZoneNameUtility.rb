@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 2005 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -44,13 +43,11 @@ module Sun::Util
     }
   end
   
-  # 
   # Utility class that deals with the localized time zone names
   class TimeZoneNameUtility 
     include_class_members TimeZoneNameUtilityImports
     
     class_module.module_eval {
-      # 
       # cache to hold time zone resource bundles. Keyed by Locale
       
       def cached_bundles
@@ -63,7 +60,6 @@ module Sun::Util
       end
       alias_method :attr_cached_bundles=, :cached_bundles=
       
-      # 
       # cache to hold time zone localized strings. Keyed by Locale
       
       def cached_zone_data
@@ -77,7 +73,6 @@ module Sun::Util
       alias_method :attr_cached_zone_data=, :cached_zone_data=
       
       typesig { [Locale] }
-      # 
       # get time zone localized strings. Enumerate all keys.
       def get_zone_strings(locale)
         zones = nil
@@ -108,7 +103,6 @@ module Sun::Util
       end
       
       typesig { [String, Locale] }
-      # 
       # Retrieve display names for a time zone ID.
       def retrieve_display_names(id, locale)
         rb = get_bundle(locale)
@@ -146,7 +140,6 @@ module Sun::Util
         return rb
       end
       
-      # 
       # Obtains a localized time zone strings from a TimeZoneNameProvider
       # implementation.
       const_set_lazy(:TimeZoneNameGetter) { Class.new do

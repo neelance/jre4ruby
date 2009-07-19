@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 1999-2005 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -31,7 +30,6 @@ module Java::Lang
     }
   end
   
-  # 
   # Package-private utility class containing data structures and logic
   # governing the virtual-machine shutdown sequence.
   # 

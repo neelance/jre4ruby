@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 2001 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -31,7 +30,6 @@ module Sun::Net::Www::Http
     }
   end
   
-  # 
   # A <code>Hurryable</code> is a class that has been instructed to complete
   # its input processing so as to make resource associated with that input
   # available to others.
@@ -39,7 +37,6 @@ module Sun::Net::Www::Http
     include_class_members HurryableImports
     
     typesig { [] }
-    # 
     # @return a <code>boolean</code> indicating if the stream has been
     # hurried or not.
     def hurry

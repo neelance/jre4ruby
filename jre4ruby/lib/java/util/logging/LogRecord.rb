@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 2000-2004 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -33,7 +32,6 @@ module Java::Util::Logging
     }
   end
   
-  # 
   # LogRecord objects are used to pass logging requests between
   # the logging framework and individual log Handlers.
   # <p>
@@ -106,7 +104,6 @@ module Java::Util::Logging
       alias_method :attr_thread_ids=, :thread_ids=
     }
     
-    # 
     # @serial Logging message level
     attr_accessor :level
     alias_method :attr_level, :level
@@ -114,7 +111,6 @@ module Java::Util::Logging
     alias_method :attr_level=, :level=
     undef_method :level=
     
-    # 
     # @serial Sequence number
     attr_accessor :sequence_number
     alias_method :attr_sequence_number, :sequence_number
@@ -122,7 +118,6 @@ module Java::Util::Logging
     alias_method :attr_sequence_number=, :sequence_number=
     undef_method :sequence_number=
     
-    # 
     # @serial Class that issued logging call
     attr_accessor :source_class_name
     alias_method :attr_source_class_name, :source_class_name
@@ -130,7 +125,6 @@ module Java::Util::Logging
     alias_method :attr_source_class_name=, :source_class_name=
     undef_method :source_class_name=
     
-    # 
     # @serial Method that issued logging call
     attr_accessor :source_method_name
     alias_method :attr_source_method_name, :source_method_name
@@ -138,7 +132,6 @@ module Java::Util::Logging
     alias_method :attr_source_method_name=, :source_method_name=
     undef_method :source_method_name=
     
-    # 
     # @serial Non-localized raw message text
     attr_accessor :message
     alias_method :attr_message, :message
@@ -146,7 +139,6 @@ module Java::Util::Logging
     alias_method :attr_message=, :message=
     undef_method :message=
     
-    # 
     # @serial Thread ID for thread that issued logging call.
     attr_accessor :thread_id
     alias_method :attr_thread_id, :thread_id
@@ -154,7 +146,6 @@ module Java::Util::Logging
     alias_method :attr_thread_id=, :thread_id=
     undef_method :thread_id=
     
-    # 
     # @serial Event time in milliseconds since 1970
     attr_accessor :millis
     alias_method :attr_millis, :millis
@@ -162,7 +153,6 @@ module Java::Util::Logging
     alias_method :attr_millis=, :millis=
     undef_method :millis=
     
-    # 
     # @serial The Throwable (if any) associated with log message
     attr_accessor :thrown
     alias_method :attr_thrown, :thrown
@@ -170,7 +160,6 @@ module Java::Util::Logging
     alias_method :attr_thrown=, :thrown=
     undef_method :thrown=
     
-    # 
     # @serial Name of the source Logger.
     attr_accessor :logger_name
     alias_method :attr_logger_name, :logger_name
@@ -178,7 +167,6 @@ module Java::Util::Logging
     alias_method :attr_logger_name=, :logger_name=
     undef_method :logger_name=
     
-    # 
     # @serial Resource bundle name to localized log message.
     attr_accessor :resource_bundle_name
     alias_method :attr_resource_bundle_name, :resource_bundle_name
@@ -205,7 +193,6 @@ module Java::Util::Logging
     undef_method :resource_bundle=
     
     typesig { [Level, String] }
-    # 
     # Construct a LogRecord with the given level and message values.
     # <p>
     # The sequence property will be initialized with a new unique value.
@@ -253,7 +240,6 @@ module Java::Util::Logging
     end
     
     typesig { [] }
-    # 
     # Get the source Logger name's
     # 
     # @return source logger name (may be null)
@@ -262,7 +248,6 @@ module Java::Util::Logging
     end
     
     typesig { [String] }
-    # 
     # Set the source Logger name.
     # 
     # @param name   the source logger name (may be null)
@@ -271,7 +256,6 @@ module Java::Util::Logging
     end
     
     typesig { [] }
-    # 
     # Get the localization resource bundle
     # <p>
     # This is the ResourceBundle that should be used to localize
@@ -283,7 +267,6 @@ module Java::Util::Logging
     end
     
     typesig { [ResourceBundle] }
-    # 
     # Set the localization resource bundle.
     # 
     # @param bundle  localization bundle (may be null)
@@ -292,7 +275,6 @@ module Java::Util::Logging
     end
     
     typesig { [] }
-    # 
     # Get the localization resource bundle name
     # <p>
     # This is the name for the ResourceBundle that should be
@@ -303,7 +285,6 @@ module Java::Util::Logging
     end
     
     typesig { [String] }
-    # 
     # Set the localization resource bundle name.
     # 
     # @param name  localization bundle name (may be null)
@@ -312,7 +293,6 @@ module Java::Util::Logging
     end
     
     typesig { [] }
-    # 
     # Get the logging message level, for example Level.SEVERE.
     # @return the logging message level
     def get_level
@@ -320,7 +300,6 @@ module Java::Util::Logging
     end
     
     typesig { [Level] }
-    # 
     # Set the logging message level, for example Level.SEVERE.
     # @param level the logging message level
     def set_level(level)
@@ -331,7 +310,6 @@ module Java::Util::Logging
     end
     
     typesig { [] }
-    # 
     # Get the sequence number.
     # <p>
     # Sequence numbers are normally assigned in the LogRecord
@@ -343,7 +321,6 @@ module Java::Util::Logging
     end
     
     typesig { [::Java::Long] }
-    # 
     # Set the sequence number.
     # <p>
     # Sequence numbers are normally assigned in the LogRecord constructor,
@@ -353,7 +330,6 @@ module Java::Util::Logging
     end
     
     typesig { [] }
-    # 
     # Get the  name of the class that (allegedly) issued the logging request.
     # <p>
     # Note that this sourceClassName is not verified and may be spoofed.
@@ -374,7 +350,6 @@ module Java::Util::Logging
     end
     
     typesig { [String] }
-    # 
     # Set the name of the class that (allegedly) issued the logging request.
     # 
     # @param sourceClassName the source class name (may be null)
@@ -384,7 +359,6 @@ module Java::Util::Logging
     end
     
     typesig { [] }
-    # 
     # Get the  name of the method that (allegedly) issued the logging request.
     # <p>
     # Note that this sourceMethodName is not verified and may be spoofed.
@@ -405,7 +379,6 @@ module Java::Util::Logging
     end
     
     typesig { [String] }
-    # 
     # Set the name of the method that (allegedly) issued the logging request.
     # 
     # @param sourceMethodName the source method name (may be null)
@@ -415,7 +388,6 @@ module Java::Util::Logging
     end
     
     typesig { [] }
-    # 
     # Get the "raw" log message, before localization or formatting.
     # <p>
     # May be null, which is equivalent to the empty string "".
@@ -433,7 +405,6 @@ module Java::Util::Logging
     end
     
     typesig { [String] }
-    # 
     # Set the "raw" log message, before localization or formatting.
     # 
     # @param message the raw message string (may be null)
@@ -442,7 +413,6 @@ module Java::Util::Logging
     end
     
     typesig { [] }
-    # 
     # Get the parameters to the log message.
     # 
     # @return the log message parameters.  May be null if
@@ -452,7 +422,6 @@ module Java::Util::Logging
     end
     
     typesig { [Array.typed(Object)] }
-    # 
     # Set the parameters to the log message.
     # 
     # @param parameters the log message parameters. (may be null)
@@ -461,7 +430,6 @@ module Java::Util::Logging
     end
     
     typesig { [] }
-    # 
     # Get an identifier for the thread where the message originated.
     # <p>
     # This is a thread identifier within the Java VM and may or
@@ -473,7 +441,6 @@ module Java::Util::Logging
     end
     
     typesig { [::Java::Int] }
-    # 
     # Set an identifier for the thread where the message originated.
     # @param threadID  the thread ID
     def set_thread_id(thread_id)
@@ -481,7 +448,6 @@ module Java::Util::Logging
     end
     
     typesig { [] }
-    # 
     # Get event time in milliseconds since 1970.
     # 
     # @return event time in millis since 1970
@@ -490,7 +456,6 @@ module Java::Util::Logging
     end
     
     typesig { [::Java::Long] }
-    # 
     # Set event time.
     # 
     # @param millis event time in millis since 1970
@@ -499,7 +464,6 @@ module Java::Util::Logging
     end
     
     typesig { [] }
-    # 
     # Get any throwable associated with the log record.
     # <p>
     # If the event involved an exception, this will be the
@@ -511,7 +475,6 @@ module Java::Util::Logging
     end
     
     typesig { [Exception] }
-    # 
     # Set a throwable associated with the log event.
     # 
     # @param thrown  a throwable (may be null)
@@ -525,7 +488,6 @@ module Java::Util::Logging
     }
     
     typesig { [ObjectOutputStream] }
-    # 
     # @serialData Default fields, followed by a two byte version number
     # (major byte, followed by minor byte), followed by information on
     # the log record parameter array.  If there is no parameter array,
@@ -609,12 +571,12 @@ module Java::Util::Logging
       end
       # Now search for the first frame before the "Logger" class.
       while (ix < stack.attr_length)
-        frame_ = stack[ix]
-        cname_ = frame_.get_class_name
-        if (!(cname_ == "java.util.logging.Logger"))
+        frame = stack[ix]
+        cname = frame.get_class_name
+        if (!(cname == "java.util.logging.Logger"))
           # We've found the relevant frame.
-          set_source_class_name(cname_)
-          set_source_method_name(frame_.get_method_name)
+          set_source_class_name(cname)
+          set_source_method_name(frame.get_method_name)
           return
         end
         ((ix += 1) - 1)

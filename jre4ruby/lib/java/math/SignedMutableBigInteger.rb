@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 1999-2007 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -31,7 +30,6 @@ module Java::Math
     }
   end
   
-  # 
   # A class used to represent multiprecision integers that makes efficient
   # use of allocated space by allowing a number to occupy only part of
   # an array so that the arrays do not have to be reallocated as often.
@@ -51,7 +49,6 @@ module Java::Math
   class SignedMutableBigInteger < SignedMutableBigIntegerImports.const_get :MutableBigInteger
     include_class_members SignedMutableBigIntegerImports
     
-    # 
     # The sign of this MutableBigInteger.
     attr_accessor :sign
     alias_method :attr_sign, :sign
@@ -71,7 +68,6 @@ module Java::Math
     end
     
     typesig { [::Java::Int] }
-    # 
     # Construct a new MutableBigInteger with a magnitude specified by
     # the int val.
     def initialize(val)
@@ -81,7 +77,6 @@ module Java::Math
     end
     
     typesig { [MutableBigInteger] }
-    # 
     # Construct a new MutableBigInteger with a magnitude equal to the
     # specified MutableBigInteger.
     def initialize(val)
@@ -103,7 +98,6 @@ module Java::Math
     end
     
     typesig { [MutableBigInteger] }
-    # 
     # Signed addition built upon unsigned add and subtract.
     def signed_add(addend)
       if ((@sign).equal?(1))
@@ -114,7 +108,6 @@ module Java::Math
     end
     
     typesig { [SignedMutableBigInteger] }
-    # 
     # Signed subtraction built upon unsigned add and subtract.
     def signed_subtract(addend)
       if ((@sign).equal?(addend.attr_sign))
@@ -125,7 +118,6 @@ module Java::Math
     end
     
     typesig { [MutableBigInteger] }
-    # 
     # Signed subtraction built upon unsigned add and subtract.
     def signed_subtract(addend)
       if ((@sign).equal?(1))
@@ -139,7 +131,6 @@ module Java::Math
     end
     
     typesig { [] }
-    # 
     # Print out the first intLen ints of this MutableBigInteger's value
     # array starting at offset.
     def to_s

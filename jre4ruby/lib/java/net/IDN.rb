@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 2005 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -38,7 +37,6 @@ module Java::Net
     }
   end
   
-  # 
   # Provides methods to convert internationalized domain names (IDNs) between
   # a normal Unicode representation and an ASCII Compatible Encoding (ACE) representation.
   # Internationalized domain names can use characters from the entire range of
@@ -79,18 +77,15 @@ module Java::Net
     include_class_members IDNImports
     
     class_module.module_eval {
-      # 
       # Flag to allow processing of unassigned code points
       const_set_lazy(:ALLOW_UNASSIGNED) { 0x1 }
       const_attr_reader  :ALLOW_UNASSIGNED
       
-      # 
       # Flag to turn on the check against STD-3 ASCII rules
       const_set_lazy(:USE_STD3_ASCII_RULES) { 0x2 }
       const_attr_reader  :USE_STD3_ASCII_RULES
       
       typesig { [String, ::Java::Int] }
-      # 
       # Translates a string from Unicode to ASCII Compatible Encoding (ACE),
       # as defined by the ToASCII operation of <a href="http://www.ietf.org/rfc/rfc3490.txt">RFC 3490</a>.
       # 
@@ -129,7 +124,6 @@ module Java::Net
       end
       
       typesig { [String] }
-      # 
       # Translates a string from Unicode to ASCII Compatible Encoding (ACE),
       # as defined by the ToASCII operation of <a href="http://www.ietf.org/rfc/rfc3490.txt">RFC 3490</a>.
       # 
@@ -149,7 +143,6 @@ module Java::Net
       end
       
       typesig { [String, ::Java::Int] }
-      # 
       # Translates a string from ASCII Compatible Encoding (ACE) to Unicode,
       # as defined by the ToUnicode operation of <a href="http://www.ietf.org/rfc/rfc3490.txt">RFC 3490</a>.
       # 
@@ -182,7 +175,6 @@ module Java::Net
       end
       
       typesig { [String] }
-      # 
       # Translates a string from ASCII Compatible Encoding (ACE) to Unicode,
       # as defined by the ToUnicode operation of <a href="http://www.ietf.org/rfc/rfc3490.txt">RFC 3490</a>.
       # 
@@ -266,7 +258,6 @@ module Java::Net
     
     class_module.module_eval {
       typesig { [String, ::Java::Int] }
-      # 
       # toASCII operation; should only apply to a single label
       def to_asciiinternal(label, flag)
         # step 1
@@ -315,7 +306,7 @@ module Java::Net
               begin
                 dest = Punycode.encode(dest, nil)
               rescue Java::Text::ParseException => e
-                raise IllegalArgumentException.new(e_)
+                raise IllegalArgumentException.new(e)
               end
               dest = to_asciilower(dest)
               # step 7
@@ -335,7 +326,6 @@ module Java::Net
       end
       
       typesig { [String, ::Java::Int] }
-      # 
       # toUnicode operation; should only apply to a single label
       def to_unicode_internal(label, flag)
         case_flags = nil
@@ -385,7 +375,6 @@ module Java::Net
       end
       
       typesig { [::Java::Int] }
-      # 
       # LDH stands for "letter/digit/hyphen", with characters restricted to the
       # 26-letter Latin alphabet <A-Z a-z>, the digits <0-9>, and the hyphen
       # <->
@@ -403,7 +392,6 @@ module Java::Net
       end
       
       typesig { [String, ::Java::Int] }
-      # 
       # search dots in a string and return the index of that character;
       # or if there is no dots, return the length of input string
       # dots might be: \u002E (full stop), \u3002 (ideographic full stop), \uFF0E (fullwidth full stop),
@@ -422,7 +410,6 @@ module Java::Net
       end
       
       typesig { [String] }
-      # 
       # to check if a string only contains US-ASCII code point
       def is_all_ascii(input)
         is_ascii = true
@@ -439,7 +426,6 @@ module Java::Net
       end
       
       typesig { [StringBuffer] }
-      # 
       # to check if a string starts with ACE-prefix
       def starts_with_aceprefix(input)
         starts_with_prefix = true

@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 1997-2005 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -43,7 +42,6 @@ module Java::Io
     }
   end
   
-  # 
   # This class represents access to a file or directory.  A FilePermission consists
   # of a pathname and a set of actions valid for that pathname.
   # <P>
@@ -104,32 +102,26 @@ module Java::Io
     include Serializable
     
     class_module.module_eval {
-      # 
       # Execute action.
       const_set_lazy(:EXECUTE) { 0x1 }
       const_attr_reader  :EXECUTE
       
-      # 
       # Write action.
       const_set_lazy(:WRITE) { 0x2 }
       const_attr_reader  :WRITE
       
-      # 
       # Read action.
       const_set_lazy(:READ) { 0x4 }
       const_attr_reader  :READ
       
-      # 
       # Delete action.
       const_set_lazy(:DELETE) { 0x8 }
       const_attr_reader  :DELETE
       
-      # 
       # All actions (read,write,execute,delete)
       const_set_lazy(:ALL) { READ | WRITE | EXECUTE | DELETE }
       const_attr_reader  :ALL
       
-      # 
       # No actions.
       const_set_lazy(:NONE) { 0x0 }
       const_attr_reader  :NONE
@@ -156,7 +148,6 @@ module Java::Io
     alias_method :attr_recursive=, :recursive=
     undef_method :recursive=
     
-    # 
     # the actions string.
     # 
     # @serial
@@ -185,7 +176,6 @@ module Java::Io
       const_set_lazy(:WILD_CHAR) { Character.new(?*.ord) }
       const_attr_reader  :WILD_CHAR
       
-      # 
       # public String toString()
       # {
       # StringBuffer sb = new StringBuffer();
@@ -203,7 +193,6 @@ module Java::Io
     }
     
     typesig { [::Java::Int] }
-    # 
     # initialize a FilePermission object. Common to all constructors.
     # Also called during de-serialization.
     # 
@@ -270,7 +259,6 @@ module Java::Io
     end
     
     typesig { [String, String] }
-    # 
     # Creates a new FilePermission object with the specified actions.
     # <i>path</i> is the pathname of a file or directory, and <i>actions</i>
     # contains a comma-separated list of the desired actions granted on the
@@ -309,7 +297,6 @@ module Java::Io
     end
     
     typesig { [String, ::Java::Int] }
-    # 
     # Creates a new FilePermission object using an action mask.
     # More efficient than the FilePermission(String, String) constructor.
     # Can be used from within
@@ -331,7 +318,6 @@ module Java::Io
     end
     
     typesig { [Permission] }
-    # 
     # Checks if this FilePermission object "implies" the specified permission.
     # <P>
     # More specifically, this method returns true if:<p>
@@ -361,7 +347,6 @@ module Java::Io
     end
     
     typesig { [FilePermission] }
-    # 
     # Checks if the Permission's actions are a proper subset of the
     # this object's actions. Returns the effective mask iff the
     # this FilePermission's path also implies that FilePermission's path.
@@ -413,7 +398,6 @@ module Java::Io
     end
     
     typesig { [Object] }
-    # 
     # Checks two FilePermission objects for equality. Checks that <i>obj</i> is
     # a FilePermission, and has the same pathname and actions as this object.
     # <P>
@@ -433,7 +417,6 @@ module Java::Io
     end
     
     typesig { [] }
-    # 
     # Returns the hash code value for this object.
     # 
     # @return a hash code value for this object.
@@ -443,7 +426,6 @@ module Java::Io
     
     class_module.module_eval {
       typesig { [String] }
-      # 
       # Converts an actions String to an actions mask.
       # 
       # @param action the action string.
@@ -527,7 +509,6 @@ module Java::Io
     }
     
     typesig { [] }
-    # 
     # Return the current action mask. Used by the FilePermissionCollection.
     # 
     # @return the actions mask.
@@ -537,7 +518,6 @@ module Java::Io
     
     class_module.module_eval {
       typesig { [::Java::Int] }
-      # 
       # Return the canonical string representation of the actions.
       # Always returns present actions in the following order:
       # read, write, execute, delete.
@@ -579,7 +559,6 @@ module Java::Io
     }
     
     typesig { [] }
-    # 
     # Returns the "canonical string representation" of the actions.
     # That is, this method always returns present actions in the following order:
     # read, write, execute, delete. For example, if this FilePermission object
@@ -595,7 +574,6 @@ module Java::Io
     end
     
     typesig { [] }
-    # 
     # Returns a new PermissionCollection object for storing FilePermission
     # objects.
     # <p>
@@ -630,7 +608,6 @@ module Java::Io
     end
     
     typesig { [ObjectOutputStream] }
-    # 
     # WriteObject is called to save the state of the FilePermission
     # to a stream. The actions are serialized, and the superclass
     # takes care of the name.
@@ -644,7 +621,6 @@ module Java::Io
     end
     
     typesig { [ObjectInputStream] }
-    # 
     # readObject is called to restore the state of the FilePermission from
     # a stream.
     def read_object(s)
@@ -657,7 +633,6 @@ module Java::Io
     alias_method :initialize__file_permission, :initialize
   end
   
-  # 
   # A FilePermissionCollection stores a set of FilePermission permissions.
   # FilePermission objects
   # must be stored in a manner that allows them to be inserted in any
@@ -694,7 +669,6 @@ module Java::Io
     undef_method :perms=
     
     typesig { [] }
-    # 
     # Create an empty FilePermissions object.
     def initialize
       @perms = nil
@@ -703,7 +677,6 @@ module Java::Io
     end
     
     typesig { [Permission] }
-    # 
     # Adds a permission to the FilePermissions. The key for the hash is
     # permission.path.
     # 
@@ -727,7 +700,6 @@ module Java::Io
     end
     
     typesig { [Permission] }
-    # 
     # Check and see if this set of permissions implies the permissions
     # expressed in "permission".
     # 
@@ -762,7 +734,6 @@ module Java::Io
     end
     
     typesig { [] }
-    # 
     # Returns an enumeration of all the FilePermission objects in the
     # container.
     # 
@@ -789,7 +760,6 @@ module Java::Io
     }
     
     typesig { [ObjectOutputStream] }
-    # 
     # @serialData "permissions" field (a Vector containing the FilePermissions).
     # 
     # 
@@ -808,7 +778,6 @@ module Java::Io
     end
     
     typesig { [ObjectInputStream] }
-    # 
     # Reads in a Vector of FilePermissions and saves them in the perms field.
     def read_object(in_)
       # Don't call defaultReadObject()

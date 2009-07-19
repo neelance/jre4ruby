@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 2001 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -31,7 +30,6 @@ module Java::Net
     }
   end
   
-  # 
   # Signals that an ICMP Port Unreachable message has been
   # received on a connected datagram.
   # 
@@ -40,7 +38,6 @@ module Java::Net
     include_class_members PortUnreachableExceptionImports
     
     typesig { [String] }
-    # 
     # Constructs a new <code>PortUnreachableException</code> with a
     # detail message.
     # @param msg the detail message
@@ -49,7 +46,6 @@ module Java::Net
     end
     
     typesig { [] }
-    # 
     # Construct a new <code>PortUnreachableException</code> with no
     # detailed message.
     def initialize

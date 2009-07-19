@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Portions Copyright 2003-2007 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -34,7 +33,6 @@ module Java::Math
     }
   end
   
-  # 
   # Specifies a <i>rounding behavior</i> for numerical operations
   # capable of discarding precision. Each rounding mode indicates how
   # the least significant returned digit of a rounded result is to be
@@ -100,7 +98,6 @@ module Java::Math
     include_class_members RoundingModeImports
     
     class_module.module_eval {
-      # 
       # Rounding mode to round away from zero.  Always increments the
       # digit prior to a non-zero discarded fraction.  Note that this
       # rounding mode never decreases the magnitude of the calculated
@@ -124,7 +121,6 @@ module Java::Math
       const_set_lazy(:UP) { RoundingMode.new(BigDecimal::ROUND_UP).set_value_name("UP") }
       const_attr_reader  :UP
       
-      # 
       # Rounding mode to round towards zero.  Never increments the digit
       # prior to a discarded fraction (i.e., truncates).  Note that this
       # rounding mode never increases the magnitude of the calculated value.
@@ -147,7 +143,6 @@ module Java::Math
       const_set_lazy(:DOWN) { RoundingMode.new(BigDecimal::ROUND_DOWN).set_value_name("DOWN") }
       const_attr_reader  :DOWN
       
-      # 
       # Rounding mode to round towards positive infinity.  If the
       # result is positive, behaves as for {@code RoundingMode.UP};
       # if negative, behaves as for {@code RoundingMode.DOWN}.  Note
@@ -171,7 +166,6 @@ module Java::Math
       const_set_lazy(:CEILING) { RoundingMode.new(BigDecimal::ROUND_CEILING).set_value_name("CEILING") }
       const_attr_reader  :CEILING
       
-      # 
       # Rounding mode to round towards negative infinity.  If the
       # result is positive, behave as for {@code RoundingMode.DOWN};
       # if negative, behave as for {@code RoundingMode.UP}.  Note that
@@ -195,7 +189,6 @@ module Java::Math
       const_set_lazy(:FLOOR) { RoundingMode.new(BigDecimal::ROUND_FLOOR).set_value_name("FLOOR") }
       const_attr_reader  :FLOOR
       
-      # 
       # Rounding mode to round towards {@literal "nearest neighbor"}
       # unless both neighbors are equidistant, in which case round up.
       # Behaves as for {@code RoundingMode.UP} if the discarded
@@ -221,7 +214,6 @@ module Java::Math
       const_set_lazy(:HALF_UP) { RoundingMode.new(BigDecimal::ROUND_HALF_UP).set_value_name("HALF_UP") }
       const_attr_reader  :HALF_UP
       
-      # 
       # Rounding mode to round towards {@literal "nearest neighbor"}
       # unless both neighbors are equidistant, in which case round
       # down.  Behaves as for {@code RoundingMode.UP} if the discarded
@@ -246,7 +238,6 @@ module Java::Math
       const_set_lazy(:HALF_DOWN) { RoundingMode.new(BigDecimal::ROUND_HALF_DOWN).set_value_name("HALF_DOWN") }
       const_attr_reader  :HALF_DOWN
       
-      # 
       # Rounding mode to round towards the {@literal "nearest neighbor"}
       # unless both neighbors are equidistant, in which case, round
       # towards the even neighbor.  Behaves as for
@@ -278,7 +269,6 @@ module Java::Math
       const_set_lazy(:HALF_EVEN) { RoundingMode.new(BigDecimal::ROUND_HALF_EVEN).set_value_name("HALF_EVEN") }
       const_attr_reader  :HALF_EVEN
       
-      # 
       # Rounding mode to assert that the requested operation has an exact
       # result, hence no rounding is necessary.  If this rounding mode is
       # specified on an operation that yields an inexact result, an
@@ -310,7 +300,6 @@ module Java::Math
     undef_method :old_mode=
     
     typesig { [::Java::Int] }
-    # 
     # Constructor
     # 
     # @param oldMode The {@code BigDecimal} constant corresponding to
@@ -322,7 +311,6 @@ module Java::Math
     
     class_module.module_eval {
       typesig { [::Java::Int] }
-      # 
       # Returns the {@code RoundingMode} object corresponding to a
       # legacy integer rounding mode constant in {@link BigDecimal}.
       # 

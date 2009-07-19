@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 1997-2005 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -39,7 +38,6 @@ module Sun::Security::Provider
     }
   end
   
-  # 
   # This class generates DSA key parameters and public/private key
   # pairs according to the DSS standard NIST FIPS 186. It uses the
   # updated version of SHA, SHA-1 as described in FIPS 180-1.
@@ -107,7 +105,6 @@ module Sun::Security::Provider
     end
     
     typesig { [::Java::Int, ::Java::Boolean, SecureRandom] }
-    # 
     # Initializes the DSA key pair generator. If <code>genParams</code>
     # is false, a set of pre-computed parameters is used.
     def initialize_(modlen, gen_params, random)
@@ -126,7 +123,6 @@ module Sun::Security::Provider
     end
     
     typesig { [DSAParams, SecureRandom] }
-    # 
     # Initializes the DSA object using a DSA parameter object.
     # 
     # @param params a fully initialized DSA parameter object.
@@ -139,7 +135,6 @@ module Sun::Security::Provider
     end
     
     typesig { [AlgorithmParameterSpec, SecureRandom] }
-    # 
     # Initializes the DSA object using a parameter object.
     # 
     # @param params the parameter set to be used to generate
@@ -166,7 +161,6 @@ module Sun::Security::Provider
     end
     
     typesig { [] }
-    # 
     # Generates a pair of keys usable by any JavaSecurity compliant
     # DSA implementation.
     def generate_key_pair
@@ -211,7 +205,6 @@ module Sun::Security::Provider
     end
     
     typesig { [SecureRandom, BigInteger] }
-    # 
     # Generate the private key component of the key pair using the
     # provided source of random bits. This method uses the random but
     # source passed to generate a seed and then calls the seed-based
@@ -234,7 +227,6 @@ module Sun::Security::Provider
     end
     
     typesig { [Array.typed(::Java::Int), BigInteger] }
-    # 
     # Given a seed, generate the private key component of the key
     # pair. In the terminology used in the DSA specification
     # (FIPS-186) seed is the XSEED quantity.
@@ -260,7 +252,6 @@ module Sun::Security::Provider
     end
     
     typesig { [BigInteger, BigInteger, BigInteger] }
-    # 
     # Generate the public key component y of the key pair.
     # 
     # @param x the private key component.

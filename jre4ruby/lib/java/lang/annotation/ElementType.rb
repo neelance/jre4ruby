@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 2003-2004 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -31,7 +30,6 @@ module Java::Lang::Annotation
     }
   end
   
-  # 
   # A program element type.  The constants of this enumerated type
   # provide a simple classification of the declared elements in a
   # Java program.

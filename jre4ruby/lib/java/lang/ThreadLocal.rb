@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 1997-2007 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -32,7 +31,6 @@ module Java::Lang
     }
   end
   
-  # 
   # This class provides thread-local variables.  These variables differ from
   # their normal counterparts in that each thread that accesses one (via its
   # <tt>get</tt> or <tt>set</tt> method) has its own, independently initialized
@@ -76,7 +74,6 @@ module Java::Lang
   class ThreadLocal 
     include_class_members ThreadLocalImports
     
-    # 
     # ThreadLocals rely on per-thread linear-probe hash maps attached
     # to each thread (Thread.threadLocals and
     # inheritableThreadLocals).  The ThreadLocal objects act as keys,
@@ -92,7 +89,6 @@ module Java::Lang
     undef_method :thread_local_hash_code=
     
     class_module.module_eval {
-      # 
       # The next hash code to be given out. Updated atomically. Starts at
       # zero.
       
@@ -106,7 +102,6 @@ module Java::Lang
       end
       alias_method :attr_next_hash_code=, :next_hash_code=
       
-      # 
       # The difference between successively generated hash codes - turns
       # implicit sequential thread-local IDs into near-optimally spread
       # multiplicative hash values for power-of-two-sized tables.
@@ -114,7 +109,6 @@ module Java::Lang
       const_attr_reader  :HASH_INCREMENT
       
       typesig { [] }
-      # 
       # Returns the next hash code.
       def next_hash_code
         return self.attr_next_hash_code.get_and_add(HASH_INCREMENT)
@@ -122,7 +116,6 @@ module Java::Lang
     }
     
     typesig { [] }
-    # 
     # Returns the current thread's "initial value" for this
     # thread-local variable.  This method will be invoked the first
     # time a thread accesses the variable with the {@link #get}
@@ -144,14 +137,12 @@ module Java::Lang
     end
     
     typesig { [] }
-    # 
     # Creates a thread local variable.
     def initialize
       @thread_local_hash_code = next_hash_code
     end
     
     typesig { [] }
-    # 
     # Returns the value in the current thread's copy of this
     # thread-local variable.  If the variable has no value for the
     # current thread, it is first initialized to the value returned
@@ -171,7 +162,6 @@ module Java::Lang
     end
     
     typesig { [] }
-    # 
     # Variant of set() to establish initialValue. Used instead
     # of set() in case user has overridden the set() method.
     # 
@@ -189,7 +179,6 @@ module Java::Lang
     end
     
     typesig { [Object] }
-    # 
     # Sets the current thread's copy of this thread-local variable
     # to the specified value.  Most subclasses will have no need to
     # override this method, relying solely on the {@link #initialValue}
@@ -208,7 +197,6 @@ module Java::Lang
     end
     
     typesig { [] }
-    # 
     # Removes the current thread's value for this thread-local
     # variable.  If this thread-local variable is subsequently
     # {@linkplain #get read} by the current thread, its value will be
@@ -226,7 +214,6 @@ module Java::Lang
     end
     
     typesig { [JavaThread] }
-    # 
     # Get the map associated with a ThreadLocal. Overridden in
     # InheritableThreadLocal.
     # 
@@ -237,7 +224,6 @@ module Java::Lang
     end
     
     typesig { [JavaThread, Object] }
-    # 
     # Create the map associated with a ThreadLocal. Overridden in
     # InheritableThreadLocal.
     # 
@@ -250,7 +236,6 @@ module Java::Lang
     
     class_module.module_eval {
       typesig { [ThreadLocalMap] }
-      # 
       # Factory method to create map of inherited thread locals.
       # Designed to be called only from Thread constructor.
       # 
@@ -262,7 +247,6 @@ module Java::Lang
     }
     
     typesig { [Object] }
-    # 
     # Method childValue is visibly defined in subclass
     # InheritableThreadLocal, but is internally defined here for the
     # sake of providing createInheritedMap factory method without
@@ -274,7 +258,6 @@ module Java::Lang
     end
     
     class_module.module_eval {
-      # 
       # ThreadLocalMap is a customized hash map suitable only for
       # maintaining thread local values. No operations are exported
       # outside of the ThreadLocal class. The class is package private to
@@ -287,7 +270,6 @@ module Java::Lang
         include_class_members ThreadLocal
         
         class_module.module_eval {
-          # 
           # The entries in this hash map extend WeakReference, using
           # its main ref field as the key (which is always a
           # ThreadLocal object).  Note that null keys (i.e. entry.get()
@@ -315,13 +297,11 @@ module Java::Lang
             alias_method :initialize__entry, :initialize
           end }
           
-          # 
           # The initial capacity -- MUST be a power of two.
           const_set_lazy(:INITIAL_CAPACITY) { 16 }
           const_attr_reader  :INITIAL_CAPACITY
         }
         
-        # 
         # The table, resized as necessary.
         # table.length MUST always be a power of two.
         attr_accessor :table
@@ -330,7 +310,6 @@ module Java::Lang
         alias_method :attr_table=, :table=
         undef_method :table=
         
-        # 
         # The number of entries in the table.
         attr_accessor :size
         alias_method :attr_size, :size
@@ -338,7 +317,6 @@ module Java::Lang
         alias_method :attr_size=, :size=
         undef_method :size=
         
-        # 
         # The next size value at which to resize.
         attr_accessor :threshold
         alias_method :attr_threshold, :threshold
@@ -356,14 +334,12 @@ module Java::Lang
         
         class_module.module_eval {
           typesig { [::Java::Int, ::Java::Int] }
-          # 
           # Increment i modulo len.
           def next_index(i, len)
             return ((i + 1 < len) ? i + 1 : 0)
           end
           
           typesig { [::Java::Int, ::Java::Int] }
-          # 
           # Decrement i modulo len.
           def prev_index(i, len)
             return ((i - 1 >= 0) ? i - 1 : len - 1)
@@ -371,7 +347,6 @@ module Java::Lang
         }
         
         typesig { [ThreadLocal, Object] }
-        # 
         # Construct a new map initially containing (firstKey, firstValue).
         # ThreadLocalMaps are constructed lazily, so we only create
         # one when we have at least one entry to put in it.
@@ -387,7 +362,6 @@ module Java::Lang
         end
         
         typesig { [ThreadLocalMap] }
-        # 
         # Construct a new map including all Inheritable ThreadLocals
         # from given parent map. Called only by createInheritedMap.
         # 
@@ -421,7 +395,6 @@ module Java::Lang
         end
         
         typesig { [ThreadLocal] }
-        # 
         # Get the entry associated with key.  This method
         # itself handles only the fast path: a direct hit of existing
         # key. It otherwise relays to getEntryAfterMiss.  This is
@@ -441,7 +414,6 @@ module Java::Lang
         end
         
         typesig { [ThreadLocal, ::Java::Int, Entry] }
-        # 
         # Version of getEntry method for use when key is not found in
         # its direct hash slot.
         # 
@@ -468,7 +440,6 @@ module Java::Lang
         end
         
         typesig { [ThreadLocal, Object] }
-        # 
         # Set the value associated with key.
         # 
         # @param key the thread local object
@@ -502,7 +473,6 @@ module Java::Lang
         end
         
         typesig { [ThreadLocal] }
-        # 
         # Remove the entry for key.
         def remove(key)
           tab = @table
@@ -520,7 +490,6 @@ module Java::Lang
         end
         
         typesig { [ThreadLocal, Object, ::Java::Int] }
-        # 
         # Replace a stale entry encountered during a set operation
         # with an entry for the specified key.  The value passed in
         # the value parameter is stored in the entry, whether or not
@@ -589,7 +558,6 @@ module Java::Lang
         end
         
         typesig { [::Java::Int] }
-        # 
         # Expunge a stale entry by rehashing any possibly colliding entries
         # lying between staleSlot and the next null slot.  This also expunges
         # any other stale entries encountered before the trailing null.  See
@@ -634,7 +602,6 @@ module Java::Lang
         end
         
         typesig { [::Java::Int, ::Java::Int] }
-        # 
         # Heuristically scan some cells looking for stale entries.
         # This is invoked when either a new element is added, or
         # another stale one has been expunged. It performs a
@@ -674,7 +641,6 @@ module Java::Lang
         end
         
         typesig { [] }
-        # 
         # Re-pack and/or re-size the table. First scan the entire
         # table removing stale entries. If this doesn't sufficiently
         # shrink the size of the table, double the table size.
@@ -687,7 +653,6 @@ module Java::Lang
         end
         
         typesig { [] }
-        # 
         # Double the capacity of the table.
         def resize
           old_tab = @table
@@ -719,7 +684,6 @@ module Java::Lang
         end
         
         typesig { [] }
-        # 
         # Expunge all stale entries in the table.
         def expunge_stale_entries
           tab = @table

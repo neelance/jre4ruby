@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
 # This code is free software; you can redistribute it and/or modify it
@@ -80,7 +79,6 @@ module Sun::Security::Krb5::Internal
     end
     
     typesig { [DerValue] }
-    # 
     # Constructs an instance of AuthorizationDataEntry.
     # @param encoding a single DER-encoded value.
     def initialize(encoding)
@@ -108,7 +106,6 @@ module Sun::Security::Krb5::Internal
     end
     
     typesig { [] }
-    # 
     # Encodes an AuthorizationDataEntry object.
     # @return byte array of encoded AuthorizationDataEntry object.
     # @exception Asn1Exception if an error occurs while decoding an ASN1 encoded data.
@@ -127,7 +124,6 @@ module Sun::Security::Krb5::Internal
     end
     
     typesig { [CCacheOutputStream] }
-    # 
     # Writes the entry's data fields in FCC format to an output stream.
     # 
     # @param cos a <code>CCacheOutputStream</code>.

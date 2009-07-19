@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 1996-1999 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -34,7 +33,6 @@ module Java::Util::Zip
     }
   end
   
-  # 
   # An output stream that also maintains a checksum of the data being
   # written. The checksum can then be used to verify the integrity of
   # the output data.
@@ -51,7 +49,6 @@ module Java::Util::Zip
     undef_method :cksum=
     
     typesig { [OutputStream, Checksum] }
-    # 
     # Creates an output stream with the specified Checksum.
     # @param out the output stream
     # @param cksum the checksum
@@ -62,7 +59,6 @@ module Java::Util::Zip
     end
     
     typesig { [::Java::Int] }
-    # 
     # Writes a byte. Will block until the byte is actually written.
     # @param b the byte to be written
     # @exception IOException if an I/O error has occurred
@@ -72,7 +68,6 @@ module Java::Util::Zip
     end
     
     typesig { [Array.typed(::Java::Byte), ::Java::Int, ::Java::Int] }
-    # 
     # Writes an array of bytes. Will block until the bytes are
     # actually written.
     # @param b the data to be written
@@ -85,7 +80,6 @@ module Java::Util::Zip
     end
     
     typesig { [] }
-    # 
     # Returns the Checksum for this output stream.
     # @return the Checksum
     def get_checksum

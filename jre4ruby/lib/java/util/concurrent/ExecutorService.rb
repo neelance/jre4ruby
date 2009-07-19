@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
 # This code is free software; you can redistribute it and/or modify it
@@ -44,7 +43,6 @@ module Java::Util::Concurrent
     }
   end
   
-  # 
   # An {@link Executor} that provides methods to manage termination and
   # methods that can produce a {@link Future} for tracking progress of
   # one or more asynchronous tasks.
@@ -147,7 +145,6 @@ module Java::Util::Concurrent
     include Executor
     
     typesig { [] }
-    # 
     # Initiates an orderly shutdown in which previously submitted
     # tasks are executed, but no new tasks will be accepted.
     # Invocation has no additional effect if already shut down.
@@ -164,7 +161,6 @@ module Java::Util::Concurrent
     end
     
     typesig { [] }
-    # 
     # Attempts to stop all actively executing tasks, halts the
     # processing of waiting tasks, and returns a list of the tasks that were
     # awaiting execution.
@@ -187,7 +183,6 @@ module Java::Util::Concurrent
     end
     
     typesig { [] }
-    # 
     # Returns <tt>true</tt> if this executor has been shut down.
     # 
     # @return <tt>true</tt> if this executor has been shut down
@@ -196,7 +191,6 @@ module Java::Util::Concurrent
     end
     
     typesig { [] }
-    # 
     # Returns <tt>true</tt> if all tasks have completed following shut down.
     # Note that <tt>isTerminated</tt> is never <tt>true</tt> unless
     # either <tt>shutdown</tt> or <tt>shutdownNow</tt> was called first.
@@ -207,7 +201,6 @@ module Java::Util::Concurrent
     end
     
     typesig { [::Java::Long, TimeUnit] }
-    # 
     # Blocks until all tasks have completed execution after a shutdown
     # request, or the timeout occurs, or the current thread is
     # interrupted, whichever happens first.
@@ -222,7 +215,6 @@ module Java::Util::Concurrent
     end
     
     typesig { [Callable] }
-    # 
     # Submits a value-returning task for execution and returns a
     # Future representing the pending results of the task. The
     # Future's <tt>get</tt> method will return the task's result upon
@@ -248,7 +240,6 @@ module Java::Util::Concurrent
     end
     
     typesig { [Runnable, T] }
-    # 
     # Submits a Runnable task for execution and returns a Future
     # representing that task. The Future's <tt>get</tt> method will
     # return the given result upon successful completion.
@@ -264,7 +255,6 @@ module Java::Util::Concurrent
     end
     
     typesig { [Runnable] }
-    # 
     # Submits a Runnable task for execution and returns a Future
     # representing that task. The Future's <tt>get</tt> method will
     # return <tt>null</tt> upon <em>successful</em> completion.
@@ -279,7 +269,6 @@ module Java::Util::Concurrent
     end
     
     typesig { [Collection] }
-    # 
     # Executes the given tasks, returning a list of Futures holding
     # their status and results when all complete.
     # {@link Future#isDone} is <tt>true</tt> for each
@@ -303,7 +292,6 @@ module Java::Util::Concurrent
     end
     
     typesig { [Collection, ::Java::Long, TimeUnit] }
-    # 
     # Executes the given tasks, returning a list of Futures holding
     # their status and results
     # when all complete or the timeout expires, whichever happens first.
@@ -334,7 +322,6 @@ module Java::Util::Concurrent
     end
     
     typesig { [Collection] }
-    # 
     # Executes the given tasks, returning the result
     # of one that has completed successfully (i.e., without throwing
     # an exception), if any do. Upon normal or exceptional return,
@@ -356,7 +343,6 @@ module Java::Util::Concurrent
     end
     
     typesig { [Collection, ::Java::Long, TimeUnit] }
-    # 
     # Executes the given tasks, returning the result
     # of one that has completed successfully (i.e., without throwing
     # an exception), if any do before the given timeout elapses.

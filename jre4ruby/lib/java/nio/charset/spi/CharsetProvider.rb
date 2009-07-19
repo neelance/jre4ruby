@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 2000-2004 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -33,7 +32,6 @@ module Java::Nio::Charset::Spi
     }
   end
   
-  # 
   # Charset service-provider class.
   # 
   # <p> A charset provider is a concrete subclass of this class that has a
@@ -75,7 +73,6 @@ module Java::Nio::Charset::Spi
     include_class_members CharsetProviderImports
     
     typesig { [] }
-    # 
     # Initializes a new charset provider. </p>
     # 
     # @throws  SecurityException
@@ -89,7 +86,6 @@ module Java::Nio::Charset::Spi
     end
     
     typesig { [] }
-    # 
     # Creates an iterator that iterates over the charsets supported by this
     # provider.  This method is used in the implementation of the {@link
     # java.nio.charset.Charset#availableCharsets Charset.availableCharsets}
@@ -101,7 +97,6 @@ module Java::Nio::Charset::Spi
     end
     
     typesig { [String] }
-    # 
     # Retrieves a charset for the given charset name. </p>
     # 
     # @param  charsetName

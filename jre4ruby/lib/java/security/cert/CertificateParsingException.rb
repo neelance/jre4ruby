@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 1997-2003 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -31,7 +30,6 @@ module Java::Security::Cert
     }
   end
   
-  # 
   # Certificate Parsing Exception. This is thrown whenever an
   # invalid DER-encoded certificate is parsed or unsupported DER features
   # are found in the Certificate.
@@ -46,7 +44,6 @@ module Java::Security::Cert
     }
     
     typesig { [] }
-    # 
     # Constructs a CertificateParsingException with no detail message. A
     # detail message is a String that describes this particular
     # exception.
@@ -55,7 +52,6 @@ module Java::Security::Cert
     end
     
     typesig { [String] }
-    # 
     # Constructs a CertificateParsingException with the specified detail
     # message. A detail message is a String that describes this
     # particular exception.
@@ -66,7 +62,6 @@ module Java::Security::Cert
     end
     
     typesig { [String, Exception] }
-    # 
     # Creates a <code>CertificateParsingException</code> with the specified
     # detail message and cause.
     # 
@@ -81,7 +76,6 @@ module Java::Security::Cert
     end
     
     typesig { [Exception] }
-    # 
     # Creates a <code>CertificateParsingException</code> with the
     # specified cause and a detail message of
     # <tt>(cause==null ? null : cause.toString())</tt>

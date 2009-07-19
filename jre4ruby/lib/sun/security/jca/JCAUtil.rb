@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 2003 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -33,7 +32,6 @@ module Sun::Security::Jca
     }
   end
   
-  # 
   # Collection of static utility methods used by the security framework.
   # 
   # @author  Andreas Sterbenz
@@ -69,7 +67,6 @@ module Sun::Security::Jca
       const_attr_reader  :ARRAY_SIZE
       
       typesig { [::Java::Int] }
-      # 
       # Get the size of a temporary buffer array to use in order to be
       # cache efficient. totalSize indicates the total amount of data to
       # be buffered. Used by the engineUpdate(ByteBuffer) methods.
@@ -78,7 +75,6 @@ module Sun::Security::Jca
       end
       
       typesig { [] }
-      # 
       # Get a SecureRandom instance. This method should me used by JDK
       # internal code in favor of calling "new SecureRandom()". That needs to
       # iterate through the provider table to find the default SecureRandom

@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 1995-2007 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -37,7 +36,6 @@ module Java::Net
     }
   end
   
-  # 
   # Class <code>URL</code> represents a Uniform Resource
   # Locator, a pointer to a "resource" on the World
   # Wide Web. A resource can be something as simple as a file or a
@@ -142,7 +140,6 @@ module Java::Net
       const_set_lazy(:SerialVersionUID) { -7627629688361524110 }
       const_attr_reader  :SerialVersionUID
       
-      # 
       # The property which specifies the package prefix list to be scanned
       # for protocol handlers.  The value of this property (if any) should
       # be a vertical bar delimited list of package names to search through
@@ -157,7 +154,6 @@ module Java::Net
       const_attr_reader  :ProtocolPathProp
     }
     
-    # 
     # The protocol to use (ftp, http, nntp, ... etc.) .
     # @serial
     attr_accessor :protocol
@@ -166,7 +162,6 @@ module Java::Net
     alias_method :attr_protocol=, :protocol=
     undef_method :protocol=
     
-    # 
     # The host name to connect to.
     # @serial
     attr_accessor :host
@@ -175,7 +170,6 @@ module Java::Net
     alias_method :attr_host=, :host=
     undef_method :host=
     
-    # 
     # The protocol port to connect to.
     # @serial
     attr_accessor :port
@@ -184,7 +178,6 @@ module Java::Net
     alias_method :attr_port=, :port=
     undef_method :port=
     
-    # 
     # The specified file name on that host. <code>file</code> is
     # defined as <code>path[?query]</code>
     # @serial
@@ -194,7 +187,6 @@ module Java::Net
     alias_method :attr_file=, :file=
     undef_method :file=
     
-    # 
     # The query part of this URL.
     attr_accessor :query
     alias_method :attr_query, :query
@@ -202,7 +194,6 @@ module Java::Net
     alias_method :attr_query=, :query=
     undef_method :query=
     
-    # 
     # The authority part of this URL.
     # @serial
     attr_accessor :authority
@@ -211,7 +202,6 @@ module Java::Net
     alias_method :attr_authority=, :authority=
     undef_method :authority=
     
-    # 
     # The path part of this URL.
     attr_accessor :path
     alias_method :attr_path, :path
@@ -219,7 +209,6 @@ module Java::Net
     alias_method :attr_path=, :path=
     undef_method :path=
     
-    # 
     # The userinfo part of this URL.
     attr_accessor :user_info
     alias_method :attr_user_info, :user_info
@@ -227,7 +216,6 @@ module Java::Net
     alias_method :attr_user_info=, :user_info=
     undef_method :user_info=
     
-    # 
     # # reference.
     # @serial
     attr_accessor :ref
@@ -236,7 +224,6 @@ module Java::Net
     alias_method :attr_ref=, :ref=
     undef_method :ref=
     
-    # 
     # The host's IP address, used in equals and hashCode.
     # Computed on demand. An uninitialized or unknown hostAddress is null.
     attr_accessor :host_address
@@ -245,7 +232,6 @@ module Java::Net
     alias_method :attr_host_address=, :host_address=
     undef_method :host_address=
     
-    # 
     # The URLStreamHandler for this URL.
     attr_accessor :handler
     alias_method :attr_handler, :handler
@@ -262,7 +248,6 @@ module Java::Net
     undef_method :hash_code=
     
     typesig { [String, String, ::Java::Int, String] }
-    # 
     # Creates a <code>URL</code> object from the specified
     # <code>protocol</code>, <code>host</code>, <code>port</code>
     # number, and <code>file</code>.<p>
@@ -344,7 +329,6 @@ module Java::Net
     end
     
     typesig { [String, String, String] }
-    # 
     # Creates a URL from the specified <code>protocol</code>
     # name, <code>host</code> name, and <code>file</code> name. The
     # default port for the specified protocol is used.
@@ -366,7 +350,6 @@ module Java::Net
     end
     
     typesig { [String, String, ::Java::Int, String, URLStreamHandler] }
-    # 
     # Creates a <code>URL</code> object from the specified
     # <code>protocol</code>, <code>host</code>, <code>port</code>
     # number, <code>file</code>, and <code>handler</code>. Specifying
@@ -427,7 +410,6 @@ module Java::Net
       protocol = (protocol.to_lower_case).to_s
       @protocol = protocol
       if (!(host).nil?)
-        # 
         # if host is a literal IPv6 address,
         # we will make it conform to RFC 2732
         if (host.index_of(Character.new(?:.ord)) >= 0 && !host.starts_with("["))
@@ -458,7 +440,6 @@ module Java::Net
     end
     
     typesig { [String] }
-    # 
     # Creates a <code>URL</code> object from the <code>String</code>
     # representation.
     # <p>
@@ -474,7 +455,6 @@ module Java::Net
     end
     
     typesig { [URL, String] }
-    # 
     # Creates a URL by parsing the given spec within a specified context.
     # 
     # The new URL is created from the given context URL and the spec
@@ -525,7 +505,6 @@ module Java::Net
     end
     
     typesig { [URL, String, URLStreamHandler] }
-    # 
     # Creates a URL by parsing the given spec with the specified handler
     # within a specified context. If the handler is null, the parsing
     # occurs as with the two argument constructor.
@@ -641,7 +620,6 @@ module Java::Net
           @ref = (spec.substring(i + 1, limit)).to_s
           limit = i
         end
-        # 
         # Handle special case inheritance of query and fragment
         # implied by RFC2396 section 5.2.2.
         if (is_relative && (start).equal?(limit))
@@ -654,14 +632,13 @@ module Java::Net
       rescue MalformedURLException => e
         raise e
       rescue Exception => e
-        exception = MalformedURLException.new(e_.get_message)
-        exception.init_cause(e_)
+        exception = MalformedURLException.new(e.get_message)
+        exception.init_cause(e)
         raise exception
       end
     end
     
     typesig { [String] }
-    # 
     # Returns true if specified string is a valid protocol name.
     def is_valid_protocol(protocol)
       len = protocol.length
@@ -684,14 +661,12 @@ module Java::Net
     end
     
     typesig { [SecurityManager] }
-    # 
     # Checks for permission to specify a stream handler.
     def check_specify_handler(sm)
       sm.check_permission(SecurityConstants::SPECIFY_HANDLER_PERMISSION)
     end
     
     typesig { [String, String, ::Java::Int, String, String] }
-    # 
     # Sets the fields of the URL. This is not a public method so that
     # only URLStreamHandlers can modify URL fields. URLs are
     # otherwise constant.
@@ -724,7 +699,6 @@ module Java::Net
     end
     
     typesig { [String, String, ::Java::Int, String, String, String, String, String] }
-    # 
     # Sets the specified 8 fields of the URL. This is not a public method so
     # that only URLStreamHandlers can modify URL fields. URLs are otherwise
     # constant.
@@ -757,7 +731,6 @@ module Java::Net
     end
     
     typesig { [] }
-    # 
     # Gets the query part of this <code>URL</code>.
     # 
     # @return  the query part of this <code>URL</code>,
@@ -768,7 +741,6 @@ module Java::Net
     end
     
     typesig { [] }
-    # 
     # Gets the path part of this <code>URL</code>.
     # 
     # @return  the path part of this <code>URL</code>, or an
@@ -779,7 +751,6 @@ module Java::Net
     end
     
     typesig { [] }
-    # 
     # Gets the userInfo part of this <code>URL</code>.
     # 
     # @return  the userInfo part of this <code>URL</code>, or
@@ -790,7 +761,6 @@ module Java::Net
     end
     
     typesig { [] }
-    # 
     # Gets the authority part of this <code>URL</code>.
     # 
     # @return  the authority part of this <code>URL</code>
@@ -800,7 +770,6 @@ module Java::Net
     end
     
     typesig { [] }
-    # 
     # Gets the port number of this <code>URL</code>.
     # 
     # @return  the port number, or -1 if the port is not set
@@ -809,7 +778,6 @@ module Java::Net
     end
     
     typesig { [] }
-    # 
     # Gets the default port number of the protocol associated
     # with this <code>URL</code>. If the URL scheme or the URLStreamHandler
     # for the URL do not define a default port number,
@@ -822,7 +790,6 @@ module Java::Net
     end
     
     typesig { [] }
-    # 
     # Gets the protocol name of this <code>URL</code>.
     # 
     # @return  the protocol of this <code>URL</code>.
@@ -831,7 +798,6 @@ module Java::Net
     end
     
     typesig { [] }
-    # 
     # Gets the host name of this <code>URL</code>, if applicable.
     # The format of the host conforms to RFC 2732, i.e. for a
     # literal IPv6 address, this method will return the IPv6 address
@@ -843,7 +809,6 @@ module Java::Net
     end
     
     typesig { [] }
-    # 
     # Gets the file name of this <code>URL</code>.
     # The returned file portion will be
     # the same as <CODE>getPath()</CODE>, plus the concatenation of
@@ -858,7 +823,6 @@ module Java::Net
     end
     
     typesig { [] }
-    # 
     # Gets the anchor (also known as the "reference") of this
     # <code>URL</code>.
     # 
@@ -869,7 +833,6 @@ module Java::Net
     end
     
     typesig { [Object] }
-    # 
     # Compares this URL for equality with another object.<p>
     # 
     # If the given object is not a URL then this method immediately returns
@@ -902,7 +865,6 @@ module Java::Net
     end
     
     typesig { [] }
-    # 
     # Creates an integer suitable for hash table indexing.<p>
     # 
     # The hash code is based upon all the URL components relevant for URL
@@ -920,7 +882,6 @@ module Java::Net
     end
     
     typesig { [URL] }
-    # 
     # Compares two URLs, excluding the fragment component.<p>
     # 
     # Returns <code>true</code> if this <code>URL</code> and the
@@ -935,7 +896,6 @@ module Java::Net
     end
     
     typesig { [] }
-    # 
     # Constructs a string representation of this <code>URL</code>. The
     # string is created by calling the <code>toExternalForm</code>
     # method of the stream protocol handler for this object.
@@ -949,7 +909,6 @@ module Java::Net
     end
     
     typesig { [] }
-    # 
     # Constructs a string representation of this <code>URL</code>. The
     # string is created by calling the <code>toExternalForm</code>
     # method of the stream protocol handler for this object.
@@ -963,7 +922,6 @@ module Java::Net
     end
     
     typesig { [] }
-    # 
     # Returns a {@link java.net.URI} equivalent to this URL.
     # This method functions in the same way as <code>new URI (this.toString())</code>.
     # <p>Note, any URL instance that complies with RFC 2396 can be converted
@@ -980,7 +938,6 @@ module Java::Net
     end
     
     typesig { [] }
-    # 
     # Returns a <code>URLConnection</code> object that represents a
     # connection to the remote object referred to by the <code>URL</code>.
     # 
@@ -1007,7 +964,6 @@ module Java::Net
     end
     
     typesig { [Proxy] }
-    # 
     # Same as openConnection(), except that the connection will be
     # made through the specified proxy; Protocol handlers that do not
     # support proxing will ignore the proxy parameter and make a
@@ -1052,7 +1008,6 @@ module Java::Net
     end
     
     typesig { [] }
-    # 
     # Opens a connection to this <code>URL</code> and returns an
     # <code>InputStream</code> for reading from that connection. This
     # method is a shorthand for:
@@ -1069,7 +1024,6 @@ module Java::Net
     end
     
     typesig { [] }
-    # 
     # Gets the contents of this URL. This method is a shorthand for:
     # <blockquote><pre>
     # openConnection().getContent()
@@ -1083,7 +1037,6 @@ module Java::Net
     end
     
     typesig { [Array.typed(Class)] }
-    # 
     # Gets the contents of this URL. This method is a shorthand for:
     # <blockquote><pre>
     # openConnection().getContent(Class[])
@@ -1101,7 +1054,6 @@ module Java::Net
     end
     
     class_module.module_eval {
-      # 
       # The URLStreamHandler factory.
       
       def factory
@@ -1115,7 +1067,6 @@ module Java::Net
       alias_method :attr_factory=, :factory=
       
       typesig { [URLStreamHandlerFactory] }
-      # 
       # Sets an application's <code>URLStreamHandlerFactory</code>.
       # This method can be called at most once in a given Java Virtual
       # Machine.
@@ -1151,7 +1102,6 @@ module Java::Net
         end
       end
       
-      # 
       # A table of protocol handlers.
       
       def handlers
@@ -1176,7 +1126,6 @@ module Java::Net
       alias_method :attr_stream_handler_lock=, :stream_handler_lock=
       
       typesig { [String] }
-      # 
       # Returns the Stream Handler.
       # @param protocol the protocol to use
       def get_urlstream_handler(protocol)
@@ -1250,7 +1199,6 @@ module Java::Net
     }
     
     typesig { [Java::Io::ObjectOutputStream] }
-    # 
     # WriteObject is called to save the state of the URL to an
     # ObjectOutputStream. The handler is not saved since it is
     # specific to this system.
@@ -1266,7 +1214,6 @@ module Java::Net
     end
     
     typesig { [Java::Io::ObjectInputStream] }
-    # 
     # readObject is called to restore the state of the URL from the
     # stream.  It reads the components of the URL and finds the local
     # stream handler.

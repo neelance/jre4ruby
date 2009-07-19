@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 2000-2002 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -37,7 +36,6 @@ module Sun::Nio::Ch
     }
   end
   
-  # 
   # File-descriptor based I/O utilities that are shared by NIO classes.
   class IOUtil 
     include_class_members IOUtilImports
@@ -66,7 +64,6 @@ module Sun::Nio::Ch
       end
       
       typesig { [Array.typed(ByteBuffer), ::Java::Int] }
-      # 
       # Returns a new ByteBuffer array with only unfinished buffers in it
       def skip_bufs(bufs, next_with_remaining)
         new_size = bufs.attr_length - next_with_remaining
@@ -172,10 +169,10 @@ module Sun::Nio::Ch
           while i_ < num_bufs
             next_buffer = shadow[i_]
             # put in the buffer addresses
-            pos_ = next_buffer.position
-            len = next_buffer.limit - pos_
+            pos = next_buffer.position
+            len = next_buffer.limit - pos
             bytes_ready_to_write += len
-            vec.put_base(i_, (next_buffer).address + pos_)
+            vec.put_base(i_, (next_buffer).address + pos)
             vec.put_len(i_, len)
             ((i_ += 1) - 1)
           end
@@ -188,21 +185,21 @@ module Sun::Nio::Ch
         # Notify the buffers how many bytes were taken
         i__ = 0
         while i__ < num_bufs
-          next_buffer_ = bufs[i__]
-          pos__ = next_buffer_.position
-          lim_ = next_buffer_.limit
-          raise AssertError if not ((pos__ <= lim_))
-          len_ = (pos__ <= lim_ ? lim_ - pos__ : lim_)
-          if (bytes_written >= len_)
-            bytes_written -= len_
-            new_position = pos__ + len_
-            next_buffer_.position(new_position)
+          next_buffer = bufs[i__]
+          pos = next_buffer.position
+          lim = next_buffer.limit
+          raise AssertError if not ((pos <= lim))
+          len = (pos <= lim ? lim - pos : lim)
+          if (bytes_written >= len)
+            bytes_written -= len
+            new_position = pos + len
+            next_buffer.position(new_position)
           else
             # Buffers not completely filled
             if (bytes_written > 0)
-              raise AssertError if not ((pos__ + bytes_written < JavaInteger::MAX_VALUE))
-              new_position_ = RJava.cast_to_int((pos__ + bytes_written))
-              next_buffer_.position(new_position_)
+              raise AssertError if not ((pos + bytes_written < JavaInteger::MAX_VALUE))
+              new_position = RJava.cast_to_int((pos + bytes_written))
+              next_buffer.position(new_position)
             end
             break
           end
@@ -306,20 +303,20 @@ module Sun::Nio::Ch
         # Notify the buffers how many bytes were read
         i__ = 0
         while i__ < num_bufs
-          next_buffer_ = shadow[i__]
+          next_buffer = shadow[i__]
           # Note: should this have been cached from above?
-          pos_ = next_buffer_.position
-          len_ = next_buffer_.remaining
-          if (bytes_read >= len_)
-            bytes_read -= len_
-            new_position = pos_ + len_
-            next_buffer_.position(new_position)
+          pos = next_buffer.position
+          len = next_buffer.remaining
+          if (bytes_read >= len)
+            bytes_read -= len
+            new_position = pos + len
+            next_buffer.position(new_position)
           else
             # Buffers not completely filled
             if (bytes_read > 0)
-              raise AssertError if not ((pos_ + bytes_read < JavaInteger::MAX_VALUE))
-              new_position_ = RJava.cast_to_int((pos_ + bytes_read))
-              next_buffer_.position(new_position_)
+              raise AssertError if not ((pos + bytes_read < JavaInteger::MAX_VALUE))
+              new_position = RJava.cast_to_int((pos + bytes_read))
+              next_buffer.position(new_position)
             end
             break
           end

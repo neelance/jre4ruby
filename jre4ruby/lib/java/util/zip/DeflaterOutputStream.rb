@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 1996-2006 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -35,7 +34,6 @@ module Java::Util::Zip
     }
   end
   
-  # 
   # This class implements an output stream filter for compressing data in
   # the "deflate" compression format. It is also used as the basis for other
   # types of compression filters, such as GZIPOutputStream.
@@ -45,7 +43,6 @@ module Java::Util::Zip
   class DeflaterOutputStream < DeflaterOutputStreamImports.const_get :FilterOutputStream
     include_class_members DeflaterOutputStreamImports
     
-    # 
     # Compressor for this stream.
     attr_accessor :def
     alias_method :attr_def, :def
@@ -53,7 +50,6 @@ module Java::Util::Zip
     alias_method :attr_def=, :def=
     undef_method :def=
     
-    # 
     # Output buffer for writing compressed data.
     attr_accessor :buf
     alias_method :attr_buf, :buf
@@ -61,7 +57,6 @@ module Java::Util::Zip
     alias_method :attr_buf=, :buf=
     undef_method :buf=
     
-    # 
     # Indicates that the stream has been closed.
     attr_accessor :closed
     alias_method :attr_closed, :closed
@@ -70,7 +65,6 @@ module Java::Util::Zip
     undef_method :closed=
     
     typesig { [OutputStream, Deflater, ::Java::Int] }
-    # 
     # Creates a new output stream with the specified compressor and
     # buffer size.
     # @param out the output stream
@@ -97,7 +91,6 @@ module Java::Util::Zip
     end
     
     typesig { [OutputStream, Deflater] }
-    # 
     # Creates a new output stream with the specified compressor and
     # a default buffer size.
     # @param out the output stream
@@ -113,7 +106,6 @@ module Java::Util::Zip
     undef_method :uses_default_deflater=
     
     typesig { [OutputStream] }
-    # 
     # Creates a new output stream with a default compressor and buffer size.
     # @param out the output stream
     def initialize(out)
@@ -122,7 +114,6 @@ module Java::Util::Zip
     end
     
     typesig { [::Java::Int] }
-    # 
     # Writes a byte to the compressed output stream. This method will
     # block until the byte can be written.
     # @param b the byte to be written
@@ -134,7 +125,6 @@ module Java::Util::Zip
     end
     
     typesig { [Array.typed(::Java::Byte), ::Java::Int, ::Java::Int] }
-    # 
     # Writes an array of bytes to the compressed output stream. This
     # method will block until all the bytes are written.
     # @param b the data to be written
@@ -168,7 +158,6 @@ module Java::Util::Zip
     end
     
     typesig { [] }
-    # 
     # Finishes writing compressed data to the output stream without closing
     # the underlying stream. Use this method when applying multiple filters
     # in succession to the same output stream.
@@ -183,7 +172,6 @@ module Java::Util::Zip
     end
     
     typesig { [] }
-    # 
     # Writes remaining compressed data to the output stream and closes the
     # underlying stream.
     # @exception IOException if an I/O error has occurred
@@ -199,7 +187,6 @@ module Java::Util::Zip
     end
     
     typesig { [] }
-    # 
     # Writes next block of compressed data to the output stream.
     # @throws IOException if an I/O error has occurred
     def deflate

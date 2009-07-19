@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 2005-2006 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -37,7 +36,6 @@ module Sun::Security::X509
     }
   end
   
-  # 
   # Represents the CRL Issuing Distribution Point Extension (OID = 2.5.29.28).
   # 
   # <p>
@@ -73,13 +71,11 @@ module Sun::Security::X509
     include CertAttrSet
     
     class_module.module_eval {
-      # 
       # Identifier for this attribute, to be used with the
       # get, set, delete methods of Certificate, x509 type.
       const_set_lazy(:IDENT) { "x509.info.extensions.IssuingDistributionPoint" }
       const_attr_reader  :IDENT
       
-      # 
       # Attribute names.
       const_set_lazy(:NAME) { "IssuingDistributionPoint" }
       const_attr_reader  :NAME
@@ -103,7 +99,6 @@ module Sun::Security::X509
       const_attr_reader  :INDIRECT_CRL
     }
     
-    # 
     # The distribution point name for the CRL.
     attr_accessor :distribution_point
     alias_method :attr_distribution_point, :distribution_point
@@ -111,7 +106,6 @@ module Sun::Security::X509
     alias_method :attr_distribution_point=, :distribution_point=
     undef_method :distribution_point=
     
-    # 
     # The scope settings for the CRL.
     attr_accessor :revocation_reasons
     alias_method :attr_revocation_reasons, :revocation_reasons
@@ -144,7 +138,6 @@ module Sun::Security::X509
     undef_method :is_indirect_crl=
     
     class_module.module_eval {
-      # 
       # ASN.1 context specific tag values
       const_set_lazy(:TAG_DISTRIBUTION_POINT) { 0 }
       const_attr_reader  :TAG_DISTRIBUTION_POINT
@@ -166,7 +159,6 @@ module Sun::Security::X509
     }
     
     typesig { [DistributionPointName, ReasonFlags, ::Java::Boolean, ::Java::Boolean, ::Java::Boolean, ::Java::Boolean] }
-    # 
     # Creates a critical IssuingDistributionPointExtension.
     # 
     # @param distributionPoint the name of the distribution point, or null for
@@ -216,7 +208,6 @@ module Sun::Security::X509
     end
     
     typesig { [Boolean, Object] }
-    # 
     # Creates a critical IssuingDistributionPointExtension from its
     # DER-encoding.
     # 
@@ -287,14 +278,12 @@ module Sun::Security::X509
     end
     
     typesig { [] }
-    # 
     # Returns the name of this attribute.
     def get_name
       return NAME
     end
     
     typesig { [OutputStream] }
-    # 
     # Encodes the issuing distribution point extension and writes it to the
     # DerOutputStream.
     # 
@@ -312,7 +301,6 @@ module Sun::Security::X509
     end
     
     typesig { [String, Object] }
-    # 
     # Sets the attribute value.
     def set(name, obj)
       if (name.equals_ignore_case(POINT))
@@ -361,7 +349,6 @@ module Sun::Security::X509
     end
     
     typesig { [String] }
-    # 
     # Gets the attribute value.
     def get(name)
       if (name.equals_ignore_case(POINT))
@@ -392,7 +379,6 @@ module Sun::Security::X509
     end
     
     typesig { [String] }
-    # 
     # Deletes the attribute value.
     def delete(name)
       if (name.equals_ignore_case(POINT))
@@ -424,7 +410,6 @@ module Sun::Security::X509
     end
     
     typesig { [] }
-    # 
     # Returns an enumeration of names of attributes existing within this
     # attribute.
     def get_elements
@@ -452,29 +437,29 @@ module Sun::Security::X509
         tagged.write_implicit(DerValue.create_tag(DerValue::TAG_CONTEXT, true, TAG_DISTRIBUTION_POINT), tmp)
       end
       if (@has_only_user_certs)
-        tmp_ = DerOutputStream.new
-        tmp_.put_boolean(@has_only_user_certs)
-        tagged.write_implicit(DerValue.create_tag(DerValue::TAG_CONTEXT, false, TAG_ONLY_USER_CERTS), tmp_)
+        tmp = DerOutputStream.new
+        tmp.put_boolean(@has_only_user_certs)
+        tagged.write_implicit(DerValue.create_tag(DerValue::TAG_CONTEXT, false, TAG_ONLY_USER_CERTS), tmp)
       end
       if (@has_only_cacerts)
-        tmp__ = DerOutputStream.new
-        tmp__.put_boolean(@has_only_cacerts)
-        tagged.write_implicit(DerValue.create_tag(DerValue::TAG_CONTEXT, false, TAG_ONLY_CA_CERTS), tmp__)
+        tmp = DerOutputStream.new
+        tmp.put_boolean(@has_only_cacerts)
+        tagged.write_implicit(DerValue.create_tag(DerValue::TAG_CONTEXT, false, TAG_ONLY_CA_CERTS), tmp)
       end
       if (!(@revocation_reasons).nil?)
-        tmp___ = DerOutputStream.new
-        @revocation_reasons.encode(tmp___)
-        tagged.write_implicit(DerValue.create_tag(DerValue::TAG_CONTEXT, false, TAG_ONLY_SOME_REASONS), tmp___)
+        tmp = DerOutputStream.new
+        @revocation_reasons.encode(tmp)
+        tagged.write_implicit(DerValue.create_tag(DerValue::TAG_CONTEXT, false, TAG_ONLY_SOME_REASONS), tmp)
       end
       if (@is_indirect_crl)
-        tmp____ = DerOutputStream.new
-        tmp____.put_boolean(@is_indirect_crl)
-        tagged.write_implicit(DerValue.create_tag(DerValue::TAG_CONTEXT, false, TAG_INDIRECT_CRL), tmp____)
+        tmp = DerOutputStream.new
+        tmp.put_boolean(@is_indirect_crl)
+        tagged.write_implicit(DerValue.create_tag(DerValue::TAG_CONTEXT, false, TAG_INDIRECT_CRL), tmp)
       end
       if (@has_only_attribute_certs)
-        tmp_____ = DerOutputStream.new
-        tmp_____.put_boolean(@has_only_attribute_certs)
-        tagged.write_implicit(DerValue.create_tag(DerValue::TAG_CONTEXT, false, TAG_ONLY_ATTRIBUTE_CERTS), tmp_____)
+        tmp = DerOutputStream.new
+        tmp.put_boolean(@has_only_attribute_certs)
+        tagged.write_implicit(DerValue.create_tag(DerValue::TAG_CONTEXT, false, TAG_ONLY_ATTRIBUTE_CERTS), tmp)
       end
       seq = DerOutputStream.new
       seq.write(DerValue.attr_tag_sequence, tagged)
@@ -482,7 +467,6 @@ module Sun::Security::X509
     end
     
     typesig { [] }
-    # 
     # Returns the extension as user readable string.
     def to_s
       sb = StringBuilder.new(super)

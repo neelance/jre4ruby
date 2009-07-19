@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 1997-2006 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -33,7 +32,6 @@ module Java::Util::Jar
     }
   end
   
-  # 
   # The <code>JarOutputStream</code> class is used to write the contents
   # of a JAR file to any output stream. It extends the class
   # <code>java.util.zip.ZipOutputStream</code> with support
@@ -54,7 +52,6 @@ module Java::Util::Jar
     }
     
     typesig { [OutputStream, Manifest] }
-    # 
     # Creates a new <code>JarOutputStream</code> with the specified
     # <code>Manifest</code>. The manifest is written as the first
     # entry to the output stream.
@@ -76,7 +73,6 @@ module Java::Util::Jar
     end
     
     typesig { [OutputStream] }
-    # 
     # Creates a new <code>JarOutputStream</code> with no manifest.
     # @param out the actual output stream
     # @exception IOException if an I/O error has occurred
@@ -87,7 +83,6 @@ module Java::Util::Jar
     end
     
     typesig { [ZipEntry] }
-    # 
     # Begins writing a new JAR file entry and positions the stream
     # to the start of the entry data. This method will also close
     # any previous entry. The default compression method will be
@@ -129,7 +124,6 @@ module Java::Util::Jar
     
     class_module.module_eval {
       typesig { [Array.typed(::Java::Byte)] }
-      # 
       # Returns true if specified byte array contains the
       # jar magic extra field id.
       def has_magic(edata)
@@ -148,7 +142,6 @@ module Java::Util::Jar
       end
       
       typesig { [Array.typed(::Java::Byte), ::Java::Int] }
-      # 
       # Fetches unsigned 16-bit value from byte array at specified offset.
       # The bytes are assumed to be in Intel (little-endian) byte order.
       def get16(b, off)
@@ -156,7 +149,6 @@ module Java::Util::Jar
       end
       
       typesig { [Array.typed(::Java::Byte), ::Java::Int, ::Java::Int] }
-      # 
       # Sets 16-bit value at specified offset. The bytes are assumed to
       # be in Intel (little-endian) byte order.
       def set16(b, off, value)

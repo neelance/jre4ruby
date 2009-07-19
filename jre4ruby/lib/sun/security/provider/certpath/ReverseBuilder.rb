@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 2000-2006 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -60,7 +59,6 @@ module Sun::Security::Provider::Certpath
     }
   end
   
-  # 
   # This class represents a reverse builder, which is able to retrieve
   # matching certificates from CertStores and verify a particular certificate
   # against a ReverseState.
@@ -84,7 +82,6 @@ module Sun::Security::Provider::Certpath
     undef_method :init_policies=
     
     typesig { [PKIXBuilderParameters, X500Principal] }
-    # 
     # Initialize the builder with the input parameters.
     # 
     # @param params the parameter set used to build a certification path
@@ -107,7 +104,6 @@ module Sun::Security::Provider::Certpath
     end
     
     typesig { [State, JavaList] }
-    # 
     # Retrieves all certs from the specified CertStores that satisfy the
     # requirements specified in the parameters and the current
     # PKIX state (name constraints, policy constraints, etc).
@@ -120,7 +116,6 @@ module Sun::Security::Provider::Certpath
       if (!(@debug).nil?)
         @debug.println("In ReverseBuilder.getMatchingCerts.")
       end
-      # 
       # The last certificate could be an EE or a CA certificate
       # (we may be building a partial certification path or
       # establishing trust in a CA).
@@ -133,29 +128,23 @@ module Sun::Security::Provider::Certpath
     end
     
     typesig { [ReverseState, JavaList] }
-    # 
     # Retrieves all end-entity certificates which satisfy constraints
     # and requirements specified in the parameters and PKIX state.
     def get_matching_eecerts(current_state, cert_stores)
-      # 
       # Compose a CertSelector to filter out
       # certs which do not satisfy requirements.
       # 
       # First, retrieve clone of current target cert constraints,
       # and then add more selection criteria based on current validation state.
       sel = self.attr_target_cert_constraints.clone
-      # 
       # Match on issuer (subject of previous cert)
       sel.set_issuer(current_state.attr_subject_dn)
-      # 
       # Match on certificate validity date.
       sel.set_certificate_valid(self.attr_date)
-      # 
       # Policy processing optimizations
       if ((current_state.attr_explicit_policy).equal?(0))
         sel.set_policy(get_matching_policies)
       end
-      # 
       # If previous cert has a subject key identifier extension,
       # use it to match on authority key identifier extension.
       # 
@@ -178,31 +167,24 @@ module Sun::Security::Provider::Certpath
     end
     
     typesig { [ReverseState, JavaList] }
-    # 
     # Retrieves all CA certificates which satisfy constraints
     # and requirements specified in the parameters and PKIX state.
     def get_matching_cacerts(current_state, cert_stores)
-      # 
       # Compose a CertSelector to filter out
       # certs which do not satisfy requirements.
       sel = X509CertSelector.new
-      # 
       # Match on issuer (subject of previous cert)
       sel.set_issuer(current_state.attr_subject_dn)
-      # 
       # Match on certificate validity date.
       sel.set_certificate_valid(self.attr_date)
-      # 
       # Match on target subject name (checks that current cert's
       # name constraints permit it to certify target).
       # (4 is the integer type for DIRECTORY name).
       sel.add_path_to_name(4, self.attr_target_cert_constraints.get_subject_as_bytes)
-      # 
       # Policy processing optimizations
       if ((current_state.attr_explicit_policy).equal?(0))
         sel.set_policy(get_matching_policies)
       end
-      # 
       # If previous cert has a subject key identifier extension,
       # use it to match on authority key identifier extension.
       # 
@@ -227,7 +209,6 @@ module Sun::Security::Provider::Certpath
     end
     
     class_module.module_eval {
-      # 
       # This inner class compares 2 PKIX certificates according to which
       # should be tried first when building a path to the target. For
       # now, the algorithm is to look at name constraints in each cert and those
@@ -247,7 +228,6 @@ module Sun::Security::Provider::Certpath
         
         typesig { [X509Certificate, X509Certificate] }
         def compare(cert1, cert2)
-          # 
           # if either cert certifies the target, always
           # put at head of list.
           if ((cert1.get_subject_x500principal == self.attr_target_subject_dn))
@@ -292,7 +272,6 @@ module Sun::Security::Provider::Certpath
     }
     
     typesig { [X509Certificate, State, JavaList] }
-    # 
     # Verifies a matching certificate.
     # 
     # This method executes any of the validation steps in the PKIX path validation
@@ -318,7 +297,6 @@ module Sun::Security::Provider::Certpath
       if (current_state.is_initial)
         return
       end
-      # 
       # check for looping - abort a loop if
       # ((we encounter the same certificate twice) AND
       # ((policyMappingInhibited = true) OR (no policy mapping
@@ -367,18 +345,15 @@ module Sun::Security::Provider::Certpath
         if ((current_state.attr_remaining_cacerts <= 0) && !X509CertImpl.is_self_issued(cert))
           raise CertPathValidatorException.new("pathLenConstraint violated, path too long")
         end
-        # 
         # Check keyUsage extension (only if CA cert and not final cert)
         KeyChecker.verify_cakey_usage(cert)
       else
-        # 
         # If final cert, check that it satisfies specified target
         # constraints
         if ((self.attr_target_cert_constraints.match(cert)).equal?(false))
           raise CertPathValidatorException.new("target certificate " + "constraints check failed")
         end
       end
-      # 
       # Check revocation.
       if (self.attr_build_params.is_revocation_enabled)
         current_state.attr_crl_checker.check(cert, current_state.attr_pub_key, current_state.attr_crl_sign)
@@ -395,11 +370,9 @@ module Sun::Security::Provider::Certpath
           end
         end
       end
-      # 
       # Check policy
       cert_impl = X509CertImpl.to_impl(cert)
       current_state.attr_root_node = PolicyChecker.process_policies(current_state.attr_cert_index, @init_policies, current_state.attr_explicit_policy, current_state.attr_policy_mapping, current_state.attr_inhibit_any_policy, self.attr_build_params.get_policy_qualifiers_rejected, current_state.attr_root_node, cert_impl, final_cert)
-      # 
       # Check CRITICAL private extensions
       unresolved_crit_exts = cert.get_critical_extension_oids
       if ((unresolved_crit_exts).nil?)
@@ -408,7 +381,6 @@ module Sun::Security::Provider::Certpath
       current_state.attr_user_checkers.each do |checker|
         checker.check(cert, unresolved_crit_exts)
       end
-      # 
       # Look at the remaining extensions and remove any ones we have
       # already checked. If there are any left, throw an exception!
       if (!unresolved_crit_exts.is_empty)
@@ -425,7 +397,6 @@ module Sun::Security::Provider::Certpath
           raise CertificateException.new("Unrecognized critical extension(s)")
         end
       end
-      # 
       # Check signature.
       if (!(self.attr_build_params.get_sig_provider).nil?)
         cert.verify(current_state.attr_pub_key, self.attr_build_params.get_sig_provider)
@@ -435,7 +406,6 @@ module Sun::Security::Provider::Certpath
     end
     
     typesig { [X509Certificate] }
-    # 
     # Verifies whether the input certificate completes the path.
     # This checks whether the cert is the target certificate.
     # 

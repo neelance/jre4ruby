@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 2003-2004 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -32,7 +31,6 @@ module Java::Lang::Annotation
     }
   end
   
-  # 
   # Thrown to indicate that a program has attempted to access an element of
   # an annotation whose type has changed after the annotation was compiled
   # (or serialized).
@@ -42,7 +40,6 @@ module Java::Lang::Annotation
   class AnnotationTypeMismatchException < AnnotationTypeMismatchExceptionImports.const_get :RuntimeException
     include_class_members AnnotationTypeMismatchExceptionImports
     
-    # 
     # The <tt>Method</tt> object for the annotation element.
     attr_accessor :element
     alias_method :attr_element, :element
@@ -50,7 +47,6 @@ module Java::Lang::Annotation
     alias_method :attr_element=, :element=
     undef_method :element=
     
-    # 
     # The (erroneous) type of data found in the annotation.  This string
     # may, but is not required to, contain the value as well.  The exact
     # format of the string is unspecified.
@@ -61,7 +57,6 @@ module Java::Lang::Annotation
     undef_method :found_type=
     
     typesig { [Method, String] }
-    # 
     # Constructs an AnnotationTypeMismatchException for the specified
     # annotation type element and found data type.
     # 
@@ -78,7 +73,6 @@ module Java::Lang::Annotation
     end
     
     typesig { [] }
-    # 
     # Returns the <tt>Method</tt> object for the incorrectly typed element.
     # 
     # @return the <tt>Method</tt> object for the incorrectly typed element
@@ -87,7 +81,6 @@ module Java::Lang::Annotation
     end
     
     typesig { [] }
-    # 
     # Returns the type of data found in the incorrectly typed element.
     # The returned string may, but is not required to, contain the value
     # as well.  The exact format of the string is unspecified.

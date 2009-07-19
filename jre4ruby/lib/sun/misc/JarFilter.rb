@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 2001-2006 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -33,7 +32,6 @@ module Sun::Misc
     }
   end
   
-  # 
   # <p>
   # This class checks that only jar and zip files are included in the file list.
   # This class is used in extension installation support (ExtensionDependency).

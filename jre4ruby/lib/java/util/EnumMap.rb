@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 2003-2006 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -33,7 +32,6 @@ module Java::Util
     }
   end
   
-  # 
   # A specialized {@link Map} implementation for use with enum type keys.  All
   # of the keys in an enum map must come from a single enum type that is
   # specified, explicitly or implicitly, when the map is created.  Enum maps
@@ -85,7 +83,6 @@ module Java::Util
     include Java::Io::Serializable
     include Cloneable
     
-    # 
     # The <tt>Class</tt> object for the enum type of all the keys of this map.
     # 
     # @serial
@@ -95,7 +92,6 @@ module Java::Util
     alias_method :attr_key_type=, :key_type=
     undef_method :key_type=
     
-    # 
     # All of the values comprising K.  (Cached for performance.)
     attr_accessor :key_universe
     alias_method :attr_key_universe, :key_universe
@@ -103,7 +99,6 @@ module Java::Util
     alias_method :attr_key_universe=, :key_universe=
     undef_method :key_universe=
     
-    # 
     # Array representation of this map.  The ith element is the value
     # to which universe[i] is currently mapped, or null if it isn't
     # mapped to anything, or NULL if it's mapped to null.
@@ -113,7 +108,6 @@ module Java::Util
     alias_method :attr_vals=, :vals=
     undef_method :vals=
     
-    # 
     # The number of mappings in this map.
     attr_accessor :size
     alias_method :attr_size, :size
@@ -122,7 +116,6 @@ module Java::Util
     undef_method :size=
     
     class_module.module_eval {
-      # 
       # Distinguished non-null value for representing null values.
       const_set_lazy(:NULL) { Object.new }
       const_attr_reader  :NULL
@@ -152,7 +145,6 @@ module Java::Util
     }
     
     typesig { [Class] }
-    # 
     # Creates an empty enum map with the specified key type.
     # 
     # @param keyType the class object of the key type for this enum map
@@ -172,7 +164,6 @@ module Java::Util
     end
     
     typesig { [EnumMap] }
-    # 
     # Creates an enum map with the same key type as the specified enum
     # map, initially containing the same mappings (if any).
     # 
@@ -194,7 +185,6 @@ module Java::Util
     end
     
     typesig { [Map] }
-    # 
     # Creates an enum map initialized from the specified map.  If the
     # specified map is an <tt>EnumMap</tt> instance, this constructor behaves
     # identically to {@link #EnumMap(EnumMap)}.  Otherwise, the specified map
@@ -242,7 +232,6 @@ module Java::Util
     end
     
     typesig { [Object] }
-    # 
     # Returns <tt>true</tt> if this map maps one or more keys to the
     # specified value.
     # 
@@ -259,7 +248,6 @@ module Java::Util
     end
     
     typesig { [Object] }
-    # 
     # Returns <tt>true</tt> if this map contains a mapping for the specified
     # key.
     # 
@@ -276,7 +264,6 @@ module Java::Util
     end
     
     typesig { [Object] }
-    # 
     # Returns the value to which the specified key is mapped,
     # or {@code null} if this map contains no mapping for the key.
     # 
@@ -321,7 +308,6 @@ module Java::Util
     end
     
     typesig { [Object] }
-    # 
     # Removes the mapping for this key from this map if present.
     # 
     # @param key the key whose mapping is to be removed from the map
@@ -357,7 +343,6 @@ module Java::Util
     end
     
     typesig { [Object] }
-    # 
     # Returns true if key is of the proper type to be a key in this
     # enum map.
     def is_valid_key(key)
@@ -405,7 +390,6 @@ module Java::Util
     end
     
     typesig { [] }
-    # 
     # Removes all mappings from this map.
     def clear
       Arrays.fill(@vals, nil)
@@ -424,7 +408,6 @@ module Java::Util
     undef_method :entry_set=
     
     typesig { [] }
-    # 
     # Returns a {@link Set} view of the keys contained in this map.
     # The returned set obeys the general contract outlined in
     # {@link Map#keySet()}.  The set's iterator will return the keys
@@ -484,7 +467,6 @@ module Java::Util
     }
     
     typesig { [] }
-    # 
     # Returns a {@link Collection} view of the values contained in this map.
     # The returned collection obeys the general contract outlined in
     # {@link Map#values()}.  The collection's iterator will return the
@@ -553,7 +535,6 @@ module Java::Util
     }
     
     typesig { [] }
-    # 
     # Returns a {@link Set} view of the mappings contained in this map.
     # The returned set obeys the general contract outlined in
     # {@link Map#keySet()}.  The set's iterator will return the
@@ -745,7 +726,6 @@ module Java::Util
         alias_method :initialize__value_iterator, :initialize
       end }
       
-      # 
       # Since we don't use Entry objects, we use the Iterator itself as entry.
       const_set_lazy(:EntryIterator) { Class.new(EnumMapIterator) do
         extend LocalClass
@@ -861,7 +841,6 @@ module Java::Util
     end
     
     typesig { [] }
-    # 
     # Returns a shallow copy of this enum map.  (The values themselves
     # are not cloned.
     # 
@@ -878,7 +857,6 @@ module Java::Util
     end
     
     typesig { [Object] }
-    # 
     # Throws an exception if e is not of the correct type for this enum set.
     def type_check(key)
       key_class = key.get_class
@@ -889,7 +867,6 @@ module Java::Util
     
     class_module.module_eval {
       typesig { [Class] }
-      # 
       # Returns all of the values comprising K.
       # The result is uncloned, cached, and shared by all callers.
       def get_key_universe(key_type)
@@ -901,7 +878,6 @@ module Java::Util
     }
     
     typesig { [Java::Io::ObjectOutputStream] }
-    # 
     # Save the state of the <tt>EnumMap</tt> instance to a stream (i.e.,
     # serialize it).
     # 
@@ -922,7 +898,6 @@ module Java::Util
     end
     
     typesig { [Java::Io::ObjectInputStream] }
-    # 
     # Reconstitute the <tt>EnumMap</tt> instance from a stream (i.e.,
     # deserialize it).
     def read_object(s)

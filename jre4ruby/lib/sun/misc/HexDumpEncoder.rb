@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 1995-1997 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -34,7 +33,6 @@ module Sun::Misc
     }
   end
   
-  # 
   # This class encodes a buffer into the classic: "Hexadecimal Dump" format of
   # the past. It is useful for analyzing the contents of binary buffers.
   # The format produced is as follows:
@@ -143,14 +141,14 @@ module Sun::Misc
         end
       end
       self.attr_p_stream.print(" ")
-      i_ = 0
-      while i_ < @this_line_length
-        if ((@this_line[i_] < Character.new(?\s.ord)) || (@this_line[i_] > Character.new(?z.ord)))
+      i = 0
+      while i < @this_line_length
+        if ((@this_line[i] < Character.new(?\s.ord)) || (@this_line[i] > Character.new(?z.ord)))
           self.attr_p_stream.print(".")
         else
-          self.attr_p_stream.write(@this_line[i_])
+          self.attr_p_stream.write(@this_line[i])
         end
-        ((i_ += 1) - 1)
+        ((i += 1) - 1)
       end
       self.attr_p_stream.println
       @offset += @this_line_length

@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 2000-2005 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -31,7 +30,6 @@ module Java::Util::Prefs
     }
   end
   
-  # 
   # Static methods for translating Base64 encoded strings to byte arrays
   # and vice-versa.
   # 
@@ -43,7 +41,6 @@ module Java::Util::Prefs
     
     class_module.module_eval {
       typesig { [Array.typed(::Java::Byte)] }
-      # 
       # Translates the specified byte array into a Base64 string as per
       # Preferences.put(byte[]).
       def byte_array_to_base64(a)
@@ -51,7 +48,6 @@ module Java::Util::Prefs
       end
       
       typesig { [Array.typed(::Java::Byte)] }
-      # 
       # Translates the specified byte array into an "alternate representation"
       # Base64 string.  This non-standard variant uses an alphabet that does
       # not contain the uppercase alphabetic characters, which makes it
@@ -83,16 +79,16 @@ module Java::Util::Prefs
         end
         # Translate partial group if present
         if (!(num_bytes_in_partial_group).equal?(0))
-          byte0_ = a[((in_cursor += 1) - 1)] & 0xff
-          result.append(int_to_alpha[byte0_ >> 2])
+          byte0 = a[((in_cursor += 1) - 1)] & 0xff
+          result.append(int_to_alpha[byte0 >> 2])
           if ((num_bytes_in_partial_group).equal?(1))
-            result.append(int_to_alpha[(byte0_ << 4) & 0x3f])
+            result.append(int_to_alpha[(byte0 << 4) & 0x3f])
             result.append("==")
           else
             # assert numBytesInPartialGroup == 2;
-            byte1_ = a[((in_cursor += 1) - 1)] & 0xff
-            result.append(int_to_alpha[(byte0_ << 4) & 0x3f | (byte1_ >> 4)])
-            result.append(int_to_alpha[(byte1_ << 2) & 0x3f])
+            byte1 = a[((in_cursor += 1) - 1)] & 0xff
+            result.append(int_to_alpha[(byte0 << 4) & 0x3f | (byte1 >> 4)])
+            result.append(int_to_alpha[(byte1 << 2) & 0x3f])
             result.append(Character.new(?=.ord))
           end
         end
@@ -101,14 +97,12 @@ module Java::Util::Prefs
         return result.to_s
       end
       
-      # 
       # This array is a lookup table that translates 6-bit positive integer
       # index values into their "Base64 Alphabet" equivalents as specified
       # in Table 1 of RFC 2045.
       const_set_lazy(:IntToBase64) { Array.typed(::Java::Char).new([Character.new(?A.ord), Character.new(?B.ord), Character.new(?C.ord), Character.new(?D.ord), Character.new(?E.ord), Character.new(?F.ord), Character.new(?G.ord), Character.new(?H.ord), Character.new(?I.ord), Character.new(?J.ord), Character.new(?K.ord), Character.new(?L.ord), Character.new(?M.ord), Character.new(?N.ord), Character.new(?O.ord), Character.new(?P.ord), Character.new(?Q.ord), Character.new(?R.ord), Character.new(?S.ord), Character.new(?T.ord), Character.new(?U.ord), Character.new(?V.ord), Character.new(?W.ord), Character.new(?X.ord), Character.new(?Y.ord), Character.new(?Z.ord), Character.new(?a.ord), Character.new(?b.ord), Character.new(?c.ord), Character.new(?d.ord), Character.new(?e.ord), Character.new(?f.ord), Character.new(?g.ord), Character.new(?h.ord), Character.new(?i.ord), Character.new(?j.ord), Character.new(?k.ord), Character.new(?l.ord), Character.new(?m.ord), Character.new(?n.ord), Character.new(?o.ord), Character.new(?p.ord), Character.new(?q.ord), Character.new(?r.ord), Character.new(?s.ord), Character.new(?t.ord), Character.new(?u.ord), Character.new(?v.ord), Character.new(?w.ord), Character.new(?x.ord), Character.new(?y.ord), Character.new(?z.ord), Character.new(?0.ord), Character.new(?1.ord), Character.new(?2.ord), Character.new(?3.ord), Character.new(?4.ord), Character.new(?5.ord), Character.new(?6.ord), Character.new(?7.ord), Character.new(?8.ord), Character.new(?9.ord), Character.new(?+.ord), Character.new(?/.ord)]) }
       const_attr_reader  :IntToBase64
       
-      # 
       # This array is a lookup table that translates 6-bit positive integer
       # index values into their "Alternate Base64 Alphabet" equivalents.
       # This is NOT the real Base64 Alphabet as per in Table 1 of RFC 2045.
@@ -118,7 +112,6 @@ module Java::Util::Prefs
       const_attr_reader  :IntToAltBase64
       
       typesig { [String] }
-      # 
       # Translates the specified Base64 string (as per Preferences.get(byte[]))
       # into a byte array.
       # 
@@ -129,7 +122,6 @@ module Java::Util::Prefs
       end
       
       typesig { [String] }
-      # 
       # Translates the specified "alternate representation" Base64 string
       # into a byte array.
       # 
@@ -176,12 +168,12 @@ module Java::Util::Prefs
         end
         # Translate partial group, if present
         if (!(missing_bytes_in_last_group).equal?(0))
-          ch0_ = base64to_int(s.char_at(((in_cursor += 1) - 1)), alpha_to_int)
-          ch1_ = base64to_int(s.char_at(((in_cursor += 1) - 1)), alpha_to_int)
-          result[((out_cursor += 1) - 1)] = ((ch0_ << 2) | (ch1_ >> 4))
+          ch0 = base64to_int(s.char_at(((in_cursor += 1) - 1)), alpha_to_int)
+          ch1 = base64to_int(s.char_at(((in_cursor += 1) - 1)), alpha_to_int)
+          result[((out_cursor += 1) - 1)] = ((ch0 << 2) | (ch1 >> 4))
           if ((missing_bytes_in_last_group).equal?(1))
-            ch2_ = base64to_int(s.char_at(((in_cursor += 1) - 1)), alpha_to_int)
-            result[((out_cursor += 1) - 1)] = ((ch1_ << 4) | (ch2_ >> 2))
+            ch2 = base64to_int(s.char_at(((in_cursor += 1) - 1)), alpha_to_int)
+            result[((out_cursor += 1) - 1)] = ((ch1 << 4) | (ch2 >> 2))
           end
         end
         # assert inCursor == s.length()-missingBytesInLastGroup;
@@ -190,7 +182,6 @@ module Java::Util::Prefs
       end
       
       typesig { [::Java::Char, Array.typed(::Java::Byte)] }
-      # 
       # Translates the specified character, which is assumed to be in the
       # "Base 64 Alphabet" into its equivalent 6-bit positive integer.
       # 
@@ -204,7 +195,6 @@ module Java::Util::Prefs
         return result
       end
       
-      # 
       # This array is a lookup table that translates unicode characters
       # drawn from the "Base64 Alphabet" (as specified in Table 1 of RFC 2045)
       # into their 6-bit positive integer equivalents.  Characters that
@@ -213,7 +203,6 @@ module Java::Util::Prefs
       const_set_lazy(:Base64ToInt) { Array.typed(::Java::Byte).new([-1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, 62, -1, -1, -1, 63, 52, 53, 54, 55, 56, 57, 58, 59, 60, 61, -1, -1, -1, -1, -1, -1, -1, 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, -1, -1, -1, -1, -1, -1, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51]) }
       const_attr_reader  :Base64ToInt
       
-      # 
       # This array is the analogue of base64ToInt, but for the nonstandard
       # variant that avoids the use of uppercase alphabetic characters.
       const_set_lazy(:AltBase64ToInt) { Array.typed(::Java::Byte).new([-1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, 0, 1, 2, 3, 4, 5, 6, 7, 8, -1, 62, 9, 10, 11, -1, 52, 53, 54, 55, 56, 57, 58, 59, 60, 61, 12, 13, 14, -1, 15, 63, 16, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, 17, -1, 18, 19, 21, 20, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 22, 23, 24, 25]) }

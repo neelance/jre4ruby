@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 2000-2006 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -126,14 +125,14 @@ module Sun::Nio::Cs
               end
             end
           end
-          c_ = decode(b1, b2)
-          if ((c_).equal?(REVERSED_MARK))
+          c = decode(b1, b2)
+          if ((c).equal?(REVERSED_MARK))
             # A reversed BOM cannot occur within middle of stream
             return CoderResult.malformed_for_length(2)
           end
           # Surrogates
-          if (Surrogate.is(c_))
-            if (Surrogate.is_high(c_))
+          if (Surrogate.is(c))
+            if (Surrogate.is_high(c))
               if (src.remaining < 2)
                 return CoderResult::UNDERFLOW
               end
@@ -145,7 +144,7 @@ module Sun::Nio::Cs
                 return CoderResult::OVERFLOW
               end
               mark += 4
-              dst.put(c_)
+              dst.put(c)
               dst.put(c2)
               next
             end
@@ -156,7 +155,7 @@ module Sun::Nio::Cs
             return CoderResult::OVERFLOW
           end
           mark += 2
-          dst.put(c_)
+          dst.put(c)
         end
         return CoderResult::UNDERFLOW
       ensure

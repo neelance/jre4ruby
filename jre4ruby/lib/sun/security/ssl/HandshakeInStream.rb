@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 1996-2007 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -35,7 +34,6 @@ module Sun::Security::Ssl
     }
   end
   
-  # 
   # InputStream for handshake data, used internally only. Contains the
   # handshake message buffer and methods to parse them.
   # 
@@ -64,7 +62,6 @@ module Sun::Security::Ssl
     undef_method :r=
     
     typesig { [HandshakeHash] }
-    # 
     # Construct the stream; we'll be accumulating hashes of the
     # input records using two sets of digests.
     def initialize(handshake_hash)
@@ -86,7 +83,6 @@ module Sun::Security::Ssl
     end
     
     typesig { [] }
-    # 
     # Get a byte of handshake data.
     def read
       n = @r.read
@@ -97,7 +93,6 @@ module Sun::Security::Ssl
     end
     
     typesig { [Array.typed(::Java::Byte), ::Java::Int, ::Java::Int] }
-    # 
     # Get a bunch of bytes of handshake data.
     def read(b, off, len)
       # we read from a ByteArrayInputStream, it always returns the
@@ -110,14 +105,12 @@ module Sun::Security::Ssl
     end
     
     typesig { [::Java::Long] }
-    # 
     # Skip some handshake data.
     def skip(n)
       return @r.skip(n)
     end
     
     typesig { [::Java::Int] }
-    # 
     # Mark/ reset code, implemented using InputRecord mark/ reset.
     # 
     # Note that it currently provides only a limited mark functionality
@@ -148,7 +141,6 @@ module Sun::Security::Ssl
     end
     
     typesig { [] }
-    # 
     # Hash any data we've consumed but not yet hashed.  Useful mostly
     # for processing client certificate messages (so we can check the
     # immediately following cert verify message) and finished messages
@@ -158,7 +150,6 @@ module Sun::Security::Ssl
     end
     
     typesig { [::Java::Int] }
-    # 
     # Do more than skip that handshake data ... totally ignore it.
     # The difference is that the data does not get hashed.
     def ignore(n)
@@ -190,7 +181,6 @@ module Sun::Security::Ssl
     end
     
     typesig { [] }
-    # 
     # Read byte vectors with 8, 16, and 24 bit length encodings.
     def get_bytes8
       len = get_int8

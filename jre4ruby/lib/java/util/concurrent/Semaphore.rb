@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
 # This code is free software; you can redistribute it and/or modify it
@@ -43,7 +42,6 @@ module Java::Util::Concurrent
     }
   end
   
-  # 
   # A counting semaphore.  Conceptually, a semaphore maintains a set of
   # permits.  Each {@link #acquire} blocks if necessary until a permit is
   # available, and then takes it.  Each {@link #release} adds a permit,
@@ -177,7 +175,6 @@ module Java::Util::Concurrent
     undef_method :sync=
     
     class_module.module_eval {
-      # 
       # Synchronization implementation for semaphore.  Uses AQS state
       # to represent permits. Subclassed into fair and nonfair
       # versions.
@@ -246,7 +243,6 @@ module Java::Util::Concurrent
         alias_method :initialize__sync, :initialize
       end }
       
-      # 
       # NonFair version
       const_set_lazy(:NonfairSync) { Class.new(Sync) do
         include_class_members Semaphore
@@ -270,7 +266,6 @@ module Java::Util::Concurrent
         alias_method :initialize__nonfair_sync, :initialize
       end }
       
-      # 
       # Fair version
       const_set_lazy(:FairSync) { Class.new(Sync) do
         include_class_members Semaphore
@@ -305,7 +300,6 @@ module Java::Util::Concurrent
     }
     
     typesig { [::Java::Int] }
-    # 
     # Creates a {@code Semaphore} with the given number of
     # permits and nonfair fairness setting.
     # 
@@ -318,7 +312,6 @@ module Java::Util::Concurrent
     end
     
     typesig { [::Java::Int, ::Java::Boolean] }
-    # 
     # Creates a {@code Semaphore} with the given number of
     # permits and the given fairness setting.
     # 
@@ -334,7 +327,6 @@ module Java::Util::Concurrent
     end
     
     typesig { [] }
-    # 
     # Acquires a permit from this semaphore, blocking until one is
     # available, or the thread is {@linkplain Thread#interrupt interrupted}.
     # 
@@ -366,7 +358,6 @@ module Java::Util::Concurrent
     end
     
     typesig { [] }
-    # 
     # Acquires a permit from this semaphore, blocking until one is
     # available.
     # 
@@ -389,7 +380,6 @@ module Java::Util::Concurrent
     end
     
     typesig { [] }
-    # 
     # Acquires a permit from this semaphore, only if one is available at the
     # time of invocation.
     # 
@@ -417,7 +407,6 @@ module Java::Util::Concurrent
     end
     
     typesig { [::Java::Long, TimeUnit] }
-    # 
     # Acquires a permit from this semaphore, if one becomes available
     # within the given waiting time and the current thread has not
     # been {@linkplain Thread#interrupt interrupted}.
@@ -462,7 +451,6 @@ module Java::Util::Concurrent
     end
     
     typesig { [] }
-    # 
     # Releases a permit, returning it to the semaphore.
     # 
     # <p>Releases a permit, increasing the number of available permits by
@@ -479,7 +467,6 @@ module Java::Util::Concurrent
     end
     
     typesig { [::Java::Int] }
-    # 
     # Acquires the given number of permits from this semaphore,
     # blocking until all are available,
     # or the thread is {@linkplain Thread#interrupt interrupted}.
@@ -522,7 +509,6 @@ module Java::Util::Concurrent
     end
     
     typesig { [::Java::Int] }
-    # 
     # Acquires the given number of permits from this semaphore,
     # blocking until all are available.
     # 
@@ -551,7 +537,6 @@ module Java::Util::Concurrent
     end
     
     typesig { [::Java::Int] }
-    # 
     # Acquires the given number of permits from this semaphore, only
     # if all are available at the time of invocation.
     # 
@@ -585,7 +570,6 @@ module Java::Util::Concurrent
     end
     
     typesig { [::Java::Int, ::Java::Long, TimeUnit] }
-    # 
     # Acquires the given number of permits from this semaphore, if all
     # become available within the given waiting time and the current
     # thread has not been {@linkplain Thread#interrupt interrupted}.
@@ -642,7 +626,6 @@ module Java::Util::Concurrent
     end
     
     typesig { [::Java::Int] }
-    # 
     # Releases the given number of permits, returning them to the semaphore.
     # 
     # <p>Releases the given number of permits, increasing the number of
@@ -671,7 +654,6 @@ module Java::Util::Concurrent
     end
     
     typesig { [] }
-    # 
     # Returns the current number of permits available in this semaphore.
     # 
     # <p>This method is typically used for debugging and testing purposes.
@@ -682,7 +664,6 @@ module Java::Util::Concurrent
     end
     
     typesig { [] }
-    # 
     # Acquires and returns all permits that are immediately available.
     # 
     # @return the number of permits acquired
@@ -691,7 +672,6 @@ module Java::Util::Concurrent
     end
     
     typesig { [::Java::Int] }
-    # 
     # Shrinks the number of available permits by the indicated
     # reduction. This method can be useful in subclasses that use
     # semaphores to track resources that become unavailable. This
@@ -708,7 +688,6 @@ module Java::Util::Concurrent
     end
     
     typesig { [] }
-    # 
     # Returns {@code true} if this semaphore has fairness set true.
     # 
     # @return {@code true} if this semaphore has fairness set true
@@ -717,7 +696,6 @@ module Java::Util::Concurrent
     end
     
     typesig { [] }
-    # 
     # Queries whether any threads are waiting to acquire. Note that
     # because cancellations may occur at any time, a {@code true}
     # return does not guarantee that any other thread will ever
@@ -731,7 +709,6 @@ module Java::Util::Concurrent
     end
     
     typesig { [] }
-    # 
     # Returns an estimate of the number of threads waiting to acquire.
     # The value is only an estimate because the number of threads may
     # change dynamically while this method traverses internal data
@@ -744,7 +721,6 @@ module Java::Util::Concurrent
     end
     
     typesig { [] }
-    # 
     # Returns a collection containing threads that may be waiting to acquire.
     # Because the actual set of threads may change dynamically while
     # constructing this result, the returned collection is only a best-effort
@@ -758,7 +734,6 @@ module Java::Util::Concurrent
     end
     
     typesig { [] }
-    # 
     # Returns a string identifying this semaphore, as well as its state.
     # The state, in brackets, includes the String {@code "Permits ="}
     # followed by the number of permits.

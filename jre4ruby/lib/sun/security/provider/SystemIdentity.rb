@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 1996-2000 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -34,7 +33,6 @@ module Sun::Security::Provider
     }
   end
   
-  # 
   # An identity with a very simple trust mechanism.
   # 
   # @author      Benjamin Renaud
@@ -71,14 +69,12 @@ module Sun::Security::Provider
     end
     
     typesig { [] }
-    # 
     # Is this identity trusted by sun.* facilities?
     def is_trusted
       return @trusted
     end
     
     typesig { [::Java::Boolean] }
-    # 
     # Set the trust status of this identity.
     def set_trusted(trusted)
       @trusted = trusted
@@ -95,14 +91,12 @@ module Sun::Security::Provider
     end
     
     typesig { [PublicKey] }
-    # 
     # Call back method into a protected method for package friends.
     def set_identity_public_key(key)
       set_public_key(key)
     end
     
     typesig { [Certificate] }
-    # 
     # Call back method into a protected method for package friends.
     def add_identity_certificate(cert)
       add_certificate(cert)

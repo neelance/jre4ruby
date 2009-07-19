@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 1999 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -38,7 +37,6 @@ module Sun::Net::Www::Content::Audio
     }
   end
   
-  # 
   # Returns an AppletAudioClip object.
   # This provides backwards compatibility with the behavior
   # of ClassLoader.getResource().getContent() on JDK1.1.

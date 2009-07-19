@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 2000-2006 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -50,7 +49,6 @@ module Sun::Security::Jgss::Krb5
     }
   end
   
-  # 
   # Implements the mechanism specific context class for the Kerberos v5
   # GSS-API mechanism.
   # 
@@ -62,7 +60,6 @@ module Sun::Security::Jgss::Krb5
     include GSSContextSpi
     
     class_module.module_eval {
-      # 
       # The different states that this context can be in.
       const_set_lazy(:STATE_NEW) { 1 }
       const_attr_reader  :STATE_NEW
@@ -83,7 +80,6 @@ module Sun::Security::Jgss::Krb5
     alias_method :attr_state=, :state=
     undef_method :state=
     
-    # 
     # Optional features that the application can set and their default
     # values.
     attr_accessor :cred_deleg_state
@@ -146,7 +142,6 @@ module Sun::Security::Jgss::Krb5
     alias_method :attr_cipher_helper=, :cipher_helper=
     undef_method :cipher_helper=
     
-    # 
     # Separate locks for the sequence numbers allow the application to
     # receive tokens at the same time that it is sending tokens. Note
     # that the application must synchronize the generation and
@@ -247,7 +242,6 @@ module Sun::Security::Jgss::Krb5
     }
     
     typesig { [::Java::Int, Krb5NameElement, Krb5CredElement, ::Java::Int] }
-    # 
     # Constructor for Krb5Context to be called on the context initiator's
     # side.
     def initialize(caller, peer_name, my_cred, lifetime)
@@ -287,7 +281,6 @@ module Sun::Security::Jgss::Krb5
     end
     
     typesig { [::Java::Int, Krb5CredElement] }
-    # 
     # Constructor for Krb5Context to be called on the context acceptor's
     # side.
     def initialize(caller, my_cred)
@@ -322,7 +315,6 @@ module Sun::Security::Jgss::Krb5
     end
     
     typesig { [::Java::Int, Array.typed(::Java::Byte)] }
-    # 
     # Constructor for Krb5Context to import a previously exported context.
     def initialize(caller, inter_process_token)
       @state = STATE_NEW
@@ -354,7 +346,6 @@ module Sun::Security::Jgss::Krb5
     end
     
     typesig { [] }
-    # 
     # Method to determine if the context can be exported and then
     # re-imported.
     def is_transferable
@@ -362,7 +353,6 @@ module Sun::Security::Jgss::Krb5
     end
     
     typesig { [] }
-    # 
     # The lifetime remaining for this context.
     def get_lifetime
       # XXX Return service ticket lifetime
@@ -370,7 +360,6 @@ module Sun::Security::Jgss::Krb5
     end
     
     typesig { [::Java::Int] }
-    # 
     # Methods that may be invoked by the GSS framework in response
     # to an application request for setting/getting these
     # properties.
@@ -398,7 +387,6 @@ module Sun::Security::Jgss::Krb5
     end
     
     typesig { [::Java::Boolean] }
-    # 
     # Requests that confidentiality be available.
     def request_conf(value)
       if ((@state).equal?(STATE_NEW) && is_initiator)
@@ -407,14 +395,12 @@ module Sun::Security::Jgss::Krb5
     end
     
     typesig { [] }
-    # 
     # Is confidentiality available?
     def get_conf_state
       return @conf_state
     end
     
     typesig { [::Java::Boolean] }
-    # 
     # Requests that integrity be available.
     def request_integ(value)
       if ((@state).equal?(STATE_NEW) && is_initiator)
@@ -423,14 +409,12 @@ module Sun::Security::Jgss::Krb5
     end
     
     typesig { [] }
-    # 
     # Is integrity available?
     def get_integ_state
       return @integ_state
     end
     
     typesig { [::Java::Boolean] }
-    # 
     # Requests that credential delegation be done during context
     # establishment.
     def request_cred_deleg(value)
@@ -440,14 +424,12 @@ module Sun::Security::Jgss::Krb5
     end
     
     typesig { [] }
-    # 
     # Is credential delegation enabled?
     def get_cred_deleg_state
       return @cred_deleg_state
     end
     
     typesig { [::Java::Boolean] }
-    # 
     # Requests that mutual authentication be done during context
     # establishment. Since this is fromm the client's perspective, it
     # essentially requests that the server be authenticated.
@@ -458,7 +440,6 @@ module Sun::Security::Jgss::Krb5
     end
     
     typesig { [] }
-    # 
     # Is mutual authentication enabled? Since this is from the client's
     # perspective, it essentially meas that the server is being
     # authenticated.
@@ -467,7 +448,6 @@ module Sun::Security::Jgss::Krb5
     end
     
     typesig { [::Java::Boolean] }
-    # 
     # Requests that replay detection be done on the GSS wrap and MIC
     # tokens.
     def request_replay_det(value)
@@ -477,7 +457,6 @@ module Sun::Security::Jgss::Krb5
     end
     
     typesig { [] }
-    # 
     # Is replay detection enabled on the GSS wrap and MIC tokens?
     # We enable replay detection if sequence checking is enabled.
     def get_replay_det_state
@@ -485,7 +464,6 @@ module Sun::Security::Jgss::Krb5
     end
     
     typesig { [::Java::Boolean] }
-    # 
     # Requests that sequence checking be done on the GSS wrap and MIC
     # tokens.
     def request_sequence_det(value)
@@ -495,7 +473,6 @@ module Sun::Security::Jgss::Krb5
     end
     
     typesig { [] }
-    # 
     # Is sequence checking enabled on the GSS Wrap and MIC tokens?
     # We enable sequence checking if replay detection is enabled.
     def get_sequence_det_state
@@ -503,7 +480,6 @@ module Sun::Security::Jgss::Krb5
     end
     
     typesig { [::Java::Boolean] }
-    # 
     # Anonymity is a little different in that after an application
     # requests anonymity it will want to know whether the mechanism
     # can support it or not, prior to sending any tokens across for
@@ -525,7 +501,6 @@ module Sun::Security::Jgss::Krb5
     end
     
     typesig { [EncryptionKey] }
-    # 
     # Package private methods invoked by other Krb5 plugin classes.
     # 
     # 
@@ -584,7 +559,6 @@ module Sun::Security::Jgss::Krb5
     end
     
     typesig { [Krb5CredElement] }
-    # 
     # Called on the acceptor side to store the delegated credentials
     # received in the AcceptSecContextToken.
     def set_deleg_cred(delegated_cred)
@@ -592,7 +566,6 @@ module Sun::Security::Jgss::Krb5
     end
     
     typesig { [::Java::Boolean] }
-    # 
     # While the application can only request the following features,
     # other classes in the package can call the actual set methods
     # for them. They are called as context establishment tokens are
@@ -632,7 +605,6 @@ module Sun::Security::Jgss::Krb5
     end
     
     typesig { [ChannelBinding] }
-    # 
     # Sets the channel bindings to be used during context
     # establishment.
     def set_channel_binding(channel_binding)
@@ -645,7 +617,6 @@ module Sun::Security::Jgss::Krb5
     end
     
     typesig { [] }
-    # 
     # Returns the mechanism oid.
     # 
     # @return the Oid of this context
@@ -654,7 +625,6 @@ module Sun::Security::Jgss::Krb5
     end
     
     typesig { [] }
-    # 
     # Returns the context initiator name.
     # 
     # @return initiator name
@@ -664,7 +634,6 @@ module Sun::Security::Jgss::Krb5
     end
     
     typesig { [] }
-    # 
     # Returns the context acceptor.
     # 
     # @return context acceptor(target) name
@@ -674,7 +643,6 @@ module Sun::Security::Jgss::Krb5
     end
     
     typesig { [] }
-    # 
     # Returns the delegated credential for the context. This
     # is an optional feature of contexts which not all
     # mechanisms will support. A context can be requested to
@@ -694,7 +662,6 @@ module Sun::Security::Jgss::Krb5
     end
     
     typesig { [] }
-    # 
     # Tests if this is the initiator side of the context.
     # 
     # @return boolean indicating if this is initiator (true)
@@ -704,7 +671,6 @@ module Sun::Security::Jgss::Krb5
     end
     
     typesig { [] }
-    # 
     # Tests if the context can be used for per-message service.
     # Context may allow the calls to the per-message service
     # functions before being fully established.
@@ -716,7 +682,6 @@ module Sun::Security::Jgss::Krb5
     end
     
     typesig { [InputStream, ::Java::Int] }
-    # 
     # Initiator context establishment call. This method may be
     # required to be called several times. A CONTINUE_NEEDED return
     # call indicates that more calls are needed after the next token
@@ -752,7 +717,6 @@ module Sun::Security::Jgss::Krb5
           @my_name = @my_cred.get_name
           tgt = (@my_cred).get_krb5credentials
           check_permission(@peer_name.get_krb5principal_name.get_name, "initiate")
-          # 
           # If useSubjectCredsonly is true then
           # we check whether we already have the ticket
           # for this service in the Subject and reuse it
@@ -829,7 +793,6 @@ module Sun::Security::Jgss::Krb5
                 alias_method :initialize_anonymous, :initialize
               end.new_local(self))
               if (!(subject).nil? && !subject.is_read_only)
-                # 
                 # Store the service credentials as
                 # javax.security.auth.kerberos.KerberosTicket in
                 # the Subject. We could wait till the context is
@@ -891,15 +854,15 @@ module Sun::Security::Jgss::Krb5
         end
       rescue KrbException => e
         if (DEBUG)
-          e_.print_stack_trace
+          e.print_stack_trace
         end
-        gss_exception = GSSException.new(error_code, -1, e_.get_message)
-        gss_exception.init_cause(e_)
+        gss_exception = GSSException.new(error_code, -1, e.get_message)
+        gss_exception.init_cause(e)
         raise gss_exception
       rescue IOException => e
-        gss_exception_ = GSSException.new(error_code, -1, e__.get_message)
-        gss_exception_.init_cause(e__)
-        raise gss_exception_
+        gss_exception = GSSException.new(error_code, -1, e.get_message)
+        gss_exception.init_cause(e)
+        raise gss_exception
       end
       return ret_val
     end
@@ -910,7 +873,6 @@ module Sun::Security::Jgss::Krb5
     end
     
     typesig { [InputStream, ::Java::Int] }
-    # 
     # Acceptor's context establishment call. This method may be
     # required to be called several times. A CONTINUE_NEEDED return
     # call indicates that more calls are needed after the next token
@@ -962,17 +924,16 @@ module Sun::Security::Jgss::Krb5
         raise gss_exception
       rescue IOException => e
         if (DEBUG)
-          e_.print_stack_trace
+          e.print_stack_trace
         end
-        gss_exception_ = GSSException.new(GSSException::FAILURE, -1, e_.get_message)
-        gss_exception_.init_cause(e_)
-        raise gss_exception_
+        gss_exception = GSSException.new(GSSException::FAILURE, -1, e.get_message)
+        gss_exception.init_cause(e)
+        raise gss_exception
       end
       return ret_val
     end
     
     typesig { [::Java::Int, ::Java::Boolean, ::Java::Int] }
-    # 
     # Queries the context for largest data size to accomodate
     # the specified protection and be <= maxTokSize.
     # 
@@ -998,7 +959,6 @@ module Sun::Security::Jgss::Krb5
     end
     
     typesig { [Array.typed(::Java::Byte), ::Java::Int, ::Java::Int, MessageProp] }
-    # 
     # Per-message calls depend on the sequence number. The sequence number
     # synchronization is at a finer granularity because wrap and getMIC
     # care about the local sequence number (mySeqNumber) where are unwrap
@@ -1017,8 +977,8 @@ module Sun::Security::Jgss::Krb5
           enc_token = token.encode
         else
           if ((@cipher_helper.get_proto).equal?(1))
-            token_ = WrapToken_v2.new(self, msg_prop, in_buf, offset, len)
-            enc_token = token_.encode
+            token = WrapToken_v2.new(self, msg_prop, in_buf, offset, len)
+            enc_token = token.encode
           end
         end
         if (DEBUG)
@@ -1045,8 +1005,8 @@ module Sun::Security::Jgss::Krb5
           ret_val = token.encode(out_buf, out_offset)
         else
           if ((@cipher_helper.get_proto).equal?(1))
-            token_ = WrapToken_v2.new(self, msg_prop, in_buf, in_offset, len)
-            ret_val = token_.encode(out_buf, out_offset)
+            token = WrapToken_v2.new(self, msg_prop, in_buf, in_offset, len)
+            ret_val = token.encode(out_buf, out_offset)
           end
         end
         if (DEBUG)
@@ -1076,10 +1036,10 @@ module Sun::Security::Jgss::Krb5
           end
         else
           if ((@cipher_helper.get_proto).equal?(1))
-            token_ = WrapToken_v2.new(self, msg_prop, in_buf, offset, len)
-            token_.encode(os)
+            token = WrapToken_v2.new(self, msg_prop, in_buf, offset, len)
+            token.encode(os)
             if (DEBUG)
-              enc_token = token_.encode
+              enc_token = token.encode
             end
           end
         end
@@ -1122,9 +1082,9 @@ module Sun::Security::Jgss::Krb5
         set_sequencing_and_replay_props(token, msg_prop)
       else
         if ((@cipher_helper.get_proto).equal?(1))
-          token_ = WrapToken_v2.new(self, in_buf, offset, len, msg_prop)
-          data = token_.get_data
-          set_sequencing_and_replay_props(token_, msg_prop)
+          token = WrapToken_v2.new(self, in_buf, offset, len, msg_prop)
+          data = token.get_data
+          set_sequencing_and_replay_props(token, msg_prop)
         end
       end
       if (DEBUG)
@@ -1144,9 +1104,9 @@ module Sun::Security::Jgss::Krb5
         set_sequencing_and_replay_props(token, msg_prop)
       else
         if ((@cipher_helper.get_proto).equal?(1))
-          token_ = WrapToken_v2.new(self, in_buf, in_offset, len, msg_prop)
-          len = token_.get_data(out_buf, out_offset)
-          set_sequencing_and_replay_props(token_, msg_prop)
+          token = WrapToken_v2.new(self, in_buf, in_offset, len, msg_prop)
+          len = token.get_data(out_buf, out_offset)
+          set_sequencing_and_replay_props(token, msg_prop)
         end
       end
       return len
@@ -1164,9 +1124,9 @@ module Sun::Security::Jgss::Krb5
         set_sequencing_and_replay_props(token, msg_prop)
       else
         if ((@cipher_helper.get_proto).equal?(1))
-          token_ = WrapToken_v2.new(self, is, msg_prop)
-          len = token_.get_data(out_buf, out_offset)
-          set_sequencing_and_replay_props(token_, msg_prop)
+          token = WrapToken_v2.new(self, is, msg_prop)
+          len = token.get_data(out_buf, out_offset)
+          set_sequencing_and_replay_props(token, msg_prop)
         end
       end
       return len
@@ -1184,9 +1144,9 @@ module Sun::Security::Jgss::Krb5
         set_sequencing_and_replay_props(token, msg_prop)
       else
         if ((@cipher_helper.get_proto).equal?(1))
-          token_ = WrapToken_v2.new(self, is, msg_prop)
-          data = token_.get_data
-          set_sequencing_and_replay_props(token_, msg_prop)
+          token = WrapToken_v2.new(self, is, msg_prop)
+          data = token.get_data
+          set_sequencing_and_replay_props(token, msg_prop)
         end
       end
       begin
@@ -1207,8 +1167,8 @@ module Sun::Security::Jgss::Krb5
           mic_token = token.encode
         else
           if ((@cipher_helper.get_proto).equal?(1))
-            token_ = MicToken_v2.new(self, msg_prop, in_msg, offset, len)
-            mic_token = token_.encode
+            token = MicToken_v2.new(self, msg_prop, in_msg, offset, len)
+            mic_token = token.encode
           end
         end
         return mic_token
@@ -1229,8 +1189,8 @@ module Sun::Security::Jgss::Krb5
           ret_val = token.encode(out_buf, out_offset)
         else
           if ((@cipher_helper.get_proto).equal?(1))
-            token_ = MicToken_v2.new(self, msg_prop, in_msg, offset, len)
-            ret_val = token_.encode(out_buf, out_offset)
+            token = MicToken_v2.new(self, msg_prop, in_msg, offset, len)
+            ret_val = token.encode(out_buf, out_offset)
           end
         end
         return ret_val
@@ -1243,7 +1203,6 @@ module Sun::Security::Jgss::Krb5
     end
     
     typesig { [Array.typed(::Java::Byte), ::Java::Int, ::Java::Int, OutputStream, MessageProp] }
-    # 
     # Checksum calculation requires a byte[]. Hence might as well pass
     # a byte[] into the MicToken constructor. However, writing the
     # token can be optimized for cases where the application passed in
@@ -1255,8 +1214,8 @@ module Sun::Security::Jgss::Krb5
           token.encode(os)
         else
           if ((@cipher_helper.get_proto).equal?(1))
-            token_ = MicToken_v2.new(self, msg_prop, in_msg, offset, len)
-            token_.encode(os)
+            token = MicToken_v2.new(self, msg_prop, in_msg, offset, len)
+            token.encode(os)
           end
         end
       rescue IOException => e
@@ -1288,9 +1247,9 @@ module Sun::Security::Jgss::Krb5
         set_sequencing_and_replay_props(token, msg_prop)
       else
         if ((@cipher_helper.get_proto).equal?(1))
-          token_ = MicToken_v2.new(self, in_tok, tok_offset, tok_len, msg_prop)
-          token_.verify(in_msg, msg_offset, msg_len)
-          set_sequencing_and_replay_props(token_, msg_prop)
+          token = MicToken_v2.new(self, in_tok, tok_offset, tok_len, msg_prop)
+          token.verify(in_msg, msg_offset, msg_len)
+          set_sequencing_and_replay_props(token, msg_prop)
         end
       end
     end
@@ -1303,9 +1262,9 @@ module Sun::Security::Jgss::Krb5
         set_sequencing_and_replay_props(token, msg_prop)
       else
         if ((@cipher_helper.get_proto).equal?(1))
-          token_ = MicToken_v2.new(self, is, msg_prop)
-          token_.verify(in_msg, msg_offset, msg_len)
-          set_sequencing_and_replay_props(token_, msg_prop)
+          token = MicToken_v2.new(self, is, msg_prop)
+          token.verify(in_msg, msg_offset, msg_len)
+          set_sequencing_and_replay_props(token, msg_prop)
         end
       end
     end
@@ -1325,7 +1284,6 @@ module Sun::Security::Jgss::Krb5
     end
     
     typesig { [] }
-    # 
     # Produces a token representing this context. After this call
     # the context will no longer be usable until an import is
     # performed on the returned token.
@@ -1337,7 +1295,6 @@ module Sun::Security::Jgss::Krb5
     end
     
     typesig { [] }
-    # 
     # Releases context resources and terminates the
     # context between 2 peer.
     # 
@@ -1353,7 +1310,6 @@ module Sun::Security::Jgss::Krb5
     end
     
     typesig { [MessageToken, MessageProp] }
-    # 
     # Sets replay and sequencing information for a message token received
     # form the peer.
     def set_sequencing_and_replay_props(token, prop)
@@ -1364,7 +1320,6 @@ module Sun::Security::Jgss::Krb5
     end
     
     typesig { [MessageToken_v2, MessageProp] }
-    # 
     # Sets replay and sequencing information for a message token received
     # form the peer.
     def set_sequencing_and_replay_props(token, prop)

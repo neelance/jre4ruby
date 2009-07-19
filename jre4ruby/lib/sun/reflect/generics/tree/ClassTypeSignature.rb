@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 2003 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -33,7 +32,6 @@ module Sun::Reflect::Generics::Tree
     }
   end
   
-  # 
   # AST representing class types.
   class ClassTypeSignature 
     include_class_members ClassTypeSignatureImports

@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Portions Copyright 2005-2007 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -46,7 +45,6 @@ module Sun::Util::Resources
     }
   end
   
-  # 
   # Subclass of <code>ResourceBundle</code> with special
   # functionality for time zone names. The additional functionality:
   # <ul>
@@ -61,7 +59,6 @@ module Sun::Util::Resources
     include_class_members TimeZoneNamesBundleImports
     
     typesig { [String] }
-    # 
     # Maps time zone IDs to locale-specific names.
     # The value returned is an array of five strings:
     # <ul>
@@ -91,14 +88,12 @@ module Sun::Util::Resources
     end
     
     typesig { [::Java::Int] }
-    # 
     # Use LinkedHashMap to preserve order of bundle entries.
     def create_map(size)
       return LinkedHashMap.new(size)
     end
     
     typesig { [] }
-    # 
     # Provides key/value mappings for a specific
     # resource bundle. Each entry of the array
     # returned must be an array with two elements:

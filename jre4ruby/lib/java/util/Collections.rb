@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 1997-2007 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -35,7 +34,6 @@ module Java::Util
     }
   end
   
-  # 
   # This class consists exclusively of static methods that operate on or return
   # collections.  It contains polymorphic algorithms that operate on
   # collections, "wrappers", which return a new collection backed by a
@@ -120,7 +118,6 @@ module Java::Util
       const_attr_reader  :INDEXOFSUBLIST_THRESHOLD
       
       typesig { [JavaList] }
-      # 
       # Sorts the specified list into ascending order, according to the
       # <i>natural ordering</i> of its elements.  All elements in the list must
       # implement the <tt>Comparable</tt> interface.  Furthermore, all elements
@@ -163,7 +160,6 @@ module Java::Util
       end
       
       typesig { [JavaList, Comparator] }
-      # 
       # Sorts the specified list according to the order induced by the
       # specified comparator.  All elements in the list must be <i>mutually
       # comparable</i> using the specified comparator (that is,
@@ -207,7 +203,6 @@ module Java::Util
       end
       
       typesig { [JavaList, T] }
-      # 
       # Searches the specified list for the specified object using the binary
       # search algorithm.  The list must be sorted into ascending order
       # according to the {@linkplain Comparable natural ordering} of its
@@ -288,7 +283,6 @@ module Java::Util
       end
       
       typesig { [ListIterator, ::Java::Int] }
-      # 
       # Gets the ith element from the given list by repositioning the specified
       # list listIterator.
       def get(i, index)
@@ -307,7 +301,6 @@ module Java::Util
       end
       
       typesig { [JavaList, T, Comparator] }
-      # 
       # Searches the specified list for the specified object using the binary
       # search algorithm.  The list must be sorted into ascending order
       # according to the specified comparator (as by the
@@ -400,7 +393,6 @@ module Java::Util
       end }
       
       typesig { [JavaList] }
-      # 
       # Reverses the order of the elements in the specified list.<p>
       # 
       # This method runs in linear time.
@@ -422,19 +414,18 @@ module Java::Util
         else
           fwd = list.list_iterator
           rev = list.list_iterator(size_)
-          i_ = 0
-          mid_ = list.size >> 1
-          while i_ < mid_
+          i = 0
+          mid = list.size >> 1
+          while i < mid
             tmp = fwd.next
             fwd.set(rev.previous)
             rev.set(tmp)
-            ((i_ += 1) - 1)
+            ((i += 1) - 1)
           end
         end
       end
       
       typesig { [JavaList] }
-      # 
       # Randomly permutes the specified list using a default source of
       # randomness.  All permutations occur with approximately equal
       # likelihood.<p>
@@ -480,7 +471,6 @@ module Java::Util
       alias_method :attr_r=, :r=
       
       typesig { [JavaList, Random] }
-      # 
       # Randomly permute the specified list using the specified source of
       # randomness.  All permutations occur with equal likelihood
       # assuming that the source of randomness is fair.<p>
@@ -513,24 +503,23 @@ module Java::Util
         else
           arr = list.to_array
           # Shuffle array
-          i_ = size_
-          while i_ > 1
-            swap(arr, i_ - 1, rnd.next_int(i_))
-            ((i_ -= 1) + 1)
+          i = size_
+          while i > 1
+            swap(arr, i - 1, rnd.next_int(i))
+            ((i -= 1) + 1)
           end
           # Dump array back into list
           it = list.list_iterator
-          i__ = 0
-          while i__ < arr.attr_length
+          i_ = 0
+          while i_ < arr.attr_length
             it.next
-            it.set(arr[i__])
-            ((i__ += 1) - 1)
+            it.set(arr[i_])
+            ((i_ += 1) - 1)
           end
         end
       end
       
       typesig { [JavaList, ::Java::Int, ::Java::Int] }
-      # 
       # Swaps the elements at the specified positions in the specified list.
       # (If the specified positions are equal, invoking this method leaves
       # the list unchanged.)
@@ -548,7 +537,6 @@ module Java::Util
       end
       
       typesig { [Array.typed(Object), ::Java::Int, ::Java::Int] }
-      # 
       # Swaps the two specified elements in the specified array.
       def swap(arr, i, j)
         tmp = arr[i]
@@ -557,7 +545,6 @@ module Java::Util
       end
       
       typesig { [JavaList, T] }
-      # 
       # Replaces all of the elements of the specified list with the specified
       # element. <p>
       # 
@@ -577,17 +564,16 @@ module Java::Util
           end
         else
           itr = list.list_iterator
-          i_ = 0
-          while i_ < size_
+          i = 0
+          while i < size_
             itr.next
             itr.set(obj)
-            ((i_ += 1) - 1)
+            ((i += 1) - 1)
           end
         end
       end
       
       typesig { [JavaList, JavaList] }
-      # 
       # Copies all of the elements from one list into another.  After the
       # operation, the index of each copied element in the destination list
       # will be identical to its index in the source list.  The destination
@@ -616,17 +602,16 @@ module Java::Util
         else
           di = dest.list_iterator
           si = src.list_iterator
-          i_ = 0
-          while i_ < src_size
+          i = 0
+          while i < src_size
             di.next
             di.set(si.next)
-            ((i_ += 1) - 1)
+            ((i += 1) - 1)
           end
         end
       end
       
       typesig { [Collection] }
-      # 
       # Returns the minimum element of the given collection, according to the
       # <i>natural ordering</i> of its elements.  All elements in the
       # collection must implement the <tt>Comparable</tt> interface.
@@ -659,7 +644,6 @@ module Java::Util
       end
       
       typesig { [Collection, Comparator] }
-      # 
       # Returns the minimum element of the given collection, according to the
       # order induced by the specified comparator.  All elements in the
       # collection must be <i>mutually comparable</i> by the specified
@@ -696,7 +680,6 @@ module Java::Util
       end
       
       typesig { [Collection] }
-      # 
       # Returns the maximum element of the given collection, according to the
       # <i>natural ordering</i> of its elements.  All elements in the
       # collection must implement the <tt>Comparable</tt> interface.
@@ -729,7 +712,6 @@ module Java::Util
       end
       
       typesig { [Collection, Comparator] }
-      # 
       # Returns the maximum element of the given collection, according to the
       # order induced by the specified comparator.  All elements in the
       # collection must be <i>mutually comparable</i> by the specified
@@ -766,7 +748,6 @@ module Java::Util
       end
       
       typesig { [JavaList, ::Java::Int] }
-      # 
       # Rotates the elements in the specified list by the specified distance.
       # After calling this method, the element at index <tt>i</tt> will be
       # the element previously at index <tt>(i - distance)</tt> mod
@@ -877,7 +858,6 @@ module Java::Util
       end
       
       typesig { [JavaList, T, T] }
-      # 
       # Replaces all occurrences of one specified value in a list with another.
       # More formally, replaces with <tt>newVal</tt> each element <tt>e</tt>
       # in <tt>list</tt> such that
@@ -908,34 +888,34 @@ module Java::Util
               ((i += 1) - 1)
             end
           else
-            i_ = 0
-            while i_ < size_
-              if ((old_val == list.get(i_)))
-                list.set(i_, new_val)
+            i = 0
+            while i < size_
+              if ((old_val == list.get(i)))
+                list.set(i, new_val)
                 result = true
               end
-              ((i_ += 1) - 1)
+              ((i += 1) - 1)
             end
           end
         else
           itr = list.list_iterator
           if ((old_val).nil?)
-            i__ = 0
-            while i__ < size_
+            i = 0
+            while i < size_
               if ((itr.next).nil?)
                 itr.set(new_val)
                 result = true
               end
-              ((i__ += 1) - 1)
+              ((i += 1) - 1)
             end
           else
-            i___ = 0
-            while i___ < size_
+            i = 0
+            while i < size_
               if ((old_val == itr.next))
                 itr.set(new_val)
                 result = true
               end
-              ((i___ += 1) - 1)
+              ((i += 1) - 1)
             end
           end
         end
@@ -943,7 +923,6 @@ module Java::Util
       end
       
       typesig { [JavaList, JavaList] }
-      # 
       # Returns the starting position of the first occurrence of the specified
       # target list within the specified source list, or -1 if there is no
       # such occurrence.  More formally, returns the lowest index <tt>i</tt>
@@ -980,39 +959,38 @@ module Java::Util
                 ((j += 1) - 1)
               end # Element mismatch, try next cand
               return candidate # All elements of candidate matched target
-            end == :thrown or break
+            end
             ((candidate += 1) - 1)
           end
         else
           # Iterator version of above algorithm
           si = source.list_iterator
-          candidate_ = 0
-          while candidate_ <= max_candidate
+          candidate = 0
+          while candidate <= max_candidate
             catch(:next_next_cand) do
               ti = target.list_iterator
-              i_ = 0
-              while i_ < target_size
+              i = 0
+              while i < target_size
                 if (!eq(ti.next, si.next))
                   # Back up source iterator to next candidate
-                  j_ = 0
-                  while j_ < i_
+                  j = 0
+                  while j < i
                     si.previous
-                    ((j_ += 1) - 1)
+                    ((j += 1) - 1)
                   end
                   throw :next_next_cand, :thrown
                 end
-                ((i_ += 1) - 1)
+                ((i += 1) - 1)
               end
-              return candidate_
-            end == :thrown or break
-            ((candidate_ += 1) - 1)
+              return candidate
+            end
+            ((candidate += 1) - 1)
           end
         end
         return -1 # No candidate matched the target
       end
       
       typesig { [JavaList, JavaList] }
-      # 
       # Returns the starting position of the last occurrence of the specified
       # target list within the specified source list, or -1 if there is no such
       # occurrence.  More formally, returns the highest index <tt>i</tt>
@@ -1050,7 +1028,7 @@ module Java::Util
                 ((j += 1) - 1)
               end # Element mismatch, try next cand
               return candidate # All elements of candidate matched target
-            end == :thrown or break
+            end
             ((candidate -= 1) + 1)
           end
         else
@@ -1059,28 +1037,28 @@ module Java::Util
             return -1
           end
           si = source.list_iterator(max_candidate)
-          candidate_ = max_candidate
-          while candidate_ >= 0
+          candidate = max_candidate
+          while candidate >= 0
             catch(:next_next_cand) do
               ti = target.list_iterator
-              i_ = 0
-              while i_ < target_size
+              i = 0
+              while i < target_size
                 if (!eq(ti.next, si.next))
-                  if (!(candidate_).equal?(0))
+                  if (!(candidate).equal?(0))
                     # Back up source iterator to next candidate
-                    j_ = 0
-                    while j_ <= i_ + 1
+                    j = 0
+                    while j <= i + 1
                       si.previous
-                      ((j_ += 1) - 1)
+                      ((j += 1) - 1)
                     end
                   end
                   throw :next_next_cand, :thrown
                 end
-                ((i_ += 1) - 1)
+                ((i += 1) - 1)
               end
-              return candidate_
-            end == :thrown or break
-            ((candidate_ -= 1) + 1)
+              return candidate
+            end
+            ((candidate -= 1) + 1)
           end
         end
         return -1 # No candidate matched the target
@@ -1112,7 +1090,6 @@ module Java::Util
         return UnmodifiableCollection.new(c)
       end
       
-      # 
       # @serial include
       const_set_lazy(:UnmodifiableCollection) { Class.new do
         include_class_members Collections
@@ -1249,7 +1226,6 @@ module Java::Util
       end }
       
       typesig { [JavaSet] }
-      # 
       # Returns an unmodifiable view of the specified set.  This method allows
       # modules to provide users with "read-only" access to internal sets.
       # Query operations on the returned set "read through" to the specified
@@ -1265,7 +1241,6 @@ module Java::Util
         return UnmodifiableSet.new(s)
       end
       
-      # 
       # @serial include
       const_set_lazy(:UnmodifiableSet) { Class.new(UnmodifiableCollection) do
         include_class_members Collections
@@ -1297,7 +1272,6 @@ module Java::Util
       end }
       
       typesig { [SortedSet] }
-      # 
       # Returns an unmodifiable view of the specified sorted set.  This method
       # allows modules to provide users with "read-only" access to internal
       # sorted sets.  Query operations on the returned sorted set "read
@@ -1316,7 +1290,6 @@ module Java::Util
         return UnmodifiableSortedSet.new(s)
       end
       
-      # 
       # @serial include
       const_set_lazy(:UnmodifiableSortedSet) { Class.new(UnmodifiableSet) do
         include_class_members Collections
@@ -1376,7 +1349,6 @@ module Java::Util
       end }
       
       typesig { [JavaList] }
-      # 
       # Returns an unmodifiable view of the specified list.  This method allows
       # modules to provide users with "read-only" access to internal
       # lists.  Query operations on the returned list "read through" to the
@@ -1394,7 +1366,6 @@ module Java::Util
         return (list.is_a?(RandomAccess) ? UnmodifiableRandomAccessList.new(list) : UnmodifiableList.new(list))
       end
       
-      # 
       # @serial include
       const_set_lazy(:UnmodifiableList) { Class.new(UnmodifiableCollection) do
         include_class_members Collections
@@ -1544,7 +1515,6 @@ module Java::Util
         end
         
         typesig { [] }
-        # 
         # UnmodifiableRandomAccessList instances are serialized as
         # UnmodifiableList instances to allow them to be deserialized
         # in pre-1.4 JREs (which do not have UnmodifiableRandomAccessList).
@@ -1563,7 +1533,6 @@ module Java::Util
         alias_method :initialize__unmodifiable_list, :initialize
       end }
       
-      # 
       # @serial include
       const_set_lazy(:UnmodifiableRandomAccessList) { Class.new(UnmodifiableList) do
         include_class_members Collections
@@ -1585,7 +1554,6 @@ module Java::Util
         }
         
         typesig { [] }
-        # 
         # Allows instances to be deserialized in pre-1.4 JREs (which do
         # not have UnmodifiableRandomAccessList).  UnmodifiableList has
         # a readResolve method that inverts this transformation upon
@@ -1599,7 +1567,6 @@ module Java::Util
       end }
       
       typesig { [Map] }
-      # 
       # Returns an unmodifiable view of the specified map.  This method
       # allows modules to provide users with "read-only" access to internal
       # maps.  Query operations on the returned map "read through"
@@ -1616,7 +1583,6 @@ module Java::Util
         return UnmodifiableMap.new(m)
       end
       
-      # 
       # @serial include
       const_set_lazy(:UnmodifiableMap) { Class.new do
         include_class_members Collections
@@ -1749,7 +1715,6 @@ module Java::Util
         end
         
         class_module.module_eval {
-          # 
           # We need this class in addition to UnmodifiableSet as
           # Map.Entries themselves permit modification of the backing Map
           # via their setValue operation.  This class is subtle: there are
@@ -1842,7 +1807,6 @@ module Java::Util
             end
             
             typesig { [Object] }
-            # 
             # This method is overridden to protect the backing set against
             # an object with a nefarious equals function that senses
             # that the equality-candidate is Map.Entry and calls its
@@ -1855,7 +1819,6 @@ module Java::Util
             end
             
             typesig { [Collection] }
-            # 
             # The next two methods are overridden to protect against
             # an unscrupulous List whose contains(Object o) method senses
             # when o is a Map.Entry, and calls o.setValue.
@@ -1886,7 +1849,6 @@ module Java::Util
             end
             
             class_module.module_eval {
-              # 
               # This "wrapper class" serves two purposes: it prevents
               # the client from modifying the backing Map, by short-circuiting
               # the setValue method, and it protects the backing Map against
@@ -1957,7 +1919,6 @@ module Java::Util
       end }
       
       typesig { [SortedMap] }
-      # 
       # Returns an unmodifiable view of the specified sorted map.  This method
       # allows modules to provide users with "read-only" access to internal
       # sorted maps.  Query operations on the returned sorted map "read through"
@@ -1976,7 +1937,6 @@ module Java::Util
         return UnmodifiableSortedMap.new(m)
       end
       
-      # 
       # @serial include
       const_set_lazy(:UnmodifiableSortedMap) { Class.new(UnmodifiableMap) do
         include_class_members Collections
@@ -2076,7 +2036,6 @@ module Java::Util
         return SynchronizedCollection.new(c, mutex)
       end
       
-      # 
       # @serial include
       const_set_lazy(:SynchronizedCollection) { Class.new do
         include_class_members Collections
@@ -2229,7 +2188,6 @@ module Java::Util
       end }
       
       typesig { [JavaSet] }
-      # 
       # Returns a synchronized (thread-safe) set backed by the specified
       # set.  In order to guarantee serial access, it is critical that
       # <strong>all</strong> access to the backing set is accomplished
@@ -2262,7 +2220,6 @@ module Java::Util
         return SynchronizedSet.new(s, mutex)
       end
       
-      # 
       # @serial include
       const_set_lazy(:SynchronizedSet) { Class.new(SynchronizedCollection) do
         include_class_members Collections
@@ -2302,7 +2259,6 @@ module Java::Util
       end }
       
       typesig { [SortedSet] }
-      # 
       # Returns a synchronized (thread-safe) sorted set backed by the specified
       # sorted set.  In order to guarantee serial access, it is critical that
       # <strong>all</strong> access to the backing sorted set is accomplished
@@ -2342,7 +2298,6 @@ module Java::Util
         return SynchronizedSortedSet.new(s)
       end
       
-      # 
       # @serial include
       const_set_lazy(:SynchronizedSortedSet) { Class.new(SynchronizedSet) do
         include_class_members Collections
@@ -2420,7 +2375,6 @@ module Java::Util
       end }
       
       typesig { [JavaList] }
-      # 
       # Returns a synchronized (thread-safe) list backed by the specified
       # list.  In order to guarantee serial access, it is critical that
       # <strong>all</strong> access to the backing list is accomplished
@@ -2453,7 +2407,6 @@ module Java::Util
         return (list.is_a?(RandomAccess) ? SynchronizedRandomAccessList.new(list, mutex) : SynchronizedList.new(list, mutex))
       end
       
-      # 
       # @serial include
       const_set_lazy(:SynchronizedList) { Class.new(SynchronizedCollection) do
         include_class_members Collections
@@ -2565,7 +2518,6 @@ module Java::Util
         end
         
         typesig { [] }
-        # 
         # SynchronizedRandomAccessList instances are serialized as
         # SynchronizedList instances to allow them to be deserialized
         # in pre-1.4 JREs (which do not have SynchronizedRandomAccessList).
@@ -2584,7 +2536,6 @@ module Java::Util
         alias_method :initialize__synchronized_list, :initialize
       end }
       
-      # 
       # @serial include
       const_set_lazy(:SynchronizedRandomAccessList) { Class.new(SynchronizedList) do
         include_class_members Collections
@@ -2613,7 +2564,6 @@ module Java::Util
         }
         
         typesig { [] }
-        # 
         # Allows instances to be deserialized in pre-1.4 JREs (which do
         # not have SynchronizedRandomAccessList).  SynchronizedList has
         # a readResolve method that inverts this transformation upon
@@ -2627,7 +2577,6 @@ module Java::Util
       end }
       
       typesig { [Map] }
-      # 
       # Returns a synchronized (thread-safe) map backed by the specified
       # map.  In order to guarantee serial access, it is critical that
       # <strong>all</strong> access to the backing map is accomplished
@@ -2657,7 +2606,6 @@ module Java::Util
         return SynchronizedMap.new(m)
       end
       
-      # 
       # @serial include
       const_set_lazy(:SynchronizedMap) { Class.new do
         include_class_members Collections
@@ -2852,7 +2800,6 @@ module Java::Util
       end }
       
       typesig { [SortedMap] }
-      # 
       # Returns a synchronized (thread-safe) sorted map backed by the specified
       # sorted map.  In order to guarantee serial access, it is critical that
       # <strong>all</strong> access to the backing sorted map is accomplished
@@ -2897,7 +2844,6 @@ module Java::Util
         return SynchronizedSortedMap.new(m)
       end
       
-      # 
       # @serial include
       const_set_lazy(:SynchronizedSortedMap) { Class.new(SynchronizedMap) do
         include_class_members Collections
@@ -3044,7 +2990,6 @@ module Java::Util
         return Array.new_instance(type, 0)
       end
       
-      # 
       # @serial include
       const_set_lazy(:CheckedCollection) { Class.new do
         include_class_members Collections
@@ -3237,7 +3182,6 @@ module Java::Util
       end }
       
       typesig { [JavaSet, Class] }
-      # 
       # Returns a dynamically typesafe view of the specified set.
       # Any attempt to insert an element of the wrong type will result in
       # an immediate {@link ClassCastException}.  Assuming a set contains
@@ -3266,7 +3210,6 @@ module Java::Util
         return CheckedSet.new(s, type)
       end
       
-      # 
       # @serial include
       const_set_lazy(:CheckedSet) { Class.new(CheckedCollection) do
         include_class_members Collections
@@ -3298,7 +3241,6 @@ module Java::Util
       end }
       
       typesig { [SortedSet, Class] }
-      # 
       # Returns a dynamically typesafe view of the specified sorted set.
       # Any attempt to insert an element of the wrong type will result in an
       # immediate {@link ClassCastException}.  Assuming a sorted set
@@ -3328,7 +3270,6 @@ module Java::Util
         return CheckedSortedSet.new(s, type)
       end
       
-      # 
       # @serial include
       const_set_lazy(:CheckedSortedSet) { Class.new(CheckedSet) do
         include_class_members Collections
@@ -3388,7 +3329,6 @@ module Java::Util
       end }
       
       typesig { [JavaList, Class] }
-      # 
       # Returns a dynamically typesafe view of the specified list.
       # Any attempt to insert an element of the wrong type will result in
       # an immediate {@link ClassCastException}.  Assuming a list contains
@@ -3417,7 +3357,6 @@ module Java::Util
         return (list.is_a?(RandomAccess) ? CheckedRandomAccessList.new(list, type) : CheckedList.new(list, type))
       end
       
-      # 
       # @serial include
       const_set_lazy(:CheckedList) { Class.new(CheckedCollection) do
         include_class_members Collections
@@ -3567,7 +3506,6 @@ module Java::Util
         alias_method :initialize__checked_list, :initialize
       end }
       
-      # 
       # @serial include
       const_set_lazy(:CheckedRandomAccessList) { Class.new(CheckedList) do
         include_class_members Collections
@@ -3593,7 +3531,6 @@ module Java::Util
       end }
       
       typesig { [Map, Class, Class] }
-      # 
       # Returns a dynamically typesafe view of the specified map.
       # Any attempt to insert a mapping whose key or value have the wrong
       # type will result in an immediate {@link ClassCastException}.
@@ -3630,7 +3567,6 @@ module Java::Util
         return CheckedMap.new(m, key_type, value_type)
       end
       
-      # 
       # @serial include
       const_set_lazy(:CheckedMap) { Class.new do
         include_class_members Collections
@@ -3777,7 +3713,7 @@ module Java::Util
             checked.add(AbstractMap::SimpleImmutableEntry.new(k, v))
           end
           checked.each do |e|
-            @m.put(e_.get_key, e_.get_value)
+            @m.put(e.get_key, e.get_value)
           end
         end
         
@@ -3796,7 +3732,6 @@ module Java::Util
         end
         
         class_module.module_eval {
-          # 
           # We need this class in addition to CheckedSet as Map.Entry permits
           # modification of the backing Map via the setValue operation.  This
           # class is subtle: there are many possible attacks that must be
@@ -3899,7 +3834,6 @@ module Java::Util
             typesig { [] }
             def to_array
               source = @s.to_array
-              # 
               # Ensure that we don't get an ArrayStoreException even if
               # s.toArray returns an array of something other than Object
               dest = (CheckedEntry.class.is_instance(source.get_class.get_component_type) ? source : Array.typed(Object).new(source.attr_length) { nil })
@@ -3933,7 +3867,6 @@ module Java::Util
             end
             
             typesig { [Object] }
-            # 
             # This method is overridden to protect the backing set against
             # an object with a nefarious equals function that senses
             # that the equality-candidate is Map.Entry and calls its
@@ -3947,7 +3880,6 @@ module Java::Util
             end
             
             typesig { [Collection] }
-            # 
             # The bulk collection methods are overridden to protect
             # against an unscrupulous collection whose contains(Object o)
             # method senses when o is a Map.Entry, and calls o.setValue.
@@ -4010,7 +3942,6 @@ module Java::Util
                 return CheckedEntry.new(e, value_type)
               end
               
-              # 
               # This "wrapper class" serves two purposes: it prevents
               # the client from modifying the backing Map, by short-circuiting
               # the setValue method, and it protects the backing Map against
@@ -4099,7 +4030,6 @@ module Java::Util
       end }
       
       typesig { [SortedMap, Class, Class] }
-      # 
       # Returns a dynamically typesafe view of the specified sorted map.
       # Any attempt to insert a mapping whose key or value have the wrong
       # type will result in an immediate {@link ClassCastException}.
@@ -4136,7 +4066,6 @@ module Java::Util
         return CheckedSortedMap.new(m, key_type, value_type)
       end
       
-      # 
       # @serial include
       const_set_lazy(:CheckedSortedMap) { Class.new(CheckedMap) do
         include_class_members Collections
@@ -4255,7 +4184,6 @@ module Java::Util
       end }
       
       typesig { [] }
-      # 
       # Returns a list iterator that has no elements.  More precisely,
       # 
       # <ul compact>
@@ -4339,7 +4267,6 @@ module Java::Util
       end }
       
       typesig { [] }
-      # 
       # Returns an enumeration that has no elements.  More precisely,
       # 
       # <ul compact>
@@ -4388,7 +4315,6 @@ module Java::Util
         alias_method :initialize__empty_enumeration, :initialize
       end }
       
-      # 
       # The empty set (immutable).  This set is serializable.
       # 
       # @see #emptySet()
@@ -4396,7 +4322,6 @@ module Java::Util
       const_attr_reader  :EMPTY_SET
       
       typesig { [] }
-      # 
       # Returns the empty set (immutable).  This set is serializable.
       # Unlike the like-named field, this method is parameterized.
       # 
@@ -4415,7 +4340,6 @@ module Java::Util
         return EMPTY_SET
       end
       
-      # 
       # @serial include
       const_set_lazy(:EmptySet) { Class.new(AbstractSet) do
         include_class_members Collections
@@ -4479,7 +4403,6 @@ module Java::Util
         alias_method :initialize__empty_set, :initialize
       end }
       
-      # 
       # The empty list (immutable).  This list is serializable.
       # 
       # @see #emptyList()
@@ -4487,7 +4410,6 @@ module Java::Util
       const_attr_reader  :EMPTY_LIST
       
       typesig { [] }
-      # 
       # Returns the empty list (immutable).  This list is serializable.
       # 
       # <p>This example illustrates the type-safe way to obtain an empty list:
@@ -4505,7 +4427,6 @@ module Java::Util
         return EMPTY_LIST
       end
       
-      # 
       # @serial include
       const_set_lazy(:EmptyList) { Class.new(AbstractList) do
         include_class_members Collections
@@ -4590,7 +4511,6 @@ module Java::Util
         alias_method :initialize__empty_list, :initialize
       end }
       
-      # 
       # The empty map (immutable).  This map is serializable.
       # 
       # @see #emptyMap()
@@ -4599,7 +4519,6 @@ module Java::Util
       const_attr_reader  :EMPTY_MAP
       
       typesig { [] }
-      # 
       # Returns the empty map (immutable).  This map is serializable.
       # 
       # <p>This example illustrates the type-safe way to obtain an empty set:
@@ -4747,7 +4666,6 @@ module Java::Util
         end.new_local(self)
       end
       
-      # 
       # @serial include
       const_set_lazy(:SingletonSet) { Class.new(AbstractSet) do
         include_class_members Collections
@@ -4791,7 +4709,6 @@ module Java::Util
       end }
       
       typesig { [T] }
-      # 
       # Returns an immutable list containing only the specified object.
       # The returned list is serializable.
       # 
@@ -4853,7 +4770,6 @@ module Java::Util
       end }
       
       typesig { [K, V] }
-      # 
       # Returns an immutable map, mapping only the specified key to the
       # specified value.  The returned map is serializable.
       # 
@@ -4996,7 +4912,6 @@ module Java::Util
         return CopiesList.new(n, o)
       end
       
-      # 
       # @serial include
       const_set_lazy(:CopiesList) { Class.new(AbstractList) do
         include_class_members Collections
@@ -5103,7 +5018,6 @@ module Java::Util
       end }
       
       typesig { [] }
-      # 
       # Returns a comparator that imposes the reverse of the <i>natural
       # ordering</i> on a collection of objects that implement the
       # <tt>Comparable</tt> interface.  (The natural ordering is the ordering
@@ -5125,7 +5039,6 @@ module Java::Util
         return ReverseComparator::REVERSE_ORDER
       end
       
-      # 
       # @serial include
       const_set_lazy(:ReverseComparator) { Class.new do
         include_class_members Collections
@@ -5159,7 +5072,6 @@ module Java::Util
       end }
       
       typesig { [Comparator] }
-      # 
       # Returns a comparator that imposes the reverse ordering of the specified
       # comparator.  If the specified comparator is null, this method is
       # equivalent to {@link #reverseOrder()} (in other words, it returns a
@@ -5182,7 +5094,6 @@ module Java::Util
         return ReverseComparator2.new(cmp)
       end
       
-      # 
       # @serial include
       const_set_lazy(:ReverseComparator2) { Class.new do
         include_class_members Collections
@@ -5194,7 +5105,6 @@ module Java::Util
           const_attr_reader  :SerialVersionUID
         }
         
-        # 
         # The comparator specified in the static factory.  This will never
         # be null, as the static factory returns a ReverseComparator
         # instance if its argument is null.
@@ -5233,7 +5143,6 @@ module Java::Util
       end }
       
       typesig { [Collection] }
-      # 
       # Returns an enumeration over the specified collection.  This provides
       # interoperability with legacy APIs that require an enumeration
       # as input.
@@ -5276,7 +5185,6 @@ module Java::Util
       end
       
       typesig { [Enumeration] }
-      # 
       # Returns an array list containing the elements returned by the
       # specified enumeration in the order they are returned by the
       # enumeration.  This method provides interoperability between
@@ -5299,14 +5207,12 @@ module Java::Util
       end
       
       typesig { [Object, Object] }
-      # 
       # Returns true if the specified arguments are equal, or both null.
       def eq(o1, o2)
         return (o1).nil? ? (o2).nil? : (o1 == o2)
       end
       
       typesig { [Collection, Object] }
-      # 
       # Returns the number of elements in the specified collection equal to the
       # specified object.  More formally, returns the number of elements
       # <tt>e</tt> in the collection such that
@@ -5327,7 +5233,7 @@ module Java::Util
           end
         else
           c.each do |e|
-            if ((o == e_))
+            if ((o == e))
               ((result += 1) - 1)
             end
           end
@@ -5336,7 +5242,6 @@ module Java::Util
       end
       
       typesig { [Collection, Collection] }
-      # 
       # Returns <tt>true</tt> if the two specified collections have no
       # elements in common.
       # 
@@ -5359,7 +5264,6 @@ module Java::Util
       # @throws NullPointerException if either collection is null
       # @since 1.5
       def disjoint(c1, c2)
-        # 
         # We're going to iterate through c1 and test for inclusion in c2.
         # If c1 is a Set and c2 isn't, swap the collections.  Otherwise,
         # place the shorter collection in c1.  Hopefully this heuristic
@@ -5378,7 +5282,6 @@ module Java::Util
       end
       
       typesig { [Collection, T] }
-      # 
       # Adds all of the specified elements to the specified collection.
       # Elements to be added may be specified individually or as an array.
       # The behavior of this convenience method is identical to that of
@@ -5412,7 +5315,6 @@ module Java::Util
       end
       
       typesig { [Map] }
-      # 
       # Returns a set backed by the specified map.  The resulting set displays
       # the same ordering, concurrency, and performance characteristics as the
       # backing map.  In essence, this factory method provides a {@link Set}
@@ -5567,7 +5469,6 @@ module Java::Util
       end }
       
       typesig { [Deque] }
-      # 
       # Returns a view of a {@link Deque} as a Last-in-first-out (Lifo)
       # {@link Queue}. Method <tt>add</tt> is mapped to <tt>push</tt>,
       # <tt>remove</tt> is mapped to <tt>pop</tt> and so on. This

@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 1997-2004 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -33,7 +32,6 @@ module Java::Security
     }
   end
   
-  # 
   # This class defines the <i>Service Provider Interface</i> (<b>SPI</b>)
   # for the <code>KeyFactory</code> class.
   # All the abstract methods in this class must be implemented by each
@@ -74,7 +72,6 @@ module Java::Security
     include_class_members KeyFactorySpiImports
     
     typesig { [KeySpec] }
-    # 
     # Generates a public key object from the provided key
     # specification (key material).
     # 
@@ -89,7 +86,6 @@ module Java::Security
     end
     
     typesig { [KeySpec] }
-    # 
     # Generates a private key object from the provided key
     # specification (key material).
     # 
@@ -104,7 +100,6 @@ module Java::Security
     end
     
     typesig { [Key, Class] }
-    # 
     # Returns a specification (key material) of the given key
     # object.
     # <code>keySpec</code> identifies the specification class in which
@@ -129,7 +124,6 @@ module Java::Security
     end
     
     typesig { [Key] }
-    # 
     # Translates a key object, whose provider may be unknown or
     # potentially untrusted, into a corresponding key object of this key
     # factory.

@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 2001-2007 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -69,7 +68,6 @@ module Sun::Net::Www::Protocol::Https
     }
   end
   
-  # 
   # This class provides HTTPS client URL support, building on the standard
   # "sun.net.www" HTTP protocol handler.  HTTPS is the same protocol as HTTP,
   # but differs in the transport layer which it uses:  <UL>
@@ -158,7 +156,6 @@ module Sun::Net::Www::Protocol::Https
     
     typesig { [] }
     def get_cipher_suites
-      # 
       # If ciphers are assigned, sort them into an array.
       ciphers = nil
       cipher_string = AccessController.do_privileged(GetPropertyAction.new("https.cipherSuites"))
@@ -183,7 +180,6 @@ module Sun::Net::Www::Protocol::Https
     
     typesig { [] }
     def get_protocols
-      # 
       # If protocols are assigned, sort them into an array.
       protocols = nil
       protocol_string = AccessController.do_privileged(GetPropertyAction.new("https.protocols"))
@@ -269,7 +265,6 @@ module Sun::Net::Www::Protocol::Https
     end
     
     typesig { [SSLSocketFactory, URL, String, ::Java::Int] }
-    # 
     # Create an HTTPS client URL.  Traffic will be tunneled through
     # the specified proxy server.
     def initialize(sf, url, proxy_host, proxy_port)
@@ -277,7 +272,6 @@ module Sun::Net::Www::Protocol::Https
     end
     
     typesig { [SSLSocketFactory, URL, String, ::Java::Int, ::Java::Int] }
-    # 
     # Create an HTTPS client URL.  Traffic will be tunneled through
     # the specified proxy server, with a connect timeout
     def initialize(sf, url, proxy_host, proxy_port, connect_timeout)
@@ -285,7 +279,6 @@ module Sun::Net::Www::Protocol::Https
     end
     
     typesig { [SSLSocketFactory, URL, Proxy, ::Java::Int] }
-    # 
     # Same as previous constructor except using a Proxy
     def initialize(sf, url, proxy, connect_timeout)
       @hv = nil
@@ -339,7 +332,6 @@ module Sun::Net::Www::Protocol::Https
       end
       
       typesig { [SSLSocketFactory, URL, HostnameVerifier, String, ::Java::Int] }
-      # 
       # Get a HTTPS client to the URL.  Traffic will be tunneled through
       # the specified proxy server.
       def _new(sf, url, hv, proxy_host, proxy_port)
@@ -422,7 +414,6 @@ module Sun::Net::Www::Protocol::Https
             raise ex
           end
         end
-        # 
         # Force handshaking, so that we get any authentication.
         # Register a handshake callback so our session state tracks any
         # later session renegotiations.
@@ -466,7 +457,6 @@ module Sun::Net::Www::Protocol::Https
     # Server identity checking is done according to RFC 2818: HTTP over TLS
     # Section 3.1 Server Identity
     def check_urlspoofing(hostname_verifier)
-      # 
       # Get authenticated server name, if any
       done = false
       host = self.attr_url.get_host
@@ -496,7 +486,6 @@ module Sun::Net::Www::Protocol::Https
         # if it doesn't throw an exception, we passed. Return.
         return
       rescue SSLPeerUnverifiedException => e
-        # 
         # client explicitly changed default policy and enabled
         # anonymous ciphers; we can't check the standard policy
         # 
@@ -523,14 +512,12 @@ module Sun::Net::Www::Protocol::Https
     end
     
     typesig { [] }
-    # 
     # Returns the cipher suite in use on this connection.
     def get_cipher_suite
       return @session.get_cipher_suite
     end
     
     typesig { [] }
-    # 
     # Returns the certificate chain the client sent to the
     # server, or null if the client did not authenticate.
     def get_local_certificates
@@ -538,7 +525,6 @@ module Sun::Net::Www::Protocol::Https
     end
     
     typesig { [] }
-    # 
     # Returns the certificate chain with which the server
     # authenticated itself, or throw a SSLPeerUnverifiedException
     # if the server did not authenticate.
@@ -547,7 +533,6 @@ module Sun::Net::Www::Protocol::Https
     end
     
     typesig { [] }
-    # 
     # Returns the X.509 certificate chain with which the server
     # authenticated itself, or null if the server did not authenticate.
     def get_server_certificate_chain
@@ -555,7 +540,6 @@ module Sun::Net::Www::Protocol::Https
     end
     
     typesig { [] }
-    # 
     # Returns the principal with which the server authenticated
     # itself, or throw a SSLPeerUnverifiedException if the
     # server did not authenticate.
@@ -573,7 +557,6 @@ module Sun::Net::Www::Protocol::Https
     end
     
     typesig { [] }
-    # 
     # Returns the principal the client sent to the
     # server, or null if the client did not authenticate.
     def get_local_principal
@@ -593,7 +576,6 @@ module Sun::Net::Www::Protocol::Https
     end
     
     typesig { [HandshakeCompletedEvent] }
-    # 
     # This method implements the SSL HandshakeCompleted callback,
     # remembering the resulting session so that it may be queried
     # for the current cipher suite and peer certificates.  Servers
@@ -605,7 +587,6 @@ module Sun::Net::Www::Protocol::Https
     end
     
     typesig { [] }
-    # 
     # @return the proxy host being used for this client, or null
     # if we're not going through a proxy
     def get_proxy_host_used
@@ -617,7 +598,6 @@ module Sun::Net::Www::Protocol::Https
     end
     
     typesig { [] }
-    # 
     # @return the proxy port being used for this client.  Meaningless
     # if getProxyHostUsed() gives null.
     def get_proxy_port_used

@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 2003-2006 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -32,7 +31,6 @@ module Java::Util
     }
   end
   
-  # 
   # A specialized {@link Set} implementation for use with enum types.  All of
   # the elements in an enum set must come from a single enum type that is
   # specified, explicitly or implicitly, when the set is created.  Enum sets
@@ -86,7 +84,6 @@ module Java::Util
     include Cloneable
     include Java::Io::Serializable
     
-    # 
     # The class of all the elements of this set.
     attr_accessor :element_type
     alias_method :attr_element_type, :element_type
@@ -94,7 +91,6 @@ module Java::Util
     alias_method :attr_element_type=, :element_type=
     undef_method :element_type=
     
-    # 
     # All of the values comprising T.  (Cached for performance.)
     attr_accessor :universe
     alias_method :attr_universe, :universe
@@ -126,7 +122,6 @@ module Java::Util
     
     class_module.module_eval {
       typesig { [Class] }
-      # 
       # Creates an empty enum set with the specified element type.
       # 
       # @param elementType the class object of the element type for this enum
@@ -145,7 +140,6 @@ module Java::Util
       end
       
       typesig { [Class] }
-      # 
       # Creates an enum set containing all of the elements in the specified
       # element type.
       # 
@@ -160,7 +154,6 @@ module Java::Util
     }
     
     typesig { [] }
-    # 
     # Adds all of the elements from the appropriate enum type to this enum
     # set, which is empty prior to the call.
     def add_all
@@ -169,7 +162,6 @@ module Java::Util
     
     class_module.module_eval {
       typesig { [EnumSet] }
-      # 
       # Creates an enum set with the same element type as the specified enum
       # set, initially containing the same elements (if any).
       # 
@@ -180,7 +172,6 @@ module Java::Util
       end
       
       typesig { [Collection] }
-      # 
       # Creates an enum set initialized from the specified collection.  If
       # the specified collection is an <tt>EnumSet</tt> instance, this static
       # factory method behaves identically to {@link #copyOf(EnumSet)}.
@@ -209,7 +200,6 @@ module Java::Util
       end
       
       typesig { [EnumSet] }
-      # 
       # Creates an enum set with the same element type as the specified enum
       # set, initially containing all the elements of this type that are
       # <i>not</i> contained in the specified set.
@@ -223,7 +213,6 @@ module Java::Util
       end
       
       typesig { [Object] }
-      # 
       # Creates an enum set initially containing the specified element.
       # 
       # Overloadings of this method exist to initialize an enum set with
@@ -242,7 +231,6 @@ module Java::Util
       end
       
       typesig { [Object, Object] }
-      # 
       # Creates an enum set initially containing the specified elements.
       # 
       # Overloadings of this method exist to initialize an enum set with
@@ -263,7 +251,6 @@ module Java::Util
       end
       
       typesig { [Object, Object, Object] }
-      # 
       # Creates an enum set initially containing the specified elements.
       # 
       # Overloadings of this method exist to initialize an enum set with
@@ -286,7 +273,6 @@ module Java::Util
       end
       
       typesig { [Object, Object, Object, Object] }
-      # 
       # Creates an enum set initially containing the specified elements.
       # 
       # Overloadings of this method exist to initialize an enum set with
@@ -311,7 +297,6 @@ module Java::Util
       end
       
       typesig { [Object, Object, Object, Object, Object] }
-      # 
       # Creates an enum set initially containing the specified elements.
       # 
       # Overloadings of this method exist to initialize an enum set with
@@ -338,7 +323,6 @@ module Java::Util
       end
       
       typesig { [Object, Object] }
-      # 
       # Creates an enum set initially containing the specified elements.
       # This factory, whose parameter list uses the varargs feature, may
       # be used to create an enum set initially containing an arbitrary
@@ -360,7 +344,6 @@ module Java::Util
       end
       
       typesig { [Object, Object] }
-      # 
       # Creates an enum set initially containing all of the elements in the
       # range defined by the two specified endpoints.  The returned set will
       # contain the endpoints themselves, which may be identical but must not
@@ -383,7 +366,6 @@ module Java::Util
     }
     
     typesig { [Object, Object] }
-    # 
     # Adds the specified range to this enum set, which is empty prior
     # to the call.
     def add_range(from, to)
@@ -391,7 +373,6 @@ module Java::Util
     end
     
     typesig { [] }
-    # 
     # Returns a copy of this set.
     # 
     # @return a copy of this set
@@ -404,14 +385,12 @@ module Java::Util
     end
     
     typesig { [] }
-    # 
     # Complements the contents of this enum set.
     def complement
       raise NotImplementedError
     end
     
     typesig { [Object] }
-    # 
     # Throws an exception if e is not of the correct type for this enum set.
     def type_check(e)
       e_class = e.get_class
@@ -422,14 +401,12 @@ module Java::Util
     
     class_module.module_eval {
       typesig { [Class] }
-      # 
       # Returns all of the values comprising E.
       # The result is uncloned, cached, and shared by all callers.
       def get_universe(element_type)
         return SharedSecrets.get_java_lang_access.get_enum_constants_shared(element_type)
       end
       
-      # 
       # This class is used to serialize all EnumSet instances, regardless of
       # implementation type.  It captures their "logical contents" and they
       # are reconstructed using public static factories.  This is necessary
@@ -441,7 +418,6 @@ module Java::Util
         include_class_members EnumSet
         include Java::Io::Serializable
         
-        # 
         # The element type of this enum set.
         # 
         # @serial
@@ -451,7 +427,6 @@ module Java::Util
         alias_method :attr_element_type=, :element_type=
         undef_method :element_type=
         
-        # 
         # The elements contained in this enum set.
         # 
         # @serial

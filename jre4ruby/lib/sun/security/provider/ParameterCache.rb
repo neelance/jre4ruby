@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 2003 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -37,7 +36,6 @@ module Sun::Security::Provider
     }
   end
   
-  # 
   # Cache for DSA and DH parameter specs. Used by the KeyPairGenerators
   # in the Sun, SunJCE, and SunPKCS11 provider if no parameters have been
   # explicitly specified by the application.
@@ -54,7 +52,6 @@ module Sun::Security::Provider
     
     class_module.module_eval {
       typesig { [::Java::Int] }
-      # 
       # Return cached DSA parameters for the given keylength, or null if none
       # are available in the cache.
       def get_cached_dsaparameter_spec(key_length)
@@ -62,7 +59,6 @@ module Sun::Security::Provider
       end
       
       typesig { [::Java::Int] }
-      # 
       # Return cached DH parameters for the given keylength, or null if none
       # are available in the cache.
       def get_cached_dhparameter_spec(key_length)
@@ -70,7 +66,6 @@ module Sun::Security::Provider
       end
       
       typesig { [::Java::Int, SecureRandom] }
-      # 
       # Return DSA parameters for the given keylength. Uses cache if possible,
       # generates new parameters and adds them to the cache otherwise.
       def get_dsaparameter_spec(key_length, random)
@@ -84,7 +79,6 @@ module Sun::Security::Provider
       end
       
       typesig { [::Java::Int, SecureRandom] }
-      # 
       # Return DH parameters for the given keylength. Uses cache if possible,
       # generates new parameters and adds them to the cache otherwise.
       def get_dhparameter_spec(key_length, random)
@@ -101,7 +95,6 @@ module Sun::Security::Provider
       end
       
       typesig { [::Java::Int, SecureRandom] }
-      # 
       # Return new DSA parameters for the given keylength. Do not lookup in
       # cache and do not cache the newly generated parameters. This method
       # really only exists for the legacy method
@@ -118,7 +111,6 @@ module Sun::Security::Provider
         # XXX change to ConcurrentHashMap once available
         const_set :DhCache, Collections.synchronized_map(HashMap.new)
         const_set :DsaCache, Collections.synchronized_map(HashMap.new)
-        # 
         # We support precomputed parameter for 512, 768 and 1024 bit
         # moduli. In this file we provide both the seed and counter
         # value of the generation process for each of these seeds,
@@ -135,14 +127,12 @@ module Sun::Security::Provider
         p512 = BigInteger.new("fca682ce8e12caba26efccf7110e526db078b05edecb" + "cd1eb4a208f3ae1617ae01f35b91a47e6df63413c5e1" + "2ed0899bcd132acd50d99151bdc43ee737592e17", 16)
         q512 = BigInteger.new("962eddcc369cba8ebb260ee6b6a126d9346e38c5", 16)
         g512 = BigInteger.new("678471b27a9cf44ee91a49c5147db1a9aaf244f05a43" + "4d6486931d2d14271b9e35030b71fd73da179069b32e" + "2935630e1c2062354d0da20a6c416e50be794ca4", 16)
-        # 
         # L = 768
         # SEED = 77d0f8c4dad15eb8c4f2f8d6726cefd96d5bb399
         # counter = 263
         p768 = BigInteger.new("e9e642599d355f37c97ffd3567120b8e25c9cd43e" + "927b3a9670fbec5d890141922d2c3b3ad24800937" + "99869d1e846aab49fab0ad26d2ce6a22219d470bc" + "e7d777d4a21fbe9c270b57f607002f3cef8393694" + "cf45ee3688c11a8c56ab127a3daf", 16)
         q768 = BigInteger.new("9cdbd84c9f1ac2f38d0f80f42ab952e7338bf511", 16)
         g768 = BigInteger.new("30470ad5a005fb14ce2d9dcd87e38bc7d1b1c5fac" + "baecbe95f190aa7a31d23c4dbbcbe06174544401a" + "5b2c020965d8c2bd2171d3668445771f74ba084d2" + "029d83c1c158547f3a9f1a2715be23d51ae4d3e5a" + "1f6a7064f316933a346d3f529252", 16)
-        # 
         # L = 1024
         # SEED = 8d5155894229d5e689ee01e6018a237e2cae64cd
         # counter = 92

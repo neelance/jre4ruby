@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 1999-2007 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -38,7 +37,6 @@ module Sun::Security::Pkcs12
     }
   end
   
-  # 
   # A MacData type, as defined in PKCS#12.
   # 
   # @author Sharon Liu
@@ -83,7 +81,6 @@ module Sun::Security::Pkcs12
     undef_method :encoded=
     
     typesig { [DerInputStream] }
-    # 
     # Parses a PKCS#12 MAC data.
     def initialize(derin)
       @digest_algorithm_name = nil
@@ -193,7 +190,6 @@ module Sun::Security::Pkcs12
     end
     
     typesig { [] }
-    # 
     # Returns the ASN.1 encoding of this object.
     # @return the ASN.1 encoding.
     # @exception IOException if error occurs when constructing its

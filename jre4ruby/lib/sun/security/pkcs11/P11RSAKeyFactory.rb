@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 2003-2008 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -37,7 +36,6 @@ module Sun::Security::Pkcs11
     }
   end
   
-  # 
   # RSA KeyFactory implemenation.
   # 
   # @author  Andreas Sterbenz
@@ -79,8 +77,8 @@ module Sun::Security::Pkcs11
           return generate_private(rsa_key.get_modulus, rsa_key.get_public_exponent, rsa_key.get_private_exponent, rsa_key.get_prime_p, rsa_key.get_prime_q, rsa_key.get_prime_exponent_p, rsa_key.get_prime_exponent_q, rsa_key.get_crt_coefficient)
         else
           if (key.is_a?(RSAPrivateKey))
-            rsa_key_ = key
-            return generate_private(rsa_key_.get_modulus, rsa_key_.get_private_exponent)
+            rsa_key = key
+            return generate_private(rsa_key.get_modulus, rsa_key.get_private_exponent)
           else
             if (("PKCS#8" == key.get_format))
               # let SunRsaSign provider parse for us, then recurse
@@ -117,9 +115,9 @@ module Sun::Security::Pkcs11
         rs = key_spec
         return generate_public(rs.get_modulus, rs.get_public_exponent)
       rescue PKCS11Exception => e
-        raise InvalidKeySpecException.new("Could not create RSA public key", e_)
+        raise InvalidKeySpecException.new("Could not create RSA public key", e)
       rescue InvalidKeyException => e
-        raise InvalidKeySpecException.new("Could not create RSA public key", e__)
+        raise InvalidKeySpecException.new("Could not create RSA public key", e)
       end
     end
     
@@ -142,16 +140,16 @@ module Sun::Security::Pkcs11
           return generate_private(rs.get_modulus, rs.get_public_exponent, rs.get_private_exponent, rs.get_prime_p, rs.get_prime_q, rs.get_prime_exponent_p, rs.get_prime_exponent_q, rs.get_crt_coefficient)
         else
           if (key_spec.is_a?(RSAPrivateKeySpec))
-            rs_ = key_spec
-            return generate_private(rs_.get_modulus, rs_.get_private_exponent)
+            rs = key_spec
+            return generate_private(rs.get_modulus, rs.get_private_exponent)
           else
             raise InvalidKeySpecException.new("Only RSAPrivate(Crt)KeySpec " + "and PKCS8EncodedKeySpec supported for RSA private keys")
           end
         end
       rescue PKCS11Exception => e
-        raise InvalidKeySpecException.new("Could not create RSA private key", e_)
+        raise InvalidKeySpecException.new("Could not create RSA private key", e)
       rescue InvalidKeyException => e
-        raise InvalidKeySpecException.new("Could not create RSA private key", e__)
+        raise InvalidKeySpecException.new("Could not create RSA private key", e)
       end
     end
     
@@ -225,10 +223,10 @@ module Sun::Security::Pkcs11
       else
         if (RSAPrivateKeySpec.class.is_assignable_from(key_spec))
           session[0] = self.attr_token.get_obj_session
-          attributes_ = Array.typed(CK_ATTRIBUTE).new([CK_ATTRIBUTE.new(CKA_MODULUS), CK_ATTRIBUTE.new(CKA_PRIVATE_EXPONENT), ])
-          self.attr_token.attr_p11._c_get_attribute_value(session[0].id, key.attr_key_id, attributes_)
-          spec_ = RSAPrivateKeySpec.new(attributes_[0].get_big_integer, attributes_[1].get_big_integer)
-          return spec_
+          attributes = Array.typed(CK_ATTRIBUTE).new([CK_ATTRIBUTE.new(CKA_MODULUS), CK_ATTRIBUTE.new(CKA_PRIVATE_EXPONENT), ])
+          self.attr_token.attr_p11._c_get_attribute_value(session[0].id, key.attr_key_id, attributes)
+          spec = RSAPrivateKeySpec.new(attributes[0].get_big_integer, attributes[1].get_big_integer)
+          return spec
         else
           # PKCS#8 handled in superclass
           raise InvalidKeySpecException.new("Only RSAPrivate(Crt)KeySpec " + "and PKCS8EncodedKeySpec supported for RSA private keys")

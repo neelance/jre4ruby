@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 2003 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -31,7 +30,6 @@ module Java::Lang::Management
     }
   end
   
-  # 
   # The permission which the SecurityManager will check when code
   # that is running with a SecurityManager calls methods defined
   # in the management interface for the Java platform.
@@ -89,7 +87,6 @@ module Java::Lang::Management
     include_class_members ManagementPermissionImports
     
     typesig { [String] }
-    # 
     # Constructs a ManagementPermission with the specified name.
     # 
     # @param name Permission name. Must be either "monitor" or "control".
@@ -104,7 +101,6 @@ module Java::Lang::Management
     end
     
     typesig { [String, String] }
-    # 
     # Constructs a new ManagementPermission object.
     # 
     # @param name Permission name. Must be either "monitor" or "control".

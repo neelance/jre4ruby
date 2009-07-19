@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 2003-2004 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -31,7 +30,6 @@ module Java::Lang::Management
     }
   end
   
-  # 
   # Types of {@link MemoryPoolMXBean memory pools}.
   # 
   # @author  Mandy Chung
@@ -40,7 +38,6 @@ module Java::Lang::Management
     include_class_members MemoryTypeImports
     
     class_module.module_eval {
-      # 
       # Heap memory type.
       # <p>
       # The Java virtual machine has a <i>heap</i>
@@ -49,7 +46,6 @@ module Java::Lang::Management
       const_set_lazy(:HEAP) { MemoryType.new("Heap memory").set_value_name("HEAP") }
       const_attr_reader  :HEAP
       
-      # 
       # Non-heap memory type.
       # <p>
       # The Java virtual machine manages memory other than the heap
@@ -76,7 +72,6 @@ module Java::Lang::Management
     end
     
     typesig { [] }
-    # 
     # Returns the string representation of this <tt>MemoryType</tt>.
     # @return the string representation of this <tt>MemoryType</tt>.
     def to_s

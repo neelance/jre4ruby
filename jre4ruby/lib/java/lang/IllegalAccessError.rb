@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 1995-1997 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -30,7 +29,6 @@ module Java::Lang
     }
   end
   
-  # 
   # Thrown if an application attempts to access or modify a field, or
   # to call a method that it does not have access to.
   # <p>
@@ -44,14 +42,12 @@ module Java::Lang
     include_class_members IllegalAccessErrorImports
     
     typesig { [] }
-    # 
     # Constructs an <code>IllegalAccessError</code> with no detail message.
     def initialize
       super()
     end
     
     typesig { [String] }
-    # 
     # Constructs an <code>IllegalAccessError</code> with the specified
     # detail message.
     # 

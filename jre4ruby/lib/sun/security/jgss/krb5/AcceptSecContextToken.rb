@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 2000-2006 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -47,14 +46,12 @@ module Sun::Security::Jgss::Krb5
     undef_method :ap_rep=
     
     typesig { [Krb5Context, KrbApReq] }
-    # 
     # Creates an AcceptSecContextToken for the context acceptor to send to
     # the context initiator.
     def initialize(context, ap_req)
       @ap_rep = nil
       super()
       @ap_rep = nil
-      # 
       # RFC 1964, section 1.2 states:
       # (1) context key: uses Kerberos session key (or subkey, if
       # present in authenticator emitted by context initiator) directly
@@ -67,13 +64,11 @@ module Sun::Security::Jgss::Krb5
       use_sequence_number = true
       @ap_rep = KrbApRep.new(ap_req, use_sequence_number, use_subkey)
       context.reset_my_sequence_number(@ap_rep.get_seq_number.int_value)
-      # 
       # Note: The acceptor side context key was set when the
       # InitSecContextToken was received.
     end
     
     typesig { [Krb5Context, Credentials, KrbApReq, InputStream] }
-    # 
     # Creates an AcceptSecContextToken at the context initiator's side
     # using the bytes received from  the acceptor.
     def initialize(context, service_creds, ap_req, is)
@@ -86,13 +81,11 @@ module Sun::Security::Jgss::Krb5
       end
       ap_rep_bytes = Sun::Security::Util::DerValue.new(is).to_byte_array
       ap_rep = KrbApRep.new(ap_rep_bytes, service_creds, ap_req)
-      # 
       # Allow the context acceptor to set a subkey if desired, even
       # though our context acceptor will not do so.
       sub_key = ap_rep.get_sub_key
       if (!(sub_key).nil?)
         context.set_key(sub_key)
-        # 
         # System.out.println("\n\nSub-Session key from AP-REP is: " +
         # getHexBytes(subKey.getBytes()) + "\n");
       end

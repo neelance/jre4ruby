@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 1995-2001 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -32,7 +31,6 @@ module Java::Util::Zip
     }
   end
   
-  # 
   # Signals that a Zip exception of some sort has occurred.
   # 
   # @author  unascribed
@@ -42,7 +40,6 @@ module Java::Util::Zip
     include_class_members ZipExceptionImports
     
     typesig { [] }
-    # 
     # Constructs an <code>ZipException</code> with <code>null</code>
     # as its error detail message.
     def initialize
@@ -50,7 +47,6 @@ module Java::Util::Zip
     end
     
     typesig { [String] }
-    # 
     # Constructs an <code>ZipException</code> with the specified detail
     # message.
     # 

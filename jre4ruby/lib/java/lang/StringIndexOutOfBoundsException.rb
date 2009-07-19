@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 1994-2000 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -30,7 +29,6 @@ module Java::Lang
     }
   end
   
-  # 
   # Thrown by <code>String</code> methods to indicate that an index
   # is either negative or greater than the size of the string.  For
   # some methods such as the charAt method, this exception also is
@@ -43,7 +41,6 @@ module Java::Lang
     include_class_members StringIndexOutOfBoundsExceptionImports
     
     typesig { [] }
-    # 
     # Constructs a <code>StringIndexOutOfBoundsException</code> with no
     # detail message.
     # 
@@ -53,7 +50,6 @@ module Java::Lang
     end
     
     typesig { [String] }
-    # 
     # Constructs a <code>StringIndexOutOfBoundsException</code> with
     # the specified detail message.
     # 
@@ -63,7 +59,6 @@ module Java::Lang
     end
     
     typesig { [::Java::Int] }
-    # 
     # Constructs a new <code>StringIndexOutOfBoundsException</code>
     # class with an argument indicating the illegal index.
     # 

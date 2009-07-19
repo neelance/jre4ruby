@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 2000-2001 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -31,7 +30,6 @@ module Java::Security::Cert
     }
   end
   
-  # 
   # A selector that defines a set of criteria for selecting
   # <code>Certificate</code>s. Classes that implement this interface
   # are often used to specify which <code>Certificate</code>s should
@@ -56,7 +54,6 @@ module Java::Security::Cert
     include Cloneable
     
     typesig { [Certificate] }
-    # 
     # Decides whether a <code>Certificate</code> should be selected.
     # 
     # @param   cert    the <code>Certificate</code> to be checked
@@ -67,7 +64,6 @@ module Java::Security::Cert
     end
     
     typesig { [] }
-    # 
     # Makes a copy of this <code>CertSelector</code>. Changes to the
     # copy will not affect the original and vice versa.
     # 

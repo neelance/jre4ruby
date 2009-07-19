@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 1996-2007 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -35,7 +34,6 @@ module Sun::Security::Ssl
     }
   end
   
-  # 
   # SSL 3.0 records, as written to a TCP stream.
   # 
   # Each record has a message area that starts out with data supplied by the
@@ -99,7 +97,6 @@ module Sun::Security::Ssl
     }
     
     typesig { [::Java::Byte, ::Java::Int] }
-    # 
     # Default constructor makes a record supporting the maximum
     # SSL record size.  It allocates the header bytes directly.
     # 
@@ -127,7 +124,6 @@ module Sun::Security::Ssl
     
     class_module.module_eval {
       typesig { [::Java::Byte] }
-      # 
       # Get the size of the buffer we need for records of the specified
       # type.
       def record_size(type)
@@ -140,7 +136,6 @@ module Sun::Security::Ssl
     }
     
     typesig { [ProtocolVersion] }
-    # 
     # Updates the SSL version of this record.
     def set_version(protocol_version)
       synchronized(self) do
@@ -149,7 +144,6 @@ module Sun::Security::Ssl
     end
     
     typesig { [ProtocolVersion] }
-    # 
     # Updates helloVersion of this record.
     def set_hello_version(hello_version)
       synchronized(self) do
@@ -158,7 +152,6 @@ module Sun::Security::Ssl
     end
     
     typesig { [] }
-    # 
     # Reset the record so that it can be refilled, starting
     # immediately after the header.
     def reset
@@ -170,7 +163,6 @@ module Sun::Security::Ssl
     end
     
     typesig { [HandshakeHash] }
-    # 
     # For handshaking, we need to be able to hash every byte above the
     # record marking layer.  This is where we're guaranteed to see those
     # bytes, so this is where we can hash them.
@@ -180,7 +172,6 @@ module Sun::Security::Ssl
     end
     
     typesig { [] }
-    # 
     # We hash (the plaintext) on demand.  There is one place where
     # we want to access the hash in the middle of a record:  client
     # cert message gets hashed, and part of the same record is the
@@ -195,7 +186,6 @@ module Sun::Security::Ssl
     end
     
     typesig { [Array.typed(::Java::Byte), ::Java::Int, ::Java::Int] }
-    # 
     # Need a helper function so we can hash the V2 hello correctly
     def hash_internal(buf, offset, len)
       if (!(Debug).nil? && Debug.is_on("data"))
@@ -211,7 +201,6 @@ module Sun::Security::Ssl
     end
     
     typesig { [] }
-    # 
     # Return true iff the record is empty -- to avoid doing the work
     # of sending empty records over the network.
     def is_empty
@@ -219,7 +208,6 @@ module Sun::Security::Ssl
     end
     
     typesig { [::Java::Byte] }
-    # 
     # Return true if the record is of a given alert.
     def is_alert(description)
       # An alert is defined with a two bytes struct,
@@ -231,12 +219,10 @@ module Sun::Security::Ssl
     end
     
     typesig { [MAC] }
-    # 
     # Compute the MAC and append it to this record.  In case we
     # are automatically flushing a handshake stream, make sure we
     # have hashed the message first.
     def add_mac(signer)
-      # 
       # when we support compression, hashing can't go here
       # since it'll need to be done on the uncompressed data,
       # and the MAC applies to the compressed data.
@@ -250,7 +236,6 @@ module Sun::Security::Ssl
     end
     
     typesig { [CipherBox] }
-    # 
     # Encrypt ... length may grow due to block cipher padding
     def encrypt(box)
       len = self.attr_count - self.attr_header_size
@@ -258,7 +243,6 @@ module Sun::Security::Ssl
     end
     
     typesig { [] }
-    # 
     # Tell how full the buffer is ... for filling it with application or
     # handshake data.
     def available_data_bytes
@@ -267,14 +251,12 @@ module Sun::Security::Ssl
     end
     
     typesig { [] }
-    # 
     # Return the type of SSL record that's buffered here.
     def content_type
       return @content_type
     end
     
     typesig { [OutputStream] }
-    # 
     # Write the record out on the stream.  Note that you must have (in
     # order) compressed the data, appended the MAC, and encrypted it in
     # order for the record to be understood by the other end.  (Some of
@@ -284,7 +266,6 @@ module Sun::Security::Ssl
     # that synchronization be done elsewhere.  Also, this does its work
     # in a single low level write, for efficiency.
     def write(s)
-      # 
       # Don't emit content-free records.  (Even change cipher spec
       # messages have a byte of data!)
       if ((self.attr_count).equal?(self.attr_header_size))
@@ -301,7 +282,6 @@ module Sun::Security::Ssl
           System.out.println((JavaThread.current_thread.get_name).to_s + ", WRITE: " + (@protocol_version).to_s + " " + (InputRecord.content_name(content_type)).to_s + ", length = " + (length).to_s)
         end
       end
-      # 
       # If this is the initial ClientHello on this connection and
       # we're not trying to resume a (V3) session then send a V2
       # ClientHello instead so we can detect V2 servers cleanly.
@@ -316,7 +296,6 @@ module Sun::Security::Ssl
           System.out.println((JavaThread.current_thread.get_name).to_s + ", WRITE: SSLv2 client hello message" + ", length = " + ((self.attr_count - 2)).to_s) # 2 byte SSLv2 header
         end
       else
-        # 
         # Fill out the header, write it and the message.
         self.attr_buf[0] = @content_type
         self.attr_buf[1] = @protocol_version.attr_major
@@ -330,7 +309,6 @@ module Sun::Security::Ssl
     end
     
     typesig { [OutputStream, Array.typed(::Java::Byte), ::Java::Int, ::Java::Int] }
-    # 
     # Actually do the write here.  For SSLEngine's HS data,
     # we'll override this method and let it take the appropriate
     # action.
@@ -349,7 +327,6 @@ module Sun::Security::Ssl
     end
     
     typesig { [] }
-    # 
     # Return whether the buffer contains a ClientHello message that should
     # be converted to V2 format.
     def use_v2hello
@@ -357,7 +334,6 @@ module Sun::Security::Ssl
     end
     
     typesig { [Array.typed(::Java::Byte)] }
-    # 
     # Detect "old" servers which are capable of SSL V2.0 protocol ... for
     # example, Netscape Commerce 1.0 servers.  The V3 message is in the
     # header and the bytes passed as parameter.  This routine translates
@@ -368,7 +344,6 @@ module Sun::Security::Ssl
       v3cipher_spec_len_offset = v3session_id_len_offset + 1 + v3session_id_len
       v3cipher_spec_len = ((v3msg[v3cipher_spec_len_offset] & 0xff) << 8) + (v3msg[v3cipher_spec_len_offset + 1] & 0xff)
       cipher_specs = v3cipher_spec_len / 2 # 2 bytes each in V3
-      # 
       # Copy over the cipher specs. We don't care about actually translating
       # them for use with an actual V2 server since we only talk V3.
       # Therefore, just copy over the V3 cipher spec values with a leading
@@ -385,7 +360,6 @@ module Sun::Security::Ssl
         v2cipher_spec_len += _v3to_v2cipher_suite(byte1, byte2)
         ((i += 1) - 1)
       end
-      # 
       # Build the first part of the V3 record header from the V2 one
       # that's now buffered up.  (Lengths are fixed up later).
       self.attr_buf[2] = HandshakeMessage.attr_ht_client_hello
@@ -397,11 +371,9 @@ module Sun::Security::Ssl
       self.attr_buf[8] = 0 # always no session
       self.attr_buf[9] = 0
       self.attr_buf[10] = 32 # nonce length (always 32 in V3)
-      # 
       # Copy in the nonce.
       System.arraycopy(v3msg, 2, self.attr_buf, self.attr_count, 32)
       self.attr_count += 32
-      # 
       # Set the length of the message.
       self.attr_count -= 2 # don't include length field itself
       self.attr_buf[0] = (self.attr_count >> 8)
@@ -411,7 +383,6 @@ module Sun::Security::Ssl
     end
     
     class_module.module_eval {
-      # 
       # Mappings from V3 cipher suite encodings to their pure V2 equivalents.
       # This is taken from the SSL V3 specification, Appendix E.
       
@@ -438,7 +409,6 @@ module Sun::Security::Ssl
     }
     
     typesig { [::Java::Byte, ::Java::Byte] }
-    # 
     # See which matching pure-V2 cipher specs we need to include.
     # We are including these not because we are actually prepared
     # to talk V2 but because the Oracle Web Server insists on receiving

@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 2003-2004 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -31,7 +30,6 @@ module Java::Lang::Management
     }
   end
   
-  # 
   # The management interface for a memory manager.
   # A memory manager manages one or more memory pools of the
   # Java virtual machine.
@@ -64,7 +62,6 @@ module Java::Lang::Management
     include_class_members MemoryManagerMXBeanImports
     
     typesig { [] }
-    # 
     # Returns the name representing this memory manager.
     # 
     # @return the name of this memory manager.
@@ -73,7 +70,6 @@ module Java::Lang::Management
     end
     
     typesig { [] }
-    # 
     # Tests if this memory manager is valid in the Java virtual
     # machine.  A memory manager becomes invalid once the Java virtual
     # machine removes it from the memory system.
@@ -86,7 +82,6 @@ module Java::Lang::Management
     end
     
     typesig { [] }
-    # 
     # Returns the name of memory pools that this memory manager manages.
     # 
     # @return an array of <tt>String</tt> objects, each is

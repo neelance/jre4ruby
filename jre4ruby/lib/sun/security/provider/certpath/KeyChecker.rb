@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 2000-2003 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -35,7 +34,6 @@ module Sun::Security::Provider::Certpath
     }
   end
   
-  # 
   # KeyChecker is a <code>PKIXCertPathChecker</code> that checks that the
   # keyCertSign bit is set in the keyUsage extension in an intermediate CA
   # certificate. It also checks whether the final certificate in a
@@ -88,7 +86,6 @@ module Sun::Security::Provider::Certpath
     }
     
     typesig { [::Java::Int, CertSelector] }
-    # 
     # Default Constructor
     # 
     # @param certPathLen allowable cert path length
@@ -105,7 +102,6 @@ module Sun::Security::Provider::Certpath
     end
     
     typesig { [::Java::Boolean] }
-    # 
     # Initializes the internal state of the checker from parameters
     # specified in the constructor
     def init(forward)
@@ -134,7 +130,6 @@ module Sun::Security::Provider::Certpath
     end
     
     typesig { [Certificate, Collection] }
-    # 
     # Checks that keyUsage and target constraints are satisfied by
     # the specified certificate.
     # 
@@ -164,7 +159,6 @@ module Sun::Security::Provider::Certpath
     
     class_module.module_eval {
       typesig { [X509Certificate] }
-      # 
       # Static method to verify that the key usage and extended key usage
       # extension in a CA cert. The key usage extension, if present, must
       # assert the keyCertSign bit. The extended key usage extension, if

@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 1999-2006 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -31,7 +30,6 @@ module Java::Lang::Reflect
     }
   end
   
-  # 
   # Thrown by a method invocation on a proxy instance if its invocation
   # handler's {@link InvocationHandler#invoke invoke} method throws a
   # checked exception (a {@code Throwable} that is not assignable
@@ -68,7 +66,6 @@ module Java::Lang::Reflect
       const_attr_reader  :SerialVersionUID
     }
     
-    # 
     # the undeclared checked exception that was thrown
     # @serial
     attr_accessor :undeclared_throwable
@@ -78,7 +75,6 @@ module Java::Lang::Reflect
     undef_method :undeclared_throwable=
     
     typesig { [Exception] }
-    # 
     # Constructs an {@code UndeclaredThrowableException} with the
     # specified {@code Throwable}.
     # 
@@ -91,7 +87,6 @@ module Java::Lang::Reflect
     end
     
     typesig { [Exception, String] }
-    # 
     # Constructs an {@code UndeclaredThrowableException} with the
     # specified {@code Throwable} and a detail message.
     # 
@@ -105,7 +100,6 @@ module Java::Lang::Reflect
     end
     
     typesig { [] }
-    # 
     # Returns the {@code Throwable} instance wrapped in this
     # {@code UndeclaredThrowableException}, which may be {@code null}.
     # 
@@ -119,7 +113,6 @@ module Java::Lang::Reflect
     end
     
     typesig { [] }
-    # 
     # Returns the cause of this exception (the {@code Throwable}
     # instance wrapped in this {@code UndeclaredThrowableException},
     # which may be {@code null}).

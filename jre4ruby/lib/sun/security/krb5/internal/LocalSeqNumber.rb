@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Portions Copyright 2000-2007 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -67,7 +66,6 @@ module Sun::Security::Krb5::Internal
     typesig { [] }
     def rand_init
       synchronized(self) do
-        # 
         # Sequence numbers fall in the range 0 through 2^32 - 1 and wrap
         # to zero following the value 2^32 - 1.
         # Previous implementations used signed sequence numbers.

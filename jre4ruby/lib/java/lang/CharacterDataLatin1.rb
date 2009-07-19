@@ -1,6 +1,5 @@
 require "rjava"
  # This file was generated AUTOMATICALLY from a template file Thu May 07 16:22:36 CEST 2009
-# 
 # Copyright 2002-2006 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 

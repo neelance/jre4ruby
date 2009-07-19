@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 1997-2002 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -39,7 +38,6 @@ module Sun::Security::X509
     }
   end
   
-  # 
   # This class implements the IPAddressName as required by the GeneralNames
   # ASN.1 object.  Both IPv4 and IPv6 addresses are supported using the
   # formats specified in IETF PKIX RFC2459.
@@ -94,7 +92,6 @@ module Sun::Security::X509
     undef_method :name=
     
     typesig { [DerValue] }
-    # 
     # Create the IPAddressName object from the passed encoded Der value.
     # 
     # @params derValue the encoded DER IPAddressName.
@@ -104,7 +101,6 @@ module Sun::Security::X509
     end
     
     typesig { [Array.typed(::Java::Byte)] }
-    # 
     # Create the IPAddressName object with the specified octets.
     # 
     # @params address the IP address
@@ -113,7 +109,6 @@ module Sun::Security::X509
       @address = nil
       @is_ipv4 = false
       @name = nil
-      # 
       # A valid address must consist of 4 bytes of address and
       # optional 4 bytes of 4 bytes of mask, or 16 bytes of address
       # and optional 16 bytes of mask.
@@ -130,7 +125,6 @@ module Sun::Security::X509
     end
     
     typesig { [String] }
-    # 
     # Create an IPAddressName from a String.
     # [IETF RFC1338 Supernetting & IETF RFC1519 Classless Inter-Domain
     # Routing (CIDR)] For IPv4 addresses, the forms are
@@ -176,7 +170,6 @@ module Sun::Security::X509
     end
     
     typesig { [String] }
-    # 
     # Parse an IPv4 address.
     # 
     # @param name IPv4 address with optional mask values
@@ -198,7 +191,6 @@ module Sun::Security::X509
     end
     
     class_module.module_eval {
-      # 
       # Parse an IPv6 address.
       # 
       # @param name String IPv6 address with optional /<prefix length>
@@ -242,14 +234,12 @@ module Sun::Security::X509
     end
     
     typesig { [] }
-    # 
     # Return the type of the GeneralName.
     def get_type
       return NAME_IP
     end
     
     typesig { [DerOutputStream] }
-    # 
     # Encode the IPAddress name into the DerOutputStream.
     # 
     # @params out the DER stream to encode the IPAddressName to.
@@ -259,7 +249,6 @@ module Sun::Security::X509
     end
     
     typesig { [] }
-    # 
     # Return a printable string of IPaddress
     def to_s
       begin
@@ -272,7 +261,6 @@ module Sun::Security::X509
     end
     
     typesig { [] }
-    # 
     # Return a standard String representation of IPAddress.
     # See IPAddressName(String) for the formats used for IPv4
     # and IPv6 addresses.
@@ -294,9 +282,9 @@ module Sun::Security::X509
         end
       else
         # IPv6 address or subdomain
-        host_ = Array.typed(::Java::Byte).new(16) { 0 }
-        System.arraycopy(@address, 0, host_, 0, 16)
-        @name = (InetAddress.get_by_address(host_).get_host_address).to_s
+        host = Array.typed(::Java::Byte).new(16) { 0 }
+        System.arraycopy(@address, 0, host, 0, 16)
+        @name = (InetAddress.get_by_address(host).get_host_address).to_s
         if ((@address.attr_length).equal?(32))
           # IPv6 subdomain: display prefix length
           # copy subdomain into new array and convert to BitArray
@@ -329,14 +317,12 @@ module Sun::Security::X509
     end
     
     typesig { [] }
-    # 
     # Returns this IPAddress name as a byte array.
     def get_bytes
       return @address.clone
     end
     
     typesig { [Object] }
-    # 
     # Compares this name with another, for equality.
     # 
     # @return true iff the names are identical.
@@ -383,7 +369,6 @@ module Sun::Security::X509
     end
     
     typesig { [] }
-    # 
     # Returns the hash code value for this object.
     # 
     # @return a hash code value for this object.
@@ -398,7 +383,6 @@ module Sun::Security::X509
     end
     
     typesig { [GeneralNameInterface] }
-    # 
     # Return type of constraint inputName places on this name:<ul>
     # <li>NAME_DIFF_TYPE = -1: input name is different type from name
     # (i.e. does not constrain).
@@ -490,17 +474,17 @@ module Sun::Security::X509
               else
                 if ((other_address.attr_length).equal?(8) || (other_address.attr_length).equal?(32))
                   # Other is a subnet, this is a host address
-                  i_ = 0
-                  mask_offset_ = other_address.attr_length / 2
-                  while i_ < mask_offset_
+                  i = 0
+                  mask_offset = other_address.attr_length / 2
+                  while i < mask_offset
                     # Mask this address by other address mask and compare to other address
                     # If all match, then this address is in other address subnet
-                    if (!((@address[i_] & other_address[i_ + mask_offset_])).equal?(other_address[i_]))
+                    if (!((@address[i] & other_address[i + mask_offset])).equal?(other_address[i]))
                       break
                     end
-                    ((i_ += 1) - 1)
+                    ((i += 1) - 1)
                   end
-                  if ((i_).equal?(mask_offset_))
+                  if ((i).equal?(mask_offset))
                     constraint_type = NAME_WIDENS
                   else
                     constraint_type = NAME_SAME_TYPE
@@ -508,16 +492,16 @@ module Sun::Security::X509
                 else
                   if ((@address.attr_length).equal?(8) || (@address.attr_length).equal?(32))
                     # This is a subnet, other is a host address
-                    i__ = 0
-                    mask_offset__ = @address.attr_length / 2
-                    while i__ < mask_offset__
+                    i = 0
+                    mask_offset = @address.attr_length / 2
+                    while i < mask_offset
                       # Mask other address by this address mask and compare to this address
-                      if (!((other_address[i__] & @address[i__ + mask_offset__])).equal?(@address[i__]))
+                      if (!((other_address[i] & @address[i + mask_offset])).equal?(@address[i]))
                         break
                       end
-                      ((i__ += 1) - 1)
+                      ((i += 1) - 1)
                     end
-                    if ((i__).equal?(mask_offset__))
+                    if ((i).equal?(mask_offset))
                       constraint_type = NAME_NARROWS
                     else
                       constraint_type = NAME_SAME_TYPE
@@ -535,7 +519,6 @@ module Sun::Security::X509
     end
     
     typesig { [] }
-    # 
     # Return subtree depth of this name for purposes of determining
     # NameConstraints minimum and maximum bounds and for calculating
     # path lengths in name subtrees.

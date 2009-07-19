@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 2002-2006 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -39,7 +38,6 @@ module Sun::Security::Jgss::Krb5
     }
   end
   
-  # 
   # This utility looks through the current Subject and retrieves a ticket or key
   # for the desired client/server principals.
   # 
@@ -54,7 +52,6 @@ module Sun::Security::Jgss::Krb5
     }
     
     typesig { [] }
-    # 
     # Default constructor
     def initialize
       # Cannot create one of these
@@ -72,7 +69,6 @@ module Sun::Security::Jgss::Krb5
       end
       
       typesig { [Subject, String, String, Class, ::Java::Boolean] }
-      # 
       # Find the ticket or key for the specified client/server principals
       # in the subject. Returns null if the subject is null.
       # 

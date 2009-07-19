@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 1994-2004 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -32,7 +31,6 @@ module Java::Util
     }
   end
   
-  # 
   # The string tokenizer class allows an application to break a
   # string into tokens. The tokenization method is much simpler than
   # the one used by the <code>StreamTokenizer</code> class. The
@@ -149,7 +147,6 @@ module Java::Util
     alias_method :attr_delims_changed=, :delims_changed=
     undef_method :delims_changed=
     
-    # 
     # maxDelimCodePoint stores the value of the delimiter character with the
     # highest value. It is used to optimize the detection of delimiter
     # characters.
@@ -164,7 +161,6 @@ module Java::Util
     alias_method :attr_max_delim_code_point=, :max_delim_code_point=
     undef_method :max_delim_code_point=
     
-    # 
     # If delimiters include any surrogates (including surrogate
     # pairs), hasSurrogates is true and the tokenizer uses the
     # different code path. This is because String.indexOf(int)
@@ -175,7 +171,6 @@ module Java::Util
     alias_method :attr_has_surrogates=, :has_surrogates=
     undef_method :has_surrogates=
     
-    # 
     # When hasSurrogates is true, delimiters are converted to code
     # points and isDelimiter(int) is used to determine if the given
     # codepoint is a delimiter.
@@ -186,7 +181,6 @@ module Java::Util
     undef_method :delimiter_code_points=
     
     typesig { [] }
-    # 
     # Set maxDelimCodePoint to the highest char in the delimiter set.
     def set_max_delim_code_point
       if ((@delimiters).nil?)
@@ -224,7 +218,6 @@ module Java::Util
     end
     
     typesig { [String, String, ::Java::Boolean] }
-    # 
     # Constructs a string tokenizer for the specified string. All
     # characters in the <code>delim</code> argument are the delimiters
     # for separating tokens.
@@ -267,7 +260,6 @@ module Java::Util
     end
     
     typesig { [String, String] }
-    # 
     # Constructs a string tokenizer for the specified string. The
     # characters in the <code>delim</code> argument are the delimiters
     # for separating tokens. Delimiter characters themselves will not
@@ -286,7 +278,6 @@ module Java::Util
     end
     
     typesig { [String] }
-    # 
     # Constructs a string tokenizer for the specified string. The
     # tokenizer uses the default delimiter set, which is
     # <code>"&nbsp;&#92;t&#92;n&#92;r&#92;f"</code>: the space character,
@@ -301,7 +292,6 @@ module Java::Util
     end
     
     typesig { [::Java::Int] }
-    # 
     # Skips delimiters starting from the specified position. If retDelims
     # is false, returns the index of the first non-delimiter character at or
     # after startPos. If retDelims is true, startPos is returned.
@@ -318,18 +308,17 @@ module Java::Util
           end
           ((position += 1) - 1)
         else
-          c_ = @str.code_point_at(position)
-          if ((c_ > @max_delim_code_point) || !is_delimiter(c_))
+          c = @str.code_point_at(position)
+          if ((c > @max_delim_code_point) || !is_delimiter(c))
             break
           end
-          position += Character.char_count(c_)
+          position += Character.char_count(c)
         end
       end
       return position
     end
     
     typesig { [::Java::Int] }
-    # 
     # Skips ahead from startPos and returns the index of the next delimiter
     # character encountered, or maxPosition if no such delimiter is found.
     def scan_token(start_pos)
@@ -342,23 +331,23 @@ module Java::Util
           end
           ((position += 1) - 1)
         else
-          c_ = @str.code_point_at(position)
-          if ((c_ <= @max_delim_code_point) && is_delimiter(c_))
+          c = @str.code_point_at(position)
+          if ((c <= @max_delim_code_point) && is_delimiter(c))
             break
           end
-          position += Character.char_count(c_)
+          position += Character.char_count(c)
         end
       end
       if (@ret_delims && ((start_pos).equal?(position)))
         if (!@has_surrogates)
-          c__ = @str.char_at(position)
-          if ((c__ <= @max_delim_code_point) && (@delimiters.index_of(c__) >= 0))
+          c = @str.char_at(position)
+          if ((c <= @max_delim_code_point) && (@delimiters.index_of(c) >= 0))
             ((position += 1) - 1)
           end
         else
-          c___ = @str.code_point_at(position)
-          if ((c___ <= @max_delim_code_point) && is_delimiter(c___))
-            position += Character.char_count(c___)
+          c = @str.code_point_at(position)
+          if ((c <= @max_delim_code_point) && is_delimiter(c))
+            position += Character.char_count(c)
           end
         end
       end
@@ -378,7 +367,6 @@ module Java::Util
     end
     
     typesig { [] }
-    # 
     # Tests if there are more tokens available from this tokenizer's string.
     # If this method returns <tt>true</tt>, then a subsequent call to
     # <tt>nextToken</tt> with no argument will successfully return a token.
@@ -387,7 +375,6 @@ module Java::Util
     # in the string after the current position; <code>false</code>
     # otherwise.
     def has_more_tokens
-      # 
       # Temporarily store this position and use it in the following
       # nextToken() method only if the delimiters haven't been changed in
       # that nextToken() invocation.
@@ -396,14 +383,12 @@ module Java::Util
     end
     
     typesig { [] }
-    # 
     # Returns the next token from this string tokenizer.
     # 
     # @return     the next token from this string tokenizer.
     # @exception  NoSuchElementException  if there are no more tokens in this
     # tokenizer's string.
     def next_token
-      # 
       # If next position already computed in hasMoreElements() and
       # delimiters have changed between the computation and this invocation,
       # then use the computed value.
@@ -420,7 +405,6 @@ module Java::Util
     end
     
     typesig { [String] }
-    # 
     # Returns the next token in this string tokenizer's string. First,
     # the set of characters considered to be delimiters by this
     # <tt>StringTokenizer</tt> object is changed to be the characters in
@@ -443,7 +427,6 @@ module Java::Util
     end
     
     typesig { [] }
-    # 
     # Returns the same value as the <code>hasMoreTokens</code>
     # method. It exists so that this class can implement the
     # <code>Enumeration</code> interface.
@@ -457,7 +440,6 @@ module Java::Util
     end
     
     typesig { [] }
-    # 
     # Returns the same value as the <code>nextToken</code> method,
     # except that its declared return value is <code>Object</code> rather than
     # <code>String</code>. It exists so that this class can implement the
@@ -473,7 +455,6 @@ module Java::Util
     end
     
     typesig { [] }
-    # 
     # Calculates the number of times that this tokenizer's
     # <code>nextToken</code> method can be called before it generates an
     # exception. The current position is not advanced.

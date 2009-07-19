@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 2003 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -33,7 +32,6 @@ module Java::Security::Interfaces
     }
   end
   
-  # 
   # The interface to an elliptic curve (EC) public key.
   # 
   # @author Valerie Peng
@@ -50,7 +48,6 @@ module Java::Security::Interfaces
     include ECKey
     
     class_module.module_eval {
-      # 
       # The class fingerprint that is set to indicate
       # serialization compatibility.
       const_set_lazy(:SerialVersionUID) { -3314988629879632826 }
@@ -58,7 +55,6 @@ module Java::Security::Interfaces
     }
     
     typesig { [] }
-    # 
     # Returns the public point W.
     # @return the public point W.
     def get_w

@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 2000-2006 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -42,7 +41,6 @@ module Sun::Security::Jgss::Krb5
     }
   end
   
-  # 
   # Implements the krb5 acceptor credential element.
   # 
   # @author Mayank Upadhyay
@@ -62,7 +60,6 @@ module Sun::Security::Jgss::Krb5
     alias_method :attr_name=, :name=
     undef_method :name=
     
-    # 
     # We cache an EncryptionKey representation of this key because many
     # Krb5 operation require a key in that form. At some point we might do
     # away with EncryptionKey altogether and use the base class
@@ -75,7 +72,6 @@ module Sun::Security::Jgss::Krb5
     
     typesig { [Krb5NameElement, Array.typed(KerberosKey)] }
     def initialize(name, keys)
-      # 
       # Initialize this instance with the data from the acquired
       # KerberosKey. This class needs to be a KerberosKey too
       # hence we can't just store a reference.
@@ -134,7 +130,6 @@ module Sun::Security::Jgss::Krb5
     }
     
     typesig { [] }
-    # 
     # Returns the principal name for this credential. The name
     # is in mechanism specific format.
     # 
@@ -145,7 +140,6 @@ module Sun::Security::Jgss::Krb5
     end
     
     typesig { [] }
-    # 
     # Returns the init lifetime remaining.
     # 
     # @return the init lifetime remaining in seconds
@@ -155,7 +149,6 @@ module Sun::Security::Jgss::Krb5
     end
     
     typesig { [] }
-    # 
     # Returns the accept lifetime remaining.
     # 
     # @return the accept lifetime remaining in seconds
@@ -175,7 +168,6 @@ module Sun::Security::Jgss::Krb5
     end
     
     typesig { [] }
-    # 
     # Returns the oid representing the underlying credential
     # mechanism oid.
     # 
@@ -196,7 +188,6 @@ module Sun::Security::Jgss::Krb5
     end
     
     typesig { [] }
-    # 
     # Called to invalidate this credential element.
     def dispose
       begin
@@ -208,7 +199,6 @@ module Sun::Security::Jgss::Krb5
     end
     
     typesig { [] }
-    # 
     # Destroys the locally cached EncryptionKey value and then calls
     # destroy in the base class.
     def destroy

@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 1996-2005 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -31,7 +30,6 @@ module Java::Io
     }
   end
   
-  # 
   # This class implements a character buffer that can be used as a
   # character-input stream.
   # 
@@ -61,7 +59,6 @@ module Java::Io
     alias_method :attr_marked_pos=, :marked_pos=
     undef_method :marked_pos=
     
-    # 
     # The index of the end of this buffer.  There is not valid
     # data at or beyond this index.
     attr_accessor :count
@@ -71,7 +68,6 @@ module Java::Io
     undef_method :count=
     
     typesig { [Array.typed(::Java::Char)] }
-    # 
     # Creates a CharArrayReader from the specified array of chars.
     # @param buf       Input buffer (not copied)
     def initialize(buf)
@@ -87,7 +83,6 @@ module Java::Io
     end
     
     typesig { [Array.typed(::Java::Char), ::Java::Int, ::Java::Int] }
-    # 
     # Creates a CharArrayReader from the specified array of chars.
     # 
     # <p> The resulting reader will start reading at the given
@@ -128,7 +123,6 @@ module Java::Io
     end
     
     typesig { [] }
-    # 
     # Reads a single character.
     # 
     # @exception   IOException  If an I/O error occurs
@@ -144,7 +138,6 @@ module Java::Io
     end
     
     typesig { [Array.typed(::Java::Char), ::Java::Int, ::Java::Int] }
-    # 
     # Reads characters into a portion of an array.
     # @param b  Destination buffer
     # @param off  Offset at which to start storing characters
@@ -179,7 +172,6 @@ module Java::Io
     end
     
     typesig { [::Java::Long] }
-    # 
     # Skips characters.  Returns the number of characters that were skipped.
     # 
     # <p>The <code>n</code> parameter may be negative, even though the
@@ -205,7 +197,6 @@ module Java::Io
     end
     
     typesig { [] }
-    # 
     # Tells whether this stream is ready to be read.  Character-array readers
     # are always ready to be read.
     # 
@@ -218,14 +209,12 @@ module Java::Io
     end
     
     typesig { [] }
-    # 
     # Tells whether this stream supports the mark() operation, which it does.
     def mark_supported
       return true
     end
     
     typesig { [::Java::Int] }
-    # 
     # Marks the present position in the stream.  Subsequent calls to reset()
     # will reposition the stream to this point.
     # 
@@ -244,7 +233,6 @@ module Java::Io
     end
     
     typesig { [] }
-    # 
     # Resets the stream to the most recent mark, or to the beginning if it has
     # never been marked.
     # 
@@ -257,7 +245,6 @@ module Java::Io
     end
     
     typesig { [] }
-    # 
     # Closes the stream and releases any system resources associated with
     # it.  Once the stream has been closed, further read(), ready(),
     # mark(), reset(), or skip() invocations will throw an IOException.

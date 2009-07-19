@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 2002-2006 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -40,7 +39,6 @@ module Sun::Security::Util
     }
   end
   
-  # 
   # Class to check hostnames against the names specified in a certificate as
   # required for TLS and LDAP.
   class HostnameChecker 
@@ -84,7 +82,6 @@ module Sun::Security::Util
     
     class_module.module_eval {
       typesig { [::Java::Byte] }
-      # 
       # Get a HostnameChecker instance. checkType should be one of the
       # TYPE_* constants defined in this class.
       def get_instance(check_type)
@@ -100,7 +97,6 @@ module Sun::Security::Util
     }
     
     typesig { [String, X509Certificate] }
-    # 
     # Perform the check.
     # 
     # @exception CertificateException if the name does not match any of
@@ -115,7 +111,6 @@ module Sun::Security::Util
     
     class_module.module_eval {
       typesig { [String, KerberosPrincipal] }
-      # 
       # Perform the check for Kerberos.
       def match(expected_name, principal)
         host_name = get_server_name(principal)
@@ -123,7 +118,6 @@ module Sun::Security::Util
       end
       
       typesig { [KerberosPrincipal] }
-      # 
       # Return the Server name from Kerberos principal.
       def get_server_name(principal)
         if ((principal).nil?)
@@ -143,7 +137,6 @@ module Sun::Security::Util
       end
       
       typesig { [String] }
-      # 
       # Test whether the given hostname looks like a literal IPv4 or IPv6
       # address. The hostname does not need to be a fully qualified name.
       # 
@@ -160,7 +153,6 @@ module Sun::Security::Util
       end
       
       typesig { [String, X509Certificate] }
-      # 
       # Check if the certificate allows use of the given IP address.
       # 
       # From RFC2818:
@@ -186,7 +178,6 @@ module Sun::Security::Util
     }
     
     typesig { [String, X509Certificate] }
-    # 
     # Check if the certificate allows use of the given DNS name.
     # 
     # From RFC2818:
@@ -236,7 +227,6 @@ module Sun::Security::Util
     
     class_module.module_eval {
       typesig { [X509Certificate] }
-      # 
       # Return the subject of a certificate as X500Name, by reparsing if
       # necessary. X500Name should only be used if access to name components
       # is required, in other cases X500Principal is to be prefered.
@@ -258,7 +248,6 @@ module Sun::Security::Util
     }
     
     typesig { [String, String] }
-    # 
     # Returns true if name matches against template.<p>
     # 
     # The matching is performed as per RFC 2818 rules for TLS and
@@ -281,7 +270,6 @@ module Sun::Security::Util
     
     class_module.module_eval {
       typesig { [String, String] }
-      # 
       # Returns true if name matches against template.<p>
       # 
       # According to RFC 2818, section 3.1 -
@@ -307,7 +295,6 @@ module Sun::Security::Util
       end
       
       typesig { [String, String] }
-      # 
       # Returns true if name matches against template.<p>
       # 
       # As per RFC 2830, section 3.6 -
@@ -336,7 +323,6 @@ module Sun::Security::Util
       end
       
       typesig { [String, String] }
-      # 
       # Returns true if the name matches against the template that may
       # contain wildcard char * <p>
       def match_wild_cards(name, template)

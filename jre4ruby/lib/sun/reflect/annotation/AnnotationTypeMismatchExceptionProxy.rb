@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 2004 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -33,7 +32,6 @@ module Sun::Reflect::Annotation
     }
   end
   
-  # 
   # ExceptionProxy for AnnotationTypeMismatchException.
   # 
   # @author  Josh Bloch
@@ -54,7 +52,6 @@ module Sun::Reflect::Annotation
     undef_method :found_type=
     
     typesig { [String] }
-    # 
     # It turns out to be convenient to construct these proxies in
     # two stages.  Since this is a private implementation class, we
     # permit ourselves this liberty even though it's normally a very

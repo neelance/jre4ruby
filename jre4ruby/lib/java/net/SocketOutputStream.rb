@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 1995-2007 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -35,7 +34,6 @@ module Java::Net
     }
   end
   
-  # 
   # This stream extends FileOutputStream to implement a
   # SocketOutputStream. Note that this class should <b>NOT</b> be
   # public.
@@ -70,7 +68,6 @@ module Java::Net
     undef_method :socket=
     
     typesig { [AbstractPlainSocketImpl] }
-    # 
     # Creates a new SocketOutputStream. Can only be called
     # by a Socket. This method needs to hang on to the owner Socket so
     # that the fd will not be closed.
@@ -90,7 +87,6 @@ module Java::Net
     end
     
     typesig { [] }
-    # 
     # Returns the unique {@link java.nio.channels.FileChannel FileChannel}
     # object associated with this file output stream. </p>
     # 
@@ -107,7 +103,6 @@ module Java::Net
     
     JNI.native_method :Java_java_net_SocketOutputStream_socketWrite0, [:pointer, :long, :long, :long, :int32, :int32], :void
     typesig { [FileDescriptor, Array.typed(::Java::Byte), ::Java::Int, ::Java::Int] }
-    # 
     # Writes to the socket.
     # @param fd the FileDescriptor
     # @param b the data to be written
@@ -119,7 +114,6 @@ module Java::Net
     end
     
     typesig { [Array.typed(::Java::Byte), ::Java::Int, ::Java::Int] }
-    # 
     # Writes to the socket with appropriate locking of the
     # FileDescriptor.
     # @param b the data to be written
@@ -152,7 +146,6 @@ module Java::Net
     end
     
     typesig { [::Java::Int] }
-    # 
     # Writes a byte to the socket.
     # @param b the data to be written
     # @exception IOException If an I/O error has occurred.
@@ -162,7 +155,6 @@ module Java::Net
     end
     
     typesig { [Array.typed(::Java::Byte)] }
-    # 
     # Writes the contents of the buffer <i>b</i> to the socket.
     # @param b the data to be written
     # @exception SocketException If an I/O error has occurred.
@@ -171,7 +163,6 @@ module Java::Net
     end
     
     typesig { [Array.typed(::Java::Byte), ::Java::Int, ::Java::Int] }
-    # 
     # Writes <i>length</i> bytes from buffer <i>b</i> starting at
     # offset <i>len</i>.
     # @param b the data to be written
@@ -182,7 +173,6 @@ module Java::Net
       socket_write(b, off, len)
     end
     
-    # 
     # Closes the stream.
     attr_accessor :closing
     alias_method :attr_closing, :closing
@@ -208,7 +198,6 @@ module Java::Net
     end
     
     typesig { [] }
-    # 
     # Overrides finalize, the fd is closed by the Socket.
     def finalize
     end
@@ -216,7 +205,6 @@ module Java::Net
     class_module.module_eval {
       JNI.native_method :Java_java_net_SocketOutputStream_init, [:pointer, :long], :void
       typesig { [] }
-      # 
       # Perform class load-time initializations.
       def init
         JNI.__send__(:Java_java_net_SocketOutputStream_init, JNI.env, self.jni_id)

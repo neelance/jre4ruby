@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 2003-2004 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -31,7 +30,6 @@ module Java::Lang::Management
     }
   end
   
-  # 
   # The management interface for the garbage collection of
   # the Java virtual machine.  Garbage collection is the process
   # that the Java virtual machine uses to find and reclaim unreachable
@@ -71,7 +69,6 @@ module Java::Lang::Management
     include MemoryManagerMXBean
     
     typesig { [] }
-    # 
     # Returns the total number of collections that have occurred.
     # This method returns <tt>-1</tt> if the collection count is undefined for
     # this collector.
@@ -82,7 +79,6 @@ module Java::Lang::Management
     end
     
     typesig { [] }
-    # 
     # Returns the approximate accumulated collection elapsed time
     # in milliseconds.  This method returns <tt>-1</tt> if the collection
     # elapsed time is undefined for this collector.

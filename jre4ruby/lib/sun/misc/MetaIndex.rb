@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 2005-2006 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -40,7 +39,6 @@ module Sun::Misc
     }
   end
   
-  # 
   # MetaIndex is intended to decrease startup time (in particular cold
   # start, when files are not yet in the disk cache) by providing a
   # quick reject mechanism for probes into jar files. The on-disk
@@ -207,29 +205,26 @@ module Sun::Misc
                 return
               end
               while (!((line = (reader.read_line).to_s)).nil?)
-                catch(:break_case) do
-                  case (line.char_at(0))
-                  when Character.new(?!.ord), Character.new(?#.ord), Character.new(?@.ord)
-                    # Store away current contents, if any
-                    if ((!(cur_jar_name).nil?) && (contents.size > 0))
-                      map.put(JavaFile.new(dir, cur_jar_name), MetaIndex.new(contents, is_cur_jar_contain_class_only))
-                      contents.clear
-                    end
-                    # Fetch new current jar file name
-                    cur_jar_name = (line.substring(2)).to_s
-                    if ((line.char_at(0)).equal?(Character.new(?!.ord)))
-                      is_cur_jar_contain_class_only = true
-                    else
-                      if (is_cur_jar_contain_class_only)
-                        is_cur_jar_contain_class_only = false
-                      end
-                    end
-                    throw :break_case, :thrown
-                  when Character.new(?%.ord)
-                  else
-                    contents.add(line)
+                case (line.char_at(0))
+                when Character.new(?!.ord), Character.new(?#.ord), Character.new(?@.ord)
+                  # Store away current contents, if any
+                  if ((!(cur_jar_name).nil?) && (contents.size > 0))
+                    map.put(JavaFile.new(dir, cur_jar_name), MetaIndex.new(contents, is_cur_jar_contain_class_only))
+                    contents.clear
                   end
-                end == :thrown or break
+                  # Fetch new current jar file name
+                  cur_jar_name = (line.substring(2)).to_s
+                  if ((line.char_at(0)).equal?(Character.new(?!.ord)))
+                    is_cur_jar_contain_class_only = true
+                  else
+                    if (is_cur_jar_contain_class_only)
+                      is_cur_jar_contain_class_only = false
+                    end
+                  end
+                when Character.new(?%.ord)
+                else
+                  contents.add(line)
+                end
               end
               # Store away current contents, if any
               if ((!(cur_jar_name).nil?) && (contents.size > 0))

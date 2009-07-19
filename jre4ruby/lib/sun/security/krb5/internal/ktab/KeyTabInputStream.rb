@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Portions Copyright 2000-2005 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -42,7 +41,6 @@ module Sun::Security::Krb5::Internal::Ktab
     }
   end
   
-  # 
   # This class implements a buffered input stream. It is used for parsing key table
   # data to memory.
   # 
@@ -78,7 +76,6 @@ module Sun::Security::Krb5::Internal::Ktab
     end
     
     typesig { [] }
-    # 
     # Reads the number of bytes this entry data occupy.
     def read_entry_length
       return read(4)

@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
 # This code is free software; you can redistribute it and/or modify it
@@ -38,7 +37,6 @@ module Sun::Security::Krb5::Internal
     }
   end
   
-  # 
   # Implements the ASN.1 TransitedEncoding type.
   # 
   # <xmp>
@@ -77,7 +75,6 @@ module Sun::Security::Krb5::Internal
     end
     
     typesig { [DerValue] }
-    # 
     # Constructs a TransitedEncoding object.
     # @param encoding a Der-encoded data.
     # @exception Asn1Exception if an error occurs while decoding an ASN1 encoded data.
@@ -107,7 +104,6 @@ module Sun::Security::Krb5::Internal
     end
     
     typesig { [] }
-    # 
     # Encodes a TransitedEncoding object.
     # @return the byte array of the encoded TransitedEncoding object.
     # @exception Asn1Exception if an error occurs while decoding an ASN1 encoded data.
@@ -127,7 +123,6 @@ module Sun::Security::Krb5::Internal
     
     class_module.module_eval {
       typesig { [DerInputStream, ::Java::Byte, ::Java::Boolean] }
-      # 
       # Parse (unmarshal) a TransitedEncoding object from a DER input stream.  This form
       # parsing might be used when expanding a value which is part of
       # a constructed sequence and uses explicitly tagged type.

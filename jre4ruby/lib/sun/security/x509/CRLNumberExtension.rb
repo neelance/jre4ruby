@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 1997-2006 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -36,7 +35,6 @@ module Sun::Security::X509
     }
   end
   
-  # 
   # Represent the CRL Number Extension.
   # 
   # <p>This extension, if present, conveys a monotonically increasing
@@ -53,7 +51,6 @@ module Sun::Security::X509
     include CertAttrSet
     
     class_module.module_eval {
-      # 
       # Attribute name.
       const_set_lazy(:NAME) { "CRLNumber" }
       const_attr_reader  :NAME
@@ -96,7 +93,6 @@ module Sun::Security::X509
     end
     
     typesig { [::Java::Int] }
-    # 
     # Create a CRLNumberExtension with the integer value .
     # The criticality is set to false.
     # 
@@ -106,7 +102,6 @@ module Sun::Security::X509
     end
     
     typesig { [BigInteger] }
-    # 
     # Create a CRLNumberExtension with the BigInteger value .
     # The criticality is set to false.
     # 
@@ -116,7 +111,6 @@ module Sun::Security::X509
     end
     
     typesig { [ObjectIdentifier, ::Java::Boolean, BigInteger, String, String] }
-    # 
     # Creates the extension (also called by the subclass).
     def initialize(extension_id, is_critical, crl_num, extension_name, extension_label)
       @crl_number = nil
@@ -133,7 +127,6 @@ module Sun::Security::X509
     end
     
     typesig { [Boolean, Object] }
-    # 
     # Create the extension from the passed DER encoded value of the same.
     # 
     # @param critical true if the extension is to be treated as critical.
@@ -145,7 +138,6 @@ module Sun::Security::X509
     end
     
     typesig { [ObjectIdentifier, Boolean, Object, String, String] }
-    # 
     # Creates the extension (also called by the subclass).
     def initialize(extension_id, critical, value, extension_name, extension_label)
       @crl_number = nil
@@ -163,7 +155,6 @@ module Sun::Security::X509
     end
     
     typesig { [String, Object] }
-    # 
     # Set the attribute value.
     def set(name, obj)
       if (name.equals_ignore_case(NUMBER))
@@ -178,7 +169,6 @@ module Sun::Security::X509
     end
     
     typesig { [String] }
-    # 
     # Get the attribute value.
     def get(name)
       if (name.equals_ignore_case(NUMBER))
@@ -193,7 +183,6 @@ module Sun::Security::X509
     end
     
     typesig { [String] }
-    # 
     # Delete the attribute value.
     def delete(name)
       if (name.equals_ignore_case(NUMBER))
@@ -205,7 +194,6 @@ module Sun::Security::X509
     end
     
     typesig { [] }
-    # 
     # Returns a printable representation of the CRLNumberExtension.
     def to_s
       s = (super).to_s + @extension_label + ": " + ((((@crl_number).nil?) ? "" : Debug.to_hex_string(@crl_number))).to_s + "\n"
@@ -213,7 +201,6 @@ module Sun::Security::X509
     end
     
     typesig { [OutputStream] }
-    # 
     # Write the extension to the DerOutputStream.
     # 
     # @param out the DerOutputStream to write the extension to.
@@ -224,7 +211,6 @@ module Sun::Security::X509
     end
     
     typesig { [OutputStream, ObjectIdentifier, ::Java::Boolean] }
-    # 
     # Write the extension to the DerOutputStream.
     # (Also called by the subclass)
     def encode(out, extension_id, is_critical)
@@ -239,7 +225,6 @@ module Sun::Security::X509
     end
     
     typesig { [] }
-    # 
     # Return an enumeration of names of attributes existing within this
     # attribute.
     def get_elements
@@ -249,7 +234,6 @@ module Sun::Security::X509
     end
     
     typesig { [] }
-    # 
     # Return the name of this attribute.
     def get_name
       return (@extension_name)

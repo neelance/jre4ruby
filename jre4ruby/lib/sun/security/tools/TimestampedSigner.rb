@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright (c) 2007 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -48,7 +47,6 @@ module Sun::Security::Tools
     }
   end
   
-  # 
   # This class implements a content signing service.
   # It generates a timestamped signature for a given content according to
   # <a href="http://www.ietf.org/rfc/rfc3161.txt">RFC 3161</a>.
@@ -70,13 +68,11 @@ module Sun::Security::Tools
         const_set :RANDOM, tmp
       end
       
-      # 
       # Object identifier for the subject information access X.509 certificate
       # extension.
       const_set_lazy(:SUBJECT_INFO_ACCESS_OID) { "1.3.6.1.5.5.7.1.11" }
       const_attr_reader  :SUBJECT_INFO_ACCESS_OID
       
-      # 
       # Object identifier for the timestamping key purpose.
       const_set_lazy(:KP_TIMESTAMPING_OID) { "1.3.6.1.5.5.7.3.8" }
       const_attr_reader  :KP_TIMESTAMPING_OID
@@ -92,7 +88,6 @@ module Sun::Security::Tools
       end
     }
     
-    # 
     # Location of the TSA.
     attr_accessor :tsa_url
     alias_method :attr_tsa_url, :tsa_url
@@ -100,7 +95,6 @@ module Sun::Security::Tools
     alias_method :attr_tsa_url=, :tsa_url=
     undef_method :tsa_url=
     
-    # 
     # TSA's X.509 certificate.
     attr_accessor :tsa_certificate
     alias_method :attr_tsa_certificate, :tsa_certificate
@@ -108,7 +102,6 @@ module Sun::Security::Tools
     alias_method :attr_tsa_certificate=, :tsa_certificate=
     undef_method :tsa_certificate=
     
-    # 
     # Generates an SHA-1 hash value for the data to be timestamped.
     attr_accessor :message_digest
     alias_method :attr_message_digest, :message_digest
@@ -116,7 +109,6 @@ module Sun::Security::Tools
     alias_method :attr_message_digest=, :message_digest=
     undef_method :message_digest=
     
-    # 
     # Parameters for the timestamping protocol.
     attr_accessor :ts_request_certificate
     alias_method :attr_ts_request_certificate, :ts_request_certificate
@@ -125,7 +117,6 @@ module Sun::Security::Tools
     undef_method :ts_request_certificate=
     
     typesig { [] }
-    # 
     # Instantiates a content signer that supports timestamped signatures.
     def initialize
       @tsa_url = nil
@@ -140,7 +131,6 @@ module Sun::Security::Tools
     end
     
     typesig { [ContentSignerParameters, ::Java::Boolean, ::Java::Boolean] }
-    # 
     # Generates a PKCS #7 signed data message that includes a signature
     # timestamp.
     # This method is used when a signature has already been generated.
@@ -242,7 +232,6 @@ module Sun::Security::Tools
     
     class_module.module_eval {
       typesig { [X509Certificate] }
-      # 
       # Examine the certificate for a Subject Information Access extension
       # (<a href="http://www.ietf.org/rfc/rfc3280.txt">RFC 3280</a>).
       # The extension's <tt>accessMethod</tt> field should contain the object
@@ -289,7 +278,6 @@ module Sun::Security::Tools
     }
     
     typesig { [Array.typed(::Java::Byte)] }
-    # 
     # Returns a timestamp token from a TSA for the given content.
     # Performs a basic check on the token to confirm that it has been signed
     # by a certificate that is permitted to sign timestamps.

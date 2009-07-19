@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 2001 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -32,7 +31,6 @@ module Sun::Misc
     }
   end
   
-  # 
   # This is an abstract base class which is called by java.lang.ClassLoader
   # when ClassFormatError is thrown inside defineClass().
   # 
@@ -74,7 +72,6 @@ module Sun::Misc
       alias_method :attr_transformers=, :transformers=
       
       typesig { [ClassFileTransformer] }
-      # 
       # Add the class file transformer object.
       # 
       # @param t Class file transformer instance
@@ -86,7 +83,6 @@ module Sun::Misc
       end
       
       typesig { [] }
-      # 
       # Get the array of ClassFileTransformer object.
       # 
       # @return ClassFileTransformer object array
@@ -99,7 +95,6 @@ module Sun::Misc
     }
     
     typesig { [Array.typed(::Java::Byte), ::Java::Int, ::Java::Int] }
-    # 
     # Transform a byte array from one to the other.
     # 
     # @param b Byte array

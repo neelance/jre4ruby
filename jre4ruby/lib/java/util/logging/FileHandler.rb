@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 2000-2006 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -35,7 +34,6 @@ module Java::Util::Logging
     }
   end
   
-  # 
   # Simple file logging <tt>Handler</tt>.
   # <p>
   # The <tt>FileHandler</tt> can either write to a specified file,
@@ -293,7 +291,6 @@ module Java::Util::Logging
     end
     
     typesig { [] }
-    # 
     # Construct a default <tt>FileHandler</tt>.  This will be configured
     # entirely from <tt>LogManager</tt> properties (or their default values).
     # <p>
@@ -317,7 +314,6 @@ module Java::Util::Logging
     end
     
     typesig { [String] }
-    # 
     # Initialize a <tt>FileHandler</tt> to write to the given filename.
     # <p>
     # The <tt>FileHandler</tt> is configured based on <tt>LogManager</tt>
@@ -355,7 +351,6 @@ module Java::Util::Logging
     end
     
     typesig { [String, ::Java::Boolean] }
-    # 
     # Initialize a <tt>FileHandler</tt> to write to the given filename,
     # with optional append.
     # <p>
@@ -397,7 +392,6 @@ module Java::Util::Logging
     end
     
     typesig { [String, ::Java::Int, ::Java::Int] }
-    # 
     # Initialize a <tt>FileHandler</tt> to write to a set of files.  When
     # (approximately) the given limit has been written to one file,
     # another file will be opened.  The output will cycle through a set
@@ -441,7 +435,6 @@ module Java::Util::Logging
     end
     
     typesig { [String, ::Java::Int, ::Java::Int, ::Java::Boolean] }
-    # 
     # Initialize a <tt>FileHandler</tt> to write to a set of files
     # with optional append.  When (approximately) the given limit has
     # been written to one file, another file will be opened.  The
@@ -697,7 +690,6 @@ module Java::Util::Logging
     end
     
     typesig { [LogRecord] }
-    # 
     # Format and publish a <tt>LogRecord</tt>.
     # 
     # @param  record  description of the log event. A null record is
@@ -739,7 +731,6 @@ module Java::Util::Logging
     end
     
     typesig { [] }
-    # 
     # Close all the files.
     # 
     # @exception  SecurityException  if a security manager exists and if

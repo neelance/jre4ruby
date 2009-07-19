@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 1997-2006 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -32,7 +31,6 @@ module Java::Lang::Ref
     }
   end
   
-  # 
   # Abstract base class for reference objects.  This class defines the
   # operations common to all reference objects.  Because reference objects are
   # implemented in close cooperation with the garbage collector, this class may
@@ -228,7 +226,6 @@ module Java::Lang::Ref
     end
     
     typesig { [] }
-    # 
     # Clears this reference object.  Invoking this method will not cause this
     # object to be enqueued.
     # 
@@ -257,7 +254,6 @@ module Java::Lang::Ref
     end
     
     typesig { [] }
-    # 
     # Adds this reference object to the queue with which it is registered,
     # if any.
     # 

@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 1997-2006 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -37,7 +36,6 @@ module Sun::Security::X509
     }
   end
   
-  # 
   # This class defines the version of the X509 Certificate.
   # 
   # @author Amit Kapoor
@@ -48,28 +46,23 @@ module Sun::Security::X509
     include CertAttrSet
     
     class_module.module_eval {
-      # 
       # X509Certificate Version 1
       const_set_lazy(:V1) { 0 }
       const_attr_reader  :V1
       
-      # 
       # X509Certificate Version 2
       const_set_lazy(:V2) { 1 }
       const_attr_reader  :V2
       
-      # 
       # X509Certificate Version 3
       const_set_lazy(:V3) { 2 }
       const_attr_reader  :V3
       
-      # 
       # Identifier for this attribute, to be used with the
       # get, set, delete methods of Certificate, x509 type.
       const_set_lazy(:IDENT) { "x509.info.version" }
       const_attr_reader  :IDENT
       
-      # 
       # Sub attributes name for this CertAttrSet.
       const_set_lazy(:NAME) { "version" }
       const_attr_reader  :NAME
@@ -104,7 +97,6 @@ module Sun::Security::X509
     end
     
     typesig { [] }
-    # 
     # The default constructor for this class,
     # sets the version to 0 (i.e. X.509 version 1).
     def initialize
@@ -113,7 +105,6 @@ module Sun::Security::X509
     end
     
     typesig { [::Java::Int] }
-    # 
     # The constructor for this class for the required version.
     # 
     # @param version the version for the certificate.
@@ -129,7 +120,6 @@ module Sun::Security::X509
     end
     
     typesig { [DerInputStream] }
-    # 
     # Create the object, decoding the values from the passed DER stream.
     # 
     # @param in the DerInputStream to read the CertificateVersion from.
@@ -142,7 +132,6 @@ module Sun::Security::X509
     end
     
     typesig { [InputStream] }
-    # 
     # Create the object, decoding the values from the passed stream.
     # 
     # @param in the InputStream to read the CertificateVersion from.
@@ -155,7 +144,6 @@ module Sun::Security::X509
     end
     
     typesig { [DerValue] }
-    # 
     # Create the object, decoding the values from the passed DerValue.
     # 
     # @param val the Der encoded value.
@@ -167,14 +155,12 @@ module Sun::Security::X509
     end
     
     typesig { [] }
-    # 
     # Return the version number of the certificate.
     def to_s
       return ("Version: V" + ((@version + 1)).to_s)
     end
     
     typesig { [OutputStream] }
-    # 
     # Encode the CertificateVersion period in DER form to the stream.
     # 
     # @param out the OutputStream to marshal the contents to.
@@ -192,7 +178,6 @@ module Sun::Security::X509
     end
     
     typesig { [String, Object] }
-    # 
     # Set the attribute value.
     def set(name, obj)
       if (!(obj.is_a?(JavaInteger)))
@@ -206,7 +191,6 @@ module Sun::Security::X509
     end
     
     typesig { [String] }
-    # 
     # Get the attribute value.
     def get(name)
       if (name.equals_ignore_case(VERSION))
@@ -217,7 +201,6 @@ module Sun::Security::X509
     end
     
     typesig { [String] }
-    # 
     # Delete the attribute value.
     def delete(name)
       if (name.equals_ignore_case(VERSION))
@@ -228,7 +211,6 @@ module Sun::Security::X509
     end
     
     typesig { [] }
-    # 
     # Return an enumeration of names of attributes existing within this
     # attribute.
     def get_elements
@@ -238,14 +220,12 @@ module Sun::Security::X509
     end
     
     typesig { [] }
-    # 
     # Return the name of this attribute.
     def get_name
       return (NAME)
     end
     
     typesig { [::Java::Int] }
-    # 
     # Compare versions.
     def compare(vers)
       return (@version - vers)

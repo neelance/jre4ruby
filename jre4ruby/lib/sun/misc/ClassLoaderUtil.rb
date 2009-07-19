@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 2006 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -35,7 +34,6 @@ module Sun::Misc
     }
   end
   
-  # 
   # Provides utility functions related to URLClassLoaders or subclasses of it.
   # 
   # W  A  R  N  I  N  G
@@ -49,7 +47,6 @@ module Sun::Misc
     
     class_module.module_eval {
       typesig { [URLClassLoader] }
-      # 
       # Releases resources held by a URLClassLoader. A new classloader must
       # be created before the underlying resources can be accessed again.
       # @param classLoader the instance of URLClassLoader (or a subclass)
@@ -58,7 +55,6 @@ module Sun::Misc
       end
       
       typesig { [URLClassLoader, JavaList] }
-      # 
       # Releases resources held by a URLClassLoader.  Notably, close the jars
       # opened by the loader. Initializes and updates the List of
       # jars that have been successfully closed.
@@ -83,7 +79,6 @@ module Sun::Misc
           loaders = ucp.attr_loaders
           urls = ucp.attr_urls
           lmap = ucp.attr_lmap
-          # 
           # The urls variable in the URLClassPath object holds URLs that have not yet
           # been used to resolve a resource or load a class and, therefore, do
           # not yet have a loader associated with them.  Clear the stack so any
@@ -93,13 +88,11 @@ module Sun::Misc
           synchronized((urls)) do
             urls.clear
           end
-          # 
           # Also clear the map of URLs to loaders so the class loader cannot use
           # previously-opened jar files - they are about to be closed.
           synchronized((lmap)) do
             lmap.clear
           end
-          # 
           # The URLClassPath object's path variable records the list of all URLs that are on
           # the URLClassPath's class path.  Leave that unchanged.  This might
           # help someone trying to debug why a released class loader is still used.
@@ -123,7 +116,6 @@ module Sun::Misc
           synchronized((ucp)) do
             loaders.each do |o|
               if (!(o).nil?)
-                # 
                 # If the loader is a JarLoader inner class and its jarFile
                 # field is non-null then try to close that jar file.  Add
                 # it to the list of closed files if successful.
@@ -138,7 +130,6 @@ module Sun::Misc
                       end
                     end
                   rescue IOException => ioe
-                    # 
                     # Wrap the IOException to identify which jar
                     # could not be closed and add it to the list
                     # of IOExceptions to be returned to the caller.
@@ -151,7 +142,6 @@ module Sun::Misc
                 end
               end
             end
-            # 
             # Now clear the loaders ArrayList.
             loaders.clear
           end

@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 1997-2006 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -36,7 +35,6 @@ module Java::Security
     }
   end
   
-  # 
   # A UnresolvedPermissionCollection stores a collection
   # of UnresolvedPermission permissions.
   # 
@@ -52,7 +50,6 @@ module Java::Security
     include_class_members UnresolvedPermissionCollectionImports
     include Java::Io::Serializable
     
-    # 
     # Key is permission type, value is a list of the UnresolvedPermissions
     # of the same type.
     # Not serialized; see serialization section at end of class.
@@ -63,7 +60,6 @@ module Java::Security
     undef_method :perms=
     
     typesig { [] }
-    # 
     # Create an empty UnresolvedPermissionCollection object.
     def initialize
       @perms = nil
@@ -72,7 +68,6 @@ module Java::Security
     end
     
     typesig { [Permission] }
-    # 
     # Adds a permission to this UnresolvedPermissionCollection.
     # The key for the hash is the unresolved permission's type (class) name.
     # 
@@ -96,7 +91,6 @@ module Java::Security
     end
     
     typesig { [Permission] }
-    # 
     # get any unresolved permissions of the same type as p,
     # and return the List containing them.
     def get_unresolved_permissions(p)
@@ -106,14 +100,12 @@ module Java::Security
     end
     
     typesig { [Permission] }
-    # 
     # always returns false for unresolved permissions
     def implies(permission)
       return false
     end
     
     typesig { [] }
-    # 
     # Returns an enumeration of all the UnresolvedPermission lists in the
     # container.
     # 
@@ -147,7 +139,6 @@ module Java::Security
     }
     
     typesig { [ObjectOutputStream] }
-    # 
     # @serialData Default field.
     # 
     # 
@@ -179,7 +170,6 @@ module Java::Security
     end
     
     typesig { [ObjectInputStream] }
-    # 
     # Reads in a Hashtable in which the values are Vectors of
     # UnresolvedPermissions and saves them in the perms field.
     def read_object(in_)

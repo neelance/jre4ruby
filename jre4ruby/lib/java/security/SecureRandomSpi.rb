@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 1998-2005 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -31,7 +30,6 @@ module Java::Security
     }
   end
   
-  # 
   # This class defines the <i>Service Provider Interface</i> (<b>SPI</b>)
   # for the <code>SecureRandom</code> class.
   # All the abstract methods in this class must be implemented by each
@@ -51,7 +49,6 @@ module Java::Security
     }
     
     typesig { [Array.typed(::Java::Byte)] }
-    # 
     # Reseeds this random object. The given seed supplements, rather than
     # replaces, the existing seed. Thus, repeated calls are guaranteed
     # never to reduce randomness.
@@ -62,7 +59,6 @@ module Java::Security
     end
     
     typesig { [Array.typed(::Java::Byte)] }
-    # 
     # Generates a user-specified number of random bytes.
     # 
     # <p> If a call to <code>engineSetSeed</code> had not occurred previously,
@@ -76,7 +72,6 @@ module Java::Security
     end
     
     typesig { [::Java::Int] }
-    # 
     # Returns the given number of seed bytes.  This call may be used to
     # seed other random number generators.
     # 

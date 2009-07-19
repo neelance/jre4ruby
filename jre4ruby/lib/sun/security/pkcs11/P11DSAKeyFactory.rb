@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 2003 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -36,7 +35,6 @@ module Sun::Security::Pkcs11
     }
   end
   
-  # 
   # DSA KeyFactory implemenation.
   # 
   # @author  Andreas Sterbenz
@@ -113,7 +111,7 @@ module Sun::Security::Pkcs11
         ds = key_spec
         return generate_public(ds.get_y, ds.get_p, ds.get_q, ds.get_g)
       rescue PKCS11Exception => e
-        raise InvalidKeySpecException.new("Could not create DSA public key", e_)
+        raise InvalidKeySpecException.new("Could not create DSA public key", e)
       end
     end
     
@@ -137,7 +135,7 @@ module Sun::Security::Pkcs11
         ds = key_spec
         return generate_private(ds.get_x, ds.get_p, ds.get_q, ds.get_g)
       rescue PKCS11Exception => e
-        raise InvalidKeySpecException.new("Could not create DSA private key", e_)
+        raise InvalidKeySpecException.new("Could not create DSA private key", e)
       end
     end
     

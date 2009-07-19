@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 1995-2000 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -30,7 +29,6 @@ module Java::Lang
     }
   end
   
-  # 
   # An IllegalAccessException is thrown when an application tries
   # to reflectively create an instance (other than an array),
   # set or get a field, or invoke a method, but the currently
@@ -64,7 +62,6 @@ module Java::Lang
     include_class_members IllegalAccessExceptionImports
     
     typesig { [] }
-    # 
     # Constructs an <code>IllegalAccessException</code> without a
     # detail message.
     def initialize
@@ -72,7 +69,6 @@ module Java::Lang
     end
     
     typesig { [String] }
-    # 
     # Constructs an <code>IllegalAccessException</code> with a detail message.
     # 
     # @param   s   the detail message.

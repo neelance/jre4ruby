@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 1997-2006 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -43,7 +42,6 @@ module Java::Util::Jar
     }
   end
   
-  # 
   # The Attributes class maps Manifest attribute names to associated string
   # values. Valid attribute names are case-insensitive, are restricted to
   # the ASCII characters in the set [0-9a-zA-Z_-], and cannot exceed 70
@@ -60,7 +58,6 @@ module Java::Util::Jar
     include Map
     include Cloneable
     
-    # 
     # The attribute name-value mappings.
     attr_accessor :map
     alias_method :attr_map, :map
@@ -69,14 +66,12 @@ module Java::Util::Jar
     undef_method :map=
     
     typesig { [] }
-    # 
     # Constructs a new, empty Attributes object with default size.
     def initialize
       initialize__attributes(11)
     end
     
     typesig { [::Java::Int] }
-    # 
     # Constructs a new, empty Attributes object with the specified
     # initial size.
     # 
@@ -87,7 +82,6 @@ module Java::Util::Jar
     end
     
     typesig { [Attributes] }
-    # 
     # Constructs a new Attributes object with the same attribute name-value
     # mappings as in the specified Attributes.
     # 
@@ -98,7 +92,6 @@ module Java::Util::Jar
     end
     
     typesig { [Object] }
-    # 
     # Returns the value of the specified attribute name, or null if the
     # attribute name was not found.
     # 
@@ -110,7 +103,6 @@ module Java::Util::Jar
     end
     
     typesig { [String] }
-    # 
     # Returns the value of the specified attribute name, specified as
     # a string, or null if the attribute was not found. The attribute
     # name is case-insensitive.
@@ -129,7 +121,6 @@ module Java::Util::Jar
     end
     
     typesig { [Name] }
-    # 
     # Returns the value of the specified Attributes.Name, or null if the
     # attribute was not found.
     # <p>
@@ -146,7 +137,6 @@ module Java::Util::Jar
     end
     
     typesig { [Object, Object] }
-    # 
     # Associates the specified value with the specified attribute name
     # (key) in this Map. If the Map previously contained a mapping for
     # the attribute name, the old value is replaced.
@@ -161,7 +151,6 @@ module Java::Util::Jar
     end
     
     typesig { [String, String] }
-    # 
     # Associates the specified value with the specified attribute name,
     # specified as a String. The attributes name is case-insensitive.
     # If the Map previously contained a mapping for the attribute name,
@@ -181,7 +170,6 @@ module Java::Util::Jar
     end
     
     typesig { [Object] }
-    # 
     # Removes the attribute with the specified name (key) from this Map.
     # Returns the previous attribute value, or null if none.
     # 
@@ -192,7 +180,6 @@ module Java::Util::Jar
     end
     
     typesig { [Object] }
-    # 
     # Returns true if this Map maps one or more attribute names (keys)
     # to the specified value.
     # 
@@ -204,7 +191,6 @@ module Java::Util::Jar
     end
     
     typesig { [Object] }
-    # 
     # Returns true if this Map contains the specified attribute name (key).
     # 
     # @param name the attribute name
@@ -214,7 +200,6 @@ module Java::Util::Jar
     end
     
     typesig { [Map] }
-    # 
     # Copies all of the attribute name-value mappings from the specified
     # Attributes to this Map. Duplicate mappings will be replaced.
     # 
@@ -231,42 +216,36 @@ module Java::Util::Jar
     end
     
     typesig { [] }
-    # 
     # Removes all attributes from this Map.
     def clear
       @map.clear
     end
     
     typesig { [] }
-    # 
     # Returns the number of attributes in this Map.
     def size
       return @map.size
     end
     
     typesig { [] }
-    # 
     # Returns true if this Map contains no attributes.
     def is_empty
       return @map.is_empty
     end
     
     typesig { [] }
-    # 
     # Returns a Set view of the attribute names (keys) contained in this Map.
     def key_set
       return @map.key_set
     end
     
     typesig { [] }
-    # 
     # Returns a Collection view of the attribute values contained in this Map.
     def values
       return @map.values
     end
     
     typesig { [] }
-    # 
     # Returns a Collection view of the attribute name-value mappings
     # contained in this Map.
     def entry_set
@@ -274,7 +253,6 @@ module Java::Util::Jar
     end
     
     typesig { [Object] }
-    # 
     # Compares the specified Attributes object with this Map for equality.
     # Returns true if the given object is also an instance of Attributes
     # and the two Attributes objects represent the same mappings.
@@ -286,14 +264,12 @@ module Java::Util::Jar
     end
     
     typesig { [] }
-    # 
     # Returns the hash code value for this Map.
     def hash_code
       return @map.hash_code
     end
     
     typesig { [] }
-    # 
     # Returns a copy of the Attributes, implemented as follows:
     # <pre>
     # public Object clone() { return new Attributes(this); }
@@ -306,7 +282,6 @@ module Java::Util::Jar
     end
     
     typesig { [DataOutputStream] }
-    # 
     # Writes the current attributes to the specified data output stream.
     # XXX Need to handle UTF8 values and break up lines longer than 72 bytes
     def write(os)
@@ -329,7 +304,6 @@ module Java::Util::Jar
     end
     
     typesig { [DataOutputStream] }
-    # 
     # Writes the current attributes to the specified data output stream,
     # make sure to write out the MANIFEST_VERSION or SIGNATURE_VERSION
     # attributes first.
@@ -370,7 +344,6 @@ module Java::Util::Jar
     end
     
     typesig { [Manifest::FastInputStream, Array.typed(::Java::Byte)] }
-    # 
     # Reads attributes from the specified input stream.
     # XXX Need to handle UTF8 values.
     def read(is, lbuf)
@@ -433,7 +406,6 @@ module Java::Util::Jar
     end
     
     class_module.module_eval {
-      # 
       # The Attributes.Name class represents an attribute name stored in
       # this Map. Valid attribute names are case-insensitive, are restricted
       # to the ASCII characters in the set [0-9a-zA-Z_-], and cannot exceed
@@ -457,7 +429,6 @@ module Java::Util::Jar
         undef_method :hash_code=
         
         typesig { [String] }
-        # 
         # Constructs a new attribute name using the given string name.
         # 
         # @param name the attribute string name
@@ -510,7 +481,6 @@ module Java::Util::Jar
         }
         
         typesig { [Object] }
-        # 
         # Compares this attribute name to another for equality.
         # @param o the object to compare
         # @return true if this attribute name is equal to the
@@ -525,7 +495,6 @@ module Java::Util::Jar
         end
         
         typesig { [] }
-        # 
         # Computes the hash value for this attribute name.
         def hash_code
           if ((@hash_code).equal?(-1))
@@ -535,14 +504,12 @@ module Java::Util::Jar
         end
         
         typesig { [] }
-        # 
         # Returns the attribute name as a String.
         def to_s
           return @name
         end
         
         class_module.module_eval {
-          # 
           # <code>Name</code> object for <code>Manifest-Version</code>
           # manifest attribute. This attribute indicates the version number
           # of the manifest standard to which a JAR file's manifest conforms.
@@ -551,7 +518,6 @@ module Java::Util::Jar
           const_set_lazy(:MANIFEST_VERSION) { Name.new("Manifest-Version") }
           const_attr_reader  :MANIFEST_VERSION
           
-          # 
           # <code>Name</code> object for <code>Signature-Version</code>
           # manifest attribute used when signing JAR files.
           # @see <a href="../../../../technotes/guides/jar/jar.html#JAR Manifest">
@@ -559,13 +525,11 @@ module Java::Util::Jar
           const_set_lazy(:SIGNATURE_VERSION) { Name.new("Signature-Version") }
           const_attr_reader  :SIGNATURE_VERSION
           
-          # 
           # <code>Name</code> object for <code>Content-Type</code>
           # manifest attribute.
           const_set_lazy(:CONTENT_TYPE) { Name.new("Content-Type") }
           const_attr_reader  :CONTENT_TYPE
           
-          # 
           # <code>Name</code> object for <code>Class-Path</code>
           # manifest attribute. Bundled extensions can use this attribute
           # to find other JAR files containing needed classes.
@@ -574,7 +538,6 @@ module Java::Util::Jar
           const_set_lazy(:CLASS_PATH) { Name.new("Class-Path") }
           const_attr_reader  :CLASS_PATH
           
-          # 
           # <code>Name</code> object for <code>Main-Class</code> manifest
           # attribute used for launching applications packaged in JAR files.
           # The <code>Main-Class</code> attribute is used in conjunction
@@ -583,7 +546,6 @@ module Java::Util::Jar
           const_set_lazy(:MAIN_CLASS) { Name.new("Main-Class") }
           const_attr_reader  :MAIN_CLASS
           
-          # 
           # <code>Name</code> object for <code>Sealed</code> manifest attribute
           # used for sealing.
           # @see <a href="../../../../technotes/guides/extensions/spec.html#sealing">
@@ -591,7 +553,6 @@ module Java::Util::Jar
           const_set_lazy(:SEALED) { Name.new("Sealed") }
           const_attr_reader  :SEALED
           
-          # 
           # <code>Name</code> object for <code>Extension-List</code> manifest attribute
           # used for declaring dependencies on installed extensions.
           # @see <a href="../../../../technotes/guides/extensions/spec.html#dependency">
@@ -599,7 +560,6 @@ module Java::Util::Jar
           const_set_lazy(:EXTENSION_LIST) { Name.new("Extension-List") }
           const_attr_reader  :EXTENSION_LIST
           
-          # 
           # <code>Name</code> object for <code>Extension-Name</code> manifest attribute
           # used for declaring dependencies on installed extensions.
           # @see <a href="../../../../technotes/guides/extensions/spec.html#dependency">
@@ -607,7 +567,6 @@ module Java::Util::Jar
           const_set_lazy(:EXTENSION_NAME) { Name.new("Extension-Name") }
           const_attr_reader  :EXTENSION_NAME
           
-          # 
           # <code>Name</code> object for <code>Extension-Name</code> manifest attribute
           # used for declaring dependencies on installed extensions.
           # @see <a href="../../../../technotes/guides/extensions/spec.html#dependency">
@@ -615,7 +574,6 @@ module Java::Util::Jar
           const_set_lazy(:EXTENSION_INSTALLATION) { Name.new("Extension-Installation") }
           const_attr_reader  :EXTENSION_INSTALLATION
           
-          # 
           # <code>Name</code> object for <code>Implementation-Title</code>
           # manifest attribute used for package versioning.
           # @see <a href="../../../../technotes/guides/versioning/spec/versioning2.html#wp90779">
@@ -623,7 +581,6 @@ module Java::Util::Jar
           const_set_lazy(:IMPLEMENTATION_TITLE) { Name.new("Implementation-Title") }
           const_attr_reader  :IMPLEMENTATION_TITLE
           
-          # 
           # <code>Name</code> object for <code>Implementation-Version</code>
           # manifest attribute used for package versioning.
           # @see <a href="../../../../technotes/guides/versioning/spec/versioning2.html#wp90779">
@@ -631,7 +588,6 @@ module Java::Util::Jar
           const_set_lazy(:IMPLEMENTATION_VERSION) { Name.new("Implementation-Version") }
           const_attr_reader  :IMPLEMENTATION_VERSION
           
-          # 
           # <code>Name</code> object for <code>Implementation-Vendor</code>
           # manifest attribute used for package versioning.
           # @see <a href="../../../../technotes/guides/versioning/spec/versioning2.html#wp90779">
@@ -639,7 +595,6 @@ module Java::Util::Jar
           const_set_lazy(:IMPLEMENTATION_VENDOR) { Name.new("Implementation-Vendor") }
           const_attr_reader  :IMPLEMENTATION_VENDOR
           
-          # 
           # <code>Name</code> object for <code>Implementation-Vendor-Id</code>
           # manifest attribute used for package versioning.
           # @see <a href="../../../../technotes/guides/versioning/spec/versioning2.html#wp90779">
@@ -647,7 +602,6 @@ module Java::Util::Jar
           const_set_lazy(:IMPLEMENTATION_VENDOR_ID) { Name.new("Implementation-Vendor-Id") }
           const_attr_reader  :IMPLEMENTATION_VENDOR_ID
           
-          # 
           # <code>Name</code> object for <code>Implementation-Vendor-URL</code>
           # manifest attribute used for package versioning.
           # @see <a href="../../../../technotes/guides/versioning/spec/versioning2.html#wp90779">
@@ -655,7 +609,6 @@ module Java::Util::Jar
           const_set_lazy(:IMPLEMENTATION_URL) { Name.new("Implementation-URL") }
           const_attr_reader  :IMPLEMENTATION_URL
           
-          # 
           # <code>Name</code> object for <code>Specification-Title</code>
           # manifest attribute used for package versioning.
           # @see <a href="../../../../technotes/guides/versioning/spec/versioning2.html#wp90779">
@@ -663,7 +616,6 @@ module Java::Util::Jar
           const_set_lazy(:SPECIFICATION_TITLE) { Name.new("Specification-Title") }
           const_attr_reader  :SPECIFICATION_TITLE
           
-          # 
           # <code>Name</code> object for <code>Specification-Version</code>
           # manifest attribute used for package versioning.
           # @see <a href="../../../../technotes/guides/versioning/spec/versioning2.html#wp90779">
@@ -671,7 +623,6 @@ module Java::Util::Jar
           const_set_lazy(:SPECIFICATION_VERSION) { Name.new("Specification-Version") }
           const_attr_reader  :SPECIFICATION_VERSION
           
-          # 
           # <code>Name</code> object for <code>Specification-Vendor</code>
           # manifest attribute used for package versioning.
           # @see <a href="../../../../technotes/guides/versioning/spec/versioning2.html#wp90779">

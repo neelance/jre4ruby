@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 2005-2006 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -41,7 +40,6 @@ module Java::Util
     }
   end
   
-  # 
   # A simple service-provider loading facility.
   # 
   # <p> A <i>service</i> is a well-known set of interfaces and (usually
@@ -218,7 +216,6 @@ module Java::Util
     undef_method :lookup_iterator=
     
     typesig { [] }
-    # 
     # Clear this loader's provider cache so that all providers will be
     # reloaded.
     # 
@@ -431,7 +428,7 @@ module Java::Util
           rescue ClassNotFoundException => x
             fail(@service, "Provider " + cn + " not found")
           rescue Exception => x
-            fail(@service, "Provider " + cn + " could not be instantiated: " + (x_).to_s, x_)
+            fail(@service, "Provider " + cn + " could not be instantiated: " + (x).to_s, x)
           end
           raise JavaError.new # This cannot happen
         end
@@ -447,7 +444,6 @@ module Java::Util
     }
     
     typesig { [] }
-    # 
     # Lazily loads the available providers of this loader's service.
     # 
     # <p> The iterator returned by this method first yields all of the
@@ -533,7 +529,6 @@ module Java::Util
     
     class_module.module_eval {
       typesig { [Class, ClassLoader] }
-      # 
       # Creates a new service loader for the given service type and class
       # loader.
       # 
@@ -552,7 +547,6 @@ module Java::Util
       end
       
       typesig { [Class] }
-      # 
       # Creates a new service loader for the given service type, using the
       # current thread's {@linkplain java.lang.Thread#getContextClassLoader
       # context class loader}.
@@ -578,7 +572,6 @@ module Java::Util
       end
       
       typesig { [Class] }
-      # 
       # Creates a new service loader for the given service type, using the
       # extension class loader.
       # 
@@ -613,7 +606,6 @@ module Java::Util
     }
     
     typesig { [] }
-    # 
     # Returns a string describing this service.
     # 
     # @return  A descriptive string

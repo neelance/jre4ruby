@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 2003-2004 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -32,7 +31,6 @@ module Java::Util
     }
   end
   
-  # 
   # The <tt>Formattable</tt> interface must be implemented by any class that
   # needs to perform custom formatting using the <tt>'s'</tt> conversion
   # specifier of {@link java.util.Formatter}.  This interface allows basic
@@ -124,7 +122,6 @@ module Java::Util
     include_class_members FormattableImports
     
     typesig { [Formatter, ::Java::Int, ::Java::Int, ::Java::Int] }
-    # 
     # Formats the object using the provided {@link Formatter formatter}.
     # 
     # @param  formatter

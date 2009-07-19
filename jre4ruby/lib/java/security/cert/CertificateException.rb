@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 1996-2003 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -32,7 +31,6 @@ module Java::Security::Cert
     }
   end
   
-  # 
   # This exception indicates one of a variety of certificate problems.
   # 
   # @author Hemma Prafullchandra
@@ -46,7 +44,6 @@ module Java::Security::Cert
     }
     
     typesig { [] }
-    # 
     # Constructs a certificate exception with no detail message. A detail
     # message is a String that describes this particular exception.
     def initialize
@@ -54,7 +51,6 @@ module Java::Security::Cert
     end
     
     typesig { [String] }
-    # 
     # Constructs a certificate exception with the given detail
     # message. A detail message is a String that describes this
     # particular exception.
@@ -65,7 +61,6 @@ module Java::Security::Cert
     end
     
     typesig { [String, Exception] }
-    # 
     # Creates a <code>CertificateException</code> with the specified
     # detail message and cause.
     # 
@@ -80,7 +75,6 @@ module Java::Security::Cert
     end
     
     typesig { [Exception] }
-    # 
     # Creates a <code>CertificateException</code> with the specified cause
     # and a detail message of <tt>(cause==null ? null : cause.toString())</tt>
     # (which typically contains the class and detail message of

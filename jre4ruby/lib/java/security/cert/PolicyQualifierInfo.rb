@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 2000-2003 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -34,7 +33,6 @@ module Java::Security::Cert
     }
   end
   
-  # 
   # An immutable policy qualifier represented by the ASN.1 PolicyQualifierInfo
   # structure.
   # 
@@ -113,7 +111,6 @@ module Java::Security::Cert
     undef_method :pqi_string=
     
     typesig { [Array.typed(::Java::Byte)] }
-    # 
     # Creates an instance of <code>PolicyQualifierInfo</code> from the
     # encoded bytes. The encoded byte array is copied on construction.
     # 
@@ -141,7 +138,6 @@ module Java::Security::Cert
     end
     
     typesig { [] }
-    # 
     # Returns the <code>policyQualifierId</code> field of this
     # <code>PolicyQualifierInfo</code>. The <code>policyQualifierId</code>
     # is an Object Identifier (OID) represented by a set of nonnegative
@@ -153,7 +149,6 @@ module Java::Security::Cert
     end
     
     typesig { [] }
-    # 
     # Returns the ASN.1 DER encoded form of this
     # <code>PolicyQualifierInfo</code>.
     # 
@@ -165,7 +160,6 @@ module Java::Security::Cert
     end
     
     typesig { [] }
-    # 
     # Returns the ASN.1 DER encoded form of the <code>qualifier</code>
     # field of this <code>PolicyQualifierInfo</code>.
     # 
@@ -177,7 +171,6 @@ module Java::Security::Cert
     end
     
     typesig { [] }
-    # 
     # Return a printable representation of this
     # <code>PolicyQualifierInfo</code>.
     # 

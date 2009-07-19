@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 1995-2006 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -44,7 +43,6 @@ module Java::Net
     }
   end
   
-  # 
   # The abstract class <code>URLConnection</code> is the superclass
   # of all classes that represent a communications link between the
   # application and a URL. Instances of this class can be used both to
@@ -173,7 +171,6 @@ module Java::Net
   class URLConnection 
     include_class_members URLConnectionImports
     
-    # 
     # The URL represents the remote object on the World Wide Web to
     # which this connection is opened.
     # <p>
@@ -191,7 +188,6 @@ module Java::Net
     alias_method :attr_url=, :url=
     undef_method :url=
     
-    # 
     # This variable is set by the <code>setDoInput</code> method. Its
     # value is returned by the <code>getDoInput</code> method.
     # <p>
@@ -209,7 +205,6 @@ module Java::Net
     alias_method :attr_do_input=, :do_input=
     undef_method :do_input=
     
-    # 
     # This variable is set by the <code>setDoOutput</code> method. Its
     # value is returned by the <code>getDoOutput</code> method.
     # <p>
@@ -240,7 +235,6 @@ module Java::Net
       alias_method :attr_default_allow_user_interaction=, :default_allow_user_interaction=
     }
     
-    # 
     # If <code>true</code>, this <code>URL</code> is being examined in
     # a context in which it makes sense to allow user interactions such
     # as popping up an authentication dialog. If <code>false</code>,
@@ -275,7 +269,6 @@ module Java::Net
       alias_method :attr_default_use_caches=, :default_use_caches=
     }
     
-    # 
     # If <code>true</code>, the protocol is allowed to use caching
     # whenever it can. If <code>false</code>, the protocol must always
     # try to get a fresh copy of the object.
@@ -295,7 +288,6 @@ module Java::Net
     alias_method :attr_use_caches=, :use_caches=
     undef_method :use_caches=
     
-    # 
     # Some protocols support skipping the fetching of the object unless
     # the object has been modified more recently than a certain time.
     # <p>
@@ -318,7 +310,6 @@ module Java::Net
     alias_method :attr_if_modified_since=, :if_modified_since=
     undef_method :if_modified_since=
     
-    # 
     # If <code>false</code>, this connection object has not created a
     # communications link to the specified URL. If <code>true</code>,
     # the communications link has been established.
@@ -328,7 +319,6 @@ module Java::Net
     alias_method :attr_connected=, :connected=
     undef_method :connected=
     
-    # 
     # @since 1.5
     attr_accessor :connect_timeout
     alias_method :attr_connect_timeout, :connect_timeout
@@ -342,7 +332,6 @@ module Java::Net
     alias_method :attr_read_timeout=, :read_timeout=
     undef_method :read_timeout=
     
-    # 
     # @since 1.6
     attr_accessor :requests
     alias_method :attr_requests, :requests
@@ -351,7 +340,6 @@ module Java::Net
     undef_method :requests=
     
     class_module.module_eval {
-      # 
       # @since   JDK1.1
       
       def file_name_map
@@ -364,7 +352,6 @@ module Java::Net
       end
       alias_method :attr_file_name_map=, :file_name_map=
       
-      # 
       # @since 1.2.2
       
       def file_name_map_loaded
@@ -378,7 +365,6 @@ module Java::Net
       alias_method :attr_file_name_map_loaded=, :file_name_map_loaded=
       
       typesig { [] }
-      # 
       # Loads filename map (a mimetable) from a data file. It will
       # first try to load the user-specific table, defined
       # by &quot;content.types.user.table&quot; property. If that fails,
@@ -424,7 +410,6 @@ module Java::Net
       end
       
       typesig { [FileNameMap] }
-      # 
       # Sets the FileNameMap.
       # <p>
       # If there is a security manager, this method first calls
@@ -448,7 +433,6 @@ module Java::Net
     }
     
     typesig { [] }
-    # 
     # Opens a communications link to the resource referenced by this
     # URL, if such a connection has not already been established.
     # <p>
@@ -476,7 +460,6 @@ module Java::Net
     end
     
     typesig { [::Java::Int] }
-    # 
     # Sets a specified timeout value, in milliseconds, to be used
     # when opening a communications link to the resource referenced
     # by this URLConnection.  If the timeout expires before the
@@ -503,7 +486,6 @@ module Java::Net
     end
     
     typesig { [] }
-    # 
     # Returns setting for connect timeout.
     # <p>
     # 0 return implies that the option is disabled
@@ -519,7 +501,6 @@ module Java::Net
     end
     
     typesig { [::Java::Int] }
-    # 
     # Sets the read timeout to a specified timeout, in
     # milliseconds. A non-zero value specifies the timeout when
     # reading from Input stream when a connection is established to a
@@ -546,7 +527,6 @@ module Java::Net
     end
     
     typesig { [] }
-    # 
     # Returns setting for read timeout. 0 return implies that the
     # option is disabled (i.e., timeout of infinity).
     # 
@@ -561,7 +541,6 @@ module Java::Net
     end
     
     typesig { [URL] }
-    # 
     # Constructs a URL connection to the specified URL. A connection to
     # the object referenced by the URL is not created.
     # 
@@ -581,7 +560,6 @@ module Java::Net
     end
     
     typesig { [] }
-    # 
     # Returns the value of this <code>URLConnection</code>'s <code>URL</code>
     # field.
     # 
@@ -593,7 +571,6 @@ module Java::Net
     end
     
     typesig { [] }
-    # 
     # Returns the value of the <code>content-length</code> header field.
     # 
     # @return  the content length of the resource that this connection's URL
@@ -604,7 +581,6 @@ module Java::Net
     end
     
     typesig { [] }
-    # 
     # Returns the value of the <code>content-type</code> header field.
     # 
     # @return  the content type of the resource that the URL references,
@@ -615,7 +591,6 @@ module Java::Net
     end
     
     typesig { [] }
-    # 
     # Returns the value of the <code>content-encoding</code> header field.
     # 
     # @return  the content encoding of the resource that the URL references,
@@ -626,7 +601,6 @@ module Java::Net
     end
     
     typesig { [] }
-    # 
     # Returns the value of the <code>expires</code> header field.
     # 
     # @return  the expiration date of the resource that this URL references,
@@ -638,7 +612,6 @@ module Java::Net
     end
     
     typesig { [] }
-    # 
     # Returns the value of the <code>date</code> header field.
     # 
     # @return  the sending date of the resource that the URL references,
@@ -650,7 +623,6 @@ module Java::Net
     end
     
     typesig { [] }
-    # 
     # Returns the value of the <code>last-modified</code> header field.
     # The result is the number of milliseconds since January 1, 1970 GMT.
     # 
@@ -662,7 +634,6 @@ module Java::Net
     end
     
     typesig { [String] }
-    # 
     # Returns the value of the named header field.
     # <p>
     # If called on a connection that sets the same header multiple times
@@ -677,7 +648,6 @@ module Java::Net
     end
     
     typesig { [] }
-    # 
     # Returns an unmodifiable Map of the header fields.
     # The Map keys are Strings that represent the
     # response-header field names. Each Map value is an
@@ -691,7 +661,6 @@ module Java::Net
     end
     
     typesig { [String, ::Java::Int] }
-    # 
     # Returns the value of the named field parsed as a number.
     # <p>
     # This form of <code>getHeaderField</code> exists because some
@@ -714,7 +683,6 @@ module Java::Net
     end
     
     typesig { [String, ::Java::Long] }
-    # 
     # Returns the value of the named field parsed as date.
     # The result is the number of milliseconds since January 1, 1970 GMT
     # represented by the named field.
@@ -739,7 +707,6 @@ module Java::Net
     end
     
     typesig { [::Java::Int] }
-    # 
     # Returns the key for the <code>n</code><sup>th</sup> header field.
     # It returns <code>null</code> if there are fewer than <code>n+1</code> fields.
     # 
@@ -752,7 +719,6 @@ module Java::Net
     end
     
     typesig { [::Java::Int] }
-    # 
     # Returns the value for the <code>n</code><sup>th</sup> header field.
     # It returns <code>null</code> if there are fewer than
     # <code>n+1</code>fields.
@@ -770,7 +736,6 @@ module Java::Net
     end
     
     typesig { [] }
-    # 
     # Retrieves the contents of this URL connection.
     # <p>
     # This method first determines the content type of the object by
@@ -821,7 +786,6 @@ module Java::Net
     end
     
     typesig { [Array.typed(Class)] }
-    # 
     # Retrieves the contents of this URL connection.
     # 
     # @param classes the <code>Class</code> array
@@ -849,7 +813,6 @@ module Java::Net
     end
     
     typesig { [] }
-    # 
     # Returns a permission object representing the permission
     # necessary to make the connection represented by this
     # object. This method returns null if no permission is
@@ -892,7 +855,6 @@ module Java::Net
     end
     
     typesig { [] }
-    # 
     # Returns an input stream that reads from this open connection.
     # 
     # A SocketTimeoutException can be thrown when reading from the
@@ -911,7 +873,6 @@ module Java::Net
     end
     
     typesig { [] }
-    # 
     # Returns an output stream that writes to this connection.
     # 
     # @return     an output stream that writes to this connection.
@@ -924,7 +885,6 @@ module Java::Net
     end
     
     typesig { [] }
-    # 
     # Returns a <code>String</code> representation of this URL connection.
     # 
     # @return  a string representation of this <code>URLConnection</code>.
@@ -933,7 +893,6 @@ module Java::Net
     end
     
     typesig { [::Java::Boolean] }
-    # 
     # Sets the value of the <code>doInput</code> field for this
     # <code>URLConnection</code> to the specified value.
     # <p>
@@ -953,7 +912,6 @@ module Java::Net
     end
     
     typesig { [] }
-    # 
     # Returns the value of this <code>URLConnection</code>'s
     # <code>doInput</code> flag.
     # 
@@ -965,7 +923,6 @@ module Java::Net
     end
     
     typesig { [::Java::Boolean] }
-    # 
     # Sets the value of the <code>doOutput</code> field for this
     # <code>URLConnection</code> to the specified value.
     # <p>
@@ -984,7 +941,6 @@ module Java::Net
     end
     
     typesig { [] }
-    # 
     # Returns the value of this <code>URLConnection</code>'s
     # <code>doOutput</code> flag.
     # 
@@ -996,7 +952,6 @@ module Java::Net
     end
     
     typesig { [::Java::Boolean] }
-    # 
     # Set the value of the <code>allowUserInteraction</code> field of
     # this <code>URLConnection</code>.
     # 
@@ -1011,7 +966,6 @@ module Java::Net
     end
     
     typesig { [] }
-    # 
     # Returns the value of the <code>allowUserInteraction</code> field for
     # this object.
     # 
@@ -1024,7 +978,6 @@ module Java::Net
     
     class_module.module_eval {
       typesig { [::Java::Boolean] }
-      # 
       # Sets the default value of the
       # <code>allowUserInteraction</code> field for all future
       # <code>URLConnection</code> objects to the specified value.
@@ -1036,7 +989,6 @@ module Java::Net
       end
       
       typesig { [] }
-      # 
       # Returns the default value of the <code>allowUserInteraction</code>
       # field.
       # <p>
@@ -1053,7 +1005,6 @@ module Java::Net
     }
     
     typesig { [::Java::Boolean] }
-    # 
     # Sets the value of the <code>useCaches</code> field of this
     # <code>URLConnection</code> to the specified value.
     # <p>
@@ -1077,7 +1028,6 @@ module Java::Net
     end
     
     typesig { [] }
-    # 
     # Returns the value of this <code>URLConnection</code>'s
     # <code>useCaches</code> field.
     # 
@@ -1089,7 +1039,6 @@ module Java::Net
     end
     
     typesig { [::Java::Long] }
-    # 
     # Sets the value of the <code>ifModifiedSince</code> field of
     # this <code>URLConnection</code> to the specified value.
     # 
@@ -1104,7 +1053,6 @@ module Java::Net
     end
     
     typesig { [] }
-    # 
     # Returns the value of this object's <code>ifModifiedSince</code> field.
     # 
     # @return  the value of this object's <code>ifModifiedSince</code> field.
@@ -1114,7 +1062,6 @@ module Java::Net
     end
     
     typesig { [] }
-    # 
     # Returns the default value of a <code>URLConnection</code>'s
     # <code>useCaches</code> flag.
     # <p>
@@ -1130,7 +1077,6 @@ module Java::Net
     end
     
     typesig { [::Java::Boolean] }
-    # 
     # Sets the default value of the <code>useCaches</code> field to the
     # specified value.
     # 
@@ -1141,7 +1087,6 @@ module Java::Net
     end
     
     typesig { [String, String] }
-    # 
     # Sets the general request property. If a property with the key already
     # exists, overwrite its value with the new value.
     # 
@@ -1170,7 +1115,6 @@ module Java::Net
     end
     
     typesig { [String, String] }
-    # 
     # Adds a general request property specified by a
     # key-value pair.  This method will not overwrite
     # existing values associated with the same key.
@@ -1196,7 +1140,6 @@ module Java::Net
     end
     
     typesig { [String] }
-    # 
     # Returns the value of the named general request property for this
     # connection.
     # 
@@ -1216,7 +1159,6 @@ module Java::Net
     end
     
     typesig { [] }
-    # 
     # Returns an unmodifiable Map of general request
     # properties for this connection. The Map keys
     # are Strings that represent the request-header
@@ -1239,7 +1181,6 @@ module Java::Net
     
     class_module.module_eval {
       typesig { [String, String] }
-      # 
       # Sets the default value of a general request property. When a
       # <code>URLConnection</code> is created, it is initialized with
       # these properties.
@@ -1259,7 +1200,6 @@ module Java::Net
       end
       
       typesig { [String] }
-      # 
       # Returns the value of the default request property. Default request
       # properties are set for every connection.
       # 
@@ -1278,7 +1218,6 @@ module Java::Net
         return nil
       end
       
-      # 
       # The ContentHandler factory.
       
       def factory
@@ -1292,7 +1231,6 @@ module Java::Net
       alias_method :attr_factory=, :factory=
       
       typesig { [ContentHandlerFactory] }
-      # 
       # Sets the <code>ContentHandlerFactory</code> of an
       # application. It can be called at most once by an application.
       # <p>
@@ -1340,7 +1278,6 @@ module Java::Net
     }
     
     typesig { [] }
-    # 
     # Gets the Content Handler appropriate for this connection.
     # @param connection the connection to use.
     def get_content_handler
@@ -1364,7 +1301,7 @@ module Java::Net
           begin
             handler = lookup_content_handler_class_for(content_type)
           rescue Exception => e
-            e_.print_stack_trace
+            e.print_stack_trace
             handler = UnknownContentHandlerP
           end
           self.attr_handlers.put(content_type, handler)
@@ -1374,7 +1311,6 @@ module Java::Net
     end
     
     typesig { [String] }
-    # 
     # Media types are in the format: type/subtype*(; parameter).
     # For looking up the content handler, we should ignore those
     # parameters.
@@ -1399,7 +1335,6 @@ module Java::Net
     }
     
     typesig { [String] }
-    # 
     # Looks for a content handler in a user-defineable set of places.
     # By default it looks in sun.net.www.content, but users can define a
     # vertical-bar delimited set of class prefixes to search through in
@@ -1438,7 +1373,6 @@ module Java::Net
     end
     
     typesig { [String] }
-    # 
     # Utility function to map a MIME content type into an equivalent
     # pair of class name components.  For example: "text/html" would
     # be returned as "text.html"
@@ -1464,7 +1398,6 @@ module Java::Net
     end
     
     typesig { [] }
-    # 
     # Returns a vertical bar separated list of package prefixes for potential
     # content handlers.  Tries to get the java.content.handler.pkgs property
     # to use as a set of package prefixes to search.  Whether or not
@@ -1480,7 +1413,6 @@ module Java::Net
     
     class_module.module_eval {
       typesig { [String] }
-      # 
       # Tries to determine the content type of an object, based
       # on the specified "file" component of a URL.
       # This is a convenience method that can be used by
@@ -1495,7 +1427,6 @@ module Java::Net
       end
       
       typesig { [InputStream] }
-      # 
       # Tries to determine the type of an input stream based on the
       # characters at the beginning of the input stream. This method can
       # be used by subclasses that override the
@@ -1575,7 +1506,6 @@ module Java::Net
           if ((c4).equal?(0xe0))
             return "image/jpeg"
           end
-          # 
           # File format used by digital cameras to store images.
           # Exif Format can be read by any application supporting
           # JPEG. Exif Spec can be found at:
@@ -1610,7 +1540,6 @@ module Java::Net
       end
       
       typesig { [InputStream] }
-      # 
       # Check for FlashPix image data in InputStream is.  Return true if
       # the stream has FlashPix data, false otherwise.  Before calling this
       # method, the stream should have already been checked to be sure it
@@ -1702,7 +1631,6 @@ module Java::Net
         if (to_skip < 0)
           return false
         end
-        # 
         # How far can we skip? Is there any performance problem here?
         # This skip can be fairly long, at least 0x4c650 in at least
         # one case. Have to assume that the skip will fit in an int.
@@ -1742,7 +1670,6 @@ module Java::Net
       end
       
       typesig { [Array.typed(::Java::Int), ::Java::Int, InputStream] }
-      # 
       # Tries to read the specified number of bytes from the stream
       # Returns -1, If EOF is reached before len bytes are read, returns 0
       # otherwise
@@ -1761,7 +1688,6 @@ module Java::Net
       end
       
       typesig { [InputStream, ::Java::Long] }
-      # 
       # Skips through the specified number of bytes from the stream
       # until either EOF is reached, or the specified
       # number of bytes have been skipped

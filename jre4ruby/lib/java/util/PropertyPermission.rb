@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 1997-2003 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -44,7 +43,6 @@ module Java::Util
     }
   end
   
-  # 
   # This class is for property permissions.
   # 
   # <P>
@@ -96,28 +94,23 @@ module Java::Util
     include_class_members PropertyPermissionImports
     
     class_module.module_eval {
-      # 
       # Read action.
       const_set_lazy(:READ) { 0x1 }
       const_attr_reader  :READ
       
-      # 
       # Write action.
       const_set_lazy(:WRITE) { 0x2 }
       const_attr_reader  :WRITE
       
-      # 
       # All actions (read,write);
       const_set_lazy(:ALL) { READ | WRITE }
       const_attr_reader  :ALL
       
-      # 
       # No actions.
       const_set_lazy(:NONE) { 0x0 }
       const_attr_reader  :NONE
     }
     
-    # 
     # The actions mask.
     attr_accessor :mask
     alias_method :attr_mask, :mask
@@ -125,7 +118,6 @@ module Java::Util
     alias_method :attr_mask=, :mask=
     undef_method :mask=
     
-    # 
     # The actions string.
     # 
     # @serial
@@ -157,7 +149,6 @@ module Java::Util
     end
     
     typesig { [String, String] }
-    # 
     # Creates a new PropertyPermission object with the specified name.
     # The name is the name of the system property, and
     # <i>actions</i> contains a comma-separated list of the
@@ -178,7 +169,6 @@ module Java::Util
     end
     
     typesig { [Permission] }
-    # 
     # Checks if this PropertyPermission object "implies" the specified
     # permission.
     # <P>
@@ -205,7 +195,6 @@ module Java::Util
     end
     
     typesig { [Object] }
-    # 
     # Checks two PropertyPermission objects for equality. Checks that <i>obj</i> is
     # a PropertyPermission, and has the same name and actions as this object.
     # <P>
@@ -224,7 +213,6 @@ module Java::Util
     end
     
     typesig { [] }
-    # 
     # Returns the hash code value for this object.
     # The hash code used is the hash code of this permissions name, that is,
     # <code>getName().hashCode()</code>, where <code>getName</code> is
@@ -237,7 +225,6 @@ module Java::Util
     
     class_module.module_eval {
       typesig { [String] }
-      # 
       # Converts an actions String to an actions mask.
       # 
       # @param action the action string.
@@ -304,7 +291,6 @@ module Java::Util
       end
       
       typesig { [::Java::Int] }
-      # 
       # Return the canonical string representation of the actions.
       # Always returns present actions in the following order:
       # read, write.
@@ -330,7 +316,6 @@ module Java::Util
     }
     
     typesig { [] }
-    # 
     # Returns the "canonical string representation" of the actions.
     # That is, this method always returns present actions in the following order:
     # read, write. For example, if this PropertyPermission object
@@ -346,7 +331,6 @@ module Java::Util
     end
     
     typesig { [] }
-    # 
     # Return the current action mask.
     # Used by the PropertyPermissionCollection
     # 
@@ -356,7 +340,6 @@ module Java::Util
     end
     
     typesig { [] }
-    # 
     # Returns a new PermissionCollection object for storing
     # PropertyPermission objects.
     # <p>
@@ -373,7 +356,6 @@ module Java::Util
     }
     
     typesig { [Java::Io::ObjectOutputStream] }
-    # 
     # WriteObject is called to save the state of the PropertyPermission
     # to a stream. The actions are serialized, and the superclass
     # takes care of the name.
@@ -389,7 +371,6 @@ module Java::Util
     end
     
     typesig { [Java::Io::ObjectInputStream] }
-    # 
     # readObject is called to restore the state of the PropertyPermission from
     # a stream.
     def read_object(s)
@@ -404,7 +385,6 @@ module Java::Util
     alias_method :initialize__property_permission, :initialize
   end
   
-  # 
   # A PropertyPermissionCollection stores a set of PropertyPermission
   # permissions.
   # 
@@ -420,7 +400,6 @@ module Java::Util
     include_class_members PropertyPermissionImports
     include Serializable
     
-    # 
     # Key is property name; value is PropertyPermission.
     # Not serialized; see serialization section at end of class.
     attr_accessor :perms
@@ -429,7 +408,6 @@ module Java::Util
     alias_method :attr_perms=, :perms=
     undef_method :perms=
     
-    # 
     # Boolean saying if "*" is in the collection.
     # 
     # @see #serialPersistentFields
@@ -442,7 +420,6 @@ module Java::Util
     undef_method :all_allowed=
     
     typesig { [] }
-    # 
     # Create an empty PropertyPermissions object.
     def initialize
       @perms = nil
@@ -453,7 +430,6 @@ module Java::Util
     end
     
     typesig { [Permission] }
-    # 
     # Adds a permission to the PropertyPermissions. The key for the hash is
     # the name.
     # 
@@ -495,7 +471,6 @@ module Java::Util
     end
     
     typesig { [Permission] }
-    # 
     # Check and see if this set of permissions implies the permissions
     # expressed in "permission".
     # 
@@ -562,7 +537,6 @@ module Java::Util
     end
     
     typesig { [] }
-    # 
     # Returns an enumeration of all the PropertyPermission objects in the
     # container.
     # 
@@ -596,7 +570,6 @@ module Java::Util
     }
     
     typesig { [ObjectOutputStream] }
-    # 
     # @serialData Default fields.
     # 
     # 
@@ -618,7 +591,6 @@ module Java::Util
     end
     
     typesig { [ObjectInputStream] }
-    # 
     # Reads in a Hashtable of PropertyPermissions and saves them in the
     # perms field. Reads in all_allowed.
     def read_object(in_)

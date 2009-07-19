@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
 # This code is free software; you can redistribute it and/or modify it
@@ -40,7 +39,6 @@ module Java::Util::Concurrent
     }
   end
   
-  # 
   # A {@link CompletionService} that uses a supplied {@link Executor}
   # to execute tasks.  This class arranges that submitted tasks are,
   # upon completion, placed on a queue accessible using {@code take}.
@@ -131,7 +129,6 @@ module Java::Util::Concurrent
     undef_method :completion_queue=
     
     class_module.module_eval {
-      # 
       # FutureTask extension to enqueue upon completion
       const_set_lazy(:QueueingFuture) { Class.new(FutureTask) do
         extend LocalClass
@@ -179,7 +176,6 @@ module Java::Util::Concurrent
     end
     
     typesig { [Executor] }
-    # 
     # Creates an ExecutorCompletionService using the supplied
     # executor for base task execution and a
     # {@link LinkedBlockingQueue} as a completion queue.
@@ -199,7 +195,6 @@ module Java::Util::Concurrent
     end
     
     typesig { [Executor, BlockingQueue] }
-    # 
     # Creates an ExecutorCompletionService using the supplied
     # executor for base task execution and the supplied queue as its
     # completion queue.

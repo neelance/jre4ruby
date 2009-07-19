@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 1995-2000 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -31,7 +30,6 @@ module Sun::Misc
     }
   end
   
-  # 
   # MessageUtils: miscellaneous utilities for handling error and status
   # properties and messages.
   # 
@@ -109,7 +107,6 @@ module Sun::Misc
       
       JNI.native_method :Java_sun_misc_MessageUtils_toStderr, [:pointer, :long, :long], :void
       typesig { [String] }
-      # 
       # Print a message directly to stderr, bypassing all the
       # character conversion methods.
       # @param msg   message to print
@@ -119,7 +116,6 @@ module Sun::Misc
       
       JNI.native_method :Java_sun_misc_MessageUtils_toStdout, [:pointer, :long, :long], :void
       typesig { [String] }
-      # 
       # Print a message directly to stdout, bypassing all the
       # character conversion methods.
       # @param msg   message to print

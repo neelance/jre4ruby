@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 2003-2006 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -47,7 +46,6 @@ module Sun::Security::Provider::Certpath
     }
   end
   
-  # 
   # This class is used to process an OCSP response.
   # The OCSP Response is defined
   # in RFC 2560 and the ASN.1 encoding is as follows:
@@ -171,7 +169,6 @@ module Sun::Security::Provider::Certpath
     undef_method :single_response=
     
     typesig { [Array.typed(::Java::Byte), PKIXParameters, X509Certificate] }
-    # 
     # Create an OCSP response from its ASN.1 DER encoding.
     # 
     # used by OCSPChecker
@@ -309,10 +306,10 @@ module Sun::Security::Provider::Certpath
           end
           certs = (seq_cert.get_data).get_sequence(3)
           x509certs = Array.typed(X509CertImpl).new(certs.attr_length) { nil }
-          i_ = 0
-          while i_ < certs.attr_length
-            x509certs[i_] = X509CertImpl.new(certs[i_].to_byte_array)
-            ((i_ += 1) - 1)
+          i = 0
+          while i < certs.attr_length
+            x509certs[i] = X509CertImpl.new(certs[i].to_byte_array)
+            ((i += 1) - 1)
           end
         end
         # Check whether the cert returned by the responder is trusted
@@ -364,12 +361,11 @@ module Sun::Security::Provider::Certpath
       rescue CertPathValidatorException => cpve
         raise cpve
       rescue Exception => e
-        raise CertPathValidatorException.new(e_)
+        raise CertPathValidatorException.new(e)
       end
     end
     
     typesig { [Array.typed(::Java::Byte), X509Certificate, AlgorithmId, Array.typed(::Java::Byte), PKIXParameters] }
-    # 
     # Verify the signature of the OCSP response.
     # The responder's cert is implicitly trusted.
     def verify_response(response_data, cert, sig_alg_id, sign_bytes, params)
@@ -396,7 +392,6 @@ module Sun::Security::Provider::Certpath
     end
     
     typesig { [SerialNumber] }
-    # 
     # Return the revocation status code for a given certificate.
     # 
     # used by OCSPChecker
@@ -414,7 +409,6 @@ module Sun::Security::Provider::Certpath
     
     class_module.module_eval {
       typesig { [::Java::Int] }
-      # 
       # Map an OCSP response status code to a string.
       def response_to_text(status)
         case (status)
@@ -438,7 +432,6 @@ module Sun::Security::Provider::Certpath
       end
       
       typesig { [::Java::Int] }
-      # 
       # Map a certificate's revocation status code to a string.
       # 
       # used by OCSPChecker
@@ -455,7 +448,6 @@ module Sun::Security::Provider::Certpath
         end
       end
       
-      # 
       # A class representing a single OCSP response.
       const_set_lazy(:SingleResponse) { Class.new do
         extend LocalClass
@@ -552,7 +544,6 @@ module Sun::Security::Provider::Certpath
         end
         
         typesig { [] }
-        # 
         # Return the certificate's revocation status code
         def get_status
           return @cert_status
@@ -564,7 +555,6 @@ module Sun::Security::Provider::Certpath
         end
         
         typesig { [] }
-        # 
         # Construct a string representation of a single OCSP response.
         def to_s
           sb = StringBuilder.new

@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 1995-2004 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -35,7 +34,6 @@ module Sun::Misc
     }
   end
   
-  # 
   # This class implements a Berkeley uu character encoder. This encoder
   # was made famous by uuencode program.
   # 
@@ -73,7 +71,6 @@ module Sun::Misc
   class UUEncoder < UUEncoderImports.const_get :CharacterEncoder
     include_class_members UUEncoderImports
     
-    # 
     # This name is stored in the begin line.
     attr_accessor :buffer_name
     alias_method :attr_buffer_name, :buffer_name
@@ -81,7 +78,6 @@ module Sun::Misc
     alias_method :attr_buffer_name=, :buffer_name=
     undef_method :buffer_name=
     
-    # 
     # Represents UNIX(tm) mode bits. Generally three octal digits representing
     # read, write, and execute permission of the owner, group owner, and
     # others. They should be interpreted as the bit groups:
@@ -96,7 +92,6 @@ module Sun::Misc
     undef_method :mode=
     
     typesig { [] }
-    # 
     # Default - buffer begin line will be:
     # <pre>
     # begin 644 encoder.buf
@@ -110,7 +105,6 @@ module Sun::Misc
     end
     
     typesig { [String] }
-    # 
     # Specifies a name for the encoded buffer, begin line will be:
     # <pre>
     # begin 644 [FNAME]
@@ -124,7 +118,6 @@ module Sun::Misc
     end
     
     typesig { [String, ::Java::Int] }
-    # 
     # Specifies a name and mode for the encoded buffer, begin line will be:
     # <pre>
     # begin [MODE] [FNAME]
@@ -150,7 +143,6 @@ module Sun::Misc
     end
     
     typesig { [OutputStream, Array.typed(::Java::Byte), ::Java::Int, ::Java::Int] }
-    # 
     # encodeAtom - take three bytes and encodes them into 4 characters
     # If len is less than 3 then remaining bytes are filled with '1'.
     # This insures that the last line won't end in spaces and potentiallly
@@ -182,7 +174,6 @@ module Sun::Misc
     end
     
     typesig { [OutputStream, ::Java::Int] }
-    # 
     # Encode the line prefix which consists of the single character. The
     # lenght is added to the value of ' ' (32 decimal) and printed.
     def encode_line_prefix(out_stream, length)
@@ -190,14 +181,12 @@ module Sun::Misc
     end
     
     typesig { [OutputStream] }
-    # 
     # The line suffix for uuencoded files is simply a new line.
     def encode_line_suffix(out_stream)
       self.attr_p_stream.println
     end
     
     typesig { [OutputStream] }
-    # 
     # encodeBufferPrefix writes the begin line to the output stream.
     def encode_buffer_prefix(a)
       @p_stream = PrintStream.new(a)
@@ -211,7 +200,6 @@ module Sun::Misc
     end
     
     typesig { [OutputStream] }
-    # 
     # encodeBufferSuffix writes the single line containing space (' ') and
     # the line containing the word 'end' to the output stream.
     def encode_buffer_suffix(a)

@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 1994-2006 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -42,7 +41,6 @@ module Java::Lang
     }
   end
   
-  # 
   # The <code>String</code> class represents character strings. All
   # string literals in Java programs, such as <code>"abc"</code>, are
   # implemented as instances of this class.
@@ -147,7 +145,6 @@ module Java::Lang
       const_set_lazy(:SerialVersionUID) { -6849794470754667710 }
       const_attr_reader  :SerialVersionUID
       
-      # 
       # Class String is special cased within the Serialization Stream Protocol.
       # 
       # A String instance is written initially into an ObjectOutputStream in the
@@ -163,7 +160,6 @@ module Java::Lang
     }
     
     typesig { [] }
-    # 
     # Initializes a newly created {@code String} object so that it represents
     # an empty character sequence.  Note that use of this constructor is
     # unnecessary since Strings are immutable.
@@ -178,7 +174,6 @@ module Java::Lang
     end
     
     typesig { [String] }
-    # 
     # Initializes a newly created {@code String} object so that it represents
     # the same sequence of characters as the argument; in other words, the
     # newly created string is a copy of the argument string. Unless an
@@ -212,7 +207,6 @@ module Java::Lang
     end
     
     typesig { [Array.typed(::Java::Char)] }
-    # 
     # Allocates a new {@code String} so that it represents the sequence of
     # characters currently contained in the character array argument. The
     # contents of the character array are copied; subsequent modification of
@@ -232,7 +226,6 @@ module Java::Lang
     end
     
     typesig { [Array.typed(::Java::Char), ::Java::Int, ::Java::Int] }
-    # 
     # Allocates a new {@code String} that contains characters from a subarray
     # of the character array argument. The {@code offset} argument is the
     # index of the first character of the subarray and the {@code count}
@@ -273,7 +266,6 @@ module Java::Lang
     end
     
     typesig { [Array.typed(::Java::Int), ::Java::Int, ::Java::Int] }
-    # 
     # Allocates a new {@code String} that contains characters from a subarray
     # of the <a href="Character.html#unicode">Unicode code point</a> array
     # argument.  The {@code offset} argument is the index of the first code
@@ -336,11 +328,11 @@ module Java::Lang
       i_ = offset
       j = 0
       while i_ < offset + count
-        c_ = code_points[i_]
-        if (c_ < Character::MIN_SUPPLEMENTARY_CODE_POINT)
-          v[((j += 1) - 1)] = RJava.cast_to_char(c_)
+        c = code_points[i_]
+        if (c < Character::MIN_SUPPLEMENTARY_CODE_POINT)
+          v[((j += 1) - 1)] = RJava.cast_to_char(c)
         else
-          Character.to_surrogates(c_, v, j)
+          Character.to_surrogates(c, v, j)
           j += 2
         end
         ((i_ += 1) - 1)
@@ -351,7 +343,6 @@ module Java::Lang
     end
     
     typesig { [Array.typed(::Java::Byte), ::Java::Int, ::Java::Int, ::Java::Int] }
-    # 
     # Allocates a new {@code String} constructed from a subarray of an array
     # of 8-bit integer values.
     # 
@@ -403,9 +394,9 @@ module Java::Lang
         end
       else
         hibyte <<= 8
-        i_ = count
-        while ((i_ -= 1) + 1) > 0
-          value[i_] = RJava.cast_to_char((hibyte | (ascii[i_ + offset] & 0xff)))
+        i = count
+        while ((i -= 1) + 1) > 0
+          value[i] = RJava.cast_to_char((hibyte | (ascii[i + offset] & 0xff)))
         end
       end
       @offset = 0
@@ -414,7 +405,6 @@ module Java::Lang
     end
     
     typesig { [Array.typed(::Java::Byte), ::Java::Int] }
-    # 
     # Allocates a new {@code String} containing characters constructed from
     # an array of 8-bit integer values. Each character <i>c</i>in the
     # resulting string is constructed from the corresponding component
@@ -466,7 +456,6 @@ module Java::Lang
     }
     
     typesig { [Array.typed(::Java::Byte), ::Java::Int, ::Java::Int, String] }
-    # 
     # Constructs a new {@code String} by decoding the specified subarray of
     # bytes using the specified charset.  The length of the new {@code String}
     # is a function of the charset, and hence may not be equal to the length
@@ -514,7 +503,6 @@ module Java::Lang
     end
     
     typesig { [Array.typed(::Java::Byte), ::Java::Int, ::Java::Int, Charset] }
-    # 
     # Constructs a new {@code String} by decoding the specified subarray of
     # bytes using the specified {@linkplain java.nio.charset.Charset charset}.
     # The length of the new {@code String} is a function of the charset, and
@@ -559,7 +547,6 @@ module Java::Lang
     end
     
     typesig { [Array.typed(::Java::Byte), String] }
-    # 
     # Constructs a new {@code String} by decoding the specified array of bytes
     # using the specified {@linkplain java.nio.charset.Charset charset}.  The
     # length of the new {@code String} is a function of the charset, and hence
@@ -586,7 +573,6 @@ module Java::Lang
     end
     
     typesig { [Array.typed(::Java::Byte), Charset] }
-    # 
     # Constructs a new {@code String} by decoding the specified array of
     # bytes using the specified {@linkplain java.nio.charset.Charset charset}.
     # The length of the new {@code String} is a function of the charset, and
@@ -610,7 +596,6 @@ module Java::Lang
     end
     
     typesig { [Array.typed(::Java::Byte), ::Java::Int, ::Java::Int] }
-    # 
     # Constructs a new {@code String} by decoding the specified subarray of
     # bytes using the platform's default charset.  The length of the new
     # {@code String} is a function of the charset, and hence may not be equal
@@ -648,7 +633,6 @@ module Java::Lang
     end
     
     typesig { [Array.typed(::Java::Byte)] }
-    # 
     # Constructs a new {@code String} by decoding the specified array of bytes
     # using the platform's default charset.  The length of the new {@code
     # String} is a function of the charset, and hence may not be equal to the
@@ -668,7 +652,6 @@ module Java::Lang
     end
     
     typesig { [StringBuffer] }
-    # 
     # Allocates a new string that contains the sequence of characters
     # currently contained in the string buffer argument. The contents of the
     # string buffer are copied; subsequent modification of the string buffer
@@ -688,7 +671,6 @@ module Java::Lang
     end
     
     typesig { [StringBuilder] }
-    # 
     # Allocates a new string that contains the sequence of characters
     # currently contained in the string builder argument. The contents of the
     # string builder are copied; subsequent modification of the string builder
@@ -726,7 +708,6 @@ module Java::Lang
     end
     
     typesig { [] }
-    # 
     # Returns the length of this string.
     # The length is equal to the number of <a href="Character.html#unicode">Unicode
     # code units</a> in the string.
@@ -738,7 +719,6 @@ module Java::Lang
     end
     
     typesig { [] }
-    # 
     # Returns <tt>true</tt> if, and only if, {@link #length()} is <tt>0</tt>.
     # 
     # @return <tt>true</tt> if {@link #length()} is <tt>0</tt>, otherwise
@@ -750,7 +730,6 @@ module Java::Lang
     end
     
     typesig { [::Java::Int] }
-    # 
     # Returns the <code>char</code> value at the
     # specified index. An index ranges from <code>0</code> to
     # <code>length() - 1</code>. The first <code>char</code> value of the sequence
@@ -775,7 +754,6 @@ module Java::Lang
     end
     
     typesig { [::Java::Int] }
-    # 
     # Returns the character (Unicode code point) at the specified
     # index. The index refers to <code>char</code> values
     # (Unicode code units) and ranges from <code>0</code> to
@@ -804,7 +782,6 @@ module Java::Lang
     end
     
     typesig { [::Java::Int] }
-    # 
     # Returns the character (Unicode code point) before the specified
     # index. The index refers to <code>char</code> values
     # (Unicode code units) and ranges from <code>1</code> to {@link
@@ -834,7 +811,6 @@ module Java::Lang
     end
     
     typesig { [::Java::Int, ::Java::Int] }
-    # 
     # Returns the number of Unicode code points in the specified text
     # range of this <code>String</code>. The text range begins at the
     # specified <code>beginIndex</code> and extends to the
@@ -862,7 +838,6 @@ module Java::Lang
     end
     
     typesig { [::Java::Int, ::Java::Int] }
-    # 
     # Returns the index within this <code>String</code> that is
     # offset from the given <code>index</code> by
     # <code>codePointOffset</code> code points. Unpaired surrogates
@@ -889,7 +864,6 @@ module Java::Lang
     end
     
     typesig { [Array.typed(::Java::Char), ::Java::Int] }
-    # 
     # Copy characters from this string into dst starting at dstBegin.
     # This method doesn't perform any range checking.
     def get_chars(dst, dst_begin)
@@ -897,7 +871,6 @@ module Java::Lang
     end
     
     typesig { [::Java::Int, ::Java::Int, Array.typed(::Java::Char), ::Java::Int] }
-    # 
     # Copies characters from this string into the destination character
     # array.
     # <p>
@@ -940,7 +913,6 @@ module Java::Lang
     end
     
     typesig { [::Java::Int, ::Java::Int, Array.typed(::Java::Byte), ::Java::Int] }
-    # 
     # Copies characters from this string into the destination byte array. Each
     # byte receives the 8 low-order bits of the corresponding character. The
     # eight high-order bits of each character are not copied and do not
@@ -1003,7 +975,6 @@ module Java::Lang
     end
     
     typesig { [String] }
-    # 
     # Encodes this {@code String} into a sequence of bytes using the named
     # charset, storing the result into a new byte array.
     # 
@@ -1030,7 +1001,6 @@ module Java::Lang
     end
     
     typesig { [Charset] }
-    # 
     # Encodes this {@code String} into a sequence of bytes using the given
     # {@linkplain java.nio.charset.Charset charset}, storing the result into a
     # new byte array.
@@ -1055,7 +1025,6 @@ module Java::Lang
     end
     
     typesig { [] }
-    # 
     # Encodes this {@code String} into a sequence of bytes using the
     # platform's default charset, storing the result into a new byte array.
     # 
@@ -1072,7 +1041,6 @@ module Java::Lang
     end
     
     typesig { [Object] }
-    # 
     # Compares this string to the specified object.  The result is {@code
     # true} if and only if the argument is not {@code null} and is a {@code
     # String} object that represents the same sequence of characters as this
@@ -1110,7 +1078,6 @@ module Java::Lang
     end
     
     typesig { [StringBuffer] }
-    # 
     # Compares this string to the specified {@code StringBuffer}.  The result
     # is {@code true} if and only if this {@code String} represents the same
     # sequence of characters as the specified {@code StringBuffer}.
@@ -1130,7 +1097,6 @@ module Java::Lang
     end
     
     typesig { [CharSequence] }
-    # 
     # Compares this string to the specified {@code CharSequence}.  The result
     # is {@code true} if and only if this {@code String} represents the same
     # sequence of char values as the specified sequence.
@@ -1166,12 +1132,12 @@ module Java::Lang
         return true
       end
       # Argument is a generic CharSequence
-      v1_ = @value
-      i_ = @offset
-      j_ = 0
-      n_ = @count
-      while (!(((n_ -= 1) + 1)).equal?(0))
-        if (!(v1_[((i_ += 1) - 1)]).equal?(cs.char_at(((j_ += 1) - 1))))
+      v1 = @value
+      i = @offset
+      j = 0
+      n = @count
+      while (!(((n -= 1) + 1)).equal?(0))
+        if (!(v1[((i += 1) - 1)]).equal?(cs.char_at(((j += 1) - 1))))
           return false
         end
       end
@@ -1179,7 +1145,6 @@ module Java::Lang
     end
     
     typesig { [String] }
-    # 
     # Compares this {@code String} to another {@code String}, ignoring case
     # considerations.  Two strings are considered equal ignoring case if they
     # are of the same length and corresponding characters in the two strings
@@ -1211,7 +1176,6 @@ module Java::Lang
     end
     
     typesig { [String] }
-    # 
     # Compares two strings lexicographically.
     # The comparison is based on the Unicode value of each character in
     # the strings. The character sequence represented by this
@@ -1272,10 +1236,10 @@ module Java::Lang
         end
       else
         while (!(((n -= 1) + 1)).equal?(0))
-          c1_ = v1[((i += 1) - 1)]
-          c2_ = v2[((j += 1) - 1)]
-          if (!(c1_).equal?(c2_))
-            return c1_ - c2_
+          c1 = v1[((i += 1) - 1)]
+          c2 = v2[((j += 1) - 1)]
+          if (!(c1).equal?(c2))
+            return c1 - c2
           end
         end
       end
@@ -1283,7 +1247,6 @@ module Java::Lang
     end
     
     class_module.module_eval {
-      # 
       # A Comparator that orders <code>String</code> objects as by
       # <code>compareToIgnoreCase</code>. This comparator is serializable.
       # <p>
@@ -1344,7 +1307,6 @@ module Java::Lang
     }
     
     typesig { [String] }
-    # 
     # Compares two strings lexicographically, ignoring case
     # differences. This method returns an integer whose sign is that of
     # calling <code>compareTo</code> with normalized versions of the strings
@@ -1368,7 +1330,6 @@ module Java::Lang
     end
     
     typesig { [::Java::Int, String, ::Java::Int, ::Java::Int] }
-    # 
     # Tests if two string regions are equal.
     # <p>
     # A substring of this <tt>String</tt> object is compared to a substring
@@ -1416,7 +1377,6 @@ module Java::Lang
     end
     
     typesig { [::Java::Boolean, ::Java::Int, String, ::Java::Int, ::Java::Int] }
-    # 
     # Tests if two string regions are equal.
     # <p>
     # A substring of this <tt>String</tt> object is compared to a substring
@@ -1504,7 +1464,6 @@ module Java::Lang
     end
     
     typesig { [String, ::Java::Int] }
-    # 
     # Tests if the substring of this string beginning at the
     # specified index starts with the specified prefix.
     # 
@@ -1539,7 +1498,6 @@ module Java::Lang
     end
     
     typesig { [String] }
-    # 
     # Tests if this string starts with the specified prefix.
     # 
     # @param   prefix   the prefix.
@@ -1556,7 +1514,6 @@ module Java::Lang
     end
     
     typesig { [String] }
-    # 
     # Tests if this string ends with the specified suffix.
     # 
     # @param   suffix   the suffix.
@@ -1571,7 +1528,6 @@ module Java::Lang
     end
     
     typesig { [] }
-    # 
     # Returns a hash code for this string. The hash code for a
     # <code>String</code> object is computed as
     # <blockquote><pre>
@@ -1600,7 +1556,6 @@ module Java::Lang
     end
     
     typesig { [::Java::Int] }
-    # 
     # Returns the index within this string of the first occurrence of
     # the specified character. If a character with value
     # <code>ch</code> occurs in the character sequence represented by
@@ -1628,7 +1583,6 @@ module Java::Lang
     end
     
     typesig { [::Java::Int, ::Java::Int] }
-    # 
     # Returns the index within this string of the first occurrence of the
     # specified character, starting the search at the specified index.
     # <p>
@@ -1708,7 +1662,6 @@ module Java::Lang
     end
     
     typesig { [::Java::Int] }
-    # 
     # Returns the index within this string of the last occurrence of
     # the specified character. For values of <code>ch</code> in the
     # range from 0 to 0xFFFF (inclusive), the index (in Unicode code
@@ -1735,7 +1688,6 @@ module Java::Lang
     end
     
     typesig { [::Java::Int, ::Java::Int] }
-    # 
     # Returns the index within this string of the last occurrence of
     # the specified character, searching backward starting at the
     # specified index. For values of <code>ch</code> in the range
@@ -1803,7 +1755,6 @@ module Java::Lang
     end
     
     typesig { [String] }
-    # 
     # Returns the index within this string of the first occurrence of the
     # specified substring. The integer returned is the smallest value
     # <i>k</i> such that:
@@ -1822,7 +1773,6 @@ module Java::Lang
     end
     
     typesig { [String, ::Java::Int] }
-    # 
     # Returns the index within this string of the first occurrence of the
     # specified substring, starting at the specified index.  The integer
     # returned is the smallest value <tt>k</tt> for which:
@@ -1841,7 +1791,6 @@ module Java::Lang
     
     class_module.module_eval {
       typesig { [Array.typed(::Java::Char), ::Java::Int, ::Java::Int, Array.typed(::Java::Char), ::Java::Int, ::Java::Int, ::Java::Int] }
-      # 
       # Code shared by String and StringBuffer to do searches. The
       # source is the character array being searched, and the target
       # is the string being searched for.
@@ -1893,7 +1842,6 @@ module Java::Lang
     }
     
     typesig { [String] }
-    # 
     # Returns the index within this string of the rightmost occurrence
     # of the specified substring.  The rightmost empty string "" is
     # considered to occur at the index value <code>this.length()</code>.
@@ -1913,7 +1861,6 @@ module Java::Lang
     end
     
     typesig { [String, ::Java::Int] }
-    # 
     # Returns the index within this string of the last occurrence of the
     # specified substring, searching backward starting at the specified index.
     # The integer returned is the largest value <i>k</i> such that:
@@ -1932,7 +1879,6 @@ module Java::Lang
     
     class_module.module_eval {
       typesig { [Array.typed(::Java::Char), ::Java::Int, ::Java::Int, Array.typed(::Java::Char), ::Java::Int, ::Java::Int, ::Java::Int] }
-      # 
       # Code shared by String and StringBuffer to do searches. The
       # source is the character array being searched, and the target
       # is the string being searched for.
@@ -1945,7 +1891,6 @@ module Java::Lang
       # @param   targetCount  count of the target string.
       # @param   fromIndex    the index to begin searching from.
       def last_index_of(source, source_offset, source_count, target, target_offset, target_count, from_index)
-        # 
         # Check arguments; return immediately where possible. For
         # consistency, don't check for null str.
         right_index = source_count - target_count
@@ -1981,13 +1926,12 @@ module Java::Lang
               end
             end
             return start - source_offset + 1
-          end == :thrown or break
+          end
         end
       end
     }
     
     typesig { [::Java::Int] }
-    # 
     # Returns a new string that is a substring of this string. The
     # substring begins with the character at the specified index and
     # extends to the end of this string. <p>
@@ -2008,7 +1952,6 @@ module Java::Lang
     end
     
     typesig { [::Java::Int, ::Java::Int] }
-    # 
     # Returns a new string that is a substring of this string. The
     # substring begins at the specified <code>beginIndex</code> and
     # extends to the character at index <code>endIndex - 1</code>.
@@ -2043,7 +1986,6 @@ module Java::Lang
     end
     
     typesig { [::Java::Int, ::Java::Int] }
-    # 
     # Returns a new character sequence that is a subsequence of this sequence.
     # 
     # <p> An invocation of this method of the form
@@ -2075,7 +2017,6 @@ module Java::Lang
     end
     
     typesig { [String] }
-    # 
     # Concatenates the specified string to the end of this string.
     # <p>
     # If the length of the argument string is <code>0</code>, then this
@@ -2106,7 +2047,6 @@ module Java::Lang
     end
     
     typesig { [::Java::Char, ::Java::Char] }
-    # 
     # Returns a new string resulting from replacing all occurrences of
     # <code>oldChar</code> in this string with <code>newChar</code>.
     # <p>
@@ -2166,7 +2106,6 @@ module Java::Lang
     end
     
     typesig { [String] }
-    # 
     # Tells whether or not this string matches the given <a
     # href="../util/regex/Pattern.html#sum">regular expression</a>.
     # 
@@ -2196,7 +2135,6 @@ module Java::Lang
     end
     
     typesig { [CharSequence] }
-    # 
     # Returns true if and only if this string contains the specified
     # sequence of char values.
     # 
@@ -2209,7 +2147,6 @@ module Java::Lang
     end
     
     typesig { [String, String] }
-    # 
     # Replaces the first substring of this string that matches the given <a
     # href="../util/regex/Pattern.html#sum">regular expression</a> with the
     # given replacement.
@@ -2252,7 +2189,6 @@ module Java::Lang
     end
     
     typesig { [String, String] }
-    # 
     # Replaces each substring of this string that matches the given <a
     # href="../util/regex/Pattern.html#sum">regular expression</a> with the
     # given replacement.
@@ -2295,7 +2231,6 @@ module Java::Lang
     end
     
     typesig { [CharSequence, CharSequence] }
-    # 
     # Replaces each substring of this string that matches the literal target
     # sequence with the specified literal replacement sequence. The
     # replacement proceeds from the beginning of the string to the end, for
@@ -2313,7 +2248,6 @@ module Java::Lang
     end
     
     typesig { [String, ::Java::Int] }
-    # 
     # Splits this string around matches of the given
     # <a href="../util/regex/Pattern.html#sum">regular expression</a>.
     # 
@@ -2397,7 +2331,6 @@ module Java::Lang
     end
     
     typesig { [String] }
-    # 
     # Splits this string around matches of the given <a
     # href="../util/regex/Pattern.html#sum">regular expression</a>.
     # 
@@ -2439,7 +2372,6 @@ module Java::Lang
     end
     
     typesig { [Locale] }
-    # 
     # Converts all of the characters in this <code>String</code> to lower
     # case using the rules of the given <code>Locale</code>.  Case mapping is based
     # on the Unicode Standard version specified by the {@link java.lang.Character Character}
@@ -2576,7 +2508,6 @@ module Java::Lang
     end
     
     typesig { [] }
-    # 
     # Converts all of the characters in this <code>String</code> to lower
     # case using the rules of the default locale. This is equivalent to calling
     # <code>toLowerCase(Locale.getDefault())</code>.
@@ -2599,7 +2530,6 @@ module Java::Lang
     end
     
     typesig { [Locale] }
-    # 
     # Converts all of the characters in this <code>String</code> to upper
     # case using the rules of the given <code>Locale</code>. Case mapping is based
     # on the Unicode Standard version specified by the {@link java.lang.Character Character}
@@ -2683,15 +2613,15 @@ module Java::Lang
       upper_char_array = nil
       upper_char = 0
       src_char = 0
-      src_count_ = 0
+      src_count = 0
       i = first_lower
       while i < @count
         src_char = RJava.cast_to_int(@value[@offset + i])
         if (RJava.cast_to_char(src_char) >= Character::MIN_HIGH_SURROGATE && RJava.cast_to_char(src_char) <= Character::MAX_HIGH_SURROGATE)
           src_char = code_point_at(i)
-          src_count_ = Character.char_count(src_char)
+          src_count = Character.char_count(src_char)
         else
-          src_count_ = 1
+          src_count = 1
         end
         if (locale_dependent)
           upper_char = ConditionalSpecialCasing.to_upper_case_ex(self, i, locale)
@@ -2706,9 +2636,9 @@ module Java::Lang
               upper_char_array = Character.to_upper_case_char_array(src_char)
             end
           else
-            if ((src_count_).equal?(2))
-              result_offset += Character.to_chars(upper_char, result, i + result_offset) - src_count_
-              i += src_count_
+            if ((src_count).equal?(2))
+              result_offset += Character.to_chars(upper_char, result, i + result_offset) - src_count
+              i += src_count
               next
             else
               upper_char_array = Character.to_chars(upper_char)
@@ -2716,8 +2646,8 @@ module Java::Lang
           end
           # Grow result if needed
           map_len = upper_char_array.attr_length
-          if (map_len > src_count_)
-            result2 = CharArray.new(result.attr_length + map_len - src_count_)
+          if (map_len > src_count)
+            result2 = CharArray.new(result.attr_length + map_len - src_count)
             System.arraycopy(result, 0, result2, 0, i + result_offset)
             result = result2
           end
@@ -2726,17 +2656,16 @@ module Java::Lang
             result[i + result_offset + x] = upper_char_array[x]
             (x += 1)
           end
-          result_offset += (map_len - src_count_)
+          result_offset += (map_len - src_count)
         else
           result[i + result_offset] = RJava.cast_to_char(upper_char)
         end
-        i += src_count_
+        i += src_count
       end
       return String.new(0, @count + result_offset, result)
     end
     
     typesig { [] }
-    # 
     # Converts all of the characters in this <code>String</code> to upper
     # case using the rules of the default locale. This method is equivalent to
     # <code>toUpperCase(Locale.getDefault())</code>.
@@ -2759,7 +2688,6 @@ module Java::Lang
     end
     
     typesig { [] }
-    # 
     # Returns a copy of the string, with leading and trailing whitespace
     # omitted.
     # <p>
@@ -2806,7 +2734,6 @@ module Java::Lang
     end
     
     typesig { [] }
-    # 
     # This object (which is already a string!) is itself returned.
     # 
     # @return  the string itself.
@@ -2815,7 +2742,6 @@ module Java::Lang
     end
     
     typesig { [] }
-    # 
     # Converts this string to a new character array.
     # 
     # @return  a newly allocated character array whose length is the length
@@ -2829,7 +2755,6 @@ module Java::Lang
     
     class_module.module_eval {
       typesig { [String, Object] }
-      # 
       # Returns a formatted string using the specified format string and
       # arguments.
       # 
@@ -2871,7 +2796,6 @@ module Java::Lang
       end
       
       typesig { [Locale, String, Object] }
-      # 
       # Returns a formatted string using the specified locale, format string,
       # and arguments.
       # 
@@ -2915,7 +2839,6 @@ module Java::Lang
       end
       
       typesig { [Object] }
-      # 
       # Returns the string representation of the <code>Object</code> argument.
       # 
       # @param   obj   an <code>Object</code>.
@@ -2928,7 +2851,6 @@ module Java::Lang
       end
       
       typesig { [Array.typed(::Java::Char)] }
-      # 
       # Returns the string representation of the <code>char</code> array
       # argument. The contents of the character array are copied; subsequent
       # modification of the character array does not affect the newly
@@ -2942,7 +2864,6 @@ module Java::Lang
       end
       
       typesig { [Array.typed(::Java::Char), ::Java::Int, ::Java::Int] }
-      # 
       # Returns the string representation of a specific subarray of the
       # <code>char</code> array argument.
       # <p>
@@ -2967,7 +2888,6 @@ module Java::Lang
       end
       
       typesig { [Array.typed(::Java::Char), ::Java::Int, ::Java::Int] }
-      # 
       # Returns a String that represents the character sequence in the
       # array specified.
       # 
@@ -2982,7 +2902,6 @@ module Java::Lang
       end
       
       typesig { [Array.typed(::Java::Char)] }
-      # 
       # Returns a String that represents the character sequence in the
       # array specified.
       # 
@@ -2994,7 +2913,6 @@ module Java::Lang
       end
       
       typesig { [::Java::Boolean] }
-      # 
       # Returns the string representation of the <code>boolean</code> argument.
       # 
       # @param   b   a <code>boolean</code>.
@@ -3006,7 +2924,6 @@ module Java::Lang
       end
       
       typesig { [::Java::Char] }
-      # 
       # Returns the string representation of the <code>char</code>
       # argument.
       # 
@@ -3019,7 +2936,6 @@ module Java::Lang
       end
       
       typesig { [::Java::Int] }
-      # 
       # Returns the string representation of the <code>int</code> argument.
       # <p>
       # The representation is exactly the one returned by the
@@ -3033,7 +2949,6 @@ module Java::Lang
       end
       
       typesig { [::Java::Long] }
-      # 
       # Returns the string representation of the <code>long</code> argument.
       # <p>
       # The representation is exactly the one returned by the
@@ -3047,7 +2962,6 @@ module Java::Lang
       end
       
       typesig { [::Java::Float] }
-      # 
       # Returns the string representation of the <code>float</code> argument.
       # <p>
       # The representation is exactly the one returned by the
@@ -3061,7 +2975,6 @@ module Java::Lang
       end
       
       typesig { [::Java::Double] }
-      # 
       # Returns the string representation of the <code>double</code> argument.
       # <p>
       # The representation is exactly the one returned by the
@@ -3077,7 +2990,6 @@ module Java::Lang
     
     JNI.native_method :Java_java_lang_String_intern, [:pointer, :long], :long
     typesig { [] }
-    # 
     # Returns a canonical representation for the string object.
     # <p>
     # A pool of strings, initially empty, is maintained privately by the

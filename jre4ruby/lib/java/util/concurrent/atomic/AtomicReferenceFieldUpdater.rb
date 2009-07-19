@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
 # This code is free software; you can redistribute it and/or modify it
@@ -42,7 +41,6 @@ module Java::Util::Concurrent::Atomic
     }
   end
   
-  # 
   # A reflection-based utility that enables atomic updates to
   # designated {@code volatile} reference fields of designated
   # classes.  This class is designed for use in atomic data structures
@@ -83,7 +81,6 @@ module Java::Util::Concurrent::Atomic
     
     class_module.module_eval {
       typesig { [Class, Class, String] }
-      # 
       # Creates and returns an updater for objects with the given field.
       # The Class arguments are needed to check that reflective types and
       # generic types match.
@@ -101,13 +98,11 @@ module Java::Util::Concurrent::Atomic
     }
     
     typesig { [] }
-    # 
     # Protected do-nothing constructor for use by subclasses.
     def initialize
     end
     
     typesig { [Object, Object, Object] }
-    # 
     # Atomically sets the field of the given object managed by this updater
     # to the given updated value if the current value {@code ==} the
     # expected value. This method is guaranteed to be atomic with respect to
@@ -123,7 +118,6 @@ module Java::Util::Concurrent::Atomic
     end
     
     typesig { [Object, Object, Object] }
-    # 
     # Atomically sets the field of the given object managed by this updater
     # to the given updated value if the current value {@code ==} the
     # expected value. This method is guaranteed to be atomic with respect to
@@ -143,7 +137,6 @@ module Java::Util::Concurrent::Atomic
     end
     
     typesig { [Object, Object] }
-    # 
     # Sets the field of the given object managed by this updater to the
     # given updated value. This operation is guaranteed to act as a volatile
     # store with respect to subsequent invocations of {@code compareAndSet}.
@@ -155,7 +148,6 @@ module Java::Util::Concurrent::Atomic
     end
     
     typesig { [Object, Object] }
-    # 
     # Eventually sets the field of the given object managed by this
     # updater to the given updated value.
     # 
@@ -167,7 +159,6 @@ module Java::Util::Concurrent::Atomic
     end
     
     typesig { [Object] }
-    # 
     # Gets the current value held in the field of the given object managed
     # by this updater.
     # 
@@ -178,7 +169,6 @@ module Java::Util::Concurrent::Atomic
     end
     
     typesig { [Object, Object] }
-    # 
     # Atomically sets the field of the given object managed by this updater
     # to the given value and returns the old value.
     # 
@@ -228,7 +218,6 @@ module Java::Util::Concurrent::Atomic
         undef_method :cclass=
         
         typesig { [Class, Class, String] }
-        # 
         # Internal type checks within all update methods contain
         # internal inlined optimizations checking for the common
         # cases where the class is final (in which case a simple

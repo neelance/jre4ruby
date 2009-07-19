@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 2003-2005 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -34,7 +33,6 @@ module Sun::Security::Jca
     }
   end
   
-  # 
   # Collection of methods to get and set provider list. Also includes
   # special code for the provider list during JAR verification.
   # 
@@ -129,7 +127,6 @@ module Sun::Security::Jca
       end
       
       typesig { [] }
-      # 
       # Start JAR verification. This sets a special provider list for
       # the current thread. You MUST save the return value from this
       # method and you MUST call stopJarVerification() with that object
@@ -142,7 +139,6 @@ module Sun::Security::Jca
       end
       
       typesig { [Object] }
-      # 
       # Stop JAR verification. Call once you have completed JAR verification.
       def stop_jar_verification(obj)
         # restore old thread-local provider list
@@ -150,7 +146,6 @@ module Sun::Security::Jca
       end
       
       typesig { [] }
-      # 
       # Return the current ProviderList. If the thread-local list is set,
       # it is returned. Otherwise, the system wide list is returned.
       def get_provider_list
@@ -162,7 +157,6 @@ module Sun::Security::Jca
       end
       
       typesig { [ProviderList] }
-      # 
       # Set the current ProviderList. Affects the thread-local list if set,
       # otherwise the system wide list.
       def set_provider_list(new_list)
@@ -174,7 +168,6 @@ module Sun::Security::Jca
       end
       
       typesig { [] }
-      # 
       # Get the full provider list with invalid providers (those that
       # could not be loaded) removed. This is the list we need to
       # present to applications.
@@ -190,10 +183,10 @@ module Sun::Security::Jca
             return list
           end
           list = get_system_provider_list
-          new_list_ = list.remove_invalid
-          if (!(new_list_).equal?(list))
-            set_system_provider_list(new_list_)
-            list = new_list_
+          new_list = list.remove_invalid
+          if (!(new_list).equal?(list))
+            set_system_provider_list(new_list)
+            list = new_list
           end
           return list
         end
@@ -228,7 +221,6 @@ module Sun::Security::Jca
       end
       
       typesig { [ProviderList] }
-      # 
       # Methods to manipulate the thread local provider list. It is for use by
       # JAR verification (see above) and the SunJSSE FIPS mode only.
       # 

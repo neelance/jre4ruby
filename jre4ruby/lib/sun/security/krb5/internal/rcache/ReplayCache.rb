@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Portions Copyright 2000-2006 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -41,7 +40,6 @@ module Sun::Security::Krb5::Internal::Rcache
     }
   end
   
-  # 
   # This class provides an efficient caching mechanism to store the timestamp of client authenticators.
   # The cache minimizes the memory usage by doing self-cleanup of expired items in the cache.
   # 
@@ -80,7 +78,6 @@ module Sun::Security::Krb5::Internal::Rcache
     undef_method :debug=
     
     typesig { [String, CacheTable] }
-    # 
     # Constructs a ReplayCache for a client principal in specified <code>CacheTable</code>.
     # @param p client principal name.
     # @param ct CacheTable.
@@ -97,7 +94,6 @@ module Sun::Security::Krb5::Internal::Rcache
     end
     
     typesig { [AuthTime, ::Java::Long] }
-    # 
     # Puts the authenticator timestamp into the cache in descending order.
     # @param t <code>AuthTime</code>
     def put(t, current_time)
@@ -138,14 +134,14 @@ module Sun::Security::Krb5::Internal::Rcache
         end
         # let us cleanup while we are here
         time_limit = current_time - KerberosTime.get_default_skew * 1000
-        it_ = list_iterator(0)
-        temp_ = nil
+        it = list_iterator(0)
+        temp = nil
         index = -1
-        while (it_.has_next)
+        while (it.has_next)
           # search expired timestamps.
-          temp_ = it_.next
-          if (temp_.attr_kerberos_time < time_limit)
-            index = index_of(temp_)
+          temp = it.next
+          if (temp.attr_kerberos_time < time_limit)
+            index = index_of(temp)
             break
           end
         end
@@ -170,7 +166,6 @@ module Sun::Security::Krb5::Internal::Rcache
     end
     
     typesig { [] }
-    # 
     # Printes out the debug message.
     def print_list
       total = to_array

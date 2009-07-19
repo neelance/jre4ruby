@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 2005 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -33,7 +32,6 @@ module Java::Net
     }
   end
   
-  # 
   # A CookieStore object represents a storage for cookie. Can store and retrieve
   # cookies.
   # 
@@ -48,7 +46,6 @@ module Java::Net
     include_class_members CookieStoreImports
     
     typesig { [URI, HttpCookie] }
-    # 
     # Adds one HTTP cookie to the store. This is called for every
     # incoming HTTP response.
     # 
@@ -74,7 +71,6 @@ module Java::Net
     end
     
     typesig { [URI] }
-    # 
     # Retrieve cookies associated with given URI, or whose domain matches the
     # given URI. Only cookies that have not expired are returned.
     # This is called for every outgoing HTTP request.
@@ -90,7 +86,6 @@ module Java::Net
     end
     
     typesig { [] }
-    # 
     # Get all not-expired cookies in cookie store.
     # 
     # @return          an immutable list of http cookies;
@@ -100,7 +95,6 @@ module Java::Net
     end
     
     typesig { [] }
-    # 
     # Get all URIs which identify the cookies in this cookie store.
     # 
     # @return          an immutable list of URIs;
@@ -111,7 +105,6 @@ module Java::Net
     end
     
     typesig { [URI, HttpCookie] }
-    # 
     # Remove a cookie from store.
     # 
     # @param uri       the uri this cookie associated with.
@@ -128,7 +121,6 @@ module Java::Net
     end
     
     typesig { [] }
-    # 
     # Remove all cookies in this cookie store.
     # 
     # @return          <tt>true</tt> if this store changed as a result of the call

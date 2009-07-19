@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 1997-2006 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -35,7 +34,6 @@ module Java::Security
     }
   end
   
-  # 
   # This class is for security permissions.
   # A SecurityPermission contains a name (also referred to as a "target name")
   # but no actions list; you either have the named permission
@@ -303,7 +301,6 @@ module Java::Security
     }
     
     typesig { [String] }
-    # 
     # Creates a new SecurityPermission with the specified name.
     # The name is the symbolic name of the SecurityPermission. An asterisk
     # may appear at the end of the name, following a ".", or by itself, to
@@ -318,7 +315,6 @@ module Java::Security
     end
     
     typesig { [String, String] }
-    # 
     # Creates a new SecurityPermission object with the specified name.
     # The name is the symbolic name of the SecurityPermission, and the
     # actions String is currently unused and should be null.

@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 1995-2005 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -30,7 +29,6 @@ module Java::Lang
     }
   end
   
-  # 
   # Thrown when an application tries to create an instance of a class
   # using the {@code newInstance} method in class
   # {@code Class}, but the specified class object cannot be
@@ -50,14 +48,12 @@ module Java::Lang
     include_class_members InstantiationExceptionImports
     
     typesig { [] }
-    # 
     # Constructs an {@code InstantiationException} with no detail message.
     def initialize
       super()
     end
     
     typesig { [String] }
-    # 
     # Constructs an {@code InstantiationException} with the
     # specified detail message.
     # 

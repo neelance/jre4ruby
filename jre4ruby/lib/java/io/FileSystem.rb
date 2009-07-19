@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 1998-2005 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -31,7 +30,6 @@ module Java::Io
     }
   end
   
-  # 
   # Package-private abstract class for the local filesystem abstraction.
   class FileSystem 
     include_class_members FileSystemImports
@@ -39,7 +37,6 @@ module Java::Io
     class_module.module_eval {
       JNI.native_method :Java_java_io_FileSystem_getFileSystem, [:pointer, :long], :long
       typesig { [] }
-      # 
       # Return the FileSystem object representing this platform's local
       # filesystem.
       def get_file_system
@@ -56,14 +53,12 @@ module Java::Io
     end
     
     typesig { [] }
-    # 
     # Return the local filesystem's path-separator character.
     def get_path_separator
       raise NotImplementedError
     end
     
     typesig { [String] }
-    # 
     # Convert the given pathname string to normal form.  If the string is
     # already in normal form then it is simply returned.
     def normalize(path)
@@ -71,7 +66,6 @@ module Java::Io
     end
     
     typesig { [String] }
-    # 
     # Compute the length of this pathname string's prefix.  The pathname
     # string must be in normal form.
     def prefix_length(path)
@@ -79,7 +73,6 @@ module Java::Io
     end
     
     typesig { [String, String] }
-    # 
     # Resolve the child pathname string against the parent.
     # Both strings must be in normal form, and the result
     # will be in normal form.
@@ -88,7 +81,6 @@ module Java::Io
     end
     
     typesig { [] }
-    # 
     # Return the parent pathname string to be used when the parent-directory
     # argument in one of the two-argument File constructors is the empty
     # pathname.
@@ -97,7 +89,6 @@ module Java::Io
     end
     
     typesig { [String] }
-    # 
     # Post-process the given URI path string if necessary.  This is used on
     # win32, e.g., to transform "/c:/foo" into "c:/foo".  The path string
     # still has slash separators; code in the File class will translate them
@@ -115,7 +106,6 @@ module Java::Io
     end
     
     typesig { [JavaFile] }
-    # 
     # Resolve the given abstract pathname into absolute form.  Invoked by the
     # getAbsolutePath and getCanonicalPath methods in the File class.
     def resolve(f)
@@ -144,7 +134,6 @@ module Java::Io
     }
     
     typesig { [JavaFile] }
-    # 
     # Return the simple boolean attributes for the file or directory denoted
     # by the given abstract pathname, or zero if it does not exist or some
     # other I/O error occurs.
@@ -164,7 +153,6 @@ module Java::Io
     }
     
     typesig { [JavaFile, ::Java::Int] }
-    # 
     # Check whether the file or directory denoted by the given abstract
     # pathname may be accessed by this process.  The second argument specifies
     # which access, ACCESS_READ, ACCESS_WRITE or ACCESS_EXECUTE, to check.
@@ -174,7 +162,6 @@ module Java::Io
     end
     
     typesig { [JavaFile, ::Java::Int, ::Java::Boolean, ::Java::Boolean] }
-    # 
     # Set on or off the access permission (to owner only or to all) to the file
     # or directory denoted by the given abstract pathname, based on the parameters
     # enable, access and oweronly.
@@ -183,7 +170,6 @@ module Java::Io
     end
     
     typesig { [JavaFile] }
-    # 
     # Return the time at which the file or directory denoted by the given
     # abstract pathname was last modified, or zero if it does not exist or
     # some other I/O error occurs.
@@ -192,7 +178,6 @@ module Java::Io
     end
     
     typesig { [JavaFile] }
-    # 
     # Return the length in bytes of the file denoted by the given abstract
     # pathname, or zero if it does not exist, is a directory, or some other
     # I/O error occurs.
@@ -212,7 +197,6 @@ module Java::Io
     end
     
     typesig { [JavaFile] }
-    # 
     # Delete the file or directory denoted by the given abstract pathname,
     # returning <code>true</code> if and only if the operation succeeds.
     def delete(f)
@@ -220,7 +204,6 @@ module Java::Io
     end
     
     typesig { [JavaFile] }
-    # 
     # List the elements of the directory denoted by the given abstract
     # pathname.  Return an array of strings naming the elements of the
     # directory if successful; otherwise, return <code>null</code>.
@@ -229,7 +212,6 @@ module Java::Io
     end
     
     typesig { [JavaFile] }
-    # 
     # Create a new directory denoted by the given abstract pathname,
     # returning <code>true</code> if and only if the operation succeeds.
     def create_directory(f)
@@ -237,7 +219,6 @@ module Java::Io
     end
     
     typesig { [JavaFile, JavaFile] }
-    # 
     # Rename the file or directory denoted by the first abstract pathname to
     # the second abstract pathname, returning <code>true</code> if and only if
     # the operation succeeds.
@@ -246,7 +227,6 @@ module Java::Io
     end
     
     typesig { [JavaFile, ::Java::Long] }
-    # 
     # Set the last-modified time of the file or directory denoted by the
     # given abstract pathname, returning <code>true</code> if and only if the
     # operation succeeds.
@@ -255,7 +235,6 @@ module Java::Io
     end
     
     typesig { [JavaFile] }
-    # 
     # Mark the file or directory denoted by the given abstract pathname as
     # read-only, returning <code>true</code> if and only if the operation
     # succeeds.
@@ -297,7 +276,6 @@ module Java::Io
     end
     
     typesig { [JavaFile] }
-    # 
     # Compute the hash code of an abstract pathname.
     def hash_code(f)
       raise NotImplementedError

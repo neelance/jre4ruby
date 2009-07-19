@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 1997-2001 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -31,7 +30,6 @@ module Java::Net
     }
   end
   
-  # 
   # The class PasswordAuthentication is a data holder that is used by
   # Authenticator.  It is simply a repository for a user name and a password.
   # 
@@ -56,7 +54,6 @@ module Java::Net
     undef_method :password=
     
     typesig { [String, Array.typed(::Java::Char)] }
-    # 
     # Creates a new <code>PasswordAuthentication</code> object from the given
     # user name and password.
     # 
@@ -73,7 +70,6 @@ module Java::Net
     end
     
     typesig { [] }
-    # 
     # Returns the user name.
     # 
     # @return the user name
@@ -82,7 +78,6 @@ module Java::Net
     end
     
     typesig { [] }
-    # 
     # Returns the user password.
     # 
     # <p> Note that this method returns a reference to the password. It is

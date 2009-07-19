@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 2001 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -33,7 +32,6 @@ module Sun::Net::Www::Http
     }
   end
   
-  # 
   # Instances of this class are returned to applications for the purpose of
   # sending user data for a HTTP POST or PUT request. This class is used
   # when the content-length will be specified in the header of the request.
@@ -53,7 +51,6 @@ module Sun::Net::Www::Http
     undef_method :closed=
     
     typesig { [] }
-    # 
     # Creates a new output stream for POST user data
     def initialize
       @closed = false
@@ -61,7 +58,6 @@ module Sun::Net::Www::Http
     end
     
     typesig { [::Java::Int] }
-    # 
     # Writes the specified byte to this output stream.
     # 
     # @param   b   the byte to be written.
@@ -75,7 +71,6 @@ module Sun::Net::Www::Http
     end
     
     typesig { [Array.typed(::Java::Byte), ::Java::Int, ::Java::Int] }
-    # 
     # Writes <code>len</code> bytes from the specified byte array
     # starting at offset <code>off</code> to this output stream.
     # 
@@ -92,7 +87,6 @@ module Sun::Net::Www::Http
     end
     
     typesig { [] }
-    # 
     # Resets the <code>count</code> field of this output
     # stream to zero, so that all currently accumulated output in the
     # ouput stream is discarded. The output stream can be used again,
@@ -110,7 +104,6 @@ module Sun::Net::Www::Http
     end
     
     typesig { [] }
-    # 
     # After close() has been called, it is no longer possible to write
     # to this stream. Further calls to write will have no effect.
     def close

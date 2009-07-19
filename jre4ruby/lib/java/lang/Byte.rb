@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 1996-2006 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -30,8 +29,6 @@ module Java::Lang
     }
   end
   
-  # 
-  # 
   # The {@code Byte} class wraps a value of primitive type {@code byte}
   # in an object.  An object of type {@code Byte} contains a single
   # field whose type is {@code byte}.
@@ -50,26 +47,22 @@ module Java::Lang
     include JavaComparable
     
     class_module.module_eval {
-      # 
       # A constant holding the minimum value a {@code byte} can
       # have, -2<sup>7</sup>.
       const_set_lazy(:MIN_VALUE) { -128 }
       const_attr_reader  :MIN_VALUE
       
-      # 
       # A constant holding the maximum value a {@code byte} can
       # have, 2<sup>7</sup>-1.
       const_set_lazy(:MAX_VALUE) { 127 }
       const_attr_reader  :MAX_VALUE
       
-      # 
       # The {@code Class} instance representing the primitive type
       # {@code byte}.
       const_set_lazy(:TYPE) { Class.get_primitive_class("byte") }
       const_attr_reader  :TYPE
       
       typesig { [::Java::Byte] }
-      # 
       # Returns a new {@code String} object representing the
       # specified {@code byte}. The radix is assumed to be 10.
       # 
@@ -105,7 +98,6 @@ module Java::Lang
       end }
       
       typesig { [::Java::Byte] }
-      # 
       # Returns a {@code Byte} instance representing the specified
       # {@code byte} value.
       # If a new {@code Byte} instance is not required, this method
@@ -123,7 +115,6 @@ module Java::Lang
       end
       
       typesig { [String, ::Java::Int] }
-      # 
       # Parses the string argument as a signed {@code byte} in the
       # radix specified by the second argument. The characters in the
       # string must all be digits, of the specified radix (as
@@ -169,7 +160,6 @@ module Java::Lang
       end
       
       typesig { [String] }
-      # 
       # Parses the string argument as a signed decimal {@code
       # byte}. The characters in the string must all be decimal digits,
       # except that the first character may be an ASCII minus sign
@@ -189,7 +179,6 @@ module Java::Lang
       end
       
       typesig { [String, ::Java::Int] }
-      # 
       # Returns a {@code Byte} object holding the value
       # extracted from the specified {@code String} when parsed
       # with the radix given by the second argument. The first argument
@@ -218,7 +207,6 @@ module Java::Lang
       end
       
       typesig { [String] }
-      # 
       # Returns a {@code Byte} object holding the value
       # given by the specified {@code String}. The argument is
       # interpreted as representing a signed decimal {@code byte},
@@ -244,7 +232,6 @@ module Java::Lang
       end
       
       typesig { [String] }
-      # 
       # Decodes a {@code String} into a {@code Byte}.
       # Accepts decimal, hexadecimal, and octal numbers given by
       # the following grammar:
@@ -293,7 +280,6 @@ module Java::Lang
       end
     }
     
-    # 
     # The value of the {@code Byte}.
     # 
     # @serial
@@ -304,7 +290,6 @@ module Java::Lang
     undef_method :value=
     
     typesig { [::Java::Byte] }
-    # 
     # Constructs a newly allocated {@code Byte} object that
     # represents the specified {@code byte} value.
     # 
@@ -317,7 +302,6 @@ module Java::Lang
     end
     
     typesig { [String] }
-    # 
     # Constructs a newly allocated {@code Byte} object that
     # represents the {@code byte} value indicated by the
     # {@code String} parameter. The string is converted to a
@@ -336,7 +320,6 @@ module Java::Lang
     end
     
     typesig { [] }
-    # 
     # Returns the value of this {@code Byte} as a
     # {@code byte}.
     def byte_value
@@ -344,7 +327,6 @@ module Java::Lang
     end
     
     typesig { [] }
-    # 
     # Returns the value of this {@code Byte} as a
     # {@code short}.
     def short_value
@@ -352,7 +334,6 @@ module Java::Lang
     end
     
     typesig { [] }
-    # 
     # Returns the value of this {@code Byte} as an
     # {@code int}.
     def int_value
@@ -360,7 +341,6 @@ module Java::Lang
     end
     
     typesig { [] }
-    # 
     # Returns the value of this {@code Byte} as a
     # {@code long}.
     def long_value
@@ -368,7 +348,6 @@ module Java::Lang
     end
     
     typesig { [] }
-    # 
     # Returns the value of this {@code Byte} as a
     # {@code float}.
     def float_value
@@ -376,7 +355,6 @@ module Java::Lang
     end
     
     typesig { [] }
-    # 
     # Returns the value of this {@code Byte} as a
     # {@code double}.
     def double_value
@@ -384,7 +362,6 @@ module Java::Lang
     end
     
     typesig { [] }
-    # 
     # Returns a {@code String} object representing this
     # {@code Byte}'s value.  The value is converted to signed
     # decimal representation and returned as a string, exactly as if
@@ -398,14 +375,12 @@ module Java::Lang
     end
     
     typesig { [] }
-    # 
     # Returns a hash code for this {@code Byte}.
     def hash_code
       return RJava.cast_to_int(@value)
     end
     
     typesig { [Object] }
-    # 
     # Compares this object to the specified object.  The result is
     # {@code true} if and only if the argument is not
     # {@code null} and is a {@code Byte} object that
@@ -422,7 +397,6 @@ module Java::Lang
     end
     
     typesig { [Byte] }
-    # 
     # Compares two {@code Byte} objects numerically.
     # 
     # @param   anotherByte   the {@code Byte} to be compared.
@@ -439,7 +413,6 @@ module Java::Lang
     end
     
     class_module.module_eval {
-      # 
       # The number of bits used to represent a {@code byte} value in two's
       # complement binary form.
       # 

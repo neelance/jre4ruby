@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 2000-2006 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -50,7 +49,6 @@ module Sun::Security::Jgss
     alias_method :attr_destroyed=, :destroyed=
     undef_method :destroyed=
     
-    # 
     # We store all elements in a hashtable, using <oid, usage> as the
     # key. This makes it easy to locate the specific kind of credential we
     # need. The implementation needs to be optimized for the case where
@@ -192,7 +190,6 @@ module Sun::Security::Jgss
     end
     
     typesig { [] }
-    # 
     # Returns the remaining lifetime of this credential. The remaining
     # lifetime is defined as the minimum lifetime, either for initiate or
     # for accept, across all elements contained in it. Not terribly
@@ -298,7 +295,6 @@ module Sun::Security::Jgss
     end
     
     typesig { [] }
-    # 
     # Returns the usage mode for this credential. Returns
     # INITIATE_AND_ACCEPT if any one element contained in it supports
     # INITIATE_AND_ACCEPT or if two different elements exist where one
@@ -407,7 +403,6 @@ module Sun::Security::Jgss
       # Application mixing GSS implementations
       name_element = ((name).nil? ? nil : (name).get_element(mech))
       @temp_cred = @gss_manager.get_credential_element(name_element, init_lifetime, accept_lifetime, mech, usage)
-      # 
       # Not all mechanisms support the concept of one credential element
       # that can be used for both initiating and accepting a context. In
       # the event that an application requests usage INITIATE_AND_ACCEPT
@@ -471,7 +466,6 @@ module Sun::Security::Jgss
     end
     
     typesig { [] }
-    # 
     # Returns a hashcode value for this GSSCredential.
     # 
     # @return a hashCode value
@@ -488,7 +482,6 @@ module Sun::Security::Jgss
     end
     
     typesig { [Oid, ::Java::Boolean] }
-    # 
     # Returns the specified mechanism's credential-element.
     # 
     # @param mechOid - the oid for mechanism to retrieve
@@ -504,7 +497,6 @@ module Sun::Security::Jgss
       key = nil
       element = nil
       if ((mech_oid).nil?)
-        # 
         # First see if the default mechanism satisfies the
         # desired usage.
         mech_oid = ProviderList::DEFAULT_MECH_OID
@@ -514,7 +506,6 @@ module Sun::Security::Jgss
           key = SearchKey.new(mech_oid, INITIATE_AND_ACCEPT)
           element = @hashtable.get(key)
           if ((element).nil?)
-            # 
             # Now just return any element that satisfies the
             # desired usage.
             elements_ = @hashtable.entry_set.to_array

@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 1999-2006 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -31,7 +30,6 @@ module Java::Util::Regex
     }
   end
   
-  # 
   # An engine that performs match operations on a {@link java.lang.CharSequence
   # </code>character sequence<code>} by interpreting a {@link Pattern}.
   # 
@@ -108,7 +106,6 @@ module Java::Util::Regex
     include_class_members MatcherImports
     include MatchResult
     
-    # 
     # The Pattern object that created this Matcher.
     attr_accessor :parent_pattern
     alias_method :attr_parent_pattern, :parent_pattern
@@ -116,7 +113,6 @@ module Java::Util::Regex
     alias_method :attr_parent_pattern=, :parent_pattern=
     undef_method :parent_pattern=
     
-    # 
     # The storage used by groups. They may contain invalid values if
     # a group was skipped during the matching.
     attr_accessor :groups
@@ -125,7 +121,6 @@ module Java::Util::Regex
     alias_method :attr_groups=, :groups=
     undef_method :groups=
     
-    # 
     # The range within the sequence that is to be matched. Anchors
     # will match at these "hard" boundaries. Changing the region
     # changes these values.
@@ -141,7 +136,6 @@ module Java::Util::Regex
     alias_method :attr_to=, :to=
     undef_method :to=
     
-    # 
     # Lookbehind uses this value to ensure that the subexpression
     # match ends at the point where the lookbehind was encountered.
     attr_accessor :lookbehind_to
@@ -150,7 +144,6 @@ module Java::Util::Regex
     alias_method :attr_lookbehind_to=, :lookbehind_to=
     undef_method :lookbehind_to=
     
-    # 
     # The original string being matched.
     attr_accessor :text
     alias_method :attr_text, :text
@@ -159,7 +152,6 @@ module Java::Util::Regex
     undef_method :text=
     
     class_module.module_eval {
-      # 
       # Matcher state used by the last node. NOANCHOR is used when a
       # match does not have to consume all of the input. ENDANCHOR is
       # the mode used for matching all the input.
@@ -176,7 +168,6 @@ module Java::Util::Regex
     alias_method :attr_accept_mode=, :accept_mode=
     undef_method :accept_mode=
     
-    # 
     # The range of string that last matched the pattern. If the last
     # match failed then first is -1; last initially holds 0 then it
     # holds the index of the end of the last match (which is where the
@@ -193,7 +184,6 @@ module Java::Util::Regex
     alias_method :attr_last=, :last=
     undef_method :last=
     
-    # 
     # The end index of what matched in the last match operation.
     attr_accessor :old_last
     alias_method :attr_old_last, :old_last
@@ -201,7 +191,6 @@ module Java::Util::Regex
     alias_method :attr_old_last=, :old_last=
     undef_method :old_last=
     
-    # 
     # The index of the last position appended in a substitution.
     attr_accessor :last_append_position
     alias_method :attr_last_append_position, :last_append_position
@@ -209,7 +198,6 @@ module Java::Util::Regex
     alias_method :attr_last_append_position=, :last_append_position=
     undef_method :last_append_position=
     
-    # 
     # Storage used by nodes to tell what repetition they are on in
     # a pattern, and where groups begin. The nodes themselves are stateless,
     # so they rely on this field to hold state during a match.
@@ -219,7 +207,6 @@ module Java::Util::Regex
     alias_method :attr_locals=, :locals=
     undef_method :locals=
     
-    # 
     # Boolean indicating whether or not more input could change
     # the results of the last match.
     # 
@@ -237,7 +224,6 @@ module Java::Util::Regex
     alias_method :attr_hit_end=, :hit_end=
     undef_method :hit_end=
     
-    # 
     # Boolean indicating whether or not more input could change
     # a positive match into a negative one.
     # 
@@ -252,7 +238,6 @@ module Java::Util::Regex
     alias_method :attr_require_end=, :require_end=
     undef_method :require_end=
     
-    # 
     # If transparentBounds is true then the boundaries of this
     # matcher's region are transparent to lookahead, lookbehind,
     # and boundary matching constructs that try to see beyond them.
@@ -262,7 +247,6 @@ module Java::Util::Regex
     alias_method :attr_transparent_bounds=, :transparent_bounds=
     undef_method :transparent_bounds=
     
-    # 
     # If anchoringBounds is true then the boundaries of this
     # matcher's region match anchors such as ^ and $.
     attr_accessor :anchoring_bounds
@@ -272,7 +256,6 @@ module Java::Util::Regex
     undef_method :anchoring_bounds=
     
     typesig { [] }
-    # 
     # No default constructor.
     def initialize
       @parent_pattern = nil
@@ -294,7 +277,6 @@ module Java::Util::Regex
     end
     
     typesig { [Pattern, CharSequence] }
-    # 
     # All matchers have the state used by Pattern during a match.
     def initialize(parent, text)
       @parent_pattern = nil
@@ -324,7 +306,6 @@ module Java::Util::Regex
     end
     
     typesig { [] }
-    # 
     # Returns the pattern that is interpreted by this matcher.
     # 
     # @return  The pattern for which this matcher was created
@@ -333,7 +314,6 @@ module Java::Util::Regex
     end
     
     typesig { [] }
-    # 
     # Returns the match state of this matcher as a {@link MatchResult}.
     # The result is unaffected by subsequent operations performed upon this
     # matcher.
@@ -349,7 +329,6 @@ module Java::Util::Regex
     end
     
     typesig { [Pattern] }
-    # 
     # Changes the <tt>Pattern</tt> that this <tt>Matcher</tt> uses to
     # find matches with.
     # 
@@ -387,7 +366,6 @@ module Java::Util::Regex
     end
     
     typesig { [] }
-    # 
     # Resets this matcher.
     # 
     # <p> Resetting a matcher discards all of its explicit state information
@@ -417,7 +395,6 @@ module Java::Util::Regex
     end
     
     typesig { [CharSequence] }
-    # 
     # Resets this matcher with a new input sequence.
     # 
     # <p> Resetting a matcher discards all of its explicit state information
@@ -436,7 +413,6 @@ module Java::Util::Regex
     end
     
     typesig { [] }
-    # 
     # Returns the start index of the previous match.  </p>
     # 
     # @return  The index of the first character matched
@@ -452,7 +428,6 @@ module Java::Util::Regex
     end
     
     typesig { [::Java::Int] }
-    # 
     # Returns the start index of the subsequence captured by the given group
     # during the previous match operation.
     # 
@@ -486,7 +461,6 @@ module Java::Util::Regex
     end
     
     typesig { [] }
-    # 
     # Returns the offset after the last character matched.  </p>
     # 
     # @return  The offset after the last character matched
@@ -502,7 +476,6 @@ module Java::Util::Regex
     end
     
     typesig { [::Java::Int] }
-    # 
     # Returns the offset after the last character of the subsequence
     # captured by the given group during the previous match operation.
     # 
@@ -536,7 +509,6 @@ module Java::Util::Regex
     end
     
     typesig { [] }
-    # 
     # Returns the input subsequence matched by the previous match.
     # 
     # <p> For a matcher <i>m</i> with input sequence <i>s</i>,
@@ -559,7 +531,6 @@ module Java::Util::Regex
     end
     
     typesig { [::Java::Int] }
-    # 
     # Returns the input subsequence captured by the given group during the
     # previous match operation.
     # 
@@ -607,7 +578,6 @@ module Java::Util::Regex
     end
     
     typesig { [] }
-    # 
     # Returns the number of capturing groups in this matcher's pattern.
     # 
     # <p> Group zero denotes the entire pattern by convention. It is not
@@ -623,7 +593,6 @@ module Java::Util::Regex
     end
     
     typesig { [] }
-    # 
     # Attempts to match the entire region against the pattern.
     # 
     # <p> If the match succeeds then more information can be obtained via the
@@ -636,7 +605,6 @@ module Java::Util::Regex
     end
     
     typesig { [] }
-    # 
     # Attempts to find the next subsequence of the input sequence that matches
     # the pattern.
     # 
@@ -672,7 +640,6 @@ module Java::Util::Regex
     end
     
     typesig { [::Java::Int] }
-    # 
     # Resets this matcher and then attempts to find the next subsequence of
     # the input sequence that matches the pattern, starting at the specified
     # index.
@@ -699,7 +666,6 @@ module Java::Util::Regex
     end
     
     typesig { [] }
-    # 
     # Attempts to match the input sequence, starting at the beginning of the
     # region, against the pattern.
     # 
@@ -718,7 +684,6 @@ module Java::Util::Regex
     
     class_module.module_eval {
       typesig { [String] }
-      # 
       # Returns a literal replacement <code>String</code> for the specified
       # <code>String</code>.
       # 
@@ -751,7 +716,6 @@ module Java::Util::Regex
     }
     
     typesig { [StringBuffer, String] }
-    # 
     # Implements a non-terminal append-and-replace step.
     # 
     # <p> This method performs the following actions: </p>
@@ -887,7 +851,6 @@ module Java::Util::Regex
     end
     
     typesig { [StringBuffer] }
-    # 
     # Implements a terminal append-and-replace step.
     # 
     # <p> This method reads characters from the input sequence, starting at
@@ -906,7 +869,6 @@ module Java::Util::Regex
     end
     
     typesig { [String] }
-    # 
     # Replaces every subsequence of the input sequence that matches the
     # pattern with the given replacement string.
     # 
@@ -955,7 +917,6 @@ module Java::Util::Regex
     end
     
     typesig { [String] }
-    # 
     # Replaces the first subsequence of the input sequence that matches the
     # pattern with the given replacement string.
     # 
@@ -1002,7 +963,6 @@ module Java::Util::Regex
     end
     
     typesig { [::Java::Int, ::Java::Int] }
-    # 
     # Sets the limits of this matcher's region. The region is the part of the
     # input sequence that will be searched to find a match. Invoking this
     # method resets the matcher, and then sets the region to start at the
@@ -1043,7 +1003,6 @@ module Java::Util::Regex
     end
     
     typesig { [] }
-    # 
     # Reports the start index of this matcher's region. The
     # searches this matcher conducts are limited to finding matches
     # within {@link #regionStart regionStart} (inclusive) and
@@ -1056,7 +1015,6 @@ module Java::Util::Regex
     end
     
     typesig { [] }
-    # 
     # Reports the end index (exclusive) of this matcher's region.
     # The searches this matcher conducts are limited to finding matches
     # within {@link #regionStart regionStart} (inclusive) and
@@ -1069,7 +1027,6 @@ module Java::Util::Regex
     end
     
     typesig { [] }
-    # 
     # Queries the transparency of region bounds for this matcher.
     # 
     # <p> This method returns <tt>true</tt> if this matcher uses
@@ -1090,7 +1047,6 @@ module Java::Util::Regex
     end
     
     typesig { [::Java::Boolean] }
-    # 
     # Sets the transparency of region bounds for this matcher.
     # 
     # <p> Invoking this method with an argument of <tt>true</tt> will set this
@@ -1121,7 +1077,6 @@ module Java::Util::Regex
     end
     
     typesig { [] }
-    # 
     # Queries the anchoring of region bounds for this matcher.
     # 
     # <p> This method returns <tt>true</tt> if this matcher uses
@@ -1141,7 +1096,6 @@ module Java::Util::Regex
     end
     
     typesig { [::Java::Boolean] }
-    # 
     # Sets the anchoring of region bounds for this matcher.
     # 
     # <p> Invoking this method with an argument of <tt>true</tt> will set this
@@ -1167,7 +1121,6 @@ module Java::Util::Regex
     end
     
     typesig { [] }
-    # 
     # <p>Returns the string representation of this matcher. The
     # string representation of a <code>Matcher</code> contains information
     # that may be useful for debugging. The exact format is unspecified.
@@ -1189,7 +1142,6 @@ module Java::Util::Regex
     end
     
     typesig { [] }
-    # 
     # <p>Returns true if the end of input was hit by the search engine in
     # the last match operation performed by this matcher.
     # 
@@ -1204,7 +1156,6 @@ module Java::Util::Regex
     end
     
     typesig { [] }
-    # 
     # <p>Returns true if more input could change a positive match into a
     # negative one.
     # 
@@ -1222,7 +1173,6 @@ module Java::Util::Regex
     end
     
     typesig { [::Java::Int] }
-    # 
     # Initiates a search to find a Pattern within the given bounds.
     # The groups are filled with default values and the match of the root
     # of the state machine is called. The state machine will hold the state
@@ -1255,7 +1205,6 @@ module Java::Util::Regex
     end
     
     typesig { [::Java::Int, ::Java::Int] }
-    # 
     # Initiates a search for an anchored match to a Pattern within the given
     # bounds. The groups are filled with default values and the match of the
     # root of the state machine is called. The state machine will hold the
@@ -1281,7 +1230,6 @@ module Java::Util::Regex
     end
     
     typesig { [] }
-    # 
     # Returns the end index of the text.
     # 
     # @return the index after the last character in the text
@@ -1290,7 +1238,6 @@ module Java::Util::Regex
     end
     
     typesig { [::Java::Int, ::Java::Int] }
-    # 
     # Generates a String from this Matcher's input in the specified range.
     # 
     # @param  beginIndex   the beginning index, inclusive
@@ -1301,7 +1248,6 @@ module Java::Util::Regex
     end
     
     typesig { [::Java::Int] }
-    # 
     # Returns this Matcher's input character at index i.
     # 
     # @return A char from the specified index

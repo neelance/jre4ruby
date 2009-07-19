@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 1996-2006 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -31,7 +30,6 @@ module Java::Util::Zip
     }
   end
   
-  # 
   # This class provides support for general purpose compression using the
   # popular ZLIB compression library. The ZLIB compression library was
   # initially developed as part of the PNG graphics standard and is not
@@ -132,45 +130,37 @@ module Java::Util::Zip
     undef_method :finished=
     
     class_module.module_eval {
-      # 
       # Compression method for the deflate algorithm (the only one currently
       # supported).
       const_set_lazy(:DEFLATED) { 8 }
       const_attr_reader  :DEFLATED
       
-      # 
       # Compression level for no compression.
       const_set_lazy(:NO_COMPRESSION) { 0 }
       const_attr_reader  :NO_COMPRESSION
       
-      # 
       # Compression level for fastest compression.
       const_set_lazy(:BEST_SPEED) { 1 }
       const_attr_reader  :BEST_SPEED
       
-      # 
       # Compression level for best compression.
       const_set_lazy(:BEST_COMPRESSION) { 9 }
       const_attr_reader  :BEST_COMPRESSION
       
-      # 
       # Default compression level.
       const_set_lazy(:DEFAULT_COMPRESSION) { -1 }
       const_attr_reader  :DEFAULT_COMPRESSION
       
-      # 
       # Compression strategy best used for data consisting mostly of small
       # values with a somewhat random distribution. Forces more Huffman coding
       # and less string matching.
       const_set_lazy(:FILTERED) { 1 }
       const_attr_reader  :FILTERED
       
-      # 
       # Compression strategy for Huffman coding only.
       const_set_lazy(:HUFFMAN_ONLY) { 2 }
       const_attr_reader  :HUFFMAN_ONLY
       
-      # 
       # Default compression strategy.
       const_set_lazy(:DEFAULT_STRATEGY) { 0 }
       const_attr_reader  :DEFAULT_STRATEGY
@@ -182,7 +172,6 @@ module Java::Util::Zip
     }
     
     typesig { [::Java::Int, ::Java::Boolean] }
-    # 
     # Creates a new compressor using the specified compression level.
     # If 'nowrap' is true then the ZLIB header and checksum fields will
     # not be used in order to support the compression format used in
@@ -205,7 +194,6 @@ module Java::Util::Zip
     end
     
     typesig { [::Java::Int] }
-    # 
     # Creates a new compressor using the specified compression level.
     # Compressed data will be generated in ZLIB format.
     # @param level the compression level (0-9)
@@ -214,7 +202,6 @@ module Java::Util::Zip
     end
     
     typesig { [] }
-    # 
     # Creates a new compressor with the default compression level.
     # Compressed data will be generated in ZLIB format.
     def initialize
@@ -222,7 +209,6 @@ module Java::Util::Zip
     end
     
     typesig { [Array.typed(::Java::Byte), ::Java::Int, ::Java::Int] }
-    # 
     # Sets input data for compression. This should be called whenever
     # needsInput() returns true indicating that more input data is required.
     # @param b the input data bytes
@@ -244,7 +230,6 @@ module Java::Util::Zip
     end
     
     typesig { [Array.typed(::Java::Byte)] }
-    # 
     # Sets input data for compression. This should be called whenever
     # needsInput() returns true indicating that more input data is required.
     # @param b the input data bytes
@@ -254,7 +239,6 @@ module Java::Util::Zip
     end
     
     typesig { [Array.typed(::Java::Byte), ::Java::Int, ::Java::Int] }
-    # 
     # Sets preset dictionary for compression. A preset dictionary is used
     # when the history buffer can be predetermined. When the data is later
     # uncompressed with Inflater.inflate(), Inflater.getAdler() can be called
@@ -278,7 +262,6 @@ module Java::Util::Zip
     end
     
     typesig { [Array.typed(::Java::Byte)] }
-    # 
     # Sets preset dictionary for compression. A preset dictionary is used
     # when the history buffer can be predetermined. When the data is later
     # uncompressed with Inflater.inflate(), Inflater.getAdler() can be called
@@ -292,7 +275,6 @@ module Java::Util::Zip
     end
     
     typesig { [::Java::Int] }
-    # 
     # Sets the compression strategy to the specified value.
     # @param strategy the new compression strategy
     # @exception IllegalArgumentException if the compression strategy is
@@ -312,7 +294,6 @@ module Java::Util::Zip
     end
     
     typesig { [::Java::Int] }
-    # 
     # Sets the current compression level to the specified value.
     # @param level the new compression level (0-9)
     # @exception IllegalArgumentException if the compression level is invalid
@@ -329,7 +310,6 @@ module Java::Util::Zip
     end
     
     typesig { [] }
-    # 
     # Returns true if the input data buffer is empty and setInput()
     # should be called in order to provide more input.
     # @return true if the input data buffer is empty and setInput()
@@ -339,7 +319,6 @@ module Java::Util::Zip
     end
     
     typesig { [] }
-    # 
     # When called, indicates that compression should end with the current
     # contents of the input buffer.
     def finish
@@ -349,7 +328,6 @@ module Java::Util::Zip
     end
     
     typesig { [] }
-    # 
     # Returns true if the end of the compressed data output stream has
     # been reached.
     # @return true if the end of the compressed data output stream has
@@ -361,7 +339,6 @@ module Java::Util::Zip
     end
     
     typesig { [Array.typed(::Java::Byte), ::Java::Int, ::Java::Int] }
-    # 
     # Fills specified buffer with compressed data. Returns actual number
     # of bytes of compressed data. A return value of 0 indicates that
     # needsInput() should be called in order to determine if more input
@@ -383,7 +360,6 @@ module Java::Util::Zip
     end
     
     typesig { [Array.typed(::Java::Byte)] }
-    # 
     # Fills specified buffer with compressed data. Returns actual number
     # of bytes of compressed data. A return value of 0 indicates that
     # needsInput() should be called in order to determine if more input
@@ -395,7 +371,6 @@ module Java::Util::Zip
     end
     
     typesig { [] }
-    # 
     # Returns the ADLER-32 value of the uncompressed data.
     # @return the ADLER-32 value of the uncompressed data
     def get_adler
@@ -406,7 +381,6 @@ module Java::Util::Zip
     end
     
     typesig { [] }
-    # 
     # Returns the total number of uncompressed bytes input so far.
     # 
     # <p>Since the number of bytes may be greater than
@@ -419,7 +393,6 @@ module Java::Util::Zip
     end
     
     typesig { [] }
-    # 
     # Returns the total number of uncompressed bytes input so far.</p>
     # 
     # @return the total (non-negative) number of uncompressed bytes input so far
@@ -432,7 +405,6 @@ module Java::Util::Zip
     end
     
     typesig { [] }
-    # 
     # Returns the total number of compressed bytes output so far.
     # 
     # <p>Since the number of bytes may be greater than
@@ -445,7 +417,6 @@ module Java::Util::Zip
     end
     
     typesig { [] }
-    # 
     # Returns the total number of compressed bytes output so far.</p>
     # 
     # @return the total (non-negative) number of compressed bytes output so far
@@ -458,7 +429,6 @@ module Java::Util::Zip
     end
     
     typesig { [] }
-    # 
     # Resets deflater so that a new set of input data can be processed.
     # Keeps current compression level and strategy settings.
     def reset
@@ -472,7 +442,6 @@ module Java::Util::Zip
     end
     
     typesig { [] }
-    # 
     # Closes the compressor and discards any unprocessed input.
     # This method should be called when the compressor is no longer
     # being used, but will also be called automatically by the
@@ -489,7 +458,6 @@ module Java::Util::Zip
     end
     
     typesig { [] }
-    # 
     # Closes the compressor when garbage is collected.
     def finalize
       end

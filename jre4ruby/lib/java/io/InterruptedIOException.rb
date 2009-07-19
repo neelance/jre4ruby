@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 1995-2000 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -31,7 +30,6 @@ module Java::Io
     }
   end
   
-  # 
   # Signals that an I/O operation has been interrupted. An
   # <code>InterruptedIOException</code> is thrown to indicate that an
   # input or output transfer has been terminated because the thread
@@ -48,7 +46,6 @@ module Java::Io
     include_class_members InterruptedIOExceptionImports
     
     typesig { [] }
-    # 
     # Constructs an <code>InterruptedIOException</code> with
     # <code>null</code> as its error detail message.
     def initialize
@@ -58,7 +55,6 @@ module Java::Io
     end
     
     typesig { [String] }
-    # 
     # Constructs an <code>InterruptedIOException</code> with the
     # specified detail message. The string <code>s</code> can be
     # retrieved later by the
@@ -72,7 +68,6 @@ module Java::Io
       @bytes_transferred = 0
     end
     
-    # 
     # Reports how many bytes had been transferred as part of the I/O
     # operation before it was interrupted.
     # 

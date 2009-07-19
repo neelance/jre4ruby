@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 1997-2006 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -32,7 +31,6 @@ module Java::Security::Cert
     }
   end
   
-  # 
   # Interface for an X.509 extension.
   # 
   # <p>The extensions defined for X.509 v3
@@ -74,7 +72,6 @@ module Java::Security::Cert
     include_class_members X509ExtensionImports
     
     typesig { [] }
-    # 
     # Check if there is a critical extension that is not supported.
     # 
     # @return <tt>true</tt> if a critical extension is found that is
@@ -84,7 +81,6 @@ module Java::Security::Cert
     end
     
     typesig { [] }
-    # 
     # Gets a Set of the OID strings for the extension(s) marked
     # CRITICAL in the certificate/CRL managed by the object
     # implementing this interface.
@@ -121,7 +117,6 @@ module Java::Security::Cert
     end
     
     typesig { [] }
-    # 
     # Gets a Set of the OID strings for the extension(s) marked
     # NON-CRITICAL in the certificate/CRL managed by the object
     # implementing this interface.
@@ -167,7 +162,6 @@ module Java::Security::Cert
     end
     
     typesig { [String] }
-    # 
     # Gets the DER-encoded OCTET string for the extension value
     # (<em>extnValue</em>) identified by the passed-in <code>oid</code>
     # String.

@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 2005-2007 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -37,7 +36,6 @@ module Sun::Security::Pkcs11
     }
   end
   
-  # 
   # KeyGenerator for the TLS PRF. Note that although the PRF is used in a number
   # of places during the handshake, this class is usually only used to calculate
   # the Finished messages. The reason is that for those other uses more specific
@@ -185,18 +183,18 @@ module Sun::Security::Pkcs11
         end
       end
       # mechanism == CKM_TLS_PRF
-      out_ = Array.typed(::Java::Byte).new(@spec.get_output_length) { 0 }
-      params = CK_TLS_PRF_PARAMS.new(seed, label, out_)
-      session_ = nil
+      out = Array.typed(::Java::Byte).new(@spec.get_output_length) { 0 }
+      params = CK_TLS_PRF_PARAMS.new(seed, label, out)
+      session = nil
       begin
-        session_ = @token.get_op_session
-        key_id = @token.attr_p11._c_derive_key(session_.id, CK_MECHANISM.new(@mechanism, params), @p11key.attr_key_id, nil)
+        session = @token.get_op_session
+        key_id = @token.attr_p11._c_derive_key(session.id, CK_MECHANISM.new(@mechanism, params), @p11key.attr_key_id, nil)
         # ignore keyID, returned PRF bytes are in 'out'
-        return SecretKeySpec.new(out_, "TlsPrf")
+        return SecretKeySpec.new(out, "TlsPrf")
       rescue PKCS11Exception => e
-        raise ProviderException.new("Could not calculate PRF", e_)
+        raise ProviderException.new("Could not calculate PRF", e)
       ensure
-        @token.release_session(session_)
+        @token.release_session(session)
       end
     end
     

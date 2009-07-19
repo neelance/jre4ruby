@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 2000-2006 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -40,7 +39,6 @@ module Sun::Security::Provider::Certpath
     }
   end
   
-  # 
   # This class is initialized with a list of <code>PKIXCertPathChecker</code>s
   # and is used to verify the certificates in a <code>CertPath</code> by
   # feeding each certificate to each <code>PKIXCertPathChecker</code>.
@@ -62,7 +60,6 @@ module Sun::Security::Provider::Certpath
     undef_method :cert_path_checkers=
     
     typesig { [JavaList] }
-    # 
     # Initializes the list of PKIXCertPathCheckers whose checks
     # will be performed on each certificate in the certpath.
     # 
@@ -73,7 +70,6 @@ module Sun::Security::Provider::Certpath
     end
     
     typesig { [CertPath, JavaList] }
-    # 
     # Validates a certification path consisting exclusively of
     # <code>X509Certificate</code>s using the
     # <code>PKIXCertPathChecker</code>s specified
@@ -144,7 +140,6 @@ module Sun::Security::Provider::Certpath
             if (!(ocsp_cause).nil? && curr_checker.is_a?(CrlRevocationChecker))
               raise ocsp_cause
             end
-            # 
             # Handle failover from OCSP to CRLs
             current_cause = CertPathValidatorException.new(cpve.get_message, cpve.get_cause, cp_original, cp_size - (i + 1))
             # Check if OCSP has confirmed that the cert was revoked
@@ -189,7 +184,6 @@ module Sun::Security::Provider::Certpath
     
     class_module.module_eval {
       typesig { [PKIXCertPathChecker, ::Java::Int, JavaList] }
-      # 
       # Examines the list of PKIX cert path checkers to determine whether
       # both the current checker and the next checker are revocation checkers.
       # OCSPChecker and CrlRevocationChecker are both revocation checkers.

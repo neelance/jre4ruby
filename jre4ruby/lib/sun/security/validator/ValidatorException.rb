@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 2002-2003 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -32,7 +31,6 @@ module Sun::Security::Validator
     }
   end
   
-  # 
   # ValidatorException thrown by the Validator. It has optional fields that
   # allow better error diagnostics.
   # 
@@ -126,7 +124,6 @@ module Sun::Security::Validator
     end
     
     typesig { [] }
-    # 
     # Get the type of the failure (one of the T_XXX constants), if
     # available. This may be helpful when designing a user interface.
     def get_error_type
@@ -134,7 +131,6 @@ module Sun::Security::Validator
     end
     
     typesig { [] }
-    # 
     # Get the certificate causing the exception, if available.
     def get_error_certificate
       return @cert

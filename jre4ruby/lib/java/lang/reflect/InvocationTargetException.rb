@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 1996-2004 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -31,7 +30,6 @@ module Java::Lang::Reflect
     }
   end
   
-  # 
   # InvocationTargetException is a checked exception that wraps
   # an exception thrown by an invoked method or constructor.
   # 
@@ -48,13 +46,11 @@ module Java::Lang::Reflect
     include_class_members InvocationTargetExceptionImports
     
     class_module.module_eval {
-      # 
       # Use serialVersionUID from JDK 1.1.X for interoperability
       const_set_lazy(:SerialVersionUID) { 4085088731926701167 }
       const_attr_reader  :SerialVersionUID
     }
     
-    # 
     # This field holds the target if the
     # InvocationTargetException(Throwable target) constructor was
     # used to instantiate the object
@@ -67,7 +63,6 @@ module Java::Lang::Reflect
     undef_method :target=
     
     typesig { [] }
-    # 
     # Constructs an {@code InvocationTargetException} with
     # {@code null} as the target exception.
     def initialize
@@ -76,7 +71,6 @@ module Java::Lang::Reflect
     end
     
     typesig { [Exception] }
-    # 
     # Constructs a InvocationTargetException with a target exception.
     # 
     # @param target the target exception
@@ -87,7 +81,6 @@ module Java::Lang::Reflect
     end
     
     typesig { [Exception, String] }
-    # 
     # Constructs a InvocationTargetException with a target exception
     # and a detail message.
     # 
@@ -100,7 +93,6 @@ module Java::Lang::Reflect
     end
     
     typesig { [] }
-    # 
     # Get the thrown target exception.
     # 
     # <p>This method predates the general-purpose exception chaining facility.
@@ -113,7 +105,6 @@ module Java::Lang::Reflect
     end
     
     typesig { [] }
-    # 
     # Returns the cause of this exception (the thrown target exception,
     # which may be {@code null}).
     # 

@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 2005-2006 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -34,7 +33,6 @@ module Java::Lang::Management
     }
   end
   
-  # 
   # Information about a <em>lock</em>.  A lock can be a built-in object monitor,
   # an <em>ownable synchronizer</em>, or the {@link Condition Condition}
   # object associated with synchronizers.
@@ -73,7 +71,6 @@ module Java::Lang::Management
     undef_method :identity_hash_code=
     
     typesig { [String, ::Java::Int] }
-    # 
     # Constructs a <tt>LockInfo</tt> object.
     # 
     # @param className the fully qualified name of the class of the lock object.
@@ -90,7 +87,6 @@ module Java::Lang::Management
     end
     
     typesig { [Object] }
-    # 
     # package-private constructors
     def initialize(lock)
       @class_name = nil
@@ -100,7 +96,6 @@ module Java::Lang::Management
     end
     
     typesig { [] }
-    # 
     # Returns the fully qualified name of the class of the lock object.
     # 
     # @return the fully qualified name of the class of the lock object.
@@ -109,7 +104,6 @@ module Java::Lang::Management
     end
     
     typesig { [] }
-    # 
     # Returns the identity hash code of the lock object
     # returned from the {@link System#identityHashCode} method.
     # 
@@ -119,7 +113,6 @@ module Java::Lang::Management
     end
     
     typesig { [] }
-    # 
     # Returns a string representation of a lock.  The returned
     # string representation consists of the name of the class of the
     # lock object, the at-sign character `@', and the unsigned

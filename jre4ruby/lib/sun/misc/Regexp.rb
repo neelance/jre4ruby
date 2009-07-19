@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 1995-2004 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -31,7 +30,6 @@ module Sun::Misc
     }
   end
   
-  # 
   # A class to represent a regular expression.  Only handles '*'s.
   # @author  James Gosling
   class Regexp 
@@ -44,7 +42,6 @@ module Sun::Misc
     alias_method :attr_ignore_case=, :ignore_case=
     undef_method :ignore_case=
     
-    # 
     # regular expressions are carved into three regions: a constant string
     # prefix, a constant string suffix, and a series of floating strings in
     # between.  In the input regular expression, they are separated by *s

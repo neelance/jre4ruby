@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 2004 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -31,7 +30,6 @@ module Sun::Security::Util
     }
   end
   
-  # 
   # An exception that denotes that an operation is pending.
   # Currently used by LoginContext.
   class PendingException < PendingExceptionImports.const_get :RuntimeException
@@ -43,7 +41,6 @@ module Sun::Security::Util
     }
     
     typesig { [] }
-    # 
     # Constructs a PendingException with no detail message. A detail
     # message is a String that describes this particular exception.
     def initialize
@@ -51,7 +48,6 @@ module Sun::Security::Util
     end
     
     typesig { [String] }
-    # 
     # Constructs a PendingException with the specified detail message.
     # A detail message is a String that describes this particular
     # exception.

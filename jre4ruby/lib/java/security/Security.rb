@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 1996-2006 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -40,7 +39,6 @@ module Java::Security
     }
   end
   
-  # 
   # <p>This class centralizes all security properties and common security
   # methods. One of its primary uses is to manage providers.
   # 
@@ -189,7 +187,7 @@ module Java::Security
             rescue Exception => e
               if (!(Sdebug).nil?)
                 Sdebug.println("unable to load security properties from " + extra_prop_file)
-                e_.print_stack_trace
+                e.print_stack_trace
               end
             ensure
               if (!(bis).nil?)
@@ -213,7 +211,6 @@ module Java::Security
       end
       
       typesig { [] }
-      # 
       # Initialize to default values, if <java.home>/lib/java.security
       # is not found.
       def initialize_static
@@ -227,7 +224,6 @@ module Java::Security
     }
     
     typesig { [] }
-    # 
     # Don't let anyone instantiate this.
     def initialize
     end
@@ -242,7 +238,6 @@ module Java::Security
       end
       
       typesig { [String] }
-      # 
       # Looks up providers, and returns the property (and its associated
       # provider) mapping the key, if any.
       # The order in which the providers are looked up is the
@@ -280,7 +275,6 @@ module Java::Security
       end
       
       typesig { [String, Provider] }
-      # 
       # Returns the property (if any) mapping the key for the given provider.
       def get_provider_property(key, provider)
         prop = provider.get_property(key)
@@ -300,7 +294,6 @@ module Java::Security
       end
       
       typesig { [String, String] }
-      # 
       # Gets a specified property for an algorithm. The algorithm name
       # should be a standard name. See Appendix A in the <a href=
       # "../../../technotes/guides/security/crypto/CryptoSpec.html#AppA">
@@ -332,7 +325,6 @@ module Java::Security
       end
       
       typesig { [Provider, ::Java::Int] }
-      # 
       # Adds a new provider, at a specified position. The position is
       # the preference order in which providers are searched for
       # requested algorithms.  The position is 1-based, that is,
@@ -390,7 +382,6 @@ module Java::Security
       end
       
       typesig { [Provider] }
-      # 
       # Adds a provider to the next position available.
       # 
       # <p>First, if there is a security manager, its
@@ -421,7 +412,6 @@ module Java::Security
       # @see #removeProvider
       # @see java.security.SecurityPermission
       def add_provider(provider)
-        # 
         # We can't assign a position here because the statically
         # registered providers may not have been installed yet.
         # insertProviderAt() will fix that value after it has
@@ -430,7 +420,6 @@ module Java::Security
       end
       
       typesig { [String] }
-      # 
       # Removes the provider with the specified name.
       # 
       # <p>When the specified provider is removed, all providers located
@@ -471,7 +460,6 @@ module Java::Security
       end
       
       typesig { [] }
-      # 
       # Returns an array containing all the installed providers. The order of
       # the providers in the array is their preference order.
       # 
@@ -481,7 +469,6 @@ module Java::Security
       end
       
       typesig { [String] }
-      # 
       # Returns the provider installed with the specified name, if
       # any. Returns null if no provider with the specified name is
       # installed or if name is null.
@@ -497,7 +484,6 @@ module Java::Security
       end
       
       typesig { [String] }
-      # 
       # Returns an array containing all installed providers that satisfy the
       # specified selection criterion, or null if no such providers have been
       # installed. The returned providers are ordered
@@ -572,7 +558,6 @@ module Java::Security
       end
       
       typesig { [Map] }
-      # 
       # Returns an array containing all installed providers that satisfy the
       # specified* selection criteria, or null if no such providers have been
       # installed. The returned providers are ordered
@@ -677,7 +662,6 @@ module Java::Security
       const_attr_reader  :SpiMap
       
       typesig { [String] }
-      # 
       # Return the Class object for the given engine type
       # (e.g. "MessageDigest"). Works for Spis in the java.security package
       # only.
@@ -696,7 +680,6 @@ module Java::Security
       end
       
       typesig { [String, String, String] }
-      # 
       # Returns an array of objects: the first object in the array is
       # an instance of an implementation of the requested algorithm
       # and type, and the second object in the array identifies the provider
@@ -721,7 +704,6 @@ module Java::Security
       end
       
       typesig { [String, String, Provider] }
-      # 
       # Returns an array of objects: the first object in the array is
       # an instance of an implementation of the requested algorithm
       # and type, and the second object in the array identifies the provider
@@ -737,7 +719,6 @@ module Java::Security
       end
       
       typesig { [String] }
-      # 
       # Gets a security property value.
       # 
       # <p>First, if there is a security manager, its
@@ -772,7 +753,6 @@ module Java::Security
       end
       
       typesig { [String, String] }
-      # 
       # Sets a security property value.
       # 
       # <p>First, if there is a security manager, its
@@ -801,7 +781,6 @@ module Java::Security
       end
       
       typesig { [String] }
-      # 
       # Implementation detail:  If the property we just set in
       # setProperty() was either "package.access" or
       # "package.definition", we need to signal to the SecurityManager
@@ -873,7 +852,6 @@ module Java::Security
       end
       
       typesig { [String, String, Array.typed(Provider)] }
-      # 
       # Returns all providers who satisfy the specified
       # criterion.
       def get_all_qualifying_candidates(filter_key, filter_value, all_providers)
@@ -901,7 +879,6 @@ module Java::Security
       end
       
       typesig { [Provider, String, String, String, String] }
-      # 
       # Returns true if the given provider satisfies
       # the selection criterion key:value.
       def is_criterion_satisfied(prov, service_name, alg_name, attr_name, filter_value)
@@ -945,7 +922,6 @@ module Java::Security
       end
       
       typesig { [String] }
-      # 
       # Returns true if the attribute is a standard attribute;
       # otherwise, returns false.
       def is_standard_attr(attribute)
@@ -961,7 +937,6 @@ module Java::Security
       end
       
       typesig { [String, String, String] }
-      # 
       # Returns true if the requested attribute value is supported;
       # otherwise, returns false.
       def is_constraint_satisfied(attribute, value, prop)
@@ -1033,7 +1008,6 @@ module Java::Security
       end
       
       typesig { [String] }
-      # 
       # Returns a Set of Strings containing the names of all available
       # algorithms or types for the specified Java cryptographic service
       # (e.g., Signature, MessageDigest, Cipher, Mac, KeyStore). Returns

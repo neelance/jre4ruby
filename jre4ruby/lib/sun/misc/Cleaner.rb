@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 2003 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -34,7 +33,6 @@ module Sun::Misc
     }
   end
   
-  # 
   # General-purpose phantom-reference-based cleaners.
   # 
   # <p> Cleaners are a lightweight and more robust alternative to finalization.
@@ -155,7 +153,6 @@ module Sun::Misc
     
     class_module.module_eval {
       typesig { [Object, Runnable] }
-      # 
       # Creates a new cleaner.
       # 
       # @param  thunk
@@ -173,7 +170,6 @@ module Sun::Misc
     }
     
     typesig { [] }
-    # 
     # Runs this cleaner, if it has not been run before.
     def clean
       if (!remove(self))

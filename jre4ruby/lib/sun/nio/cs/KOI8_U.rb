@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 2006 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -42,7 +41,6 @@ module Sun::Nio::Cs
     }
   end
   
-  # 
   # An implementation of charset KOI8_U as specified by
   # http://www.net.ua/KOI8-U
   class KOI8_U < KOI8_UImports.const_get :Charset

@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 2003 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -32,7 +31,6 @@ module Java::Security::Spec
     }
   end
   
-  # 
   # This immutable class specifies the set of domain parameters
   # used with elliptic curve cryptography (ECC).
   # 
@@ -70,7 +68,6 @@ module Java::Security::Spec
     undef_method :h=
     
     typesig { [EllipticCurve, ECPoint, BigInteger, ::Java::Int] }
-    # 
     # Creates elliptic curve domain parameters based on the
     # specified values.
     # @param curve the elliptic curve which this parameter
@@ -109,7 +106,6 @@ module Java::Security::Spec
     end
     
     typesig { [] }
-    # 
     # Returns the elliptic curve that this parameter defines.
     # @return the elliptic curve that this parameter defines.
     def get_curve
@@ -117,7 +113,6 @@ module Java::Security::Spec
     end
     
     typesig { [] }
-    # 
     # Returns the generator which is also known as the base point.
     # @return the generator which is also known as the base point.
     def get_generator
@@ -125,7 +120,6 @@ module Java::Security::Spec
     end
     
     typesig { [] }
-    # 
     # Returns the order of the generator.
     # @return the order of the generator.
     def get_order
@@ -133,7 +127,6 @@ module Java::Security::Spec
     end
     
     typesig { [] }
-    # 
     # Returns the cofactor.
     # @return the cofactor.
     def get_cofactor

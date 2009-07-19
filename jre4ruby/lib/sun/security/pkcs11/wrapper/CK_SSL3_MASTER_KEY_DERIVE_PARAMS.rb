@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Portions Copyright 2005 Sun Microsystems, Inc.  All Rights Reserved.
 # 
 # Copyright  (c) 2002 Graz University of Technology. All rights reserved.
@@ -52,7 +51,6 @@ module Sun::Security::Pkcs11::Wrapper
     }
   end
   
-  # 
   # class CK_SSL3_MASTER_KEY_DERIVE_PARAMS provides the parameters to the
   # CKM_SSL3_MASTER_KEY_DERIVE mechanism.<p>
   # <B>PKCS#11 structure:</B>
@@ -68,7 +66,6 @@ module Sun::Security::Pkcs11::Wrapper
   class CK_SSL3_MASTER_KEY_DERIVE_PARAMS 
     include_class_members CK_SSL3_MASTER_KEY_DERIVE_PARAMSImports
     
-    # 
     # <B>PKCS#11:</B>
     # <PRE>
     # CK_SSL3_RANDOM_DATA RandomInfo;
@@ -79,7 +76,6 @@ module Sun::Security::Pkcs11::Wrapper
     alias_method :attr_random_info=, :random_info=
     undef_method :random_info=
     
-    # 
     # <B>PKCS#11:</B>
     # <PRE>
     # CK_VERSION_PTR pVersion;
@@ -99,7 +95,6 @@ module Sun::Security::Pkcs11::Wrapper
     end
     
     typesig { [] }
-    # 
     # Returns the string representation of CK_SSL3_MASTER_KEY_DERIVE_PARAMS.
     # 
     # @return the string representation of CK_SSL3_MASTER_KEY_DERIVE_PARAMS

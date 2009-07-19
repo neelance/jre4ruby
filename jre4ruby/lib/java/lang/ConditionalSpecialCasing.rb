@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 2003-2005 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -36,7 +35,6 @@ module Java::Lang
     }
   end
   
-  # 
   # This is a utility class for <code>String.toLowerCase()</code> and
   # <code>String.toUpperCase()</code>, that handles special casing with
   # conditions.  In other words, it handles the mappings with conditions
@@ -216,7 +214,6 @@ module Java::Lang
       end
       
       typesig { [String, ::Java::Int, Locale] }
-      # 
       # Implements the "Final_Cased" condition
       # 
       # Specification: Within the closest word boundaries containing C, there is a cased
@@ -252,7 +249,6 @@ module Java::Lang
       end
       
       typesig { [String, ::Java::Int] }
-      # 
       # Implements the "After_I" condition
       # 
       # Specification: The last preceding base character was an uppercase I,
@@ -281,7 +277,6 @@ module Java::Lang
       end
       
       typesig { [String, ::Java::Int] }
-      # 
       # Implements the "After_Soft_Dotted" condition
       # 
       # Specification: The last preceding character with combining class
@@ -311,7 +306,6 @@ module Java::Lang
       end
       
       typesig { [String, ::Java::Int] }
-      # 
       # Implements the "More_Above" condition
       # 
       # Specification: C is followed by one or more characters of combining
@@ -341,7 +335,6 @@ module Java::Lang
       end
       
       typesig { [String, ::Java::Int] }
-      # 
       # Implements the "Before_Dot" condition
       # 
       # Specification: C is followed by <code>U+0307 COMBINING DOT ABOVE</code>.
@@ -373,7 +366,6 @@ module Java::Lang
       end
       
       typesig { [::Java::Int] }
-      # 
       # Examines whether a character is 'cased'.
       # 
       # A character C is defined to be 'cased' if and only if at least one of
@@ -454,7 +446,6 @@ module Java::Lang
         end
       end
       
-      # 
       # An internal class that represents an entry in the Special Casing Properties.
       const_set_lazy(:Entry) { Class.new do
         include_class_members ConditionalSpecialCasing

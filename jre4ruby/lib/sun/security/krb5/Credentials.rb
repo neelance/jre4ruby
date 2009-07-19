@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Portions Copyright 2000-2007 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -48,7 +47,6 @@ module Sun::Security::Krb5
     }
   end
   
-  # 
   # This class encapsulates the concept of a Kerberos service
   # credential. That includes a Kerberos ticket and an associated
   # session key.
@@ -204,7 +202,6 @@ module Sun::Security::Krb5
     end
     
     typesig { [] }
-    # 
     # Acquires a service ticket for the specified service
     # principal. If the service ticket is not already available, it
     # obtains a new one from the KDC.
@@ -315,7 +312,6 @@ module Sun::Security::Krb5
     end
     
     typesig { [] }
-    # 
     # Checks if the service ticket returned by the KDC has the OK-AS-DELEGATE
     # flag set
     # @return true if OK-AS_DELEGATE flag is set, otherwise, return false.
@@ -327,7 +323,6 @@ module Sun::Security::Krb5
     def renew
       options = KDCOptions.new
       options.set(KDCOptions::RENEW, true)
-      # 
       # Added here to pass KrbKdcRep.check:73
       options.set(KDCOptions::RENEWABLE, true)
       # from
@@ -339,7 +334,6 @@ module Sun::Security::Krb5
     
     class_module.module_eval {
       typesig { [PrincipalName, String] }
-      # 
       # Returns a TGT for the given client principal from a ticket cache.
       # 
       # @param princ the client principal. A value of null means that the
@@ -381,7 +375,6 @@ module Sun::Security::Krb5
             end
           end
         end
-        # 
         # Returns the appropriate cache. If ticketCache is null, it is the
         # default cache otherwise it is the cache filename contained in it.
         ccache = CredentialsCache.get_instance(princ, ticket_cache)
@@ -400,7 +393,6 @@ module Sun::Security::Krb5
       end
       
       typesig { [PrincipalName, Array.typed(EncryptionKey), Array.typed(::Java::Char)] }
-      # 
       # Returns a TGT for the given client principal via an AS-Exchange.
       # This method causes pre-authentication data to be sent in the
       # AS-REQ.
@@ -444,7 +436,6 @@ module Sun::Security::Krb5
       end
       
       typesig { [PrincipalName, Array.typed(EncryptionKey), KRBError] }
-      # 
       # Sends the AS-REQ
       def send_asrequest(princ, secret_keys, error)
         # %%%
@@ -471,7 +462,6 @@ module Sun::Security::Krb5
       end
       
       typesig { [] }
-      # 
       # Acquires default credentials.
       # <br>The possible locations for default credentials cache is searched in
       # the following order:
@@ -537,7 +527,6 @@ module Sun::Security::Krb5
       end
       
       typesig { [String, JavaFile] }
-      # 
       # Gets service credential from key table. The credential is used to
       # decrypt the received client message
       # and authenticate the client by verifying the client's credential.
@@ -566,7 +555,7 @@ module Sun::Security::Krb5
           return nil
         rescue KrbException => e
           if (self.attr_debug)
-            e_.print_stack_trace
+            e.print_stack_trace
           end
           return nil
         end
@@ -585,7 +574,6 @@ module Sun::Security::Krb5
       end
       
       typesig { [String, Credentials] }
-      # 
       # Acquires credentials for a specified service using initial credential.
       # When the service has a different realm
       # from the initial credential, we do cross-realm authentication
@@ -606,7 +594,6 @@ module Sun::Security::Krb5
       end
       
       typesig { [ServiceName, Credentials] }
-      # 
       # This method does the real job to request the service credential.
       def service_creds(service, ccreds)
         # KerberosTime from
@@ -633,7 +620,6 @@ module Sun::Security::Krb5
     
     class_module.module_eval {
       typesig { [Credentials] }
-      # 
       # Prints out debug info.
       def print_debug(c)
         System.out.println(">>> DEBUG: ----Credentials----")

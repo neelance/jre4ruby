@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 2003-2006 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -43,7 +42,6 @@ module Sun::Security::Provider::Certpath
     }
   end
   
-  # 
   # OCSPChecker is a <code>PKIXCertPathChecker</code> that uses the
   # Online Certificate Status Protocol (OCSP) as specified in RFC 2560
   # <a href="http://www.ietf.org/rfc/rfc2560.txt">
@@ -112,7 +110,6 @@ module Sun::Security::Provider::Certpath
     undef_method :pkix_params=
     
     typesig { [CertPath, PKIXParameters] }
-    # 
     # Default Constructor
     # 
     # @param certPath the X509 certification path
@@ -133,7 +130,6 @@ module Sun::Security::Provider::Certpath
     end
     
     typesig { [::Java::Boolean] }
-    # 
     # Initializes the internal state of the checker from parameters
     # specified in the constructor
     def init(forward)
@@ -155,7 +151,6 @@ module Sun::Security::Provider::Certpath
     end
     
     typesig { [Certificate, Collection] }
-    # 
     # Sends an OCSPRequest for the certificate to the OCSP Server and
     # processes the response back from the OCSP Server.
     # 
@@ -173,7 +168,6 @@ module Sun::Security::Provider::Certpath
         responder_subject_name = nil
         responder_issuer_name = nil
         responder_serial_number = nil
-        # 
         # OCSP security property values, in the following order:
         # 1. ocsp.responderURL
         # 2. ocsp.responderCertSubjectName
@@ -371,7 +365,7 @@ module Sun::Security::Provider::Certpath
           begin
             out.close
           rescue IOException => ioe
-            raise CertPathValidatorException.new(ioe_)
+            raise CertPathValidatorException.new(ioe)
           end
         end
       end
@@ -379,7 +373,6 @@ module Sun::Security::Provider::Certpath
     
     class_module.module_eval {
       typesig { [X509CertImpl, Array.typed(String)] }
-      # 
       # The OCSP security property values are in the following order:
       # 1. ocsp.responderURL
       # 2. ocsp.responderCertSubjectName
@@ -407,7 +400,7 @@ module Sun::Security::Provider::Certpath
                 uri = general_name.get_name
                 return (URL.new(uri.get_name))
               rescue Java::Net::MalformedURLException => e
-                raise CertPathValidatorException.new(e_)
+                raise CertPathValidatorException.new(e)
               end
             end
           end
@@ -416,7 +409,6 @@ module Sun::Security::Provider::Certpath
       end
       
       typesig { [] }
-      # 
       # Retrieves the values of the OCSP security properties.
       def get_ocspproperties
         properties = Array.typed(String).new(4) { nil }
@@ -446,7 +438,6 @@ module Sun::Security::Provider::Certpath
       end
       
       typesig { [String] }
-      # 
       # Removes any non-hexadecimal characters from a string.
       def strip_out_separators(value)
         chars = value.to_char_array
@@ -466,7 +457,6 @@ module Sun::Security::Provider::Certpath
     alias_method :initialize__ocspchecker, :initialize
   end
   
-  # 
   # Indicates that the identified certificate has been revoked.
   class CertificateRevokedException < OCSPCheckerImports.const_get :CertPathValidatorException
     include_class_members OCSPCheckerImports

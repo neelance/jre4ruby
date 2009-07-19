@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 2000 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -32,7 +31,6 @@ module Java::Text
     }
   end
   
-  # 
   # CharacterIteratorFieldDelegate combines the notifications from a Format
   # into a resulting <code>AttributedCharacterIterator</code>. The resulting
   # <code>AttributedCharacterIterator</code> can be retrieved by way of
@@ -41,7 +39,6 @@ module Java::Text
     include_class_members CharacterIteratorFieldDelegateImports
     include Format::FieldDelegate
     
-    # 
     # Array of AttributeStrings. Whenever <code>formatted</code> is invoked
     # for a region > size, a new instance of AttributedString is added to
     # attributedStrings. Subsequent invocations of <code>formatted</code>
@@ -53,7 +50,6 @@ module Java::Text
     alias_method :attr_attributed_strings=, :attributed_strings=
     undef_method :attributed_strings=
     
-    # 
     # Running count of the number of characters that have
     # been encountered.
     attr_accessor :size
@@ -91,8 +87,8 @@ module Java::Text
         end
         if (@size < end_)
           # Add new string
-          a_start_ = Math.max(start, @size)
-          string = AttributedString.new(buffer.substring(a_start_, end_))
+          a_start = Math.max(start, @size)
+          string = AttributedString.new(buffer.substring(a_start, end_))
           string.add_attribute(attr, value)
           @attributed_strings.add(string)
           @size = end_
@@ -106,7 +102,6 @@ module Java::Text
     end
     
     typesig { [String] }
-    # 
     # Returns an <code>AttributedCharacterIterator</code> that can be used
     # to iterate over the resulting formatted String.
     # 

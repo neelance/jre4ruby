@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 2000-2007 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -51,7 +50,6 @@ module Sun::Security::Provider::Certpath
     }
   end
   
-  # 
   # This class is able to build certification paths in either the forward
   # or reverse directions.
   # 
@@ -79,7 +77,6 @@ module Sun::Security::Provider::Certpath
       const_attr_reader  :Debug
     }
     
-    # 
     # private objects shared by methods
     attr_accessor :build_params
     alias_method :attr_build_params, :build_params
@@ -136,7 +133,6 @@ module Sun::Security::Provider::Certpath
     undef_method :ordered_cert_stores=
     
     typesig { [] }
-    # 
     # Create an instance of <code>SunCertPathBuilder</code>.
     # 
     # @throws CertPathBuilderException if an error occurs
@@ -160,7 +156,6 @@ module Sun::Security::Provider::Certpath
     end
     
     typesig { [CertPathParameters] }
-    # 
     # Attempts to build a certification path using the Sun build
     # algorithm from a trusted anchor(s) to a target subject, which must both
     # be specified in the input parameter set. By default, this method will
@@ -272,15 +267,14 @@ module Sun::Security::Provider::Certpath
       rescue Exception => e
         if (!(Debug).nil?)
           Debug.println("SunCertPathBuilder.engineBuild() exception " + "in wrap-up")
-          e_.print_stack_trace
+          e.print_stack_trace
         end
-        raise SunCertPathBuilderException.new("unable to find valid " + "certification path to requested target", e_, AdjacencyList.new(adj_list))
+        raise SunCertPathBuilderException.new("unable to find valid " + "certification path to requested target", e, AdjacencyList.new(adj_list))
       end
       return nil
     end
     
     typesig { [JavaList, LinkedList] }
-    # 
     # Private build reverse method.
     def build_reverse(adjacency_list, cert_path_list)
       if (!(Debug).nil?)
@@ -291,7 +285,6 @@ module Sun::Security::Provider::Certpath
       # Initialize adjacency list
       adjacency_list.clear
       adjacency_list.add(LinkedList.new)
-      # 
       # Perform a search using each trust anchor, until a valid
       # path is found
       iter = @build_params.get_trust_anchors.iterator
@@ -329,7 +322,6 @@ module Sun::Security::Provider::Certpath
     end
     
     typesig { [JavaList, LinkedList, ::Java::Boolean] }
-    # 
     # Private build forward method.
     def build_forward(adjacency_list, cert_path_list, search_all_cert_stores)
       if (!(Debug).nil?)
@@ -347,7 +339,6 @@ module Sun::Security::Provider::Certpath
     end
     
     typesig { [X500Principal, ForwardState, ForwardBuilder, JavaList, LinkedList] }
-    # 
     # This method performs a depth first search for a certification
     # path while building forward which meets the requirements set in
     # the parameters object.
@@ -366,21 +357,18 @@ module Sun::Security::Provider::Certpath
       if (!(Debug).nil?)
         Debug.println("SunCertPathBuilder.depthFirstSearchForward(" + (d_n).to_s + ", " + (current_state.to_s).to_s + ")")
       end
-      # 
       # Find all the certificates issued to dN which
       # satisfy the PKIX certification path constraints.
       vertices = add_vertices(builder.get_matching_certs(current_state, @ordered_cert_stores), adj_list)
       if (!(Debug).nil?)
         Debug.println("SunCertPathBuilder.depthFirstSearchForward(): " + "certs.size=" + (vertices.size).to_s)
       end
-      # 
       # For each cert in the collection, verify anything
       # that hasn't been checked yet (signature, revocation, etc)
       # and check for loops. Call depthFirstSearchForward()
       # recursively for each good cert.
       vertices.each do |vertex|
         catch(:next_vertices) do
-          # 
           # Restore state to currentState each time through the loop.
           # This is important because some of the user-defined
           # checkers modify the state, which MUST be restored if
@@ -398,7 +386,6 @@ module Sun::Security::Provider::Certpath
             vertex.set_throwable(gse)
             next
           end
-          # 
           # Certificate is good.
           # If cert completes the path,
           # process userCheckers that don't support forward checking
@@ -412,7 +399,6 @@ module Sun::Security::Provider::Certpath
               Debug.println("SunCertPathBuilder.depthFirstSearchForward()" + ": commencing final verification")
             end
             appended_certs = ArrayList.new(cert_path_list)
-            # 
             # if the trust anchor selected is specified as a trusted
             # public key rather than a trusted cert, then verify this
             # cert (which is signed by the trusted public key), but
@@ -474,7 +460,6 @@ module Sun::Security::Provider::Certpath
                 end
                 ((j += 1) - 1)
               end
-              # 
               # Remove extensions from user checkers that support
               # forward checking. After this step, we will have
               # removed all extensions that all user checkers
@@ -507,7 +492,6 @@ module Sun::Security::Provider::Certpath
               Debug.println("SunCertPathBuilder.depthFirstSearchForward()" + ": final verification succeeded - path completed!")
             end
             @path_completed = true
-            # 
             # if the user specified a trusted public key rather than
             # trusted certs, then add this cert (which is signed by
             # the trusted public key) to the certPathList
@@ -516,7 +500,6 @@ module Sun::Security::Provider::Certpath
             end
             # Save the trust anchor
             @trust_anchor = builder.attr_trust_anchor
-            # 
             # Extract and save the final target public key
             if (!(basic_checker).nil?)
               @final_public_key = basic_checker.get_public_key
@@ -536,19 +519,16 @@ module Sun::Security::Provider::Certpath
           end
           # Update the PKIX state
           next_state.update_state(cert)
-          # 
           # Append an entry for cert in adjacency list and
           # set index for current vertex.
           adj_list.add(LinkedList.new)
           vertex.set_index(adj_list.size - 1)
           # recursively search for matching certs at next dN
           depth_first_search_forward(cert.get_issuer_x500principal, next_state, builder, adj_list, cert_path_list)
-          # 
           # If path has been completed, return ASAP!
           if (@path_completed)
             return
           else
-            # 
             # If we get here, it means we have searched all possible
             # certs issued by the dN w/o finding any matching certs.
             # This means we have to backtrack to the previous cert in
@@ -558,12 +538,11 @@ module Sun::Security::Provider::Certpath
             end
             builder.remove_final_cert_from_path(cert_path_list)
           end
-        end == :thrown or break
+        end
       end
     end
     
     typesig { [X500Principal, ReverseState, ReverseBuilder, JavaList, LinkedList] }
-    # 
     # This method performs a depth first search for a certification
     # path while building reverse which meets the requirements set in
     # the parameters object.
@@ -581,20 +560,17 @@ module Sun::Security::Provider::Certpath
       if (!(Debug).nil?)
         Debug.println("SunCertPathBuilder.depthFirstSearchReverse(" + (d_n).to_s + ", " + (current_state.to_s).to_s + ")")
       end
-      # 
       # Find all the certificates issued by dN which
       # satisfy the PKIX certification path constraints.
       vertices = add_vertices(builder.get_matching_certs(current_state, @ordered_cert_stores), adj_list)
       if (!(Debug).nil?)
         Debug.println("SunCertPathBuilder.depthFirstSearchReverse(): " + "certs.size=" + (vertices.size).to_s)
       end
-      # 
       # For each cert in the collection, verify anything
       # that hasn't been checked yet (signature, revocation, etc)
       # and check for loops. Call depthFirstSearchReverse()
       # recursively for each good cert.
       vertices.each do |vertex|
-        # 
         # Restore state to currentState each time through the loop.
         # This is important because some of the user-defined
         # checkers modify the state, which MUST be restored if
@@ -611,7 +587,6 @@ module Sun::Security::Provider::Certpath
           vertex.set_throwable(gse)
           next
         end
-        # 
         # Certificate is good, add it to the path (if it isn't a
         # self-signed cert) and update state
         if (!current_state.is_initial)
@@ -619,7 +594,6 @@ module Sun::Security::Provider::Certpath
         end
         # save trust anchor
         @trust_anchor = current_state.attr_trust_anchor
-        # 
         # Check if path is completed, return ASAP if so.
         if (builder.is_path_completed(cert))
           if (!(Debug).nil?)
@@ -633,7 +607,6 @@ module Sun::Security::Provider::Certpath
             @policy_tree_result = root_node.copy_tree
             (@policy_tree_result).set_immutable
           end
-          # 
           # Extract and save the final target public key
           @final_public_key = cert.get_public_key
           if (@final_public_key.is_a?(DSAPublicKey) && ((@final_public_key).get_params).nil?)
@@ -643,19 +616,16 @@ module Sun::Security::Provider::Certpath
         end
         # Update the PKIX state
         next_state.update_state(cert)
-        # 
         # Append an entry for cert in adjacency list and
         # set index for current vertex.
         adj_list.add(LinkedList.new)
         vertex.set_index(adj_list.size - 1)
         # recursively search for matching certs at next dN
         depth_first_search_reverse(cert.get_subject_x500principal, next_state, builder, adj_list, cert_path_list)
-        # 
         # If path has been completed, return ASAP!
         if (@path_completed)
           return
         else
-          # 
           # If we get here, it means we have searched all possible
           # certs issued by the dN w/o finding any matching certs. This
           # means we have to backtrack to the previous cert in the path
@@ -674,7 +644,6 @@ module Sun::Security::Provider::Certpath
     end
     
     typesig { [Collection, JavaList] }
-    # 
     # Adds a collection of matching certificates to the
     # adjacency list.
     def add_vertices(certs, adj_list)
@@ -687,7 +656,6 @@ module Sun::Security::Provider::Certpath
     end
     
     typesig { [TrustAnchor, X509CertSelector] }
-    # 
     # Returns true if trust anchor certificate matches specified
     # certificate constraints.
     def anchor_is_target(anchor, sel)
@@ -699,7 +667,6 @@ module Sun::Security::Provider::Certpath
     end
     
     class_module.module_eval {
-      # 
       # Comparator that orders CertStores so that local CertStores come before
       # remote CertStores.
       const_set_lazy(:CertStoreComparator) { Class.new do
@@ -725,7 +692,6 @@ module Sun::Security::Provider::Certpath
     }
     
     typesig { [JavaList, X509CertSelector] }
-    # 
     # Returns the target subject DN from the first X509Certificate that
     # is fetched that matches the specified X509CertSelector.
     def get_target_subject_dn(stores, target_sel)

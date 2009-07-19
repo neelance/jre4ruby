@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 2000-2003 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -33,7 +32,6 @@ module Java::Nio::Channels::Spi
     }
   end
   
-  # 
   # Base implementation class for selectable channels.
   # 
   # <p> This class defines methods that handle the mechanics of channel
@@ -96,7 +94,6 @@ module Java::Nio::Channels::Spi
     undef_method :blocking=
     
     typesig { [SelectorProvider] }
-    # 
     # Initializes a new instance of this class.
     def initialize(provider)
       @provider = nil
@@ -115,7 +112,6 @@ module Java::Nio::Channels::Spi
     end
     
     typesig { [] }
-    # 
     # Returns the provider that created this channel.
     # 
     # @return  The provider that created this channel
@@ -222,7 +218,6 @@ module Java::Nio::Channels::Spi
     end
     
     typesig { [Selector, ::Java::Int, Object] }
-    # 
     # Registers this channel with the given selector, returning a selection key.
     # 
     # <p>  This method first verifies that this channel is open and that the
@@ -289,7 +284,6 @@ module Java::Nio::Channels::Spi
     end
     
     typesig { [] }
-    # 
     # Closes this selectable channel.
     # 
     # <p> This method is invoked by the {@link java.nio.channels.Channel#close
@@ -319,7 +313,6 @@ module Java::Nio::Channels::Spi
     end
     
     typesig { [::Java::Boolean] }
-    # 
     # Adjusts this channel's blocking mode.
     # 
     # <p> If the given blocking mode is different from the current blocking
@@ -344,7 +337,6 @@ module Java::Nio::Channels::Spi
     end
     
     typesig { [::Java::Boolean] }
-    # 
     # Adjusts this channel's blocking mode.
     # 
     # <p> This method is invoked by the {@link #configureBlocking

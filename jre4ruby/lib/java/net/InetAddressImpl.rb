@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 2002-2005 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -32,7 +31,6 @@ module Java::Net
     }
   end
   
-  # 
   # Package private interface to "implementation" used by
   # {@link InetAddress}.
   # <p>

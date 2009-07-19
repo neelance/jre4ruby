@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 1997-2005 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -31,7 +30,6 @@ module Java::Security::Spec
     }
   end
   
-  # 
   # This class represents the ASN.1 encoding of a private key,
   # encoded according to the ASN.1 type <code>PrivateKeyInfo</code>.
   # The <code>PrivateKeyInfo</code> syntax is defined in the PKCS#8 standard
@@ -67,7 +65,6 @@ module Java::Security::Spec
     include_class_members PKCS8EncodedKeySpecImports
     
     typesig { [Array.typed(::Java::Byte)] }
-    # 
     # Creates a new PKCS8EncodedKeySpec with the given encoded key.
     # 
     # @param encodedKey the key, which is assumed to be
@@ -80,7 +77,6 @@ module Java::Security::Spec
     end
     
     typesig { [] }
-    # 
     # Returns the key bytes, encoded according to the PKCS #8 standard.
     # 
     # @return the PKCS #8 encoding of the key. Returns a new array
@@ -90,7 +86,6 @@ module Java::Security::Spec
     end
     
     typesig { [] }
-    # 
     # Returns the name of the encoding format associated with this
     # key specification.
     # 

@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 1998-2003 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -32,7 +31,6 @@ module Java::Security::Interfaces
     }
   end
   
-  # 
   # The interface to an RSA private key, as defined in the PKCS#1 standard,
   # using the <i>Chinese Remainder Theorem</i> (CRT) information values.
   # 
@@ -50,7 +48,6 @@ module Java::Security::Interfaces
     }
     
     typesig { [] }
-    # 
     # Returns the public exponent.
     # 
     # @return the public exponent
@@ -59,7 +56,6 @@ module Java::Security::Interfaces
     end
     
     typesig { [] }
-    # 
     # Returns the primeP.
     # 
     # @return the primeP
@@ -68,7 +64,6 @@ module Java::Security::Interfaces
     end
     
     typesig { [] }
-    # 
     # Returns the primeQ.
     # 
     # @return the primeQ
@@ -77,7 +72,6 @@ module Java::Security::Interfaces
     end
     
     typesig { [] }
-    # 
     # Returns the primeExponentP.
     # 
     # @return the primeExponentP
@@ -86,7 +80,6 @@ module Java::Security::Interfaces
     end
     
     typesig { [] }
-    # 
     # Returns the primeExponentQ.
     # 
     # @return the primeExponentQ
@@ -95,7 +88,6 @@ module Java::Security::Interfaces
     end
     
     typesig { [] }
-    # 
     # Returns the crtCoefficient.
     # 
     # @return the crtCoefficient

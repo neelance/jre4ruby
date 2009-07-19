@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 2003 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -31,7 +30,6 @@ module Java::Util
     }
   end
   
-  # 
   # Unchecked exception thrown when duplicate flags are provided in the format
   # specifier.
   # 
@@ -55,7 +53,6 @@ module Java::Util
     undef_method :flags=
     
     typesig { [String] }
-    # 
     # Constructs an instance of this class with the specified flags.
     # 
     # @param  f
@@ -70,7 +67,6 @@ module Java::Util
     end
     
     typesig { [] }
-    # 
     # Returns the set of flags which contains a duplicate flag.
     # 
     # @return  The flags

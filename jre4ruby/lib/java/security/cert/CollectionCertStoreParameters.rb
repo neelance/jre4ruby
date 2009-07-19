@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 2000-2006 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -34,7 +33,6 @@ module Java::Security::Cert
     }
   end
   
-  # 
   # Parameters used as input for the Collection <code>CertStore</code>
   # algorithm.
   # <p>
@@ -67,7 +65,6 @@ module Java::Security::Cert
     undef_method :coll=
     
     typesig { [Collection] }
-    # 
     # Creates an instance of <code>CollectionCertStoreParameters</code>
     # which will allow certificates and CRLs to be retrieved from the
     # specified <code>Collection</code>. If the specified
@@ -101,7 +98,6 @@ module Java::Security::Cert
     end
     
     typesig { [] }
-    # 
     # Creates an instance of <code>CollectionCertStoreParameters</code> with
     # the default parameter values (an empty and immutable
     # <code>Collection</code>).
@@ -111,7 +107,6 @@ module Java::Security::Cert
     end
     
     typesig { [] }
-    # 
     # Returns the <code>Collection</code> from which <code>Certificate</code>s
     # and <code>CRL</code>s are retrieved. This is <b>not</b> a copy of the
     # <code>Collection</code>, it is a reference. This allows the caller to
@@ -124,7 +119,6 @@ module Java::Security::Cert
     end
     
     typesig { [] }
-    # 
     # Returns a copy of this object. Note that only a reference to the
     # <code>Collection</code> is copied, and not the contents.
     # 
@@ -139,7 +133,6 @@ module Java::Security::Cert
     end
     
     typesig { [] }
-    # 
     # Returns a formatted string describing the parameters.
     # 
     # @return a formatted string describing the parameters

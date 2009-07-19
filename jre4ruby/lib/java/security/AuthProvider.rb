@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 2003-2004 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -34,7 +33,6 @@ module Java::Security
     }
   end
   
-  # 
   # This class defines login and logout methods for a provider.
   # 
   # <p> While callers may invoke <code>login</code> directly,
@@ -47,7 +45,6 @@ module Java::Security
     include_class_members AuthProviderImports
     
     typesig { [String, ::Java::Double, String] }
-    # 
     # Constructs a provider with the specified name, version number,
     # and information.
     # 
@@ -59,7 +56,6 @@ module Java::Security
     end
     
     typesig { [Subject, CallbackHandler] }
-    # 
     # Log in to this provider.
     # 
     # <p> The provider relies on a <code>CallbackHandler</code>
@@ -94,7 +90,6 @@ module Java::Security
     end
     
     typesig { [] }
-    # 
     # Log out from this provider.
     # 
     # @exception LoginException if the logout operation fails
@@ -108,7 +103,6 @@ module Java::Security
     end
     
     typesig { [CallbackHandler] }
-    # 
     # Set a <code>CallbackHandler</code>.
     # 
     # <p> The provider uses this handler if one is not passed to the

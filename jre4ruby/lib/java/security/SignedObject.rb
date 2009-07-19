@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 1997-2003 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -32,7 +31,6 @@ module Java::Security
     }
   end
   
-  # 
   # <p> SignedObject is a class for the purpose of creating authentic
   # runtime objects whose integrity cannot be compromised without being
   # detected.
@@ -128,7 +126,6 @@ module Java::Security
       const_attr_reader  :SerialVersionUID
     }
     
-    # 
     # The original content is "deep copied" in its serialized format
     # and stored in a byte array.  The signature field is also in the
     # form of byte array.
@@ -151,7 +148,6 @@ module Java::Security
     undef_method :thealgorithm=
     
     typesig { [Serializable, PrivateKey, Signature] }
-    # 
     # Constructs a SignedObject from any Serializable object.
     # The given object is signed with the given signing key, using the
     # designated signature engine.
@@ -181,7 +177,6 @@ module Java::Security
     end
     
     typesig { [] }
-    # 
     # Retrieves the encapsulated object.
     # The encapsulated object is de-serialized before it is returned.
     # 
@@ -201,7 +196,6 @@ module Java::Security
     end
     
     typesig { [] }
-    # 
     # Retrieves the signature on the signed object, in the form of a
     # byte array.
     # 
@@ -212,7 +206,6 @@ module Java::Security
     end
     
     typesig { [] }
-    # 
     # Retrieves the name of the signature algorithm.
     # 
     # @return the signature algorithm name.
@@ -221,7 +214,6 @@ module Java::Security
     end
     
     typesig { [PublicKey, Signature] }
-    # 
     # Verifies that the signature in this SignedObject is the valid
     # signature for the object stored inside, with the given
     # verification key, using the designated verification engine.
@@ -241,7 +233,6 @@ module Java::Security
     end
     
     typesig { [PrivateKey, Signature] }
-    # 
     # Signs the encapsulated object with the given signing key, using the
     # designated signature engine.
     # 
@@ -259,7 +250,6 @@ module Java::Security
     end
     
     typesig { [Java::Io::ObjectInputStream] }
-    # 
     # readObject is called to restore the state of the SignedObject from
     # a stream.
     def read_object(s)

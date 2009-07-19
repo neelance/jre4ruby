@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 2000-2006 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -33,7 +32,6 @@ module Sun::Security::Jgss::Spi
     }
   end
   
-  # 
   # This interface is implemented by the factory class for every
   # plugin mechanism. The GSSManager locates an implementation of this
   # interface by querying the security providers installed on the
@@ -54,7 +52,6 @@ module Sun::Security::Jgss::Spi
     include_class_members MechanismFactoryImports
     
     typesig { [] }
-    # 
     # Returns the Oid of the mechanism that this factory supports.
     # @return the Oid
     def get_mechanism_oid
@@ -62,7 +59,6 @@ module Sun::Security::Jgss::Spi
     end
     
     typesig { [] }
-    # 
     # Returns the provider that this factory came from.
     # @return the provider
     def get_provider
@@ -70,7 +66,6 @@ module Sun::Security::Jgss::Spi
     end
     
     typesig { [] }
-    # 
     # Returns the GSS-API nametypes that this mechanism can
     # support. Having this method helps the GSS-Framework decide quickly
     # if a certain mechanism can be skipped when importing a name.
@@ -82,7 +77,6 @@ module Sun::Security::Jgss::Spi
     end
     
     typesig { [GSSNameSpi, ::Java::Int, ::Java::Int, ::Java::Int] }
-    # 
     # Creates a credential element for this mechanism to be included as
     # part of a GSSCredential implementation. A GSSCredential is
     # conceptually a container class of several credential elements from
@@ -130,7 +124,6 @@ module Sun::Security::Jgss::Spi
     end
     
     typesig { [String, Oid] }
-    # 
     # Creates a name element for this mechanism to be included as part of
     # a GSSName implementation. A GSSName is conceptually a container
     # class of several name elements from different mechanisms. A GSSName
@@ -150,7 +143,6 @@ module Sun::Security::Jgss::Spi
     end
     
     typesig { [Array.typed(::Java::Byte), Oid] }
-    # 
     # This is a variation of the factory method that accepts a String for
     # the characters that make up the name. Usually the String characters
     # are assumed to be printable. The bytes passed in to this method have
@@ -170,7 +162,6 @@ module Sun::Security::Jgss::Spi
     end
     
     typesig { [GSSNameSpi, GSSCredentialSpi, ::Java::Int] }
-    # 
     # Creates a security context for this mechanism so that it can be used
     # on the context initiator's side.
     # 
@@ -192,7 +183,6 @@ module Sun::Security::Jgss::Spi
     end
     
     typesig { [GSSCredentialSpi] }
-    # 
     # Creates a security context for this mechanism so thatit can be used
     # on the context acceptor's side.
     # 
@@ -210,7 +200,6 @@ module Sun::Security::Jgss::Spi
     end
     
     typesig { [Array.typed(::Java::Byte)] }
-    # 
     # Creates a security context from a previously exported (serialized)
     # security context. Note that this is different from Java
     # serialization and is defined at a mechanism level to interoperate

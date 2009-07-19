@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 2005-2006 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -31,7 +30,6 @@ module Java::Net
     }
   end
   
-  # 
   # This class represents a Network Interface address. In short it's an
   # IP address, a subnet mask and a broadcast address when the address is
   # an IPv4 one. An IP address and a network prefix length in the case
@@ -61,7 +59,6 @@ module Java::Net
     undef_method :mask_length=
     
     typesig { [] }
-    # 
     # Package private constructor. Can't be built directly, instances are
     # obtained through the NetworkInterface class.
     def initialize
@@ -71,7 +68,6 @@ module Java::Net
     end
     
     typesig { [] }
-    # 
     # Returns an <code>InetAddress</code> for this address.
     # 
     # @return the <code>InetAddress</code> for this address.
@@ -80,7 +76,6 @@ module Java::Net
     end
     
     typesig { [] }
-    # 
     # Returns an <code>InetAddress</code> for the brodcast address
     # for this InterfaceAddress.
     # <p>
@@ -94,7 +89,6 @@ module Java::Net
     end
     
     typesig { [] }
-    # 
     # Returns the network prefix length for this address. This is also known
     # as the subnet mask in the context of IPv4 addresses.
     # Typical IPv4 values would be 8 (255.0.0.0), 16 (255.255.0.0)
@@ -108,7 +102,6 @@ module Java::Net
     end
     
     typesig { [Object] }
-    # 
     # Compares this object against the specified object.
     # The result is <code>true</code> if and only if the argument is
     # not <code>null</code> and it represents the same interface address as
@@ -140,7 +133,6 @@ module Java::Net
     end
     
     typesig { [] }
-    # 
     # Returns a hashcode for this Interface address.
     # 
     # @return  a hash code value for this Interface address.
@@ -149,7 +141,6 @@ module Java::Net
     end
     
     typesig { [] }
-    # 
     # Converts this Interface address to a <code>String</code>. The
     # string returned is of the form: InetAddress / prefix length [ broadcast address ].
     # 

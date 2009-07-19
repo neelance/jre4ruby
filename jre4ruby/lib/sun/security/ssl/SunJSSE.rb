@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 1999-2007 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -32,7 +31,6 @@ module Sun::Security::Ssl
     }
   end
   
-  # 
   # The JSSE provider.
   # 
   # The RSA implementation has been removed from JSSE, but we still need to
@@ -252,7 +250,6 @@ module Sun::Security::Ssl
       put("SSLContext.TLS", "sun.security.ssl.SSLContextImpl")
       put("SSLContext.TLSv1", "sun.security.ssl.SSLContextImpl")
       put("SSLContext.Default", "sun.security.ssl.DefaultSSLContextImpl")
-      # 
       # KeyStore
       put("KeyStore.PKCS12", "sun.security.pkcs12.PKCS12KeyStore")
     end

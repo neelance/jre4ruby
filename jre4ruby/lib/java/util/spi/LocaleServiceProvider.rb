@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 2005-2006 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -32,7 +31,6 @@ module Java::Util::Spi
     }
   end
   
-  # 
   # <p>
   # This is the super class of all the locale sensitive service provider
   # interfaces (SPIs).
@@ -120,14 +118,12 @@ module Java::Util::Spi
     include_class_members LocaleServiceProviderImports
     
     typesig { [] }
-    # 
     # Sole constructor.  (For invocation by subclass constructors, typically
     # implicit.)
     def initialize
     end
     
     typesig { [] }
-    # 
     # Returns an array of all locales for which this locale service provider
     # can provide localized objects or names.
     # 

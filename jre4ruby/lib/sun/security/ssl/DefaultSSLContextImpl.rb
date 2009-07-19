@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 2005-2007 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -35,7 +34,6 @@ module Sun::Security::Ssl
     }
   end
   
-  # 
   # "Default" SSLContext as returned by SSLContext.getDefault(). It comes
   # initialized with default KeyManagers and TrustManagers created using
   # various system properties.
@@ -200,7 +198,6 @@ module Sun::Security::Ssl
           if (!(default_key_store_password.length).equal?(0))
             passwd = default_key_store_password.to_char_array
           end
-          # 
           # Try to initialize key store.
           ks = nil
           if (!((default_key_store_type.length)).equal?(0))
@@ -219,7 +216,6 @@ module Sun::Security::Ssl
             fs.close
             fs = nil
           end
-          # 
           # Try to initialize key manager.
           if (!(Debug).nil? && Debug.is_on("defaultctx"))
             System.out.println("init keymanager of type " + (KeyManagerFactory.get_default_algorithm).to_s)

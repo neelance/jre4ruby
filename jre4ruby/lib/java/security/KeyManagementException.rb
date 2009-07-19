@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 1996-2003 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -31,7 +30,6 @@ module Java::Security
     }
   end
   
-  # 
   # This is the general key management exception for all operations
   # dealing with key management. Examples of subclasses of
   # KeyManagementException that developers might create for
@@ -56,7 +54,6 @@ module Java::Security
     }
     
     typesig { [] }
-    # 
     # Constructs a KeyManagementException with no detail message. A
     # detail message is a String that describes this particular
     # exception.
@@ -65,7 +62,6 @@ module Java::Security
     end
     
     typesig { [String] }
-    # 
     # Constructs a KeyManagementException with the specified detail
     # message. A detail message is a String that describes this
     # particular exception.
@@ -76,7 +72,6 @@ module Java::Security
     end
     
     typesig { [String, Exception] }
-    # 
     # Creates a <code>KeyManagementException</code> with the specified
     # detail message and cause.
     # 
@@ -91,7 +86,6 @@ module Java::Security
     end
     
     typesig { [Exception] }
-    # 
     # Creates a <code>KeyManagementException</code> with the specified cause
     # and a detail message of <tt>(cause==null ? null : cause.toString())</tt>
     # (which typically contains the class and detail message of

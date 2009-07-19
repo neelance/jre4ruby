@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 1996-2007 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -79,7 +78,6 @@ module Sun::Security::Ssl
     end
     
     typesig { [] }
-    # 
     # Return the minimum number of bytes that can be read without blocking.
     # Currently not synchronized.
     def available
@@ -90,7 +88,6 @@ module Sun::Security::Ssl
     end
     
     typesig { [] }
-    # 
     # Read a single byte, returning -1 on non-fault EOF status.
     def read
       synchronized(self) do
@@ -104,7 +101,6 @@ module Sun::Security::Ssl
     end
     
     typesig { [Array.typed(::Java::Byte), ::Java::Int, ::Java::Int] }
-    # 
     # Read up to "len" bytes into this buffer, starting at "off".
     # If the layer above needs more data, it asks for more, so we
     # are responsible only for blocking to fill at most one buffer,
@@ -115,7 +111,6 @@ module Sun::Security::Ssl
           return -1
         end
         begin
-          # 
           # Read data if needed ... notice that the connection guarantees
           # that handshake, alert, and change cipher spec data streams are
           # handled as they arrive, so we never see them here.
@@ -138,7 +133,6 @@ module Sun::Security::Ssl
     end
     
     typesig { [::Java::Long] }
-    # 
     # Skip n bytes. This implementation is somewhat less efficient
     # than possible, but not badly so (redundant copy). We reuse
     # the read() code to keep things simpler. Note that SKIP_ARRAY
@@ -161,7 +155,6 @@ module Sun::Security::Ssl
     end
     
     typesig { [] }
-    # 
     # Socket close is already synchronized, no need to block here.
     def close
       @c.close

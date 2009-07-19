@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 2005-2007 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -33,7 +32,6 @@ module Java::Io
     }
   end
   
-  # 
   # This class holds a set of filenames to be deleted on VM exit through a shutdown hook.
   # A set is used both to prevent double-insertion of the same file as well as offer
   # quick removal.

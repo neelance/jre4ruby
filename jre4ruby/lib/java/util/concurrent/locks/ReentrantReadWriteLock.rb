@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
 # This code is free software; you can redistribute it and/or modify it
@@ -43,7 +42,6 @@ module Java::Util::Concurrent::Locks
     }
   end
   
-  # 
   # An implementation of {@link ReadWriteLock} supporting similar
   # semantics to {@link ReentrantLock}.
   # <p>This class has the following properties:
@@ -250,7 +248,6 @@ module Java::Util::Concurrent::Locks
     undef_method :sync=
     
     typesig { [] }
-    # 
     # Creates a new {@code ReentrantReadWriteLock} with
     # default (nonfair) ordering properties.
     def initialize
@@ -258,7 +255,6 @@ module Java::Util::Concurrent::Locks
     end
     
     typesig { [::Java::Boolean] }
-    # 
     # Creates a new {@code ReentrantReadWriteLock} with
     # the given fairness policy.
     # 
@@ -283,7 +279,6 @@ module Java::Util::Concurrent::Locks
     end
     
     class_module.module_eval {
-      # 
       # Synchronization implementation for ReentrantReadWriteLock.
       # Subclassed into fair and nonfair versions.
       const_set_lazy(:Sync) { Class.new(AbstractQueuedSynchronizer) do
@@ -293,7 +288,6 @@ module Java::Util::Concurrent::Locks
           const_set_lazy(:SerialVersionUID) { 6317671515068378041 }
           const_attr_reader  :SerialVersionUID
           
-          # 
           # Read vs write count extraction constants and functions.
           # Lock state is logically divided into two shorts: The lower
           # one representing the exclusive (writer) lock hold count,
@@ -322,7 +316,6 @@ module Java::Util::Concurrent::Locks
             return c & self.class::EXCLUSIVE_MASK
           end
           
-          # 
           # A counter for per-thread read hold counts.
           # Maintained as a ThreadLocal; cached in cachedHoldCounter
           const_set_lazy(:HoldCounter) { Class.new do
@@ -361,7 +354,6 @@ module Java::Util::Concurrent::Locks
             alias_method :initialize__hold_counter, :initialize
           end }
           
-          # 
           # ThreadLocal subclass. Easiest to explicitly define for sake
           # of deserialization mechanics.
           const_set_lazy(:ThreadLocalHoldCounter) { Class.new(ThreadLocal) do
@@ -382,7 +374,6 @@ module Java::Util::Concurrent::Locks
           end }
         }
         
-        # 
         # The number of read locks held by current thread.
         # Initialized only in constructor and readObject.
         attr_accessor :read_holds
@@ -391,7 +382,6 @@ module Java::Util::Concurrent::Locks
         alias_method :attr_read_holds=, :read_holds=
         undef_method :read_holds=
         
-        # 
         # The hold count of the last thread to successfully acquire
         # readLock. This saves ThreadLocal lookup in the common case
         # where the next thread to release is the last one to
@@ -413,7 +403,6 @@ module Java::Util::Concurrent::Locks
         end
         
         typesig { [] }
-        # 
         # Acquires and releases use the same code for fair and
         # nonfair locks, but differ in whether/how they allow barging
         # when queues are non-empty.
@@ -427,7 +416,6 @@ module Java::Util::Concurrent::Locks
         end
         
         typesig { [] }
-        # 
         # Returns true if the current thread, when trying to acquire
         # the write lock, and otherwise eligible to do so, should block
         # because of policy for overtaking other waiting threads.
@@ -436,7 +424,6 @@ module Java::Util::Concurrent::Locks
         end
         
         typesig { [::Java::Int] }
-        # 
         # Note that tryRelease and tryAcquire can be called by
         # Conditions. So it is possible that their arguments contain
         # both read and write holds that are all released during a
@@ -456,7 +443,6 @@ module Java::Util::Concurrent::Locks
         
         typesig { [::Java::Int] }
         def try_acquire(acquires)
-          # 
           # Walkthrough:
           # 1. If read count nonzero or write count nonzero
           # and owner is a different thread, fail.
@@ -509,7 +495,6 @@ module Java::Util::Concurrent::Locks
         
         typesig { [::Java::Int] }
         def try_acquire_shared(unused)
-          # 
           # Walkthrough:
           # 1. If write lock held by another thread, fail.
           # 2. If count saturated, throw error.
@@ -544,11 +529,9 @@ module Java::Util::Concurrent::Locks
         end
         
         typesig { [JavaThread] }
-        # 
         # Full version of acquire for reads, that handles CAS misses
         # and reentrant reads not dealt with in tryAcquireShared.
         def full_try_acquire_shared(current)
-          # 
           # This code is in part redundant with that in
           # tryAcquireShared but is simpler overall by not
           # complicating tryAcquireShared with interactions between
@@ -575,7 +558,6 @@ module Java::Util::Concurrent::Locks
         end
         
         typesig { [] }
-        # 
         # Performs tryLock for write, enabling barging in both modes.
         # This is identical in effect to tryAcquire except for lack
         # of calls to writerShouldBlock
@@ -599,7 +581,6 @@ module Java::Util::Concurrent::Locks
         end
         
         typesig { [] }
-        # 
         # Performs tryLock for read, enabling barging in both modes.
         # This is identical in effect to tryAcquireShared except for
         # lack of calls to readerShouldBlock
@@ -664,7 +645,6 @@ module Java::Util::Concurrent::Locks
         end
         
         typesig { [Java::Io::ObjectInputStream] }
-        # 
         # Reconstitute this lock instance from a stream
         # @param s the stream
         def read_object(s)
@@ -682,7 +662,6 @@ module Java::Util::Concurrent::Locks
         alias_method :initialize__sync, :initialize
       end }
       
-      # 
       # Nonfair version of Sync
       const_set_lazy(:NonfairSync) { Class.new(Sync) do
         include_class_members ReentrantReadWriteLock
@@ -717,7 +696,6 @@ module Java::Util::Concurrent::Locks
         alias_method :initialize__nonfair_sync, :initialize
       end }
       
-      # 
       # Fair version of Sync
       const_set_lazy(:FairSync) { Class.new(Sync) do
         include_class_members ReentrantReadWriteLock
@@ -746,7 +724,6 @@ module Java::Util::Concurrent::Locks
         alias_method :initialize__fair_sync, :initialize
       end }
       
-      # 
       # The lock returned by method {@link ReentrantReadWriteLock#readLock}.
       const_set_lazy(:ReadLock) { Class.new do
         include_class_members ReentrantReadWriteLock
@@ -765,7 +742,6 @@ module Java::Util::Concurrent::Locks
         undef_method :sync=
         
         typesig { [ReentrantReadWriteLock] }
-        # 
         # Constructor for use by subclasses
         # 
         # @param lock the outer lock object
@@ -776,7 +752,6 @@ module Java::Util::Concurrent::Locks
         end
         
         typesig { [] }
-        # 
         # Acquires the read lock.
         # 
         # <p>Acquires the read lock if the write lock is not held by
@@ -790,7 +765,6 @@ module Java::Util::Concurrent::Locks
         end
         
         typesig { [] }
-        # 
         # Acquires the read lock unless the current thread is
         # {@linkplain Thread#interrupt interrupted}.
         # 
@@ -835,7 +809,6 @@ module Java::Util::Concurrent::Locks
         end
         
         typesig { [] }
-        # 
         # Acquires the read lock only if the write lock is not held by
         # another thread at the time of invocation.
         # 
@@ -862,7 +835,6 @@ module Java::Util::Concurrent::Locks
         end
         
         typesig { [::Java::Long, TimeUnit] }
-        # 
         # Acquires the read lock if the write lock is not held by
         # another thread within the given waiting time and the
         # current thread has not been {@linkplain Thread#interrupt
@@ -930,7 +902,6 @@ module Java::Util::Concurrent::Locks
         end
         
         typesig { [] }
-        # 
         # Attempts to release this lock.
         # 
         # <p> If the number of readers is now zero then the lock
@@ -940,7 +911,6 @@ module Java::Util::Concurrent::Locks
         end
         
         typesig { [] }
-        # 
         # Throws {@code UnsupportedOperationException} because
         # {@code ReadLocks} do not support conditions.
         # 
@@ -950,7 +920,6 @@ module Java::Util::Concurrent::Locks
         end
         
         typesig { [] }
-        # 
         # Returns a string identifying this lock, as well as its lock state.
         # The state, in brackets, includes the String {@code "Read locks ="}
         # followed by the number of held read locks.
@@ -965,7 +934,6 @@ module Java::Util::Concurrent::Locks
         alias_method :initialize__read_lock, :initialize
       end }
       
-      # 
       # The lock returned by method {@link ReentrantReadWriteLock#writeLock}.
       const_set_lazy(:WriteLock) { Class.new do
         include_class_members ReentrantReadWriteLock
@@ -984,7 +952,6 @@ module Java::Util::Concurrent::Locks
         undef_method :sync=
         
         typesig { [ReentrantReadWriteLock] }
-        # 
         # Constructor for use by subclasses
         # 
         # @param lock the outer lock object
@@ -995,7 +962,6 @@ module Java::Util::Concurrent::Locks
         end
         
         typesig { [] }
-        # 
         # Acquires the write lock.
         # 
         # <p>Acquires the write lock if neither the read nor write lock
@@ -1016,7 +982,6 @@ module Java::Util::Concurrent::Locks
         end
         
         typesig { [] }
-        # 
         # Acquires the write lock unless the current thread is
         # {@linkplain Thread#interrupt interrupted}.
         # 
@@ -1071,7 +1036,6 @@ module Java::Util::Concurrent::Locks
         end
         
         typesig { [] }
-        # 
         # Acquires the write lock only if it is not held by another thread
         # at the time of invocation.
         # 
@@ -1104,7 +1068,6 @@ module Java::Util::Concurrent::Locks
         end
         
         typesig { [::Java::Long, TimeUnit] }
-        # 
         # Acquires the write lock if it is not held by another thread
         # within the given waiting time and the current thread has
         # not been {@linkplain Thread#interrupt interrupted}.
@@ -1184,7 +1147,6 @@ module Java::Util::Concurrent::Locks
         end
         
         typesig { [] }
-        # 
         # Attempts to release this lock.
         # 
         # <p>If the current thread is the holder of this lock then
@@ -1200,7 +1162,6 @@ module Java::Util::Concurrent::Locks
         end
         
         typesig { [] }
-        # 
         # Returns a {@link Condition} instance for use with this
         # {@link Lock} instance.
         # <p>The returned {@link Condition} instance supports the same
@@ -1247,7 +1208,6 @@ module Java::Util::Concurrent::Locks
         end
         
         typesig { [] }
-        # 
         # Returns a string identifying this lock, as well as its lock
         # state.  The state, in brackets includes either the String
         # {@code "Unlocked"} or the String {@code "Locked by"}
@@ -1260,7 +1220,6 @@ module Java::Util::Concurrent::Locks
         end
         
         typesig { [] }
-        # 
         # Queries if this write lock is held by the current thread.
         # Identical in effect to {@link
         # ReentrantReadWriteLock#isWriteLockedByCurrentThread}.
@@ -1273,7 +1232,6 @@ module Java::Util::Concurrent::Locks
         end
         
         typesig { [] }
-        # 
         # Queries the number of holds on this write lock by the current
         # thread.  A thread has a hold on a lock for each lock action
         # that is not matched by an unlock action.  Identical in effect
@@ -1302,7 +1260,6 @@ module Java::Util::Concurrent::Locks
     end
     
     typesig { [] }
-    # 
     # Returns the thread that currently owns the write lock, or
     # {@code null} if not owned. When this method is called by a
     # thread that is not the owner, the return value reflects a
@@ -1319,7 +1276,6 @@ module Java::Util::Concurrent::Locks
     end
     
     typesig { [] }
-    # 
     # Queries the number of read locks held for this lock. This
     # method is designed for use in monitoring system state, not for
     # synchronization control.
@@ -1329,7 +1285,6 @@ module Java::Util::Concurrent::Locks
     end
     
     typesig { [] }
-    # 
     # Queries if the write lock is held by any thread. This method is
     # designed for use in monitoring system state, not for
     # synchronization control.
@@ -1341,7 +1296,6 @@ module Java::Util::Concurrent::Locks
     end
     
     typesig { [] }
-    # 
     # Queries if the write lock is held by the current thread.
     # 
     # @return {@code true} if the current thread holds the write lock and
@@ -1351,7 +1305,6 @@ module Java::Util::Concurrent::Locks
     end
     
     typesig { [] }
-    # 
     # Queries the number of reentrant write holds on this lock by the
     # current thread.  A writer thread has a hold on a lock for
     # each lock action that is not matched by an unlock action.
@@ -1363,7 +1316,6 @@ module Java::Util::Concurrent::Locks
     end
     
     typesig { [] }
-    # 
     # Queries the number of reentrant read holds on this lock by the
     # current thread.  A reader thread has a hold on a lock for
     # each lock action that is not matched by an unlock action.
@@ -1376,7 +1328,6 @@ module Java::Util::Concurrent::Locks
     end
     
     typesig { [] }
-    # 
     # Returns a collection containing threads that may be waiting to
     # acquire the write lock.  Because the actual set of threads may
     # change dynamically while constructing this result, the returned
@@ -1391,7 +1342,6 @@ module Java::Util::Concurrent::Locks
     end
     
     typesig { [] }
-    # 
     # Returns a collection containing threads that may be waiting to
     # acquire the read lock.  Because the actual set of threads may
     # change dynamically while constructing this result, the returned
@@ -1406,7 +1356,6 @@ module Java::Util::Concurrent::Locks
     end
     
     typesig { [] }
-    # 
     # Queries whether any threads are waiting to acquire the read or
     # write lock. Note that because cancellations may occur at any
     # time, a {@code true} return does not guarantee that any other
@@ -1420,7 +1369,6 @@ module Java::Util::Concurrent::Locks
     end
     
     typesig { [JavaThread] }
-    # 
     # Queries whether the given thread is waiting to acquire either
     # the read or write lock. Note that because cancellations may
     # occur at any time, a {@code true} return does not guarantee
@@ -1435,7 +1383,6 @@ module Java::Util::Concurrent::Locks
     end
     
     typesig { [] }
-    # 
     # Returns an estimate of the number of threads waiting to acquire
     # either the read or write lock.  The value is only an estimate
     # because the number of threads may change dynamically while this
@@ -1449,7 +1396,6 @@ module Java::Util::Concurrent::Locks
     end
     
     typesig { [] }
-    # 
     # Returns a collection containing threads that may be waiting to
     # acquire either the read or write lock.  Because the actual set
     # of threads may change dynamically while constructing this
@@ -1464,7 +1410,6 @@ module Java::Util::Concurrent::Locks
     end
     
     typesig { [Condition] }
-    # 
     # Queries whether any threads are waiting on the given condition
     # associated with the write lock. Note that because timeouts and
     # interrupts may occur at any time, a {@code true} return does
@@ -1489,7 +1434,6 @@ module Java::Util::Concurrent::Locks
     end
     
     typesig { [Condition] }
-    # 
     # Returns an estimate of the number of threads waiting on the
     # given condition associated with the write lock. Note that because
     # timeouts and interrupts may occur at any time, the estimate
@@ -1514,7 +1458,6 @@ module Java::Util::Concurrent::Locks
     end
     
     typesig { [Condition] }
-    # 
     # Returns a collection containing those threads that may be
     # waiting on the given condition associated with the write lock.
     # Because the actual set of threads may change dynamically while
@@ -1541,7 +1484,6 @@ module Java::Util::Concurrent::Locks
     end
     
     typesig { [] }
-    # 
     # Returns a string identifying this lock, as well as its lock state.
     # The state, in brackets, includes the String {@code "Write locks ="}
     # followed by the number of reentrantly held write locks, and the

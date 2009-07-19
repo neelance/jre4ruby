@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 1997-1998 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -31,7 +30,6 @@ module Java::Security
     }
   end
   
-  # 
   # <p> This interface represents a guard, which is an object that is used
   # to protect access to another object.
   # 
@@ -48,7 +46,6 @@ module Java::Security
     include_class_members GuardImports
     
     typesig { [Object] }
-    # 
     # Determines whether or not to allow access to the guarded object
     # <code>object</code>. Returns silently if access is allowed.
     # Otherwise, throws a SecurityException.

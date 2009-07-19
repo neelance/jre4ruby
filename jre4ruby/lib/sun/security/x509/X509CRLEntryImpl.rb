@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 1997-2006 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -45,7 +44,6 @@ module Sun::Security::X509
     }
   end
   
-  # 
   # <p>Abstract class for a revoked certificate in a CRL.
   # This class is for each entry in the <code>revokedCertificates</code>,
   # so it deals with the inner <em>SEQUENCE</em>.
@@ -115,7 +113,6 @@ module Sun::Security::X509
     }
     
     typesig { [BigInteger, Date] }
-    # 
     # Constructs a revoked certificate entry using the given
     # serial number and revocation date.
     # 
@@ -137,7 +134,6 @@ module Sun::Security::X509
     end
     
     typesig { [BigInteger, Date, CRLExtensions] }
-    # 
     # Constructs a revoked certificate entry using the given
     # serial number, revocation date and the entry
     # extensions.
@@ -162,7 +158,6 @@ module Sun::Security::X509
     end
     
     typesig { [Array.typed(::Java::Byte)] }
-    # 
     # Unmarshals a revoked certificate from its encoded form.
     # 
     # @param revokedCert the encoded bytes.
@@ -187,7 +182,6 @@ module Sun::Security::X509
     end
     
     typesig { [DerValue] }
-    # 
     # Unmarshals a revoked certificate from its encoded form.
     # 
     # @param derVal the DER value containing the revoked certificate.
@@ -212,7 +206,6 @@ module Sun::Security::X509
     end
     
     typesig { [] }
-    # 
     # Returns true if this revoked certificate entry has
     # extensions, otherwise false.
     # 
@@ -223,7 +216,6 @@ module Sun::Security::X509
     end
     
     typesig { [DerOutputStream] }
-    # 
     # Encodes the revoked certificate to an output stream.
     # 
     # @param outStrm an output stream to which the encoded revoked
@@ -254,7 +246,6 @@ module Sun::Security::X509
     end
     
     typesig { [] }
-    # 
     # Returns the ASN.1 DER-encoded form of this CRL Entry,
     # which corresponds to the inner SEQUENCE.
     # 
@@ -281,7 +272,6 @@ module Sun::Security::X509
     end
     
     typesig { [] }
-    # 
     # Gets the serial number from this X509CRLEntry,
     # i.e. the <em>userCertificate</em>.
     # 
@@ -291,7 +281,6 @@ module Sun::Security::X509
     end
     
     typesig { [] }
-    # 
     # Gets the revocation date from this X509CRLEntry,
     # the <em>revocationDate</em>.
     # 
@@ -301,7 +290,6 @@ module Sun::Security::X509
     end
     
     typesig { [] }
-    # 
     # get Reason Code from CRL entry.
     # 
     # @returns Integer or null, if no such extension
@@ -316,7 +304,6 @@ module Sun::Security::X509
     end
     
     typesig { [] }
-    # 
     # Returns a printable string of this revoked certificate.
     # 
     # @return value of this revoked certificate in a printable form.
@@ -360,7 +347,6 @@ module Sun::Security::X509
     end
     
     typesig { [] }
-    # 
     # Return true if a critical extension is found that is
     # not supported, otherwise return false.
     def has_unsupported_critical_extension
@@ -371,7 +357,6 @@ module Sun::Security::X509
     end
     
     typesig { [] }
-    # 
     # Gets a Set of the extension(s) marked CRITICAL in this
     # X509CRLEntry.  In the returned set, each extension is
     # represented by its OID string.
@@ -392,7 +377,6 @@ module Sun::Security::X509
     end
     
     typesig { [] }
-    # 
     # Gets a Set of the extension(s) marked NON-CRITICAL in this
     # X509CRLEntry. In the returned set, each extension is
     # represented by its OID string.
@@ -413,7 +397,6 @@ module Sun::Security::X509
     end
     
     typesig { [String] }
-    # 
     # Gets the DER encoded OCTET string for the extension value
     # (<em>extnValue</em>) identified by the passed in oid String.
     # The <code>oid</code> string is
@@ -464,7 +447,6 @@ module Sun::Security::X509
     end
     
     typesig { [ObjectIdentifier] }
-    # 
     # get an extension
     # 
     # @param oid ObjectIdentifier of extension desired
@@ -511,7 +493,6 @@ module Sun::Security::X509
     
     class_module.module_eval {
       typesig { [X509CRLEntry] }
-      # 
       # Utility method to convert an arbitrary instance of X509CRLEntry
       # to a X509CRLEntryImpl. Does a cast if possible, otherwise reparses
       # the encoding.
@@ -525,7 +506,6 @@ module Sun::Security::X509
     }
     
     typesig { [] }
-    # 
     # Returns the CertificateIssuerExtension
     # 
     # @return the CertificateIssuerExtension, or null if it does not exist

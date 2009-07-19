@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 2002-2006 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -37,7 +36,6 @@ module Sun::Security::Validator
     }
   end
   
-  # 
   # Collection of static utility methods related to KeyStores.
   # 
   # @author Andreas Sterbenz
@@ -117,7 +115,7 @@ module Sun::Security::Validator
               end
             end
           end
-        rescue KeyStoreException => e
+        rescue KeyStoreException => e_
           # ignore
         end
         return set

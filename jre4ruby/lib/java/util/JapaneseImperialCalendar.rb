@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 2005-2006 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -42,7 +41,6 @@ module Java::Util
     }
   end
   
-  # 
   # <code>JapaneseImperialCalendar</code> implements a Japanese
   # calendar system in which the imperial era-based year numbering is
   # supported from the Meiji era. The following are the eras supported
@@ -74,7 +72,6 @@ module Java::Util
     include_class_members JapaneseImperialCalendarImports
     
     class_module.module_eval {
-      # 
       # Implementation Notes
       # 
       # This implementation uses
@@ -87,22 +84,18 @@ module Java::Util
       const_set_lazy(:BEFORE_MEIJI) { 0 }
       const_attr_reader  :BEFORE_MEIJI
       
-      # 
       # The ERA constant designating the Meiji era.
       const_set_lazy(:MEIJI) { 1 }
       const_attr_reader  :MEIJI
       
-      # 
       # The ERA constant designating the Taisho era.
       const_set_lazy(:TAISHO) { 2 }
       const_attr_reader  :TAISHO
       
-      # 
       # The ERA constant designating the Showa era.
       const_set_lazy(:SHOWA) { 3 }
       const_attr_reader  :SHOWA
       
-      # 
       # The ERA constant designating the Heisei era.
       const_set_lazy(:HEISEI) { 4 }
       const_attr_reader  :HEISEI
@@ -145,7 +138,6 @@ module Java::Util
       const_set_lazy(:BEFORE_MEIJI_ERA) { Era.new("BeforeMeiji", "BM", Long::MIN_VALUE, false) }
       const_attr_reader  :BEFORE_MEIJI_ERA
       
-      # 
       # <pre>
       # Greatest       Least
       # Field name             Minimum   Minimum     Maximum     Maximum
@@ -283,7 +275,6 @@ module Java::Util
       end
     }
     
-    # 
     # jdate always has a sun.util.calendar.LocalGregorianCalendar.Date instance to
     # avoid overhead of creating it for each calculation.
     attr_accessor :jdate
@@ -292,7 +283,6 @@ module Java::Util
     alias_method :attr_jdate=, :jdate=
     undef_method :jdate=
     
-    # 
     # Temporary int[2] to get time zone offsets. zoneOffsets[0] gets
     # the GMT offset value and zoneOffsets[1] gets the daylight saving
     # value.
@@ -302,7 +292,6 @@ module Java::Util
     alias_method :attr_zone_offsets=, :zone_offsets=
     undef_method :zone_offsets=
     
-    # 
     # Temporary storage for saving original fields[] values in
     # non-lenient mode.
     attr_accessor :original_fields
@@ -312,7 +301,6 @@ module Java::Util
     undef_method :original_fields=
     
     typesig { [TimeZone, Locale] }
-    # 
     # Constructs a <code>JapaneseImperialCalendar</code> based on the current time
     # in the given time zone with the given locale.
     # 
@@ -330,7 +318,6 @@ module Java::Util
     end
     
     typesig { [Object] }
-    # 
     # Compares this <code>JapaneseImperialCalendar</code> to the specified
     # <code>Object</code>. The result is <code>true</code> if and
     # only if the argument is a <code>JapaneseImperialCalendar</code> object
@@ -347,7 +334,6 @@ module Java::Util
     end
     
     typesig { [] }
-    # 
     # Generates the hash code for this
     # <code>JapaneseImperialCalendar</code> object.
     def hash_code
@@ -355,7 +341,6 @@ module Java::Util
     end
     
     typesig { [::Java::Int, ::Java::Int] }
-    # 
     # Adds the specified (signed) amount of time to the given calendar field,
     # based on the calendar's rules.
     # 
@@ -403,13 +388,13 @@ module Java::Util
         set(DAY_OF_MONTH, d.get_day_of_month)
       else
         if ((field).equal?(MONTH))
-          d_ = @jdate.clone
-          d_.add_month(amount)
-          pin_day_of_month(d_)
-          set(ERA, get_era_index(d_))
-          set(YEAR, d_.get_year)
-          set(MONTH, d_.get_month - 1)
-          set(DAY_OF_MONTH, d_.get_day_of_month)
+          d = @jdate.clone
+          d.add_month(amount)
+          pin_day_of_month(d)
+          set(ERA, get_era_index(d))
+          set(YEAR, d.get_year)
+          set(MONTH, d.get_month - 1)
+          set(DAY_OF_MONTH, d.get_day_of_month)
         else
           if ((field).equal?(ERA))
             era = internal_get(ERA) + amount
@@ -500,7 +485,6 @@ module Java::Util
     end
     
     typesig { [::Java::Int, ::Java::Int] }
-    # 
     # Adds a signed amount to the specified calendar field without changing larger fields.
     # A negative roll amount means to subtract from field without changing
     # larger fields. If the specified amount is 0, this method performs nothing.
@@ -575,8 +559,6 @@ module Java::Util
           internal_set(ZONE_OFFSET, zone_offset - saving)
           internal_set(DST_OFFSET, saving)
           return
-          min_ = get_actual_minimum(field)
-          max = get_actual_maximum(field)
         when YEAR
           min_ = get_actual_minimum(field)
           max = get_actual_maximum(field)
@@ -589,20 +571,20 @@ module Java::Util
             year = @jdate.get_year
             if ((year).equal?(get_maximum(YEAR)))
               jd = Jcal.get_calendar_date(self.attr_time, get_zone)
-              d_ = Jcal.get_calendar_date(Long::MAX_VALUE, get_zone)
-              max = d_.get_month - 1
+              d = Jcal.get_calendar_date(Long::MAX_VALUE, get_zone)
+              max = d.get_month - 1
               n = get_rolled_value(internal_get(field), amount, min_, max)
               if ((n).equal?(max))
                 # To avoid overflow, use an equivalent year.
                 jd.add_year(-400)
                 jd.set_month(n + 1)
-                if (jd.get_day_of_month > d_.get_day_of_month)
-                  jd.set_day_of_month(d_.get_day_of_month)
+                if (jd.get_day_of_month > d.get_day_of_month)
+                  jd.set_day_of_month(d.get_day_of_month)
                   Jcal.normalize(jd)
                 end
-                if ((jd.get_day_of_month).equal?(d_.get_day_of_month) && jd.get_time_of_day > d_.get_time_of_day)
+                if ((jd.get_day_of_month).equal?(d.get_day_of_month) && jd.get_time_of_day > d.get_time_of_day)
                   jd.set_month(n + 1)
-                  jd.set_day_of_month(d_.get_day_of_month - 1)
+                  jd.set_day_of_month(d.get_day_of_month - 1)
                   Jcal.normalize(jd)
                   # Month may have changed by the normalization.
                   n = jd.get_month - 1
@@ -612,28 +594,28 @@ module Java::Util
               set(MONTH, n)
             else
               if ((year).equal?(get_minimum(YEAR)))
-                jd_ = Jcal.get_calendar_date(self.attr_time, get_zone)
-                d__ = Jcal.get_calendar_date(Long::MIN_VALUE, get_zone)
-                min_ = d__.get_month - 1
-                n_ = get_rolled_value(internal_get(field), amount, min_, max)
-                if ((n_).equal?(min_))
+                jd = Jcal.get_calendar_date(self.attr_time, get_zone)
+                d = Jcal.get_calendar_date(Long::MIN_VALUE, get_zone)
+                min_ = d.get_month - 1
+                n = get_rolled_value(internal_get(field), amount, min_, max)
+                if ((n).equal?(min_))
                   # To avoid underflow, use an equivalent year.
-                  jd_.add_year(+400)
-                  jd_.set_month(n_ + 1)
-                  if (jd_.get_day_of_month < d__.get_day_of_month)
-                    jd_.set_day_of_month(d__.get_day_of_month)
-                    Jcal.normalize(jd_)
+                  jd.add_year(+400)
+                  jd.set_month(n + 1)
+                  if (jd.get_day_of_month < d.get_day_of_month)
+                    jd.set_day_of_month(d.get_day_of_month)
+                    Jcal.normalize(jd)
                   end
-                  if ((jd_.get_day_of_month).equal?(d__.get_day_of_month) && jd_.get_time_of_day < d__.get_time_of_day)
-                    jd_.set_month(n_ + 1)
-                    jd_.set_day_of_month(d__.get_day_of_month + 1)
-                    Jcal.normalize(jd_)
+                  if ((jd.get_day_of_month).equal?(d.get_day_of_month) && jd.get_time_of_day < d.get_time_of_day)
+                    jd.set_month(n + 1)
+                    jd.set_day_of_month(d.get_day_of_month + 1)
+                    Jcal.normalize(jd)
                     # Month may have changed by the normalization.
-                    n_ = jd_.get_month - 1
+                    n = jd.get_month - 1
                   end
-                  set(DAY_OF_MONTH, jd_.get_day_of_month)
+                  set(DAY_OF_MONTH, jd.get_day_of_month)
                 end
-                set(MONTH, n_)
+                set(MONTH, n)
               else
                 mon = (internal_get(MONTH) + amount) % 12
                 if (mon < 0)
@@ -673,16 +655,16 @@ module Java::Util
               # and the last year have only one month.)
               return
             end
-            n__ = get_rolled_value(internal_get(field), amount, min_, max)
-            set(MONTH, n__)
-            if ((n__).equal?(min_))
+            n = get_rolled_value(internal_get(field), amount, min_, max)
+            set(MONTH, n)
+            if ((n).equal?(min_))
               if (!((transition.get_month).equal?(BaseCalendar::JANUARY) && (transition.get_day_of_month).equal?(1)))
                 if (@jdate.get_day_of_month < transition.get_day_of_month)
                   set(DAY_OF_MONTH, transition.get_day_of_month)
                 end
               end
             else
-              if ((n__).equal?(max) && ((transition.get_month - 1).equal?(n__)))
+              if ((n).equal?(max) && ((transition.get_month - 1).equal?(n)))
                 dom = transition.get_day_of_month
                 if (@jdate.get_day_of_month >= dom)
                   set(DAY_OF_MONTH, dom - 1)
@@ -691,17 +673,18 @@ module Java::Util
             end
           end
           return
+        when WEEK_OF_YEAR
           y = @jdate.get_normalized_year
           max = get_actual_maximum(WEEK_OF_YEAR)
           set(DAY_OF_WEEK, internal_get(DAY_OF_WEEK)) # update stamp[field]
           woy = internal_get(WEEK_OF_YEAR)
           value = woy + amount
           if (!is_transition_year(@jdate.get_normalized_year))
-            year_ = @jdate.get_year
-            if ((year_).equal?(get_maximum(YEAR)))
+            year = @jdate.get_year
+            if ((year).equal?(get_maximum(YEAR)))
               max = get_actual_maximum(WEEK_OF_YEAR)
             else
-              if ((year_).equal?(get_minimum(YEAR)))
+              if ((year).equal?(get_minimum(YEAR)))
                 min_ = get_actual_minimum(WEEK_OF_YEAR)
                 max = get_actual_maximum(WEEK_OF_YEAR)
                 if (value > min_ && value < max)
@@ -719,13 +702,13 @@ module Java::Util
             fd = @cached_fixed_date
             # Make sure that the min week has the current DAY_OF_WEEK
             day1 = fd - (7 * (woy - min_))
-            if (!(year_).equal?(get_minimum(YEAR)))
+            if (!(year).equal?(get_minimum(YEAR)))
               if (!(Gcal.get_year_from_fixed_date(day1)).equal?(y))
                 ((min_ += 1) - 1)
               end
             else
-              d___ = Jcal.get_calendar_date(Long::MIN_VALUE, get_zone)
-              if (day1 < Jcal.get_fixed_date(d___))
+              d = Jcal.get_calendar_date(Long::MIN_VALUE, get_zone)
+              if (day1 < Jcal.get_fixed_date(d))
                 ((min_ += 1) - 1)
               end
             end
@@ -737,40 +720,41 @@ module Java::Util
             throw :break_case, :thrown
           end
           # Handle transition here.
-          fd_ = @cached_fixed_date
-          day1_ = fd_ - (7 * (woy - min_))
+          fd = @cached_fixed_date
+          day1 = fd - (7 * (woy - min_))
           # Make sure that the min week has the current DAY_OF_WEEK
-          d____ = get_calendar_date(day1_)
-          if (!((d____.get_era).equal?(@jdate.get_era) && (d____.get_year).equal?(@jdate.get_year)))
+          d = get_calendar_date(day1)
+          if (!((d.get_era).equal?(@jdate.get_era) && (d.get_year).equal?(@jdate.get_year)))
             ((min_ += 1) - 1)
           end
           # Make sure the same thing for the max week
-          fd_ += 7 * (max - woy)
-          Jcal.get_calendar_date_from_fixed_date(d____, fd_)
-          if (!((d____.get_era).equal?(@jdate.get_era) && (d____.get_year).equal?(@jdate.get_year)))
+          fd += 7 * (max - woy)
+          Jcal.get_calendar_date_from_fixed_date(d, fd)
+          if (!((d.get_era).equal?(@jdate.get_era) && (d.get_year).equal?(@jdate.get_year)))
             ((max -= 1) + 1)
           end
           # value: the new WEEK_OF_YEAR which must be converted
           # to month and day of month.
           value = get_rolled_value(woy, amount, min_, max) - 1
-          d____ = get_calendar_date(day1_ + value * 7)
-          set(MONTH, d____.get_month - 1)
-          set(DAY_OF_MONTH, d____.get_day_of_month)
+          d = get_calendar_date(day1 + value * 7)
+          set(MONTH, d.get_month - 1)
+          set(DAY_OF_MONTH, d.get_day_of_month)
           return
+        when WEEK_OF_MONTH
           is_transition_year_ = is_transition_year(@jdate.get_normalized_year)
           # dow: relative day of week from the first day of week
           dow = internal_get(DAY_OF_WEEK) - get_first_day_of_week
           if (dow < 0)
             dow += 7
           end
-          fd__ = @cached_fixed_date
+          fd = @cached_fixed_date
           month1 = 0 # fixed date of the first day (usually 1) of the month
           month_length_ = 0 # actual month length
           if (is_transition_year_)
-            month1 = get_fixed_date_month1(@jdate, fd__)
+            month1 = get_fixed_date_month1(@jdate, fd)
             month_length_ = actual_month_length
           else
-            month1 = fd__ - internal_get(DAY_OF_MONTH) + 1
+            month1 = fd - internal_get(DAY_OF_MONTH) + 1
             month_length_ = Jcal.get_month_length(@jdate)
           end
           # the first day of week of the month.
@@ -782,9 +766,9 @@ module Java::Util
           end
           max = get_actual_maximum(field)
           # value: the new WEEK_OF_MONTH value
-          value_ = get_rolled_value(internal_get(field), amount, 1, max) - 1
+          value = get_rolled_value(internal_get(field), amount, 1, max) - 1
           # nfd: fixed date of the rolled date
-          nfd = month_day1st + value_ * 7 + dow
+          nfd = month_day1st + value * 7 + dow
           # Unlike WEEK_OF_YEAR, we need to change day of week if the
           # nfd is out of the month.
           if (nfd < month1)
@@ -796,6 +780,7 @@ module Java::Util
           end
           set(DAY_OF_MONTH, RJava.cast_to_int((nfd - month1)) + 1)
           return
+        when DAY_OF_MONTH
           if (!is_transition_year(@jdate.get_normalized_year))
             max = Jcal.get_month_length(@jdate)
             throw :break_case, :thrown
@@ -803,28 +788,30 @@ module Java::Util
           # TODO: Need to change the spec to be usable DAY_OF_MONTH rolling...
           # Transition handling. We can't change year and era
           # values here due to the Calendar roll spec!
-          month1_ = get_fixed_date_month1(@jdate, @cached_fixed_date)
+          month1 = get_fixed_date_month1(@jdate, @cached_fixed_date)
           # It may not be a regular month. Convert the date and range to
           # the relative values, perform the roll, and
           # convert the result back to the rolled date.
-          value__ = get_rolled_value(RJava.cast_to_int((@cached_fixed_date - month1_)), amount, 0, actual_month_length - 1)
-          d_____ = get_calendar_date(month1_ + value__)
-          raise AssertError if not ((get_era_index(d_____)).equal?(internal_get_era) && (d_____.get_year).equal?(internal_get(YEAR)) && (d_____.get_month - 1).equal?(internal_get(MONTH)))
-          set(DAY_OF_MONTH, d_____.get_day_of_month)
+          value = get_rolled_value(RJava.cast_to_int((@cached_fixed_date - month1)), amount, 0, actual_month_length - 1)
+          d = get_calendar_date(month1 + value)
+          raise AssertError if not ((get_era_index(d)).equal?(internal_get_era) && (d.get_year).equal?(internal_get(YEAR)) && (d.get_month - 1).equal?(internal_get(MONTH)))
+          set(DAY_OF_MONTH, d.get_day_of_month)
           return
+        when DAY_OF_YEAR
           max = get_actual_maximum(field)
           if (!is_transition_year(@jdate.get_normalized_year))
             throw :break_case, :thrown
           end
           # Handle transition. We can't change year and era values
           # here due to the Calendar roll spec.
-          value___ = get_rolled_value(internal_get(DAY_OF_YEAR), amount, min_, max)
+          value = get_rolled_value(internal_get(DAY_OF_YEAR), amount, min_, max)
           jan0 = @cached_fixed_date - internal_get(DAY_OF_YEAR)
-          d______ = get_calendar_date(jan0 + value___)
-          raise AssertError if not ((get_era_index(d______)).equal?(internal_get_era) && (d______.get_year).equal?(internal_get(YEAR)))
-          set(MONTH, d______.get_month - 1)
-          set(DAY_OF_MONTH, d______.get_day_of_month)
+          d = get_calendar_date(jan0 + value)
+          raise AssertError if not ((get_era_index(d)).equal?(internal_get_era) && (d.get_year).equal?(internal_get(YEAR)))
+          set(MONTH, d.get_month - 1)
+          set(DAY_OF_MONTH, d.get_day_of_month)
           return
+        when DAY_OF_WEEK
           normalized_year = @jdate.get_normalized_year
           if (!is_transition_year(normalized_year) && !is_transition_year(normalized_year - 1))
             # If the week of year is in the same year, we can
@@ -844,27 +831,28 @@ module Java::Util
           if ((amount).equal?(0))
             return
           end
-          fd___ = @cached_fixed_date
-          dow_first = Jcal.get_day_of_week_date_on_or_before(fd___, get_first_day_of_week)
-          fd___ += amount
-          if (fd___ < dow_first)
-            fd___ += 7
+          fd = @cached_fixed_date
+          dow_first = Jcal.get_day_of_week_date_on_or_before(fd, get_first_day_of_week)
+          fd += amount
+          if (fd < dow_first)
+            fd += 7
           else
-            if (fd___ >= dow_first + 7)
-              fd___ -= 7
+            if (fd >= dow_first + 7)
+              fd -= 7
             end
           end
-          d_______ = get_calendar_date(fd___)
-          set(ERA, get_era_index(d_______))
-          set(d_______.get_year, d_______.get_month - 1, d_______.get_day_of_month)
+          d = get_calendar_date(fd)
+          set(ERA, get_era_index(d))
+          set(d.get_year, d.get_month - 1, d.get_day_of_month)
           return
+        when DAY_OF_WEEK_IN_MONTH
           min_ = 1 # after having normalized, min should be 1.
           if (!is_transition_year(@jdate.get_normalized_year))
-            dom_ = internal_get(DAY_OF_MONTH)
-            month_length__ = Jcal.get_month_length(@jdate)
-            last_days = month_length__ % 7
-            max = month_length__ / 7
-            x = (dom_ - 1) % 7
+            dom = internal_get(DAY_OF_MONTH)
+            month_length_ = Jcal.get_month_length(@jdate)
+            last_days = month_length_ % 7
+            max = month_length_ / 7
+            x = (dom - 1) % 7
             if (x < last_days)
               ((max += 1) - 1)
             end
@@ -872,602 +860,19 @@ module Java::Util
             throw :break_case, :thrown
           end
           # Transition year handling.
-          fd____ = @cached_fixed_date
-          month1__ = get_fixed_date_month1(@jdate, fd____)
-          month_length___ = actual_month_length
-          last_days_ = month_length___ % 7
-          max = month_length___ / 7
-          x_ = RJava.cast_to_int((fd____ - month1__)) % 7
-          if (x_ < last_days_)
+          fd = @cached_fixed_date
+          month1 = get_fixed_date_month1(@jdate, fd)
+          month_length_ = actual_month_length
+          last_days = month_length_ % 7
+          max = month_length_ / 7
+          x = RJava.cast_to_int((fd - month1)) % 7
+          if (x < last_days)
             ((max += 1) - 1)
           end
-          value____ = get_rolled_value(internal_get(field), amount, min_, max) - 1
-          fd____ = month1__ + value____ * 7 + x_
-          d________ = get_calendar_date(fd____)
-          set(DAY_OF_MONTH, d________.get_day_of_month)
-          return
-        when WEEK_OF_YEAR
-          y_ = @jdate.get_normalized_year
-          max = get_actual_maximum(WEEK_OF_YEAR)
-          set(DAY_OF_WEEK, internal_get(DAY_OF_WEEK)) # update stamp[field]
-          woy_ = internal_get(WEEK_OF_YEAR)
-          value_____ = woy_ + amount
-          if (!is_transition_year(@jdate.get_normalized_year))
-            year__ = @jdate.get_year
-            if ((year__).equal?(get_maximum(YEAR)))
-              max = get_actual_maximum(WEEK_OF_YEAR)
-            else
-              if ((year__).equal?(get_minimum(YEAR)))
-                min_ = get_actual_minimum(WEEK_OF_YEAR)
-                max = get_actual_maximum(WEEK_OF_YEAR)
-                if (value_____ > min_ && value_____ < max)
-                  set(WEEK_OF_YEAR, value_____)
-                  return
-                end
-              end
-            end
-            # If the new value is in between min and max
-            # (exclusive), then we can use the value.
-            if (value_____ > min_ && value_____ < max)
-              set(WEEK_OF_YEAR, value_____)
-              return
-            end
-            fd_____ = @cached_fixed_date
-            # Make sure that the min week has the current DAY_OF_WEEK
-            day1__ = fd_____ - (7 * (woy_ - min_))
-            if (!(year__).equal?(get_minimum(YEAR)))
-              if (!(Gcal.get_year_from_fixed_date(day1__)).equal?(y_))
-                ((min_ += 1) - 1)
-              end
-            else
-              d_________ = Jcal.get_calendar_date(Long::MIN_VALUE, get_zone)
-              if (day1__ < Jcal.get_fixed_date(d_________))
-                ((min_ += 1) - 1)
-              end
-            end
-            # Make sure the same thing for the max week
-            fd_____ += 7 * (max - internal_get(WEEK_OF_YEAR))
-            if (!(Gcal.get_year_from_fixed_date(fd_____)).equal?(y_))
-              ((max -= 1) + 1)
-            end
-            throw :break_case, :thrown
-          end
-          # Handle transition here.
-          fd______ = @cached_fixed_date
-          day1___ = fd______ - (7 * (woy_ - min_))
-          # Make sure that the min week has the current DAY_OF_WEEK
-          d__________ = get_calendar_date(day1___)
-          if (!((d__________.get_era).equal?(@jdate.get_era) && (d__________.get_year).equal?(@jdate.get_year)))
-            ((min_ += 1) - 1)
-          end
-          # Make sure the same thing for the max week
-          fd______ += 7 * (max - woy_)
-          Jcal.get_calendar_date_from_fixed_date(d__________, fd______)
-          if (!((d__________.get_era).equal?(@jdate.get_era) && (d__________.get_year).equal?(@jdate.get_year)))
-            ((max -= 1) + 1)
-          end
-          # value: the new WEEK_OF_YEAR which must be converted
-          # to month and day of month.
-          value_____ = get_rolled_value(woy_, amount, min_, max) - 1
-          d__________ = get_calendar_date(day1___ + value_____ * 7)
-          set(MONTH, d__________.get_month - 1)
-          set(DAY_OF_MONTH, d__________.get_day_of_month)
-          return
-          is_transition_year__ = is_transition_year(@jdate.get_normalized_year)
-          # dow: relative day of week from the first day of week
-          dow_ = internal_get(DAY_OF_WEEK) - get_first_day_of_week
-          if (dow_ < 0)
-            dow_ += 7
-          end
-          fd_______ = @cached_fixed_date
-          month1___ = 0 # fixed date of the first day (usually 1) of the month
-          month_length____ = 0 # actual month length
-          if (is_transition_year__)
-            month1___ = get_fixed_date_month1(@jdate, fd_______)
-            month_length____ = actual_month_length
-          else
-            month1___ = fd_______ - internal_get(DAY_OF_MONTH) + 1
-            month_length____ = Jcal.get_month_length(@jdate)
-          end
-          # the first day of week of the month.
-          month_day1st_ = Jcal.get_day_of_week_date_on_or_before(month1___ + 6, get_first_day_of_week)
-          # if the week has enough days to form a week, the
-          # week starts from the previous month.
-          if (RJava.cast_to_int((month_day1st_ - month1___)) >= get_minimal_days_in_first_week)
-            month_day1st_ -= 7
-          end
-          max = get_actual_maximum(field)
-          # value: the new WEEK_OF_MONTH value
-          value______ = get_rolled_value(internal_get(field), amount, 1, max) - 1
-          # nfd: fixed date of the rolled date
-          nfd_ = month_day1st_ + value______ * 7 + dow_
-          # Unlike WEEK_OF_YEAR, we need to change day of week if the
-          # nfd is out of the month.
-          if (nfd_ < month1___)
-            nfd_ = month1___
-          else
-            if (nfd_ >= (month1___ + month_length____))
-              nfd_ = month1___ + month_length____ - 1
-            end
-          end
-          set(DAY_OF_MONTH, RJava.cast_to_int((nfd_ - month1___)) + 1)
-          return
-          if (!is_transition_year(@jdate.get_normalized_year))
-            max = Jcal.get_month_length(@jdate)
-            throw :break_case, :thrown
-          end
-          # TODO: Need to change the spec to be usable DAY_OF_MONTH rolling...
-          # Transition handling. We can't change year and era
-          # values here due to the Calendar roll spec!
-          month1____ = get_fixed_date_month1(@jdate, @cached_fixed_date)
-          # It may not be a regular month. Convert the date and range to
-          # the relative values, perform the roll, and
-          # convert the result back to the rolled date.
-          value_______ = get_rolled_value(RJava.cast_to_int((@cached_fixed_date - month1____)), amount, 0, actual_month_length - 1)
-          d___________ = get_calendar_date(month1____ + value_______)
-          raise AssertError if not ((get_era_index(d___________)).equal?(internal_get_era) && (d___________.get_year).equal?(internal_get(YEAR)) && (d___________.get_month - 1).equal?(internal_get(MONTH)))
-          set(DAY_OF_MONTH, d___________.get_day_of_month)
-          return
-          max = get_actual_maximum(field)
-          if (!is_transition_year(@jdate.get_normalized_year))
-            throw :break_case, :thrown
-          end
-          # Handle transition. We can't change year and era values
-          # here due to the Calendar roll spec.
-          value________ = get_rolled_value(internal_get(DAY_OF_YEAR), amount, min_, max)
-          jan0_ = @cached_fixed_date - internal_get(DAY_OF_YEAR)
-          d____________ = get_calendar_date(jan0_ + value________)
-          raise AssertError if not ((get_era_index(d____________)).equal?(internal_get_era) && (d____________.get_year).equal?(internal_get(YEAR)))
-          set(MONTH, d____________.get_month - 1)
-          set(DAY_OF_MONTH, d____________.get_day_of_month)
-          return
-          normalized_year_ = @jdate.get_normalized_year
-          if (!is_transition_year(normalized_year_) && !is_transition_year(normalized_year_ - 1))
-            # If the week of year is in the same year, we can
-            # just change DAY_OF_WEEK.
-            week_of_year_ = internal_get(WEEK_OF_YEAR)
-            if (week_of_year_ > 1 && week_of_year_ < 52)
-              set(WEEK_OF_YEAR, internal_get(WEEK_OF_YEAR))
-              max = SATURDAY
-              throw :break_case, :thrown
-            end
-          end
-          # We need to handle it in a different way around year
-          # boundaries and in the transition year. Note that
-          # changing era and year values violates the roll
-          # rule: not changing larger calendar fields...
-          amount %= 7
-          if ((amount).equal?(0))
-            return
-          end
-          fd________ = @cached_fixed_date
-          dow_first_ = Jcal.get_day_of_week_date_on_or_before(fd________, get_first_day_of_week)
-          fd________ += amount
-          if (fd________ < dow_first_)
-            fd________ += 7
-          else
-            if (fd________ >= dow_first_ + 7)
-              fd________ -= 7
-            end
-          end
-          d_____________ = get_calendar_date(fd________)
-          set(ERA, get_era_index(d_____________))
-          set(d_____________.get_year, d_____________.get_month - 1, d_____________.get_day_of_month)
-          return
-          min_ = 1 # after having normalized, min should be 1.
-          if (!is_transition_year(@jdate.get_normalized_year))
-            dom__ = internal_get(DAY_OF_MONTH)
-            month_length_____ = Jcal.get_month_length(@jdate)
-            last_days__ = month_length_____ % 7
-            max = month_length_____ / 7
-            x__ = (dom__ - 1) % 7
-            if (x__ < last_days__)
-              ((max += 1) - 1)
-            end
-            set(DAY_OF_WEEK, internal_get(DAY_OF_WEEK))
-            throw :break_case, :thrown
-          end
-          # Transition year handling.
-          fd_________ = @cached_fixed_date
-          month1_____ = get_fixed_date_month1(@jdate, fd_________)
-          month_length______ = actual_month_length
-          last_days___ = month_length______ % 7
-          max = month_length______ / 7
-          x___ = RJava.cast_to_int((fd_________ - month1_____)) % 7
-          if (x___ < last_days___)
-            ((max += 1) - 1)
-          end
-          value_________ = get_rolled_value(internal_get(field), amount, min_, max) - 1
-          fd_________ = month1_____ + value_________ * 7 + x___
-          d______________ = get_calendar_date(fd_________)
-          set(DAY_OF_MONTH, d______________.get_day_of_month)
-          return
-        when WEEK_OF_MONTH
-          is_transition_year___ = is_transition_year(@jdate.get_normalized_year)
-          # dow: relative day of week from the first day of week
-          dow__ = internal_get(DAY_OF_WEEK) - get_first_day_of_week
-          if (dow__ < 0)
-            dow__ += 7
-          end
-          fd__________ = @cached_fixed_date
-          month1______ = 0 # fixed date of the first day (usually 1) of the month
-          month_length_______ = 0 # actual month length
-          if (is_transition_year___)
-            month1______ = get_fixed_date_month1(@jdate, fd__________)
-            month_length_______ = actual_month_length
-          else
-            month1______ = fd__________ - internal_get(DAY_OF_MONTH) + 1
-            month_length_______ = Jcal.get_month_length(@jdate)
-          end
-          # the first day of week of the month.
-          month_day1st__ = Jcal.get_day_of_week_date_on_or_before(month1______ + 6, get_first_day_of_week)
-          # if the week has enough days to form a week, the
-          # week starts from the previous month.
-          if (RJava.cast_to_int((month_day1st__ - month1______)) >= get_minimal_days_in_first_week)
-            month_day1st__ -= 7
-          end
-          max = get_actual_maximum(field)
-          # value: the new WEEK_OF_MONTH value
-          value__________ = get_rolled_value(internal_get(field), amount, 1, max) - 1
-          # nfd: fixed date of the rolled date
-          nfd__ = month_day1st__ + value__________ * 7 + dow__
-          # Unlike WEEK_OF_YEAR, we need to change day of week if the
-          # nfd is out of the month.
-          if (nfd__ < month1______)
-            nfd__ = month1______
-          else
-            if (nfd__ >= (month1______ + month_length_______))
-              nfd__ = month1______ + month_length_______ - 1
-            end
-          end
-          set(DAY_OF_MONTH, RJava.cast_to_int((nfd__ - month1______)) + 1)
-          return
-          if (!is_transition_year(@jdate.get_normalized_year))
-            max = Jcal.get_month_length(@jdate)
-            throw :break_case, :thrown
-          end
-          # TODO: Need to change the spec to be usable DAY_OF_MONTH rolling...
-          # Transition handling. We can't change year and era
-          # values here due to the Calendar roll spec!
-          month1_______ = get_fixed_date_month1(@jdate, @cached_fixed_date)
-          # It may not be a regular month. Convert the date and range to
-          # the relative values, perform the roll, and
-          # convert the result back to the rolled date.
-          value___________ = get_rolled_value(RJava.cast_to_int((@cached_fixed_date - month1_______)), amount, 0, actual_month_length - 1)
-          d_______________ = get_calendar_date(month1_______ + value___________)
-          raise AssertError if not ((get_era_index(d_______________)).equal?(internal_get_era) && (d_______________.get_year).equal?(internal_get(YEAR)) && (d_______________.get_month - 1).equal?(internal_get(MONTH)))
-          set(DAY_OF_MONTH, d_______________.get_day_of_month)
-          return
-          max = get_actual_maximum(field)
-          if (!is_transition_year(@jdate.get_normalized_year))
-            throw :break_case, :thrown
-          end
-          # Handle transition. We can't change year and era values
-          # here due to the Calendar roll spec.
-          value____________ = get_rolled_value(internal_get(DAY_OF_YEAR), amount, min_, max)
-          jan0__ = @cached_fixed_date - internal_get(DAY_OF_YEAR)
-          d________________ = get_calendar_date(jan0__ + value____________)
-          raise AssertError if not ((get_era_index(d________________)).equal?(internal_get_era) && (d________________.get_year).equal?(internal_get(YEAR)))
-          set(MONTH, d________________.get_month - 1)
-          set(DAY_OF_MONTH, d________________.get_day_of_month)
-          return
-          normalized_year__ = @jdate.get_normalized_year
-          if (!is_transition_year(normalized_year__) && !is_transition_year(normalized_year__ - 1))
-            # If the week of year is in the same year, we can
-            # just change DAY_OF_WEEK.
-            week_of_year__ = internal_get(WEEK_OF_YEAR)
-            if (week_of_year__ > 1 && week_of_year__ < 52)
-              set(WEEK_OF_YEAR, internal_get(WEEK_OF_YEAR))
-              max = SATURDAY
-              throw :break_case, :thrown
-            end
-          end
-          # We need to handle it in a different way around year
-          # boundaries and in the transition year. Note that
-          # changing era and year values violates the roll
-          # rule: not changing larger calendar fields...
-          amount %= 7
-          if ((amount).equal?(0))
-            return
-          end
-          fd___________ = @cached_fixed_date
-          dow_first__ = Jcal.get_day_of_week_date_on_or_before(fd___________, get_first_day_of_week)
-          fd___________ += amount
-          if (fd___________ < dow_first__)
-            fd___________ += 7
-          else
-            if (fd___________ >= dow_first__ + 7)
-              fd___________ -= 7
-            end
-          end
-          d_________________ = get_calendar_date(fd___________)
-          set(ERA, get_era_index(d_________________))
-          set(d_________________.get_year, d_________________.get_month - 1, d_________________.get_day_of_month)
-          return
-          min_ = 1 # after having normalized, min should be 1.
-          if (!is_transition_year(@jdate.get_normalized_year))
-            dom___ = internal_get(DAY_OF_MONTH)
-            month_length________ = Jcal.get_month_length(@jdate)
-            last_days____ = month_length________ % 7
-            max = month_length________ / 7
-            x____ = (dom___ - 1) % 7
-            if (x____ < last_days____)
-              ((max += 1) - 1)
-            end
-            set(DAY_OF_WEEK, internal_get(DAY_OF_WEEK))
-            throw :break_case, :thrown
-          end
-          # Transition year handling.
-          fd____________ = @cached_fixed_date
-          month1________ = get_fixed_date_month1(@jdate, fd____________)
-          month_length_________ = actual_month_length
-          last_days_____ = month_length_________ % 7
-          max = month_length_________ / 7
-          x_____ = RJava.cast_to_int((fd____________ - month1________)) % 7
-          if (x_____ < last_days_____)
-            ((max += 1) - 1)
-          end
-          value_____________ = get_rolled_value(internal_get(field), amount, min_, max) - 1
-          fd____________ = month1________ + value_____________ * 7 + x_____
-          d__________________ = get_calendar_date(fd____________)
-          set(DAY_OF_MONTH, d__________________.get_day_of_month)
-          return
-        when DAY_OF_MONTH
-          if (!is_transition_year(@jdate.get_normalized_year))
-            max = Jcal.get_month_length(@jdate)
-            throw :break_case, :thrown
-          end
-          # TODO: Need to change the spec to be usable DAY_OF_MONTH rolling...
-          # Transition handling. We can't change year and era
-          # values here due to the Calendar roll spec!
-          month1_________ = get_fixed_date_month1(@jdate, @cached_fixed_date)
-          # It may not be a regular month. Convert the date and range to
-          # the relative values, perform the roll, and
-          # convert the result back to the rolled date.
-          value______________ = get_rolled_value(RJava.cast_to_int((@cached_fixed_date - month1_________)), amount, 0, actual_month_length - 1)
-          d___________________ = get_calendar_date(month1_________ + value______________)
-          raise AssertError if not ((get_era_index(d___________________)).equal?(internal_get_era) && (d___________________.get_year).equal?(internal_get(YEAR)) && (d___________________.get_month - 1).equal?(internal_get(MONTH)))
-          set(DAY_OF_MONTH, d___________________.get_day_of_month)
-          return
-          max = get_actual_maximum(field)
-          if (!is_transition_year(@jdate.get_normalized_year))
-            throw :break_case, :thrown
-          end
-          # Handle transition. We can't change year and era values
-          # here due to the Calendar roll spec.
-          value_______________ = get_rolled_value(internal_get(DAY_OF_YEAR), amount, min_, max)
-          jan0___ = @cached_fixed_date - internal_get(DAY_OF_YEAR)
-          d____________________ = get_calendar_date(jan0___ + value_______________)
-          raise AssertError if not ((get_era_index(d____________________)).equal?(internal_get_era) && (d____________________.get_year).equal?(internal_get(YEAR)))
-          set(MONTH, d____________________.get_month - 1)
-          set(DAY_OF_MONTH, d____________________.get_day_of_month)
-          return
-          normalized_year___ = @jdate.get_normalized_year
-          if (!is_transition_year(normalized_year___) && !is_transition_year(normalized_year___ - 1))
-            # If the week of year is in the same year, we can
-            # just change DAY_OF_WEEK.
-            week_of_year___ = internal_get(WEEK_OF_YEAR)
-            if (week_of_year___ > 1 && week_of_year___ < 52)
-              set(WEEK_OF_YEAR, internal_get(WEEK_OF_YEAR))
-              max = SATURDAY
-              throw :break_case, :thrown
-            end
-          end
-          # We need to handle it in a different way around year
-          # boundaries and in the transition year. Note that
-          # changing era and year values violates the roll
-          # rule: not changing larger calendar fields...
-          amount %= 7
-          if ((amount).equal?(0))
-            return
-          end
-          fd_____________ = @cached_fixed_date
-          dow_first___ = Jcal.get_day_of_week_date_on_or_before(fd_____________, get_first_day_of_week)
-          fd_____________ += amount
-          if (fd_____________ < dow_first___)
-            fd_____________ += 7
-          else
-            if (fd_____________ >= dow_first___ + 7)
-              fd_____________ -= 7
-            end
-          end
-          d_____________________ = get_calendar_date(fd_____________)
-          set(ERA, get_era_index(d_____________________))
-          set(d_____________________.get_year, d_____________________.get_month - 1, d_____________________.get_day_of_month)
-          return
-          min_ = 1 # after having normalized, min should be 1.
-          if (!is_transition_year(@jdate.get_normalized_year))
-            dom____ = internal_get(DAY_OF_MONTH)
-            month_length__________ = Jcal.get_month_length(@jdate)
-            last_days______ = month_length__________ % 7
-            max = month_length__________ / 7
-            x______ = (dom____ - 1) % 7
-            if (x______ < last_days______)
-              ((max += 1) - 1)
-            end
-            set(DAY_OF_WEEK, internal_get(DAY_OF_WEEK))
-            throw :break_case, :thrown
-          end
-          # Transition year handling.
-          fd______________ = @cached_fixed_date
-          month1__________ = get_fixed_date_month1(@jdate, fd______________)
-          month_length___________ = actual_month_length
-          last_days_______ = month_length___________ % 7
-          max = month_length___________ / 7
-          x_______ = RJava.cast_to_int((fd______________ - month1__________)) % 7
-          if (x_______ < last_days_______)
-            ((max += 1) - 1)
-          end
-          value________________ = get_rolled_value(internal_get(field), amount, min_, max) - 1
-          fd______________ = month1__________ + value________________ * 7 + x_______
-          d______________________ = get_calendar_date(fd______________)
-          set(DAY_OF_MONTH, d______________________.get_day_of_month)
-          return
-        when DAY_OF_YEAR
-          max = get_actual_maximum(field)
-          if (!is_transition_year(@jdate.get_normalized_year))
-            throw :break_case, :thrown
-          end
-          # Handle transition. We can't change year and era values
-          # here due to the Calendar roll spec.
-          value_________________ = get_rolled_value(internal_get(DAY_OF_YEAR), amount, min_, max)
-          jan0____ = @cached_fixed_date - internal_get(DAY_OF_YEAR)
-          d_______________________ = get_calendar_date(jan0____ + value_________________)
-          raise AssertError if not ((get_era_index(d_______________________)).equal?(internal_get_era) && (d_______________________.get_year).equal?(internal_get(YEAR)))
-          set(MONTH, d_______________________.get_month - 1)
-          set(DAY_OF_MONTH, d_______________________.get_day_of_month)
-          return
-          normalized_year____ = @jdate.get_normalized_year
-          if (!is_transition_year(normalized_year____) && !is_transition_year(normalized_year____ - 1))
-            # If the week of year is in the same year, we can
-            # just change DAY_OF_WEEK.
-            week_of_year____ = internal_get(WEEK_OF_YEAR)
-            if (week_of_year____ > 1 && week_of_year____ < 52)
-              set(WEEK_OF_YEAR, internal_get(WEEK_OF_YEAR))
-              max = SATURDAY
-              throw :break_case, :thrown
-            end
-          end
-          # We need to handle it in a different way around year
-          # boundaries and in the transition year. Note that
-          # changing era and year values violates the roll
-          # rule: not changing larger calendar fields...
-          amount %= 7
-          if ((amount).equal?(0))
-            return
-          end
-          fd_______________ = @cached_fixed_date
-          dow_first____ = Jcal.get_day_of_week_date_on_or_before(fd_______________, get_first_day_of_week)
-          fd_______________ += amount
-          if (fd_______________ < dow_first____)
-            fd_______________ += 7
-          else
-            if (fd_______________ >= dow_first____ + 7)
-              fd_______________ -= 7
-            end
-          end
-          d________________________ = get_calendar_date(fd_______________)
-          set(ERA, get_era_index(d________________________))
-          set(d________________________.get_year, d________________________.get_month - 1, d________________________.get_day_of_month)
-          return
-          min_ = 1 # after having normalized, min should be 1.
-          if (!is_transition_year(@jdate.get_normalized_year))
-            dom_____ = internal_get(DAY_OF_MONTH)
-            month_length____________ = Jcal.get_month_length(@jdate)
-            last_days________ = month_length____________ % 7
-            max = month_length____________ / 7
-            x________ = (dom_____ - 1) % 7
-            if (x________ < last_days________)
-              ((max += 1) - 1)
-            end
-            set(DAY_OF_WEEK, internal_get(DAY_OF_WEEK))
-            throw :break_case, :thrown
-          end
-          # Transition year handling.
-          fd________________ = @cached_fixed_date
-          month1___________ = get_fixed_date_month1(@jdate, fd________________)
-          month_length_____________ = actual_month_length
-          last_days_________ = month_length_____________ % 7
-          max = month_length_____________ / 7
-          x_________ = RJava.cast_to_int((fd________________ - month1___________)) % 7
-          if (x_________ < last_days_________)
-            ((max += 1) - 1)
-          end
-          value__________________ = get_rolled_value(internal_get(field), amount, min_, max) - 1
-          fd________________ = month1___________ + value__________________ * 7 + x_________
-          d_________________________ = get_calendar_date(fd________________)
-          set(DAY_OF_MONTH, d_________________________.get_day_of_month)
-          return
-        when DAY_OF_WEEK
-          normalized_year_____ = @jdate.get_normalized_year
-          if (!is_transition_year(normalized_year_____) && !is_transition_year(normalized_year_____ - 1))
-            # If the week of year is in the same year, we can
-            # just change DAY_OF_WEEK.
-            week_of_year_____ = internal_get(WEEK_OF_YEAR)
-            if (week_of_year_____ > 1 && week_of_year_____ < 52)
-              set(WEEK_OF_YEAR, internal_get(WEEK_OF_YEAR))
-              max = SATURDAY
-              throw :break_case, :thrown
-            end
-          end
-          # We need to handle it in a different way around year
-          # boundaries and in the transition year. Note that
-          # changing era and year values violates the roll
-          # rule: not changing larger calendar fields...
-          amount %= 7
-          if ((amount).equal?(0))
-            return
-          end
-          fd_________________ = @cached_fixed_date
-          dow_first_____ = Jcal.get_day_of_week_date_on_or_before(fd_________________, get_first_day_of_week)
-          fd_________________ += amount
-          if (fd_________________ < dow_first_____)
-            fd_________________ += 7
-          else
-            if (fd_________________ >= dow_first_____ + 7)
-              fd_________________ -= 7
-            end
-          end
-          d__________________________ = get_calendar_date(fd_________________)
-          set(ERA, get_era_index(d__________________________))
-          set(d__________________________.get_year, d__________________________.get_month - 1, d__________________________.get_day_of_month)
-          return
-          min_ = 1 # after having normalized, min should be 1.
-          if (!is_transition_year(@jdate.get_normalized_year))
-            dom______ = internal_get(DAY_OF_MONTH)
-            month_length______________ = Jcal.get_month_length(@jdate)
-            last_days__________ = month_length______________ % 7
-            max = month_length______________ / 7
-            x__________ = (dom______ - 1) % 7
-            if (x__________ < last_days__________)
-              ((max += 1) - 1)
-            end
-            set(DAY_OF_WEEK, internal_get(DAY_OF_WEEK))
-            throw :break_case, :thrown
-          end
-          # Transition year handling.
-          fd__________________ = @cached_fixed_date
-          month1____________ = get_fixed_date_month1(@jdate, fd__________________)
-          month_length_______________ = actual_month_length
-          last_days___________ = month_length_______________ % 7
-          max = month_length_______________ / 7
-          x___________ = RJava.cast_to_int((fd__________________ - month1____________)) % 7
-          if (x___________ < last_days___________)
-            ((max += 1) - 1)
-          end
-          value___________________ = get_rolled_value(internal_get(field), amount, min_, max) - 1
-          fd__________________ = month1____________ + value___________________ * 7 + x___________
-          d___________________________ = get_calendar_date(fd__________________)
-          set(DAY_OF_MONTH, d___________________________.get_day_of_month)
-          return
-        when DAY_OF_WEEK_IN_MONTH
-          min_ = 1 # after having normalized, min should be 1.
-          if (!is_transition_year(@jdate.get_normalized_year))
-            dom_______ = internal_get(DAY_OF_MONTH)
-            month_length________________ = Jcal.get_month_length(@jdate)
-            last_days____________ = month_length________________ % 7
-            max = month_length________________ / 7
-            x____________ = (dom_______ - 1) % 7
-            if (x____________ < last_days____________)
-              ((max += 1) - 1)
-            end
-            set(DAY_OF_WEEK, internal_get(DAY_OF_WEEK))
-            throw :break_case, :thrown
-          end
-          # Transition year handling.
-          fd___________________ = @cached_fixed_date
-          month1_____________ = get_fixed_date_month1(@jdate, fd___________________)
-          month_length_________________ = actual_month_length
-          last_days_____________ = month_length_________________ % 7
-          max = month_length_________________ / 7
-          x_____________ = RJava.cast_to_int((fd___________________ - month1_____________)) % 7
-          if (x_____________ < last_days_____________)
-            ((max += 1) - 1)
-          end
-          value____________________ = get_rolled_value(internal_get(field), amount, min_, max) - 1
-          fd___________________ = month1_____________ + value____________________ * 7 + x_____________
-          d____________________________ = get_calendar_date(fd___________________)
-          set(DAY_OF_MONTH, d____________________________.get_day_of_month)
+          value = get_rolled_value(internal_get(field), amount, min_, max) - 1
+          fd = month1 + value * 7 + x
+          d = get_calendar_date(fd)
+          set(DAY_OF_MONTH, d.get_day_of_month)
           return
         end
       end
@@ -1590,7 +995,6 @@ module Java::Util
     end
     
     typesig { [::Java::Int] }
-    # 
     # Returns the minimum value for the given calendar field of this
     # <code>Calendar</code> instance. The minimum value is
     # defined as the smallest value returned by the {@link
@@ -1612,7 +1016,6 @@ module Java::Util
     end
     
     typesig { [::Java::Int] }
-    # 
     # Returns the maximum value for the given calendar field of this
     # <code>GregorianCalendar</code> instance. The maximum value is
     # defined as the largest value returned by the {@link
@@ -1640,7 +1043,6 @@ module Java::Util
     end
     
     typesig { [::Java::Int] }
-    # 
     # Returns the highest minimum value for the given calendar field
     # of this <code>GregorianCalendar</code> instance. The highest
     # minimum value is defined as the largest value returned by
@@ -1662,7 +1064,6 @@ module Java::Util
     end
     
     typesig { [::Java::Int] }
-    # 
     # Returns the lowest maximum value for the given calendar field
     # of this <code>GregorianCalendar</code> instance. The lowest
     # maximum value is defined as the smallest value returned by
@@ -1688,7 +1089,6 @@ module Java::Util
     end
     
     typesig { [::Java::Int] }
-    # 
     # Returns the minimum value that this calendar field could have,
     # taking into consideration the given time value and the current
     # values of the
@@ -1731,44 +1131,44 @@ module Java::Util
           end
         else
           value = get_minimum(field)
-          d_ = Jcal.get_calendar_date(Long::MIN_VALUE, get_zone)
+          d = Jcal.get_calendar_date(Long::MIN_VALUE, get_zone)
           # Use an equvalent year of d.getYear() if
           # possible. Otherwise, ignore the leap year and
           # common year difference.
-          y = d_.get_year
+          y = d.get_year
           if (y > 400)
             y -= 400
           end
           jd.set_year(y)
           Jcal.normalize(jd)
-          if (get_year_offset_in_millis(jd) < get_year_offset_in_millis(d_))
+          if (get_year_offset_in_millis(jd) < get_year_offset_in_millis(d))
             ((value += 1) - 1)
           end
         end
       when MONTH
         # In Before Meiji and Meiji, January is the first month.
         if (era_index > MEIJI && (jd.get_year).equal?(1))
-          since_ = Eras[era_index].get_since(get_zone)
-          d__ = Jcal.get_calendar_date(since_, get_zone)
-          value = d__.get_month - 1
-          if (jd.get_day_of_month < d__.get_day_of_month)
+          since = Eras[era_index].get_since(get_zone)
+          d = Jcal.get_calendar_date(since, get_zone)
+          value = d.get_month - 1
+          if (jd.get_day_of_month < d.get_day_of_month)
             ((value += 1) - 1)
           end
         end
       when WEEK_OF_YEAR
         value = 1
-        d___ = Jcal.get_calendar_date(Long::MIN_VALUE, get_zone)
+        d = Jcal.get_calendar_date(Long::MIN_VALUE, get_zone)
         # shift 400 years to avoid underflow
-        d___.add_year(+400)
-        Jcal.normalize(d___)
-        jd.set_era(d___.get_era)
-        jd.set_year(d___.get_year)
+        d.add_year(+400)
+        Jcal.normalize(d)
+        jd.set_era(d.get_era)
+        jd.set_year(d.get_year)
         Jcal.normalize(jd)
-        jan1 = Jcal.get_fixed_date(d___)
+        jan1 = Jcal.get_fixed_date(d)
         fd = Jcal.get_fixed_date(jd)
         woy = get_week_number(jan1, fd)
         day1 = fd - (7 * (woy - 1))
-        if ((day1 < jan1) || ((day1).equal?(jan1) && jd.get_time_of_day < d___.get_time_of_day))
+        if ((day1 < jan1) || ((day1).equal?(jan1) && jd.get_time_of_day < d.get_time_of_day))
           ((value += 1) - 1)
         end
       end
@@ -1776,7 +1176,6 @@ module Java::Util
     end
     
     typesig { [::Java::Int] }
-    # 
     # Returns the maximum value that this calendar field could have,
     # taking into consideration the given time value and the current
     # values of the
@@ -1836,27 +1235,27 @@ module Java::Util
           if (is_transition_year(date.get_normalized_year))
             # Handle transition year.
             # TODO: there may be multiple transitions in a year.
-            era_index_ = get_era_index(date)
+            era_index = get_era_index(date)
             if (!(date.get_year).equal?(1))
-              ((era_index_ += 1) - 1)
-              raise AssertError if not (era_index_ < Eras.attr_length)
+              ((era_index += 1) - 1)
+              raise AssertError if not (era_index < Eras.attr_length)
             end
-            transition_ = SinceFixedDates[era_index_]
-            fd_ = jc.attr_cached_fixed_date
-            d_ = Gcal.new_calendar_date(TimeZone::NO_TIMEZONE)
-            d_.set_date(date.get_normalized_year, BaseCalendar::JANUARY, 1)
-            if (fd_ < transition_)
-              value = RJava.cast_to_int((transition_ - Gcal.get_fixed_date(d_)))
+            transition = SinceFixedDates[era_index]
+            fd = jc.attr_cached_fixed_date
+            d = Gcal.new_calendar_date(TimeZone::NO_TIMEZONE)
+            d.set_date(date.get_normalized_year, BaseCalendar::JANUARY, 1)
+            if (fd < transition)
+              value = RJava.cast_to_int((transition - Gcal.get_fixed_date(d)))
             else
-              d_.add_year(+1)
-              value = RJava.cast_to_int((Gcal.get_fixed_date(d_) - transition_))
+              d.add_year(+1)
+              value = RJava.cast_to_int((Gcal.get_fixed_date(d) - transition))
             end
           else
-            d__ = Jcal.get_calendar_date(Long::MAX_VALUE, get_zone)
-            if ((date.get_era).equal?(d__.get_era) && (date.get_year).equal?(d__.get_year))
-              fd__ = Jcal.get_fixed_date(d__)
-              jan1 = get_fixed_date_jan1(d__, fd__)
-              value = RJava.cast_to_int((fd__ - jan1)) + 1
+            d = Jcal.get_calendar_date(Long::MAX_VALUE, get_zone)
+            if ((date.get_era).equal?(d.get_era) && (date.get_year).equal?(d.get_year))
+              fd = Jcal.get_fixed_date(d)
+              jan1 = get_fixed_date_jan1(d, fd)
+              value = RJava.cast_to_int((fd - jan1)) + 1
             else
               if ((date.get_year).equal?(get_minimum(YEAR)))
                 d1 = Jcal.get_calendar_date(Long::MIN_VALUE, get_zone)
@@ -1875,31 +1274,31 @@ module Java::Util
           if (!is_transition_year(date.get_normalized_year))
             jd = Jcal.get_calendar_date(Long::MAX_VALUE, get_zone)
             if ((date.get_era).equal?(jd.get_era) && (date.get_year).equal?(jd.get_year))
-              fd___ = Jcal.get_fixed_date(jd)
-              jan1_ = get_fixed_date_jan1(jd, fd___)
-              value = get_week_number(jan1_, fd___)
+              fd = Jcal.get_fixed_date(jd)
+              jan1 = get_fixed_date_jan1(jd, fd)
+              value = get_week_number(jan1, fd)
             else
               if ((date.get_era).nil? && (date.get_year).equal?(get_minimum(YEAR)))
-                d___ = Jcal.get_calendar_date(Long::MIN_VALUE, get_zone)
+                d = Jcal.get_calendar_date(Long::MIN_VALUE, get_zone)
                 # shift 400 years to avoid underflow
-                d___.add_year(+400)
-                Jcal.normalize(d___)
-                jd.set_era(d___.get_era)
-                jd.set_date(d___.get_year + 1, BaseCalendar::JANUARY, 1)
+                d.add_year(+400)
+                Jcal.normalize(d)
+                jd.set_era(d.get_era)
+                jd.set_date(d.get_year + 1, BaseCalendar::JANUARY, 1)
                 Jcal.normalize(jd)
-                jan1__ = Jcal.get_fixed_date(d___)
+                jan1 = Jcal.get_fixed_date(d)
                 next_jan1 = Jcal.get_fixed_date(jd)
                 next_jan1st = Jcal.get_day_of_week_date_on_or_before(next_jan1 + 6, get_first_day_of_week)
                 ndays = RJava.cast_to_int((next_jan1st - next_jan1))
                 if (ndays >= get_minimal_days_in_first_week)
                   next_jan1st -= 7
                 end
-                value = get_week_number(jan1__, next_jan1st)
+                value = get_week_number(jan1, next_jan1st)
               else
                 # Get the day of week of January 1 of the year
-                d____ = Gcal.new_calendar_date(TimeZone::NO_TIMEZONE)
-                d____.set_date(date.get_normalized_year, BaseCalendar::JANUARY, 1)
-                day_of_week = Gcal.get_day_of_week(d____)
+                d = Gcal.new_calendar_date(TimeZone::NO_TIMEZONE)
+                d.set_date(date.get_normalized_year, BaseCalendar::JANUARY, 1)
+                day_of_week = Gcal.get_day_of_week(d)
                 # Normalize the day of week with the firstDayOfWeek value
                 day_of_week -= get_first_day_of_week
                 if (day_of_week < 0)
@@ -1925,17 +1324,17 @@ module Java::Util
             value = jc.get(WEEK_OF_YEAR)
           end
         when WEEK_OF_MONTH
-          jd_ = Jcal.get_calendar_date(Long::MAX_VALUE, get_zone)
-          if (!((date.get_era).equal?(jd_.get_era) && (date.get_year).equal?(jd_.get_year)))
-            d_____ = Gcal.new_calendar_date(TimeZone::NO_TIMEZONE)
-            d_____.set_date(date.get_normalized_year, date.get_month, 1)
-            day_of_week_ = Gcal.get_day_of_week(d_____)
-            month_length_ = Gcal.get_month_length(d_____)
-            day_of_week_ -= get_first_day_of_week
-            if (day_of_week_ < 0)
-              day_of_week_ += 7
+          jd = Jcal.get_calendar_date(Long::MAX_VALUE, get_zone)
+          if (!((date.get_era).equal?(jd.get_era) && (date.get_year).equal?(jd.get_year)))
+            d = Gcal.new_calendar_date(TimeZone::NO_TIMEZONE)
+            d.set_date(date.get_normalized_year, date.get_month, 1)
+            day_of_week = Gcal.get_day_of_week(d)
+            month_length_ = Gcal.get_month_length(d)
+            day_of_week -= get_first_day_of_week
+            if (day_of_week < 0)
+              day_of_week += 7
             end
-            n_days_first_week = 7 - day_of_week_ # # of days in the first week
+            n_days_first_week = 7 - day_of_week # # of days in the first week
             value = 3
             if (n_days_first_week >= get_minimal_days_in_first_week)
               ((value += 1) - 1)
@@ -1948,46 +1347,46 @@ module Java::Util
               end
             end
           else
-            fd____ = Jcal.get_fixed_date(jd_)
-            month1 = fd____ - jd_.get_day_of_month + 1
-            value = get_week_number(month1, fd____)
+            fd = Jcal.get_fixed_date(jd)
+            month1 = fd - jd.get_day_of_month + 1
+            value = get_week_number(month1, fd)
           end
         when DAY_OF_WEEK_IN_MONTH
-          ndays_ = 0
+          ndays = 0
           dow1 = 0
           dow = date.get_day_of_week
-          d______ = date.clone
-          ndays_ = Jcal.get_month_length(d______)
-          d______.set_day_of_month(1)
-          Jcal.normalize(d______)
-          dow1 = d______.get_day_of_week
+          d = date.clone
+          ndays = Jcal.get_month_length(d)
+          d.set_day_of_month(1)
+          Jcal.normalize(d)
+          dow1 = d.get_day_of_week
           x = dow - dow1
           if (x < 0)
             x += 7
           end
-          ndays_ -= x
-          value = (ndays_ + 6) / 7
+          ndays -= x
+          value = (ndays + 6) / 7
         when YEAR
-          jd__ = Jcal.get_calendar_date(jc.get_time_in_millis, get_zone)
-          d_______ = nil
-          era_index__ = get_era_index(date)
-          if ((era_index__).equal?(Eras.attr_length - 1))
-            d_______ = Jcal.get_calendar_date(Long::MAX_VALUE, get_zone)
-            value = d_______.get_year
+          jd = Jcal.get_calendar_date(jc.get_time_in_millis, get_zone)
+          d = nil
+          era_index = get_era_index(date)
+          if ((era_index).equal?(Eras.attr_length - 1))
+            d = Jcal.get_calendar_date(Long::MAX_VALUE, get_zone)
+            value = d.get_year
             # Use an equivalent year for the
             # getYearOffsetInMillis call to avoid overflow.
             if (value > 400)
-              jd__.set_year(value - 400)
+              jd.set_year(value - 400)
             end
           else
-            d_______ = Jcal.get_calendar_date(Eras[era_index__ + 1].get_since(get_zone) - 1, get_zone)
-            value = d_______.get_year
+            d = Jcal.get_calendar_date(Eras[era_index + 1].get_since(get_zone) - 1, get_zone)
+            value = d.get_year
             # Use the same year as d.getYear() to be
             # consistent with leap and common years.
-            jd__.set_year(value)
+            jd.set_year(value)
           end
-          Jcal.normalize(jd__)
-          if (get_year_offset_in_millis(jd__) > get_year_offset_in_millis(d_______))
+          Jcal.normalize(jd)
+          if (get_year_offset_in_millis(jd) > get_year_offset_in_millis(d))
             ((value -= 1) + 1)
           end
         else
@@ -1998,7 +1397,6 @@ module Java::Util
     end
     
     typesig { [CalendarDate] }
-    # 
     # Returns the millisecond offset from the beginning of the
     # year. In the year for Long.MIN_VALUE, it's a pseudo value
     # beyond the limit. The given CalendarDate object must have been
@@ -2032,7 +1430,6 @@ module Java::Util
       @jdate.set_zone(zone)
     end
     
-    # 
     # The fixed date corresponding to jdate. If the value is
     # Long.MIN_VALUE, the fixed date value is unknown.
     attr_accessor :cached_fixed_date
@@ -2042,7 +1439,6 @@ module Java::Util
     undef_method :cached_fixed_date=
     
     typesig { [] }
-    # 
     # Converts the time value (millisecond offset from the <a
     # href="Calendar.html#Epoch">Epoch</a>) to calendar field values.
     # The time is <em>not</em>
@@ -2070,7 +1466,6 @@ module Java::Util
     end
     
     typesig { [::Java::Int, ::Java::Int] }
-    # 
     # This computeFields implements the conversion from UTC
     # (millisecond offset from the Epoch) to calendar
     # field values. fieldMask specifies which fields to change the
@@ -2260,23 +1655,23 @@ module Java::Util
               end
             end
           else
-            d_ = @jdate.clone
-            next_jan1_ = 0
+            d = @jdate.clone
+            next_jan1 = 0
             if ((@jdate.get_year).equal?(1))
-              d_.add_year(+1)
-              d_.set_month(Jcal.attr_january).set_day_of_month(1)
-              next_jan1_ = Jcal.get_fixed_date(d_)
+              d.add_year(+1)
+              d.set_month(Jcal.attr_january).set_day_of_month(1)
+              next_jan1 = Jcal.get_fixed_date(d)
             else
-              next_era_index = get_era_index(d_) + 1
-              cd_ = Eras[next_era_index].get_since_date
-              d_.set_era(Eras[next_era_index])
-              d_.set_date(1, cd_.get_month, cd_.get_day_of_month)
-              Jcal.normalize(d_)
-              next_jan1_ = Jcal.get_fixed_date(d_)
+              next_era_index = get_era_index(d) + 1
+              cd = Eras[next_era_index].get_since_date
+              d.set_era(Eras[next_era_index])
+              d.set_date(1, cd.get_month, cd.get_day_of_month)
+              Jcal.normalize(d)
+              next_jan1 = Jcal.get_fixed_date(d)
             end
-            next_jan1st_ = Jcal.get_day_of_week_date_on_or_before(next_jan1_ + 6, get_first_day_of_week)
-            ndays_ = RJava.cast_to_int((next_jan1st_ - next_jan1_))
-            if (ndays_ >= get_minimal_days_in_first_week && fixed_date >= (next_jan1st_ - 7))
+            next_jan1st = Jcal.get_day_of_week_date_on_or_before(next_jan1 + 6, get_first_day_of_week)
+            ndays = RJava.cast_to_int((next_jan1st - next_jan1))
+            if (ndays >= get_minimal_days_in_first_week && fixed_date >= (next_jan1st - 7))
               # The first days forms a week in which the date is included.
               week_of_year = 1
             end
@@ -2290,7 +1685,6 @@ module Java::Util
     end
     
     typesig { [::Java::Long, ::Java::Long] }
-    # 
     # Returns the number of weeks in a period between fixedDay1 and
     # fixedDate. The getFirstDayOfWeek-getMinimalDaysInFirstWeek rule
     # is applied to calculate the number of weeks.
@@ -2315,7 +1709,6 @@ module Java::Util
     end
     
     typesig { [] }
-    # 
     # Converts calendar field values to the time value (millisecond
     # offset from the <a href="Calendar.html#Epoch">Epoch</a>).
     # 
@@ -2429,26 +1822,25 @@ module Java::Util
       self.attr_time = millis
       mask = compute_fields(field_mask | get_set_state_fields, tz_mask)
       if (!is_lenient)
-        field_ = 0
-        while field_ < FIELD_COUNT
-          if (!is_externally_set(field_))
-            ((field_ += 1) - 1)
+        field = 0
+        while field < FIELD_COUNT
+          if (!is_externally_set(field))
+            ((field += 1) - 1)
             next
           end
-          if (!(@original_fields[field_]).equal?(internal_get(field_)))
-            wrong_value = internal_get(field_)
+          if (!(@original_fields[field]).equal?(internal_get(field)))
+            wrong_value = internal_get(field)
             # Restore the original field values
             System.arraycopy(@original_fields, 0, self.attr_fields, 0, self.attr_fields.attr_length)
-            raise IllegalArgumentException.new((get_field_name(field_)).to_s + "=" + (wrong_value).to_s + ", expected " + (@original_fields[field_]).to_s)
+            raise IllegalArgumentException.new((get_field_name(field)).to_s + "=" + (wrong_value).to_s + ", expected " + (@original_fields[field]).to_s)
           end
-          ((field_ += 1) - 1)
+          ((field += 1) - 1)
         end
       end
       set_fields_normalized(mask)
     end
     
     typesig { [::Java::Int, ::Java::Int, ::Java::Int] }
-    # 
     # Computes the fixed date under either the Gregorian or the
     # Julian calendar, using the given year and the specified calendar fields.
     # 
@@ -2568,26 +1960,25 @@ module Java::Util
           fixed_date += internal_get(DAY_OF_YEAR)
           ((fixed_date -= 1) + 1)
         else
-          first_day_of_week_ = Jcal.get_day_of_week_date_on_or_before(fixed_date + 6, get_first_day_of_week)
+          first_day_of_week = Jcal.get_day_of_week_date_on_or_before(fixed_date + 6, get_first_day_of_week)
           # If we have enough days in the first week, then move
           # to the previous week.
-          if ((first_day_of_week_ - fixed_date) >= get_minimal_days_in_first_week)
-            first_day_of_week_ -= 7
+          if ((first_day_of_week - fixed_date) >= get_minimal_days_in_first_week)
+            first_day_of_week -= 7
           end
           if (is_field_set(field_mask, DAY_OF_WEEK))
-            day_of_week_ = internal_get(DAY_OF_WEEK)
-            if (!(day_of_week_).equal?(get_first_day_of_week))
-              first_day_of_week_ = Jcal.get_day_of_week_date_on_or_before(first_day_of_week_ + 6, day_of_week_)
+            day_of_week = internal_get(DAY_OF_WEEK)
+            if (!(day_of_week).equal?(get_first_day_of_week))
+              first_day_of_week = Jcal.get_day_of_week_date_on_or_before(first_day_of_week + 6, day_of_week)
             end
           end
-          fixed_date = first_day_of_week_ + 7 * (internal_get(WEEK_OF_YEAR) - 1)
+          fixed_date = first_day_of_week + 7 * (internal_get(WEEK_OF_YEAR) - 1)
         end
       end
       return fixed_date
     end
     
     typesig { [LocalGregorianCalendar::Date, ::Java::Long] }
-    # 
     # Returns the fixed date of the first day of the year (usually
     # January 1) before the specified date.
     # 
@@ -2610,13 +2001,12 @@ module Java::Util
           ((era_index -= 1) + 1)
         end
       end
-      d_ = Gcal.new_calendar_date(TimeZone::NO_TIMEZONE)
-      d_.set_date(date.get_normalized_year, Gcal.attr_january, 1)
-      return Gcal.get_fixed_date(d_)
+      d = Gcal.new_calendar_date(TimeZone::NO_TIMEZONE)
+      d.set_date(date.get_normalized_year, Gcal.attr_january, 1)
+      return Gcal.get_fixed_date(d)
     end
     
     typesig { [LocalGregorianCalendar::Date, ::Java::Long] }
-    # 
     # Returns the fixed date of the first date of the month (usually
     # the 1st of the month) before the specified date.
     # 
@@ -2639,7 +2029,6 @@ module Java::Util
     
     class_module.module_eval {
       typesig { [::Java::Long] }
-      # 
       # Returns a LocalGregorianCalendar.Date produced from the specified fixed date.
       # 
       # @param fd the fixed date
@@ -2651,7 +2040,6 @@ module Java::Util
     }
     
     typesig { [::Java::Int, ::Java::Int] }
-    # 
     # Returns the length of the specified month in the specified
     # Gregorian year. The year number must be normalized.
     # 
@@ -2661,7 +2049,6 @@ module Java::Util
     end
     
     typesig { [::Java::Int] }
-    # 
     # Returns the length of the specified month in the year provided
     # by internalGet(YEAR).
     # 
@@ -2689,7 +2076,6 @@ module Java::Util
     
     class_module.module_eval {
       typesig { [LocalGregorianCalendar::Date] }
-      # 
       # Returns the index to the new era if the given date is in a
       # transition month.  For example, if the give date is Heisei 1
       # (1989) January 20, then the era index for Heisei is
@@ -2744,7 +2130,6 @@ module Java::Util
     }
     
     typesig { [] }
-    # 
     # Returns this object if it's normalized (all fields and time are
     # in sync). Otherwise, a cloned object is returned after calling
     # complete() in lenient mode.
@@ -2762,7 +2147,6 @@ module Java::Util
     end
     
     typesig { [LocalGregorianCalendar::Date] }
-    # 
     # After adjustments such as add(MONTH), add(YEAR), we don't want the
     # month to jump around.  E.g., we don't want Jan 31 + 1 month to go to Mar
     # 3, we want it to go to Feb 28.  Adjustments which might run into this
@@ -2789,9 +2173,9 @@ module Java::Util
         real_date.set_month(date.get_month)
         real_date.set_day_of_month(1)
         Jcal.normalize(real_date)
-        month_length__ = Jcal.get_month_length(real_date)
-        if (dom > month_length__)
-          real_date.set_day_of_month(month_length__)
+        month_length_ = Jcal.get_month_length(real_date)
+        if (dom > month_length_)
+          real_date.set_day_of_month(month_length_)
         else
           if (dom < d.get_day_of_month)
             real_date.set_day_of_month(d.get_day_of_month)
@@ -2800,7 +2184,7 @@ module Java::Util
           end
         end
         if ((real_date.get_day_of_month).equal?(d.get_day_of_month) && tod < d.get_time_of_day)
-          real_date.set_day_of_month(Math.min(dom + 1, month_length__))
+          real_date.set_day_of_month(Math.min(dom + 1, month_length_))
         end
         # restore the year.
         date.set_date(year, real_date.get_month, real_date.get_day_of_month)
@@ -2810,7 +2194,6 @@ module Java::Util
     
     class_module.module_eval {
       typesig { [::Java::Int, ::Java::Int, ::Java::Int, ::Java::Int] }
-      # 
       # Returns the new value after 'roll'ing the specified value and amount.
       def get_rolled_value(value, amount, min_, max_)
         raise AssertError if not (value >= min_ && value <= max_)
@@ -2830,7 +2213,6 @@ module Java::Util
     }
     
     typesig { [] }
-    # 
     # Returns the ERA.  We need a special method for this because the
     # default ERA is the current era, but a zero (unset) ERA means before Meiji.
     def internal_get_era
@@ -2838,7 +2220,6 @@ module Java::Util
     end
     
     typesig { [ObjectInputStream] }
-    # 
     # Updates internal state.
     def read_object(stream)
       stream.default_read_object

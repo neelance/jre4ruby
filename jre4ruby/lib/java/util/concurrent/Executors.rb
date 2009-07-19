@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
 # This code is free software; you can redistribute it and/or modify it
@@ -49,7 +48,6 @@ module Java::Util::Concurrent
     }
   end
   
-  # 
   # Factory and utility methods for {@link Executor}, {@link
   # ExecutorService}, {@link ScheduledExecutorService}, {@link
   # ThreadFactory}, and {@link Callable} classes defined in this
@@ -77,7 +75,6 @@ module Java::Util::Concurrent
     
     class_module.module_eval {
       typesig { [::Java::Int] }
-      # 
       # Creates a thread pool that reuses a fixed number of threads
       # operating off a shared unbounded queue.  At any point, at most
       # <tt>nThreads</tt> threads will be active processing tasks.
@@ -96,7 +93,6 @@ module Java::Util::Concurrent
       end
       
       typesig { [::Java::Int, ThreadFactory] }
-      # 
       # Creates a thread pool that reuses a fixed number of threads
       # operating off a shared unbounded queue, using the provided
       # ThreadFactory to create new threads when needed.  At any point,
@@ -119,7 +115,6 @@ module Java::Util::Concurrent
       end
       
       typesig { [] }
-      # 
       # Creates an Executor that uses a single worker thread operating
       # off an unbounded queue. (Note however that if this single
       # thread terminates due to a failure during execution prior to
@@ -136,7 +131,6 @@ module Java::Util::Concurrent
       end
       
       typesig { [ThreadFactory] }
-      # 
       # Creates an Executor that uses a single worker thread operating
       # off an unbounded queue, and uses the provided ThreadFactory to
       # create a new thread when needed. Unlike the otherwise
@@ -154,7 +148,6 @@ module Java::Util::Concurrent
       end
       
       typesig { [] }
-      # 
       # Creates a thread pool that creates new threads as needed, but
       # will reuse previously constructed threads when they are
       # available.  These pools will typically improve the performance
@@ -174,7 +167,6 @@ module Java::Util::Concurrent
       end
       
       typesig { [ThreadFactory] }
-      # 
       # Creates a thread pool that creates new threads as needed, but
       # will reuse previously constructed threads when they are
       # available, and uses the provided
@@ -187,7 +179,6 @@ module Java::Util::Concurrent
       end
       
       typesig { [] }
-      # 
       # Creates a single-threaded executor that can schedule commands
       # to run after a given delay, or to execute periodically.
       # (Note however that if this single
@@ -204,7 +195,6 @@ module Java::Util::Concurrent
       end
       
       typesig { [ThreadFactory] }
-      # 
       # Creates a single-threaded executor that can schedule commands
       # to run after a given delay, or to execute periodically.  (Note
       # however that if this single thread terminates due to a failure
@@ -224,7 +214,6 @@ module Java::Util::Concurrent
       end
       
       typesig { [::Java::Int] }
-      # 
       # Creates a thread pool that can schedule commands to run after a
       # given delay, or to execute periodically.
       # @param corePoolSize the number of threads to keep in the pool,
@@ -236,7 +225,6 @@ module Java::Util::Concurrent
       end
       
       typesig { [::Java::Int, ThreadFactory] }
-      # 
       # Creates a thread pool that can schedule commands to run after a
       # given delay, or to execute periodically.
       # @param corePoolSize the number of threads to keep in the pool,
@@ -251,7 +239,6 @@ module Java::Util::Concurrent
       end
       
       typesig { [ExecutorService] }
-      # 
       # Returns an object that delegates all defined {@link
       # ExecutorService} methods to the given executor, but not any
       # other methods that might otherwise be accessible using
@@ -268,7 +255,6 @@ module Java::Util::Concurrent
       end
       
       typesig { [ScheduledExecutorService] }
-      # 
       # Returns an object that delegates all defined {@link
       # ScheduledExecutorService} methods to the given executor, but
       # not any other methods that might otherwise be accessible using
@@ -285,7 +271,6 @@ module Java::Util::Concurrent
       end
       
       typesig { [] }
-      # 
       # Returns a default thread factory used to create new threads.
       # This factory creates all new threads used by an Executor in the
       # same {@link ThreadGroup}. If there is a {@link
@@ -305,7 +290,6 @@ module Java::Util::Concurrent
       end
       
       typesig { [] }
-      # 
       # Returns a thread factory used to create new threads that
       # have the same permissions as the current thread.
       # This factory creates threads with the same settings as {@link
@@ -341,7 +325,6 @@ module Java::Util::Concurrent
       end
       
       typesig { [Runnable, T] }
-      # 
       # Returns a {@link Callable} object that, when
       # called, runs the given task and returns the given result.  This
       # can be useful when applying methods requiring a
@@ -358,7 +341,6 @@ module Java::Util::Concurrent
       end
       
       typesig { [Runnable] }
-      # 
       # Returns a {@link Callable} object that, when
       # called, runs the given task and returns <tt>null</tt>.
       # @param task the task to run
@@ -372,7 +354,6 @@ module Java::Util::Concurrent
       end
       
       typesig { [PrivilegedAction] }
-      # 
       # Returns a {@link Callable} object that, when
       # called, runs the given privileged action and returns its result.
       # @param action the privileged action to run
@@ -403,7 +384,6 @@ module Java::Util::Concurrent
       end
       
       typesig { [PrivilegedExceptionAction] }
-      # 
       # Returns a {@link Callable} object that, when
       # called, runs the given privileged exception action and returns
       # its result.
@@ -435,7 +415,6 @@ module Java::Util::Concurrent
       end
       
       typesig { [Callable] }
-      # 
       # Returns a {@link Callable} object that will, when
       # called, execute the given <tt>callable</tt> under the current
       # access control context. This method should normally be
@@ -455,7 +434,6 @@ module Java::Util::Concurrent
       end
       
       typesig { [Callable] }
-      # 
       # Returns a {@link Callable} object that will, when
       # called, execute the given <tt>callable</tt> under the current
       # access control context, with the current context class loader
@@ -516,7 +494,6 @@ module Java::Util::Concurrent
         alias_method :initialize__runnable_adapter, :initialize
       end }
       
-      # 
       # A callable that runs under established access control settings
       const_set_lazy(:PrivilegedCallable) { Class.new do
         include_class_members Executors
@@ -572,7 +549,6 @@ module Java::Util::Concurrent
         alias_method :initialize__privileged_callable, :initialize
       end }
       
-      # 
       # A callable that runs under established access control settings and
       # current ClassLoader
       const_set_lazy(:PrivilegedCallableUsingCurrentClassLoader) { Class.new do
@@ -660,7 +636,6 @@ module Java::Util::Concurrent
         alias_method :initialize__privileged_callable_using_current_class_loader, :initialize
       end }
       
-      # 
       # The default thread factory
       const_set_lazy(:DefaultThreadFactory) { Class.new do
         include_class_members Executors
@@ -715,7 +690,6 @@ module Java::Util::Concurrent
         alias_method :initialize__default_thread_factory, :initialize
       end }
       
-      # 
       # Thread factory capturing access control context and class loader
       const_set_lazy(:PrivilegedThreadFactory) { Class.new(DefaultThreadFactory) do
         include_class_members Executors
@@ -796,7 +770,6 @@ module Java::Util::Concurrent
         alias_method :initialize__privileged_thread_factory, :initialize
       end }
       
-      # 
       # A wrapper class that exposes only the ExecutorService methods
       # of an ExecutorService implementation.
       const_set_lazy(:DelegatedExecutorService) { Class.new(AbstractExecutorService) do
@@ -901,7 +874,6 @@ module Java::Util::Concurrent
         alias_method :initialize__finalizable_delegated_executor_service, :initialize
       end }
       
-      # 
       # A wrapper class that exposes only the ScheduledExecutorService
       # methods of a ScheduledExecutorService implementation.
       const_set_lazy(:DelegatedScheduledExecutorService) { Class.new(DelegatedExecutorService) do

@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 2003-2005 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -31,7 +30,6 @@ module Java::Lang::Reflect
     }
   end
   
-  # 
   # TypeVariable is the common superinterface for type variables of kinds.
   # A type variable is created the first time it is needed by a reflective
   # method, as specified in this package.  If a type variable t is referenced
@@ -58,7 +56,6 @@ module Java::Lang::Reflect
     include Type
     
     typesig { [] }
-    # 
     # Returns an array of {@code Type} objects representing the
     # upper bound(s) of this type variable.  Note that if no upper bound is
     # explicitly declared, the upper bound is {@code Object}.
@@ -81,7 +78,6 @@ module Java::Lang::Reflect
     end
     
     typesig { [] }
-    # 
     # Returns the {@code GenericDeclaration} object representing the
     # generic declaration declared this type variable.
     # 
@@ -93,7 +89,6 @@ module Java::Lang::Reflect
     end
     
     typesig { [] }
-    # 
     # Returns the name of this type variable, as it occurs in the source code.
     # 
     # @return the name of this type variable, as it appears in the source code

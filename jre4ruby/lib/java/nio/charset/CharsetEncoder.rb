@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 2000-2006 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -210,7 +209,6 @@ module Java::Nio::Charset
     }
     
     typesig { [Charset, ::Java::Float, ::Java::Float, Array.typed(::Java::Byte)] }
-    # 
     # Initializes a new encoder.  The new encoder will have the given
     # bytes-per-char and replacement values. </p>
     # 
@@ -257,7 +255,6 @@ module Java::Nio::Charset
     end
     
     typesig { [Charset, ::Java::Float, ::Java::Float] }
-    # 
     # Initializes a new encoder.  The new encoder will have the given
     # bytes-per-char values and its replacement will be the
     # byte array <tt>{</tt>&nbsp;<tt>(byte)'?'</tt>&nbsp;<tt>}</tt>. </p>
@@ -277,7 +274,6 @@ module Java::Nio::Charset
     end
     
     typesig { [] }
-    # 
     # Returns the charset that created this encoder.  </p>
     # 
     # @return  This encoder's charset
@@ -286,7 +282,6 @@ module Java::Nio::Charset
     end
     
     typesig { [] }
-    # 
     # Returns this encoder's replacement value. </p>
     # 
     # @return  This encoder's current replacement,
@@ -296,7 +291,6 @@ module Java::Nio::Charset
     end
     
     typesig { [Array.typed(::Java::Byte)] }
-    # 
     # Changes this encoder's replacement value.
     # 
     # <p> This method invokes the {@link #implReplaceWith implReplaceWith}
@@ -340,7 +334,6 @@ module Java::Nio::Charset
     end
     
     typesig { [Array.typed(::Java::Byte)] }
-    # 
     # Reports a change to this encoder's replacement value.
     # 
     # <p> The default implementation of this method does nothing.  This method
@@ -358,7 +351,6 @@ module Java::Nio::Charset
     undef_method :cached_decoder=
     
     typesig { [Array.typed(::Java::Byte)] }
-    # 
     # Tells whether or not the given byte array is a legal replacement value
     # for this encoder.
     # 
@@ -391,7 +383,6 @@ module Java::Nio::Charset
     end
     
     typesig { [] }
-    # 
     # Returns this encoder's current action for malformed-input errors.  </p>
     # 
     # @return The current malformed-input action, which is never <tt>null</tt>
@@ -400,7 +391,6 @@ module Java::Nio::Charset
     end
     
     typesig { [CodingErrorAction] }
-    # 
     # Changes this encoder's action for malformed-input errors.  </p>
     # 
     # <p> This method invokes the {@link #implOnMalformedInput
@@ -422,7 +412,6 @@ module Java::Nio::Charset
     end
     
     typesig { [CodingErrorAction] }
-    # 
     # Reports a change to this encoder's malformed-input action.
     # 
     # <p> The default implementation of this method does nothing.  This method
@@ -432,7 +421,6 @@ module Java::Nio::Charset
     end
     
     typesig { [] }
-    # 
     # Returns this encoder's current action for unmappable-character errors.
     # </p>
     # 
@@ -443,7 +431,6 @@ module Java::Nio::Charset
     end
     
     typesig { [CodingErrorAction] }
-    # 
     # Changes this encoder's action for unmappable-character errors.
     # 
     # <p> This method invokes the {@link #implOnUnmappableCharacter
@@ -465,7 +452,6 @@ module Java::Nio::Charset
     end
     
     typesig { [CodingErrorAction] }
-    # 
     # Reports a change to this encoder's unmappable-character action.
     # 
     # <p> The default implementation of this method does nothing.  This method
@@ -475,7 +461,6 @@ module Java::Nio::Charset
     end
     
     typesig { [] }
-    # 
     # Returns the average number of bytes that will be produced for each
     # character of input.  This heuristic value may be used to estimate the size
     # of the output buffer required for a given input sequence. </p>
@@ -487,7 +472,6 @@ module Java::Nio::Charset
     end
     
     typesig { [] }
-    # 
     # Returns the maximum number of bytes that will be produced for each
     # character of input.  This value may be used to compute the worst-case size
     # of the output buffer required for a given input sequence. </p>
@@ -499,7 +483,6 @@ module Java::Nio::Charset
     end
     
     typesig { [CharBuffer, ByteBuffer, ::Java::Boolean] }
-    # 
     # Encodes as many characters as possible from the given input buffer,
     # writing the results to the given output buffer.
     # 
@@ -609,7 +592,7 @@ module Java::Nio::Charset
         rescue BufferUnderflowException => x
           raise CoderMalfunctionError.new(x)
         rescue BufferOverflowException => x
-          raise CoderMalfunctionError.new(x_)
+          raise CoderMalfunctionError.new(x)
         end
         if (cr.is_overflow)
           return cr
@@ -651,7 +634,6 @@ module Java::Nio::Charset
     end
     
     typesig { [ByteBuffer] }
-    # 
     # Flushes this encoder.
     # 
     # <p> Some encoders maintain internal state and may need to write some
@@ -704,7 +686,6 @@ module Java::Nio::Charset
     end
     
     typesig { [ByteBuffer] }
-    # 
     # Flushes this encoder.
     # 
     # <p> The default implementation of this method does nothing, and always
@@ -722,7 +703,6 @@ module Java::Nio::Charset
     end
     
     typesig { [] }
-    # 
     # Resets this encoder, clearing any internal state.
     # 
     # <p> This method resets charset-independent state and also invokes the
@@ -737,7 +717,6 @@ module Java::Nio::Charset
     end
     
     typesig { [] }
-    # 
     # Resets this encoder, clearing any charset-specific internal state.
     # 
     # <p> The default implementation of this method does nothing.  This method
@@ -746,7 +725,6 @@ module Java::Nio::Charset
     end
     
     typesig { [CharBuffer, ByteBuffer] }
-    # 
     # Encodes one or more characters into one or more bytes.
     # 
     # <p> This method encapsulates the basic encoding loop, encoding as many
@@ -785,7 +763,6 @@ module Java::Nio::Charset
     end
     
     typesig { [CharBuffer] }
-    # 
     # Convenience method that encodes the remaining content of a single input
     # character buffer into a newly-allocated byte buffer.
     # 
@@ -870,7 +847,6 @@ module Java::Nio::Charset
     end
     
     typesig { [::Java::Char] }
-    # 
     # Tells whether or not this encoder can encode the given character.
     # 
     # <p> This method returns <tt>false</tt> if the given character is a
@@ -900,7 +876,6 @@ module Java::Nio::Charset
     end
     
     typesig { [CharSequence] }
-    # 
     # Tells whether or not this encoder can encode the given character
     # sequence.
     # 

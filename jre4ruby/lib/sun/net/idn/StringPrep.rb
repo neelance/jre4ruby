@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
 # This code is free software; you can redistribute it and/or modify it
@@ -63,7 +62,6 @@ module Sun::Net::Idn
     }
   end
   
-  # 
   # StringPrep API implements the StingPrep framework as described by
   # <a href="http://www.ietf.org/rfc/rfc3454.txt">RFC 3454</a>.
   # StringPrep prepares Unicode strings for use in network protocols.
@@ -99,7 +97,6 @@ module Sun::Net::Idn
     include_class_members StringPrepImports
     
     class_module.module_eval {
-      # 
       # Option to prohibit processing of unassigned code points in the input
       # 
       # @see   #prepare
@@ -107,7 +104,6 @@ module Sun::Net::Idn
       const_set_lazy(:DEFAULT) { 0x0 }
       const_attr_reader  :DEFAULT
       
-      # 
       # Option to allow processing of unassigned code points in the input
       # 
       # @see   #prepare
@@ -198,7 +194,6 @@ module Sun::Net::Idn
         undef_method :sprep_trie=
         
         typesig { [::Java::Int] }
-        # 
         # Called by com.ibm.icu.util.Trie to extract from a lead surrogate's
         # data the index array offset of the indexes for that lead surrogate.
         # @param property data value for a surrogate from the trie, including
@@ -301,7 +296,6 @@ module Sun::Net::Idn
     }
     
     typesig { [InputStream] }
-    # 
     # Creates an StringPrep object after reading the input stream.
     # The object does not hold a reference to the input steam, so the stream can be
     # closed after the method returns.
@@ -390,7 +384,6 @@ module Sun::Net::Idn
       def get_values(trie_word, values)
         values.reset
         if ((trie_word).equal?(0))
-          # 
           # Initial value stored in the mapping table
           # just return TYPE_LIMIT .. so that
           # the source codepoint is copied to the destination
@@ -473,7 +466,6 @@ module Sun::Net::Idn
     
     typesig { [StringBuffer] }
     def normalize(src)
-      # 
       # Option UNORM_BEFORE_PRI_29:
       # 
       # IDNA as interpreted by IETF members (see unicode mailing list 2004H1)
@@ -487,7 +479,6 @@ module Sun::Net::Idn
     end
     
     typesig { [UCharacterIterator, ::Java::Int] }
-    # 
     # boolean isLabelSeparator(int ch){
     # int result = getCodePointValue(ch);
     # if( (result & 0x07)  == LABEL_SEPARATOR){

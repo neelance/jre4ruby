@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 2005 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -38,7 +37,6 @@ module Sun::Security::Jgss::Spnego
     }
   end
   
-  # 
   # This class is the cred element implementation for SPNEGO mech.
   # NOTE: The current implementation can only support one mechanism.
   # This should be changed once multi-mechanism support is needed.

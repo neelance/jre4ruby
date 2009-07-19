@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 1995-1997 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -35,7 +34,6 @@ module Sun::Misc
     }
   end
   
-  # 
   # This class implements a BASE64 Character encoder as specified in RFC1521.
   # This RFC is part of the MIME specification as published by the Internet
   # Engineering Task Force (IETF). Unlike some other encoding schemes there
@@ -58,7 +56,6 @@ module Sun::Misc
     end
     
     typesig { [] }
-    # 
     # this class encodes 57 bytes per line. This results in a maximum
     # of 57/3 * 4 or 76 characters per output line. Not counting the
     # line termination.
@@ -82,7 +79,6 @@ module Sun::Misc
     }
     
     typesig { [OutputStream, Array.typed(::Java::Byte), ::Java::Int, ::Java::Int] }
-    # 
     # encodeAtom - Take three bytes of input and encode it as 4
     # printable characters. Note that if the length in len is less
     # than three is encodes either one or two '=' signs to indicate

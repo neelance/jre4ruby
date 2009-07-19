@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 1996-2006 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -42,7 +41,6 @@ module Java::Lang::Reflect
     }
   end
   
-  # 
   # {@code Constructor} provides information about, and access to, a single
   # constructor for a class.
   # 
@@ -175,7 +173,6 @@ module Java::Lang::Reflect
     undef_method :root=
     
     typesig { [Class, Array.typed(Class), Array.typed(Class), ::Java::Int, ::Java::Int, String, Array.typed(::Java::Byte), Array.typed(::Java::Byte)] }
-    # 
     # Package-private constructor used by ReflectAccess to enable
     # instantiation of these objects in Java code from the java.lang
     # package via sun.reflect.LangReflectAccess.
@@ -205,7 +202,6 @@ module Java::Lang::Reflect
     end
     
     typesig { [] }
-    # 
     # Package-private routine (exposed to java.lang.Class via
     # ReflectAccess) which returns a copy of this Constructor. The copy's
     # "root" field points to this Constructor.
@@ -225,7 +221,6 @@ module Java::Lang::Reflect
     end
     
     typesig { [] }
-    # 
     # Returns the {@code Class} object representing the class that declares
     # the constructor represented by this {@code Constructor} object.
     def get_declaring_class
@@ -233,7 +228,6 @@ module Java::Lang::Reflect
     end
     
     typesig { [] }
-    # 
     # Returns the name of this constructor, as a string.  This is
     # always the same as the simple name of the constructor's declaring
     # class.
@@ -242,7 +236,6 @@ module Java::Lang::Reflect
     end
     
     typesig { [] }
-    # 
     # Returns the Java language modifiers for the constructor
     # represented by this {@code Constructor} object, as an integer. The
     # {@code Modifier} class should be used to decode the modifiers.
@@ -253,7 +246,6 @@ module Java::Lang::Reflect
     end
     
     typesig { [] }
-    # 
     # Returns an array of {@code TypeVariable} objects that represent the
     # type variables declared by the generic declaration represented by this
     # {@code GenericDeclaration} object, in declaration order.  Returns an
@@ -276,7 +268,6 @@ module Java::Lang::Reflect
     end
     
     typesig { [] }
-    # 
     # Returns an array of {@code Class} objects that represent the formal
     # parameter types, in declaration order, of the constructor
     # represented by this {@code Constructor} object.  Returns an array of
@@ -289,7 +280,6 @@ module Java::Lang::Reflect
     end
     
     typesig { [] }
-    # 
     # Returns an array of {@code Type} objects that represent the formal
     # parameter types, in declaration order, of the method represented by
     # this {@code Constructor} object. Returns an array of length 0 if the
@@ -323,7 +313,6 @@ module Java::Lang::Reflect
     end
     
     typesig { [] }
-    # 
     # Returns an array of {@code Class} objects that represent the types
     # of exceptions declared to be thrown by the underlying constructor
     # represented by this {@code Constructor} object.  Returns an array of
@@ -336,7 +325,6 @@ module Java::Lang::Reflect
     end
     
     typesig { [] }
-    # 
     # Returns an array of {@code Type} objects that represent the
     # exceptions declared to be thrown by this {@code Constructor} object.
     # Returns an array of length 0 if the underlying method declares
@@ -370,7 +358,6 @@ module Java::Lang::Reflect
     end
     
     typesig { [Object] }
-    # 
     # Compares this {@code Constructor} against the specified object.
     # Returns true if the objects are the same.  Two {@code Constructor} objects are
     # the same if they were declared by the same class and have the
@@ -398,7 +385,6 @@ module Java::Lang::Reflect
     end
     
     typesig { [] }
-    # 
     # Returns a hashcode for this {@code Constructor}. The hashcode is
     # the same as the hashcode for the underlying constructor's
     # declaring class name.
@@ -407,7 +393,6 @@ module Java::Lang::Reflect
     end
     
     typesig { [] }
-    # 
     # Returns a string describing this {@code Constructor}.  The string is
     # formatted as the constructor access modifiers, if any,
     # followed by the fully-qualified name of the declaring class,
@@ -459,7 +444,6 @@ module Java::Lang::Reflect
     end
     
     typesig { [] }
-    # 
     # Returns a string describing this {@code Constructor},
     # including type parameters.  The string is formatted as the
     # constructor access modifiers, if any, followed by an
@@ -540,7 +524,6 @@ module Java::Lang::Reflect
     end
     
     typesig { [Object] }
-    # 
     # Uses the constructor represented by this {@code Constructor} object to
     # create and initialize a new instance of the constructor's
     # declaring class, with the specified initialization parameters.
@@ -607,7 +590,6 @@ module Java::Lang::Reflect
     end
     
     typesig { [] }
-    # 
     # Returns {@code true} if this constructor was declared to take
     # a variable number of arguments; returns {@code false}
     # otherwise.
@@ -620,7 +602,6 @@ module Java::Lang::Reflect
     end
     
     typesig { [] }
-    # 
     # Returns {@code true} if this constructor is a synthetic
     # constructor; returns {@code false} otherwise.
     # 
@@ -692,7 +673,6 @@ module Java::Lang::Reflect
     end
     
     typesig { [Class] }
-    # 
     # @throws NullPointerException {@inheritDoc}
     # @since 1.5
     def get_annotation(annotation_class)
@@ -708,7 +688,6 @@ module Java::Lang::Reflect
     }
     
     typesig { [] }
-    # 
     # @since 1.5
     def get_declared_annotations
       return declared_annotations.values.to_array(EMPTY_ANNOTATION_ARRAY)
@@ -731,7 +710,6 @@ module Java::Lang::Reflect
     end
     
     typesig { [] }
-    # 
     # Returns an array of arrays that represent the annotations on the formal
     # parameters, in declaration order, of the method represented by
     # this {@code Constructor} object. (Returns an array of length zero if the

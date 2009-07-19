@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 1994-2006 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -31,7 +30,6 @@ module Java::Io
     }
   end
   
-  # 
   # A data input stream lets an application read primitive Java data
   # types from an underlying input stream in a machine-independent
   # way. An application uses a data output stream to write data that
@@ -49,7 +47,6 @@ module Java::Io
     include DataInput
     
     typesig { [InputStream] }
-    # 
     # Creates a DataInputStream that uses the specified
     # underlying InputStream.
     # 
@@ -65,7 +62,6 @@ module Java::Io
       @read_buffer = Array.typed(::Java::Byte).new(8) { 0 }
     end
     
-    # 
     # working arrays initialized on demand by readUTF
     attr_accessor :bytearr
     alias_method :attr_bytearr, :bytearr
@@ -80,7 +76,6 @@ module Java::Io
     undef_method :chararr=
     
     typesig { [Array.typed(::Java::Byte)] }
-    # 
     # Reads some number of bytes from the contained input stream and
     # stores them into the buffer array <code>b</code>. The number of
     # bytes actually read is returned as an integer. This method blocks
@@ -122,7 +117,6 @@ module Java::Io
     end
     
     typesig { [Array.typed(::Java::Byte), ::Java::Int, ::Java::Int] }
-    # 
     # Reads up to <code>len</code> bytes of data from the contained
     # input stream into an array of bytes.  An attempt is made to read
     # as many as <code>len</code> bytes, but a smaller number may be read,
@@ -171,7 +165,6 @@ module Java::Io
     end
     
     typesig { [Array.typed(::Java::Byte)] }
-    # 
     # See the general contract of the <code>readFully</code>
     # method of <code>DataInput</code>.
     # <p>
@@ -191,7 +184,6 @@ module Java::Io
     end
     
     typesig { [Array.typed(::Java::Byte), ::Java::Int, ::Java::Int] }
-    # 
     # See the general contract of the <code>readFully</code>
     # method of <code>DataInput</code>.
     # <p>
@@ -223,7 +215,6 @@ module Java::Io
     end
     
     typesig { [::Java::Int] }
-    # 
     # See the general contract of the <code>skipBytes</code>
     # method of <code>DataInput</code>.
     # <p>
@@ -246,7 +237,6 @@ module Java::Io
     end
     
     typesig { [] }
-    # 
     # See the general contract of the <code>readBoolean</code>
     # method of <code>DataInput</code>.
     # <p>
@@ -268,7 +258,6 @@ module Java::Io
     end
     
     typesig { [] }
-    # 
     # See the general contract of the <code>readByte</code>
     # method of <code>DataInput</code>.
     # <p>
@@ -292,7 +281,6 @@ module Java::Io
     end
     
     typesig { [] }
-    # 
     # See the general contract of the <code>readUnsignedByte</code>
     # method of <code>DataInput</code>.
     # <p>
@@ -316,7 +304,6 @@ module Java::Io
     end
     
     typesig { [] }
-    # 
     # See the general contract of the <code>readShort</code>
     # method of <code>DataInput</code>.
     # <p>
@@ -342,7 +329,6 @@ module Java::Io
     end
     
     typesig { [] }
-    # 
     # See the general contract of the <code>readUnsignedShort</code>
     # method of <code>DataInput</code>.
     # <p>
@@ -368,7 +354,6 @@ module Java::Io
     end
     
     typesig { [] }
-    # 
     # See the general contract of the <code>readChar</code>
     # method of <code>DataInput</code>.
     # <p>
@@ -394,7 +379,6 @@ module Java::Io
     end
     
     typesig { [] }
-    # 
     # See the general contract of the <code>readInt</code>
     # method of <code>DataInput</code>.
     # <p>
@@ -428,7 +412,6 @@ module Java::Io
     undef_method :read_buffer=
     
     typesig { [] }
-    # 
     # See the general contract of the <code>readLong</code>
     # method of <code>DataInput</code>.
     # <p>
@@ -450,7 +433,6 @@ module Java::Io
     end
     
     typesig { [] }
-    # 
     # See the general contract of the <code>readFloat</code>
     # method of <code>DataInput</code>.
     # <p>
@@ -472,7 +454,6 @@ module Java::Io
     end
     
     typesig { [] }
-    # 
     # See the general contract of the <code>readDouble</code>
     # method of <code>DataInput</code>.
     # <p>
@@ -500,7 +481,6 @@ module Java::Io
     undef_method :line_buffer=
     
     typesig { [] }
-    # 
     # See the general contract of the <code>readLine</code>
     # method of <code>DataInput</code>.
     # <p>
@@ -534,27 +514,29 @@ module Java::Io
       room = buf.attr_length
       offset = 0
       c = 0
-      while (true)
-        case (c = self.attr_in.read)
-        when -1, Character.new(?\n.ord)
-          break
-        when Character.new(?\r.ord)
-          c2 = self.attr_in.read
-          if ((!(c2).equal?(Character.new(?\n.ord))) && (!(c2).equal?(-1)))
-            if (!(self.attr_in.is_a?(PushbackInputStream)))
-              self.attr_in = PushbackInputStream.new(self.attr_in)
+      catch(:break_loop) do
+        while (true)
+          case (c = self.attr_in.read)
+          when -1, Character.new(?\n.ord)
+            throw :break_loop, :thrown
+          when Character.new(?\r.ord)
+            c2 = self.attr_in.read
+            if ((!(c2).equal?(Character.new(?\n.ord))) && (!(c2).equal?(-1)))
+              if (!(self.attr_in.is_a?(PushbackInputStream)))
+                self.attr_in = PushbackInputStream.new(self.attr_in)
+              end
+              (self.attr_in).unread(c2)
             end
-            (self.attr_in).unread(c2)
+            throw :break_loop, :thrown
+          else
+            if ((room -= 1) < 0)
+              buf = CharArray.new(offset + 128)
+              room = buf.attr_length - offset - 1
+              System.arraycopy(@line_buffer, 0, buf, 0, offset)
+              @line_buffer = buf
+            end
+            buf[((offset += 1) - 1)] = RJava.cast_to_char(c)
           end
-          break
-        else
-          if ((room -= 1) < 0)
-            buf = CharArray.new(offset + 128)
-            room = buf.attr_length - offset - 1
-            System.arraycopy(@line_buffer, 0, buf, 0, offset)
-            @line_buffer = buf
-          end
-          buf[((offset += 1) - 1)] = RJava.cast_to_char(c)
         end
       end
       if (((c).equal?(-1)) && ((offset).equal?(0)))
@@ -564,7 +546,6 @@ module Java::Io
     end
     
     typesig { [] }
-    # 
     # See the general contract of the <code>readUTF</code>
     # method of <code>DataInput</code>.
     # <p>
@@ -587,7 +568,6 @@ module Java::Io
     
     class_module.module_eval {
       typesig { [DataInput] }
-      # 
       # Reads from the
       # stream <code>in</code> a representation
       # of a Unicode  character string encoded in

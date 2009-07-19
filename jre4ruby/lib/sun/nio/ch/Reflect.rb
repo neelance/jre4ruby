@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 2000-2007 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -94,7 +93,7 @@ module Sun::Nio::Ch
         rescue ClassNotFoundException => x
           raise ReflectionError.new(x)
         rescue NoSuchMethodException => x
-          raise ReflectionError.new(x_)
+          raise ReflectionError.new(x)
         end
       end
       
@@ -105,9 +104,9 @@ module Sun::Nio::Ch
         rescue InstantiationException => x
           raise ReflectionError.new(x)
         rescue IllegalAccessException => x
-          raise ReflectionError.new(x_)
+          raise ReflectionError.new(x)
         rescue InvocationTargetException => x
-          raise ReflectionError.new(x__)
+          raise ReflectionError.new(x)
         end
       end
       
@@ -121,7 +120,7 @@ module Sun::Nio::Ch
         rescue ClassNotFoundException => x
           raise ReflectionError.new(x)
         rescue NoSuchMethodException => x
-          raise ReflectionError.new(x_)
+          raise ReflectionError.new(x)
         end
       end
       
@@ -132,7 +131,7 @@ module Sun::Nio::Ch
         rescue IllegalAccessException => x
           raise ReflectionError.new(x)
         rescue InvocationTargetException => x
-          raise ReflectionError.new(x_)
+          raise ReflectionError.new(x)
         end
       end
       
@@ -143,10 +142,10 @@ module Sun::Nio::Ch
         rescue IllegalAccessException => x
           raise ReflectionError.new(x)
         rescue InvocationTargetException => x
-          if (IOException.class.is_instance(x_.get_cause))
-            raise x_.get_cause
+          if (IOException.class.is_instance(x.get_cause))
+            raise x.get_cause
           end
-          raise ReflectionError.new(x_)
+          raise ReflectionError.new(x)
         end
       end
       
@@ -160,7 +159,7 @@ module Sun::Nio::Ch
         rescue ClassNotFoundException => x
           raise ReflectionError.new(x)
         rescue NoSuchFieldException => x
-          raise ReflectionError.new(x_)
+          raise ReflectionError.new(x)
         end
       end
       

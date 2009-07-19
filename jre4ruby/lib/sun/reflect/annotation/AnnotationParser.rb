@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 2003-2005 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -43,7 +42,6 @@ module Sun::Reflect::Annotation
     }
   end
   
-  # 
   # Parser for Java programming language annotations.  Translates
   # annotation byte streams emitted by compiler into annotation objects.
   # 
@@ -54,7 +52,6 @@ module Sun::Reflect::Annotation
     
     class_module.module_eval {
       typesig { [Array.typed(::Java::Byte), ConstantPool, Class] }
-      # 
       # Parses the annotations described by the specified byte array.
       # resolving constant references in the specified constant pool.
       # The array must contain an array of annotations as described
@@ -75,7 +72,7 @@ module Sun::Reflect::Annotation
           raise AnnotationFormatError.new("Unexpected end of annotations.")
         rescue IllegalArgumentException => e
           # Type mismatch in constant pool
-          raise AnnotationFormatError.new(e_)
+          raise AnnotationFormatError.new(e)
         end
       end
       
@@ -102,7 +99,6 @@ module Sun::Reflect::Annotation
       end
       
       typesig { [Array.typed(::Java::Byte), ConstantPool, Class] }
-      # 
       # Parses the parameter annotations described by the specified byte array.
       # resolving constant references in the specified constant pool.
       # The array must contain an array of annotations as described
@@ -131,7 +127,7 @@ module Sun::Reflect::Annotation
           raise AnnotationFormatError.new("Unexpected end of parameter annotations.")
         rescue IllegalArgumentException => e
           # Type mismatch in constant pool
-          raise AnnotationFormatError.new(e_)
+          raise AnnotationFormatError.new(e)
         end
       end
       
@@ -165,7 +161,6 @@ module Sun::Reflect::Annotation
       const_attr_reader  :EMPTY_ANNOTATIONS_ARRAY
       
       typesig { [ByteBuffer, ConstantPool, Class, ::Java::Boolean] }
-      # 
       # Parses the annotation at the current position in the specified
       # byte buffer, resolving constant references in the specified constant
       # pool.  The cursor of the byte buffer must point to an "annotation
@@ -208,7 +203,7 @@ module Sun::Reflect::Annotation
           return nil
         rescue TypeNotPresentException => e
           if (exception_on_missing_annotation_class)
-            raise e_
+            raise e
           end
           skip_annotation(buf, false)
           return nil
@@ -244,7 +239,6 @@ module Sun::Reflect::Annotation
       end
       
       typesig { [Class, Map] }
-      # 
       # Returns an annotation of the given type backed by the given
       # member -> value map.
       def annotation_for_map(type, member_values)
@@ -252,7 +246,6 @@ module Sun::Reflect::Annotation
       end
       
       typesig { [Class, ByteBuffer, ConstantPool, Class] }
-      # 
       # Parses the annotation member value at the current position in the
       # specified byte buffer, resolving constant references in the specified
       # constant pool.  The cursor of the byte buffer must point to a
@@ -300,7 +293,6 @@ module Sun::Reflect::Annotation
       end
       
       typesig { [::Java::Int, ByteBuffer, ConstantPool] }
-      # 
       # Parses the primitive or String annotation member value indicated by
       # the specified tag byte at the current position in the specified byte
       # buffer, resolving constant reference in the specified constant pool.
@@ -336,7 +328,6 @@ module Sun::Reflect::Annotation
       end
       
       typesig { [ByteBuffer, ConstantPool, Class] }
-      # 
       # Parses the Class member value at the current position in the
       # specified byte buffer, resolving constant references in the specified
       # constant pool.  The cursor of the byte buffer must point to a "class
@@ -356,7 +347,7 @@ module Sun::Reflect::Annotation
         rescue NoClassDefFoundError => e
           return TypeNotPresentExceptionProxy.new("[unknown]", e)
         rescue TypeNotPresentException => e
-          return TypeNotPresentExceptionProxy.new(e_.type_name, e_.get_cause)
+          return TypeNotPresentExceptionProxy.new(e.type_name, e.get_cause)
         end
       end
       
@@ -383,7 +374,6 @@ module Sun::Reflect::Annotation
       end
       
       typesig { [Class, ByteBuffer, ConstantPool, Class] }
-      # 
       # Parses the enum constant member value at the current position in the
       # specified byte buffer, resolving constant references in the specified
       # constant pool.  The cursor of the byte buffer must point to a
@@ -417,7 +407,6 @@ module Sun::Reflect::Annotation
       end
       
       typesig { [Class, ByteBuffer, ConstantPool, Class] }
-      # 
       # Parses the array value at the current position in the specified byte
       # buffer, resolving constant references in the specified constant pool.
       # The cursor of the byte buffer must point to an array value struct
@@ -719,7 +708,6 @@ module Sun::Reflect::Annotation
       end
       
       typesig { [::Java::Int] }
-      # 
       # Return an appropriate exception proxy for a mismatching array
       # annotation where the erroneous array has the specified tag.
       def exception_proxy(tag)
@@ -727,7 +715,6 @@ module Sun::Reflect::Annotation
       end
       
       typesig { [ByteBuffer, ::Java::Boolean] }
-      # 
       # Skips the annotation at the current position in the specified
       # byte buffer.  The cursor of the byte buffer must point to
       # an "annotation structure" OR two bytes into an annotation
@@ -749,7 +736,6 @@ module Sun::Reflect::Annotation
       end
       
       typesig { [ByteBuffer] }
-      # 
       # Skips the annotation member value at the current position in the
       # specified byte buffer.  The cursor of the byte buffer must point to a
       # "member_value structure."
@@ -759,7 +745,6 @@ module Sun::Reflect::Annotation
       end
       
       typesig { [::Java::Int, ByteBuffer] }
-      # 
       # Skips the annotation member value at the current position in the
       # specified byte buffer.  The cursor of the byte buffer must point
       # immediately after the tag in a "member_value structure."
@@ -779,7 +764,6 @@ module Sun::Reflect::Annotation
       end
       
       typesig { [ByteBuffer] }
-      # 
       # Skips the array value at the current position in the specified byte
       # buffer.  The cursor of the byte buffer must point to an array value
       # struct.

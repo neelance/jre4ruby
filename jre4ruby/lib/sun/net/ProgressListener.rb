@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 2004 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -32,7 +31,6 @@ module Sun::Net
     }
   end
   
-  # 
   # ProgressListener is an interface to be implemented by parties
   # interested to be notified of progress in network input stream.
   # 
@@ -42,21 +40,18 @@ module Sun::Net
     include EventListener
     
     typesig { [ProgressEvent] }
-    # 
     # Start progress.
     def progress_start(evt)
       raise NotImplementedError
     end
     
     typesig { [ProgressEvent] }
-    # 
     # Update progress.
     def progress_update(evt)
       raise NotImplementedError
     end
     
     typesig { [ProgressEvent] }
-    # 
     # Finish progress.
     def progress_finish(evt)
       raise NotImplementedError

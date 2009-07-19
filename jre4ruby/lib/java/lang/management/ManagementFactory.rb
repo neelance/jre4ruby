@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 2003-2006 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -42,7 +41,6 @@ module Java::Lang::Management
     }
   end
   
-  # 
   # The <tt>ManagementFactory</tt> class is a factory class for getting
   # managed beans for the Java platform.
   # This class consists of static methods each of which returns
@@ -298,43 +296,36 @@ module Java::Lang::Management
     end
     
     class_module.module_eval {
-      # 
       # String representation of the
       # <tt>ObjectName</tt> for the {@link ClassLoadingMXBean}.
       const_set_lazy(:CLASS_LOADING_MXBEAN_NAME) { "java.lang:type=ClassLoading" }
       const_attr_reader  :CLASS_LOADING_MXBEAN_NAME
       
-      # 
       # String representation of the
       # <tt>ObjectName</tt> for the {@link CompilationMXBean}.
       const_set_lazy(:COMPILATION_MXBEAN_NAME) { "java.lang:type=Compilation" }
       const_attr_reader  :COMPILATION_MXBEAN_NAME
       
-      # 
       # String representation of the
       # <tt>ObjectName</tt> for the {@link MemoryMXBean}.
       const_set_lazy(:MEMORY_MXBEAN_NAME) { "java.lang:type=Memory" }
       const_attr_reader  :MEMORY_MXBEAN_NAME
       
-      # 
       # String representation of the
       # <tt>ObjectName</tt> for the {@link OperatingSystemMXBean}.
       const_set_lazy(:OPERATING_SYSTEM_MXBEAN_NAME) { "java.lang:type=OperatingSystem" }
       const_attr_reader  :OPERATING_SYSTEM_MXBEAN_NAME
       
-      # 
       # String representation of the
       # <tt>ObjectName</tt> for the {@link RuntimeMXBean}.
       const_set_lazy(:RUNTIME_MXBEAN_NAME) { "java.lang:type=Runtime" }
       const_attr_reader  :RUNTIME_MXBEAN_NAME
       
-      # 
       # String representation of the
       # <tt>ObjectName</tt> for the {@link ThreadMXBean}.
       const_set_lazy(:THREAD_MXBEAN_NAME) { "java.lang:type=Threading" }
       const_attr_reader  :THREAD_MXBEAN_NAME
       
-      # 
       # The domain name and the type key property in
       # the <tt>ObjectName</tt> for a {@link GarbageCollectorMXBean}.
       # The unique <tt>ObjectName</tt> for a <tt>GarbageCollectorMXBean</tt>
@@ -343,7 +334,6 @@ module Java::Lang::Management
       const_set_lazy(:GARBAGE_COLLECTOR_MXBEAN_DOMAIN_TYPE) { "java.lang:type=GarbageCollector" }
       const_attr_reader  :GARBAGE_COLLECTOR_MXBEAN_DOMAIN_TYPE
       
-      # 
       # The domain name and the type key property in
       # the <tt>ObjectName</tt> for a {@link MemoryManagerMXBean}.
       # The unique <tt>ObjectName</tt> for a <tt>MemoryManagerMXBean</tt>
@@ -352,7 +342,6 @@ module Java::Lang::Management
       const_set_lazy(:MEMORY_MANAGER_MXBEAN_DOMAIN_TYPE) { "java.lang:type=MemoryManager" }
       const_attr_reader  :MEMORY_MANAGER_MXBEAN_DOMAIN_TYPE
       
-      # 
       # The domain name and the type key property in
       # the <tt>ObjectName</tt> for a {@link MemoryPoolMXBean}.
       # The unique <tt>ObjectName</tt> for a <tt>MemoryPoolMXBean</tt>
@@ -362,7 +351,6 @@ module Java::Lang::Management
       const_attr_reader  :MEMORY_POOL_MXBEAN_DOMAIN_TYPE
       
       typesig { [] }
-      # 
       # Returns the managed bean for the class loading system of
       # the Java virtual machine.
       # 
@@ -373,7 +361,6 @@ module Java::Lang::Management
       end
       
       typesig { [] }
-      # 
       # Returns the managed bean for the memory system of
       # the Java virtual machine.
       # 
@@ -383,7 +370,6 @@ module Java::Lang::Management
       end
       
       typesig { [] }
-      # 
       # Returns the managed bean for the thread system of
       # the Java virtual machine.
       # 
@@ -393,7 +379,6 @@ module Java::Lang::Management
       end
       
       typesig { [] }
-      # 
       # Returns the managed bean for the runtime system of
       # the Java virtual machine.
       # 
@@ -403,7 +388,6 @@ module Java::Lang::Management
       end
       
       typesig { [] }
-      # 
       # Returns the managed bean for the compilation system of
       # the Java virtual machine.  This method returns <tt>null</tt>
       # if the Java virtual machine has no compilation system.
@@ -416,7 +400,6 @@ module Java::Lang::Management
       end
       
       typesig { [] }
-      # 
       # Returns the managed bean for the operating system on which
       # the Java virtual machine is running.
       # 
@@ -427,7 +410,6 @@ module Java::Lang::Management
       end
       
       typesig { [] }
-      # 
       # Returns a list of {@link MemoryPoolMXBean} objects in the
       # Java virtual machine.
       # The Java virtual machine can have one or more memory pools.
@@ -439,7 +421,6 @@ module Java::Lang::Management
       end
       
       typesig { [] }
-      # 
       # Returns a list of {@link MemoryManagerMXBean} objects
       # in the Java virtual machine.
       # The Java virtual machine can have one or more memory managers.
@@ -451,7 +432,6 @@ module Java::Lang::Management
       end
       
       typesig { [] }
-      # 
       # Returns a list of {@link GarbageCollectorMXBean} objects
       # in the Java virtual machine.
       # The Java virtual machine may have one or more
@@ -476,7 +456,6 @@ module Java::Lang::Management
       alias_method :attr_platform_mbean_server=, :platform_mbean_server=
       
       typesig { [] }
-      # 
       # Returns the platform {@link javax.management.MBeanServer MBeanServer}.
       # On the first call to this method, it first creates the platform
       # <tt>MBeanServer</tt> by calling the
@@ -531,7 +510,6 @@ module Java::Lang::Management
       end
       
       typesig { [MBeanServerConnection, String, Class] }
-      # 
       # Returns a proxy for a platform MXBean interface of a
       # given <a href="#MXBeanNames">MXBean name</a>
       # that forwards its method calls through the given
@@ -654,9 +632,9 @@ module Java::Lang::Management
           iae.init_cause(e)
           raise iae
         rescue MalformedObjectNameException => e
-          iae_ = IllegalArgumentException.new(mxbean_name + " is not a valid ObjectName format.")
-          iae_.init_cause(e_)
-          raise iae_
+          iae = IllegalArgumentException.new(mxbean_name + " is not a valid ObjectName format.")
+          iae.init_cause(e)
+          raise iae
         end
       end
       

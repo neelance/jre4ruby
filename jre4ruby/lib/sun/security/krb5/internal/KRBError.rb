@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Portions Copyright 2000-2006 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -46,7 +45,6 @@ module Sun::Security::Krb5::Internal
     }
   end
   
-  # 
   # Implements the ASN.1 KRBError type.
   # 
   # <xmp>
@@ -349,7 +347,6 @@ module Sun::Security::Krb5::Internal
     end
     
     typesig { [Array.typed(::Java::Byte)] }
-    # 
     # Attention:
     # 
     # According to RFC 4120, e-data field in a KRB-ERROR message is
@@ -398,7 +395,6 @@ module Sun::Security::Krb5::Internal
     end
     
     typesig { [Array.typed(::Java::Byte)] }
-    # 
     # Try parsing the data as a sequence of PA-DATA.
     # @param data the data block
     def parse_padata(data)
@@ -431,9 +427,9 @@ module Sun::Security::Krb5::Internal
           end
         when Krb5::PA_ETYPE_INFO2
           if (!(pa_value).nil?)
-            der_ = DerValue.new(pa_value)
-            value_ = der_.attr_data.get_der_value
-            info2 = ETypeInfo2.new(value_)
+            der = DerValue.new(pa_value)
+            value = der.attr_data.get_der_value
+            info2 = ETypeInfo2.new(value)
             @etype = info2.get_etype
             @salt = info2.get_salt
             @s2kparams = info2.get_params
@@ -496,7 +492,6 @@ module Sun::Security::Krb5::Internal
     end
     
     typesig { [DerValue] }
-    # 
     # Initializes a KRBError object.
     # @param encoding a DER-encoded data.
     # @exception Asn1Exception if an error occurs while decoding an ASN1 encoded data.
@@ -580,7 +575,6 @@ module Sun::Security::Krb5::Internal
     end
     
     typesig { [] }
-    # 
     # For debug use only
     def show_debug
       if (self.attr_debug)
@@ -618,7 +612,6 @@ module Sun::Security::Krb5::Internal
     end
     
     typesig { [] }
-    # 
     # Encodes an KRBError object.
     # @return the byte array of encoded KRBError object.
     # @exception Asn1Exception if an error occurs while decoding an ASN1 encoded data.

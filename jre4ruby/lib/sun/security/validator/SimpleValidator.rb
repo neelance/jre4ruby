@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 2002-2006 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -42,7 +41,6 @@ module Sun::Security::Validator
     }
   end
   
-  # 
   # A simple validator implementation. It is based on code from the JSSE
   # X509TrustManagerImpl. This implementation is designed for compatibility with
   # deployed certificates and previous J2SE versions. It will never support
@@ -80,7 +78,6 @@ module Sun::Security::Validator
       const_attr_reader  :NSCT_CODE_SIGNING_CA
     }
     
-    # 
     # The trusted certificates as:
     # Map (X500Principal)subject of trusted cert -> List of X509Certificate
     # The list is used because there may be multiple certificates
@@ -91,7 +88,6 @@ module Sun::Security::Validator
     alias_method :attr_trusted_x500principals=, :trusted_x500principals=
     undef_method :trusted_x500principals=
     
-    # 
     # Set of the trusted certificates. Present only for
     # getTrustedCertificates().
     attr_accessor :trusted_certs
@@ -126,7 +122,6 @@ module Sun::Security::Validator
     end
     
     typesig { [Array.typed(X509Certificate), Collection, Object] }
-    # 
     # Perform simple validation of chain. The arguments otherCerts and
     # parameter are ignored.
     def engine_validate(chain, other_certs, parameter)
@@ -210,7 +205,6 @@ module Sun::Security::Validator
     
     class_module.module_eval {
       typesig { [X509Certificate, String] }
-      # 
       # Get the value of the specified bit in the Netscape certificate type
       # extension. If the extension is not present at all, we return true.
       def get_netscape_cert_type_bit(cert, type)
@@ -255,7 +249,6 @@ module Sun::Security::Validator
     end
     
     typesig { [X509Certificate, JavaSet] }
-    # 
     # Verify the key usage and extended key usage for intermediate
     # certificates.
     def check_key_usage(cert, crit_set)
@@ -273,7 +266,6 @@ module Sun::Security::Validator
     end
     
     typesig { [Array.typed(X509Certificate)] }
-    # 
     # Build a trusted certificate chain. This method always returns a chain
     # with a trust anchor as the final cert in the chain. If no trust anchor
     # could be found, a CertificateException is thrown.
@@ -293,14 +285,14 @@ module Sun::Security::Validator
         ((i += 1) - 1)
       end
       # check if we can append a trusted cert
-      cert_ = chain[chain.attr_length - 1]
-      subject = cert_.get_subject_x500principal
-      issuer = cert_.get_issuer_x500principal
+      cert = chain[chain.attr_length - 1]
+      subject = cert.get_subject_x500principal
+      issuer = cert.get_issuer_x500principal
       if (((subject == issuer)).equal?(false))
         list = @trusted_x500principals.get(issuer)
         if (!(list).nil?)
-          trusted_cert_ = list.iterator.next
-          c.add(trusted_cert_)
+          trusted_cert = list.iterator.next
+          c.add(trusted_cert)
           return c.to_array(CHAIN0)
         end
       end
@@ -309,7 +301,6 @@ module Sun::Security::Validator
     end
     
     typesig { [X509Certificate] }
-    # 
     # Return a trusted certificate that matches the input certificate,
     # or null if no such certificate can be found. This method also handles
     # cases where a CA re-issues a trust anchor with the same public key and

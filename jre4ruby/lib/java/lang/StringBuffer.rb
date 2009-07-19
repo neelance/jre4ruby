@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 1994-2004 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -30,7 +29,6 @@ module Java::Lang
     }
   end
   
-  # 
   # A thread-safe, mutable sequence of characters.
   # A string buffer is like a {@link String}, but can be modified. At any
   # point in time it contains some particular sequence of characters, but
@@ -95,7 +93,6 @@ module Java::Lang
     }
     
     typesig { [] }
-    # 
     # Constructs a string buffer with no characters in it and an
     # initial capacity of 16 characters.
     def initialize
@@ -103,7 +100,6 @@ module Java::Lang
     end
     
     typesig { [::Java::Int] }
-    # 
     # Constructs a string buffer with no characters in it and
     # the specified initial capacity.
     # 
@@ -115,7 +111,6 @@ module Java::Lang
     end
     
     typesig { [String] }
-    # 
     # Constructs a string buffer initialized to the contents of the
     # specified string. The initial capacity of the string buffer is
     # <code>16</code> plus the length of the string argument.
@@ -128,7 +123,6 @@ module Java::Lang
     end
     
     typesig { [CharSequence] }
-    # 
     # Constructs a string buffer that contains the same characters
     # as the specified <code>CharSequence</code>. The initial capacity of
     # the string buffer is <code>16</code> plus the length of the
@@ -170,7 +164,6 @@ module Java::Lang
     end
     
     typesig { [] }
-    # 
     # @since      1.5
     def trim_to_size
       synchronized(self) do
@@ -179,7 +172,6 @@ module Java::Lang
     end
     
     typesig { [::Java::Int] }
-    # 
     # @throws IndexOutOfBoundsException {@inheritDoc}
     # @see        #length()
     def set_length(new_length)
@@ -189,7 +181,6 @@ module Java::Lang
     end
     
     typesig { [::Java::Int] }
-    # 
     # @throws IndexOutOfBoundsException {@inheritDoc}
     # @see        #length()
     def char_at(index)
@@ -202,7 +193,6 @@ module Java::Lang
     end
     
     typesig { [::Java::Int] }
-    # 
     # @since      1.5
     def code_point_at(index)
       synchronized(self) do
@@ -211,7 +201,6 @@ module Java::Lang
     end
     
     typesig { [::Java::Int] }
-    # 
     # @since     1.5
     def code_point_before(index)
       synchronized(self) do
@@ -220,7 +209,6 @@ module Java::Lang
     end
     
     typesig { [::Java::Int, ::Java::Int] }
-    # 
     # @since     1.5
     def code_point_count(begin_index, end_index)
       synchronized(self) do
@@ -229,7 +217,6 @@ module Java::Lang
     end
     
     typesig { [::Java::Int, ::Java::Int] }
-    # 
     # @since     1.5
     def offset_by_code_points(index, code_point_offset)
       synchronized(self) do
@@ -238,7 +225,6 @@ module Java::Lang
     end
     
     typesig { [::Java::Int, ::Java::Int, Array.typed(::Java::Char), ::Java::Int] }
-    # 
     # @throws NullPointerException {@inheritDoc}
     # @throws IndexOutOfBoundsException {@inheritDoc}
     def get_chars(src_begin, src_end, dst, dst_begin)
@@ -248,7 +234,6 @@ module Java::Lang
     end
     
     typesig { [::Java::Int, ::Java::Char] }
-    # 
     # @throws IndexOutOfBoundsException {@inheritDoc}
     # @see        #length()
     def set_char_at(index, ch)
@@ -261,7 +246,6 @@ module Java::Lang
     end
     
     typesig { [Object] }
-    # 
     # @see     java.lang.String#valueOf(java.lang.Object)
     # @see     #append(java.lang.String)
     def append(obj)
@@ -280,7 +264,6 @@ module Java::Lang
     end
     
     typesig { [StringBuffer] }
-    # 
     # Appends the specified <tt>StringBuffer</tt> to this sequence.
     # <p>
     # The characters of the <tt>StringBuffer</tt> argument are appended,
@@ -311,7 +294,6 @@ module Java::Lang
     end
     
     typesig { [CharSequence] }
-    # 
     # Appends the specified <code>CharSequence</code> to this
     # sequence.
     # <p>
@@ -346,7 +328,6 @@ module Java::Lang
     end
     
     typesig { [CharSequence, ::Java::Int, ::Java::Int] }
-    # 
     # @throws IndexOutOfBoundsException {@inheritDoc}
     # @since      1.5
     def append(s, start, end_)
@@ -373,7 +354,6 @@ module Java::Lang
     end
     
     typesig { [::Java::Boolean] }
-    # 
     # @see     java.lang.String#valueOf(boolean)
     # @see     #append(java.lang.String)
     def append(b)
@@ -392,7 +372,6 @@ module Java::Lang
     end
     
     typesig { [::Java::Int] }
-    # 
     # @see     java.lang.String#valueOf(int)
     # @see     #append(java.lang.String)
     def append(i)
@@ -403,7 +382,6 @@ module Java::Lang
     end
     
     typesig { [::Java::Int] }
-    # 
     # @since 1.5
     def append_code_point(code_point)
       synchronized(self) do
@@ -413,7 +391,6 @@ module Java::Lang
     end
     
     typesig { [::Java::Long] }
-    # 
     # @see     java.lang.String#valueOf(long)
     # @see     #append(java.lang.String)
     def append(lng)
@@ -424,7 +401,6 @@ module Java::Lang
     end
     
     typesig { [::Java::Float] }
-    # 
     # @see     java.lang.String#valueOf(float)
     # @see     #append(java.lang.String)
     def append(f)
@@ -435,7 +411,6 @@ module Java::Lang
     end
     
     typesig { [::Java::Double] }
-    # 
     # @see     java.lang.String#valueOf(double)
     # @see     #append(java.lang.String)
     def append(d)
@@ -446,7 +421,6 @@ module Java::Lang
     end
     
     typesig { [::Java::Int, ::Java::Int] }
-    # 
     # @throws StringIndexOutOfBoundsException {@inheritDoc}
     # @since      1.2
     def delete(start, end_)
@@ -457,7 +431,6 @@ module Java::Lang
     end
     
     typesig { [::Java::Int] }
-    # 
     # @throws StringIndexOutOfBoundsException {@inheritDoc}
     # @since      1.2
     def delete_char_at(index)
@@ -468,7 +441,6 @@ module Java::Lang
     end
     
     typesig { [::Java::Int, ::Java::Int, String] }
-    # 
     # @throws StringIndexOutOfBoundsException {@inheritDoc}
     # @since      1.2
     def replace(start, end_, str)
@@ -479,7 +451,6 @@ module Java::Lang
     end
     
     typesig { [::Java::Int] }
-    # 
     # @throws StringIndexOutOfBoundsException {@inheritDoc}
     # @since      1.2
     def substring(start)
@@ -489,7 +460,6 @@ module Java::Lang
     end
     
     typesig { [::Java::Int, ::Java::Int] }
-    # 
     # @throws IndexOutOfBoundsException {@inheritDoc}
     # @since      1.4
     def sub_sequence(start, end_)
@@ -499,7 +469,6 @@ module Java::Lang
     end
     
     typesig { [::Java::Int, ::Java::Int] }
-    # 
     # @throws StringIndexOutOfBoundsException {@inheritDoc}
     # @since      1.2
     def substring(start, end_)
@@ -509,7 +478,6 @@ module Java::Lang
     end
     
     typesig { [::Java::Int, Array.typed(::Java::Char), ::Java::Int, ::Java::Int] }
-    # 
     # @throws StringIndexOutOfBoundsException {@inheritDoc}
     # @since      1.2
     def insert(index, str, offset, len)
@@ -520,7 +488,6 @@ module Java::Lang
     end
     
     typesig { [::Java::Int, Object] }
-    # 
     # @throws StringIndexOutOfBoundsException {@inheritDoc}
     # @see        java.lang.String#valueOf(java.lang.Object)
     # @see        #insert(int, java.lang.String)
@@ -533,7 +500,6 @@ module Java::Lang
     end
     
     typesig { [::Java::Int, String] }
-    # 
     # @throws StringIndexOutOfBoundsException {@inheritDoc}
     # @see        #length()
     def insert(offset, str)
@@ -544,7 +510,6 @@ module Java::Lang
     end
     
     typesig { [::Java::Int, Array.typed(::Java::Char)] }
-    # 
     # @throws StringIndexOutOfBoundsException {@inheritDoc}
     def insert(offset, str)
       synchronized(self) do
@@ -554,7 +519,6 @@ module Java::Lang
     end
     
     typesig { [::Java::Int, CharSequence] }
-    # 
     # @throws IndexOutOfBoundsException {@inheritDoc}
     # @since      1.5
     def insert(dst_offset, s)
@@ -569,7 +533,6 @@ module Java::Lang
     end
     
     typesig { [::Java::Int, CharSequence, ::Java::Int, ::Java::Int] }
-    # 
     # @throws IndexOutOfBoundsException {@inheritDoc}
     # @since      1.5
     def insert(dst_offset, s, start, end_)
@@ -580,7 +543,6 @@ module Java::Lang
     end
     
     typesig { [::Java::Int, ::Java::Boolean] }
-    # 
     # @throws StringIndexOutOfBoundsException {@inheritDoc}
     # @see        java.lang.String#valueOf(boolean)
     # @see        #insert(int, java.lang.String)
@@ -590,7 +552,6 @@ module Java::Lang
     end
     
     typesig { [::Java::Int, ::Java::Char] }
-    # 
     # @throws IndexOutOfBoundsException {@inheritDoc}
     # @see        #length()
     def insert(offset, c)
@@ -601,7 +562,6 @@ module Java::Lang
     end
     
     typesig { [::Java::Int, ::Java::Int] }
-    # 
     # @throws StringIndexOutOfBoundsException {@inheritDoc}
     # @see        java.lang.String#valueOf(int)
     # @see        #insert(int, java.lang.String)
@@ -611,7 +571,6 @@ module Java::Lang
     end
     
     typesig { [::Java::Int, ::Java::Long] }
-    # 
     # @throws StringIndexOutOfBoundsException {@inheritDoc}
     # @see        java.lang.String#valueOf(long)
     # @see        #insert(int, java.lang.String)
@@ -621,7 +580,6 @@ module Java::Lang
     end
     
     typesig { [::Java::Int, ::Java::Float] }
-    # 
     # @throws StringIndexOutOfBoundsException {@inheritDoc}
     # @see        java.lang.String#valueOf(float)
     # @see        #insert(int, java.lang.String)
@@ -631,7 +589,6 @@ module Java::Lang
     end
     
     typesig { [::Java::Int, ::Java::Double] }
-    # 
     # @throws StringIndexOutOfBoundsException {@inheritDoc}
     # @see        java.lang.String#valueOf(double)
     # @see        #insert(int, java.lang.String)
@@ -641,7 +598,6 @@ module Java::Lang
     end
     
     typesig { [String] }
-    # 
     # @throws NullPointerException {@inheritDoc}
     # @since      1.4
     def index_of(str)
@@ -649,7 +605,6 @@ module Java::Lang
     end
     
     typesig { [String, ::Java::Int] }
-    # 
     # @throws NullPointerException {@inheritDoc}
     # @since      1.4
     def index_of(str, from_index)
@@ -659,7 +614,6 @@ module Java::Lang
     end
     
     typesig { [String] }
-    # 
     # @throws NullPointerException {@inheritDoc}
     # @since      1.4
     def last_index_of(str)
@@ -668,7 +622,6 @@ module Java::Lang
     end
     
     typesig { [String, ::Java::Int] }
-    # 
     # @throws NullPointerException {@inheritDoc}
     # @since      1.4
     def last_index_of(str, from_index)
@@ -678,7 +631,6 @@ module Java::Lang
     end
     
     typesig { [] }
-    # 
     # @since   JDK1.0.2
     def reverse
       synchronized(self) do
@@ -695,7 +647,6 @@ module Java::Lang
     end
     
     class_module.module_eval {
-      # 
       # Serializable fields for StringBuffer.
       # 
       # @serialField value  char[]
@@ -710,7 +661,6 @@ module Java::Lang
     }
     
     typesig { [Java::Io::ObjectOutputStream] }
-    # 
     # readObject is called to restore the state of the StringBuffer from
     # a stream.
     def write_object(s)
@@ -724,7 +674,6 @@ module Java::Lang
     end
     
     typesig { [Java::Io::ObjectInputStream] }
-    # 
     # readObject is called to restore the state of the StringBuffer from
     # a stream.
     def read_object(s)

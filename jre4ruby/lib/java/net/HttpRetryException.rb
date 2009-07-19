@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 2004 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -32,7 +31,6 @@ module Java::Net
     }
   end
   
-  # 
   # Thrown to indicate that a HTTP request needs to be retried
   # but cannot be retried automatically, due to streaming mode
   # being enabled.
@@ -55,7 +53,6 @@ module Java::Net
     undef_method :location=
     
     typesig { [String, ::Java::Int] }
-    # 
     # Constructs a new <code>HttpRetryException</code> from the
     # specified response code and exception detail message
     # 
@@ -69,7 +66,6 @@ module Java::Net
     end
     
     typesig { [String, ::Java::Int, String] }
-    # 
     # Constructs a new <code>HttpRetryException</code> with detail message
     # responseCode and the contents of the Location response header field.
     # 
@@ -85,7 +81,6 @@ module Java::Net
     end
     
     typesig { [] }
-    # 
     # Returns the http response code
     # 
     # @return  The http response code.
@@ -94,7 +89,6 @@ module Java::Net
     end
     
     typesig { [] }
-    # 
     # Returns a string explaining why the http request could
     # not be retried.
     # 
@@ -104,7 +98,6 @@ module Java::Net
     end
     
     typesig { [] }
-    # 
     # Returns the value of the Location header field if the
     # error resulted from redirection.
     # 

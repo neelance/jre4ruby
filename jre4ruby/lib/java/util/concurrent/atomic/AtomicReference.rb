@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
 # This code is free software; you can redistribute it and/or modify it
@@ -41,7 +40,6 @@ module Java::Util::Concurrent::Atomic
     }
   end
   
-  # 
   # An object reference that may be updated atomically. See the {@link
   # java.util.concurrent.atomic} package specification for description
   # of the properties of atomic variables.
@@ -75,7 +73,6 @@ module Java::Util::Concurrent::Atomic
     undef_method :value=
     
     typesig { [Object] }
-    # 
     # Creates a new AtomicReference with the given initial value.
     # 
     # @param initialValue the initial value
@@ -85,14 +82,12 @@ module Java::Util::Concurrent::Atomic
     end
     
     typesig { [] }
-    # 
     # Creates a new AtomicReference with null initial value.
     def initialize
       @value = nil
     end
     
     typesig { [] }
-    # 
     # Gets the current value.
     # 
     # @return the current value
@@ -101,7 +96,6 @@ module Java::Util::Concurrent::Atomic
     end
     
     typesig { [Object] }
-    # 
     # Sets to the given value.
     # 
     # @param newValue the new value
@@ -110,7 +104,6 @@ module Java::Util::Concurrent::Atomic
     end
     
     typesig { [Object] }
-    # 
     # Eventually sets to the given value.
     # 
     # @param newValue the new value
@@ -120,7 +113,6 @@ module Java::Util::Concurrent::Atomic
     end
     
     typesig { [Object, Object] }
-    # 
     # Atomically sets the value to the given updated value
     # if the current value {@code ==} the expected value.
     # @param expect the expected value
@@ -132,7 +124,6 @@ module Java::Util::Concurrent::Atomic
     end
     
     typesig { [Object, Object] }
-    # 
     # Atomically sets the value to the given updated value
     # if the current value {@code ==} the expected value.
     # 
@@ -148,7 +139,6 @@ module Java::Util::Concurrent::Atomic
     end
     
     typesig { [Object] }
-    # 
     # Atomically sets to the given value and returns the old value.
     # 
     # @param newValue the new value
@@ -163,7 +153,6 @@ module Java::Util::Concurrent::Atomic
     end
     
     typesig { [] }
-    # 
     # Returns the String representation of the current value.
     # @return the String representation of the current value.
     def to_s

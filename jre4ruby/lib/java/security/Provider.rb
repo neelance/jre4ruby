@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 1996-2006 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -38,7 +37,6 @@ module Java::Security
     }
   end
   
-  # 
   # This class represents a "provider" for the
   # Java Security API, where a provider implements some or all parts of
   # Java Security. Services that a provider may implement include:
@@ -99,7 +97,6 @@ module Java::Security
       const_attr_reader  :Debug
     }
     
-    # 
     # The provider name.
     # 
     # @serial
@@ -109,7 +106,6 @@ module Java::Security
     alias_method :attr_name=, :name=
     undef_method :name=
     
-    # 
     # A description of the provider and its services.
     # 
     # @serial
@@ -119,7 +115,6 @@ module Java::Security
     alias_method :attr_info=, :info=
     undef_method :info=
     
-    # 
     # The provider version number.
     # 
     # @serial
@@ -148,7 +143,6 @@ module Java::Security
     undef_method :initialized=
     
     typesig { [String, ::Java::Double, String] }
-    # 
     # Constructs a provider with the specified name, version number,
     # and information.
     # 
@@ -181,7 +175,6 @@ module Java::Security
     end
     
     typesig { [] }
-    # 
     # Returns the name of this provider.
     # 
     # @return the name of this provider.
@@ -190,7 +183,6 @@ module Java::Security
     end
     
     typesig { [] }
-    # 
     # Returns the version number for this provider.
     # 
     # @return the version number for this provider.
@@ -199,7 +191,6 @@ module Java::Security
     end
     
     typesig { [] }
-    # 
     # Returns a human-readable description of the provider and its
     # services.  This may return an HTML page, with relevant links.
     # 
@@ -209,7 +200,6 @@ module Java::Security
     end
     
     typesig { [] }
-    # 
     # Returns a string with the name and the version number
     # of this provider.
     # 
@@ -220,7 +210,6 @@ module Java::Security
     end
     
     typesig { [] }
-    # 
     # override the following methods to ensure that provider
     # information can only be changed if the caller has the appropriate
     # permissions.
@@ -256,7 +245,6 @@ module Java::Security
     end
     
     typesig { [InputStream] }
-    # 
     # Reads a property list (key and element pairs) from the input stream.
     # 
     # @param inStream   the input stream.
@@ -276,7 +264,6 @@ module Java::Security
     end
     
     typesig { [Map] }
-    # 
     # Copies all of the mappings from the specified Map to this provider.
     # These mappings will replace any properties that this provider had
     # for any of the keys currently in the specified Map.
@@ -293,7 +280,6 @@ module Java::Security
     end
     
     typesig { [] }
-    # 
     # Returns an unmodifiable Set view of the property entries contained
     # in this Provider.
     # 
@@ -323,7 +309,6 @@ module Java::Security
     end
     
     typesig { [] }
-    # 
     # Returns an unmodifiable Set view of the property keys contained in
     # this provider.
     # 
@@ -334,7 +319,6 @@ module Java::Security
     end
     
     typesig { [] }
-    # 
     # Returns an unmodifiable Collection view of the property values
     # contained in this provider.
     # 
@@ -345,7 +329,6 @@ module Java::Security
     end
     
     typesig { [Object, Object] }
-    # 
     # Sets the <code>key</code> property to have the specified
     # <code>value</code>.
     # 
@@ -383,7 +366,6 @@ module Java::Security
     end
     
     typesig { [Object] }
-    # 
     # Removes the <code>key</code> property (and its corresponding
     # <code>value</code>).
     # 
@@ -534,7 +516,6 @@ module Java::Security
     end
     
     typesig { [Map] }
-    # 
     # Copies all of the mappings from the specified Map to this provider.
     # Internal method to be called AFTER the security check has been
     # performed.
@@ -656,7 +637,6 @@ module Java::Security
     }
     
     typesig { [] }
-    # 
     # Ensure all the legacy String properties are fully parsed into
     # service objects.
     def ensure_legacy_parsed
@@ -677,7 +657,6 @@ module Java::Security
     end
     
     typesig { [Map] }
-    # 
     # Remove all invalid services from the Map. Invalid services can only
     # occur if the legacy properties are inconsistent or incomplete.
     def remove_invalid_services(map)
@@ -740,53 +719,52 @@ module Java::Security
         @legacy_map.put(ServiceKey.new(type, alias_alg, true), s)
         s.add_alias(alias_alg)
       else
-        type_and_alg_ = get_type_and_algorithm(name)
-        if ((type_and_alg_).nil?)
+        type_and_alg = get_type_and_algorithm(name)
+        if ((type_and_alg).nil?)
           return
         end
-        i = type_and_alg_[1].index_of(Character.new(?\s.ord))
+        i = type_and_alg[1].index_of(Character.new(?\s.ord))
         if ((i).equal?(-1))
           # e.g. put("MessageDigest.SHA-1", "sun.security.provider.SHA");
-          type_ = get_engine_name(type_and_alg_[0])
-          std_alg_ = type_and_alg_[1].intern
+          type = get_engine_name(type_and_alg[0])
+          std_alg = type_and_alg[1].intern
           class_name = value
-          key_ = ServiceKey.new(type_, std_alg_, true)
-          s_ = @legacy_map.get(key_)
-          if ((s_).nil?)
-            s_ = Service.new(self)
-            s_.attr_type = type_
-            s_.attr_algorithm = std_alg_
-            @legacy_map.put(key_, s_)
+          key = ServiceKey.new(type, std_alg, true)
+          s = @legacy_map.get(key)
+          if ((s).nil?)
+            s = Service.new(self)
+            s.attr_type = type
+            s.attr_algorithm = std_alg
+            @legacy_map.put(key, s)
           end
-          s_.attr_class_name = class_name
+          s.attr_class_name = class_name
         else
           # attribute
           # e.g. put("MessageDigest.SHA-1 ImplementedIn", "Software");
           attribute_value = value
-          type__ = get_engine_name(type_and_alg_[0])
-          attribute_string = type_and_alg_[1]
-          std_alg__ = attribute_string.substring(0, i).intern
+          type = get_engine_name(type_and_alg[0])
+          attribute_string = type_and_alg[1]
+          std_alg = attribute_string.substring(0, i).intern
           attribute_name = attribute_string.substring(i + 1)
           # kill additional spaces
           while (attribute_name.starts_with(" "))
             attribute_name = (attribute_name.substring(1)).to_s
           end
           attribute_name = (attribute_name.intern).to_s
-          key__ = ServiceKey.new(type__, std_alg__, true)
-          s__ = @legacy_map.get(key__)
-          if ((s__).nil?)
-            s__ = Service.new(self)
-            s__.attr_type = type__
-            s__.attr_algorithm = std_alg__
-            @legacy_map.put(key__, s__)
+          key = ServiceKey.new(type, std_alg, true)
+          s = @legacy_map.get(key)
+          if ((s).nil?)
+            s = Service.new(self)
+            s.attr_type = type
+            s.attr_algorithm = std_alg
+            @legacy_map.put(key, s)
           end
-          s__.add_attribute(attribute_name, attribute_value)
+          s.add_attribute(attribute_name, attribute_value)
         end
       end
     end
     
     typesig { [String, String] }
-    # 
     # Get the service describing this Provider's implementation of the
     # specified type of this algorithm or alias. If no such
     # implementation exists, this method returns null. If there are two
@@ -845,7 +823,6 @@ module Java::Security
     }
     
     typesig { [] }
-    # 
     # Get an unmodifiable Set of all services supported by
     # this Provider.
     # 
@@ -876,7 +853,6 @@ module Java::Security
     end
     
     typesig { [Service] }
-    # 
     # Add a service. If a service of the same type with the same algorithm
     # name exists and it was added using {@link #putService putService()},
     # it is replaced by the new service.
@@ -934,7 +910,6 @@ module Java::Security
     end
     
     typesig { [Service] }
-    # 
     # Put the string properties for this Service in this Provider's
     # Hashtable.
     def put_property_strings(s)
@@ -952,7 +927,6 @@ module Java::Security
     end
     
     typesig { [Service] }
-    # 
     # Remove the string properties for this Service from this Provider's
     # Hashtable.
     def remove_property_strings(s)
@@ -970,7 +944,6 @@ module Java::Security
     end
     
     typesig { [Service] }
-    # 
     # Remove a service previously added using
     # {@link #putService putService()}. The specified service is removed from
     # this provider. It will no longer be returned by
@@ -1197,7 +1170,6 @@ module Java::Security
         return ((e).nil?) ? s : e.attr_name
       end
       
-      # 
       # The description of a security service. It encapsulates the properties
       # of a service and contains a factory method to obtain new implementation
       # instances of this service.
@@ -1347,7 +1319,6 @@ module Java::Security
         end
         
         typesig { [Provider, String, String, String, JavaList, Map] }
-        # 
         # Construct a new service.
         # 
         # @param provider the provider that offers this service
@@ -1395,7 +1366,6 @@ module Java::Security
         end
         
         typesig { [] }
-        # 
         # Get the type of this service. For example, <code>MessageDigest</code>.
         # 
         # @return the type of this service
@@ -1404,7 +1374,6 @@ module Java::Security
         end
         
         typesig { [] }
-        # 
         # Return the name of the algorithm of this service. For example,
         # <code>SHA-1</code>.
         # 
@@ -1414,7 +1383,6 @@ module Java::Security
         end
         
         typesig { [] }
-        # 
         # Return the Provider of this service.
         # 
         # @return the Provider of this service
@@ -1423,7 +1391,6 @@ module Java::Security
         end
         
         typesig { [] }
-        # 
         # Return the name of the class implementing this service.
         # 
         # @return the name of the class implementing this service
@@ -1438,7 +1405,6 @@ module Java::Security
         end
         
         typesig { [String] }
-        # 
         # Return the value of the specified attribute or null if this
         # attribute is not set for this Service.
         # 
@@ -1456,7 +1422,6 @@ module Java::Security
         end
         
         typesig { [Object] }
-        # 
         # Return a new instance of the implementation described by this
         # service. The security provider framework uses this method to
         # construct implementations. Applications will typically not need
@@ -1510,16 +1475,16 @@ module Java::Security
                   raise InvalidParameterException.new("constructorParameter must be instanceof " + (cap.attr_constructor_parameter_class_name.replace(Character.new(?$.ord), Character.new(?..ord))).to_s + " for engine type " + @type)
                 end
               end
-              clazz_ = get_impl_class
-              cons = clazz_.get_constructor(param_class)
+              clazz = get_impl_class
+              cons = clazz.get_constructor(param_class)
               return cons.new_instance(constructor_parameter)
             end
           rescue NoSuchAlgorithmException => e
             raise e
           rescue InvocationTargetException => e
-            raise NoSuchAlgorithmException.new("Error constructing implementation (algorithm: " + @algorithm + ", provider: " + (@provider.get_name).to_s + ", class: " + @class_name + ")", e_.get_cause)
+            raise NoSuchAlgorithmException.new("Error constructing implementation (algorithm: " + @algorithm + ", provider: " + (@provider.get_name).to_s + ", class: " + @class_name + ")", e.get_cause)
           rescue Exception => e
-            raise NoSuchAlgorithmException.new("Error constructing implementation (algorithm: " + @algorithm + ", provider: " + (@provider.get_name).to_s + ", class: " + @class_name + ")", e__)
+            raise NoSuchAlgorithmException.new("Error constructing implementation (algorithm: " + @algorithm + ", provider: " + (@provider.get_name).to_s + ", class: " + @class_name + ")", e)
           end
         end
         
@@ -1545,7 +1510,6 @@ module Java::Security
         end
         
         typesig { [Object] }
-        # 
         # Generic code path for unknown engine types. Call the
         # no-args constructor if constructorParameter is null, otherwise
         # use the first matching constructor.
@@ -1571,15 +1535,14 @@ module Java::Security
               ((i += 1) - 1)
               next
             end
-            o_ = con.new_instance(Array.typed(Object).new([constructor_parameter]))
-            return o_
+            o = con.new_instance(Array.typed(Object).new([constructor_parameter]))
+            return o
             ((i += 1) - 1)
           end
           raise NoSuchAlgorithmException.new("No constructor matching " + (arg_class.get_name).to_s + " found in class " + @class_name)
         end
         
         typesig { [Object] }
-        # 
         # Test whether this Service can use the specified parameter.
         # Returns false if this service cannot use the parameter. Returns
         # true if this service can use the parameter, if a fast test is
@@ -1635,7 +1598,6 @@ module Java::Security
         end
         
         typesig { [] }
-        # 
         # Return whether this service has its Supported* properties for
         # keys defined. Parses the attributes if not yet initialized.
         def has_key_attributes
@@ -1718,7 +1680,6 @@ module Java::Security
         end
         
         typesig { [] }
-        # 
         # Return a String representation of this service.
         # 
         # @return a String representation of this service.

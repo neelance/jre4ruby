@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 2000-2005 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -41,7 +40,6 @@ module Sun::Util::Calendar
     }
   end
   
-  # 
   # <code>CalendarSystem</code> is an abstract class that defines the
   # programming interface to deal with calendar date and time.
   # 
@@ -118,7 +116,6 @@ module Sun::Util::Calendar
       const_set_lazy(:PACKAGE_NAME) { "sun.util.calendar." }
       const_attr_reader  :PACKAGE_NAME
       
-      # 
       # "hebrew", "HebrewCalendar",
       # "iso8601", "ISOCalendar",
       # "taiwanese", "LocalGregorianCalendar",
@@ -152,7 +149,6 @@ module Sun::Util::Calendar
       const_attr_reader  :GREGORIAN_INSTANCE
       
       typesig { [] }
-      # 
       # Returns the singleton instance of the <code>Gregorian</code>
       # calendar system.
       # 
@@ -162,7 +158,6 @@ module Sun::Util::Calendar
       end
       
       typesig { [String] }
-      # 
       # Returns a <code>CalendarSystem</code> specified by the calendar
       # name. The calendar name has to be one of the supported calendar
       # names.
@@ -219,7 +214,6 @@ module Sun::Util::Calendar
     end
     
     typesig { [::Java::Long] }
-    # 
     # Calculates calendar fields from the specified number of
     # milliseconds since the Epoch, January 1, 1970 00:00:00 UTC
     # (Gregorian). This method doesn't check overflow or underflow
@@ -246,7 +240,6 @@ module Sun::Util::Calendar
     end
     
     typesig { [] }
-    # 
     # Constructs a <code>CalendarDate</code> that is specific to this
     # calendar system. All calendar fields have their initial
     # values. The {@link TimeZone#getDefault() default time zone} is
@@ -264,7 +257,6 @@ module Sun::Util::Calendar
     end
     
     typesig { [CalendarDate] }
-    # 
     # Returns the number of milliseconds since the Epoch, January 1,
     # 1970 00:00:00 UTC (Gregorian), represented by the specified
     # <code>CalendarDate</code>.
@@ -277,7 +269,6 @@ module Sun::Util::Calendar
     end
     
     typesig { [CalendarDate] }
-    # 
     # Returns the length in days of the specified year by
     # <code>date</code>. This method does not perform the
     # normalization with the specified <code>CalendarDate</code>. The
@@ -288,7 +279,6 @@ module Sun::Util::Calendar
     end
     
     typesig { [CalendarDate] }
-    # 
     # Returns the number of months of the specified year. This method
     # does not perform the normalization with the specified
     # <code>CalendarDate</code>. The <code>CalendarDate</code> must
@@ -298,7 +288,6 @@ module Sun::Util::Calendar
     end
     
     typesig { [CalendarDate] }
-    # 
     # Returns the length in days of the month specified by the calendar
     # date. This method does not perform the normalization with the
     # specified calendar date. The <code>CalendarDate</code> must
@@ -323,7 +312,6 @@ module Sun::Util::Calendar
     end
     
     typesig { [String] }
-    # 
     # Returns the <code>Era</code> designated by the era name that
     # has to be known to this calendar system. If no Era is
     # applicable to this calendar system, null is returned.
@@ -338,7 +326,6 @@ module Sun::Util::Calendar
     end
     
     typesig { [] }
-    # 
     # Returns valid <code>Era</code>s of this calendar system. The
     # return value is sorted in the descendant order. (i.e., the first
     # element of the returned array is the oldest era.) If no era is
@@ -352,7 +339,6 @@ module Sun::Util::Calendar
     end
     
     typesig { [CalendarDate, String] }
-    # 
     # @throws IllegalArgumentException if the specified era name is
     # unknown to this calendar system.
     # @see Era
@@ -361,7 +347,6 @@ module Sun::Util::Calendar
     end
     
     typesig { [::Java::Int, ::Java::Int, CalendarDate] }
-    # 
     # Returns a <code>CalendarDate</code> of the n-th day of week
     # which is on, after or before the specified date. For example, the
     # first Sunday in April 2002 (Gregorian) can be obtained as
@@ -395,7 +380,6 @@ module Sun::Util::Calendar
     end
     
     typesig { [CalendarDate] }
-    # 
     # Checks whether the calendar fields specified by <code>date</code>
     # represents a valid date and time in this calendar system. If the
     # given date is valid, <code>date</code> is marked as <em>normalized</em>.
@@ -410,7 +394,6 @@ module Sun::Util::Calendar
     end
     
     typesig { [CalendarDate] }
-    # 
     # Normalizes calendar fields in the specified
     # <code>date</code>. Also all {@link CalendarDate#FIELD_UNDEFINED
     # undefined} fields are set to correct values. The actual

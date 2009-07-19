@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 2000-2004 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -32,7 +31,6 @@ module Java::Util::Logging
     }
   end
   
-  # 
   # The Level class defines a set of standard logging levels that
   # can be used to control logging output.  The logging Level objects
   # are ordered and are specified by ordered integers.  Enabling logging
@@ -90,7 +88,6 @@ module Java::Util::Logging
       alias_method :attr_default_bundle=, :default_bundle=
     }
     
-    # 
     # @serial  The non-localized name of the level.
     attr_accessor :name
     alias_method :attr_name, :name
@@ -98,7 +95,6 @@ module Java::Util::Logging
     alias_method :attr_name=, :name=
     undef_method :name=
     
-    # 
     # @serial  The integer value of the level.
     attr_accessor :value
     alias_method :attr_value, :value
@@ -106,7 +102,6 @@ module Java::Util::Logging
     alias_method :attr_value=, :value=
     undef_method :value=
     
-    # 
     # @serial The resource bundle name to be used in localizing the level name.
     attr_accessor :resource_bundle_name
     alias_method :attr_resource_bundle_name, :resource_bundle_name
@@ -115,13 +110,11 @@ module Java::Util::Logging
     undef_method :resource_bundle_name=
     
     class_module.module_eval {
-      # 
       # OFF is a special level that can be used to turn off logging.
       # This level is initialized to <CODE>Integer.MAX_VALUE</CODE>.
       const_set_lazy(:OFF) { Level.new("OFF", JavaInteger::MAX_VALUE, self.attr_default_bundle) }
       const_attr_reader  :OFF
       
-      # 
       # SEVERE is a message level indicating a serious failure.
       # <p>
       # In general SEVERE messages should describe events that are
@@ -132,7 +125,6 @@ module Java::Util::Logging
       const_set_lazy(:SEVERE) { Level.new("SEVERE", 1000, self.attr_default_bundle) }
       const_attr_reader  :SEVERE
       
-      # 
       # WARNING is a message level indicating a potential problem.
       # <p>
       # In general WARNING messages should describe events that will
@@ -142,7 +134,6 @@ module Java::Util::Logging
       const_set_lazy(:WARNING) { Level.new("WARNING", 900, self.attr_default_bundle) }
       const_attr_reader  :WARNING
       
-      # 
       # INFO is a message level for informational messages.
       # <p>
       # Typically INFO messages will be written to the console
@@ -153,7 +144,6 @@ module Java::Util::Logging
       const_set_lazy(:INFO) { Level.new("INFO", 800, self.attr_default_bundle) }
       const_attr_reader  :INFO
       
-      # 
       # CONFIG is a message level for static configuration messages.
       # <p>
       # CONFIG messages are intended to provide a variety of static
@@ -165,7 +155,6 @@ module Java::Util::Logging
       const_set_lazy(:CONFIG) { Level.new("CONFIG", 700, self.attr_default_bundle) }
       const_attr_reader  :CONFIG
       
-      # 
       # FINE is a message level providing tracing information.
       # <p>
       # All of FINE, FINER, and FINEST are intended for relatively
@@ -186,7 +175,6 @@ module Java::Util::Logging
       const_set_lazy(:FINE) { Level.new("FINE", 500, self.attr_default_bundle) }
       const_attr_reader  :FINE
       
-      # 
       # FINER indicates a fairly detailed tracing message.
       # By default logging calls for entering, returning, or throwing
       # an exception are traced at this level.
@@ -194,13 +182,11 @@ module Java::Util::Logging
       const_set_lazy(:FINER) { Level.new("FINER", 400, self.attr_default_bundle) }
       const_attr_reader  :FINER
       
-      # 
       # FINEST indicates a highly detailed tracing message.
       # This level is initialized to <CODE>300</CODE>.
       const_set_lazy(:FINEST) { Level.new("FINEST", 300, self.attr_default_bundle) }
       const_attr_reader  :FINEST
       
-      # 
       # ALL indicates that all messages should be logged.
       # This level is initialized to <CODE>Integer.MIN_VALUE</CODE>.
       const_set_lazy(:ALL) { Level.new("ALL", JavaInteger::MIN_VALUE, self.attr_default_bundle) }
@@ -208,7 +194,6 @@ module Java::Util::Logging
     }
     
     typesig { [String, ::Java::Int] }
-    # 
     # Create a named Level with a given integer value.
     # <p>
     # Note that this constructor is "protected" to allow subclassing.
@@ -224,7 +209,6 @@ module Java::Util::Logging
     end
     
     typesig { [String, ::Java::Int, String] }
-    # 
     # Create a named Level with a given integer value and a
     # given localization resource name.
     # <p>
@@ -250,7 +234,6 @@ module Java::Util::Logging
     end
     
     typesig { [] }
-    # 
     # Return the level's localization resource bundle name, or
     # null if no localization bundle is defined.
     # 
@@ -260,7 +243,6 @@ module Java::Util::Logging
     end
     
     typesig { [] }
-    # 
     # Return the non-localized string name of the Level.
     # 
     # @return non-localized name
@@ -269,7 +251,6 @@ module Java::Util::Logging
     end
     
     typesig { [] }
-    # 
     # Return the localized string name of the Level, for
     # the current default locale.
     # <p>
@@ -287,14 +268,12 @@ module Java::Util::Logging
     end
     
     typesig { [] }
-    # 
     # @return the non-localized name of the Level, for example "INFO".
     def to_s
       return @name
     end
     
     typesig { [] }
-    # 
     # Get the integer value for this level.  This integer value
     # can be used for efficient ordering comparisons between
     # Level objects.
@@ -330,7 +309,6 @@ module Java::Util::Logging
     
     class_module.module_eval {
       typesig { [String] }
-      # 
       # Parse a level name string into a Level.
       # <p>
       # The argument string may consist of either a level name
@@ -375,9 +353,9 @@ module Java::Util::Logging
             x = JavaInteger.parse_int(name)
             i_ = 0
             while i_ < self.attr_known.size
-              l_ = self.attr_known.get(i_)
-              if ((l_.attr_value).equal?(x))
-                return l_
+              l = self.attr_known.get(i_)
+              if ((l.attr_value).equal?(x))
+                return l
               end
               ((i_ += 1) - 1)
             end
@@ -392,9 +370,9 @@ module Java::Util::Logging
           # This is relatively expensive, but not excessively so.
           i__ = 0
           while i__ < self.attr_known.size
-            l__ = self.attr_known.get(i__)
-            if ((name == l__.get_localized_name))
-              return l__
+            l = self.attr_known.get(i__)
+            if ((name == l.get_localized_name))
+              return l
             end
             ((i__ += 1) - 1)
           end
@@ -405,7 +383,6 @@ module Java::Util::Logging
     }
     
     typesig { [Object] }
-    # 
     # Compare two objects for value equality.
     # @return true if and only if the two objects have the same level value.
     def equals(ox)
@@ -418,7 +395,6 @@ module Java::Util::Logging
     end
     
     typesig { [] }
-    # 
     # Generate a hashcode.
     # @return a hashcode based on the level value
     def hash_code

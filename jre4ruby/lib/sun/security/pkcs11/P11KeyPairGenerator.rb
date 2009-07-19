@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 2003-2008 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -38,7 +37,6 @@ module Sun::Security::Pkcs11
     }
   end
   
-  # 
   # KeyPairGenerator implementation class. This class currently supports
   # RSA, DSA, DH, and EC.
   # 
@@ -160,9 +158,9 @@ module Sun::Security::Pkcs11
             raise InvalidAlgorithmParameterException.new("RSAKeyGenParameterSpec required for RSA")
           end
           rsa_params = params
-          tmp_key_size_ = rsa_params.get_keysize
-          check_key_size(tmp_key_size_, rsa_params)
-          @key_size = tmp_key_size_
+          tmp_key_size = rsa_params.get_keysize
+          check_key_size(tmp_key_size, rsa_params)
+          @key_size = tmp_key_size
           @params = nil
           @rsa_public_exponent = rsa_params.get_public_exponent
           # XXX sanity check params
@@ -172,9 +170,9 @@ module Sun::Security::Pkcs11
               raise InvalidAlgorithmParameterException.new("DSAParameterSpec required for DSA")
             end
             dsa_params = params
-            tmp_key_size__ = dsa_params.get_p.bit_length
-            check_key_size(tmp_key_size__, dsa_params)
-            @key_size = tmp_key_size__
+            tmp_key_size = dsa_params.get_p.bit_length
+            check_key_size(tmp_key_size, dsa_params)
+            @key_size = tmp_key_size
             @params = dsa_params
             # XXX sanity check params
           else
@@ -196,9 +194,9 @@ module Sun::Security::Pkcs11
                   raise InvalidAlgorithmParameterException.new("ECParameterSpec or ECGenParameterSpec required for EC")
                 end
               end
-              tmp_key_size___ = ec_params.get_curve.get_field.get_field_size
-              check_key_size(tmp_key_size___, ec_params)
-              @key_size = tmp_key_size___
+              tmp_key_size = ec_params.get_curve.get_field.get_field_size
+              check_key_size(tmp_key_size, ec_params)
+              @key_size = tmp_key_size
               @params = ec_params
             else
               raise ProviderException.new("Unknown algorithm: " + @algorithm)
@@ -291,7 +289,7 @@ module Sun::Security::Pkcs11
               begin
                 dh_params = ParameterCache.get_dhparameter_spec(@key_size, @random)
               rescue GeneralSecurityException => e
-                raise ProviderException.new("Could not generate DH parameters", e_)
+                raise ProviderException.new("Could not generate DH parameters", e)
               end
               private_bits = 0
             else
@@ -327,7 +325,7 @@ module Sun::Security::Pkcs11
         private_key_ = P11Key.private_key(session, key_ids[1], @algorithm, @key_size, private_key_template)
         return KeyPair.new(public_key_, private_key_)
       rescue PKCS11Exception => e
-        raise ProviderException.new(e__)
+        raise ProviderException.new(e)
       ensure
         @token.release_session(session)
       end

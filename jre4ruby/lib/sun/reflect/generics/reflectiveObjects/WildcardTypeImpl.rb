@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 2003-2004 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -37,7 +36,6 @@ module Sun::Reflect::Generics::ReflectiveObjects
     }
   end
   
-  # 
   # Implementation of WildcardType interface for core reflection.
   class WildcardTypeImpl < WildcardTypeImplImports.const_get :LazyReflectiveObjectGenerator
     include_class_members WildcardTypeImplImports
@@ -88,7 +86,6 @@ module Sun::Reflect::Generics::ReflectiveObjects
     
     class_module.module_eval {
       typesig { [Array.typed(FieldTypeSignature), Array.typed(FieldTypeSignature), GenericsFactory] }
-      # 
       # Factory method.
       # @param ubs - an array of ASTs representing the upper bounds for the type
       # variable to be created
@@ -124,7 +121,6 @@ module Sun::Reflect::Generics::ReflectiveObjects
     end
     
     typesig { [] }
-    # 
     # Returns an array of <tt>Type</tt> objects representing the  upper
     # bound(s) of this type variable.  Note that if no upper bound is
     # explicitly declared, the upper bound is <tt>Object</tt>.
@@ -167,7 +163,6 @@ module Sun::Reflect::Generics::ReflectiveObjects
     end
     
     typesig { [] }
-    # 
     # Returns an array of <tt>Type</tt> objects representing the
     # lower bound(s) of this type variable.  Note that if no lower bound is
     # explicitly declared, the lower bound is the type of <tt>null</tt>.

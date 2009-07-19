@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 2000-2006 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -31,7 +30,6 @@ module Java::Util::Logging
     }
   end
   
-  # 
   # A Formatter provides support for formatting LogRecords.
   # <p>
   # Typically each logging Handler will have a Formatter associated
@@ -47,13 +45,11 @@ module Java::Util::Logging
     include_class_members FormatterImports
     
     typesig { [] }
-    # 
     # Construct a new formatter.
     def initialize
     end
     
     typesig { [LogRecord] }
-    # 
     # Format the given log record and return the formatted string.
     # <p>
     # The resulting formatted String will normally include a
@@ -68,7 +64,6 @@ module Java::Util::Logging
     end
     
     typesig { [Handler] }
-    # 
     # Return the header string for a set of formatted records.
     # <p>
     # This base class returns an empty string, but this may be
@@ -81,7 +76,6 @@ module Java::Util::Logging
     end
     
     typesig { [Handler] }
-    # 
     # Return the tail string for a set of formatted records.
     # <p>
     # This base class returns an empty string, but this may be
@@ -94,7 +88,6 @@ module Java::Util::Logging
     end
     
     typesig { [LogRecord] }
-    # 
     # Localize and format the message string from a log record.  This
     # method is provided as a convenience for Formatter subclasses to
     # use when they are performing formatting.

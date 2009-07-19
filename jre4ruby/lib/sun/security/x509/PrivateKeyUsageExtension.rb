@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 1997-2006 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -40,7 +39,6 @@ module Sun::Security::X509
     }
   end
   
-  # 
   # This class defines the Private Key Usage Extension.
   # 
   # <p>The Private Key Usage Period extension allows the certificate issuer
@@ -66,13 +64,11 @@ module Sun::Security::X509
     include CertAttrSet
     
     class_module.module_eval {
-      # 
       # Identifier for this attribute, to be used with the
       # get, set, delete methods of Certificate, x509 type.
       const_set_lazy(:IDENT) { "x509.info.extensions.PrivateKeyUsage" }
       const_attr_reader  :IDENT
       
-      # 
       # Sub attributes name for this CertAttrSet.
       const_set_lazy(:NAME) { "PrivateKeyUsage" }
       const_attr_reader  :NAME
@@ -118,16 +114,15 @@ module Sun::Security::X509
         tagged.write_implicit(DerValue.create_tag(DerValue::TAG_CONTEXT, false, TAG_BEFORE), tmp)
       end
       if (!(@not_after).nil?)
-        tmp_ = DerOutputStream.new
-        tmp_.put_generalized_time(@not_after)
-        tagged.write_implicit(DerValue.create_tag(DerValue::TAG_CONTEXT, false, TAG_AFTER), tmp_)
+        tmp = DerOutputStream.new
+        tmp.put_generalized_time(@not_after)
+        tagged.write_implicit(DerValue.create_tag(DerValue::TAG_CONTEXT, false, TAG_AFTER), tmp)
       end
       seq.write(DerValue.attr_tag_sequence, tagged)
       self.attr_extension_value = seq.to_byte_array
     end
     
     typesig { [Date, Date] }
-    # 
     # The default constructor for PrivateKeyUsageExtension.
     # 
     # @param notBefore the date/time before which the private key
@@ -148,7 +143,6 @@ module Sun::Security::X509
     end
     
     typesig { [Boolean, Object] }
-    # 
     # Create the extension from the passed DER encoded value.
     # 
     # @param critical true if the extension is to be treated as critical.
@@ -197,14 +191,12 @@ module Sun::Security::X509
     end
     
     typesig { [] }
-    # 
     # Return the printable string.
     def to_s
       return ((super).to_s + "PrivateKeyUsage: [\n" + ((((@not_before).nil?) ? "" : "From: " + (@not_before.to_s).to_s + ", ")).to_s + ((((@not_after).nil?) ? "" : "To: " + (@not_after.to_s).to_s)).to_s + "]\n")
     end
     
     typesig { [] }
-    # 
     # Verify that that the current time is within the validity period.
     # 
     # @exception CertificateExpiredException if the certificate has expired.
@@ -216,7 +208,6 @@ module Sun::Security::X509
     end
     
     typesig { [Date] }
-    # 
     # Verify that that the passed time is within the validity period.
     # 
     # @exception CertificateExpiredException if the certificate has expired
@@ -224,7 +215,6 @@ module Sun::Security::X509
     # @exception CertificateNotYetValidException if the certificate is not
     # yet valid with respect to the <code>Date</code> supplied.
     def valid(now)
-      # 
       # we use the internal Dates rather than the passed in Date
       # because someone could override the Date methods after()
       # and before() to do something entirely different.
@@ -237,7 +227,6 @@ module Sun::Security::X509
     end
     
     typesig { [OutputStream] }
-    # 
     # Write the extension to the OutputStream.
     # 
     # @param out the OutputStream to write the extension to.
@@ -254,7 +243,6 @@ module Sun::Security::X509
     end
     
     typesig { [String, Object] }
-    # 
     # Set the attribute value.
     # @exception CertificateException on attribute handling errors.
     def set(name, obj)
@@ -274,7 +262,6 @@ module Sun::Security::X509
     end
     
     typesig { [String] }
-    # 
     # Get the attribute value.
     # @exception CertificateException on attribute handling errors.
     def get(name)
@@ -290,7 +277,6 @@ module Sun::Security::X509
     end
     
     typesig { [String] }
-    # 
     # Delete the attribute value.
     # @exception CertificateException on attribute handling errors.
     def delete(name)
@@ -307,7 +293,6 @@ module Sun::Security::X509
     end
     
     typesig { [] }
-    # 
     # Return an enumeration of names of attributes existing within this
     # attribute.
     def get_elements
@@ -318,7 +303,6 @@ module Sun::Security::X509
     end
     
     typesig { [] }
-    # 
     # Return the name of this attribute.
     def get_name
       return (NAME)

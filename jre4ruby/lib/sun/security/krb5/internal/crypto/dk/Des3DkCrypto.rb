@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 2004-2007 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -92,7 +91,6 @@ module Sun::Security::Krb5::Internal::Crypto::Dk
     end
     
     typesig { [Array.typed(::Java::Byte)] }
-    # 
     # From RFC 3961.
     # 
     # The 168 bits of random key data are converted to a protocol key value
@@ -128,7 +126,6 @@ module Sun::Security::Krb5::Internal::Crypto::Dk
       end
       
       typesig { [Array.typed(::Java::Byte), ::Java::Int, ::Java::Int] }
-      # 
       # From RFC 3961.
       # 
       # Expands a 7-byte array into an 8-byte array that contains parity bits.
@@ -182,7 +179,6 @@ module Sun::Security::Krb5::Internal::Crypto::Dk
       const_attr_reader  :PARITY_BIT_MASK
       
       typesig { [Array.typed(::Java::Byte)] }
-      # 
       # Sets the parity bit (0th bit) in each byte so that each byte
       # contains an odd number of 1's.
       def set_parity_bit(key)

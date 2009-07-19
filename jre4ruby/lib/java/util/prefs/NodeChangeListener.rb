@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 2000 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -31,7 +30,6 @@ module Java::Util::Prefs
     }
   end
   
-  # 
   # A listener for receiving preference node change events.
   # 
   # @author  Josh Bloch
@@ -44,7 +42,6 @@ module Java::Util::Prefs
     include Java::Util::EventListener
     
     typesig { [NodeChangeEvent] }
-    # 
     # This method gets called when a child node is added.
     # 
     # @param evt A node change event object describing the parent
@@ -54,7 +51,6 @@ module Java::Util::Prefs
     end
     
     typesig { [NodeChangeEvent] }
-    # 
     # This method gets called when a child node is removed.
     # 
     # @param evt A node change event object describing the parent

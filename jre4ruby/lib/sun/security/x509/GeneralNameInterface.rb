@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 1997-2000 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -33,7 +32,6 @@ module Sun::Security::X509
     }
   end
   
-  # 
   # This interface specifies the abstract methods which have to be
   # implemented by all the members of the GeneralNames ASN.1 object.
   # 
@@ -43,7 +41,6 @@ module Sun::Security::X509
     include_class_members GeneralNameInterfaceImports
     
     class_module.module_eval {
-      # 
       # The list of names supported.
       const_set_lazy(:NAME_ANY) { 0 }
       const_attr_reader  :NAME_ANY
@@ -72,7 +69,6 @@ module Sun::Security::X509
       const_set_lazy(:NAME_OID) { 8 }
       const_attr_reader  :NAME_OID
       
-      # 
       # The list of constraint results.
       const_set_lazy(:NAME_DIFF_TYPE) { -1 }
       const_attr_reader  :NAME_DIFF_TYPE
@@ -104,7 +100,6 @@ module Sun::Security::X509
     end
     
     typesig { [DerOutputStream] }
-    # 
     # Encode the name to the specified DerOutputStream.
     # 
     # @param out the DerOutputStream to encode the GeneralName to.
@@ -115,7 +110,6 @@ module Sun::Security::X509
     end
     
     typesig { [GeneralNameInterface] }
-    # 
     # Return type of constraint inputName places on this name:<ul>
     # <li>NAME_DIFF_TYPE = -1: input name is different type from name (i.e. does not constrain).
     # <li>NAME_MATCH = 0: input name matches name.
@@ -134,7 +128,6 @@ module Sun::Security::X509
     end
     
     typesig { [] }
-    # 
     # Return subtree depth of this name for purposes of determining
     # NameConstraints minimum and maximum bounds and for calculating
     # path lengths in name subtrees.

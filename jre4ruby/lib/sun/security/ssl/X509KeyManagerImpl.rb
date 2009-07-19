@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 2004-2007 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -41,7 +40,6 @@ module Sun::Security::Ssl
     }
   end
   
-  # 
   # The new X509 key manager implementation. The main differences to the
   # old SunX509 key manager are:
   # . it is based around the KeyStore.Builder API. This allows it to use
@@ -140,7 +138,6 @@ module Sun::Security::Ssl
     }
     
     typesig { [String] }
-    # 
     # public methods
     def get_certificate_chain(alias_)
       entry = get_entry(alias_)
@@ -184,7 +181,6 @@ module Sun::Security::Ssl
     end
     
     typesig { [EntryStatus] }
-    # 
     # implementation private methods
     # 
     # we construct the alias we return to JSSE as seen in the code below
@@ -304,7 +300,6 @@ module Sun::Security::Ssl
     }
     
     typesig { [JavaList, Array.typed(Principal), CheckType] }
-    # 
     # Return the best alias that fits the given parameters.
     # The algorithm we use is:
     # . scan through all the aliases in all builders in order
@@ -363,7 +358,6 @@ module Sun::Security::Ssl
     end
     
     typesig { [String, Array.typed(Principal), CheckType] }
-    # 
     # Return all aliases that (approximately) fit the parameters.
     # These are perfect matches plus imperfect matches (expired certificates
     # and certificates with the wrong extensions).
@@ -694,7 +688,6 @@ module Sun::Security::Ssl
     }
     
     typesig { [::Java::Int, JavaList, JavaSet, ::Java::Boolean, CheckType] }
-    # 
     # Return a List of all candidate matches in the specified builder
     # that fit the parameters.
     # We exclude entries in the KeyStore if they are not:

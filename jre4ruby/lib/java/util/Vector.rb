@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 1994-2007 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -31,7 +30,6 @@ module Java::Util
     }
   end
   
-  # 
   # The {@code Vector} class implements a growable array of
   # objects. Like an array, it contains components that can be
   # accessed using an integer index. However, the size of a
@@ -88,7 +86,6 @@ module Java::Util
     include Cloneable
     include Java::Io::Serializable
     
-    # 
     # The array buffer into which the components of the vector are
     # stored. The capacity of the vector is the length of this array buffer,
     # and is at least large enough to contain all the vector's elements.
@@ -102,7 +99,6 @@ module Java::Util
     alias_method :attr_element_data=, :element_data=
     undef_method :element_data=
     
-    # 
     # The number of valid components in this {@code Vector} object.
     # Components {@code elementData[0]} through
     # {@code elementData[elementCount-1]} are the actual items.
@@ -114,7 +110,6 @@ module Java::Util
     alias_method :attr_element_count=, :element_count=
     undef_method :element_count=
     
-    # 
     # The amount by which the capacity of the vector is automatically
     # incremented when its size becomes greater than its capacity.  If
     # the capacity increment is less than or equal to zero, the capacity
@@ -134,7 +129,6 @@ module Java::Util
     }
     
     typesig { [::Java::Int, ::Java::Int] }
-    # 
     # Constructs an empty vector with the specified initial capacity and
     # capacity increment.
     # 
@@ -156,7 +150,6 @@ module Java::Util
     end
     
     typesig { [::Java::Int] }
-    # 
     # Constructs an empty vector with the specified initial capacity and
     # with its capacity increment equal to zero.
     # 
@@ -168,7 +161,6 @@ module Java::Util
     end
     
     typesig { [] }
-    # 
     # Constructs an empty vector so that its internal data array
     # has size {@code 10} and its standard capacity increment is
     # zero.
@@ -177,7 +169,6 @@ module Java::Util
     end
     
     typesig { [Collection] }
-    # 
     # Constructs a vector containing the elements of the specified
     # collection, in the order they are returned by the collection's
     # iterator.
@@ -200,7 +191,6 @@ module Java::Util
     end
     
     typesig { [Array.typed(Object)] }
-    # 
     # Copies the components of this vector into the specified array.
     # The item at index {@code k} in this vector is copied into
     # component {@code k} of {@code anArray}.
@@ -219,7 +209,6 @@ module Java::Util
     end
     
     typesig { [] }
-    # 
     # Trims the capacity of this vector to be the vector's current
     # size. If the capacity of this vector is larger than its current
     # size, then the capacity is changed to equal the size by replacing
@@ -237,7 +226,6 @@ module Java::Util
     end
     
     typesig { [::Java::Int] }
-    # 
     # Increases the capacity of this vector, if necessary, to ensure
     # that it can hold at least the number of components specified by
     # the minimum capacity argument.
@@ -261,7 +249,6 @@ module Java::Util
     end
     
     typesig { [::Java::Int] }
-    # 
     # This implements the unsynchronized semantics of ensureCapacity.
     # Synchronized methods in this class can internally call this
     # method for ensuring capacity without incurring the cost of an
@@ -281,7 +268,6 @@ module Java::Util
     end
     
     typesig { [::Java::Int] }
-    # 
     # Sets the size of this vector. If the new size is greater than the
     # current size, new {@code null} items are added to the end of
     # the vector. If the new size is less than the current size, all
@@ -306,7 +292,6 @@ module Java::Util
     end
     
     typesig { [] }
-    # 
     # Returns the current capacity of this vector.
     # 
     # @return  the current capacity (the length of its internal
@@ -319,7 +304,6 @@ module Java::Util
     end
     
     typesig { [] }
-    # 
     # Returns the number of components in this vector.
     # 
     # @return  the number of components in this vector
@@ -330,7 +314,6 @@ module Java::Util
     end
     
     typesig { [] }
-    # 
     # Tests if this vector has no components.
     # 
     # @return  {@code true} if and only if this vector has
@@ -343,7 +326,6 @@ module Java::Util
     end
     
     typesig { [] }
-    # 
     # Returns an enumeration of the components of this vector. The
     # returned {@code Enumeration} object will generate all items in
     # this vector. The first item generated is the item at index {@code 0},
@@ -391,7 +373,6 @@ module Java::Util
     end
     
     typesig { [Object] }
-    # 
     # Returns {@code true} if this vector contains the specified element.
     # More formally, returns {@code true} if and only if this vector
     # contains at least one element {@code e} such that
@@ -404,7 +385,6 @@ module Java::Util
     end
     
     typesig { [Object] }
-    # 
     # Returns the index of the first occurrence of the specified element
     # in this vector, or -1 if this vector does not contain the element.
     # More formally, returns the lowest index {@code i} such that
@@ -419,7 +399,6 @@ module Java::Util
     end
     
     typesig { [Object, ::Java::Int] }
-    # 
     # Returns the index of the first occurrence of the specified element in
     # this vector, searching forwards from {@code index}, or returns -1 if
     # the element is not found.
@@ -445,12 +424,12 @@ module Java::Util
             ((i += 1) - 1)
           end
         else
-          i_ = index
-          while i_ < @element_count
-            if ((o == @element_data[i_]))
-              return i_
+          i = index
+          while i < @element_count
+            if ((o == @element_data[i]))
+              return i
             end
-            ((i_ += 1) - 1)
+            ((i += 1) - 1)
           end
         end
         return -1
@@ -458,7 +437,6 @@ module Java::Util
     end
     
     typesig { [Object] }
-    # 
     # Returns the index of the last occurrence of the specified element
     # in this vector, or -1 if this vector does not contain the element.
     # More formally, returns the highest index {@code i} such that
@@ -475,7 +453,6 @@ module Java::Util
     end
     
     typesig { [Object, ::Java::Int] }
-    # 
     # Returns the index of the last occurrence of the specified element in
     # this vector, searching backwards from {@code index}, or returns -1 if
     # the element is not found.
@@ -504,12 +481,12 @@ module Java::Util
             ((i -= 1) + 1)
           end
         else
-          i_ = index
-          while i_ >= 0
-            if ((o == @element_data[i_]))
-              return i_
+          i = index
+          while i >= 0
+            if ((o == @element_data[i]))
+              return i
             end
-            ((i_ -= 1) + 1)
+            ((i -= 1) + 1)
           end
         end
         return -1
@@ -517,7 +494,6 @@ module Java::Util
     end
     
     typesig { [::Java::Int] }
-    # 
     # Returns the component at the specified index.
     # 
     # <p>This method is identical in functionality to the {@link #get(int)}
@@ -537,7 +513,6 @@ module Java::Util
     end
     
     typesig { [] }
-    # 
     # Returns the first component (the item at index {@code 0}) of
     # this vector.
     # 
@@ -553,7 +528,6 @@ module Java::Util
     end
     
     typesig { [] }
-    # 
     # Returns the last component of the vector.
     # 
     # @return  the last component of the vector, i.e., the component at index
@@ -569,7 +543,6 @@ module Java::Util
     end
     
     typesig { [Object, ::Java::Int] }
-    # 
     # Sets the component at the specified {@code index} of this
     # vector to be the specified object. The previous component at that
     # position is discarded.
@@ -598,7 +571,6 @@ module Java::Util
     end
     
     typesig { [::Java::Int] }
-    # 
     # Deletes the component at the specified index. Each component in
     # this vector with an index greater or equal to the specified
     # {@code index} is shifted downward to have an index one
@@ -637,7 +609,6 @@ module Java::Util
     end
     
     typesig { [Object, ::Java::Int] }
-    # 
     # Inserts the specified object as a component in this vector at the
     # specified {@code index}. Each component in this vector with
     # an index greater or equal to the specified {@code index} is
@@ -673,7 +644,6 @@ module Java::Util
     end
     
     typesig { [Object] }
-    # 
     # Adds the specified component to the end of this vector,
     # increasing its size by one. The capacity of this vector is
     # increased if its size becomes greater than its capacity.
@@ -692,7 +662,6 @@ module Java::Util
     end
     
     typesig { [Object] }
-    # 
     # Removes the first (lowest-indexed) occurrence of the argument
     # from this vector. If the object is found in this vector, each
     # component in the vector with an index greater or equal to the
@@ -719,7 +688,6 @@ module Java::Util
     end
     
     typesig { [] }
-    # 
     # Removes all components from this vector and sets its size to zero.
     # 
     # <p>This method is identical in functionality to the {@link #clear}
@@ -738,7 +706,6 @@ module Java::Util
     end
     
     typesig { [] }
-    # 
     # Returns a clone of this vector. The copy will contain a
     # reference to a clone of the internal data array, not a reference
     # to the original internal data array of this {@code Vector} object.
@@ -759,7 +726,6 @@ module Java::Util
     end
     
     typesig { [] }
-    # 
     # Returns an array containing all of the elements in this Vector
     # in the correct order.
     # 
@@ -771,7 +737,6 @@ module Java::Util
     end
     
     typesig { [Array.typed(T)] }
-    # 
     # Returns an array containing all of the elements in this Vector in the
     # correct order; the runtime type of the returned array is that of the
     # specified array.  If the Vector fits in the specified array, it is
@@ -813,7 +778,6 @@ module Java::Util
     end
     
     typesig { [::Java::Int] }
-    # 
     # Returns the element at the specified position in this Vector.
     # 
     # @param index index of the element to return
@@ -831,7 +795,6 @@ module Java::Util
     end
     
     typesig { [::Java::Int, Object] }
-    # 
     # Replaces the element at the specified position in this Vector with the
     # specified element.
     # 
@@ -853,7 +816,6 @@ module Java::Util
     end
     
     typesig { [Object] }
-    # 
     # Appends the specified element to the end of this Vector.
     # 
     # @param e element to be appended to this Vector
@@ -869,7 +831,6 @@ module Java::Util
     end
     
     typesig { [Object] }
-    # 
     # Removes the first occurrence of the specified element in this Vector
     # If the Vector does not contain the element, it is unchanged.  More
     # formally, removes the element with the lowest index i such that
@@ -884,7 +845,6 @@ module Java::Util
     end
     
     typesig { [::Java::Int, Object] }
-    # 
     # Inserts the specified element at the specified position in this Vector.
     # Shifts the element currently at that position (if any) and any
     # subsequent elements to the right (adds one to their indices).
@@ -899,7 +859,6 @@ module Java::Util
     end
     
     typesig { [::Java::Int] }
-    # 
     # Removes the element at the specified position in this Vector.
     # Shifts any subsequent elements to the left (subtracts one from their
     # indices).  Returns the element that was removed from the Vector.
@@ -926,7 +885,6 @@ module Java::Util
     end
     
     typesig { [] }
-    # 
     # Removes all of the elements from this Vector.  The Vector will
     # be empty after this call returns (unless it throws an exception).
     # 
@@ -953,7 +911,6 @@ module Java::Util
     end
     
     typesig { [Collection] }
-    # 
     # Appends all of the elements in the specified Collection to the end of
     # this Vector, in the order that they are returned by the specified
     # Collection's Iterator.  The behavior of this operation is undefined if
@@ -978,7 +935,6 @@ module Java::Util
     end
     
     typesig { [Collection] }
-    # 
     # Removes from this Vector all of its elements that are contained in the
     # specified Collection.
     # 
@@ -998,7 +954,6 @@ module Java::Util
     end
     
     typesig { [Collection] }
-    # 
     # Retains only the elements in this Vector that are contained in the
     # specified Collection.  In other words, removes from this Vector all
     # of its elements that are not contained in the specified Collection.
@@ -1020,7 +975,6 @@ module Java::Util
     end
     
     typesig { [::Java::Int, Collection] }
-    # 
     # Inserts all of the elements in the specified Collection into this
     # Vector at the specified position.  Shifts the element currently at
     # that position (if any) and any subsequent elements to the right
@@ -1056,7 +1010,6 @@ module Java::Util
     end
     
     typesig { [Object] }
-    # 
     # Compares the specified Object with this Vector for equality.  Returns
     # true if and only if the specified Object is also a List, both Lists
     # have the same size, and all corresponding pairs of elements in the two
@@ -1074,7 +1027,6 @@ module Java::Util
     end
     
     typesig { [] }
-    # 
     # Returns the hash code value for this Vector.
     def hash_code
       synchronized(self) do
@@ -1083,7 +1035,6 @@ module Java::Util
     end
     
     typesig { [] }
-    # 
     # Returns a string representation of this Vector, containing
     # the String representation of each element.
     def to_s
@@ -1093,7 +1044,6 @@ module Java::Util
     end
     
     typesig { [::Java::Int, ::Java::Int] }
-    # 
     # Returns a view of the portion of this List between fromIndex,
     # inclusive, and toIndex, exclusive.  (If fromIndex and toIndex are
     # equal, the returned List is empty.)  The returned List is backed by this
@@ -1133,7 +1083,6 @@ module Java::Util
     end
     
     typesig { [::Java::Int, ::Java::Int] }
-    # 
     # Removes from this list all of the elements whose index is between
     # {@code fromIndex}, inclusive, and {@code toIndex}, exclusive.
     # Shifts any succeeding elements to the left (reduces their index).
@@ -1153,7 +1102,6 @@ module Java::Util
     end
     
     typesig { [Java::Io::ObjectOutputStream] }
-    # 
     # Save the state of the {@code Vector} instance to a stream (that
     # is, serialize it).  This method is present merely for synchronization.
     # It just calls the default writeObject method.
@@ -1164,7 +1112,6 @@ module Java::Util
     end
     
     typesig { [::Java::Int] }
-    # 
     # Returns a list iterator over the elements in this list (in proper
     # sequence), starting at the specified position in the list.
     # The specified index indicates the first element that would be
@@ -1185,7 +1132,6 @@ module Java::Util
     end
     
     typesig { [] }
-    # 
     # Returns a list iterator over the elements in this list (in proper
     # sequence).
     # 
@@ -1199,7 +1145,6 @@ module Java::Util
     end
     
     typesig { [] }
-    # 
     # Returns an iterator over the elements in this list in proper sequence.
     # 
     # <p>The returned iterator is <a href="#fail-fast"><i>fail-fast</i></a>.
@@ -1212,7 +1157,6 @@ module Java::Util
     end
     
     class_module.module_eval {
-      # 
       # An optimized version of AbstractList.Itr
       const_set_lazy(:Itr) { Class.new do
         extend LocalClass
@@ -1291,7 +1235,6 @@ module Java::Util
         alias_method :initialize__itr, :initialize
       end }
       
-      # 
       # An optimized version of AbstractList.ListItr
       const_set_lazy(:ListItr) { Class.new(Itr) do
         extend LocalClass

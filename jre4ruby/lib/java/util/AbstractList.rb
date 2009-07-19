@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 1997-2007 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -31,7 +30,6 @@ module Java::Util
     }
   end
   
-  # 
   # This class provides a skeletal implementation of the {@link List}
   # interface to minimize the effort required to implement this interface
   # backed by a "random access" data store (such as an array).  For sequential
@@ -77,7 +75,6 @@ module Java::Util
     include JavaList
     
     typesig { [] }
-    # 
     # Sole constructor.  (For invocation by subclass constructors, typically
     # implicit.)
     def initialize
@@ -87,7 +84,6 @@ module Java::Util
     end
     
     typesig { [Object] }
-    # 
     # Appends the specified element to the end of this list (optional
     # operation).
     # 
@@ -120,7 +116,6 @@ module Java::Util
     end
     
     typesig { [::Java::Int] }
-    # 
     # {@inheritDoc}
     # 
     # @throws IndexOutOfBoundsException {@inheritDoc}
@@ -129,7 +124,6 @@ module Java::Util
     end
     
     typesig { [::Java::Int, Object] }
-    # 
     # {@inheritDoc}
     # 
     # <p>This implementation always throws an
@@ -145,7 +139,6 @@ module Java::Util
     end
     
     typesig { [::Java::Int, Object] }
-    # 
     # {@inheritDoc}
     # 
     # <p>This implementation always throws an
@@ -161,7 +154,6 @@ module Java::Util
     end
     
     typesig { [::Java::Int] }
-    # 
     # {@inheritDoc}
     # 
     # <p>This implementation always throws an
@@ -203,7 +195,6 @@ module Java::Util
     end
     
     typesig { [Object] }
-    # 
     # {@inheritDoc}
     # 
     # <p>This implementation first gets a list iterator that points to the end
@@ -251,7 +242,6 @@ module Java::Util
     end
     
     typesig { [::Java::Int, Collection] }
-    # 
     # {@inheritDoc}
     # 
     # <p>This implementation gets an iterator over the specified collection
@@ -304,7 +294,6 @@ module Java::Util
     end
     
     typesig { [] }
-    # 
     # {@inheritDoc}
     # 
     # <p>This implementation returns {@code listIterator(0)}.
@@ -315,7 +304,6 @@ module Java::Util
     end
     
     typesig { [::Java::Int] }
-    # 
     # {@inheritDoc}
     # 
     # <p>This implementation returns a straightforward implementation of the
@@ -347,7 +335,6 @@ module Java::Util
         include_class_members AbstractList
         include Iterator
         
-        # 
         # Index of element to be returned by subsequent call to next.
         attr_accessor :cursor
         alias_method :attr_cursor, :cursor
@@ -355,7 +342,6 @@ module Java::Util
         alias_method :attr_cursor=, :cursor=
         undef_method :cursor=
         
-        # 
         # Index of element returned by most recent call to next or
         # previous.  Reset to -1 if this element is deleted by a call
         # to remove.
@@ -365,7 +351,6 @@ module Java::Util
         alias_method :attr_last_ret=, :last_ret=
         undef_method :last_ret=
         
-        # 
         # The modCount value that the iterator believes that the backing
         # List should have.  If this expectation is violated, the iterator
         # has detected concurrent modification.
@@ -505,7 +490,6 @@ module Java::Util
     }
     
     typesig { [::Java::Int, ::Java::Int] }
-    # 
     # {@inheritDoc}
     # 
     # <p>This implementation returns a list that subclasses
@@ -585,7 +569,6 @@ module Java::Util
     end
     
     typesig { [] }
-    # 
     # Returns the hash code value for this list.
     # 
     # <p>This implementation uses exactly the code that is used to define the
@@ -602,7 +585,6 @@ module Java::Util
     end
     
     typesig { [::Java::Int, ::Java::Int] }
-    # 
     # Removes from this list all of the elements whose index is between
     # {@code fromIndex}, inclusive, and {@code toIndex}, exclusive.
     # Shifts any succeeding elements to the left (reduces their index).
@@ -634,7 +616,6 @@ module Java::Util
       end
     end
     
-    # 
     # The number of times this list has been <i>structurally modified</i>.
     # Structural modifications are those that change the size of the
     # list, or otherwise perturb it in such a fashion that iterations in

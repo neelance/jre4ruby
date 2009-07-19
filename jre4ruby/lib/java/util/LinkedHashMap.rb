@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 2000-2006 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -32,7 +31,6 @@ module Java::Util
     }
   end
   
-  # 
   # <p>Hash table and linked list implementation of the <tt>Map</tt> interface,
   # with predictable iteration order.  This implementation differs from
   # <tt>HashMap</tt> in that it maintains a doubly-linked list running through
@@ -157,7 +155,6 @@ module Java::Util
       const_attr_reader  :SerialVersionUID
     }
     
-    # 
     # The head of the doubly linked list.
     attr_accessor :header
     alias_method :attr_header, :header
@@ -165,7 +162,6 @@ module Java::Util
     alias_method :attr_header=, :header=
     undef_method :header=
     
-    # 
     # The iteration ordering method for this linked hash map: <tt>true</tt>
     # for access-order, <tt>false</tt> for insertion-order.
     # 
@@ -177,7 +173,6 @@ module Java::Util
     undef_method :access_order=
     
     typesig { [::Java::Int, ::Java::Float] }
-    # 
     # Constructs an empty insertion-ordered <tt>LinkedHashMap</tt> instance
     # with the specified initial capacity and load factor.
     # 
@@ -193,7 +188,6 @@ module Java::Util
     end
     
     typesig { [::Java::Int] }
-    # 
     # Constructs an empty insertion-ordered <tt>LinkedHashMap</tt> instance
     # with the specified initial capacity and a default load factor (0.75).
     # 
@@ -207,7 +201,6 @@ module Java::Util
     end
     
     typesig { [] }
-    # 
     # Constructs an empty insertion-ordered <tt>LinkedHashMap</tt> instance
     # with the default initial capacity (16) and load factor (0.75).
     def initialize
@@ -218,7 +211,6 @@ module Java::Util
     end
     
     typesig { [Map] }
-    # 
     # Constructs an insertion-ordered <tt>LinkedHashMap</tt> instance with
     # the same mappings as the specified map.  The <tt>LinkedHashMap</tt>
     # instance is created with a default load factor (0.75) and an initial
@@ -234,7 +226,6 @@ module Java::Util
     end
     
     typesig { [::Java::Int, ::Java::Float, ::Java::Boolean] }
-    # 
     # Constructs an empty <tt>LinkedHashMap</tt> instance with the
     # specified initial capacity, load factor and ordering mode.
     # 
@@ -252,7 +243,6 @@ module Java::Util
     end
     
     typesig { [] }
-    # 
     # Called by superclass constructors and pseudoconstructors (clone,
     # readObject) before any entries are inserted into the map.  Initializes
     # the chain.
@@ -262,7 +252,6 @@ module Java::Util
     end
     
     typesig { [Array.typed(HashMap::Entry)] }
-    # 
     # Transfers all entries to new table array.  This method is called
     # by superclass resize.  It is overridden for performance, as it is
     # faster to iterate using our linked list.
@@ -278,7 +267,6 @@ module Java::Util
     end
     
     typesig { [Object] }
-    # 
     # Returns <tt>true</tt> if this map maps one or more keys to the
     # specified value.
     # 
@@ -296,19 +284,18 @@ module Java::Util
           e = e.attr_after
         end
       else
-        e_ = @header.attr_after
-        while !(e_).equal?(@header)
-          if ((value == e_.attr_value))
+        e = @header.attr_after
+        while !(e).equal?(@header)
+          if ((value == e.attr_value))
             return true
           end
-          e_ = e_.attr_after
+          e = e.attr_after
         end
       end
       return false
     end
     
     typesig { [Object] }
-    # 
     # Returns the value to which the specified key is mapped,
     # or {@code null} if this map contains no mapping for the key.
     # 
@@ -332,7 +319,6 @@ module Java::Util
     end
     
     typesig { [] }
-    # 
     # Removes all of the mappings from this map.
     # The map will be empty after this call returns.
     def clear
@@ -341,7 +327,6 @@ module Java::Util
     end
     
     class_module.module_eval {
-      # 
       # LinkedHashMap entry.
       const_set_lazy(:Entry) { Class.new(HashMap::Entry) do
         include_class_members LinkedHashMap
@@ -367,7 +352,6 @@ module Java::Util
         end
         
         typesig { [] }
-        # 
         # Removes this entry from the linked list.
         def remove
           @before.attr_after = @after
@@ -375,7 +359,6 @@ module Java::Util
         end
         
         typesig { [Entry] }
-        # 
         # Inserts this entry before the specified existing entry in the list.
         def add_before(existing_entry)
           @after = existing_entry
@@ -385,7 +368,6 @@ module Java::Util
         end
         
         typesig { [HashMap] }
-        # 
         # This method is invoked by the superclass whenever the value
         # of a pre-existing entry is read by Map.get or modified by Map.set.
         # If the enclosing Map is access-ordered, it moves the entry
@@ -425,7 +407,6 @@ module Java::Util
         alias_method :attr_last_returned=, :last_returned=
         undef_method :last_returned=
         
-        # 
         # The modCount value that the iterator believes that the backing
         # List should have.  If this expectation is violated, the iterator
         # has detected concurrent modification.
@@ -549,7 +530,6 @@ module Java::Util
     end
     
     typesig { [::Java::Int, Object, Object, ::Java::Int] }
-    # 
     # This override alters behavior of superclass put method. It causes newly
     # allocated entry to get inserted at the end of the linked list and
     # removes the eldest entry if appropriate.
@@ -567,7 +547,6 @@ module Java::Util
     end
     
     typesig { [::Java::Int, Object, Object, ::Java::Int] }
-    # 
     # This override differs from addEntry in that it doesn't resize the
     # table or remove the eldest entry.
     def create_entry(hash, key, value, bucket_index)
@@ -579,7 +558,6 @@ module Java::Util
     end
     
     typesig { [Map::Entry] }
-    # 
     # Returns <tt>true</tt> if this map should remove its eldest entry.
     # This method is invoked by <tt>put</tt> and <tt>putAll</tt> after
     # inserting a new entry into the map.  It provides the implementor

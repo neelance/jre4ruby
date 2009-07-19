@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 1998-2006 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -31,7 +30,6 @@ module Java::Util
     }
   end
   
-  # 
   # A {@link Map} that further provides a <i>total ordering</i> on its keys.
   # The map is ordered according to the {@linkplain Comparable natural
   # ordering} of its keys, or by a {@link Comparator} typically
@@ -118,7 +116,6 @@ module Java::Util
     include Map
     
     typesig { [] }
-    # 
     # Returns the comparator used to order the keys in this map, or
     # <tt>null</tt> if this map uses the {@linkplain Comparable
     # natural ordering} of its keys.
@@ -131,7 +128,6 @@ module Java::Util
     end
     
     typesig { [Object, Object] }
-    # 
     # Returns a view of the portion of this map whose keys range from
     # <tt>fromKey</tt>, inclusive, to <tt>toKey</tt>, exclusive.  (If
     # <tt>fromKey</tt> and <tt>toKey</tt> are equal, the returned map
@@ -164,7 +160,6 @@ module Java::Util
     end
     
     typesig { [Object] }
-    # 
     # Returns a view of the portion of this map whose keys are
     # strictly less than <tt>toKey</tt>.  The returned map is backed
     # by this map, so changes in the returned map are reflected in
@@ -193,7 +188,6 @@ module Java::Util
     end
     
     typesig { [Object] }
-    # 
     # Returns a view of the portion of this map whose keys are
     # greater than or equal to <tt>fromKey</tt>.  The returned map is
     # backed by this map, so changes in the returned map are
@@ -222,7 +216,6 @@ module Java::Util
     end
     
     typesig { [] }
-    # 
     # Returns the first (lowest) key currently in this map.
     # 
     # @return the first (lowest) key currently in this map
@@ -232,7 +225,6 @@ module Java::Util
     end
     
     typesig { [] }
-    # 
     # Returns the last (highest) key currently in this map.
     # 
     # @return the last (highest) key currently in this map
@@ -242,7 +234,6 @@ module Java::Util
     end
     
     typesig { [] }
-    # 
     # Returns a {@link Set} view of the keys contained in this map.
     # The set's iterator returns the keys in ascending order.
     # The set is backed by the map, so changes to the map are
@@ -263,7 +254,6 @@ module Java::Util
     end
     
     typesig { [] }
-    # 
     # Returns a {@link Collection} view of the values contained in this map.
     # The collection's iterator returns the values in ascending order
     # of the corresponding keys.
@@ -285,7 +275,6 @@ module Java::Util
     end
     
     typesig { [] }
-    # 
     # Returns a {@link Set} view of the mappings contained in this map.
     # The set's iterator returns the entries in ascending key order.
     # The set is backed by the map, so changes to the map are

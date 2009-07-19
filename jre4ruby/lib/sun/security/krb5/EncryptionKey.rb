@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Portions Copyright 2000-2007 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -45,7 +44,6 @@ module Sun::Security::Krb5
     }
   end
   
-  # 
   # This class encapsulates the concept of an EncryptionKey. An encryption
   # key is defined in RFC 4120 as:
   # 
@@ -111,7 +109,6 @@ module Sun::Security::Krb5
     end
     
     typesig { [] }
-    # 
     # Returns the raw key bytes, not in any ASN.1 encoding.
     def get_bytes
       # This method cannot be called outside sun.security, hence no
@@ -128,7 +125,6 @@ module Sun::Security::Krb5
     
     class_module.module_eval {
       typesig { [PrincipalName, String] }
-      # 
       # Obtains the latest version of the secret key of
       # the principal from a keytab.
       # 
@@ -180,7 +176,6 @@ module Sun::Security::Krb5
       end
       
       typesig { [Array.typed(::Java::Char), String] }
-      # 
       # Generate a list of keys using the given principal and password.
       # Construct a key for each configured etype.
       # Caller is responsible for clearing password.
@@ -199,7 +194,6 @@ module Sun::Security::Krb5
       end
       
       typesig { [Array.typed(::Java::Char), String, ::Java::Boolean, ::Java::Int, Array.typed(::Java::Byte)] }
-      # 
       # Generates a list of keys using the given principal, password,
       # and the pre-authentication values.
       def acquire_secret_keys(password, salt, pa_exists, pa_etype, pa_s2kparams)
@@ -251,7 +245,6 @@ module Sun::Security::Krb5
     end
     
     typesig { [::Java::Int, Array.typed(::Java::Byte)] }
-    # 
     # Constructs an EncryptionKey by using the specified key type and key
     # value.  It is used to recover the key when retrieving data from
     # credential cache file.
@@ -332,7 +325,6 @@ module Sun::Security::Krb5
     end
     
     typesig { [EncryptionKey] }
-    # 
     # Generates a sub-sessionkey from a given session key.
     # 
     # Used in KrbApRep, KrbApReq
@@ -386,7 +378,6 @@ module Sun::Security::Krb5
     end
     
     typesig { [DerValue] }
-    # 
     # Constructs an instance of EncryptionKey type.
     # @param encoding a single DER-encoded value.
     # @exception Asn1Exception if an error occurs while decoding an ASN1
@@ -423,7 +414,6 @@ module Sun::Security::Krb5
     end
     
     typesig { [] }
-    # 
     # Returns the ASN.1 encoding of this EncryptionKey.
     # 
     # <xmp>
@@ -473,7 +463,6 @@ module Sun::Security::Krb5
     
     class_module.module_eval {
       typesig { [DerInputStream, ::Java::Byte, ::Java::Boolean] }
-      # 
       # Parse (unmarshal) an Encryption key from a DER input stream.  This form
       # parsing might be used when expanding a value which is part of
       # a constructed sequence and uses explicitly tagged type.
@@ -502,7 +491,6 @@ module Sun::Security::Krb5
     }
     
     typesig { [CCacheOutputStream] }
-    # 
     # Writes key value in FCC format to a <code>CCacheOutputStream</code>.
     # 
     # @param cos a <code>CCacheOutputStream</code> to be written to.

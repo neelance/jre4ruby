@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 2000-2006 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -32,7 +31,6 @@ module Java::Util
     }
   end
   
-  # 
   # This class implements the <tt>Map</tt> interface with a hash table, using
   # reference-equality in place of object-equality when comparing keys (and
   # values).  In other words, in an <tt>IdentityHashMap</tt>, two keys
@@ -142,7 +140,6 @@ module Java::Util
     include Cloneable
     
     class_module.module_eval {
-      # 
       # The initial capacity used by the no-args constructor.
       # MUST be a power of two.  The value 32 corresponds to the
       # (specified) expected maximum size of 21, given a load factor
@@ -150,7 +147,6 @@ module Java::Util
       const_set_lazy(:DEFAULT_CAPACITY) { 32 }
       const_attr_reader  :DEFAULT_CAPACITY
       
-      # 
       # The minimum capacity, used if a lower value is implicitly specified
       # by either of the constructors with arguments.  The value 4 corresponds
       # to an expected maximum size of 2, given a load factor of 2/3.
@@ -158,7 +154,6 @@ module Java::Util
       const_set_lazy(:MINIMUM_CAPACITY) { 4 }
       const_attr_reader  :MINIMUM_CAPACITY
       
-      # 
       # The maximum capacity, used if a higher value is implicitly specified
       # by either of the constructors with arguments.
       # MUST be a power of two <= 1<<29.
@@ -166,7 +161,6 @@ module Java::Util
       const_attr_reader  :MAXIMUM_CAPACITY
     }
     
-    # 
     # The table, resized as necessary. Length MUST always be a power of two.
     attr_accessor :table
     alias_method :attr_table, :table
@@ -174,7 +168,6 @@ module Java::Util
     alias_method :attr_table=, :table=
     undef_method :table=
     
-    # 
     # The number of key-value mappings contained in this identity hash map.
     # 
     # @serial
@@ -184,7 +177,6 @@ module Java::Util
     alias_method :attr_size=, :size=
     undef_method :size=
     
-    # 
     # The number of modifications, to support fast-fail iterators
     attr_accessor :mod_count
     alias_method :attr_mod_count, :mod_count
@@ -192,7 +184,6 @@ module Java::Util
     alias_method :attr_mod_count=, :mod_count=
     undef_method :mod_count=
     
-    # 
     # The next size value at which to resize (capacity * load factor).
     attr_accessor :threshold
     alias_method :attr_threshold, :threshold
@@ -201,20 +192,17 @@ module Java::Util
     undef_method :threshold=
     
     class_module.module_eval {
-      # 
       # Value representing null keys inside tables.
       const_set_lazy(:NULL_KEY) { Object.new }
       const_attr_reader  :NULL_KEY
       
       typesig { [Object] }
-      # 
       # Use NULL_KEY for key if it is null.
       def mask_null(key)
         return ((key).nil? ? NULL_KEY : key)
       end
       
       typesig { [Object] }
-      # 
       # Returns internal representation of null key back to caller as null.
       def unmask_null(key)
         return ((key).equal?(NULL_KEY) ? nil : key)
@@ -222,7 +210,6 @@ module Java::Util
     }
     
     typesig { [] }
-    # 
     # Constructs a new, empty identity hash map with a default expected
     # maximum size (21).
     def initialize
@@ -237,7 +224,6 @@ module Java::Util
     end
     
     typesig { [::Java::Int] }
-    # 
     # Constructs a new, empty map with the specified expected maximum size.
     # Putting more than the expected number of key-value mappings into
     # the map may cause the internal data structure to grow, which may be
@@ -260,7 +246,6 @@ module Java::Util
     end
     
     typesig { [::Java::Int] }
-    # 
     # Returns the appropriate capacity for the specified expected maximum
     # size.  Returns the smallest power of two between MINIMUM_CAPACITY
     # and MAXIMUM_CAPACITY, inclusive, that is greater than
@@ -284,7 +269,6 @@ module Java::Util
     end
     
     typesig { [::Java::Int] }
-    # 
     # Initializes object to be an empty map with the specified initial
     # capacity, which is assumed to be a power of two between
     # MINIMUM_CAPACITY and MAXIMUM_CAPACITY inclusive.
@@ -297,7 +281,6 @@ module Java::Util
     end
     
     typesig { [Map] }
-    # 
     # Constructs a new identity hash map containing the keys-value mappings
     # in the specified map.
     # 
@@ -310,7 +293,6 @@ module Java::Util
     end
     
     typesig { [] }
-    # 
     # Returns the number of key-value mappings in this identity hash map.
     # 
     # @return the number of key-value mappings in this map
@@ -319,7 +301,6 @@ module Java::Util
     end
     
     typesig { [] }
-    # 
     # Returns <tt>true</tt> if this identity hash map contains no key-value
     # mappings.
     # 
@@ -331,7 +312,6 @@ module Java::Util
     
     class_module.module_eval {
       typesig { [Object, ::Java::Int] }
-      # 
       # Returns index for Object x.
       def hash(x, length)
         h = System.identity_hash_code(x)
@@ -340,7 +320,6 @@ module Java::Util
       end
       
       typesig { [::Java::Int, ::Java::Int] }
-      # 
       # Circularly traverses table of size len.
       def next_key_index(i, len)
         return (i + 2 < len ? i + 2 : 0)
@@ -348,7 +327,6 @@ module Java::Util
     }
     
     typesig { [Object] }
-    # 
     # Returns the value to which the specified key is mapped,
     # or {@code null} if this map contains no mapping for the key.
     # 
@@ -382,7 +360,6 @@ module Java::Util
     end
     
     typesig { [Object] }
-    # 
     # Tests whether the specified object reference is a key in this identity
     # hash map.
     # 
@@ -408,7 +385,6 @@ module Java::Util
     end
     
     typesig { [Object] }
-    # 
     # Tests whether the specified object reference is a value in this identity
     # hash map.
     # 
@@ -429,7 +405,6 @@ module Java::Util
     end
     
     typesig { [Object, Object] }
-    # 
     # Tests if the specified key-value mapping is in the map.
     # 
     # @param   key   possible key
@@ -454,7 +429,6 @@ module Java::Util
     end
     
     typesig { [Object, Object] }
-    # 
     # Associates the specified value with the specified key in this identity
     # hash map.  If the map previously contained a mapping for the key, the
     # old value is replaced.
@@ -492,7 +466,6 @@ module Java::Util
     end
     
     typesig { [::Java::Int] }
-    # 
     # Resize the table to hold given capacity.
     # 
     # @param newCapacity the new capacity, must be a power of two.
@@ -534,7 +507,6 @@ module Java::Util
     end
     
     typesig { [Map] }
-    # 
     # Copies all of the mappings from the specified map to this map.
     # These mappings will replace any mappings that this map had for
     # any of the keys currently in the specified map.
@@ -556,7 +528,6 @@ module Java::Util
     end
     
     typesig { [Object] }
-    # 
     # Removes the mapping for this key from this map if present.
     # 
     # @param key key whose mapping is to be removed from the map
@@ -588,7 +559,6 @@ module Java::Util
     end
     
     typesig { [Object, Object] }
-    # 
     # Removes the specified key-value mapping from the map if it is present.
     # 
     # @param   key   possible key
@@ -621,7 +591,6 @@ module Java::Util
     end
     
     typesig { [::Java::Int] }
-    # 
     # Rehash all possibly-colliding entries following a
     # deletion. This preserves the linear-probe
     # collision properties required by get, put, etc.
@@ -657,7 +626,6 @@ module Java::Util
     end
     
     typesig { [] }
-    # 
     # Removes all of the mappings from this map.
     # The map will be empty after this call returns.
     def clear
@@ -672,7 +640,6 @@ module Java::Util
     end
     
     typesig { [Object] }
-    # 
     # Compares the specified object with this map for equality.  Returns
     # <tt>true</tt> if the given object is also a map and the two maps
     # represent identical object-reference mappings.  More formally, this
@@ -709,8 +676,8 @@ module Java::Util
           return true
         else
           if (o.is_a?(Map))
-            m_ = o
-            return (entry_set == m_.entry_set)
+            m = o
+            return (entry_set == m.entry_set)
           else
             return false # o is not a Map
           end
@@ -719,7 +686,6 @@ module Java::Util
     end
     
     typesig { [] }
-    # 
     # Returns the hash code value for this map.  The hash code of a map is
     # defined to be the sum of the hash codes of each entry in the map's
     # <tt>entrySet()</tt> view.  This ensures that <tt>m1.equals(m2)</tt>
@@ -753,7 +719,6 @@ module Java::Util
     end
     
     typesig { [] }
-    # 
     # Returns a shallow copy of this identity hash map: the keys and values
     # themselves are not cloned.
     # 
@@ -957,7 +922,6 @@ module Java::Util
         alias_method :initialize__value_iterator, :initialize
       end }
       
-      # 
       # Since we don't use Entry objects, we use the Iterator
       # itself as an entry.
       const_set_lazy(:EntryIterator) { Class.new(IdentityHashMapIterator) do
@@ -1054,7 +1018,6 @@ module Java::Util
     undef_method :entry_set=
     
     typesig { [] }
-    # 
     # Returns an identity-based set view of the keys contained in this map.
     # The set is backed by the map, so changes to the map are reflected in
     # the set, and vice-versa.  If the map is modified while an iteration
@@ -1128,7 +1091,6 @@ module Java::Util
         end
         
         typesig { [Collection] }
-        # 
         # Must revert from AbstractSet's impl to AbstractCollection's, as
         # the former contains an optimization that results in incorrect
         # behavior when c is a smaller "normal" (non-identity-based) Set.
@@ -1169,7 +1131,6 @@ module Java::Util
     }
     
     typesig { [] }
-    # 
     # Returns a {@link Collection} view of the values contained in this map.
     # The collection is backed by the map, so changes to the map are
     # reflected in the collection, and vice-versa.  If the map is
@@ -1245,7 +1206,6 @@ module Java::Util
     }
     
     typesig { [] }
-    # 
     # Returns a {@link Set} view of the mappings contained in this map.
     # Each element in the returned set is a reference-equality-based
     # <tt>Map.Entry</tt>.  The set is backed by the map, so changes
@@ -1330,7 +1290,6 @@ module Java::Util
         end
         
         typesig { [Collection] }
-        # 
         # Must revert from AbstractSet's impl to AbstractCollection's, as
         # the former contains an optimization that results in incorrect
         # behavior when c is a smaller "normal" (non-identity-based) Set.
@@ -1391,7 +1350,6 @@ module Java::Util
     }
     
     typesig { [Java::Io::ObjectOutputStream] }
-    # 
     # Save the state of the <tt>IdentityHashMap</tt> instance to a stream
     # (i.e., serialize it).
     # 
@@ -1419,7 +1377,6 @@ module Java::Util
     end
     
     typesig { [Java::Io::ObjectInputStream] }
-    # 
     # Reconstitute the <tt>IdentityHashMap</tt> instance from a stream (i.e.,
     # deserialize it).
     def read_object(s)
@@ -1440,7 +1397,6 @@ module Java::Util
     end
     
     typesig { [Object, Object] }
-    # 
     # The put method for readObject.  It does not resize the table,
     # update modCount, etc.
     def put_for_create(key, value)

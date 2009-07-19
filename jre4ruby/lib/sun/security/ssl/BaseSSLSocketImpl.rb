@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 2002-2008 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -35,7 +34,6 @@ module Sun::Security::Ssl
     }
   end
   
-  # 
   # Abstract base class for SSLSocketImpl. Its purpose is to house code with
   # no SSL related logic (or no logic at all). This makes SSLSocketImpl shorter
   # and easier to read. It contains a few constants and static methods plus
@@ -49,7 +47,6 @@ module Sun::Security::Ssl
   class BaseSSLSocketImpl < BaseSSLSocketImplImports.const_get :SSLSocket
     include_class_members BaseSSLSocketImplImports
     
-    # 
     # Normally "self" is "this" ... but not when this connection is
     # layered over a preexisting socket.  If we're using an existing
     # socket, we delegate some actions to it.  Else, we delegate
@@ -77,7 +74,6 @@ module Sun::Security::Ssl
     end
     
     class_module.module_eval {
-      # 
       # CONSTANTS AND STATIC METHODS
       # 
       # 
@@ -95,7 +91,6 @@ module Sun::Security::Ssl
     }
     
     typesig { [] }
-    # 
     # MISC SOCKET METHODS
     # 
     # 
@@ -111,11 +106,9 @@ module Sun::Security::Ssl
     end
     
     typesig { [SocketAddress] }
-    # 
     # Binds the address to the socket.
     # @see java.net.Socket#bind
     def bind(bindpoint)
-      # 
       # Bind to this socket
       if ((@self).equal?(self))
         super(bindpoint)
@@ -126,7 +119,6 @@ module Sun::Security::Ssl
     end
     
     typesig { [] }
-    # 
     # Returns the address of the endpoint this socket is connected to
     # @see java.net.Socket#getLocalSocketAddress
     def get_local_socket_address
@@ -138,7 +130,6 @@ module Sun::Security::Ssl
     end
     
     typesig { [] }
-    # 
     # Returns the address of the endpoint this socket is connected to
     # @see java.net.Socket#getRemoteSocketAddress
     def get_remote_socket_address
@@ -150,7 +141,6 @@ module Sun::Security::Ssl
     end
     
     typesig { [SocketAddress] }
-    # 
     # Connects this socket to the server.
     # 
     # This method is either called on an unconnected SSLSocketImpl by the
@@ -167,7 +157,6 @@ module Sun::Security::Ssl
     end
     
     typesig { [] }
-    # 
     # Returns the connection state of the socket.
     # @see java.net.Socket#isConnected
     def is_connected
@@ -179,7 +168,6 @@ module Sun::Security::Ssl
     end
     
     typesig { [] }
-    # 
     # Returns the binding state of the socket.
     # @see java.net.Socket#isBound
     def is_bound
@@ -191,7 +179,6 @@ module Sun::Security::Ssl
     end
     
     typesig { [] }
-    # 
     # CLOSE RELATED METHODS
     # 
     # 
@@ -205,7 +192,6 @@ module Sun::Security::Ssl
     end
     
     typesig { [] }
-    # 
     # The semantics of shutdownOutput is not supported in TLS 1.0
     # spec. Thus when the method is called on an SSL socket, an
     # UnsupportedOperationException will be thrown.
@@ -216,7 +202,6 @@ module Sun::Security::Ssl
     end
     
     typesig { [] }
-    # 
     # Returns the input state of the socket
     # @see java.net.Socket#isInputShutdown
     def is_input_shutdown
@@ -228,7 +213,6 @@ module Sun::Security::Ssl
     end
     
     typesig { [] }
-    # 
     # Returns the output state of the socket
     # @see java.net.Socket#isOutputShutdown
     def is_output_shutdown
@@ -240,7 +224,6 @@ module Sun::Security::Ssl
     end
     
     typesig { [] }
-    # 
     # Ensures that the SSL connection is closed down as cleanly
     # as possible, in case the application forgets to do so.
     # This allows SSL connections to be implicitly reclaimed,
@@ -268,7 +251,6 @@ module Sun::Security::Ssl
     end
     
     typesig { [] }
-    # 
     # GET ADDRESS METHODS
     # 
     # 
@@ -282,7 +264,6 @@ module Sun::Security::Ssl
     end
     
     typesig { [] }
-    # 
     # Gets the local address to which the socket is bound.
     # 
     # @return the local address to which the socket is bound.
@@ -296,7 +277,6 @@ module Sun::Security::Ssl
     end
     
     typesig { [] }
-    # 
     # Returns the number of the remote port that this connection uses.
     def get_port
       if ((@self).equal?(self))
@@ -307,7 +287,6 @@ module Sun::Security::Ssl
     end
     
     typesig { [] }
-    # 
     # Returns the number of the local port that this connection uses.
     def get_local_port
       if ((@self).equal?(self))
@@ -318,7 +297,6 @@ module Sun::Security::Ssl
     end
     
     typesig { [::Java::Boolean] }
-    # 
     # SOCKET OPTION METHODS
     # 
     # 
@@ -333,7 +311,6 @@ module Sun::Security::Ssl
     end
     
     typesig { [] }
-    # 
     # Returns true if the Nagle optimization is disabled.  This
     # relates to low-level buffering of TCP traffic, delaying the
     # traffic to promote better throughput.
@@ -348,7 +325,6 @@ module Sun::Security::Ssl
     end
     
     typesig { [::Java::Boolean, ::Java::Int] }
-    # 
     # Assigns the socket's linger timeout.
     # @see java.net.Socket#setSoLinger
     def set_so_linger(flag, linger)
@@ -360,7 +336,6 @@ module Sun::Security::Ssl
     end
     
     typesig { [] }
-    # 
     # Returns the socket's linger timeout.
     # @see java.net.Socket#getSoLinger
     def get_so_linger
@@ -372,7 +347,6 @@ module Sun::Security::Ssl
     end
     
     typesig { [::Java::Int] }
-    # 
     # Send one byte of urgent data on the socket.
     # @see java.net.Socket#sendUrgentData
     # At this point, there seems to be no specific requirement to support
@@ -383,7 +357,6 @@ module Sun::Security::Ssl
     end
     
     typesig { [::Java::Boolean] }
-    # 
     # Enable/disable OOBINLINE (receipt of TCP urgent data) By default, this
     # option is disabled and TCP urgent data received on a socket is silently
     # discarded.
@@ -395,7 +368,6 @@ module Sun::Security::Ssl
     end
     
     typesig { [] }
-    # 
     # Tests if OOBINLINE is enabled.
     # @see java.net.Socket#getOOBInline
     def get_oobinline
@@ -403,7 +375,6 @@ module Sun::Security::Ssl
     end
     
     typesig { [] }
-    # 
     # Returns the socket timeout.
     # @see java.net.Socket#getSoTimeout
     def get_so_timeout
@@ -451,7 +422,6 @@ module Sun::Security::Ssl
     end
     
     typesig { [::Java::Boolean] }
-    # 
     # Enable/disable SO_KEEPALIVE.
     # @see java.net.Socket#setKeepAlive
     def set_keep_alive(on)
@@ -463,7 +433,6 @@ module Sun::Security::Ssl
     end
     
     typesig { [] }
-    # 
     # Tests if SO_KEEPALIVE is enabled.
     # @see java.net.Socket#getKeepAlive
     def get_keep_alive
@@ -475,7 +444,6 @@ module Sun::Security::Ssl
     end
     
     typesig { [::Java::Int] }
-    # 
     # Sets traffic class or type-of-service octet in the IP header for
     # packets sent from this Socket.
     # @see java.net.Socket#setTrafficClass
@@ -488,7 +456,6 @@ module Sun::Security::Ssl
     end
     
     typesig { [] }
-    # 
     # Gets traffic class or type-of-service in the IP header for packets
     # sent from this Socket.
     # @see java.net.Socket#getTrafficClass
@@ -501,7 +468,6 @@ module Sun::Security::Ssl
     end
     
     typesig { [::Java::Boolean] }
-    # 
     # Enable/disable SO_REUSEADDR.
     # @see java.net.Socket#setReuseAddress
     def set_reuse_address(on)
@@ -513,7 +479,6 @@ module Sun::Security::Ssl
     end
     
     typesig { [] }
-    # 
     # Tests if SO_REUSEADDR is enabled.
     # @see java.net.Socket#getReuseAddress
     def get_reuse_address
@@ -525,7 +490,6 @@ module Sun::Security::Ssl
     end
     
     typesig { [::Java::Int, ::Java::Int, ::Java::Int] }
-    # 
     # Sets performance preferences for this socket.
     # 
     # @see java.net.Socket#setPerformancePreferences(int, int, int)

@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 2001-2002 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -35,7 +34,6 @@ module Sun::Nio::Ch
     }
   end
   
-  # 
   # This class is defined here rather than in java.nio.channels.Channels
   # so that code can be shared with SocketAdaptor.
   # 

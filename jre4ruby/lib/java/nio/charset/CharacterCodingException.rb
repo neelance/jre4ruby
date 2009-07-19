@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 2000-2007 Sun Microsystems, Inc.  All Rights Reserved.
 # 
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
@@ -35,7 +34,6 @@ module Java::Nio::Charset
     }
   end
   
-  # 
   # Checked exception thrown when a character encoding
   # or decoding error occurs.
   # 
@@ -49,7 +47,6 @@ module Java::Nio::Charset
     }
     
     typesig { [] }
-    # 
     # Constructs an instance of this class.
     def initialize
       super()

@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 1995-2007 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -33,7 +32,6 @@ module Java::Lang
     }
   end
   
-  # 
   # A thread group represents a set of threads. In addition, a thread
   # group can also include other thread groups. The thread groups form
   # a tree in which every thread group except the initial thread group
@@ -127,7 +125,6 @@ module Java::Lang
     undef_method :groups=
     
     typesig { [] }
-    # 
     # Creates an empty Thread group that is not in any Thread group.
     # This method is used to create the system Thread group.
     def initialize
@@ -147,7 +144,6 @@ module Java::Lang
     end
     
     typesig { [String] }
-    # 
     # Constructs a new thread group. The parent of this new group is
     # the thread group of the currently running thread.
     # <p>
@@ -164,7 +160,6 @@ module Java::Lang
     end
     
     typesig { [JavaThreadGroup, String] }
-    # 
     # Creates a new thread group. The parent of this new group is the
     # specified thread group.
     # <p>
@@ -205,7 +200,6 @@ module Java::Lang
     end
     
     typesig { [] }
-    # 
     # Returns the name of this thread group.
     # 
     # @return  the name of this thread group.
@@ -215,7 +209,6 @@ module Java::Lang
     end
     
     typesig { [] }
-    # 
     # Returns the parent of this thread group.
     # <p>
     # First, if the parent is not <code>null</code>, the
@@ -238,7 +231,6 @@ module Java::Lang
     end
     
     typesig { [] }
-    # 
     # Returns the maximum priority of this thread group. Threads that are
     # part of this group cannot have a higher priority than the maximum
     # priority.
@@ -252,7 +244,6 @@ module Java::Lang
     end
     
     typesig { [] }
-    # 
     # Tests if this thread group is a daemon thread group. A
     # daemon thread group is automatically destroyed when its last
     # thread is stopped or its last thread group is destroyed.
@@ -265,7 +256,6 @@ module Java::Lang
     end
     
     typesig { [] }
-    # 
     # Tests if this thread group has been destroyed.
     # 
     # @return  true if this object is destroyed
@@ -277,7 +267,6 @@ module Java::Lang
     end
     
     typesig { [::Java::Boolean] }
-    # 
     # Changes the daemon status of this thread group.
     # <p>
     # First, the <code>checkAccess</code> method of this thread group is
@@ -300,7 +289,6 @@ module Java::Lang
     end
     
     typesig { [::Java::Int] }
-    # 
     # Sets the maximum priority of the group. Threads in the thread
     # group that already have a higher priority are not affected.
     # <p>
@@ -351,7 +339,6 @@ module Java::Lang
     end
     
     typesig { [JavaThreadGroup] }
-    # 
     # Tests if this thread group is either the thread group
     # argument or one of its ancestor thread groups.
     # 
@@ -371,7 +358,6 @@ module Java::Lang
     end
     
     typesig { [] }
-    # 
     # Determines if the currently running thread has permission to
     # modify this thread group.
     # <p>
@@ -391,7 +377,6 @@ module Java::Lang
     end
     
     typesig { [] }
-    # 
     # Returns an estimate of the number of active threads in this
     # thread group.  The result might not reflect concurrent activity,
     # and might be affected by the presence of certain system threads.
@@ -430,7 +415,6 @@ module Java::Lang
     end
     
     typesig { [Array.typed(JavaThread)] }
-    # 
     # Copies into the specified array every active thread in this
     # thread group and its subgroups.
     # <p>
@@ -461,7 +445,6 @@ module Java::Lang
     end
     
     typesig { [Array.typed(JavaThread), ::Java::Boolean] }
-    # 
     # Copies into the specified array every active thread in this
     # thread group. If the <code>recurse</code> flag is
     # <code>true</code>, references to every active thread in this
@@ -535,7 +518,6 @@ module Java::Lang
     end
     
     typesig { [] }
-    # 
     # Returns an estimate of the number of active groups in this
     # thread group.  The result might not reflect concurrent activity.
     # <p>
@@ -569,7 +551,6 @@ module Java::Lang
     end
     
     typesig { [Array.typed(JavaThreadGroup)] }
-    # 
     # Copies into the specified array references to every active
     # subgroup in this thread group.
     # <p>
@@ -600,7 +581,6 @@ module Java::Lang
     end
     
     typesig { [Array.typed(JavaThreadGroup), ::Java::Boolean] }
-    # 
     # Copies into the specified array references to every active
     # subgroup in this thread group. If the <code>recurse</code> flag is
     # <code>true</code>, references to all active subgroups of the
@@ -670,7 +650,6 @@ module Java::Lang
     end
     
     typesig { [] }
-    # 
     # Stops all threads in this thread group.
     # <p>
     # First, the <code>checkAccess</code> method of this thread group is
@@ -695,7 +674,6 @@ module Java::Lang
     end
     
     typesig { [] }
-    # 
     # Interrupts all threads in this thread group.
     # <p>
     # First, the <code>checkAccess</code> method of this thread group is
@@ -736,7 +714,6 @@ module Java::Lang
     end
     
     typesig { [] }
-    # 
     # Suspends all threads in this thread group.
     # <p>
     # First, the <code>checkAccess</code> method of this thread group is
@@ -761,7 +738,6 @@ module Java::Lang
     end
     
     typesig { [::Java::Boolean] }
-    # 
     # Helper method: recursively stops or suspends (as directed by the
     # boolean argument) all of the threads in this thread group and its
     # subgroups, except the current thread.  This method returns true
@@ -801,7 +777,6 @@ module Java::Lang
     end
     
     typesig { [] }
-    # 
     # Resumes all threads in this thread group.
     # <p>
     # First, the <code>checkAccess</code> method of this thread group is
@@ -846,7 +821,6 @@ module Java::Lang
     end
     
     typesig { [] }
-    # 
     # Destroys this thread group and all of its subgroups. This thread
     # group must be empty, indicating that all threads that had been in
     # this thread group have since stopped.
@@ -893,7 +867,6 @@ module Java::Lang
     end
     
     typesig { [JavaThreadGroup] }
-    # 
     # Adds the specified Thread group to this group.
     # @param g the specified Thread group to be added
     # @exception IllegalThreadStateException If the Thread group has been destroyed.
@@ -917,7 +890,6 @@ module Java::Lang
     end
     
     typesig { [JavaThreadGroup] }
-    # 
     # Removes the specified Thread group from this group.
     # @param g the Thread group to be removed
     # @return if this Thread has already been destroyed.
@@ -948,7 +920,6 @@ module Java::Lang
     end
     
     typesig { [] }
-    # 
     # Increments the count of unstarted threads in the thread group.
     # Unstarted threads are not added to the thread group so that they
     # can be collected if they are never started, but they must be
@@ -964,7 +935,6 @@ module Java::Lang
     end
     
     typesig { [JavaThread] }
-    # 
     # Adds the specified Thread to this group.
     # @param t the Thread to be added
     # @exception IllegalThreadStateException If the Thread group has been destroyed.
@@ -989,7 +959,6 @@ module Java::Lang
     end
     
     typesig { [JavaThread] }
-    # 
     # Removes the specified Thread from this group.
     # @param t the Thread to be removed
     # @return if the Thread has already been destroyed.
@@ -1019,7 +988,6 @@ module Java::Lang
     end
     
     typesig { [] }
-    # 
     # Prints information about this thread group to the standard
     # output. This method is useful only for debugging.
     # 
@@ -1065,7 +1033,6 @@ module Java::Lang
     end
     
     typesig { [JavaThread, Exception] }
-    # 
     # Called by the Java Virtual Machine when a thread in this
     # thread group stops because of an uncaught exception, and the thread
     # does not have a specific {@link Thread.UncaughtExceptionHandler}
@@ -1116,7 +1083,6 @@ module Java::Lang
     end
     
     typesig { [::Java::Boolean] }
-    # 
     # Used by VM to control lowmem implicit suspension.
     # 
     # @param b boolean to allow or disallow suspension
@@ -1134,7 +1100,6 @@ module Java::Lang
     end
     
     typesig { [] }
-    # 
     # Returns a string representation of this Thread group.
     # 
     # @return  a string representation of this thread group.

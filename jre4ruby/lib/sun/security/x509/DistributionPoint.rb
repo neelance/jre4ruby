@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 2002-2006 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -36,7 +35,6 @@ module Sun::Security::X509
     }
   end
   
-  # 
   # Represent the DistributionPoint sequence used in the CRL
   # Distribution Points Extension (OID = 2.5.29.31).
   # <p>
@@ -181,7 +179,6 @@ module Sun::Security::X509
     undef_method :hash_code=
     
     typesig { [GeneralNames, Array.typed(::Java::Boolean), GeneralNames] }
-    # 
     # Constructor for the class using GeneralNames for DistributionPointName
     # 
     # @param fullName the GeneralNames of the distribution point; may be null
@@ -204,7 +201,6 @@ module Sun::Security::X509
     end
     
     typesig { [RDN, Array.typed(::Java::Boolean), GeneralNames] }
-    # 
     # Constructor for the class using RelativeDistinguishedName for
     # DistributionPointName
     # 
@@ -229,7 +225,6 @@ module Sun::Security::X509
     end
     
     typesig { [DerValue] }
-    # 
     # Create the object from the passed DER encoded form.
     # 
     # @param val the DER encoded form of the DistributionPoint
@@ -290,35 +285,30 @@ module Sun::Security::X509
     end
     
     typesig { [] }
-    # 
     # Return the full distribution point name or null if not set.
     def get_full_name
       return @full_name
     end
     
     typesig { [] }
-    # 
     # Return the relative distribution point name or null if not set.
     def get_relative_name
       return @relative_name
     end
     
     typesig { [] }
-    # 
     # Return the reason flags or null if not set.
     def get_reason_flags
       return @reason_flags
     end
     
     typesig { [] }
-    # 
     # Return the CRL issuer name or null if not set.
     def get_crlissuer
       return @crl_issuer
     end
     
     typesig { [DerOutputStream] }
-    # 
     # Write the DistributionPoint value to the DerOutputStream.
     # 
     # @param out the DerOutputStream to write the extension to.
@@ -334,9 +324,9 @@ module Sun::Security::X509
           distribution_point.write_implicit(DerValue.create_tag(DerValue::TAG_CONTEXT, true, TAG_FULL_NAME), der_out)
         else
           if (!(@relative_name).nil?)
-            der_out_ = DerOutputStream.new
-            @relative_name.encode(der_out_)
-            distribution_point.write_implicit(DerValue.create_tag(DerValue::TAG_CONTEXT, true, TAG_REL_NAME), der_out_)
+            der_out = DerOutputStream.new
+            @relative_name.encode(der_out)
+            distribution_point.write_implicit(DerValue.create_tag(DerValue::TAG_CONTEXT, true, TAG_REL_NAME), der_out)
           end
         end
         tagged.write(DerValue.create_tag(DerValue::TAG_CONTEXT, true, TAG_DIST_PT), distribution_point)
@@ -357,7 +347,6 @@ module Sun::Security::X509
     
     class_module.module_eval {
       typesig { [Object, Object] }
-      # 
       # Utility function for a.equals(b) where both a and b may be null.
       def equals(a, b)
         return ((a).nil?) ? ((b).nil?) : (a == b)
@@ -365,7 +354,6 @@ module Sun::Security::X509
     }
     
     typesig { [Object] }
-    # 
     # Compare an object to this DistributionPoint for equality.
     # 
     # @param obj Object to be compared to this
@@ -412,7 +400,6 @@ module Sun::Security::X509
     
     class_module.module_eval {
       typesig { [::Java::Int] }
-      # 
       # Return a string representation for reasonFlag bit 'reason'.
       def reason_to_string(reason)
         if ((reason > 0) && (reason < REASON_STRINGS.attr_length))
@@ -423,7 +410,6 @@ module Sun::Security::X509
     }
     
     typesig { [] }
-    # 
     # Return a printable string of the Distribution Point.
     def to_s
       sb = StringBuilder.new

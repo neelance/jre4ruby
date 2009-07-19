@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 1996-2003 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -30,7 +29,6 @@ module Java::Lang
     }
   end
   
-  # 
   # Signals that a method has been invoked at an illegal or
   # inappropriate time.  In other words, the Java environment or
   # Java application is not in an appropriate state for the requested
@@ -42,7 +40,6 @@ module Java::Lang
     include_class_members IllegalStateExceptionImports
     
     typesig { [] }
-    # 
     # Constructs an IllegalStateException with no detail message.
     # A detail message is a String that describes this particular exception.
     def initialize
@@ -50,7 +47,6 @@ module Java::Lang
     end
     
     typesig { [String] }
-    # 
     # Constructs an IllegalStateException with the specified detail
     # message.  A detail message is a String that describes this particular
     # exception.
@@ -61,7 +57,6 @@ module Java::Lang
     end
     
     typesig { [String, Exception] }
-    # 
     # Constructs a new exception with the specified detail message and
     # cause.
     # 
@@ -81,7 +76,6 @@ module Java::Lang
     end
     
     typesig { [Exception] }
-    # 
     # Constructs a new exception with the specified cause and a detail
     # message of <tt>(cause==null ? null : cause.toString())</tt> (which
     # typically contains the class and detail message of <tt>cause</tt>).

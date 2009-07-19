@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 1998-1999 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -35,7 +34,6 @@ module Sun::Security::Pkcs
     }
   end
   
-  # 
   # This class implements the <code>EncryptedPrivateKeyInfo</code> type,
   # which is defined in PKCS #8 as follows:
   # 
@@ -71,7 +69,6 @@ module Sun::Security::Pkcs
     undef_method :encoded=
     
     typesig { [Array.typed(::Java::Byte)] }
-    # 
     # Constructs (i.e., parses) an <code>EncryptedPrivateKeyInfo</code> from
     # its encoding.
     def initialize(encoded)
@@ -100,7 +97,6 @@ module Sun::Security::Pkcs
     end
     
     typesig { [AlgorithmId, Array.typed(::Java::Byte)] }
-    # 
     # Constructs an <code>EncryptedPrivateKeyInfo</code> from the
     # encryption algorithm and the encrypted data.
     def initialize(algid, encrypted_data)
@@ -112,21 +108,18 @@ module Sun::Security::Pkcs
     end
     
     typesig { [] }
-    # 
     # Returns the encryption algorithm.
     def get_algorithm
       return @algid
     end
     
     typesig { [] }
-    # 
     # Returns the encrypted data.
     def get_encrypted_data
       return @encrypted_data.clone
     end
     
     typesig { [] }
-    # 
     # Returns the ASN.1 encoding of this class.
     def get_encoded
       if (!(@encoded).nil?)
@@ -172,7 +165,6 @@ module Sun::Security::Pkcs
     end
     
     typesig { [] }
-    # 
     # Returns a hashcode for this EncryptedPrivateKeyInfo.
     # 
     # @return a hashcode for this EncryptedPrivateKeyInfo.

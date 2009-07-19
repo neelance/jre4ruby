@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 2000-2003 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -32,7 +31,6 @@ module Java::Util::Logging
     }
   end
   
-  # 
   # The permission which the SecurityManager will check when code
   # that is running with a SecurityManager calls one of the logging
   # control methods (such as Logger.setLevel).
@@ -62,7 +60,6 @@ module Java::Util::Logging
     }
     
     typesig { [String, String] }
-    # 
     # Creates a new LoggingPermission object.
     # 
     # @param name Permission name.  Must be "control".

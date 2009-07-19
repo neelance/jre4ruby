@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 2000-2007 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -44,7 +43,6 @@ module Sun::Security::Jgss::Krb5
     }
   end
   
-  # 
   # Implements the krb5 initiator credential element.
   # 
   # @author Mayank Upadhyay
@@ -83,7 +81,7 @@ module Sun::Security::Jgss::Krb5
       rescue KrbException => e
         raise GSSException.new(GSSException::NO_CRED, -1, e.get_message)
       rescue IOException => e
-        raise GSSException.new(GSSException::NO_CRED, -1, e_.get_message)
+        raise GSSException.new(GSSException::NO_CRED, -1, e.get_message)
       end
     end
     
@@ -115,7 +113,6 @@ module Sun::Security::Jgss::Krb5
       typesig { [Krb5NameElement, Credentials] }
       def get_instance(name, delegated_cred)
         session_key = delegated_cred.get_session_key
-        # 
         # all of the following data is optional in a KRB-CRED
         # messages. This check for each field.
         c_princ = delegated_cred.get_client
@@ -137,7 +134,6 @@ module Sun::Security::Jgss::Krb5
     }
     
     typesig { [] }
-    # 
     # Returns the principal name for this credential. The name
     # is in mechanism specific format.
     # 
@@ -148,7 +144,6 @@ module Sun::Security::Jgss::Krb5
     end
     
     typesig { [] }
-    # 
     # Returns the init lifetime remaining.
     # 
     # @return the init lifetime remaining in seconds
@@ -160,7 +155,6 @@ module Sun::Security::Jgss::Krb5
     end
     
     typesig { [] }
-    # 
     # Returns the accept lifetime remaining.
     # 
     # @return the accept lifetime remaining in seconds
@@ -180,7 +174,6 @@ module Sun::Security::Jgss::Krb5
     end
     
     typesig { [] }
-    # 
     # Returns the oid representing the underlying credential
     # mechanism oid.
     # 
@@ -196,7 +189,6 @@ module Sun::Security::Jgss::Krb5
     end
     
     typesig { [] }
-    # 
     # Returns a sun.security.krb5.Credentials instance so that it maybe
     # used in that package for th Kerberos protocol.
     def get_krb5credentials
@@ -204,7 +196,6 @@ module Sun::Security::Jgss::Krb5
     end
     
     typesig { [] }
-    # 
     # XXX Call to this.refresh() should refresh the locally cached copy
     # of krb5Credentials also.
     # 
@@ -227,7 +218,6 @@ module Sun::Security::Jgss::Krb5
         realm = nil
         client_principal = nil
         tgs_principal = nil
-        # 
         # Find the TGT for the realm that the client is in. If the client
         # name is not available, then use the default realm.
         if (!(name).nil?)
@@ -266,9 +256,9 @@ module Sun::Security::Jgss::Krb5
             alias_method :initialize_anonymous, :initialize
           end.new_local(self))
         rescue PrivilegedActionException => e
-          ge_ = GSSException.new(GSSException::NO_CRED, -1, "Attempt to obtain new INITIATE credentials failed!" + " (" + (e_.get_message).to_s + ")")
-          ge_.init_cause(e_.get_exception)
-          raise ge_
+          ge = GSSException.new(GSSException::NO_CRED, -1, "Attempt to obtain new INITIATE credentials failed!" + " (" + (e.get_message).to_s + ")")
+          ge.init_cause(e.get_exception)
+          raise ge
         end
       end
     }

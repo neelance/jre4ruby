@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 1997-2007 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -34,7 +33,6 @@ module Sun::Security::Ssl
     }
   end
   
-  # 
   # Message used by clients to send their Diffie-Hellman public
   # keys to servers.
   # 
@@ -47,7 +45,6 @@ module Sun::Security::Ssl
       return self.attr_ht_client_key_exchange
     end
     
-    # 
     # This value may be empty if it was included in the
     # client's certificate ...
     attr_accessor :dh_yc
@@ -63,7 +60,6 @@ module Sun::Security::Ssl
     end
     
     typesig { [BigInteger] }
-    # 
     # Either pass the client's public key explicitly (because it's
     # using DHE or DH_anon), or implicitly (the public key was in the
     # certificate).
@@ -81,7 +77,6 @@ module Sun::Security::Ssl
     end
     
     typesig { [HandshakeInStream] }
-    # 
     # Get the client's public key either explicitly or implicitly.
     # (It's ugly to have an empty record be sent in the latter case,
     # but that's what the protocol spec requires.)

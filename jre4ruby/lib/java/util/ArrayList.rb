@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 1997-2007 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -31,7 +30,6 @@ module Java::Util
     }
   end
   
-  # 
   # Resizable-array implementation of the <tt>List</tt> interface.  Implements
   # all optional list operations, and permits all elements, including
   # <tt>null</tt>.  In addition to implementing the <tt>List</tt> interface,
@@ -115,7 +113,6 @@ module Java::Util
       const_attr_reader  :SerialVersionUID
     }
     
-    # 
     # The array buffer into which the elements of the ArrayList are stored.
     # The capacity of the ArrayList is the length of this array buffer.
     attr_accessor :element_data
@@ -124,7 +121,6 @@ module Java::Util
     alias_method :attr_element_data=, :element_data=
     undef_method :element_data=
     
-    # 
     # The size of the ArrayList (the number of elements it contains).
     # 
     # @serial
@@ -135,7 +131,6 @@ module Java::Util
     undef_method :size=
     
     typesig { [::Java::Int] }
-    # 
     # Constructs an empty list with the specified initial capacity.
     # 
     # @param   initialCapacity   the initial capacity of the list
@@ -152,14 +147,12 @@ module Java::Util
     end
     
     typesig { [] }
-    # 
     # Constructs an empty list with an initial capacity of ten.
     def initialize
       initialize__array_list(10)
     end
     
     typesig { [Collection] }
-    # 
     # Constructs a list containing the elements of the specified
     # collection, in the order they are returned by the collection's
     # iterator.
@@ -179,7 +172,6 @@ module Java::Util
     end
     
     typesig { [] }
-    # 
     # Trims the capacity of this <tt>ArrayList</tt> instance to be the
     # list's current size.  An application can use this operation to minimize
     # the storage of an <tt>ArrayList</tt> instance.
@@ -192,7 +184,6 @@ module Java::Util
     end
     
     typesig { [::Java::Int] }
-    # 
     # Increases the capacity of this <tt>ArrayList</tt> instance, if
     # necessary, to ensure that it can hold at least the number of elements
     # specified by the minimum capacity argument.
@@ -213,7 +204,6 @@ module Java::Util
     end
     
     typesig { [] }
-    # 
     # Returns the number of elements in this list.
     # 
     # @return the number of elements in this list
@@ -222,7 +212,6 @@ module Java::Util
     end
     
     typesig { [] }
-    # 
     # Returns <tt>true</tt> if this list contains no elements.
     # 
     # @return <tt>true</tt> if this list contains no elements
@@ -231,7 +220,6 @@ module Java::Util
     end
     
     typesig { [Object] }
-    # 
     # Returns <tt>true</tt> if this list contains the specified element.
     # More formally, returns <tt>true</tt> if and only if this list contains
     # at least one element <tt>e</tt> such that
@@ -244,7 +232,6 @@ module Java::Util
     end
     
     typesig { [Object] }
-    # 
     # Returns the index of the first occurrence of the specified element
     # in this list, or -1 if this list does not contain the element.
     # More formally, returns the lowest index <tt>i</tt> such that
@@ -260,19 +247,18 @@ module Java::Util
           ((i += 1) - 1)
         end
       else
-        i_ = 0
-        while i_ < @size
-          if ((o == @element_data[i_]))
-            return i_
+        i = 0
+        while i < @size
+          if ((o == @element_data[i]))
+            return i
           end
-          ((i_ += 1) - 1)
+          ((i += 1) - 1)
         end
       end
       return -1
     end
     
     typesig { [Object] }
-    # 
     # Returns the index of the last occurrence of the specified element
     # in this list, or -1 if this list does not contain the element.
     # More formally, returns the highest index <tt>i</tt> such that
@@ -288,19 +274,18 @@ module Java::Util
           ((i -= 1) + 1)
         end
       else
-        i_ = @size - 1
-        while i_ >= 0
-          if ((o == @element_data[i_]))
-            return i_
+        i = @size - 1
+        while i >= 0
+          if ((o == @element_data[i]))
+            return i
           end
-          ((i_ -= 1) + 1)
+          ((i -= 1) + 1)
         end
       end
       return -1
     end
     
     typesig { [] }
-    # 
     # Returns a shallow copy of this <tt>ArrayList</tt> instance.  (The
     # elements themselves are not copied.)
     # 
@@ -318,7 +303,6 @@ module Java::Util
     end
     
     typesig { [] }
-    # 
     # Returns an array containing all of the elements in this list
     # in proper sequence (from first to last element).
     # 
@@ -336,7 +320,6 @@ module Java::Util
     end
     
     typesig { [Array.typed(T)] }
-    # 
     # Returns an array containing all of the elements in this list in proper
     # sequence (from first to last element); the runtime type of the returned
     # array is that of the specified array.  If the list fits in the
@@ -378,7 +361,6 @@ module Java::Util
     end
     
     typesig { [::Java::Int] }
-    # 
     # Returns the element at the specified position in this list.
     # 
     # @param  index index of the element to return
@@ -390,7 +372,6 @@ module Java::Util
     end
     
     typesig { [::Java::Int, Object] }
-    # 
     # Replaces the element at the specified position in this list with
     # the specified element.
     # 
@@ -406,7 +387,6 @@ module Java::Util
     end
     
     typesig { [Object] }
-    # 
     # Appends the specified element to the end of this list.
     # 
     # @param e element to be appended to this list
@@ -418,7 +398,6 @@ module Java::Util
     end
     
     typesig { [::Java::Int, Object] }
-    # 
     # Inserts the specified element at the specified position in this
     # list. Shifts the element currently at that position (if any) and
     # any subsequent elements to the right (adds one to their indices).
@@ -435,7 +414,6 @@ module Java::Util
     end
     
     typesig { [::Java::Int] }
-    # 
     # Removes the element at the specified position in this list.
     # Shifts any subsequent elements to the left (subtracts one from their
     # indices).
@@ -456,7 +434,6 @@ module Java::Util
     end
     
     typesig { [Object] }
-    # 
     # Removes the first occurrence of the specified element from this list,
     # if it is present.  If the list does not contain the element, it is
     # unchanged.  More formally, removes the element with the lowest index
@@ -479,20 +456,19 @@ module Java::Util
           ((index += 1) - 1)
         end
       else
-        index_ = 0
-        while index_ < @size
-          if ((o == @element_data[index_]))
-            fast_remove(index_)
+        index = 0
+        while index < @size
+          if ((o == @element_data[index]))
+            fast_remove(index)
             return true
           end
-          ((index_ += 1) - 1)
+          ((index += 1) - 1)
         end
       end
       return false
     end
     
     typesig { [::Java::Int] }
-    # 
     # Private remove method that skips bounds checking and does not
     # return the value removed.
     def fast_remove(index)
@@ -505,7 +481,6 @@ module Java::Util
     end
     
     typesig { [] }
-    # 
     # Removes all of the elements from this list.  The list will
     # be empty after this call returns.
     def clear
@@ -520,7 +495,6 @@ module Java::Util
     end
     
     typesig { [Collection] }
-    # 
     # Appends all of the elements in the specified collection to the end of
     # this list, in the order that they are returned by the
     # specified collection's Iterator.  The behavior of this operation is
@@ -542,7 +516,6 @@ module Java::Util
     end
     
     typesig { [::Java::Int, Collection] }
-    # 
     # Inserts all of the elements in the specified collection into this
     # list, starting at the specified position.  Shifts the element
     # currently at that position (if any) and any subsequent elements to
@@ -571,7 +544,6 @@ module Java::Util
     end
     
     typesig { [::Java::Int, ::Java::Int] }
-    # 
     # Removes from this list all of the elements whose index is between
     # {@code fromIndex}, inclusive, and {@code toIndex}, exclusive.
     # Shifts any succeeding elements to the left (reduces their index).
@@ -596,7 +568,6 @@ module Java::Util
     end
     
     typesig { [::Java::Int] }
-    # 
     # Checks if the given index is in range.  If not, throws an appropriate
     # runtime exception.  This method does *not* check if the index is
     # negative: It is always used immediately prior to an array access,
@@ -608,7 +579,6 @@ module Java::Util
     end
     
     typesig { [::Java::Int] }
-    # 
     # A version of rangeCheck used by add and addAll.
     def range_check_for_add(index)
       if (index > @size || index < 0)
@@ -617,7 +587,6 @@ module Java::Util
     end
     
     typesig { [::Java::Int] }
-    # 
     # Constructs an IndexOutOfBoundsException detail message.
     # Of the many possible refactorings of the error handling code,
     # this "outlining" performs best with both server and client VMs.
@@ -626,7 +595,6 @@ module Java::Util
     end
     
     typesig { [Collection] }
-    # 
     # Removes from this list all of its elements that are contained in the
     # specified collection.
     # 
@@ -643,7 +611,6 @@ module Java::Util
     end
     
     typesig { [Collection] }
-    # 
     # Retains only the elements in this list that are contained in the
     # specified collection.  In other words, removes from this list all
     # of its elements that are not contained in the specified collection.
@@ -695,7 +662,6 @@ module Java::Util
     end
     
     typesig { [Java::Io::ObjectOutputStream] }
-    # 
     # Save the state of the <tt>ArrayList</tt> instance to a stream (that
     # is, serialize it).
     # 
@@ -720,7 +686,6 @@ module Java::Util
     end
     
     typesig { [Java::Io::ObjectInputStream] }
-    # 
     # Reconstitute the <tt>ArrayList</tt> instance from a stream (that is,
     # deserialize it).
     def read_object(s)
@@ -738,7 +703,6 @@ module Java::Util
     end
     
     typesig { [::Java::Int] }
-    # 
     # Returns a list iterator over the elements in this list (in proper
     # sequence), starting at the specified position in the list.
     # The specified index indicates the first element that would be
@@ -757,7 +721,6 @@ module Java::Util
     end
     
     typesig { [] }
-    # 
     # Returns a list iterator over the elements in this list (in proper
     # sequence).
     # 
@@ -769,7 +732,6 @@ module Java::Util
     end
     
     typesig { [] }
-    # 
     # Returns an iterator over the elements in this list in proper sequence.
     # 
     # <p>The returned iterator is <a href="#fail-fast"><i>fail-fast</i></a>.
@@ -780,7 +742,6 @@ module Java::Util
     end
     
     class_module.module_eval {
-      # 
       # An optimized version of AbstractList.Itr
       const_set_lazy(:Itr) { Class.new do
         extend LocalClass
@@ -861,7 +822,6 @@ module Java::Util
         alias_method :initialize__itr, :initialize
       end }
       
-      # 
       # An optimized version of AbstractList.ListItr
       const_set_lazy(:ListItr) { Class.new(Itr) do
         extend LocalClass
@@ -937,7 +897,6 @@ module Java::Util
     }
     
     typesig { [::Java::Int, ::Java::Int] }
-    # 
     # Returns a view of the portion of this list between the specified
     # {@code fromIndex}, inclusive, and {@code toIndex}, exclusive.  (If
     # {@code fromIndex} and {@code toIndex} are equal, the returned list is

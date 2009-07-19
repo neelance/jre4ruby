@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 1996-2007 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -39,7 +38,6 @@ module Sun::Security::Ssl
     }
   end
   
-  # 
   # This class provides a simple way for servers to support conventional
   # use of the Secure Sockets Layer (SSL).  Application code uses an
   # SSLServerSocketImpl exactly like it uses a regular TCP ServerSocket; the
@@ -112,7 +110,6 @@ module Sun::Security::Ssl
     undef_method :checked_enabled=
     
     typesig { [::Java::Int, ::Java::Int, SSLContextImpl] }
-    # 
     # Create an SSL server socket on a port, using a non-default
     # authentication context and a specified connection backlog.
     # 
@@ -139,7 +136,6 @@ module Sun::Security::Ssl
     end
     
     typesig { [::Java::Int, ::Java::Int, InetAddress, SSLContextImpl] }
-    # 
     # Create an SSL server socket on a port, using a specified
     # authentication context and a specified backlog of connections
     # as well as a particular specified network interface.  This
@@ -172,7 +168,6 @@ module Sun::Security::Ssl
     end
     
     typesig { [SSLContextImpl] }
-    # 
     # Creates an unbound server socket.
     def initialize(context)
       @ssl_context = nil
@@ -193,7 +188,6 @@ module Sun::Security::Ssl
     end
     
     typesig { [SSLContextImpl] }
-    # 
     # Initializes the server socket.
     def init_server(context)
       if ((context).nil?)
@@ -205,7 +199,6 @@ module Sun::Security::Ssl
     end
     
     typesig { [] }
-    # 
     # Returns the names of the cipher suites which could be enabled for use
     # on an SSL connection.  Normally, only a subset of these will actually
     # be enabled by default, since this list may include cipher suites which
@@ -220,7 +213,6 @@ module Sun::Security::Ssl
     end
     
     typesig { [] }
-    # 
     # Returns the list of cipher suites which are currently enabled
     # for use by newly accepted connections.  A null return indicates
     # that the system defaults are in effect.
@@ -231,7 +223,6 @@ module Sun::Security::Ssl
     end
     
     typesig { [Array.typed(String)] }
-    # 
     # Controls which particular SSL cipher suites are enabled for use
     # by accepted connections.
     # 
@@ -250,7 +241,6 @@ module Sun::Security::Ssl
     end
     
     typesig { [Array.typed(String)] }
-    # 
     # Controls which protocols are enabled for use.
     # The protocols must have been listed by
     # getSupportedProtocols() as being supported.
@@ -272,7 +262,6 @@ module Sun::Security::Ssl
     end
     
     typesig { [::Java::Boolean] }
-    # 
     # Controls whether the connections which are accepted must include
     # client authentication.
     def set_need_client_auth(flag)
@@ -285,7 +274,6 @@ module Sun::Security::Ssl
     end
     
     typesig { [::Java::Boolean] }
-    # 
     # Controls whether the connections which are accepted should request
     # client authentication.
     def set_want_client_auth(flag)
@@ -298,7 +286,6 @@ module Sun::Security::Ssl
     end
     
     typesig { [::Java::Boolean] }
-    # 
     # Makes the returned sockets act in SSL "client" mode, not the usual
     # server mode.  The canonical example of why this is needed is for
     # FTP clients, which accept connections from servers and should be
@@ -313,7 +300,6 @@ module Sun::Security::Ssl
     end
     
     typesig { [::Java::Boolean] }
-    # 
     # Controls whether new connections may cause creation of new SSL
     # sessions.
     def set_enable_session_creation(flag)
@@ -321,7 +307,6 @@ module Sun::Security::Ssl
     end
     
     typesig { [] }
-    # 
     # Returns true if new connections may cause creation of new SSL
     # sessions.
     def get_enable_session_creation
@@ -329,7 +314,6 @@ module Sun::Security::Ssl
     end
     
     typesig { [] }
-    # 
     # Accept a new SSL connection.  This server identifies itself with
     # information provided in the authentication context which was
     # presented during construction.
@@ -342,12 +326,10 @@ module Sun::Security::Ssl
     end
     
     typesig { [] }
-    # 
     # This is a sometimes helpful diagnostic check that is performed
     # once for each ServerSocket to verify that the initial set of
     # enabled suites are capable of supporting a successful handshake.
     def check_enabled_suites
-      # 
       # We want to report an error if no cipher suites were actually
       # enabled, since this is an error users are known to make.  Then
       # they get vastly confused by having clients report an error!
@@ -372,7 +354,6 @@ module Sun::Security::Ssl
         ensure
           tmp.close_socket
         end
-        # 
         # diagnostic text here is currently appropriate
         # since it's only certificate unavailability that can
         # cause such problems ... but that might change someday.
@@ -381,7 +362,6 @@ module Sun::Security::Ssl
     end
     
     typesig { [] }
-    # 
     # Provides a brief description of this SSL socket.
     def to_s
       return "[SSL: " + (super).to_s + "]"

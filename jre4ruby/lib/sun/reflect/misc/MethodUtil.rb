@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 2005-2006 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -70,7 +69,6 @@ module Sun::Reflect::Misc
     alias_method :initialize__trampoline, :initialize
   end
   
-  # 
   # Create a trampoline class.
   class MethodUtil < MethodUtilImports.const_get :SecureClassLoader
     include_class_members MethodUtilImports
@@ -129,7 +127,6 @@ module Sun::Reflect::Misc
       end
       
       typesig { [Class] }
-      # 
       # Discover the public methods on public classes
       # and interfaces accessible to any caller by calling
       # Class.getMethods() and walking towards Object until
@@ -153,7 +150,6 @@ module Sun::Reflect::Misc
       end
       
       typesig { [Class, Map] }
-      # 
       # Process the immediate interfaces of this class or interface.
       def get_interface_methods(cls, sigs)
         intfs = cls.get_interfaces
@@ -169,13 +165,10 @@ module Sun::Reflect::Misc
       end
       
       typesig { [Class, Map] }
-      # 
-      # 
       # Process the methods in this class or interface
       def get_internal_public_methods(cls, sigs)
         methods = nil
         begin
-          # 
           # This class or interface is non-public so we
           # can't use any of it's methods. Go back and
           # try again with a superclass or superinterface.
@@ -189,7 +182,6 @@ module Sun::Reflect::Misc
         rescue SecurityException => se
           return false
         end
-        # 
         # Check for inherited methods with non-public
         # declaring classes. They might override and hide
         # methods from their superclasses or
@@ -205,7 +197,6 @@ module Sun::Reflect::Misc
           ((i += 1) - 1)
         end
         if (done)
-          # 
           # We're done. Spray all the methods into
           # the list and then we're out of here.
           i_ = 0
@@ -214,16 +205,15 @@ module Sun::Reflect::Misc
             ((i_ += 1) - 1)
           end
         else
-          # 
           # Simulate cls.getDeclaredMethods() by
           # stripping away inherited methods.
-          i__ = 0
-          while i__ < methods.attr_length
-            dc_ = methods[i__].get_declaring_class
-            if ((cls == dc_))
-              add_method(sigs, methods[i__])
+          i_ = 0
+          while i_ < methods.attr_length
+            dc = methods[i_].get_declaring_class
+            if ((cls == dc))
+              add_method(sigs, methods[i_])
             end
-            ((i__ += 1) - 1)
+            ((i_ += 1) - 1)
           end
         end
         return done
@@ -236,7 +226,6 @@ module Sun::Reflect::Misc
           sigs.put(signature, method)
         else
           if (!method.get_declaring_class.is_interface)
-            # 
             # Superclasses beat interfaces.
             old = sigs.get(signature)
             if (old.get_declaring_class.is_interface)
@@ -246,7 +235,6 @@ module Sun::Reflect::Misc
         end
       end
       
-      # 
       # A class that represents the unique elements of a method that will be a
       # key in the method cache.
       const_set_lazy(:Signature) { Class.new do
@@ -302,7 +290,6 @@ module Sun::Reflect::Misc
         end
         
         typesig { [] }
-        # 
         # Hash code computed using algorithm suggested in
         # Effective Java, Item 8.
         def hash_code
@@ -326,7 +313,6 @@ module Sun::Reflect::Misc
       end }
       
       typesig { [Method, Object, Array.typed(Object)] }
-      # 
       # Bounce through the trampoline.
       def invoke(m, obj, params)
         if ((m.get_declaring_class == AccessController.class) || (m.get_declaring_class == Method.class))
@@ -436,7 +422,6 @@ module Sun::Reflect::Misc
     end
     
     typesig { [String, URL] }
-    # 
     # Define the proxy classes
     def define_class(name, url)
       b = get_bytes(url)
@@ -449,7 +434,6 @@ module Sun::Reflect::Misc
     
     class_module.module_eval {
       typesig { [URL] }
-      # 
       # Returns the contents of the specified URL as an array of bytes.
       def get_bytes(url)
         uc = url.open_connection
@@ -487,9 +471,9 @@ module Sun::Reflect::Misc
             end
             # Trim array to correct size, if necessary
             if (!(total).equal?(b.attr_length))
-              tmp_ = Array.typed(::Java::Byte).new(total) { 0 }
-              System.arraycopy(b, 0, tmp_, 0, total)
-              b = tmp_
+              tmp = Array.typed(::Java::Byte).new(total) { 0 }
+              System.arraycopy(b, 0, tmp, 0, total)
+              b = tmp
             end
           end
         ensure

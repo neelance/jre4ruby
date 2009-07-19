@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 1998-2006 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -31,7 +30,6 @@ module Sun::Misc
     }
   end
   
-  # 
   # This is the signal handler interface expected in <code>Signal.handle</code>.
   # 
   # @author   Sheng Liang
@@ -42,19 +40,16 @@ module Sun::Misc
     include_class_members SignalHandlerImports
     
     class_module.module_eval {
-      # 
       # The default signal handler
       const_set_lazy(:SIG_DFL) { NativeSignalHandler.new(0) }
       const_attr_reader  :SIG_DFL
       
-      # 
       # Ignore the signal
       const_set_lazy(:SIG_IGN) { NativeSignalHandler.new(1) }
       const_attr_reader  :SIG_IGN
     }
     
     typesig { [Signal] }
-    # 
     # Handle the given signal
     # 
     # @param sig a signal object

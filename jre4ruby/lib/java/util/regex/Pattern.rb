@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 1999-2007 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -38,7 +37,6 @@ module Java::Util::Regex
     }
   end
   
-  # 
   # A compiled representation of a regular expression.
   # 
   # <p> A regular expression, specified as a string, must first be compiled into
@@ -621,7 +619,6 @@ module Java::Util::Regex
     include Java::Io::Serializable
     
     class_module.module_eval {
-      # 
       # Regular expression modifier values.  Instead of being passed as
       # arguments, they can also be passed as inline modifiers.
       # For example, the following statements have the same effect.
@@ -644,7 +641,6 @@ module Java::Util::Regex
       const_set_lazy(:UNIX_LINES) { 0x1 }
       const_attr_reader  :UNIX_LINES
       
-      # 
       # Enables case-insensitive matching.
       # 
       # <p> By default, case-insensitive matching assumes that only characters
@@ -659,7 +655,6 @@ module Java::Util::Regex
       const_set_lazy(:CASE_INSENSITIVE) { 0x2 }
       const_attr_reader  :CASE_INSENSITIVE
       
-      # 
       # Permits whitespace and comments in pattern.
       # 
       # <p> In this mode, whitespace is ignored, and embedded comments starting
@@ -670,7 +665,6 @@ module Java::Util::Regex
       const_set_lazy(:COMMENTS) { 0x4 }
       const_attr_reader  :COMMENTS
       
-      # 
       # Enables multiline mode.
       # 
       # <p> In multiline mode the expressions <tt>^</tt> and <tt>$</tt> match
@@ -683,7 +677,6 @@ module Java::Util::Regex
       const_set_lazy(:MULTILINE) { 0x8 }
       const_attr_reader  :MULTILINE
       
-      # 
       # Enables literal parsing of the pattern.
       # 
       # <p> When this flag is specified then the input string that specifies
@@ -700,7 +693,6 @@ module Java::Util::Regex
       const_set_lazy(:LITERAL) { 0x10 }
       const_attr_reader  :LITERAL
       
-      # 
       # Enables dotall mode.
       # 
       # <p> In dotall mode, the expression <tt>.</tt> matches any character,
@@ -713,7 +705,6 @@ module Java::Util::Regex
       const_set_lazy(:DOTALL) { 0x20 }
       const_attr_reader  :DOTALL
       
-      # 
       # Enables Unicode-aware case folding.
       # 
       # <p> When this flag is specified then case-insensitive matching, when
@@ -729,7 +720,6 @@ module Java::Util::Regex
       const_set_lazy(:UNICODE_CASE) { 0x40 }
       const_attr_reader  :UNICODE_CASE
       
-      # 
       # Enables canonical equivalence.
       # 
       # <p> When this flag is specified then two characters will be considered
@@ -754,7 +744,6 @@ module Java::Util::Regex
       const_attr_reader  :SerialVersionUID
     }
     
-    # 
     # The original regular-expression pattern string.
     # 
     # @serial
@@ -764,7 +753,6 @@ module Java::Util::Regex
     alias_method :attr_pattern=, :pattern=
     undef_method :pattern=
     
-    # 
     # The original pattern flags.
     # 
     # @serial
@@ -774,7 +762,6 @@ module Java::Util::Regex
     alias_method :attr_flags=, :flags=
     undef_method :flags=
     
-    # 
     # Boolean indicating this Pattern is compiled; this is necessary in order
     # to lazily compile deserialized Patterns.
     attr_accessor :compiled
@@ -783,7 +770,6 @@ module Java::Util::Regex
     alias_method :attr_compiled=, :compiled=
     undef_method :compiled=
     
-    # 
     # The normalized pattern string.
     attr_accessor :normalized_pattern
     alias_method :attr_normalized_pattern, :normalized_pattern
@@ -791,7 +777,6 @@ module Java::Util::Regex
     alias_method :attr_normalized_pattern=, :normalized_pattern=
     undef_method :normalized_pattern=
     
-    # 
     # The starting point of state machine for the find operation.  This allows
     # a match to start anywhere in the input.
     attr_accessor :root
@@ -800,7 +785,6 @@ module Java::Util::Regex
     alias_method :attr_root=, :root=
     undef_method :root=
     
-    # 
     # The root of object tree for a match operation.  The pattern is matched
     # at the beginning.  This may include a find that uses BnM or a First
     # node.
@@ -810,7 +794,6 @@ module Java::Util::Regex
     alias_method :attr_match_root=, :match_root=
     undef_method :match_root=
     
-    # 
     # Temporary storage used by parsing pattern slice.
     attr_accessor :buffer
     alias_method :attr_buffer, :buffer
@@ -818,7 +801,6 @@ module Java::Util::Regex
     alias_method :attr_buffer=, :buffer=
     undef_method :buffer=
     
-    # 
     # Temporary storage used while parsing group references.
     attr_accessor :group_nodes
     alias_method :attr_group_nodes, :group_nodes
@@ -826,7 +808,6 @@ module Java::Util::Regex
     alias_method :attr_group_nodes=, :group_nodes=
     undef_method :group_nodes=
     
-    # 
     # Temporary null terminated code point array used by pattern compiling.
     attr_accessor :temp
     alias_method :attr_temp, :temp
@@ -834,7 +815,6 @@ module Java::Util::Regex
     alias_method :attr_temp=, :temp=
     undef_method :temp=
     
-    # 
     # The number of capturing groups in this Pattern. Used by matchers to
     # allocate storage needed to perform a match.
     attr_accessor :capturing_group_count
@@ -843,7 +823,6 @@ module Java::Util::Regex
     alias_method :attr_capturing_group_count=, :capturing_group_count=
     undef_method :capturing_group_count=
     
-    # 
     # The local variable count used by parsing tree. Used by matchers to
     # allocate storage needed to perform a match.
     attr_accessor :local_count
@@ -852,7 +831,6 @@ module Java::Util::Regex
     alias_method :attr_local_count=, :local_count=
     undef_method :local_count=
     
-    # 
     # Index into the pattern string that keeps track of how much has been
     # parsed.
     attr_accessor :cursor
@@ -861,7 +839,6 @@ module Java::Util::Regex
     alias_method :attr_cursor=, :cursor=
     undef_method :cursor=
     
-    # 
     # Holds the length of the pattern string.
     attr_accessor :pattern_length
     alias_method :attr_pattern_length, :pattern_length
@@ -871,7 +848,6 @@ module Java::Util::Regex
     
     class_module.module_eval {
       typesig { [String] }
-      # 
       # Compiles the given regular expression into a pattern.  </p>
       # 
       # @param  regex
@@ -884,7 +860,6 @@ module Java::Util::Regex
       end
       
       typesig { [String, ::Java::Int] }
-      # 
       # Compiles the given regular expression into a pattern with the given
       # flags.  </p>
       # 
@@ -909,7 +884,6 @@ module Java::Util::Regex
     }
     
     typesig { [] }
-    # 
     # Returns the regular expression from which this pattern was compiled.
     # </p>
     # 
@@ -919,7 +893,6 @@ module Java::Util::Regex
     end
     
     typesig { [] }
-    # 
     # <p>Returns the string representation of this pattern. This
     # is the regular expression from which this pattern was
     # compiled.</p>
@@ -931,7 +904,6 @@ module Java::Util::Regex
     end
     
     typesig { [CharSequence] }
-    # 
     # Creates a matcher that will match the given input against this pattern.
     # </p>
     # 
@@ -952,7 +924,6 @@ module Java::Util::Regex
     end
     
     typesig { [] }
-    # 
     # Returns this pattern's match flags.  </p>
     # 
     # @return  The match flags specified when this pattern was compiled
@@ -962,7 +933,6 @@ module Java::Util::Regex
     
     class_module.module_eval {
       typesig { [String, CharSequence] }
-      # 
       # Compiles the given regular expression and attempts to match the given
       # input against it.
       # 
@@ -995,7 +965,6 @@ module Java::Util::Regex
     }
     
     typesig { [CharSequence, ::Java::Int] }
-    # 
     # Splits the given input sequence around matches of this pattern.
     # 
     # <p> The array returned by this method contains each substring of the
@@ -1068,8 +1037,8 @@ module Java::Util::Regex
         else
           if ((match_list.size).equal?(limit - 1))
             # last one
-            match_ = input.sub_sequence(index, input.length).to_s
-            match_list.add(match_)
+            match = input.sub_sequence(index, input.length).to_s
+            match_list.add(match)
             index = m.end
           end
         end
@@ -1094,7 +1063,6 @@ module Java::Util::Regex
     end
     
     typesig { [CharSequence] }
-    # 
     # Splits the given input sequence around matches of this pattern.
     # 
     # <p> This method works as if by invoking the two-argument {@link
@@ -1127,7 +1095,6 @@ module Java::Util::Regex
     
     class_module.module_eval {
       typesig { [String] }
-      # 
       # Returns a literal pattern <code>String</code> for the specified
       # <code>String</code>.
       # 
@@ -1161,7 +1128,6 @@ module Java::Util::Regex
     }
     
     typesig { [Java::Io::ObjectInputStream] }
-    # 
     # Recompile the Pattern instance from a stream.  The original pattern
     # string is read in and the object tree is recompiled from it.
     def read_object(s)
@@ -1180,7 +1146,6 @@ module Java::Util::Regex
     end
     
     typesig { [String, ::Java::Int] }
-    # 
     # This private constructor is used to create all Patterns. The pattern
     # string and match flags are all that is needed to completely describe
     # a Pattern. An empty pattern string results in an object tree with
@@ -1213,7 +1178,6 @@ module Java::Util::Regex
     end
     
     typesig { [] }
-    # 
     # The pattern is converted to normalizedD form and then a pure group
     # is constructed to match canonical equivalences of the characters.
     def normalize
@@ -1257,7 +1221,6 @@ module Java::Util::Regex
     end
     
     typesig { [StringBuilder, ::Java::Int] }
-    # 
     # Complete the character class being parsed and add a set
     # of alternations to it that will match the canonical equivalences
     # of the characters within the class.
@@ -1313,7 +1276,6 @@ module Java::Util::Regex
     end
     
     typesig { [String] }
-    # 
     # Given a specific sequence composed of a regular character and
     # combining marks that follow it, produce the alternation that will
     # match all canonical equivalences of that sequence.
@@ -1344,7 +1306,6 @@ module Java::Util::Regex
     end
     
     typesig { [String] }
-    # 
     # Returns an array of strings that have all the possible
     # permutations of the characters in the input string.
     # This is used to get a list of all possible orderings
@@ -1405,8 +1366,8 @@ module Java::Util::Regex
             end
             ((y -= 1) + 1)
           end
-          sb_ = StringBuilder.new(input)
-          other_chars = sb_.delete(offset, offset + len).to_s
+          sb = StringBuilder.new(input)
+          other_chars = sb.delete(offset, offset + len).to_s
           sub_result = produce_permutations(other_chars)
           prefix = input.substring(offset, offset + len)
           y_ = 0
@@ -1414,17 +1375,17 @@ module Java::Util::Regex
             temp[((index += 1) - 1)] = prefix + (sub_result[y_]).to_s
             ((y_ += 1) - 1)
           end
-        end == :thrown or break
+        end
         ((x__ += 1) - 1)
         offset += len
       end
-      result_ = Array.typed(String).new(index) { nil }
+      result = Array.typed(String).new(index) { nil }
       x___ = 0
       while x___ < index
-        result_[x___] = temp[x___]
+        result[x___] = temp[x___]
         ((x___ += 1) - 1)
       end
-      return result_
+      return result
     end
     
     typesig { [::Java::Int] }
@@ -1433,7 +1394,6 @@ module Java::Util::Regex
     end
     
     typesig { [String] }
-    # 
     # Attempts to compose input by combining the first character
     # with the first combining mark following it. Returns a String
     # that is the composition of the leading character with its first
@@ -1452,7 +1412,6 @@ module Java::Util::Regex
     end
     
     typesig { [] }
-    # 
     # Preprocess any \Q...\E sequences in `temp', meta-quoting them.
     # See the description of `quotemeta' in perlfunc(1).
     def _remove_qequoting
@@ -1516,7 +1475,6 @@ module Java::Util::Regex
     end
     
     typesig { [] }
-    # 
     # Copies regular expression to an int array and invokes the parsing
     # of the expression which will create the object tree.
     def compile
@@ -1589,7 +1547,6 @@ module Java::Util::Regex
     
     class_module.module_eval {
       typesig { [Node] }
-      # 
       # Used to print out a subtree of the Pattern to help with debugging.
       def print_object_tree(node)
         while (!(node).nil?)
@@ -1635,7 +1592,6 @@ module Java::Util::Regex
         end
       end
       
-      # 
       # Used to accumulate information about a subtree of the object graph
       # so that optimizations can be applied to the subtree.
       const_set_lazy(:TreeInfo) { Class.new do
@@ -1688,7 +1644,6 @@ module Java::Util::Regex
     }
     
     typesig { [::Java::Int] }
-    # 
     # The following private methods are mainly used to improve the
     # readability of the code. In order to let the Java compiler easily
     # inline them, we should not put many assertions or error checks in them.
@@ -1700,7 +1655,6 @@ module Java::Util::Regex
     end
     
     typesig { [::Java::Int, String] }
-    # 
     # Match next character, signal error if failed.
     def accept(ch, s)
       test_char = @temp[((@cursor += 1) - 1)]
@@ -1713,14 +1667,12 @@ module Java::Util::Regex
     end
     
     typesig { [::Java::Int] }
-    # 
     # Mark the end of pattern with a specific character.
     def mark(c)
       @temp[@pattern_length] = c
     end
     
     typesig { [] }
-    # 
     # Peek the next character, and do not advance the cursor.
     def peek
       ch = @temp[@cursor]
@@ -1731,7 +1683,6 @@ module Java::Util::Regex
     end
     
     typesig { [] }
-    # 
     # Read the next character, and advance the cursor by one.
     def read
       ch = @temp[((@cursor += 1) - 1)]
@@ -1742,7 +1693,6 @@ module Java::Util::Regex
     end
     
     typesig { [] }
-    # 
     # Read the next character, and advance the cursor by one,
     # ignoring the COMMENTS setting
     def read_escaped
@@ -1751,7 +1701,6 @@ module Java::Util::Regex
     end
     
     typesig { [] }
-    # 
     # Advance the cursor by one, and peek the next character.
     def next
       ch = @temp[(@cursor += 1)]
@@ -1762,7 +1711,6 @@ module Java::Util::Regex
     end
     
     typesig { [] }
-    # 
     # Advance the cursor by one, and peek the next character,
     # ignoring the COMMENTS setting
     def next_escaped
@@ -1771,7 +1719,6 @@ module Java::Util::Regex
     end
     
     typesig { [::Java::Int] }
-    # 
     # If in xmode peek past whitespace and comments.
     def peek_past_whitespace(ch)
       while (ASCII.is_space(ch) || (ch).equal?(Character.new(?#.ord)))
@@ -1786,7 +1733,6 @@ module Java::Util::Regex
     end
     
     typesig { [::Java::Int] }
-    # 
     # If in xmode parse past whitespace and comments.
     def parse_past_whitespace(ch)
       while (ASCII.is_space(ch) || (ch).equal?(Character.new(?#.ord)))
@@ -1801,7 +1747,6 @@ module Java::Util::Regex
     end
     
     typesig { [] }
-    # 
     # xmode parse past comment to end of line.
     def parse_past_line
       ch = @temp[((@cursor += 1) - 1)]
@@ -1812,7 +1757,6 @@ module Java::Util::Regex
     end
     
     typesig { [] }
-    # 
     # xmode peek past comment to end of line.
     def peek_past_line
       ch = @temp[(@cursor += 1)]
@@ -1823,7 +1767,6 @@ module Java::Util::Regex
     end
     
     typesig { [::Java::Int] }
-    # 
     # Determines if character is a line separator in the current mode
     def is_line_separator(ch)
       if (has(UNIX_LINES))
@@ -1834,7 +1777,6 @@ module Java::Util::Regex
     end
     
     typesig { [] }
-    # 
     # Read the character after the next one, and advance the cursor by two.
     def skip
       i = @cursor
@@ -1844,14 +1786,12 @@ module Java::Util::Regex
     end
     
     typesig { [] }
-    # 
     # Unread one next character, and retreat cursor by one.
     def unread
       ((@cursor -= 1) + 1)
     end
     
     typesig { [String] }
-    # 
     # Internal method used for handling all syntax errors. The pattern is
     # displayed with a pointer to aid in locating the syntax error.
     def error(s)
@@ -1859,7 +1799,6 @@ module Java::Util::Regex
     end
     
     typesig { [::Java::Int, ::Java::Int] }
-    # 
     # Determines if there is any supplementary character or unpaired
     # surrogate in the specified range.
     def find_supplementary(start_, end_)
@@ -1875,7 +1814,6 @@ module Java::Util::Regex
     
     class_module.module_eval {
       typesig { [::Java::Int] }
-      # 
       # Determines if the specified code point is a supplementary
       # character or unpaired surrogate.
       def is_supplementary(ch)
@@ -1884,7 +1822,6 @@ module Java::Util::Regex
     }
     
     typesig { [Node] }
-    # 
     # The following methods handle the main parsing. They are sorted
     # according to their precedence order, the lowest one first.
     # 
@@ -1938,102 +1875,102 @@ module Java::Util::Regex
     end
     
     typesig { [Node] }
-    # 
     # Parsing of sequences between alternations.
     def sequence(end_)
       head = nil
       tail = nil
       node = nil
-      loop do
-        ch = peek
-        case (ch)
-        # Now interpreting dangling ] and } as literals
-        # Fall through
-        when Character.new(?(.ord)
-          # Because group handles its own closure,
-          # we need to treat it differently
-          node = group0
-          # Check for comment or flag group
-          if ((node).nil?)
-            next
-          end
-          if ((head).nil?)
-            head = node
-          else
-            tail.attr_next = node
-          end
-          # Double return: Tail was returned in root
-          tail = @root
-          next
-          node = clazz(true)
-        when Character.new(?[.ord)
-          node = clazz(true)
-        when Character.new(?\\.ord)
-          ch = next_escaped
-          if ((ch).equal?(Character.new(?p.ord)) || (ch).equal?(Character.new(?P.ord)))
-            one_letter = true
-            comp = ((ch).equal?(Character.new(?P.ord)))
-            ch = next # Consume { if present
-            if (!(ch).equal?(Character.new(?{.ord)))
-              unread
-            else
-              one_letter = false
+      catch(:break_loop) do
+        loop do
+          ch = peek
+          case (ch)
+          # Now interpreting dangling ] and } as literals
+          # Fall through
+          when Character.new(?(.ord)
+            # Because group handles its own closure,
+            # we need to treat it differently
+            node = group0
+            # Check for comment or flag group
+            if ((node).nil?)
+              next
             end
-            node = family(one_letter).maybe_complement(comp)
+            if ((head).nil?)
+              head = node
+            else
+              tail.attr_next = node
+            end
+            # Double return: Tail was returned in root
+            tail = @root
+            next
+            node = clazz(true)
+          when Character.new(?[.ord)
+            node = clazz(true)
+          when Character.new(?\\.ord)
+            ch = next_escaped
+            if ((ch).equal?(Character.new(?p.ord)) || (ch).equal?(Character.new(?P.ord)))
+              one_letter = true
+              comp = ((ch).equal?(Character.new(?P.ord)))
+              ch = next # Consume { if present
+              if (!(ch).equal?(Character.new(?{.ord)))
+                unread
+              else
+                one_letter = false
+              end
+              node = family(one_letter).maybe_complement(comp)
+            else
+              unread
+              node = atom
+            end
+          when Character.new(?^.ord)
+            next
+            if (has(MULTILINE))
+              if (has(UNIX_LINES))
+                node = UnixCaret.new
+              else
+                node = Caret.new
+              end
+            else
+              node = Begin.new
+            end
+          when Character.new(?$.ord)
+            next
+            if (has(UNIX_LINES))
+              node = UnixDollar.new(has(MULTILINE))
+            else
+              node = Dollar.new(has(MULTILINE))
+            end
+          when Character.new(?..ord)
+            next
+            if (has(DOTALL))
+              node = All.new
+            else
+              if (has(UNIX_LINES))
+                node = UnixDot.new
+              else
+                node = Dot.new
+              end
+            end
+          when Character.new(?|.ord), Character.new(?).ord)
+            throw :break_loop, :thrown
+          when Character.new(?].ord), Character.new(?}.ord)
+            node = atom
+          when Character.new(??.ord), Character.new(?*.ord), Character.new(?+.ord)
+            next
+            raise error("Dangling meta character '" + ((RJava.cast_to_char(ch))).to_s + "'")
+          when 0
+            if (@cursor >= @pattern_length)
+              throw :break_loop, :thrown
+            end
           else
-            unread
             node = atom
           end
-        when Character.new(?^.ord)
-          next
-          if (has(MULTILINE))
-            if (has(UNIX_LINES))
-              node = UnixCaret.new
-            else
-              node = Caret.new
-            end
+          node = closure(node)
+          if ((head).nil?)
+            head = tail = node
           else
-            node = Begin.new
+            tail.attr_next = node
+            tail = node
           end
-        when Character.new(?$.ord)
-          next
-          if (has(UNIX_LINES))
-            node = UnixDollar.new(has(MULTILINE))
-          else
-            node = Dollar.new(has(MULTILINE))
-          end
-        when Character.new(?..ord)
-          next
-          if (has(DOTALL))
-            node = All.new
-          else
-            if (has(UNIX_LINES))
-              node = UnixDot.new
-            else
-              node = Dot.new
-            end
-          end
-        when Character.new(?|.ord), Character.new(?).ord)
-          break
-        when Character.new(?].ord), Character.new(?}.ord)
-          node = atom
-        when Character.new(??.ord), Character.new(?*.ord), Character.new(?+.ord)
-          next
-          raise error("Dangling meta character '" + ((RJava.cast_to_char(ch))).to_s + "'")
-        when 0
-          if (@cursor >= @pattern_length)
-            break
-          end
-          node = atom
-        else
-          node = atom
-        end
-        node = closure(node)
-        if ((head).nil?)
-          head = tail = node
-        else
-          tail.attr_next = node
-          tail = node
         end
       end
       if ((head).nil?)
@@ -2045,7 +1982,6 @@ module Java::Util::Regex
     end
     
     typesig { [] }
-    # 
     # Parse and add a new Single or Slice.
     def atom
       first = 0
@@ -2103,16 +2039,7 @@ module Java::Util::Regex
             @cursor = prev
           when 0
             if (@cursor >= @pattern_length)
-              throw :break_case, :thrown
             end
-            prev = @cursor
-            append(ch, first)
-            ((first += 1) - 1)
-            if (is_supplementary(ch))
-              has_supplementary = true
-            end
-            ch = next
-            next
           else
             prev = @cursor
             append(ch, first)
@@ -2144,7 +2071,6 @@ module Java::Util::Regex
     end
     
     typesig { [::Java::Int] }
-    # 
     # Parses a backref greedily, taking as many numbers as it
     # can. The first digit is always treated as a backref, but
     # multi digit numbers are only treated as a backref if at
@@ -2178,7 +2104,6 @@ module Java::Util::Regex
     end
     
     typesig { [::Java::Boolean, ::Java::Boolean] }
-    # 
     # Parses an escape sequence to determine the actual value that needs
     # to be matched.
     # If -1 is returned and create was true a new object was added to the tree
@@ -2317,7 +2242,6 @@ module Java::Util::Regex
     end
     
     typesig { [::Java::Boolean] }
-    # 
     # Parse a character class, and return the node that matches it.
     # 
     # Consumes a ] on the way out if consume is true. Usually consume
@@ -2410,29 +2334,29 @@ module Java::Util::Regex
             ch = next
             if ((ch).equal?(Character.new(?&.ord)))
               ch = next
-              right_node_ = nil
+              right_node = nil
               while (!(ch).equal?(Character.new(?].ord)) && !(ch).equal?(Character.new(?&.ord)))
                 if ((ch).equal?(Character.new(?[.ord)))
-                  if ((right_node_).nil?)
-                    right_node_ = clazz(true)
+                  if ((right_node).nil?)
+                    right_node = clazz(true)
                   else
-                    right_node_ = union(right_node_, clazz(true))
+                    right_node = union(right_node, clazz(true))
                   end
                 else
                   # abc&&def
                   unread
-                  right_node_ = clazz(false)
+                  right_node = clazz(false)
                 end
                 ch = peek
               end
-              if (!(right_node_).nil?)
-                node = right_node_
+              if (!(right_node).nil?)
+                node = right_node
               end
               if ((prev).nil?)
-                if ((right_node_).nil?)
+                if ((right_node).nil?)
                   raise error("Bad class syntax")
                 else
-                  prev = right_node_
+                  prev = right_node
                 end
               else
                 prev = intersection(prev, node)
@@ -2452,29 +2376,29 @@ module Java::Util::Regex
             ch = next
             if ((ch).equal?(Character.new(?&.ord)))
               ch = next
-              right_node__ = nil
+              right_node = nil
               while (!(ch).equal?(Character.new(?].ord)) && !(ch).equal?(Character.new(?&.ord)))
                 if ((ch).equal?(Character.new(?[.ord)))
-                  if ((right_node__).nil?)
-                    right_node__ = clazz(true)
+                  if ((right_node).nil?)
+                    right_node = clazz(true)
                   else
-                    right_node__ = union(right_node__, clazz(true))
+                    right_node = union(right_node, clazz(true))
                   end
                 else
                   # abc&&def
                   unread
-                  right_node__ = clazz(false)
+                  right_node = clazz(false)
                 end
                 ch = peek
               end
-              if (!(right_node__).nil?)
-                node = right_node__
+              if (!(right_node).nil?)
+                node = right_node
               end
               if ((prev).nil?)
-                if ((right_node__).nil?)
+                if ((right_node).nil?)
                   raise error("Bad class syntax")
                 else
-                  prev = right_node__
+                  prev = right_node
                 end
               else
                 prev = intersection(prev, node)
@@ -2558,7 +2482,6 @@ module Java::Util::Regex
     end
     
     typesig { [BitClass] }
-    # 
     # Parse a single character or a character range in a character class
     # and return its representative node.
     def range(bits)
@@ -2625,7 +2548,6 @@ module Java::Util::Regex
     end
     
     typesig { [::Java::Boolean] }
-    # 
     # Parses a Unicode character family and returns its representative node.
     def family(single_letter)
       next
@@ -2664,7 +2586,6 @@ module Java::Util::Regex
     end
     
     typesig { [String] }
-    # 
     # Returns a CharProperty matching all characters in a UnicodeBlock.
     def unicode_block_property_for(name)
       block = nil
@@ -2694,7 +2615,6 @@ module Java::Util::Regex
     end
     
     typesig { [String] }
-    # 
     # Returns a CharProperty matching all characters in a named property.
     def char_property_node_for(name)
       p = CharPropertyNames.char_property_for(name)
@@ -2705,7 +2625,6 @@ module Java::Util::Regex
     end
     
     typesig { [] }
-    # 
     # Parses a group and returns the head node of a set of nodes that process
     # the group. Sometimes a double return system is used where the tail is
     # returned in root.
@@ -2825,21 +2744,21 @@ module Java::Util::Regex
             return node
           end
           # Discover if the group is deterministic
-          info_ = TreeInfo.new
-          if (head.study(info_))
+          info = TreeInfo.new
+          if (head.study(info))
             # Deterministic
             temp = tail
             head = @root = GroupCurly.new(head.attr_next, curly.attr_cmin, curly.attr_cmax, curly.attr_type, (tail).attr_local_index, (tail).attr_group_index, capturing_group)
             return head
           else
             # Non-deterministic
-            temp_ = (head).attr_local_index
+            temp = (head).attr_local_index
             loop = nil
             if ((curly.attr_type).equal?(GREEDY))
-              loop = Loop.new(@local_count, temp_)
+              loop = Loop.new(@local_count, temp)
             else
               # Reluctant Curly
-              loop = LazyLoop.new(@local_count, temp_)
+              loop = LazyLoop.new(@local_count, temp)
             end
             prolog = Prolog.new(loop)
             @local_count += 1
@@ -2856,7 +2775,6 @@ module Java::Util::Regex
     end
     
     typesig { [::Java::Boolean] }
-    # 
     # Create group head and tail nodes using double return. If the group is
     # created with anonymous true then it is a pure group and should not
     # affect group counting.
@@ -2875,7 +2793,6 @@ module Java::Util::Regex
     end
     
     typesig { [] }
-    # 
     # Parses inlined match flags and set them appropriately.
     def add_flag
       ch = peek
@@ -2908,7 +2825,6 @@ module Java::Util::Regex
     end
     
     typesig { [] }
-    # 
     # Parses the second part of inlined match flags and turns off
     # flags appropriately.
     def sub_flag
@@ -2954,7 +2870,6 @@ module Java::Util::Regex
     }
     
     typesig { [Node] }
-    # 
     # Processes repetition. If the next character peeked is a quantifier
     # then new nodes must be appended to handle the repetition.
     # Prev could be a single or a group, so it could be a chain of nodes.
@@ -3041,14 +2956,12 @@ module Java::Util::Regex
         else
           raise error("Illegal repetition")
         end
-        return prev
       else
         return prev
       end
     end
     
     typesig { [] }
-    # 
     # Utility method for parsing control escape sequences.
     def c
       if (@cursor < @pattern_length)
@@ -3058,7 +2971,6 @@ module Java::Util::Regex
     end
     
     typesig { [] }
-    # 
     # Utility method for parsing octal escape sequences.
     def o
       n = read
@@ -3079,7 +2991,6 @@ module Java::Util::Regex
     end
     
     typesig { [] }
-    # 
     # Utility method for parsing hexadecimal escape sequences.
     def x
       n = read
@@ -3093,7 +3004,6 @@ module Java::Util::Regex
     end
     
     typesig { [] }
-    # 
     # Utility method for parsing unicode escape sequences.
     def u
       n = 0
@@ -3111,7 +3021,6 @@ module Java::Util::Regex
     
     class_module.module_eval {
       typesig { [::Java::Int] }
-      # 
       # Utility methods for code point support
       # 
       # 
@@ -3147,14 +3056,14 @@ module Java::Util::Regex
           return 0
         end
         len = -length_in_code_points
-        i_ = 0
-        while x_ > 0 && i_ < len
+        i = 0
+        while x_ > 0 && i < len
           if (Character.is_low_surrogate(seq.char_at((x_ -= 1))))
             if (x_ > 0 && Character.is_high_surrogate(seq.char_at(x_ - 1)))
               ((x_ -= 1) + 1)
             end
           end
-          ((i_ += 1) - 1)
+          ((i += 1) - 1)
         end
         return index - x_
       end
@@ -3175,7 +3084,6 @@ module Java::Util::Regex
         return n
       end
       
-      # 
       # Creates a bit vector for matching Latin-1 values. A normal BitClass
       # never matches values above Latin-1, and a complemented BitClass always
       # matches values above Latin-1.
@@ -3231,7 +3139,6 @@ module Java::Util::Regex
     }
     
     typesig { [::Java::Int] }
-    # 
     # Returns a suitably optimized, single character matcher.
     def new_single(ch)
       if (has(CASE_INSENSITIVE))
@@ -3260,7 +3167,6 @@ module Java::Util::Regex
     end
     
     typesig { [Array.typed(::Java::Int), ::Java::Int, ::Java::Boolean] }
-    # 
     # Utility method for creating a string slice matcher.
     def new_slice(buf, count, has_supplementary)
       tmp = Array.typed(::Java::Int).new(count) { 0 }
@@ -3273,23 +3179,22 @@ module Java::Util::Regex
           end
           return has_supplementary ? SliceUS.new(tmp) : SliceU.new(tmp)
         end
-        i_ = 0
-        while i_ < count
-          tmp[i_] = ASCII.to_lower(buf[i_])
-          ((i_ += 1) - 1)
+        i = 0
+        while i < count
+          tmp[i] = ASCII.to_lower(buf[i])
+          ((i += 1) - 1)
         end
         return has_supplementary ? SliceIS.new(tmp) : SliceI.new(tmp)
       end
-      i__ = 0
-      while i__ < count
-        tmp[i__] = buf[i__]
-        ((i__ += 1) - 1)
+      i = 0
+      while i < count
+        tmp[i] = buf[i]
+        ((i += 1) - 1)
       end
       return has_supplementary ? SliceS.new(tmp) : Slice.new(tmp)
     end
     
     class_module.module_eval {
-      # 
       # The following classes are the building components of the object
       # tree that represents a compiled regular expression. The object tree
       # is made of individual elements that handle constructs in the Pattern.
@@ -3317,7 +3222,6 @@ module Java::Util::Regex
         end
         
         typesig { [Matcher, ::Java::Int, CharSequence] }
-        # 
         # This method implements the classic accept node.
         def match(matcher, i, seq)
           matcher.attr_last = i
@@ -3327,7 +3231,6 @@ module Java::Util::Regex
         end
         
         typesig { [TreeInfo] }
-        # 
         # This method is good for all zero length assertions.
         def study(info)
           if (!(@next).nil?)
@@ -3345,7 +3248,6 @@ module Java::Util::Regex
         include_class_members Pattern
         
         typesig { [Matcher, ::Java::Int, CharSequence] }
-        # 
         # This method implements the classic accept node with
         # the addition of a check to see if the match occurred
         # using all of the input.
@@ -3368,7 +3270,6 @@ module Java::Util::Regex
         alias_method :initialize__last_node, :initialize
       end }
       
-      # 
       # Used for REs that can start anywhere within the input string.
       # This basically tries to match repeatedly at each spot in the
       # input string, moving forward after each try. An anchored search
@@ -3429,7 +3330,6 @@ module Java::Util::Regex
         alias_method :initialize__start, :initialize
       end }
       
-      # 
       # StartS supports supplementary characters, including unpaired surrogates.
       const_set_lazy(:StartS) { Class.new(Start) do
         include_class_members Pattern
@@ -3474,7 +3374,6 @@ module Java::Util::Regex
         alias_method :initialize__start_s, :initialize
       end }
       
-      # 
       # Node to anchor at the beginning of input. This object implements the
       # match for a \A sequence, and the caret anchor will use this if not in
       # multiline mode.
@@ -3503,7 +3402,6 @@ module Java::Util::Regex
         alias_method :initialize__begin, :initialize
       end }
       
-      # 
       # Node to anchor at the end of input. This is the absolute end, so this
       # should not match at the last newline before the end as $ will.
       const_set_lazy(:End) { Class.new(Node) do
@@ -3528,7 +3426,6 @@ module Java::Util::Regex
         alias_method :initialize__end, :initialize
       end }
       
-      # 
       # Node to anchor at the beginning of a line. This is essentially the
       # object to match for the multiline ^.
       const_set_lazy(:Caret) { Class.new(Node) do
@@ -3569,7 +3466,6 @@ module Java::Util::Regex
         alias_method :initialize__caret, :initialize
       end }
       
-      # 
       # Node to anchor at the beginning of a line when in unixdot mode.
       const_set_lazy(:UnixCaret) { Class.new(Node) do
         include_class_members Pattern
@@ -3605,7 +3501,6 @@ module Java::Util::Regex
         alias_method :initialize__unix_caret, :initialize
       end }
       
-      # 
       # Node to match the location where the last match ended.
       # This is used for the \G construct.
       const_set_lazy(:LastMatch) { Class.new(Node) do
@@ -3628,7 +3523,6 @@ module Java::Util::Regex
         alias_method :initialize__last_match, :initialize
       end }
       
-      # 
       # Node to anchor at the end of a line or the end of input based on the
       # multiline mode.
       # 
@@ -3683,8 +3577,8 @@ module Java::Util::Regex
           # at the very end so the end was hit; more input
           # could make this not match here
           if (i < end_index)
-            ch_ = seq.char_at(i)
-            if ((ch_).equal?(Character.new(?\n.ord)))
+            ch = seq.char_at(i)
+            if ((ch).equal?(Character.new(?\n.ord)))
               # No match between \r\n
               if (i > 0 && (seq.char_at(i - 1)).equal?(Character.new(?\r.ord)))
                 return false
@@ -3693,7 +3587,7 @@ module Java::Util::Regex
                 return self.attr_next.match(matcher, i, seq)
               end
             else
-              if ((ch_).equal?(Character.new(?\r.ord)) || (ch_).equal?(Character.new(0x0085)) || ((ch_ | 1)).equal?(Character.new(0x2029)))
+              if ((ch).equal?(Character.new(?\r.ord)) || (ch).equal?(Character.new(0x0085)) || ((ch | 1)).equal?(Character.new(0x2029)))
                 if (@multiline)
                   return self.attr_next.match(matcher, i, seq)
                 end
@@ -3721,7 +3615,6 @@ module Java::Util::Regex
         alias_method :initialize__dollar, :initialize
       end }
       
-      # 
       # Node to anchor at the end of a line or the end of input based on the
       # multiline mode when in unix lines mode.
       const_set_lazy(:UnixDollar) { Class.new(Node) do
@@ -3779,7 +3672,6 @@ module Java::Util::Regex
         alias_method :initialize__unix_dollar, :initialize
       end }
       
-      # 
       # Abstract node class to match one character satisfying some
       # boolean property.
       const_set_lazy(:CharProperty) { Class.new(Node) do
@@ -3844,7 +3736,6 @@ module Java::Util::Regex
         alias_method :initialize__char_property, :initialize
       end }
       
-      # 
       # Optimized version of CharProperty that works only for
       # properties never satisfied by Supplementary characters.
       const_set_lazy(:BmpCharProperty) { Class.new(CharProperty) do
@@ -3869,7 +3760,6 @@ module Java::Util::Regex
         alias_method :initialize__bmp_char_property, :initialize
       end }
       
-      # 
       # Node class that matches a Supplementary Unicode character
       const_set_lazy(:SingleS) { Class.new(CharProperty) do
         include_class_members Pattern
@@ -3896,7 +3786,6 @@ module Java::Util::Regex
         alias_method :initialize__single_s, :initialize
       end }
       
-      # 
       # Optimization -- matches a given BMP character
       const_set_lazy(:Single) { Class.new(BmpCharProperty) do
         include_class_members Pattern
@@ -3923,7 +3812,6 @@ module Java::Util::Regex
         alias_method :initialize__single, :initialize
       end }
       
-      # 
       # Case insensitive matches a given BMP character
       const_set_lazy(:SingleI) { Class.new(BmpCharProperty) do
         include_class_members Pattern
@@ -3958,7 +3846,6 @@ module Java::Util::Regex
         alias_method :initialize__single_i, :initialize
       end }
       
-      # 
       # Unicode case insensitive matches a given Unicode character
       const_set_lazy(:SingleU) { Class.new(CharProperty) do
         include_class_members Pattern
@@ -3985,7 +3872,6 @@ module Java::Util::Regex
         alias_method :initialize__single_u, :initialize
       end }
       
-      # 
       # Node class that matches a Unicode category.
       const_set_lazy(:Category) { Class.new(CharProperty) do
         include_class_members Pattern
@@ -4012,7 +3898,6 @@ module Java::Util::Regex
         alias_method :initialize__category, :initialize
       end }
       
-      # 
       # Node class that matches a POSIX type.
       const_set_lazy(:Ctype) { Class.new(BmpCharProperty) do
         include_class_members Pattern
@@ -4039,7 +3924,6 @@ module Java::Util::Regex
         alias_method :initialize__ctype, :initialize
       end }
       
-      # 
       # Base class for all Slice nodes
       const_set_lazy(:SliceNode) { Class.new(Node) do
         include_class_members Pattern
@@ -4068,7 +3952,6 @@ module Java::Util::Regex
         alias_method :initialize__slice_node, :initialize
       end }
       
-      # 
       # Node class for a case sensitive/BMP-only sequence of literal
       # characters.
       const_set_lazy(:Slice) { Class.new(SliceNode) do
@@ -4101,7 +3984,6 @@ module Java::Util::Regex
         alias_method :initialize__slice, :initialize
       end }
       
-      # 
       # Node class for a case_insensitive/BMP-only sequence of literal
       # characters.
       const_set_lazy(:SliceI) { Class.new(SliceNode) do
@@ -4135,7 +4017,6 @@ module Java::Util::Regex
         alias_method :initialize__slice_i, :initialize
       end }
       
-      # 
       # Node class for a unicode_case_insensitive/BMP-only sequence of
       # literal characters. Uses unicode case folding.
       const_set_lazy(:SliceU) { Class.new(SliceNode) do
@@ -4169,7 +4050,6 @@ module Java::Util::Regex
         alias_method :initialize__slice_u, :initialize
       end }
       
-      # 
       # Node class for a case sensitive sequence of literal characters
       # including supplementary characters.
       const_set_lazy(:SliceS) { Class.new(SliceNode) do
@@ -4208,7 +4088,6 @@ module Java::Util::Regex
         alias_method :initialize__slice_s, :initialize
       end }
       
-      # 
       # Node class for a case insensitive sequence of literal characters
       # including supplementary characters.
       const_set_lazy(:SliceIS) { Class.new(SliceNode) do
@@ -4252,7 +4131,6 @@ module Java::Util::Regex
         alias_method :initialize__slice_is, :initialize
       end }
       
-      # 
       # Node class for a case insensitive sequence of literal characters.
       # Uses unicode case folding.
       const_set_lazy(:SliceUS) { Class.new(SliceIS) do
@@ -4278,7 +4156,6 @@ module Java::Util::Regex
       end
       
       typesig { [::Java::Int, ::Java::Int] }
-      # 
       # Returns node for matching characters within an explicit value range.
       def range_for(lower, upper)
         return Class.new(CharProperty.class == Class ? CharProperty : Object) do
@@ -4303,7 +4180,6 @@ module Java::Util::Regex
     }
     
     typesig { [::Java::Int, ::Java::Int] }
-    # 
     # Returns node for matching characters within an explicit value
     # range in a case insensitive manner.
     def case_insensitive_range_for(lower, upper)
@@ -4352,7 +4228,6 @@ module Java::Util::Regex
     end
     
     class_module.module_eval {
-      # 
       # Implements the Unicode category ALL and the dot metacharacter when
       # in dotall mode.
       const_set_lazy(:All) { Class.new(CharProperty) do
@@ -4372,7 +4247,6 @@ module Java::Util::Regex
         alias_method :initialize__all, :initialize
       end }
       
-      # 
       # Node class for the dot metacharacter when dotall is not enabled.
       const_set_lazy(:Dot) { Class.new(CharProperty) do
         include_class_members Pattern
@@ -4391,7 +4265,6 @@ module Java::Util::Regex
         alias_method :initialize__dot, :initialize
       end }
       
-      # 
       # Node class for the dot metacharacter when dotall is not enabled
       # but UNIX_LINES is enabled.
       const_set_lazy(:UnixDot) { Class.new(CharProperty) do
@@ -4411,7 +4284,6 @@ module Java::Util::Regex
         alias_method :initialize__unix_dot, :initialize
       end }
       
-      # 
       # The 0 or 1 quantifier. This one class implements all three types.
       const_set_lazy(:Ques) { Class.new(Node) do
         include_class_members Pattern
@@ -4472,7 +4344,6 @@ module Java::Util::Regex
         alias_method :initialize__ques, :initialize
       end }
       
-      # 
       # Handles the curly-brace style repetition with a specified minimum and
       # maximum occurrences. The * quantifier is handled as a special case.
       # This class handles the three types.
@@ -4666,7 +4537,6 @@ module Java::Util::Regex
         alias_method :initialize__curly, :initialize
       end }
       
-      # 
       # Handles the curly-brace style repetition with a specified minimum and
       # maximum occurrences in deterministic cases. This is an iterative
       # optimization over the Prolog and Loop system which would handle this
@@ -4938,7 +4808,6 @@ module Java::Util::Regex
         alias_method :initialize__group_curly, :initialize
       end }
       
-      # 
       # A Guard node at the end of each atom node in a Branch. It
       # serves the purpose of chaining the "match" operation to
       # "next" but not the "study", so we can collect the TreeInfo
@@ -4966,7 +4835,6 @@ module Java::Util::Regex
         alias_method :initialize__branch_conn, :initialize
       end }
       
-      # 
       # Handles the branching of alternations. Note this is also used for
       # the ? quantifier to branch between the case where it matches once
       # and where it does not occur.
@@ -5065,7 +4933,6 @@ module Java::Util::Regex
         alias_method :initialize__branch, :initialize
       end }
       
-      # 
       # The GroupHead saves the location where the group begins in the locals
       # and restores them when the match is done.
       # 
@@ -5111,7 +4978,6 @@ module Java::Util::Regex
         alias_method :initialize__group_head, :initialize
       end }
       
-      # 
       # Recursive reference to a group in the regular expression. It calls
       # matchRef because if the reference fails to match we would not unset
       # the group.
@@ -5147,7 +5013,6 @@ module Java::Util::Regex
         alias_method :initialize__group_ref, :initialize
       end }
       
-      # 
       # The GroupTail handles the setting of group beginning and ending
       # locations when groups are successfully matched. It must also be able to
       # unset groups that have to be backed off of.
@@ -5207,7 +5072,6 @@ module Java::Util::Regex
         alias_method :initialize__group_tail, :initialize
       end }
       
-      # 
       # This sets up a loop to handle a recursive quantifier structure.
       const_set_lazy(:Prolog) { Class.new(Node) do
         include_class_members Pattern
@@ -5239,7 +5103,6 @@ module Java::Util::Regex
         alias_method :initialize__prolog, :initialize
       end }
       
-      # 
       # Handles the repetition count for a greedy Curly. The matchInit
       # is called from the Prolog to save the index of where the group
       # beginning is stored. A zero length group check occurs in the
@@ -5314,10 +5177,10 @@ module Java::Util::Regex
             # iterations required for the loop to match
             if (count < @cmax)
               matcher.attr_locals[@count_index] = count + 1
-              b_ = @body.match(matcher, i, seq)
+              b = @body.match(matcher, i, seq)
               # If match failed we must backtrack, so
               # the loop count should NOT be incremented
-              if (!b_)
+              if (!b)
                 matcher.attr_locals[@count_index] = count
               else
                 return true
@@ -5360,7 +5223,6 @@ module Java::Util::Regex
         alias_method :initialize__loop, :initialize
       end }
       
-      # 
       # Handles the repetition count for a reluctant Curly. The matchInit
       # is called from the Prolog to save the index of where the group
       # beginning is stored. A zero length group check occurs in the
@@ -5393,13 +5255,13 @@ module Java::Util::Regex
             end
             if (count < self.attr_cmax)
               matcher.attr_locals[self.attr_count_index] = count + 1
-              result_ = self.attr_body.match(matcher, i, seq)
+              result = self.attr_body.match(matcher, i, seq)
               # If match failed we must backtrack, so
               # the loop count should NOT be incremented
-              if (!result_)
+              if (!result)
                 matcher.attr_locals[self.attr_count_index] = count
               end
-              return result_
+              return result
             end
             return false
           end
@@ -5438,7 +5300,6 @@ module Java::Util::Regex
         alias_method :initialize__lazy_loop, :initialize
       end }
       
-      # 
       # Refers to a group in the regular expression. Attempts to match
       # whatever the group referred to last matched.
       const_set_lazy(:BackRef) { Class.new(Node) do
@@ -5568,7 +5429,6 @@ module Java::Util::Regex
         alias_method :initialize__ciback_ref, :initialize
       end }
       
-      # 
       # Searches until the next instance of its atom. This is useful for
       # finding the atom efficiently without passing an instance of it
       # (greedy problem) and without a lot of wasted search time (reluctant
@@ -5683,7 +5543,6 @@ module Java::Util::Regex
         alias_method :initialize__conditional, :initialize
       end }
       
-      # 
       # Zero width positive lookahead.
       const_set_lazy(:Pos) { Class.new(Node) do
         include_class_members Pattern
@@ -5722,7 +5581,6 @@ module Java::Util::Regex
         alias_method :initialize__pos, :initialize
       end }
       
-      # 
       # Zero width negative lookahead.
       const_set_lazy(:Neg) { Class.new(Node) do
         include_class_members Pattern
@@ -5770,8 +5628,7 @@ module Java::Util::Regex
       
       
       def lookbehind_end
-        defined?(@@lookbehind_end) ? @@lookbehind_end : @@lookbehind_end= # 
-        # For use with lookbehinds; matches the position where the lookbehind
+        defined?(@@lookbehind_end) ? @@lookbehind_end : @@lookbehind_end= # For use with lookbehinds; matches the position where the lookbehind
         # was encountered.
         Class.new(Node.class == Class ? Node : Object) do
           extend LocalClass
@@ -5799,7 +5656,6 @@ module Java::Util::Regex
       end
       alias_method :attr_lookbehind_end=, :lookbehind_end=
       
-      # 
       # Zero width positive lookbehind.
       const_set_lazy(:Behind) { Class.new(Node) do
         include_class_members Pattern
@@ -5860,7 +5716,6 @@ module Java::Util::Regex
         alias_method :initialize__behind, :initialize
       end }
       
-      # 
       # Zero width positive lookbehind, including supplementary
       # characters or unpaired surrogates.
       const_set_lazy(:BehindS) { Class.new(Behind) do
@@ -5900,7 +5755,6 @@ module Java::Util::Regex
         alias_method :initialize__behind_s, :initialize
       end }
       
-      # 
       # Zero width negative lookbehind.
       const_set_lazy(:NotBehind) { Class.new(Node) do
         include_class_members Pattern
@@ -5961,7 +5815,6 @@ module Java::Util::Regex
         alias_method :initialize__not_behind, :initialize
       end }
       
-      # 
       # Zero width negative lookbehind, including supplementary
       # characters or unpaired surrogates.
       const_set_lazy(:NotBehindS) { Class.new(NotBehind) do
@@ -6002,7 +5855,6 @@ module Java::Util::Regex
       end }
       
       typesig { [CharProperty, CharProperty] }
-      # 
       # Returns the set union of two CharProperty nodes.
       def union(lhs, rhs)
         return Class.new(CharProperty.class == Class ? CharProperty : Object) do
@@ -6026,7 +5878,6 @@ module Java::Util::Regex
       end
       
       typesig { [CharProperty, CharProperty] }
-      # 
       # Returns the set intersection of two CharProperty nodes.
       def intersection(lhs, rhs)
         return Class.new(CharProperty.class == Class ? CharProperty : Object) do
@@ -6050,7 +5901,6 @@ module Java::Util::Regex
       end
       
       typesig { [CharProperty, CharProperty] }
-      # 
       # Returns the set difference of two CharProperty nodes.
       def set_difference(lhs, rhs)
         return Class.new(CharProperty.class == Class ? CharProperty : Object) do
@@ -6073,7 +5923,6 @@ module Java::Util::Regex
         end.new_local(self)
       end
       
-      # 
       # Handles word boundaries. Includes a field to allow this one class to
       # deal with the different types of word boundaries we can match. The word
       # characters include underscores, letters, and digits. Non spacing marks
@@ -6178,7 +6027,6 @@ module Java::Util::Regex
       end }
       
       typesig { [Matcher, ::Java::Int, CharSequence] }
-      # 
       # Non spacing marks only count as word characters in bounds calculations
       # if they have a base character.
       def has_base_character(matcher_, i, seq)
@@ -6199,7 +6047,6 @@ module Java::Util::Regex
         return false
       end
       
-      # 
       # Attempts to match a slice in the input using the Boyer-Moore string
       # matching algorithm. The algorithm is based on the idea that the
       # pattern can be shifted farther ahead in the search text if it is
@@ -6249,7 +6096,6 @@ module Java::Util::Regex
         
         class_module.module_eval {
           typesig { [Node] }
-          # 
           # Pre calculates arrays needed to generate the bad character
           # shift and the good suffix shift. Only the last seven bits
           # are used to see if chars match; This keeps the tables small
@@ -6306,7 +6152,7 @@ module Java::Util::Regex
                 while (j > 0)
                   opto_sft[(j -= 1)] = i
                 end
-              end == :thrown or break
+              end
               ((i -= 1) + 1)
             end
             # Set the guard value because of unicode compression
@@ -6360,7 +6206,7 @@ module Java::Util::Regex
                 return true
               end
               ((i += 1) - 1)
-            end == :thrown or break
+            end
           end
           # BnM is only used as the leading node in the unanchored case,
           # and it replaced its Start() which always searches to the end
@@ -6380,7 +6226,6 @@ module Java::Util::Regex
         alias_method :initialize__bn_m, :initialize
       end }
       
-      # 
       # Supplementary support version of BnM(). Unpaired surrogates are
       # also handled by this class.
       const_set_lazy(:BnMS) { Class.new(BnM) do
@@ -6437,7 +6282,7 @@ module Java::Util::Regex
                 return true
               end
               i += count_chars(seq, i, 1)
-            end == :thrown or break
+            end
           end
           matcher.attr_hit_end = true
           return false

@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 2005-2006 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -33,7 +32,6 @@ module Sun::Security::Smartcardio
     }
   end
   
-  # 
   # Provider object for PC/SC.
   # 
   # @since   1.6
@@ -86,7 +84,6 @@ module Sun::Security::Smartcardio
         end
         
         typesig { [] }
-        # 
         # Returns the available readers.
         # This must be a new object for each call.
         def engine_terminals

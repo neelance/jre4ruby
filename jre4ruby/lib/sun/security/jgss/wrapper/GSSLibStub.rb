@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 2005 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -38,7 +37,6 @@ module Sun::Security::Jgss::Wrapper
     }
   end
   
-  # 
   # This class is essentially a JNI calling stub for all wrapper classes.
   # 
   # @author Valerie Peng
@@ -61,7 +59,6 @@ module Sun::Security::Jgss::Wrapper
     class_module.module_eval {
       JNI.native_method :Java_sun_security_jgss_wrapper_GSSLibStub_init, [:pointer, :long, :long], :int8
       typesig { [String] }
-      # 
       # Initialization routine to dynamically load function pointers.
       # 
       # @param library name to dlopen

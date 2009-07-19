@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 2001-2006 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -107,7 +106,6 @@ module Sun::Net::Www::Protocol::Https
     end
     
     typesig { [URL] }
-    # 
     # Create a new HttpClient object, bypassing the cache of
     # HTTP client objects/connections.
     # 
@@ -117,7 +115,6 @@ module Sun::Net::Www::Protocol::Https
     end
     
     typesig { [URL, ::Java::Boolean] }
-    # 
     # Obtain a HttpClient object. Use the cached copy if specified.
     # 
     # @param url       the URL being accessed
@@ -128,7 +125,6 @@ module Sun::Net::Www::Protocol::Https
     end
     
     typesig { [URL, String, ::Java::Int] }
-    # 
     # Create a new HttpClient object, set up so that it uses
     # per-instance proxying to the given HTTP proxy.  This
     # bypasses the cache of HTTP client objects/connections.
@@ -141,7 +137,6 @@ module Sun::Net::Www::Protocol::Https
     end
     
     typesig { [URL, String, ::Java::Int, ::Java::Boolean] }
-    # 
     # Obtain a HttpClient object, set up so that it uses per-instance
     # proxying to the given HTTP proxy. Use the cached copy of HTTP
     # client objects/connections if specified.
@@ -156,7 +151,6 @@ module Sun::Net::Www::Protocol::Https
     end
     
     typesig { [] }
-    # 
     # Implements the HTTP protocol handler's "connect" method,
     # establishing an SSL connection to the server as necessary.
     def connect
@@ -164,7 +158,6 @@ module Sun::Net::Www::Protocol::Https
     end
     
     typesig { [] }
-    # 
     # Used by subclass to access "connected" variable.  Since we are
     # delegating the actual implementation to "delegate", we need to
     # delegate the access of "connected" as well.
@@ -173,7 +166,6 @@ module Sun::Net::Www::Protocol::Https
     end
     
     typesig { [::Java::Boolean] }
-    # 
     # Used by subclass to access "connected" variable.  Since we are
     # delegating the actual implementation to "delegate", we need to
     # delegate the access of "connected" as well.
@@ -182,14 +174,12 @@ module Sun::Net::Www::Protocol::Https
     end
     
     typesig { [] }
-    # 
     # Returns the cipher suite in use on this connection.
     def get_cipher_suite
       return @delegate.get_cipher_suite
     end
     
     typesig { [] }
-    # 
     # Returns the certificate chain the client sent to the
     # server, or null if the client did not authenticate.
     def get_local_certificates
@@ -197,7 +187,6 @@ module Sun::Net::Www::Protocol::Https
     end
     
     typesig { [] }
-    # 
     # Returns the server's certificate chain, or throws
     # SSLPeerUnverified Exception if
     # the server did not authenticate.
@@ -206,7 +195,6 @@ module Sun::Net::Www::Protocol::Https
     end
     
     typesig { [] }
-    # 
     # Returns the server's X.509 certificate chain, or null if
     # the server did not authenticate.
     # 
@@ -225,7 +213,6 @@ module Sun::Net::Www::Protocol::Https
     end
     
     typesig { [] }
-    # 
     # Returns the principal with which the server authenticated itself,
     # or throw a SSLPeerUnverifiedException if the server did not authenticate.
     def get_peer_principal
@@ -233,7 +220,6 @@ module Sun::Net::Www::Protocol::Https
     end
     
     typesig { [] }
-    # 
     # Returns the principal the client sent to the
     # server, or null if the client did not authenticate.
     def get_local_principal
@@ -241,7 +227,6 @@ module Sun::Net::Www::Protocol::Https
     end
     
     typesig { [] }
-    # 
     # Allowable input/output sequences:
     # [interpreted as POST/PUT]
     # - get output, [write output,] get input, [read input]
@@ -269,7 +254,6 @@ module Sun::Net::Www::Protocol::Https
     end
     
     typesig { [] }
-    # 
     # Disconnect from the server.
     def disconnect
       @delegate.disconnect
@@ -281,7 +265,6 @@ module Sun::Net::Www::Protocol::Https
     end
     
     typesig { [] }
-    # 
     # Returns an unmodifiable Map of the header fields.
     # The Map keys are Strings that represent the
     # response-header field names. Each Map value is an
@@ -295,7 +278,6 @@ module Sun::Net::Www::Protocol::Https
     end
     
     typesig { [String] }
-    # 
     # Gets a header field by name. Returns null if not known.
     # @param name the name of the header field
     def get_header_field(name)
@@ -303,7 +285,6 @@ module Sun::Net::Www::Protocol::Https
     end
     
     typesig { [::Java::Int] }
-    # 
     # Gets a header field by index. Returns null if not known.
     # @param n the index of the header field
     def get_header_field(n)
@@ -311,7 +292,6 @@ module Sun::Net::Www::Protocol::Https
     end
     
     typesig { [::Java::Int] }
-    # 
     # Gets a header field by index. Returns null if not known.
     # @param n the index of the header field
     def get_header_field_key(n)
@@ -319,7 +299,6 @@ module Sun::Net::Www::Protocol::Https
     end
     
     typesig { [String, String] }
-    # 
     # Sets request property. If a property with the key already
     # exists, overwrite its value with the new value.
     # @param value the value to be set
@@ -328,7 +307,6 @@ module Sun::Net::Www::Protocol::Https
     end
     
     typesig { [String, String] }
-    # 
     # Adds a general request property specified by a
     # key-value pair.  This method will not overwrite
     # existing values associated with the same key.
@@ -343,7 +321,6 @@ module Sun::Net::Www::Protocol::Https
     end
     
     typesig { [] }
-    # 
     # Overwrite super class method
     def get_response_code
       return @delegate.get_response_code
@@ -355,7 +332,6 @@ module Sun::Net::Www::Protocol::Https
     end
     
     typesig { [] }
-    # 
     # Returns an unmodifiable Map of general request
     # properties for this connection. The Map keys
     # are Strings that represent the request-header
@@ -371,7 +347,6 @@ module Sun::Net::Www::Protocol::Https
     end
     
     typesig { [::Java::Boolean] }
-    # 
     # We support JDK 1.2.x so we can't count on these from JDK 1.3.
     # We override and supply our own version.
     def set_instance_follow_redirects(should_follow)
@@ -524,7 +499,6 @@ module Sun::Net::Www::Protocol::Https
     end
     
     typesig { [] }
-    # 
     # finalize (dispose) the delegated object.  Otherwise
     # sun.net.www.protocol.http.HttpURLConnection's finalize()
     # would have to be made public.

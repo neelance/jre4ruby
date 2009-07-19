@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Portions Copyright 2003-2006 Sun Microsystems, Inc.  All Rights Reserved.
 # 
 # Copyright  (c) 2002 Graz University of Technology. All rights reserved.
@@ -53,7 +52,6 @@ module Sun::Security::Pkcs11::Wrapper
     }
   end
   
-  # 
   # class CK_MECHANISM specifies a particular mechanism and any parameters it
   # requires.<p>
   # <B>PKCS#11 structure:</B>
@@ -70,7 +68,6 @@ module Sun::Security::Pkcs11::Wrapper
   class CK_MECHANISM 
     include_class_members CK_MECHANISMImports
     
-    # 
     # <B>PKCS#11:</B>
     # <PRE>
     # CK_MECHANISM_TYPE mechanism;
@@ -81,7 +78,6 @@ module Sun::Security::Pkcs11::Wrapper
     alias_method :attr_mechanism=, :mechanism=
     undef_method :mechanism=
     
-    # 
     # <B>PKCS#11:</B>
     # <PRE>
     # CK_VOID_PTR pParameter;
@@ -173,7 +169,6 @@ module Sun::Security::Pkcs11::Wrapper
     end
     
     typesig { [] }
-    # 
     # Returns the string representation of CK_MECHANISM.
     # 
     # @return the string representation of CK_MECHANISM

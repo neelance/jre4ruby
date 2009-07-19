@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 1995-1999 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -31,7 +30,6 @@ module Java::Net
     }
   end
   
-  # 
   # This interface defines a factory for <code>URL</code> stream
   # protocol handlers.
   # <p>
@@ -46,7 +44,6 @@ module Java::Net
     include_class_members URLStreamHandlerFactoryImports
     
     typesig { [String] }
-    # 
     # Creates a new <code>URLStreamHandler</code> instance with the specified
     # protocol.
     # 

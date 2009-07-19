@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 1996-2005 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -121,7 +120,6 @@ module Sun::Misc
       def as_change_otherthread(as_old, as_new)
       end
       
-      # 
       # Not supported in 1.2 because these will have to be exported as
       # JVM functions, and we are not sure we want do that. Leaving
       # here so it can be easily resurrected -- just remove the //
@@ -311,7 +309,6 @@ module Sun::Misc
       alias_method :attr_peak_final_ref_count=, :peak_final_ref_count=
       
       typesig { [] }
-      # 
       # Gets the number of objects pending for finalization.
       # 
       # @return the number of objects pending for finalization.
@@ -320,7 +317,6 @@ module Sun::Misc
       end
       
       typesig { [] }
-      # 
       # Gets the peak number of objects pending for finalization.
       # 
       # @return the peak number of objects pending for finalization.
@@ -329,7 +325,6 @@ module Sun::Misc
       end
       
       typesig { [::Java::Int] }
-      # 
       # Add <tt>n</tt> to the objects pending for finalization count.
       # 
       # @param n an integer value to be added to the objects pending

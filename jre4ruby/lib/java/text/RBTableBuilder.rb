@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 1999-2005 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -48,7 +47,6 @@ module Java::Text
     }
   end
   
-  # 
   # This class contains all the code to parse a RuleBasedCollator pattern
   # and build a RBCollationTables object from it.  A particular instance
   # of tis class exists only during the actual build process-- once an
@@ -83,7 +81,6 @@ module Java::Text
     end
     
     typesig { [String, ::Java::Int] }
-    # 
     # Create a table-based collation object with the given rules.
     # This is the main function that actually builds the tables and
     # stores them back in the RBCollationTables object.  It is called
@@ -155,8 +152,8 @@ module Java::Text
                 add_contract_order(group_chars, order)
               end
             else
-              ch_ = group_chars.char_at(0)
-              add_order(ch_, order)
+              ch = group_chars.char_at(0)
+              add_order(ch, order)
             end
           end
         end
@@ -165,7 +162,6 @@ module Java::Text
       add_composed_chars
       commit
       @mapping.compact
-      # 
       # System.out.println("mappingSize=" + mapping.getKSize());
       # for (int j = 0; j < 0xffff; j++) {
       # int value = mapping.elementAt(j);
@@ -185,7 +181,6 @@ module Java::Text
       c = 0
       while (!((c = iter.next)).equal?(ComposedCharIter::DONE))
         if ((get_char_order(c)).equal?(RBCollationTables::UNMAPPED))
-          # 
           # We don't already have an ordering for this pre-composed character.
           # 
           # First, see if the decomposed string is already in our
@@ -218,9 +213,9 @@ module Java::Text
             if ((s.length).equal?(2))
               ch0 = s.char_at(0)
               if (Character.is_high_surrogate(ch0))
-                order_ = get_char_order(s.code_point_at(0))
-                if (!(order_).equal?(RBCollationTables::UNMAPPED))
-                  add_order(c, order_)
+                order = get_char_order(s.code_point_at(0))
+                if (!(order).equal?(RBCollationTables::UNMAPPED))
+                  add_order(c, order)
                 end
                 next
               end
@@ -230,7 +225,6 @@ module Java::Text
           if (!(contract_order).equal?(RBCollationTables::UNMAPPED))
             add_order(c, contract_order)
           else
-            # 
             # We don't have a contracting ordering for the entire string
             # that results from the decomposition, but if we have orders
             # for each individual character, we can add an expanding
@@ -253,7 +247,6 @@ module Java::Text
     end
     
     typesig { [] }
-    # 
     # Look up for unmapped values in the expanded character table.
     # 
     # When the expanding character tables are built by addExpandOrder,
@@ -293,7 +286,6 @@ module Java::Text
     end
     
     typesig { [::Java::Int, ::Java::Int] }
-    # 
     # Increment of the last order based on the comparison level.
     def increment(a_strength, last_value)
       case (a_strength)
@@ -322,7 +314,6 @@ module Java::Text
     end
     
     typesig { [::Java::Int, ::Java::Int] }
-    # 
     # Adds a character and its designated order into the collation table.
     def add_order(ch, an_order)
       # See if the char already has an order in the mapping table
@@ -351,7 +342,6 @@ module Java::Text
     end
     
     typesig { [String, ::Java::Int, ::Java::Boolean] }
-    # 
     # Adds the contracting string into the collation table.
     def add_contract_order(group_chars, an_order, fwd)
       if ((@contract_table).nil?)
@@ -359,7 +349,6 @@ module Java::Text
       end
       # initial character
       ch = group_chars.code_point_at(0)
-      # 
       # char ch0 = groupChars.charAt(0);
       # int ch = Character.isHighSurrogate(ch0)?
       # Character.toCodePoint(ch0, groupChars.charAt(1)):ch0;
@@ -383,13 +372,13 @@ module Java::Text
         pair = entry_table.element_at(index)
         pair.attr_value = an_order
       else
-        pair_ = entry_table.last_element
+        pair = entry_table.last_element
         # NOTE:  This little bit of logic is here to speed CollationElementIterator
         # .nextContractChar().  This code ensures that the longest sequence in
         # this list is always the _last_ one in the list.  This keeps
         # nextContractChar() from having to search the entire list for the longest
         # sequence.
-        if (group_chars.length > pair_.attr_entry_name.length)
+        if (group_chars.length > pair.attr_entry_name.length)
           entry_table.add_element(EntryPair.new(group_chars, an_order, fwd))
         else
           entry_table.insert_element_at(EntryPair.new(group_chars, an_order, fwd), entry_table.size - 1)
@@ -405,7 +394,6 @@ module Java::Text
     end
     
     typesig { [String] }
-    # 
     # If the given string has been specified as a contracting string
     # in this collation table, return its ordering.
     # Otherwise return UNMAPPED.
@@ -413,7 +401,6 @@ module Java::Text
       result = RBCollationTables::UNMAPPED
       if (!(@contract_table).nil?)
         ch = group_chars.code_point_at(0)
-        # 
         # char ch0 = groupChars.charAt(0);
         # int ch = Character.isHighSurrogate(ch0)?
         # Character.toCodePoint(ch0, groupChars.charAt(1)):ch0;
@@ -441,7 +428,6 @@ module Java::Text
     end
     
     typesig { [::Java::Int] }
-    # 
     # Get the entry of hash table of the contracting string in the collation
     # table.
     # @param ch the starting character of the contracting string
@@ -461,7 +447,6 @@ module Java::Text
     end
     
     typesig { [String, String, ::Java::Int] }
-    # 
     # Adds the expanding string into the collation table.
     def add_expand_order(contract_chars, expand_chars, an_order)
       # Create an expansion table entry
@@ -490,7 +475,6 @@ module Java::Text
     end
     
     typesig { [::Java::Int, String] }
-    # 
     # Create a new entry in the expansion table that contains the orderings
     # for the given characers.  If anOrder is valid, it is added to the
     # beginning of the expanded list of orders.

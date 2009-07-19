@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 1997-2003 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -32,7 +31,6 @@ module Java::Security::Spec
     }
   end
   
-  # 
   # This is the exception for invalid parameter specifications.
   # 
   # @author Jan Luehe
@@ -52,7 +50,6 @@ module Java::Security::Spec
     }
     
     typesig { [] }
-    # 
     # Constructs an InvalidParameterSpecException with no detail message. A
     # detail message is a String that describes this particular
     # exception.
@@ -61,7 +58,6 @@ module Java::Security::Spec
     end
     
     typesig { [String] }
-    # 
     # Constructs an InvalidParameterSpecException with the specified detail
     # message. A detail message is a String that describes this
     # particular exception.

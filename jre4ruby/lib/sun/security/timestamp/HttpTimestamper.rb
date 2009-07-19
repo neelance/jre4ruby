@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 2003-2006 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -39,7 +38,6 @@ module Sun::Security::Timestamp
     }
   end
   
-  # 
   # A timestamper that communicates with a Timestamping Authority (TSA)
   # over HTTP.
   # It supports the Time-Stamp Protocol defined in:
@@ -68,7 +66,6 @@ module Sun::Security::Timestamp
       const_attr_reader  :DEBUG
     }
     
-    # 
     # HTTP URL identifying the location of the TSA
     attr_accessor :tsa_url
     alias_method :attr_tsa_url, :tsa_url
@@ -77,7 +74,6 @@ module Sun::Security::Timestamp
     undef_method :tsa_url=
     
     typesig { [String] }
-    # 
     # Creates a timestamper that connects to the specified TSA.
     # 
     # @param tsa The location of the TSA. It must be an HTTP URL.
@@ -87,7 +83,6 @@ module Sun::Security::Timestamp
     end
     
     typesig { [TSRequest] }
-    # 
     # Connects to the TSA and requests a timestamp.
     # 
     # @param tsQuery The timestamp query.
@@ -135,11 +130,11 @@ module Sun::Security::Timestamp
         if (DEBUG)
           header = connection.get_header_field(0)
           System.out.println(header)
-          i_ = 1
-          while (!((header = (connection.get_header_field(i_)).to_s)).nil?)
-            key = connection.get_header_field_key(i_)
+          i = 1
+          while (!((header = (connection.get_header_field(i)).to_s)).nil?)
+            key = connection.get_header_field_key(i)
             System.out.println("  " + ((((key).nil?) ? "" : key + ": ")).to_s + header)
-            ((i_ += 1) - 1)
+            ((i += 1) - 1)
           end
           System.out.println
         end
@@ -168,7 +163,6 @@ module Sun::Security::Timestamp
     
     class_module.module_eval {
       typesig { [String] }
-      # 
       # Checks that the MIME content type is a timestamp reply.
       # 
       # @param contentType The MIME content type to be checked.

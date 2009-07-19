@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 2003-2005 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -33,7 +32,6 @@ module Sun::Util::Calendar
     }
   end
   
-  # 
   # The class <code>Era</code> represents a calendar era that defines a
   # period of time in which the same year numbering is used. For
   # example, Gregorian year 2004 is <I>Heisei</I> 16 in the Japanese
@@ -97,7 +95,6 @@ module Sun::Util::Calendar
     undef_method :local_time=
     
     typesig { [String, String, ::Java::Long, ::Java::Boolean] }
-    # 
     # Constructs an <code>Era</code> instance.
     # 
     # @param name the era name (e.g., "BeforeCommonEra" for the Julian calendar system)

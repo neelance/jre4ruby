@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 1995 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -31,7 +30,6 @@ module Sun::Misc
     }
   end
   
-  # 
   # A class to signal exception from the RegexpPool class.
   # @author  James Gosling
   class REException < REExceptionImports.const_get :Exception

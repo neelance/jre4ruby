@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 2005 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -31,7 +30,6 @@ module Java::Net
     }
   end
   
-  # 
   # CookiePolicy implementations decide which cookies should be accepted
   # and which should be rejected. Three pre-defined policy implementations
   # are provided, namely ACCEPT_ALL, ACCEPT_NONE and ACCEPT_ORIGINAL_SERVER.
@@ -44,8 +42,7 @@ module Java::Net
     include_class_members CookiePolicyImports
     
     class_module.module_eval {
-      const_set_lazy(:ACCEPT_ALL) { # 
-      # One pre-defined policy which accepts all cookies.
+      const_set_lazy(:ACCEPT_ALL) { # One pre-defined policy which accepts all cookies.
       Class.new(CookiePolicy.class == Class ? CookiePolicy : Object) do
         extend LocalClass
         include_class_members CookiePolicy
@@ -66,8 +63,7 @@ module Java::Net
       end.new_local(self) }
       const_attr_reader  :ACCEPT_ALL
       
-      const_set_lazy(:ACCEPT_NONE) { # 
-      # One pre-defined policy which accepts no cookies.
+      const_set_lazy(:ACCEPT_NONE) { # One pre-defined policy which accepts no cookies.
       Class.new(CookiePolicy.class == Class ? CookiePolicy : Object) do
         extend LocalClass
         include_class_members CookiePolicy
@@ -88,8 +84,7 @@ module Java::Net
       end.new_local(self) }
       const_attr_reader  :ACCEPT_NONE
       
-      const_set_lazy(:ACCEPT_ORIGINAL_SERVER) { # 
-      # One pre-defined policy which only accepts cookies from original server.
+      const_set_lazy(:ACCEPT_ORIGINAL_SERVER) { # One pre-defined policy which only accepts cookies from original server.
       Class.new(CookiePolicy.class == Class ? CookiePolicy : Object) do
         extend LocalClass
         include_class_members CookiePolicy
@@ -112,7 +107,6 @@ module Java::Net
     }
     
     typesig { [URI, HttpCookie] }
-    # 
     # Will be called to see whether or not this cookie should be accepted.
     # 
     # @param uri       the URI to consult accept policy with

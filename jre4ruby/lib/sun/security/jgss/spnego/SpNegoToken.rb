@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 2005 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -36,7 +35,6 @@ module Sun::Security::Jgss::Spnego
     }
   end
   
-  # 
   # Astract class for SPNEGO tokens.
   # Implementation is based on RFC 2478
   # 
@@ -118,7 +116,6 @@ module Sun::Security::Jgss::Spnego
       const_set_lazy(:DEBUG) { SpNegoContext::DEBUG }
       const_attr_reader  :DEBUG
       
-      # 
       # The object identifier corresponding to the SPNEGO GSS-API
       # mechanism.
       
@@ -142,7 +139,6 @@ module Sun::Security::Jgss::Spnego
     }
     
     typesig { [::Java::Int] }
-    # 
     # Creates SPNEGO token of the specified type.
     def initialize(token_type)
       @token_type = 0
@@ -151,7 +147,6 @@ module Sun::Security::Jgss::Spnego
     end
     
     typesig { [] }
-    # 
     # Returns the individual encoded SPNEGO token
     # 
     # @return the encoded token
@@ -161,7 +156,6 @@ module Sun::Security::Jgss::Spnego
     end
     
     typesig { [] }
-    # 
     # Returns the encoded SPNEGO token
     # Note: inserts the required CHOICE tags
     # 
@@ -189,7 +183,6 @@ module Sun::Security::Jgss::Spnego
     end
     
     typesig { [] }
-    # 
     # Returns the SPNEGO token type
     # 
     # @return the token type
@@ -199,7 +192,6 @@ module Sun::Security::Jgss::Spnego
     
     class_module.module_eval {
       typesig { [::Java::Int] }
-      # 
       # Returns a string representing the token type.
       # 
       # @param tokenType the token type for which a string name is desired
@@ -216,7 +208,6 @@ module Sun::Security::Jgss::Spnego
       end
       
       typesig { [::Java::Int] }
-      # 
       # Returns the enumerated type of the Negotiation result.
       # 
       # @param result the negotiated result represented by integer
@@ -236,7 +227,6 @@ module Sun::Security::Jgss::Spnego
       end
       
       typesig { [::Java::Int] }
-      # 
       # Returns a string representing the negotiation result.
       # 
       # @param result the negotiated result

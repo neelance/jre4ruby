@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 2005-2006 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -36,7 +35,6 @@ module Sun::Net::Httpserver
     }
   end
   
-  # 
   # HttpContext represents a mapping between a protocol (http or https) together with a root URI path
   # to a {@link HttpHandler} which is invoked to handle requests destined
   # for the protocol/path on the associated HttpServer.
@@ -103,7 +101,6 @@ module Sun::Net::Httpserver
     undef_method :authfilter=
     
     typesig { [String, String, HttpHandler, ServerImpl] }
-    # 
     # constructor is package private.
     def initialize(protocol, path, cb, server)
       @path = nil
@@ -134,7 +131,6 @@ module Sun::Net::Httpserver
     end
     
     typesig { [] }
-    # 
     # returns the handler for this context
     # @return the HttpHandler for this context
     def get_handler
@@ -153,7 +149,6 @@ module Sun::Net::Httpserver
     end
     
     typesig { [] }
-    # 
     # returns the path this context was created with
     # @return this context's path
     def get_path
@@ -161,7 +156,6 @@ module Sun::Net::Httpserver
     end
     
     typesig { [] }
-    # 
     # returns the server this context was created with
     # @return this context's server
     def get_server
@@ -174,7 +168,6 @@ module Sun::Net::Httpserver
     end
     
     typesig { [] }
-    # 
     # returns the protocol this context was created with
     # @return this context's path
     def get_protocol
@@ -182,7 +175,6 @@ module Sun::Net::Httpserver
     end
     
     typesig { [] }
-    # 
     # returns a mutable Map, which can be used to pass
     # configuration and other data to Filter modules
     # and to the context's exchange handler.

@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 1997-1999 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -37,7 +36,6 @@ module Sun::Security::X509
     }
   end
   
-  # 
   # Represent the Key Identifier ASN.1 object.
   # 
   # @author Amit Kapoor
@@ -52,7 +50,6 @@ module Sun::Security::X509
     undef_method :octet_string=
     
     typesig { [Array.typed(::Java::Byte)] }
-    # 
     # Create a KeyIdentifier with the passed bit settings.
     # 
     # @param octetString the octet string identifying the key identifier.
@@ -62,7 +59,6 @@ module Sun::Security::X509
     end
     
     typesig { [DerValue] }
-    # 
     # Create a KeyIdentifier from the DER encoded value.
     # 
     # @param val the DerValue
@@ -72,7 +68,6 @@ module Sun::Security::X509
     end
     
     typesig { [PublicKey] }
-    # 
     # Creates a KeyIdentifier from a public-key value.
     # 
     # <p>From RFC2459: Two common methods for generating key identifiers from
@@ -109,14 +104,12 @@ module Sun::Security::X509
     end
     
     typesig { [] }
-    # 
     # Return the value of the KeyIdentifier as byte array.
     def get_identifier
       return @octet_string.clone
     end
     
     typesig { [] }
-    # 
     # Returns a printable representation of the KeyUsage.
     def to_s
       s = "KeyIdentifier [\n"
@@ -127,7 +120,6 @@ module Sun::Security::X509
     end
     
     typesig { [DerOutputStream] }
-    # 
     # Write the KeyIdentifier to the DerOutputStream.
     # 
     # @param out the DerOutputStream to write the object to.
@@ -137,7 +129,6 @@ module Sun::Security::X509
     end
     
     typesig { [] }
-    # 
     # Returns a hash code value for this object.
     # Objects that are equal will also have the same hashcode.
     def hash_code
@@ -151,7 +142,6 @@ module Sun::Security::X509
     end
     
     typesig { [Object] }
-    # 
     # Indicates whether some other object is "equal to" this one.
     def equals(other)
       if ((self).equal?(other))

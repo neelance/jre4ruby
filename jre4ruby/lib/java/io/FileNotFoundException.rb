@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 1994-1999 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -31,7 +30,6 @@ module Java::Io
     }
   end
   
-  # 
   # Signals that an attempt to open the file denoted by a specified pathname
   # has failed.
   # 
@@ -47,7 +45,6 @@ module Java::Io
     include_class_members FileNotFoundExceptionImports
     
     typesig { [] }
-    # 
     # Constructs a <code>FileNotFoundException</code> with
     # <code>null</code> as its error detail message.
     def initialize
@@ -55,7 +52,6 @@ module Java::Io
     end
     
     typesig { [String] }
-    # 
     # Constructs a <code>FileNotFoundException</code> with the
     # specified detail message. The string <code>s</code> can be
     # retrieved later by the
@@ -68,7 +64,6 @@ module Java::Io
     end
     
     typesig { [String, String] }
-    # 
     # Constructs a <code>FileNotFoundException</code> with a detail message
     # consisting of the given pathname string followed by the given reason
     # string.  If the <code>reason</code> argument is <code>null</code> then

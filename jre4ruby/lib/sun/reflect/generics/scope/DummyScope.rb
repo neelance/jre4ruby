@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 2003 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -32,7 +31,6 @@ module Sun::Reflect::Generics::Scope
     }
   end
   
-  # 
   # This class is used to provide enclosing scopes for top level classes.
   # We cannot use <tt>null</tt> to represent such a scope, since the
   # enclosing scope is computed lazily, and so the field storing it is
@@ -65,7 +63,6 @@ module Sun::Reflect::Generics::Scope
     
     class_module.module_eval {
       typesig { [] }
-      # 
       # Factory method. Enforces the singleton pattern - only one
       # instance of this class ever exists.
       def make
@@ -74,7 +71,6 @@ module Sun::Reflect::Generics::Scope
     }
     
     typesig { [String] }
-    # 
     # Lookup a type variable in the scope, using its name. Always returns
     # <tt>null</tt>.
     # @param name - the name of the type variable being looked up

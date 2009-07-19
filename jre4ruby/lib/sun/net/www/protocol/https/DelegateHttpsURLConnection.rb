@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 2001-2005 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -34,7 +33,6 @@ module Sun::Net::Www::Protocol::Https
     }
   end
   
-  # 
   # This class was introduced to provide an additional level of
   # abstraction between javax.net.ssl.HttpURLConnection and
   # com.sun.net.ssl.HttpURLConnection objects. <p>
@@ -81,7 +79,6 @@ module Sun::Net::Www::Protocol::Https
     end
     
     typesig { [] }
-    # 
     # Called by layered delegator's finalize() method to handle closing
     # the underlying object.
     def dispose

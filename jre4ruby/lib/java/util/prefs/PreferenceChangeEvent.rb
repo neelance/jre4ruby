@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 2000-2003 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -32,7 +31,6 @@ module Java::Util::Prefs
     }
   end
   
-  # 
   # An event emitted by a <tt>Preferences</tt> node to indicate that
   # a preference has been added, removed or has had its value changed.<p>
   # 
@@ -49,7 +47,6 @@ module Java::Util::Prefs
   class PreferenceChangeEvent < Java::Util::EventObject
     include_class_members PreferenceChangeEventImports
     
-    # 
     # Key of the preference that changed.
     # 
     # @serial
@@ -59,7 +56,6 @@ module Java::Util::Prefs
     alias_method :attr_key=, :key=
     undef_method :key=
     
-    # 
     # New value for preference, or <tt>null</tt> if it was removed.
     # 
     # @serial
@@ -70,7 +66,6 @@ module Java::Util::Prefs
     undef_method :new_value=
     
     typesig { [Preferences, String, String] }
-    # 
     # Constructs a new <code>PreferenceChangeEvent</code> instance.
     # 
     # @param node  The Preferences node that emitted the event.
@@ -86,7 +81,6 @@ module Java::Util::Prefs
     end
     
     typesig { [] }
-    # 
     # Returns the preference node that emitted the event.
     # 
     # @return  The preference node that emitted the event.
@@ -95,7 +89,6 @@ module Java::Util::Prefs
     end
     
     typesig { [] }
-    # 
     # Returns the key of the preference that was changed.
     # 
     # @return  The key of the preference that was changed.
@@ -104,7 +97,6 @@ module Java::Util::Prefs
     end
     
     typesig { [] }
-    # 
     # Returns the new value for the preference.
     # 
     # @return  The new value for the preference, or <tt>null</tt> if the
@@ -114,7 +106,6 @@ module Java::Util::Prefs
     end
     
     typesig { [Java::Io::ObjectOutputStream] }
-    # 
     # Throws NotSerializableException, since NodeChangeEvent objects
     # are not intended to be serializable.
     def write_object(out)
@@ -122,7 +113,6 @@ module Java::Util::Prefs
     end
     
     typesig { [Java::Io::ObjectInputStream] }
-    # 
     # Throws NotSerializableException, since PreferenceChangeEvent objects
     # are not intended to be serializable.
     def read_object(in_)

@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 1999-2007 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -90,7 +89,6 @@ module Sun::Security::Ssl
     end
     
     typesig { [Array.typed(::Java::Byte)] }
-    # 
     # Returns the SSL session object associated with the
     # specific session ID passed.
     def get_session(id)
@@ -99,7 +97,6 @@ module Sun::Security::Ssl
     end
     
     typesig { [] }
-    # 
     # Returns an enumeration of the active SSL sessions.
     def get_ids
       v = Vector.new(@session_cache.size)
@@ -133,7 +130,6 @@ module Sun::Security::Ssl
         raise IllegalArgumentException.new
       end
       @cache_limit = size_
-      # 
       # If cache size limit is reduced, when the cache is full to its
       # previous limit, trim the cache before its contents
       # are used.
@@ -153,11 +149,9 @@ module Sun::Security::Ssl
     end
     
     typesig { [String, ::Java::Int] }
-    # 
     # Returns the SSL session object associated with the
     # specific host name and port number passed.
     def get(hostname, port)
-      # 
       # If no session caching info is available, we won't
       # get one, so exit before doing a lookup.
       if ((hostname).nil? && (port).equal?(-1))
@@ -178,10 +172,8 @@ module Sun::Security::Ssl
       if ((!(@cache_limit).equal?(0)) && (@session_cache.size >= @cache_limit))
         adjust_cache_size_to(@cache_limit - 1)
       end
-      # 
       # Can always add the session id.
       @session_cache.put(s.get_session_id, s)
-      # 
       # If no hostname/port info is available, don't add this one.
       if ((!(s.get_peer_host).nil?) && (!(s.get_peer_port).equal?(-1)))
         @session_host_port_cache.put(get_key(s.get_peer_host, s.get_peer_port), s)
@@ -202,7 +194,6 @@ module Sun::Security::Ssl
         if (!(Debug).nil? && Debug.is_on("sessioncache"))
           System.out.println("exceeded cache limit of " + (@cache_limit).to_s)
         end
-        # 
         # Count the number of elements in the cache. The size() method
         # does not reflect the cache entries that are no longer available,
         # i.e entries that are garbage collected (the cache entries are

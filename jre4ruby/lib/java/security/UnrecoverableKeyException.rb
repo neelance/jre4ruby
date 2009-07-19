@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 1997-2005 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -31,7 +30,6 @@ module Java::Security
     }
   end
   
-  # 
   # This exception is thrown if a key in the keystore cannot be recovered.
   # 
   # 
@@ -45,14 +43,12 @@ module Java::Security
     }
     
     typesig { [] }
-    # 
     # Constructs an UnrecoverableKeyException with no detail message.
     def initialize
       super()
     end
     
     typesig { [String] }
-    # 
     # Constructs an UnrecoverableKeyException with the specified detail
     # message, which provides more information about why this exception
     # has been thrown.

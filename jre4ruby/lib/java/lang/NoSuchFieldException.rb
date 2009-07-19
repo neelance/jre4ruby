@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 1996-1999 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -30,7 +29,6 @@ module Java::Lang
     }
   end
   
-  # 
   # Signals that the class doesn't have a field of a specified name.
   # 
   # @author  unascribed
@@ -39,14 +37,12 @@ module Java::Lang
     include_class_members NoSuchFieldExceptionImports
     
     typesig { [] }
-    # 
     # Constructor.
     def initialize
       super()
     end
     
     typesig { [String] }
-    # 
     # Constructor with a detail message.
     # 
     # @param s the detail message

@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 1996-2005 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -31,7 +30,6 @@ module Java::Util::Zip
     }
   end
   
-  # 
   # A class that can be used to compute the Adler-32 checksum of a data
   # stream. An Adler-32 checksum is almost as reliable as a CRC-32 but
   # can be computed much faster.
@@ -49,14 +47,12 @@ module Java::Util::Zip
     undef_method :adler=
     
     typesig { [] }
-    # 
     # Creates a new Adler32 object.
     def initialize
       @adler = 1
     end
     
     typesig { [::Java::Int] }
-    # 
     # Updates checksum with specified byte.
     # 
     # @param b an array of bytes
@@ -65,7 +61,6 @@ module Java::Util::Zip
     end
     
     typesig { [Array.typed(::Java::Byte), ::Java::Int, ::Java::Int] }
-    # 
     # Updates checksum with specified array of bytes.
     def update(b, off, len)
       if ((b).nil?)
@@ -78,21 +73,18 @@ module Java::Util::Zip
     end
     
     typesig { [Array.typed(::Java::Byte)] }
-    # 
     # Updates checksum with specified array of bytes.
     def update(b)
       @adler = update_bytes(@adler, b, 0, b.attr_length)
     end
     
     typesig { [] }
-    # 
     # Resets checksum to initial value.
     def reset
       @adler = 1
     end
     
     typesig { [] }
-    # 
     # Returns checksum value.
     def get_value
       return @adler & 0xffffffff

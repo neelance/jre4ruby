@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 2000-2006 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -36,7 +35,6 @@ module Sun::Security::Jgss
     }
   end
   
-  # 
   # This class represents the mechanism independent part of a GSS-API
   # context establishment token. Some mechanisms may choose to encode
   # all subsequent tokens as well such that they start with an encoding
@@ -74,7 +72,6 @@ module Sun::Security::Jgss
     undef_method :mech_token_length=
     
     class_module.module_eval {
-      # 
       # The tag defined in the GSS-API mechanism independent token
       # format.
       const_set_lazy(:TOKEN_ID) { 0x60 }
@@ -82,7 +79,6 @@ module Sun::Security::Jgss
     }
     
     typesig { [ObjectIdentifier, ::Java::Int] }
-    # 
     # Creates a GSSHeader instance whose encoding can be used as the
     # prefix for a particular mechanism token.
     # @param mechOid the Oid of the mechanism which generated the token
@@ -100,7 +96,6 @@ module Sun::Security::Jgss
     end
     
     typesig { [InputStream] }
-    # 
     # Reads in a GSSHeader from an InputStream. Typically this would be
     # used as part of reading the complete token from an InputStream
     # that is obtained from a socket.
@@ -125,7 +120,6 @@ module Sun::Security::Jgss
     end
     
     typesig { [] }
-    # 
     # Used to obtain the Oid stored in this GSSHeader instance.
     # @return the Oid of the mechanism.
     def get_oid
@@ -133,7 +127,6 @@ module Sun::Security::Jgss
     end
     
     typesig { [] }
-    # 
     # Used to obtain the length of the mechanism specific token that
     # will follow the encoding of this GSSHeader instance.
     # @return the length of the mechanism specific token portion that
@@ -143,7 +136,6 @@ module Sun::Security::Jgss
     end
     
     typesig { [] }
-    # 
     # Used to obtain the length of the encoding of this GSSHeader.
     # @return the lenght of the encoding of this GSSHeader instance.
     def get_length
@@ -153,7 +145,6 @@ module Sun::Security::Jgss
     
     class_module.module_eval {
       typesig { [ObjectIdentifier, ::Java::Int] }
-      # 
       # Used to determine what the maximum possible mechanism token
       # size is if the complete GSSToken returned to the application
       # (including a GSSHeader) is not to exceed some pre-determined
@@ -178,7 +169,6 @@ module Sun::Security::Jgss
         # Subtract maximum len bytes
         max_total_size -= 5
         return max_total_size
-        # 
         # Len field and mechanism token must fit in remaining
         # space. The range of the len field that we allow is
         # 1 through 5.
@@ -198,7 +188,6 @@ module Sun::Security::Jgss
     }
     
     typesig { [::Java::Int] }
-    # 
     # Used to determine the number of bytes that will be need to encode
     # the length field of the GSSHeader.
     def get_len_field_size(len)
@@ -224,7 +213,6 @@ module Sun::Security::Jgss
     end
     
     typesig { [OutputStream] }
-    # 
     # Encodes this GSSHeader instance onto the provided OutputStream.
     # @param os the OutputStream to which the token should be written.
     # @return the number of bytes that are output as a result of this
@@ -239,7 +227,6 @@ module Sun::Security::Jgss
     end
     
     typesig { [InputStream] }
-    # 
     # Get a length from the input stream, allowing for at most 32 bits of
     # encoding to be used. (Not the same as getting a tagged integer!)
     # 
@@ -252,7 +239,6 @@ module Sun::Security::Jgss
     end
     
     typesig { [::Java::Int, InputStream] }
-    # 
     # Get a length from the input stream, allowing for at most 32 bits of
     # encoding to be used. (Not the same as getting a tagged integer!)
     # 
@@ -270,7 +256,6 @@ module Sun::Security::Jgss
       else
         # long form or indefinite
         tmp &= 0x7f
-        # 
         # NOTE:  tmp == 0 indicates indefinite length encoded data.
         # tmp > 4 indicates more than 4Gb of data.
         if ((tmp).equal?(0))
@@ -290,7 +275,6 @@ module Sun::Security::Jgss
     end
     
     typesig { [::Java::Int, OutputStream] }
-    # 
     # Put the encoding of the length in the specified stream.
     # 
     # @params len the length of the attribute.

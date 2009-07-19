@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 1997-2003 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -31,7 +30,6 @@ module Java::Lang::Ref
     }
   end
   
-  # 
   # Phantom reference objects, which are enqueued after the collector
   # determines that their referents may otherwise be reclaimed.  Phantom
   # references are most often used for scheduling pre-mortem cleanup actions in
@@ -57,7 +55,6 @@ module Java::Lang::Ref
     include_class_members PhantomReferenceImports
     
     typesig { [] }
-    # 
     # Returns this reference object's referent.  Because the referent of a
     # phantom reference is always inaccessible, this method always returns
     # <code>null</code>.
@@ -68,7 +65,6 @@ module Java::Lang::Ref
     end
     
     typesig { [Object, ReferenceQueue] }
-    # 
     # Creates a new phantom reference that refers to the given object and
     # is registered with the given queue.
     # 

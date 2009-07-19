@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 1996-2005 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -46,7 +45,6 @@ module Java::Text
     }
   end
   
-  # 
   # The <code>CollationElementIterator</code> class is used as an iterator
   # to walk through each character of an international string. Use the iterator
   # to return the ordering priority of the positioned character. The ordering
@@ -103,7 +101,6 @@ module Java::Text
     include_class_members CollationElementIteratorImports
     
     class_module.module_eval {
-      # 
       # Null order which indicates the end of string is reached by the
       # cursor.
       const_set_lazy(:NULLORDER) { -0x1 }
@@ -111,7 +108,6 @@ module Java::Text
     }
     
     typesig { [String, RuleBasedCollator] }
-    # 
     # CollationElementIterator constructor.  This takes the source string and
     # the collation object.  The cursor will walk thru the source string based
     # on the predefined collation rules.  If the source string is empty,
@@ -135,7 +131,6 @@ module Java::Text
     end
     
     typesig { [CharacterIterator, RuleBasedCollator] }
-    # 
     # CollationElementIterator constructor.  This takes the source string and
     # the collation object.  The cursor will walk thru the source string based
     # on the predefined collation rules.  If the source string is empty,
@@ -157,7 +152,6 @@ module Java::Text
     end
     
     typesig { [] }
-    # 
     # Resets the cursor to the beginning of the string.  The next call
     # to next() will return the first collation element in the string.
     def reset
@@ -172,7 +166,6 @@ module Java::Text
     end
     
     typesig { [] }
-    # 
     # Get the next collation element in the string.  <p>This iterator iterates
     # over a sequence of collation elements that were built from the string.
     # Because there isn't necessarily a one-to-one mapping from characters to
@@ -263,7 +256,6 @@ module Java::Text
     end
     
     typesig { [] }
-    # 
     # Get the previous collation element in the string.  <p>This iterator iterates
     # over a sequence of collation elements that were built from the string.
     # Because there isn't necessarily a one-to-one mapping from characters to
@@ -352,7 +344,6 @@ module Java::Text
     
     class_module.module_eval {
       typesig { [::Java::Int] }
-      # 
       # Return the primary component of a collation element.
       # @param order the collation element
       # @return the element's primary component
@@ -362,7 +353,6 @@ module Java::Text
       end
       
       typesig { [::Java::Int] }
-      # 
       # Return the secondary component of a collation element.
       # @param order the collation element
       # @return the element's secondary component
@@ -372,7 +362,6 @@ module Java::Text
       end
       
       typesig { [::Java::Int] }
-      # 
       # Return the tertiary component of a collation element.
       # @param order the collation element
       # @return the element's tertiary component
@@ -382,7 +371,6 @@ module Java::Text
     }
     
     typesig { [::Java::Int] }
-    # 
     # Get the comparison order in the desired strength.  Ignore the other
     # differences.
     # @param order The order value
@@ -399,7 +387,6 @@ module Java::Text
     end
     
     typesig { [::Java::Int] }
-    # 
     # Sets the iterator to point to the collation element corresponding to
     # the specified character (the parameter is a CHARACTER offset in the
     # original string, not an offset into its corresponding sequence of
@@ -451,7 +438,6 @@ module Java::Text
     end
     
     typesig { [] }
-    # 
     # Returns the character offset in the original text corresponding to the next
     # collation element.  (That is, getOffset() returns the position in the text
     # corresponding to the collation element that will be returned by the next
@@ -469,7 +455,6 @@ module Java::Text
     end
     
     typesig { [::Java::Int] }
-    # 
     # Return the maximum length of any expansion sequences that end
     # with the specified comparison order.
     # @param order a collation order returned by previous or next.
@@ -481,7 +466,6 @@ module Java::Text
     end
     
     typesig { [String] }
-    # 
     # Set a new string over which to iterate.
     # 
     # @param source  the new source text
@@ -500,7 +484,6 @@ module Java::Text
     end
     
     typesig { [CharacterIterator] }
-    # 
     # Set a new string over which to iterate.
     # 
     # @param source  the new source text.
@@ -531,14 +514,12 @@ module Java::Text
       end
       
       typesig { [::Java::Int] }
-      # 
       # Determine if a character is a Thai base consonant
       def is_thai_base_consonant(ch)
         return (ch >= 0xe01) && (ch <= 0xe2e)
       end
       
       typesig { [::Java::Int] }
-      # 
       # Determine if a character is a Lao vowel (which sorts after
       # its base consonant).
       def is_lao_pre_vowel(ch)
@@ -546,7 +527,6 @@ module Java::Text
       end
       
       typesig { [::Java::Int] }
-      # 
       # Determine if a character is a Lao base consonant
       def is_lao_base_consonant(ch)
         return (ch >= 0xe81) && (ch <= 0xeae)
@@ -554,7 +534,6 @@ module Java::Text
     }
     
     typesig { [::Java::Int, ::Java::Int, Array.typed(::Java::Int), ::Java::Boolean] }
-    # 
     # This method produces a buffer which contains the collation
     # elements for the two characters, with colFirst's values preceding
     # another character's.  Presumably, the other character precedes colFirst
@@ -605,7 +584,6 @@ module Java::Text
     
     class_module.module_eval {
       typesig { [::Java::Int] }
-      # 
       # Check if a comparison order is ignorable.
       # @return true if a character is ignorable, false otherwise.
       def is_ignorable(order)
@@ -614,7 +592,6 @@ module Java::Text
     }
     
     typesig { [::Java::Int] }
-    # 
     # Get the ordering priority of the next contracting character in the
     # string.
     # @param ch the starting character of a contracting character token
@@ -683,7 +660,6 @@ module Java::Text
     end
     
     typesig { [::Java::Int] }
-    # 
     # Get the ordering priority of the previous contracting character in the
     # string.
     # @param ch the starting character of a contracting character token

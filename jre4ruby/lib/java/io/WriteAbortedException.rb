@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 1996-2005 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -31,7 +30,6 @@ module Java::Io
     }
   end
   
-  # 
   # Signals that one of the ObjectStreamExceptions was thrown during a
   # write operation.  Thrown during a read operation when one of the
   # ObjectStreamExceptions was thrown during a write operation.  The
@@ -56,7 +54,6 @@ module Java::Io
       const_attr_reader  :SerialVersionUID
     }
     
-    # 
     # Exception that was caught while writing the ObjectStream.
     # 
     # <p>This field predates the general-purpose exception chaining facility.
@@ -71,7 +68,6 @@ module Java::Io
     undef_method :detail=
     
     typesig { [String, Exception] }
-    # 
     # Constructs a WriteAbortedException with a string describing
     # the exception and the exception causing the abort.
     # @param s   String describing the exception.
@@ -84,7 +80,6 @@ module Java::Io
     end
     
     typesig { [] }
-    # 
     # Produce the message and include the message from the nested
     # exception, if there is one.
     def get_message
@@ -96,7 +91,6 @@ module Java::Io
     end
     
     typesig { [] }
-    # 
     # Returns the exception that terminated the operation (the <i>cause</i>).
     # 
     # @return  the exception that terminated the operation (the <i>cause</i>),

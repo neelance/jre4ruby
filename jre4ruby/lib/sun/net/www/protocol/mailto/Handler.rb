@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 1995-2000 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -46,7 +45,6 @@ module Sun::Net::Www::Protocol::Mailto
     include_class_members HandlerImports
     
     typesig { [URL] }
-    # 
     # //     private String decodePercent(String s) {
     # //      if (s==null || s.indexOf('%') < 0)
     # //          return s;
@@ -110,7 +108,6 @@ module Sun::Net::Www::Protocol::Mailto
     end
     
     typesig { [URL, String, ::Java::Int, ::Java::Int] }
-    # 
     # This method is called to parse the string spec into URL u for a
     # mailto protocol.
     # 
@@ -127,7 +124,6 @@ module Sun::Net::Www::Protocol::Mailto
       if (start < limit)
         file = (spec.substring(start, limit)).to_s
       end
-      # 
       # Let's just make sure we DO have an Email address in the URL.
       nogood = false
       if ((file).nil? || (file == ""))

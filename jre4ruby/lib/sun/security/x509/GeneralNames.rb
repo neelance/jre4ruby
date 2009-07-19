@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 1997-2003 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -34,7 +33,6 @@ module Sun::Security::X509
     }
   end
   
-  # 
   # This object class represents the GeneralNames type required in
   # X509 certificates.
   # <p>The ASN.1 syntax for this is:
@@ -54,7 +52,6 @@ module Sun::Security::X509
     undef_method :names=
     
     typesig { [DerValue] }
-    # 
     # Create the GeneralNames, decoding from the passed DerValue.
     # 
     # @param derVal the DerValue to construct the GeneralNames from.
@@ -76,7 +73,6 @@ module Sun::Security::X509
     end
     
     typesig { [] }
-    # 
     # The default constructor for this class.
     def initialize
       @names = nil
@@ -118,7 +114,6 @@ module Sun::Security::X509
     end
     
     typesig { [DerOutputStream] }
-    # 
     # Write the extension to the DerOutputStream.
     # 
     # @param out the DerOutputStream to write the extension to.
@@ -135,7 +130,6 @@ module Sun::Security::X509
     end
     
     typesig { [Object] }
-    # 
     # compare this GeneralNames to other object for equality
     # 
     # @returns true iff this equals other

@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Portions Copyright 2000-2006 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -49,7 +48,6 @@ module Sun::Security::Krb5::Internal::Ccache
     }
   end
   
-  # 
   # CredentialsCache stores credentials(tickets, session keys, etc) in a
   # semi-permanent store
   # for later use by different program.
@@ -142,7 +140,7 @@ module Sun::Security::Krb5::Internal::Ccache
           rescue KrbException => e
             # we don't handle it now, instead we return a null at the end.
             if (self.attr_debug)
-              e_.print_stack_trace
+              e.print_stack_trace
             end
           end
           return nil
@@ -187,7 +185,7 @@ module Sun::Security::Krb5::Internal::Ccache
             end
           rescue KrbException => e
             if (self.attr_debug)
-              e_.print_stack_trace
+              e.print_stack_trace
             end
           end
           return nil
@@ -260,7 +258,6 @@ module Sun::Security::Krb5::Internal::Ccache
     end
     
     typesig { [Credentials] }
-    # 
     # Updates the credentials list. If the specified credentials for the
     # service is new, add it to the list. If there is an entry in the list,
     # replace the old credentials with the new one.
@@ -307,7 +304,6 @@ module Sun::Security::Krb5::Internal::Ccache
     end
     
     typesig { [] }
-    # 
     # Saves the credentials cache file to the disk.
     def save
       synchronized(self) do
@@ -342,7 +338,6 @@ module Sun::Security::Krb5::Internal::Ccache
     end
     
     typesig { [] }
-    # 
     # Returns the list of credentials entries in the cache file.
     def get_creds_list
       synchronized(self) do
@@ -384,7 +379,6 @@ module Sun::Security::Krb5::Internal::Ccache
     end
     
     typesig { [PrincipalName, Realm] }
-    # 
     # Gets a credentials for a specified service.
     # @param sname service principal name.
     # @param srealm the realm that the service belongs to.
@@ -427,7 +421,6 @@ module Sun::Security::Krb5::Internal::Ccache
     
     class_module.module_eval {
       typesig { [] }
-      # 
       # Returns path name of the credentials cache file.
       # The path name is searched in the following order:
       # 
@@ -439,7 +432,6 @@ module Sun::Security::Krb5::Internal::Ccache
         name = nil
         # get cache name from system.property
         osname = Java::Security::AccessController.do_privileged(Sun::Security::Action::GetPropertyAction.new("os.name"))
-        # 
         # For Unix platforms we use the default cache name to be
         # /tmp/krbcc_uid ; for all other platforms  we use
         # {user_home}/krb5_cc{user_name}

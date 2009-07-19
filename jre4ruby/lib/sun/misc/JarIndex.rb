@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 1999-2005 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -35,7 +34,6 @@ module Sun::Misc
     }
   end
   
-  # 
   # This class is used to maintain mappings from packages, classes
   # and resources to their enclosing JAR files. Mappings are kept
   # at the package level except for class or resource files that
@@ -48,7 +46,6 @@ module Sun::Misc
   class JarIndex 
     include_class_members JarIndexImports
     
-    # 
     # The hash map that maintains mappings from
     # package/classe/resource to jar file list(s)
     attr_accessor :index_map
@@ -57,7 +54,6 @@ module Sun::Misc
     alias_method :attr_index_map=, :index_map=
     undef_method :index_map=
     
-    # 
     # The hash map that maintains mappings from
     # jar file to package/class/resource lists
     attr_accessor :jar_map
@@ -66,7 +62,6 @@ module Sun::Misc
     alias_method :attr_jar_map=, :jar_map=
     undef_method :jar_map=
     
-    # 
     # An ordered list of jar file names.
     attr_accessor :jar_files
     alias_method :attr_jar_files, :jar_files
@@ -75,14 +70,12 @@ module Sun::Misc
     undef_method :jar_files=
     
     class_module.module_eval {
-      # 
       # The index file name.
       const_set_lazy(:INDEX_NAME) { "META-INF/INDEX.LIST" }
       const_attr_reader  :INDEX_NAME
     }
     
     typesig { [] }
-    # 
     # Constructs a new, empty jar index.
     def initialize
       @index_map = nil
@@ -93,7 +86,6 @@ module Sun::Misc
     end
     
     typesig { [InputStream] }
-    # 
     # Constructs a new index from the specified input stream.
     # 
     # @param is the input stream containing the index data
@@ -103,7 +95,6 @@ module Sun::Misc
     end
     
     typesig { [Array.typed(String)] }
-    # 
     # Constructs a new index for the specified list of jar files.
     # 
     # @param files the list of jar files to construct the index from.
@@ -115,7 +106,6 @@ module Sun::Misc
     
     class_module.module_eval {
       typesig { [JarFile, MetaIndex] }
-      # 
       # Returns the jar index, or <code>null</code> if none.
       # 
       # @param jar the JAR file to get the index from.
@@ -137,14 +127,12 @@ module Sun::Misc
     }
     
     typesig { [] }
-    # 
     # Returns the jar files that are defined in this index.
     def get_jar_files
       return @jar_files
     end
     
     typesig { [String, String, HashMap] }
-    # 
     # Add the key, value pair to the hashmap, the value will
     # be put in a linked list which is created if necessary.
     def add_to_list(key, value, t)
@@ -161,7 +149,6 @@ module Sun::Misc
     end
     
     typesig { [String] }
-    # 
     # Returns the list of jar files that are mapped to the file.
     # 
     # @param fileName the key of the mapping
@@ -178,7 +165,6 @@ module Sun::Misc
     end
     
     typesig { [String, String] }
-    # 
     # Add the mapping from the specified file to the specified
     # jar file. If there were no mapping for the package of the
     # specified file before, a new linked list will be created,
@@ -204,7 +190,6 @@ module Sun::Misc
     end
     
     typesig { [Array.typed(String)] }
-    # 
     # Go through all the jar files and construct the
     # index table.
     def parse_jars(files)
@@ -230,7 +215,6 @@ module Sun::Misc
     end
     
     typesig { [OutputStream] }
-    # 
     # Writes the index to the specified OutputStream
     # 
     # @param out the output stream
@@ -259,7 +243,6 @@ module Sun::Misc
     end
     
     typesig { [InputStream] }
-    # 
     # Reads the index from the specified InputStream.
     # 
     # @param is the input stream
@@ -292,7 +275,6 @@ module Sun::Misc
     end
     
     typesig { [JarIndex, String] }
-    # 
     # Merges the current index into another index, taking into account
     # the relative path of the current index.
     # 

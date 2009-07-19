@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 1996-2006 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -37,7 +36,6 @@ module Sun::Net::Www::Http
     }
   end
   
-  # 
   # A stream that has the property of being able to be kept alive for
   # multiple downloads from the same server.
   # 
@@ -103,7 +101,6 @@ module Sun::Net::Www::Http
     }
     
     typesig { [InputStream, ProgressSource, ::Java::Int, HttpClient] }
-    # 
     # Constructor
     def initialize(is, pi, expected, hc)
       @hc = nil
@@ -115,7 +112,6 @@ module Sun::Net::Www::Http
     end
     
     typesig { [] }
-    # 
     # Attempt to cache this connection
     def close
       # If the inputstream is closed already, just return.

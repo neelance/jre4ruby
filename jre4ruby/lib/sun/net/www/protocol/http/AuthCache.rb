@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 2003 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -38,7 +37,6 @@ module Sun::Net::Www::Protocol::Http
     }
   end
   
-  # 
   # @author Michael McMahon
   # 
   # Interface provided by internal http authentication cache.
@@ -48,7 +46,6 @@ module Sun::Net::Www::Protocol::Http
     include_class_members AuthCacheImports
     
     typesig { [String, AuthCacheValue] }
-    # 
     # Put an entry in the cache. pkey is a string specified as follows:
     # 
     # A:[B:]C:D:E[:F]   Between 4 and 6 fields separated by ":"
@@ -70,7 +67,6 @@ module Sun::Net::Www::Protocol::Http
     end
     
     typesig { [String, String] }
-    # 
     # Get an entry from the cache based on pkey as described above, but also
     # using a pathname (skey) and the cache must return an entry
     # if skey is a sub-path of the AuthCacheValue.path field.
@@ -79,7 +75,6 @@ module Sun::Net::Www::Protocol::Http
     end
     
     typesig { [String, AuthCacheValue] }
-    # 
     # remove the entry from the cache whose pkey is specified and
     # whose path is equal to entry.path. If entry is null then
     # all entries with the same pkey should be removed.

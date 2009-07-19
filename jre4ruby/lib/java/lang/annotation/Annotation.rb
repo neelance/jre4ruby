@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 2003-2004 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -31,7 +30,6 @@ module Java::Lang::Annotation
     }
   end
   
-  # 
   # The common interface extended by all annotation types.  Note that an
   # interface that manually extends this one does <i>not</i> define
   # an annotation type.  Also note that this interface does not itself
@@ -43,7 +41,6 @@ module Java::Lang::Annotation
     include_class_members AnnotationImports
     
     typesig { [Object] }
-    # 
     # Returns true if the specified object represents an annotation
     # that is logically equivalent to this one.  In other words,
     # returns true if the specified object is an instance of the same
@@ -83,7 +80,6 @@ module Java::Lang::Annotation
     end
     
     typesig { [] }
-    # 
     # Returns the hash code of this annotation, as defined below:
     # 
     # <p>The hash code of an annotation is the sum of the hash codes
@@ -121,7 +117,6 @@ module Java::Lang::Annotation
     end
     
     typesig { [] }
-    # 
     # Returns a string representation of this annotation.  The details
     # of the representation are implementation-dependent, but the following
     # may be regarded as typical:
@@ -135,7 +130,6 @@ module Java::Lang::Annotation
     end
     
     typesig { [] }
-    # 
     # Returns the annotation type of this annotation.
     def annotation_type
       raise NotImplementedError

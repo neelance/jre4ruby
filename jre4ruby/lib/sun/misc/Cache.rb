@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 1995-1996 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -34,7 +33,6 @@ module Sun::Misc
     }
   end
   
-  # 
   # Caches the collision list.
   class CacheEntry < CacheImports.const_get :Ref
     include_class_members CacheImports
@@ -74,7 +72,6 @@ module Sun::Misc
     alias_method :initialize__cache_entry, :initialize
   end
   
-  # 
   # The Cache class. Maps keys to values. Any object can be used as
   # a key and/or value.  This is very similar to the Hashtable
   # class, except that after putting an object into the Cache,
@@ -109,7 +106,6 @@ module Sun::Misc
   class Cache < CacheImports.const_get :Dictionary
     include_class_members CacheImports
     
-    # 
     # The hash table data.
     attr_accessor :table
     alias_method :attr_table, :table
@@ -117,7 +113,6 @@ module Sun::Misc
     alias_method :attr_table=, :table=
     undef_method :table=
     
-    # 
     # The total number of entries in the hash table.
     attr_accessor :count
     alias_method :attr_count, :count
@@ -125,7 +120,6 @@ module Sun::Misc
     alias_method :attr_count=, :count=
     undef_method :count=
     
-    # 
     # Rehashes the table when count exceeds this threshold.
     attr_accessor :threshold
     alias_method :attr_threshold, :threshold
@@ -133,7 +127,6 @@ module Sun::Misc
     alias_method :attr_threshold=, :threshold=
     undef_method :threshold=
     
-    # 
     # The load factor for the hashtable.
     attr_accessor :load_factor
     alias_method :attr_load_factor, :load_factor
@@ -152,7 +145,6 @@ module Sun::Misc
     end
     
     typesig { [::Java::Int, ::Java::Float] }
-    # 
     # Constructs a new, empty Cache with the specified initial
     # capacity and the specified load factor.
     # @param initialCapacity the initial number of buckets
@@ -173,7 +165,6 @@ module Sun::Misc
     end
     
     typesig { [::Java::Int] }
-    # 
     # Constructs a new, empty Cache with the specified initial
     # capacity.
     # @param initialCapacity the initial number of buckets
@@ -187,7 +178,6 @@ module Sun::Misc
     end
     
     typesig { [] }
-    # 
     # Constructs a new, empty Cache. A default capacity and load factor
     # is used. Note that the Cache will automatically grow when it gets
     # full.
@@ -206,21 +196,18 @@ module Sun::Misc
     end
     
     typesig { [] }
-    # 
     # Returns the number of elements contained within the Cache.
     def size
       return @count
     end
     
     typesig { [] }
-    # 
     # Returns true if the Cache contains no elements.
     def is_empty
       return (@count).equal?(0)
     end
     
     typesig { [] }
-    # 
     # Returns an enumeration of the Cache's keys.
     # @see Cache#elements
     # @see Enumeration
@@ -231,7 +218,6 @@ module Sun::Misc
     end
     
     typesig { [] }
-    # 
     # Returns an enumeration of the elements. Use the Enumeration methods
     # on the returned object to fetch the elements sequentially.
     # @see Cache#keys
@@ -243,7 +229,6 @@ module Sun::Misc
     end
     
     typesig { [Object] }
-    # 
     # Gets the object associated with the specified key in the Cache.
     # @param key the key in the hash table
     # @returns the element for the key or null if the key
@@ -266,7 +251,6 @@ module Sun::Misc
     end
     
     typesig { [] }
-    # 
     # Rehashes the contents of the table into a bigger table.
     # This is method is called automatically when the Cache's
     # size exceeds the threshold.
@@ -297,7 +281,6 @@ module Sun::Misc
     end
     
     typesig { [Object, Object] }
-    # 
     # Puts the specified element into the Cache, using the specified
     # key.  The element may be retrieved by doing a get() with the same
     # key.  The key and the element cannot be null.
@@ -351,7 +334,6 @@ module Sun::Misc
     end
     
     typesig { [Object] }
-    # 
     # Removes the element corresponding to the key. Does nothing if the
     # key is not present.
     # @param key the key that needs to be removed
@@ -384,7 +366,6 @@ module Sun::Misc
     alias_method :initialize__cache, :initialize
   end
   
-  # 
   # A Cache enumerator class.  This class should remain opaque
   # to the client. It will use the Enumeration interface.
   class CacheEnumerator 

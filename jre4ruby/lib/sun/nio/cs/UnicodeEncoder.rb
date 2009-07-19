@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 2000-2004 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -33,7 +32,6 @@ module Sun::Nio::Cs
     }
   end
   
-  # 
   # Base class for different flavors of UTF-16 encoders
   class UnicodeEncoder < UnicodeEncoderImports.const_get :CharsetEncoder
     include_class_members UnicodeEncoderImports

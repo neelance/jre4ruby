@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 1994-2003 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -31,7 +30,6 @@ module Java::Io
     }
   end
   
-  # 
   # The class implements a buffered output stream. By setting up such
   # an output stream, an application can write bytes to the underlying
   # output stream without necessarily causing a call to the underlying
@@ -42,7 +40,6 @@ module Java::Io
   class BufferedOutputStream < BufferedOutputStreamImports.const_get :FilterOutputStream
     include_class_members BufferedOutputStreamImports
     
-    # 
     # The internal buffer where data is stored.
     attr_accessor :buf
     alias_method :attr_buf, :buf
@@ -50,7 +47,6 @@ module Java::Io
     alias_method :attr_buf=, :buf=
     undef_method :buf=
     
-    # 
     # The number of valid bytes in the buffer. This value is always
     # in the range <tt>0</tt> through <tt>buf.length</tt>; elements
     # <tt>buf[0]</tt> through <tt>buf[count-1]</tt> contain valid
@@ -62,7 +58,6 @@ module Java::Io
     undef_method :count=
     
     typesig { [OutputStream] }
-    # 
     # Creates a new buffered output stream to write data to the
     # specified underlying output stream.
     # 
@@ -72,7 +67,6 @@ module Java::Io
     end
     
     typesig { [OutputStream, ::Java::Int] }
-    # 
     # Creates a new buffered output stream to write data to the
     # specified underlying output stream with the specified buffer
     # size.
@@ -100,7 +94,6 @@ module Java::Io
     end
     
     typesig { [::Java::Int] }
-    # 
     # Writes the specified byte to this buffered output stream.
     # 
     # @param      b   the byte to be written.
@@ -115,7 +108,6 @@ module Java::Io
     end
     
     typesig { [Array.typed(::Java::Byte), ::Java::Int, ::Java::Int] }
-    # 
     # Writes <code>len</code> bytes from the specified byte array
     # starting at offset <code>off</code> to this buffered output stream.
     # 
@@ -149,7 +141,6 @@ module Java::Io
     end
     
     typesig { [] }
-    # 
     # Flushes this buffered output stream. This forces any buffered
     # output bytes to be written out to the underlying output stream.
     # 

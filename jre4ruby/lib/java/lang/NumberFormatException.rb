@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 1994-2001 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -30,7 +29,6 @@ module Java::Lang
     }
   end
   
-  # 
   # Thrown to indicate that the application has attempted to convert
   # a string to one of the numeric types, but that the string does not
   # have the appropriate format.
@@ -47,14 +45,12 @@ module Java::Lang
     }
     
     typesig { [] }
-    # 
     # Constructs a <code>NumberFormatException</code> with no detail message.
     def initialize
       super()
     end
     
     typesig { [String] }
-    # 
     # Constructs a <code>NumberFormatException</code> with the
     # specified detail message.
     # 
@@ -65,7 +61,6 @@ module Java::Lang
     
     class_module.module_eval {
       typesig { [String] }
-      # 
       # Factory method for making a <code>NumberFormatException</code>
       # given the specified input which caused the error.
       # 

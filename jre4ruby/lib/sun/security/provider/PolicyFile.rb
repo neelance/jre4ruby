@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 1997-2006 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -68,7 +67,6 @@ module Sun::Security::Provider
     }
   end
   
-  # 
   # import javax.security.auth.AuthPermission;
   # import javax.security.auth.kerberos.ServicePermission;
   # import javax.security.auth.kerberos.DelegationPermission;
@@ -388,7 +386,6 @@ module Sun::Security::Provider
     }
     
     typesig { [] }
-    # 
     # Initializes the Policy object and reads the default policy
     # configuration file(s) into the Policy object.
     def initialize
@@ -410,7 +407,6 @@ module Sun::Security::Provider
     end
     
     typesig { [URL] }
-    # 
     # Initializes the Policy object and reads the default policy
     # from the specified URL only.
     def initialize(url)
@@ -433,7 +429,6 @@ module Sun::Security::Provider
     end
     
     typesig { [URL] }
-    # 
     # Initializes the Policy object and reads the default policy
     # configuration file(s) into the Policy object.
     # 
@@ -577,7 +572,6 @@ module Sun::Security::Provider
     typesig { [PolicyInfo, URL] }
     def init_policy_file(new_info, url)
       if (!(url).nil?)
-        # 
         # If the caller specified a URL via Policy.getInstance,
         # we only read from that URL
         if (!(Debug).nil?)
@@ -606,7 +600,6 @@ module Sun::Security::Provider
           alias_method :initialize_anonymous, :initialize
         end.new_local(self))
       else
-        # 
         # Caller did not specify URL via Policy.getInstance.
         # Read from URLs listed in the java.security properties file.
         # 
@@ -637,7 +630,7 @@ module Sun::Security::Provider
         
         typesig { [] }
         define_method :run do
-          loaded_policy = false
+          loaded_policy_ = false
           if (self.attr_allow_system_properties)
             extra_policy = System.get_property(propname)
             if (!(extra_policy).nil?)
@@ -659,7 +652,7 @@ module Sun::Security::Provider
                   Debug.println("reading " + (policy_url).to_s)
                 end
                 if (init(policy_url, new_info))
-                  loaded_policy = true
+                  loaded_policy_ = true
                 end
               rescue Exception => e
                 # ignore.
@@ -671,7 +664,7 @@ module Sun::Security::Provider
                 if (!(Debug).nil?)
                   Debug.println("overriding other policies!")
                 end
-                return Boolean.value_of(loaded_policy)
+                return Boolean.value_of(loaded_policy_)
               end
             end
           end
@@ -679,33 +672,33 @@ module Sun::Security::Provider
           policy_uri = nil
           while (!((policy_uri = (Security.get_property(urlname + (n).to_s)).to_s)).nil?)
             begin
-              policy_url_ = nil
+              policy_url = nil
               expanded_uri = PropertyExpander.expand(policy_uri).replace(JavaFile.attr_separator_char, Character.new(?/.ord))
               if (policy_uri.starts_with("file:${java.home}/") || policy_uri.starts_with("file:${user.home}/"))
                 # this special case accommodates
                 # the situation java.home/user.home
                 # expand to a single slash, resulting in
                 # a file://foo URI
-                policy_url_ = JavaFile.new(expanded_uri.substring(5)).to_uri.to_url
+                policy_url = JavaFile.new(expanded_uri.substring(5)).to_uri.to_url
               else
-                policy_url_ = URI.new(expanded_uri).to_url
+                policy_url = URI.new(expanded_uri).to_url
               end
               if (!(Debug).nil?)
-                Debug.println("reading " + (policy_url_).to_s)
+                Debug.println("reading " + (policy_url).to_s)
               end
-              if (init(policy_url_, new_info))
-                loaded_policy = true
+              if (init(policy_url, new_info))
+                loaded_policy_ = true
               end
             rescue Exception => e
               if (!(Debug).nil?)
-                Debug.println("error reading policy " + (e_).to_s)
-                e_.print_stack_trace
+                Debug.println("error reading policy " + (e).to_s)
+                e.print_stack_trace
               end
               # ignore that policy
             end
             ((n += 1) - 1)
           end
-          return Boolean.value_of(loaded_policy)
+          return Boolean.value_of(loaded_policy_)
         end
         
         typesig { [] }
@@ -720,7 +713,6 @@ module Sun::Security::Provider
     end
     
     typesig { [URL, PolicyInfo] }
-    # 
     # Reads a policy configuration into the Policy object using a
     # Reader object.
     # 
@@ -764,8 +756,8 @@ module Sun::Security::Provider
       rescue Exception => e
         if (!(Debug).nil?)
           Debug.println("error parsing " + (policy).to_s)
-          Debug.println(e_.to_s)
-          e_.print_stack_trace
+          Debug.println(e.to_s)
+          e.print_stack_trace
         end
       ensure
         if (!(isr).nil?)
@@ -846,7 +838,6 @@ module Sun::Security::Provider
     end
     
     typesig { [PolicyParser::GrantEntry, KeyStore, PolicyInfo] }
-    # 
     # Given a GrantEntry, create a codeSource.
     # 
     # @return null if signedBy alias is not recognized
@@ -873,7 +864,6 @@ module Sun::Security::Provider
     end
     
     typesig { [PolicyParser::GrantEntry, KeyStore, PolicyInfo] }
-    # 
     # Add one policy entry to the list.
     def add_grant_entry(ge, key_store, new_info)
       if (!(Debug).nil?)
@@ -934,16 +924,16 @@ module Sun::Security::Provider
               Debug.println("  " + (perm).to_s)
             end
           rescue ClassNotFoundException => cnfe
-            certs_ = nil
+            certs = nil
             if (!(pe.attr_signed_by).nil?)
-              certs_ = get_certificates(key_store, pe.attr_signed_by, new_info)
+              certs = get_certificates(key_store, pe.attr_signed_by, new_info)
             else
-              certs_ = nil
+              certs = nil
             end
             # only add if we had no signer or we had a
             # a signer and found the keys for it.
-            if (!(certs_).nil? || (pe.attr_signed_by).nil?)
-              perm_ = UnresolvedPermission.new(pe.attr_permission, pe.attr_name, pe.attr_action, certs_)
+            if (!(certs).nil? || (pe.attr_signed_by).nil?)
+              perm_ = UnresolvedPermission.new(pe.attr_permission, pe.attr_name, pe.attr_action, certs)
               entry.add(perm_)
               if (!(Debug).nil?)
                 Debug.println("  " + (perm_).to_s)
@@ -954,17 +944,17 @@ module Sun::Security::Provider
             source = Array.typed(Object).new([pe.attr_permission, ite.get_target_exception.to_s])
             System.err.println(form.format(source))
           rescue Exception => e
-            form_ = MessageFormat.new(ResourcesMgr.get_string(POLICY + ": error adding Permission, perm:\n\tmessage"))
-            source_ = Array.typed(Object).new([pe.attr_permission, e.to_s])
-            System.err.println(form_.format(source_))
+            form = MessageFormat.new(ResourcesMgr.get_string(POLICY + ": error adding Permission, perm:\n\tmessage"))
+            source = Array.typed(Object).new([pe.attr_permission, e.to_s])
+            System.err.println(form.format(source))
           end
         end
         # No need to sync because noone has access to newInfo yet
         new_info.attr_policy_entries.add(entry)
       rescue Exception => e
-        form__ = MessageFormat.new(ResourcesMgr.get_string(POLICY + ": error adding Entry:\n\tmessage"))
-        source__ = Array.typed(Object).new([e_.to_s])
-        System.err.println(form__.format(source__))
+        form = MessageFormat.new(ResourcesMgr.get_string(POLICY + ": error adding Entry:\n\tmessage"))
+        source = Array.typed(Object).new([e.to_s])
+        System.err.println(form.format(source))
       end
       if (!(Debug).nil?)
         Debug.println
@@ -973,7 +963,6 @@ module Sun::Security::Provider
     
     class_module.module_eval {
       typesig { [String, String, String] }
-      # 
       # Returns a new Permission object of the given Type. The Permission is
       # created by getting the
       # Class object using the <code>Class.forName</code> method, and using
@@ -1023,21 +1012,20 @@ module Sun::Security::Provider
         else
           if (!(name).nil? && (actions).nil?)
             begin
-              c___ = pc.get_constructor(PARAMS1)
-              return c___.new_instance(Array.typed(Object).new([name]))
+              c = pc.get_constructor(PARAMS1)
+              return c.new_instance(Array.typed(Object).new([name]))
             rescue NoSuchMethodException => ne
-              c____ = pc.get_constructor(PARAMS2)
-              return c____.new_instance(Array.typed(Object).new([name, actions]))
+              c_ = pc.get_constructor(PARAMS2)
+              return c_.new_instance(Array.typed(Object).new([name, actions]))
             end
           else
-            c_____ = pc.get_constructor(PARAMS2)
-            return c_____.new_instance(Array.typed(Object).new([name, actions]))
+            c = pc.get_constructor(PARAMS2)
+            return c.new_instance(Array.typed(Object).new([name, actions]))
           end
         end
       end
       
       typesig { [Class, String, String] }
-      # 
       # Creates one of the well-known permissions directly instead of
       # via reflection. Keep list short to not penalize non-JDK-defined
       # permissions.
@@ -1063,7 +1051,6 @@ module Sun::Security::Provider
                   else
                     if ((claz == AWTPermission.class))
                       return AWTPermission.new(name, actions)
-                      # 
                       # } else if (claz.equals(ReflectPermission.class)) {
                       # return new ReflectPermission(name, actions);
                       # } else if (claz.equals(SecurityPermission.class)) {
@@ -1099,7 +1086,6 @@ module Sun::Security::Provider
     }
     
     typesig { [KeyStore, String, PolicyInfo] }
-    # 
     # Fetch all certs associated with this alias.
     def get_certificates(key_store, aliases, new_info)
       vcerts = nil
@@ -1143,14 +1129,12 @@ module Sun::Security::Provider
     end
     
     typesig { [] }
-    # 
     # Refreshes the policy object by re-reading all the policy files.
     def refresh
       init(@url)
     end
     
     typesig { [ProtectionDomain, Permission] }
-    # 
     # Evaluates the the global policy for the permissions granted to
     # the ProtectionDomain and tests whether the permission is
     # granted.
@@ -1179,7 +1163,6 @@ module Sun::Security::Provider
     end
     
     typesig { [ProtectionDomain] }
-    # 
     # Examines this <code>Policy</code> and returns the permissions granted
     # to the specified <code>ProtectionDomain</code>.  This includes
     # the permissions currently associated with the domain as well
@@ -1229,7 +1212,6 @@ module Sun::Security::Provider
     end
     
     typesig { [CodeSource] }
-    # 
     # Examines this Policy and creates a PermissionCollection object with
     # the set of permissions for the specified CodeSource.
     # 
@@ -1243,7 +1225,6 @@ module Sun::Security::Provider
     end
     
     typesig { [Permissions, ProtectionDomain] }
-    # 
     # Examines the global policy and returns the provided Permissions
     # object with additional permissions granted to the specified
     # ProtectionDomain.
@@ -1282,7 +1263,6 @@ module Sun::Security::Provider
     end
     
     typesig { [Permissions, CodeSource] }
-    # 
     # Examines the global policy and returns the provided Permissions
     # object with additional permissions granted to the specified
     # CodeSource.
@@ -1325,7 +1305,7 @@ module Sun::Security::Provider
       # because checkForTrustedIdentity (below) might update list
       synchronized((pi.attr_identity_policy_entries)) do
         pi.attr_identity_policy_entries.each do |entry|
-          add_permissions(perms, cs, principals, entry_)
+          add_permissions(perms, cs, principals, entry)
         end
       end
       # now see if any of the keys are trusted ids.
@@ -1414,9 +1394,9 @@ module Sun::Security::Provider
       # current thread has principals and this policy entry
       # has principals.  see if policy entry principals match
       # principals in current ACC
-      i_ = 0
-      while i_ < entry_ps.size
-        pppe = entry_ps.get(i_)
+      i = 0
+      while i < entry_ps.size
+        pppe = entry_ps.get(i)
         # see if principal entry is a PrincipalComparator
         begin
           p_class = Class.for_name(pppe.attr_principal_class, true, JavaThread.current_thread.get_context_class_loader)
@@ -1471,7 +1451,7 @@ module Sun::Security::Provider
             return
           end
         end
-        ((i_ += 1) - 1)
+        ((i += 1) - 1)
       end
       # all policy entry principals were found in the current ACC -
       # grant the policy permissions
@@ -1500,7 +1480,6 @@ module Sun::Security::Provider
     end
     
     typesig { [Array.typed(Principal), PolicyParser::PrincipalEntry] }
-    # 
     # This method returns, true, if the principal in the policy entry,
     # pppe, is part of the current thread's principal array, pList.
     # This method also returns, true, if the policy entry's principal
@@ -1532,7 +1511,6 @@ module Sun::Security::Provider
     end
     
     typesig { [SelfPermission, JavaList, Array.typed(Principal), Permissions] }
-    # 
     # <p>
     # 
     # @param sp the SelfPermission that needs to be expanded <p>
@@ -1630,13 +1608,12 @@ module Sun::Security::Provider
         end
       rescue Exception => e
         if (!(Debug).nil?)
-          Debug.println(e_.to_s)
+          Debug.println(e.to_s)
         end
       end
     end
     
     typesig { [PolicyParser::PrincipalEntry, Array.typed(Principal)] }
-    # 
     # return the principal class/name pair in the 2D array.
     # array[x][y]:     x corresponds to the array length.
     # if (y == 0), it's the principal class.
@@ -1666,33 +1643,32 @@ module Sun::Security::Provider
             end
             ((i += 1) - 1)
           end
-          info_ = Array.typed(String).new(plist.size) { Array.typed(String).new(2) { nil } }
+          info = Array.typed(String).new(plist.size) { Array.typed(String).new(2) { nil } }
           i_ = 0
           p_iterator = plist.iterator
           while (p_iterator.has_next)
             p = p_iterator.next
-            info_[i_][0] = p.get_class.get_name
-            info_[i_][1] = p.get_name
+            info[i_][0] = p.get_class.get_name
+            info[i_][1] = p.get_name
             ((i_ += 1) - 1)
           end
-          return info_
+          return info
         else
           # build an info array for every
           # one of the current Domain's principals
-          info__ = Array.typed(String).new(pdp.attr_length) { Array.typed(String).new(2) { nil } }
-          i__ = 0
-          while i__ < pdp.attr_length
-            info__[i__][0] = pdp[i__].get_class.get_name
-            info__[i__][1] = pdp[i__].get_name
-            ((i__ += 1) - 1)
+          info = Array.typed(String).new(pdp.attr_length) { Array.typed(String).new(2) { nil } }
+          i = 0
+          while i < pdp.attr_length
+            info[i][0] = pdp[i].get_class.get_name
+            info[i][1] = pdp[i].get_name
+            ((i += 1) - 1)
           end
-          return info__
+          return info
         end
       end
     end
     
     typesig { [CodeSource] }
-    # 
     # Returns the signer certificates from the list of certificates
     # associated with the given code source.
     # 
@@ -1820,7 +1796,6 @@ module Sun::Security::Provider
     end
     
     typesig { [JavaList, KeyStore] }
-    # 
     # return true if no replacement was performed,
     # or if replacement succeeded.
     def replace_principals(principals, keystore)
@@ -1890,16 +1865,16 @@ module Sun::Security::Provider
             end
             suffix = (value.substring(colon_index + 1)).to_s
             if (((suffix = (get_dn(suffix, keystore)).to_s)).nil?)
-              form_ = MessageFormat.new(ResourcesMgr.get_string("unable to perform substitution on alias, suffix"))
-              source_ = Array.typed(Object).new([value.substring(colon_index + 1)])
-              raise Exception.new(form_.format(source_))
+              form = MessageFormat.new(ResourcesMgr.get_string("unable to perform substitution on alias, suffix"))
+              source = Array.typed(Object).new([value.substring(colon_index + 1)])
+              raise Exception.new(form.format(source))
             end
             sb.append(X500PRINCIPAL + " \"" + suffix + "\"")
             start_index = e + 2
           else
-            form__ = MessageFormat.new(ResourcesMgr.get_string("substitution value, prefix, unsupported"))
-            source__ = Array.typed(Object).new([prefix])
-            raise Exception.new(form__.format(source__))
+            form = MessageFormat.new(ResourcesMgr.get_string("substitution value, prefix, unsupported"))
+            source = Array.typed(Object).new([prefix])
+            raise Exception.new(form.format(source))
           end
         end
       end
@@ -1939,7 +1914,6 @@ module Sun::Security::Provider
     end
     
     typesig { [Certificate, PolicyInfo] }
-    # 
     # Checks public key. If it is marked as trusted in
     # the identity database, add it to the policy
     # with the AllPermission.
@@ -2034,8 +2008,8 @@ module Sun::Security::Provider
           end
         else
           if (id.is_a?(SystemSigner))
-            sysid_ = id
-            if (sysid_.is_trusted)
+            sysid = id
+            if (sysid.is_trusted)
               return true
             end
           end
@@ -2043,7 +2017,6 @@ module Sun::Security::Provider
         return false
       end
       
-      # 
       # Each entry in the policy configuration file is represented by a
       # PolicyEntry object.  <p>
       # 
@@ -2108,7 +2081,6 @@ module Sun::Security::Provider
         undef_method :principals=
         
         typesig { [CodeSource, JavaList] }
-        # 
         # Given a Permission and a CodeSource, create a policy entry.
         # 
         # XXX Decide if/how to add validity fields and "purpose" fields to
@@ -2139,7 +2111,6 @@ module Sun::Security::Provider
         end
         
         typesig { [Permission] }
-        # 
         # add a Permission object to this entry.
         # No need to sync add op because perms are added to entry only
         # while entry is being initialized
@@ -2148,7 +2119,6 @@ module Sun::Security::Provider
         end
         
         typesig { [] }
-        # 
         # Return the CodeSource for this policy entry
         def get_code_source
           return @codesource
@@ -2186,7 +2156,6 @@ module Sun::Security::Provider
           const_attr_reader  :SerialVersionUID
         }
         
-        # 
         # The class name of the Permission class that will be
         # created when this self permission is expanded .
         # 
@@ -2197,7 +2166,6 @@ module Sun::Security::Provider
         alias_method :attr_type=, :type=
         undef_method :type=
         
-        # 
         # The permission name.
         # 
         # @serial
@@ -2207,7 +2175,6 @@ module Sun::Security::Provider
         alias_method :attr_name=, :name=
         undef_method :name=
         
-        # 
         # The actions of the permission.
         # 
         # @serial
@@ -2217,7 +2184,6 @@ module Sun::Security::Provider
         alias_method :attr_actions=, :actions=
         undef_method :actions=
         
-        # 
         # The certs of the permission.
         # 
         # @serial
@@ -2228,7 +2194,6 @@ module Sun::Security::Provider
         undef_method :certs=
         
         typesig { [String, String, String, Array.typed(Certificate)] }
-        # 
         # Creates a new SelfPermission containing the permission
         # information needed later to expand the self
         # @param type the class name of the Permission class that will be
@@ -2300,7 +2265,6 @@ module Sun::Security::Provider
         end
         
         typesig { [Permission] }
-        # 
         # This method always returns false for SelfPermission permissions.
         # That is, an SelfPermission never considered to
         # imply another permission.
@@ -2313,7 +2277,6 @@ module Sun::Security::Provider
         end
         
         typesig { [Object] }
-        # 
         # Checks two SelfPermission objects for equality.
         # 
         # Checks that <i>obj</i> is an SelfPermission, and has
@@ -2378,7 +2341,6 @@ module Sun::Security::Provider
         end
         
         typesig { [] }
-        # 
         # Returns the hash code value for this object.
         # 
         # @return a hash code value for this object.
@@ -2394,7 +2356,6 @@ module Sun::Security::Provider
         end
         
         typesig { [] }
-        # 
         # Returns the canonical string representation of the actions,
         # which currently is the empty string "", since there are no actions
         # for an SelfPermission. That is, the actions for the
@@ -2428,7 +2389,6 @@ module Sun::Security::Provider
         end
         
         typesig { [] }
-        # 
         # Returns a string describing this SelfPermission.  The convention
         # is to specify the class name, the permission name, and the actions,
         # in the following format: '(unresolved "ClassName" "name" "actions")'.
@@ -2442,7 +2402,6 @@ module Sun::Security::Provider
         alias_method :initialize__self_permission, :initialize
       end }
       
-      # 
       # holds policy information that we need to synch on
       const_set_lazy(:PolicyInfo) { Class.new do
         include_class_members PolicyFile

@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 1996-2001 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -31,7 +30,6 @@ module Java::Io
     }
   end
   
-  # 
   # Convenience class for reading character files.  The constructors of this
   # class assume that the default character encoding and the default byte-buffer
   # size are appropriate.  To specify these values yourself, construct an
@@ -50,7 +48,6 @@ module Java::Io
     include_class_members FileReaderImports
     
     typesig { [String] }
-    # 
     # Creates a new <tt>FileReader</tt>, given the name of the
     # file to read from.
     # 
@@ -64,7 +61,6 @@ module Java::Io
     end
     
     typesig { [JavaFile] }
-    # 
     # Creates a new <tt>FileReader</tt>, given the <tt>File</tt>
     # to read from.
     # 
@@ -78,7 +74,6 @@ module Java::Io
     end
     
     typesig { [FileDescriptor] }
-    # 
     # Creates a new <tt>FileReader</tt>, given the
     # <tt>FileDescriptor</tt> to read from.
     # 

@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 2000-2003 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -33,7 +32,6 @@ module Java::Security::Cert
     }
   end
   
-  # 
   # An immutable valid policy tree node as defined by the PKIX certification
   # path validation algorithm.
   # 
@@ -70,7 +68,6 @@ module Java::Security::Cert
     include_class_members PolicyNodeImports
     
     typesig { [] }
-    # 
     # Returns the parent of this node, or <code>null</code> if this is the
     # root node.
     # 
@@ -81,7 +78,6 @@ module Java::Security::Cert
     end
     
     typesig { [] }
-    # 
     # Returns an iterator over the children of this node. Any attempts to
     # modify the children of this node through the
     # <code>Iterator</code>'s remove method must throw an
@@ -93,7 +89,6 @@ module Java::Security::Cert
     end
     
     typesig { [] }
-    # 
     # Returns the depth of this node in the valid policy tree.
     # 
     # @return the depth of this node (0 for the root node, 1 for its
@@ -103,7 +98,6 @@ module Java::Security::Cert
     end
     
     typesig { [] }
-    # 
     # Returns the valid policy represented by this node.
     # 
     # @return the <code>String</code> OID of the valid policy
@@ -114,7 +108,6 @@ module Java::Security::Cert
     end
     
     typesig { [] }
-    # 
     # Returns the set of policy qualifiers associated with the
     # valid policy represented by this node.
     # 
@@ -126,7 +119,6 @@ module Java::Security::Cert
     end
     
     typesig { [] }
-    # 
     # Returns the set of expected policies that would satisfy this
     # node's valid policy in the next certificate to be processed.
     # 
@@ -139,7 +131,6 @@ module Java::Security::Cert
     end
     
     typesig { [] }
-    # 
     # Returns the criticality indicator of the certificate policy extension
     # in the most recently processed certificate.
     # 

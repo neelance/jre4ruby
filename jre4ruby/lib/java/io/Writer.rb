@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 1996-2005 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -31,7 +30,6 @@ module Java::Io
     }
   end
   
-  # 
   # Abstract class for writing to character streams.  The only methods that a
   # subclass must implement are write(char[], int, int), flush(), and close().
   # Most subclasses, however, will override some of the methods defined here in
@@ -56,7 +54,6 @@ module Java::Io
     include Closeable
     include Flushable
     
-    # 
     # Temporary buffer used to hold writes of strings and single characters
     attr_accessor :write_buffer
     alias_method :attr_write_buffer, :write_buffer
@@ -64,7 +61,6 @@ module Java::Io
     alias_method :attr_write_buffer=, :write_buffer=
     undef_method :write_buffer=
     
-    # 
     # Size of writeBuffer, must be >= 1
     attr_accessor :write_buffer_size
     alias_method :attr_write_buffer_size, :write_buffer_size
@@ -72,7 +68,6 @@ module Java::Io
     alias_method :attr_write_buffer_size=, :write_buffer_size=
     undef_method :write_buffer_size=
     
-    # 
     # The object used to synchronize operations on this stream.  For
     # efficiency, a character-stream object may use an object other than
     # itself to protect critical sections.  A subclass should therefore use
@@ -85,7 +80,6 @@ module Java::Io
     undef_method :lock=
     
     typesig { [] }
-    # 
     # Creates a new character-stream writer whose critical sections will
     # synchronize on the writer itself.
     def initialize
@@ -96,7 +90,6 @@ module Java::Io
     end
     
     typesig { [Object] }
-    # 
     # Creates a new character-stream writer whose critical sections will
     # synchronize on the given object.
     # 
@@ -113,7 +106,6 @@ module Java::Io
     end
     
     typesig { [::Java::Int] }
-    # 
     # Writes a single character.  The character to be written is contained in
     # the 16 low-order bits of the given integer value; the 16 high-order bits
     # are ignored.
@@ -137,7 +129,6 @@ module Java::Io
     end
     
     typesig { [Array.typed(::Java::Char)] }
-    # 
     # Writes an array of characters.
     # 
     # @param  cbuf
@@ -150,7 +141,6 @@ module Java::Io
     end
     
     typesig { [Array.typed(::Java::Char), ::Java::Int, ::Java::Int] }
-    # 
     # Writes a portion of an array of characters.
     # 
     # @param  cbuf
@@ -169,7 +159,6 @@ module Java::Io
     end
     
     typesig { [String] }
-    # 
     # Writes a string.
     # 
     # @param  str
@@ -182,7 +171,6 @@ module Java::Io
     end
     
     typesig { [String, ::Java::Int, ::Java::Int] }
-    # 
     # Writes a portion of a string.
     # 
     # @param  str
@@ -219,7 +207,6 @@ module Java::Io
     end
     
     typesig { [CharSequence] }
-    # 
     # Appends the specified character sequence to this writer.
     # 
     # <p> An invocation of this method of the form <tt>out.append(csq)</tt>
@@ -255,7 +242,6 @@ module Java::Io
     end
     
     typesig { [CharSequence, ::Java::Int, ::Java::Int] }
-    # 
     # Appends a subsequence of the specified character sequence to this writer.
     # <tt>Appendable</tt>.
     # 
@@ -297,7 +283,6 @@ module Java::Io
     end
     
     typesig { [::Java::Char] }
-    # 
     # Appends the specified character to this writer.
     # 
     # <p> An invocation of this method of the form <tt>out.append(c)</tt>
@@ -321,7 +306,6 @@ module Java::Io
     end
     
     typesig { [] }
-    # 
     # Flushes the stream.  If the stream has saved any characters from the
     # various write() methods in a buffer, write them immediately to their
     # intended destination.  Then, if that destination is another character or
@@ -341,7 +325,6 @@ module Java::Io
     end
     
     typesig { [] }
-    # 
     # Closes the stream, flushing it first. Once the stream has been closed,
     # further write() or flush() invocations will cause an IOException to be
     # thrown. Closing a previously closed stream has no effect.

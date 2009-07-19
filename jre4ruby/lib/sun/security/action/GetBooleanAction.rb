@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 1998-2006 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -31,7 +30,6 @@ module Sun::Security::Action
     }
   end
   
-  # 
   # A convenience class for retrieving the boolean value of a system property
   # as a privileged action.
   # 
@@ -61,7 +59,6 @@ module Sun::Security::Action
     undef_method :the_prop=
     
     typesig { [String] }
-    # 
     # Constructor that takes the name of the system property whose boolean
     # value needs to be determined.
     # 
@@ -72,7 +69,6 @@ module Sun::Security::Action
     end
     
     typesig { [] }
-    # 
     # Determines the boolean value of the system property whose name was
     # specified in the constructor.
     # 

@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 1996-2002 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -42,7 +41,6 @@ module Java::Text
     }
   end
   
-  # 
   # <code>FieldPosition</code> is a simple class used by <code>Format</code>
   # and its subclasses to identify fields in formatted output. Fields can
   # be identified in two ways:
@@ -76,7 +74,6 @@ module Java::Text
   class FieldPosition 
     include_class_members FieldPositionImports
     
-    # 
     # Input: Desired field to determine start and end offsets for.
     # The meaning depends on the subclass of Format.
     attr_accessor :field
@@ -85,7 +82,6 @@ module Java::Text
     alias_method :attr_field=, :field=
     undef_method :field=
     
-    # 
     # Output: End offset of field in text.
     # If the field does not occur in the text, 0 is returned.
     attr_accessor :end_index
@@ -94,7 +90,6 @@ module Java::Text
     alias_method :attr_end_index=, :end_index=
     undef_method :end_index=
     
-    # 
     # Output: Start offset of field in text.
     # If the field does not occur in the text, 0 is returned.
     attr_accessor :begin_index
@@ -103,7 +98,6 @@ module Java::Text
     alias_method :attr_begin_index=, :begin_index=
     undef_method :begin_index=
     
-    # 
     # Desired field this FieldPosition is for.
     attr_accessor :attribute
     alias_method :attr_attribute, :attribute
@@ -112,7 +106,6 @@ module Java::Text
     undef_method :attribute=
     
     typesig { [::Java::Int] }
-    # 
     # Creates a FieldPosition object for the given field.  Fields are
     # identified by constants, whose names typically end with _FIELD,
     # in the various subclasses of Format.
@@ -130,7 +123,6 @@ module Java::Text
     end
     
     typesig { [Format::Field] }
-    # 
     # Creates a FieldPosition object for the given field constant. Fields are
     # identified by constants defined in the various <code>Format</code>
     # subclasses. This is equivalent to calling
@@ -143,7 +135,6 @@ module Java::Text
     end
     
     typesig { [Format::Field, ::Java::Int] }
-    # 
     # Creates a <code>FieldPosition</code> object for the given field.
     # The field is identified by an attribute constant from one of the
     # <code>Field</code> subclasses as well as an integer field ID
@@ -168,7 +159,6 @@ module Java::Text
     end
     
     typesig { [] }
-    # 
     # Returns the field identifier as an attribute constant
     # from one of the <code>Field</code> subclasses. May return null if
     # the field is specified only by an integer field ID.
@@ -180,21 +170,18 @@ module Java::Text
     end
     
     typesig { [] }
-    # 
     # Retrieves the field identifier.
     def get_field
       return @field
     end
     
     typesig { [] }
-    # 
     # Retrieves the index of the first character in the requested field.
     def get_begin_index
       return @begin_index
     end
     
     typesig { [] }
-    # 
     # Retrieves the index of the character following the last character in the
     # requested field.
     def get_end_index
@@ -202,7 +189,6 @@ module Java::Text
     end
     
     typesig { [::Java::Int] }
-    # 
     # Sets the begin index.  For use by subclasses of Format.
     # @since 1.2
     def set_begin_index(bi)
@@ -210,7 +196,6 @@ module Java::Text
     end
     
     typesig { [::Java::Int] }
-    # 
     # Sets the end index.  For use by subclasses of Format.
     # @since 1.2
     def set_end_index(ei)
@@ -218,7 +203,6 @@ module Java::Text
     end
     
     typesig { [] }
-    # 
     # Returns a <code>Format.FieldDelegate</code> instance that is associated
     # with the FieldPosition. When the delegate is notified of the same
     # field the FieldPosition is associated with, the begin/end will be
@@ -228,7 +212,6 @@ module Java::Text
     end
     
     typesig { [Object] }
-    # 
     # Overrides equals
     def equals(obj)
       if ((obj).nil?)
@@ -251,7 +234,6 @@ module Java::Text
     end
     
     typesig { [] }
-    # 
     # Returns a hash code for this FieldPosition.
     # @return a hash code value for this object
     def hash_code
@@ -259,7 +241,6 @@ module Java::Text
     end
     
     typesig { [] }
-    # 
     # Return a string representation of this FieldPosition.
     # @return  a string representation of this object
     def to_s
@@ -267,7 +248,6 @@ module Java::Text
     end
     
     typesig { [Format::Field] }
-    # 
     # Return true if the receiver wants a <code>Format.Field</code> value and
     # <code>attribute</code> is equal to it.
     def matches_field(attribute)
@@ -278,7 +258,6 @@ module Java::Text
     end
     
     typesig { [Format::Field, ::Java::Int] }
-    # 
     # Return true if the receiver wants a <code>Format.Field</code> value and
     # <code>attribute</code> is equal to it, or true if the receiver
     # represents an inteter constant and <code>field</code> equals it.
@@ -290,7 +269,6 @@ module Java::Text
     end
     
     class_module.module_eval {
-      # 
       # An implementation of FieldDelegate that will adjust the begin/end
       # of the FieldPosition if the arguments match the field of
       # the FieldPosition.
@@ -299,7 +277,6 @@ module Java::Text
         include_class_members FieldPosition
         include Format::FieldDelegate
         
-        # 
         # Indicates whether the field has been  encountered before. If this
         # is true, and <code>formatted</code> is invoked, the begin/end
         # are not updated.

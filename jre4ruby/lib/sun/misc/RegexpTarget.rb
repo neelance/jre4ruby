@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 1995 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -31,7 +30,6 @@ module Sun::Misc
     }
   end
   
-  # 
   # A class to define actions to be performed when a regular expression match
   # occurs.
   # @author  James Gosling

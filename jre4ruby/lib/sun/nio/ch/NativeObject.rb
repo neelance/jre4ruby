@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 2000-2002 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -62,7 +61,6 @@ module Sun::Nio::Ch
     undef_method :address=
     
     typesig { [::Java::Long] }
-    # 
     # Creates a new native object that is based at the given native address.
     def initialize(address)
       @allocation_address = 0
@@ -72,7 +70,6 @@ module Sun::Nio::Ch
     end
     
     typesig { [::Java::Long, ::Java::Long] }
-    # 
     # Creates a new native object allocated at the given native address but
     # whose base is at the additional offset.
     def initialize(address, offset)
@@ -99,7 +96,6 @@ module Sun::Nio::Ch
     end
     
     typesig { [] }
-    # 
     # Returns the native base address of this native object.
     # 
     # @return The native base address
@@ -113,7 +109,6 @@ module Sun::Nio::Ch
     end
     
     typesig { [::Java::Int] }
-    # 
     # Creates a new native object starting at the given offset from the base
     # of this native object.
     # 
@@ -127,7 +122,6 @@ module Sun::Nio::Ch
     end
     
     typesig { [::Java::Int] }
-    # 
     # Reads an address from this native object at the given offset and
     # constructs a native object using that address.
     # 
@@ -151,7 +145,6 @@ module Sun::Nio::Ch
     end
     
     typesig { [::Java::Int, NativeObject] }
-    # 
     # Writes the base address of the given native object at the given offset
     # of this native object.
     # 
@@ -187,7 +180,6 @@ module Sun::Nio::Ch
     end
     
     typesig { [::Java::Int, ::Java::Byte] }
-    # 
     # Writes a byte at the specified offset from this native object's
     # base address.
     # 
@@ -201,7 +193,6 @@ module Sun::Nio::Ch
     end
     
     typesig { [::Java::Int] }
-    # 
     # Reads a short starting at the given offset from base of this native
     # object.
     # 
@@ -214,7 +205,6 @@ module Sun::Nio::Ch
     end
     
     typesig { [::Java::Int, ::Java::Short] }
-    # 
     # Writes a short at the specified offset from this native object's
     # base address.
     # 
@@ -228,7 +218,6 @@ module Sun::Nio::Ch
     end
     
     typesig { [::Java::Int] }
-    # 
     # Reads a char starting at the given offset from base of this native
     # object.
     # 
@@ -241,7 +230,6 @@ module Sun::Nio::Ch
     end
     
     typesig { [::Java::Int, ::Java::Char] }
-    # 
     # Writes a char at the specified offset from this native object's
     # base address.
     # 
@@ -255,7 +243,6 @@ module Sun::Nio::Ch
     end
     
     typesig { [::Java::Int] }
-    # 
     # Reads an int starting at the given offset from base of this native
     # object.
     # 
@@ -268,7 +255,6 @@ module Sun::Nio::Ch
     end
     
     typesig { [::Java::Int, ::Java::Int] }
-    # 
     # Writes an int at the specified offset from this native object's
     # base address.
     # 
@@ -282,7 +268,6 @@ module Sun::Nio::Ch
     end
     
     typesig { [::Java::Int] }
-    # 
     # Reads a long starting at the given offset from base of this native
     # object.
     # 
@@ -295,7 +280,6 @@ module Sun::Nio::Ch
     end
     
     typesig { [::Java::Int, ::Java::Long] }
-    # 
     # Writes a long at the specified offset from this native object's
     # base address.
     # 
@@ -309,7 +293,6 @@ module Sun::Nio::Ch
     end
     
     typesig { [::Java::Int] }
-    # 
     # Reads a float starting at the given offset from base of this native
     # object.
     # 
@@ -322,7 +305,6 @@ module Sun::Nio::Ch
     end
     
     typesig { [::Java::Int, ::Java::Float] }
-    # 
     # Writes a float at the specified offset from this native object's
     # base address.
     # 
@@ -336,7 +318,6 @@ module Sun::Nio::Ch
     end
     
     typesig { [::Java::Int] }
-    # 
     # Reads a double starting at the given offset from base of this native
     # object.
     # 
@@ -349,7 +330,6 @@ module Sun::Nio::Ch
     end
     
     typesig { [::Java::Int, ::Java::Double] }
-    # 
     # Writes a double at the specified offset from this native object's
     # base address.
     # 
@@ -364,7 +344,6 @@ module Sun::Nio::Ch
     
     class_module.module_eval {
       typesig { [] }
-      # 
       # Returns the native architecture's address size in bytes.
       # 
       # @return The address size of the native architecture
@@ -385,7 +364,6 @@ module Sun::Nio::Ch
       alias_method :attr_byte_order=, :byte_order=
       
       typesig { [] }
-      # 
       # Returns the byte order of the underlying hardware.
       # 
       # @return  An instance of {@link java.nio.ByteOrder}
@@ -424,7 +402,6 @@ module Sun::Nio::Ch
       alias_method :attr_page_size=, :page_size=
       
       typesig { [] }
-      # 
       # Returns the page size of the underlying hardware.
       # 
       # @return  The page size, in bytes

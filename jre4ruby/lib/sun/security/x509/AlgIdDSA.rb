@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 1996-2003 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -36,7 +35,6 @@ module Sun::Security::X509
     }
   end
   
-  # 
   # This class identifies DSS/DSA Algorithm variants, which are distinguished
   # by using different algorithm parameters <em>P, Q, G</em>.  It uses the
   # NIST/IETF standard DER encoding.  These are used to implement the Digital
@@ -83,7 +81,6 @@ module Sun::Security::X509
       const_attr_reader  :SerialVersionUID
     }
     
-    # 
     # The three unsigned integer parameters.
     attr_accessor :p
     alias_method :attr_p, :p
@@ -122,7 +119,6 @@ module Sun::Security::X509
     end
     
     typesig { [] }
-    # 
     # Default constructor.  The OID and parameters must be
     # deserialized before this algorithm ID is used.
     # 
@@ -143,7 +139,6 @@ module Sun::Security::X509
     end
     
     typesig { [Array.typed(::Java::Byte)] }
-    # 
     # Construct an AlgIdDSA from an X.509 encoded byte array.
     def initialize(encoded_alg)
       @p = nil
@@ -153,7 +148,6 @@ module Sun::Security::X509
     end
     
     typesig { [Array.typed(::Java::Byte), Array.typed(::Java::Byte), Array.typed(::Java::Byte)] }
-    # 
     # Constructs a DSS/DSA Algorithm ID from unsigned integers that
     # define the algorithm parameters.  Those integers are encoded
     # as big-endian byte arrays.
@@ -166,7 +160,6 @@ module Sun::Security::X509
     end
     
     typesig { [BigInteger, BigInteger, BigInteger] }
-    # 
     # Constructs a DSS/DSA Algorithm ID from numeric parameters.
     # If all three are null, then the parameters portion of the algorithm id
     # is set to null.  See note in header regarding use.
@@ -196,7 +189,6 @@ module Sun::Security::X509
     end
     
     typesig { [] }
-    # 
     # Returns "DSA", indicating the Digital Signature Algorithm (DSA) as
     # defined by the Digital Signature Standard (DSS), FIPS 186.
     def get_name
@@ -204,7 +196,6 @@ module Sun::Security::X509
     end
     
     typesig { [] }
-    # 
     # For algorithm IDs which haven't been created from a DER encoded
     # value, "params" must be created.
     def initialize_params
@@ -216,7 +207,6 @@ module Sun::Security::X509
     end
     
     typesig { [] }
-    # 
     # Parses algorithm parameters P, Q, and G.  They're found
     # in the "params" member, which never needs to be changed.
     def decode_params
@@ -236,14 +226,12 @@ module Sun::Security::X509
     end
     
     typesig { [] }
-    # 
     # Returns a formatted string describing the parameters.
     def to_s
       return params_to_string
     end
     
     typesig { [] }
-    # 
     # Returns a string describing the parameters.
     def params_to_string
       if ((self.attr_params).nil?)

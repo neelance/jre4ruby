@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 1994-2006 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -32,7 +31,6 @@ module Java::Util
     }
   end
   
-  # 
   # This class implements a hashtable, which maps keys to values. Any
   # non-<code>null</code> object can be used as a key or as a value. <p>
   # 
@@ -127,7 +125,6 @@ module Java::Util
     include Cloneable
     include Java::Io::Serializable
     
-    # 
     # The hash table data.
     attr_accessor :table
     alias_method :attr_table, :table
@@ -135,7 +132,6 @@ module Java::Util
     alias_method :attr_table=, :table=
     undef_method :table=
     
-    # 
     # The total number of entries in the hash table.
     attr_accessor :count
     alias_method :attr_count, :count
@@ -143,7 +139,6 @@ module Java::Util
     alias_method :attr_count=, :count=
     undef_method :count=
     
-    # 
     # The table is rehashed when its size exceeds this threshold.  (The
     # value of this field is (int)(capacity * loadFactor).)
     # 
@@ -154,7 +149,6 @@ module Java::Util
     alias_method :attr_threshold=, :threshold=
     undef_method :threshold=
     
-    # 
     # The load factor for the hashtable.
     # 
     # @serial
@@ -164,7 +158,6 @@ module Java::Util
     alias_method :attr_load_factor=, :load_factor=
     undef_method :load_factor=
     
-    # 
     # The number of times this Hashtable has been structurally modified
     # Structural modifications are those that change the number of entries in
     # the Hashtable or otherwise modify its internal structure (e.g.,
@@ -183,7 +176,6 @@ module Java::Util
     }
     
     typesig { [::Java::Int, ::Java::Float] }
-    # 
     # Constructs a new, empty hashtable with the specified initial
     # capacity and the specified load factor.
     # 
@@ -220,7 +212,6 @@ module Java::Util
     end
     
     typesig { [::Java::Int] }
-    # 
     # Constructs a new, empty hashtable with the specified initial capacity
     # and default load factor (0.75).
     # 
@@ -232,7 +223,6 @@ module Java::Util
     end
     
     typesig { [] }
-    # 
     # Constructs a new, empty hashtable with a default initial capacity (11)
     # and load factor (0.75).
     def initialize
@@ -240,7 +230,6 @@ module Java::Util
     end
     
     typesig { [Map] }
-    # 
     # Constructs a new hashtable with the same mappings as the given
     # Map.  The hashtable is created with an initial capacity sufficient to
     # hold the mappings in the given Map and a default load factor (0.75).
@@ -254,7 +243,6 @@ module Java::Util
     end
     
     typesig { [] }
-    # 
     # Returns the number of keys in this hashtable.
     # 
     # @return  the number of keys in this hashtable.
@@ -265,7 +253,6 @@ module Java::Util
     end
     
     typesig { [] }
-    # 
     # Tests if this hashtable maps no keys to values.
     # 
     # @return  <code>true</code> if this hashtable maps no keys to values;
@@ -277,7 +264,6 @@ module Java::Util
     end
     
     typesig { [] }
-    # 
     # Returns an enumeration of the keys in this hashtable.
     # 
     # @return  an enumeration of the keys in this hashtable.
@@ -292,7 +278,6 @@ module Java::Util
     end
     
     typesig { [] }
-    # 
     # Returns an enumeration of the values in this hashtable.
     # Use the Enumeration methods on the returned object to fetch the elements
     # sequentially.
@@ -309,7 +294,6 @@ module Java::Util
     end
     
     typesig { [Object] }
-    # 
     # Tests if some key maps into the specified value in this hashtable.
     # This operation is more expensive than the {@link #containsKey
     # containsKey} method.
@@ -345,7 +329,6 @@ module Java::Util
     end
     
     typesig { [Object] }
-    # 
     # Returns true if this hashtable maps one or more keys to this value.
     # 
     # <p>Note that this method is identical in functionality to {@link
@@ -361,7 +344,6 @@ module Java::Util
     end
     
     typesig { [Object] }
-    # 
     # Tests if the specified object is a key in this hashtable.
     # 
     # @param   key   possible key
@@ -387,7 +369,6 @@ module Java::Util
     end
     
     typesig { [Object] }
-    # 
     # Returns the value to which the specified key is mapped,
     # or {@code null} if this map contains no mapping for the key.
     # 
@@ -418,7 +399,6 @@ module Java::Util
     end
     
     typesig { [] }
-    # 
     # Increases the capacity of and internally reorganizes this
     # hashtable, in order to accommodate and access its entries more
     # efficiently.  This method is called automatically when the
@@ -446,7 +426,6 @@ module Java::Util
     end
     
     typesig { [Object, Object] }
-    # 
     # Maps the specified <code>key</code> to the specified
     # <code>value</code> in this hashtable. Neither the key nor the
     # value can be <code>null</code>. <p>
@@ -497,7 +476,6 @@ module Java::Util
     end
     
     typesig { [Object] }
-    # 
     # Removes the key (and its corresponding value) from this
     # hashtable. This method does nothing if the key is not in the hashtable.
     # 
@@ -533,7 +511,6 @@ module Java::Util
     end
     
     typesig { [Map] }
-    # 
     # Copies all of the mappings from the specified map to this hashtable.
     # These mappings will replace any mappings that this hashtable had for any
     # of the keys currently in the specified map.
@@ -550,7 +527,6 @@ module Java::Util
     end
     
     typesig { [] }
-    # 
     # Clears this hashtable so that it contains no keys.
     def clear
       synchronized(self) do
@@ -565,7 +541,6 @@ module Java::Util
     end
     
     typesig { [] }
-    # 
     # Creates a shallow copy of this hashtable. All the structure of the
     # hashtable itself is copied, but the keys and values are not cloned.
     # This is a relatively expensive operation.
@@ -593,7 +568,6 @@ module Java::Util
     end
     
     typesig { [] }
-    # 
     # Returns a string representation of this <tt>Hashtable</tt> object
     # in the form of a set of entries, enclosed in braces and separated
     # by the ASCII characters "<tt>,&nbsp;</tt>" (comma and space). Each
@@ -670,7 +644,6 @@ module Java::Util
     undef_method :values=
     
     typesig { [] }
-    # 
     # Returns a {@link Set} view of the keys contained in this map.
     # The set is backed by the map, so changes to the map are
     # reflected in the set, and vice-versa.  If the map is modified
@@ -732,7 +705,6 @@ module Java::Util
     }
     
     typesig { [] }
-    # 
     # Returns a {@link Set} view of the mappings contained in this map.
     # The set is backed by the map, so changes to the map are
     # reflected in the set, and vice-versa.  If the map is modified
@@ -840,7 +812,6 @@ module Java::Util
     }
     
     typesig { [] }
-    # 
     # Returns a {@link Collection} view of the values contained in this map.
     # The collection is backed by the map, so changes to the map are
     # reflected in the collection, and vice-versa.  If the map is
@@ -944,7 +915,6 @@ module Java::Util
     end
     
     typesig { [] }
-    # 
     # Returns the hash code value for this Map as per the definition in the
     # Map interface.
     # 
@@ -952,7 +922,6 @@ module Java::Util
     # @since 1.2
     def hash_code
       synchronized(self) do
-        # 
         # This code detects the recursion caused by computing the hash code
         # of a self-referential hash table and prevents the stack overflow
         # that would otherwise result.  This allows certain 1.1-era
@@ -982,7 +951,6 @@ module Java::Util
     end
     
     typesig { [Java::Io::ObjectOutputStream] }
-    # 
     # Save the state of the Hashtable to a stream (i.e., serialize it).
     # 
     # @serialData The <i>capacity</i> of the Hashtable (the length of the
@@ -1012,7 +980,6 @@ module Java::Util
     end
     
     typesig { [Java::Io::ObjectInputStream] }
-    # 
     # Reconstitute the Hashtable from a stream (i.e., deserialize it).
     def read_object(s)
       # Read in the length, threshold, and loadfactor
@@ -1045,7 +1012,6 @@ module Java::Util
     end
     
     typesig { [Array.typed(Entry), Object, Object] }
-    # 
     # The put method used by readObject. This is provided because put
     # is overridable and should not be called in readObject since the
     # subclass will not yet be initialized.
@@ -1077,7 +1043,6 @@ module Java::Util
     end
     
     class_module.module_eval {
-      # 
       # Hashtable collision list.
       const_set_lazy(:Entry) { Class.new do
         include_class_members Hashtable
@@ -1178,7 +1143,6 @@ module Java::Util
       const_set_lazy(:ENTRIES) { 2 }
       const_attr_reader  :ENTRIES
       
-      # 
       # A hashtable enumerator class.  This class implements both the
       # Enumeration and Iterator interfaces, but individual instances
       # can be created with the Iterator methods disabled.  This is necessary
@@ -1220,7 +1184,6 @@ module Java::Util
         alias_method :attr_type=, :type=
         undef_method :type=
         
-        # 
         # Indicates whether this Enumerator is serving as an Iterator
         # or an Enumeration.  (true -> Iterator).
         attr_accessor :iterator
@@ -1229,7 +1192,6 @@ module Java::Util
         alias_method :attr_iterator=, :iterator=
         undef_method :iterator=
         
-        # 
         # The modCount value that the iterator believes that the backing
         # Hashtable should have.  If this expectation is violated, the iterator
         # has detected concurrent modification.

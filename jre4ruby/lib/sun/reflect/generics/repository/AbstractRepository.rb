@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 2003 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -34,7 +33,6 @@ module Sun::Reflect::Generics::Repository
     }
   end
   
-  # 
   # Abstract superclass for representing the generic type information for
   # a reflective entity.
   # The code is not dependent on a particular reflective implementation.
@@ -64,7 +62,6 @@ module Sun::Reflect::Generics::Repository
     end
     
     typesig { [] }
-    # 
     # Accessor for <tt>tree</tt>.
     # @return the cached AST this repository holds
     def get_tree
@@ -72,7 +69,6 @@ module Sun::Reflect::Generics::Repository
     end
     
     typesig { [] }
-    # 
     # Returns a <tt>Reifier</tt> used to convert parts of the
     # AST into reflective objects.
     # @return  a <tt>Reifier</tt> used to convert parts of the
@@ -82,7 +78,6 @@ module Sun::Reflect::Generics::Repository
     end
     
     typesig { [String, GenericsFactory] }
-    # 
     # Constructor. Should only be used by subclasses. Concrete subclasses
     # should make their constructors private and provide public factory
     # methods.
@@ -98,7 +93,6 @@ module Sun::Reflect::Generics::Repository
     end
     
     typesig { [String] }
-    # 
     # Returns the AST for the genric type info of this entity.
     # @param s - a string representing the generic signature of this
     # entity

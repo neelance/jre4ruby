@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 1994-1997 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -30,7 +29,6 @@ module Java::Lang
     }
   end
   
-  # 
   # Thrown when the Java Virtual Machine cannot allocate an object
   # because it is out of memory, and no more memory could be made
   # available by the garbage collector.
@@ -41,14 +39,12 @@ module Java::Lang
     include_class_members OutOfMemoryErrorImports
     
     typesig { [] }
-    # 
     # Constructs an <code>OutOfMemoryError</code> with no detail message.
     def initialize
       super()
     end
     
     typesig { [String] }
-    # 
     # Constructs an <code>OutOfMemoryError</code> with the specified
     # detail message.
     # 

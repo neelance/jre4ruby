@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 2000 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -35,21 +34,18 @@ module Sun::Net::Spi::Nameservice
     include_class_members NameServiceDescriptorImports
     
     typesig { [] }
-    # 
     # Create a new instance of the corresponding name service.
     def create_name_service
       raise NotImplementedError
     end
     
     typesig { [] }
-    # 
     # Returns this service provider's name
     def get_provider_name
       raise NotImplementedError
     end
     
     typesig { [] }
-    # 
     # Returns this name service type
     # "dns" "nis" etc
     def get_type

@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 1996-1999 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -31,7 +30,6 @@ module Java::Io
     }
   end
   
-  # 
   # The Character Encoding is not supported.
   # 
   # @author  Asmus Freytag
@@ -40,14 +38,12 @@ module Java::Io
     include_class_members UnsupportedEncodingExceptionImports
     
     typesig { [] }
-    # 
     # Constructs an UnsupportedEncodingException without a detail message.
     def initialize
       super()
     end
     
     typesig { [String] }
-    # 
     # Constructs an UnsupportedEncodingException with a detail message.
     # @param s Describes the reason for the exception.
     def initialize(s)

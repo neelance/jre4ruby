@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 1994-1997 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -30,7 +29,6 @@ module Java::Lang
     }
   end
   
-  # 
   # Thrown if the Java Virtual Machine cannot find an appropriate
   # native-language definition of a method declared <code>native</code>.
   # 
@@ -41,14 +39,12 @@ module Java::Lang
     include_class_members UnsatisfiedLinkErrorImports
     
     typesig { [] }
-    # 
     # Constructs an <code>UnsatisfiedLinkError</code> with no detail message.
     def initialize
       super()
     end
     
     typesig { [String] }
-    # 
     # Constructs an <code>UnsatisfiedLinkError</code> with the
     # specified detail message.
     # 

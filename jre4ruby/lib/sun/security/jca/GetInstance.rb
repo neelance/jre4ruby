@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 2003-2006 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -34,7 +33,6 @@ module Sun::Security::Jca
     }
   end
   
-  # 
   # Collection of utility methods to facilitate implementing getInstance()
   # methods in the JCA/JCE/JSSE/... framework.
   # 
@@ -49,7 +47,6 @@ module Sun::Security::Jca
     end
     
     class_module.module_eval {
-      # 
       # Static inner class representing a newly created instance.
       const_set_lazy(:Instance) { Class.new do
         include_class_members GetInstance
@@ -125,7 +122,6 @@ module Sun::Security::Jca
       end
       
       typesig { [String, String] }
-      # 
       # Return a List of all the available Services that implement
       # (type, algorithm). Note that the list is initialized lazily
       # and Provider loading and lookup is only trigered when
@@ -136,7 +132,6 @@ module Sun::Security::Jca
       end
       
       typesig { [String, JavaList] }
-      # 
       # This method exists for compatibility with JCE only. It will be removed
       # once JCE has been changed to use the replacement method.
       # @deprecated use getServices(List<ServiceId>) instead
@@ -146,7 +141,6 @@ module Sun::Security::Jca
       end
       
       typesig { [JavaList] }
-      # 
       # Return a List of all the available Services that implement any of
       # the specified algorithms. See getServices(String, String) for detals.
       def get_services(ids)
@@ -155,7 +149,6 @@ module Sun::Security::Jca
       end
       
       typesig { [String, Class, String] }
-      # 
       # For all the getInstance() methods below:
       # @param type the type of engine (e.g. MessageDigest)
       # @param clazz the Spi class that the implementation must subclass
@@ -191,7 +184,7 @@ module Sun::Security::Jca
           begin
             return get_instance(s, clazz)
           rescue NoSuchAlgorithmException => e
-            failure = e_
+            failure = e
           end
         end
         raise failure
@@ -236,7 +229,6 @@ module Sun::Security::Jca
       end
       
       typesig { [Service, Class] }
-      # 
       # The two getInstance() methods below take a service. They are
       # intended for classes that cannot use the standard methods, e.g.
       # because they implement delayed provider selection like the
@@ -255,7 +247,6 @@ module Sun::Security::Jca
       end
       
       typesig { [Service, Class, Class] }
-      # 
       # Check is subClass is a subclass of superClass. If not,
       # throw a NoSuchAlgorithmException.
       def check_super_class(s, sub_class, super_class)

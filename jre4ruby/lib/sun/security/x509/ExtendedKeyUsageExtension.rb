@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 2000-2006 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -42,7 +41,6 @@ module Sun::Security::X509
     }
   end
   
-  # 
   # This class defines the Extended Key Usage Extension, which
   # indicates one or more purposes for which the certified public key
   # may be used, in addition to or in place of the basic purposes
@@ -87,13 +85,11 @@ module Sun::Security::X509
     include CertAttrSet
     
     class_module.module_eval {
-      # 
       # Identifier for this attribute, to be used with the
       # get, set, delete methods of Certificate, x509 type.
       const_set_lazy(:IDENT) { "x509.info.extensions.ExtendedKeyUsage" }
       const_attr_reader  :IDENT
       
-      # 
       # Attribute names.
       const_set_lazy(:NAME) { "ExtendedKeyUsage" }
       const_attr_reader  :NAME
@@ -150,7 +146,6 @@ module Sun::Security::X509
       end
     }
     
-    # 
     # Vector of KeyUsages for this object.
     attr_accessor :key_usages
     alias_method :attr_key_usages, :key_usages
@@ -177,7 +172,6 @@ module Sun::Security::X509
     end
     
     typesig { [Vector] }
-    # 
     # Create a ExtendedKeyUsageExtension object from
     # a Vector of Key Usages; the criticality is set to false.
     # 
@@ -187,7 +181,6 @@ module Sun::Security::X509
     end
     
     typesig { [Boolean, Vector] }
-    # 
     # Create a ExtendedKeyUsageExtension object from
     # a Vector of KeyUsages with specified criticality.
     # 
@@ -203,7 +196,6 @@ module Sun::Security::X509
     end
     
     typesig { [Boolean, Object] }
-    # 
     # Create the extension from its DER encoded value and criticality.
     # 
     # @param critical true if the extension is to be treated as critical.
@@ -229,7 +221,6 @@ module Sun::Security::X509
     end
     
     typesig { [] }
-    # 
     # Return the extension as user readable string.
     def to_s
       if ((@key_usages).nil?)
@@ -253,7 +244,6 @@ module Sun::Security::X509
     end
     
     typesig { [OutputStream] }
-    # 
     # Write the extension to the DerOutputStream.
     # 
     # @param out the DerOutputStream to write the extension to.
@@ -270,7 +260,6 @@ module Sun::Security::X509
     end
     
     typesig { [String, Object] }
-    # 
     # Set the attribute value.
     def set(name, obj)
       if (name.equals_ignore_case(USAGES))
@@ -285,7 +274,6 @@ module Sun::Security::X509
     end
     
     typesig { [String] }
-    # 
     # Get the attribute value.
     def get(name)
       if (name.equals_ignore_case(USAGES))
@@ -297,7 +285,6 @@ module Sun::Security::X509
     end
     
     typesig { [String] }
-    # 
     # Delete the attribute value.
     def delete(name)
       if (name.equals_ignore_case(USAGES))
@@ -309,7 +296,6 @@ module Sun::Security::X509
     end
     
     typesig { [] }
-    # 
     # Return an enumeration of names of attributes existing within this
     # attribute.
     def get_elements
@@ -319,7 +305,6 @@ module Sun::Security::X509
     end
     
     typesig { [] }
-    # 
     # Return the name of this attribute.
     def get_name
       return (NAME)

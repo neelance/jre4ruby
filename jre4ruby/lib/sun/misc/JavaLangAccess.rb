@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 2003-2006 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -44,7 +43,6 @@ module Sun::Misc
     end
     
     typesig { [Class, AnnotationType] }
-    # 
     # Set the AnnotationType instance corresponding to this class.
     # (This method only applies to annotation types.)
     def set_annotation_type(klass, annotation_type)
@@ -52,7 +50,6 @@ module Sun::Misc
     end
     
     typesig { [Class] }
-    # 
     # Get the AnnotationType instance corresponding to this class.
     # (This method only applies to annotation types.)
     def get_annotation_type(klass)
@@ -60,7 +57,6 @@ module Sun::Misc
     end
     
     typesig { [Class] }
-    # 
     # Returns the elements of an enum class or null if the
     # Class object does not represent an enum type;
     # the result is uncloned, cached, and shared by all callers.

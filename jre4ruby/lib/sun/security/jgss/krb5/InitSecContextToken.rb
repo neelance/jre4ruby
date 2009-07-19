@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 2000-2007 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -47,7 +46,6 @@ module Sun::Security::Jgss::Krb5
     undef_method :ap_req=
     
     typesig { [Krb5Context, Credentials, Credentials] }
-    # 
     # For the context initiator to call. It constructs a new
     # InitSecContextToken to send over to the peer containing the desired
     # flags and the AP-REQ. It also updates the context with the local
@@ -78,7 +76,6 @@ module Sun::Security::Jgss::Krb5
     end
     
     typesig { [Krb5Context, Array.typed(EncryptionKey), InputStream] }
-    # 
     # For the context acceptor to call. It reads the bytes out of an
     # InputStream and constructs an InitSecContextToken with them.
     def initialize(context, keys, is)
@@ -99,13 +96,11 @@ module Sun::Security::Jgss::Krb5
       @ap_req = KrbApReq.new(ap_req_bytes, keys, addr)
       # debug("\nReceived AP-REQ and authenticated it.\n");
       session_key = @ap_req.get_creds.get_session_key
-      # 
       # System.out.println("\n\nSession key from service ticket is: " +
       # getHexBytes(sessionKey.getBytes()));
       sub_key = @ap_req.get_sub_key
       if (!(sub_key).nil?)
         context.set_key(sub_key)
-        # 
         # System.out.println("Sub-Session key from authenticator is: " +
         # getHexBytes(subKey.getBytes()) + "\n");
       else

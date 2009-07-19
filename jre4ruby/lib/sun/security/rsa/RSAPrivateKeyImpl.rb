@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 2003-2008 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -37,7 +36,6 @@ module Sun::Security::Rsa
     }
   end
   
-  # 
   # Key implementation for RSA private keys, non-CRT form (modulus, private
   # exponent only). For CRT private keys, see RSAPrivateCrtKeyImpl. We need
   # separate classes to ensure correct behavior in instanceof checks, etc.

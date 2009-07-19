@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 2003 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -35,7 +34,6 @@ module Sun::Security::Pkcs11
     }
   end
   
-  # 
   # SecureRandom implementation class. Some tokens support only
   # C_GenerateRandom() and not C_SeedRandom(). In order not to lose an
   # application specified seed, we create a SHA1PRNG that we mix with in that

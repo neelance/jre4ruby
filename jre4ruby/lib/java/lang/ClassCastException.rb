@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 1994-1997 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -30,7 +29,6 @@ module Java::Lang
     }
   end
   
-  # 
   # Thrown to indicate that the code has attempted to cast an object
   # to a subclass of which it is not an instance. For example, the
   # following code generates a <code>ClassCastException</code>:
@@ -45,14 +43,12 @@ module Java::Lang
     include_class_members ClassCastExceptionImports
     
     typesig { [] }
-    # 
     # Constructs a <code>ClassCastException</code> with no detail message.
     def initialize
       super()
     end
     
     typesig { [String] }
-    # 
     # Constructs a <code>ClassCastException</code> with the specified
     # detail message.
     # 

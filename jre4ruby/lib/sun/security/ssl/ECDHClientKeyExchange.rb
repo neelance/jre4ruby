@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 2006-2007 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -36,7 +35,6 @@ module Sun::Security::Ssl
     }
   end
   
-  # 
   # ClientKeyExchange message for all ECDH based key exchange methods. It
   # contains the client's ephemeral public value.
   # 

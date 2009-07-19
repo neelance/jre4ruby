@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 1997-2006 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -38,7 +37,6 @@ module Java::Security::Cert
     }
   end
   
-  # 
   # <p>Abstract class for managing a variety of identity certificates.
   # An identity certificate is a binding of a principal to a public key which
   # is vouched for by another principal.  (A principal represents
@@ -76,7 +74,6 @@ module Java::Security::Cert
     undef_method :type=
     
     typesig { [String] }
-    # 
     # Creates a certificate of the specified type.
     # 
     # @param type the standard name of the certificate type.
@@ -90,7 +87,6 @@ module Java::Security::Cert
     end
     
     typesig { [] }
-    # 
     # Returns the type of this certificate.
     # 
     # @return the type of this certificate.
@@ -99,7 +95,6 @@ module Java::Security::Cert
     end
     
     typesig { [Object] }
-    # 
     # Compares this certificate for equality with the specified
     # object. If the <code>other</code> object is an
     # <code>instanceof</code> <code>Certificate</code>, then
@@ -126,7 +121,6 @@ module Java::Security::Cert
     end
     
     typesig { [] }
-    # 
     # Returns a hashcode value for this certificate from its
     # encoded form.
     # 
@@ -147,7 +141,6 @@ module Java::Security::Cert
     end
     
     typesig { [] }
-    # 
     # Returns the encoded form of this certificate. It is
     # assumed that each certificate type would have only a single
     # form of encoding; for example, X.509 certificates would
@@ -161,7 +154,6 @@ module Java::Security::Cert
     end
     
     typesig { [PublicKey] }
-    # 
     # Verifies that this certificate was signed using the
     # private key that corresponds to the specified public key.
     # 
@@ -178,7 +170,6 @@ module Java::Security::Cert
     end
     
     typesig { [PublicKey, String] }
-    # 
     # Verifies that this certificate was signed using the
     # private key that corresponds to the specified public key.
     # This method uses the signature verification engine
@@ -198,7 +189,6 @@ module Java::Security::Cert
     end
     
     typesig { [] }
-    # 
     # Returns a string representation of this certificate.
     # 
     # @return a string representation of this certificate.
@@ -207,7 +197,6 @@ module Java::Security::Cert
     end
     
     typesig { [] }
-    # 
     # Gets the public key from this certificate.
     # 
     # @return the public key.
@@ -216,7 +205,6 @@ module Java::Security::Cert
     end
     
     class_module.module_eval {
-      # 
       # Alternate Certificate class for serialization.
       # @since 1.3
       const_set_lazy(:CertificateRep) { Class.new do
@@ -241,7 +229,6 @@ module Java::Security::Cert
         undef_method :data=
         
         typesig { [String, Array.typed(::Java::Byte)] }
-        # 
         # Construct the alternate Certificate class with the Certificate
         # type and Certificate encoding bytes.
         # 
@@ -258,7 +245,6 @@ module Java::Security::Cert
         end
         
         typesig { [] }
-        # 
         # Resolve the Certificate Object.
         # 
         # <p>
@@ -282,7 +268,6 @@ module Java::Security::Cert
     }
     
     typesig { [] }
-    # 
     # Replace the Certificate to be serialized.
     # 
     # @return the alternate Certificate object to be serialized

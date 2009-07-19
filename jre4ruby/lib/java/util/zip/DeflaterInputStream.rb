@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 2006 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -34,7 +33,6 @@ module Java::Util::Zip
     }
   end
   
-  # 
   # Implements an input stream filter for compressing data in the "deflate"
   # compression format.
   # 
@@ -83,7 +81,6 @@ module Java::Util::Zip
     undef_method :reach_eof=
     
     typesig { [] }
-    # 
     # Check to make sure that this stream has not been closed.
     def ensure_open
       if ((self.attr_in).nil?)
@@ -92,7 +89,6 @@ module Java::Util::Zip
     end
     
     typesig { [InputStream] }
-    # 
     # Creates a new input stream with a default compressor and buffer
     # size.
     # 
@@ -104,7 +100,6 @@ module Java::Util::Zip
     end
     
     typesig { [InputStream, Deflater] }
-    # 
     # Creates a new input stream with the specified compressor and a
     # default buffer size.
     # 
@@ -116,7 +111,6 @@ module Java::Util::Zip
     end
     
     typesig { [InputStream, Deflater, ::Java::Int] }
-    # 
     # Creates a new input stream with the specified compressor and buffer
     # size.
     # 
@@ -151,7 +145,6 @@ module Java::Util::Zip
     end
     
     typesig { [] }
-    # 
     # Closes this input stream and its underlying input stream, discarding
     # any pending uncompressed data.
     # 
@@ -171,7 +164,6 @@ module Java::Util::Zip
     end
     
     typesig { [] }
-    # 
     # Reads a single byte of compressed data from the input stream.
     # This method will block until some input can be read and compressed.
     # 
@@ -189,7 +181,6 @@ module Java::Util::Zip
     end
     
     typesig { [Array.typed(::Java::Byte), ::Java::Int, ::Java::Int] }
-    # 
     # Reads compressed data into a byte array.
     # This method will block until some input can be read and compressed.
     # 
@@ -246,7 +237,6 @@ module Java::Util::Zip
     end
     
     typesig { [::Java::Long] }
-    # 
     # Skips over and discards data from the input stream.
     # This method may block until the specified number of bytes are read and
     # skipped. <em>Note:</em> While {@code n} is given as a {@code long},
@@ -281,7 +271,6 @@ module Java::Util::Zip
     end
     
     typesig { [] }
-    # 
     # Returns 0 after EOF has been reached, otherwise always return 1.
     # <p>
     # Programs should not count on this method to return the actual number
@@ -299,7 +288,6 @@ module Java::Util::Zip
     end
     
     typesig { [] }
-    # 
     # Always returns {@code false} because this input stream does not support
     # the {@link #mark mark()} and {@link #reset reset()} methods.
     # 
@@ -309,7 +297,6 @@ module Java::Util::Zip
     end
     
     typesig { [::Java::Int] }
-    # 
     # <i>This operation is not supported</i>.
     # 
     # @param limit maximum bytes that can be read before invalidating the position marker
@@ -318,7 +305,6 @@ module Java::Util::Zip
     end
     
     typesig { [] }
-    # 
     # <i>This operation is not supported</i>.
     # 
     # @throws IOException always thrown

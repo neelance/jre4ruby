@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 2000-2007 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -33,7 +32,6 @@ module Java::Nio
     }
   end
   
-  # 
   # A byte buffer.
   # 
   # <p> This class defines six categories of operations upon
@@ -308,7 +306,6 @@ module Java::Nio
     
     class_module.module_eval {
       typesig { [::Java::Int] }
-      # 
       # Allocates a new direct byte buffer.
       # 
       # <p> The new buffer's position will be zero, its limit will be its
@@ -327,7 +324,6 @@ module Java::Nio
       end
       
       typesig { [::Java::Int] }
-      # 
       # Allocates a new byte buffer.
       # 
       # <p> The new buffer's position will be zero, its limit will be its
@@ -350,7 +346,6 @@ module Java::Nio
       end
       
       typesig { [Array.typed(::Java::Byte), ::Java::Int, ::Java::Int] }
-      # 
       # Wraps a byte array into a buffer.
       # 
       # <p> The new buffer will be backed by the given byte array;
@@ -389,7 +384,6 @@ module Java::Nio
       end
       
       typesig { [Array.typed(::Java::Byte)] }
-      # 
       # Wraps a byte array into a buffer.
       # 
       # <p> The new buffer will be backed by the given byte array;
@@ -410,7 +404,6 @@ module Java::Nio
     }
     
     typesig { [] }
-    # 
     # Creates a new byte buffer whose content is a shared subsequence of
     # this buffer's content.
     # 
@@ -431,7 +424,6 @@ module Java::Nio
     end
     
     typesig { [] }
-    # 
     # Creates a new byte buffer that shares this buffer's content.
     # 
     # <p> The content of the new buffer will be that of this buffer.  Changes
@@ -450,7 +442,6 @@ module Java::Nio
     end
     
     typesig { [] }
-    # 
     # Creates a new, read-only byte buffer that shares this buffer's
     # content.
     # 
@@ -486,7 +477,6 @@ module Java::Nio
     end
     
     typesig { [::Java::Byte] }
-    # 
     # Relative <i>put</i> method&nbsp;&nbsp;<i>(optional operation)</i>.
     # 
     # <p> Writes the given byte into this buffer at the current
@@ -507,7 +497,6 @@ module Java::Nio
     end
     
     typesig { [::Java::Int] }
-    # 
     # Absolute <i>get</i> method.  Reads the byte at the given
     # index. </p>
     # 
@@ -524,7 +513,6 @@ module Java::Nio
     end
     
     typesig { [::Java::Int, ::Java::Byte] }
-    # 
     # Absolute <i>put</i> method&nbsp;&nbsp;<i>(optional operation)</i>.
     # 
     # <p> Writes the given byte into this buffer at the given
@@ -613,7 +601,6 @@ module Java::Nio
     end
     
     typesig { [Array.typed(::Java::Byte)] }
-    # 
     # Relative bulk <i>get</i> method.
     # 
     # <p> This method transfers bytes from this buffer into the given
@@ -691,7 +678,6 @@ module Java::Nio
     end
     
     typesig { [Array.typed(::Java::Byte), ::Java::Int, ::Java::Int] }
-    # 
     # Relative bulk <i>put</i> method&nbsp;&nbsp;<i>(optional operation)</i>.
     # 
     # <p> This method transfers bytes into this buffer from the given
@@ -755,7 +741,6 @@ module Java::Nio
     end
     
     typesig { [Array.typed(::Java::Byte)] }
-    # 
     # Relative bulk <i>put</i> method&nbsp;&nbsp;<i>(optional operation)</i>.
     # 
     # <p> This method transfers the entire content of the given source
@@ -794,7 +779,6 @@ module Java::Nio
     end
     
     typesig { [] }
-    # 
     # Returns the byte array that backs this
     # buffer&nbsp;&nbsp;<i>(optional operation)</i>.
     # 
@@ -823,7 +807,6 @@ module Java::Nio
     end
     
     typesig { [] }
-    # 
     # Returns the offset within this buffer's backing array of the first
     # element of the buffer&nbsp;&nbsp;<i>(optional operation)</i>.
     # 
@@ -853,7 +836,6 @@ module Java::Nio
     end
     
     typesig { [] }
-    # 
     # Compacts this buffer&nbsp;&nbsp;<i>(optional operation)</i>.
     # 
     # <p> The bytes between the buffer's current position and its limit,
@@ -896,7 +878,6 @@ module Java::Nio
     end
     
     typesig { [] }
-    # 
     # Tells whether or not this byte buffer is direct. </p>
     # 
     # @return  <tt>true</tt> if, and only if, this buffer is direct
@@ -905,7 +886,6 @@ module Java::Nio
     end
     
     typesig { [] }
-    # 
     # Returns a string summarizing the state of this buffer.  </p>
     # 
     # @return  A summary string
@@ -923,7 +903,6 @@ module Java::Nio
     end
     
     typesig { [] }
-    # 
     # Returns the current hash code of this buffer.
     # 
     # <p> The hash code of a byte buffer depends only upon its remaining
@@ -947,7 +926,6 @@ module Java::Nio
     end
     
     typesig { [Object] }
-    # 
     # Tells whether or not this buffer is equal to another object.
     # 
     # <p> Two byte buffers are equal if, and only if,
@@ -1004,7 +982,6 @@ module Java::Nio
     end
     
     typesig { [ByteBuffer] }
-    # 
     # Compares this buffer to another.
     # 
     # <p> Two byte buffers are compared by comparing their sequences of
@@ -1060,7 +1037,6 @@ module Java::Nio
     undef_method :native_byte_order=
     
     typesig { [] }
-    # 
     # Retrieves this buffer's byte order.
     # 
     # <p> The byte order is used when reading or writing multibyte values, and
@@ -1074,7 +1050,6 @@ module Java::Nio
     end
     
     typesig { [ByteOrder] }
-    # 
     # Modifies this buffer's byte order.  </p>
     # 
     # @param  bo
@@ -1120,7 +1095,6 @@ module Java::Nio
     end
     
     typesig { [::Java::Char] }
-    # 
     # Relative <i>put</i> method for writing a char
     # value&nbsp;&nbsp;<i>(optional operation)</i>.
     # 
@@ -1144,7 +1118,6 @@ module Java::Nio
     end
     
     typesig { [::Java::Int] }
-    # 
     # Absolute <i>get</i> method for reading a char value.
     # 
     # <p> Reads two bytes at the given index, composing them into a
@@ -1164,7 +1137,6 @@ module Java::Nio
     end
     
     typesig { [::Java::Int, ::Java::Char] }
-    # 
     # Absolute <i>put</i> method for writing a char
     # value&nbsp;&nbsp;<i>(optional operation)</i>.
     # 
@@ -1191,7 +1163,6 @@ module Java::Nio
     end
     
     typesig { [] }
-    # 
     # Creates a view of this byte buffer as a char buffer.
     # 
     # <p> The content of the new buffer will start at this buffer's current
@@ -1211,7 +1182,6 @@ module Java::Nio
     end
     
     typesig { [] }
-    # 
     # Relative <i>get</i> method for reading a short value.
     # 
     # <p> Reads the next two bytes at this buffer's current position,
@@ -1228,7 +1198,6 @@ module Java::Nio
     end
     
     typesig { [::Java::Short] }
-    # 
     # Relative <i>put</i> method for writing a short
     # value&nbsp;&nbsp;<i>(optional operation)</i>.
     # 
@@ -1252,7 +1221,6 @@ module Java::Nio
     end
     
     typesig { [::Java::Int] }
-    # 
     # Absolute <i>get</i> method for reading a short value.
     # 
     # <p> Reads two bytes at the given index, composing them into a
@@ -1272,7 +1240,6 @@ module Java::Nio
     end
     
     typesig { [::Java::Int, ::Java::Short] }
-    # 
     # Absolute <i>put</i> method for writing a short
     # value&nbsp;&nbsp;<i>(optional operation)</i>.
     # 
@@ -1299,7 +1266,6 @@ module Java::Nio
     end
     
     typesig { [] }
-    # 
     # Creates a view of this byte buffer as a short buffer.
     # 
     # <p> The content of the new buffer will start at this buffer's current
@@ -1319,7 +1285,6 @@ module Java::Nio
     end
     
     typesig { [] }
-    # 
     # Relative <i>get</i> method for reading an int value.
     # 
     # <p> Reads the next four bytes at this buffer's current position,
@@ -1336,7 +1301,6 @@ module Java::Nio
     end
     
     typesig { [::Java::Int] }
-    # 
     # Relative <i>put</i> method for writing an int
     # value&nbsp;&nbsp;<i>(optional operation)</i>.
     # 
@@ -1360,7 +1324,6 @@ module Java::Nio
     end
     
     typesig { [::Java::Int] }
-    # 
     # Absolute <i>get</i> method for reading an int value.
     # 
     # <p> Reads four bytes at the given index, composing them into a
@@ -1380,7 +1343,6 @@ module Java::Nio
     end
     
     typesig { [::Java::Int, ::Java::Int] }
-    # 
     # Absolute <i>put</i> method for writing an int
     # value&nbsp;&nbsp;<i>(optional operation)</i>.
     # 
@@ -1407,7 +1369,6 @@ module Java::Nio
     end
     
     typesig { [] }
-    # 
     # Creates a view of this byte buffer as an int buffer.
     # 
     # <p> The content of the new buffer will start at this buffer's current
@@ -1427,7 +1388,6 @@ module Java::Nio
     end
     
     typesig { [] }
-    # 
     # Relative <i>get</i> method for reading a long value.
     # 
     # <p> Reads the next eight bytes at this buffer's current position,
@@ -1444,7 +1404,6 @@ module Java::Nio
     end
     
     typesig { [::Java::Long] }
-    # 
     # Relative <i>put</i> method for writing a long
     # value&nbsp;&nbsp;<i>(optional operation)</i>.
     # 
@@ -1468,7 +1427,6 @@ module Java::Nio
     end
     
     typesig { [::Java::Int] }
-    # 
     # Absolute <i>get</i> method for reading a long value.
     # 
     # <p> Reads eight bytes at the given index, composing them into a
@@ -1488,7 +1446,6 @@ module Java::Nio
     end
     
     typesig { [::Java::Int, ::Java::Long] }
-    # 
     # Absolute <i>put</i> method for writing a long
     # value&nbsp;&nbsp;<i>(optional operation)</i>.
     # 
@@ -1515,7 +1472,6 @@ module Java::Nio
     end
     
     typesig { [] }
-    # 
     # Creates a view of this byte buffer as a long buffer.
     # 
     # <p> The content of the new buffer will start at this buffer's current
@@ -1535,7 +1491,6 @@ module Java::Nio
     end
     
     typesig { [] }
-    # 
     # Relative <i>get</i> method for reading a float value.
     # 
     # <p> Reads the next four bytes at this buffer's current position,
@@ -1552,7 +1507,6 @@ module Java::Nio
     end
     
     typesig { [::Java::Float] }
-    # 
     # Relative <i>put</i> method for writing a float
     # value&nbsp;&nbsp;<i>(optional operation)</i>.
     # 
@@ -1576,7 +1530,6 @@ module Java::Nio
     end
     
     typesig { [::Java::Int] }
-    # 
     # Absolute <i>get</i> method for reading a float value.
     # 
     # <p> Reads four bytes at the given index, composing them into a
@@ -1596,7 +1549,6 @@ module Java::Nio
     end
     
     typesig { [::Java::Int, ::Java::Float] }
-    # 
     # Absolute <i>put</i> method for writing a float
     # value&nbsp;&nbsp;<i>(optional operation)</i>.
     # 
@@ -1623,7 +1575,6 @@ module Java::Nio
     end
     
     typesig { [] }
-    # 
     # Creates a view of this byte buffer as a float buffer.
     # 
     # <p> The content of the new buffer will start at this buffer's current
@@ -1643,7 +1594,6 @@ module Java::Nio
     end
     
     typesig { [] }
-    # 
     # Relative <i>get</i> method for reading a double value.
     # 
     # <p> Reads the next eight bytes at this buffer's current position,
@@ -1660,7 +1610,6 @@ module Java::Nio
     end
     
     typesig { [::Java::Double] }
-    # 
     # Relative <i>put</i> method for writing a double
     # value&nbsp;&nbsp;<i>(optional operation)</i>.
     # 
@@ -1684,7 +1633,6 @@ module Java::Nio
     end
     
     typesig { [::Java::Int] }
-    # 
     # Absolute <i>get</i> method for reading a double value.
     # 
     # <p> Reads eight bytes at the given index, composing them into a
@@ -1704,7 +1652,6 @@ module Java::Nio
     end
     
     typesig { [::Java::Int, ::Java::Double] }
-    # 
     # Absolute <i>put</i> method for writing a double
     # value&nbsp;&nbsp;<i>(optional operation)</i>.
     # 
@@ -1731,7 +1678,6 @@ module Java::Nio
     end
     
     typesig { [] }
-    # 
     # Creates a view of this byte buffer as a double buffer.
     # 
     # <p> The content of the new buffer will start at this buffer's current

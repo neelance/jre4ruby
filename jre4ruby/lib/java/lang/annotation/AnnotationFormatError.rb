@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 2004 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -31,7 +30,6 @@ module Java::Lang::Annotation
     }
   end
   
-  # 
   # Thrown when the annotation parser attempts to read an annotation
   # from a class file and determines that the annotation is malformed.
   # 
@@ -41,7 +39,6 @@ module Java::Lang::Annotation
     include_class_members AnnotationFormatErrorImports
     
     typesig { [String] }
-    # 
     # Constructs a new <tt>AnnotationFormatError</tt> with the specified
     # detail message.
     # 
@@ -51,7 +48,6 @@ module Java::Lang::Annotation
     end
     
     typesig { [String, Exception] }
-    # 
     # Constructs a new <tt>AnnotationFormatError</tt> with the specified
     # detail message and cause.  Note that the detail message associated
     # with <code>cause</code> is <i>not</i> automatically incorporated in
@@ -65,7 +61,6 @@ module Java::Lang::Annotation
     end
     
     typesig { [Exception] }
-    # 
     # Constructs a new <tt>AnnotationFormatError</tt> with the specified
     # cause and a detail message of
     # <tt>(cause == null ? null : cause.toString())</tt> (which

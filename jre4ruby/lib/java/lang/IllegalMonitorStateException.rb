@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 1995-1997 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -30,7 +29,6 @@ module Java::Lang
     }
   end
   
-  # 
   # Thrown to indicate that a thread has attempted to wait on an
   # object's monitor or to notify other threads waiting on an object's
   # monitor without owning the specified monitor.
@@ -46,7 +44,6 @@ module Java::Lang
     include_class_members IllegalMonitorStateExceptionImports
     
     typesig { [] }
-    # 
     # Constructs an <code>IllegalMonitorStateException</code> with no
     # detail message.
     def initialize
@@ -54,7 +51,6 @@ module Java::Lang
     end
     
     typesig { [String] }
-    # 
     # Constructs an <code>IllegalMonitorStateException</code> with the
     # specified detail message.
     # 

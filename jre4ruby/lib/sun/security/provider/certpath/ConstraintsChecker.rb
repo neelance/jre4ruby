@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 2000-2006 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -45,7 +44,6 @@ module Sun::Security::Provider::Certpath
     }
   end
   
-  # 
   # ConstraintsChecker is a <code>PKIXCertPathChecker</code> that checks
   # constraints information on a PKIX certificate, namely basic constraints
   # and name constraints.
@@ -101,7 +99,6 @@ module Sun::Security::Provider::Certpath
     }
     
     typesig { [::Java::Int] }
-    # 
     # Creates a ConstraintsChecker.
     # 
     # @param certPathLength the length of the certification path
@@ -144,7 +141,6 @@ module Sun::Security::Provider::Certpath
     end
     
     typesig { [Certificate, Collection] }
-    # 
     # Performs the basic constraints and name constraints
     # checks on the certificate using its internal state.
     # 
@@ -167,7 +163,6 @@ module Sun::Security::Provider::Certpath
     end
     
     typesig { [X509Certificate] }
-    # 
     # Internal method to check the name constraints against a cert
     def verify_name_constraints(curr_cert)
       msg = "name constraints"
@@ -199,7 +194,6 @@ module Sun::Security::Provider::Certpath
     
     class_module.module_eval {
       typesig { [X509Certificate, NameConstraintsExtension] }
-      # 
       # Helper to fold sets of name constraints together
       def merge_name_constraints(curr_cert, prev_nc)
         curr_cert_impl = nil
@@ -243,7 +237,6 @@ module Sun::Security::Provider::Certpath
     }
     
     typesig { [X509Certificate] }
-    # 
     # Internal method to check that a given cert meets basic constraints.
     def check_basic_constraints(curr_cert)
       msg = "basic constraints"
@@ -276,7 +269,6 @@ module Sun::Security::Provider::Certpath
     
     class_module.module_eval {
       typesig { [X509Certificate, ::Java::Int] }
-      # 
       # Merges the specified maxPathLength with the pathLenConstraint
       # obtained from the certificate.
       # 

@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 2000-2006 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -30,7 +29,6 @@ module Java::Lang
     }
   end
   
-  # 
   # A collection of assertion status directives (such as "enable assertions
   # in package p" or "disable assertions in class c").  This class is used by
   # the JVM to communicate the assertion status directives implied by
@@ -42,7 +40,6 @@ module Java::Lang
   class AssertionStatusDirectives 
     include_class_members AssertionStatusDirectivesImports
     
-    # 
     # The classes for which assertions are to be enabled or disabled.
     # The strings in this array are fully qualified class names (for
     # example,"com.xyz.foo.Bar").
@@ -52,7 +49,6 @@ module Java::Lang
     alias_method :attr_classes=, :classes=
     undef_method :classes=
     
-    # 
     # A parallel array to <tt>classes</tt>, indicating whether each class
     # is to have assertions enabled or disabled.  A value of <tt>true</tt>
     # for <tt>classEnabled[i]</tt> indicates that the class named by
@@ -72,7 +68,6 @@ module Java::Lang
     alias_method :attr_class_enabled=, :class_enabled=
     undef_method :class_enabled=
     
-    # 
     # The package-trees for which assertions are to be enabled or disabled.
     # The strings in this array are compete or partial package names
     # (for example, "com.xyz" or "com.xyz.foo").
@@ -82,7 +77,6 @@ module Java::Lang
     alias_method :attr_packages=, :packages=
     undef_method :packages=
     
-    # 
     # A parallel array to <tt>packages</tt>, indicating whether each
     # package-tree is to have assertions enabled or disabled.  A value of
     # <tt>true</tt> for <tt>packageEnabled[i]</tt> indicates that the
@@ -104,7 +98,6 @@ module Java::Lang
     alias_method :attr_package_enabled=, :package_enabled=
     undef_method :package_enabled=
     
-    # 
     # Whether or not assertions in non-system classes are to be enabled
     # by default.
     attr_accessor :deflt

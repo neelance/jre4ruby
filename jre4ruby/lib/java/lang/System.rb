@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 1994-2007 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -44,7 +43,6 @@ module Java::Lang
     }
   end
   
-  # 
   # The <code>System</code> class contains several useful class fields
   # and methods. It cannot be instantiated.
   # 
@@ -78,7 +76,6 @@ module Java::Lang
     end
     
     class_module.module_eval {
-      # 
       # The "standard" input stream. This stream is already
       # open and ready to supply input data. Typically this stream
       # corresponds to keyboard input or another input source specified by
@@ -94,7 +91,6 @@ module Java::Lang
       end
       alias_method :attr_in=, :in=
       
-      # 
       # The "standard" output stream. This stream is already
       # open and ready to accept output data. Typically this stream
       # corresponds to display output or another output destination
@@ -129,7 +125,6 @@ module Java::Lang
       end
       alias_method :attr_out=, :out=
       
-      # 
       # The "standard" error output stream. This stream is already
       # open and ready to accept output data.
       # <p>
@@ -164,7 +159,6 @@ module Java::Lang
       alias_method :attr_security=, :security=
       
       typesig { [InputStream] }
-      # 
       # Reassigns the "standard" input stream.
       # 
       # <p>First, if there is a security manager, its <code>checkPermission</code>
@@ -189,7 +183,6 @@ module Java::Lang
       end
       
       typesig { [PrintStream] }
-      # 
       # Reassigns the "standard" output stream.
       # 
       # <p>First, if there is a security manager, its <code>checkPermission</code>
@@ -213,7 +206,6 @@ module Java::Lang
       end
       
       typesig { [PrintStream] }
-      # 
       # Reassigns the "standard" error output stream.
       # 
       # <p>First, if there is a security manager, its <code>checkPermission</code>
@@ -248,7 +240,6 @@ module Java::Lang
       alias_method :attr_cons=, :cons=
       
       typesig { [] }
-      # 
       # Returns the unique {@link java.io.Console Console} object associated
       # with the current Java virtual machine, if any.
       # 
@@ -265,7 +256,6 @@ module Java::Lang
       end
       
       typesig { [] }
-      # 
       # Returns the channel inherited from the entity that created this
       # Java virtual machine.
       # 
@@ -320,7 +310,6 @@ module Java::Lang
       end
       
       typesig { [SecurityManager] }
-      # 
       # Sets the System security.
       # 
       # <p> If there is a security manager already installed, this method first
@@ -395,7 +384,6 @@ module Java::Lang
       end
       
       typesig { [] }
-      # 
       # Gets the system security interface.
       # 
       # @return  if a security manager has already been established for the
@@ -408,7 +396,6 @@ module Java::Lang
       
       JNI.native_method :Java_java_lang_System_currentTimeMillis, [:pointer, :long], :int64
       typesig { [] }
-      # 
       # Returns the current time in milliseconds.  Note that
       # while the unit of time of the return value is a millisecond,
       # the granularity of the value depends on the underlying
@@ -429,7 +416,6 @@ module Java::Lang
       
       JNI.native_method :Java_java_lang_System_nanoTime, [:pointer, :long], :int64
       typesig { [] }
-      # 
       # Returns the current value of the most precise available system
       # timer, in nanoseconds.
       # 
@@ -459,7 +445,6 @@ module Java::Lang
       
       JNI.native_method :Java_java_lang_System_arraycopy, [:pointer, :long, :long, :int32, :long, :int32, :int32], :void
       typesig { [Object, ::Java::Int, Object, ::Java::Int, ::Java::Int] }
-      # 
       # Copies an array from the specified source array, beginning at the
       # specified position, to the specified position of the destination array.
       # A subsequence of array components are copied from the source
@@ -556,7 +541,6 @@ module Java::Lang
       
       JNI.native_method :Java_java_lang_System_identityHashCode, [:pointer, :long, :long], :int32
       typesig { [Object] }
-      # 
       # Returns the same hash code for the given object as
       # would be returned by the default method hashCode(),
       # whether or not the given object's class overrides
@@ -570,7 +554,6 @@ module Java::Lang
         JNI.__send__(:Java_java_lang_System_identityHashCode, JNI.env, self.jni_id, x.jni_id)
       end
       
-      # 
       # System properties. The following properties are guaranteed to be defined:
       # <dl>
       # <dt>java.version         <dd>Java version number
@@ -607,7 +590,6 @@ module Java::Lang
       end
       
       typesig { [] }
-      # 
       # Determines the current system properties.
       # <p>
       # First, if there is a security manager, its
@@ -705,7 +687,6 @@ module Java::Lang
       end
       
       typesig { [Properties] }
-      # 
       # Sets the system properties to the <code>Properties</code>
       # argument.
       # <p>
@@ -739,7 +720,6 @@ module Java::Lang
       end
       
       typesig { [String] }
-      # 
       # Gets the system property indicated by the specified key.
       # <p>
       # First, if there is a security manager, its
@@ -774,7 +754,6 @@ module Java::Lang
       end
       
       typesig { [String, String] }
-      # 
       # Gets the system property indicated by the specified key.
       # <p>
       # First, if there is a security manager, its
@@ -809,7 +788,6 @@ module Java::Lang
       end
       
       typesig { [String, String] }
-      # 
       # Sets the system property indicated by the specified key.
       # <p>
       # First, if a security manager exists, its
@@ -847,7 +825,6 @@ module Java::Lang
       end
       
       typesig { [String] }
-      # 
       # Removes the system property indicated by the specified key.
       # <p>
       # First, if a security manager exists, its
@@ -893,7 +870,6 @@ module Java::Lang
       end
       
       typesig { [String] }
-      # 
       # Gets the value of the specified environment variable. An
       # environment variable is a system-dependent external named
       # value.
@@ -947,7 +923,6 @@ module Java::Lang
       end
       
       typesig { [] }
-      # 
       # Returns an unmodifiable string map view of the current system environment.
       # The environment is a system-dependent mapping from names to
       # values which is passed from parent to child processes.
@@ -995,7 +970,6 @@ module Java::Lang
       end
       
       typesig { [::Java::Int] }
-      # 
       # Terminates the currently running Java Virtual Machine. The
       # argument serves as a status code; by convention, a nonzero status
       # code indicates abnormal termination.
@@ -1019,7 +993,6 @@ module Java::Lang
       end
       
       typesig { [] }
-      # 
       # Runs the garbage collector.
       # <p>
       # Calling the <code>gc</code> method suggests that the Java Virtual
@@ -1041,7 +1014,6 @@ module Java::Lang
       end
       
       typesig { [] }
-      # 
       # Runs the finalization methods of any objects pending finalization.
       # <p>
       # Calling this method suggests that the Java Virtual Machine expend
@@ -1063,7 +1035,6 @@ module Java::Lang
       end
       
       typesig { [::Java::Boolean] }
-      # 
       # Enable or disable finalization on exit; doing so specifies that the
       # finalizers of all objects that have finalizers that have not yet been
       # automatically invoked are to be run before the Java runtime exits.
@@ -1092,7 +1063,6 @@ module Java::Lang
       end
       
       typesig { [String] }
-      # 
       # Loads a code file with the specified filename from the local file
       # system as a dynamic library. The filename
       # argument must be a complete path name.
@@ -1117,7 +1087,6 @@ module Java::Lang
       end
       
       typesig { [String] }
-      # 
       # Loads the system library specified by the <code>libname</code>
       # argument. The manner in which a library name is mapped to the
       # actual system library is system dependent.
@@ -1143,7 +1112,6 @@ module Java::Lang
       
       JNI.native_method :Java_java_lang_System_mapLibraryName, [:pointer, :long, :long], :long
       typesig { [String] }
-      # 
       # Maps a library name into a platform-specific string representing
       # a native library.
       # 
@@ -1159,7 +1127,6 @@ module Java::Lang
       end
       
       typesig { [] }
-      # 
       # The following two methods exist because in, out, and err must be
       # initialized to null.  The compiler, however, cannot be permitted to
       # inline access to them, since they are later set to more sensible values
@@ -1180,7 +1147,6 @@ module Java::Lang
       end
       
       typesig { [] }
-      # 
       # Initialize the system class.  Called after thread initialization.
       def initialize_system_class
         self.attr_props = Properties.new

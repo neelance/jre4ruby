@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 1996-2006 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -41,7 +40,6 @@ module Sun::Security::X509
     }
   end
   
-  # 
   # Note:  As of 1.4, the public class,
   # javax.security.auth.x500.X500Principal,
   # should be used when parsing, generating, and comparing X.500 DNs.
@@ -195,7 +193,6 @@ module Sun::Security::X509
     undef_method :all_ava_list=
     
     typesig { [String] }
-    # 
     # Constructs a name from a conventionally formatted string, such
     # as "CN=Dave, OU=JavaSoft, O=Sun Microsystems, C=US".
     # (RFC 1779 or RFC 2253 style).
@@ -206,7 +203,6 @@ module Sun::Security::X509
     end
     
     typesig { [String, Map] }
-    # 
     # Constructs a name from a conventionally formatted string, such
     # as "CN=Dave, OU=JavaSoft, O=Sun Microsystems, C=US".
     # (RFC 1779 or RFC 2253 style).
@@ -227,7 +223,6 @@ module Sun::Security::X509
     end
     
     typesig { [String, String] }
-    # 
     # Constructs a name from a string formatted according to format.
     # Currently, the formats DEFAULT and RFC2253 are supported.
     # DEFAULT is the default format used by the X500Name(String)
@@ -260,7 +255,6 @@ module Sun::Security::X509
     end
     
     typesig { [String, String, String, String] }
-    # 
     # Constructs a name from fields common in enterprise application
     # environments.
     # 
@@ -283,7 +277,6 @@ module Sun::Security::X509
       @rdn_list = nil
       @all_ava_list = nil
       @names = Array.typed(RDN).new(4) { nil }
-      # 
       # NOTE:  it's only on output that little-endian
       # ordering is used.
       @names[3] = RDN.new(1)
@@ -297,7 +290,6 @@ module Sun::Security::X509
     end
     
     typesig { [String, String, String, String, String, String] }
-    # 
     # Constructs a name from fields common in Internet application
     # environments.
     # 
@@ -322,7 +314,6 @@ module Sun::Security::X509
       @rdn_list = nil
       @all_ava_list = nil
       @names = Array.typed(RDN).new(6) { nil }
-      # 
       # NOTE:  it's only on output that little-endian
       # ordering is used.
       @names[5] = RDN.new(1)
@@ -340,7 +331,6 @@ module Sun::Security::X509
     end
     
     typesig { [Array.typed(RDN)] }
-    # 
     # Constructs a name from an array of relative distinguished names
     # 
     # @param rdnArray array of relative distinguished names
@@ -370,7 +360,6 @@ module Sun::Security::X509
     end
     
     typesig { [DerValue] }
-    # 
     # Constructs a name from an ASN.1 encoded value.  The encoding
     # of the name in the stream uses DER (a BER/1 subset).
     # 
@@ -382,7 +371,6 @@ module Sun::Security::X509
     end
     
     typesig { [DerInputStream] }
-    # 
     # Constructs a name from an ASN.1 encoded input stream.  The encoding
     # of the name in the stream uses DER (a BER/1 subset).
     # 
@@ -401,7 +389,6 @@ module Sun::Security::X509
     end
     
     typesig { [Array.typed(::Java::Byte)] }
-    # 
     # Constructs a name from an ASN.1 encoded byte array.
     # 
     # @param name DER-encoded byte array holding an X.500 name.
@@ -420,7 +407,6 @@ module Sun::Security::X509
     end
     
     typesig { [] }
-    # 
     # Return an immutable List of all RDNs in this X500Name.
     def rdns
       list = @rdn_list
@@ -432,14 +418,12 @@ module Sun::Security::X509
     end
     
     typesig { [] }
-    # 
     # Return the number of RDNs in this X500Name.
     def size
       return @names.attr_length
     end
     
     typesig { [] }
-    # 
     # Return an immutable List of the the AVAs contained in all the
     # RDNs of this X500Name.
     def all_avas
@@ -456,7 +440,6 @@ module Sun::Security::X509
     end
     
     typesig { [] }
-    # 
     # Return the total number of AVAs contained in all the RDNs of
     # this X500Name.
     def ava_size
@@ -464,7 +447,6 @@ module Sun::Security::X509
     end
     
     typesig { [] }
-    # 
     # Return whether this X500Name is empty. An X500Name is not empty
     # if it has at least one RDN containing at least one AVA.
     def is_empty
@@ -483,7 +465,6 @@ module Sun::Security::X509
     end
     
     typesig { [] }
-    # 
     # Calculates a hash code value for the object.  Objects
     # which are equal will also have the same hashcode.
     def hash_code
@@ -491,7 +472,6 @@ module Sun::Security::X509
     end
     
     typesig { [Object] }
-    # 
     # Compares this name with another, for equality.
     # 
     # @return true iff the names are identical.
@@ -528,7 +508,6 @@ module Sun::Security::X509
     end
     
     typesig { [DerValue] }
-    # 
     # Returns the name component as a Java string, regardless of its
     # encoding restrictions.
     def get_string(attribute)
@@ -544,14 +523,12 @@ module Sun::Security::X509
     end
     
     typesig { [] }
-    # 
     # Return type of GeneralName.
     def get_type
       return (GeneralNameInterface::NAME_DIRECTORY)
     end
     
     typesig { [] }
-    # 
     # Returns a "Country" name component.  If more than one
     # such attribute exists, the topmost one is returned.
     # 
@@ -562,7 +539,6 @@ module Sun::Security::X509
     end
     
     typesig { [] }
-    # 
     # Returns an "Organization" name component.  If more than
     # one such attribute exists, the topmost one is returned.
     # 
@@ -573,7 +549,6 @@ module Sun::Security::X509
     end
     
     typesig { [] }
-    # 
     # Returns an "Organizational Unit" name component.  If more
     # than one such attribute exists, the topmost one is returned.
     # 
@@ -584,7 +559,6 @@ module Sun::Security::X509
     end
     
     typesig { [] }
-    # 
     # Returns a "Common Name" component.  If more than one such
     # attribute exists, the topmost one is returned.
     # 
@@ -595,7 +569,6 @@ module Sun::Security::X509
     end
     
     typesig { [] }
-    # 
     # Returns a "Locality" name component.  If more than one
     # such component exists, the topmost one is returned.
     # 
@@ -606,7 +579,6 @@ module Sun::Security::X509
     end
     
     typesig { [] }
-    # 
     # Returns a "State" name component.  If more than one
     # such component exists, the topmost one is returned.
     # 
@@ -617,7 +589,6 @@ module Sun::Security::X509
     end
     
     typesig { [] }
-    # 
     # Returns a "Domain" name component.  If more than one
     # such component exists, the topmost one is returned.
     # 
@@ -628,7 +599,6 @@ module Sun::Security::X509
     end
     
     typesig { [] }
-    # 
     # Returns a "DN Qualifier" name component.  If more than one
     # such component exists, the topmost one is returned.
     # 
@@ -639,7 +609,6 @@ module Sun::Security::X509
     end
     
     typesig { [] }
-    # 
     # Returns a "Surname" name component.  If more than one
     # such component exists, the topmost one is returned.
     # 
@@ -650,7 +619,6 @@ module Sun::Security::X509
     end
     
     typesig { [] }
-    # 
     # Returns a "Given Name" name component.  If more than one
     # such component exists, the topmost one is returned.
     # 
@@ -661,7 +629,6 @@ module Sun::Security::X509
     end
     
     typesig { [] }
-    # 
     # Returns an "Initials" name component.  If more than one
     # such component exists, the topmost one is returned.
     # 
@@ -672,7 +639,6 @@ module Sun::Security::X509
     end
     
     typesig { [] }
-    # 
     # Returns a "Generation Qualifier" name component.  If more than one
     # such component exists, the topmost one is returned.
     # 
@@ -683,7 +649,6 @@ module Sun::Security::X509
     end
     
     typesig { [] }
-    # 
     # Returns an "IP address" name component.  If more than one
     # such component exists, the topmost one is returned.
     # 
@@ -694,7 +659,6 @@ module Sun::Security::X509
     end
     
     typesig { [] }
-    # 
     # Returns a string form of the X.500 distinguished name.
     # The format of the string is from RFC 1779. The returned string
     # may contain non-standardised keywords for more readability
@@ -707,7 +671,6 @@ module Sun::Security::X509
     end
     
     typesig { [] }
-    # 
     # Returns a string form of the X.500 distinguished name
     # using the algorithm defined in RFC 1779. Only standard attribute type
     # keywords defined in RFC 1779 are emitted.
@@ -716,7 +679,6 @@ module Sun::Security::X509
     end
     
     typesig { [Map] }
-    # 
     # Returns a string form of the X.500 distinguished name
     # using the algorithm defined in RFC 1779. Attribute type
     # keywords defined in RFC 1779 are emitted, as well as additional
@@ -735,7 +697,6 @@ module Sun::Security::X509
     end
     
     typesig { [] }
-    # 
     # Returns a string form of the X.500 distinguished name
     # using the algorithm defined in RFC 2253. Only standard attribute type
     # keywords defined in RFC 2253 are emitted.
@@ -744,7 +705,6 @@ module Sun::Security::X509
     end
     
     typesig { [Map] }
-    # 
     # Returns a string form of the X.500 distinguished name
     # using the algorithm defined in RFC 2253. Attribute type
     # keywords defined in RFC 2253 are emitted, as well as additional
@@ -764,13 +724,11 @@ module Sun::Security::X509
     
     typesig { [Map] }
     def generate_rfc2253dn(oid_map)
-      # 
       # Section 2.1 : if the RDNSequence is an empty sequence
       # the result is the empty or zero length string.
       if ((@names.attr_length).equal?(0))
         return ""
       end
-      # 
       # 2.1 (continued) : Otherwise, the output consists of the string
       # encodings of each RelativeDistinguishedName in the RDNSequence
       # (according to 2.2), starting with the last element of the sequence
@@ -796,14 +754,12 @@ module Sun::Security::X509
       if (!(@canonical_dn).nil?)
         return @canonical_dn
       end
-      # 
       # Section 2.1 : if the RDNSequence is an empty sequence
       # the result is the empty or zero length string.
       if ((@names.attr_length).equal?(0))
         @canonical_dn = ""
         return @canonical_dn
       end
-      # 
       # 2.1 (continued) : Otherwise, the output consists of the string
       # encodings of each RelativeDistinguishedName in the RDNSequence
       # (according to 2.2), starting with the last element of the sequence
@@ -825,7 +781,6 @@ module Sun::Security::X509
     end
     
     typesig { [] }
-    # 
     # Returns the value of toString().  This call is needed to
     # implement the java.security.Principal interface.
     def get_name
@@ -833,7 +788,6 @@ module Sun::Security::X509
     end
     
     typesig { [ObjectIdentifier] }
-    # 
     # Find the first instance of this attribute in a "top down"
     # search of all the attributes in the name.
     def find_attribute(attribute)
@@ -851,7 +805,6 @@ module Sun::Security::X509
     end
     
     typesig { [ObjectIdentifier] }
-    # 
     # Find the most specific ("last") attribute of the given
     # type.
     def find_most_specific_attribute(attribute)
@@ -870,7 +823,6 @@ module Sun::Security::X509
     
     typesig { [DerInputStream] }
     def parse_der(in_)
-      # 
       # X.500 names are a "SEQUENCE OF" RDNs, which means zero or
       # more and order matters.  We scan them in order, which
       # conventionally is big-endian.
@@ -900,7 +852,6 @@ module Sun::Security::X509
     end
     
     typesig { [DerOutputStream] }
-    # 
     # Encodes the name in DER-encoded form.
     # 
     # @deprecated Use encode() instead
@@ -910,7 +861,6 @@ module Sun::Security::X509
     end
     
     typesig { [DerOutputStream] }
-    # 
     # Encodes the name in DER-encoded form.
     # 
     # @param out where to put the DER-encoded X.500 name
@@ -925,7 +875,6 @@ module Sun::Security::X509
     end
     
     typesig { [] }
-    # 
     # Returned the encoding as an uncloned byte array. Callers must
     # guarantee that they neither modify it not expose it to untrusted
     # code.
@@ -945,7 +894,6 @@ module Sun::Security::X509
     end
     
     typesig { [] }
-    # 
     # Gets the name in DER-encoded form.
     # 
     # @return the DER encoded byte array of this name.
@@ -954,7 +902,6 @@ module Sun::Security::X509
     end
     
     typesig { [String, Map] }
-    # 
     # Parses a Distinguished Name (DN) in printable representation.
     # 
     # According to RFC 1779, RDNs in a DN are separated by comma.
@@ -991,14 +938,12 @@ module Sun::Security::X509
           end
         end
         quote_count += count_quotes(dn_string, search_offset, rdn_end)
-        # 
         # We have encountered an RDN delimiter (comma or a semicolon).
         # If the comma or semicolon in the RDN under consideration is
         # preceded by a backslash (escape), or by a double quote, it
         # is part of the RDN. Otherwise, it is used as a separator, to
         # delimit the RDN under consideration from any subsequent RDNs.
         if (rdn_end >= 0 && !(quote_count).equal?(1) && !escaped(rdn_end, search_offset, dn_string))
-          # 
           # Comma/semicolon is a separator
           rdn_string = (dn_string.substring(dn_offset, rdn_end)).to_s
           # Parse RDN, and store it in vector
@@ -1015,9 +960,8 @@ module Sun::Security::X509
       end
       # Parse last or only RDN, and store it in vector
       rdn_string = (dn_string.substring(dn_offset)).to_s
-      rdn_ = RDN.new(rdn_string, keyword_map)
-      dn_vector.add(rdn_)
-      # 
+      rdn = RDN.new(rdn_string, keyword_map)
+      dn_vector.add(rdn)
       # Store the vector elements as an array of RDNs
       # NOTE: It's only on output that little-endian ordering is used.
       Collections.reverse(dn_vector)
@@ -1036,14 +980,12 @@ module Sun::Security::X509
       search_offset = 0
       rdn_end = dn_string.index_of(Character.new(?,.ord))
       while (rdn_end >= 0)
-        # 
         # We have encountered an RDN delimiter (comma).
         # If the comma in the RDN under consideration is
         # preceded by a backslash (escape), it
         # is part of the RDN. Otherwise, it is used as a separator, to
         # delimit the RDN under consideration from any subsequent RDNs.
         if (rdn_end > 0 && !escaped(rdn_end, search_offset, dn_string))
-          # 
           # Comma is a separator
           rdn_string = (dn_string.substring(dn_offset, rdn_end)).to_s
           # Parse RDN, and store it in vector
@@ -1057,9 +999,8 @@ module Sun::Security::X509
       end
       # Parse last or only RDN, and store it in vector
       rdn_string = (dn_string.substring(dn_offset)).to_s
-      rdn_ = RDN.new(rdn_string, "RFC2253")
-      dn_vector.add(rdn_)
-      # 
+      rdn = RDN.new(rdn_string, "RFC2253")
+      dn_vector.add(rdn)
       # Store the vector elements as an array of RDNs
       # NOTE: It's only on output that little-endian ordering is used.
       Collections.reverse(dn_vector)
@@ -1068,7 +1009,6 @@ module Sun::Security::X509
     
     class_module.module_eval {
       typesig { [String, ::Java::Int, ::Java::Int] }
-      # 
       # Counts double quotes in string.
       # Escaped quotes are ignored.
       def count_quotes(string, from, to)
@@ -1117,7 +1057,6 @@ module Sun::Security::X509
     }
     
     typesig { [] }
-    # 
     # Dump the printable form of a distinguished name.  Each relative
     # name is separated from the next by a ",", and assertions in the
     # relative names have "label=value" syntax.
@@ -1143,7 +1082,6 @@ module Sun::Security::X509
     end
     
     typesig { [Map] }
-    # 
     # Dump the printable form of a distinguished name.  Each relative
     # name is separated from the next by a ",", and assertions in the
     # relative names have "label=value" syntax.
@@ -1171,8 +1109,6 @@ module Sun::Security::X509
     
     class_module.module_eval {
       typesig { [ObjectIdentifier] }
-      # 
-      # 
       # Maybe return a preallocated OID, to reduce storage costs
       # and speed recognition of common X.500 attributes.
       def intern(oid)
@@ -1187,7 +1123,6 @@ module Sun::Security::X509
       const_set_lazy(:InternedOIDs) { HashMap.new }
       const_attr_reader  :InternedOIDs
       
-      # 
       # Selected OIDs from X.520
       # Includes all those specified in RFC 3280 as MUST or SHOULD
       # be recognized
@@ -1274,13 +1209,11 @@ module Sun::Security::X509
         const_set :INITIALS_OID, intern(ObjectIdentifier.new_internal(INITIALS_DATA))
         # OID for the "GENERATION=" attribute, denoting Jr., II, etc.
         const_set :GENERATIONQUALIFIER_OID, intern(ObjectIdentifier.new_internal(GENERATIONQUALIFIER_DATA))
-        # 
         # OIDs from other sources which show up in X.500 names we
         # expect to deal with often
         # 
         # OID for "IP=" IP address attributes, used with SKIP.
         const_set :IpAddress_oid, intern(ObjectIdentifier.new_internal(IpAddress_data))
-        # 
         # Domain component OID from RFC 1274, RFC 2247, RFC 3280
         # 
         # 
@@ -1293,7 +1226,6 @@ module Sun::Security::X509
     }
     
     typesig { [GeneralNameInterface] }
-    # 
     # Return constraint type:<ul>
     # <li>NAME_DIFF_TYPE = -1: input name is different type from this name
     # (i.e. does not constrain)
@@ -1346,7 +1278,6 @@ module Sun::Security::X509
     end
     
     typesig { [X500Name] }
-    # 
     # Compares this name with another and determines if
     # it is within the subtree of the other. Useful for
     # checking against the name constraints extension.
@@ -1379,7 +1310,6 @@ module Sun::Security::X509
     end
     
     typesig { [] }
-    # 
     # Return subtree depth of this name for purposes of determining
     # NameConstraints minimum and maximum bounds and for calculating
     # path lengths in name subtrees.
@@ -1391,7 +1321,6 @@ module Sun::Security::X509
     end
     
     typesig { [X500Name] }
-    # 
     # Return lowest common ancestor of this name and other name
     # 
     # @param other another X500Name
@@ -1436,7 +1365,6 @@ module Sun::Security::X509
     end
     
     class_module.module_eval {
-      # 
       # Retrieve the Constructor and Field we need for reflective access
       # and make them accessible.
       when_class_loaded do
@@ -1475,7 +1403,6 @@ module Sun::Security::X509
     }
     
     typesig { [] }
-    # 
     # Get an X500Principal backed by this X500Name.
     # 
     # Note that we are using privileged reflection to access the hidden
@@ -1494,7 +1421,6 @@ module Sun::Security::X509
     
     class_module.module_eval {
       typesig { [X500Principal] }
-      # 
       # Get the X500Name contained in the given X500Principal.
       # 
       # Note that the X500Name is retrieved using reflection.

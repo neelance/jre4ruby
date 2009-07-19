@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 1996-1999 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -31,7 +30,6 @@ module Java::Io
     }
   end
   
-  # 
   # Callback interface to allow validation of objects within a graph.
   # Allows an object to be called when a complete graph of objects has
   # been deserialized.
@@ -44,7 +42,6 @@ module Java::Io
     include_class_members ObjectInputValidationImports
     
     typesig { [] }
-    # 
     # Validates the object.
     # 
     # @exception InvalidObjectException If the object cannot validate itself.

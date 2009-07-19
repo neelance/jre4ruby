@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 2000-2002 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -31,7 +30,6 @@ module Java::Nio
     }
   end
   
-  # 
   # A typesafe enumeration for byte orders.
   # 
   # @author Mark Reinhold
@@ -53,14 +51,12 @@ module Java::Nio
     end
     
     class_module.module_eval {
-      # 
       # Constant denoting big-endian byte order.  In this order, the bytes of a
       # multibyte value are ordered from most significant to least significant.
       # </p>
       const_set_lazy(:BIG_ENDIAN) { ByteOrder.new("BIG_ENDIAN") }
       const_attr_reader  :BIG_ENDIAN
       
-      # 
       # Constant denoting little-endian byte order.  In this order, the bytes of
       # a multibyte value are ordered from least significant to most
       # significant.  </p>
@@ -68,7 +64,6 @@ module Java::Nio
       const_attr_reader  :LITTLE_ENDIAN
       
       typesig { [] }
-      # 
       # Retrieves the native byte order of the underlying platform.
       # 
       # <p> This method is defined so that performance-sensitive Java code can
@@ -84,7 +79,6 @@ module Java::Nio
     }
     
     typesig { [] }
-    # 
     # Constructs a string describing this object.
     # 
     # <p> This method returns the string <tt>"BIG_ENDIAN"</tt> for {@link

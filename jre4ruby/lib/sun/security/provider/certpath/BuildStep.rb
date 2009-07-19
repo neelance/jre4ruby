@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 2000-2005 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -33,7 +32,6 @@ module Sun::Security::Provider::Certpath
     }
   end
   
-  # 
   # Describes one step of a certification path build, consisting of a
   # <code>Vertex</code> state description, a certificate, a possible throwable,
   # and a result code.
@@ -74,32 +72,27 @@ module Sun::Security::Provider::Certpath
     undef_method :result=
     
     class_module.module_eval {
-      # 
       # result code associated with a certificate that may continue a path from
       # the current certificate.
       const_set_lazy(:POSSIBLE) { 1 }
       const_attr_reader  :POSSIBLE
       
-      # 
       # result code associated with a certificate that was tried, but that
       # represents an unsuccessful path, so the certificate has been backed out
       # to allow backtracking to the next possible path.
       const_set_lazy(:BACK) { 2 }
       const_attr_reader  :BACK
       
-      # 
       # result code associated with a certificate that successfully continues the
       # current path, but does not yet reach the target.
       const_set_lazy(:FOLLOW) { 3 }
       const_attr_reader  :FOLLOW
       
-      # 
       # result code associated with a certificate that represents the end of the
       # last possible path, where no path successfully reached the target.
       const_set_lazy(:FAIL) { 4 }
       const_attr_reader  :FAIL
       
-      # 
       # result code associated with a certificate that represents the end of a
       # path that successfully reaches the target.
       const_set_lazy(:SUCCEED) { 5 }
@@ -107,7 +100,6 @@ module Sun::Security::Provider::Certpath
     }
     
     typesig { [Vertex, ::Java::Int] }
-    # 
     # construct a BuildStep
     # 
     # @param vtx description of the vertex at this step
@@ -127,7 +119,6 @@ module Sun::Security::Provider::Certpath
     end
     
     typesig { [] }
-    # 
     # return vertex description for this build step
     # 
     # @returns Vertex
@@ -136,7 +127,6 @@ module Sun::Security::Provider::Certpath
     end
     
     typesig { [] }
-    # 
     # return the certificate associated with this build step
     # 
     # @returns X509Certificate
@@ -145,7 +135,6 @@ module Sun::Security::Provider::Certpath
     end
     
     typesig { [] }
-    # 
     # return string form of issuer name from certificate associated with this
     # build step
     # 
@@ -155,7 +144,6 @@ module Sun::Security::Provider::Certpath
     end
     
     typesig { [String] }
-    # 
     # return string form of issuer name from certificate associated with this
     # build step, or a default name if no certificate associated with this
     # build step, or if issuer name could not be obtained from the certificate.
@@ -169,7 +157,6 @@ module Sun::Security::Provider::Certpath
     end
     
     typesig { [] }
-    # 
     # return string form of subject name from certificate associated with this
     # build step.
     # 
@@ -179,7 +166,6 @@ module Sun::Security::Provider::Certpath
     end
     
     typesig { [String] }
-    # 
     # return string form of subject name from certificate associated with this
     # build step, or a default name if no certificate associated with this
     # build step, or if subject name could not be obtained from the
@@ -195,7 +181,6 @@ module Sun::Security::Provider::Certpath
     end
     
     typesig { [] }
-    # 
     # return the exception associated with this build step.
     # 
     # @returns Throwable
@@ -204,7 +189,6 @@ module Sun::Security::Provider::Certpath
     end
     
     typesig { [] }
-    # 
     # return the result code associated with this build step.  The result codes
     # are POSSIBLE, FOLLOW, BACK, FAIL, SUCCEED.
     # 
@@ -214,7 +198,6 @@ module Sun::Security::Provider::Certpath
     end
     
     typesig { [::Java::Int] }
-    # 
     # return a string representing the meaning of the result code associated
     # with this build step.
     # 
@@ -240,7 +223,6 @@ module Sun::Security::Provider::Certpath
     end
     
     typesig { [] }
-    # 
     # return a string representation of this build step, showing minimal
     # detail.
     # 
@@ -260,7 +242,6 @@ module Sun::Security::Provider::Certpath
     end
     
     typesig { [] }
-    # 
     # return a string representation of this build step, showing all detail of
     # the vertex state appropriate to the result of this build step, and the
     # certificate contents.
@@ -281,7 +262,6 @@ module Sun::Security::Provider::Certpath
     end
     
     typesig { [] }
-    # 
     # return a string representation of this build step, including all possible
     # detail of the vertex state, but not including the certificate contents.
     # 

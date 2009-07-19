@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 2004-2006 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -31,7 +30,6 @@ module Java::Lang::Instrument
     }
   end
   
-  # 
   # Thrown by an implementation of
   # {@link java.lang.instrument.Instrumentation#redefineClasses Instrumentation.redefineClasses}
   # when one of the specified classes cannot be modified.
@@ -42,7 +40,6 @@ module Java::Lang::Instrument
     include_class_members UnmodifiableClassExceptionImports
     
     typesig { [] }
-    # 
     # Constructs an <code>UnmodifiableClassException</code> with no
     # detail message.
     def initialize
@@ -50,7 +47,6 @@ module Java::Lang::Instrument
     end
     
     typesig { [String] }
-    # 
     # Constructs an <code>UnmodifiableClassException</code> with the
     # specified detail message.
     # 

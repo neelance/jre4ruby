@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 1996-2006 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -33,7 +32,6 @@ module Java::Io
     }
   end
   
-  # 
   # A <code>PrintStream</code> adds functionality to another output stream,
   # namely the ability to print representations of various data values
   # conveniently.  Two other features are provided as well.  Unlike other output
@@ -77,7 +75,6 @@ module Java::Io
     alias_method :attr_formatter=, :formatter=
     undef_method :formatter=
     
-    # 
     # Track both the text- and character-output streams, so that their buffers
     # can be flushed without flushing the entire stream.
     attr_accessor :text_out
@@ -93,7 +90,6 @@ module Java::Io
     undef_method :char_out=
     
     typesig { [OutputStream] }
-    # 
     # Creates a new print stream.  This stream will not flush automatically.
     # 
     # @param  out        The output stream to which values and objects will be
@@ -135,7 +131,6 @@ module Java::Io
     end
     
     typesig { [OutputStream, ::Java::Boolean] }
-    # 
     # Creates a new print stream.
     # 
     # @param  out        The output stream to which values and objects will be
@@ -152,7 +147,6 @@ module Java::Io
     end
     
     typesig { [OutputStream, ::Java::Boolean, String] }
-    # 
     # Creates a new print stream.
     # 
     # @param  out        The output stream to which values and objects will be
@@ -175,7 +169,6 @@ module Java::Io
     end
     
     typesig { [String] }
-    # 
     # Creates a new print stream, without automatic line flushing, with the
     # specified file name.  This convenience constructor creates
     # the necessary intermediate {@link java.io.OutputStreamWriter
@@ -207,7 +200,6 @@ module Java::Io
     end
     
     typesig { [String, String] }
-    # 
     # Creates a new print stream, without automatic line flushing, with the
     # specified file name and charset.  This convenience constructor creates
     # the necessary intermediate {@link java.io.OutputStreamWriter
@@ -245,7 +237,6 @@ module Java::Io
     end
     
     typesig { [JavaFile] }
-    # 
     # Creates a new print stream, without automatic line flushing, with the
     # specified file.  This convenience constructor creates the necessary
     # intermediate {@link java.io.OutputStreamWriter OutputStreamWriter},
@@ -277,7 +268,6 @@ module Java::Io
     end
     
     typesig { [JavaFile, String] }
-    # 
     # Creates a new print stream, without automatic line flushing, with the
     # specified file and charset.  This convenience constructor creates
     # the necessary intermediate {@link java.io.OutputStreamWriter
@@ -323,7 +313,6 @@ module Java::Io
     end
     
     typesig { [] }
-    # 
     # Flushes the stream.  This is done by writing any buffered output bytes to
     # the underlying output stream and then flushing that stream.
     # 
@@ -370,7 +359,6 @@ module Java::Io
     end
     
     typesig { [] }
-    # 
     # Flushes the stream and checks its error state. The internal error state
     # is set to <code>true</code> when the underlying output stream throws an
     # <code>IOException</code> other than <code>InterruptedIOException</code>,
@@ -399,7 +387,6 @@ module Java::Io
     end
     
     typesig { [] }
-    # 
     # Sets the error state of the stream to <code>true</code>.
     # 
     # <p> This method will cause subsequent invocations of {@link
@@ -412,7 +399,6 @@ module Java::Io
     end
     
     typesig { [] }
-    # 
     # Clears the internal error state of this stream.
     # 
     # <p> This method will cause subsequent invocations of {@link
@@ -425,7 +411,6 @@ module Java::Io
     end
     
     typesig { [::Java::Int] }
-    # 
     # Exception-catching, synchronized output operations,
     # which also implement the write() methods of OutputStream
     # 
@@ -459,7 +444,6 @@ module Java::Io
     end
     
     typesig { [Array.typed(::Java::Byte), ::Java::Int, ::Java::Int] }
-    # 
     # Writes <code>len</code> bytes from the specified byte array starting at
     # offset <code>off</code> to this stream.  If automatic flushing is
     # enabled then the <code>flush</code> method will be invoked.
@@ -489,7 +473,6 @@ module Java::Io
     end
     
     typesig { [Array.typed(::Java::Char)] }
-    # 
     # The following private methods on the text- and character-output streams
     # always flush the stream buffers, so that writes to the underlying byte
     # stream occur as promptly as with the original PrintStream.
@@ -570,7 +553,6 @@ module Java::Io
     end
     
     typesig { [::Java::Char] }
-    # 
     # Prints a character.  The character is translated into one or more bytes
     # according to the platform's default character encoding, and these bytes
     # are written in exactly the manner of the
@@ -582,7 +564,6 @@ module Java::Io
     end
     
     typesig { [::Java::Int] }
-    # 
     # Prints an integer.  The string produced by <code>{@link
     # java.lang.String#valueOf(int)}</code> is translated into bytes
     # according to the platform's default character encoding, and these bytes
@@ -596,7 +577,6 @@ module Java::Io
     end
     
     typesig { [::Java::Long] }
-    # 
     # Prints a long integer.  The string produced by <code>{@link
     # java.lang.String#valueOf(long)}</code> is translated into bytes
     # according to the platform's default character encoding, and these bytes
@@ -610,7 +590,6 @@ module Java::Io
     end
     
     typesig { [::Java::Float] }
-    # 
     # Prints a floating-point number.  The string produced by <code>{@link
     # java.lang.String#valueOf(float)}</code> is translated into bytes
     # according to the platform's default character encoding, and these bytes
@@ -624,7 +603,6 @@ module Java::Io
     end
     
     typesig { [::Java::Double] }
-    # 
     # Prints a double-precision floating-point number.  The string produced by
     # <code>{@link java.lang.String#valueOf(double)}</code> is translated into
     # bytes according to the platform's default character encoding, and these
@@ -638,7 +616,6 @@ module Java::Io
     end
     
     typesig { [Array.typed(::Java::Char)] }
-    # 
     # Prints an array of characters.  The characters are converted into bytes
     # according to the platform's default character encoding, and these bytes
     # are written in exactly the manner of the
@@ -652,7 +629,6 @@ module Java::Io
     end
     
     typesig { [String] }
-    # 
     # Prints a string.  If the argument is <code>null</code> then the string
     # <code>"null"</code> is printed.  Otherwise, the string's characters are
     # converted into bytes according to the platform's default character
@@ -668,7 +644,6 @@ module Java::Io
     end
     
     typesig { [Object] }
-    # 
     # Prints an object.  The string produced by the <code>{@link
     # java.lang.String#valueOf(Object)}</code> method is translated into bytes
     # according to the platform's default character encoding, and these bytes
@@ -693,7 +668,6 @@ module Java::Io
     end
     
     typesig { [::Java::Boolean] }
-    # 
     # Prints a boolean and then terminate the line.  This method behaves as
     # though it invokes <code>{@link #print(boolean)}</code> and then
     # <code>{@link #println()}</code>.
@@ -707,7 +681,6 @@ module Java::Io
     end
     
     typesig { [::Java::Char] }
-    # 
     # Prints a character and then terminate the line.  This method behaves as
     # though it invokes <code>{@link #print(char)}</code> and then
     # <code>{@link #println()}</code>.
@@ -721,7 +694,6 @@ module Java::Io
     end
     
     typesig { [::Java::Int] }
-    # 
     # Prints an integer and then terminate the line.  This method behaves as
     # though it invokes <code>{@link #print(int)}</code> and then
     # <code>{@link #println()}</code>.
@@ -735,7 +707,6 @@ module Java::Io
     end
     
     typesig { [::Java::Long] }
-    # 
     # Prints a long and then terminate the line.  This method behaves as
     # though it invokes <code>{@link #print(long)}</code> and then
     # <code>{@link #println()}</code>.
@@ -749,7 +720,6 @@ module Java::Io
     end
     
     typesig { [::Java::Float] }
-    # 
     # Prints a float and then terminate the line.  This method behaves as
     # though it invokes <code>{@link #print(float)}</code> and then
     # <code>{@link #println()}</code>.
@@ -763,7 +733,6 @@ module Java::Io
     end
     
     typesig { [::Java::Double] }
-    # 
     # Prints a double and then terminate the line.  This method behaves as
     # though it invokes <code>{@link #print(double)}</code> and then
     # <code>{@link #println()}</code>.
@@ -777,7 +746,6 @@ module Java::Io
     end
     
     typesig { [Array.typed(::Java::Char)] }
-    # 
     # Prints an array of characters and then terminate the line.  This method
     # behaves as though it invokes <code>{@link #print(char[])}</code> and
     # then <code>{@link #println()}</code>.
@@ -791,7 +759,6 @@ module Java::Io
     end
     
     typesig { [String] }
-    # 
     # Prints a String and then terminate the line.  This method behaves as
     # though it invokes <code>{@link #print(String)}</code> and then
     # <code>{@link #println()}</code>.
@@ -805,7 +772,6 @@ module Java::Io
     end
     
     typesig { [Object] }
-    # 
     # Prints an Object and then terminate the line.  This method calls
     # at first String.valueOf(x) to get the printed object's string value,
     # then behaves as
@@ -822,7 +788,6 @@ module Java::Io
     end
     
     typesig { [String, Object] }
-    # 
     # A convenience method to write a formatted string to this output stream
     # using the specified format string and arguments.
     # 
@@ -867,7 +832,6 @@ module Java::Io
     end
     
     typesig { [Locale, String, Object] }
-    # 
     # A convenience method to write a formatted string to this output stream
     # using the specified format string and arguments.
     # 
@@ -917,7 +881,6 @@ module Java::Io
     end
     
     typesig { [String, Object] }
-    # 
     # Writes a formatted string to this output stream using the specified
     # format string and arguments.
     # 
@@ -973,7 +936,6 @@ module Java::Io
     end
     
     typesig { [Locale, String, Object] }
-    # 
     # Writes a formatted string to this output stream using the specified
     # format string and arguments.
     # 
@@ -1030,7 +992,6 @@ module Java::Io
     end
     
     typesig { [CharSequence] }
-    # 
     # Appends the specified character sequence to this output stream.
     # 
     # <p> An invocation of this method of the form <tt>out.append(csq)</tt>
@@ -1063,7 +1024,6 @@ module Java::Io
     end
     
     typesig { [CharSequence, ::Java::Int, ::Java::Int] }
-    # 
     # Appends a subsequence of the specified character sequence to this output
     # stream.
     # 
@@ -1102,7 +1062,6 @@ module Java::Io
     end
     
     typesig { [::Java::Char] }
-    # 
     # Appends the specified character to this output stream.
     # 
     # <p> An invocation of this method of the form <tt>out.append(c)</tt>

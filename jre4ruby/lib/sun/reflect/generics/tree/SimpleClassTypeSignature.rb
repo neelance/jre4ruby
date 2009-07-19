@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 2003-2004 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -72,7 +71,6 @@ module Sun::Reflect::Generics::Tree
     }
     
     typesig { [] }
-    # 
     # Should a '$' be used instead of '.' to separate this component
     # of the name from the previous one when composing a string to
     # pass to Class.forName; in other words, is this a transition to

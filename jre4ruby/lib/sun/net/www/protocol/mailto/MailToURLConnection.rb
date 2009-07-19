@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 1996-2003 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -42,7 +41,6 @@ module Sun::Net::Www::Protocol::Mailto
     }
   end
   
-  # 
   # Handle mailto URLs. To send mail using a mailto URLConnection,
   # call <code>getOutputStream</code>, write the message to the output
   # stream, and close it.
@@ -104,7 +102,6 @@ module Sun::Net::Www::Protocol::Mailto
     end
     
     typesig { [] }
-    # 
     # Get the user's full email address - stolen from
     # HotJavaApplet.getMailAddress().
     def get_from_address

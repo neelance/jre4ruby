@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 2002-2006 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -33,7 +32,6 @@ module Sun::Security::Provider
     }
   end
   
-  # 
   # This class implements the Secure Hash Algorithm SHA-384 and SHA-512
   # developed by the National Institute of Standards and Technology along
   # with the National Security Agency.
@@ -83,7 +81,6 @@ module Sun::Security::Provider
     undef_method :initial_hashes=
     
     typesig { [String, ::Java::Int, Array.typed(::Java::Long)] }
-    # 
     # Creates a new SHA object.
     def initialize(name, digest_length, initial_hashes)
       @w = nil
@@ -97,7 +94,6 @@ module Sun::Security::Provider
     end
     
     typesig { [SHA5] }
-    # 
     # Creates a SHA object with state (for cloning)
     def initialize(base)
       @w = nil
@@ -128,7 +124,6 @@ module Sun::Security::Provider
     
     class_module.module_eval {
       typesig { [::Java::Long, ::Java::Long, ::Java::Long] }
-      # 
       # logical function ch(x,y,z) as defined in spec:
       # @return (x and y) xor ((complement x) and z)
       # @param x long
@@ -139,7 +134,6 @@ module Sun::Security::Provider
       end
       
       typesig { [::Java::Long, ::Java::Long, ::Java::Long] }
-      # 
       # logical function maj(x,y,z) as defined in spec:
       # @return (x and y) xor (x and z) xor (y and z)
       # @param x long
@@ -150,7 +144,6 @@ module Sun::Security::Provider
       end
       
       typesig { [::Java::Long, ::Java::Int] }
-      # 
       # logical function R(x,s) - right shift
       # @return x right shift for s times
       # @param x long
@@ -160,7 +153,6 @@ module Sun::Security::Provider
       end
       
       typesig { [::Java::Long, ::Java::Int] }
-      # 
       # logical function S(x,s) - right rotation
       # @return x circular right shift for s times
       # @param x long
@@ -170,7 +162,6 @@ module Sun::Security::Provider
       end
       
       typesig { [::Java::Long] }
-      # 
       # logical function sigma0(x) - xor of results of right rotations
       # @return S(x,28) xor S(x,34) xor S(x,39)
       # @param x long
@@ -179,7 +170,6 @@ module Sun::Security::Provider
       end
       
       typesig { [::Java::Long] }
-      # 
       # logical function sigma1(x) - xor of results of right rotations
       # @return S(x,14) xor S(x,18) xor S(x,41)
       # @param x long
@@ -188,7 +178,6 @@ module Sun::Security::Provider
       end
       
       typesig { [::Java::Long] }
-      # 
       # logical function delta0(x) - xor of results of right shifts/rotations
       # @return long
       # @param x long
@@ -197,7 +186,6 @@ module Sun::Security::Provider
       end
       
       typesig { [::Java::Long] }
-      # 
       # logical function delta1(x) - xor of results of right shifts/rotations
       # @return long
       # @param x long
@@ -207,7 +195,6 @@ module Sun::Security::Provider
     }
     
     typesig { [Array.typed(::Java::Byte), ::Java::Int] }
-    # 
     # Compute the hash for the current block.
     # 
     # This is in the same vein as Peter Gutmann's algorithm listed in
@@ -255,7 +242,6 @@ module Sun::Security::Provider
     end
     
     class_module.module_eval {
-      # 
       # SHA-512 implementation class.
       const_set_lazy(:SHA512) { Class.new(SHA5) do
         include_class_members SHA5
@@ -284,7 +270,6 @@ module Sun::Security::Provider
         alias_method :initialize__sha512, :initialize
       end }
       
-      # 
       # SHA-384 implementation class.
       const_set_lazy(:SHA384) { Class.new(SHA5) do
         include_class_members SHA5

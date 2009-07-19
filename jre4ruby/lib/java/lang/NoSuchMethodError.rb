@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 1994-1998 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -30,7 +29,6 @@ module Java::Lang
     }
   end
   
-  # 
   # Thrown if an application tries to call a specified method of a
   # class (either static or instance), and that class no longer has a
   # definition of that method.
@@ -45,14 +43,12 @@ module Java::Lang
     include_class_members NoSuchMethodErrorImports
     
     typesig { [] }
-    # 
     # Constructs a <code>NoSuchMethodError</code> with no detail message.
     def initialize
       super()
     end
     
     typesig { [String] }
-    # 
     # Constructs a <code>NoSuchMethodError</code> with the
     # specified detail message.
     # 

@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 1996-2007 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -40,7 +39,6 @@ module Sun::Security::Ssl
     }
   end
   
-  # 
   # This class handles bulk data enciphering/deciphering for each SSLv3
   # message.  This provides data confidentiality.  Stream ciphers (such
   # as RC4) don't need to do padding; block ciphers (e.g. DES) need it.
@@ -80,7 +78,6 @@ module Sun::Security::Ssl
     alias_method :attr_cipher=, :cipher=
     undef_method :cipher=
     
-    # 
     # Cipher blocksize, 0 for stream ciphers
     attr_accessor :block_size
     alias_method :attr_block_size, :block_size
@@ -89,7 +86,6 @@ module Sun::Security::Ssl
     undef_method :block_size=
     
     typesig { [] }
-    # 
     # NULL cipherbox. Identity operation, no encryption.
     def initialize
       @protocol_version = nil
@@ -100,7 +96,6 @@ module Sun::Security::Ssl
     end
     
     typesig { [ProtocolVersion, BulkCipher, SecretKey, IvParameterSpec, ::Java::Boolean] }
-    # 
     # Construct a new CipherBox using the cipher transformation.
     # 
     # @exception NoSuchAlgorithmException if no appropriate JCE Cipher
@@ -124,15 +119,14 @@ module Sun::Security::Ssl
       rescue NoSuchAlgorithmException => e
         raise e
       rescue Exception => e
-        raise NoSuchAlgorithmException.new("Could not create cipher " + (bulk_cipher).to_s, e_)
+        raise NoSuchAlgorithmException.new("Could not create cipher " + (bulk_cipher).to_s, e)
       rescue ExceptionInInitializerError => e
-        raise NoSuchAlgorithmException.new("Could not create cipher " + (bulk_cipher).to_s, e__)
+        raise NoSuchAlgorithmException.new("Could not create cipher " + (bulk_cipher).to_s, e)
       end
     end
     
     class_module.module_eval {
       typesig { [ProtocolVersion, BulkCipher, SecretKey, IvParameterSpec, ::Java::Boolean] }
-      # 
       # Factory method to obtain a new CipherBox object.
       def new_cipher_box(version, cipher, key, iv, encrypt)
         if ((cipher.attr_allowed).equal?(false))
@@ -147,7 +141,6 @@ module Sun::Security::Ssl
     }
     
     typesig { [Array.typed(::Java::Byte), ::Java::Int, ::Java::Int] }
-    # 
     # Encrypts a block of data, returning the size of the
     # resulting block.
     def encrypt(buf, offset, len)
@@ -173,12 +166,11 @@ module Sun::Security::Ssl
         end
         return new_len
       rescue ShortBufferException => e
-        raise ArrayIndexOutOfBoundsException.new(e_.to_s)
+        raise ArrayIndexOutOfBoundsException.new(e.to_s)
       end
     end
     
     typesig { [ByteBuffer] }
-    # 
     # Encrypts a ByteBuffer block of data, returning the size of the
     # resulting block.
     # 
@@ -206,11 +198,9 @@ module Sun::Security::Ssl
             hd.encode_buffer(bb, System.out)
           rescue IOException => e
           end
-          # 
           # reset back to beginning
           bb.position(pos)
         end
-        # 
         # Encrypt "in-place".  This does not add its own padding.
         dup = bb.duplicate
         new_len = @cipher.update(dup, bb)
@@ -223,14 +213,13 @@ module Sun::Security::Ssl
         end
         return new_len
       rescue ShortBufferException => e
-        exc = RuntimeException.new(e_.to_s)
-        exc.init_cause(e_)
+        exc = RuntimeException.new(e.to_s)
+        exc.init_cause(e)
         raise exc
       end
     end
     
     typesig { [Array.typed(::Java::Byte), ::Java::Int, ::Java::Int] }
-    # 
     # Decrypts a block of data, returning the size of the
     # resulting block if padding was required.
     def decrypt(buf, offset, len)
@@ -256,12 +245,11 @@ module Sun::Security::Ssl
         end
         return new_len
       rescue ShortBufferException => e
-        raise ArrayIndexOutOfBoundsException.new(e_.to_s)
+        raise ArrayIndexOutOfBoundsException.new(e.to_s)
       end
     end
     
     typesig { [ByteBuffer] }
-    # 
     # Decrypts a block of data, returning the size of the
     # resulting block if padding was required.  position and limit
     # point to the end of the decrypted/depadded data.  The initial
@@ -274,7 +262,6 @@ module Sun::Security::Ssl
         return len
       end
       begin
-        # 
         # Decrypt "in-place".
         pos = bb.position
         dup = bb.duplicate
@@ -292,7 +279,6 @@ module Sun::Security::Ssl
           rescue IOException => e
           end
         end
-        # 
         # Remove the block padding.
         if (!(@block_size).equal?(0))
           bb.position(pos)
@@ -300,8 +286,8 @@ module Sun::Security::Ssl
         end
         return new_len
       rescue ShortBufferException => e
-        exc = RuntimeException.new(e_.to_s)
-        exc.init_cause(e_)
+        exc = RuntimeException.new(e.to_s)
+        exc.init_cause(e)
         raise exc
       end
     end
@@ -320,7 +306,6 @@ module Sun::Security::Ssl
         if (buf.attr_length < (newlen + offset))
           raise IllegalArgumentException.new("no space to pad buffer")
         end
-        # 
         # TLS version of the padding works for both SSLv3 and TLSv1
         i = 0
         offset += len
@@ -332,7 +317,6 @@ module Sun::Security::Ssl
       end
       
       typesig { [ByteBuffer, ::Java::Int] }
-      # 
       # Apply the padding to the buffer.
       # 
       # Limit is advanced to the new buffer length.
@@ -348,10 +332,8 @@ module Sun::Security::Ssl
           newlen -= newlen % block_size
         end
         pad = (newlen - len)
-        # 
         # Update the limit to what will be padded.
         bb.limit(newlen + offset)
-        # 
         # TLS version of the padding works for both SSLv3 and TLSv1
         i = 0
         offset += len
@@ -365,7 +347,6 @@ module Sun::Security::Ssl
       end
       
       typesig { [Array.typed(::Java::Byte), ::Java::Int, ::Java::Int, ::Java::Int, ProtocolVersion] }
-      # 
       # Typical TLS padding format for a 64 bit block cipher is as follows:
       # xx xx xx xx xx xx xx 00
       # xx xx xx xx xx xx 01 01
@@ -405,7 +386,6 @@ module Sun::Security::Ssl
       end
       
       typesig { [ByteBuffer, ::Java::Int, ProtocolVersion] }
-      # 
       # Position/limit is equal the removed padding.
       def remove_padding(bb, block_size, protocol_version)
         len = bb.remaining
@@ -417,7 +397,6 @@ module Sun::Security::Ssl
         if (newlen < 0)
           raise BadPaddingException.new("Padding length invalid: " + (pad).to_s)
         end
-        # 
         # We could zero the padding area, but not much useful
         # information there.
         if (protocol_version.attr_v >= ProtocolVersion::TLS10.attr_v)
@@ -440,7 +419,6 @@ module Sun::Security::Ssl
             raise BadPaddingException.new("Invalid SSLv3 padding: " + (pad).to_s)
           end
         end
-        # 
         # Reset buffer limit to remove padding.
         bb.position(offset + newlen)
         bb.limit(offset + newlen)

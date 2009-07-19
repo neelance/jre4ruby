@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 1996-2006 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -47,7 +46,6 @@ module Java::Io
     }
   end
   
-  # 
   # An ObjectInputStream deserializes primitive data and objects previously
   # written using an ObjectOutputStream.
   # 
@@ -328,7 +326,6 @@ module Java::Io
     alias_method :attr_enable_resolve=, :enable_resolve=
     undef_method :enable_resolve=
     
-    # 
     # Context during upcalls to class-defined readObject methods; holds
     # object currently being deserialized and descriptor for current class.
     # Null when not during readObject upcall.
@@ -339,7 +336,6 @@ module Java::Io
     undef_method :cur_context=
     
     typesig { [InputStream] }
-    # 
     # Creates an ObjectInputStream that reads from the specified InputStream.
     # A serialization stream header is read from the stream and verified.
     # This constructor will block until the corresponding ObjectOutputStream
@@ -385,7 +381,6 @@ module Java::Io
     end
     
     typesig { [] }
-    # 
     # Provide a way for subclasses that are completely reimplementing
     # ObjectInputStream to not have to allocate private data just used by this
     # implementation of ObjectInputStream.
@@ -426,7 +421,6 @@ module Java::Io
     end
     
     typesig { [] }
-    # 
     # Read an object from the ObjectInputStream.  The class of the object, the
     # signature of the class, and the values of the non-transient and
     # non-static fields of the class and all of its supertypes are read.
@@ -481,7 +475,6 @@ module Java::Io
     end
     
     typesig { [] }
-    # 
     # This method is called by trusted subclasses of ObjectOutputStream that
     # constructed ObjectOutputStream using the protected no-arg constructor.
     # The subclass is expected to provide an override method with the modifier
@@ -502,7 +495,6 @@ module Java::Io
     end
     
     typesig { [] }
-    # 
     # Reads an "unshared" object from the ObjectInputStream.  This method is
     # identical to readObject, except that it prevents subsequent calls to
     # readObject and readUnshared from returning additional references to the
@@ -569,7 +561,6 @@ module Java::Io
     end
     
     typesig { [] }
-    # 
     # Read the non-static and non-transient fields of the current class from
     # this stream.  This may only be called from the readObject method of the
     # class being deserialized. It will throw the NotActiveException if it is
@@ -590,7 +581,6 @@ module Java::Io
       default_read_fields(cur_obj, cur_desc)
       @bin.set_block_data_mode(true)
       if (!cur_desc.has_write_object_data)
-        # 
         # Fix for 4360508: since stream does not contain terminating
         # TC_ENDBLOCKDATA tag, set flag so that reading code elsewhere
         # knows to simulate end-of-custom-data behavior.
@@ -603,7 +593,6 @@ module Java::Io
     end
     
     typesig { [] }
-    # 
     # Reads the persistent fields from the stream and makes them available by
     # name.
     # 
@@ -626,7 +615,6 @@ module Java::Io
       get_field.read_fields
       @bin.set_block_data_mode(true)
       if (!cur_desc.has_write_object_data)
-        # 
         # Fix for 4360508: since stream does not contain terminating
         # TC_ENDBLOCKDATA tag, set flag so that reading code elsewhere
         # knows to simulate end-of-custom-data behavior.
@@ -636,7 +624,6 @@ module Java::Io
     end
     
     typesig { [ObjectInputValidation, ::Java::Int] }
-    # 
     # Register an object to be validated before the graph is returned.  While
     # similar to resolveObject these validations are called after the entire
     # graph has been reconstituted.  Typically, a readObject method will
@@ -659,7 +646,6 @@ module Java::Io
     end
     
     typesig { [ObjectStreamClass] }
-    # 
     # Load the local class equivalent of the specified stream class
     # description.  Subclasses may implement this method to allow classes to
     # be fetched from an alternate source.
@@ -714,7 +700,6 @@ module Java::Io
     end
     
     typesig { [Array.typed(String)] }
-    # 
     # Returns a proxy class that implements the interfaces named in a proxy
     # class descriptor; subclasses may implement this method to read custom
     # data from the stream along with the descriptors for dynamic proxy
@@ -794,7 +779,6 @@ module Java::Io
     end
     
     typesig { [Object] }
-    # 
     # This method will allow trusted subclasses of ObjectInputStream to
     # substitute one object for another during deserialization. Replacing
     # objects is disabled until enableResolveObject is called. The
@@ -825,7 +809,6 @@ module Java::Io
     end
     
     typesig { [::Java::Boolean] }
-    # 
     # Enable the stream to allow objects read from the stream to be replaced.
     # When enabled, the resolveObject method is called for every object being
     # deserialized.
@@ -860,7 +843,6 @@ module Java::Io
     end
     
     typesig { [] }
-    # 
     # The readStreamHeader method is provided to allow subclasses to read and
     # verify their own stream headers. It reads and verifies the magic number
     # and version number.
@@ -878,7 +860,6 @@ module Java::Io
     end
     
     typesig { [] }
-    # 
     # Read a class descriptor from the serialization stream.  This method is
     # called when the ObjectInputStream expects a class descriptor as the next
     # item in the serialization stream.  Subclasses of ObjectInputStream may
@@ -901,7 +882,6 @@ module Java::Io
     end
     
     typesig { [] }
-    # 
     # Reads a byte of data. This method will block if no input is available.
     # 
     # @return  the byte read, or -1 if the end of the stream is reached.
@@ -911,7 +891,6 @@ module Java::Io
     end
     
     typesig { [Array.typed(::Java::Byte), ::Java::Int, ::Java::Int] }
-    # 
     # Reads into an array of bytes.  This method will block until some input
     # is available. Consider using java.io.DataInputStream.readFully to read
     # exactly 'length' bytes.
@@ -935,7 +914,6 @@ module Java::Io
     end
     
     typesig { [] }
-    # 
     # Returns the number of bytes that can be read without blocking.
     # 
     # @return  the number of available bytes.
@@ -946,13 +924,11 @@ module Java::Io
     end
     
     typesig { [] }
-    # 
     # Closes the input stream. Must be called to release any resources
     # associated with the stream.
     # 
     # @throws  IOException If an I/O error has occurred.
     def close
-      # 
       # Even if stream already closed, propagate redundant close to
       # underlying stream to stay consistent with previous implementations.
       @closed = true
@@ -963,7 +939,6 @@ module Java::Io
     end
     
     typesig { [] }
-    # 
     # Reads in a boolean.
     # 
     # @return  the boolean read.
@@ -974,7 +949,6 @@ module Java::Io
     end
     
     typesig { [] }
-    # 
     # Reads an 8 bit byte.
     # 
     # @return  the 8 bit byte read.
@@ -985,7 +959,6 @@ module Java::Io
     end
     
     typesig { [] }
-    # 
     # Reads an unsigned 8 bit byte.
     # 
     # @return  the 8 bit byte read.
@@ -996,7 +969,6 @@ module Java::Io
     end
     
     typesig { [] }
-    # 
     # Reads a 16 bit char.
     # 
     # @return  the 16 bit char read.
@@ -1007,7 +979,6 @@ module Java::Io
     end
     
     typesig { [] }
-    # 
     # Reads a 16 bit short.
     # 
     # @return  the 16 bit short read.
@@ -1018,7 +989,6 @@ module Java::Io
     end
     
     typesig { [] }
-    # 
     # Reads an unsigned 16 bit short.
     # 
     # @return  the 16 bit short read.
@@ -1029,7 +999,6 @@ module Java::Io
     end
     
     typesig { [] }
-    # 
     # Reads a 32 bit int.
     # 
     # @return  the 32 bit integer read.
@@ -1040,7 +1009,6 @@ module Java::Io
     end
     
     typesig { [] }
-    # 
     # Reads a 64 bit long.
     # 
     # @return  the read 64 bit long.
@@ -1051,7 +1019,6 @@ module Java::Io
     end
     
     typesig { [] }
-    # 
     # Reads a 32 bit float.
     # 
     # @return  the 32 bit float read.
@@ -1062,7 +1029,6 @@ module Java::Io
     end
     
     typesig { [] }
-    # 
     # Reads a 64 bit double.
     # 
     # @return  the 64 bit double read.
@@ -1073,7 +1039,6 @@ module Java::Io
     end
     
     typesig { [Array.typed(::Java::Byte)] }
-    # 
     # Reads bytes, blocking until all bytes are read.
     # 
     # @param   buf the buffer into which the data is read
@@ -1084,7 +1049,6 @@ module Java::Io
     end
     
     typesig { [Array.typed(::Java::Byte), ::Java::Int, ::Java::Int] }
-    # 
     # Reads bytes, blocking until all bytes are read.
     # 
     # @param   buf the buffer into which the data is read
@@ -1101,7 +1065,6 @@ module Java::Io
     end
     
     typesig { [::Java::Int] }
-    # 
     # Skips bytes.
     # 
     # @param   len the number of bytes to be skipped
@@ -1112,7 +1075,6 @@ module Java::Io
     end
     
     typesig { [] }
-    # 
     # Reads in a line that has been terminated by a \n, \r, \r\n or EOF.
     # 
     # @return  a String copy of the line.
@@ -1125,7 +1087,6 @@ module Java::Io
     end
     
     typesig { [] }
-    # 
     # Reads a String in
     # <a href="DataInput.html#modified-utf-8">modified UTF-8</a>
     # format.
@@ -1140,13 +1101,11 @@ module Java::Io
     end
     
     class_module.module_eval {
-      # 
       # Provide access to the persistent fields read from the input stream.
       const_set_lazy(:GetField) { Class.new do
         include_class_members ObjectInputStream
         
         typesig { [] }
-        # 
         # Get the ObjectStreamClass that describes the fields in the stream.
         # 
         # @return  the descriptor class that describes the serializable fields
@@ -1155,7 +1114,6 @@ module Java::Io
         end
         
         typesig { [String] }
-        # 
         # Return true if the named field is defaulted and has no value in this
         # stream.
         # 
@@ -1170,7 +1128,6 @@ module Java::Io
         end
         
         typesig { [String, ::Java::Boolean] }
-        # 
         # Get the value of the named boolean field from the persistent field.
         # 
         # @param  name the name of the field
@@ -1186,7 +1143,6 @@ module Java::Io
         end
         
         typesig { [String, ::Java::Byte] }
-        # 
         # Get the value of the named byte field from the persistent field.
         # 
         # @param  name the name of the field
@@ -1202,7 +1158,6 @@ module Java::Io
         end
         
         typesig { [String, ::Java::Char] }
-        # 
         # Get the value of the named char field from the persistent field.
         # 
         # @param  name the name of the field
@@ -1218,7 +1173,6 @@ module Java::Io
         end
         
         typesig { [String, ::Java::Short] }
-        # 
         # Get the value of the named short field from the persistent field.
         # 
         # @param  name the name of the field
@@ -1234,7 +1188,6 @@ module Java::Io
         end
         
         typesig { [String, ::Java::Int] }
-        # 
         # Get the value of the named int field from the persistent field.
         # 
         # @param  name the name of the field
@@ -1250,7 +1203,6 @@ module Java::Io
         end
         
         typesig { [String, ::Java::Long] }
-        # 
         # Get the value of the named long field from the persistent field.
         # 
         # @param  name the name of the field
@@ -1266,7 +1218,6 @@ module Java::Io
         end
         
         typesig { [String, ::Java::Float] }
-        # 
         # Get the value of the named float field from the persistent field.
         # 
         # @param  name the name of the field
@@ -1282,7 +1233,6 @@ module Java::Io
         end
         
         typesig { [String, ::Java::Double] }
-        # 
         # Get the value of the named double field from the persistent field.
         # 
         # @param  name the name of the field
@@ -1298,7 +1248,6 @@ module Java::Io
         end
         
         typesig { [String, Object] }
-        # 
         # Get the value of the named Object field from the persistent field.
         # 
         # @param  name the name of the field
@@ -1323,7 +1272,6 @@ module Java::Io
     }
     
     typesig { [] }
-    # 
     # Verifies that this (possibly subclass) instance can be constructed
     # without violating security constraints: the subclass must not override
     # security-sensitive non-final methods, or else the
@@ -1352,7 +1300,6 @@ module Java::Io
     
     class_module.module_eval {
       typesig { [Class] }
-      # 
       # Performs reflective checks on given subclass to verify that it doesn't
       # override security-sensitive non-final methods.  Returns true if subclass
       # is "safe", false otherwise.
@@ -1394,7 +1341,6 @@ module Java::Io
     }
     
     typesig { [] }
-    # 
     # Clears internal data structures.
     def clear
       @handles.clear
@@ -1402,7 +1348,6 @@ module Java::Io
     end
     
     typesig { [::Java::Boolean] }
-    # 
     # Underlying readObject implementation.
     def read_object0(unshared)
       old_mode = @bin.get_block_data_mode
@@ -1412,7 +1357,6 @@ module Java::Io
           raise OptionalDataException.new(remain)
         else
           if (@default_data_end)
-            # 
             # Fix for 4360508: stream is currently at the end of a field
             # value block written via default serialization; since there
             # is no terminating TC_ENDBLOCKDATA tag, simulate
@@ -1457,19 +1401,12 @@ module Java::Io
           else
             raise StreamCorruptedException.new("unexpected block data")
           end
-          if (old_mode)
-            raise OptionalDataException.new(true)
-          else
-            raise StreamCorruptedException.new("unexpected end of block data")
-          end
-          raise StreamCorruptedException.new(String.format("invalid type code: %02X", tc))
         when TC_ENDBLOCKDATA
           if (old_mode)
             raise OptionalDataException.new(true)
           else
             raise StreamCorruptedException.new("unexpected end of block data")
           end
-          raise StreamCorruptedException.new(String.format("invalid type code: %02X", tc))
         else
           raise StreamCorruptedException.new(String.format("invalid type code: %02X", tc))
         end
@@ -1480,7 +1417,6 @@ module Java::Io
     end
     
     typesig { [Object] }
-    # 
     # If resolveObject has been enabled and given object does not have an
     # exception associated with it, calls resolveObject to determine
     # replacement for object, and updates handle table accordingly.  Returns
@@ -1499,7 +1435,6 @@ module Java::Io
     end
     
     typesig { [] }
-    # 
     # Reads string without allowing it to be replaced in stream.  Called from
     # within ObjectStreamClass.read().
     def read_type_string
@@ -1522,7 +1457,6 @@ module Java::Io
     end
     
     typesig { [] }
-    # 
     # Reads in null code, sets passHandle to NULL_HANDLE and returns null.
     def read_null
       if (!(@bin.read_byte).equal?(TC_NULL))
@@ -1533,7 +1467,6 @@ module Java::Io
     end
     
     typesig { [::Java::Boolean] }
-    # 
     # Reads in object handle, sets passHandle to the read handle, and returns
     # object associated with the handle.
     def read_handle(unshared)
@@ -1557,7 +1490,6 @@ module Java::Io
     end
     
     typesig { [::Java::Boolean] }
-    # 
     # Reads in and returns class object.  Sets passHandle to class object's
     # assigned handle.  Returns null if class is unresolvable (in which case a
     # ClassNotFoundException will be associated with the class' handle in the
@@ -1578,7 +1510,6 @@ module Java::Io
     end
     
     typesig { [::Java::Boolean] }
-    # 
     # Reads in and returns (possibly null) class descriptor.  Sets passHandle
     # to class descriptor's assigned handle.  If class descriptor cannot be
     # resolved to a class in the local VM, a ClassNotFoundException is
@@ -1600,7 +1531,6 @@ module Java::Io
     end
     
     typesig { [::Java::Boolean] }
-    # 
     # Reads in and returns class descriptor for a dynamic proxy class.  Sets
     # passHandle to proxy class descriptor's assigned handle.  If proxy class
     # descriptor cannot be resolved to a class in the local VM, a
@@ -1637,7 +1567,6 @@ module Java::Io
     end
     
     typesig { [::Java::Boolean] }
-    # 
     # Reads in and returns class descriptor for a class that is not a dynamic
     # proxy class.  Sets passHandle to class descriptor's assigned handle.  If
     # class descriptor cannot be resolved to a class in the local VM, a
@@ -1663,7 +1592,7 @@ module Java::Io
           resolve_ex = ClassNotFoundException.new("null class")
         end
       rescue ClassNotFoundException => ex
-        resolve_ex = ex_
+        resolve_ex = ex
       end
       skip_custom_data
       desc.init_non_proxy(read_desc, cl, resolve_ex, read_class_desc(false))
@@ -1673,7 +1602,6 @@ module Java::Io
     end
     
     typesig { [::Java::Boolean] }
-    # 
     # Reads in and returns new string.  Sets passHandle to new string's
     # assigned handle.
     def read_string(unshared)
@@ -1693,7 +1621,6 @@ module Java::Io
     end
     
     typesig { [::Java::Boolean] }
-    # 
     # Reads in and returns array object, or null if array class is
     # unresolvable.  Sets passHandle to array's assigned handle.
     def read_array(unshared)
@@ -1757,11 +1684,11 @@ module Java::Io
           end
         else
           oa = array
-          i_ = 0
-          while i_ < len
-            oa[i_] = read_object0(false)
+          i = 0
+          while i < len
+            oa[i] = read_object0(false)
             @handles.mark_dependency(array_handle, @pass_handle)
-            ((i_ += 1) - 1)
+            ((i += 1) - 1)
           end
         end
       end
@@ -1771,7 +1698,6 @@ module Java::Io
     end
     
     typesig { [::Java::Boolean] }
-    # 
     # Reads in and returns enum constant, or null if enum type is
     # unresolvable.  Sets passHandle to enum constant's assigned handle.
     def read_enum(unshared)
@@ -1806,7 +1732,6 @@ module Java::Io
     end
     
     typesig { [::Java::Boolean] }
-    # 
     # Reads and returns "ordinary" (i.e., not a String, Class,
     # ObjectStreamClass, array, or enum constant) object, or null if object's
     # class is unresolvable (in which case a ClassNotFoundException will be
@@ -1848,7 +1773,6 @@ module Java::Io
     end
     
     typesig { [Externalizable, ObjectStreamClass] }
-    # 
     # If obj is non-null, reads externalizable data by invoking readExternal()
     # method of obj; otherwise, attempts to skip over externalizable data.
     # Expects that passHandle is set to obj's handle before this method is
@@ -1865,7 +1789,6 @@ module Java::Io
           begin
             obj.read_external(self)
           rescue ClassNotFoundException => ex
-            # 
             # In most cases, the handle table has already propagated
             # a CNFException to passHandle at this point; this mark
             # call is included to address cases where the readExternal
@@ -1880,7 +1803,6 @@ module Java::Io
       ensure
         @cur_context = old_context
       end
-      # 
       # At this point, if the externalizable data was not written in
       # block-data form and either the externalizable class doesn't exist
       # locally (i.e., obj == null) or readExternal() just threw a
@@ -1894,7 +1816,6 @@ module Java::Io
     end
     
     typesig { [Object, ObjectStreamClass] }
-    # 
     # Reads (or attempts to skip, if obj is null or is tagged with a
     # ClassNotFoundException) instance data for each serializable class of
     # object in stream, from superclass to subclass.  Expects that passHandle
@@ -1912,7 +1833,6 @@ module Java::Io
               @bin.set_block_data_mode(true)
               slot_desc.invoke_read_object(obj, self)
             rescue ClassNotFoundException => ex
-              # 
               # In most cases, the handle table has already
               # propagated a CNFException to passHandle at this
               # point; this mark call is included to address cases
@@ -1923,7 +1843,6 @@ module Java::Io
               @cur_context.set_used
               @cur_context = old_context
             end
-            # 
             # defaultDataEnd may have been set indirectly by custom
             # readObject() method when calling defaultReadObject() or
             # readFields(); clear it to restore normal read behavior.
@@ -1946,7 +1865,6 @@ module Java::Io
     end
     
     typesig { [] }
-    # 
     # Skips over all block data and objects until TC_ENDBLOCKDATA is
     # encountered.
     def skip_custom_data
@@ -1970,7 +1888,6 @@ module Java::Io
     end
     
     typesig { [Object, ObjectStreamClass] }
-    # 
     # Reads in values of serializable fields declared by given class
     # descriptor.  If obj is non-null, sets field values in obj.  Expects that
     # passHandle is set to obj's handle before this method is called.
@@ -2008,7 +1925,6 @@ module Java::Io
     end
     
     typesig { [] }
-    # 
     # Reads in and returns IOException that caused serialization to abort.
     # All stream state is discarded prior to reading in fatal exception.  Sets
     # passHandle to fatal exception's handle.
@@ -2021,7 +1937,6 @@ module Java::Io
     end
     
     typesig { [] }
-    # 
     # If recursion depth is 0, clears internal data structures; otherwise,
     # throws a StreamCorruptedException.  This method is called when a
     # TC_RESET typecode is encountered.
@@ -2035,7 +1950,6 @@ module Java::Io
     class_module.module_eval {
       JNI.native_method :Java_java_io_ObjectInputStream_bytesToFloats, [:pointer, :long, :long, :int32, :long, :int32, :int32], :void
       typesig { [Array.typed(::Java::Byte), ::Java::Int, Array.typed(::Java::Float), ::Java::Int, ::Java::Int] }
-      # 
       # Converts specified span of bytes into float values.
       # 
       # REMIND: remove once hotspot inlines Float.intBitsToFloat
@@ -2045,7 +1959,6 @@ module Java::Io
       
       JNI.native_method :Java_java_io_ObjectInputStream_bytesToDoubles, [:pointer, :long, :long, :int32, :long, :int32, :int32], :void
       typesig { [Array.typed(::Java::Byte), ::Java::Int, Array.typed(::Java::Double), ::Java::Int, ::Java::Int] }
-      # 
       # Converts specified span of bytes into double values.
       # 
       # REMIND: remove once hotspot inlines Double.longBitsToDouble
@@ -2055,7 +1968,6 @@ module Java::Io
       
       JNI.native_method :Java_java_io_ObjectInputStream_latestUserDefinedLoader, [:pointer, :long], :long
       typesig { [] }
-      # 
       # Returns the first non-null class loader (not counting class loaders of
       # generated reflection implementation classes) up the execution stack, or
       # null if only code from the null class loader is on the stack.  This
@@ -2071,7 +1983,6 @@ module Java::Io
         JNI.__send__(:Java_java_io_ObjectInputStream_latestUserDefinedLoader, JNI.env, self.jni_id)
       end
       
-      # 
       # Default GetField implementation.
       const_set_lazy(:GetFieldImpl) { Class.new(GetField) do
         extend LocalClass
@@ -2106,7 +2017,6 @@ module Java::Io
         undef_method :obj_handles=
         
         typesig { [ObjectStreamClass] }
-        # 
         # Creates GetFieldImpl object for reading fields defined in given
         # class descriptor.
         def initialize(desc)
@@ -2192,7 +2102,6 @@ module Java::Io
         end
         
         typesig { [] }
-        # 
         # Reads primitive and object field values from stream.
         def read_fields
           self.attr_bin.read_fully(@prim_vals, 0, @prim_vals.attr_length, false)
@@ -2209,7 +2118,6 @@ module Java::Io
         end
         
         typesig { [String, Class] }
-        # 
         # Returns offset of field with given name and type.  A specified type
         # of null matches all types, Object.class matches all non-primitive
         # types, and any other non-null type matches assignable types only.
@@ -2234,7 +2142,6 @@ module Java::Io
         alias_method :initialize__get_field_impl, :initialize
       end }
       
-      # 
       # Prioritized list of callbacks to be performed once object graph has been
       # completely deserialized.
       const_set_lazy(:ValidationList) { Class.new do
@@ -2293,14 +2200,12 @@ module Java::Io
         undef_method :list=
         
         typesig { [] }
-        # 
         # Creates new (empty) ValidationList.
         def initialize
           @list = nil
         end
         
         typesig { [ObjectInputValidation, ::Java::Int] }
-        # 
         # Registers callback.  Throws InvalidObjectException if callback
         # object is null.
         def register(obj, priority)
@@ -2322,7 +2227,6 @@ module Java::Io
         end
         
         typesig { [] }
-        # 
         # Invokes all registered callbacks and clears the callback list.
         # Callbacks with higher priorities are called first; those with equal
         # priorities may be called in any order.  If any of the callbacks
@@ -2359,7 +2263,6 @@ module Java::Io
         end
         
         typesig { [] }
-        # 
         # Resets the callback list to its initial (empty) state.
         def clear
           @list = nil
@@ -2369,7 +2272,6 @@ module Java::Io
         alias_method :initialize__validation_list, :initialize
       end }
       
-      # 
       # Input stream supporting single-byte peek operations.
       const_set_lazy(:PeekInputStream) { Class.new(InputStream) do
         include_class_members ObjectInputStream
@@ -2389,7 +2291,6 @@ module Java::Io
         undef_method :peekb=
         
         typesig { [InputStream] }
-        # 
         # Creates new PeekInputStream on top of given underlying stream.
         def initialize(in_)
           @in = nil
@@ -2400,7 +2301,6 @@ module Java::Io
         end
         
         typesig { [] }
-        # 
         # Peeks at next byte value in stream.  Similar to read(), except
         # that it does not consume the read value.
         def peek
@@ -2475,7 +2375,6 @@ module Java::Io
         alias_method :initialize__peek_input_stream, :initialize
       end }
       
-      # 
       # Input stream with two modes: in default mode, inputs data written in the
       # same format as DataOutputStream; in "block data" mode, inputs data
       # bracketed by block data markers (see object serialization specification
@@ -2570,7 +2469,6 @@ module Java::Io
         undef_method :din=
         
         typesig { [InputStream] }
-        # 
         # Creates new BlockDataInputStream on top of given underlying stream.
         # Block data mode is turned off by default.
         def initialize(in_)
@@ -2596,7 +2494,6 @@ module Java::Io
         end
         
         typesig { [::Java::Boolean] }
-        # 
         # Sets block data mode to the given mode (true == on, false == off)
         # and returns the previous mode value.  If the new mode is the same as
         # the old mode, no action is taken.  Throws IllegalStateException if
@@ -2620,7 +2517,6 @@ module Java::Io
         end
         
         typesig { [] }
-        # 
         # Returns true if the stream is currently in block data mode, false
         # otherwise.
         def get_block_data_mode
@@ -2628,7 +2524,6 @@ module Java::Io
         end
         
         typesig { [] }
-        # 
         # If in block data mode, skips to the end of the current group of data
         # blocks (but does not unset block data mode).  If not in block data
         # mode, throws an IllegalStateException.
@@ -2642,7 +2537,6 @@ module Java::Io
         end
         
         typesig { [::Java::Boolean] }
-        # 
         # Attempts to read in the next block data header (if any).  If
         # canBlock is false and a full header cannot be read without possibly
         # blocking, returns HEADER_BLOCKED, else if the next element in the
@@ -2650,7 +2544,6 @@ module Java::Io
         # specified by the header, else returns -1.
         def read_block_header(can_block)
           if (self.attr_default_data_end)
-            # 
             # Fix for 4360508: stream is currently at the end of a field
             # value block written via default serialization; since there
             # is no terminating TC_ENDBLOCKDATA tag, simulate
@@ -2665,7 +2558,6 @@ module Java::Io
               end
               tc = @in.peek
               case (tc)
-              # 
               # TC_RESETs may occur in between data blocks.
               # Unfortunately, this case must be parsed at a lower
               # level than other typecodes, since primitive data
@@ -2702,7 +2594,6 @@ module Java::Io
         end
         
         typesig { [] }
-        # 
         # Refills internal buffer buf with block data.  Any data in buf at the
         # time of the call is considered consumed.  Sets the pos, end, and
         # unread fields to reflect the new amount of available block data; if
@@ -2721,10 +2612,10 @@ module Java::Io
                   raise StreamCorruptedException.new("unexpected EOF in middle of data block")
                 end
               else
-                n_ = read_block_header(true)
-                if (n_ >= 0)
+                n = read_block_header(true)
+                if (n >= 0)
                   @end = 0
-                  @unread = n_
+                  @unread = n
                 else
                   @end = -1
                   @unread = 0
@@ -2740,7 +2631,6 @@ module Java::Io
         end
         
         typesig { [] }
-        # 
         # If in block data mode, returns the number of unconsumed bytes
         # remaining in the current data block.  If not in block data mode,
         # throws an IllegalStateException.
@@ -2753,7 +2643,6 @@ module Java::Io
         end
         
         typesig { [] }
-        # 
         # Peeks at (but does not consume) and returns the next byte value in
         # the stream, or -1 if the end of the stream/block data (if in block
         # data mode) has been reached.
@@ -2769,7 +2658,6 @@ module Java::Io
         end
         
         typesig { [] }
-        # 
         # Peeks at (but does not consume) and returns the next byte value in
         # the stream, or throws EOFException if end of stream/block data has
         # been reached.
@@ -2819,11 +2707,11 @@ module Java::Io
               remain -= nread
               @pos += nread
             else
-              nread_ = RJava.cast_to_int(Math.min(remain, self.class::MAX_BLOCK_SIZE))
-              if ((nread_ = @in.read(@buf, 0, nread_)) < 0)
+              nread = RJava.cast_to_int(Math.min(remain, self.class::MAX_BLOCK_SIZE))
+              if ((nread = @in.read(@buf, 0, nread)) < 0)
                 break
               end
-              remain -= nread_
+              remain -= nread
             end
           end
           return len - remain
@@ -2866,7 +2754,6 @@ module Java::Io
         end
         
         typesig { [Array.typed(::Java::Byte), ::Java::Int, ::Java::Int, ::Java::Boolean] }
-        # 
         # Attempts to read len bytes into byte array b at offset off.  Returns
         # the number of bytes read, or -1 if the end of stream/block data has
         # been reached.  If copy is true, reads values into an intermediate
@@ -2889,11 +2776,11 @@ module Java::Io
               return nread
             else
               if (copy)
-                nread_ = @in.read(@buf, 0, Math.min(len, self.class::MAX_BLOCK_SIZE))
-                if (nread_ > 0)
-                  System.arraycopy(@buf, 0, b, off, nread_)
+                nread = @in.read(@buf, 0, Math.min(len, self.class::MAX_BLOCK_SIZE))
+                if (nread > 0)
+                  System.arraycopy(@buf, 0, b, off, nread)
                 end
-                return nread_
+                return nread
               else
                 return @in.read(b, off, len)
               end
@@ -3253,7 +3140,6 @@ module Java::Io
         end
         
         typesig { [] }
-        # 
         # Reads in string written in "long" UTF format.  "Long" UTF format is
         # identical to standard UTF, except that it uses an 8 byte header
         # (instead of the standard 2 bytes) to convey the UTF encoding length.
@@ -3262,7 +3148,6 @@ module Java::Io
         end
         
         typesig { [::Java::Long] }
-        # 
         # Reads in the "body" (i.e., the UTF representation minus the 2-byte
         # or 8-byte length header) of a UTF encoding, which occupies the next
         # utflen bytes.
@@ -3294,7 +3179,6 @@ module Java::Io
         end
         
         typesig { [StringBuilder, ::Java::Long] }
-        # 
         # Reads span of UTF-encoded characters out of internal buffer
         # (starting at offset pos and ending at or before offset end),
         # consuming no more than utflen bytes.  Appends read characters to
@@ -3341,7 +3225,6 @@ module Java::Io
             out_of_bounds = true
           ensure
             if (out_of_bounds || (@pos - start) > utflen)
-              # 
               # Fix for 4450867: if a malformed utf char causes the
               # conversion loop to scan past the expected end of the utf
               # string, only consume the expected number of utf bytes.
@@ -3354,7 +3237,6 @@ module Java::Io
         end
         
         typesig { [StringBuilder, ::Java::Long] }
-        # 
         # Reads in single UTF-encoded character one byte at a time, appends
         # the character to sbuf, and returns the number of bytes consumed.
         # This method is used when reading in UTF strings written in block
@@ -3406,7 +3288,6 @@ module Java::Io
         alias_method :initialize__block_data_input_stream, :initialize
       end }
       
-      # 
       # Unsynchronized table which tracks wire handle to object mappings, as
       # well as ClassNotFoundExceptions associated with deserialized objects.
       # This class implements an exception-propagation algorithm for
@@ -3486,7 +3367,6 @@ module Java::Io
         undef_method :size=
         
         typesig { [::Java::Int] }
-        # 
         # Creates handle table with the given initial capacity.
         def initialize(initial_capacity)
           @status = nil
@@ -3500,7 +3380,6 @@ module Java::Io
         end
         
         typesig { [Object] }
-        # 
         # Assigns next available handle to given object, and returns assigned
         # handle.  Once object has been completely deserialized (and all
         # dependencies on other objects identified), the handle should be
@@ -3515,7 +3394,6 @@ module Java::Io
         end
         
         typesig { [::Java::Int, ::Java::Int] }
-        # 
         # Registers a dependency (in exception status) of one handle on
         # another.  The dependent handle must be "open" (i.e., assigned, but
         # not finished yet).  No action is taken if either dependent or target
@@ -3552,7 +3430,6 @@ module Java::Io
         end
         
         typesig { [::Java::Int, ClassNotFoundException] }
-        # 
         # Associates a ClassNotFoundException (if one not already associated)
         # with the currently active handle and propagates it to other
         # referencing objects as appropriate.  The specified handle must be
@@ -3580,7 +3457,6 @@ module Java::Io
         end
         
         typesig { [::Java::Int] }
-        # 
         # Marks given handle as finished, meaning that no new dependencies
         # will be marked for handle.  Calls to the assign and finish methods
         # must occur in LIFO order.
@@ -3615,7 +3491,6 @@ module Java::Io
         end
         
         typesig { [::Java::Int, Object] }
-        # 
         # Assigns a new object to the given handle.  The object previously
         # associated with the handle is forgotten.  This method has no effect
         # if the given handle already has an exception associated with it.
@@ -3631,7 +3506,6 @@ module Java::Io
         end
         
         typesig { [::Java::Int] }
-        # 
         # Looks up and returns object associated with the given handle.
         # Returns null if the given handle is NULL_HANDLE, or if it has an
         # associated ClassNotFoundException.
@@ -3640,7 +3514,6 @@ module Java::Io
         end
         
         typesig { [::Java::Int] }
-        # 
         # Looks up and returns ClassNotFoundException associated with the
         # given handle.  Returns null if the given handle is NULL_HANDLE, or
         # if there is no ClassNotFoundException associated with the handle.
@@ -3649,7 +3522,6 @@ module Java::Io
         end
         
         typesig { [] }
-        # 
         # Resets table to its initial state.
         def clear
           Arrays.fill(@status, 0, @size, 0)
@@ -3660,14 +3532,12 @@ module Java::Io
         end
         
         typesig { [] }
-        # 
         # Returns number of handles registered in table.
         def size
           return @size
         end
         
         typesig { [] }
-        # 
         # Expands capacity of internal arrays.
         def grow
           new_capacity = (@entries.attr_length << 1) + 1
@@ -3683,7 +3553,6 @@ module Java::Io
         end
         
         class_module.module_eval {
-          # 
           # Simple growable list of (integer) handles.
           const_set_lazy(:HandleList) { Class.new do
             include_class_members HandleTable
@@ -3739,7 +3608,6 @@ module Java::Io
       end }
       
       typesig { [Object] }
-      # 
       # Method for cloning arrays in case of using unsharing reading
       def clone_array(array)
         if (array.is_a?(Array.typed(Object)))
@@ -3781,7 +3649,6 @@ module Java::Io
         end
       end
       
-      # 
       # Context that during upcalls to class-defined readObject methods; holds
       # object currently being deserialized and descriptor for current class.
       # This context keeps a boolean state to indicate that defaultReadObject

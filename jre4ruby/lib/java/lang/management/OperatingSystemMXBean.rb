@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 2003-2005 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -31,7 +30,6 @@ module Java::Lang::Management
     }
   end
   
-  # 
   # The management interface for the operating system on which
   # the Java virtual machine is running.
   # 
@@ -65,7 +63,6 @@ module Java::Lang::Management
     include_class_members OperatingSystemMXBeanImports
     
     typesig { [] }
-    # 
     # Returns the operating system name.
     # This method is equivalent to <tt>System.getProperty("os.name")</tt>.
     # 
@@ -82,7 +79,6 @@ module Java::Lang::Management
     end
     
     typesig { [] }
-    # 
     # Returns the operating system architecture.
     # This method is equivalent to <tt>System.getProperty("os.arch")</tt>.
     # 
@@ -99,7 +95,6 @@ module Java::Lang::Management
     end
     
     typesig { [] }
-    # 
     # Returns the operating system version.
     # This method is equivalent to <tt>System.getProperty("os.version")</tt>.
     # 
@@ -116,7 +111,6 @@ module Java::Lang::Management
     end
     
     typesig { [] }
-    # 
     # Returns the number of processors available to the Java virtual machine.
     # This method is equivalent to the {@link Runtime#availableProcessors()}
     # method.
@@ -130,7 +124,6 @@ module Java::Lang::Management
     end
     
     typesig { [] }
-    # 
     # Returns the system load average for the last minute.
     # The system load average is the sum of the number of runnable entities
     # queued to the {@linkplain #getAvailableProcessors available processors}

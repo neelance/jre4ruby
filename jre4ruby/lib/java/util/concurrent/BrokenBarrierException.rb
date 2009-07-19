@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
 # This code is free software; you can redistribute it and/or modify it
@@ -40,7 +39,6 @@ module Java::Util::Concurrent
     }
   end
   
-  # 
   # Exception thrown when a thread tries to wait upon a barrier that is
   # in a broken state, or which enters the broken state while the thread
   # is waiting.
@@ -58,7 +56,6 @@ module Java::Util::Concurrent
     }
     
     typesig { [] }
-    # 
     # Constructs a <tt>BrokenBarrierException</tt> with no specified detail
     # message.
     def initialize
@@ -66,7 +63,6 @@ module Java::Util::Concurrent
     end
     
     typesig { [String] }
-    # 
     # Constructs a <tt>BrokenBarrierException</tt> with the specified
     # detail message.
     # 

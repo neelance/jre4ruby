@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 2000-2005 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -38,7 +37,6 @@ module Java::Nio::Channels::Spi
     }
   end
   
-  # 
   # Base implementation class for interruptible channels.
   # 
   # <p> This class encapsulates the low-level machinery required to implement
@@ -101,7 +99,6 @@ module Java::Nio::Channels::Spi
     undef_method :open=
     
     typesig { [] }
-    # 
     # Initializes a new instance of this class.
     def initialize
       @close_lock = Object.new
@@ -111,7 +108,6 @@ module Java::Nio::Channels::Spi
     end
     
     typesig { [] }
-    # 
     # Closes this channel.
     # 
     # <p> If the channel has already been closed then this method returns
@@ -132,7 +128,6 @@ module Java::Nio::Channels::Spi
     end
     
     typesig { [] }
-    # 
     # Closes this channel.
     # 
     # <p> This method is invoked by the {@link #close close} method in order
@@ -170,7 +165,6 @@ module Java::Nio::Channels::Spi
     undef_method :interrupted=
     
     typesig { [] }
-    # 
     # Marks the beginning of an I/O operation that might block indefinitely.
     # 
     # <p> This method should be invoked in tandem with the {@link #end end}
@@ -215,7 +209,6 @@ module Java::Nio::Channels::Spi
     end
     
     typesig { [::Java::Boolean] }
-    # 
     # Marks the end of an I/O operation that might block indefinitely.
     # 
     # <p> This method should be invoked in tandem with the {@link #begin

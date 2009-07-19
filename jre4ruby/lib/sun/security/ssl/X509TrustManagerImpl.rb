@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 1997-2007 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -38,7 +37,6 @@ module Sun::Security::Ssl
     }
   end
   
-  # 
   # This class implements the SunJSSE X.509 trust manager using the internal
   # validator API in J2SE core. The logic in this class is minimal.<p>
   # 
@@ -56,7 +54,6 @@ module Sun::Security::Ssl
     include X509TrustManager
     
     class_module.module_eval {
-      # 
       # Flag indicating whether to enable revocation check for the PKIX trust
       # manager. Typically, this will only work if the PKIX implementation
       # supports CRL distribution points as we do not manually setup CertStores.
@@ -70,7 +67,6 @@ module Sun::Security::Ssl
     alias_method :attr_validator_type=, :validator_type=
     undef_method :validator_type=
     
-    # 
     # The Set of trusted X509Certificates.
     attr_accessor :trusted_certs
     alias_method :attr_trusted_certs, :trusted_certs
@@ -185,7 +181,6 @@ module Sun::Security::Ssl
     }
     
     typesig { [Array.typed(X509Certificate), String] }
-    # 
     # Returns true if the client certificate can be trusted.
     # 
     # @param chain certificates which establish an identity for the client.
@@ -223,7 +218,6 @@ module Sun::Security::Ssl
     end
     
     typesig { [Array.typed(X509Certificate), String] }
-    # 
     # Returns true if the server certifcate can be trusted.
     # 
     # @param chain certificates which establish an identity for the server.
@@ -261,7 +255,6 @@ module Sun::Security::Ssl
     end
     
     typesig { [] }
-    # 
     # Returns a list of CAs accepted to authenticate entities for the
     # specified purpose.
     # 
@@ -274,7 +267,6 @@ module Sun::Security::Ssl
     end
     
     typesig { [Array.typed(X509Certificate), String, String, String] }
-    # 
     # Given the partial or complete certificate chain provided by the
     # peer, check its identity and build a certificate path to a trusted
     # root, return if it can be validated and is trusted for client SSL
@@ -285,7 +277,6 @@ module Sun::Security::Ssl
     end
     
     typesig { [Array.typed(X509Certificate), String, String, String] }
-    # 
     # Given the partial or complete certificate chain provided by the
     # peer, check its identity and build a certificate path to a trusted
     # root, return if it can be validated and is trusted for server SSL

@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 1995-2006 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -45,7 +44,6 @@ module Java::Lang
     }
   end
   
-  # 
   # The security manager is a class that allows
   # applications to implement a security policy. It allows an
   # application to determine, before performing a possibly unsafe or
@@ -228,7 +226,6 @@ module Java::Lang
   class SecurityManager 
     include_class_members SecurityManagerImports
     
-    # 
     # This field is <code>true</code> if there is a security check in
     # progress; <code>false</code> otherwise.
     # 
@@ -241,7 +238,6 @@ module Java::Lang
     alias_method :attr_in_check=, :in_check=
     undef_method :in_check=
     
-    # 
     # Have we been initialized. Effective against finalizer attacks.
     attr_accessor :initialized
     alias_method :attr_initialized, :initialized
@@ -250,7 +246,6 @@ module Java::Lang
     undef_method :initialized=
     
     typesig { [] }
-    # 
     # returns true if the current context has been granted AllPermission
     def has_all_permission
       begin
@@ -262,7 +257,6 @@ module Java::Lang
     end
     
     typesig { [] }
-    # 
     # Tests if there is a security check in progress.
     # 
     # @return the value of the <code>inCheck</code> field. This field
@@ -278,7 +272,6 @@ module Java::Lang
     end
     
     typesig { [] }
-    # 
     # Constructs a new <code>SecurityManager</code>.
     # 
     # <p> If there is a security manager already installed, this method first
@@ -310,7 +303,6 @@ module Java::Lang
     
     JNI.native_method :Java_java_lang_SecurityManager_getClassContext, [:pointer, :long], :long
     typesig { [] }
-    # 
     # Returns the current execution stack as an array of classes.
     # <p>
     # The length of the array is the number of methods on the execution
@@ -324,7 +316,6 @@ module Java::Lang
     end
     
     typesig { [] }
-    # 
     # Returns the class loader of the most recently executing method from
     # a class defined using a non-system class loader. A non-system
     # class loader is defined as being a class loader that is not equal to
@@ -374,7 +365,6 @@ module Java::Lang
     end
     
     typesig { [] }
-    # 
     # Returns the class of the most recently executing method from
     # a class defined using a non-system class loader. A non-system
     # class loader is defined as being a class loader that is not equal to
@@ -419,7 +409,6 @@ module Java::Lang
     
     JNI.native_method :Java_java_lang_SecurityManager_classDepth, [:pointer, :long, :long], :int32
     typesig { [String] }
-    # 
     # Returns the stack depth of the specified class.
     # 
     # @param   name   the fully qualified name of the class to search for.
@@ -434,7 +423,6 @@ module Java::Lang
     end
     
     typesig { [] }
-    # 
     # Returns the stack depth of the most recently executing method
     # from a class defined using a non-system class loader.  A non-system
     # class loader is defined as being a class loader that is not equal to
@@ -487,7 +475,6 @@ module Java::Lang
     end
     
     typesig { [String] }
-    # 
     # Tests if a method from a class with the specified
     # name is on the execution stack.
     # 
@@ -502,7 +489,6 @@ module Java::Lang
     end
     
     typesig { [] }
-    # 
     # Basically, tests if a method from a class defined using a
     # class loader is on the execution stack.
     # 
@@ -518,7 +504,6 @@ module Java::Lang
     end
     
     typesig { [] }
-    # 
     # Creates an object that encapsulates the current execution
     # environment. The result of this method is used, for example, by the
     # three-argument <code>checkConnect</code> method and by the
@@ -544,7 +529,6 @@ module Java::Lang
     end
     
     typesig { [Permission] }
-    # 
     # Throws a <code>SecurityException</code> if the requested
     # access, specified by the given permission, is not permitted based
     # on the security policy currently in effect.
@@ -563,7 +547,6 @@ module Java::Lang
     end
     
     typesig { [Permission, Object] }
-    # 
     # Throws a <code>SecurityException</code> if the
     # specified security context is denied access to the resource
     # specified by the given permission.
@@ -602,7 +585,6 @@ module Java::Lang
     end
     
     typesig { [] }
-    # 
     # Throws a <code>SecurityException</code> if the
     # calling thread is not allowed to create a new class loader.
     # <p>
@@ -625,7 +607,6 @@ module Java::Lang
     end
     
     class_module.module_eval {
-      # 
       # reference to the root thread group, used for the checkAccess
       # methods.
       
@@ -650,7 +631,6 @@ module Java::Lang
     }
     
     typesig { [JavaThread] }
-    # 
     # Throws a <code>SecurityException</code> if the
     # calling thread is not allowed to modify the thread argument.
     # <p>
@@ -703,7 +683,6 @@ module Java::Lang
     end
     
     typesig { [JavaThreadGroup] }
-    # 
     # Throws a <code>SecurityException</code> if the
     # calling thread is not allowed to modify the thread group argument.
     # <p>
@@ -757,7 +736,6 @@ module Java::Lang
     end
     
     typesig { [::Java::Int] }
-    # 
     # Throws a <code>SecurityException</code> if the
     # calling thread is not allowed to cause the Java Virtual Machine to
     # halt with the specified status code.
@@ -786,7 +764,6 @@ module Java::Lang
     end
     
     typesig { [String] }
-    # 
     # Throws a <code>SecurityException</code> if the
     # calling thread is not allowed to create a subprocess.
     # <p>
@@ -824,7 +801,6 @@ module Java::Lang
     end
     
     typesig { [String] }
-    # 
     # Throws a <code>SecurityException</code> if the
     # calling thread is not allowed to dynamic link the library code
     # specified by the string argument file. The argument is either a
@@ -858,7 +834,6 @@ module Java::Lang
     end
     
     typesig { [FileDescriptor] }
-    # 
     # Throws a <code>SecurityException</code> if the
     # calling thread is not allowed to read from the specified file
     # descriptor.
@@ -887,7 +862,6 @@ module Java::Lang
     end
     
     typesig { [String] }
-    # 
     # Throws a <code>SecurityException</code> if the
     # calling thread is not allowed to read the file specified by the
     # string argument.
@@ -911,7 +885,6 @@ module Java::Lang
     end
     
     typesig { [String, Object] }
-    # 
     # Throws a <code>SecurityException</code> if the
     # specified security context is not allowed to read the file
     # specified by the string argument. The context must be a security
@@ -945,7 +918,6 @@ module Java::Lang
     end
     
     typesig { [FileDescriptor] }
-    # 
     # Throws a <code>SecurityException</code> if the
     # calling thread is not allowed to write to the specified file
     # descriptor.
@@ -974,7 +946,6 @@ module Java::Lang
     end
     
     typesig { [String] }
-    # 
     # Throws a <code>SecurityException</code> if the
     # calling thread is not allowed to write to the file specified by
     # the string argument.
@@ -998,7 +969,6 @@ module Java::Lang
     end
     
     typesig { [String] }
-    # 
     # Throws a <code>SecurityException</code> if the
     # calling thread is not allowed to delete the specified file.
     # <p>
@@ -1025,7 +995,6 @@ module Java::Lang
     end
     
     typesig { [String, ::Java::Int] }
-    # 
     # Throws a <code>SecurityException</code> if the
     # calling thread is not allowed to open a socket connection to the
     # specified host and port number.
@@ -1068,7 +1037,6 @@ module Java::Lang
     end
     
     typesig { [String, ::Java::Int, Object] }
-    # 
     # Throws a <code>SecurityException</code> if the
     # specified security context is not allowed to open a socket
     # connection to the specified host and port number.
@@ -1121,7 +1089,6 @@ module Java::Lang
     end
     
     typesig { [::Java::Int] }
-    # 
     # Throws a <code>SecurityException</code> if the
     # calling thread is not allowed to wait for a connection request on
     # the specified local port number.
@@ -1150,7 +1117,6 @@ module Java::Lang
     end
     
     typesig { [String, ::Java::Int] }
-    # 
     # Throws a <code>SecurityException</code> if the
     # calling thread is not permitted to accept a socket connection from
     # the specified host and port number.
@@ -1185,7 +1151,6 @@ module Java::Lang
     end
     
     typesig { [InetAddress] }
-    # 
     # Throws a <code>SecurityException</code> if the
     # calling thread is not allowed to use
     # (join/leave/send/receive) IP multicast.
@@ -1215,7 +1180,6 @@ module Java::Lang
     end
     
     typesig { [InetAddress, ::Java::Byte] }
-    # 
     # Throws a <code>SecurityException</code> if the
     # calling thread is not allowed to use
     # (join/leave/send/receive) IP multicast.
@@ -1249,7 +1213,6 @@ module Java::Lang
     end
     
     typesig { [] }
-    # 
     # Throws a <code>SecurityException</code> if the
     # calling thread is not allowed to access or modify the system
     # properties.
@@ -1276,7 +1239,6 @@ module Java::Lang
     end
     
     typesig { [String] }
-    # 
     # Throws a <code>SecurityException</code> if the
     # calling thread is not allowed to access the system property with
     # the specified <code>key</code> name.
@@ -1308,7 +1270,6 @@ module Java::Lang
     end
     
     typesig { [Object] }
-    # 
     # Returns <code>false</code> if the calling
     # thread is not trusted to bring up the top-level window indicated
     # by the <code>window</code> argument. In this case, the caller can
@@ -1354,7 +1315,6 @@ module Java::Lang
     end
     
     typesig { [] }
-    # 
     # Throws a <code>SecurityException</code> if the
     # calling thread is not allowed to initiate a print job request.
     # <p>
@@ -1377,7 +1337,6 @@ module Java::Lang
     end
     
     typesig { [] }
-    # 
     # Throws a <code>SecurityException</code> if the
     # calling thread is not allowed to access the system clipboard.
     # <p>
@@ -1399,7 +1358,6 @@ module Java::Lang
     end
     
     typesig { [] }
-    # 
     # Throws a <code>SecurityException</code> if the
     # calling thread is not allowed to access the AWT event queue.
     # <p>
@@ -1420,7 +1378,6 @@ module Java::Lang
     end
     
     class_module.module_eval {
-      # 
       # We have an initial invalid bit (initially false) for the class
       # variables which tell if the cache is valid.  If the underlying
       # java.security.Security property changes via setProperty(), the
@@ -1508,7 +1465,6 @@ module Java::Lang
     }
     
     typesig { [String] }
-    # 
     # Throws a <code>SecurityException</code> if the
     # calling thread is not allowed to access the package specified by
     # the argument.
@@ -1545,7 +1501,6 @@ module Java::Lang
       end
       pkgs = nil
       synchronized((PackageAccessLock)) do
-        # 
         # Do we need to update our property array?
         if (!self.attr_package_access_valid)
           tmp_property_str = AccessController.do_privileged(Class.new(PrivilegedAction.class == Class ? PrivilegedAction : Object) do
@@ -1573,7 +1528,6 @@ module Java::Lang
         # changes afterwards; array contents won't change.
         pkgs = self.attr_package_access
       end
-      # 
       # Traverse the list of packages, check for any matches.
       i = 0
       while i < pkgs.attr_length
@@ -1586,7 +1540,6 @@ module Java::Lang
     end
     
     typesig { [String] }
-    # 
     # Throws a <code>SecurityException</code> if the
     # calling thread is not allowed to define classes in the package
     # specified by the argument.
@@ -1619,7 +1572,6 @@ module Java::Lang
       end
       pkgs = nil
       synchronized((PackageDefinitionLock)) do
-        # 
         # Do we need to update our property array?
         if (!self.attr_package_definition_valid)
           tmp_property_str = AccessController.do_privileged(Class.new(PrivilegedAction.class == Class ? PrivilegedAction : Object) do
@@ -1647,7 +1599,6 @@ module Java::Lang
         # field changes afterwards; array contents won't change.
         pkgs = self.attr_package_definition
       end
-      # 
       # Traverse the list of packages, check for any matches.
       i = 0
       while i < pkgs.attr_length
@@ -1660,7 +1611,6 @@ module Java::Lang
     end
     
     typesig { [] }
-    # 
     # Throws a <code>SecurityException</code> if the
     # calling thread is not allowed to set the socket factory used by
     # <code>ServerSocket</code> or <code>Socket</code>, or the stream
@@ -1688,7 +1638,6 @@ module Java::Lang
     end
     
     typesig { [Class, ::Java::Int] }
-    # 
     # Throws a <code>SecurityException</code> if the
     # calling thread is not allowed to access members.
     # <p>
@@ -1721,7 +1670,6 @@ module Java::Lang
       end
       if (!(which).equal?(Member::PUBLIC))
         stack = get_class_context
-        # 
         # stack depth of 4 should be the caller of one of the
         # methods in java.lang.Class that invoke checkMember
         # access. The stack should look like:
@@ -1737,7 +1685,6 @@ module Java::Lang
     end
     
     typesig { [String] }
-    # 
     # Determines whether the permission with the specified permission target
     # name should be granted or denied.
     # 
@@ -1777,7 +1724,6 @@ module Java::Lang
     end
     
     typesig { [] }
-    # 
     # Returns the thread group into which to instantiate any new
     # thread being created at the time this is being called.
     # By default, it returns the thread group of the current

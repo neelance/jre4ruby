@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 2003-2006 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -40,7 +39,6 @@ module Java::Util
     }
   end
   
-  # 
   # A simple text scanner which can parse primitive types and strings using
   # regular expressions.
   # 
@@ -587,7 +585,6 @@ module Java::Util
     undef_method :negative_suffix=
     
     class_module.module_eval {
-      # 
       # Fields and an accessor method to match booleans
       
       def bool_pattern
@@ -613,7 +610,6 @@ module Java::Util
       end
     }
     
-    # 
     # Fields and methods to match bytes, shorts, ints, and longs
     attr_accessor :integer_pattern
     alias_method :attr_integer_pattern, :integer_pattern
@@ -666,7 +662,6 @@ module Java::Util
     end
     
     class_module.module_eval {
-      # 
       # Fields and an accessor method to match line separators
       
       def separator_pattern
@@ -715,7 +710,6 @@ module Java::Util
       end
     }
     
-    # 
     # Fields and methods to match floats and doubles
     attr_accessor :float_pattern
     alias_method :attr_float_pattern, :float_pattern
@@ -849,7 +843,6 @@ module Java::Util
     end
     
     typesig { [Readable] }
-    # 
     # Constructs a new <code>Scanner</code> that produces values scanned
     # from the specified source.
     # 
@@ -860,7 +853,6 @@ module Java::Util
     end
     
     typesig { [InputStream] }
-    # 
     # Constructs a new <code>Scanner</code> that produces values scanned
     # from the specified input stream. Bytes from the stream are converted
     # into characters using the underlying platform's
@@ -872,7 +864,6 @@ module Java::Util
     end
     
     typesig { [InputStream, String] }
-    # 
     # Constructs a new <code>Scanner</code> that produces values scanned
     # from the specified input stream. Bytes from the stream are converted
     # into characters using the specified charset.
@@ -905,7 +896,6 @@ module Java::Util
     }
     
     typesig { [JavaFile] }
-    # 
     # Constructs a new <code>Scanner</code> that produces values scanned
     # from the specified file. Bytes from the file are converted into
     # characters using the underlying platform's
@@ -918,7 +908,6 @@ module Java::Util
     end
     
     typesig { [JavaFile, String] }
-    # 
     # Constructs a new <code>Scanner</code> that produces values scanned
     # from the specified file. Bytes from the file are converted into
     # characters using the specified charset.
@@ -934,7 +923,6 @@ module Java::Util
     end
     
     typesig { [String] }
-    # 
     # Constructs a new <code>Scanner</code> that produces values scanned
     # from the specified string.
     # 
@@ -944,7 +932,6 @@ module Java::Util
     end
     
     typesig { [ReadableByteChannel] }
-    # 
     # Constructs a new <code>Scanner</code> that produces values scanned
     # from the specified channel. Bytes from the source are converted into
     # characters using the underlying platform's
@@ -967,7 +954,6 @@ module Java::Util
     }
     
     typesig { [ReadableByteChannel, String] }
-    # 
     # Constructs a new <code>Scanner</code> that produces values scanned
     # from the specified channel. Bytes from the source are converted into
     # characters using the specified charset.
@@ -1153,7 +1139,6 @@ module Java::Util
     end
     
     typesig { [Pattern] }
-    # 
     # Returns a "complete token" that matches the specified pattern
     # 
     # A token is complete if surrounded by delims; a partial token
@@ -1247,9 +1232,9 @@ module Java::Util
         @matcher.use_pattern(pattern_)
         @matcher.region(@position, @buf.limit)
         if (@matcher.matches)
-          s_ = @matcher.group
+          s = @matcher.group
           @position = @matcher.end
-          return s_
+          return s
         end
         # Last piece does not match
         return nil
@@ -1370,7 +1355,6 @@ module Java::Util
     end
     
     typesig { [] }
-    # 
     # Returns the <code>IOException</code> last thrown by this
     # <code>Scanner</code>'s underlying <code>Readable</code>. This method
     # returns <code>null</code> if no such exception exists.
@@ -1381,7 +1365,6 @@ module Java::Util
     end
     
     typesig { [] }
-    # 
     # Returns the <code>Pattern</code> this <code>Scanner</code> is currently
     # using to match delimiters.
     # 
@@ -1391,7 +1374,6 @@ module Java::Util
     end
     
     typesig { [Pattern] }
-    # 
     # Sets this scanner's delimiting pattern to the specified pattern.
     # 
     # @param pattern A delimiting pattern
@@ -1402,7 +1384,6 @@ module Java::Util
     end
     
     typesig { [String] }
-    # 
     # Sets this scanner's delimiting pattern to a pattern constructed from
     # the specified <code>String</code>.
     # 
@@ -1421,7 +1402,6 @@ module Java::Util
     end
     
     typesig { [] }
-    # 
     # Returns this scanner's locale.
     # 
     # <p>A scanner's locale affects many elements of its default
@@ -1434,7 +1414,6 @@ module Java::Util
     end
     
     typesig { [Locale] }
-    # 
     # Sets this scanner's locale to the specified locale.
     # 
     # <p>A scanner's locale affects many elements of its default
@@ -1485,7 +1464,6 @@ module Java::Util
     end
     
     typesig { [] }
-    # 
     # Returns this scanner's default radix.
     # 
     # <p>A scanner's radix affects elements of its default
@@ -1498,7 +1476,6 @@ module Java::Util
     end
     
     typesig { [::Java::Int] }
-    # 
     # Sets this scanner's default radix to the specified radix.
     # 
     # <p>A scanner's radix affects elements of its default
@@ -1540,7 +1517,6 @@ module Java::Util
     end
     
     typesig { [] }
-    # 
     # Returns the match result of the last scanning operation performed
     # by this scanner. This method throws <code>IllegalStateException</code>
     # if no match has been performed, or if the last match was
@@ -1566,7 +1542,6 @@ module Java::Util
     end
     
     typesig { [] }
-    # 
     # <p>Returns the string representation of this <code>Scanner</code>. The
     # string representation of a <code>Scanner</code> contains information
     # that may be useful for debugging. The exact format is unspecified.
@@ -1593,7 +1568,6 @@ module Java::Util
     end
     
     typesig { [] }
-    # 
     # Returns true if this scanner has another token in its input.
     # This method may block while waiting for input to scan.
     # The scanner does not advance past any input.
@@ -1615,7 +1589,6 @@ module Java::Util
     end
     
     typesig { [] }
-    # 
     # Finds and returns the next complete token from this scanner.
     # A complete token is preceded and followed by input that matches
     # the delimiter pattern. This method may block while waiting for input
@@ -1645,7 +1618,6 @@ module Java::Util
     end
     
     typesig { [] }
-    # 
     # The remove operation is not supported by this implementation of
     # <code>Iterator</code>.
     # 
@@ -1656,7 +1628,6 @@ module Java::Util
     end
     
     typesig { [String] }
-    # 
     # Returns true if the next token matches the pattern constructed from the
     # specified string. The scanner does not advance past any input.
     # 
@@ -1673,7 +1644,6 @@ module Java::Util
     end
     
     typesig { [String] }
-    # 
     # Returns the next token if it matches the pattern constructed from the
     # specified string.  If the match is successful, the scanner advances
     # past the input that matched the pattern.
@@ -1691,7 +1661,6 @@ module Java::Util
     end
     
     typesig { [Pattern] }
-    # 
     # Returns true if the next complete token matches the specified pattern.
     # A complete token is prefixed and postfixed by input that matches
     # the delimiter pattern. This method may block while waiting for input.
@@ -1723,7 +1692,6 @@ module Java::Util
     end
     
     typesig { [Pattern] }
-    # 
     # Returns the next token if it matches the specified pattern. This
     # method may block while waiting for input to scan, even if a previous
     # invocation of {@link #hasNext(Pattern)} returned <code>true</code>.
@@ -1761,7 +1729,6 @@ module Java::Util
     end
     
     typesig { [] }
-    # 
     # Returns true if there is another line in the input of this scanner.
     # This method may block while waiting for input. The scanner does not
     # advance past any input.
@@ -1786,7 +1753,6 @@ module Java::Util
     end
     
     typesig { [] }
-    # 
     # Advances this scanner past the current line and returns the input
     # that was skipped.
     # 
@@ -1840,7 +1806,6 @@ module Java::Util
     end
     
     typesig { [Pattern] }
-    # 
     # Attempts to find the next occurrence of the specified pattern ignoring
     # delimiters. If the pattern is found before the next line separator, the
     # scanner advances past the input that matched and returns the string that
@@ -1892,7 +1857,6 @@ module Java::Util
     end
     
     typesig { [String, ::Java::Int] }
-    # 
     # Attempts to find the next occurrence of a pattern constructed from the
     # specified string, ignoring delimiters.
     # 
@@ -1910,7 +1874,6 @@ module Java::Util
     end
     
     typesig { [Pattern, ::Java::Int] }
-    # 
     # Attempts to find the next occurrence of the specified pattern.
     # 
     # <p>This method searches through the input up to the specified
@@ -1965,7 +1928,6 @@ module Java::Util
     end
     
     typesig { [Pattern] }
-    # 
     # Skips input that matches the specified pattern, ignoring delimiters.
     # This method will skip input if an anchored match of the specified
     # pattern succeeds.
@@ -2010,7 +1972,6 @@ module Java::Util
     end
     
     typesig { [String] }
-    # 
     # Skips input that matches a pattern constructed from the specified
     # string.
     # 
@@ -2041,7 +2002,6 @@ module Java::Util
     end
     
     typesig { [] }
-    # 
     # Scans the next token of the input into a boolean value and returns
     # that value. This method will throw <code>InputMismatchException</code>
     # if the next token cannot be translated into a valid boolean value.
@@ -2058,7 +2018,6 @@ module Java::Util
     end
     
     typesig { [] }
-    # 
     # Returns true if the next token in this scanner's input can be
     # interpreted as a byte value in the default radix using the
     # {@link #nextByte} method. The scanner does not advance past any input.
@@ -2071,7 +2030,6 @@ module Java::Util
     end
     
     typesig { [::Java::Int] }
-    # 
     # Returns true if the next token in this scanner's input can be
     # interpreted as a byte value in the specified radix using the
     # {@link #nextByte} method. The scanner does not advance past any input.
@@ -2096,7 +2054,6 @@ module Java::Util
     end
     
     typesig { [] }
-    # 
     # Scans the next token of the input as a <tt>byte</tt>.
     # 
     # <p> An invocation of this method of the form
@@ -2115,7 +2072,6 @@ module Java::Util
     end
     
     typesig { [::Java::Int] }
-    # 
     # Scans the next token of the input as a <tt>byte</tt>.
     # This method will throw <code>InputMismatchException</code>
     # if the next token cannot be translated into a valid byte value as
@@ -2163,7 +2119,6 @@ module Java::Util
     end
     
     typesig { [] }
-    # 
     # Returns true if the next token in this scanner's input can be
     # interpreted as a short value in the default radix using the
     # {@link #nextShort} method. The scanner does not advance past any input.
@@ -2176,7 +2131,6 @@ module Java::Util
     end
     
     typesig { [::Java::Int] }
-    # 
     # Returns true if the next token in this scanner's input can be
     # interpreted as a short value in the specified radix using the
     # {@link #nextShort} method. The scanner does not advance past any input.
@@ -2201,7 +2155,6 @@ module Java::Util
     end
     
     typesig { [] }
-    # 
     # Scans the next token of the input as a <tt>short</tt>.
     # 
     # <p> An invocation of this method of the form
@@ -2220,7 +2173,6 @@ module Java::Util
     end
     
     typesig { [::Java::Int] }
-    # 
     # Scans the next token of the input as a <tt>short</tt>.
     # This method will throw <code>InputMismatchException</code>
     # if the next token cannot be translated into a valid short value as
@@ -2268,7 +2220,6 @@ module Java::Util
     end
     
     typesig { [] }
-    # 
     # Returns true if the next token in this scanner's input can be
     # interpreted as an int value in the default radix using the
     # {@link #nextInt} method. The scanner does not advance past any input.
@@ -2281,7 +2232,6 @@ module Java::Util
     end
     
     typesig { [::Java::Int] }
-    # 
     # Returns true if the next token in this scanner's input can be
     # interpreted as an int value in the specified radix using the
     # {@link #nextInt} method. The scanner does not advance past any input.
@@ -2306,7 +2256,6 @@ module Java::Util
     end
     
     typesig { [String] }
-    # 
     # The integer token must be stripped of prefixes, group separators,
     # and suffixes, non ascii digits must be converted into ascii digits
     # before parse will accept it.
@@ -2330,7 +2279,6 @@ module Java::Util
     end
     
     typesig { [] }
-    # 
     # Scans the next token of the input as an <tt>int</tt>.
     # 
     # <p> An invocation of this method of the form
@@ -2349,7 +2297,6 @@ module Java::Util
     end
     
     typesig { [::Java::Int] }
-    # 
     # Scans the next token of the input as an <tt>int</tt>.
     # This method will throw <code>InputMismatchException</code>
     # if the next token cannot be translated into a valid int value as
@@ -2397,7 +2344,6 @@ module Java::Util
     end
     
     typesig { [] }
-    # 
     # Returns true if the next token in this scanner's input can be
     # interpreted as a long value in the default radix using the
     # {@link #nextLong} method. The scanner does not advance past any input.
@@ -2410,7 +2356,6 @@ module Java::Util
     end
     
     typesig { [::Java::Int] }
-    # 
     # Returns true if the next token in this scanner's input can be
     # interpreted as a long value in the specified radix using the
     # {@link #nextLong} method. The scanner does not advance past any input.
@@ -2435,7 +2380,6 @@ module Java::Util
     end
     
     typesig { [] }
-    # 
     # Scans the next token of the input as a <tt>long</tt>.
     # 
     # <p> An invocation of this method of the form
@@ -2454,7 +2398,6 @@ module Java::Util
     end
     
     typesig { [::Java::Int] }
-    # 
     # Scans the next token of the input as a <tt>long</tt>.
     # This method will throw <code>InputMismatchException</code>
     # if the next token cannot be translated into a valid long value as
@@ -2501,7 +2444,6 @@ module Java::Util
     end
     
     typesig { [String] }
-    # 
     # The float token must be stripped of prefixes, group separators,
     # and suffixes, non ascii digits must be converted into ascii digits
     # before parseFloat will accept it.
@@ -2558,7 +2500,6 @@ module Java::Util
     end
     
     typesig { [] }
-    # 
     # Returns true if the next token in this scanner's input can be
     # interpreted as a float value using the {@link #nextFloat}
     # method. The scanner does not advance past any input.
@@ -2582,7 +2523,6 @@ module Java::Util
     end
     
     typesig { [] }
-    # 
     # Scans the next token of the input as a <tt>float</tt>.
     # This method will throw <code>InputMismatchException</code>
     # if the next token cannot be translated into a valid float value as
@@ -2626,7 +2566,6 @@ module Java::Util
     end
     
     typesig { [] }
-    # 
     # Returns true if the next token in this scanner's input can be
     # interpreted as a double value using the {@link #nextDouble}
     # method. The scanner does not advance past any input.
@@ -2650,7 +2589,6 @@ module Java::Util
     end
     
     typesig { [] }
-    # 
     # Scans the next token of the input as a <tt>double</tt>.
     # This method will throw <code>InputMismatchException</code>
     # if the next token cannot be translated into a valid double value.
@@ -2710,7 +2648,6 @@ module Java::Util
     end
     
     typesig { [::Java::Int] }
-    # 
     # Returns true if the next token in this scanner's input can be
     # interpreted as a <code>BigInteger</code> in the specified radix using
     # the {@link #nextBigInteger} method. The scanner does not advance past
@@ -2736,7 +2673,6 @@ module Java::Util
     end
     
     typesig { [] }
-    # 
     # Scans the next token of the input as a {@link java.math.BigInteger
     # BigInteger}.
     # 
@@ -2756,7 +2692,6 @@ module Java::Util
     end
     
     typesig { [::Java::Int] }
-    # 
     # Scans the next token of the input as a {@link java.math.BigInteger
     # BigInteger}.
     # 
@@ -2799,7 +2734,6 @@ module Java::Util
     end
     
     typesig { [] }
-    # 
     # Returns true if the next token in this scanner's input can be
     # interpreted as a <code>BigDecimal</code> using the
     # {@link #nextBigDecimal} method. The scanner does not advance past any
@@ -2824,7 +2758,6 @@ module Java::Util
     end
     
     typesig { [] }
-    # 
     # Scans the next token of the input as a {@link java.math.BigDecimal
     # BigDecimal}.
     # 
@@ -2863,7 +2796,6 @@ module Java::Util
     end
     
     typesig { [] }
-    # 
     # Resets this scanner.
     # 
     # <p> Resetting a scanner discards all of its explicit state

@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 2000-2001 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -33,7 +32,6 @@ module Java::Nio::Channels
     }
   end
   
-  # 
   # A pair of channels that implements a unidirectional pipe.
   # 
   # <p> A pipe consists of a pair of channels: A writable {@link
@@ -56,7 +54,6 @@ module Java::Nio::Channels
     include_class_members PipeImports
     
     class_module.module_eval {
-      # 
       # A channel representing the readable end of a {@link Pipe}.  </p>
       # 
       # @since 1.4
@@ -66,14 +63,12 @@ module Java::Nio::Channels
         include ScatteringByteChannel
         
         typesig { [SelectorProvider] }
-        # 
         # Constructs a new instance of this class.
         def initialize(provider)
           super(provider)
         end
         
         typesig { [] }
-        # 
         # Returns an operation set identifying this channel's supported
         # operations.
         # 
@@ -89,7 +84,6 @@ module Java::Nio::Channels
         alias_method :initialize__source_channel, :initialize
       end }
       
-      # 
       # A channel representing the writable end of a {@link Pipe}.  </p>
       # 
       # @since 1.4
@@ -99,14 +93,12 @@ module Java::Nio::Channels
         include GatheringByteChannel
         
         typesig { [SelectorProvider] }
-        # 
         # Initializes a new instance of this class.
         def initialize(provider)
           super(provider)
         end
         
         typesig { [] }
-        # 
         # Returns an operation set identifying this channel's supported
         # operations.
         # 
@@ -124,13 +116,11 @@ module Java::Nio::Channels
     }
     
     typesig { [] }
-    # 
     # Initializes a new instance of this class.
     def initialize
     end
     
     typesig { [] }
-    # 
     # Returns this pipe's source channel.  </p>
     # 
     # @return  This pipe's source channel
@@ -139,7 +129,6 @@ module Java::Nio::Channels
     end
     
     typesig { [] }
-    # 
     # Returns this pipe's sink channel.  </p>
     # 
     # @return  This pipe's sink channel
@@ -149,7 +138,6 @@ module Java::Nio::Channels
     
     class_module.module_eval {
       typesig { [] }
-      # 
       # Opens a pipe.
       # 
       # <p> The new pipe is created by invoking the {@link

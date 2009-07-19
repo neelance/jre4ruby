@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 2004-2006 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -86,7 +85,6 @@ module Sun::Security::Jgss::Krb5
       const_set_lazy(:DEBUG) { Krb5Util::DEBUG }
       const_attr_reader  :DEBUG
       
-      # 
       # A zero initial vector to be used for checksum calculation and for
       # DesCbc application data encryption/decryption.
       const_set_lazy(:ZERO_IV) { Array.typed(::Java::Byte).new(DES_IV_SIZE) { 0 } }
@@ -190,7 +188,6 @@ module Sun::Security::Jgss::Krb5
       case (alg)
       # fall through to encrypt checksum
       when MessageToken::SGN_ALG_DES_MAC_MD5
-        # 
         # With this sign algorithm, first an MD5 hash is computed on the
         # application data. The 16 byte hash is then DesCbc encrypted.
         begin
@@ -247,7 +244,6 @@ module Sun::Security::Jgss::Krb5
           offset = 0
         end
         begin
-          # 
           # Krb5Token.debug("\nkeybytes: " +
           # Krb5Token.getHexBytes(keybytes));
           # Krb5Token.debug("\nheader: " + (header == null ? "NONE" :
@@ -263,9 +259,9 @@ module Sun::Security::Jgss::Krb5
           # Krb5Token.getHexBytes(answer));
           return answer
         rescue GeneralSecurityException => e
-          ge_ = GSSException.new(GSSException::FAILURE, -1, "Could not use HMAC-SHA1-DES3-KD signing algorithm - " + (e_.get_message).to_s)
-          ge_.init_cause(e_)
-          raise ge_
+          ge = GSSException.new(GSSException::FAILURE, -1, "Could not use HMAC-SHA1-DES3-KD signing algorithm - " + (e.get_message).to_s)
+          ge.init_cause(e)
+          raise ge
         end
         buffer = nil
         off = 0
@@ -277,20 +273,19 @@ module Sun::Security::Jgss::Krb5
         else
           tot = ((!(header).nil? ? header.attr_length : 0) + len + (!(trailer).nil? ? trailer.attr_length : 0))
           buffer = Array.typed(::Java::Byte).new(tot) { 0 }
-          pos_ = 0
+          pos = 0
           if (!(header).nil?)
             System.arraycopy(header, 0, buffer, 0, header.attr_length)
-            pos_ = header.attr_length
+            pos = header.attr_length
           end
-          System.arraycopy(data, start, buffer, pos_, len)
-          pos_ += len
+          System.arraycopy(data, start, buffer, pos, len)
+          pos += len
           if (!(trailer).nil?)
-            System.arraycopy(trailer, 0, buffer, pos_, trailer.attr_length)
+            System.arraycopy(trailer, 0, buffer, pos, trailer.attr_length)
           end
           off = 0
         end
         begin
-          # 
           # Krb5Token.debug("\nkeybytes: " +
           # Krb5Token.getHexBytes(keybytes));
           # Krb5Token.debug("\nheader: " + (header == null ? "NONE" :
@@ -320,36 +315,35 @@ module Sun::Security::Jgss::Krb5
           # Krb5Token.getHexBytes(output));
           return output
         rescue GeneralSecurityException => e
-          ge__ = GSSException.new(GSSException::FAILURE, -1, "Could not use HMAC_MD5_ARCFOUR signing algorithm - " + (e__.get_message).to_s)
-          ge__.init_cause(e__)
-          raise ge__
+          ge = GSSException.new(GSSException::FAILURE, -1, "Could not use HMAC_MD5_ARCFOUR signing algorithm - " + (e.get_message).to_s)
+          ge.init_cause(e)
+          raise ge
         end
         raise GSSException.new(GSSException::FAILURE, -1, "Unsupported signing algorithm: " + (@sgn_alg).to_s)
       when MessageToken::SGN_ALG_HMAC_MD5_ARCFOUR
-        buffer_ = nil
-        off_ = 0
-        tot_ = 0
+        buffer = nil
+        off = 0
+        tot = 0
         if ((header).nil? && (trailer).nil?)
-          buffer_ = data
-          tot_ = len
-          off_ = start
+          buffer = data
+          tot = len
+          off = start
         else
-          tot_ = ((!(header).nil? ? header.attr_length : 0) + len + (!(trailer).nil? ? trailer.attr_length : 0))
-          buffer_ = Array.typed(::Java::Byte).new(tot_) { 0 }
-          pos__ = 0
+          tot = ((!(header).nil? ? header.attr_length : 0) + len + (!(trailer).nil? ? trailer.attr_length : 0))
+          buffer = Array.typed(::Java::Byte).new(tot) { 0 }
+          pos = 0
           if (!(header).nil?)
-            System.arraycopy(header, 0, buffer_, 0, header.attr_length)
-            pos__ = header.attr_length
+            System.arraycopy(header, 0, buffer, 0, header.attr_length)
+            pos = header.attr_length
           end
-          System.arraycopy(data, start, buffer_, pos__, len)
-          pos__ += len
+          System.arraycopy(data, start, buffer, pos, len)
+          pos += len
           if (!(trailer).nil?)
-            System.arraycopy(trailer, 0, buffer_, pos__, trailer.attr_length)
+            System.arraycopy(trailer, 0, buffer, pos, trailer.attr_length)
           end
-          off_ = 0
+          off = 0
         end
         begin
-          # 
           # Krb5Token.debug("\nkeybytes: " +
           # Krb5Token.getHexBytes(keybytes));
           # Krb5Token.debug("\nheader: " + (header == null ? "NONE" :
@@ -365,23 +359,23 @@ module Sun::Security::Jgss::Krb5
           # NOTE: Required for interoperability. The RC4-HMAC spec
           # defines key_usage of 23, however all Kerberos impl.
           # MS/Solaris/MIT all use key_usage of 15 for MIC tokens
-          key_usage_ = KG_USAGE_SIGN
+          key_usage = KG_USAGE_SIGN
           if ((token_id).equal?(Krb5Token::MIC_ID))
-            key_usage_ = KG_USAGE_SIGN_MS
+            key_usage = KG_USAGE_SIGN_MS
           end
-          answer__ = ArcFourHmac.calculate_checksum(@keybytes, key_usage_, buffer_, off_, tot_)
+          answer = ArcFourHmac.calculate_checksum(@keybytes, key_usage, buffer, off, tot)
           # Krb5Token.debug("\nanswer: " +
           # Krb5Token.getHexBytes(answer));
           # Save first 8 octets of HMAC Sgn_Cksum
-          output_ = Array.typed(::Java::Byte).new(get_checksum_length) { 0 }
-          System.arraycopy(answer__, 0, output_, 0, output_.attr_length)
+          output = Array.typed(::Java::Byte).new(get_checksum_length) { 0 }
+          System.arraycopy(answer, 0, output, 0, output.attr_length)
           # Krb5Token.debug("\nanswer (trimmed): " +
           # Krb5Token.getHexBytes(output));
-          return output_
+          return output
         rescue GeneralSecurityException => e
-          ge___ = GSSException.new(GSSException::FAILURE, -1, "Could not use HMAC_MD5_ARCFOUR signing algorithm - " + (e___.get_message).to_s)
-          ge___.init_cause(e___)
-          raise ge___
+          ge = GSSException.new(GSSException::FAILURE, -1, "Could not use HMAC_MD5_ARCFOUR signing algorithm - " + (e.get_message).to_s)
+          ge.init_cause(e)
+          raise ge
         end
         raise GSSException.new(GSSException::FAILURE, -1, "Unsupported signing algorithm: " + (@sgn_alg).to_s)
       else
@@ -422,21 +416,21 @@ module Sun::Security::Jgss::Krb5
           # Krb5Token.getHexBytes(answer));
           return answer_
         rescue GeneralSecurityException => e
-          ge_ = GSSException.new(GSSException::FAILURE, -1, "Could not use AES256 signing algorithm - " + (e_.get_message).to_s)
-          ge_.init_cause(e_)
-          raise ge_
+          ge = GSSException.new(GSSException::FAILURE, -1, "Could not use AES256 signing algorithm - " + (e.get_message).to_s)
+          ge.init_cause(e)
+          raise ge
         end
         raise GSSException.new(GSSException::FAILURE, -1, "Unsupported encryption type: " + (@etype).to_s)
       when EncryptedData::ETYPE_AES256_CTS_HMAC_SHA1_96
         begin
-          answer__ = Aes256.calculate_checksum(@keybytes, key_usage, buf, 0, total)
+          answer = Aes256.calculate_checksum(@keybytes, key_usage, buf, 0, total)
           # Krb5Token.debug("\nAES256 checksum: " +
           # Krb5Token.getHexBytes(answer));
-          return answer__
+          return answer
         rescue GeneralSecurityException => e
-          ge__ = GSSException.new(GSSException::FAILURE, -1, "Could not use AES256 signing algorithm - " + (e__.get_message).to_s)
-          ge__.init_cause(e__)
-          raise ge__
+          ge = GSSException.new(GSSException::FAILURE, -1, "Could not use AES256 signing algorithm - " + (e.get_message).to_s)
+          ge.init_cause(e)
+          raise ge
         end
         raise GSSException.new(GSSException::FAILURE, -1, "Unsupported encryption type: " + (@etype).to_s)
       else
@@ -467,9 +461,9 @@ module Sun::Security::Jgss::Krb5
           return Des3.encrypt_raw(@keybytes, KG_USAGE_SEQ, iv, plaintext, start, len)
         rescue Exception => e
           # GeneralSecurityException, KrbCryptoException
-          ge_ = GSSException.new(GSSException::FAILURE, -1, "Could not encrypt sequence number using DES3-KD - " + (e_.get_message).to_s)
-          ge_.init_cause(e_)
-          raise ge_
+          ge = GSSException.new(GSSException::FAILURE, -1, "Could not encrypt sequence number using DES3-KD - " + (e.get_message).to_s)
+          ge.init_cause(e)
+          raise ge
         end
         # ivec passed is the checksum
         checksum = nil
@@ -483,60 +477,60 @@ module Sun::Security::Jgss::Krb5
           return ArcFourHmac.encrypt_seq(@keybytes, KG_USAGE_SEQ, checksum, plaintext, start, len)
         rescue Exception => e
           # GeneralSecurityException, KrbCryptoException
-          ge__ = GSSException.new(GSSException::FAILURE, -1, "Could not encrypt sequence number using RC4-HMAC - " + (e__.get_message).to_s)
-          ge__.init_cause(e__)
-          raise ge__
+          ge = GSSException.new(GSSException::FAILURE, -1, "Could not encrypt sequence number using RC4-HMAC - " + (e.get_message).to_s)
+          ge.init_cause(e)
+          raise ge
         end
         raise GSSException.new(GSSException::FAILURE, -1, "Unsupported signing algorithm: " + (@sgn_alg).to_s)
       when MessageToken::SGN_ALG_HMAC_SHA1_DES3_KD
-        iv_ = nil
+        iv = nil
         if ((ivec.attr_length).equal?(DES_IV_SIZE))
-          iv_ = ivec
+          iv = ivec
         else
-          iv_ = Array.typed(::Java::Byte).new(DES_IV_SIZE) { 0 }
-          System.arraycopy(ivec, 0, iv_, 0, DES_IV_SIZE)
+          iv = Array.typed(::Java::Byte).new(DES_IV_SIZE) { 0 }
+          System.arraycopy(ivec, 0, iv, 0, DES_IV_SIZE)
         end
         begin
-          return Des3.encrypt_raw(@keybytes, KG_USAGE_SEQ, iv_, plaintext, start, len)
+          return Des3.encrypt_raw(@keybytes, KG_USAGE_SEQ, iv, plaintext, start, len)
         rescue Exception => e
           # GeneralSecurityException, KrbCryptoException
-          ge___ = GSSException.new(GSSException::FAILURE, -1, "Could not encrypt sequence number using DES3-KD - " + (e___.get_message).to_s)
-          ge___.init_cause(e___)
-          raise ge___
+          ge = GSSException.new(GSSException::FAILURE, -1, "Could not encrypt sequence number using DES3-KD - " + (e.get_message).to_s)
+          ge.init_cause(e)
+          raise ge
         end
         # ivec passed is the checksum
-        checksum_ = nil
+        checksum = nil
         if ((ivec.attr_length).equal?(HMAC_CHECKSUM_SIZE))
-          checksum_ = ivec
+          checksum = ivec
         else
-          checksum_ = Array.typed(::Java::Byte).new(HMAC_CHECKSUM_SIZE) { 0 }
-          System.arraycopy(ivec, 0, checksum_, 0, HMAC_CHECKSUM_SIZE)
+          checksum = Array.typed(::Java::Byte).new(HMAC_CHECKSUM_SIZE) { 0 }
+          System.arraycopy(ivec, 0, checksum, 0, HMAC_CHECKSUM_SIZE)
         end
         begin
-          return ArcFourHmac.encrypt_seq(@keybytes, KG_USAGE_SEQ, checksum_, plaintext, start, len)
+          return ArcFourHmac.encrypt_seq(@keybytes, KG_USAGE_SEQ, checksum, plaintext, start, len)
         rescue Exception => e
           # GeneralSecurityException, KrbCryptoException
-          ge____ = GSSException.new(GSSException::FAILURE, -1, "Could not encrypt sequence number using RC4-HMAC - " + (e____.get_message).to_s)
-          ge____.init_cause(e____)
-          raise ge____
+          ge = GSSException.new(GSSException::FAILURE, -1, "Could not encrypt sequence number using RC4-HMAC - " + (e.get_message).to_s)
+          ge.init_cause(e)
+          raise ge
         end
         raise GSSException.new(GSSException::FAILURE, -1, "Unsupported signing algorithm: " + (@sgn_alg).to_s)
       when MessageToken::SGN_ALG_HMAC_MD5_ARCFOUR
         # ivec passed is the checksum
-        checksum__ = nil
+        checksum = nil
         if ((ivec.attr_length).equal?(HMAC_CHECKSUM_SIZE))
-          checksum__ = ivec
+          checksum = ivec
         else
-          checksum__ = Array.typed(::Java::Byte).new(HMAC_CHECKSUM_SIZE) { 0 }
-          System.arraycopy(ivec, 0, checksum__, 0, HMAC_CHECKSUM_SIZE)
+          checksum = Array.typed(::Java::Byte).new(HMAC_CHECKSUM_SIZE) { 0 }
+          System.arraycopy(ivec, 0, checksum, 0, HMAC_CHECKSUM_SIZE)
         end
         begin
-          return ArcFourHmac.encrypt_seq(@keybytes, KG_USAGE_SEQ, checksum__, plaintext, start, len)
+          return ArcFourHmac.encrypt_seq(@keybytes, KG_USAGE_SEQ, checksum, plaintext, start, len)
         rescue Exception => e
           # GeneralSecurityException, KrbCryptoException
-          ge_____ = GSSException.new(GSSException::FAILURE, -1, "Could not encrypt sequence number using RC4-HMAC - " + (e_____.get_message).to_s)
-          ge_____.init_cause(e_____)
-          raise ge_____
+          ge = GSSException.new(GSSException::FAILURE, -1, "Could not encrypt sequence number using RC4-HMAC - " + (e.get_message).to_s)
+          ge.init_cause(e)
+          raise ge
         end
         raise GSSException.new(GSSException::FAILURE, -1, "Unsupported signing algorithm: " + (@sgn_alg).to_s)
       else
@@ -567,9 +561,9 @@ module Sun::Security::Jgss::Krb5
           return Des3.decrypt_raw(@keybytes, KG_USAGE_SEQ, iv, ciphertext, start, len)
         rescue Exception => e
           # GeneralSecurityException, KrbCryptoException
-          ge_ = GSSException.new(GSSException::FAILURE, -1, "Could not decrypt sequence number using DES3-KD - " + (e_.get_message).to_s)
-          ge_.init_cause(e_)
-          raise ge_
+          ge = GSSException.new(GSSException::FAILURE, -1, "Could not decrypt sequence number using DES3-KD - " + (e.get_message).to_s)
+          ge.init_cause(e)
+          raise ge
         end
         # ivec passed is the checksum
         checksum = nil
@@ -583,60 +577,60 @@ module Sun::Security::Jgss::Krb5
           return ArcFourHmac.decrypt_seq(@keybytes, KG_USAGE_SEQ, checksum, ciphertext, start, len)
         rescue Exception => e
           # GeneralSecurityException, KrbCryptoException
-          ge__ = GSSException.new(GSSException::FAILURE, -1, "Could not decrypt sequence number using RC4-HMAC - " + (e__.get_message).to_s)
-          ge__.init_cause(e__)
-          raise ge__
+          ge = GSSException.new(GSSException::FAILURE, -1, "Could not decrypt sequence number using RC4-HMAC - " + (e.get_message).to_s)
+          ge.init_cause(e)
+          raise ge
         end
         raise GSSException.new(GSSException::FAILURE, -1, "Unsupported signing algorithm: " + (@sgn_alg).to_s)
       when MessageToken::SGN_ALG_HMAC_SHA1_DES3_KD
-        iv_ = nil
+        iv = nil
         if ((ivec.attr_length).equal?(DES_IV_SIZE))
-          iv_ = ivec
+          iv = ivec
         else
-          iv_ = Array.typed(::Java::Byte).new(8) { 0 }
-          System.arraycopy(ivec, 0, iv_, 0, DES_IV_SIZE)
+          iv = Array.typed(::Java::Byte).new(8) { 0 }
+          System.arraycopy(ivec, 0, iv, 0, DES_IV_SIZE)
         end
         begin
-          return Des3.decrypt_raw(@keybytes, KG_USAGE_SEQ, iv_, ciphertext, start, len)
+          return Des3.decrypt_raw(@keybytes, KG_USAGE_SEQ, iv, ciphertext, start, len)
         rescue Exception => e
           # GeneralSecurityException, KrbCryptoException
-          ge___ = GSSException.new(GSSException::FAILURE, -1, "Could not decrypt sequence number using DES3-KD - " + (e___.get_message).to_s)
-          ge___.init_cause(e___)
-          raise ge___
+          ge = GSSException.new(GSSException::FAILURE, -1, "Could not decrypt sequence number using DES3-KD - " + (e.get_message).to_s)
+          ge.init_cause(e)
+          raise ge
         end
         # ivec passed is the checksum
-        checksum_ = nil
+        checksum = nil
         if ((ivec.attr_length).equal?(HMAC_CHECKSUM_SIZE))
-          checksum_ = ivec
+          checksum = ivec
         else
-          checksum_ = Array.typed(::Java::Byte).new(HMAC_CHECKSUM_SIZE) { 0 }
-          System.arraycopy(ivec, 0, checksum_, 0, HMAC_CHECKSUM_SIZE)
+          checksum = Array.typed(::Java::Byte).new(HMAC_CHECKSUM_SIZE) { 0 }
+          System.arraycopy(ivec, 0, checksum, 0, HMAC_CHECKSUM_SIZE)
         end
         begin
-          return ArcFourHmac.decrypt_seq(@keybytes, KG_USAGE_SEQ, checksum_, ciphertext, start, len)
+          return ArcFourHmac.decrypt_seq(@keybytes, KG_USAGE_SEQ, checksum, ciphertext, start, len)
         rescue Exception => e
           # GeneralSecurityException, KrbCryptoException
-          ge____ = GSSException.new(GSSException::FAILURE, -1, "Could not decrypt sequence number using RC4-HMAC - " + (e____.get_message).to_s)
-          ge____.init_cause(e____)
-          raise ge____
+          ge = GSSException.new(GSSException::FAILURE, -1, "Could not decrypt sequence number using RC4-HMAC - " + (e.get_message).to_s)
+          ge.init_cause(e)
+          raise ge
         end
         raise GSSException.new(GSSException::FAILURE, -1, "Unsupported signing algorithm: " + (@sgn_alg).to_s)
       when MessageToken::SGN_ALG_HMAC_MD5_ARCFOUR
         # ivec passed is the checksum
-        checksum__ = nil
+        checksum = nil
         if ((ivec.attr_length).equal?(HMAC_CHECKSUM_SIZE))
-          checksum__ = ivec
+          checksum = ivec
         else
-          checksum__ = Array.typed(::Java::Byte).new(HMAC_CHECKSUM_SIZE) { 0 }
-          System.arraycopy(ivec, 0, checksum__, 0, HMAC_CHECKSUM_SIZE)
+          checksum = Array.typed(::Java::Byte).new(HMAC_CHECKSUM_SIZE) { 0 }
+          System.arraycopy(ivec, 0, checksum, 0, HMAC_CHECKSUM_SIZE)
         end
         begin
-          return ArcFourHmac.decrypt_seq(@keybytes, KG_USAGE_SEQ, checksum__, ciphertext, start, len)
+          return ArcFourHmac.decrypt_seq(@keybytes, KG_USAGE_SEQ, checksum, ciphertext, start, len)
         rescue Exception => e
           # GeneralSecurityException, KrbCryptoException
-          ge_____ = GSSException.new(GSSException::FAILURE, -1, "Could not decrypt sequence number using RC4-HMAC - " + (e_____.get_message).to_s)
-          ge_____.init_cause(e_____)
-          raise ge_____
+          ge = GSSException.new(GSSException::FAILURE, -1, "Could not decrypt sequence number using RC4-HMAC - " + (e.get_message).to_s)
+          ge.init_cause(e)
+          raise ge
         end
         raise GSSException.new(GSSException::FAILURE, -1, "Unsupported signing algorithm: " + (@sgn_alg).to_s)
       else
@@ -665,7 +659,6 @@ module Sun::Security::Jgss::Krb5
     
     typesig { [WrapToken, Array.typed(::Java::Byte), ::Java::Int, ::Java::Int, Array.typed(::Java::Byte), ::Java::Int] }
     def decrypt_data(token, ciphertext, c_start, c_len, plaintext, p_start)
-      # 
       # Krb5Token.debug("decryptData : ciphertext =  " +
       # Krb5Token.getHexBytes(ciphertext));
       case (@seal_alg)
@@ -683,7 +676,6 @@ module Sun::Security::Jgss::Krb5
     typesig { [WrapToken_v2, Array.typed(::Java::Byte), ::Java::Int, ::Java::Int, Array.typed(::Java::Byte), ::Java::Int, ::Java::Int] }
     # decrypt data in the new GSS tokens
     def decrypt_data(token, ciphertext, c_start, c_len, plaintext, p_start, key_usage)
-      # 
       # Krb5Token.debug("decryptData : ciphertext =  " +
       # Krb5Token.getHexBytes(ciphertext));
       case (@etype)
@@ -718,9 +710,9 @@ module Sun::Security::Jgss::Krb5
         begin
           Krb5Token.read_fully(cipher_stream, ctext, 0, c_len)
         rescue IOException => e
-          ge_ = GSSException.new(GSSException::DEFECTIVE_TOKEN, -1, "Cannot read complete token")
-          ge_.init_cause(e_)
-          raise ge_
+          ge = GSSException.new(GSSException::DEFECTIVE_TOKEN, -1, "Cannot read complete token")
+          ge.init_cause(e)
+          raise ge
         end
         arc_four_decrypt(token, ctext, 0, c_len, plaintext, p_start)
       else
@@ -776,7 +768,6 @@ module Sun::Security::Jgss::Krb5
     end
     
     typesig { [WrapToken_v2, Array.typed(::Java::Byte), Array.typed(::Java::Byte), Array.typed(::Java::Byte), ::Java::Int, ::Java::Int, ::Java::Int, OutputStream] }
-    # 
     # Encrypt data in the new GSS tokens
     # 
     # Wrap Tokens (with confidentiality)
@@ -832,7 +823,6 @@ module Sun::Security::Jgss::Krb5
     end
     
     typesig { [WrapToken_v2, Array.typed(::Java::Byte), Array.typed(::Java::Byte), Array.typed(::Java::Byte), ::Java::Int, ::Java::Int, Array.typed(::Java::Byte), ::Java::Int, ::Java::Int] }
-    # 
     # Encrypt data in the new GSS tokens
     # 
     # Wrap Tokens (with confidentiality)
@@ -872,7 +862,6 @@ module Sun::Security::Jgss::Krb5
     def get_des_cbc_checksum(key, header, data, offset, len)
       des = get_initialized_des(true, key, ZERO_IV)
       block_size = des.get_block_size
-      # 
       # Here the data need not be a multiple of the blocksize
       # (8). Encrypt and throw away results for all blocks except for
       # the very last block.
@@ -913,7 +902,6 @@ module Sun::Security::Jgss::Krb5
     end
     
     typesig { [::Java::Boolean, Array.typed(::Java::Byte), Array.typed(::Java::Byte)] }
-    # 
     # Obtains an initialized DES cipher.
     # 
     # @param encryptMode true if encryption is desired, false is decryption
@@ -935,7 +923,6 @@ module Sun::Security::Jgss::Krb5
     end
     
     typesig { [WrapToken, Array.typed(::Java::Byte), Array.typed(::Java::Byte), ::Java::Int, ::Java::Int, Array.typed(::Java::Byte), ::Java::Int] }
-    # 
     # Helper routine to decrypt fromm a byte array and write the
     # application data straight to an output array with minimal
     # buffer copies. The confounder and the padding are stored
@@ -954,7 +941,6 @@ module Sun::Security::Jgss::Krb5
       begin
         temp = 0
         des = get_initialized_des(false, key, ZERO_IV)
-        # 
         # Remove the counfounder first.
         # CONFOUNDER_SIZE is one DES block ie 8 bytes.
         temp = des.update(cipher_text, offset, WrapToken::CONFOUNDER_SIZE, token.attr_confounder)
@@ -963,7 +949,6 @@ module Sun::Security::Jgss::Krb5
         # + CONFOUNDER_SIZE);
         offset += WrapToken::CONFOUNDER_SIZE
         len -= WrapToken::CONFOUNDER_SIZE
-        # 
         # len is a multiple of 8 due to padding.
         # Decrypt all blocks directly into the output buffer except for
         # the very last block. Remove the trailing padding bytes from the
@@ -985,7 +970,6 @@ module Sun::Security::Jgss::Krb5
         final_block = Array.typed(::Java::Byte).new(block_size) { 0 }
         des.update(cipher_text, offset, block_size, final_block)
         des.do_final
-        # 
         # There is always at least one padding byte. The padding bytes
         # are all the value of the number of padding bytes.
         pad_size = final_block[block_size - 1]
@@ -1004,7 +988,6 @@ module Sun::Security::Jgss::Krb5
     end
     
     typesig { [WrapToken, Array.typed(::Java::Byte), InputStream, ::Java::Int, Array.typed(::Java::Byte), ::Java::Int] }
-    # 
     # Helper routine to decrypt from an InputStream and write the
     # application data straight to an output array with minimal
     # buffer copies. The confounder and the padding are stored
@@ -1024,7 +1007,6 @@ module Sun::Security::Jgss::Krb5
       des = get_initialized_des(false, key, ZERO_IV)
       truncated_input_stream = WrapTokenInputStream.new_local(self, is, len)
       cis = CipherInputStream.new(truncated_input_stream, des)
-      # 
       # Remove the counfounder first.
       # CONFOUNDER_SIZE is one DES block ie 8 bytes.
       temp = cis.read(token.attr_confounder)
@@ -1071,7 +1053,6 @@ module Sun::Security::Jgss::Krb5
         ge.init_cause(e)
         raise ge
       end
-      # 
       # There is always at least one padding byte. The padding bytes
       # are all the value of the number of padding bytes.
       pad_size = final_block[block_size - 1]
@@ -1087,7 +1068,6 @@ module Sun::Security::Jgss::Krb5
     class_module.module_eval {
       typesig { [Array.typed(::Java::Byte)] }
       def get_des_encryption_key(key)
-        # 
         # To meet export control requirements, double check that the
         # key being used is no longer than 64 bits.
         # 
@@ -1119,7 +1099,6 @@ module Sun::Security::Jgss::Krb5
         ge.init_cause(e)
         raise ge
       end
-      # 
       # Krb5Token.debug("\ndes3KdDecrypt in: " +
       # Krb5Token.getHexBytes(ciphertext, cStart, cLen));
       # Krb5Token.debug("\ndes3KdDecrypt plain: " +
@@ -1176,7 +1155,6 @@ module Sun::Security::Jgss::Krb5
         ge.init_cause(e)
         raise ge
       end
-      # 
       # Krb5Token.debug("\narcFourDecrypt in: " +
       # Krb5Token.getHexBytes(ciphertext, cStart, cLen));
       # Krb5Token.debug("\narcFourDecrypt plain: " +
@@ -1261,7 +1239,6 @@ module Sun::Security::Jgss::Krb5
         ge.init_cause(e)
         raise ge
       end
-      # 
       # Krb5Token.debug("\naes128Decrypt in: " +
       # Krb5Token.getHexBytes(ciphertext, cStart, cLen));
       # Krb5Token.debug("\naes128Decrypt plain: " +
@@ -1272,7 +1249,6 @@ module Sun::Security::Jgss::Krb5
       # Strip out confounder and token header
       len = ptext.attr_length - WrapToken_v2::CONFOUNDER_SIZE - WrapToken_v2::TOKEN_HEADER_SIZE
       System.arraycopy(ptext, WrapToken_v2::CONFOUNDER_SIZE, plaintext, p_start, len)
-      # 
       # Krb5Token.debug("\naes128Decrypt plaintext: " +
       # Krb5Token.getHexBytes(plaintext, pStart, len));
     end
@@ -1311,7 +1287,6 @@ module Sun::Security::Jgss::Krb5
         ge.init_cause(e)
         raise ge
       end
-      # 
       # Krb5Token.debug("\naes256Decrypt in: " +
       # Krb5Token.getHexBytes(ciphertext, cStart, cLen));
       # Krb5Token.debug("\naes256Decrypt plain: " +
@@ -1322,13 +1297,11 @@ module Sun::Security::Jgss::Krb5
       # Strip out confounder and token header
       len = ptext.attr_length - WrapToken_v2::CONFOUNDER_SIZE - WrapToken_v2::TOKEN_HEADER_SIZE
       System.arraycopy(ptext, WrapToken_v2::CONFOUNDER_SIZE, plaintext, p_start, len)
-      # 
       # Krb5Token.debug("\naes128Decrypt plaintext: " +
       # Krb5Token.getHexBytes(plaintext, pStart, len));
     end
     
     class_module.module_eval {
-      # 
       # This class provides a truncated inputstream needed by WrapToken. The
       # truncated inputstream is passed to CipherInputStream. It prevents
       # the CipherInputStream from treating the bytes of the following token

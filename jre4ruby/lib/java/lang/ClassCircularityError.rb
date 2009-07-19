@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 1995-2007 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -30,7 +29,6 @@ module Java::Lang
     }
   end
   
-  # 
   # Thrown when a circularity has been detected while initializing a class.
   # 
   # @author     unascribed
@@ -39,14 +37,12 @@ module Java::Lang
     include_class_members ClassCircularityErrorImports
     
     typesig { [] }
-    # 
     # Constructs a {@code ClassCircularityError} with no detail message.
     def initialize
       super()
     end
     
     typesig { [String] }
-    # 
     # Constructs a {@code ClassCircularityError} with the specified detail
     # message.
     # 

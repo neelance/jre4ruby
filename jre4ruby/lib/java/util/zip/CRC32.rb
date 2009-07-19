@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 1996-2005 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -31,7 +30,6 @@ module Java::Util::Zip
     }
   end
   
-  # 
   # A class that can be used to compute the CRC-32 of a data stream.
   # 
   # @see         Checksum
@@ -47,21 +45,18 @@ module Java::Util::Zip
     undef_method :crc=
     
     typesig { [] }
-    # 
     # Creates a new CRC32 object.
     def initialize
       @crc = 0
     end
     
     typesig { [::Java::Int] }
-    # 
     # Updates CRC-32 with specified byte.
     def update(b)
       @crc = update(@crc, b)
     end
     
     typesig { [Array.typed(::Java::Byte), ::Java::Int, ::Java::Int] }
-    # 
     # Updates CRC-32 with specified array of bytes.
     def update(b, off, len)
       if ((b).nil?)
@@ -74,7 +69,6 @@ module Java::Util::Zip
     end
     
     typesig { [Array.typed(::Java::Byte)] }
-    # 
     # Updates checksum with specified array of bytes.
     # 
     # @param b the array of bytes to update the checksum with
@@ -83,14 +77,12 @@ module Java::Util::Zip
     end
     
     typesig { [] }
-    # 
     # Resets CRC-32 to initial value.
     def reset
       @crc = 0
     end
     
     typesig { [] }
-    # 
     # Returns CRC-32 value.
     def get_value
       return @crc & 0xffffffff

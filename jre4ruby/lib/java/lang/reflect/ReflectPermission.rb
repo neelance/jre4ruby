@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 1997-2004 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -31,7 +30,6 @@ module Java::Lang::Reflect
     }
   end
   
-  # 
   # The Permission class for reflective operations.  A
   # ReflectPermission is a <em>named permission</em> and has no
   # actions.  The only name currently defined is {@code suppressAccessChecks},
@@ -80,7 +78,6 @@ module Java::Lang::Reflect
     }
     
     typesig { [String] }
-    # 
     # Constructs a ReflectPermission with the specified name.
     # 
     # @param name the name of the ReflectPermission
@@ -92,7 +89,6 @@ module Java::Lang::Reflect
     end
     
     typesig { [String, String] }
-    # 
     # Constructs a ReflectPermission with the specified name and actions.
     # The actions should be null; they are ignored.
     # 

@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Portions Copyright 2003-2005 Sun Microsystems, Inc.  All Rights Reserved.
 # 
 # Copyright  (c) 2002 Graz University of Technology. All rights reserved.
@@ -57,7 +56,6 @@ module Sun::Security::Pkcs11::Wrapper
     }
   end
   
-  # 
   # This is the default implementation of the PKCS11 interface. IT connects to
   # the pkcs11wrapper.dll file, which is the native part of this library.
   # The strange and awkward looking initialization was chosen to avoid calling
@@ -71,7 +69,6 @@ module Sun::Security::Pkcs11::Wrapper
     include_class_members PKCS11Imports
     
     class_module.module_eval {
-      # 
       # The name of the native part of the wrapper; i.e. the filename without
       # the extension (e.g. ".DLL" or ".so").
       const_set_lazy(:PKCS11_WRAPPER) { "j2pkcs11" }
@@ -111,7 +108,6 @@ module Sun::Security::Pkcs11::Wrapper
       end
     }
     
-    # 
     # The PKCS#11 module to connect to. This is the PKCS#11 driver of the token;
     # e.g. pk2priv.dll.
     attr_accessor :pkcs11module_path
@@ -129,7 +125,6 @@ module Sun::Security::Pkcs11::Wrapper
     class_module.module_eval {
       JNI.native_method :Java_sun_security_pkcs11_wrapper_PKCS11_initializeLibrary, [:pointer, :long], :void
       typesig { [] }
-      # 
       # This method does the initialization of the native library. It is called
       # exactly once for this class.
       # 
@@ -158,7 +153,6 @@ module Sun::Security::Pkcs11::Wrapper
     }
     
     typesig { [String, String] }
-    # 
     # Connects to the PKCS#11 driver given. The filename must contain the
     # path, if the driver is not in the system's search path.
     # 
@@ -205,7 +199,6 @@ module Sun::Security::Pkcs11::Wrapper
     
     JNI.native_method :Java_sun_security_pkcs11_wrapper_PKCS11_connect, [:pointer, :long, :long, :long], :void
     typesig { [String, String] }
-    # 
     # Connects this object to the specified PKCS#11 library. This method is for
     # internal use only.
     # Declared private, because incorrect handling may result in errors in the
@@ -220,7 +213,6 @@ module Sun::Security::Pkcs11::Wrapper
     
     JNI.native_method :Java_sun_security_pkcs11_wrapper_PKCS11_disconnect, [:pointer, :long], :void
     typesig { [] }
-    # 
     # Disconnects the PKCS#11 library from this object. After calling this
     # method, this object is no longer connected to a native PKCS#11 module
     # and any subsequent calls to C_ methods will fail. This method is for
@@ -256,7 +248,6 @@ module Sun::Security::Pkcs11::Wrapper
     
     JNI.native_method :Java_sun_security_pkcs11_wrapper_PKCS11_C_1Finalize, [:pointer, :long, :long], :void
     typesig { [Object] }
-    # 
     # C_Finalize indicates that an application is done with the
     # Cryptoki library
     # (General-purpose)
@@ -272,7 +263,6 @@ module Sun::Security::Pkcs11::Wrapper
     
     JNI.native_method :Java_sun_security_pkcs11_wrapper_PKCS11_C_1GetInfo, [:pointer, :long], :long
     typesig { [] }
-    # 
     # C_GetInfo returns general information about Cryptoki.
     # (General-purpose)
     # 
@@ -307,7 +297,6 @@ module Sun::Security::Pkcs11::Wrapper
     
     JNI.native_method :Java_sun_security_pkcs11_wrapper_PKCS11_C_1GetSlotInfo, [:pointer, :long, :int64], :long
     typesig { [::Java::Long] }
-    # 
     # C_GetSlotInfo obtains information about a particular slot in
     # the system.
     # (Slot and token management)
@@ -325,7 +314,6 @@ module Sun::Security::Pkcs11::Wrapper
     
     JNI.native_method :Java_sun_security_pkcs11_wrapper_PKCS11_C_1GetTokenInfo, [:pointer, :long, :int64], :long
     typesig { [::Java::Long] }
-    # 
     # C_GetTokenInfo obtains information about a particular token
     # in the system.
     # (Slot and token management)
@@ -343,7 +331,6 @@ module Sun::Security::Pkcs11::Wrapper
     
     JNI.native_method :Java_sun_security_pkcs11_wrapper_PKCS11_C_1GetMechanismList, [:pointer, :long, :int64], :long
     typesig { [::Java::Long] }
-    # 
     # C_GetMechanismList obtains a list of mechanism types
     # supported by a token.
     # (Slot and token management)
@@ -362,7 +349,6 @@ module Sun::Security::Pkcs11::Wrapper
     
     JNI.native_method :Java_sun_security_pkcs11_wrapper_PKCS11_C_1GetMechanismInfo, [:pointer, :long, :int64, :int64], :long
     typesig { [::Java::Long, ::Java::Long] }
-    # 
     # C_GetMechanismInfo obtains information about a particular
     # mechanism possibly supported by a token.
     # (Slot and token management)
@@ -382,7 +368,6 @@ module Sun::Security::Pkcs11::Wrapper
     
     JNI.native_method :Java_sun_security_pkcs11_wrapper_PKCS11_C_1OpenSession, [:pointer, :long, :int64, :int64, :long, :long], :int64
     typesig { [::Java::Long, ::Java::Long, Object, CK_NOTIFY] }
-    # 
     # C_InitToken initializes a token.
     # (Slot and token management)
     # 
@@ -452,7 +437,6 @@ module Sun::Security::Pkcs11::Wrapper
     
     JNI.native_method :Java_sun_security_pkcs11_wrapper_PKCS11_C_1CloseSession, [:pointer, :long, :int64], :void
     typesig { [::Java::Long] }
-    # 
     # C_CloseSession closes a session between an application and a
     # token.
     # (Session management)
@@ -468,7 +452,6 @@ module Sun::Security::Pkcs11::Wrapper
     
     JNI.native_method :Java_sun_security_pkcs11_wrapper_PKCS11_C_1GetSessionInfo, [:pointer, :long, :int64], :long
     typesig { [::Java::Long] }
-    # 
     # C_CloseAllSessions closes all sessions with a token.
     # (Session management)
     # 
@@ -496,7 +479,6 @@ module Sun::Security::Pkcs11::Wrapper
     
     JNI.native_method :Java_sun_security_pkcs11_wrapper_PKCS11_C_1Login, [:pointer, :long, :int64, :int64, :long], :void
     typesig { [::Java::Long, ::Java::Long, Array.typed(::Java::Char)] }
-    # 
     # C_GetOperationState obtains the state of the cryptographic operation
     # in a session.
     # (Session management)
@@ -549,7 +531,6 @@ module Sun::Security::Pkcs11::Wrapper
     
     JNI.native_method :Java_sun_security_pkcs11_wrapper_PKCS11_C_1Logout, [:pointer, :long, :int64], :void
     typesig { [::Java::Long] }
-    # 
     # C_Logout logs a user out from a token.
     # (Session management)
     # 
@@ -587,7 +568,6 @@ module Sun::Security::Pkcs11::Wrapper
     
     JNI.native_method :Java_sun_security_pkcs11_wrapper_PKCS11_C_1CopyObject, [:pointer, :long, :int64, :int64, :long], :int64
     typesig { [::Java::Long, ::Java::Long, Array.typed(CK_ATTRIBUTE)] }
-    # 
     # C_CopyObject copies an object, creating a new object for the
     # copy.
     # (Object management)
@@ -610,7 +590,6 @@ module Sun::Security::Pkcs11::Wrapper
     
     JNI.native_method :Java_sun_security_pkcs11_wrapper_PKCS11_C_1DestroyObject, [:pointer, :long, :int64, :int64], :void
     typesig { [::Java::Long, ::Java::Long] }
-    # 
     # C_DestroyObject destroys an object.
     # (Object management)
     # 
@@ -627,7 +606,6 @@ module Sun::Security::Pkcs11::Wrapper
     
     JNI.native_method :Java_sun_security_pkcs11_wrapper_PKCS11_C_1GetAttributeValue, [:pointer, :long, :int64, :int64, :long], :void
     typesig { [::Java::Long, ::Java::Long, Array.typed(CK_ATTRIBUTE)] }
-    # 
     # C_GetObjectSize gets the size of an object in bytes.
     # (Object management)
     # 
@@ -664,7 +642,6 @@ module Sun::Security::Pkcs11::Wrapper
     
     JNI.native_method :Java_sun_security_pkcs11_wrapper_PKCS11_C_1SetAttributeValue, [:pointer, :long, :int64, :int64, :long], :void
     typesig { [::Java::Long, ::Java::Long, Array.typed(CK_ATTRIBUTE)] }
-    # 
     # C_SetAttributeValue modifies the value of one or more object
     # attributes
     # (Object management)
@@ -685,7 +662,6 @@ module Sun::Security::Pkcs11::Wrapper
     
     JNI.native_method :Java_sun_security_pkcs11_wrapper_PKCS11_C_1FindObjectsInit, [:pointer, :long, :int64, :long], :void
     typesig { [::Java::Long, Array.typed(CK_ATTRIBUTE)] }
-    # 
     # C_FindObjectsInit initializes a search for token and session
     # objects that match a template.
     # (Object management)
@@ -704,7 +680,6 @@ module Sun::Security::Pkcs11::Wrapper
     
     JNI.native_method :Java_sun_security_pkcs11_wrapper_PKCS11_C_1FindObjects, [:pointer, :long, :int64, :int64], :long
     typesig { [::Java::Long, ::Java::Long] }
-    # 
     # C_FindObjects continues a search for token and session
     # objects that match a template, obtaining additional object
     # handles.
@@ -725,7 +700,6 @@ module Sun::Security::Pkcs11::Wrapper
     
     JNI.native_method :Java_sun_security_pkcs11_wrapper_PKCS11_C_1FindObjectsFinal, [:pointer, :long, :int64], :void
     typesig { [::Java::Long] }
-    # 
     # C_FindObjectsFinal finishes a search for token and session
     # objects.
     # (Object management)
@@ -763,7 +737,6 @@ module Sun::Security::Pkcs11::Wrapper
     
     JNI.native_method :Java_sun_security_pkcs11_wrapper_PKCS11_C_1Encrypt, [:pointer, :long, :int64, :long, :int32, :int32, :long, :int32, :int32], :int32
     typesig { [::Java::Long, Array.typed(::Java::Byte), ::Java::Int, ::Java::Int, Array.typed(::Java::Byte), ::Java::Int, ::Java::Int] }
-    # 
     # C_Encrypt encrypts single-part data.
     # (Encryption and decryption)
     # 
@@ -783,7 +756,6 @@ module Sun::Security::Pkcs11::Wrapper
     
     JNI.native_method :Java_sun_security_pkcs11_wrapper_PKCS11_C_1EncryptUpdate, [:pointer, :long, :int64, :int64, :long, :int32, :int32, :int64, :long, :int32, :int32], :int32
     typesig { [::Java::Long, ::Java::Long, Array.typed(::Java::Byte), ::Java::Int, ::Java::Int, ::Java::Long, Array.typed(::Java::Byte), ::Java::Int, ::Java::Int] }
-    # 
     # C_EncryptUpdate continues a multiple-part encryption
     # operation.
     # (Encryption and decryption)
@@ -804,7 +776,6 @@ module Sun::Security::Pkcs11::Wrapper
     
     JNI.native_method :Java_sun_security_pkcs11_wrapper_PKCS11_C_1EncryptFinal, [:pointer, :long, :int64, :int64, :long, :int32, :int32], :int32
     typesig { [::Java::Long, ::Java::Long, Array.typed(::Java::Byte), ::Java::Int, ::Java::Int] }
-    # 
     # C_EncryptFinal finishes a multiple-part encryption
     # operation.
     # (Encryption and decryption)
@@ -823,7 +794,6 @@ module Sun::Security::Pkcs11::Wrapper
     
     JNI.native_method :Java_sun_security_pkcs11_wrapper_PKCS11_C_1DecryptInit, [:pointer, :long, :int64, :long, :int64], :void
     typesig { [::Java::Long, CK_MECHANISM, ::Java::Long] }
-    # 
     # C_DecryptInit initializes a decryption operation.
     # (Encryption and decryption)
     # 
@@ -842,7 +812,6 @@ module Sun::Security::Pkcs11::Wrapper
     
     JNI.native_method :Java_sun_security_pkcs11_wrapper_PKCS11_C_1Decrypt, [:pointer, :long, :int64, :long, :int32, :int32, :long, :int32, :int32], :int32
     typesig { [::Java::Long, Array.typed(::Java::Byte), ::Java::Int, ::Java::Int, Array.typed(::Java::Byte), ::Java::Int, ::Java::Int] }
-    # 
     # C_Decrypt decrypts encrypted data in a single part.
     # (Encryption and decryption)
     # 
@@ -863,7 +832,6 @@ module Sun::Security::Pkcs11::Wrapper
     
     JNI.native_method :Java_sun_security_pkcs11_wrapper_PKCS11_C_1DecryptUpdate, [:pointer, :long, :int64, :int64, :long, :int32, :int32, :int64, :long, :int32, :int32], :int32
     typesig { [::Java::Long, ::Java::Long, Array.typed(::Java::Byte), ::Java::Int, ::Java::Int, ::Java::Long, Array.typed(::Java::Byte), ::Java::Int, ::Java::Int] }
-    # 
     # C_DecryptUpdate continues a multiple-part decryption
     # operation.
     # (Encryption and decryption)
@@ -885,7 +853,6 @@ module Sun::Security::Pkcs11::Wrapper
     
     JNI.native_method :Java_sun_security_pkcs11_wrapper_PKCS11_C_1DecryptFinal, [:pointer, :long, :int64, :int64, :long, :int32, :int32], :int32
     typesig { [::Java::Long, ::Java::Long, Array.typed(::Java::Byte), ::Java::Int, ::Java::Int] }
-    # 
     # C_DecryptFinal finishes a multiple-part decryption
     # operation.
     # (Encryption and decryption)
@@ -947,7 +914,6 @@ module Sun::Security::Pkcs11::Wrapper
     
     JNI.native_method :Java_sun_security_pkcs11_wrapper_PKCS11_C_1DigestUpdate, [:pointer, :long, :int64, :int64, :long, :int32, :int32], :void
     typesig { [::Java::Long, ::Java::Long, Array.typed(::Java::Byte), ::Java::Int, ::Java::Int] }
-    # 
     # C_DigestUpdate continues a multiple-part message-digesting
     # operation.
     # (Message digesting)
@@ -965,7 +931,6 @@ module Sun::Security::Pkcs11::Wrapper
     
     JNI.native_method :Java_sun_security_pkcs11_wrapper_PKCS11_C_1DigestKey, [:pointer, :long, :int64, :int64], :void
     typesig { [::Java::Long, ::Java::Long] }
-    # 
     # C_DigestKey continues a multi-part message-digesting
     # operation, by digesting the value of a secret key as part of
     # the data already digested.
@@ -984,7 +949,6 @@ module Sun::Security::Pkcs11::Wrapper
     
     JNI.native_method :Java_sun_security_pkcs11_wrapper_PKCS11_C_1DigestFinal, [:pointer, :long, :int64, :long, :int32, :int32], :int32
     typesig { [::Java::Long, Array.typed(::Java::Byte), ::Java::Int, ::Java::Int] }
-    # 
     # C_DigestFinal finishes a multiple-part message-digesting
     # operation.
     # (Message digesting)
@@ -1027,7 +991,6 @@ module Sun::Security::Pkcs11::Wrapper
     
     JNI.native_method :Java_sun_security_pkcs11_wrapper_PKCS11_C_1Sign, [:pointer, :long, :int64, :long], :long
     typesig { [::Java::Long, Array.typed(::Java::Byte)] }
-    # 
     # C_Sign signs (encrypts with private key) data in a single
     # part, where the signature is (will be) an appendix to the
     # data, and plaintext cannot be recovered from the signature.
@@ -1049,7 +1012,6 @@ module Sun::Security::Pkcs11::Wrapper
     
     JNI.native_method :Java_sun_security_pkcs11_wrapper_PKCS11_C_1SignUpdate, [:pointer, :long, :int64, :int64, :long, :int32, :int32], :void
     typesig { [::Java::Long, ::Java::Long, Array.typed(::Java::Byte), ::Java::Int, ::Java::Int] }
-    # 
     # C_SignUpdate continues a multiple-part signature operation,
     # where the signature is (will be) an appendix to the data,
     # and plaintext cannot be recovered from the signature.
@@ -1068,7 +1030,6 @@ module Sun::Security::Pkcs11::Wrapper
     
     JNI.native_method :Java_sun_security_pkcs11_wrapper_PKCS11_C_1SignFinal, [:pointer, :long, :int64, :int32], :long
     typesig { [::Java::Long, ::Java::Int] }
-    # 
     # C_SignFinal finishes a multiple-part signature operation,
     # returning the signature.
     # (Signing and MACing)
@@ -1087,7 +1048,6 @@ module Sun::Security::Pkcs11::Wrapper
     
     JNI.native_method :Java_sun_security_pkcs11_wrapper_PKCS11_C_1SignRecoverInit, [:pointer, :long, :int64, :long, :int64], :void
     typesig { [::Java::Long, CK_MECHANISM, ::Java::Long] }
-    # 
     # C_SignRecoverInit initializes a signature operation, where
     # the data can be recovered from the signature.
     # (Signing and MACing)
@@ -1107,7 +1067,6 @@ module Sun::Security::Pkcs11::Wrapper
     
     JNI.native_method :Java_sun_security_pkcs11_wrapper_PKCS11_C_1SignRecover, [:pointer, :long, :int64, :long, :int32, :int32, :long, :int32, :int32], :int32
     typesig { [::Java::Long, Array.typed(::Java::Byte), ::Java::Int, ::Java::Int, Array.typed(::Java::Byte), ::Java::Int, ::Java::Int] }
-    # 
     # C_SignRecover signs data in a single operation, where the
     # data can be recovered from the signature.
     # (Signing and MACing)
@@ -1152,7 +1111,6 @@ module Sun::Security::Pkcs11::Wrapper
     
     JNI.native_method :Java_sun_security_pkcs11_wrapper_PKCS11_C_1Verify, [:pointer, :long, :int64, :long, :long], :void
     typesig { [::Java::Long, Array.typed(::Java::Byte), Array.typed(::Java::Byte)] }
-    # 
     # C_Verify verifies a signature in a single-part operation,
     # where the signature is an appendix to the data, and plaintext
     # cannot be recovered from the signature.
@@ -1173,7 +1131,6 @@ module Sun::Security::Pkcs11::Wrapper
     
     JNI.native_method :Java_sun_security_pkcs11_wrapper_PKCS11_C_1VerifyUpdate, [:pointer, :long, :int64, :int64, :long, :int32, :int32], :void
     typesig { [::Java::Long, ::Java::Long, Array.typed(::Java::Byte), ::Java::Int, ::Java::Int] }
-    # 
     # C_VerifyUpdate continues a multiple-part verification
     # operation, where the signature is an appendix to the data,
     # and plaintext cannot be recovered from the signature.
@@ -1192,7 +1149,6 @@ module Sun::Security::Pkcs11::Wrapper
     
     JNI.native_method :Java_sun_security_pkcs11_wrapper_PKCS11_C_1VerifyFinal, [:pointer, :long, :int64, :long], :void
     typesig { [::Java::Long, Array.typed(::Java::Byte)] }
-    # 
     # C_VerifyFinal finishes a multiple-part verification
     # operation, checking the signature.
     # (Signing and MACing)
@@ -1210,7 +1166,6 @@ module Sun::Security::Pkcs11::Wrapper
     
     JNI.native_method :Java_sun_security_pkcs11_wrapper_PKCS11_C_1VerifyRecoverInit, [:pointer, :long, :int64, :long, :int64], :void
     typesig { [::Java::Long, CK_MECHANISM, ::Java::Long] }
-    # 
     # C_VerifyRecoverInit initializes a signature verification
     # operation, where the data is recovered from the signature.
     # (Signing and MACing)
@@ -1230,7 +1185,6 @@ module Sun::Security::Pkcs11::Wrapper
     
     JNI.native_method :Java_sun_security_pkcs11_wrapper_PKCS11_C_1VerifyRecover, [:pointer, :long, :int64, :long, :int32, :int32, :long, :int32, :int32], :int32
     typesig { [::Java::Long, Array.typed(::Java::Byte), ::Java::Int, ::Java::Int, Array.typed(::Java::Byte), ::Java::Int, ::Java::Int] }
-    # 
     # C_VerifyRecover verifies a signature in a single-part
     # operation, where the data is recovered from the signature.
     # (Signing and MACing)
@@ -1350,7 +1304,6 @@ module Sun::Security::Pkcs11::Wrapper
     
     JNI.native_method :Java_sun_security_pkcs11_wrapper_PKCS11_C_1GenerateKeyPair, [:pointer, :long, :int64, :long, :long, :long], :long
     typesig { [::Java::Long, CK_MECHANISM, Array.typed(CK_ATTRIBUTE), Array.typed(CK_ATTRIBUTE)] }
-    # 
     # C_GenerateKeyPair generates a public-key/private-key pair,
     # creating new key objects.
     # (Key management)
@@ -1381,7 +1334,6 @@ module Sun::Security::Pkcs11::Wrapper
     
     JNI.native_method :Java_sun_security_pkcs11_wrapper_PKCS11_C_1WrapKey, [:pointer, :long, :int64, :long, :int64, :int64], :long
     typesig { [::Java::Long, CK_MECHANISM, ::Java::Long, ::Java::Long] }
-    # 
     # C_WrapKey wraps (i.e., encrypts) a key.
     # (Key management)
     # 
@@ -1405,7 +1357,6 @@ module Sun::Security::Pkcs11::Wrapper
     
     JNI.native_method :Java_sun_security_pkcs11_wrapper_PKCS11_C_1UnwrapKey, [:pointer, :long, :int64, :long, :int64, :long, :long], :int64
     typesig { [::Java::Long, CK_MECHANISM, ::Java::Long, Array.typed(::Java::Byte), Array.typed(CK_ATTRIBUTE)] }
-    # 
     # C_UnwrapKey unwraps (decrypts) a wrapped key, creating a new
     # key object.
     # (Key management)
@@ -1432,7 +1383,6 @@ module Sun::Security::Pkcs11::Wrapper
     
     JNI.native_method :Java_sun_security_pkcs11_wrapper_PKCS11_C_1DeriveKey, [:pointer, :long, :int64, :long, :int64, :long], :int64
     typesig { [::Java::Long, CK_MECHANISM, ::Java::Long, Array.typed(CK_ATTRIBUTE)] }
-    # 
     # C_DeriveKey derives a key from a base key, creating a new key
     # object.
     # (Key management)
@@ -1478,7 +1428,6 @@ module Sun::Security::Pkcs11::Wrapper
     
     JNI.native_method :Java_sun_security_pkcs11_wrapper_PKCS11_C_1GenerateRandom, [:pointer, :long, :int64, :long], :void
     typesig { [::Java::Long, Array.typed(::Java::Byte)] }
-    # 
     # C_GenerateRandom generates random data.
     # (Random number generation)
     # 
@@ -1551,7 +1500,6 @@ module Sun::Security::Pkcs11::Wrapper
     end
     
     typesig { [] }
-    # 
     # Calls disconnect() to cleanup the native part of the wrapper. Once this
     # method is called, this object cannot be used any longer. Any subsequent
     # call to a C_* method will result in a runtime exception.

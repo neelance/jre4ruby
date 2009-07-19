@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 1998-2003 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -32,7 +31,6 @@ module Java::Security::Interfaces
     }
   end
   
-  # 
   # The interface to an RSA private key.
   # 
   # @author Jan Luehe
@@ -50,7 +48,6 @@ module Java::Security::Interfaces
     }
     
     typesig { [] }
-    # 
     # Returns the private exponent.
     # 
     # @return the private exponent

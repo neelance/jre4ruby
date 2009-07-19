@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 1999-2007 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -133,7 +132,6 @@ module Sun::Security::Ssl
         end
         @secure_random = sr
       end
-      # 
       # The initial delay of seeding the random number generator
       # could be long enough to cause the initial handshake on our
       # first connection to timeout and fail. Make sure it is
@@ -282,7 +280,6 @@ module Sun::Security::Ssl
     end
     
     typesig { [Array.typed(X509Certificate), String] }
-    # 
     # Given the partial or complete certificate chain
     # provided by the peer, build a certificate path
     # to a trusted root and return if it can be
@@ -293,7 +290,6 @@ module Sun::Security::Ssl
     end
     
     typesig { [Array.typed(X509Certificate), String] }
-    # 
     # Given the partial or complete certificate chain
     # provided by the peer, build a certificate path
     # to a trusted root and return if it can be
@@ -304,7 +300,6 @@ module Sun::Security::Ssl
     end
     
     typesig { [] }
-    # 
     # Return an array of issuer certificates which are trusted
     # for authenticating peers.
     def get_accepted_issuers
@@ -386,7 +381,6 @@ module Sun::Security::Ssl
     end
     
     typesig { [String, Array.typed(Principal)] }
-    # 
     # Get the matching aliases for authenticating the client side of a secure
     # socket given the public key type and the list of
     # certificate issuer authorities recognized by the peer (if any).
@@ -395,7 +389,6 @@ module Sun::Security::Ssl
     end
     
     typesig { [Array.typed(String), Array.typed(Principal), Socket] }
-    # 
     # Choose an alias to authenticate the client side of a secure
     # socket given the public key type and the list of
     # certificate issuer authorities recognized by the peer (if any).
@@ -404,7 +397,6 @@ module Sun::Security::Ssl
     end
     
     typesig { [Array.typed(String), Array.typed(Principal), SSLEngine] }
-    # 
     # Choose an alias to authenticate the client side of an
     # engine given the public key type and the list of
     # certificate issuer authorities recognized by the peer (if any).
@@ -413,7 +405,6 @@ module Sun::Security::Ssl
     end
     
     typesig { [String, Array.typed(Principal)] }
-    # 
     # Get the matching aliases for authenticating the server side of a secure
     # socket given the public key type and the list of
     # certificate issuer authorities recognized by the peer (if any).
@@ -422,7 +413,6 @@ module Sun::Security::Ssl
     end
     
     typesig { [String, Array.typed(Principal), Socket] }
-    # 
     # Choose an alias to authenticate the server side of a secure
     # socket given the public key type and the list of
     # certificate issuer authorities recognized by the peer (if any).
@@ -431,7 +421,6 @@ module Sun::Security::Ssl
     end
     
     typesig { [String, Array.typed(Principal), SSLEngine] }
-    # 
     # Choose an alias to authenticate the server side of an engine
     # given the public key type and the list of
     # certificate issuer authorities recognized by the peer (if any).
@@ -440,7 +429,6 @@ module Sun::Security::Ssl
     end
     
     typesig { [String] }
-    # 
     # Returns the certificate chain associated with the given alias.
     # 
     # @param alias the alias name
@@ -452,7 +440,6 @@ module Sun::Security::Ssl
     end
     
     typesig { [String] }
-    # 
     # Returns the key associated with the given alias, using the given
     # password to recover it.
     # 

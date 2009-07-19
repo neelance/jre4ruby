@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 2000-2003 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -33,7 +32,6 @@ module Java::Nio::Channels
     }
   end
   
-  # 
   # A nexus for I/O operations.
   # 
   # <p> A channel represents an open connection to an entity such as a hardware
@@ -60,7 +58,6 @@ module Java::Nio::Channels
     include Closeable
     
     typesig { [] }
-    # 
     # Tells whether or not this channel is open.  </p>
     # 
     # @return <tt>true</tt> if, and only if, this channel is open
@@ -69,7 +66,6 @@ module Java::Nio::Channels
     end
     
     typesig { [] }
-    # 
     # Closes this channel.
     # 
     # <p> After a channel is closed, any further attempt to invoke I/O

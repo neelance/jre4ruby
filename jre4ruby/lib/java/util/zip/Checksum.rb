@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 1996-1999 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -31,7 +30,6 @@ module Java::Util::Zip
     }
   end
   
-  # 
   # An interface representing a data checksum.
   # 
   # @author      David Connelly
@@ -39,7 +37,6 @@ module Java::Util::Zip
     include_class_members ChecksumImports
     
     typesig { [::Java::Int] }
-    # 
     # Updates the current checksum with the specified byte.
     # 
     # @param b the byte to update the checksum with
@@ -48,7 +45,6 @@ module Java::Util::Zip
     end
     
     typesig { [Array.typed(::Java::Byte), ::Java::Int, ::Java::Int] }
-    # 
     # Updates the current checksum with the specified array of bytes.
     # @param b the byte array to update the checksum with
     # @param off the start offset of the data
@@ -58,7 +54,6 @@ module Java::Util::Zip
     end
     
     typesig { [] }
-    # 
     # Returns the current checksum value.
     # @return the current checksum value
     def get_value
@@ -66,7 +61,6 @@ module Java::Util::Zip
     end
     
     typesig { [] }
-    # 
     # Resets the checksum to its initial value.
     def reset
       raise NotImplementedError

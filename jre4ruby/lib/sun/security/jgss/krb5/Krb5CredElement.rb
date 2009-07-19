@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 2000 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -35,7 +34,6 @@ module Sun::Security::Jgss::Krb5
     }
   end
   
-  # 
   # Provides type safety for Krb5 credential elements.
   # 
   # @author Mayank Upadhyay

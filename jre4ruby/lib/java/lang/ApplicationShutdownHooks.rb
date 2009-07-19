@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 2005-2006 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -31,7 +30,6 @@ module Java::Lang
     }
   end
   
-  # 
   # Class to track and run user level shutdown hooks registered through
   # <tt>{@link Runtime#addShutdownHook Runtime.addShutdownHook}</tt>.
   # 
@@ -130,7 +128,7 @@ module Java::Lang
       end
       threads.each do |hook|
         begin
-          hook_.join
+          hook.join
         rescue InterruptedException => x
         end
       end

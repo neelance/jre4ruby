@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 1996-2006 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -41,7 +40,6 @@ module Sun::Security::X509
     }
   end
   
-  # 
   # X.500 Attribute-Value-Assertion (AVA):  an attribute, as identified by
   # some attribute ID, has some particular value.  Values are as a rule ASN.1
   # printable strings.  A conventional set of type IDs is recognized when
@@ -74,18 +72,15 @@ module Sun::Security::X509
       const_set_lazy(:PRESERVE_OLD_DC_ENCODING) { AccessController.do_privileged(GetBooleanAction.new("com.sun.security.preserveOldDCEncoding")) }
       const_attr_reader  :PRESERVE_OLD_DC_ENCODING
       
-      # 
       # DEFAULT format allows both RFC1779 and RFC2253 syntax and
       # additional keywords.
       const_set_lazy(:DEFAULT) { 1 }
       const_attr_reader  :DEFAULT
       
-      # 
       # RFC1779 specifies format according to RFC1779.
       const_set_lazy(:RFC1779) { 2 }
       const_attr_reader  :RFC1779
       
-      # 
       # RFC2253 specifies format according to RFC2253.
       const_set_lazy(:RFC2253) { 3 }
       const_attr_reader  :RFC2253
@@ -105,7 +100,6 @@ module Sun::Security::X509
     undef_method :value=
     
     class_module.module_eval {
-      # 
       # If the value has any of these characters in it, it must be quoted.
       # Backslash and quote characters must also be individually escaped.
       # Leading and trailing spaces, also multiple internal spaces, also
@@ -113,18 +107,15 @@ module Sun::Security::X509
       const_set_lazy(:SpecialChars) { ",+=\n<>#;" }
       const_attr_reader  :SpecialChars
       
-      # 
       # In RFC2253, if the value has any of these characters in it, it
       # must be quoted by a preceding \.
       const_set_lazy(:SpecialChars2253) { ",+\"\\<>;" }
       const_attr_reader  :SpecialChars2253
       
-      # 
       # includes special chars from RFC1779 and RFC2253, as well as ' '
       const_set_lazy(:SpecialCharsAll) { ",=\n+<>#;\\\" " }
       const_attr_reader  :SpecialCharsAll
       
-      # 
       # Values that aren't printable strings are emitted as BER-encoded
       # hex data.
       const_set_lazy(:HexDigits) { "0123456789ABCDEF" }
@@ -143,7 +134,6 @@ module Sun::Security::X509
     end
     
     typesig { [Reader] }
-    # 
     # Parse an RFC 1779 or RFC 2253 style AVA string:  CN=fee fie foe fum
     # or perhaps with quotes.  Not all defined AVA tags are supported;
     # of current note are X.400 related ones (PRMD, ADMD, etc).
@@ -156,7 +146,6 @@ module Sun::Security::X509
     end
     
     typesig { [Reader, Map] }
-    # 
     # Parse an RFC 1779 or RFC 2253 style AVA string:  CN=fee fie foe fum
     # or perhaps with quotes. Additional keywords can be specified in the
     # keyword/OID map.
@@ -169,7 +158,6 @@ module Sun::Security::X509
     end
     
     typesig { [Reader, ::Java::Int] }
-    # 
     # Parse an AVA string formatted according to format.
     # 
     # XXX format RFC1779 should only allow RFC1779 syntax but is
@@ -179,7 +167,6 @@ module Sun::Security::X509
     end
     
     typesig { [Reader, ::Java::Int, Map] }
-    # 
     # Parse an AVA string formatted according to format.
     # 
     # XXX format RFC1779 should only allow RFC1779 syntax but is
@@ -199,7 +186,6 @@ module Sun::Security::X509
       # assume format is one of DEFAULT, RFC1779, RFC2253
       temp = StringBuilder.new
       c = 0
-      # 
       # First get the keyword indicating the attribute's type,
       # and map it to the appropriate OID.
       while (true)
@@ -210,7 +196,6 @@ module Sun::Security::X509
         temp.append(RJava.cast_to_char(c))
       end
       @oid = AVAKeyword.get_oid(temp.to_s, format, keyword_map)
-      # 
       # Now parse the value.  "#hex", a quoted string, or a string
       # terminated by "+", ",", ";", ">".  Whitespace before or after
       # the value is stripped away unless format is RFC2253.
@@ -244,21 +229,18 @@ module Sun::Security::X509
     end
     
     typesig { [] }
-    # 
     # Get the ObjectIdentifier of this AVA.
     def get_object_identifier
       return @oid
     end
     
     typesig { [] }
-    # 
     # Get the value of this AVA as a DerValue.
     def get_der_value
       return @value
     end
     
     typesig { [] }
-    # 
     # Get the value of this AVA as a String.
     # 
     # @exception RuntimeException if we could not obtain the string form
@@ -353,8 +335,8 @@ module Sun::Security::X509
       end
       # add trailing embedded hex bytes
       if (embedded_hex.size > 0)
-        hex_string_ = get_embedded_hex_string(embedded_hex)
-        temp.append(hex_string_)
+        hex_string = get_embedded_hex_string(embedded_hex)
+        temp.append(hex_string)
         embedded_hex.clear
       end
       begin
@@ -454,10 +436,10 @@ module Sun::Security::X509
           ((space_count += 1) - 1)
         else
           # add space(s)
-          i_ = 0
-          while i_ < space_count
+          i = 0
+          while i < space_count
             temp.append(" ")
-            ((i_ += 1) - 1)
+            ((i += 1) - 1)
           end
           space_count = 0
           temp.append(RJava.cast_to_char(c))
@@ -470,8 +452,8 @@ module Sun::Security::X509
       end
       # add trailing embedded hex bytes
       if (embedded_hex.size > 0)
-        hex_string_ = get_embedded_hex_string(embedded_hex)
-        temp.append(hex_string_)
+        hex_string = get_embedded_hex_string(embedded_hex)
+        temp.append(hex_string)
         embedded_hex.clear
       end
       # encode as PrintableString unless value contains
@@ -610,7 +592,6 @@ module Sun::Security::X509
     end
     
     typesig { [] }
-    # 
     # Returns a hashcode for this AVA.
     # 
     # @return a hashcode for this AVA.
@@ -619,14 +600,12 @@ module Sun::Security::X509
     end
     
     typesig { [DerOutputStream] }
-    # 
     # AVAs are encoded as a SEQUENCE of two elements.
     def encode(out)
       der_encode(out)
     end
     
     typesig { [OutputStream] }
-    # 
     # DER encode this object onto an output stream.
     # Implements the <code>DerEncoder</code> interface.
     # 
@@ -649,7 +628,6 @@ module Sun::Security::X509
     end
     
     typesig { [] }
-    # 
     # Returns a printable form of this attribute, using RFC 1779
     # syntax for individual attribute/value assertions.
     def to_s
@@ -657,7 +635,6 @@ module Sun::Security::X509
     end
     
     typesig { [] }
-    # 
     # Returns a printable form of this attribute, using RFC 1779
     # syntax for individual attribute/value assertions. It only
     # emits standardised keywords.
@@ -666,7 +643,6 @@ module Sun::Security::X509
     end
     
     typesig { [Map] }
-    # 
     # Returns a printable form of this attribute, using RFC 1779
     # syntax for individual attribute/value assertions. It
     # emits standardised keywords, as well as keywords contained in the
@@ -676,7 +652,6 @@ module Sun::Security::X509
     end
     
     typesig { [] }
-    # 
     # Returns a printable form of this attribute, using RFC 2253
     # syntax for individual attribute/value assertions. It only
     # emits standardised keywords.
@@ -685,13 +660,11 @@ module Sun::Security::X509
     end
     
     typesig { [Map] }
-    # 
     # Returns a printable form of this attribute, using RFC 2253
     # syntax for individual attribute/value assertions. It
     # emits standardised keywords, as well as keywords contained in the
     # OID/keyword map.
     def to_rfc2253string(oid_map)
-      # 
       # Section 2.3: The AttributeTypeAndValue is encoded as the string
       # representation of the AttributeType, followed by an equals character
       # ('=' ASCII 61), followed by the string representation of the
@@ -700,7 +673,6 @@ module Sun::Security::X509
       type_and_value = StringBuilder.new(100)
       type_and_value.append(to_keyword(RFC2253, oid_map))
       type_and_value.append(Character.new(?=.ord))
-      # 
       # Section 2.4: Converting an AttributeValue from ASN.1 to a String.
       # If the AttributeValue is of a type which does not have a string
       # representation defined for it, then it is simply encoded as an
@@ -724,7 +696,6 @@ module Sun::Security::X509
           ((j += 1) - 1)
         end
       else
-        # 
         # 2.4 (cont): Otherwise, if the AttributeValue is of a type which
         # has a string representation, the value is converted first to a
         # UTF-8 string according to its syntax specification.
@@ -737,7 +708,6 @@ module Sun::Security::X509
         rescue IOException => ie
           raise IllegalArgumentException.new("DER Value conversion")
         end
-        # 
         # 2.4 (cont): If the UTF-8 string does not have any of the
         # following characters which need escaping, then that string can be
         # used as the string representation of the value.
@@ -780,14 +750,14 @@ module Sun::Security::X509
               rescue IOException => ie
                 raise IllegalArgumentException.new("DER Value conversion")
               end
-              j_ = 0
-              while j_ < value_bytes.attr_length
+              j = 0
+              while j < value_bytes.attr_length
                 sbuffer.append(Character.new(?\\.ord))
-                hex_char = Character.for_digit(0xf & (value_bytes[j_] >> 4), 16)
+                hex_char = Character.for_digit(0xf & (value_bytes[j] >> 4), 16)
                 sbuffer.append(Character.to_upper_case(hex_char))
-                hex_char = Character.for_digit(0xf & (value_bytes[j_]), 16)
+                hex_char = Character.for_digit(0xf & (value_bytes[j]), 16)
                 sbuffer.append(Character.to_upper_case(hex_char))
-                ((j_ += 1) - 1)
+                ((j += 1) - 1)
               end
             else
               # append non-printable/non-escaped char
@@ -818,11 +788,11 @@ module Sun::Security::X509
         # escape leading and trailing whitespace
         i_ = 0
         while i_ < chars.attr_length
-          c_ = chars[i_]
+          c = chars[i_]
           if (i_ < lead || i_ > trail)
             sbuffer.append(Character.new(?\\.ord))
           end
-          sbuffer.append(c_)
+          sbuffer.append(c)
           ((i_ += 1) - 1)
         end
         type_and_value.append(sbuffer.to_s)
@@ -832,7 +802,6 @@ module Sun::Security::X509
     
     typesig { [] }
     def to_rfc2253canonical_string
-      # 
       # Section 2.3: The AttributeTypeAndValue is encoded as the string
       # representation of the AttributeType, followed by an equals character
       # ('=' ASCII 61), followed by the string representation of the
@@ -841,7 +810,6 @@ module Sun::Security::X509
       type_and_value = StringBuilder.new(40)
       type_and_value.append(to_keyword(RFC2253, Collections.empty_map))
       type_and_value.append(Character.new(?=.ord))
-      # 
       # Section 2.4: Converting an AttributeValue from ASN.1 to a String.
       # If the AttributeValue is of a type which does not have a string
       # representation defined for it, then it is simply encoded as an
@@ -865,7 +833,6 @@ module Sun::Security::X509
           ((j += 1) - 1)
         end
       else
-        # 
         # 2.4 (cont): Otherwise, if the AttributeValue is of a type which
         # has a string representation, the value is converted first to a
         # UTF-8 string according to its syntax specification.
@@ -878,7 +845,6 @@ module Sun::Security::X509
         rescue IOException => ie
           raise IllegalArgumentException.new("DER Value conversion")
         end
-        # 
         # 2.4 (cont): If the UTF-8 string does not have any of the
         # following characters which need escaping, then that string can be
         # used as the string representation of the value.
@@ -932,12 +898,12 @@ module Sun::Security::X509
               rescue IOException => ie
                 raise IllegalArgumentException.new("DER Value conversion")
               end
-              j_ = 0
-              while j_ < value_bytes.attr_length
+              j = 0
+              while j < value_bytes.attr_length
                 sbuffer.append(Character.new(?\\.ord))
-                sbuffer.append(Character.for_digit(0xf & (value_bytes[j_] >> 4), 16))
-                sbuffer.append(Character.for_digit(0xf & (value_bytes[j_]), 16))
-                ((j_ += 1) - 1)
+                sbuffer.append(Character.for_digit(0xf & (value_bytes[j] >> 4), 16))
+                sbuffer.append(Character.for_digit(0xf & (value_bytes[j]), 16))
+                ((j += 1) - 1)
               end
             else
               # append non-printable/non-escaped char
@@ -957,7 +923,6 @@ module Sun::Security::X509
     
     class_module.module_eval {
       typesig { [DerValue, ::Java::Boolean] }
-      # 
       # Return true if DerValue can be represented as a String.
       def is_der_string(value, canonical)
         if (canonical)
@@ -985,7 +950,6 @@ module Sun::Security::X509
     
     typesig { [String] }
     def to_keyword_value_string(keyword)
-      # 
       # Construct the value with as little copying and garbage
       # production as practical.  First the keyword (mandatory),
       # then the equals sign, finally the value.
@@ -1012,16 +976,15 @@ module Sun::Security::X509
           sbuffer = StringBuilder.new
           previous_white = false
           escapees = ",+=\n<>#;\\\""
-          # 
           # Special characters (e.g. AVA list separators) cause strings
           # to need quoting, or at least escaping.  So do leading or
           # trailing spaces, and multiple internal spaces.
-          i_ = 0
-          while i_ < val_str.length
-            c = val_str.char_at(i_)
+          i = 0
+          while i < val_str.length
+            c = val_str.char_at(i)
             if (DerValue.is_printable_string_char(c) || escapees.index_of(c) >= 0)
               # quote if leading whitespace or special chars
-              if (!quote_needed && (((i_).equal?(0) && ((c).equal?(Character.new(?\s.ord)) || (c).equal?(Character.new(?\n.ord)))) || escapees.index_of(c) >= 0))
+              if (!quote_needed && (((i).equal?(0) && ((c).equal?(Character.new(?\s.ord)) || (c).equal?(Character.new(?\n.ord)))) || escapees.index_of(c) >= 0))
                 quote_needed = true
               end
               # quote if multiple internal whitespace
@@ -1060,7 +1023,7 @@ module Sun::Security::X509
                 sbuffer.append(c)
               end
             end
-            ((i_ += 1) - 1)
+            ((i += 1) - 1)
           end
           # quote if trailing whitespace
           if (sbuffer.length > 0)
@@ -1086,7 +1049,6 @@ module Sun::Security::X509
     alias_method :initialize__ava, :initialize
   end
   
-  # 
   # Helper class that allows conversion from String to ObjectIdentifier and
   # vice versa according to RFC1779, RFC2253, and an augmented version of
   # those standards.
@@ -1149,7 +1111,6 @@ module Sun::Security::X509
     
     class_module.module_eval {
       typesig { [String, ::Java::Int] }
-      # 
       # Get an object identifier representing the specified keyword (or
       # string encoded object identifier) in the given standard.
       # 
@@ -1159,7 +1120,6 @@ module Sun::Security::X509
       end
       
       typesig { [String, ::Java::Int, Map] }
-      # 
       # Get an object identifier representing the specified keyword (or
       # string encoded object identifier) in the given standard.
       # 
@@ -1217,7 +1177,6 @@ module Sun::Security::X509
       end
       
       typesig { [ObjectIdentifier, ::Java::Int] }
-      # 
       # Get a keyword for the given ObjectIdentifier according to standard.
       # If no keyword is available, the ObjectIdentifier is encoded as a
       # String.
@@ -1226,7 +1185,6 @@ module Sun::Security::X509
       end
       
       typesig { [ObjectIdentifier, ::Java::Int, Map] }
-      # 
       # Get a keyword for the given ObjectIdentifier according to standard.
       # Checks the extraOidMap for a keyword first, then falls back to the
       # builtin/default set. If no keyword is available, the ObjectIdentifier
@@ -1268,7 +1226,6 @@ module Sun::Security::X509
       end
       
       typesig { [ObjectIdentifier, ::Java::Int] }
-      # 
       # Test if oid has an associated keyword in standard.
       def has_keyword(oid, standard)
         ak = OidMap.get(oid)

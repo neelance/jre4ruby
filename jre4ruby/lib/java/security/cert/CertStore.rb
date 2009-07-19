@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 2000-2006 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -41,7 +40,6 @@ module Java::Security::Cert
     }
   end
   
-  # 
   # A class for retrieving <code>Certificate</code>s and <code>CRL</code>s
   # from a repository.
   # <p>
@@ -85,7 +83,6 @@ module Java::Security::Cert
     include_class_members CertStoreImports
     
     class_module.module_eval {
-      # 
       # Constant to lookup in the Security properties file to determine
       # the default certstore type. In the Security properties file, the
       # default certstore type is given as:
@@ -121,7 +118,6 @@ module Java::Security::Cert
     undef_method :params=
     
     typesig { [CertStoreSpi, Provider, String, CertStoreParameters] }
-    # 
     # Creates a <code>CertStore</code> object of the given type, and
     # encapsulates the given provider implementation (SPI object) in it.
     # 
@@ -143,7 +139,6 @@ module Java::Security::Cert
     end
     
     typesig { [CertSelector] }
-    # 
     # Returns a <code>Collection</code> of <code>Certificate</code>s that
     # match the specified selector. If no <code>Certificate</code>s
     # match the selector, an empty <code>Collection</code> will be returned.
@@ -172,7 +167,6 @@ module Java::Security::Cert
     end
     
     typesig { [CRLSelector] }
-    # 
     # Returns a <code>Collection</code> of <code>CRL</code>s that
     # match the specified selector. If no <code>CRL</code>s
     # match the selector, an empty <code>Collection</code> will be returned.
@@ -202,7 +196,6 @@ module Java::Security::Cert
     
     class_module.module_eval {
       typesig { [String, CertStoreParameters] }
-      # 
       # Returns a <code>CertStore</code> object that implements the specified
       # <code>CertStore</code> type and is initialized with the specified
       # parameters.
@@ -260,7 +253,6 @@ module Java::Security::Cert
       end
       
       typesig { [String, CertStoreParameters, String] }
-      # 
       # Returns a <code>CertStore</code> object that implements the specified
       # <code>CertStore</code> type.
       # 
@@ -316,7 +308,6 @@ module Java::Security::Cert
       end
       
       typesig { [String, CertStoreParameters, Provider] }
-      # 
       # Returns a <code>CertStore</code> object that implements the specified
       # <code>CertStore</code> type.
       # 
@@ -367,7 +358,6 @@ module Java::Security::Cert
     }
     
     typesig { [] }
-    # 
     # Returns the parameters used to initialize this <code>CertStore</code>.
     # Note that the <code>CertStoreParameters</code> object is cloned before
     # it is returned.
@@ -379,7 +369,6 @@ module Java::Security::Cert
     end
     
     typesig { [] }
-    # 
     # Returns the type of this <code>CertStore</code>.
     # 
     # @return the type of this <code>CertStore</code>
@@ -388,7 +377,6 @@ module Java::Security::Cert
     end
     
     typesig { [] }
-    # 
     # Returns the provider of this <code>CertStore</code>.
     # 
     # @return the provider of this <code>CertStore</code>
@@ -398,7 +386,6 @@ module Java::Security::Cert
     
     class_module.module_eval {
       typesig { [] }
-      # 
       # Returns the default <code>CertStore</code> type as specified in the
       # Java security properties file, or the string &quot;LDAP&quot; if no
       # such property exists. The Java security properties file is located in

@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 1997-2003 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -35,7 +34,6 @@ module Sun::Security::X509
     }
   end
   
-  # 
   # This interface defines the methods required of a certificate attribute.
   # Examples of X.509 certificate attributes are Validity, Issuer_Name, and
   # Subject Name. A CertAttrSet may comprise one attribute or many
@@ -53,7 +51,6 @@ module Sun::Security::X509
     include_class_members CertAttrSetImports
     
     typesig { [] }
-    # 
     # Returns a short string describing this certificate attribute.
     # 
     # @return value of this certificate attribute in
@@ -63,7 +60,6 @@ module Sun::Security::X509
     end
     
     typesig { [OutputStream] }
-    # 
     # Encodes the attribute to the output stream in a format
     # that can be parsed by the <code>decode</code> method.
     # 
@@ -76,7 +72,6 @@ module Sun::Security::X509
     end
     
     typesig { [String, Object] }
-    # 
     # Sets an attribute value within this CertAttrSet.
     # 
     # @param name the name of the attribute (e.g. "x509.info.key")
@@ -89,7 +84,6 @@ module Sun::Security::X509
     end
     
     typesig { [String] }
-    # 
     # Gets an attribute value for this CertAttrSet.
     # 
     # @param name the name of the attribute to return.
@@ -101,7 +95,6 @@ module Sun::Security::X509
     end
     
     typesig { [String] }
-    # 
     # Deletes an attribute value from this CertAttrSet.
     # 
     # @param name the name of the attribute to delete.
@@ -113,7 +106,6 @@ module Sun::Security::X509
     end
     
     typesig { [] }
-    # 
     # Returns an enumeration of the names of the attributes existing within
     # this attribute.
     # 
@@ -123,7 +115,6 @@ module Sun::Security::X509
     end
     
     typesig { [] }
-    # 
     # Returns the name (identifier) of this CertAttrSet.
     # 
     # @return the name of this CertAttrSet.

@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
 # This code is free software; you can redistribute it and/or modify it
@@ -41,7 +40,6 @@ module Java::Util::Concurrent
     }
   end
   
-  # 
   # A mix-in style interface for marking objects that should be
   # acted upon after a given delay.
   # 
@@ -56,7 +54,6 @@ module Java::Util::Concurrent
     include JavaComparable
     
     typesig { [TimeUnit] }
-    # 
     # Returns the remaining delay associated with this object, in the
     # given time unit.
     # 

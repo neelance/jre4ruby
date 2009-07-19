@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
 # This code is free software; you can redistribute it and/or modify it
@@ -39,7 +38,6 @@ module Sun::Security::Krb5::Internal
     }
   end
   
-  # 
   # In RFC4120, the ASN.1 AuthorizationData is defined as:
   # 
   # AuthorizationData            ::= SEQUENCE OF SEQUENCE {
@@ -108,7 +106,6 @@ module Sun::Security::Krb5::Internal
     end
     
     typesig { [DerValue] }
-    # 
     # Constructs a new <code>AuthorizationData,</code> instance.
     # @param der a single DER-encoded value.
     # @exception Asn1Exception if an error occurs while decoding an ASN1 encoded data.
@@ -129,7 +126,6 @@ module Sun::Security::Krb5::Internal
     end
     
     typesig { [] }
-    # 
     # Encodes an <code>AuthorizationData</code> object.
     # @return byte array of encoded <code>AuthorizationData</code> object.
     # @exception Asn1Exception if an error occurs while decoding an ASN1 encoded data.
@@ -148,7 +144,6 @@ module Sun::Security::Krb5::Internal
     
     class_module.module_eval {
       typesig { [DerInputStream, ::Java::Byte, ::Java::Boolean] }
-      # 
       # Parse (unmarshal) an <code>AuthorizationData</code> object from a DER input stream.
       # This form of parsing might be used when expanding a value which is part of
       # a constructed sequence and uses explicitly tagged type.
@@ -174,7 +169,6 @@ module Sun::Security::Krb5::Internal
     }
     
     typesig { [CCacheOutputStream] }
-    # 
     # Writes <code>AuthorizationData</code> data fields to a output stream.
     # 
     # @param cos a <code>CCacheOutputStream</code> to be written to.

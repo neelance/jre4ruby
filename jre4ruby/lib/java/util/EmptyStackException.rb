@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 1994-1998 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -31,7 +30,6 @@ module Java::Util
     }
   end
   
-  # 
   # Thrown by methods in the <code>Stack</code> class to indicate
   # that the stack is empty.
   # 
@@ -42,7 +40,6 @@ module Java::Util
     include_class_members EmptyStackExceptionImports
     
     typesig { [] }
-    # 
     # Constructs a new <code>EmptyStackException</code> with <tt>null</tt>
     # as its error message string.
     def initialize

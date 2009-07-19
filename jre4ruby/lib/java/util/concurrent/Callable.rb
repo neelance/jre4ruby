@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
 # This code is free software; you can redistribute it and/or modify it
@@ -40,7 +39,6 @@ module Java::Util::Concurrent
     }
   end
   
-  # 
   # A task that returns a result and may throw an exception.
   # Implementors define a single method with no arguments called
   # <tt>call</tt>.
@@ -62,7 +60,6 @@ module Java::Util::Concurrent
     include_class_members CallableImports
     
     typesig { [] }
-    # 
     # Computes a result, or throws an exception if unable to do so.
     # 
     # @return computed result

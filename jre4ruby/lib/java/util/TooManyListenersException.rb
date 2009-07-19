@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 1996-1999 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -31,7 +30,6 @@ module Java::Util
     }
   end
   
-  # 
   # <p>
   # The <code> TooManyListenersException </code> Exception is used as part of
   # the Java Event model to annotate and implement a unicast special case of
@@ -55,7 +53,6 @@ module Java::Util
     include_class_members TooManyListenersExceptionImports
     
     typesig { [] }
-    # 
     # Constructs a TooManyListenersException with no detail message.
     # A detail message is a String that describes this particular exception.
     def initialize
@@ -63,7 +60,6 @@ module Java::Util
     end
     
     typesig { [String] }
-    # 
     # Constructs a TooManyListenersException with the specified detail message.
     # A detail message is a String that describes this particular exception.
     # @param s the detail message

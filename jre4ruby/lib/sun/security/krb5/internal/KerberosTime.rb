@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
 # This code is free software; you can redistribute it and/or modify it
@@ -43,7 +42,6 @@ module Sun::Security::Krb5::Internal
     }
   end
   
-  # 
   # Implements the ASN.1 KerberosTime type.
   # 
   # <xmp>
@@ -128,7 +126,6 @@ module Sun::Security::Krb5::Internal
     end
     
     typesig { [DerValue] }
-    # 
     # Constructs a KerberosTime object.
     # @param encoding a DER-encoded data.
     # @exception Asn1Exception if an error occurs while decoding an ASN1 encoded data.
@@ -197,7 +194,6 @@ module Sun::Security::Krb5::Internal
     end
     
     typesig { [] }
-    # 
     # Returns a string representation of KerberosTime object.
     # @return a string representation of this object.
     def to_generalized_time_string
@@ -208,7 +204,6 @@ module Sun::Security::Krb5::Internal
     end
     
     typesig { [] }
-    # 
     # Encodes this object to a byte array.
     # @return a byte array of encoded data.
     # @exception Asn1Exception if an error occurs while decoding an ASN1 encoded data.
@@ -348,7 +343,6 @@ module Sun::Security::Krb5::Internal
     
     class_module.module_eval {
       typesig { [DerInputStream, ::Java::Byte, ::Java::Boolean] }
-      # 
       # Parse (unmarshal) a kerberostime from a DER input stream.  This form
       # parsing might be used when expanding a value which is part of
       # a constructed sequence and uses explicitly tagged type.

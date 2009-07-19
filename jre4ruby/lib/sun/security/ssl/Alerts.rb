@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 2003-2007 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -32,14 +31,12 @@ module Sun::Security::Ssl
     }
   end
   
-  # 
   # A simple class to congregate alerts, their definitions, and common
   # support methods.
   class Alerts 
     include_class_members AlertsImports
     
     class_module.module_eval {
-      # 
       # Alerts are always a fixed two byte format (level/description).
       # 
       # warnings and fatal errors are package private facilities/constants
@@ -50,7 +47,6 @@ module Sun::Security::Ssl
       const_set_lazy(:Alert_fatal) { 2 }
       const_attr_reader  :Alert_fatal
       
-      # 
       # Alert descriptions (enum AlertDescription)
       # 
       # We may not use them all in our processing, but if someone
@@ -216,7 +212,6 @@ module Sun::Security::Ssl
       end
       
       typesig { [::Java::Byte, Exception, String] }
-      # 
       # Try to be a little more specific in our choice of
       # exceptions to throw.
       def get_sslexception(description, cause, reason)

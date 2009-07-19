@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 1999-2007 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -117,7 +116,6 @@ module Sun::Security::Ssl
     end
     
     typesig { [] }
-    # 
     # Returns one trust manager for each type of trust material.
     def engine_get_trust_managers
       if (!@is_initialized)
@@ -128,7 +126,6 @@ module Sun::Security::Ssl
     
     class_module.module_eval {
       typesig { [JavaFile] }
-      # 
       # Try to get an InputStream based on the file we pass in.
       def get_file_input_stream(file)
         return AccessController.do_privileged(Class.new(PrivilegedExceptionAction.class == Class ? PrivilegedExceptionAction : Object) do
@@ -161,7 +158,6 @@ module Sun::Security::Ssl
       end
       
       typesig { [String] }
-      # 
       # Returns the keystore with the configured CA certificates.
       def get_cacerts_key_store(dbgname)
         store_file_name = nil
@@ -195,7 +191,6 @@ module Sun::Security::Ssl
           private
           alias_method :initialize_anonymous, :initialize
         end.new_local(self))
-        # 
         # Try:
         # javax.net.ssl.trustStore  (if this variable exists, stop)
         # jssecacerts
@@ -228,7 +223,6 @@ module Sun::Security::Ssl
           System.out.println("trustStore type is : " + default_trust_store_type)
           System.out.println("trustStore provider is : " + default_trust_store_provider)
         end
-        # 
         # Try to initialize trust store.
         if (!(default_trust_store_type.length).equal?(0))
           if (!(Debug).nil? && Debug.is_on(dbgname))

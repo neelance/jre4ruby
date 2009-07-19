@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # reserved comment block
 # DO NOT REMOVE OR ALTER!
 # 
@@ -53,7 +52,6 @@ module Sun::Security::Pkcs11::Wrapper
     }
   end
   
-  # 
   # class CK_PBE_PARAMS provides all of the necessary information required byte
   # the CKM_PBE mechanisms and the CKM_PBA_SHA1_WITH_SHA1_HMAC mechanism.<p>
   # <B>PKCS#11 structure:</B>
@@ -73,7 +71,6 @@ module Sun::Security::Pkcs11::Wrapper
   class CK_PBE_PARAMS 
     include_class_members CK_PBE_PARAMSImports
     
-    # 
     # <B>PKCS#11:</B>
     # <PRE>
     # CK_CHAR_PTR pInitVector;
@@ -84,7 +81,6 @@ module Sun::Security::Pkcs11::Wrapper
     alias_method :attr_p_init_vector=, :p_init_vector=
     undef_method :p_init_vector=
     
-    # 
     # <B>PKCS#11:</B>
     # <PRE>
     # CK_CHAR_PTR pPassword;
@@ -96,7 +92,6 @@ module Sun::Security::Pkcs11::Wrapper
     alias_method :attr_p_password=, :p_password=
     undef_method :p_password=
     
-    # 
     # <B>PKCS#11:</B>
     # <PRE>
     # CK_CHAR_PTR pSalt
@@ -108,7 +103,6 @@ module Sun::Security::Pkcs11::Wrapper
     alias_method :attr_p_salt=, :p_salt=
     undef_method :p_salt=
     
-    # 
     # <B>PKCS#11:</B>
     # <PRE>
     # CK_ULONG ulIteration;
@@ -120,7 +114,6 @@ module Sun::Security::Pkcs11::Wrapper
     undef_method :ul_iteration=
     
     typesig { [] }
-    # 
     # Returns the string representation of CK_PBE_PARAMS.
     # 
     # @return the string representation of CK_PBE_PARAMS

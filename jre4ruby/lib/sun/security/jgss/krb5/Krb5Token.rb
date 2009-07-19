@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 2000-2006 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -34,7 +33,6 @@ module Sun::Security::Jgss::Krb5
     }
   end
   
-  # 
   # This class represents a base class for all Kerberos v5 GSS-API
   # tokens. It contains commonly used definitions and utilities.
   # 
@@ -43,29 +41,24 @@ module Sun::Security::Jgss::Krb5
     include_class_members Krb5TokenImports
     
     class_module.module_eval {
-      # 
       # The token id defined for the token emitted by the initSecContext call
       # carrying the AP_REQ .
       const_set_lazy(:AP_REQ_ID) { 0x100 }
       const_attr_reader  :AP_REQ_ID
       
-      # 
       # The token id defined for the token emitted by the acceptSecContext call
       # carrying the AP_REP .
       const_set_lazy(:AP_REP_ID) { 0x200 }
       const_attr_reader  :AP_REP_ID
       
-      # 
       # The token id defined for any token carrying a KRB-ERR message.
       const_set_lazy(:ERR_ID) { 0x300 }
       const_attr_reader  :ERR_ID
       
-      # 
       # The token id defined for the token emitted by the getMIC call.
       const_set_lazy(:MIC_ID) { 0x101 }
       const_attr_reader  :MIC_ID
       
-      # 
       # The token id defined for the token emitted by the wrap call.
       const_set_lazy(:WRAP_ID) { 0x201 }
       const_attr_reader  :WRAP_ID
@@ -77,7 +70,6 @@ module Sun::Security::Jgss::Krb5
       const_set_lazy(:WRAP_ID_v2) { 0x504 }
       const_attr_reader  :WRAP_ID_v2
       
-      # 
       # The object identifier corresponding to the Kerberos v5 GSS-API
       # mechanism.
       
@@ -100,7 +92,6 @@ module Sun::Security::Jgss::Krb5
       end
       
       typesig { [::Java::Int] }
-      # 
       # Returns a strign representing the token type.
       # 
       # @param tokenId the token id for which a string name is desired

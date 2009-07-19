@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 1996-2005 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -44,7 +43,6 @@ module Java::Util
     }
   end
   
-  # 
   # Signals that a resource is missing.
   # @see java.lang.Exception
   # @see ResourceBundle
@@ -54,7 +52,6 @@ module Java::Util
     include_class_members MissingResourceExceptionImports
     
     typesig { [String, String, String] }
-    # 
     # Constructs a MissingResourceException with the specified information.
     # A detail message is a String that describes this particular exception.
     # @param s the detail message
@@ -69,7 +66,6 @@ module Java::Util
     end
     
     typesig { [String, String, String, Exception] }
-    # 
     # Constructs a <code>MissingResourceException</code> with
     # <code>message</code>, <code>className</code>, <code>key</code>,
     # and <code>cause</code>. This constructor is package private for
@@ -95,7 +91,6 @@ module Java::Util
     end
     
     typesig { [] }
-    # 
     # Gets parameter passed by constructor.
     # 
     # @return the name of the resource class
@@ -104,7 +99,6 @@ module Java::Util
     end
     
     typesig { [] }
-    # 
     # Gets parameter passed by constructor.
     # 
     # @return the key for the missing resource
@@ -119,7 +113,6 @@ module Java::Util
       const_attr_reader  :SerialVersionUID
     }
     
-    # 
     # The class name of the resource bundle requested by the user.
     # @serial
     attr_accessor :class_name
@@ -128,7 +121,6 @@ module Java::Util
     alias_method :attr_class_name=, :class_name=
     undef_method :class_name=
     
-    # 
     # The name of the specific resource requested by the user.
     # @serial
     attr_accessor :key

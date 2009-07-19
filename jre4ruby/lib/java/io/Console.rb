@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 2005-2006 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -35,7 +34,6 @@ module Java::Io
     }
   end
   
-  # 
   # Methods to access the character-based console device, if any, associated
   # with the current Java virtual machine.
   # 
@@ -97,7 +95,6 @@ module Java::Io
     include Flushable
     
     typesig { [] }
-    # 
     # Retrieves the unique {@link java.io.PrintWriter PrintWriter} object
     # associated with this console.
     # 
@@ -107,7 +104,6 @@ module Java::Io
     end
     
     typesig { [] }
-    # 
     # Retrieves the unique {@link java.io.Reader Reader} object associated
     # with this console.
     # <p>
@@ -140,7 +136,6 @@ module Java::Io
     end
     
     typesig { [String, Object] }
-    # 
     # Writes a formatted string to this console's output stream using
     # the specified format string and arguments.
     # 
@@ -175,7 +170,6 @@ module Java::Io
     end
     
     typesig { [String, Object] }
-    # 
     # A convenience method to write a formatted string to this console's
     # output stream using the specified format string and arguments.
     # 
@@ -213,7 +207,6 @@ module Java::Io
     end
     
     typesig { [String, Object] }
-    # 
     # Provides a formatted prompt, then reads a single line of text from the
     # console.
     # 
@@ -265,7 +258,6 @@ module Java::Io
     end
     
     typesig { [] }
-    # 
     # Reads a single line of text from the console.
     # 
     # @throws IOError
@@ -279,7 +271,6 @@ module Java::Io
     end
     
     typesig { [String, Object] }
-    # 
     # Provides a formatted prompt, then reads a password or passphrase from
     # the console with echoing disabled.
     # 
@@ -336,7 +327,6 @@ module Java::Io
     end
     
     typesig { [] }
-    # 
     # Reads a password or passphrase from the console with echoing disabled
     # 
     # @throws IOError
@@ -350,7 +340,6 @@ module Java::Io
     end
     
     typesig { [] }
-    # 
     # Flushes the console and forces any buffered output to be written
     # immediately .
     def flush
@@ -546,7 +535,6 @@ module Java::Io
                   @n_chars = n
                   @next_char = 0
                   if (n < @cb.attr_length && !(@cb[n - 1]).equal?(Character.new(?\n.ord)) && !(@cb[n - 1]).equal?(Character.new(?\r.ord)))
-                    # 
                     # we're in canonical mode so each "fill" should
                     # come back with an eol. if there no lf or nl at
                     # the end of returned bytes we reached an eof.
@@ -561,7 +549,6 @@ module Java::Io
                 end
               end
               if (@leftover_lf && (cbuf).equal?(self.attr_rcb) && (@cb[@next_char]).equal?(Character.new(?\n.ord)))
-                # 
                 # if invoked by our readline, skip the leftover, otherwise
                 # return the LF.
                 ((@next_char += 1) - 1)
@@ -587,7 +574,6 @@ module Java::Io
                       end
                     end
                     if ((@next_char).equal?(@n_chars) && @in.ready)
-                      # 
                       # we have a CR and we reached the end of
                       # the read in buffer, fill to make sure we
                       # don't miss a LF, if there is one, it's possible

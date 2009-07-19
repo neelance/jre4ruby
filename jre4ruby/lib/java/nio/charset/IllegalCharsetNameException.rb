@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 2000-2007 Sun Microsystems, Inc.  All Rights Reserved.
 # 
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
@@ -35,7 +34,6 @@ module Java::Nio::Charset
     }
   end
   
-  # 
   # Unchecked exception thrown when a string that is not a
   # <a href=Charset.html#names>legal charset name</a> is used as such.
   # 
@@ -55,7 +53,6 @@ module Java::Nio::Charset
     undef_method :charset_name=
     
     typesig { [String] }
-    # 
     # Constructs an instance of this class. </p>
     # 
     # @param  charsetName
@@ -67,7 +64,6 @@ module Java::Nio::Charset
     end
     
     typesig { [] }
-    # 
     # Retrieves the illegal charset name. </p>
     # 
     # @return  The illegal charset name

@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 1996-2006 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -35,14 +34,12 @@ module Sun::Security::Acl
     }
   end
   
-  # 
   # An Access Control List (ACL) is encapsulated by this class.
   # @author      Satish Dharmaraj
   class AclImpl < AclImplImports.const_get :OwnerImpl
     include_class_members AclImplImports
     include Acl
     
-    # 
     # Maintain four tables. one each for positive and negative
     # ACLs. One each depending on whether the entity is a group
     # or principal.
@@ -83,7 +80,6 @@ module Sun::Security::Acl
     undef_method :zero_set=
     
     typesig { [Principal, String] }
-    # 
     # Constructor for creating an empty ACL.
     def initialize(owner, name)
       @allowed_users_table = nil
@@ -106,7 +102,6 @@ module Sun::Security::Acl
     end
     
     typesig { [Principal, String] }
-    # 
     # Sets the name of the ACL.
     # @param caller the principal who is invoking this method.
     # @param name the name of the ACL.
@@ -120,7 +115,6 @@ module Sun::Security::Acl
     end
     
     typesig { [] }
-    # 
     # Returns the name of the ACL.
     # @return the name of the ACL.
     def get_name
@@ -128,7 +122,6 @@ module Sun::Security::Acl
     end
     
     typesig { [Principal, AclEntry] }
-    # 
     # Adds an ACL entry to this ACL. An entry associates a
     # group or a principal with a set of permissions. Each
     # user or group can have one positive ACL entry and one
@@ -157,7 +150,6 @@ module Sun::Security::Acl
     end
     
     typesig { [Principal, AclEntry] }
-    # 
     # Removes an ACL entry from this ACL.
     # The caller principal must be a part of the owners list of the ACL
     # in order to invoke this method.
@@ -179,7 +171,6 @@ module Sun::Security::Acl
     end
     
     typesig { [Principal] }
-    # 
     # This method returns the set of allowed permissions for the
     # specified principal. This set of allowed permissions is calculated
     # as follows:
@@ -215,14 +206,12 @@ module Sun::Security::Acl
         individual_negative = nil
         group_positive = nil
         group_negative = nil
-        # 
         # canonicalize the sets. That is remove common permissions from
         # positive and negative sets.
         group_positive = subtract(get_group_positive(user), get_group_negative(user))
         group_negative = subtract(get_group_negative(user), get_group_positive(user))
         individual_positive = subtract(get_individual_positive(user), get_individual_negative(user))
         individual_negative = subtract(get_individual_negative(user), get_individual_positive(user))
-        # 
         # net positive permissions is individual positive permissions
         # plus (group positive - individual negative).
         temp1 = subtract(group_positive, individual_negative)
@@ -231,7 +220,6 @@ module Sun::Security::Acl
         # subtraction
         individual_positive = subtract(get_individual_positive(user), get_individual_negative(user))
         individual_negative = subtract(get_individual_negative(user), get_individual_positive(user))
-        # 
         # net negative permissions is individual negative permissions
         # plus (group negative - individual positive).
         temp1 = subtract(group_negative, individual_positive)
@@ -241,7 +229,6 @@ module Sun::Security::Acl
     end
     
     typesig { [Principal, Permission] }
-    # 
     # This method checks whether or not the specified principal
     # has the required permission. If permission is denied
     # permission false is returned, a true value is returned otherwise.
@@ -263,7 +250,6 @@ module Sun::Security::Acl
     end
     
     typesig { [] }
-    # 
     # returns an enumeration of the entries in this ACL.
     def entries
       synchronized(self) do
@@ -272,7 +258,6 @@ module Sun::Security::Acl
     end
     
     typesig { [] }
-    # 
     # return a stringified version of the
     # ACL.
     def to_s
@@ -287,7 +272,6 @@ module Sun::Security::Acl
     end
     
     typesig { [AclEntry] }
-    # 
     # Find the table that this entry belongs to. There are 4
     # tables that are maintained. One each for postive and
     # negative ACLs and one each for groups and users.
@@ -314,7 +298,6 @@ module Sun::Security::Acl
     
     class_module.module_eval {
       typesig { [Enumeration, Enumeration] }
-      # 
       # returns the set e1 U e2.
       def union(e1, e2)
         v = Vector.new(20, 20)
@@ -332,7 +315,6 @@ module Sun::Security::Acl
     }
     
     typesig { [Enumeration, Enumeration] }
-    # 
     # returns the set e1 - e2.
     def subtract(e1, e2)
       v = Vector.new(20, 20)

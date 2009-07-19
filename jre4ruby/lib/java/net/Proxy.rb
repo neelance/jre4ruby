@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 2003-2005 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -31,7 +30,6 @@ module Java::Net
     }
   end
   
-  # 
   # This class represents a proxy setting, typically a type (http, socks) and
   # a socket address.
   # A <code>Proxy</code> is an immutable object.
@@ -53,7 +51,6 @@ module Java::Net
       const_set_lazy(:SOCKS) { Type::SOCKS }
       const_attr_reader  :SOCKS
       
-      # 
       # Represents the proxy type.
       # 
       # @since 1.5
@@ -61,17 +58,14 @@ module Java::Net
         include_class_members Proxy
         
         class_module.module_eval {
-          # 
           # Represents a direct connection, or the absence of a proxy.
           const_set_lazy(:DIRECT) { Type.new.set_value_name("DIRECT") }
           const_attr_reader  :DIRECT
           
-          # 
           # Represents proxy for high level protocols such as HTTP or FTP.
           const_set_lazy(:HTTP) { Type.new.set_value_name("HTTP") }
           const_attr_reader  :HTTP
           
-          # 
           # Represents a SOCKS (V4 or V5) proxy.
           const_set_lazy(:SOCKS) { Type.new.set_value_name("SOCKS") }
           const_attr_reader  :SOCKS
@@ -117,7 +111,6 @@ module Java::Net
     undef_method :sa=
     
     class_module.module_eval {
-      # 
       # A proxy setting that represents a <code>DIRECT</code> connection,
       # basically telling the protocol handler not to use any proxying.
       # Used, for instance, to create sockets bypassing any other global
@@ -139,7 +132,6 @@ module Java::Net
     end
     
     typesig { [Type, SocketAddress] }
-    # 
     # Creates an entry representing a PROXY connection.
     # Certain combinations are illegal. For instance, for types Http, and
     # Socks, a SocketAddress <b>must</b> be provided.
@@ -162,7 +154,6 @@ module Java::Net
     end
     
     typesig { [] }
-    # 
     # Returns the proxy type.
     # 
     # @return a Type representing the proxy type
@@ -171,7 +162,6 @@ module Java::Net
     end
     
     typesig { [] }
-    # 
     # Returns the socket address of the proxy, or
     # <code>null</code> if its a direct connection.
     # 
@@ -182,7 +172,6 @@ module Java::Net
     end
     
     typesig { [] }
-    # 
     # Constructs a string representation of this Proxy.
     # This String is constructed by calling toString() on its type
     # and concatenating " @ " and the toString() result from its address
@@ -197,7 +186,6 @@ module Java::Net
     end
     
     typesig { [Object] }
-    # 
     # Compares this object against the specified object.
     # The result is <code>true</code> if and only if the argument is
     # not <code>null</code> and it represents the same proxy as
@@ -226,7 +214,6 @@ module Java::Net
     end
     
     typesig { [] }
-    # 
     # Returns a hashcode for this Proxy.
     # 
     # @return  a hash code value for this Proxy.

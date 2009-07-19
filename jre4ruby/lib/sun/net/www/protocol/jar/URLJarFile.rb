@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 2001-2006 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -49,7 +48,6 @@ module Sun::Net::Www::Protocol::Jar
     include_class_members URLJarFileImports
     
     class_module.module_eval {
-      # 
       # Interface to be able to call retrieve() in plugin if
       # this variable is set.
       
@@ -119,7 +117,6 @@ module Sun::Net::Www::Protocol::Jar
     }
     
     typesig { [JavaFile] }
-    # 
     # Changed modifier from private to public in order to be able
     # to instantiate URLJarFile from sun.plugin package.
     def initialize(file)
@@ -127,7 +124,6 @@ module Sun::Net::Www::Protocol::Jar
     end
     
     typesig { [JavaFile, URLJarFileCloseController] }
-    # 
     # Changed modifier from private to public in order to be able
     # to instantiate URLJarFile from sun.plugin package.
     def initialize(file, close_controller)
@@ -155,7 +151,6 @@ module Sun::Net::Www::Protocol::Jar
       typesig { [URL] }
       def is_file_url(url)
         if (url.get_protocol.equals_ignore_case("file"))
-          # 
           # Consider this a 'file' only if it's a LOCAL file, because
           # 'file:' URLs can be accessible through ftp.
           host = url.get_host
@@ -168,14 +163,12 @@ module Sun::Net::Www::Protocol::Jar
     }
     
     typesig { [] }
-    # 
     # close the jar file.
     def finalize
       close
     end
     
     typesig { [String] }
-    # 
     # Returns the <code>ZipEntry</code> for the given entry name or
     # <code>null</code> if not found.
     # 
@@ -244,7 +237,6 @@ module Sun::Net::Www::Protocol::Jar
     
     class_module.module_eval {
       typesig { [URL] }
-      # 
       # Given a URL, retrieves a JAR file, caches it to disk, and creates a
       # cached JAR file object.
       def retrieve(url)
@@ -252,11 +244,9 @@ module Sun::Net::Www::Protocol::Jar
       end
       
       typesig { [URL, URLJarFileCloseController] }
-      # 
       # Given a URL, retrieves a JAR file, caches it to disk, and creates a
       # cached JAR file object.
       def retrieve(url, close_controller)
-        # 
         # See if interface is set, then call retrieve function of the class
         # that implements URLJarFileCallBack interface (sun.plugin - to
         # handle the cache failure for JARJAR file.)
@@ -319,7 +309,6 @@ module Sun::Net::Www::Protocol::Jar
       end
       
       typesig { [URLJarFileCallBack] }
-      # 
       # Set the call back interface to call retrive function in sun.plugin
       # package if plugin is running.
       def set_call_back(cb)

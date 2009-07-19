@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
 # This code is free software; you can redistribute it and/or modify it
@@ -36,7 +35,6 @@ module Sun::Security::Krb5::Internal::Rcache
     }
   end
   
-  # 
   # This class implements Hashtable to store the replay caches.
   # 
   # @author Yanni Zhang
@@ -62,7 +60,6 @@ module Sun::Security::Krb5::Internal::Rcache
     end
     
     typesig { [String, AuthTime, ::Java::Long] }
-    # 
     # Puts the client timestamp in replay cache.
     # @params principal the client's principal name.
     # @params time authenticator timestamp.
@@ -88,7 +85,6 @@ module Sun::Security::Krb5::Internal::Rcache
     end
     
     typesig { [AuthTime, String] }
-    # 
     # This method tests if replay cache keeps a record of the authenticator's time stamp.
     # If there is a record (replay attack detected), the server should reject the client request.
     # @params principal the client's principal name.

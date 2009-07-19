@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 1996 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -32,7 +31,6 @@ module Sun::Security::Acl
     }
   end
   
-  # 
   # This class implements the principal interface.
   # 
   # @author      Satish Dharmaraj
@@ -47,7 +45,6 @@ module Sun::Security::Acl
     undef_method :user=
     
     typesig { [String] }
-    # 
     # Construct a principal from a string user name.
     # @param user The string form of the principal name.
     def initialize(user)
@@ -56,7 +53,6 @@ module Sun::Security::Acl
     end
     
     typesig { [Object] }
-    # 
     # This function returns true if the object passed matches
     # the principal represented in this implementation
     # @param another the Principal to compare with.
@@ -72,21 +68,18 @@ module Sun::Security::Acl
     end
     
     typesig { [] }
-    # 
     # Prints a stringified version of the principal.
     def to_s
       return @user
     end
     
     typesig { [] }
-    # 
     # return a hashcode for the principal.
     def hash_code
       return @user.hash_code
     end
     
     typesig { [] }
-    # 
     # return the name of the principal.
     def get_name
       return @user

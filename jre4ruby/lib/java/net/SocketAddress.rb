@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 2000 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -31,8 +30,6 @@ module Java::Net
     }
   end
   
-  # 
-  # 
   # This class represents a Socket Address with no protocol attachment.
   # As an abstract class, it is meant to be subclassed with a specific,
   # protocol dependent, implementation.

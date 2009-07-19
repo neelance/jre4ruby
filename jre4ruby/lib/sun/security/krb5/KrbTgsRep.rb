@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Portions Copyright 2000-2005 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -39,7 +38,6 @@ module Sun::Security::Krb5
     }
   end
   
-  # 
   # This class encapsulates a TGS-REP that is sent from the KDC to the
   # Kerberos client.
   class KrbTgsRep < KrbTgsRepImports.const_get :KrbKdcRep
@@ -116,7 +114,6 @@ module Sun::Security::Krb5
     end
     
     typesig { [] }
-    # 
     # Return the credentials that were contained in this KRB-TGS-REP.
     def get_creds
       return @creds

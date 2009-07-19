@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
 # This code is free software; you can redistribute it and/or modify it
@@ -39,7 +38,6 @@ module Sun::Security::Krb5::Internal
     }
   end
   
-  # 
   # Implements the ASN.1 EncTicketPart type.
   # 
   # <xmp>
@@ -196,7 +194,6 @@ module Sun::Security::Krb5::Internal
     
     class_module.module_eval {
       typesig { [Array.typed(::Java::Byte), ::Java::Int] }
-      # 
       # Initializes an EncTicketPart object.
       # @param encoding a single DER-encoded value.
       # @exception Asn1Exception if an error occurs while decoding an ASN1 encoded data.
@@ -254,7 +251,6 @@ module Sun::Security::Krb5::Internal
     end
     
     typesig { [] }
-    # 
     # Encodes an EncTicketPart object.
     # @return byte array of encoded EncTicketPart object.
     # @exception Asn1Exception if an error occurs while decoding an ASN1 encoded data.

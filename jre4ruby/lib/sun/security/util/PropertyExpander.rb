@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 1998-2004 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -34,7 +33,6 @@ module Sun::Security::Util
     }
   end
   
-  # 
   # A utility class to expand properties embedded in a string.
   # Strings of the form ${some.property.name} are expanded to
   # be the value of the property. Also, the special ${/} property

@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 2000-2002 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -39,7 +38,6 @@ module Sun::Security::Provider::Certpath
     }
   end
   
-  # 
   # This class represents a vertex in the adjacency list. A
   # vertex in the builder's view is just a distinguished name
   # in the directory.  The Vertex contains a certificate
@@ -76,7 +74,6 @@ module Sun::Security::Provider::Certpath
     undef_method :throwable=
     
     typesig { [Certificate] }
-    # 
     # Constructor; creates vertex with index of -1
     # Use setIndex method to set another index.
     # 
@@ -90,7 +87,6 @@ module Sun::Security::Provider::Certpath
     end
     
     typesig { [] }
-    # 
     # return the certificate for this vertex
     # 
     # @returns Certificate
@@ -99,7 +95,6 @@ module Sun::Security::Provider::Certpath
     end
     
     typesig { [] }
-    # 
     # get the index for this vertex, where the index is the row of the
     # adjacency list that contains certificates that could follow this
     # certificate.
@@ -110,7 +105,6 @@ module Sun::Security::Provider::Certpath
     end
     
     typesig { [::Java::Int] }
-    # 
     # set the index for this vertex, where the index is the row of the
     # adjacency list that contains certificates that could follow this
     # certificate.
@@ -121,7 +115,6 @@ module Sun::Security::Provider::Certpath
     end
     
     typesig { [] }
-    # 
     # return the throwable associated with this vertex;
     # returns null if none.
     # 
@@ -131,7 +124,6 @@ module Sun::Security::Provider::Certpath
     end
     
     typesig { [Exception] }
-    # 
     # set throwable associated with this vertex; default value is null.
     # 
     # @param throwable Throwable associated with this vertex
@@ -141,7 +133,6 @@ module Sun::Security::Provider::Certpath
     end
     
     typesig { [] }
-    # 
     # Return full string representation of vertex
     # 
     # @returns String representation of vertex
@@ -150,7 +141,6 @@ module Sun::Security::Provider::Certpath
     end
     
     typesig { [] }
-    # 
     # Return string representation of this vertex's
     # certificate information.
     # 
@@ -187,10 +177,10 @@ module Sun::Security::Provider::Certpath
       s_uid = x509cert.get_subject_unique_id
       if (!(s_uid).nil?)
         out = out + "SubjectUID: "
-        i_ = 0
-        while i_ < s_uid.attr_length
-          out = out + ((s_uid[i_] ? 1 : 0)).to_s
-          ((i_ += 1) - 1)
+        i = 0
+        while i < s_uid.attr_length
+          out = out + ((s_uid[i] ? 1 : 0)).to_s
+          ((i += 1) - 1)
         end
         out = out + "\n"
       end
@@ -211,20 +201,19 @@ module Sun::Security::Provider::Certpath
       begin
         a_key_id = x509cert.get_authority_key_identifier_extension
         if (!(a_key_id).nil?)
-          key_id_ = a_key_id.get(a_key_id.attr_key_id)
-          out = out + "AuthKeyID:  " + (key_id_.to_s).to_s
+          key_id = a_key_id.get(a_key_id.attr_key_id)
+          out = out + "AuthKeyID:  " + (key_id.to_s).to_s
         end
       rescue Exception => e
         if (!(Debug).nil?)
           Debug.println("Vertex.certToString() 2 unexpected exception")
-          e_.print_stack_trace
+          e.print_stack_trace
         end
       end
       return out
     end
     
     typesig { [] }
-    # 
     # return Vertex throwable as String compatible with
     # the way toString returns other information
     # 
@@ -241,7 +230,6 @@ module Sun::Security::Provider::Certpath
     end
     
     typesig { [] }
-    # 
     # return Vertex index as String compatible with
     # the way other Vertex.xToString() methods display
     # information.
@@ -255,7 +243,6 @@ module Sun::Security::Provider::Certpath
     end
     
     typesig { [] }
-    # 
     # return Vertex index as String compatible with
     # the way other Vertex.xToString() methods displays other information.
     # 

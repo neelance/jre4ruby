@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 2003-2004 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -33,7 +32,6 @@ module Sun::Reflect::Generics::Scope
     }
   end
   
-  # 
   # This class represents the scope containing the type variables of
   # a class.
   class ClassScope < ClassScopeImports.const_get :AbstractScope
@@ -47,7 +45,6 @@ module Sun::Reflect::Generics::Scope
     end
     
     typesig { [] }
-    # 
     # Overrides the abstract method in the superclass.
     # @return the enclosing scope
     def compute_enclosing_scope
@@ -79,7 +76,6 @@ module Sun::Reflect::Generics::Scope
     
     class_module.module_eval {
       typesig { [Class] }
-      # 
       # Factory method. Takes a <tt>Class</tt> object and creates a
       # scope for it.
       # @param c - a Class whose scope we want to obtain

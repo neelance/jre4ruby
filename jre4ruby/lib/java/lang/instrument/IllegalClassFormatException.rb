@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 2003-2006 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -31,7 +30,6 @@ module Java::Lang::Instrument
     }
   end
   
-  # 
   # Copyright 2003 Wily Technology, Inc.
   # 
   # 
@@ -47,7 +45,6 @@ module Java::Lang::Instrument
     include_class_members IllegalClassFormatExceptionImports
     
     typesig { [] }
-    # 
     # Constructs an <code>IllegalClassFormatException</code> with no
     # detail message.
     def initialize
@@ -55,7 +52,6 @@ module Java::Lang::Instrument
     end
     
     typesig { [String] }
-    # 
     # Constructs an <code>IllegalClassFormatException</code> with the
     # specified detail message.
     # 

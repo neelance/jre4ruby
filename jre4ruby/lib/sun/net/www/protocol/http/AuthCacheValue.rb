@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 2003 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -39,7 +38,6 @@ module Sun::Net::Www::Protocol::Http
     }
   end
   
-  # 
   # AuthCacheValue: interface to minimise exposure to authentication cache
   # for external users (ie. plugin)
   # 
@@ -92,7 +90,6 @@ module Sun::Net::Www::Protocol::Http
         alias_method :initialize__type, :initialize
       end
       
-      # 
       # Caches authentication info entered by user.  See cacheKey()
       
       def cache
@@ -122,28 +119,24 @@ module Sun::Net::Www::Protocol::Http
     end
     
     typesig { [] }
-    # 
     # name of server/proxy
     def get_host
       raise NotImplementedError
     end
     
     typesig { [] }
-    # 
     # portnumber of server/proxy
     def get_port
       raise NotImplementedError
     end
     
     typesig { [] }
-    # 
     # realm of authentication if known
     def get_realm
       raise NotImplementedError
     end
     
     typesig { [] }
-    # 
     # root path of realm or the request path if the root
     # is not known yet.
     def get_path
@@ -151,14 +144,12 @@ module Sun::Net::Www::Protocol::Http
     end
     
     typesig { [] }
-    # 
     # returns http or https
     def get_protocol_scheme
       raise NotImplementedError
     end
     
     typesig { [] }
-    # 
     # the credentials associated with this authentication
     def credentials
       raise NotImplementedError

@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 2000-2001 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -32,8 +31,6 @@ module Java::Security::Cert
     }
   end
   
-  # 
-  # 
   # The <i>Service Provider Interface</i> (<b>SPI</b>)
   # for the {@link CertPathValidator CertPathValidator} class. All
   # <code>CertPathValidator</code> implementations must include a class (the
@@ -61,13 +58,11 @@ module Java::Security::Cert
     include_class_members CertPathValidatorSpiImports
     
     typesig { [] }
-    # 
     # The default constructor.
     def initialize
     end
     
     typesig { [CertPath, CertPathParameters] }
-    # 
     # Validates the specified certification path using the specified
     # algorithm parameter set.
     # <p>

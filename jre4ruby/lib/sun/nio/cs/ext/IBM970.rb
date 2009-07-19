@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 2003-2006 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -222,7 +221,6 @@ module Sun::Nio::Cs::Ext
         end
         
         typesig { [::Java::Char] }
-        # 
         # Returns true if the given character can be converted to the
         # target character encoding.
         def can_encode(ch)

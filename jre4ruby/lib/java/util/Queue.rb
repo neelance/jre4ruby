@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
 # This code is free software; you can redistribute it and/or modify it
@@ -40,7 +39,6 @@ module Java::Util
     }
   end
   
-  # 
   # A collection designed for holding elements prior to processing.
   # Besides basic {@link java.util.Collection Collection} operations,
   # queues provide additional insertion, extraction, and inspection
@@ -150,7 +148,6 @@ module Java::Util
     include Collection
     
     typesig { [Object] }
-    # 
     # Inserts the specified element into this queue if it is possible to do so
     # immediately without violating capacity restrictions, returning
     # <tt>true</tt> upon success and throwing an <tt>IllegalStateException</tt>
@@ -171,7 +168,6 @@ module Java::Util
     end
     
     typesig { [Object] }
-    # 
     # Inserts the specified element into this queue if it is possible to do
     # so immediately without violating capacity restrictions.
     # When using a capacity-restricted queue, this method is generally
@@ -192,7 +188,6 @@ module Java::Util
     end
     
     typesig { [] }
-    # 
     # Retrieves and removes the head of this queue.  This method differs
     # from {@link #poll poll} only in that it throws an exception if this
     # queue is empty.
@@ -204,7 +199,6 @@ module Java::Util
     end
     
     typesig { [] }
-    # 
     # Retrieves and removes the head of this queue,
     # or returns <tt>null</tt> if this queue is empty.
     # 
@@ -214,7 +208,6 @@ module Java::Util
     end
     
     typesig { [] }
-    # 
     # Retrieves, but does not remove, the head of this queue.  This method
     # differs from {@link #peek peek} only in that it throws an exception
     # if this queue is empty.
@@ -226,7 +219,6 @@ module Java::Util
     end
     
     typesig { [] }
-    # 
     # Retrieves, but does not remove, the head of this queue,
     # or returns <tt>null</tt> if this queue is empty.
     # 

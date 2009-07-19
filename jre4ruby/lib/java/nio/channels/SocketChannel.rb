@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 2000-2001 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -36,7 +35,6 @@ module Java::Nio::Channels
     }
   end
   
-  # 
   # A selectable channel for stream-oriented connecting sockets.
   # 
   # <p> Socket channels are not a complete abstraction of connecting network
@@ -102,7 +100,6 @@ module Java::Nio::Channels
     include GatheringByteChannel
     
     typesig { [SelectorProvider] }
-    # 
     # Initializes a new instance of this class.
     def initialize(provider)
       super(provider)
@@ -110,7 +107,6 @@ module Java::Nio::Channels
     
     class_module.module_eval {
       typesig { [] }
-      # 
       # Opens a socket channel.
       # 
       # <p> The new channel is created by invoking the {@link
@@ -127,7 +123,6 @@ module Java::Nio::Channels
       end
       
       typesig { [SocketAddress] }
-      # 
       # Opens a socket channel and connects it to a remote address.
       # 
       # <p> This convenience method works as if by invoking the {@link #open()}
@@ -178,7 +173,6 @@ module Java::Nio::Channels
     }
     
     typesig { [] }
-    # 
     # Returns an operation set identifying this channel's supported
     # operations.
     # 
@@ -206,7 +200,6 @@ module Java::Nio::Channels
     end
     
     typesig { [] }
-    # 
     # Tells whether or not this channel's network socket is connected.  </p>
     # 
     # @return  <tt>true</tt> if, and only if, this channel's network socket
@@ -216,7 +209,6 @@ module Java::Nio::Channels
     end
     
     typesig { [] }
-    # 
     # Tells whether or not a connection operation is in progress on this
     # channel.  </p>
     # 
@@ -228,7 +220,6 @@ module Java::Nio::Channels
     end
     
     typesig { [SocketAddress] }
-    # 
     # Connects this channel's socket.
     # 
     # <p> If this channel is in non-blocking mode then an invocation of this
@@ -299,7 +290,6 @@ module Java::Nio::Channels
     end
     
     typesig { [] }
-    # 
     # Finishes the process of connecting a socket channel.
     # 
     # <p> A non-blocking connection operation is initiated by placing a socket
@@ -361,7 +351,6 @@ module Java::Nio::Channels
     end
     
     typesig { [Array.typed(ByteBuffer), ::Java::Int, ::Java::Int] }
-    # 
     # @throws  NotYetConnectedException
     # If this channel is not yet connected
     def read(dsts, offset, length)
@@ -369,7 +358,6 @@ module Java::Nio::Channels
     end
     
     typesig { [Array.typed(ByteBuffer)] }
-    # 
     # @throws  NotYetConnectedException
     # If this channel is not yet connected
     def read(dsts)
@@ -377,7 +365,6 @@ module Java::Nio::Channels
     end
     
     typesig { [ByteBuffer] }
-    # 
     # @throws  NotYetConnectedException
     # If this channel is not yet connected
     def write(src)
@@ -385,7 +372,6 @@ module Java::Nio::Channels
     end
     
     typesig { [Array.typed(ByteBuffer), ::Java::Int, ::Java::Int] }
-    # 
     # @throws  NotYetConnectedException
     # If this channel is not yet connected
     def write(srcs, offset, length)
@@ -393,7 +379,6 @@ module Java::Nio::Channels
     end
     
     typesig { [Array.typed(ByteBuffer)] }
-    # 
     # @throws  NotYetConnectedException
     # If this channel is not yet connected
     def write(srcs)

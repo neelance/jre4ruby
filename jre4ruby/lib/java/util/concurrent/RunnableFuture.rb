@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
 # This code is free software; you can redistribute it and/or modify it
@@ -40,7 +39,6 @@ module Java::Util::Concurrent
     }
   end
   
-  # 
   # A {@link Future} that is {@link Runnable}. Successful execution of
   # the <tt>run</tt> method causes completion of the <tt>Future</tt>
   # and allows access to its results.
@@ -55,7 +53,6 @@ module Java::Util::Concurrent
     include Future
     
     typesig { [] }
-    # 
     # Sets this Future to the result of its computation
     # unless it has been cancelled.
     def run

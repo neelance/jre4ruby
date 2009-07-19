@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 2003-2004 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -35,7 +34,6 @@ module Java::Net
     }
   end
   
-  # 
   # Represents a cache response originally retrieved through secure
   # means, such as TLS.
   # 
@@ -44,7 +42,6 @@ module Java::Net
     include_class_members SecureCacheResponseImports
     
     typesig { [] }
-    # 
     # Returns the cipher suite in use on the original connection that
     # retrieved the network resource.
     # 
@@ -54,7 +51,6 @@ module Java::Net
     end
     
     typesig { [] }
-    # 
     # Returns the certificate chain that were sent to the server during
     # handshaking of the original connection that retrieved the
     # network resource.  Note: This method is useful only
@@ -69,7 +65,6 @@ module Java::Net
     end
     
     typesig { [] }
-    # 
     # Returns the server's certificate chain, which was established as
     # part of defining the session in the original connection that
     # retrieved the network resource, from cache.  Note: This method
@@ -86,7 +81,6 @@ module Java::Net
     end
     
     typesig { [] }
-    # 
     # Returns the server's principal which was established as part of
     # defining the session during the original connection that
     # retrieved the network resource.
@@ -104,7 +98,6 @@ module Java::Net
     end
     
     typesig { [] }
-    # 
     # Returns the principal that was sent to the server during
     # handshaking in the original connection that retrieved the
     # network resource.

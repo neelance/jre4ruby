@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 2000-2005 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -49,7 +48,6 @@ module Java::Util
     }
   end
   
-  # 
   # Represents a currency. Currencies are identified by their ISO 4217 currency
   # codes. Visit the <a href="http://www.bsi-global.com/">
   # BSi web site</a> for more information, including a table of
@@ -70,7 +68,6 @@ module Java::Util
       const_attr_reader  :SerialVersionUID
     }
     
-    # 
     # ISO 4217 currency code for this currency.
     # 
     # @serial
@@ -80,7 +77,6 @@ module Java::Util
     alias_method :attr_currency_code=, :currency_code=
     undef_method :currency_code=
     
-    # 
     # Default fraction digits for this currency.
     # Set from currency data tables.
     attr_accessor :default_fraction_digits
@@ -89,7 +85,6 @@ module Java::Util
     alias_method :attr_default_fraction_digits=, :default_fraction_digits=
     undef_method :default_fraction_digits=
     
-    # 
     # ISO 4217 numeric code for this currency.
     # Set from currency data tables.
     attr_accessor :numeric_code
@@ -416,7 +411,7 @@ module Java::Util
                   end
                 end
               rescue IOException => e
-                log(Level::INFO, "currency.properties is ignored because of an IOException", e_)
+                log(Level::INFO, "currency.properties is ignored because of an IOException", e)
               end
             end
             return nil
@@ -432,7 +427,6 @@ module Java::Util
         end.new_local(self))
       end
       
-      # 
       # Constants for retrieving localized names from the name providers.
       const_set_lazy(:SYMBOL) { 0 }
       const_attr_reader  :SYMBOL
@@ -442,7 +436,6 @@ module Java::Util
     }
     
     typesig { [String, ::Java::Int, ::Java::Int] }
-    # 
     # Constructs a <code>Currency</code> instance. The constructor is private
     # so that we can insure that there's never more than one instance for a
     # given currency.
@@ -457,7 +450,6 @@ module Java::Util
     
     class_module.module_eval {
       typesig { [String] }
-      # 
       # Returns the <code>Currency</code> instance for the given currency code.
       # 
       # @param currencyCode the ISO 4217 code of the currency
@@ -512,7 +504,6 @@ module Java::Util
       end
       
       typesig { [Locale] }
-      # 
       # Returns the <code>Currency</code> instance for the country of the
       # given locale. The language and variant components of the locale
       # are ignored. The result may vary over time, as countries change their
@@ -569,7 +560,6 @@ module Java::Util
       end
       
       typesig { [] }
-      # 
       # Gets the set of available currencies.  The returned set of currencies
       # contains all of the available currencies, which may include currencies
       # that represent obsolete ISO 4217 codes.  The set can be modified
@@ -614,7 +604,6 @@ module Java::Util
     }
     
     typesig { [] }
-    # 
     # Gets the ISO 4217 currency code of this currency.
     # 
     # @return the ISO 4217 currency code of this currency.
@@ -623,7 +612,6 @@ module Java::Util
     end
     
     typesig { [] }
-    # 
     # Gets the symbol of this currency for the default locale.
     # For example, for the US Dollar, the symbol is "$" if the default
     # locale is the US, while for other locales it may be "US$". If no
@@ -635,7 +623,6 @@ module Java::Util
     end
     
     typesig { [Locale] }
-    # 
     # Gets the symbol of this currency for the specified locale.
     # For example, for the US Dollar, the symbol is "$" if the specified
     # locale is the US, while for other locales it may be "US$". If no
@@ -670,7 +657,6 @@ module Java::Util
     end
     
     typesig { [] }
-    # 
     # Gets the default number of fraction digits used with this currency.
     # For example, the default number of fraction digits for the Euro is 2,
     # while for the Japanese Yen it's 0.
@@ -683,7 +669,6 @@ module Java::Util
     end
     
     typesig { [] }
-    # 
     # Returns the ISO 4217 numeric code of this currency.
     # 
     # @return the ISO 4217 numeric code of this currency
@@ -693,7 +678,6 @@ module Java::Util
     end
     
     typesig { [] }
-    # 
     # Gets the name that is suitable for displaying this currency for
     # the default locale.  If there is no suitable display name found
     # for the default locale, the ISO 4217 currency code is returned.
@@ -705,7 +689,6 @@ module Java::Util
     end
     
     typesig { [Locale] }
-    # 
     # Gets the name that is suitable for displaying this currency for
     # the specified locale.  If there is no suitable display name found
     # for the specified locale, the ISO 4217 currency code is returned.
@@ -740,7 +723,6 @@ module Java::Util
     end
     
     typesig { [] }
-    # 
     # Returns the ISO 4217 currency code of this currency.
     # 
     # @return the ISO 4217 currency code of this currency
@@ -749,7 +731,6 @@ module Java::Util
     end
     
     typesig { [] }
-    # 
     # Resolves instances being deserialized to a single instance per currency.
     def read_resolve
       return get_instance(@currency_code)
@@ -757,7 +738,6 @@ module Java::Util
     
     class_module.module_eval {
       typesig { [::Java::Char, ::Java::Char] }
-      # 
       # Gets the main table entry for the country whose country code consists
       # of char1 and char2.
       def get_main_table_entry(char1, char2)
@@ -768,7 +748,6 @@ module Java::Util
       end
       
       typesig { [::Java::Char, ::Java::Char, ::Java::Int] }
-      # 
       # Sets the main table entry for the country whose country code consists
       # of char1 and char2.
       def set_main_table_entry(char1, char2, entry)
@@ -778,7 +757,6 @@ module Java::Util
         self.attr_main_table[(char1 - Character.new(?A.ord)) * A_TO_Z + (char2 - Character.new(?A.ord))] = entry
       end
       
-      # 
       # Obtains a localized currency names from a CurrencyNameProvider
       # implementation.
       const_set_lazy(:CurrencyNameGetter) { Class.new do
@@ -847,7 +825,6 @@ module Java::Util
       end
       
       typesig { [Pattern, String, String] }
-      # 
       # Replaces currency data found in the currencydata.properties file
       # 
       # @param pattern regex pattern for the properties
@@ -867,8 +844,8 @@ module Java::Util
         m = pattern.matcher(curdata)
         if (!m.find)
           # format is not recognized.  ignore the data
-          message_ = StringBuilder.new.append("The entry in currency.properties for ").append(ctry).append(" is ignored because the value format is not recognized.").to_s
-          log(Level::INFO, message_, nil)
+          message = StringBuilder.new.append("The entry in currency.properties for ").append(ctry).append(" is ignored because the value format is not recognized.").to_s
+          log(Level::INFO, message, nil)
           return
         end
         code = m.group(1)

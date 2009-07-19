@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 1997-2006 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -50,7 +49,6 @@ module Java::Text
     }
   end
   
-  # 
   # The <code>Collator</code> class performs locale-sensitive
   # <code>String</code> comparison. You use this class to build
   # searching and sorting routines for natural language text.
@@ -131,7 +129,6 @@ module Java::Text
     include Cloneable
     
     class_module.module_eval {
-      # 
       # Collator strength value.  When set, only PRIMARY differences are
       # considered significant during comparison. The assignment of strengths
       # to language features is locale dependant. A common example is for
@@ -141,7 +138,6 @@ module Java::Text
       const_set_lazy(:PRIMARY) { 0 }
       const_attr_reader  :PRIMARY
       
-      # 
       # Collator strength value.  When set, only SECONDARY and above differences are
       # considered significant during comparison. The assignment of strengths
       # to language features is locale dependant. A common example is for
@@ -152,7 +148,6 @@ module Java::Text
       const_set_lazy(:SECONDARY) { 1 }
       const_attr_reader  :SECONDARY
       
-      # 
       # Collator strength value.  When set, only TERTIARY and above differences are
       # considered significant during comparison. The assignment of strengths
       # to language features is locale dependant. A common example is for
@@ -162,7 +157,6 @@ module Java::Text
       const_set_lazy(:TERTIARY) { 2 }
       const_attr_reader  :TERTIARY
       
-      # 
       # Collator strength value.  When set, all differences are
       # considered significant during comparison. The assignment of strengths
       # to language features is locale dependant. A common example is for control
@@ -175,7 +169,6 @@ module Java::Text
       const_set_lazy(:IDENTICAL) { 3 }
       const_attr_reader  :IDENTICAL
       
-      # 
       # Decomposition mode value. With NO_DECOMPOSITION
       # set, accented characters will not be decomposed for collation. This
       # is the default setting and provides the fastest collation but
@@ -185,7 +178,6 @@ module Java::Text
       const_set_lazy(:NO_DECOMPOSITION) { 0 }
       const_attr_reader  :NO_DECOMPOSITION
       
-      # 
       # Decomposition mode value. With CANONICAL_DECOMPOSITION
       # set, characters that are canonical variants according to Unicode
       # standard will be decomposed for collation. This should be used to get
@@ -200,7 +192,6 @@ module Java::Text
       const_set_lazy(:CANONICAL_DECOMPOSITION) { 1 }
       const_attr_reader  :CANONICAL_DECOMPOSITION
       
-      # 
       # Decomposition mode value. With FULL_DECOMPOSITION
       # set, both Unicode canonical variants and Unicode compatibility variants
       # will be decomposed for collation.  This causes not only accented
@@ -220,7 +211,6 @@ module Java::Text
       const_attr_reader  :FULL_DECOMPOSITION
       
       typesig { [] }
-      # 
       # Gets the Collator for the current default locale.
       # The default locale is determined by java.util.Locale.getDefault.
       # @return the Collator for the default locale.(for example, en_US)
@@ -232,7 +222,6 @@ module Java::Text
       end
       
       typesig { [Locale] }
-      # 
       # Gets the Collator for the desired locale.
       # @param desiredLocale the desired locale.
       # @return the Collator for the desired locale.
@@ -283,7 +272,6 @@ module Java::Text
     }
     
     typesig { [String, String] }
-    # 
     # Compares the source string to the target string according to the
     # collation rules for this Collator.  Returns an integer less than,
     # equal to or greater than zero depending on whether the source String is
@@ -306,7 +294,6 @@ module Java::Text
     end
     
     typesig { [Object, Object] }
-    # 
     # Compares its two arguments for order.  Returns a negative integer,
     # zero, or a positive integer as the first argument is less than, equal
     # to, or greater than the second.
@@ -325,7 +312,6 @@ module Java::Text
     end
     
     typesig { [String] }
-    # 
     # Transforms the String into a series of bits that can be compared bitwise
     # to other CollationKeys. CollationKeys provide better performance than
     # Collator.compare when Strings are involved in multiple comparisons.
@@ -340,7 +326,6 @@ module Java::Text
     end
     
     typesig { [String, String] }
-    # 
     # Convenience method for comparing the equality of two strings based on
     # this Collator's collation rules.
     # @param source the source string to be compared with.
@@ -353,7 +338,6 @@ module Java::Text
     end
     
     typesig { [] }
-    # 
     # Returns this Collator's strength property.  The strength property determines
     # the minimum level of difference considered significant during comparison.
     # See the Collator class description for an example of use.
@@ -370,7 +354,6 @@ module Java::Text
     end
     
     typesig { [::Java::Int] }
-    # 
     # Sets this Collator's strength property.  The strength property determines
     # the minimum level of difference considered significant during comparison.
     # See the Collator class description for an example of use.
@@ -392,7 +375,6 @@ module Java::Text
     end
     
     typesig { [] }
-    # 
     # Get the decomposition mode of this Collator. Decomposition mode
     # determines how Unicode composed characters are handled. Adjusting
     # decomposition mode allows the user to select between faster and more
@@ -417,7 +399,6 @@ module Java::Text
     end
     
     typesig { [::Java::Int] }
-    # 
     # Set the decomposition mode of this Collator. See getDecomposition
     # for a description of decomposition mode.
     # @param decompositionMode  the new decomposition mode.
@@ -438,7 +419,6 @@ module Java::Text
     
     class_module.module_eval {
       typesig { [] }
-      # 
       # Returns an array of all locales for which the
       # <code>getInstance</code> methods of this class can return
       # localized instances.
@@ -459,7 +439,6 @@ module Java::Text
     }
     
     typesig { [] }
-    # 
     # Overrides Cloneable
     def clone
       begin
@@ -470,7 +449,6 @@ module Java::Text
     end
     
     typesig { [Object] }
-    # 
     # Compares the equality of two Collators.
     # @param that the Collator to be compared with this.
     # @return true if this Collator is the same as that Collator;
@@ -490,14 +468,12 @@ module Java::Text
     end
     
     typesig { [] }
-    # 
     # Generates the hash code for this Collator.
     def hash_code
       raise NotImplementedError
     end
     
     typesig { [] }
-    # 
     # Default constructor.  This constructor is
     # protected so subclasses can get access to it. Users typically create
     # a Collator sub-class by calling the factory method getInstance.
@@ -533,7 +509,6 @@ module Java::Text
       end
       alias_method :attr_cache=, :cache=
       
-      # 
       # FIXME: These three constants should be removed.
       # 
       # 
@@ -543,21 +518,18 @@ module Java::Text
       const_set_lazy(:LESS) { -1 }
       const_attr_reader  :LESS
       
-      # 
       # EQUAL is returned if source string is compared to be equal to target
       # string in the compare() method.
       # @see java.text.Collator#compare
       const_set_lazy(:EQUAL) { 0 }
       const_attr_reader  :EQUAL
       
-      # 
       # GREATER is returned if source string is compared to be greater than
       # target string in the compare() method.
       # @see java.text.Collator#compare
       const_set_lazy(:GREATER) { 1 }
       const_attr_reader  :GREATER
       
-      # 
       # Obtains a Collator instance from a CollatorProvider
       # implementation.
       const_set_lazy(:CollatorGetter) { Class.new do

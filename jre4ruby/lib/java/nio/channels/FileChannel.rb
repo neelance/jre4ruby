@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 2000-2005 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -35,7 +34,6 @@ module Java::Nio::Channels
     }
   end
   
-  # 
   # A channel for reading, writing, mapping, and manipulating a file.
   # 
   # <p> A file channel has a current <i>position</i> within its file which can
@@ -158,7 +156,6 @@ module Java::Nio::Channels
     include ScatteringByteChannel
     
     typesig { [] }
-    # 
     # Initializes a new instance of this class.
     def initialize
       super()
@@ -178,7 +175,6 @@ module Java::Nio::Channels
     end
     
     typesig { [Array.typed(ByteBuffer), ::Java::Int, ::Java::Int] }
-    # 
     # Reads a sequence of bytes from this channel into a subsequence of the
     # given buffers.
     # 
@@ -191,7 +187,6 @@ module Java::Nio::Channels
     end
     
     typesig { [Array.typed(ByteBuffer)] }
-    # 
     # Reads a sequence of bytes from this channel into the given buffers.
     # 
     # <p> Bytes are read starting at this channel's current file position, and
@@ -203,7 +198,6 @@ module Java::Nio::Channels
     end
     
     typesig { [ByteBuffer] }
-    # 
     # Writes a sequence of bytes to this channel from the given buffer.
     # 
     # <p> Bytes are written starting at this channel's current file position
@@ -218,7 +212,6 @@ module Java::Nio::Channels
     end
     
     typesig { [Array.typed(ByteBuffer), ::Java::Int, ::Java::Int] }
-    # 
     # Writes a sequence of bytes to this channel from a subsequence of the
     # given buffers.
     # 
@@ -234,7 +227,6 @@ module Java::Nio::Channels
     end
     
     typesig { [Array.typed(ByteBuffer)] }
-    # 
     # Writes a sequence of bytes to this channel from the given buffers.
     # 
     # <p> Bytes are written starting at this channel's current file position
@@ -267,7 +259,6 @@ module Java::Nio::Channels
     end
     
     typesig { [::Java::Long] }
-    # 
     # Sets this channel's file position.
     # 
     # <p> Setting the position to a value that is greater than the file's
@@ -297,7 +288,6 @@ module Java::Nio::Channels
     end
     
     typesig { [] }
-    # 
     # Returns the current size of this channel's file. </p>
     # 
     # @return  The current size of this channel's file,
@@ -313,7 +303,6 @@ module Java::Nio::Channels
     end
     
     typesig { [::Java::Long] }
-    # 
     # Truncates this channel's file to the given size.
     # 
     # <p> If the given size is less than the file's current size then the file
@@ -344,7 +333,6 @@ module Java::Nio::Channels
     end
     
     typesig { [::Java::Boolean] }
-    # 
     # Forces any updates to this channel's file to be written to the storage
     # device that contains it.
     # 
@@ -396,7 +384,6 @@ module Java::Nio::Channels
     end
     
     typesig { [::Java::Long, ::Java::Long, WritableByteChannel] }
-    # 
     # Transfers bytes from this channel's file to the given writable byte
     # channel.
     # 
@@ -463,7 +450,6 @@ module Java::Nio::Channels
     end
     
     typesig { [ReadableByteChannel, ::Java::Long, ::Java::Long] }
-    # 
     # Transfers bytes into this channel's file from the given readable byte
     # channel.
     # 
@@ -530,7 +516,6 @@ module Java::Nio::Channels
     end
     
     typesig { [ByteBuffer, ::Java::Long] }
-    # 
     # Reads a sequence of bytes from this channel into the given buffer,
     # starting at the given file position.
     # 
@@ -577,7 +562,6 @@ module Java::Nio::Channels
     end
     
     typesig { [ByteBuffer, ::Java::Long] }
-    # 
     # Writes a sequence of bytes to this channel from the given buffer,
     # starting at the given file position.
     # 
@@ -635,17 +619,14 @@ module Java::Nio::Channels
         include_class_members FileChannel
         
         class_module.module_eval {
-          # 
           # Mode for a read-only mapping.
           const_set_lazy(:READ_ONLY) { MapMode.new("READ_ONLY") }
           const_attr_reader  :READ_ONLY
           
-          # 
           # Mode for a read/write mapping.
           const_set_lazy(:READ_WRITE) { MapMode.new("READ_WRITE") }
           const_attr_reader  :READ_WRITE
           
-          # 
           # Mode for a private (copy-on-write) mapping.
           const_set_lazy(:PRIVATE) { MapMode.new("PRIVATE") }
           const_attr_reader  :PRIVATE
@@ -664,7 +645,6 @@ module Java::Nio::Channels
         end
         
         typesig { [] }
-        # 
         # Returns a string describing this file-mapping mode.
         # 
         # @return  A descriptive string
@@ -678,7 +658,6 @@ module Java::Nio::Channels
     }
     
     typesig { [MapMode, ::Java::Long, ::Java::Long] }
-    # 
     # Maps a region of this channel's file directly into memory.
     # 
     # <p> A region of a file may be mapped into memory in one of three modes:
@@ -862,7 +841,6 @@ module Java::Nio::Channels
     end
     
     typesig { [] }
-    # 
     # Acquires an exclusive lock on this channel's file.
     # 
     # <p> An invocation of this method of the form <tt>fc.lock()</tt> behaves
@@ -904,7 +882,6 @@ module Java::Nio::Channels
     end
     
     typesig { [::Java::Long, ::Java::Long, ::Java::Boolean] }
-    # 
     # Attempts to acquire a lock on the given region of this channel's file.
     # 
     # <p> This method does not block.  An invocation always returns
@@ -974,7 +951,6 @@ module Java::Nio::Channels
     end
     
     typesig { [] }
-    # 
     # Attempts to acquire an exclusive lock on this channel's file.
     # 
     # <p> An invocation of this method of the form <tt>fc.tryLock()</tt>

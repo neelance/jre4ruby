@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 1999-2006 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -31,7 +30,6 @@ module Java::Security
     }
   end
   
-  # 
   # A <code>DomainCombiner</code> provides a means to dynamically
   # update the ProtectionDomains associated with the current
   # <code>AccessControlContext</code>.
@@ -87,7 +85,6 @@ module Java::Security
     include_class_members DomainCombinerImports
     
     typesig { [Array.typed(ProtectionDomain), Array.typed(ProtectionDomain)] }
-    # 
     # Modify or update the provided ProtectionDomains.
     # ProtectionDomains may be added to or removed from the given
     # ProtectionDomains.  The ProtectionDomains may be re-ordered.

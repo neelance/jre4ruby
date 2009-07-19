@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 1999-2006 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -35,7 +34,6 @@ module Sun::Net::Www::Http
     }
   end
   
-  # 
   # A <code>ChunkedInputStream</code> provides a stream for reading a body of
   # a http message that can be sent as a series of chunks, each with its own
   # size indicator. Optionally the last chunk can be followed by trailers
@@ -48,7 +46,6 @@ module Sun::Net::Www::Http
     include_class_members ChunkedInputStreamImports
     include Hurryable
     
-    # 
     # The underlying stream
     attr_accessor :in
     alias_method :attr_in, :in
@@ -56,7 +53,6 @@ module Sun::Net::Www::Http
     alias_method :attr_in=, :in=
     undef_method :in=
     
-    # 
     # The <code>HttpClient</code> that should be notified when the chunked stream has
     # completed.
     attr_accessor :hc
@@ -65,7 +61,6 @@ module Sun::Net::Www::Http
     alias_method :attr_hc=, :hc=
     undef_method :hc=
     
-    # 
     # The <code>MessageHeader</code> that is populated with any optional trailer
     # that appear after the last chunk.
     attr_accessor :responses
@@ -74,7 +69,6 @@ module Sun::Net::Www::Http
     alias_method :attr_responses=, :responses=
     undef_method :responses=
     
-    # 
     # The size, in bytes, of the chunk that is currently being read.
     # This size is only valid if the current position in the underlying
     # input stream is inside a chunk (ie: state == STATE_READING_CHUNK).
@@ -84,7 +78,6 @@ module Sun::Net::Www::Http
     alias_method :attr_chunk_size=, :chunk_size=
     undef_method :chunk_size=
     
-    # 
     # The number of bytes read from the underlying stream for the current
     # chunk. This value is always in the range <code>0</code> through to
     # <code>chunkSize</code>
@@ -94,7 +87,6 @@ module Sun::Net::Www::Http
     alias_method :attr_chunk_read=, :chunk_read=
     undef_method :chunk_read=
     
-    # 
     # The internal buffer array where chunk data is available for the
     # application to read.
     attr_accessor :chunk_data
@@ -103,7 +95,6 @@ module Sun::Net::Www::Http
     alias_method :attr_chunk_data=, :chunk_data=
     undef_method :chunk_data=
     
-    # 
     # The current position in the buffer. It contains the index
     # of the next byte to read from <code>chunkData</code>
     attr_accessor :chunk_pos
@@ -112,7 +103,6 @@ module Sun::Net::Www::Http
     alias_method :attr_chunk_pos=, :chunk_pos=
     undef_method :chunk_pos=
     
-    # 
     # The index one greater than the index of the last valid byte in the
     # buffer. This value is always in the range <code>0</code> through
     # <code>chunkData.length</code>.
@@ -122,7 +112,6 @@ module Sun::Net::Www::Http
     alias_method :attr_chunk_count=, :chunk_count=
     undef_method :chunk_count=
     
-    # 
     # The internal buffer where bytes from the underlying stream can be
     # read. It may contain bytes representing chunk-size, chunk-data, or
     # trailer fields.
@@ -132,7 +121,6 @@ module Sun::Net::Www::Http
     alias_method :attr_raw_data=, :raw_data=
     undef_method :raw_data=
     
-    # 
     # The current position in the buffer. It contains the index
     # of the next byte to read from <code>rawData</code>
     attr_accessor :raw_pos
@@ -141,7 +129,6 @@ module Sun::Net::Www::Http
     alias_method :attr_raw_pos=, :raw_pos=
     undef_method :raw_pos=
     
-    # 
     # The index one greater than the index of the last valid byte in the
     # buffer. This value is always in the range <code>0</code> through
     # <code>rawData.length</code>.
@@ -151,7 +138,6 @@ module Sun::Net::Www::Http
     alias_method :attr_raw_count=, :raw_count=
     undef_method :raw_count=
     
-    # 
     # Indicates if an error was encountered when processing the chunked
     # stream.
     attr_accessor :error
@@ -160,7 +146,6 @@ module Sun::Net::Www::Http
     alias_method :attr_error=, :error=
     undef_method :error=
     
-    # 
     # Indicates if the chunked stream has been closed using the
     # <code>close</code> method.
     attr_accessor :closed
@@ -170,38 +155,32 @@ module Sun::Net::Www::Http
     undef_method :closed=
     
     class_module.module_eval {
-      # 
       # State to indicate that next field should be :-
       # chunk-size [ chunk-extension ] CRLF
       const_set_lazy(:STATE_AWAITING_CHUNK_HEADER) { 1 }
       const_attr_reader  :STATE_AWAITING_CHUNK_HEADER
       
-      # 
       # State to indicate that we are currently reading the chunk-data.
       const_set_lazy(:STATE_READING_CHUNK) { 2 }
       const_attr_reader  :STATE_READING_CHUNK
       
-      # 
       # Indicates that a chunk has been completely read and the next
       # fields to be examine should be CRLF
       const_set_lazy(:STATE_AWAITING_CHUNK_EOL) { 3 }
       const_attr_reader  :STATE_AWAITING_CHUNK_EOL
       
-      # 
       # Indicates that all chunks have been read and the next field
       # should be optional trailers or an indication that the chunked
       # stream is complete.
       const_set_lazy(:STATE_AWAITING_TRAILERS) { 4 }
       const_attr_reader  :STATE_AWAITING_TRAILERS
       
-      # 
       # State to indicate that the chunked stream is complete and
       # no further bytes should be read from the underlying stream.
       const_set_lazy(:STATE_DONE) { 5 }
       const_attr_reader  :STATE_DONE
     }
     
-    # 
     # Indicates the current state.
     attr_accessor :state
     alias_method :attr_state, :state
@@ -210,7 +189,6 @@ module Sun::Net::Www::Http
     undef_method :state=
     
     typesig { [] }
-    # 
     # Check to make sure that this stream has not been closed.
     def ensure_open
       if (@closed)
@@ -219,7 +197,6 @@ module Sun::Net::Www::Http
     end
     
     typesig { [::Java::Int] }
-    # 
     # Ensures there is <code>size</code> bytes available in
     # <code>rawData</code>. This requires that we either
     # shift the bytes in use to the begining of the buffer
@@ -244,7 +221,6 @@ module Sun::Net::Www::Http
     end
     
     typesig { [] }
-    # 
     # Close the underlying input stream by either returning it to the
     # keep alive cache or closing the stream.
     # <p>
@@ -266,7 +242,6 @@ module Sun::Net::Www::Http
     end
     
     typesig { [Array.typed(::Java::Byte), ::Java::Int, ::Java::Int] }
-    # 
     # Attempt to read the remainder of a chunk directly into the
     # caller's buffer.
     # <p>
@@ -298,7 +273,6 @@ module Sun::Net::Www::Http
     end
     
     typesig { [] }
-    # 
     # Process any outstanding bytes that have already been read into
     # <code>rawData</code>.
     # <p>
@@ -315,7 +289,6 @@ module Sun::Net::Www::Http
       i = 0
       while (!(@state).equal?(STATE_DONE))
         case (@state)
-        # 
         # We are awaiting a line with a chunk header
         # 
         # 
@@ -330,7 +303,6 @@ module Sun::Net::Www::Http
         # Last chunk has been read so not we're waiting for optional
         # trailers.
         when STATE_AWAITING_CHUNK_HEADER
-          # 
           # Find \n to indicate end of chunk header. If not found when there is
           # insufficient bytes in the raw buffer to parse a chunk header.
           pos = @raw_pos
@@ -343,7 +315,6 @@ module Sun::Net::Www::Http
           if (pos >= @raw_count)
             return
           end
-          # 
           # Extract the chunk size from the header (ignoring extensions).
           header = String.new(@raw_data, @raw_pos, pos - @raw_pos + 1, "US-ASCII")
           i = 0
@@ -359,12 +330,10 @@ module Sun::Net::Www::Http
             @error = true
             raise IOException.new("Bogus chunk size")
           end
-          # 
           # Chunk has been parsed so move rawPos to first byte of chunk
           # data.
           @raw_pos = pos + 1
           @chunk_read = 0
-          # 
           # A chunk size of 0 means EOF.
           if (@chunk_size > 0)
             @state = STATE_READING_CHUNK
@@ -376,11 +345,9 @@ module Sun::Net::Www::Http
           if (@raw_pos >= @raw_count)
             return
           end
-          # 
           # Compute the number of bytes of chunk data available in the
           # raw buffer.
           copy_len = Math.min(@chunk_size - @chunk_read, @raw_count - @raw_pos)
-          # 
           # Expand or compact chunkData if needed.
           if (@chunk_data.attr_length < @chunk_count + copy_len)
             cnt = @chunk_count - @chunk_pos
@@ -394,14 +361,12 @@ module Sun::Net::Www::Http
             @chunk_pos = 0
             @chunk_count = cnt
           end
-          # 
           # Copy the chunk data into chunkData so that it's available
           # to the read methods.
           System.arraycopy(@raw_data, @raw_pos, @chunk_data, @chunk_count, copy_len)
           @raw_pos += copy_len
           @chunk_count += copy_len
           @chunk_read += copy_len
-          # 
           # If all the chunk has been copied into chunkData then the next
           # token should be CRLF.
           if (@chunk_size - @chunk_read <= 0)
@@ -423,11 +388,9 @@ module Sun::Net::Www::Http
             raise IOException.new("missing LF")
           end
           @raw_pos += 2
-          # 
           # Move onto the next chunk
           @state = STATE_AWAITING_CHUNK_HEADER
         when STATE_AWAITING_TRAILERS
-          # 
           # Do we have an entire line in the raw buffer?
           pos = @raw_pos
           while (pos < @raw_count)
@@ -447,14 +410,12 @@ module Sun::Net::Www::Http
             @error = true
             raise IOException.new("LF should be proceeded by CR")
           end
-          # 
           # Stream done so close underlying stream.
           if ((pos).equal?((@raw_pos + 1)))
             @state = STATE_DONE
             close_underlying
             return
           end
-          # 
           # Extract any tailers and append them to the message
           # headers.
           trailer = String.new(@raw_data, @raw_pos, pos - @raw_pos, "US-ASCII")
@@ -465,7 +426,6 @@ module Sun::Net::Www::Http
           key = (trailer.substring(0, i)).trim
           value = (trailer.substring(i + 1, trailer.length)).trim
           @responses.add(key, value)
-          # 
           # Move onto the next trailer.
           @raw_pos = pos + 1
         end
@@ -473,13 +433,11 @@ module Sun::Net::Www::Http
     end
     
     typesig { [] }
-    # 
     # Reads any available bytes from the underlying stream into
     # <code>rawData</code> and returns the number of bytes of
     # chunk data available in <code>chunkData</code> that the
     # application can read.
     def read_ahead_non_blocking
-      # 
       # If there's anything available on the underlying stream then we read
       # it into the raw buffer and process it. Processing ensures that any
       # available chunk data is made available in chunkData.
@@ -500,28 +458,23 @@ module Sun::Net::Www::Http
           return -1
         end
         @raw_count += nread
-        # 
         # Process the raw bytes that have been read.
         process_raw
       end
-      # 
       # Return the number of chunked bytes available to read
       return @chunk_count - @chunk_pos
     end
     
     typesig { [] }
-    # 
     # Reads from the underlying stream until there is chunk data
     # available in <code>chunkData</code> for the application to
     # read.
     def read_ahead_blocking
       begin
-        # 
         # All of chunked response has been read to return EOF.
         if ((@state).equal?(STATE_DONE))
           return -1
         end
-        # 
         # We must read into the raw buffer so make sure there is space
         # available. We use a size of 32 to avoid too much chunk data
         # being read into the raw buffer.
@@ -533,7 +486,6 @@ module Sun::Net::Www::Http
           @error = true
           raise e
         end
-        # 
         # If we hit EOF it means there's a problem as we should never
         # attempt to read once the last chunk and trailers have been
         # received.
@@ -541,35 +493,29 @@ module Sun::Net::Www::Http
           @error = true
           raise IOException.new("Premature EOF")
         end
-        # 
         # Process the bytes from the underlying stream
         @raw_count += nread
         process_raw
       end while (@chunk_count <= 0)
-      # 
       # Return the number of chunked bytes available to read
       return @chunk_count - @chunk_pos
     end
     
     typesig { [::Java::Boolean] }
-    # 
     # Read ahead in either blocking or non-blocking mode. This method
     # is typically used when we run out of available bytes in
     # <code>chunkData</code> or we need to determine how many bytes
     # are available on the input stream.
     def read_ahead(allow_blocking)
-      # 
       # Last chunk already received - return EOF
       if ((@state).equal?(STATE_DONE))
         return -1
       end
-      # 
       # Reset position/count if data in chunkData is exhausted.
       if (@chunk_pos >= @chunk_count)
         @chunk_count = 0
         @chunk_pos = 0
       end
-      # 
       # Read ahead blocking or non-blocking
       if (allow_blocking)
         return read_ahead_blocking
@@ -579,7 +525,6 @@ module Sun::Net::Www::Http
     end
     
     typesig { [InputStream, HttpClient, MessageHeader] }
-    # 
     # Creates a <code>ChunkedInputStream</code> and saves its  arguments, for
     # later use.
     # 
@@ -609,14 +554,12 @@ module Sun::Net::Www::Http
       @in = in_
       @responses = responses
       @hc = hc
-      # 
       # Set our initial state to indicate that we are first starting to
       # look for a chunk header.
       @state = STATE_AWAITING_CHUNK_HEADER
     end
     
     typesig { [] }
-    # 
     # See
     # the general contract of the <code>read</code>
     # method of <code>InputStream</code>.
@@ -638,7 +581,6 @@ module Sun::Net::Www::Http
     end
     
     typesig { [Array.typed(::Java::Byte), ::Java::Int, ::Java::Int] }
-    # 
     # Reads bytes from this stream into the specified byte array, starting at
     # the given offset.
     # 
@@ -660,14 +602,12 @@ module Sun::Net::Www::Http
         end
         avail = @chunk_count - @chunk_pos
         if (avail <= 0)
-          # 
           # Optimization: if we're in the middle of the chunk read
           # directly from the underlying stream into the caller's
           # buffer
           if ((@state).equal?(STATE_READING_CHUNK))
             return fast_read(b, off, len)
           end
-          # 
           # We're not in the middle of a chunk so we must read ahead
           # until there is some chunk data available.
           avail = read_ahead(true)
@@ -684,7 +624,6 @@ module Sun::Net::Www::Http
     end
     
     typesig { [] }
-    # 
     # Returns the number of bytes that can be read from this input
     # stream without blocking.
     # 
@@ -709,7 +648,6 @@ module Sun::Net::Www::Http
     end
     
     typesig { [] }
-    # 
     # Close the stream by either returning the connection to the
     # keep alive cache or closing the underlying stream.
     # <p>
@@ -730,7 +668,6 @@ module Sun::Net::Www::Http
     end
     
     typesig { [] }
-    # 
     # Hurry the input stream by reading everything from the underlying
     # stream. If the last chunk (and optional trailers) can be read without
     # blocking then the stream is considered hurried.

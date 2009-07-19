@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 1997-2006 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -36,7 +35,6 @@ module Sun::Security::X509
     }
   end
   
-  # 
   # Represent the CRL Reason Flags.
   # 
   # <p>This extension, if present, defines the identifies
@@ -60,7 +58,6 @@ module Sun::Security::X509
     include_class_members ReasonFlagsImports
     
     class_module.module_eval {
-      # 
       # Reasons
       const_set_lazy(:UNUSED) { "unused" }
       const_attr_reader  :UNUSED
@@ -113,7 +110,6 @@ module Sun::Security::X509
     undef_method :bit_string=
     
     typesig { [::Java::Int] }
-    # 
     # Check if bit is set.
     # 
     # @param position the position in the bit string to check.
@@ -122,7 +118,6 @@ module Sun::Security::X509
     end
     
     typesig { [::Java::Int, ::Java::Boolean] }
-    # 
     # Set the bit at the specified position.
     def set(position, val)
       # enlarge bitString if necessary
@@ -135,7 +130,6 @@ module Sun::Security::X509
     end
     
     typesig { [Array.typed(::Java::Byte)] }
-    # 
     # Create a ReasonFlags with the passed bit settings.
     # 
     # @param reasons the bits to be set for the ReasonFlags.
@@ -145,7 +139,6 @@ module Sun::Security::X509
     end
     
     typesig { [Array.typed(::Java::Boolean)] }
-    # 
     # Create a ReasonFlags with the passed bit settings.
     # 
     # @param reasons the bits to be set for the ReasonFlags.
@@ -155,7 +148,6 @@ module Sun::Security::X509
     end
     
     typesig { [BitArray] }
-    # 
     # Create a ReasonFlags with the passed bit settings.
     # 
     # @param reasons the bits to be set for the ReasonFlags.
@@ -165,7 +157,6 @@ module Sun::Security::X509
     end
     
     typesig { [DerInputStream] }
-    # 
     # Create the object from the passed DER encoded value.
     # 
     # @param in the DerInputStream to read the ReasonFlags from.
@@ -177,7 +168,6 @@ module Sun::Security::X509
     end
     
     typesig { [DerValue] }
-    # 
     # Create the object from the passed DER encoded value.
     # 
     # @param derVal the DerValue decoded from the stream.
@@ -188,14 +178,12 @@ module Sun::Security::X509
     end
     
     typesig { [] }
-    # 
     # Returns the reason flags as a boolean array.
     def get_flags
       return @bit_string
     end
     
     typesig { [String, Object] }
-    # 
     # Set the attribute value.
     def set(name, obj)
       if (!(obj.is_a?(Boolean)))
@@ -206,21 +194,18 @@ module Sun::Security::X509
     end
     
     typesig { [String] }
-    # 
     # Get the attribute value.
     def get(name)
       return Boolean.value_of(is_set(name2_index(name)))
     end
     
     typesig { [String] }
-    # 
     # Delete the attribute value.
     def delete(name)
       set(name, Boolean::FALSE)
     end
     
     typesig { [] }
-    # 
     # Returns a printable representation of the ReasonFlags.
     def to_s
       s = "Reason Flags [\n"
@@ -259,7 +244,6 @@ module Sun::Security::X509
     end
     
     typesig { [DerOutputStream] }
-    # 
     # Write the extension to the DerOutputStream.
     # 
     # @param out the DerOutputStream to write the extension to.
@@ -269,7 +253,6 @@ module Sun::Security::X509
     end
     
     typesig { [] }
-    # 
     # Return an enumeration of names of attributes existing within this
     # attribute.
     def get_elements

@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 2002-2006 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -36,7 +35,6 @@ module Sun::Misc
     }
   end
   
-  # 
   # The Perf class provides the ability to attach to an instrumentation
   # buffer maintained by a Java virtual machine. The instrumentation
   # buffer may be for the Java virtual machine running the methods of
@@ -114,7 +112,6 @@ module Sun::Misc
         include PrivilegedAction
         
         typesig { [] }
-        # 
         # Run the <code>Perf.getPerf()</code> method in a privileged context.
         # 
         # @see #getPerf
@@ -131,7 +128,6 @@ module Sun::Misc
       end }
       
       typesig { [] }
-      # 
       # Return a reference to the singleton Perf instance.
       # <p>
       # The getPerf() method returns the singleton instance of the Perf
@@ -173,7 +169,6 @@ module Sun::Misc
     }
     
     typesig { [::Java::Int, String] }
-    # 
     # Attach to the instrumentation buffer for the specified Java virtual
     # machine.
     # <p>
@@ -237,7 +232,6 @@ module Sun::Misc
     end
     
     typesig { [String, ::Java::Int, String] }
-    # 
     # Attach to the instrumentation buffer for the specified Java virtual
     # machine owned by the given user.
     # <p>
@@ -271,7 +265,6 @@ module Sun::Misc
     end
     
     typesig { [String, ::Java::Int, ::Java::Int] }
-    # 
     # Call the implementation specific attach method.
     # <p>
     # This method calls into the Java virtual machine to perform the platform
@@ -335,7 +328,6 @@ module Sun::Misc
     
     JNI.native_method :Java_sun_misc_Perf_attach, [:pointer, :long, :long, :int32, :int32], :long
     typesig { [String, ::Java::Int, ::Java::Int] }
-    # 
     # Native method to perform the implementation specific attach mechanism.
     # <p>
     # The implementation of this method may return distinct or identical
@@ -364,7 +356,6 @@ module Sun::Misc
     
     JNI.native_method :Java_sun_misc_Perf_detach, [:pointer, :long, :long], :void
     typesig { [ByteBuffer] }
-    # 
     # Native method to perform the implementation specific detach mechanism.
     # <p>
     # If this method is passed a <code>ByteBuffer</code> object that is
@@ -390,7 +381,6 @@ module Sun::Misc
     
     JNI.native_method :Java_sun_misc_Perf_createLong, [:pointer, :long, :long, :int32, :int32, :int64], :long
     typesig { [String, ::Java::Int, ::Java::Int, ::Java::Long] }
-    # 
     # Create a <code>long</code> scalar entry in the instrumentation buffer
     # with the given variability characteristic, units, and initial value.
     # <p>
@@ -414,7 +404,6 @@ module Sun::Misc
     end
     
     typesig { [String, ::Java::Int, ::Java::Int, String, ::Java::Int] }
-    # 
     # Create a <code>String</code> entry in the instrumentation buffer with
     # the given variability characteristic, units, and initial value.
     # <p>
@@ -452,7 +441,6 @@ module Sun::Misc
     end
     
     typesig { [String, ::Java::Int, ::Java::Int, String] }
-    # 
     # Create a <code>String</code> entry in the instrumentation buffer with
     # the given variability characteristic, units, and initial value.
     # <p>
@@ -490,7 +478,6 @@ module Sun::Misc
     
     JNI.native_method :Java_sun_misc_Perf_createByteArray, [:pointer, :long, :long, :int32, :int32, :long, :int32], :long
     typesig { [String, ::Java::Int, ::Java::Int, Array.typed(::Java::Byte), ::Java::Int] }
-    # 
     # Create a <code>byte</code> vector entry in the instrumentation buffer
     # with the given variability characteristic, units, and initial value.
     # <p>
@@ -523,7 +510,6 @@ module Sun::Misc
     
     class_module.module_eval {
       typesig { [String] }
-      # 
       # convert string to an array of UTF-8 bytes
       def get_bytes(s)
         bytes = nil
@@ -538,7 +524,6 @@ module Sun::Misc
     
     JNI.native_method :Java_sun_misc_Perf_highResCounter, [:pointer, :long], :int64
     typesig { [] }
-    # 
     # Return the value of the High Resolution Counter.
     # 
     # The High Resolution Counter returns the number of ticks since
@@ -557,7 +542,6 @@ module Sun::Misc
     
     JNI.native_method :Java_sun_misc_Perf_highResFrequency, [:pointer, :long], :int64
     typesig { [] }
-    # 
     # Returns the frequency of the High Resolution Counter, in ticks per
     # second.
     # 

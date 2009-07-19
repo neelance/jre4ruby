@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 1997-1999 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -33,7 +32,6 @@ module Sun::Security::Util
     }
   end
   
-  # 
   # Interface to an object that knows how to write its own DER
   # encoding to an output stream.
   # 
@@ -42,7 +40,6 @@ module Sun::Security::Util
     include_class_members DerEncoderImports
     
     typesig { [OutputStream] }
-    # 
     # DER encode this object and write the results to a stream.
     # 
     # @param out  the stream on which the DER encoding is written.

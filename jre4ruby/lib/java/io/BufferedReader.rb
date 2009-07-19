@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 1996-2006 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -31,7 +30,6 @@ module Java::Io
     }
   end
   
-  # 
   # Reads text from a character-input stream, buffering characters so as to
   # provide for the efficient reading of characters, arrays, and lines.
   # 
@@ -149,7 +147,6 @@ module Java::Io
     }
     
     typesig { [Reader, ::Java::Int] }
-    # 
     # Creates a buffering character-input stream that uses an input buffer of
     # the specified size.
     # 
@@ -180,7 +177,6 @@ module Java::Io
     end
     
     typesig { [Reader] }
-    # 
     # Creates a buffering character-input stream that uses a default-sized
     # input buffer.
     # 
@@ -198,7 +194,6 @@ module Java::Io
     end
     
     typesig { [] }
-    # 
     # Fills the input buffer, taking the mark into account if it is valid.
     def fill
       dst = 0
@@ -241,7 +236,6 @@ module Java::Io
     end
     
     typesig { [] }
-    # 
     # Reads a single character.
     # 
     # @return The character read, as an integer in the range
@@ -271,7 +265,6 @@ module Java::Io
     end
     
     typesig { [Array.typed(::Java::Char), ::Java::Int, ::Java::Int] }
-    # 
     # Reads characters into a portion of an array, reading from the underlying
     # stream if necessary.
     def read1(cbuf, off, len)
@@ -308,7 +301,6 @@ module Java::Io
     end
     
     typesig { [Array.typed(::Java::Char), ::Java::Int, ::Java::Int] }
-    # 
     # Reads characters into a portion of an array.
     # 
     # <p> This method implements the general contract of the corresponding
@@ -378,7 +370,6 @@ module Java::Io
     end
     
     typesig { [::Java::Boolean] }
-    # 
     # Reads a line of text.  A line is considered to be terminated by any one
     # of a line feed ('\n'), a carriage return ('\r'), or a carriage return
     # followed immediately by a linefeed.
@@ -453,7 +444,6 @@ module Java::Io
     end
     
     typesig { [] }
-    # 
     # Reads a line of text.  A line is considered to be terminated by any one
     # of a line feed ('\n'), a carriage return ('\r'), or a carriage return
     # followed immediately by a linefeed.
@@ -468,7 +458,6 @@ module Java::Io
     end
     
     typesig { [::Java::Long] }
-    # 
     # Skips characters.
     # 
     # @param  n  The number of characters to skip
@@ -513,7 +502,6 @@ module Java::Io
     end
     
     typesig { [] }
-    # 
     # Tells whether this stream is ready to be read.  A buffered character
     # stream is ready if the buffer is not empty, or if the underlying
     # character stream is ready.
@@ -522,7 +510,6 @@ module Java::Io
     def ready
       synchronized((self.attr_lock)) do
         ensure_open
-        # 
         # If newline needs to be skipped and the next char to be read
         # is a newline character, then just skip it right away.
         if (@skip_lf)
@@ -543,14 +530,12 @@ module Java::Io
     end
     
     typesig { [] }
-    # 
     # Tells whether this stream supports the mark() operation, which it does.
     def mark_supported
       return true
     end
     
     typesig { [::Java::Int] }
-    # 
     # Marks the present position in the stream.  Subsequent calls to reset()
     # will attempt to reposition the stream to this point.
     # 
@@ -578,7 +563,6 @@ module Java::Io
     end
     
     typesig { [] }
-    # 
     # Resets the stream to the most recent mark.
     # 
     # @exception  IOException  If the stream has never been marked,

@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 1997-2006 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -49,7 +48,6 @@ module Java::Net
     }
   end
   
-  # 
   # public String toString()
   # {
   # StringBuffer s = new StringBuffer(super.toString() + "\n" +
@@ -184,32 +182,26 @@ module Java::Net
       const_set_lazy(:SerialVersionUID) { -7204263841984476862 }
       const_attr_reader  :SerialVersionUID
       
-      # 
       # Connect to host:port
       const_set_lazy(:CONNECT) { 0x1 }
       const_attr_reader  :CONNECT
       
-      # 
       # Listen on host:port
       const_set_lazy(:LISTEN) { 0x2 }
       const_attr_reader  :LISTEN
       
-      # 
       # Accept a connection from host:port
       const_set_lazy(:ACCEPT) { 0x4 }
       const_attr_reader  :ACCEPT
       
-      # 
       # Resolve DNS queries
       const_set_lazy(:RESOLVE) { 0x8 }
       const_attr_reader  :RESOLVE
       
-      # 
       # No actions
       const_set_lazy(:NONE) { 0x0 }
       const_attr_reader  :NONE
       
-      # 
       # All actions
       const_set_lazy(:ALL) { CONNECT | LISTEN | ACCEPT | RESOLVE }
       const_attr_reader  :ALL
@@ -232,7 +224,6 @@ module Java::Net
     alias_method :attr_mask=, :mask=
     undef_method :mask=
     
-    # 
     # the actions string.
     # 
     # @serial
@@ -376,7 +367,6 @@ module Java::Net
     }
     
     typesig { [String, String] }
-    # 
     # Creates a new SocketPermission object with the specified actions.
     # The host is expressed as a DNS name, or as a numerical IP address.
     # Optionally, a port or a portrange may be supplied (separated
@@ -516,7 +506,6 @@ module Java::Net
     end
     
     typesig { [String, ::Java::Int] }
-    # 
     # Initialize the SocketPermission object. We don't do any DNS lookups
     # as this point, instead we hold off until the implies method is
     # called.
@@ -609,7 +598,6 @@ module Java::Net
     
     class_module.module_eval {
       typesig { [String] }
-      # 
       # Convert an action string to an integer actions mask.
       # 
       # @param action the action string
@@ -699,7 +687,6 @@ module Java::Net
     }
     
     typesig { [] }
-    # 
     # attempt to get the fully qualified domain name
     def get_canon_name
       if (!(@cname).nil? || @invalid || @untrusted)
@@ -869,7 +856,6 @@ module Java::Net
     end
     
     typesig { [] }
-    # 
     # get IP addresses. Sets invalid to true if we can't get them.
     def get_ip
       if (!(@addresses).nil? || @wildcard || @invalid)
@@ -900,7 +886,6 @@ module Java::Net
     end
     
     typesig { [Permission] }
-    # 
     # Checks if this socket permission object "implies" the
     # specified permission.
     # <P>
@@ -947,7 +932,6 @@ module Java::Net
     end
     
     typesig { [SocketPermission] }
-    # 
     # Checks if the incoming Permission's action are a proper subset of
     # the this object's actions.
     # <P>
@@ -1085,7 +1069,6 @@ module Java::Net
     end
     
     typesig { [Object] }
-    # 
     # Checks two SocketPermission objects for equality.
     # <P>
     # @param obj the object to test for equality with this object.
@@ -1141,12 +1124,10 @@ module Java::Net
     end
     
     typesig { [] }
-    # 
     # Returns the hash code value for this object.
     # 
     # @return a hash code value for this object.
     def hash_code
-      # 
       # If this SocketPermission was initialized with an IP address
       # or a wildcard, use getName().hashCode(), otherwise use
       # the hashCode() of the host name returned from
@@ -1166,7 +1147,6 @@ module Java::Net
     end
     
     typesig { [] }
-    # 
     # Return the current action mask.
     # 
     # @return the actions mask.
@@ -1176,7 +1156,6 @@ module Java::Net
     
     class_module.module_eval {
       typesig { [::Java::Int] }
-      # 
       # Returns the "canonical string representation" of the actions in the
       # specified mask.
       # Always returns present actions in the following order:
@@ -1220,7 +1199,6 @@ module Java::Net
     }
     
     typesig { [] }
-    # 
     # Returns the canonical string representation of the actions.
     # Always returns present actions in the following order:
     # connect, listen, accept, resolve.
@@ -1234,7 +1212,6 @@ module Java::Net
     end
     
     typesig { [] }
-    # 
     # Returns a new PermissionCollection object for storing SocketPermission
     # objects.
     # <p>
@@ -1249,7 +1226,6 @@ module Java::Net
     end
     
     typesig { [Java::Io::ObjectOutputStream] }
-    # 
     # WriteObject is called to save the state of the SocketPermission
     # to a stream. The actions are serialized, and the superclass
     # takes care of the name.
@@ -1265,7 +1241,6 @@ module Java::Net
     end
     
     typesig { [Java::Io::ObjectInputStream] }
-    # 
     # readObject is called to restore the state of the SocketPermission from
     # a stream.
     def read_object(s)
@@ -1280,8 +1255,6 @@ module Java::Net
     alias_method :initialize__socket_permission, :initialize
   end
   
-  # 
-  # 
   # if (init'd with IP, key is IP as string)
   # if wildcard, its the wild card
   # else its the cname?
@@ -1307,7 +1280,6 @@ module Java::Net
     undef_method :perms=
     
     typesig { [] }
-    # 
     # Create an empty SocketPermissions object.
     def initialize
       @perms = nil
@@ -1316,7 +1288,6 @@ module Java::Net
     end
     
     typesig { [Permission] }
-    # 
     # Adds a permission to the SocketPermissions. The key for the hash is
     # the name in the case of wildcards, or all the IP addresses.
     # 
@@ -1342,7 +1313,6 @@ module Java::Net
     end
     
     typesig { [Permission] }
-    # 
     # Check and see if this collection of permissions implies the permissions
     # expressed in "permission".
     # 
@@ -1379,7 +1349,6 @@ module Java::Net
     end
     
     typesig { [] }
-    # 
     # Returns an enumeration of all the SocketPermission objects in the
     # container.
     # 
@@ -1410,7 +1379,6 @@ module Java::Net
     }
     
     typesig { [ObjectOutputStream] }
-    # 
     # @serialData "permissions" field (a Vector containing the SocketPermissions).
     # 
     # 
@@ -1429,7 +1397,6 @@ module Java::Net
     end
     
     typesig { [ObjectInputStream] }
-    # 
     # Reads in a Vector of SocketPermissions and saves them in the perms field.
     def read_object(in_)
       # Don't call in.defaultReadObject()

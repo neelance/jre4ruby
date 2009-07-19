@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 2000-2007 Sun Microsystems, Inc.  All Rights Reserved.
 # 
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
@@ -35,7 +34,6 @@ module Sun::Nio::Ch
     }
   end
   
-  # 
   # Unchecked exception thrown when an attempt is made to bind a {@link
   # SocketChannel} that is already bound.
   # 
@@ -49,7 +47,6 @@ module Sun::Nio::Ch
     }
     
     typesig { [] }
-    # 
     # Constructs an instance of this class.
     def initialize
       super()

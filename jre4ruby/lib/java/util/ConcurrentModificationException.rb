@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 1997-2006 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -31,7 +30,6 @@ module Java::Util
     }
   end
   
-  # 
   # This exception may be thrown by methods that have detected concurrent
   # modification of an object when such modification is not permissible.
   # <p>
@@ -75,7 +73,6 @@ module Java::Util
     include_class_members ConcurrentModificationExceptionImports
     
     typesig { [] }
-    # 
     # Constructs a ConcurrentModificationException with no
     # detail message.
     def initialize
@@ -83,7 +80,6 @@ module Java::Util
     end
     
     typesig { [String] }
-    # 
     # Constructs a <tt>ConcurrentModificationException</tt> with the
     # specified detail message.
     # 

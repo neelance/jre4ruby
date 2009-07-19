@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 2000-2007 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -48,7 +47,6 @@ module Sun::Security::Provider::Certpath
     }
   end
   
-  # 
   # BasicChecker is a PKIXCertPathChecker that checks the basic information
   # on a PKIX certificate, namely the signature, timestamp, and subject/issuer
   # name chaining.
@@ -106,7 +104,6 @@ module Sun::Security::Provider::Certpath
     undef_method :prev_pub_key=
     
     typesig { [TrustAnchor, Date, String, ::Java::Boolean] }
-    # 
     # Constructor that initializes the input parameters.
     # 
     # @param anchor the anchor selected to validate the target certificate
@@ -138,7 +135,6 @@ module Sun::Security::Provider::Certpath
     end
     
     typesig { [::Java::Boolean] }
-    # 
     # Initializes the internal state of the checker from parameters
     # specified in the constructor.
     def init(forward)
@@ -161,7 +157,6 @@ module Sun::Security::Provider::Certpath
     end
     
     typesig { [Certificate, Collection] }
-    # 
     # Performs the signature, timestamp, and subject/issuer name chaining
     # checks on the certificate using its internal state. This method does
     # not remove any critical extensions from the Collection.
@@ -182,7 +177,6 @@ module Sun::Security::Provider::Certpath
     end
     
     typesig { [X509Certificate, PublicKey, String] }
-    # 
     # Verifies the signature on the certificate using the previous public key
     # @param cert the Certificate
     # @param prevPubKey the previous PublicKey
@@ -209,7 +203,6 @@ module Sun::Security::Provider::Certpath
     end
     
     typesig { [X509Certificate, Date] }
-    # 
     # Internal method to verify the timestamp on a certificate
     def verify_timestamp(cert, date)
       msg = "timestamp"
@@ -231,7 +224,6 @@ module Sun::Security::Provider::Certpath
     end
     
     typesig { [X509Certificate, X500Principal] }
-    # 
     # Internal method to check that cert has a valid DN to be next in a chain
     def verify_name_chaining(cert, prev_subject)
       if (!(prev_subject).nil?)
@@ -254,7 +246,6 @@ module Sun::Security::Provider::Certpath
     end
     
     typesig { [X509Certificate] }
-    # 
     # Internal method to manage state information at each iteration
     def update_state(curr_cert)
       c_key = curr_cert.get_public_key
@@ -274,7 +265,6 @@ module Sun::Security::Provider::Certpath
     
     class_module.module_eval {
       typesig { [PublicKey, PublicKey] }
-      # 
       # Internal method to create a new key with inherited key parameters
       # 
       # @param keyValueKey key from which to obtain key value
@@ -304,7 +294,6 @@ module Sun::Security::Provider::Certpath
     }
     
     typesig { [] }
-    # 
     # return the public key associated with the last certificate processed
     # 
     # @return PublicKey the last public key processed

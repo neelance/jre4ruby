@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 2003-2007 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -58,7 +57,6 @@ module Java::Util
     }
   end
   
-  # 
   # An interpreter for printf-style format strings.  This class provides support
   # for layout justification and alignment, common formats for numeric, string,
   # and date/time data, and locale-specific output.  Common Java types such as
@@ -1877,7 +1875,6 @@ module Java::Util
     end
     
     typesig { [] }
-    # 
     # Constructs a new formatter.
     # 
     # <p> The destination of the formatted output is a {@link StringBuilder}
@@ -1895,7 +1892,6 @@ module Java::Util
     end
     
     typesig { [Appendable] }
-    # 
     # Constructs a new formatter with the specified destination.
     # 
     # <p> The locale used is the {@linkplain Locale#getDefault() default
@@ -1916,7 +1912,6 @@ module Java::Util
     end
     
     typesig { [Locale] }
-    # 
     # Constructs a new formatter with the specified locale.
     # 
     # <p> The destination of the formatted output is a {@link StringBuilder}
@@ -1937,7 +1932,6 @@ module Java::Util
     end
     
     typesig { [Appendable, Locale] }
-    # 
     # Constructs a new formatter with the specified destination and locale.
     # 
     # @param  a
@@ -1960,7 +1954,6 @@ module Java::Util
     end
     
     typesig { [String] }
-    # 
     # Constructs a new formatter with the specified file name.
     # 
     # <p> The charset used is the {@linkplain
@@ -1995,7 +1988,6 @@ module Java::Util
     end
     
     typesig { [String, String] }
-    # 
     # Constructs a new formatter with the specified file name and charset.
     # 
     # <p> The locale used is the {@linkplain Locale#getDefault default
@@ -2029,7 +2021,6 @@ module Java::Util
     end
     
     typesig { [String, String, Locale] }
-    # 
     # Constructs a new formatter with the specified file name, charset, and
     # locale.
     # 
@@ -2070,7 +2061,6 @@ module Java::Util
     end
     
     typesig { [JavaFile] }
-    # 
     # Constructs a new formatter with the specified file.
     # 
     # <p> The charset used is the {@linkplain
@@ -2105,7 +2095,6 @@ module Java::Util
     end
     
     typesig { [JavaFile, String] }
-    # 
     # Constructs a new formatter with the specified file and charset.
     # 
     # <p> The locale used is the {@linkplain Locale#getDefault default
@@ -2139,7 +2128,6 @@ module Java::Util
     end
     
     typesig { [JavaFile, String, Locale] }
-    # 
     # Constructs a new formatter with the specified file, charset, and
     # locale.
     # 
@@ -2180,7 +2168,6 @@ module Java::Util
     end
     
     typesig { [PrintStream] }
-    # 
     # Constructs a new formatter with the specified print stream.
     # 
     # <p> The locale used is the {@linkplain Locale#getDefault() default
@@ -2204,7 +2191,6 @@ module Java::Util
     end
     
     typesig { [OutputStream] }
-    # 
     # Constructs a new formatter with the specified output stream.
     # 
     # <p> The charset used is the {@linkplain
@@ -2226,7 +2212,6 @@ module Java::Util
     end
     
     typesig { [OutputStream, String] }
-    # 
     # Constructs a new formatter with the specified output stream and
     # charset.
     # 
@@ -2248,7 +2233,6 @@ module Java::Util
     end
     
     typesig { [OutputStream, String, Locale] }
-    # 
     # Constructs a new formatter with the specified output stream, charset,
     # and locale.
     # 
@@ -2284,7 +2268,6 @@ module Java::Util
     end
     
     typesig { [] }
-    # 
     # Returns the locale set by the construction of this formatter.
     # 
     # <p> The {@link #format(java.util.Locale,String,Object...) format} method
@@ -2302,7 +2285,6 @@ module Java::Util
     end
     
     typesig { [] }
-    # 
     # Returns the destination for the output.
     # 
     # @return  The destination for the output
@@ -2316,7 +2298,6 @@ module Java::Util
     end
     
     typesig { [] }
-    # 
     # Returns the result of invoking <tt>toString()</tt> on the destination
     # for the output.  For example, the following code formats text into a
     # {@link StringBuilder} then retrieves the resultant string:
@@ -2352,7 +2333,6 @@ module Java::Util
     end
     
     typesig { [] }
-    # 
     # Flushes this formatter.  If the destination implements the {@link
     # java.io.Flushable} interface, its <tt>flush</tt> method will be invoked.
     # 
@@ -2374,7 +2354,6 @@ module Java::Util
     end
     
     typesig { [] }
-    # 
     # Closes this formatter.  If the destination implements the {@link
     # java.io.Closeable} interface, its <tt>close</tt> method will be invoked.
     # 
@@ -2408,7 +2387,6 @@ module Java::Util
     end
     
     typesig { [] }
-    # 
     # Returns the <tt>IOException</tt> last thrown by this formatter's {@link
     # Appendable}.
     # 
@@ -2422,7 +2400,6 @@ module Java::Util
     end
     
     typesig { [String, Object] }
-    # 
     # Writes a formatted string to this object's destination using the
     # specified format string and arguments.  The locale used is the one
     # defined during the construction of this formatter.
@@ -2457,7 +2434,6 @@ module Java::Util
     end
     
     typesig { [Locale, String, Object] }
-    # 
     # Writes a formatted string to this object's destination using the
     # specified locale, format string, and arguments.
     # 
@@ -3044,19 +3020,19 @@ module Java::Util
               end
             else
               if (arg.is_a?(Short))
-                i_ = (arg).short_value
-                if (Character.is_valid_code_point(i_))
-                  s = (String.new(Character.to_chars(i_))).to_s
+                i = (arg).short_value
+                if (Character.is_valid_code_point(i))
+                  s = (String.new(Character.to_chars(i))).to_s
                 else
-                  raise IllegalFormatCodePointException.new(i_)
+                  raise IllegalFormatCodePointException.new(i)
                 end
               else
                 if (arg.is_a?(JavaInteger))
-                  i__ = (arg).int_value
-                  if (Character.is_valid_code_point(i__))
-                    s = (String.new(Character.to_chars(i__))).to_s
+                  i = (arg).int_value
+                  if (Character.is_valid_code_point(i))
+                    s = (String.new(Character.to_chars(i))).to_s
                   else
-                    raise IllegalFormatCodePointException.new(i__)
+                    raise IllegalFormatCodePointException.new(i)
                   end
                 else
                   fail_conversion(@c, arg)
@@ -3357,23 +3333,23 @@ module Java::Util
             else
               if ((@c).equal?(Conversion::HEXADECIMAL_INTEGER))
                 check_bad_flags(Flags::PARENTHESES, Flags::LEADING_SPACE, Flags::PLUS)
-                s_ = Long.to_hex_string(value)
-                len_ = (@f.contains(Flags::ALTERNATE) ? s_.length + 2 : s_.length)
+                s = Long.to_hex_string(value)
+                len = (@f.contains(Flags::ALTERNATE) ? s.length + 2 : s.length)
                 # apply ALTERNATE (radix indicator for hex) before ZERO_PAD
                 if (@f.contains(Flags::ALTERNATE))
                   sb.append(@f.contains(Flags::UPPERCASE) ? "0X" : "0x")
                 end
                 if (@f.contains(Flags::ZERO_PAD))
-                  i_ = 0
-                  while i_ < @width - len_
+                  i = 0
+                  while i < @width - len
                     sb.append(Character.new(?0.ord))
-                    ((i_ += 1) - 1)
+                    ((i += 1) - 1)
                   end
                 end
                 if (@f.contains(Flags::UPPERCASE))
-                  s_ = (s_.to_upper_case).to_s
+                  s = (s.to_upper_case).to_s
                 end
-                sb.append(s_)
+                sb.append(s)
               end
             end
           end
@@ -3444,27 +3420,27 @@ module Java::Util
               sb.append(s)
             else
               if ((@c).equal?(Conversion::HEXADECIMAL_INTEGER))
-                s_ = v.to_s(16)
-                len_ = s_.length + sb.length
+                s = v.to_s(16)
+                len = s.length + sb.length
                 if (neg && @f.contains(Flags::PARENTHESES))
-                  ((len_ += 1) - 1)
+                  ((len += 1) - 1)
                 end
                 # apply ALTERNATE (radix indicator for hex) before ZERO_PAD
                 if (@f.contains(Flags::ALTERNATE))
-                  len_ += 2
+                  len += 2
                   sb.append(@f.contains(Flags::UPPERCASE) ? "0X" : "0x")
                 end
                 if (@f.contains(Flags::ZERO_PAD))
-                  i_ = 0
-                  while i_ < @width - len_
+                  i = 0
+                  while i < @width - len
                     sb.append(Character.new(?0.ord))
-                    ((i_ += 1) - 1)
+                    ((i += 1) - 1)
                   end
                 end
                 if (@f.contains(Flags::UPPERCASE))
-                  s_ = (s_.to_upper_case).to_s
+                  s = (s.to_upper_case).to_s
                 end
-                sb.append(s_)
+                sb.append(s)
               end
             end
           end
@@ -3536,79 +3512,79 @@ module Java::Util
             if ((c).equal?(Conversion::DECIMAL_FLOAT))
               # Create a new FormattedFloatingDecimal with the desired
               # precision.
-              prec_ = ((precision_).equal?(-1) ? 6 : precision_)
-              fd_ = FormattedFloatingDecimal.new(value, prec_, FormattedFloatingDecimal::Form::DECIMAL_FLOAT)
+              prec = ((precision_).equal?(-1) ? 6 : precision_)
+              fd = FormattedFloatingDecimal.new(value, prec, FormattedFloatingDecimal::Form::DECIMAL_FLOAT)
               # MAX_FD_CHARS + 1 (round?)
-              v_ = CharArray.new(MAX_FD_CHARS + 1 + Math.abs(fd_.get_exponent))
-              len_ = fd_.get_chars(v_)
-              mant_ = add_zeros(mantissa(v_, len_), prec_)
+              v = CharArray.new(MAX_FD_CHARS + 1 + Math.abs(fd.get_exponent))
+              len = fd.get_chars(v)
+              mant = add_zeros(mantissa(v, len), prec)
               # If the precision is zero and the '#' flag is set, add the
               # requested decimal point.
-              if (f.contains(Flags::ALTERNATE) && ((prec_).equal?(0)))
-                mant_ = add_dot(mant_)
+              if (f.contains(Flags::ALTERNATE) && ((prec).equal?(0)))
+                mant = add_dot(mant)
               end
-              new_w_ = @width
+              new_w = @width
               if (!(@width).equal?(-1))
-                new_w_ = adjust_width(@width, f, neg)
+                new_w = adjust_width(@width, f, neg)
               end
-              localized_magnitude(sb, mant_, f, new_w_, l)
+              localized_magnitude(sb, mant, f, new_w, l)
             else
               if ((c).equal?(Conversion::GENERAL))
-                prec__ = precision_
+                prec = precision_
                 if ((precision_).equal?(-1))
-                  prec__ = 6
+                  prec = 6
                 else
                   if ((precision_).equal?(0))
-                    prec__ = 1
+                    prec = 1
                   end
                 end
-                fd__ = FormattedFloatingDecimal.new(value, prec__, FormattedFloatingDecimal::Form::GENERAL)
+                fd = FormattedFloatingDecimal.new(value, prec, FormattedFloatingDecimal::Form::GENERAL)
                 # MAX_FD_CHARS + 1 (round?)
-                v__ = CharArray.new(MAX_FD_CHARS + 1 + Math.abs(fd__.get_exponent))
-                len__ = fd__.get_chars(v__)
-                exp_ = exponent(v__, len__)
-                if (!(exp_).nil?)
-                  prec__ -= 1
+                v = CharArray.new(MAX_FD_CHARS + 1 + Math.abs(fd.get_exponent))
+                len = fd.get_chars(v)
+                exp = exponent(v, len)
+                if (!(exp).nil?)
+                  prec -= 1
                 else
-                  prec__ = prec__ - ((value).equal?(0) ? 0 : fd__.get_exponent_rounded) - 1
+                  prec = prec - ((value).equal?(0) ? 0 : fd.get_exponent_rounded) - 1
                 end
-                mant__ = add_zeros(mantissa(v__, len__), prec__)
+                mant = add_zeros(mantissa(v, len), prec)
                 # If the precision is zero and the '#' flag is set, add the
                 # requested decimal point.
-                if (f.contains(Flags::ALTERNATE) && ((prec__).equal?(0)))
-                  mant__ = add_dot(mant__)
+                if (f.contains(Flags::ALTERNATE) && ((prec).equal?(0)))
+                  mant = add_dot(mant)
                 end
-                new_w__ = @width
+                new_w = @width
                 if (!(@width).equal?(-1))
-                  if (!(exp_).nil?)
-                    new_w__ = adjust_width(@width - exp_.attr_length - 1, f, neg)
+                  if (!(exp).nil?)
+                    new_w = adjust_width(@width - exp.attr_length - 1, f, neg)
                   else
-                    new_w__ = adjust_width(@width, f, neg)
+                    new_w = adjust_width(@width, f, neg)
                   end
                 end
-                localized_magnitude(sb, mant__, f, new_w__, l)
-                if (!(exp_).nil?)
+                localized_magnitude(sb, mant, f, new_w, l)
+                if (!(exp).nil?)
                   sb.append(f.contains(Flags::UPPERCASE) ? Character.new(?E.ord) : Character.new(?e.ord))
-                  flags__ = f.dup.remove(Flags::GROUP)
-                  sign_ = exp_[0]
-                  raise AssertError if not (((sign_).equal?(Character.new(?+.ord)) || (sign_).equal?(Character.new(?-.ord))))
-                  sb.append(sign_)
-                  tmp_ = CharArray.new(exp_.attr_length - 1)
-                  System.arraycopy(exp_, 1, tmp_, 0, exp_.attr_length - 1)
-                  sb.append(localized_magnitude(nil, tmp_, flags__, -1, l))
+                  flags_ = f.dup.remove(Flags::GROUP)
+                  sign = exp[0]
+                  raise AssertError if not (((sign).equal?(Character.new(?+.ord)) || (sign).equal?(Character.new(?-.ord))))
+                  sb.append(sign)
+                  tmp = CharArray.new(exp.attr_length - 1)
+                  System.arraycopy(exp, 1, tmp, 0, exp.attr_length - 1)
+                  sb.append(localized_magnitude(nil, tmp, flags_, -1, l))
                 end
               else
                 if ((c).equal?(Conversion::HEXADECIMAL_FLOAT))
-                  prec___ = precision_
+                  prec = precision_
                   if ((precision_).equal?(-1))
                     # assume that we want all of the digits
-                    prec___ = 0
+                    prec = 0
                   else
                     if ((precision_).equal?(0))
-                      prec___ = 1
+                      prec = 1
                     end
                   end
-                  s = hex_double(value, prec___)
+                  s = hex_double(value, prec)
                   va = nil
                   upper = f.contains(Flags::UPPERCASE)
                   sb.append(upper ? "0X" : "0x")
@@ -3622,12 +3598,12 @@ module Java::Util
                   idx = s.index_of(Character.new(?p.ord))
                   va = s.substring(0, idx).to_char_array
                   if (upper)
-                    tmp__ = String.new(va)
+                    tmp = String.new(va)
                     # don't localize hex
-                    tmp__ = (tmp__.to_upper_case(Locale::US)).to_s
-                    va = tmp__.to_char_array
+                    tmp = (tmp.to_upper_case(Locale::US)).to_s
+                    va = tmp.to_char_array
                   end
-                  sb.append(!(prec___).equal?(0) ? add_zeros(va, prec___) : va)
+                  sb.append(!(prec).equal?(0) ? add_zeros(va, prec) : va)
                   sb.append(upper ? Character.new(?P.ord) : Character.new(?p.ord))
                   sb.append(s.substring(idx + 1))
                 end
@@ -3843,41 +3819,41 @@ module Java::Util
           else
             if ((c).equal?(Conversion::DECIMAL_FLOAT))
               # Create a new BigDecimal with the desired precision.
-              prec_ = ((precision_).equal?(-1) ? 6 : precision_)
-              scale__ = value.scale
-              comp_prec_ = value.precision
-              if (scale__ > prec_)
-                comp_prec_ -= (scale__ - prec_)
+              prec = ((precision_).equal?(-1) ? 6 : precision_)
+              scale_ = value.scale
+              comp_prec = value.precision
+              if (scale_ > prec)
+                comp_prec -= (scale_ - prec)
               end
-              mc_ = MathContext.new(comp_prec_)
-              v_ = BigDecimal.new(value.unscaled_value, scale__, mc_)
-              bdl_ = BigDecimalLayout.new_local(self, v_.unscaled_value, v_.scale, BigDecimalLayoutForm::DECIMAL_FLOAT)
-              mant_ = bdl_.mantissa
-              nzeros_ = (bdl_.scale < prec_ ? prec_ - bdl_.scale : 0)
+              mc = MathContext.new(comp_prec)
+              v = BigDecimal.new(value.unscaled_value, scale_, mc)
+              bdl = BigDecimalLayout.new_local(self, v.unscaled_value, v.scale, BigDecimalLayoutForm::DECIMAL_FLOAT)
+              mant = bdl.mantissa
+              nzeros = (bdl.scale < prec ? prec - bdl.scale : 0)
               # Add a decimal point if necessary.  The mantissa may not
               # contain a decimal point if the scale is zero (the internal
               # representation has no fractional part).  Append a decimal
               # point if '#' is set or we require zero padding to get to the
               # requested precision.
-              if ((bdl_.scale).equal?(0) && (f.contains(Flags::ALTERNATE) || nzeros_ > 0))
-                mant_ = add_dot(bdl_.mantissa)
+              if ((bdl.scale).equal?(0) && (f.contains(Flags::ALTERNATE) || nzeros > 0))
+                mant = add_dot(bdl.mantissa)
               end
               # Add trailing zeros if the precision is greater than the
               # number of available digits after the decimal separator.
-              mant_ = trailing_zeros(mant_, nzeros_)
-              localized_magnitude(sb, mant_, f, adjust_width(@width, f, neg), l)
+              mant = trailing_zeros(mant, nzeros)
+              localized_magnitude(sb, mant, f, adjust_width(@width, f, neg), l)
             else
               if ((c).equal?(Conversion::GENERAL))
-                prec__ = precision_
+                prec = precision_
                 if ((precision_).equal?(-1))
-                  prec__ = 6
+                  prec = 6
                 else
                   if ((precision_).equal?(0))
-                    prec__ = 1
+                    prec = 1
                   end
                 end
                 ten_to_the_neg_four = BigDecimal.value_of(1, 4)
-                ten_to_the_prec = BigDecimal.value_of(1, -prec__)
+                ten_to_the_prec = BigDecimal.value_of(1, -prec)
                 if (((value == BigDecimal::ZERO)) || ((!((value <=> ten_to_the_neg_four)).equal?(-1)) && (((value <=> ten_to_the_prec)).equal?(-1))))
                   e = -value.scale + (value.unscaled_value.to_s.length - 1)
                   # xxx.yyy
@@ -3890,10 +3866,10 @@ module Java::Util
                   # f precision = #0 (after '.') + #z
                   # exponent = - #0 (after '.') - 1
                   # => f precision = g precision - exponent - 1
-                  prec__ = prec__ - e - 1
-                  print(sb, value, l, f, Conversion::DECIMAL_FLOAT, prec__, neg)
+                  prec = prec - e - 1
+                  print(sb, value, l, f, Conversion::DECIMAL_FLOAT, prec, neg)
                 else
-                  print(sb, value, l, f, Conversion::SCIENTIFIC, prec__ - 1, neg)
+                  print(sb, value, l, f, Conversion::SCIENTIFIC, prec - 1, neg)
                 end
               else
                 if ((c).equal?(Conversion::HEXADECIMAL_FLOAT))
@@ -4135,1858 +4111,175 @@ module Java::Util
           if ((sb).nil?)
             sb = StringBuilder.new
           end
-          catch(:break_case) do
-            case (c)
-            # 'H' (00 - 23)
-            # 'I' (01 - 12)
-            # 'k' (0 - 23) -- like H
-            # Date
-            # 'a'
-            # 'b'
-            # 'h' -- same b
-            # 'C' (00 - 99)
-            # 'y' (00 - 99)
-            # 'd' (01 - 31)
-            # Composites
-            # 'T' (24 hour hh:mm:ss - %tH:%tM:%tS)
-            when DateTime::HOUR_OF_DAY_0, DateTime::HOUR_0, DateTime::HOUR_OF_DAY, DateTime::HOUR
-              # 'l' (1 - 12) -- like I
-              i = t.get(Calendar::HOUR_OF_DAY)
-              if ((c).equal?(DateTime::HOUR_0) || (c).equal?(DateTime::HOUR))
-                i = ((i).equal?(0) || (i).equal?(12) ? 12 : i % 12)
-              end
-              flags_ = ((c).equal?(DateTime::HOUR_OF_DAY_0) || (c).equal?(DateTime::HOUR_0) ? Flags::ZERO_PAD : Flags::NONE)
-              sb.append(localized_magnitude(nil, i, flags_, 2, l))
-              throw :break_case, :thrown
-              # 'M' (00 - 59)
-              i_ = t.get(Calendar::MINUTE)
-              flags__ = Flags::ZERO_PAD
-              sb.append(localized_magnitude(nil, i_, flags__, 2, l))
-              throw :break_case, :thrown
-              # 'N' (000000000 - 999999999)
-              i__ = t.get(Calendar::MILLISECOND) * 1000000
-              flags___ = Flags::ZERO_PAD
-              sb.append(localized_magnitude(nil, i__, flags___, 9, l))
-              throw :break_case, :thrown
-              # 'L' (000 - 999)
-              i___ = t.get(Calendar::MILLISECOND)
-              flags____ = Flags::ZERO_PAD
-              sb.append(localized_magnitude(nil, i___, flags____, 3, l))
-              throw :break_case, :thrown
-              # 'Q' (0 - 99...?)
-              i____ = t.get_time_in_millis
-              flags_____ = Flags::NONE
-              sb.append(localized_magnitude(nil, i____, flags_____, @width, l))
-              throw :break_case, :thrown
-              # 'p' (am or pm)
-              # Calendar.AM = 0, Calendar.PM = 1, LocaleElements defines upper
-              ampm = Array.typed(String).new(["AM", "PM"])
-              if (!(l).nil? && !(l).equal?(Locale::US))
-                dfs = DateFormatSymbols.get_instance(l)
-                ampm = dfs.get_am_pm_strings
-              end
-              s = ampm[t.get(Calendar::AM_PM)]
-              sb.append(s.to_lower_case(!(l).nil? ? l : Locale::US))
-              throw :break_case, :thrown
-              # 's' (0 - 99...?)
-              i_____ = t.get_time_in_millis / 1000
-              flags______ = Flags::NONE
-              sb.append(localized_magnitude(nil, i_____, flags______, @width, l))
-              throw :break_case, :thrown
-              # 'S' (00 - 60 - leap second)
-              i______ = t.get(Calendar::SECOND)
-              flags_______ = Flags::ZERO_PAD
-              sb.append(localized_magnitude(nil, i______, flags_______, 2, l))
-              throw :break_case, :thrown
-              # 'z' ({-|+}####) - ls minus?
-              i_______ = t.get(Calendar::ZONE_OFFSET) + t.get(Calendar::DST_OFFSET)
-              neg = i_______ < 0
-              sb.append(neg ? Character.new(?-.ord) : Character.new(?+.ord))
-              if (neg)
-                i_______ = -i_______
-              end
-              min = i_______ / 60000
-              # combine minute and hour into a single integer
-              offset = (min / 60) * 100 + (min % 60)
-              flags________ = Flags::ZERO_PAD
-              sb.append(localized_magnitude(nil, offset, flags________, 4, l))
-              throw :break_case, :thrown
-              # 'Z' (symbol)
-              tz = t.get_time_zone
-              sb.append(tz.get_display_name((!(t.get(Calendar::DST_OFFSET)).equal?(0)), TimeZone::SHORT, ((l).nil?) ? Locale::US : l))
-              throw :break_case, :thrown
-              # 'A'
-              i________ = t.get(Calendar::DAY_OF_WEEK)
-              lt = (((l).nil?) ? Locale::US : l)
-              dfs_ = DateFormatSymbols.get_instance(lt)
-              if ((c).equal?(DateTime::NAME_OF_DAY))
-                sb.append(dfs_.get_weekdays[i________])
-              else
-                sb.append(dfs_.get_short_weekdays[i________])
-              end
-              throw :break_case, :thrown
-              # 'B'
-              i_________ = t.get(Calendar::MONTH)
-              lt_ = (((l).nil?) ? Locale::US : l)
-              dfs__ = DateFormatSymbols.get_instance(lt_)
-              if ((c).equal?(DateTime::NAME_OF_MONTH))
-                sb.append(dfs__.get_months[i_________])
-              else
-                sb.append(dfs__.get_short_months[i_________])
-              end
-              throw :break_case, :thrown
-              # 'Y' (0000 - 9999)
-              i__________ = t.get(Calendar::YEAR)
-              size = 2
-              case (c)
-              when DateTime::CENTURY
-                i__________ /= 100
-              when DateTime::YEAR_2
-                i__________ %= 100
-              when DateTime::YEAR_4
-                size = 4
-              end
-              flags_________ = Flags::ZERO_PAD
-              sb.append(localized_magnitude(nil, i__________, flags_________, size, l))
-              throw :break_case, :thrown
-              # 'e' (1 - 31) -- like d
-              i___________ = t.get(Calendar::DATE)
-              flags__________ = ((c).equal?(DateTime::DAY_OF_MONTH_0) ? Flags::ZERO_PAD : Flags::NONE)
-              sb.append(localized_magnitude(nil, i___________, flags__________, 2, l))
-              throw :break_case, :thrown
-              # 'j' (001 - 366)
-              i____________ = t.get(Calendar::DAY_OF_YEAR)
-              flags___________ = Flags::ZERO_PAD
-              sb.append(localized_magnitude(nil, i____________, flags___________, 3, l))
-              throw :break_case, :thrown
-              # 'm' (01 - 12)
-              i_____________ = t.get(Calendar::MONTH) + 1
-              flags____________ = Flags::ZERO_PAD
-              sb.append(localized_magnitude(nil, i_____________, flags____________, 2, l))
-              throw :break_case, :thrown
-              # 'R' (hh:mm same as %H:%M)
-              sep = Character.new(?:.ord)
-              print(sb, t, DateTime::HOUR_OF_DAY_0, l).append(sep)
-              print(sb, t, DateTime::MINUTE, l)
-              if ((c).equal?(DateTime::TIME))
-                sb.append(sep)
-                print(sb, t, DateTime::SECOND, l)
-              end
-              throw :break_case, :thrown
-              # 'r' (hh:mm:ss [AP]M)
-              sep_ = Character.new(?:.ord)
-              print(sb, t, DateTime::HOUR_0, l).append(sep_)
-              print(sb, t, DateTime::MINUTE, l).append(sep_)
-              print(sb, t, DateTime::SECOND, l).append(Character.new(?\s.ord))
-              # this may be in wrong place for some locales
-              tsb = StringBuilder.new
-              print(tsb, t, DateTime::AM_PM, l)
-              sb.append(tsb.to_s.to_upper_case(!(l).nil? ? l : Locale::US))
-              throw :break_case, :thrown
-              # 'c' (Sat Nov 04 12:02:33 EST 1999)
-              sep__ = Character.new(?\s.ord)
-              print(sb, t, DateTime::NAME_OF_DAY_ABBREV, l).append(sep__)
-              print(sb, t, DateTime::NAME_OF_MONTH_ABBREV, l).append(sep__)
-              print(sb, t, DateTime::DAY_OF_MONTH_0, l).append(sep__)
-              print(sb, t, DateTime::TIME, l).append(sep__)
-              print(sb, t, DateTime::ZONE, l).append(sep__)
-              print(sb, t, DateTime::YEAR_4, l)
-              throw :break_case, :thrown
-              # 'D' (mm/dd/yy)
-              sep___ = Character.new(?/.ord)
-              print(sb, t, DateTime::MONTH, l).append(sep___)
-              print(sb, t, DateTime::DAY_OF_MONTH_0, l).append(sep___)
-              print(sb, t, DateTime::YEAR_2, l)
-              throw :break_case, :thrown
-              # 'F' (%Y-%m-%d)
-              sep____ = Character.new(?-.ord)
-              print(sb, t, DateTime::YEAR_4, l).append(sep____)
-              print(sb, t, DateTime::MONTH, l).append(sep____)
-              print(sb, t, DateTime::DAY_OF_MONTH_0, l)
-              throw :break_case, :thrown
-              raise AssertError if not (false)
-            when DateTime::MINUTE
-              # 'M' (00 - 59)
-              i______________ = t.get(Calendar::MINUTE)
-              flags_____________ = Flags::ZERO_PAD
-              sb.append(localized_magnitude(nil, i______________, flags_____________, 2, l))
-              throw :break_case, :thrown
-              # 'N' (000000000 - 999999999)
-              i_______________ = t.get(Calendar::MILLISECOND) * 1000000
-              flags______________ = Flags::ZERO_PAD
-              sb.append(localized_magnitude(nil, i_______________, flags______________, 9, l))
-              throw :break_case, :thrown
-              # 'L' (000 - 999)
-              i________________ = t.get(Calendar::MILLISECOND)
-              flags_______________ = Flags::ZERO_PAD
-              sb.append(localized_magnitude(nil, i________________, flags_______________, 3, l))
-              throw :break_case, :thrown
-              # 'Q' (0 - 99...?)
-              i_________________ = t.get_time_in_millis
-              flags________________ = Flags::NONE
-              sb.append(localized_magnitude(nil, i_________________, flags________________, @width, l))
-              throw :break_case, :thrown
-              # 'p' (am or pm)
-              # Calendar.AM = 0, Calendar.PM = 1, LocaleElements defines upper
-              ampm_ = Array.typed(String).new(["AM", "PM"])
-              if (!(l).nil? && !(l).equal?(Locale::US))
-                dfs___ = DateFormatSymbols.get_instance(l)
-                ampm_ = dfs___.get_am_pm_strings
-              end
-              s_ = ampm_[t.get(Calendar::AM_PM)]
-              sb.append(s_.to_lower_case(!(l).nil? ? l : Locale::US))
-              throw :break_case, :thrown
-              # 's' (0 - 99...?)
-              i__________________ = t.get_time_in_millis / 1000
-              flags_________________ = Flags::NONE
-              sb.append(localized_magnitude(nil, i__________________, flags_________________, @width, l))
-              throw :break_case, :thrown
-              # 'S' (00 - 60 - leap second)
-              i___________________ = t.get(Calendar::SECOND)
-              flags__________________ = Flags::ZERO_PAD
-              sb.append(localized_magnitude(nil, i___________________, flags__________________, 2, l))
-              throw :break_case, :thrown
-              # 'z' ({-|+}####) - ls minus?
-              i____________________ = t.get(Calendar::ZONE_OFFSET) + t.get(Calendar::DST_OFFSET)
-              neg_ = i____________________ < 0
-              sb.append(neg_ ? Character.new(?-.ord) : Character.new(?+.ord))
-              if (neg_)
-                i____________________ = -i____________________
-              end
-              min_ = i____________________ / 60000
-              # combine minute and hour into a single integer
-              offset_ = (min_ / 60) * 100 + (min_ % 60)
-              flags___________________ = Flags::ZERO_PAD
-              sb.append(localized_magnitude(nil, offset_, flags___________________, 4, l))
-              throw :break_case, :thrown
-              # 'Z' (symbol)
-              tz_ = t.get_time_zone
-              sb.append(tz_.get_display_name((!(t.get(Calendar::DST_OFFSET)).equal?(0)), TimeZone::SHORT, ((l).nil?) ? Locale::US : l))
-              throw :break_case, :thrown
-              # 'A'
-              i_____________________ = t.get(Calendar::DAY_OF_WEEK)
-              lt__ = (((l).nil?) ? Locale::US : l)
-              dfs____ = DateFormatSymbols.get_instance(lt__)
-              if ((c).equal?(DateTime::NAME_OF_DAY))
-                sb.append(dfs____.get_weekdays[i_____________________])
-              else
-                sb.append(dfs____.get_short_weekdays[i_____________________])
-              end
-              throw :break_case, :thrown
-              # 'B'
-              i______________________ = t.get(Calendar::MONTH)
-              lt___ = (((l).nil?) ? Locale::US : l)
-              dfs_____ = DateFormatSymbols.get_instance(lt___)
-              if ((c).equal?(DateTime::NAME_OF_MONTH))
-                sb.append(dfs_____.get_months[i______________________])
-              else
-                sb.append(dfs_____.get_short_months[i______________________])
-              end
-              throw :break_case, :thrown
-              # 'Y' (0000 - 9999)
-              i_______________________ = t.get(Calendar::YEAR)
-              size_ = 2
-              case (c)
-              when DateTime::CENTURY
-                i_______________________ /= 100
-                i_______________________ %= 100
-                size_ = 4
-              when DateTime::YEAR_2
-                i_______________________ %= 100
-                size_ = 4
-              when DateTime::YEAR_4
-                size_ = 4
-              end
-              flags____________________ = Flags::ZERO_PAD
-              sb.append(localized_magnitude(nil, i_______________________, flags____________________, size_, l))
-              throw :break_case, :thrown
-              # 'e' (1 - 31) -- like d
-              i________________________ = t.get(Calendar::DATE)
-              flags_____________________ = ((c).equal?(DateTime::DAY_OF_MONTH_0) ? Flags::ZERO_PAD : Flags::NONE)
-              sb.append(localized_magnitude(nil, i________________________, flags_____________________, 2, l))
-              throw :break_case, :thrown
-              # 'j' (001 - 366)
-              i_________________________ = t.get(Calendar::DAY_OF_YEAR)
-              flags______________________ = Flags::ZERO_PAD
-              sb.append(localized_magnitude(nil, i_________________________, flags______________________, 3, l))
-              throw :break_case, :thrown
-              # 'm' (01 - 12)
-              i__________________________ = t.get(Calendar::MONTH) + 1
-              flags_______________________ = Flags::ZERO_PAD
-              sb.append(localized_magnitude(nil, i__________________________, flags_______________________, 2, l))
-              throw :break_case, :thrown
-              # 'R' (hh:mm same as %H:%M)
-              sep_____ = Character.new(?:.ord)
-              print(sb, t, DateTime::HOUR_OF_DAY_0, l).append(sep_____)
-              print(sb, t, DateTime::MINUTE, l)
-              if ((c).equal?(DateTime::TIME))
-                sb.append(sep_____)
-                print(sb, t, DateTime::SECOND, l)
-              end
-              throw :break_case, :thrown
-              # 'r' (hh:mm:ss [AP]M)
-              sep______ = Character.new(?:.ord)
-              print(sb, t, DateTime::HOUR_0, l).append(sep______)
-              print(sb, t, DateTime::MINUTE, l).append(sep______)
-              print(sb, t, DateTime::SECOND, l).append(Character.new(?\s.ord))
-              # this may be in wrong place for some locales
-              tsb_ = StringBuilder.new
-              print(tsb_, t, DateTime::AM_PM, l)
-              sb.append(tsb_.to_s.to_upper_case(!(l).nil? ? l : Locale::US))
-              throw :break_case, :thrown
-              # 'c' (Sat Nov 04 12:02:33 EST 1999)
-              sep_______ = Character.new(?\s.ord)
-              print(sb, t, DateTime::NAME_OF_DAY_ABBREV, l).append(sep_______)
-              print(sb, t, DateTime::NAME_OF_MONTH_ABBREV, l).append(sep_______)
-              print(sb, t, DateTime::DAY_OF_MONTH_0, l).append(sep_______)
-              print(sb, t, DateTime::TIME, l).append(sep_______)
-              print(sb, t, DateTime::ZONE, l).append(sep_______)
-              print(sb, t, DateTime::YEAR_4, l)
-              throw :break_case, :thrown
-              # 'D' (mm/dd/yy)
-              sep________ = Character.new(?/.ord)
-              print(sb, t, DateTime::MONTH, l).append(sep________)
-              print(sb, t, DateTime::DAY_OF_MONTH_0, l).append(sep________)
-              print(sb, t, DateTime::YEAR_2, l)
-              throw :break_case, :thrown
-              # 'F' (%Y-%m-%d)
-              sep_________ = Character.new(?-.ord)
-              print(sb, t, DateTime::YEAR_4, l).append(sep_________)
-              print(sb, t, DateTime::MONTH, l).append(sep_________)
-              print(sb, t, DateTime::DAY_OF_MONTH_0, l)
-              throw :break_case, :thrown
-              raise AssertError if not (false)
-            when DateTime::NANOSECOND
-              # 'N' (000000000 - 999999999)
-              i___________________________ = t.get(Calendar::MILLISECOND) * 1000000
-              flags________________________ = Flags::ZERO_PAD
-              sb.append(localized_magnitude(nil, i___________________________, flags________________________, 9, l))
-              throw :break_case, :thrown
-              # 'L' (000 - 999)
-              i____________________________ = t.get(Calendar::MILLISECOND)
-              flags_________________________ = Flags::ZERO_PAD
-              sb.append(localized_magnitude(nil, i____________________________, flags_________________________, 3, l))
-              throw :break_case, :thrown
-              # 'Q' (0 - 99...?)
-              i_____________________________ = t.get_time_in_millis
-              flags__________________________ = Flags::NONE
-              sb.append(localized_magnitude(nil, i_____________________________, flags__________________________, @width, l))
-              throw :break_case, :thrown
-              # 'p' (am or pm)
-              # Calendar.AM = 0, Calendar.PM = 1, LocaleElements defines upper
-              ampm__ = Array.typed(String).new(["AM", "PM"])
-              if (!(l).nil? && !(l).equal?(Locale::US))
-                dfs______ = DateFormatSymbols.get_instance(l)
-                ampm__ = dfs______.get_am_pm_strings
-              end
-              s__ = ampm__[t.get(Calendar::AM_PM)]
-              sb.append(s__.to_lower_case(!(l).nil? ? l : Locale::US))
-              throw :break_case, :thrown
-              # 's' (0 - 99...?)
-              i______________________________ = t.get_time_in_millis / 1000
-              flags___________________________ = Flags::NONE
-              sb.append(localized_magnitude(nil, i______________________________, flags___________________________, @width, l))
-              throw :break_case, :thrown
-              # 'S' (00 - 60 - leap second)
-              i_______________________________ = t.get(Calendar::SECOND)
-              flags____________________________ = Flags::ZERO_PAD
-              sb.append(localized_magnitude(nil, i_______________________________, flags____________________________, 2, l))
-              throw :break_case, :thrown
-              # 'z' ({-|+}####) - ls minus?
-              i________________________________ = t.get(Calendar::ZONE_OFFSET) + t.get(Calendar::DST_OFFSET)
-              neg__ = i________________________________ < 0
-              sb.append(neg__ ? Character.new(?-.ord) : Character.new(?+.ord))
-              if (neg__)
-                i________________________________ = -i________________________________
-              end
-              min__ = i________________________________ / 60000
-              # combine minute and hour into a single integer
-              offset__ = (min__ / 60) * 100 + (min__ % 60)
-              flags_____________________________ = Flags::ZERO_PAD
-              sb.append(localized_magnitude(nil, offset__, flags_____________________________, 4, l))
-              throw :break_case, :thrown
-              # 'Z' (symbol)
-              tz__ = t.get_time_zone
-              sb.append(tz__.get_display_name((!(t.get(Calendar::DST_OFFSET)).equal?(0)), TimeZone::SHORT, ((l).nil?) ? Locale::US : l))
-              throw :break_case, :thrown
-              # 'A'
-              i_________________________________ = t.get(Calendar::DAY_OF_WEEK)
-              lt____ = (((l).nil?) ? Locale::US : l)
-              dfs_______ = DateFormatSymbols.get_instance(lt____)
-              if ((c).equal?(DateTime::NAME_OF_DAY))
-                sb.append(dfs_______.get_weekdays[i_________________________________])
-              else
-                sb.append(dfs_______.get_short_weekdays[i_________________________________])
-              end
-              throw :break_case, :thrown
-              # 'B'
-              i__________________________________ = t.get(Calendar::MONTH)
-              lt_____ = (((l).nil?) ? Locale::US : l)
-              dfs________ = DateFormatSymbols.get_instance(lt_____)
-              if ((c).equal?(DateTime::NAME_OF_MONTH))
-                sb.append(dfs________.get_months[i__________________________________])
-              else
-                sb.append(dfs________.get_short_months[i__________________________________])
-              end
-              throw :break_case, :thrown
-              # 'Y' (0000 - 9999)
-              i___________________________________ = t.get(Calendar::YEAR)
-              size__ = 2
-              case (c)
-              when DateTime::CENTURY
-                i___________________________________ /= 100
-                i___________________________________ %= 100
-                size__ = 4
-              when DateTime::YEAR_2
-                i___________________________________ %= 100
-                size__ = 4
-              when DateTime::YEAR_4
-                size__ = 4
-              end
-              flags______________________________ = Flags::ZERO_PAD
-              sb.append(localized_magnitude(nil, i___________________________________, flags______________________________, size__, l))
-              throw :break_case, :thrown
-              # 'e' (1 - 31) -- like d
-              i____________________________________ = t.get(Calendar::DATE)
-              flags_______________________________ = ((c).equal?(DateTime::DAY_OF_MONTH_0) ? Flags::ZERO_PAD : Flags::NONE)
-              sb.append(localized_magnitude(nil, i____________________________________, flags_______________________________, 2, l))
-              throw :break_case, :thrown
-              # 'j' (001 - 366)
-              i_____________________________________ = t.get(Calendar::DAY_OF_YEAR)
-              flags________________________________ = Flags::ZERO_PAD
-              sb.append(localized_magnitude(nil, i_____________________________________, flags________________________________, 3, l))
-              throw :break_case, :thrown
-              # 'm' (01 - 12)
-              i______________________________________ = t.get(Calendar::MONTH) + 1
-              flags_________________________________ = Flags::ZERO_PAD
-              sb.append(localized_magnitude(nil, i______________________________________, flags_________________________________, 2, l))
-              throw :break_case, :thrown
-              # 'R' (hh:mm same as %H:%M)
-              sep__________ = Character.new(?:.ord)
-              print(sb, t, DateTime::HOUR_OF_DAY_0, l).append(sep__________)
-              print(sb, t, DateTime::MINUTE, l)
-              if ((c).equal?(DateTime::TIME))
-                sb.append(sep__________)
-                print(sb, t, DateTime::SECOND, l)
-              end
-              throw :break_case, :thrown
-              # 'r' (hh:mm:ss [AP]M)
-              sep___________ = Character.new(?:.ord)
-              print(sb, t, DateTime::HOUR_0, l).append(sep___________)
-              print(sb, t, DateTime::MINUTE, l).append(sep___________)
-              print(sb, t, DateTime::SECOND, l).append(Character.new(?\s.ord))
-              # this may be in wrong place for some locales
-              tsb__ = StringBuilder.new
-              print(tsb__, t, DateTime::AM_PM, l)
-              sb.append(tsb__.to_s.to_upper_case(!(l).nil? ? l : Locale::US))
-              throw :break_case, :thrown
-              # 'c' (Sat Nov 04 12:02:33 EST 1999)
-              sep____________ = Character.new(?\s.ord)
-              print(sb, t, DateTime::NAME_OF_DAY_ABBREV, l).append(sep____________)
-              print(sb, t, DateTime::NAME_OF_MONTH_ABBREV, l).append(sep____________)
-              print(sb, t, DateTime::DAY_OF_MONTH_0, l).append(sep____________)
-              print(sb, t, DateTime::TIME, l).append(sep____________)
-              print(sb, t, DateTime::ZONE, l).append(sep____________)
-              print(sb, t, DateTime::YEAR_4, l)
-              throw :break_case, :thrown
-              # 'D' (mm/dd/yy)
-              sep_____________ = Character.new(?/.ord)
-              print(sb, t, DateTime::MONTH, l).append(sep_____________)
-              print(sb, t, DateTime::DAY_OF_MONTH_0, l).append(sep_____________)
-              print(sb, t, DateTime::YEAR_2, l)
-              throw :break_case, :thrown
-              # 'F' (%Y-%m-%d)
-              sep______________ = Character.new(?-.ord)
-              print(sb, t, DateTime::YEAR_4, l).append(sep______________)
-              print(sb, t, DateTime::MONTH, l).append(sep______________)
-              print(sb, t, DateTime::DAY_OF_MONTH_0, l)
-              throw :break_case, :thrown
-              raise AssertError if not (false)
-            when DateTime::MILLISECOND
-              # 'L' (000 - 999)
-              i_______________________________________ = t.get(Calendar::MILLISECOND)
-              flags__________________________________ = Flags::ZERO_PAD
-              sb.append(localized_magnitude(nil, i_______________________________________, flags__________________________________, 3, l))
-              throw :break_case, :thrown
-              # 'Q' (0 - 99...?)
-              i________________________________________ = t.get_time_in_millis
-              flags___________________________________ = Flags::NONE
-              sb.append(localized_magnitude(nil, i________________________________________, flags___________________________________, @width, l))
-              throw :break_case, :thrown
-              # 'p' (am or pm)
-              # Calendar.AM = 0, Calendar.PM = 1, LocaleElements defines upper
-              ampm___ = Array.typed(String).new(["AM", "PM"])
-              if (!(l).nil? && !(l).equal?(Locale::US))
-                dfs_________ = DateFormatSymbols.get_instance(l)
-                ampm___ = dfs_________.get_am_pm_strings
-              end
-              s___ = ampm___[t.get(Calendar::AM_PM)]
-              sb.append(s___.to_lower_case(!(l).nil? ? l : Locale::US))
-              throw :break_case, :thrown
-              # 's' (0 - 99...?)
-              i_________________________________________ = t.get_time_in_millis / 1000
-              flags____________________________________ = Flags::NONE
-              sb.append(localized_magnitude(nil, i_________________________________________, flags____________________________________, @width, l))
-              throw :break_case, :thrown
-              # 'S' (00 - 60 - leap second)
-              i__________________________________________ = t.get(Calendar::SECOND)
-              flags_____________________________________ = Flags::ZERO_PAD
-              sb.append(localized_magnitude(nil, i__________________________________________, flags_____________________________________, 2, l))
-              throw :break_case, :thrown
-              # 'z' ({-|+}####) - ls minus?
-              i___________________________________________ = t.get(Calendar::ZONE_OFFSET) + t.get(Calendar::DST_OFFSET)
-              neg___ = i___________________________________________ < 0
-              sb.append(neg___ ? Character.new(?-.ord) : Character.new(?+.ord))
-              if (neg___)
-                i___________________________________________ = -i___________________________________________
-              end
-              min___ = i___________________________________________ / 60000
-              # combine minute and hour into a single integer
-              offset___ = (min___ / 60) * 100 + (min___ % 60)
-              flags______________________________________ = Flags::ZERO_PAD
-              sb.append(localized_magnitude(nil, offset___, flags______________________________________, 4, l))
-              throw :break_case, :thrown
-              # 'Z' (symbol)
-              tz___ = t.get_time_zone
-              sb.append(tz___.get_display_name((!(t.get(Calendar::DST_OFFSET)).equal?(0)), TimeZone::SHORT, ((l).nil?) ? Locale::US : l))
-              throw :break_case, :thrown
-              # 'A'
-              i____________________________________________ = t.get(Calendar::DAY_OF_WEEK)
-              lt______ = (((l).nil?) ? Locale::US : l)
-              dfs__________ = DateFormatSymbols.get_instance(lt______)
-              if ((c).equal?(DateTime::NAME_OF_DAY))
-                sb.append(dfs__________.get_weekdays[i____________________________________________])
-              else
-                sb.append(dfs__________.get_short_weekdays[i____________________________________________])
-              end
-              throw :break_case, :thrown
-              # 'B'
-              i_____________________________________________ = t.get(Calendar::MONTH)
-              lt_______ = (((l).nil?) ? Locale::US : l)
-              dfs___________ = DateFormatSymbols.get_instance(lt_______)
-              if ((c).equal?(DateTime::NAME_OF_MONTH))
-                sb.append(dfs___________.get_months[i_____________________________________________])
-              else
-                sb.append(dfs___________.get_short_months[i_____________________________________________])
-              end
-              throw :break_case, :thrown
-              # 'Y' (0000 - 9999)
-              i______________________________________________ = t.get(Calendar::YEAR)
-              size___ = 2
-              case (c)
-              when DateTime::CENTURY
-                i______________________________________________ /= 100
-                i______________________________________________ %= 100
-                size___ = 4
-              when DateTime::YEAR_2
-                i______________________________________________ %= 100
-                size___ = 4
-              when DateTime::YEAR_4
-                size___ = 4
-              end
-              flags_______________________________________ = Flags::ZERO_PAD
-              sb.append(localized_magnitude(nil, i______________________________________________, flags_______________________________________, size___, l))
-              throw :break_case, :thrown
-              # 'e' (1 - 31) -- like d
-              i_______________________________________________ = t.get(Calendar::DATE)
-              flags________________________________________ = ((c).equal?(DateTime::DAY_OF_MONTH_0) ? Flags::ZERO_PAD : Flags::NONE)
-              sb.append(localized_magnitude(nil, i_______________________________________________, flags________________________________________, 2, l))
-              throw :break_case, :thrown
-              # 'j' (001 - 366)
-              i________________________________________________ = t.get(Calendar::DAY_OF_YEAR)
-              flags_________________________________________ = Flags::ZERO_PAD
-              sb.append(localized_magnitude(nil, i________________________________________________, flags_________________________________________, 3, l))
-              throw :break_case, :thrown
-              # 'm' (01 - 12)
-              i_________________________________________________ = t.get(Calendar::MONTH) + 1
-              flags__________________________________________ = Flags::ZERO_PAD
-              sb.append(localized_magnitude(nil, i_________________________________________________, flags__________________________________________, 2, l))
-              throw :break_case, :thrown
-              # 'R' (hh:mm same as %H:%M)
-              sep_______________ = Character.new(?:.ord)
-              print(sb, t, DateTime::HOUR_OF_DAY_0, l).append(sep_______________)
-              print(sb, t, DateTime::MINUTE, l)
-              if ((c).equal?(DateTime::TIME))
-                sb.append(sep_______________)
-                print(sb, t, DateTime::SECOND, l)
-              end
-              throw :break_case, :thrown
-              # 'r' (hh:mm:ss [AP]M)
-              sep________________ = Character.new(?:.ord)
-              print(sb, t, DateTime::HOUR_0, l).append(sep________________)
-              print(sb, t, DateTime::MINUTE, l).append(sep________________)
-              print(sb, t, DateTime::SECOND, l).append(Character.new(?\s.ord))
-              # this may be in wrong place for some locales
-              tsb___ = StringBuilder.new
-              print(tsb___, t, DateTime::AM_PM, l)
-              sb.append(tsb___.to_s.to_upper_case(!(l).nil? ? l : Locale::US))
-              throw :break_case, :thrown
-              # 'c' (Sat Nov 04 12:02:33 EST 1999)
-              sep_________________ = Character.new(?\s.ord)
-              print(sb, t, DateTime::NAME_OF_DAY_ABBREV, l).append(sep_________________)
-              print(sb, t, DateTime::NAME_OF_MONTH_ABBREV, l).append(sep_________________)
-              print(sb, t, DateTime::DAY_OF_MONTH_0, l).append(sep_________________)
-              print(sb, t, DateTime::TIME, l).append(sep_________________)
-              print(sb, t, DateTime::ZONE, l).append(sep_________________)
-              print(sb, t, DateTime::YEAR_4, l)
-              throw :break_case, :thrown
-              # 'D' (mm/dd/yy)
-              sep__________________ = Character.new(?/.ord)
-              print(sb, t, DateTime::MONTH, l).append(sep__________________)
-              print(sb, t, DateTime::DAY_OF_MONTH_0, l).append(sep__________________)
-              print(sb, t, DateTime::YEAR_2, l)
-              throw :break_case, :thrown
-              # 'F' (%Y-%m-%d)
-              sep___________________ = Character.new(?-.ord)
-              print(sb, t, DateTime::YEAR_4, l).append(sep___________________)
-              print(sb, t, DateTime::MONTH, l).append(sep___________________)
-              print(sb, t, DateTime::DAY_OF_MONTH_0, l)
-              throw :break_case, :thrown
-              raise AssertError if not (false)
-            when DateTime::MILLISECOND_SINCE_EPOCH
-              # 'Q' (0 - 99...?)
-              i__________________________________________________ = t.get_time_in_millis
-              flags___________________________________________ = Flags::NONE
-              sb.append(localized_magnitude(nil, i__________________________________________________, flags___________________________________________, @width, l))
-              throw :break_case, :thrown
-              # 'p' (am or pm)
-              # Calendar.AM = 0, Calendar.PM = 1, LocaleElements defines upper
-              ampm____ = Array.typed(String).new(["AM", "PM"])
-              if (!(l).nil? && !(l).equal?(Locale::US))
-                dfs____________ = DateFormatSymbols.get_instance(l)
-                ampm____ = dfs____________.get_am_pm_strings
-              end
-              s____ = ampm____[t.get(Calendar::AM_PM)]
-              sb.append(s____.to_lower_case(!(l).nil? ? l : Locale::US))
-              throw :break_case, :thrown
-              # 's' (0 - 99...?)
-              i___________________________________________________ = t.get_time_in_millis / 1000
-              flags____________________________________________ = Flags::NONE
-              sb.append(localized_magnitude(nil, i___________________________________________________, flags____________________________________________, @width, l))
-              throw :break_case, :thrown
-              # 'S' (00 - 60 - leap second)
-              i____________________________________________________ = t.get(Calendar::SECOND)
-              flags_____________________________________________ = Flags::ZERO_PAD
-              sb.append(localized_magnitude(nil, i____________________________________________________, flags_____________________________________________, 2, l))
-              throw :break_case, :thrown
-              # 'z' ({-|+}####) - ls minus?
-              i_____________________________________________________ = t.get(Calendar::ZONE_OFFSET) + t.get(Calendar::DST_OFFSET)
-              neg____ = i_____________________________________________________ < 0
-              sb.append(neg____ ? Character.new(?-.ord) : Character.new(?+.ord))
-              if (neg____)
-                i_____________________________________________________ = -i_____________________________________________________
-              end
-              min____ = i_____________________________________________________ / 60000
-              # combine minute and hour into a single integer
-              offset____ = (min____ / 60) * 100 + (min____ % 60)
-              flags______________________________________________ = Flags::ZERO_PAD
-              sb.append(localized_magnitude(nil, offset____, flags______________________________________________, 4, l))
-              throw :break_case, :thrown
-              # 'Z' (symbol)
-              tz____ = t.get_time_zone
-              sb.append(tz____.get_display_name((!(t.get(Calendar::DST_OFFSET)).equal?(0)), TimeZone::SHORT, ((l).nil?) ? Locale::US : l))
-              throw :break_case, :thrown
-              # 'A'
-              i______________________________________________________ = t.get(Calendar::DAY_OF_WEEK)
-              lt________ = (((l).nil?) ? Locale::US : l)
-              dfs_____________ = DateFormatSymbols.get_instance(lt________)
-              if ((c).equal?(DateTime::NAME_OF_DAY))
-                sb.append(dfs_____________.get_weekdays[i______________________________________________________])
-              else
-                sb.append(dfs_____________.get_short_weekdays[i______________________________________________________])
-              end
-              throw :break_case, :thrown
-              # 'B'
-              i_______________________________________________________ = t.get(Calendar::MONTH)
-              lt_________ = (((l).nil?) ? Locale::US : l)
-              dfs______________ = DateFormatSymbols.get_instance(lt_________)
-              if ((c).equal?(DateTime::NAME_OF_MONTH))
-                sb.append(dfs______________.get_months[i_______________________________________________________])
-              else
-                sb.append(dfs______________.get_short_months[i_______________________________________________________])
-              end
-              throw :break_case, :thrown
-              # 'Y' (0000 - 9999)
-              i________________________________________________________ = t.get(Calendar::YEAR)
-              size____ = 2
-              case (c)
-              when DateTime::CENTURY
-                i________________________________________________________ /= 100
-                i________________________________________________________ %= 100
-                size____ = 4
-              when DateTime::YEAR_2
-                i________________________________________________________ %= 100
-                size____ = 4
-              when DateTime::YEAR_4
-                size____ = 4
-              end
-              flags_______________________________________________ = Flags::ZERO_PAD
-              sb.append(localized_magnitude(nil, i________________________________________________________, flags_______________________________________________, size____, l))
-              throw :break_case, :thrown
-              # 'e' (1 - 31) -- like d
-              i_________________________________________________________ = t.get(Calendar::DATE)
-              flags________________________________________________ = ((c).equal?(DateTime::DAY_OF_MONTH_0) ? Flags::ZERO_PAD : Flags::NONE)
-              sb.append(localized_magnitude(nil, i_________________________________________________________, flags________________________________________________, 2, l))
-              throw :break_case, :thrown
-              # 'j' (001 - 366)
-              i__________________________________________________________ = t.get(Calendar::DAY_OF_YEAR)
-              flags_________________________________________________ = Flags::ZERO_PAD
-              sb.append(localized_magnitude(nil, i__________________________________________________________, flags_________________________________________________, 3, l))
-              throw :break_case, :thrown
-              # 'm' (01 - 12)
-              i___________________________________________________________ = t.get(Calendar::MONTH) + 1
-              flags__________________________________________________ = Flags::ZERO_PAD
-              sb.append(localized_magnitude(nil, i___________________________________________________________, flags__________________________________________________, 2, l))
-              throw :break_case, :thrown
-              # 'R' (hh:mm same as %H:%M)
-              sep____________________ = Character.new(?:.ord)
-              print(sb, t, DateTime::HOUR_OF_DAY_0, l).append(sep____________________)
-              print(sb, t, DateTime::MINUTE, l)
-              if ((c).equal?(DateTime::TIME))
-                sb.append(sep____________________)
-                print(sb, t, DateTime::SECOND, l)
-              end
-              throw :break_case, :thrown
-              # 'r' (hh:mm:ss [AP]M)
-              sep_____________________ = Character.new(?:.ord)
-              print(sb, t, DateTime::HOUR_0, l).append(sep_____________________)
-              print(sb, t, DateTime::MINUTE, l).append(sep_____________________)
-              print(sb, t, DateTime::SECOND, l).append(Character.new(?\s.ord))
-              # this may be in wrong place for some locales
-              tsb____ = StringBuilder.new
-              print(tsb____, t, DateTime::AM_PM, l)
-              sb.append(tsb____.to_s.to_upper_case(!(l).nil? ? l : Locale::US))
-              throw :break_case, :thrown
-              # 'c' (Sat Nov 04 12:02:33 EST 1999)
-              sep______________________ = Character.new(?\s.ord)
-              print(sb, t, DateTime::NAME_OF_DAY_ABBREV, l).append(sep______________________)
-              print(sb, t, DateTime::NAME_OF_MONTH_ABBREV, l).append(sep______________________)
-              print(sb, t, DateTime::DAY_OF_MONTH_0, l).append(sep______________________)
-              print(sb, t, DateTime::TIME, l).append(sep______________________)
-              print(sb, t, DateTime::ZONE, l).append(sep______________________)
-              print(sb, t, DateTime::YEAR_4, l)
-              throw :break_case, :thrown
-              # 'D' (mm/dd/yy)
-              sep_______________________ = Character.new(?/.ord)
-              print(sb, t, DateTime::MONTH, l).append(sep_______________________)
-              print(sb, t, DateTime::DAY_OF_MONTH_0, l).append(sep_______________________)
-              print(sb, t, DateTime::YEAR_2, l)
-              throw :break_case, :thrown
-              # 'F' (%Y-%m-%d)
-              sep________________________ = Character.new(?-.ord)
-              print(sb, t, DateTime::YEAR_4, l).append(sep________________________)
-              print(sb, t, DateTime::MONTH, l).append(sep________________________)
-              print(sb, t, DateTime::DAY_OF_MONTH_0, l)
-              throw :break_case, :thrown
-              raise AssertError if not (false)
-            when DateTime::AM_PM
-              # 'p' (am or pm)
-              # Calendar.AM = 0, Calendar.PM = 1, LocaleElements defines upper
-              ampm_____ = Array.typed(String).new(["AM", "PM"])
-              if (!(l).nil? && !(l).equal?(Locale::US))
-                dfs_______________ = DateFormatSymbols.get_instance(l)
-                ampm_____ = dfs_______________.get_am_pm_strings
-              end
-              s_____ = ampm_____[t.get(Calendar::AM_PM)]
-              sb.append(s_____.to_lower_case(!(l).nil? ? l : Locale::US))
-              throw :break_case, :thrown
-              # 's' (0 - 99...?)
-              i____________________________________________________________ = t.get_time_in_millis / 1000
-              flags___________________________________________________ = Flags::NONE
-              sb.append(localized_magnitude(nil, i____________________________________________________________, flags___________________________________________________, @width, l))
-              throw :break_case, :thrown
-              # 'S' (00 - 60 - leap second)
-              i_____________________________________________________________ = t.get(Calendar::SECOND)
-              flags____________________________________________________ = Flags::ZERO_PAD
-              sb.append(localized_magnitude(nil, i_____________________________________________________________, flags____________________________________________________, 2, l))
-              throw :break_case, :thrown
-              # 'z' ({-|+}####) - ls minus?
-              i______________________________________________________________ = t.get(Calendar::ZONE_OFFSET) + t.get(Calendar::DST_OFFSET)
-              neg_____ = i______________________________________________________________ < 0
-              sb.append(neg_____ ? Character.new(?-.ord) : Character.new(?+.ord))
-              if (neg_____)
-                i______________________________________________________________ = -i______________________________________________________________
-              end
-              min_____ = i______________________________________________________________ / 60000
-              # combine minute and hour into a single integer
-              offset_____ = (min_____ / 60) * 100 + (min_____ % 60)
-              flags_____________________________________________________ = Flags::ZERO_PAD
-              sb.append(localized_magnitude(nil, offset_____, flags_____________________________________________________, 4, l))
-              throw :break_case, :thrown
-              # 'Z' (symbol)
-              tz_____ = t.get_time_zone
-              sb.append(tz_____.get_display_name((!(t.get(Calendar::DST_OFFSET)).equal?(0)), TimeZone::SHORT, ((l).nil?) ? Locale::US : l))
-              throw :break_case, :thrown
-              # 'A'
-              i_______________________________________________________________ = t.get(Calendar::DAY_OF_WEEK)
-              lt__________ = (((l).nil?) ? Locale::US : l)
-              dfs________________ = DateFormatSymbols.get_instance(lt__________)
-              if ((c).equal?(DateTime::NAME_OF_DAY))
-                sb.append(dfs________________.get_weekdays[i_______________________________________________________________])
-              else
-                sb.append(dfs________________.get_short_weekdays[i_______________________________________________________________])
-              end
-              throw :break_case, :thrown
-              # 'B'
-              i________________________________________________________________ = t.get(Calendar::MONTH)
-              lt___________ = (((l).nil?) ? Locale::US : l)
-              dfs_________________ = DateFormatSymbols.get_instance(lt___________)
-              if ((c).equal?(DateTime::NAME_OF_MONTH))
-                sb.append(dfs_________________.get_months[i________________________________________________________________])
-              else
-                sb.append(dfs_________________.get_short_months[i________________________________________________________________])
-              end
-              throw :break_case, :thrown
-              # 'Y' (0000 - 9999)
-              i_________________________________________________________________ = t.get(Calendar::YEAR)
-              size_____ = 2
-              case (c)
-              when DateTime::CENTURY
-                i_________________________________________________________________ /= 100
-                i_________________________________________________________________ %= 100
-                size_____ = 4
-              when DateTime::YEAR_2
-                i_________________________________________________________________ %= 100
-                size_____ = 4
-              when DateTime::YEAR_4
-                size_____ = 4
-              end
-              flags______________________________________________________ = Flags::ZERO_PAD
-              sb.append(localized_magnitude(nil, i_________________________________________________________________, flags______________________________________________________, size_____, l))
-              throw :break_case, :thrown
-              # 'e' (1 - 31) -- like d
-              i__________________________________________________________________ = t.get(Calendar::DATE)
-              flags_______________________________________________________ = ((c).equal?(DateTime::DAY_OF_MONTH_0) ? Flags::ZERO_PAD : Flags::NONE)
-              sb.append(localized_magnitude(nil, i__________________________________________________________________, flags_______________________________________________________, 2, l))
-              throw :break_case, :thrown
-              # 'j' (001 - 366)
-              i___________________________________________________________________ = t.get(Calendar::DAY_OF_YEAR)
-              flags________________________________________________________ = Flags::ZERO_PAD
-              sb.append(localized_magnitude(nil, i___________________________________________________________________, flags________________________________________________________, 3, l))
-              throw :break_case, :thrown
-              # 'm' (01 - 12)
-              i____________________________________________________________________ = t.get(Calendar::MONTH) + 1
-              flags_________________________________________________________ = Flags::ZERO_PAD
-              sb.append(localized_magnitude(nil, i____________________________________________________________________, flags_________________________________________________________, 2, l))
-              throw :break_case, :thrown
-              # 'R' (hh:mm same as %H:%M)
-              sep_________________________ = Character.new(?:.ord)
-              print(sb, t, DateTime::HOUR_OF_DAY_0, l).append(sep_________________________)
-              print(sb, t, DateTime::MINUTE, l)
-              if ((c).equal?(DateTime::TIME))
-                sb.append(sep_________________________)
-                print(sb, t, DateTime::SECOND, l)
-              end
-              throw :break_case, :thrown
-              # 'r' (hh:mm:ss [AP]M)
-              sep__________________________ = Character.new(?:.ord)
-              print(sb, t, DateTime::HOUR_0, l).append(sep__________________________)
-              print(sb, t, DateTime::MINUTE, l).append(sep__________________________)
-              print(sb, t, DateTime::SECOND, l).append(Character.new(?\s.ord))
-              # this may be in wrong place for some locales
-              tsb_____ = StringBuilder.new
-              print(tsb_____, t, DateTime::AM_PM, l)
-              sb.append(tsb_____.to_s.to_upper_case(!(l).nil? ? l : Locale::US))
-              throw :break_case, :thrown
-              # 'c' (Sat Nov 04 12:02:33 EST 1999)
-              sep___________________________ = Character.new(?\s.ord)
-              print(sb, t, DateTime::NAME_OF_DAY_ABBREV, l).append(sep___________________________)
-              print(sb, t, DateTime::NAME_OF_MONTH_ABBREV, l).append(sep___________________________)
-              print(sb, t, DateTime::DAY_OF_MONTH_0, l).append(sep___________________________)
-              print(sb, t, DateTime::TIME, l).append(sep___________________________)
-              print(sb, t, DateTime::ZONE, l).append(sep___________________________)
-              print(sb, t, DateTime::YEAR_4, l)
-              throw :break_case, :thrown
-              # 'D' (mm/dd/yy)
-              sep____________________________ = Character.new(?/.ord)
-              print(sb, t, DateTime::MONTH, l).append(sep____________________________)
-              print(sb, t, DateTime::DAY_OF_MONTH_0, l).append(sep____________________________)
-              print(sb, t, DateTime::YEAR_2, l)
-              throw :break_case, :thrown
-              # 'F' (%Y-%m-%d)
-              sep_____________________________ = Character.new(?-.ord)
-              print(sb, t, DateTime::YEAR_4, l).append(sep_____________________________)
-              print(sb, t, DateTime::MONTH, l).append(sep_____________________________)
-              print(sb, t, DateTime::DAY_OF_MONTH_0, l)
-              throw :break_case, :thrown
-              raise AssertError if not (false)
-            when DateTime::SECONDS_SINCE_EPOCH
-              # 's' (0 - 99...?)
-              i_____________________________________________________________________ = t.get_time_in_millis / 1000
-              flags__________________________________________________________ = Flags::NONE
-              sb.append(localized_magnitude(nil, i_____________________________________________________________________, flags__________________________________________________________, @width, l))
-              throw :break_case, :thrown
-              # 'S' (00 - 60 - leap second)
-              i______________________________________________________________________ = t.get(Calendar::SECOND)
-              flags___________________________________________________________ = Flags::ZERO_PAD
-              sb.append(localized_magnitude(nil, i______________________________________________________________________, flags___________________________________________________________, 2, l))
-              throw :break_case, :thrown
-              # 'z' ({-|+}####) - ls minus?
-              i_______________________________________________________________________ = t.get(Calendar::ZONE_OFFSET) + t.get(Calendar::DST_OFFSET)
-              neg______ = i_______________________________________________________________________ < 0
-              sb.append(neg______ ? Character.new(?-.ord) : Character.new(?+.ord))
-              if (neg______)
-                i_______________________________________________________________________ = -i_______________________________________________________________________
-              end
-              min______ = i_______________________________________________________________________ / 60000
-              # combine minute and hour into a single integer
-              offset______ = (min______ / 60) * 100 + (min______ % 60)
-              flags____________________________________________________________ = Flags::ZERO_PAD
-              sb.append(localized_magnitude(nil, offset______, flags____________________________________________________________, 4, l))
-              throw :break_case, :thrown
-              # 'Z' (symbol)
-              tz______ = t.get_time_zone
-              sb.append(tz______.get_display_name((!(t.get(Calendar::DST_OFFSET)).equal?(0)), TimeZone::SHORT, ((l).nil?) ? Locale::US : l))
-              throw :break_case, :thrown
-              # 'A'
-              i________________________________________________________________________ = t.get(Calendar::DAY_OF_WEEK)
-              lt____________ = (((l).nil?) ? Locale::US : l)
-              dfs__________________ = DateFormatSymbols.get_instance(lt____________)
-              if ((c).equal?(DateTime::NAME_OF_DAY))
-                sb.append(dfs__________________.get_weekdays[i________________________________________________________________________])
-              else
-                sb.append(dfs__________________.get_short_weekdays[i________________________________________________________________________])
-              end
-              throw :break_case, :thrown
-              # 'B'
-              i_________________________________________________________________________ = t.get(Calendar::MONTH)
-              lt_____________ = (((l).nil?) ? Locale::US : l)
-              dfs___________________ = DateFormatSymbols.get_instance(lt_____________)
-              if ((c).equal?(DateTime::NAME_OF_MONTH))
-                sb.append(dfs___________________.get_months[i_________________________________________________________________________])
-              else
-                sb.append(dfs___________________.get_short_months[i_________________________________________________________________________])
-              end
-              throw :break_case, :thrown
-              # 'Y' (0000 - 9999)
-              i__________________________________________________________________________ = t.get(Calendar::YEAR)
-              size______ = 2
-              case (c)
-              when DateTime::CENTURY
-                i__________________________________________________________________________ /= 100
-                i__________________________________________________________________________ %= 100
-                size______ = 4
-              when DateTime::YEAR_2
-                i__________________________________________________________________________ %= 100
-                size______ = 4
-              when DateTime::YEAR_4
-                size______ = 4
-              end
-              flags_____________________________________________________________ = Flags::ZERO_PAD
-              sb.append(localized_magnitude(nil, i__________________________________________________________________________, flags_____________________________________________________________, size______, l))
-              throw :break_case, :thrown
-              # 'e' (1 - 31) -- like d
-              i___________________________________________________________________________ = t.get(Calendar::DATE)
-              flags______________________________________________________________ = ((c).equal?(DateTime::DAY_OF_MONTH_0) ? Flags::ZERO_PAD : Flags::NONE)
-              sb.append(localized_magnitude(nil, i___________________________________________________________________________, flags______________________________________________________________, 2, l))
-              throw :break_case, :thrown
-              # 'j' (001 - 366)
-              i____________________________________________________________________________ = t.get(Calendar::DAY_OF_YEAR)
-              flags_______________________________________________________________ = Flags::ZERO_PAD
-              sb.append(localized_magnitude(nil, i____________________________________________________________________________, flags_______________________________________________________________, 3, l))
-              throw :break_case, :thrown
-              # 'm' (01 - 12)
-              i_____________________________________________________________________________ = t.get(Calendar::MONTH) + 1
-              flags________________________________________________________________ = Flags::ZERO_PAD
-              sb.append(localized_magnitude(nil, i_____________________________________________________________________________, flags________________________________________________________________, 2, l))
-              throw :break_case, :thrown
-              # 'R' (hh:mm same as %H:%M)
-              sep______________________________ = Character.new(?:.ord)
-              print(sb, t, DateTime::HOUR_OF_DAY_0, l).append(sep______________________________)
-              print(sb, t, DateTime::MINUTE, l)
-              if ((c).equal?(DateTime::TIME))
-                sb.append(sep______________________________)
-                print(sb, t, DateTime::SECOND, l)
-              end
-              throw :break_case, :thrown
-              # 'r' (hh:mm:ss [AP]M)
-              sep_______________________________ = Character.new(?:.ord)
-              print(sb, t, DateTime::HOUR_0, l).append(sep_______________________________)
-              print(sb, t, DateTime::MINUTE, l).append(sep_______________________________)
-              print(sb, t, DateTime::SECOND, l).append(Character.new(?\s.ord))
-              # this may be in wrong place for some locales
-              tsb______ = StringBuilder.new
-              print(tsb______, t, DateTime::AM_PM, l)
-              sb.append(tsb______.to_s.to_upper_case(!(l).nil? ? l : Locale::US))
-              throw :break_case, :thrown
-              # 'c' (Sat Nov 04 12:02:33 EST 1999)
-              sep________________________________ = Character.new(?\s.ord)
-              print(sb, t, DateTime::NAME_OF_DAY_ABBREV, l).append(sep________________________________)
-              print(sb, t, DateTime::NAME_OF_MONTH_ABBREV, l).append(sep________________________________)
-              print(sb, t, DateTime::DAY_OF_MONTH_0, l).append(sep________________________________)
-              print(sb, t, DateTime::TIME, l).append(sep________________________________)
-              print(sb, t, DateTime::ZONE, l).append(sep________________________________)
-              print(sb, t, DateTime::YEAR_4, l)
-              throw :break_case, :thrown
-              # 'D' (mm/dd/yy)
-              sep_________________________________ = Character.new(?/.ord)
-              print(sb, t, DateTime::MONTH, l).append(sep_________________________________)
-              print(sb, t, DateTime::DAY_OF_MONTH_0, l).append(sep_________________________________)
-              print(sb, t, DateTime::YEAR_2, l)
-              throw :break_case, :thrown
-              # 'F' (%Y-%m-%d)
-              sep__________________________________ = Character.new(?-.ord)
-              print(sb, t, DateTime::YEAR_4, l).append(sep__________________________________)
-              print(sb, t, DateTime::MONTH, l).append(sep__________________________________)
-              print(sb, t, DateTime::DAY_OF_MONTH_0, l)
-              throw :break_case, :thrown
-              raise AssertError if not (false)
-            when DateTime::SECOND
-              # 'S' (00 - 60 - leap second)
-              i______________________________________________________________________________ = t.get(Calendar::SECOND)
-              flags_________________________________________________________________ = Flags::ZERO_PAD
-              sb.append(localized_magnitude(nil, i______________________________________________________________________________, flags_________________________________________________________________, 2, l))
-              throw :break_case, :thrown
-              # 'z' ({-|+}####) - ls minus?
-              i_______________________________________________________________________________ = t.get(Calendar::ZONE_OFFSET) + t.get(Calendar::DST_OFFSET)
-              neg_______ = i_______________________________________________________________________________ < 0
-              sb.append(neg_______ ? Character.new(?-.ord) : Character.new(?+.ord))
-              if (neg_______)
-                i_______________________________________________________________________________ = -i_______________________________________________________________________________
-              end
-              min_______ = i_______________________________________________________________________________ / 60000
-              # combine minute and hour into a single integer
-              offset_______ = (min_______ / 60) * 100 + (min_______ % 60)
-              flags__________________________________________________________________ = Flags::ZERO_PAD
-              sb.append(localized_magnitude(nil, offset_______, flags__________________________________________________________________, 4, l))
-              throw :break_case, :thrown
-              # 'Z' (symbol)
-              tz_______ = t.get_time_zone
-              sb.append(tz_______.get_display_name((!(t.get(Calendar::DST_OFFSET)).equal?(0)), TimeZone::SHORT, ((l).nil?) ? Locale::US : l))
-              throw :break_case, :thrown
-              # 'A'
-              i________________________________________________________________________________ = t.get(Calendar::DAY_OF_WEEK)
-              lt______________ = (((l).nil?) ? Locale::US : l)
-              dfs____________________ = DateFormatSymbols.get_instance(lt______________)
-              if ((c).equal?(DateTime::NAME_OF_DAY))
-                sb.append(dfs____________________.get_weekdays[i________________________________________________________________________________])
-              else
-                sb.append(dfs____________________.get_short_weekdays[i________________________________________________________________________________])
-              end
-              throw :break_case, :thrown
-              # 'B'
-              i_________________________________________________________________________________ = t.get(Calendar::MONTH)
-              lt_______________ = (((l).nil?) ? Locale::US : l)
-              dfs_____________________ = DateFormatSymbols.get_instance(lt_______________)
-              if ((c).equal?(DateTime::NAME_OF_MONTH))
-                sb.append(dfs_____________________.get_months[i_________________________________________________________________________________])
-              else
-                sb.append(dfs_____________________.get_short_months[i_________________________________________________________________________________])
-              end
-              throw :break_case, :thrown
-              # 'Y' (0000 - 9999)
-              i__________________________________________________________________________________ = t.get(Calendar::YEAR)
-              size_______ = 2
-              case (c)
-              when DateTime::CENTURY
-                i__________________________________________________________________________________ /= 100
-                i__________________________________________________________________________________ %= 100
-                size_______ = 4
-              when DateTime::YEAR_2
-                i__________________________________________________________________________________ %= 100
-                size_______ = 4
-              when DateTime::YEAR_4
-                size_______ = 4
-              end
-              flags___________________________________________________________________ = Flags::ZERO_PAD
-              sb.append(localized_magnitude(nil, i__________________________________________________________________________________, flags___________________________________________________________________, size_______, l))
-              throw :break_case, :thrown
-              # 'e' (1 - 31) -- like d
-              i___________________________________________________________________________________ = t.get(Calendar::DATE)
-              flags____________________________________________________________________ = ((c).equal?(DateTime::DAY_OF_MONTH_0) ? Flags::ZERO_PAD : Flags::NONE)
-              sb.append(localized_magnitude(nil, i___________________________________________________________________________________, flags____________________________________________________________________, 2, l))
-              throw :break_case, :thrown
-              # 'j' (001 - 366)
-              i____________________________________________________________________________________ = t.get(Calendar::DAY_OF_YEAR)
-              flags_____________________________________________________________________ = Flags::ZERO_PAD
-              sb.append(localized_magnitude(nil, i____________________________________________________________________________________, flags_____________________________________________________________________, 3, l))
-              throw :break_case, :thrown
-              # 'm' (01 - 12)
-              i_____________________________________________________________________________________ = t.get(Calendar::MONTH) + 1
-              flags______________________________________________________________________ = Flags::ZERO_PAD
-              sb.append(localized_magnitude(nil, i_____________________________________________________________________________________, flags______________________________________________________________________, 2, l))
-              throw :break_case, :thrown
-              # 'R' (hh:mm same as %H:%M)
-              sep___________________________________ = Character.new(?:.ord)
-              print(sb, t, DateTime::HOUR_OF_DAY_0, l).append(sep___________________________________)
-              print(sb, t, DateTime::MINUTE, l)
-              if ((c).equal?(DateTime::TIME))
-                sb.append(sep___________________________________)
-                print(sb, t, DateTime::SECOND, l)
-              end
-              throw :break_case, :thrown
-              # 'r' (hh:mm:ss [AP]M)
-              sep____________________________________ = Character.new(?:.ord)
-              print(sb, t, DateTime::HOUR_0, l).append(sep____________________________________)
-              print(sb, t, DateTime::MINUTE, l).append(sep____________________________________)
-              print(sb, t, DateTime::SECOND, l).append(Character.new(?\s.ord))
-              # this may be in wrong place for some locales
-              tsb_______ = StringBuilder.new
-              print(tsb_______, t, DateTime::AM_PM, l)
-              sb.append(tsb_______.to_s.to_upper_case(!(l).nil? ? l : Locale::US))
-              throw :break_case, :thrown
-              # 'c' (Sat Nov 04 12:02:33 EST 1999)
-              sep_____________________________________ = Character.new(?\s.ord)
-              print(sb, t, DateTime::NAME_OF_DAY_ABBREV, l).append(sep_____________________________________)
-              print(sb, t, DateTime::NAME_OF_MONTH_ABBREV, l).append(sep_____________________________________)
-              print(sb, t, DateTime::DAY_OF_MONTH_0, l).append(sep_____________________________________)
-              print(sb, t, DateTime::TIME, l).append(sep_____________________________________)
-              print(sb, t, DateTime::ZONE, l).append(sep_____________________________________)
-              print(sb, t, DateTime::YEAR_4, l)
-              throw :break_case, :thrown
-              # 'D' (mm/dd/yy)
-              sep______________________________________ = Character.new(?/.ord)
-              print(sb, t, DateTime::MONTH, l).append(sep______________________________________)
-              print(sb, t, DateTime::DAY_OF_MONTH_0, l).append(sep______________________________________)
-              print(sb, t, DateTime::YEAR_2, l)
-              throw :break_case, :thrown
-              # 'F' (%Y-%m-%d)
-              sep_______________________________________ = Character.new(?-.ord)
-              print(sb, t, DateTime::YEAR_4, l).append(sep_______________________________________)
-              print(sb, t, DateTime::MONTH, l).append(sep_______________________________________)
-              print(sb, t, DateTime::DAY_OF_MONTH_0, l)
-              throw :break_case, :thrown
-              raise AssertError if not (false)
-            when DateTime::ZONE_NUMERIC
-              # 'z' ({-|+}####) - ls minus?
-              i______________________________________________________________________________________ = t.get(Calendar::ZONE_OFFSET) + t.get(Calendar::DST_OFFSET)
-              neg________ = i______________________________________________________________________________________ < 0
-              sb.append(neg________ ? Character.new(?-.ord) : Character.new(?+.ord))
-              if (neg________)
-                i______________________________________________________________________________________ = -i______________________________________________________________________________________
-              end
-              min________ = i______________________________________________________________________________________ / 60000
-              # combine minute and hour into a single integer
-              offset________ = (min________ / 60) * 100 + (min________ % 60)
-              flags_______________________________________________________________________ = Flags::ZERO_PAD
-              sb.append(localized_magnitude(nil, offset________, flags_______________________________________________________________________, 4, l))
-              throw :break_case, :thrown
-              # 'Z' (symbol)
-              tz________ = t.get_time_zone
-              sb.append(tz________.get_display_name((!(t.get(Calendar::DST_OFFSET)).equal?(0)), TimeZone::SHORT, ((l).nil?) ? Locale::US : l))
-              throw :break_case, :thrown
-              # 'A'
-              i_______________________________________________________________________________________ = t.get(Calendar::DAY_OF_WEEK)
-              lt________________ = (((l).nil?) ? Locale::US : l)
-              dfs______________________ = DateFormatSymbols.get_instance(lt________________)
-              if ((c).equal?(DateTime::NAME_OF_DAY))
-                sb.append(dfs______________________.get_weekdays[i_______________________________________________________________________________________])
-              else
-                sb.append(dfs______________________.get_short_weekdays[i_______________________________________________________________________________________])
-              end
-              throw :break_case, :thrown
-              # 'B'
-              i________________________________________________________________________________________ = t.get(Calendar::MONTH)
-              lt_________________ = (((l).nil?) ? Locale::US : l)
-              dfs_______________________ = DateFormatSymbols.get_instance(lt_________________)
-              if ((c).equal?(DateTime::NAME_OF_MONTH))
-                sb.append(dfs_______________________.get_months[i________________________________________________________________________________________])
-              else
-                sb.append(dfs_______________________.get_short_months[i________________________________________________________________________________________])
-              end
-              throw :break_case, :thrown
-              # 'Y' (0000 - 9999)
-              i_________________________________________________________________________________________ = t.get(Calendar::YEAR)
-              size________ = 2
-              case (c)
-              when DateTime::CENTURY
-                i_________________________________________________________________________________________ /= 100
-                i_________________________________________________________________________________________ %= 100
-                size________ = 4
-              when DateTime::YEAR_2
-                i_________________________________________________________________________________________ %= 100
-                size________ = 4
-              when DateTime::YEAR_4
-                size________ = 4
-              end
-              flags________________________________________________________________________ = Flags::ZERO_PAD
-              sb.append(localized_magnitude(nil, i_________________________________________________________________________________________, flags________________________________________________________________________, size________, l))
-              throw :break_case, :thrown
-              # 'e' (1 - 31) -- like d
-              i__________________________________________________________________________________________ = t.get(Calendar::DATE)
-              flags_________________________________________________________________________ = ((c).equal?(DateTime::DAY_OF_MONTH_0) ? Flags::ZERO_PAD : Flags::NONE)
-              sb.append(localized_magnitude(nil, i__________________________________________________________________________________________, flags_________________________________________________________________________, 2, l))
-              throw :break_case, :thrown
-              # 'j' (001 - 366)
-              i___________________________________________________________________________________________ = t.get(Calendar::DAY_OF_YEAR)
-              flags__________________________________________________________________________ = Flags::ZERO_PAD
-              sb.append(localized_magnitude(nil, i___________________________________________________________________________________________, flags__________________________________________________________________________, 3, l))
-              throw :break_case, :thrown
-              # 'm' (01 - 12)
-              i____________________________________________________________________________________________ = t.get(Calendar::MONTH) + 1
-              flags___________________________________________________________________________ = Flags::ZERO_PAD
-              sb.append(localized_magnitude(nil, i____________________________________________________________________________________________, flags___________________________________________________________________________, 2, l))
-              throw :break_case, :thrown
-              # 'R' (hh:mm same as %H:%M)
-              sep________________________________________ = Character.new(?:.ord)
-              print(sb, t, DateTime::HOUR_OF_DAY_0, l).append(sep________________________________________)
-              print(sb, t, DateTime::MINUTE, l)
-              if ((c).equal?(DateTime::TIME))
-                sb.append(sep________________________________________)
-                print(sb, t, DateTime::SECOND, l)
-              end
-              throw :break_case, :thrown
-              # 'r' (hh:mm:ss [AP]M)
-              sep_________________________________________ = Character.new(?:.ord)
-              print(sb, t, DateTime::HOUR_0, l).append(sep_________________________________________)
-              print(sb, t, DateTime::MINUTE, l).append(sep_________________________________________)
-              print(sb, t, DateTime::SECOND, l).append(Character.new(?\s.ord))
-              # this may be in wrong place for some locales
-              tsb________ = StringBuilder.new
-              print(tsb________, t, DateTime::AM_PM, l)
-              sb.append(tsb________.to_s.to_upper_case(!(l).nil? ? l : Locale::US))
-              throw :break_case, :thrown
-              # 'c' (Sat Nov 04 12:02:33 EST 1999)
-              sep__________________________________________ = Character.new(?\s.ord)
-              print(sb, t, DateTime::NAME_OF_DAY_ABBREV, l).append(sep__________________________________________)
-              print(sb, t, DateTime::NAME_OF_MONTH_ABBREV, l).append(sep__________________________________________)
-              print(sb, t, DateTime::DAY_OF_MONTH_0, l).append(sep__________________________________________)
-              print(sb, t, DateTime::TIME, l).append(sep__________________________________________)
-              print(sb, t, DateTime::ZONE, l).append(sep__________________________________________)
-              print(sb, t, DateTime::YEAR_4, l)
-              throw :break_case, :thrown
-              # 'D' (mm/dd/yy)
-              sep___________________________________________ = Character.new(?/.ord)
-              print(sb, t, DateTime::MONTH, l).append(sep___________________________________________)
-              print(sb, t, DateTime::DAY_OF_MONTH_0, l).append(sep___________________________________________)
-              print(sb, t, DateTime::YEAR_2, l)
-              throw :break_case, :thrown
-              # 'F' (%Y-%m-%d)
-              sep____________________________________________ = Character.new(?-.ord)
-              print(sb, t, DateTime::YEAR_4, l).append(sep____________________________________________)
-              print(sb, t, DateTime::MONTH, l).append(sep____________________________________________)
-              print(sb, t, DateTime::DAY_OF_MONTH_0, l)
-              throw :break_case, :thrown
-              raise AssertError if not (false)
-            when DateTime::ZONE
-              # 'Z' (symbol)
-              tz_________ = t.get_time_zone
-              sb.append(tz_________.get_display_name((!(t.get(Calendar::DST_OFFSET)).equal?(0)), TimeZone::SHORT, ((l).nil?) ? Locale::US : l))
-              throw :break_case, :thrown
-              # 'A'
-              i_____________________________________________________________________________________________ = t.get(Calendar::DAY_OF_WEEK)
-              lt__________________ = (((l).nil?) ? Locale::US : l)
-              dfs________________________ = DateFormatSymbols.get_instance(lt__________________)
-              if ((c).equal?(DateTime::NAME_OF_DAY))
-                sb.append(dfs________________________.get_weekdays[i_____________________________________________________________________________________________])
-              else
-                sb.append(dfs________________________.get_short_weekdays[i_____________________________________________________________________________________________])
-              end
-              throw :break_case, :thrown
-              # 'B'
-              i______________________________________________________________________________________________ = t.get(Calendar::MONTH)
-              lt___________________ = (((l).nil?) ? Locale::US : l)
-              dfs_________________________ = DateFormatSymbols.get_instance(lt___________________)
-              if ((c).equal?(DateTime::NAME_OF_MONTH))
-                sb.append(dfs_________________________.get_months[i______________________________________________________________________________________________])
-              else
-                sb.append(dfs_________________________.get_short_months[i______________________________________________________________________________________________])
-              end
-              throw :break_case, :thrown
-              # 'Y' (0000 - 9999)
-              i_______________________________________________________________________________________________ = t.get(Calendar::YEAR)
-              size_________ = 2
-              case (c)
-              when DateTime::CENTURY
-                i_______________________________________________________________________________________________ /= 100
-                i_______________________________________________________________________________________________ %= 100
-                size_________ = 4
-              when DateTime::YEAR_2
-                i_______________________________________________________________________________________________ %= 100
-                size_________ = 4
-              when DateTime::YEAR_4
-                size_________ = 4
-              end
-              flags____________________________________________________________________________ = Flags::ZERO_PAD
-              sb.append(localized_magnitude(nil, i_______________________________________________________________________________________________, flags____________________________________________________________________________, size_________, l))
-              throw :break_case, :thrown
-              # 'e' (1 - 31) -- like d
-              i________________________________________________________________________________________________ = t.get(Calendar::DATE)
-              flags_____________________________________________________________________________ = ((c).equal?(DateTime::DAY_OF_MONTH_0) ? Flags::ZERO_PAD : Flags::NONE)
-              sb.append(localized_magnitude(nil, i________________________________________________________________________________________________, flags_____________________________________________________________________________, 2, l))
-              throw :break_case, :thrown
-              # 'j' (001 - 366)
-              i_________________________________________________________________________________________________ = t.get(Calendar::DAY_OF_YEAR)
-              flags______________________________________________________________________________ = Flags::ZERO_PAD
-              sb.append(localized_magnitude(nil, i_________________________________________________________________________________________________, flags______________________________________________________________________________, 3, l))
-              throw :break_case, :thrown
-              # 'm' (01 - 12)
-              i__________________________________________________________________________________________________ = t.get(Calendar::MONTH) + 1
-              flags_______________________________________________________________________________ = Flags::ZERO_PAD
-              sb.append(localized_magnitude(nil, i__________________________________________________________________________________________________, flags_______________________________________________________________________________, 2, l))
-              throw :break_case, :thrown
-              # 'R' (hh:mm same as %H:%M)
-              sep_____________________________________________ = Character.new(?:.ord)
-              print(sb, t, DateTime::HOUR_OF_DAY_0, l).append(sep_____________________________________________)
-              print(sb, t, DateTime::MINUTE, l)
-              if ((c).equal?(DateTime::TIME))
-                sb.append(sep_____________________________________________)
-                print(sb, t, DateTime::SECOND, l)
-              end
-              throw :break_case, :thrown
-              # 'r' (hh:mm:ss [AP]M)
-              sep______________________________________________ = Character.new(?:.ord)
-              print(sb, t, DateTime::HOUR_0, l).append(sep______________________________________________)
-              print(sb, t, DateTime::MINUTE, l).append(sep______________________________________________)
-              print(sb, t, DateTime::SECOND, l).append(Character.new(?\s.ord))
-              # this may be in wrong place for some locales
-              tsb_________ = StringBuilder.new
-              print(tsb_________, t, DateTime::AM_PM, l)
-              sb.append(tsb_________.to_s.to_upper_case(!(l).nil? ? l : Locale::US))
-              throw :break_case, :thrown
-              # 'c' (Sat Nov 04 12:02:33 EST 1999)
-              sep_______________________________________________ = Character.new(?\s.ord)
-              print(sb, t, DateTime::NAME_OF_DAY_ABBREV, l).append(sep_______________________________________________)
-              print(sb, t, DateTime::NAME_OF_MONTH_ABBREV, l).append(sep_______________________________________________)
-              print(sb, t, DateTime::DAY_OF_MONTH_0, l).append(sep_______________________________________________)
-              print(sb, t, DateTime::TIME, l).append(sep_______________________________________________)
-              print(sb, t, DateTime::ZONE, l).append(sep_______________________________________________)
-              print(sb, t, DateTime::YEAR_4, l)
-              throw :break_case, :thrown
-              # 'D' (mm/dd/yy)
-              sep________________________________________________ = Character.new(?/.ord)
-              print(sb, t, DateTime::MONTH, l).append(sep________________________________________________)
-              print(sb, t, DateTime::DAY_OF_MONTH_0, l).append(sep________________________________________________)
-              print(sb, t, DateTime::YEAR_2, l)
-              throw :break_case, :thrown
-              # 'F' (%Y-%m-%d)
-              sep_________________________________________________ = Character.new(?-.ord)
-              print(sb, t, DateTime::YEAR_4, l).append(sep_________________________________________________)
-              print(sb, t, DateTime::MONTH, l).append(sep_________________________________________________)
-              print(sb, t, DateTime::DAY_OF_MONTH_0, l)
-              throw :break_case, :thrown
-              raise AssertError if not (false)
-            when DateTime::NAME_OF_DAY_ABBREV, DateTime::NAME_OF_DAY
-              # 'A'
-              i___________________________________________________________________________________________________ = t.get(Calendar::DAY_OF_WEEK)
-              lt____________________ = (((l).nil?) ? Locale::US : l)
-              dfs__________________________ = DateFormatSymbols.get_instance(lt____________________)
-              if ((c).equal?(DateTime::NAME_OF_DAY))
-                sb.append(dfs__________________________.get_weekdays[i___________________________________________________________________________________________________])
-              else
-                sb.append(dfs__________________________.get_short_weekdays[i___________________________________________________________________________________________________])
-              end
-              throw :break_case, :thrown
-              # 'B'
-              i____________________________________________________________________________________________________ = t.get(Calendar::MONTH)
-              lt_____________________ = (((l).nil?) ? Locale::US : l)
-              dfs___________________________ = DateFormatSymbols.get_instance(lt_____________________)
-              if ((c).equal?(DateTime::NAME_OF_MONTH))
-                sb.append(dfs___________________________.get_months[i____________________________________________________________________________________________________])
-              else
-                sb.append(dfs___________________________.get_short_months[i____________________________________________________________________________________________________])
-              end
-              throw :break_case, :thrown
-              # 'Y' (0000 - 9999)
-              i_____________________________________________________________________________________________________ = t.get(Calendar::YEAR)
-              size__________ = 2
-              case (c)
-              when DateTime::CENTURY
-                i_____________________________________________________________________________________________________ /= 100
-                i_____________________________________________________________________________________________________ %= 100
-                size__________ = 4
-              when DateTime::YEAR_2
-                i_____________________________________________________________________________________________________ %= 100
-                size__________ = 4
-              when DateTime::YEAR_4
-                size__________ = 4
-              end
-              flags________________________________________________________________________________ = Flags::ZERO_PAD
-              sb.append(localized_magnitude(nil, i_____________________________________________________________________________________________________, flags________________________________________________________________________________, size__________, l))
-              throw :break_case, :thrown
-              # 'e' (1 - 31) -- like d
-              i______________________________________________________________________________________________________ = t.get(Calendar::DATE)
-              flags_________________________________________________________________________________ = ((c).equal?(DateTime::DAY_OF_MONTH_0) ? Flags::ZERO_PAD : Flags::NONE)
-              sb.append(localized_magnitude(nil, i______________________________________________________________________________________________________, flags_________________________________________________________________________________, 2, l))
-              throw :break_case, :thrown
-              # 'j' (001 - 366)
-              i_______________________________________________________________________________________________________ = t.get(Calendar::DAY_OF_YEAR)
-              flags__________________________________________________________________________________ = Flags::ZERO_PAD
-              sb.append(localized_magnitude(nil, i_______________________________________________________________________________________________________, flags__________________________________________________________________________________, 3, l))
-              throw :break_case, :thrown
-              # 'm' (01 - 12)
-              i________________________________________________________________________________________________________ = t.get(Calendar::MONTH) + 1
-              flags___________________________________________________________________________________ = Flags::ZERO_PAD
-              sb.append(localized_magnitude(nil, i________________________________________________________________________________________________________, flags___________________________________________________________________________________, 2, l))
-              throw :break_case, :thrown
-              # 'R' (hh:mm same as %H:%M)
-              sep__________________________________________________ = Character.new(?:.ord)
-              print(sb, t, DateTime::HOUR_OF_DAY_0, l).append(sep__________________________________________________)
-              print(sb, t, DateTime::MINUTE, l)
-              if ((c).equal?(DateTime::TIME))
-                sb.append(sep__________________________________________________)
-                print(sb, t, DateTime::SECOND, l)
-              end
-              throw :break_case, :thrown
-              # 'r' (hh:mm:ss [AP]M)
-              sep___________________________________________________ = Character.new(?:.ord)
-              print(sb, t, DateTime::HOUR_0, l).append(sep___________________________________________________)
-              print(sb, t, DateTime::MINUTE, l).append(sep___________________________________________________)
-              print(sb, t, DateTime::SECOND, l).append(Character.new(?\s.ord))
-              # this may be in wrong place for some locales
-              tsb__________ = StringBuilder.new
-              print(tsb__________, t, DateTime::AM_PM, l)
-              sb.append(tsb__________.to_s.to_upper_case(!(l).nil? ? l : Locale::US))
-              throw :break_case, :thrown
-              # 'c' (Sat Nov 04 12:02:33 EST 1999)
-              sep____________________________________________________ = Character.new(?\s.ord)
-              print(sb, t, DateTime::NAME_OF_DAY_ABBREV, l).append(sep____________________________________________________)
-              print(sb, t, DateTime::NAME_OF_MONTH_ABBREV, l).append(sep____________________________________________________)
-              print(sb, t, DateTime::DAY_OF_MONTH_0, l).append(sep____________________________________________________)
-              print(sb, t, DateTime::TIME, l).append(sep____________________________________________________)
-              print(sb, t, DateTime::ZONE, l).append(sep____________________________________________________)
-              print(sb, t, DateTime::YEAR_4, l)
-              throw :break_case, :thrown
-              # 'D' (mm/dd/yy)
-              sep_____________________________________________________ = Character.new(?/.ord)
-              print(sb, t, DateTime::MONTH, l).append(sep_____________________________________________________)
-              print(sb, t, DateTime::DAY_OF_MONTH_0, l).append(sep_____________________________________________________)
-              print(sb, t, DateTime::YEAR_2, l)
-              throw :break_case, :thrown
-              # 'F' (%Y-%m-%d)
-              sep______________________________________________________ = Character.new(?-.ord)
-              print(sb, t, DateTime::YEAR_4, l).append(sep______________________________________________________)
-              print(sb, t, DateTime::MONTH, l).append(sep______________________________________________________)
-              print(sb, t, DateTime::DAY_OF_MONTH_0, l)
-              throw :break_case, :thrown
-              raise AssertError if not (false)
-            when DateTime::NAME_OF_MONTH_ABBREV, DateTime::NAME_OF_MONTH_ABBREV_X, DateTime::NAME_OF_MONTH
-              # 'B'
-              i_________________________________________________________________________________________________________ = t.get(Calendar::MONTH)
-              lt______________________ = (((l).nil?) ? Locale::US : l)
-              dfs____________________________ = DateFormatSymbols.get_instance(lt______________________)
-              if ((c).equal?(DateTime::NAME_OF_MONTH))
-                sb.append(dfs____________________________.get_months[i_________________________________________________________________________________________________________])
-              else
-                sb.append(dfs____________________________.get_short_months[i_________________________________________________________________________________________________________])
-              end
-              throw :break_case, :thrown
-              # 'Y' (0000 - 9999)
-              i__________________________________________________________________________________________________________ = t.get(Calendar::YEAR)
-              size___________ = 2
-              case (c)
-              when DateTime::CENTURY
-                i__________________________________________________________________________________________________________ /= 100
-                i__________________________________________________________________________________________________________ %= 100
-                size___________ = 4
-              when DateTime::YEAR_2
-                i__________________________________________________________________________________________________________ %= 100
-                size___________ = 4
-              when DateTime::YEAR_4
-                size___________ = 4
-              end
-              flags____________________________________________________________________________________ = Flags::ZERO_PAD
-              sb.append(localized_magnitude(nil, i__________________________________________________________________________________________________________, flags____________________________________________________________________________________, size___________, l))
-              throw :break_case, :thrown
-              # 'e' (1 - 31) -- like d
-              i___________________________________________________________________________________________________________ = t.get(Calendar::DATE)
-              flags_____________________________________________________________________________________ = ((c).equal?(DateTime::DAY_OF_MONTH_0) ? Flags::ZERO_PAD : Flags::NONE)
-              sb.append(localized_magnitude(nil, i___________________________________________________________________________________________________________, flags_____________________________________________________________________________________, 2, l))
-              throw :break_case, :thrown
-              # 'j' (001 - 366)
-              i____________________________________________________________________________________________________________ = t.get(Calendar::DAY_OF_YEAR)
-              flags______________________________________________________________________________________ = Flags::ZERO_PAD
-              sb.append(localized_magnitude(nil, i____________________________________________________________________________________________________________, flags______________________________________________________________________________________, 3, l))
-              throw :break_case, :thrown
-              # 'm' (01 - 12)
-              i_____________________________________________________________________________________________________________ = t.get(Calendar::MONTH) + 1
-              flags_______________________________________________________________________________________ = Flags::ZERO_PAD
-              sb.append(localized_magnitude(nil, i_____________________________________________________________________________________________________________, flags_______________________________________________________________________________________, 2, l))
-              throw :break_case, :thrown
-              # 'R' (hh:mm same as %H:%M)
-              sep_______________________________________________________ = Character.new(?:.ord)
-              print(sb, t, DateTime::HOUR_OF_DAY_0, l).append(sep_______________________________________________________)
-              print(sb, t, DateTime::MINUTE, l)
-              if ((c).equal?(DateTime::TIME))
-                sb.append(sep_______________________________________________________)
-                print(sb, t, DateTime::SECOND, l)
-              end
-              throw :break_case, :thrown
-              # 'r' (hh:mm:ss [AP]M)
-              sep________________________________________________________ = Character.new(?:.ord)
-              print(sb, t, DateTime::HOUR_0, l).append(sep________________________________________________________)
-              print(sb, t, DateTime::MINUTE, l).append(sep________________________________________________________)
-              print(sb, t, DateTime::SECOND, l).append(Character.new(?\s.ord))
-              # this may be in wrong place for some locales
-              tsb___________ = StringBuilder.new
-              print(tsb___________, t, DateTime::AM_PM, l)
-              sb.append(tsb___________.to_s.to_upper_case(!(l).nil? ? l : Locale::US))
-              throw :break_case, :thrown
-              # 'c' (Sat Nov 04 12:02:33 EST 1999)
-              sep_________________________________________________________ = Character.new(?\s.ord)
-              print(sb, t, DateTime::NAME_OF_DAY_ABBREV, l).append(sep_________________________________________________________)
-              print(sb, t, DateTime::NAME_OF_MONTH_ABBREV, l).append(sep_________________________________________________________)
-              print(sb, t, DateTime::DAY_OF_MONTH_0, l).append(sep_________________________________________________________)
-              print(sb, t, DateTime::TIME, l).append(sep_________________________________________________________)
-              print(sb, t, DateTime::ZONE, l).append(sep_________________________________________________________)
-              print(sb, t, DateTime::YEAR_4, l)
-              throw :break_case, :thrown
-              # 'D' (mm/dd/yy)
-              sep__________________________________________________________ = Character.new(?/.ord)
-              print(sb, t, DateTime::MONTH, l).append(sep__________________________________________________________)
-              print(sb, t, DateTime::DAY_OF_MONTH_0, l).append(sep__________________________________________________________)
-              print(sb, t, DateTime::YEAR_2, l)
-              throw :break_case, :thrown
-              # 'F' (%Y-%m-%d)
-              sep___________________________________________________________ = Character.new(?-.ord)
-              print(sb, t, DateTime::YEAR_4, l).append(sep___________________________________________________________)
-              print(sb, t, DateTime::MONTH, l).append(sep___________________________________________________________)
-              print(sb, t, DateTime::DAY_OF_MONTH_0, l)
-              throw :break_case, :thrown
-              raise AssertError if not (false)
-            when DateTime::CENTURY, DateTime::YEAR_2, DateTime::YEAR_4
-              # 'Y' (0000 - 9999)
-              i______________________________________________________________________________________________________________ = t.get(Calendar::YEAR)
-              size____________ = 2
-              case (c)
-              when DateTime::CENTURY
-                i______________________________________________________________________________________________________________ /= 100
-                i______________________________________________________________________________________________________________ %= 100
-                size____________ = 4
-              when DateTime::YEAR_2
-                i______________________________________________________________________________________________________________ %= 100
-                size____________ = 4
-              when DateTime::YEAR_4
-                size____________ = 4
-              end
-              flags________________________________________________________________________________________ = Flags::ZERO_PAD
-              sb.append(localized_magnitude(nil, i______________________________________________________________________________________________________________, flags________________________________________________________________________________________, size____________, l))
-              throw :break_case, :thrown
-              # 'e' (1 - 31) -- like d
-              i_______________________________________________________________________________________________________________ = t.get(Calendar::DATE)
-              flags_________________________________________________________________________________________ = ((c).equal?(DateTime::DAY_OF_MONTH_0) ? Flags::ZERO_PAD : Flags::NONE)
-              sb.append(localized_magnitude(nil, i_______________________________________________________________________________________________________________, flags_________________________________________________________________________________________, 2, l))
-              throw :break_case, :thrown
-              # 'j' (001 - 366)
-              i________________________________________________________________________________________________________________ = t.get(Calendar::DAY_OF_YEAR)
-              flags__________________________________________________________________________________________ = Flags::ZERO_PAD
-              sb.append(localized_magnitude(nil, i________________________________________________________________________________________________________________, flags__________________________________________________________________________________________, 3, l))
-              throw :break_case, :thrown
-              # 'm' (01 - 12)
-              i_________________________________________________________________________________________________________________ = t.get(Calendar::MONTH) + 1
-              flags___________________________________________________________________________________________ = Flags::ZERO_PAD
-              sb.append(localized_magnitude(nil, i_________________________________________________________________________________________________________________, flags___________________________________________________________________________________________, 2, l))
-              throw :break_case, :thrown
-              # 'R' (hh:mm same as %H:%M)
-              sep____________________________________________________________ = Character.new(?:.ord)
-              print(sb, t, DateTime::HOUR_OF_DAY_0, l).append(sep____________________________________________________________)
-              print(sb, t, DateTime::MINUTE, l)
-              if ((c).equal?(DateTime::TIME))
-                sb.append(sep____________________________________________________________)
-                print(sb, t, DateTime::SECOND, l)
-              end
-              throw :break_case, :thrown
-              # 'r' (hh:mm:ss [AP]M)
-              sep_____________________________________________________________ = Character.new(?:.ord)
-              print(sb, t, DateTime::HOUR_0, l).append(sep_____________________________________________________________)
-              print(sb, t, DateTime::MINUTE, l).append(sep_____________________________________________________________)
-              print(sb, t, DateTime::SECOND, l).append(Character.new(?\s.ord))
-              # this may be in wrong place for some locales
-              tsb____________ = StringBuilder.new
-              print(tsb____________, t, DateTime::AM_PM, l)
-              sb.append(tsb____________.to_s.to_upper_case(!(l).nil? ? l : Locale::US))
-              throw :break_case, :thrown
-              # 'c' (Sat Nov 04 12:02:33 EST 1999)
-              sep______________________________________________________________ = Character.new(?\s.ord)
-              print(sb, t, DateTime::NAME_OF_DAY_ABBREV, l).append(sep______________________________________________________________)
-              print(sb, t, DateTime::NAME_OF_MONTH_ABBREV, l).append(sep______________________________________________________________)
-              print(sb, t, DateTime::DAY_OF_MONTH_0, l).append(sep______________________________________________________________)
-              print(sb, t, DateTime::TIME, l).append(sep______________________________________________________________)
-              print(sb, t, DateTime::ZONE, l).append(sep______________________________________________________________)
-              print(sb, t, DateTime::YEAR_4, l)
-              throw :break_case, :thrown
-              # 'D' (mm/dd/yy)
-              sep_______________________________________________________________ = Character.new(?/.ord)
-              print(sb, t, DateTime::MONTH, l).append(sep_______________________________________________________________)
-              print(sb, t, DateTime::DAY_OF_MONTH_0, l).append(sep_______________________________________________________________)
-              print(sb, t, DateTime::YEAR_2, l)
-              throw :break_case, :thrown
-              # 'F' (%Y-%m-%d)
-              sep________________________________________________________________ = Character.new(?-.ord)
-              print(sb, t, DateTime::YEAR_4, l).append(sep________________________________________________________________)
-              print(sb, t, DateTime::MONTH, l).append(sep________________________________________________________________)
-              print(sb, t, DateTime::DAY_OF_MONTH_0, l)
-              throw :break_case, :thrown
-              raise AssertError if not (false)
-            when DateTime::DAY_OF_MONTH_0, DateTime::DAY_OF_MONTH
-              # 'e' (1 - 31) -- like d
-              i__________________________________________________________________________________________________________________ = t.get(Calendar::DATE)
-              flags____________________________________________________________________________________________ = ((c).equal?(DateTime::DAY_OF_MONTH_0) ? Flags::ZERO_PAD : Flags::NONE)
-              sb.append(localized_magnitude(nil, i__________________________________________________________________________________________________________________, flags____________________________________________________________________________________________, 2, l))
-              throw :break_case, :thrown
-              # 'j' (001 - 366)
-              i___________________________________________________________________________________________________________________ = t.get(Calendar::DAY_OF_YEAR)
-              flags_____________________________________________________________________________________________ = Flags::ZERO_PAD
-              sb.append(localized_magnitude(nil, i___________________________________________________________________________________________________________________, flags_____________________________________________________________________________________________, 3, l))
-              throw :break_case, :thrown
-              # 'm' (01 - 12)
-              i____________________________________________________________________________________________________________________ = t.get(Calendar::MONTH) + 1
-              flags______________________________________________________________________________________________ = Flags::ZERO_PAD
-              sb.append(localized_magnitude(nil, i____________________________________________________________________________________________________________________, flags______________________________________________________________________________________________, 2, l))
-              throw :break_case, :thrown
-              # 'R' (hh:mm same as %H:%M)
-              sep_________________________________________________________________ = Character.new(?:.ord)
-              print(sb, t, DateTime::HOUR_OF_DAY_0, l).append(sep_________________________________________________________________)
-              print(sb, t, DateTime::MINUTE, l)
-              if ((c).equal?(DateTime::TIME))
-                sb.append(sep_________________________________________________________________)
-                print(sb, t, DateTime::SECOND, l)
-              end
-              throw :break_case, :thrown
-              # 'r' (hh:mm:ss [AP]M)
-              sep__________________________________________________________________ = Character.new(?:.ord)
-              print(sb, t, DateTime::HOUR_0, l).append(sep__________________________________________________________________)
-              print(sb, t, DateTime::MINUTE, l).append(sep__________________________________________________________________)
-              print(sb, t, DateTime::SECOND, l).append(Character.new(?\s.ord))
-              # this may be in wrong place for some locales
-              tsb_____________ = StringBuilder.new
-              print(tsb_____________, t, DateTime::AM_PM, l)
-              sb.append(tsb_____________.to_s.to_upper_case(!(l).nil? ? l : Locale::US))
-              throw :break_case, :thrown
-              # 'c' (Sat Nov 04 12:02:33 EST 1999)
-              sep___________________________________________________________________ = Character.new(?\s.ord)
-              print(sb, t, DateTime::NAME_OF_DAY_ABBREV, l).append(sep___________________________________________________________________)
-              print(sb, t, DateTime::NAME_OF_MONTH_ABBREV, l).append(sep___________________________________________________________________)
-              print(sb, t, DateTime::DAY_OF_MONTH_0, l).append(sep___________________________________________________________________)
-              print(sb, t, DateTime::TIME, l).append(sep___________________________________________________________________)
-              print(sb, t, DateTime::ZONE, l).append(sep___________________________________________________________________)
-              print(sb, t, DateTime::YEAR_4, l)
-              throw :break_case, :thrown
-              # 'D' (mm/dd/yy)
-              sep____________________________________________________________________ = Character.new(?/.ord)
-              print(sb, t, DateTime::MONTH, l).append(sep____________________________________________________________________)
-              print(sb, t, DateTime::DAY_OF_MONTH_0, l).append(sep____________________________________________________________________)
-              print(sb, t, DateTime::YEAR_2, l)
-              throw :break_case, :thrown
-              # 'F' (%Y-%m-%d)
-              sep_____________________________________________________________________ = Character.new(?-.ord)
-              print(sb, t, DateTime::YEAR_4, l).append(sep_____________________________________________________________________)
-              print(sb, t, DateTime::MONTH, l).append(sep_____________________________________________________________________)
-              print(sb, t, DateTime::DAY_OF_MONTH_0, l)
-              throw :break_case, :thrown
-              raise AssertError if not (false)
-            when DateTime::DAY_OF_YEAR
-              # 'j' (001 - 366)
-              i_____________________________________________________________________________________________________________________ = t.get(Calendar::DAY_OF_YEAR)
-              flags_______________________________________________________________________________________________ = Flags::ZERO_PAD
-              sb.append(localized_magnitude(nil, i_____________________________________________________________________________________________________________________, flags_______________________________________________________________________________________________, 3, l))
-              throw :break_case, :thrown
-              # 'm' (01 - 12)
-              i______________________________________________________________________________________________________________________ = t.get(Calendar::MONTH) + 1
-              flags________________________________________________________________________________________________ = Flags::ZERO_PAD
-              sb.append(localized_magnitude(nil, i______________________________________________________________________________________________________________________, flags________________________________________________________________________________________________, 2, l))
-              throw :break_case, :thrown
-              # 'R' (hh:mm same as %H:%M)
-              sep______________________________________________________________________ = Character.new(?:.ord)
-              print(sb, t, DateTime::HOUR_OF_DAY_0, l).append(sep______________________________________________________________________)
-              print(sb, t, DateTime::MINUTE, l)
-              if ((c).equal?(DateTime::TIME))
-                sb.append(sep______________________________________________________________________)
-                print(sb, t, DateTime::SECOND, l)
-              end
-              throw :break_case, :thrown
-              # 'r' (hh:mm:ss [AP]M)
-              sep_______________________________________________________________________ = Character.new(?:.ord)
-              print(sb, t, DateTime::HOUR_0, l).append(sep_______________________________________________________________________)
-              print(sb, t, DateTime::MINUTE, l).append(sep_______________________________________________________________________)
-              print(sb, t, DateTime::SECOND, l).append(Character.new(?\s.ord))
-              # this may be in wrong place for some locales
-              tsb______________ = StringBuilder.new
-              print(tsb______________, t, DateTime::AM_PM, l)
-              sb.append(tsb______________.to_s.to_upper_case(!(l).nil? ? l : Locale::US))
-              throw :break_case, :thrown
-              # 'c' (Sat Nov 04 12:02:33 EST 1999)
-              sep________________________________________________________________________ = Character.new(?\s.ord)
-              print(sb, t, DateTime::NAME_OF_DAY_ABBREV, l).append(sep________________________________________________________________________)
-              print(sb, t, DateTime::NAME_OF_MONTH_ABBREV, l).append(sep________________________________________________________________________)
-              print(sb, t, DateTime::DAY_OF_MONTH_0, l).append(sep________________________________________________________________________)
-              print(sb, t, DateTime::TIME, l).append(sep________________________________________________________________________)
-              print(sb, t, DateTime::ZONE, l).append(sep________________________________________________________________________)
-              print(sb, t, DateTime::YEAR_4, l)
-              throw :break_case, :thrown
-              # 'D' (mm/dd/yy)
-              sep_________________________________________________________________________ = Character.new(?/.ord)
-              print(sb, t, DateTime::MONTH, l).append(sep_________________________________________________________________________)
-              print(sb, t, DateTime::DAY_OF_MONTH_0, l).append(sep_________________________________________________________________________)
-              print(sb, t, DateTime::YEAR_2, l)
-              throw :break_case, :thrown
-              # 'F' (%Y-%m-%d)
-              sep__________________________________________________________________________ = Character.new(?-.ord)
-              print(sb, t, DateTime::YEAR_4, l).append(sep__________________________________________________________________________)
-              print(sb, t, DateTime::MONTH, l).append(sep__________________________________________________________________________)
-              print(sb, t, DateTime::DAY_OF_MONTH_0, l)
-              throw :break_case, :thrown
-              raise AssertError if not (false)
-            when DateTime::MONTH
-              # 'm' (01 - 12)
-              i_______________________________________________________________________________________________________________________ = t.get(Calendar::MONTH) + 1
-              flags_________________________________________________________________________________________________ = Flags::ZERO_PAD
-              sb.append(localized_magnitude(nil, i_______________________________________________________________________________________________________________________, flags_________________________________________________________________________________________________, 2, l))
-              throw :break_case, :thrown
-              # 'R' (hh:mm same as %H:%M)
-              sep___________________________________________________________________________ = Character.new(?:.ord)
-              print(sb, t, DateTime::HOUR_OF_DAY_0, l).append(sep___________________________________________________________________________)
-              print(sb, t, DateTime::MINUTE, l)
-              if ((c).equal?(DateTime::TIME))
-                sb.append(sep___________________________________________________________________________)
-                print(sb, t, DateTime::SECOND, l)
-              end
-              throw :break_case, :thrown
-              # 'r' (hh:mm:ss [AP]M)
-              sep____________________________________________________________________________ = Character.new(?:.ord)
-              print(sb, t, DateTime::HOUR_0, l).append(sep____________________________________________________________________________)
-              print(sb, t, DateTime::MINUTE, l).append(sep____________________________________________________________________________)
-              print(sb, t, DateTime::SECOND, l).append(Character.new(?\s.ord))
-              # this may be in wrong place for some locales
-              tsb_______________ = StringBuilder.new
-              print(tsb_______________, t, DateTime::AM_PM, l)
-              sb.append(tsb_______________.to_s.to_upper_case(!(l).nil? ? l : Locale::US))
-              throw :break_case, :thrown
-              # 'c' (Sat Nov 04 12:02:33 EST 1999)
-              sep_____________________________________________________________________________ = Character.new(?\s.ord)
-              print(sb, t, DateTime::NAME_OF_DAY_ABBREV, l).append(sep_____________________________________________________________________________)
-              print(sb, t, DateTime::NAME_OF_MONTH_ABBREV, l).append(sep_____________________________________________________________________________)
-              print(sb, t, DateTime::DAY_OF_MONTH_0, l).append(sep_____________________________________________________________________________)
-              print(sb, t, DateTime::TIME, l).append(sep_____________________________________________________________________________)
-              print(sb, t, DateTime::ZONE, l).append(sep_____________________________________________________________________________)
-              print(sb, t, DateTime::YEAR_4, l)
-              throw :break_case, :thrown
-              # 'D' (mm/dd/yy)
-              sep______________________________________________________________________________ = Character.new(?/.ord)
-              print(sb, t, DateTime::MONTH, l).append(sep______________________________________________________________________________)
-              print(sb, t, DateTime::DAY_OF_MONTH_0, l).append(sep______________________________________________________________________________)
-              print(sb, t, DateTime::YEAR_2, l)
-              throw :break_case, :thrown
-              # 'F' (%Y-%m-%d)
-              sep_______________________________________________________________________________ = Character.new(?-.ord)
-              print(sb, t, DateTime::YEAR_4, l).append(sep_______________________________________________________________________________)
-              print(sb, t, DateTime::MONTH, l).append(sep_______________________________________________________________________________)
-              print(sb, t, DateTime::DAY_OF_MONTH_0, l)
-              throw :break_case, :thrown
-              raise AssertError if not (false)
-            when DateTime::TIME, DateTime::TIME_24_HOUR
-              # 'R' (hh:mm same as %H:%M)
-              sep________________________________________________________________________________ = Character.new(?:.ord)
-              print(sb, t, DateTime::HOUR_OF_DAY_0, l).append(sep________________________________________________________________________________)
-              print(sb, t, DateTime::MINUTE, l)
-              if ((c).equal?(DateTime::TIME))
-                sb.append(sep________________________________________________________________________________)
-                print(sb, t, DateTime::SECOND, l)
-              end
-              throw :break_case, :thrown
-              # 'r' (hh:mm:ss [AP]M)
-              sep_________________________________________________________________________________ = Character.new(?:.ord)
-              print(sb, t, DateTime::HOUR_0, l).append(sep_________________________________________________________________________________)
-              print(sb, t, DateTime::MINUTE, l).append(sep_________________________________________________________________________________)
-              print(sb, t, DateTime::SECOND, l).append(Character.new(?\s.ord))
-              # this may be in wrong place for some locales
-              tsb________________ = StringBuilder.new
-              print(tsb________________, t, DateTime::AM_PM, l)
-              sb.append(tsb________________.to_s.to_upper_case(!(l).nil? ? l : Locale::US))
-              throw :break_case, :thrown
-              # 'c' (Sat Nov 04 12:02:33 EST 1999)
-              sep__________________________________________________________________________________ = Character.new(?\s.ord)
-              print(sb, t, DateTime::NAME_OF_DAY_ABBREV, l).append(sep__________________________________________________________________________________)
-              print(sb, t, DateTime::NAME_OF_MONTH_ABBREV, l).append(sep__________________________________________________________________________________)
-              print(sb, t, DateTime::DAY_OF_MONTH_0, l).append(sep__________________________________________________________________________________)
-              print(sb, t, DateTime::TIME, l).append(sep__________________________________________________________________________________)
-              print(sb, t, DateTime::ZONE, l).append(sep__________________________________________________________________________________)
-              print(sb, t, DateTime::YEAR_4, l)
-              throw :break_case, :thrown
-              # 'D' (mm/dd/yy)
-              sep___________________________________________________________________________________ = Character.new(?/.ord)
-              print(sb, t, DateTime::MONTH, l).append(sep___________________________________________________________________________________)
-              print(sb, t, DateTime::DAY_OF_MONTH_0, l).append(sep___________________________________________________________________________________)
-              print(sb, t, DateTime::YEAR_2, l)
-              throw :break_case, :thrown
-              # 'F' (%Y-%m-%d)
-              sep____________________________________________________________________________________ = Character.new(?-.ord)
-              print(sb, t, DateTime::YEAR_4, l).append(sep____________________________________________________________________________________)
-              print(sb, t, DateTime::MONTH, l).append(sep____________________________________________________________________________________)
-              print(sb, t, DateTime::DAY_OF_MONTH_0, l)
-              throw :break_case, :thrown
-              raise AssertError if not (false)
-            when DateTime::TIME_12_HOUR
-              # 'r' (hh:mm:ss [AP]M)
-              sep_____________________________________________________________________________________ = Character.new(?:.ord)
-              print(sb, t, DateTime::HOUR_0, l).append(sep_____________________________________________________________________________________)
-              print(sb, t, DateTime::MINUTE, l).append(sep_____________________________________________________________________________________)
-              print(sb, t, DateTime::SECOND, l).append(Character.new(?\s.ord))
-              # this may be in wrong place for some locales
-              tsb_________________ = StringBuilder.new
-              print(tsb_________________, t, DateTime::AM_PM, l)
-              sb.append(tsb_________________.to_s.to_upper_case(!(l).nil? ? l : Locale::US))
-              throw :break_case, :thrown
-              # 'c' (Sat Nov 04 12:02:33 EST 1999)
-              sep______________________________________________________________________________________ = Character.new(?\s.ord)
-              print(sb, t, DateTime::NAME_OF_DAY_ABBREV, l).append(sep______________________________________________________________________________________)
-              print(sb, t, DateTime::NAME_OF_MONTH_ABBREV, l).append(sep______________________________________________________________________________________)
-              print(sb, t, DateTime::DAY_OF_MONTH_0, l).append(sep______________________________________________________________________________________)
-              print(sb, t, DateTime::TIME, l).append(sep______________________________________________________________________________________)
-              print(sb, t, DateTime::ZONE, l).append(sep______________________________________________________________________________________)
-              print(sb, t, DateTime::YEAR_4, l)
-              throw :break_case, :thrown
-              # 'D' (mm/dd/yy)
-              sep_______________________________________________________________________________________ = Character.new(?/.ord)
-              print(sb, t, DateTime::MONTH, l).append(sep_______________________________________________________________________________________)
-              print(sb, t, DateTime::DAY_OF_MONTH_0, l).append(sep_______________________________________________________________________________________)
-              print(sb, t, DateTime::YEAR_2, l)
-              throw :break_case, :thrown
-              # 'F' (%Y-%m-%d)
-              sep________________________________________________________________________________________ = Character.new(?-.ord)
-              print(sb, t, DateTime::YEAR_4, l).append(sep________________________________________________________________________________________)
-              print(sb, t, DateTime::MONTH, l).append(sep________________________________________________________________________________________)
-              print(sb, t, DateTime::DAY_OF_MONTH_0, l)
-              throw :break_case, :thrown
-              raise AssertError if not (false)
-            when DateTime::DATE_TIME
-              # 'c' (Sat Nov 04 12:02:33 EST 1999)
-              sep_________________________________________________________________________________________ = Character.new(?\s.ord)
-              print(sb, t, DateTime::NAME_OF_DAY_ABBREV, l).append(sep_________________________________________________________________________________________)
-              print(sb, t, DateTime::NAME_OF_MONTH_ABBREV, l).append(sep_________________________________________________________________________________________)
-              print(sb, t, DateTime::DAY_OF_MONTH_0, l).append(sep_________________________________________________________________________________________)
-              print(sb, t, DateTime::TIME, l).append(sep_________________________________________________________________________________________)
-              print(sb, t, DateTime::ZONE, l).append(sep_________________________________________________________________________________________)
-              print(sb, t, DateTime::YEAR_4, l)
-              throw :break_case, :thrown
-              # 'D' (mm/dd/yy)
-              sep__________________________________________________________________________________________ = Character.new(?/.ord)
-              print(sb, t, DateTime::MONTH, l).append(sep__________________________________________________________________________________________)
-              print(sb, t, DateTime::DAY_OF_MONTH_0, l).append(sep__________________________________________________________________________________________)
-              print(sb, t, DateTime::YEAR_2, l)
-              throw :break_case, :thrown
-              # 'F' (%Y-%m-%d)
-              sep___________________________________________________________________________________________ = Character.new(?-.ord)
-              print(sb, t, DateTime::YEAR_4, l).append(sep___________________________________________________________________________________________)
-              print(sb, t, DateTime::MONTH, l).append(sep___________________________________________________________________________________________)
-              print(sb, t, DateTime::DAY_OF_MONTH_0, l)
-              throw :break_case, :thrown
-              raise AssertError if not (false)
-            when DateTime::DATE
-              # 'D' (mm/dd/yy)
-              sep____________________________________________________________________________________________ = Character.new(?/.ord)
-              print(sb, t, DateTime::MONTH, l).append(sep____________________________________________________________________________________________)
-              print(sb, t, DateTime::DAY_OF_MONTH_0, l).append(sep____________________________________________________________________________________________)
-              print(sb, t, DateTime::YEAR_2, l)
-              throw :break_case, :thrown
-              # 'F' (%Y-%m-%d)
-              sep_____________________________________________________________________________________________ = Character.new(?-.ord)
-              print(sb, t, DateTime::YEAR_4, l).append(sep_____________________________________________________________________________________________)
-              print(sb, t, DateTime::MONTH, l).append(sep_____________________________________________________________________________________________)
-              print(sb, t, DateTime::DAY_OF_MONTH_0, l)
-              throw :break_case, :thrown
-              raise AssertError if not (false)
-            when DateTime::ISO_STANDARD_DATE
-              # 'F' (%Y-%m-%d)
-              sep______________________________________________________________________________________________ = Character.new(?-.ord)
-              print(sb, t, DateTime::YEAR_4, l).append(sep______________________________________________________________________________________________)
-              print(sb, t, DateTime::MONTH, l).append(sep______________________________________________________________________________________________)
-              print(sb, t, DateTime::DAY_OF_MONTH_0, l)
-              throw :break_case, :thrown
-              raise AssertError if not (false)
-            else
-              raise AssertError if not (false)
+          case (c)
+          # 'H' (00 - 23)
+          # 'I' (01 - 12)
+          # 'k' (0 - 23) -- like H
+          # Date
+          # 'a'
+          # 'b'
+          # 'h' -- same b
+          # 'C' (00 - 99)
+          # 'y' (00 - 99)
+          # 'd' (01 - 31)
+          # Composites
+          # 'T' (24 hour hh:mm:ss - %tH:%tM:%tS)
+          when DateTime::HOUR_OF_DAY_0, DateTime::HOUR_0, DateTime::HOUR_OF_DAY, DateTime::HOUR
+            # 'l' (1 - 12) -- like I
+            i = t.get(Calendar::HOUR_OF_DAY)
+            if ((c).equal?(DateTime::HOUR_0) || (c).equal?(DateTime::HOUR))
+              i = ((i).equal?(0) || (i).equal?(12) ? 12 : i % 12)
             end
+            flags_ = ((c).equal?(DateTime::HOUR_OF_DAY_0) || (c).equal?(DateTime::HOUR_0) ? Flags::ZERO_PAD : Flags::NONE)
+            sb.append(localized_magnitude(nil, i, flags_, 2, l))
+          when DateTime::MINUTE
+            # 'M' (00 - 59)
+            i = t.get(Calendar::MINUTE)
+            flags_ = Flags::ZERO_PAD
+            sb.append(localized_magnitude(nil, i, flags_, 2, l))
+          when DateTime::NANOSECOND
+            # 'N' (000000000 - 999999999)
+            i = t.get(Calendar::MILLISECOND) * 1000000
+            flags_ = Flags::ZERO_PAD
+            sb.append(localized_magnitude(nil, i, flags_, 9, l))
+          when DateTime::MILLISECOND
+            # 'L' (000 - 999)
+            i = t.get(Calendar::MILLISECOND)
+            flags_ = Flags::ZERO_PAD
+            sb.append(localized_magnitude(nil, i, flags_, 3, l))
+          when DateTime::MILLISECOND_SINCE_EPOCH
+            # 'Q' (0 - 99...?)
+            i = t.get_time_in_millis
+            flags_ = Flags::NONE
+            sb.append(localized_magnitude(nil, i, flags_, @width, l))
+          when DateTime::AM_PM
+            # 'p' (am or pm)
+            # Calendar.AM = 0, Calendar.PM = 1, LocaleElements defines upper
+            ampm = Array.typed(String).new(["AM", "PM"])
+            if (!(l).nil? && !(l).equal?(Locale::US))
+              dfs = DateFormatSymbols.get_instance(l)
+              ampm = dfs.get_am_pm_strings
+            end
+            s = ampm[t.get(Calendar::AM_PM)]
+            sb.append(s.to_lower_case(!(l).nil? ? l : Locale::US))
+          when DateTime::SECONDS_SINCE_EPOCH
+            # 's' (0 - 99...?)
+            i = t.get_time_in_millis / 1000
+            flags_ = Flags::NONE
+            sb.append(localized_magnitude(nil, i, flags_, @width, l))
+          when DateTime::SECOND
+            # 'S' (00 - 60 - leap second)
+            i = t.get(Calendar::SECOND)
+            flags_ = Flags::ZERO_PAD
+            sb.append(localized_magnitude(nil, i, flags_, 2, l))
+          when DateTime::ZONE_NUMERIC
+            # 'z' ({-|+}####) - ls minus?
+            i = t.get(Calendar::ZONE_OFFSET) + t.get(Calendar::DST_OFFSET)
+            neg = i < 0
+            sb.append(neg ? Character.new(?-.ord) : Character.new(?+.ord))
+            if (neg)
+              i = -i
+            end
+            min = i / 60000
+            # combine minute and hour into a single integer
+            offset = (min / 60) * 100 + (min % 60)
+            flags_ = Flags::ZERO_PAD
+            sb.append(localized_magnitude(nil, offset, flags_, 4, l))
+          when DateTime::ZONE
+            # 'Z' (symbol)
+            tz = t.get_time_zone
+            sb.append(tz.get_display_name((!(t.get(Calendar::DST_OFFSET)).equal?(0)), TimeZone::SHORT, ((l).nil?) ? Locale::US : l))
+          when DateTime::NAME_OF_DAY_ABBREV, DateTime::NAME_OF_DAY
+            # 'A'
+            i = t.get(Calendar::DAY_OF_WEEK)
+            lt = (((l).nil?) ? Locale::US : l)
+            dfs = DateFormatSymbols.get_instance(lt)
+            if ((c).equal?(DateTime::NAME_OF_DAY))
+              sb.append(dfs.get_weekdays[i])
+            else
+              sb.append(dfs.get_short_weekdays[i])
+            end
+          when DateTime::NAME_OF_MONTH_ABBREV, DateTime::NAME_OF_MONTH_ABBREV_X, DateTime::NAME_OF_MONTH
+            # 'B'
+            i = t.get(Calendar::MONTH)
+            lt = (((l).nil?) ? Locale::US : l)
+            dfs = DateFormatSymbols.get_instance(lt)
+            if ((c).equal?(DateTime::NAME_OF_MONTH))
+              sb.append(dfs.get_months[i])
+            else
+              sb.append(dfs.get_short_months[i])
+            end
+          when DateTime::CENTURY, DateTime::YEAR_2, DateTime::YEAR_4
+            # 'Y' (0000 - 9999)
+            i = t.get(Calendar::YEAR)
+            size = 2
+            case (c)
+            when DateTime::CENTURY
+              i /= 100
+            when DateTime::YEAR_2
+              i %= 100
+            when DateTime::YEAR_4
+              size = 4
+            end
+            flags_ = Flags::ZERO_PAD
+            sb.append(localized_magnitude(nil, i, flags_, size, l))
+          when DateTime::DAY_OF_MONTH_0, DateTime::DAY_OF_MONTH
+            # 'e' (1 - 31) -- like d
+            i = t.get(Calendar::DATE)
+            flags_ = ((c).equal?(DateTime::DAY_OF_MONTH_0) ? Flags::ZERO_PAD : Flags::NONE)
+            sb.append(localized_magnitude(nil, i, flags_, 2, l))
+          when DateTime::DAY_OF_YEAR
+            # 'j' (001 - 366)
+            i = t.get(Calendar::DAY_OF_YEAR)
+            flags_ = Flags::ZERO_PAD
+            sb.append(localized_magnitude(nil, i, flags_, 3, l))
+          when DateTime::MONTH
+            # 'm' (01 - 12)
+            i = t.get(Calendar::MONTH) + 1
+            flags_ = Flags::ZERO_PAD
+            sb.append(localized_magnitude(nil, i, flags_, 2, l))
+          when DateTime::TIME, DateTime::TIME_24_HOUR
+            # 'R' (hh:mm same as %H:%M)
+            sep = Character.new(?:.ord)
+            print(sb, t, DateTime::HOUR_OF_DAY_0, l).append(sep)
+            print(sb, t, DateTime::MINUTE, l)
+            if ((c).equal?(DateTime::TIME))
+              sb.append(sep)
+              print(sb, t, DateTime::SECOND, l)
+            end
+          when DateTime::TIME_12_HOUR
+            # 'r' (hh:mm:ss [AP]M)
+            sep = Character.new(?:.ord)
+            print(sb, t, DateTime::HOUR_0, l).append(sep)
+            print(sb, t, DateTime::MINUTE, l).append(sep)
+            print(sb, t, DateTime::SECOND, l).append(Character.new(?\s.ord))
+            # this may be in wrong place for some locales
+            tsb = StringBuilder.new
+            print(tsb, t, DateTime::AM_PM, l)
+            sb.append(tsb.to_s.to_upper_case(!(l).nil? ? l : Locale::US))
+          when DateTime::DATE_TIME
+            # 'c' (Sat Nov 04 12:02:33 EST 1999)
+            sep = Character.new(?\s.ord)
+            print(sb, t, DateTime::NAME_OF_DAY_ABBREV, l).append(sep)
+            print(sb, t, DateTime::NAME_OF_MONTH_ABBREV, l).append(sep)
+            print(sb, t, DateTime::DAY_OF_MONTH_0, l).append(sep)
+            print(sb, t, DateTime::TIME, l).append(sep)
+            print(sb, t, DateTime::ZONE, l).append(sep)
+            print(sb, t, DateTime::YEAR_4, l)
+          when DateTime::DATE
+            # 'D' (mm/dd/yy)
+            sep = Character.new(?/.ord)
+            print(sb, t, DateTime::MONTH, l).append(sep)
+            print(sb, t, DateTime::DAY_OF_MONTH_0, l).append(sep)
+            print(sb, t, DateTime::YEAR_2, l)
+          when DateTime::ISO_STANDARD_DATE
+            # 'F' (%Y-%m-%d)
+            sep = Character.new(?-.ord)
+            print(sb, t, DateTime::YEAR_4, l).append(sep)
+            print(sb, t, DateTime::MONTH, l).append(sep)
+            print(sb, t, DateTime::DAY_OF_MONTH_0, l)
+          else
+            raise AssertError if not (false)
           end
           return sb
         end
@@ -6052,8 +4345,8 @@ module Java::Util
               grp_sep = Character.new(?,.ord)
               grp_size = 3
             else
-              dfs_ = DecimalFormatSymbols.get_instance(l)
-              grp_sep = dfs_.get_grouping_separator
+              dfs = DecimalFormatSymbols.get_instance(l)
+              grp_sep = dfs.get_grouping_separator
               df = NumberFormat.get_integer_instance(l)
               grp_size = df.get_grouping_size
             end

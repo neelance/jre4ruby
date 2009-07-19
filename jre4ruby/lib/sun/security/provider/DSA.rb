@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 1996-2004 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -46,7 +45,6 @@ module Sun::Security::Provider
     }
   end
   
-  # 
   # The Digital Signature Standard (using the Digital Signature
   # Algorithm), as described in fips186 of the National Instute of
   # Standards and Technology (NIST), using fips180-1 (SHA-1).
@@ -126,7 +124,6 @@ module Sun::Security::Provider
     alias_method :attr_kseed_as_byte_array=, :kseed_as_byte_array=
     undef_method :kseed_as_byte_array=
     
-    # 
     # The random seed used to generate k
     # (prevent the same Kseed from being used twice in a row
     attr_accessor :previous_kseed
@@ -143,7 +140,6 @@ module Sun::Security::Provider
     undef_method :signing_random=
     
     typesig { [] }
-    # 
     # Construct a blank DSA object. It must be
     # initialized before being usable for signing or verifying.
     def initialize
@@ -161,21 +157,18 @@ module Sun::Security::Provider
     end
     
     typesig { [] }
-    # 
     # Return the 20 byte hash value and reset the digest.
     def get_digest
       raise NotImplementedError
     end
     
     typesig { [] }
-    # 
     # Reset the digest.
     def reset_digest
       raise NotImplementedError
     end
     
     class_module.module_eval {
-      # 
       # Standard SHA1withDSA implementation.
       const_set_lazy(:SHA1withDSA) { Class.new(DSA) do
         include_class_members DSA
@@ -195,14 +188,12 @@ module Sun::Security::Provider
         end
         
         typesig { [::Java::Byte] }
-        # 
         # Update a byte to be signed or verified.
         def engine_update(b)
           @data_sha.update(b)
         end
         
         typesig { [Array.typed(::Java::Byte), ::Java::Int, ::Java::Int] }
-        # 
         # Update an array of bytes to be signed or verified.
         def engine_update(data, off, len)
           @data_sha.update(data, off, len)
@@ -227,7 +218,6 @@ module Sun::Security::Provider
         alias_method :initialize__sha1with_dsa, :initialize
       end }
       
-      # 
       # RawDSA implementation.
       # 
       # RawDSA requires the data to be exactly 20 bytes long. If it is
@@ -303,7 +293,6 @@ module Sun::Security::Provider
     }
     
     typesig { [PrivateKey] }
-    # 
     # Initialize the DSA object with a DSA private key.
     # 
     # @param privateKey the DSA private key
@@ -321,7 +310,6 @@ module Sun::Security::Provider
     end
     
     typesig { [PublicKey] }
-    # 
     # Initialize the DSA object with a DSA public key.
     # 
     # @param publicKey the DSA public key.
@@ -345,7 +333,6 @@ module Sun::Security::Provider
     end
     
     typesig { [] }
-    # 
     # Sign all the data thus far updated. The signature is formatted
     # according to the Canonical Encoding Rules, returned as a DER
     # sequence of Integer, r and s.
@@ -374,7 +361,6 @@ module Sun::Security::Provider
     end
     
     typesig { [Array.typed(::Java::Byte)] }
-    # 
     # Verify all the data thus far updated.
     # 
     # @param signature the alledged signature, encoded using the
@@ -390,7 +376,6 @@ module Sun::Security::Provider
     end
     
     typesig { [Array.typed(::Java::Byte), ::Java::Int, ::Java::Int] }
-    # 
     # Verify all the data thus far updated.
     # 
     # @param signature the alledged signature, encoded using the
@@ -472,7 +457,6 @@ module Sun::Security::Provider
     end
     
     typesig { [BigInteger] }
-    # 
     # Please read bug report 4044247 for an alternative, faster,
     # NON-FIPS approved method to generate K
     def generate_k(q)
@@ -522,7 +506,6 @@ module Sun::Security::Provider
     end
     
     typesig { [Array.typed(::Java::Int), BigInteger] }
-    # 
     # Compute k for a DSA signature.
     # 
     # @param seed the seed for generating k. This seed should be
@@ -545,8 +528,8 @@ module Sun::Security::Provider
         end
         ((i += 1) - 1)
       end
-      k_ = BigInteger.new(1, tmp_bytes).mod(q)
-      return k_
+      k = BigInteger.new(1, tmp_bytes).mod(q)
+      return k
     end
     
     class_module.module_eval {
@@ -564,7 +547,6 @@ module Sun::Security::Provider
       const_attr_reader  :Round4_kt
       
       typesig { [Array.typed(::Java::Int), Array.typed(::Java::Int)] }
-      # 
       # Computes set 1 thru 7 of SHA-1 on m1.
       def _sha_7(m1, h)
         w = Array.typed(::Java::Int).new(80) { 0 }
@@ -635,7 +617,6 @@ module Sun::Security::Provider
     }
     
     typesig { [String, Object] }
-    # 
     # This implementation recognizes the following parameter:<dl>
     # 
     # <dt><tt>Kseed</tt>
@@ -660,7 +641,6 @@ module Sun::Security::Provider
     end
     
     typesig { [String] }
-    # 
     # Return the value of the requested parameter. Recognized
     # parameters are:
     # 
@@ -686,7 +666,6 @@ module Sun::Security::Provider
     end
     
     typesig { [DSAParams] }
-    # 
     # Set the algorithm object.
     def set_params(params)
       if ((params).nil?)
@@ -699,7 +678,6 @@ module Sun::Security::Provider
     end
     
     typesig { [] }
-    # 
     # Return a human readable rendition of the engine.
     def to_s
       printable = "DSA Signature"
@@ -720,7 +698,6 @@ module Sun::Security::Provider
     end
     
     typesig { [Array.typed(::Java::Byte)] }
-    # 
     # Utility routine for converting a byte array into an int array
     def byte_array2int_array(byte_array)
       j = 0

@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 1997-2006 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -37,7 +36,6 @@ module Sun::Security::X509
     }
   end
   
-  # 
   # This class defines the X500Name attribute for the Certificate.
   # 
   # @author Amit Kapoor
@@ -48,13 +46,11 @@ module Sun::Security::X509
     include CertAttrSet
     
     class_module.module_eval {
-      # 
       # Identifier for this attribute, to be used with the
       # get, set, delete methods of Certificate, x509 type.
       const_set_lazy(:IDENT) { "x509.info.issuer" }
       const_attr_reader  :IDENT
       
-      # 
       # Sub attributes name for this CertAttrSet.
       const_set_lazy(:NAME) { "issuer" }
       const_attr_reader  :NAME
@@ -83,7 +79,6 @@ module Sun::Security::X509
     undef_method :dn_principal=
     
     typesig { [X500Name] }
-    # 
     # Default constructor for the certificate attribute.
     # 
     # @param name the X500Name
@@ -94,7 +89,6 @@ module Sun::Security::X509
     end
     
     typesig { [DerInputStream] }
-    # 
     # Create the object, decoding the values from the passed DER stream.
     # 
     # @param in the DerInputStream to read the X500Name from.
@@ -106,7 +100,6 @@ module Sun::Security::X509
     end
     
     typesig { [InputStream] }
-    # 
     # Create the object, decoding the values from the passed stream.
     # 
     # @param in the InputStream to read the X500Name from.
@@ -119,7 +112,6 @@ module Sun::Security::X509
     end
     
     typesig { [] }
-    # 
     # Return the name as user readable string.
     def to_s
       if ((@dn_name).nil?)
@@ -129,7 +121,6 @@ module Sun::Security::X509
     end
     
     typesig { [OutputStream] }
-    # 
     # Encode the name in DER form to the stream.
     # 
     # @param out the DerOutputStream to marshal the contents to.
@@ -141,7 +132,6 @@ module Sun::Security::X509
     end
     
     typesig { [String, Object] }
-    # 
     # Set the attribute value.
     def set(name, obj)
       if (!(obj.is_a?(X500Name)))
@@ -156,7 +146,6 @@ module Sun::Security::X509
     end
     
     typesig { [String] }
-    # 
     # Get the attribute value.
     def get(name)
       if (name.equals_ignore_case(DN_NAME))
@@ -174,7 +163,6 @@ module Sun::Security::X509
     end
     
     typesig { [String] }
-    # 
     # Delete the attribute value.
     def delete(name)
       if (name.equals_ignore_case(DN_NAME))
@@ -186,7 +174,6 @@ module Sun::Security::X509
     end
     
     typesig { [] }
-    # 
     # Return an enumeration of names of attributes existing within this
     # attribute.
     def get_elements
@@ -196,7 +183,6 @@ module Sun::Security::X509
     end
     
     typesig { [] }
-    # 
     # Return the name of this attribute.
     def get_name
       return (NAME)

@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 1994-2006 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -31,7 +30,6 @@ module Java::Io
     }
   end
   
-  # 
   # Signals that an I/O exception of some sort has occurred. This
   # class is the general class of exceptions produced by failed or
   # interrupted I/O operations.
@@ -49,7 +47,6 @@ module Java::Io
     }
     
     typesig { [] }
-    # 
     # Constructs an {@code IOException} with {@code null}
     # as its error detail message.
     def initialize
@@ -57,7 +54,6 @@ module Java::Io
     end
     
     typesig { [String] }
-    # 
     # Constructs an {@code IOException} with the specified detail message.
     # 
     # @param message
@@ -68,7 +64,6 @@ module Java::Io
     end
     
     typesig { [String, Exception] }
-    # 
     # Constructs an {@code IOException} with the specified detail message
     # and cause.
     # 
@@ -91,7 +86,6 @@ module Java::Io
     end
     
     typesig { [Exception] }
-    # 
     # Constructs an {@code IOException} with the specified cause and a
     # detail message of {@code (cause==null ? null : cause.toString())}
     # (which typically contains the class and detail message of {@code cause}).

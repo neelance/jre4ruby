@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 1998-2006 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -31,7 +30,6 @@ module Java::Security::Cert
     }
   end
   
-  # 
   # This class is an abstraction of certificate revocation lists (CRLs) that
   # have different formats but important common uses. For example, all CRLs
   # share the functionality of listing revoked certificates, and can be queried
@@ -58,7 +56,6 @@ module Java::Security::Cert
     undef_method :type=
     
     typesig { [String] }
-    # 
     # Creates a CRL of the specified type.
     # 
     # @param type the standard name of the CRL type.
@@ -72,7 +69,6 @@ module Java::Security::Cert
     end
     
     typesig { [] }
-    # 
     # Returns the type of this CRL.
     # 
     # @return the type of this CRL.
@@ -81,7 +77,6 @@ module Java::Security::Cert
     end
     
     typesig { [] }
-    # 
     # Returns a string representation of this CRL.
     # 
     # @return a string representation of this CRL.
@@ -90,7 +85,6 @@ module Java::Security::Cert
     end
     
     typesig { [Certificate] }
-    # 
     # Checks whether the given certificate is on this CRL.
     # 
     # @param cert the certificate to check for.

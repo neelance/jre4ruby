@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 1996-2006 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -41,7 +40,6 @@ module Java::Io
     }
   end
   
-  # 
   # An ObjectOutputStream writes primitive data types and graphs of Java objects
   # to an OutputStream.  The objects can be read (reconstituted) using an
   # ObjectInputStream.  Persistent storage of objects can be accomplished by
@@ -275,7 +273,6 @@ module Java::Io
     undef_method :debug_info_stack=
     
     class_module.module_eval {
-      # 
       # value of "sun.io.serialization.extendedDebugInfo" property,
       # as true or false for extended information about exception's place
       const_set_lazy(:ExtendedDebugInfo) { Java::Security::AccessController.do_privileged(Sun::Security::Action::GetBooleanAction.new("sun.io.serialization.extendedDebugInfo")).boolean_value }
@@ -283,7 +280,6 @@ module Java::Io
     }
     
     typesig { [OutputStream] }
-    # 
     # Creates an ObjectOutputStream that writes to the specified OutputStream.
     # This constructor writes the serialization stream header to the
     # underlying stream; callers may wish to flush the stream immediately to
@@ -335,7 +331,6 @@ module Java::Io
     end
     
     typesig { [] }
-    # 
     # Provide a way for subclasses that are completely reimplementing
     # ObjectOutputStream to not have to allocate private data just used by
     # this implementation of ObjectOutputStream.
@@ -377,7 +372,6 @@ module Java::Io
     end
     
     typesig { [::Java::Int] }
-    # 
     # Specify stream protocol version to use when writing the stream.
     # 
     # <p>This routine provides a hook to enable the current version of
@@ -410,7 +404,6 @@ module Java::Io
     end
     
     typesig { [Object] }
-    # 
     # Write the specified object to the ObjectOutputStream.  The class of the
     # object, the signature of the class, and the values of the non-transient
     # and non-static fields of the class and all of its supertypes are
@@ -446,7 +439,6 @@ module Java::Io
     end
     
     typesig { [Object] }
-    # 
     # Method used by subclasses to override the default writeObject method.
     # This method is called by trusted subclasses of ObjectInputStream that
     # constructed ObjectInputStream using the protected no-arg constructor.
@@ -463,7 +455,6 @@ module Java::Io
     end
     
     typesig { [Object] }
-    # 
     # Writes an "unshared" object to the ObjectOutputStream.  This method is
     # identical to writeObject, except that it always writes the given object
     # as a new, unique object in the stream (as opposed to a back-reference
@@ -513,7 +504,6 @@ module Java::Io
     end
     
     typesig { [] }
-    # 
     # Write the non-static and non-transient fields of the current class to
     # this stream.  This may only be called from the writeObject method of the
     # class being serialized. It will throw the NotActiveException if it is
@@ -531,7 +521,6 @@ module Java::Io
     end
     
     typesig { [] }
-    # 
     # Retrieve the object used to buffer persistent fields to be written to
     # the stream.  The fields will be written to the stream when writeFields
     # method is called.
@@ -551,7 +540,6 @@ module Java::Io
     end
     
     typesig { [] }
-    # 
     # Write the buffered fields to the stream.
     # 
     # @throws  IOException if I/O errors occur while writing to the underlying
@@ -569,7 +557,6 @@ module Java::Io
     end
     
     typesig { [] }
-    # 
     # Reset will disregard the state of any objects already written to the
     # stream.  The state is reset to be the same as a new ObjectOutputStream.
     # The current point in the stream is marked as reset so the corresponding
@@ -589,7 +576,6 @@ module Java::Io
     end
     
     typesig { [Class] }
-    # 
     # Subclasses may implement this method to allow class data to be stored in
     # the stream. By default this method does nothing.  The corresponding
     # method in ObjectInputStream is resolveClass.  This method is called
@@ -608,7 +594,6 @@ module Java::Io
     end
     
     typesig { [Class] }
-    # 
     # Subclasses may implement this method to store custom data in the stream
     # along with descriptors for dynamic proxy classes.
     # 
@@ -632,7 +617,6 @@ module Java::Io
     end
     
     typesig { [Object] }
-    # 
     # This method will allow trusted subclasses of ObjectOutputStream to
     # substitute one object for another during serialization. Replacing
     # objects is disabled until enableReplaceObject is called. The
@@ -674,7 +658,6 @@ module Java::Io
     end
     
     typesig { [::Java::Boolean] }
-    # 
     # Enable the stream to do replacement of objects in the stream.  When
     # enabled, the replaceObject method is called for every object being
     # serialized.
@@ -708,7 +691,6 @@ module Java::Io
     end
     
     typesig { [] }
-    # 
     # The writeStreamHeader method is provided so subclasses can append or
     # prepend their own header to the stream.  It writes the magic number and
     # version to the stream.
@@ -721,7 +703,6 @@ module Java::Io
     end
     
     typesig { [ObjectStreamClass] }
-    # 
     # Write the specified class descriptor to the ObjectOutputStream.  Class
     # descriptors are used to identify the classes of objects written to the
     # stream.  Subclasses of ObjectOutputStream may override this method to
@@ -750,7 +731,6 @@ module Java::Io
     end
     
     typesig { [::Java::Int] }
-    # 
     # Writes a byte. This method will block until the byte is actually
     # written.
     # 
@@ -761,7 +741,6 @@ module Java::Io
     end
     
     typesig { [Array.typed(::Java::Byte)] }
-    # 
     # Writes an array of bytes. This method will block until the bytes are
     # actually written.
     # 
@@ -772,7 +751,6 @@ module Java::Io
     end
     
     typesig { [Array.typed(::Java::Byte), ::Java::Int, ::Java::Int] }
-    # 
     # Writes a sub array of bytes.
     # 
     # @param   buf the data to be written
@@ -791,7 +769,6 @@ module Java::Io
     end
     
     typesig { [] }
-    # 
     # Flushes the stream. This will write any buffered output bytes and flush
     # through to the underlying stream.
     # 
@@ -801,7 +778,6 @@ module Java::Io
     end
     
     typesig { [] }
-    # 
     # Drain any buffered data in ObjectOutputStream.  Similar to flush but
     # does not propagate the flush to the underlying stream.
     # 
@@ -812,7 +788,6 @@ module Java::Io
     end
     
     typesig { [] }
-    # 
     # Closes the stream. This method must be called to release any resources
     # associated with the stream.
     # 
@@ -824,7 +799,6 @@ module Java::Io
     end
     
     typesig { [::Java::Boolean] }
-    # 
     # Writes a boolean.
     # 
     # @param   val the boolean to be written
@@ -835,7 +809,6 @@ module Java::Io
     end
     
     typesig { [::Java::Int] }
-    # 
     # Writes an 8 bit byte.
     # 
     # @param   val the byte value to be written
@@ -846,7 +819,6 @@ module Java::Io
     end
     
     typesig { [::Java::Int] }
-    # 
     # Writes a 16 bit short.
     # 
     # @param   val the short value to be written
@@ -857,7 +829,6 @@ module Java::Io
     end
     
     typesig { [::Java::Int] }
-    # 
     # Writes a 16 bit char.
     # 
     # @param   val the char value to be written
@@ -868,7 +839,6 @@ module Java::Io
     end
     
     typesig { [::Java::Int] }
-    # 
     # Writes a 32 bit int.
     # 
     # @param   val the integer value to be written
@@ -879,7 +849,6 @@ module Java::Io
     end
     
     typesig { [::Java::Long] }
-    # 
     # Writes a 64 bit long.
     # 
     # @param   val the long value to be written
@@ -890,7 +859,6 @@ module Java::Io
     end
     
     typesig { [::Java::Float] }
-    # 
     # Writes a 32 bit float.
     # 
     # @param   val the float value to be written
@@ -901,7 +869,6 @@ module Java::Io
     end
     
     typesig { [::Java::Double] }
-    # 
     # Writes a 64 bit double.
     # 
     # @param   val the double value to be written
@@ -912,7 +879,6 @@ module Java::Io
     end
     
     typesig { [String] }
-    # 
     # Writes a String as a sequence of bytes.
     # 
     # @param   str the String of bytes to be written
@@ -923,7 +889,6 @@ module Java::Io
     end
     
     typesig { [String] }
-    # 
     # Writes a String as a sequence of chars.
     # 
     # @param   str the String of chars to be written
@@ -934,7 +899,6 @@ module Java::Io
     end
     
     typesig { [String] }
-    # 
     # Primitive data write of this String in
     # <a href="DataInput.html#modified-utf-8">modified UTF-8</a>
     # format.  Note that there is a
@@ -951,7 +915,6 @@ module Java::Io
     end
     
     class_module.module_eval {
-      # 
       # Provide programmatic access to the persistent fields to be written
       # to ObjectOutput.
       # 
@@ -960,7 +923,6 @@ module Java::Io
         include_class_members ObjectOutputStream
         
         typesig { [String, ::Java::Boolean] }
-        # 
         # Put the value of the named boolean field into the persistent field.
         # 
         # @param  name the name of the serializable field
@@ -974,7 +936,6 @@ module Java::Io
         end
         
         typesig { [String, ::Java::Byte] }
-        # 
         # Put the value of the named byte field into the persistent field.
         # 
         # @param  name the name of the serializable field
@@ -988,7 +949,6 @@ module Java::Io
         end
         
         typesig { [String, ::Java::Char] }
-        # 
         # Put the value of the named char field into the persistent field.
         # 
         # @param  name the name of the serializable field
@@ -1002,7 +962,6 @@ module Java::Io
         end
         
         typesig { [String, ::Java::Short] }
-        # 
         # Put the value of the named short field into the persistent field.
         # 
         # @param  name the name of the serializable field
@@ -1016,7 +975,6 @@ module Java::Io
         end
         
         typesig { [String, ::Java::Int] }
-        # 
         # Put the value of the named int field into the persistent field.
         # 
         # @param  name the name of the serializable field
@@ -1030,7 +988,6 @@ module Java::Io
         end
         
         typesig { [String, ::Java::Long] }
-        # 
         # Put the value of the named long field into the persistent field.
         # 
         # @param  name the name of the serializable field
@@ -1044,7 +1001,6 @@ module Java::Io
         end
         
         typesig { [String, ::Java::Float] }
-        # 
         # Put the value of the named float field into the persistent field.
         # 
         # @param  name the name of the serializable field
@@ -1058,7 +1014,6 @@ module Java::Io
         end
         
         typesig { [String, ::Java::Double] }
-        # 
         # Put the value of the named double field into the persistent field.
         # 
         # @param  name the name of the serializable field
@@ -1072,7 +1027,6 @@ module Java::Io
         end
         
         typesig { [String, Object] }
-        # 
         # Put the value of the named Object field into the persistent field.
         # 
         # @param  name the name of the serializable field
@@ -1087,7 +1041,6 @@ module Java::Io
         end
         
         typesig { [ObjectOutput] }
-        # 
         # Write the data and fields to the specified ObjectOutput stream,
         # which must be the same stream that produced this
         # <code>PutField</code> object.
@@ -1118,14 +1071,12 @@ module Java::Io
     }
     
     typesig { [] }
-    # 
     # Returns protocol version in use.
     def get_protocol_version
       return @protocol
     end
     
     typesig { [String] }
-    # 
     # Writes string without allowing it to be replaced in stream.  Used by
     # ObjectStreamClass to write class descriptor type strings.
     def write_type_string(str)
@@ -1142,7 +1093,6 @@ module Java::Io
     end
     
     typesig { [] }
-    # 
     # Verifies that this (possibly subclass) instance can be constructed
     # without violating security constraints: the subclass must not override
     # security-sensitive non-final methods, or else the
@@ -1171,7 +1121,6 @@ module Java::Io
     
     class_module.module_eval {
       typesig { [Class] }
-      # 
       # Performs reflective checks on given subclass to verify that it doesn't
       # override security-sensitive non-final methods.  Returns true if subclass
       # is "safe", false otherwise.
@@ -1213,7 +1162,6 @@ module Java::Io
     }
     
     typesig { [] }
-    # 
     # Clears internal data structures.
     def clear
       @subs.clear
@@ -1221,7 +1169,6 @@ module Java::Io
     end
     
     typesig { [Object, ::Java::Boolean] }
-    # 
     # Underlying writeObject/writeUnshared implementation.
     def write_object0(obj, unshared)
       old_mode = @bout.set_block_data_mode(false)
@@ -1321,14 +1268,12 @@ module Java::Io
     end
     
     typesig { [] }
-    # 
     # Writes null code to stream.
     def write_null
       @bout.write_byte(TC_NULL)
     end
     
     typesig { [::Java::Int] }
-    # 
     # Writes given object handle to stream.
     def write_handle(handle)
       @bout.write_byte(TC_REFERENCE)
@@ -1336,7 +1281,6 @@ module Java::Io
     end
     
     typesig { [Class, ::Java::Boolean] }
-    # 
     # Writes representation of given class to stream.
     def write_class(cl, unshared)
       @bout.write_byte(TC_CLASS)
@@ -1345,7 +1289,6 @@ module Java::Io
     end
     
     typesig { [ObjectStreamClass, ::Java::Boolean] }
-    # 
     # Writes representation of given class descriptor to stream.
     def write_class_desc(desc, unshared)
       handle = 0
@@ -1365,7 +1308,6 @@ module Java::Io
     end
     
     typesig { [ObjectStreamClass, ::Java::Boolean] }
-    # 
     # Writes class descriptor representing a dynamic proxy class to stream.
     def write_proxy_desc(desc, unshared)
       @bout.write_byte(TC_PROXYCLASSDESC)
@@ -1386,7 +1328,6 @@ module Java::Io
     end
     
     typesig { [ObjectStreamClass, ::Java::Boolean] }
-    # 
     # Writes class descriptor representing a standard (i.e., not a dynamic
     # proxy) class to stream.
     def write_non_proxy_desc(desc, unshared)
@@ -1407,7 +1348,6 @@ module Java::Io
     end
     
     typesig { [String, ::Java::Boolean] }
-    # 
     # Writes given string to stream, using standard or long UTF format
     # depending on string length.
     def write_string(str, unshared)
@@ -1423,7 +1363,6 @@ module Java::Io
     end
     
     typesig { [Object, ObjectStreamClass, ::Java::Boolean] }
-    # 
     # Writes given array object to stream.
     def write_array(array, desc, unshared)
       @bout.write_byte(TC_ARRAY)
@@ -1511,7 +1450,6 @@ module Java::Io
     end
     
     typesig { [Enum, ObjectStreamClass, ::Java::Boolean] }
-    # 
     # Writes given enum constant to stream.
     def write_enum(en, desc, unshared)
       @bout.write_byte(TC_ENUM)
@@ -1522,7 +1460,6 @@ module Java::Io
     end
     
     typesig { [Object, ObjectStreamClass, ::Java::Boolean] }
-    # 
     # Writes representation of a "ordinary" (i.e., not a String, Class,
     # ObjectStreamClass, array, or enum constant) serializable object to the
     # stream.
@@ -1548,7 +1485,6 @@ module Java::Io
     end
     
     typesig { [Externalizable] }
-    # 
     # Writes externalizable data of given object by invoking its
     # writeExternal() method.
     def write_external_data(obj)
@@ -1581,7 +1517,6 @@ module Java::Io
     end
     
     typesig { [Object, ObjectStreamClass] }
-    # 
     # Writes instance data for each serializable class of given object, from
     # superclass to subclass.
     def write_serial_data(obj, desc)
@@ -1620,7 +1555,6 @@ module Java::Io
     end
     
     typesig { [Object, ObjectStreamClass] }
-    # 
     # Fetches and writes values of serializable fields of given object to
     # stream.  The given class descriptor specifies which field values to
     # write, and in which order they should be written.
@@ -1654,11 +1588,9 @@ module Java::Io
     end
     
     typesig { [IOException] }
-    # 
     # Attempts to write to stream fatal IOException that has caused
     # serialization to abort.
     def write_fatal_exception(ex)
-      # 
       # Note: the serialization specification states that if a second
       # IOException occurs while attempting to serialize the original fatal
       # exception to the stream, then a StreamCorruptedException should be
@@ -1681,7 +1613,6 @@ module Java::Io
     class_module.module_eval {
       JNI.native_method :Java_java_io_ObjectOutputStream_floatsToBytes, [:pointer, :long, :long, :int32, :long, :int32, :int32], :void
       typesig { [Array.typed(::Java::Float), ::Java::Int, Array.typed(::Java::Byte), ::Java::Int, ::Java::Int] }
-      # 
       # Converts specified span of float values into byte values.
       # 
       # REMIND: remove once hotspot inlines Float.floatToIntBits
@@ -1691,7 +1622,6 @@ module Java::Io
       
       JNI.native_method :Java_java_io_ObjectOutputStream_doublesToBytes, [:pointer, :long, :long, :int32, :long, :int32, :int32], :void
       typesig { [Array.typed(::Java::Double), ::Java::Int, Array.typed(::Java::Byte), ::Java::Int, ::Java::Int] }
-      # 
       # Converts specified span of double values into byte values.
       # 
       # REMIND: remove once hotspot inlines Double.doubleToLongBits
@@ -1699,7 +1629,6 @@ module Java::Io
         JNI.__send__(:Java_java_io_ObjectOutputStream_doublesToBytes, JNI.env, self.jni_id, src.jni_id, srcpos.to_int, dst.jni_id, dstpos.to_int, ndoubles.to_int)
       end
       
-      # 
       # Default PutField implementation.
       const_set_lazy(:PutFieldImpl) { Class.new(PutField) do
         extend LocalClass
@@ -1727,7 +1656,6 @@ module Java::Io
         undef_method :obj_vals=
         
         typesig { [ObjectStreamClass] }
-        # 
         # Creates PutFieldImpl object for writing fields defined in given
         # class descriptor.
         def initialize(desc)
@@ -1788,7 +1716,6 @@ module Java::Io
         typesig { [ObjectOutput] }
         # deprecated in ObjectOutputStream.PutField
         def write(out)
-          # 
           # Applications should *not* use this method to write PutField
           # data, as it will lead to stream corruption if the PutField
           # object writes any primitive data (since block data mode is not
@@ -1820,7 +1747,6 @@ module Java::Io
         end
         
         typesig { [] }
-        # 
         # Writes buffered primitive data and object fields to stream.
         def write_fields
           self.attr_bout.write(@prim_vals, 0, @prim_vals.attr_length, false)
@@ -1843,7 +1769,6 @@ module Java::Io
         end
         
         typesig { [String, Class] }
-        # 
         # Returns offset of field with given name and type.  A specified type
         # of null matches all types, Object.class matches all non-primitive
         # types, and any other non-null type matches assignable types only.
@@ -1860,7 +1785,6 @@ module Java::Io
         alias_method :initialize__put_field_impl, :initialize
       end }
       
-      # 
       # Buffered output stream with two modes: in default mode, outputs data in
       # same format as DataOutputStream; in "block data" mode, outputs data
       # bracketed by block data markers (see object serialization specification
@@ -1933,7 +1857,6 @@ module Java::Io
         undef_method :dout=
         
         typesig { [OutputStream] }
-        # 
         # Creates new BlockDataOutputStream on top of given underlying stream.
         # Block data mode is turned off by default.
         def initialize(out)
@@ -1955,7 +1878,6 @@ module Java::Io
         end
         
         typesig { [::Java::Boolean] }
-        # 
         # Sets block data mode to the given mode (true == on, false == off)
         # and returns the previous mode value.  If the new mode is the same as
         # the old mode, no action is taken.  If the new mode differs from the
@@ -1971,7 +1893,6 @@ module Java::Io
         end
         
         typesig { [] }
-        # 
         # Returns true if the stream is currently in block data mode, false
         # otherwise.
         def get_block_data_mode
@@ -2014,7 +1935,6 @@ module Java::Io
         end
         
         typesig { [Array.typed(::Java::Byte), ::Java::Int, ::Java::Int, ::Java::Boolean] }
-        # 
         # Writes specified span of byte values from given array.  If copy is
         # true, copies the values to an intermediate buffer before writing
         # them to underlying stream (to avoid exposing a reference to the
@@ -2047,7 +1967,6 @@ module Java::Io
         end
         
         typesig { [] }
-        # 
         # Writes all buffered data from this stream to the underlying stream,
         # but does not flush underlying stream.
         def drain
@@ -2062,7 +1981,6 @@ module Java::Io
         end
         
         typesig { [::Java::Int] }
-        # 
         # Writes block data header.  Data blocks shorter than 256 bytes are
         # prefixed with a 2-byte header; all others start with a 5-byte
         # header.
@@ -2327,7 +2245,6 @@ module Java::Io
         end
         
         typesig { [String] }
-        # 
         # Returns the length in bytes of the UTF encoding of the given string.
         def get_utflength(s)
           len = s.length
@@ -2356,7 +2273,6 @@ module Java::Io
         end
         
         typesig { [String, ::Java::Long] }
-        # 
         # Writes the given string in UTF format.  This method is used in
         # situations where the UTF encoding length of the string is already
         # known; specifying it explicitly avoids a prescan of the string to
@@ -2374,7 +2290,6 @@ module Java::Io
         end
         
         typesig { [String] }
-        # 
         # Writes given string in "long" UTF format.  "Long" UTF format is
         # identical to standard UTF, except that it uses an 8 byte header
         # (instead of the standard 2 bytes) to convey the UTF encoding length.
@@ -2383,7 +2298,6 @@ module Java::Io
         end
         
         typesig { [String, ::Java::Long] }
-        # 
         # Writes given string in "long" UTF format, where the UTF encoding
         # length of the string is already known.
         def write_long_utf(s, utflen)
@@ -2396,7 +2310,6 @@ module Java::Io
         end
         
         typesig { [String] }
-        # 
         # Writes the "body" (i.e., the UTF representation minus the 2-byte or
         # 8-byte length header) of the UTF encoding for the given string.
         def write_utfbody(s)
@@ -2449,7 +2362,6 @@ module Java::Io
         alias_method :initialize__block_data_output_stream, :initialize
       end }
       
-      # 
       # Lightweight identity hash table which maps objects to integer handles,
       # assigned in ascending order.
       const_set_lazy(:HandleTable) { Class.new do
@@ -2498,7 +2410,6 @@ module Java::Io
         undef_method :objs=
         
         typesig { [::Java::Int, ::Java::Float] }
-        # 
         # Creates new HandleTable with given capacity and load factor.
         def initialize(initial_capacity, load_factor)
           @size = 0
@@ -2516,7 +2427,6 @@ module Java::Io
         end
         
         typesig { [Object] }
-        # 
         # Assigns next available handle to given object, and returns handle
         # value.  Handles are assigned in ascending order starting at 0.
         def assign(obj)
@@ -2531,7 +2441,6 @@ module Java::Io
         end
         
         typesig { [Object] }
-        # 
         # Looks up and returns handle associated with given object, or -1 if
         # no mapping found.
         def lookup(obj)
@@ -2550,7 +2459,6 @@ module Java::Io
         end
         
         typesig { [] }
-        # 
         # Resets table to its initial (empty) state.
         def clear
           Arrays.fill(@spine, -1)
@@ -2559,14 +2467,12 @@ module Java::Io
         end
         
         typesig { [] }
-        # 
         # Returns the number of mappings currently in table.
         def size
           return @size
         end
         
         typesig { [Object, ::Java::Int] }
-        # 
         # Inserts mapping object -> handle mapping into table.  Assumes table
         # is large enough to accommodate new mapping.
         def insert(obj, handle)
@@ -2577,7 +2483,6 @@ module Java::Io
         end
         
         typesig { [] }
-        # 
         # Expands the hash "spine" -- equivalent to increasing the number of
         # buckets in a conventional hash table.
         def grow_spine
@@ -2592,7 +2497,6 @@ module Java::Io
         end
         
         typesig { [] }
-        # 
         # Increases hash table capacity by lengthening entry arrays.
         def grow_entries
           new_length = (@next.attr_length << 1) + 1
@@ -2605,7 +2509,6 @@ module Java::Io
         end
         
         typesig { [Object] }
-        # 
         # Returns hash value for given object.
         def hash(obj)
           return System.identity_hash_code(obj) & 0x7fffffff
@@ -2615,7 +2518,6 @@ module Java::Io
         alias_method :initialize__handle_table, :initialize
       end }
       
-      # 
       # Lightweight identity hash table which maps objects to replacement
       # objects.
       const_set_lazy(:ReplaceTable) { Class.new do
@@ -2636,7 +2538,6 @@ module Java::Io
         undef_method :reps=
         
         typesig { [::Java::Int, ::Java::Float] }
-        # 
         # Creates new ReplaceTable with given capacity and load factor.
         def initialize(initial_capacity, load_factor)
           @htab = nil
@@ -2646,7 +2547,6 @@ module Java::Io
         end
         
         typesig { [Object, Object] }
-        # 
         # Enters mapping from object to replacement object.
         def assign(obj, rep)
           index = @htab.assign(obj)
@@ -2657,7 +2557,6 @@ module Java::Io
         end
         
         typesig { [Object] }
-        # 
         # Looks up and returns replacement for given object.  If no
         # replacement is found, returns the lookup object itself.
         def lookup(obj)
@@ -2666,7 +2565,6 @@ module Java::Io
         end
         
         typesig { [] }
-        # 
         # Resets table to its initial (empty) state.
         def clear
           Arrays.fill(@reps, 0, @htab.size, nil)
@@ -2674,14 +2572,12 @@ module Java::Io
         end
         
         typesig { [] }
-        # 
         # Returns the number of mappings currently in table.
         def size
           return @htab.size
         end
         
         typesig { [] }
-        # 
         # Increases table capacity.
         def grow
           new_reps = Array.typed(Object).new((@reps.attr_length << 1) + 1) { nil }
@@ -2693,7 +2589,6 @@ module Java::Io
         alias_method :initialize__replace_table, :initialize
       end }
       
-      # 
       # Stack to keep debug information about the state of the
       # serialization process, for embedding in exception messages.
       const_set_lazy(:DebugTraceInfoStack) { Class.new do
@@ -2712,28 +2607,24 @@ module Java::Io
         end
         
         typesig { [] }
-        # 
         # Removes all of the elements from enclosed list.
         def clear
           @stack.clear
         end
         
         typesig { [] }
-        # 
         # Removes the object at the top of enclosed list.
         def pop
           @stack.remove(@stack.size - 1)
         end
         
         typesig { [String] }
-        # 
         # Pushes a String onto the top of enclosed list.
         def push(entry)
           @stack.add("\t- " + entry)
         end
         
         typesig { [] }
-        # 
         # Returns a string representation of this object
         def to_s
           buffer = StringBuilder.new

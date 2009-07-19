@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 2005 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -38,7 +37,6 @@ module Sun::Misc
     }
   end
   
-  # 
   # Support class used by JVMTI and VM attach mechanism.
   class VMSupport 
     include_class_members VMSupportImports
@@ -56,7 +54,6 @@ module Sun::Misc
       alias_method :attr_agent_props=, :agent_props=
       
       typesig { [] }
-      # 
       # Returns the agent properties.
       def get_agent_properties
         synchronized(self) do
@@ -75,7 +72,6 @@ module Sun::Misc
       end
       
       typesig { [Properties] }
-      # 
       # Write the given properties list to a byte array and return it. Properties with
       # a key or value that is not a String is filtered out. The stream written to the byte
       # array is ISO 8859-1 encoded.
@@ -103,7 +99,6 @@ module Sun::Misc
       end
       
       typesig { [String] }
-      # 
       # Returns true if the given JAR file has the Class-Path attribute in the
       # main section of the JAR manifest. Throws RuntimeException if the given
       # path is not a JAR file or some other error occurs.

@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 2000-2001 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -31,7 +30,6 @@ module Java::Security::Cert
     }
   end
   
-  # 
   # A specification of the result of a certification path validator algorithm.
   # <p>
   # The purpose of this interface is to group (and provide type safety
@@ -48,7 +46,6 @@ module Java::Security::Cert
     include Cloneable
     
     typesig { [] }
-    # 
     # Makes a copy of this <code>CertPathValidatorResult</code>. Changes to the
     # copy will not affect the original and vice versa.
     # 

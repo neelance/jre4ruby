@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 1995-2000 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -34,7 +33,6 @@ module Sun::Misc
     }
   end
   
-  # 
   # This class implements a BASE64 Character decoder as specified in RFC1521.
   # 
   # This RFC is part of the MIME specification which is published by the
@@ -78,7 +76,6 @@ module Sun::Misc
     end
     
     class_module.module_eval {
-      # 
       # This character array provides the character to value map
       # based on RFC1521.
       # 
@@ -118,7 +115,6 @@ module Sun::Misc
     undef_method :decode_buffer=
     
     typesig { [PushbackInputStream, OutputStream, ::Java::Int] }
-    # 
     # Decode one BASE64 atom into 1, 2, or 3 bytes of data.
     def decode_atom(in_stream, out_stream, rem)
       i = 0

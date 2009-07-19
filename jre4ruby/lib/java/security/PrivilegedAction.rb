@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 1998-2004 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -31,7 +30,6 @@ module Java::Security
     }
   end
   
-  # 
   # A computation to be performed with privileges enabled.  The computation is
   # performed by invoking <code>AccessController.doPrivileged</code> on the
   # <code>PrivilegedAction</code> object.  This interface is used only for
@@ -46,7 +44,6 @@ module Java::Security
     include_class_members PrivilegedActionImports
     
     typesig { [] }
-    # 
     # Performs the computation.  This method will be called by
     # <code>AccessController.doPrivileged</code> after enabling privileges.
     # 

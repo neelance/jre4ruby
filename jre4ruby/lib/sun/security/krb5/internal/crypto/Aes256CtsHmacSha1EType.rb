@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 2004 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -36,7 +35,6 @@ module Sun::Security::Krb5::Internal::Crypto
     }
   end
   
-  # 
   # This class encapsulates the encryption type for AES256
   # 
   # @author Seema Malkani

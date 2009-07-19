@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 1994-2006 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -34,7 +33,6 @@ module Java::Io
     }
   end
   
-  # 
   # A <code>SequenceInputStream</code> represents
   # the logical concatenation of other input
   # streams. It starts out with an ordered
@@ -62,7 +60,6 @@ module Java::Io
     undef_method :in=
     
     typesig { [Enumeration] }
-    # 
     # Initializes a newly created <code>SequenceInputStream</code>
     # by remembering the argument, which must
     # be an <code>Enumeration</code>  that produces
@@ -91,7 +88,6 @@ module Java::Io
     end
     
     typesig { [InputStream, InputStream] }
-    # 
     # Initializes a newly
     # created <code>SequenceInputStream</code>
     # by remembering the two arguments, which
@@ -118,7 +114,6 @@ module Java::Io
     end
     
     typesig { [] }
-    # 
     # Continues reading in the next stream if an EOF is reached.
     def next_stream
       if (!(@in).nil?)
@@ -135,7 +130,6 @@ module Java::Io
     end
     
     typesig { [] }
-    # 
     # Returns an estimate of the number of bytes that can be read (or
     # skipped over) from the current underlying input stream without
     # blocking by the next invocation of a method for the current
@@ -161,7 +155,6 @@ module Java::Io
     end
     
     typesig { [] }
-    # 
     # Reads the next byte of data from this input stream. The byte is
     # returned as an <code>int</code> in the range <code>0</code> to
     # <code>255</code>. If no byte is available because the end of the
@@ -191,7 +184,6 @@ module Java::Io
     end
     
     typesig { [Array.typed(::Java::Byte), ::Java::Int, ::Java::Int] }
-    # 
     # Reads up to <code>len</code> bytes of data from this input stream
     # into an array of bytes.  If <code>len</code> is not zero, the method
     # blocks until at least 1 byte of input is available; otherwise, no
@@ -238,7 +230,6 @@ module Java::Io
     end
     
     typesig { [] }
-    # 
     # Closes this input stream and releases any system resources
     # associated with the stream.
     # A closed <code>SequenceInputStream</code>

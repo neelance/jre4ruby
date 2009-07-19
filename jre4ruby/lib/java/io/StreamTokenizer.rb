@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 1995-2005 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -32,7 +31,6 @@ module Java::Io
     }
   end
   
-  # 
   # The <code>StreamTokenizer</code> class takes an input stream and
   # parses it into "tokens", allowing the tokens to be
   # read one at a time. The parsing process is controlled by a table
@@ -87,7 +85,6 @@ module Java::Io
     alias_method :attr_buf=, :buf=
     undef_method :buf=
     
-    # 
     # The next character to be considered by the nextToken method.  May also
     # be NEED_CHAR to indicate that a new character should be read, or SKIP_LF
     # to indicate that a new character should be read and, if it is a '\n'
@@ -167,7 +164,6 @@ module Java::Io
       const_attr_reader  :CT_COMMENT
     }
     
-    # 
     # After a call to the <code>nextToken</code> method, this field
     # contains the type of the token just read. For a single character
     # token, its value is the single character, converted to an integer.
@@ -200,22 +196,18 @@ module Java::Io
     undef_method :ttype=
     
     class_module.module_eval {
-      # 
       # A constant indicating that the end of the stream has been read.
       const_set_lazy(:TT_EOF) { -1 }
       const_attr_reader  :TT_EOF
       
-      # 
       # A constant indicating that the end of the line has been read.
       const_set_lazy(:TT_EOL) { Character.new(?\n.ord) }
       const_attr_reader  :TT_EOL
       
-      # 
       # A constant indicating that a number token has been read.
       const_set_lazy(:TT_NUMBER) { -2 }
       const_attr_reader  :TT_NUMBER
       
-      # 
       # A constant indicating that a word token has been read.
       const_set_lazy(:TT_WORD) { -3 }
       const_attr_reader  :TT_WORD
@@ -227,7 +219,6 @@ module Java::Io
       const_attr_reader  :TT_NOTHING
     }
     
-    # 
     # If the current token is a word token, this field contains a
     # string giving the characters of the word token. When the current
     # token is a quoted string token, this field contains the body of
@@ -249,7 +240,6 @@ module Java::Io
     alias_method :attr_sval=, :sval=
     undef_method :sval=
     
-    # 
     # If the current token is a number, this field contains the value
     # of that number. The current token is a number when the value of
     # the <code>ttype</code> field is <code>TT_NUMBER</code>.
@@ -292,7 +282,6 @@ module Java::Io
     end
     
     typesig { [InputStream] }
-    # 
     # Creates a stream tokenizer that parses the specified input
     # stream. The stream tokenizer is initialized to the following
     # default state:
@@ -331,7 +320,6 @@ module Java::Io
     end
     
     typesig { [Reader] }
-    # 
     # Create a tokenizer that parses the given character stream.
     # 
     # @param r  a Reader object providing the input stream.
@@ -345,7 +333,6 @@ module Java::Io
     end
     
     typesig { [] }
-    # 
     # Resets this tokenizer's syntax table so that all characters are
     # "ordinary." See the <code>ordinaryChar</code> method
     # for more information on a character being ordinary.
@@ -359,7 +346,6 @@ module Java::Io
     end
     
     typesig { [::Java::Int, ::Java::Int] }
-    # 
     # Specifies that all characters <i>c</i> in the range
     # <code>low&nbsp;&lt;=&nbsp;<i>c</i>&nbsp;&lt;=&nbsp;high</code>
     # are word constituents. A word token consists of a word constituent
@@ -380,7 +366,6 @@ module Java::Io
     end
     
     typesig { [::Java::Int, ::Java::Int] }
-    # 
     # Specifies that all characters <i>c</i> in the range
     # <code>low&nbsp;&lt;=&nbsp;<i>c</i>&nbsp;&lt;=&nbsp;high</code>
     # are white space characters. White space characters serve only to
@@ -404,7 +389,6 @@ module Java::Io
     end
     
     typesig { [::Java::Int, ::Java::Int] }
-    # 
     # Specifies that all characters <i>c</i> in the range
     # <code>low&nbsp;&lt;=&nbsp;<i>c</i>&nbsp;&lt;=&nbsp;high</code>
     # are "ordinary" in this tokenizer. See the
@@ -427,7 +411,6 @@ module Java::Io
     end
     
     typesig { [::Java::Int] }
-    # 
     # Specifies that the character argument is "ordinary"
     # in this tokenizer. It removes any special significance the
     # character has as a comment character, word component, string
@@ -450,7 +433,6 @@ module Java::Io
     end
     
     typesig { [::Java::Int] }
-    # 
     # Specified that the character argument starts a single-line
     # comment. All characters from the comment character to the end of
     # the line are ignored by this stream tokenizer.
@@ -465,7 +447,6 @@ module Java::Io
     end
     
     typesig { [::Java::Int] }
-    # 
     # Specifies that matching pairs of this character delimit string
     # constants in this tokenizer.
     # <p>
@@ -495,7 +476,6 @@ module Java::Io
     end
     
     typesig { [] }
-    # 
     # Specifies that numbers should be parsed by this tokenizer. The
     # syntax table of this tokenizer is modified so that each of the twelve
     # characters:
@@ -525,7 +505,6 @@ module Java::Io
     end
     
     typesig { [::Java::Boolean] }
-    # 
     # Determines whether or not ends of line are treated as tokens.
     # If the flag argument is true, this tokenizer treats end of lines
     # as tokens; the <code>nextToken</code> method returns
@@ -552,7 +531,6 @@ module Java::Io
     end
     
     typesig { [::Java::Boolean] }
-    # 
     # Determines whether or not the tokenizer recognizes C-style comments.
     # If the flag argument is <code>true</code>, this stream tokenizer
     # recognizes C-style comments. All text between successive
@@ -568,7 +546,6 @@ module Java::Io
     end
     
     typesig { [::Java::Boolean] }
-    # 
     # Determines whether or not the tokenizer recognizes C++-style comments.
     # If the flag argument is <code>true</code>, this stream tokenizer
     # recognizes C++-style comments. Any occurrence of two consecutive
@@ -585,7 +562,6 @@ module Java::Io
     end
     
     typesig { [::Java::Boolean] }
-    # 
     # Determines whether or not word token are automatically lowercased.
     # If the flag argument is <code>true</code>, then the value in the
     # <code>sval</code> field is lowercased whenever a word token is
@@ -620,7 +596,6 @@ module Java::Io
     end
     
     typesig { [] }
-    # 
     # Parses the next token from the input stream of this tokenizer.
     # The type of the next token is returned in the <code>ttype</code>
     # field. Additional information about the token may be in the
@@ -753,7 +728,7 @@ module Java::Io
       end
       if (!((ctype & CT_QUOTE)).equal?(0))
         @ttype = c
-        i_ = 0
+        i = 0
         # Invariants (because \Octal needs a lookahead):
         # (i)  c contains char value
         # (ii) d contains the lookahead
@@ -801,16 +776,16 @@ module Java::Io
             c = d
             d = read
           end
-          if (i_ >= @buf.attr_length)
+          if (i >= @buf.attr_length)
             @buf = Arrays.copy_of(@buf, @buf.attr_length * 2)
           end
-          @buf[((i_ += 1) - 1)] = RJava.cast_to_char(c)
+          @buf[((i += 1) - 1)] = RJava.cast_to_char(c)
         end
         # If we broke out of the loop because we found a matching quote
         # character then arrange to read a new character next time
         # around; otherwise, save the character.
         @peekc = ((d).equal?(@ttype)) ? NEED_CHAR : d
-        @sval = (String.copy_value_of(@buf, 0, i_)).to_s
+        @sval = (String.copy_value_of(@buf, 0, i)).to_s
         return @ttype
       end
       if ((c).equal?(Character.new(?/.ord)) && (@slash_slash_comments_p || @slash_star_comments_p))
@@ -866,7 +841,6 @@ module Java::Io
     end
     
     typesig { [] }
-    # 
     # Causes the next call to the <code>nextToken</code> method of this
     # tokenizer to return the current value in the <code>ttype</code>
     # field, and not to modify the value in the <code>nval</code> or
@@ -884,7 +858,6 @@ module Java::Io
     end
     
     typesig { [] }
-    # 
     # Return the current line number.
     # 
     # @return  the current line number of this stream tokenizer.
@@ -893,7 +866,6 @@ module Java::Io
     end
     
     typesig { [] }
-    # 
     # Returns the string representation of the current stream token and
     # the line number it occurs on.
     # 
@@ -921,7 +893,6 @@ module Java::Io
         when TT_NOTHING
           ret = "NOTHING"
         else
-          # 
           # ttype is the first character of either a quoted string or
           # is an ordinary character. ttype can definitely not be less
           # than 0, since those are reserved values used in the previous
@@ -934,7 +905,6 @@ module Java::Io
           s[0] = s[2] = Character.new(?\'.ord)
           s[1] = RJava.cast_to_char(@ttype)
           ret = (String.new(s)).to_s
-          throw :break_case, :thrown
         end
       end
       return "Token[" + ret + "], line " + (@lineno).to_s

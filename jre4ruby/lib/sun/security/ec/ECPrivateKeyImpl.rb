@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 2006 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -39,7 +38,6 @@ module Sun::Security::Ec
     }
   end
   
-  # 
   # Key implementation for EC private keys.
   # 
   # ASN.1 syntax for EC private keys from SEC 1 v1.5 (draft):
@@ -84,7 +82,6 @@ module Sun::Security::Ec
     undef_method :params=
     
     typesig { [Array.typed(::Java::Byte)] }
-    # 
     # Construct a key from its encoding. Called by the ECKeyFactory and
     # the SunPKCS11 code.
     def initialize(encoded)
@@ -95,7 +92,6 @@ module Sun::Security::Ec
     end
     
     typesig { [BigInteger, ECParameterSpec] }
-    # 
     # Construct a key from its components. Used by the
     # KeyFactory and the SunPKCS11 code.
     def initialize(s, params)
@@ -138,7 +134,6 @@ module Sun::Security::Ec
     end
     
     typesig { [] }
-    # 
     # Parse the key. Called by PKCS8Key.
     def parse_key_bits
       begin
@@ -174,7 +169,7 @@ module Sun::Security::Ec
       rescue IOException => e
         raise InvalidKeyException.new("Invalid EC private key", e)
       rescue InvalidParameterSpecException => e
-        raise InvalidKeyException.new("Invalid EC private key", e_)
+        raise InvalidKeyException.new("Invalid EC private key", e)
       end
     end
     

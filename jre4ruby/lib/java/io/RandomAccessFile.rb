@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 1994-2007 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -33,7 +32,6 @@ module Java::Io
     }
   end
   
-  # 
   # Instances of this class support both reading and writing to a
   # random access file. A random access file behaves like a large
   # array of bytes stored in the file system. There is a kind of cursor,
@@ -109,7 +107,6 @@ module Java::Io
     }
     
     typesig { [String, String] }
-    # 
     # Creates a random access file stream to read from, and optionally
     # to write to, a file with the specified name. A new
     # {@link FileDescriptor} object is created to represent the
@@ -155,7 +152,6 @@ module Java::Io
     end
     
     typesig { [JavaFile, String] }
-    # 
     # Creates a random access file stream to read from, and optionally to
     # write to, the file specified by the {@link File} argument.  A new {@link
     # FileDescriptor} object is created to represent this file connection.
@@ -276,7 +272,6 @@ module Java::Io
     end
     
     typesig { [] }
-    # 
     # Returns the opaque file descriptor object associated with this
     # stream. </p>
     # 
@@ -291,7 +286,6 @@ module Java::Io
     end
     
     typesig { [] }
-    # 
     # Returns the unique {@link java.nio.channels.FileChannel FileChannel}
     # object associated with this file.
     # 
@@ -312,7 +306,6 @@ module Java::Io
       synchronized((self)) do
         if ((@channel).nil?)
           @channel = FileChannelImpl.open(@fd, true, @rw, self)
-          # 
           # FileDescriptor could be shared by FileInputStream or
           # FileOutputStream.
           # Ensure that FD is GC'ed only when all the streams/channels
@@ -328,7 +321,6 @@ module Java::Io
     
     JNI.native_method :Java_java_io_RandomAccessFile_open, [:pointer, :long, :long, :int32], :void
     typesig { [String, ::Java::Int] }
-    # 
     # Opens a file and returns the file descriptor.  The file is
     # opened in read-write mode if the O_RDWR bit in <code>mode</code>
     # is true, else the file is opened as read-only.
@@ -365,7 +357,6 @@ module Java::Io
     
     JNI.native_method :Java_java_io_RandomAccessFile_readBytes, [:pointer, :long, :long, :int32, :int32], :int32
     typesig { [Array.typed(::Java::Byte), ::Java::Int, ::Java::Int] }
-    # 
     # Reads a sub array as a sequence of bytes.
     # @param b the buffer into which the data is read.
     # @param off the start offset of the data.
@@ -376,7 +367,6 @@ module Java::Io
     end
     
     typesig { [Array.typed(::Java::Byte), ::Java::Int, ::Java::Int] }
-    # 
     # Reads up to <code>len</code> bytes of data from this file into an
     # array of bytes. This method blocks until at least one byte of input
     # is available.
@@ -405,7 +395,6 @@ module Java::Io
     end
     
     typesig { [Array.typed(::Java::Byte)] }
-    # 
     # Reads up to <code>b.length</code> bytes of data from this file
     # into an array of bytes. This method blocks until at least one byte
     # of input is available.
@@ -428,7 +417,6 @@ module Java::Io
     end
     
     typesig { [Array.typed(::Java::Byte)] }
-    # 
     # Reads <code>b.length</code> bytes from this file into the byte
     # array, starting at the current file pointer. This method reads
     # repeatedly from the file until the requested number of bytes are
@@ -444,7 +432,6 @@ module Java::Io
     end
     
     typesig { [Array.typed(::Java::Byte), ::Java::Int, ::Java::Int] }
-    # 
     # Reads exactly <code>len</code> bytes from this file into the byte
     # array, starting at the current file pointer. This method reads
     # repeatedly from the file until the requested number of bytes are
@@ -469,7 +456,6 @@ module Java::Io
     end
     
     typesig { [::Java::Int] }
-    # 
     # Attempts to skip over <code>n</code> bytes of input discarding the
     # skipped bytes.
     # <p>
@@ -517,7 +503,6 @@ module Java::Io
     
     JNI.native_method :Java_java_io_RandomAccessFile_writeBytes, [:pointer, :long, :long, :int32, :int32], :void
     typesig { [Array.typed(::Java::Byte), ::Java::Int, ::Java::Int] }
-    # 
     # Writes a sub array as a sequence of bytes.
     # @param b the data to be written
     # 
@@ -529,7 +514,6 @@ module Java::Io
     end
     
     typesig { [Array.typed(::Java::Byte)] }
-    # 
     # Writes <code>b.length</code> bytes from the specified byte array
     # to this file, starting at the current file pointer.
     # 
@@ -540,7 +524,6 @@ module Java::Io
     end
     
     typesig { [Array.typed(::Java::Byte), ::Java::Int, ::Java::Int] }
-    # 
     # Writes <code>len</code> bytes from the specified byte array
     # starting at offset <code>off</code> to this file.
     # 
@@ -567,7 +550,6 @@ module Java::Io
     
     JNI.native_method :Java_java_io_RandomAccessFile_seek, [:pointer, :long, :int64], :void
     typesig { [::Java::Long] }
-    # 
     # Sets the file-pointer offset, measured from the beginning of this
     # file, at which the next read or write occurs.  The offset may be
     # set beyond the end of the file. Setting the offset beyond the end
@@ -586,7 +568,6 @@ module Java::Io
     
     JNI.native_method :Java_java_io_RandomAccessFile_length, [:pointer, :long], :int64
     typesig { [] }
-    # 
     # Returns the length of this file.
     # 
     # @return     the length of this file, measured in bytes.
@@ -597,7 +578,6 @@ module Java::Io
     
     JNI.native_method :Java_java_io_RandomAccessFile_setLength, [:pointer, :long, :int64], :void
     typesig { [::Java::Long] }
-    # 
     # Sets the length of this file.
     # 
     # <p> If the present length of the file as returned by the
@@ -620,7 +600,6 @@ module Java::Io
     end
     
     typesig { [] }
-    # 
     # Closes this random access file stream and releases any system
     # resources associated with the stream. A closed random access
     # file cannot perform input or output operations and cannot be
@@ -641,14 +620,12 @@ module Java::Io
         @closed = true
       end
       if (!(@channel).nil?)
-        # 
         # Decrement FD use count associated with the channel. The FD use
         # count is incremented whenever a new channel is obtained from
         # this stream.
         @fd.decrement_and_get_use_count
         @channel.close
       end
-      # 
       # Decrement FD use count associated with this stream.
       # The count got incremented by FileDescriptor during its construction.
       @fd.decrement_and_get_use_count
@@ -656,7 +633,6 @@ module Java::Io
     end
     
     typesig { [] }
-    # 
     # Some "reading/writing Java data types" methods stolen from
     # DataInputStream and DataOutputStream.
     # 
@@ -680,7 +656,6 @@ module Java::Io
     end
     
     typesig { [] }
-    # 
     # Reads a signed eight-bit value from this file. This method reads a
     # byte from the file, starting from the current file pointer.
     # If the byte read is <code>b</code>, where
@@ -706,7 +681,6 @@ module Java::Io
     end
     
     typesig { [] }
-    # 
     # Reads an unsigned eight-bit number from this file. This method reads
     # a byte from this file, starting at the current file pointer,
     # and returns that byte.
@@ -727,7 +701,6 @@ module Java::Io
     end
     
     typesig { [] }
-    # 
     # Reads a signed 16-bit number from this file. The method reads two
     # bytes from this file, starting at the current file pointer.
     # If the two bytes read, in order, are
@@ -756,7 +729,6 @@ module Java::Io
     end
     
     typesig { [] }
-    # 
     # Reads an unsigned 16-bit number from this file. This method reads
     # two bytes from the file, starting at the current file pointer.
     # If the bytes read, in order, are
@@ -785,7 +757,6 @@ module Java::Io
     end
     
     typesig { [] }
-    # 
     # Reads a character from this file. This method reads two
     # bytes from the file, starting at the current file pointer.
     # If the bytes read, in order, are
@@ -814,7 +785,6 @@ module Java::Io
     end
     
     typesig { [] }
-    # 
     # Reads a signed 32-bit integer from this file. This method reads 4
     # bytes from the file, starting at the current file pointer.
     # If the bytes read, in order, are <code>b1</code>,
@@ -845,7 +815,6 @@ module Java::Io
     end
     
     typesig { [] }
-    # 
     # Reads a signed 64-bit integer from this file. This method reads eight
     # bytes from the file, starting at the current file pointer.
     # If the bytes read, in order, are
@@ -877,7 +846,6 @@ module Java::Io
     end
     
     typesig { [] }
-    # 
     # Reads a <code>float</code> from this file. This method reads an
     # <code>int</code> value, starting at the current file pointer,
     # as if by the <code>readInt</code> method
@@ -900,7 +868,6 @@ module Java::Io
     end
     
     typesig { [] }
-    # 
     # Reads a <code>double</code> from this file. This method reads a
     # <code>long</code> value, starting at the current file pointer,
     # as if by the <code>readLong</code> method
@@ -923,7 +890,6 @@ module Java::Io
     end
     
     typesig { [] }
-    # 
     # Reads the next line of text from this file.  This method successively
     # reads bytes from the file, starting at the current file pointer,
     # until it reaches a line terminator or the end
@@ -970,7 +936,6 @@ module Java::Io
     end
     
     typesig { [] }
-    # 
     # Reads in a string from this file. The string has been encoded
     # using a
     # <a href="DataInput.html#modified-utf-8">modified UTF-8</a>
@@ -999,7 +964,6 @@ module Java::Io
     end
     
     typesig { [::Java::Boolean] }
-    # 
     # Writes a <code>boolean</code> to the file as a one-byte value. The
     # value <code>true</code> is written out as the value
     # <code>(byte)1</code>; the value <code>false</code> is written out
@@ -1014,7 +978,6 @@ module Java::Io
     end
     
     typesig { [::Java::Int] }
-    # 
     # Writes a <code>byte</code> to the file as a one-byte value. The
     # write starts at the current position of the file pointer.
     # 
@@ -1026,7 +989,6 @@ module Java::Io
     end
     
     typesig { [::Java::Int] }
-    # 
     # Writes a <code>short</code> to the file as two bytes, high byte first.
     # The write starts at the current position of the file pointer.
     # 
@@ -1039,7 +1001,6 @@ module Java::Io
     end
     
     typesig { [::Java::Int] }
-    # 
     # Writes a <code>char</code> to the file as a two-byte value, high
     # byte first. The write starts at the current position of the
     # file pointer.
@@ -1053,7 +1014,6 @@ module Java::Io
     end
     
     typesig { [::Java::Int] }
-    # 
     # Writes an <code>int</code> to the file as four bytes, high byte first.
     # The write starts at the current position of the file pointer.
     # 
@@ -1068,7 +1028,6 @@ module Java::Io
     end
     
     typesig { [::Java::Long] }
-    # 
     # Writes a <code>long</code> to the file as eight bytes, high byte first.
     # The write starts at the current position of the file pointer.
     # 
@@ -1087,7 +1046,6 @@ module Java::Io
     end
     
     typesig { [::Java::Float] }
-    # 
     # Converts the float argument to an <code>int</code> using the
     # <code>floatToIntBits</code> method in class <code>Float</code>,
     # and then writes that <code>int</code> value to the file as a
@@ -1102,7 +1060,6 @@ module Java::Io
     end
     
     typesig { [::Java::Double] }
-    # 
     # Converts the double argument to a <code>long</code> using the
     # <code>doubleToLongBits</code> method in class <code>Double</code>,
     # and then writes that <code>long</code> value to the file as an
@@ -1117,7 +1074,6 @@ module Java::Io
     end
     
     typesig { [String] }
-    # 
     # Writes the string to the file as a sequence of bytes. Each
     # character in the string is written out, in sequence, by discarding
     # its high eight bits. The write starts at the current position of
@@ -1133,7 +1089,6 @@ module Java::Io
     end
     
     typesig { [String] }
-    # 
     # Writes a string to the file as a sequence of characters. Each
     # character is written to the data output stream as if by the
     # <code>writeChar</code> method. The write starts at the current
@@ -1159,7 +1114,6 @@ module Java::Io
     end
     
     typesig { [String] }
-    # 
     # Writes a string to the file using
     # <a href="DataInput.html#modified-utf-8">modified UTF-8</a>
     # encoding in a machine-independent manner.

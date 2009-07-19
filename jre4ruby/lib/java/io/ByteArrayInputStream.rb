@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 1994-2005 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -31,7 +30,6 @@ module Java::Io
     }
   end
   
-  # 
   # A <code>ByteArrayInputStream</code> contains
   # an internal buffer that contains bytes that
   # may be read from the stream. An internal
@@ -48,7 +46,6 @@ module Java::Io
   class ByteArrayInputStream < ByteArrayInputStreamImports.const_get :InputStream
     include_class_members ByteArrayInputStreamImports
     
-    # 
     # An array of bytes that was provided
     # by the creator of the stream. Elements <code>buf[0]</code>
     # through <code>buf[count-1]</code> are the
@@ -61,7 +58,6 @@ module Java::Io
     alias_method :attr_buf=, :buf=
     undef_method :buf=
     
-    # 
     # The index of the next character to read from the input stream buffer.
     # This value should always be nonnegative
     # and not larger than the value of <code>count</code>.
@@ -73,7 +69,6 @@ module Java::Io
     alias_method :attr_pos=, :pos=
     undef_method :pos=
     
-    # 
     # The currently marked position in the stream.
     # ByteArrayInputStream objects are marked at position zero by
     # default when constructed.  They may be marked at another
@@ -91,7 +86,6 @@ module Java::Io
     alias_method :attr_mark=, :mark=
     undef_method :mark=
     
-    # 
     # The index one greater than the last valid character in the input
     # stream buffer.
     # This value should always be nonnegative
@@ -106,7 +100,6 @@ module Java::Io
     undef_method :count=
     
     typesig { [Array.typed(::Java::Byte)] }
-    # 
     # Creates a <code>ByteArrayInputStream</code>
     # so that it  uses <code>buf</code> as its
     # buffer array.
@@ -130,7 +123,6 @@ module Java::Io
     end
     
     typesig { [Array.typed(::Java::Byte), ::Java::Int, ::Java::Int] }
-    # 
     # Creates <code>ByteArrayInputStream</code>
     # that uses <code>buf</code> as its
     # buffer array. The initial value of <code>pos</code>
@@ -157,7 +149,6 @@ module Java::Io
     end
     
     typesig { [] }
-    # 
     # Reads the next byte of data from this input stream. The value
     # byte is returned as an <code>int</code> in the range
     # <code>0</code> to <code>255</code>. If no byte is available
@@ -176,7 +167,6 @@ module Java::Io
     end
     
     typesig { [Array.typed(::Java::Byte), ::Java::Int, ::Java::Int] }
-    # 
     # Reads up to <code>len</code> bytes of data into an array of bytes
     # from this input stream.
     # If <code>pos</code> equals <code>count</code>,
@@ -229,7 +219,6 @@ module Java::Io
     end
     
     typesig { [::Java::Long] }
-    # 
     # Skips <code>n</code> bytes of input from this input stream. Fewer
     # bytes might be skipped if the end of the input stream is reached.
     # The actual number <code>k</code>
@@ -254,7 +243,6 @@ module Java::Io
     end
     
     typesig { [] }
-    # 
     # Returns the number of remaining bytes that can be read (or skipped over)
     # from this input stream.
     # <p>
@@ -270,7 +258,6 @@ module Java::Io
     end
     
     typesig { [] }
-    # 
     # Tests if this <code>InputStream</code> supports mark/reset. The
     # <code>markSupported</code> method of <code>ByteArrayInputStream</code>
     # always returns <code>true</code>.
@@ -281,7 +268,6 @@ module Java::Io
     end
     
     typesig { [::Java::Int] }
-    # 
     # Set the current marked position in the stream.
     # ByteArrayInputStream objects are marked at position zero by
     # default when constructed.  They may be marked at another
@@ -300,7 +286,6 @@ module Java::Io
     end
     
     typesig { [] }
-    # 
     # Resets the buffer to the marked position.  The marked position
     # is 0 unless another position was marked or an offset was specified
     # in the constructor.
@@ -311,7 +296,6 @@ module Java::Io
     end
     
     typesig { [] }
-    # 
     # Closing a <tt>ByteArrayInputStream</tt> has no effect. The methods in
     # this class can be called after the stream has been closed without
     # generating an <tt>IOException</tt>.

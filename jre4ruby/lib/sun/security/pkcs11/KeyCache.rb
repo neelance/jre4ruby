@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 2003 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -35,7 +34,6 @@ module Sun::Security::Pkcs11
     }
   end
   
-  # 
   # Key to P11Key translation cache. The PKCS#11 token can only perform
   # operations on keys stored on the token (permanently or temporarily). That
   # means that in order to allow the PKCS#11 provider to use keys from other

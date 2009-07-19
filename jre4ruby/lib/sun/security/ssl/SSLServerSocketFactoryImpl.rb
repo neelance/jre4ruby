@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 1997-2007 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -35,7 +34,6 @@ module Sun::Security::Ssl
     }
   end
   
-  # 
   # This class creates SSL server sockets.
   # 
   # @author David Brownell
@@ -54,7 +52,6 @@ module Sun::Security::Ssl
     undef_method :context=
     
     typesig { [] }
-    # 
     # Constructor used to instantiate the default factory. This method is
     # only called if the old "ssl.ServerSocketFactory.provider" property in the
     # java.security file is set.
@@ -65,7 +62,6 @@ module Sun::Security::Ssl
     end
     
     typesig { [SSLContextImpl] }
-    # 
     # Called from SSLContextImpl's getSSLServerSocketFactory().
     def initialize(context)
       @context = nil
@@ -74,7 +70,6 @@ module Sun::Security::Ssl
     end
     
     typesig { [] }
-    # 
     # Returns an unbound server socket.
     # 
     # @return the unbound socket
@@ -100,7 +95,6 @@ module Sun::Security::Ssl
     end
     
     typesig { [] }
-    # 
     # Returns the subset of the supported cipher suites which are
     # enabled by default.  These cipher suites all provide a minimum
     # quality of service whereby the server authenticates itself
@@ -112,7 +106,6 @@ module Sun::Security::Ssl
     end
     
     typesig { [] }
-    # 
     # Returns the names of the cipher suites which could be enabled for use
     # on an SSL connection.  Normally, only a subset of these will actually
     # be enabled by default, since this list may include cipher suites which

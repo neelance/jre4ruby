@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 1997-2000 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -33,7 +32,6 @@ module Sun::Security::X509
     }
   end
   
-  # 
   # This class implements the OIDName as required by the GeneralNames
   # ASN.1 object.
   # 
@@ -53,7 +51,6 @@ module Sun::Security::X509
     undef_method :oid=
     
     typesig { [DerValue] }
-    # 
     # Create the OIDName object from the passed encoded Der value.
     # 
     # @param derValue the encoded DER OIDName.
@@ -64,7 +61,6 @@ module Sun::Security::X509
     end
     
     typesig { [ObjectIdentifier] }
-    # 
     # Create the OIDName object with the specified name.
     # 
     # @param name the OIDName.
@@ -74,7 +70,6 @@ module Sun::Security::X509
     end
     
     typesig { [String] }
-    # 
     # Create the OIDName from the String form of the OID
     # 
     # @param name the OIDName in form "x.y.z..."
@@ -89,14 +84,12 @@ module Sun::Security::X509
     end
     
     typesig { [] }
-    # 
     # Return the type of the GeneralName.
     def get_type
       return (GeneralNameInterface::NAME_OID)
     end
     
     typesig { [DerOutputStream] }
-    # 
     # Encode the OID name into the DerOutputStream.
     # 
     # @param out the DER stream to encode the OIDName to.
@@ -106,21 +99,18 @@ module Sun::Security::X509
     end
     
     typesig { [] }
-    # 
     # Convert the name into user readable string.
     def to_s
       return ("OIDName: " + (@oid.to_s).to_s)
     end
     
     typesig { [] }
-    # 
     # Returns this OID name.
     def get_oid
       return @oid
     end
     
     typesig { [Object] }
-    # 
     # Compares this name with another, for equality.
     # 
     # @return true iff the names are identical
@@ -136,7 +126,6 @@ module Sun::Security::X509
     end
     
     typesig { [] }
-    # 
     # Returns the hash code value for this object.
     # 
     # @return a hash code value for this object.
@@ -145,7 +134,6 @@ module Sun::Security::X509
     end
     
     typesig { [GeneralNameInterface] }
-    # 
     # Return type of constraint inputName places on this name:<ul>
     # <li>NAME_DIFF_TYPE = -1: input name is different type from name (i.e. does not constrain).
     # <li>NAME_MATCH = 0: input name matches name.
@@ -179,7 +167,6 @@ module Sun::Security::X509
     end
     
     typesig { [] }
-    # 
     # Return subtree depth of this name for purposes of determining
     # NameConstraints minimum and maximum bounds and for calculating
     # path lengths in name subtrees.

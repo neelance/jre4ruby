@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 1997-2006 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -31,7 +30,6 @@ module Java::Util
     }
   end
   
-  # 
   # This class implements the <tt>Set</tt> interface, backed by a hash table
   # (actually a <tt>HashMap</tt> instance).  It makes no guarantees as to the
   # iteration order of the set; in particular, it does not guarantee that the
@@ -112,7 +110,6 @@ module Java::Util
     }
     
     typesig { [] }
-    # 
     # Constructs a new, empty set; the backing <tt>HashMap</tt> instance has
     # default initial capacity (16) and load factor (0.75).
     def initialize
@@ -122,7 +119,6 @@ module Java::Util
     end
     
     typesig { [Collection] }
-    # 
     # Constructs a new set containing the elements in the specified
     # collection.  The <tt>HashMap</tt> is created with default load factor
     # (0.75) and an initial capacity sufficient to contain the elements in
@@ -138,7 +134,6 @@ module Java::Util
     end
     
     typesig { [::Java::Int, ::Java::Float] }
-    # 
     # Constructs a new, empty set; the backing <tt>HashMap</tt> instance has
     # the specified initial capacity and the specified load factor.
     # 
@@ -153,7 +148,6 @@ module Java::Util
     end
     
     typesig { [::Java::Int] }
-    # 
     # Constructs a new, empty set; the backing <tt>HashMap</tt> instance has
     # the specified initial capacity and default load factor (0.75).
     # 
@@ -167,7 +161,6 @@ module Java::Util
     end
     
     typesig { [::Java::Int, ::Java::Float, ::Java::Boolean] }
-    # 
     # Constructs a new, empty linked hash set.  (This package private
     # constructor is only used by LinkedHashSet.) The backing
     # HashMap instance is a LinkedHashMap with the specified initial
@@ -186,7 +179,6 @@ module Java::Util
     end
     
     typesig { [] }
-    # 
     # Returns an iterator over the elements in this set.  The elements
     # are returned in no particular order.
     # 
@@ -197,7 +189,6 @@ module Java::Util
     end
     
     typesig { [] }
-    # 
     # Returns the number of elements in this set (its cardinality).
     # 
     # @return the number of elements in this set (its cardinality)
@@ -206,7 +197,6 @@ module Java::Util
     end
     
     typesig { [] }
-    # 
     # Returns <tt>true</tt> if this set contains no elements.
     # 
     # @return <tt>true</tt> if this set contains no elements
@@ -215,7 +205,6 @@ module Java::Util
     end
     
     typesig { [Object] }
-    # 
     # Returns <tt>true</tt> if this set contains the specified element.
     # More formally, returns <tt>true</tt> if and only if this set
     # contains an element <tt>e</tt> such that
@@ -228,7 +217,6 @@ module Java::Util
     end
     
     typesig { [Object] }
-    # 
     # Adds the specified element to this set if it is not already present.
     # More formally, adds the specified element <tt>e</tt> to this set if
     # this set contains no element <tt>e2</tt> such that
@@ -244,7 +232,6 @@ module Java::Util
     end
     
     typesig { [Object] }
-    # 
     # Removes the specified element from this set if it is present.
     # More formally, removes an element <tt>e</tt> such that
     # <tt>(o==null&nbsp;?&nbsp;e==null&nbsp;:&nbsp;o.equals(e))</tt>,
@@ -260,7 +247,6 @@ module Java::Util
     end
     
     typesig { [] }
-    # 
     # Removes all of the elements from this set.
     # The set will be empty after this call returns.
     def clear
@@ -268,7 +254,6 @@ module Java::Util
     end
     
     typesig { [] }
-    # 
     # Returns a shallow copy of this <tt>HashSet</tt> instance: the elements
     # themselves are not cloned.
     # 
@@ -284,7 +269,6 @@ module Java::Util
     end
     
     typesig { [Java::Io::ObjectOutputStream] }
-    # 
     # Save the state of this <tt>HashSet</tt> instance to a stream (that is,
     # serialize it).
     # 
@@ -309,7 +293,6 @@ module Java::Util
     end
     
     typesig { [Java::Io::ObjectInputStream] }
-    # 
     # Reconstitute the <tt>HashSet</tt> instance from a stream (that is,
     # deserialize it).
     def read_object(s)

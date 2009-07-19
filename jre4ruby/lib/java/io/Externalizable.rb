@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 1996-2004 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -33,7 +32,6 @@ module Java::Io
     }
   end
   
-  # 
   # Only the identity of the class of an Externalizable instance is
   # written in the serialization stream and it is the responsibility
   # of the class to save and restore the contents of its instances.
@@ -72,7 +70,6 @@ module Java::Io
     include Java::Io::Serializable
     
     typesig { [ObjectOutput] }
-    # 
     # The object implements the writeExternal method to save its contents
     # by calling the methods of DataOutput for its primitive values or
     # calling the writeObject method of ObjectOutput for objects, strings,
@@ -91,7 +88,6 @@ module Java::Io
     end
     
     typesig { [ObjectInput] }
-    # 
     # The object implements the readExternal method to restore its
     # contents by calling the methods of DataInput for primitive
     # types and readObject for objects, strings and arrays.  The

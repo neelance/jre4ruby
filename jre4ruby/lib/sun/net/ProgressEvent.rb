@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 2004 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -33,7 +32,6 @@ module Sun::Net
     }
   end
   
-  # 
   # ProgressEvent represents an progress event in monitering network input stream.
   # 
   # @author Stanley Man-Kit Ho
@@ -83,7 +81,6 @@ module Sun::Net
     undef_method :state=
     
     typesig { [ProgressSource, URL, String, String, ProgressSource::State, ::Java::Int, ::Java::Int] }
-    # 
     # Construct a ProgressEvent object.
     def initialize(source, url, method, content_type, state, progress, expected)
       @url = nil
@@ -102,42 +99,36 @@ module Sun::Net
     end
     
     typesig { [] }
-    # 
     # Return URL related to the progress.
     def get_url
       return @url
     end
     
     typesig { [] }
-    # 
     # Return method associated with URL.
     def get_method
       return @method
     end
     
     typesig { [] }
-    # 
     # Return content type of the URL.
     def get_content_type
       return @content_type
     end
     
     typesig { [] }
-    # 
     # Return current progress value.
     def get_progress
       return @progress
     end
     
     typesig { [] }
-    # 
     # Return expected maximum progress value; -1 if expected is unknown.
     def get_expected
       return @expected
     end
     
     typesig { [] }
-    # 
     # Return state.
     def get_state
       return @state

@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Portions Copyright 2000-2003 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -115,7 +114,6 @@ module Sun::Security::Krb5::Internal
     end
     
     typesig { [Array.typed(::Java::Byte), ::Java::Int] }
-    # 
     # Read requested number of bytes before returning.
     # @return The number of bytes actually read; -1 if none read
     def read_fully(in_buf, total)
@@ -134,7 +132,6 @@ module Sun::Security::Krb5::Internal
     
     class_module.module_eval {
       typesig { [Array.typed(::Java::Byte), ::Java::Int, ::Java::Int] }
-      # 
       # Returns the integer represented by 4 bytes in network byte order.
       def network_byte_order_to_int(buf, start, count)
         if (count > 4)
@@ -151,7 +148,6 @@ module Sun::Security::Krb5::Internal
       end
       
       typesig { [::Java::Int, Array.typed(::Java::Byte), ::Java::Int, ::Java::Int] }
-      # 
       # Encodes an integer into 4 bytes in network byte order in the buffer
       # supplied.
       def int_to_network_byte_order(num, buf, start, count)

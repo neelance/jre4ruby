@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 1995-2003 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -35,7 +34,6 @@ module Sun::Net::Smtp
     }
   end
   
-  # 
   # This class implements the SMTP client.
   # You can send a piece of mail by creating a new SmtpClient, calling
   # the "to" method to add destinations, calling "from" to name the
@@ -60,7 +58,6 @@ module Sun::Net::Smtp
     undef_method :message=
     
     typesig { [] }
-    # 
     # issue the QUIT command to the SMTP server and close the connection.
     def close_server
       if (server_is_open)

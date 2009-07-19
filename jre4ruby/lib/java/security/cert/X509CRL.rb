@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 1997-2006 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -43,7 +42,6 @@ module Java::Security::Cert
     }
   end
   
-  # 
   # <p>
   # Abstract class for an X.509 Certificate Revocation List (CRL).
   # A CRL is a time-stamped list identifying revoked certificates.
@@ -126,7 +124,6 @@ module Java::Security::Cert
     undef_method :issuer_principal=
     
     typesig { [] }
-    # 
     # Constructor for X.509 CRLs.
     def initialize
       @issuer_principal = nil
@@ -134,7 +131,6 @@ module Java::Security::Cert
     end
     
     typesig { [Object] }
-    # 
     # Compares this CRL for equality with the given
     # object. If the <code>other</code> object is an
     # <code>instanceof</code> <code>X509CRL</code>, then
@@ -162,7 +158,6 @@ module Java::Security::Cert
     end
     
     typesig { [] }
-    # 
     # Returns a hashcode value for this CRL from its
     # encoded form.
     # 
@@ -183,7 +178,6 @@ module Java::Security::Cert
     end
     
     typesig { [] }
-    # 
     # Returns the ASN.1 DER-encoded form of this CRL.
     # 
     # @return the encoded form of this certificate
@@ -193,7 +187,6 @@ module Java::Security::Cert
     end
     
     typesig { [PublicKey] }
-    # 
     # Verifies that this CRL was signed using the
     # private key that corresponds to the given public key.
     # 
@@ -210,7 +203,6 @@ module Java::Security::Cert
     end
     
     typesig { [PublicKey, String] }
-    # 
     # Verifies that this CRL was signed using the
     # private key that corresponds to the given public key.
     # This method uses the signature verification engine
@@ -230,7 +222,6 @@ module Java::Security::Cert
     end
     
     typesig { [] }
-    # 
     # Gets the <code>version</code> (version number) value from the CRL.
     # The ASN.1 definition for this is:
     # <pre>
@@ -247,7 +238,6 @@ module Java::Security::Cert
     end
     
     typesig { [] }
-    # 
     # <strong>Denigrated</strong>, replaced by {@linkplain
     # #getIssuerX500Principal()}. This method returns the <code>issuer</code>
     # as an implementation specific Principal object, which should not be
@@ -290,7 +280,6 @@ module Java::Security::Cert
     end
     
     typesig { [] }
-    # 
     # Returns the issuer (issuer distinguished name) value from the
     # CRL as an <code>X500Principal</code>.
     # <p>
@@ -307,7 +296,6 @@ module Java::Security::Cert
     end
     
     typesig { [] }
-    # 
     # Gets the <code>thisUpdate</code> date from the CRL.
     # The ASN.1 definition for this is:
     # <pre>
@@ -323,7 +311,6 @@ module Java::Security::Cert
     end
     
     typesig { [] }
-    # 
     # Gets the <code>nextUpdate</code> date from the CRL.
     # 
     # @return the <code>nextUpdate</code> date from the CRL, or null if
@@ -333,7 +320,6 @@ module Java::Security::Cert
     end
     
     typesig { [BigInteger] }
-    # 
     # Gets the CRL entry, if any, with the given certificate serialNumber.
     # 
     # @param serialNumber the serial number of the certificate for which a CRL entry
@@ -346,7 +332,6 @@ module Java::Security::Cert
     end
     
     typesig { [X509Certificate] }
-    # 
     # Get the CRL entry, if any, for the given certificate.
     # 
     # <p>This method can be used to lookup CRL entries in indirect CRLs,
@@ -372,7 +357,6 @@ module Java::Security::Cert
     end
     
     typesig { [] }
-    # 
     # Gets all the entries from this CRL.
     # This returns a Set of X509CRLEntry objects.
     # 
@@ -383,7 +367,6 @@ module Java::Security::Cert
     end
     
     typesig { [] }
-    # 
     # Gets the DER-encoded CRL information, the
     # <code>tbsCertList</code> from this CRL.
     # This can be used to verify the signature independently.
@@ -395,7 +378,6 @@ module Java::Security::Cert
     end
     
     typesig { [] }
-    # 
     # Gets the <code>signature</code> value (the raw signature bits) from
     # the CRL.
     # The ASN.1 definition for this is:
@@ -409,7 +391,6 @@ module Java::Security::Cert
     end
     
     typesig { [] }
-    # 
     # Gets the signature algorithm name for the CRL
     # signature algorithm. An example is the string "SHA-1/DSA".
     # The ASN.1 definition for this is:
@@ -432,7 +413,6 @@ module Java::Security::Cert
     end
     
     typesig { [] }
-    # 
     # Gets the signature algorithm OID string from the CRL.
     # An OID is represented by a set of nonnegative whole numbers separated
     # by periods.
@@ -451,7 +431,6 @@ module Java::Security::Cert
     end
     
     typesig { [] }
-    # 
     # Gets the DER-encoded signature algorithm parameters from this
     # CRL's signature algorithm. In most cases, the signature
     # algorithm parameters are null; the parameters are usually

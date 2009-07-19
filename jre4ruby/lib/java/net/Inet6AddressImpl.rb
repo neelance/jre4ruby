@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 2002-2005 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -32,7 +31,6 @@ module Java::Net
     }
   end
   
-  # 
   # Package private implementation of InetAddressImpl for dual
   # IPv4/IPv6 stack.
   # <p>
@@ -75,7 +73,6 @@ module Java::Net
       scope = -1
       netif_scope = -1
       if (!(netif).nil?)
-        # 
         # Let's make sure we bind to an address of the proper family.
         # Which means same family as addr because at this point it could
         # be either an IPv6 address or an IPv4 address (case of a dual

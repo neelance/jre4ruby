@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 1999-2005 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -59,7 +58,6 @@ module Java::Text
     }
   end
   
-  # 
   # <p>A subclass of BreakIterator whose behavior is specified using a list of rules.</p>
   # 
   # <p>There are two kinds of rules, which are separated by semicolons: <i>substitutions</i>
@@ -226,22 +224,18 @@ module Java::Text
     include_class_members RuleBasedBreakIteratorImports
     
     class_module.module_eval {
-      # 
       # A token used as a character-category value to identify ignore characters
       const_set_lazy(:IGNORE) { -1 }
       const_attr_reader  :IGNORE
       
-      # 
       # The state number of the starting state
       const_set_lazy(:START_STATE) { 1 }
       const_attr_reader  :START_STATE
       
-      # 
       # The state-transition value indicating "stop"
       const_set_lazy(:STOP_STATE) { 0 }
       const_attr_reader  :STOP_STATE
       
-      # 
       # Magic number for the BreakIterator data file format.
       const_set_lazy(:LABEL) { Array.typed(::Java::Byte).new([Character.new(?B.ord), Character.new(?I.ord), Character.new(?d.ord), Character.new(?a.ord), Character.new(?t.ord), Character.new(?a.ord), Character.new(?\0.ord)]) }
       const_attr_reader  :LABEL
@@ -249,23 +243,19 @@ module Java::Text
       const_set_lazy(:LABEL_LENGTH) { LABEL.attr_length }
       const_attr_reader  :LABEL_LENGTH
       
-      # 
       # Version number of the dictionary that was read in.
       const_set_lazy(:SupportedVersion) { 1 }
       const_attr_reader  :SupportedVersion
       
-      # 
       # Header size in byte count
       const_set_lazy(:HEADER_LENGTH) { 36 }
       const_attr_reader  :HEADER_LENGTH
       
-      # 
       # An array length of indices for BMP characters
       const_set_lazy(:BMP_INDICES_LENGTH) { 512 }
       const_attr_reader  :BMP_INDICES_LENGTH
     }
     
-    # 
     # Tables that indexes from character values to character category numbers
     attr_accessor :char_category_table
     alias_method :attr_char_category_table, :char_category_table
@@ -279,7 +269,6 @@ module Java::Text
     alias_method :attr_supplementary_char_category_table=, :supplementary_char_category_table=
     undef_method :supplementary_char_category_table=
     
-    # 
     # The table of state transitions used for forward iteration
     attr_accessor :state_table
     alias_method :attr_state_table, :state_table
@@ -287,7 +276,6 @@ module Java::Text
     alias_method :attr_state_table=, :state_table=
     undef_method :state_table=
     
-    # 
     # The table of state transitions used to sync up the iterator with the
     # text in backwards and random-access iteration
     attr_accessor :backwards_state_table
@@ -296,7 +284,6 @@ module Java::Text
     alias_method :attr_backwards_state_table=, :backwards_state_table=
     undef_method :backwards_state_table=
     
-    # 
     # A list of flags indicating which states in the state table are accepting
     # ("end") states
     attr_accessor :end_states
@@ -305,7 +292,6 @@ module Java::Text
     alias_method :attr_end_states=, :end_states=
     undef_method :end_states=
     
-    # 
     # A list of flags indicating which states in the state table are
     # lookahead states (states which turn lookahead on and off)
     attr_accessor :lookahead_states
@@ -314,7 +300,6 @@ module Java::Text
     alias_method :attr_lookahead_states=, :lookahead_states=
     undef_method :lookahead_states=
     
-    # 
     # A table for additional data. May be used by a subclass of
     # RuleBasedBreakIterator.
     attr_accessor :additional_data
@@ -323,7 +308,6 @@ module Java::Text
     alias_method :attr_additional_data=, :additional_data=
     undef_method :additional_data=
     
-    # 
     # The number of character categories (and, thus, the number of columns in
     # the state tables)
     attr_accessor :num_categories
@@ -332,7 +316,6 @@ module Java::Text
     alias_method :attr_num_categories=, :num_categories=
     undef_method :num_categories=
     
-    # 
     # The character iterator through which this BreakIterator accesses the text
     attr_accessor :text
     alias_method :attr_text, :text
@@ -340,7 +323,6 @@ module Java::Text
     alias_method :attr_text=, :text=
     undef_method :text=
     
-    # 
     # A CRC32 value of all data in datafile
     attr_accessor :checksum
     alias_method :attr_checksum, :checksum
@@ -379,7 +361,6 @@ module Java::Text
     end
     
     typesig { [String] }
-    # 
     # Read datafile. The datafile's format is as follows:
     # <pre>
     # BreakIteratorData {
@@ -582,7 +563,6 @@ module Java::Text
     end
     
     typesig { [Object] }
-    # 
     # Returns true if both BreakIterators are of the same class, have the same
     # rules, and iterate over the same text.
     def equals(that)
@@ -605,7 +585,6 @@ module Java::Text
     end
     
     typesig { [] }
-    # 
     # Returns text
     def to_s
       sb = StringBuffer.new
@@ -616,7 +595,6 @@ module Java::Text
     end
     
     typesig { [] }
-    # 
     # Compute a hashcode for this BreakIterator
     # @return A hash code
     def hash_code
@@ -638,7 +616,6 @@ module Java::Text
     end
     
     typesig { [] }
-    # 
     # Sets the current iteration position to the end of the text.
     # (i.e., the CharacterIterator's ending offset).
     # @return The text's past-the-end offset.
@@ -651,7 +628,6 @@ module Java::Text
     end
     
     typesig { [::Java::Int] }
-    # 
     # Advances the iterator either forward or backward the specified number of steps.
     # Negative values move backward, and positive values move forward.  This is
     # equivalent to repeatedly calling next() or previous().
@@ -673,7 +649,6 @@ module Java::Text
     end
     
     typesig { [] }
-    # 
     # Advances the iterator to the next boundary position.
     # @return The position of the first boundary after this one.
     def next
@@ -681,7 +656,6 @@ module Java::Text
     end
     
     typesig { [] }
-    # 
     # Advances the iterator backwards, to the last boundary preceding this one.
     # @return The position of the last boundary position preceding this one.
     def previous
@@ -713,7 +687,6 @@ module Java::Text
     end
     
     typesig { [] }
-    # 
     # Returns previous character
     def get_previous
       c2 = @text.previous
@@ -729,7 +702,6 @@ module Java::Text
     end
     
     typesig { [] }
-    # 
     # Returns current character
     def get_current
       c1 = @text.current
@@ -744,7 +716,6 @@ module Java::Text
     end
     
     typesig { [] }
-    # 
     # Returns the count of next character.
     def get_current_code_point_count
       c1 = @text.current
@@ -759,7 +730,6 @@ module Java::Text
     end
     
     typesig { [] }
-    # 
     # Returns next character
     def get_next
       index = @text.get_index
@@ -772,7 +742,6 @@ module Java::Text
     end
     
     typesig { [] }
-    # 
     # Returns the position of next character.
     def get_next_index
       index = @text.get_index + get_current_code_point_count
@@ -786,7 +755,6 @@ module Java::Text
     
     class_module.module_eval {
       typesig { [::Java::Int, CharacterIterator] }
-      # 
       # Throw IllegalArgumentException unless begin <= offset < end.
       def check_offset(offset, text)
         if (offset < text.get_begin_index || offset > text.get_end_index)
@@ -796,7 +764,6 @@ module Java::Text
     }
     
     typesig { [::Java::Int] }
-    # 
     # Sets the iterator to refer to the first boundary position following
     # the specified position.
     # @offset The position from which to begin searching for a break position.
@@ -826,7 +793,6 @@ module Java::Text
     end
     
     typesig { [::Java::Int] }
-    # 
     # Sets the iterator to refer to the last boundary position before the
     # specified position.
     # @offset The position to begin searching for a break from.
@@ -842,7 +808,6 @@ module Java::Text
     end
     
     typesig { [::Java::Int] }
-    # 
     # Returns true if the specfied position is a boundary position.  As a side
     # effect, leaves the iterator pointing to the first boundary position at
     # or after "offset".
@@ -862,7 +827,6 @@ module Java::Text
     end
     
     typesig { [] }
-    # 
     # Returns the current iteration position.
     # @return The current iteration position.
     def current
@@ -870,7 +834,6 @@ module Java::Text
     end
     
     typesig { [] }
-    # 
     # Return a CharacterIterator over the text being analyzed.  This version
     # of this method returns the actual CharacterIterator we're using internally.
     # Changing the state of this iterator can have undefined consequences.  If
@@ -887,7 +850,6 @@ module Java::Text
     end
     
     typesig { [CharacterIterator] }
-    # 
     # Set the iterator to analyze a new piece of text.  This function resets
     # the current iteration position to the beginning of the text.
     # @param newText An iterator over the text to analyze.
@@ -977,7 +939,6 @@ module Java::Text
     end
     
     typesig { [] }
-    # 
     # This method backs the iterator back up to a "safe position" in the text.
     # This is a position that we know, without any context, must be a break position.
     # The various calling methods then iterate forward from this safe position to
@@ -1020,7 +981,6 @@ module Java::Text
     end
     
     typesig { [::Java::Int] }
-    # 
     # Looks up a character's category (i.e., its category for breaking purposes,
     # not its Unicode category)
     def lookup_category(c)
@@ -1032,7 +992,6 @@ module Java::Text
     end
     
     typesig { [::Java::Int, ::Java::Int] }
-    # 
     # Given a current state and a character category, looks up the
     # next state to transition to in the state table.
     def lookup_state(state, category)
@@ -1040,7 +999,6 @@ module Java::Text
     end
     
     typesig { [::Java::Int, ::Java::Int] }
-    # 
     # Given a current state and a character category, looks up the
     # next state to transition to in the backwards state table.
     def lookup_backward_state(state, category)
@@ -1048,7 +1006,6 @@ module Java::Text
     end
     
     class_module.module_eval {
-      # 
       # This class exists to work around a bug in incorrect implementations
       # of CharacterIterator, which incorrectly handle setIndex(endIndex).
       # This iterator relies only on base.setIndex(n) where n is less than

@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 1996-2002 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -46,7 +45,6 @@ module Sun::Security::Provider
     }
   end
   
-  # 
   # A PKCS#8 private key for the Digital Signature Algorithm.
   # 
   # @author Benjamin Renaud
@@ -74,7 +72,6 @@ module Sun::Security::Provider
     undef_method :x=
     
     typesig { [] }
-    # 
     # Keep this constructor for backwards compatibility with JDK1.1.
     def initialize
       @x = nil
@@ -82,7 +79,6 @@ module Sun::Security::Provider
     end
     
     typesig { [BigInteger, BigInteger, BigInteger, BigInteger] }
-    # 
     # Make a DSA private key out of a private key and three parameters.
     def initialize(x, p, q, g)
       @x = nil
@@ -100,7 +96,6 @@ module Sun::Security::Provider
     end
     
     typesig { [Array.typed(::Java::Byte)] }
-    # 
     # Make a DSA private key from its DER encoding (PKCS #8).
     def initialize(encoded)
       @x = nil
@@ -110,7 +105,6 @@ module Sun::Security::Provider
     end
     
     typesig { [] }
-    # 
     # Returns the DSA parameters associated with this key, or null if the
     # parameters could not be parsed.
     def get_params
@@ -132,7 +126,6 @@ module Sun::Security::Provider
     end
     
     typesig { [] }
-    # 
     # Get the raw private key, x, without the parameters.
     # 
     # @see getParameters

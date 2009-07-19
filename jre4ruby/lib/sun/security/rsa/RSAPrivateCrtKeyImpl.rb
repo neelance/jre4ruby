@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 2003-2008 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -38,7 +37,6 @@ module Sun::Security::Rsa
     }
   end
   
-  # 
   # Key implementation for RSA private keys, CRT form. For non-CRT private
   # keys, see RSAPrivateKeyImpl. We need separate classes to ensure
   # correct behavior in instanceof checks, etc.
@@ -121,7 +119,6 @@ module Sun::Security::Rsa
       const_attr_reader  :RsaId
       
       typesig { [Array.typed(::Java::Byte)] }
-      # 
       # Generate a new key from its encoding. Returns a CRT key if possible
       # and a non-CRT key otherwise. Used by RSAKeyFactory.
       def new_key(encoded)
@@ -136,7 +133,6 @@ module Sun::Security::Rsa
     }
     
     typesig { [Array.typed(::Java::Byte)] }
-    # 
     # Construct a key from its encoding. Called from newKey above.
     def initialize(encoded)
       @n = nil
@@ -153,7 +149,6 @@ module Sun::Security::Rsa
     end
     
     typesig { [BigInteger, BigInteger, BigInteger, BigInteger, BigInteger, BigInteger, BigInteger, BigInteger] }
-    # 
     # Construct a key from its components. Used by the
     # RSAKeyFactory and the RSAKeyPairGenerator.
     def initialize(n, e, d, p, q, pe, qe, coeff)
@@ -251,7 +246,6 @@ module Sun::Security::Rsa
     end
     
     typesig { [] }
-    # 
     # Parse the key. Called by PKCS8Key.
     def parse_key_bits
       begin
@@ -283,11 +277,9 @@ module Sun::Security::Rsa
     
     class_module.module_eval {
       typesig { [DerInputStream] }
-      # 
       # Read a BigInteger from the DerInputStream.
       def get_big_integer(data)
         b = data.get_big_integer
-        # 
         # Some implementations do not correctly encode ASN.1 INTEGER values
         # in 2's complement format, resulting in a negative integer when
         # decoded. Correct the error by converting it to a positive integer.

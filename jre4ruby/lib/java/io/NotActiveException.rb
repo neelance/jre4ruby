@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 1996-2005 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -31,7 +30,6 @@ module Java::Io
     }
   end
   
-  # 
   # Thrown when serialization or deserialization is not active.
   # 
   # @author  unascribed
@@ -45,7 +43,6 @@ module Java::Io
     }
     
     typesig { [String] }
-    # 
     # Constructor to create a new NotActiveException with the reason given.
     # 
     # @param reason  a String describing the reason for the exception.
@@ -54,7 +51,6 @@ module Java::Io
     end
     
     typesig { [] }
-    # 
     # Constructor to create a new NotActiveException without a reason.
     def initialize
       super()

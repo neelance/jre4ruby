@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 1997-2002 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -35,7 +34,6 @@ module Sun::Security::X509
     }
   end
   
-  # 
   # This class defines the SerialNumber class used by certificates.
   # 
   # @author Amit Kapoor
@@ -59,7 +57,6 @@ module Sun::Security::X509
     end
     
     typesig { [BigInteger] }
-    # 
     # The default constructor for this class using BigInteger.
     # 
     # @param num the BigInteger number used to create the serial number.
@@ -69,7 +66,6 @@ module Sun::Security::X509
     end
     
     typesig { [::Java::Int] }
-    # 
     # The default constructor for this class using int.
     # 
     # @param num the BigInteger number used to create the serial number.
@@ -79,7 +75,6 @@ module Sun::Security::X509
     end
     
     typesig { [DerInputStream] }
-    # 
     # Create the object, decoding the values from the passed DER stream.
     # 
     # @param in the DerInputStream to read the SerialNumber from.
@@ -91,7 +86,6 @@ module Sun::Security::X509
     end
     
     typesig { [DerValue] }
-    # 
     # Create the object, decoding the values from the passed DerValue.
     # 
     # @param val the DerValue to read the SerialNumber from.
@@ -102,7 +96,6 @@ module Sun::Security::X509
     end
     
     typesig { [InputStream] }
-    # 
     # Create the object, decoding the values from the passed stream.
     # 
     # @param in the InputStream to read the SerialNumber from.
@@ -114,14 +107,12 @@ module Sun::Security::X509
     end
     
     typesig { [] }
-    # 
     # Return the SerialNumber as user readable string.
     def to_s
       return ("SerialNumber: [" + (Debug.to_hex_string(@serial_num)).to_s + "]")
     end
     
     typesig { [DerOutputStream] }
-    # 
     # Encode the SerialNumber in DER form to the stream.
     # 
     # @param out the DerOutputStream to marshal the contents to.
@@ -131,7 +122,6 @@ module Sun::Security::X509
     end
     
     typesig { [] }
-    # 
     # Return the serial number.
     def get_number
       return @serial_num

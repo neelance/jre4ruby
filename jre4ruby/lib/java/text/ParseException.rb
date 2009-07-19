@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 1996-1998 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -42,7 +41,6 @@ module Java::Text
     }
   end
   
-  # 
   # Signals that an error has been reached unexpectedly
   # while parsing.
   # @see java.lang.Exception
@@ -53,7 +51,6 @@ module Java::Text
     include_class_members ParseExceptionImports
     
     typesig { [String, ::Java::Int] }
-    # 
     # Constructs a ParseException with the specified detail message and
     # offset.
     # A detail message is a String that describes this particular exception.
@@ -66,7 +63,6 @@ module Java::Text
     end
     
     typesig { [] }
-    # 
     # Returns the position where the error was found.
     def get_error_offset
       return @error_offset

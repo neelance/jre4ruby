@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 2000-2003 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -44,7 +43,6 @@ module Java::Text
     }
   end
   
-  # 
   # This class implements the Unicode Bidirectional Algorithm.
   # <p>
   # A Bidi object provides information on the bidirectional reordering of the text
@@ -110,7 +108,6 @@ module Java::Text
       const_set_lazy(:DIRECTION_RIGHT_TO_LEFT) { 1 }
       const_attr_reader  :DIRECTION_RIGHT_TO_LEFT
       
-      # 
       # Constant indicating that the base direction depends on the first strong
       # directional character in the text according to the Unicode
       # Bidirectional Algorithm.  If no strong directional character is present,
@@ -118,7 +115,6 @@ module Java::Text
       const_set_lazy(:DIRECTION_DEFAULT_LEFT_TO_RIGHT) { -2 }
       const_attr_reader  :DIRECTION_DEFAULT_LEFT_TO_RIGHT
       
-      # 
       # Constant indicating that the base direction depends on the first strong
       # directional character in the text according to the Unicode
       # Bidirectional Algorithm.  If no strong directional character is present,
@@ -131,7 +127,6 @@ module Java::Text
     }
     
     typesig { [String, ::Java::Int] }
-    # 
     # Create Bidi from the given paragraph of text and base direction.
     # @param paragraph a paragraph of text
     # @param flags a collection of flags that control the algorithm.  The
@@ -151,7 +146,6 @@ module Java::Text
     end
     
     typesig { [AttributedCharacterIterator] }
-    # 
     # Create Bidi from the given paragraph of text.
     # <p>
     # The RUN_DIRECTION attribute in the text, if present, determines the base
@@ -243,7 +237,6 @@ module Java::Text
     end
     
     typesig { [Array.typed(::Java::Char), ::Java::Int, Array.typed(::Java::Byte), ::Java::Int, ::Java::Int, ::Java::Int] }
-    # 
     # Create Bidi from the given text, embedding, and direction information.
     # The embeddings array may be null.  If present, the values represent embedding level
     # information.  Negative values from -1 to -61 indicate overrides at the absolute value
@@ -303,7 +296,6 @@ module Java::Text
     end
     
     typesig { [::Java::Int, ::Java::Int, ::Java::Int, Array.typed(::Java::Int), Array.typed(::Java::Int)] }
-    # 
     # Private constructor used by line bidi.
     def initialize(dir, base_level, length_, data, cws)
       @dir = 0
@@ -315,7 +307,6 @@ module Java::Text
     end
     
     typesig { [::Java::Int, ::Java::Int, ::Java::Int, Array.typed(::Java::Int), Array.typed(::Java::Int)] }
-    # 
     # Private mutator used by native code.
     def reset(dir, baselevel, length_, data, cws)
       @dir = dir
@@ -326,7 +317,6 @@ module Java::Text
     end
     
     typesig { [::Java::Int, ::Java::Int] }
-    # 
     # Create a Bidi object representing the bidi information on a line of text within
     # the paragraph represented by the current Bidi.  This call is not required if the
     # entire paragraph fits on one line.
@@ -402,11 +392,11 @@ module Java::Text
                 nruns = Array.typed(::Java::Int).new(rl - rs) { 0 }
               end
               n = 0
-              i_ = rs
-              while i_ < rl
-                nruns[((n += 1) - 1)] = @runs[i_] - line_start
-                nruns[((n += 1) - 1)] = @runs[i_ + 1]
-                i_ += 2
+              i = rs
+              while i < rl
+                nruns[((n += 1) - 1)] = @runs[i] - line_start
+                nruns[((n += 1) - 1)] = @runs[i + 1]
+                i += 2
               end
               nruns[n - 2] = limit - line_start
             else
@@ -421,7 +411,6 @@ module Java::Text
     end
     
     typesig { [] }
-    # 
     # Return true if the line is not left-to-right or right-to-left.  This means it either has mixed runs of left-to-right
     # and right-to-left text, or the base direction differs from the direction of the only run of text.
     # @return true if the line is not left-to-right or right-to-left.
@@ -430,7 +419,6 @@ module Java::Text
     end
     
     typesig { [] }
-    # 
     # Return true if the line is all left-to-right text and the base direction is left-to-right.
     # @return true if the line is all left-to-right text and the base direction is left-to-right
     def is_left_to_right
@@ -438,7 +426,6 @@ module Java::Text
     end
     
     typesig { [] }
-    # 
     # Return true if the line is all right-to-left text, and the base direction is right-to-left.
     # @return true if the line is all right-to-left text, and the base direction is right-to-left
     def is_right_to_left
@@ -446,7 +433,6 @@ module Java::Text
     end
     
     typesig { [] }
-    # 
     # Return the length of text in the line.
     # @return the length of text in the line
     def get_length
@@ -454,7 +440,6 @@ module Java::Text
     end
     
     typesig { [] }
-    # 
     # Return true if the base direction is left-to-right.
     # @return true if the base direction is left-to-right
     def base_is_left_to_right
@@ -462,7 +447,6 @@ module Java::Text
     end
     
     typesig { [] }
-    # 
     # Return the base level (0 if left-to-right, 1 if right-to-left).
     # @return the base level
     def get_base_level
@@ -470,7 +454,6 @@ module Java::Text
     end
     
     typesig { [::Java::Int] }
-    # 
     # Return the resolved level of the character at offset.  If offset is <0 or >=
     # the length of the line, return the base direction level.
     # @param offset the index of the character for which to return the level
@@ -490,7 +473,6 @@ module Java::Text
     end
     
     typesig { [] }
-    # 
     # Return the number of level runs.
     # @return the number of level runs
     def get_run_count
@@ -498,7 +480,6 @@ module Java::Text
     end
     
     typesig { [::Java::Int] }
-    # 
     # Return the level of the nth logical run in this line.
     # @param run the index of the run, between 0 and <code>getRunCount()</code>
     # @return the level of the run
@@ -507,7 +488,6 @@ module Java::Text
     end
     
     typesig { [::Java::Int] }
-    # 
     # Return the index of the character at the start of the nth logical run in this line, as
     # an offset from the start of the line.
     # @param run the index of the run, between 0 and <code>getRunCount()</code>
@@ -517,7 +497,6 @@ module Java::Text
     end
     
     typesig { [::Java::Int] }
-    # 
     # Return the index of the character past the end of the nth logical run in this line, as
     # an offset from the start of the line.  For example, this will return the length
     # of the line for the last run on the line.
@@ -529,7 +508,6 @@ module Java::Text
     
     class_module.module_eval {
       typesig { [Array.typed(::Java::Char), ::Java::Int, ::Java::Int] }
-      # 
       # Return true if the specified text requires bidi analysis.  If this returns false,
       # the text will display left-to-right.  Clients can then avoid constructing a Bidi object.
       # Text in the Arabic Presentation Forms area of Unicode is presumed to already be shaped
@@ -555,7 +533,6 @@ module Java::Text
       end
       
       typesig { [Array.typed(::Java::Byte), ::Java::Int, Array.typed(Object), ::Java::Int, ::Java::Int] }
-      # 
       # Reorder the objects in the array into visual order based on their levels.
       # This is a utility function to use when you have a collection of objects
       # representing runs of text in logical order, each run containing text
@@ -651,7 +628,6 @@ module Java::Text
     }
     
     typesig { [] }
-    # 
     # Display the bidi internal state, used in debugging.
     def to_s
       buf = StringBuffer.new(super)
@@ -678,13 +654,13 @@ module Java::Text
         buf.append(" cws: null")
       else
         buf.append(" cws: [")
-        i_ = 0
-        while i_ < @cws.attr_length
-          if (!(i_).equal?(0))
+        i = 0
+        while i < @cws.attr_length
+          if (!(i).equal?(0))
             buf.append(Character.new(?\s.ord))
           end
-          buf.append(JavaInteger.to_hex_string(@cws[i_]))
-          (i_ += 1)
+          buf.append(JavaInteger.to_hex_string(@cws[i]))
+          (i += 1)
         end
         buf.append(Character.new(?].ord))
       end

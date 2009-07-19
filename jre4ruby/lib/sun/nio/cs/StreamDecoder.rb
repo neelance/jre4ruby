@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 2001-2005 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -349,24 +348,24 @@ module Sun::Nio::Cs
           raise AssertError if not ((pos <= lim))
           rem = (pos <= lim ? lim - pos : 0)
           raise AssertError if not (rem > 0)
-          n_ = @in.read(@bb.array, @bb.array_offset + pos, rem)
-          if (n_ < 0)
-            return n_
+          n = @in.read(@bb.array, @bb.array_offset + pos, rem)
+          if (n < 0)
+            return n
           end
-          if ((n_).equal?(0))
+          if ((n).equal?(0))
             raise IOException.new("Underlying input stream returned zero bytes")
           end
-          raise AssertError, "n = " + (n_).to_s + ", rem = " + (rem).to_s if not ((n_ <= rem))
-          @bb.position(pos + n_)
+          raise AssertError, "n = " + (n).to_s + ", rem = " + (rem).to_s if not ((n <= rem))
+          @bb.position(pos + n)
         end
       ensure
         # Flip even when an IOException is thrown,
         # otherwise the stream will stutter
         @bb.flip
       end
-      rem_ = @bb.remaining
-      raise AssertError, (rem_).to_s if not ((!(rem_).equal?(0)))
-      return rem_
+      rem = @bb.remaining
+      raise AssertError, (rem).to_s if not ((!(rem).equal?(0)))
+      return rem
     end
     
     typesig { [Array.typed(::Java::Char), ::Java::Int, ::Java::Int] }

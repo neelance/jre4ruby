@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 2003-2005 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -38,7 +37,6 @@ module Sun::Security::Provider::Certpath
     }
   end
   
-  # 
   # This class corresponds to the CertId field in OCSP Request
   # and the OCSP Response. The ASN.1 definition for CertID is defined
   # in RFC 2560 as:
@@ -126,7 +124,6 @@ module Sun::Security::Provider::Certpath
     end
     
     typesig { [DerInputStream] }
-    # 
     # Creates a CertId from its ASN.1 DER encoding.
     def initialize(der_in)
       @hash_alg_id = nil
@@ -141,35 +138,30 @@ module Sun::Security::Provider::Certpath
     end
     
     typesig { [] }
-    # 
     # Return the hash algorithm identifier.
     def get_hash_algorithm
       return @hash_alg_id
     end
     
     typesig { [] }
-    # 
     # Return the hash value for the issuer name.
     def get_issuer_name_hash
       return @issuer_name_hash
     end
     
     typesig { [] }
-    # 
     # Return the hash value for the issuer key.
     def get_issuer_key_hash
       return @issuer_key_hash
     end
     
     typesig { [] }
-    # 
     # Return the serial number.
     def get_serial_number
       return @cert_serial_number.get_number
     end
     
     typesig { [DerOutputStream] }
-    # 
     # Encode the CertId using ASN.1 DER.
     # The hash algorithm used is SHA-1.
     def encode(out)
@@ -186,7 +178,6 @@ module Sun::Security::Provider::Certpath
     end
     
     typesig { [] }
-    # 
     # Returns a hashcode value for this CertId.
     # 
     # @return the hashcode value.
@@ -209,7 +200,6 @@ module Sun::Security::Provider::Certpath
     end
     
     typesig { [Object] }
-    # 
     # Compares this CertId for equality with the specified
     # object. Two CertId objects are considered equal if their hash algorithms,
     # their issuer name and issuer key hash values and their serial numbers
@@ -233,7 +223,6 @@ module Sun::Security::Provider::Certpath
     end
     
     typesig { [] }
-    # 
     # Create a string representation of the CertId.
     def to_s
       sb = StringBuilder.new

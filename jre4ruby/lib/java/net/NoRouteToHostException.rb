@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 1996-1997 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -31,7 +30,6 @@ module Java::Net
     }
   end
   
-  # 
   # Signals that an error occurred while attempting to connect a
   # socket to a remote address and port.  Typically, the remote
   # host cannot be reached because of an intervening firewall, or
@@ -42,7 +40,6 @@ module Java::Net
     include_class_members NoRouteToHostExceptionImports
     
     typesig { [String] }
-    # 
     # Constructs a new NoRouteToHostException with the specified detail
     # message as to why the remote host cannot be reached.
     # A detail message is a String that gives a specific
@@ -53,7 +50,6 @@ module Java::Net
     end
     
     typesig { [] }
-    # 
     # Construct a new NoRouteToHostException with no detailed message.
     def initialize
       super()

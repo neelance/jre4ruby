@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 1994-1997 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -30,7 +29,6 @@ module Java::Lang
     }
   end
   
-  # 
   # Thrown to indicate that an array has been accessed with an
   # illegal index. The index is either negative or greater than or
   # equal to the size of the array.
@@ -41,7 +39,6 @@ module Java::Lang
     include_class_members ArrayIndexOutOfBoundsExceptionImports
     
     typesig { [] }
-    # 
     # Constructs an <code>ArrayIndexOutOfBoundsException</code> with no
     # detail message.
     def initialize
@@ -49,7 +46,6 @@ module Java::Lang
     end
     
     typesig { [::Java::Int] }
-    # 
     # Constructs a new <code>ArrayIndexOutOfBoundsException</code>
     # class with an argument indicating the illegal index.
     # 
@@ -59,7 +55,6 @@ module Java::Lang
     end
     
     typesig { [String] }
-    # 
     # Constructs an <code>ArrayIndexOutOfBoundsException</code> class
     # with the specified detail message.
     # 

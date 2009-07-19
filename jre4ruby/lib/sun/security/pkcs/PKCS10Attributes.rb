@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 1997-2006 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -39,7 +38,6 @@ module Sun::Security::Pkcs
     }
   end
   
-  # 
   # This class defines the PKCS10 attributes for the request.
   # The ASN.1 syntax for this is:
   # <pre>
@@ -61,14 +59,12 @@ module Sun::Security::Pkcs
     undef_method :map=
     
     typesig { [] }
-    # 
     # Default constructor for the PKCS10 attribute.
     def initialize
       @map = Hashtable.new(3)
     end
     
     typesig { [Array.typed(PKCS10Attribute)] }
-    # 
     # Create the object from the array of PKCS10Attribute objects.
     # 
     # @param attrs the array of PKCS10Attribute objects.
@@ -82,7 +78,6 @@ module Sun::Security::Pkcs
     end
     
     typesig { [DerInputStream] }
-    # 
     # Create the object, decoding the values from the passed DER stream.
     # The DER stream contains the SET OF Attribute.
     # 
@@ -103,7 +98,6 @@ module Sun::Security::Pkcs
     end
     
     typesig { [OutputStream] }
-    # 
     # Encode the attributes in DER form to the stream.
     # 
     # @param out the OutputStream to marshal the contents to.
@@ -113,7 +107,6 @@ module Sun::Security::Pkcs
     end
     
     typesig { [OutputStream] }
-    # 
     # Encode the attributes in DER form to the stream.
     # Implements the <code>DerEncoder</code> interface.
     # 
@@ -129,7 +122,6 @@ module Sun::Security::Pkcs
     end
     
     typesig { [String, Object] }
-    # 
     # Set the attribute value.
     def set_attribute(name, obj)
       if (obj.is_a?(PKCS10Attribute))
@@ -138,21 +130,18 @@ module Sun::Security::Pkcs
     end
     
     typesig { [String] }
-    # 
     # Get the attribute value.
     def get_attribute(name)
       return @map.get(name)
     end
     
     typesig { [String] }
-    # 
     # Delete the attribute value.
     def delete_attribute(name)
       @map.remove(name)
     end
     
     typesig { [] }
-    # 
     # Return an enumeration of names of attributes existing within this
     # attribute.
     def get_elements
@@ -160,7 +149,6 @@ module Sun::Security::Pkcs
     end
     
     typesig { [] }
-    # 
     # Return a Collection of attributes existing within this
     # PKCS10Attributes object.
     def get_attributes
@@ -168,7 +156,6 @@ module Sun::Security::Pkcs
     end
     
     typesig { [Object] }
-    # 
     # Compares this PKCS10Attributes for equality with the specified
     # object. If the <code>other</code> object is an
     # <code>instanceof</code> <code>PKCS10Attributes</code>, then
@@ -213,7 +200,6 @@ module Sun::Security::Pkcs
     end
     
     typesig { [] }
-    # 
     # Returns a hashcode value for this PKCS10Attributes.
     # 
     # @return the hashcode value.
@@ -222,7 +208,6 @@ module Sun::Security::Pkcs
     end
     
     typesig { [] }
-    # 
     # Returns a string representation of this <tt>PKCS10Attributes</tt> object
     # in the form of a set of entries, enclosed in braces and separated
     # by the ASCII characters "<tt>,&nbsp;</tt>" (comma and space).

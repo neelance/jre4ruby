@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 2002-2007 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -40,7 +39,6 @@ module Sun::Security::Provider::Certpath
     }
   end
   
-  # 
   # Class to obtain CRLs via the CRLDistributionPoints extension.
   # Note that the functionality of this class must be explicitly enabled
   # via a system property, see the USE_CRLDP variable below.
@@ -62,7 +60,6 @@ module Sun::Security::Provider::Certpath
       const_set_lazy(:ALL_REASONS) { Array.typed(::Java::Boolean).new([true, true, true, true, true, true, true, true, true]) }
       const_attr_reader  :ALL_REASONS
       
-      # 
       # Flag indicating whether support for the CRL distribution point
       # extension shall be enabled. Currently disabled by default for
       # compatibility and legal reasons.
@@ -70,7 +67,6 @@ module Sun::Security::Provider::Certpath
       const_attr_reader  :USE_CRLDP
       
       typesig { [String, ::Java::Boolean] }
-      # 
       # Return the value of the boolean System property propName.
       def get_boolean_property(prop_name, default_value)
         # if set, require value of either true or false
@@ -96,14 +92,12 @@ module Sun::Security::Provider::Certpath
     }
     
     typesig { [] }
-    # 
     # Private instantiation only.
     def initialize
     end
     
     class_module.module_eval {
       typesig { [] }
-      # 
       # Return a DistributionPointFetcher instance.
       def get_instance
         return INSTANCE
@@ -111,7 +105,6 @@ module Sun::Security::Provider::Certpath
     }
     
     typesig { [X509CRLSelector, ::Java::Boolean, PublicKey, String, JavaList, Array.typed(::Java::Boolean), TrustAnchor] }
-    # 
     # Return the X509CRLs matching this selector. The selector must be
     # an X509CRLSelector with certificateChecking set.
     # 
@@ -157,7 +150,6 @@ module Sun::Security::Provider::Certpath
     end
     
     typesig { [X509CRLSelector, X509CertImpl, DistributionPoint, Array.typed(::Java::Boolean), ::Java::Boolean, PublicKey, String, JavaList, TrustAnchor] }
-    # 
     # Download CRLs from the given distribution point, verify and return them.
     # See the top of the class for current limitations.
     def get_crls(selector, cert_impl, point, reasons_mask, sign_flag, prev_key, provider, cert_stores, anchor)
@@ -208,8 +200,8 @@ module Sun::Security::Provider::Certpath
           # make sure issuer is not set
           # we check the issuer in verifyCRLs method
           selector.set_issuer_names(nil)
-          if (selector.match(crl_) && verify_crl(cert_impl, point, crl_, reasons_mask, sign_flag, prev_key, provider, anchor, cert_stores))
-            crls.add(crl_)
+          if (selector.match(crl) && verify_crl(cert_impl, point, crl, reasons_mask, sign_flag, prev_key, provider, anchor, cert_stores))
+            crls.add(crl)
           end
         rescue Exception => e
           # don't add the CRL
@@ -223,7 +215,6 @@ module Sun::Security::Provider::Certpath
     end
     
     typesig { [URIName] }
-    # 
     # Download CRL from given URI.
     def get_crl(name)
       uri = name.get_uri
@@ -248,7 +239,6 @@ module Sun::Security::Provider::Certpath
     end
     
     typesig { [X500Name, X500Principal, JavaList] }
-    # 
     # Fetch CRLs from certStores.
     def get_crls(name, cert_issuer, cert_stores)
       if (!(Debug).nil?)
@@ -275,7 +265,6 @@ module Sun::Security::Provider::Certpath
     end
     
     typesig { [X509CertImpl, DistributionPoint, X509CRL, Array.typed(::Java::Boolean), ::Java::Boolean, PublicKey, String, TrustAnchor, JavaList] }
-    # 
     # Verifies a CRL for the given certificate's Distribution Point to
     # ensure it is appropriate for checking the revocation status.
     # 
@@ -351,15 +340,15 @@ module Sun::Security::Provider::Certpath
           if (!(point.get_full_name).nil? || !(point.get_relative_name).nil?)
             point_names = point.get_full_name
             if ((point_names).nil?)
-              relative_name_ = point.get_relative_name
-              if ((relative_name_).nil?)
+              relative_name = point.get_relative_name
+              if ((relative_name).nil?)
                 if (!(Debug).nil?)
                   Debug.println("DP must be relative or full DN")
                 end
                 return false
               end
               if (!(Debug).nil?)
-                Debug.println("DP relativeName:" + (relative_name_).to_s)
+                Debug.println("DP relativeName:" + (relative_name).to_s)
               end
               if (indirect_crl)
                 if (!(point_crl_issuers.size).equal?(1))
@@ -370,28 +359,28 @@ module Sun::Security::Provider::Certpath
                   end
                   return false
                 end
-                point_names = get_full_names(point_crl_issuer, relative_name_)
+                point_names = get_full_names(point_crl_issuer, relative_name)
               else
-                point_names = get_full_names(cert_issuer, relative_name_)
+                point_names = get_full_names(cert_issuer, relative_name)
               end
             end
-            match__ = false
+            match_ = false
             i = idp_names.iterator
-            while !match__ && i.has_next
+            while !match_ && i.has_next
               idp_name = i.next.get_name
               if (!(Debug).nil?)
                 Debug.println("idpName: " + (idp_name).to_s)
               end
               p = point_names.iterator
-              while !match__ && p.has_next
+              while !match_ && p.has_next
                 point_name = p.next.get_name
                 if (!(Debug).nil?)
                   Debug.println("pointName: " + (point_name).to_s)
                 end
-                match__ = (idp_name == point_name)
+                match_ = (idp_name == point_name)
               end
             end
-            if (!match__)
+            if (!match_)
               if (!(Debug).nil?)
                 Debug.println("IDP name does not match DP name")
               end
@@ -404,17 +393,17 @@ module Sun::Security::Provider::Certpath
           else
             # verify that one of the names in the IDP matches one of
             # the names in the cRLIssuer of the cert's DP
-            match___ = false
-            t_ = point_crl_issuers.iterator
-            while !match___ && t_.has_next
-              crl_issuer_name = t_.next.get_name
-              i_ = idp_names.iterator
-              while !match___ && i_.has_next
-                idp_name_ = i_.next.get_name
-                match___ = (crl_issuer_name == idp_name_)
+            match_ = false
+            t = point_crl_issuers.iterator
+            while !match_ && t.has_next
+              crl_issuer_name = t.next.get_name
+              i = idp_names.iterator
+              while !match_ && i.has_next
+                idp_name = i.next.get_name
+                match_ = (crl_issuer_name == idp_name)
               end
             end
-            if (!match___)
+            if (!match_)
               return false
             end
           end
@@ -459,12 +448,12 @@ module Sun::Security::Provider::Certpath
           # set interim reasons mask to the intersection of
           # reasons in the DP and onlySomeReasons in the IDP
           idp_reason_flags = reasons.get_flags
-          i__ = 0
-          while i__ < idp_reason_flags.attr_length
-            if (idp_reason_flags[i__] && point_reason_flags[i__])
-              interim_reasons_mask[i__] = true
+          i = 0
+          while i < idp_reason_flags.attr_length
+            if (idp_reason_flags[i] && point_reason_flags[i])
+              interim_reasons_mask[i] = true
             end
-            ((i__ += 1) - 1)
+            ((i += 1) - 1)
           end
         else
           # set interim reasons mask to the value of
@@ -487,12 +476,12 @@ module Sun::Security::Provider::Certpath
       # verify that interim reasons mask includes one or more reasons
       # not included in the reasons mask
       one_or_more = false
-      i___ = 0
-      while i___ < interim_reasons_mask.attr_length && !one_or_more
-        if (!reasons_mask[i___] && interim_reasons_mask[i___])
+      i = 0
+      while i < interim_reasons_mask.attr_length && !one_or_more
+        if (!reasons_mask[i] && interim_reasons_mask[i])
           one_or_more = true
         end
-        ((i___ += 1) - 1)
+        ((i += 1) - 1)
       end
       if (!one_or_more)
         return false
@@ -538,27 +527,26 @@ module Sun::Security::Provider::Certpath
         if (!unres_crit_exts.is_empty)
           if (!(Debug).nil?)
             Debug.println("Unrecognized critical extension(s) in CRL: " + (unres_crit_exts).to_s)
-            i____ = unres_crit_exts.iterator
-            while (i____.has_next)
-              Debug.println(i____.next)
+            i_ = unres_crit_exts.iterator
+            while (i_.has_next)
+              Debug.println(i_.next)
             end
           end
           return false
         end
       end
       # update reasonsMask
-      i_____ = 0
-      while i_____ < interim_reasons_mask.attr_length
-        if (!reasons_mask[i_____] && interim_reasons_mask[i_____])
-          reasons_mask[i_____] = true
+      i_ = 0
+      while i_ < interim_reasons_mask.attr_length
+        if (!reasons_mask[i_] && interim_reasons_mask[i_])
+          reasons_mask[i_] = true
         end
-        ((i_____ += 1) - 1)
+        ((i_ += 1) - 1)
       end
       return true
     end
     
     typesig { [X500Name, RDN] }
-    # 
     # Append relative name to the issuer name and return a new
     # GeneralNames object.
     def get_full_names(issuer, rdn)

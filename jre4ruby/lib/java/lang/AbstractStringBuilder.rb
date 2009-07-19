@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 2003-2006 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -32,7 +31,6 @@ module Java::Lang
     }
   end
   
-  # 
   # A mutable sequence of characters.
   # <p>
   # Implements a modifiable string. At any point in time it contains some
@@ -46,7 +44,6 @@ module Java::Lang
     include Appendable
     include CharSequence
     
-    # 
     # The value is used for character storage.
     attr_accessor :value
     alias_method :attr_value, :value
@@ -54,7 +51,6 @@ module Java::Lang
     alias_method :attr_value=, :value=
     undef_method :value=
     
-    # 
     # The count is the number of characters used.
     attr_accessor :count
     alias_method :attr_count, :count
@@ -63,7 +59,6 @@ module Java::Lang
     undef_method :count=
     
     typesig { [] }
-    # 
     # This no-arg constructor is necessary for serialization of subclasses.
     def initialize
       @value = nil
@@ -71,7 +66,6 @@ module Java::Lang
     end
     
     typesig { [::Java::Int] }
-    # 
     # Creates an AbstractStringBuilder of the specified capacity.
     def initialize(capacity)
       @value = nil
@@ -80,7 +74,6 @@ module Java::Lang
     end
     
     typesig { [] }
-    # 
     # Returns the length (character count).
     # 
     # @return  the length of the sequence of characters currently
@@ -90,7 +83,6 @@ module Java::Lang
     end
     
     typesig { [] }
-    # 
     # Returns the current capacity. The capacity is the amount of storage
     # available for newly inserted characters, beyond which an allocation
     # will occur.
@@ -101,7 +93,6 @@ module Java::Lang
     end
     
     typesig { [::Java::Int] }
-    # 
     # Ensures that the capacity is at least equal to the specified minimum.
     # If the current capacity is less than the argument, then a new internal
     # array is allocated with greater capacity. The new capacity is the
@@ -121,7 +112,6 @@ module Java::Lang
     end
     
     typesig { [::Java::Int] }
-    # 
     # This implements the expansion semantics of ensureCapacity with no
     # size check or synchronization.
     def expand_capacity(minimum_capacity)
@@ -137,7 +127,6 @@ module Java::Lang
     end
     
     typesig { [] }
-    # 
     # Attempts to reduce storage used for the character sequence.
     # If the buffer is larger than necessary to hold its current sequence of
     # characters, then it may be resized to become more space efficient.
@@ -150,7 +139,6 @@ module Java::Lang
     end
     
     typesig { [::Java::Int] }
-    # 
     # Sets the length of the character sequence.
     # The sequence is changed to a new character sequence
     # whose length is specified by the argument. For every nonnegative
@@ -192,7 +180,6 @@ module Java::Lang
     end
     
     typesig { [::Java::Int] }
-    # 
     # Returns the <code>char</code> value in this sequence at the specified index.
     # The first <code>char</code> value is at index <code>0</code>, the next at index
     # <code>1</code>, and so on, as in array indexing.
@@ -216,7 +203,6 @@ module Java::Lang
     end
     
     typesig { [::Java::Int] }
-    # 
     # Returns the character (Unicode code point) at the specified
     # index. The index refers to <code>char</code> values
     # (Unicode code units) and ranges from <code>0</code> to
@@ -244,7 +230,6 @@ module Java::Lang
     end
     
     typesig { [::Java::Int] }
-    # 
     # Returns the character (Unicode code point) before the specified
     # index. The index refers to <code>char</code> values
     # (Unicode code units) and ranges from <code>1</code> to {@link
@@ -273,7 +258,6 @@ module Java::Lang
     end
     
     typesig { [::Java::Int, ::Java::Int] }
-    # 
     # Returns the number of Unicode code points in the specified text
     # range of this sequence. The text range begins at the specified
     # <code>beginIndex</code> and extends to the <code>char</code> at
@@ -300,7 +284,6 @@ module Java::Lang
     end
     
     typesig { [::Java::Int, ::Java::Int] }
-    # 
     # Returns the index within this sequence that is offset from the
     # given <code>index</code> by <code>codePointOffset</code> code
     # points. Unpaired surrogates within the text range given by
@@ -326,7 +309,6 @@ module Java::Lang
     end
     
     typesig { [::Java::Int, ::Java::Int, Array.typed(::Java::Char), ::Java::Int] }
-    # 
     # Characters are copied from this sequence into the
     # destination character array <code>dst</code>. The first character to
     # be copied is at index <code>srcBegin</code>; the last character to
@@ -369,7 +351,6 @@ module Java::Lang
     end
     
     typesig { [::Java::Int, ::Java::Char] }
-    # 
     # The character at the specified index is set to <code>ch</code>. This
     # sequence is altered to represent a new character sequence that is
     # identical to the old character sequence, except that it contains the
@@ -390,7 +371,6 @@ module Java::Lang
     end
     
     typesig { [Object] }
-    # 
     # Appends the string representation of the <code>Object</code>
     # argument.
     # <p>
@@ -405,7 +385,6 @@ module Java::Lang
     end
     
     typesig { [String] }
-    # 
     # Appends the specified string to this character sequence.
     # <p>
     # The characters of the <code>String</code> argument are appended, in
@@ -471,7 +450,6 @@ module Java::Lang
     end
     
     typesig { [CharSequence, ::Java::Int, ::Java::Int] }
-    # 
     # Appends a subsequence of the specified <code>CharSequence</code> to this
     # sequence.
     # <p>
@@ -524,7 +502,6 @@ module Java::Lang
     end
     
     typesig { [Array.typed(::Java::Char)] }
-    # 
     # Appends the string representation of the <code>char</code> array
     # argument to this sequence.
     # <p>
@@ -550,7 +527,6 @@ module Java::Lang
     end
     
     typesig { [Array.typed(::Java::Char), ::Java::Int, ::Java::Int] }
-    # 
     # Appends the string representation of a subarray of the
     # <code>char</code> array argument to this sequence.
     # <p>
@@ -579,7 +555,6 @@ module Java::Lang
     end
     
     typesig { [::Java::Boolean] }
-    # 
     # Appends the string representation of the <code>boolean</code>
     # argument to the sequence.
     # <p>
@@ -600,9 +575,9 @@ module Java::Lang
         @value[((@count += 1) - 1)] = Character.new(?u.ord)
         @value[((@count += 1) - 1)] = Character.new(?e.ord)
       else
-        new_count_ = @count + 5
-        if (new_count_ > @value.attr_length)
-          expand_capacity(new_count_)
+        new_count = @count + 5
+        if (new_count > @value.attr_length)
+          expand_capacity(new_count)
         end
         @value[((@count += 1) - 1)] = Character.new(?f.ord)
         @value[((@count += 1) - 1)] = Character.new(?a.ord)
@@ -614,7 +589,6 @@ module Java::Lang
     end
     
     typesig { [::Java::Char] }
-    # 
     # Appends the string representation of the <code>char</code>
     # argument to this sequence.
     # <p>
@@ -638,7 +612,6 @@ module Java::Lang
     end
     
     typesig { [::Java::Int] }
-    # 
     # Appends the string representation of the <code>int</code>
     # argument to this sequence.
     # <p>
@@ -664,7 +637,6 @@ module Java::Lang
     end
     
     typesig { [::Java::Long] }
-    # 
     # Appends the string representation of the <code>long</code>
     # argument to this sequence.
     # <p>
@@ -690,7 +662,6 @@ module Java::Lang
     end
     
     typesig { [::Java::Float] }
-    # 
     # Appends the string representation of the <code>float</code>
     # argument to this sequence.
     # <p>
@@ -706,7 +677,6 @@ module Java::Lang
     end
     
     typesig { [::Java::Double] }
-    # 
     # Appends the string representation of the <code>double</code>
     # argument to this sequence.
     # <p>
@@ -722,7 +692,6 @@ module Java::Lang
     end
     
     typesig { [::Java::Int, ::Java::Int] }
-    # 
     # Removes the characters in a substring of this sequence.
     # The substring begins at the specified <code>start</code> and extends to
     # the character at index <code>end - 1</code> or to the end of the
@@ -754,7 +723,6 @@ module Java::Lang
     end
     
     typesig { [::Java::Int] }
-    # 
     # Appends the string representation of the <code>codePoint</code>
     # argument to this sequence.
     # 
@@ -794,7 +762,6 @@ module Java::Lang
     end
     
     typesig { [::Java::Int] }
-    # 
     # Removes the <code>char</code> at the specified position in this
     # sequence. This sequence is shortened by one <code>char</code>.
     # 
@@ -820,7 +787,6 @@ module Java::Lang
     end
     
     typesig { [::Java::Int, ::Java::Int, String] }
-    # 
     # Replaces the characters in a substring of this sequence
     # with characters in the specified <code>String</code>. The substring
     # begins at the specified <code>start</code> and extends to the character
@@ -863,7 +829,6 @@ module Java::Lang
     end
     
     typesig { [::Java::Int] }
-    # 
     # Returns a new <code>String</code> that contains a subsequence of
     # characters currently contained in this character sequence. The
     # substring begins at the specified index and extends to the end of
@@ -878,7 +843,6 @@ module Java::Lang
     end
     
     typesig { [::Java::Int, ::Java::Int] }
-    # 
     # Returns a new character sequence that is a subsequence of this sequence.
     # 
     # <p> An invocation of this method of the form
@@ -908,7 +872,6 @@ module Java::Lang
     end
     
     typesig { [::Java::Int, ::Java::Int] }
-    # 
     # Returns a new <code>String</code> that contains a subsequence of
     # characters currently contained in this sequence. The
     # substring begins at the specified <code>start</code> and
@@ -935,7 +898,6 @@ module Java::Lang
     end
     
     typesig { [::Java::Int, Array.typed(::Java::Char), ::Java::Int, ::Java::Int] }
-    # 
     # Inserts the string representation of a subarray of the <code>str</code>
     # array argument into this sequence. The subarray begins at the
     # specified <code>offset</code> and extends <code>len</code> <code>char</code>s.
@@ -973,7 +935,6 @@ module Java::Lang
     end
     
     typesig { [::Java::Int, Object] }
-    # 
     # Inserts the string representation of the <code>Object</code>
     # argument into this character sequence.
     # <p>
@@ -995,7 +956,6 @@ module Java::Lang
     end
     
     typesig { [::Java::Int, String] }
-    # 
     # Inserts the string into this character sequence.
     # <p>
     # The characters of the <code>String</code> argument are inserted, in
@@ -1044,7 +1004,6 @@ module Java::Lang
     end
     
     typesig { [::Java::Int, Array.typed(::Java::Char)] }
-    # 
     # Inserts the string representation of the <code>char</code> array
     # argument into this sequence.
     # <p>
@@ -1080,7 +1039,6 @@ module Java::Lang
     end
     
     typesig { [::Java::Int, CharSequence] }
-    # 
     # Inserts the specified <code>CharSequence</code> into this sequence.
     # <p>
     # The characters of the <code>CharSequence</code> argument are inserted,
@@ -1109,7 +1067,6 @@ module Java::Lang
     end
     
     typesig { [::Java::Int, CharSequence, ::Java::Int, ::Java::Int] }
-    # 
     # Inserts a subsequence of the specified <code>CharSequence</code> into
     # this sequence.
     # <p>
@@ -1181,7 +1138,6 @@ module Java::Lang
     end
     
     typesig { [::Java::Int, ::Java::Boolean] }
-    # 
     # Inserts the string representation of the <code>boolean</code>
     # argument into this sequence.
     # <p>
@@ -1203,7 +1159,6 @@ module Java::Lang
     end
     
     typesig { [::Java::Int, ::Java::Char] }
-    # 
     # Inserts the string representation of the <code>char</code>
     # argument into this sequence.
     # <p>
@@ -1237,7 +1192,6 @@ module Java::Lang
     end
     
     typesig { [::Java::Int, ::Java::Int] }
-    # 
     # Inserts the string representation of the second <code>int</code>
     # argument into this sequence.
     # <p>
@@ -1259,7 +1213,6 @@ module Java::Lang
     end
     
     typesig { [::Java::Int, ::Java::Long] }
-    # 
     # Inserts the string representation of the <code>long</code>
     # argument into this sequence.
     # <p>
@@ -1281,7 +1234,6 @@ module Java::Lang
     end
     
     typesig { [::Java::Int, ::Java::Float] }
-    # 
     # Inserts the string representation of the <code>float</code>
     # argument into this sequence.
     # <p>
@@ -1303,7 +1255,6 @@ module Java::Lang
     end
     
     typesig { [::Java::Int, ::Java::Double] }
-    # 
     # Inserts the string representation of the <code>double</code>
     # argument into this sequence.
     # <p>
@@ -1325,7 +1276,6 @@ module Java::Lang
     end
     
     typesig { [String] }
-    # 
     # Returns the index within this string of the first occurrence of the
     # specified substring. The integer returned is the smallest value
     # <i>k</i> such that:
@@ -1346,7 +1296,6 @@ module Java::Lang
     end
     
     typesig { [String, ::Java::Int] }
-    # 
     # Returns the index within this string of the first occurrence of the
     # specified substring, starting at the specified index.  The integer
     # returned is the smallest value <tt>k</tt> for which:
@@ -1367,7 +1316,6 @@ module Java::Lang
     end
     
     typesig { [String] }
-    # 
     # Returns the index within this string of the rightmost occurrence
     # of the specified substring.  The rightmost empty string "" is
     # considered to occur at the index value <code>this.length()</code>.
@@ -1389,7 +1337,6 @@ module Java::Lang
     end
     
     typesig { [String, ::Java::Int] }
-    # 
     # Returns the index within this string of the last occurrence of the
     # specified substring. The integer returned is the largest value <i>k</i>
     # such that:
@@ -1410,7 +1357,6 @@ module Java::Lang
     end
     
     typesig { [] }
-    # 
     # Causes this character sequence to be replaced by the reverse of
     # the sequence. If there are any surrogate pairs included in the
     # sequence, these are treated as single characters for the
@@ -1464,7 +1410,6 @@ module Java::Lang
     end
     
     typesig { [] }
-    # 
     # Returns a string representing the data in this sequence.
     # A new <code>String</code> object is allocated and initialized to
     # contain the character sequence currently represented by this
@@ -1478,7 +1423,6 @@ module Java::Lang
     end
     
     typesig { [] }
-    # 
     # Needed by <tt>String</tt> for the contentEquals method.
     def get_value
       return @value

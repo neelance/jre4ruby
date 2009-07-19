@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 2000-2001 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -32,7 +31,6 @@ module Java::Security::Cert
     }
   end
   
-  # 
   # This class represents the successful result of the PKIX certification
   # path validation algorithm.
   # 
@@ -82,7 +80,6 @@ module Java::Security::Cert
     undef_method :subject_public_key=
     
     typesig { [TrustAnchor, PolicyNode, PublicKey] }
-    # 
     # Creates an instance of <code>PKIXCertPathValidatorResult</code>
     # containing the specified parameters.
     # 
@@ -109,7 +106,6 @@ module Java::Security::Cert
     end
     
     typesig { [] }
-    # 
     # Returns the <code>TrustAnchor</code> describing the CA that served
     # as a trust anchor for the certification path.
     # 
@@ -119,7 +115,6 @@ module Java::Security::Cert
     end
     
     typesig { [] }
-    # 
     # Returns the root node of the valid policy tree resulting from the
     # PKIX certification path validation algorithm. The
     # <code>PolicyNode</code> object that is returned and any objects that
@@ -140,7 +135,6 @@ module Java::Security::Cert
     end
     
     typesig { [] }
-    # 
     # Returns the public key of the subject (target) of the certification
     # path, including any inherited public key parameters if applicable.
     # 
@@ -150,7 +144,6 @@ module Java::Security::Cert
     end
     
     typesig { [] }
-    # 
     # Returns a copy of this object.
     # 
     # @return the copy
@@ -164,7 +157,6 @@ module Java::Security::Cert
     end
     
     typesig { [] }
-    # 
     # Return a printable representation of this
     # <code>PKIXCertPathValidatorResult</code>.
     # 

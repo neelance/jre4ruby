@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 1996-2007 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -34,7 +33,6 @@ module Sun::Security::Ssl
     }
   end
   
-  # 
   # Output stream for handshake data.  This is used only internally
   # to the SSL classes.
   # 
@@ -95,7 +93,6 @@ module Sun::Security::Ssl
     end
     
     typesig { [] }
-    # 
     # Update the handshake data hashes ... mostly for use after a
     # client cert has been sent, so the cert verify message can be
     # constructed correctly yet without forcing extra I/O.  In all
@@ -105,7 +102,6 @@ module Sun::Security::Ssl
     end
     
     typesig { [Array.typed(::Java::Byte), ::Java::Int, ::Java::Int] }
-    # 
     # Write some data out onto the stream ... buffers as much as possible.
     # Hashes are updated automatically if something gets flushed to the
     # network (e.g. a big cert message etc).
@@ -123,7 +119,6 @@ module Sun::Security::Ssl
     end
     
     typesig { [::Java::Int] }
-    # 
     # write-a-byte
     def write(i)
       if (@r.available_data_bytes < 1)
@@ -156,7 +151,6 @@ module Sun::Security::Ssl
     end
     
     typesig { [] }
-    # 
     # Tell the OutputRecord that a finished message was
     # contained either in this record or the one immeiately
     # preceeding it.  We need to reliably pass back notifications
@@ -167,7 +161,6 @@ module Sun::Security::Ssl
     end
     
     typesig { [::Java::Int] }
-    # 
     # Put integers encoded in standard 8, 16, 24, and 32 bit
     # big endian formats. Note that OutputStream.write(int) only
     # writes the least significant 8 bits and ignores the rest.
@@ -206,7 +199,6 @@ module Sun::Security::Ssl
     end
     
     typesig { [Array.typed(::Java::Byte)] }
-    # 
     # Put byte arrays with length encoded as 8, 16, 24 bit
     # integers in big-endian format.
     def put_bytes8(b)

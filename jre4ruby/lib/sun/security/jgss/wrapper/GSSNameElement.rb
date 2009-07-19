@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 2005-2006 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -43,7 +42,6 @@ module Sun::Security::Jgss::Wrapper
     }
   end
   
-  # 
   # This class is essentially a wrapper class for the gss_name_t
   # structure of the native GSS library.
   # @author Valerie Peng

@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 2005-2006 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -31,7 +30,6 @@ module Java::Util
     }
   end
   
-  # 
   # Error thrown when something goes wrong while loading a service provider.
   # 
   # <p> This error will be thrown in the following situations:
@@ -68,7 +66,6 @@ module Java::Util
     }
     
     typesig { [String] }
-    # 
     # Constructs a new instance with the specified message.
     # 
     # @param  msg  The message, or <tt>null</tt> if there is no message
@@ -77,7 +74,6 @@ module Java::Util
     end
     
     typesig { [String, Exception] }
-    # 
     # Constructs a new instance with the specified message and cause.
     # 
     # @param  msg  The message, or <tt>null</tt> if there is no message

@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 2005-2006 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -126,7 +125,6 @@ module Sun::Net::Httpserver
     end
     
     typesig { [] }
-    # 
     # read a line from the stream returning as a String.
     # Not used for reading headers.
     def read_line
@@ -169,7 +167,6 @@ module Sun::Net::Httpserver
     end
     
     typesig { [] }
-    # 
     # returns the request line (first line of a request)
     def request_line
       return @start_line
@@ -259,7 +256,6 @@ module Sun::Net::Httpserver
     end
     
     class_module.module_eval {
-      # 
       # Implements blocking reading semantics on top of a non-blocking channel
       const_set_lazy(:ReadStream) { Class.new(InputStream) do
         include_class_members Request
@@ -492,7 +488,6 @@ module Sun::Net::Httpserver
         end
         
         typesig { [] }
-        # 
         # block() only called when available==0 and buf is empty
         def block
           synchronized(self) do

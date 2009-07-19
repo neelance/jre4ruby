@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 2000-2003 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -32,7 +31,6 @@ module Java::Util::Prefs
     }
   end
   
-  # 
   # Thrown to indicate that an operation could not complete because
   # the input did not conform to the appropriate XML document type
   # for a collection of preferences, as per the {@link Preferences}
@@ -45,7 +43,6 @@ module Java::Util::Prefs
     include_class_members InvalidPreferencesFormatExceptionImports
     
     typesig { [Exception] }
-    # 
     # Constructs an InvalidPreferencesFormatException with the specified
     # cause.
     # 
@@ -56,7 +53,6 @@ module Java::Util::Prefs
     end
     
     typesig { [String] }
-    # 
     # Constructs an InvalidPreferencesFormatException with the specified
     # detail message.
     # 
@@ -67,7 +63,6 @@ module Java::Util::Prefs
     end
     
     typesig { [String, Exception] }
-    # 
     # Constructs an InvalidPreferencesFormatException with the specified
     # detail message and cause.
     # 

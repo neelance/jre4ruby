@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 1997-2006 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -31,7 +30,6 @@ module Java::Lang
     }
   end
   
-  # 
   # This interface imposes a total ordering on the objects of each class that
   # implements it.  This ordering is referred to as the class's <i>natural
   # ordering</i>, and the class's <tt>compareTo</tt> method is referred to as
@@ -101,7 +99,6 @@ module Java::Lang
     include_class_members ComparableImports
     
     typesig { [Object] }
-    # 
     # Compares this object with the specified object for order.  Returns a
     # negative integer, zero, or a positive integer as this object is less
     # than, equal to, or greater than the specified object.

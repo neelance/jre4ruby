@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Portions Copyright 2000-2007 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -41,7 +40,6 @@ module Sun::Security::Krb5
     }
   end
   
-  # 
   # This class encapsulates a KRB-AP-REQ that a client sends to a
   # server for authentication.
   class KrbApReq 
@@ -115,7 +113,6 @@ module Sun::Security::Krb5
     undef_method :kdc_empty_addresses_allowed=
     
     typesig { [Credentials, ::Java::Boolean, ::Java::Boolean, ::Java::Boolean, Checksum] }
-    # 
     # Contructs a AP-REQ message to send to the peer.
     # @param tgsCred the <code>Credentials</code> to be used to construct the
     # AP Request  protocol message.
@@ -172,7 +169,6 @@ module Sun::Security::Krb5
     end
     
     typesig { [Array.typed(::Java::Byte), Array.typed(EncryptionKey), InetAddress] }
-    # 
     # Contructs a AP-REQ message from the bytes received from the
     # peer.
     # @param message The message received from the peer
@@ -199,7 +195,6 @@ module Sun::Security::Krb5
     end
     
     typesig { [APOptions, Ticket, EncryptionKey, Realm, PrincipalName, Checksum, KerberosTime, EncryptionKey, SeqNumber, AuthorizationData] }
-    # 
     # Contructs a AP-REQ message from the bytes received from the
     # peer.
     # @param value The <code>DerValue</code> that contains the
@@ -356,7 +351,6 @@ module Sun::Security::Krb5
     end
     
     typesig { [] }
-    # 
     # Returns the credentials that are contained in the ticket that
     # is part of this this AP-REP.
     def get_creds
@@ -388,7 +382,6 @@ module Sun::Security::Krb5
     end
     
     typesig { [] }
-    # 
     # Returns true if mutual authentication is required and hence an
     # AP-REP will need to be generated.
     # @throws KrbException
@@ -415,7 +408,6 @@ module Sun::Security::Krb5
     end
     
     typesig { [] }
-    # 
     # Returns the optional subkey stored in the Authenticator for
     # this message. Returns null if none is stored.
     def get_sub_key
@@ -424,7 +416,6 @@ module Sun::Security::Krb5
     end
     
     typesig { [] }
-    # 
     # Returns the optional sequence number stored in the
     # Authenticator for this message. Returns null if none is
     # stored.
@@ -434,7 +425,6 @@ module Sun::Security::Krb5
     end
     
     typesig { [] }
-    # 
     # Returns the optional Checksum stored in the
     # Authenticator for this message. Returns null if none is
     # stored.
@@ -443,14 +433,12 @@ module Sun::Security::Krb5
     end
     
     typesig { [] }
-    # 
     # Returns the ASN.1 encoding that should be sent to the peer.
     def get_message
       return @obuf
     end
     
     typesig { [] }
-    # 
     # Returns the principal name of the client that generated this
     # message.
     def get_client

@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 2000-2004 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -37,7 +36,6 @@ module Sun::Nio::Ch
     }
   end
   
-  # 
   # Base Selector implementation class.
   class SelectorImpl < SelectorImplImports.const_get :AbstractSelector
     include_class_members SelectorImplImports

@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 2003-2005 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -34,7 +33,6 @@ module Sun::Security::Pkcs11
     }
   end
   
-  # 
   # KeyFactory base class. Provides common infrastructure for the RSA, DSA,
   # and DH implementations.
   # 
@@ -72,7 +70,6 @@ module Sun::Security::Pkcs11
     
     class_module.module_eval {
       typesig { [Token, Key, String] }
-      # 
       # Convert an arbitrary key of algorithm into a P11Key of token.
       # Used by P11Signature.init() and RSACipher.init().
       def convert_key(token, key, algorithm)
@@ -100,7 +97,7 @@ module Sun::Security::Pkcs11
       begin
         p11key = engine_translate_key(key)
       rescue InvalidKeyException => e
-        raise InvalidKeySpecException.new("Could not convert key", e_)
+        raise InvalidKeySpecException.new("Could not convert key", e)
       end
       session = Array.typed(Session).new(1) { nil }
       begin
@@ -110,7 +107,7 @@ module Sun::Security::Pkcs11
           return impl_get_private_key_spec(p11key, key_spec, session)
         end
       rescue PKCS11Exception => e
-        raise InvalidKeySpecException.new("Could not generate KeySpec", e__)
+        raise InvalidKeySpecException.new("Could not generate KeySpec", e)
       ensure
         session[0] = @token.release_session(session[0])
       end
@@ -133,9 +130,9 @@ module Sun::Security::Pkcs11
           return key
         end
       end
-      p11key_ = @token.attr_private_cache.get(key)
-      if (!(p11key_).nil?)
-        return p11key_
+      p11key = @token.attr_private_cache.get(key)
+      if (!(p11key).nil?)
+        return p11key
       end
       if (key.is_a?(PublicKey))
         public_key = impl_translate_public_key(key)

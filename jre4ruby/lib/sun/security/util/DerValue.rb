@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 1996-2006 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -34,7 +33,6 @@ module Sun::Security::Util
     }
   end
   
-  # 
   # Represents a single DER-encoded value.  DER encoding rules are a subset
   # of the "Basic" Encoding Rules (BER), but they only support a single way
   # ("Definite" encoding) to encode any given value.
@@ -87,7 +85,6 @@ module Sun::Security::Util
     alias_method :attr_buffer=, :buffer=
     undef_method :buffer=
     
-    # 
     # The DER-encoded data of the value.
     attr_accessor :data
     alias_method :attr_data, :data
@@ -102,7 +99,6 @@ module Sun::Security::Util
     undef_method :length=
     
     class_module.module_eval {
-      # 
       # The type starts at the first byte of the encoding, and
       # is one of these tag_* values.  That may be all the type
       # data that is needed.
@@ -182,19 +178,16 @@ module Sun::Security::Util
       const_set_lazy(:Tag_Sequence) { 0x30 }
       const_attr_reader  :Tag_Sequence
       
-      # 
       # Tag value indicating an ASN.1
       # "SEQUENCE OF" (one to N elements, order is significant).
       const_set_lazy(:Tag_SequenceOf) { 0x30 }
       const_attr_reader  :Tag_SequenceOf
       
-      # 
       # Tag value indicating an ASN.1
       # "SET" (zero to N members, order does not matter).
       const_set_lazy(:Tag_Set) { 0x31 }
       const_attr_reader  :Tag_Set
       
-      # 
       # Tag value indicating an ASN.1
       # "SET OF" (one to N members, order does not matter).
       const_set_lazy(:Tag_SetOf) { 0x31 }
@@ -202,7 +195,6 @@ module Sun::Security::Util
     }
     
     typesig { [] }
-    # 
     # These values are the high order bits for the other kinds of tags.
     # 
     # 
@@ -212,14 +204,12 @@ module Sun::Security::Util
     end
     
     typesig { [] }
-    # 
     # Returns true if the tag class is APPLICATION.
     def is_application
       return (((@tag & 0xc0)).equal?(0x40))
     end
     
     typesig { [] }
-    # 
     # Returns true iff the CONTEXT SPECIFIC bit is set in the type tag.
     # This is associated with the ASN.1 "DEFINED BY" syntax.
     def is_context_specific
@@ -227,7 +217,6 @@ module Sun::Security::Util
     end
     
     typesig { [::Java::Byte] }
-    # 
     # Returns true iff the CONTEXT SPECIFIC TAG matches the passed tag.
     def is_context_specific(cntxt_tag)
       if (!is_context_specific)
@@ -248,7 +237,6 @@ module Sun::Security::Util
     end
     
     typesig { [::Java::Byte] }
-    # 
     # Returns true iff the CONSTRUCTED TAG matches the passed tag.
     def is_constructed(constructed_tag)
       if (!is_constructed)
@@ -258,7 +246,6 @@ module Sun::Security::Util
     end
     
     typesig { [String] }
-    # 
     # Creates a PrintableString or UTF8string DER value from a string
     def initialize(value)
       @tag = 0
@@ -278,7 +265,6 @@ module Sun::Security::Util
     end
     
     typesig { [::Java::Byte, String] }
-    # 
     # Creates a string type DER value from a String object
     # @param stringTag the tag for the DER value to create
     # @param value the String object to use for the DER value
@@ -291,7 +277,6 @@ module Sun::Security::Util
     end
     
     typesig { [::Java::Byte, Array.typed(::Java::Byte)] }
-    # 
     # Creates a DerValue from a tag and some DER-encoded data.
     # 
     # @param tag the DER type tag
@@ -309,7 +294,6 @@ module Sun::Security::Util
     end
     
     typesig { [DerInputBuffer] }
-    # 
     # package private
     def initialize(in_)
       @tag = 0
@@ -354,7 +338,6 @@ module Sun::Security::Util
     end
     
     typesig { [Array.typed(::Java::Byte)] }
-    # 
     # Get an ASN.1/DER encoded datum from a buffer.  The
     # entire buffer must hold exactly one datum, including
     # its tag and length.
@@ -369,7 +352,6 @@ module Sun::Security::Util
     end
     
     typesig { [Array.typed(::Java::Byte), ::Java::Int, ::Java::Int] }
-    # 
     # Get an ASN.1/DER encoded datum from part of a buffer.
     # That part of the buffer must hold exactly one datum, including
     # its tag and length.
@@ -386,7 +368,6 @@ module Sun::Security::Util
     end
     
     typesig { [InputStream] }
-    # 
     # Get an ASN1/DER encoded datum from an input stream.  The
     # stream may have additional data following the encoded datum.
     # In case of indefinite length encoded datum, the input stream
@@ -429,7 +410,6 @@ module Sun::Security::Util
     end
     
     typesig { [::Java::Boolean, InputStream] }
-    # 
     # helper routine
     def init(fully_buffered, in_)
       @tag = in_.read
@@ -460,14 +440,13 @@ module Sun::Security::Util
       end
       bytes = Array.typed(::Java::Byte).new(@length) { 0 }
       # n.b. readFully not needed in normal fullyBuffered case
-      dis_ = DataInputStream.new(in_)
-      dis_.read_fully(bytes)
+      dis = DataInputStream.new(in_)
+      dis.read_fully(bytes)
       @buffer = DerInputBuffer.new(bytes)
       return DerInputStream.new(@buffer)
     end
     
     typesig { [DerOutputStream] }
-    # 
     # Encode an ASN1/DER encoded datum onto a DER output stream.
     def encode(out)
       out.write(@tag)
@@ -497,7 +476,6 @@ module Sun::Security::Util
     end
     
     typesig { [] }
-    # 
     # Returns an ASN.1 BOOLEAN
     # 
     # @return the boolean held in this DER value
@@ -515,7 +493,6 @@ module Sun::Security::Util
     end
     
     typesig { [] }
-    # 
     # Returns an ASN.1 OBJECT IDENTIFIER.
     # 
     # @return the OID held in this DER value
@@ -538,7 +515,6 @@ module Sun::Security::Util
     end
     
     typesig { [] }
-    # 
     # Returns an ASN.1 OCTET STRING
     # 
     # @return the octet string held in this DER value
@@ -562,7 +538,6 @@ module Sun::Security::Util
     end
     
     typesig { [] }
-    # 
     # Returns an ASN.1 INTEGER value as an integer.
     # 
     # @return the integer held in this DER value.
@@ -574,7 +549,6 @@ module Sun::Security::Util
     end
     
     typesig { [] }
-    # 
     # Returns an ASN.1 INTEGER value as a BigInteger.
     # 
     # @return the integer held in this DER value as a BigInteger.
@@ -586,7 +560,6 @@ module Sun::Security::Util
     end
     
     typesig { [] }
-    # 
     # Returns an ASN.1 INTEGER value as a positive BigInteger.
     # This is just to deal with implementations that incorrectly encode
     # some values as negative.
@@ -600,7 +573,6 @@ module Sun::Security::Util
     end
     
     typesig { [] }
-    # 
     # Returns an ASN.1 ENUMERATED value.
     # 
     # @return the integer held in this DER value.
@@ -612,7 +584,6 @@ module Sun::Security::Util
     end
     
     typesig { [] }
-    # 
     # Returns an ASN.1 BIT STRING value.  The bit string must be byte-aligned.
     # 
     # @return the bit string held in this value
@@ -624,7 +595,6 @@ module Sun::Security::Util
     end
     
     typesig { [] }
-    # 
     # Returns an ASN.1 BIT STRING value that need not be byte-aligned.
     # 
     # @return a BitArray representing the bit string held in this value
@@ -636,7 +606,6 @@ module Sun::Security::Util
     end
     
     typesig { [] }
-    # 
     # Returns the name component as a Java string, regardless of its
     # encoding restrictions (ASCII, T61, Printable, IA5, BMP, UTF8).
     # 
@@ -653,7 +622,6 @@ module Sun::Security::Util
           else
             if ((@tag).equal?(Tag_IA5String))
               return get_ia5string
-            # 
             # else if (tag == tag_UniversalString)
             # return getUniversalString();
             else
@@ -673,7 +641,6 @@ module Sun::Security::Util
     end
     
     typesig { [::Java::Boolean] }
-    # 
     # Returns an ASN.1 BIT STRING value, with the tag assumed implicit
     # based on the parameter.  The bit string must be byte-aligned.
     # 
@@ -689,7 +656,6 @@ module Sun::Security::Util
     end
     
     typesig { [::Java::Boolean] }
-    # 
     # Returns an ASN.1 BIT STRING value, with the tag assumed implicit
     # based on the parameter.  The bit string need not be byte-aligned.
     # 
@@ -705,7 +671,6 @@ module Sun::Security::Util
     end
     
     typesig { [] }
-    # 
     # Helper routine to return all the bytes contained in the
     # DerInputStream associated with this object.
     def get_data_bytes
@@ -718,7 +683,6 @@ module Sun::Security::Util
     end
     
     typesig { [] }
-    # 
     # Returns an ASN.1 STRING value
     # 
     # @return the printable string held in this value
@@ -730,7 +694,6 @@ module Sun::Security::Util
     end
     
     typesig { [] }
-    # 
     # Returns an ASN.1 T61 (Teletype) STRING value
     # 
     # @return the teletype string held in this value
@@ -742,7 +705,6 @@ module Sun::Security::Util
     end
     
     typesig { [] }
-    # 
     # Returns an ASN.1 IA5 (ASCII) STRING value
     # 
     # @return the ASCII string held in this value
@@ -754,7 +716,6 @@ module Sun::Security::Util
     end
     
     typesig { [] }
-    # 
     # Returns the ASN.1 BMP (Unicode) STRING value as a Java string.
     # 
     # @return a string corresponding to the encoded BMPString held in
@@ -769,7 +730,6 @@ module Sun::Security::Util
     end
     
     typesig { [] }
-    # 
     # Returns the ASN.1 UTF-8 STRING value as a Java String.
     # 
     # @return a string corresponding to the encoded UTF8String held in
@@ -782,7 +742,6 @@ module Sun::Security::Util
     end
     
     typesig { [] }
-    # 
     # Returns the ASN.1 GENERAL STRING value as a Java String.
     # 
     # @return a string corresponding to the encoded GeneralString held in
@@ -795,7 +754,6 @@ module Sun::Security::Util
     end
     
     typesig { [] }
-    # 
     # Returns a Date if the DerValue is UtcTime.
     # 
     # @return the Date held in this DER value
@@ -807,7 +765,6 @@ module Sun::Security::Util
     end
     
     typesig { [] }
-    # 
     # Returns a Date if the DerValue is GeneralizedTime.
     # 
     # @return the Date held in this DER value
@@ -819,7 +776,6 @@ module Sun::Security::Util
     end
     
     typesig { [Object] }
-    # 
     # Returns true iff the other object is a DER value which
     # is bitwise equal to this one.
     # 
@@ -833,7 +789,6 @@ module Sun::Security::Util
     end
     
     typesig { [DerValue] }
-    # 
     # Bitwise equality comparison.  DER encoded values have a single
     # encoding, so that bitwise equality of the encoded values is an
     # efficient way to establish equivalence of the unencoded values.
@@ -855,7 +810,6 @@ module Sun::Security::Util
     
     class_module.module_eval {
       typesig { [DerValue, DerValue] }
-      # 
       # Helper for public method equals()
       def do_equals(d1, d2)
         synchronized((d1.attr_data)) do
@@ -869,7 +823,6 @@ module Sun::Security::Util
     }
     
     typesig { [] }
-    # 
     # Returns a printable representation of the value.
     # 
     # @return printable representation of the value
@@ -894,7 +847,6 @@ module Sun::Security::Util
     end
     
     typesig { [] }
-    # 
     # Returns a DER-encoded value, such that if it's passed to the
     # DerValue constructor, a value equivalent to "this" is returned.
     # 
@@ -907,7 +859,6 @@ module Sun::Security::Util
     end
     
     typesig { [] }
-    # 
     # For "set" and "sequence" types, this function may be used
     # to return a DER stream of the members of the set or sequence.
     # This operation is not supported for primitive types such as
@@ -920,7 +871,6 @@ module Sun::Security::Util
     end
     
     typesig { [] }
-    # 
     # Get the length of the encoded value.
     def length
       return @length
@@ -928,7 +878,6 @@ module Sun::Security::Util
     
     class_module.module_eval {
       typesig { [::Java::Char] }
-      # 
       # Determine if a character is one of the permissible characters for
       # PrintableString:
       # A-Z, a-z, 0-9, space, apostrophe (39), left and right parentheses,
@@ -970,7 +919,6 @@ module Sun::Security::Util
       end
       
       typesig { [::Java::Byte, ::Java::Boolean, ::Java::Byte] }
-      # 
       # Create the tag of the attribute.
       # 
       # @params class the tag class type, one of UNIVERSAL, CONTEXT,
@@ -988,7 +936,6 @@ module Sun::Security::Util
     }
     
     typesig { [::Java::Byte] }
-    # 
     # Set the tag of the attribute. Commonly used to reset the
     # tag value used for IMPLICIT encodings.
     # 
@@ -998,7 +945,6 @@ module Sun::Security::Util
     end
     
     typesig { [] }
-    # 
     # Returns a hashcode for this DerValue.
     # 
     # @return a hashcode for this DerValue.

@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 2003 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -32,7 +31,6 @@ module Java::Security::Spec
     }
   end
   
-  # 
   # This immutable class specifies an elliptic curve private key with
   # its associated parameters.
   # 
@@ -59,7 +57,6 @@ module Java::Security::Spec
     undef_method :params=
     
     typesig { [BigInteger, ECParameterSpec] }
-    # 
     # Creates a new ECPrivateKeySpec with the specified
     # parameter values.
     # @param s the private value.
@@ -81,7 +78,6 @@ module Java::Security::Spec
     end
     
     typesig { [] }
-    # 
     # Returns the private value S.
     # @return the private value S.
     def get_s
@@ -89,7 +85,6 @@ module Java::Security::Spec
     end
     
     typesig { [] }
-    # 
     # Returns the associated elliptic curve domain
     # parameters.
     # @return the EC domain parameters.

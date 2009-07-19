@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 2004 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -38,14 +37,12 @@ module Sun::Security::Util
     }
   end
   
-  # 
   # A utility class for handle path list
   class PathList 
     include_class_members PathListImports
     
     class_module.module_eval {
       typesig { [String, String] }
-      # 
       # Utility method for appending path from pathFrom to pathTo.
       # 
       # @param pathTo the target path
@@ -64,7 +61,6 @@ module Sun::Security::Util
       end
       
       typesig { [String] }
-      # 
       # Utility method for converting a search path string to an array
       # of directory and JAR file URLs.
       # 
@@ -89,7 +85,6 @@ module Sun::Security::Util
       end
       
       typesig { [JavaFile] }
-      # 
       # Returns the directory or JAR file URL corresponding to the specified
       # local file name.
       # 

@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 1997-2004 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -59,7 +58,6 @@ module Sun::Security::X509
       const_attr_reader  :SerialVersionUID
     }
     
-    # 
     # NOTE: All fields are marked transient, because we do not want them to
     # be included in the class description when we serialize an object of
     # this class. We override "writeObject" and "readObject" to use the
@@ -75,7 +73,6 @@ module Sun::Security::X509
     alias_method :attr_algid=, :algid=
     undef_method :algid=
     
-    # 
     # Certificate data, and its envelope
     attr_accessor :raw_cert
     alias_method :attr_raw_cert, :raw_cert
@@ -95,7 +92,6 @@ module Sun::Security::X509
     alias_method :attr_signed_cert=, :signed_cert=
     undef_method :signed_cert=
     
-    # 
     # X509.v1 data (parsed)
     attr_accessor :subject
     alias_method :attr_subject, :subject
@@ -148,7 +144,6 @@ module Sun::Security::X509
     alias_method :attr_issuer_sig_alg=, :issuer_sig_alg=
     undef_method :issuer_sig_alg=
     
-    # 
     # flag to indicate whether or not this certificate has already been parsed
     # (through a call to one of the constructors or the "decode" or
     # "readObject" methods). This is to ensure that certificates are
@@ -160,7 +155,6 @@ module Sun::Security::X509
     undef_method :parsed=
     
     typesig { [] }
-    # 
     # X509.v2 extensions
     # 
     # 
@@ -191,7 +185,6 @@ module Sun::Security::X509
     end
     
     typesig { [Array.typed(::Java::Byte)] }
-    # 
     # Unmarshals a certificate from its encoded form, parsing the
     # encoded bytes.  This form of constructor is used by agents which
     # need to examine and use certificate contents.  That is, this is
@@ -225,7 +218,6 @@ module Sun::Security::X509
     end
     
     typesig { [Array.typed(::Java::Byte), ::Java::Int, ::Java::Int] }
-    # 
     # Unmarshals a certificate from its encoded form, parsing the
     # encoded bytes.  This form of constructor is used by agents which
     # need to examine and use certificate contents.  That is, this is
@@ -260,7 +252,6 @@ module Sun::Security::X509
     end
     
     typesig { [DerValue] }
-    # 
     # Unmarshal a certificate from its encoded form, parsing a DER value.
     # This form of constructor is used by agents which need to examine
     # and use certificate contents.
@@ -289,7 +280,6 @@ module Sun::Security::X509
     end
     
     typesig { [X500Name, X509Key, Date, Date] }
-    # 
     # Partially constructs a certificate from descriptive parameters.
     # This constructor may be used by Certificate Authority (CA) code,
     # which later <a href="#signAndEncode">signs and encodes</a> the
@@ -343,7 +333,6 @@ module Sun::Security::X509
     end
     
     typesig { [InputStream] }
-    # 
     # Decode an X.509 certificate from an input stream.
     # 
     # @param in an input stream holding at least one certificate
@@ -356,7 +345,6 @@ module Sun::Security::X509
     end
     
     typesig { [OutputStream] }
-    # 
     # Appends the certificate to an output stream.
     # 
     # @param out an input stream to which the certificate is appended.
@@ -366,7 +354,6 @@ module Sun::Security::X509
     end
     
     typesig { [Object] }
-    # 
     # Compares two certificates.  This is false if the
     # certificates are not both X.509 certs, otherwise it
     # compares them as binary data.
@@ -382,7 +369,6 @@ module Sun::Security::X509
     end
     
     typesig { [X509Cert] }
-    # 
     # Compares two certificates, returning false if any data
     # differs between the two.
     # 
@@ -429,7 +415,6 @@ module Sun::Security::X509
     end
     
     typesig { [PublicKey] }
-    # 
     # Throws an exception if the certificate is invalid because it is
     # now outside of the certificate's validity period, or because it
     # was not signed using the verification key provided.  Successfully
@@ -464,7 +449,6 @@ module Sun::Security::X509
       if ((@signed_cert).nil?)
         raise CertException.new(CertException.attr_verf_invalid_sig, "?? certificate is not signed yet ??")
       end
-      # 
       # Verify the signature ...
       alg_name = nil
       begin
@@ -488,7 +472,6 @@ module Sun::Security::X509
     end
     
     typesig { [BigInteger, X500Signer] }
-    # 
     # Creates an X.509 certificate, and signs it using the issuer
     # passed (associating a signature algorithm and an X.500 name).
     # This operation is used to implement the certificate generation
@@ -507,7 +490,6 @@ module Sun::Security::X509
     # @exception SignatureException on signing failures
     def encode_and_sign(serial, issuer)
       @raw_cert = nil
-      # 
       # Get the remaining cert parameters, and make sure we have enough.
       # 
       # We deduce version based on what attribute data are available
@@ -519,7 +501,6 @@ module Sun::Security::X509
       if ((@subject).nil? || (@pubkey).nil? || (@notbefore).nil? || (@notafter).nil?)
         raise IOException.new("not enough cert parameters")
       end
-      # 
       # Encode the raw cert, create its signature and put it
       # into the envelope.
       @raw_cert = _derencode
@@ -528,7 +509,6 @@ module Sun::Security::X509
     end
     
     typesig { [AlgorithmId, PrivateKey] }
-    # 
     # Returns an X500Signer that may be used to create signatures.  Those
     # signature may in turn be verified using this certificate (or a
     # copy of it).
@@ -569,7 +549,6 @@ module Sun::Security::X509
     end
     
     typesig { [String] }
-    # 
     # Returns a signature object that may be used to verify signatures
     # created using a specified signature algorithm and the public key
     # contained in this certificate.
@@ -596,7 +575,6 @@ module Sun::Security::X509
     end
     
     typesig { [] }
-    # 
     # Return the signed X.509 certificate as a byte array.
     # The bytes are in standard DER marshaled form.
     # Null is returned in the case of a partially constructed cert.
@@ -605,7 +583,6 @@ module Sun::Security::X509
     end
     
     typesig { [] }
-    # 
     # Returns the certificate's serial number.
     # Null is returned in the case of a partially constructed cert.
     def get_serial_number
@@ -613,14 +590,12 @@ module Sun::Security::X509
     end
     
     typesig { [] }
-    # 
     # Returns the subject's X.500 distinguished name.
     def get_subject_name
       return @subject
     end
     
     typesig { [] }
-    # 
     # Returns the certificate issuer's X.500 distinguished name.
     # Null is returned in the case of a partially constructed cert.
     def get_issuer_name
@@ -628,7 +603,6 @@ module Sun::Security::X509
     end
     
     typesig { [] }
-    # 
     # Returns the algorithm used by the issuer to sign the certificate.
     # Null is returned in the case of a partially constructed cert.
     def get_issuer_algorithm_id
@@ -636,21 +610,18 @@ module Sun::Security::X509
     end
     
     typesig { [] }
-    # 
     # Returns the first time the certificate is valid.
     def get_not_before
       return Date.new(@notbefore.get_time)
     end
     
     typesig { [] }
-    # 
     # Returns the last time the certificate is valid.
     def get_not_after
       return Date.new(@notafter.get_time)
     end
     
     typesig { [] }
-    # 
     # Returns the subject's public key.  Note that some public key
     # algorithms support an optional certificate generation policy
     # where the keys in the certificates are not in themselves sufficient
@@ -668,7 +639,6 @@ module Sun::Security::X509
     end
     
     typesig { [] }
-    # 
     # Returns the X.509 version number of this certificate, zero based.
     # That is, "2" indicates an X.509 version 3 (1993) certificate,
     # and "0" indicates X.509v1 (1988).
@@ -678,7 +648,6 @@ module Sun::Security::X509
     end
     
     typesig { [] }
-    # 
     # Calculates a hash code value for the object.  Objects
     # which are equal will also have the same hashcode.
     def hash_code
@@ -692,7 +661,6 @@ module Sun::Security::X509
     end
     
     typesig { [] }
-    # 
     # Returns a printable representation of the certificate.  This does not
     # contain all the information available to distinguish this from any
     # other certificate.  The certificate must be fully constructed
@@ -716,7 +684,6 @@ module Sun::Security::X509
     end
     
     typesig { [::Java::Boolean] }
-    # 
     # Returns a printable representation of the certificate.
     # 
     # @param detailed true iff lots of detail is requested
@@ -725,8 +692,6 @@ module Sun::Security::X509
     end
     
     typesig { [DerValue] }
-    # 
-    # 
     # Cert is a SIGNED ASN.1 macro, a three elment sequence:
     # 
     # - Data to be signed (ToBeSigned) -- the "raw" cert
@@ -760,12 +725,10 @@ module Sun::Security::X509
       if (!(seq[2].attr_data.available).equal?(0))
         raise CertParseError.new("signed fields overrun")
       end
-      # 
       # Let's have fun parsing the cert itself.
       in_ = nil
       tmp = nil
       in_ = seq[0].attr_data
-      # 
       # Version -- this is optional (default zero). If it's there it's
       # the first field and is specially tagged.
       # 
@@ -780,10 +743,8 @@ module Sun::Security::X509
         end
         tmp = in_.get_der_value
       end
-      # 
       # serial number ... an integer
       @serialnum = tmp.get_big_integer
-      # 
       # algorithm type for CA's signature ... needs to match the
       # one on the envelope, and that's about it!  different IDs
       # may represent a signature attack.  In general we want to
@@ -795,10 +756,8 @@ module Sun::Security::X509
         raise CertParseError.new("CA Algorithm mismatch!")
       end
       @algid = algid
-      # 
       # issuer name
       @issuer = X500Name.new(in_)
-      # 
       # validity:  SEQUENCE { start date, end date }
       tmp = in_.get_der_value
       if (!(tmp.attr_tag).equal?(DerValue.attr_tag_sequence))
@@ -809,15 +768,12 @@ module Sun::Security::X509
       if (!(tmp.attr_data.available).equal?(0))
         raise CertParseError.new("excess validity data")
       end
-      # 
       # subject name and public key
       @subject = X500Name.new(in_)
       tmp = in_.get_der_value
       @pubkey = X509Key.parse(tmp)
-      # 
       # XXX for v2 and later, a bunch of tagged options follow
       if (!(in_.available).equal?(0))
-        # 
         # Until we parse V2/V3 data ... ignore it.
         # 
         # // throw new CertParseError ("excess cert data");
@@ -831,7 +787,6 @@ module Sun::Security::X509
     end
     
     typesig { [] }
-    # 
     # Encode only the parts that will later be signed.
     def _derencode
       raw = DerOutputStream.new
@@ -840,58 +795,48 @@ module Sun::Security::X509
     end
     
     typesig { [DerOutputStream] }
-    # 
     # Marshal the contents of a "raw" certificate into a DER sequence.
     def encode(out)
       tmp = DerOutputStream.new
-      # 
       # encode serial number, issuer signing algorithm,
       # and issuer name into the data we'll return
       tmp.put_integer(@serialnum)
       @issuer_sig_alg.encode(tmp)
       @issuer.encode(tmp)
-      # 
       # Validity is a two element sequence ... encode the
       # elements, then wrap them into the data we'll return
       seq = DerOutputStream.new
       seq.put_utctime(@notbefore)
       seq.put_utctime(@notafter)
       tmp.write(DerValue.attr_tag_sequence, seq)
-      # 
       # Encode subject (principal) and associated key
       @subject.encode(tmp)
       tmp.write(@pubkey.get_encoded)
-      # 
       # Wrap the data; encoding of the "raw" cert is now complete.
       out.write(DerValue.attr_tag_sequence, tmp)
     end
     
     typesig { [X500Signer, Array.typed(::Java::Byte)] }
-    # 
     # Calculate the signature of the "raw" certificate,
     # and marshal the cert with the signature and a
     # description of the signing algorithm.
     def sign(issuer, data)
-      # 
       # Encode the to-be-signed data, then the algorithm used
       # to create the signature.
       out = DerOutputStream.new
       tmp = DerOutputStream.new
       tmp.write(data)
       issuer.get_algorithm_id.encode(tmp)
-      # 
       # Create and encode the signature itself.
       issuer.update(data, 0, data.attr_length)
       @signature = issuer.sign
       tmp.put_bit_string(@signature)
-      # 
       # Wrap the signed data in a SEQUENCE { data, algorithm, sig }
       out.write(DerValue.attr_tag_sequence, tmp)
       return out.to_byte_array
     end
     
     typesig { [Java::Io::ObjectOutputStream] }
-    # 
     # Serialization write ... X.509 certificates serialize as
     # themselves, and they're parsed when they get read back.
     # (Actually they serialize as some type data from the
@@ -901,7 +846,6 @@ module Sun::Security::X509
     end
     
     typesig { [ObjectInputStream] }
-    # 
     # Serialization read ... X.509 certificates serialize as
     # themselves, and they're parsed when they get read back.
     def read_object(stream)

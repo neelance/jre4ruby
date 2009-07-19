@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright (c) 2007 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -32,7 +31,6 @@ module Sun::Misc
     }
   end
   
-  # 
   # @author Chris Hegarty
   module JavaIOFileDescriptorAccess
     include_class_members JavaIOFileDescriptorAccessImports

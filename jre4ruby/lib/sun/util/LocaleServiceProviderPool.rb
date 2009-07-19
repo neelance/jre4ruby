@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 2005-2006 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -49,14 +48,12 @@ module Sun::Util
     }
   end
   
-  # 
   # An instance of this class holds a set of the third party implementations of a particular
   # locale sensitive service, such as {@link java.util.spi.LocaleNameProvider}.
   class LocaleServiceProviderPool 
     include_class_members LocaleServiceProviderPoolImports
     
     class_module.module_eval {
-      # 
       # A Map that holds singleton instances of this class.  Each instance holds a
       # set of provider implementations of a particular locale sensitive service.
       
@@ -71,7 +68,6 @@ module Sun::Util
       alias_method :attr_pool_of_pools=, :pool_of_pools=
     }
     
-    # 
     # A Set containing locale service providers that implement the
     # specified provider SPI
     attr_accessor :providers
@@ -80,7 +76,6 @@ module Sun::Util
     alias_method :attr_providers=, :providers=
     undef_method :providers=
     
-    # 
     # A Map that retains Locale->provider mapping
     attr_accessor :providers_cache
     alias_method :attr_providers_cache, :providers_cache
@@ -88,7 +83,6 @@ module Sun::Util
     alias_method :attr_providers_cache=, :providers_cache=
     undef_method :providers_cache=
     
-    # 
     # Available locales for this locale sensitive service.  This also contains
     # JRE's available locales
     attr_accessor :available_locales
@@ -98,7 +92,6 @@ module Sun::Util
     undef_method :available_locales=
     
     class_module.module_eval {
-      # 
       # Available locales within this JRE.  Currently this is declared as
       # static.  This could be non-static later, so that they could have
       # different sets for each locale sensitive services.
@@ -114,7 +107,6 @@ module Sun::Util
       alias_method :attr_available_jrelocales=, :available_jrelocales=
     }
     
-    # 
     # Provider locales for this locale sensitive service.
     attr_accessor :provider_locales
     alias_method :attr_provider_locales, :provider_locales
@@ -124,7 +116,6 @@ module Sun::Util
     
     class_module.module_eval {
       typesig { [Class] }
-      # 
       # A factory method that returns a singleton instance
       def get_pool(provider_class)
         pool = self.attr_pool_of_pools.get(provider_class)
@@ -140,7 +131,6 @@ module Sun::Util
     }
     
     typesig { [Class] }
-    # 
     # The sole constructor.
     # 
     # @param c class of the locale sensitive service
@@ -177,7 +167,6 @@ module Sun::Util
     end
     
     class_module.module_eval {
-      # 
       # Lazy loaded set of available locales.
       # Loading all locales is a very long operation.
       const_set_lazy(:AllAvailableLocales) { Class.new do
@@ -204,7 +193,6 @@ module Sun::Util
       end }
       
       typesig { [] }
-      # 
       # Returns an array of available locales for all the provider classes.
       # This array is a merged array of all the locales that are provided by each
       # provider, including the JRE.
@@ -216,7 +204,6 @@ module Sun::Util
     }
     
     typesig { [] }
-    # 
     # Returns an array of available locales.  This array is a
     # merged array of all the locales that are provided by each
     # provider, including the JRE.
@@ -237,7 +224,6 @@ module Sun::Util
     end
     
     typesig { [] }
-    # 
     # Returns an array of available locales from providers.
     # Note that this method does not return a defensive copy.
     # 
@@ -260,7 +246,6 @@ module Sun::Util
     end
     
     typesig { [] }
-    # 
     # Returns whether any provider for this locale sensitive
     # service is available or not.
     # 
@@ -270,7 +255,6 @@ module Sun::Util
     end
     
     typesig { [] }
-    # 
     # Returns an array of available locales supported by the JRE.
     # Note that this method does not return a defensive copy.
     # 
@@ -285,7 +269,6 @@ module Sun::Util
     end
     
     typesig { [Locale] }
-    # 
     # Returns whether the given locale is supported by the JRE.
     # 
     # @param locale the locale to test.
@@ -297,7 +280,6 @@ module Sun::Util
     end
     
     typesig { [LocalizedObjectGetter, Locale, Object] }
-    # 
     # Returns the provider's localized object for the specified
     # locale.
     # 
@@ -311,7 +293,6 @@ module Sun::Util
     end
     
     typesig { [LocalizedObjectGetter, Locale, OpenListResourceBundle, String, Object] }
-    # 
     # Returns the provider's localized name for the specified
     # locale.
     # 
@@ -328,7 +309,6 @@ module Sun::Util
     end
     
     typesig { [LocalizedObjectGetter, Locale, String, OpenListResourceBundle, String, Object] }
-    # 
     # Returns the provider's localized name for the specified
     # locale.
     # 
@@ -399,7 +379,6 @@ module Sun::Util
     end
     
     typesig { [Locale] }
-    # 
     # Returns a locale service provider instance that supports
     # the specified locale.
     # 
@@ -431,7 +410,6 @@ module Sun::Util
     end
     
     typesig { [Locale, Locale] }
-    # 
     # Returns the provider's locale that is the most appropriate
     # within the range
     # 
@@ -466,7 +444,6 @@ module Sun::Util
     
     class_module.module_eval {
       typesig { [Locale] }
-      # 
       # Returns the parent locale.
       # 
       # @param locale the locale
@@ -493,7 +470,6 @@ module Sun::Util
         end
       end
       
-      # 
       # A dummy locale service provider that indicates there is no
       # provider available
       const_set_lazy(:NullProvider) { Class.new(LocaleServiceProvider) do
@@ -518,14 +494,12 @@ module Sun::Util
         alias_method :initialize__null_provider, :initialize
       end }
       
-      # 
       # An interface to get a localized object for each locale sensitve
       # service class.
       const_set_lazy(:LocalizedObjectGetter) { Module.new do
         include_class_members LocaleServiceProviderPool
         
         typesig { [Object, Locale, String, Object] }
-        # 
         # Returns an object from the provider
         # 
         # @param lsp the provider

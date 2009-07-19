@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 1995-2004 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -38,7 +37,6 @@ module Sun::Misc
     }
   end
   
-  # 
   # This class defines the decoding half of character encoders.
   # A character decoder is an algorithim for transforming 8 bit
   # binary data that has been encoded into text by a character
@@ -114,7 +112,6 @@ module Sun::Misc
     end
     
     typesig { [PushbackInputStream, OutputStream] }
-    # 
     # This method should return, if it knows, the number of bytes
     # that will be decoded. Many formats such as uuencoding provide
     # this information. By default we return the maximum bytes that
@@ -124,7 +121,6 @@ module Sun::Misc
     end
     
     typesig { [PushbackInputStream, OutputStream] }
-    # 
     # This method post processes the line, if there are error detection
     # or correction codes in a line, they are generally processed by
     # this method. The simplest version of this method looks for the
@@ -133,7 +129,6 @@ module Sun::Misc
     end
     
     typesig { [PushbackInputStream, OutputStream, ::Java::Int] }
-    # 
     # This method does an actual decode. It takes the decoded bytes and
     # writes them to the OutputStream. The integer <i>l</i> tells the
     # method how many bytes are required. This is always <= bytesPerAtom().
@@ -142,7 +137,6 @@ module Sun::Misc
     end
     
     typesig { [InputStream, Array.typed(::Java::Byte), ::Java::Int, ::Java::Int] }
-    # 
     # This method works around the bizarre semantics of BufferedInputStream's
     # read method.
     def read_fully(in_, buffer, offset, len)
@@ -159,7 +153,6 @@ module Sun::Misc
     end
     
     typesig { [InputStream, OutputStream] }
-    # 
     # Decode the text from the InputStream and write the decoded
     # octets to the OutputStream. This method runs until the stream
     # is exhausted.
@@ -196,7 +189,6 @@ module Sun::Misc
     end
     
     typesig { [String] }
-    # 
     # Alternate decode interface that takes a String containing the encoded
     # buffer and returns a byte array containing the data.
     # @exception CEFormatException An error has occured while decoding
@@ -212,7 +204,6 @@ module Sun::Misc
     end
     
     typesig { [InputStream] }
-    # 
     # Decode the contents of the inputstream into a buffer.
     def decode_buffer(in_)
       out_stream = ByteArrayOutputStream.new
@@ -221,14 +212,12 @@ module Sun::Misc
     end
     
     typesig { [String] }
-    # 
     # Decode the contents of the String into a ByteBuffer.
     def decode_buffer_to_byte_buffer(input_string)
       return ByteBuffer.wrap(decode_buffer(input_string))
     end
     
     typesig { [InputStream] }
-    # 
     # Decode the contents of the inputStream into a ByteBuffer.
     def decode_buffer_to_byte_buffer(in_)
       return ByteBuffer.wrap(decode_buffer(in_))

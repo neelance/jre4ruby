@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 1996-2003 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -32,7 +31,6 @@ module Java::Security
     }
   end
   
-  # 
   # This class is a simple holder for a key pair (a public key and a
   # private key). It does not enforce any security, and, when initialized,
   # should be treated like a PrivateKey.
@@ -63,7 +61,6 @@ module Java::Security
     undef_method :public_key=
     
     typesig { [PublicKey, PrivateKey] }
-    # 
     # Constructs a key pair from the given public key and private key.
     # 
     # <p>Note that this constructor only stores references to the public
@@ -81,7 +78,6 @@ module Java::Security
     end
     
     typesig { [] }
-    # 
     # Returns a reference to the public key component of this key pair.
     # 
     # @return a reference to the public key.
@@ -90,7 +86,6 @@ module Java::Security
     end
     
     typesig { [] }
-    # 
     # Returns a reference to the private key component of this key pair.
     # 
     # @return a reference to the private key.

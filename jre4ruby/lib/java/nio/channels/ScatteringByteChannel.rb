@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 2000-2006 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -33,7 +32,6 @@ module Java::Nio::Channels
     }
   end
   
-  # 
   # A channel that can read bytes into a sequence of buffers.
   # 
   # <p> A <i>scattering</i> read operation reads, in a single invocation, a
@@ -53,7 +51,6 @@ module Java::Nio::Channels
     include ReadableByteChannel
     
     typesig { [Array.typed(ByteBuffer), ::Java::Int, ::Java::Int] }
-    # 
     # Reads a sequence of bytes from this channel into a subsequence of the
     # given buffers.
     # 
@@ -127,7 +124,6 @@ module Java::Nio::Channels
     end
     
     typesig { [Array.typed(ByteBuffer)] }
-    # 
     # Reads a sequence of bytes from this channel into the given buffers.
     # 
     # <p> An invocation of this method of the form <tt>c.read(dsts)</tt>

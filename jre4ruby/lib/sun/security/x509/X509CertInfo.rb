@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 1997-2006 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -37,7 +36,6 @@ module Sun::Security::X509
     }
   end
   
-  # 
   # The X509CertInfo class represents X.509 certificate information.
   # 
   # <P>X.509 certificates have several base data elements, including:<UL>
@@ -66,7 +64,6 @@ module Sun::Security::X509
     include CertAttrSet
     
     class_module.module_eval {
-      # 
       # Identifier for this attribute, to be used with the
       # get, set, delete methods of Certificate, x509 type.
       const_set_lazy(:IDENT) { "x509.info" }
@@ -230,7 +227,6 @@ module Sun::Security::X509
     }
     
     typesig { [] }
-    # 
     # Construct an uninitialized X509CertInfo on which <a href="#decode">
     # decode</a> must later be called (or which may be deserialized).
     def initialize
@@ -248,7 +244,6 @@ module Sun::Security::X509
     end
     
     typesig { [Array.typed(::Java::Byte)] }
-    # 
     # Unmarshals a certificate from its encoded form, parsing the
     # encoded bytes.  This form of constructor is used by agents which
     # need to examine and use certificate contents.  That is, this is
@@ -282,7 +277,6 @@ module Sun::Security::X509
     end
     
     typesig { [DerValue] }
-    # 
     # Unmarshal a certificate from its encoded form, parsing a DER value.
     # This form of constructor is used by agents which need to examine
     # and use certificate contents.
@@ -311,7 +305,6 @@ module Sun::Security::X509
     end
     
     typesig { [OutputStream] }
-    # 
     # Appends the certificate to an output stream.
     # 
     # @param out an output stream to which the certificate is appended.
@@ -327,7 +320,6 @@ module Sun::Security::X509
     end
     
     typesig { [] }
-    # 
     # Return an enumeration of names of attributes existing within this
     # attribute.
     def get_elements
@@ -346,14 +338,12 @@ module Sun::Security::X509
     end
     
     typesig { [] }
-    # 
     # Return the name of this attribute.
     def get_name
       return (NAME)
     end
     
     typesig { [] }
-    # 
     # Returns the encoded certificate info.
     # 
     # @exception CertificateEncodingException on encoding information errors.
@@ -368,12 +358,11 @@ module Sun::Security::X509
       rescue IOException => e
         raise CertificateEncodingException.new(e.to_s)
       rescue CertificateException => e
-        raise CertificateEncodingException.new(e_.to_s)
+        raise CertificateEncodingException.new(e.to_s)
       end
     end
     
     typesig { [Object] }
-    # 
     # Compares two X509CertInfo objects.  This is false if the
     # certificates are not both X.509 certs, otherwise it
     # compares them as binary data.
@@ -389,7 +378,6 @@ module Sun::Security::X509
     end
     
     typesig { [X509CertInfo] }
-    # 
     # Compares two certificates, returning false if any data
     # differs between the two.
     # 
@@ -418,7 +406,6 @@ module Sun::Security::X509
     end
     
     typesig { [] }
-    # 
     # Calculates a hash code value for the object.  Objects
     # which are equal will also have the same hashcode.
     def hash_code
@@ -432,7 +419,6 @@ module Sun::Security::X509
     end
     
     typesig { [] }
-    # 
     # Returns a printable representation of the certificate.
     def to_s
       if ((@subject).nil? || (@pub_key).nil? || (@interval).nil? || (@issuer).nil? || (@alg_id).nil? || (@serial_num).nil?)
@@ -487,7 +473,7 @@ module Sun::Security::X509
           i_ = 1
           invalid.values.each do |ext|
             sb.append("\n[" + ((((i_ += 1) - 1))).to_s + "]: ")
-            sb.append(ext_)
+            sb.append(ext)
           end
         end
       end
@@ -496,7 +482,6 @@ module Sun::Security::X509
     end
     
     typesig { [String, Object] }
-    # 
     # Set the certificate attribute.
     # 
     # @params name the name of the Certificate attribute.
@@ -580,7 +565,6 @@ module Sun::Security::X509
     end
     
     typesig { [String] }
-    # 
     # Delete the certificate attribute.
     # 
     # @params name the name of the Certificate attribute.
@@ -662,7 +646,6 @@ module Sun::Security::X509
     end
     
     typesig { [String] }
-    # 
     # Get the certificate attribute.
     # 
     # @params name the name of the Certificate attribute.
@@ -687,112 +670,11 @@ module Sun::Security::X509
             return (@extensions.get(suffix))
           end
         end
-        if ((suffix).nil?)
-          return (@subject)
-        else
-          return (@subject.get(suffix))
-        end
-        if ((suffix).nil?)
-          return (@issuer)
-        else
-          return (@issuer.get(suffix))
-        end
-        if ((suffix).nil?)
-          return (@pub_key)
-        else
-          return (@pub_key.get(suffix))
-        end
-        if ((suffix).nil?)
-          return (@alg_id)
-        else
-          return (@alg_id.get(suffix))
-        end
-        if ((suffix).nil?)
-          return (@interval)
-        else
-          return (@interval.get(suffix))
-        end
-        if ((suffix).nil?)
-          return (@version)
-        else
-          return (@version.get(suffix))
-        end
-        if ((suffix).nil?)
-          return (@serial_num)
-        else
-          return (@serial_num.get(suffix))
-        end
-        if ((suffix).nil?)
-          return (@issuer_unique_id)
-        else
-          if ((@issuer_unique_id).nil?)
-            return nil
-          else
-            return (@issuer_unique_id.get(suffix))
-          end
-        end
-        if ((suffix).nil?)
-          return (@subject_unique_id)
-        else
-          if ((@subject_unique_id).nil?)
-            return nil
-          else
-            return (@subject_unique_id.get(suffix))
-          end
-        end
       when (ATTR_SUBJECT)
         if ((suffix).nil?)
           return (@subject)
         else
           return (@subject.get(suffix))
-        end
-        if ((suffix).nil?)
-          return (@issuer)
-        else
-          return (@issuer.get(suffix))
-        end
-        if ((suffix).nil?)
-          return (@pub_key)
-        else
-          return (@pub_key.get(suffix))
-        end
-        if ((suffix).nil?)
-          return (@alg_id)
-        else
-          return (@alg_id.get(suffix))
-        end
-        if ((suffix).nil?)
-          return (@interval)
-        else
-          return (@interval.get(suffix))
-        end
-        if ((suffix).nil?)
-          return (@version)
-        else
-          return (@version.get(suffix))
-        end
-        if ((suffix).nil?)
-          return (@serial_num)
-        else
-          return (@serial_num.get(suffix))
-        end
-        if ((suffix).nil?)
-          return (@issuer_unique_id)
-        else
-          if ((@issuer_unique_id).nil?)
-            return nil
-          else
-            return (@issuer_unique_id.get(suffix))
-          end
-        end
-        if ((suffix).nil?)
-          return (@subject_unique_id)
-        else
-          if ((@subject_unique_id).nil?)
-            return nil
-          else
-            return (@subject_unique_id.get(suffix))
-          end
         end
       when (ATTR_ISSUER)
         if ((suffix).nil?)
@@ -800,92 +682,11 @@ module Sun::Security::X509
         else
           return (@issuer.get(suffix))
         end
-        if ((suffix).nil?)
-          return (@pub_key)
-        else
-          return (@pub_key.get(suffix))
-        end
-        if ((suffix).nil?)
-          return (@alg_id)
-        else
-          return (@alg_id.get(suffix))
-        end
-        if ((suffix).nil?)
-          return (@interval)
-        else
-          return (@interval.get(suffix))
-        end
-        if ((suffix).nil?)
-          return (@version)
-        else
-          return (@version.get(suffix))
-        end
-        if ((suffix).nil?)
-          return (@serial_num)
-        else
-          return (@serial_num.get(suffix))
-        end
-        if ((suffix).nil?)
-          return (@issuer_unique_id)
-        else
-          if ((@issuer_unique_id).nil?)
-            return nil
-          else
-            return (@issuer_unique_id.get(suffix))
-          end
-        end
-        if ((suffix).nil?)
-          return (@subject_unique_id)
-        else
-          if ((@subject_unique_id).nil?)
-            return nil
-          else
-            return (@subject_unique_id.get(suffix))
-          end
-        end
       when (ATTR_KEY)
         if ((suffix).nil?)
           return (@pub_key)
         else
           return (@pub_key.get(suffix))
-        end
-        if ((suffix).nil?)
-          return (@alg_id)
-        else
-          return (@alg_id.get(suffix))
-        end
-        if ((suffix).nil?)
-          return (@interval)
-        else
-          return (@interval.get(suffix))
-        end
-        if ((suffix).nil?)
-          return (@version)
-        else
-          return (@version.get(suffix))
-        end
-        if ((suffix).nil?)
-          return (@serial_num)
-        else
-          return (@serial_num.get(suffix))
-        end
-        if ((suffix).nil?)
-          return (@issuer_unique_id)
-        else
-          if ((@issuer_unique_id).nil?)
-            return nil
-          else
-            return (@issuer_unique_id.get(suffix))
-          end
-        end
-        if ((suffix).nil?)
-          return (@subject_unique_id)
-        else
-          if ((@subject_unique_id).nil?)
-            return nil
-          else
-            return (@subject_unique_id.get(suffix))
-          end
         end
       when (ATTR_ALGORITHM)
         if ((suffix).nil?)
@@ -893,72 +694,11 @@ module Sun::Security::X509
         else
           return (@alg_id.get(suffix))
         end
-        if ((suffix).nil?)
-          return (@interval)
-        else
-          return (@interval.get(suffix))
-        end
-        if ((suffix).nil?)
-          return (@version)
-        else
-          return (@version.get(suffix))
-        end
-        if ((suffix).nil?)
-          return (@serial_num)
-        else
-          return (@serial_num.get(suffix))
-        end
-        if ((suffix).nil?)
-          return (@issuer_unique_id)
-        else
-          if ((@issuer_unique_id).nil?)
-            return nil
-          else
-            return (@issuer_unique_id.get(suffix))
-          end
-        end
-        if ((suffix).nil?)
-          return (@subject_unique_id)
-        else
-          if ((@subject_unique_id).nil?)
-            return nil
-          else
-            return (@subject_unique_id.get(suffix))
-          end
-        end
       when (ATTR_VALIDITY)
         if ((suffix).nil?)
           return (@interval)
         else
           return (@interval.get(suffix))
-        end
-        if ((suffix).nil?)
-          return (@version)
-        else
-          return (@version.get(suffix))
-        end
-        if ((suffix).nil?)
-          return (@serial_num)
-        else
-          return (@serial_num.get(suffix))
-        end
-        if ((suffix).nil?)
-          return (@issuer_unique_id)
-        else
-          if ((@issuer_unique_id).nil?)
-            return nil
-          else
-            return (@issuer_unique_id.get(suffix))
-          end
-        end
-        if ((suffix).nil?)
-          return (@subject_unique_id)
-        else
-          if ((@subject_unique_id).nil?)
-            return nil
-          else
-            return (@subject_unique_id.get(suffix))
-          end
         end
       when (ATTR_VERSION)
         if ((suffix).nil?)
@@ -966,52 +706,11 @@ module Sun::Security::X509
         else
           return (@version.get(suffix))
         end
-        if ((suffix).nil?)
-          return (@serial_num)
-        else
-          return (@serial_num.get(suffix))
-        end
-        if ((suffix).nil?)
-          return (@issuer_unique_id)
-        else
-          if ((@issuer_unique_id).nil?)
-            return nil
-          else
-            return (@issuer_unique_id.get(suffix))
-          end
-        end
-        if ((suffix).nil?)
-          return (@subject_unique_id)
-        else
-          if ((@subject_unique_id).nil?)
-            return nil
-          else
-            return (@subject_unique_id.get(suffix))
-          end
-        end
       when (ATTR_SERIAL)
         if ((suffix).nil?)
           return (@serial_num)
         else
           return (@serial_num.get(suffix))
-        end
-        if ((suffix).nil?)
-          return (@issuer_unique_id)
-        else
-          if ((@issuer_unique_id).nil?)
-            return nil
-          else
-            return (@issuer_unique_id.get(suffix))
-          end
-        end
-        if ((suffix).nil?)
-          return (@subject_unique_id)
-        else
-          if ((@subject_unique_id).nil?)
-            return nil
-          else
-            return (@subject_unique_id.get(suffix))
-          end
         end
       when (ATTR_ISSUER_ID)
         if ((suffix).nil?)
@@ -1021,15 +720,6 @@ module Sun::Security::X509
             return nil
           else
             return (@issuer_unique_id.get(suffix))
-          end
-        end
-        if ((suffix).nil?)
-          return (@subject_unique_id)
-        else
-          if ((@subject_unique_id).nil?)
-            return nil
-          else
-            return (@subject_unique_id.get(suffix))
           end
         end
       when (ATTR_SUBJECT_ID)
@@ -1047,7 +737,6 @@ module Sun::Security::X509
     end
     
     typesig { [DerValue] }
-    # 
     # This routine unmarshals the certificate information.
     def parse(val)
       in_ = nil
@@ -1120,7 +809,6 @@ module Sun::Security::X509
     end
     
     typesig { [CertificateSubjectName, CertificateExtensions] }
-    # 
     # Verify if X.509 V3 Certificate is compliant with RFC 3280.
     def verify_cert(subject, extensions)
       # if SubjectName is empty, check for SubjectAlternativeNameExtension
@@ -1150,7 +838,6 @@ module Sun::Security::X509
     end
     
     typesig { [DerOutputStream] }
-    # 
     # Marshal the contents of a "raw" certificate into a DER sequence.
     def emit(out)
       tmp = DerOutputStream.new
@@ -1187,7 +874,6 @@ module Sun::Security::X509
     end
     
     typesig { [String] }
-    # 
     # Returns the integer attribute number for the passed attribute name.
     def attribute_map(name)
       num = Map.get(name)
@@ -1198,7 +884,6 @@ module Sun::Security::X509
     end
     
     typesig { [Object] }
-    # 
     # Set the version number of the certificate.
     # 
     # @params val the Object class value for the Extensions
@@ -1211,7 +896,6 @@ module Sun::Security::X509
     end
     
     typesig { [Object] }
-    # 
     # Set the serial number of the certificate.
     # 
     # @params val the Object class value for the CertificateSerialNumber
@@ -1224,7 +908,6 @@ module Sun::Security::X509
     end
     
     typesig { [Object] }
-    # 
     # Set the algorithm id of the certificate.
     # 
     # @params val the Object class value for the AlgorithmId
@@ -1237,7 +920,6 @@ module Sun::Security::X509
     end
     
     typesig { [Object] }
-    # 
     # Set the issuer name of the certificate.
     # 
     # @params val the Object class value for the issuer
@@ -1250,7 +932,6 @@ module Sun::Security::X509
     end
     
     typesig { [Object] }
-    # 
     # Set the validity interval of the certificate.
     # 
     # @params val the Object class value for the CertificateValidity
@@ -1263,7 +944,6 @@ module Sun::Security::X509
     end
     
     typesig { [Object] }
-    # 
     # Set the subject name of the certificate.
     # 
     # @params val the Object class value for the Subject
@@ -1276,7 +956,6 @@ module Sun::Security::X509
     end
     
     typesig { [Object] }
-    # 
     # Set the public key in the certificate.
     # 
     # @params val the Object class value for the PublicKey
@@ -1289,7 +968,6 @@ module Sun::Security::X509
     end
     
     typesig { [Object] }
-    # 
     # Set the Issuer Unique Identity in the certificate.
     # 
     # @params val the Object class value for the IssuerUniqueId
@@ -1305,7 +983,6 @@ module Sun::Security::X509
     end
     
     typesig { [Object] }
-    # 
     # Set the Subject Unique Identity in the certificate.
     # 
     # @params val the Object class value for the SubjectUniqueId
@@ -1321,7 +998,6 @@ module Sun::Security::X509
     end
     
     typesig { [Object] }
-    # 
     # Set the extensions in the certificate.
     # 
     # @params val the Object class value for the Extensions

@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 2000-2001 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -31,7 +30,6 @@ module Java::Security::Cert
     }
   end
   
-  # 
   # A selector that defines a set of criteria for selecting <code>CRL</code>s.
   # Classes that implement this interface are often used to specify
   # which <code>CRL</code>s should be retrieved from a <code>CertStore</code>.
@@ -55,7 +53,6 @@ module Java::Security::Cert
     include Cloneable
     
     typesig { [CRL] }
-    # 
     # Decides whether a <code>CRL</code> should be selected.
     # 
     # @param   crl     the <code>CRL</code> to be checked
@@ -66,7 +63,6 @@ module Java::Security::Cert
     end
     
     typesig { [] }
-    # 
     # Makes a copy of this <code>CRLSelector</code>. Changes to the
     # copy will not affect the original and vice versa.
     # 

@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 1997-2005 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -42,7 +41,6 @@ module Java::Text
     }
   end
   
-  # 
   # A <code>CollationKey</code> represents a <code>String</code> under the
   # rules of a specific <code>Collator</code> object. Comparing two
   # <code>CollationKey</code>s returns the relative order of the
@@ -104,7 +102,6 @@ module Java::Text
     include JavaComparable
     
     typesig { [CollationKey] }
-    # 
     # Compare this CollationKey to the target CollationKey. The collation rules of the
     # Collator object which created these keys are applied. <strong>Note:</strong>
     # CollationKeys created by different Collators can not be compared.
@@ -118,14 +115,12 @@ module Java::Text
     end
     
     typesig { [] }
-    # 
     # Returns the String that this CollationKey represents.
     def get_source_string
       return @source
     end
     
     typesig { [] }
-    # 
     # Converts the CollationKey to a sequence of bits. If two CollationKeys
     # could be legitimately compared, then one could compare the byte arrays
     # for each of those keys to obtain the same result.  Byte arrays are
@@ -135,7 +130,6 @@ module Java::Text
     end
     
     typesig { [String] }
-    # 
     # CollationKey constructor.
     # 
     # @param source - the source string.

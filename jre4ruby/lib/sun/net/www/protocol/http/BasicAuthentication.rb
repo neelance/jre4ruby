@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 1997-2003 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -36,7 +35,6 @@ module Sun::Net::Www::Protocol::Http
     }
   end
   
-  # 
   # BasicAuthentication: Encapsulate an http server authentication using
   # the "basic" scheme.
   # 
@@ -61,7 +59,6 @@ module Sun::Net::Www::Protocol::Http
     undef_method :auth=
     
     typesig { [::Java::Boolean, String, ::Java::Int, String, PasswordAuthentication] }
-    # 
     # Create a BasicAuthentication
     def initialize(is_proxy, host, port, realm, pw)
       @auth = nil
@@ -90,7 +87,6 @@ module Sun::Net::Www::Protocol::Http
     end
     
     typesig { [::Java::Boolean, String, ::Java::Int, String, String] }
-    # 
     # Create a BasicAuthentication
     def initialize(is_proxy, host, port, realm, auth)
       @auth = nil
@@ -99,7 +95,6 @@ module Sun::Net::Www::Protocol::Http
     end
     
     typesig { [::Java::Boolean, URL, String, PasswordAuthentication] }
-    # 
     # Create a BasicAuthentication
     def initialize(is_proxy, url, realm, pw)
       @auth = nil
@@ -128,7 +123,6 @@ module Sun::Net::Www::Protocol::Http
     end
     
     typesig { [::Java::Boolean, URL, String, String] }
-    # 
     # Create a BasicAuthentication
     def initialize(is_proxy, url, realm, auth)
       @auth = nil
@@ -137,14 +131,12 @@ module Sun::Net::Www::Protocol::Http
     end
     
     typesig { [] }
-    # 
     # @return true if this authentication supports preemptive authorization
     def supports_preemptive_authorization
       return true
     end
     
     typesig { [] }
-    # 
     # @return the name of the HTTP header this authentication wants set
     def get_header_name
       if ((self.attr_type).equal?(SERVER_AUTHENTICATION))
@@ -155,7 +147,6 @@ module Sun::Net::Www::Protocol::Http
     end
     
     typesig { [HttpURLConnection, HeaderParser, String] }
-    # 
     # Set header(s) on the given connection. This will only be called for
     # definitive (i.e. non-preemptive) authorization.
     # @param conn The connection to apply the header(s) to
@@ -168,7 +159,6 @@ module Sun::Net::Www::Protocol::Http
     end
     
     typesig { [URL, String] }
-    # 
     # @return the value of the HTTP header this authentication wants set
     def get_header_value(url, method)
       # For Basic the authorization string does not depend on the request URL
@@ -177,7 +167,6 @@ module Sun::Net::Www::Protocol::Http
     end
     
     typesig { [String] }
-    # 
     # For Basic Authentication, the security parameters can never be stale.
     # In other words there is no possibility to reuse the credentials.
     # They are always either valid or invalid.
@@ -186,7 +175,6 @@ module Sun::Net::Www::Protocol::Http
     end
     
     typesig { [String, String, URL] }
-    # 
     # For Basic Authentication, there is no security information in the
     # response
     def check_response(header, method, url)
@@ -194,7 +182,6 @@ module Sun::Net::Www::Protocol::Http
     
     class_module.module_eval {
       typesig { [String, String] }
-      # 
       # @return the common root path between npath and path.
       # This is used to detect when we have an authentication for two
       # paths and the root of th authentication space is the common root.

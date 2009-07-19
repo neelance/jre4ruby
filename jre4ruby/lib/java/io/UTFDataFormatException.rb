@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 1995-2004 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -31,7 +30,6 @@ module Java::Io
     }
   end
   
-  # 
   # Signals that a malformed string in
   # <a href="DataInput.html#modified-utf-8">modified UTF-8</a>
   # format has been read in a data
@@ -51,7 +49,6 @@ module Java::Io
     include_class_members UTFDataFormatExceptionImports
     
     typesig { [] }
-    # 
     # Constructs a <code>UTFDataFormatException</code> with
     # <code>null</code> as its error detail message.
     def initialize
@@ -59,7 +56,6 @@ module Java::Io
     end
     
     typesig { [String] }
-    # 
     # Constructs a <code>UTFDataFormatException</code> with the
     # specified detail message. The string <code>s</code> can be
     # retrieved later by the

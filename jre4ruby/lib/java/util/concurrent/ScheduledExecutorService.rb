@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
 # This code is free software; you can redistribute it and/or modify it
@@ -42,7 +41,6 @@ module Java::Util::Concurrent
     }
   end
   
-  # 
   # An {@link ExecutorService} that can schedule commands to run after a given
   # delay, or to execute periodically.
   # 
@@ -103,7 +101,6 @@ module Java::Util::Concurrent
     include ExecutorService
     
     typesig { [Runnable, ::Java::Long, TimeUnit] }
-    # 
     # Creates and executes a one-shot action that becomes enabled
     # after the given delay.
     # 
@@ -121,7 +118,6 @@ module Java::Util::Concurrent
     end
     
     typesig { [Callable, ::Java::Long, TimeUnit] }
-    # 
     # Creates and executes a ScheduledFuture that becomes enabled after the
     # given delay.
     # 
@@ -137,7 +133,6 @@ module Java::Util::Concurrent
     end
     
     typesig { [Runnable, ::Java::Long, ::Java::Long, TimeUnit] }
-    # 
     # Creates and executes a periodic action that becomes enabled first
     # after the given initial delay, and subsequently with the given
     # period; that is executions will commence after
@@ -166,7 +161,6 @@ module Java::Util::Concurrent
     end
     
     typesig { [Runnable, ::Java::Long, ::Java::Long, TimeUnit] }
-    # 
     # Creates and executes a periodic action that becomes enabled first
     # after the given initial delay, and subsequently with the
     # given delay between the termination of one execution and the

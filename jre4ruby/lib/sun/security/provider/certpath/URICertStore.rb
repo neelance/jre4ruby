@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 2006 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -61,7 +60,6 @@ module Sun::Security::Provider::Certpath
     }
   end
   
-  # 
   # A <code>CertStore</code> that retrieves <code>Certificates</code> or
   # <code>CRL</code>s from a URI, for example, as specified in an X.509
   # AuthorityInformationAccess or CRLDistributionPoint extension.
@@ -168,7 +166,6 @@ module Sun::Security::Provider::Certpath
     undef_method :ldap_path=
     
     typesig { [CertStoreParameters] }
-    # 
     # Creates a URICertStore.
     # 
     # @param parameters specifying the URI
@@ -207,7 +204,6 @@ module Sun::Security::Provider::Certpath
     end
     
     class_module.module_eval {
-      # 
       # Returns a URI CertStore. This method consults a cache of
       # CertStores (shared per JVM) using the URI as a key.
       const_set_lazy(:CertStoreCache) { Cache.new_soft_memory_cache(CACHE_SIZE) }
@@ -233,7 +229,6 @@ module Sun::Security::Provider::Certpath
       end
       
       typesig { [AccessDescription] }
-      # 
       # Creates a CertStore from information included in the AccessDescription
       # object of a certificate's Authority Information Access Extension.
       def get_instance(ad)
@@ -258,7 +253,6 @@ module Sun::Security::Provider::Certpath
     }
     
     typesig { [CertSelector] }
-    # 
     # Returns a <code>Collection</code> of <code>X509Certificate</code>s that
     # match the specified selector. If no <code>X509Certificate</code>s
     # match the selector, an empty <code>Collection</code> will be returned.
@@ -336,7 +330,7 @@ module Sun::Security::Provider::Certpath
         rescue CertificateException => e
           if (!(Debug).nil?)
             Debug.println("Exception fetching certificates:")
-            e_.print_stack_trace
+            e.print_stack_trace
           end
         ensure
           if (!(in_).nil?)
@@ -356,7 +350,6 @@ module Sun::Security::Provider::Certpath
     
     class_module.module_eval {
       typesig { [Collection, CertSelector] }
-      # 
       # Iterates over the specified Collection of X509Certificates and
       # returns only those that match the criteria specified in the
       # CertSelector.
@@ -376,7 +369,6 @@ module Sun::Security::Provider::Certpath
     }
     
     typesig { [CRLSelector] }
-    # 
     # Returns a <code>Collection</code> of <code>X509CRL</code>s that
     # match the specified selector. If no <code>X509CRL</code>s
     # match the selector, an empty <code>Collection</code> will be returned.
@@ -454,7 +446,7 @@ module Sun::Security::Provider::Certpath
         rescue CRLException => e
           if (!(Debug).nil?)
             Debug.println("Exception fetching CRL:")
-            e_.print_stack_trace
+            e.print_stack_trace
           end
         ensure
           if (!(in_).nil?)
@@ -474,7 +466,6 @@ module Sun::Security::Provider::Certpath
     
     class_module.module_eval {
       typesig { [X509CRL, CRLSelector] }
-      # 
       # Checks if the specified X509CRL matches the criteria specified in the
       # CRLSelector.
       def get_matching_crls(crl, selector)
@@ -485,7 +476,6 @@ module Sun::Security::Provider::Certpath
         end
       end
       
-      # 
       # CertStoreParameters for the URICertStore.
       const_set_lazy(:URICertStoreParameters) { Class.new do
         include_class_members URICertStore
@@ -543,7 +533,6 @@ module Sun::Security::Provider::Certpath
         alias_method :initialize__uricert_store_parameters, :initialize
       end }
       
-      # 
       # This class allows the URICertStore to be accessed as a CertStore.
       const_set_lazy(:UCS) { Class.new(CertStore) do
         include_class_members URICertStore

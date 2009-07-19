@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 1994-1997 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -30,7 +29,6 @@ module Java::Lang
     }
   end
   
-  # 
   # Thrown to indicate some unexpected internal error has occurred in
   # the Java Virtual Machine.
   # 
@@ -40,14 +38,12 @@ module Java::Lang
     include_class_members InternalErrorImports
     
     typesig { [] }
-    # 
     # Constructs an <code>InternalError</code> with no detail message.
     def initialize
       super()
     end
     
     typesig { [String] }
-    # 
     # Constructs an <code>InternalError</code> with the specified
     # detail message.
     # 

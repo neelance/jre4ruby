@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 1996-2006 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -37,7 +36,6 @@ module Sun::Security::Provider
     }
   end
   
-  # 
   # <P> This class generates seeds for the cryptographically strong random
   # number generator.
   # <P> The seed is produced using one of two techniques, via a computation
@@ -129,7 +127,7 @@ module Sun::Security::Provider
               end
             rescue IOException => e
               if (!(Debug).nil?)
-                Debug.println("Failed to create seed generator with " + egd_source + ": " + (e_.to_s).to_s)
+                Debug.println("Failed to create seed generator with " + egd_source + ": " + (e.to_s).to_s)
               end
             end
           end
@@ -144,7 +142,6 @@ module Sun::Security::Provider
       end
       
       typesig { [Array.typed(::Java::Byte)] }
-      # 
       # Fill result with bytes from the queue. Wait for it if it isn't ready.
       def generate_seed(result)
         self.attr_instance.get_seed_bytes(result)
@@ -167,7 +164,6 @@ module Sun::Security::Provider
     
     class_module.module_eval {
       typesig { [] }
-      # 
       # Retrieve some system information, hashed.
       def get_system_entropy
         ba = nil
@@ -230,7 +226,6 @@ module Sun::Security::Provider
       end
       
       typesig { [::Java::Long] }
-      # 
       # Helper function to convert a long into a byte array (least significant
       # byte first).
       def long_to_byte_array(l)
@@ -244,7 +239,6 @@ module Sun::Security::Provider
         return ret_val
       end
       
-      # 
       # // This method helps the test utility receive unprocessed seed bytes.
       # public static int genTestSeed() {
       # return myself.getByte();
@@ -286,7 +280,6 @@ module Sun::Security::Provider
         undef_method :seed_group=
         
         typesig { [] }
-        # 
         # The constructor is only called once to construct the one
         # instance we actually use. It instantiates the message digest
         # and starts the thread going.
@@ -338,7 +331,6 @@ module Sun::Security::Provider
         end
         
         typesig { [] }
-        # 
         # This method does the actual work. It collects random bytes and
         # pushes them into the queue.
         def run
@@ -444,7 +436,6 @@ module Sun::Security::Provider
           end
           alias_method :attr_rnd_tab=, :rnd_tab=
           
-          # 
           # This inner thread causes the thread scheduler to become 'noisy',
           # thus adding entropy to the system load.
           # At least one instance of this class is generated for every seed byte.
@@ -494,7 +485,6 @@ module Sun::Security::Provider
         undef_method :dev_random=
         
         typesig { [String] }
-        # 
         # The constructor is only called once to construct the one
         # instance we actually use. It opens the entropy gathering device
         # which will supply the randomness.

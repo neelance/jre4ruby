@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 1999-2007 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -203,7 +202,6 @@ module Sun::Misc
       alias_method :attr_jdk_special_version=, :jdk_special_version=
       
       typesig { [] }
-      # 
       # In case you were wondering this method is called by java -version.
       # Sad that it prints to stderr; would be nicer if default printed on
       # stdout.
@@ -212,7 +210,6 @@ module Sun::Misc
       end
       
       typesig { [PrintStream] }
-      # 
       # Give a stream, it will print version info on it.
       def print(ps)
         # First line: platform version.
@@ -227,7 +224,6 @@ module Sun::Misc
       end
       
       typesig { [] }
-      # 
       # Returns the major version of the running JVM if it's 1.6 or newer
       # or any RE VM build. It will return 0 if it's an internal 1.5 or
       # 1.4.x build.
@@ -243,7 +239,6 @@ module Sun::Misc
       end
       
       typesig { [] }
-      # 
       # Returns the minor version of the running JVM if it's 1.6 or newer
       # or any RE VM build. It will return 0 if it's an internal 1.5 or
       # 1.4.x build.
@@ -258,7 +253,6 @@ module Sun::Misc
       end
       
       typesig { [] }
-      # 
       # Returns the micro version of the running JVM if it's 1.6 or newer
       # or any RE VM build. It will return 0 if it's an internal 1.5 or
       # 1.4.x build.
@@ -273,7 +267,6 @@ module Sun::Misc
       end
       
       typesig { [] }
-      # 
       # Returns the update release version of the running JVM if it's
       # a RE build. It will return 0 if it's an internal build.
       # @since 1.6
@@ -306,7 +299,6 @@ module Sun::Misc
       end
       
       typesig { [] }
-      # 
       # Returns the build number of the running JVM if it's a RE build
       # It will return 0 if it's an internal build.
       # @since 1.6
@@ -320,7 +312,6 @@ module Sun::Misc
       end
       
       typesig { [] }
-      # 
       # Returns the major version of the running JDK.
       # 
       # @since 1.6
@@ -334,7 +325,6 @@ module Sun::Misc
       end
       
       typesig { [] }
-      # 
       # Returns the minor version of the running JDK.
       # @since 1.6
       def jdk_minor_version
@@ -347,7 +337,6 @@ module Sun::Misc
       end
       
       typesig { [] }
-      # 
       # Returns the micro version of the running JDK.
       # @since 1.6
       def jdk_micro_version
@@ -360,7 +349,6 @@ module Sun::Misc
       end
       
       typesig { [] }
-      # 
       # Returns the update release version of the running JDK if it's
       # a RE build. It will return 0 if it's an internal build.
       # @since 1.6
@@ -393,7 +381,6 @@ module Sun::Misc
       end
       
       typesig { [] }
-      # 
       # Returns the build number of the running JDK if it's a RE build
       # It will return 0 if it's an internal build.
       # @since 1.6

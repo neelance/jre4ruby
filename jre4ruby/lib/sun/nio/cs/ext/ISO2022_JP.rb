@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 2002-2007 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -41,7 +40,6 @@ module Sun::Nio::Cs::Ext
     }
   end
   
-  # 
   # Implementation notes:
   # 
   # (1)"Standard based" (ASCII, JIS_X_0201 and JIS_X_0208) ISO2022-JP charset

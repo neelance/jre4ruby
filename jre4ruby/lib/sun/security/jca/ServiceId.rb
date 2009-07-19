@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 2003 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -31,7 +30,6 @@ module Sun::Security::Jca
     }
   end
   
-  # 
   # Simple class encapsulating a service type and algorithm for lookup.
   # Put in a separate file rather than nested to allow import via ...jca.*.
   # 

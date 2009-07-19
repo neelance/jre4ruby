@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 1996-2006 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -43,7 +42,6 @@ module Java::Lang::Reflect
     }
   end
   
-  # 
   # A {@code Method} provides information about, and access to, a single method
   # on a class or interface.  The reflected method may be a class method
   # or an instance method (including an abstract method).
@@ -203,7 +201,6 @@ module Java::Lang::Reflect
     end
     
     typesig { [Class, String, Array.typed(Class), Class, Array.typed(Class), ::Java::Int, ::Java::Int, String, Array.typed(::Java::Byte), Array.typed(::Java::Byte), Array.typed(::Java::Byte)] }
-    # 
     # Package-private constructor used by ReflectAccess to enable
     # instantiation of these objects in Java code from the java.lang
     # package via sun.reflect.LangReflectAccess.
@@ -240,7 +237,6 @@ module Java::Lang::Reflect
     end
     
     typesig { [] }
-    # 
     # Package-private routine (exposed to java.lang.Class via
     # ReflectAccess) which returns a copy of this Method. The copy's
     # "root" field points to this Method.
@@ -260,7 +256,6 @@ module Java::Lang::Reflect
     end
     
     typesig { [] }
-    # 
     # Returns the {@code Class} object representing the class or interface
     # that declares the method represented by this {@code Method} object.
     def get_declaring_class
@@ -268,7 +263,6 @@ module Java::Lang::Reflect
     end
     
     typesig { [] }
-    # 
     # Returns the name of the method represented by this {@code Method}
     # object, as a {@code String}.
     def get_name
@@ -276,7 +270,6 @@ module Java::Lang::Reflect
     end
     
     typesig { [] }
-    # 
     # Returns the Java language modifiers for the method represented
     # by this {@code Method} object, as an integer. The {@code Modifier} class should
     # be used to decode the modifiers.
@@ -287,7 +280,6 @@ module Java::Lang::Reflect
     end
     
     typesig { [] }
-    # 
     # Returns an array of {@code TypeVariable} objects that represent the
     # type variables declared by the generic declaration represented by this
     # {@code GenericDeclaration} object, in declaration order.  Returns an
@@ -310,7 +302,6 @@ module Java::Lang::Reflect
     end
     
     typesig { [] }
-    # 
     # Returns a {@code Class} object that represents the formal return type
     # of the method represented by this {@code Method} object.
     # 
@@ -320,7 +311,6 @@ module Java::Lang::Reflect
     end
     
     typesig { [] }
-    # 
     # Returns a {@code Type} object that represents the formal return
     # type of the method represented by this {@code Method} object.
     # 
@@ -351,7 +341,6 @@ module Java::Lang::Reflect
     end
     
     typesig { [] }
-    # 
     # Returns an array of {@code Class} objects that represent the formal
     # parameter types, in declaration order, of the method
     # represented by this {@code Method} object.  Returns an array of length
@@ -364,7 +353,6 @@ module Java::Lang::Reflect
     end
     
     typesig { [] }
-    # 
     # Returns an array of {@code Type} objects that represent the formal
     # parameter types, in declaration order, of the method represented by
     # this {@code Method} object. Returns an array of length 0 if the
@@ -398,7 +386,6 @@ module Java::Lang::Reflect
     end
     
     typesig { [] }
-    # 
     # Returns an array of {@code Class} objects that represent
     # the types of the exceptions declared to be thrown
     # by the underlying method
@@ -412,7 +399,6 @@ module Java::Lang::Reflect
     end
     
     typesig { [] }
-    # 
     # Returns an array of {@code Type} objects that represent the
     # exceptions declared to be thrown by this {@code Method} object.
     # Returns an array of length 0 if the underlying method declares
@@ -446,7 +432,6 @@ module Java::Lang::Reflect
     end
     
     typesig { [Object] }
-    # 
     # Compares this {@code Method} against the specified object.  Returns
     # true if the objects are the same.  Two {@code Methods} are the same if
     # they were declared by the same class and have the same name
@@ -477,7 +462,6 @@ module Java::Lang::Reflect
     end
     
     typesig { [] }
-    # 
     # Returns a hashcode for this {@code Method}.  The hashcode is computed
     # as the exclusive-or of the hashcodes for the underlying
     # method's declaring class name and the method's name.
@@ -486,7 +470,6 @@ module Java::Lang::Reflect
     end
     
     typesig { [] }
-    # 
     # Returns a string describing this {@code Method}.  The string is
     # formatted as the method access modifiers, if any, followed by
     # the method return type, followed by a space, followed by the
@@ -546,7 +529,6 @@ module Java::Lang::Reflect
     end
     
     typesig { [] }
-    # 
     # Returns a string describing this {@code Method}, including
     # type parameters.  The string is formatted as the method access
     # modifiers, if any, followed by an angle-bracketed
@@ -634,7 +616,6 @@ module Java::Lang::Reflect
     end
     
     typesig { [Object, Object] }
-    # 
     # Invokes the underlying method represented by this {@code Method}
     # object, on the specified object with the specified parameters.
     # Individual parameters are automatically unwrapped to match
@@ -715,7 +696,6 @@ module Java::Lang::Reflect
     end
     
     typesig { [] }
-    # 
     # Returns {@code true} if this method is a bridge
     # method; returns {@code false} otherwise.
     # 
@@ -727,7 +707,6 @@ module Java::Lang::Reflect
     end
     
     typesig { [] }
-    # 
     # Returns {@code true} if this method was declared to take
     # a variable number of arguments; returns {@code false}
     # otherwise.
@@ -740,7 +719,6 @@ module Java::Lang::Reflect
     end
     
     typesig { [] }
-    # 
     # Returns {@code true} if this method is a synthetic
     # method; returns {@code false} otherwise.
     # 
@@ -791,7 +769,6 @@ module Java::Lang::Reflect
     end
     
     typesig { [Class] }
-    # 
     # @throws NullPointerException {@inheritDoc}
     # @since 1.5
     def get_annotation(annotation_class)
@@ -807,7 +784,6 @@ module Java::Lang::Reflect
     }
     
     typesig { [] }
-    # 
     # @since 1.5
     def get_declared_annotations
       return declared_annotations.values.to_array(EMPTY_ANNOTATION_ARRAY)
@@ -830,7 +806,6 @@ module Java::Lang::Reflect
     end
     
     typesig { [] }
-    # 
     # Returns the default value for the annotation member represented by
     # this {@code Method} instance.  If the member is of a primitive type,
     # an instance of the corresponding wrapper type is returned. Returns
@@ -856,7 +831,6 @@ module Java::Lang::Reflect
     end
     
     typesig { [] }
-    # 
     # Returns an array of arrays that represent the annotations on the formal
     # parameters, in declaration order, of the method represented by
     # this {@code Method} object. (Returns an array of length zero if the

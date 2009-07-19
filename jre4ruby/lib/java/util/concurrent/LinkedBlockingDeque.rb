@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
 # This code is free software; you can redistribute it and/or modify it
@@ -42,7 +41,6 @@ module Java::Util::Concurrent
     }
   end
   
-  # 
   # An optionally-bounded {@linkplain BlockingDeque blocking deque} based on
   # linked nodes.
   # 
@@ -76,7 +74,6 @@ module Java::Util::Concurrent
     include Java::Io::Serializable
     
     class_module.module_eval {
-      # 
       # Implemented as a simple doubly-linked list protected by a
       # single lock and using conditions to manage blocking.
       # 
@@ -175,7 +172,6 @@ module Java::Util::Concurrent
     undef_method :not_full=
     
     typesig { [] }
-    # 
     # Creates a <tt>LinkedBlockingDeque</tt> with a capacity of
     # {@link Integer#MAX_VALUE}.
     def initialize
@@ -183,7 +179,6 @@ module Java::Util::Concurrent
     end
     
     typesig { [::Java::Int] }
-    # 
     # Creates a <tt>LinkedBlockingDeque</tt> with the given (fixed) capacity.
     # 
     # @param capacity the capacity of this deque
@@ -207,7 +202,6 @@ module Java::Util::Concurrent
     end
     
     typesig { [Collection] }
-    # 
     # Creates a <tt>LinkedBlockingDeque</tt> with a capacity of
     # {@link Integer#MAX_VALUE}, initially containing the elements of
     # the given collection, added in traversal order of the
@@ -245,7 +239,6 @@ module Java::Util::Concurrent
     end
     
     typesig { [Object] }
-    # 
     # Links e as last element, or returns false if full.
     def link_last(e)
       if (@count >= @capacity)
@@ -265,7 +258,6 @@ module Java::Util::Concurrent
     end
     
     typesig { [] }
-    # 
     # Removes and returns first element, or null if empty.
     def unlink_first
       f = @first
@@ -285,7 +277,6 @@ module Java::Util::Concurrent
     end
     
     typesig { [] }
-    # 
     # Removes and returns last element, or null if empty.
     def unlink_last
       l = @last
@@ -305,7 +296,6 @@ module Java::Util::Concurrent
     end
     
     typesig { [Node] }
-    # 
     # Unlink e
     def unlink(x)
       p = x.attr_prev
@@ -342,7 +332,6 @@ module Java::Util::Concurrent
     end
     
     typesig { [Object] }
-    # 
     # @throws IllegalStateException {@inheritDoc}
     # @throws NullPointerException  {@inheritDoc}
     def add_last(e)
@@ -352,7 +341,6 @@ module Java::Util::Concurrent
     end
     
     typesig { [Object] }
-    # 
     # @throws NullPointerException {@inheritDoc}
     def offer_first(e)
       if ((e).nil?)
@@ -367,7 +355,6 @@ module Java::Util::Concurrent
     end
     
     typesig { [Object] }
-    # 
     # @throws NullPointerException {@inheritDoc}
     def offer_last(e)
       if ((e).nil?)
@@ -382,7 +369,6 @@ module Java::Util::Concurrent
     end
     
     typesig { [Object] }
-    # 
     # @throws NullPointerException {@inheritDoc}
     # @throws InterruptedException {@inheritDoc}
     def put_first(e)
@@ -400,7 +386,6 @@ module Java::Util::Concurrent
     end
     
     typesig { [Object] }
-    # 
     # @throws NullPointerException {@inheritDoc}
     # @throws InterruptedException {@inheritDoc}
     def put_last(e)
@@ -418,7 +403,6 @@ module Java::Util::Concurrent
     end
     
     typesig { [Object, ::Java::Long, TimeUnit] }
-    # 
     # @throws NullPointerException {@inheritDoc}
     # @throws InterruptedException {@inheritDoc}
     def offer_first(e, timeout, unit)
@@ -443,7 +427,6 @@ module Java::Util::Concurrent
     end
     
     typesig { [Object, ::Java::Long, TimeUnit] }
-    # 
     # @throws NullPointerException {@inheritDoc}
     # @throws InterruptedException {@inheritDoc}
     def offer_last(e, timeout, unit)
@@ -468,7 +451,6 @@ module Java::Util::Concurrent
     end
     
     typesig { [] }
-    # 
     # @throws NoSuchElementException {@inheritDoc}
     def remove_first
       x = poll_first
@@ -479,7 +461,6 @@ module Java::Util::Concurrent
     end
     
     typesig { [] }
-    # 
     # @throws NoSuchElementException {@inheritDoc}
     def remove_last
       x = poll_last
@@ -578,7 +559,6 @@ module Java::Util::Concurrent
     end
     
     typesig { [] }
-    # 
     # @throws NoSuchElementException {@inheritDoc}
     def get_first
       x = peek_first
@@ -589,7 +569,6 @@ module Java::Util::Concurrent
     end
     
     typesig { [] }
-    # 
     # @throws NoSuchElementException {@inheritDoc}
     def get_last
       x = peek_last
@@ -679,14 +658,12 @@ module Java::Util::Concurrent
     end
     
     typesig { [Object] }
-    # 
     # @throws NullPointerException if the specified element is null
     def offer(e)
       return offer_last(e)
     end
     
     typesig { [Object] }
-    # 
     # @throws NullPointerException {@inheritDoc}
     # @throws InterruptedException {@inheritDoc}
     def put(e)
@@ -694,7 +671,6 @@ module Java::Util::Concurrent
     end
     
     typesig { [Object, ::Java::Long, TimeUnit] }
-    # 
     # @throws NullPointerException {@inheritDoc}
     # @throws InterruptedException {@inheritDoc}
     def offer(e, timeout, unit)
@@ -702,7 +678,6 @@ module Java::Util::Concurrent
     end
     
     typesig { [] }
-    # 
     # Retrieves and removes the head of the queue represented by this deque.
     # This method differs from {@link #poll poll} only in that it throws an
     # exception if this deque is empty.
@@ -731,7 +706,6 @@ module Java::Util::Concurrent
     end
     
     typesig { [] }
-    # 
     # Retrieves, but does not remove, the head of the queue represented by
     # this deque.  This method differs from {@link #peek peek} only in that
     # it throws an exception if this deque is empty.
@@ -750,7 +724,6 @@ module Java::Util::Concurrent
     end
     
     typesig { [] }
-    # 
     # Returns the number of additional elements that this deque can ideally
     # (in the absence of memory or resource constraints) accept without
     # blocking. This is always equal to the initial capacity of this deque
@@ -770,7 +743,6 @@ module Java::Util::Concurrent
     end
     
     typesig { [Collection] }
-    # 
     # @throws UnsupportedOperationException {@inheritDoc}
     # @throws ClassCastException            {@inheritDoc}
     # @throws NullPointerException          {@inheritDoc}
@@ -800,7 +772,6 @@ module Java::Util::Concurrent
     end
     
     typesig { [Collection, ::Java::Int] }
-    # 
     # @throws UnsupportedOperationException {@inheritDoc}
     # @throws ClassCastException            {@inheritDoc}
     # @throws NullPointerException          {@inheritDoc}
@@ -842,7 +813,6 @@ module Java::Util::Concurrent
     end
     
     typesig { [] }
-    # 
     # @throws NoSuchElementException {@inheritDoc}
     def pop
       return remove_first
@@ -868,7 +838,6 @@ module Java::Util::Concurrent
     end
     
     typesig { [] }
-    # 
     # Returns the number of elements in this deque.
     # 
     # @return the number of elements in this deque
@@ -882,7 +851,6 @@ module Java::Util::Concurrent
     end
     
     typesig { [Object] }
-    # 
     # Returns <tt>true</tt> if this deque contains the specified element.
     # More formally, returns <tt>true</tt> if and only if this deque contains
     # at least one element <tt>e</tt> such that <tt>o.equals(e)</tt>.
@@ -909,7 +877,6 @@ module Java::Util::Concurrent
     end
     
     typesig { [Node] }
-    # 
     # Variant of removeFirstOccurrence needed by iterator.remove.
     # Searches for the node, not its contents.
     def remove_node(e)
@@ -930,7 +897,6 @@ module Java::Util::Concurrent
     end
     
     typesig { [] }
-    # 
     # Returns an array containing all of the elements in this deque, in
     # proper sequence (from first to last element).
     # 
@@ -959,7 +925,6 @@ module Java::Util::Concurrent
     end
     
     typesig { [Array.typed(T)] }
-    # 
     # Returns an array containing all of the elements in this deque, in
     # proper sequence; the runtime type of the returned array is that of
     # the specified array.  If the deque fits in the specified array, it
@@ -1026,7 +991,6 @@ module Java::Util::Concurrent
     end
     
     typesig { [] }
-    # 
     # Atomically removes all of the elements from this deque.
     # The deque will be empty after this call returns.
     def clear
@@ -1041,7 +1005,6 @@ module Java::Util::Concurrent
     end
     
     typesig { [] }
-    # 
     # Returns an iterator over the elements in this deque in proper sequence.
     # The elements will be returned in order from first (head) to last (tail).
     # The returned <tt>Iterator</tt> is a "weakly consistent" iterator that
@@ -1056,7 +1019,6 @@ module Java::Util::Concurrent
     end
     
     typesig { [] }
-    # 
     # Returns an iterator over the elements in this deque in reverse
     # sequential order.  The elements will be returned in order from
     # last (tail) to first (head).
@@ -1070,14 +1032,12 @@ module Java::Util::Concurrent
     end
     
     class_module.module_eval {
-      # 
       # Base class for Iterators for LinkedBlockingDeque
       const_set_lazy(:AbstractItr) { Class.new do
         extend LocalClass
         include_class_members LinkedBlockingDeque
         include Iterator
         
-        # 
         # The next node to return in next
         attr_accessor :next
         alias_method :attr_next, :next
@@ -1085,7 +1045,6 @@ module Java::Util::Concurrent
         alias_method :attr_next=, :next=
         undef_method :next=
         
-        # 
         # nextItem holds on to item fields because once we claim that
         # an element exists in hasNext(), we must return item read
         # under lock (in advance()) even if it was in the process of
@@ -1096,7 +1055,6 @@ module Java::Util::Concurrent
         alias_method :attr_next_item=, :next_item=
         undef_method :next_item=
         
-        # 
         # Node returned by most recent call to next. Needed by remove.
         # Reset to null if this element is deleted by a call to remove.
         attr_accessor :last_ret
@@ -1114,7 +1072,6 @@ module Java::Util::Concurrent
         end
         
         typesig { [] }
-        # 
         # Advances next, or if not yet initialized, sets to first node.
         # Implemented to move forward vs backward in the two subclasses.
         def advance
@@ -1180,7 +1137,6 @@ module Java::Util::Concurrent
         alias_method :initialize__itr, :initialize
       end }
       
-      # 
       # Descending iterator for LinkedBlockingDeque
       const_set_lazy(:DescendingItr) { Class.new(AbstractItr) do
         extend LocalClass
@@ -1209,7 +1165,6 @@ module Java::Util::Concurrent
     }
     
     typesig { [Java::Io::ObjectOutputStream] }
-    # 
     # Save the state of this deque to a stream (that is, serialize it).
     # 
     # @serialData The capacity (int), followed by elements (each an
@@ -1234,7 +1189,6 @@ module Java::Util::Concurrent
     end
     
     typesig { [Java::Io::ObjectInputStream] }
-    # 
     # Reconstitute this deque from a stream (that is,
     # deserialize it).
     # @param s the stream

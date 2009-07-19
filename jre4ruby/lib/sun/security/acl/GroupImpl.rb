@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 1996-2006 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -34,7 +33,6 @@ module Sun::Security::Acl
     }
   end
   
-  # 
   # This class implements a group of principals.
   # @author      Satish Dharmaraj
   class GroupImpl 
@@ -54,7 +52,6 @@ module Sun::Security::Acl
     undef_method :group=
     
     typesig { [String] }
-    # 
     # Constructs a Group object with no members.
     # @param groupName the name of the group
     def initialize(group_name)
@@ -64,7 +61,6 @@ module Sun::Security::Acl
     end
     
     typesig { [Principal] }
-    # 
     # adds the specified member to the group.
     # @param user The principal to add to the group.
     # @return true if the member was added - false if the
@@ -82,7 +78,6 @@ module Sun::Security::Acl
     end
     
     typesig { [Principal] }
-    # 
     # removes the specified member from the group.
     # @param user The principal to remove from the group.
     # @param true if the principal was removed false if
@@ -92,14 +87,12 @@ module Sun::Security::Acl
     end
     
     typesig { [] }
-    # 
     # returns the enumeration of the members in the group.
     def members
       return @group_members.elements
     end
     
     typesig { [Object] }
-    # 
     # This function returns true if the group passed matches
     # the group represented in this interface.
     # @param another The group to compare this group to.
@@ -121,27 +114,23 @@ module Sun::Security::Acl
     end
     
     typesig { [] }
-    # 
     # Prints a stringified version of the group.
     def to_s
       return @group
     end
     
     typesig { [] }
-    # 
     # return a hashcode for the principal.
     def hash_code
       return @group.hash_code
     end
     
     typesig { [Principal] }
-    # 
     # returns true if the passed principal is a member of the group.
     # @param member The principal whose membership must be checked for.
     # @return true if the principal is a member of this group,
     # false otherwise
     def is_member(member)
-      # 
       # if the member is part of the group (common case), return true.
       # if not, recursively search depth first in the group looking for the
       # principal.
@@ -154,14 +143,12 @@ module Sun::Security::Acl
     end
     
     typesig { [] }
-    # 
     # return the name of the principal.
     def get_name
       return @group
     end
     
     typesig { [Principal, Vector] }
-    # 
     # This function is the recursive search of groups for this
     # implementation of the Group. The search proceeds building up
     # a vector of already seen groups. Only new groups are considered,
@@ -176,7 +163,6 @@ module Sun::Security::Acl
           return true
         else
           if (p.is_a?(GroupImpl))
-            # 
             # if not recurse if the group has not been checked already.
             # Can call method in this package only if the object is an
             # instance of this class. Otherwise call the method defined
@@ -191,9 +177,9 @@ module Sun::Security::Acl
             end
           else
             if (p.is_a?(Group))
-              g_ = p
-              if (!already_seen.contains(g_))
-                mem = g_.is_member(member)
+              g = p
+              if (!already_seen.contains(g))
+                mem = g.is_member(member)
               end
             end
           end

@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 2000-2006 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -32,7 +31,6 @@ module Java::Util::Logging
     }
   end
   
-  # 
   # A <tt>Handler</tt> object takes log messages from a <tt>Logger</tt> and
   # exports them.  It might for example, write them to a console
   # or write them to a file, or send them to a network logging service,
@@ -101,7 +99,6 @@ module Java::Util::Logging
     undef_method :sealed=
     
     typesig { [] }
-    # 
     # Default constructor.  The resulting <tt>Handler</tt> has a log
     # level of <tt>Level.ALL</tt>, no <tt>Formatter</tt>, and no
     # <tt>Filter</tt>.  A default <tt>ErrorManager</tt> instance is installed
@@ -117,7 +114,6 @@ module Java::Util::Logging
     end
     
     typesig { [LogRecord] }
-    # 
     # Publish a <tt>LogRecord</tt>.
     # <p>
     # The logging request was made initially to a <tt>Logger</tt> object,
@@ -133,14 +129,12 @@ module Java::Util::Logging
     end
     
     typesig { [] }
-    # 
     # Flush any buffered output.
     def flush
       raise NotImplementedError
     end
     
     typesig { [] }
-    # 
     # Close the <tt>Handler</tt> and free all associated resources.
     # <p>
     # The close method will perform a <tt>flush</tt> and then close the
@@ -155,7 +149,6 @@ module Java::Util::Logging
     end
     
     typesig { [Formatter] }
-    # 
     # Set a <tt>Formatter</tt>.  This <tt>Formatter</tt> will be used
     # to format <tt>LogRecords</tt> for this <tt>Handler</tt>.
     # <p>
@@ -173,7 +166,6 @@ module Java::Util::Logging
     end
     
     typesig { [] }
-    # 
     # Return the <tt>Formatter</tt> for this <tt>Handler</tt>.
     # @return the <tt>Formatter</tt> (may be null).
     def get_formatter
@@ -181,7 +173,6 @@ module Java::Util::Logging
     end
     
     typesig { [String] }
-    # 
     # Set the character encoding used by this <tt>Handler</tt>.
     # <p>
     # The encoding should be set before any <tt>LogRecords</tt> are written
@@ -208,7 +199,6 @@ module Java::Util::Logging
     end
     
     typesig { [] }
-    # 
     # Return the character encoding for this <tt>Handler</tt>.
     # 
     # @return  The encoding name.  May be null, which indicates the
@@ -218,7 +208,6 @@ module Java::Util::Logging
     end
     
     typesig { [Filter] }
-    # 
     # Set a <tt>Filter</tt> to control output on this <tt>Handler</tt>.
     # <P>
     # For each call of <tt>publish</tt> the <tt>Handler</tt> will call
@@ -234,7 +223,6 @@ module Java::Util::Logging
     end
     
     typesig { [] }
-    # 
     # Get the current <tt>Filter</tt> for this <tt>Handler</tt>.
     # 
     # @return  a <tt>Filter</tt> object (may be null)
@@ -243,7 +231,6 @@ module Java::Util::Logging
     end
     
     typesig { [ErrorManager] }
-    # 
     # Define an ErrorManager for this Handler.
     # <p>
     # The ErrorManager's "error" method will be invoked if any
@@ -261,7 +248,6 @@ module Java::Util::Logging
     end
     
     typesig { [] }
-    # 
     # Retrieves the ErrorManager for this Handler.
     # 
     # @exception  SecurityException  if a security manager exists and if
@@ -272,7 +258,6 @@ module Java::Util::Logging
     end
     
     typesig { [String, Exception, ::Java::Int] }
-    # 
     # Protected convenience method to report an error to this Handler's
     # ErrorManager.  Note that this method retrieves and uses the ErrorManager
     # without doing a security check.  It can therefore be used in
@@ -291,7 +276,6 @@ module Java::Util::Logging
     end
     
     typesig { [Level] }
-    # 
     # Set the log level specifying which message levels will be
     # logged by this <tt>Handler</tt>.  Message levels lower than this
     # value will be discarded.
@@ -314,7 +298,6 @@ module Java::Util::Logging
     end
     
     typesig { [] }
-    # 
     # Get the log level specifying which messages will be
     # logged by this <tt>Handler</tt>.  Message levels lower
     # than this level will be discarded.
@@ -326,7 +309,6 @@ module Java::Util::Logging
     end
     
     typesig { [LogRecord] }
-    # 
     # Check if this <tt>Handler</tt> would actually log a given <tt>LogRecord</tt>.
     # <p>
     # This method checks if the <tt>LogRecord</tt> has an appropriate

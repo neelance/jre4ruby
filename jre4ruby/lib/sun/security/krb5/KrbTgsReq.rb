@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Portions Copyright 2000-2006 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -43,7 +42,6 @@ module Sun::Security::Krb5
     }
   end
   
-  # 
   # This class encapsulates a Kerberos TGS-REQ that is sent from the
   # client to the KDC.
   class KrbTgsReq < KrbTgsReqImports.const_get :KrbKdcReq
@@ -204,7 +202,6 @@ module Sun::Security::Krb5
     end
     
     typesig { [] }
-    # 
     # Sends a TGS request to the realm of the target.
     # @throws KrbException
     # @throws IOException
@@ -222,7 +219,6 @@ module Sun::Security::Krb5
     end
     
     typesig { [] }
-    # 
     # Sends the request, waits for a reply, and returns the Credentials.
     # Used in Credentials, KrbCred, and internal/CredentialsUtil.
     def send_and_get_creds
@@ -256,7 +252,6 @@ module Sun::Security::Krb5
       else
         req_till = till
       end
-      # 
       # RFC 4120, Section 5.4.2.
       # For KRB_TGS_REP, the ciphertext is encrypted in the
       # sub-session key from the Authenticator, or if absent,

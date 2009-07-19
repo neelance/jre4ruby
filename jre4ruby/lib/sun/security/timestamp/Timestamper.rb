@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 2003 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -32,7 +31,6 @@ module Sun::Security::Timestamp
     }
   end
   
-  # 
   # A timestamping service which conforms to the Time-Stamp Protocol (TSP)
   # defined in:
   # <a href="http://www.ietf.org/rfc/rfc3161.txt">RFC 3161</a>.
@@ -46,7 +44,6 @@ module Sun::Security::Timestamp
     include_class_members TimestamperImports
     
     typesig { [TSRequest] }
-    # 
     # Connects to the TSA and requests a timestamp.
     # 
     # @param tsQuery The timestamp query.

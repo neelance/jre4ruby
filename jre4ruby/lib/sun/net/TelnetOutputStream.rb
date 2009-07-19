@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 1994-2002 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -32,7 +31,6 @@ module Sun::Net
     }
   end
   
-  # 
   # This class provides input and output streams for telnet clients.
   # This class overrides write to do CRLF processing as specified in
   # RFC 854. The class assumes it is running on a system where lines
@@ -106,7 +104,6 @@ module Sun::Net
     end
     
     typesig { [::Java::Boolean] }
-    # 
     # set the stickyCRLF flag. Tells wether the terminal considers CRLF as a single
     # char.
     # 
@@ -116,7 +113,6 @@ module Sun::Net
     end
     
     typesig { [::Java::Int] }
-    # 
     # Writes the int to the stream and does CR LF processing if necessary.
     def write(c)
       if (@binary_mode)
@@ -151,7 +147,6 @@ module Sun::Net
     end
     
     typesig { [Array.typed(::Java::Byte), ::Java::Int, ::Java::Int] }
-    # 
     # Write the bytes at offset <i>off</i> in buffer <i>bytes</i> for
     # <i>length</i> bytes.
     def write(bytes, off, length)

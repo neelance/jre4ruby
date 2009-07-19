@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 2001-2005 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -31,7 +30,6 @@ module Java::Io
     }
   end
   
-  # 
   # Utility methods for packing/unpacking primitive values in/out of byte arrays
   # using big-endian byte ordering.
   class Bits 
@@ -39,7 +37,6 @@ module Java::Io
     
     class_module.module_eval {
       typesig { [Array.typed(::Java::Byte), ::Java::Int] }
-      # 
       # Methods for unpacking primitive values from byte arrays starting at
       # given offsets.
       def get_boolean(b, off)
@@ -79,7 +76,6 @@ module Java::Io
       end
       
       typesig { [Array.typed(::Java::Byte), ::Java::Int, ::Java::Boolean] }
-      # 
       # Methods for packing primitive values into byte arrays starting at given
       # offsets.
       def put_boolean(b, off, val)

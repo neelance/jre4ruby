@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 2003 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -40,7 +39,6 @@ module Sun::Security::Rsa
     }
   end
   
-  # 
   # RSA padding and unpadding.
   # 
   # Format of PKCS#1 v1.5 padding is:
@@ -136,7 +134,6 @@ module Sun::Security::Rsa
     
     class_module.module_eval {
       typesig { [::Java::Int, ::Java::Int] }
-      # 
       # Get a RSAPadding instance of the specified type.
       # Keys used with this padding must be paddedSize bytes long.
       def get_instance(type, padded_size)
@@ -144,7 +141,6 @@ module Sun::Security::Rsa
       end
       
       typesig { [::Java::Int, ::Java::Int, SecureRandom] }
-      # 
       # Get a RSAPadding instance of the specified type.
       # Keys used with this padding must be paddedSize bytes long.
       def get_instance(type, padded_size, random)
@@ -152,7 +148,6 @@ module Sun::Security::Rsa
       end
       
       typesig { [::Java::Int, ::Java::Int, SecureRandom, OAEPParameterSpec] }
-      # 
       # Get a RSAPadding instance of the specified type, which must be
       # OAEP. Keys used with this padding must be paddedSize bytes long.
       def get_instance(type, padded_size, random, spec)
@@ -223,7 +218,6 @@ module Sun::Security::Rsa
       const_attr_reader  :EmptyHashes
       
       typesig { [MessageDigest, Array.typed(::Java::Byte)] }
-      # 
       # Return the value of the digest using the specified message digest
       # <code>md</code> and the digest input <code>digestInput</code>.
       # if <code>digestInput</code> is null or 0-length, zero length
@@ -246,7 +240,6 @@ module Sun::Security::Rsa
     }
     
     typesig { [] }
-    # 
     # Return the maximum size of the plaintext data that can be processed using
     # this object.
     def get_max_data_size
@@ -254,14 +247,12 @@ module Sun::Security::Rsa
     end
     
     typesig { [Array.typed(::Java::Byte), ::Java::Int, ::Java::Int] }
-    # 
     # Pad the data and return the padded block.
     def pad(data, ofs, len)
       return pad(RSACore.convert(data, ofs, len))
     end
     
     typesig { [Array.typed(::Java::Byte)] }
-    # 
     # Pad the data and return the padded block.
     def pad(data)
       if (data.attr_length > @max_data_size)
@@ -280,14 +271,12 @@ module Sun::Security::Rsa
     end
     
     typesig { [Array.typed(::Java::Byte), ::Java::Int, ::Java::Int] }
-    # 
     # Unpad the padded block and return the data.
     def unpad(padded, ofs, len)
       return unpad(RSACore.convert(padded, ofs, len))
     end
     
     typesig { [Array.typed(::Java::Byte)] }
-    # 
     # Unpad the padded block and return the data.
     def unpad(padded)
       if (!(padded.attr_length).equal?(@padded_size))
@@ -306,7 +295,6 @@ module Sun::Security::Rsa
     end
     
     typesig { [Array.typed(::Java::Byte)] }
-    # 
     # PKCS#1 v1.5 padding (blocktype 1 and 2).
     def pad_v15(data)
       padded = Array.typed(::Java::Byte).new(@padded_size) { 0 }
@@ -345,7 +333,6 @@ module Sun::Security::Rsa
     end
     
     typesig { [Array.typed(::Java::Byte)] }
-    # 
     # PKCS#1 v1.5 unpadding (blocktype 1 and 2).
     def unpad_v15(padded)
       k = 0
@@ -377,7 +364,6 @@ module Sun::Security::Rsa
     end
     
     typesig { [Array.typed(::Java::Byte)] }
-    # 
     # PKCS#1 v2.0 OAEP padding (MGF1).
     # Paragraph references refer to PKCS#1 v2.1 (June 14, 2002)
     def pad_oaep(m)
@@ -418,7 +404,6 @@ module Sun::Security::Rsa
     end
     
     typesig { [Array.typed(::Java::Byte)] }
-    # 
     # PKCS#1 v2.1 OAEP unpadding (MGF1).
     def unpad_oaep(padded)
       em = padded
@@ -458,7 +443,6 @@ module Sun::Security::Rsa
     end
     
     typesig { [Array.typed(::Java::Byte), ::Java::Int, ::Java::Int, Array.typed(::Java::Byte), ::Java::Int, ::Java::Int] }
-    # 
     # Compute MGF1 using mgfMD as the message digest.
     # Note that we combine MGF1 with the XOR operation to reduce data
     # copying.

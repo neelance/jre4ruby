@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 1997-2006 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -46,7 +45,6 @@ module Sun::Net::Www::Protocol::Jar
     }
   end
   
-  # 
   # @author Benjamin Renaud
   # @since 1.2
   class JarURLConnection < Java::Net::JarURLConnection
@@ -278,7 +276,6 @@ module Sun::Net::Www::Protocol::Jar
     end
     
     typesig { [String, String] }
-    # 
     # Sets the general request property.
     # 
     # @param   key     the keyword by which the request is known
@@ -289,7 +286,6 @@ module Sun::Net::Www::Protocol::Jar
     end
     
     typesig { [String] }
-    # 
     # Returns the value of the named general request property for this
     # connection.
     # 
@@ -300,7 +296,6 @@ module Sun::Net::Www::Protocol::Jar
     end
     
     typesig { [String, String] }
-    # 
     # Adds a general request property specified by a
     # key-value pair.  This method will not overwrite
     # existing values associated with the same key.
@@ -313,7 +308,6 @@ module Sun::Net::Www::Protocol::Jar
     end
     
     typesig { [] }
-    # 
     # Returns an unmodifiable Map of general request
     # properties for this connection. The Map keys
     # are Strings that represent the request-header
@@ -327,7 +321,6 @@ module Sun::Net::Www::Protocol::Jar
     end
     
     typesig { [::Java::Boolean] }
-    # 
     # Set the value of the <code>allowUserInteraction</code> field of
     # this <code>URLConnection</code>.
     # 
@@ -338,7 +331,6 @@ module Sun::Net::Www::Protocol::Jar
     end
     
     typesig { [] }
-    # 
     # Returns the value of the <code>allowUserInteraction</code> field for
     # this object.
     # 
@@ -350,7 +342,6 @@ module Sun::Net::Www::Protocol::Jar
     end
     
     typesig { [::Java::Boolean] }
-    # 
     # cache control
     # 
     # 
@@ -371,7 +362,6 @@ module Sun::Net::Www::Protocol::Jar
     end
     
     typesig { [] }
-    # 
     # Returns the value of this <code>URLConnection</code>'s
     # <code>useCaches</code> field.
     # 
@@ -383,7 +373,6 @@ module Sun::Net::Www::Protocol::Jar
     end
     
     typesig { [::Java::Long] }
-    # 
     # Sets the value of the <code>ifModifiedSince</code> field of
     # this <code>URLConnection</code> to the specified value.
     # 
@@ -394,7 +383,6 @@ module Sun::Net::Www::Protocol::Jar
     end
     
     typesig { [::Java::Boolean] }
-    # 
     # Sets the default value of the <code>useCaches</code> field to the
     # specified value.
     # 
@@ -405,7 +393,6 @@ module Sun::Net::Www::Protocol::Jar
     end
     
     typesig { [] }
-    # 
     # Returns the default value of a <code>URLConnection</code>'s
     # <code>useCaches</code> flag.
     # <p>

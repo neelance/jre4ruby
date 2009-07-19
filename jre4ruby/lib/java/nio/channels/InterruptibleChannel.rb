@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 2001 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -32,7 +31,6 @@ module Java::Nio::Channels
     }
   end
   
-  # 
   # A channel that can be asynchronously closed and interrupted.
   # 
   # <p> A channel that implements this interface is <i>asynchronously
@@ -66,7 +64,6 @@ module Java::Nio::Channels
     include Channel
     
     typesig { [] }
-    # 
     # Closes this channel.
     # 
     # <p> Any thread currently blocked in an I/O operation upon this channel

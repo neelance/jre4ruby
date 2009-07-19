@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
 # This code is free software; you can redistribute it and/or modify it
@@ -39,7 +38,6 @@ module Sun::Security::Krb5::Internal::Util
     }
   end
   
-  # 
   # A wrapper class around sun.security.util.BitArray, so that KDCOptions,
   # TicketFlags and ApOptions in krb5 classes can utilize some functions
   # in BitArray classes.
@@ -108,7 +106,6 @@ module Sun::Security::Krb5::Internal::Util
     end
     
     typesig { [] }
-    # 
     # Writes the encoded data.
     # 
     # @exception IOException if an I/O error occurs while reading encoded data.

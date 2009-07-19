@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 2003-2007 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -43,7 +42,6 @@ module Java::Util::Concurrent
     }
   end
   
-  # 
   # A thread-safe variant of {@link java.util.ArrayList} in which all mutative
   # operations (<tt>add</tt>, <tt>set</tt>, and so on) are implemented by
   # making a fresh copy of the underlying array.
@@ -106,7 +104,6 @@ module Java::Util::Concurrent
     undef_method :array=
     
     typesig { [] }
-    # 
     # Gets the array.  Non-private so as to also be accessible
     # from CopyOnWriteArraySet class.
     def get_array
@@ -114,14 +111,12 @@ module Java::Util::Concurrent
     end
     
     typesig { [Array.typed(Object)] }
-    # 
     # Sets the array.
     def set_array(a)
       @array = a
     end
     
     typesig { [] }
-    # 
     # Creates an empty list.
     def initialize
       @lock = ReentrantLock.new
@@ -130,7 +125,6 @@ module Java::Util::Concurrent
     end
     
     typesig { [Collection] }
-    # 
     # Creates a list containing the elements of the specified
     # collection, in the order they are returned by the collection's
     # iterator.
@@ -149,7 +143,6 @@ module Java::Util::Concurrent
     end
     
     typesig { [Array.typed(Object)] }
-    # 
     # Creates a list holding a copy of the given array.
     # 
     # @param toCopyIn the array (a copy of this array is used as the
@@ -162,7 +155,6 @@ module Java::Util::Concurrent
     end
     
     typesig { [] }
-    # 
     # Returns the number of elements in this list.
     # 
     # @return the number of elements in this list
@@ -171,7 +163,6 @@ module Java::Util::Concurrent
     end
     
     typesig { [] }
-    # 
     # Returns <tt>true</tt> if this list contains no elements.
     # 
     # @return <tt>true</tt> if this list contains no elements
@@ -181,14 +172,12 @@ module Java::Util::Concurrent
     
     class_module.module_eval {
       typesig { [Object, Object] }
-      # 
       # Test for equality, coping with nulls.
       def eq(o1, o2)
         return ((o1).nil? ? (o2).nil? : (o1 == o2))
       end
       
       typesig { [Object, Array.typed(Object), ::Java::Int, ::Java::Int] }
-      # 
       # static version of indexOf, to allow repeated calls without
       # needing to re-acquire array each time.
       # @param o element to search for
@@ -206,19 +195,18 @@ module Java::Util::Concurrent
             ((i += 1) - 1)
           end
         else
-          i_ = index
-          while i_ < fence
-            if ((o == elements[i_]))
-              return i_
+          i = index
+          while i < fence
+            if ((o == elements[i]))
+              return i
             end
-            ((i_ += 1) - 1)
+            ((i += 1) - 1)
           end
         end
         return -1
       end
       
       typesig { [Object, Array.typed(Object), ::Java::Int] }
-      # 
       # static version of lastIndexOf.
       # @param o element to search for
       # @param elements the array
@@ -234,12 +222,12 @@ module Java::Util::Concurrent
             ((i -= 1) + 1)
           end
         else
-          i_ = index
-          while i_ >= 0
-            if ((o == elements[i_]))
-              return i_
+          i = index
+          while i >= 0
+            if ((o == elements[i]))
+              return i
             end
-            ((i_ -= 1) + 1)
+            ((i -= 1) + 1)
           end
         end
         return -1
@@ -247,7 +235,6 @@ module Java::Util::Concurrent
     }
     
     typesig { [Object] }
-    # 
     # Returns <tt>true</tt> if this list contains the specified element.
     # More formally, returns <tt>true</tt> if and only if this list contains
     # at least one element <tt>e</tt> such that
@@ -261,7 +248,6 @@ module Java::Util::Concurrent
     end
     
     typesig { [Object] }
-    # 
     # {@inheritDoc}
     def index_of(o)
       elements = get_array
@@ -269,7 +255,6 @@ module Java::Util::Concurrent
     end
     
     typesig { [Object, ::Java::Int] }
-    # 
     # Returns the index of the first occurrence of the specified element in
     # this list, searching forwards from <tt>index</tt>, or returns -1 if
     # the element is not found.
@@ -289,7 +274,6 @@ module Java::Util::Concurrent
     end
     
     typesig { [Object] }
-    # 
     # {@inheritDoc}
     def last_index_of(o)
       elements = get_array
@@ -297,7 +281,6 @@ module Java::Util::Concurrent
     end
     
     typesig { [Object, ::Java::Int] }
-    # 
     # Returns the index of the last occurrence of the specified element in
     # this list, searching backwards from <tt>index</tt>, or returns -1 if
     # the element is not found.
@@ -318,7 +301,6 @@ module Java::Util::Concurrent
     end
     
     typesig { [] }
-    # 
     # Returns a shallow copy of this list.  (The elements themselves
     # are not copied.)
     # 
@@ -335,7 +317,6 @@ module Java::Util::Concurrent
     end
     
     typesig { [] }
-    # 
     # Returns an array containing all of the elements in this list
     # in proper sequence (from first to last element).
     # 
@@ -353,7 +334,6 @@ module Java::Util::Concurrent
     end
     
     typesig { [Array.typed(T)] }
-    # 
     # Returns an array containing all of the elements in this list in
     # proper sequence (from first to last element); the runtime type of
     # the returned array is that of the specified array.  If the list fits
@@ -412,7 +392,6 @@ module Java::Util::Concurrent
     end
     
     typesig { [::Java::Int] }
-    # 
     # {@inheritDoc}
     # 
     # @throws IndexOutOfBoundsException {@inheritDoc}
@@ -421,7 +400,6 @@ module Java::Util::Concurrent
     end
     
     typesig { [::Java::Int, Object] }
-    # 
     # Replaces the element at the specified position in this list with the
     # specified element.
     # 
@@ -448,7 +426,6 @@ module Java::Util::Concurrent
     end
     
     typesig { [Object] }
-    # 
     # Appends the specified element to the end of this list.
     # 
     # @param e element to be appended to this list
@@ -469,7 +446,6 @@ module Java::Util::Concurrent
     end
     
     typesig { [::Java::Int, Object] }
-    # 
     # Inserts the specified element at the specified position in this
     # list. Shifts the element currently at that position (if any) and
     # any subsequent elements to the right (adds one to their indices).
@@ -501,7 +477,6 @@ module Java::Util::Concurrent
     end
     
     typesig { [::Java::Int] }
-    # 
     # Removes the element at the specified position in this list.
     # Shifts any subsequent elements to the left (subtracts one from their
     # indices).  Returns the element that was removed from the list.
@@ -530,7 +505,6 @@ module Java::Util::Concurrent
     end
     
     typesig { [Object] }
-    # 
     # Removes the first occurrence of the specified element from this list,
     # if it is present.  If this list does not contain the element, it is
     # unchanged.  More formally, removes the element with the lowest index
@@ -582,7 +556,6 @@ module Java::Util::Concurrent
     end
     
     typesig { [::Java::Int, ::Java::Int] }
-    # 
     # Removes from this list all of the elements whose index is between
     # <tt>fromIndex</tt>, inclusive, and <tt>toIndex</tt>, exclusive.
     # Shifts any succeeding elements to the left (reduces their index).
@@ -618,7 +591,6 @@ module Java::Util::Concurrent
     end
     
     typesig { [Object] }
-    # 
     # Append the element if not present.
     # 
     # @param e element to be added to this list, if absent
@@ -651,7 +623,6 @@ module Java::Util::Concurrent
     end
     
     typesig { [Collection] }
-    # 
     # Returns <tt>true</tt> if this list contains all of the elements of the
     # specified collection.
     # 
@@ -672,7 +643,6 @@ module Java::Util::Concurrent
     end
     
     typesig { [Collection] }
-    # 
     # Removes from this list all of its elements that are contained in
     # the specified collection. This is a particularly expensive operation
     # in this class because of the need for an internal temporary array.
@@ -715,7 +685,6 @@ module Java::Util::Concurrent
     end
     
     typesig { [Collection] }
-    # 
     # Retains only the elements in this list that are contained in the
     # specified collection.  In other words, removes from this list all of
     # its elements that are not contained in the specified collection.
@@ -758,7 +727,6 @@ module Java::Util::Concurrent
     end
     
     typesig { [Collection] }
-    # 
     # Appends all of the elements in the specified collection that
     # are not already contained in this list, to the end of
     # this list, in the order that they are returned by the
@@ -801,7 +769,6 @@ module Java::Util::Concurrent
     end
     
     typesig { [] }
-    # 
     # Removes all of the elements from this list.
     # The list will be empty after this call returns.
     def clear
@@ -815,7 +782,6 @@ module Java::Util::Concurrent
     end
     
     typesig { [Collection] }
-    # 
     # Appends all of the elements in the specified collection to the end
     # of this list, in the order that they are returned by the specified
     # collection's iterator.
@@ -844,7 +810,6 @@ module Java::Util::Concurrent
     end
     
     typesig { [::Java::Int, Collection] }
-    # 
     # Inserts all of the elements in the specified collection into this
     # list, starting at the specified position.  Shifts the element
     # currently at that position (if any) and any subsequent elements to
@@ -890,7 +855,6 @@ module Java::Util::Concurrent
     end
     
     typesig { [Java::Io::ObjectOutputStream] }
-    # 
     # Save the state of the list to a stream (i.e., serialize it).
     # 
     # @serialData The length of the array backing the list is emitted
@@ -913,7 +877,6 @@ module Java::Util::Concurrent
     end
     
     typesig { [Java::Io::ObjectInputStream] }
-    # 
     # Reconstitute the list from a stream (i.e., deserialize it).
     # @param s the stream
     def read_object(s)
@@ -934,7 +897,6 @@ module Java::Util::Concurrent
     end
     
     typesig { [] }
-    # 
     # Returns a string representation of this list.  The string
     # representation consists of the string representations of the list's
     # elements in the order they are returned by its iterator, enclosed in
@@ -948,7 +910,6 @@ module Java::Util::Concurrent
     end
     
     typesig { [Object] }
-    # 
     # Compares the specified object with this list for equality.
     # Returns {@code true} if the specified object is the same object
     # as this object, or if it is also a {@link List} and the sequence
@@ -987,7 +948,6 @@ module Java::Util::Concurrent
     end
     
     typesig { [] }
-    # 
     # Returns the hash code value for this list.
     # 
     # <p>This implementation uses the definition in {@link List#hashCode}.
@@ -1007,7 +967,6 @@ module Java::Util::Concurrent
     end
     
     typesig { [] }
-    # 
     # Returns an iterator over the elements in this list in proper sequence.
     # 
     # <p>The returned iterator provides a snapshot of the state of the list
@@ -1021,7 +980,6 @@ module Java::Util::Concurrent
     end
     
     typesig { [] }
-    # 
     # {@inheritDoc}
     # 
     # <p>The returned iterator provides a snapshot of the state of the list
@@ -1033,7 +991,6 @@ module Java::Util::Concurrent
     end
     
     typesig { [::Java::Int] }
-    # 
     # {@inheritDoc}
     # 
     # <p>The returned iterator provides a snapshot of the state of the list
@@ -1115,7 +1072,6 @@ module Java::Util::Concurrent
         end
         
         typesig { [] }
-        # 
         # Not supported. Always throws UnsupportedOperationException.
         # @throws UnsupportedOperationException always; <tt>remove</tt>
         # is not supported by this iterator.
@@ -1124,7 +1080,6 @@ module Java::Util::Concurrent
         end
         
         typesig { [Object] }
-        # 
         # Not supported. Always throws UnsupportedOperationException.
         # @throws UnsupportedOperationException always; <tt>set</tt>
         # is not supported by this iterator.
@@ -1133,7 +1088,6 @@ module Java::Util::Concurrent
         end
         
         typesig { [Object] }
-        # 
         # Not supported. Always throws UnsupportedOperationException.
         # @throws UnsupportedOperationException always; <tt>add</tt>
         # is not supported by this iterator.
@@ -1147,7 +1101,6 @@ module Java::Util::Concurrent
     }
     
     typesig { [::Java::Int, ::Java::Int] }
-    # 
     # Returns a view of the portion of this list between
     # <tt>fromIndex</tt>, inclusive, and <tt>toIndex</tt>, exclusive.
     # The returned list is backed by this list, so changes in the
@@ -1182,7 +1135,6 @@ module Java::Util::Concurrent
     end
     
     class_module.module_eval {
-      # 
       # Sublist for CopyOnWriteArrayList.
       # This class extends AbstractList merely for convenience, to
       # avoid having to define addAll, etc. This doesn't hurt, but

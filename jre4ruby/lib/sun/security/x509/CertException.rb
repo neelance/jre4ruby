@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 1996-2004 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -31,7 +30,6 @@ module Sun::Security::X509
     }
   end
   
-  # 
   # CertException indicates one of a variety of certificate problems.
   # 
   # @deprecated use one of Exceptions defined in the java.security.cert
@@ -113,7 +111,6 @@ module Sun::Security::X509
     undef_method :more_data=
     
     typesig { [::Java::Int, String] }
-    # 
     # Constructs a certificate exception using an error code
     # (<code>verf_*</code>) and a string describing the context
     # of the error.
@@ -126,7 +123,6 @@ module Sun::Security::X509
     end
     
     typesig { [::Java::Int] }
-    # 
     # Constructs a certificate exception using just an error code,
     # without a string describing the context.
     def initialize(code)
@@ -137,14 +133,12 @@ module Sun::Security::X509
     end
     
     typesig { [] }
-    # 
     # Returns the error code with which the exception was created.
     def get_verf_code
       return @verf_code
     end
     
     typesig { [] }
-    # 
     # Returns a string describing the context in which the exception
     # was reported.
     def get_more_data
@@ -152,7 +146,6 @@ module Sun::Security::X509
     end
     
     typesig { [] }
-    # 
     # Return a string corresponding to the error code used to create
     # this exception.
     def get_verf_description
@@ -187,14 +180,12 @@ module Sun::Security::X509
     end
     
     typesig { [] }
-    # 
     # Returns a string describing the certificate exception.
     def to_s
       return "[Certificate Exception: " + (get_message).to_s + "]"
     end
     
     typesig { [] }
-    # 
     # Returns a string describing the certificate exception.
     def get_message
       return get_verf_description + ((!(@more_data).nil?) ? ("\n  (" + @more_data + ")") : "")

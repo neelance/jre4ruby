@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 2000-2003 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -33,7 +32,6 @@ module Java::Security::Cert
     }
   end
   
-  # 
   # An abstract class that performs one or more checks on an
   # <code>X509Certificate</code>.
   # 
@@ -96,13 +94,11 @@ module Java::Security::Cert
     include Cloneable
     
     typesig { [] }
-    # 
     # Default constructor.
     def initialize
     end
     
     typesig { [::Java::Boolean] }
-    # 
     # Initializes the internal state of this <code>PKIXCertPathChecker</code>.
     # <p>
     # The <code>forward</code> flag specifies the order that
@@ -123,7 +119,6 @@ module Java::Security::Cert
     end
     
     typesig { [] }
-    # 
     # Indicates if forward checking is supported. Forward checking refers
     # to the ability of the <code>PKIXCertPathChecker</code> to perform
     # its checks when certificates are presented to the <code>check</code>
@@ -136,7 +131,6 @@ module Java::Security::Cert
     end
     
     typesig { [] }
-    # 
     # Returns an immutable <code>Set</code> of X.509 certificate extensions
     # that this <code>PKIXCertPathChecker</code> supports (i.e. recognizes, is
     # able to process), or <code>null</code> if no extensions are supported.
@@ -158,7 +152,6 @@ module Java::Security::Cert
     end
     
     typesig { [Certificate, Collection] }
-    # 
     # Performs the check(s) on the specified certificate using its internal
     # state and removes any critical extensions that it processes from the
     # specified collection of OID strings that represent the unresolved
@@ -175,7 +168,6 @@ module Java::Security::Cert
     end
     
     typesig { [] }
-    # 
     # Returns a clone of this object. Calls the <code>Object.clone()</code>
     # method.
     # All subclasses which maintain state must support and

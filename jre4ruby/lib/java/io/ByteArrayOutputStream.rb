@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 1994-2006 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -32,7 +31,6 @@ module Java::Io
     }
   end
   
-  # 
   # This class implements an output stream in which the data is
   # written into a byte array. The buffer automatically grows as data
   # is written to it.
@@ -48,7 +46,6 @@ module Java::Io
   class ByteArrayOutputStream < ByteArrayOutputStreamImports.const_get :OutputStream
     include_class_members ByteArrayOutputStreamImports
     
-    # 
     # The buffer where data is stored.
     attr_accessor :buf
     alias_method :attr_buf, :buf
@@ -56,7 +53,6 @@ module Java::Io
     alias_method :attr_buf=, :buf=
     undef_method :buf=
     
-    # 
     # The number of valid bytes in the buffer.
     attr_accessor :count
     alias_method :attr_count, :count
@@ -65,7 +61,6 @@ module Java::Io
     undef_method :count=
     
     typesig { [] }
-    # 
     # Creates a new byte array output stream. The buffer capacity is
     # initially 32 bytes, though its size increases if necessary.
     def initialize
@@ -73,7 +68,6 @@ module Java::Io
     end
     
     typesig { [::Java::Int] }
-    # 
     # Creates a new byte array output stream, with a buffer capacity of
     # the specified size, in bytes.
     # 
@@ -90,7 +84,6 @@ module Java::Io
     end
     
     typesig { [::Java::Int] }
-    # 
     # Writes the specified byte to this byte array output stream.
     # 
     # @param   b   the byte to be written.
@@ -106,7 +99,6 @@ module Java::Io
     end
     
     typesig { [Array.typed(::Java::Byte), ::Java::Int, ::Java::Int] }
-    # 
     # Writes <code>len</code> bytes from the specified byte array
     # starting at offset <code>off</code> to this byte array output stream.
     # 
@@ -132,7 +124,6 @@ module Java::Io
     end
     
     typesig { [OutputStream] }
-    # 
     # Writes the complete contents of this byte array output stream to
     # the specified output stream argument, as if by calling the output
     # stream's write method using <code>out.write(buf, 0, count)</code>.
@@ -146,7 +137,6 @@ module Java::Io
     end
     
     typesig { [] }
-    # 
     # Resets the <code>count</code> field of this byte array output
     # stream to zero, so that all currently accumulated output in the
     # output stream is discarded. The output stream can be used again,
@@ -160,7 +150,6 @@ module Java::Io
     end
     
     typesig { [] }
-    # 
     # Creates a newly allocated byte array. Its size is the current
     # size of this output stream and the valid contents of the buffer
     # have been copied into it.
@@ -174,7 +163,6 @@ module Java::Io
     end
     
     typesig { [] }
-    # 
     # Returns the current size of the buffer.
     # 
     # @return  the value of the <code>count</code> field, which is the number
@@ -187,7 +175,6 @@ module Java::Io
     end
     
     typesig { [] }
-    # 
     # Converts the buffer's contents into a string decoding bytes using the
     # platform's default character set. The length of the new <tt>String</tt>
     # is a function of the character set, and hence may not be equal to the
@@ -208,7 +195,6 @@ module Java::Io
     end
     
     typesig { [String] }
-    # 
     # Converts the buffer's contents into a string by decoding the bytes using
     # the specified {@link java.nio.charset.Charset charsetName}. The length of
     # the new <tt>String</tt> is a function of the charset, and hence may not be
@@ -232,7 +218,6 @@ module Java::Io
     end
     
     typesig { [::Java::Int] }
-    # 
     # Creates a newly allocated string. Its size is the current size of
     # the output stream and the valid contents of the buffer have been
     # copied into it. Each character <i>c</i> in the resulting string is
@@ -260,7 +245,6 @@ module Java::Io
     end
     
     typesig { [] }
-    # 
     # Closing a <tt>ByteArrayOutputStream</tt> has no effect. The methods in
     # this class can be called after the stream has been closed without
     # generating an <tt>IOException</tt>.

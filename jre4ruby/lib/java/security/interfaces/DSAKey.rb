@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 1996-1998 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -31,7 +30,6 @@ module Java::Security::Interfaces
     }
   end
   
-  # 
   # The interface to a DSA public or private key. DSA (Digital Signature
   # Algorithm) is defined in NIST's FIPS-186.
   # 
@@ -45,7 +43,6 @@ module Java::Security::Interfaces
     include_class_members DSAKeyImports
     
     typesig { [] }
-    # 
     # Returns the DSA-specific key parameters. These parameters are
     # never secret.
     # 

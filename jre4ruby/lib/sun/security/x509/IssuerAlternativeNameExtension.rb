@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 1997-2006 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -35,7 +34,6 @@ module Sun::Security::X509
     }
   end
   
-  # 
   # This represents the Issuer Alternative Name Extension.
   # 
   # This extension, if present, allows the issuer to specify multiple
@@ -55,13 +53,11 @@ module Sun::Security::X509
     include CertAttrSet
     
     class_module.module_eval {
-      # 
       # Identifier for this attribute, to be used with the
       # get, set, delete methods of Certificate, x509 type.
       const_set_lazy(:IDENT) { "x509.info.extensions.IssuerAlternativeName" }
       const_attr_reader  :IDENT
       
-      # 
       # Attribute names.
       const_set_lazy(:NAME) { "IssuerAlternativeName" }
       const_attr_reader  :NAME
@@ -90,7 +86,6 @@ module Sun::Security::X509
     end
     
     typesig { [GeneralNames] }
-    # 
     # Create a IssuerAlternativeNameExtension with the passed GeneralNames.
     # 
     # @param names the GeneralNames for the issuer.
@@ -106,7 +101,6 @@ module Sun::Security::X509
     end
     
     typesig { [] }
-    # 
     # Create a default IssuerAlternativeNameExtension.
     def initialize
       @names = nil
@@ -118,7 +112,6 @@ module Sun::Security::X509
     end
     
     typesig { [Boolean, Object] }
-    # 
     # Create the extension from the passed DER encoded value.
     # 
     # @param critical true if the extension is to be treated as critical.
@@ -141,7 +134,6 @@ module Sun::Security::X509
     end
     
     typesig { [] }
-    # 
     # Returns a printable representation of the IssuerAlternativeName.
     def to_s
       result = (super).to_s + "IssuerAlternativeName [\n"
@@ -157,7 +149,6 @@ module Sun::Security::X509
     end
     
     typesig { [OutputStream] }
-    # 
     # Write the extension to the OutputStream.
     # 
     # @param out the OutputStream to write the extension to.
@@ -174,7 +165,6 @@ module Sun::Security::X509
     end
     
     typesig { [String, Object] }
-    # 
     # Set the attribute value.
     def set(name, obj)
       if (name.equals_ignore_case(ISSUER_NAME))
@@ -189,7 +179,6 @@ module Sun::Security::X509
     end
     
     typesig { [String] }
-    # 
     # Get the attribute value.
     def get(name)
       if (name.equals_ignore_case(ISSUER_NAME))
@@ -200,7 +189,6 @@ module Sun::Security::X509
     end
     
     typesig { [String] }
-    # 
     # Delete the attribute value.
     def delete(name)
       if (name.equals_ignore_case(ISSUER_NAME))
@@ -212,7 +200,6 @@ module Sun::Security::X509
     end
     
     typesig { [] }
-    # 
     # Return an enumeration of names of attributes existing within this
     # attribute.
     def get_elements
@@ -222,7 +209,6 @@ module Sun::Security::X509
     end
     
     typesig { [] }
-    # 
     # Return the name of this attribute.
     def get_name
       return (NAME)

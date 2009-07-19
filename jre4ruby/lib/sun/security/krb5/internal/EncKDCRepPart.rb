@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
 # This code is free software; you can redistribute it and/or modify it
@@ -40,7 +39,6 @@ module Sun::Security::Krb5::Internal
     }
   end
   
-  # 
   # Implements the ASN.1 EncKDCRepPart type.
   # 
   # <xmp>
@@ -235,7 +233,6 @@ module Sun::Security::Krb5::Internal
     end
     
     typesig { [DerValue, ::Java::Int] }
-    # 
     # Initializes an EncKDCRepPart object.
     # 
     # @param encoding a single DER-encoded value.
@@ -281,7 +278,6 @@ module Sun::Security::Krb5::Internal
     end
     
     typesig { [::Java::Int] }
-    # 
     # Encodes an EncKDCRepPart object.
     # @param rep_type type of encrypted reply message.
     # @return byte array of encoded EncKDCRepPart object.

@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 2006 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -31,7 +30,6 @@ module Java::Util::Zip
     }
   end
   
-  # 
   # Signals that an unrecoverable error has occurred.
   # 
   # @author  Dave Bristor
@@ -45,7 +43,6 @@ module Java::Util::Zip
     }
     
     typesig { [String] }
-    # 
     # Constructs a ZipError with the given detail message.
     # @param s the {@code String} containing a detail message
     def initialize(s)

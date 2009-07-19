@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 2003-2006 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -42,7 +41,6 @@ module Sun::Security::Pkcs11
     }
   end
   
-  # 
   # Signature implementation class. This class currently supports the
   # following algorithms:
   # 
@@ -712,7 +710,7 @@ module Sun::Security::Pkcs11
         rescue SignatureException => e
           raise e
         rescue Exception => e
-          raise SignatureException.new("invalid encoding for signature", e_)
+          raise SignatureException.new("invalid encoding for signature", e)
         end
       end
     }
@@ -755,9 +753,9 @@ module Sun::Security::Pkcs11
           return nil
         end
         # must be smaller
-        t_ = Array.typed(::Java::Byte).new(len) { 0 }
-        System.arraycopy(b, 0, t_, (len - n), n)
-        return t_
+        t = Array.typed(::Java::Byte).new(len) { 0 }
+        System.arraycopy(b, 0, t, (len - n), n)
+        return t
       end
     }
     

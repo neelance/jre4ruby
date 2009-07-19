@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
 # This code is free software; you can redistribute it and/or modify it
@@ -294,7 +293,6 @@ module Sun::Security::Krb5::Internal::Ccache
     end
     
     typesig { [] }
-    # 
     # Checks if this credential is expired
     def is_valid
       valid = true

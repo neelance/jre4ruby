@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 2001-2004 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -36,7 +35,6 @@ module Sun::Nio::Ch
     }
   end
   
-  # 
   # An abstract selector impl.
   class AbstractPollSelectorImpl < AbstractPollSelectorImplImports.const_get :SelectorImpl
     include_class_members AbstractPollSelectorImplImports
@@ -147,7 +145,6 @@ module Sun::Nio::Ch
     end
     
     typesig { [] }
-    # 
     # Copy the information in the pollfd structs into the opss
     # of the corresponding Channels. Add the ready keys to the
     # ready queue.

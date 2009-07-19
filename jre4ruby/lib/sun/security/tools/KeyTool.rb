@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 1997-2006 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -82,7 +81,6 @@ module Sun::Security::Tools
     }
   end
   
-  # 
   # This tool manages keystores.
   # 
   # @author Jan Luehe
@@ -529,7 +527,6 @@ module Sun::Security::Tools
     end
     
     typesig { [Array.typed(String)] }
-    # 
     # Parse command line arguments.
     def parse_args(args)
       if ((args.attr_length).equal?(0))
@@ -539,7 +536,6 @@ module Sun::Security::Tools
       i = 0
       while (i < args.attr_length) && args[i].starts_with("-")
         flags = args[i]
-        # 
         # command modes
         if ((Collator.compare(flags, "-certreq")).equal?(0))
           @command = CERTREQ
@@ -592,7 +588,6 @@ module Sun::Security::Tools
                                     else
                                       if ((Collator.compare(flags, "-genseckey")).equal?(0))
                                         @command = GENSECKEY
-                                      # 
                                       # specifiers
                                       else
                                         if ((Collator.compare(flags, "-keystore")).equal?(0) || (Collator.compare(flags, "-destkeystore")).equal?(0))
@@ -753,7 +748,6 @@ module Sun::Security::Tools
                                                                                         end
                                                                                       end
                                                                                       @providers.add(Pair.new(provider_class, provider_arg))
-                                                                                    # 
                                                                                     # options
                                                                                     else
                                                                                       if ((Collator.compare(flags, "-v")).equal?(0))
@@ -839,7 +833,6 @@ module Sun::Security::Tools
     end
     
     typesig { [PrintStream] }
-    # 
     # Execute the commands.
     def do_commands(out)
       if ((@storetype).nil?)
@@ -989,7 +982,6 @@ module Sun::Security::Tools
       else
         @key_store = KeyStore.get_instance(@storetype, @provider_name)
       end
-      # 
       # Load the keystore data.
       # 
       # At this point, it's OK if no keystore password has been provided.
@@ -1086,20 +1078,20 @@ module Sun::Security::Tools
         end
       end
       if (!(@store_pass).nil? && P12KEYSTORE.equals_ignore_case(@storetype))
-        form_ = MessageFormat.new(Rb.get_string("Warning:  Different store and key passwords not supported " + "for PKCS12 KeyStores. Ignoring user-specified <command> value."))
+        form = MessageFormat.new(Rb.get_string("Warning:  Different store and key passwords not supported " + "for PKCS12 KeyStores. Ignoring user-specified <command> value."))
         if (!(@key_pass).nil? && !(Arrays == @store_pass))
-          source_ = Array.typed(Object).new(["-keypass"])
-          System.err.println(form_.format(source_))
+          source = Array.typed(Object).new(["-keypass"])
+          System.err.println(form.format(source))
           @key_pass = @store_pass
         end
         if (!(@new_pass).nil? && !(Arrays == @store_pass))
-          source__ = Array.typed(Object).new(["-new"])
-          System.err.println(form_.format(source__))
+          source = Array.typed(Object).new(["-new"])
+          System.err.println(form.format(source))
           @new_pass = @store_pass
         end
         if (!(@dest_key_pass).nil? && !(Arrays == @store_pass))
-          source___ = Array.typed(Object).new(["-destkeypass"])
-          System.err.println(form_.format(source___))
+          source = Array.typed(Object).new(["-destkeypass"])
+          System.err.println(form.format(source))
           @dest_key_pass = @store_pass
         end
       end
@@ -1125,9 +1117,9 @@ module Sun::Security::Tools
           end
         end
         if (@verbose && !(@filename).nil?)
-          form__ = MessageFormat.new(Rb.get_string("Certification request stored in file <filename>"))
-          source____ = Array.typed(Object).new([@filename])
-          System.err.println(form__.format(source____))
+          form = MessageFormat.new(Rb.get_string("Certification request stored in file <filename>"))
+          source = Array.typed(Object).new([@filename])
+          System.err.println(form.format(source))
           System.err.println(Rb.get_string("Submit this to your CA"))
         end
       else
@@ -1136,22 +1128,22 @@ module Sun::Security::Tools
           @kssave = true
         else
           if ((@command).equal?(EXPORTCERT))
-            ps_ = nil
+            ps = nil
             if (!(@filename).nil?)
-              ps_ = PrintStream.new(FileOutputStream.new(@filename))
-              out = ps_
+              ps = PrintStream.new(FileOutputStream.new(@filename))
+              out = ps
             end
             begin
               do_export_cert(@alias, out)
             ensure
-              if (!(ps_).nil?)
-                ps_.close
+              if (!(ps).nil?)
+                ps.close
               end
             end
             if (!(@filename).nil?)
-              form___ = MessageFormat.new(Rb.get_string("Certificate stored in file <filename>"))
-              source_____ = Array.typed(Object).new([@filename])
-              System.err.println(form___.format(source_____))
+              form = MessageFormat.new(Rb.get_string("Certificate stored in file <filename>"))
+              source = Array.typed(Object).new([@filename])
+              System.err.println(form.format(source))
             end
           else
             if ((@command).equal?(GENKEYPAIR))
@@ -1182,14 +1174,14 @@ module Sun::Security::Tools
                   end
                 else
                   if ((@command).equal?(IMPORTCERT))
-                    in_stream_ = System.in
+                    in_stream = System.in
                     if (!(@filename).nil?)
-                      in_stream_ = FileInputStream.new(@filename)
+                      in_stream = FileInputStream.new(@filename)
                     end
                     begin
                       import_alias = (!(@alias).nil?) ? @alias : @key_alias
                       if (@key_store.entry_instance_of(import_alias, KeyStore::PrivateKeyEntry.class))
-                        @kssave = install_reply(import_alias, in_stream_)
+                        @kssave = install_reply(import_alias, in_stream)
                         if (@kssave)
                           System.err.println(Rb.get_string("Certificate reply was installed in keystore"))
                         else
@@ -1197,7 +1189,7 @@ module Sun::Security::Tools
                         end
                       else
                         if (!@key_store.contains_alias(import_alias) || @key_store.entry_instance_of(import_alias, KeyStore::TrustedCertificateEntry.class))
-                          @kssave = add_trusted_cert(import_alias, in_stream_)
+                          @kssave = add_trusted_cert(import_alias, in_stream)
                           if (@kssave)
                             System.err.println(Rb.get_string("Certificate was added to keystore"))
                           else
@@ -1206,8 +1198,8 @@ module Sun::Security::Tools
                         end
                       end
                     ensure
-                      if (!(in_stream_).equal?(System.in))
-                        in_stream_.close
+                      if (!(in_stream).equal?(System.in))
+                        in_stream.close
                       end
                     end
                   else
@@ -1222,14 +1214,14 @@ module Sun::Security::Tools
                           @alias = @key_alias
                         end
                         if ((@key_store.contains_alias(@alias)).equal?(false))
-                          form____ = MessageFormat.new(Rb.get_string("Alias <alias> does not exist"))
-                          source______ = Array.typed(Object).new([@alias])
-                          raise Exception.new(form____.format(source______))
+                          form = MessageFormat.new(Rb.get_string("Alias <alias> does not exist"))
+                          source = Array.typed(Object).new([@alias])
+                          raise Exception.new(form.format(source))
                         end
                         if (!@key_store.entry_instance_of(@alias, KeyStore::PrivateKeyEntry.class))
-                          form_____ = MessageFormat.new(Rb.get_string("Alias <alias> references an entry type that is not a private key entry.  " + "The -keyclone command only supports cloning of private key entries"))
-                          source_______ = Array.typed(Object).new([@alias])
-                          raise Exception.new(form_____.format(source_______))
+                          form = MessageFormat.new(Rb.get_string("Alias <alias> references an entry type that is not a private key entry.  " + "The -keyclone command only supports cloning of private key entries"))
+                          source = Array.typed(Object).new([@alias])
+                          raise Exception.new(form.format(source))
                         end
                         do_clone_entry(@alias, @dest, true) # Now everything can be cloned
                         @kssave = true
@@ -1258,15 +1250,15 @@ module Sun::Security::Tools
                               end
                             else
                               if ((@command).equal?(PRINTCERT))
-                                in_stream__ = System.in
+                                in_stream = System.in
                                 if (!(@filename).nil?)
-                                  in_stream__ = FileInputStream.new(@filename)
+                                  in_stream = FileInputStream.new(@filename)
                                 end
                                 begin
-                                  do_print_cert(in_stream__, out)
+                                  do_print_cert(in_stream, out)
                                 ensure
-                                  if (!(in_stream__).equal?(System.in))
-                                    in_stream__.close
+                                  if (!(in_stream).equal?(System.in))
+                                    in_stream.close
                                   end
                                 end
                               else
@@ -1298,9 +1290,9 @@ module Sun::Security::Tools
       # If we need to save the keystore, do so.
       if (@kssave)
         if (@verbose)
-          form______ = MessageFormat.new(Rb.get_string("[Storing ksfname]"))
-          source________ = Array.typed(Object).new([@null_stream ? "keystore" : @ksfname])
-          System.err.println(form______.format(source________))
+          form = MessageFormat.new(Rb.get_string("[Storing ksfname]"))
+          source = Array.typed(Object).new([@null_stream ? "keystore" : @ksfname])
+          System.err.println(form.format(source))
         end
         if (@token)
           @key_store.store(nil, nil)
@@ -1319,7 +1311,6 @@ module Sun::Security::Tools
     end
     
     typesig { [String, String, PrintStream] }
-    # 
     # Creates a PKCS#10 cert signing request, corresponding to the
     # keys (and name) associated with a given alias.
     def do_cert_req(alias_, sig_alg_name, out)
@@ -1363,7 +1354,6 @@ module Sun::Security::Tools
     end
     
     typesig { [String] }
-    # 
     # Deletes an entry from the keystore.
     def do_delete_entry(alias_)
       if ((@key_store.contains_alias(alias_)).equal?(false))
@@ -1375,7 +1365,6 @@ module Sun::Security::Tools
     end
     
     typesig { [String, PrintStream] }
-    # 
     # Exports a certificate from the keystore.
     def do_export_cert(alias_, out)
       if ((@store_pass).nil? && !KeyStoreUtil.is_windows_key_store(@storetype))
@@ -1391,15 +1380,14 @@ module Sun::Security::Tools
       end
       cert = @key_store.get_certificate(alias_)
       if ((cert).nil?)
-        form_ = MessageFormat.new(Rb.get_string("Alias <alias> has no certificate"))
-        source_ = Array.typed(Object).new([alias_])
-        raise Exception.new(form_.format(source_))
+        form = MessageFormat.new(Rb.get_string("Alias <alias> has no certificate"))
+        source = Array.typed(Object).new([alias_])
+        raise Exception.new(form.format(source))
       end
       dump_cert(cert, out)
     end
     
     typesig { [String, String, Array.typed(::Java::Char)] }
-    # 
     # Prompt the user for a keypass when generating a key entry.
     # @param alias the entry we will set password for
     # @param orig the original entry of doing a dup, null if generate new
@@ -1458,7 +1446,6 @@ module Sun::Security::Tools
     end
     
     typesig { [String, String, ::Java::Int] }
-    # 
     # Creates a new secret key.
     def do_gen_secret_key(alias_, key_alg_name, keysize)
       if ((alias_).nil?)
@@ -1492,7 +1479,6 @@ module Sun::Security::Tools
     end
     
     typesig { [String, String, String, ::Java::Int, String] }
-    # 
     # Creates a new key pair and self-signed certificate.
     def do_gen_key_pair(alias_, dname, key_alg_name, keysize, sig_alg_name)
       if ((keysize).equal?(-1))
@@ -1538,9 +1524,9 @@ module Sun::Security::Tools
       chain = Array.typed(X509Certificate).new(1) { nil }
       chain[0] = keypair.get_self_certificate(x500name, get_start_date(@start_date), @validity * 24 * 60 * 60)
       if (@verbose)
-        form_ = MessageFormat.new(Rb.get_string("Generating keysize bit keyAlgName key pair and self-signed certificate " + "(sigAlgName) with a validity of validality days\n\tfor: x500Name"))
-        source_ = Array.typed(Object).new([keysize, priv_key.get_algorithm, chain[0].get_sig_alg_name, Long.new(@validity), x500name])
-        System.err.println(form_.format(source_))
+        form = MessageFormat.new(Rb.get_string("Generating keysize bit keyAlgName key pair and self-signed certificate " + "(sigAlgName) with a validity of validality days\n\tfor: x500Name"))
+        source = Array.typed(Object).new([keysize, priv_key.get_algorithm, chain[0].get_sig_alg_name, Long.new(@validity), x500name])
+        System.err.println(form.format(source))
       end
       if ((@key_pass).nil?)
         @key_pass = prompt_for_key_pass(alias_, nil, @store_pass)
@@ -1549,7 +1535,6 @@ module Sun::Security::Tools
     end
     
     typesig { [String, String, ::Java::Boolean] }
-    # 
     # Clones an entry
     # @param orig original alias
     # @param dest destination alias
@@ -1582,7 +1567,6 @@ module Sun::Security::Tools
     end
     
     typesig { [String] }
-    # 
     # Changes a key password.
     def do_change_key_passwd(alias_)
       if ((alias_).nil?)
@@ -1602,7 +1586,6 @@ module Sun::Security::Tools
     end
     
     typesig { [InputStream] }
-    # 
     # Imports a JDK 1.1-style identity database. We can only store one
     # certificate per identity, because we use the identity's name as the
     # alias (which references a keystore entry), and aliases must be unique.
@@ -1648,9 +1631,9 @@ module Sun::Security::Tools
               end
             end
             if (id.is_a?(SystemSigner))
-              form_ = MessageFormat.new(Rb.get_string("Creating keystore entry for <id.getName()> ..."))
-              source_ = Array.typed(Object).new([id.get_name])
-              System.err.println(form_.format(source_))
+              form = MessageFormat.new(Rb.get_string("Creating keystore entry for <id.getName()> ..."))
+              source = Array.typed(Object).new([id.get_name])
+              System.err.println(form.format(source))
               if ((chain).nil?)
                 chain = Array.typed(Java::Security::Cert::Certificate).new(1) { nil }
               end
@@ -1670,7 +1653,6 @@ module Sun::Security::Tools
     end
     
     typesig { [String, PrintStream, ::Java::Boolean] }
-    # 
     # Prints a single keystore entry.
     def do_print_entry(alias_, out, print_warning_)
       if ((@store_pass).nil? && print_warning_ && !KeyStoreUtil.is_windows_key_store(@storetype))
@@ -1682,37 +1664,37 @@ module Sun::Security::Tools
         raise Exception.new(form.format(source))
       end
       if (@verbose || @rfc || @debug)
-        form_ = MessageFormat.new(Rb.get_string("Alias name: alias"))
-        source_ = Array.typed(Object).new([alias_])
-        out.println(form_.format(source_))
+        form = MessageFormat.new(Rb.get_string("Alias name: alias"))
+        source = Array.typed(Object).new([alias_])
+        out.println(form.format(source))
         if (!@token)
-          form_ = MessageFormat.new(Rb.get_string("Creation date: keyStore.getCreationDate(alias)"))
+          form = MessageFormat.new(Rb.get_string("Creation date: keyStore.getCreationDate(alias)"))
           src = Array.typed(Object).new([@key_store.get_creation_date(alias_)])
-          out.println(form_.format(src))
+          out.println(form.format(src))
         end
       else
         if (!@token)
-          form__ = MessageFormat.new(Rb.get_string("alias, keyStore.getCreationDate(alias), "))
-          source__ = Array.typed(Object).new([alias_, @key_store.get_creation_date(alias_)])
-          out.print(form__.format(source__))
+          form = MessageFormat.new(Rb.get_string("alias, keyStore.getCreationDate(alias), "))
+          source = Array.typed(Object).new([alias_, @key_store.get_creation_date(alias_)])
+          out.print(form.format(source))
         else
-          form___ = MessageFormat.new(Rb.get_string("alias, "))
-          source___ = Array.typed(Object).new([alias_])
-          out.print(form___.format(source___))
+          form = MessageFormat.new(Rb.get_string("alias, "))
+          source = Array.typed(Object).new([alias_])
+          out.print(form.format(source))
         end
       end
       if (@key_store.entry_instance_of(alias_, KeyStore::SecretKeyEntry.class))
         if (@verbose || @rfc || @debug)
-          source____ = Array.typed(Object).new(["SecretKeyEntry"])
-          out.println(MessageFormat.new(Rb.get_string("Entry type: <type>")).format(source____))
+          source = Array.typed(Object).new(["SecretKeyEntry"])
+          out.println(MessageFormat.new(Rb.get_string("Entry type: <type>")).format(source))
         else
           out.println("SecretKeyEntry, ")
         end
       else
         if (@key_store.entry_instance_of(alias_, KeyStore::PrivateKeyEntry.class))
           if (@verbose || @rfc || @debug)
-            source_____ = Array.typed(Object).new(["PrivateKeyEntry"])
-            out.println(MessageFormat.new(Rb.get_string("Entry type: <type>")).format(source_____))
+            source = Array.typed(Object).new(["PrivateKeyEntry"])
+            out.println(MessageFormat.new(Rb.get_string("Entry type: <type>")).format(source))
           else
             out.println("PrivateKeyEntry, ")
           end
@@ -1723,9 +1705,9 @@ module Sun::Security::Tools
               out.println(Rb.get_string("Certificate chain length: ") + chain.attr_length)
               i = 0
               while i < chain.attr_length
-                form____ = MessageFormat.new(Rb.get_string("Certificate[(i + 1)]:"))
-                source______ = Array.typed(Object).new([(i + 1)])
-                out.println(form____.format(source______))
+                form = MessageFormat.new(Rb.get_string("Certificate[(i + 1)]:"))
+                source = Array.typed(Object).new([(i + 1)])
+                out.println(form.format(source))
                 if (@verbose && (chain[i].is_a?(X509Certificate)))
                   print_x509cert((chain[i]), out)
                 else
@@ -1770,7 +1752,6 @@ module Sun::Security::Tools
     end
     
     typesig { [] }
-    # 
     # Load the srckeystore from a stream, used in -importkeystore
     # @returns the src KeyStore
     def load_source_key_store
@@ -1837,7 +1818,6 @@ module Sun::Security::Tools
     end
     
     typesig { [] }
-    # 
     # import all keys and certs from importkeystore.
     # keep alias unchanged if no name conflict, otherwise, prompt.
     # keep keypass unchanged for keys
@@ -1850,7 +1830,6 @@ module Sun::Security::Tools
         end
         do_import_key_store_all(load_source_key_store)
       end
-      # 
       # Information display rule of -importkeystore
       # 1. inside single, shows failure
       # 2. inside all, shows sucess
@@ -1859,7 +1838,6 @@ module Sun::Security::Tools
     end
     
     typesig { [KeyStore, String] }
-    # 
     # Import a single entry named alias from srckeystore
     # @returns 1 if the import action succeed
     # 0 if user choose to ignore an alias-dumplicated entry
@@ -1930,13 +1908,12 @@ module Sun::Security::Tools
           end
         end
       end
-      source_ = Array.typed(Object).new([ok, count - ok])
-      form_ = MessageFormat.new(Rb.get_string("Import command completed:  <ok> entries successfully imported, <fail> entries failed or cancelled"))
-      System.err.println(form_.format(source_))
+      source = Array.typed(Object).new([ok, count - ok])
+      form = MessageFormat.new(Rb.get_string("Import command completed:  <ok> entries successfully imported, <fail> entries failed or cancelled"))
+      System.err.println(form.format(source))
     end
     
     typesig { [PrintStream] }
-    # 
     # Prints all keystore entries.
     def do_print_entries(out)
       if ((@store_pass).nil? && !KeyStoreUtil.is_windows_key_store(@storetype))
@@ -1965,7 +1942,6 @@ module Sun::Security::Tools
     end
     
     typesig { [InputStream, PrintStream] }
-    # 
     # Reads a certificate (or certificate chain) and prints its contents in
     # a human readbable format.
     def do_print_cert(in_, out)
@@ -2001,7 +1977,6 @@ module Sun::Security::Tools
     end
     
     typesig { [String, String, String] }
-    # 
     # Creates a self-signed certificate, and stores it as a single-element
     # certificate chain.
     def do_self_cert(alias_, dname, sig_alg_name)
@@ -2040,9 +2015,9 @@ module Sun::Security::Tools
         raise Exception.new(form.format(source))
       end
       if (!(old_cert.is_a?(X509Certificate)))
-        form_ = MessageFormat.new(Rb.get_string("alias has no X.509 certificate"))
-        source_ = Array.typed(Object).new([alias_])
-        raise Exception.new(form_.format(source_))
+        form = MessageFormat.new(Rb.get_string("alias has no X.509 certificate"))
+        source = Array.typed(Object).new([alias_])
+        raise Exception.new(form.format(source))
       end
       # convert to X509CertImpl, so that we can modify selected fields
       # (no public APIs available yet)
@@ -2092,7 +2067,6 @@ module Sun::Security::Tools
     end
     
     typesig { [String, InputStream] }
-    # 
     # Processes a certificate reply from a certificate authority.
     # 
     # <p>Builds a certificate chain on top of the certificate reply,
@@ -2145,7 +2119,6 @@ module Sun::Security::Tools
     end
     
     typesig { [String, InputStream] }
-    # 
     # Imports a certificate and adds it to the list of trusted certificates.
     # 
     # @return true if the certificate was added, otherwise false.
@@ -2181,16 +2154,16 @@ module Sun::Security::Tools
       reply = nil
       trustalias = @key_store.get_certificate_alias(cert)
       if (!(trustalias).nil?)
-        form_ = MessageFormat.new(Rb.get_string("Certificate already exists in keystore under alias <trustalias>"))
-        source_ = Array.typed(Object).new([trustalias])
-        System.err.println(form_.format(source_))
+        form = MessageFormat.new(Rb.get_string("Certificate already exists in keystore under alias <trustalias>"))
+        source = Array.typed(Object).new([trustalias])
+        System.err.println(form.format(source))
         reply = (get_yes_no_reply(Rb.get_string("Do you still want to add it? [no]:  "))).to_s
       else
         if (self_signed)
           if (@trustcacerts && (!(@caks).nil?) && (!((trustalias = (@caks.get_certificate_alias(cert)).to_s)).nil?))
-            form__ = MessageFormat.new(Rb.get_string("Certificate already exists in system-wide CA keystore under alias <trustalias>"))
-            source__ = Array.typed(Object).new([trustalias])
-            System.err.println(form__.format(source__))
+            form = MessageFormat.new(Rb.get_string("Certificate already exists in system-wide CA keystore under alias <trustalias>"))
+            source = Array.typed(Object).new([trustalias])
+            System.err.println(form.format(source))
             reply = (get_yes_no_reply(Rb.get_string("Do you still want to add it to your own keystore? [no]:  "))).to_s
           end
           if ((trustalias).nil?)
@@ -2232,7 +2205,6 @@ module Sun::Security::Tools
     end
     
     typesig { [String, Array.typed(::Java::Char)] }
-    # 
     # Prompts user for new password. New password must be different from
     # old one.
     # 
@@ -2281,7 +2253,6 @@ module Sun::Security::Tools
     end
     
     typesig { [String] }
-    # 
     # Prompts user for alias name.
     # @param prompt the {0} of "Enter {0} alias name:  " in prompt line
     # @returns the string entered by the user, without the \n at the end
@@ -2297,7 +2268,6 @@ module Sun::Security::Tools
     end
     
     typesig { [String] }
-    # 
     # Prompts user for an input string from the command line (System.in)
     # @prompt the prompt string printed
     # @returns the string entered by the user, without the \n at the end
@@ -2307,7 +2277,6 @@ module Sun::Security::Tools
     end
     
     typesig { [String, String, Array.typed(::Java::Char)] }
-    # 
     # Prompts user for key password. User may select to choose the same
     # password (<code>otherKeyPass</code>) as for <code>otherAlias</code>.
     def get_key_passwd(alias_, other_alias, other_key_pass)
@@ -2322,9 +2291,9 @@ module Sun::Security::Tools
           src = Array.typed(Object).new([other_alias])
           System.err.print(form.format(src))
         else
-          form_ = MessageFormat.new(Rb.get_string("Enter key password for <alias>"))
-          source_ = Array.typed(Object).new([alias_])
-          System.err.print(form_.format(source_))
+          form = MessageFormat.new(Rb.get_string("Enter key password for <alias>"))
+          source = Array.typed(Object).new([alias_])
+          System.err.print(form.format(source))
         end
         System.err.flush
         key_pass = Password.read_password(System.in)
@@ -2341,10 +2310,8 @@ module Sun::Security::Tools
     end
     
     typesig { [X509Certificate, PrintStream] }
-    # 
     # Prints a certificate in a human readable format.
     def print_x509cert(cert, out)
-      # 
       # out.println("Owner: "
       # + cert.getSubjectDN().toString()
       # + "\n"
@@ -2383,11 +2350,11 @@ module Sun::Security::Tools
               out.println(Rb.get_string("Extensions: "))
               out.println
             end
-            ext = impl.get_extension(ObjectIdentifier.new(ext_oid_))
+            ext = impl.get_extension(ObjectIdentifier.new(ext_oid))
             if (!(ext).nil?)
               out.println("#" + (((extnum += 1))).to_s + ": " + (ext).to_s)
             else
-              out.println("#" + (((extnum += 1))).to_s + ": " + (impl.get_unparseable_extension(ObjectIdentifier.new(ext_oid_))).to_s)
+              out.println("#" + (((extnum += 1))).to_s + ": " + (impl.get_unparseable_extension(ObjectIdentifier.new(ext_oid))).to_s)
             end
           end
         end
@@ -2395,14 +2362,12 @@ module Sun::Security::Tools
     end
     
     typesig { [X509Certificate] }
-    # 
     # Returns true if the certificate is self-signed, false otherwise.
     def is_self_signed(cert)
       return (cert.get_subject_dn == cert.get_issuer_dn)
     end
     
     typesig { [Certificate] }
-    # 
     # Returns true if the given certificate is trusted, false otherwise.
     def is_trusted(cert)
       if (!(@key_store.get_certificate_alias(cert)).nil?)
@@ -2415,7 +2380,6 @@ module Sun::Security::Tools
     end
     
     typesig { [] }
-    # 
     # Gets an X.500 name suitable for inclusion in a certification request.
     def get_x500name
       in_ = nil
@@ -2463,7 +2427,6 @@ module Sun::Security::Tools
     end
     
     typesig { [Certificate, PrintStream] }
-    # 
     # Writes an X.509 certificate in base64 or binary encoding to an output
     # stream.
     def dump_cert(cert, out)
@@ -2478,7 +2441,6 @@ module Sun::Security::Tools
     end
     
     typesig { [::Java::Byte, StringBuffer] }
-    # 
     # Converts a byte to hex digit and writes to the supplied buffer
     def byte2hex(b, buf)
       hex_chars = Array.typed(::Java::Char).new([Character.new(?0.ord), Character.new(?1.ord), Character.new(?2.ord), Character.new(?3.ord), Character.new(?4.ord), Character.new(?5.ord), Character.new(?6.ord), Character.new(?7.ord), Character.new(?8.ord), Character.new(?9.ord), Character.new(?A.ord), Character.new(?B.ord), Character.new(?C.ord), Character.new(?D.ord), Character.new(?E.ord), Character.new(?F.ord)])
@@ -2489,7 +2451,6 @@ module Sun::Security::Tools
     end
     
     typesig { [Array.typed(::Java::Byte)] }
-    # 
     # Converts a byte array to hex string
     def to_hex_string(block)
       buf = StringBuffer.new
@@ -2506,7 +2467,6 @@ module Sun::Security::Tools
     end
     
     typesig { [String, Array.typed(::Java::Char), Array.typed(::Java::Char)] }
-    # 
     # Recovers (private) key associated with given alias.
     # 
     # @return an array of objects, where the 1st element in the array is the
@@ -2520,9 +2480,9 @@ module Sun::Security::Tools
         raise Exception.new(form.format(source))
       end
       if (!@key_store.entry_instance_of(alias_, KeyStore::PrivateKeyEntry.class) && !@key_store.entry_instance_of(alias_, KeyStore::SecretKeyEntry.class))
-        form_ = MessageFormat.new(Rb.get_string("Alias <alias> has no key"))
-        source_ = Array.typed(Object).new([alias_])
-        raise Exception.new(form_.format(source_))
+        form = MessageFormat.new(Rb.get_string("Alias <alias> has no key"))
+        source = Array.typed(Object).new([alias_])
+        raise Exception.new(form.format(source))
       end
       if ((key_pass).nil?)
         # Try to recover the key using the keystore password
@@ -2546,7 +2506,6 @@ module Sun::Security::Tools
     end
     
     typesig { [KeyStore, String, Array.typed(::Java::Char), Array.typed(::Java::Char)] }
-    # 
     # Recovers entry associated with given alias.
     # 
     # @return an array of objects, where the 1st element in the array is the
@@ -2599,7 +2558,6 @@ module Sun::Security::Tools
     end
     
     typesig { [String, Certificate] }
-    # 
     # Gets the requested finger print of the certificate.
     def get_cert_finger_print(md_alg, cert)
       enc_cert_info = cert.get_encoded
@@ -2609,7 +2567,6 @@ module Sun::Security::Tools
     end
     
     typesig { [] }
-    # 
     # Prints warning about missing integrity check.
     def print_warning
       System.err.println
@@ -2622,7 +2579,6 @@ module Sun::Security::Tools
     end
     
     typesig { [String, Certificate, Array.typed(Certificate)] }
-    # 
     # Validates chain in certification reply, and returns the ordered
     # elements of the chain (with user certificate first, and root
     # certificate last in the array).
@@ -2733,7 +2689,6 @@ module Sun::Security::Tools
     end
     
     typesig { [Certificate, Certificate] }
-    # 
     # Establishes a certificate chain (using trusted certificates in the
     # keystore), starting with the user certificate
     # and ending at a self-signed certificate found in the keystore.
@@ -2793,7 +2748,6 @@ module Sun::Security::Tools
     end
     
     typesig { [X509Certificate, Vector, Hashtable] }
-    # 
     # Recursively tries to establish chain from pool of trusted certs.
     # 
     # @param certToVerify the cert that needs to be verified.
@@ -2836,7 +2790,6 @@ module Sun::Security::Tools
     end
     
     typesig { [String] }
-    # 
     # Prompts user for yes/no decision.
     # 
     # @return the user's decision, can only be "YES" or "NO"
@@ -2865,7 +2818,6 @@ module Sun::Security::Tools
     end
     
     typesig { [] }
-    # 
     # Returns the keystore with the configured CA certificates.
     def get_cacerts_key_store
       sep = JavaFile.attr_separator
@@ -2888,7 +2840,6 @@ module Sun::Security::Tools
     end
     
     typesig { [KeyStore, Hashtable] }
-    # 
     # Stores the (leaf) certificates of a keystore in a hashtable.
     # All certs belonging to the same CA are stored in a vector that
     # in turn is stored in the hashtable, keyed by the CA's subject DN
@@ -2915,7 +2866,6 @@ module Sun::Security::Tools
     
     class_module.module_eval {
       typesig { [String] }
-      # 
       # Returns the issue time that's specified the -startdate option
       # @param s the value of -startdate option
       def get_start_date(s)
@@ -3019,7 +2969,6 @@ module Sun::Security::Tools
     }
     
     typesig { [] }
-    # 
     # Prints the usage of this tool.
     def usage
       System.err.println(Rb.get_string("keytool usage:\n"))

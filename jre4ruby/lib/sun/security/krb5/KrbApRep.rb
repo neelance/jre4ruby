@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Portions Copyright 2000-2006 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -39,7 +38,6 @@ module Sun::Security::Krb5
     }
   end
   
-  # 
   # This class encapsulates a KRB-AP-REP sent from the service to the
   # client.
   class KrbApRep 
@@ -71,7 +69,6 @@ module Sun::Security::Krb5
     undef_method :ap_rep_messg=
     
     typesig { [KrbApReq, ::Java::Boolean, ::Java::Boolean] }
-    # 
     # Constructs a KRB-AP-REP to send to a client.
     # @throws KrbException
     # @throws IOException
@@ -88,7 +85,6 @@ module Sun::Security::Krb5
     end
     
     typesig { [Array.typed(::Java::Byte), Credentials, KrbApReq] }
-    # 
     # Constructs a KRB-AP-REQ from the bytes received from a service.
     # @throws KrbException
     # @throws IOException
@@ -106,7 +102,6 @@ module Sun::Security::Krb5
     end
     
     typesig { [Array.typed(::Java::Byte), Credentials] }
-    # 
     # Constructs a KrbApRep object.
     # @param msg a byte array of reply message.
     # @param tgs_creds client's credential.
@@ -117,7 +112,6 @@ module Sun::Security::Krb5
     end
     
     typesig { [DerValue, Credentials] }
-    # 
     # Constructs a KrbApRep object.
     # @param msg a byte array of reply message.
     # @param tgs_creds client's credential.
@@ -159,7 +153,6 @@ module Sun::Security::Krb5
     end
     
     typesig { [] }
-    # 
     # Returns the optional subkey stored in
     # this message. Returns null if none is stored.
     def get_sub_key
@@ -168,7 +161,6 @@ module Sun::Security::Krb5
     end
     
     typesig { [] }
-    # 
     # Returns the optional sequence number stored in the
     # this message. Returns null if none is stored.
     def get_seq_number
@@ -177,7 +169,6 @@ module Sun::Security::Krb5
     end
     
     typesig { [] }
-    # 
     # Returns the ASN.1 encoding that should be sent to the peer.
     def get_message
       return @obuf

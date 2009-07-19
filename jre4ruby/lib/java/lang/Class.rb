@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 1994-2006 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -71,7 +70,6 @@ module Java::Lang
     }
   end
   
-  # 
   # Instances of the class {@code Class} represent classes and
   # interfaces in a running Java application.  An enum is a kind of
   # class and an annotation is a kind of interface.  Every array also
@@ -144,7 +142,6 @@ module Java::Lang
     }
     
     typesig { [] }
-    # 
     # Constructor. Only the Java Virtual Machine creates Class
     # objects.
     def initialize
@@ -170,7 +167,6 @@ module Java::Lang
     end
     
     typesig { [] }
-    # 
     # Converts the object to a string. The string representation is the
     # string "class" or "interface", followed by a space, and then by the
     # fully qualified name of the class in the format returned by
@@ -186,7 +182,6 @@ module Java::Lang
     
     class_module.module_eval {
       typesig { [String] }
-      # 
       # Returns the {@code Class} object associated with the class or
       # interface with the given string name.  Invoking this method is
       # equivalent to:
@@ -221,7 +216,6 @@ module Java::Lang
       end
       
       typesig { [String, ::Java::Boolean, ClassLoader] }
-      # 
       # Returns the {@code Class} object associated with the class or
       # interface with the given string name, using the given class loader.
       # Given the fully qualified name for a class or interface (in the same
@@ -302,7 +296,6 @@ module Java::Lang
     }
     
     typesig { [] }
-    # 
     # Creates a new instance of the class represented by this {@code Class}
     # object.  The class is instantiated as if by a {@code new}
     # expression with an empty argument list.  The class is initialized if it
@@ -408,7 +401,7 @@ module Java::Lang
       begin
         return tmp_constructor.new_instance(nil)
       rescue InvocationTargetException => e
-        Unsafe.get_unsafe.throw_exception(e_.get_target_exception)
+        Unsafe.get_unsafe.throw_exception(e.get_target_exception)
         # Not reached
         return nil
       end
@@ -428,7 +421,6 @@ module Java::Lang
     
     JNI.native_method :Java_java_lang_Class_isInstance, [:pointer, :long, :long], :int8
     typesig { [Object] }
-    # 
     # Determines if the specified {@code Object} is assignment-compatible
     # with the object represented by this {@code Class}.  This method is
     # the dynamic equivalent of the Java language {@code instanceof}
@@ -463,7 +455,6 @@ module Java::Lang
     
     JNI.native_method :Java_java_lang_Class_isAssignableFrom, [:pointer, :long, :long], :int8
     typesig { [Class] }
-    # 
     # Determines if the class or interface represented by this
     # {@code Class} object is either the same as, or is a superclass or
     # superinterface of, the class or interface represented by the specified
@@ -492,7 +483,6 @@ module Java::Lang
     
     JNI.native_method :Java_java_lang_Class_isInterface, [:pointer, :long], :int8
     typesig { [] }
-    # 
     # Determines if the specified {@code Class} object represents an
     # interface type.
     # 
@@ -504,7 +494,6 @@ module Java::Lang
     
     JNI.native_method :Java_java_lang_Class_isArray, [:pointer, :long], :int8
     typesig { [] }
-    # 
     # Determines if this {@code Class} object represents an array class.
     # 
     # @return  {@code true} if this object represents an array class;
@@ -516,7 +505,6 @@ module Java::Lang
     
     JNI.native_method :Java_java_lang_Class_isPrimitive, [:pointer, :long], :int8
     typesig { [] }
-    # 
     # Determines if the specified {@code Class} object represents a
     # primitive type.
     # 
@@ -548,7 +536,6 @@ module Java::Lang
     end
     
     typesig { [] }
-    # 
     # Returns true if this {@code Class} object represents an annotation
     # type.  Note that if this method returns true, {@link #isInterface()}
     # would also return true, as all annotation types are also interfaces.
@@ -561,7 +548,6 @@ module Java::Lang
     end
     
     typesig { [] }
-    # 
     # Returns {@code true} if this class is a synthetic class;
     # returns {@code false} otherwise.
     # @return {@code true} if and only if this class is a synthetic class as
@@ -572,7 +558,6 @@ module Java::Lang
     end
     
     typesig { [] }
-    # 
     # Returns the  name of the entity (class, interface, array class,
     # primitive type, or void) represented by this {@code Class} object,
     # as a {@code String}.
@@ -642,7 +627,6 @@ module Java::Lang
     end
     
     typesig { [] }
-    # 
     # Returns the class loader for the class.  Some implementations may use
     # null to represent the bootstrap class loader. This method will return
     # null in such implementations if this class was loaded by the bootstrap
@@ -690,7 +674,6 @@ module Java::Lang
     end
     
     typesig { [] }
-    # 
     # Returns an array of {@code TypeVariable} objects that represent the
     # type variables declared by the generic declaration represented by this
     # {@code GenericDeclaration} object, in declaration order.  Returns an
@@ -714,7 +697,6 @@ module Java::Lang
     
     JNI.native_method :Java_java_lang_Class_getSuperclass, [:pointer, :long], :long
     typesig { [] }
-    # 
     # Returns the {@code Class} representing the superclass of the entity
     # (class, interface, primitive type or void) represented by this
     # {@code Class}.  If this {@code Class} represents either the
@@ -729,7 +711,6 @@ module Java::Lang
     end
     
     typesig { [] }
-    # 
     # Returns the {@code Type} representing the direct superclass of
     # the entity (class, interface, primitive type or void) represented by
     # this {@code Class}.
@@ -772,7 +753,6 @@ module Java::Lang
     end
     
     typesig { [] }
-    # 
     # Gets the package for this class.  The class loader of this class is used
     # to find the package.  If the class was loaded by the bootstrap class
     # loader the set of packages loaded from CLASSPATH is searched to find the
@@ -792,7 +772,6 @@ module Java::Lang
     
     JNI.native_method :Java_java_lang_Class_getInterfaces, [:pointer, :long], :long
     typesig { [] }
-    # 
     # Determines the interfaces implemented by the class or interface
     # represented by this object.
     # 
@@ -836,7 +815,6 @@ module Java::Lang
     end
     
     typesig { [] }
-    # 
     # Returns the {@code Type}s representing the interfaces
     # directly implemented by the class or interface represented by
     # this object.
@@ -893,7 +871,6 @@ module Java::Lang
     
     JNI.native_method :Java_java_lang_Class_getComponentType, [:pointer, :long], :long
     typesig { [] }
-    # 
     # Returns the {@code Class} representing the component type of an
     # array.  If this class does not represent an array class this method
     # returns null.
@@ -908,7 +885,6 @@ module Java::Lang
     
     JNI.native_method :Java_java_lang_Class_getModifiers, [:pointer, :long], :int32
     typesig { [] }
-    # 
     # Returns the Java language modifiers for this class or interface, encoded
     # in an integer. The modifiers consist of the Java Virtual Machine's
     # constants for {@code public}, {@code protected},
@@ -940,7 +916,6 @@ module Java::Lang
     
     JNI.native_method :Java_java_lang_Class_getSigners, [:pointer, :long], :long
     typesig { [] }
-    # 
     # Gets the signers of this class.
     # 
     # @return  the signers of this class, or null if there are no signers.  In
@@ -953,14 +928,12 @@ module Java::Lang
     
     JNI.native_method :Java_java_lang_Class_setSigners, [:pointer, :long, :long], :void
     typesig { [Array.typed(Object)] }
-    # 
     # Set the signers of this class.
     def set_signers(signers)
       JNI.__send__(:Java_java_lang_Class_setSigners, JNI.env, self.jni_id, signers.jni_id)
     end
     
     typesig { [] }
-    # 
     # If this {@code Class} object represents a local or anonymous
     # class within a method, returns a {@link
     # java.lang.reflect.Method Method} object representing the
@@ -994,7 +967,6 @@ module Java::Lang
           parameter_classes[i] = to_class(parameter_types[i])
           ((i += 1) - 1)
         end
-        # 
         # Loop over all declared methods; match method name,
         # number of and type of parameters, *and* return
         # type.  Matching return type is also necessary
@@ -1132,7 +1104,6 @@ module Java::Lang
     }
     
     typesig { [] }
-    # 
     # If this {@code Class} object represents a local or anonymous
     # class within a constructor, returns a {@link
     # java.lang.reflect.Constructor Constructor} object representing
@@ -1164,7 +1135,6 @@ module Java::Lang
           parameter_classes[i] = to_class(parameter_types[i])
           ((i += 1) - 1)
         end
-        # 
         # Loop over all declared constructors; match number
         # of and type of parameters.
         enclosing_info.get_enclosing_class.get_declared_constructors.each do |c|
@@ -1190,7 +1160,6 @@ module Java::Lang
     
     JNI.native_method :Java_java_lang_Class_getDeclaringClass, [:pointer, :long], :long
     typesig { [] }
-    # 
     # If the class or interface represented by this {@code Class} object
     # is a member of another class, returns the {@code Class} object
     # representing the class in which it was declared.  This method returns
@@ -1205,7 +1174,6 @@ module Java::Lang
     end
     
     typesig { [] }
-    # 
     # Returns the immediately enclosing class of the underlying
     # class.  If the underlying class is a top level class this
     # method returns {@code null}.
@@ -1237,7 +1205,6 @@ module Java::Lang
     end
     
     typesig { [] }
-    # 
     # Returns the simple name of the underlying class as given in the
     # source code. Returns an empty string if the underlying class is
     # anonymous.
@@ -1284,7 +1251,6 @@ module Java::Lang
     
     class_module.module_eval {
       typesig { [::Java::Char] }
-      # 
       # Character.isDigit answers {@code true} to some non-ascii
       # digits.  This one does not.
       def is_ascii_digit(c)
@@ -1293,7 +1259,6 @@ module Java::Lang
     }
     
     typesig { [] }
-    # 
     # Returns the canonical name of the underlying class as
     # defined by the Java Language Specification.  Returns null if
     # the underlying class does not have a canonical name (i.e., if
@@ -1328,7 +1293,6 @@ module Java::Lang
     end
     
     typesig { [] }
-    # 
     # Returns {@code true} if and only if the underlying class
     # is an anonymous class.
     # 
@@ -1339,7 +1303,6 @@ module Java::Lang
     end
     
     typesig { [] }
-    # 
     # Returns {@code true} if and only if the underlying class
     # is a local class.
     # 
@@ -1350,7 +1313,6 @@ module Java::Lang
     end
     
     typesig { [] }
-    # 
     # Returns {@code true} if and only if the underlying class
     # is a member class.
     # 
@@ -1361,7 +1323,6 @@ module Java::Lang
     end
     
     typesig { [] }
-    # 
     # Returns the "simple binary name" of the underlying class, i.e.,
     # the binary name without the leading enclosing class name.
     # Returns {@code null} if the underlying class is a top level
@@ -1381,7 +1342,6 @@ module Java::Lang
     end
     
     typesig { [] }
-    # 
     # Returns {@code true} if this is a local class or an anonymous
     # class.  Returns {@code false} otherwise.
     def is_local_or_anonymous_class
@@ -1392,7 +1352,6 @@ module Java::Lang
     end
     
     typesig { [] }
-    # 
     # Returns an array containing {@code Class} objects representing all
     # the public classes and interfaces that are members of the class
     # represented by this {@code Class} object.  This includes public
@@ -1471,7 +1430,6 @@ module Java::Lang
     end
     
     typesig { [] }
-    # 
     # Returns an array containing {@code Field} objects reflecting all
     # the accessible public fields of the class or interface represented by
     # this {@code Class} object.  The elements in the array returned are
@@ -1522,7 +1480,6 @@ module Java::Lang
     end
     
     typesig { [] }
-    # 
     # Returns an array containing {@code Method} objects reflecting all
     # the public <em>member</em> methods of the class or interface represented
     # by this {@code Class} object, including those declared by the class
@@ -1572,7 +1529,6 @@ module Java::Lang
     end
     
     typesig { [] }
-    # 
     # Returns an array containing {@code Constructor} objects reflecting
     # all the public constructors of the class represented by this
     # {@code Class} object.  An array of length 0 is returned if the
@@ -1620,7 +1576,6 @@ module Java::Lang
     end
     
     typesig { [String] }
-    # 
     # Returns a {@code Field} object that reflects the specified public
     # member field of the class or interface represented by this
     # {@code Class} object. The {@code name} parameter is a
@@ -1681,7 +1636,6 @@ module Java::Lang
     end
     
     typesig { [String, Class] }
-    # 
     # Returns a {@code Method} object that reflects the specified public
     # member method of the class or interface represented by this
     # {@code Class} object. The {@code name} parameter is a
@@ -1764,7 +1718,6 @@ module Java::Lang
     end
     
     typesig { [Class] }
-    # 
     # Returns a {@code Constructor} object that reflects the specified
     # public constructor of the class represented by this {@code Class}
     # object. The {@code parameterTypes} parameter is an array of
@@ -1812,7 +1765,6 @@ module Java::Lang
     end
     
     typesig { [] }
-    # 
     # Returns an array of {@code Class} objects reflecting all the
     # classes and interfaces declared as members of the class represented by
     # this {@code Class} object. This includes public, protected, default
@@ -1853,7 +1805,6 @@ module Java::Lang
     end
     
     typesig { [] }
-    # 
     # Returns an array of {@code Field} objects reflecting all the fields
     # declared by the class or interface represented by this
     # {@code Class} object. This includes public, protected, default
@@ -1896,7 +1847,6 @@ module Java::Lang
     end
     
     typesig { [] }
-    # 
     # Returns an array of {@code Method} objects reflecting all the
     # methods declared by the class or interface represented by this
     # {@code Class} object. This includes public, protected, default
@@ -1943,7 +1893,6 @@ module Java::Lang
     end
     
     typesig { [] }
-    # 
     # Returns an array of {@code Constructor} objects reflecting all the
     # constructors declared by the class represented by this
     # {@code Class} object. These are public, protected, default
@@ -1987,7 +1936,6 @@ module Java::Lang
     end
     
     typesig { [String] }
-    # 
     # Returns a {@code Field} object that reflects the specified declared
     # field of the class or interface represented by this {@code Class}
     # object. The {@code name} parameter is a {@code String} that
@@ -2033,7 +1981,6 @@ module Java::Lang
     end
     
     typesig { [String, Class] }
-    # 
     # Returns a {@code Method} object that reflects the specified
     # declared method of the class or interface represented by this
     # {@code Class} object. The {@code name} parameter is a
@@ -2086,7 +2033,6 @@ module Java::Lang
     end
     
     typesig { [Class] }
-    # 
     # Returns a {@code Constructor} object that reflects the specified
     # constructor of the class or interface represented by this
     # {@code Class} object.  The {@code parameterTypes} parameter is
@@ -2130,7 +2076,6 @@ module Java::Lang
     end
     
     typesig { [String] }
-    # 
     # Finds a resource with a given name.  The rules for searching resources
     # associated with a given class are implemented by the defining
     # {@linkplain ClassLoader class loader} of the class.  This method
@@ -2175,7 +2120,6 @@ module Java::Lang
     end
     
     typesig { [String] }
-    # 
     # Finds a resource with a given name.  The rules for searching resources
     # associated with a given class are implemented by the defining
     # {@linkplain ClassLoader class loader} of the class.  This method
@@ -2233,7 +2177,6 @@ module Java::Lang
     }
     
     typesig { [] }
-    # 
     # Returns the {@code ProtectionDomain} of this class.  If there is a
     # security manager installed, this method first calls the security
     # manager's {@code checkPermission} method with a
@@ -2271,7 +2214,6 @@ module Java::Lang
     
     JNI.native_method :Java_java_lang_Class_getProtectionDomain0, [:pointer, :long], :long
     typesig { [] }
-    # 
     # Returns the ProtectionDomain of this class.
     def get_protection_domain0
       JNI.__send__(:Java_java_lang_Class_getProtectionDomain0, JNI.env, self.jni_id)
@@ -2279,7 +2221,6 @@ module Java::Lang
     
     JNI.native_method :Java_java_lang_Class_setProtectionDomain0, [:pointer, :long, :long], :void
     typesig { [Java::Security::ProtectionDomain] }
-    # 
     # Set the ProtectionDomain for this class. Called by
     # ClassLoader.defineClass.
     def set_protection_domain0(pd)
@@ -2289,7 +2230,6 @@ module Java::Lang
     class_module.module_eval {
       JNI.native_method :Java_java_lang_Class_getPrimitiveClass, [:pointer, :long, :long], :long
       typesig { [String] }
-      # 
       # Return the Virtual Machine's Class object for the named
       # primitive type.
       def get_primitive_class(name)
@@ -2298,7 +2238,6 @@ module Java::Lang
     }
     
     typesig { [::Java::Int, ClassLoader] }
-    # 
     # Check if client is allowed to access members.  If access is denied,
     # throw a SecurityException.
     # 
@@ -2324,7 +2263,6 @@ module Java::Lang
     end
     
     typesig { [String] }
-    # 
     # Add a package name prefix if the name is not absolute Remove leading "/"
     # if name is absolute
     def resolve_name(name)
@@ -2348,7 +2286,6 @@ module Java::Lang
     end
     
     class_module.module_eval {
-      # 
       # Reflection support.
       # 
       # Caches for certain reflective results
@@ -2493,8 +2430,6 @@ module Java::Lang
     end
     
     typesig { [::Java::Boolean] }
-    # 
-    # 
     # java.lang.reflect.Field handling
     # 
     # 
@@ -2569,9 +2504,9 @@ module Java::Lang
       end
       # Direct superclass, recursively
       if (!is_interface)
-        c_ = get_superclass
-        if (!(c_).nil?)
-          add_all(fields, c_.private_get_public_fields(traversed_interfaces))
+        c = get_superclass
+        if (!(c).nil?)
+          add_all(fields, c.private_get_public_fields(traversed_interfaces))
         end
       end
       res = Array.typed(Field).new(fields.size) { nil }
@@ -2594,8 +2529,6 @@ module Java::Lang
     }
     
     typesig { [::Java::Boolean] }
-    # 
-    # 
     # java.lang.reflect.Constructor handling
     # 
     # 
@@ -2637,8 +2570,6 @@ module Java::Lang
     end
     
     typesig { [::Java::Boolean] }
-    # 
-    # 
     # java.lang.reflect.Method handling
     # 
     # 
@@ -2857,11 +2788,11 @@ module Java::Lang
         end
       end
       # Filter out all local methods from inherited ones
-      i__ = 0
-      while i__ < methods.length
-        m_ = methods.get(i__)
-        inherited_methods.remove_by_name_and_signature(m_)
-        ((i__ += 1) - 1)
+      i_ = 0
+      while i_ < methods.length
+        m = methods.get(i_)
+        inherited_methods.remove_by_name_and_signature(m)
+        ((i_ += 1) - 1)
       end
       methods.add_all_if_not_present(inherited_methods)
       methods.compact_and_trim
@@ -2873,7 +2804,6 @@ module Java::Lang
     end
     
     typesig { [Array.typed(Field), String] }
-    # 
     # Helpers for fetchers of one field, method, or constructor
     def search_fields(fields, name)
       interned_name = name.intern
@@ -2913,9 +2843,9 @@ module Java::Lang
       end
       # Direct superclass, recursively
       if (!is_interface)
-        c_ = get_superclass
-        if (!(c_).nil?)
-          if (!((res = c_.get_field0(name))).nil?)
+        c = get_superclass
+        if (!(c).nil?)
+          if (!((res = c.get_field0(name))).nil?)
             return res
           end
         end
@@ -2967,8 +2897,8 @@ module Java::Lang
       interfaces = get_interfaces
       i = 0
       while i < interfaces.attr_length
-        c_ = interfaces[i]
-        if (!((res = c_.get_method0(name, parameter_types))).nil?)
+        c = interfaces[i]
+        if (!((res = c.get_method0(name, parameter_types))).nil?)
           return res
         end
         ((i += 1) - 1)
@@ -2992,7 +2922,6 @@ module Java::Lang
     
     class_module.module_eval {
       typesig { [Array.typed(Object), Array.typed(Object)] }
-      # 
       # Other helpers and base implementation
       def array_contents_eq(a1, a2)
         if ((a1).nil?)
@@ -3099,7 +3028,6 @@ module Java::Lang
       const_set_lazy(:SerialVersionUID) { 3206093459760846163 }
       const_attr_reader  :SerialVersionUID
       
-      # 
       # Class Class is special cased within the Serialization Stream Protocol.
       # 
       # A Class instance is written initially into an ObjectOutputStream in the
@@ -3119,7 +3047,6 @@ module Java::Lang
     }
     
     typesig { [] }
-    # 
     # Returns the assertion status that would be assigned to this
     # class if it were to be initialized at the time this method is invoked.
     # If this class has had its assertion status set, the most recent
@@ -3166,7 +3093,6 @@ module Java::Lang
     }
     
     typesig { [] }
-    # 
     # Returns true if and only if this class was declared as an enum in the
     # source code.
     # 
@@ -3257,7 +3183,6 @@ module Java::Lang
     }
     
     typesig { [] }
-    # 
     # Returns the elements of this enum class or null if this
     # Class object does not represent an enum type.
     # 
@@ -3272,7 +3197,6 @@ module Java::Lang
     end
     
     typesig { [] }
-    # 
     # Returns the elements of this enum class or null if this
     # Class object does not represent an enum type;
     # identical to getEnumConstantsShared except that
@@ -3324,7 +3248,6 @@ module Java::Lang
     undef_method :enum_constants=
     
     typesig { [] }
-    # 
     # Returns a map from simple name to enum constant.  This package-private
     # method is used internally by Enum to implement
     # public static <T extends Enum<T>> T valueOf(Class<T>, String)
@@ -3352,7 +3275,6 @@ module Java::Lang
     undef_method :enum_constant_directory=
     
     typesig { [Object] }
-    # 
     # Casts an object to the class or interface represented
     # by this {@code Class} object.
     # 
@@ -3376,7 +3298,6 @@ module Java::Lang
     end
     
     typesig { [Class] }
-    # 
     # Casts this {@code Class} object to represent a subclass of the class
     # represented by the specified class object.  Checks that that the cast
     # is valid, and throws a {@code ClassCastException} if it is not.  If
@@ -3404,7 +3325,6 @@ module Java::Lang
     end
     
     typesig { [Class] }
-    # 
     # @throws NullPointerException {@inheritDoc}
     # @since 1.5
     def get_annotation(annotation_class)
@@ -3416,7 +3336,6 @@ module Java::Lang
     end
     
     typesig { [Class] }
-    # 
     # @throws NullPointerException {@inheritDoc}
     # @since 1.5
     def is_annotation_present(annotation_class)
@@ -3440,7 +3359,6 @@ module Java::Lang
     }
     
     typesig { [] }
-    # 
     # @since 1.5
     def get_annotations
       init_annotations_if_necessary
@@ -3448,7 +3366,6 @@ module Java::Lang
     end
     
     typesig { [] }
-    # 
     # @since 1.5
     def get_declared_annotations
       init_annotations_if_necessary

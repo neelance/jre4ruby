@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 1995-2003 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -41,7 +40,6 @@ module Sun::Net::Www::Protocol::Gopher
     }
   end
   
-  # 
   # A class to handle the gopher protocol.
   class Handler < Java::Net::URLStreamHandler
     include_class_members HandlerImports

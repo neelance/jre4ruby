@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Portions Copyright 2000-2006 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -41,7 +40,6 @@ module Sun::Security::Krb5
     }
   end
   
-  # 
   # This class encapsulates the concept of a Kerberos checksum.
   class Checksum 
     include_class_members ChecksumImports
@@ -159,7 +157,6 @@ module Sun::Security::Krb5
           if (!(temp).nil?)
             self.attr_cksumtype_default = cfg.get_type(temp)
           else
-            # 
             # If the default checksum is not
             # specified in the configuration we
             # set it to RSA_MD5. We follow the MIT and
@@ -183,7 +180,7 @@ module Sun::Security::Krb5
         rescue Exception => exc
           if (self.attr_debug)
             System.out.println("Exception in getting safe default " + "checksum value " + "from the configuration Setting  " + "safe default checksum to be RSA-MD5")
-            exc_.print_stack_trace
+            exc.print_stack_trace
           end
           self.attr_safecksumtype_default = CKSUMTYPE_RSA_MD5_DES
         end
@@ -191,7 +188,6 @@ module Sun::Security::Krb5
     }
     
     typesig { [Array.typed(::Java::Byte), ::Java::Int] }
-    # 
     # Constructs a new Checksum using the raw data and type.
     # @data the byte array of checksum.
     # @new_cksumType the type of checksum.
@@ -206,7 +202,6 @@ module Sun::Security::Krb5
     end
     
     typesig { [::Java::Int, Array.typed(::Java::Byte)] }
-    # 
     # Constructs a new Checksum by calculating the checksum over the data
     # using specified checksum type.
     # @new_cksumType the type of checksum.
@@ -224,7 +219,6 @@ module Sun::Security::Krb5
     end
     
     typesig { [::Java::Int, Array.typed(::Java::Byte), EncryptionKey, ::Java::Int] }
-    # 
     # Constructs a new Checksum by calculating the keyed checksum
     # over the data using specified checksum type.
     # @new_cksumType the type of checksum.
@@ -243,7 +237,6 @@ module Sun::Security::Krb5
     end
     
     typesig { [Array.typed(::Java::Byte), EncryptionKey, ::Java::Int] }
-    # 
     # Verifies the keyed checksum over the data passed in.
     def verify_keyed_checksum(data, key, usage)
       cksum_engine = CksumType.get_instance(@cksum_type)
@@ -254,7 +247,6 @@ module Sun::Security::Krb5
     end
     
     typesig { [Checksum] }
-    # 
     # public Checksum(byte[] data) throws KdcErrException, KrbCryptoException {
     # this(Checksum.CKSUMTYPE_DEFAULT, data);
     # }
@@ -267,7 +259,6 @@ module Sun::Security::Krb5
     end
     
     typesig { [DerValue] }
-    # 
     # Constructs an instance of Checksum from an ASN.1 encoded representation.
     # @param encoding a single DER-encoded value.
     # @exception Asn1Exception if an error occurs while decoding an ASN1
@@ -298,7 +289,6 @@ module Sun::Security::Krb5
     end
     
     typesig { [] }
-    # 
     # Encodes a Checksum object.
     # <xmp>
     # Checksum    ::= SEQUENCE {
@@ -332,7 +322,6 @@ module Sun::Security::Krb5
     
     class_module.module_eval {
       typesig { [DerInputStream, ::Java::Byte, ::Java::Boolean] }
-      # 
       # Parse (unmarshal) a checksum object from a DER input stream.  This form
       # parsing might be used when expanding a value which is part of
       # a constructed sequence and uses explicitly tagged type.
@@ -361,7 +350,6 @@ module Sun::Security::Krb5
     }
     
     typesig { [] }
-    # 
     # Returns the raw bytes of the checksum, not in ASN.1 encoded form.
     def get_bytes
       return @checksum

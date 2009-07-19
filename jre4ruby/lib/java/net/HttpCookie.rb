@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 2005 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -153,18 +152,15 @@ module Java::Net
     undef_method :when_created=
     
     class_module.module_eval {
-      # 
       # Since the positive and zero max-age have their meanings,
       # this value serves as a hint as 'not specify max-age'
       const_set_lazy(:MAX_AGE_UNSPECIFIED) { -1 }
       const_attr_reader  :MAX_AGE_UNSPECIFIED
       
-      # 
       # date format used by Netscape's cookie draft
       const_set_lazy(:NETSCAPE_COOKIE_DATE_FORMAT) { "EEE',' dd-MMM-yyyy HH:mm:ss 'GMT'" }
       const_attr_reader  :NETSCAPE_COOKIE_DATE_FORMAT
       
-      # 
       # constant strings represent set-cookie header token
       const_set_lazy(:SET_COOKIE) { "set-cookie:" }
       const_attr_reader  :SET_COOKIE
@@ -229,7 +225,6 @@ module Java::Net
     
     class_module.module_eval {
       typesig { [String] }
-      # 
       # Constructs cookies from set-cookie or set-cookie2 header string.
       # RFC 2965 section 3.2.2 set-cookie2 syntax indicates that one header line
       # may contain more than one cookie definitions, so this is a static
@@ -270,9 +265,9 @@ module Java::Net
           # it'll separate them with comma
           cookie_strings = split_multi_cookies(header)
           cookie_strings.each do |cookieStr|
-            cookie_ = parse_internal(cookie_str)
-            cookie_.set_version(1)
-            cookies.add(cookie_)
+            cookie = parse_internal(cookie_str)
+            cookie.set_version(1)
+            cookies.add(cookie)
           end
         end
         return cookies
@@ -305,8 +300,6 @@ module Java::Net
     end
     
     typesig { [String] }
-    # 
-    # 
     # Specifies a comment that describes a cookie's purpose.
     # The comment is useful if the browser presents the cookie
     # to the user. Comments
@@ -321,7 +314,6 @@ module Java::Net
     end
     
     typesig { [] }
-    # 
     # Returns the comment describing the purpose of this cookie, or
     # <code>null</code> if the cookie has no comment.
     # 
@@ -334,8 +326,6 @@ module Java::Net
     end
     
     typesig { [String] }
-    # 
-    # 
     # Specifies a comment url that describes a cookie's purpose.
     # The comment url is useful if the browser presents the cookie
     # to the user. Comment url is RFC 2965 only.
@@ -349,7 +339,6 @@ module Java::Net
     end
     
     typesig { [] }
-    # 
     # Returns the comment url describing the purpose of this cookie, or
     # <code>null</code> if the cookie has no comment url.
     # 
@@ -362,7 +351,6 @@ module Java::Net
     end
     
     typesig { [::Java::Boolean] }
-    # 
     # Specify whether user agent should discard the cookie unconditionally.
     # This is RFC 2965 only attribute.
     # 
@@ -374,7 +362,6 @@ module Java::Net
     end
     
     typesig { [] }
-    # 
     # Return the discard attribute of the cookie
     # 
     # @return  a <tt>boolean</tt> to represent this cookie's discard attribute
@@ -385,7 +372,6 @@ module Java::Net
     end
     
     typesig { [String] }
-    # 
     # Specify the portlist of the cookie, which restricts the port(s)
     # to which a cookie may be sent back in a Cookie header.
     # 
@@ -397,7 +383,6 @@ module Java::Net
     end
     
     typesig { [] }
-    # 
     # Return the port list attribute of the cookie
     # 
     # @return  a <tt>String</tt> contains the port list
@@ -408,8 +393,6 @@ module Java::Net
     end
     
     typesig { [String] }
-    # 
-    # 
     # Specifies the domain within which this cookie should be presented.
     # 
     # <p>The form of the domain name is specified by RFC 2965. A domain
@@ -434,7 +417,6 @@ module Java::Net
     end
     
     typesig { [] }
-    # 
     # Returns the domain name set for this cookie. The form of
     # the domain name is set by RFC 2965.
     # 
@@ -446,7 +428,6 @@ module Java::Net
     end
     
     typesig { [::Java::Long] }
-    # 
     # Sets the maximum age of the cookie in seconds.
     # 
     # <p>A positive value indicates that the cookie will expire
@@ -470,7 +451,6 @@ module Java::Net
     end
     
     typesig { [] }
-    # 
     # Returns the maximum age of the cookie, specified in seconds.
     # By default, <code>-1</code> indicating the cookie will persist
     # until browser shutdown.
@@ -486,7 +466,6 @@ module Java::Net
     end
     
     typesig { [String] }
-    # 
     # Specifies a path for the cookie
     # to which the client should return the cookie.
     # 
@@ -509,7 +488,6 @@ module Java::Net
     end
     
     typesig { [] }
-    # 
     # Returns the path on the server
     # to which the browser returns this cookie. The
     # cookie is visible to all subpaths on the server.
@@ -524,7 +502,6 @@ module Java::Net
     end
     
     typesig { [::Java::Boolean] }
-    # 
     # Indicates to the browser whether the cookie should only be sent
     # using a secure protocol, such as HTTPS or SSL.
     # 
@@ -540,7 +517,6 @@ module Java::Net
     end
     
     typesig { [] }
-    # 
     # Returns <code>true</code> if the browser is sending cookies
     # only over a secure protocol, or <code>false</code> if the
     # browser can send cookies using any protocol.
@@ -554,7 +530,6 @@ module Java::Net
     end
     
     typesig { [] }
-    # 
     # Returns the name of the cookie. The name cannot be changed after
     # creation.
     # 
@@ -564,8 +539,6 @@ module Java::Net
     end
     
     typesig { [String] }
-    # 
-    # 
     # Assigns a new value to a cookie after the cookie is created.
     # If you use a binary value, you may want to use BASE64 encoding.
     # 
@@ -584,7 +557,6 @@ module Java::Net
     end
     
     typesig { [] }
-    # 
     # Returns the value of the cookie.
     # 
     # @return                  a <code>String</code> containing the cookie's
@@ -596,7 +568,6 @@ module Java::Net
     end
     
     typesig { [] }
-    # 
     # Returns the version of the protocol this cookie complies
     # with. Version 1 complies with RFC 2965/2109,
     # and version 0 complies with the original
@@ -614,7 +585,6 @@ module Java::Net
     end
     
     typesig { [::Java::Int] }
-    # 
     # Sets the version of the cookie protocol this cookie complies
     # with. Version 0 complies with the original Netscape cookie
     # specification. Version 1 complies with RFC 2965/2109.
@@ -636,7 +606,6 @@ module Java::Net
     
     class_module.module_eval {
       typesig { [String, String] }
-      # 
       # The utility method to check whether a host name is in a domain
       # or not.
       # 
@@ -725,7 +694,6 @@ module Java::Net
     }
     
     typesig { [] }
-    # 
     # Constructs a cookie header string representation of this cookie,
     # which is in the format defined by corresponding cookie specification,
     # but without the leading "Cookie:" token.
@@ -740,7 +708,6 @@ module Java::Net
     end
     
     typesig { [Object] }
-    # 
     # Test the equality of two http cookies.
     # 
     # <p> The result is <tt>true</tt> only if two cookies
@@ -766,7 +733,6 @@ module Java::Net
     end
     
     typesig { [] }
-    # 
     # Return hash code of this http cookie. The result is the sum of
     # hash code value of three significant components of this cookie:
     # name, domain, and path.
@@ -786,7 +752,6 @@ module Java::Net
     end
     
     typesig { [] }
-    # 
     # Create and return a copy of this object.
     # 
     # @return          a clone of this http cookie
@@ -808,7 +773,6 @@ module Java::Net
       const_attr_reader  :Tspecials
       
       typesig { [String] }
-      # 
       # Tests a string and returns true if the string counts as a
       # token.
       # 
@@ -830,7 +794,6 @@ module Java::Net
       end
       
       typesig { [String] }
-      # 
       # @param name      the name to be tested
       # @return          <tt>true</tt> if the name is reserved by cookie
       # specification, <tt>false</tt> if it is not
@@ -846,7 +809,6 @@ module Java::Net
       end
       
       typesig { [String] }
-      # 
       # Parse header string to cookie object.
       # 
       # @param header    header string; should contain only one NAME=VALUE pair
@@ -879,22 +841,21 @@ module Java::Net
         while (tokenizer.has_more_tokens)
           namevalue_pair = (tokenizer.next_token).to_s
           index_ = namevalue_pair.index_of(Character.new(?=.ord))
-          name_ = nil
-          value_ = nil
+          name = nil
+          value = nil
           if (!(index_).equal?(-1))
-            name_ = (namevalue_pair.substring(0, index_).trim).to_s
-            value_ = (namevalue_pair.substring(index_ + 1).trim).to_s
+            name = (namevalue_pair.substring(0, index_).trim).to_s
+            value = (namevalue_pair.substring(index_ + 1).trim).to_s
           else
-            name_ = (namevalue_pair.trim).to_s
-            value_ = (nil).to_s
+            name = (namevalue_pair.trim).to_s
+            value = (nil).to_s
           end
           # assign attribute to cookie
-          assign_attribute(cookie, name_, value_)
+          assign_attribute(cookie, name, value)
         end
         return cookie
       end
       
-      # 
       # assign cookie attribute value to attribute name;
       # use a map to simulate method dispatch
       const_set_lazy(:CookieAttributeAssignor) { Module.new do
@@ -1141,7 +1102,6 @@ module Java::Net
     }
     
     typesig { [] }
-    # 
     # Constructs a string representation of this cookie. The string format is
     # as Netscape spec, but without leading "Cookie:" token.
     def to_netscape_header_string
@@ -1151,7 +1111,6 @@ module Java::Net
     end
     
     typesig { [] }
-    # 
     # Constructs a string representation of this cookie. The string format is
     # as RFC 2965/2109, but without leading "Cookie:" token.
     def to_rfc2965header_string
@@ -1170,7 +1129,6 @@ module Java::Net
     end
     
     typesig { [String] }
-    # 
     # @param dateString        a date string in format of
     # "EEE',' dd-MMM-yyyy HH:mm:ss 'GMT'",
     # which defined in Netscape cookie spec
@@ -1190,7 +1148,6 @@ module Java::Net
     
     class_module.module_eval {
       typesig { [String] }
-      # 
       # try to guess the cookie version through set-cookie header string
       def guess_cookie_version(header)
         version = 0
@@ -1260,7 +1217,6 @@ module Java::Net
       end
       
       typesig { [String] }
-      # 
       # Split cookie header string according to rfc 2965:
       # 1) split where it is a comma;
       # 2) but not the comma surrounding by double-quotes, which is the comma

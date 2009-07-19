@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
 # This code is free software; you can redistribute it and/or modify it
@@ -75,7 +74,6 @@ module Sun::Security::Krb5::Internal::Crypto
     end
     
     typesig { [Array.typed(::Java::Byte), ::Java::Int] }
-    # 
     # Calculates checksum using MD5.
     # @param data the input data.
     # @param size the length of data.
@@ -93,7 +91,7 @@ module Sun::Security::Krb5::Internal::Crypto
         md5.update(data)
         return (md5.digest)
       rescue Exception => e
-        raise KrbCryptoException.new(e_.get_message)
+        raise KrbCryptoException.new(e.get_message)
       end
     end
     

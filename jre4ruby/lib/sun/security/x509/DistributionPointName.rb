@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 2005 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -36,7 +35,6 @@ module Sun::Security::X509
     }
   end
   
-  # 
   # Represents the DistributionPointName ASN.1 type.
   # 
   # It is used in the CRL Distribution Points Extension (OID = 2.5.29.31)
@@ -115,7 +113,6 @@ module Sun::Security::X509
     undef_method :hash_code=
     
     typesig { [GeneralNames] }
-    # 
     # Creates a distribution point name using a full name.
     # 
     # @param fullName the name for the distribution point.
@@ -131,7 +128,6 @@ module Sun::Security::X509
     end
     
     typesig { [RDN] }
-    # 
     # Creates a distribution point name using a relative name.
     # 
     # @param relativeName the name of the distribution point relative to
@@ -148,7 +144,6 @@ module Sun::Security::X509
     end
     
     typesig { [DerValue] }
-    # 
     # Creates a distribution point name from its DER-encoded form.
     # 
     # @param encoding the DER-encoded value.
@@ -171,21 +166,18 @@ module Sun::Security::X509
     end
     
     typesig { [] }
-    # 
     # Returns the full name for the distribution point or null if not set.
     def get_full_name
       return @full_name
     end
     
     typesig { [] }
-    # 
     # Returns the relative name for the distribution point or null if not set.
     def get_relative_name
       return @relative_name
     end
     
     typesig { [DerOutputStream] }
-    # 
     # Encodes the distribution point name and writes it to the DerOutputStream.
     # 
     # @param out the output stream.
@@ -202,7 +194,6 @@ module Sun::Security::X509
     end
     
     typesig { [Object] }
-    # 
     # Compare an object to this distribution point name for equality.
     # 
     # @param obj Object to be compared to this
@@ -219,7 +210,6 @@ module Sun::Security::X509
     end
     
     typesig { [] }
-    # 
     # Returns the hash code for this distribution point name.
     # 
     # @return the hash code.
@@ -238,7 +228,6 @@ module Sun::Security::X509
     end
     
     typesig { [] }
-    # 
     # Returns a printable string of the distribution point name.
     def to_s
       sb = StringBuilder.new
@@ -252,7 +241,6 @@ module Sun::Security::X509
     
     class_module.module_eval {
       typesig { [Object, Object] }
-      # 
       # Utility function for a.equals(b) where both a and b may be null.
       def equals(a, b)
         return ((a).nil?) ? ((b).nil?) : (a == b)

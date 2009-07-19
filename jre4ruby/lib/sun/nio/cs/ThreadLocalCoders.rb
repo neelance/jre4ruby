@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 2001 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -33,7 +32,6 @@ module Sun::Nio::Cs
     }
   end
   
-  # 
   # Utility class for caching per-thread decoders and encoders.
   class ThreadLocalCoders 
     include_class_members ThreadLocalCodersImports
@@ -110,10 +108,10 @@ module Sun::Nio::Cs
             end
           end
           # Create a new object
-          ob_ = create(name)
-          oa[oa.attr_length - 1] = ob_
+          ob = create(name)
+          oa[oa.attr_length - 1] = ob
           move_to_front(oa, oa.attr_length - 1)
-          return ob_
+          return ob
         end
         
         private

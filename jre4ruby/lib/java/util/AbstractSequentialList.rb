@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 1997-2006 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -31,7 +30,6 @@ module Java::Util
     }
   end
   
-  # 
   # This class provides a skeletal implementation of the <tt>List</tt>
   # interface to minimize the effort required to implement this interface
   # backed by a "sequential access" data store (such as a linked list).  For
@@ -74,7 +72,6 @@ module Java::Util
     include_class_members AbstractSequentialListImports
     
     typesig { [] }
-    # 
     # Sole constructor.  (For invocation by subclass constructors, typically
     # implicit.)
     def initialize
@@ -82,7 +79,6 @@ module Java::Util
     end
     
     typesig { [::Java::Int] }
-    # 
     # Returns the element at the specified position in this list.
     # 
     # <p>This implementation first gets a list iterator pointing to the
@@ -99,7 +95,6 @@ module Java::Util
     end
     
     typesig { [::Java::Int, Object] }
-    # 
     # Replaces the element at the specified position in this list with the
     # specified element (optional operation).
     # 
@@ -129,7 +124,6 @@ module Java::Util
     end
     
     typesig { [::Java::Int, Object] }
-    # 
     # Inserts the specified element at the specified position in this list
     # (optional operation).  Shifts the element currently at that position
     # (if any) and any subsequent elements to the right (adds one to their
@@ -157,7 +151,6 @@ module Java::Util
     end
     
     typesig { [::Java::Int] }
-    # 
     # Removes the element at the specified position in this list (optional
     # operation).  Shifts any subsequent elements to the left (subtracts one
     # from their indices).  Returns the element that was removed from the
@@ -243,7 +236,6 @@ module Java::Util
     end
     
     typesig { [::Java::Int] }
-    # 
     # Returns a list iterator over the elements in this list (in proper
     # sequence).
     # 

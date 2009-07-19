@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 2000-2003 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -31,7 +30,6 @@ module Java::Nio
     }
   end
   
-  # 
   # A direct byte buffer whose content is a memory-mapped region of a file.
   # 
   # <p> Mapped byte buffers are created via the {@link
@@ -106,7 +104,6 @@ module Java::Nio
     end
     
     typesig { [] }
-    # 
     # Tells whether or not this buffer's content is resident in physical
     # memory.
     # 
@@ -132,7 +129,6 @@ module Java::Nio
     end
     
     typesig { [] }
-    # 
     # Loads this buffer's content into physical memory.
     # 
     # <p> This method makes a best effort to ensure that, when it returns,
@@ -151,7 +147,6 @@ module Java::Nio
     end
     
     typesig { [] }
-    # 
     # Forces any changes made to this buffer's content to be written to the
     # storage device containing the mapped file.
     # 

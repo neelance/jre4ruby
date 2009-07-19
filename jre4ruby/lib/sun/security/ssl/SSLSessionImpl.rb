@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 1996-2007 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -51,7 +50,6 @@ module Sun::Security::Ssl
     }
   end
   
-  # 
   # Implements the SSL session interface, and exposes the session context
   # which is maintained by SSL servers.
   # 
@@ -73,7 +71,6 @@ module Sun::Security::Ssl
     include SSLSession
     
     class_module.module_eval {
-      # 
       # we only really need a single null session
       const_set_lazy(:NullSession) { SSLSessionImpl.new }
       const_attr_reader  :NullSession
@@ -83,7 +80,6 @@ module Sun::Security::Ssl
       const_attr_reader  :Compression_null
     }
     
-    # 
     # The state of a single session, as described in section 7.1
     # of the SSLv3 spec.
     attr_accessor :protocol_version
@@ -122,7 +118,6 @@ module Sun::Security::Ssl
     alias_method :attr_master_secret=, :master_secret=
     undef_method :master_secret=
     
-    # 
     # Information not part of the SSLv3 protocol spec, but used
     # to support session management policies.
     attr_accessor :creation_time
@@ -193,7 +188,6 @@ module Sun::Security::Ssl
     undef_method :local_principal=
     
     class_module.module_eval {
-      # 
       # We count session creations, eventually for statistical data but
       # also since counters make shorter debugging IDs than the big ones
       # we use in the protocol for uniqueness-over-time.
@@ -208,7 +202,6 @@ module Sun::Security::Ssl
       end
       alias_method :attr_counter=, :counter=
       
-      # 
       # Use of session caches is globally enabled/disabled.
       
       def default_rejoinable
@@ -227,7 +220,6 @@ module Sun::Security::Ssl
     }
     
     typesig { [] }
-    # 
     # Create a new non-rejoinable session, using the default (null)
     # cipher spec.  This constructor returns a session which could
     # be used either by a client or by a server, as a connection is
@@ -237,7 +229,6 @@ module Sun::Security::Ssl
     end
     
     typesig { [ProtocolVersion, CipherSuite, SecureRandom, String, ::Java::Int] }
-    # 
     # Create a new session, using a given cipher spec.  This will
     # be rejoinable if session caching is enabled; the constructor
     # is intended mostly for use by serves.
@@ -246,7 +237,6 @@ module Sun::Security::Ssl
     end
     
     typesig { [ProtocolVersion, CipherSuite, SessionId, String, ::Java::Int] }
-    # 
     # Record a new session, using a given cipher spec and session ID.
     def initialize(protocol_version, cipher_suite, id, host, port)
       @protocol_version = nil
@@ -292,7 +282,6 @@ module Sun::Security::Ssl
     end
     
     typesig { [] }
-    # 
     # Returns the master secret ... treat with extreme caution!
     def get_master_secret
       return @master_secret
@@ -316,7 +305,6 @@ module Sun::Security::Ssl
     end
     
     typesig { [Principal] }
-    # 
     # Set the peer principal.
     def set_peer_principal(principal)
       if ((@peer_principal).nil?)
@@ -325,14 +313,12 @@ module Sun::Security::Ssl
     end
     
     typesig { [Principal] }
-    # 
     # Set the local principal.
     def set_local_principal(principal)
       @local_principal = principal
     end
     
     typesig { [] }
-    # 
     # Returns true iff this session may be resumed ... sessions are
     # usually resumable.  Security policies may suggest otherwise,
     # for example sessions that haven't been used for a while (say,
@@ -350,7 +336,6 @@ module Sun::Security::Ssl
     end
     
     typesig { [] }
-    # 
     # Check if the authentication used when establishing this session
     # is still valid. Returns true if no authentication was used
     def is_local_authentication_valid
@@ -369,7 +354,6 @@ module Sun::Security::Ssl
     end
     
     typesig { [] }
-    # 
     # Returns the ID for this session.  The ID is fixed for the
     # duration of the session; neither it, nor its value, changes.
     def get_id
@@ -377,12 +361,10 @@ module Sun::Security::Ssl
     end
     
     typesig { [] }
-    # 
     # For server sessions, this returns the set of sessions which
     # are currently valid in this process.  For client sessions,
     # this returns null.
     def get_session_context
-      # 
       # An interim security policy until we can do something
       # more specific in 1.2. Only allow trusted code (code which
       # can set system properties) to get an
@@ -404,14 +386,12 @@ module Sun::Security::Ssl
     end
     
     typesig { [] }
-    # 
     # Returns the cipher spec in use on this session
     def get_suite
       return @cipher_suite
     end
     
     typesig { [] }
-    # 
     # Returns the name of the cipher suite in use on this session
     def get_cipher_suite
       return get_suite.attr_name
@@ -423,28 +403,24 @@ module Sun::Security::Ssl
     end
     
     typesig { [] }
-    # 
     # Returns the standard name of the protocol in use on this session
     def get_protocol
       return get_protocol_version.attr_name
     end
     
     typesig { [] }
-    # 
     # Returns the compression technique used in this session
     def get_compression
       return @compression_method
     end
     
     typesig { [] }
-    # 
     # Returns the hashcode for this session
     def hash_code
       return @session_id.hash_code
     end
     
     typesig { [Object] }
-    # 
     # Returns true if sessions have same ids, false otherwise.
     def equals(obj)
       if ((obj).equal?(self))
@@ -458,7 +434,6 @@ module Sun::Security::Ssl
     end
     
     typesig { [] }
-    # 
     # Return the cert chain presented by the peer in the
     # java.security.cert format.
     # Note: This method can be used only when using certificate-based
@@ -468,7 +443,6 @@ module Sun::Security::Ssl
     # @return array of peer X.509 certs, with the peer's own cert
     # first in the chain, and with the "root" CA last.
     def get_peer_certificates
-      # 
       # clone to preserve integrity of session ... caller can't
       # change record of peer identity even by accident, much
       # less do it intentionally.
@@ -485,7 +459,6 @@ module Sun::Security::Ssl
     end
     
     typesig { [] }
-    # 
     # Return the cert chain presented to the peer in the
     # java.security.cert format.
     # Note: This method is useful only when using certificate-based
@@ -494,7 +467,6 @@ module Sun::Security::Ssl
     # @return array of peer X.509 certs, with the peer's own cert
     # first in the chain, and with the "root" CA last.
     def get_local_certificates
-      # 
       # clone to preserve integrity of session ... caller can't
       # change record of peer identity even by accident, much
       # less do it intentionally.
@@ -502,7 +474,6 @@ module Sun::Security::Ssl
     end
     
     typesig { [] }
-    # 
     # Return the cert chain presented by the peer in the
     # javax.security.cert format.
     # Note: This method can be used only when using certificate-based
@@ -512,7 +483,6 @@ module Sun::Security::Ssl
     # @return array of peer X.509 certs, with the peer's own cert
     # first in the chain, and with the "root" CA last.
     def get_peer_certificate_chain
-      # 
       # clone to preserve integrity of session ... caller can't
       # change record of peer identity even by accident, much
       # less do it intentionally.
@@ -533,7 +503,7 @@ module Sun::Security::Ssl
         rescue CertificateEncodingException => e
           raise SSLPeerUnverifiedException.new(e.get_message)
         rescue Javax::Security::Cert::CertificateException => e
-          raise SSLPeerUnverifiedException.new(e_.get_message)
+          raise SSLPeerUnverifiedException.new(e.get_message)
         end
         ((i += 1) - 1)
       end
@@ -541,7 +511,6 @@ module Sun::Security::Ssl
     end
     
     typesig { [] }
-    # 
     # Return the cert chain presented by the peer.
     # Note: This method can be used only when using certificate-based
     # cipher suites; using it with non-certificate-based cipher suites,
@@ -550,7 +519,6 @@ module Sun::Security::Ssl
     # @return array of peer X.509 certs, with the peer's own cert
     # first in the chain, and with the "root" CA last.
     def get_certificate_chain
-      # 
       # clone to preserve integrity of session ... caller can't
       # change record of peer identity even by accident, much
       # less do it intentionally.
@@ -565,7 +533,6 @@ module Sun::Security::Ssl
     end
     
     typesig { [] }
-    # 
     # Returns the identity of the peer which was established as part of
     # defining the session.
     # 
@@ -590,7 +557,6 @@ module Sun::Security::Ssl
     end
     
     typesig { [] }
-    # 
     # Returns the principal that was sent to the peer during handshaking.
     # 
     # @return the principal sent to the peer. Returns an X500Principal
@@ -605,14 +571,12 @@ module Sun::Security::Ssl
     end
     
     typesig { [] }
-    # 
     # Returns the time this session was created.
     def get_creation_time
       return @creation_time
     end
     
     typesig { [] }
-    # 
     # Returns the last time this session was used to initialize
     # a connection.
     def get_last_accessed_time
@@ -625,7 +589,6 @@ module Sun::Security::Ssl
     end
     
     typesig { [] }
-    # 
     # Returns the network address of the session's peer.  This
     # implementation does not insist that connections between
     # different ports on the same host must necessarily belong
@@ -644,7 +607,6 @@ module Sun::Security::Ssl
     end
     
     typesig { [] }
-    # 
     # Need to provide the port info for caching sessions based on
     # host and port. Accessed by SSLSessionContextImpl
     def get_peer_port
@@ -659,12 +621,10 @@ module Sun::Security::Ssl
     end
     
     typesig { [] }
-    # 
     # Invalidate a session.  Active connections may still exist, but
     # no connections will be able to rejoin this session.
     def invalidate
       synchronized(self) do
-        # 
         # Can't invalidate the NULL session -- this would be
         # attempted when we get a handshaking error on a brand
         # new connection, with no "real" session yet.
@@ -682,7 +642,6 @@ module Sun::Security::Ssl
       end
     end
     
-    # 
     # Table of application-specific session data indexed by an application
     # key and the calling security context. This is important since
     # sessions can be shared across different protection domains.
@@ -693,7 +652,6 @@ module Sun::Security::Ssl
     undef_method :table=
     
     typesig { [String, Object] }
-    # 
     # Assigns a session value.  Session change events are given if
     # appropriate, to any original value as well as the new value.
     def put_value(key, value)
@@ -708,14 +666,13 @@ module Sun::Security::Ssl
         (old_value).value_unbound(e)
       end
       if (value.is_a?(SSLSessionBindingListener))
-        e_ = nil
-        e_ = SSLSessionBindingEvent.new(self, key)
-        (value).value_bound(e_)
+        e = nil
+        e = SSLSessionBindingEvent.new(self, key)
+        (value).value_bound(e)
       end
     end
     
     typesig { [String] }
-    # 
     # Returns the specified session value.
     def get_value(key)
       if ((key).nil?)
@@ -726,7 +683,6 @@ module Sun::Security::Ssl
     end
     
     typesig { [String] }
-    # 
     # Removes the specified session value, delivering a session changed
     # event as appropriate.
     def remove_value(key)
@@ -743,7 +699,6 @@ module Sun::Security::Ssl
     end
     
     typesig { [] }
-    # 
     # Lists the names of the session values.
     def get_value_names
       e = nil
@@ -762,7 +717,6 @@ module Sun::Security::Ssl
       return names
     end
     
-    # 
     # Use large packet sizes now or follow RFC 2246 packet sizes (2^14)
     # until changed.
     # 
@@ -781,7 +735,6 @@ module Sun::Security::Ssl
     undef_method :accept_large_fragments=
     
     typesig { [] }
-    # 
     # Expand the buffer size of both SSL/TLS network packet and
     # application data.
     def expand_buffer_sizes
@@ -791,7 +744,6 @@ module Sun::Security::Ssl
     end
     
     typesig { [] }
-    # 
     # Gets the current size of the largest SSL/TLS packet that is expected
     # when using this session.
     def get_packet_buffer_size
@@ -801,7 +753,6 @@ module Sun::Security::Ssl
     end
     
     typesig { [] }
-    # 
     # Gets the current size of the largest application data that is
     # expected when using this session.
     def get_application_buffer_size
@@ -817,7 +768,6 @@ module Sun::Security::Ssl
     end
     
     typesig { [] }
-    # 
     # When SSL sessions are finalized, all values bound to
     # them are removed.
     def finalize
@@ -833,7 +783,6 @@ module Sun::Security::Ssl
     alias_method :initialize__sslsession_impl, :initialize
   end
   
-  # 
   # This "struct" class serves as a Hash Key that combines an
   # application-specific key and a security context.
   class SecureKey 

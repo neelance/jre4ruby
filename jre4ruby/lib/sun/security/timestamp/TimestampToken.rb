@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 2003 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -37,7 +36,6 @@ module Sun::Security::Timestamp
     }
   end
   
-  # 
   # This class provides the timestamp token info resulting from a successful
   # timestamp request, as defined in
   # <a href="http://www.ietf.org/rfc/rfc3161.txt">RFC 3161</a>.
@@ -119,7 +117,6 @@ module Sun::Security::Timestamp
     undef_method :nonce=
     
     typesig { [Array.typed(::Java::Byte)] }
-    # 
     # Constructs an object to store a timestamp token.
     # 
     # @param status A buffer containing the ASN.1 BER encoding of the
@@ -139,7 +136,6 @@ module Sun::Security::Timestamp
     end
     
     typesig { [] }
-    # 
     # Extract the date and time from the timestamp token.
     # 
     # @return The date and time when the timestamp was generated.
@@ -164,7 +160,6 @@ module Sun::Security::Timestamp
     end
     
     typesig { [Array.typed(::Java::Byte)] }
-    # 
     # Parses the timestamp token info.
     # 
     # @param timestampTokenInfo A buffer containing an ASN.1 BER encoded

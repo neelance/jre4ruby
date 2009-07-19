@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 2000-2007 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -212,7 +211,6 @@ module Java::Net
     end
     
     typesig { [::Java::Byte, InputStream, BufferedOutputStream] }
-    # 
     # Provides the authentication machanism required by the proxy.
     def authenticate(method, in_, out)
       data = nil
@@ -221,7 +219,6 @@ module Java::Net
       if ((method).equal?(NO_AUTH))
         return true
       end
-      # 
       # User/Password authentication. Try, in that order :
       # - The application provided Authenticator, if any
       # - The user preferences java.net.socks.username &
@@ -297,7 +294,7 @@ module Java::Net
                 alias_method :initialize_anonymous, :initialize
               end.new_local(self))).to_s
             rescue Java::Security::PrivilegedActionException => pae
-              raise pae_.get_exception
+              raise pae.get_exception
             end
           else
             user_name = (Java::Security::AccessController.do_privileged(Sun::Security::Action::GetPropertyAction.new("user.name"))).to_s
@@ -336,7 +333,6 @@ module Java::Net
         # Authentication succeeded
         return true
       end
-      # 
       # GSSAPI authentication mechanism.
       # Unfortunately the RFC seems out of sync with the Reference
       # implementation. I'll leave this in for future completion.
@@ -441,7 +437,6 @@ module Java::Net
     end
     
     typesig { [SocketAddress, ::Java::Int] }
-    # 
     # Connects the Socks Socket to the specified endpoint. It will first
     # connect to the SOCKS proxy and negotiate the access. If the proxy
     # grants the connections, then the connect is successful and all
@@ -490,7 +485,6 @@ module Java::Net
           alias_method :initialize_anonymous, :initialize
         end.new_local(self))
         if ((sel).nil?)
-          # 
           # No default proxySelector --> direct connection
           super(epoint, timeout)
           return
@@ -538,14 +532,13 @@ module Java::Net
             break
           rescue IOException => e
             # Ooops, let's notify the ProxySelector
-            sel.connect_failed(uri, p.address, e_)
+            sel.connect_failed(uri, p.address, e)
             @server = (nil).to_s
             @port = -1
-            saved_exc = e_
+            saved_exc = e
             # Will continue the while loop and try the next proxy
           end
         end
-        # 
         # If server is still null at this point, none of the proxy
         # worked
         if ((@server).nil?)
@@ -556,7 +549,7 @@ module Java::Net
         begin
           privileged_connect(@server, @port, timeout)
         rescue IOException => e
-          raise SocketException.new(e__.get_message)
+          raise SocketException.new(e.get_message)
         end
       end
       # cmdIn & cmdOut were intialized during the privilegedConnect() call
@@ -652,8 +645,8 @@ module Java::Net
           nport += (RJava.cast_to_int(data[1]) & 0xff)
         when DOMAIN_NAME
           len = data[1]
-          host_ = Array.typed(::Java::Byte).new(len) { 0 }
-          i = read_socks_reply(in_, host_)
+          host = Array.typed(::Java::Byte).new(len) { 0 }
+          i = read_socks_reply(in_, host)
           if (!(i).equal?(len))
             raise SocketException.new("Reply from SOCKS server badly formatted")
           end
@@ -762,7 +755,6 @@ module Java::Net
     end
     
     typesig { [InetSocketAddress] }
-    # 
     # Sends the Bind request to the SOCKS proxy. In the SOCKS protocol, bind
     # means "accept incoming connection from", so the SocketAddress is the
     # the one of the host we do accept connection from.
@@ -800,7 +792,6 @@ module Java::Net
             alias_method :initialize_anonymous, :initialize
           end.new_local(self))
           if ((sel).nil?)
-            # 
             # No default proxySelector --> direct connection
             return
           end
@@ -864,15 +855,14 @@ module Java::Net
               end.new_local(self))
             rescue Exception => e
               # Ooops, let's notify the ProxySelector
-              sel.connect_failed(uri, p.address, SocketException.new(e_.get_message))
+              sel.connect_failed(uri, p.address, SocketException.new(e.get_message))
               @server = (nil).to_s
               @port = -1
               @cmdsock = nil
-              saved_exc = e_
+              saved_exc = e
               # Will continue the while loop and try the next proxy
             end
           end
-          # 
           # If server is still null at this point, none of the proxy
           # worked
           if ((@server).nil? || (@cmdsock).nil?)
@@ -903,7 +893,7 @@ module Java::Net
               alias_method :initialize_anonymous, :initialize
             end.new_local(self))
           rescue Exception => e
-            raise SocketException.new(e__.get_message)
+            raise SocketException.new(e.get_message)
           end
         end
         out = BufferedOutputStream.new(@cmd_out, 512)
@@ -956,9 +946,9 @@ module Java::Net
             out.flush
           else
             if (saddr.get_address.is_a?(Inet6Address))
-              addr1_ = saddr.get_address.get_address
+              addr1 = saddr.get_address.get_address
               out.write(IPV6)
-              out.write(addr1_)
+              out.write(addr1)
               out.write((lport >> 8) & 0xff)
               out.write((lport >> 0) & 0xff)
               out.flush
@@ -995,8 +985,8 @@ module Java::Net
             @external_address = InetSocketAddress.new(Inet4Address.new("", addr), nport)
           when DOMAIN_NAME
             len = data[1]
-            host_ = Array.typed(::Java::Byte).new(len) { 0 }
-            i = read_socks_reply(in_, host_)
+            host = Array.typed(::Java::Byte).new(len) { 0 }
+            i = read_socks_reply(in_, host)
             if (!(i).equal?(len))
               raise SocketException.new("Reply from SOCKS server badly formatted")
             end
@@ -1007,7 +997,7 @@ module Java::Net
             end
             nport = (RJava.cast_to_int(data[0]) & 0xff) << 8
             nport += (RJava.cast_to_int(data[1]) & 0xff)
-            @external_address = InetSocketAddress.new(String.new(host_), nport)
+            @external_address = InetSocketAddress.new(String.new(host), nport)
           when IPV6
             len = data[1]
             addr = Array.typed(::Java::Byte).new(len) { 0 }
@@ -1054,7 +1044,6 @@ module Java::Net
     end
     
     typesig { [SocketImpl, InetSocketAddress] }
-    # 
     # Accepts a connection from a specific host.
     # 
     # @param      s   the accepted connection.
@@ -1126,7 +1115,6 @@ module Java::Net
         @cmdsock = nil
         raise ex
       end
-      # 
       # This is where we have to do some fancy stuff.
       # The datastream from the socket "accepted" by the proxy will
       # come through the cmdSocket. So we have to swap the socketImpls
@@ -1154,7 +1142,6 @@ module Java::Net
     end
     
     typesig { [] }
-    # 
     # Returns the value of this socket's <code>address</code> field.
     # 
     # @return  the value of this socket's <code>address</code> field.
@@ -1168,7 +1155,6 @@ module Java::Net
     end
     
     typesig { [] }
-    # 
     # Returns the value of this socket's <code>port</code> field.
     # 
     # @return  the value of this socket's <code>port</code> field.

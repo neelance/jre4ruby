@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 1995-1997 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -30,7 +29,6 @@ module Java::Lang
     }
   end
   
-  # 
   # Thrown when a particular method cannot be found.
   # 
   # @author     unascribed
@@ -39,14 +37,12 @@ module Java::Lang
     include_class_members NoSuchMethodExceptionImports
     
     typesig { [] }
-    # 
     # Constructs a <code>NoSuchMethodException</code> without a detail message.
     def initialize
       super()
     end
     
     typesig { [String] }
-    # 
     # Constructs a <code>NoSuchMethodException</code> with a detail message.
     # 
     # @param      s   the detail message.

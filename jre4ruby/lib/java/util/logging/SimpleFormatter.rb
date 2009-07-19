@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 2000-2006 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -34,7 +33,6 @@ module Java::Util::Logging
     }
   end
   
-  # 
   # Print a brief summary of the LogRecord in a human readable
   # format.  The summary will typically be 1 or 2 lines.
   # 
@@ -74,7 +72,6 @@ module Java::Util::Logging
     undef_method :line_separator=
     
     typesig { [LogRecord] }
-    # 
     # Format the given LogRecord.
     # <p>
     # This method can be overridden in a subclass.

@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 1994-1995 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -31,7 +30,6 @@ module Sun::Misc
     }
   end
   
-  # 
   # The CRC-16 class calculates a 16 bit cyclic redundancy check of a set
   # of bytes. This error detecting code is used to determine if bit rot
   # has occured in a byte stream.

@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
 # This code is free software; you can redistribute it and/or modify it
@@ -40,7 +39,6 @@ module Java::Util
     }
   end
   
-  # 
   # A {@link SortedMap} extended with navigation methods returning the
   # closest matches for given search targets. Methods
   # {@code lowerEntry}, {@code floorEntry}, {@code ceilingEntry},
@@ -101,7 +99,6 @@ module Java::Util
     include SortedMap
     
     typesig { [Object] }
-    # 
     # Returns a key-value mapping associated with the greatest key
     # strictly less than the given key, or {@code null} if there is
     # no such key.
@@ -118,7 +115,6 @@ module Java::Util
     end
     
     typesig { [Object] }
-    # 
     # Returns the greatest key strictly less than the given key, or
     # {@code null} if there is no such key.
     # 
@@ -134,7 +130,6 @@ module Java::Util
     end
     
     typesig { [Object] }
-    # 
     # Returns a key-value mapping associated with the greatest key
     # less than or equal to the given key, or {@code null} if there
     # is no such key.
@@ -151,7 +146,6 @@ module Java::Util
     end
     
     typesig { [Object] }
-    # 
     # Returns the greatest key less than or equal to the given key,
     # or {@code null} if there is no such key.
     # 
@@ -167,7 +161,6 @@ module Java::Util
     end
     
     typesig { [Object] }
-    # 
     # Returns a key-value mapping associated with the least key
     # greater than or equal to the given key, or {@code null} if
     # there is no such key.
@@ -184,7 +177,6 @@ module Java::Util
     end
     
     typesig { [Object] }
-    # 
     # Returns the least key greater than or equal to the given key,
     # or {@code null} if there is no such key.
     # 
@@ -200,7 +192,6 @@ module Java::Util
     end
     
     typesig { [Object] }
-    # 
     # Returns a key-value mapping associated with the least key
     # strictly greater than the given key, or {@code null} if there
     # is no such key.
@@ -217,7 +208,6 @@ module Java::Util
     end
     
     typesig { [Object] }
-    # 
     # Returns the least key strictly greater than the given key, or
     # {@code null} if there is no such key.
     # 
@@ -233,7 +223,6 @@ module Java::Util
     end
     
     typesig { [] }
-    # 
     # Returns a key-value mapping associated with the least
     # key in this map, or {@code null} if the map is empty.
     # 
@@ -244,7 +233,6 @@ module Java::Util
     end
     
     typesig { [] }
-    # 
     # Returns a key-value mapping associated with the greatest
     # key in this map, or {@code null} if the map is empty.
     # 
@@ -255,7 +243,6 @@ module Java::Util
     end
     
     typesig { [] }
-    # 
     # Removes and returns a key-value mapping associated with
     # the least key in this map, or {@code null} if the map is empty.
     # 
@@ -266,7 +253,6 @@ module Java::Util
     end
     
     typesig { [] }
-    # 
     # Removes and returns a key-value mapping associated with
     # the greatest key in this map, or {@code null} if the map is empty.
     # 
@@ -277,7 +263,6 @@ module Java::Util
     end
     
     typesig { [] }
-    # 
     # Returns a reverse order view of the mappings contained in this map.
     # The descending map is backed by this map, so changes to the map are
     # reflected in the descending map, and vice-versa.  If either map is
@@ -296,7 +281,6 @@ module Java::Util
     end
     
     typesig { [] }
-    # 
     # Returns a {@link NavigableSet} view of the keys contained in this map.
     # The set's iterator returns the keys in ascending order.
     # The set is backed by the map, so changes to the map are reflected in
@@ -314,7 +298,6 @@ module Java::Util
     end
     
     typesig { [] }
-    # 
     # Returns a reverse order {@link NavigableSet} view of the keys contained in this map.
     # The set's iterator returns the keys in descending order.
     # The set is backed by the map, so changes to the map are reflected in
@@ -332,7 +315,6 @@ module Java::Util
     end
     
     typesig { [Object, ::Java::Boolean, Object, ::Java::Boolean] }
-    # 
     # Returns a view of the portion of this map whose keys range from
     # {@code fromKey} to {@code toKey}.  If {@code fromKey} and
     # {@code toKey} are equal, the returned map is empty unless
@@ -370,7 +352,6 @@ module Java::Util
     end
     
     typesig { [Object, ::Java::Boolean] }
-    # 
     # Returns a view of the portion of this map whose keys are less than (or
     # equal to, if {@code inclusive} is true) {@code toKey}.  The returned
     # map is backed by this map, so changes in the returned map are reflected
@@ -401,7 +382,6 @@ module Java::Util
     end
     
     typesig { [Object, ::Java::Boolean] }
-    # 
     # Returns a view of the portion of this map whose keys are greater than (or
     # equal to, if {@code inclusive} is true) {@code fromKey}.  The returned
     # map is backed by this map, so changes in the returned map are reflected
@@ -432,7 +412,6 @@ module Java::Util
     end
     
     typesig { [Object, Object] }
-    # 
     # {@inheritDoc}
     # 
     # <p>Equivalent to {@code subMap(fromKey, true, toKey, false)}.
@@ -445,7 +424,6 @@ module Java::Util
     end
     
     typesig { [Object] }
-    # 
     # {@inheritDoc}
     # 
     # <p>Equivalent to {@code headMap(toKey, false)}.
@@ -458,7 +436,6 @@ module Java::Util
     end
     
     typesig { [Object] }
-    # 
     # {@inheritDoc}
     # 
     # <p>Equivalent to {@code tailMap(fromKey, true)}.

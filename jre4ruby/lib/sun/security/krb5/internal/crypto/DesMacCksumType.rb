@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
 # This code is free software; you can redistribute it and/or modify it
@@ -84,7 +83,6 @@ module Sun::Security::Krb5::Internal::Crypto
     end
     
     typesig { [Array.typed(::Java::Byte), ::Java::Int, Array.typed(::Java::Byte), ::Java::Int] }
-    # 
     # Calculates keyed checksum.
     # @param data the data used to generate the checksum.
     # @param size length of the data.
@@ -133,7 +131,6 @@ module Sun::Security::Krb5::Internal::Crypto
     end
     
     typesig { [Array.typed(::Java::Byte), ::Java::Int, Array.typed(::Java::Byte), Array.typed(::Java::Byte), ::Java::Int] }
-    # 
     # Verifies keyed checksum.
     # @param data the data.
     # @param size the length of data.
@@ -163,7 +160,6 @@ module Sun::Security::Krb5::Internal::Crypto
     end
     
     typesig { [Array.typed(::Java::Byte), Array.typed(::Java::Byte)] }
-    # 
     # Decrypts keyed checksum.
     # @param enc_cksum the buffer for encrypted checksum.
     # @param key the key.

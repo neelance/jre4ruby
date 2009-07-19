@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 1997-2006 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -38,7 +37,6 @@ module Java::Security
     }
   end
   
-  # 
   # This class represents a storage facility for cryptographic
   # keys and certificates.
   # 
@@ -178,7 +176,6 @@ module Java::Security
     include_class_members KeyStoreImports
     
     class_module.module_eval {
-      # 
       # Constant to lookup in the Security properties file to determine
       # the default keystore type.
       # In the Security properties file, the default keystore type is given as:
@@ -218,7 +215,6 @@ module Java::Security
     undef_method :initialized=
     
     class_module.module_eval {
-      # 
       # A marker interface for <code>KeyStore</code>
       # {@link #load(KeyStore.LoadStoreParameter) load}
       # and
@@ -230,7 +226,6 @@ module Java::Security
         include_class_members KeyStore
         
         typesig { [] }
-        # 
         # Gets the parameter used to protect keystore data.
         # 
         # @return the parameter used to protect keystore data, or null
@@ -239,7 +234,6 @@ module Java::Security
         end
       end }
       
-      # 
       # A marker interface for keystore protection parameters.
       # 
       # <p> The information stored in a <code>ProtectionParameter</code>
@@ -254,7 +248,6 @@ module Java::Security
         include_class_members KeyStore
       end }
       
-      # 
       # A password-based implementation of <code>ProtectionParameter</code>.
       # 
       # @since 1.5
@@ -276,7 +269,6 @@ module Java::Security
         undef_method :destroyed=
         
         typesig { [Array.typed(::Java::Char)] }
-        # 
         # Creates a password parameter.
         # 
         # <p> The specified <code>password</code> is cloned before it is stored
@@ -290,7 +282,6 @@ module Java::Security
         end
         
         typesig { [] }
-        # 
         # Gets the password.
         # 
         # <p>Note that this method returns a reference to the password.
@@ -312,7 +303,6 @@ module Java::Security
         end
         
         typesig { [] }
-        # 
         # Clears the password.
         # 
         # @exception DestroyFailedException if this method was unable
@@ -327,7 +317,6 @@ module Java::Security
         end
         
         typesig { [] }
-        # 
         # Determines if password has been cleared.
         # 
         # @return true if the password has been cleared, false otherwise
@@ -341,7 +330,6 @@ module Java::Security
         alias_method :initialize__password_protection, :initialize
       end }
       
-      # 
       # A ProtectionParameter encapsulating a CallbackHandler.
       # 
       # @since 1.5
@@ -356,7 +344,6 @@ module Java::Security
         undef_method :handler=
         
         typesig { [CallbackHandler] }
-        # 
         # Constructs a new CallbackHandlerProtection from a
         # CallbackHandler.
         # 
@@ -371,7 +358,6 @@ module Java::Security
         end
         
         typesig { [] }
-        # 
         # Returns the CallbackHandler.
         # 
         # @return the CallbackHandler.
@@ -383,7 +369,6 @@ module Java::Security
         alias_method :initialize__callback_handler_protection, :initialize
       end }
       
-      # 
       # A marker interface for <code>KeyStore</code> entry types.
       # 
       # @since 1.5
@@ -391,7 +376,6 @@ module Java::Security
         include_class_members KeyStore
       end }
       
-      # 
       # A <code>KeyStore</code> entry that holds a <code>PrivateKey</code>
       # and corresponding certificate chain.
       # 
@@ -413,7 +397,6 @@ module Java::Security
         undef_method :chain=
         
         typesig { [PrivateKey, Array.typed(Certificate)] }
-        # 
         # Constructs a <code>PrivateKeyEntry</code> with a
         # <code>PrivateKey</code> and corresponding certificate chain.
         # 
@@ -467,7 +450,6 @@ module Java::Security
         end
         
         typesig { [] }
-        # 
         # Gets the <code>PrivateKey</code> from this entry.
         # 
         # @return the <code>PrivateKey</code> from this entry
@@ -476,7 +458,6 @@ module Java::Security
         end
         
         typesig { [] }
-        # 
         # Gets the <code>Certificate</code> chain from this entry.
         # 
         # <p> The stored chain is cloned before being returned.
@@ -491,7 +472,6 @@ module Java::Security
         end
         
         typesig { [] }
-        # 
         # Gets the end entity <code>Certificate</code>
         # from the certificate chain in this entry.
         # 
@@ -505,7 +485,6 @@ module Java::Security
         end
         
         typesig { [] }
-        # 
         # Returns a string representation of this PrivateKeyEntry.
         # @return a string representation of this PrivateKeyEntry.
         def to_s
@@ -522,7 +501,6 @@ module Java::Security
         alias_method :initialize__private_key_entry, :initialize
       end }
       
-      # 
       # A <code>KeyStore</code> entry that holds a <code>SecretKey</code>.
       # 
       # @since 1.5
@@ -537,7 +515,6 @@ module Java::Security
         undef_method :s_key=
         
         typesig { [SecretKey] }
-        # 
         # Constructs a <code>SecretKeyEntry</code> with a
         # <code>SecretKey</code>.
         # 
@@ -554,7 +531,6 @@ module Java::Security
         end
         
         typesig { [] }
-        # 
         # Gets the <code>SecretKey</code> from this entry.
         # 
         # @return the <code>SecretKey</code> from this entry
@@ -563,7 +539,6 @@ module Java::Security
         end
         
         typesig { [] }
-        # 
         # Returns a string representation of this SecretKeyEntry.
         # @return a string representation of this SecretKeyEntry.
         def to_s
@@ -574,7 +549,6 @@ module Java::Security
         alias_method :initialize__secret_key_entry, :initialize
       end }
       
-      # 
       # A <code>KeyStore</code> entry that holds a trusted
       # <code>Certificate</code>.
       # 
@@ -590,7 +564,6 @@ module Java::Security
         undef_method :cert=
         
         typesig { [Certificate] }
-        # 
         # Constructs a <code>TrustedCertificateEntry</code> with a
         # trusted <code>Certificate</code>.
         # 
@@ -607,7 +580,6 @@ module Java::Security
         end
         
         typesig { [] }
-        # 
         # Gets the trusted <code>Certficate</code> from this entry.
         # 
         # @return the trusted <code>Certificate</code> from this entry
@@ -616,7 +588,6 @@ module Java::Security
         end
         
         typesig { [] }
-        # 
         # Returns a string representation of this TrustedCertificateEntry.
         # @return a string representation of this TrustedCertificateEntry.
         def to_s
@@ -629,7 +600,6 @@ module Java::Security
     }
     
     typesig { [KeyStoreSpi, Provider, String] }
-    # 
     # Creates a KeyStore object of the given type, and encapsulates the given
     # provider implementation (SPI object) in it.
     # 
@@ -648,7 +618,6 @@ module Java::Security
     
     class_module.module_eval {
       typesig { [String] }
-      # 
       # Returns a keystore object of the specified type.
       # 
       # <p> This method traverses the list of registered security Providers,
@@ -685,7 +654,6 @@ module Java::Security
       end
       
       typesig { [String, String] }
-      # 
       # Returns a keystore object of the specified type.
       # 
       # <p> A new KeyStore object encapsulating the
@@ -730,7 +698,6 @@ module Java::Security
       end
       
       typesig { [String, Provider] }
-      # 
       # Returns a keystore object of the specified type.
       # 
       # <p> A new KeyStore object encapsulating the
@@ -770,7 +737,6 @@ module Java::Security
       end
       
       typesig { [] }
-      # 
       # Returns the default keystore type as specified in the Java security
       # properties file, or the string
       # &quot;jks&quot; (acronym for &quot;Java keystore&quot;)
@@ -820,7 +786,6 @@ module Java::Security
     }
     
     typesig { [] }
-    # 
     # Returns the provider of this keystore.
     # 
     # @return the provider of this keystore.
@@ -829,7 +794,6 @@ module Java::Security
     end
     
     typesig { [] }
-    # 
     # Returns the type of this keystore.
     # 
     # @return the type of this keystore.
@@ -838,7 +802,6 @@ module Java::Security
     end
     
     typesig { [String, Array.typed(::Java::Char)] }
-    # 
     # Returns the key associated with the given alias, using the given
     # password to recover it.  The key must have been associated with
     # the alias by a call to <code>setKeyEntry</code>,
@@ -865,7 +828,6 @@ module Java::Security
     end
     
     typesig { [String] }
-    # 
     # Returns the certificate chain associated with the given alias.
     # The certificate chain must have been associated with the alias
     # by a call to <code>setKeyEntry</code>,
@@ -888,7 +850,6 @@ module Java::Security
     end
     
     typesig { [String] }
-    # 
     # Returns the certificate associated with the given alias.
     # 
     # <p> If the given alias name identifies an entry
@@ -919,7 +880,6 @@ module Java::Security
     end
     
     typesig { [String] }
-    # 
     # Returns the creation date of the entry identified by the given alias.
     # 
     # @param alias the alias name
@@ -937,7 +897,6 @@ module Java::Security
     end
     
     typesig { [String, Key, Array.typed(::Java::Char), Array.typed(Certificate)] }
-    # 
     # Assigns the given key to the given alias, protecting it with the given
     # password.
     # 
@@ -970,7 +929,6 @@ module Java::Security
     end
     
     typesig { [String, Array.typed(::Java::Byte), Array.typed(Certificate)] }
-    # 
     # Assigns the given key (that has already been protected) to the given
     # alias.
     # 
@@ -1001,7 +959,6 @@ module Java::Security
     end
     
     typesig { [String, Certificate] }
-    # 
     # Assigns the given trusted certificate to the given alias.
     # 
     # <p> If the given alias identifies an existing entry
@@ -1026,7 +983,6 @@ module Java::Security
     end
     
     typesig { [String] }
-    # 
     # Deletes the entry identified by the given alias from this keystore.
     # 
     # @param alias the alias name
@@ -1041,7 +997,6 @@ module Java::Security
     end
     
     typesig { [] }
-    # 
     # Lists all the alias names of this keystore.
     # 
     # @return enumeration of the alias names
@@ -1056,7 +1011,6 @@ module Java::Security
     end
     
     typesig { [String] }
-    # 
     # Checks if the given alias exists in this keystore.
     # 
     # @param alias the alias name
@@ -1073,7 +1027,6 @@ module Java::Security
     end
     
     typesig { [] }
-    # 
     # Retrieves the number of entries in this keystore.
     # 
     # @return the number of entries in this keystore
@@ -1088,7 +1041,6 @@ module Java::Security
     end
     
     typesig { [String] }
-    # 
     # Returns true if the entry identified by the given alias
     # was created by a call to <code>setKeyEntry</code>,
     # or created by a call to <code>setEntry</code> with a
@@ -1109,7 +1061,6 @@ module Java::Security
     end
     
     typesig { [String] }
-    # 
     # Returns true if the entry identified by the given alias
     # was created by a call to <code>setCertificateEntry</code>,
     # or created by a call to <code>setEntry</code> with a
@@ -1130,7 +1081,6 @@ module Java::Security
     end
     
     typesig { [Certificate] }
-    # 
     # Returns the (alias) name of the first keystore entry whose certificate
     # matches the given certificate.
     # 
@@ -1163,7 +1113,6 @@ module Java::Security
     end
     
     typesig { [OutputStream, Array.typed(::Java::Char)] }
-    # 
     # Stores this keystore to the given output stream, and protects its
     # integrity with the given password.
     # 
@@ -1185,7 +1134,6 @@ module Java::Security
     end
     
     typesig { [LoadStoreParameter] }
-    # 
     # Stores this keystore using the given <code>LoadStoreParameter</code>.
     # 
     # @param param the <code>LoadStoreParameter</code>
@@ -1212,7 +1160,6 @@ module Java::Security
     end
     
     typesig { [InputStream, Array.typed(::Java::Char)] }
-    # 
     # Loads this KeyStore from the given input stream.
     # 
     # <p>A password may be given to unlock the keystore
@@ -1250,7 +1197,6 @@ module Java::Security
     end
     
     typesig { [LoadStoreParameter] }
-    # 
     # Loads this keystore using the given <code>LoadStoreParameter</code>.
     # 
     # <p> Note that if this KeyStore has already been loaded, it is
@@ -1281,7 +1227,6 @@ module Java::Security
     end
     
     typesig { [String, ProtectionParameter] }
-    # 
     # Gets a keystore <code>Entry</code> for the specified alias
     # with the specified protection parameter.
     # 
@@ -1319,7 +1264,6 @@ module Java::Security
     end
     
     typesig { [String, Entry, ProtectionParameter] }
-    # 
     # Saves a keystore <code>Entry</code> under the specified alias.
     # The protection parameter is used to protect the
     # <code>Entry</code>.
@@ -1353,7 +1297,6 @@ module Java::Security
     end
     
     typesig { [String, Class] }
-    # 
     # Determines if the keystore <code>Entry</code> for the specified
     # <code>alias</code> is an instance or subclass of the specified
     # <code>entryClass</code>.
@@ -1383,7 +1326,6 @@ module Java::Security
     end
     
     class_module.module_eval {
-      # 
       # A description of a to-be-instantiated KeyStore object.
       # 
       # <p>An instance of this class encapsulates the information needed to
@@ -1407,14 +1349,12 @@ module Java::Security
         }
         
         typesig { [] }
-        # 
         # Construct a new Builder.
         def initialize
           # empty
         end
         
         typesig { [] }
-        # 
         # Returns the KeyStore described by this object.
         # 
         # @exception KeyStoreException if an error occured during the
@@ -1425,7 +1365,6 @@ module Java::Security
         end
         
         typesig { [String] }
-        # 
         # Returns the ProtectionParameters that should be used to obtain
         # the {@link KeyStore.Entry Entry} with the given alias.
         # The <code>getKeyStore</code> method must be invoked before this
@@ -1445,7 +1384,6 @@ module Java::Security
         
         class_module.module_eval {
           typesig { [KeyStore, ProtectionParameter] }
-          # 
           # Returns a new Builder that encapsulates the given KeyStore.
           # The {@linkplain #getKeyStore} method of the returned object
           # will return <code>keyStore</code>, the {@linkplain
@@ -1510,7 +1448,6 @@ module Java::Security
           end
           
           typesig { [String, Provider, JavaFile, ProtectionParameter] }
-          # 
           # Returns a new Builder object.
           # 
           # <p>The first call to the {@link #getKeyStore} method on the returned
@@ -1740,7 +1677,6 @@ module Java::Security
           end }
           
           typesig { [String, Provider, ProtectionParameter] }
-          # 
           # Returns a new Builder object.
           # 
           # <p>Each call to the {@link #getKeyStore} method on the returned

@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 2004-2007 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -45,7 +44,6 @@ module Sun::Security::Krb5::Internal::Crypto::Dk
     }
   end
   
-  # 
   # This class provides the implementation of AES Encryption for Kerberos
   # as defined RFC 3962.
   # http://www.ietf.org/rfc/rfc3962.txt
@@ -173,7 +171,6 @@ module Sun::Security::Krb5::Internal::Crypto::Dk
     end
     
     typesig { [Array.typed(::Java::Byte), Array.typed(::Java::Byte)] }
-    # 
     # Get the truncated HMAC
     def get_hmac(key, msg)
       key_ki = SecretKeySpec.new(key, "HMAC")
@@ -188,7 +185,6 @@ module Sun::Security::Krb5::Internal::Crypto::Dk
     end
     
     typesig { [Array.typed(::Java::Byte), ::Java::Int, Array.typed(::Java::Byte), ::Java::Int, ::Java::Int] }
-    # 
     # Calculate the checksum
     def calculate_checksum(base_key, usage, input, start, len)
       if (!KeyUsage.is_valid(usage))
@@ -233,7 +229,6 @@ module Sun::Security::Krb5::Internal::Crypto::Dk
     end
     
     typesig { [Array.typed(::Java::Byte), ::Java::Int, Array.typed(::Java::Byte), Array.typed(::Java::Byte), Array.typed(::Java::Byte), ::Java::Int, ::Java::Int] }
-    # 
     # Performs encryption using derived key; adds confounder.
     def encrypt(base_key, usage, ivec, new_ivec, plaintext, start, len)
       if (!KeyUsage.is_valid(usage))
@@ -244,7 +239,6 @@ module Sun::Security::Krb5::Internal::Crypto::Dk
     end
     
     typesig { [Array.typed(::Java::Byte), ::Java::Int, Array.typed(::Java::Byte), Array.typed(::Java::Byte), ::Java::Int, ::Java::Int] }
-    # 
     # Performs encryption using derived key; does not add confounder.
     def encrypt_raw(base_key, usage, ivec, plaintext, start, len)
       if (!KeyUsage.is_valid(usage))
@@ -255,7 +249,6 @@ module Sun::Security::Krb5::Internal::Crypto::Dk
     end
     
     typesig { [Array.typed(::Java::Byte), ::Java::Int, Array.typed(::Java::Byte), Array.typed(::Java::Byte), ::Java::Int, ::Java::Int] }
-    # 
     # @param baseKey key from which keys are to be derived using usage
     # @param ciphertext  E(Ke, conf | plaintext | padding, ivec) | H1[1..h]
     def decrypt(base_key, usage, ivec, ciphertext, start, len)
@@ -267,7 +260,6 @@ module Sun::Security::Krb5::Internal::Crypto::Dk
     end
     
     typesig { [Array.typed(::Java::Byte), ::Java::Int, Array.typed(::Java::Byte), Array.typed(::Java::Byte), ::Java::Int, ::Java::Int] }
-    # 
     # Decrypts data using specified key and initial vector.
     # @param baseKey encryption key to use
     # @param ciphertext  encrypted data to be decrypted
@@ -281,7 +273,6 @@ module Sun::Security::Krb5::Internal::Crypto::Dk
     end
     
     typesig { [Array.typed(::Java::Byte), ::Java::Int, Array.typed(::Java::Byte), Array.typed(::Java::Byte), Array.typed(::Java::Byte), ::Java::Int, ::Java::Int, ::Java::Boolean] }
-    # 
     # Encrypt AES in CBC-CTS mode using derived keys.
     def encrypt_cts(base_key, usage, ivec, new_ivec, plaintext, start, len, confounder_exists)
       ke = nil
@@ -345,7 +336,6 @@ module Sun::Security::Krb5::Internal::Crypto::Dk
     end
     
     typesig { [Array.typed(::Java::Byte), ::Java::Int, Array.typed(::Java::Byte), Array.typed(::Java::Byte), ::Java::Int, ::Java::Int, ::Java::Boolean] }
-    # 
     # Decrypt AES in CBC-CTS mode using derived keys.
     def decrypt_cts(base_key, usage, ivec, ciphertext, start, len, confounder_exists)
       ke = nil
@@ -430,7 +420,6 @@ module Sun::Security::Krb5::Internal::Crypto::Dk
     
     class_module.module_eval {
       typesig { [Array.typed(::Java::Char), Array.typed(::Java::Byte), ::Java::Int, ::Java::Int] }
-      # 
       # Invoke the PKCS#5 PBKDF2 algorithm
       def _pbkdf2(secret, salt, count, key_length)
         key_spec = PBEKeySpec.new(secret, salt, count, key_length)

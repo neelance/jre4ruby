@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 1994-1997 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -30,7 +29,6 @@ module Java::Lang
     }
   end
   
-  # 
   # Thrown when the Java Virtual Machine attempts to read a class
   # file and determines that the file is malformed or otherwise cannot
   # be interpreted as a class file.
@@ -41,14 +39,12 @@ module Java::Lang
     include_class_members ClassFormatErrorImports
     
     typesig { [] }
-    # 
     # Constructs a <code>ClassFormatError</code> with no detail message.
     def initialize
       super()
     end
     
     typesig { [String] }
-    # 
     # Constructs a <code>ClassFormatError</code> with the specified
     # detail message.
     # 

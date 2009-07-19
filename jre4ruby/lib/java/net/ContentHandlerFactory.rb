@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 1995-1997 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -31,7 +30,6 @@ module Java::Net
     }
   end
   
-  # 
   # This interface defines a factory for content handlers. An
   # implementation of this interface should map a MIME type into an
   # instance of <code>ContentHandler</code>.
@@ -47,7 +45,6 @@ module Java::Net
     include_class_members ContentHandlerFactoryImports
     
     typesig { [String] }
-    # 
     # Creates a new <code>ContentHandler</code> to read an object from
     # a <code>URLStreamHandler</code>.
     # 

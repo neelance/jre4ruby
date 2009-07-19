@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 1997-2006 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -31,7 +30,6 @@ module Java::Util
     }
   end
   
-  # 
   # A comparison function, which imposes a <i>total ordering</i> on some
   # collection of objects.  Comparators can be passed to a sort method (such
   # as {@link Collections#sort(List,Comparator) Collections.sort} or {@link
@@ -103,7 +101,6 @@ module Java::Util
     include_class_members ComparatorImports
     
     typesig { [Object, Object] }
-    # 
     # Compares its two arguments for order.  Returns a negative integer,
     # zero, or a positive integer as the first argument is less than, equal
     # to, or greater than the second.<p>
@@ -145,7 +142,6 @@ module Java::Util
     end
     
     typesig { [Object] }
-    # 
     # Indicates whether some other object is &quot;equal to&quot; this
     # comparator.  This method must obey the general contract of
     # {@link Object#equals(Object)}.  Additionally, this method can return

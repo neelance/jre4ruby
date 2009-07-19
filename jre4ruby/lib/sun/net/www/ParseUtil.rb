@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 1998-2007 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -45,7 +44,6 @@ module Sun::Net::Www
     }
   end
   
-  # 
   # A class that contains useful routines common to sun.net.www
   # @author  Mike McCloskey
   class ParseUtil 
@@ -99,7 +97,6 @@ module Sun::Net::Www
       end
       
       typesig { [String] }
-      # 
       # Constructs an encoded version of the specified path string suitable
       # for use in the construction of a URL.
       # 
@@ -112,7 +109,6 @@ module Sun::Net::Www
       end
       
       typesig { [String, ::Java::Boolean] }
-      # 
       # flag indicates whether path uses platform dependent
       # File.separatorChar or not. True indicates path uses platform
       # dependent File.separatorChar.
@@ -165,7 +161,6 @@ module Sun::Net::Www
       end
       
       typesig { [Array.typed(::Java::Char), ::Java::Char, ::Java::Int] }
-      # 
       # Appends the URL escape sequence for the specified char to the
       # specified StringBuffer.
       def escape(cc, c, index)
@@ -176,14 +171,12 @@ module Sun::Net::Www
       end
       
       typesig { [String, ::Java::Int] }
-      # 
       # Un-escape and return the character at position i in string s.
       def unescape(s, i)
         return JavaInteger.parse_int(s.substring(i + 1, i + 3), 16)
       end
       
       typesig { [String] }
-      # 
       # Returns a new String constructed from the specified String by replacing
       # the URL escape sequences and UTF8 encoding with the characters they
       # represent.
@@ -244,7 +237,6 @@ module Sun::Net::Www
     }
     
     typesig { [String] }
-    # 
     # Returns a canonical version of the specified string.
     def canonize_string(file)
       i = 0
@@ -301,7 +293,6 @@ module Sun::Net::Www
         if (!(path).nil? && !(path.starts_with("/")))
           path = "/" + path
         end
-        # 
         # In java.net.URI class, a port number of -1 implies the default
         # port number. So get it stripped off before creating URI instance.
         if (!(auth).nil? && auth.ends_with(":-1"))
@@ -317,7 +308,6 @@ module Sun::Net::Www
       end
       
       typesig { [String, String, String, String, String] }
-      # 
       # createURI() and its auxiliary code are cloned from java.net.URI.
       # Most of the code are just copy and paste, except that quote()
       # has been modified to avoid double-escape.
@@ -473,7 +463,6 @@ module Sun::Net::Www
       end
       
       typesig { [String, ::Java::Int] }
-      # 
       # To check if the given string has an escaped triplet
       # at the given position
       def is_escaped(s, pos)

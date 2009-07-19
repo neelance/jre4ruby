@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 2003-2004 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -30,7 +29,6 @@ module Java::Lang
     }
   end
   
-  # 
   # Thrown when an application tries to access a type using a string
   # representing the type's name, but no definition for the type with
   # the specified name can be found.   This exception differs from
@@ -53,7 +51,6 @@ module Java::Lang
     undef_method :type_name=
     
     typesig { [String, Exception] }
-    # 
     # Constructs a <tt>TypeNotPresentException</tt> for the named type
     # with the specified cause.
     # 
@@ -67,7 +64,6 @@ module Java::Lang
     end
     
     typesig { [] }
-    # 
     # Returns the fully qualified name of the unavailable type.
     # 
     # @return the fully qualified name of the unavailable type

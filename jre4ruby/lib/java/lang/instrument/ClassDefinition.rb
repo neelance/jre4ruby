@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 2003-2006 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -31,7 +30,6 @@ module Java::Lang::Instrument
     }
   end
   
-  # 
   # Copyright 2003 Wily Technology, Inc.
   # 
   # 
@@ -43,7 +41,6 @@ module Java::Lang::Instrument
   class ClassDefinition 
     include_class_members ClassDefinitionImports
     
-    # 
     # The class to redefine
     attr_accessor :m_class
     alias_method :attr_m_class, :m_class
@@ -51,7 +48,6 @@ module Java::Lang::Instrument
     alias_method :attr_m_class=, :m_class=
     undef_method :m_class=
     
-    # 
     # The replacement class file bytes
     attr_accessor :m_class_file
     alias_method :attr_m_class_file, :m_class_file
@@ -60,7 +56,6 @@ module Java::Lang::Instrument
     undef_method :m_class_file=
     
     typesig { [Class, Array.typed(::Java::Byte)] }
-    # 
     # Creates a new <code>ClassDefinition</code> binding using the supplied
     # class and class file bytes. Does not copy the supplied buffer, just captures a reference to it.
     # 
@@ -79,7 +74,6 @@ module Java::Lang::Instrument
     end
     
     typesig { [] }
-    # 
     # Returns the class.
     # 
     # @return    the <code>Class</code> object referred to.
@@ -88,7 +82,6 @@ module Java::Lang::Instrument
     end
     
     typesig { [] }
-    # 
     # Returns the array of bytes that contains the new class file.
     # 
     # @return    the class file bytes.

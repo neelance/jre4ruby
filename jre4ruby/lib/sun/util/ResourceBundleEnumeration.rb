@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 2001-2005 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -35,7 +34,6 @@ module Sun::Util
     }
   end
   
-  # 
   # Implements an Enumeration that combines elements from a Set and
   # an Enumeration. Used by ListResourceBundle and PropertyResourceBundle.
   class ResourceBundleEnumeration 

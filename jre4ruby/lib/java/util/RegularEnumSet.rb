@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 2003-2006 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -31,7 +30,6 @@ module Java::Util
     }
   end
   
-  # 
   # Private implementation class for EnumSet, for "regular sized" enum types
   # (i.e., those with 64 or fewer enum constants).
   # 
@@ -41,7 +39,6 @@ module Java::Util
   class RegularEnumSet < RegularEnumSetImports.const_get :EnumSet
     include_class_members RegularEnumSetImports
     
-    # 
     # Bit vector representation of this set.  The 2^k bit indicates the
     # presence of universe[k] in this set.
     attr_accessor :elements
@@ -78,7 +75,6 @@ module Java::Util
     end
     
     typesig { [] }
-    # 
     # Returns an iterator over the elements contained in this set.  The
     # iterator traverses the elements in their <i>natural order</i> (which is
     # the order in which the enum constants are declared). The returned
@@ -97,7 +93,6 @@ module Java::Util
         include_class_members RegularEnumSet
         include Iterator
         
-        # 
         # A bit vector representing the elements in the set not yet
         # returned by this iterator.
         attr_accessor :unseen
@@ -106,7 +101,6 @@ module Java::Util
         alias_method :attr_unseen=, :unseen=
         undef_method :unseen=
         
-        # 
         # The bit representing the last element returned by this iterator
         # but not removed, or zero if no such element exists.
         attr_accessor :last_returned
@@ -152,7 +146,6 @@ module Java::Util
     }
     
     typesig { [] }
-    # 
     # Returns the number of elements in this set.
     # 
     # @return the number of elements in this set
@@ -161,7 +154,6 @@ module Java::Util
     end
     
     typesig { [] }
-    # 
     # Returns <tt>true</tt> if this set contains no elements.
     # 
     # @return <tt>true</tt> if this set contains no elements
@@ -170,7 +162,6 @@ module Java::Util
     end
     
     typesig { [Object] }
-    # 
     # Returns <tt>true</tt> if this set contains the specified element.
     # 
     # @param e element to be checked for containment in this collection
@@ -203,7 +194,6 @@ module Java::Util
     end
     
     typesig { [Object] }
-    # 
     # Removes the specified element from this set if it is present.
     # 
     # @param e element to be removed from this set, if present
@@ -243,7 +233,6 @@ module Java::Util
     end
     
     typesig { [Collection] }
-    # 
     # Adds all of the elements in the specified collection to this set.
     # 
     # @param c collection whose elements are to be added to this set
@@ -268,7 +257,6 @@ module Java::Util
     end
     
     typesig { [Collection] }
-    # 
     # Removes from this set all of its elements that are contained in
     # the specified collection.
     # 
@@ -289,7 +277,6 @@ module Java::Util
     end
     
     typesig { [Collection] }
-    # 
     # Retains only the elements in this set that are contained in the
     # specified collection.
     # 
@@ -312,14 +299,12 @@ module Java::Util
     end
     
     typesig { [] }
-    # 
     # Removes all of the elements from this set.
     def clear
       @elements = 0
     end
     
     typesig { [Object] }
-    # 
     # Compares the specified object with this set for equality.  Returns
     # <tt>true</tt> if the given object is also a set, the two sets have
     # the same size, and every member of the given set is contained in

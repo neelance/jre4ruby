@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 1997-2003 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -33,7 +32,6 @@ module Sun::Security::X509
     }
   end
   
-  # 
   # <p>This class provides the Enumeration implementation used
   # by all the X509 certificate attributes to return the attribute
   # names contained within them.
@@ -49,7 +47,6 @@ module Sun::Security::X509
     }
     
     typesig { [] }
-    # 
     # The default constructor for this class.
     def initialize
       super(4, 2)

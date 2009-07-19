@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 2003 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -34,7 +33,6 @@ module Sun::Reflect::Generics::Repository
     }
   end
   
-  # 
   # This class represents the generic type information for a method.
   # The code is not dependent on a particular reflective implementation.
   # It is designed to be used unchanged by at least core reflection and JDI.
@@ -57,7 +55,6 @@ module Sun::Reflect::Generics::Repository
     
     class_module.module_eval {
       typesig { [String, GenericsFactory] }
-      # 
       # Static factory method.
       # @param rawSig - the generic signature of the reflective object
       # that this repository is servicing

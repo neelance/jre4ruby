@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 2005 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -34,7 +33,6 @@ module Java::Text::Spi
     }
   end
   
-  # 
   # An abstract class for service providers that
   # provide concrete implementations of the
   # {@link java.text.BreakIterator BreakIterator} class.
@@ -44,7 +42,6 @@ module Java::Text::Spi
     include_class_members BreakIteratorProviderImports
     
     typesig { [] }
-    # 
     # Sole constructor.  (For invocation by subclass constructors, typically
     # implicit.)
     def initialize
@@ -52,7 +49,6 @@ module Java::Text::Spi
     end
     
     typesig { [Locale] }
-    # 
     # Returns a new <code>BreakIterator</code> instance
     # for <a href="../BreakIterator.html#word">word breaks</a>
     # for the given locale.
@@ -69,7 +65,6 @@ module Java::Text::Spi
     end
     
     typesig { [Locale] }
-    # 
     # Returns a new <code>BreakIterator</code> instance
     # for <a href="../BreakIterator.html#line">line breaks</a>
     # for the given locale.
@@ -86,7 +81,6 @@ module Java::Text::Spi
     end
     
     typesig { [Locale] }
-    # 
     # Returns a new <code>BreakIterator</code> instance
     # for <a href="../BreakIterator.html#character">character breaks</a>
     # for the given locale.
@@ -103,7 +97,6 @@ module Java::Text::Spi
     end
     
     typesig { [Locale] }
-    # 
     # Returns a new <code>BreakIterator</code> instance
     # for <a href="../BreakIterator.html#sentence">sentence breaks</a>
     # for the given locale.

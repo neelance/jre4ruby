@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 2003-2005 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -37,7 +36,6 @@ module Sun::Nio::Cs::Ext
     include_class_members JIS_X_0208_EncoderImports
     
     class_module.module_eval {
-      # 
       # default replacement defined merely for pseudo
       # charset x-JIS-X-0208 to instantiate with a
       # decodeable replacement byte sequence
@@ -71,7 +69,6 @@ module Sun::Nio::Cs::Ext
     
     class_module.module_eval {
       typesig { [] }
-      # 
       # These accessors are temporarily supplied while sun.io
       # converters co-exist with the sun.nio.cs.{ext} charset coders
       # These facilitate sharing of conversion tables between the

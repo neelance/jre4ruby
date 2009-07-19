@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 2003-2007 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -38,7 +37,6 @@ module Sun::Security::Pkcs11
     }
   end
   
-  # 
   # MAC implementation class. This class currently supports HMAC using
   # MD5, SHA-1, SHA-256, SHA-384, and SHA-512 and the SSL3 MAC using MD5
   # and SHA-1.

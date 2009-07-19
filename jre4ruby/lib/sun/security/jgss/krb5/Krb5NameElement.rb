@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 2000-2006 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -41,7 +40,6 @@ module Sun::Security::Jgss::Krb5
     }
   end
   
-  # 
   # Implements the GSSNameSpi for the krb5 mechanism.
   # 
   # @author Mayank Upadhyay
@@ -93,13 +91,11 @@ module Sun::Security::Jgss::Krb5
     
     class_module.module_eval {
       typesig { [String, Oid] }
-      # 
       # Instantiates a new Krb5NameElement object. Internally it stores the
       # information provided by the input parameters so that they may later
       # be used for output when a printable representaion of this name is
       # needed in GSS-API format rather than in Kerberos format.
       def get_instance(gss_name_str, gss_name_type)
-        # 
         # A null gssNameType implies that the mechanism default
         # Krb5MechFactory.NT_GSS_KRB5_PRINCIPAL be used.
         if ((gss_name_type).nil?)
@@ -115,7 +111,6 @@ module Sun::Security::Jgss::Krb5
             principal_name = PrincipalName.new(gss_name_str, PrincipalName::KRB_NT_PRINCIPAL)
           else
             components = get_components(gss_name_str)
-            # 
             # We have forms of GSS name strings that can come in:
             # 
             # 1. names of the form "foo" with just one
@@ -198,7 +193,6 @@ module Sun::Security::Jgss::Krb5
     end
     
     typesig { [GSSNameSpi] }
-    # 
     # Equal method for the GSSNameSpi objects.
     # If either name denotes an anonymous principal, the call should
     # return false.
@@ -219,7 +213,6 @@ module Sun::Security::Jgss::Krb5
     end
     
     typesig { [Object] }
-    # 
     # Compares this <code>GSSNameSpi</code> object to another Object
     # that might be a <code>GSSNameSpi</code>. The behaviour is exactly
     # the same as in {@link #equals(GSSNameSpi) equals} except that
@@ -244,7 +237,6 @@ module Sun::Security::Jgss::Krb5
     end
     
     typesig { [] }
-    # 
     # Returns a hashcode value for this GSSNameSpi.
     # 
     # @return a hashCode value
@@ -253,7 +245,6 @@ module Sun::Security::Jgss::Krb5
     end
     
     typesig { [] }
-    # 
     # Returns the principal name in the form user@REALM or
     # host/service@REALM but with the following contraints that are
     # imposed by RFC 1964:
@@ -281,7 +272,6 @@ module Sun::Security::Jgss::Krb5
     end
     
     typesig { [] }
-    # 
     # Get the mechanism type that this NameElement corresponds to.
     # 
     # @return the Oid of the mechanism type
@@ -290,7 +280,6 @@ module Sun::Security::Jgss::Krb5
     end
     
     typesig { [] }
-    # 
     # Returns a string representation for this name. The printed
     # name type can be obtained by calling getStringNameType().
     # 
@@ -303,14 +292,12 @@ module Sun::Security::Jgss::Krb5
     end
     
     typesig { [] }
-    # 
     # Returns the name type oid.
     def get_gssname_type
       return (@gss_name_type)
     end
     
     typesig { [] }
-    # 
     # Returns the oid describing the format of the printable name.
     # 
     # @return the Oid for the format of the printed name
@@ -321,7 +308,6 @@ module Sun::Security::Jgss::Krb5
     end
     
     typesig { [] }
-    # 
     # Indicates if this name object represents an Anonymous name.
     def is_anonymous_name
       return ((@gss_name_type == GSSName::NT_ANONYMOUS))

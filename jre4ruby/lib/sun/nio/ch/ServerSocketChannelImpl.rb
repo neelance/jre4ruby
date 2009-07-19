@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 2000-2006 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -41,7 +40,6 @@ module Sun::Nio::Ch
     }
   end
   
-  # 
   # An implementation of ServerSocketChannels
   class ServerSocketChannelImpl < ServerSocketChannelImplImports.const_get :ServerSocketChannel
     include_class_members ServerSocketChannelImplImports
@@ -352,7 +350,6 @@ module Sun::Nio::Ch
     end
     
     typesig { [::Java::Int, ::Java::Int, SelectionKeyImpl] }
-    # 
     # Translates native poll revent set into a ready operation set
     def translate_ready_ops(ops, initial_ops, sk)
       int_ops = sk.nio_interest_ops # Do this just once, it synchronizes
@@ -387,7 +384,6 @@ module Sun::Nio::Ch
     end
     
     typesig { [::Java::Int, SelectionKeyImpl] }
-    # 
     # Translates an interest operation set into a native poll event set
     def translate_and_set_interest_ops(ops, sk)
       new_ops = 0

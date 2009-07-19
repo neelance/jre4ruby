@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 2003-2006 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -39,7 +38,6 @@ module Sun::Security::Rsa
     }
   end
   
-  # 
   # PKCS#1 RSA signatures with the various message digest algorithms.
   # This file contains an abstract base class with all the logic plus
   # a nested static class for each of the message digest algorithms
@@ -109,7 +107,6 @@ module Sun::Security::Rsa
     undef_method :padding=
     
     typesig { [String, ObjectIdentifier, ::Java::Int] }
-    # 
     # Construct a new RSASignature. Used by subclasses.
     def initialize(algorithm, digest_oid, oid_length)
       @digest_oid = nil
@@ -155,7 +152,6 @@ module Sun::Security::Rsa
     end
     
     typesig { [RSAKey, SecureRandom] }
-    # 
     # Init code common to sign and verify.
     def init_common(rsa_key, random)
       reset_digest
@@ -172,7 +168,6 @@ module Sun::Security::Rsa
     end
     
     typesig { [] }
-    # 
     # Reset the message digest if it is not already reset.
     def reset_digest
       if ((@digest_reset).equal?(false))
@@ -182,7 +177,6 @@ module Sun::Security::Rsa
     end
     
     typesig { [] }
-    # 
     # Return the message digest value.
     def get_digest_value
       @digest_reset = true
@@ -222,7 +216,7 @@ module Sun::Security::Rsa
       rescue GeneralSecurityException => e
         raise SignatureException.new("Could not sign data", e)
       rescue IOException => e
-        raise SignatureException.new("Could not encode data", e_)
+        raise SignatureException.new("Could not encode data", e)
       end
     end
     
@@ -242,15 +236,14 @@ module Sun::Security::Rsa
         # compatibility/ease of use
         return false
       rescue GeneralSecurityException => e
-        raise SignatureException.new("Signature verification failed", e_)
+        raise SignatureException.new("Signature verification failed", e)
       rescue IOException => e
-        raise SignatureException.new("Signature encoding error", e__)
+        raise SignatureException.new("Signature encoding error", e)
       end
     end
     
     class_module.module_eval {
       typesig { [ObjectIdentifier, Array.typed(::Java::Byte)] }
-      # 
       # Encode the digest, return the to-be-signed data.
       # Also used by the PKCS#11 provider.
       def encode_signature(oid, digest_)
@@ -262,7 +255,6 @@ module Sun::Security::Rsa
       end
       
       typesig { [ObjectIdentifier, Array.typed(::Java::Byte)] }
-      # 
       # Decode the signature data. Verify that the object identifier matches
       # and return the message digest.
       def decode_signature(oid, signature)

@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 1996-2006 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -34,7 +33,6 @@ module Java::Io
     }
   end
   
-  # 
   # An OutputStreamWriter is a bridge from character streams to byte streams:
   # Characters written to it are encoded into bytes using a specified {@link
   # java.nio.charset.Charset <code>charset</code>}.  The charset that it uses
@@ -86,7 +84,6 @@ module Java::Io
     undef_method :se=
     
     typesig { [OutputStream, String] }
-    # 
     # Creates an OutputStreamWriter that uses the named charset.
     # 
     # @param  out
@@ -108,7 +105,6 @@ module Java::Io
     end
     
     typesig { [OutputStream] }
-    # 
     # Creates an OutputStreamWriter that uses the default character encoding.
     # 
     # @param  out  An OutputStream
@@ -123,7 +119,6 @@ module Java::Io
     end
     
     typesig { [OutputStream, Charset] }
-    # 
     # Creates an OutputStreamWriter that uses the given charset. </p>
     # 
     # @param  out
@@ -144,7 +139,6 @@ module Java::Io
     end
     
     typesig { [OutputStream, CharsetEncoder] }
-    # 
     # Creates an OutputStreamWriter that uses the given charset encoder.  </p>
     # 
     # @param  out
@@ -165,7 +159,6 @@ module Java::Io
     end
     
     typesig { [] }
-    # 
     # Returns the name of the character encoding being used by this stream.
     # 
     # <p> If the encoding has an historical name then that name is returned;
@@ -189,7 +182,6 @@ module Java::Io
     end
     
     typesig { [] }
-    # 
     # Flushes the output buffer to the underlying byte stream, without flushing
     # the byte stream itself.  This method is non-private only so that it may
     # be invoked by PrintStream.
@@ -198,7 +190,6 @@ module Java::Io
     end
     
     typesig { [::Java::Int] }
-    # 
     # Writes a single character.
     # 
     # @exception  IOException  If an I/O error occurs
@@ -207,7 +198,6 @@ module Java::Io
     end
     
     typesig { [Array.typed(::Java::Char), ::Java::Int, ::Java::Int] }
-    # 
     # Writes a portion of an array of characters.
     # 
     # @param  cbuf  Buffer of characters
@@ -220,7 +210,6 @@ module Java::Io
     end
     
     typesig { [String, ::Java::Int, ::Java::Int] }
-    # 
     # Writes a portion of a string.
     # 
     # @param  str  A String
@@ -233,7 +222,6 @@ module Java::Io
     end
     
     typesig { [] }
-    # 
     # Flushes the stream.
     # 
     # @exception  IOException  If an I/O error occurs

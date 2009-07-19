@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 1997-1999 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -31,7 +30,6 @@ module Java::Util::Jar
     }
   end
   
-  # 
   # Signals that an error of some sort has occurred while reading from
   # or writing to a JAR file.
   # 
@@ -41,14 +39,12 @@ module Java::Util::Jar
     include_class_members JarExceptionImports
     
     typesig { [] }
-    # 
     # Constructs a JarException with no detail message.
     def initialize
       super()
     end
     
     typesig { [String] }
-    # 
     # Constructs a JarException with the specified detail message.
     # @param s the detail message
     def initialize(s)

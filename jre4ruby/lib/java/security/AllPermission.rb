@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 1998-2006 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -36,7 +35,6 @@ module Java::Security
     }
   end
   
-  # 
   # The AllPermission is a permission that implies all other permissions.
   # <p>
   # <b>Note:</b> Granting AllPermission should be done with extreme care,
@@ -67,14 +65,12 @@ module Java::Security
     }
     
     typesig { [] }
-    # 
     # Creates a new AllPermission object.
     def initialize
       super("<all permissions>")
     end
     
     typesig { [String, String] }
-    # 
     # Creates a new AllPermission object. This
     # constructor exists for use by the <code>Policy</code> object
     # to instantiate new Permission objects.
@@ -86,7 +82,6 @@ module Java::Security
     end
     
     typesig { [Permission] }
-    # 
     # Checks if the specified permission is "implied" by
     # this object. This method always returns true.
     # 
@@ -98,7 +93,6 @@ module Java::Security
     end
     
     typesig { [Object] }
-    # 
     # Checks two AllPermission objects for equality. Two AllPermission
     # objects are always equal.
     # 
@@ -109,7 +103,6 @@ module Java::Security
     end
     
     typesig { [] }
-    # 
     # Returns the hash code value for this object.
     # 
     # @return a hash code value for this object.
@@ -118,7 +111,6 @@ module Java::Security
     end
     
     typesig { [] }
-    # 
     # Returns the canonical string representation of the actions.
     # 
     # @return the actions.
@@ -127,7 +119,6 @@ module Java::Security
     end
     
     typesig { [] }
-    # 
     # Returns a new PermissionCollection object for storing AllPermission
     # objects.
     # <p>
@@ -142,7 +133,6 @@ module Java::Security
     alias_method :initialize__all_permission, :initialize
   end
   
-  # 
   # A AllPermissionCollection stores a collection
   # of AllPermission permissions. AllPermission objects
   # must be stored in a manner that allows them to be inserted in any
@@ -183,7 +173,6 @@ module Java::Security
     end
     
     typesig { [Permission] }
-    # 
     # Adds a permission to the AllPermissions. The key for the hash is
     # permission.path.
     # 
@@ -205,7 +194,6 @@ module Java::Security
     end
     
     typesig { [Permission] }
-    # 
     # Check and see if this set of permissions implies the permissions
     # expressed in "permission".
     # 
@@ -217,7 +205,6 @@ module Java::Security
     end
     
     typesig { [] }
-    # 
     # Returns an enumeration of all the AllPermission objects in the
     # container.
     # 

@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 2000-2003 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -32,7 +31,6 @@ module Java::Util::Prefs
     }
   end
   
-  # 
   # An event emitted by a <tt>Preferences</tt> node to indicate that
   # a child of that node has been added or removed.<p>
   # 
@@ -49,7 +47,6 @@ module Java::Util::Prefs
   class NodeChangeEvent < Java::Util::EventObject
     include_class_members NodeChangeEventImports
     
-    # 
     # The node that was added or removed.
     # 
     # @serial
@@ -60,7 +57,6 @@ module Java::Util::Prefs
     undef_method :child=
     
     typesig { [Preferences, Preferences] }
-    # 
     # Constructs a new <code>NodeChangeEvent</code> instance.
     # 
     # @param parent  The parent of the node that was added or removed.
@@ -72,7 +68,6 @@ module Java::Util::Prefs
     end
     
     typesig { [] }
-    # 
     # Returns the parent of the node that was added or removed.
     # 
     # @return  The parent Preferences node whose child was added or removed
@@ -81,7 +76,6 @@ module Java::Util::Prefs
     end
     
     typesig { [] }
-    # 
     # Returns the node that was added or removed.
     # 
     # @return  The node that was added or removed.
@@ -90,7 +84,6 @@ module Java::Util::Prefs
     end
     
     typesig { [Java::Io::ObjectOutputStream] }
-    # 
     # Throws NotSerializableException, since NodeChangeEvent objects are not
     # intended to be serializable.
     def write_object(out)
@@ -98,7 +91,6 @@ module Java::Util::Prefs
     end
     
     typesig { [Java::Io::ObjectInputStream] }
-    # 
     # Throws NotSerializableException, since NodeChangeEvent objects are not
     # intended to be serializable.
     def read_object(in_)

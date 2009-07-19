@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 1995-2007 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -39,7 +38,6 @@ module Java::Net
     }
   end
   
-  # 
   # This class implements client sockets (also called just
   # "sockets"). A socket is an endpoint for communication
   # between two machines.
@@ -58,7 +56,6 @@ module Java::Net
   class Socket 
     include_class_members SocketImports
     
-    # 
     # Various states of this socket.
     attr_accessor :created
     alias_method :attr_created, :created
@@ -102,7 +99,6 @@ module Java::Net
     alias_method :attr_shut_out=, :shut_out=
     undef_method :shut_out=
     
-    # 
     # The implementation of this Socket.
     attr_accessor :impl
     alias_method :attr_impl, :impl
@@ -110,7 +106,6 @@ module Java::Net
     alias_method :attr_impl=, :impl=
     undef_method :impl=
     
-    # 
     # Are we using an older SocketImpl?
     attr_accessor :old_impl
     alias_method :attr_old_impl, :old_impl
@@ -119,7 +114,6 @@ module Java::Net
     undef_method :old_impl=
     
     typesig { [] }
-    # 
     # Creates an unconnected socket, with the
     # system-default type of SocketImpl.
     # 
@@ -139,7 +133,6 @@ module Java::Net
     end
     
     typesig { [Proxy] }
-    # 
     # Creates an unconnected socket, specifying the type of proxy, if any,
     # that should be used regardless of any other settings.
     # <P>
@@ -206,7 +199,6 @@ module Java::Net
     end
     
     typesig { [SocketImpl] }
-    # 
     # Creates an unconnected Socket with a user-specified
     # SocketImpl.
     # <P>
@@ -234,7 +226,6 @@ module Java::Net
     end
     
     typesig { [String, ::Java::Int] }
-    # 
     # Creates a stream socket and connects it to the specified port
     # number on the named host.
     # <p>
@@ -270,7 +261,6 @@ module Java::Net
     end
     
     typesig { [InetAddress, ::Java::Int] }
-    # 
     # Creates a stream socket and connects it to the specified port
     # number at the specified IP address.
     # <p>
@@ -297,7 +287,6 @@ module Java::Net
     end
     
     typesig { [String, ::Java::Int, InetAddress, ::Java::Int] }
-    # 
     # Creates a socket and connects it to the specified remote host on
     # the specified remote port. The Socket will also bind() to the local
     # address and port supplied.
@@ -326,7 +315,6 @@ module Java::Net
     end
     
     typesig { [InetAddress, ::Java::Int, InetAddress, ::Java::Int] }
-    # 
     # Creates a socket and connects it to the specified remote address on
     # the specified remote port. The Socket will also bind() to the local
     # address and port supplied.
@@ -350,7 +338,6 @@ module Java::Net
     end
     
     typesig { [String, ::Java::Int, ::Java::Boolean] }
-    # 
     # Creates a stream socket and connects it to the specified port
     # number on the named host.
     # <p>
@@ -391,7 +378,6 @@ module Java::Net
     end
     
     typesig { [InetAddress, ::Java::Int, ::Java::Boolean] }
-    # 
     # Creates a socket and connects it to the specified port number at
     # the specified IP address.
     # <p>
@@ -457,7 +443,6 @@ module Java::Net
     end
     
     typesig { [::Java::Boolean] }
-    # 
     # Creates the socket implementation.
     # 
     # @param stream a <code>boolean</code> value : <code>true</code> for a TCP socket,
@@ -521,7 +506,6 @@ module Java::Net
     end
     
     typesig { [] }
-    # 
     # Sets impl to the system-default type of SocketImpl.
     # @since 1.4
     def set_impl
@@ -539,7 +523,6 @@ module Java::Net
     end
     
     typesig { [] }
-    # 
     # Get the <code>SocketImpl</code> attached to this socket, creating
     # it if necessary.
     # 
@@ -554,7 +537,6 @@ module Java::Net
     end
     
     typesig { [SocketAddress] }
-    # 
     # Connects this socket to the server.
     # 
     # @param   endpoint the <code>SocketAddress</code>
@@ -571,7 +553,6 @@ module Java::Net
     end
     
     typesig { [SocketAddress, ::Java::Int] }
-    # 
     # Connects this socket to the server with a specified timeout value.
     # A timeout of zero is interpreted as an infinite timeout. The connection
     # will then block until established or an error occurs.
@@ -629,14 +610,12 @@ module Java::Net
         end
       end
       @connected = true
-      # 
       # If the socket was not bound before the connect, it is now because
       # the kernel will have picked an ephemeral port & a local address
       @bound = true
     end
     
     typesig { [SocketAddress] }
-    # 
     # Binds the socket to a local address.
     # <P>
     # If the address is <code>null</code>, then the system will pick up
@@ -673,7 +652,6 @@ module Java::Net
     end
     
     typesig { [] }
-    # 
     # set the flags after an accept() call.
     def post_accept
       @connected = true
@@ -697,7 +675,6 @@ module Java::Net
     end
     
     typesig { [] }
-    # 
     # Returns the address to which the socket is connected.
     # 
     # @return  the remote IP address to which this socket is connected,
@@ -714,7 +691,6 @@ module Java::Net
     end
     
     typesig { [] }
-    # 
     # Gets the local address to which the socket is bound.
     # 
     # @return the local address to which the socket is bound or
@@ -739,7 +715,6 @@ module Java::Net
     end
     
     typesig { [] }
-    # 
     # Returns the remote port number to which this socket is connected.
     # 
     # @return  the remote port number to which this socket is connected, or
@@ -757,7 +732,6 @@ module Java::Net
     end
     
     typesig { [] }
-    # 
     # Returns the local port number to which this socket is bound.
     # 
     # @return  the local port number to which this socket is bound or -1
@@ -775,7 +749,6 @@ module Java::Net
     end
     
     typesig { [] }
-    # 
     # Returns the address of the endpoint this socket is connected to, or
     # <code>null</code> if it is unconnected.
     # 
@@ -794,7 +767,6 @@ module Java::Net
     end
     
     typesig { [] }
-    # 
     # Returns the address of the endpoint this socket is bound to, or
     # <code>null</code> if it is not bound yet.
     # 
@@ -812,7 +784,6 @@ module Java::Net
     end
     
     typesig { [] }
-    # 
     # Returns the unique {@link java.nio.channels.SocketChannel SocketChannel}
     # object associated with this socket, if any.
     # 
@@ -833,7 +804,6 @@ module Java::Net
     end
     
     typesig { [] }
-    # 
     # Returns an input stream for this socket.
     # 
     # <p> If this socket has an associated channel then the resulting input
@@ -915,7 +885,6 @@ module Java::Net
     end
     
     typesig { [] }
-    # 
     # Returns an output stream for this socket.
     # 
     # <p> If this socket has an associated channel then the resulting output
@@ -970,7 +939,6 @@ module Java::Net
     end
     
     typesig { [::Java::Boolean] }
-    # 
     # Enable/disable TCP_NODELAY (disable/enable Nagle's algorithm).
     # 
     # @param on <code>true</code> to enable TCP_NODELAY,
@@ -990,7 +958,6 @@ module Java::Net
     end
     
     typesig { [] }
-    # 
     # Tests if TCP_NODELAY is enabled.
     # 
     # @return a <code>boolean</code> indicating whether or not TCP_NODELAY is enabled.
@@ -1006,7 +973,6 @@ module Java::Net
     end
     
     typesig { [::Java::Boolean, ::Java::Int] }
-    # 
     # Enable/disable SO_LINGER with the specified linger time in seconds.
     # The maximum timeout value is platform specific.
     # 
@@ -1037,7 +1003,6 @@ module Java::Net
     end
     
     typesig { [] }
-    # 
     # Returns setting for SO_LINGER. -1 returns implies that the
     # option is disabled.
     # 
@@ -1061,7 +1026,6 @@ module Java::Net
     end
     
     typesig { [::Java::Int] }
-    # 
     # Send one byte of urgent data on the socket. The byte to be sent is the lowest eight
     # bits of the data parameter. The urgent byte is
     # sent after any preceding writes to the socket OutputStream
@@ -1078,7 +1042,6 @@ module Java::Net
     end
     
     typesig { [::Java::Boolean] }
-    # 
     # Enable/disable OOBINLINE (receipt of TCP urgent data)
     # 
     # By default, this option is disabled and TCP urgent data received on a
@@ -1108,7 +1071,6 @@ module Java::Net
     end
     
     typesig { [] }
-    # 
     # Tests if OOBINLINE is enabled.
     # 
     # @return a <code>boolean</code> indicating whether or not OOBINLINE is enabled.
@@ -1124,7 +1086,6 @@ module Java::Net
     end
     
     typesig { [::Java::Int] }
-    # 
     # Enable/disable SO_TIMEOUT with the specified timeout, in
     # milliseconds.  With this option set to a non-zero timeout,
     # a read() call on the InputStream associated with this Socket
@@ -1152,7 +1113,6 @@ module Java::Net
     end
     
     typesig { [] }
-    # 
     # Returns setting for SO_TIMEOUT.  0 returns implies that the
     # option is disabled (i.e., timeout of infinity).
     # @return the setting for SO_TIMEOUT
@@ -1176,7 +1136,6 @@ module Java::Net
     end
     
     typesig { [::Java::Int] }
-    # 
     # Sets the SO_SNDBUF option to the specified value for this
     # <tt>Socket</tt>. The SO_SNDBUF option is used by the platform's
     # networking code as a hint for the size to set
@@ -1210,7 +1169,6 @@ module Java::Net
     end
     
     typesig { [] }
-    # 
     # Get value of the SO_SNDBUF option for this <tt>Socket</tt>,
     # that is the buffer size used by the platform
     # for output on this <tt>Socket</tt>.
@@ -1236,7 +1194,6 @@ module Java::Net
     end
     
     typesig { [::Java::Int] }
-    # 
     # Sets the SO_RCVBUF option to the specified value for this
     # <tt>Socket</tt>. The SO_RCVBUF option is used by the platform's
     # networking code as a hint for the size to set
@@ -1287,7 +1244,6 @@ module Java::Net
     end
     
     typesig { [] }
-    # 
     # Gets the value of the SO_RCVBUF option for this <tt>Socket</tt>,
     # that is the buffer size used by the platform for
     # input on this <tt>Socket</tt>.
@@ -1312,7 +1268,6 @@ module Java::Net
     end
     
     typesig { [::Java::Boolean] }
-    # 
     # Enable/disable SO_KEEPALIVE.
     # 
     # @param on     whether or not to have socket keep alive turned on.
@@ -1328,7 +1283,6 @@ module Java::Net
     end
     
     typesig { [] }
-    # 
     # Tests if SO_KEEPALIVE is enabled.
     # 
     # @return a <code>boolean</code> indicating whether or not SO_KEEPALIVE is enabled.
@@ -1344,7 +1298,6 @@ module Java::Net
     end
     
     typesig { [::Java::Int] }
-    # 
     # Sets traffic class or type-of-service octet in the IP
     # header for packets sent from this Socket.
     # As the underlying network implementation may ignore this
@@ -1398,7 +1351,6 @@ module Java::Net
     end
     
     typesig { [] }
-    # 
     # Gets traffic class or type-of-service in the IP header
     # for packets sent from this Socket
     # <p>
@@ -1417,7 +1369,6 @@ module Java::Net
     end
     
     typesig { [::Java::Boolean] }
-    # 
     # Enable/disable the SO_REUSEADDR socket option.
     # <p>
     # When a TCP connection is closed the connection may remain
@@ -1458,7 +1409,6 @@ module Java::Net
     end
     
     typesig { [] }
-    # 
     # Tests if SO_REUSEADDR is enabled.
     # 
     # @return a <code>boolean</code> indicating whether or not SO_REUSEADDR is enabled.
@@ -1474,7 +1424,6 @@ module Java::Net
     end
     
     typesig { [] }
-    # 
     # Closes this socket.
     # <p>
     # Any thread currently blocked in an I/O operation upon this socket
@@ -1510,7 +1459,6 @@ module Java::Net
     end
     
     typesig { [] }
-    # 
     # Places the input stream for this socket at "end of stream".
     # Any data sent to the input stream side of the socket is acknowledged
     # and then silently discarded.
@@ -1541,7 +1489,6 @@ module Java::Net
     end
     
     typesig { [] }
-    # 
     # Disables the output stream for this socket.
     # For a TCP socket, any previously written data will be sent
     # followed by TCP's normal connection termination sequence.
@@ -1573,7 +1520,6 @@ module Java::Net
     end
     
     typesig { [] }
-    # 
     # Converts this socket to a <code>String</code>.
     # 
     # @return  a string representation of this socket.
@@ -1588,7 +1534,6 @@ module Java::Net
     end
     
     typesig { [] }
-    # 
     # Returns the connection state of the socket.
     # 
     # @return true if the socket successfuly connected to a server
@@ -1599,7 +1544,6 @@ module Java::Net
     end
     
     typesig { [] }
-    # 
     # Returns the binding state of the socket.
     # 
     # @return true if the socket successfuly bound to an address
@@ -1611,7 +1555,6 @@ module Java::Net
     end
     
     typesig { [] }
-    # 
     # Returns the closed state of the socket.
     # 
     # @return true if the socket has been closed
@@ -1624,7 +1567,6 @@ module Java::Net
     end
     
     typesig { [] }
-    # 
     # Returns whether the read-half of the socket connection is closed.
     # 
     # @return true if the input of the socket has been shutdown
@@ -1635,7 +1577,6 @@ module Java::Net
     end
     
     typesig { [] }
-    # 
     # Returns whether the write-half of the socket connection is closed.
     # 
     # @return true if the output of the socket has been shutdown
@@ -1646,7 +1587,6 @@ module Java::Net
     end
     
     class_module.module_eval {
-      # 
       # The factory for all client sockets.
       
       def factory
@@ -1660,7 +1600,6 @@ module Java::Net
       alias_method :attr_factory=, :factory=
       
       typesig { [SocketImplFactory] }
-      # 
       # Sets the client socket implementation factory for the
       # application. The factory can be specified only once.
       # <p>
@@ -1698,7 +1637,6 @@ module Java::Net
     }
     
     typesig { [::Java::Int, ::Java::Int, ::Java::Int] }
-    # 
     # Sets performance preferences for this socket.
     # 
     # <p> Sockets use the TCP/IP protocol by default.  Some implementations

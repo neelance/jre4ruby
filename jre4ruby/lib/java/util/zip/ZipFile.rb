@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 1995-2006 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -38,7 +37,6 @@ module Java::Util::Zip
     }
   end
   
-  # 
   # This class is used to read entries from a zip file.
   # 
   # <p> Unless otherwise noted, passing a <tt>null</tt> argument to a constructor
@@ -84,12 +82,10 @@ module Java::Util::Zip
       const_set_lazy(:DEFLATED) { ZipEntry::DEFLATED }
       const_attr_reader  :DEFLATED
       
-      # 
       # Mode flag to open a zip file for reading.
       const_set_lazy(:OPEN_READ) { 0x1 }
       const_attr_reader  :OPEN_READ
       
-      # 
       # Mode flag to open a zip file and mark it for deletion.  The file will be
       # deleted some time between the moment that it is opened and the moment
       # that it is closed, but its contents will remain accessible via the
@@ -111,7 +107,6 @@ module Java::Util::Zip
     }
     
     typesig { [String] }
-    # 
     # Opens a zip file for reading.
     # 
     # <p>First, if there is a security
@@ -130,7 +125,6 @@ module Java::Util::Zip
     end
     
     typesig { [JavaFile, ::Java::Int] }
-    # 
     # Opens a new <code>ZipFile</code> to read from the specified
     # <code>File</code> object in the specified mode.  The mode argument
     # must be either <tt>OPEN_READ</tt> or <tt>OPEN_READ | OPEN_DELETE</tt>.
@@ -188,7 +182,6 @@ module Java::Util::Zip
     }
     
     typesig { [JavaFile] }
-    # 
     # Opens a ZIP file for reading given the specified File object.
     # @param file the ZIP file to be opened for reading
     # @throws ZipException if a ZIP error has occurred
@@ -198,7 +191,6 @@ module Java::Util::Zip
     end
     
     typesig { [String] }
-    # 
     # Returns the zip file entry for the specified name, or null
     # if not found.
     # 
@@ -238,7 +230,6 @@ module Java::Util::Zip
     }
     
     typesig { [ZipEntry] }
-    # 
     # Returns an input stream for reading the contents of the specified
     # zip file entry.
     # 
@@ -256,7 +247,6 @@ module Java::Util::Zip
     end
     
     typesig { [String] }
-    # 
     # Returns an input stream for reading the contents of the specified
     # entry, or null if the entry was not found.
     def get_input_stream(name)
@@ -363,7 +353,6 @@ module Java::Util::Zip
     }
     
     typesig { [] }
-    # 
     # Gets an inflater from the list of available inflaters or allocates
     # a new one.
     def get_inflater
@@ -380,7 +369,6 @@ module Java::Util::Zip
     end
     
     typesig { [Inflater] }
-    # 
     # Releases the specified inflater to the list of available inflaters.
     def release_inflater(inf)
       synchronized((@inflaters)) do
@@ -396,7 +384,6 @@ module Java::Util::Zip
     undef_method :inflaters=
     
     typesig { [] }
-    # 
     # Returns the path name of the ZIP file.
     # @return the path name of the ZIP file
     def get_name
@@ -404,7 +391,6 @@ module Java::Util::Zip
     end
     
     typesig { [] }
-    # 
     # Returns an enumeration of the ZIP file entries.
     # @return an enumeration of the ZIP file entries
     # @throws IllegalStateException if the zip file has been closed
@@ -473,7 +459,6 @@ module Java::Util::Zip
     }
     
     typesig { [] }
-    # 
     # Returns the number of entries in the ZIP file.
     # @return the number of entries in the ZIP file
     # @throws IllegalStateException if the zip file has been closed
@@ -483,7 +468,6 @@ module Java::Util::Zip
     end
     
     typesig { [] }
-    # 
     # Closes the ZIP file.
     # <p> Closing this ZIP file will close all of the input streams
     # previously returned by invocations of the {@link #getInputStream
@@ -513,7 +497,6 @@ module Java::Util::Zip
     end
     
     typesig { [] }
-    # 
     # Ensures that the <code>close</code> method of this ZIP file is
     # called when there are no more references to it.
     # 
@@ -556,7 +539,6 @@ module Java::Util::Zip
     end
     
     class_module.module_eval {
-      # 
       # Inner class implementing the input stream used to read a
       # (possibly compressed) zip file entry.
       const_set_lazy(:ZipFileInputStream) { Class.new(InputStream) do

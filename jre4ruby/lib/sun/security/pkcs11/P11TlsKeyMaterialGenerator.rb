@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 2005-2007 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -39,7 +38,6 @@ module Sun::Security::Pkcs11
     }
   end
   
-  # 
   # KeyGenerator to calculate the SSL/TLS key material (cipher keys and ivs,
   # mac keys) from the master secret.
   # 

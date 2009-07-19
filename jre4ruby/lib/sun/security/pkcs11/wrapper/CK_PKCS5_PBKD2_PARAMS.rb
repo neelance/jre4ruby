@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # reserved comment block
 # DO NOT REMOVE OR ALTER!
 # 
@@ -53,7 +52,6 @@ module Sun::Security::Pkcs11::Wrapper
     }
   end
   
-  # 
   # class CK_PKCS5_PBKD2_PARAMS provides the parameters to the CKM_PKCS5_PBKD2
   # mechanism.<p>
   # <B>PKCS#11 structure:</B>
@@ -74,7 +72,6 @@ module Sun::Security::Pkcs11::Wrapper
   class CK_PKCS5_PBKD2_PARAMS 
     include_class_members CK_PKCS5_PBKD2_PARAMSImports
     
-    # 
     # <B>PKCS#11:</B>
     # <PRE>
     # CK_PKCS5_PBKDF2_SALT_SOURCE_TYPE saltSource;
@@ -85,7 +82,6 @@ module Sun::Security::Pkcs11::Wrapper
     alias_method :attr_salt_source=, :salt_source=
     undef_method :salt_source=
     
-    # 
     # <B>PKCS#11:</B>
     # <PRE>
     # CK_VOID_PTR pSaltSourceData;
@@ -97,7 +93,6 @@ module Sun::Security::Pkcs11::Wrapper
     alias_method :attr_p_salt_source_data=, :p_salt_source_data=
     undef_method :p_salt_source_data=
     
-    # 
     # <B>PKCS#11:</B>
     # <PRE>
     # CK_ULONG iterations;
@@ -108,7 +103,6 @@ module Sun::Security::Pkcs11::Wrapper
     alias_method :attr_iterations=, :iterations=
     undef_method :iterations=
     
-    # 
     # <B>PKCS#11:</B>
     # <PRE>
     # CK_PKCS5_PBKD2_PSEUDO_RANDOM_FUNCTION_TYPE prf;
@@ -119,7 +113,6 @@ module Sun::Security::Pkcs11::Wrapper
     alias_method :attr_prf=, :prf=
     undef_method :prf=
     
-    # 
     # <B>PKCS#11:</B>
     # <PRE>
     # CK_VOID_PTR pPrfData;
@@ -132,7 +125,6 @@ module Sun::Security::Pkcs11::Wrapper
     undef_method :p_prf_data=
     
     typesig { [] }
-    # 
     # Returns the string representation of CK_PKCS5_PBKD2_PARAMS.
     # 
     # @return the string representation of CK_PKCS5_PBKD2_PARAMS

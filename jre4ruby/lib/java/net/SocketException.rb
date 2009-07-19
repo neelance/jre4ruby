@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 1995-2006 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -32,7 +31,6 @@ module Java::Net
     }
   end
   
-  # 
   # Thrown to indicate that there is an error creating or accessing a Socket.
   # 
   # @author  Jonathan Payne
@@ -41,7 +39,6 @@ module Java::Net
     include_class_members SocketExceptionImports
     
     typesig { [String] }
-    # 
     # Constructs a new <code>SocketException</code> with the
     # specified detail message.
     # 
@@ -51,7 +48,6 @@ module Java::Net
     end
     
     typesig { [] }
-    # 
     # Constructs a new <code>SocketException</code> with no detail message.
     def initialize
       super()

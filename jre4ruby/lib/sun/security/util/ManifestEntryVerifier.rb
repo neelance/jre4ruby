@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 1997-2006 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -38,7 +37,6 @@ module Sun::Security::Util
     }
   end
   
-  # 
   # This class is used to verify each entry in a jar file with its
   # manifest value.
   class ManifestEntryVerifier 
@@ -110,7 +108,6 @@ module Sun::Security::Util
     undef_method :signers=
     
     typesig { [Manifest] }
-    # 
     # Create a new ManifestEntryVerifier object.
     def initialize(man)
       @created_digests = nil
@@ -130,7 +127,6 @@ module Sun::Security::Util
     end
     
     typesig { [String, JarEntry] }
-    # 
     # Find the hashes in the
     # manifest for this entry, save them, and set the MessageDigest
     # objects to calculate the hashes on the fly. If name is
@@ -185,7 +181,6 @@ module Sun::Security::Util
     end
     
     typesig { [::Java::Byte] }
-    # 
     # update the digests for the digests we are interested in
     def update(buffer)
       if (@skip)
@@ -199,7 +194,6 @@ module Sun::Security::Util
     end
     
     typesig { [Array.typed(::Java::Byte), ::Java::Int, ::Java::Int] }
-    # 
     # update the digests for the digests we are interested in
     def update(buffer, off, len)
       if (@skip)
@@ -213,14 +207,12 @@ module Sun::Security::Util
     end
     
     typesig { [] }
-    # 
     # get the JarEntry for this object
     def get_entry
       return @entry
     end
     
     typesig { [Hashtable, Hashtable] }
-    # 
     # go through all the digests, calculating the final digest
     # and comparing it to the one in the manifest. If this is
     # the first time we have verified this object, remove its
@@ -262,7 +254,6 @@ module Sun::Security::Util
       const_attr_reader  :Hexc
       
       typesig { [Array.typed(::Java::Byte)] }
-      # 
       # convert a byte array to a hex string for debugging purposes
       # @param data the binary data to be converted to a hex string
       # @return an ASCII hex string

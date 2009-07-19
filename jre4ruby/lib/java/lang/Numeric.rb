@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 1994-2001 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -30,7 +29,6 @@ module Java::Lang
     }
   end
   
-  # 
   # The abstract class <code>Number</code> is the superclass of classes
   # <code>BigDecimal</code>, <code>BigInteger</code>,
   # <code>Byte</code>, <code>Double</code>, <code>Float</code>,
@@ -55,7 +53,6 @@ module Java::Lang
     include Java::Io::Serializable
     
     typesig { [] }
-    # 
     # Returns the value of the specified number as an <code>int</code>.
     # This may involve rounding or truncation.
     # 
@@ -66,7 +63,6 @@ module Java::Lang
     end
     
     typesig { [] }
-    # 
     # Returns the value of the specified number as a <code>long</code>.
     # This may involve rounding or truncation.
     # 
@@ -77,7 +73,6 @@ module Java::Lang
     end
     
     typesig { [] }
-    # 
     # Returns the value of the specified number as a <code>float</code>.
     # This may involve rounding.
     # 
@@ -88,7 +83,6 @@ module Java::Lang
     end
     
     typesig { [] }
-    # 
     # Returns the value of the specified number as a <code>double</code>.
     # This may involve rounding.
     # 
@@ -99,7 +93,6 @@ module Java::Lang
     end
     
     typesig { [] }
-    # 
     # Returns the value of the specified number as a <code>byte</code>.
     # This may involve rounding or truncation.
     # 
@@ -111,7 +104,6 @@ module Java::Lang
     end
     
     typesig { [] }
-    # 
     # Returns the value of the specified number as a <code>short</code>.
     # This may involve rounding or truncation.
     # 

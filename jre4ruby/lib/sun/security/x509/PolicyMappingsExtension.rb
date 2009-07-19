@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 1997-2006 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -36,7 +35,6 @@ module Sun::Security::X509
     }
   end
   
-  # 
   # Represent the Policy Mappings Extension.
   # 
   # This extension, if present, identifies the certificate policies considered
@@ -59,13 +57,11 @@ module Sun::Security::X509
     include CertAttrSet
     
     class_module.module_eval {
-      # 
       # Identifier for this attribute, to be used with the
       # get, set, delete methods of Certificate, x509 type.
       const_set_lazy(:IDENT) { "x509.info.extensions.PolicyMappings" }
       const_attr_reader  :IDENT
       
-      # 
       # Attribute names.
       const_set_lazy(:NAME) { "PolicyMappings" }
       const_attr_reader  :NAME
@@ -98,7 +94,6 @@ module Sun::Security::X509
     end
     
     typesig { [JavaList] }
-    # 
     # Create a PolicyMappings with the List of CertificatePolicyMap.
     # 
     # @param maps the List of CertificatePolicyMap.
@@ -112,7 +107,6 @@ module Sun::Security::X509
     end
     
     typesig { [] }
-    # 
     # Create a default PolicyMappingsExtension.
     def initialize
       @maps = nil
@@ -123,7 +117,6 @@ module Sun::Security::X509
     end
     
     typesig { [Boolean, Object] }
-    # 
     # Create the extension from the passed DER encoded value.
     # 
     # @params critical true if the extension is to be treated as critical.
@@ -149,7 +142,6 @@ module Sun::Security::X509
     end
     
     typesig { [] }
-    # 
     # Returns a printable representation of the policy map.
     def to_s
       if ((@maps).nil?)
@@ -160,7 +152,6 @@ module Sun::Security::X509
     end
     
     typesig { [OutputStream] }
-    # 
     # Write the extension to the OutputStream.
     # 
     # @param out the OutputStream to write the extension to.
@@ -177,7 +168,6 @@ module Sun::Security::X509
     end
     
     typesig { [String, Object] }
-    # 
     # Set the attribute value.
     def set(name, obj)
       if (name.equals_ignore_case(MAP))
@@ -192,7 +182,6 @@ module Sun::Security::X509
     end
     
     typesig { [String] }
-    # 
     # Get the attribute value.
     def get(name)
       if (name.equals_ignore_case(MAP))
@@ -203,7 +192,6 @@ module Sun::Security::X509
     end
     
     typesig { [String] }
-    # 
     # Delete the attribute value.
     def delete(name)
       if (name.equals_ignore_case(MAP))
@@ -215,7 +203,6 @@ module Sun::Security::X509
     end
     
     typesig { [] }
-    # 
     # Return an enumeration of names of attributes existing within this
     # attribute.
     def get_elements
@@ -225,7 +212,6 @@ module Sun::Security::X509
     end
     
     typesig { [] }
-    # 
     # Return the name of this attribute.
     def get_name
       return (NAME)

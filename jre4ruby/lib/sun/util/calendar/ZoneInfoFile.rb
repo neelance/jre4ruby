@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 2000-2006 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -44,7 +43,6 @@ module Sun::Util::Calendar
     }
   end
   
-  # 
   # <code>ZoneInfoFile</code> reads Zone information files in the
   # &lt;java.home&gt;/lib/zi directory and provides time zone
   # information in the form of a {@link ZoneInfo} object. Also, it
@@ -376,7 +374,6 @@ module Sun::Util::Calendar
     include_class_members ZoneInfoFileImports
     
     class_module.module_eval {
-      # 
       # The magic number for the ZoneInfo data file format.
       const_set_lazy(:JAVAZI_LABEL) { Array.typed(::Java::Byte).new([Character.new(?j.ord), Character.new(?a.ord), Character.new(?v.ord), Character.new(?a.ord), Character.new(?z.ord), Character.new(?i.ord), Character.new(?\0.ord)]) }
       const_attr_reader  :JAVAZI_LABEL
@@ -384,53 +381,43 @@ module Sun::Util::Calendar
       const_set_lazy(:JAVAZI_LABEL_LENGTH) { JAVAZI_LABEL.attr_length }
       const_attr_reader  :JAVAZI_LABEL_LENGTH
       
-      # 
       # The ZoneInfo data file format version number. Must increase
       # one when any incompatible change has been made.
       const_set_lazy(:JAVAZI_VERSION) { 0x1 }
       const_attr_reader  :JAVAZI_VERSION
       
-      # 
       # Raw offset data item tag.
       const_set_lazy(:TAG_RawOffset) { 1 }
       const_attr_reader  :TAG_RawOffset
       
-      # 
       # Known last Daylight Saving Time save value data item tag.
       const_set_lazy(:TAG_LastDSTSaving) { 2 }
       const_attr_reader  :TAG_LastDSTSaving
       
-      # 
       # Checksum data item tag.
       const_set_lazy(:TAG_CRC32) { 3 }
       const_attr_reader  :TAG_CRC32
       
-      # 
       # Transition data item tag.
       const_set_lazy(:TAG_Transition) { 4 }
       const_attr_reader  :TAG_Transition
       
-      # 
       # Offset table data item tag.
       const_set_lazy(:TAG_Offset) { 5 }
       const_attr_reader  :TAG_Offset
       
-      # 
       # SimpleTimeZone parameters data item tag.
       const_set_lazy(:TAG_SimpleTimeZone) { 6 }
       const_attr_reader  :TAG_SimpleTimeZone
       
-      # 
       # Raw GMT offset will change in the future.
       const_set_lazy(:TAG_GMTOffsetWillChange) { 7 }
       const_attr_reader  :TAG_GMTOffsetWillChange
       
-      # 
       # The ZoneInfoMappings file name.
       const_set_lazy(:JAVAZM_FILE_NAME) { "ZoneInfoMappings" }
       const_attr_reader  :JAVAZM_FILE_NAME
       
-      # 
       # The magic number for the ZoneInfoMappings file format.
       const_set_lazy(:JAVAZM_LABEL) { Array.typed(::Java::Byte).new([Character.new(?j.ord), Character.new(?a.ord), Character.new(?v.ord), Character.new(?a.ord), Character.new(?z.ord), Character.new(?m.ord), Character.new(?\0.ord)]) }
       const_attr_reader  :JAVAZM_LABEL
@@ -438,38 +425,31 @@ module Sun::Util::Calendar
       const_set_lazy(:JAVAZM_LABEL_LENGTH) { JAVAZM_LABEL.attr_length }
       const_attr_reader  :JAVAZM_LABEL_LENGTH
       
-      # 
       # The ZoneInfoMappings file format version number. Must increase
       # one when any incompatible change has been made.
       const_set_lazy(:JAVAZM_VERSION) { 0x1 }
       const_attr_reader  :JAVAZM_VERSION
       
-      # 
       # Time zone IDs data item tag.
       const_set_lazy(:TAG_ZoneIDs) { 64 }
       const_attr_reader  :TAG_ZoneIDs
       
-      # 
       # Raw GMT offsets table data item tag.
       const_set_lazy(:TAG_RawOffsets) { 65 }
       const_attr_reader  :TAG_RawOffsets
       
-      # 
       # Indices to the raw GMT offset table data item tag.
       const_set_lazy(:TAG_RawOffsetIndices) { 66 }
       const_attr_reader  :TAG_RawOffsetIndices
       
-      # 
       # Time zone aliases table data item tag.
       const_set_lazy(:TAG_ZoneAliases) { 67 }
       const_attr_reader  :TAG_ZoneAliases
       
-      # 
       # Olson's public zone information version tag.
       const_set_lazy(:TAG_TZDataVersion) { 68 }
       const_attr_reader  :TAG_TZDataVersion
       
-      # 
       # Excluded zones item tag. (Added in Mustang)
       const_set_lazy(:TAG_ExcludedZones) { 69 }
       const_attr_reader  :TAG_ExcludedZones
@@ -486,7 +466,6 @@ module Sun::Util::Calendar
       alias_method :attr_zone_info_objects=, :zone_info_objects=
       
       typesig { [String] }
-      # 
       # Converts the given time zone ID to a platform dependent path
       # name. For example, "America/Los_Angeles" is converted to
       # "America\Los_Angeles" on Win32.
@@ -500,7 +479,6 @@ module Sun::Util::Calendar
       end
       
       typesig { [String, ::Java::Int] }
-      # 
       # Gets a ZoneInfo with the given GMT offset. The object
       # has its ID in the format of GMT{+|-}hh:mm.
       # 
@@ -545,7 +523,6 @@ module Sun::Util::Calendar
       end
       
       typesig { [String] }
-      # 
       # @return a ZoneInfo instance created for the specified id, or
       # null if there is no time zone data file found for the specified
       # id.
@@ -629,58 +606,58 @@ module Sun::Util::Calendar
               val = (val << 8) + (buf[((index += 1) - 1)] & 0xff)
               checksum = val
             when TAG_LastDSTSaving
-              val_ = RJava.cast_to_short((buf[((index += 1) - 1)] & 0xff))
-              val_ = RJava.cast_to_short(((val_ << 8) + (buf[((index += 1) - 1)] & 0xff)))
-              dst_savings = val_ * 1000
+              val = RJava.cast_to_short((buf[((index += 1) - 1)] & 0xff))
+              val = RJava.cast_to_short(((val << 8) + (buf[((index += 1) - 1)] & 0xff)))
+              dst_savings = val * 1000
             when TAG_RawOffset
-              val__ = buf[((index += 1) - 1)] & 0xff
-              val__ = (val__ << 8) + (buf[((index += 1) - 1)] & 0xff)
-              val__ = (val__ << 8) + (buf[((index += 1) - 1)] & 0xff)
-              val__ = (val__ << 8) + (buf[((index += 1) - 1)] & 0xff)
-              raw_offset = val__
+              val = buf[((index += 1) - 1)] & 0xff
+              val = (val << 8) + (buf[((index += 1) - 1)] & 0xff)
+              val = (val << 8) + (buf[((index += 1) - 1)] & 0xff)
+              val = (val << 8) + (buf[((index += 1) - 1)] & 0xff)
+              raw_offset = val
             when TAG_Transition
               n = len / 8
               transitions = Array.typed(::Java::Long).new(n) { 0 }
               i = 0
               while i < n
-                val___ = buf[((index += 1) - 1)] & 0xff
-                val___ = (val___ << 8) + (buf[((index += 1) - 1)] & 0xff)
-                val___ = (val___ << 8) + (buf[((index += 1) - 1)] & 0xff)
-                val___ = (val___ << 8) + (buf[((index += 1) - 1)] & 0xff)
-                val___ = (val___ << 8) + (buf[((index += 1) - 1)] & 0xff)
-                val___ = (val___ << 8) + (buf[((index += 1) - 1)] & 0xff)
-                val___ = (val___ << 8) + (buf[((index += 1) - 1)] & 0xff)
-                val___ = (val___ << 8) + (buf[((index += 1) - 1)] & 0xff)
-                transitions[i] = val___
+                val = buf[((index += 1) - 1)] & 0xff
+                val = (val << 8) + (buf[((index += 1) - 1)] & 0xff)
+                val = (val << 8) + (buf[((index += 1) - 1)] & 0xff)
+                val = (val << 8) + (buf[((index += 1) - 1)] & 0xff)
+                val = (val << 8) + (buf[((index += 1) - 1)] & 0xff)
+                val = (val << 8) + (buf[((index += 1) - 1)] & 0xff)
+                val = (val << 8) + (buf[((index += 1) - 1)] & 0xff)
+                val = (val << 8) + (buf[((index += 1) - 1)] & 0xff)
+                transitions[i] = val
                 ((i += 1) - 1)
               end
             when TAG_Offset
-              n_ = len / 4
-              offsets = Array.typed(::Java::Int).new(n_) { 0 }
-              i_ = 0
-              while i_ < n_
-                val____ = buf[((index += 1) - 1)] & 0xff
-                val____ = (val____ << 8) + (buf[((index += 1) - 1)] & 0xff)
-                val____ = (val____ << 8) + (buf[((index += 1) - 1)] & 0xff)
-                val____ = (val____ << 8) + (buf[((index += 1) - 1)] & 0xff)
-                offsets[i_] = val____
-                ((i_ += 1) - 1)
+              n = len / 4
+              offsets = Array.typed(::Java::Int).new(n) { 0 }
+              i = 0
+              while i < n
+                val = buf[((index += 1) - 1)] & 0xff
+                val = (val << 8) + (buf[((index += 1) - 1)] & 0xff)
+                val = (val << 8) + (buf[((index += 1) - 1)] & 0xff)
+                val = (val << 8) + (buf[((index += 1) - 1)] & 0xff)
+                offsets[i] = val
+                ((i += 1) - 1)
               end
             when TAG_SimpleTimeZone
               if (!(len).equal?(32) && !(len).equal?(40))
                 System.err.println("ZoneInfo: wrong SimpleTimeZone parameter size")
                 return nil
               end
-              n__ = len / 4
-              simple_time_zone_params = Array.typed(::Java::Int).new(n__) { 0 }
-              i__ = 0
-              while i__ < n__
-                val_____ = buf[((index += 1) - 1)] & 0xff
-                val_____ = (val_____ << 8) + (buf[((index += 1) - 1)] & 0xff)
-                val_____ = (val_____ << 8) + (buf[((index += 1) - 1)] & 0xff)
-                val_____ = (val_____ << 8) + (buf[((index += 1) - 1)] & 0xff)
-                simple_time_zone_params[i__] = val_____
-                ((i__ += 1) - 1)
+              n = len / 4
+              simple_time_zone_params = Array.typed(::Java::Int).new(n) { 0 }
+              i = 0
+              while i < n
+                val = buf[((index += 1) - 1)] & 0xff
+                val = (val << 8) + (buf[((index += 1) - 1)] & 0xff)
+                val = (val << 8) + (buf[((index += 1) - 1)] & 0xff)
+                val = (val << 8) + (buf[((index += 1) - 1)] & 0xff)
+                simple_time_zone_params[i] = val
+                ((i += 1) - 1)
               end
             when TAG_GMTOffsetWillChange
               if (!(len).equal?(1))
@@ -729,23 +706,25 @@ module Sun::Util::Calendar
         index = JAVAZM_LABEL_LENGTH + 1
         filesize = buf.attr_length
         begin
-          while (index < filesize)
-            tag = buf[((index += 1) - 1)]
-            len = ((buf[((index += 1) - 1)] & 0xff) << 8) + (buf[((index += 1) - 1)] & 0xff)
-            case (tag)
-            when TAG_ZoneIDs
-              n = (buf[((index += 1) - 1)] << 8) + (buf[((index += 1) - 1)] & 0xff)
-              ids = ArrayList.new(n)
-              i = 0
-              while i < n
-                m = buf[((index += 1) - 1)]
-                ids.add(String.new(buf, index, m, "UTF-8"))
-                index += m
-                ((i += 1) - 1)
+          catch(:break_loop) do
+            while (index < filesize)
+              tag = buf[((index += 1) - 1)]
+              len = ((buf[((index += 1) - 1)] & 0xff) << 8) + (buf[((index += 1) - 1)] & 0xff)
+              case (tag)
+              when TAG_ZoneIDs
+                n = (buf[((index += 1) - 1)] << 8) + (buf[((index += 1) - 1)] & 0xff)
+                ids = ArrayList.new(n)
+                i = 0
+                while i < n
+                  m = buf[((index += 1) - 1)]
+                  ids.add(String.new(buf, index, m, "UTF-8"))
+                  index += m
+                  ((i += 1) - 1)
+                end
+                throw :break_loop, :thrown
+              else
+                index += len
               end
-              break
-            else
-              index += len
             end
           end
         rescue Exception => e
@@ -756,7 +735,6 @@ module Sun::Util::Calendar
       end
       
       typesig { [] }
-      # 
       # @return an alias table in HashMap where a key is an alias ID
       # (e.g., "PST") and its value is a real time zone ID (e.g.,
       # "America/Los_Angeles").
@@ -766,27 +744,29 @@ module Sun::Util::Calendar
         filesize = buf.attr_length
         aliases = nil
         begin
-          while (index < filesize)
-            tag = buf[((index += 1) - 1)]
-            len = ((buf[((index += 1) - 1)] & 0xff) << 8) + (buf[((index += 1) - 1)] & 0xff)
-            case (tag)
-            when TAG_ZoneAliases
-              n = (buf[((index += 1) - 1)] << 8) + (buf[((index += 1) - 1)] & 0xff)
-              aliases = HashMap.new(n)
-              i = 0
-              while i < n
-                m = buf[((index += 1) - 1)]
-                name = String.new(buf, index, m, "UTF-8")
-                index += m
-                m = buf[((index += 1) - 1)]
-                real_name = String.new(buf, index, m, "UTF-8")
-                index += m
-                aliases.put(name, real_name)
-                ((i += 1) - 1)
+          catch(:break_loop) do
+            while (index < filesize)
+              tag = buf[((index += 1) - 1)]
+              len = ((buf[((index += 1) - 1)] & 0xff) << 8) + (buf[((index += 1) - 1)] & 0xff)
+              case (tag)
+              when TAG_ZoneAliases
+                n = (buf[((index += 1) - 1)] << 8) + (buf[((index += 1) - 1)] & 0xff)
+                aliases = HashMap.new(n)
+                i = 0
+                while i < n
+                  m = buf[((index += 1) - 1)]
+                  name = String.new(buf, index, m, "UTF-8")
+                  index += m
+                  m = buf[((index += 1) - 1)]
+                  real_name = String.new(buf, index, m, "UTF-8")
+                  index += m
+                  aliases.put(name, real_name)
+                  ((i += 1) - 1)
+                end
+                throw :break_loop, :thrown
+              else
+                index += len
               end
-              break
-            else
-              index += len
             end
           end
         rescue Exception => e
@@ -819,7 +799,6 @@ module Sun::Util::Calendar
       alias_method :attr_has_no_exclude_list=, :has_no_exclude_list=
       
       typesig { [] }
-      # 
       # @return a List of zone IDs for zones that will change their GMT
       # offsets in some future time.
       # 
@@ -840,24 +819,26 @@ module Sun::Util::Calendar
         index = JAVAZM_LABEL_LENGTH + 1
         filesize = buf.attr_length
         begin
-          while (index < filesize)
-            tag = buf[((index += 1) - 1)]
-            len = ((buf[((index += 1) - 1)] & 0xff) << 8) + (buf[((index += 1) - 1)] & 0xff)
-            case (tag)
-            when TAG_ExcludedZones
-              n = (buf[((index += 1) - 1)] << 8) + (buf[((index += 1) - 1)] & 0xff)
-              exclude_list = ArrayList.new
-              i = 0
-              while i < n
-                m = buf[((index += 1) - 1)]
-                name = String.new(buf, index, m, "UTF-8")
-                index += m
-                exclude_list.add(name)
-                ((i += 1) - 1)
+          catch(:break_loop) do
+            while (index < filesize)
+              tag = buf[((index += 1) - 1)]
+              len = ((buf[((index += 1) - 1)] & 0xff) << 8) + (buf[((index += 1) - 1)] & 0xff)
+              case (tag)
+              when TAG_ExcludedZones
+                n = (buf[((index += 1) - 1)] << 8) + (buf[((index += 1) - 1)] & 0xff)
+                exclude_list = ArrayList.new
+                i = 0
+                while i < n
+                  m = buf[((index += 1) - 1)]
+                  name = String.new(buf, index, m, "UTF-8")
+                  index += m
+                  exclude_list.add(name)
+                  ((i += 1) - 1)
+                end
+                throw :break_loop, :thrown
+              else
+                index += len
               end
-              break
-            else
-              index += len
             end
           end
         rescue Exception => e
@@ -897,20 +878,22 @@ module Sun::Util::Calendar
         index = JAVAZM_LABEL_LENGTH + 1
         filesize = buf.attr_length
         begin
-          while (index < filesize)
-            tag = buf[((index += 1) - 1)]
-            len = ((buf[((index += 1) - 1)] & 0xff) << 8) + (buf[((index += 1) - 1)] & 0xff)
-            case (tag)
-            when TAG_RawOffsetIndices
-              indices = Array.typed(::Java::Byte).new(len) { 0 }
-              i = 0
-              while i < len
-                indices[i] = buf[((index += 1) - 1)]
-                ((i += 1) - 1)
+          catch(:break_loop) do
+            while (index < filesize)
+              tag = buf[((index += 1) - 1)]
+              len = ((buf[((index += 1) - 1)] & 0xff) << 8) + (buf[((index += 1) - 1)] & 0xff)
+              case (tag)
+              when TAG_RawOffsetIndices
+                indices = Array.typed(::Java::Byte).new(len) { 0 }
+                i = 0
+                while i < len
+                  indices[i] = buf[((index += 1) - 1)]
+                  ((i += 1) - 1)
+                end
+                throw :break_loop, :thrown
+              else
+                index += len
               end
-              break
-            else
-              index += len
             end
           end
         rescue ArrayIndexOutOfBoundsException => e
@@ -945,25 +928,27 @@ module Sun::Util::Calendar
         index = JAVAZM_LABEL_LENGTH + 1
         filesize = buf.attr_length
         begin
-          while (index < filesize)
-            tag = buf[((index += 1) - 1)]
-            len = ((buf[((index += 1) - 1)] & 0xff) << 8) + (buf[((index += 1) - 1)] & 0xff)
-            case (tag)
-            when TAG_RawOffsets
-              n = len / 4
-              offsets = Array.typed(::Java::Int).new(n) { 0 }
-              i = 0
-              while i < n
-                val = buf[((index += 1) - 1)] & 0xff
-                val = (val << 8) + (buf[((index += 1) - 1)] & 0xff)
-                val = (val << 8) + (buf[((index += 1) - 1)] & 0xff)
-                val = (val << 8) + (buf[((index += 1) - 1)] & 0xff)
-                offsets[i] = val
-                ((i += 1) - 1)
+          catch(:break_loop) do
+            while (index < filesize)
+              tag = buf[((index += 1) - 1)]
+              len = ((buf[((index += 1) - 1)] & 0xff) << 8) + (buf[((index += 1) - 1)] & 0xff)
+              case (tag)
+              when TAG_RawOffsets
+                n = len / 4
+                offsets = Array.typed(::Java::Int).new(n) { 0 }
+                i = 0
+                while i < n
+                  val = buf[((index += 1) - 1)] & 0xff
+                  val = (val << 8) + (buf[((index += 1) - 1)] & 0xff)
+                  val = (val << 8) + (buf[((index += 1) - 1)] & 0xff)
+                  val = (val << 8) + (buf[((index += 1) - 1)] & 0xff)
+                  offsets[i] = val
+                  ((i += 1) - 1)
+                end
+                throw :break_loop, :thrown
+              else
+                index += len
               end
-              break
-            else
-              index += len
             end
           end
         rescue ArrayIndexOutOfBoundsException => e
@@ -1016,7 +1001,6 @@ module Sun::Util::Calendar
       end
       
       typesig { [String] }
-      # 
       # Reads the specified file under &lt;java.home&gt;/lib/zi into a buffer.
       # @return the buffer, or null if any I/O error occurred.
       def read_zone_info_file(file_name)

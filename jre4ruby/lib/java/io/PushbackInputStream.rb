@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 1994-2006 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -31,7 +30,6 @@ module Java::Io
     }
   end
   
-  # 
   # A <code>PushbackInputStream</code> adds
   # functionality to another input stream, namely
   # the  ability to "push back" or "unread"
@@ -56,7 +54,6 @@ module Java::Io
   class PushbackInputStream < PushbackInputStreamImports.const_get :FilterInputStream
     include_class_members PushbackInputStreamImports
     
-    # 
     # The pushback buffer.
     # @since   JDK1.1
     attr_accessor :buf
@@ -65,7 +62,6 @@ module Java::Io
     alias_method :attr_buf=, :buf=
     undef_method :buf=
     
-    # 
     # The position within the pushback buffer from which the next byte will
     # be read.  When the buffer is empty, <code>pos</code> is equal to
     # <code>buf.length</code>; when the buffer is full, <code>pos</code> is
@@ -79,7 +75,6 @@ module Java::Io
     undef_method :pos=
     
     typesig { [] }
-    # 
     # Check to make sure that this stream has not been closed
     def ensure_open
       if ((self.attr_in).nil?)
@@ -88,7 +83,6 @@ module Java::Io
     end
     
     typesig { [InputStream, ::Java::Int] }
-    # 
     # Creates a <code>PushbackInputStream</code>
     # with a pushback buffer of the specified <code>size</code>,
     # and saves its  argument, the input stream
@@ -113,7 +107,6 @@ module Java::Io
     end
     
     typesig { [InputStream] }
-    # 
     # Creates a <code>PushbackInputStream</code>
     # and saves its  argument, the input stream
     # <code>in</code>, for later use. Initially,
@@ -127,7 +120,6 @@ module Java::Io
     end
     
     typesig { [] }
-    # 
     # Reads the next byte of data from this input stream. The value
     # byte is returned as an <code>int</code> in the range
     # <code>0</code> to <code>255</code>. If no byte is available
@@ -155,7 +147,6 @@ module Java::Io
     end
     
     typesig { [Array.typed(::Java::Byte), ::Java::Int, ::Java::Int] }
-    # 
     # Reads up to <code>len</code> bytes of data from this input stream into
     # an array of bytes.  This method first reads any pushed-back bytes; after
     # that, if fewer than <code>len</code> bytes have been read then it
@@ -211,7 +202,6 @@ module Java::Io
     end
     
     typesig { [::Java::Int] }
-    # 
     # Pushes back a byte by copying it to the front of the pushback buffer.
     # After this method returns, the next byte to be read will have the value
     # <code>(byte)b</code>.
@@ -230,7 +220,6 @@ module Java::Io
     end
     
     typesig { [Array.typed(::Java::Byte), ::Java::Int, ::Java::Int] }
-    # 
     # Pushes back a portion of an array of bytes by copying it to the front
     # of the pushback buffer.  After this method returns, the next byte to be
     # read will have the value <code>b[off]</code>, the byte after that will
@@ -254,7 +243,6 @@ module Java::Io
     end
     
     typesig { [Array.typed(::Java::Byte)] }
-    # 
     # Pushes back an array of bytes by copying it to the front of the
     # pushback buffer.  After this method returns, the next byte to be read
     # will have the value <code>b[0]</code>, the byte after that will have the
@@ -271,7 +259,6 @@ module Java::Io
     end
     
     typesig { [] }
-    # 
     # Returns an estimate of the number of bytes that can be read (or
     # skipped over) from this input stream without blocking by the next
     # invocation of a method for this input stream. The next invocation might be
@@ -295,7 +282,6 @@ module Java::Io
     end
     
     typesig { [::Java::Long] }
-    # 
     # Skips over and discards <code>n</code> bytes of data from this
     # input stream. The <code>skip</code> method may, for a variety of
     # reasons, end up skipping over some smaller number of bytes,
@@ -336,7 +322,6 @@ module Java::Io
     end
     
     typesig { [] }
-    # 
     # Tests if this input stream supports the <code>mark</code> and
     # <code>reset</code> methods, which it does not.
     # 
@@ -349,7 +334,6 @@ module Java::Io
     end
     
     typesig { [::Java::Int] }
-    # 
     # Marks the current position in this input stream.
     # 
     # <p> The <code>mark</code> method of <code>PushbackInputStream</code>
@@ -364,7 +348,6 @@ module Java::Io
     end
     
     typesig { [] }
-    # 
     # Repositions this stream to the position at the time the
     # <code>mark</code> method was last called on this input stream.
     # 
@@ -382,7 +365,6 @@ module Java::Io
     end
     
     typesig { [] }
-    # 
     # Closes this input stream and releases any system resources
     # associated with the stream.
     # Once the stream has been closed, further read(), unread(),

@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 1995-2007 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -34,7 +33,6 @@ module Java::Util
     }
   end
   
-  # 
   # An instance of this class is used to generate a stream of
   # pseudorandom numbers. The class uses a 48-bit seed, which is
   # modified using a linear congruential formula. (See Donald Knuth,
@@ -68,7 +66,6 @@ module Java::Util
       const_attr_reader  :SerialVersionUID
     }
     
-    # 
     # The internal state associated with this pseudorandom number generator.
     # (The specs for the methods in this class describe the ongoing
     # computation of this value.)
@@ -90,7 +87,6 @@ module Java::Util
     }
     
     typesig { [] }
-    # 
     # Creates a new random number generator. This constructor sets
     # the seed of the random number generator to a value very likely
     # to be distinct from any other invocation of this constructor.
@@ -112,7 +108,6 @@ module Java::Util
     }
     
     typesig { [::Java::Long] }
-    # 
     # Creates a new random number generator using a single {@code long} seed.
     # The seed is the initial value of the internal state of the pseudorandom
     # number generator which is maintained by method {@link #next}.
@@ -133,7 +128,6 @@ module Java::Util
     end
     
     typesig { [::Java::Long] }
-    # 
     # Sets the seed of this random number generator using a single
     # {@code long} seed. The general contract of {@code setSeed} is
     # that it alters the state of this random number generator object
@@ -160,7 +154,6 @@ module Java::Util
     end
     
     typesig { [::Java::Int] }
-    # 
     # Generates the next pseudorandom number. Subclasses should
     # override this, as this is used by all other methods.
     # 
@@ -196,7 +189,6 @@ module Java::Util
     end
     
     typesig { [Array.typed(::Java::Byte)] }
-    # 
     # Generates random bytes and places them into a user-supplied
     # byte array.  The number of random bytes produced is equal to
     # the length of the byte array.
@@ -228,7 +220,6 @@ module Java::Util
     end
     
     typesig { [] }
-    # 
     # Returns the next pseudorandom, uniformly distributed {@code int}
     # value from this random number generator's sequence. The general
     # contract of {@code nextInt} is that one {@code int} value is
@@ -250,7 +241,6 @@ module Java::Util
     end
     
     typesig { [::Java::Int] }
-    # 
     # Returns a pseudorandom, uniformly distributed {@code int} value
     # between 0 (inclusive) and the specified value (exclusive), drawn from
     # this random number generator's sequence.  The general contract of
@@ -322,7 +312,6 @@ module Java::Util
     end
     
     typesig { [] }
-    # 
     # Returns the next pseudorandom, uniformly distributed {@code long}
     # value from this random number generator's sequence. The general
     # contract of {@code nextLong} is that one {@code long} value is
@@ -346,7 +335,6 @@ module Java::Util
     end
     
     typesig { [] }
-    # 
     # Returns the next pseudorandom, uniformly distributed
     # {@code boolean} value from this random number generator's
     # sequence. The general contract of {@code nextBoolean} is that one
@@ -370,7 +358,6 @@ module Java::Util
     end
     
     typesig { [] }
-    # 
     # Returns the next pseudorandom, uniformly distributed {@code float}
     # value between {@code 0.0} and {@code 1.0} from this random
     # number generator's sequence.
@@ -413,7 +400,6 @@ module Java::Util
     end
     
     typesig { [] }
-    # 
     # Returns the next pseudorandom, uniformly distributed
     # {@code double} value between {@code 0.0} and
     # {@code 1.0} from this random number generator's sequence.
@@ -468,7 +454,6 @@ module Java::Util
     undef_method :have_next_next_gaussian=
     
     typesig { [] }
-    # 
     # Returns the next pseudorandom, Gaussian ("normally") distributed
     # {@code double} value with mean {@code 0.0} and standard
     # deviation {@code 1.0} from this random number generator's sequence.
@@ -536,7 +521,6 @@ module Java::Util
     end
     
     class_module.module_eval {
-      # 
       # Serializable fields for Random.
       # 
       # @serialField    seed long
@@ -550,7 +534,6 @@ module Java::Util
     }
     
     typesig { [Java::Io::ObjectInputStream] }
-    # 
     # Reconstitute the {@code Random} instance from a stream (that is,
     # deserialize it).
     def read_object(s)
@@ -567,7 +550,6 @@ module Java::Util
     end
     
     typesig { [ObjectOutputStream] }
-    # 
     # Save the {@code Random} instance to a stream.
     def write_object(s)
       synchronized(self) do

@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 1997-2006 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -39,7 +38,6 @@ module Java::Security::Cert
     }
   end
   
-  # 
   # <p>
   # Abstract class for X.509 certificates. This provides a standard
   # way to access all the attributes of an X.509 certificate.
@@ -133,7 +131,6 @@ module Java::Security::Cert
     undef_method :issuer_x500principal=
     
     typesig { [] }
-    # 
     # Constructor for X.509 certificates.
     def initialize
       @subject_x500principal = nil
@@ -142,7 +139,6 @@ module Java::Security::Cert
     end
     
     typesig { [] }
-    # 
     # Checks that the certificate is currently valid. It is if
     # the current date and time are within the validity period given in the
     # certificate.
@@ -169,7 +165,6 @@ module Java::Security::Cert
     end
     
     typesig { [Date] }
-    # 
     # Checks that the given date is within the certificate's
     # validity period. In other words, this determines whether the
     # certificate would be valid at the given date/time.
@@ -188,7 +183,6 @@ module Java::Security::Cert
     end
     
     typesig { [] }
-    # 
     # Gets the <code>version</code> (version number) value from the
     # certificate.
     # The ASN.1 definition for this is:
@@ -202,7 +196,6 @@ module Java::Security::Cert
     end
     
     typesig { [] }
-    # 
     # Gets the <code>serialNumber</code> value from the certificate.
     # The serial number is an integer assigned by the certification
     # authority to each certificate. It must be unique for each
@@ -221,7 +214,6 @@ module Java::Security::Cert
     end
     
     typesig { [] }
-    # 
     # <strong>Denigrated</strong>, replaced by {@linkplain
     # #getIssuerX500Principal()}. This method returns the <code>issuer</code>
     # as an implementation specific Principal object, which should not be
@@ -264,7 +256,6 @@ module Java::Security::Cert
     end
     
     typesig { [] }
-    # 
     # Returns the issuer (issuer distinguished name) value from the
     # certificate as an <code>X500Principal</code>.
     # <p>
@@ -281,7 +272,6 @@ module Java::Security::Cert
     end
     
     typesig { [] }
-    # 
     # <strong>Denigrated</strong>, replaced by {@linkplain
     # #getSubjectX500Principal()}. This method returns the <code>subject</code>
     # as an implementation specific Principal object, which should not be
@@ -307,7 +297,6 @@ module Java::Security::Cert
     end
     
     typesig { [] }
-    # 
     # Returns the subject (subject distinguished name) value from the
     # certificate as an <code>X500Principal</code>.  If the subject value
     # is empty, then the <code>getName()</code> method of the returned
@@ -326,7 +315,6 @@ module Java::Security::Cert
     end
     
     typesig { [] }
-    # 
     # Gets the <code>notBefore</code> date from the validity period of
     # the certificate.
     # The relevant ASN.1 definitions are:
@@ -348,7 +336,6 @@ module Java::Security::Cert
     end
     
     typesig { [] }
-    # 
     # Gets the <code>notAfter</code> date from the validity period of
     # the certificate. See {@link #getNotBefore() getNotBefore}
     # for relevant ASN.1 definitions.
@@ -360,7 +347,6 @@ module Java::Security::Cert
     end
     
     typesig { [] }
-    # 
     # Gets the DER-encoded certificate information, the
     # <code>tbsCertificate</code> from this certificate.
     # This can be used to verify the signature independently.
@@ -372,7 +358,6 @@ module Java::Security::Cert
     end
     
     typesig { [] }
-    # 
     # Gets the <code>signature</code> value (the raw signature bits) from
     # the certificate.
     # The ASN.1 definition for this is:
@@ -386,7 +371,6 @@ module Java::Security::Cert
     end
     
     typesig { [] }
-    # 
     # Gets the signature algorithm name for the certificate
     # signature algorithm. An example is the string "SHA-1/DSA".
     # The ASN.1 definition for this is:
@@ -409,7 +393,6 @@ module Java::Security::Cert
     end
     
     typesig { [] }
-    # 
     # Gets the signature algorithm OID string from the certificate.
     # An OID is represented by a set of nonnegative whole numbers separated
     # by periods.
@@ -428,7 +411,6 @@ module Java::Security::Cert
     end
     
     typesig { [] }
-    # 
     # Gets the DER-encoded signature algorithm parameters from this
     # certificate's signature algorithm. In most cases, the signature
     # algorithm parameters are null; the parameters are usually
@@ -448,7 +430,6 @@ module Java::Security::Cert
     end
     
     typesig { [] }
-    # 
     # Gets the <code>issuerUniqueID</code> value from the certificate.
     # The issuer unique identifier is present in the certificate
     # to handle the possibility of reuse of issuer names over time.
@@ -470,7 +451,6 @@ module Java::Security::Cert
     end
     
     typesig { [] }
-    # 
     # Gets the <code>subjectUniqueID</code> value from the certificate.
     # 
     # <p>The ASN.1 definition for this is:
@@ -486,7 +466,6 @@ module Java::Security::Cert
     end
     
     typesig { [] }
-    # 
     # Gets a boolean array representing bits of
     # the <code>KeyUsage</code> extension, (OID = 2.5.29.15).
     # The key usage extension defines the purpose (e.g., encipherment,
@@ -520,7 +499,6 @@ module Java::Security::Cert
     end
     
     typesig { [] }
-    # 
     # Gets an unmodifiable list of Strings representing the OBJECT
     # IDENTIFIERs of the <code>ExtKeyUsageSyntax</code> field of the
     # extended key usage extension, (OID = 2.5.29.37).  It indicates
@@ -556,7 +534,6 @@ module Java::Security::Cert
     end
     
     typesig { [] }
-    # 
     # Gets the certificate constraints path length from the
     # critical <code>BasicConstraints</code> extension, (OID = 2.5.29.19).
     # <p>
@@ -588,7 +565,6 @@ module Java::Security::Cert
     end
     
     typesig { [] }
-    # 
     # Gets an immutable collection of subject alternative names from the
     # <code>SubjectAltName</code> extension, (OID = 2.5.29.17).
     # <p>
@@ -654,7 +630,6 @@ module Java::Security::Cert
     end
     
     typesig { [] }
-    # 
     # Gets an immutable collection of issuer alternative names from the
     # <code>IssuerAltName</code> extension, (OID = 2.5.29.18).
     # <p>

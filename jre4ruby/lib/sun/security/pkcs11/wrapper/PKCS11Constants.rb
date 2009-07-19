@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Portions Copyright 2003-2006 Sun Microsystems, Inc.  All Rights Reserved.
 # 
 # Copyright  (c) 2002 Graz University of Technology. All rights reserved.
@@ -52,7 +51,6 @@ module Sun::Security::Pkcs11::Wrapper
     }
   end
   
-  # 
   # This interface holds constants of the PKCS#11 v2.11 standard.
   # This is mainly the content of the 'pkcs11t.h' header file.
   # 

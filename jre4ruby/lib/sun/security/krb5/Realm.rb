@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Portions Copyright 2000-2006 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -48,7 +47,6 @@ module Sun::Security::Krb5
     }
   end
   
-  # 
   # Implements the ASN.1 Realm type.
   # 
   # <xmp>
@@ -123,7 +121,6 @@ module Sun::Security::Krb5
     end
     
     typesig { [DerValue] }
-    # 
     # Constructs a Realm object.
     # @param encoding a Der-encoded data.
     # @exception Asn1Exception if an error occurs while decoding an ASN1 encoded data.
@@ -216,7 +213,6 @@ module Sun::Security::Krb5
     }
     
     typesig { [] }
-    # 
     # Encodes a Realm object.
     # @return the byte array of encoded KrbCredInfo object.
     # @exception Asn1Exception if an error occurs while decoding an ASN1 encoded data.
@@ -229,7 +225,6 @@ module Sun::Security::Krb5
     
     class_module.module_eval {
       typesig { [DerInputStream, ::Java::Byte, ::Java::Boolean] }
-      # 
       # Parse (unmarshal) a realm from a DER input stream.  This form
       # parsing might be used when expanding a value which is part of
       # a constructed sequence and uses explicitly tagged type.
@@ -253,7 +248,6 @@ module Sun::Security::Krb5
       end
       
       typesig { [String, String] }
-      # 
       # First leg of realms parsing. Used by getRealmsList.
       def do_initial_parse(c_realm, s_realm)
         if ((c_realm).nil? || (s_realm).nil?)
@@ -275,7 +269,6 @@ module Sun::Security::Krb5
       end
       
       typesig { [String, String] }
-      # 
       # Returns an array of realms that may be traversed to obtain
       # a TGT from the initiating realm cRealm to the target realm
       # sRealm.
@@ -301,20 +294,17 @@ module Sun::Security::Krb5
         if (!(ret_list).nil? && !(ret_list.attr_length).equal?(0))
           return ret_list
         end
-        # 
         # Try [capaths].
         ret_list = parse_capaths(c_realm, s_realm)
         if (!(ret_list).nil? && !(ret_list.attr_length).equal?(0))
           return ret_list
         end
-        # 
         # Now assume the realms are organized hierarchically.
         ret_list = parse_hierarchy(c_realm, s_realm)
         return ret_list
       end
       
       typesig { [String, String] }
-      # 
       # Parses the [capaths] stanza of the configuration file
       # for a list of realms to traverse
       # to obtain credentials from the initiating realm cRealm to
@@ -368,10 +358,8 @@ module Sun::Security::Krb5
         temp_realm = nil
         str_tok = nil
         i_stack = Stack.new
-        # 
         # I don't expect any more than a handful of intermediaries.
         temp_list = Vector.new(8, 8)
-        # 
         # The initiator at first location.
         temp_list.add(c_realm)
         count = 0 # For debug only
@@ -387,7 +375,6 @@ module Sun::Security::Krb5
             if (self.attr_debug)
               System.out.println(">>> Realm parseCapaths: loop " + (count).to_s + ": intermediaries=[" + intermediaries + "]")
             end
-            # 
             # We have one or more space-separated intermediary realms.
             # Stack them.
             str_tok = StringTokenizer.new(intermediaries, " ")
@@ -409,7 +396,6 @@ module Sun::Security::Krb5
               System.out.println(">>> Realm parseCapaths: loop " + (count).to_s + ": no intermediaries")
             end
           end
-          # 
           # Get next intermediary realm from the stack
           begin
             temp_target = (i_stack.pop).to_s
@@ -417,7 +403,6 @@ module Sun::Security::Krb5
             temp_target = (nil).to_s
           end
           if ((temp_target).nil?)
-            # 
             # No more intermediaries. We're done.
             break
           end
@@ -444,7 +429,6 @@ module Sun::Security::Krb5
       end
       
       typesig { [String, String] }
-      # 
       # Build a list of realm that can be traversed
       # to obtain credentials from the initiating realm cRealm
       # for a service in the target realm sRealm.
@@ -484,9 +468,9 @@ module Sun::Security::Krb5
         end
         if (self.attr_debug)
           System.out.println(">>> Realm parseHierarchy: sRealm has " + (s_count).to_s + " components:")
-          j_ = 0
-          while (j_ < s_count)
-            System.out.println(">>> Realm parseHierarchy: sComponents[" + (j_).to_s + "]=" + (s_components[((j_ += 1) - 1)]).to_s)
+          j = 0
+          while (j < s_count)
+            System.out.println(">>> Realm parseHierarchy: sComponents[" + (j).to_s + "]=" + (s_components[((j += 1) - 1)]).to_s)
           end
         end
         # Determine common components, if any.

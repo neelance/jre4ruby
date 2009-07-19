@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 2002 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -33,7 +32,6 @@ module Sun::Net::Dns
     }
   end
   
-  # 
   # The configuration of the client resolver.
   # 
   # <p>A ResolverConfiguration is a singleton that represents the
@@ -66,7 +64,6 @@ module Sun::Net::Dns
     
     class_module.module_eval {
       typesig { [] }
-      # 
       # Opens the resolver configuration.
       # 
       # @return the resolver configuration
@@ -81,7 +78,6 @@ module Sun::Net::Dns
     }
     
     typesig { [] }
-    # 
     # Returns a list corresponding to the domain search path. The
     # list is ordered by the search order used for host name lookup.
     # Each element in the list returns a {@link java.lang.String}
@@ -93,7 +89,6 @@ module Sun::Net::Dns
     end
     
     typesig { [] }
-    # 
     # Returns a list of name servers used for host name lookup.
     # Each element in the list returns a {@link java.lang.String}
     # containing the textual representation of the IP address of
@@ -105,14 +100,12 @@ module Sun::Net::Dns
     end
     
     class_module.module_eval {
-      # 
       # Options representing certain resolver variables of
       # a {@link ResolverConfiguration}.
       const_set_lazy(:Options) { Class.new do
         include_class_members ResolverConfiguration
         
         typesig { [] }
-        # 
         # Returns the maximum number of attempts the resolver
         # will connect to each name server before giving up
         # and returning an error.
@@ -123,7 +116,6 @@ module Sun::Net::Dns
         end
         
         typesig { [] }
-        # 
         # Returns the basic retransmit timeout, in milliseconds,
         # used by the resolver. The resolver will typically use
         # an exponential backoff algorithm where the timeout is
@@ -147,7 +139,6 @@ module Sun::Net::Dns
     }
     
     typesig { [] }
-    # 
     # Returns the {@link #Options} for the resolver.
     # 
     # @return options for the resolver

@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Portions Copyright 2000-2005 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -38,7 +37,6 @@ module Sun::Security::Krb5::Internal::Util
     }
   end
   
-  # 
   # This class implements a buffered input stream. It provides methods to read a chunck
   # of data from underlying data stream.
   # 
@@ -69,7 +67,6 @@ module Sun::Security::Krb5::Internal::Util
     end
     
     typesig { [::Java::Int] }
-    # 
     # Reads up to the specific number of bytes from this input stream.
     # @param num the number of bytes to be read.
     # @return the int value of this byte array.

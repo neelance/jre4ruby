@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 1997-2006 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -72,7 +71,6 @@ module Sun::Misc
     }
   end
   
-  # 
   # This class is used to maintain a search path of URLs for loading classes
   # and resources from both JAR files and directories.
   # 
@@ -126,7 +124,6 @@ module Sun::Misc
     undef_method :jar_handler=
     
     typesig { [Array.typed(URL), URLStreamHandlerFactory] }
-    # 
     # Creates a new URLClassPath for the given URLs. The URLs will be
     # searched in the order specified for classes and resources. A URL
     # ending with a '/' is assumed to refer to a directory. Otherwise,
@@ -158,7 +155,6 @@ module Sun::Misc
     end
     
     typesig { [URL] }
-    # 
     # Appends the specified URL to the search path of directory and JAR
     # file URLs from which to load classes and resources.
     def add_url(url)
@@ -172,7 +168,6 @@ module Sun::Misc
     end
     
     typesig { [] }
-    # 
     # Returns the original search path of URLs.
     def get_urls
       synchronized((@urls)) do
@@ -181,7 +176,6 @@ module Sun::Misc
     end
     
     typesig { [String, ::Java::Boolean] }
-    # 
     # Finds the resource with the specified name on the URL search path
     # or null if not found or security check fails.
     # 
@@ -203,7 +197,6 @@ module Sun::Misc
     end
     
     typesig { [String, ::Java::Boolean] }
-    # 
     # Finds the first Resource on the URL search path which has the specified
     # name. Returns null if no Resource could be found.
     # 
@@ -227,7 +220,6 @@ module Sun::Misc
     end
     
     typesig { [String, ::Java::Boolean] }
-    # 
     # Finds all resources on the URL search path with the given name.
     # Returns an enumeration of the URL objects.
     # 
@@ -302,7 +294,6 @@ module Sun::Misc
     end
     
     typesig { [String, ::Java::Boolean] }
-    # 
     # Finds all resources on the URL search path with the given name.
     # Returns an enumeration of the Resource objects.
     # 
@@ -377,7 +368,6 @@ module Sun::Misc
     end
     
     typesig { [::Java::Int] }
-    # 
     # Returns the Loader at the specified position in the URL search
     # path. The URLs are opened and expanded as needed. Returns null
     # if the specified index is out of range.
@@ -424,7 +414,6 @@ module Sun::Misc
     end
     
     typesig { [URL] }
-    # 
     # Returns the Loader for the specified base URL.
     def get_loader(url)
       begin
@@ -461,7 +450,6 @@ module Sun::Misc
     end
     
     typesig { [Array.typed(URL)] }
-    # 
     # Pushes the specified URLs onto the list of unopened URLs.
     def push(us)
       synchronized((@urls)) do
@@ -475,7 +463,6 @@ module Sun::Misc
     
     class_module.module_eval {
       typesig { [String] }
-      # 
       # Convert class path specification into an array of file URLs.
       # 
       # The path of the file is encoded before conversion into URL
@@ -506,7 +493,6 @@ module Sun::Misc
     }
     
     typesig { [URL] }
-    # 
     # Check whether the resource URL should be returned.
     # Return null on security check failure.
     # Called by java.net.URLClassLoader.
@@ -521,7 +507,6 @@ module Sun::Misc
     
     class_module.module_eval {
       typesig { [URL] }
-      # 
       # Check whether the resource URL should be returned.
       # Throw exception on failure.
       # Called internally within this file.
@@ -554,7 +539,6 @@ module Sun::Misc
         end
       end
       
-      # 
       # Inner class used to represent a loader of resources and classes
       # from a base URL.
       const_set_lazy(:Loader) { Class.new do
@@ -567,7 +551,6 @@ module Sun::Misc
         undef_method :base=
         
         typesig { [URL] }
-        # 
         # Creates a new Loader for the specified URL.
         def initialize(url)
           @base = nil
@@ -575,7 +558,6 @@ module Sun::Misc
         end
         
         typesig { [] }
-        # 
         # Returns the base URL for this Loader.
         def get_base_url
           return @base
@@ -593,7 +575,6 @@ module Sun::Misc
             if (check)
               URLClassPath.check(url)
             end
-            # 
             # For a HTTP connection we use the HEAD method to
             # check if the resource exists.
             uc = url.open_connection
@@ -673,7 +654,6 @@ module Sun::Misc
         end
         
         typesig { [String] }
-        # 
         # Returns the Resource for the specified name, or null if not
         # found or the caller does not have the permission to get the
         # resource.
@@ -682,7 +662,6 @@ module Sun::Misc
         end
         
         typesig { [] }
-        # 
         # Returns the local class path for this loader, or null if none.
         def get_class_path
           return nil
@@ -692,7 +671,6 @@ module Sun::Misc
         alias_method :initialize__loader, :initialize
       end }
       
-      # 
       # Inner class used to represent a Loader of resources from a JAR URL.
       const_set_lazy(:JarLoader) { Class.new(Loader) do
         include_class_members URLClassPath
@@ -734,7 +712,6 @@ module Sun::Misc
         undef_method :lmap=
         
         typesig { [URL, URLStreamHandler, HashMap] }
-        # 
         # Creates a new JarLoader for the specified URL referring to
         # a JAR file.
         def initialize(url, jar_handler, loader_map)
@@ -857,7 +834,6 @@ module Sun::Misc
         end
         
         typesig { [] }
-        # 
         # Returns the index of this JarLoader if it exists.
         def get_index
           begin
@@ -869,7 +845,6 @@ module Sun::Misc
         end
         
         typesig { [String, ::Java::Boolean, JarEntry] }
-        # 
         # Creates the resource and if the check flag is set to true, checks if
         # is its okay to return the resource.
         def check_resource(name, check, entry)
@@ -943,7 +918,6 @@ module Sun::Misc
         end
         
         typesig { [String] }
-        # 
         # Returns true iff atleast one resource in the jar file has the same
         # package name as that of the specified resource name.
         def valid_index(name)
@@ -969,7 +943,6 @@ module Sun::Misc
         end
         
         typesig { [String, ::Java::Boolean] }
-        # 
         # Returns the URL for a resource with the specified name
         def find_resource(name, check_)
           rsc = get_resource(name, check_)
@@ -980,7 +953,6 @@ module Sun::Misc
         end
         
         typesig { [String, ::Java::Boolean] }
-        # 
         # Returns the JAR Resource for the specified name.
         def get_resource(name, check_)
           if (!(@meta_index).nil?)
@@ -1005,7 +977,6 @@ module Sun::Misc
         end
         
         typesig { [String, ::Java::Boolean, JavaSet] }
-        # 
         # Version of getResource() that tracks the jar files that have been
         # visited by linking through the index files. This helper method uses
         # a HashSet to store the URLs of jar files that have been searched and
@@ -1076,7 +1047,7 @@ module Sun::Misc
                 begin
                   new_loader.ensure_open
                 rescue IOException => e
-                  raise InternalError.new.init_cause(e_)
+                  raise InternalError.new.init_cause(e)
                 end
                 entry = new_loader.attr_jar.get_jar_entry(name)
                 if (!(entry).nil?)
@@ -1110,7 +1081,6 @@ module Sun::Misc
         end
         
         typesig { [] }
-        # 
         # Returns the JAR file local class path, or null if none.
         def get_class_path
           if (!(@index).nil?)
@@ -1138,14 +1108,12 @@ module Sun::Misc
         end
         
         typesig { [] }
-        # 
         # parse the standard extension dependencies
         def parse_extensions_dependencies
           ExtensionDependency.check_extensions_dependencies(@jar)
         end
         
         typesig { [URL, String] }
-        # 
         # Parses value of the Class-Path manifest attribute and returns
         # an array of URLs relative to the specified base URL.
         def parse_class_path(base, value)
@@ -1164,7 +1132,6 @@ module Sun::Misc
         alias_method :initialize__jar_loader, :initialize
       end }
       
-      # 
       # Inner class used to represent a loader of classes and resources
       # from a file URL that refers to a directory.
       const_set_lazy(:FileLoader) { Class.new(Loader) do
@@ -1189,7 +1156,6 @@ module Sun::Misc
         end
         
         typesig { [String, ::Java::Boolean] }
-        # 
         # Returns the URL for a resource with the specified name
         def find_resource(name, check)
           rsc = get_resource(name, check)

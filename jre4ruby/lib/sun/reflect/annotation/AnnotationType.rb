@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 2003-2006 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -36,7 +35,6 @@ module Sun::Reflect::Annotation
     }
   end
   
-  # 
   # Represents an annotation type at run time.  Used to type-check annotations
   # and apply member defaults.
   # 
@@ -45,7 +43,6 @@ module Sun::Reflect::Annotation
   class AnnotationType 
     include_class_members AnnotationTypeImports
     
-    # 
     # Member name -> type mapping. Note that primitive types
     # are represented by the class objects for the corresponding wrapper
     # types.  This matches the return value that must be used for a
@@ -56,7 +53,6 @@ module Sun::Reflect::Annotation
     alias_method :attr_member_types=, :member_types=
     undef_method :member_types=
     
-    # 
     # Member name -> default value mapping.
     attr_accessor :member_defaults
     alias_method :attr_member_defaults, :member_defaults
@@ -64,7 +60,6 @@ module Sun::Reflect::Annotation
     alias_method :attr_member_defaults=, :member_defaults=
     undef_method :member_defaults=
     
-    # 
     # Member name -> Method object mapping. This (and its assoicated
     # accessor) are used only to generate AnnotationTypeMismatchExceptions.
     attr_accessor :members
@@ -73,7 +68,6 @@ module Sun::Reflect::Annotation
     alias_method :attr_members=, :members=
     undef_method :members=
     
-    # 
     # The retention policy for this annotation type.
     attr_accessor :retention
     alias_method :attr_retention, :retention
@@ -81,7 +75,6 @@ module Sun::Reflect::Annotation
     alias_method :attr_retention=, :retention=
     undef_method :retention=
     
-    # 
     # Whether this annotation type is inherited.
     attr_accessor :inherited
     alias_method :attr_inherited, :inherited
@@ -91,7 +84,6 @@ module Sun::Reflect::Annotation
     
     class_module.module_eval {
       typesig { [Class] }
-      # 
       # Returns an AnnotationType instance for the specified annotation type.
       # 
       # @throw IllegalArgumentException if the specified class object for
@@ -108,7 +100,6 @@ module Sun::Reflect::Annotation
     }
     
     typesig { [Class] }
-    # 
     # Sole constructor.
     # 
     # @param annotationClass the class object for the annotation type
@@ -168,7 +159,6 @@ module Sun::Reflect::Annotation
     
     class_module.module_eval {
       typesig { [Class] }
-      # 
       # Returns the type that must be returned by the invocation handler
       # of a dynamic proxy in order to have the dynamic proxy return
       # the specified type (which is assumed to be a legal member type
@@ -205,7 +195,6 @@ module Sun::Reflect::Annotation
     }
     
     typesig { [] }
-    # 
     # Returns member types for this annotation type
     # (member name -> type mapping).
     def member_types
@@ -213,7 +202,6 @@ module Sun::Reflect::Annotation
     end
     
     typesig { [] }
-    # 
     # Returns members of this annotation type
     # (member name -> associated Method object mapping).
     def members
@@ -221,7 +209,6 @@ module Sun::Reflect::Annotation
     end
     
     typesig { [] }
-    # 
     # Returns the default values for this annotation type
     # (Member name -> default value mapping).
     def member_defaults
@@ -229,21 +216,18 @@ module Sun::Reflect::Annotation
     end
     
     typesig { [] }
-    # 
     # Returns the retention policy for this annotation type.
     def retention
       return @retention
     end
     
     typesig { [] }
-    # 
     # Returns true if this this annotation type is inherited.
     def is_inherited
       return @inherited
     end
     
     typesig { [] }
-    # 
     # For debugging.
     def to_s
       s = StringBuffer.new("Annotation Type:" + "\n")

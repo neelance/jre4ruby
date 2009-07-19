@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
 # This code is free software; you can redistribute it and/or modify it
@@ -42,7 +41,6 @@ module Java::Util::Concurrent::Locks
     }
   end
   
-  # 
   # Basic thread blocking primitives for creating locks and other
   # synchronization classes.
   # 
@@ -147,7 +145,6 @@ module Java::Util::Concurrent::Locks
       end
       
       typesig { [JavaThread] }
-      # 
       # Makes available the permit for the given thread, if it
       # was not already available.  If the thread was blocked on
       # {@code park} then it will unblock.  Otherwise, its next call
@@ -164,7 +161,6 @@ module Java::Util::Concurrent::Locks
       end
       
       typesig { [Object] }
-      # 
       # Disables the current thread for thread scheduling purposes unless the
       # permit is available.
       # 
@@ -199,7 +195,6 @@ module Java::Util::Concurrent::Locks
       end
       
       typesig { [Object, ::Java::Long] }
-      # 
       # Disables the current thread for thread scheduling purposes, for up to
       # the specified waiting time, unless the permit is available.
       # 
@@ -240,7 +235,6 @@ module Java::Util::Concurrent::Locks
       end
       
       typesig { [Object, ::Java::Long] }
-      # 
       # Disables the current thread for thread scheduling purposes, until
       # the specified deadline, unless the permit is available.
       # 
@@ -280,7 +274,6 @@ module Java::Util::Concurrent::Locks
       end
       
       typesig { [JavaThread] }
-      # 
       # Returns the blocker object supplied to the most recent
       # invocation of a park method that has not yet unblocked, or null
       # if not blocked.  The value returned is just a momentary
@@ -294,7 +287,6 @@ module Java::Util::Concurrent::Locks
       end
       
       typesig { [] }
-      # 
       # Disables the current thread for thread scheduling purposes unless the
       # permit is available.
       # 
@@ -323,7 +315,6 @@ module Java::Util::Concurrent::Locks
       end
       
       typesig { [::Java::Long] }
-      # 
       # Disables the current thread for thread scheduling purposes, for up to
       # the specified waiting time, unless the permit is available.
       # 
@@ -358,7 +349,6 @@ module Java::Util::Concurrent::Locks
       end
       
       typesig { [::Java::Long] }
-      # 
       # Disables the current thread for thread scheduling purposes, until
       # the specified deadline, unless the permit is available.
       # 

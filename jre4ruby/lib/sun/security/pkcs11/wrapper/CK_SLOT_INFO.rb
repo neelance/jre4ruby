@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # reserved comment block
 # DO NOT REMOVE OR ALTER!
 # 
@@ -53,7 +52,6 @@ module Sun::Security::Pkcs11::Wrapper
     }
   end
   
-  # 
   # class CK_SLOT_INFO provides information about a slot.<p>
   # <B>PKCS#11 structure:</B>
   # <PRE>
@@ -85,7 +83,6 @@ module Sun::Security::Pkcs11::Wrapper
     alias_method :attr_slot_description=, :slot_description=
     undef_method :slot_description=
     
-    # 
     # must be blank padded and only the first 32 chars will be used<p>
     # <B>PKCS#11:</B>
     # <PRE>
@@ -97,7 +94,6 @@ module Sun::Security::Pkcs11::Wrapper
     alias_method :attr_manufacturer_id=, :manufacturer_id=
     undef_method :manufacturer_id=
     
-    # 
     # <B>PKCS#11:</B>
     # <PRE>
     # CK_FLAGS flags;
@@ -121,7 +117,6 @@ module Sun::Security::Pkcs11::Wrapper
     alias_method :attr_hardware_version=, :hardware_version=
     undef_method :hardware_version=
     
-    # 
     # version of firmware<p>
     # <B>PKCS#11:</B>
     # <PRE>
@@ -148,7 +143,6 @@ module Sun::Security::Pkcs11::Wrapper
     end
     
     typesig { [] }
-    # 
     # Returns the string representation of CK_SLOT_INFO.
     # 
     # @return the string representation of CK_SLOT_INFO

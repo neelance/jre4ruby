@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
 # This code is free software; you can redistribute it and/or modify it
@@ -39,7 +38,6 @@ module Sun::Security::Krb5::Internal
     }
   end
   
-  # 
   # Implements the ASN.1 KRB_KDC_REQ type.
   # 
   # <xmp>
@@ -127,7 +125,6 @@ module Sun::Security::Krb5::Internal
     end
     
     typesig { [DerValue, ::Java::Int] }
-    # 
     # Creates an KDCReq object from a DerValue object and asn1 type.
     # 
     # @param der a DER value of an KDCReq object.
@@ -144,7 +141,6 @@ module Sun::Security::Krb5::Internal
     end
     
     typesig { [DerValue, ::Java::Int] }
-    # 
     # Initializes a KDCReq object from a DerValue.  The DER encoding
     # must be in the format specified by the KRB_KDC_REQ ASN.1 notation.
     # 
@@ -204,15 +200,14 @@ module Sun::Security::Krb5::Internal
       end
       sub_der = der.get_data.get_der_value
       if (((sub_der.get_tag & 0x1f)).equal?(0x4))
-        subsub_der_ = sub_der.get_data.get_der_value
-        @req_body = KDCReqBody.new(subsub_der_, @msg_type)
+        subsub_der = sub_der.get_data.get_der_value
+        @req_body = KDCReqBody.new(subsub_der, @msg_type)
       else
         raise Asn1Exception.new(Krb5::ASN1_BAD_ID)
       end
     end
     
     typesig { [] }
-    # 
     # Encodes this object to a byte array.
     # 
     # @return an byte array of encoded data.

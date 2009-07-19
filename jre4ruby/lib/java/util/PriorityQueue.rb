@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 2003-2006 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -31,7 +30,6 @@ module Java::Util
     }
   end
   
-  # 
   # An unbounded priority {@linkplain Queue queue} based on a priority heap.
   # The elements of the priority queue are ordered according to their
   # {@linkplain Comparable natural ordering}, or by a {@link Comparator}
@@ -94,7 +92,6 @@ module Java::Util
       const_attr_reader  :DEFAULT_INITIAL_CAPACITY
     }
     
-    # 
     # Priority queue represented as a balanced binary heap: the two
     # children of queue[n] are queue[2*n+1] and queue[2*(n+1)].  The
     # priority queue is ordered by comparator, or by the elements'
@@ -107,7 +104,6 @@ module Java::Util
     alias_method :attr_queue=, :queue=
     undef_method :queue=
     
-    # 
     # The number of elements in the priority queue.
     attr_accessor :size
     alias_method :attr_size, :size
@@ -115,7 +111,6 @@ module Java::Util
     alias_method :attr_size=, :size=
     undef_method :size=
     
-    # 
     # The comparator, or null if priority queue uses elements'
     # natural ordering.
     attr_accessor :comparator
@@ -124,7 +119,6 @@ module Java::Util
     alias_method :attr_comparator=, :comparator=
     undef_method :comparator=
     
-    # 
     # The number of times this priority queue has been
     # <i>structurally modified</i>.  See AbstractList for gory details.
     attr_accessor :mod_count
@@ -134,7 +128,6 @@ module Java::Util
     undef_method :mod_count=
     
     typesig { [] }
-    # 
     # Creates a {@code PriorityQueue} with the default initial
     # capacity (11) that orders its elements according to their
     # {@linkplain Comparable natural ordering}.
@@ -143,7 +136,6 @@ module Java::Util
     end
     
     typesig { [::Java::Int] }
-    # 
     # Creates a {@code PriorityQueue} with the specified initial
     # capacity that orders its elements according to their
     # {@linkplain Comparable natural ordering}.
@@ -156,7 +148,6 @@ module Java::Util
     end
     
     typesig { [::Java::Int, Comparator] }
-    # 
     # Creates a {@code PriorityQueue} with the specified initial capacity
     # that orders its elements according to the specified comparator.
     # 
@@ -184,7 +175,6 @@ module Java::Util
     end
     
     typesig { [Collection] }
-    # 
     # Creates a {@code PriorityQueue} containing the elements in the
     # specified collection.  If the specified collection is an instance of
     # a {@link SortedSet} or is another {@code PriorityQueue}, this
@@ -221,7 +211,6 @@ module Java::Util
     end
     
     typesig { [PriorityQueue] }
-    # 
     # Creates a {@code PriorityQueue} containing the elements in the
     # specified priority queue.  This priority queue will be
     # ordered according to the same ordering as the given priority
@@ -247,7 +236,6 @@ module Java::Util
     end
     
     typesig { [SortedSet] }
-    # 
     # Creates a {@code PriorityQueue} containing the elements in the
     # specified sorted set.   This priority queue will be ordered
     # according to the same ordering as the given sorted set.
@@ -272,7 +260,6 @@ module Java::Util
     end
     
     typesig { [Collection] }
-    # 
     # Initializes queue array with elements from the given Collection.
     # 
     # @param c the collection
@@ -287,7 +274,6 @@ module Java::Util
     end
     
     typesig { [::Java::Int] }
-    # 
     # Increases the capacity of the array.
     # 
     # @param minCapacity the desired minimum capacity
@@ -310,7 +296,6 @@ module Java::Util
     end
     
     typesig { [Object] }
-    # 
     # Inserts the specified element into this priority queue.
     # 
     # @return {@code true} (as specified by {@link Collection#add})
@@ -323,7 +308,6 @@ module Java::Util
     end
     
     typesig { [Object] }
-    # 
     # Inserts the specified element into this priority queue.
     # 
     # @return {@code true} (as specified by {@link Queue#offer})
@@ -372,7 +356,6 @@ module Java::Util
     end
     
     typesig { [Object] }
-    # 
     # Removes a single instance of the specified element from this queue,
     # if it is present.  More formally, removes an element {@code e} such
     # that {@code o.equals(e)}, if this queue contains one or more such
@@ -393,7 +376,6 @@ module Java::Util
     end
     
     typesig { [Object] }
-    # 
     # Version of remove using reference equality, not equals.
     # Needed by iterator.remove.
     # 
@@ -412,7 +394,6 @@ module Java::Util
     end
     
     typesig { [Object] }
-    # 
     # Returns {@code true} if this queue contains the specified element.
     # More formally, returns {@code true} if and only if this queue contains
     # at least one element {@code e} such that {@code o.equals(e)}.
@@ -424,7 +405,6 @@ module Java::Util
     end
     
     typesig { [] }
-    # 
     # Returns an array containing all of the elements in this queue.
     # The elements are in no particular order.
     # 
@@ -441,7 +421,6 @@ module Java::Util
     end
     
     typesig { [Array.typed(T)] }
-    # 
     # Returns an array containing all of the elements in this queue; the
     # runtime type of the returned array is that of the specified array.
     # The returned array elements are in no particular order.
@@ -490,7 +469,6 @@ module Java::Util
     end
     
     typesig { [] }
-    # 
     # Returns an iterator over the elements in this queue. The iterator
     # does not return the elements in any particular order.
     # 
@@ -505,7 +483,6 @@ module Java::Util
         include_class_members PriorityQueue
         include Iterator
         
-        # 
         # Index (into queue array) of element to be returned by
         # subsequent call to next.
         attr_accessor :cursor
@@ -514,7 +491,6 @@ module Java::Util
         alias_method :attr_cursor=, :cursor=
         undef_method :cursor=
         
-        # 
         # Index of element returned by most recent call to next,
         # unless that element came from the forgetMeNot list.
         # Set to -1 if element is deleted by a call to remove.
@@ -524,7 +500,6 @@ module Java::Util
         alias_method :attr_last_ret=, :last_ret=
         undef_method :last_ret=
         
-        # 
         # A queue of elements that were moved from the unvisited portion of
         # the heap into the visited portion as a result of "unlucky" element
         # removals during the iteration.  (Unlucky element removals are those
@@ -540,7 +515,6 @@ module Java::Util
         alias_method :attr_forget_me_not=, :forget_me_not=
         undef_method :forget_me_not=
         
-        # 
         # Element returned by the most recent call to next iff that
         # element was drawn from the forgetMeNot list.
         attr_accessor :last_ret_elt
@@ -549,7 +523,6 @@ module Java::Util
         alias_method :attr_last_ret_elt=, :last_ret_elt=
         undef_method :last_ret_elt=
         
-        # 
         # The modCount value that the iterator believes that the backing
         # Queue should have.  If this expectation is violated, the iterator
         # has detected concurrent modification.
@@ -629,7 +602,6 @@ module Java::Util
     end
     
     typesig { [] }
-    # 
     # Removes all of the elements from this priority queue.
     # The queue will be empty after this call returns.
     def clear
@@ -659,7 +631,6 @@ module Java::Util
     end
     
     typesig { [::Java::Int] }
-    # 
     # Removes the ith element from queue.
     # 
     # Normally this method leaves the elements at up to i-1,
@@ -692,7 +663,6 @@ module Java::Util
     end
     
     typesig { [::Java::Int, Object] }
-    # 
     # Inserts item x at position k, maintaining heap invariant by
     # promoting x up the tree until it is greater than or equal to
     # its parent, or is the root.
@@ -741,7 +711,6 @@ module Java::Util
     end
     
     typesig { [::Java::Int, Object] }
-    # 
     # Inserts item x at position k, maintaining heap invariant by
     # demoting x down the tree repeatedly until it is less than or
     # equal to its children or is a leaf.
@@ -796,7 +765,6 @@ module Java::Util
     end
     
     typesig { [] }
-    # 
     # Establishes the heap invariant (described above) in the entire tree,
     # assuming nothing about the order of the elements prior to the call.
     def heapify
@@ -808,7 +776,6 @@ module Java::Util
     end
     
     typesig { [] }
-    # 
     # Returns the comparator used to order the elements in this
     # queue, or {@code null} if this queue is sorted according to
     # the {@linkplain Comparable natural ordering} of its elements.
@@ -821,7 +788,6 @@ module Java::Util
     end
     
     typesig { [Java::Io::ObjectOutputStream] }
-    # 
     # Saves the state of the instance to a stream (that
     # is, serializes it).
     # 
@@ -843,7 +809,6 @@ module Java::Util
     end
     
     typesig { [Java::Io::ObjectInputStream] }
-    # 
     # Reconstitutes the {@code PriorityQueue} instance from a stream
     # (that is, deserializes it).
     # 

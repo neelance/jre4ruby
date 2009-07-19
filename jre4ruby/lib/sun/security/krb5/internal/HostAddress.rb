@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Portions Copyright 2000-2006 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -43,7 +42,6 @@ module Sun::Security::Krb5::Internal
     }
   end
   
-  # 
   # Implements the ASN.1 HostAddress type.
   # 
   # <xmp>
@@ -174,7 +172,6 @@ module Sun::Security::Krb5::Internal
     }
     
     typesig { [] }
-    # 
     # Gets the InetAddress of this HostAddress.
     # @return the IP address for this specified host.
     # @exception if no IP address for the host could be found.
@@ -213,7 +210,6 @@ module Sun::Security::Krb5::Internal
     end
     
     typesig { [::Java::Int, Array.typed(::Java::Byte)] }
-    # 
     # Creates a HostAddress from the specified address and address type.
     # 
     # @param new_addrType the value of the address type which matches the defined
@@ -280,7 +276,6 @@ module Sun::Security::Krb5::Internal
     end
     
     typesig { [DerValue] }
-    # 
     # Constructs a host address from a single DER-encoded value.
     # @param encoding a single DER-encoded value.
     # @exception Asn1Exception if an error occurs while decoding an ASN1 encoded data.
@@ -307,7 +302,6 @@ module Sun::Security::Krb5::Internal
     end
     
     typesig { [] }
-    # 
     # Encodes a HostAddress object.
     # @return a byte array of encoded HostAddress object.
     # @exception Asn1Exception if an error occurs while decoding an ASN1 encoded data.
@@ -327,7 +321,6 @@ module Sun::Security::Krb5::Internal
     
     class_module.module_eval {
       typesig { [DerInputStream, ::Java::Byte, ::Java::Boolean] }
-      # 
       # Parses (unmarshal) a host address from a DER input stream.  This form
       # parsing might be used when expanding a value which is part of
       # a constructed sequence and uses explicitly tagged type.

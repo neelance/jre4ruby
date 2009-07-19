@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 2006 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -34,7 +33,6 @@ module Sun::Security::Ec
     }
   end
   
-  # 
   # KeyFactory for EC keys. Keys must be instances of PublicKey or PrivateKey
   # and getAlgorithm() must return "EC". For such keys, it supports conversion
   # between the following:
@@ -109,7 +107,6 @@ module Sun::Security::Ec
     
     class_module.module_eval {
       typesig { [Key] }
-      # 
       # Static method to convert Key into a useable instance of
       # ECPublicKey or ECPrivateKey. Check the key and convert it
       # to a Sun key if necessary. If the key is not an EC key
@@ -131,7 +128,6 @@ module Sun::Security::Ec
       end
       
       typesig { [ECKey] }
-      # 
       # Check that the given EC key is valid.
       def check_key(key)
         # check for subinterfaces, omit additional checks for our keys
@@ -159,7 +155,6 @@ module Sun::Security::Ec
     }
     
     typesig { [Key] }
-    # 
     # Translate an EC key into a Sun EC key. If conversion is
     # not possible, throw an InvalidKeyException.
     # See also JCA doc.
@@ -190,7 +185,7 @@ module Sun::Security::Ec
       rescue InvalidKeySpecException => e
         raise e
       rescue GeneralSecurityException => e
-        raise InvalidKeySpecException.new(e_)
+        raise InvalidKeySpecException.new(e)
       end
     end
     
@@ -202,7 +197,7 @@ module Sun::Security::Ec
       rescue InvalidKeySpecException => e
         raise e
       rescue GeneralSecurityException => e
-        raise InvalidKeySpecException.new(e_)
+        raise InvalidKeySpecException.new(e)
       end
     end
     
@@ -302,8 +297,8 @@ module Sun::Security::Ec
             return PKCS8EncodedKeySpec.new(key.get_encoded)
           else
             if (ECPrivateKeySpec.class.is_assignable_from(key_spec))
-              ec_key_ = key
-              return ECPrivateKeySpec.new(ec_key_.get_s, ec_key_.get_params)
+              ec_key = key
+              return ECPrivateKeySpec.new(ec_key.get_s, ec_key.get_params)
             else
               raise InvalidKeySpecException.new("KeySpec must be ECPrivateKeySpec or " + "PKCS8EncodedKeySpec for EC private keys")
             end

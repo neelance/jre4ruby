@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 2002-2006 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -86,7 +85,6 @@ module Sun::Nio::Cs::Ext
         end
         
         typesig { [Array.typed(::Java::Byte)] }
-        # 
         # Since ISO2022-CN-CNS possesses a CharsetEncoder
         # without the corresponding CharsetDecoder half the
         # default replacement check needs to be overridden

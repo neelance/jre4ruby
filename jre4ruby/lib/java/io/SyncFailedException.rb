@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 1996-1999 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -31,7 +30,6 @@ module Java::Io
     }
   end
   
-  # 
   # Signals that a sync operation has failed.
   # 
   # @author  Ken Arnold
@@ -42,7 +40,6 @@ module Java::Io
     include_class_members SyncFailedExceptionImports
     
     typesig { [String] }
-    # 
     # Constructs an SyncFailedException with a detail message.
     # A detail message is a String that describes this particular exception.
     # 

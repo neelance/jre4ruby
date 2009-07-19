@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 1996-2005 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -31,7 +30,6 @@ module Java::Io
     }
   end
   
-  # 
   # Exception indicating the failure of an object read operation due to
   # unread primitive data, or the end of data belonging to a serialized
   # object in the stream.  This exception may be thrown in two cases:
@@ -60,7 +58,6 @@ module Java::Io
     }
     
     typesig { [::Java::Int] }
-    # 
     # Create an <code>OptionalDataException</code> with a length.
     def initialize(len)
       @length = 0
@@ -71,7 +68,6 @@ module Java::Io
     end
     
     typesig { [::Java::Boolean] }
-    # 
     # Create an <code>OptionalDataException</code> signifying no
     # more primitive data is available.
     def initialize(end_)
@@ -82,7 +78,6 @@ module Java::Io
       @eof = end_
     end
     
-    # 
     # The number of bytes of primitive data available to be read
     # in the current buffer.
     # 
@@ -93,7 +88,6 @@ module Java::Io
     alias_method :attr_length=, :length=
     undef_method :length=
     
-    # 
     # True if there is no more data in the buffered part of the stream.
     # 
     # @serial

@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 2001-2007 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -31,7 +30,6 @@ module Java::Nio::Charset
     }
   end
   
-  # 
   # Error thrown when the {@link CharsetDecoder#decodeLoop decodeLoop} method of
   # a {@link CharsetDecoder}, or the {@link CharsetEncoder#encodeLoop
   # encodeLoop} method of a {@link CharsetEncoder}, throws an unexpected
@@ -47,7 +45,6 @@ module Java::Nio::Charset
     }
     
     typesig { [Exception] }
-    # 
     # Initializes an instance of this class.
     # 
     # @param  cause

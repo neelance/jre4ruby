@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 2000-2007 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -31,7 +30,6 @@ module Java::Nio::Charset
     }
   end
   
-  # 
   # Checked exception thrown when an input byte sequence is not legal for given
   # charset, or an input character sequence is not a legal sixteen-bit Unicode
   # sequence.

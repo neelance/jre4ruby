@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 2006 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -40,7 +39,6 @@ module Sun::Security::Pkcs11
     }
   end
   
-  # 
   # EC KeyFactory implemenation.
   # 
   # @author  Andreas Sterbenz
@@ -167,7 +165,7 @@ module Sun::Security::Pkcs11
         ec = key_spec
         return generate_public(ec.get_w, ec.get_params)
       rescue PKCS11Exception => e
-        raise InvalidKeySpecException.new("Could not create EC public key", e_)
+        raise InvalidKeySpecException.new("Could not create EC public key", e)
       end
     end
     
@@ -191,7 +189,7 @@ module Sun::Security::Pkcs11
         ec = key_spec
         return generate_private(ec.get_s, ec.get_params)
       rescue PKCS11Exception => e
-        raise InvalidKeySpecException.new("Could not create EC private key", e_)
+        raise InvalidKeySpecException.new("Could not create EC private key", e)
       end
     end
     

@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 1996-2000 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -33,7 +32,6 @@ module Sun::Security::Provider
     }
   end
   
-  # 
   # SunSecurity signer. Like SystemIdentity, it has a trust bit, which
   # can be set by SunSecurity classes, and a set of accessors for other
   # classes in sun.security.*.
@@ -56,7 +54,6 @@ module Sun::Security::Provider
     undef_method :trusted=
     
     typesig { [String] }
-    # 
     # Construct a signer with a given name.
     def initialize(name)
       @trusted = false
@@ -65,7 +62,6 @@ module Sun::Security::Provider
     end
     
     typesig { [String, IdentityScope] }
-    # 
     # Construct a signer with a name and a scope.
     # 
     # @param name the signer's name.
@@ -84,7 +80,6 @@ module Sun::Security::Provider
     end
     
     typesig { [] }
-    # 
     # Returns true if this signer is trusted.
     def is_trusted
       return @trusted
@@ -108,7 +103,6 @@ module Sun::Security::Provider
     end
     
     typesig { [Certificate] }
-    # 
     # Call back method into a protected method for package friends.
     def add_signer_certificate(cert)
       add_certificate(cert)

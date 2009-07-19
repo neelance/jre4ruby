@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 2002-2006 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -34,7 +33,6 @@ module Sun::Security::Validator
     }
   end
   
-  # 
   # Class to check if an end entity cert is suitable for use in some
   # context.<p>
   # 
@@ -193,7 +191,6 @@ module Sun::Security::Validator
     end
     
     typesig { [X509Certificate] }
-    # 
     # Utility method returning the Set of critical extensions for
     # certificate cert (never null).
     def get_critical_extensions(cert)
@@ -205,7 +202,6 @@ module Sun::Security::Validator
     end
     
     typesig { [JavaSet] }
-    # 
     # Utility method checking if there are any unresolved critical extensions.
     # @throws CertificateException if so.
     def check_remaining_extensions(exts)
@@ -217,7 +213,6 @@ module Sun::Security::Validator
     end
     
     typesig { [X509Certificate, JavaSet, String] }
-    # 
     # Utility method checking if the extended key usage extension in
     # certificate cert allows use for expectedEKU.
     def check_eku(cert, exts, expected_eku)
@@ -229,7 +224,6 @@ module Sun::Security::Validator
     end
     
     typesig { [X509Certificate, ::Java::Int] }
-    # 
     # Utility method checking if bit 'bit' is set in this certificates
     # key usage extension.
     # @throws CertificateException if not
@@ -242,7 +236,6 @@ module Sun::Security::Validator
     end
     
     typesig { [X509Certificate] }
-    # 
     # Check whether this certificate can be used for TLS client
     # authentication.
     # @throws CertificateException if not.
@@ -265,7 +258,6 @@ module Sun::Security::Validator
     end
     
     typesig { [X509Certificate, String] }
-    # 
     # Check whether this certificate can be used for TLS server authentication
     # using the specified authentication type parameter. See X509TrustManager
     # specification for details.
@@ -309,7 +301,6 @@ module Sun::Security::Validator
     end
     
     typesig { [X509Certificate] }
-    # 
     # Check whether this certificate can be used for code signing.
     # @throws CertificateException if not.
     def check_code_signing(cert)
@@ -335,7 +326,6 @@ module Sun::Security::Validator
     end
     
     typesig { [X509Certificate] }
-    # 
     # Check whether this certificate can be used by a time stamping authority
     # server (see RFC 3161, section 2.3).
     # @throws CertificateException if not.

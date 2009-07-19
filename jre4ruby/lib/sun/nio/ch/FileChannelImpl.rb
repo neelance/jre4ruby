@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 2000-2006 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -985,7 +984,7 @@ module Sun::Nio::Ch
             addr = map0(imode, map_position, map_size)
           rescue OutOfMemoryError => y
             # After a second OOME, fail
-            raise IOException.new("Map failed", y_)
+            raise IOException.new("Map failed", y)
           end
         end
         raise AssertError if not ((IOStatus.check_all(addr)))
@@ -1172,7 +1171,6 @@ module Sun::Nio::Ch
         include_class_members FileChannelImpl
         
         typesig { [FileLock] }
-        # 
         # Adds a file lock to the table.
         # 
         # @throws OverlappingFileLockException if the file lock overlaps
@@ -1182,14 +1180,12 @@ module Sun::Nio::Ch
         end
         
         typesig { [FileLock] }
-        # 
         # Remove an existing file lock from the table.
         def remove(fl)
           raise NotImplementedError
         end
         
         class_module.module_eval {
-          # 
           # An implementation of this interface releases a given file lock.
           # Used with removeAll.
           const_set_lazy(:Releaser) { Module.new do
@@ -1203,7 +1199,6 @@ module Sun::Nio::Ch
         }
         
         typesig { [Releaser] }
-        # 
         # Removes all file locks from the table.
         # <p>
         # The Releaser#release method is invoked for each file lock before
@@ -1215,14 +1210,12 @@ module Sun::Nio::Ch
         end
         
         typesig { [FileLock, FileLock] }
-        # 
         # Replaces an existing file lock in the table.
         def replace(fl1, fl2)
           raise NotImplementedError
         end
       end }
       
-      # 
       # A simple file lock table that maintains a list of FileLocks obtained by a
       # FileChannel. Use to get 1.4/5.0 behaviour.
       const_set_lazy(:SimpleFileLockTable) { Class.new do
@@ -1290,7 +1283,6 @@ module Sun::Nio::Ch
         alias_method :initialize__simple_file_lock_table, :initialize
       end }
       
-      # 
       # A weak reference to a FileLock.
       # <p>
       # SharedFileLockTable uses a list of file lock references to avoid keeping the
@@ -1320,7 +1312,6 @@ module Sun::Nio::Ch
         alias_method :initialize__file_lock_reference, :initialize
       end }
       
-      # 
       # A file lock table that is over a system-wide map of all file locks.
       const_set_lazy(:SharedFileLockTable) { Class.new do
         include_class_members FileChannelImpl

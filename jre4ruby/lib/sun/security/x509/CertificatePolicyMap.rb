@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 1997 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -33,7 +32,6 @@ module Sun::Security::X509
     }
   end
   
-  # 
   # Represent the CertificatePolicyMap ASN.1 object.
   # 
   # @author Amit Kapoor
@@ -54,7 +52,6 @@ module Sun::Security::X509
     undef_method :subject_domain=
     
     typesig { [CertificatePolicyId, CertificatePolicyId] }
-    # 
     # Create a CertificatePolicyMap with the passed CertificatePolicyId's.
     # 
     # @param issuer the CertificatePolicyId for the issuer CA.
@@ -67,7 +64,6 @@ module Sun::Security::X509
     end
     
     typesig { [DerValue] }
-    # 
     # Create the CertificatePolicyMap from the DER encoded value.
     # 
     # @param val the DER encoded value of the same.
@@ -82,21 +78,18 @@ module Sun::Security::X509
     end
     
     typesig { [] }
-    # 
     # Return the issuer CA part of the policy map.
     def get_issuer_identifier
       return (@issuer_domain)
     end
     
     typesig { [] }
-    # 
     # Return the subject CA part of the policy map.
     def get_subject_identifier
       return (@subject_domain)
     end
     
     typesig { [] }
-    # 
     # Returns a printable representation of the CertificatePolicyId.
     def to_s
       s = "CertificatePolicyMap: [\n" + "IssuerDomain:" + (@issuer_domain.to_s).to_s + "SubjectDomain:" + (@subject_domain.to_s).to_s + "]\n"
@@ -104,7 +97,6 @@ module Sun::Security::X509
     end
     
     typesig { [DerOutputStream] }
-    # 
     # Write the CertificatePolicyMap to the DerOutputStream.
     # 
     # @param out the DerOutputStream to write the object to.

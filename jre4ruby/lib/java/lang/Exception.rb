@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 1994-2006 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -31,7 +30,6 @@ module Java::Lang
     }
   end
   
-  # 
   # The <code>Throwable</code> class is the superclass of all errors and
   # exceptions in the Java language. Only objects that are instances of this
   # class (or one of its subclasses) are thrown by the Java Virtual Machine or
@@ -158,7 +156,6 @@ module Java::Lang
       const_attr_reader  :SerialVersionUID
     }
     
-    # 
     # Native code saves some indication of the stack backtrace in this slot.
     attr_accessor :backtrace
     alias_method :attr_backtrace, :backtrace
@@ -166,7 +163,6 @@ module Java::Lang
     alias_method :attr_backtrace=, :backtrace=
     undef_method :backtrace=
     
-    # 
     # Specific details about the Throwable.  For example, for
     # <tt>FileNotFoundException</tt>, this contains the name of
     # the file that could not be found.
@@ -178,7 +174,6 @@ module Java::Lang
     alias_method :attr_detail_message=, :detail_message=
     undef_method :detail_message=
     
-    # 
     # The throwable that caused this throwable to get thrown, or null if this
     # throwable was not caused by another throwable, or if the causative
     # throwable is unknown.  If this field is equal to this throwable itself,
@@ -193,7 +188,6 @@ module Java::Lang
     alias_method :attr_cause=, :cause=
     undef_method :cause=
     
-    # 
     # The stack trace, as returned by {@link #getStackTrace()}.
     # 
     # @serial
@@ -205,7 +199,6 @@ module Java::Lang
     undef_method :stack_trace=
     
     typesig { [] }
-    # 
     # This field is lazily initialized on first use or serialization and
     # nulled out when fillInStackTrace is called.
     # 
@@ -227,7 +220,6 @@ module Java::Lang
     end
     
     typesig { [String] }
-    # 
     # Constructs a new throwable with the specified detail message.  The
     # cause is not initialized, and may subsequently be initialized by
     # a call to {@link #initCause}.
@@ -249,7 +241,6 @@ module Java::Lang
     end
     
     typesig { [String, Exception] }
-    # 
     # Constructs a new throwable with the specified detail message and
     # cause.  <p>Note that the detail message associated with
     # <code>cause</code> is <i>not</i> automatically incorporated in
@@ -278,7 +269,6 @@ module Java::Lang
     end
     
     typesig { [Exception] }
-    # 
     # Constructs a new throwable with the specified cause and a detail
     # message of <tt>(cause==null ? null : cause.toString())</tt> (which
     # typically contains the class and detail message of <tt>cause</tt>).
@@ -307,7 +297,6 @@ module Java::Lang
     end
     
     typesig { [] }
-    # 
     # Returns the detail message string of this throwable.
     # 
     # @return  the detail message string of this <tt>Throwable</tt> instance
@@ -317,7 +306,6 @@ module Java::Lang
     end
     
     typesig { [] }
-    # 
     # Creates a localized description of this throwable.
     # Subclasses may override this method in order to produce a
     # locale-specific message.  For subclasses that do not override this
@@ -331,7 +319,6 @@ module Java::Lang
     end
     
     typesig { [] }
-    # 
     # Returns the cause of this throwable or <code>null</code> if the
     # cause is nonexistent or unknown.  (The cause is the throwable that
     # caused this throwable to get thrown.)
@@ -355,7 +342,6 @@ module Java::Lang
     end
     
     typesig { [Exception] }
-    # 
     # Initializes the <i>cause</i> of this throwable to the specified value.
     # (The cause is the throwable that caused this throwable to get thrown.)
     # 
@@ -392,7 +378,6 @@ module Java::Lang
     end
     
     typesig { [] }
-    # 
     # Returns a short description of this throwable.
     # The result is the concatenation of:
     # <ul>
@@ -412,7 +397,6 @@ module Java::Lang
     end
     
     typesig { [] }
-    # 
     # Prints this throwable and its backtrace to the
     # standard error stream. This method prints a stack trace for this
     # <code>Throwable</code> object on the error output stream that is
@@ -519,7 +503,6 @@ module Java::Lang
     end
     
     typesig { [PrintStream] }
-    # 
     # Prints this throwable and its backtrace to the specified print stream.
     # 
     # @param s <code>PrintStream</code> to use for output
@@ -540,7 +523,6 @@ module Java::Lang
     end
     
     typesig { [PrintStream, Array.typed(StackTraceElement)] }
-    # 
     # Print our stack trace as a cause for the specified stack trace.
     def print_stack_trace_as_cause(s, caused_trace)
       # assert Thread.holdsLock(s);
@@ -570,7 +552,6 @@ module Java::Lang
     end
     
     typesig { [PrintWriter] }
-    # 
     # Prints this throwable and its backtrace to the specified
     # print writer.
     # 
@@ -593,7 +574,6 @@ module Java::Lang
     end
     
     typesig { [PrintWriter, Array.typed(StackTraceElement)] }
-    # 
     # Print our stack trace as a cause for the specified stack trace.
     def print_stack_trace_as_cause(s, caused_trace)
       # assert Thread.holdsLock(s);
@@ -624,7 +604,6 @@ module Java::Lang
     
     JNI.native_method :Java_java_lang_Throwable_fillInStackTrace, [:pointer, :long], :long
     typesig { [] }
-    # 
     # Fills in the execution stack trace. This method records within this
     # <code>Throwable</code> object information about the current state of
     # the stack frames for the current thread.
@@ -636,7 +615,6 @@ module Java::Lang
     end
     
     typesig { [] }
-    # 
     # Provides programmatic access to the stack trace information printed by
     # {@link #printStackTrace()}.  Returns an array of stack trace elements,
     # each representing one stack frame.  The zeroth element of the array
@@ -680,7 +658,6 @@ module Java::Lang
     end
     
     typesig { [Array.typed(StackTraceElement)] }
-    # 
     # Sets the stack trace elements that will be returned by
     # {@link #getStackTrace()} and printed by {@link #printStackTrace()}
     # and related methods.
@@ -716,7 +693,6 @@ module Java::Lang
     
     JNI.native_method :Java_java_lang_Throwable_getStackTraceDepth, [:pointer, :long], :int32
     typesig { [] }
-    # 
     # Returns the number of elements in the stack trace (or 0 if the stack
     # trace is unavailable).
     def get_stack_trace_depth
@@ -725,7 +701,6 @@ module Java::Lang
     
     JNI.native_method :Java_java_lang_Throwable_getStackTraceElement, [:pointer, :long, :int32], :long
     typesig { [::Java::Int] }
-    # 
     # Returns the specified element of the stack trace.
     # 
     # @param index index of the element to return.

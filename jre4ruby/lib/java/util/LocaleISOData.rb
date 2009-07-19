@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 2005-2007 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -35,7 +34,6 @@ module Java::Util
     include_class_members LocaleISODataImports
     
     class_module.module_eval {
-      # 
       # The 2- and 3-letter ISO 639 language codes.
       # 
       # Afar

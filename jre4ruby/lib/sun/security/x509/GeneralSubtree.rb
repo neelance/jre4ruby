@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 1997-2004 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -33,7 +32,6 @@ module Sun::Security::X509
     }
   end
   
-  # 
   # Represent the GeneralSubtree ASN.1 object, whose syntax is:
   # <pre>
   # GeneralSubtree ::= SEQUENCE {
@@ -84,7 +82,6 @@ module Sun::Security::X509
     undef_method :myhash=
     
     typesig { [GeneralName, ::Java::Int, ::Java::Int] }
-    # 
     # The default constructor for the class.
     # 
     # @params name the GeneralName
@@ -101,7 +98,6 @@ module Sun::Security::X509
     end
     
     typesig { [DerValue] }
-    # 
     # Create the object from its DER encoded form.
     # 
     # @param val the DER encoded from of the same.
@@ -134,7 +130,6 @@ module Sun::Security::X509
     end
     
     typesig { [] }
-    # 
     # Return the GeneralName.
     # 
     # @return the GeneralName
@@ -144,7 +139,6 @@ module Sun::Security::X509
     end
     
     typesig { [] }
-    # 
     # Return the minimum BaseDistance.
     # 
     # @return the minimum BaseDistance. Default is 0 if not set.
@@ -153,7 +147,6 @@ module Sun::Security::X509
     end
     
     typesig { [] }
-    # 
     # Return the maximum BaseDistance.
     # 
     # @return the maximum BaseDistance, or -1 if not set.
@@ -162,7 +155,6 @@ module Sun::Security::X509
     end
     
     typesig { [] }
-    # 
     # Return a printable string of the GeneralSubtree.
     def to_s
       s = "\n   GeneralSubtree: [\n" + "    GeneralName: " + ((((@name).nil?) ? "" : @name.to_s)).to_s + "\n    Minimum: " + (@minimum).to_s
@@ -176,7 +168,6 @@ module Sun::Security::X509
     end
     
     typesig { [Object] }
-    # 
     # Compare this GeneralSubtree with another
     # 
     # @param other GeneralSubtree to compare to this
@@ -205,7 +196,6 @@ module Sun::Security::X509
     end
     
     typesig { [] }
-    # 
     # Returns the hash code for this GeneralSubtree.
     # 
     # @return a hash code value.
@@ -226,7 +216,6 @@ module Sun::Security::X509
     end
     
     typesig { [DerOutputStream] }
-    # 
     # Encode the GeneralSubtree.
     # 
     # @params out the DerOutputStream to encode this object to.
@@ -239,9 +228,9 @@ module Sun::Security::X509
         seq.write_implicit(DerValue.create_tag(DerValue::TAG_CONTEXT, false, TAG_MIN), tmp)
       end
       if (!(@maximum).equal?(-1))
-        tmp_ = DerOutputStream.new
-        tmp_.put_integer(@maximum)
-        seq.write_implicit(DerValue.create_tag(DerValue::TAG_CONTEXT, false, TAG_MAX), tmp_)
+        tmp = DerOutputStream.new
+        tmp.put_integer(@maximum)
+        seq.write_implicit(DerValue.create_tag(DerValue::TAG_CONTEXT, false, TAG_MAX), tmp)
       end
       out.write(DerValue.attr_tag_sequence, seq)
     end

@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 2000-2003 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -36,7 +35,6 @@ module Sun::Security::Provider::Certpath
     }
   end
   
-  # 
   # This class specifies the set of parameters used as input for the Sun
   # certification path build algorithm. It is identical to PKIXBuilderParameters
   # with the addition of a <code>buildForward</code> parameter which allows
@@ -60,7 +58,6 @@ module Sun::Security::Provider::Certpath
     undef_method :build_forward=
     
     typesig { [JavaSet, CertSelector] }
-    # 
     # Creates an instance of <code>SunCertPathBuilderParameters</code> with the
     # specified parameter values.
     # 
@@ -81,7 +78,6 @@ module Sun::Security::Provider::Certpath
     end
     
     typesig { [KeyStore, CertSelector] }
-    # 
     # Creates an instance of <code>SunCertPathBuilderParameters</code> that
     # uses the specified <code>KeyStore</code> to populate the set
     # of most-trusted CA certificates.
@@ -102,7 +98,6 @@ module Sun::Security::Provider::Certpath
     end
     
     typesig { [] }
-    # 
     # Returns the value of the buildForward flag.
     # 
     # @return the value of the buildForward flag
@@ -111,7 +106,6 @@ module Sun::Security::Provider::Certpath
     end
     
     typesig { [::Java::Boolean] }
-    # 
     # Sets the value of the buildForward flag. If true, paths
     # are built from the target subject to the trusted anchor.
     # If false, paths are built from the trusted anchor to the
@@ -123,7 +117,6 @@ module Sun::Security::Provider::Certpath
     end
     
     typesig { [] }
-    # 
     # Returns a formatted string describing the parameters.
     # 
     # @return a formatted string describing the parameters.

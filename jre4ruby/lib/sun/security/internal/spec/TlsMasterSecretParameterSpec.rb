@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 2005-2007 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -33,7 +32,6 @@ module Sun::Security::Internal::Spec
     }
   end
   
-  # 
   # Parameters for SSL/TLS master secret generation.
   # This class encapsulates the information necessary to calculate a SSL/TLS
   # master secret from the premaster secret and other parameters.
@@ -79,7 +77,6 @@ module Sun::Security::Internal::Spec
     undef_method :server_random=
     
     typesig { [SecretKey, ::Java::Int, ::Java::Int, Array.typed(::Java::Byte), Array.typed(::Java::Byte)] }
-    # 
     # Constructs a new TlsMasterSecretParameterSpec.
     # 
     # <p>The <code>getAlgorithm()</code> method of <code>premasterSecret</code>
@@ -123,7 +120,6 @@ module Sun::Security::Internal::Spec
     }
     
     typesig { [] }
-    # 
     # Returns the premaster secret.
     # 
     # @return the premaster secret.
@@ -132,7 +128,6 @@ module Sun::Security::Internal::Spec
     end
     
     typesig { [] }
-    # 
     # Returns the major version number.
     # 
     # @return the major version number.
@@ -141,7 +136,6 @@ module Sun::Security::Internal::Spec
     end
     
     typesig { [] }
-    # 
     # Returns the minor version number.
     # 
     # @return the minor version number.
@@ -150,7 +144,6 @@ module Sun::Security::Internal::Spec
     end
     
     typesig { [] }
-    # 
     # Returns a copy of the client's random value.
     # 
     # @return a copy of the client's random value.
@@ -159,7 +152,6 @@ module Sun::Security::Internal::Spec
     end
     
     typesig { [] }
-    # 
     # Returns a copy of the server's random value.
     # 
     # @return a copy of the server's random value.

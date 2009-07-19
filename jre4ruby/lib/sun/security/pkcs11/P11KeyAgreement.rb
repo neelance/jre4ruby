@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 2003-2007 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -38,7 +37,6 @@ module Sun::Security::Pkcs11
     }
   end
   
-  # 
   # KeyAgreement implementation class. This class currently supports
   # DH.
   # 
@@ -179,16 +177,16 @@ module Sun::Security::Pkcs11
           p = spec.get_p
           g = spec.get_g
         rescue InvalidKeySpecException => e
-          raise InvalidKeyException.new("Could not obtain key values", e_)
+          raise InvalidKeyException.new("Could not obtain key values", e)
         end
       end
       # if parameters of private key are accessible, verify that
       # they match parameters of public key
       # XXX p and g should always be readable, even if the key is sensitive
       if (@private_key.is_a?(DHPrivateKey))
-        dh_key_ = @private_key
-        params_ = dh_key_.get_params
-        if ((((p == params_.get_p)).equal?(false)) || (((g == params_.get_g)).equal?(false)))
+        dh_key = @private_key
+        params = dh_key.get_params
+        if ((((p == params.get_p)).equal?(false)) || (((g == params.get_g)).equal?(false)))
           raise InvalidKeyException.new("PublicKey DH parameters must match PrivateKey DH parameters")
         end
       end

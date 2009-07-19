@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 1997-2006 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -39,8 +38,6 @@ module Java::Security
     }
   end
   
-  # 
-  # 
   # <p>This class extends the concept of a codebase to
   # encapsulate not only the location (URL) but also the certificate chains
   # that were used to verify signed code originating from that location.
@@ -56,7 +53,6 @@ module Java::Security
       const_attr_reader  :SerialVersionUID
     }
     
-    # 
     # The code location.
     # 
     # @serial
@@ -66,7 +62,6 @@ module Java::Security
     alias_method :attr_location=, :location=
     undef_method :location=
     
-    # 
     # The code signers.
     attr_accessor :signers
     alias_method :attr_signers, :signers
@@ -74,7 +69,6 @@ module Java::Security
     alias_method :attr_signers=, :signers=
     undef_method :signers=
     
-    # 
     # The code signers. Certificate chains are concatenated.
     attr_accessor :certs
     alias_method :attr_certs, :certs
@@ -97,7 +91,6 @@ module Java::Security
     undef_method :factory=
     
     typesig { [URL, Array.typed(Java::Security::Cert::Certificate)] }
-    # 
     # Constructs a CodeSource and associates it with the specified
     # location and set of certificates.
     # 
@@ -119,7 +112,6 @@ module Java::Security
     end
     
     typesig { [URL, Array.typed(CodeSigner)] }
-    # 
     # Constructs a CodeSource and associates it with the specified
     # location and set of code signers.
     # 
@@ -142,7 +134,6 @@ module Java::Security
     end
     
     typesig { [] }
-    # 
     # Returns the hash code value for this object.
     # 
     # @return a hash code value for this object.
@@ -155,7 +146,6 @@ module Java::Security
     end
     
     typesig { [Object] }
-    # 
     # Tests for equality between the specified object and this
     # object. Two CodeSource objects are considered equal if their
     # locations are of identical value and if their signer certificate
@@ -191,7 +181,6 @@ module Java::Security
     end
     
     typesig { [] }
-    # 
     # Returns the location associated with this CodeSource.
     # 
     # @return the location (URL).
@@ -202,7 +191,6 @@ module Java::Security
     end
     
     typesig { [] }
-    # 
     # Returns the certificates associated with this CodeSource.
     # <p>
     # If this CodeSource object was created using the
@@ -236,7 +224,6 @@ module Java::Security
     end
     
     typesig { [] }
-    # 
     # Returns the code signers associated with this CodeSource.
     # <p>
     # If this CodeSource object was created using the
@@ -263,7 +250,6 @@ module Java::Security
     end
     
     typesig { [CodeSource] }
-    # 
     # Returns true if this CodeSource object "implies" the specified CodeSource.
     # <P>
     # More specifically, this method makes the following checks, in order.
@@ -338,7 +324,6 @@ module Java::Security
     end
     
     typesig { [CodeSource, ::Java::Boolean] }
-    # 
     # Returns true if all the certs in this
     # CodeSource are also in <i>that</i>.
     # 
@@ -383,21 +368,21 @@ module Java::Security
             if (strict && !(@certs.attr_length).equal?(that.attr_certs.attr_length))
               return false
             end
-            i_ = 0
-            while i_ < @certs.attr_length
+            i = 0
+            while i < @certs.attr_length
               match = false
-              j_ = 0
-              while j_ < that.attr_certs.attr_length
-                if ((@certs[i_] == that.attr_certs[j_]))
+              j = 0
+              while j < that.attr_certs.attr_length
+                if ((@certs[i] == that.attr_certs[j]))
                   match = true
                   break
                 end
-                ((j_ += 1) - 1)
+                ((j += 1) - 1)
               end
               if (!match)
                 return false
               end
-              ((i_ += 1) - 1)
+              ((i += 1) - 1)
             end
             return true
           end
@@ -407,7 +392,6 @@ module Java::Security
     end
     
     typesig { [CodeSource] }
-    # 
     # Returns true if two CodeSource's have the "same" location.
     # 
     # @param that CodeSource to compare against
@@ -470,9 +454,9 @@ module Java::Security
           if ((last).equal?(-1))
             return false
           end
-          this_path_ = @location.get_file.substring(0, @location.get_file.length - 1)
+          this_path = @location.get_file.substring(0, @location.get_file.length - 1)
           that_path = that.attr_location.get_file.substring(0, last + 1)
-          if (!(that_path == this_path_))
+          if (!(that_path == this_path))
             return false
           end
         else
@@ -491,7 +475,6 @@ module Java::Security
     end
     
     typesig { [] }
-    # 
     # Returns a string describing this CodeSource, telling its
     # URL and certificates.
     # 
@@ -508,10 +491,10 @@ module Java::Security
         end
       else
         if (!(@signers).nil? && @signers.attr_length > 0)
-          i_ = 0
-          while i_ < @signers.attr_length
-            sb.append(" " + (@signers[i_]).to_s)
-            ((i_ += 1) - 1)
+          i = 0
+          while i < @signers.attr_length
+            sb.append(" " + (@signers[i]).to_s)
+            ((i += 1) - 1)
           end
         else
           sb.append(" <no signer certificates>")
@@ -522,7 +505,6 @@ module Java::Security
     end
     
     typesig { [Java::Io::ObjectOutputStream] }
-    # 
     # Writes this object out to a stream (i.e., serializes it).
     # 
     # @serialData An initial <code>URL</code> is followed by an
@@ -565,7 +547,6 @@ module Java::Security
     end
     
     typesig { [Java::Io::ObjectInputStream] }
-    # 
     # Restores this object from a stream (i.e., deserializes it).
     def read_object(ois)
       cf = nil
@@ -609,7 +590,7 @@ module Java::Security
         begin
           @certs[i] = cf.generate_certificate(bais)
         rescue CertificateException => ce
-          raise IOException.new(ce_.get_message)
+          raise IOException.new(ce.get_message)
         end
         bais.close
         ((i += 1) - 1)
@@ -623,7 +604,6 @@ module Java::Security
     end
     
     typesig { [Array.typed(Java::Security::Cert::Certificate)] }
-    # 
     # Convert an array of certificates to an array of code signers.
     # The array of certificates is a concatenation of certificate chains
     # where the initial certificate in each chain is the end-entity cert.

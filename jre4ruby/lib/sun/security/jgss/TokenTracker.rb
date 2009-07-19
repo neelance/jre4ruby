@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 2000-2006 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -33,7 +32,6 @@ module Sun::Security::Jgss
     }
   end
   
-  # 
   # A utility class that implements a number list that keeps track of which
   # tokens have arrived by storing their token numbers in the list. It helps
   # detect old tokens, out of sequence tokens, and duplicate tokens.
@@ -117,7 +115,6 @@ module Sun::Security::Jgss
     end
     
     typesig { [::Java::Int] }
-    # 
     # Returns the index for the entry into which this number will fit. If
     # there is none, it returns the index of the last interval
     # which precedes this number. It returns -1 if the number needs to be
@@ -138,7 +135,6 @@ module Sun::Security::Jgss
     end
     
     typesig { [::Java::Int, MessageProp] }
-    # 
     # Sets the sequencing and replay information for the given token
     # number.
     # 
@@ -264,7 +260,6 @@ module Sun::Security::Jgss
     end
     
     typesig { [::Java::Int, ::Java::Int] }
-    # 
     # Adds the number to the list just after the entry that is currently
     # at position prevEntryPos. If prevEntryPos is -1, then the number
     # will begin a new interval at the front of the list.
@@ -305,7 +300,6 @@ module Sun::Security::Jgss
       if (prepended || appended)
         return
       end
-      # 
       # At this point we know that the number will start a new interval
       # which needs to be added to the list. We might have to recyle an
       # older entry in the list.
@@ -315,7 +309,6 @@ module Sun::Security::Jgss
           ((@window_start_index += 1) - 1)
         end # due to the insertion which will happen
       else
-        # 
         # Delete the entry that marks the start of the current window.
         # The marker will automatically point to the next entry in the
         # list when this happens. If the current entry is at the end
@@ -331,7 +324,6 @@ module Sun::Security::Jgss
         if (prev_entry_pos >= old_window_start_index)
           ((prev_entry_pos -= 1) + 1) # due to the deletion that just happened
         else
-          # 
           # If the start of the current window just moved from the
           # end of the list to the front of the list, and if the new
           # entry will be added to the front of the list, then
@@ -381,7 +373,6 @@ module Sun::Security::Jgss
     end
     
     class_module.module_eval {
-      # 
       # An entry in the list that represents the sequence of received
       # tokens. Each entry is actaully an interval of numbers, all of which
       # have been received.
@@ -410,7 +401,6 @@ module Sun::Security::Jgss
         end
         
         typesig { [::Java::Int] }
-        # 
         # Returns -1 if this interval represented by this entry precedes
         # the number, 0 if the the number is contained in the interval,
         # and -1 if the interval occurs after the number.

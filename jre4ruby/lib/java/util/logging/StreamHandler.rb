@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 2000-2006 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -32,7 +31,6 @@ module Java::Util::Logging
     }
   end
   
-  # 
   # Stream based logging <tt>Handler</tt>.
   # <p>
   # This is primarily intended as a base class or support class to
@@ -110,7 +108,6 @@ module Java::Util::Logging
     end
     
     typesig { [] }
-    # 
     # Create a <tt>StreamHandler</tt>, with no current output stream.
     def initialize
       @manager = nil
@@ -125,7 +122,6 @@ module Java::Util::Logging
     end
     
     typesig { [OutputStream, Formatter] }
-    # 
     # Create a <tt>StreamHandler</tt> with a given <tt>Formatter</tt>
     # and output stream.
     # <p>
@@ -146,7 +142,6 @@ module Java::Util::Logging
     end
     
     typesig { [OutputStream] }
-    # 
     # Change the output stream.
     # <P>
     # If there is a current output stream then the <tt>Formatter</tt>'s
@@ -180,7 +175,6 @@ module Java::Util::Logging
     end
     
     typesig { [String] }
-    # 
     # Set (or change) the character encoding used by this <tt>Handler</tt>.
     # <p>
     # The encoding should be set before any <tt>LogRecords</tt> are written
@@ -207,7 +201,6 @@ module Java::Util::Logging
     end
     
     typesig { [LogRecord] }
-    # 
     # Format and publish a <tt>LogRecord</tt>.
     # <p>
     # The <tt>StreamHandler</tt> first checks if there is an <tt>OutputStream</tt>
@@ -246,13 +239,12 @@ module Java::Util::Logging
         rescue Exception => ex
           # We don't want to throw an exception here, but we
           # report the exception to any registered ErrorManager.
-          report_error(nil, ex_, ErrorManager::WRITE_FAILURE)
+          report_error(nil, ex, ErrorManager::WRITE_FAILURE)
         end
       end
     end
     
     typesig { [LogRecord] }
-    # 
     # Check if this <tt>Handler</tt> would actually log a given <tt>LogRecord</tt>.
     # <p>
     # This method checks if the <tt>LogRecord</tt> has an appropriate level and
@@ -269,7 +261,6 @@ module Java::Util::Logging
     end
     
     typesig { [] }
-    # 
     # Flush any buffered messages.
     def flush
       synchronized(self) do
@@ -310,7 +301,6 @@ module Java::Util::Logging
     end
     
     typesig { [] }
-    # 
     # Close the current output stream.
     # <p>
     # The <tt>Formatter</tt>'s "tail" string is written to the stream before it

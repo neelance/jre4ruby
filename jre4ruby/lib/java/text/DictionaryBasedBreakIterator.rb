@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 1999-2003 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -51,7 +50,6 @@ module Java::Text
     }
   end
   
-  # 
   # A subclass of RuleBasedBreakIterator that adds the ability to use a dictionary
   # to further subdivide ranges of text beyond what is possible using just the
   # state-table-based algorithm.  This is necessary, for example, to handle
@@ -78,7 +76,6 @@ module Java::Text
   class DictionaryBasedBreakIterator < DictionaryBasedBreakIteratorImports.const_get :RuleBasedBreakIterator
     include_class_members DictionaryBasedBreakIteratorImports
     
-    # 
     # a list of known words that is used to divide up contiguous ranges of letters,
     # stored in a compressed, indexed, format that offers fast access
     attr_accessor :dictionary
@@ -87,7 +84,6 @@ module Java::Text
     alias_method :attr_dictionary=, :dictionary=
     undef_method :dictionary=
     
-    # 
     # a list of flags indicating which character categories are contained in
     # the dictionary file (this is used to determine which ranges of characters
     # to apply the dictionary to)
@@ -97,7 +93,6 @@ module Java::Text
     alias_method :attr_category_flags=, :category_flags=
     undef_method :category_flags=
     
-    # 
     # a temporary hiding place for the number of dictionary characters in the
     # last range passed over by next()
     attr_accessor :dictionary_char_count
@@ -106,7 +101,6 @@ module Java::Text
     alias_method :attr_dictionary_char_count=, :dictionary_char_count=
     undef_method :dictionary_char_count=
     
-    # 
     # when a range of characters is divided up using the dictionary, the break
     # positions that are discovered are stored here, preventing us from having
     # to use either the dictionary or the state table again until the iterator
@@ -117,7 +111,6 @@ module Java::Text
     alias_method :attr_cached_break_positions=, :cached_break_positions=
     undef_method :cached_break_positions=
     
-    # 
     # if cachedBreakPositions is not null, this indicates which item in the
     # cache the current iteration position refers to
     attr_accessor :position_in_cache
@@ -127,7 +120,6 @@ module Java::Text
     undef_method :position_in_cache=
     
     typesig { [String, String] }
-    # 
     # Constructs a DictionaryBasedBreakIterator.
     # @param description Same as the description parameter on RuleBasedBreakIterator,
     # except for the special meaning of "<dictionary>".  This parameter is just
@@ -167,7 +159,6 @@ module Java::Text
     end
     
     typesig { [] }
-    # 
     # Sets the current iteration position to the beginning of the text.
     # (i.e., the CharacterIterator's starting offset).
     # @return The offset of the beginning of the text.
@@ -179,7 +170,6 @@ module Java::Text
     end
     
     typesig { [] }
-    # 
     # Sets the current iteration position to the end of the text.
     # (i.e., the CharacterIterator's ending offset).
     # @return The text's past-the-end offset.
@@ -191,7 +181,6 @@ module Java::Text
     end
     
     typesig { [] }
-    # 
     # Advances the iterator one step backwards.
     # @return The position of the last boundary position before the
     # current iteration position
@@ -217,7 +206,6 @@ module Java::Text
     end
     
     typesig { [::Java::Int] }
-    # 
     # Sets the current iteration position to the last boundary position
     # before the specified position.
     # @param offset The position to begin searching from
@@ -247,7 +235,6 @@ module Java::Text
     end
     
     typesig { [::Java::Int] }
-    # 
     # Sets the current iteration position to the first boundary position after
     # the specified position.
     # @param offset The position to begin searching forward from
@@ -276,7 +263,6 @@ module Java::Text
     end
     
     typesig { [] }
-    # 
     # This is the implementation function for next().
     def handle_next
       text = get_text
@@ -314,7 +300,6 @@ module Java::Text
     end
     
     typesig { [::Java::Int] }
-    # 
     # Looks up a character category for a character.
     def lookup_category(c)
       # this override of lookupCategory() exists only to keep track of whether we've
@@ -330,7 +315,6 @@ module Java::Text
     end
     
     typesig { [::Java::Int, ::Java::Int] }
-    # 
     # This is the function that actually implements the dictionary-based
     # algorithm.  Given the endpoints of a range of text, it uses the
     # dictionary to determine the positions of any boundaries in this

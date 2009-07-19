@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 1999-2002 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -31,7 +30,6 @@ module Java::Net
     }
   end
   
-  # 
   # This interface defines a factory for datagram socket implementations. It
   # is used by the classes <code>DatagramSocket</code> to create actual socket
   # implementations.
@@ -43,7 +41,6 @@ module Java::Net
     include_class_members DatagramSocketImplFactoryImports
     
     typesig { [] }
-    # 
     # Creates a new <code>DatagramSocketImpl</code> instance.
     # 
     # @return  a new instance of <code>DatagramSocketImpl</code>.

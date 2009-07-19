@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 2003-2007 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -37,7 +36,6 @@ module Sun::Security::Pkcs11
     }
   end
   
-  # 
   # RSA Cipher implementation class. We currently only support
   # PKCS#1 v1.5 padding on top of CKM_RSA_PKCS.
   # 
@@ -504,10 +502,10 @@ module Sun::Security::Pkcs11
         return ConstructKeys.construct_key(encoded, algorithm, type)
       rescue BadPaddingException => e
         # should not occur
-        raise InvalidKeyException.new("Unwrapping failed", e_)
+        raise InvalidKeyException.new("Unwrapping failed", e)
       rescue IllegalBlockSizeException => e
         # should not occur, handled with length check above
-        raise InvalidKeyException.new("Unwrapping failed", e__)
+        raise InvalidKeyException.new("Unwrapping failed", e)
       end
     end
     
@@ -539,7 +537,6 @@ module Sun::Security::Pkcs11
     
     class_module.module_eval {
       typesig { [Array.typed(::Java::Byte), String] }
-      # 
       # Construct a public key from its encoding.
       # 
       # @param encodedKey the encoding of a public key.
@@ -560,7 +557,6 @@ module Sun::Security::Pkcs11
       end
       
       typesig { [Array.typed(::Java::Byte), String] }
-      # 
       # Construct a private key from its encoding.
       # 
       # @param encodedKey the encoding of a private key.
@@ -581,7 +577,6 @@ module Sun::Security::Pkcs11
       end
       
       typesig { [Array.typed(::Java::Byte), String] }
-      # 
       # Construct a secret key from its encoding.
       # 
       # @param encodedKey the encoding of a secret key.

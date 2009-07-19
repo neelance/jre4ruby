@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 1995-2006 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -38,7 +37,6 @@ module Java::Net
     }
   end
   
-  # 
   # The abstract class <code>URLStreamHandler</code> is the common
   # superclass for all stream protocol handlers. A stream protocol
   # handler knows how to make a connection for a particular protocol
@@ -58,7 +56,6 @@ module Java::Net
     include_class_members URLStreamHandlerImports
     
     typesig { [URL] }
-    # 
     # Opens a connection to the object referenced by the
     # <code>URL</code> argument.
     # This method should be overridden by a subclass.
@@ -80,7 +77,6 @@ module Java::Net
     end
     
     typesig { [URL, Proxy] }
-    # 
     # Same as openConnection(URL), except that the connection will be
     # made through the specified proxy; Protocol handlers that do not
     # support proxying will ignore the proxy parameter and make a
@@ -106,7 +102,6 @@ module Java::Net
     end
     
     typesig { [URL, String, ::Java::Int, ::Java::Int] }
-    # 
     # Parses the string representation of a <code>URL</code> into a
     # <code>URL</code> object.
     # <p>
@@ -235,24 +230,24 @@ module Java::Net
         else
           if (!(path).nil? && path.length > 0)
             is_rel_path = true
-            ind_ = path.last_index_of(Character.new(?/.ord))
+            ind = path.last_index_of(Character.new(?/.ord))
             seperator = ""
-            if ((ind_).equal?(-1) && !(authority).nil?)
+            if ((ind).equal?(-1) && !(authority).nil?)
               seperator = "/"
             end
-            path = (path.substring(0, ind_ + 1)).to_s + seperator + (spec.substring(start, limit)).to_s
+            path = (path.substring(0, ind + 1)).to_s + seperator + (spec.substring(start, limit)).to_s
           else
-            seperator_ = (!(authority).nil?) ? "/" : ""
-            path = seperator_ + (spec.substring(start, limit)).to_s
+            seperator = (!(authority).nil?) ? "/" : ""
+            path = seperator + (spec.substring(start, limit)).to_s
           end
         end
       else
         if (query_only && !(path).nil?)
-          ind__ = path.last_index_of(Character.new(?/.ord))
-          if (ind__ < 0)
-            ind__ = 0
+          ind = path.last_index_of(Character.new(?/.ord))
+          if (ind < 0)
+            ind = 0
           end
-          path = (path.substring(0, ind__)).to_s + "/"
+          path = (path.substring(0, ind)).to_s + "/"
         end
       end
       if ((path).nil?)
@@ -266,7 +261,6 @@ module Java::Net
         # Remove embedded /../ if possible
         i = 0
         while ((i = path.index_of("/../", i)) >= 0)
-          # 
           # A "/../" will cancel the previous segment and itself,
           # unless that segment is a "/../" itself
           # i.e. "/a/b/../c" becomes "/a/c"
@@ -300,7 +294,6 @@ module Java::Net
     end
     
     typesig { [] }
-    # 
     # Returns the default port for a URL parsed by this handler. This method
     # is meant to be overidden by handlers with default port numbers.
     # @return the default port for a <code>URL</code> parsed by this handler.
@@ -310,7 +303,6 @@ module Java::Net
     end
     
     typesig { [URL, URL] }
-    # 
     # Provides the default equals calculation. May be overidden by handlers
     # for other protocols that have different requirements for equals().
     # This method requires that none of its arguments is null. This is
@@ -328,7 +320,6 @@ module Java::Net
     end
     
     typesig { [URL] }
-    # 
     # Provides the default hash calculation. May be overidden by handlers for
     # other protocols that have different requirements for hashCode
     # calculation.
@@ -372,7 +363,6 @@ module Java::Net
     end
     
     typesig { [URL, URL] }
-    # 
     # Compare two urls to see whether they refer to the same file,
     # i.e., having the same protocol, host, port, and path.
     # This method requires that none of its arguments is null. This is
@@ -407,7 +397,6 @@ module Java::Net
     end
     
     typesig { [URL] }
-    # 
     # Get the IP address of our host. An empty host field or a DNS failure
     # will result in a null return.
     # 
@@ -437,7 +426,6 @@ module Java::Net
     end
     
     typesig { [URL, URL] }
-    # 
     # Compares the host components of two URLs.
     # @param u1 the URL of the first host to compare
     # @param u2 the URL of the second host to compare
@@ -461,7 +449,6 @@ module Java::Net
     end
     
     typesig { [URL] }
-    # 
     # Converts a <code>URL</code> of a specific protocol to a
     # <code>String</code>.
     # 
@@ -504,7 +491,6 @@ module Java::Net
     end
     
     typesig { [URL, String, String, ::Java::Int, String, String, String, String, String] }
-    # 
     # Sets the fields of the <code>URL</code> argument to the indicated values.
     # Only classes derived from URLStreamHandler are supposed to be able
     # to call the set method on a URL.
@@ -531,7 +517,6 @@ module Java::Net
     end
     
     typesig { [URL, String, String, ::Java::Int, String, String] }
-    # 
     # Sets the fields of the <code>URL</code> argument to the indicated values.
     # Only classes derived from URLStreamHandler are supposed to be able
     # to call the set method on a URL.
@@ -547,7 +532,6 @@ module Java::Net
     # @deprecated Use setURL(URL, String, String, int, String, String, String,
     # String);
     def set_url(u, protocol, host, port, file, ref)
-      # 
       # Only old URL handlers call this, so assume that the host
       # field might contain "user:passwd@host". Fix as necessary.
       authority = nil
@@ -560,7 +544,6 @@ module Java::Net
           host = (host.substring(at + 1)).to_s
         end
       end
-      # 
       # Assume file might contain query part. Fix as necessary.
       path = nil
       query = nil

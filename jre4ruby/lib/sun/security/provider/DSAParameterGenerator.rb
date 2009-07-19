@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 1997-2006 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -42,7 +41,6 @@ module Sun::Security::Provider
     }
   end
   
-  # 
   # This class generates parameters for the DSA algorithm. It uses a default
   # prime modulus size of 1024 bits, which can be overwritten during
   # initialization.
@@ -103,14 +101,12 @@ module Sun::Security::Provider
     end
     
     typesig { [::Java::Int, SecureRandom] }
-    # 
     # Initializes this parameter generator for a certain strength
     # and source of randomness.
     # 
     # @param strength the strength (size of prime) in bits
     # @param random the source of randomness
     def engine_init(strength, random)
-      # 
       # Bruce Schneier, "Applied Cryptography", 2nd Edition,
       # Description of DSA:
       # [...] The algorithm uses the following parameter:
@@ -124,7 +120,6 @@ module Sun::Security::Provider
     end
     
     typesig { [AlgorithmParameterSpec, SecureRandom] }
-    # 
     # Initializes this parameter generator with a set of
     # algorithm-specific parameter generation values.
     # 
@@ -138,7 +133,6 @@ module Sun::Security::Provider
     end
     
     typesig { [] }
-    # 
     # Generates the parameters.
     # 
     # @return the new AlgorithmParameters object
@@ -160,16 +154,15 @@ module Sun::Security::Provider
         raise RuntimeException.new(e.get_message)
       rescue NoSuchAlgorithmException => e
         # this should never happen, because we provide it
-        raise RuntimeException.new(e_.get_message)
+        raise RuntimeException.new(e.get_message)
       rescue NoSuchProviderException => e
         # this should never happen, because we provide it
-        raise RuntimeException.new(e__.get_message)
+        raise RuntimeException.new(e.get_message)
       end
       return alg_params
     end
     
     typesig { [SecureRandom, ::Java::Int] }
-    # 
     # Generates the prime and subprime parameters for DSA,
     # using the provided source of randomness.
     # This method will generate new seeds until a suitable
@@ -196,7 +189,6 @@ module Sun::Security::Provider
     end
     
     typesig { [Array.typed(::Java::Byte), ::Java::Int] }
-    # 
     # Generates the prime and subprime parameters for DSA.
     # 
     # <p>The seed parameter corresponds to the <code>SEED</code> parameter
@@ -268,7 +260,6 @@ module Sun::Security::Provider
     end
     
     typesig { [BigInteger, BigInteger] }
-    # 
     # Generates the <code>g</code> parameter for DSA.
     # 
     # @param p the prime, <code>p</code>.
@@ -287,7 +278,6 @@ module Sun::Security::Provider
     end
     
     typesig { [Array.typed(::Java::Byte)] }
-    # 
     # Returns the SHA-1 digest of some data
     def _sha(array)
       @sha.engine_reset
@@ -296,7 +286,6 @@ module Sun::Security::Provider
     end
     
     typesig { [BigInteger] }
-    # 
     # Converts the result of a BigInteger.toByteArray call to an exact
     # signed magnitude representation for any positive number.
     def to_byte_array(big_int)
@@ -310,7 +299,6 @@ module Sun::Security::Provider
     end
     
     typesig { [Array.typed(::Java::Byte), Array.typed(::Java::Byte)] }
-    # 
     # XORs U2 into U1
     def xor(u1, u2)
       i = 0

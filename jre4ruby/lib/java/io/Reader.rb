@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 1996-2006 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -31,7 +30,6 @@ module Java::Io
     }
   end
   
-  # 
   # Abstract class for reading character streams.  The only methods that a
   # subclass must implement are read(char[], int, int) and close().  Most
   # subclasses, however, will override some of the methods defined here in order
@@ -56,7 +54,6 @@ module Java::Io
     include Readable
     include Closeable
     
-    # 
     # The object used to synchronize operations on this stream.  For
     # efficiency, a character-stream object may use an object other than
     # itself to protect critical sections.  A subclass should therefore use
@@ -69,7 +66,6 @@ module Java::Io
     undef_method :lock=
     
     typesig { [] }
-    # 
     # Creates a new character-stream reader whose critical sections will
     # synchronize on the reader itself.
     def initialize
@@ -79,7 +75,6 @@ module Java::Io
     end
     
     typesig { [Object] }
-    # 
     # Creates a new character-stream reader whose critical sections will
     # synchronize on the given object.
     # 
@@ -94,7 +89,6 @@ module Java::Io
     end
     
     typesig { [Java::Nio::CharBuffer] }
-    # 
     # Attempts to read characters into the specified character buffer.
     # The buffer is used as a repository of characters as-is: the only
     # changes made are the results of a put operation. No flipping or
@@ -118,7 +112,6 @@ module Java::Io
     end
     
     typesig { [] }
-    # 
     # Reads a single character.  This method will block until a character is
     # available, an I/O error occurs, or the end of the stream is reached.
     # 
@@ -140,7 +133,6 @@ module Java::Io
     end
     
     typesig { [Array.typed(::Java::Char)] }
-    # 
     # Reads characters into an array.  This method will block until some input
     # is available, an I/O error occurs, or the end of the stream is reached.
     # 
@@ -156,7 +148,6 @@ module Java::Io
     end
     
     typesig { [Array.typed(::Java::Char), ::Java::Int, ::Java::Int] }
-    # 
     # Reads characters into a portion of an array.  This method will block
     # until some input is available, an I/O error occurs, or the end of the
     # stream is reached.
@@ -187,7 +178,6 @@ module Java::Io
     undef_method :skip_buffer=
     
     typesig { [::Java::Long] }
-    # 
     # Skips characters.  This method will block until some characters are
     # available, an I/O error occurs, or the end of the stream is reached.
     # 
@@ -219,7 +209,6 @@ module Java::Io
     end
     
     typesig { [] }
-    # 
     # Tells whether this stream is ready to be read.
     # 
     # @return True if the next read() is guaranteed not to block for input,
@@ -232,7 +221,6 @@ module Java::Io
     end
     
     typesig { [] }
-    # 
     # Tells whether this stream supports the mark() operation. The default
     # implementation always returns false. Subclasses should override this
     # method.
@@ -243,7 +231,6 @@ module Java::Io
     end
     
     typesig { [::Java::Int] }
-    # 
     # Marks the present position in the stream.  Subsequent calls to reset()
     # will attempt to reposition the stream to this point.  Not all
     # character-input streams support the mark() operation.
@@ -260,7 +247,6 @@ module Java::Io
     end
     
     typesig { [] }
-    # 
     # Resets the stream.  If the stream has been marked, then attempt to
     # reposition it at the mark.  If the stream has not been marked, then
     # attempt to reset it in some way appropriate to the particular stream,
@@ -277,7 +263,6 @@ module Java::Io
     end
     
     typesig { [] }
-    # 
     # Closes the stream and releases any system resources associated with
     # it.  Once the stream has been closed, further read(), ready(),
     # mark(), reset(), or skip() invocations will throw an IOException.

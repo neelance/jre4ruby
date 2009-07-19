@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 2000-2003 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -36,7 +35,6 @@ module Java::Security::Cert
     }
   end
   
-  # 
   # Parameters used as input for the PKIX <code>CertPathBuilder</code>
   # algorithm.
   # <p>
@@ -89,7 +87,6 @@ module Java::Security::Cert
     undef_method :max_path_length=
     
     typesig { [JavaSet, CertSelector] }
-    # 
     # Creates an instance of <code>PKIXBuilderParameters</code> with
     # the specified <code>Set</code> of most-trusted CAs.
     # Each element of the set is a {@link TrustAnchor TrustAnchor}.
@@ -115,7 +112,6 @@ module Java::Security::Cert
     end
     
     typesig { [KeyStore, CertSelector] }
-    # 
     # Creates an instance of <code>PKIXBuilderParameters</code> that
     # populates the set of most-trusted CAs from the trusted
     # certificate entries contained in the specified <code>KeyStore</code>.
@@ -140,7 +136,6 @@ module Java::Security::Cert
     end
     
     typesig { [::Java::Int] }
-    # 
     # Sets the value of the maximum number of non-self-issued intermediate
     # certificates that may exist in a certification path. A certificate
     # is self-issued if the DNs that appear in the subject and issuer
@@ -177,7 +172,6 @@ module Java::Security::Cert
     end
     
     typesig { [] }
-    # 
     # Returns the value of the maximum number of intermediate non-self-issued
     # certificates that may exist in a certification path. See
     # the {@link #setMaxPathLength} method for more details.
@@ -191,7 +185,6 @@ module Java::Security::Cert
     end
     
     typesig { [] }
-    # 
     # Returns a formatted string describing the parameters.
     # 
     # @return a formatted string describing the parameters

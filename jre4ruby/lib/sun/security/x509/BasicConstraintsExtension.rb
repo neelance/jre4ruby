@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 1997-2006 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -35,7 +34,6 @@ module Sun::Security::X509
     }
   end
   
-  # 
   # This class represents the Basic Constraints Extension.
   # 
   # <p>The basic constraints extension identifies whether the subject of the
@@ -58,13 +56,11 @@ module Sun::Security::X509
     include CertAttrSet
     
     class_module.module_eval {
-      # 
       # Identifier for this attribute, to be used with the
       # get, set, delete methods of Certificate, x509 type.
       const_set_lazy(:IDENT) { "x509.info.extensions.BasicConstraints" }
       const_attr_reader  :IDENT
       
-      # 
       # Attribute names.
       const_set_lazy(:NAME) { "BasicConstraints" }
       const_attr_reader  :NAME
@@ -109,7 +105,6 @@ module Sun::Security::X509
     end
     
     typesig { [::Java::Boolean, ::Java::Int] }
-    # 
     # Default constructor for this object. The extension is marked
     # critical if the ca flag is true, false otherwise.
     # 
@@ -120,7 +115,6 @@ module Sun::Security::X509
     end
     
     typesig { [Boolean, ::Java::Boolean, ::Java::Int] }
-    # 
     # Constructor for this object with specified criticality.
     # 
     # @param critical true, if the extension should be marked critical
@@ -140,7 +134,6 @@ module Sun::Security::X509
     end
     
     typesig { [Boolean, Object] }
-    # 
     # Create the extension from the passed DER encoded value of the same.
     # 
     # @param critical flag indicating if extension is critical or not
@@ -182,7 +175,6 @@ module Sun::Security::X509
         raise IOException.new("Invalid encoding of BasicConstraints")
       end
       @path_len = opt.get_integer
-      # 
       # Activate this check once again after PKIX profiling
       # is a standard and this check no longer imposes an
       # interoperability barrier.
@@ -194,7 +186,6 @@ module Sun::Security::X509
     end
     
     typesig { [] }
-    # 
     # Return user readable form of extension.
     def to_s
       s = (super).to_s + "BasicConstraints:[\n"
@@ -208,7 +199,6 @@ module Sun::Security::X509
     end
     
     typesig { [OutputStream] }
-    # 
     # Encode this extension value to the output stream.
     # 
     # @param out the DerOutputStream to encode the extension to.
@@ -228,7 +218,6 @@ module Sun::Security::X509
     end
     
     typesig { [String, Object] }
-    # 
     # Set the attribute value.
     def set(name, obj)
       if (name.equals_ignore_case(IS_CA))
@@ -250,7 +239,6 @@ module Sun::Security::X509
     end
     
     typesig { [String] }
-    # 
     # Get the attribute value.
     def get(name)
       if (name.equals_ignore_case(IS_CA))
@@ -265,7 +253,6 @@ module Sun::Security::X509
     end
     
     typesig { [String] }
-    # 
     # Delete the attribute value.
     def delete(name)
       if (name.equals_ignore_case(IS_CA))
@@ -281,7 +268,6 @@ module Sun::Security::X509
     end
     
     typesig { [] }
-    # 
     # Return an enumeration of names of attributes existing within this
     # attribute.
     def get_elements
@@ -292,7 +278,6 @@ module Sun::Security::X509
     end
     
     typesig { [] }
-    # 
     # Return the name of this attribute.
     def get_name
       return (NAME)

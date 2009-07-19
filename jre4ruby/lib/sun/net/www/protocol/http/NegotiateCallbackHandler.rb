@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 2005 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -40,7 +39,6 @@ module Sun::Net::Www::Protocol::Http
     }
   end
   
-  # 
   # @since 1.6
   class NegotiateCallbackHandler 
     include_class_members NegotiateCallbackHandlerImports
@@ -75,9 +73,9 @@ module Sun::Net::Www::Protocol::Http
           if (call_back.is_a?(PasswordCallback))
             password_callback = call_back
             if ((@password).nil?)
-              pass_auth_ = Authenticator.request_password_authentication(nil, nil, 0, nil, nil, "Negotiate")
-              @username = (pass_auth_.get_user_name).to_s
-              @password = pass_auth_.get_password
+              pass_auth = Authenticator.request_password_authentication(nil, nil, 0, nil, nil, "Negotiate")
+              @username = (pass_auth.get_user_name).to_s
+              @password = pass_auth.get_password
             end
             password_callback.set_password(@password)
             Arrays.fill(@password, Character.new(?\s.ord))

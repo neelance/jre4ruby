@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 2005-2007 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -34,7 +33,6 @@ module Sun::Net::Httpserver
     }
   end
   
-  # 
   # a (filter) input stream which can tell us if bytes are "left over"
   # on the underlying stream which can be read (without blocking)
   # on another instance of this class.
@@ -93,7 +91,6 @@ module Sun::Net::Httpserver
     end
     
     typesig { [] }
-    # 
     # if bytes are left over buffered on *the UNDERLYING* stream
     def is_data_buffered
       raise AssertError if not (@eof)
@@ -152,7 +149,6 @@ module Sun::Net::Httpserver
     end
     
     typesig { [::Java::Long] }
-    # 
     # read and discard up to l bytes or "eof" occurs,
     # (whichever is first). Then return true if the stream
     # is at eof (ie. all bytes were read) or false if not

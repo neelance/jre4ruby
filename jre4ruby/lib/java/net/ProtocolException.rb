@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 1995-1997 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -32,7 +31,6 @@ module Java::Net
     }
   end
   
-  # 
   # Thrown to indicate that there is an error in the underlying
   # protocol, such as a TCP error.
   # 
@@ -42,7 +40,6 @@ module Java::Net
     include_class_members ProtocolExceptionImports
     
     typesig { [String] }
-    # 
     # Constructs a new <code>ProtocolException</code> with the
     # specified detail message.
     # 
@@ -52,7 +49,6 @@ module Java::Net
     end
     
     typesig { [] }
-    # 
     # Constructs a new <code>ProtocolException</code> with no detail message.
     def initialize
       super()

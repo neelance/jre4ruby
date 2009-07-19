@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 2003-2004 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -31,7 +30,6 @@ module Java::Lang
     }
   end
   
-  # 
   # An object to which <tt>char</tt> sequences and values can be appended.  The
   # <tt>Appendable</tt> interface must be implemented by any class whose
   # instances are intended to receive formatted output from a {@link
@@ -55,7 +53,6 @@ module Java::Lang
     include_class_members AppendableImports
     
     typesig { [CharSequence] }
-    # 
     # Appends the specified character sequence to this <tt>Appendable</tt>.
     # 
     # <p> Depending on which class implements the character sequence
@@ -77,7 +74,6 @@ module Java::Lang
     end
     
     typesig { [CharSequence, ::Java::Int, ::Java::Int] }
-    # 
     # Appends a subsequence of the specified character sequence to this
     # <tt>Appendable</tt>.
     # 
@@ -115,7 +111,6 @@ module Java::Lang
     end
     
     typesig { [::Java::Char] }
-    # 
     # Appends the specified character to this <tt>Appendable</tt>.
     # 
     # @param  c

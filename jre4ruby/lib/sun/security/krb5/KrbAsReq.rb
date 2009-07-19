@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Portions Copyright 2000-2007 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -44,7 +43,6 @@ module Sun::Security::Krb5
     }
   end
   
-  # 
   # This class encapsulates the KRB-AS-REQ message that the client
   # sends to the KDC.
   class KrbAsReq < KrbAsReqImports.const_get :KrbKdcReq
@@ -120,7 +118,6 @@ module Sun::Security::Krb5
     undef_method :kdc_empty_addresses_allowed=
     
     typesig { [PrincipalName, Array.typed(EncryptionKey)] }
-    # 
     # Creates a KRB-AS-REQ to send to the default KDC
     # @throws KrbException
     # @throws IOException
@@ -139,7 +136,6 @@ module Sun::Security::Krb5
     end
     
     typesig { [PrincipalName, Array.typed(EncryptionKey), ::Java::Boolean, ::Java::Int, Array.typed(::Java::Byte), Array.typed(::Java::Byte)] }
-    # 
     # Creates a KRB-AS-REQ to send to the default KDC
     # with pre-authentication values
     def initialize(principal, keys, pa_exists, etype, salt, s2kparams)
@@ -233,7 +229,6 @@ module Sun::Security::Krb5
       begin
         init(keys, options, cname, sname, from, till, rtime, e_types, addresses, additional_tickets)
       ensure
-        # 
         # Its ok to destroy the key here because we created it and are
         # now done with it.
         if (!(keys).nil?)
@@ -291,7 +286,6 @@ module Sun::Security::Krb5
     end
     
     typesig { [Array.typed(EncryptionKey), KDCOptions, PrincipalName, PrincipalName, KerberosTime, KerberosTime, KerberosTime, Array.typed(::Java::Int), HostAddresses, Array.typed(Ticket)] }
-    # 
     # private KrbAsReq(KDCOptions options,
     # PrincipalName cname,
     # PrincipalName sname,
@@ -384,7 +378,6 @@ module Sun::Security::Krb5
     end
     
     typesig { [Array.typed(::Java::Char)] }
-    # 
     # Returns an AS-REP message corresponding to the AS-REQ that
     # was sent.
     # @param password The password that will be used to derive the
@@ -401,7 +394,6 @@ module Sun::Security::Krb5
         keys = EncryptionKey.acquire_secret_keys(password, @princ_name.get_salt, @pa_exists, @pa_etype, @pa_s2kparams)
         temp = get_reply(keys)
       ensure
-        # 
         # Its ok to destroy the key here because we created it and are
         # now done with it.
         if (!(keys).nil?)
@@ -416,7 +408,6 @@ module Sun::Security::Krb5
     end
     
     typesig { [] }
-    # 
     # Sends an AS request to the realm of the client.
     # returns the KDC hostname that the request was sent to
     def send
@@ -428,7 +419,6 @@ module Sun::Security::Krb5
     end
     
     typesig { [Array.typed(EncryptionKey)] }
-    # 
     # Returns an AS-REP message corresponding to the AS-REQ that
     # was sent.
     # @param keys The secret keys that will decrypt the AS-REP from

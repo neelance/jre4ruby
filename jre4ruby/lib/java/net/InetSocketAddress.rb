@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 2000-2007 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -34,8 +33,6 @@ module Java::Net
     }
   end
   
-  # 
-  # 
   # This class implements an IP Socket Address (IP address + port number)
   # It can also be a pair (hostname + port number), in which case an attempt
   # will be made to resolve the hostname. If resolution fails then the address
@@ -94,7 +91,6 @@ module Java::Net
     end
     
     typesig { [::Java::Int] }
-    # 
     # Creates a socket address where the IP address is the wildcard address
     # and the port number a specified value.
     # <p>
@@ -110,8 +106,6 @@ module Java::Net
     end
     
     typesig { [InetAddress, ::Java::Int] }
-    # 
-    # 
     # Creates a socket address from an IP address and a port number.
     # <p>
     # A valid port value is between 0 and 65535.
@@ -143,8 +137,6 @@ module Java::Net
     end
     
     typesig { [String, ::Java::Int] }
-    # 
-    # 
     # Creates a socket address from a hostname and a port number.
     # <p>
     # An attempt will be made to resolve the hostname into an InetAddress.
@@ -190,8 +182,6 @@ module Java::Net
     
     class_module.module_eval {
       typesig { [String, ::Java::Int] }
-      # 
-      # 
       # Creates an unresolved socket address from a hostname and a port number.
       # <p>
       # No attempt will be made to resolve the hostname into an InetAddress.
@@ -238,7 +228,6 @@ module Java::Net
     end
     
     typesig { [] }
-    # 
     # Gets the port number.
     # 
     # @return the port number.
@@ -247,8 +236,6 @@ module Java::Net
     end
     
     typesig { [] }
-    # 
-    # 
     # Gets the <code>InetAddress</code>.
     # 
     # @return the InetAdress or <code>null</code> if it is unresolved.
@@ -257,7 +244,6 @@ module Java::Net
     end
     
     typesig { [] }
-    # 
     # Gets the <code>hostname</code>.
     # 
     # @return  the hostname part of the address.
@@ -272,7 +258,6 @@ module Java::Net
     end
     
     typesig { [] }
-    # 
     # Returns the hostname, or the String form of the address if it
     # doesn't have a hostname (it was created using a literal).
     # This has the benefit of <b>not</b> attemptimg a reverse lookup.
@@ -294,7 +279,6 @@ module Java::Net
     end
     
     typesig { [] }
-    # 
     # Checks whether the address has been resolved or not.
     # 
     # @return <code>true</code> if the hostname couldn't be resolved into
@@ -304,7 +288,6 @@ module Java::Net
     end
     
     typesig { [] }
-    # 
     # Constructs a string representation of this InetSocketAddress.
     # This String is constructed by calling toString() on the InetAddress
     # and concatenating the port number (with a colon). If the address
@@ -320,7 +303,6 @@ module Java::Net
     end
     
     typesig { [Object] }
-    # 
     # Compares this object against the specified object.
     # The result is <code>true</code> if and only if the argument is
     # not <code>null</code> and it represents the same address as
@@ -355,7 +337,6 @@ module Java::Net
     end
     
     typesig { [] }
-    # 
     # Returns a hashcode for this socket address.
     # 
     # @return  a hash code value for this socket address.

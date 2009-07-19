@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 2000-2007 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -31,7 +30,6 @@ module Java::Nio
     }
   end
   
-  # 
   # A container for data of a specific primitive type.
   # 
   # <p> A buffer is a linear, finite sequence of elements of a specific
@@ -233,7 +231,6 @@ module Java::Nio
     end
     
     typesig { [] }
-    # 
     # Returns this buffer's capacity. </p>
     # 
     # @return  The capacity of this buffer
@@ -242,7 +239,6 @@ module Java::Nio
     end
     
     typesig { [] }
-    # 
     # Returns this buffer's position. </p>
     # 
     # @return  The position of this buffer
@@ -251,7 +247,6 @@ module Java::Nio
     end
     
     typesig { [::Java::Int] }
-    # 
     # Sets this buffer's position.  If the mark is defined and larger than the
     # new position then it is discarded. </p>
     # 
@@ -275,7 +270,6 @@ module Java::Nio
     end
     
     typesig { [] }
-    # 
     # Returns this buffer's limit. </p>
     # 
     # @return  The limit of this buffer
@@ -284,7 +278,6 @@ module Java::Nio
     end
     
     typesig { [::Java::Int] }
-    # 
     # Sets this buffer's limit.  If the position is larger than the new limit
     # then it is set to the new limit.  If the mark is defined and larger than
     # the new limit then it is discarded. </p>
@@ -312,7 +305,6 @@ module Java::Nio
     end
     
     typesig { [] }
-    # 
     # Sets this buffer's mark at its position. </p>
     # 
     # @return  This buffer
@@ -322,7 +314,6 @@ module Java::Nio
     end
     
     typesig { [] }
-    # 
     # Resets this buffer's position to the previously-marked position.
     # 
     # <p> Invoking this method neither changes nor discards the mark's
@@ -342,7 +333,6 @@ module Java::Nio
     end
     
     typesig { [] }
-    # 
     # Clears this buffer.  The position is set to zero, the limit is set to
     # the capacity, and the mark is discarded.
     # 
@@ -366,7 +356,6 @@ module Java::Nio
     end
     
     typesig { [] }
-    # 
     # Flips this buffer.  The limit is set to the current position and then
     # the position is set to zero.  If the mark is defined then it is
     # discarded.
@@ -394,7 +383,6 @@ module Java::Nio
     end
     
     typesig { [] }
-    # 
     # Rewinds this buffer.  The position is set to zero and the mark is
     # discarded.
     # 
@@ -415,7 +403,6 @@ module Java::Nio
     end
     
     typesig { [] }
-    # 
     # Returns the number of elements between the current position and the
     # limit. </p>
     # 
@@ -425,7 +412,6 @@ module Java::Nio
     end
     
     typesig { [] }
-    # 
     # Tells whether there are any elements between the current position and
     # the limit. </p>
     # 
@@ -436,7 +422,6 @@ module Java::Nio
     end
     
     typesig { [] }
-    # 
     # Tells whether or not this buffer is read-only. </p>
     # 
     # @return  <tt>true</tt> if, and only if, this buffer is read-only
@@ -445,7 +430,6 @@ module Java::Nio
     end
     
     typesig { [] }
-    # 
     # Tells whether or not this buffer is backed by an accessible
     # array.
     # 
@@ -462,7 +446,6 @@ module Java::Nio
     end
     
     typesig { [] }
-    # 
     # Returns the array that backs this
     # buffer&nbsp;&nbsp;<i>(optional operation)</i>.
     # 
@@ -491,7 +474,6 @@ module Java::Nio
     end
     
     typesig { [] }
-    # 
     # Returns the offset within this buffer's backing array of the first
     # element of the buffer&nbsp;&nbsp;<i>(optional operation)</i>.
     # 
@@ -517,7 +499,6 @@ module Java::Nio
     end
     
     typesig { [] }
-    # 
     # Tells whether or not this buffer is
     # <a href="ByteBuffer.html#direct"><i>direct</i></a>. </p>
     # 
@@ -556,7 +537,6 @@ module Java::Nio
     end
     
     typesig { [] }
-    # 
     # Checks the current position against the limit, throwing a {@link
     # BufferOverflowException} if it is not smaller than the limit, and then
     # increments the position. </p>
@@ -582,7 +562,6 @@ module Java::Nio
     end
     
     typesig { [::Java::Int] }
-    # 
     # Checks the given index against the limit, throwing an {@link
     # IndexOutOfBoundsException} if it is not smaller than the limit
     # or is smaller than zero.

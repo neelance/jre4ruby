@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Portions Copyright 2000-2006 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -44,7 +43,6 @@ module Sun::Security::Krb5
     }
   end
   
-  # 
   # This class encapsulates a Kerberos principal.
   class PrincipalName 
     include_class_members PrincipalNameImports
@@ -57,32 +55,26 @@ module Sun::Security::Krb5
       const_set_lazy(:KRB_NT_UNKNOWN) { 0 }
       const_attr_reader  :KRB_NT_UNKNOWN
       
-      # 
       # Just the name of the principal as in DCE, or for users
       const_set_lazy(:KRB_NT_PRINCIPAL) { 1 }
       const_attr_reader  :KRB_NT_PRINCIPAL
       
-      # 
       # Service and other unique instance (krbtgt)
       const_set_lazy(:KRB_NT_SRV_INST) { 2 }
       const_attr_reader  :KRB_NT_SRV_INST
       
-      # 
       # Service with host name as instance (telnet, rcommands)
       const_set_lazy(:KRB_NT_SRV_HST) { 3 }
       const_attr_reader  :KRB_NT_SRV_HST
       
-      # 
       # Service with host as remaining components
       const_set_lazy(:KRB_NT_SRV_XHST) { 4 }
       const_attr_reader  :KRB_NT_SRV_XHST
       
-      # 
       # Unique ID
       const_set_lazy(:KRB_NT_UID) { 5 }
       const_attr_reader  :KRB_NT_UID
       
-      # 
       # TGS Name
       const_set_lazy(:TGS_DEFAULT_SRV_NAME) { "krbtgt" }
       const_attr_reader  :TGS_DEFAULT_SRV_NAME
@@ -180,7 +172,6 @@ module Sun::Security::Krb5
     end
     
     typesig { [Object] }
-    # 
     # Added to workaround a bug where the equals method that takes a
     # PrincipalName is not being called but Object.equals(Object) is
     # being called.
@@ -232,7 +223,6 @@ module Sun::Security::Krb5
     end
     
     typesig { [DerValue] }
-    # 
     # Returns the ASN.1 encoding of the
     # <xmp>
     # PrincipalName    ::= SEQUENCE {
@@ -301,7 +291,6 @@ module Sun::Security::Krb5
     
     class_module.module_eval {
       typesig { [DerInputStream, ::Java::Byte, ::Java::Boolean] }
-      # 
       # Parse (unmarshal) a <code>PrincipalName</code> from a DER
       # input stream.  This form
       # parsing might be used when expanding a value which is part of
@@ -339,7 +328,6 @@ module Sun::Security::Krb5
         component = nil
         while (i < temp.length)
           if ((temp.char_at(i)).equal?(NAME_COMPONENT_SEPARATOR))
-            # 
             # If this separator is escaped then don't treat it
             # as a separator
             if (i > 0 && (temp.char_at(i - 1)).equal?(Character.new(?\\.ord)))
@@ -354,7 +342,6 @@ module Sun::Security::Krb5
             end
           else
             if ((temp.char_at(i)).equal?(NAME_REALM_SEPARATOR))
-              # 
               # If this separator is escaped then don't treat it
               # as a separator
               if (i > 0 && (temp.char_at(i - 1)).equal?(Character.new(?\\.ord)))
@@ -543,7 +530,7 @@ module Sun::Security::Krb5
         end
         return salt.to_s
       end
-      return salt
+      return @salt
     end
     
     typesig { [String] }
@@ -584,7 +571,6 @@ module Sun::Security::Krb5
     end
     
     typesig { [] }
-    # 
     # Encodes a <code>PrincipalName</code> object.
     # @return the byte array of the encoded PrncipalName object.
     # @exception Asn1Exception if an error occurs while decoding an ASN1 encoded data.
@@ -610,7 +596,6 @@ module Sun::Security::Krb5
     end
     
     typesig { [PrincipalName] }
-    # 
     # Checks if two <code>PrincipalName</code> objects have identical values in their corresponding data fields.
     # 
     # @param pname the other <code>PrincipalName</code> object.
@@ -643,7 +628,6 @@ module Sun::Security::Krb5
     end
     
     typesig { [CCacheOutputStream] }
-    # 
     # Writes data field values of <code>PrincipalName</code> in FCC format to an output stream.
     # 
     # @param cos a <code>CCacheOutputStream</code> for writing data.
@@ -669,7 +653,6 @@ module Sun::Security::Krb5
     end
     
     typesig { [String, String, String, ::Java::Int] }
-    # 
     # Creates a KRB_NT_SRV_INST name from the supplied
     # name components and realm.
     # @param primary the primary component of the name
@@ -693,7 +676,6 @@ module Sun::Security::Krb5
     end
     
     typesig { [] }
-    # 
     # Returns the instance component of a name.
     # In a multi-component name such as a KRB_NT_SRV_INST
     # name, the second component is returned.

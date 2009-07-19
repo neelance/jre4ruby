@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 1997-2006 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -33,7 +32,6 @@ module Java::Security
     }
   end
   
-  # 
   # This class defines the <i>Service Provider Interface</i> (<b>SPI</b>)
   # for the <code>MessageDigest</code> class, which provides the functionality
   # of a message digest algorithm, such as MD5 or SHA. Message digests are
@@ -61,7 +59,6 @@ module Java::Security
     undef_method :temp_array=
     
     typesig { [] }
-    # 
     # Returns the digest length in bytes.
     # 
     # <p>This concrete method has been added to this previously-defined
@@ -80,7 +77,6 @@ module Java::Security
     end
     
     typesig { [::Java::Byte] }
-    # 
     # Updates the digest using the specified byte.
     # 
     # @param input the byte to use for the update.
@@ -89,7 +85,6 @@ module Java::Security
     end
     
     typesig { [Array.typed(::Java::Byte), ::Java::Int, ::Java::Int] }
-    # 
     # Updates the digest using the specified array of bytes,
     # starting at the specified offset.
     # 
@@ -104,7 +99,6 @@ module Java::Security
     end
     
     typesig { [ByteBuffer] }
-    # 
     # Update the digest using the specified ByteBuffer. The digest is
     # updated using the <code>input.remaining()</code> bytes starting
     # at <code>input.position()</code>.
@@ -140,7 +134,6 @@ module Java::Security
     end
     
     typesig { [] }
-    # 
     # Completes the hash computation by performing final
     # operations such as padding. Once <code>engineDigest</code> has
     # been called, the engine should be reset (see
@@ -154,7 +147,6 @@ module Java::Security
     end
     
     typesig { [Array.typed(::Java::Byte), ::Java::Int, ::Java::Int] }
-    # 
     # Completes the hash computation by performing final
     # operations such as padding. Once <code>engineDigest</code> has
     # been called, the engine should be reset (see
@@ -196,14 +188,12 @@ module Java::Security
     end
     
     typesig { [] }
-    # 
     # Resets the digest for further use.
     def engine_reset
       raise NotImplementedError
     end
     
     typesig { [] }
-    # 
     # Returns a clone if the implementation is cloneable.
     # 
     # @return a clone if the implementation is cloneable.

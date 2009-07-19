@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 1996 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -50,7 +49,6 @@ module Sun::Misc
       end
       
       typesig { [Array.typed(Object), ::Java::Int, ::Java::Int, Compare] }
-      # 
       # quicksort the array of objects.
       # 
       # @param arr[] - an array of objects

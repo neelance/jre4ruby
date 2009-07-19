@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 2003-2005 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -69,7 +68,6 @@ module Sun::Nio::Cs
     
     class_module.module_eval {
       typesig { [] }
-      # 
       # These accessors are temporarily supplied while sun.io
       # converters co-exist with the sun.nio.cs.{ext} charset coders
       # These facilitate sharing of conversion tables between the

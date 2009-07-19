@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 2003 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -59,7 +58,6 @@ module Sun::Reflect::Generics::Tree
     
     class_module.module_eval {
       typesig { [String, Array.typed(FieldTypeSignature)] }
-      # 
       # Factory method.
       # Returns a formal type parameter with the requested name and bounds.
       # @param n  the name of the type variable to be created by this method.

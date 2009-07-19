@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 1997-2006 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -34,7 +33,6 @@ module Java::Lang::Reflect
     }
   end
   
-  # 
   # The AccessibleObject class is the base class for Field, Method and
   # Constructor objects.  It provides the ability to flag a reflected
   # object as suppressing default Java language access control checks
@@ -60,7 +58,6 @@ module Java::Lang::Reflect
     include AnnotatedElement
     
     class_module.module_eval {
-      # 
       # The Permission object that is used to check whether a client
       # has sufficient privilege to defeat Java language access
       # control checks.
@@ -68,7 +65,6 @@ module Java::Lang::Reflect
       const_attr_reader  :ACCESS_PERMISSION
       
       typesig { [Array.typed(AccessibleObject), ::Java::Boolean] }
-      # 
       # Convenience method to set the {@code accessible} flag for an
       # array of objects with a single security check (for efficiency).
       # 
@@ -106,7 +102,6 @@ module Java::Lang::Reflect
     }
     
     typesig { [::Java::Boolean] }
-    # 
     # Set the {@code accessible} flag for this object to
     # the indicated boolean value.  A value of {@code true} indicates that
     # the reflected object should suppress Java language access
@@ -153,7 +148,6 @@ module Java::Lang::Reflect
     }
     
     typesig { [] }
-    # 
     # Get the value of the {@code accessible} flag for this object.
     # 
     # @return the value of the object's {@code accessible} flag
@@ -162,7 +156,6 @@ module Java::Lang::Reflect
     end
     
     typesig { [] }
-    # 
     # Constructor: only used by the Java Virtual Machine.
     def initialize
       @override = false
@@ -189,7 +182,6 @@ module Java::Lang::Reflect
     }
     
     typesig { [Class] }
-    # 
     # @throws NullPointerException {@inheritDoc}
     # @since 1.5
     def get_annotation(annotation_class)
@@ -197,7 +189,6 @@ module Java::Lang::Reflect
     end
     
     typesig { [Class] }
-    # 
     # @throws NullPointerException {@inheritDoc}
     # @since 1.5
     def is_annotation_present(annotation_class)
@@ -205,14 +196,12 @@ module Java::Lang::Reflect
     end
     
     typesig { [] }
-    # 
     # @since 1.5
     def get_annotations
       return get_declared_annotations
     end
     
     typesig { [] }
-    # 
     # @since 1.5
     def get_declared_annotations
       raise AssertionError.new("All subclasses should override this method")

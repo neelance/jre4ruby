@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 2000-2001 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -32,7 +31,6 @@ module Java::Nio::Channels
     }
   end
   
-  # 
   # A channel that can read and write bytes.  This interface simply unifies
   # {@link ReadableByteChannel} and {@link WritableByteChannel}; it does not
   # specify any new operations.

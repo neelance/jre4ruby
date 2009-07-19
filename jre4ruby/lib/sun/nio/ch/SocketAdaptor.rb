@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 2000-2006 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -173,7 +172,7 @@ module Sun::Nio::Ch
             end
           end
         rescue Exception => x
-          Net.translate_exception(x_, true)
+          Net.translate_exception(x, true)
         end
       end
     end

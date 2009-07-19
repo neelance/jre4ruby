@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 1998-2006 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -40,7 +39,6 @@ module Sun::Misc
     }
   end
   
-  # 
   # A memory-sensitive implementation of the <code>Map</code> interface.
   # 
   # <p> A <code>SoftCache</code> object uses {@link java.lang.ref.SoftReference
@@ -249,7 +247,6 @@ module Sun::Misc
     end
     
     typesig { [::Java::Int] }
-    # 
     # Construct a new, empty <code>SoftCache</code> with the given
     # initial capacity and the default load factor.
     # 
@@ -268,7 +265,6 @@ module Sun::Misc
     end
     
     typesig { [] }
-    # 
     # Construct a new, empty <code>SoftCache</code> with the default
     # capacity and the default load factor.
     def initialize
@@ -291,14 +287,12 @@ module Sun::Misc
     end
     
     typesig { [] }
-    # 
     # Return <code>true</code> if this cache contains no key-value mappings.
     def is_empty
       return entry_set.is_empty
     end
     
     typesig { [Object] }
-    # 
     # Return <code>true</code> if this cache contains a mapping for the
     # specified key.  If there is no mapping for the key, this method will not
     # attempt to construct one by invoking the <code>fill</code> method.
@@ -331,7 +325,6 @@ module Sun::Misc
     end
     
     typesig { [Object] }
-    # 
     # Return the value to which this cache maps the specified
     # <code>key</code>.  If the cache does not presently contain a value for
     # this key, then invoke the <code>fill</code> method in an attempt to
@@ -360,7 +353,6 @@ module Sun::Misc
     end
     
     typesig { [Object, Object] }
-    # 
     # Update this cache so that the given <code>key</code> maps to the given
     # <code>value</code>.  If the cache previously contained a mapping for
     # <code>key</code> then that mapping is replaced and the old value is
@@ -380,7 +372,6 @@ module Sun::Misc
     end
     
     typesig { [Object] }
-    # 
     # Remove the mapping for the given <code>key</code> from this cache, if
     # present.
     # 
@@ -394,7 +385,6 @@ module Sun::Misc
     end
     
     typesig { [] }
-    # 
     # Remove all mappings from this cache.
     def clear
       process_queue
@@ -592,7 +582,6 @@ module Sun::Misc
     undef_method :entry_set=
     
     typesig { [] }
-    # 
     # Return a <code>Set</code> view of the mappings in this cache.
     def entry_set
       if ((@entry_set).nil?)

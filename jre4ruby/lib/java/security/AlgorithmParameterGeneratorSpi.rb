@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 1997-1999 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -32,7 +31,6 @@ module Java::Security
     }
   end
   
-  # 
   # This class defines the <i>Service Provider Interface</i> (<b>SPI</b>)
   # for the <code>AlgorithmParameterGenerator</code> class, which
   # is used to generate a set of parameters to be used with a certain algorithm.
@@ -59,7 +57,6 @@ module Java::Security
     include_class_members AlgorithmParameterGeneratorSpiImports
     
     typesig { [::Java::Int, SecureRandom] }
-    # 
     # Initializes this parameter generator for a certain size
     # and source of randomness.
     # 
@@ -70,7 +67,6 @@ module Java::Security
     end
     
     typesig { [AlgorithmParameterSpec, SecureRandom] }
-    # 
     # Initializes this parameter generator with a set of
     # algorithm-specific parameter generation values.
     # 
@@ -84,7 +80,6 @@ module Java::Security
     end
     
     typesig { [] }
-    # 
     # Generates the parameters.
     # 
     # @return the new AlgorithmParameters object.

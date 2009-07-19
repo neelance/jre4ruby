@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 1995-1997 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -32,7 +31,6 @@ module Java::Net
     }
   end
   
-  # 
   # Thrown to indicate that an unknown service exception has
   # occurred. Either the MIME type returned by a URL connection does
   # not make sense, or the application is attempting to write to a
@@ -44,7 +42,6 @@ module Java::Net
     include_class_members UnknownServiceExceptionImports
     
     typesig { [] }
-    # 
     # Constructs a new <code>UnknownServiceException</code> with no
     # detail message.
     def initialize
@@ -52,7 +49,6 @@ module Java::Net
     end
     
     typesig { [String] }
-    # 
     # Constructs a new <code>UnknownServiceException</code> with the
     # specified detail message.
     # 

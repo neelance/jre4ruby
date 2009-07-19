@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 2001-2007 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -130,45 +129,37 @@ module Sun::Security::Ssl
         alias_method :initialize__sun_certificates, :initialize
       end }
       
-      # 
       # JCE transformation string for RSA with PKCS#1 v1.5 padding.
       # Can be used for encryption, decryption, signing, verifying.
       const_set_lazy(:CIPHER_RSA_PKCS1) { "RSA/ECB/PKCS1Padding" }
       const_attr_reader  :CIPHER_RSA_PKCS1
       
-      # 
       # JCE transformation string for the stream cipher RC4.
       const_set_lazy(:CIPHER_RC4) { "RC4" }
       const_attr_reader  :CIPHER_RC4
       
-      # 
       # JCE transformation string for DES in CBC mode without padding.
       const_set_lazy(:CIPHER_DES) { "DES/CBC/NoPadding" }
       const_attr_reader  :CIPHER_DES
       
-      # 
       # JCE transformation string for (3-key) Triple DES in CBC mode
       # without padding.
       const_set_lazy(:CIPHER_3DES) { "DESede/CBC/NoPadding" }
       const_attr_reader  :CIPHER_3DES
       
-      # 
       # JCE transformation string for AES in CBC mode
       # without padding.
       const_set_lazy(:CIPHER_AES) { "AES/CBC/NoPadding" }
       const_attr_reader  :CIPHER_AES
       
-      # 
       # JCA identifier string for DSA, i.e. a DSA with SHA-1.
       const_set_lazy(:SIGNATURE_DSA) { "DSA" }
       const_attr_reader  :SIGNATURE_DSA
       
-      # 
       # JCA identifier string for ECDSA, i.e. a ECDSA with SHA-1.
       const_set_lazy(:SIGNATURE_ECDSA) { "SHA1withECDSA" }
       const_attr_reader  :SIGNATURE_ECDSA
       
-      # 
       # JCA identifier string for Raw DSA, i.e. a DSA signature without
       # hashing where the application provides the SHA-1 hash of the data.
       # Note that the standard name is "NONEwithDSA" but we use "RawDSA"
@@ -176,20 +167,17 @@ module Sun::Security::Ssl
       const_set_lazy(:SIGNATURE_RAWDSA) { "RawDSA" }
       const_attr_reader  :SIGNATURE_RAWDSA
       
-      # 
       # JCA identifier string for Raw ECDSA, i.e. a DSA signature without
       # hashing where the application provides the SHA-1 hash of the data.
       const_set_lazy(:SIGNATURE_RAWECDSA) { "NONEwithECDSA" }
       const_attr_reader  :SIGNATURE_RAWECDSA
       
-      # 
       # JCA identifier string for Raw RSA, i.e. a RSA PKCS#1 v1.5 signature
       # without hashing where the application provides the hash of the data.
       # Used for RSA client authentication with a 36 byte hash.
       const_set_lazy(:SIGNATURE_RAWRSA) { "NONEwithRSA" }
       const_attr_reader  :SIGNATURE_RAWRSA
       
-      # 
       # JCA identifier string for the SSL/TLS style RSA Signature. I.e.
       # an signature using RSA with PKCS#1 v1.5 padding signing a
       # concatenation of an MD5 and SHA-1 digest.
@@ -226,7 +214,6 @@ module Sun::Security::Ssl
       end
       
       typesig { [String] }
-      # 
       # Return an JCE cipher implementation for the specified algorithm.
       def get_cipher(transformation)
         begin
@@ -241,7 +228,6 @@ module Sun::Security::Ssl
       end
       
       typesig { [String] }
-      # 
       # Return an JCA signature implementation for the specified algorithm.
       # The algorithm string should be one of the constants defined
       # in this class.

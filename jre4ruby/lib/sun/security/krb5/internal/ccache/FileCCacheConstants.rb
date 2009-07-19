@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
 # This code is free software; you can redistribute it and/or modify it
@@ -34,7 +33,6 @@ module Sun::Security::Krb5::Internal::Ccache
     }
   end
   
-  # 
   # Constants used by file-based credential cache classes.
   # 
   # @author Yanni Zhang
@@ -42,7 +40,6 @@ module Sun::Security::Krb5::Internal::Ccache
     include_class_members FileCCacheConstantsImports
     
     class_module.module_eval {
-      # 
       # FCC version 2 contains type information for principals.  FCC
       # version 1 does not.
       # 

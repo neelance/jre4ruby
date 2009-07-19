@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 2005 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -36,7 +35,6 @@ module Java::Net
     }
   end
   
-  # 
   # CookieManager provides a concrete implementation of {@link CookieHandler},
   # which separates the storage of cookies from the policy surrounding accepting
   # and rejecting cookies. A CookieManager is initialized with a {@link CookieStore}
@@ -145,7 +143,6 @@ module Java::Net
     end
     
     typesig { [CookieStore, CookiePolicy] }
-    # 
     # Create a new cookie manager with specified cookie store and cookie policy.
     # 
     # @param store     a <tt>CookieStore</tt> to be used by cookie manager.
@@ -188,7 +185,6 @@ module Java::Net
     end
     
     typesig { [] }
-    # 
     # To retrieve current cookie store.
     # 
     # @return  the cookie store currently used by cookie manager.
@@ -265,7 +261,6 @@ module Java::Net
     end
     
     typesig { [String, String] }
-    # 
     # path-matches algorithm, as defined by RFC 2965
     def path_matches(path, path_to_match_with)
       if ((path).equal?(path_to_match_with))
@@ -281,7 +276,6 @@ module Java::Net
     end
     
     typesig { [JavaList] }
-    # 
     # sort cookies with respect to their path: those with more specific Path attributes
     # precede those with less specific, as defined in RFC 2965 sec. 3.3.4
     def sort_by_path(cookies)

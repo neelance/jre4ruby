@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 1995-1997 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -30,7 +29,6 @@ module Java::Lang
     }
   end
   
-  # 
   # Thrown to indicate that an attempt has been made to store the
   # wrong type of object into an array of objects. For example, the
   # following code generates an <code>ArrayStoreException</code>:
@@ -45,14 +43,12 @@ module Java::Lang
     include_class_members ArrayStoreExceptionImports
     
     typesig { [] }
-    # 
     # Constructs an <code>ArrayStoreException</code> with no detail message.
     def initialize
       super()
     end
     
     typesig { [String] }
-    # 
     # Constructs an <code>ArrayStoreException</code> with the specified
     # detail message.
     # 

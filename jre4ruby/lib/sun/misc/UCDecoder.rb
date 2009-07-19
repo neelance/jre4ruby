@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 1995-2000 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -36,7 +35,6 @@ module Sun::Misc
     }
   end
   
-  # 
   # This class implements a robust character decoder. The decoder will
   # converted encoded text into binary data.
   # 
@@ -136,7 +134,6 @@ module Sun::Misc
     undef_method :crc=
     
     typesig { [PushbackInputStream, OutputStream, ::Java::Int] }
-    # 
     # Decode one atom - reads the characters from the input stream, decodes
     # them, and checks for valid parity.
     def decode_atom(in_stream, out_stream, l)
@@ -205,14 +202,12 @@ module Sun::Misc
     undef_method :line_and_seq=
     
     typesig { [PushbackInputStream, OutputStream] }
-    # 
     # decodeBufferPrefix initializes the sequence number to zero.
     def decode_buffer_prefix(in_stream, out_stream)
       @sequence = 0
     end
     
     typesig { [PushbackInputStream, OutputStream] }
-    # 
     # decodeLinePrefix reads the sequence number and the number of
     # encoded bytes from the line. If the sequence number is not the
     # previous sequence number + 1 then an exception is thrown.
@@ -250,7 +245,6 @@ module Sun::Misc
     end
     
     typesig { [PushbackInputStream, OutputStream] }
-    # 
     # this method reads the CRC that is at the end of every line and
     # verifies that it matches the computed CRC.
     # 

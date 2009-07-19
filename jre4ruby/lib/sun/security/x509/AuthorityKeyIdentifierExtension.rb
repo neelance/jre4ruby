@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 1997-2006 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -35,7 +34,6 @@ module Sun::Security::X509
     }
   end
   
-  # 
   # This class represents the Authority Key Identifier Extension.
   # 
   # <p>The authority key identifier extension provides a means of
@@ -62,13 +60,11 @@ module Sun::Security::X509
     include CertAttrSet
     
     class_module.module_eval {
-      # 
       # Identifier for this attribute, to be used with the
       # get, set, delete methods of Certificate, x509 type.
       const_set_lazy(:IDENT) { "x509.info.extensions.AuthorityKeyIdentifier" }
       const_attr_reader  :IDENT
       
-      # 
       # Attribute names.
       const_set_lazy(:NAME) { "AuthorityKeyIdentifier" }
       const_attr_reader  :NAME
@@ -127,24 +123,23 @@ module Sun::Security::X509
       end
       begin
         if (!(@names).nil?)
-          tmp1_ = DerOutputStream.new
-          @names.encode(tmp1_)
-          tmp.write_implicit(DerValue.create_tag(DerValue::TAG_CONTEXT, true, TAG_NAMES), tmp1_)
+          tmp1 = DerOutputStream.new
+          @names.encode(tmp1)
+          tmp.write_implicit(DerValue.create_tag(DerValue::TAG_CONTEXT, true, TAG_NAMES), tmp1)
         end
       rescue Exception => e
         raise IOException.new(e.to_s)
       end
       if (!(@serial_num).nil?)
-        tmp1__ = DerOutputStream.new
-        @serial_num.encode(tmp1__)
-        tmp.write_implicit(DerValue.create_tag(DerValue::TAG_CONTEXT, false, TAG_SERIAL_NUM), tmp1__)
+        tmp1 = DerOutputStream.new
+        @serial_num.encode(tmp1)
+        tmp.write_implicit(DerValue.create_tag(DerValue::TAG_CONTEXT, false, TAG_SERIAL_NUM), tmp1)
       end
       seq.write(DerValue.attr_tag_sequence, tmp)
       self.attr_extension_value = seq.to_byte_array
     end
     
     typesig { [KeyIdentifier, GeneralNames, SerialNumber] }
-    # 
     # The default constructor for this extension.  Null parameters make
     # the element optional (not present).
     # 
@@ -170,7 +165,6 @@ module Sun::Security::X509
     end
     
     typesig { [Boolean, Object] }
-    # 
     # Create the extension from the passed DER encoded value of the same.
     # 
     # @param critical true if the extension is to be treated as critical.
@@ -229,7 +223,6 @@ module Sun::Security::X509
     end
     
     typesig { [] }
-    # 
     # Return the object as a string.
     def to_s
       s = (super).to_s + "AuthorityKeyIdentifier [\n"
@@ -246,7 +239,6 @@ module Sun::Security::X509
     end
     
     typesig { [OutputStream] }
-    # 
     # Write the extension to the OutputStream.
     # 
     # @param out the OutputStream to write the extension to.
@@ -263,7 +255,6 @@ module Sun::Security::X509
     end
     
     typesig { [String, Object] }
-    # 
     # Set the attribute value.
     def set(name, obj)
       if (name.equals_ignore_case(KEY_ID))
@@ -292,7 +283,6 @@ module Sun::Security::X509
     end
     
     typesig { [String] }
-    # 
     # Get the attribute value.
     def get(name)
       if (name.equals_ignore_case(KEY_ID))
@@ -311,7 +301,6 @@ module Sun::Security::X509
     end
     
     typesig { [String] }
-    # 
     # Delete the attribute value.
     def delete(name)
       if (name.equals_ignore_case(KEY_ID))
@@ -331,7 +320,6 @@ module Sun::Security::X509
     end
     
     typesig { [] }
-    # 
     # Return an enumeration of names of attributes existing within this
     # attribute.
     def get_elements
@@ -343,7 +331,6 @@ module Sun::Security::X509
     end
     
     typesig { [] }
-    # 
     # Return the name of this attribute.
     def get_name
       return (NAME)

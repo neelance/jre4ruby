@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 1994-1998 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -31,7 +30,6 @@ module Java::Io
     }
   end
   
-  # 
   # Instances of classes that implement this interface are used to
   # filter filenames. These instances are used to filter directory
   # listings in the <code>list</code> method of class
@@ -48,7 +46,6 @@ module Java::Io
     include_class_members FilenameFilterImports
     
     typesig { [JavaFile, String] }
-    # 
     # Tests if a specified file should be included in a file list.
     # 
     # @param   dir    the directory in which the file was found.

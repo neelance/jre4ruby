@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 2002-2006 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -33,7 +32,6 @@ module Sun::Security::Util
     }
   end
   
-  # 
   # Abstract base class and factory for caches. A cache is a key-value mapping.
   # It has properties that make it more suitable for caching than a Map.
   # 
@@ -82,35 +80,30 @@ module Sun::Security::Util
     end
     
     typesig { [] }
-    # 
     # Return the number of currently valid entries in the cache.
     def size
       raise NotImplementedError
     end
     
     typesig { [] }
-    # 
     # Remove all entries from the cache.
     def clear
       raise NotImplementedError
     end
     
     typesig { [Object, Object] }
-    # 
     # Add an entry to the cache.
     def put(key, value)
       raise NotImplementedError
     end
     
     typesig { [Object] }
-    # 
     # Get a value from the cache.
     def get(key)
       raise NotImplementedError
     end
     
     typesig { [Object] }
-    # 
     # Remove an entry from the cache.
     def remove(key)
       raise NotImplementedError
@@ -118,7 +111,6 @@ module Sun::Security::Util
     
     class_module.module_eval {
       typesig { [::Java::Int] }
-      # 
       # Return a new memory cache with the specified maximum size, unlimited
       # lifetime for entries, with the values held by SoftReferences.
       def new_soft_memory_cache(size)
@@ -126,7 +118,6 @@ module Sun::Security::Util
       end
       
       typesig { [::Java::Int, ::Java::Int] }
-      # 
       # Return a new memory cache with the specified maximum size, the
       # specified maximum lifetime (in seconds), with the values held
       # by SoftReferences.
@@ -135,7 +126,6 @@ module Sun::Security::Util
       end
       
       typesig { [::Java::Int] }
-      # 
       # Return a new memory cache with the specified maximum size, unlimited
       # lifetime for entries, with the values held by standard references.
       def new_hard_memory_cache(size)
@@ -143,14 +133,12 @@ module Sun::Security::Util
       end
       
       typesig { [] }
-      # 
       # Return a dummy cache that does nothing.
       def new_null_cache
         return NullCache::INSTANCE
       end
       
       typesig { [::Java::Int, ::Java::Int] }
-      # 
       # Return a new memory cache with the specified maximum size, the
       # specified maximum lifetime (in seconds), with the values held
       # by standard references.
@@ -158,7 +146,6 @@ module Sun::Security::Util
         return MemoryCache.new(false, size, timeout)
       end
       
-      # 
       # Utility class that wraps a byte array and implements the equals()
       # and hashCode() contract in a way suitable for Maps and caches.
       const_set_lazy(:EqualByteArray) { Class.new do
@@ -318,7 +305,6 @@ module Sun::Security::Util
     end
     
     typesig { [] }
-    # 
     # Empty the reference queue and remove all corresponding entries
     # from the cache.
     # 
@@ -355,7 +341,6 @@ module Sun::Security::Util
     end
     
     typesig { [] }
-    # 
     # Scan all entries and remove all expired ones.
     def expunge_expired_entries
       empty_queue

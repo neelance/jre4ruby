@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 2000-2006 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -37,7 +36,6 @@ module Java::Security::Cert
     }
   end
   
-  # 
   # An immutable sequence of certificates (a certification path).
   # <p>
   # This is an abstract class that defines the methods common to all
@@ -139,7 +137,6 @@ module Java::Security::Cert
     end
     
     typesig { [] }
-    # 
     # Returns the type of <code>Certificate</code>s in this certification
     # path. This is the same string that would be returned by
     # {@link java.security.cert.Certificate#getType() cert.getType()}
@@ -152,7 +149,6 @@ module Java::Security::Cert
     end
     
     typesig { [] }
-    # 
     # Returns an iteration of the encodings supported by this certification
     # path, with the default encoding first. Attempts to modify the returned
     # <code>Iterator</code> via its <code>remove</code> method result in an
@@ -165,7 +161,6 @@ module Java::Security::Cert
     end
     
     typesig { [Object] }
-    # 
     # Compares this certification path for equality with the specified
     # object. Two <code>CertPath</code>s are equal if and only if their
     # types are equal and their certificate <code>List</code>s (and by
@@ -196,7 +191,6 @@ module Java::Security::Cert
     end
     
     typesig { [] }
-    # 
     # Returns the hashcode for this certification path. The hash code of
     # a certification path is defined to be the result of the following
     # calculation:
@@ -217,7 +211,6 @@ module Java::Security::Cert
     end
     
     typesig { [] }
-    # 
     # Returns a string representation of this certification path.
     # This calls the <code>toString</code> method on each of the
     # <code>Certificate</code>s in the path.
@@ -241,7 +234,6 @@ module Java::Security::Cert
     end
     
     typesig { [] }
-    # 
     # Returns the encoded form of this certification path, using the default
     # encoding.
     # 
@@ -252,7 +244,6 @@ module Java::Security::Cert
     end
     
     typesig { [String] }
-    # 
     # Returns the encoded form of this certification path, using the
     # specified encoding.
     # 
@@ -265,7 +256,6 @@ module Java::Security::Cert
     end
     
     typesig { [] }
-    # 
     # Returns the list of certificates in this certification path.
     # The <code>List</code> returned must be immutable and thread-safe.
     # 
@@ -276,7 +266,6 @@ module Java::Security::Cert
     end
     
     typesig { [] }
-    # 
     # Replaces the <code>CertPath</code> to be serialized with a
     # <code>CertPathRep</code> object.
     # 
@@ -295,7 +284,6 @@ module Java::Security::Cert
     end
     
     class_module.module_eval {
-      # 
       # Alternate <code>CertPath</code> class for serialization.
       # @since 1.4
       const_set_lazy(:CertPathRep) { Class.new do
@@ -322,7 +310,6 @@ module Java::Security::Cert
         undef_method :data=
         
         typesig { [String, Array.typed(::Java::Byte)] }
-        # 
         # Creates a <code>CertPathRep</code> with the specified
         # type and encoded form of a certification path.
         # 
@@ -336,7 +323,6 @@ module Java::Security::Cert
         end
         
         typesig { [] }
-        # 
         # Returns a <code>CertPath</code> constructed from the type and data.
         # 
         # @return the resolved <code>CertPath</code> object

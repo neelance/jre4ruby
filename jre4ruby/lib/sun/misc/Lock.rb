@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 1994-2005 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -31,7 +30,6 @@ module Sun::Misc
     }
   end
   
-  # 
   # The Lock class provides a simple, useful interface to a lock.
   # Unlike monitors which synchronize access to an object, locks
   # synchronize access to an arbitrary set of resources (objects,
@@ -72,14 +70,12 @@ module Sun::Misc
     undef_method :locked=
     
     typesig { [] }
-    # 
     # Create a lock, which is initially not locked.
     def initialize
       @locked = false
     end
     
     typesig { [] }
-    # 
     # Acquire the lock.  If someone else has the lock, wait until it
     # has been freed, and then try to acquire it again.  This method
     # will not return until the lock has been acquired.
@@ -96,7 +92,6 @@ module Sun::Misc
     end
     
     typesig { [] }
-    # 
     # Release the lock.  If someone else is waiting for the lock, the
     # will be notitified so they can try to acquire the lock again.
     def unlock

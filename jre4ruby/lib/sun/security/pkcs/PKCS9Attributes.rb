@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 1997-2006 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -39,14 +38,12 @@ module Sun::Security::Pkcs
     }
   end
   
-  # 
   # A set of attributes of class PKCS9Attribute.
   # 
   # @author Douglas Hoover
   class PKCS9Attributes 
     include_class_members PKCS9AttributesImports
     
-    # 
     # Attributes in this set indexed by OID.
     attr_accessor :attributes
     alias_method :attr_attributes, :attributes
@@ -54,7 +51,6 @@ module Sun::Security::Pkcs
     alias_method :attr_attributes=, :attributes=
     undef_method :attributes=
     
-    # 
     # The keys of this hashtable are the OIDs of permitted attributes.
     attr_accessor :permitted_attributes
     alias_method :attr_permitted_attributes, :permitted_attributes
@@ -62,7 +58,6 @@ module Sun::Security::Pkcs
     alias_method :attr_permitted_attributes=, :permitted_attributes=
     undef_method :permitted_attributes=
     
-    # 
     # The DER encoding of this attribute set.  The tag byte must be
     # DerValue.tag_SetOf.
     attr_accessor :der_encoding
@@ -71,7 +66,6 @@ module Sun::Security::Pkcs
     alias_method :attr_der_encoding=, :der_encoding=
     undef_method :der_encoding=
     
-    # 
     # Contols how attributes, which are not recognized by the PKCS9Attribute
     # class, are handled during parsing.
     attr_accessor :ignore_unsupported_attributes
@@ -81,7 +75,6 @@ module Sun::Security::Pkcs
     undef_method :ignore_unsupported_attributes=
     
     typesig { [Array.typed(ObjectIdentifier), DerInputStream] }
-    # 
     # Construct a set of PKCS9 Attributes from its
     # DER encoding on a DerInputStream, accepting only attributes
     # with OIDs on the given
@@ -118,7 +111,6 @@ module Sun::Security::Pkcs
     end
     
     typesig { [DerInputStream] }
-    # 
     # Construct a set of PKCS9 Attributes from the contents of its
     # DER encoding on a DerInputStream.  Accept all attributes
     # supported by class PKCS9Attribute and reject any unsupported
@@ -135,7 +127,6 @@ module Sun::Security::Pkcs
     end
     
     typesig { [DerInputStream, ::Java::Boolean] }
-    # 
     # Construct a set of PKCS9 Attributes from the contents of its
     # DER encoding on a DerInputStream.  Accept all attributes
     # supported by class PKCS9Attribute and ignore any unsupported
@@ -162,7 +153,6 @@ module Sun::Security::Pkcs
     end
     
     typesig { [Array.typed(PKCS9Attribute)] }
-    # 
     # Construct a set of PKCS9 Attributes from the given array of
     # PKCS9 attributes.
     # DER encoding on a DerInputStream.  All attributes in
@@ -194,7 +184,6 @@ module Sun::Security::Pkcs
     end
     
     typesig { [DerInputStream] }
-    # 
     # Decode this set of PKCS9 attributes from the contents of its
     # DER encoding. Ignores unsupported attributes when directed.
     # 
@@ -241,7 +230,6 @@ module Sun::Security::Pkcs
     end
     
     typesig { [::Java::Byte, OutputStream] }
-    # 
     # Put the DER encoding of this PKCS9 attribute set on an
     # DerOutputStream, tagged with the given implicit tag.
     # 
@@ -263,7 +251,6 @@ module Sun::Security::Pkcs
     end
     
     typesig { [] }
-    # 
     # Return the DER encoding of this attribute set, tagged with
     # DerValue.tag_SetOf.
     def get_der_encoding
@@ -271,21 +258,18 @@ module Sun::Security::Pkcs
     end
     
     typesig { [ObjectIdentifier] }
-    # 
     # Get an attribute from this set.
     def get_attribute(oid)
       return @attributes.get(oid)
     end
     
     typesig { [String] }
-    # 
     # Get an attribute from this set.
     def get_attribute(name)
       return @attributes.get(PKCS9Attribute.get_oid(name))
     end
     
     typesig { [] }
-    # 
     # Get an array of all attributes in this set, in order of OID.
     def get_attributes
       attribs = Array.typed(PKCS9Attribute).new(@attributes.size) { nil }
@@ -303,7 +287,6 @@ module Sun::Security::Pkcs
     end
     
     typesig { [ObjectIdentifier] }
-    # 
     # Get an attribute value by OID.
     def get_attribute_value(oid)
       begin
@@ -315,7 +298,6 @@ module Sun::Security::Pkcs
     end
     
     typesig { [String] }
-    # 
     # Get an attribute value by type name.
     def get_attribute_value(name)
       oid = PKCS9Attribute.get_oid(name)
@@ -326,7 +308,6 @@ module Sun::Security::Pkcs
     end
     
     typesig { [] }
-    # 
     # Returns the PKCS9 block in a printable string form.
     def to_s
       buf = StringBuffer.new(200)
@@ -356,7 +337,6 @@ module Sun::Security::Pkcs
     
     class_module.module_eval {
       typesig { [Array.typed(Object)] }
-      # 
       # Cast an object array whose components are
       # <code>DerEncoder</code>s to <code>DerEncoder[]</code>.
       def cast_to_der_encoder(objs)

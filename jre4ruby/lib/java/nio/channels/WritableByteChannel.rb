@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 2000-2005 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -33,7 +32,6 @@ module Java::Nio::Channels
     }
   end
   
-  # 
   # A channel that can write bytes.
   # 
   # <p> Only one write operation upon a writable channel may be in progress at
@@ -52,7 +50,6 @@ module Java::Nio::Channels
     include Channel
     
     typesig { [ByteBuffer] }
-    # 
     # Writes a sequence of bytes to this channel from the given buffer.
     # 
     # <p> An attempt is made to write up to <i>r</i> bytes to the channel,

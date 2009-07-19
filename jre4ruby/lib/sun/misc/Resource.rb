@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 1998-2006 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -40,7 +39,6 @@ module Sun::Misc
     }
   end
   
-  # 
   # This class is used to represent a Resource that has been loaded
   # from the class path.
   # 
@@ -50,35 +48,30 @@ module Sun::Misc
     include_class_members ResourceImports
     
     typesig { [] }
-    # 
     # Returns the name of the Resource.
     def get_name
       raise NotImplementedError
     end
     
     typesig { [] }
-    # 
     # Returns the URL of the Resource.
     def get_url
       raise NotImplementedError
     end
     
     typesig { [] }
-    # 
     # Returns the CodeSource URL for the Resource.
     def get_code_source_url
       raise NotImplementedError
     end
     
     typesig { [] }
-    # 
     # Returns an InputStream for reading the Resource data.
     def get_input_stream
       raise NotImplementedError
     end
     
     typesig { [] }
-    # 
     # Returns the length of the Resource data, or -1 if unknown.
     def get_content_length
       raise NotImplementedError
@@ -102,7 +95,6 @@ module Sun::Misc
     end
     
     typesig { [] }
-    # 
     # Returns the Resource data as an array of bytes.
     def get_bytes
       b = nil
@@ -165,9 +157,9 @@ module Sun::Misc
           end
           # Trim array to correct size, if necessary
           if (!(total).equal?(b.attr_length))
-            tmp_ = Array.typed(::Java::Byte).new(total) { 0 }
-            System.arraycopy(b, 0, tmp_, 0, total)
-            b = tmp_
+            tmp = Array.typed(::Java::Byte).new(total) { 0 }
+            System.arraycopy(b, 0, tmp, 0, total)
+            b = tmp
           end
         end
       ensure
@@ -185,7 +177,6 @@ module Sun::Misc
     end
     
     typesig { [] }
-    # 
     # Returns the Resource data as a ByteBuffer, but only if the input stream
     # was implemented on top of a ByteBuffer. Return <tt>null</tt> otherwise.
     def get_byte_buffer
@@ -197,21 +188,18 @@ module Sun::Misc
     end
     
     typesig { [] }
-    # 
     # Returns the Manifest for the Resource, or null if none.
     def get_manifest
       return nil
     end
     
     typesig { [] }
-    # 
     # Returns theCertificates for the Resource, or null if none.
     def get_certificates
       return nil
     end
     
     typesig { [] }
-    # 
     # Returns the code signers for the Resource, or null if none.
     def get_code_signers
       return nil

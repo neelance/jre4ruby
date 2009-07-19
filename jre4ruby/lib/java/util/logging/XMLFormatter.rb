@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 2000-2006 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -34,7 +33,6 @@ module Java::Util::Logging
     }
   end
   
-  # 
   # Format a LogRecord into a standard XML format.
   # <p>
   # The DTD specification is provided as Appendix A to the
@@ -109,7 +107,6 @@ module Java::Util::Logging
     end
     
     typesig { [LogRecord] }
-    # 
     # Format the given message to XML.
     # <p>
     # This method can be overridden in a subclass.
@@ -199,9 +196,9 @@ module Java::Util::Logging
         escape(sb, th.to_s)
         sb.append("</message>\n")
         trace = th.get_stack_trace
-        i_ = 0
-        while i_ < trace.attr_length
-          frame = trace[i_]
+        i = 0
+        while i < trace.attr_length
+          frame = trace[i]
           sb.append("    <frame>\n")
           sb.append("      <class>")
           escape(sb, frame.get_class_name)
@@ -216,7 +213,7 @@ module Java::Util::Logging
             sb.append("</line>\n")
           end
           sb.append("    </frame>\n")
-          ((i_ += 1) - 1)
+          ((i += 1) - 1)
         end
         sb.append("  </exception>\n")
       end
@@ -225,7 +222,6 @@ module Java::Util::Logging
     end
     
     typesig { [Handler] }
-    # 
     # Return the header string for a set of XML formatted records.
     # 
     # @param   h  The target handler (can be null)
@@ -261,7 +257,6 @@ module Java::Util::Logging
     end
     
     typesig { [Handler] }
-    # 
     # Return the tail string for a set of XML formatted records.
     # 
     # @param   h  The target handler (can be null)

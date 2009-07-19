@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 2002-2006 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -35,7 +34,6 @@ module Sun::Security::Validator
     }
   end
   
-  # 
   # Validator implementation built on the PKIX CertPath API. This
   # implementation will be emphasized going forward.<p>
   # 
@@ -165,7 +163,6 @@ module Sun::Security::Validator
     end
     
     typesig { [] }
-    # 
     # Returns the length of the last certification path that is validated by
     # CertPathValidator. This is intended primarily as a callback mechanism
     # for PKIXCertPathCheckers to determine the length of the certification
@@ -179,7 +176,6 @@ module Sun::Security::Validator
     end
     
     typesig { [String] }
-    # 
     # Set J2SE global default PKIX parameters. Currently, hardcoded to disable
     # revocation checking. In the future, this should be configurable.
     def set_default_parameters(variant)
@@ -187,7 +183,6 @@ module Sun::Security::Validator
     end
     
     typesig { [] }
-    # 
     # Return the PKIX parameters used by this instance. An application may
     # modify the parameters but must make sure not to perform any concurrent
     # validations.
@@ -228,8 +223,8 @@ module Sun::Security::Validator
           # allows plugin/webstart to make sure the chain is
           # otherwise valid
           if (chain.attr_length > 1)
-            new_chain_ = Array.typed(X509Certificate).new(chain.attr_length - 1) { nil }
-            System.arraycopy(chain, 0, new_chain_, 0, new_chain_.attr_length)
+            new_chain = Array.typed(X509Certificate).new(chain.attr_length - 1) { nil }
+            System.arraycopy(chain, 0, new_chain, 0, new_chain.attr_length)
             # temporarily set last cert as sole trust anchor
             params = @parameter_template.clone
             begin
@@ -238,7 +233,7 @@ module Sun::Security::Validator
               # should never occur, but ...
               raise CertificateException.new(iape)
             end
-            do_validate(new_chain_, params)
+            do_validate(new_chain, params)
           end
           # if the rest of the chain is valid, throw exception
           # indicating no trust anchor was found
@@ -278,7 +273,6 @@ module Sun::Security::Validator
     }
     
     typesig { [PKIXBuilderParameters] }
-    # 
     # Set the check date (for debugging).
     def set_date(params)
       date = self.attr_validation_date

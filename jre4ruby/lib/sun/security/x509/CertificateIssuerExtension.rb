@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 2003-2006 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -36,7 +35,6 @@ module Sun::Security::X509
     }
   end
   
-  # 
   # Represents the CRL Certificate Issuer Extension (OID = 2.5.29.29).
   # <p>
   # The CRL certificate issuer extension identifies the certificate issuer
@@ -69,7 +67,6 @@ module Sun::Security::X509
     include CertAttrSet
     
     class_module.module_eval {
-      # 
       # Attribute names.
       const_set_lazy(:NAME) { "CertificateIssuer" }
       const_attr_reader  :NAME
@@ -85,7 +82,6 @@ module Sun::Security::X509
     undef_method :names=
     
     typesig { [] }
-    # 
     # Encode this extension
     def encode_this
       if ((@names).nil? || @names.is_empty)
@@ -98,7 +94,6 @@ module Sun::Security::X509
     end
     
     typesig { [GeneralNames] }
-    # 
     # Create a CertificateIssuerExtension containing the specified issuer name.
     # Criticality is automatically set to true.
     # 
@@ -114,7 +109,6 @@ module Sun::Security::X509
     end
     
     typesig { [Boolean, Object] }
-    # 
     # Create a CertificateIssuerExtension from the specified DER encoded
     # value of the same.
     # 
@@ -133,7 +127,6 @@ module Sun::Security::X509
     end
     
     typesig { [String, Object] }
-    # 
     # Set the attribute value.
     # 
     # @throws IOException on error
@@ -150,7 +143,6 @@ module Sun::Security::X509
     end
     
     typesig { [String] }
-    # 
     # Gets the attribute value.
     # 
     # @throws IOException on error
@@ -163,7 +155,6 @@ module Sun::Security::X509
     end
     
     typesig { [String] }
-    # 
     # Deletes the attribute value.
     # 
     # @throws IOException on error
@@ -177,14 +168,12 @@ module Sun::Security::X509
     end
     
     typesig { [] }
-    # 
     # Returns a printable representation of the certificate issuer.
     def to_s
       return (super).to_s + "Certificate Issuer [\n" + (String.value_of(@names)).to_s + "]\n"
     end
     
     typesig { [OutputStream] }
-    # 
     # Write the extension to the OutputStream.
     # 
     # @param out the OutputStream to write the extension to
@@ -201,7 +190,6 @@ module Sun::Security::X509
     end
     
     typesig { [] }
-    # 
     # Return an enumeration of names of attributes existing within this
     # attribute.
     def get_elements
@@ -211,7 +199,6 @@ module Sun::Security::X509
     end
     
     typesig { [] }
-    # 
     # Return the name of this attribute.
     def get_name
       return NAME

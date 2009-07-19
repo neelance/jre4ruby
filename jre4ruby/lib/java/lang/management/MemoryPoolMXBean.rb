@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 2003-2006 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -31,7 +30,6 @@ module Java::Lang::Management
     }
   end
   
-  # 
   # The management interface for a memory pool.  A memory pool
   # represents the memory resource managed by the Java virtual machine
   # and is managed by one or more {@link MemoryManagerMXBean memory managers}.
@@ -366,7 +364,6 @@ module Java::Lang::Management
     include_class_members MemoryPoolMXBeanImports
     
     typesig { [] }
-    # 
     # Returns the name representing this memory pool.
     # 
     # @return the name of this memory pool.
@@ -375,7 +372,6 @@ module Java::Lang::Management
     end
     
     typesig { [] }
-    # 
     # Returns the type of this memory pool.
     # 
     # <p>
@@ -389,7 +385,6 @@ module Java::Lang::Management
     end
     
     typesig { [] }
-    # 
     # Returns an estimate of the memory usage of this memory pool.
     # This method returns <tt>null</tt>
     # if this memory pool is not valid (i.e. no longer exists).
@@ -418,7 +413,6 @@ module Java::Lang::Management
     end
     
     typesig { [] }
-    # 
     # Returns the peak memory usage of this memory pool since the
     # Java virtual machine was started or since the peak was reset.
     # This method returns <tt>null</tt>
@@ -437,7 +431,6 @@ module Java::Lang::Management
     end
     
     typesig { [] }
-    # 
     # Resets the peak memory usage statistic of this memory pool
     # to the current memory usage.
     # 
@@ -449,7 +442,6 @@ module Java::Lang::Management
     end
     
     typesig { [] }
-    # 
     # Tests if this memory pool is valid in the Java virtual
     # machine.  A memory pool becomes invalid once the Java virtual
     # machine removes it from the memory system.
@@ -462,7 +454,6 @@ module Java::Lang::Management
     end
     
     typesig { [] }
-    # 
     # Returns the name of memory managers that manages this memory pool.
     # Each memory pool will be managed by at least one memory manager.
     # 
@@ -473,7 +464,6 @@ module Java::Lang::Management
     end
     
     typesig { [] }
-    # 
     # Returns the usage threshold value of this memory pool in bytes.
     # Each memory pool has a platform-dependent default threshold value.
     # The current usage threshold can be changed via the
@@ -490,7 +480,6 @@ module Java::Lang::Management
     end
     
     typesig { [::Java::Long] }
-    # 
     # Sets the threshold of this memory pool to the given <tt>threshold</tt>
     # value if this memory pool supports the usage threshold.
     # The usage threshold crossing checking is enabled in this memory pool
@@ -518,7 +507,6 @@ module Java::Lang::Management
     end
     
     typesig { [] }
-    # 
     # Tests if the memory usage of this memory pool
     # reaches or exceeds its usage threshold value.
     # 
@@ -533,7 +521,6 @@ module Java::Lang::Management
     end
     
     typesig { [] }
-    # 
     # Returns the number of times that the memory usage has crossed
     # the usage threshold.
     # 
@@ -547,7 +534,6 @@ module Java::Lang::Management
     end
     
     typesig { [] }
-    # 
     # Tests if this memory pool supports usage threshold.
     # 
     # @return <tt>true</tt> if this memory pool supports usage threshold;
@@ -557,7 +543,6 @@ module Java::Lang::Management
     end
     
     typesig { [] }
-    # 
     # Returns the collection usage threshold value of this memory pool
     # in bytes.  The default value is zero. The collection usage
     # threshold can be changed via the
@@ -574,7 +559,6 @@ module Java::Lang::Management
     end
     
     typesig { [::Java::Long] }
-    # 
     # Sets the collection usage threshold of this memory pool to
     # the given <tt>threshold</tt> value.
     # When this threshold is set to positive, the Java virtual machine
@@ -607,7 +591,6 @@ module Java::Lang::Management
     end
     
     typesig { [] }
-    # 
     # Tests if the memory usage of this memory pool after
     # the most recent collection on which the Java virtual
     # machine has expended effort has reached or
@@ -628,7 +611,6 @@ module Java::Lang::Management
     end
     
     typesig { [] }
-    # 
     # Returns the number of times that the Java virtual machine
     # has detected that the memory usage has reached or
     # exceeded the collection usage threshold.
@@ -645,7 +627,6 @@ module Java::Lang::Management
     end
     
     typesig { [] }
-    # 
     # Returns the memory usage after the Java virtual machine
     # most recently expended effort in recycling unused objects
     # in this memory pool.
@@ -670,7 +651,6 @@ module Java::Lang::Management
     end
     
     typesig { [] }
-    # 
     # Tests if this memory pool supports a collection usage threshold.
     # 
     # @return <tt>true</tt> if this memory pool supports the

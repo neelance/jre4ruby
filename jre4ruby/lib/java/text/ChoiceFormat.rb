@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 1996-2005 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -46,7 +45,6 @@ module Java::Text
     }
   end
   
-  # 
   # A <code>ChoiceFormat</code> allows you to attach a format to a range of numbers.
   # It is generally used in a <code>MessageFormat</code> for handling plurals.
   # The choice is specified with an ascending list of doubles, where each item
@@ -176,7 +174,6 @@ module Java::Text
     }
     
     typesig { [String] }
-    # 
     # Sets the pattern.
     # @param newPattern See the class description.
     def apply_pattern(new_pattern)
@@ -271,7 +268,6 @@ module Java::Text
     end
     
     typesig { [] }
-    # 
     # Gets the pattern.
     def to_pattern
       result = StringBuffer.new
@@ -330,7 +326,6 @@ module Java::Text
     end
     
     typesig { [String] }
-    # 
     # Constructs with limits and corresponding formats based on the pattern.
     # @see #applyPattern
     def initialize(new_pattern)
@@ -341,7 +336,6 @@ module Java::Text
     end
     
     typesig { [Array.typed(::Java::Double), Array.typed(String)] }
-    # 
     # Constructs with the limits and the corresponding formats.
     # @see #setChoices
     def initialize(limits, formats)
@@ -352,7 +346,6 @@ module Java::Text
     end
     
     typesig { [Array.typed(::Java::Double), Array.typed(String)] }
-    # 
     # Set the choices to be used in formatting.
     # @param limits contains the top value that you want
     # parsed with that format,and should be in ascending sorted order. When
@@ -374,7 +367,6 @@ module Java::Text
     end
     
     typesig { [] }
-    # 
     # Get the limits passed in the constructor.
     # @return the limits.
     def get_limits
@@ -382,7 +374,6 @@ module Java::Text
     end
     
     typesig { [] }
-    # 
     # Get the formats passed in the constructor.
     # @return the formats.
     def get_formats
@@ -402,7 +393,6 @@ module Java::Text
     end
     
     typesig { [::Java::Double, StringBuffer, FieldPosition] }
-    # 
     # Returns pattern with formatted double.
     # @param number number to be formatted & substituted.
     # @param toAppendTo where text is appended.
@@ -427,7 +417,6 @@ module Java::Text
     end
     
     typesig { [String, ParsePosition] }
-    # 
     # Parses a Number from the input text.
     # @param text the source text.
     # @param status an input-output parameter.  On input, the
@@ -469,7 +458,6 @@ module Java::Text
     
     class_module.module_eval {
       typesig { [::Java::Double] }
-      # 
       # Finds the least double greater than d.
       # If NaN, returns same value.
       # <p>Used to make half-open intervals.
@@ -479,7 +467,6 @@ module Java::Text
       end
       
       typesig { [::Java::Double] }
-      # 
       # Finds the greatest double less than d.
       # If NaN, returns same value.
       # @see #nextDouble
@@ -489,7 +476,6 @@ module Java::Text
     }
     
     typesig { [] }
-    # 
     # Overrides Cloneable
     def clone
       other = super
@@ -500,7 +486,6 @@ module Java::Text
     end
     
     typesig { [] }
-    # 
     # Generates a hash code for the message format object.
     def hash_code
       result = @choice_limits.attr_length
@@ -512,7 +497,6 @@ module Java::Text
     end
     
     typesig { [Object] }
-    # 
     # Equality comparision between two
     def equals(obj)
       if ((obj).nil?)
@@ -530,7 +514,6 @@ module Java::Text
     end
     
     typesig { [ObjectInputStream] }
-    # 
     # After reading an object from the input stream, do a simple verification
     # to maintain class invariants.
     # @throws InvalidObjectException if the objects read from the stream is invalid.
@@ -553,7 +536,6 @@ module Java::Text
     alias_method :attr_choice_limits=, :choice_limits=
     undef_method :choice_limits=
     
-    # 
     # A list of choice strings.  The formatter will return
     # <code>choiceFormats[i]</code> if the number being formatted is greater than or equal to
     # <code>choiceLimits[i]</code> and less than <code>choiceLimits[i+1]</code>.
@@ -565,7 +547,6 @@ module Java::Text
     undef_method :choice_formats=
     
     class_module.module_eval {
-      # 
       # static final long SIGN          = 0x8000000000000000L;
       # static final long EXPONENT      = 0x7FF0000000000000L;
       # static final long SIGNIFICAND   = 0x000FFFFFFFFFFFFFL;
@@ -600,7 +581,6 @@ module Java::Text
       const_attr_reader  :POSITIVEINFINITY
       
       typesig { [::Java::Double, ::Java::Boolean] }
-      # 
       # Finds the least double greater than d (if positive == true),
       # or the greatest double less than d (if positive == false).
       # If NaN, returns same value.

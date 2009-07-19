@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 1996-2006 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -45,7 +44,6 @@ module Java::Text
     }
   end
   
-  # 
   # Digit List. Private to DecimalFormat.
   # Handles the transcoding
   # between numeric values and strings of characters.  Only handles
@@ -77,7 +75,6 @@ module Java::Text
     include Cloneable
     
     class_module.module_eval {
-      # 
       # The maximum number of significant digits in an IEEE 754 double, that
       # is, in a Java double.  This must not be increased, or garbage digits
       # will be generated, and should not be decreased, or accuracy will be lost.
@@ -143,7 +140,6 @@ module Java::Text
     undef_method :is_negative=
     
     typesig { [] }
-    # 
     # Return true if the represented number is zero.
     def is_zero
       i = 0
@@ -157,14 +153,12 @@ module Java::Text
     end
     
     typesig { [RoundingMode] }
-    # 
     # Set the rounding mode
     def set_rounding_mode(r)
       @rounding_mode = r
     end
     
     typesig { [] }
-    # 
     # Clears out the digits.
     # Use before appending them.
     # Typically, you set a series of digits with append, then at the point
@@ -176,7 +170,6 @@ module Java::Text
     end
     
     typesig { [::Java::Char] }
-    # 
     # Appends a digit to the list, extending the list when necessary.
     def append(digit)
       if ((@count).equal?(@digits.attr_length))
@@ -188,7 +181,6 @@ module Java::Text
     end
     
     typesig { [] }
-    # 
     # Utility routine to get the value of the digit list
     # If (count == 0) this throws a NumberFormatException, which
     # mimics Long.parseLong().
@@ -205,7 +197,6 @@ module Java::Text
     end
     
     typesig { [] }
-    # 
     # Utility routine to get the value of the digit list.
     # If (count == 0) this returns 0, unlike Long.parseLong().
     def get_long
@@ -246,7 +237,6 @@ module Java::Text
     end
     
     typesig { [::Java::Boolean, ::Java::Boolean] }
-    # 
     # Return true if the number represented by this object can fit into
     # a long.
     # @param isPositive true if this number should be regarded as positive
@@ -301,7 +291,6 @@ module Java::Text
     end
     
     typesig { [::Java::Boolean, ::Java::Double, ::Java::Int] }
-    # 
     # Set the digit list to a representation of the given double value.
     # This method supports fixed-point notation.
     # @param isNegative Boolean value indicating whether the number is negative.
@@ -314,7 +303,6 @@ module Java::Text
     end
     
     typesig { [::Java::Boolean, ::Java::Double, ::Java::Int, ::Java::Boolean] }
-    # 
     # Set the digit list to a representation of the given double value.
     # This method supports both fixed-point and exponential notation.
     # @param isNegative Boolean value indicating whether the number is negative.
@@ -329,7 +317,6 @@ module Java::Text
     end
     
     typesig { [::Java::Boolean, String, ::Java::Int, ::Java::Boolean] }
-    # 
     # Generate a representation of the form DDDDD, DDDDD.DDDDD, or
     # DDDDDE+/-DDDDD.
     def set(is_negative, s, maximum_digits, fixed_point)
@@ -409,7 +396,6 @@ module Java::Text
     end
     
     typesig { [::Java::Int] }
-    # 
     # Round the representation to the given number of digits.
     # @param maximumDigits The maximum number of digits to be shown.
     # Upon return, count will be less than or equal to maximumDigits.
@@ -447,7 +433,6 @@ module Java::Text
     end
     
     typesig { [::Java::Int] }
-    # 
     # Return true if truncating the representation to the given number
     # of digits will result in an increment to the last digit.  This
     # method implements the rounding modes defined in the
@@ -474,20 +459,20 @@ module Java::Text
           end
         when DOWN
         when CEILING
-          i_ = maximum_digits
-          while i_ < @count
-            if (!(@digits[i_]).equal?(Character.new(?0.ord)))
+          i = maximum_digits
+          while i < @count
+            if (!(@digits[i]).equal?(Character.new(?0.ord)))
               return !@is_negative
             end
-            (i_ += 1)
+            (i += 1)
           end
         when FLOOR
-          i__ = maximum_digits
-          while i__ < @count
-            if (!(@digits[i__]).equal?(Character.new(?0.ord)))
+          i = maximum_digits
+          while i < @count
+            if (!(@digits[i]).equal?(Character.new(?0.ord)))
               return @is_negative
             end
-            (i__ += 1)
+            (i += 1)
           end
         when HALF_UP
           if (@digits[maximum_digits] >= Character.new(?5.ord))
@@ -498,12 +483,12 @@ module Java::Text
             return true
           else
             if ((@digits[maximum_digits]).equal?(Character.new(?5.ord)))
-              i___ = maximum_digits + 1
-              while i___ < @count
-                if (!(@digits[i___]).equal?(Character.new(?0.ord)))
+              i = maximum_digits + 1
+              while i < @count
+                if (!(@digits[i]).equal?(Character.new(?0.ord)))
                   return true
                 end
-                (i___ += 1)
+                (i += 1)
               end
             end
           end
@@ -513,23 +498,23 @@ module Java::Text
             return true
           else
             if ((@digits[maximum_digits]).equal?(Character.new(?5.ord)))
-              i____ = maximum_digits + 1
-              while i____ < @count
-                if (!(@digits[i____]).equal?(Character.new(?0.ord)))
+              i = maximum_digits + 1
+              while i < @count
+                if (!(@digits[i]).equal?(Character.new(?0.ord)))
                   return true
                 end
-                (i____ += 1)
+                (i += 1)
               end
               return maximum_digits > 0 && (!(@digits[maximum_digits - 1] % 2).equal?(0))
             end
           end
         when UNNECESSARY
-          i_____ = maximum_digits
-          while i_____ < @count
-            if (!(@digits[i_____]).equal?(Character.new(?0.ord)))
+          i = maximum_digits
+          while i < @count
+            if (!(@digits[i]).equal?(Character.new(?0.ord)))
               raise ArithmeticException.new("Rounding needed with the rounding mode being set to RoundingMode.UNNECESSARY")
             end
-            (i_____ += 1)
+            (i += 1)
           end
         else
           raise AssertError if not (false)
@@ -539,14 +524,12 @@ module Java::Text
     end
     
     typesig { [::Java::Boolean, ::Java::Long] }
-    # 
     # Utility routine to set the value of the digit list from a long
     def set(is_negative, source)
       set(is_negative, source, 0)
     end
     
     typesig { [::Java::Boolean, ::Java::Long, ::Java::Int] }
-    # 
     # Set the digit list to a representation of the given long value.
     # @param isNegative Boolean value indicating whether the number is negative.
     # @param source Value to be converted; must be >= 0 or ==
@@ -594,7 +577,6 @@ module Java::Text
     end
     
     typesig { [::Java::Boolean, BigDecimal, ::Java::Int, ::Java::Boolean] }
-    # 
     # Set the digit list to a representation of the given BigDecimal value.
     # This method supports both fixed-point and exponential notation.
     # @param isNegative Boolean value indicating whether the number is negative.
@@ -610,7 +592,6 @@ module Java::Text
     end
     
     typesig { [::Java::Boolean, BigInteger, ::Java::Int] }
-    # 
     # Set the digit list to a representation of the given BigInteger value.
     # @param isNegative Boolean value indicating whether the number is negative.
     # @param source Value to be converted; must be >= 0.
@@ -636,7 +617,6 @@ module Java::Text
     end
     
     typesig { [Object] }
-    # 
     # equality test between two digit lists.
     def equals(obj)
       if ((self).equal?(obj))
@@ -662,7 +642,6 @@ module Java::Text
     end
     
     typesig { [] }
-    # 
     # Generates the hash code for the digit list.
     def hash_code
       hashcode = @decimal_at
@@ -675,7 +654,6 @@ module Java::Text
     end
     
     typesig { [] }
-    # 
     # Creates a copy of this object.
     # @return a clone of this instance.
     def clone
@@ -692,7 +670,6 @@ module Java::Text
     end
     
     typesig { [] }
-    # 
     # Returns true if this DigitList represents Long.MIN_VALUE;
     # false, otherwise.  This is required so that getLong() works.
     def is_long_min_value

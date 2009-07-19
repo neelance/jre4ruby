@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 2006 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -37,7 +36,6 @@ module Sun::Security::Ec
     }
   end
   
-  # 
   # Key implementation for EC public keys.
   # 
   # @since   1.6
@@ -64,7 +62,6 @@ module Sun::Security::Ec
     undef_method :params=
     
     typesig { [ECPoint, ECParameterSpec] }
-    # 
     # Construct a key from its components. Used by the
     # ECKeyFactory and SunPKCS11.
     def initialize(w, params)
@@ -79,7 +76,6 @@ module Sun::Security::Ec
     end
     
     typesig { [Array.typed(::Java::Byte)] }
-    # 
     # Construct a key from its encoding. Used by RSAKeyFactory.
     def initialize(encoded)
       @w = nil
@@ -114,7 +110,6 @@ module Sun::Security::Ec
     end
     
     typesig { [] }
-    # 
     # Parse the key. Called by X509Key.
     def parse_key_bits
       begin
@@ -124,7 +119,7 @@ module Sun::Security::Ec
       rescue IOException => e
         raise InvalidKeyException.new("Invalid EC key", e)
       rescue InvalidParameterSpecException => e
-        raise InvalidKeyException.new("Invalid EC key", e_)
+        raise InvalidKeyException.new("Invalid EC key", e)
       end
     end
     

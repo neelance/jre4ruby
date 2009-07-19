@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 2004 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -31,7 +30,6 @@ module Sun::Security::Krb5::Internal::Crypto
     }
   end
   
-  # 
   # Key usages used for key derivation in Kerberos.
   class KeyUsage 
     include_class_members KeyUsageImports

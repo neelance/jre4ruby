@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 2003-2004 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -33,7 +32,6 @@ module Java::Lang::Management
     }
   end
   
-  # 
   # A <tt>MemoryUsage</tt> object represents a snapshot of memory usage.
   # Instances of the <tt>MemoryUsage</tt> class are usually constructed
   # by methods that are used to obtain memory usage
@@ -137,7 +135,6 @@ module Java::Lang::Management
     undef_method :max=
     
     typesig { [::Java::Long, ::Java::Long, ::Java::Long, ::Java::Long] }
-    # 
     # Constructs a <tt>MemoryUsage</tt> object.
     # 
     # @param init      the initial amount of memory in bytes that
@@ -189,7 +186,6 @@ module Java::Lang::Management
     end
     
     typesig { [CompositeData] }
-    # 
     # Constructs a <tt>MemoryUsage</tt> object from a
     # {@link CompositeData CompositeData}.
     def initialize(cd)
@@ -206,7 +202,6 @@ module Java::Lang::Management
     end
     
     typesig { [] }
-    # 
     # Returns the amount of memory in bytes that the Java virtual machine
     # initially requests from the operating system for memory management.
     # This method returns <tt>-1</tt> if the initial memory size is undefined.
@@ -218,7 +213,6 @@ module Java::Lang::Management
     end
     
     typesig { [] }
-    # 
     # Returns the amount of used memory in bytes.
     # 
     # @return the amount of used memory in bytes.
@@ -227,7 +221,6 @@ module Java::Lang::Management
     end
     
     typesig { [] }
-    # 
     # Returns the amount of memory in bytes that is committed for
     # the Java virtual machine to use.  This amount of memory is
     # guaranteed for the Java virtual machine to use.
@@ -238,7 +231,6 @@ module Java::Lang::Management
     end
     
     typesig { [] }
-    # 
     # Returns the maximum amount of memory in bytes that can be
     # used for memory management.  This method returns <tt>-1</tt>
     # if the maximum memory size is undefined.
@@ -256,7 +248,6 @@ module Java::Lang::Management
     end
     
     typesig { [] }
-    # 
     # Returns a descriptive representation of this memory usage.
     def to_s
       buf = StringBuffer.new
@@ -269,7 +260,6 @@ module Java::Lang::Management
     
     class_module.module_eval {
       typesig { [CompositeData] }
-      # 
       # Returns a <tt>MemoryUsage</tt> object represented by the
       # given <tt>CompositeData</tt>. The given <tt>CompositeData</tt>
       # must contain the following attributes:

@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 1995-1997 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -32,7 +31,6 @@ module Java::Net
     }
   end
   
-  # 
   # Thrown to indicate that the IP address of a host could not be determined.
   # 
   # @author  Jonathan Payne
@@ -41,7 +39,6 @@ module Java::Net
     include_class_members UnknownHostExceptionImports
     
     typesig { [String] }
-    # 
     # Constructs a new <code>UnknownHostException</code> with the
     # specified detail message.
     # 
@@ -51,7 +48,6 @@ module Java::Net
     end
     
     typesig { [] }
-    # 
     # Constructs a new <code>UnknownHostException</code> with no detail
     # message.
     def initialize

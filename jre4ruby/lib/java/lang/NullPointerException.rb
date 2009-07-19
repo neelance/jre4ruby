@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 1994-1997 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -30,7 +29,6 @@ module Java::Lang
     }
   end
   
-  # 
   # Thrown when an application attempts to use <code>null</code> in a
   # case where an object is required. These include:
   # <ul>
@@ -52,14 +50,12 @@ module Java::Lang
     include_class_members NullPointerExceptionImports
     
     typesig { [] }
-    # 
     # Constructs a <code>NullPointerException</code> with no detail message.
     def initialize
       super()
     end
     
     typesig { [String] }
-    # 
     # Constructs a <code>NullPointerException</code> with the specified
     # detail message.
     # 

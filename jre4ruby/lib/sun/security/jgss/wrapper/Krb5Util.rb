@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 2005 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -33,7 +32,6 @@ module Sun::Security::Jgss::Wrapper
     }
   end
   
-  # 
   # This class is an utility class for Kerberos related stuff.
   # @author Valerie Peng
   # @since 1.6

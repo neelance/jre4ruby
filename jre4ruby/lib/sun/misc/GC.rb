@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 1998-2006 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -35,7 +34,6 @@ module Sun::Misc
     }
   end
   
-  # 
   # Support for garbage-collection latency requests.
   # 
   # @author   Mark Reinhold
@@ -106,7 +104,6 @@ module Sun::Misc
       
       JNI.native_method :Java_sun_misc_GC_maxObjectInspectionAge, [:pointer, :long], :int64
       typesig { [] }
-      # 
       # Returns the maximum <em>object-inspection age</em>, which is the number
       # of real-time milliseconds that have elapsed since the
       # least-recently-inspected heap object was last inspected by the garbage
@@ -222,7 +219,6 @@ module Sun::Misc
         end
       end
       
-      # 
       # Represents an active garbage-collection latency request.  Instances of
       # this class are created by the <code>{@link #requestLatency}</code>
       # method.  Given a request, the only interesting operation is that of
@@ -307,7 +303,6 @@ module Sun::Misc
         end
         
         typesig { [] }
-        # 
         # Cancels this latency request.
         # 
         # @throws  IllegalStateException
@@ -348,7 +343,6 @@ module Sun::Misc
       end }
       
       typesig { [::Java::Long] }
-      # 
       # Makes a new request for a garbage-collection latency of the given
       # number of real-time milliseconds.  A low-priority daemon thread makes a
       # best effort to ensure that the maximum object-inspection age never
@@ -364,7 +358,6 @@ module Sun::Misc
       end
       
       typesig { [] }
-      # 
       # Returns the current smallest garbage-collection latency request, or zero
       # if there are no active requests.
       def current_latency_target

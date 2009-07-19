@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
 # This code is free software; you can redistribute it and/or modify it
@@ -44,7 +43,6 @@ module Java::Util::Concurrent
     }
   end
   
-  # 
   # A {@linkplain BlockingQueue blocking queue} in which each insert
   # operation must wait for a corresponding remove operation by another
   # thread, and vice versa.  A synchronous queue does not have any
@@ -92,7 +90,6 @@ module Java::Util::Concurrent
       const_set_lazy(:SerialVersionUID) { -3223113410248163686 }
       const_attr_reader  :SerialVersionUID
       
-      # 
       # This class implements extensions of the dual stack and dual
       # queue algorithms described in "Nonblocking Concurrent Objects
       # with Condition Synchronization", by W. N. Scherer III and
@@ -174,7 +171,6 @@ module Java::Util::Concurrent
         include_class_members SynchronousQueue
         
         typesig { [Object, ::Java::Boolean, ::Java::Long] }
-        # 
         # Performs a put or take.
         # 
         # @param e if non-null, the item to be handed to a consumer;
@@ -202,7 +198,6 @@ module Java::Util::Concurrent
       const_set_lazy(:NCPUS) { Runtime.get_runtime.available_processors }
       const_attr_reader  :NCPUS
       
-      # 
       # The number of times to spin before blocking in timed waits.
       # The value is empirically derived -- it works well across a
       # variety of processors and OSes. Empirically, the best value
@@ -211,14 +206,12 @@ module Java::Util::Concurrent
       const_set_lazy(:MaxTimedSpins) { (NCPUS < 2) ? 0 : 32 }
       const_attr_reader  :MaxTimedSpins
       
-      # 
       # The number of times to spin before blocking in untimed waits.
       # This is greater than timed value because untimed waits spin
       # faster since they don't need to check times on each spin.
       const_set_lazy(:MaxUntimedSpins) { MaxTimedSpins * 16 }
       const_attr_reader  :MaxUntimedSpins
       
-      # 
       # The number of nanoseconds for which it is faster to spin
       # rather than to use timed park. A rough estimate suffices.
       const_set_lazy(:SpinForTimeoutThreshold) { 1000 }
@@ -229,7 +222,6 @@ module Java::Util::Concurrent
         include_class_members SynchronousQueue
         
         class_module.module_eval {
-          # 
           # This extends Scherer-Scott dual stack algorithm, differing,
           # among other ways, by using "covering" nodes rather than
           # bit-marked pointers: Fulfilling operations push on marker
@@ -322,7 +314,6 @@ module Java::Util::Concurrent
             }
             
             typesig { [SNode] }
-            # 
             # Tries to match node s to this node, if so, waking up thread.
             # Fulfillers call tryMatch to identify their waiters.
             # Waiters block until they have been matched.
@@ -343,7 +334,6 @@ module Java::Util::Concurrent
             end
             
             typesig { [] }
-            # 
             # Tries to cancel a wait by matching node to itself.
             def try_cancel
               self.class::MatchUpdater.compare_and_set(self, nil, self)
@@ -378,7 +368,6 @@ module Java::Util::Concurrent
         
         class_module.module_eval {
           typesig { [SNode, Object, SNode, ::Java::Int] }
-          # 
           # Creates or resets fields of a node. Called only from transfer
           # where the node to push on stack is lazily created and
           # reused when possible to help reduce intervals between reads
@@ -395,10 +384,8 @@ module Java::Util::Concurrent
         }
         
         typesig { [Object, ::Java::Boolean, ::Java::Long] }
-        # 
         # Puts or takes an item.
         def transfer(e, timed, nanos)
-          # 
           # Basic algorithm is to loop trying one of three actions:
           # 
           # 1. If apparently empty or already containing nodes of same
@@ -456,40 +443,40 @@ module Java::Util::Concurrent
                   if (cas_head(h, s = snode(s, e, h, self.class::FULFILLING | mode)))
                     loop do
                       # loop until matched or waiters disappear
-                      m_ = s.attr_next # m is s's match
-                      if ((m_).nil?)
+                      m = s.attr_next # m is s's match
+                      if ((m).nil?)
                         # all waiters are gone
                         cas_head(s, nil) # pop fulfill node
                         s = nil # use new node next time
                         break # restart main loop
                       end
-                      mn = m_.attr_next
-                      if (m_.try_match(s))
+                      mn = m.attr_next
+                      if (m.try_match(s))
                         cas_head(s, mn) # pop both s and m
-                        return ((mode).equal?(self.class::REQUEST)) ? m_.attr_item : s.attr_item
+                        return ((mode).equal?(self.class::REQUEST)) ? m.attr_item : s.attr_item
                       else
                         # lost match
-                        s.cas_next(m_, mn)
+                        s.cas_next(m, mn)
                       end # help unlink
                     end
                   end
                 end
               else
                 # help a fulfiller
-                m__ = h.attr_next # m is h's match
-                if ((m__).nil?)
+                m = h.attr_next # m is h's match
+                if ((m).nil?)
                   # waiter is gone
                   cas_head(h, nil)
                    # pop fulfilling node
                 else
-                  mn_ = m__.attr_next
-                  if (m__.try_match(h))
+                  mn = m.attr_next
+                  if (m.try_match(h))
                     # help match
-                    cas_head(h, mn_)
+                    cas_head(h, mn)
                      # pop both h and m
                   else
                     # lost match
-                    h.cas_next(m__, mn_)
+                    h.cas_next(m, mn)
                   end # help unlink
                 end
               end
@@ -498,7 +485,6 @@ module Java::Util::Concurrent
         end
         
         typesig { [SNode, ::Java::Boolean, ::Java::Long] }
-        # 
         # Spins/blocks until node s is matched by a fulfill operation.
         # 
         # @param s the waiting node
@@ -506,7 +492,6 @@ module Java::Util::Concurrent
         # @param nanos timeout value
         # @return matched node, or s if cancelled
         def await_fulfill(s, timed, nanos)
-          # 
           # When a node/thread is about to block, it sets its waiter
           # field and then rechecks state at least one more time
           # before actually parking, thus covering race vs
@@ -568,7 +553,6 @@ module Java::Util::Concurrent
         end
         
         typesig { [SNode] }
-        # 
         # Returns true if node s is at head or there is an active
         # fulfiller.
         def should_spin(s)
@@ -577,12 +561,10 @@ module Java::Util::Concurrent
         end
         
         typesig { [SNode] }
-        # 
         # Unlinks s from the stack.
         def clean(s)
           s.attr_item = nil # forget item
           s.attr_waiter = nil # forget thread
-          # 
           # At worst we may need to traverse entire stack to unlink
           # s. If there are multiple concurrent calls to clean, we
           # might not see s if another thread has already removed
@@ -626,7 +608,6 @@ module Java::Util::Concurrent
         include_class_members SynchronousQueue
         
         class_module.module_eval {
-          # 
           # This extends Scherer-Scott dual queue algorithm, differing,
           # among other ways, by using modes within nodes rather than
           # marked pointers. The algorithm is a little simpler than
@@ -696,7 +677,6 @@ module Java::Util::Concurrent
             end
             
             typesig { [Object] }
-            # 
             # Tries to cancel by CAS'ing ref to this as item.
             def try_cancel(cmp)
               self.class::ItemUpdater.compare_and_set(self, cmp, self)
@@ -708,7 +688,6 @@ module Java::Util::Concurrent
             end
             
             typesig { [] }
-            # 
             # Returns true if this node is known to be off the queue
             # because its next pointer has been forgotten due to
             # an advanceHead operation.
@@ -735,7 +714,6 @@ module Java::Util::Concurrent
         alias_method :attr_tail=, :tail=
         undef_method :tail=
         
-        # 
         # Reference to a cancelled node that might not yet have been
         # unlinked from queue because it was the last inserted node
         # when it cancelled.
@@ -762,7 +740,6 @@ module Java::Util::Concurrent
         }
         
         typesig { [QNode, QNode] }
-        # 
         # Tries to cas nh as new head; if successful, unlink
         # old head's next node to avoid garbage retention.
         def advance_head(h, nh)
@@ -777,7 +754,6 @@ module Java::Util::Concurrent
         }
         
         typesig { [QNode, QNode] }
-        # 
         # Tries to cas nt as new tail.
         def advance_tail(t, nt)
           if ((@tail).equal?(t))
@@ -791,14 +767,12 @@ module Java::Util::Concurrent
         }
         
         typesig { [QNode, QNode] }
-        # 
         # Tries to CAS cleanMe slot.
         def cas_clean_me(cmp, val)
           return ((@clean_me).equal?(cmp) && self.class::CleanMeUpdater.compare_and_set(self, cmp, val))
         end
         
         typesig { [Object, ::Java::Boolean, ::Java::Long] }
-        # 
         # Puts or takes an item.
         def transfer(e, timed, nanos)
           # Basic algorithm is to loop trying to take either of
@@ -879,23 +853,22 @@ module Java::Util::Concurrent
               if (!(t).equal?(@tail) || (m).nil? || !(h).equal?(@head))
                 next
               end # inconsistent read
-              x_ = m.attr_item
+              x = m.attr_item
               # m already fulfilled
               # m cancelled
-              if ((is_data).equal?((!(x_).nil?)) || (x_).equal?(m) || !m.cas_item(x_, e))
+              if ((is_data).equal?((!(x).nil?)) || (x).equal?(m) || !m.cas_item(x, e))
                 # lost CAS
                 advance_head(h, m) # dequeue and retry
                 next
               end
               advance_head(h, m) # successfully fulfilled
               LockSupport.unpark(m.attr_waiter)
-              return (!(x_).nil?) ? x_ : e
+              return (!(x).nil?) ? x : e
             end
           end
         end
         
         typesig { [QNode, Object, ::Java::Boolean, ::Java::Long] }
-        # 
         # Spins/blocks until node s is fulfilled.
         # 
         # @param s the waiting node
@@ -944,11 +917,9 @@ module Java::Util::Concurrent
         end
         
         typesig { [QNode, QNode] }
-        # 
         # Gets rid of cancelled node s with original predecessor pred.
         def clean(pred, s)
           s.attr_waiter = nil # forget thread
-          # 
           # At any given time, exactly one node on list cannot be
           # deleted -- the last inserted node. To accommodate this,
           # if we cannot delete s, we save its predecessor as
@@ -1013,7 +984,6 @@ module Java::Util::Concurrent
       end }
     }
     
-    # 
     # The transferer. Set only in constructor, but cannot be declared
     # as final without further complicating serialization.  Since
     # this is accessed only at most once per public method, there
@@ -1026,14 +996,12 @@ module Java::Util::Concurrent
     undef_method :transferer=
     
     typesig { [] }
-    # 
     # Creates a <tt>SynchronousQueue</tt> with nonfair access policy.
     def initialize
       initialize__synchronous_queue(false)
     end
     
     typesig { [::Java::Boolean] }
-    # 
     # Creates a <tt>SynchronousQueue</tt> with the specified fairness policy.
     # 
     # @param fair if true, waiting threads contend in FIFO order for
@@ -1048,7 +1016,6 @@ module Java::Util::Concurrent
     end
     
     typesig { [Object] }
-    # 
     # Adds the specified element to this queue, waiting if necessary for
     # another thread to receive it.
     # 
@@ -1065,7 +1032,6 @@ module Java::Util::Concurrent
     end
     
     typesig { [Object, ::Java::Long, TimeUnit] }
-    # 
     # Inserts the specified element into this queue, waiting if necessary
     # up to the specified wait time for another thread to receive it.
     # 
@@ -1087,7 +1053,6 @@ module Java::Util::Concurrent
     end
     
     typesig { [Object] }
-    # 
     # Inserts the specified element into this queue, if another thread is
     # waiting to receive it.
     # 
@@ -1103,7 +1068,6 @@ module Java::Util::Concurrent
     end
     
     typesig { [] }
-    # 
     # Retrieves and removes the head of this queue, waiting if necessary
     # for another thread to insert it.
     # 
@@ -1119,7 +1083,6 @@ module Java::Util::Concurrent
     end
     
     typesig { [::Java::Long, TimeUnit] }
-    # 
     # Retrieves and removes the head of this queue, waiting
     # if necessary up to the specified wait time, for another thread
     # to insert it.
@@ -1136,7 +1099,6 @@ module Java::Util::Concurrent
     end
     
     typesig { [] }
-    # 
     # Retrieves and removes the head of this queue, if another thread
     # is currently making an element available.
     # 
@@ -1147,7 +1109,6 @@ module Java::Util::Concurrent
     end
     
     typesig { [] }
-    # 
     # Always returns <tt>true</tt>.
     # A <tt>SynchronousQueue</tt> has no internal capacity.
     # 
@@ -1157,7 +1118,6 @@ module Java::Util::Concurrent
     end
     
     typesig { [] }
-    # 
     # Always returns zero.
     # A <tt>SynchronousQueue</tt> has no internal capacity.
     # 
@@ -1167,7 +1127,6 @@ module Java::Util::Concurrent
     end
     
     typesig { [] }
-    # 
     # Always returns zero.
     # A <tt>SynchronousQueue</tt> has no internal capacity.
     # 
@@ -1177,14 +1136,12 @@ module Java::Util::Concurrent
     end
     
     typesig { [] }
-    # 
     # Does nothing.
     # A <tt>SynchronousQueue</tt> has no internal capacity.
     def clear
     end
     
     typesig { [Object] }
-    # 
     # Always returns <tt>false</tt>.
     # A <tt>SynchronousQueue</tt> has no internal capacity.
     # 
@@ -1195,7 +1152,6 @@ module Java::Util::Concurrent
     end
     
     typesig { [Object] }
-    # 
     # Always returns <tt>false</tt>.
     # A <tt>SynchronousQueue</tt> has no internal capacity.
     # 
@@ -1206,7 +1162,6 @@ module Java::Util::Concurrent
     end
     
     typesig { [Collection] }
-    # 
     # Returns <tt>false</tt> unless the given collection is empty.
     # A <tt>SynchronousQueue</tt> has no internal capacity.
     # 
@@ -1217,7 +1172,6 @@ module Java::Util::Concurrent
     end
     
     typesig { [Collection] }
-    # 
     # Always returns <tt>false</tt>.
     # A <tt>SynchronousQueue</tt> has no internal capacity.
     # 
@@ -1228,7 +1182,6 @@ module Java::Util::Concurrent
     end
     
     typesig { [Collection] }
-    # 
     # Always returns <tt>false</tt>.
     # A <tt>SynchronousQueue</tt> has no internal capacity.
     # 
@@ -1239,7 +1192,6 @@ module Java::Util::Concurrent
     end
     
     typesig { [] }
-    # 
     # Always returns <tt>null</tt>.
     # A <tt>SynchronousQueue</tt> does not return elements
     # unless actively waited on.
@@ -1250,7 +1202,6 @@ module Java::Util::Concurrent
     end
     
     typesig { [] }
-    # 
     # Returns an empty iterator in which <tt>hasNext</tt> always returns
     # <tt>false</tt>.
     # 
@@ -1260,7 +1211,6 @@ module Java::Util::Concurrent
     end
     
     typesig { [] }
-    # 
     # Returns a zero-length array.
     # @return a zero-length array
     def to_array
@@ -1268,7 +1218,6 @@ module Java::Util::Concurrent
     end
     
     typesig { [Array.typed(T)] }
-    # 
     # Sets the zeroeth element of the specified array to <tt>null</tt>
     # (if the array has non-zero length) and returns it.
     # 
@@ -1283,7 +1232,6 @@ module Java::Util::Concurrent
     end
     
     typesig { [Collection] }
-    # 
     # @throws UnsupportedOperationException {@inheritDoc}
     # @throws ClassCastException            {@inheritDoc}
     # @throws NullPointerException          {@inheritDoc}
@@ -1305,7 +1253,6 @@ module Java::Util::Concurrent
     end
     
     typesig { [Collection, ::Java::Int] }
-    # 
     # @throws UnsupportedOperationException {@inheritDoc}
     # @throws ClassCastException            {@inheritDoc}
     # @throws NullPointerException          {@inheritDoc}
@@ -1327,7 +1274,6 @@ module Java::Util::Concurrent
     end
     
     class_module.module_eval {
-      # 
       # To cope with serialization strategy in the 1.5 version of
       # SynchronousQueue, we declare some unused classes and fields
       # that exist solely to enable serializability across versions.
@@ -1399,7 +1345,6 @@ module Java::Util::Concurrent
     undef_method :waiting_consumers=
     
     typesig { [Java::Io::ObjectOutputStream] }
-    # 
     # Save the state to a stream (that is, serialize it).
     # 
     # @param s the stream

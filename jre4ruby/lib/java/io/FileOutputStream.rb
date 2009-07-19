@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 1994-2007 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -33,7 +32,6 @@ module Java::Io
     }
   end
   
-  # 
   # A file output stream is an output stream for writing data to a
   # <code>File</code> or to a <code>FileDescriptor</code>. Whether or not
   # a file is available or may be created depends upon the underlying
@@ -54,7 +52,6 @@ module Java::Io
   class FileOutputStream < FileOutputStreamImports.const_get :OutputStream
     include_class_members FileOutputStreamImports
     
-    # 
     # The system dependent file descriptor. The value is
     # 1 more than actual file descriptor. This means that
     # the default value 0 indicates that the file is not open.
@@ -111,7 +108,6 @@ module Java::Io
     }
     
     typesig { [String] }
-    # 
     # Creates an output file stream to write to the file with the
     # specified name. A new <code>FileDescriptor</code> object is
     # created to represent this file connection.
@@ -136,7 +132,6 @@ module Java::Io
     end
     
     typesig { [String, ::Java::Boolean] }
-    # 
     # Creates an output file stream to write to the file with the specified
     # <code>name</code>.  If the second argument is <code>true</code>, then
     # bytes will be written to the end of the file rather than the beginning.
@@ -166,7 +161,6 @@ module Java::Io
     end
     
     typesig { [JavaFile] }
-    # 
     # Creates a file output stream to write to the file represented by
     # the specified <code>File</code> object. A new
     # <code>FileDescriptor</code> object is created to represent this
@@ -195,7 +189,6 @@ module Java::Io
     end
     
     typesig { [JavaFile, ::Java::Boolean] }
-    # 
     # Creates a file output stream to write to the file represented by
     # the specified <code>File</code> object. If the second argument is
     # <code>true</code>, then bytes will be written to the end of the file
@@ -253,7 +246,6 @@ module Java::Io
     end
     
     typesig { [FileDescriptor] }
-    # 
     # Creates an output file stream to write to the specified file
     # descriptor, which represents an existing connection to an actual
     # file in the file system.
@@ -286,7 +278,6 @@ module Java::Io
         security.check_write(fd_obj)
       end
       @fd = fd_obj
-      # 
       # FileDescriptor is being shared by streams.
       # Ensure that it's GC'ed only when all the streams/channels are done
       # using it.
@@ -295,7 +286,6 @@ module Java::Io
     
     JNI.native_method :Java_java_io_FileOutputStream_open, [:pointer, :long, :long], :void
     typesig { [String] }
-    # 
     # Opens a file, with the specified name, for writing.
     # @param name name of file to be opened
     def open(name)
@@ -304,7 +294,6 @@ module Java::Io
     
     JNI.native_method :Java_java_io_FileOutputStream_openAppend, [:pointer, :long, :long], :void
     typesig { [String] }
-    # 
     # Opens a file, with the specified name, for appending.
     # @param name name of file to be opened
     def open_append(name)
@@ -313,7 +302,6 @@ module Java::Io
     
     JNI.native_method :Java_java_io_FileOutputStream_write, [:pointer, :long, :int32], :void
     typesig { [::Java::Int] }
-    # 
     # Writes the specified byte to this file output stream. Implements
     # the <code>write</code> method of <code>OutputStream</code>.
     # 
@@ -325,7 +313,6 @@ module Java::Io
     
     JNI.native_method :Java_java_io_FileOutputStream_writeBytes, [:pointer, :long, :long, :int32, :int32], :void
     typesig { [Array.typed(::Java::Byte), ::Java::Int, ::Java::Int] }
-    # 
     # Writes a sub array as a sequence of bytes.
     # @param b the data to be written
     # @param off the start offset in the data
@@ -336,7 +323,6 @@ module Java::Io
     end
     
     typesig { [Array.typed(::Java::Byte)] }
-    # 
     # Writes <code>b.length</code> bytes from the specified byte array
     # to this file output stream.
     # 
@@ -347,7 +333,6 @@ module Java::Io
     end
     
     typesig { [Array.typed(::Java::Byte), ::Java::Int, ::Java::Int] }
-    # 
     # Writes <code>len</code> bytes from the specified byte array
     # starting at offset <code>off</code> to this file output stream.
     # 
@@ -360,7 +345,6 @@ module Java::Io
     end
     
     typesig { [] }
-    # 
     # Closes this file output stream and releases any system resources
     # associated with this stream. This file output stream may no longer
     # be used for writing bytes.
@@ -380,17 +364,14 @@ module Java::Io
         @closed = true
       end
       if (!(@channel).nil?)
-        # 
         # Decrement FD use count associated with the channel
         # The use count is incremented whenever a new channel
         # is obtained from this stream.
         @fd.decrement_and_get_use_count
         @channel.close
       end
-      # 
       # Decrement FD use count associated with this stream
       use_count = @fd.decrement_and_get_use_count
-      # 
       # If FileDescriptor is still in use by another stream, the finalizer
       # will not close it.
       if ((use_count <= 0) || !is_running_finalize)
@@ -399,7 +380,6 @@ module Java::Io
     end
     
     typesig { [] }
-    # 
     # Returns the file descriptor associated with this stream.
     # 
     # @return  the <code>FileDescriptor</code> object that represents
@@ -416,7 +396,6 @@ module Java::Io
     end
     
     typesig { [] }
-    # 
     # Returns the unique {@link java.nio.channels.FileChannel FileChannel}
     # object associated with this file output stream. </p>
     # 
@@ -436,7 +415,6 @@ module Java::Io
       synchronized((self)) do
         if ((@channel).nil?)
           @channel = FileChannelImpl.open(@fd, false, true, self, @append)
-          # 
           # Increment fd's use count. Invoking the channel's close()
           # method will result in decrementing the use count set for
           # the channel.
@@ -447,7 +425,6 @@ module Java::Io
     end
     
     typesig { [] }
-    # 
     # Cleans up the connection to the file, and ensures that the
     # <code>close</code> method of this file output stream is
     # called when there are no more references to this stream.
@@ -459,7 +436,6 @@ module Java::Io
         if ((@fd).equal?(@fd.attr_out) || (@fd).equal?(@fd.attr_err))
           flush
         else
-          # 
           # Finalizer should not release the FileDescriptor if another
           # stream is still using it. If the user directly invokes
           # close() then the FileDescriptor is also released.

@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 1995-1997 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -35,7 +34,6 @@ module Sun::Misc
     }
   end
   
-  # 
   # This class implements a robust character encoder. The encoder is designed
   # to convert binary data into printable characters. The characters are
   # assumed to exist but they are not assumed to be ASCII, the complete set
@@ -127,7 +125,6 @@ module Sun::Misc
     undef_method :crc=
     
     typesig { [OutputStream, Array.typed(::Java::Byte), ::Java::Int, ::Java::Int] }
-    # 
     # encodeAtom - take two bytes and encode them into the correct
     # three characters. If only one byte is to be encoded, the other
     # must be zero. The padding byte is not included in the CRC computation.
@@ -168,7 +165,6 @@ module Sun::Misc
     end
     
     typesig { [OutputStream, ::Java::Int] }
-    # 
     # Each UCE encoded line starts with a prefix of '*[XXX]', where
     # the sequence number and the length are encoded in the first
     # atom.
@@ -182,7 +178,6 @@ module Sun::Misc
     end
     
     typesig { [OutputStream] }
-    # 
     # each UCE encoded line ends with YYY and encoded version of the
     # 16 bit checksum. The most significant byte of the check sum
     # is always encoded FIRST.
@@ -194,7 +189,6 @@ module Sun::Misc
     end
     
     typesig { [OutputStream] }
-    # 
     # The buffer prefix code is used to initialize the sequence number
     # to zero.
     def encode_buffer_prefix(a)

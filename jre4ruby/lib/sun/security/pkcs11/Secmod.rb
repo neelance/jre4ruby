@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 2005 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -37,7 +36,6 @@ module Sun::Security::Pkcs11
     }
   end
   
-  # 
   # The Secmod class defines the interface to the native NSS
   # library and the configuration information it stores in its
   # secmod.db file.
@@ -123,7 +121,6 @@ module Sun::Security::Pkcs11
     
     class_module.module_eval {
       typesig { [] }
-      # 
       # Return the singleton Secmod instance.
       def get_instance
         return INSTANCE
@@ -147,7 +144,6 @@ module Sun::Security::Pkcs11
     end
     
     typesig { [] }
-    # 
     # Test whether this Secmod has been initialized. Returns true
     # if NSS has been initialized using either the initialize() method
     # or by directly calling the native NSS APIs. The latter may be
@@ -181,7 +177,6 @@ module Sun::Security::Pkcs11
     end
     
     typesig { [String, String] }
-    # 
     # Initialize this Secmod.
     # 
     # @param configDir the directory containing the NSS configuration
@@ -261,7 +256,6 @@ module Sun::Security::Pkcs11
     end
     
     typesig { [] }
-    # 
     # Return an immutable list of all available modules.
     # 
     # @throws IllegalStateException if this Secmod is misconfigured
@@ -280,7 +274,7 @@ module Sun::Security::Pkcs11
           modules = nss_get_module_list(@nss_handle)
           @modules = Collections.unmodifiable_list(modules)
         end
-        return modules
+        return @modules
       end
     end
     
@@ -332,7 +326,6 @@ module Sun::Security::Pkcs11
       const_set_lazy(:EXTERNAL) { ModuleType::EXTERNAL }
       const_attr_reader  :EXTERNAL
       
-      # 
       # Constants describing the different types of NSS modules.
       # For this API, NSS modules are classified as either one
       # of the internal modules delivered as part of NSS or
@@ -341,7 +334,6 @@ module Sun::Security::Pkcs11
         include_class_members Secmod
         
         class_module.module_eval {
-          # 
           # The NSS Softtoken crypto module. This is the first
           # slot of the softtoken object.
           # This module provides
@@ -349,7 +341,6 @@ module Sun::Security::Pkcs11
           const_set_lazy(:CRYPTO) { ModuleType.new.set_value_name("CRYPTO") }
           const_attr_reader  :CRYPTO
           
-          # 
           # The NSS Softtoken KeyStore module. This is the second
           # slot of the softtoken object.
           # This module provides
@@ -358,20 +349,17 @@ module Sun::Security::Pkcs11
           const_set_lazy(:KEYSTORE) { ModuleType.new.set_value_name("KEYSTORE") }
           const_attr_reader  :KEYSTORE
           
-          # 
           # The NSS Softtoken module in FIPS mode. Note that in FIPS mode the
           # softtoken presents only one slot, not separate CRYPTO and KEYSTORE
           # slots as in non-FIPS mode.
           const_set_lazy(:FIPS) { ModuleType.new.set_value_name("FIPS") }
           const_attr_reader  :FIPS
           
-          # 
           # The NSS builtin trust anchor module. This is the
           # NSSCKBI object. It provides no crypto functions.
           const_set_lazy(:TRUSTANCHOR) { ModuleType.new.set_value_name("TRUSTANCHOR") }
           const_attr_reader  :TRUSTANCHOR
           
-          # 
           # An external module.
           const_set_lazy(:EXTERNAL) { ModuleType.new.set_value_name("EXTERNAL") }
           const_attr_reader  :EXTERNAL
@@ -405,7 +393,6 @@ module Sun::Security::Pkcs11
     }
     
     typesig { [ModuleType] }
-    # 
     # Returns the first module of the specified type. If no such
     # module exists, this method returns null.
     # 
@@ -436,7 +423,6 @@ module Sun::Security::Pkcs11
       const_set_lazy(:TEMPLATE_FIPS) { "library = %s\n" + "name = \"NSS FIPS SoftToken\"\n" + "slotListIndex = 0\n" + "nssUseSecmodTrust = true\n" }
       const_attr_reader  :TEMPLATE_FIPS
       
-      # 
       # A representation of one PKCS#11 slot in a PKCS#11 module.
       const_set_lazy(:Module) { Class.new do
         include_class_members Secmod
@@ -543,7 +529,6 @@ module Sun::Security::Pkcs11
         end
         
         typesig { [] }
-        # 
         # Get the configuration for this module. This is a string
         # in the SunPKCS11 configuration format. It can be
         # customized with additional options and then made
@@ -555,7 +540,6 @@ module Sun::Security::Pkcs11
         end
         
         typesig { [String] }
-        # 
         # Set the configuration for this module.
         # 
         # @throws IllegalStateException if the associated provider
@@ -570,7 +554,6 @@ module Sun::Security::Pkcs11
         end
         
         typesig { [] }
-        # 
         # Return the pathname of the native library that implements
         # this module. For example, /usr/lib/libpkcs11.so.
         def get_library_name
@@ -578,14 +561,12 @@ module Sun::Security::Pkcs11
         end
         
         typesig { [] }
-        # 
         # Returns the type of this module.
         def get_type
           return @type
         end
         
         typesig { [] }
-        # 
         # Returns the provider instance that is associated with this
         # module. The first call to this method creates the provider
         # instance.
@@ -692,7 +673,6 @@ module Sun::Security::Pkcs11
       const_set_lazy(:EMAIL_PROTECTION) { TrustType::EMAIL_PROTECTION }
       const_attr_reader  :EMAIL_PROTECTION
       
-      # 
       # Constants representing NSS trust categories.
       class TrustType 
         include_class_members Secmod
@@ -802,7 +782,6 @@ module Sun::Security::Pkcs11
         alias_method :initialize__db_mode, :initialize
       end
       
-      # 
       # A LoadStoreParameter for use with the NSS Softtoken or
       # NSS TrustAnchor KeyStores.
       # <p>

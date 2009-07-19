@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
 # This code is free software; you can redistribute it and/or modify it
@@ -40,7 +39,6 @@ module Java::Util
     }
   end
   
-  # 
   # A {@link SortedSet} extended with navigation methods reporting
   # closest matches for given search targets. Methods {@code lower},
   # {@code floor}, {@code ceiling}, and {@code higher} return elements
@@ -92,7 +90,6 @@ module Java::Util
     include SortedSet
     
     typesig { [Object] }
-    # 
     # Returns the greatest element in this set strictly less than the
     # given element, or {@code null} if there is no such element.
     # 
@@ -108,7 +105,6 @@ module Java::Util
     end
     
     typesig { [Object] }
-    # 
     # Returns the greatest element in this set less than or equal to
     # the given element, or {@code null} if there is no such element.
     # 
@@ -124,7 +120,6 @@ module Java::Util
     end
     
     typesig { [Object] }
-    # 
     # Returns the least element in this set greater than or equal to
     # the given element, or {@code null} if there is no such element.
     # 
@@ -140,7 +135,6 @@ module Java::Util
     end
     
     typesig { [Object] }
-    # 
     # Returns the least element in this set strictly greater than the
     # given element, or {@code null} if there is no such element.
     # 
@@ -156,7 +150,6 @@ module Java::Util
     end
     
     typesig { [] }
-    # 
     # Retrieves and removes the first (lowest) element,
     # or returns {@code null} if this set is empty.
     # 
@@ -166,7 +159,6 @@ module Java::Util
     end
     
     typesig { [] }
-    # 
     # Retrieves and removes the last (highest) element,
     # or returns {@code null} if this set is empty.
     # 
@@ -176,7 +168,6 @@ module Java::Util
     end
     
     typesig { [] }
-    # 
     # Returns an iterator over the elements in this set, in ascending order.
     # 
     # @return an iterator over the elements in this set, in ascending order
@@ -185,7 +176,6 @@ module Java::Util
     end
     
     typesig { [] }
-    # 
     # Returns a reverse order view of the elements contained in this set.
     # The descending set is backed by this set, so changes to the set are
     # reflected in the descending set, and vice-versa.  If either set is
@@ -204,7 +194,6 @@ module Java::Util
     end
     
     typesig { [] }
-    # 
     # Returns an iterator over the elements in this set, in descending order.
     # Equivalent in effect to {@code descendingSet().iterator()}.
     # 
@@ -214,7 +203,6 @@ module Java::Util
     end
     
     typesig { [Object, ::Java::Boolean, Object, ::Java::Boolean] }
-    # 
     # Returns a view of the portion of this set whose elements range from
     # {@code fromElement} to {@code toElement}.  If {@code fromElement} and
     # {@code toElement} are equal, the returned set is empty unless {@code
@@ -253,7 +241,6 @@ module Java::Util
     end
     
     typesig { [Object, ::Java::Boolean] }
-    # 
     # Returns a view of the portion of this set whose elements are less than
     # (or equal to, if {@code inclusive} is true) {@code toElement}.  The
     # returned set is backed by this set, so changes in the returned set are
@@ -284,7 +271,6 @@ module Java::Util
     end
     
     typesig { [Object, ::Java::Boolean] }
-    # 
     # Returns a view of the portion of this set whose elements are greater
     # than (or equal to, if {@code inclusive} is true) {@code fromElement}.
     # The returned set is backed by this set, so changes in the returned set
@@ -315,7 +301,6 @@ module Java::Util
     end
     
     typesig { [Object, Object] }
-    # 
     # {@inheritDoc}
     # 
     # <p>Equivalent to {@code subSet(fromElement, true, toElement, false)}.
@@ -328,7 +313,6 @@ module Java::Util
     end
     
     typesig { [Object] }
-    # 
     # {@inheritDoc}
     # 
     # <p>Equivalent to {@code headSet(toElement, false)}.
@@ -342,7 +326,6 @@ module Java::Util
     end
     
     typesig { [Object] }
-    # 
     # {@inheritDoc}
     # 
     # <p>Equivalent to {@code tailSet(fromElement, true)}.

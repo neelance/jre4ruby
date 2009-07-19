@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 1996-2006 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -35,7 +34,6 @@ module Sun::Security::X509
     }
   end
   
-  # 
   # This class identifies algorithms, such as cryptographic transforms, each
   # of which may be associated with parameters.  Instances of this base class
   # are used when this runtime environment has no special knowledge of the
@@ -68,7 +66,6 @@ module Sun::Security::X509
       const_attr_reader  :SerialVersionUID
     }
     
-    # 
     # The object identitifer being used for this algorithm.
     attr_accessor :algid
     alias_method :attr_algid, :algid
@@ -89,7 +86,6 @@ module Sun::Security::X509
     alias_method :attr_constructed_from_der=, :constructed_from_der=
     undef_method :constructed_from_der=
     
-    # 
     # Parameters for this algorithm.  These are stored in unparsed
     # DER-encoded form; subclasses can be made to automaticaly parse
     # them so there is fast access to these parameters.
@@ -100,7 +96,6 @@ module Sun::Security::X509
     undef_method :params=
     
     typesig { [] }
-    # 
     # Constructs an algorithm ID which will be initialized
     # separately, for example by deserialization.
     # @deprecated use one of the other constructors.
@@ -112,7 +107,6 @@ module Sun::Security::X509
     end
     
     typesig { [ObjectIdentifier] }
-    # 
     # Constructs a parameterless algorithm ID.
     # 
     # @param oid the identifier for the algorithm
@@ -125,7 +119,6 @@ module Sun::Security::X509
     end
     
     typesig { [ObjectIdentifier, AlgorithmParameters] }
-    # 
     # Constructs an algorithm ID with algorithm parameters.
     # 
     # @param oid the identifier for the algorithm.
@@ -165,7 +158,6 @@ module Sun::Security::X509
           # This code can go away once we have EC in the SUN provider.
           @alg_params = AlgorithmParameters.get_instance(algid_string, Sun::Security::Ec::ECKeyFactory.attr_ec_internal_provider)
         rescue NoSuchAlgorithmException => ee
-          # 
           # This algorithm parameter type is not supported, so we cannot
           # parse the parameters.
           @alg_params = nil
@@ -177,14 +169,12 @@ module Sun::Security::X509
     end
     
     typesig { [DerOutputStream] }
-    # 
     # Marshal a DER-encoded "AlgorithmID" sequence on the DER stream.
     def encode(out)
       der_encode(out)
     end
     
     typesig { [OutputStream] }
-    # 
     # DER encode this object onto an output stream.
     # Implements the <code>DerEncoder</code> interface.
     # 
@@ -238,7 +228,6 @@ module Sun::Security::X509
     end
     
     typesig { [] }
-    # 
     # Returns the DER-encoded X.509 AlgorithmId as a byte array.
     def encode
       out = DerOutputStream.new
@@ -247,7 +236,6 @@ module Sun::Security::X509
     end
     
     typesig { [] }
-    # 
     # Returns the ISO OID for this algorithm.  This is usually converted
     # to a string and used as part of an algorithm name, for example
     # "OID.1.3.14.3.2.13" style notation.  Use the <code>getName</code>
@@ -258,7 +246,6 @@ module Sun::Security::X509
     end
     
     typesig { [] }
-    # 
     # Returns a name for the algorithm which may be more intelligible
     # to humans than the algorithm's OID, but which won't necessarily
     # be comprehensible on other systems.  For example, this might
@@ -291,7 +278,6 @@ module Sun::Security::X509
     end
     
     typesig { [] }
-    # 
     # Returns the DER encoded parameter, which can then be
     # used to initialize java.security.AlgorithmParamters.
     # 
@@ -301,7 +287,6 @@ module Sun::Security::X509
     end
     
     typesig { [AlgorithmId] }
-    # 
     # Returns true iff the argument indicates the same algorithm
     # with the same parameters.
     def equals(other)
@@ -310,7 +295,6 @@ module Sun::Security::X509
     end
     
     typesig { [Object] }
-    # 
     # Compares this AlgorithmID to another.  If algorithm parameters are
     # available, they are compared.  Otherwise, just the object IDs
     # for the algorithm are compared.
@@ -332,7 +316,6 @@ module Sun::Security::X509
     end
     
     typesig { [ObjectIdentifier] }
-    # 
     # Compares two algorithm IDs for equality.  Returns true iff
     # they are the same algorithm, ignoring algorithm parameters.
     def equals(id)
@@ -340,7 +323,6 @@ module Sun::Security::X509
     end
     
     typesig { [] }
-    # 
     # Returns a hashcode for this AlgorithmId.
     # 
     # @return a hashcode for this AlgorithmId.
@@ -352,7 +334,6 @@ module Sun::Security::X509
     end
     
     typesig { [] }
-    # 
     # Provides a human-readable description of the algorithm parameters.
     # This may be redefined by subclasses which parse those parameters.
     def params_to_string
@@ -368,7 +349,6 @@ module Sun::Security::X509
     end
     
     typesig { [] }
-    # 
     # Returns a string describing the algorithm and its parameters.
     def to_s
       return get_name + params_to_string
@@ -376,7 +356,6 @@ module Sun::Security::X509
     
     class_module.module_eval {
       typesig { [DerValue] }
-      # 
       # Parse (unmarshal) an ID from a DER sequence input value.  This form
       # parsing might be used when expanding a value which has already been
       # partially unmarshaled as a set or sequence member.
@@ -392,7 +371,6 @@ module Sun::Security::X509
         if (!(val.attr_tag).equal?(DerValue.attr_tag_sequence))
           raise IOException.new("algid parse error, not a sequence")
         end
-        # 
         # Get the algorithm ID and any parameters.
         algid = nil
         params = nil
@@ -416,7 +394,6 @@ module Sun::Security::X509
       end
       
       typesig { [String] }
-      # 
       # Returns one of the algorithm IDs most commonly associated
       # with this algorithm name.
       # 
@@ -428,7 +405,6 @@ module Sun::Security::X509
       end
       
       typesig { [String] }
-      # 
       # Returns one of the algorithm IDs most commonly associated
       # with this algorithm name.
       # 
@@ -448,7 +424,6 @@ module Sun::Security::X509
       end
       
       typesig { [AlgorithmParameters] }
-      # 
       # Returns one of the algorithm IDs most commonly associated
       # with this algorithm parameters.
       # 
@@ -469,7 +444,6 @@ module Sun::Security::X509
       end
       
       typesig { [String] }
-      # 
       # Translates from some common algorithm names to the
       # OID with which they're usually associated ... this mapping
       # is the reverse of the one below, except in those cases
@@ -598,8 +572,6 @@ module Sun::Security::X509
       end
       alias_method :attr_oid_table=, :oid_table=
       
-      # 
-      # 
       # HASHING ALGORITHMS
       # 
       # 
@@ -608,13 +580,11 @@ module Sun::Security::X509
       const_set_lazy(:MD2_oid) { ObjectIdentifier.new_internal(Array.typed(::Java::Int).new([1, 2, 840, 113549, 2, 2])) }
       const_attr_reader  :MD2_oid
       
-      # 
       # Algorithm ID for the MD5 Message Digest Algorthm, from RFC 1321.
       # OID = 1.2.840.113549.2.5
       const_set_lazy(:MD5_oid) { ObjectIdentifier.new_internal(Array.typed(::Java::Int).new([1, 2, 840, 113549, 2, 5])) }
       const_attr_reader  :MD5_oid
       
-      # 
       # Algorithm ID for the SHA1 Message Digest Algorithm, from FIPS 180-1.
       # This is sometimes called "SHA", though that is often confusing since
       # many people refer to FIPS 180 (which has an error) as defining SHA.
@@ -631,7 +601,6 @@ module Sun::Security::X509
       const_set_lazy(:SHA512_oid) { ObjectIdentifier.new_internal(Array.typed(::Java::Int).new([2, 16, 840, 1, 101, 3, 4, 2, 3])) }
       const_attr_reader  :SHA512_oid
       
-      # 
       # COMMON PUBLIC KEY TYPES
       const_set_lazy(:DH_data) { Array.typed(::Java::Int).new([1, 2, 840, 113549, 1, 3, 1]) }
       const_attr_reader  :DH_data
@@ -654,7 +623,6 @@ module Sun::Security::X509
       const_set_lazy(:EC_oid) { oid(1, 2, 840, 10045, 2, 1) }
       const_attr_reader  :EC_oid
       
-      # 
       # COMMON SIGNATURE ALGORITHMS
       const_set_lazy(:Md2WithRSAEncryption_data) { Array.typed(::Java::Int).new([1, 2, 840, 113549, 1, 1, 2]) }
       const_attr_reader  :Md2WithRSAEncryption_data
@@ -704,7 +672,6 @@ module Sun::Security::X509
       const_set_lazy(:SpecifiedWithECDSA_oid) { oid(1, 2, 840, 10045, 4, 3) }
       const_attr_reader  :SpecifiedWithECDSA_oid
       
-      # 
       # Algorithm ID for the PBE encryption algorithms from PKCS#5 and
       # PKCS#12.
       const_set_lazy(:PbeWithMD5AndDES_oid) { ObjectIdentifier.new_internal(Array.typed(::Java::Int).new([1, 2, 840, 113549, 1, 5, 3])) }
@@ -742,7 +709,6 @@ module Sun::Security::X509
       alias_method :attr_pbe_with_sha1and_rc2_40_oid=, :pbe_with_sha1and_rc2_40_oid=
       
       when_class_loaded do
-        # 
         # Note the preferred OIDs are named simply with no "OIW" or
         # "PKIX" in them, even though they may point to data from these
         # specs; e.g. SHA_oid, DH_oid, DSA_oid, SHA1WithDSA_oid...
@@ -755,12 +721,10 @@ module Sun::Security::X509
         # certificate.
         # OID = 1.2.840.113549.1.3.1
         const_set :DH_oid, ObjectIdentifier.new_internal(DH_data)
-        # 
         # Algorithm ID for the Diffie Hellman Key Agreement (DH), from RFC 3279.
         # Parameters may include public values P and G.
         # OID = 1.2.840.10046.2.1
         const_set :DH_PKIX_oid, ObjectIdentifier.new_internal(DH_PKIX_data)
-        # 
         # Algorithm ID for the Digital Signing Algorithm (DSA), from the
         # NIST OIW Stable Agreements part 12.
         # Parameters may include public values P, Q, and G; or these may be
@@ -768,72 +732,59 @@ module Sun::Security::X509
         # another source such as a Certificate Authority's certificate.
         # OID = 1.3.14.3.2.12
         const_set :DSA_OIW_oid, ObjectIdentifier.new_internal(DSA_OIW_data)
-        # 
         # Algorithm ID for the Digital Signing Algorithm (DSA), from RFC 3279.
         # Parameters may include public values P, Q, and G; or these may be
         # derived from another source such as a Certificate Authority's
         # certificate.
         # OID = 1.2.840.10040.4.1
         const_set :DSA_oid, ObjectIdentifier.new_internal(DSA_PKIX_data)
-        # 
         # Algorithm ID for RSA keys used for any purpose, as defined in X.509.
         # The algorithm parameter is a single value, the number of bits in the
         # public modulus.
         # OID = 1.2.5.8.1.1
         const_set :RSA_oid, ObjectIdentifier.new_internal(RSA_data)
-        # 
         # Algorithm ID for RSA keys used with RSA encryption, as defined
         # in PKCS #1.  There are no parameters associated with this algorithm.
         # OID = 1.2.840.113549.1.1.1
         const_set :RSAEncryption_oid, ObjectIdentifier.new_internal(RSAEncryption_data)
-        # 
         # Identifies a signing algorithm where an MD2 digest is encrypted
         # using an RSA private key; defined in PKCS #1.  Use of this
         # signing algorithm is discouraged due to MD2 vulnerabilities.
         # OID = 1.2.840.113549.1.1.2
         const_set :Md2WithRSAEncryption_oid, ObjectIdentifier.new_internal(Md2WithRSAEncryption_data)
-        # 
         # Identifies a signing algorithm where an MD5 digest is
         # encrypted using an RSA private key; defined in PKCS #1.
         # OID = 1.2.840.113549.1.1.4
         const_set :Md5WithRSAEncryption_oid, ObjectIdentifier.new_internal(Md5WithRSAEncryption_data)
-        # 
         # Identifies a signing algorithm where a SHA1 digest is
         # encrypted using an RSA private key; defined by RSA DSI.
         # OID = 1.2.840.113549.1.1.5
         const_set :Sha1WithRSAEncryption_oid, ObjectIdentifier.new_internal(Sha1WithRSAEncryption_data)
-        # 
         # Identifies a signing algorithm where a SHA1 digest is
         # encrypted using an RSA private key; defined in NIST OIW.
         # OID = 1.3.14.3.2.29
         const_set :Sha1WithRSAEncryption_OIW_oid, ObjectIdentifier.new_internal(Sha1WithRSAEncryption_OIW_data)
-        # 
         # Identifies a signing algorithm where a SHA256 digest is
         # encrypted using an RSA private key; defined by PKCS #1.
         # OID = 1.2.840.113549.1.1.11
         const_set :Sha256WithRSAEncryption_oid, ObjectIdentifier.new_internal(Sha256WithRSAEncryption_data)
-        # 
         # Identifies a signing algorithm where a SHA384 digest is
         # encrypted using an RSA private key; defined by PKCS #1.
         # OID = 1.2.840.113549.1.1.12
         const_set :Sha384WithRSAEncryption_oid, ObjectIdentifier.new_internal(Sha384WithRSAEncryption_data)
-        # 
         # Identifies a signing algorithm where a SHA512 digest is
         # encrypted using an RSA private key; defined by PKCS #1.
         # OID = 1.2.840.113549.1.1.13
         const_set :Sha512WithRSAEncryption_oid, ObjectIdentifier.new_internal(Sha512WithRSAEncryption_data)
-        # 
         # Identifies the FIPS 186 "Digital Signature Standard" (DSS), where a
         # SHA digest is signed using the Digital Signing Algorithm (DSA).
         # This should not be used.
         # OID = 1.3.14.3.2.13
         const_set :ShaWithDSA_OIW_oid, ObjectIdentifier.new_internal(ShaWithDSA_OIW_data)
-        # 
         # Identifies the FIPS 186 "Digital Signature Standard" (DSS), where a
         # SHA1 digest is signed using the Digital Signing Algorithm (DSA).
         # OID = 1.3.14.3.2.27
         const_set :Sha1WithDSA_OIW_oid, ObjectIdentifier.new_internal(Sha1WithDSA_OIW_data)
-        # 
         # Identifies the FIPS 186 "Digital Signature Standard" (DSS), where a
         # SHA1 digest is signed using the Digital Signing Algorithm (DSA).
         # OID = 1.2.840.10040.4.3

@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 1995 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -31,7 +30,6 @@ module Sun::Misc
     }
   end
   
-  # 
   # This interface is used by the Timer class.  A class that uses
   # Timer objects must implement this interface.
   # 
@@ -41,7 +39,6 @@ module Sun::Misc
     include_class_members TimeableImports
     
     typesig { [Timer] }
-    # 
     # This method is executed every time a timer owned by this
     # object ticks.  An object can own more than one timer but
     # all timers call this method when they tick;

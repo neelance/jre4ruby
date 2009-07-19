@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 1996-1999 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -31,7 +30,6 @@ module Java::Net
     }
   end
   
-  # 
   # A simple interface which provides a mechanism to map
   # between a file name and a MIME type string.
   # 
@@ -41,7 +39,6 @@ module Java::Net
     include_class_members FileNameMapImports
     
     typesig { [String] }
-    # 
     # Gets the MIME type for the specified file name.
     # @param fileName the specified file name
     # @return a <code>String</code> indicating the MIME

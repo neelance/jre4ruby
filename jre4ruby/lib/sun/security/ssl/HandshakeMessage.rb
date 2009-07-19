@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 1996-2007 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -49,7 +48,6 @@ module Sun::Security::Ssl
     }
   end
   
-  # 
   # END of nested classes
   # 
   # 
@@ -116,7 +114,6 @@ module Sun::Security::Ssl
       const_attr_reader  :Debug
       
       typesig { [BigInteger] }
-      # 
       # Utility method to convert a BigInteger to a byte array in unsigned
       # format as needed in the handshake messages. BigInteger uses
       # 2's complement format, i.e. it prepends an extra zero if the MSB
@@ -132,7 +129,6 @@ module Sun::Security::Ssl
         return b
       end
       
-      # 
       # SSL 3.0 MAC padding constants.
       # Also used by CertificateVerify and Finished during the handshake.
       const_set_lazy(:MD5_pad1) { gen_pad(0x36, 48) }
@@ -156,7 +152,6 @@ module Sun::Security::Ssl
     }
     
     typesig { [HandshakeOutStream] }
-    # 
     # Write a handshake message on the (handshake) output stream.
     # This is just a four byte header followed by the data.
     # 
@@ -173,7 +168,6 @@ module Sun::Security::Ssl
     end
     
     typesig { [] }
-    # 
     # Subclasses implement these methods so those kinds of
     # messages can be emitted.  Base class delegates to subclass.
     def message_type
@@ -191,14 +185,12 @@ module Sun::Security::Ssl
     end
     
     typesig { [PrintStream] }
-    # 
     # Write a descriptive message on the output stream; for debugging.
     def print(p)
       raise NotImplementedError
     end
     
     class_module.module_eval {
-      # 
       # NOTE:  the rest of these classes are nested within this one, and are
       # imported by other classes in this package.  There are a few other
       # handshake message classes, not neatly nested here because of current
@@ -248,7 +240,6 @@ module Sun::Security::Ssl
         alias_method :initialize__hello_request, :initialize
       end }
       
-      # 
       # ClientHello ... CLIENT --> SERVER
       # 
       # Client initiates handshake by telling server what it wants, and what it
@@ -341,7 +332,6 @@ module Sun::Security::Ssl
         
         typesig { [] }
         def message_length
-          # 
           # Add fixed size parts of each field...
           # version + random + session + cipher + compress
           # 
@@ -399,7 +389,6 @@ module Sun::Security::Ssl
         alias_method :initialize__client_hello, :initialize
       end }
       
-      # 
       # ServerHello ... SERVER --> CLIENT
       # 
       # Server chooses protocol options from among those it supports and the
@@ -533,7 +522,6 @@ module Sun::Security::Ssl
         alias_method :initialize__server_hello, :initialize
       end }
       
-      # 
       # CertificateMsg ... send by both CLIENT and SERVER
       # 
       # Each end of a connection may need to pass its certificate chain to
@@ -653,7 +641,6 @@ module Sun::Security::Ssl
         alias_method :initialize__certificate_msg, :initialize
       end }
       
-      # 
       # ServerKeyExchange ... SERVER --> CLIENT
       # 
       # The cipher suite selected, when combined with the certificate exchanged,
@@ -705,7 +692,6 @@ module Sun::Security::Ssl
         alias_method :initialize__server_key_exchange, :initialize
       end }
       
-      # 
       # Using RSA for Key Exchange:  exchange a session key that's not as big
       # as the signing-only key.  Used for export applications, since exported
       # RSA encryption keys can't be bigger than 512 bytes.
@@ -742,7 +728,6 @@ module Sun::Security::Ssl
         undef_method :signature_bytes=
         
         typesig { [Array.typed(::Java::Byte), Array.typed(::Java::Byte)] }
-        # 
         # Hash the nonces and the ephemeral RSA public key.
         def update_signature(clnt_nonce, svr_nonce)
           tmp = 0
@@ -759,7 +744,6 @@ module Sun::Security::Ssl
         end
         
         typesig { [PublicKey, PrivateKey, RandomCookie, RandomCookie, SecureRandom] }
-        # 
         # Construct an RSA server key exchange message, using data
         # known _only_ to the server.
         # 
@@ -784,7 +768,6 @@ module Sun::Security::Ssl
         end
         
         typesig { [HandshakeInStream] }
-        # 
         # Parse an RSA server key exchange message, using data known
         # to the client (and, in some situations, eavesdroppers).
         def initialize(input)
@@ -800,7 +783,6 @@ module Sun::Security::Ssl
         end
         
         typesig { [] }
-        # 
         # Get the ephemeral RSA public key that will be used in this
         # SSL connection.
         def get_public_key
@@ -815,7 +797,6 @@ module Sun::Security::Ssl
         end
         
         typesig { [PublicKey, RandomCookie, RandomCookie] }
-        # 
         # Verify the signed temporary key using the hashes computed
         # from it and the two nonces.  This is called by clients
         # with "exportable" RSA flavors.
@@ -850,7 +831,6 @@ module Sun::Security::Ssl
         alias_method :initialize__rsa_server_key_exchange, :initialize
       end }
       
-      # 
       # Using Diffie-Hellman algorithm for key exchange.  All we really need to
       # do is securely get Diffie-Hellman keys (using the same P, G parameters)
       # to our peer, then we automatically have a shared secret without need
@@ -918,7 +898,6 @@ module Sun::Security::Ssl
         end
         
         typesig { [Signature, Array.typed(::Java::Byte), Array.typed(::Java::Byte)] }
-        # 
         # Update sig with nonces and Diffie-Hellman public key.
         def update_signature(sig, clnt_nonce, svr_nonce)
           tmp = 0
@@ -939,7 +918,6 @@ module Sun::Security::Ssl
         end
         
         typesig { [DHCrypt] }
-        # 
         # Construct from initialized DH key object, for DH_anon
         # key exchange.
         def initialize(obj)
@@ -953,7 +931,6 @@ module Sun::Security::Ssl
         end
         
         typesig { [DHCrypt, PrivateKey, Array.typed(::Java::Byte), Array.typed(::Java::Byte), SecureRandom] }
-        # 
         # Construct from initialized DH key object and the key associated
         # with the cert chain which was sent ... for DHE_DSS and DHE_RSA
         # key exchange.  (Constructor called by server.)
@@ -983,7 +960,6 @@ module Sun::Security::Ssl
         end
         
         typesig { [HandshakeInStream] }
-        # 
         # Construct a DH_ServerKeyExchange message from an input
         # stream, as if sent from server to client for use with
         # DH_anon key exchange
@@ -1000,7 +976,6 @@ module Sun::Security::Ssl
         end
         
         typesig { [HandshakeInStream, PublicKey, Array.typed(::Java::Byte), Array.typed(::Java::Byte), ::Java::Int] }
-        # 
         # Construct a DH_ServerKeyExchange message from an input stream
         # and a certificate, as if sent from server to client for use with
         # DHE_DSS or DHE_RSA key exchange.  (Called by client.)
@@ -1089,7 +1064,6 @@ module Sun::Security::Ssl
         alias_method :initialize__dh_server_key_exchange, :initialize
       end }
       
-      # 
       # ECDH server key exchange message. Sent by the server for ECDHE and ECDH_anon
       # ciphersuites to communicate its ephemeral public key (including the
       # EC domain parameters).
@@ -1161,7 +1135,6 @@ module Sun::Security::Ssl
         end
         
         typesig { [HandshakeInStream, PublicKey, Array.typed(::Java::Byte), Array.typed(::Java::Byte)] }
-        # 
         # Parse an ECDH server key exchange message.
         def initialize(input, signing_key, clnt_nonce, svr_nonce)
           @curve_id = 0
@@ -1208,7 +1181,6 @@ module Sun::Security::Ssl
         end
         
         typesig { [] }
-        # 
         # Get the ephemeral EC public key encapsulated in this message.
         def get_public_key
           return @public_key
@@ -1271,7 +1243,6 @@ module Sun::Security::Ssl
       const_set_lazy(:DistinguishedName) { Class.new do
         include_class_members HandshakeMessage
         
-        # 
         # DER encoded distinguished name.
         # TLS requires that its not longer than 65535 bytes.
         attr_accessor :name
@@ -1321,7 +1292,6 @@ module Sun::Security::Ssl
         alias_method :initialize__distinguished_name, :initialize
       end }
       
-      # 
       # CertificateRequest ... SERVER --> CLIENT
       # 
       # Authenticated servers may ask clients to authenticate themselves
@@ -1515,7 +1485,6 @@ module Sun::Security::Ssl
         alias_method :initialize__certificate_request, :initialize
       end }
       
-      # 
       # ServerHelloDone ... SERVER --> CLIENT
       # 
       # When server's done sending its messages in response to the client's
@@ -1560,7 +1529,6 @@ module Sun::Security::Ssl
         alias_method :initialize__server_hello_done, :initialize
       end }
       
-      # 
       # CertificateVerify ... CLIENT --> SERVER
       # 
       # Sent after client sends signature-capable certificates (e.g. not
@@ -1580,7 +1548,6 @@ module Sun::Security::Ssl
         undef_method :signature=
         
         typesig { [ProtocolVersion, HandshakeHash, PrivateKey, SecretKey, SecureRandom] }
-        # 
         # Create an RSA or DSA signed certificate verify message.
         def initialize(protocol_version, handshake_hash, private_key, master_secret, sr)
           @signature = nil
@@ -1593,7 +1560,6 @@ module Sun::Security::Ssl
         end
         
         typesig { [HandshakeInStream] }
-        # 
         # Unmarshal the signed data from the input stream.
         def initialize(input)
           @signature = nil
@@ -1602,7 +1568,6 @@ module Sun::Security::Ssl
         end
         
         typesig { [ProtocolVersion, HandshakeHash, PublicKey, SecretKey] }
-        # 
         # Verify a certificate verify message. Return the result of verification,
         # if there is a problem throw a GeneralSecurityException.
         def verify(protocol_version, handshake_hash, public_key, master_secret)
@@ -1615,7 +1580,6 @@ module Sun::Security::Ssl
         
         class_module.module_eval {
           typesig { [ProtocolVersion, String] }
-          # 
           # Get the Signature object appropriate for verification using the
           # given signature algorithm and protocol version.
           def get_signature(protocol_version, algorithm)
@@ -1635,7 +1599,6 @@ module Sun::Security::Ssl
           end
           
           typesig { [Signature, ProtocolVersion, HandshakeHash, String, SecretKey] }
-          # 
           # Update the Signature with the data appropriate for the given
           # signature algorithm and protocol version so that the object is
           # ready for signing or verifying.
@@ -1666,7 +1629,6 @@ module Sun::Security::Ssl
           end
           
           typesig { [MessageDigest, Array.typed(::Java::Byte), Array.typed(::Java::Byte), SecretKey] }
-          # 
           # Update the MessageDigest for SSLv3 certificate verify or finished
           # message calculation. The digest must already have been updated with
           # all preceding handshake messages.
@@ -1762,7 +1724,7 @@ module Sun::Security::Ssl
               update_ = r
               update_.invoke(spi, key)
             rescue Exception => e
-              raise RuntimeException.new("Could not obtain encoded key and MessageDigest cannot digest key", e_)
+              raise RuntimeException.new("Could not obtain encoded key and MessageDigest cannot digest key", e)
             end
           end
         }
@@ -1786,7 +1748,6 @@ module Sun::Security::Ssl
         alias_method :initialize__certificate_verify, :initialize
       end }
       
-      # 
       # FINISHED ... sent by both CLIENT and SERVER
       # 
       # This is the FINISHED message as defined in the SSL and TLS protocols.
@@ -1825,7 +1786,6 @@ module Sun::Security::Ssl
           const_attr_reader  :SSL_SERVER
         }
         
-        # 
         # Contents of the finished message ("checksum"). For TLS, it
         # is 12 bytes long, for SSLv3 36 bytes.
         attr_accessor :verify_data
@@ -1835,7 +1795,6 @@ module Sun::Security::Ssl
         undef_method :verify_data=
         
         typesig { [ProtocolVersion, HandshakeHash, ::Java::Int, SecretKey] }
-        # 
         # Create a finished message to send to the remote peer.
         def initialize(protocol_version, handshake_hash, sender, master)
           @verify_data = nil
@@ -1844,7 +1803,6 @@ module Sun::Security::Ssl
         end
         
         typesig { [ProtocolVersion, HandshakeInStream] }
-        # 
         # Constructor that reads FINISHED message from stream.
         def initialize(protocol_version, input)
           @verify_data = nil
@@ -1855,7 +1813,6 @@ module Sun::Security::Ssl
         end
         
         typesig { [ProtocolVersion, HandshakeHash, ::Java::Int, SecretKey] }
-        # 
         # Verify that the hashes here are what would have been produced
         # according to a given set of inputs.  This is used to ensure that
         # both client and server are fully in sync, and that the handshake
@@ -1867,7 +1824,6 @@ module Sun::Security::Ssl
         
         class_module.module_eval {
           typesig { [ProtocolVersion, HandshakeHash, ::Java::Int, SecretKey] }
-          # 
           # Perform the actual finished message calculation.
           def get_finished(protocol_version, handshake_hash, sender, master_key)
             ssl_label = nil
@@ -1907,20 +1863,19 @@ module Sun::Security::Ssl
               # SSLv3
               update_digest(md5clone, ssl_label, MD5_pad1, MD5_pad2, master_key)
               update_digest(sha_clone, ssl_label, SHA_pad1, SHA_pad2, master_key)
-              finished_ = Array.typed(::Java::Byte).new(36) { 0 }
+              finished = Array.typed(::Java::Byte).new(36) { 0 }
               begin
-                md5clone.digest(finished_, 0, 16)
-                sha_clone.digest(finished_, 16, 20)
+                md5clone.digest(finished, 0, 16)
+                sha_clone.digest(finished, 16, 20)
               rescue DigestException => e
                 # cannot occur
-                raise RuntimeException.new("Digest failed", e_)
+                raise RuntimeException.new("Digest failed", e)
               end
-              return finished_
+              return finished
             end
           end
           
           typesig { [MessageDigest, Array.typed(::Java::Byte), Array.typed(::Java::Byte), Array.typed(::Java::Byte), SecretKey] }
-          # 
           # Update the MessageDigest for SSLv3 finished message calculation.
           # The digest must already have been updated with all preceding handshake
           # messages. This operation is almost identical to the certificate verify

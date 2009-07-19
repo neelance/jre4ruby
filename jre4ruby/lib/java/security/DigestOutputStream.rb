@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 1996-1999 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -37,7 +36,6 @@ module Java::Security
     }
   end
   
-  # 
   # A transparent stream that updates the associated message digest using
   # the bits going through the stream.
   # 
@@ -65,7 +63,6 @@ module Java::Security
     alias_method :attr_on=, :on=
     undef_method :on=
     
-    # 
     # The message digest associated with this stream.
     attr_accessor :digest
     alias_method :attr_digest, :digest
@@ -74,7 +71,6 @@ module Java::Security
     undef_method :digest=
     
     typesig { [OutputStream, MessageDigest] }
-    # 
     # Creates a digest output stream, using the specified output stream
     # and message digest.
     # 
@@ -90,7 +86,6 @@ module Java::Security
     end
     
     typesig { [] }
-    # 
     # Returns the message digest associated with this stream.
     # 
     # @return the message digest associated with this stream.
@@ -100,7 +95,6 @@ module Java::Security
     end
     
     typesig { [MessageDigest] }
-    # 
     # Associates the specified message digest with this stream.
     # 
     # @param digest the message digest to be associated with this stream.
@@ -110,7 +104,6 @@ module Java::Security
     end
     
     typesig { [::Java::Int] }
-    # 
     # Updates the message digest (if the digest function is on) using
     # the specified byte, and in any case writes the byte
     # to the output stream. That is, if the digest function is on
@@ -134,7 +127,6 @@ module Java::Security
     end
     
     typesig { [Array.typed(::Java::Byte), ::Java::Int, ::Java::Int] }
-    # 
     # Updates the message digest (if the digest function is on) using
     # the specified subarray, and in any case writes the subarray to
     # the output stream. That is, if the digest function is on (see
@@ -164,7 +156,6 @@ module Java::Security
     end
     
     typesig { [::Java::Boolean] }
-    # 
     # Turns the digest function on or off. The default is on.  When
     # it is on, a call to one of the <code>write</code> methods results in an
     # update on the message digest.  But when it is off, the message
@@ -177,7 +168,6 @@ module Java::Security
     end
     
     typesig { [] }
-    # 
     # Prints a string representation of this digest output stream and
     # its associated message digest object.
     def to_s

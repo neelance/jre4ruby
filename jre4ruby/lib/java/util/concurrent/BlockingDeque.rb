@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
 # This code is free software; you can redistribute it and/or modify it
@@ -41,7 +40,6 @@ module Java::Util::Concurrent
     }
   end
   
-  # 
   # A {@link Deque} that additionally supports blocking operations that wait
   # for the deque to become non-empty when retrieving an element, and wait for
   # space to become available in the deque when storing an element.
@@ -207,7 +205,6 @@ module Java::Util::Concurrent
     include Deque
     
     typesig { [Object] }
-    # 
     # We have "diamond" multiple interface inheritance here, and that
     # introduces ambiguities.  Methods might end up with different
     # specs depending on the branch chosen by javadoc.  Thus a lot of
@@ -230,7 +227,6 @@ module Java::Util::Concurrent
     end
     
     typesig { [Object] }
-    # 
     # Inserts the specified element at the end of this deque if it is
     # possible to do so immediately without violating capacity restrictions,
     # throwing an <tt>IllegalStateException</tt> if no space is currently
@@ -247,7 +243,6 @@ module Java::Util::Concurrent
     end
     
     typesig { [Object] }
-    # 
     # Inserts the specified element at the front of this deque if it is
     # possible to do so immediately without violating capacity restrictions,
     # returning <tt>true</tt> upon success and <tt>false</tt> if no space is
@@ -265,7 +260,6 @@ module Java::Util::Concurrent
     end
     
     typesig { [Object] }
-    # 
     # Inserts the specified element at the end of this deque if it is
     # possible to do so immediately without violating capacity restrictions,
     # returning <tt>true</tt> upon success and <tt>false</tt> if no space is
@@ -283,7 +277,6 @@ module Java::Util::Concurrent
     end
     
     typesig { [Object] }
-    # 
     # Inserts the specified element at the front of this deque,
     # waiting if necessary for space to become available.
     # 
@@ -299,7 +292,6 @@ module Java::Util::Concurrent
     end
     
     typesig { [Object] }
-    # 
     # Inserts the specified element at the end of this deque,
     # waiting if necessary for space to become available.
     # 
@@ -315,7 +307,6 @@ module Java::Util::Concurrent
     end
     
     typesig { [Object, ::Java::Long, TimeUnit] }
-    # 
     # Inserts the specified element at the front of this deque,
     # waiting up to the specified wait time if necessary for space to
     # become available.
@@ -338,7 +329,6 @@ module Java::Util::Concurrent
     end
     
     typesig { [Object, ::Java::Long, TimeUnit] }
-    # 
     # Inserts the specified element at the end of this deque,
     # waiting up to the specified wait time if necessary for space to
     # become available.
@@ -361,7 +351,6 @@ module Java::Util::Concurrent
     end
     
     typesig { [] }
-    # 
     # Retrieves and removes the first element of this deque, waiting
     # if necessary until an element becomes available.
     # 
@@ -372,7 +361,6 @@ module Java::Util::Concurrent
     end
     
     typesig { [] }
-    # 
     # Retrieves and removes the last element of this deque, waiting
     # if necessary until an element becomes available.
     # 
@@ -383,7 +371,6 @@ module Java::Util::Concurrent
     end
     
     typesig { [::Java::Long, TimeUnit] }
-    # 
     # Retrieves and removes the first element of this deque, waiting
     # up to the specified wait time if necessary for an element to
     # become available.
@@ -400,7 +387,6 @@ module Java::Util::Concurrent
     end
     
     typesig { [::Java::Long, TimeUnit] }
-    # 
     # Retrieves and removes the last element of this deque, waiting
     # up to the specified wait time if necessary for an element to
     # become available.
@@ -417,7 +403,6 @@ module Java::Util::Concurrent
     end
     
     typesig { [Object] }
-    # 
     # Removes the first occurrence of the specified element from this deque.
     # If the deque does not contain the element, it is unchanged.
     # More formally, removes the first element <tt>e</tt> such that
@@ -435,7 +420,6 @@ module Java::Util::Concurrent
     end
     
     typesig { [Object] }
-    # 
     # Removes the last occurrence of the specified element from this deque.
     # If the deque does not contain the element, it is unchanged.
     # More formally, removes the last element <tt>e</tt> such that
@@ -477,7 +461,6 @@ module Java::Util::Concurrent
     end
     
     typesig { [Object] }
-    # 
     # Inserts the specified element into the queue represented by this deque
     # (in other words, at the tail of this deque) if it is possible to do so
     # immediately without violating capacity restrictions, returning
@@ -499,7 +482,6 @@ module Java::Util::Concurrent
     end
     
     typesig { [Object] }
-    # 
     # Inserts the specified element into the queue represented by this deque
     # (in other words, at the tail of this deque), waiting if necessary for
     # space to become available.
@@ -518,7 +500,6 @@ module Java::Util::Concurrent
     end
     
     typesig { [Object, ::Java::Long, TimeUnit] }
-    # 
     # Inserts the specified element into the queue represented by this deque
     # (in other words, at the tail of this deque), waiting up to the
     # specified wait time if necessary for space to become available.
@@ -540,7 +521,6 @@ module Java::Util::Concurrent
     end
     
     typesig { [] }
-    # 
     # Retrieves and removes the head of the queue represented by this deque
     # (in other words, the first element of this deque).
     # This method differs from {@link #poll poll} only in that it
@@ -555,7 +535,6 @@ module Java::Util::Concurrent
     end
     
     typesig { [] }
-    # 
     # Retrieves and removes the head of the queue represented by this deque
     # (in other words, the first element of this deque), or returns
     # <tt>null</tt> if this deque is empty.
@@ -568,7 +547,6 @@ module Java::Util::Concurrent
     end
     
     typesig { [] }
-    # 
     # Retrieves and removes the head of the queue represented by this deque
     # (in other words, the first element of this deque), waiting if
     # necessary until an element becomes available.
@@ -582,7 +560,6 @@ module Java::Util::Concurrent
     end
     
     typesig { [::Java::Long, TimeUnit] }
-    # 
     # Retrieves and removes the head of the queue represented by this deque
     # (in other words, the first element of this deque), waiting up to the
     # specified wait time if necessary for an element to become available.
@@ -598,7 +575,6 @@ module Java::Util::Concurrent
     end
     
     typesig { [] }
-    # 
     # Retrieves, but does not remove, the head of the queue represented by
     # this deque (in other words, the first element of this deque).
     # This method differs from {@link #peek peek} only in that it throws an
@@ -613,7 +589,6 @@ module Java::Util::Concurrent
     end
     
     typesig { [] }
-    # 
     # Retrieves, but does not remove, the head of the queue represented by
     # this deque (in other words, the first element of this deque), or
     # returns <tt>null</tt> if this deque is empty.
@@ -626,7 +601,6 @@ module Java::Util::Concurrent
     end
     
     typesig { [Object] }
-    # 
     # Removes the first occurrence of the specified element from this deque.
     # If the deque does not contain the element, it is unchanged.
     # More formally, removes the first element <tt>e</tt> such that
@@ -647,7 +621,6 @@ module Java::Util::Concurrent
     end
     
     typesig { [Object] }
-    # 
     # Returns <tt>true</tt> if this deque contains the specified element.
     # More formally, returns <tt>true</tt> if and only if this deque contains
     # at least one element <tt>e</tt> such that <tt>o.equals(e)</tt>.
@@ -662,7 +635,6 @@ module Java::Util::Concurrent
     end
     
     typesig { [] }
-    # 
     # Returns the number of elements in this deque.
     # 
     # @return the number of elements in this deque
@@ -671,7 +643,6 @@ module Java::Util::Concurrent
     end
     
     typesig { [] }
-    # 
     # Returns an iterator over the elements in this deque in proper sequence.
     # The elements will be returned in order from first (head) to last (tail).
     # 

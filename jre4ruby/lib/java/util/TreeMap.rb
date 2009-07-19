@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 1997-2008 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -31,7 +30,6 @@ module Java::Util
     }
   end
   
-  # 
   # A Red-Black tree based {@link NavigableMap} implementation.
   # The map is sorted according to the {@linkplain Comparable natural
   # ordering} of its keys, or by a {@link Comparator} provided at map
@@ -112,7 +110,6 @@ module Java::Util
     include Cloneable
     include Java::Io::Serializable
     
-    # 
     # The comparator used to maintain order in this tree map, or
     # null if it uses the natural ordering of its keys.
     # 
@@ -129,7 +126,6 @@ module Java::Util
     alias_method :attr_root=, :root=
     undef_method :root=
     
-    # 
     # The number of entries in the tree
     attr_accessor :size
     alias_method :attr_size, :size
@@ -137,7 +133,6 @@ module Java::Util
     alias_method :attr_size=, :size=
     undef_method :size=
     
-    # 
     # The number of structural modifications to the tree.
     attr_accessor :mod_count
     alias_method :attr_mod_count, :mod_count
@@ -146,7 +141,6 @@ module Java::Util
     undef_method :mod_count=
     
     typesig { [] }
-    # 
     # Constructs a new, empty tree map, using the natural ordering of its
     # keys.  All keys inserted into the map must implement the {@link
     # Comparable} interface.  Furthermore, all such keys must be
@@ -176,7 +170,6 @@ module Java::Util
     end
     
     typesig { [Comparator] }
-    # 
     # Constructs a new, empty tree map, ordered according to the given
     # comparator.  All keys inserted into the map must be <i>mutually
     # comparable</i> by the given comparator: <tt>comparator.compare(k1,
@@ -208,7 +201,6 @@ module Java::Util
     end
     
     typesig { [Map] }
-    # 
     # Constructs a new tree map containing the same mappings as the given
     # map, ordered according to the <i>natural ordering</i> of its keys.
     # All keys inserted into the new map must implement the {@link
@@ -241,7 +233,6 @@ module Java::Util
     end
     
     typesig { [SortedMap] }
-    # 
     # Constructs a new tree map containing the same mappings and
     # using the same ordering as the specified sorted map.  This
     # method runs in linear time.
@@ -267,8 +258,8 @@ module Java::Util
       @comparator = m.comparator
       begin
         build_from_sorted(m.size, m.entry_set.iterator, nil, nil)
-      rescue Java::Io::IOException => cannotHappen
-      rescue ClassNotFoundException => cannotHappen
+      rescue Java::Io::IOException => cannot_happen
+      rescue ClassNotFoundException => cannot_happen
       end
     end
     
@@ -283,7 +274,6 @@ module Java::Util
     end
     
     typesig { [Object] }
-    # 
     # Returns <tt>true</tt> if this map contains a mapping for the specified
     # key.
     # 
@@ -300,7 +290,6 @@ module Java::Util
     end
     
     typesig { [Object] }
-    # 
     # Returns <tt>true</tt> if this map maps one or more keys to the
     # specified value.  More formally, returns <tt>true</tt> if and only if
     # this map contains at least one mapping to a value <tt>v</tt> such
@@ -324,7 +313,6 @@ module Java::Util
     end
     
     typesig { [Object] }
-    # 
     # Returns the value to which the specified key is mapped,
     # or {@code null} if this map contains no mapping for the key.
     # 
@@ -356,21 +344,18 @@ module Java::Util
     end
     
     typesig { [] }
-    # 
     # @throws NoSuchElementException {@inheritDoc}
     def first_key
       return key(get_first_entry)
     end
     
     typesig { [] }
-    # 
     # @throws NoSuchElementException {@inheritDoc}
     def last_key
       return key(get_last_entry)
     end
     
     typesig { [Map] }
-    # 
     # Copies all of the mappings from the specified map to this map.
     # These mappings replace any mappings that this map had for any
     # of the keys currently in the specified map.
@@ -389,8 +374,8 @@ module Java::Util
           (@mod_count += 1)
           begin
             build_from_sorted(map_size, map.entry_set.iterator, nil, nil)
-          rescue Java::Io::IOException => cannotHappen
-          rescue ClassNotFoundException => cannotHappen
+          rescue Java::Io::IOException => cannot_happen
+          rescue ClassNotFoundException => cannot_happen
           end
           return
         end
@@ -399,7 +384,6 @@ module Java::Util
     end
     
     typesig { [Object] }
-    # 
     # Returns this map's entry for the given key, or <tt>null</tt> if the map
     # does not contain an entry for the key.
     # 
@@ -436,7 +420,6 @@ module Java::Util
     end
     
     typesig { [Object] }
-    # 
     # Version of getEntry using comparator. Split off from getEntry
     # for performance. (This is not worth doing for most methods,
     # that are less dependent on comparator performance, but is
@@ -463,7 +446,6 @@ module Java::Util
     end
     
     typesig { [Object] }
-    # 
     # Gets the entry corresponding to the specified key; if no such entry
     # exists, returns the entry for the least key greater than the specified
     # key; if no such entry exists (i.e., the greatest key in the Tree is less
@@ -500,7 +482,6 @@ module Java::Util
     end
     
     typesig { [Object] }
-    # 
     # Gets the entry corresponding to the specified key; if no such entry
     # exists, returns the entry for the greatest key less than the specified
     # key; if no such entry exists, returns <tt>null</tt>.
@@ -536,7 +517,6 @@ module Java::Util
     end
     
     typesig { [Object] }
-    # 
     # Gets the entry for the least key greater than the specified
     # key; if no such entry exists, returns the entry for the least
     # key greater than the specified key; if no such entry exists
@@ -569,7 +549,6 @@ module Java::Util
     end
     
     typesig { [Object] }
-    # 
     # Returns the entry for the greatest key less than the specified key; if
     # no such entry exists (i.e., the least key in the Tree is greater than
     # the specified key), returns <tt>null</tt>.
@@ -601,7 +580,6 @@ module Java::Util
     end
     
     typesig { [Object, Object] }
-    # 
     # Associates the specified value with the specified key in this map.
     # If the map previously contained a mapping for the key, the old
     # value is replaced.
@@ -681,7 +659,6 @@ module Java::Util
     end
     
     typesig { [Object] }
-    # 
     # Removes the mapping for this key from this TreeMap if present.
     # 
     # @param  key key for which mapping should be removed
@@ -705,7 +682,6 @@ module Java::Util
     end
     
     typesig { [] }
-    # 
     # Removes all of the mappings from this map.
     # The map will be empty after this call returns.
     def clear
@@ -715,7 +691,6 @@ module Java::Util
     end
     
     typesig { [] }
-    # 
     # Returns a shallow copy of this <tt>TreeMap</tt> instance. (The keys and
     # values themselves are not cloned.)
     # 
@@ -737,8 +712,8 @@ module Java::Util
       # Initialize clone with our mappings
       begin
         clone.build_from_sorted(@size, entry_set.iterator, nil, nil)
-      rescue Java::Io::IOException => cannotHappen
-      rescue ClassNotFoundException => cannotHappen
+      rescue Java::Io::IOException => cannot_happen
+      rescue ClassNotFoundException => cannot_happen
       end
       return clone
     end
@@ -752,14 +727,12 @@ module Java::Util
     end
     
     typesig { [] }
-    # 
     # @since 1.6
     def last_entry
       return export_entry(get_last_entry)
     end
     
     typesig { [] }
-    # 
     # @since 1.6
     def poll_first_entry
       p = get_first_entry
@@ -771,7 +744,6 @@ module Java::Util
     end
     
     typesig { [] }
-    # 
     # @since 1.6
     def poll_last_entry
       p = get_last_entry
@@ -783,7 +755,6 @@ module Java::Util
     end
     
     typesig { [Object] }
-    # 
     # @throws ClassCastException {@inheritDoc}
     # @throws NullPointerException if the specified key is null
     # and this map uses natural ordering, or its comparator
@@ -794,7 +765,6 @@ module Java::Util
     end
     
     typesig { [Object] }
-    # 
     # @throws ClassCastException {@inheritDoc}
     # @throws NullPointerException if the specified key is null
     # and this map uses natural ordering, or its comparator
@@ -805,7 +775,6 @@ module Java::Util
     end
     
     typesig { [Object] }
-    # 
     # @throws ClassCastException {@inheritDoc}
     # @throws NullPointerException if the specified key is null
     # and this map uses natural ordering, or its comparator
@@ -816,7 +785,6 @@ module Java::Util
     end
     
     typesig { [Object] }
-    # 
     # @throws ClassCastException {@inheritDoc}
     # @throws NullPointerException if the specified key is null
     # and this map uses natural ordering, or its comparator
@@ -827,7 +795,6 @@ module Java::Util
     end
     
     typesig { [Object] }
-    # 
     # @throws ClassCastException {@inheritDoc}
     # @throws NullPointerException if the specified key is null
     # and this map uses natural ordering, or its comparator
@@ -838,7 +805,6 @@ module Java::Util
     end
     
     typesig { [Object] }
-    # 
     # @throws ClassCastException {@inheritDoc}
     # @throws NullPointerException if the specified key is null
     # and this map uses natural ordering, or its comparator
@@ -849,7 +815,6 @@ module Java::Util
     end
     
     typesig { [Object] }
-    # 
     # @throws ClassCastException {@inheritDoc}
     # @throws NullPointerException if the specified key is null
     # and this map uses natural ordering, or its comparator
@@ -860,7 +825,6 @@ module Java::Util
     end
     
     typesig { [Object] }
-    # 
     # @throws ClassCastException {@inheritDoc}
     # @throws NullPointerException if the specified key is null
     # and this map uses natural ordering, or its comparator
@@ -894,7 +858,6 @@ module Java::Util
     undef_method :descending_map=
     
     typesig { [] }
-    # 
     # Returns a {@link Set} view of the keys contained in this map.
     # The set's iterator returns the keys in ascending order.
     # The set is backed by the map, so changes to the map are
@@ -912,7 +875,6 @@ module Java::Util
     end
     
     typesig { [] }
-    # 
     # @since 1.6
     def navigable_key_set
       nks = @navigable_key_set
@@ -920,14 +882,12 @@ module Java::Util
     end
     
     typesig { [] }
-    # 
     # @since 1.6
     def descending_key_set
       return descending_map.navigable_key_set
     end
     
     typesig { [] }
-    # 
     # Returns a {@link Collection} view of the values contained in this map.
     # The collection's iterator returns the values in ascending order
     # of the corresponding keys.
@@ -947,7 +907,6 @@ module Java::Util
     end
     
     typesig { [] }
-    # 
     # Returns a {@link Set} view of the mappings contained in this map.
     # The set's iterator returns the entries in ascending key order.
     # The set is backed by the map, so changes to the map are
@@ -967,7 +926,6 @@ module Java::Util
     end
     
     typesig { [] }
-    # 
     # @since 1.6
     def descending_map
       km = @descending_map
@@ -975,7 +933,6 @@ module Java::Util
     end
     
     typesig { [Object, ::Java::Boolean, Object, ::Java::Boolean] }
-    # 
     # @throws ClassCastException       {@inheritDoc}
     # @throws NullPointerException if <tt>fromKey</tt> or <tt>toKey</tt> is
     # null and this map uses natural ordering, or its comparator
@@ -987,7 +944,6 @@ module Java::Util
     end
     
     typesig { [Object, ::Java::Boolean] }
-    # 
     # @throws ClassCastException       {@inheritDoc}
     # @throws NullPointerException if <tt>toKey</tt> is null
     # and this map uses natural ordering, or its comparator
@@ -999,7 +955,6 @@ module Java::Util
     end
     
     typesig { [Object, ::Java::Boolean] }
-    # 
     # @throws ClassCastException       {@inheritDoc}
     # @throws NullPointerException if <tt>fromKey</tt> is null
     # and this map uses natural ordering, or its comparator
@@ -1011,7 +966,6 @@ module Java::Util
     end
     
     typesig { [Object, Object] }
-    # 
     # @throws ClassCastException       {@inheritDoc}
     # @throws NullPointerException if <tt>fromKey</tt> or <tt>toKey</tt> is
     # null and this map uses natural ordering, or its comparator
@@ -1022,7 +976,6 @@ module Java::Util
     end
     
     typesig { [Object] }
-    # 
     # @throws ClassCastException       {@inheritDoc}
     # @throws NullPointerException if <tt>toKey</tt> is null
     # and this map uses natural ordering, or its comparator
@@ -1033,7 +986,6 @@ module Java::Util
     end
     
     typesig { [Object] }
-    # 
     # @throws ClassCastException       {@inheritDoc}
     # @throws NullPointerException if <tt>fromKey</tt> is null
     # and this map uses natural ordering, or its comparator
@@ -1147,7 +1099,6 @@ module Java::Util
     }
     
     typesig { [] }
-    # 
     # Unlike Values and EntrySet, the KeySet class is static,
     # delegating to a NavigableMap to allow use by SubMaps, which
     # outweighs the ugliness of needing type-tests for the following
@@ -1311,7 +1262,6 @@ module Java::Util
         alias_method :initialize__key_set, :initialize
       end }
       
-      # 
       # Base class for TreeMap Iterators
       const_set_lazy(:PrivateEntryIterator) { Class.new do
         extend LocalClass
@@ -1483,7 +1433,6 @@ module Java::Util
     
     class_module.module_eval {
       typesig { [Object, Object] }
-      # 
       # Test two values for equality.  Differs from o1.equals(o2) only in
       # that it copes with <tt>null</tt> o1 properly.
       def val_equals(o1, o2)
@@ -1491,21 +1440,18 @@ module Java::Util
       end
       
       typesig { [TreeMap::Entry] }
-      # 
       # Return SimpleImmutableEntry for entry, or null if null
       def export_entry(e)
         return (e).nil? ? nil : AbstractMap::SimpleImmutableEntry.new(e)
       end
       
       typesig { [TreeMap::Entry] }
-      # 
       # Return key for entry, or null if null
       def key_or_null(e)
         return (e).nil? ? nil : e.attr_key
       end
       
       typesig { [Entry] }
-      # 
       # Returns the key corresponding to the specified Entry.
       # @throws NoSuchElementException if the Entry is null
       def key(e)
@@ -1522,14 +1468,12 @@ module Java::Util
       const_set_lazy(:UNBOUNDED) { Object.new }
       const_attr_reader  :UNBOUNDED
       
-      # 
       # @serial include
       const_set_lazy(:NavigableSubMap) { Class.new(AbstractMap) do
         include_class_members TreeMap
         include NavigableMap
         include Java::Io::Serializable
         
-        # 
         # The backing map.
         attr_accessor :m
         alias_method :attr_m, :m
@@ -1537,7 +1481,6 @@ module Java::Util
         alias_method :attr_m=, :m=
         undef_method :m=
         
-        # 
         # Endpoints are represented as triples (fromStart, lo,
         # loInclusive) and (toEnd, hi, hiInclusive). If fromStart is
         # true, then the low (absolute) bound is the start of the
@@ -1657,7 +1600,6 @@ module Java::Util
         end
         
         typesig { [] }
-        # 
         # Absolute versions of relation operations.
         # Subclasses map to these using like-named "sub"
         # versions that invert senses for descending maps
@@ -2013,7 +1955,6 @@ module Java::Util
             alias_method :initialize__entry_set_view, :initialize
           end }
           
-          # 
           # Iterators for SubMaps
           const_set_lazy(:SubMapIterator) { Class.new do
             extend LocalClass
@@ -2220,7 +2161,6 @@ module Java::Util
         alias_method :initialize__navigable_sub_map, :initialize
       end }
       
-      # 
       # @serial include
       const_set_lazy(:AscendingSubMap) { Class.new(NavigableSubMap) do
         include_class_members TreeMap
@@ -2343,7 +2283,6 @@ module Java::Util
         alias_method :initialize__ascending_sub_map, :initialize
       end }
       
-      # 
       # @serial include
       const_set_lazy(:DescendingSubMap) { Class.new(NavigableSubMap) do
         include_class_members TreeMap
@@ -2474,7 +2413,6 @@ module Java::Util
         alias_method :initialize__descending_sub_map, :initialize
       end }
       
-      # 
       # This class exists solely for the sake of serialization
       # compatibility with previous releases of TreeMap that did not
       # support NavigableMap.  It translates an old-version SubMap into
@@ -2579,7 +2517,6 @@ module Java::Util
       const_set_lazy(:BLACK) { true }
       const_attr_reader  :BLACK
       
-      # 
       # Node in the Tree.  Doubles as a means to pass key-value pairs back to
       # user (see Map.Entry).
       const_set_lazy(:Entry) { Class.new do
@@ -2623,7 +2560,6 @@ module Java::Util
         undef_method :color=
         
         typesig { [Object, Object, Entry] }
-        # 
         # Make a new cell with given key, value, and parent, and with
         # <tt>null</tt> child links, and BLACK color.
         def initialize(key, value, parent)
@@ -2639,7 +2575,6 @@ module Java::Util
         end
         
         typesig { [] }
-        # 
         # Returns the key.
         # 
         # @return the key
@@ -2648,7 +2583,6 @@ module Java::Util
         end
         
         typesig { [] }
-        # 
         # Returns the value associated with the key.
         # 
         # @return the value associated with the key
@@ -2657,7 +2591,6 @@ module Java::Util
         end
         
         typesig { [Object] }
-        # 
         # Replaces the value currently associated with the key with the given
         # value.
         # 
@@ -2696,7 +2629,6 @@ module Java::Util
     }
     
     typesig { [] }
-    # 
     # Returns the first Entry in the TreeMap (according to the TreeMap's
     # key-sort function).  Returns null if the TreeMap is empty.
     def get_first_entry
@@ -2710,7 +2642,6 @@ module Java::Util
     end
     
     typesig { [] }
-    # 
     # Returns the last Entry in the TreeMap (according to the TreeMap's
     # key-sort function).  Returns null if the TreeMap is empty.
     def get_last_entry
@@ -2725,7 +2656,6 @@ module Java::Util
     
     class_module.module_eval {
       typesig { [Entry] }
-      # 
       # Returns the successor of the specified Entry, or null if no such.
       def successor(t)
         if ((t).nil?)
@@ -2738,19 +2668,18 @@ module Java::Util
             end
             return p
           else
-            p_ = t.attr_parent
+            p = t.attr_parent
             ch = t
-            while (!(p_).nil? && (ch).equal?(p_.attr_right))
-              ch = p_
-              p_ = p_.attr_parent
+            while (!(p).nil? && (ch).equal?(p.attr_right))
+              ch = p
+              p = p.attr_parent
             end
-            return p_
+            return p
           end
         end
       end
       
       typesig { [Entry] }
-      # 
       # Returns the predecessor of the specified Entry, or null if no such.
       def predecessor(t)
         if ((t).nil?)
@@ -2763,19 +2692,18 @@ module Java::Util
             end
             return p
           else
-            p_ = t.attr_parent
+            p = t.attr_parent
             ch = t
-            while (!(p_).nil? && (ch).equal?(p_.attr_left))
-              ch = p_
-              p_ = p_.attr_parent
+            while (!(p).nil? && (ch).equal?(p.attr_left))
+              ch = p
+              p = p.attr_parent
             end
-            return p_
+            return p
           end
         end
       end
       
       typesig { [Entry] }
-      # 
       # Balancing operations.
       # 
       # Implementations of rebalancings during insertion and deletion are
@@ -2880,10 +2808,10 @@ module Java::Util
             rotate_right(parent_of(parent_of(x)))
           end
         else
-          y_ = left_of(parent_of(parent_of(x)))
-          if ((color_of(y_)).equal?(RED))
+          y = left_of(parent_of(parent_of(x)))
+          if ((color_of(y)).equal?(RED))
             set_color(parent_of(x), BLACK)
-            set_color(y_, BLACK)
+            set_color(y, BLACK)
             set_color(parent_of(parent_of(x)), RED)
             x = parent_of(parent_of(x))
           else
@@ -2901,7 +2829,6 @@ module Java::Util
     end
     
     typesig { [Entry] }
-    # 
     # Delete node p, and then rebalance the tree.
     def delete_entry(p)
       ((@mod_count += 1) - 1)
@@ -2987,26 +2914,26 @@ module Java::Util
           end
         else
           # symmetric
-          sib_ = left_of(parent_of(x))
-          if ((color_of(sib_)).equal?(RED))
-            set_color(sib_, BLACK)
+          sib = left_of(parent_of(x))
+          if ((color_of(sib)).equal?(RED))
+            set_color(sib, BLACK)
             set_color(parent_of(x), RED)
             rotate_right(parent_of(x))
-            sib_ = left_of(parent_of(x))
+            sib = left_of(parent_of(x))
           end
-          if ((color_of(right_of(sib_))).equal?(BLACK) && (color_of(left_of(sib_))).equal?(BLACK))
-            set_color(sib_, RED)
+          if ((color_of(right_of(sib))).equal?(BLACK) && (color_of(left_of(sib))).equal?(BLACK))
+            set_color(sib, RED)
             x = parent_of(x)
           else
-            if ((color_of(left_of(sib_))).equal?(BLACK))
-              set_color(right_of(sib_), BLACK)
-              set_color(sib_, RED)
-              rotate_left(sib_)
-              sib_ = left_of(parent_of(x))
+            if ((color_of(left_of(sib))).equal?(BLACK))
+              set_color(right_of(sib), BLACK)
+              set_color(sib, RED)
+              rotate_left(sib)
+              sib = left_of(parent_of(x))
             end
-            set_color(sib_, color_of(parent_of(x)))
+            set_color(sib, color_of(parent_of(x)))
             set_color(parent_of(x), BLACK)
-            set_color(left_of(sib_), BLACK)
+            set_color(left_of(sib), BLACK)
             rotate_right(parent_of(x))
             x = @root
           end
@@ -3021,7 +2948,6 @@ module Java::Util
     }
     
     typesig { [Java::Io::ObjectOutputStream] }
-    # 
     # Save the state of the <tt>TreeMap</tt> instance to a stream (i.e.,
     # serialize it).
     # 
@@ -3047,7 +2973,6 @@ module Java::Util
     end
     
     typesig { [Java::Io::ObjectInputStream] }
-    # 
     # Reconstitute the <tt>TreeMap</tt> instance from a stream (i.e.,
     # deserialize it).
     def read_object(s)
@@ -3069,13 +2994,12 @@ module Java::Util
     def add_all_for_tree_set(set, default_val)
       begin
         build_from_sorted(set.size, set.iterator, nil, default_val)
-      rescue Java::Io::IOException => cannotHappen
-      rescue ClassNotFoundException => cannotHappen
+      rescue Java::Io::IOException => cannot_happen
+      rescue ClassNotFoundException => cannot_happen
       end
     end
     
     typesig { [::Java::Int, Iterator, Java::Io::ObjectInputStream, Object] }
-    # 
     # Linear time tree building algorithm from sorted data.  Can accept keys
     # and/or values from iterator or stream. This leads to too many
     # parameters, but seems better than alternatives.  The four formats
@@ -3110,7 +3034,6 @@ module Java::Util
     end
     
     typesig { [::Java::Int, ::Java::Int, ::Java::Int, ::Java::Int, Iterator, Java::Io::ObjectInputStream, Object] }
-    # 
     # Recursive "helper method" that does the real work of the
     # previous method.  Identically named parameters have
     # identical definitions.  Additional parameters are documented below.
@@ -3124,7 +3047,6 @@ module Java::Util
     # @param redLevel the level at which nodes should be red.
     # Must be equal to computeRedLevel for tree of this size.
     def build_from_sorted(level, lo, hi, red_level, it, str, default_val)
-      # 
       # Strategy: The root is the middlemost element. To get to it, we
       # have to first recursively construct the entire left subtree,
       # so as to grab all of its elements. We can then proceed with right
@@ -3178,7 +3100,6 @@ module Java::Util
     
     class_module.module_eval {
       typesig { [::Java::Int] }
-      # 
       # Find the level down to which to assign all nodes BLACK.  This is the
       # last `full' level of the complete binary tree produced by
       # buildTree. The remaining nodes are colored RED. (This makes a `nice'

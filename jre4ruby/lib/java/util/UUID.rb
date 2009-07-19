@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 2003-2007 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -34,7 +33,6 @@ module Java::Util
     }
   end
   
-  # 
   # A class that represents an immutable universally unique identifier (UUID).
   # A UUID represents a 128-bit value.
   # 
@@ -79,13 +77,11 @@ module Java::Util
     include JavaComparable
     
     class_module.module_eval {
-      # 
       # Explicit serialVersionUID for interoperability.
       const_set_lazy(:SerialVersionUID) { -4856846361193249489 }
       const_attr_reader  :SerialVersionUID
     }
     
-    # 
     # The most significant 64 bits of this UUID.
     # 
     # @serial
@@ -95,7 +91,6 @@ module Java::Util
     alias_method :attr_most_sig_bits=, :most_sig_bits=
     undef_method :most_sig_bits=
     
-    # 
     # The least significant 64 bits of this UUID.
     # 
     # @serial
@@ -105,7 +100,6 @@ module Java::Util
     alias_method :attr_least_sig_bits=, :least_sig_bits=
     undef_method :least_sig_bits=
     
-    # 
     # The version number associated with this UUID. Computed on demand.
     attr_accessor :version
     alias_method :attr_version, :version
@@ -113,7 +107,6 @@ module Java::Util
     alias_method :attr_version=, :version=
     undef_method :version=
     
-    # 
     # The variant number associated with this UUID. Computed on demand.
     attr_accessor :variant
     alias_method :attr_variant, :variant
@@ -121,7 +114,6 @@ module Java::Util
     alias_method :attr_variant=, :variant=
     undef_method :variant=
     
-    # 
     # The timestamp associated with this UUID. Computed on demand.
     attr_accessor :timestamp
     alias_method :attr_timestamp, :timestamp
@@ -129,7 +121,6 @@ module Java::Util
     alias_method :attr_timestamp=, :timestamp=
     undef_method :timestamp=
     
-    # 
     # The clock sequence associated with this UUID. Computed on demand.
     attr_accessor :sequence
     alias_method :attr_sequence, :sequence
@@ -137,7 +128,6 @@ module Java::Util
     alias_method :attr_sequence=, :sequence=
     undef_method :sequence=
     
-    # 
     # The node number associated with this UUID. Computed on demand.
     attr_accessor :node
     alias_method :attr_node, :node
@@ -145,7 +135,6 @@ module Java::Util
     alias_method :attr_node=, :node=
     undef_method :node=
     
-    # 
     # The hashcode of this UUID. Computed on demand.
     attr_accessor :hash_code
     alias_method :attr_hash_code, :hash_code
@@ -154,7 +143,6 @@ module Java::Util
     undef_method :hash_code=
     
     class_module.module_eval {
-      # 
       # The random number generator used by this class to create random
       # based UUIDs.
       
@@ -200,7 +188,6 @@ module Java::Util
     end
     
     typesig { [::Java::Long, ::Java::Long] }
-    # 
     # Constructs a new {@code UUID} using the specified data.  {@code
     # mostSigBits} is used for the most significant 64 bits of the {@code
     # UUID} and {@code leastSigBits} becomes the least significant 64 bits of
@@ -226,7 +213,6 @@ module Java::Util
     
     class_module.module_eval {
       typesig { [] }
-      # 
       # Static factory to retrieve a type 4 (pseudo randomly generated) UUID.
       # 
       # The {@code UUID} is generated using a cryptographically strong pseudo
@@ -252,7 +238,6 @@ module Java::Util
       end
       
       typesig { [Array.typed(::Java::Byte)] }
-      # 
       # Static factory to retrieve a type 3 (name based) {@code UUID} based on
       # the specified byte array.
       # 
@@ -280,7 +265,6 @@ module Java::Util
       end
       
       typesig { [String] }
-      # 
       # Creates a {@code UUID} from the string standard representation as
       # described in the {@link #toString} method.
       # 
@@ -325,7 +309,6 @@ module Java::Util
     end
     
     typesig { [] }
-    # 
     # Returns the most significant 64 bits of this UUID's 128 bit value.
     # 
     # @return  The most significant 64 bits of this UUID's 128 bit value
@@ -334,7 +317,6 @@ module Java::Util
     end
     
     typesig { [] }
-    # 
     # The version number associated with this {@code UUID}.  The version
     # number describes how this {@code UUID} was generated.
     # 
@@ -356,7 +338,6 @@ module Java::Util
     end
     
     typesig { [] }
-    # 
     # The variant number associated with this {@code UUID}.  The variant
     # number describes the layout of the {@code UUID}.
     # 
@@ -386,7 +367,6 @@ module Java::Util
     end
     
     typesig { [] }
-    # 
     # The timestamp value associated with this UUID.
     # 
     # <p> The 60 bit timestamp value is constructed from the time_low,
@@ -415,7 +395,6 @@ module Java::Util
     end
     
     typesig { [] }
-    # 
     # The clock sequence value associated with this UUID.
     # 
     # <p> The 14 bit clock sequence value is constructed from the clock
@@ -441,7 +420,6 @@ module Java::Util
     end
     
     typesig { [] }
-    # 
     # The node value associated with this UUID.
     # 
     # <p> The 48 bit node value is constructed from the node field of this
@@ -505,7 +483,6 @@ module Java::Util
     }
     
     typesig { [] }
-    # 
     # Returns a hash code for this {@code UUID}.
     # 
     # @return  A hash code value for this {@code UUID}
@@ -517,7 +494,6 @@ module Java::Util
     end
     
     typesig { [Object] }
-    # 
     # Compares this object to the specified object.  The result is {@code
     # true} if and only if the argument is not {@code null}, is a {@code UUID}
     # object, has the same variant, and contains the same value, bit for bit,
@@ -560,7 +536,6 @@ module Java::Util
     end
     
     typesig { [Java::Io::ObjectInputStream] }
-    # 
     # Reconstitute the {@code UUID} instance from a stream (that is,
     # deserialize it).  This is necessary to set the transient fields to their
     # correct uninitialized value so they will be recomputed on demand.

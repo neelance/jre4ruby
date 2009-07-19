@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 1997-2005 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -35,7 +34,6 @@ module Java::Io
     }
   end
   
-  # 
   # This class is for Serializable permissions. A SerializablePermission
   # contains a name (also referred to as a "target name") but
   # no actions list; you either have the named permission
@@ -100,7 +98,6 @@ module Java::Io
       const_attr_reader  :SerialVersionUID
     }
     
-    # 
     # @serial
     attr_accessor :actions
     alias_method :attr_actions, :actions
@@ -109,7 +106,6 @@ module Java::Io
     undef_method :actions=
     
     typesig { [String] }
-    # 
     # Creates a new SerializablePermission with the specified name.
     # The name is the symbolic name of the SerializablePermission, such as
     # "enableSubstitution", etc.
@@ -124,7 +120,6 @@ module Java::Io
     end
     
     typesig { [String, String] }
-    # 
     # Creates a new SerializablePermission object with the specified name.
     # The name is the symbolic name of the SerializablePermission, and the
     # actions String is currently unused and should be null.

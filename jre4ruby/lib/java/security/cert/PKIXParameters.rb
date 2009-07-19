@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 2000-2006 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -42,7 +41,6 @@ module Java::Security::Cert
     }
   end
   
-  # 
   # Parameters used as input for the PKIX <code>CertPathValidator</code>
   # algorithm.
   # <p>
@@ -164,7 +162,6 @@ module Java::Security::Cert
     undef_method :cert_selector=
     
     typesig { [JavaSet] }
-    # 
     # Creates an instance of <code>PKIXParameters</code> with the specified
     # <code>Set</code> of most-trusted CAs. Each element of the
     # set is a {@link TrustAnchor TrustAnchor}.
@@ -199,7 +196,6 @@ module Java::Security::Cert
     end
     
     typesig { [KeyStore] }
-    # 
     # Creates an instance of <code>PKIXParameters</code> that
     # populates the set of most-trusted CAs from the trusted
     # certificate entries contained in the specified <code>KeyStore</code>.
@@ -246,7 +242,6 @@ module Java::Security::Cert
     end
     
     typesig { [] }
-    # 
     # Returns an immutable <code>Set</code> of the most-trusted
     # CAs.
     # 
@@ -259,7 +254,6 @@ module Java::Security::Cert
     end
     
     typesig { [JavaSet] }
-    # 
     # Sets the <code>Set</code> of most-trusted CAs.
     # <p>
     # Note that the <code>Set</code> is copied to protect against
@@ -291,7 +285,6 @@ module Java::Security::Cert
     end
     
     typesig { [] }
-    # 
     # Returns an immutable <code>Set</code> of initial
     # policy identifiers (OID strings), indicating that any one of these
     # policies would be acceptable to the certificate user for the purposes of
@@ -309,7 +302,6 @@ module Java::Security::Cert
     end
     
     typesig { [JavaSet] }
-    # 
     # Sets the <code>Set</code> of initial policy identifiers
     # (OID strings), indicating that any one of these
     # policies would be acceptable to the certificate user for the purposes of
@@ -342,7 +334,6 @@ module Java::Security::Cert
     end
     
     typesig { [JavaList] }
-    # 
     # Sets the list of <code>CertStore</code>s to be used in finding
     # certificates and CRLs. May be <code>null</code>, in which case
     # no <code>CertStore</code>s will be used. The first
@@ -373,7 +364,6 @@ module Java::Security::Cert
     end
     
     typesig { [CertStore] }
-    # 
     # Adds a <code>CertStore</code> to the end of the list of
     # <code>CertStore</code>s used in finding certificates and CRLs.
     # 
@@ -386,7 +376,6 @@ module Java::Security::Cert
     end
     
     typesig { [] }
-    # 
     # Returns an immutable <code>List</code> of <code>CertStore</code>s that
     # are used to find certificates and CRLs.
     # 
@@ -399,7 +388,6 @@ module Java::Security::Cert
     end
     
     typesig { [::Java::Boolean] }
-    # 
     # Sets the RevocationEnabled flag. If this flag is true, the default
     # revocation checking mechanism of the underlying PKIX service provider
     # will be used. If this flag is false, the default revocation checking
@@ -421,7 +409,6 @@ module Java::Security::Cert
     end
     
     typesig { [] }
-    # 
     # Checks the RevocationEnabled flag. If this flag is true, the default
     # revocation checking mechanism of the underlying PKIX service provider
     # will be used. If this flag is false, the default revocation checking
@@ -435,7 +422,6 @@ module Java::Security::Cert
     end
     
     typesig { [::Java::Boolean] }
-    # 
     # Sets the ExplicitPolicyRequired flag. If this flag is true, an
     # acceptable policy needs to be explicitly identified in every certificate.
     # By default, the ExplicitPolicyRequired flag is false.
@@ -447,7 +433,6 @@ module Java::Security::Cert
     end
     
     typesig { [] }
-    # 
     # Checks if explicit policy is required. If this flag is true, an
     # acceptable policy needs to be explicitly identified in every certificate.
     # By default, the ExplicitPolicyRequired flag is false.
@@ -459,7 +444,6 @@ module Java::Security::Cert
     end
     
     typesig { [::Java::Boolean] }
-    # 
     # Sets the PolicyMappingInhibited flag. If this flag is true, policy
     # mapping is inhibited. By default, policy mapping is not inhibited (the
     # flag is false).
@@ -471,7 +455,6 @@ module Java::Security::Cert
     end
     
     typesig { [] }
-    # 
     # Checks if policy mapping is inhibited. If this flag is true, policy
     # mapping is inhibited. By default, policy mapping is not inhibited (the
     # flag is false).
@@ -482,7 +465,6 @@ module Java::Security::Cert
     end
     
     typesig { [::Java::Boolean] }
-    # 
     # Sets state to determine if the any policy OID should be processed
     # if it is included in a certificate. By default, the any policy OID
     # is not inhibited ({@link #isAnyPolicyInhibited isAnyPolicyInhibited()}
@@ -495,7 +477,6 @@ module Java::Security::Cert
     end
     
     typesig { [] }
-    # 
     # Checks whether the any policy OID should be processed if it
     # is included in a certificate.
     # 
@@ -506,7 +487,6 @@ module Java::Security::Cert
     end
     
     typesig { [::Java::Boolean] }
-    # 
     # Sets the PolicyQualifiersRejected flag. If this flag is true,
     # certificates that include policy qualifiers in a certificate
     # policies extension that is marked critical are rejected.
@@ -533,7 +513,6 @@ module Java::Security::Cert
     end
     
     typesig { [] }
-    # 
     # Gets the PolicyQualifiersRejected flag. If this flag is true,
     # certificates that include policy qualifiers in a certificate policies
     # extension that is marked critical are rejected.
@@ -551,7 +530,6 @@ module Java::Security::Cert
     end
     
     typesig { [] }
-    # 
     # Returns the time for which the validity of the certification path
     # should be determined. If <code>null</code>, the current time is used.
     # <p>
@@ -569,7 +547,6 @@ module Java::Security::Cert
     end
     
     typesig { [Date] }
-    # 
     # Sets the time for which the validity of the certification path
     # should be determined. If <code>null</code>, the current time is used.
     # <p>
@@ -588,7 +565,6 @@ module Java::Security::Cert
     end
     
     typesig { [JavaList] }
-    # 
     # Sets a <code>List</code> of additional certification path checkers. If
     # the specified <code>List</code> contains an object that is not a
     # <code>PKIXCertPathChecker</code>, it is ignored.
@@ -636,7 +612,6 @@ module Java::Security::Cert
     end
     
     typesig { [] }
-    # 
     # Returns the <code>List</code> of certification path checkers.
     # The returned <code>List</code> is immutable, and each
     # <code>PKIXCertPathChecker</code> in the <code>List</code> is cloned
@@ -655,7 +630,6 @@ module Java::Security::Cert
     end
     
     typesig { [PKIXCertPathChecker] }
-    # 
     # Adds a <code>PKIXCertPathChecker</code> to the list of certification
     # path checkers. See the {@link #setCertPathCheckers setCertPathCheckers}
     # method for more details.
@@ -672,7 +646,6 @@ module Java::Security::Cert
     end
     
     typesig { [] }
-    # 
     # Returns the signature provider's name, or <code>null</code>
     # if not set.
     # 
@@ -683,7 +656,6 @@ module Java::Security::Cert
     end
     
     typesig { [String] }
-    # 
     # Sets the signature provider's name. The specified provider will be
     # preferred when creating {@link java.security.Signature Signature}
     # objects. If <code>null</code> or not set, the first provider found
@@ -696,7 +668,6 @@ module Java::Security::Cert
     end
     
     typesig { [] }
-    # 
     # Returns the required constraints on the target certificate.
     # The constraints are returned as an instance of <code>CertSelector</code>.
     # If <code>null</code>, no constraints are defined.
@@ -716,7 +687,6 @@ module Java::Security::Cert
     end
     
     typesig { [CertSelector] }
-    # 
     # Sets the required constraints on the target certificate.
     # The constraints are specified as an instance of
     # <code>CertSelector</code>. If <code>null</code>, no constraints are
@@ -737,7 +707,6 @@ module Java::Security::Cert
     end
     
     typesig { [] }
-    # 
     # Makes a copy of this <code>PKIXParameters</code> object. Changes
     # to the copy will not affect the original and vice versa.
     # 
@@ -760,7 +729,6 @@ module Java::Security::Cert
     end
     
     typesig { [] }
-    # 
     # Returns a formatted string describing the parameters.
     # 
     # @return a formatted string describing the parameters.

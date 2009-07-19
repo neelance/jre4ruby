@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 2000-2002 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -33,10 +32,6 @@ module Java::Nio
     }
   end
   
-  # 
-  # 
-  # 
-  # 
   # A read-only HeapCharBuffer.  This class extends the corresponding
   # read/write class, overriding the mutation methods to throw a {@link
   # ReadOnlyBufferException} and overriding the view-buffer methods to return an

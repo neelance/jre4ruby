@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Portions Copyright 2000-2006 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -39,7 +38,6 @@ module Sun::Security::Krb5
     }
   end
   
-  # 
   # This class encapsulates the KRB-CRED message that a client uses to
   # send its delegated credentials to a server.
   # 
@@ -184,7 +182,6 @@ module Sun::Security::Krb5
     end
     
     typesig { [] }
-    # 
     # Returns the delegated credentials from the peer.
     def get_delegated_creds
       all_creds = Array.typed(Credentials).new([@creds])
@@ -192,7 +189,6 @@ module Sun::Security::Krb5
     end
     
     typesig { [] }
-    # 
     # Returns the ASN.1 encoding that should be sent to the peer.
     def get_message
       return @obuf

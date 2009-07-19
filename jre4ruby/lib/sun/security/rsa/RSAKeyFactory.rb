@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 2003-2008 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -36,7 +35,6 @@ module Sun::Security::Rsa
     }
   end
   
-  # 
   # KeyFactory for RSA keys. Keys must be instances of PublicKey or PrivateKey
   # and getAlgorithm() must return "RSA". For such keys, it supports conversion
   # between the following:
@@ -85,7 +83,6 @@ module Sun::Security::Rsa
       const_set_lazy(:MAX_MODLEN) { 16384 }
       const_attr_reader  :MAX_MODLEN
       
-      # 
       # If the modulus length is above this value, restrict the size of
       # the exponent to something that can be reasonably computed.  We
       # could simply hardcode the exp len to something like 64 bits, but
@@ -113,7 +110,6 @@ module Sun::Security::Rsa
     
     class_module.module_eval {
       typesig { [Key] }
-      # 
       # Static method to convert Key into an instance of RSAPublicKeyImpl
       # or RSAPrivate(Crt)KeyImpl. If the key is not an RSA key or cannot be
       # used, throw an InvalidKeyException.
@@ -128,7 +124,6 @@ module Sun::Security::Rsa
       end
       
       typesig { [::Java::Int, BigInteger] }
-      # 
       # Single test entry point for all of the mechanisms in the SunRsaSign
       # provider (RSA*KeyImpls).  All of the tests are the same.
       # 
@@ -140,7 +135,6 @@ module Sun::Security::Rsa
       end
       
       typesig { [::Java::Int, BigInteger, ::Java::Int, ::Java::Int] }
-      # 
       # Check the length of an RSA key modulus/exponent to make sure it
       # is not too short or long.  Some impls have their own min and
       # max key sizes that may or may not match with a system defined value.
@@ -173,7 +167,6 @@ module Sun::Security::Rsa
     }
     
     typesig { [Key] }
-    # 
     # Translate an RSA key into a SunRsaSign RSA key. If conversion is
     # not possible, throw an InvalidKeyException.
     # See also JCA doc.
@@ -204,7 +197,7 @@ module Sun::Security::Rsa
       rescue InvalidKeySpecException => e
         raise e
       rescue GeneralSecurityException => e
-        raise InvalidKeySpecException.new(e_)
+        raise InvalidKeySpecException.new(e)
       end
     end
     
@@ -216,7 +209,7 @@ module Sun::Security::Rsa
       rescue InvalidKeySpecException => e
         raise e
       rescue GeneralSecurityException => e
-        raise InvalidKeySpecException.new(e_)
+        raise InvalidKeySpecException.new(e)
       end
     end
     
@@ -263,12 +256,12 @@ module Sun::Security::Rsa
           if (key.is_a?(RSAPrivateKeyImpl))
             return key
           end
-          rsa_key_ = key
+          rsa_key = key
           begin
-            return RSAPrivateKeyImpl.new(rsa_key_.get_modulus, rsa_key_.get_private_exponent)
+            return RSAPrivateKeyImpl.new(rsa_key.get_modulus, rsa_key.get_private_exponent)
           rescue RuntimeException => e
             # catch providers that incorrectly implement RSAPrivateKey
-            raise InvalidKeyException.new("Invalid key", e_)
+            raise InvalidKeyException.new("Invalid key", e)
           end
         else
           if (("PKCS#8" == key.get_format))
@@ -309,8 +302,8 @@ module Sun::Security::Rsa
           return RSAPrivateCrtKeyImpl.new(rsa_spec.get_modulus, rsa_spec.get_public_exponent, rsa_spec.get_private_exponent, rsa_spec.get_prime_p, rsa_spec.get_prime_q, rsa_spec.get_prime_exponent_p, rsa_spec.get_prime_exponent_q, rsa_spec.get_crt_coefficient)
         else
           if (key_spec.is_a?(RSAPrivateKeySpec))
-            rsa_spec_ = key_spec
-            return RSAPrivateKeyImpl.new(rsa_spec_.get_modulus, rsa_spec_.get_private_exponent)
+            rsa_spec = key_spec
+            return RSAPrivateKeyImpl.new(rsa_spec.get_modulus, rsa_spec.get_private_exponent)
           else
             raise InvalidKeySpecException.new("Only RSAPrivate(Crt)KeySpec " + "and PKCS8EncodedKeySpec supported for RSA private keys")
           end
@@ -353,8 +346,8 @@ module Sun::Security::Rsa
               end
             else
               if (RsaPrivateKeySpecClass.is_assignable_from(key_spec))
-                rsa_key_ = key
-                return RSAPrivateKeySpec.new(rsa_key_.get_modulus, rsa_key_.get_private_exponent)
+                rsa_key = key
+                return RSAPrivateKeySpec.new(rsa_key.get_modulus, rsa_key.get_private_exponent)
               else
                 raise InvalidKeySpecException.new("KeySpec must be RSAPrivate(Crt)KeySpec or " + "PKCS8EncodedKeySpec for RSA private keys")
               end

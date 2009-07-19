@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
 # This code is free software; you can redistribute it and/or modify it
@@ -42,7 +41,6 @@ module Java::Util::Concurrent
     }
   end
   
-  # 
   # A scalable concurrent {@link NavigableSet} implementation based on
   # a {@link ConcurrentSkipListMap}.  The elements of the set are kept
   # sorted according to their {@linkplain Comparable natural ordering},
@@ -95,7 +93,6 @@ module Java::Util::Concurrent
       const_attr_reader  :SerialVersionUID
     }
     
-    # 
     # The underlying map. Uses Boolean.TRUE as value for each
     # element.  This field is declared final for the sake of thread
     # safety, which entails some ugliness in clone()
@@ -106,7 +103,6 @@ module Java::Util::Concurrent
     undef_method :m=
     
     typesig { [] }
-    # 
     # Constructs a new, empty set that orders its elements according to
     # their {@linkplain Comparable natural ordering}.
     def initialize
@@ -116,7 +112,6 @@ module Java::Util::Concurrent
     end
     
     typesig { [Comparator] }
-    # 
     # Constructs a new, empty set that orders its elements according to
     # the specified comparator.
     # 
@@ -130,7 +125,6 @@ module Java::Util::Concurrent
     end
     
     typesig { [Collection] }
-    # 
     # Constructs a new set containing the elements in the specified
     # collection, that orders its elements according to their
     # {@linkplain Comparable natural ordering}.
@@ -148,7 +142,6 @@ module Java::Util::Concurrent
     end
     
     typesig { [SortedSet] }
-    # 
     # Constructs a new set containing the same elements and using the
     # same ordering as the specified sorted set.
     # 
@@ -163,7 +156,6 @@ module Java::Util::Concurrent
     end
     
     typesig { [ConcurrentNavigableMap] }
-    # 
     # For use by submaps
     def initialize(m)
       @m = nil
@@ -172,7 +164,6 @@ module Java::Util::Concurrent
     end
     
     typesig { [] }
-    # 
     # Returns a shallow copy of this <tt>ConcurrentSkipListSet</tt>
     # instance. (The elements themselves are not cloned.)
     # 
@@ -210,7 +201,6 @@ module Java::Util::Concurrent
     end
     
     typesig { [] }
-    # 
     # Returns <tt>true</tt> if this set contains no elements.
     # @return <tt>true</tt> if this set contains no elements
     def is_empty
@@ -218,7 +208,6 @@ module Java::Util::Concurrent
     end
     
     typesig { [Object] }
-    # 
     # Returns <tt>true</tt> if this set contains the specified element.
     # More formally, returns <tt>true</tt> if and only if this set
     # contains an element <tt>e</tt> such that <tt>o.equals(e)</tt>.
@@ -233,7 +222,6 @@ module Java::Util::Concurrent
     end
     
     typesig { [Object] }
-    # 
     # Adds the specified element to this set if it is not already present.
     # More formally, adds the specified element <tt>e</tt> to this set if
     # the set contains no element <tt>e2</tt> such that <tt>e.equals(e2)</tt>.
@@ -251,7 +239,6 @@ module Java::Util::Concurrent
     end
     
     typesig { [Object] }
-    # 
     # Removes the specified element from this set if it is present.
     # More formally, removes an element <tt>e</tt> such that
     # <tt>o.equals(e)</tt>, if this set contains such an element.
@@ -269,14 +256,12 @@ module Java::Util::Concurrent
     end
     
     typesig { [] }
-    # 
     # Removes all of the elements from this set.
     def clear
       @m.clear
     end
     
     typesig { [] }
-    # 
     # Returns an iterator over the elements in this set in ascending order.
     # 
     # @return an iterator over the elements in this set in ascending order
@@ -285,7 +270,6 @@ module Java::Util::Concurrent
     end
     
     typesig { [] }
-    # 
     # Returns an iterator over the elements in this set in descending order.
     # 
     # @return an iterator over the elements in this set in descending order
@@ -325,7 +309,6 @@ module Java::Util::Concurrent
     end
     
     typesig { [Collection] }
-    # 
     # Removes from this set all of its elements that are contained in
     # the specified collection.  If the specified collection is also
     # a set, this operation effectively modifies this set so that its
@@ -359,7 +342,6 @@ module Java::Util::Concurrent
     end
     
     typesig { [Object] }
-    # 
     # @throws ClassCastException {@inheritDoc}
     # @throws NullPointerException if the specified element is null
     def floor(e)
@@ -367,7 +349,6 @@ module Java::Util::Concurrent
     end
     
     typesig { [Object] }
-    # 
     # @throws ClassCastException {@inheritDoc}
     # @throws NullPointerException if the specified element is null
     def ceiling(e)
@@ -375,7 +356,6 @@ module Java::Util::Concurrent
     end
     
     typesig { [Object] }
-    # 
     # @throws ClassCastException {@inheritDoc}
     # @throws NullPointerException if the specified element is null
     def higher(e)
@@ -401,21 +381,18 @@ module Java::Util::Concurrent
     end
     
     typesig { [] }
-    # 
     # @throws NoSuchElementException {@inheritDoc}
     def first
       return @m.first_key
     end
     
     typesig { [] }
-    # 
     # @throws NoSuchElementException {@inheritDoc}
     def last
       return @m.last_key
     end
     
     typesig { [Object, ::Java::Boolean, Object, ::Java::Boolean] }
-    # 
     # @throws ClassCastException {@inheritDoc}
     # @throws NullPointerException if {@code fromElement} or
     # {@code toElement} is null
@@ -425,7 +402,6 @@ module Java::Util::Concurrent
     end
     
     typesig { [Object, ::Java::Boolean] }
-    # 
     # @throws ClassCastException {@inheritDoc}
     # @throws NullPointerException if {@code toElement} is null
     # @throws IllegalArgumentException {@inheritDoc}
@@ -434,7 +410,6 @@ module Java::Util::Concurrent
     end
     
     typesig { [Object, ::Java::Boolean] }
-    # 
     # @throws ClassCastException {@inheritDoc}
     # @throws NullPointerException if {@code fromElement} is null
     # @throws IllegalArgumentException {@inheritDoc}
@@ -443,7 +418,6 @@ module Java::Util::Concurrent
     end
     
     typesig { [Object, Object] }
-    # 
     # @throws ClassCastException {@inheritDoc}
     # @throws NullPointerException if {@code fromElement} or
     # {@code toElement} is null
@@ -453,7 +427,6 @@ module Java::Util::Concurrent
     end
     
     typesig { [Object] }
-    # 
     # @throws ClassCastException {@inheritDoc}
     # @throws NullPointerException if {@code toElement} is null
     # @throws IllegalArgumentException {@inheritDoc}
@@ -462,7 +435,6 @@ module Java::Util::Concurrent
     end
     
     typesig { [Object] }
-    # 
     # @throws ClassCastException {@inheritDoc}
     # @throws NullPointerException if {@code fromElement} is null
     # @throws IllegalArgumentException {@inheritDoc}
@@ -471,7 +443,6 @@ module Java::Util::Concurrent
     end
     
     typesig { [] }
-    # 
     # Returns a reverse order view of the elements contained in this set.
     # The descending set is backed by this set, so changes to the set are
     # reflected in the descending set, and vice-versa.

@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 1998-2003 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -32,7 +31,6 @@ module Java::Security::Spec
     }
   end
   
-  # 
   # This class specifies an RSA private key, as defined in the PKCS#1
   # standard, using the Chinese Remainder Theorem (CRT) information values for
   # efficiency.
@@ -86,7 +84,6 @@ module Java::Security::Spec
     undef_method :crt_coefficient=
     
     typesig { [BigInteger, BigInteger, BigInteger, BigInteger, BigInteger, BigInteger, BigInteger, BigInteger] }
-    # 
     # Creates a new <code>RSAPrivateCrtKeySpec</code>
     # given the modulus, publicExponent, privateExponent,
     # primeP, primeQ, primeExponentP, primeExponentQ, and
@@ -118,7 +115,6 @@ module Java::Security::Spec
     end
     
     typesig { [] }
-    # 
     # Returns the public exponent.
     # 
     # @return the public exponent
@@ -127,7 +123,6 @@ module Java::Security::Spec
     end
     
     typesig { [] }
-    # 
     # Returns the primeP.
     # 
     # @return the primeP
@@ -136,7 +131,6 @@ module Java::Security::Spec
     end
     
     typesig { [] }
-    # 
     # Returns the primeQ.
     # 
     # @return the primeQ
@@ -145,7 +139,6 @@ module Java::Security::Spec
     end
     
     typesig { [] }
-    # 
     # Returns the primeExponentP.
     # 
     # @return the primeExponentP
@@ -154,7 +147,6 @@ module Java::Security::Spec
     end
     
     typesig { [] }
-    # 
     # Returns the primeExponentQ.
     # 
     # @return the primeExponentQ
@@ -163,7 +155,6 @@ module Java::Security::Spec
     end
     
     typesig { [] }
-    # 
     # Returns the crtCoefficient.
     # 
     # @return the crtCoefficient

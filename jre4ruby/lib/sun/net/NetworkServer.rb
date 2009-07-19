@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 1995-2000 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -34,7 +33,6 @@ module Sun::Net
     }
   end
   
-  # 
   # This is the base class for network servers.  To define a new type
   # of server define a new subclass of NetworkServer with a serviceRequest
   # method that services one request.  Start the server by executing:
@@ -174,7 +172,6 @@ module Sun::Net
     }
     
     typesig { [] }
-    # 
     # Clone this object;
     def clone
       begin

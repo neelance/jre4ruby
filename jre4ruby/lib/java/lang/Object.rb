@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 1994-2006 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -30,7 +29,6 @@ module Java::Lang
     }
   end
   
-  # 
   # Class <code>Object</code> is the root of the class hierarchy.
   # Every class has <code>Object</code> as a superclass. All objects,
   # including arrays, implement the methods of this class.
@@ -55,7 +53,6 @@ module Java::Lang
     
     JNI.native_method :Java_java_lang_Object_getClass, [:pointer, :long], :long
     typesig { [] }
-    # 
     # Returns the runtime class of this {@code Object}. The returned
     # {@code Class} object is the object that is locked by {@code
     # static synchronized} methods of the represented class.
@@ -81,7 +78,6 @@ module Java::Lang
     
     JNI.native_method :Java_java_lang_Object_hashCode, [:pointer, :long], :int32
     typesig { [] }
-    # 
     # Returns a hash code value for the object. This method is
     # supported for the benefit of hashtables such as those provided by
     # <code>java.util.Hashtable</code>.
@@ -120,7 +116,6 @@ module Java::Lang
     end
     
     typesig { [Object] }
-    # 
     # Indicates whether some other object is "equal to" this one.
     # <p>
     # The <code>equals</code> method implements an equivalence relation
@@ -171,7 +166,6 @@ module Java::Lang
     
     JNI.native_method :Java_java_lang_Object_clone, [:pointer, :long], :long
     typesig { [] }
-    # 
     # Creates and returns a copy of this object.  The precise meaning
     # of "copy" may depend on the class of the object. The general
     # intent is that, for any object <tt>x</tt>, the expression:
@@ -233,7 +227,6 @@ module Java::Lang
     end
     
     typesig { [] }
-    # 
     # Returns a string representation of the object. In general, the
     # <code>toString</code> method returns a string that
     # "textually represents" this object. The result should
@@ -259,7 +252,6 @@ module Java::Lang
     
     JNI.native_method :Java_java_lang_Object_notify, [:pointer, :long], :void
     typesig { [] }
-    # 
     # Wakes up a single thread that is waiting on this object's
     # monitor. If any threads are waiting on this object, one of them
     # is chosen to be awakened. The choice is arbitrary and occurs at
@@ -296,7 +288,6 @@ module Java::Lang
     
     JNI.native_method :Java_java_lang_Object_notifyAll, [:pointer, :long], :void
     typesig { [] }
-    # 
     # Wakes up all threads that are waiting on this object's monitor. A
     # thread waits on an object's monitor by calling one of the
     # <code>wait</code> methods.
@@ -323,7 +314,6 @@ module Java::Lang
     
     JNI.native_method :Java_java_lang_Object_wait, [:pointer, :long, :int64], :void
     typesig { [::Java::Long] }
-    # 
     # Causes the current thread to wait until either another thread invokes the
     # {@link java.lang.Object#notify()} method or the
     # {@link java.lang.Object#notifyAll()} method for this object, or a
@@ -412,7 +402,6 @@ module Java::Lang
     end
     
     typesig { [::Java::Long, ::Java::Int] }
-    # 
     # Causes the current thread to wait until another thread invokes the
     # {@link java.lang.Object#notify()} method or the
     # {@link java.lang.Object#notifyAll()} method for this object, or
@@ -487,7 +476,6 @@ module Java::Lang
     end
     
     typesig { [] }
-    # 
     # Causes the current thread to wait until another thread invokes the
     # {@link java.lang.Object#notify()} method or the
     # {@link java.lang.Object#notifyAll()} method for this object.
@@ -529,7 +517,6 @@ module Java::Lang
     end
     
     typesig { [] }
-    # 
     # Called by the garbage collector on an object when garbage collection
     # determines that there are no more references to the object.
     # A subclass overrides the <code>finalize</code> method to dispose of

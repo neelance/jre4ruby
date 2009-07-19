@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 1996-2005 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -46,7 +45,6 @@ module Sun::Security::X509
     }
   end
   
-  # 
   # Holds an X.509 key, for example a public key found in an X.509
   # certificate.  Includes a description of the algorithm to be used
   # with the key; these keys normally are used as
@@ -77,7 +75,6 @@ module Sun::Security::X509
     alias_method :attr_algid=, :algid=
     undef_method :algid=
     
-    # 
     # The key bytes, without the algorithm information.
     # @deprecated Use the BitArray form which does not require keys to
     # be byte aligned.
@@ -89,7 +86,6 @@ module Sun::Security::X509
     alias_method :attr_key=, :key=
     undef_method :key=
     
-    # 
     # The number of bits unused in the last byte of the key.
     # Added to keep the byte[] key form consistent with the BitArray
     # form. Can de deleted when byte[] key is deleted.
@@ -114,7 +110,6 @@ module Sun::Security::X509
     undef_method :encoded_key=
     
     typesig { [] }
-    # 
     # Default constructor.  The key constructed must have its key
     # and algorithm initialized before it may be used, for example
     # by using <code>decode</code>.
@@ -127,7 +122,6 @@ module Sun::Security::X509
     end
     
     typesig { [AlgorithmId, BitArray] }
-    # 
     # Build and initialize as a "default" key.  All X.509 key
     # data is stored and transmitted losslessly, but no knowledge
     # about this particular algorithm is available.
@@ -143,11 +137,9 @@ module Sun::Security::X509
     end
     
     typesig { [BitArray] }
-    # 
     # Sets the key in the BitArray form.
     def set_key(key)
       @bit_string_key = key.clone
-      # 
       # Do this to keep the byte array form consistent with
       # this. Can delete when byte[] key is deleted.
       @key = key.to_byte_array
@@ -156,11 +148,9 @@ module Sun::Security::X509
     end
     
     typesig { [] }
-    # 
     # Gets the key. The key may or may not be byte aligned.
     # @return a BitArray containing the key.
     def get_key
-      # 
       # Do this for consistency in case a subclass
       # modifies byte[] key directly. Remove when
       # byte[] key is deleted.
@@ -173,7 +163,6 @@ module Sun::Security::X509
     
     class_module.module_eval {
       typesig { [DerValue] }
-      # 
       # Construct X.509 subject public key from a DER value.  If
       # the runtime environment is configured with a specific class for
       # this kind of key, a subclass is returned.  Otherwise, a generic
@@ -206,7 +195,6 @@ module Sun::Security::X509
     }
     
     typesig { [] }
-    # 
     # Parse the key bits.  This may be redefined by subclasses to take
     # advantage of structure within the key.  For example, RSA public
     # keys encapsulate two unsigned integers (modulus and exponent) as
@@ -225,12 +213,10 @@ module Sun::Security::X509
     
     class_module.module_eval {
       typesig { [AlgorithmId, BitArray] }
-      # 
       # Factory interface, building the kind of key associated with this
       # specific algorithm ID or else returning this generic base class.
       # See the description above.
       def build_x509key(algid, key)
-        # 
         # Use the algid and key parameters to produce the ASN.1 encoding
         # of the key, which will then be used as the input to the
         # key factory.
@@ -245,9 +231,8 @@ module Sun::Security::X509
         rescue NoSuchAlgorithmException => e
           # Return generic X509Key with opaque key data (see below)
         rescue InvalidKeySpecException => e
-          raise InvalidKeyException.new(e_.get_message)
+          raise InvalidKeyException.new(e.get_message)
         end
-        # 
         # Try again using JDK1.1-style for backwards compatibility.
         classname = ""
         begin
@@ -295,21 +280,18 @@ module Sun::Security::X509
     }
     
     typesig { [] }
-    # 
     # Returns the algorithm to be used with this key.
     def get_algorithm
       return @algid.get_name
     end
     
     typesig { [] }
-    # 
     # Returns the algorithm ID to be used with this key.
     def get_algorithm_id
       return @algid
     end
     
     typesig { [DerOutputStream] }
-    # 
     # Encode SubjectPublicKeyInfo sequence on the DER output stream.
     # 
     # @exception IOException on encoding errors.
@@ -318,7 +300,6 @@ module Sun::Security::X509
     end
     
     typesig { [] }
-    # 
     # Returns the DER-encoded form of the key as a byte array.
     def get_encoded
       begin
@@ -346,14 +327,12 @@ module Sun::Security::X509
     end
     
     typesig { [] }
-    # 
     # Returns the format for this key: "X.509"
     def get_format
       return "X.509"
     end
     
     typesig { [] }
-    # 
     # Returns the DER-encoded form of the key as a byte array.
     # 
     # @exception InvalidKeyException on encoding errors.
@@ -362,7 +341,6 @@ module Sun::Security::X509
     end
     
     typesig { [] }
-    # 
     # Returns a printable representation of the key
     def to_s
       encoder = HexDumpEncoder.new
@@ -370,7 +348,6 @@ module Sun::Security::X509
     end
     
     typesig { [InputStream] }
-    # 
     # Initialize an X509Key object from an input stream.  The data on that
     # input stream must be encoded using DER, obeying the X.509
     # <code>SubjectPublicKeyInfo</code> format.  That is, the data is a
@@ -415,7 +392,6 @@ module Sun::Security::X509
     end
     
     typesig { [ObjectOutputStream] }
-    # 
     # Serialization write ... X.509 keys serialize as
     # themselves, and they're parsed when they get read back.
     def write_object(stream)
@@ -423,7 +399,6 @@ module Sun::Security::X509
     end
     
     typesig { [ObjectInputStream] }
-    # 
     # Serialization read ... X.509 keys serialize as
     # themselves, and they're parsed when they get read back.
     def read_object(stream)
@@ -458,7 +433,6 @@ module Sun::Security::X509
     end
     
     typesig { [] }
-    # 
     # Calculates a hash code value for the object. Objects
     # which are equal will also have the same hashcode.
     def hash_code
@@ -479,7 +453,6 @@ module Sun::Security::X509
     
     class_module.module_eval {
       typesig { [DerOutputStream, AlgorithmId, BitArray] }
-      # 
       # Produce SubjectPublicKey encoding from algorithm id and key material.
       def encode(out, algid, key)
         tmp = DerOutputStream.new

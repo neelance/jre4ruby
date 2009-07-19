@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
 # This code is free software; you can redistribute it and/or modify it
@@ -42,7 +41,6 @@ module Java::Util::Concurrent
     }
   end
   
-  # 
   # An unbounded {@linkplain BlockingQueue blocking queue} that uses
   # the same ordering rules as class {@link PriorityQueue} and supplies
   # blocking retrieval operations.  While this queue is logically
@@ -126,7 +124,6 @@ module Java::Util::Concurrent
     undef_method :not_empty=
     
     typesig { [] }
-    # 
     # Creates a <tt>PriorityBlockingQueue</tt> with the default
     # initial capacity (11) that orders its elements according to
     # their {@linkplain Comparable natural ordering}.
@@ -141,7 +138,6 @@ module Java::Util::Concurrent
     end
     
     typesig { [::Java::Int] }
-    # 
     # Creates a <tt>PriorityBlockingQueue</tt> with the specified
     # initial capacity that orders its elements according to their
     # {@linkplain Comparable natural ordering}.
@@ -160,7 +156,6 @@ module Java::Util::Concurrent
     end
     
     typesig { [::Java::Int, Comparator] }
-    # 
     # Creates a <tt>PriorityBlockingQueue</tt> with the specified initial
     # capacity that orders its elements according to the specified
     # comparator.
@@ -182,7 +177,6 @@ module Java::Util::Concurrent
     end
     
     typesig { [Collection] }
-    # 
     # Creates a <tt>PriorityBlockingQueue</tt> containing the elements
     # in the specified collection.  If the specified collection is a
     # {@link SortedSet} or a {@link PriorityQueue},  this
@@ -208,7 +202,6 @@ module Java::Util::Concurrent
     end
     
     typesig { [Object] }
-    # 
     # Inserts the specified element into this priority queue.
     # 
     # @param e the element to add
@@ -222,7 +215,6 @@ module Java::Util::Concurrent
     end
     
     typesig { [Object] }
-    # 
     # Inserts the specified element into this priority queue.
     # 
     # @param e the element to add
@@ -245,7 +237,6 @@ module Java::Util::Concurrent
     end
     
     typesig { [Object] }
-    # 
     # Inserts the specified element into this priority queue. As the queue is
     # unbounded this method will never block.
     # 
@@ -259,7 +250,6 @@ module Java::Util::Concurrent
     end
     
     typesig { [Object, ::Java::Long, TimeUnit] }
-    # 
     # Inserts the specified element into this priority queue. As the queue is
     # unbounded this method will never block.
     # 
@@ -345,7 +335,6 @@ module Java::Util::Concurrent
     end
     
     typesig { [] }
-    # 
     # Returns the comparator used to order the elements in this queue,
     # or <tt>null</tt> if this queue uses the {@linkplain Comparable
     # natural ordering} of its elements.
@@ -369,7 +358,6 @@ module Java::Util::Concurrent
     end
     
     typesig { [] }
-    # 
     # Always returns <tt>Integer.MAX_VALUE</tt> because
     # a <tt>PriorityBlockingQueue</tt> is not capacity constrained.
     # @return <tt>Integer.MAX_VALUE</tt>
@@ -378,7 +366,6 @@ module Java::Util::Concurrent
     end
     
     typesig { [Object] }
-    # 
     # Removes a single instance of the specified element from this queue,
     # if it is present.  More formally, removes an element {@code e} such
     # that {@code o.equals(e)}, if this queue contains one or more such
@@ -399,7 +386,6 @@ module Java::Util::Concurrent
     end
     
     typesig { [Object] }
-    # 
     # Returns {@code true} if this queue contains the specified element.
     # More formally, returns {@code true} if and only if this queue contains
     # at least one element {@code e} such that {@code o.equals(e)}.
@@ -417,7 +403,6 @@ module Java::Util::Concurrent
     end
     
     typesig { [] }
-    # 
     # Returns an array containing all of the elements in this queue.
     # The returned array elements are in no particular order.
     # 
@@ -451,7 +436,6 @@ module Java::Util::Concurrent
     end
     
     typesig { [Collection] }
-    # 
     # @throws UnsupportedOperationException {@inheritDoc}
     # @throws ClassCastException            {@inheritDoc}
     # @throws NullPointerException          {@inheritDoc}
@@ -479,7 +463,6 @@ module Java::Util::Concurrent
     end
     
     typesig { [Collection, ::Java::Int] }
-    # 
     # @throws UnsupportedOperationException {@inheritDoc}
     # @throws ClassCastException            {@inheritDoc}
     # @throws NullPointerException          {@inheritDoc}
@@ -510,7 +493,6 @@ module Java::Util::Concurrent
     end
     
     typesig { [] }
-    # 
     # Atomically removes all of the elements from this queue.
     # The queue will be empty after this call returns.
     def clear
@@ -524,7 +506,6 @@ module Java::Util::Concurrent
     end
     
     typesig { [Array.typed(T)] }
-    # 
     # Returns an array containing all of the elements in this queue; the
     # runtime type of the returned array is that of the specified array.
     # The returned array elements are in no particular order.
@@ -571,7 +552,6 @@ module Java::Util::Concurrent
     end
     
     typesig { [] }
-    # 
     # Returns an iterator over the elements in this queue. The
     # iterator does not return the elements in any particular order.
     # The returned <tt>Iterator</tt> is a "weakly consistent"
@@ -587,7 +567,6 @@ module Java::Util::Concurrent
     end
     
     class_module.module_eval {
-      # 
       # Snapshot iterator that works off copy of underlying q array.
       const_set_lazy(:Itr) { Class.new do
         extend LocalClass
@@ -667,7 +646,6 @@ module Java::Util::Concurrent
     }
     
     typesig { [Java::Io::ObjectOutputStream] }
-    # 
     # Saves the state to a stream (that is, serializes it).  This
     # merely wraps default serialization within lock.  The
     # serialization strategy for items is left to underlying

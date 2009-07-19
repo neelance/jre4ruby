@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 2000-2005 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -139,9 +138,9 @@ module Sun::Nio::Ch
           sel = nil
           @ssc.configure_blocking(false)
           begin
-            sc_ = nil
-            if (!((sc_ = @ssc.accept)).nil?)
-              return sc_.socket
+            sc = nil
+            if (!((sc = @ssc.accept)).nil?)
+              return sc.socket
             end
             sel = Util.get_temporary_selector(@ssc)
             sk = @ssc.register(sel, SelectionKey::OP_ACCEPT)
@@ -152,8 +151,8 @@ module Sun::Nio::Ch
               end
               st = System.current_time_millis
               ns = sel.select(to)
-              if (ns > 0 && sk.is_acceptable && (!((sc_ = @ssc.accept)).nil?))
-                return sc_.socket
+              if (ns > 0 && sk.is_acceptable && (!((sc = @ssc.accept)).nil?))
+                return sc.socket
               end
               sel.selected_keys.remove(sk)
               to -= System.current_time_millis - st

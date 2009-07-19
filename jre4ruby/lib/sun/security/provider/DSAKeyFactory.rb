@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 1997-2006 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -48,7 +47,6 @@ module Sun::Security::Provider
     }
   end
   
-  # 
   # This class implements the DSA key factory of the Sun provider.
   # 
   # @author Jan Luehe
@@ -63,7 +61,6 @@ module Sun::Security::Provider
       const_attr_reader  :SERIAL_PROP
       
       when_class_loaded do
-        # 
         # Check to see if we need to maintain interoperability for serialized
         # keys between JDK 5.0 -> JDK 1.4.  In other words, determine whether
         # a key object serialized in JDK 5.0 must be deserializable in
@@ -80,7 +77,6 @@ module Sun::Security::Provider
     }
     
     typesig { [KeySpec] }
-    # 
     # Generates a public key object from the provided key specification
     # (key material).
     # 
@@ -116,7 +112,6 @@ module Sun::Security::Provider
     end
     
     typesig { [KeySpec] }
-    # 
     # Generates a private key object from the provided key specification
     # (key material).
     # 
@@ -144,7 +139,6 @@ module Sun::Security::Provider
     end
     
     typesig { [Key, Class] }
-    # 
     # Returns a specification (key material) of the given key object
     # in the requested format.
     # 
@@ -203,7 +197,6 @@ module Sun::Security::Provider
     end
     
     typesig { [Key] }
-    # 
     # Translates a key object, whose provider may be unknown or potentially
     # untrusted, into a corresponding key object of this key factory.
     # 

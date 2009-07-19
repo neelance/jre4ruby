@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 2004-2006 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -36,7 +35,6 @@ module Sun::Security::Util
     }
   end
   
-  # 
   # A utility class for getting a KeyStore instance from policy information.
   # In addition, a supporting getInputStream method.
   class PolicyUtil 
@@ -52,7 +50,6 @@ module Sun::Security::Util
       const_attr_reader  :NONE
       
       typesig { [URL] }
-      # 
       # Fast path reading from file urls in order to avoid calling
       # FileURLConnection.connect() which can be quite slow the first time
       # it is called. We really should clean up FileURLConnection so that
@@ -69,7 +66,6 @@ module Sun::Security::Util
       end
       
       typesig { [URL, String, String, String, String, Debug] }
-      # 
       # this is intended for use by policytool and the policy parser to
       # instantiate a KeyStore from the information in the GUI/policy file
       # 
@@ -125,7 +121,6 @@ module Sun::Security::Util
             ks.load(nil, key_store_password)
             return ks
           else
-            # 
             # location of keystore is specified as absolute URL in policy
             # file, or is relative to URL of policy file
             key_store_url = nil
@@ -135,7 +130,7 @@ module Sun::Security::Util
             rescue MalformedURLException => e
               # relative URL
               if ((policy_url).nil?)
-                raise e_
+                raise e
               end
               key_store_url = URL.new(policy_url, key_store_name)
             end

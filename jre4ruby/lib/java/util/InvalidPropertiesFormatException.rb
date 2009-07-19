@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 2003 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -33,7 +32,6 @@ module Java::Util
     }
   end
   
-  # 
   # Thrown to indicate that an operation could not complete because
   # the input did not conform to the appropriate XML document type
   # for a collection of properties, as per the {@link Properties}
@@ -50,7 +48,6 @@ module Java::Util
     include_class_members InvalidPropertiesFormatExceptionImports
     
     typesig { [Exception] }
-    # 
     # Constructs an InvalidPropertiesFormatException with the specified
     # cause.
     # 
@@ -62,7 +59,6 @@ module Java::Util
     end
     
     typesig { [String] }
-    # 
     # Constructs an InvalidPropertiesFormatException with the specified
     # detail message.
     # 
@@ -73,7 +69,6 @@ module Java::Util
     end
     
     typesig { [Java::Io::ObjectOutputStream] }
-    # 
     # Throws NotSerializableException, since InvalidPropertiesFormatException
     # objects are not intended to be serializable.
     def write_object(out)
@@ -81,7 +76,6 @@ module Java::Util
     end
     
     typesig { [Java::Io::ObjectInputStream] }
-    # 
     # Throws NotSerializableException, since InvalidPropertiesFormatException
     # objects are not intended to be serializable.
     def read_object(in_)

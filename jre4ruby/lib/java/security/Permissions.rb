@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 1997-2006 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -45,7 +44,6 @@ module Java::Security
     }
   end
   
-  # 
   # This class represents a heterogeneous collection of Permissions. That is,
   # it contains different types of Permission objects, organized into
   # PermissionCollections. For example, if any
@@ -85,7 +83,6 @@ module Java::Security
     include_class_members PermissionsImports
     include Serializable
     
-    # 
     # Key is permissions Class, value is PermissionCollection for that class.
     # Not serialized; see serialization section at end of class.
     attr_accessor :perms_map
@@ -111,7 +108,6 @@ module Java::Security
     undef_method :all_permission=
     
     typesig { [] }
-    # 
     # Creates a new Permissions object containing no PermissionCollections.
     def initialize
       @perms_map = nil
@@ -124,7 +120,6 @@ module Java::Security
     end
     
     typesig { [Permission] }
-    # 
     # Adds a permission object to the PermissionCollection for the class the
     # permission belongs to. For example, if <i>permission</i> is a
     # FilePermission, it is added to the FilePermissionCollection stored
@@ -159,7 +154,6 @@ module Java::Security
     end
     
     typesig { [Permission] }
-    # 
     # Checks to see if this object's PermissionCollection for permissions of
     # the specified permission's class implies the permissions
     # expressed in the <i>permission</i> object. Returns true if the
@@ -203,7 +197,6 @@ module Java::Security
     end
     
     typesig { [] }
-    # 
     # Returns an enumeration of all the Permission objects in all the
     # PermissionCollections in this Permissions object.
     # 
@@ -217,7 +210,6 @@ module Java::Security
     end
     
     typesig { [Permission, ::Java::Boolean] }
-    # 
     # Gets the PermissionCollection in this Permissions object for
     # permissions whose type is the same as that of <i>p</i>.
     # For example, if <i>p</i> is a FilePermission,
@@ -274,7 +266,6 @@ module Java::Security
     end
     
     typesig { [Permission] }
-    # 
     # Resolves any unresolved permissions of type p.
     # 
     # @param p the type of unresolved permission to resolve
@@ -352,7 +343,6 @@ module Java::Security
     }
     
     typesig { [ObjectOutputStream] }
-    # 
     # @serialData Default fields.
     # 
     # 
@@ -374,7 +364,6 @@ module Java::Security
     end
     
     typesig { [ObjectInputStream] }
-    # 
     # Reads in a Hashtable of Class/PermissionCollections and saves them in the
     # permsMap field. Reads in allPermission.
     def read_object(in_)
@@ -468,7 +457,6 @@ module Java::Security
     alias_method :initialize__permissions_enumerator, :initialize
   end
   
-  # 
   # A PermissionsHash stores a homogeneous set of permissions in a hashtable.
   # 
   # @see Permission
@@ -482,7 +470,6 @@ module Java::Security
     include_class_members PermissionsImports
     include Serializable
     
-    # 
     # Key and value are (same) permissions objects.
     # Not serialized; see serialization section at end of class.
     attr_accessor :perms_map
@@ -492,7 +479,6 @@ module Java::Security
     undef_method :perms_map=
     
     typesig { [] }
-    # 
     # Create an empty PermissionsHash object.
     def initialize
       @perms_map = nil
@@ -501,7 +487,6 @@ module Java::Security
     end
     
     typesig { [Permission] }
-    # 
     # Adds a permission to the PermissionsHash.
     # 
     # @param permission the Permission object to add.
@@ -512,7 +497,6 @@ module Java::Security
     end
     
     typesig { [Permission] }
-    # 
     # Check and see if this set of permissions implies the permissions
     # expressed in "permission".
     # 
@@ -540,7 +524,6 @@ module Java::Security
     end
     
     typesig { [] }
-    # 
     # Returns an enumeration of all the Permission objects in the container.
     # 
     # @return an enumeration of all the Permissions.
@@ -566,7 +549,6 @@ module Java::Security
     }
     
     typesig { [ObjectOutputStream] }
-    # 
     # @serialData Default fields.
     # 
     # 
@@ -586,7 +568,6 @@ module Java::Security
     end
     
     typesig { [ObjectInputStream] }
-    # 
     # Reads in a Hashtable of Permission/Permission and saves them in the
     # permsMap field.
     def read_object(in_)

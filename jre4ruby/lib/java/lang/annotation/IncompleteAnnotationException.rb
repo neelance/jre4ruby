@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 2003-2004 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -31,7 +30,6 @@ module Java::Lang::Annotation
     }
   end
   
-  # 
   # Thrown to indicate that a program has attempted to access an element of
   # an annotation type that was added to the annotation type definition after
   # the annotation was compiled (or serialized).  This exception will not be
@@ -55,7 +53,6 @@ module Java::Lang::Annotation
     undef_method :element_name=
     
     typesig { [Class, String] }
-    # 
     # Constructs an IncompleteAnnotationException to indicate that
     # the named element was missing from the specified annotation type.
     # 
@@ -70,7 +67,6 @@ module Java::Lang::Annotation
     end
     
     typesig { [] }
-    # 
     # Returns the Class object for the annotation type with the
     # missing element.
     # 
@@ -81,7 +77,6 @@ module Java::Lang::Annotation
     end
     
     typesig { [] }
-    # 
     # Returns the name of the missing element.
     # 
     # @return the name of the missing element

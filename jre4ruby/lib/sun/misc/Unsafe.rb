@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 2000-2006 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -33,7 +32,6 @@ module Sun::Misc
     }
   end
   
-  # 
   # A collection of methods for performing low-level, unsafe operations.
   # Although the class and all methods are public, use of this class is
   # limited because only trusted code can obtain instances of it.
@@ -65,7 +63,6 @@ module Sun::Misc
       const_attr_reader  :TheUnsafe
       
       typesig { [] }
-      # 
       # Provides the caller with the capability of performing unsafe
       # operations.
       # 
@@ -168,7 +165,6 @@ module Sun::Misc
     
     JNI.native_method "Java_sun_misc_Unsafe_putInt__L#{Object.jni_name}_2JI".to_sym, [:pointer, :long, :long, :int64, :int32], :void
     typesig { [Object, ::Java::Long, ::Java::Int] }
-    # 
     # Stores a value into a given Java variable.
     # <p>
     # The first two parameters are interpreted exactly as with
@@ -193,7 +189,6 @@ module Sun::Misc
     
     JNI.native_method :Java_sun_misc_Unsafe_getObject, [:pointer, :long, :long, :int64], :long
     typesig { [Object, ::Java::Long] }
-    # 
     # Fetches a reference value from a given Java variable.
     # @see #getInt(Object, long)
     def get_object(o, offset)
@@ -202,7 +197,6 @@ module Sun::Misc
     
     JNI.native_method :Java_sun_misc_Unsafe_putObject, [:pointer, :long, :long, :int64, :long], :void
     typesig { [Object, ::Java::Long, Object] }
-    # 
     # Stores a reference value into a given Java variable.
     # <p>
     # Unless the reference <code>x</code> being stored is either null
@@ -314,7 +308,6 @@ module Sun::Misc
     end
     
     typesig { [Object, ::Java::Int] }
-    # 
     # This method, like all others with 32-bit offsets, was native
     # in a previous release but is now a wrapper which simply casts
     # the offset to a long value.  It provides backward compatibility
@@ -326,7 +319,6 @@ module Sun::Misc
     end
     
     typesig { [Object, ::Java::Int, ::Java::Int] }
-    # 
     # @deprecated As of 1.4.1, cast the 32-bit offset argument to a long.
     # See {@link #staticFieldOffset}.
     def put_int(o, offset, x)
@@ -334,7 +326,6 @@ module Sun::Misc
     end
     
     typesig { [Object, ::Java::Int] }
-    # 
     # @deprecated As of 1.4.1, cast the 32-bit offset argument to a long.
     # See {@link #staticFieldOffset}.
     def get_object(o, offset)
@@ -342,7 +333,6 @@ module Sun::Misc
     end
     
     typesig { [Object, ::Java::Int, Object] }
-    # 
     # @deprecated As of 1.4.1, cast the 32-bit offset argument to a long.
     # See {@link #staticFieldOffset}.
     def put_object(o, offset, x)
@@ -350,7 +340,6 @@ module Sun::Misc
     end
     
     typesig { [Object, ::Java::Int] }
-    # 
     # @deprecated As of 1.4.1, cast the 32-bit offset argument to a long.
     # See {@link #staticFieldOffset}.
     def get_boolean(o, offset)
@@ -358,7 +347,6 @@ module Sun::Misc
     end
     
     typesig { [Object, ::Java::Int, ::Java::Boolean] }
-    # 
     # @deprecated As of 1.4.1, cast the 32-bit offset argument to a long.
     # See {@link #staticFieldOffset}.
     def put_boolean(o, offset, x)
@@ -366,7 +354,6 @@ module Sun::Misc
     end
     
     typesig { [Object, ::Java::Int] }
-    # 
     # @deprecated As of 1.4.1, cast the 32-bit offset argument to a long.
     # See {@link #staticFieldOffset}.
     def get_byte(o, offset)
@@ -374,7 +361,6 @@ module Sun::Misc
     end
     
     typesig { [Object, ::Java::Int, ::Java::Byte] }
-    # 
     # @deprecated As of 1.4.1, cast the 32-bit offset argument to a long.
     # See {@link #staticFieldOffset}.
     def put_byte(o, offset, x)
@@ -382,7 +368,6 @@ module Sun::Misc
     end
     
     typesig { [Object, ::Java::Int] }
-    # 
     # @deprecated As of 1.4.1, cast the 32-bit offset argument to a long.
     # See {@link #staticFieldOffset}.
     def get_short(o, offset)
@@ -390,7 +375,6 @@ module Sun::Misc
     end
     
     typesig { [Object, ::Java::Int, ::Java::Short] }
-    # 
     # @deprecated As of 1.4.1, cast the 32-bit offset argument to a long.
     # See {@link #staticFieldOffset}.
     def put_short(o, offset, x)
@@ -398,7 +382,6 @@ module Sun::Misc
     end
     
     typesig { [Object, ::Java::Int] }
-    # 
     # @deprecated As of 1.4.1, cast the 32-bit offset argument to a long.
     # See {@link #staticFieldOffset}.
     def get_char(o, offset)
@@ -406,7 +389,6 @@ module Sun::Misc
     end
     
     typesig { [Object, ::Java::Int, ::Java::Char] }
-    # 
     # @deprecated As of 1.4.1, cast the 32-bit offset argument to a long.
     # See {@link #staticFieldOffset}.
     def put_char(o, offset, x)
@@ -414,7 +396,6 @@ module Sun::Misc
     end
     
     typesig { [Object, ::Java::Int] }
-    # 
     # @deprecated As of 1.4.1, cast the 32-bit offset argument to a long.
     # See {@link #staticFieldOffset}.
     def get_long(o, offset)
@@ -422,7 +403,6 @@ module Sun::Misc
     end
     
     typesig { [Object, ::Java::Int, ::Java::Long] }
-    # 
     # @deprecated As of 1.4.1, cast the 32-bit offset argument to a long.
     # See {@link #staticFieldOffset}.
     def put_long(o, offset, x)
@@ -430,7 +410,6 @@ module Sun::Misc
     end
     
     typesig { [Object, ::Java::Int] }
-    # 
     # @deprecated As of 1.4.1, cast the 32-bit offset argument to a long.
     # See {@link #staticFieldOffset}.
     def get_float(o, offset)
@@ -438,7 +417,6 @@ module Sun::Misc
     end
     
     typesig { [Object, ::Java::Int, ::Java::Float] }
-    # 
     # @deprecated As of 1.4.1, cast the 32-bit offset argument to a long.
     # See {@link #staticFieldOffset}.
     def put_float(o, offset, x)
@@ -446,7 +424,6 @@ module Sun::Misc
     end
     
     typesig { [Object, ::Java::Int] }
-    # 
     # @deprecated As of 1.4.1, cast the 32-bit offset argument to a long.
     # See {@link #staticFieldOffset}.
     def get_double(o, offset)
@@ -454,7 +431,6 @@ module Sun::Misc
     end
     
     typesig { [Object, ::Java::Int, ::Java::Double] }
-    # 
     # @deprecated As of 1.4.1, cast the 32-bit offset argument to a long.
     # See {@link #staticFieldOffset}.
     def put_double(o, offset, x)
@@ -476,7 +452,6 @@ module Sun::Misc
     
     JNI.native_method :Java_sun_misc_Unsafe_putByte__JB, [:pointer, :long, :int64, :int8], :void
     typesig { [::Java::Long, ::Java::Byte] }
-    # 
     # Stores a value into a given memory address.  If the address is zero, or
     # does not point into a block obtained from {@link #allocateMemory}, the
     # results are undefined.
@@ -572,7 +547,6 @@ module Sun::Misc
     
     JNI.native_method :Java_sun_misc_Unsafe_getAddress, [:pointer, :long, :int64], :int64
     typesig { [::Java::Long] }
-    # 
     # Fetches a native pointer from a given memory address.  If the address is
     # zero, or does not point into a block obtained from {@link
     # #allocateMemory}, the results are undefined.
@@ -591,7 +565,6 @@ module Sun::Misc
     
     JNI.native_method :Java_sun_misc_Unsafe_putAddress, [:pointer, :long, :int64, :int64], :void
     typesig { [::Java::Long, ::Java::Long] }
-    # 
     # Stores a native pointer into a given memory address.  If the address is
     # zero, or does not point into a block obtained from {@link
     # #allocateMemory}, the results are undefined.
@@ -627,7 +600,6 @@ module Sun::Misc
     
     JNI.native_method :Java_sun_misc_Unsafe_reallocateMemory, [:pointer, :long, :int64, :int64], :int64
     typesig { [::Java::Long, ::Java::Long] }
-    # 
     # Resizes a new block of native memory, to the given size in bytes.  The
     # contents of the new block past the size of the old block are
     # uninitialized; they will generally be garbage.  The resulting native
@@ -649,7 +621,6 @@ module Sun::Misc
     
     JNI.native_method :Java_sun_misc_Unsafe_setMemory, [:pointer, :long, :int64, :int64, :int8], :void
     typesig { [::Java::Long, ::Java::Long, ::Java::Byte] }
-    # 
     # Sets all bytes in a given block of memory to a fixed value
     # (usually zero).
     def set_memory(address, bytes, value)
@@ -658,7 +629,6 @@ module Sun::Misc
     
     JNI.native_method :Java_sun_misc_Unsafe_copyMemory, [:pointer, :long, :int64, :int64, :int64], :void
     typesig { [::Java::Long, ::Java::Long, ::Java::Long] }
-    # 
     # Sets all bytes in a given block of memory to a copy of another
     # block.
     def copy_memory(src_address, dest_address, bytes)
@@ -667,7 +637,6 @@ module Sun::Misc
     
     JNI.native_method :Java_sun_misc_Unsafe_freeMemory, [:pointer, :long, :int64], :void
     typesig { [::Java::Long] }
-    # 
     # Disposes of a block of native memory, as obtained from {@link
     # #allocateMemory} or {@link #reallocateMemory}.  The address passed to
     # this method may be null, in which case no action is taken.
@@ -688,7 +657,6 @@ module Sun::Misc
     }
     
     typesig { [Field] }
-    # 
     # Returns the offset of a field, truncated to 32 bits.
     # This method is implemented as follows:
     # <blockquote><pre>
@@ -710,7 +678,6 @@ module Sun::Misc
     end
     
     typesig { [Class] }
-    # 
     # Returns the base address for accessing some static field
     # in the given class.  This method is implemented as follows:
     # <blockquote><pre>
@@ -742,7 +709,6 @@ module Sun::Misc
     
     JNI.native_method :Java_sun_misc_Unsafe_staticFieldOffset, [:pointer, :long, :long], :int64
     typesig { [Field] }
-    # 
     # Report the location of a given field in the storage allocation of its
     # class.  Do not expect to perform any sort of arithmetic on this offset;
     # it is just a cookie which is passed to the unsafe heap memory accessors.
@@ -765,7 +731,6 @@ module Sun::Misc
     
     JNI.native_method :Java_sun_misc_Unsafe_objectFieldOffset, [:pointer, :long, :long], :int64
     typesig { [Field] }
-    # 
     # Report the location of a given static field, in conjunction with {@link
     # #staticFieldBase}.
     # <p>Do not expect to perform any sort of arithmetic on this offset;
@@ -787,7 +752,6 @@ module Sun::Misc
     
     JNI.native_method :Java_sun_misc_Unsafe_staticFieldBase, [:pointer, :long, :long], :long
     typesig { [Field] }
-    # 
     # Report the location of a given static field, in conjunction with {@link
     # #staticFieldOffset}.
     # <p>Fetch the base "Object", if any, with which static fields of the
@@ -802,7 +766,6 @@ module Sun::Misc
     
     JNI.native_method :Java_sun_misc_Unsafe_ensureClassInitialized, [:pointer, :long, :long], :void
     typesig { [Class] }
-    # 
     # Ensure the given class has been initialized. This is often
     # needed in conjunction with obtaining the static field base of a
     # class.
@@ -812,7 +775,6 @@ module Sun::Misc
     
     JNI.native_method :Java_sun_misc_Unsafe_arrayBaseOffset, [:pointer, :long, :long], :int32
     typesig { [Class] }
-    # 
     # Report the offset of the first element in the storage allocation of a
     # given array class.  If {@link #arrayIndexScale} returns a non-zero value
     # for the same class, you may use that scale factor, together with this
@@ -827,7 +789,6 @@ module Sun::Misc
     
     JNI.native_method :Java_sun_misc_Unsafe_arrayIndexScale, [:pointer, :long, :long], :int32
     typesig { [Class] }
-    # 
     # Report the scale factor for addressing elements in the storage
     # allocation of a given array class.  However, arrays of "narrow" types
     # will generally not work properly with accessors like {@link
@@ -843,7 +804,6 @@ module Sun::Misc
     
     JNI.native_method :Java_sun_misc_Unsafe_addressSize, [:pointer, :long], :int32
     typesig { [] }
-    # 
     # Report the size in bytes of a native pointer, as stored via {@link
     # #putAddress}.  This value will be either 4 or 8.  Note that the sizes of
     # other primitive types (as stored in native memory blocks) is determined
@@ -854,7 +814,6 @@ module Sun::Misc
     
     JNI.native_method :Java_sun_misc_Unsafe_pageSize, [:pointer, :long], :int32
     typesig { [] }
-    # 
     # Report the size in bytes of a native memory page (whatever that is).
     # This value will always be a power of two.
     def page_size
@@ -894,7 +853,6 @@ module Sun::Misc
     
     JNI.native_method :Java_sun_misc_Unsafe_monitorExit, [:pointer, :long, :long], :void
     typesig { [Object] }
-    # 
     # Unlock the object.  It must have been locked via {@link
     # #monitorEnter}.
     def monitor_exit(o)
@@ -903,7 +861,6 @@ module Sun::Misc
     
     JNI.native_method :Java_sun_misc_Unsafe_tryMonitorEnter, [:pointer, :long, :long], :int8
     typesig { [Object] }
-    # 
     # Tries to lock the object.  Returns true or false to indicate
     # whether the lock succeeded.  If it did, the object must be
     # unlocked via {@link #monitorExit}.
@@ -920,7 +877,6 @@ module Sun::Misc
     
     JNI.native_method :Java_sun_misc_Unsafe_compareAndSwapObject, [:pointer, :long, :long, :int64, :long, :long], :int8
     typesig { [Object, ::Java::Long, Object, Object] }
-    # 
     # Atomically update Java variable to <tt>x</tt> if it is currently
     # holding <tt>expected</tt>.
     # @return <tt>true</tt> if successful
@@ -930,7 +886,6 @@ module Sun::Misc
     
     JNI.native_method :Java_sun_misc_Unsafe_compareAndSwapInt, [:pointer, :long, :long, :int64, :int32, :int32], :int8
     typesig { [Object, ::Java::Long, ::Java::Int, ::Java::Int] }
-    # 
     # Atomically update Java variable to <tt>x</tt> if it is currently
     # holding <tt>expected</tt>.
     # @return <tt>true</tt> if successful
@@ -940,7 +895,6 @@ module Sun::Misc
     
     JNI.native_method :Java_sun_misc_Unsafe_compareAndSwapLong, [:pointer, :long, :long, :int64, :int64, :int64], :int8
     typesig { [Object, ::Java::Long, ::Java::Long, ::Java::Long] }
-    # 
     # Atomically update Java variable to <tt>x</tt> if it is currently
     # holding <tt>expected</tt>.
     # @return <tt>true</tt> if successful
@@ -950,7 +904,6 @@ module Sun::Misc
     
     JNI.native_method :Java_sun_misc_Unsafe_getObjectVolatile, [:pointer, :long, :long, :int64], :long
     typesig { [Object, ::Java::Long] }
-    # 
     # Fetches a reference value from a given Java variable, with volatile
     # load semantics. Otherwise identical to {@link #getObject(Object, long)}
     def get_object_volatile(o, offset)
@@ -959,7 +912,6 @@ module Sun::Misc
     
     JNI.native_method :Java_sun_misc_Unsafe_putObjectVolatile, [:pointer, :long, :long, :int64, :long], :void
     typesig { [Object, ::Java::Long, Object] }
-    # 
     # Stores a reference value into a given Java variable, with
     # volatile store semantics. Otherwise identical to {@link #putObject(Object, long, Object)}
     def put_object_volatile(o, offset, x)
@@ -1080,7 +1032,6 @@ module Sun::Misc
     
     JNI.native_method :Java_sun_misc_Unsafe_putOrderedObject, [:pointer, :long, :long, :int64, :long], :void
     typesig { [Object, ::Java::Long, Object] }
-    # 
     # Version of {@link #putObjectVolatile(Object, long, Object)}
     # that does not guarantee immediate visibility of the store to
     # other threads. This method is generally only useful if the
@@ -1106,7 +1057,6 @@ module Sun::Misc
     
     JNI.native_method :Java_sun_misc_Unsafe_unpark, [:pointer, :long, :long], :void
     typesig { [Object] }
-    # 
     # Unblock the given thread blocked on <tt>park</tt>, or, if it is
     # not blocked, cause the subsequent call to <tt>park</tt> not to
     # block.  Note: this operation is "unsafe" solely because the
@@ -1122,7 +1072,6 @@ module Sun::Misc
     
     JNI.native_method :Java_sun_misc_Unsafe_park, [:pointer, :long, :int8, :int64], :void
     typesig { [::Java::Boolean, ::Java::Long] }
-    # 
     # Block current thread, returning when a balancing
     # <tt>unpark</tt> occurs, or a balancing <tt>unpark</tt> has
     # already occurred, or the thread is interrupted, or, if not
@@ -1138,7 +1087,6 @@ module Sun::Misc
     
     JNI.native_method :Java_sun_misc_Unsafe_getLoadAverage, [:pointer, :long, :long, :int32], :int32
     typesig { [Array.typed(::Java::Double), ::Java::Int] }
-    # 
     # Gets the load average in the system run queue assigned
     # to the available processors averaged over various periods of time.
     # This method retrieves the given <tt>nelem</tt> samples and

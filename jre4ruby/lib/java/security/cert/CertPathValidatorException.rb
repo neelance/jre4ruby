@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 2000-2005 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -32,7 +31,6 @@ module Java::Security::Cert
     }
   end
   
-  # 
   # An exception indicating one of a variety of problems encountered when
   # validating a certification path.
   # <p>
@@ -67,7 +65,6 @@ module Java::Security::Cert
       const_attr_reader  :SerialVersionUID
     }
     
-    # 
     # @serial the index of the certificate in the certification path
     # that caused the exception to be thrown
     attr_accessor :index
@@ -76,7 +73,6 @@ module Java::Security::Cert
     alias_method :attr_index=, :index=
     undef_method :index=
     
-    # 
     # @serial the <code>CertPath</code> that was being validated when
     # the exception was thrown
     attr_accessor :cert_path
@@ -86,7 +82,6 @@ module Java::Security::Cert
     undef_method :cert_path=
     
     typesig { [] }
-    # 
     # Creates a <code>CertPathValidatorException</code> with
     # no detail message.
     def initialize
@@ -97,7 +92,6 @@ module Java::Security::Cert
     end
     
     typesig { [String] }
-    # 
     # Creates a <code>CertPathValidatorException</code> with the given
     # detail message. A detail message is a <code>String</code> that
     # describes this particular exception.
@@ -111,7 +105,6 @@ module Java::Security::Cert
     end
     
     typesig { [Exception] }
-    # 
     # Creates a <code>CertPathValidatorException</code> that wraps the
     # specified throwable. This allows any exception to be converted into a
     # <code>CertPathValidatorException</code>, while retaining information
@@ -131,7 +124,6 @@ module Java::Security::Cert
     end
     
     typesig { [String, Exception] }
-    # 
     # Creates a <code>CertPathValidatorException</code> with the specified
     # detail message and cause.
     # 
@@ -147,7 +139,6 @@ module Java::Security::Cert
     end
     
     typesig { [String, Exception, CertPath, ::Java::Int] }
-    # 
     # Creates a <code>CertPathValidatorException</code> with the specified
     # detail message, cause, certification path, and index.
     # 
@@ -179,7 +170,6 @@ module Java::Security::Cert
     end
     
     typesig { [] }
-    # 
     # Returns the certification path that was being validated when
     # the exception was thrown.
     # 
@@ -190,7 +180,6 @@ module Java::Security::Cert
     end
     
     typesig { [] }
-    # 
     # Returns the index of the certificate in the certification path
     # that caused the exception to be thrown. Note that the list of
     # certificates in a <code>CertPath</code> is zero based. If no

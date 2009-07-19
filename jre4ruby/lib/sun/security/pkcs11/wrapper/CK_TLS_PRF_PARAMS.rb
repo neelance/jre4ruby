@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 2005 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -31,7 +30,6 @@ module Sun::Security::Pkcs11::Wrapper
     }
   end
   
-  # 
   # CK_TLS_PRF_PARAMS from PKCS#11 v2.20.
   # 
   # @author  Andreas Sterbenz

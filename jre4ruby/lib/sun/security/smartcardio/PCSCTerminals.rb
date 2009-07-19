@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 2005-2006 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -34,7 +33,6 @@ module Sun::Security::Smartcardio
     }
   end
   
-  # 
   # TerminalFactorySpi implementation class.
   # 
   # @since   1.6
@@ -250,9 +248,9 @@ module Sun::Security::Smartcardio
           @state_map.clear # remove any readers that are no longer available
           i_ = 0
           while i_ < n
-            state_ = reader_states[i_]
-            state_.update(status[i_])
-            @state_map.put(reader_names[i_], state_)
+            state = reader_states[i_]
+            state.update(status[i_])
+            @state_map.put(reader_names[i_], state)
             ((i_ += 1) - 1)
           end
           return true

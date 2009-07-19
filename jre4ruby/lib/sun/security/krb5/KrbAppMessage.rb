@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
 # This code is free software; you can redistribute it and/or modify it
@@ -52,7 +51,6 @@ module Sun::Security::Krb5
     }
     
     typesig { [KerberosTime, JavaInteger, JavaInteger, HostAddress, HostAddress, SeqNumber, HostAddress, HostAddress, ::Java::Boolean, ::Java::Boolean, PrincipalName, Realm] }
-    # 
     # Common checks for KRB-PRIV and KRB-SAFE
     def check(packet_timestamp, packet_usec, packet_seq_number, packet_saddress, packet_raddress, seq_number, s_address, r_address, timestamp_required, seq_number_required, packet_principal, packet_realm)
       if (!Krb5::AP_EMPTY_ADDRESSES_ALLOWED || !(s_address).nil?)

@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 1996-2006 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -55,8 +54,6 @@ module Java::Util
     }
   end
   
-  # 
-  # 
   # A <code>Locale</code> object represents a specific geographical, political,
   # or cultural region. An operation that requires a <code>Locale</code> to perform
   # its task is called <em>locale-sensitive</em> and uses the <code>Locale</code>
@@ -259,7 +256,6 @@ module Java::Util
       const_set_lazy(:CANADA_FRENCH) { create_singleton("fr_CA_", "fr", "CA") }
       const_attr_reader  :CANADA_FRENCH
       
-      # 
       # Useful constant for the root locale.  The root locale is the locale whose
       # language, country, and variant are empty ("") strings.  This is regarded
       # as the base locale of all locales, and is used as the language/country
@@ -273,7 +269,6 @@ module Java::Util
       const_set_lazy(:SerialVersionUID) { 9149081749638150636 }
       const_attr_reader  :SerialVersionUID
       
-      # 
       # Display types for retrieving localized names from the name providers.
       const_set_lazy(:DISPLAY_LANGUAGE) { 0 }
       const_attr_reader  :DISPLAY_LANGUAGE
@@ -286,7 +281,6 @@ module Java::Util
     }
     
     typesig { [String, String, String] }
-    # 
     # Construct a locale from language, country, variant.
     # NOTE:  ISO 639 is not a stable standard; some of the language codes it defines
     # (specifically iw, ji, and in) have changed.  This constructor accepts both the
@@ -308,7 +302,6 @@ module Java::Util
     end
     
     typesig { [String, String] }
-    # 
     # Construct a locale from language, country.
     # NOTE:  ISO 639 is not a stable standard; some of the language codes it defines
     # (specifically iw, ji, and in) have changed.  This constructor accepts both the
@@ -322,7 +315,6 @@ module Java::Util
     end
     
     typesig { [String] }
-    # 
     # Construct a locale from a language code.
     # NOTE:  ISO 639 is not a stable standard; some of the language codes it defines
     # (specifically iw, ji, and in) have changed.  This constructor accepts both the
@@ -336,7 +328,6 @@ module Java::Util
     end
     
     typesig { [String, String, ::Java::Boolean] }
-    # 
     # Constructs a <code>Locale</code> using <code>language</code>
     # and <code>country</code>.  This constructor assumes that
     # <code>language</code> and <code>contry</code> are interned and
@@ -355,7 +346,6 @@ module Java::Util
     
     class_module.module_eval {
       typesig { [String, String, String] }
-      # 
       # Creates a <code>Locale</code> instance with the given
       # <code>language</code> and <code>counry</code> and puts the
       # instance under the given <code>key</code> in the cache. This
@@ -368,7 +358,6 @@ module Java::Util
       end
       
       typesig { [String, String, String] }
-      # 
       # Returns a <code>Locale</code> constructed from the given
       # <code>language</code>, <code>country</code> and
       # <code>variant</code>. If the same <code>Locale</code> instance
@@ -400,7 +389,6 @@ module Java::Util
       end
       
       typesig { [] }
-      # 
       # Gets the current value of the default locale for this instance
       # of the Java Virtual Machine.
       # <p>
@@ -442,7 +430,6 @@ module Java::Util
       end
       
       typesig { [Locale] }
-      # 
       # Sets the default locale for this instance of the Java Virtual Machine.
       # This does not affect the host locale.
       # <p>
@@ -480,7 +467,6 @@ module Java::Util
       end
       
       typesig { [] }
-      # 
       # Returns an array of all installed locales.
       # The returned array represents the union of locales supported
       # by the Java runtime environment and by installed
@@ -494,7 +480,6 @@ module Java::Util
       end
       
       typesig { [] }
-      # 
       # Returns a list of all 2-letter country codes defined in ISO 3166.
       # Can be used to create Locales.
       def get_isocountries
@@ -507,7 +492,6 @@ module Java::Util
       end
       
       typesig { [] }
-      # 
       # Returns a list of all 2-letter language codes defined in ISO 639.
       # Can be used to create Locales.
       # [NOTE:  ISO 639 is not a stable standard-- some languages' codes have changed.
@@ -538,7 +522,6 @@ module Java::Util
     }
     
     typesig { [] }
-    # 
     # Returns the language code for this locale, which will either be the empty string
     # or a lowercase ISO 639 code.
     # <p>NOTE:  ISO 639 is not a stable standard-- some languages' codes have changed.
@@ -556,7 +539,6 @@ module Java::Util
     end
     
     typesig { [] }
-    # 
     # Returns the country/region code for this locale, which will
     # either be the empty string or an uppercase ISO 3166 2-letter code.
     # @see #getDisplayCountry
@@ -565,7 +547,6 @@ module Java::Util
     end
     
     typesig { [] }
-    # 
     # Returns the variant code for this locale.
     # @see #getDisplayVariant
     def get_variant
@@ -573,7 +554,6 @@ module Java::Util
     end
     
     typesig { [] }
-    # 
     # Getter for the programmatic name of the entire locale,
     # with the language, country and variant separated by underbars.
     # Language is always lower case, and country is always upper case.
@@ -599,7 +579,6 @@ module Java::Util
     end
     
     typesig { [] }
-    # 
     # Returns a three-letter abbreviation for this locale's language.  If the locale
     # doesn't specify a language, this will be the empty string.  Otherwise, this will
     # be a lowercase ISO 639-2/T language code.
@@ -617,7 +596,6 @@ module Java::Util
     end
     
     typesig { [] }
-    # 
     # Returns a three-letter abbreviation for this locale's country.  If the locale
     # doesn't specify a country, this will be the empty string.  Otherwise, this will
     # be an uppercase ISO 3166 3-letter country code.
@@ -659,7 +637,6 @@ module Java::Util
     }
     
     typesig { [] }
-    # 
     # Returns a name for the locale's language that is appropriate for display to the
     # user.
     # If possible, the name returned will be localized for the default locale.
@@ -675,7 +652,6 @@ module Java::Util
     end
     
     typesig { [Locale] }
-    # 
     # Returns a name for the locale's language that is appropriate for display to the
     # user.
     # If possible, the name returned will be localized according to inLocale.
@@ -694,7 +670,6 @@ module Java::Util
     end
     
     typesig { [] }
-    # 
     # Returns a name for the locale's country that is appropriate for display to the
     # user.
     # If possible, the name returned will be localized for the default locale.
@@ -710,7 +685,6 @@ module Java::Util
     end
     
     typesig { [Locale] }
-    # 
     # Returns a name for the locale's country that is appropriate for display to the
     # user.
     # If possible, the name returned will be localized according to inLocale.
@@ -759,7 +733,6 @@ module Java::Util
     end
     
     typesig { [] }
-    # 
     # Returns a name for the locale's variant code that is appropriate for display to the
     # user.  If possible, the name will be localized for the default locale.  If the locale
     # doesn't specify a variant code, this function returns the empty string.
@@ -768,7 +741,6 @@ module Java::Util
     end
     
     typesig { [Locale] }
-    # 
     # Returns a name for the locale's variant code that is appropriate for display to the
     # user.  If possible, the name will be localized for inLocale.  If the locale
     # doesn't specify a variant code, this function returns the empty string.
@@ -793,7 +765,6 @@ module Java::Util
     end
     
     typesig { [] }
-    # 
     # Returns a name for the locale that is appropriate for display to the
     # user.  This will be the values returned by getDisplayLanguage(), getDisplayCountry(),
     # and getDisplayVariant() assembled into a single string.  The display name will have
@@ -812,7 +783,6 @@ module Java::Util
     end
     
     typesig { [Locale] }
-    # 
     # Returns a name for the locale that is appropriate for display to the
     # user.  This will be the values returned by getDisplayLanguage(), getDisplayCountry(),
     # and getDisplayVariant() assembled into a single string.  The display name will have
@@ -896,7 +866,6 @@ module Java::Util
     end
     
     typesig { [] }
-    # 
     # Overrides Cloneable
     def clone
       begin
@@ -908,7 +877,6 @@ module Java::Util
     end
     
     typesig { [] }
-    # 
     # Override hashCode.
     # Since Locales are often used in hashtables, caches the value
     # for speed.
@@ -953,7 +921,6 @@ module Java::Util
     alias_method :attr_language=, :language=
     undef_method :language=
     
-    # 
     # @serial
     # @see #getCountry
     attr_accessor :country
@@ -962,7 +929,6 @@ module Java::Util
     alias_method :attr_country=, :country=
     undef_method :country=
     
-    # 
     # @serial
     # @see #getVariant
     attr_accessor :variant
@@ -971,7 +937,6 @@ module Java::Util
     alias_method :attr_variant=, :variant=
     undef_method :variant=
     
-    # 
     # Placeholder for the object's hash code.  Always -1.
     # @serial
     attr_accessor :hashcode
@@ -1003,7 +968,6 @@ module Java::Util
     }
     
     typesig { [OpenListResourceBundle, Locale] }
-    # 
     # Return an array of the display names of the variant.
     # @param bundle the ResourceBundle to use to get the display names
     # @return an array of display names, possible of zero length.
@@ -1023,7 +987,6 @@ module Java::Util
     
     class_module.module_eval {
       typesig { [Array.typed(String), String, String] }
-      # 
       # Format a list using given pattern strings.
       # If either of the patterns is null, then a the list is
       # formatted by concatenation with the delimiter ','.
@@ -1058,12 +1021,11 @@ module Java::Util
         System.arraycopy(string_list, 0, args, 1, string_list.attr_length)
         args[0] = string_list.attr_length
         # Format it using the pattern in the resource
-        format_ = MessageFormat.new(list_pattern)
-        return format_.format(args)
+        format = MessageFormat.new(list_pattern)
+        return format.format(args)
       end
       
       typesig { [MessageFormat, Array.typed(String)] }
-      # 
       # Given a list of strings, return a list shortened to three elements.
       # Shorten it by applying the given format to the first two elements
       # recursively.
@@ -1088,7 +1050,6 @@ module Java::Util
     }
     
     typesig { [] }
-    # 
     # Replace the deserialized Locale object with a newly
     # created object. Newer language codes are replaced with older ISO
     # codes. The country and variant codes are replaced with internalized
@@ -1122,7 +1083,6 @@ module Java::Util
     }
     
     typesig { [String] }
-    # 
     # Locale needs its own, locale insensitive version of toLowerCase to
     # avoid circularity problems between Locale and String.
     # The most straightforward algorithm is used. Look at optimizations later.
@@ -1137,7 +1097,6 @@ module Java::Util
     end
     
     typesig { [String] }
-    # 
     # Locale needs its own, locale insensitive version of toUpperCase to
     # avoid circularity problems between Locale and String.
     # The most straightforward algorithm is used. Look at optimizations later.
@@ -1172,7 +1131,6 @@ module Java::Util
     end
     
     class_module.module_eval {
-      # 
       # Obtains a localized locale names from a LocaleNameProvider
       # implementation.
       const_set_lazy(:LocaleNameGetter) { Class.new do

@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 2004 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -24,7 +23,6 @@ require "rjava"
 # CA 95054 USA or visit www.sun.com if you need additional information or
 # have any questions.
 module Java::Lang
-  # 
   # The set of warnings that are to be suppressed by the compiler in the
   # annotated element.  Duplicate names are permitted.  The second and
   # successive occurrences of a name are ignored.  The presence of
@@ -44,7 +42,6 @@ module Java::Lang
     }
   end
   
-  # 
   # Indicates that the named compiler warnings should be suppressed in the
   # annotated element (and in all program elements contained in the annotated
   # element).  Note that the set of warnings suppressed in a given element is

@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 1995-2007 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -46,7 +45,6 @@ module Java::Net
     }
   end
   
-  # 
   # This class represents an Internet Protocol (IP) address.
   # 
   # <p> An IP address is either a 32-bit or 128-bit unsigned number
@@ -187,13 +185,11 @@ module Java::Net
     include Java::Io::Serializable
     
     class_module.module_eval {
-      # 
       # Specify the address family: Internet Protocol, Version 4
       # @since 1.4
       const_set_lazy(:IPv4) { 1 }
       const_attr_reader  :IPv4
       
-      # 
       # Specify the address family: Internet Protocol, Version 6
       # @since 1.4
       const_set_lazy(:IPv6) { 2 }
@@ -212,7 +208,6 @@ module Java::Net
       alias_method :attr_prefer_ipv6address=, :prefer_ipv6address=
     }
     
-    # 
     # @serial
     attr_accessor :host_name
     alias_method :attr_host_name, :host_name
@@ -220,7 +215,6 @@ module Java::Net
     alias_method :attr_host_name=, :host_name=
     undef_method :host_name=
     
-    # 
     # Holds a 32-bit IPv4 address.
     # 
     # @serial
@@ -230,7 +224,6 @@ module Java::Net
     alias_method :attr_address=, :address=
     undef_method :address=
     
-    # 
     # Specifies the address family type, for instance, '1' for IPv4
     # addresses, and '2' for IPv6 addresses.
     # 
@@ -267,7 +260,6 @@ module Java::Net
       const_set_lazy(:SerialVersionUID) { 3286316764910316507 }
       const_attr_reader  :SerialVersionUID
       
-      # 
       # Load net library into runtime, and perform initializations.
       when_class_loaded do
         self.attr_prefer_ipv6address = Java::Security::AccessController.do_privileged(GetBooleanAction.new("java.net.preferIPv6Addresses")).boolean_value
@@ -277,7 +269,6 @@ module Java::Net
     }
     
     typesig { [] }
-    # 
     # Constructor for the Socket.accept() method.
     # This creates an empty InetAddress, which is filled in by
     # the accept() method.  This InetAddress, however, is not
@@ -290,7 +281,6 @@ module Java::Net
     end
     
     typesig { [] }
-    # 
     # Replaces the de-serialized object with an Inet4Address object.
     # 
     # @return the alternate object to the de-serialized object.
@@ -303,7 +293,6 @@ module Java::Net
     end
     
     typesig { [] }
-    # 
     # Utility routine to check if the InetAddress is an
     # IP multicast address.
     # @return a <code>boolean</code> indicating if the InetAddress is
@@ -314,7 +303,6 @@ module Java::Net
     end
     
     typesig { [] }
-    # 
     # Utility routine to check if the InetAddress in a wildcard address.
     # @return a <code>boolean</code> indicating if the Inetaddress is
     # a wildcard address.
@@ -324,7 +312,6 @@ module Java::Net
     end
     
     typesig { [] }
-    # 
     # Utility routine to check if the InetAddress is a loopback address.
     # 
     # @return a <code>boolean</code> indicating if the InetAddress is
@@ -335,7 +322,6 @@ module Java::Net
     end
     
     typesig { [] }
-    # 
     # Utility routine to check if the InetAddress is an link local address.
     # 
     # @return a <code>boolean</code> indicating if the InetAddress is
@@ -346,7 +332,6 @@ module Java::Net
     end
     
     typesig { [] }
-    # 
     # Utility routine to check if the InetAddress is a site local address.
     # 
     # @return a <code>boolean</code> indicating if the InetAddress is
@@ -357,7 +342,6 @@ module Java::Net
     end
     
     typesig { [] }
-    # 
     # Utility routine to check if the multicast address has global scope.
     # 
     # @return a <code>boolean</code> indicating if the address has
@@ -369,7 +353,6 @@ module Java::Net
     end
     
     typesig { [] }
-    # 
     # Utility routine to check if the multicast address has node scope.
     # 
     # @return a <code>boolean</code> indicating if the address has
@@ -381,7 +364,6 @@ module Java::Net
     end
     
     typesig { [] }
-    # 
     # Utility routine to check if the multicast address has link scope.
     # 
     # @return a <code>boolean</code> indicating if the address has
@@ -393,7 +375,6 @@ module Java::Net
     end
     
     typesig { [] }
-    # 
     # Utility routine to check if the multicast address has site scope.
     # 
     # @return a <code>boolean</code> indicating if the address has
@@ -405,7 +386,6 @@ module Java::Net
     end
     
     typesig { [] }
-    # 
     # Utility routine to check if the multicast address has organization scope.
     # 
     # @return a <code>boolean</code> indicating if the address has
@@ -418,7 +398,6 @@ module Java::Net
     end
     
     typesig { [::Java::Int] }
-    # 
     # Test whether that address is reachable. Best effort is made by the
     # implementation to try to reach the host, but firewalls and server
     # configuration may block requests resulting in a unreachable status
@@ -442,7 +421,6 @@ module Java::Net
     end
     
     typesig { [NetworkInterface, ::Java::Int, ::Java::Int] }
-    # 
     # Test whether that address is reachable. Best effort is made by the
     # implementation to try to reach the host, but firewalls and server
     # configuration may block requests resulting in a unreachable status
@@ -483,7 +461,6 @@ module Java::Net
     end
     
     typesig { [] }
-    # 
     # Gets the host name for this IP address.
     # 
     # <p>If this InetAddress was created with a host name,
@@ -512,7 +489,6 @@ module Java::Net
     end
     
     typesig { [::Java::Boolean] }
-    # 
     # Returns the hostname for this address.
     # If the host is equal to null, then this address refers to any
     # of the local machine's available network addresses.
@@ -542,7 +518,6 @@ module Java::Net
     end
     
     typesig { [] }
-    # 
     # Gets the fully qualified domain name for this IP address.
     # Best effort method, meaning we may not be able to return
     # the FQDN depending on the underlying system configuration.
@@ -571,7 +546,6 @@ module Java::Net
     
     class_module.module_eval {
       typesig { [InetAddress, ::Java::Boolean] }
-      # 
       # Returns the hostname for this address.
       # 
       # <p>If there is a security manager, this method first
@@ -634,7 +608,6 @@ module Java::Net
     }
     
     typesig { [] }
-    # 
     # Returns the raw IP address of this <code>InetAddress</code>
     # object. The result is in network byte order: the highest order
     # byte of the address is in <code>getAddress()[0]</code>.
@@ -645,7 +618,6 @@ module Java::Net
     end
     
     typesig { [] }
-    # 
     # Returns the IP address string in textual presentation.
     # 
     # @return  the raw IP address in a string format.
@@ -655,7 +627,6 @@ module Java::Net
     end
     
     typesig { [] }
-    # 
     # Returns a hashcode for this IP address.
     # 
     # @return  a hash code value for this IP address.
@@ -664,7 +635,6 @@ module Java::Net
     end
     
     typesig { [Object] }
-    # 
     # Compares this object against the specified object.
     # The result is <code>true</code> if and only if the argument is
     # not <code>null</code> and it represents the same IP address as
@@ -684,7 +654,6 @@ module Java::Net
     end
     
     typesig { [] }
-    # 
     # Converts this IP address to a <code>String</code>. The
     # string returned is of the form: hostname / literal IP
     # address.
@@ -698,7 +667,6 @@ module Java::Net
     end
     
     class_module.module_eval {
-      # 
       # Cached addresses - our own litle nis, not!
       
       def address_cache
@@ -767,7 +735,6 @@ module Java::Net
       end
       alias_method :attr_lookup_table=, :lookup_table=
       
-      # 
       # Represents a cache entry
       const_set_lazy(:CacheEntry) { Class.new do
         include_class_members InetAddress
@@ -796,7 +763,6 @@ module Java::Net
         alias_method :initialize__cache_entry, :initialize
       end }
       
-      # 
       # A cache that manages entries based on a policy specified
       # at creation time.
       const_set_lazy(:Cache) { Class.new do
@@ -860,7 +826,6 @@ module Java::Net
         }
         
         typesig { [Type] }
-        # 
         # Create cache
         def initialize(type)
           @cache = nil
@@ -879,7 +844,6 @@ module Java::Net
         end
         
         typesig { [String, Object] }
-        # 
         # Add an entry to the cache. If there's already an
         # entry then for this host then the entry will be
         # replaced.
@@ -919,13 +883,12 @@ module Java::Net
           else
             expiration = System.current_time_millis + (policy * 1000)
           end
-          entry_ = CacheEntry.new(address, expiration)
-          @cache.put(host, entry_)
+          entry = CacheEntry.new(address, expiration)
+          @cache.put(host, entry)
           return self
         end
         
         typesig { [String] }
-        # 
         # Query the cache for the specific host. If found then
         # return its CacheEntry, or null if not found.
         def get(host)
@@ -949,7 +912,6 @@ module Java::Net
       end }
       
       typesig { [] }
-      # 
       # Initialize cache and insert anyLocalAddress into the
       # unknown array with no expiry.
       def cache_init_if_needed
@@ -964,7 +926,6 @@ module Java::Net
       end
       
       typesig { [String, Object, ::Java::Boolean] }
-      # 
       # Cache the given hostname and address.
       def cache_address(hostname, address, success)
         hostname = (hostname.to_lower_case).to_s
@@ -979,7 +940,6 @@ module Java::Net
       end
       
       typesig { [String] }
-      # 
       # Lookup hostname in cache (positive & negative cache). If
       # found return address, null if not found.
       def get_cached_address(hostname)
@@ -1090,13 +1050,12 @@ module Java::Net
         # if not designate any name services provider,
         # creat a default one
         if ((self.attr_name_services.size).equal?(0))
-          ns_ = create_nsprovider("default")
-          self.attr_name_services.add(ns_)
+          ns = create_nsprovider("default")
+          self.attr_name_services.add(ns)
         end
       end
       
       typesig { [String, Array.typed(::Java::Byte)] }
-      # 
       # Create an InetAddress based on the provided host name and IP address
       # No name service is checked for the validity of the address.
       # 
@@ -1141,7 +1100,6 @@ module Java::Net
       end
       
       typesig { [String] }
-      # 
       # Determines the IP address of a host, given the host's name.
       # 
       # <p> The host name can either be a machine name, such as
@@ -1179,7 +1137,6 @@ module Java::Net
       end
       
       typesig { [String] }
-      # 
       # Given the name of a host, returns an array of its IP addresses,
       # based on the configured name service on the system.
       # 
@@ -1264,18 +1221,18 @@ module Java::Net
               raise UnknownHostException.new("[" + host + "]")
             end
           end
-          ret_ = Array.typed(InetAddress).new(1) { nil }
+          ret = Array.typed(InetAddress).new(1) { nil }
           if (!(addr).nil?)
             if ((addr.attr_length).equal?(Inet4Address::INADDRSZ))
-              ret_[0] = Inet4Address.new(nil, addr)
+              ret[0] = Inet4Address.new(nil, addr)
             else
               if (!(ifname).nil?)
-                ret_[0] = Inet6Address.new(nil, addr, ifname)
+                ret[0] = Inet6Address.new(nil, addr, ifname)
               else
-                ret_[0] = Inet6Address.new(nil, addr, numeric_zone)
+                ret[0] = Inet6Address.new(nil, addr, numeric_zone)
               end
             end
-            return ret_
+            return ret
           end
         else
           if (ipv6expected)
@@ -1287,7 +1244,6 @@ module Java::Net
       end
       
       typesig { [String] }
-      # 
       # check if the literal address string has %nn appended
       # returns -1 if not, or the numeric value otherwise.
       # 
@@ -1326,7 +1282,6 @@ module Java::Net
       end
       
       typesig { [String, ::Java::Boolean] }
-      # 
       # package private so SocketPermission can call it
       def get_all_by_name0(host, check)
         return get_all_by_name0(host, nil, check)
@@ -1388,7 +1343,6 @@ module Java::Net
           # expired so this thread should do the lookup.
           self.attr_name_services.each do |nameService|
             begin
-              # 
               # Do not put the call to lookup() inside the
               # constructor.  if you do you will still be
               # allocating space when the lookup fails.
@@ -1490,7 +1444,6 @@ module Java::Net
       end
       
       typesig { [Array.typed(::Java::Byte)] }
-      # 
       # Returns an <code>InetAddress</code> object given the raw IP address .
       # The argument is in network byte order: the highest order
       # byte of the address is in <code>getAddress()[0]</code>.
@@ -1538,7 +1491,6 @@ module Java::Net
       const_attr_reader  :CacheLock
       
       typesig { [] }
-      # 
       # Returns the address of the local host. This is achieved by retrieving
       # the name of the host from the system, then resolving that name into
       # an <code>InetAddress</code>.
@@ -1603,14 +1555,12 @@ module Java::Net
       
       JNI.native_method :Java_java_net_InetAddress_init, [:pointer, :long], :void
       typesig { [] }
-      # 
       # Perform class load-time initializations.
       def init
         JNI.__send__(:Java_java_net_InetAddress_init, JNI.env, self.jni_id)
       end
       
       typesig { [] }
-      # 
       # Returns the InetAddress representing anyLocalAddress
       # (typically 0.0.0.0 or ::0)
       def any_local_address
@@ -1618,11 +1568,9 @@ module Java::Net
       end
       
       typesig { [String] }
-      # 
       # Load and instantiate an underlying impl class
       def load_impl(impl_name)
         impl = nil
-        # 
         # Property "impl.prefix" will be prepended to the classname
         # of the implementation object we instantiate, to which we
         # delegate the real work (like native methods).  This
@@ -1654,7 +1602,6 @@ module Java::Net
     alias_method :initialize__inet_address, :initialize
   end
   
-  # 
   # Simple factory to create the impl
   class InetAddressImplFactory 
     include_class_members InetAddressImports

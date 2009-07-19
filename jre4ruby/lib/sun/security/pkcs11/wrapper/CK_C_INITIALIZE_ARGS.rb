@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # reserved comment block
 # DO NOT REMOVE OR ALTER!
 # 
@@ -53,7 +52,6 @@ module Sun::Security::Pkcs11::Wrapper
     }
   end
   
-  # 
   # class CK_C_INITIALIZE_ARGS contains the optional arguments for the
   # C_Initialize function.<p>
   # <B>PKCS#11 structure:</B>
@@ -73,7 +71,6 @@ module Sun::Security::Pkcs11::Wrapper
   class CK_C_INITIALIZE_ARGS 
     include_class_members CK_C_INITIALIZE_ARGSImports
     
-    # 
     # <B>PKCS#11:</B>
     # <PRE>
     # CK_CREATEMUTEX CreateMutex;
@@ -84,7 +81,6 @@ module Sun::Security::Pkcs11::Wrapper
     alias_method :attr_create_mutex=, :create_mutex=
     undef_method :create_mutex=
     
-    # 
     # <B>PKCS#11:</B>
     # <PRE>
     # CK_DESTROYMUTEX DestroyMutex;
@@ -95,7 +91,6 @@ module Sun::Security::Pkcs11::Wrapper
     alias_method :attr_destroy_mutex=, :destroy_mutex=
     undef_method :destroy_mutex=
     
-    # 
     # <B>PKCS#11:</B>
     # <PRE>
     # CK_LOCKMUTEX LockMutex;
@@ -106,7 +101,6 @@ module Sun::Security::Pkcs11::Wrapper
     alias_method :attr_lock_mutex=, :lock_mutex=
     undef_method :lock_mutex=
     
-    # 
     # <B>PKCS#11:</B>
     # <PRE>
     # CK_UNLOCKMUTEX UnlockMutex;
@@ -117,7 +111,6 @@ module Sun::Security::Pkcs11::Wrapper
     alias_method :attr_unlock_mutex=, :unlock_mutex=
     undef_method :unlock_mutex=
     
-    # 
     # <B>PKCS#11:</B>
     # <PRE>
     # CK_FLAGS flags;
@@ -128,7 +121,6 @@ module Sun::Security::Pkcs11::Wrapper
     alias_method :attr_flags=, :flags=
     undef_method :flags=
     
-    # 
     # <B>PKCS#11:</B>
     # <PRE>
     # CK_VOID_PTR pReserved;

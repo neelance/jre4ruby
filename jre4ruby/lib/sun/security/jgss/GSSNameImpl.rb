@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 2000-2006 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -42,7 +41,6 @@ module Sun::Security::Jgss
     }
   end
   
-  # 
   # This is the implementation class for GSSName. Conceptually the
   # GSSName is a container with mechanism specific name elements. Each
   # name element is a representation of how that particular mechanism
@@ -92,7 +90,6 @@ module Sun::Security::Jgss
     alias_method :attr_gss_manager=, :gss_manager=
     undef_method :gss_manager=
     
-    # 
     # Store whatever the application passed in. We will use this to
     # get individual mechanisms to create name elements as and when
     # needed.
@@ -116,7 +113,6 @@ module Sun::Security::Jgss
     alias_method :attr_app_name_type=, :app_name_type=
     undef_method :app_name_type=
     
-    # 
     # When we figure out what the printable name would be, we store
     # both the name and its type.
     attr_accessor :printable_name
@@ -202,7 +198,6 @@ module Sun::Security::Jgss
       @elements = HashMap.new(gss_manager.get_mechs.attr_length)
       if (app_name.is_a?(String))
         @app_name_str = app_name
-        # 
         # If appNameType is null, then the nametype for this printable
         # string is determined only by interrogating the
         # mechanism. Thus, defer the setting of printableName and
@@ -216,14 +211,12 @@ module Sun::Security::Jgss
       end
       @app_name_type = app_name_type
       @mech_element = get_element(mech)
-      # 
       # printableName will be null if appName was in a byte[] or if
       # appName was in a String but appNameType was null.
       if ((@printable_name).nil?)
         @printable_name = (@mech_element.to_s).to_s
         @printable_name_type = @mech_element.get_string_name_type
       end
-      # 
       # At this point the GSSNameImpl has the following set:
       # appNameStr or appNameBytes
       # appNameType (could be null)
@@ -273,7 +266,6 @@ module Sun::Security::Jgss
     end
     
     typesig { [GSSName] }
-    # 
     # This method may return false negatives. But if it says two
     # names are equals, then there is some mechanism that
     # authenticates them as the same principal.
@@ -287,13 +279,11 @@ module Sun::Security::Jgss
       if (!(other.is_a?(GSSNameImpl)))
         return equals(@gss_manager.create_name(other.to_s, other.get_string_name_type))
       end
-      # 
       # XXX Do a comparison of the appNameStr/appNameBytes if
       # available. If that fails, then proceed with this test.
       that = other
       my_element = @mech_element
       element = that.attr_mech_element
-      # 
       # XXX If they are not of the same mechanism type, convert both to
       # Kerberos since it is guaranteed to be present.
       if (((my_element).nil?) && (!(element).nil?))
@@ -324,12 +314,10 @@ module Sun::Security::Jgss
     end
     
     typesig { [] }
-    # 
     # Returns a hashcode value for this GSSName.
     # 
     # @return a hashCode value
     def hash_code
-      # 
       # XXX
       # In order to get this to work reliably and properly(!), obtain a
       # Kerberos name element for the name and then call hashCode on its
@@ -355,7 +343,6 @@ module Sun::Security::Jgss
     end
     
     typesig { [] }
-    # 
     # Returns a flat name representation for this object. The name
     # format is defined in RFC 2743:
     # <pre>

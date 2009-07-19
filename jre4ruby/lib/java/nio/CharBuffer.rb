@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 2000-2007 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -34,7 +33,6 @@ module Java::Nio
     }
   end
   
-  # 
   # A character buffer.
   # 
   # <p> This class defines four categories of operations upon
@@ -308,7 +306,6 @@ module Java::Nio
     
     class_module.module_eval {
       typesig { [::Java::Int] }
-      # 
       # Allocates a new character buffer.
       # 
       # <p> The new buffer's position will be zero, its limit will be its
@@ -331,7 +328,6 @@ module Java::Nio
       end
       
       typesig { [Array.typed(::Java::Char), ::Java::Int, ::Java::Int] }
-      # 
       # Wraps a character array into a buffer.
       # 
       # <p> The new buffer will be backed by the given character array;
@@ -370,7 +366,6 @@ module Java::Nio
       end
       
       typesig { [Array.typed(::Java::Char)] }
-      # 
       # Wraps a character array into a buffer.
       # 
       # <p> The new buffer will be backed by the given character array;
@@ -391,7 +386,6 @@ module Java::Nio
     }
     
     typesig { [CharBuffer] }
-    # 
     # Attempts to read characters into the specified character buffer.
     # The buffer is used as a repository of characters as-is: the only
     # changes made are the results of a put operation. No flipping or
@@ -429,7 +423,6 @@ module Java::Nio
     
     class_module.module_eval {
       typesig { [CharSequence, ::Java::Int, ::Java::Int] }
-      # 
       # Wraps a character sequence into a buffer.
       # 
       # <p> The content of the new, read-only buffer will be the content of the
@@ -466,7 +459,6 @@ module Java::Nio
       end
       
       typesig { [CharSequence] }
-      # 
       # Wraps a character sequence into a buffer.
       # 
       # <p> The content of the new, read-only buffer will be the content of the
@@ -485,7 +477,6 @@ module Java::Nio
     }
     
     typesig { [] }
-    # 
     # Creates a new character buffer whose content is a shared subsequence of
     # this buffer's content.
     # 
@@ -506,7 +497,6 @@ module Java::Nio
     end
     
     typesig { [] }
-    # 
     # Creates a new character buffer that shares this buffer's content.
     # 
     # <p> The content of the new buffer will be that of this buffer.  Changes
@@ -525,7 +515,6 @@ module Java::Nio
     end
     
     typesig { [] }
-    # 
     # Creates a new, read-only character buffer that shares this buffer's
     # content.
     # 
@@ -561,7 +550,6 @@ module Java::Nio
     end
     
     typesig { [::Java::Char] }
-    # 
     # Relative <i>put</i> method&nbsp;&nbsp;<i>(optional operation)</i>.
     # 
     # <p> Writes the given character into this buffer at the current
@@ -582,7 +570,6 @@ module Java::Nio
     end
     
     typesig { [::Java::Int] }
-    # 
     # Absolute <i>get</i> method.  Reads the character at the given
     # index. </p>
     # 
@@ -599,7 +586,6 @@ module Java::Nio
     end
     
     typesig { [::Java::Int, ::Java::Char] }
-    # 
     # Absolute <i>put</i> method&nbsp;&nbsp;<i>(optional operation)</i>.
     # 
     # <p> Writes the given character into this buffer at the given
@@ -688,7 +674,6 @@ module Java::Nio
     end
     
     typesig { [Array.typed(::Java::Char)] }
-    # 
     # Relative bulk <i>get</i> method.
     # 
     # <p> This method transfers characters from this buffer into the given
@@ -766,7 +751,6 @@ module Java::Nio
     end
     
     typesig { [Array.typed(::Java::Char), ::Java::Int, ::Java::Int] }
-    # 
     # Relative bulk <i>put</i> method&nbsp;&nbsp;<i>(optional operation)</i>.
     # 
     # <p> This method transfers characters into this buffer from the given
@@ -830,7 +814,6 @@ module Java::Nio
     end
     
     typesig { [Array.typed(::Java::Char)] }
-    # 
     # Relative bulk <i>put</i> method&nbsp;&nbsp;<i>(optional operation)</i>.
     # 
     # <p> This method transfers the entire content of the given source
@@ -853,7 +836,6 @@ module Java::Nio
     end
     
     typesig { [String, ::Java::Int, ::Java::Int] }
-    # 
     # Relative bulk <i>put</i> method&nbsp;&nbsp;<i>(optional operation)</i>.
     # 
     # <p> This method transfers characters from the given string into this
@@ -915,7 +897,6 @@ module Java::Nio
     end
     
     typesig { [String] }
-    # 
     # Relative bulk <i>put</i> method&nbsp;&nbsp;<i>(optional operation)</i>.
     # 
     # <p> This method transfers the entire content of the given source string
@@ -953,7 +934,6 @@ module Java::Nio
     end
     
     typesig { [] }
-    # 
     # Returns the character array that backs this
     # buffer&nbsp;&nbsp;<i>(optional operation)</i>.
     # 
@@ -982,7 +962,6 @@ module Java::Nio
     end
     
     typesig { [] }
-    # 
     # Returns the offset within this buffer's backing array of the first
     # element of the buffer&nbsp;&nbsp;<i>(optional operation)</i>.
     # 
@@ -1012,7 +991,6 @@ module Java::Nio
     end
     
     typesig { [] }
-    # 
     # Compacts this buffer&nbsp;&nbsp;<i>(optional operation)</i>.
     # 
     # <p> The characters between the buffer's current position and its limit,
@@ -1055,7 +1033,6 @@ module Java::Nio
     end
     
     typesig { [] }
-    # 
     # Tells whether or not this character buffer is direct. </p>
     # 
     # @return  <tt>true</tt> if, and only if, this buffer is direct
@@ -1064,7 +1041,6 @@ module Java::Nio
     end
     
     typesig { [] }
-    # 
     # Returns the current hash code of this buffer.
     # 
     # <p> The hash code of a char buffer depends only upon its remaining
@@ -1088,7 +1064,6 @@ module Java::Nio
     end
     
     typesig { [Object] }
-    # 
     # Tells whether or not this buffer is equal to another object.
     # 
     # <p> Two char buffers are equal if, and only if,
@@ -1145,7 +1120,6 @@ module Java::Nio
     end
     
     typesig { [CharBuffer] }
-    # 
     # Compares this buffer to another.
     # 
     # <p> Two char buffers are compared by comparing their sequences of
@@ -1221,7 +1195,6 @@ module Java::Nio
     end
     
     typesig { [::Java::Int] }
-    # 
     # Reads the character at the given index relative to the current
     # position. </p>
     # 
@@ -1239,7 +1212,6 @@ module Java::Nio
     end
     
     typesig { [::Java::Int, ::Java::Int] }
-    # 
     # Creates a new character buffer that represents the specified subsequence
     # of this buffer, relative to the current position.
     # 
@@ -1313,7 +1285,6 @@ module Java::Nio
     end
     
     typesig { [CharSequence, ::Java::Int, ::Java::Int] }
-    # 
     # Appends a subsequence of the  specified character sequence  to this
     # buffer&nbsp;&nbsp;<i>(optional operation)</i>.
     # 
@@ -1350,7 +1321,6 @@ module Java::Nio
     end
     
     typesig { [::Java::Char] }
-    # 
     # Appends the specified character  to this
     # buffer&nbsp;&nbsp;<i>(optional operation)</i>.
     # 

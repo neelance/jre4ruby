@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 1995-2006 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -30,7 +29,6 @@ module Java::Lang
     }
   end
   
-  # 
   # The {@code Compiler} class is provided to support Java-to-native-code
   # compilers and related services. By design, the {@code Compiler} class does
   # nothing; it serves as a placeholder for a JIT compiler implementation.
@@ -110,7 +108,6 @@ module Java::Lang
       
       JNI.native_method :Java_java_lang_Compiler_compileClass, [:pointer, :long, :long], :int8
       typesig { [Class] }
-      # 
       # Compiles the specified class.
       # 
       # @param  clazz
@@ -127,7 +124,6 @@ module Java::Lang
       
       JNI.native_method :Java_java_lang_Compiler_compileClasses, [:pointer, :long, :long], :int8
       typesig { [String] }
-      # 
       # Compiles all classes whose name matches the specified string.
       # 
       # @param  string
@@ -144,7 +140,6 @@ module Java::Lang
       
       JNI.native_method :Java_java_lang_Compiler_command, [:pointer, :long, :long], :long
       typesig { [Object] }
-      # 
       # Examines the argument type and its fields and perform some documented
       # operation.  No specific operations are required.
       # 
@@ -162,7 +157,6 @@ module Java::Lang
       
       JNI.native_method :Java_java_lang_Compiler_enable, [:pointer, :long], :void
       typesig { [] }
-      # 
       # Cause the Compiler to resume operation.
       def enable
         JNI.__send__(:Java_java_lang_Compiler_enable, JNI.env, self.jni_id)
@@ -170,7 +164,6 @@ module Java::Lang
       
       JNI.native_method :Java_java_lang_Compiler_disable, [:pointer, :long], :void
       typesig { [] }
-      # 
       # Cause the Compiler to cease operation.
       def disable
         JNI.__send__(:Java_java_lang_Compiler_disable, JNI.env, self.jni_id)

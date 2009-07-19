@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 1996-2006 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -31,7 +30,6 @@ module Sun::Security::Provider
     }
   end
   
-  # 
   # This class implements the Secure Hash Algorithm (SHA) developed by
   # the National Institute of Standards and Technology along with the
   # National Security Agency.  This is the updated version of SHA
@@ -65,7 +63,6 @@ module Sun::Security::Provider
     undef_method :state=
     
     typesig { [] }
-    # 
     # Creates a new SHA object.
     def initialize
       @w = nil
@@ -77,7 +74,6 @@ module Sun::Security::Provider
     end
     
     typesig { [SHA] }
-    # 
     # Creates a SHA object.with state (for cloning)
     def initialize(base)
       @w = nil
@@ -88,14 +84,12 @@ module Sun::Security::Provider
     end
     
     typesig { [] }
-    # 
     # Clones this object.
     def clone
       return SHA.new(self)
     end
     
     typesig { [] }
-    # 
     # Resets the buffers and hash value to start a new hash.
     def impl_reset
       @state[0] = 0x67452301
@@ -106,7 +100,6 @@ module Sun::Security::Provider
     end
     
     typesig { [Array.typed(::Java::Byte), ::Java::Int] }
-    # 
     # Computes the final hash and copies the 20 bytes to the output array.
     def impl_digest(out, ofs)
       bits_processed = self.attr_bytes_processed << 3
@@ -135,7 +128,6 @@ module Sun::Security::Provider
     }
     
     typesig { [Array.typed(::Java::Byte), ::Java::Int] }
-    # 
     # Compute a the hash for the current block.
     # 
     # This is in the same vein as Peter Gutmann's algorithm listed in
@@ -159,45 +151,45 @@ module Sun::Security::Provider
       # Round 1
       i = 0
       while i < 20
-        temp_ = ((a << 5) | (a >> (32 - 5))) + ((b & c) | ((~b) & d)) + e + @w[i] + Round1_kt
+        temp = ((a << 5) | (a >> (32 - 5))) + ((b & c) | ((~b) & d)) + e + @w[i] + Round1_kt
         e = d
         d = c
         c = ((b << 30) | (b >> (32 - 30)))
         b = a
-        a = temp_
+        a = temp
         ((i += 1) - 1)
       end
       # Round 2
       i_ = 20
       while i_ < 40
-        temp__ = ((a << 5) | (a >> (32 - 5))) + (b ^ c ^ d) + e + @w[i_] + Round2_kt
+        temp = ((a << 5) | (a >> (32 - 5))) + (b ^ c ^ d) + e + @w[i_] + Round2_kt
         e = d
         d = c
         c = ((b << 30) | (b >> (32 - 30)))
         b = a
-        a = temp__
+        a = temp
         ((i_ += 1) - 1)
       end
       # Round 3
       i__ = 40
       while i__ < 60
-        temp___ = ((a << 5) | (a >> (32 - 5))) + ((b & c) | (b & d) | (c & d)) + e + @w[i__] + Round3_kt
+        temp = ((a << 5) | (a >> (32 - 5))) + ((b & c) | (b & d) | (c & d)) + e + @w[i__] + Round3_kt
         e = d
         d = c
         c = ((b << 30) | (b >> (32 - 30)))
         b = a
-        a = temp___
+        a = temp
         ((i__ += 1) - 1)
       end
       # Round 4
       i___ = 60
       while i___ < 80
-        temp____ = ((a << 5) | (a >> (32 - 5))) + (b ^ c ^ d) + e + @w[i___] + Round4_kt
+        temp = ((a << 5) | (a >> (32 - 5))) + (b ^ c ^ d) + e + @w[i___] + Round4_kt
         e = d
         d = c
         c = ((b << 30) | (b >> (32 - 30)))
         b = a
-        a = temp____
+        a = temp
         ((i___ += 1) - 1)
       end
       @state[0] += a

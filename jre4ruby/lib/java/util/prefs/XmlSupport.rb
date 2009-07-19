@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 2002-2006 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -39,7 +38,6 @@ module Java::Util::Prefs
     }
   end
   
-  # 
   # XML Support for java.util.prefs. Methods to import and export preference
   # nodes and subtrees.
   # 
@@ -58,18 +56,15 @@ module Java::Util::Prefs
       const_set_lazy(:PREFS_DTD) { "<?xml version=\"1.0\" encoding=\"UTF-8\"?>" + "<!-- DTD for preferences -->" + "<!ELEMENT preferences (root) >" + "<!ATTLIST preferences" + " EXTERNAL_XML_VERSION CDATA \"0.0\"  >" + "<!ELEMENT root (map, node*) >" + "<!ATTLIST root" + "          type (system|user) #REQUIRED >" + "<!ELEMENT node (map, node*) >" + "<!ATTLIST node" + "          name CDATA #REQUIRED >" + "<!ELEMENT map (entry*) >" + "<!ATTLIST map" + "  MAP_XML_VERSION CDATA \"0.0\"  >" + "<!ELEMENT entry EMPTY >" + "<!ATTLIST entry" + "          key CDATA #REQUIRED" + "          value CDATA #REQUIRED >" }
       const_attr_reader  :PREFS_DTD
       
-      # 
       # Version number for the format exported preferences files.
       const_set_lazy(:EXTERNAL_XML_VERSION) { "1.0" }
       const_attr_reader  :EXTERNAL_XML_VERSION
       
-      # 
       # Version number for the internal map files.
       const_set_lazy(:MAP_XML_VERSION) { "1.0" }
       const_attr_reader  :MAP_XML_VERSION
       
       typesig { [OutputStream, Preferences, ::Java::Boolean] }
-      # 
       # Export the specified preferences node and, if subTree is true, all
       # subnodes, to the specified output stream.  Preferences are exported as
       # an XML document conforming to the definition in the Preferences spec.
@@ -111,7 +106,6 @@ module Java::Util::Prefs
       end
       
       typesig { [Element, Document, Preferences, ::Java::Boolean] }
-      # 
       # Put the preferences in the specified Preferences node into the
       # specified XML element which is assumed to represent a node
       # in the specified XML document which is assumed to conform to
@@ -160,18 +154,17 @@ module Java::Util::Prefs
           # release lock
         end
         if (sub_tree)
-          i__ = 0
-          while i__ < kid_names.attr_length
+          i_ = 0
+          while i_ < kid_names.attr_length
             xml_kid = elt.append_child(doc.create_element("node"))
-            xml_kid.set_attribute("name", kid_names[i__])
-            put_preferences_in_xml(xml_kid, doc, kids_copy[i__], sub_tree)
-            ((i__ += 1) - 1)
+            xml_kid.set_attribute("name", kid_names[i_])
+            put_preferences_in_xml(xml_kid, doc, kids_copy[i_], sub_tree)
+            ((i_ += 1) - 1)
           end
         end
       end
       
       typesig { [InputStream] }
-      # 
       # Import preferences from the specified input stream, which is assumed
       # to contain an XML document in the format described in the Preferences
       # spec.
@@ -196,7 +189,6 @@ module Java::Util::Prefs
       end
       
       typesig { [String] }
-      # 
       # Create a new prefs XML document.
       def create_prefs_doc(qname)
         begin
@@ -209,7 +201,6 @@ module Java::Util::Prefs
       end
       
       typesig { [InputStream] }
-      # 
       # Load an XML document from specified input stream, which must
       # have the requisite DTD URI.
       def load_prefs_doc(in_)
@@ -229,7 +220,6 @@ module Java::Util::Prefs
       end
       
       typesig { [Document, OutputStream] }
-      # 
       # Write XML document to the specified output stream.
       def write_doc(doc, out)
         begin
@@ -253,14 +243,12 @@ module Java::Util::Prefs
       end
       
       typesig { [Preferences, Element] }
-      # 
       # Recursively traverse the specified preferences node and store
       # the described preferences into the system or current user
       # preferences tree, as appropriate.
       def _import_subtree(prefs_node, xml_node)
         xml_kids = xml_node.get_child_nodes
         num_xml_kids = xml_kids.get_length
-        # 
         # We first lock the node, import its contents and get
         # child nodes. Then we unlock the node and go to children
         # Since some of the children might have been concurrently
@@ -293,7 +281,6 @@ module Java::Util::Prefs
       end
       
       typesig { [Preferences, Element] }
-      # 
       # Import the preferences described by the specified XML element
       # (a map from a preferences document) into the specified
       # preferences node.
@@ -309,7 +296,6 @@ module Java::Util::Prefs
       end
       
       typesig { [OutputStream, Map] }
-      # 
       # Export the specified Map<String,String> to a map document on
       # the specified OutputStream as per the prefs DTD.  This is used
       # as the internal (undocumented) format for FileSystemPrefs.
@@ -331,7 +317,6 @@ module Java::Util::Prefs
       end
       
       typesig { [InputStream, Map] }
-      # 
       # Import Map from the specified input stream, which is assumed
       # to contain a map document as per the prefs DTD.  This is used
       # as the internal (undocumented) format for FileSystemPrefs.  The

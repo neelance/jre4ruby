@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 2003-2005 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -32,7 +31,6 @@ module Java::Lang::Reflect
     }
   end
   
-  # 
   # Represents an annotated element of the program currently running in this
   # VM.  This interface allows annotations to be read reflectively.  All
   # annotations returned by methods in this interface are immutable and
@@ -61,7 +59,6 @@ module Java::Lang::Reflect
     include_class_members AnnotatedElementImports
     
     typesig { [Class] }
-    # 
     # Returns true if an annotation for the specified type
     # is present on this element, else false.  This method
     # is designed primarily for convenient access to marker annotations.
@@ -77,7 +74,6 @@ module Java::Lang::Reflect
     end
     
     typesig { [Class] }
-    # 
     # Returns this element's annotation for the specified type if
     # such an annotation is present, else null.
     # 
@@ -92,7 +88,6 @@ module Java::Lang::Reflect
     end
     
     typesig { [] }
-    # 
     # Returns all annotations present on this element.  (Returns an array
     # of length zero if this element has no annotations.)  The caller of
     # this method is free to modify the returned array; it will have no
@@ -105,7 +100,6 @@ module Java::Lang::Reflect
     end
     
     typesig { [] }
-    # 
     # Returns all annotations that are directly present on this
     # element.  Unlike the other methods in this interface, this method
     # ignores inherited annotations.  (Returns an array of length zero if

@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 2000-2005 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -296,12 +295,12 @@ module Java::Nio
         position(pos + srem)
       else
         if (!(src.attr_hb).nil?)
-          spos_ = src.position
-          slim_ = src.limit
-          raise AssertError if not ((spos_ <= slim_))
-          srem_ = (spos_ <= slim_ ? slim_ - spos_ : 0)
-          put(src.attr_hb, src.attr_offset + spos_, srem_)
-          src.position(spos_ + srem_)
+          spos = src.position
+          slim = src.limit
+          raise AssertError if not ((spos <= slim))
+          srem = (spos <= slim ? slim - spos : 0)
+          put(src.attr_hb, src.attr_offset + spos, srem)
+          src.position(spos + srem)
         else
           super(src)
         end

@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 1997-2006 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -36,8 +35,6 @@ module Java::Security
     }
   end
   
-  # 
-  # 
   # <p>
   # This ProtectionDomain class encapsulates the characteristics of a domain,
   # which encloses a set of classes whose instances are granted a set
@@ -106,7 +103,6 @@ module Java::Security
     }
     
     typesig { [CodeSource, PermissionCollection] }
-    # 
     # Creates a new ProtectionDomain with the given CodeSource and
     # Permissions. If the permissions object is not null, then
     # <code>setReadOnly())</code> will be called on the passed in
@@ -136,7 +132,6 @@ module Java::Security
     end
     
     typesig { [CodeSource, PermissionCollection, ClassLoader, Array.typed(Principal)] }
-    # 
     # Creates a new ProtectionDomain qualified by the given CodeSource,
     # Permissions, ClassLoader and array of Principals. If the
     # permissions object is not null, then <code>setReadOnly()</code>
@@ -185,7 +180,6 @@ module Java::Security
     end
     
     typesig { [] }
-    # 
     # Returns the CodeSource of this domain.
     # @return the CodeSource of this domain which may be null.
     # @since 1.2
@@ -194,7 +188,6 @@ module Java::Security
     end
     
     typesig { [] }
-    # 
     # Returns the ClassLoader of this domain.
     # @return the ClassLoader of this domain which may be null.
     # 
@@ -204,7 +197,6 @@ module Java::Security
     end
     
     typesig { [] }
-    # 
     # Returns an array of principals for this domain.
     # @return a non-null array of principals for this domain.
     # Returns a new array each time this method is called.
@@ -215,7 +207,6 @@ module Java::Security
     end
     
     typesig { [] }
-    # 
     # Returns the static permissions granted to this domain.
     # 
     # @return the static set of permissions for this domain which may be null.
@@ -226,7 +217,6 @@ module Java::Security
     end
     
     typesig { [Permission] }
-    # 
     # Check and see if this ProtectionDomain implies the permissions
     # expressed in the Permission object.
     # <p>
@@ -268,7 +258,6 @@ module Java::Security
     end
     
     typesig { [] }
-    # 
     # Convert a ProtectionDomain to a String.
     def to_s
       pals = "<no principals>"
@@ -294,7 +283,6 @@ module Java::Security
     
     class_module.module_eval {
       typesig { [] }
-      # 
       # Return true (merge policy permissions) in the following cases:
       # 
       # . SecurityManager is null
@@ -360,7 +348,6 @@ module Java::Security
       e = nil
       pd_vector = ArrayList.new(vcap)
       pl_vector = ArrayList.new(swag)
-      # 
       # Build a vector of domain permissions for subsequent merge
       if (!(@permissions).nil?)
         synchronized((@permissions)) do
@@ -370,7 +357,6 @@ module Java::Security
           end
         end
       end
-      # 
       # Build a vector of Policy permissions for subsequent merge
       if (!(perms).nil?)
         synchronized((perms)) do
@@ -382,7 +368,6 @@ module Java::Security
         end
       end
       if (!(perms).nil? && !(@permissions).nil?)
-        # 
         # Weed out the duplicates from the policy. Unless a refresh
         # has occured since the pd was consed this should result in
         # an empty vector.
@@ -413,17 +398,17 @@ module Java::Security
       if (!(perms).nil?)
         # the order of adding to merged perms and permissions
         # needs to preserve the bugfix 4301064
-        i_ = pl_vector.size - 1
-        while i_ >= 0
-          merged_perms.add(pl_vector.get(i_))
-          ((i_ -= 1) + 1)
+        i = pl_vector.size - 1
+        while i >= 0
+          merged_perms.add(pl_vector.get(i))
+          ((i -= 1) + 1)
         end
       end
       if (!(@permissions).nil?)
-        i__ = pd_vector.size - 1
-        while i__ >= 0
-          merged_perms.add(pd_vector.get(i__))
-          ((i__ -= 1) + 1)
+        i = pd_vector.size - 1
+        while i >= 0
+          merged_perms.add(pd_vector.get(i))
+          ((i -= 1) + 1)
         end
       end
       return merged_perms

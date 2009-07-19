@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 1997-2003 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -31,7 +30,6 @@ module Java::Lang::Ref
     }
   end
   
-  # 
   # Soft reference objects, which are cleared at the discretion of the garbage
   # collector in response to memory demand.  Soft references are most often used
   # to implement memory-sensitive caches.
@@ -91,7 +89,6 @@ module Java::Lang::Ref
     undef_method :timestamp=
     
     typesig { [Object] }
-    # 
     # Creates a new soft reference that refers to the given object.  The new
     # reference is not registered with any queue.
     # 
@@ -103,7 +100,6 @@ module Java::Lang::Ref
     end
     
     typesig { [Object, ReferenceQueue] }
-    # 
     # Creates a new soft reference that refers to the given object and is
     # registered with the given queue.
     # 
@@ -117,7 +113,6 @@ module Java::Lang::Ref
     end
     
     typesig { [] }
-    # 
     # Returns this reference object's referent.  If this reference object has
     # been cleared, either by the program or by the garbage collector, then
     # this method returns <code>null</code>.

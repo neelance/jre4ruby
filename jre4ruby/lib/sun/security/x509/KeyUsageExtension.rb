@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 1997-2006 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -35,7 +34,6 @@ module Sun::Security::X509
     }
   end
   
-  # 
   # Represent the Key Usage Extension.
   # 
   # <p>This extension, if present, defines the purpose (e.g., encipherment,
@@ -53,13 +51,11 @@ module Sun::Security::X509
     include CertAttrSet
     
     class_module.module_eval {
-      # 
       # Identifier for this attribute, to be used with the
       # get, set, delete methods of Certificate, x509 type.
       const_set_lazy(:IDENT) { "x509.info.extensions.KeyUsage" }
       const_attr_reader  :IDENT
       
-      # 
       # Attribute names.
       const_set_lazy(:NAME) { "KeyUsage" }
       const_attr_reader  :NAME
@@ -108,7 +104,6 @@ module Sun::Security::X509
     end
     
     typesig { [::Java::Int] }
-    # 
     # Check if bit is set.
     # 
     # @param position the position in the bit string to check.
@@ -117,7 +112,6 @@ module Sun::Security::X509
     end
     
     typesig { [::Java::Int, ::Java::Boolean] }
-    # 
     # Set the bit at the specified position.
     def set(position, val)
       # enlarge bitString if necessary
@@ -130,7 +124,6 @@ module Sun::Security::X509
     end
     
     typesig { [Array.typed(::Java::Byte)] }
-    # 
     # Create a KeyUsageExtension with the passed bit settings. The criticality
     # is set to true.
     # 
@@ -145,7 +138,6 @@ module Sun::Security::X509
     end
     
     typesig { [Array.typed(::Java::Boolean)] }
-    # 
     # Create a KeyUsageExtension with the passed bit settings. The criticality
     # is set to true.
     # 
@@ -160,7 +152,6 @@ module Sun::Security::X509
     end
     
     typesig { [BitArray] }
-    # 
     # Create a KeyUsageExtension with the passed bit settings. The criticality
     # is set to true.
     # 
@@ -175,7 +166,6 @@ module Sun::Security::X509
     end
     
     typesig { [Boolean, Object] }
-    # 
     # Create the extension from the passed DER encoded value of the same.
     # The DER encoded value may be wrapped in an OCTET STRING.
     # 
@@ -189,7 +179,6 @@ module Sun::Security::X509
       super()
       self.attr_extension_id = PKIXExtensions::KeyUsage_Id
       self.attr_critical = critical.boolean_value
-      # 
       # The following check should be activated again after
       # the PKIX profiling work becomes standard and the check
       # is not a barrier to interoperability !
@@ -208,7 +197,6 @@ module Sun::Security::X509
     end
     
     typesig { [] }
-    # 
     # Create a default key usage.
     def initialize
       @bit_string = nil
@@ -219,7 +207,6 @@ module Sun::Security::X509
     end
     
     typesig { [String, Object] }
-    # 
     # Set the attribute value.
     def set(name, obj)
       if (!(obj.is_a?(Boolean)))
@@ -267,7 +254,6 @@ module Sun::Security::X509
     end
     
     typesig { [String] }
-    # 
     # Get the attribute value.
     def get(name)
       if (name.equals_ignore_case(DIGITAL_SIGNATURE))
@@ -310,7 +296,6 @@ module Sun::Security::X509
     end
     
     typesig { [String] }
-    # 
     # Delete the attribute value.
     def delete(name)
       if (name.equals_ignore_case(DIGITAL_SIGNATURE))
@@ -354,7 +339,6 @@ module Sun::Security::X509
     end
     
     typesig { [] }
-    # 
     # Returns a printable representation of the KeyUsage.
     def to_s
       s = (super).to_s + "KeyUsage [\n"
@@ -393,7 +377,6 @@ module Sun::Security::X509
     end
     
     typesig { [OutputStream] }
-    # 
     # Write the extension to the DerOutputStream.
     # 
     # @param out the DerOutputStream to write the extension to.
@@ -410,7 +393,6 @@ module Sun::Security::X509
     end
     
     typesig { [] }
-    # 
     # Return an enumeration of names of attributes existing within this
     # attribute.
     def get_elements
@@ -433,7 +415,6 @@ module Sun::Security::X509
     end
     
     typesig { [] }
-    # 
     # Return the name of this attribute.
     def get_name
       return (NAME)

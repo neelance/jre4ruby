@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
 # This code is free software; you can redistribute it and/or modify it
@@ -39,7 +38,6 @@ module Sun::Security::Krb5::Internal
     }
   end
   
-  # 
   # Implements the ASN.1 KDC-REQ-BODY type.
   # 
   # <xmp>
@@ -203,7 +201,6 @@ module Sun::Security::Krb5::Internal
     end
     
     typesig { [DerValue, ::Java::Int] }
-    # 
     # Constructs a KDCReqBody object.
     # @param encoding a DER-encoded data.
     # @param msgType an int indicating whether it's KRB_AS_REQ or KRB_TGS_REQ type.
@@ -299,7 +296,6 @@ module Sun::Security::Krb5::Internal
     end
     
     typesig { [::Java::Int] }
-    # 
     # Encodes this object to an OutputStream.
     # 
     # @return an byte array of encoded data.

@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 2003-2006 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -40,7 +39,6 @@ module Java::Util::Jar
     }
   end
   
-  # 
   # Transforms a JAR file to or from a packed stream in Pack200 format.
   # Please refer to Network Transfer Format JSR 200 Specification at
   # <a href=http://jcp.org/aboutJava/communityprocess/review/jsr200/index.html>http://jcp.org/aboutJava/communityprocess/review/jsr200/index.html</a>
@@ -148,7 +146,6 @@ module Java::Util::Jar
       end
       
       typesig { [] }
-      # 
       # Obtain new instance of a class that implements Unpacker.
       # 
       # <li><p>If the system property <tt>java.util.jar.Pack200.Unpacker</tt>
@@ -230,7 +227,6 @@ module Java::Util::Jar
         include_class_members Pack200
         
         class_module.module_eval {
-          # 
           # This property is a numeral giving the estimated target size N
           # (in bytes) of each archive segment.
           # If a single input file requires more than N bytes,
@@ -256,7 +252,6 @@ module Java::Util::Jar
           const_set_lazy(:SEGMENT_LIMIT) { "pack.segment.limit" }
           const_attr_reader  :SEGMENT_LIMIT
           
-          # 
           # If this property is set to {@link #TRUE}, the packer will transmit
           # all elements in their original order within the source archive.
           # <p>
@@ -270,7 +265,6 @@ module Java::Util::Jar
           const_set_lazy(:KEEP_FILE_ORDER) { "pack.keep.file.order" }
           const_attr_reader  :KEEP_FILE_ORDER
           
-          # 
           # If this property is set to a single decimal digit, the packer will
           # use the indicated amount of effort in compressing the archive.
           # Level 1 may produce somewhat larger size and faster compression speed,
@@ -286,7 +280,6 @@ module Java::Util::Jar
           const_set_lazy(:EFFORT) { "pack.effort" }
           const_attr_reader  :EFFORT
           
-          # 
           # If this property is set to {@link #TRUE} or {@link #FALSE}, the packer
           # will set the deflation hint accordingly in the output archive, and
           # will not transmit the individual deflation hints of archive elements.
@@ -307,7 +300,6 @@ module Java::Util::Jar
           const_set_lazy(:DEFLATE_HINT) { "pack.deflate.hint" }
           const_attr_reader  :DEFLATE_HINT
           
-          # 
           # If this property is set to the special string {@link #LATEST},
           # the packer will attempt to determine the latest modification time,
           # among all the available entries in the original archive or the latest
@@ -332,7 +324,6 @@ module Java::Util::Jar
           const_set_lazy(:MODIFICATION_TIME) { "pack.modification.time" }
           const_attr_reader  :MODIFICATION_TIME
           
-          # 
           # Indicates that a file should be passed through bytewise, with no
           # compression.  Multiple files may be specified by specifying
           # additional properties with distinct strings appended, to
@@ -385,7 +376,6 @@ module Java::Util::Jar
           const_set_lazy(:UNKNOWN_ATTRIBUTE) { "pack.unknown.attribute" }
           const_attr_reader  :UNKNOWN_ATTRIBUTE
           
-          # 
           # When concatenated with a class attribute name,
           # indicates the format of that attribute,
           # using the layout language specified in the JSR 200 specification.
@@ -417,7 +407,6 @@ module Java::Util::Jar
           const_set_lazy(:CLASS_ATTRIBUTE_PFX) { "pack.class.attribute." }
           const_attr_reader  :CLASS_ATTRIBUTE_PFX
           
-          # 
           # When concatenated with a field attribute name,
           # indicates the format of that attribute.
           # For example, the effect of this option is built in:
@@ -428,7 +417,6 @@ module Java::Util::Jar
           const_set_lazy(:FIELD_ATTRIBUTE_PFX) { "pack.field.attribute." }
           const_attr_reader  :FIELD_ATTRIBUTE_PFX
           
-          # 
           # When concatenated with a method attribute name,
           # indicates the format of that attribute.
           # For example, the effect of this option is built in:
@@ -439,7 +427,6 @@ module Java::Util::Jar
           const_set_lazy(:METHOD_ATTRIBUTE_PFX) { "pack.method.attribute." }
           const_attr_reader  :METHOD_ATTRIBUTE_PFX
           
-          # 
           # When concatenated with a code attribute name,
           # indicates the format of that attribute.
           # For example, the effect of this option is built in:
@@ -450,7 +437,6 @@ module Java::Util::Jar
           const_set_lazy(:CODE_ATTRIBUTE_PFX) { "pack.code.attribute." }
           const_attr_reader  :CODE_ATTRIBUTE_PFX
           
-          # 
           # The unpacker's progress as a percentage, as periodically
           # updated by the unpacker.
           # Values of 0 - 100 are normal, and -1 indicates a stall.
@@ -515,7 +501,6 @@ module Java::Util::Jar
         }
         
         typesig { [] }
-        # 
         # Get the set of this engine's properties.
         # This set is a "live view", so that changing its
         # contents immediately affects the Packer engine, and
@@ -546,7 +531,6 @@ module Java::Util::Jar
         end
         
         typesig { [JarFile, OutputStream] }
-        # 
         # Takes a JarFile and converts it into a Pack200 archive.
         # <p>
         # Closes its input but not its output.  (Pack200 archives are appendable.)
@@ -558,7 +542,6 @@ module Java::Util::Jar
         end
         
         typesig { [JarInputStream, OutputStream] }
-        # 
         # Takes a JarInputStream and converts it into a Pack200 archive.
         # <p>
         # Closes its input but not its output.  (Pack200 archives are appendable.)
@@ -576,7 +559,6 @@ module Java::Util::Jar
         end
         
         typesig { [PropertyChangeListener] }
-        # 
         # Registers a listener for PropertyChange events on the properties map.
         # This is typically used by applications to update a progress bar.
         # 
@@ -588,7 +570,6 @@ module Java::Util::Jar
         end
         
         typesig { [PropertyChangeListener] }
-        # 
         # Remove a listener for PropertyChange events, added by
         # the {@link #addPropertyChangeListener}.
         # 
@@ -599,7 +580,6 @@ module Java::Util::Jar
         end
       end }
       
-      # 
       # The unpacker engine converts the packed stream to a JAR file.
       # An instance of the engine can be obtained
       # using {@link #newUnpacker}.
@@ -629,7 +609,6 @@ module Java::Util::Jar
           const_set_lazy(:FALSE) { "false" }
           const_attr_reader  :FALSE
           
-          # 
           # Property indicating that the unpacker should
           # ignore all transmitted values for DEFLATE_HINT,
           # replacing them by the given value, {@link #TRUE} or {@link #FALSE}.
@@ -639,7 +618,6 @@ module Java::Util::Jar
           const_set_lazy(:DEFLATE_HINT) { "unpack.deflate.hint" }
           const_attr_reader  :DEFLATE_HINT
           
-          # 
           # The unpacker's progress as a percentage, as periodically
           # updated by the unpacker.
           # Values of 0 - 100 are normal, and -1 indicates a stall.
@@ -654,7 +632,6 @@ module Java::Util::Jar
         }
         
         typesig { [] }
-        # 
         # Get the set of this engine's properties. This set is
         # a "live view", so that changing its
         # contents immediately affects the Packer engine, and
@@ -682,7 +659,6 @@ module Java::Util::Jar
         end
         
         typesig { [InputStream, JarOutputStream] }
-        # 
         # Read a Pack200 archive, and write the encoded JAR to
         # a JarOutputStream.
         # The entire contents of the input stream will be read.
@@ -699,7 +675,6 @@ module Java::Util::Jar
         end
         
         typesig { [JavaFile, JarOutputStream] }
-        # 
         # Read a Pack200 archive, and write the encoded JAR to
         # a JarOutputStream.
         # <p>
@@ -712,7 +687,6 @@ module Java::Util::Jar
         end
         
         typesig { [PropertyChangeListener] }
-        # 
         # Registers a listener for PropertyChange events on the properties map.
         # This is typically used by applications to update a progress bar.
         # 
@@ -724,7 +698,6 @@ module Java::Util::Jar
         end
         
         typesig { [PropertyChangeListener] }
-        # 
         # Remove a listener for PropertyChange events, added by
         # the {@link #addPropertyChangeListener}.
         # 
@@ -788,9 +761,9 @@ module Java::Util::Jar
           rescue ClassNotFoundException => e
             raise JavaError.new("Class not found: " + impl_name + ":\ncheck property " + prop + " in your properties file.", e)
           rescue InstantiationException => e
-            raise JavaError.new("Could not instantiate: " + impl_name + ":\ncheck property " + prop + " in your properties file.", e_)
+            raise JavaError.new("Could not instantiate: " + impl_name + ":\ncheck property " + prop + " in your properties file.", e)
           rescue IllegalAccessException => e
-            raise JavaError.new("Cannot access class: " + impl_name + ":\ncheck property " + prop + " in your properties file.", e__)
+            raise JavaError.new("Cannot access class: " + impl_name + ":\ncheck property " + prop + " in your properties file.", e)
           end
         end
       end

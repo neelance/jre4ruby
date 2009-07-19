@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Portions Copyright 2000-2005 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -40,7 +39,6 @@ module Sun::Security::Krb5
     }
   end
   
-  # 
   # This class encapsulates a AS-REP message that the KDC sends to the
   # client.
   class KrbAsRep < KrbAsRepImports.const_get :KrbKdcRep

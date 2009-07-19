@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 1996-2006 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -48,7 +47,6 @@ module Sun::Security::X509
     }
   end
   
-  # 
   # The X509CertImpl class represents an X.509 certificate. These certificates
   # are widely used to support authentication and other functionality in
   # Internet security systems.  Common applications include Privacy Enhanced
@@ -89,7 +87,6 @@ module Sun::Security::X509
       const_set_lazy(:DOT) { "." }
       const_attr_reader  :DOT
       
-      # 
       # Public attribute names.
       const_set_lazy(:NAME) { "x509" }
       const_attr_reader  :NAME
@@ -106,7 +103,6 @@ module Sun::Security::X509
       const_set_lazy(:SIGNED_CERT) { "signed_cert" }
       const_attr_reader  :SIGNED_CERT
       
-      # 
       # The following are defined for ease-of-use. These
       # are the most frequently retrieved attributes.
       # 
@@ -225,7 +221,6 @@ module Sun::Security::X509
     alias_method :attr_auth_info_access=, :auth_info_access=
     undef_method :auth_info_access=
     
-    # 
     # PublicKey that has previously been used to verify
     # the signature of this certificate. Null if the certificate has not
     # yet been verified.
@@ -235,7 +230,6 @@ module Sun::Security::X509
     alias_method :attr_verified_public_key=, :verified_public_key=
     undef_method :verified_public_key=
     
-    # 
     # If verifiedPublicKey is not null, name of the provider used to
     # successfully verify the signature of this certificate, or the
     # empty String if no provider was explicitly specified.
@@ -245,7 +239,6 @@ module Sun::Security::X509
     alias_method :attr_verified_provider=, :verified_provider=
     undef_method :verified_provider=
     
-    # 
     # If verifiedPublicKey is not null, result of the verification using
     # verifiedPublicKey and verifiedProvider. If true, verification was
     # successful, if false, it failed.
@@ -256,7 +249,6 @@ module Sun::Security::X509
     undef_method :verification_result=
     
     typesig { [] }
-    # 
     # Default constructor.
     def initialize
       @read_only = false
@@ -280,7 +272,6 @@ module Sun::Security::X509
     end
     
     typesig { [Array.typed(::Java::Byte)] }
-    # 
     # Unmarshals a certificate from its encoded form, parsing the
     # encoded bytes.  This form of constructor is used by agents which
     # need to examine and use certificate contents.  That is, this is
@@ -321,7 +312,6 @@ module Sun::Security::X509
     end
     
     typesig { [InputStream] }
-    # 
     # unmarshals an X.509 certificate from an input stream.  If the
     # certificate is RFC1421 hex-encoded, then it must begin with
     # the line X509Factory.BEGIN_CERT and end with the line
@@ -372,14 +362,13 @@ module Sun::Security::X509
         parse(der)
       rescue IOException => ioe
         @signed_cert = nil
-        ce_ = CertificateException.new("Unable to parse DER value of " + "certificate, " + (ioe_).to_s)
-        ce_.init_cause(ioe_)
-        raise ce_
+        ce = CertificateException.new("Unable to parse DER value of " + "certificate, " + (ioe).to_s)
+        ce.init_cause(ioe)
+        raise ce
       end
     end
     
     typesig { [InputStream] }
-    # 
     # read input stream as HEX-encoded DER-encoded bytes
     # 
     # @param in InputStream to read
@@ -418,7 +407,6 @@ module Sun::Security::X509
     end
     
     typesig { [X509CertInfo] }
-    # 
     # Construct an initialized X509 Certificate. The certificate is stored
     # in raw form and has to be signed to be useful.
     # 
@@ -447,7 +435,6 @@ module Sun::Security::X509
     end
     
     typesig { [DerValue] }
-    # 
     # Unmarshal a certificate from its encoded form, parsing a DER value.
     # This form of constructor is used by agents which need to examine
     # and use certificate contents.
@@ -484,7 +471,6 @@ module Sun::Security::X509
     end
     
     typesig { [OutputStream] }
-    # 
     # Appends the certificate to an output stream.
     # 
     # @param out an input stream to which the certificate is appended.
@@ -501,7 +487,6 @@ module Sun::Security::X509
     end
     
     typesig { [OutputStream] }
-    # 
     # DER encode this object onto an output stream.
     # Implements the <code>DerEncoder</code> interface.
     # 
@@ -516,7 +501,6 @@ module Sun::Security::X509
     end
     
     typesig { [] }
-    # 
     # Returns the encoded form of this certificate. It is
     # assumed that each certificate type would have only a single
     # form of encoding; for example, X.509 certificates would
@@ -528,7 +512,6 @@ module Sun::Security::X509
     end
     
     typesig { [] }
-    # 
     # Returned the encoding as an uncloned byte array. Callers must
     # guarantee that they neither modify it nor expose it to untrusted
     # code.
@@ -540,7 +523,6 @@ module Sun::Security::X509
     end
     
     typesig { [PublicKey] }
-    # 
     # Throws an exception if the certificate was not signed using the
     # verification key provided.  Successfully verifying a certificate
     # does <em>not</em> indicate that one should trust the entity which
@@ -559,7 +541,6 @@ module Sun::Security::X509
     end
     
     typesig { [PublicKey, String] }
-    # 
     # Throws an exception if the certificate was not signed using the
     # verification key provided.  Successfully verifying a certificate
     # does <em>not</em> indicate that one should trust the entity which
@@ -614,7 +595,6 @@ module Sun::Security::X509
     end
     
     typesig { [PrivateKey, String] }
-    # 
     # Creates an X.509 certificate, and signs it using the given key
     # (associating a signature algorithm and an X.500 name).
     # This operation is used to implement the certificate generation
@@ -634,7 +614,6 @@ module Sun::Security::X509
     end
     
     typesig { [PrivateKey, String, String] }
-    # 
     # Creates an X.509 certificate, and signs it using the given key
     # (associating a signature algorithm and an X.500 name).
     # This operation is used to implement the certificate generation
@@ -685,7 +664,6 @@ module Sun::Security::X509
     end
     
     typesig { [] }
-    # 
     # Checks that the certificate is currently valid, i.e. the current
     # time is within the specified validity period.
     # 
@@ -698,7 +676,6 @@ module Sun::Security::X509
     end
     
     typesig { [Date] }
-    # 
     # Checks that the specified date is within the certificate's
     # validity period, or basically if the certificate would be
     # valid at the specified date/time.
@@ -724,7 +701,6 @@ module Sun::Security::X509
     end
     
     typesig { [String] }
-    # 
     # Return the requested attribute from the certificate.
     # 
     # Note that the X509CertInfo is not cloned for performance reasons.
@@ -751,7 +727,7 @@ module Sun::Security::X509
           rescue IOException => e
             raise CertificateParsingException.new(e.to_s)
           rescue CertificateException => e
-            raise CertificateParsingException.new(e_.to_s)
+            raise CertificateParsingException.new(e.to_s)
           end
         else
           return @info
@@ -782,7 +758,6 @@ module Sun::Security::X509
     end
     
     typesig { [String, Object] }
-    # 
     # Set the requested attribute in the certificate.
     # 
     # @param name the name of the attribute.
@@ -818,7 +793,6 @@ module Sun::Security::X509
     end
     
     typesig { [String] }
-    # 
     # Delete the requested attribute from the certificate.
     # 
     # @param name the name of the attribute.
@@ -860,7 +834,6 @@ module Sun::Security::X509
     end
     
     typesig { [] }
-    # 
     # Return an enumeration of names of attributes existing within this
     # attribute.
     def get_elements
@@ -873,14 +846,12 @@ module Sun::Security::X509
     end
     
     typesig { [] }
-    # 
     # Return the name of this attribute.
     def get_name
       return (NAME)
     end
     
     typesig { [] }
-    # 
     # Returns a printable representation of the certificate.  This does not
     # contain all the information available to distinguish this from any
     # other certificate.  The certificate must be fully constructed
@@ -918,7 +889,6 @@ module Sun::Security::X509
     end
     
     typesig { [] }
-    # 
     # Gets the version number from the certificate.
     # 
     # @return the version number, i.e. 1, 2 or 3.
@@ -935,7 +905,6 @@ module Sun::Security::X509
     end
     
     typesig { [] }
-    # 
     # Gets the serial number from the certificate.
     # 
     # @return the serial number.
@@ -945,7 +914,6 @@ module Sun::Security::X509
     end
     
     typesig { [] }
-    # 
     # Gets the serial number from the certificate as
     # a SerialNumber object.
     # 
@@ -963,7 +931,6 @@ module Sun::Security::X509
     end
     
     typesig { [] }
-    # 
     # Gets the subject distinguished name from the certificate.
     # 
     # @return the subject name.
@@ -980,7 +947,6 @@ module Sun::Security::X509
     end
     
     typesig { [] }
-    # 
     # Get subject name as X500Principal. Overrides implementation in
     # X509Certificate with a slightly more efficient version that is
     # also aware of X509CertImpl mutability.
@@ -997,7 +963,6 @@ module Sun::Security::X509
     end
     
     typesig { [] }
-    # 
     # Gets the issuer distinguished name from the certificate.
     # 
     # @return the issuer name.
@@ -1014,7 +979,6 @@ module Sun::Security::X509
     end
     
     typesig { [] }
-    # 
     # Get issuer name as X500Principal. Overrides implementation in
     # X509Certificate with a slightly more efficient version that is
     # also aware of X509CertImpl mutability.
@@ -1031,7 +995,6 @@ module Sun::Security::X509
     end
     
     typesig { [] }
-    # 
     # Gets the notBefore date from the validity period of the certificate.
     # 
     # @return the start date of the validity period.
@@ -1048,7 +1011,6 @@ module Sun::Security::X509
     end
     
     typesig { [] }
-    # 
     # Gets the notAfter date from the validity period of the certificate.
     # 
     # @return the end date of the validity period.
@@ -1065,7 +1027,6 @@ module Sun::Security::X509
     end
     
     typesig { [] }
-    # 
     # Gets the DER encoded certificate informations, the
     # <code>tbsCertificate</code> from this certificate.
     # This can be used to verify the signature independently.
@@ -1081,7 +1042,6 @@ module Sun::Security::X509
     end
     
     typesig { [] }
-    # 
     # Gets the raw Signature bits from the certificate.
     # 
     # @return the signature.
@@ -1095,7 +1055,6 @@ module Sun::Security::X509
     end
     
     typesig { [] }
-    # 
     # Gets the signature algorithm name for the certificate
     # signature algorithm.
     # For example, the string "SHA-1/DSA" or "DSS".
@@ -1109,7 +1068,6 @@ module Sun::Security::X509
     end
     
     typesig { [] }
-    # 
     # Gets the signature algorithm OID string from the certificate.
     # For example, the string "1.2.840.10040.4.3"
     # 
@@ -1123,7 +1081,6 @@ module Sun::Security::X509
     end
     
     typesig { [] }
-    # 
     # Gets the DER encoded signature algorithm parameters from this
     # certificate's signature algorithm.
     # 
@@ -1141,7 +1098,6 @@ module Sun::Security::X509
     end
     
     typesig { [] }
-    # 
     # Gets the Issuer Unique Identity from the certificate.
     # 
     # @return the Issuer Unique Identity.
@@ -1162,7 +1118,6 @@ module Sun::Security::X509
     end
     
     typesig { [] }
-    # 
     # Gets the Subject Unique Identity from the certificate.
     # 
     # @return the Subject Unique Identity.
@@ -1183,7 +1138,6 @@ module Sun::Security::X509
     end
     
     typesig { [] }
-    # 
     # Get AuthorityKeyIdentifier extension
     # @return AuthorityKeyIdentifier object or null (if no such object
     # in certificate)
@@ -1192,7 +1146,6 @@ module Sun::Security::X509
     end
     
     typesig { [] }
-    # 
     # Get BasicConstraints extension
     # @return BasicConstraints object or null (if no such object in
     # certificate)
@@ -1201,7 +1154,6 @@ module Sun::Security::X509
     end
     
     typesig { [] }
-    # 
     # Get CertificatePoliciesExtension
     # @return CertificatePoliciesExtension or null (if no such object in
     # certificate)
@@ -1210,7 +1162,6 @@ module Sun::Security::X509
     end
     
     typesig { [] }
-    # 
     # Get ExtendedKeyUsage extension
     # @return ExtendedKeyUsage extension object or null (if no such object
     # in certificate)
@@ -1219,7 +1170,6 @@ module Sun::Security::X509
     end
     
     typesig { [] }
-    # 
     # Get IssuerAlternativeName extension
     # @return IssuerAlternativeName object or null (if no such object in
     # certificate)
@@ -1228,7 +1178,6 @@ module Sun::Security::X509
     end
     
     typesig { [] }
-    # 
     # Get NameConstraints extension
     # @return NameConstraints object or null (if no such object in certificate)
     def get_name_constraints_extension
@@ -1236,7 +1185,6 @@ module Sun::Security::X509
     end
     
     typesig { [] }
-    # 
     # Get PolicyConstraints extension
     # @return PolicyConstraints object or null (if no such object in
     # certificate)
@@ -1245,7 +1193,6 @@ module Sun::Security::X509
     end
     
     typesig { [] }
-    # 
     # Get PolicyMappingsExtension extension
     # @return PolicyMappingsExtension object or null (if no such object
     # in certificate)
@@ -1254,7 +1201,6 @@ module Sun::Security::X509
     end
     
     typesig { [] }
-    # 
     # Get PrivateKeyUsage extension
     # @return PrivateKeyUsage object or null (if no such object in certificate)
     def get_private_key_usage_extension
@@ -1262,7 +1208,6 @@ module Sun::Security::X509
     end
     
     typesig { [] }
-    # 
     # Get SubjectAlternativeName extension
     # @return SubjectAlternativeName object or null (if no such object in
     # certificate)
@@ -1271,7 +1216,6 @@ module Sun::Security::X509
     end
     
     typesig { [] }
-    # 
     # Get SubjectKeyIdentifier extension
     # @return SubjectKeyIdentifier object or null (if no such object in
     # certificate)
@@ -1280,7 +1224,6 @@ module Sun::Security::X509
     end
     
     typesig { [] }
-    # 
     # Get CRLDistributionPoints extension
     # @return CRLDistributionPoints object or null (if no such object in
     # certificate)
@@ -1289,7 +1232,6 @@ module Sun::Security::X509
     end
     
     typesig { [] }
-    # 
     # Return true if a critical extension is found that is
     # not supported, otherwise return false.
     def has_unsupported_critical_extension
@@ -1308,7 +1250,6 @@ module Sun::Security::X509
     end
     
     typesig { [] }
-    # 
     # Gets a Set of the extension(s) marked CRITICAL in the
     # certificate. In the returned set, each extension is
     # represented by its OID string.
@@ -1337,7 +1278,6 @@ module Sun::Security::X509
     end
     
     typesig { [] }
-    # 
     # Gets a Set of the extension(s) marked NON-CRITICAL in the
     # certificate. In the returned set, each extension is
     # represented by its OID string.
@@ -1367,7 +1307,6 @@ module Sun::Security::X509
     end
     
     typesig { [ObjectIdentifier] }
-    # 
     # Gets the extension identified by the given ObjectIdentifier
     # 
     # @param oid the Object Identifier value for the extension.
@@ -1424,7 +1363,6 @@ module Sun::Security::X509
     end
     
     typesig { [String] }
-    # 
     # Gets the DER encoded extension identified by the given
     # oid String.
     # 
@@ -1477,7 +1415,6 @@ module Sun::Security::X509
     end
     
     typesig { [] }
-    # 
     # Get a boolean array representing the bits of the KeyUsage extension,
     # (oid = 2.5.29.15).
     # @return the bit values of this extension as an array of booleans.
@@ -1504,7 +1441,6 @@ module Sun::Security::X509
     end
     
     typesig { [] }
-    # 
     # This method are the overridden implementation of
     # getExtendedKeyUsage method in X509Certificate in the Sun
     # provider. It is better performance-wise since it returns cached
@@ -1526,7 +1462,6 @@ module Sun::Security::X509
     
     class_module.module_eval {
       typesig { [X509Certificate] }
-      # 
       # This static method is the default implementation of the
       # getExtendedKeyUsage method in X509Certificate. A
       # X509Certificate provider generally should overwrite this to
@@ -1550,7 +1485,6 @@ module Sun::Security::X509
     }
     
     typesig { [] }
-    # 
     # Get the certificate constraints path length from the
     # the critical BasicConstraints extension, (oid = 2.5.29.19).
     # @return the length of the constraint.
@@ -1576,7 +1510,6 @@ module Sun::Security::X509
     
     class_module.module_eval {
       typesig { [GeneralNames] }
-      # 
       # Converts a GeneralNames structure into an immutable Collection of
       # alternative names (subject or issuer) in the form required by
       # {@link #getSubjectAlternativeNames} or
@@ -1619,7 +1552,7 @@ module Sun::Security::X509
             rescue IOException => ioe
               # should not occur since name has already been decoded
               # from cert (this would indicate a bug in our code)
-              raise RuntimeException.new("name cannot be encoded", ioe_)
+              raise RuntimeException.new("name cannot be encoded", ioe)
             end
             name_entry.add(der_out.to_byte_array)
           end
@@ -1629,7 +1562,6 @@ module Sun::Security::X509
       end
       
       typesig { [Collection] }
-      # 
       # Checks a Collection of altNames and clones any name entries of type
       # byte [].
       # 
@@ -1645,13 +1577,13 @@ module Sun::Security::X509
         if (must_clone)
           names_copy = HashSet.new
           alt_names.each do |nameEntry|
-            name_object = name_entry_.get(1)
+            name_object = name_entry.get(1)
             if (name_object.is_a?(Array.typed(::Java::Byte)))
-              name_entry_copy = ArrayList.new(name_entry_)
+              name_entry_copy = ArrayList.new(name_entry)
               name_entry_copy.set(1, (name_object).clone)
               names_copy.add(Collections.unmodifiable_list(name_entry_copy))
             else
-              names_copy.add(name_entry_)
+              names_copy.add(name_entry)
             end
           end
           return Collections.unmodifiable_collection(names_copy)
@@ -1662,7 +1594,6 @@ module Sun::Security::X509
     }
     
     typesig { [] }
-    # 
     # This method are the overridden implementation of
     # getSubjectAlternativeNames method in X509Certificate in the Sun
     # provider. It is better performance-wise since it returns cached
@@ -1691,7 +1622,6 @@ module Sun::Security::X509
     
     class_module.module_eval {
       typesig { [X509Certificate] }
-      # 
       # This static method is the default implementation of the
       # getSubjectAlternaitveNames method in X509Certificate. A
       # X509Certificate provider generally should overwrite this to
@@ -1715,14 +1645,13 @@ module Sun::Security::X509
           return make_alt_names(names_)
         rescue IOException => ioe
           cpe = CertificateParsingException.new
-          cpe.init_cause(ioe_)
+          cpe.init_cause(ioe)
           raise cpe
         end
       end
     }
     
     typesig { [] }
-    # 
     # This method are the overridden implementation of
     # getIssuerAlternativeNames method in X509Certificate in the Sun
     # provider. It is better performance-wise since it returns cached
@@ -1751,7 +1680,6 @@ module Sun::Security::X509
     
     class_module.module_eval {
       typesig { [X509Certificate] }
-      # 
       # This static method is the default implementation of the
       # getIssuerAlternaitveNames method in X509Certificate. A
       # X509Certificate provider generally should overwrite this to
@@ -1775,7 +1703,7 @@ module Sun::Security::X509
           return make_alt_names(names_)
         rescue IOException => ioe
           cpe = CertificateParsingException.new
-          cpe.init_cause(ioe_)
+          cpe.init_cause(ioe)
           raise cpe
         end
       end
@@ -1787,8 +1715,6 @@ module Sun::Security::X509
     end
     
     typesig { [DerValue] }
-    # 
-    # 
     # Cert is a SIGNED ASN.1 macro, a three elment sequence:
     # 
     # - Data to be signed (ToBeSigned) -- the "raw" cert
@@ -1836,7 +1762,6 @@ module Sun::Security::X509
     
     class_module.module_eval {
       typesig { [X509Certificate, ::Java::Boolean] }
-      # 
       # Extract the subject or issuer X500Principal from an X509Certificate.
       # Parses the encoded form of the cert to preserve the principal's
       # ASN.1 encoding.
@@ -1863,7 +1788,6 @@ module Sun::Security::X509
       end
       
       typesig { [X509Certificate] }
-      # 
       # Extract the subject X500Principal from an X509Certificate.
       # Called from java.security.cert.X509Certificate.getSubjectX500Principal().
       def get_subject_x500principal(cert)
@@ -1875,7 +1799,6 @@ module Sun::Security::X509
       end
       
       typesig { [X509Certificate] }
-      # 
       # Extract the issuer X500Principal from an X509Certificate.
       # Called from java.security.cert.X509Certificate.getIssuerX500Principal().
       def get_issuer_x500principal(cert)
@@ -1887,7 +1810,6 @@ module Sun::Security::X509
       end
       
       typesig { [Certificate] }
-      # 
       # Returned the encoding of the given certificate for internal use.
       # Callers must guarantee that they neither modify it nor expose it
       # to untrusted code. Uses getEncodedInternal() if the certificate
@@ -1901,7 +1823,6 @@ module Sun::Security::X509
       end
       
       typesig { [X509Certificate] }
-      # 
       # Utility method to convert an arbitrary instance of X509Certificate
       # to a X509CertImpl. Does a cast if possible, otherwise reparses
       # the encoding.
@@ -1914,7 +1835,6 @@ module Sun::Security::X509
       end
       
       typesig { [X509Certificate] }
-      # 
       # Utility method to test if a certificate is self-issued. This is
       # the case iff the subject and issuer X500Principals are equal.
       def is_self_issued(cert)
@@ -1924,7 +1844,6 @@ module Sun::Security::X509
       end
       
       typesig { [X509Certificate, String] }
-      # 
       # Utility method to test if a certificate is self-signed. This is
       # the case iff the subject and issuer X500Principals are equal
       # AND the certificate's subject public key can be used to verify

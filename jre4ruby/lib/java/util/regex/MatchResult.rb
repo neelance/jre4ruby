@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 2003-2004 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -31,7 +30,6 @@ module Java::Util::Regex
     }
   end
   
-  # 
   # The result of a match operation.
   # 
   # <p>This interface contains query methods used to determine the
@@ -46,7 +44,6 @@ module Java::Util::Regex
     include_class_members MatchResultImports
     
     typesig { [] }
-    # 
     # Returns the start index of the match.
     # 
     # @return  The index of the first character matched
@@ -59,7 +56,6 @@ module Java::Util::Regex
     end
     
     typesig { [::Java::Int] }
-    # 
     # Returns the start index of the subsequence captured by the given group
     # during this match.
     # 
@@ -87,7 +83,6 @@ module Java::Util::Regex
     end
     
     typesig { [] }
-    # 
     # Returns the offset after the last character matched.  </p>
     # 
     # @return  @return  The offset after the last character matched
@@ -100,7 +95,6 @@ module Java::Util::Regex
     end
     
     typesig { [::Java::Int] }
-    # 
     # Returns the offset after the last character of the subsequence
     # captured by the given group during this match.
     # 
@@ -128,7 +122,6 @@ module Java::Util::Regex
     end
     
     typesig { [] }
-    # 
     # Returns the input subsequence matched by the previous match.
     # 
     # <p> For a matcher <i>m</i> with input sequence <i>s</i>,
@@ -151,7 +144,6 @@ module Java::Util::Regex
     end
     
     typesig { [::Java::Int] }
-    # 
     # Returns the input subsequence captured by the given group during the
     # previous match operation.
     # 
@@ -190,7 +182,6 @@ module Java::Util::Regex
     end
     
     typesig { [] }
-    # 
     # Returns the number of capturing groups in this match result's pattern.
     # 
     # <p> Group zero denotes the entire pattern by convention. It is not

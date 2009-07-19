@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 1998-2007 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -32,7 +31,6 @@ module Sun::Misc
     }
   end
   
-  # 
   # This class provides ANSI/ISO C signal support. A Java program can register
   # signal handlers for the current process. There are two restrictions:
   # <ul>
@@ -122,7 +120,6 @@ module Sun::Misc
     end
     
     typesig { [] }
-    # 
     # Returns the signal name.
     # 
     # @return the name of the signal.
@@ -132,7 +129,6 @@ module Sun::Misc
     end
     
     typesig { [Object] }
-    # 
     # Compares the equality of two <code>Signal</code> objects.
     # 
     # @param other the object to compare with.
@@ -149,7 +145,6 @@ module Sun::Misc
     end
     
     typesig { [] }
-    # 
     # Returns a hashcode for this Signal.
     # 
     # @return  a hash code value for this object.
@@ -158,7 +153,6 @@ module Sun::Misc
     end
     
     typesig { [] }
-    # 
     # Returns a string representation of this signal. For example, "SIGINT"
     # for an object constructed using <code>new Signal ("INT")</code>.
     # 
@@ -168,7 +162,6 @@ module Sun::Misc
     end
     
     typesig { [String] }
-    # 
     # Constructs a signal from its name.
     # 
     # @param name the name of the signal.
@@ -186,7 +179,6 @@ module Sun::Misc
     
     class_module.module_eval {
       typesig { [Signal, SignalHandler] }
-      # 
       # Registers a signal handler.
       # 
       # @param sig a signal
@@ -229,7 +221,6 @@ module Sun::Misc
       end
       
       typesig { [Signal] }
-      # 
       # Raises a signal in the current process.
       # 
       # @param sig a signal

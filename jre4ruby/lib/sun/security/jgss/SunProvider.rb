@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 2000-2006 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -33,7 +32,6 @@ module Sun::Security::Jgss
     }
   end
   
-  # 
   # Defines the Sun JGSS provider.
   # Will merger this with the Sun security provider
   # sun.security.provider.Sun when the JGSS src is merged with the JDK
@@ -81,7 +79,6 @@ module Sun::Security::Jgss
         define_method :run do
           put("GssApiMechanism.1.2.840.113554.1.2.2", "sun.security.jgss.krb5.Krb5MechFactory")
           put("GssApiMechanism.1.3.6.1.5.5.2", "sun.security.jgss.spnego.SpNegoMechFactory")
-          # 
           # put("GssApiMechanism.1.3.6.1.4.1.42.2.26.1.2",
           # "sun.security.jgss.dummy.DummyMechFactory");
           return nil

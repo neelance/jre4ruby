@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 2003 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -31,7 +30,6 @@ module Java::Lang
     }
   end
   
-  # 
   # A <tt>Readable</tt> is a source of characters. Characters from
   # a <tt>Readable</tt> are made available to callers of the read
   # method via a {@link java.nio.CharBuffer CharBuffer}.
@@ -41,7 +39,6 @@ module Java::Lang
     include_class_members ReadableImports
     
     typesig { [Java::Nio::CharBuffer] }
-    # 
     # Attempts to read characters into the specified character buffer.
     # The buffer is used as a repository of characters as-is: the only
     # changes made are the results of a put operation. No flipping or

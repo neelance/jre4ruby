@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 2003-2007 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -36,7 +35,6 @@ module Sun::Security::Ssl
     }
   end
   
-  # 
   # Wrapper class around InputRecord.
   # 
   # Application data is kept external to the InputRecord,
@@ -54,7 +52,6 @@ module Sun::Security::Ssl
     undef_method :engine=
     
     class_module.module_eval {
-      # 
       # A dummy ByteBuffer we'll pass back even when the data
       # is stored internally.  It'll never actually be used.
       
@@ -69,7 +66,6 @@ module Sun::Security::Ssl
       alias_method :attr_tmp_bb=, :tmp_bb=
     }
     
-    # 
     # Flag to tell whether the last read/parsed data resides
     # internal in the ByteArrayInputStream, or in the external
     # buffers.
@@ -97,13 +93,11 @@ module Sun::Security::Ssl
     end
     
     typesig { [ByteBuffer] }
-    # 
     # Check if there is enough inbound data in the ByteBuffer
     # to make a inbound packet.  Look for both SSLv2 and SSLv3.
     # 
     # @return -1 if there are not enough bytes to tell (small header),
     def bytes_in_complete_packet(buf)
-      # 
       # SSLv2 length field is in bytes 0/1
       # SSLv3/TLS length field is in bytes 3/4
       if (buf.remaining < 5)
@@ -112,13 +106,11 @@ module Sun::Security::Ssl
       pos = buf.position
       byte_zero = buf.get(pos)
       len = 0
-      # 
       # If we have already verified previous packets, we can
       # ignore the verifications steps, and jump right to the
       # determination.  Otherwise, try one last hueristic to
       # see if it's SSL/TLS.
       if (self.attr_format_verified || ((byte_zero).equal?(self.attr_ct_handshake)) || ((byte_zero).equal?(self.attr_ct_alert)))
-        # 
         # Last sanity check that it's not a wild record
         record_version = ProtocolVersion.value_of(buf.get(pos + 1), buf.get(pos + 2))
         # Check if too old (currently not possible)
@@ -127,16 +119,13 @@ module Sun::Security::Ssl
         if ((record_version.attr_v < ProtocolVersion::MIN.attr_v) || (record_version.attr_major > ProtocolVersion::MAX.attr_major))
           raise SSLException.new("Unsupported record version " + (record_version).to_s)
         end
-        # 
         # Reasonably sure this is a V3, disable further checks.
         # We can't do the same in the v2 check below, because
         # read still needs to parse/handle the v2 clientHello.
         self.attr_format_verified = true
-        # 
         # One of the SSLv3/TLS message types.
         len = ((buf.get(pos + 3) & 0xff) << 8) + (buf.get(pos + 4) & 0xff) + self.attr_header_size
       else
-        # 
         # Must be SSLv2 or something unknown.
         # Check if it's short (2 bytes) or
         # long (3) header.
@@ -144,17 +133,16 @@ module Sun::Security::Ssl
         # Internals can warn about unsupported SSLv2
         is_short = (!((byte_zero & 0x80)).equal?(0))
         if (is_short && (((buf.get(pos + 2)).equal?(1)) || (buf.get(pos + 2)).equal?(4)))
-          record_version_ = ProtocolVersion.value_of(buf.get(pos + 3), buf.get(pos + 4))
+          record_version = ProtocolVersion.value_of(buf.get(pos + 3), buf.get(pos + 4))
           # Check if too old (currently not possible)
           # or if the major version does not match.
           # The actual version negotiation is in the handshaker classes
-          if ((record_version_.attr_v < ProtocolVersion::MIN.attr_v) || (record_version_.attr_major > ProtocolVersion::MAX.attr_major))
+          if ((record_version.attr_v < ProtocolVersion::MIN.attr_v) || (record_version.attr_major > ProtocolVersion::MAX.attr_major))
             # if it's not SSLv2, we're out of here.
-            if (!(record_version_.attr_v).equal?(ProtocolVersion::SSL20Hello.attr_v))
-              raise SSLException.new("Unsupported record version " + (record_version_).to_s)
+            if (!(record_version.attr_v).equal?(ProtocolVersion::SSL20Hello.attr_v))
+              raise SSLException.new("Unsupported record version " + (record_version).to_s)
             end
           end
-          # 
           # Client or Server Hello
           mask = (is_short ? 0x7f : 0x3f)
           len = ((byte_zero & mask) << 8) + (buf.get(pos + 1) & 0xff) + (is_short ? 2 : 3)
@@ -167,7 +155,6 @@ module Sun::Security::Ssl
     end
     
     typesig { [MAC, ByteBuffer] }
-    # 
     # Verifies and removes the MAC value.  Returns true if
     # the MAC checks out OK.
     # 
@@ -187,10 +174,8 @@ module Sun::Security::Ssl
         # no mac
         return true
       end
-      # 
       # Grab the original limit
       lim = bb.limit
-      # 
       # Delineate the area to apply a MAC on.
       mac_data = lim - len
       bb.limit(mac_data)
@@ -198,7 +183,6 @@ module Sun::Security::Ssl
       if (!(len).equal?(mac.attr_length))
         raise RuntimeException.new("Internal MAC error")
       end
-      # 
       # Delineate the MAC values, position was already set
       # by doing the compute above.
       # 
@@ -217,7 +201,6 @@ module Sun::Security::Ssl
         end
         return true
       ensure
-        # 
         # Position to the data.
         bb.rewind
         bb.limit(mac_data)
@@ -225,7 +208,6 @@ module Sun::Security::Ssl
     end
     
     typesig { [CipherBox, ByteBuffer] }
-    # 
     # Pass the data down if it's internally cached, otherwise
     # do it here.
     # 
@@ -244,21 +226,18 @@ module Sun::Security::Ssl
     end
     
     typesig { [OutputStream, Array.typed(::Java::Byte), ::Java::Int, ::Java::Int] }
-    # 
     # Override the actual write below.  We do things this way to be
     # consistent with InputRecord.  InputRecord may try to write out
     # data to the peer, and *then* throw an Exception.  This forces
     # data to be generated/output before the exception is ever
     # generated.
     def write_buffer(s, buf, off, len)
-      # 
       # Copy data out of buffer, it's ready to go.
       net_bb = (ByteBuffer.allocate(len).put(buf, 0, len).flip)
       @engine.attr_writer.put_outbound_data_sync(net_bb)
     end
     
     typesig { [ByteBuffer] }
-    # 
     # Delineate or read a complete packet from src.
     # 
     # If internal data (hs, alert, ccs), the data is read and
@@ -267,7 +246,6 @@ module Sun::Security::Ssl
     # If external data (app), return a new ByteBuffer which points
     # to the data to process.
     def read(src_bb)
-      # 
       # Could have a src == null/dst == null check here,
       # but that was already checked by SSLEngine.unwrap before
       # ever attempting to read.
@@ -292,7 +270,6 @@ module Sun::Security::Ssl
       if ((record_version.attr_v < ProtocolVersion::MIN.attr_v) || (record_version.attr_major > ProtocolVersion::MAX.attr_major))
         raise SSLException.new("Unsupported record version " + (record_version).to_s)
       end
-      # 
       # It's really application data.  How much to consume?
       # Jump over the header.
       len = bytes_in_complete_packet(src_bb)
@@ -312,10 +289,10 @@ module Sun::Security::Ssl
       src_bb.limit(src_pos + len)
       # Protect remainder of buffer, create slice to actually
       # operate on.
-      bb_ = src_bb.slice
+      bb = src_bb.slice
       src_bb.position(src_bb.limit)
       src_bb.limit(src_lim)
-      return bb_
+      return bb
     end
     
     private

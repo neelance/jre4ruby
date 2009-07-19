@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 1996-2006 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -35,7 +34,6 @@ module Sun::Security::Provider
     }
   end
   
-  # 
   # Provider used for verification of signed JAR files *if* the Sun and
   # SunRsaSign main classes have been removed. Otherwise, this provider is not
   # necessary and registers no algorithms. This functionality only exists to

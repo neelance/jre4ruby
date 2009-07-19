@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 2000-2006 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -322,23 +321,19 @@ module Java::Util::Prefs
         end
       end
       
-      # 
       # Maximum length of string allowed as a key (80 characters).
       const_set_lazy(:MAX_KEY_LENGTH) { 80 }
       const_attr_reader  :MAX_KEY_LENGTH
       
-      # 
       # Maximum length of string allowed as a value (8192 characters).
       const_set_lazy(:MAX_VALUE_LENGTH) { 8 * 1024 }
       const_attr_reader  :MAX_VALUE_LENGTH
       
-      # 
       # Maximum length of a node name (80 characters).
       const_set_lazy(:MAX_NAME_LENGTH) { 80 }
       const_attr_reader  :MAX_NAME_LENGTH
       
       typesig { [Class] }
-      # 
       # Returns the preference node from the calling user's preference tree
       # that is associated (by convention) with the specified class's package.
       # The convention is as follows: the absolute path name of the node is the
@@ -382,7 +377,6 @@ module Java::Util::Prefs
       end
       
       typesig { [Class] }
-      # 
       # Returns the preference node from the system preference tree that is
       # associated (by convention) with the specified class's package.  The
       # convention is as follows: the absolute path name of the node is the
@@ -426,7 +420,6 @@ module Java::Util::Prefs
       end
       
       typesig { [Class] }
-      # 
       # Returns the absolute path name of the node corresponding to the package
       # of the specified object.
       # 
@@ -445,7 +438,6 @@ module Java::Util::Prefs
         return "/" + (package_name.replace(Character.new(?..ord), Character.new(?/.ord))).to_s
       end
       
-      # 
       # This permission object represents the permission required to get
       # access to the user or system root (which in turn allows for all
       # other operations).
@@ -461,7 +453,6 @@ module Java::Util::Prefs
       alias_method :attr_prefs_perm=, :prefs_perm=
       
       typesig { [] }
-      # 
       # Returns the root preference node for the calling user.
       # 
       # @return the root preference node for the calling user.
@@ -477,7 +468,6 @@ module Java::Util::Prefs
       end
       
       typesig { [] }
-      # 
       # Returns the root preference node for the system.
       # 
       # @return the root preference node for the system.
@@ -494,14 +484,12 @@ module Java::Util::Prefs
     }
     
     typesig { [] }
-    # 
     # Sole constructor. (For invocation by subclass constructors, typically
     # implicit.)
     def initialize
     end
     
     typesig { [String, String] }
-    # 
     # Associates the specified value with the specified key in this
     # preference node.
     # 
@@ -518,7 +506,6 @@ module Java::Util::Prefs
     end
     
     typesig { [String, String] }
-    # 
     # Returns the value associated with the specified key in this preference
     # node.  Returns the specified default if there is no value associated
     # with the key, or the backing store is inaccessible.
@@ -543,7 +530,6 @@ module Java::Util::Prefs
     end
     
     typesig { [String] }
-    # 
     # Removes the value associated with the specified key in this preference
     # node, if any.
     # 
@@ -561,7 +547,6 @@ module Java::Util::Prefs
     end
     
     typesig { [] }
-    # 
     # Removes all of the preferences (key-value associations) in this
     # preference node.  This call has no effect on any descendants
     # of this node.
@@ -582,7 +567,6 @@ module Java::Util::Prefs
     end
     
     typesig { [String, ::Java::Int] }
-    # 
     # Associates a string representing the specified int value with the
     # specified key in this preference node.  The associated string is the
     # one that would be returned if the int value were passed to
@@ -602,7 +586,6 @@ module Java::Util::Prefs
     end
     
     typesig { [String, ::Java::Int] }
-    # 
     # Returns the int value represented by the string associated with the
     # specified key in this preference node.  The string is converted to
     # an integer as by {@link Integer#parseInt(String)}.  Returns the
@@ -636,7 +619,6 @@ module Java::Util::Prefs
     end
     
     typesig { [String, ::Java::Long] }
-    # 
     # Associates a string representing the specified long value with the
     # specified key in this preference node.  The associated string is the
     # one that would be returned if the long value were passed to
@@ -656,7 +638,6 @@ module Java::Util::Prefs
     end
     
     typesig { [String, ::Java::Long] }
-    # 
     # Returns the long value represented by the string associated with the
     # specified key in this preference node.  The string is converted to
     # a long as by {@link Long#parseLong(String)}.  Returns the
@@ -690,7 +671,6 @@ module Java::Util::Prefs
     end
     
     typesig { [String, ::Java::Boolean] }
-    # 
     # Associates a string representing the specified boolean value with the
     # specified key in this preference node.  The associated string is
     # <tt>"true"</tt> if the value is true, and <tt>"false"</tt> if it is
@@ -711,7 +691,6 @@ module Java::Util::Prefs
     end
     
     typesig { [String, ::Java::Boolean] }
-    # 
     # Returns the boolean value represented by the string associated with the
     # specified key in this preference node.  Valid strings
     # are <tt>"true"</tt>, which represents true, and <tt>"false"</tt>, which
@@ -749,7 +728,6 @@ module Java::Util::Prefs
     end
     
     typesig { [String, ::Java::Float] }
-    # 
     # Associates a string representing the specified float value with the
     # specified key in this preference node.  The associated string is the
     # one that would be returned if the float value were passed to
@@ -769,7 +747,6 @@ module Java::Util::Prefs
     end
     
     typesig { [String, ::Java::Float] }
-    # 
     # Returns the float value represented by the string associated with the
     # specified key in this preference node.  The string is converted to an
     # integer as by {@link Float#parseFloat(String)}.  Returns the specified
@@ -802,7 +779,6 @@ module Java::Util::Prefs
     end
     
     typesig { [String, ::Java::Double] }
-    # 
     # Associates a string representing the specified double value with the
     # specified key in this preference node.  The associated string is the
     # one that would be returned if the double value were passed to
@@ -822,7 +798,6 @@ module Java::Util::Prefs
     end
     
     typesig { [String, ::Java::Double] }
-    # 
     # Returns the double value represented by the string associated with the
     # specified key in this preference node.  The string is converted to an
     # integer as by {@link Double#parseDouble(String)}.  Returns the specified
@@ -855,7 +830,6 @@ module Java::Util::Prefs
     end
     
     typesig { [String, Array.typed(::Java::Byte)] }
-    # 
     # Associates a string representing the specified byte array with the
     # specified key in this preference node.  The associated string is
     # the <i>Base64</i> encoding of the byte array, as defined in <a
@@ -882,7 +856,6 @@ module Java::Util::Prefs
     end
     
     typesig { [String, Array.typed(::Java::Byte)] }
-    # 
     # Returns the byte array value represented by the string associated with
     # the specified key in this preference node.  Valid strings are
     # <i>Base64</i> encoded binary data, as defined in <a
@@ -923,7 +896,6 @@ module Java::Util::Prefs
     end
     
     typesig { [] }
-    # 
     # Returns all of the keys that have an associated value in this
     # preference node.  (The returned array will be of size zero if
     # this node has no preferences.)
@@ -945,7 +917,6 @@ module Java::Util::Prefs
     end
     
     typesig { [] }
-    # 
     # Returns the names of the children of this preference node, relative to
     # this node.  (The returned array will be of size zero if this node has
     # no children.)
@@ -961,7 +932,6 @@ module Java::Util::Prefs
     end
     
     typesig { [] }
-    # 
     # Returns the parent of this preference node, or <tt>null</tt> if this is
     # the root.
     # 
@@ -973,7 +943,6 @@ module Java::Util::Prefs
     end
     
     typesig { [String] }
-    # 
     # Returns the named preference node in the same tree as this node,
     # creating it and any of its ancestors if they do not already exist.
     # Accepts a relative or absolute path name.  Relative path names
@@ -999,7 +968,6 @@ module Java::Util::Prefs
     end
     
     typesig { [String] }
-    # 
     # Returns true if the named preference node exists in the same tree
     # as this node.  Relative path names (which do not begin with the slash
     # character <tt>('/')</tt>) are interpreted relative to this preference
@@ -1029,7 +997,6 @@ module Java::Util::Prefs
     end
     
     typesig { [] }
-    # 
     # Removes this preference node and all of its descendants, invalidating
     # any preferences contained in the removed nodes.  Once a node has been
     # removed, attempting any method other than {@link #name()},
@@ -1063,7 +1030,6 @@ module Java::Util::Prefs
     end
     
     typesig { [] }
-    # 
     # Returns this preference node's name, relative to its parent.
     # 
     # @return this preference node's name, relative to its parent.
@@ -1072,7 +1038,6 @@ module Java::Util::Prefs
     end
     
     typesig { [] }
-    # 
     # Returns this preference node's absolute path name.
     # 
     # @return this preference node's absolute path name.
@@ -1081,7 +1046,6 @@ module Java::Util::Prefs
     end
     
     typesig { [] }
-    # 
     # Returns <tt>true</tt> if this preference node is in the user
     # preference tree, <tt>false</tt> if it's in the system preference tree.
     # 
@@ -1093,7 +1057,6 @@ module Java::Util::Prefs
     end
     
     typesig { [] }
-    # 
     # Returns a string representation of this preferences node,
     # as if computed by the expression:<tt>(this.isUserNode() ? "User" :
     # "System") + " Preference Node: " + this.absolutePath()</tt>.
@@ -1102,7 +1065,6 @@ module Java::Util::Prefs
     end
     
     typesig { [] }
-    # 
     # Forces any changes in the contents of this preference node and its
     # descendants to the persistent store.  Once this method returns
     # successfully, it is safe to assume that all changes made in the
@@ -1130,7 +1092,6 @@ module Java::Util::Prefs
     end
     
     typesig { [] }
-    # 
     # Ensures that future reads from this preference node and its
     # descendants reflect any changes that were committed to the persistent
     # store (from any VM) prior to the <tt>sync</tt> invocation.  As a
@@ -1149,7 +1110,6 @@ module Java::Util::Prefs
     end
     
     typesig { [PreferenceChangeListener] }
-    # 
     # Registers the specified listener to receive <i>preference change
     # events</i> for this preference node.  A preference change event is
     # generated when a preference is added to this node, removed from this
@@ -1177,7 +1137,6 @@ module Java::Util::Prefs
     end
     
     typesig { [PreferenceChangeListener] }
-    # 
     # Removes the specified preference change listener, so it no longer
     # receives preference change events.
     # 
@@ -1192,7 +1151,6 @@ module Java::Util::Prefs
     end
     
     typesig { [NodeChangeListener] }
-    # 
     # Registers the specified listener to receive <i>node change events</i>
     # for this node.  A node change event is generated when a child node is
     # added to or removed from this node.  (A single {@link #removeNode()}
@@ -1225,7 +1183,6 @@ module Java::Util::Prefs
     end
     
     typesig { [NodeChangeListener] }
-    # 
     # Removes the specified <tt>NodeChangeListener</tt>, so it no longer
     # receives change events.
     # 
@@ -1240,7 +1197,6 @@ module Java::Util::Prefs
     end
     
     typesig { [OutputStream] }
-    # 
     # Emits on the specified output stream an XML document representing all
     # of the preferences contained in this node (but not its descendants).
     # This XML document is, in effect, an offline backup of the node.
@@ -1272,7 +1228,6 @@ module Java::Util::Prefs
     end
     
     typesig { [OutputStream] }
-    # 
     # Emits an XML document representing all of the preferences contained
     # in this node and all of its descendants.  This XML document is, in
     # effect, an offline backup of the subtree rooted at the node.
@@ -1306,7 +1261,6 @@ module Java::Util::Prefs
     
     class_module.module_eval {
       typesig { [InputStream] }
-      # 
       # Imports all of the preferences represented by the XML document on the
       # specified input stream.  The document may represent user preferences or
       # system preferences.  If it represents user preferences, the preferences

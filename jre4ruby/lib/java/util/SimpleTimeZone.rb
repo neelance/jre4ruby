@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 1996-2006 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -49,7 +48,6 @@ module Java::Util
     }
   end
   
-  # 
   # <code>SimpleTimeZone</code> is a concrete subclass of <code>TimeZone</code>
   # that represents a time zone for use with a Gregorian calendar.
   # The class holds an offset from GMT, called <em>raw offset</em>, and start
@@ -152,7 +150,6 @@ module Java::Util
     include_class_members SimpleTimeZoneImports
     
     typesig { [::Java::Int, String] }
-    # 
     # Constructs a SimpleTimeZone with the given base time zone offset from GMT
     # and time zone ID with no daylight saving time schedule.
     # 
@@ -190,7 +187,6 @@ module Java::Util
     end
     
     typesig { [::Java::Int, String, ::Java::Int, ::Java::Int, ::Java::Int, ::Java::Int, ::Java::Int, ::Java::Int, ::Java::Int, ::Java::Int] }
-    # 
     # Constructs a SimpleTimeZone with the given base time zone offset from
     # GMT, time zone ID, and rules for starting and ending the daylight
     # time.
@@ -243,7 +239,6 @@ module Java::Util
     end
     
     typesig { [::Java::Int, String, ::Java::Int, ::Java::Int, ::Java::Int, ::Java::Int, ::Java::Int, ::Java::Int, ::Java::Int, ::Java::Int, ::Java::Int] }
-    # 
     # Constructs a SimpleTimeZone with the given base time zone offset from
     # GMT, time zone ID, and rules for starting and ending the daylight
     # time.
@@ -295,7 +290,6 @@ module Java::Util
     end
     
     typesig { [::Java::Int, String, ::Java::Int, ::Java::Int, ::Java::Int, ::Java::Int, ::Java::Int, ::Java::Int, ::Java::Int, ::Java::Int, ::Java::Int, ::Java::Int, ::Java::Int] }
-    # 
     # Constructs a SimpleTimeZone with the given base time zone offset from
     # GMT, time zone ID, and rules for starting and ending the daylight
     # time.
@@ -386,7 +380,6 @@ module Java::Util
     end
     
     typesig { [::Java::Int] }
-    # 
     # Sets the daylight saving time starting year.
     # 
     # @param year  The daylight saving starting year.
@@ -396,7 +389,6 @@ module Java::Util
     end
     
     typesig { [::Java::Int, ::Java::Int, ::Java::Int, ::Java::Int] }
-    # 
     # Sets the daylight saving time start rule. For example, if daylight saving
     # time starts on the first Sunday in April at 2 am in local wall clock
     # time, you can set the start rule by calling:
@@ -424,7 +416,6 @@ module Java::Util
     end
     
     typesig { [::Java::Int, ::Java::Int, ::Java::Int] }
-    # 
     # Sets the daylight saving time start rule to a fixed date within a month.
     # This method is equivalent to:
     # <pre><code>setStartRule(startMonth, startDay, 0, startTime)</code></pre>
@@ -444,7 +435,6 @@ module Java::Util
     end
     
     typesig { [::Java::Int, ::Java::Int, ::Java::Int, ::Java::Int, ::Java::Boolean] }
-    # 
     # Sets the daylight saving time start rule to a weekday before or after the given date within
     # a month, e.g., the first Monday on or after the 8th.
     # 
@@ -472,7 +462,6 @@ module Java::Util
     end
     
     typesig { [::Java::Int, ::Java::Int, ::Java::Int, ::Java::Int] }
-    # 
     # Sets the daylight saving time end rule. For example, if daylight saving time
     # ends on the last Sunday in October at 2 am in wall clock time,
     # you can set the end rule by calling:
@@ -501,7 +490,6 @@ module Java::Util
     end
     
     typesig { [::Java::Int, ::Java::Int, ::Java::Int] }
-    # 
     # Sets the daylight saving time end rule to a fixed date within a month.
     # This method is equivalent to:
     # <pre><code>setEndRule(endMonth, endDay, 0, endTime)</code></pre>
@@ -521,7 +509,6 @@ module Java::Util
     end
     
     typesig { [::Java::Int, ::Java::Int, ::Java::Int, ::Java::Int, ::Java::Boolean] }
-    # 
     # Sets the daylight saving time end rule to a weekday before or after the given date within
     # a month, e.g., the first Monday on or after the 8th.
     # 
@@ -549,7 +536,6 @@ module Java::Util
     end
     
     typesig { [::Java::Long] }
-    # 
     # Returns the offset of this time zone from UTC at the given
     # time. If daylight saving time is in effect at the given time,
     # the offset value is adjusted with the amount of daylight
@@ -564,7 +550,6 @@ module Java::Util
     end
     
     typesig { [::Java::Long, Array.typed(::Java::Int)] }
-    # 
     # @see TimeZone#getOffsets
     def get_offsets(date, offsets)
       offset = @raw_offset
@@ -596,7 +581,6 @@ module Java::Util
     end
     
     typesig { [::Java::Int, ::Java::Int, ::Java::Int, ::Java::Int, ::Java::Int, ::Java::Int] }
-    # 
     # Returns the difference in milliseconds between local time and
     # UTC, taking into account both the raw offset and the effect of
     # daylight saving, for the specified date and time.  This method
@@ -776,7 +760,6 @@ module Java::Util
     end
     
     typesig { [] }
-    # 
     # Gets the GMT offset for this time zone.
     # @return the GMT offset value in milliseconds
     # @see #setRawOffset
@@ -787,7 +770,6 @@ module Java::Util
     end
     
     typesig { [::Java::Int] }
-    # 
     # Sets the base time zone offset to GMT.
     # This is the offset to add to UTC to get local time.
     # @see #getRawOffset
@@ -796,7 +778,6 @@ module Java::Util
     end
     
     typesig { [::Java::Int] }
-    # 
     # Sets the amount of time in milliseconds that the clock is advanced
     # during daylight saving time.
     # @param millisSavedDuringDST the number of milliseconds the time is
@@ -812,7 +793,6 @@ module Java::Util
     end
     
     typesig { [] }
-    # 
     # Returns the amount of time in milliseconds that the clock is
     # advanced during daylight saving time.
     # 
@@ -831,7 +811,6 @@ module Java::Util
     end
     
     typesig { [] }
-    # 
     # Queries if this time zone uses daylight saving time.
     # @return true if this time zone uses daylight saving time;
     # false otherwise.
@@ -840,7 +819,6 @@ module Java::Util
     end
     
     typesig { [Date] }
-    # 
     # Queries if the given date is in daylight saving time.
     # @return true if daylight saving time is in effective at the
     # given date; false otherwise.
@@ -849,7 +827,6 @@ module Java::Util
     end
     
     typesig { [] }
-    # 
     # Returns a clone of this <code>SimpleTimeZone</code> instance.
     # @return a clone of this instance.
     def clone
@@ -857,7 +834,6 @@ module Java::Util
     end
     
     typesig { [] }
-    # 
     # Generates the hash code for the SimpleDateFormat object.
     # @return the hash code for this object
     def hash_code
@@ -867,7 +843,6 @@ module Java::Util
     end
     
     typesig { [Object] }
-    # 
     # Compares the equality of two <code>SimpleTimeZone</code> objects.
     # 
     # @param obj  The <code>SimpleTimeZone</code> object to be compared with.
@@ -885,7 +860,6 @@ module Java::Util
     end
     
     typesig { [TimeZone] }
-    # 
     # Returns <code>true</code> if this zone has the same rules and offset as another zone.
     # @param other the TimeZone object to be compared with
     # @return <code>true</code> if the given zone is a SimpleTimeZone and has the
@@ -904,7 +878,6 @@ module Java::Util
     end
     
     typesig { [] }
-    # 
     # Returns a string representation of this time zone.
     # @return a string representation of this time zone.
     def to_s
@@ -925,7 +898,6 @@ module Java::Util
     alias_method :attr_start_month=, :start_month=
     undef_method :start_month=
     
-    # 
     # This field has two possible interpretations:
     # <dl>
     # <dt><code>startMode == DOW_IN_MONTH</code></dt>
@@ -953,7 +925,6 @@ module Java::Util
     alias_method :attr_start_day=, :start_day=
     undef_method :start_day=
     
-    # 
     # The day of the week on which daylight saving time starts.  This value
     # must be between <code>Calendar.SUNDAY</code> and
     # <code>Calendar.SATURDAY</code> inclusive.
@@ -966,7 +937,6 @@ module Java::Util
     alias_method :attr_start_day_of_week=, :start_day_of_week=
     undef_method :start_day_of_week=
     
-    # 
     # The time in milliseconds after midnight at which daylight saving
     # time starts.  This value is expressed as wall time, standard time,
     # or UTC time, depending on the setting of <code>startTimeMode</code>.
@@ -978,7 +948,6 @@ module Java::Util
     alias_method :attr_start_time=, :start_time=
     undef_method :start_time=
     
-    # 
     # The format of startTime, either WALL_TIME, STANDARD_TIME, or UTC_TIME.
     # @serial
     # @since 1.3
@@ -988,7 +957,6 @@ module Java::Util
     alias_method :attr_start_time_mode=, :start_time_mode=
     undef_method :start_time_mode=
     
-    # 
     # The month in which daylight saving time ends.  This value must be
     # between <code>Calendar.JANUARY</code> and
     # <code>Calendar.UNDECIMBER</code>.  This value must not equal
@@ -1001,7 +969,6 @@ module Java::Util
     alias_method :attr_end_month=, :end_month=
     undef_method :end_month=
     
-    # 
     # This field has two possible interpretations:
     # <dl>
     # <dt><code>endMode == DOW_IN_MONTH</code></dt>
@@ -1029,7 +996,6 @@ module Java::Util
     alias_method :attr_end_day=, :end_day=
     undef_method :end_day=
     
-    # 
     # The day of the week on which daylight saving time ends.  This value
     # must be between <code>Calendar.SUNDAY</code> and
     # <code>Calendar.SATURDAY</code> inclusive.
@@ -1042,7 +1008,6 @@ module Java::Util
     alias_method :attr_end_day_of_week=, :end_day_of_week=
     undef_method :end_day_of_week=
     
-    # 
     # The time in milliseconds after midnight at which daylight saving
     # time ends.  This value is expressed as wall time, standard time,
     # or UTC time, depending on the setting of <code>endTimeMode</code>.
@@ -1054,7 +1019,6 @@ module Java::Util
     alias_method :attr_end_time=, :end_time=
     undef_method :end_time=
     
-    # 
     # The format of endTime, either <code>WALL_TIME</code>,
     # <code>STANDARD_TIME</code>, or <code>UTC_TIME</code>.
     # @serial
@@ -1065,7 +1029,6 @@ module Java::Util
     alias_method :attr_end_time_mode=, :end_time_mode=
     undef_method :end_time_mode=
     
-    # 
     # The year in which daylight saving time is first observed.  This is an {@link GregorianCalendar#AD AD}
     # value.  If this value is less than 1 then daylight saving time is observed
     # for all <code>AD</code> years.
@@ -1077,7 +1040,6 @@ module Java::Util
     alias_method :attr_start_year=, :start_year=
     undef_method :start_year=
     
-    # 
     # The offset in milliseconds between this zone and GMT.  Negative offsets
     # are to the west of Greenwich.  To obtain local <em>standard</em> time,
     # add the offset to GMT time.  To obtain local wall time it may also be
@@ -1089,7 +1051,6 @@ module Java::Util
     alias_method :attr_raw_offset=, :raw_offset=
     undef_method :raw_offset=
     
-    # 
     # A boolean value which is true if and only if this zone uses daylight
     # saving time.  If this value is false, several other fields are ignored.
     # @serial
@@ -1108,7 +1069,6 @@ module Java::Util
       const_attr_reader  :MillisPerDay
     }
     
-    # 
     # This field was serialized in JDK 1.1, so we have to keep it that way
     # to maintain serialization compatibility. However, there's no need to
     # recreate the array each time we create a new time zone.
@@ -1129,7 +1089,6 @@ module Java::Util
       const_attr_reader  :StaticLeapMonthLength
     }
     
-    # 
     # Variables specifying the mode of the start rule.  Takes the following
     # values:
     # <dl>
@@ -1161,7 +1120,6 @@ module Java::Util
     alias_method :attr_start_mode=, :start_mode=
     undef_method :start_mode=
     
-    # 
     # Variables specifying the mode of the end rule.  Takes the following
     # values:
     # <dl>
@@ -1193,7 +1151,6 @@ module Java::Util
     alias_method :attr_end_mode=, :end_mode=
     undef_method :end_mode=
     
-    # 
     # A positive value indicating the amount of time saved during DST in
     # milliseconds.
     # Typically one hour (3600000); sometimes 30 minutes (1800000).
@@ -1211,7 +1168,6 @@ module Java::Util
       const_attr_reader  :Gcal
     }
     
-    # 
     # Cache values representing a single period of daylight saving
     # time. When the cache values are valid, cacheStart is the start
     # time (inclusive) of daylight saving time and cacheEnd is the
@@ -1241,7 +1197,6 @@ module Java::Util
     undef_method :cache_end=
     
     class_module.module_eval {
-      # 
       # Constants specifying values of startMode and endMode.
       const_set_lazy(:DOM_MODE) { 1 }
       const_attr_reader  :DOM_MODE
@@ -1274,7 +1229,6 @@ module Java::Util
       const_set_lazy(:STANDARD_TIME) { 1 }
       const_attr_reader  :STANDARD_TIME
       
-      # 
       # Constant for a mode of start or end time specified as UTC. European
       # Union rules are specified as UTC time, for example.
       # @since 1.4
@@ -1293,7 +1247,6 @@ module Java::Util
       const_attr_reader  :CurrentSerialVersion
     }
     
-    # 
     # The version of the serialized data on the stream.  Possible values:
     # <dl>
     # <dt><b>0</b> or not present on stream</dt>
@@ -1398,7 +1351,6 @@ module Java::Util
     end
     
     typesig { [] }
-    # 
     # Decode the start rule and validate the parameters.  The parameters are
     # expected to be in encoded form, which represents the various rule modes
     # by negating or zeroing certain values.  Representation formats are:
@@ -1461,7 +1413,6 @@ module Java::Util
     end
     
     typesig { [] }
-    # 
     # Decode the end rule and validate the parameters.  This method is exactly
     # analogous to decodeStartRule().
     # @see decodeStartRule
@@ -1505,7 +1456,6 @@ module Java::Util
     end
     
     typesig { [] }
-    # 
     # Make rules compatible to 1.1 FCS code.  Since 1.1 FCS code only understands
     # day-of-week-in-month rules, we must modify other modes of rules to their
     # approximate equivalent in 1.1 FCS terms.  This method is used when streaming
@@ -1548,7 +1498,6 @@ module Java::Util
           @end_day = 1 + (@end_day / 7)
         end
       end
-      # 
       # Adjust the start and end times to wall time.  This works perfectly
       # well unless it pushes into the next or previous day.  If that
       # happens, we attempt to adjust the day rule somewhat crudely.  The day
@@ -1586,7 +1535,6 @@ module Java::Util
     end
     
     typesig { [] }
-    # 
     # Pack the start and end rules into an array of bytes.  Only pack
     # data which is not preserved by makeRulesCompatible.
     def pack_rules
@@ -1602,7 +1550,6 @@ module Java::Util
     end
     
     typesig { [Array.typed(::Java::Byte)] }
-    # 
     # Given an array of bytes produced by packRules, interpret them
     # as the start and end rules.
     def unpack_rules(rules)
@@ -1618,7 +1565,6 @@ module Java::Util
     end
     
     typesig { [] }
-    # 
     # Pack the start and end times into an array of bytes.  This is required
     # as of serial version 2.
     def pack_times
@@ -1629,7 +1575,6 @@ module Java::Util
     end
     
     typesig { [Array.typed(::Java::Int)] }
-    # 
     # Unpack the start and end times from an array of bytes.  This is required
     # as of serial version 2.
     def unpack_times(times)
@@ -1638,7 +1583,6 @@ module Java::Util
     end
     
     typesig { [ObjectOutputStream] }
-    # 
     # Save the state of this object to a stream (i.e., serialize it).
     # 
     # @serialData We write out two formats, a JDK 1.1 compatible format, using
@@ -1672,7 +1616,6 @@ module Java::Util
     end
     
     typesig { [ObjectInputStream] }
-    # 
     # Reconstitute this object from a stream (i.e., deserialize it).
     # 
     # We handle both JDK 1.1

@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 2004 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -32,7 +31,6 @@ module Sun::Net
     }
   end
   
-  # 
   # ProgressMeteringPolicy is an interface for determining progress metering policy.
   # 
   # @author Stanley Man-Kit Ho
@@ -40,14 +38,12 @@ module Sun::Net
     include_class_members ProgressMeteringPolicyImports
     
     typesig { [URL, String] }
-    # 
     # Return true if metering should be turned on for a particular network input stream.
     def should_meter_input(url, method)
       raise NotImplementedError
     end
     
     typesig { [] }
-    # 
     # Return update notification threshold.
     def get_progress_update_threshold
       raise NotImplementedError

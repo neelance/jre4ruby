@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 2004 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -31,7 +30,6 @@ module Sun::Reflect::Annotation
     }
   end
   
-  # 
   # An instance of this class is stored in an AnnotationInvocationHandler's
   # "memberValues" map in lieu of a value for an annotation member that
   # cannot be returned due to some exceptional condition (typically some

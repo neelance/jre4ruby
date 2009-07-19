@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 1996-2001 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -42,7 +41,6 @@ module Java::Text
     }
   end
   
-  # 
   # CollationRules contains the default en_US collation rules as a base
   # for building other collation tables.
   # <p>Note that decompositions are done before these rules are used,

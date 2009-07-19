@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 2004 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -34,7 +33,6 @@ module Sun::Reflect
     }
   end
   
-  # 
   # Base class for sun.misc.Unsafe-based FieldAccessors for fields with
   # final or volatile qualifiers. These differ from unqualified
   # versions in that (1) they check for read-only status (2) they use

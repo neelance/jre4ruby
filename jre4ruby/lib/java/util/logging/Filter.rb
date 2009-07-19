@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 2000 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -31,7 +30,6 @@ module Java::Util::Logging
     }
   end
   
-  # 
   # A Filter can be used to provide fine grain control over
   # what is logged, beyond the control provided by log levels.
   # <p>
@@ -45,7 +43,6 @@ module Java::Util::Logging
     include_class_members FilterImports
     
     typesig { [LogRecord] }
-    # 
     # Check if a given log record should be published.
     # @param record  a LogRecord
     # @return true if the log record should be published.

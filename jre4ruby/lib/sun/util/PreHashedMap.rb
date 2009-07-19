@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 2004 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -37,7 +36,6 @@ module Sun::Util
     }
   end
   
-  # 
   # A precomputed hash map.
   # 
   # <p> Subclasses of this class are of the following form:
@@ -117,7 +115,6 @@ module Sun::Util
     undef_method :ht=
     
     typesig { [::Java::Int, ::Java::Int, ::Java::Int, ::Java::Int] }
-    # 
     # Creates a new map.
     # 
     # <p> This constructor invokes the {@link #init init} method, passing it a
@@ -147,7 +144,6 @@ module Sun::Util
     end
     
     typesig { [Array.typed(Object)] }
-    # 
     # Initializes this map.
     # 
     # <p> This method must construct the map's hash chains and store them into
@@ -184,7 +180,6 @@ module Sun::Util
     end
     
     typesig { [String, Object] }
-    # 
     # @throws UnsupportedOperationException
     # If the given key is not part of this map's initial key set
     def put(k, v)

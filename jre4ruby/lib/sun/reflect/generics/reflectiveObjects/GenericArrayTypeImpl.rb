@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 2003-2004 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -33,7 +32,6 @@ module Sun::Reflect::Generics::ReflectiveObjects
     }
   end
   
-  # 
   # Implementation of GenericArrayType interface for core reflection.
   class GenericArrayTypeImpl 
     include_class_members GenericArrayTypeImplImports
@@ -54,7 +52,6 @@ module Sun::Reflect::Generics::ReflectiveObjects
     
     class_module.module_eval {
       typesig { [Type] }
-      # 
       # Factory method.
       # @param ct - the desired component type of the generic array type
       # being created
@@ -65,7 +62,6 @@ module Sun::Reflect::Generics::ReflectiveObjects
     }
     
     typesig { [] }
-    # 
     # Returns  a <tt>Type</tt> object representing the component type
     # of this array.
     # 

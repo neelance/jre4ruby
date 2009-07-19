@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
 # This code is free software; you can redistribute it and/or modify it
@@ -44,7 +43,6 @@ module Sun::Security::Krb5::Internal::Ccache
     }
   end
   
-  # 
   # CredentialsCache stores credentials(tickets, session keys, etc) in a semi-permanent store
   # for later use by different program.
   # 
@@ -115,7 +113,6 @@ module Sun::Security::Krb5::Internal::Ccache
       end
       
       typesig { [] }
-      # 
       # Gets the default credentials cache.
       def get_instance
         # Default credentials cache is file-based.

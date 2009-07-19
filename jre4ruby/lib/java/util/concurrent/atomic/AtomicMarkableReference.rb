@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
 # This code is free software; you can redistribute it and/or modify it
@@ -40,7 +39,6 @@ module Java::Util::Concurrent::Atomic
     }
   end
   
-  # 
   # An {@code AtomicMarkableReference} maintains an object reference
   # along with a mark bit, that can be updated atomically.
   # <p>
@@ -90,7 +88,6 @@ module Java::Util::Concurrent::Atomic
     undef_method :atomic_ref=
     
     typesig { [Object, ::Java::Boolean] }
-    # 
     # Creates a new {@code AtomicMarkableReference} with the given
     # initial values.
     # 
@@ -102,7 +99,6 @@ module Java::Util::Concurrent::Atomic
     end
     
     typesig { [] }
-    # 
     # Returns the current value of the reference.
     # 
     # @return the current value of the reference
@@ -111,7 +107,6 @@ module Java::Util::Concurrent::Atomic
     end
     
     typesig { [] }
-    # 
     # Returns the current value of the mark.
     # 
     # @return the current value of the mark
@@ -120,7 +115,6 @@ module Java::Util::Concurrent::Atomic
     end
     
     typesig { [Array.typed(::Java::Boolean)] }
-    # 
     # Returns the current values of both the reference and the mark.
     # Typical usage is {@code boolean[1] holder; ref = v.get(holder); }.
     # 
@@ -134,7 +128,6 @@ module Java::Util::Concurrent::Atomic
     end
     
     typesig { [Object, Object, ::Java::Boolean, ::Java::Boolean] }
-    # 
     # Atomically sets the value of both the reference and mark
     # to the given update values if the
     # current reference is {@code ==} to the expected reference
@@ -155,7 +148,6 @@ module Java::Util::Concurrent::Atomic
     end
     
     typesig { [Object, Object, ::Java::Boolean, ::Java::Boolean] }
-    # 
     # Atomically sets the value of both the reference and mark
     # to the given update values if the
     # current reference is {@code ==} to the expected reference
@@ -172,7 +164,6 @@ module Java::Util::Concurrent::Atomic
     end
     
     typesig { [Object, ::Java::Boolean] }
-    # 
     # Unconditionally sets the value of both the reference and mark.
     # 
     # @param newReference the new value for the reference
@@ -185,7 +176,6 @@ module Java::Util::Concurrent::Atomic
     end
     
     typesig { [Object, ::Java::Boolean] }
-    # 
     # Atomically sets the value of the mark to the given update value
     # if the current reference is {@code ==} to the expected
     # reference.  Any given invocation of this operation may fail

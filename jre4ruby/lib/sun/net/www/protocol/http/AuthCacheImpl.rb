@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 2003 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -38,7 +37,6 @@ module Sun::Net::Www::Protocol::Http
     }
   end
   
-  # 
   # @author Michael McMahon
   class AuthCacheImpl 
     include_class_members AuthCacheImplImports

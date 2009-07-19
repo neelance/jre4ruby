@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 1995-2006 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -32,7 +31,6 @@ module Java::Net
     }
   end
   
-  # 
   # The abstract class <code>ContentHandler</code> is the superclass
   # of all classes that read an <code>Object</code> from a
   # <code>URLConnection</code>.
@@ -76,7 +74,6 @@ module Java::Net
     include_class_members ContentHandlerImports
     
     typesig { [URLConnection] }
-    # 
     # Given a URL connect stream positioned at the beginning of the
     # representation of an object, this method reads that stream and
     # creates an object from it.
@@ -89,7 +86,6 @@ module Java::Net
     end
     
     typesig { [URLConnection, Array.typed(Class)] }
-    # 
     # Given a URL connect stream positioned at the beginning of the
     # representation of an object, this method reads that stream and
     # creates an object that matches one of the types specified.

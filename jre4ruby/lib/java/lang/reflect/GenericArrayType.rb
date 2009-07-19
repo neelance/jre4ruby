@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 2003-2004 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -31,7 +30,6 @@ module Java::Lang::Reflect
     }
   end
   
-  # 
   # {@code GenericArrayType} represents an array type whose component
   # type is either a parameterized type or a type variable.
   # @since 1.5
@@ -40,7 +38,6 @@ module Java::Lang::Reflect
     include Type
     
     typesig { [] }
-    # 
     # Returns a {@code Type} object representing the component type
     # of this array. This method creates the component type of the
     # array.  See the declaration of {@link

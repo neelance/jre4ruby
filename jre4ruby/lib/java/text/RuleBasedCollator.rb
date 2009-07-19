@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 1997-2006 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -45,7 +44,6 @@ module Java::Text
     }
   end
   
-  # 
   # The <code>RuleBasedCollator</code> class is a concrete subclass of
   # <code>Collator</code> that provides a simple, data-driven, table
   # collator.  With this class you can create a customized table-based
@@ -278,7 +276,6 @@ module Java::Text
     end
     
     typesig { [String, ::Java::Int] }
-    # 
     # RuleBasedCollator constructor.  This takes the table rules and builds
     # a collation table out of them.  Please see RuleBasedCollator class
     # description for more details on the collation rule syntax.
@@ -310,7 +307,6 @@ module Java::Text
     end
     
     typesig { [RuleBasedCollator] }
-    # 
     # "Copy constructor."  Used in clone() for performance.
     def initialize(that)
       @tables = nil
@@ -332,7 +328,6 @@ module Java::Text
     end
     
     typesig { [] }
-    # 
     # Gets the table-based rules for the collation object.
     # @return returns the collation rules that the table collation object
     # was created from.
@@ -341,7 +336,6 @@ module Java::Text
     end
     
     typesig { [String] }
-    # 
     # Return a CollationElementIterator for the given String.
     # @see java.text.CollationElementIterator
     def get_collation_element_iterator(source)
@@ -349,7 +343,6 @@ module Java::Text
     end
     
     typesig { [CharacterIterator] }
-    # 
     # Return a CollationElementIterator for the given String.
     # @see java.text.CollationElementIterator
     # @since 1.2
@@ -358,7 +351,6 @@ module Java::Text
     end
     
     typesig { [String, String] }
-    # 
     # Compares the character data stored in two different strings based on the
     # collation rules.  Returns information about whether a string is less
     # than, greater than or equal to another string in a language.
@@ -573,13 +565,11 @@ module Java::Text
     end
     
     typesig { [String] }
-    # 
     # Transforms the string into a series of characters that can be compared
     # with CollationKey.compareTo. This overrides java.text.Collator.getCollationKey.
     # It can be overriden in a subclass.
     def get_collation_key(source)
       synchronized(self) do
-        # 
         # The basic algorithm here is to find all of the collation elements for each
         # character in the source string, convert them to a char representation,
         # and put them into the collation key.  But it's trickier than that.
@@ -638,11 +628,9 @@ module Java::Text
           if (!CollationElementIterator.is_ignorable(order))
             @prim_result.append(RJava.cast_to_char((CollationElementIterator.primary_order(order) + COLLATIONKEYOFFSET)))
             if (compare_sec)
-              # 
               # accumulate all of the ignorable/secondary characters attached
               # to a given base character
               if (@tables.is_french_sec && pre_sec_ignore < @sec_result.length)
-                # 
                 # We're doing reversed secondary ordering and we've hit a base
                 # (non-ignorable) character.  Reverse any secondary orderings
                 # that applied to the last base character.  (see block comment above.)
@@ -696,7 +684,6 @@ module Java::Text
     end
     
     typesig { [] }
-    # 
     # Standard override; no change in semantics.
     def clone
       # if we know we're not actually a subclass of RuleBasedCollator
@@ -716,7 +703,6 @@ module Java::Text
     end
     
     typesig { [Object] }
-    # 
     # Compares the equality of two collation objects.
     # @param obj the table-based collation object to be compared with this.
     # @return true if the current table-based collation object is the same
@@ -734,14 +720,12 @@ module Java::Text
     end
     
     typesig { [] }
-    # 
     # Generates the hash code for the table-based collation object
     def hash_code
       return get_rules.hash_code
     end
     
     typesig { [] }
-    # 
     # Allows CollationElementIterator access to the tables object
     def get_tables
       return @tables

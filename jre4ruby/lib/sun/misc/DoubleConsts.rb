@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 2003 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -31,7 +30,6 @@ module Sun::Misc
     }
   end
   
-  # 
   # This class contains additional constants documenting limits of the
   # <code>double</code> type.
   # 
@@ -40,7 +38,6 @@ module Sun::Misc
     include_class_members DoubleConstsImports
     
     typesig { [] }
-    # 
     # Don't let anyone instantiate this class.
     def initialize
     end
@@ -61,7 +58,6 @@ module Sun::Misc
       const_set_lazy(:MIN_VALUE) { Java::Lang::Double::MIN_VALUE }
       const_attr_reader  :MIN_VALUE
       
-      # 
       # A constant holding the smallest positive normal value of type
       # <code>double</code>, 2<sup>-1022</sup>.  It is equal to the
       # value returned by
@@ -71,27 +67,23 @@ module Sun::Misc
       const_set_lazy(:MIN_NORMAL) { 2.2250738585072014E-308 }
       const_attr_reader  :MIN_NORMAL
       
-      # 
       # The number of logical bits in the significand of a
       # <code>double</code> number, including the implicit bit.
       const_set_lazy(:SIGNIFICAND_WIDTH) { 53 }
       const_attr_reader  :SIGNIFICAND_WIDTH
       
-      # 
       # Maximum exponent a finite <code>double</code> number may have.
       # It is equal to the value returned by
       # <code>Math.ilogb(Double.MAX_VALUE)</code>.
       const_set_lazy(:MAX_EXPONENT) { 1023 }
       const_attr_reader  :MAX_EXPONENT
       
-      # 
       # Minimum exponent a normalized <code>double</code> number may
       # have.  It is equal to the value returned by
       # <code>Math.ilogb(Double.MIN_NORMAL)</code>.
       const_set_lazy(:MIN_EXPONENT) { -1022 }
       const_attr_reader  :MIN_EXPONENT
       
-      # 
       # The exponent the smallest positive <code>double</code>
       # subnormal value would have if it could be normalized.  It is
       # equal to the value returned by
@@ -99,23 +91,19 @@ module Sun::Misc
       const_set_lazy(:MIN_SUB_EXPONENT) { MIN_EXPONENT - (SIGNIFICAND_WIDTH - 1) }
       const_attr_reader  :MIN_SUB_EXPONENT
       
-      # 
       # Bias used in representing a <code>double</code> exponent.
       const_set_lazy(:EXP_BIAS) { 1023 }
       const_attr_reader  :EXP_BIAS
       
-      # 
       # Bit mask to isolate the sign bit of a <code>double</code>.
       const_set_lazy(:SIGN_BIT_MASK) { -0x8000000000000000 }
       const_attr_reader  :SIGN_BIT_MASK
       
-      # 
       # Bit mask to isolate the exponent field of a
       # <code>double</code>.
       const_set_lazy(:EXP_BIT_MASK) { 0x7ff0000000000000 }
       const_attr_reader  :EXP_BIT_MASK
       
-      # 
       # Bit mask to isolate the significand field of a
       # <code>double</code>.
       const_set_lazy(:SIGNIF_BIT_MASK) { 0xfffffffffffff }

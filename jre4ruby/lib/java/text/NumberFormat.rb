@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 1996-2005 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -60,7 +59,6 @@ module Java::Text
     }
   end
   
-  # 
   # <code>NumberFormat</code> is the abstract base class for all number
   # formats. This class provides the interface for formatting and parsing
   # numbers. <code>NumberFormat</code> also provides methods for determining
@@ -185,14 +183,12 @@ module Java::Text
     include_class_members NumberFormatImports
     
     class_module.module_eval {
-      # 
       # Field constant used to construct a FieldPosition object. Signifies that
       # the position of the integer part of a formatted number should be returned.
       # @see java.text.FieldPosition
       const_set_lazy(:INTEGER_FIELD) { 0 }
       const_attr_reader  :INTEGER_FIELD
       
-      # 
       # Field constant used to construct a FieldPosition object. Signifies that
       # the position of the fraction part of a formatted number should be returned.
       # @see java.text.FieldPosition
@@ -201,7 +197,6 @@ module Java::Text
     }
     
     typesig { [] }
-    # 
     # Sole constructor.  (For invocation by subclass constructors, typically
     # implicit.)
     def initialize
@@ -231,7 +226,6 @@ module Java::Text
     end
     
     typesig { [Object, StringBuffer, FieldPosition] }
-    # 
     # Formats a number and appends the resulting text to the given string
     # buffer.
     # The number can be of any subclass of {@link java.lang.Number}.
@@ -273,7 +267,6 @@ module Java::Text
     end
     
     typesig { [String, ParsePosition] }
-    # 
     # Parses text from a string to produce a <code>Number</code>.
     # <p>
     # The method attempts to parse text starting at the index given by
@@ -301,7 +294,6 @@ module Java::Text
     end
     
     typesig { [::Java::Double] }
-    # 
     # Specialization of format.
     # @exception        ArithmeticException if rounding is needed with rounding
     # mode being set to RoundingMode.UNNECESSARY
@@ -311,7 +303,6 @@ module Java::Text
     end
     
     typesig { [::Java::Long] }
-    # 
     # Specialization of format.
     # @exception        ArithmeticException if rounding is needed with rounding
     # mode being set to RoundingMode.UNNECESSARY
@@ -321,7 +312,6 @@ module Java::Text
     end
     
     typesig { [::Java::Double, StringBuffer, FieldPosition] }
-    # 
     # Specialization of format.
     # @exception        ArithmeticException if rounding is needed with rounding
     # mode being set to RoundingMode.UNNECESSARY
@@ -331,7 +321,6 @@ module Java::Text
     end
     
     typesig { [::Java::Long, StringBuffer, FieldPosition] }
-    # 
     # Specialization of format.
     # @exception        ArithmeticException if rounding is needed with rounding
     # mode being set to RoundingMode.UNNECESSARY
@@ -341,7 +330,6 @@ module Java::Text
     end
     
     typesig { [String, ParsePosition] }
-    # 
     # Returns a Long if possible (e.g., within the range [Long.MIN_VALUE,
     # Long.MAX_VALUE] and with no decimals), otherwise a Double.
     # If IntegerOnly is set, will stop at a decimal
@@ -356,7 +344,6 @@ module Java::Text
     end
     
     typesig { [String] }
-    # 
     # Parses text from the beginning of the given string to produce a number.
     # The method may not use the entire text of the given string.
     # <p>
@@ -377,7 +364,6 @@ module Java::Text
     end
     
     typesig { [] }
-    # 
     # Returns true if this format will parse numbers as integers only.
     # For example in the English locale, with ParseIntegerOnly true, the
     # string "1234." would be parsed as the integer value 1234 and parsing
@@ -389,7 +375,6 @@ module Java::Text
     end
     
     typesig { [::Java::Boolean] }
-    # 
     # Sets whether or not numbers should be parsed as integers only.
     # @see #isParseIntegerOnly
     def set_parse_integer_only(value)
@@ -408,7 +393,6 @@ module Java::Text
       end
       
       typesig { [Locale] }
-      # 
       # Returns a general-purpose number format for the specified locale.
       # This is the same as calling
       # {@link #getNumberInstance(java.util.Locale) getNumberInstance(inLocale)}.
@@ -417,21 +401,18 @@ module Java::Text
       end
       
       typesig { [] }
-      # 
       # Returns a general-purpose number format for the current default locale.
       def get_number_instance
         return get_instance(Locale.get_default, NUMBERSTYLE)
       end
       
       typesig { [Locale] }
-      # 
       # Returns a general-purpose number format for the specified locale.
       def get_number_instance(in_locale)
         return get_instance(in_locale, NUMBERSTYLE)
       end
       
       typesig { [] }
-      # 
       # Returns an integer number format for the current default locale. The
       # returned number format is configured to round floating point numbers
       # to the nearest integer using half-even rounding (see {@link
@@ -447,7 +428,6 @@ module Java::Text
       end
       
       typesig { [Locale] }
-      # 
       # Returns an integer number format for the specified locale. The
       # returned number format is configured to round floating point numbers
       # to the nearest integer using half-even rounding (see {@link
@@ -463,35 +443,30 @@ module Java::Text
       end
       
       typesig { [] }
-      # 
       # Returns a currency format for the current default locale.
       def get_currency_instance
         return get_instance(Locale.get_default, CURRENCYSTYLE)
       end
       
       typesig { [Locale] }
-      # 
       # Returns a currency format for the specified locale.
       def get_currency_instance(in_locale)
         return get_instance(in_locale, CURRENCYSTYLE)
       end
       
       typesig { [] }
-      # 
       # Returns a percentage format for the current default locale.
       def get_percent_instance
         return get_instance(Locale.get_default, PERCENTSTYLE)
       end
       
       typesig { [Locale] }
-      # 
       # Returns a percentage format for the specified locale.
       def get_percent_instance(in_locale)
         return get_instance(in_locale, PERCENTSTYLE)
       end
       
       typesig { [] }
-      # 
       # Returns a scientific format for the current default locale.
       # 
       # public
@@ -500,7 +475,6 @@ module Java::Text
       end
       
       typesig { [Locale] }
-      # 
       # Returns a scientific format for the specified locale.
       # 
       # public
@@ -509,7 +483,6 @@ module Java::Text
       end
       
       typesig { [] }
-      # 
       # Returns an array of all locales for which the
       # <code>get*Instance</code> methods of this class can return
       # localized instances.
@@ -528,7 +501,6 @@ module Java::Text
     }
     
     typesig { [] }
-    # 
     # Overrides hashCode
     def hash_code
       return @maximum_integer_digits * 37 + @max_fraction_digits
@@ -536,7 +508,6 @@ module Java::Text
     end
     
     typesig { [Object] }
-    # 
     # Overrides equals
     def equals(obj)
       if ((obj).nil?)
@@ -553,7 +524,6 @@ module Java::Text
     end
     
     typesig { [] }
-    # 
     # Overrides Cloneable
     def clone
       other = super
@@ -561,7 +531,6 @@ module Java::Text
     end
     
     typesig { [] }
-    # 
     # Returns true if grouping is used in this format. For example, in the
     # English locale, with grouping on, the number 1234567 might be formatted
     # as "1,234,567". The grouping separator as well as the size of each group
@@ -572,7 +541,6 @@ module Java::Text
     end
     
     typesig { [::Java::Boolean] }
-    # 
     # Set whether or not grouping will be used in this format.
     # @see #isGroupingUsed
     def set_grouping_used(new_value)
@@ -580,7 +548,6 @@ module Java::Text
     end
     
     typesig { [] }
-    # 
     # Returns the maximum number of digits allowed in the integer portion of a
     # number.
     # @see #setMaximumIntegerDigits
@@ -589,7 +556,6 @@ module Java::Text
     end
     
     typesig { [::Java::Int] }
-    # 
     # Sets the maximum number of digits allowed in the integer portion of a
     # number. maximumIntegerDigits must be >= minimumIntegerDigits.  If the
     # new value for maximumIntegerDigits is less than the current value
@@ -607,7 +573,6 @@ module Java::Text
     end
     
     typesig { [] }
-    # 
     # Returns the minimum number of digits allowed in the integer portion of a
     # number.
     # @see #setMinimumIntegerDigits
@@ -616,7 +581,6 @@ module Java::Text
     end
     
     typesig { [::Java::Int] }
-    # 
     # Sets the minimum number of digits allowed in the integer portion of a
     # number. minimumIntegerDigits must be <= maximumIntegerDigits.  If the
     # new value for minimumIntegerDigits exceeds the current value
@@ -634,7 +598,6 @@ module Java::Text
     end
     
     typesig { [] }
-    # 
     # Returns the maximum number of digits allowed in the fraction portion of a
     # number.
     # @see #setMaximumFractionDigits
@@ -643,7 +606,6 @@ module Java::Text
     end
     
     typesig { [::Java::Int] }
-    # 
     # Sets the maximum number of digits allowed in the fraction portion of a
     # number. maximumFractionDigits must be >= minimumFractionDigits.  If the
     # new value for maximumFractionDigits is less than the current value
@@ -661,7 +623,6 @@ module Java::Text
     end
     
     typesig { [] }
-    # 
     # Returns the minimum number of digits allowed in the fraction portion of a
     # number.
     # @see #setMinimumFractionDigits
@@ -670,7 +631,6 @@ module Java::Text
     end
     
     typesig { [::Java::Int] }
-    # 
     # Sets the minimum number of digits allowed in the fraction portion of a
     # number. minimumFractionDigits must be <= maximumFractionDigits.  If the
     # new value for minimumFractionDigits exceeds the current value
@@ -688,7 +648,6 @@ module Java::Text
     end
     
     typesig { [] }
-    # 
     # Gets the currency used by this number format when formatting
     # currency values. The initial value is derived in a locale dependent
     # way. The returned value may be null if no valid
@@ -707,7 +666,6 @@ module Java::Text
     end
     
     typesig { [Currency] }
-    # 
     # Sets the currency used by this number format when formatting
     # currency values. This does not update the minimum or maximum
     # number of fraction digits used by the number format.
@@ -725,7 +683,6 @@ module Java::Text
     end
     
     typesig { [] }
-    # 
     # Gets the {@link java.math.RoundingMode} used in this NumberFormat.
     # The default implementation of this method in NumberFormat
     # always throws {@link java.lang.UnsupportedOperationException}.
@@ -742,7 +699,6 @@ module Java::Text
     end
     
     typesig { [RoundingMode] }
-    # 
     # Sets the {@link java.math.RoundingMode} used in this NumberFormat.
     # The default implementation of this method in NumberFormat always
     # throws {@link java.lang.UnsupportedOperationException}.
@@ -798,7 +754,6 @@ module Java::Text
     }
     
     typesig { [ObjectInputStream] }
-    # 
     # First, read in the default serializable data.
     # 
     # Then, if <code>serialVersionOnStream</code> is less than 1, indicating that
@@ -833,7 +788,6 @@ module Java::Text
     end
     
     typesig { [ObjectOutputStream] }
-    # 
     # Write out the default serializable data, after first setting
     # the <code>byte</code> fields such as <code>maxIntegerDigits</code> to be
     # equal to the <code>int</code> fields such as <code>maximumIntegerDigits</code>
@@ -850,7 +804,6 @@ module Java::Text
     end
     
     class_module.module_eval {
-      # 
       # Cache to hold the NumberPatterns of a Locale.
       const_set_lazy(:CachedLocaleData) { Hashtable.new(3) }
       const_attr_reader  :CachedLocaleData
@@ -872,7 +825,6 @@ module Java::Text
       const_attr_reader  :INTEGERSTYLE
     }
     
-    # 
     # True if the grouping (i.e. thousands) separator is used when
     # formatting and parsing numbers.
     # 
@@ -884,7 +836,6 @@ module Java::Text
     alias_method :attr_grouping_used=, :grouping_used=
     undef_method :grouping_used=
     
-    # 
     # The maximum number of digits allowed in the integer portion of a
     # number.  <code>maxIntegerDigits</code> must be greater than or equal to
     # <code>minIntegerDigits</code>.
@@ -905,7 +856,6 @@ module Java::Text
     alias_method :attr_max_integer_digits=, :max_integer_digits=
     undef_method :max_integer_digits=
     
-    # 
     # The minimum number of digits allowed in the integer portion of a
     # number.  <code>minimumIntegerDigits</code> must be less than or equal to
     # <code>maximumIntegerDigits</code>.
@@ -926,7 +876,6 @@ module Java::Text
     alias_method :attr_min_integer_digits=, :min_integer_digits=
     undef_method :min_integer_digits=
     
-    # 
     # The maximum number of digits allowed in the fractional portion of a
     # number.  <code>maximumFractionDigits</code> must be greater than or equal to
     # <code>minimumFractionDigits</code>.
@@ -969,7 +918,6 @@ module Java::Text
     alias_method :attr_min_fraction_digits=, :min_fraction_digits=
     undef_method :min_fraction_digits=
     
-    # 
     # True if this format will parse numbers as integers only.
     # 
     # @serial
@@ -995,7 +943,6 @@ module Java::Text
     alias_method :attr_maximum_integer_digits=, :maximum_integer_digits=
     undef_method :maximum_integer_digits=
     
-    # 
     # The minimum number of digits allowed in the integer portion of a
     # number.  <code>minimumIntegerDigits</code> must be less than or equal to
     # <code>maximumIntegerDigits</code>.
@@ -1009,7 +956,6 @@ module Java::Text
     alias_method :attr_minimum_integer_digits=, :minimum_integer_digits=
     undef_method :minimum_integer_digits=
     
-    # 
     # The maximum number of digits allowed in the fractional portion of a
     # number.  <code>maximumFractionDigits</code> must be greater than or equal to
     # <code>minimumFractionDigits</code>.
@@ -1043,7 +989,6 @@ module Java::Text
       const_attr_reader  :CurrentSerialVersion
     }
     
-    # 
     # Describes the version of <code>NumberFormat</code> present on the stream.
     # Possible values are:
     # <ul>
@@ -1075,7 +1020,6 @@ module Java::Text
       const_set_lazy(:SerialVersionUID) { -2308460125733713944 }
       const_attr_reader  :SerialVersionUID
       
-      # 
       # class for AttributedCharacterIterator attributes
       # 
       # 
@@ -1099,7 +1043,6 @@ module Java::Text
         }
         
         typesig { [String] }
-        # 
         # Creates a Field instance with the specified
         # name.
         # 
@@ -1112,7 +1055,6 @@ module Java::Text
         end
         
         typesig { [] }
-        # 
         # Resolves instances being deserialized to the predefined constants.
         # 
         # @throws InvalidObjectException if the constant could not be resolved.
@@ -1130,57 +1072,46 @@ module Java::Text
         end
         
         class_module.module_eval {
-          # 
           # Constant identifying the integer field.
           const_set_lazy(:INTEGER) { Field.new("integer") }
           const_attr_reader  :INTEGER
           
-          # 
           # Constant identifying the fraction field.
           const_set_lazy(:FRACTION) { Field.new("fraction") }
           const_attr_reader  :FRACTION
           
-          # 
           # Constant identifying the exponent field.
           const_set_lazy(:EXPONENT) { Field.new("exponent") }
           const_attr_reader  :EXPONENT
           
-          # 
           # Constant identifying the decimal separator field.
           const_set_lazy(:DECIMAL_SEPARATOR) { Field.new("decimal separator") }
           const_attr_reader  :DECIMAL_SEPARATOR
           
-          # 
           # Constant identifying the sign field.
           const_set_lazy(:SIGN) { Field.new("sign") }
           const_attr_reader  :SIGN
           
-          # 
           # Constant identifying the grouping separator field.
           const_set_lazy(:GROUPING_SEPARATOR) { Field.new("grouping separator") }
           const_attr_reader  :GROUPING_SEPARATOR
           
-          # 
           # Constant identifying the exponent symbol field.
           const_set_lazy(:EXPONENT_SYMBOL) { Field.new("exponent symbol") }
           const_attr_reader  :EXPONENT_SYMBOL
           
-          # 
           # Constant identifying the percent field.
           const_set_lazy(:PERCENT) { Field.new("percent") }
           const_attr_reader  :PERCENT
           
-          # 
           # Constant identifying the permille field.
           const_set_lazy(:PERMILLE) { Field.new("per mille") }
           const_attr_reader  :PERMILLE
           
-          # 
           # Constant identifying the currency field.
           const_set_lazy(:CURRENCY) { Field.new("currency") }
           const_attr_reader  :CURRENCY
           
-          # 
           # Constant identifying the exponent sign field.
           const_set_lazy(:EXPONENT_SIGN) { Field.new("exponent sign") }
           const_attr_reader  :EXPONENT_SIGN
@@ -1190,7 +1121,6 @@ module Java::Text
         alias_method :initialize__field, :initialize
       end }
       
-      # 
       # Obtains a NumberFormat instance from a NumberFormatProvider implementation.
       const_set_lazy(:NumberFormatGetter) { Class.new do
         include_class_members NumberFormat

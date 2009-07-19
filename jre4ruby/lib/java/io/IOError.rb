@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 2005-2006 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -31,7 +30,6 @@ module Java::Io
     }
   end
   
-  # 
   # Thrown when a serious I/O error has occurred.
   # 
   # @author  Xueming Shen
@@ -40,7 +38,6 @@ module Java::Io
     include_class_members IOErrorImports
     
     typesig { [Exception] }
-    # 
     # Constructs a new instance of IOError with the specified cause. The
     # IOError is created with the detail message of
     # <tt>(cause==null ? null : cause.toString())</tt> (which typically

@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 2002-2007 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -38,7 +37,6 @@ module Sun::Security::Ssl
     }
   end
   
-  # 
   # An SSL/TLS CipherSuite. Constants for the standard key exchange, cipher,
   # and mac algorithms are also defined in this class.
   # 
@@ -197,7 +195,6 @@ module Sun::Security::Ssl
     end
     
     typesig { [] }
-    # 
     # Return whether this CipherSuite is available for use. A
     # CipherSuite may be unavailable even if it is supported
     # (i.e. allowed == true) if the required JCE cipher is not installed.
@@ -209,7 +206,6 @@ module Sun::Security::Ssl
     end
     
     typesig { [Object] }
-    # 
     # Compares CipherSuites based on their priority. Has the effect of
     # sorting CipherSuites when put in a sorted collection, which is
     # used by CipherSuiteList. Follows standard Comparable contract.
@@ -221,7 +217,6 @@ module Sun::Security::Ssl
     end
     
     typesig { [] }
-    # 
     # Returns this.name.
     def to_s
       return @name
@@ -229,7 +224,6 @@ module Sun::Security::Ssl
     
     class_module.module_eval {
       typesig { [String] }
-      # 
       # Return a CipherSuite for the given name. The returned CipherSuite
       # is supported by this implementation but may not actually be
       # currently useable. See isAvailable().
@@ -248,7 +242,6 @@ module Sun::Security::Ssl
       end
       
       typesig { [::Java::Int, ::Java::Int] }
-      # 
       # Return a CipherSuite with the given ID. A temporary object is
       # constructed if the ID is unknown. Use isAvailable() to verify that
       # the CipherSuite can actually be used.
@@ -337,7 +330,6 @@ module Sun::Security::Ssl
       const_set_lazy(:K_KRB5_EXPORT) { KeyExchange::K_KRB5_EXPORT }
       const_attr_reader  :K_KRB5_EXPORT
       
-      # 
       # An SSL/TLS key exchange algorithm.
       class KeyExchange 
         include_class_members CipherSuite
@@ -455,7 +447,6 @@ module Sun::Security::Ssl
         alias_method :initialize__key_exchange, :initialize
       end
       
-      # 
       # An SSL/TLS bulk cipher algorithm. One instance per combination of
       # cipher and key length.
       # 
@@ -568,7 +559,6 @@ module Sun::Security::Ssl
         end
         
         typesig { [ProtocolVersion, SecretKey, IvParameterSpec, ::Java::Boolean] }
-        # 
         # Return an initialized CipherBox for this BulkCipher.
         # IV must be null for stream ciphers.
         # 
@@ -578,7 +568,6 @@ module Sun::Security::Ssl
         end
         
         typesig { [] }
-        # 
         # Test if this bulk cipher is available. For use by CipherSuite.
         # 
         # Currently all supported ciphers except AES are always available
@@ -637,7 +626,6 @@ module Sun::Security::Ssl
         alias_method :initialize__bulk_cipher, :initialize
       end }
       
-      # 
       # An SSL/TLS key MAC algorithm.
       # 
       # Also contains a factory method to obtain in initialized MAC
@@ -668,7 +656,6 @@ module Sun::Security::Ssl
         end
         
         typesig { [ProtocolVersion, SecretKey] }
-        # 
         # Return an initialized MAC for this MacAlg. ProtocolVersion
         # must either be SSL30 (SSLv3 custom MAC) or TLS10 (std. HMAC).
         # 

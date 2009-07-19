@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 1996-2007 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -33,7 +32,6 @@ module Sun::Security::Ssl
     }
   end
   
-  # 
   # RandomCookie ... SSL hands standard format random cookies (nonces)
   # around.  These know how to encode/decode themselves on SSL streams,
   # and can be created and printed.

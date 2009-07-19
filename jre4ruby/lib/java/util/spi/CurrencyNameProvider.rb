@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 2005 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -33,7 +32,6 @@ module Java::Util::Spi
     }
   end
   
-  # 
   # An abstract class for service providers that
   # provide localized currency symbols and display names for the
   # {@link java.util.Currency Currency} class.
@@ -47,7 +45,6 @@ module Java::Util::Spi
     include_class_members CurrencyNameProviderImports
     
     typesig { [] }
-    # 
     # Sole constructor.  (For invocation by subclass constructors, typically
     # implicit.)
     def initialize
@@ -55,7 +52,6 @@ module Java::Util::Spi
     end
     
     typesig { [String, Locale] }
-    # 
     # Gets the symbol of the given currency code for the specified locale.
     # For example, for "USD" (US Dollar), the symbol is "$" if the specified
     # locale is the US, while for other locales it may be "US$". If no
@@ -80,7 +76,6 @@ module Java::Util::Spi
     end
     
     typesig { [String, Locale] }
-    # 
     # Returns a name for the currency that is appropriate for display to the
     # user.  The default implementation returns null.
     # 

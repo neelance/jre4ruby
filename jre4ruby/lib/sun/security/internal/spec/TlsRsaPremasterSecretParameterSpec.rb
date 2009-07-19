@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 2005-2007 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -32,7 +31,6 @@ module Sun::Security::Internal::Spec
     }
   end
   
-  # 
   # Parameters for SSL/TLS RSA Premaster secret generation.
   # This class is used by SSL/TLS client to initialize KeyGenerators of the
   # type "TlsRsaPremasterSecret".
@@ -59,7 +57,6 @@ module Sun::Security::Internal::Spec
     undef_method :minor_version=
     
     typesig { [::Java::Int, ::Java::Int] }
-    # 
     # Constructs a new TlsRsaPremasterSecretParameterSpec.
     # 
     # <p>The version numbers will be placed inside the premaster secret to
@@ -80,7 +77,6 @@ module Sun::Security::Internal::Spec
     end
     
     typesig { [] }
-    # 
     # Returns the major version.
     # 
     # @return the major version.
@@ -89,7 +85,6 @@ module Sun::Security::Internal::Spec
     end
     
     typesig { [] }
-    # 
     # Returns the minor version.
     # 
     # @return the minor version.

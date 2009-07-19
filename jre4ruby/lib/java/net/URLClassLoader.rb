@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 1997-2007 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -59,7 +58,6 @@ module Java::Net
     }
   end
   
-  # 
   # This class loader is used to load classes and resources from a search
   # path of URLs referring to both JAR files and directories. Any URL that
   # ends with a '/' is assumed to refer to a directory. Otherwise, the URL
@@ -92,7 +90,6 @@ module Java::Net
     undef_method :acc=
     
     typesig { [Array.typed(URL), ClassLoader] }
-    # 
     # Constructs a new URLClassLoader for the given URLs. The URLs will be
     # searched in the order specified for classes and resources after first
     # searching in the specified parent class loader. Any URL that ends with
@@ -123,7 +120,6 @@ module Java::Net
     end
     
     typesig { [Array.typed(URL)] }
-    # 
     # Constructs a new URLClassLoader for the specified URLs using the
     # default delegation parent <code>ClassLoader</code>. The URLs will
     # be searched in the order specified for classes and resources after
@@ -156,7 +152,6 @@ module Java::Net
     end
     
     typesig { [Array.typed(URL), ClassLoader, URLStreamHandlerFactory] }
-    # 
     # Constructs a new URLClassLoader for the specified URLs, parent
     # class loader, and URLStreamHandlerFactory. The parent argument
     # will be used as the parent class loader for delegation. The
@@ -189,7 +184,6 @@ module Java::Net
     end
     
     typesig { [URL] }
-    # 
     # Appends the specified URL to the list of URLs to search for
     # classes and resources.
     # 
@@ -199,7 +193,6 @@ module Java::Net
     end
     
     typesig { [] }
-    # 
     # Returns the search path of URLs for loading classes and resources.
     # This includes the original list of URLs specified to the constructor,
     # along with any URLs subsequently appended by the addURL() method.
@@ -209,7 +202,6 @@ module Java::Net
     end
     
     typesig { [String] }
-    # 
     # Finds and loads the class with the specified name from the URL search
     # path. Any URLs referring to JAR files are loaded and opened as needed
     # until the class is found.
@@ -253,7 +245,6 @@ module Java::Net
     end
     
     typesig { [String, Resource] }
-    # 
     # Defines a Class using the class bytes obtained from the specified
     # Resource. The resulting Class must be resolved before it can be
     # used.
@@ -297,14 +288,13 @@ module Java::Net
       else
         b = res.get_bytes
         # must read certificates AFTER reading bytes.
-        signers_ = res.get_code_signers
-        cs_ = CodeSource.new(url, signers_)
-        return define_class(name, b, 0, b.attr_length, cs_)
+        signers = res.get_code_signers
+        cs = CodeSource.new(url, signers)
+        return define_class(name, b, 0, b.attr_length, cs)
       end
     end
     
     typesig { [String, Manifest, URL] }
-    # 
     # Defines a new package by name in this ClassLoader. The attributes
     # contained in the specified Manifest will be used to obtain package
     # version and sealing information. For sealed packages, the additional
@@ -369,7 +359,6 @@ module Java::Net
     end
     
     typesig { [String, Manifest] }
-    # 
     # Returns true if the specified package name is sealed according to the
     # given manifest.
     def is_sealed(name, man)
@@ -388,15 +377,13 @@ module Java::Net
     end
     
     typesig { [String] }
-    # 
     # Finds the resource with the specified name on the URL search path.
     # 
     # @param name the name of the resource
     # @return a <code>URL</code> for the resource, or <code>null</code>
     # if the resource could not be found.
     def find_resource(name)
-      url = AccessController.do_privileged(# 
-      # The same restriction to finding classes applies to resources
+      url = AccessController.do_privileged(# The same restriction to finding classes applies to resources
       Class.new(PrivilegedAction.class == Class ? PrivilegedAction : Object) do
         extend LocalClass
         include_class_members URLClassLoader
@@ -419,7 +406,6 @@ module Java::Net
     end
     
     typesig { [String] }
-    # 
     # Returns an Enumeration of URLs representing all of the resources
     # on the URL search path having the specified name.
     # 
@@ -503,7 +489,6 @@ module Java::Net
     end
     
     typesig { [CodeSource] }
-    # 
     # Returns the permissions for the given codesource object.
     # The implementation of this method first calls super.getPermissions
     # and then adds permissions based on the URL of the codesource.
@@ -546,14 +531,13 @@ module Java::Net
         end
       else
         if (((p).nil?) && ((url.get_protocol == "file")))
-          path_ = url.get_file.replace(Character.new(?/.ord), JavaFile.attr_separator_char)
-          path_ = (ParseUtil.decode(path_)).to_s
-          if (path_.ends_with(JavaFile.attr_separator))
-            path_ += "-"
+          path = url.get_file.replace(Character.new(?/.ord), JavaFile.attr_separator_char)
+          path = (ParseUtil.decode(path)).to_s
+          if (path.ends_with(JavaFile.attr_separator))
+            path += "-"
           end
-          p = FilePermission.new(path_, SecurityConstants::FILE_READ_ACTION)
+          p = FilePermission.new(path, SecurityConstants::FILE_READ_ACTION)
         else
-          # 
           # Not loading from a 'file:' URL so we want to give the class
           # permission to connect to and accept from the remote host
           # after we've made sure the host is the correct one and is valid.
@@ -600,7 +584,6 @@ module Java::Net
     
     class_module.module_eval {
       typesig { [Array.typed(URL), ClassLoader] }
-      # 
       # Creates a new instance of URLClassLoader for the specified
       # URLs and parent class loader. If a security manager is
       # installed, the <code>loadClass</code> method of the URLClassLoader
@@ -640,7 +623,6 @@ module Java::Net
       end
       
       typesig { [Array.typed(URL)] }
-      # 
       # Creates a new instance of URLClassLoader for the specified
       # URLs and default parent class loader. If a security manager is
       # installed, the <code>loadClass</code> method of the URLClassLoader

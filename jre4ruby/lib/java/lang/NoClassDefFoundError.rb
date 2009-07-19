@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 1994-2000 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -30,7 +29,6 @@ module Java::Lang
     }
   end
   
-  # 
   # Thrown if the Java Virtual Machine or a <code>ClassLoader</code> instance
   # tries to load in the definition of a class (as part of a normal method call
   # or as part of creating a new instance using the <code>new</code> expression)
@@ -46,14 +44,12 @@ module Java::Lang
     include_class_members NoClassDefFoundErrorImports
     
     typesig { [] }
-    # 
     # Constructs a <code>NoClassDefFoundError</code> with no detail message.
     def initialize
       super()
     end
     
     typesig { [String] }
-    # 
     # Constructs a <code>NoClassDefFoundError</code> with the specified
     # detail message.
     # 

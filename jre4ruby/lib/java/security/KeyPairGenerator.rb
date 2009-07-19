@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 1997-2006 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -36,7 +35,6 @@ module Java::Security
     }
   end
   
-  # 
   # The KeyPairGenerator class is used to generate pairs of
   # public and private keys. Key pair generators are constructed using the
   # <code>getInstance</code> factory methods (static methods that
@@ -128,7 +126,6 @@ module Java::Security
     undef_method :provider=
     
     typesig { [String] }
-    # 
     # Creates a KeyPairGenerator object for the specified algorithm.
     # 
     # @param algorithm the standard string name of the algorithm.
@@ -144,7 +141,6 @@ module Java::Security
     end
     
     typesig { [] }
-    # 
     # Returns the standard name of the algorithm for this key pair generator.
     # See Appendix A in the <a href=
     # "../../../technotes/guides/security/crypto/CryptoSpec.html#AppA">
@@ -171,7 +167,6 @@ module Java::Security
       end
       
       typesig { [String] }
-      # 
       # Returns a KeyPairGenerator object that generates public/private
       # key pairs for the specified algorithm.
       # 
@@ -224,7 +219,6 @@ module Java::Security
       end
       
       typesig { [String, String] }
-      # 
       # Returns a KeyPairGenerator object that generates public/private
       # key pairs for the specified algorithm.
       # 
@@ -263,7 +257,6 @@ module Java::Security
       end
       
       typesig { [String, Provider] }
-      # 
       # Returns a KeyPairGenerator object that generates public/private
       # key pairs for the specified algorithm.
       # 
@@ -298,7 +291,6 @@ module Java::Security
     }
     
     typesig { [] }
-    # 
     # Returns the provider of this key pair generator object.
     # 
     # @return the provider of this key pair generator object
@@ -313,7 +305,6 @@ module Java::Security
     end
     
     typesig { [::Java::Int] }
-    # 
     # Initializes the key pair generator for a certain keysize using
     # a default parameter set and the <code>SecureRandom</code>
     # implementation of the highest-priority installed provider as the source
@@ -333,7 +324,6 @@ module Java::Security
     end
     
     typesig { [::Java::Int, SecureRandom] }
-    # 
     # Initializes the key pair generator for a certain keysize with
     # the given source of randomness (and a default parameter set).
     # 
@@ -360,7 +350,6 @@ module Java::Security
     end
     
     typesig { [AlgorithmParameterSpec] }
-    # 
     # Initializes the key pair generator using the specified parameter
     # set and the <code>SecureRandom</code>
     # implementation of the highest-priority installed provider as the source
@@ -392,7 +381,6 @@ module Java::Security
     end
     
     typesig { [AlgorithmParameterSpec, SecureRandom] }
-    # 
     # Initializes the key pair generator with the given parameter
     # set and source of randomness.
     # 
@@ -428,7 +416,6 @@ module Java::Security
     end
     
     typesig { [] }
-    # 
     # Generates a key pair.
     # 
     # <p>If this KeyPairGenerator has not been initialized explicitly,
@@ -448,7 +435,6 @@ module Java::Security
     end
     
     typesig { [] }
-    # 
     # Generates a key pair.
     # 
     # <p>If this KeyPairGenerator has not been initialized explicitly,
@@ -479,7 +465,6 @@ module Java::Security
     end
     
     class_module.module_eval {
-      # 
       # The following class allows providers to extend from KeyPairGeneratorSpi
       # rather than from KeyPairGenerator. It represents a KeyPairGenerator
       # with an encapsulated, provider-supplied SPI object (of type
@@ -602,7 +587,6 @@ module Java::Security
         end
         
         typesig { [KeyPairGeneratorSpi, ::Java::Boolean] }
-        # 
         # Update the active spi of this class and return the next
         # implementation for failover. If no more implemenations are
         # available, this method returns null. However, the active spi of

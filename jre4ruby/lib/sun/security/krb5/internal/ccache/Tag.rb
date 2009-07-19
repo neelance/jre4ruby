@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
 # This code is free software; you can redistribute it and/or modify it
@@ -36,7 +35,6 @@ module Sun::Security::Krb5::Internal::Ccache
     }
   end
   
-  # 
   # tag field introduced in KRB5_FCC_FVNO_4
   # 
   # @author Yanni Zhang

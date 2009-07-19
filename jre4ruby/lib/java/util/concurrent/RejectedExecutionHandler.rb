@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
 # This code is free software; you can redistribute it and/or modify it
@@ -40,7 +39,6 @@ module Java::Util::Concurrent
     }
   end
   
-  # 
   # A handler for tasks that cannot be executed by a {@link ThreadPoolExecutor}.
   # 
   # @since 1.5
@@ -49,7 +47,6 @@ module Java::Util::Concurrent
     include_class_members RejectedExecutionHandlerImports
     
     typesig { [Runnable, ThreadPoolExecutor] }
-    # 
     # Method that may be invoked by a {@link ThreadPoolExecutor} when
     # {@link ThreadPoolExecutor#execute execute} cannot accept a
     # task.  This may occur when no more threads or queue slots are

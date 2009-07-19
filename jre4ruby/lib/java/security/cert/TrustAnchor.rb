@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 2001-2006 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -36,7 +35,6 @@ module Java::Security::Cert
     }
   end
   
-  # 
   # A trust anchor or most-trusted Certification Authority (CA).
   # <p>
   # This class represents a "most-trusted CA", which is used as a trust anchor
@@ -103,7 +101,6 @@ module Java::Security::Cert
     undef_method :nc=
     
     typesig { [X509Certificate, Array.typed(::Java::Byte)] }
-    # 
     # Creates an instance of <code>TrustAnchor</code> with the specified
     # <code>X509Certificate</code> and optional name constraints, which
     # are intended to be used as additional constraints when validating
@@ -171,7 +168,6 @@ module Java::Security::Cert
     end
     
     typesig { [X500Principal, PublicKey, Array.typed(::Java::Byte)] }
-    # 
     # Creates an instance of <code>TrustAnchor</code> where the
     # most-trusted CA is specified as an X500Principal and public key.
     # Name constraints are an optional parameter, and are intended to be used
@@ -215,7 +211,6 @@ module Java::Security::Cert
     end
     
     typesig { [String, PublicKey, Array.typed(::Java::Byte)] }
-    # 
     # Creates an instance of <code>TrustAnchor</code> where the
     # most-trusted CA is specified as a distinguished name and public key.
     # Name constraints are an optional parameter, and are intended to be used
@@ -270,7 +265,6 @@ module Java::Security::Cert
     end
     
     typesig { [] }
-    # 
     # Returns the most-trusted CA certificate.
     # 
     # @return a trusted <code>X509Certificate</code> or <code>null</code>
@@ -280,7 +274,6 @@ module Java::Security::Cert
     end
     
     typesig { [] }
-    # 
     # Returns the name of the most-trusted CA as an X500Principal.
     # 
     # @return the X.500 distinguished name of the most-trusted CA, or
@@ -292,7 +285,6 @@ module Java::Security::Cert
     end
     
     typesig { [] }
-    # 
     # Returns the name of the most-trusted CA in RFC 2253 <code>String</code>
     # format.
     # 
@@ -304,7 +296,6 @@ module Java::Security::Cert
     end
     
     typesig { [] }
-    # 
     # Returns the public key of the most-trusted CA.
     # 
     # @return the public key of the most-trusted CA, or <code>null</code>
@@ -315,7 +306,6 @@ module Java::Security::Cert
     end
     
     typesig { [Array.typed(::Java::Byte)] }
-    # 
     # Decode the name constraints and clone them if not null.
     def set_name_constraints(bytes)
       if ((bytes).nil?)
@@ -335,7 +325,6 @@ module Java::Security::Cert
     end
     
     typesig { [] }
-    # 
     # Returns the name constraints parameter. The specified name constraints
     # are associated with this trust anchor and are intended to be used
     # as additional constraints when validating an X.509 certification path.
@@ -359,7 +348,6 @@ module Java::Security::Cert
     end
     
     typesig { [] }
-    # 
     # Returns a formatted string describing the <code>TrustAnchor</code>.
     # 
     # @return a formatted string describing the <code>TrustAnchor</code>

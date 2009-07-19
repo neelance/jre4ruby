@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 1997-2003 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -34,7 +33,6 @@ module Java::Security::Cert
     }
   end
   
-  # 
   # <p>Abstract class for a revoked certificate in a CRL (Certificate
   # Revocation List).
   # 
@@ -70,7 +68,6 @@ module Java::Security::Cert
     include X509Extension
     
     typesig { [Object] }
-    # 
     # Compares this CRL entry for equality with the given
     # object. If the <code>other</code> object is an
     # <code>instanceof</code> <code>X509CRLEntry</code>, then
@@ -107,7 +104,6 @@ module Java::Security::Cert
     end
     
     typesig { [] }
-    # 
     # Returns a hashcode value for this CRL entry from its
     # encoded form.
     # 
@@ -128,7 +124,6 @@ module Java::Security::Cert
     end
     
     typesig { [] }
-    # 
     # Returns the ASN.1 DER-encoded form of this CRL Entry,
     # that is the inner SEQUENCE.
     # 
@@ -139,7 +134,6 @@ module Java::Security::Cert
     end
     
     typesig { [] }
-    # 
     # Gets the serial number from this X509CRLEntry,
     # the <em>userCertificate</em>.
     # 
@@ -149,7 +143,6 @@ module Java::Security::Cert
     end
     
     typesig { [] }
-    # 
     # Get the issuer of the X509Certificate described by this entry. If
     # the certificate issuer is also the CRL issuer, this method returns
     # null.
@@ -167,7 +160,6 @@ module Java::Security::Cert
     end
     
     typesig { [] }
-    # 
     # Gets the revocation date from this X509CRLEntry,
     # the <em>revocationDate</em>.
     # 
@@ -177,7 +169,6 @@ module Java::Security::Cert
     end
     
     typesig { [] }
-    # 
     # Returns true if this CRL entry has extensions.
     # 
     # @return true if this entry has extensions, false otherwise.
@@ -186,7 +177,6 @@ module Java::Security::Cert
     end
     
     typesig { [] }
-    # 
     # Returns a string representation of this CRL entry.
     # 
     # @return a string representation of this CRL entry.

@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 2001-2006 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -310,15 +309,15 @@ module Sun::Reflect
         new_members = Array.new_instance(members[0].get_class, num_new_members)
         dest_idx = 0
         members.each do |member|
-          should_skip_ = false
+          should_skip = false
           filtered_names.each do |filteredName|
-            if ((member_.get_name).equal?(filtered_name_))
-              should_skip_ = true
+            if ((member.get_name).equal?(filtered_name))
+              should_skip = true
               break
             end
           end
-          if (!should_skip_)
-            new_members[((dest_idx += 1) - 1)] = member_
+          if (!should_skip)
+            new_members[((dest_idx += 1) - 1)] = member
           end
         end
         return new_members

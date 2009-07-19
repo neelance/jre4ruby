@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 2003 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -33,7 +32,6 @@ module Java::Security::Spec
     }
   end
   
-  # 
   # This immutable class defines an elliptic curve (EC)
   # characteristic 2 finite field.
   # 
@@ -65,7 +63,6 @@ module Java::Security::Spec
     undef_method :rp=
     
     typesig { [::Java::Int] }
-    # 
     # Creates an elliptic curve characteristic 2 finite
     # field which has 2^<code>m</code> elements with normal basis.
     # @param m with 2^<code>m</code> being the number of elements.
@@ -84,7 +81,6 @@ module Java::Security::Spec
     end
     
     typesig { [::Java::Int, BigInteger] }
-    # 
     # Creates an elliptic curve characteristic 2 finite
     # field which has 2^<code>m</code> elements with
     # polynomial basis.
@@ -132,7 +128,6 @@ module Java::Security::Spec
     end
     
     typesig { [::Java::Int, Array.typed(::Java::Int)] }
-    # 
     # Creates an elliptic curve characteristic 2 finite
     # field which has 2^<code>m</code> elements with
     # polynomial basis. The reduction polynomial for this
@@ -191,7 +186,6 @@ module Java::Security::Spec
     end
     
     typesig { [] }
-    # 
     # Returns the field size in bits which is <code>m</code>
     # for this characteristic 2 finite field.
     # @return the field size in bits.
@@ -200,7 +194,6 @@ module Java::Security::Spec
     end
     
     typesig { [] }
-    # 
     # Returns the value <code>m</code> of this characteristic
     # 2 finite field.
     # @return <code>m</code> with 2^<code>m</code> being the
@@ -210,7 +203,6 @@ module Java::Security::Spec
     end
     
     typesig { [] }
-    # 
     # Returns a BigInteger whose i-th bit corresponds to the
     # i-th coefficient of the reduction polynomial for polynomial
     # basis or null for normal basis.
@@ -222,7 +214,6 @@ module Java::Security::Spec
     end
     
     typesig { [] }
-    # 
     # Returns an integer array which contains the order of the
     # middle term(s) of the reduction polynomial for polynomial
     # basis or null for normal basis.
@@ -239,7 +230,6 @@ module Java::Security::Spec
     end
     
     typesig { [Object] }
-    # 
     # Compares this finite field for equality with the
     # specified object.
     # @param obj the object to be compared.
@@ -259,7 +249,6 @@ module Java::Security::Spec
     end
     
     typesig { [] }
-    # 
     # Returns a hash code value for this characteristic 2
     # finite field.
     # @return a hash code value.

@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
 # This code is free software; you can redistribute it and/or modify it
@@ -37,7 +36,6 @@ module Sun::Security::Krb5::Internal::Util
     }
   end
   
-  # 
   # This class implements a buffered output stream. It provides methods to write a chunck of
   # bytes to underlying data stream.
   # 

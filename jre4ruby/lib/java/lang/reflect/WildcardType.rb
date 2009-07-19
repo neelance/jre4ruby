@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 2003-2004 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -43,7 +42,6 @@ module Java::Lang::Reflect
     include Type
     
     typesig { [] }
-    # 
     # Returns an array of {@code Type} objects representing the  upper
     # bound(s) of this type variable.  Note that if no upper bound is
     # explicitly declared, the upper bound is {@code Object}.
@@ -68,7 +66,6 @@ module Java::Lang::Reflect
     end
     
     typesig { [] }
-    # 
     # Returns an array of {@code Type} objects representing the
     # lower bound(s) of this type variable.  Note that if no lower bound is
     # explicitly declared, the lower bound is the type of {@code null}.

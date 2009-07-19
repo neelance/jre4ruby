@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 2000-2003 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -32,7 +31,6 @@ module Java::Util::Prefs
     }
   end
   
-  # 
   # Thrown to indicate that a preferences operation could not complete because
   # of a failure in the backing store, or a failure to contact the backing
   # store.
@@ -43,7 +41,6 @@ module Java::Util::Prefs
     include_class_members BackingStoreExceptionImports
     
     typesig { [String] }
-    # 
     # Constructs a BackingStoreException with the specified detail message.
     # 
     # @param s the detail message.
@@ -52,7 +49,6 @@ module Java::Util::Prefs
     end
     
     typesig { [Exception] }
-    # 
     # Constructs a BackingStoreException with the specified cause.
     # 
     # @param cause the cause

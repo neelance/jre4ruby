@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 1994-1998 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -31,7 +30,6 @@ module Java::Util
     }
   end
   
-  # 
   # Thrown by the <code>nextElement</code> method of an
   # <code>Enumeration</code> to indicate that there are no more
   # elements in the enumeration.
@@ -44,7 +42,6 @@ module Java::Util
     include_class_members NoSuchElementExceptionImports
     
     typesig { [] }
-    # 
     # Constructs a <code>NoSuchElementException</code> with <tt>null</tt>
     # as its error message string.
     def initialize
@@ -52,7 +49,6 @@ module Java::Util
     end
     
     typesig { [String] }
-    # 
     # Constructs a <code>NoSuchElementException</code>, saving a reference
     # to the error message string <tt>s</tt> for later retrieval by the
     # <tt>getMessage</tt> method.

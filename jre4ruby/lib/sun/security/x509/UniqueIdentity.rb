@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 1997 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -35,7 +34,6 @@ module Sun::Security::X509
     }
   end
   
-  # 
   # This class defines the UniqueIdentity class used by certificates.
   # 
   # @author Amit Kapoor
@@ -51,7 +49,6 @@ module Sun::Security::X509
     undef_method :id=
     
     typesig { [BitArray] }
-    # 
     # The default constructor for this class.
     # 
     # @param id the byte array containing the unique identifier.
@@ -61,7 +58,6 @@ module Sun::Security::X509
     end
     
     typesig { [Array.typed(::Java::Byte)] }
-    # 
     # The default constructor for this class.
     # 
     # @param id the byte array containing the unique identifier.
@@ -71,7 +67,6 @@ module Sun::Security::X509
     end
     
     typesig { [DerInputStream] }
-    # 
     # Create the object, decoding the values from the passed DER stream.
     # 
     # @param in the DerInputStream to read the UniqueIdentity from.
@@ -83,7 +78,6 @@ module Sun::Security::X509
     end
     
     typesig { [DerValue] }
-    # 
     # Create the object, decoding the values from the passed DER stream.
     # 
     # @param derVal the DerValue decoded from the stream.
@@ -95,14 +89,12 @@ module Sun::Security::X509
     end
     
     typesig { [] }
-    # 
     # Return the UniqueIdentity as a printable string.
     def to_s
       return ("UniqueIdentity:" + (@id.to_s).to_s + "\n")
     end
     
     typesig { [DerOutputStream, ::Java::Byte] }
-    # 
     # Encode the UniqueIdentity in DER form to the stream.
     # 
     # @param out the DerOutputStream to marshal the contents to.
@@ -118,7 +110,6 @@ module Sun::Security::X509
     end
     
     typesig { [] }
-    # 
     # Return the unique id.
     def get_id
       if ((@id).nil?)

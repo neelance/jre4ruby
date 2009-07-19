@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 1997-2006 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -37,7 +36,6 @@ module Sun::Security::X509
     }
   end
   
-  # 
   # This class defines the interval for which the certificate is valid.
   # 
   # @author Amit Kapoor
@@ -48,13 +46,11 @@ module Sun::Security::X509
     include CertAttrSet
     
     class_module.module_eval {
-      # 
       # Identifier for this attribute, to be used with the
       # get, set, delete methods of Certificate, x509 type.
       const_set_lazy(:IDENT) { "x509.info.validity" }
       const_attr_reader  :IDENT
       
-      # 
       # Sub attributes name for this CertAttrSet.
       const_set_lazy(:NAME) { "validity" }
       const_attr_reader  :NAME
@@ -130,7 +126,6 @@ module Sun::Security::X509
     end
     
     typesig { [] }
-    # 
     # Default constructor for the class.
     def initialize
       @not_before = nil
@@ -138,7 +133,6 @@ module Sun::Security::X509
     end
     
     typesig { [Date, Date] }
-    # 
     # The default constructor for this class for the specified interval.
     # 
     # @param notBefore the date and time before which the certificate
@@ -153,7 +147,6 @@ module Sun::Security::X509
     end
     
     typesig { [DerInputStream] }
-    # 
     # Create the object, decoding the values from the passed DER stream.
     # 
     # @param in the DerInputStream to read the CertificateValidity from.
@@ -166,7 +159,6 @@ module Sun::Security::X509
     end
     
     typesig { [] }
-    # 
     # Return the validity period as user readable string.
     def to_s
       if ((@not_before).nil? || (@not_after).nil?)
@@ -176,7 +168,6 @@ module Sun::Security::X509
     end
     
     typesig { [OutputStream] }
-    # 
     # Encode the CertificateValidity period in DER form to the stream.
     # 
     # @param out the OutputStream to marshal the contents to.
@@ -204,7 +195,6 @@ module Sun::Security::X509
     end
     
     typesig { [String, Object] }
-    # 
     # Set the attribute value.
     def set(name, obj)
       if (!(obj.is_a?(Date)))
@@ -222,7 +212,6 @@ module Sun::Security::X509
     end
     
     typesig { [String] }
-    # 
     # Get the attribute value.
     def get(name)
       if (name.equals_ignore_case(NOT_BEFORE))
@@ -237,7 +226,6 @@ module Sun::Security::X509
     end
     
     typesig { [String] }
-    # 
     # Delete the attribute value.
     def delete(name)
       if (name.equals_ignore_case(NOT_BEFORE))
@@ -252,7 +240,6 @@ module Sun::Security::X509
     end
     
     typesig { [] }
-    # 
     # Return an enumeration of names of attributes existing within this
     # attribute.
     def get_elements
@@ -263,14 +250,12 @@ module Sun::Security::X509
     end
     
     typesig { [] }
-    # 
     # Return the name of this attribute.
     def get_name
       return (NAME)
     end
     
     typesig { [] }
-    # 
     # Verify that the current time is within the validity period.
     # 
     # @exception CertificateExpiredException if the certificate has expired.
@@ -282,7 +267,6 @@ module Sun::Security::X509
     end
     
     typesig { [Date] }
-    # 
     # Verify that the passed time is within the validity period.
     # @param now the Date against which to compare the validity
     # period.
@@ -292,7 +276,6 @@ module Sun::Security::X509
     # @exception CertificateNotYetValidException if the certificate is not
     # yet valid with respect to the <code>Date</code> supplied.
     def valid(now)
-      # 
       # we use the internal Dates rather than the passed in Date
       # because someone could override the Date methods after()
       # and before() to do something entirely different.

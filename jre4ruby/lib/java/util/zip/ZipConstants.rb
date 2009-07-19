@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 1995-1996 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -41,7 +40,6 @@ module Java::Util::Zip
     include_class_members ZipConstantsImports
     
     class_module.module_eval {
-      # 
       # Header signatures
       const_set_lazy(:LOCSIG) { 0x4034b50 }
       const_attr_reader  :LOCSIG

@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 1997-2003 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -31,7 +30,6 @@ module Java::Lang::Ref
     }
   end
   
-  # 
   # Weak reference objects, which do not prevent their referents from being
   # made finalizable, finalized, and then reclaimed.  Weak references are most
   # often used to implement canonicalizing mappings.
@@ -52,7 +50,6 @@ module Java::Lang::Ref
     include_class_members WeakReferenceImports
     
     typesig { [Object] }
-    # 
     # Creates a new weak reference that refers to the given object.  The new
     # reference is not registered with any queue.
     # 
@@ -62,7 +59,6 @@ module Java::Lang::Ref
     end
     
     typesig { [Object, ReferenceQueue] }
-    # 
     # Creates a new weak reference that refers to the given object and is
     # registered with the given queue.
     # 

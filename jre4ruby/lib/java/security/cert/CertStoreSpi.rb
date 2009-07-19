@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 2000-2003 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -33,7 +32,6 @@ module Java::Security::Cert
     }
   end
   
-  # 
   # The <i>Service Provider Interface</i> (<b>SPI</b>)
   # for the {@link CertStore CertStore} class. All <code>CertStore</code>
   # implementations must include a class (the SPI class) that extends
@@ -63,7 +61,6 @@ module Java::Security::Cert
     include_class_members CertStoreSpiImports
     
     typesig { [CertStoreParameters] }
-    # 
     # The sole constructor.
     # 
     # @param params the initialization parameters (may be <code>null</code>)
@@ -73,7 +70,6 @@ module Java::Security::Cert
     end
     
     typesig { [CertSelector] }
-    # 
     # Returns a <code>Collection</code> of <code>Certificate</code>s that
     # match the specified selector. If no <code>Certificate</code>s
     # match the selector, an empty <code>Collection</code> will be returned.
@@ -102,7 +98,6 @@ module Java::Security::Cert
     end
     
     typesig { [CRLSelector] }
-    # 
     # Returns a <code>Collection</code> of <code>CRL</code>s that
     # match the specified selector. If no <code>CRL</code>s
     # match the selector, an empty <code>Collection</code> will be returned.

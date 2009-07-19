@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 1996-2007 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -49,7 +48,6 @@ module Sun::Security::Ssl
     }
   end
   
-  # 
   # Handshaker ... processes handshake records from an SSL V3.0
   # data stream, handling all the details of the handshake protocol.
   # 
@@ -228,7 +226,6 @@ module Sun::Security::Ssl
     alias_method :attr_svr_mac_secret=, :svr_mac_secret=
     undef_method :svr_mac_secret=
     
-    # 
     # Delegated task subsystem data structures.
     # 
     # If thrown is set, we need to propagate this back immediately
@@ -347,7 +344,6 @@ module Sun::Security::Ssl
       set_cipher_suite(CipherSuite::C_NULL)
       @md5tmp = JsseJce.get_md5
       @sha_tmp = JsseJce.get_sha
-      # 
       # We accumulate digests of the handshake messages so that
       # we can read/write CertificateVerify and Finished messages,
       # getting assurance against some particular active attacks.
@@ -359,7 +355,6 @@ module Sun::Security::Ssl
         # engine != null
         @engine.attr_input_record.set_handshake_hash(@handshake_hash)
       end
-      # 
       # In addition to the connection state machine, controlling
       # how the connection deals with the different sorts of records
       # that get sent (notably handshake transitions!), there's
@@ -375,7 +370,6 @@ module Sun::Security::Ssl
     end
     
     typesig { [::Java::Byte, String] }
-    # 
     # Reroutes calls to the SSLSocket or SSLEngine (*SE).
     # 
     # We could have also done it by extra classes
@@ -422,7 +416,6 @@ module Sun::Security::Ssl
       if (!(@conn).nil?)
         return @conn.get_inet_address.get_host_address
       else
-        # 
         # This is for caching only, doesn't matter that's is really
         # a hostname.  The main thing is that it doesn't do
         # a reverse DNS lookup, potentially slowing things down.
@@ -485,7 +478,6 @@ module Sun::Security::Ssl
     end
     
     typesig { [ProtocolVersion] }
-    # 
     # Set the active protocol version and propagate it to the SSLSocket
     # and our handshake streams. Called from ClientHandshaker
     # and ServerHandshaker with the negotiated protocol version.
@@ -496,7 +488,6 @@ module Sun::Security::Ssl
     end
     
     typesig { [ProtocolList] }
-    # 
     # Set the enabled protocols. Called from the constructor or
     # SSLSocketImpl.setEnabledProtocols() (if the handshake is not yet
     # in progress).
@@ -520,7 +511,6 @@ module Sun::Security::Ssl
     end
     
     typesig { [CipherSuite] }
-    # 
     # Set cipherSuite and keyExchange to the given CipherSuite.
     # Does not perform any verification that this is a valid selection,
     # this must be done before calling this method.
@@ -530,7 +520,6 @@ module Sun::Security::Ssl
     end
     
     typesig { [CipherSuite] }
-    # 
     # Check if the given ciphersuite is enabled and available.
     # (Enabled ciphersuites are always available unless the status has
     # changed due to change in JCE providers since it was enabled).
@@ -540,7 +529,6 @@ module Sun::Security::Ssl
     end
     
     typesig { [::Java::Boolean] }
-    # 
     # As long as handshaking has not started, we can
     # change whether session creations are allowed.
     # 
@@ -551,7 +539,6 @@ module Sun::Security::Ssl
     end
     
     typesig { [] }
-    # 
     # Create a new read cipher and return it to caller.
     def new_read_cipher
       cipher = @cipher_suite.attr_cipher
@@ -569,7 +556,6 @@ module Sun::Security::Ssl
     end
     
     typesig { [] }
-    # 
     # Create a new write cipher and return it to caller.
     def new_write_cipher
       cipher = @cipher_suite.attr_cipher
@@ -587,7 +573,6 @@ module Sun::Security::Ssl
     end
     
     typesig { [] }
-    # 
     # Create a new read MAC and return it to caller.
     def new_read_mac
       mac_alg = @cipher_suite.attr_mac_alg
@@ -603,7 +588,6 @@ module Sun::Security::Ssl
     end
     
     typesig { [] }
-    # 
     # Create a new write MAC and return it to caller.
     def new_write_mac
       mac_alg = @cipher_suite.attr_mac_alg
@@ -619,7 +603,6 @@ module Sun::Security::Ssl
     end
     
     typesig { [] }
-    # 
     # Returns true iff the handshake sequence is done, so that
     # this freshly created session can become the current one.
     def is_done
@@ -627,7 +610,6 @@ module Sun::Security::Ssl
     end
     
     typesig { [] }
-    # 
     # Returns the session which was created through this
     # handshake sequence ... should be called after isDone()
     # returns true.
@@ -636,16 +618,13 @@ module Sun::Security::Ssl
     end
     
     typesig { [InputRecord, ::Java::Boolean] }
-    # 
     # This routine is fed SSL handshake records when they become available,
     # and processes messages found therein.
     def process_record(r, expecting_finished)
       check_thrown
-      # 
       # Store the incoming handshake data, then see if we can
       # now process any completed handshake messages
       @input.incoming_record(r)
-      # 
       # We don't need to create a separate delegatable task
       # for finished messages.
       if ((!(@conn).nil?) || expecting_finished)
@@ -674,7 +653,6 @@ module Sun::Security::Ssl
     end
     
     typesig { [] }
-    # 
     # On input, we hash messages one at a time since servers may need
     # to access an intermediate hash to validate a CertificateVerify
     # message.
@@ -686,7 +664,6 @@ module Sun::Security::Ssl
       while (@input.available > 0)
         message_type = 0
         message_len = 0
-        # 
         # See if we can read the handshake message header, and
         # then the entire handshake message.  If not, wait till
         # we can read and process an entire message.
@@ -697,7 +674,6 @@ module Sun::Security::Ssl
           @input.reset
           return
         end
-        # 
         # Process the messsage.  We require
         # that processMessage() consumes the entire message.  In
         # lieu of explicit error checks (how?!) we assume that the
@@ -724,7 +700,6 @@ module Sun::Security::Ssl
     end
     
     typesig { [] }
-    # 
     # Returns true iff the handshaker has sent any messages.
     # Server kickstarting is not as neat as it should be; we
     # need to create a new handshaker, this method lets us
@@ -734,7 +709,6 @@ module Sun::Security::Ssl
     end
     
     typesig { [] }
-    # 
     # Used to kickstart the negotiation ... either writing a
     # ClientHello or a HelloRequest as appropriate, whichever
     # the subclass returns.  NOP if handshaking's already started.
@@ -752,7 +726,6 @@ module Sun::Security::Ssl
     end
     
     typesig { [] }
-    # 
     # Both client and server modes can start handshaking; but the
     # message they send to do so is different.
     def get_kickstart_message
@@ -760,7 +733,6 @@ module Sun::Security::Ssl
     end
     
     typesig { [::Java::Byte, ::Java::Int] }
-    # 
     # Client and Server side protocols are each driven though this
     # call, which processes a single message and drives the appropriate
     # side of the protocol state machine (depending on the subclass).
@@ -769,7 +741,6 @@ module Sun::Security::Ssl
     end
     
     typesig { [::Java::Byte] }
-    # 
     # Most alerts in the protocol relate to handshaking problems.
     # Alerts are detected as the connection reads data.
     def handshake_alert(description)
@@ -777,12 +748,10 @@ module Sun::Security::Ssl
     end
     
     typesig { [Finished, ::Java::Boolean] }
-    # 
     # Sends a change cipher spec message and updates the write side
     # cipher state so that future messages use the just-negotiated spec.
     def send_change_cipher_spec(mesg, last_message)
       @output.flush # i.e. handshake data
-      # 
       # The write cipher state is protected by the connection write lock
       # so we must grab it while making the change. We also
       # make sure no writes occur between sending the ChangeCipherSpec
@@ -829,7 +798,6 @@ module Sun::Security::Ssl
     end
     
     typesig { [SecretKey, ProtocolVersion] }
-    # 
     # Single access point to key calculation logic.  Given the
     # pre-master secret and the nonces from client and server,
     # produce all the keying material to be used.
@@ -840,7 +808,6 @@ module Sun::Security::Ssl
     end
     
     typesig { [SecretKey, ProtocolVersion] }
-    # 
     # Calculate the master secret from its various components.  This is
     # used for key exchange by all cipher suites.
     # 
@@ -917,7 +884,6 @@ module Sun::Security::Ssl
     end
     
     typesig { [SecretKey] }
-    # 
     # Calculate the keys needed for this connection, once the session's
     # master secret has been calculated.  Uses the master key and nonces;
     # the amount of keying material generated is a function of the cipher
@@ -927,7 +893,6 @@ module Sun::Security::Ssl
     # a premaster secret and started a new session) as well as on the
     # "fast handshake" (where we just resumed a pre-existing session).
     def calculate_connection_keys(master_key)
-      # 
       # For both the read and write sides of the protocol, we use the
       # master to generate MAC secrets and cipher keying material.  Block
       # ciphers need initialization vectors, which we also generate.
@@ -953,7 +918,6 @@ module Sun::Security::Ssl
       rescue GeneralSecurityException => e
         raise ProviderException.new(e)
       end
-      # 
       # Dump the connection keys as they're generated.
       if (!(Debug).nil? && Debug.is_on("keygen"))
         synchronized((System.out)) do
@@ -1007,7 +971,6 @@ module Sun::Security::Ssl
       end
       
       typesig { [String, Exception] }
-      # 
       # Throw an SSLException with the specified message and cause.
       # Shorthand until a new SSLException constructor is added.
       # This method never returns.
@@ -1017,7 +980,6 @@ module Sun::Security::Ssl
         raise e
       end
       
-      # 
       # Implement a simple task delegator.
       # 
       # We are currently implementing this as a single delegator, may
@@ -1079,7 +1041,6 @@ module Sun::Security::Ssl
     end
     
     typesig { [] }
-    # 
     # See if there are any tasks which need to be delegated
     # 
     # Locked by SSLEngine.this.
@@ -1088,7 +1049,6 @@ module Sun::Security::Ssl
     end
     
     typesig { [] }
-    # 
     # The previous caller failed for some reason, report back the
     # Exception.  We won't worry about Error's.
     # 
@@ -1100,7 +1060,6 @@ module Sun::Security::Ssl
           if ((msg).nil?)
             msg = "Delegated task threw Exception/Error"
           end
-          # 
           # See what the underlying type of exception is.  We should
           # throw the same thing.  Chain thrown to the new exception.
           e = @thrown
@@ -1120,7 +1079,6 @@ module Sun::Security::Ssl
                   if (e.is_a?(SSLProtocolException))
                     raise SSLProtocolException.new(msg).init_cause(e)
                   else
-                    # 
                     # If it's SSLException or any other Exception,
                     # we'll wrap it in an SSLException.
                     raise SSLException.new(msg).init_cause(e)

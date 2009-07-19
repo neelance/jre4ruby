@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 1997-2000 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -33,7 +32,6 @@ module Sun::Security::X509
     }
   end
   
-  # 
   # This class implements the DNSName as required by the GeneralNames
   # ASN.1 object.
   # <p>
@@ -72,7 +70,6 @@ module Sun::Security::X509
     }
     
     typesig { [DerValue] }
-    # 
     # Create the DNSName object from the passed encoded Der value.
     # 
     # @param derValue the encoded DER DNSName.
@@ -83,7 +80,6 @@ module Sun::Security::X509
     end
     
     typesig { [String] }
-    # 
     # Create the DNSName object with the specified name.
     # 
     # @param name the DNSName.
@@ -131,21 +127,18 @@ module Sun::Security::X509
     end
     
     typesig { [] }
-    # 
     # Return the type of the GeneralName.
     def get_type
       return (GeneralNameInterface::NAME_DNS)
     end
     
     typesig { [] }
-    # 
     # Return the actual name value of the GeneralName.
     def get_name
       return @name
     end
     
     typesig { [DerOutputStream] }
-    # 
     # Encode the DNS name into the DerOutputStream.
     # 
     # @param out the DER stream to encode the DNSName to.
@@ -155,14 +148,12 @@ module Sun::Security::X509
     end
     
     typesig { [] }
-    # 
     # Convert the name into user readable string.
     def to_s
       return ("DNSName: " + @name)
     end
     
     typesig { [Object] }
-    # 
     # Compares this name with another, for equality.
     # 
     # @return true iff the names are equivalent
@@ -181,7 +172,6 @@ module Sun::Security::X509
     end
     
     typesig { [] }
-    # 
     # Returns the hash code value for this object.
     # 
     # @return a hash code value for this object.
@@ -190,7 +180,6 @@ module Sun::Security::X509
     end
     
     typesig { [GeneralNameInterface] }
-    # 
     # Return type of constraint inputName places on this name:<ul>
     # <li>NAME_DIFF_TYPE = -1: input name is different type from name (i.e. does not constrain).
     # <li>NAME_MATCH = 0: input name matches name.
@@ -258,7 +247,6 @@ module Sun::Security::X509
     end
     
     typesig { [] }
-    # 
     # Return subtree depth of this name for purposes of determining
     # NameConstraints minimum and maximum bounds and for calculating
     # path lengths in name subtrees.

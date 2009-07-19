@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 1996-2005 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -31,7 +30,6 @@ module Java::Io
     }
   end
   
-  # 
   # Writes text to a character-output stream, buffering characters so as to
   # provide for the efficient writing of single characters, arrays, and strings.
   # 
@@ -105,7 +103,6 @@ module Java::Io
       alias_method :attr_default_char_buffer_size=, :default_char_buffer_size=
     }
     
-    # 
     # Line separator string.  This is the value of the line.separator
     # property at the moment that the stream was created.
     attr_accessor :line_separator
@@ -115,7 +112,6 @@ module Java::Io
     undef_method :line_separator=
     
     typesig { [Writer] }
-    # 
     # Creates a buffered character-output stream that uses a default-sized
     # output buffer.
     # 
@@ -125,7 +121,6 @@ module Java::Io
     end
     
     typesig { [Writer, ::Java::Int] }
-    # 
     # Creates a new buffered character-output stream that uses an output
     # buffer of the given size.
     # 
@@ -159,7 +154,6 @@ module Java::Io
     end
     
     typesig { [] }
-    # 
     # Flushes the output buffer to the underlying character stream, without
     # flushing the stream itself.  This method is non-private only so that it
     # may be invoked by PrintStream.
@@ -175,7 +169,6 @@ module Java::Io
     end
     
     typesig { [::Java::Int] }
-    # 
     # Writes a single character.
     # 
     # @exception  IOException  If an I/O error occurs
@@ -190,7 +183,6 @@ module Java::Io
     end
     
     typesig { [::Java::Int, ::Java::Int] }
-    # 
     # Our own little min method, to avoid loading java.lang.Math if we've run
     # out of file descriptors and we're trying to print a stack trace.
     def min(a, b)
@@ -201,7 +193,6 @@ module Java::Io
     end
     
     typesig { [Array.typed(::Java::Char), ::Java::Int, ::Java::Int] }
-    # 
     # Writes a portion of an array of characters.
     # 
     # <p> Ordinarily this method stores characters from the given array into
@@ -249,7 +240,6 @@ module Java::Io
     end
     
     typesig { [String, ::Java::Int, ::Java::Int] }
-    # 
     # Writes a portion of a String.
     # 
     # <p> If the value of the <tt>len</tt> parameter is negative then no
@@ -281,7 +271,6 @@ module Java::Io
     end
     
     typesig { [] }
-    # 
     # Writes a line separator.  The line separator string is defined by the
     # system property <tt>line.separator</tt>, and is not necessarily a single
     # newline ('\n') character.
@@ -292,7 +281,6 @@ module Java::Io
     end
     
     typesig { [] }
-    # 
     # Flushes the stream.
     # 
     # @exception  IOException  If an I/O error occurs

@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 2000 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -34,7 +33,6 @@ module Sun::Security::X509
     }
   end
   
-  # 
   # This class defines the X400Address of the GeneralName choice.
   # <p>
   # The ASN.1 syntax for this is:
@@ -348,7 +346,6 @@ module Sun::Security::X509
     undef_method :name_value=
     
     typesig { [Array.typed(::Java::Byte)] }
-    # 
     # Create the X400Address object from the specified byte array
     # 
     # @param nameValue value of the name as a byte array
@@ -358,7 +355,6 @@ module Sun::Security::X509
     end
     
     typesig { [DerValue] }
-    # 
     # Create the X400Address object from the passed encoded Der value.
     # 
     # @param derValue the encoded DER X400Address.
@@ -369,14 +365,12 @@ module Sun::Security::X509
     end
     
     typesig { [] }
-    # 
     # Return the type of the GeneralName.
     def get_type
       return (GeneralNameInterface::NAME_X400)
     end
     
     typesig { [DerOutputStream] }
-    # 
     # Encode the X400 name into the DerOutputStream.
     # 
     # @param out the DER stream to encode the X400Address to.
@@ -387,14 +381,12 @@ module Sun::Security::X509
     end
     
     typesig { [] }
-    # 
     # Return the printable string.
     def to_s
       return ("X400Address: <DER-encoded value>")
     end
     
     typesig { [GeneralNameInterface] }
-    # 
     # Return type of constraint inputName places on this name:<ul>
     # <li>NAME_DIFF_TYPE = -1: input name is different type from name (i.e. does not constrain).
     # <li>NAME_MATCH = 0: input name matches name.
@@ -424,7 +416,6 @@ module Sun::Security::X509
     end
     
     typesig { [] }
-    # 
     # Return subtree depth of this name for purposes of determining
     # NameConstraints minimum and maximum bounds and for calculating
     # path lengths in name subtrees.

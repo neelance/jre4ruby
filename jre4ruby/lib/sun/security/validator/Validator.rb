@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 2002-2006 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -34,7 +33,6 @@ module Sun::Security::Validator
     }
   end
   
-  # 
   # Validator abstract base class. Concrete classes are instantiated by calling
   # one of the getInstance() methods. All methods defined in this class
   # must be safe for concurrent use by multiple threads.<p>
@@ -93,55 +91,46 @@ module Sun::Security::Validator
       const_set_lazy(:CHAIN0) { Array.typed(X509Certificate).new([]) }
       const_attr_reader  :CHAIN0
       
-      # 
       # Constant for a validator of type Simple.
       # @see #getInstance
       const_set_lazy(:TYPE_SIMPLE) { "Simple" }
       const_attr_reader  :TYPE_SIMPLE
       
-      # 
       # Constant for a validator of type PKIX.
       # @see #getInstance
       const_set_lazy(:TYPE_PKIX) { "PKIX" }
       const_attr_reader  :TYPE_PKIX
       
-      # 
       # Constant for a Generic variant of a validator.
       # @see #getInstance
       const_set_lazy(:VAR_GENERIC) { "generic" }
       const_attr_reader  :VAR_GENERIC
       
-      # 
       # Constant for a Code Signing variant of a validator.
       # @see #getInstance
       const_set_lazy(:VAR_CODE_SIGNING) { "code signing" }
       const_attr_reader  :VAR_CODE_SIGNING
       
-      # 
       # Constant for a JCE Code Signing variant of a validator.
       # @see #getInstance
       const_set_lazy(:VAR_JCE_SIGNING) { "jce signing" }
       const_attr_reader  :VAR_JCE_SIGNING
       
-      # 
       # Constant for a TLS Client variant of a validator.
       # @see #getInstance
       const_set_lazy(:VAR_TLS_CLIENT) { "tls client" }
       const_attr_reader  :VAR_TLS_CLIENT
       
-      # 
       # Constant for a TLS Server variant of a validator.
       # @see #getInstance
       const_set_lazy(:VAR_TLS_SERVER) { "tls server" }
       const_attr_reader  :VAR_TLS_SERVER
       
-      # 
       # Constant for a TSA Server variant of a validator.
       # @see #getInstance
       const_set_lazy(:VAR_TSA_SERVER) { "tsa server" }
       const_attr_reader  :VAR_TSA_SERVER
       
-      # 
       # Constant for a Code Signing variant of a validator for use by
       # the J2SE Plugin/WebStart code.
       # @see #getInstance
@@ -161,7 +150,6 @@ module Sun::Security::Validator
     alias_method :attr_variant=, :variant=
     undef_method :variant=
     
-    # 
     # @deprecated
     # @see #setValidationDate
     attr_accessor :validation_date
@@ -181,7 +169,6 @@ module Sun::Security::Validator
     
     class_module.module_eval {
       typesig { [String, String, KeyStore] }
-      # 
       # Get a new Validator instance using the trusted certificates from the
       # specified KeyStore as trust anchors.
       def get_instance(type, variant, ks)
@@ -189,7 +176,6 @@ module Sun::Security::Validator
       end
       
       typesig { [String, String, Collection] }
-      # 
       # Get a new Validator instance using the Set of X509Certificates as trust
       # anchors.
       def get_instance(type, variant, trusted_certs)
@@ -205,7 +191,6 @@ module Sun::Security::Validator
       end
       
       typesig { [String, String, PKIXBuilderParameters] }
-      # 
       # Get a new Validator instance using the provided PKIXBuilderParameters.
       # This method can only be used with the PKIX validator.
       def get_instance(type, variant, params)
@@ -217,14 +202,12 @@ module Sun::Security::Validator
     }
     
     typesig { [Array.typed(X509Certificate)] }
-    # 
     # Validate the given certificate chain.
     def validate(chain)
       return validate(chain, nil, nil)
     end
     
     typesig { [Array.typed(X509Certificate), Collection] }
-    # 
     # Validate the given certificate chain. If otherCerts is non-null, it is
     # a Collection of additional X509Certificates that could be helpful for
     # path building.
@@ -233,7 +216,6 @@ module Sun::Security::Validator
     end
     
     typesig { [Array.typed(X509Certificate), Collection, Object] }
-    # 
     # Validate the given certificate chain. If otherCerts is non-null, it is
     # a Collection of additional X509Certificates that could be helpful for
     # path building.
@@ -262,7 +244,6 @@ module Sun::Security::Validator
     end
     
     typesig { [] }
-    # 
     # Returns an immutable Collection of the X509Certificates this instance
     # uses as trust anchors.
     def get_trusted_certificates
@@ -270,7 +251,6 @@ module Sun::Security::Validator
     end
     
     typesig { [Date] }
-    # 
     # Set the date to be used for subsequent validations. NOTE that
     # this is not a supported API, it is provided to simplify
     # writing tests only.

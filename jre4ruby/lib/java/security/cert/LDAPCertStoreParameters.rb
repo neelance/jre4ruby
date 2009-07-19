@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 2000-2001 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -31,7 +30,6 @@ module Java::Security::Cert
     }
   end
   
-  # 
   # Parameters used as input for the LDAP <code>CertStore</code> algorithm.
   # <p>
   # This class is used to provide necessary configuration parameters (server
@@ -58,7 +56,6 @@ module Java::Security::Cert
       const_attr_reader  :LDAP_DEFAULT_PORT
     }
     
-    # 
     # the port number of the LDAP server
     attr_accessor :port
     alias_method :attr_port, :port
@@ -66,7 +63,6 @@ module Java::Security::Cert
     alias_method :attr_port=, :port=
     undef_method :port=
     
-    # 
     # the DNS name of the LDAP server
     attr_accessor :server_name
     alias_method :attr_server_name, :server_name
@@ -75,7 +71,6 @@ module Java::Security::Cert
     undef_method :server_name=
     
     typesig { [String, ::Java::Int] }
-    # 
     # Creates an instance of <code>LDAPCertStoreParameters</code> with the
     # specified parameter values.
     # 
@@ -94,7 +89,6 @@ module Java::Security::Cert
     end
     
     typesig { [String] }
-    # 
     # Creates an instance of <code>LDAPCertStoreParameters</code> with the
     # specified server name and a default port of 389.
     # 
@@ -106,7 +100,6 @@ module Java::Security::Cert
     end
     
     typesig { [] }
-    # 
     # Creates an instance of <code>LDAPCertStoreParameters</code> with the
     # default parameter values (server name "localhost", port 389).
     def initialize
@@ -114,7 +107,6 @@ module Java::Security::Cert
     end
     
     typesig { [] }
-    # 
     # Returns the DNS name of the LDAP server.
     # 
     # @return the name (not <code>null</code>)
@@ -123,7 +115,6 @@ module Java::Security::Cert
     end
     
     typesig { [] }
-    # 
     # Returns the port number of the LDAP server.
     # 
     # @return the port number
@@ -132,7 +123,6 @@ module Java::Security::Cert
     end
     
     typesig { [] }
-    # 
     # Returns a copy of this object. Changes to the copy will not affect
     # the original and vice versa.
     # <p>
@@ -152,7 +142,6 @@ module Java::Security::Cert
     end
     
     typesig { [] }
-    # 
     # Returns a formatted string describing the parameters.
     # 
     # @return a formatted string describing the parameters

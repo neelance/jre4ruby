@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 1996-2006 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -34,7 +33,6 @@ module Java::Util::Zip
     }
   end
   
-  # 
   # An input stream that also maintains a checksum of the data being read.
   # The checksum can then be used to verify the integrity of the input data.
   # 
@@ -50,7 +48,6 @@ module Java::Util::Zip
     undef_method :cksum=
     
     typesig { [InputStream, Checksum] }
-    # 
     # Creates an input stream using the specified Checksum.
     # @param in the input stream
     # @param cksum the Checksum
@@ -61,7 +58,6 @@ module Java::Util::Zip
     end
     
     typesig { [] }
-    # 
     # Reads a byte. Will block if no input is available.
     # @return the byte read, or -1 if the end of the stream is reached.
     # @exception IOException if an I/O error has occurred
@@ -74,7 +70,6 @@ module Java::Util::Zip
     end
     
     typesig { [Array.typed(::Java::Byte), ::Java::Int, ::Java::Int] }
-    # 
     # Reads into an array of bytes. If <code>len</code> is not zero, the method
     # blocks until some input is available; otherwise, no
     # bytes are read and <code>0</code> is returned.
@@ -97,7 +92,6 @@ module Java::Util::Zip
     end
     
     typesig { [::Java::Long] }
-    # 
     # Skips specified number of bytes of input.
     # @param n the number of bytes to skip
     # @return the actual number of bytes skipped
@@ -117,7 +111,6 @@ module Java::Util::Zip
     end
     
     typesig { [] }
-    # 
     # Returns the Checksum for this input stream.
     # @return the Checksum value
     def get_checksum

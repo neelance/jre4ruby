@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 2003-2005 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -32,7 +31,6 @@ module Sun::Util::Calendar
     }
   end
   
-  # 
   # Julian calendar implementation.
   # 
   # @author Masayoshi Okutsu
@@ -174,7 +172,6 @@ module Sun::Util::Calendar
     end
     
     typesig { [::Java::Int, ::Java::Int, ::Java::Int, BaseCalendar::Date] }
-    # 
     # @param jyear normalized Julian year
     def get_fixed_date(jyear, month, day_of_month, cache)
       is_jan1 = (month).equal?(JANUARY) && (day_of_month).equal?(1)
@@ -242,7 +239,6 @@ module Sun::Util::Calendar
     end
     
     typesig { [::Java::Long] }
-    # 
     # Returns the normalized Julian year number of the given fixed date.
     def get_year_from_fixed_date(fixed_date)
       year = RJava.cast_to_int(CalendarUtils.floor_divide(4 * (fixed_date - JULIAN_EPOCH) + 1464, 1461))

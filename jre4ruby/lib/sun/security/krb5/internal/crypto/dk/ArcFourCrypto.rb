@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 2005-2007 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -39,7 +38,6 @@ module Sun::Security::Krb5::Internal::Crypto::Dk
     }
   end
   
-  # 
   # Support for ArcFour in Kerberos
   # as defined in RFC 4757.
   # http://www.ietf.org/rfc/rfc4757.txt
@@ -92,7 +90,6 @@ module Sun::Security::Krb5::Internal::Crypto::Dk
     end
     
     typesig { [Array.typed(::Java::Char), Array.typed(::Java::Byte)] }
-    # 
     # String2Key(Password)
     # K = MD4(UNICODE(password))
     def string_to_key(secret, opaque)
@@ -137,7 +134,6 @@ module Sun::Security::Krb5::Internal::Crypto::Dk
     end
     
     typesig { [Array.typed(::Java::Byte), Array.typed(::Java::Byte)] }
-    # 
     # Get the HMAC-MD5
     def get_hmac(key, msg)
       key_ki = SecretKeySpec.new(key, "HmacMD5")
@@ -149,7 +145,6 @@ module Sun::Security::Krb5::Internal::Crypto::Dk
     end
     
     typesig { [Array.typed(::Java::Byte), ::Java::Int, Array.typed(::Java::Byte), ::Java::Int, ::Java::Int] }
-    # 
     # Calculate the checksum
     def calculate_checksum(base_key, usage, input, start, len)
       if (Debug)
@@ -178,9 +173,9 @@ module Sun::Security::Krb5::Internal::Crypto::Dk
       begin
         message_digest = MessageDigest.get_instance("MD5")
       rescue NoSuchAlgorithmException => e
-        gse_ = GeneralSecurityException.new("Calculate Checkum Failed!")
-        gse_.init_cause(e_)
-        raise gse_
+        gse = GeneralSecurityException.new("Calculate Checkum Failed!")
+        gse.init_cause(e)
+        raise gse
       end
       message_digest.update(salt)
       message_digest.update(input, start, len)
@@ -204,7 +199,6 @@ module Sun::Security::Krb5::Internal::Crypto::Dk
     end
     
     typesig { [Array.typed(::Java::Byte), ::Java::Int, Array.typed(::Java::Byte), Array.typed(::Java::Byte), ::Java::Int, ::Java::Int] }
-    # 
     # Performs encryption of Sequence Number using derived key.
     def encrypt_seq(base_key, usage, checksum, plaintext, start, len)
       if (!KeyUsage.is_valid(usage))
@@ -223,7 +217,6 @@ module Sun::Security::Krb5::Internal::Crypto::Dk
     end
     
     typesig { [Array.typed(::Java::Byte), ::Java::Int, Array.typed(::Java::Byte), Array.typed(::Java::Byte), ::Java::Int, ::Java::Int] }
-    # 
     # Performs decryption of Sequence Number using derived key.
     def decrypt_seq(base_key, usage, checksum, ciphertext, start, len)
       if (!KeyUsage.is_valid(usage))
@@ -242,7 +235,6 @@ module Sun::Security::Krb5::Internal::Crypto::Dk
     end
     
     typesig { [Array.typed(::Java::Byte), ::Java::Int, Array.typed(::Java::Byte), Array.typed(::Java::Byte), Array.typed(::Java::Byte), ::Java::Int, ::Java::Int] }
-    # 
     # Performs encryption using derived key; adds confounder.
     def encrypt(base_key, usage, ivec, new_ivec, plaintext, start, len)
       if (!KeyUsage.is_valid(usage))
@@ -281,7 +273,6 @@ module Sun::Security::Krb5::Internal::Crypto::Dk
     end
     
     typesig { [Array.typed(::Java::Byte), ::Java::Int, Array.typed(::Java::Byte), Array.typed(::Java::Byte), ::Java::Int, ::Java::Int] }
-    # 
     # Performs encryption using derived key; does not add confounder.
     def encrypt_raw(base_key, usage, seq_num, plaintext, start, len)
       if (!KeyUsage.is_valid(usage))
@@ -312,7 +303,6 @@ module Sun::Security::Krb5::Internal::Crypto::Dk
     end
     
     typesig { [Array.typed(::Java::Byte), ::Java::Int, Array.typed(::Java::Byte), Array.typed(::Java::Byte), ::Java::Int, ::Java::Int] }
-    # 
     # @param baseKey key from which keys are to be derived using usage
     # @param ciphertext  E(Ke, conf | plaintext | padding, ivec) | H1[1..h]
     def decrypt(base_key, usage, ivec, ciphertext, start, len)
@@ -367,7 +357,6 @@ module Sun::Security::Krb5::Internal::Crypto::Dk
     end
     
     typesig { [Array.typed(::Java::Byte), ::Java::Int, Array.typed(::Java::Byte), Array.typed(::Java::Byte), ::Java::Int, ::Java::Int, Array.typed(::Java::Byte)] }
-    # 
     # Decrypts data using specified key and initial vector.
     # @param baseKey encryption key to use
     # @param ciphertext  encrypted data to be decrypted

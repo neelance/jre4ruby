@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
 # This code is free software; you can redistribute it and/or modify it
@@ -41,7 +40,6 @@ module Java::Util::Concurrent::Atomic
     }
   end
   
-  # 
   # An {@code int} value that may be updated atomically.  See the
   # {@link java.util.concurrent.atomic} package specification for
   # description of the properties of atomic variables. An
@@ -81,7 +79,6 @@ module Java::Util::Concurrent::Atomic
     undef_method :value=
     
     typesig { [::Java::Int] }
-    # 
     # Creates a new AtomicInteger with the given initial value.
     # 
     # @param initialValue the initial value
@@ -92,7 +89,6 @@ module Java::Util::Concurrent::Atomic
     end
     
     typesig { [] }
-    # 
     # Creates a new AtomicInteger with initial value {@code 0}.
     def initialize
       @value = 0
@@ -100,7 +96,6 @@ module Java::Util::Concurrent::Atomic
     end
     
     typesig { [] }
-    # 
     # Gets the current value.
     # 
     # @return the current value
@@ -109,7 +104,6 @@ module Java::Util::Concurrent::Atomic
     end
     
     typesig { [::Java::Int] }
-    # 
     # Sets to the given value.
     # 
     # @param newValue the new value
@@ -118,7 +112,6 @@ module Java::Util::Concurrent::Atomic
     end
     
     typesig { [::Java::Int] }
-    # 
     # Eventually sets to the given value.
     # 
     # @param newValue the new value
@@ -128,7 +121,6 @@ module Java::Util::Concurrent::Atomic
     end
     
     typesig { [::Java::Int] }
-    # 
     # Atomically sets to the given value and returns the old value.
     # 
     # @param newValue the new value
@@ -143,7 +135,6 @@ module Java::Util::Concurrent::Atomic
     end
     
     typesig { [::Java::Int, ::Java::Int] }
-    # 
     # Atomically sets the value to the given updated value
     # if the current value {@code ==} the expected value.
     # 
@@ -156,7 +147,6 @@ module Java::Util::Concurrent::Atomic
     end
     
     typesig { [::Java::Int, ::Java::Int] }
-    # 
     # Atomically sets the value to the given updated value
     # if the current value {@code ==} the expected value.
     # 
@@ -172,7 +162,6 @@ module Java::Util::Concurrent::Atomic
     end
     
     typesig { [] }
-    # 
     # Atomically increments by one the current value.
     # 
     # @return the previous value
@@ -187,7 +176,6 @@ module Java::Util::Concurrent::Atomic
     end
     
     typesig { [] }
-    # 
     # Atomically decrements by one the current value.
     # 
     # @return the previous value
@@ -202,7 +190,6 @@ module Java::Util::Concurrent::Atomic
     end
     
     typesig { [::Java::Int] }
-    # 
     # Atomically adds the given value to the current value.
     # 
     # @param delta the value to add
@@ -218,7 +205,6 @@ module Java::Util::Concurrent::Atomic
     end
     
     typesig { [] }
-    # 
     # Atomically increments by one the current value.
     # 
     # @return the updated value
@@ -233,7 +219,6 @@ module Java::Util::Concurrent::Atomic
     end
     
     typesig { [] }
-    # 
     # Atomically decrements by one the current value.
     # 
     # @return the updated value
@@ -248,7 +233,6 @@ module Java::Util::Concurrent::Atomic
     end
     
     typesig { [::Java::Int] }
-    # 
     # Atomically adds the given value to the current value.
     # 
     # @param delta the value to add
@@ -264,7 +248,6 @@ module Java::Util::Concurrent::Atomic
     end
     
     typesig { [] }
-    # 
     # Returns the String representation of the current value.
     # @return the String representation of the current value.
     def to_s

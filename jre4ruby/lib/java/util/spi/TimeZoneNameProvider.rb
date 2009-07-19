@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 2005 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -32,7 +31,6 @@ module Java::Util::Spi
     }
   end
   
-  # 
   # An abstract class for service providers that
   # provide localized time zone names for the
   # {@link java.util.TimeZone TimeZone} class.
@@ -46,7 +44,6 @@ module Java::Util::Spi
     include_class_members TimeZoneNameProviderImports
     
     typesig { [] }
-    # 
     # Sole constructor.  (For invocation by subclass constructors, typically
     # implicit.)
     def initialize
@@ -54,7 +51,6 @@ module Java::Util::Spi
     end
     
     typesig { [String, ::Java::Boolean, ::Java::Int, Locale] }
-    # 
     # Returns a name for the given time zone ID that's suitable for
     # presentation to the user in the specified locale. The given time
     # zone ID is "GMT" or one of the names defined using "Zone" entries

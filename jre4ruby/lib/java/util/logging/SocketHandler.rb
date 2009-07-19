@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 2000-2003 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -33,7 +32,6 @@ module Java::Util::Logging
     }
   end
   
-  # 
   # Simple network logging <tt>Handler</tt>.
   # <p>
   # <tt>LogRecords</tt> are published to a network stream connection.  By default
@@ -118,7 +116,6 @@ module Java::Util::Logging
     end
     
     typesig { [] }
-    # 
     # Create a <tt>SocketHandler</tt>, using only <tt>LogManager</tt> properties
     # (or their defaults).
     # @throws IllegalArgumentException if the host or port are invalid or
@@ -144,7 +141,6 @@ module Java::Util::Logging
     end
     
     typesig { [String, ::Java::Int] }
-    # 
     # Construct a <tt>SocketHandler</tt> using a specified host and port.
     # 
     # The <tt>SocketHandler</tt> is configured based on <tt>LogManager</tt>
@@ -189,7 +185,6 @@ module Java::Util::Logging
     end
     
     typesig { [] }
-    # 
     # Close this output stream.
     # 
     # @exception  SecurityException  if a security manager exists and if
@@ -209,7 +204,6 @@ module Java::Util::Logging
     end
     
     typesig { [LogRecord] }
-    # 
     # Format and publish a <tt>LogRecord</tt>.
     # 
     # @param  record  description of the log event. A null record is

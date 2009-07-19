@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 1998-2006 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -35,7 +34,6 @@ module Sun::Security::X509
     }
   end
   
-  # 
   # This class represents the OtherName as required by the GeneralNames
   # ASN.1 object. It supplies the generic framework to allow specific
   # Other Name types, and also provides minimal support for unrecognized
@@ -89,7 +87,6 @@ module Sun::Security::X509
     undef_method :myhash=
     
     typesig { [ObjectIdentifier, Array.typed(::Java::Byte)] }
-    # 
     # Create the OtherName object from a passed ObjectIdentfier and
     # byte array name value
     # 
@@ -116,7 +113,6 @@ module Sun::Security::X509
     end
     
     typesig { [DerValue] }
-    # 
     # Create the OtherName object from the passed encoded Der value.
     # 
     # @param derValue the encoded DER OtherName.
@@ -140,7 +136,6 @@ module Sun::Security::X509
     end
     
     typesig { [] }
-    # 
     # Get ObjectIdentifier
     def get_oid
       # XXXX May want to consider cloning this
@@ -148,14 +143,12 @@ module Sun::Security::X509
     end
     
     typesig { [] }
-    # 
     # Get name value
     def get_name_value
       return @name_value.clone
     end
     
     typesig { [ObjectIdentifier, Array.typed(::Java::Byte)] }
-    # 
     # Get GeneralNameInterface
     def get_gni(oid, name_value)
       begin
@@ -175,14 +168,12 @@ module Sun::Security::X509
     end
     
     typesig { [] }
-    # 
     # Return the type of the GeneralName.
     def get_type
       return GeneralNameInterface::NAME_ANY
     end
     
     typesig { [DerOutputStream] }
-    # 
     # Encode the Other name into the DerOutputStream.
     # 
     # @param out the DER stream to encode the Other-Name to.
@@ -202,7 +193,6 @@ module Sun::Security::X509
     end
     
     typesig { [Object] }
-    # 
     # Compares this name with another, for equality.
     # 
     # @return true iff the names are identical.
@@ -237,7 +227,6 @@ module Sun::Security::X509
     end
     
     typesig { [] }
-    # 
     # Returns the hash code for this OtherName.
     # 
     # @return a hash code value.
@@ -254,14 +243,12 @@ module Sun::Security::X509
     end
     
     typesig { [] }
-    # 
     # Convert the name into user readable string.
     def to_s
       return "Other-Name: " + @name
     end
     
     typesig { [GeneralNameInterface] }
-    # 
     # Return type of constraint inputName places on this name:<ul>
     # <li>NAME_DIFF_TYPE = -1: input name is different type from name
     # (i.e. does not constrain).
@@ -294,7 +281,6 @@ module Sun::Security::X509
     end
     
     typesig { [] }
-    # 
     # Return subtree depth of this name for purposes of determining
     # NameConstraints minimum and maximum bounds.
     # 

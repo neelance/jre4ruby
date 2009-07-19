@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 2003-2008 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -37,7 +36,6 @@ module Sun::Security::Rsa
     }
   end
   
-  # 
   # Key implementation for RSA public keys.
   # 
   # Note: RSA keys must be at least 512 bits long
@@ -96,7 +94,6 @@ module Sun::Security::Rsa
     end
     
     typesig { [Array.typed(::Java::Byte)] }
-    # 
     # Construct a key from its encoding. Used by RSAKeyFactory.
     def initialize(encoded)
       @n = nil
@@ -125,7 +122,6 @@ module Sun::Security::Rsa
     end
     
     typesig { [] }
-    # 
     # Parse the key. Called by X509Key.
     def parse_key_bits
       begin

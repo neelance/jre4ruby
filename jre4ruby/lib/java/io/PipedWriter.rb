@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 1996-2006 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -31,7 +30,6 @@ module Java::Io
     }
   end
   
-  # 
   # Piped character-output streams.
   # 
   # @author      Mark Reinhold
@@ -59,7 +57,6 @@ module Java::Io
     undef_method :closed=
     
     typesig { [PipedReader] }
-    # 
     # Creates a piped writer connected to the specified piped
     # reader. Data characters written to this stream will then be
     # available as input from <code>snk</code>.
@@ -75,7 +72,6 @@ module Java::Io
     end
     
     typesig { [] }
-    # 
     # Creates a piped writer that is not yet connected to a
     # piped reader. It must be connected to a piped reader,
     # either by the receiver or the sender, before being used.
@@ -90,7 +86,6 @@ module Java::Io
     end
     
     typesig { [PipedReader] }
-    # 
     # Connects this piped writer to a receiver. If this object
     # is already connected to some other piped reader, an
     # <code>IOException</code> is thrown.
@@ -128,7 +123,6 @@ module Java::Io
     end
     
     typesig { [::Java::Int] }
-    # 
     # Writes the specified <code>char</code> to the piped output stream.
     # If a thread was reading data characters from the connected piped input
     # stream, but the thread is no longer alive, then an
@@ -149,7 +143,6 @@ module Java::Io
     end
     
     typesig { [Array.typed(::Java::Char), ::Java::Int, ::Java::Int] }
-    # 
     # Writes <code>len</code> characters from the specified character array
     # starting at offset <code>off</code> to this piped output stream.
     # This method blocks until all the characters are written to the output
@@ -177,7 +170,6 @@ module Java::Io
     end
     
     typesig { [] }
-    # 
     # Flushes this output stream and forces any buffered output characters
     # to be written out.
     # This will notify any readers that characters are waiting in the pipe.
@@ -197,7 +189,6 @@ module Java::Io
     end
     
     typesig { [] }
-    # 
     # Closes this piped output stream and releases any system resources
     # associated with this stream. This stream may no longer be used for
     # writing characters.

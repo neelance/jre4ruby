@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 1997-2006 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -38,7 +37,6 @@ module Java::Security
     }
   end
   
-  # 
   # Key factories are used to convert <I>keys</I> (opaque
   # cryptographic keys of type <code>Key</code>) into <I>key specifications</I>
   # (transparent representations of the underlying key material), and vice
@@ -126,7 +124,6 @@ module Java::Security
     undef_method :service_iterator=
     
     typesig { [KeyFactorySpi, Provider, String] }
-    # 
     # Creates a KeyFactory object.
     # 
     # @param keyFacSpi the delegate
@@ -162,7 +159,6 @@ module Java::Security
     
     class_module.module_eval {
       typesig { [String] }
-      # 
       # Returns a KeyFactory object that converts
       # public/private keys of the specified algorithm.
       # 
@@ -193,7 +189,6 @@ module Java::Security
       end
       
       typesig { [String, String] }
-      # 
       # Returns a KeyFactory object that converts
       # public/private keys of the specified algorithm.
       # 
@@ -232,7 +227,6 @@ module Java::Security
       end
       
       typesig { [String, Provider] }
-      # 
       # Returns a KeyFactory object that converts
       # public/private keys of the specified algorithm.
       # 
@@ -267,7 +261,6 @@ module Java::Security
     }
     
     typesig { [] }
-    # 
     # Returns the provider of this key factory object.
     # 
     # @return the provider of this key factory object
@@ -280,7 +273,6 @@ module Java::Security
     end
     
     typesig { [] }
-    # 
     # Gets the name of the algorithm
     # associated with this <tt>KeyFactory</tt>.
     # 
@@ -291,7 +283,6 @@ module Java::Security
     end
     
     typesig { [KeyFactorySpi] }
-    # 
     # Update the active KeyFactorySpi of this class and return the next
     # implementation for failover. If no more implemenations are
     # available, this method returns null. However, the active spi of
@@ -327,7 +318,6 @@ module Java::Security
     end
     
     typesig { [KeySpec] }
-    # 
     # Generates a public key object from the provided key specification
     # (key material).
     # 
@@ -363,7 +353,6 @@ module Java::Security
     end
     
     typesig { [KeySpec] }
-    # 
     # Generates a private key object from the provided key specification
     # (key material).
     # 
@@ -399,7 +388,6 @@ module Java::Security
     end
     
     typesig { [Key, Class] }
-    # 
     # Returns a specification (key material) of the given key object.
     # <code>keySpec</code> identifies the specification class in which
     # the key material should be returned. It could, for example, be
@@ -444,7 +432,6 @@ module Java::Security
     end
     
     typesig { [Key] }
-    # 
     # Translates a key object, whose provider may be unknown or potentially
     # untrusted, into a corresponding key object of this key factory.
     # 

@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 1995-2006 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -31,7 +30,6 @@ module Java::Io
     }
   end
   
-  # 
   # A piped input stream should be connected
   # to a piped output stream; the piped  input
   # stream then provides whatever data bytes
@@ -93,7 +91,6 @@ module Java::Io
       const_set_lazy(:DEFAULT_PIPE_SIZE) { 1024 }
       const_attr_reader  :DEFAULT_PIPE_SIZE
       
-      # 
       # The default size of the pipe's circular input buffer.
       # @since   JDK1.1
       # 
@@ -104,7 +101,6 @@ module Java::Io
       const_attr_reader  :PIPE_SIZE
     }
     
-    # 
     # The circular buffer into which incoming data is placed.
     # @since   JDK1.1
     attr_accessor :buffer
@@ -113,7 +109,6 @@ module Java::Io
     alias_method :attr_buffer=, :buffer=
     undef_method :buffer=
     
-    # 
     # The index of the position in the circular buffer at which the
     # next byte of data will be stored when received from the connected
     # piped output stream. <code>in&lt;0</code> implies the buffer is empty,
@@ -125,7 +120,6 @@ module Java::Io
     alias_method :attr_in=, :in=
     undef_method :in=
     
-    # 
     # The index of the position in the circular buffer at which the next
     # byte of data will be read by this piped input stream.
     # @since   JDK1.1
@@ -136,7 +130,6 @@ module Java::Io
     undef_method :out=
     
     typesig { [PipedOutputStream] }
-    # 
     # Creates a <code>PipedInputStream</code> so
     # that it is connected to the piped output
     # stream <code>src</code>. Data bytes written
@@ -150,7 +143,6 @@ module Java::Io
     end
     
     typesig { [PipedOutputStream, ::Java::Int] }
-    # 
     # Creates a <code>PipedInputStream</code> so that it is
     # connected to the piped output stream
     # <code>src</code> and uses the specified pipe size for
@@ -183,7 +175,6 @@ module Java::Io
     end
     
     typesig { [] }
-    # 
     # Creates a <code>PipedInputStream</code> so
     # that it is not yet {@linkplain #connect(java.io.PipedOutputStream)
     # connected}.
@@ -209,7 +200,6 @@ module Java::Io
     end
     
     typesig { [::Java::Int] }
-    # 
     # Creates a <code>PipedInputStream</code> so that it is not yet
     # {@linkplain #connect(java.io.PipedOutputStream) connected} and
     # uses the specified pipe size for the pipe's buffer.
@@ -247,7 +237,6 @@ module Java::Io
     end
     
     typesig { [PipedOutputStream] }
-    # 
     # Causes this piped input stream to be connected
     # to the piped  output stream <code>src</code>.
     # If this object is already connected to some
@@ -275,7 +264,6 @@ module Java::Io
     end
     
     typesig { [::Java::Int] }
-    # 
     # Receives a byte of data.  This method will block if no input is
     # available.
     # @param b the byte being received
@@ -302,7 +290,6 @@ module Java::Io
     end
     
     typesig { [Array.typed(::Java::Byte), ::Java::Int, ::Java::Int] }
-    # 
     # Receives data into an array of bytes.  This method will
     # block until some input is available.
     # @param b the buffer into which the data is received
@@ -378,7 +365,6 @@ module Java::Io
     end
     
     typesig { [] }
-    # 
     # Notifies all waiting threads that the last byte of data has been
     # received.
     def received_last
@@ -389,7 +375,6 @@ module Java::Io
     end
     
     typesig { [] }
-    # 
     # Reads the next byte of data from this piped input stream. The
     # value byte is returned as an <code>int</code> in the range
     # <code>0</code> to <code>255</code>.
@@ -446,7 +431,6 @@ module Java::Io
     end
     
     typesig { [Array.typed(::Java::Byte), ::Java::Int, ::Java::Int] }
-    # 
     # Reads up to <code>len</code> bytes of data from this piped input
     # stream into an array of bytes. Less than <code>len</code> bytes
     # will be read if the end of the data stream is reached or if
@@ -517,7 +501,6 @@ module Java::Io
     end
     
     typesig { [] }
-    # 
     # Returns the number of bytes that can be read from this input
     # stream without blocking.
     # 
@@ -548,7 +531,6 @@ module Java::Io
     end
     
     typesig { [] }
-    # 
     # Closes this piped input stream and releases any system resources
     # associated with the stream.
     # 

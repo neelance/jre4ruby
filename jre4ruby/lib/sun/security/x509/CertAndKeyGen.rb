@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 1996-2007 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -38,7 +37,6 @@ module Sun::Security::X509
     }
   end
   
-  # 
   # Generate a pair of keys, and provide access to them.  This class is
   # provided primarily for ease of use.
   # 
@@ -65,7 +63,6 @@ module Sun::Security::X509
     include_class_members CertAndKeyGenImports
     
     typesig { [String, String] }
-    # 
     # Creates a CertAndKeyGen object for a particular key type
     # and signature algorithm.
     # 
@@ -84,7 +81,6 @@ module Sun::Security::X509
     end
     
     typesig { [String, String, String] }
-    # 
     # Creates a CertAndKeyGen object for a particular key type,
     # signature algorithm, and provider.
     # 
@@ -114,7 +110,6 @@ module Sun::Security::X509
     end
     
     typesig { [SecureRandom] }
-    # 
     # Sets the source of random numbers used when generating keys.
     # If you do not provide one, a system default facility is used.
     # You may wish to provide your own source of random numbers
@@ -159,7 +154,6 @@ module Sun::Security::X509
     end
     
     typesig { [] }
-    # 
     # Returns the public key of the generated key pair if it is of type
     # <code>X509Key</code>, or null if the public key is of a different type.
     # 
@@ -176,7 +170,6 @@ module Sun::Security::X509
     end
     
     typesig { [] }
-    # 
     # Returns the private key of the generated key pair.
     # 
     # <P><STRONG><em>Be extremely careful when handling private keys.
@@ -188,7 +181,6 @@ module Sun::Security::X509
     end
     
     typesig { [X500Name, ::Java::Long] }
-    # 
     # Returns a self-signed X.509v1 certificate for the public key.
     # The certificate is immediately valid.
     # 
@@ -211,14 +203,13 @@ module Sun::Security::X509
       rescue CertificateException => e
         raise SignatureException.new(e.get_message)
       rescue NoSuchProviderException => e
-        raise NoSuchAlgorithmException.new(e_.get_message)
+        raise NoSuchAlgorithmException.new(e.get_message)
       rescue IOException => e
-        raise SignatureException.new(e__.get_message)
+        raise SignatureException.new(e.get_message)
       end
     end
     
     typesig { [X500Name, Date, ::Java::Long] }
-    # 
     # Returns a self-signed X.509v3 certificate for the public key.
     # The certificate is immediately valid. No extensions.
     # 
@@ -275,7 +266,6 @@ module Sun::Security::X509
     end
     
     typesig { [X500Name] }
-    # 
     # Returns a PKCS #10 certificate request.  The caller uses either
     # <code>PKCS10.print</code> or <code>PKCS10.toByteArray</code>
     # operations on the result, to get the request in an appropriate

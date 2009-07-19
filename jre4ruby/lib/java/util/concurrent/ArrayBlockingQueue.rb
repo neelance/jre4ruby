@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
 # This code is free software; you can redistribute it and/or modify it
@@ -42,7 +41,6 @@ module Java::Util::Concurrent
     }
   end
   
-  # 
   # A bounded {@linkplain BlockingQueue blocking queue} backed by an
   # array.  This queue orders elements FIFO (first-in-first-out).  The
   # <em>head</em> of the queue is that element that has been on the
@@ -82,7 +80,6 @@ module Java::Util::Concurrent
     include Java::Io::Serializable
     
     class_module.module_eval {
-      # 
       # Serialization ID. This class relies on default serialization
       # even for the items array, which is default-serialized, even if
       # it is empty. Otherwise it could not be declared final, which is
@@ -119,7 +116,6 @@ module Java::Util::Concurrent
     alias_method :attr_count=, :count=
     undef_method :count=
     
-    # 
     # Concurrency control uses the classic two-condition algorithm
     # found in any textbook.
     # 
@@ -153,7 +149,6 @@ module Java::Util::Concurrent
     end
     
     typesig { [Object] }
-    # 
     # Inserts element at current put position, advances, and signals.
     # Call only when holding lock.
     def insert(x)
@@ -164,7 +159,6 @@ module Java::Util::Concurrent
     end
     
     typesig { [] }
-    # 
     # Extracts element at current take position, advances, and signals.
     # Call only when holding lock.
     def extract
@@ -178,7 +172,6 @@ module Java::Util::Concurrent
     end
     
     typesig { [::Java::Int] }
-    # 
     # Utility for remove and iterator.remove: Delete item at position i.
     # Call only when holding lock.
     def remove_at(i)
@@ -206,7 +199,6 @@ module Java::Util::Concurrent
     end
     
     typesig { [::Java::Int] }
-    # 
     # Creates an <tt>ArrayBlockingQueue</tt> with the given (fixed)
     # capacity and default access policy.
     # 
@@ -217,7 +209,6 @@ module Java::Util::Concurrent
     end
     
     typesig { [::Java::Int, ::Java::Boolean] }
-    # 
     # Creates an <tt>ArrayBlockingQueue</tt> with the given (fixed)
     # capacity and the specified access policy.
     # 
@@ -245,7 +236,6 @@ module Java::Util::Concurrent
     end
     
     typesig { [::Java::Int, ::Java::Boolean, Collection] }
-    # 
     # Creates an <tt>ArrayBlockingQueue</tt> with the given (fixed)
     # capacity, the specified access policy and initially containing the
     # elements of the given collection,
@@ -272,7 +262,6 @@ module Java::Util::Concurrent
     end
     
     typesig { [Object] }
-    # 
     # Inserts the specified element at the tail of this queue if it is
     # possible to do so immediately without exceeding the queue's capacity,
     # returning <tt>true</tt> upon success and throwing an
@@ -287,7 +276,6 @@ module Java::Util::Concurrent
     end
     
     typesig { [Object] }
-    # 
     # Inserts the specified element at the tail of this queue if it is
     # possible to do so immediately without exceeding the queue's capacity,
     # returning <tt>true</tt> upon success and <tt>false</tt> if this queue
@@ -314,7 +302,6 @@ module Java::Util::Concurrent
     end
     
     typesig { [Object] }
-    # 
     # Inserts the specified element at the tail of this queue, waiting
     # for space to become available if the queue is full.
     # 
@@ -343,7 +330,6 @@ module Java::Util::Concurrent
     end
     
     typesig { [Object, ::Java::Long, TimeUnit] }
-    # 
     # Inserts the specified element at the tail of this queue, waiting
     # up to the specified wait time for space to become available if
     # the queue is full.
@@ -491,7 +477,6 @@ module Java::Util::Concurrent
     end
     
     typesig { [Object] }
-    # 
     # Removes a single instance of the specified element from this queue,
     # if it is present.  More formally, removes an element <tt>e</tt> such
     # that <tt>o.equals(e)</tt>, if this queue contains one or more such
@@ -527,7 +512,6 @@ module Java::Util::Concurrent
     end
     
     typesig { [Object] }
-    # 
     # Returns <tt>true</tt> if this queue contains the specified element.
     # More formally, returns <tt>true</tt> if and only if this queue contains
     # at least one element <tt>e</tt> such that <tt>o.equals(e)</tt>.
@@ -557,7 +541,6 @@ module Java::Util::Concurrent
     end
     
     typesig { [] }
-    # 
     # Returns an array containing all of the elements in this queue, in
     # proper sequence.
     # 
@@ -588,7 +571,6 @@ module Java::Util::Concurrent
     end
     
     typesig { [Array.typed(T)] }
-    # 
     # Returns an array containing all of the elements in this queue, in
     # proper sequence; the runtime type of the returned array is that of
     # the specified array.  If the queue fits in the specified array, it
@@ -658,7 +640,6 @@ module Java::Util::Concurrent
     end
     
     typesig { [] }
-    # 
     # Atomically removes all of the elements from this queue.
     # The queue will be empty after this call returns.
     def clear
@@ -682,7 +663,6 @@ module Java::Util::Concurrent
     end
     
     typesig { [Collection] }
-    # 
     # @throws UnsupportedOperationException {@inheritDoc}
     # @throws ClassCastException            {@inheritDoc}
     # @throws NullPointerException          {@inheritDoc}
@@ -720,7 +700,6 @@ module Java::Util::Concurrent
     end
     
     typesig { [Collection, ::Java::Int] }
-    # 
     # @throws UnsupportedOperationException {@inheritDoc}
     # @throws ClassCastException            {@inheritDoc}
     # @throws NullPointerException          {@inheritDoc}
@@ -761,7 +740,6 @@ module Java::Util::Concurrent
     end
     
     typesig { [] }
-    # 
     # Returns an iterator over the elements in this queue in proper sequence.
     # The returned <tt>Iterator</tt> is a "weakly consistent" iterator that
     # will never throw {@link ConcurrentModificationException},
@@ -781,14 +759,12 @@ module Java::Util::Concurrent
     end
     
     class_module.module_eval {
-      # 
       # Iterator for ArrayBlockingQueue
       const_set_lazy(:Itr) { Class.new do
         extend LocalClass
         include_class_members ArrayBlockingQueue
         include Iterator
         
-        # 
         # Index of element to be returned by next,
         # or a negative number if no such.
         attr_accessor :next_index
@@ -797,7 +773,6 @@ module Java::Util::Concurrent
         alias_method :attr_next_index=, :next_index=
         undef_method :next_index=
         
-        # 
         # nextItem holds on to item fields because once we claim
         # that an element exists in hasNext(), we must return it in
         # the following next() call even if it was in the process of
@@ -808,7 +783,6 @@ module Java::Util::Concurrent
         alias_method :attr_next_item=, :next_item=
         undef_method :next_item=
         
-        # 
         # Index of element returned by most recent call to next.
         # Reset to -1 if this element is deleted by a call to remove.
         attr_accessor :last_ret
@@ -833,7 +807,6 @@ module Java::Util::Concurrent
         
         typesig { [] }
         def has_next
-          # 
           # No sync. We can return true by mistake here
           # only if this iterator passed across threads,
           # which we don't support anyway.
@@ -841,7 +814,6 @@ module Java::Util::Concurrent
         end
         
         typesig { [] }
-        # 
         # Checks whether nextIndex is valid; if so setting nextItem.
         # Stops iterator when either hits putIndex or sees null item.
         def check_next

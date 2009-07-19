@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 1995 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -32,7 +31,6 @@ module Sun::Net::Smtp
     }
   end
   
-  # 
   # This exeception is thrown when unexpected results are returned during
   # an SMTP session.
   class SmtpProtocolException < SmtpProtocolExceptionImports.const_get :IOException

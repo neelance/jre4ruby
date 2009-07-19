@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 1995-1997 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -30,7 +29,6 @@ module Java::Lang
     }
   end
   
-  # 
   # Subclasses of <code>LinkageError</code> indicate that a class has
   # some dependency on another class; however, the latter class has
   # incompatibly changed after the compilation of the former class.
@@ -42,14 +40,12 @@ module Java::Lang
     include_class_members LinkageErrorImports
     
     typesig { [] }
-    # 
     # Constructs a <code>LinkageError</code> with no detail message.
     def initialize
       super()
     end
     
     typesig { [String] }
-    # 
     # Constructs a <code>LinkageError</code> with the specified detail
     # message.
     # 

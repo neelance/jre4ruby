@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 1996-2006 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -53,7 +52,6 @@ module Java::Text
     }
   end
   
-  # 
   # This class represents the set of symbols (such as the decimal separator,
   # the grouping separator, and so on) needed by <code>DecimalFormat</code>
   # to format numbers. <code>DecimalFormat</code> creates for itself an instance of
@@ -71,7 +69,6 @@ module Java::Text
     include Serializable
     
     typesig { [] }
-    # 
     # Create a DecimalFormatSymbols object for the default locale.
     # This constructor can only construct instances for the locales
     # supported by the Java runtime environment, not for those
@@ -102,7 +99,6 @@ module Java::Text
     end
     
     typesig { [Locale] }
-    # 
     # Create a DecimalFormatSymbols object for the given locale.
     # This constructor can only construct instances for the locales
     # supported by the Java runtime environment, not for those
@@ -136,7 +132,6 @@ module Java::Text
     
     class_module.module_eval {
       typesig { [] }
-      # 
       # Returns an array of all locales for which the
       # <code>getInstance</code> methods of this class can return
       # localized instances.
@@ -155,7 +150,6 @@ module Java::Text
       end
       
       typesig { [] }
-      # 
       # Gets the <code>DecimalFormatSymbols</code> instance for the default
       # locale.  This method provides access to <code>DecimalFormatSymbols</code>
       # instances for locales supported by the Java runtime itself as well
@@ -169,7 +163,6 @@ module Java::Text
       end
       
       typesig { [Locale] }
-      # 
       # Gets the <code>DecimalFormatSymbols</code> instance for the specified
       # locale.  This method provides access to <code>DecimalFormatSymbols</code>
       # instances for locales supported by the Java runtime itself as well
@@ -195,91 +188,78 @@ module Java::Text
     }
     
     typesig { [] }
-    # 
     # Gets the character used for zero. Different for Arabic, etc.
     def get_zero_digit
       return @zero_digit
     end
     
     typesig { [::Java::Char] }
-    # 
     # Sets the character used for zero. Different for Arabic, etc.
     def set_zero_digit(zero_digit)
       @zero_digit = zero_digit
     end
     
     typesig { [] }
-    # 
     # Gets the character used for thousands separator. Different for French, etc.
     def get_grouping_separator
       return @grouping_separator
     end
     
     typesig { [::Java::Char] }
-    # 
     # Sets the character used for thousands separator. Different for French, etc.
     def set_grouping_separator(grouping_separator)
       @grouping_separator = grouping_separator
     end
     
     typesig { [] }
-    # 
     # Gets the character used for decimal sign. Different for French, etc.
     def get_decimal_separator
       return @decimal_separator
     end
     
     typesig { [::Java::Char] }
-    # 
     # Sets the character used for decimal sign. Different for French, etc.
     def set_decimal_separator(decimal_separator)
       @decimal_separator = decimal_separator
     end
     
     typesig { [] }
-    # 
     # Gets the character used for per mille sign. Different for Arabic, etc.
     def get_per_mill
       return @per_mill
     end
     
     typesig { [::Java::Char] }
-    # 
     # Sets the character used for per mille sign. Different for Arabic, etc.
     def set_per_mill(per_mill)
       @per_mill = per_mill
     end
     
     typesig { [] }
-    # 
     # Gets the character used for percent sign. Different for Arabic, etc.
     def get_percent
       return @percent
     end
     
     typesig { [::Java::Char] }
-    # 
     # Sets the character used for percent sign. Different for Arabic, etc.
     def set_percent(percent)
       @percent = percent
     end
     
     typesig { [] }
-    # 
     # Gets the character used for a digit in a pattern.
     def get_digit
       return @digit
     end
     
     typesig { [::Java::Char] }
-    # 
     # Sets the character used for a digit in a pattern.
     def set_digit(digit)
       @digit = digit
     end
     
     typesig { [] }
-    # 
     # Gets the character used to separate positive and negative subpatterns
     # in a pattern.
     def get_pattern_separator
@@ -287,7 +267,6 @@ module Java::Text
     end
     
     typesig { [::Java::Char] }
-    # 
     # Sets the character used to separate positive and negative subpatterns
     # in a pattern.
     def set_pattern_separator(pattern_separator)
@@ -295,7 +274,6 @@ module Java::Text
     end
     
     typesig { [] }
-    # 
     # Gets the string used to represent infinity. Almost always left
     # unchanged.
     def get_infinity
@@ -303,7 +281,6 @@ module Java::Text
     end
     
     typesig { [String] }
-    # 
     # Sets the string used to represent infinity. Almost always left
     # unchanged.
     def set_infinity(infinity)
@@ -311,7 +288,6 @@ module Java::Text
     end
     
     typesig { [] }
-    # 
     # Gets the string used to represent "not a number". Almost always left
     # unchanged.
     def get_na_n
@@ -319,7 +295,6 @@ module Java::Text
     end
     
     typesig { [String] }
-    # 
     # Sets the string used to represent "not a number". Almost always left
     # unchanged.
     def set_na_n(na_n)
@@ -327,7 +302,6 @@ module Java::Text
     end
     
     typesig { [] }
-    # 
     # Gets the character used to represent minus sign. If no explicit
     # negative format is specified, one is formed by prefixing
     # minusSign to the positive format.
@@ -336,7 +310,6 @@ module Java::Text
     end
     
     typesig { [::Java::Char] }
-    # 
     # Sets the character used to represent minus sign. If no explicit
     # negative format is specified, one is formed by prefixing
     # minusSign to the positive format.
@@ -345,7 +318,6 @@ module Java::Text
     end
     
     typesig { [] }
-    # 
     # Returns the currency symbol for the currency of these
     # DecimalFormatSymbols in their locale.
     # @since 1.2
@@ -354,7 +326,6 @@ module Java::Text
     end
     
     typesig { [String] }
-    # 
     # Sets the currency symbol for the currency of these
     # DecimalFormatSymbols in their locale.
     # @since 1.2
@@ -363,7 +334,6 @@ module Java::Text
     end
     
     typesig { [] }
-    # 
     # Returns the ISO 4217 currency code of the currency of these
     # DecimalFormatSymbols.
     # @since 1.2
@@ -372,7 +342,6 @@ module Java::Text
     end
     
     typesig { [String] }
-    # 
     # Sets the ISO 4217 currency code of the currency of these
     # DecimalFormatSymbols.
     # If the currency code is valid (as defined by
@@ -399,7 +368,6 @@ module Java::Text
     end
     
     typesig { [] }
-    # 
     # Gets the currency of these DecimalFormatSymbols. May be null if the
     # currency symbol attribute was previously set to a value that's not
     # a valid ISO 4217 currency code.
@@ -411,7 +379,6 @@ module Java::Text
     end
     
     typesig { [Currency] }
-    # 
     # Sets the currency of these DecimalFormatSymbols.
     # This also sets the currency symbol attribute to the currency's symbol
     # in the DecimalFormatSymbols' locale, and the international currency
@@ -432,7 +399,6 @@ module Java::Text
     end
     
     typesig { [] }
-    # 
     # Returns the monetary decimal separator.
     # @since 1.2
     def get_monetary_decimal_separator
@@ -440,7 +406,6 @@ module Java::Text
     end
     
     typesig { [::Java::Char] }
-    # 
     # Sets the monetary decimal separator.
     # @since 1.2
     def set_monetary_decimal_separator(sep)
@@ -458,7 +423,6 @@ module Java::Text
     end
     
     typesig { [] }
-    # 
     # Returns the string used to separate the mantissa from the exponent.
     # Examples: "x10^" for 1.23x10^4, "E" for 1.23E4.
     # 
@@ -470,14 +434,12 @@ module Java::Text
     end
     
     typesig { [::Java::Char] }
-    # 
     # Sets the character used to separate the mantissa from the exponent.
     def set_exponential_symbol(exp)
       @exponential = exp
     end
     
     typesig { [String] }
-    # 
     # Sets the string used to separate the mantissa from the exponent.
     # Examples: "x10^" for 1.23x10^4, "E" for 1.23E4.
     # 
@@ -508,7 +470,6 @@ module Java::Text
     end
     
     typesig { [Object] }
-    # 
     # Override equals.
     def equals(obj)
       if ((obj).nil?)
@@ -525,7 +486,6 @@ module Java::Text
     end
     
     typesig { [] }
-    # 
     # Override hashCode.
     def hash_code
       result = @zero_digit
@@ -535,7 +495,6 @@ module Java::Text
     end
     
     typesig { [Locale] }
-    # 
     # Initializes the symbols from the FormatData resource bundle.
     def initialize_(locale)
       @locale = locale
@@ -602,7 +561,6 @@ module Java::Text
     end
     
     typesig { [ObjectInputStream] }
-    # 
     # Reads the default serializable fields, provides default values for objects
     # in older serial versions, and initializes non-serializable fields.
     # If <code>serialVersionOnStream</code>
@@ -643,7 +601,6 @@ module Java::Text
       end
     end
     
-    # 
     # Character used for zero.
     # 
     # @serial
@@ -654,7 +611,6 @@ module Java::Text
     alias_method :attr_zero_digit=, :zero_digit=
     undef_method :zero_digit=
     
-    # 
     # Character used for thousands separator.
     # 
     # @serial
@@ -665,7 +621,6 @@ module Java::Text
     alias_method :attr_grouping_separator=, :grouping_separator=
     undef_method :grouping_separator=
     
-    # 
     # Character used for decimal sign.
     # 
     # @serial
@@ -676,7 +631,6 @@ module Java::Text
     alias_method :attr_decimal_separator=, :decimal_separator=
     undef_method :decimal_separator=
     
-    # 
     # Character used for per mille sign.
     # 
     # @serial
@@ -687,7 +641,6 @@ module Java::Text
     alias_method :attr_per_mill=, :per_mill=
     undef_method :per_mill=
     
-    # 
     # Character used for percent sign.
     # @serial
     # @see #getPercent
@@ -697,7 +650,6 @@ module Java::Text
     alias_method :attr_percent=, :percent=
     undef_method :percent=
     
-    # 
     # Character used for a digit in a pattern.
     # 
     # @serial
@@ -708,7 +660,6 @@ module Java::Text
     alias_method :attr_digit=, :digit=
     undef_method :digit=
     
-    # 
     # Character used to separate positive and negative subpatterns
     # in a pattern.
     # 
@@ -720,7 +671,6 @@ module Java::Text
     alias_method :attr_pattern_separator=, :pattern_separator=
     undef_method :pattern_separator=
     
-    # 
     # String used to represent infinity.
     # @serial
     # @see #getInfinity
@@ -730,7 +680,6 @@ module Java::Text
     alias_method :attr_infinity=, :infinity=
     undef_method :infinity=
     
-    # 
     # String used to represent "not a number".
     # @serial
     # @see #getNaN
@@ -740,7 +689,6 @@ module Java::Text
     alias_method :attr_na_n=, :na_n=
     undef_method :na_n=
     
-    # 
     # Character used to represent minus sign.
     # @serial
     # @see #getMinusSign
@@ -750,7 +698,6 @@ module Java::Text
     alias_method :attr_minus_sign=, :minus_sign=
     undef_method :minus_sign=
     
-    # 
     # String denoting the local currency, e.g. "$".
     # @serial
     # @see #getCurrencySymbol
@@ -760,7 +707,6 @@ module Java::Text
     alias_method :attr_currency_symbol=, :currency_symbol=
     undef_method :currency_symbol=
     
-    # 
     # ISO 4217 currency code denoting the local currency, e.g. "USD".
     # @serial
     # @see #getInternationalCurrencySymbol
@@ -770,7 +716,6 @@ module Java::Text
     alias_method :attr_intl_currency_symbol=, :intl_currency_symbol=
     undef_method :intl_currency_symbol=
     
-    # 
     # The decimal separator used when formatting currency values.
     # @serial
     # @since JDK 1.1.6
@@ -848,7 +793,6 @@ module Java::Text
       const_attr_reader  :CurrentSerialVersion
     }
     
-    # 
     # Describes the version of <code>DecimalFormatSymbols</code> present on the stream.
     # Possible values are:
     # <ul>
@@ -874,13 +818,11 @@ module Java::Text
     undef_method :serial_version_on_stream=
     
     class_module.module_eval {
-      # 
       # cache to hold the NumberElements and the Currency
       # of a Locale.
       const_set_lazy(:CachedLocaleData) { Hashtable.new(3) }
       const_attr_reader  :CachedLocaleData
       
-      # 
       # Obtains a DecimalFormatSymbols instance from a DecimalFormatSymbolsProvider
       # implementation.
       const_set_lazy(:DecimalFormatSymbolsGetter) { Class.new do

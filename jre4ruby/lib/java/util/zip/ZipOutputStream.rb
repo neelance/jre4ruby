@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 1996-2006 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -35,7 +34,6 @@ module Java::Util::Zip
     }
   end
   
-  # 
   # This class implements an output stream filter for writing files in the
   # ZIP file format. Includes support for both compressed and uncompressed
   # entries.
@@ -160,7 +158,6 @@ module Java::Util::Zip
     }
     
     typesig { [] }
-    # 
     # Checks to make sure that this stream has not been closed.
     def ensure_open
       if (@closed)
@@ -169,19 +166,16 @@ module Java::Util::Zip
     end
     
     class_module.module_eval {
-      # 
       # Compression method for uncompressed (STORED) entries.
       const_set_lazy(:STORED) { ZipEntry::STORED }
       const_attr_reader  :STORED
       
-      # 
       # Compression method for compressed (DEFLATED) entries.
       const_set_lazy(:DEFLATED) { ZipEntry::DEFLATED }
       const_attr_reader  :DEFLATED
     }
     
     typesig { [OutputStream] }
-    # 
     # Creates a new ZIP output stream.
     # @param out the actual output stream
     def initialize(out)
@@ -207,7 +201,6 @@ module Java::Util::Zip
     end
     
     typesig { [String] }
-    # 
     # Sets the ZIP file comment.
     # @param comment the comment string
     # @exception IllegalArgumentException if the length of the specified
@@ -220,7 +213,6 @@ module Java::Util::Zip
     end
     
     typesig { [::Java::Int] }
-    # 
     # Sets the default compression method for subsequent entries. This
     # default will be used whenever the compression method is not specified
     # for an individual ZIP file entry, and is initially set to DEFLATED.
@@ -235,7 +227,6 @@ module Java::Util::Zip
     end
     
     typesig { [::Java::Int] }
-    # 
     # Sets the compression level for subsequent entries which are DEFLATED.
     # The default setting is DEFAULT_COMPRESSION.
     # @param level the compression level (0-9)
@@ -245,7 +236,6 @@ module Java::Util::Zip
     end
     
     typesig { [ZipEntry] }
-    # 
     # Begins writing a new ZIP file entry and positions the stream to the
     # start of the entry data. Closes the current entry if still active.
     # The default compression method will be used if no compression method
@@ -296,7 +286,6 @@ module Java::Util::Zip
     end
     
     typesig { [] }
-    # 
     # Closes the current ZIP entry and positions the stream for writing
     # the next entry.
     # @exception ZipException if a ZIP format error has occurred
@@ -347,7 +336,6 @@ module Java::Util::Zip
     end
     
     typesig { [Array.typed(::Java::Byte), ::Java::Int, ::Java::Int] }
-    # 
     # Writes an array of bytes to the current ZIP entry data. This method
     # will block until all the bytes are written.
     # @param b the data to be written
@@ -386,7 +374,6 @@ module Java::Util::Zip
     end
     
     typesig { [] }
-    # 
     # Finishes writing the contents of the ZIP output stream without closing
     # the underlying stream. Use this method when applying multiple filters
     # in succession to the same output stream.
@@ -413,7 +400,6 @@ module Java::Util::Zip
     end
     
     typesig { [] }
-    # 
     # Closes the ZIP output stream as well as the stream being filtered.
     # @exception ZipException if a ZIP file error has occurred
     # @exception IOException if an I/O error has occurred
@@ -425,7 +411,6 @@ module Java::Util::Zip
     end
     
     typesig { [XEntry] }
-    # 
     # Writes local file (LOC) header for specified entry.
     def write_loc(xentry)
       e = xentry.attr_entry
@@ -457,7 +442,6 @@ module Java::Util::Zip
     end
     
     typesig { [ZipEntry] }
-    # 
     # Writes extra data descriptor (EXT) for specified entry.
     def write_ext(e)
       write_int(EXTSIG) # EXT header signature
@@ -467,7 +451,6 @@ module Java::Util::Zip
     end
     
     typesig { [XEntry] }
-    # 
     # Write central directory (CEN) header for specified entry.
     # REMIND: add support for file attributes
     def write_cen(xentry)
@@ -508,7 +491,6 @@ module Java::Util::Zip
     end
     
     typesig { [::Java::Long, ::Java::Long] }
-    # 
     # Writes end of central directory (END) header.
     def write_end(off, len)
       count = @xentries.size
@@ -530,7 +512,6 @@ module Java::Util::Zip
     end
     
     typesig { [::Java::Int] }
-    # 
     # Writes a 16-bit short to the output stream in little-endian byte order.
     def write_short(v)
       out = self.attr_out
@@ -540,7 +521,6 @@ module Java::Util::Zip
     end
     
     typesig { [::Java::Long] }
-    # 
     # Writes a 32-bit int to the output stream in little-endian byte order.
     def write_int(v)
       out = self.attr_out
@@ -552,7 +532,6 @@ module Java::Util::Zip
     end
     
     typesig { [Array.typed(::Java::Byte), ::Java::Int, ::Java::Int] }
-    # 
     # Writes an array of bytes to the output stream.
     def write_bytes(b, off, len)
       @out.write(b, off, len)
@@ -561,7 +540,6 @@ module Java::Util::Zip
     
     class_module.module_eval {
       typesig { [String] }
-      # 
       # Returns the length of String's UTF8 encoding.
       def get_utf8length(s)
         count = 0
@@ -583,7 +561,6 @@ module Java::Util::Zip
       end
       
       typesig { [String] }
-      # 
       # Returns an array of bytes representing the UTF8 encoding
       # of the specified String.
       def get_utf8bytes(s)
@@ -610,17 +587,17 @@ module Java::Util::Zip
         off = 0
         i_ = 0
         while i_ < len
-          ch_ = c[i_]
-          if (ch_ <= 0x7f)
-            b[((off += 1) - 1)] = ch_
+          ch = c[i_]
+          if (ch <= 0x7f)
+            b[((off += 1) - 1)] = ch
           else
-            if (ch_ <= 0x7ff)
-              b[((off += 1) - 1)] = ((ch_ >> 6) | 0xc0)
-              b[((off += 1) - 1)] = ((ch_ & 0x3f) | 0x80)
+            if (ch <= 0x7ff)
+              b[((off += 1) - 1)] = ((ch >> 6) | 0xc0)
+              b[((off += 1) - 1)] = ((ch & 0x3f) | 0x80)
             else
-              b[((off += 1) - 1)] = ((ch_ >> 12) | 0xe0)
-              b[((off += 1) - 1)] = (((ch_ >> 6) & 0x3f) | 0x80)
-              b[((off += 1) - 1)] = ((ch_ & 0x3f) | 0x80)
+              b[((off += 1) - 1)] = ((ch >> 12) | 0xe0)
+              b[((off += 1) - 1)] = (((ch >> 6) & 0x3f) | 0x80)
+              b[((off += 1) - 1)] = ((ch & 0x3f) | 0x80)
             end
           end
           ((i_ += 1) - 1)

@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 1997-2005 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -31,7 +30,6 @@ module Java::Security::Spec
     }
   end
   
-  # 
   # This class represents the ASN.1 encoding of a public key,
   # encoded according to the ASN.1 type <code>SubjectPublicKeyInfo</code>.
   # The <code>SubjectPublicKeyInfo</code> syntax is defined in the X.509
@@ -57,7 +55,6 @@ module Java::Security::Spec
     include_class_members X509EncodedKeySpecImports
     
     typesig { [Array.typed(::Java::Byte)] }
-    # 
     # Creates a new X509EncodedKeySpec with the given encoded key.
     # 
     # @param encodedKey the key, which is assumed to be
@@ -70,7 +67,6 @@ module Java::Security::Spec
     end
     
     typesig { [] }
-    # 
     # Returns the key bytes, encoded according to the X.509 standard.
     # 
     # @return the X.509 encoding of the key. Returns a new array
@@ -80,7 +76,6 @@ module Java::Security::Spec
     end
     
     typesig { [] }
-    # 
     # Returns the name of the encoding format associated with this
     # key specification.
     # 

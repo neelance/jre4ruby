@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 2003 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -35,7 +34,6 @@ module Java::Security
     }
   end
   
-  # 
   # This class encapsulates information about a signed timestamp.
   # It is immutable.
   # It includes the timestamp's date and time as well as information about the
@@ -52,7 +50,6 @@ module Java::Security
       const_attr_reader  :SerialVersionUID
     }
     
-    # 
     # The timestamp's date and time
     # 
     # @serial
@@ -62,7 +59,6 @@ module Java::Security
     alias_method :attr_timestamp=, :timestamp=
     undef_method :timestamp=
     
-    # 
     # The TSA's certificate path.
     # 
     # @serial
@@ -72,7 +68,6 @@ module Java::Security
     alias_method :attr_signer_cert_path=, :signer_cert_path=
     undef_method :signer_cert_path=
     
-    # 
     # Hash code for this timestamp.
     attr_accessor :myhash
     alias_method :attr_myhash, :myhash
@@ -81,7 +76,6 @@ module Java::Security
     undef_method :myhash=
     
     typesig { [Date, CertPath] }
-    # 
     # Constructs a Timestamp.
     # 
     # @param timestamp is the timestamp's date and time. It must not be null.
@@ -99,7 +93,6 @@ module Java::Security
     end
     
     typesig { [] }
-    # 
     # Returns the date and time when the timestamp was generated.
     # 
     # @return The timestamp's date and time.
@@ -108,7 +101,6 @@ module Java::Security
     end
     
     typesig { [] }
-    # 
     # Returns the certificate path for the Timestamping Authority.
     # 
     # @return The TSA's certificate path.
@@ -117,7 +109,6 @@ module Java::Security
     end
     
     typesig { [] }
-    # 
     # Returns the hash code value for this timestamp.
     # The hash code is generated using the date and time of the timestamp
     # and the TSA's certificate path.
@@ -131,7 +122,6 @@ module Java::Security
     end
     
     typesig { [Object] }
-    # 
     # Tests for equality between the specified object and this
     # timestamp. Two timestamps are considered equal if the date and time of
     # their timestamp's and their signer's certificate paths are equal.
@@ -151,7 +141,6 @@ module Java::Security
     end
     
     typesig { [] }
-    # 
     # Returns a string describing this timestamp.
     # 
     # @return A string comprising the date and time of the timestamp and

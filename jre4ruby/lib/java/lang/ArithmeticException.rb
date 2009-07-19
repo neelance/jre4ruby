@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 1994-1997 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -30,7 +29,6 @@ module Java::Lang
     }
   end
   
-  # 
   # Thrown when an exceptional arithmetic condition has occurred. For
   # example, an integer "divide by zero" throws an
   # instance of this class.
@@ -41,7 +39,6 @@ module Java::Lang
     include_class_members ArithmeticExceptionImports
     
     typesig { [] }
-    # 
     # Constructs an <code>ArithmeticException</code> with no detail
     # message.
     def initialize
@@ -49,7 +46,6 @@ module Java::Lang
     end
     
     typesig { [String] }
-    # 
     # Constructs an <code>ArithmeticException</code> with the specified
     # detail message.
     # 

@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 1995-2006 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -189,8 +188,7 @@ module Java::Lang
       @stdout_fd = FileDescriptor.new
       @stderr_fd = FileDescriptor.new
       gate = Gate.new
-      Java::Security::AccessController.do_privileged(# 
-      # For each subprocess forked a corresponding reaper thread
+      Java::Security::AccessController.do_privileged(# For each subprocess forked a corresponding reaper thread
       # is started.  That thread is the only thread which waits
       # for the subprocess to terminate and it doesn't hold any
       # locks while doing so.  This design allows waitFor() and

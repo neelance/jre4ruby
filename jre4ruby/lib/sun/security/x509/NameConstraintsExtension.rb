@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 1997-2006 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -42,7 +41,6 @@ module Sun::Security::X509
     }
   end
   
-  # 
   # This class defines the Name Constraints Extension.
   # <p>
   # The name constraints extension provides permitted and excluded
@@ -71,13 +69,11 @@ module Sun::Security::X509
     include Cloneable
     
     class_module.module_eval {
-      # 
       # Identifier for this attribute, to be used with the
       # get, set, delete methods of Certificate, x509 type.
       const_set_lazy(:IDENT) { "x509.info.extensions.NameConstraints" }
       const_attr_reader  :IDENT
       
-      # 
       # Attribute names.
       const_set_lazy(:NAME) { "NameConstraints" }
       const_attr_reader  :NAME
@@ -145,16 +141,16 @@ module Sun::Security::X509
         end
       end
       if (!(@permitted).nil?)
-        i_ = 0
-        while i_ < @permitted.size
-          subtree_ = @permitted.get(i_)
-          if (!(subtree_.get_minimum).equal?(0))
+        i = 0
+        while i < @permitted.size
+          subtree = @permitted.get(i)
+          if (!(subtree.get_minimum).equal?(0))
             @has_min = true
           end
-          if (!(subtree_.get_maximum).equal?(-1))
+          if (!(subtree.get_maximum).equal?(-1))
             @has_max = true
           end
-          ((i_ += 1) - 1)
+          ((i += 1) - 1)
         end
       end
       @min_max_valid = true
@@ -176,16 +172,15 @@ module Sun::Security::X509
         tagged.write_implicit(DerValue.create_tag(DerValue::TAG_CONTEXT, true, TAG_PERMITTED), tmp)
       end
       if (!(@excluded).nil?)
-        tmp_ = DerOutputStream.new
-        @excluded.encode(tmp_)
-        tagged.write_implicit(DerValue.create_tag(DerValue::TAG_CONTEXT, true, TAG_EXCLUDED), tmp_)
+        tmp = DerOutputStream.new
+        @excluded.encode(tmp)
+        tagged.write_implicit(DerValue.create_tag(DerValue::TAG_CONTEXT, true, TAG_EXCLUDED), tmp)
       end
       seq.write(DerValue.attr_tag_sequence, tagged)
       self.attr_extension_value = seq.to_byte_array
     end
     
     typesig { [GeneralSubtrees, GeneralSubtrees] }
-    # 
     # The default constructor for this class. Both parameters
     # are optional and can be set to null.  The extension criticality
     # is set to true.
@@ -210,7 +205,6 @@ module Sun::Security::X509
     end
     
     typesig { [Boolean, Object] }
-    # 
     # Create the extension from the passed DER encoded value.
     # 
     # @param critical true if the extension is to be treated as critical.
@@ -267,14 +261,12 @@ module Sun::Security::X509
     end
     
     typesig { [] }
-    # 
     # Return the printable string.
     def to_s
       return ((super).to_s + "NameConstraints: [" + ((((@permitted).nil?) ? "" : ("\n    Permitted:" + (@permitted.to_s).to_s))).to_s + ((((@excluded).nil?) ? "" : ("\n    Excluded:" + (@excluded.to_s).to_s))).to_s + "   ]\n")
     end
     
     typesig { [OutputStream] }
-    # 
     # Write the extension to the OutputStream.
     # 
     # @param out the OutputStream to write the extension to.
@@ -291,7 +283,6 @@ module Sun::Security::X509
     end
     
     typesig { [String, Object] }
-    # 
     # Set the attribute value.
     def set(name, obj)
       if (name.equals_ignore_case(PERMITTED_SUBTREES))
@@ -313,7 +304,6 @@ module Sun::Security::X509
     end
     
     typesig { [String] }
-    # 
     # Get the attribute value.
     def get(name)
       if (name.equals_ignore_case(PERMITTED_SUBTREES))
@@ -328,7 +318,6 @@ module Sun::Security::X509
     end
     
     typesig { [String] }
-    # 
     # Delete the attribute value.
     def delete(name)
       if (name.equals_ignore_case(PERMITTED_SUBTREES))
@@ -344,7 +333,6 @@ module Sun::Security::X509
     end
     
     typesig { [] }
-    # 
     # Return an enumeration of names of attributes existing within this
     # attribute.
     def get_elements
@@ -355,14 +343,12 @@ module Sun::Security::X509
     end
     
     typesig { [] }
-    # 
     # Return the name of this attribute.
     def get_name
       return (NAME)
     end
     
     typesig { [NameConstraintsExtension] }
-    # 
     # Merge additional name constraints with existing ones.
     # This function is used in certification path processing
     # to accumulate name constraints from successive certificates
@@ -388,7 +374,6 @@ module Sun::Security::X509
         # absence of any explicit constraints implies unconstrained
         return
       end
-      # 
       # If excludedSubtrees is present in the certificate, set the
       # excluded subtrees state variable to the union of its previous
       # value and the value indicated in the extension field.
@@ -401,7 +386,6 @@ module Sun::Security::X509
           @excluded.union(new_excluded)
         end
       end
-      # 
       # If permittedSubtrees is present in the certificate, set the
       # constrained subtrees state variable to the intersection of its
       # previous value and the value indicated in the extension field.
@@ -435,7 +419,6 @@ module Sun::Security::X509
     end
     
     typesig { [X509Certificate] }
-    # 
     # check whether a certificate conforms to these NameConstraints.
     # This involves verifying that the subject name and subjectAltName
     # extension (critical or noncritical) is consistent with the permitted
@@ -503,7 +486,6 @@ module Sun::Security::X509
     end
     
     typesig { [GeneralNameInterface] }
-    # 
     # check whether a name conforms to these NameConstraints.
     # This involves verifying that the name is consistent with the
     # permitted and excluded subtrees variables.
@@ -549,21 +531,21 @@ module Sun::Security::X509
       # Verify that the name is consistent with the permitted subtrees
       if (!(@permitted).nil? && @permitted.size > 0)
         same_type = false
-        i_ = 0
-        while i_ < @permitted.size
-          gs_ = @permitted.get(i_)
-          if ((gs_).nil?)
-            ((i_ += 1) - 1)
+        i = 0
+        while i < @permitted.size
+          gs = @permitted.get(i)
+          if ((gs).nil?)
+            ((i += 1) - 1)
             next
           end
-          gn_ = gs_.get_name
-          if ((gn_).nil?)
-            ((i_ += 1) - 1)
+          gn = gs.get_name
+          if ((gn).nil?)
+            ((i += 1) - 1)
             next
           end
-          per_name = gn_.get_name
+          per_name = gn.get_name
           if ((per_name).nil?)
-            ((i_ += 1) - 1)
+            ((i += 1) - 1)
             next
           end
           # if Name matches any type in permitted,
@@ -574,16 +556,16 @@ module Sun::Security::X509
           # name widens permitted
           # continue to look for a match or narrow
           when GeneralNameInterface::NAME_DIFF_TYPE
-            ((i_ += 1) - 1)
+            ((i += 1) - 1)
             next
             same_type = true
-            ((i_ += 1) - 1)
+            ((i += 1) - 1)
             next
             # name narrows permitted
             return true
           when GeneralNameInterface::NAME_WIDENS, GeneralNameInterface::NAME_SAME_TYPE
             same_type = true
-            ((i_ += 1) - 1)
+            ((i += 1) - 1)
             next
             # name narrows permitted
             return true
@@ -591,7 +573,7 @@ module Sun::Security::X509
             # name narrows permitted
             return true
           end # name is definitely OK, so break out of loop
-          ((i_ += 1) - 1)
+          ((i += 1) - 1)
         end
         if (same_type)
           return false
@@ -601,7 +583,6 @@ module Sun::Security::X509
     end
     
     typesig { [X500Name] }
-    # 
     # Perform the RFC 822 special case check. We have a certificate
     # that does not contain any subject alternative names. Check that
     # any EMAILADDRESS attributes in its subject name conform to these
@@ -634,7 +615,6 @@ module Sun::Security::X509
     end
     
     typesig { [] }
-    # 
     # Clone all objects that may be modified during certificate validation.
     def clone
       begin

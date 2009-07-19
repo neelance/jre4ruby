@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 2003-2006 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -34,7 +33,6 @@ module Sun::Security::Jca
     }
   end
   
-  # 
   # List of Providers. Used to represent the provider preferences.
   # 
   # The system starts out with a ProviderList that only has the classNames
@@ -193,7 +191,6 @@ module Sun::Security::Jca
     undef_method :user_list=
     
     typesig { [Array.typed(ProviderConfig), ::Java::Boolean] }
-    # 
     # Create a new ProviderList from an array of configs
     def initialize(configs, all_loaded)
       @configs = nil
@@ -226,7 +223,6 @@ module Sun::Security::Jca
     end
     
     typesig { [] }
-    # 
     # Return a new ProviderList parsed from the java.security Properties.
     def initialize
       @configs = nil
@@ -288,7 +284,6 @@ module Sun::Security::Jca
     end
     
     typesig { [Array.typed(String)] }
-    # 
     # Construct a special ProviderList for JAR verification. It consists
     # of the providers specified via jarClassNames, which must be on the
     # bootclasspath and cannot be in signed JAR files. This is to avoid
@@ -320,7 +315,6 @@ module Sun::Security::Jca
     end
     
     typesig { [::Java::Int] }
-    # 
     # Return the Provider at the specified index. Returns EMPTY_PROVIDER
     # if the provider could not be loaded at this time.
     def get_provider(index)
@@ -329,7 +323,6 @@ module Sun::Security::Jca
     end
     
     typesig { [] }
-    # 
     # Return an unmodifiable List of all Providers in this List. The
     # individual Providers are loaded on demand. Elements that could not
     # be initialized are replaced with EMPTY_PROVIDER.
@@ -351,7 +344,6 @@ module Sun::Security::Jca
     end
     
     typesig { [String] }
-    # 
     # Return the index at which the provider with the specified name is
     # installed or -1 if it is not present in this ProviderList.
     def get_index(name)
@@ -392,7 +384,6 @@ module Sun::Security::Jca
     end
     
     typesig { [] }
-    # 
     # Try to load all Providers and return the ProviderList. If one or
     # more Providers could not be loaded, a new ProviderList with those
     # entries removed is returned. Otherwise, the method returns this.
@@ -427,7 +418,6 @@ module Sun::Security::Jca
     end
     
     typesig { [String, String] }
-    # 
     # Return a Service describing an implementation of the specified
     # algorithm from the Provider with the highest precedence that
     # supports that algorithm. Return null if no Provider supports this
@@ -446,7 +436,6 @@ module Sun::Security::Jca
     end
     
     typesig { [String, String] }
-    # 
     # Return a List containing all the Services describing implementations
     # of the specified algorithms in precedence order. If no implementation
     # exists, this method returns an empty List.
@@ -459,7 +448,6 @@ module Sun::Security::Jca
     end
     
     typesig { [String, JavaList] }
-    # 
     # This method exists for compatibility with JCE only. It will be removed
     # once JCE has been changed to use the replacement method.
     # @deprecated use getServices(List<ServiceId>) instead
@@ -477,7 +465,6 @@ module Sun::Security::Jca
     end
     
     class_module.module_eval {
-      # 
       # Inner class for a List of Services. Custom List implementation in
       # order to delay Provider initialization and lookup.
       # Not thread safe.
@@ -596,9 +583,9 @@ module Sun::Security::Jca
             else
               # parallel lookup
               @ids.each do |id|
-                s_ = p.get_service(id.attr_type, id.attr_algorithm)
-                if (!(s_).nil?)
-                  add_service(s_)
+                s = p.get_service(id.attr_type, id.attr_algorithm)
+                if (!(s).nil?)
+                  add_service(s)
                 end
               end
             end

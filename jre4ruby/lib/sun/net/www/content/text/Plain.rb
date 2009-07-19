@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 1994-1996 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -42,7 +41,6 @@ module Sun::Net::Www::Content::Text
     include_class_members PlainImports
     
     typesig { [URLConnection] }
-    # 
     # Returns a PlainTextInputStream object from which data
     # can be read.
     def get_content(uc)

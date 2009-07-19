@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 2000-2003 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -33,7 +32,6 @@ module Java::Util::Logging
     }
   end
   
-  # 
   # This <tt>Handler</tt> publishes log records to <tt>System.err</tt>.
   # By default the <tt>SimpleFormatter</tt> is used to generate brief summaries.
   # <p>
@@ -83,7 +81,6 @@ module Java::Util::Logging
     end
     
     typesig { [] }
-    # 
     # Create a <tt>ConsoleHandler</tt> for <tt>System.err</tt>.
     # <p>
     # The <tt>ConsoleHandler</tt> is configured based on
@@ -97,7 +94,6 @@ module Java::Util::Logging
     end
     
     typesig { [LogRecord] }
-    # 
     # Publish a <tt>LogRecord</tt>.
     # <p>
     # The logging request was made initially to a <tt>Logger</tt> object,
@@ -111,7 +107,6 @@ module Java::Util::Logging
     end
     
     typesig { [] }
-    # 
     # Override <tt>StreamHandler.close</tt> to do a flush but not
     # to close the output stream.  That is, we do <b>not</b>
     # close <tt>System.err</tt>.

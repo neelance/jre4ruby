@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 2000-2006 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -38,7 +37,6 @@ module Sun::Security::Jgss
     }
   end
   
-  # 
   # This class provides the default implementation of the GSSManager
   # interface.
   class GSSManagerImpl < GSSManagerImplImports.const_get :GSSManager

@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 2003-2006 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -34,7 +33,6 @@ module Java::Net
     }
   end
   
-  # 
   # Selects the proxy server to use, if any, when connecting to the
   # network resource referenced by a URL. A proxy selector is a
   # concrete sub-class of this class and is registered by invoking the
@@ -61,7 +59,6 @@ module Java::Net
     include_class_members ProxySelectorImports
     
     class_module.module_eval {
-      # 
       # The system wide proxy selector that selects the proxy server to
       # use, if any, when connecting to a remote object referenced by
       # an URL.
@@ -90,7 +87,6 @@ module Java::Net
       end
       
       typesig { [] }
-      # 
       # Gets the system-wide proxy selector.
       # 
       # @throws  SecurityException
@@ -108,7 +104,6 @@ module Java::Net
       end
       
       typesig { [ProxySelector] }
-      # 
       # Sets (or unsets) the system-wide proxy selector.
       # 
       # Note: non-standard protocol handlers may ignore this setting.
@@ -132,7 +127,6 @@ module Java::Net
     }
     
     typesig { [URI] }
-    # 
     # Selects all the applicable proxies based on the protocol to
     # access the resource with and a destination address to access
     # the resource at.
@@ -161,7 +155,6 @@ module Java::Net
     end
     
     typesig { [URI, SocketAddress, IOException] }
-    # 
     # Called to indicate that a connection could not be established
     # to a proxy/socks server. An implementation of this method can
     # temporarily remove the proxies or reorder the sequence of

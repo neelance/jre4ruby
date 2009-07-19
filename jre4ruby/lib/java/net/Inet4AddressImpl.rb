@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 2002-2005 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -32,7 +31,6 @@ module Java::Net
     }
   end
   
-  # 
   # Package private implementation of InetAddressImpl for IPv4.
   # 
   # @since 1.4
@@ -90,7 +88,6 @@ module Java::Net
     def is_reachable(addr, timeout, netif, ttl)
       ifaddr = nil
       if (!(netif).nil?)
-        # 
         # Let's make sure we use an address of the proper family
         it = netif.get_inet_addresses
         inetaddr = nil

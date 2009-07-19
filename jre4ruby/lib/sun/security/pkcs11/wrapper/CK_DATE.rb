@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # reserved comment block
 # DO NOT REMOVE OR ALTER!
 # 
@@ -53,7 +52,6 @@ module Sun::Security::Pkcs11::Wrapper
     }
   end
   
-  # 
   # class .<p>
   # <B>PKCS#11 structure:</B>
   # <PRE>
@@ -70,7 +68,6 @@ module Sun::Security::Pkcs11::Wrapper
     include_class_members CK_DATEImports
     include Cloneable
     
-    # 
     # <B>PKCS#11:</B>
     # <PRE>
     # CK_CHAR year[4];   - the year ("1900" - "9999")
@@ -117,7 +114,6 @@ module Sun::Security::Pkcs11::Wrapper
     end
     
     typesig { [] }
-    # 
     # Create a (deep) clone of this object.
     # 
     # @return A clone of this object.
@@ -136,7 +132,6 @@ module Sun::Security::Pkcs11::Wrapper
     end
     
     typesig { [] }
-    # 
     # Returns the string representation of CK_DATE.
     # 
     # @return the string representation of CK_DATE

@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 1997-2006 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -31,7 +30,6 @@ module Java::Util
     }
   end
   
-  # 
   # Linked list implementation of the <tt>List</tt> interface.  Implements all
   # optional list operations, and permits all elements (including
   # <tt>null</tt>).  In addition to implementing the <tt>List</tt> interface,
@@ -112,7 +110,6 @@ module Java::Util
     undef_method :size=
     
     typesig { [] }
-    # 
     # Constructs an empty list.
     def initialize
       @header = nil
@@ -124,7 +121,6 @@ module Java::Util
     end
     
     typesig { [Collection] }
-    # 
     # Constructs a list containing the elements of the specified
     # collection, in the order they are returned by the collection's
     # iterator.
@@ -137,7 +133,6 @@ module Java::Util
     end
     
     typesig { [] }
-    # 
     # Returns the first element in this list.
     # 
     # @return the first element in this list
@@ -150,7 +145,6 @@ module Java::Util
     end
     
     typesig { [] }
-    # 
     # Returns the last element in this list.
     # 
     # @return the last element in this list
@@ -163,7 +157,6 @@ module Java::Util
     end
     
     typesig { [] }
-    # 
     # Removes and returns the first element from this list.
     # 
     # @return the first element from this list
@@ -173,7 +166,6 @@ module Java::Util
     end
     
     typesig { [] }
-    # 
     # Removes and returns the last element from this list.
     # 
     # @return the last element from this list
@@ -183,7 +175,6 @@ module Java::Util
     end
     
     typesig { [Object] }
-    # 
     # Inserts the specified element at the beginning of this list.
     # 
     # @param e the element to add
@@ -192,7 +183,6 @@ module Java::Util
     end
     
     typesig { [Object] }
-    # 
     # Appends the specified element to the end of this list.
     # 
     # <p>This method is equivalent to {@link #add}.
@@ -203,7 +193,6 @@ module Java::Util
     end
     
     typesig { [Object] }
-    # 
     # Returns <tt>true</tt> if this list contains the specified element.
     # More formally, returns <tt>true</tt> if and only if this list contains
     # at least one element <tt>e</tt> such that
@@ -216,7 +205,6 @@ module Java::Util
     end
     
     typesig { [] }
-    # 
     # Returns the number of elements in this list.
     # 
     # @return the number of elements in this list
@@ -225,7 +213,6 @@ module Java::Util
     end
     
     typesig { [Object] }
-    # 
     # Appends the specified element to the end of this list.
     # 
     # <p>This method is equivalent to {@link #addLast}.
@@ -238,7 +225,6 @@ module Java::Util
     end
     
     typesig { [Object] }
-    # 
     # Removes the first occurrence of the specified element from this list,
     # if it is present.  If this list does not contain the element, it is
     # unchanged.  More formally, removes the element with the lowest index
@@ -261,20 +247,19 @@ module Java::Util
           e = e.attr_next
         end
       else
-        e_ = @header.attr_next
-        while !(e_).equal?(@header)
-          if ((o == e_.attr_element))
-            remove(e_)
+        e = @header.attr_next
+        while !(e).equal?(@header)
+          if ((o == e.attr_element))
+            remove(e)
             return true
           end
-          e_ = e_.attr_next
+          e = e.attr_next
         end
       end
       return false
     end
     
     typesig { [Collection] }
-    # 
     # Appends all of the elements in the specified collection to the end of
     # this list, in the order that they are returned by the specified
     # collection's iterator.  The behavior of this operation is undefined if
@@ -290,7 +275,6 @@ module Java::Util
     end
     
     typesig { [::Java::Int, Collection] }
-    # 
     # Inserts all of the elements in the specified collection into this
     # list, starting at the specified position.  Shifts the element
     # currently at that position (if any) and any subsequent elements to
@@ -329,7 +313,6 @@ module Java::Util
     end
     
     typesig { [] }
-    # 
     # Removes all of the elements from this list.
     def clear
       e = @header.attr_next
@@ -357,7 +340,6 @@ module Java::Util
     end
     
     typesig { [::Java::Int, Object] }
-    # 
     # Replaces the element at the specified position in this list with the
     # specified element.
     # 
@@ -373,7 +355,6 @@ module Java::Util
     end
     
     typesig { [::Java::Int, Object] }
-    # 
     # Inserts the specified element at the specified position in this list.
     # Shifts the element currently at that position (if any) and any
     # subsequent elements to the right (adds one to their indices).
@@ -386,7 +367,6 @@ module Java::Util
     end
     
     typesig { [::Java::Int] }
-    # 
     # Removes the element at the specified position in this list.  Shifts any
     # subsequent elements to the left (subtracts one from their indices).
     # Returns the element that was removed from the list.
@@ -399,7 +379,6 @@ module Java::Util
     end
     
     typesig { [::Java::Int] }
-    # 
     # Returns the indexed entry.
     def entry(index)
       if (index < 0 || index >= @size)
@@ -413,10 +392,10 @@ module Java::Util
           ((i += 1) - 1)
         end
       else
-        i_ = @size
-        while i_ > index
+        i = @size
+        while i > index
           e = e.attr_previous
-          ((i_ -= 1) + 1)
+          ((i -= 1) + 1)
         end
       end
       return e
@@ -446,20 +425,19 @@ module Java::Util
           e = e.attr_next
         end
       else
-        e_ = @header.attr_next
-        while !(e_).equal?(@header)
-          if ((o == e_.attr_element))
+        e = @header.attr_next
+        while !(e).equal?(@header)
+          if ((o == e.attr_element))
             return index
           end
           ((index += 1) - 1)
-          e_ = e_.attr_next
+          e = e.attr_next
         end
       end
       return -1
     end
     
     typesig { [Object] }
-    # 
     # Returns the index of the last occurrence of the specified element
     # in this list, or -1 if this list does not contain the element.
     # More formally, returns the highest index <tt>i</tt> such that
@@ -481,13 +459,13 @@ module Java::Util
           e = e.attr_previous
         end
       else
-        e_ = @header.attr_previous
-        while !(e_).equal?(@header)
+        e = @header.attr_previous
+        while !(e).equal?(@header)
           ((index -= 1) + 1)
-          if ((o == e_.attr_element))
+          if ((o == e.attr_element))
             return index
           end
-          e_ = e_.attr_previous
+          e = e.attr_previous
         end
       end
       return -1
@@ -507,7 +485,6 @@ module Java::Util
     end
     
     typesig { [] }
-    # 
     # Retrieves, but does not remove, the head (first element) of this list.
     # @return the head of this list
     # @throws NoSuchElementException if this list is empty
@@ -517,7 +494,6 @@ module Java::Util
     end
     
     typesig { [] }
-    # 
     # Retrieves and removes the head (first element) of this list
     # @return the head of this list, or <tt>null</tt> if this list is empty
     # @since 1.5
@@ -529,7 +505,6 @@ module Java::Util
     end
     
     typesig { [] }
-    # 
     # Retrieves and removes the head (first element) of this list.
     # 
     # @return the head of this list
@@ -540,7 +515,6 @@ module Java::Util
     end
     
     typesig { [Object] }
-    # 
     # Adds the specified element as the tail (last element) of this list.
     # 
     # @param e the element to add
@@ -564,7 +538,6 @@ module Java::Util
     end
     
     typesig { [Object] }
-    # 
     # Inserts the specified element at the end of this list.
     # 
     # @param e the element to insert
@@ -576,7 +549,6 @@ module Java::Util
     end
     
     typesig { [] }
-    # 
     # Retrieves, but does not remove, the first element of this list,
     # or returns <tt>null</tt> if this list is empty.
     # 
@@ -591,7 +563,6 @@ module Java::Util
     end
     
     typesig { [] }
-    # 
     # Retrieves, but does not remove, the last element of this list,
     # or returns <tt>null</tt> if this list is empty.
     # 
@@ -606,7 +577,6 @@ module Java::Util
     end
     
     typesig { [] }
-    # 
     # Retrieves and removes the first element of this list,
     # or returns <tt>null</tt> if this list is empty.
     # 
@@ -621,7 +591,6 @@ module Java::Util
     end
     
     typesig { [] }
-    # 
     # Retrieves and removes the last element of this list,
     # or returns <tt>null</tt> if this list is empty.
     # 
@@ -636,7 +605,6 @@ module Java::Util
     end
     
     typesig { [Object] }
-    # 
     # Pushes an element onto the stack represented by this list.  In other
     # words, inserts the element at the front of this list.
     # 
@@ -649,7 +617,6 @@ module Java::Util
     end
     
     typesig { [] }
-    # 
     # Pops an element from the stack represented by this list.  In other
     # words, removes and returns the first element of this list.
     # 
@@ -664,7 +631,6 @@ module Java::Util
     end
     
     typesig { [Object] }
-    # 
     # Removes the first occurrence of the specified element in this
     # list (when traversing the list from head to tail).  If the list
     # does not contain the element, it is unchanged.
@@ -677,7 +643,6 @@ module Java::Util
     end
     
     typesig { [Object] }
-    # 
     # Removes the last occurrence of the specified element in this
     # list (when traversing the list from head to tail).  If the list
     # does not contain the element, it is unchanged.
@@ -696,20 +661,19 @@ module Java::Util
           e = e.attr_previous
         end
       else
-        e_ = @header.attr_previous
-        while !(e_).equal?(@header)
-          if ((o == e_.attr_element))
-            remove(e_)
+        e = @header.attr_previous
+        while !(e).equal?(@header)
+          if ((o == e.attr_element))
+            remove(e)
             return true
           end
-          e_ = e_.attr_previous
+          e = e.attr_previous
         end
       end
       return false
     end
     
     typesig { [::Java::Int] }
-    # 
     # Returns a list-iterator of the elements in this list (in proper
     # sequence), starting at the specified position in the list.
     # Obeys the general contract of <tt>List.listIterator(int)</tt>.<p>
@@ -941,7 +905,6 @@ module Java::Util
     end
     
     typesig { [] }
-    # 
     # @since 1.6
     def descending_iterator
       return DescendingIterator.new_local(self)
@@ -986,7 +949,6 @@ module Java::Util
     }
     
     typesig { [] }
-    # 
     # Returns a shallow copy of this <tt>LinkedList</tt>. (The elements
     # themselves are not cloned.)
     # 
@@ -1004,16 +966,15 @@ module Java::Util
       clone.attr_size = 0
       clone.attr_mod_count = 0
       # Initialize clone with our elements
-      e_ = @header.attr_next
-      while !(e_).equal?(@header)
-        clone.add(e_.attr_element)
-        e_ = e_.attr_next
+      e = @header.attr_next
+      while !(e).equal?(@header)
+        clone.add(e.attr_element)
+        e = e.attr_next
       end
       return clone
     end
     
     typesig { [] }
-    # 
     # Returns an array containing all of the elements in this list
     # in proper sequence (from first to last element).
     # 
@@ -1038,7 +999,6 @@ module Java::Util
     end
     
     typesig { [Array.typed(T)] }
-    # 
     # Returns an array containing all of the elements in this list in
     # proper sequence (from first to last element); the runtime type of
     # the returned array is that of the specified array.  If the list fits
@@ -1098,7 +1058,6 @@ module Java::Util
     }
     
     typesig { [Java::Io::ObjectOutputStream] }
-    # 
     # Save the state of this <tt>LinkedList</tt> instance to a stream (that
     # is, serialize it).
     # 
@@ -1119,7 +1078,6 @@ module Java::Util
     end
     
     typesig { [Java::Io::ObjectInputStream] }
-    # 
     # Reconstitute this <tt>LinkedList</tt> instance from a stream (that is
     # deserialize it).
     def read_object(s)

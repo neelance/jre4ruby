@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 1995-2006 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -31,7 +30,6 @@ module Java::Io
     }
   end
   
-  # 
   # The <code>DataInput</code> interface provides
   # for reading bytes from a binary stream and
   # reconstructing from them data in any of
@@ -199,7 +197,6 @@ module Java::Io
     include_class_members DataInputImports
     
     typesig { [Array.typed(::Java::Byte)] }
-    # 
     # Reads some bytes from an input
     # stream and stores them into the buffer
     # array <code>b</code>. The number of bytes
@@ -243,8 +240,6 @@ module Java::Io
     end
     
     typesig { [Array.typed(::Java::Byte), ::Java::Int, ::Java::Int] }
-    # 
-    # 
     # Reads <code>len</code>
     # bytes from
     # an input stream.
@@ -291,7 +286,6 @@ module Java::Io
     end
     
     typesig { [::Java::Int] }
-    # 
     # Makes an attempt to skip over
     # <code>n</code> bytes
     # of data from the input
@@ -316,7 +310,6 @@ module Java::Io
     end
     
     typesig { [] }
-    # 
     # Reads one input byte and returns
     # <code>true</code> if that byte is nonzero,
     # <code>false</code> if that byte is zero.
@@ -333,7 +326,6 @@ module Java::Io
     end
     
     typesig { [] }
-    # 
     # Reads and returns one input byte.
     # The byte is treated as a signed value in
     # the range <code>-128</code> through <code>127</code>,
@@ -351,7 +343,6 @@ module Java::Io
     end
     
     typesig { [] }
-    # 
     # Reads one input byte, zero-extends
     # it to type <code>int</code>, and returns
     # the result, which is therefore in the range
@@ -373,7 +364,6 @@ module Java::Io
     end
     
     typesig { [] }
-    # 
     # Reads two input bytes and returns
     # a <code>short</code> value. Let <code>a</code>
     # be the first byte read and <code>b</code>
@@ -396,7 +386,6 @@ module Java::Io
     end
     
     typesig { [] }
-    # 
     # Reads two input bytes and returns
     # an <code>int</code> value in the range <code>0</code>
     # through <code>65535</code>. Let <code>a</code>
@@ -421,7 +410,6 @@ module Java::Io
     end
     
     typesig { [] }
-    # 
     # Reads two input bytes and returns a <code>char</code> value.
     # Let <code>a</code>
     # be the first byte read and <code>b</code>
@@ -443,7 +431,6 @@ module Java::Io
     end
     
     typesig { [] }
-    # 
     # Reads four input bytes and returns an
     # <code>int</code> value. Let <code>a-d</code>
     # be the first through fourth bytes read. The value returned is:
@@ -465,7 +452,6 @@ module Java::Io
     end
     
     typesig { [] }
-    # 
     # Reads eight input bytes and returns
     # a <code>long</code> value. Let <code>a-h</code>
     # be the first through eighth bytes read.
@@ -494,7 +480,6 @@ module Java::Io
     end
     
     typesig { [] }
-    # 
     # Reads four input bytes and returns
     # a <code>float</code> value. It does this
     # by first constructing an <code>int</code>
@@ -516,7 +501,6 @@ module Java::Io
     end
     
     typesig { [] }
-    # 
     # Reads eight input bytes and returns
     # a <code>double</code> value. It does this
     # by first constructing a <code>long</code>
@@ -538,7 +522,6 @@ module Java::Io
     end
     
     typesig { [] }
-    # 
     # Reads the next line of text from the input stream.
     # It reads successive bytes, converting
     # each byte separately into a character,
@@ -581,7 +564,6 @@ module Java::Io
     end
     
     typesig { [] }
-    # 
     # Reads in a string that has been encoded using a
     # <a href="#modified-utf-8">modified UTF-8</a>
     # format.

@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 1996-2008 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -43,7 +42,6 @@ module Sun::Security::Ssl
     }
   end
   
-  # 
   # Implementation of an SSL socket.  This is a normal connection type
   # socket, implementing SSL over some lower level socket, such as TCP.
   # Because it is layered over some lower level socket, it MUST override
@@ -65,7 +63,6 @@ module Sun::Security::Ssl
     include_class_members SSLSocketImplImports
     
     class_module.module_eval {
-      # 
       # ERROR HANDLING GUIDELINES
       # (which exceptions to throw and catch and which not to throw and catch)
       # 
@@ -176,7 +173,6 @@ module Sun::Security::Ssl
       const_attr_reader  :Cs_APP_CLOSED
     }
     
-    # 
     # Client authentication be off, requested, or required.
     # 
     # Migrated to SSLEngineImpl:
@@ -190,7 +186,6 @@ module Sun::Security::Ssl
     alias_method :attr_connection_state=, :connection_state=
     undef_method :connection_state=
     
-    # 
     # Flag indicating if the next record we receive MUST be a Finished
     # message. Temporarily set during the handshake to ensure that
     # a change cipher spec message is followed by a finished message.
@@ -200,7 +195,6 @@ module Sun::Security::Ssl
     alias_method :attr_expecting_finished=, :expecting_finished=
     undef_method :expecting_finished=
     
-    # 
     # For improved diagnostics, we detail connection closure
     # If the socket is closed (connectionState >= cs_ERROR),
     # closeReason != null indicates if the socket was closed
@@ -211,7 +205,6 @@ module Sun::Security::Ssl
     alias_method :attr_close_reason=, :close_reason=
     undef_method :close_reason=
     
-    # 
     # Per-connection private state that doesn't change when the
     # session is changed.
     attr_accessor :do_client_auth
@@ -264,7 +257,6 @@ module Sun::Security::Ssl
     alias_method :attr_identification_alg=, :identification_alg=
     undef_method :identification_alg=
     
-    # 
     # READ ME * READ ME * READ ME * READ ME * READ ME * READ ME *
     # IMPORTANT STUFF TO UNDERSTANDING THE SYNCHRONIZATION ISSUES.
     # READ ME * READ ME * READ ME * READ ME * READ ME * READ ME *
@@ -358,7 +350,6 @@ module Sun::Security::Ssl
     alias_method :attr_inrec=, :inrec=
     undef_method :inrec=
     
-    # 
     # Crypto state that's reinitialized when the session changes.
     attr_accessor :read_mac
     alias_method :attr_read_mac, :read_mac
@@ -395,7 +386,6 @@ module Sun::Security::Ssl
     alias_method :attr_ssl_context=, :ssl_context=
     undef_method :ssl_context=
     
-    # 
     # This connection is one of (potentially) many associated with
     # any given session.  The output of the handshake protocol is a
     # new session ... although all the protocol description talks
@@ -415,7 +405,6 @@ module Sun::Security::Ssl
     alias_method :attr_handshaker=, :handshaker=
     undef_method :handshaker=
     
-    # 
     # If anyone wants to get notified about handshake completions,
     # they'll show up on this list.
     attr_accessor :handshake_listeners
@@ -424,7 +413,6 @@ module Sun::Security::Ssl
     alias_method :attr_handshake_listeners=, :handshake_listeners=
     undef_method :handshake_listeners=
     
-    # 
     # Reuse the same internal input/output streams.
     attr_accessor :sock_input
     alias_method :attr_sock_input, :sock_input
@@ -438,7 +426,6 @@ module Sun::Security::Ssl
     alias_method :attr_sock_output=, :sock_output=
     undef_method :sock_output=
     
-    # 
     # These input and output streams block their data in SSL records,
     # and usually arrange integrity and privacy protection for those
     # records.  The guts of the SSL protocol are wrapped up in these
@@ -456,7 +443,6 @@ module Sun::Security::Ssl
     alias_method :attr_output=, :output=
     undef_method :output=
     
-    # 
     # The protocols we support are SSL Version 3.0) and
     # TLS (version 3.1).
     # In addition we support a pseudo protocol called
@@ -468,7 +454,6 @@ module Sun::Security::Ssl
     alias_method :attr_enabled_protocols=, :enabled_protocols=
     undef_method :enabled_protocols=
     
-    # 
     # The SSL version associated with this connection.
     attr_accessor :protocol_version
     alias_method :attr_protocol_version, :protocol_version
@@ -483,7 +468,6 @@ module Sun::Security::Ssl
     }
     
     typesig { [SSLContextImpl, String, ::Java::Int] }
-    # 
     # CONSTRUCTORS AND INITIALIZATION CODE
     # 
     # 
@@ -536,7 +520,6 @@ module Sun::Security::Ssl
     end
     
     typesig { [SSLContextImpl, InetAddress, ::Java::Int] }
-    # 
     # Constructs an SSL connection to a server at a specified address.
     # and TCP port, using the authentication context provided.  This
     # endpoint acts as the client, and may rejoin an existing SSL session
@@ -586,7 +569,6 @@ module Sun::Security::Ssl
     end
     
     typesig { [SSLContextImpl, String, ::Java::Int, InetAddress, ::Java::Int] }
-    # 
     # Constructs an SSL connection to a named host at a specified port,
     # using the authentication context provided.  This endpoint acts as
     # the client, and may rejoin an existing SSL session if appropriate.
@@ -639,7 +621,6 @@ module Sun::Security::Ssl
     end
     
     typesig { [SSLContextImpl, InetAddress, ::Java::Int, InetAddress, ::Java::Int] }
-    # 
     # Constructs an SSL connection to a server at a specified address.
     # and TCP port, using the authentication context provided.  This
     # endpoint acts as the client, and may rejoin an existing SSL session
@@ -692,7 +673,6 @@ module Sun::Security::Ssl
     end
     
     typesig { [SSLContextImpl, ::Java::Boolean, CipherSuiteList, ::Java::Byte, ::Java::Boolean, ProtocolList] }
-    # 
     # Package-private constructor used ONLY by SSLServerSocket.  The
     # java.net package accepts the TCP connection after this call is
     # made.  This just initializes handshake state to use "server mode",
@@ -735,14 +715,12 @@ module Sun::Security::Ssl
       @do_client_auth = client_auth
       @enable_session_creation = session_creation
       init(context, server_mode)
-      # 
       # Override what was picked out for us.
       @enabled_cipher_suites = suites
       @enabled_protocols = protocols
     end
     
     typesig { [SSLContextImpl] }
-    # 
     # Package-private constructor used to instantiate an unconnected
     # socket. The java.net package will connect it, either when the
     # connect() call is made by the application.  This instance is
@@ -786,7 +764,6 @@ module Sun::Security::Ssl
     end
     
     typesig { [SSLContextImpl, Socket, String, ::Java::Int, ::Java::Boolean] }
-    # 
     # Layer SSL traffic over an existing connection, rather than creating
     # a new connection.  The existing connection may be used only for SSL
     # traffic (using this SSLSocket) until the SSLSocket.close() call
@@ -847,17 +824,14 @@ module Sun::Security::Ssl
     end
     
     typesig { [SSLContextImpl, ::Java::Boolean] }
-    # 
     # Initializes the client socket.
     def init(context, is_server)
       @ssl_context = context
       @sess = SSLSessionImpl.attr_null_session
-      # 
       # role is as specified, state is START until after
       # the low level connection's established.
       @role_is_server = is_server
       @connection_state = Cs_START
-      # 
       # default read and write side cipher and MAC support
       # 
       # Note:  compression support would go here too
@@ -878,7 +852,6 @@ module Sun::Security::Ssl
     end
     
     typesig { [SocketAddress, ::Java::Int] }
-    # 
     # Connects this socket to the server with a specified timeout
     # value.
     # 
@@ -905,12 +878,10 @@ module Sun::Security::Ssl
     end
     
     typesig { [] }
-    # 
     # Initialize the handshaker and socket streams.
     # 
     # Called by connect, the layered constructor, and SSLServerSocket.
     def done_connect
-      # 
       # Save the input and output streams.  May be done only after
       # java.net actually connects using the socket "self", else
       # we get some pretty bizarre failure modes.
@@ -921,7 +892,6 @@ module Sun::Security::Ssl
         @sock_input = self.attr_self.get_input_stream
         @sock_output = self.attr_self.get_output_stream
       end
-      # 
       # Move to handshaking state, with pending session initialized
       # to defaults and the appropriate kind of handshaker set up.
       init_handshaker
@@ -947,7 +917,6 @@ module Sun::Security::Ssl
     end
     
     typesig { [OutputRecord] }
-    # 
     # READING AND WRITING RECORDS
     # 
     # 
@@ -957,43 +926,40 @@ module Sun::Security::Ssl
     # NOTE:  we let empty records be written as a hook to force some
     # TCP-level activity, notably handshaking, to occur.
     def write_record(r)
-      # 
-      # The loop is in case of HANDSHAKE --> ERROR transitions, etc
-      while ((r.content_type).equal?(Record.attr_ct_application_data))
-        # 
-        # Not all states support passing application data.  We
-        # synchronize access to the connection state, so that
-        # synchronous handshakes can complete cleanly.
-        case (get_connection_state)
-        # 
-        # We've deferred the initial handshaking till just now,
-        # when presumably a thread's decided it's OK to block for
-        # longish periods of time for I/O purposes (as well as
-        # configured the cipher suites it wants to use).
-        # 
-        # dummy
-        # 
-        # Else something's goofy in this state machine's use.
-        when Cs_HANDSHAKE
-          perform_initial_handshake
-        when Cs_DATA, Cs_RENEGOTIATE
-          break
-        when Cs_ERROR
-          fatal(Alerts.attr_alert_close_notify, "error while writing to socket")
-        when Cs_SENT_CLOSE, Cs_CLOSED, Cs_APP_CLOSED
-          # we should never get here (check in AppOutputStream)
-          # this is just a fallback
-          if (!(@close_reason).nil?)
-            raise @close_reason
+      catch(:break_loop) do
+        # The loop is in case of HANDSHAKE --> ERROR transitions, etc
+        while ((r.content_type).equal?(Record.attr_ct_application_data))
+          # Not all states support passing application data.  We
+          # synchronize access to the connection state, so that
+          # synchronous handshakes can complete cleanly.
+          case (get_connection_state)
+          # We've deferred the initial handshaking till just now,
+          # when presumably a thread's decided it's OK to block for
+          # longish periods of time for I/O purposes (as well as
+          # configured the cipher suites it wants to use).
+          # 
+          # dummy
+          # 
+          # Else something's goofy in this state machine's use.
+          when Cs_HANDSHAKE
+            perform_initial_handshake
+          when Cs_DATA, Cs_RENEGOTIATE
+            throw :break_loop, :thrown
+          when Cs_ERROR
+            fatal(Alerts.attr_alert_close_notify, "error while writing to socket")
+          when Cs_SENT_CLOSE, Cs_CLOSED, Cs_APP_CLOSED
+            # we should never get here (check in AppOutputStream)
+            # this is just a fallback
+            if (!(@close_reason).nil?)
+              raise @close_reason
+            else
+              raise SocketException.new("Socket closed")
+            end
           else
-            raise SocketException.new("Socket closed")
+            raise SSLProtocolException.new("State error, send app data")
           end
-          raise SSLProtocolException.new("State error, send app data")
-        else
-          raise SSLProtocolException.new("State error, send app data")
         end
       end
-      # 
       # Don't bother to really write empty records.  We went this
       # far to drive the handshake machinery, for correctness; not
       # writing empty records improves performance by cutting CPU
@@ -1069,7 +1035,6 @@ module Sun::Security::Ssl
     end
     
     typesig { [InputRecord] }
-    # 
     # Read an application data record.  Alerts and handshake
     # messages are handled directly.
     def read_data_record(r)
@@ -1080,7 +1045,6 @@ module Sun::Security::Ssl
     end
     
     typesig { [InputRecord, ::Java::Boolean] }
-    # 
     # Clear the pipeline of records from the peer, optionally returning
     # application data.   Caller is responsible for knowing that it's
     # possible to do this kind of clearing, if they don't want app
@@ -1102,11 +1066,9 @@ module Sun::Security::Ssl
       # Use readLock instead of 'this' for locking because
       # 'this' also protects data accessed during writing.
       synchronized((@read_lock)) do
-        # 
         # Read and handle records ... return application data
         # ONLY if it's needed.
         while ((!((state = get_connection_state)).equal?(Cs_CLOSED)) && (!(state).equal?(Cs_ERROR)) && (!(state).equal?(Cs_APP_CLOSED)))
-          # 
           # Read a record ... maybe emitting an alert if we get a
           # comprehensible but unsupported "hello" message during
           # format checking (e.g. V2).
@@ -1127,21 +1089,20 @@ module Sun::Security::Ssl
               System.out.println((thread_name).to_s + ", received EOFException: " + ((rethrow ? "error" : "ignored")).to_s)
             end
             if (rethrow)
-              e_ = nil
+              e = nil
               if (handshaking)
-                e_ = SSLHandshakeException.new("Remote host closed connection during handshake")
+                e = SSLHandshakeException.new("Remote host closed connection during handshake")
               else
-                e_ = SSLProtocolException.new("Remote host closed connection incorrectly")
+                e = SSLProtocolException.new("Remote host closed connection incorrectly")
               end
-              e_.init_cause(eof)
-              raise e_
+              e.init_cause(eof)
+              raise e
             else
               # treat as if we had received a close_notify
               close_internal(false)
               next
             end
           end
-          # 
           # The basic SSLv3 record protection involves (optional)
           # encryption for privacy, and an integrity check ensuring
           # data origin authentication.  We do them both here, and
@@ -1157,7 +1118,7 @@ module Sun::Security::Ssl
             r.check_mac(@read_mac)
             # use the same alert types as for MAC failure below
             alert_type = ((r.content_type).equal?(Record.attr_ct_handshake)) ? Alerts.attr_alert_handshake_failure : Alerts.attr_alert_bad_record_mac
-            fatal(alert_type, "Invalid padding", e__)
+            fatal(alert_type, "Invalid padding", e)
           end
           if (!r.check_mac(@read_mac))
             if ((r.content_type).equal?(Record.attr_ct_handshake))
@@ -1174,7 +1135,6 @@ module Sun::Security::Ssl
           synchronized((self)) do
             case (r.content_type)
             when Record.attr_ct_handshake
-              # 
               # Handshake messages always go to a pending session
               # handshaker ... if there isn't one, create one.  This
               # must work asynchronously, for renegotiation.
@@ -1185,7 +1145,6 @@ module Sun::Security::Ssl
               # session (new keys exchanged) with just this connection
               # in it.
               init_handshaker
-              # 
               # process the handshake record ... may contain just
               # a partial handshake message or multiple messages.
               # 
@@ -1197,7 +1156,6 @@ module Sun::Security::Ssl
                 @sess = @handshaker.get_session
                 @handshaker = nil
                 @connection_state = Cs_DATA
-                # 
                 # Tell folk about handshake completion, but do
                 # it in a separate thread.
                 if (!(@handshake_listeners).nil?)
@@ -1242,7 +1200,6 @@ module Sun::Security::Ssl
               if ((!(@connection_state).equal?(Cs_HANDSHAKE) && !(@connection_state).equal?(Cs_RENEGOTIATE)) || !(r.available).equal?(1) || !(r.read).equal?(1))
                 fatal(Alerts.attr_alert_unexpected_message, "illegal change cipher spec msg, state = " + (@connection_state).to_s)
               end
-              # 
               # The first message after a change_cipher_spec
               # record MUST be a "Finished" handshake record,
               # else it's a protocol violation.  We force this
@@ -1252,7 +1209,6 @@ module Sun::Security::Ssl
               # next message MUST be a finished message
               @expecting_finished = true
               next
-              # 
               # TLS requires that unrecognized records be ignored.
               if (!(Debug).nil? && Debug.is_on("ssl"))
                 System.out.println((thread_name).to_s + ", Received record type: " + (r.content_type).to_s)
@@ -1262,7 +1218,6 @@ module Sun::Security::Ssl
               if ((!(@connection_state).equal?(Cs_HANDSHAKE) && !(@connection_state).equal?(Cs_RENEGOTIATE)) || !(r.available).equal?(1) || !(r.read).equal?(1))
                 fatal(Alerts.attr_alert_unexpected_message, "illegal change cipher spec msg, state = " + (@connection_state).to_s)
               end
-              # 
               # The first message after a change_cipher_spec
               # record MUST be a "Finished" handshake record,
               # else it's a protocol violation.  We force this
@@ -1272,14 +1227,12 @@ module Sun::Security::Ssl
               # next message MUST be a finished message
               @expecting_finished = true
               next
-              # 
               # TLS requires that unrecognized records be ignored.
               if (!(Debug).nil? && Debug.is_on("ssl"))
                 System.out.println((thread_name).to_s + ", Received record type: " + (r.content_type).to_s)
               end
               next
             else
-              # 
               # TLS requires that unrecognized records be ignored.
               if (!(Debug).nil? && Debug.is_on("ssl"))
                 System.out.println((thread_name).to_s + ", Received record type: " + (r.content_type).to_s)
@@ -1289,7 +1242,6 @@ module Sun::Security::Ssl
             # switch
           end # synchronized (this)
         end
-        # 
         # couldn't read, due to some kind of error
         r.close
         return
@@ -1297,7 +1249,6 @@ module Sun::Security::Ssl
     end
     
     typesig { [] }
-    # 
     # HANDSHAKE RELATED CODE
     # 
     # 
@@ -1307,7 +1258,6 @@ module Sun::Security::Ssl
     end
     
     typesig { [] }
-    # 
     # Initialize and get the server handshaker. Used by SSLServerSocketImpl
     # for the ciphersuite availability test *only*.
     def get_server_handshaker
@@ -1329,7 +1279,6 @@ module Sun::Security::Ssl
     end
     
     typesig { [] }
-    # 
     # Initialize the handshaker object. This means:
     # 
     # . if a handshake is already in progress (state is cs_HANDSHAKE
@@ -1346,7 +1295,6 @@ module Sun::Security::Ssl
     # socket.
     def init_handshaker
       case (@connection_state)
-      # 
       # Starting a new handshake.
       # 
       # 
@@ -1382,7 +1330,6 @@ module Sun::Security::Ssl
     end
     
     typesig { [] }
-    # 
     # Synchronously perform the initial handshake.
     # 
     # If the handshake is already in progress, this method blocks until it
@@ -1393,7 +1340,6 @@ module Sun::Security::Ssl
       # one thread performs the handshake
       synchronized((@handshake_lock)) do
         if ((get_connection_state).equal?(Cs_HANDSHAKE))
-          # 
           # All initial handshaking goes through this
           # InputRecord until we have a valid SSL connection.
           # Once initial handshaking is finished, AppInputStream's
@@ -1403,7 +1349,6 @@ module Sun::Security::Ssl
           # eventually GC'd.
           if ((@inrec).nil?)
             @inrec = InputRecord.new
-            # 
             # Grab the characteristics already assigned to
             # AppInputStream's InputRecord.  Enable checking for
             # SSLv2 hellos on this first handshake.
@@ -1419,7 +1364,6 @@ module Sun::Security::Ssl
     end
     
     typesig { [] }
-    # 
     # Starts an SSL handshake on this connection.
     def start_handshake
       # start an ssl handshake that could be resumed from timeout exception
@@ -1427,7 +1371,6 @@ module Sun::Security::Ssl
     end
     
     typesig { [::Java::Boolean] }
-    # 
     # Starts an ssl handshake on this connection.
     # 
     # @param resumable indicates the handshake process is resumable from a
@@ -1451,7 +1394,6 @@ module Sun::Security::Ssl
     end
     
     typesig { [] }
-    # 
     # Kickstart the handshake if it is not already in progress.
     # This means:
     # 
@@ -1467,7 +1409,6 @@ module Sun::Security::Ssl
     def kickstart_handshake
       synchronized(self) do
         case (@connection_state)
-        # 
         # The only way to get a socket in the state is when
         # you have an unconnected socket.
         when Cs_HANDSHAKE
@@ -1483,7 +1424,6 @@ module Sun::Security::Ssl
         else
           raise SocketException.new("connection is closed")
         end
-        # 
         # Kickstart handshake state machine if we need to ...
         # 
         # Note that handshaker.kickstart() writes the message
@@ -1509,7 +1449,6 @@ module Sun::Security::Ssl
     end
     
     typesig { [] }
-    # 
     # CLOSURE RELATED CALLS
     # 
     # 
@@ -1519,7 +1458,6 @@ module Sun::Security::Ssl
     end
     
     typesig { [] }
-    # 
     # Return whether we have reached end-of-file.
     # 
     # If the socket is not connected, has been shutdown because of an error
@@ -1545,14 +1483,13 @@ module Sun::Security::Ssl
         if ((@close_reason).nil?)
           return true
         end
-        e_ = SSLException.new("Connection has been shutdown: " + (@close_reason).to_s)
-        e_.init_cause(@close_reason)
-        raise e_
+        e = SSLException.new("Connection has been shutdown: " + (@close_reason).to_s)
+        e.init_cause(@close_reason)
+        raise e
       end
     end
     
     typesig { [] }
-    # 
     # Check if we can write data to this socket. If not, throw an IOException.
     def check_write
       if (check_eof || ((get_connection_state).equal?(Cs_SENT_CLOSE)))
@@ -1574,7 +1511,6 @@ module Sun::Security::Ssl
     end
     
     typesig { [] }
-    # 
     # Closing the connection is tricky ... we can't officially close the
     # connection until we know the other end is ready to go away too,
     # and if ever the connection gets aborted we must forget session
@@ -1594,7 +1530,6 @@ module Sun::Security::Ssl
     end
     
     typesig { [::Java::Boolean] }
-    # 
     # Don't synchronize the whole method because waitForClose()
     # (which calls readRecord()) might be called.
     # 
@@ -1610,7 +1545,6 @@ module Sun::Security::Ssl
       state = get_connection_state
       begin
         case (state)
-        # 
         # java.net code sometimes closes sockets "early", when
         # we can't actually do I/O on them.
         # 
@@ -1699,7 +1633,6 @@ module Sun::Security::Ssl
     end
     
     typesig { [::Java::Boolean] }
-    # 
     # Reads a close_notify or a fatal alert from the input stream.
     # Keep reading records until we get a close_notify or until
     # the connection is otherwise closed.  The close_notify or alert
@@ -1726,16 +1659,15 @@ module Sun::Security::Ssl
         @inrec = nil
       rescue IOException => e
         if (!(Debug).nil? && Debug.is_on("ssl"))
-          System.out.println((thread_name).to_s + ", Exception while waiting for close " + (e_).to_s)
+          System.out.println((thread_name).to_s + ", Exception while waiting for close " + (e).to_s)
         end
         if (rethrow)
-          raise e_ # pass exception up
+          raise e # pass exception up
         end
       end
     end
     
     typesig { [Exception] }
-    # 
     # EXCEPTION AND ALERT HANDLING
     # 
     # 
@@ -1748,7 +1680,6 @@ module Sun::Security::Ssl
     end
     
     typesig { [Exception, ::Java::Boolean] }
-    # 
     # Handle an exception. This method is called by top level exception
     # handlers (in read(), write(), startHandshake()) to make sure we
     # always shutdown the connection correctly and do not pass runtime
@@ -1818,7 +1749,6 @@ module Sun::Security::Ssl
     end
     
     typesig { [::Java::Byte] }
-    # 
     # Send a warning alert.
     def warning(description)
       send_alert(Alerts.attr_alert_warning, description)
@@ -1839,7 +1769,6 @@ module Sun::Security::Ssl
     end
     
     typesig { [::Java::Byte, String, Exception] }
-    # 
     # Send a fatal alert, and throw an exception so that callers will
     # need to stand on their heads to accidentally continue processing.
     def fatal(description, diagnostic, cause)
@@ -1850,12 +1779,10 @@ module Sun::Security::Ssl
         @sess.invalidate
         old_state = @connection_state
         @connection_state = Cs_ERROR
-        # 
         # Has there been an error received yet?  If not, remember it.
         # By RFC 2246, we don't bother waiting for a response.
         # Fatal errors require immediate shutdown.
         if ((@close_reason).nil?)
-          # 
           # Try to clear the kernel buffer to avoid TCP connection resets.
           if ((old_state).equal?(Cs_HANDSHAKE))
             @sock_input.skip(@sock_input.available)
@@ -1871,7 +1798,6 @@ module Sun::Security::Ssl
             @close_reason = Alerts.get_sslexception(description, cause, diagnostic)
           end
         end
-        # 
         # Clean up our side.
         close_socket
         @connection_state = ((old_state).equal?(Cs_APP_CLOSED)) ? Cs_APP_CLOSED : Cs_CLOSED
@@ -1880,7 +1806,6 @@ module Sun::Security::Ssl
     end
     
     typesig { [InputRecord] }
-    # 
     # Process an incoming alert ... caller must already have synchronized
     # access to "this".
     def recv_alert(r)
@@ -1914,7 +1839,6 @@ module Sun::Security::Ssl
             close_internal(false) # reply to close
           end
         else
-          # 
           # The other legal warnings relate to certificates,
           # e.g. no_certificate, bad_certificate, etc; these
           # are important to the handshaking code, which can
@@ -1934,7 +1858,6 @@ module Sun::Security::Ssl
     end
     
     typesig { [::Java::Byte, ::Java::Byte] }
-    # 
     # Emit alerts.  Caller must have synchronized with "this".
     def send_alert(level, description)
       if (@connection_state >= Cs_SENT_CLOSE)
@@ -1971,7 +1894,6 @@ module Sun::Security::Ssl
     end
     
     typesig { [] }
-    # 
     # VARIOUS OTHER METHODS
     # 
     # 
@@ -2017,7 +1939,6 @@ module Sun::Security::Ssl
     end
     
     typesig { [ProtocolVersion] }
-    # 
     # Updates the SSL version associated with this connection.
     # Called from Handshaker once it has determined the negotiated version.
     def set_version(protocol_version)
@@ -2038,7 +1959,6 @@ module Sun::Security::Ssl
     end
     
     typesig { [] }
-    # 
     # Gets an input stream to read from the peer on the other side.
     # Data read from this stream was always integrity protected in
     # transit, and will usually have been confidentiality protected.
@@ -2047,7 +1967,6 @@ module Sun::Security::Ssl
         if (is_closed)
           raise SocketException.new("Socket is closed")
         end
-        # 
         # Can't call isConnected() here, because the Handshakers
         # do some initialization before we actually connect.
         if ((@connection_state).equal?(Cs_START))
@@ -2058,7 +1977,6 @@ module Sun::Security::Ssl
     end
     
     typesig { [] }
-    # 
     # Gets an output stream to write to the peer on the other side.
     # Data written on this stream is always integrity protected, and
     # will usually be confidentiality protected.
@@ -2067,7 +1985,6 @@ module Sun::Security::Ssl
         if (is_closed)
           raise SocketException.new("Socket is closed")
         end
-        # 
         # Can't call isConnected() here, because the Handshakers
         # do some initialization before we actually connect.
         if ((@connection_state).equal?(Cs_START))
@@ -2078,12 +1995,10 @@ module Sun::Security::Ssl
     end
     
     typesig { [] }
-    # 
     # Returns the the SSL Session in use by this connection.  These can
     # be long lived, and frequently correspond to an entire login session
     # for some user.
     def get_session
-      # 
       # Force a synchronous handshake, if appropriate.
       if ((get_connection_state).equal?(Cs_HANDSHAKE))
         begin
@@ -2102,7 +2017,6 @@ module Sun::Security::Ssl
     end
     
     typesig { [::Java::Boolean] }
-    # 
     # Controls whether new connections may cause creation of new SSL
     # sessions.
     # 
@@ -2119,7 +2033,6 @@ module Sun::Security::Ssl
     end
     
     typesig { [] }
-    # 
     # Returns true if new connections may cause creation of new SSL
     # sessions.
     def get_enable_session_creation
@@ -2129,7 +2042,6 @@ module Sun::Security::Ssl
     end
     
     typesig { [::Java::Boolean] }
-    # 
     # Sets the flag controlling whether a server mode socket
     # *REQUIRES* SSL client authentication.
     # 
@@ -2153,7 +2065,6 @@ module Sun::Security::Ssl
     end
     
     typesig { [::Java::Boolean] }
-    # 
     # Sets the flag controlling whether a server mode socket
     # *REQUESTS* SSL client authentication.
     # 
@@ -2177,41 +2088,32 @@ module Sun::Security::Ssl
     end
     
     typesig { [::Java::Boolean] }
-    # 
     # Sets the flag controlling whether the socket is in SSL
     # client or server mode.  Must be called before any SSL
     # traffic has started.
     def set_use_client_mode(flag)
       synchronized(self) do
-        catch(:break_case) do
-          case (@connection_state)
-          # If handshake has started, that's an error.  Fall through...
-          when Cs_START
+        case (@connection_state)
+        # If handshake has started, that's an error.  Fall through...
+        when Cs_START
+          @role_is_server = !flag
+        when Cs_HANDSHAKE
+          # If we have a handshaker, but haven't started
+          # SSL traffic, we can throw away our current
+          # handshaker, and start from scratch.  Don't
+          # need to call doneConnect() again, we already
+          # have the streams.
+          raise AssertError if not ((!(@handshaker).nil?))
+          if (!@handshaker.started)
             @role_is_server = !flag
-          when Cs_HANDSHAKE
-            # 
-            # If we have a handshaker, but haven't started
-            # SSL traffic, we can throw away our current
-            # handshaker, and start from scratch.  Don't
-            # need to call doneConnect() again, we already
-            # have the streams.
-            raise AssertError if not ((!(@handshaker).nil?))
-            if (!@handshaker.started)
-              @role_is_server = !flag
-              @connection_state = Cs_START
-              init_handshaker
-              throw :break_case, :thrown
-            end
-            if (!(Debug).nil? && Debug.is_on("ssl"))
-              System.out.println((thread_name).to_s + ", setUseClientMode() invoked in state = " + (@connection_state).to_s)
-            end
-            raise IllegalArgumentException.new("Cannot change mode after SSL traffic has started")
-          else
-            if (!(Debug).nil? && Debug.is_on("ssl"))
-              System.out.println((thread_name).to_s + ", setUseClientMode() invoked in state = " + (@connection_state).to_s)
-            end
-            raise IllegalArgumentException.new("Cannot change mode after SSL traffic has started")
+            @connection_state = Cs_START
+            init_handshaker
           end
+        else
+          if (!(Debug).nil? && Debug.is_on("ssl"))
+            System.out.println((thread_name).to_s + ", setUseClientMode() invoked in state = " + (@connection_state).to_s)
+          end
+          raise IllegalArgumentException.new("Cannot change mode after SSL traffic has started")
         end
       end
     end
@@ -2224,7 +2126,6 @@ module Sun::Security::Ssl
     end
     
     typesig { [] }
-    # 
     # Returns the names of the cipher suites which could be enabled for use
     # on an SSL connection.  Normally, only a subset of these will actually
     # be enabled by default, since this list may include cipher suites which
@@ -2239,7 +2140,6 @@ module Sun::Security::Ssl
     end
     
     typesig { [Array.typed(String)] }
-    # 
     # Controls which particular cipher suites are enabled for use on
     # this connection.  The cipher suites must have been listed by
     # getCipherSuites() as being supported.  Even if a suite has been
@@ -2257,7 +2157,6 @@ module Sun::Security::Ssl
     end
     
     typesig { [] }
-    # 
     # Returns the names of the SSL cipher suites which are currently enabled
     # for use on this connection.  When an SSL socket is first created,
     # all enabled cipher suites <em>(a)</em> protect data confidentiality,
@@ -2273,7 +2172,6 @@ module Sun::Security::Ssl
     end
     
     typesig { [] }
-    # 
     # Returns the protocols that are supported by this implementation.
     # A subset of the supported protocols may be enabled for this connection
     # @ returns an array of protocol names.
@@ -2282,7 +2180,6 @@ module Sun::Security::Ssl
     end
     
     typesig { [Array.typed(String)] }
-    # 
     # Controls which protocols are enabled for use on
     # this connection.  The protocols must have been listed by
     # getSupportedProtocols() as being supported.
@@ -2307,7 +2204,6 @@ module Sun::Security::Ssl
     end
     
     typesig { [::Java::Int] }
-    # 
     # Assigns the socket timeout.
     # @see java.net.Socket#setSoTimeout
     def set_so_timeout(timeout)
@@ -2322,7 +2218,6 @@ module Sun::Security::Ssl
     end
     
     typesig { [HandshakeCompletedListener] }
-    # 
     # Registers an event listener to receive notifications that an
     # SSL handshake has completed on this connection.
     def add_handshake_completed_listener(listener)
@@ -2338,7 +2233,6 @@ module Sun::Security::Ssl
     end
     
     typesig { [HandshakeCompletedListener] }
-    # 
     # Removes a previously registered handshake completion listener.
     def remove_handshake_completed_listener(listener)
       synchronized(self) do
@@ -2355,7 +2249,6 @@ module Sun::Security::Ssl
     end
     
     typesig { [String] }
-    # 
     # Try to configure the endpoint identification algorithm of the socket.
     # 
     # @param identificationAlgorithm the algorithm used to check the
@@ -2373,7 +2266,6 @@ module Sun::Security::Ssl
     end
     
     typesig { [] }
-    # 
     # Returns the endpoint identification algorithm of the socket.
     def get_hostname_verification
       synchronized(self) do
@@ -2382,7 +2274,6 @@ module Sun::Security::Ssl
     end
     
     class_module.module_eval {
-      # 
       # We allocate a separate thread to deliver handshake completion
       # events.  This ensures that the notifications don't block the
       # protocol state machine.
@@ -2444,7 +2335,6 @@ module Sun::Security::Ssl
       end }
       
       typesig { [] }
-      # 
       # Return the name of the current thread. Utility method.
       def thread_name
         return JavaThread.current_thread.get_name
@@ -2452,7 +2342,6 @@ module Sun::Security::Ssl
     }
     
     typesig { [] }
-    # 
     # Returns a printable representation of this end of the connection.
     def to_s
       retval = StringBuffer.new(80)

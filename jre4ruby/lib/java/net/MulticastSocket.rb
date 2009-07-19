@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 1995-2007 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -89,7 +88,6 @@ module Java::Net
     include_class_members MulticastSocketImports
     
     typesig { [] }
-    # 
     # Create a multicast socket.
     # 
     # <p>If there is a security manager,
@@ -112,7 +110,6 @@ module Java::Net
     end
     
     typesig { [::Java::Int] }
-    # 
     # Create a multicast socket and bind it to a specific port.
     # 
     # <p>If there is a security manager,
@@ -137,7 +134,6 @@ module Java::Net
     end
     
     typesig { [SocketAddress] }
-    # 
     # Create a MulticastSocket bound to the specified socket address.
     # <p>
     # Or, if the address is <code>null</code>, create an unbound socket.
@@ -176,7 +172,6 @@ module Java::Net
       end
     end
     
-    # 
     # The lock on the socket's TTL. This is for set/getTTL and
     # send(packet,ttl).
     attr_accessor :ttl_lock
@@ -185,7 +180,6 @@ module Java::Net
     alias_method :attr_ttl_lock=, :ttl_lock=
     undef_method :ttl_lock=
     
-    # 
     # The lock on the socket's interface - used by setInterface
     # and getInterface
     attr_accessor :inf_lock
@@ -194,7 +188,6 @@ module Java::Net
     alias_method :attr_inf_lock=, :inf_lock=
     undef_method :inf_lock=
     
-    # 
     # The "last" interface set by setInterface on this MulticastSocket
     attr_accessor :inf_address
     alias_method :attr_inf_address, :inf_address
@@ -203,7 +196,6 @@ module Java::Net
     undef_method :inf_address=
     
     typesig { [::Java::Byte] }
-    # 
     # Set the default time-to-live for multicast packets sent out
     # on this <code>MulticastSocket</code> in order to control the
     # scope of the multicasts.
@@ -225,7 +217,6 @@ module Java::Net
     end
     
     typesig { [::Java::Int] }
-    # 
     # Set the default time-to-live for multicast packets sent out
     # on this {@code MulticastSocket} in order to control the
     # scope of the multicasts.
@@ -252,7 +243,6 @@ module Java::Net
     end
     
     typesig { [] }
-    # 
     # Get the default time-to-live for multicast packets sent out on
     # the socket.
     # 
@@ -270,7 +260,6 @@ module Java::Net
     end
     
     typesig { [] }
-    # 
     # Get the default time-to-live for multicast packets sent out on
     # the socket.
     # @exception IOException if an I/O exception occurs while
@@ -285,7 +274,6 @@ module Java::Net
     end
     
     typesig { [InetAddress] }
-    # 
     # Joins a multicast group. Its behavior may be affected by
     # <code>setInterface</code> or <code>setNetworkInterface</code>.
     # 
@@ -317,7 +305,6 @@ module Java::Net
     end
     
     typesig { [InetAddress] }
-    # 
     # Leave a multicast group. Its behavior may be affected by
     # <code>setInterface</code> or <code>setNetworkInterface</code>.
     # 
@@ -348,7 +335,6 @@ module Java::Net
     end
     
     typesig { [SocketAddress, NetworkInterface] }
-    # 
     # Joins the specified multicast group at the specified interface.
     # 
     # <p>If there is a security manager, this method first
@@ -392,7 +378,6 @@ module Java::Net
     end
     
     typesig { [SocketAddress, NetworkInterface] }
-    # 
     # Leave a multicast group on a specified local interface.
     # 
     # <p>If there is a security manager, this method first
@@ -435,7 +420,6 @@ module Java::Net
     end
     
     typesig { [InetAddress] }
-    # 
     # Set the multicast network interface used by methods
     # whose behavior would be affected by the value of the
     # network interface. Useful for multihomed hosts.
@@ -454,7 +438,6 @@ module Java::Net
     end
     
     typesig { [] }
-    # 
     # Retrieve the address of the network interface used for
     # multicast packets.
     # 
@@ -472,18 +455,15 @@ module Java::Net
       end
       synchronized((@inf_lock)) do
         ia = get_impl.get_option(SocketOptions::IP_MULTICAST_IF)
-        # 
         # No previous setInterface or interface can be
         # set using setNetworkInterface
         if ((@inf_address).nil?)
           return ia
         end
-        # 
         # Same interface set with setInterface?
         if ((ia == @inf_address))
           return ia
         end
-        # 
         # Different InetAddress from what we set with setInterface
         # so enumerate the current interface to see if the
         # address set by setInterface is bound to this interface.
@@ -496,7 +476,6 @@ module Java::Net
               return @inf_address
             end
           end
-          # 
           # No match so reset infAddress to indicate that the
           # interface has changed via means
           @inf_address = nil
@@ -508,7 +487,6 @@ module Java::Net
     end
     
     typesig { [NetworkInterface] }
-    # 
     # Specify the network interface for outgoing multicast datagrams
     # sent on this socket.
     # 
@@ -525,7 +503,6 @@ module Java::Net
     end
     
     typesig { [] }
-    # 
     # Get the multicast network interface set.
     # 
     # @exception SocketException if there is an error in
@@ -545,7 +522,6 @@ module Java::Net
     end
     
     typesig { [::Java::Boolean] }
-    # 
     # Disable/Enable local loopback of multicast datagrams
     # The option is used by the platform's networking code as a hint
     # for setting whether multicast data will be looped back to
@@ -563,7 +539,6 @@ module Java::Net
     end
     
     typesig { [] }
-    # 
     # Get the setting for local loopback of multicast datagrams.
     # 
     # @throws SocketException  if an error occurs while getting the value
@@ -575,7 +550,6 @@ module Java::Net
     end
     
     typesig { [DatagramPacket, ::Java::Byte] }
-    # 
     # Sends a datagram packet to the destination, with a TTL (time-
     # to-live) other than the default for the socket.  This method
     # need only be used in instances where a particular TTL is desired;

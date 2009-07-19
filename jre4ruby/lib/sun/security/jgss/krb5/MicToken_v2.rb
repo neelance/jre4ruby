@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 2004-2006 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -37,7 +36,6 @@ module Sun::Security::Jgss::Krb5
     }
   end
   
-  # 
   # This class represents the new format of GSS MIC tokens, as specified
   # in draft-ietf-krb-wg-gssapi-cfx-07.txt
   # 

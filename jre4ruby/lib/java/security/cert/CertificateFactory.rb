@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 1998-2006 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -43,7 +42,6 @@ module Java::Security::Cert
     }
   end
   
-  # 
   # This class defines the functionality of a certificate factory, which is
   # used to generate certificate, certification path (<code>CertPath</code>)
   # and certificate revocation list (CRL) objects from their encodings.
@@ -132,7 +130,6 @@ module Java::Security::Cert
     undef_method :cert_fac_spi=
     
     typesig { [CertificateFactorySpi, Provider, String] }
-    # 
     # Creates a CertificateFactory object of the given type, and encapsulates
     # the given provider implementation (SPI object) in it.
     # 
@@ -150,7 +147,6 @@ module Java::Security::Cert
     
     class_module.module_eval {
       typesig { [String] }
-      # 
       # Returns a certificate factory object that implements the
       # specified certificate type.
       # 
@@ -186,7 +182,6 @@ module Java::Security::Cert
       end
       
       typesig { [String, String] }
-      # 
       # Returns a certificate factory object for the specified
       # certificate type.
       # 
@@ -229,7 +224,6 @@ module Java::Security::Cert
       end
       
       typesig { [String, Provider] }
-      # 
       # Returns a certificate factory object for the specified
       # certificate type.
       # 
@@ -269,7 +263,6 @@ module Java::Security::Cert
     }
     
     typesig { [] }
-    # 
     # Returns the provider of this certificate factory.
     # 
     # @return the provider of this certificate factory.
@@ -278,7 +271,6 @@ module Java::Security::Cert
     end
     
     typesig { [] }
-    # 
     # Returns the name of the certificate type associated with this
     # certificate factory.
     # 
@@ -289,7 +281,6 @@ module Java::Security::Cert
     end
     
     typesig { [InputStream] }
-    # 
     # Generates a certificate object and initializes it with
     # the data read from the input stream <code>inStream</code>.
     # 
@@ -329,7 +320,6 @@ module Java::Security::Cert
     end
     
     typesig { [] }
-    # 
     # Returns an iteration of the <code>CertPath</code> encodings supported
     # by this certificate factory, with the default encoding first. See
     # Appendix A in the
@@ -349,7 +339,6 @@ module Java::Security::Cert
     end
     
     typesig { [InputStream] }
-    # 
     # Generates a <code>CertPath</code> object and initializes it with
     # the data read from the <code>InputStream</code> inStream. The data
     # is assumed to be in the default encoding. The name of the default
@@ -366,7 +355,6 @@ module Java::Security::Cert
     end
     
     typesig { [InputStream, String] }
-    # 
     # Generates a <code>CertPath</code> object and initializes it with
     # the data read from the <code>InputStream</code> inStream. The data
     # is assumed to be in the specified encoding. See Appendix A in the
@@ -386,7 +374,6 @@ module Java::Security::Cert
     end
     
     typesig { [JavaList] }
-    # 
     # Generates a <code>CertPath</code> object and initializes it with
     # a <code>List</code> of <code>Certificate</code>s.
     # <p>
@@ -404,7 +391,6 @@ module Java::Security::Cert
     end
     
     typesig { [InputStream] }
-    # 
     # Returns a (possibly empty) collection view of the certificates read
     # from the given input stream <code>inStream</code>.
     # 
@@ -443,7 +429,6 @@ module Java::Security::Cert
     end
     
     typesig { [InputStream] }
-    # 
     # Generates a certificate revocation list (CRL) object and initializes it
     # with the data read from the input stream <code>inStream</code>.
     # 
@@ -476,7 +461,6 @@ module Java::Security::Cert
     end
     
     typesig { [InputStream] }
-    # 
     # Returns a (possibly empty) collection view of the CRLs read
     # from the given input stream <code>inStream</code>.
     # 

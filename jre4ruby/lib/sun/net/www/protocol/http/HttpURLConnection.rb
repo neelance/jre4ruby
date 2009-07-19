@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 1995-2007 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -76,7 +75,6 @@ module Sun::Net::Www::Protocol::Http
     }
   end
   
-  # 
   # A class to represent an HTTP connection to a remote object.
   class HttpURLConnection < Java::Net::HttpURLConnection
     include_class_members HttpURLConnectionImports
@@ -114,7 +112,6 @@ module Sun::Net::Www::Protocol::Http
       const_set_lazy(:RETRY_MSG3) { "cannot retry due to redirection, in streaming mode" }
       const_attr_reader  :RETRY_MSG3
       
-      # 
       # System properties related to error stream handling:
       # 
       # sun.net.http.errorstream.enableBuffering = <boolean>
@@ -467,7 +464,6 @@ module Sun::Net::Www::Protocol::Http
     
     class_module.module_eval {
       typesig { [String, InetAddress, ::Java::Int, String, String, String, URL, RequestorType] }
-      # 
       # privileged request password authentication
       def privileged_request_password_authentication(host, addr, port, protocol, prompt, scheme, url, auth_type)
         return Java::Security::AccessController.do_privileged(Class.new(Java::Security::PrivilegedAction.class == Class ? Java::Security::PrivilegedAction : Object) do
@@ -492,7 +488,6 @@ module Sun::Net::Www::Protocol::Http
     }
     
     typesig { [String, String] }
-    # 
     # checks the validity of http message header and throws
     # IllegalArgumentException if invalid.
     def check_message_header(key, value)
@@ -557,7 +552,6 @@ module Sun::Net::Www::Protocol::Http
         end
         @requests.set_if_not_set("Host", host)
         @requests.set_if_not_set("Accept", AcceptString)
-        # 
         # For HTTP/1.1 the default behavior is to keep connections alive.
         # However, we may be talking to a 1.0 server so we should set
         # keep-alive just in case, except if we have encountered an error
@@ -571,7 +565,6 @@ module Sun::Net::Www::Protocol::Http
             @requests.set_if_not_set("Connection", "keep-alive")
           end
         else
-          # 
           # RFC 2616 HTTP/1.1 section 14.10 says:
           # HTTP/1.1 applications that do not support persistent
           # connections MUST include the "close" connection option
@@ -647,7 +640,6 @@ module Sun::Net::Www::Protocol::Http
     end
     
     typesig { [URL] }
-    # 
     # Create a new HttpClient object, bypassing the cache of
     # HTTP client objects/connections.
     # 
@@ -657,7 +649,6 @@ module Sun::Net::Www::Protocol::Http
     end
     
     typesig { [URL, ::Java::Boolean] }
-    # 
     # Obtain a HttpsClient object. Use the cached copy if specified.
     # 
     # @param url       the URL being accessed
@@ -669,7 +660,6 @@ module Sun::Net::Www::Protocol::Http
     end
     
     typesig { [URL, String, ::Java::Int] }
-    # 
     # Create a new HttpClient object, set up so that it uses
     # per-instance proxying to the given HTTP proxy.  This
     # bypasses the cache of HTTP client objects/connections.
@@ -682,7 +672,6 @@ module Sun::Net::Www::Protocol::Http
     end
     
     typesig { [URL, String, ::Java::Int, ::Java::Boolean] }
-    # 
     # Obtain a HttpClient object, set up so that it uses per-instance
     # proxying to the given HTTP proxy. Use the cached copy of HTTP
     # client objects/connections if specified.
@@ -825,14 +814,12 @@ module Sun::Net::Www::Protocol::Http
     
     class_module.module_eval {
       typesig { [HttpAuthenticator] }
-      # 
       # @deprecated.  Use java.net.Authenticator.setDefault() instead.
       def set_default_authenticator(a)
         self.attr_default_auth = a
       end
       
       typesig { [URLConnection] }
-      # 
       # opens a stream allowing redirects only to the same host.
       def open_connection_check_redirects(c)
         redir = false
@@ -871,7 +858,6 @@ module Sun::Net::Www::Protocol::Http
       end
       
       typesig { [URL, URL] }
-      # 
       # Same as java.net.URL.hostsEqual
       def hosts_equal(u1, u2)
         h1 = u1.get_host
@@ -1001,8 +987,8 @@ module Sun::Net::Www::Protocol::Http
           end.new_local(self))
           p = nil
           if (!(sel).nil?)
-            uri_ = Sun::Net::Www::ParseUtil.to_uri(self.attr_url)
-            it = sel.select(uri_).iterator
+            uri = Sun::Net::Www::ParseUtil.to_uri(self.attr_url)
+            it = sel.select(uri).iterator
             while (it.has_next)
               p = it.next
               begin
@@ -1018,7 +1004,7 @@ module Sun::Net::Www::Protocol::Http
                 break
               rescue IOException => ioex
                 if (!(p).equal?(Proxy::NO_PROXY))
-                  sel.connect_failed(uri_, p.address, ioex_)
+                  sel.connect_failed(uri, p.address, ioex)
                   if (!it.has_next)
                     # fallback to direct connection
                     @http = get_new_http_client(self.attr_url, nil, @connect_timeout, false)
@@ -1026,7 +1012,7 @@ module Sun::Net::Www::Protocol::Http
                     break
                   end
                 else
-                  raise ioex_
+                  raise ioex
                 end
                 next
               end
@@ -1075,7 +1061,6 @@ module Sun::Net::Www::Protocol::Http
     end
     
     typesig { [] }
-    # 
     # Allowable input/output sequences:
     # [interpreted as POST/PUT]
     # - get output, [write output,] get input, [read input]
@@ -1132,7 +1117,7 @@ module Sun::Net::Www::Protocol::Http
           raise e
         rescue IOException => e
           disconnect_internal
-          raise e_
+          raise e
         end
       end
     end
@@ -1143,7 +1128,6 @@ module Sun::Net::Www::Protocol::Http
     end
     
     typesig { [] }
-    # 
     # get applicable cookies based on the uri and request headers
     # add them to the existing request headers
     def set_cookie_header
@@ -1193,9 +1177,9 @@ module Sun::Net::Www::Protocol::Http
           end
         end
         if (!(@user_cookies).nil?)
-          k_ = 0
-          if (!((k_ = @requests.get_key("Cookie"))).equal?(-1))
-            @requests.set("Cookie", (@requests.get_value(k_)).to_s + ";" + @user_cookies)
+          k = 0
+          if (!((k = @requests.get_key("Cookie"))).equal?(-1))
+            @requests.set("Cookie", (@requests.get_value(k)).to_s + ";" + @user_cookies)
           else
             @requests.set("Cookie", @user_cookies)
           end
@@ -1471,17 +1455,17 @@ module Sun::Net::Www::Protocol::Http
           raise ProtocolException.new("Server redirected too many " + " times (" + (redirects).to_s + ")")
         rescue RuntimeException => e
           disconnect_internal
-          @remembered_exception = e_
-          raise e_
+          @remembered_exception = e
+          raise e
         rescue IOException => e
-          @remembered_exception = e__
+          @remembered_exception = e
           # buffer the error stream if bytes < 4k
           # and it can be buffered within 1 second
           te = @responses.find_value("Transfer-Encoding")
           if (!(@http).nil? && @http.is_keeping_alive && self.attr_enable_esbuffer && (cl > 0 || (!(te).nil? && te.equals_ignore_case("chunked"))))
             @error_stream = ErrorStream.get_error_stream(@input_stream, cl, @http)
           end
-          raise e__
+          raise e
         ensure
           if ((resp_code).equal?(HTTP_PROXY_AUTH) && !(proxy_authentication).nil?)
             proxy_authentication.end_auth_request
@@ -1495,7 +1479,6 @@ module Sun::Net::Www::Protocol::Http
     end
     
     typesig { [IOException] }
-    # 
     # Creates a chained exception that has the same type as
     # original exception and with the same message. Right now,
     # there is no convenient APIs for doing so.
@@ -1548,7 +1531,6 @@ module Sun::Net::Www::Protocol::Http
     end
     
     typesig { [AuthenticationInfo, AuthenticationHeader] }
-    # 
     # set or reset proxy authentication info in request headers
     # after receiving a 407 error. In the case of NTLM however,
     # receiving a 407 is normal and we just skip the stale check
@@ -1571,7 +1553,6 @@ module Sun::Net::Www::Protocol::Http
     end
     
     typesig { [] }
-    # 
     # establish a tunnel through proxy server
     def do_tunneling
       synchronized(self) do
@@ -1654,7 +1635,6 @@ module Sun::Net::Www::Protocol::Http
     end
     
     typesig { [] }
-    # 
     # send a CONNECT request for establishing a tunnel to proxy server
     def send_connectrequest
       port = self.attr_url.get_port
@@ -1682,7 +1662,6 @@ module Sun::Net::Www::Protocol::Http
     end
     
     typesig { [MessageHeader] }
-    # 
     # Sets pre-emptive proxy authentication in header
     def set_preemptive_proxy_authentication(requests)
       pauth = AuthenticationInfo.get_proxy_auth(@http.get_proxy_host_used, @http.get_proxy_port_used)
@@ -1694,7 +1673,6 @@ module Sun::Net::Www::Protocol::Http
     end
     
     typesig { [AuthenticationHeader] }
-    # 
     # Gets the authentication for an HTTP proxy, and applies it to
     # the connection.
     def get_http_proxy_authentication(authhdr)
@@ -1768,24 +1746,24 @@ module Sun::Net::Www::Protocol::Http
             end
           else
             if ((scheme_id).equal?(DigestAuthentication::DIGEST_AUTH))
-              a_ = privileged_request_password_authentication(host, nil, port, self.attr_url.get_protocol, realm, scheme_, self.attr_url, RequestorType::PROXY)
-              if (!(a_).nil?)
+              a = privileged_request_password_authentication(host, nil, port, self.attr_url.get_protocol, realm, scheme_, self.attr_url, RequestorType::PROXY)
+              if (!(a).nil?)
                 params = DigestAuthentication::Parameters.new
-                ret = DigestAuthentication.new(true, host, port, realm, scheme_, a_, params)
+                ret = DigestAuthentication.new(true, host, port, realm, scheme_, a, params)
               end
             else
               if ((scheme_id).equal?(NTLMAuthentication::NTLM_AUTH))
-                a__ = nil
+                a = nil
                 if (!@try_transparent_ntlmproxy)
-                  a__ = privileged_request_password_authentication(host, nil, port, self.attr_url.get_protocol, "", scheme_, self.attr_url, RequestorType::PROXY)
+                  a = privileged_request_password_authentication(host, nil, port, self.attr_url.get_protocol, "", scheme_, self.attr_url, RequestorType::PROXY)
                 end
                 # If we are not trying transparent authentication then
                 # we need to have a PasswordAuthentication instance. For
                 # transparent authentication (Windows only) the username
                 # and password will be picked up from the current logged
                 # on users credentials.
-                if (@try_transparent_ntlmproxy || (!@try_transparent_ntlmproxy && !(a__).nil?))
-                  ret = NTLMAuthentication.new(true, host, port, a__)
+                if (@try_transparent_ntlmproxy || (!@try_transparent_ntlmproxy && !(a).nil?))
+                  ret = NTLMAuthentication.new(true, host, port, a)
                 end
                 @try_transparent_ntlmproxy = false
               else
@@ -1805,9 +1783,9 @@ module Sun::Net::Www::Protocol::Http
         if ((ret).nil? && !(self.attr_default_auth).nil? && self.attr_default_auth.scheme_supported(scheme_))
           begin
             u = URL.new("http", host, port, "/")
-            a___ = self.attr_default_auth.auth_string(u, scheme_, realm)
-            if (!(a___).nil?)
-              ret = BasicAuthentication.new(true, host, port, realm, a___)
+            a = self.attr_default_auth.auth_string(u, scheme_, realm)
+            if (!(a).nil?)
+              ret = BasicAuthentication.new(true, host, port, realm, a)
               # not in cache by default - cache on success
             end
           rescue Java::Net::MalformedURLException => ignored
@@ -1823,7 +1801,6 @@ module Sun::Net::Www::Protocol::Http
     end
     
     typesig { [AuthenticationHeader] }
-    # 
     # Gets the authentication for an HTTP server, and applies it to
     # the connection.
     # @param authHdr the AuthenticationHeader which tells what auth scheme is
@@ -1892,14 +1869,14 @@ module Sun::Net::Www::Protocol::Http
             ret = NegotiateAuthentication.new(false, url1, nil, "Kerberos")
           end
           if ((scheme_id).equal?(NegotiateAuthentication::NEGOTIATE_AUTH))
-            url1_ = nil
+            url1 = nil
             begin
-              url1_ = URL.new(self.attr_url, "/")
+              url1 = URL.new(self.attr_url, "/")
               # truncate the path
             rescue Exception => e
-              url1_ = self.attr_url
+              url1 = self.attr_url
             end
-            ret = NegotiateAuthentication.new(false, url1_, nil, "Negotiate")
+            ret = NegotiateAuthentication.new(false, url1, nil, "Negotiate")
           end
           if ((scheme_id).equal?(BasicAuthentication::BASIC_AUTH))
             a = privileged_request_password_authentication(self.attr_url.get_host, addr, port, self.attr_url.get_protocol, realm, scheme_, self.attr_url, RequestorType::SERVER)
@@ -1908,31 +1885,31 @@ module Sun::Net::Www::Protocol::Http
             end
           end
           if ((scheme_id).equal?(DigestAuthentication::DIGEST_AUTH))
-            a_ = privileged_request_password_authentication(self.attr_url.get_host, addr, port, self.attr_url.get_protocol, realm, scheme_, self.attr_url, RequestorType::SERVER)
-            if (!(a_).nil?)
+            a = privileged_request_password_authentication(self.attr_url.get_host, addr, port, self.attr_url.get_protocol, realm, scheme_, self.attr_url, RequestorType::SERVER)
+            if (!(a).nil?)
               @digestparams = DigestAuthentication::Parameters.new
-              ret = DigestAuthentication.new(false, self.attr_url, realm, scheme_, a_, @digestparams)
+              ret = DigestAuthentication.new(false, self.attr_url, realm, scheme_, a, @digestparams)
             end
           end
           if ((scheme_id).equal?(NTLMAuthentication::NTLM_AUTH))
-            url1__ = nil
+            url1 = nil
             begin
-              url1__ = URL.new(self.attr_url, "/")
+              url1 = URL.new(self.attr_url, "/")
               # truncate the path
             rescue Exception => e
-              url1__ = self.attr_url
+              url1 = self.attr_url
             end
-            a__ = nil
+            a = nil
             if (!@try_transparent_ntlmserver)
-              a__ = privileged_request_password_authentication(self.attr_url.get_host, addr, port, self.attr_url.get_protocol, "", scheme_, self.attr_url, RequestorType::SERVER)
+              a = privileged_request_password_authentication(self.attr_url.get_host, addr, port, self.attr_url.get_protocol, "", scheme_, self.attr_url, RequestorType::SERVER)
             end
             # If we are not trying transparent authentication then
             # we need to have a PasswordAuthentication instance. For
             # transparent authentication (Windows only) the username
             # and password will be picked up from the current logged
             # on users credentials.
-            if (@try_transparent_ntlmserver || (!@try_transparent_ntlmserver && !(a__).nil?))
-              ret = NTLMAuthentication.new(false, url1__, a__)
+            if (@try_transparent_ntlmserver || (!@try_transparent_ntlmserver && !(a).nil?))
+              ret = NTLMAuthentication.new(false, url1, a)
             end
             @try_transparent_ntlmserver = false
           end
@@ -1940,9 +1917,9 @@ module Sun::Net::Www::Protocol::Http
         # For backwards compatibility, we also try defaultAuth
         # REMIND:  Get rid of this for JDK2.0.
         if ((ret).nil? && !(self.attr_default_auth).nil? && self.attr_default_auth.scheme_supported(scheme_))
-          a___ = self.attr_default_auth.auth_string(self.attr_url, scheme_, realm)
-          if (!(a___).nil?)
-            ret = BasicAuthentication.new(false, self.attr_url, realm, a___)
+          a = self.attr_default_auth.auth_string(self.attr_url, scheme_, realm)
+          if (!(a).nil?)
+            ret = BasicAuthentication.new(false, self.attr_url, realm, a)
             # not in cache by default - cache on success
           end
         end
@@ -1973,9 +1950,9 @@ module Sun::Net::Www::Protocol::Http
           end
         end
         if (ValidateServer && !(@current_server_credentials).nil?)
-          raw__ = @responses.find_value("Authentication-Info")
-          if (in_close || (!(raw__).nil?))
-            @current_server_credentials.check_response(raw__, self.attr_method, self.attr_url)
+          raw_ = @responses.find_value("Authentication-Info")
+          if (in_close || (!(raw_).nil?))
+            @current_server_credentials.check_response(raw_, self.attr_method, self.attr_url)
             @current_server_credentials = nil
           end
         end
@@ -2102,7 +2079,6 @@ module Sun::Net::Www::Protocol::Http
     undef_method :cdata=
     
     typesig { [] }
-    # 
     # Reset (without disconnecting the TCP conn) in order to do another transaction with this instance
     def reset
       @http.attr_reuse = true
@@ -2155,7 +2131,6 @@ module Sun::Net::Www::Protocol::Http
     end
     
     typesig { [] }
-    # 
     # Disconnect from the server (for internal use)
     def disconnect_internal
       self.attr_response_code = -1
@@ -2171,7 +2146,6 @@ module Sun::Net::Www::Protocol::Http
     end
     
     typesig { [] }
-    # 
     # Disconnect from the server (public API)
     def disconnect
       self.attr_response_code = -1
@@ -2180,7 +2154,6 @@ module Sun::Net::Www::Protocol::Http
         @pi = nil
       end
       if (!(@http).nil?)
-        # 
         # If we have an input stream this means we received a response
         # from the server. That stream may have been read to EOF and
         # dependening on the stream type may already be closed or the
@@ -2244,7 +2217,6 @@ module Sun::Net::Www::Protocol::Http
     end
     
     typesig { [String] }
-    # 
     # Gets a header field by name. Returns null if not known.
     # @param name the name of the header field
     def get_header_field(name)
@@ -2259,7 +2231,6 @@ module Sun::Net::Www::Protocol::Http
     end
     
     typesig { [] }
-    # 
     # Returns an unmodifiable Map of the header fields.
     # The Map keys are Strings that represent the
     # response-header field names. Each Map value is an
@@ -2280,7 +2251,6 @@ module Sun::Net::Www::Protocol::Http
     end
     
     typesig { [::Java::Int] }
-    # 
     # Gets a header field by index. Returns null if not known.
     # @param n the index of the header field
     def get_header_field(n)
@@ -2295,7 +2265,6 @@ module Sun::Net::Www::Protocol::Http
     end
     
     typesig { [::Java::Int] }
-    # 
     # Gets a header field by index. Returns null if not known.
     # @param n the index of the header field
     def get_header_field_key(n)
@@ -2310,7 +2279,6 @@ module Sun::Net::Www::Protocol::Http
     end
     
     typesig { [String, String] }
-    # 
     # Sets request property. If a property with the key already
     # exists, overwrite its value with the new value.
     # @param value the value to be set
@@ -2326,7 +2294,6 @@ module Sun::Net::Www::Protocol::Http
     end
     
     typesig { [String, String] }
-    # 
     # Adds a general request property specified by a
     # key-value pair.  This method will not overwrite
     # existing values associated with the same key.
@@ -2348,7 +2315,6 @@ module Sun::Net::Www::Protocol::Http
     end
     
     typesig { [String, String] }
-    # 
     # Set a property for authentication.  This can safely disregard
     # the connected test.
     def set_authentication_property(key, value)
@@ -2372,7 +2338,6 @@ module Sun::Net::Www::Protocol::Http
     end
     
     typesig { [] }
-    # 
     # Returns an unmodifiable Map of general request
     # properties for this connection. The Map keys
     # are Strings that represent the request-header
@@ -2400,7 +2365,6 @@ module Sun::Net::Www::Protocol::Http
     end
     
     typesig { [] }
-    # 
     # Returns setting for connect timeout.
     # <p>
     # 0 return implies that the option is disabled
@@ -2416,7 +2380,6 @@ module Sun::Net::Www::Protocol::Http
     end
     
     typesig { [::Java::Int] }
-    # 
     # Sets the read timeout to a specified timeout, in
     # milliseconds. A non-zero value specifies the timeout when
     # reading from Input stream when a connection is established to a
@@ -2443,7 +2406,6 @@ module Sun::Net::Www::Protocol::Http
     end
     
     typesig { [] }
-    # 
     # Returns setting for read timeout. 0 return implies that the
     # option is disabled (i.e., timeout of infinity).
     # 
@@ -2570,7 +2532,6 @@ module Sun::Net::Www::Protocol::Http
         end
         
         typesig { [::Java::Int] }
-        # 
         # Marks the current position in this input stream. A subsequent
         # call to the <code>reset</code> method repositions this stream at
         # the last marked position so that subsequent reads re-read the same
@@ -2597,7 +2558,6 @@ module Sun::Net::Www::Protocol::Http
         end
         
         typesig { [] }
-        # 
         # Repositions this stream to the position at the time the
         # <code>mark</code> method was last called on this input stream.
         # <p>
@@ -2772,7 +2732,6 @@ module Sun::Net::Www::Protocol::Http
         undef_method :error_excp=
         
         typesig { [OutputStream, ::Java::Int] }
-        # 
         # expectedLength == -1 if the stream is chunked
         # expectedLength > 0 if the stream is fixed content-length
         # In the 2nd case, we make sure the expected number of

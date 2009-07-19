@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 2000-2006 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -54,7 +53,6 @@ module Sun::Security::Provider::Certpath
     }
   end
   
-  # 
   # A <code>CertStore</code> that retrieves <code>Certificates</code> and
   # <code>CRL</code>s from an LDAP directory, using the PKIX LDAP V2 Schema
   # (RFC 2587):
@@ -114,7 +112,6 @@ module Sun::Security::Provider::Certpath
       const_set_lazy(:DEBUG) { false }
       const_attr_reader  :DEBUG
       
-      # 
       # LDAP attribute identifiers.
       const_set_lazy(:USER_CERT) { "userCertificate;binary" }
       const_attr_reader  :USER_CERT
@@ -164,7 +161,6 @@ module Sun::Security::Provider::Certpath
       end
     }
     
-    # 
     # The CertificateFactory used to decode certificates from
     # their binary stored form.
     attr_accessor :cf
@@ -173,7 +169,6 @@ module Sun::Security::Provider::Certpath
     alias_method :attr_cf=, :cf=
     undef_method :cf=
     
-    # 
     # The JNDI directory context.
     attr_accessor :ctx
     alias_method :attr_ctx, :ctx
@@ -181,7 +176,6 @@ module Sun::Security::Provider::Certpath
     alias_method :attr_ctx=, :ctx=
     undef_method :ctx=
     
-    # 
     # Flag indicating whether we should prefetch CRLs.
     attr_accessor :prefetch_crls
     alias_method :attr_prefetch_crls, :prefetch_crls
@@ -214,7 +208,6 @@ module Sun::Security::Provider::Certpath
     undef_method :requests=
     
     typesig { [CertStoreParameters] }
-    # 
     # Creates a <code>CertStore</code> with the specified parameters.
     # For this class, the parameters object must be an instance of
     # <code>LDAPCertStoreParameters</code>.
@@ -259,7 +252,6 @@ module Sun::Security::Provider::Certpath
     end
     
     class_module.module_eval {
-      # 
       # Returns an LDAP CertStore. This method consults a cache of
       # CertStores (shared per JVM) using the LDAP server/port as a key.
       const_set_lazy(:CertStoreCache) { Cache.new_soft_memory_cache(185) }
@@ -283,7 +275,6 @@ module Sun::Security::Provider::Certpath
     }
     
     typesig { [String, ::Java::Int] }
-    # 
     # Create InitialDirContext.
     # 
     # @param server Server DNS name hosting LDAP service
@@ -296,7 +287,6 @@ module Sun::Security::Provider::Certpath
       env.put(Context::PROVIDER_URL, url)
       begin
         @ctx = InitialDirContext.new(env)
-        # 
         # By default, follow referrals unless application has
         # overridden property in an application resource file.
         current_env = @ctx.get_environment
@@ -315,7 +305,6 @@ module Sun::Security::Provider::Certpath
     end
     
     class_module.module_eval {
-      # 
       # Private class encapsulating the actual LDAP operations and cache
       # handling. Use:
       # 
@@ -375,7 +364,6 @@ module Sun::Security::Provider::Certpath
         end
         
         typesig { [String] }
-        # 
         # Gets one or more binary values from an attribute.
         # 
         # @param name          the location holding the attribute
@@ -399,7 +387,6 @@ module Sun::Security::Provider::Certpath
         end
         
         typesig { [] }
-        # 
         # Get a map containing the values for this request. The first time
         # this method is called on an object, the LDAP request is sent,
         # the results parsed and added to a private map and also to the
@@ -443,7 +430,6 @@ module Sun::Security::Provider::Certpath
         end
         
         typesig { [String, Array.typed(Array.typed(::Java::Byte))] }
-        # 
         # Add the values to the cache.
         def cache_attribute(attr_id, values)
           cache_key = @name + "|" + attr_id
@@ -451,7 +437,6 @@ module Sun::Security::Provider::Certpath
         end
         
         typesig { [Attribute] }
-        # 
         # Get the values for the given attribute. If the attribute is null
         # or does not contain any values, a zero length byte array is
         # returned. NOTE that it is assumed that all values are byte arrays.
@@ -483,7 +468,6 @@ module Sun::Security::Provider::Certpath
     }
     
     typesig { [LDAPRequest, String, X509CertSelector] }
-    # 
     # Gets certificates from an attribute id and location in the LDAP
     # directory. Returns a Collection containing only the Certificates that
     # match the specified CertSelector.
@@ -498,7 +482,7 @@ module Sun::Security::Provider::Certpath
       encoded_cert = nil
       begin
         encoded_cert = request.get_values(id)
-      rescue NamingException => namingEx
+      rescue NamingException => naming_ex
         raise CertStoreException.new(naming_ex)
       end
       n = encoded_cert.attr_length
@@ -528,7 +512,6 @@ module Sun::Security::Provider::Certpath
     end
     
     typesig { [LDAPRequest, String] }
-    # 
     # Gets certificate pairs from an attribute id and location in the LDAP
     # directory.
     # 
@@ -541,7 +524,7 @@ module Sun::Security::Provider::Certpath
       encoded_cert_pair = nil
       begin
         encoded_cert_pair = request.get_values(id)
-      rescue NamingException => namingEx
+      rescue NamingException => naming_ex
         raise CertStoreException.new(naming_ex)
       end
       n = encoded_cert_pair.attr_length
@@ -568,7 +551,6 @@ module Sun::Security::Provider::Certpath
     end
     
     typesig { [LDAPRequest, X509CertSelector, X509CertSelector] }
-    # 
     # Looks at certificate pairs stored in the crossCertificatePair attribute
     # at the specified location in the LDAP directory. Returns a Collection
     # containing all Certificates stored in the forward component that match
@@ -607,7 +589,6 @@ module Sun::Security::Provider::Certpath
     end
     
     typesig { [CertSelector] }
-    # 
     # Returns a <code>Collection</code> of <code>Certificate</code>s that
     # match the specified selector. If no <code>Certificate</code>s
     # match the selector, an empty <code>Collection</code> will be returned.
@@ -698,18 +679,18 @@ module Sun::Security::Provider::Certpath
           Debug.println("LDAPCertStore.engineGetCertificates() about to " + "getMatchingCrossCerts...")
         end
         if ((!(issuer).nil?) && (basic_constraints > -2))
-          request_ = LDAPRequest.new_local(self, issuer)
-          request_.add_requested_attribute(CROSS_CERT)
-          request_.add_requested_attribute(CA_CERT)
-          request_.add_requested_attribute(ARL)
+          request = LDAPRequest.new_local(self, issuer)
+          request.add_requested_attribute(CROSS_CERT)
+          request.add_requested_attribute(CA_CERT)
+          request.add_requested_attribute(ARL)
           if (@prefetch_crls)
-            request_.add_requested_attribute(CRL)
+            request.add_requested_attribute(CRL)
           end
-          certs.add_all(get_matching_cross_certs(request_, nil, xsel))
+          certs.add_all(get_matching_cross_certs(request, nil, xsel))
           if (!(Debug).nil?)
             Debug.println("LDAPCertStore.engineGetCertificates() after " + "getMatchingCrossCerts(issuer,null,xsel),certs.size(): " + (certs.size).to_s)
           end
-          certs.add_all(get_certificates(request_, CA_CERT, xsel))
+          certs.add_all(get_certificates(request, CA_CERT, xsel))
           if (!(Debug).nil?)
             Debug.println("LDAPCertStore.engineGetCertificates() after " + "getCertificates(issuer,CA_CERT,xsel),certs.size(): " + (certs.size).to_s)
           end
@@ -722,7 +703,6 @@ module Sun::Security::Provider::Certpath
     end
     
     typesig { [LDAPRequest, String, X509CRLSelector] }
-    # 
     # Gets CRLs from an attribute id and location in the LDAP directory.
     # Returns a Collection containing only the CRLs that match the
     # specified CRLSelector.
@@ -737,7 +717,7 @@ module Sun::Security::Provider::Certpath
       encoded_crl = nil
       begin
         encoded_crl = request.get_values(id)
-      rescue NamingException => namingEx
+      rescue NamingException => naming_ex
         raise CertStoreException.new(naming_ex)
       end
       n = encoded_crl.attr_length
@@ -766,7 +746,6 @@ module Sun::Security::Provider::Certpath
     end
     
     typesig { [CRLSelector] }
-    # 
     # Returns a <code>Collection</code> of <code>CRL</code>s that
     # match the specified selector. If no <code>CRL</code>s
     # match the selector, an empty <code>Collection</code> will be returned.
@@ -819,8 +798,8 @@ module Sun::Security::Provider::Certpath
           issuer_name = nil
           if (name_object.is_a?(Array.typed(::Java::Byte)))
             begin
-              issuer_ = X500Principal.new(name_object)
-              issuer_name = (issuer_.get_name(X500Principal::RFC2253)).to_s
+              issuer = X500Principal.new(name_object)
+              issuer_name = (issuer.get_name(X500Principal::RFC2253)).to_s
             rescue IllegalArgumentException => e
               next
             end
@@ -848,8 +827,8 @@ module Sun::Security::Provider::Certpath
               end
             rescue CertStoreException => e
               if (!(Debug).nil?)
-                Debug.println("LDAPCertStore.engineGetCRLs non-fatal error " + "retrieving ARLs:" + (e_).to_s)
-                e_.print_stack_trace
+                Debug.println("LDAPCertStore.engineGetCRLs non-fatal error " + "retrieving ARLs:" + (e).to_s)
+                e.print_stack_trace
               end
             end
           end
@@ -857,9 +836,9 @@ module Sun::Security::Provider::Certpath
           # if certChecking is null, we don't know if we should look in ARL or CRL
           # attribute, so check both for matching CRLs.
           if (entry_crls.is_empty || (cert_checking).nil?)
-            request_ = LDAPRequest.new_local(self, issuer_name)
-            request_.add_requested_attribute(CRL)
-            entry_crls = get_crls(request_, CRL, xsel)
+            request = LDAPRequest.new_local(self, issuer_name)
+            request.add_requested_attribute(CRL)
+            entry_crls = get_crls(request, CRL, xsel)
             crls.add_all(entry_crls)
           end
         end
@@ -880,7 +859,6 @@ module Sun::Security::Provider::Certpath
         end
       end
       
-      # 
       # Subclass of LDAPCertStoreParameters with overridden equals/hashCode
       # methods. This is necessary because the parameters are used as
       # keys in the LDAPCertStore cache.
@@ -938,7 +916,6 @@ module Sun::Security::Provider::Certpath
         alias_method :initialize__sun_ldapcert_store_parameters, :initialize
       end }
       
-      # 
       # This inner class wraps an existing X509CertSelector and adds
       # additional criteria to match on when the certificate's subject is
       # different than the LDAP Distinguished Name entry. The LDAPCertStore
@@ -973,7 +950,6 @@ module Sun::Security::Provider::Certpath
         undef_method :subject=
         
         typesig { [X509CertSelector, X500Principal, String] }
-        # 
         # Creates an LDAPCertSelector.
         # 
         # @param selector the X509CertSelector to wrap
@@ -1119,7 +1095,6 @@ module Sun::Security::Provider::Certpath
         alias_method :initialize__ldapcert_selector, :initialize
       end }
       
-      # 
       # This class has the same purpose as LDAPCertSelector except it is for
       # X.509 CRLs.
       const_set_lazy(:LDAPCRLSelector) { Class.new(X509CRLSelector) do
@@ -1150,7 +1125,6 @@ module Sun::Security::Provider::Certpath
         undef_method :issuer_names=
         
         typesig { [X509CRLSelector, Collection, String] }
-        # 
         # Creates an LDAPCRLSelector.
         # 
         # @param selector the X509CRLSelector to wrap

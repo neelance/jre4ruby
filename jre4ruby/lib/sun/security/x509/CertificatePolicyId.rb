@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 1997-2000 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -33,7 +32,6 @@ module Sun::Security::X509
     }
   end
   
-  # 
   # Represent the CertificatePolicyId ASN.1 object.
   # 
   # @author Amit Kapoor
@@ -48,7 +46,6 @@ module Sun::Security::X509
     undef_method :id=
     
     typesig { [ObjectIdentifier] }
-    # 
     # Create a CertificatePolicyId with the ObjectIdentifier.
     # 
     # @param id the ObjectIdentifier for the policy id.
@@ -58,7 +55,6 @@ module Sun::Security::X509
     end
     
     typesig { [DerValue] }
-    # 
     # Create the object from its Der encoded value.
     # 
     # @param val the DER encoded value for the same.
@@ -68,14 +64,12 @@ module Sun::Security::X509
     end
     
     typesig { [] }
-    # 
     # Return the value of the CertificatePolicyId as an ObjectIdentifier.
     def get_identifier
       return (@id)
     end
     
     typesig { [] }
-    # 
     # Returns a printable representation of the CertificatePolicyId.
     def to_s
       s = "CertificatePolicyId: [" + (@id.to_s).to_s + "]\n"
@@ -83,7 +77,6 @@ module Sun::Security::X509
     end
     
     typesig { [DerOutputStream] }
-    # 
     # Write the CertificatePolicyId to the DerOutputStream.
     # 
     # @param out the DerOutputStream to write the object to.
@@ -93,7 +86,6 @@ module Sun::Security::X509
     end
     
     typesig { [Object] }
-    # 
     # Compares this CertificatePolicyId with another, for
     # equality. Uses ObjectIdentifier.equals() as test for
     # equality.
@@ -108,7 +100,6 @@ module Sun::Security::X509
     end
     
     typesig { [] }
-    # 
     # Returns a hash code value for this object.
     # 
     # @return a hash code value

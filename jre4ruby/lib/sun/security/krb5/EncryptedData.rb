@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Portions Copyright 2000-2006 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -40,7 +39,6 @@ module Sun::Security::Krb5
     }
   end
   
-  # 
   # This class encapsulates Kerberos encrypted data. It allows
   # callers access to both the ASN.1 encoded form of the EncryptedData
   # type as well as the raw cipher text.
@@ -156,7 +154,6 @@ module Sun::Security::Krb5
     end
     
     typesig { [EncryptionKey, Array.typed(::Java::Byte), ::Java::Int] }
-    # 
     # // Not used.
     # public EncryptedData(
     # EncryptionKey key,
@@ -182,7 +179,6 @@ module Sun::Security::Krb5
     end
     
     typesig { [EncryptionKey, ::Java::Int] }
-    # 
     # // Not used.
     # public EncryptedData(
     # EncryptionKey key,
@@ -220,7 +216,6 @@ module Sun::Security::Krb5
     end
     
     typesig { [] }
-    # 
     # // currently destructive on cipher
     # // Not used.
     # public byte[] decrypt(
@@ -254,7 +249,6 @@ module Sun::Security::Krb5
     end
     
     typesig { [DerValue] }
-    # 
     # Constructs an instance of EncryptedData type.
     # @param encoding a single DER-encoded value.
     # @exception Asn1Exception if an error occurs while decoding an
@@ -298,7 +292,6 @@ module Sun::Security::Krb5
     end
     
     typesig { [] }
-    # 
     # Returns an ASN.1 encoded EncryptedData type.
     # 
     # <xmp>
@@ -341,7 +334,6 @@ module Sun::Security::Krb5
     
     class_module.module_eval {
       typesig { [DerInputStream, ::Java::Byte, ::Java::Boolean] }
-      # 
       # Parse (unmarshal) an EncryptedData from a DER input stream.  This form
       # parsing might be used when expanding a value which is part of
       # a constructed sequence and uses explicitly tagged type.
@@ -370,7 +362,6 @@ module Sun::Security::Krb5
     }
     
     typesig { [Array.typed(::Java::Byte), ::Java::Boolean] }
-    # 
     # Reset data stream after decryption, remove redundant bytes.
     # @param data the decrypted data from decrypt().
     # @param encoded true if the encrypted data is ASN1 encoded data,
@@ -418,7 +409,6 @@ module Sun::Security::Krb5
     end
     
     typesig { [] }
-    # 
     # Returns the raw cipher text bytes, not in ASN.1 encoding.
     def get_bytes
       return @cipher

@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
 # This code is free software; you can redistribute it and/or modify it
@@ -39,7 +38,6 @@ module Sun::Security::Krb5::Internal
     }
   end
   
-  # 
   # Implements the ASN.1 KDC-REP type.
   # 
   # <xmp>
@@ -194,7 +192,6 @@ module Sun::Security::Krb5::Internal
     end
     
     typesig { [DerValue, ::Java::Int] }
-    # 
     # // Not used? Don't know what keyusage to use here %%%
     # 
     # public void decrypt(EncryptionKey key) throws Asn1Exception,
@@ -265,7 +262,6 @@ module Sun::Security::Krb5::Internal
     end
     
     typesig { [] }
-    # 
     # Encodes this object to a byte array.
     # @return byte array of encoded APReq object.
     # @exception Asn1Exception if an error occurs while decoding an ASN1 encoded data.

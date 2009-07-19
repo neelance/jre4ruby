@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 1996-2000 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -43,7 +42,6 @@ module Java::Text
     }
   end
   
-  # 
   # Utility class for normalizing and merging patterns for collation.
   # This is to be used with MergeCollation for adding patterns to an
   # existing rule table.
@@ -53,21 +51,18 @@ module Java::Text
     include_class_members PatternEntryImports
     
     typesig { [StringBuffer] }
-    # 
     # Gets the current extension, quoted
     def append_quoted_extension(to_add_to)
       append_quoted(@extension, to_add_to)
     end
     
     typesig { [StringBuffer] }
-    # 
     # Gets the current chars, quoted
     def append_quoted_chars(to_add_to)
       append_quoted(@chars, to_add_to)
     end
     
     typesig { [Object] }
-    # 
     # WARNING this is used for searching in a Vector.
     # Because Vector.indexOf doesn't take a comparator,
     # this method is ill-defined and ignores strength.
@@ -86,7 +81,6 @@ module Java::Text
     end
     
     typesig { [] }
-    # 
     # For debugging.
     def to_s
       result = StringBuffer.new
@@ -95,21 +89,18 @@ module Java::Text
     end
     
     typesig { [] }
-    # 
     # Gets the strength of the entry.
     def get_strength
       return @strength
     end
     
     typesig { [] }
-    # 
     # Gets the expanding characters of the entry.
     def get_extension
       return @extension
     end
     
     typesig { [] }
-    # 
     # Gets the core characters of the entry.
     def get_chars
       return @chars
@@ -241,15 +232,73 @@ module Java::Text
           @new_extension.set_length(0)
           in_chars = true
           in_quote = false
-          while (@i < @pattern.length)
-            ch = @pattern.char_at(@i)
-            if (in_quote)
-              if ((ch).equal?(Character.new(?\'.ord)))
-                in_quote = false
-              else
-                if ((@new_chars.length).equal?(0))
-                  @new_chars.append(ch)
+          catch(:break_main_loop) do
+            while (@i < @pattern.length)
+              ch = @pattern.char_at(@i)
+              if (in_quote)
+                if ((ch).equal?(Character.new(?\'.ord)))
+                  in_quote = false
                 else
+                  if ((@new_chars.length).equal?(0))
+                    @new_chars.append(ch)
+                  else
+                    if (in_chars)
+                      @new_chars.append(ch)
+                    else
+                      @new_extension.append(ch)
+                    end
+                  end
+                end
+              else
+                case (ch)
+                # skip whitespace TODO use Character
+                when Character.new(?=.ord)
+                  if (!(new_strength).equal?(UNSET))
+                    throw :break_main_loop, :thrown
+                  end
+                  new_strength = Collator::IDENTICAL
+                when Character.new(?,.ord)
+                  if (!(new_strength).equal?(UNSET))
+                    throw :break_main_loop, :thrown
+                  end
+                  new_strength = Collator::TERTIARY
+                when Character.new(?;.ord)
+                  if (!(new_strength).equal?(UNSET))
+                    throw :break_main_loop, :thrown
+                  end
+                  new_strength = Collator::SECONDARY
+                when Character.new(?<.ord)
+                  if (!(new_strength).equal?(UNSET))
+                    throw :break_main_loop, :thrown
+                  end
+                  new_strength = Collator::PRIMARY
+                when Character.new(?&.ord)
+                  if (!(new_strength).equal?(UNSET))
+                    throw :break_main_loop, :thrown
+                  end
+                  new_strength = RESET
+                when Character.new(?\t.ord), Character.new(?\n.ord), Character.new(?\f.ord), Character.new(?\r.ord), Character.new(?\s.ord)
+                when Character.new(?/.ord)
+                  in_chars = false
+                when Character.new(?\'.ord)
+                  in_quote = true
+                  ch = @pattern.char_at((@i += 1))
+                  if ((@new_chars.length).equal?(0))
+                    @new_chars.append(ch)
+                  else
+                    if (in_chars)
+                      @new_chars.append(ch)
+                    else
+                      @new_extension.append(ch)
+                    end
+                  end
+                else
+                  if ((new_strength).equal?(UNSET))
+                    raise ParseException.new("missing char (=,;<&) : " + (@pattern.substring(@i, (@i + 10 < @pattern.length) ? @i + 10 : @pattern.length)).to_s, @i)
+                  end
+                  if (PatternEntry.is_special_char(ch) && ((in_quote).equal?(false)))
+                    raise ParseException.new("Unquoted punctuation character : " + (JavaInteger.to_s(ch, 16)).to_s, @i)
+                  end
                   if (in_chars)
                     @new_chars.append(ch)
                   else
@@ -257,64 +306,8 @@ module Java::Text
                   end
                 end
               end
-            else
-              case (ch)
-              # skip whitespace TODO use Character
-              when Character.new(?=.ord)
-                if (!(new_strength).equal?(UNSET))
-                  break
-                end
-                new_strength = Collator::IDENTICAL
-              when Character.new(?,.ord)
-                if (!(new_strength).equal?(UNSET))
-                  break
-                end
-                new_strength = Collator::TERTIARY
-              when Character.new(?;.ord)
-                if (!(new_strength).equal?(UNSET))
-                  break
-                end
-                new_strength = Collator::SECONDARY
-              when Character.new(?<.ord)
-                if (!(new_strength).equal?(UNSET))
-                  break
-                end
-                new_strength = Collator::PRIMARY
-              when Character.new(?&.ord)
-                if (!(new_strength).equal?(UNSET))
-                  break
-                end
-                new_strength = RESET
-              when Character.new(?\t.ord), Character.new(?\n.ord), Character.new(?\f.ord), Character.new(?\r.ord), Character.new(?\s.ord)
-              when Character.new(?/.ord)
-                in_chars = false
-              when Character.new(?\'.ord)
-                in_quote = true
-                ch = @pattern.char_at((@i += 1))
-                if ((@new_chars.length).equal?(0))
-                  @new_chars.append(ch)
-                else
-                  if (in_chars)
-                    @new_chars.append(ch)
-                  else
-                    @new_extension.append(ch)
-                  end
-                end
-              else
-                if ((new_strength).equal?(UNSET))
-                  raise ParseException.new("missing char (=,;<&) : " + (@pattern.substring(@i, (@i + 10 < @pattern.length) ? @i + 10 : @pattern.length)).to_s, @i)
-                end
-                if (PatternEntry.is_special_char(ch) && ((in_quote).equal?(false)))
-                  raise ParseException.new("Unquoted punctuation character : " + (JavaInteger.to_s(ch, 16)).to_s, @i)
-                end
-                if (in_chars)
-                  @new_chars.append(ch)
-                else
-                  @new_extension.append(ch)
-                end
-              end
+              ((@i += 1) - 1)
             end
-            ((@i += 1) - 1)
           end
           if ((new_strength).equal?(UNSET))
             return nil

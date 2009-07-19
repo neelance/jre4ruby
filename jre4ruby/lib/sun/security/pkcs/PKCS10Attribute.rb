@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 1997-1998 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -34,7 +33,6 @@ module Sun::Security::Pkcs
     }
   end
   
-  # 
   # Represent a PKCS#10 Attribute.
   # 
   # <p>Attributes are additonal information which can be inserted in a PKCS#10
@@ -73,7 +71,6 @@ module Sun::Security::Pkcs
     undef_method :attribute_value=
     
     typesig { [DerValue] }
-    # 
     # Constructs an attribute from a DER encoding.
     # This constructor expects the value to be encoded as defined above,
     # i.e. a SEQUENCE of OID and SET OF value(s), not a literal
@@ -91,7 +88,6 @@ module Sun::Security::Pkcs
     end
     
     typesig { [ObjectIdentifier, Object] }
-    # 
     # Constructs an attribute from individual components of
     # ObjectIdentifier and the value (any java object).
     # 
@@ -106,7 +102,6 @@ module Sun::Security::Pkcs
     end
     
     typesig { [PKCS9Attribute] }
-    # 
     # Constructs an attribute from PKCS9 attribute.
     # 
     # @param attr the PKCS9Attribute to create from.
@@ -118,7 +113,6 @@ module Sun::Security::Pkcs
     end
     
     typesig { [OutputStream] }
-    # 
     # DER encode this object onto an output stream.
     # Implements the <code>DerEncoder</code> interface.
     # 
@@ -132,21 +126,18 @@ module Sun::Security::Pkcs
     end
     
     typesig { [] }
-    # 
     # Returns the ObjectIdentifier of the attribute.
     def get_attribute_id
       return (@attribute_id)
     end
     
     typesig { [] }
-    # 
     # Returns the attribute value.
     def get_attribute_value
       return (@attribute_value)
     end
     
     typesig { [] }
-    # 
     # Returns the attribute in user readable form.
     def to_s
       return (@attribute_value.to_s)

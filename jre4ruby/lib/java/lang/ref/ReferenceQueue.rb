@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 1997-2005 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -31,7 +30,6 @@ module Java::Lang::Ref
     }
   end
   
-  # 
   # Reference queues, to which registered reference objects are appended by the
   # garbage collector after the appropriate reachability changes are detected.
   # 
@@ -41,7 +39,6 @@ module Java::Lang::Ref
     include_class_members ReferenceQueueImports
     
     typesig { [] }
-    # 
     # Constructs a new reference-object queue.
     def initialize
       @lock = Lock.new
@@ -158,7 +155,6 @@ module Java::Lang::Ref
     end
     
     typesig { [] }
-    # 
     # Polls this queue to see if a reference object is available.  If one is
     # available without further delay then it is removed from the queue and
     # returned.  Otherwise this method immediately returns <tt>null</tt>.
@@ -172,7 +168,6 @@ module Java::Lang::Ref
     end
     
     typesig { [::Java::Long] }
-    # 
     # Removes the next reference object in this queue, blocking until either
     # one becomes available or the given timeout period expires.
     # 
@@ -214,7 +209,6 @@ module Java::Lang::Ref
     end
     
     typesig { [] }
-    # 
     # Removes the next reference object in this queue, blocking until one
     # becomes available.
     # 

@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 2005 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -38,7 +37,6 @@ module Sun::Net::Www::Protocol::Http
     }
   end
   
-  # 
   # This class encapsulates all JAAS and JGSS API calls in a seperate class
   # outside NegotiateAuthentication.java so that J2SE build can go smoothly
   # without the presence of it.
@@ -66,7 +64,6 @@ module Sun::Net::Www::Protocol::Http
     undef_method :one_token=
     
     typesig { [String, String] }
-    # 
     # Initialize the object, which includes:<ul>
     # <li>Find out what GSS mechanism to use from <code>http.negotiate.mechanism.oid</code>,
     # defaults SPNEGO
@@ -125,7 +122,6 @@ module Sun::Net::Www::Protocol::Http
     end
     
     typesig { [String, String] }
-    # 
     # Constructor
     # @param hostname name of peer server
     # @param scheme auth scheme requested, Negotiate ot Kerberos
@@ -148,7 +144,6 @@ module Sun::Net::Www::Protocol::Http
     end
     
     typesig { [] }
-    # 
     # Return the first token of GSS, in SPNEGO, it's called NegTokenInit
     # @return the first token
     def first_token
@@ -156,7 +151,6 @@ module Sun::Net::Www::Protocol::Http
     end
     
     typesig { [Array.typed(::Java::Byte)] }
-    # 
     # Return the rest tokens of GSS, in SPNEGO, it's called NegTokenTarg
     # @param token the token received from server
     # @return the next token

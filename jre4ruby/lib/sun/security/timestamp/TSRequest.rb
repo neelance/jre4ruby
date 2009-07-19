@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 2003 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -37,7 +36,6 @@ module Sun::Security::Timestamp
     }
   end
   
-  # 
   # This class provides a timestamp request, as defined in
   # <a href="http://www.ietf.org/rfc/rfc3161.txt">RFC 3161</a>.
   # 
@@ -126,7 +124,6 @@ module Sun::Security::Timestamp
     undef_method :extensions=
     
     typesig { [Array.typed(::Java::Byte), String] }
-    # 
     # Constructs a timestamp request for the supplied hash value..
     # 
     # @param hashValue     The hash value. This is the data to be timestamped.
@@ -157,7 +154,6 @@ module Sun::Security::Timestamp
     end
     
     typesig { [::Java::Int] }
-    # 
     # Sets the Time-Stamp Protocol version.
     # 
     # @param version The TSP version.
@@ -166,7 +162,6 @@ module Sun::Security::Timestamp
     end
     
     typesig { [String] }
-    # 
     # Sets an object identifier for the Time-Stamp Protocol policy.
     # 
     # @param version The policy object identifier.
@@ -175,7 +170,6 @@ module Sun::Security::Timestamp
     end
     
     typesig { [BigInteger] }
-    # 
     # Sets a nonce.
     # A nonce is a single-use random number.
     # 
@@ -185,7 +179,6 @@ module Sun::Security::Timestamp
     end
     
     typesig { [::Java::Boolean] }
-    # 
     # Request that the TSA include its signing certificate in the response.
     # 
     # @param returnCertificate True if the TSA should return its signing
@@ -195,7 +188,6 @@ module Sun::Security::Timestamp
     end
     
     typesig { [Array.typed(X509Extension)] }
-    # 
     # Sets the Time-Stamp Protocol extensions.
     # 
     # @param extensions The protocol extensions.

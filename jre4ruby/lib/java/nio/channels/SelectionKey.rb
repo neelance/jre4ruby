@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 2000-2006 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -33,7 +32,6 @@ module Java::Nio::Channels
     }
   end
   
-  # 
   # A token representing the registration of a {@link SelectableChannel} with a
   # {@link Selector}.
   # 
@@ -113,7 +111,6 @@ module Java::Nio::Channels
     include_class_members SelectionKeyImports
     
     typesig { [] }
-    # 
     # Constructs an instance of this class.
     def initialize
       @attachment = nil
@@ -131,7 +128,6 @@ module Java::Nio::Channels
     end
     
     typesig { [] }
-    # 
     # Returns the selector for which this key was created.  This method will
     # continue to return the selector even after the key is cancelled.  </p>
     # 
@@ -141,7 +137,6 @@ module Java::Nio::Channels
     end
     
     typesig { [] }
-    # 
     # Tells whether or not this key is valid.
     # 
     # <p> A key is valid upon creation and remains so until it is cancelled,
@@ -153,7 +148,6 @@ module Java::Nio::Channels
     end
     
     typesig { [] }
-    # 
     # Requests that the registration of this key's channel with its selector
     # be cancelled.  Upon return the key will be invalid and will have been
     # added to its selector's cancelled-key set.  The key will be removed from
@@ -190,7 +184,6 @@ module Java::Nio::Channels
     end
     
     typesig { [::Java::Int] }
-    # 
     # Sets this key's interest set to the given value.
     # 
     # <p> This method may be invoked at any time.  Whether or not it blocks,
@@ -212,7 +205,6 @@ module Java::Nio::Channels
     end
     
     typesig { [] }
-    # 
     # Retrieves this key's ready-operation set.
     # 
     # <p> It is guaranteed that the returned set will only contain operation
@@ -241,7 +233,6 @@ module Java::Nio::Channels
       const_set_lazy(:OP_READ) { 1 << 0 }
       const_attr_reader  :OP_READ
       
-      # 
       # Operation-set bit for write operations.  </p>
       # 
       # <p> Suppose that a selection key's interest set contains
@@ -254,7 +245,6 @@ module Java::Nio::Channels
       const_set_lazy(:OP_WRITE) { 1 << 2 }
       const_attr_reader  :OP_WRITE
       
-      # 
       # Operation-set bit for socket-connect operations.  </p>
       # 
       # <p> Suppose that a selection key's interest set contains
@@ -267,7 +257,6 @@ module Java::Nio::Channels
       const_set_lazy(:OP_CONNECT) { 1 << 3 }
       const_attr_reader  :OP_CONNECT
       
-      # 
       # Operation-set bit for socket-accept operations.  </p>
       # 
       # <p> Suppose that a selection key's interest set contains
@@ -282,7 +271,6 @@ module Java::Nio::Channels
     }
     
     typesig { [] }
-    # 
     # Tests whether this key's channel is ready for reading.
     # 
     # <p> An invocation of this method of the form <tt>k.isReadable()</tt>
@@ -305,7 +293,6 @@ module Java::Nio::Channels
     end
     
     typesig { [] }
-    # 
     # Tests whether this key's channel is ready for writing.
     # 
     # <p> An invocation of this method of the form <tt>k.isWritable()</tt>
@@ -328,7 +315,6 @@ module Java::Nio::Channels
     end
     
     typesig { [] }
-    # 
     # Tests whether this key's channel has either finished, or failed to
     # finish, its socket-connection operation.
     # 
@@ -352,7 +338,6 @@ module Java::Nio::Channels
     end
     
     typesig { [] }
-    # 
     # Tests whether this key's channel is ready to accept a new socket
     # connection.
     # 
@@ -388,7 +373,6 @@ module Java::Nio::Channels
     }
     
     typesig { [Object] }
-    # 
     # Attaches the given object to this key.
     # 
     # <p> An attached object may later be retrieved via the {@link #attachment()
@@ -406,7 +390,6 @@ module Java::Nio::Channels
     end
     
     typesig { [] }
-    # 
     # Retrieves the current attachment.  </p>
     # 
     # @return  The object currently attached to this key,

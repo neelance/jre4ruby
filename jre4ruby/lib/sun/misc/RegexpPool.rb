@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 1995-2001 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -32,7 +31,6 @@ module Sun::Misc
     }
   end
   
-  # 
   # A class to represent a pool of regular expressions.  A string
   # can be matched against the whole pool all at once.  It is much
   # faster than doing individual regular expression matches one-by-one.
@@ -73,7 +71,6 @@ module Sun::Misc
     end
     
     typesig { [String, Object] }
-    # 
     # Add a regular expression to the pool of regular expressions.
     # @param   re  The regular expression to add to the pool.
     # For now, only handles strings that either begin or end with
@@ -88,7 +85,6 @@ module Sun::Misc
     end
     
     typesig { [String, Object] }
-    # 
     # Replace the target for the regular expression with a different
     # target.
     # 
@@ -108,7 +104,6 @@ module Sun::Misc
     end
     
     typesig { [String] }
-    # 
     # Delete the regular expression and its target.
     # @param re The regular expression to be deleted from the pool.
     # must begin or end with a '*'

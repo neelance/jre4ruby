@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 1996-2006 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -35,7 +34,6 @@ module Java::Util::Zip
     }
   end
   
-  # 
   # This class implements an input stream filter for reading files in the
   # ZIP file format. Includes support for both compressed and uncompressed
   # entries.
@@ -98,7 +96,6 @@ module Java::Util::Zip
     undef_method :entry_eof=
     
     typesig { [] }
-    # 
     # Check to make sure that this stream has not been closed
     def ensure_open
       if (@closed)
@@ -107,7 +104,6 @@ module Java::Util::Zip
     end
     
     typesig { [InputStream] }
-    # 
     # Creates a new ZIP input stream.
     # @param in the actual input stream
     def initialize(in_)
@@ -132,7 +128,6 @@ module Java::Util::Zip
     end
     
     typesig { [] }
-    # 
     # Reads the next ZIP file entry and positions the stream at the
     # beginning of the entry data.
     # @return the next ZIP file entry, or null if there are no more entries
@@ -156,7 +151,6 @@ module Java::Util::Zip
     end
     
     typesig { [] }
-    # 
     # Closes the current ZIP entry and positions the stream for reading the
     # next entry.
     # @exception ZipException if a ZIP file error has occurred
@@ -169,7 +163,6 @@ module Java::Util::Zip
     end
     
     typesig { [] }
-    # 
     # Returns 0 after EOF has reached for the current entry data,
     # otherwise always return 1.
     # <p>
@@ -188,7 +181,6 @@ module Java::Util::Zip
     end
     
     typesig { [Array.typed(::Java::Byte), ::Java::Int, ::Java::Int] }
-    # 
     # Reads from the current ZIP entry into an array of bytes.
     # If <code>len</code> is not zero, the method
     # blocks until some input is available; otherwise, no
@@ -252,7 +244,6 @@ module Java::Util::Zip
     end
     
     typesig { [::Java::Long] }
-    # 
     # Skips specified number of bytes in the current ZIP entry.
     # @param n the number of bytes to skip
     # @return the actual number of bytes skipped
@@ -282,7 +273,6 @@ module Java::Util::Zip
     end
     
     typesig { [] }
-    # 
     # Closes this input stream and releases any system resources associated
     # with the stream.
     # @exception IOException if an I/O error has occurred
@@ -300,7 +290,6 @@ module Java::Util::Zip
     undef_method :b=
     
     typesig { [] }
-    # 
     # Reads local file (LOC) header for next entry.
     def read_loc
       begin
@@ -321,36 +310,35 @@ module Java::Util::Zip
         @b = Array.typed(::Java::Byte).new(blen) { 0 }
       end
       read_fully(@b, 0, len)
-      e_ = create_zip_entry(get_utf8string(@b, 0, len))
+      e = create_zip_entry(get_utf8string(@b, 0, len))
       # now get the remaining fields for the entry
       @flag = get16(@tmpbuf, LOCFLG)
       if (((@flag & 1)).equal?(1))
         raise ZipException.new("encrypted ZIP entry not supported")
       end
-      e_.attr_method = get16(@tmpbuf, LOCHOW)
-      e_.attr_time = get32(@tmpbuf, LOCTIM)
+      e.attr_method = get16(@tmpbuf, LOCHOW)
+      e.attr_time = get32(@tmpbuf, LOCTIM)
       if (((@flag & 8)).equal?(8))
         # "Data Descriptor" present
-        if (!(e_.attr_method).equal?(DEFLATED))
+        if (!(e.attr_method).equal?(DEFLATED))
           raise ZipException.new("only DEFLATED entries can have EXT descriptor")
         end
       else
-        e_.attr_crc = get32(@tmpbuf, LOCCRC)
-        e_.attr_csize = get32(@tmpbuf, LOCSIZ)
-        e_.attr_size = get32(@tmpbuf, LOCLEN)
+        e.attr_crc = get32(@tmpbuf, LOCCRC)
+        e.attr_csize = get32(@tmpbuf, LOCSIZ)
+        e.attr_size = get32(@tmpbuf, LOCLEN)
       end
       len = get16(@tmpbuf, LOCEXT)
       if (len > 0)
         bb = Array.typed(::Java::Byte).new(len) { 0 }
         read_fully(bb, 0, len)
-        e_.set_extra(bb)
+        e.set_extra(bb)
       end
-      return e_
+      return e
     end
     
     class_module.module_eval {
       typesig { [Array.typed(::Java::Byte), ::Java::Int, ::Java::Int] }
-      # 
       # Fetches a UTF8-encoded String from the specified byte array.
       def get_utf8string(b, off, len)
         # First, count the number of characters in the sequence
@@ -387,18 +375,18 @@ module Java::Util::Zip
         cs = CharArray.new(count)
         i = 0
         while (off < max)
-          c_ = b[((off += 1) - 1)] & 0xff
-          case (c_ >> 4)
+          c = b[((off += 1) - 1)] & 0xff
+          case (c >> 4)
           when 0, 1, 2, 3, 4, 5, 6, 7
             # 0xxxxxxx
-            cs[((i += 1) - 1)] = RJava.cast_to_char(c_)
+            cs[((i += 1) - 1)] = RJava.cast_to_char(c)
           when 12, 13
             # 110xxxxx 10xxxxxx
-            cs[((i += 1) - 1)] = RJava.cast_to_char((((c_ & 0x1f) << 6) | (b[((off += 1) - 1)] & 0x3f)))
+            cs[((i += 1) - 1)] = RJava.cast_to_char((((c & 0x1f) << 6) | (b[((off += 1) - 1)] & 0x3f)))
           when 14
             # 1110xxxx 10xxxxxx 10xxxxxx
             t = (b[((off += 1) - 1)] & 0x3f) << 6
-            cs[((i += 1) - 1)] = RJava.cast_to_char((((c_ & 0xf) << 12) | t | (b[((off += 1) - 1)] & 0x3f)))
+            cs[((i += 1) - 1)] = RJava.cast_to_char((((c & 0xf) << 12) | t | (b[((off += 1) - 1)] & 0x3f)))
           else
             # 10xxxxxx, 1111xxxx
             raise IllegalArgumentException.new
@@ -409,7 +397,6 @@ module Java::Util::Zip
     }
     
     typesig { [String] }
-    # 
     # Creates a new <code>ZipEntry</code> object for the specified
     # entry name.
     # 
@@ -420,7 +407,6 @@ module Java::Util::Zip
     end
     
     typesig { [ZipEntry] }
-    # 
     # Reads end of deflated entry as well as EXT descriptor if present.
     def read_end(e)
       n = self.attr_inf.get_remaining
@@ -455,7 +441,6 @@ module Java::Util::Zip
     end
     
     typesig { [Array.typed(::Java::Byte), ::Java::Int, ::Java::Int] }
-    # 
     # Reads bytes, blocking until all bytes are read.
     def read_fully(b, off, len)
       while (len > 0)
@@ -470,7 +455,6 @@ module Java::Util::Zip
     
     class_module.module_eval {
       typesig { [Array.typed(::Java::Byte), ::Java::Int] }
-      # 
       # Fetches unsigned 16-bit value from byte array at specified offset.
       # The bytes are assumed to be in Intel (little-endian) byte order.
       def get16(b, off)
@@ -478,7 +462,6 @@ module Java::Util::Zip
       end
       
       typesig { [Array.typed(::Java::Byte), ::Java::Int] }
-      # 
       # Fetches unsigned 32-bit value from byte array at specified offset.
       # The bytes are assumed to be in Intel (little-endian) byte order.
       def get32(b, off)

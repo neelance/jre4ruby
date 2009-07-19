@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 2000-2002 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -44,7 +43,6 @@ module Sun::Security::Provider::Certpath
     }
   end
   
-  # 
   # This class represents an X.509 Certificate Pair object, which is primarily
   # used to hold a pair of cross certificates issued between Certification
   # Authorities. The ASN.1 structure is listed below. The forward certificate
@@ -107,7 +105,6 @@ module Sun::Security::Provider::Certpath
     }
     
     typesig { [] }
-    # 
     # Creates an empty instance of X509CertificatePair.
     def initialize
       @forward = nil
@@ -116,7 +113,6 @@ module Sun::Security::Provider::Certpath
     end
     
     typesig { [X509Certificate, X509Certificate] }
-    # 
     # Creates an instance of X509CertificatePair. At least one of
     # the pair must be non-null.
     # 
@@ -138,7 +134,6 @@ module Sun::Security::Provider::Certpath
     end
     
     typesig { [Array.typed(::Java::Byte)] }
-    # 
     # Create a new X509CertificatePair from its encoding.
     # 
     # For internal use only, external code should use generateCertificatePair.
@@ -157,7 +152,6 @@ module Sun::Security::Provider::Certpath
     
     class_module.module_eval {
       typesig { [] }
-      # 
       # Clear the cache for debugging.
       def clear_cache
         synchronized(self) do
@@ -166,7 +160,6 @@ module Sun::Security::Provider::Certpath
       end
       
       typesig { [Array.typed(::Java::Byte)] }
-      # 
       # Create a X509CertificatePair from its encoding. Uses cache lookup
       # if possible.
       def generate_certificate_pair(encoded)
@@ -185,7 +178,6 @@ module Sun::Security::Provider::Certpath
     }
     
     typesig { [X509Certificate] }
-    # 
     # Sets the forward component of the certificate pair.
     def set_forward(cert)
       check_pair
@@ -193,7 +185,6 @@ module Sun::Security::Provider::Certpath
     end
     
     typesig { [X509Certificate] }
-    # 
     # Sets the reverse component of the certificate pair.
     def set_reverse(cert)
       check_pair
@@ -201,7 +192,6 @@ module Sun::Security::Provider::Certpath
     end
     
     typesig { [] }
-    # 
     # Returns the forward component of the certificate pair.
     # 
     # @return The forward certificate, or null if not set.
@@ -210,7 +200,6 @@ module Sun::Security::Provider::Certpath
     end
     
     typesig { [] }
-    # 
     # Returns the reverse component of the certificate pair.
     # 
     # @return The reverse certificate, or null if not set.
@@ -219,7 +208,6 @@ module Sun::Security::Provider::Certpath
     end
     
     typesig { [] }
-    # 
     # Return the DER encoded form of the certificate pair.
     # 
     # @return The encoded form of the certificate pair.
@@ -238,7 +226,6 @@ module Sun::Security::Provider::Certpath
     end
     
     typesig { [] }
-    # 
     # Return a printable representation of the certificate pair.
     # 
     # @return A String describing the contents of the pair.
@@ -300,22 +287,20 @@ module Sun::Security::Provider::Certpath
         tagged.write(DerValue.create_tag(DerValue::TAG_CONTEXT, true, TAG_FORWARD), tmp)
       end
       if (!(@reverse).nil?)
-        tmp_ = DerOutputStream.new
-        tmp_.put_der_value(DerValue.new(@reverse.get_encoded))
-        tagged.write(DerValue.create_tag(DerValue::TAG_CONTEXT, true, TAG_REVERSE), tmp_)
+        tmp = DerOutputStream.new
+        tmp.put_der_value(DerValue.new(@reverse.get_encoded))
+        tagged.write(DerValue.create_tag(DerValue::TAG_CONTEXT, true, TAG_REVERSE), tmp)
       end
       out.write(DerValue.attr_tag_sequence, tagged)
     end
     
     typesig { [] }
-    # 
     # Check for a valid certificate pair
     def check_pair
       # if either of pair is missing, return w/o error
       if ((@forward).nil? || (@reverse).nil?)
         return
       end
-      # 
       # If both elements of the pair are present, check that they
       # are a valid pair.
       fw_subject = @forward.get_subject_x500principal

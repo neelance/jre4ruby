@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 1996-2006 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -39,7 +38,6 @@ module Java::Security
     }
   end
   
-  # 
   # This MessageDigest class provides applications the functionality of a
   # message digest algorithm, such as MD5 or SHA.
   # Message digests are secure one-way hash functions that take arbitrary-sized
@@ -122,7 +120,6 @@ module Java::Security
     undef_method :provider=
     
     typesig { [String] }
-    # 
     # Creates a message digest with the specified algorithm name.
     # 
     # @param algorithm the standard name of the digest algorithm.
@@ -141,7 +138,6 @@ module Java::Security
     
     class_module.module_eval {
       typesig { [String] }
-      # 
       # Returns a MessageDigest object that implements the specified digest
       # algorithm.
       # 
@@ -185,7 +181,6 @@ module Java::Security
       end
       
       typesig { [String, String] }
-      # 
       # Returns a MessageDigest object that implements the specified digest
       # algorithm.
       # 
@@ -235,7 +230,6 @@ module Java::Security
       end
       
       typesig { [String, Provider] }
-      # 
       # Returns a MessageDigest object that implements the specified digest
       # algorithm.
       # 
@@ -281,7 +275,6 @@ module Java::Security
     }
     
     typesig { [] }
-    # 
     # Returns the provider of this message digest object.
     # 
     # @return the provider of this message digest object
@@ -290,7 +283,6 @@ module Java::Security
     end
     
     typesig { [::Java::Byte] }
-    # 
     # Updates the digest using the specified byte.
     # 
     # @param input the byte with which to update the digest.
@@ -300,7 +292,6 @@ module Java::Security
     end
     
     typesig { [Array.typed(::Java::Byte), ::Java::Int, ::Java::Int] }
-    # 
     # Updates the digest using the specified array of bytes, starting
     # at the specified offset.
     # 
@@ -322,7 +313,6 @@ module Java::Security
     end
     
     typesig { [Array.typed(::Java::Byte)] }
-    # 
     # Updates the digest using the specified array of bytes.
     # 
     # @param input the array of bytes.
@@ -332,7 +322,6 @@ module Java::Security
     end
     
     typesig { [ByteBuffer] }
-    # 
     # Update the digest using the specified ByteBuffer. The digest is
     # updated using the <code>input.remaining()</code> bytes starting
     # at <code>input.position()</code>.
@@ -350,7 +339,6 @@ module Java::Security
     end
     
     typesig { [] }
-    # 
     # Completes the hash computation by performing final operations
     # such as padding. The digest is reset after this call is made.
     # 
@@ -363,7 +351,6 @@ module Java::Security
     end
     
     typesig { [Array.typed(::Java::Byte), ::Java::Int, ::Java::Int] }
-    # 
     # Completes the hash computation by performing final operations
     # such as padding. The digest is reset after this call is made.
     # 
@@ -389,7 +376,6 @@ module Java::Security
     end
     
     typesig { [Array.typed(::Java::Byte)] }
-    # 
     # Performs a final update on the digest using the specified array
     # of bytes, then completes the digest computation. That is, this
     # method first calls {@link #update(byte[]) update(input)},
@@ -406,7 +392,6 @@ module Java::Security
     end
     
     typesig { [] }
-    # 
     # Returns a string representation of this message digest object.
     def to_s
       baos = ByteArrayOutputStream.new
@@ -424,7 +409,6 @@ module Java::Security
     
     class_module.module_eval {
       typesig { [Array.typed(::Java::Byte), Array.typed(::Java::Byte)] }
-      # 
       # Compares two digests for equality. Does a simple byte compare.
       # 
       # @param digesta one of the digests to compare.
@@ -448,7 +432,6 @@ module Java::Security
     }
     
     typesig { [] }
-    # 
     # Resets the digest for further use.
     def reset
       engine_reset
@@ -456,7 +439,6 @@ module Java::Security
     end
     
     typesig { [] }
-    # 
     # Returns a string that identifies the algorithm, independent of
     # implementation details. The name should be a standard
     # Java Security name (such as "SHA", "MD5", and so on).
@@ -471,7 +453,6 @@ module Java::Security
     end
     
     typesig { [] }
-    # 
     # Returns the length of the digest in bytes, or 0 if this operation is
     # not supported by the provider and the implementation is not cloneable.
     # 
@@ -494,7 +475,6 @@ module Java::Security
     end
     
     typesig { [] }
-    # 
     # Returns a clone if the implementation is cloneable.
     # 
     # @return a clone if the implementation is cloneable.
@@ -510,7 +490,6 @@ module Java::Security
     end
     
     class_module.module_eval {
-      # 
       # The following class allows providers to extend from MessageDigestSpi
       # rather than from MessageDigest. It represents a MessageDigest with an
       # encapsulated, provider-supplied SPI object (of type MessageDigestSpi).
@@ -541,7 +520,6 @@ module Java::Security
         end
         
         typesig { [] }
-        # 
         # Returns a clone if the delegate is cloneable.
         # 
         # @return a clone if the delegate is cloneable.

@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 2005 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -43,8 +42,6 @@ module Sun::Util::Calendar
     }
   end
   
-  # 
-  # 
   # @author Masayoshi Okutsu
   # @since 1.6
   class LocalGregorianCalendar < LocalGregorianCalendarImports.const_get :BaseCalendar
@@ -426,7 +423,6 @@ module Sun::Util::Calendar
     end
     
     typesig { [::Java::Int] }
-    # 
     # Returns whether the specified Gregorian year is a leap year.
     # @see #isLeapYear(Era, int)
     def is_leap_year(gregorian_year)

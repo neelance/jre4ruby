@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 2006 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -36,7 +35,6 @@ module Sun::Security::Ec
     }
   end
   
-  # 
   # This class implements encoding and decoding of Elliptic Curve parameters
   # as specified in RFC 3279.
   # 
@@ -249,7 +247,6 @@ module Sun::Security::Ec
       end
       
       typesig { [ECParameterSpec] }
-      # 
       # private static final ObjectIdentifier fieldTypePrime =
       # ObjectIdentifier.newInternal(new int[] {1, 2, 840, 10045, 1, 1});
       # 

@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 1995-2007 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -36,7 +35,6 @@ module Java::Net
     }
   end
   
-  # 
   # This class implements server sockets. A server socket waits for
   # requests to come in over the network. It performs some operation
   # based on that request, and then possibly returns a result to the requester.
@@ -55,7 +53,6 @@ module Java::Net
   class ServerSocket 
     include_class_members ServerSocketImports
     
-    # 
     # Various states of this socket.
     attr_accessor :created
     alias_method :attr_created, :created
@@ -81,7 +78,6 @@ module Java::Net
     alias_method :attr_close_lock=, :close_lock=
     undef_method :close_lock=
     
-    # 
     # The implementation of this Socket.
     attr_accessor :impl
     alias_method :attr_impl, :impl
@@ -89,7 +85,6 @@ module Java::Net
     alias_method :attr_impl=, :impl=
     undef_method :impl=
     
-    # 
     # Are we using an older SocketImpl?
     attr_accessor :old_impl
     alias_method :attr_old_impl, :old_impl
@@ -98,7 +93,6 @@ module Java::Net
     undef_method :old_impl=
     
     typesig { [] }
-    # 
     # Creates an unbound server socket.
     # 
     # @exception IOException IO error when opening the socket.
@@ -114,7 +108,6 @@ module Java::Net
     end
     
     typesig { [::Java::Int] }
-    # 
     # Creates a server socket, bound to the specified port. A port of
     # <code>0</code> creates a socket on any free port.
     # <p>
@@ -150,7 +143,6 @@ module Java::Net
     end
     
     typesig { [::Java::Int, ::Java::Int] }
-    # 
     # Creates a server socket and binds it to the specified local port
     # number, with the specified backlog.
     # A port number of <code>0</code> creates a socket on any
@@ -194,7 +186,6 @@ module Java::Net
     end
     
     typesig { [::Java::Int, ::Java::Int, InetAddress] }
-    # 
     # Create a server with the specified port, listen backlog, and
     # local IP address to bind to.  The <i>bindAddr</i> argument
     # can be used on a multi-homed host for a ServerSocket that
@@ -247,12 +238,11 @@ module Java::Net
         raise e
       rescue IOException => e
         close
-        raise e_
+        raise e
       end
     end
     
     typesig { [] }
-    # 
     # Get the <code>SocketImpl</code> attached to this socket, creating
     # it if necessary.
     # 
@@ -317,7 +307,6 @@ module Java::Net
     end
     
     typesig { [] }
-    # 
     # Creates the socket implementation.
     # 
     # @throws IOException if creation fails
@@ -335,8 +324,6 @@ module Java::Net
     end
     
     typesig { [SocketAddress] }
-    # 
-    # 
     # Binds the <code>ServerSocket</code> to a specific address
     # (IP address and port number).
     # <p>
@@ -356,8 +343,6 @@ module Java::Net
     end
     
     typesig { [SocketAddress, ::Java::Int] }
-    # 
-    # 
     # Binds the <code>ServerSocket</code> to a specific address
     # (IP address and port number).
     # <p>
@@ -409,12 +394,11 @@ module Java::Net
         raise e
       rescue IOException => e
         @bound = false
-        raise e_
+        raise e
       end
     end
     
     typesig { [] }
-    # 
     # Returns the local address of this server socket.
     # 
     # @return  the address to which this socket is bound,
@@ -434,7 +418,6 @@ module Java::Net
     end
     
     typesig { [] }
-    # 
     # Returns the port number on which this socket is listening.
     # 
     # @return  the port number to which this socket is listening or
@@ -454,7 +437,6 @@ module Java::Net
     end
     
     typesig { [] }
-    # 
     # Returns the address of the endpoint this socket is bound to, or
     # <code>null</code> if it is not bound yet.
     # 
@@ -472,7 +454,6 @@ module Java::Net
     end
     
     typesig { [] }
-    # 
     # Listens for a connection to be made to this socket and accepts
     # it. The method blocks until a connection is made.
     # 
@@ -512,7 +493,6 @@ module Java::Net
     end
     
     typesig { [Socket] }
-    # 
     # Subclasses of ServerSocket use this method to override accept()
     # to return their own subclass of socket.  So a FooServerSocket
     # will typically hand this method an <i>empty</i> FooSocket.  On
@@ -555,14 +535,13 @@ module Java::Net
           si.reset
         end
         s.attr_impl = si
-        raise e_
+        raise e
       end
       s.attr_impl = si
       s.post_accept
     end
     
     typesig { [] }
-    # 
     # Closes this socket.
     # 
     # Any thread currently blocked in {@link #accept()} will throw
@@ -587,7 +566,6 @@ module Java::Net
     end
     
     typesig { [] }
-    # 
     # Returns the unique {@link java.nio.channels.ServerSocketChannel} object
     # associated with this socket, if any.
     # 
@@ -607,7 +585,6 @@ module Java::Net
     end
     
     typesig { [] }
-    # 
     # Returns the binding state of the ServerSocket.
     # 
     # @return true if the ServerSocket succesfuly bound to an address
@@ -618,7 +595,6 @@ module Java::Net
     end
     
     typesig { [] }
-    # 
     # Returns the closed state of the ServerSocket.
     # 
     # @return true if the socket has been closed
@@ -630,7 +606,6 @@ module Java::Net
     end
     
     typesig { [::Java::Int] }
-    # 
     # Enable/disable SO_TIMEOUT with the specified timeout, in
     # milliseconds.  With this option set to a non-zero timeout,
     # a call to accept() for this ServerSocket
@@ -655,7 +630,6 @@ module Java::Net
     end
     
     typesig { [] }
-    # 
     # Retrieve setting for SO_TIMEOUT.  0 returns implies that the
     # option is disabled (i.e., timeout of infinity).
     # @return the SO_TIMEOUT value
@@ -678,7 +652,6 @@ module Java::Net
     end
     
     typesig { [::Java::Boolean] }
-    # 
     # Enable/disable the SO_REUSEADDR socket option.
     # <p>
     # When a TCP connection is closed the connection may remain
@@ -721,7 +694,6 @@ module Java::Net
     end
     
     typesig { [] }
-    # 
     # Tests if SO_REUSEADDR is enabled.
     # 
     # @return a <code>boolean</code> indicating whether or not SO_REUSEADDR is enabled.
@@ -737,7 +709,6 @@ module Java::Net
     end
     
     typesig { [] }
-    # 
     # Returns the implementation address and implementation port of
     # this socket as a <code>String</code>.
     # 
@@ -760,7 +731,6 @@ module Java::Net
     end
     
     class_module.module_eval {
-      # 
       # The factory for all server sockets.
       
       def factory
@@ -774,7 +744,6 @@ module Java::Net
       alias_method :attr_factory=, :factory=
       
       typesig { [SocketImplFactory] }
-      # 
       # Sets the server socket implementation factory for the
       # application. The factory can be specified only once.
       # <p>
@@ -813,7 +782,6 @@ module Java::Net
     }
     
     typesig { [::Java::Int] }
-    # 
     # Sets a default proposed value for the SO_RCVBUF option for sockets
     # accepted from this <tt>ServerSocket</tt>. The value actually set
     # in the accepted socket must be determined by calling
@@ -860,7 +828,6 @@ module Java::Net
     end
     
     typesig { [] }
-    # 
     # Gets the value of the SO_RCVBUF option for this <tt>ServerSocket</tt>,
     # that is the proposed buffer size that will be used for Sockets accepted
     # from this <tt>ServerSocket</tt>.
@@ -887,7 +854,6 @@ module Java::Net
     end
     
     typesig { [::Java::Int, ::Java::Int, ::Java::Int] }
-    # 
     # Sets performance preferences for this ServerSocket.
     # 
     # <p> Sockets use the TCP/IP protocol by default.  Some implementations

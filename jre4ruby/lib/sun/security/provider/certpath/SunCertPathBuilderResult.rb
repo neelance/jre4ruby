@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 2000-2001 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -37,7 +36,6 @@ module Sun::Security::Provider::Certpath
     }
   end
   
-  # 
   # This class represents the result of a SunCertPathBuilder build.
   # Since all paths returned by the SunCertPathProvider are PKIX validated
   # the result contains the valid policy tree and subject public key returned
@@ -66,7 +64,6 @@ module Sun::Security::Provider::Certpath
     undef_method :adj_list=
     
     typesig { [CertPath, TrustAnchor, PolicyNode, PublicKey, AdjacencyList] }
-    # 
     # Creates a SunCertPathBuilderResult instance.
     # 
     # @param certPath the validated <code>CertPath</code>
@@ -83,7 +80,6 @@ module Sun::Security::Provider::Certpath
     end
     
     typesig { [] }
-    # 
     # Returns the adjacency list containing information about the build.
     # 
     # @return The adjacency list containing information about the build.

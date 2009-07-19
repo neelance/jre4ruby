@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 1998-2006 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -31,7 +30,6 @@ module Sun::Security::Action
     }
   end
   
-  # 
   # A convenience class for loading a system library as a privileged action.
   # 
   # <p>An instance of this class can be used as the argument of
@@ -59,7 +57,6 @@ module Sun::Security::Action
     undef_method :the_lib=
     
     typesig { [String] }
-    # 
     # Constructor that takes the name of the system library that needs to be
     # loaded.
     # 
@@ -73,7 +70,6 @@ module Sun::Security::Action
     end
     
     typesig { [] }
-    # 
     # Loads the system library whose name was specified in the constructor.
     def run
       System.load_library(@the_lib)

@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 1996-2006 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -31,7 +30,6 @@ module Java::Lang::Reflect
     }
   end
   
-  # 
   # The {@code Array} class provides static methods to dynamically create and
   # access Java arrays.
   # 
@@ -44,14 +42,12 @@ module Java::Lang::Reflect
     include_class_members ArrayImports
     
     typesig { [] }
-    # 
     # Constructor.  Class Array is not instantiable.
     def initialize
     end
     
     class_module.module_eval {
       typesig { [Class, ::Java::Int] }
-      # 
       # Creates a new array with the specified component type and
       # length.
       # Invoking this method is equivalent to creating an array
@@ -77,7 +73,6 @@ module Java::Lang::Reflect
       end
       
       typesig { [Class, ::Java::Int] }
-      # 
       # Creates a new array
       # with the specified component type and dimensions.
       # If {@code componentType}
@@ -115,7 +110,6 @@ module Java::Lang::Reflect
       
       JNI.native_method :Java_java_lang_reflect_Array_getLength, [:pointer, :long, :long], :int32
       typesig { [Object] }
-      # 
       # Returns the length of the specified array object, as an {@code int}.
       # 
       # @param array the array
@@ -128,7 +122,6 @@ module Java::Lang::Reflect
       
       JNI.native_method :Java_java_lang_reflect_Array_get, [:pointer, :long, :long, :int32], :long
       typesig { [Object, ::Java::Int] }
-      # 
       # Returns the value of the indexed component in the specified
       # array object.  The value is automatically wrapped in an object
       # if it has a primitive type.
@@ -149,7 +142,6 @@ module Java::Lang::Reflect
       
       JNI.native_method :Java_java_lang_reflect_Array_getBoolean, [:pointer, :long, :long, :int32], :int8
       typesig { [Object, ::Java::Int] }
-      # 
       # Returns the value of the indexed component in the specified
       # array object, as a {@code boolean}.
       # 
@@ -170,7 +162,6 @@ module Java::Lang::Reflect
       
       JNI.native_method :Java_java_lang_reflect_Array_getByte, [:pointer, :long, :long, :int32], :int8
       typesig { [Object, ::Java::Int] }
-      # 
       # Returns the value of the indexed component in the specified
       # array object, as a {@code byte}.
       # 
@@ -191,7 +182,6 @@ module Java::Lang::Reflect
       
       JNI.native_method :Java_java_lang_reflect_Array_getChar, [:pointer, :long, :long, :int32], :unknown
       typesig { [Object, ::Java::Int] }
-      # 
       # Returns the value of the indexed component in the specified
       # array object, as a {@code char}.
       # 
@@ -212,7 +202,6 @@ module Java::Lang::Reflect
       
       JNI.native_method :Java_java_lang_reflect_Array_getShort, [:pointer, :long, :long, :int32], :int16
       typesig { [Object, ::Java::Int] }
-      # 
       # Returns the value of the indexed component in the specified
       # array object, as a {@code short}.
       # 
@@ -233,7 +222,6 @@ module Java::Lang::Reflect
       
       JNI.native_method :Java_java_lang_reflect_Array_getInt, [:pointer, :long, :long, :int32], :int32
       typesig { [Object, ::Java::Int] }
-      # 
       # Returns the value of the indexed component in the specified
       # array object, as an {@code int}.
       # 
@@ -254,7 +242,6 @@ module Java::Lang::Reflect
       
       JNI.native_method :Java_java_lang_reflect_Array_getLong, [:pointer, :long, :long, :int32], :int64
       typesig { [Object, ::Java::Int] }
-      # 
       # Returns the value of the indexed component in the specified
       # array object, as a {@code long}.
       # 
@@ -275,7 +262,6 @@ module Java::Lang::Reflect
       
       JNI.native_method :Java_java_lang_reflect_Array_getFloat, [:pointer, :long, :long, :int32], :float
       typesig { [Object, ::Java::Int] }
-      # 
       # Returns the value of the indexed component in the specified
       # array object, as a {@code float}.
       # 
@@ -296,7 +282,6 @@ module Java::Lang::Reflect
       
       JNI.native_method :Java_java_lang_reflect_Array_getDouble, [:pointer, :long, :long, :int32], :double
       typesig { [Object, ::Java::Int] }
-      # 
       # Returns the value of the indexed component in the specified
       # array object, as a {@code double}.
       # 
@@ -317,7 +302,6 @@ module Java::Lang::Reflect
       
       JNI.native_method :Java_java_lang_reflect_Array_set, [:pointer, :long, :long, :int32, :long], :void
       typesig { [Object, ::Java::Int, Object] }
-      # 
       # Sets the value of the indexed component of the specified array
       # object to the specified new value.  The new value is first
       # automatically unwrapped if the array has a primitive component
@@ -339,7 +323,6 @@ module Java::Lang::Reflect
       
       JNI.native_method :Java_java_lang_reflect_Array_setBoolean, [:pointer, :long, :long, :int32, :int8], :void
       typesig { [Object, ::Java::Int, ::Java::Boolean] }
-      # 
       # Sets the value of the indexed component of the specified array
       # object to the specified {@code boolean} value.
       # @param array the array
@@ -361,7 +344,6 @@ module Java::Lang::Reflect
       
       JNI.native_method :Java_java_lang_reflect_Array_setByte, [:pointer, :long, :long, :int32, :int8], :void
       typesig { [Object, ::Java::Int, ::Java::Byte] }
-      # 
       # Sets the value of the indexed component of the specified array
       # object to the specified {@code byte} value.
       # @param array the array
@@ -383,7 +365,6 @@ module Java::Lang::Reflect
       
       JNI.native_method :Java_java_lang_reflect_Array_setChar, [:pointer, :long, :long, :int32, :unknown], :void
       typesig { [Object, ::Java::Int, ::Java::Char] }
-      # 
       # Sets the value of the indexed component of the specified array
       # object to the specified {@code char} value.
       # @param array the array
@@ -405,7 +386,6 @@ module Java::Lang::Reflect
       
       JNI.native_method :Java_java_lang_reflect_Array_setShort, [:pointer, :long, :long, :int32, :int16], :void
       typesig { [Object, ::Java::Int, ::Java::Short] }
-      # 
       # Sets the value of the indexed component of the specified array
       # object to the specified {@code short} value.
       # @param array the array
@@ -427,7 +407,6 @@ module Java::Lang::Reflect
       
       JNI.native_method :Java_java_lang_reflect_Array_setInt, [:pointer, :long, :long, :int32, :int32], :void
       typesig { [Object, ::Java::Int, ::Java::Int] }
-      # 
       # Sets the value of the indexed component of the specified array
       # object to the specified {@code int} value.
       # @param array the array
@@ -449,7 +428,6 @@ module Java::Lang::Reflect
       
       JNI.native_method :Java_java_lang_reflect_Array_setLong, [:pointer, :long, :long, :int32, :int64], :void
       typesig { [Object, ::Java::Int, ::Java::Long] }
-      # 
       # Sets the value of the indexed component of the specified array
       # object to the specified {@code long} value.
       # @param array the array
@@ -471,7 +449,6 @@ module Java::Lang::Reflect
       
       JNI.native_method :Java_java_lang_reflect_Array_setFloat, [:pointer, :long, :long, :int32, :float], :void
       typesig { [Object, ::Java::Int, ::Java::Float] }
-      # 
       # Sets the value of the indexed component of the specified array
       # object to the specified {@code float} value.
       # @param array the array
@@ -493,7 +470,6 @@ module Java::Lang::Reflect
       
       JNI.native_method :Java_java_lang_reflect_Array_setDouble, [:pointer, :long, :long, :int32, :double], :void
       typesig { [Object, ::Java::Int, ::Java::Double] }
-      # 
       # Sets the value of the indexed component of the specified array
       # object to the specified {@code double} value.
       # @param array the array
@@ -515,7 +491,6 @@ module Java::Lang::Reflect
       
       JNI.native_method :Java_java_lang_reflect_Array_newArray, [:pointer, :long, :long, :int32], :long
       typesig { [Class, ::Java::Int] }
-      # 
       # Private
       def new_array(component_type, length)
         JNI.__send__(:Java_java_lang_reflect_Array_newArray, JNI.env, self.jni_id, component_type.jni_id, length.to_int)

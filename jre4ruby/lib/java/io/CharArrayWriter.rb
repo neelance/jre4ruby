@@ -1,6 +1,5 @@
 require "rjava"
 
-# 
 # Copyright 1996-2005 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
@@ -32,7 +31,6 @@ module Java::Io
     }
   end
   
-  # 
   # This class implements a character buffer that can be used as an Writer.
   # The buffer automatically grows when data is written to the stream.  The data
   # can be retrieved using toCharArray() and toString().
@@ -46,7 +44,6 @@ module Java::Io
   class CharArrayWriter < CharArrayWriterImports.const_get :Writer
     include_class_members CharArrayWriterImports
     
-    # 
     # The buffer where data is stored.
     attr_accessor :buf
     alias_method :attr_buf, :buf
@@ -54,7 +51,6 @@ module Java::Io
     alias_method :attr_buf=, :buf=
     undef_method :buf=
     
-    # 
     # The number of chars in the buffer.
     attr_accessor :count
     alias_method :attr_count, :count
@@ -63,14 +59,12 @@ module Java::Io
     undef_method :count=
     
     typesig { [] }
-    # 
     # Creates a new CharArrayWriter.
     def initialize
       initialize__char_array_writer(32)
     end
     
     typesig { [::Java::Int] }
-    # 
     # Creates a new CharArrayWriter with the specified initial size.
     # 
     # @param initialSize  an int specifying the initial buffer size.
@@ -86,7 +80,6 @@ module Java::Io
     end
     
     typesig { [::Java::Int] }
-    # 
     # Writes a character to the buffer.
     def write(c)
       synchronized((self.attr_lock)) do
@@ -100,7 +93,6 @@ module Java::Io
     end
     
     typesig { [Array.typed(::Java::Char), ::Java::Int, ::Java::Int] }
-    # 
     # Writes characters to the buffer.
     # @param c the data to be written
     # @param off       the start offset in the data
@@ -124,7 +116,6 @@ module Java::Io
     end
     
     typesig { [String, ::Java::Int, ::Java::Int] }
-    # 
     # Write a portion of a string to the buffer.
     # @param  str  String to be written from
     # @param  off  Offset from which to start reading characters
@@ -141,7 +132,6 @@ module Java::Io
     end
     
     typesig { [Writer] }
-    # 
     # Writes the contents of the buffer to another character stream.
     # 
     # @param out       the output stream to write to
@@ -153,7 +143,6 @@ module Java::Io
     end
     
     typesig { [CharSequence] }
-    # 
     # Appends the specified character sequence to this writer.
     # 
     # <p> An invocation of this method of the form <tt>out.append(csq)</tt>
@@ -183,7 +172,6 @@ module Java::Io
     end
     
     typesig { [CharSequence, ::Java::Int, ::Java::Int] }
-    # 
     # Appends a subsequence of the specified character sequence to this writer.
     # 
     # <p> An invocation of this method of the form <tt>out.append(csq, start,
@@ -221,7 +209,6 @@ module Java::Io
     end
     
     typesig { [::Java::Char] }
-    # 
     # Appends the specified character to this writer.
     # 
     # <p> An invocation of this method of the form <tt>out.append(c)</tt>
@@ -242,7 +229,6 @@ module Java::Io
     end
     
     typesig { [] }
-    # 
     # Resets the buffer so that you can use it again without
     # throwing away the already allocated buffer.
     def reset
@@ -250,7 +236,6 @@ module Java::Io
     end
     
     typesig { [] }
-    # 
     # Returns a copy of the input data.
     # 
     # @return an array of chars copied from the input data.
@@ -261,7 +246,6 @@ module Java::Io
     end
     
     typesig { [] }
-    # 
     # Returns the current size of the buffer.
     # 
     # @return an int representing the current size of the buffer.
@@ -270,7 +254,6 @@ module Java::Io
     end
     
     typesig { [] }
-    # 
     # Converts input data to a string.
     # @return the string.
     def to_s
@@ -280,13 +263,11 @@ module Java::Io
     end
     
     typesig { [] }
-    # 
     # Flush the stream.
     def flush
     end
     
     typesig { [] }
-    # 
     # Close the stream.  This method does not release the buffer, since its
     # contents might still be required. Note: Invoking this method in this class
     # will have no effect.
