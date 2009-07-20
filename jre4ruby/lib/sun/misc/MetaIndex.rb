@@ -256,7 +256,7 @@ module Sun::Misc
         if (entry.starts_with(conts[i]))
           return true
         end
-        ((i += 1) - 1)
+        i += 1
       end
       return false
     end

@@ -2492,7 +2492,7 @@ module Java::Util
           else
             in_ascii.append(next_char)
           end
-          ((i += 1) - 1)
+          i += 1
         end
         result = (in_ascii.to_s).to_s
       end

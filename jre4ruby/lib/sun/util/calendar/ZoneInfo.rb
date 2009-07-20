@@ -599,10 +599,10 @@ module Sun::Util::Calendar
                   end
                   throw :break_loop, :thrown
                 end
-                ((i += 1) - 1)
+                i += 1
               end
             end
-            ((index += 1) - 1)
+            index += 1
           end
         end
         # We need to add any zones from the excluded zone list that

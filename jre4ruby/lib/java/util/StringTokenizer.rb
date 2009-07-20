@@ -200,7 +200,7 @@ module Java::Util
         if (m < c)
           m = c
         end
-        ((count += 1) - 1)
+        count += 1
         i += Character.char_count(c)
       end
       @max_delim_code_point = m
@@ -211,7 +211,7 @@ module Java::Util
         while i_ < count
           c = @delimiters.code_point_at(j)
           @delimiter_code_points[i_] = c
-          ((i_ += 1) - 1)
+          i_ += 1
           j += Character.char_count(c)
         end
       end
@@ -306,7 +306,7 @@ module Java::Util
           if ((c > @max_delim_code_point) || (@delimiters.index_of(c) < 0))
             break
           end
-          ((position += 1) - 1)
+          position += 1
         else
           c = @str.code_point_at(position)
           if ((c > @max_delim_code_point) || !is_delimiter(c))
@@ -329,7 +329,7 @@ module Java::Util
           if ((c <= @max_delim_code_point) && (@delimiters.index_of(c) >= 0))
             break
           end
-          ((position += 1) - 1)
+          position += 1
         else
           c = @str.code_point_at(position)
           if ((c <= @max_delim_code_point) && is_delimiter(c))
@@ -342,7 +342,7 @@ module Java::Util
         if (!@has_surrogates)
           c = @str.char_at(position)
           if ((c <= @max_delim_code_point) && (@delimiters.index_of(c) >= 0))
-            ((position += 1) - 1)
+            position += 1
           end
         else
           c = @str.code_point_at(position)
@@ -361,7 +361,7 @@ module Java::Util
         if ((@delimiter_code_points[i]).equal?(code_point))
           return true
         end
-        ((i += 1) - 1)
+        i += 1
       end
       return false
     end
@@ -471,7 +471,7 @@ module Java::Util
           break
         end
         currpos = scan_token(currpos)
-        ((count += 1) - 1)
+        count += 1
       end
       return count
     end

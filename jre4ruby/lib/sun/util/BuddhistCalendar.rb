@@ -221,7 +221,7 @@ module Sun::Util
       i = 0
       while i < eras.attr_length
         map.put(eras[i], i)
-        ((i += 1) - 1)
+        i += 1
       end
       return map
     end

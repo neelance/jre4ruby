@@ -128,7 +128,7 @@ module Sun::Nio::Ch
           if (!selch.is_open && !selch.is_registered)
             (selch).kill
           end
-          ((i += 1) - 1)
+          i += 1
         end
         impl_close_interrupt
         @poll_wrapper.free
@@ -159,17 +159,17 @@ module Sun::Nio::Ch
           @poll_wrapper.put_revent_ops(i, 0)
           if (self.attr_selected_keys.contains(sk))
             if (sk.attr_channel.translate_and_set_ready_ops(r_ops, sk))
-              ((num_keys_updated += 1) - 1)
+              num_keys_updated += 1
             end
           else
             sk.attr_channel.translate_and_set_ready_ops(r_ops, sk)
             if (!((sk.nio_ready_ops & sk.nio_interest_ops)).equal?(0))
               self.attr_selected_keys.add(sk)
-              ((num_keys_updated += 1) - 1)
+              num_keys_updated += 1
             end
           end
         end
-        ((i += 1) - 1)
+        i += 1
       end
       return num_keys_updated
     end
@@ -185,7 +185,7 @@ module Sun::Nio::Ch
         i = @channel_offset
         while i < @total_channels
           temp[i] = @channel_array[i]
-          ((i += 1) - 1)
+          i += 1
         end
         @channel_array = temp
         # Grow the NativeObject poll array
@@ -194,7 +194,7 @@ module Sun::Nio::Ch
       @channel_array[@total_channels] = ski
       ski.set_index(@total_channels)
       @poll_wrapper.add_entry(ski.attr_channel)
-      ((@total_channels += 1) - 1)
+      @total_channels += 1
       self.attr_keys.add(ski)
     end
     
@@ -218,8 +218,8 @@ module Sun::Nio::Ch
       end
       # Destroy the last one
       @channel_array[@total_channels - 1] = nil
-      ((@total_channels -= 1) + 1)
-      ((@poll_wrapper.attr_total_channels -= 1) + 1)
+      @total_channels -= 1
+      @poll_wrapper.attr_total_channels -= 1
       ski.set_index(-1)
       # Remove the key from keys and selectedKeys
       self.attr_keys.remove(ski)

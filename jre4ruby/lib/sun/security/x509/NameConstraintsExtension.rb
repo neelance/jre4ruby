@@ -137,7 +137,7 @@ module Sun::Security::X509
           if (!(subtree.get_maximum).equal?(-1))
             @has_max = true
           end
-          ((i += 1) - 1)
+          i += 1
         end
       end
       if (!(@permitted).nil?)
@@ -150,7 +150,7 @@ module Sun::Security::X509
           if (!(subtree.get_maximum).equal?(-1))
             @has_max = true
           end
-          ((i += 1) - 1)
+          i += 1
         end
       end
       @min_max_valid = true
@@ -479,7 +479,7 @@ module Sun::Security::X509
         if (!verify(alt_gni))
           return false
         end
-        ((i += 1) - 1)
+        i += 1
       end
       # All tests passed.
       return true
@@ -503,17 +503,17 @@ module Sun::Security::X509
         while i < @excluded.size
           gs = @excluded.get(i)
           if ((gs).nil?)
-            ((i += 1) - 1)
+            i += 1
             next
           end
           gn = gs.get_name
           if ((gn).nil?)
-            ((i += 1) - 1)
+            i += 1
             next
           end
           ex_name = gn.get_name
           if ((ex_name).nil?)
-            ((i += 1) - 1)
+            i += 1
             next
           end
           # if name matches or narrows any excluded subtree,
@@ -525,7 +525,7 @@ module Sun::Security::X509
             # subject name excluded
             return false
           end
-          ((i += 1) - 1)
+          i += 1
         end
       end
       # Verify that the name is consistent with the permitted subtrees
@@ -535,17 +535,17 @@ module Sun::Security::X509
         while i < @permitted.size
           gs = @permitted.get(i)
           if ((gs).nil?)
-            ((i += 1) - 1)
+            i += 1
             next
           end
           gn = gs.get_name
           if ((gn).nil?)
-            ((i += 1) - 1)
+            i += 1
             next
           end
           per_name = gn.get_name
           if ((per_name).nil?)
-            ((i += 1) - 1)
+            i += 1
             next
           end
           # if Name matches any type in permitted,
@@ -556,16 +556,16 @@ module Sun::Security::X509
           # name widens permitted
           # continue to look for a match or narrow
           when GeneralNameInterface::NAME_DIFF_TYPE
-            ((i += 1) - 1)
+            i += 1
             next
             same_type = true
-            ((i += 1) - 1)
+            i += 1
             next
             # name narrows permitted
             return true
           when GeneralNameInterface::NAME_WIDENS, GeneralNameInterface::NAME_SAME_TYPE
             same_type = true
-            ((i += 1) - 1)
+            i += 1
             next
             # name narrows permitted
             return true
@@ -573,7 +573,7 @@ module Sun::Security::X509
             # name narrows permitted
             return true
           end # name is definitely OK, so break out of loop
-          ((i += 1) - 1)
+          i += 1
         end
         if (same_type)
           return false

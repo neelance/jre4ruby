@@ -109,7 +109,7 @@ module Java::Text
       while i < src.attr_length
         dest[((j += 1) - 1)] = (src[i] >> 8)
         dest[((j += 1) - 1)] = (src[i] & 0xff)
-        ((i += 1) - 1)
+        i += 1
       end
       return dest
     end

@@ -170,7 +170,7 @@ module Sun::Security::Provider::Certpath
         i = 0
         while i < i_uid.attr_length
           out = out + ((i_uid[i] ? 1 : 0)).to_s
-          ((i += 1) - 1)
+          i += 1
         end
         out = out + "\n"
       end
@@ -180,7 +180,7 @@ module Sun::Security::Provider::Certpath
         i = 0
         while i < s_uid.attr_length
           out = out + ((s_uid[i] ? 1 : 0)).to_s
-          ((i += 1) - 1)
+          i += 1
         end
         out = out + "\n"
       end

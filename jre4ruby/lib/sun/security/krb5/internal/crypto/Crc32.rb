@@ -176,7 +176,7 @@ module Sun::Security::Krb5::Internal::Crypto
       i = 0
       while i < len
         result = (result >> 8) ^ self.attr_crc32table[(result ^ data[i]) & 0xff]
-        ((i += 1) - 1)
+        i += 1
       end
       @seed = result
     end
@@ -192,7 +192,7 @@ module Sun::Security::Krb5::Internal::Crypto
           else
             crc = crc >> 1
           end
-          ((i -= 1) + 1)
+          i -= 1
         end
         return crc
       end
@@ -212,7 +212,7 @@ module Sun::Security::Krb5::Internal::Crypto
           if (!(i).equal?(255))
             System.out.print(", ")
           end
-          ((i += 1) - 1)
+          i += 1
         end
         System.out.println("\n\t};")
       end
@@ -223,7 +223,7 @@ module Sun::Security::Krb5::Internal::Crypto
         i = 0
         while i < size
           crc = (crc >> 8) ^ self.attr_crc32table[(crc ^ data[i]) & 0xff]
-          ((i += 1) - 1)
+          i += 1
         end
         return crc
       end
@@ -267,7 +267,7 @@ module Sun::Security::Krb5::Internal::Crypto
         i = 0
         while i < 4
           output[i] = ((input >> (i * 8)) & 0xff)
-          ((i += 1) - 1)
+          i += 1
         end
         return output
       end

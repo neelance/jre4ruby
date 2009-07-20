@@ -59,7 +59,7 @@ module Sun::Reflect
                 res[((utf8idx += 1) - 1)] = (0x80 + (c & 0x3f))
               end
             end
-            ((i += 1) - 1)
+            i += 1
           end
         rescue ArrayIndexOutOfBoundsException => e
           raise InternalError.new("Bug in sun.reflect bootstrap UTF-8 encoder")
@@ -83,7 +83,7 @@ module Sun::Reflect
               utf8len += 3
             end
           end
-          ((i += 1) - 1)
+          i += 1
         end
         return utf8len
       end

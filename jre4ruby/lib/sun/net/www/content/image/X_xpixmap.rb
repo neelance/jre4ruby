@@ -53,7 +53,7 @@ module Sun::Net::Www::Content::Image
           tk = Toolkit.get_default_toolkit
           return tk.create_image(URLImageSource.new(urlc))
         end
-        ((i += 1) - 1)
+        i += 1
       end
       return nil
     end

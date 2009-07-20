@@ -311,7 +311,7 @@ module Sun::Security::Ssl
         offset += len
         while i < pad
           buf[((offset += 1) - 1)] = (pad - 1)
-          ((i += 1) - 1)
+          i += 1
         end
         return newlen
       end
@@ -339,7 +339,7 @@ module Sun::Security::Ssl
         offset += len
         while i < pad
           bb.put(((offset += 1) - 1), (pad - 1))
-          ((i += 1) - 1)
+          i += 1
         end
         bb.position(offset)
         bb.limit(offset)
@@ -370,7 +370,7 @@ module Sun::Security::Ssl
             if (!(val).equal?(pad))
               raise BadPaddingException.new("Invalid TLS padding: " + (val).to_s)
             end
-            ((i += 1) - 1)
+            i += 1
           end
         else
           # SSLv3
@@ -407,7 +407,7 @@ module Sun::Security::Ssl
             if (!(val).equal?(pad))
               raise BadPaddingException.new("Invalid TLS padding: " + (val).to_s)
             end
-            ((i += 1) - 1)
+            i += 1
           end
         else
           # SSLv3

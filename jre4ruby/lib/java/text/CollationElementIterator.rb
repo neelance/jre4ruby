@@ -639,14 +639,14 @@ module Java::Text
       while i > 0
         pair = list.element_at(i)
         if (!pair.attr_fwd)
-          ((i -= 1) + 1)
+          i -= 1
           next
         end
         if (fragment.starts_with(pair.attr_entry_name) && pair.attr_entry_name.length > max_length)
           max_length = pair.attr_entry_name.length
           order = pair.attr_value
         end
-        ((i -= 1) + 1)
+        i -= 1
       end
       # seek our current iteration position to the end of the matching sequence
       # and return the appropriate collation-element value (if there was no matching
@@ -697,14 +697,14 @@ module Java::Text
       while i > 0
         pair = list.element_at(i)
         if (pair.attr_fwd)
-          ((i -= 1) + 1)
+          i -= 1
           next
         end
         if (fragment.starts_with(pair.attr_entry_name) && pair.attr_entry_name.length > max_length)
           max_length = pair.attr_entry_name.length
           order = pair.attr_value
         end
-        ((i -= 1) + 1)
+        i -= 1
       end
       while (max_length > 1)
         c = @text.previous

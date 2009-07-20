@@ -283,7 +283,7 @@ module Sun::Net::Spi
                 if (!(phost).nil? && !(phost.length).equal?(0))
                   break
                 end
-                ((j += 1) - 1)
+                j += 1
               end
               if ((phost).nil? || (phost.length).equal?(0))
                 # No system property defined for that
@@ -342,7 +342,7 @@ module Sun::Net::Spi
                   if ((!(k).equal?(j)) && ((pport).equal?(0)))
                     pport = NetProperties.get_integer((Props[i][k]).to_s + "Port", 0).int_value
                   end
-                  ((k += 1) - 1)
+                  k += 1
                 end
               end
               # Still couldn't find a port, let's use default
@@ -365,7 +365,7 @@ module Sun::Net::Spi
                 return Proxy.new(Proxy::Type::HTTP, saddr)
               end
             end
-            ((i += 1) - 1)
+            i += 1
           end
           return Proxy::NO_PROXY
         end
@@ -481,7 +481,7 @@ module Sun::Net::Spi
         i = f
         while i <= l
           m |= 1 << i
-          ((i += 1) - 1)
+          i += 1
         end
         return m
       end
@@ -534,7 +534,7 @@ module Sun::Net::Spi
       while (p < n)
         c = input.char_at(p)
         if (match(c, low_mask_, high_mask))
-          ((p += 1) - 1)
+          p += 1
           next
         end
         break

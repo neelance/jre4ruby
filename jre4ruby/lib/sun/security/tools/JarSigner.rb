@@ -616,7 +616,7 @@ module Sun::Security::Tools
             end
           end
         end
-        ((n += 1) - 1)
+        n += 1
       end
       if ((n).equal?(args.attr_length))
         usage
@@ -786,7 +786,7 @@ module Sun::Security::Tools
                   certs.each do |c|
                     System.out.println(print_cert(tab, c, true, now))
                   end
-                  ((i_ += 1) - 1)
+                  i_ += 1
                 end
                 System.out.println
               end
@@ -808,7 +808,7 @@ module Sun::Security::Tools
                     end
                   end
                 end
-                ((i += 1) - 1)
+                i += 1
               end
             end
           end
@@ -1081,7 +1081,7 @@ module Sun::Security::Tools
             end
           end
         end
-        ((i += 1) - 1)
+        i += 1
       end
       return result
     end
@@ -1112,7 +1112,7 @@ module Sun::Security::Tools
           end
         end
         tmp_sig_file.append(c)
-        ((j += 1) - 1)
+        j += 1
       end
       @sigfile = (tmp_sig_file.to_s).to_s
       tmp_jar_name = nil
@@ -1314,7 +1314,7 @@ module Sun::Security::Tools
           if (!ze.get_name.equals_ignore_case(JarFile::MANIFEST_NAME) && !ze.get_name.equals_ignore_case(sf_filename) && !ze.get_name.equals_ignore_case(bk_filename))
             write_entry(@zip_file, zos, ze)
           end
-          ((i += 1) - 1)
+          i += 1
         end
         # Write out all other files
         enum__ = @zip_file.entries
@@ -1406,7 +1406,7 @@ module Sun::Security::Tools
         if ((bs[i]).equal?(Character.new(?\r.ord)) && (bs[i + 1]).equal?(Character.new(?\n.ord)) && (bs[i + 2]).equal?(Character.new(?\r.ord)) && (bs[i + 3]).equal?(Character.new(?\n.ord)))
           return i
         end
-        ((i += 1) - 1)
+        i += 1
       end
       # If header end is not found, return 0,
       # which means no behavior change.
@@ -1625,7 +1625,7 @@ module Sun::Security::Tools
             error(Rb.get_string("found non-X.509 certificate in signer's chain"))
           end
           @cert_chain[i] = cs[i]
-          ((i += 1) - 1)
+          i += 1
         end
         # order the cert chain if necessary (put user cert first,
         # root-cert last in the chain)
@@ -1655,7 +1655,7 @@ module Sun::Security::Tools
             j = 0
             while j < cert_chain_tmp.attr_length
               if ((cert_chain_tmp[j]).nil?)
-                ((j += 1) - 1)
+                j += 1
                 next
               end
               subject = cert_chain_tmp[j].get_subject_dn
@@ -1665,12 +1665,12 @@ module Sun::Security::Tools
                 cert_chain_tmp[j] = nil
                 break
               end
-              ((j += 1) - 1)
+              j += 1
             end
             if ((j).equal?(cert_chain_tmp.attr_length))
               error(Rb.get_string("incomplete certificate chain"))
             end
-            ((i_ += 1) - 1)
+            i_ += 1
           end
           @cert_chain = cert_chain_tmp # ordered
         end
@@ -1798,7 +1798,7 @@ module Sun::Security::Tools
             i = 0
             while i < digests.attr_length
               digests[i].update(@buffer, 0, n)
-              ((i += 1) - 1)
+              i += 1
             end
             left -= n
           end
@@ -1812,7 +1812,7 @@ module Sun::Security::Tools
         i = 0
         while i < digests.attr_length
           base64digests[i] = encoder.encode(digests[i].digest)
-          ((i += 1) - 1)
+          i += 1
         end
         return base64digests
       end
@@ -1827,7 +1827,7 @@ module Sun::Security::Tools
       i = 0
       while i < digests.attr_length
         attrs.put_value((digests[i].get_algorithm).to_s + "-Digest", base64digests[i])
-        ((i += 1) - 1)
+        i += 1
       end
       return attrs
     end
@@ -1865,7 +1865,7 @@ module Sun::Security::Tools
             update = true
           end
         end
-        ((i += 1) - 1)
+        i += 1
       end
       return update
     end
@@ -1998,7 +1998,7 @@ module Sun::Security::Tools
         i = 0
         while i < digests.attr_length
           mattr.put_value((digests[i].get_algorithm).to_s + "-Digest-Manifest", encoder.encode(md.manifest_digest(digests[i])))
-          ((i += 1) - 1)
+          i += 1
         end
       end
       # create digest of the manifest main attributes
@@ -2007,7 +2007,7 @@ module Sun::Security::Tools
         i = 0
         while i < digests.attr_length
           mattr.put_value((digests[i].get_algorithm).to_s + "-Digest-" + (ManifestDigester::MF_MAIN_ATTRS).to_s, encoder.encode(mde.digest(digests[i])))
-          ((i += 1) - 1)
+          i += 1
         end
       else
         raise IllegalStateException.new("ManifestDigester failed to create " + "Manifest-Main-Attribute entry")
@@ -2024,7 +2024,7 @@ module Sun::Security::Tools
           i = 0
           while i < digests.attr_length
             attr.put_value((digests[i].get_algorithm).to_s + "-Digest", encoder.encode(mde.digest(digests[i])))
-            ((i += 1) - 1)
+            i += 1
           end
           entries.put(name, attr)
         end

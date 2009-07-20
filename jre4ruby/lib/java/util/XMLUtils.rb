@@ -107,7 +107,7 @@ module Java::Util
             val = ((n).nil?) ? "" : n.get_node_value
             props.set_property(entry.get_attribute("key"), val)
           end
-          ((i += 1) - 1)
+          i += 1
         end
       end
       

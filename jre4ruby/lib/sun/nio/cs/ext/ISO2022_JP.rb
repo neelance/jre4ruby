@@ -430,10 +430,10 @@ module Sun::Nio::Cs::Ext
                     return CoderResult::UNDERFLOW
                   end
                   b2 = src.get & 0xff
-                  ((input_size += 1) - 1)
+                  input_size += 1
                   if ((b2).equal?(Character.new(?(.ord)))
                     b3 = src.get & 0xff
-                    ((input_size += 1) - 1)
+                    input_size += 1
                     if ((b3).equal?(Character.new(?B.ord)))
                       @current_state = ASCII
                     else
@@ -450,7 +450,7 @@ module Sun::Nio::Cs::Ext
                   else
                     if ((b2).equal?(Character.new(?$.ord)))
                       b3 = src.get & 0xff
-                      ((input_size += 1) - 1)
+                      input_size += 1
                       if ((b3).equal?(Character.new(?@.ord)))
                         @current_state = JISX0208_1978
                       else
@@ -462,7 +462,7 @@ module Sun::Nio::Cs::Ext
                               return CoderResult::UNDERFLOW
                             end
                             b4 = src.get & 0xff
-                            ((input_size += 1) - 1)
+                            input_size += 1
                             if ((b4).equal?(Character.new(?D.ord)))
                               @current_state = JISX0212_1990
                             else
@@ -512,7 +512,7 @@ module Sun::Nio::Cs::Ext
                   return CoderResult::UNDERFLOW
                 end
                 b2 = src.get & 0xff
-                ((input_size += 1) - 1)
+                input_size += 1
                 c = decode_double(b1, b2)
                 if ((c).equal?(REPLACE_CHAR))
                   return CoderResult.unmappable_for_length(input_size)
@@ -523,7 +523,7 @@ module Sun::Nio::Cs::Ext
                   return CoderResult::UNDERFLOW
                 end
                 b2 = src.get & 0xff
-                ((input_size += 1) - 1)
+                input_size += 1
                 c = @decoder0212.decode_double(b1, b2)
                 if ((c).equal?(REPLACE_CHAR))
                   return CoderResult.unmappable_for_length(input_size)
@@ -790,7 +790,7 @@ module Sun::Nio::Cs::Ext
                   end
                 end
               end
-              ((sp += 1) - 1)
+              sp += 1
             end
             return CoderResult::UNDERFLOW
           ensure
@@ -912,7 +912,7 @@ module Sun::Nio::Cs::Ext
                   end
                 end
               end
-              ((mark += 1) - 1)
+              mark += 1
             end
             return CoderResult::UNDERFLOW
           ensure

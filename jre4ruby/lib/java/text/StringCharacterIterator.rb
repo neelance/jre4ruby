@@ -186,7 +186,7 @@ module Java::Text
     # @see CharacterIterator#next
     def next
       if (@pos < @end - 1)
-        ((@pos += 1) - 1)
+        @pos += 1
         return @text.char_at(@pos)
       else
         @pos = @end
@@ -199,7 +199,7 @@ module Java::Text
     # @see CharacterIterator#previous
     def previous
       if (@pos > @begin)
-        ((@pos -= 1) + 1)
+        @pos -= 1
         return @text.char_at(@pos)
       else
         return DONE

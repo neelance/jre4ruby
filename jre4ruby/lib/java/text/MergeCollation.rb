@@ -77,7 +77,7 @@ module Java::Text
       i = 0
       while i < @status_array.attr_length
         @status_array[i] = 0
-        ((i += 1) - 1)
+        i += 1
       end
       set_pattern(pattern)
     end
@@ -112,7 +112,7 @@ module Java::Text
             while j >= 0
               tmp = (ext_list.get(j))
               tmp.add_to_buffer(result, false, with_white_space, last)
-              ((j -= 1) + 1)
+              j -= 1
             end
             ext_list = nil
           end
@@ -126,7 +126,7 @@ module Java::Text
         while j >= 0
           tmp = (ext_list.get(j))
           tmp.add_to_buffer(result, false, with_white_space, last)
-          ((j -= 1) + 1)
+          j -= 1
         end
         ext_list = nil
       end

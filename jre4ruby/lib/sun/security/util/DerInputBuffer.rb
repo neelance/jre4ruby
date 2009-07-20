@@ -114,7 +114,7 @@ module Sun::Security::Util
         if (!(self.attr_buf[self.attr_pos + i]).equal?(other.attr_buf[other.attr_pos + i]))
           return false
         end
-        ((i += 1) - 1)
+        i += 1
       end
       return true
     end
@@ -130,7 +130,7 @@ module Sun::Security::Util
       i = 0
       while i < len
         retval += self.attr_buf[p + i] * i
-        ((i += 1) - 1)
+        i += 1
       end
       return retval
     end
@@ -334,14 +334,14 @@ module Sun::Security::Util
         len -= 2
         # handle fractional seconds (if present)
         if ((self.attr_buf[self.attr_pos]).equal?(Character.new(?..ord)) || (self.attr_buf[self.attr_pos]).equal?(Character.new(?,.ord)))
-          ((len -= 1) + 1)
-          ((self.attr_pos += 1) - 1)
+          len -= 1
+          self.attr_pos += 1
           # handle upto milisecond precision only
           precision = 0
           peek = self.attr_pos
           while (!(self.attr_buf[peek]).equal?(Character.new(?Z.ord)) && !(self.attr_buf[peek]).equal?(Character.new(?+.ord)) && !(self.attr_buf[peek]).equal?(Character.new(?-.ord)))
-            ((peek += 1) - 1)
-            ((precision += 1) - 1)
+            peek += 1
+            precision += 1
           end
           case (precision)
           when 3

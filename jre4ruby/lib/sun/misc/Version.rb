@@ -432,7 +432,7 @@ module Sun::Misc
                     c = cs.char_at(3)
                     if (c >= Character.new(?a.ord) && c <= Character.new(?z.ord))
                       self.attr_jvm_special_version = (Character.to_s(c)).to_s
-                      ((next_char += 1) - 1)
+                      next_char += 1
                     end
                   end
                 rescue NumberFormatException => e

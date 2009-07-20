@@ -203,7 +203,7 @@ module Sun::Security::Jgss::Spnego
               System.out.println("SpNegoToken NegTokenInit: " + "reading Mechanism Oid = " + (mech).to_s)
             end
             @mech_type_list[i] = Oid.new(mech.to_s)
-            ((i += 1) - 1)
+            i += 1
           end
         end
         # parse mechToken, if present (skip reqFlags)

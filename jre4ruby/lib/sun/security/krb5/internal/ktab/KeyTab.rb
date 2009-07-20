@@ -277,7 +277,7 @@ module Sun::Security::Krb5::Internal::Ktab
               end
             end
           end
-          ((i -= 1) + 1)
+          i -= 1
         end
       end
       return nil
@@ -310,7 +310,7 @@ module Sun::Security::Krb5::Internal::Ktab
               end
             end
           end
-          ((i -= 1) + 1)
+          i -= 1
         end
       end
       size_ = keys.size
@@ -332,7 +332,7 @@ module Sun::Security::Krb5::Internal::Ktab
         i = 0
         while i < size_
           ret_val[((pos += 1) - 1)] = keys.get(i)
-          ((i += 1) - 1)
+          i += 1
         end
       else
         j = 0
@@ -348,9 +348,9 @@ module Sun::Security::Krb5::Internal::Ktab
               ret_val[((pos += 1) - 1)] = k
               keys.set(i, nil) # Cleared from consideration
             end
-            ((i += 1) - 1)
+            i += 1
           end
-          ((j += 1) - 1)
+          j += 1
         end
         # copy the rest
         i = 0
@@ -359,7 +359,7 @@ module Sun::Security::Krb5::Internal::Ktab
           if (!(k).nil?)
             ret_val[((pos += 1) - 1)] = k
           end
-          ((i += 1) - 1)
+          i += 1
         end
       end
       if (!(pos).equal?(size_))
@@ -389,7 +389,7 @@ module Sun::Security::Krb5::Internal::Ktab
               end
             end
           end
-          ((i += 1) - 1)
+          i += 1
         end
       end
       return false
@@ -427,7 +427,7 @@ module Sun::Security::Krb5::Internal::Ktab
           @entries = Vector.new
         end
         @entries.add_element(new_entry)
-        ((i += 1) - 1)
+        i += 1
       end
     end
     
@@ -446,7 +446,7 @@ module Sun::Security::Krb5::Internal::Ktab
           if (service.match(e.get_service) && ((key_type).equal?(-1) || (e.attr_key_type).equal?(key_type)))
             return i
           end
-          ((i += 1) - 1)
+          i += 1
         end
       end
       return found
@@ -461,7 +461,7 @@ module Sun::Security::Krb5::Internal::Ktab
         i = 0
         while i < kentries.attr_length
           kentries[i] = @entries.element_at(i)
-          ((i += 1) - 1)
+          i += 1
         end
         return kentries
       else
@@ -501,7 +501,7 @@ module Sun::Security::Krb5::Internal::Ktab
         i = 0
         while i < @entries.size
           kos.write_entry(@entries.element_at(i))
-          ((i += 1) - 1)
+          i += 1
         end
         kos.close
       end

@@ -205,7 +205,7 @@ module Java::Lang
             i = 0
             while i < self.class::Cache.attr_length
               self.class::Cache[i] = Short.new(RJava.cast_to_short((i - 128)))
-              ((i += 1) - 1)
+              i += 1
             end
           end
         }

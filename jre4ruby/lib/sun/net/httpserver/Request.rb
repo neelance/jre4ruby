@@ -229,7 +229,7 @@ module Sun::Net::Httpserver
           firstc = -1
         end == :thrown or break
         while (len > 0 && s[len - 1] <= Character.new(?\s.ord))
-          ((len -= 1) + 1)
+          len -= 1
         end
         k = nil
         if (keyend <= 0)
@@ -238,10 +238,10 @@ module Sun::Net::Httpserver
         else
           k = (String.copy_value_of(s, 0, keyend)).to_s
           if (keyend < len && (s[keyend]).equal?(Character.new(?:.ord)))
-            ((keyend += 1) - 1)
+            keyend += 1
           end
           while (keyend < len && s[keyend] <= Character.new(?\s.ord))
-            ((keyend += 1) - 1)
+            keyend += 1
           end
         end
         v = nil

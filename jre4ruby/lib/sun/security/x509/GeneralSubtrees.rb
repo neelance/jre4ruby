@@ -165,7 +165,7 @@ module Sun::Security::X509
       n = size
       while i < n
         get(i).encode(seq)
-        ((i += 1) - 1)
+        i += 1
       end
       out.write(DerValue.attr_tag_sequence, seq)
     end
@@ -229,7 +229,7 @@ module Sun::Security::X509
           case (current.constrains(subsequent))
           when GeneralNameInterface::NAME_DIFF_TYPE
             # not comparable; different name types; keep checking
-            ((j += 1) - 1)
+            j += 1
             next
             # delete one of the duplicates
             remove1 = true
@@ -240,9 +240,9 @@ module Sun::Security::X509
             # subsequent narrows current
             # remove narrower name (subsequent)
             remove(j)
-            ((j -= 1) + 1)
+            j -= 1
             # continue check with new subsequent
-            ((j += 1) - 1)
+            j += 1
             next
             # subsequent widens current
             # remove narrower name current
@@ -253,19 +253,19 @@ module Sun::Security::X509
             remove1 = true
           when GeneralNameInterface::NAME_SAME_TYPE
             # keep both for now; keep checking
-            ((j += 1) - 1)
+            j += 1
             next
           end
           break
-          ((j += 1) - 1)
+          j += 1
         end
         # end of this pass of subsequent elements
         if (remove1)
           remove(i)
-          ((i -= 1) + 1)
+          i -= 1
           # check the new i value
         end
-        ((i += 1) - 1)
+        i += 1
       end
     end
     
@@ -383,25 +383,25 @@ module Sun::Security::X509
           case (this_entry.constrains(other_entry))
           when NAME_NARROWS
             remove(i)
-            ((i -= 1) + 1)
+            i -= 1
             new_this.add(other_entry_gs)
             same_type = false
           when NAME_SAME_TYPE
             same_type = true
-            ((j += 1) - 1)
+            j += 1
             next
             same_type = false
           when NAME_MATCH, NAME_WIDENS
             same_type = false
           when NAME_DIFF_TYPE
-            ((j += 1) - 1)
+            j += 1
             next
           else
-            ((j += 1) - 1)
+            j += 1
             next
           end
           break
-          ((j += 1) - 1)
+          j += 1
         end
         # Step 3b: If sameType is still true, we have the situation
         # where there was a name of the same type as thisEntry in
@@ -425,10 +425,10 @@ module Sun::Security::X509
                   intersection = true
                   break
                 end
-                ((k += 1) - 1)
+                k += 1
               end
             end
-            ((j_ += 1) - 1)
+            j_ += 1
           end
           if ((intersection).equal?(false))
             if ((new_excluded).nil?)
@@ -441,9 +441,9 @@ module Sun::Security::X509
           end
           # Step 3b.2: Remove thisEntry from this
           remove(i)
-          ((i -= 1) + 1)
+          i -= 1
         end
-        ((i += 1) - 1)
+        i += 1
       end
       # Step 4: Add all entries in newThis to this
       if (new_this.size > 0)
@@ -464,7 +464,7 @@ module Sun::Security::X509
             diff_type = true
             # continue to see if we find something later of the
             # same type
-            ((j += 1) - 1)
+            j += 1
             next
             diff_type = false # we found an entry of the same type
             # break because we know we won't be adding it to
@@ -474,16 +474,16 @@ module Sun::Security::X509
             # break because we know we won't be adding it to
             # this now
           else
-            ((j += 1) - 1)
+            j += 1
             next
           end
           break
-          ((j += 1) - 1)
+          j += 1
         end
         if (diff_type)
           add(other_entry_gs)
         end
-        ((i_ += 1) - 1)
+        i_ += 1
       end
       # Step 6: Return the newExcluded GeneralSubtrees
       return new_excluded
@@ -499,7 +499,7 @@ module Sun::Security::X509
         n = other.size
         while i < n
           add(other.get(i))
-          ((i += 1) - 1)
+          i += 1
         end
         # Minimize this
         minimize
@@ -528,18 +528,18 @@ module Sun::Security::X509
           when GeneralNameInterface::NAME_DIFF_TYPE
           when GeneralNameInterface::NAME_MATCH
             remove(j)
-            ((j -= 1) + 1)
+            j -= 1
           when GeneralNameInterface::NAME_NARROWS
             # permitted narrows excluded
             remove(j)
-            ((j -= 1) + 1)
+            j -= 1
           when GeneralNameInterface::NAME_WIDENS
             # permitted widens excluded
           when GeneralNameInterface::NAME_SAME_TYPE
           end
-          ((j += 1) - 1)
+          j += 1
         end
-        ((i += 1) - 1)
+        i += 1
       end
       # end of pass of excluded
     end

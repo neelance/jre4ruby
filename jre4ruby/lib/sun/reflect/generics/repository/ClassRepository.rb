@@ -121,7 +121,7 @@ module Sun::Reflect::Generics::Repository
           ts[i].accept(r) # reify subtree
           # extract result from visitor and store it
           sis[i] = r.get_result
-          ((i += 1) - 1)
+          i += 1
         end
         @super_interfaces = sis # cache overall result
       end

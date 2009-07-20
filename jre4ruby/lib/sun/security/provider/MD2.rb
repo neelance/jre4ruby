@@ -106,13 +106,13 @@ module Sun::Security::Provider
       i = 0
       while i < 16
         @c_bytes[i] = @c[i]
-        ((i += 1) - 1)
+        i += 1
       end
       impl_compress(@c_bytes, 0)
       i_ = 0
       while i_ < 16
         out[ofs + i_] = @x[i_]
-        ((i_ += 1) - 1)
+        i_ += 1
       end
     end
     
@@ -124,14 +124,14 @@ module Sun::Security::Provider
         k = b[ofs + i] & 0xff
         @x[16 + i] = k
         @x[32 + i] = k ^ @x[i]
-        ((i += 1) - 1)
+        i += 1
       end
       # update the checksum
       t = @c[15]
       i_ = 0
       while i_ < 16
         t = (@c[i_] ^= S[@x[16 + i_] ^ t])
-        ((i_ += 1) - 1)
+        i_ += 1
       end
       t = 0
       i__ = 0
@@ -139,10 +139,10 @@ module Sun::Security::Provider
         j = 0
         while j < 48
           t = (@x[j] ^= S[t])
-          ((j += 1) - 1)
+          j += 1
         end
         t = (t + i__) & 0xff
-        ((i__ += 1) - 1)
+        i__ += 1
       end
     end
     
@@ -158,7 +158,7 @@ module Sun::Security::Provider
           b = Array.typed(::Java::Byte).new(i) { 0 }
           Arrays.fill(b, i)
           PADDING[i] = b
-          ((i += 1) - 1)
+          i += 1
         end
       end
     }

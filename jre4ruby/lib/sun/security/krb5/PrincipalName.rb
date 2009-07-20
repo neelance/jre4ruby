@@ -216,7 +216,7 @@ module Sun::Security::Krb5
           if (!(@name_strings[i] == other.attr_name_strings[i]))
             return false
           end
-          ((i += 1) - 1)
+          i += 1
         end
       end
       return true
@@ -357,7 +357,7 @@ module Sun::Security::Krb5
               end
             end
           end
-          ((i += 1) - 1)
+          i += 1
         end
         if ((i).equal?(temp.length))
           if (component_start < i)
@@ -456,7 +456,7 @@ module Sun::Security::Krb5
       i = 1
       while i < @name_strings.attr_length
         temp.append(@name_strings[i])
-        ((i += 1) - 1)
+        i += 1
       end
       return temp.to_s
     end
@@ -488,7 +488,7 @@ module Sun::Security::Krb5
       while i < @name_strings.attr_length
         result[i] = Array.typed(::Java::Byte).new(@name_strings[i].length) { 0 }
         result[i] = @name_strings[i].get_bytes
-        ((i += 1) - 1)
+        i += 1
       end
       return result
     end
@@ -526,7 +526,7 @@ module Sun::Security::Krb5
         i = 0
         while i < @name_strings.attr_length
           salt.append(@name_strings[i])
-          ((i += 1) - 1)
+          i += 1
         end
         return salt.to_s
       end
@@ -547,7 +547,7 @@ module Sun::Security::Krb5
           str.append("/")
         end
         str.append(@name_strings[i])
-        ((i += 1) - 1)
+        i += 1
       end
       if (!(@name_realm).nil?)
         str.append("@")
@@ -565,7 +565,7 @@ module Sun::Security::Krb5
           str.append("/")
         end
         str.append(@name_strings[i])
-        ((i += 1) - 1)
+        i += 1
       end
       return str.to_s
     end
@@ -586,7 +586,7 @@ module Sun::Security::Krb5
       i = 0
       while i < @name_strings.attr_length
         der[i] = DerValue.new(DerValue.attr_tag_general_string, @name_strings[i])
-        ((i += 1) - 1)
+        i += 1
       end
       temp.put_sequence(der)
       bytes.write(DerValue.create_tag(DerValue::TAG_CONTEXT, true, 0x1), temp)
@@ -621,7 +621,7 @@ module Sun::Security::Krb5
           if (!(@name_strings[i].equals_ignore_case(pname.attr_name_strings[i])))
             matched = false
           end
-          ((i += 1) - 1)
+          i += 1
         end
       end
       return matched
@@ -648,7 +648,7 @@ module Sun::Security::Krb5
         bytes = @name_strings[i].get_bytes
         cos.write32(bytes.attr_length)
         cos.write(bytes, 0, bytes.attr_length)
-        ((i += 1) - 1)
+        i += 1
       end
     end
     
@@ -715,7 +715,7 @@ module Sun::Security::Krb5
                   end
                 end
               end
-              ((i += 1) - 1)
+              i += 1
             end
           end
         rescue KrbException => e

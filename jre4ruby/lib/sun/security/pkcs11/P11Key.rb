@@ -165,7 +165,7 @@ module Sun::Security::Pkcs11
             end
           end
         end
-        ((i += 1) - 1)
+        i += 1
       end
       @token_object = token_object
       @sensitive = sensitive
@@ -240,7 +240,7 @@ module Sun::Security::Pkcs11
       i = 0
       while i < b1.attr_length
         r += (b1[i] & 0xff) * 37
-        ((i += 1) - 1)
+        i += 1
       end
       return r
     end
@@ -358,7 +358,7 @@ module Sun::Security::Pkcs11
             while j < i
               # clear values copied from knownAttributes
               desired_attributes[j].attr_p_value = nil
-              ((j += 1) - 1)
+              j += 1
             end
             begin
               session.attr_token.attr_p11._c_get_attribute_value(session.id, key_id, desired_attributes)
@@ -367,7 +367,7 @@ module Sun::Security::Pkcs11
             end
             break # break loop, goto return
           end
-          ((i += 1) - 1)
+          i += 1
         end
         return desired_attributes
       end

@@ -419,7 +419,7 @@ module Java::Util
         end
         e = e.attr_next
       end
-      ((@mod_count += 1) - 1)
+      @mod_count += 1
       add_entry(hash_, key, value, i)
       return nil
     end
@@ -437,7 +437,7 @@ module Java::Util
         end
         e = e.attr_next
       end
-      ((@mod_count += 1) - 1)
+      @mod_count += 1
       add_entry(0, nil, value, 0)
       return nil
     end
@@ -518,7 +518,7 @@ module Java::Util
             e = next_
           end while (!(e).nil?)
         end
-        ((j += 1) - 1)
+        j += 1
       end
     end
     
@@ -587,8 +587,8 @@ module Java::Util
         next_ = e.attr_next
         k = nil
         if ((e.attr_hash).equal?(hash_) && (((k = e.attr_key)).equal?(key) || (!(key).nil? && (key == k))))
-          ((@mod_count += 1) - 1)
-          ((@size -= 1) + 1)
+          @mod_count += 1
+          @size -= 1
           if ((prev).equal?(e))
             @table[i] = next_
           else
@@ -618,8 +618,8 @@ module Java::Util
       while (!(e).nil?)
         next_ = e.attr_next
         if ((e.attr_hash).equal?(hash_) && (e == entry))
-          ((@mod_count += 1) - 1)
-          ((@size -= 1) + 1)
+          @mod_count += 1
+          @size -= 1
           if ((prev).equal?(e))
             @table[i] = next_
           else
@@ -638,12 +638,12 @@ module Java::Util
     # Removes all of the mappings from this map.
     # The map will be empty after this call returns.
     def clear
-      ((@mod_count += 1) - 1)
+      @mod_count += 1
       tab = @table
       i = 0
       while i < tab.attr_length
         tab[i] = nil
-        ((i += 1) - 1)
+        i += 1
       end
       @size = 0
     end
@@ -669,7 +669,7 @@ module Java::Util
           end
           e = e.attr_next
         end
-        ((i += 1) - 1)
+        i += 1
       end
       return false
     end
@@ -687,7 +687,7 @@ module Java::Util
           end
           e = e.attr_next
         end
-        ((i += 1) - 1)
+        i += 1
       end
       return false
     end
@@ -842,7 +842,7 @@ module Java::Util
     def create_entry(hash_, key, value, bucket_index)
       e = @table[bucket_index]
       @table[bucket_index] = Entry.new(hash_, key, value, e)
-      ((@size += 1) - 1)
+      @size += 1
     end
     
     class_module.module_eval {
@@ -1243,7 +1243,7 @@ module Java::Util
         key = s.read_object
         value = s.read_object
         put_for_create(key, value)
-        ((i += 1) - 1)
+        i += 1
       end
     end
     

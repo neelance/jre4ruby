@@ -302,7 +302,7 @@ module Java::Util
       old_value = @vals[index]
       @vals[index] = mask_null(value)
       if ((old_value).nil?)
-        ((@size += 1) - 1)
+        @size += 1
       end
       return unmask_null(old_value)
     end
@@ -323,7 +323,7 @@ module Java::Util
       old_value = @vals[index]
       @vals[index] = nil
       if (!(old_value).nil?)
-        ((@size -= 1) + 1)
+        @size -= 1
       end
       return unmask_null(old_value)
     end
@@ -336,7 +336,7 @@ module Java::Util
       index = (key).ordinal
       if ((mask_null(value) == @vals[index]))
         @vals[index] = nil
-        ((@size -= 1) + 1)
+        @size -= 1
         return true
       end
       return false
@@ -378,11 +378,11 @@ module Java::Util
           em_value = em.attr_vals[i]
           if (!(em_value).nil?)
             if ((@vals[i]).nil?)
-              ((@size += 1) - 1)
+              @size += 1
             end
             @vals[i] = em_value
           end
-          ((i += 1) - 1)
+          i += 1
         end
       else
         super(m)
@@ -511,10 +511,10 @@ module Java::Util
           while i < self.attr_vals.attr_length
             if ((o == self.attr_vals[i]))
               self.attr_vals[i] = nil
-              ((self.attr_size -= 1) + 1)
+              self.attr_size -= 1
               return true
             end
-            ((i += 1) - 1)
+            i += 1
           end
           return false
         end
@@ -614,7 +614,7 @@ module Java::Util
             if (!(self.attr_vals[i]).nil?)
               a[((j += 1) - 1)] = AbstractMap::SimpleEntry.new(self.attr_key_universe[i], unmask_null(self.attr_vals[i]))
             end
-            ((i += 1) - 1)
+            i += 1
           end
           return a
         end
@@ -650,7 +650,7 @@ module Java::Util
         typesig { [] }
         def has_next
           while (@index < self.attr_vals.attr_length && (self.attr_vals[@index]).nil?)
-            ((@index += 1) - 1)
+            @index += 1
           end
           return !(@index).equal?(self.attr_vals.attr_length)
         end
@@ -660,7 +660,7 @@ module Java::Util
           check_last_returned_index
           if (!(self.attr_vals[@last_returned_index]).nil?)
             self.attr_vals[@last_returned_index] = nil
-            ((self.attr_size -= 1) + 1)
+            self.attr_size -= 1
           end
           @last_returned_index = -1
         end
@@ -835,7 +835,7 @@ module Java::Util
         if (!(his_value).equal?(our_value) && ((his_value).nil? || !(his_value == our_value)))
           return false
         end
-        ((i += 1) - 1)
+        i += 1
       end
       return true
     end
@@ -913,7 +913,7 @@ module Java::Util
         key = s.read_object
         value = s.read_object
         put(key, value)
-        ((i += 1) - 1)
+        i += 1
       end
     end
     

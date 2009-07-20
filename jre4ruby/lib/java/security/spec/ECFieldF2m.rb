@@ -123,7 +123,7 @@ module Java::Security::Spec
         index = temp.get_lowest_set_bit
         @ks[i] = index
         temp = temp.clear_bit(index)
-        ((i -= 1) + 1)
+        i -= 1
       end
     end
     
@@ -173,7 +173,7 @@ module Java::Security::Spec
         if ((!(i).equal?(0)) && (@ks[i] >= @ks[i - 1]))
           raise IllegalArgumentException.new("values in ks are not in descending order")
         end
-        ((i += 1) - 1)
+        i += 1
       end
       # convert ks into rp
       @rp = BigInteger::ONE
@@ -181,7 +181,7 @@ module Java::Security::Spec
       j = 0
       while j < @ks.attr_length
         @rp = @rp.set_bit(@ks[j])
-        ((j += 1) - 1)
+        j += 1
       end
     end
     

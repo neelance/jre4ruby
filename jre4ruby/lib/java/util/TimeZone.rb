@@ -388,7 +388,7 @@ module Java::Util
       end
       index = daylight ? 3 : 1
       if ((style).equal?(SHORT))
-        ((index += 1) - 1)
+        index += 1
       end
       return names[index]
     end
@@ -789,7 +789,7 @@ module Java::Util
               return nil
             end
             hours = num
-            ((count_delim += 1) - 1)
+            count_delim += 1
             num = 0
             len = 0
             next
@@ -798,7 +798,7 @@ module Java::Util
             return nil
           end
           num = num * 10 + (c - Character.new(?0.ord))
-          ((len += 1) - 1)
+          len += 1
         end
         if (!(index).equal?(length))
           return nil

@@ -105,7 +105,7 @@ module Sun::Security::Jgss::Wrapper
               if ((supported_nts[i] == name_type))
                 return name_type
               end
-              ((i += 1) - 1)
+              i += 1
             end
             # Special handling the specified name type
             if ((GSSUtil::NT_GSS_KRB5_PRINCIPAL == name_type))

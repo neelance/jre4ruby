@@ -213,7 +213,7 @@ module Java::Security
           i = 0
           while i < @signers.attr_length
             cert_chains.add_all(@signers[i].get_signer_cert_path.get_certificates)
-            ((i += 1) - 1)
+            i += 1
           end
           @certs = cert_chains.to_array(Array.typed(Java::Security::Cert::Certificate).new(cert_chains.size) { nil })
           return @certs.clone
@@ -354,12 +354,12 @@ module Java::Security
                 match = true
                 break
               end
-              ((j += 1) - 1)
+              j += 1
             end
             if (!match)
               return false
             end
-            ((i += 1) - 1)
+            i += 1
           end
           return true
           # both have certs
@@ -377,12 +377,12 @@ module Java::Security
                   match = true
                   break
                 end
-                ((j += 1) - 1)
+                j += 1
               end
               if (!match)
                 return false
               end
-              ((i += 1) - 1)
+              i += 1
             end
             return true
           end
@@ -487,14 +487,14 @@ module Java::Security
         i = 0
         while i < @certs.attr_length
           sb.append(" " + (@certs[i]).to_s)
-          ((i += 1) - 1)
+          i += 1
         end
       else
         if (!(@signers).nil? && @signers.attr_length > 0)
           i = 0
           while i < @signers.attr_length
             sb.append(" " + (@signers[i]).to_s)
-            ((i += 1) - 1)
+            i += 1
           end
         else
           sb.append(" <no signer certificates>")
@@ -537,7 +537,7 @@ module Java::Security
           rescue CertificateEncodingException => cee
             raise IOException.new(cee.get_message)
           end
-          ((i += 1) - 1)
+          i += 1
         end
       end
       # Serialize the array of code signers (if any)
@@ -593,7 +593,7 @@ module Java::Security
           raise IOException.new(ce.get_message)
         end
         bais.close
-        ((i += 1) - 1)
+        i += 1
       end
       # Deserialize array of code signers (if any)
       begin
@@ -629,7 +629,7 @@ module Java::Security
           # (loop while certs are not end-entity certs)
           while (j < certs.attr_length && certs[j].is_a?(X509Certificate) && !((certs[j]).get_basic_constraints).equal?(-1))
             cert_chain.add(certs[j])
-            ((j += 1) - 1)
+            j += 1
           end
           i = j
           cert_path = @factory.generate_cert_path(cert_chain)

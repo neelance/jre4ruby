@@ -216,14 +216,14 @@ module Sun::Security::Ssl
               lru = s
             end
           end
-          ((count += 1) - 1)
+          count += 1
         end
         if ((!(lru).nil?) && (count > target_size))
           if (!(Debug).nil? && Debug.is_on("sessioncache"))
             System.out.println("uncaching " + (lru).to_s)
           end
           lru.invalidate
-          ((count -= 1) + 1) # element removed from the cache
+          count -= 1 # element removed from the cache
         end
         cache_size = count
       end

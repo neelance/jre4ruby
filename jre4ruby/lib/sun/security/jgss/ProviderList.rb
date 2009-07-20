@@ -165,7 +165,7 @@ module Sun::Security::Jgss
           # Move on to the next provider
           GSSUtil.debug("Error in adding provider " + (prov.get_name).to_s + ": " + (ge).to_s)
         end
-        ((i += 1) - 1)
+        i += 1
       end # End of for loop
     end
     

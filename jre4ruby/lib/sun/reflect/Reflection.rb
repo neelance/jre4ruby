@@ -206,7 +206,7 @@ module Sun::Reflect
             # Skip over '['s
             if ((name1.char_at(idx1)).equal?(Character.new(?[.ord)))
               begin
-                ((idx1 += 1) - 1)
+                idx1 += 1
               end while ((name1.char_at(idx1)).equal?(Character.new(?[.ord)))
               if (!(name1.char_at(idx1)).equal?(Character.new(?L.ord)))
                 # Something is terribly wrong.  Shouldn't be here.
@@ -215,7 +215,7 @@ module Sun::Reflect
             end
             if ((name2.char_at(idx2)).equal?(Character.new(?[.ord)))
               begin
-                ((idx2 += 1) - 1)
+                idx2 += 1
               end while ((name2.char_at(idx2)).equal?(Character.new(?[.ord)))
               if (!(name2.char_at(idx2)).equal?(Character.new(?L.ord)))
                 # Something is terribly wrong.  Shouldn't be here.

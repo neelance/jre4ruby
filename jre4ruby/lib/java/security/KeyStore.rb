@@ -435,7 +435,7 @@ module Java::Security
             if (!(cert_type == cloned_chain[i].get_type))
               raise IllegalArgumentException.new("chain does not contain certificates " + "of the same type")
             end
-            ((i += 1) - 1)
+            i += 1
           end
           if (!(private_key.get_algorithm == cloned_chain[0].get_public_key.get_algorithm))
             raise IllegalArgumentException.new("private key algorithm does not match " + "algorithm of public key in end entity " + "certificate (at index 0)")
@@ -1594,7 +1594,7 @@ module Java::Security
                     # reprompt if the password is wrong
                     tries = 0
                     while (true)
-                      ((tries += 1) - 1)
+                      tries += 1
                       begin
                         return run0
                       rescue IOException => e
@@ -1784,7 +1784,7 @@ module Java::Security
                       # reprompt if the password is wrong
                       tries = 0
                       while (true)
-                        ((tries += 1) - 1)
+                        tries += 1
                         begin
                           ks.load(param)
                           break

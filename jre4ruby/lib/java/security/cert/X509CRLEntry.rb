@@ -95,7 +95,7 @@ module Java::Security::Cert
           if (!(this_crlentry[i]).equal?(other_crlentry[i]))
             return false
           end
-          ((i += 1) - 1)
+          i += 1
         end
       rescue CRLException => ce
         return false
@@ -115,7 +115,7 @@ module Java::Security::Cert
         i = 1
         while i < entry_data.attr_length
           retval += entry_data[i] * i
-          ((i += 1) - 1)
+          i += 1
         end
       rescue CRLException => ce
         return (retval)

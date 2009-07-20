@@ -178,7 +178,7 @@ module Sun::Security::Util
             i = 0
             while i < @b.attr_length
               h += (@b[i] & 0xff) * 37
-              ((i += 1) - 1)
+              i += 1
             end
             @hash = h
           end
@@ -354,7 +354,7 @@ module Sun::Security::Util
         entry = t.next
         if ((entry.is_valid(time)).equal?(false))
           t.remove
-          ((cnt += 1) - 1)
+          cnt += 1
         end
       end
       if (DEBUG)

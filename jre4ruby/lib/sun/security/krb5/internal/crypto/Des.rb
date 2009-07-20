@@ -60,7 +60,7 @@ module Sun::Security::Krb5::Internal::Crypto
         i = 0
         while i < 8
           key[i] = Good_parity[key[i] & 0xff]
-          ((i += 1) - 1)
+          i += 1
         end
         return key
       end
@@ -77,7 +77,7 @@ module Sun::Security::Krb5::Internal::Crypto
           if ((Bad_keys[i]).equal?(key))
             return true
           end
-          ((i += 1) - 1)
+          i += 1
         end
         return false
       end
@@ -101,7 +101,7 @@ module Sun::Security::Krb5::Internal::Crypto
           if (i + offset < input.attr_length)
             result |= ((input[i + offset]) & 0xff) << ((7 - i) * 8)
           end
-          ((i += 1) - 1)
+          i += 1
         end
         return result
       end
@@ -112,7 +112,7 @@ module Sun::Security::Krb5::Internal::Crypto
         i = 0
         while i < 8
           output[i] = ((input >> ((7 - i) * 8)) & 0xff)
-          ((i += 1) - 1)
+          i += 1
         end
         return output
       end
@@ -129,7 +129,7 @@ module Sun::Security::Krb5::Internal::Crypto
           if (i + offset < output.attr_length)
             output[i + offset] = ((input >> ((7 - i) * 8)) & 0xff)
           end
-          ((i += 1) - 1)
+          i += 1
         end
       end
       
@@ -207,12 +207,12 @@ module Sun::Security::Krb5::Internal::Crypto
             j = 0
             while j < 64
               octet1 |= ((octet & (1 << j)) >> j) << (63 - j)
-              ((j += 1) - 1)
+              j += 1
             end
             octet = octet1 >> 1
           end
           key ^= (octet << 1)
-          ((i += 1) - 1)
+          i += 1
         end
         key = set_parity(key)
         if (bad_key(key))
@@ -267,7 +267,7 @@ module Sun::Security::Krb5::Internal::Crypto
           while i < msg.attr_length / 8
             result = cipher.do_final(msg, i * 8, 8)
             cipher.init(Cipher::ENCRYPT_MODE, sk, (IvParameterSpec.new(result)))
-            ((i += 1) - 1)
+            i += 1
           end
         rescue GeneralSecurityException => e
           ke = KrbCryptoException.new(e.get_message)
@@ -297,7 +297,7 @@ module Sun::Security::Krb5::Internal::Crypto
           i = padding.attr_length - 1
           while i > data.attr_length - 1
             padding[i] = 0
-            ((i -= 1) + 1)
+            i -= 1
           end
           System.arraycopy(data, 0, padding, 0, data.attr_length)
           return padding

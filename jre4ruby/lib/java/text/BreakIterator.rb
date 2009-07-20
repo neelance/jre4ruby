@@ -657,7 +657,7 @@ module Java::Text
         i = 1
         while i < 8
           num = num << 8 | (buf[offset + i] & 0xff)
-          ((i += 1) - 1)
+          i += 1
         end
         return num
       end
@@ -668,7 +668,7 @@ module Java::Text
         i = 1
         while i < 4
           num = num << 8 | (buf[offset + i] & 0xff)
-          ((i += 1) - 1)
+          i += 1
         end
         return num
       end

@@ -498,7 +498,7 @@ module Java::Io
       i = Character.new(?0.ord)
       while i <= Character.new(?9.ord)
         @ctype[i] |= CT_DIGIT
-        ((i += 1) - 1)
+        i += 1
       end
       @ctype[Character.new(?..ord)] |= CT_DIGIT
       @ctype[Character.new(?-.ord)] |= CT_DIGIT
@@ -646,7 +646,7 @@ module Java::Io
       ctype = c < 256 ? ct[c] : CT_ALPHA
       while (!((ctype & CT_WHITESPACE)).equal?(0))
         if ((c).equal?(Character.new(?\r.ord)))
-          ((@lineno += 1) - 1)
+          @lineno += 1
           if (@eol_is_significant_p)
             @peekc = SKIP_LF
             return @ttype = TT_EOL
@@ -657,7 +657,7 @@ module Java::Io
           end
         else
           if ((c).equal?(Character.new(?\n.ord)))
-            ((@lineno += 1) - 1)
+            @lineno += 1
             if (@eol_is_significant_p)
               return @ttype = TT_EOL
             end
@@ -698,10 +698,10 @@ module Java::Io
         @peekc = c
         if (!(decexp).equal?(0))
           denom = 10
-          ((decexp -= 1) + 1)
+          decexp -= 1
           while (decexp > 0)
             denom *= 10
-            ((decexp -= 1) + 1)
+            decexp -= 1
           end
           # Do one division of a likely-to-be-more-accurate number
           v = v / denom
@@ -794,14 +794,14 @@ module Java::Io
           prevc = 0
           while (!((c = read)).equal?(Character.new(?/.ord)) || !(prevc).equal?(Character.new(?*.ord)))
             if ((c).equal?(Character.new(?\r.ord)))
-              ((@lineno += 1) - 1)
+              @lineno += 1
               c = read
               if ((c).equal?(Character.new(?\n.ord)))
                 c = read
               end
             else
               if ((c).equal?(Character.new(?\n.ord)))
-                ((@lineno += 1) - 1)
+                @lineno += 1
                 c = read
               end
             end

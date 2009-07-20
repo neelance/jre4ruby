@@ -762,7 +762,7 @@ module Sun::Reflect
         i = 0
         while i < checked_exception_indices.attr_length
           @asm.emit_short(checked_exception_indices[i])
-          ((i += 1) - 1)
+          i += 1
         end
       end
     end

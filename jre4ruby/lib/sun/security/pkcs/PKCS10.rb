@@ -318,7 +318,7 @@ module Sun::Security::Pkcs
         i = 1
         while i < @encoded.attr_length
           retval += @encoded[i] * i
-          ((i += 1) - 1)
+          i += 1
         end
       end
       return (retval)

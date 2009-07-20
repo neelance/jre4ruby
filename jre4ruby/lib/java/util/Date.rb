@@ -497,7 +497,7 @@ module Java::Util
           limit = s.length
           while (i < limit)
             c = s.char_at(i)
-            ((i += 1) - 1)
+            i += 1
             if (c <= Character.new(?\s.ord) || (c).equal?(Character.new(?,.ord)))
               next
             end
@@ -506,9 +506,9 @@ module Java::Util
               depth = 1
               while (i < limit)
                 c = s.char_at(i)
-                ((i += 1) - 1)
+                i += 1
                 if ((c).equal?(Character.new(?(.ord)))
-                  ((depth += 1) - 1)
+                  depth += 1
                 else
                   if ((c).equal?(Character.new(?).ord)))
                     if ((depth -= 1) <= 0)
@@ -523,7 +523,7 @@ module Java::Util
               n = c - Character.new(?0.ord)
               while (i < limit && Character.new(?0.ord) <= (c = s.char_at(i)) && c <= Character.new(?9.ord))
                 n = n * 10 + c - Character.new(?0.ord)
-                ((i += 1) - 1)
+                i += 1
               end
               if ((prevc).equal?(Character.new(?+.ord)) || (prevc).equal?(Character.new(?-.ord)) && !(year).equal?(JavaInteger::MIN_VALUE))
                 # timezone offset
@@ -613,7 +613,7 @@ module Java::Util
                   if (!(Character.new(?A.ord) <= c && c <= Character.new(?Z.ord) || Character.new(?a.ord) <= c && c <= Character.new(?z.ord)))
                     break
                   end
-                  ((i += 1) - 1)
+                  i += 1
                 end
                 if (i <= st + 1)
                   throw :break_syntax, :thrown

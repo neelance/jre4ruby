@@ -128,7 +128,7 @@ module Java::Text
         counter = 0
         while counter < iterators.attr_length
           append_contents(buffer, iterators[counter])
-          ((counter += 1) - 1)
+          counter += 1
         end
         @text = (buffer.to_s).to_s
         if (@text.length > 0)
@@ -152,7 +152,7 @@ module Java::Text
               index = iterator.get_run_limit
             end
             offset += (end_ - start)
-            ((counter_ += 1) - 1)
+            counter_ += 1
           end
         end
       end
@@ -307,7 +307,7 @@ module Java::Text
         i = 0
         while i < attributes.attr_length
           keys.add(attributes[i])
-          ((i += 1) - 1)
+          i += 1
         end
         keys.retain_all(text.get_all_attribute_keys)
       end
@@ -486,7 +486,7 @@ module Java::Text
       # search for the run index where this offset should be
       run_index = 0
       while (run_index < @run_count && @run_starts[run_index] < offset)
-        ((run_index += 1) - 1)
+        run_index += 1
       end
       # if the offset is at a run start already, we're done
       if (run_index < @run_count && (@run_starts[run_index]).equal?(offset))
@@ -504,7 +504,7 @@ module Java::Text
           new_run_starts[i] = @run_starts[i]
           new_run_attributes[i] = @run_attributes[i]
           new_run_attribute_values[i] = @run_attribute_values[i]
-          ((i += 1) - 1)
+          i += 1
         end
         @run_starts = new_run_starts
         @run_attributes = new_run_attributes
@@ -526,13 +526,13 @@ module Java::Text
         end
       end
       # now actually break up the run
-      ((@run_count += 1) - 1)
+      @run_count += 1
       i = @run_count - 1
       while i > run_index
         @run_starts[i] = @run_starts[i - 1]
         @run_attributes[i] = @run_attributes[i - 1]
         @run_attribute_values[i] = @run_attribute_values[i - 1]
-        ((i -= 1) + 1)
+        i -= 1
       end
       @run_starts[run_index] = offset
       @run_attributes[run_index] = new_run_attributes
@@ -569,7 +569,7 @@ module Java::Text
           # update existing entry
           @run_attribute_values[i].set(key_value_index, value)
         end
-        ((i += 1) - 1)
+        i += 1
       end
     end
     
@@ -656,7 +656,7 @@ module Java::Text
           curr_index = run_index
           run_start = @run_starts[curr_index]
           while (run_start >= begin_index && values_match(value, get_attribute(attribute, curr_index - 1)))
-            ((curr_index -= 1) + 1)
+            curr_index -= 1
             run_start = @run_starts[curr_index]
           end
           if (run_start < begin_index)
@@ -669,7 +669,7 @@ module Java::Text
           curr_index = run_index
           run_limit = (curr_index < @run_count - 1) ? @run_starts[curr_index + 1] : text_length
           while (run_limit <= end_index && values_match(value, get_attribute(attribute, curr_index + 1)))
-            ((curr_index += 1) - 1)
+            curr_index += 1
             run_limit = (curr_index < @run_count - 1) ? @run_starts[curr_index + 1] : text_length
           end
           if (run_limit > end_index)
@@ -946,7 +946,7 @@ module Java::Text
             run_start = @current_run_start
             run_index = @current_run_index
             while (run_start > @begin_index && values_match(value, @local_class_parent.get_attribute(attribute, run_index - 1)))
-              ((run_index -= 1) + 1)
+              run_index -= 1
               run_start = self.attr_run_starts[run_index]
             end
             if (run_start < @begin_index)
@@ -964,7 +964,7 @@ module Java::Text
             run_start = @current_run_start
             run_index = @current_run_index
             while (run_start > @begin_index && @local_class_parent.attribute_values_match(attributes, @current_run_index, run_index - 1))
-              ((run_index -= 1) + 1)
+              run_index -= 1
               run_start = self.attr_run_starts[run_index]
             end
             if (run_start < @begin_index)
@@ -988,7 +988,7 @@ module Java::Text
             run_limit = @current_run_limit
             run_index = @current_run_index
             while (run_limit < @end_index && values_match(value, @local_class_parent.get_attribute(attribute, run_index + 1)))
-              ((run_index += 1) - 1)
+              run_index += 1
               run_limit = run_index < self.attr_run_count - 1 ? self.attr_run_starts[run_index + 1] : @end_index
             end
             if (run_limit > @end_index)
@@ -1006,7 +1006,7 @@ module Java::Text
             run_limit = @current_run_limit
             run_index = @current_run_index
             while (run_limit < @end_index && @local_class_parent.attribute_values_match(attributes, @current_run_index, run_index + 1))
-              ((run_index += 1) - 1)
+              run_index += 1
               run_limit = run_index < self.attr_run_count - 1 ? self.attr_run_starts[run_index + 1] : @end_index
             end
             if (run_limit > @end_index)
@@ -1049,7 +1049,7 @@ module Java::Text
                   end
                 end
               end
-              ((i += 1) - 1)
+              i += 1
             end
             return keys
           end
@@ -1095,7 +1095,7 @@ module Java::Text
             synchronized((@local_class_parent)) do
               run_index = -1
               while (run_index < self.attr_run_count - 1 && self.attr_run_starts[run_index + 1] <= @current_index)
-                ((run_index += 1) - 1)
+                run_index += 1
               end
               @current_run_index = run_index
               if (run_index >= 0)
@@ -1168,13 +1168,13 @@ module Java::Text
               if (value.is_a?(Annotation))
                 value = @local_class_parent.get_attribute_check_range(key, @run_index, @begin_index, @end_index)
                 if ((value).nil?)
-                  ((i += 1) - 1)
+                  i += 1
                   next
                 end
               end
               entry = AttributeEntry.new(key, value)
               set.add(entry)
-              ((i += 1) - 1)
+              i += 1
             end
           end
           return set

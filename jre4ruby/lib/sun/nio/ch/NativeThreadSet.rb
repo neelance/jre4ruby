@@ -75,10 +75,10 @@ module Sun::Nio::Ch
         while i < @elts.attr_length
           if ((@elts[i]).equal?(0))
             @elts[i] = th
-            ((@used += 1) - 1)
+            @used += 1
             return i
           end
-          ((i += 1) - 1)
+          i += 1
         end
         raise AssertError if not (false)
         return -1
@@ -93,7 +93,7 @@ module Sun::Nio::Ch
       end
       synchronized((self)) do
         @elts[i] = 0
-        ((@used -= 1) + 1)
+        @used -= 1
       end
     end
     
@@ -107,14 +107,14 @@ module Sun::Nio::Ch
         while i < n
           th = @elts[i]
           if ((th).equal?(0))
-            ((i += 1) - 1)
+            i += 1
             next
           end
           NativeThread.signal(th)
           if (((u -= 1)).equal?(0))
             break
           end
-          ((i += 1) - 1)
+          i += 1
         end
       end
     end

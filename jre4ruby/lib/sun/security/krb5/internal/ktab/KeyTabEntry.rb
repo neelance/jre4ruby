@@ -122,7 +122,7 @@ module Sun::Security::Krb5::Internal::Ktab
       i = 0
       while i < @keyblock.attr_length
         sb.append(JavaInteger.to_hex_string(@keyblock[i] & 0xff))
-        ((i += 1) - 1)
+        i += 1
       end
       return sb.to_s
     end
@@ -137,7 +137,7 @@ module Sun::Security::Krb5::Internal::Ktab
           total_principal_length += self.attr_principal_size + names[i].get_bytes("8859_1").attr_length
         rescue UnsupportedEncodingException => exc
         end
-        ((i += 1) - 1)
+        i += 1
       end
       realm_len = 0
       begin

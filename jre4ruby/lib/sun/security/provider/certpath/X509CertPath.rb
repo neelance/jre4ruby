@@ -183,7 +183,7 @@ module Sun::Security::Provider::Certpath
           i = seq.attr_length - 1
           while i >= 0
             cert_list.add(cert_fac.generate_certificate(ByteArrayInputStream.new(seq[i].to_byte_array)))
-            ((i -= 1) + 1)
+            i -= 1
           end
           return Collections.unmodifiable_list(cert_list)
         rescue IOException => ioe

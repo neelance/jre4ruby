@@ -97,7 +97,7 @@ module Sun::Nio::Cs
                   return CoderResult::OVERFLOW
                 end
                 da[((dp += 1) - 1)] = RJava.cast_to_char(b)
-                ((sp += 1) - 1)
+                sp += 1
                 next
               end
               return CoderResult.malformed_for_length(1)
@@ -120,7 +120,7 @@ module Sun::Nio::Cs
                   return CoderResult::OVERFLOW
                 end
                 dst.put(RJava.cast_to_char(b))
-                ((mark += 1) - 1)
+                mark += 1
                 next
               end
               return CoderResult.malformed_for_length(1)
@@ -185,8 +185,8 @@ module Sun::Nio::Cs
                   return CoderResult::OVERFLOW
                 end
                 da[dp] = c
-                ((sp += 1) - 1)
-                ((dp += 1) - 1)
+                sp += 1
+                dp += 1
                 next
               end
               if (@sgp.parse(c, sa, sp, sl) < 0)
@@ -212,7 +212,7 @@ module Sun::Nio::Cs
                   return CoderResult::OVERFLOW
                 end
                 dst.put(c)
-                ((mark += 1) - 1)
+                mark += 1
                 next
               end
               if (@sgp.parse(c, src) < 0)

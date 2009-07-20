@@ -111,7 +111,7 @@ module Sun::Security::Pkcs
       i = 0
       while i < @cert_id.attr_length
         buffer.append(@cert_id[i].to_s)
-        ((i += 1) - 1)
+        i += 1
       end
       # format policies as a string
       buffer.append("\n]")
@@ -131,14 +131,14 @@ module Sun::Security::Pkcs
       i = 0
       while i < certs.attr_length
         @cert_id[i] = ESSCertId.new(certs[i])
-        ((i += 1) - 1)
+        i += 1
       end
       # Parse policies, if present
       if (der_value.attr_data.available > 0)
         policies = der_value.attr_data.get_sequence(1)
         i_ = 0
         while i_ < policies.attr_length
-          ((i_ += 1) - 1)
+          i_ += 1
         end
       end
     end

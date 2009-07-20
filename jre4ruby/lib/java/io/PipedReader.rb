@@ -395,7 +395,7 @@ module Java::Io
         rlen = 1
         while ((@in >= 0) && ((len -= 1) > 0))
           cbuf[off + rlen] = @buffer[((@out += 1) - 1)]
-          ((rlen += 1) - 1)
+          rlen += 1
           if (@out >= @buffer.attr_length)
             @out = 0
           end

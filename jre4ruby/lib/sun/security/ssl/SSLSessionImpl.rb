@@ -505,7 +505,7 @@ module Sun::Security::Ssl
         rescue Javax::Security::Cert::CertificateException => e
           raise SSLPeerUnverifiedException.new(e.get_message)
         end
-        ((i += 1) - 1)
+        i += 1
       end
       return certs
     end
@@ -775,7 +775,7 @@ module Sun::Security::Ssl
       i = 0
       while i < names.attr_length
         remove_value(names[i])
-        ((i += 1) - 1)
+        i += 1
       end
     end
     

@@ -335,7 +335,7 @@ module Java::Util
               # Must not null out e.next;
               # stale entries may be in use by a HashIterator
               e.attr_value = nil # Help GC
-              ((@size -= 1) + 1)
+              @size -= 1
               break
             end
             prev = p
@@ -458,7 +458,7 @@ module Java::Util
         end
         e = e.attr_next
       end
-      ((@mod_count += 1) - 1)
+      @mod_count += 1
       e_ = tab[i]
       tab[i] = Entry.new(k, value, @queue, h, e_)
       if ((@size += 1) >= @threshold)
@@ -515,7 +515,7 @@ module Java::Util
           if ((key).nil?)
             e.attr_next = nil # Help GC
             e.attr_value = nil # "   "
-            ((@size -= 1) + 1)
+            @size -= 1
           else
             i = index_for(e.attr_hash, dest.attr_length)
             e.attr_next = dest[i]
@@ -593,8 +593,8 @@ module Java::Util
       while (!(e).nil?)
         next_ = e.attr_next
         if ((h).equal?(e.attr_hash) && eq(k, e.get))
-          ((@mod_count += 1) - 1)
-          ((@size -= 1) + 1)
+          @mod_count += 1
+          @size -= 1
           if ((prev).equal?(e))
             tab[i] = next_
           else
@@ -624,8 +624,8 @@ module Java::Util
       while (!(e).nil?)
         next_ = e.attr_next
         if ((h).equal?(e.attr_hash) && (e == entry))
-          ((@mod_count += 1) - 1)
-          ((@size -= 1) + 1)
+          @mod_count += 1
+          @size -= 1
           if ((prev).equal?(e))
             tab[i] = next_
           else
@@ -647,7 +647,7 @@ module Java::Util
       # since table is getting cleared.
       while (!(@queue.poll).nil?)
       end
-      ((@mod_count += 1) - 1)
+      @mod_count += 1
       Arrays.fill(@table, nil)
       @size = 0
       # Allocation of array may have caused GC, which may have caused

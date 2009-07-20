@@ -95,12 +95,12 @@ module Sun::Net
         # REMIND: this is a guess at legal characters in a protocol --
         # need to be verified
         if ((c >= Character.new(?A.ord) && c <= Character.new(?Z.ord)) || (c >= Character.new(?a.ord) && c <= Character.new(?z.ord)) || ((c).equal?(Character.new(?-.ord))))
-          ((i += 1) - 1)
+          i += 1
           next
         end
         # found an illegal character
         return false
-        ((i += 1) - 1)
+        i += 1
       end
       return true
     end
@@ -115,12 +115,12 @@ module Sun::Net
         # REMIND: this is a guess at legal characters in a protocol --
         # need to be verified
         if ((c >= Character.new(?A.ord) && c <= Character.new(?Z.ord)) || (c >= Character.new(?a.ord) && c <= Character.new(?z.ord)) || (c >= Character.new(?0.ord) && c <= Character.new(?9.ord)) || ((c).equal?(Character.new(?-.ord))))
-          ((i += 1) - 1)
+          i += 1
           next
         end
         # found an illegal character
         return false
-        ((i += 1) - 1)
+        i += 1
       end
       return true
     end

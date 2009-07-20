@@ -221,14 +221,14 @@ module Sun::Security::X509
         i = 0
         while i < prefix_len
           bit_array.set(i, true)
-          ((i += 1) - 1)
+          i += 1
         end
         mask_array = bit_array.to_byte_array
         # copy mask bytes into mask portion of address
         i_ = 0
         while i_ < MASKSIZE
           @address[MASKSIZE + i_] = mask_array[i_]
-          ((i_ += 1) - 1)
+          i_ += 1
         end
       end
     end
@@ -292,7 +292,7 @@ module Sun::Security::X509
           i = 16
           while i < 32
             mask_bytes[i - 16] = @address[i]
-            ((i += 1) - 1)
+            i += 1
           end
           ba = BitArray.new(16 * 8, mask_bytes)
           # Find first zero bit
@@ -301,7 +301,7 @@ module Sun::Security::X509
             if (!ba.get(i_))
               break
             end
-            ((i_ += 1) - 1)
+            i_ += 1
           end
           @name = @name + "/" + (i_).to_s
           # Verify remaining bits 0
@@ -309,7 +309,7 @@ module Sun::Security::X509
             if (ba.get(i_))
               raise IOException.new("Invalid IPv6 subdomain - set " + "bit " + (i_).to_s + " not contiguous")
             end
-            ((i_ += 1) - 1)
+            i_ += 1
           end
         end
       end
@@ -350,7 +350,7 @@ module Sun::Security::X509
           if (!(masked_this[i]).equal?(masked_other[i]))
             return false
           end
-          ((i += 1) - 1)
+          i += 1
         end
         # Now compare masks
         i_ = mask_len
@@ -358,7 +358,7 @@ module Sun::Security::X509
           if (!(@address[i_]).equal?(other[i_]))
             return false
           end
-          ((i_ += 1) - 1)
+          i_ += 1
         end
         return true
       else
@@ -377,7 +377,7 @@ module Sun::Security::X509
       i = 0
       while i < @address.attr_length
         retval += @address[i] * i
-        ((i += 1) - 1)
+        i += 1
       end
       return retval
     end
@@ -448,7 +448,7 @@ module Sun::Security::X509
                   if (!((((other_address[i + mask_offset] & @address[i + mask_offset])).equal?(other_address[i + mask_offset])) && (((other_address[i] & other_address[i + mask_offset])).equal?((@address[i] & other_address[i + mask_offset])))))
                     this_subset_of_other = false
                   end
-                  ((i += 1) - 1)
+                  i += 1
                 end
                 if (this_empty || other_empty)
                   if (this_empty && other_empty)
@@ -482,7 +482,7 @@ module Sun::Security::X509
                     if (!((@address[i] & other_address[i + mask_offset])).equal?(other_address[i]))
                       break
                     end
-                    ((i += 1) - 1)
+                    i += 1
                   end
                   if ((i).equal?(mask_offset))
                     constraint_type = NAME_WIDENS
@@ -499,7 +499,7 @@ module Sun::Security::X509
                       if (!((other_address[i] & @address[i + mask_offset])).equal?(@address[i]))
                         break
                       end
-                      ((i += 1) - 1)
+                      i += 1
                     end
                     if ((i).equal?(mask_offset))
                       constraint_type = NAME_NARROWS

@@ -222,7 +222,7 @@ module Sun::Security::Krb5
               System.out.println("Encryption Type " + (EType.to_s(etypes[i])).to_s + " is not supported/enabled")
             end
           end
-          ((i += 1) - 1)
+          i += 1
         end
         return enc_keys
       end
@@ -337,7 +337,7 @@ module Sun::Security::Krb5
       i = 0
       while i < @key_value.attr_length
         @key_value[i] ^= key.attr_key_value[i]
-        ((i += 1) - 1)
+        i += 1
       end
       @key_type = key.attr_key_type
       # check for key parity and weak keys
@@ -455,7 +455,7 @@ module Sun::Security::Krb5
           i = 0
           while i < @key_value.attr_length
             @key_value[i] = 0
-            ((i += 1) - 1)
+            i += 1
           end
         end
       end
@@ -505,7 +505,7 @@ module Sun::Security::Krb5
         i = 0
         while i < @key_value.attr_length
           cos.write8(@key_value[i])
-          ((i += 1) - 1)
+          i += 1
         end
       end
     end
@@ -531,7 +531,7 @@ module Sun::Security::Krb5
               return keys[i]
             end
           end
-          ((i += 1) - 1)
+          i += 1
         end
         # Key not found.
         # allow DES key to be used for the DES etypes
@@ -542,7 +542,7 @@ module Sun::Security::Krb5
             if ((ktype).equal?(EncryptedData::ETYPE_DES_CBC_CRC) || (ktype).equal?(EncryptedData::ETYPE_DES_CBC_MD5))
               return EncryptionKey.new(etype, keys[i_].get_bytes)
             end
-            ((i_ += 1) - 1)
+            i_ += 1
           end
         end
         return nil

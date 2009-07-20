@@ -101,7 +101,7 @@ module Sun::Security::Krb5::Internal
           else
             @p_adata[i] = new_p_adata[i].clone
           end
-          ((i += 1) - 1)
+          i += 1
         end
       end
       @req_body = new_req_body
@@ -229,7 +229,7 @@ module Sun::Security::Krb5::Internal
         i = 0
         while i < @p_adata.attr_length
           temp.write(@p_adata[i].asn1_encode)
-          ((i += 1) - 1)
+          i += 1
         end
         bytes = DerOutputStream.new
         bytes.write(DerValue.attr_tag_sequence_of, temp)

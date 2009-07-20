@@ -80,7 +80,7 @@ module Sun::Security::Pkcs11::Wrapper
         i = 0
         while i < error_codes.attr_length
           ErrorMap.put(Long.value_of(error_codes[i]), error_messages[i])
-          ((i += 1) - 1)
+          i += 1
         end
       end
     }

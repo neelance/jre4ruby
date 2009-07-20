@@ -82,7 +82,7 @@ module Sun::Util::Resources
       i = 0
       while i < clen
         tmpobj[i + 1] = contents[i]
-        ((i += 1) - 1)
+        i += 1
       end
       return tmpobj
     end

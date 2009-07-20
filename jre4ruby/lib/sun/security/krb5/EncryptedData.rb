@@ -383,7 +383,7 @@ module Sun::Security::Krb5
             i = 0
             while i < len
               result |= (data[i + 2] & 0xff) << (8 * (len - i - 1))
-              ((i += 1) - 1)
+              i += 1
             end
             bytes = Array.typed(::Java::Byte).new(result + len + 2) { 0 }
             System.arraycopy(data, 0, bytes, 0, result + len + 2)

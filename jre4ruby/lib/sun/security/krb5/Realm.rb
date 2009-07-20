@@ -163,7 +163,7 @@ module Sun::Security::Krb5
               break
             end
           end
-          ((i += 1) - 1)
+          i += 1
         end
         if (!(result).nil?)
           if ((result.length).equal?(0))
@@ -206,7 +206,7 @@ module Sun::Security::Krb5
           if ((name.char_at(i)).equal?(Character.new(?/.ord)) || (name.char_at(i)).equal?(Character.new(?:.ord)) || (name.char_at(i)).equal?(Character.new(?\0.ord)))
             return false
           end
-          ((i += 1) - 1)
+          i += 1
         end
         return true
       end
@@ -368,7 +368,7 @@ module Sun::Security::Krb5
         end
         begin
           if (self.attr_debug)
-            ((count += 1) - 1)
+            count += 1
             System.out.println(">>> Realm parseCapaths: loop " + (count).to_s + ": target=" + temp_target)
           end
           if (!(intermediaries).nil? && !(intermediaries == PrincipalName::REALM_COMPONENT_SEPARATOR_STR))
@@ -422,7 +422,7 @@ module Sun::Security::Krb5
           i = 0
           while i < ret_list.attr_length
             System.out.println(">>> Realm parseCapaths [" + (i).to_s + "]=" + (ret_list[i]).to_s)
-            ((i += 1) - 1)
+            i += 1
           end
         end
         return ret_list
@@ -448,7 +448,7 @@ module Sun::Security::Krb5
         c_count = 0
         while str_tok.has_more_tokens
           c_components[c_count] = str_tok.next_token
-          ((c_count += 1) - 1)
+          c_count += 1
         end
         if (self.attr_debug)
           System.out.println(">>> Realm parseHierarchy: cRealm has " + (c_count).to_s + " components:")
@@ -464,7 +464,7 @@ module Sun::Security::Krb5
         s_count = 0
         while str_tok.has_more_tokens
           s_components[s_count] = str_tok.next_token
-          ((s_count += 1) - 1)
+          s_count += 1
         end
         if (self.attr_debug)
           System.out.println(">>> Realm parseHierarchy: sRealm has " + (s_count).to_s + " components:")
@@ -477,12 +477,12 @@ module Sun::Security::Krb5
         common_components = 0
         # while (sCount > 0 && cCount > 0 &&
         # sComponents[--sCount].equals(cComponents[--cCount]))
-        ((s_count -= 1) + 1)
-        ((c_count -= 1) + 1)
+        s_count -= 1
+        c_count -= 1
         while s_count >= 0 && c_count >= 0 && (s_components[s_count] == c_components[c_count])
-          ((common_components += 1) - 1)
-          ((s_count -= 1) + 1)
-          ((c_count -= 1) + 1)
+          common_components += 1
+          s_count -= 1
+          c_count -= 1
         end
         c_common_start = -1
         s_common_start = -1
@@ -494,7 +494,7 @@ module Sun::Security::Krb5
           links += s_common_start
           links += c_common_start
         else
-          ((links += 1) - 1)
+          links += 1
         end
         if (self.attr_debug)
           if (common_components > 0)
@@ -533,7 +533,7 @@ module Sun::Security::Krb5
           if (self.attr_debug)
             System.out.println(">>> Realm parseHierarchy B: retList[" + ((i - 1)).to_s + "]=" + (ret_list[i - 1]).to_s)
           end
-          ((c_count += 1) - 1)
+          c_count += 1
         end
         s_count = s_common_start
         while i < links && s_count - 1 > 0
@@ -543,7 +543,7 @@ module Sun::Security::Krb5
           if (self.attr_debug)
             System.out.println(">>> Realm parseHierarchy D: retList[" + ((i - 1)).to_s + "]=" + (ret_list[i - 1]).to_s)
           end
-          ((s_count -= 1) + 1)
+          s_count -= 1
         end
         return ret_list
       end
@@ -557,7 +557,7 @@ module Sun::Security::Krb5
           if (!(realm.char_at(((i += 1) - 1))).equal?(PrincipalName::REALM_COMPONENT_SEPARATOR))
             next
           end
-          ((j += 1) - 1)
+          j += 1
         end
         return realm.substring(i)
       end
@@ -577,7 +577,7 @@ module Sun::Security::Krb5
         System.out.println("List length = " + (len).to_s)
         while (i < names.attr_length)
           System.out.println("[" + (i).to_s + "]=" + (names[i]).to_s)
-          ((i += 1) - 1)
+          i += 1
         end
       end
     }

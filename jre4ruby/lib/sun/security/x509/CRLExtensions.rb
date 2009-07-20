@@ -111,7 +111,7 @@ module Sun::Security::X509
         while i < exts.attr_length
           ext = Extension.new(exts[i])
           parse_extension(ext)
-          ((i += 1) - 1)
+          i += 1
         end
       rescue IOException => e
         raise CRLException.new("Parsing error: " + (e.to_s).to_s)
@@ -174,7 +174,7 @@ module Sun::Security::X509
               raise CRLException.new("Illegal extension object")
             end
           end
-          ((i += 1) - 1)
+          i += 1
         end
         seq = DerOutputStream.new
         seq.write(DerValue.attr_tag_sequence, ext_out)
@@ -290,7 +290,7 @@ module Sun::Security::X509
         if (!(this_ext == other_ext))
           return false
         end
-        ((i += 1) - 1)
+        i += 1
       end
       return true
     end

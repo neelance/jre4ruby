@@ -247,7 +247,7 @@ module Sun::Util
                   @cur = (@a[0]).to_s
                   return true
                 end
-                ((@i += 1) - 1)
+                @i += 1
                 @a = nil
               end
               @cur = (nil).to_s

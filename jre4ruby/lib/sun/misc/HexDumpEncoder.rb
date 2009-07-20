@@ -122,7 +122,7 @@ module Sun::Misc
       @this_line[@current_byte] = buf[off]
       hex_digit(self.attr_p_stream, buf[off])
       self.attr_p_stream.print(" ")
-      ((@current_byte += 1) - 1)
+      @current_byte += 1
       if ((@current_byte).equal?(8))
         self.attr_p_stream.print("  ")
       end
@@ -137,7 +137,7 @@ module Sun::Misc
           if ((i).equal?(7))
             self.attr_p_stream.print("  ")
           end
-          ((i += 1) - 1)
+          i += 1
         end
       end
       self.attr_p_stream.print(" ")
@@ -148,7 +148,7 @@ module Sun::Misc
         else
           self.attr_p_stream.write(@this_line[i])
         end
-        ((i += 1) - 1)
+        i += 1
       end
       self.attr_p_stream.println
       @offset += @this_line_length

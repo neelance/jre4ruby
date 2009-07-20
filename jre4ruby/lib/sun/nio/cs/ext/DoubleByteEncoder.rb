@@ -149,7 +149,7 @@ module Sun::Nio::Cs::Ext
               return CoderResult::OVERFLOW
             end
             da[((dp += 1) - 1)] = b
-            ((sp += 1) - 1)
+            sp += 1
             next
           end
           ncode = encode_double(c)
@@ -159,7 +159,7 @@ module Sun::Nio::Cs::Ext
             end
             da[((dp += 1) - 1)] = ((ncode & 0xff00) >> 8)
             da[((dp += 1) - 1)] = (ncode & 0xff)
-            ((sp += 1) - 1)
+            sp += 1
             next
           end
           return CoderResult.unmappable_for_length(1)
@@ -206,7 +206,7 @@ module Sun::Nio::Cs::Ext
             if (dst.remaining < 1)
               return CoderResult::OVERFLOW
             end
-            ((mark += 1) - 1)
+            mark += 1
             dst.put(b)
             next
           end
@@ -216,7 +216,7 @@ module Sun::Nio::Cs::Ext
             if (dst.remaining < 2)
               return CoderResult::OVERFLOW
             end
-            ((mark += 1) - 1)
+            mark += 1
             dst.put(((ncode & 0xff00) >> 8))
             dst.put(ncode)
             next

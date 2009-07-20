@@ -128,7 +128,7 @@ module Sun::Reflect::Generics::Parser
     # advance the input
     def advance
       raise AssertError if not ((@index <= @input.attr_length))
-      ((@index += 1) - 1)
+      @index += 1
     end
     
     typesig { [::Java::Char, ::Java::Char] }

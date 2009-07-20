@@ -326,7 +326,7 @@ module Sun::Util::Calendar
         if ((era).equal?(@eras[i]))
           return true
         end
-        ((i += 1) - 1)
+        i += 1
       end
       return false
     end

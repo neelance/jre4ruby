@@ -395,7 +395,7 @@ module Sun::Misc
                 values_ = vm_thread_state_values[j]
                 names = vm_thread_state_names[j]
               end
-              ((j += 1) - 1)
+              j += 1
             end
             if ((values_).nil?)
               raise InternalError.new("No VM thread state mapped to " + state)
@@ -407,9 +407,9 @@ module Sun::Misc
             while k < values_.attr_length
               self.attr_thread_state_map.put(values_[k], ts[i])
               self.attr_thread_state_names.put(values_[k], names[k])
-              ((k += 1) - 1)
+              k += 1
             end
-            ((i += 1) - 1)
+            i += 1
           end
         end
       end

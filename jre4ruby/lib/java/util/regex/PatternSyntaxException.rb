@@ -130,7 +130,7 @@ module Java::Util::Regex
         i = 0
         while i < @index
           sb.append(Character.new(?\s.ord))
-          ((i += 1) - 1)
+          i += 1
         end
         sb.append(Character.new(?^.ord))
       end

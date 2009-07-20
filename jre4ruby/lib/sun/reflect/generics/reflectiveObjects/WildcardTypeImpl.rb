@@ -153,7 +153,7 @@ module Sun::Reflect::Generics::ReflectiveObjects
           r = get_reifier
           fts[j].accept(r)
           ts[j] = r.get_result
-          ((j += 1) - 1)
+          j += 1
         end
         # cache result
         @upper_bounds = ts
@@ -196,7 +196,7 @@ module Sun::Reflect::Generics::ReflectiveObjects
           r = get_reifier
           fts[j].accept(r)
           ts[j] = r.get_result
-          ((j += 1) - 1)
+          j += 1
         end
         # cache result
         @lower_bounds = ts

@@ -107,7 +107,7 @@ module Java::Net
         if (classes[i].is_instance(obj))
           return obj
         end
-        ((i += 1) - 1)
+        i += 1
       end
       return nil
     end

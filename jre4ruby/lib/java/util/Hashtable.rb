@@ -409,7 +409,7 @@ module Java::Util
       old_map = @table
       new_capacity = old_capacity * 2 + 1
       new_map = Array.typed(Entry).new(new_capacity) { nil }
-      ((@mod_count += 1) - 1)
+      @mod_count += 1
       @threshold = RJava.cast_to_int((new_capacity * @load_factor))
       @table = new_map
       i = old_capacity
@@ -460,7 +460,7 @@ module Java::Util
           end
           e = e.attr_next
         end
-        ((@mod_count += 1) - 1)
+        @mod_count += 1
         if (@count >= @threshold)
           # Rehash the table if the threshold is exceeded
           rehash
@@ -470,7 +470,7 @@ module Java::Util
         # Creates the new entry.
         e_ = tab[index]
         tab[index] = Entry.new(hash, key, value, e_)
-        ((@count += 1) - 1)
+        @count += 1
         return nil
       end
     end
@@ -492,13 +492,13 @@ module Java::Util
         prev = nil
         while !(e).nil?
           if (((e.attr_hash).equal?(hash)) && (e.attr_key == key))
-            ((@mod_count += 1) - 1)
+            @mod_count += 1
             if (!(prev).nil?)
               prev.attr_next = e.attr_next
             else
               tab[index] = e.attr_next
             end
-            ((@count -= 1) + 1)
+            @count -= 1
             old_value = e.attr_value
             e.attr_value = nil
             return old_value
@@ -531,7 +531,7 @@ module Java::Util
     def clear
       synchronized(self) do
         tab = @table
-        ((@mod_count += 1) - 1)
+        @mod_count += 1
         index = tab.attr_length
         while (index -= 1) >= 0
           tab[index] = nil
@@ -597,7 +597,7 @@ module Java::Util
             return sb.append(Character.new(?}.ord)).to_s
           end
           sb.append(", ")
-          ((i += 1) - 1)
+          i += 1
         end
       end
     end
@@ -775,13 +775,13 @@ module Java::Util
           prev = nil
           while !(e).nil?
             if ((e.attr_hash).equal?(hash) && (e == entry))
-              ((self.attr_mod_count += 1) - 1)
+              self.attr_mod_count += 1
               if (!(prev).nil?)
                 prev.attr_next = e.attr_next
               else
                 tab[index] = e.attr_next
               end
-              ((self.attr_count -= 1) + 1)
+              self.attr_count -= 1
               e.attr_value = nil
               return true
             end
@@ -943,7 +943,7 @@ module Java::Util
             h += e.attr_key.hash_code ^ e.attr_value.hash_code
             e = e.attr_next
           end
-          ((i += 1) - 1)
+          i += 1
         end
         @load_factor = -@load_factor # Mark hashCode computation complete
         return h
@@ -974,7 +974,7 @@ module Java::Util
             s.write_object(entry.attr_value)
             entry = entry.attr_next
           end
-          ((index -= 1) + 1)
+          index -= 1
         end
       end
     end
@@ -993,7 +993,7 @@ module Java::Util
       # Guard against the length ending up zero, that's not valid.
       length = RJava.cast_to_int((elements * @load_factor)) + (elements / 20) + 3
       if (length > elements && ((length & 1)).equal?(0))
-        ((length -= 1) + 1)
+        length -= 1
       end
       if (origlength > 0 && length > origlength)
         length = origlength
@@ -1006,7 +1006,7 @@ module Java::Util
         value = s.read_object
         # synch could be eliminated for performance
         reconstitution_put(table, key, value)
-        ((elements -= 1) + 1)
+        elements -= 1
       end
       @table = table
     end
@@ -1039,7 +1039,7 @@ module Java::Util
       # Creates the new entry.
       e_ = tab[index]
       tab[index] = Entry.new(hash, key, value, e_)
-      ((@count += 1) - 1)
+      @count += 1
     end
     
     class_module.module_eval {
@@ -1279,14 +1279,14 @@ module Java::Util
             prev = nil
             while !(e).nil?
               if ((e).equal?(@last_returned))
-                ((self.attr_mod_count += 1) - 1)
-                ((@expected_mod_count += 1) - 1)
+                self.attr_mod_count += 1
+                @expected_mod_count += 1
                 if ((prev).nil?)
                   tab[index] = e.attr_next
                 else
                   prev.attr_next = e.attr_next
                 end
-                ((self.attr_count -= 1) + 1)
+                self.attr_count -= 1
                 @last_returned = nil
                 return
               end

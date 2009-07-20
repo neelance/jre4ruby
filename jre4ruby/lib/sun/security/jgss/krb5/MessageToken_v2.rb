@@ -640,7 +640,7 @@ module Sun::Security::Jgss::Krb5
               i = 4
               while i < 8
                 @bytes[i] = FILLER
-                ((i += 1) - 1)
+                i += 1
               end
             end
           end
@@ -694,7 +694,7 @@ module Sun::Security::Jgss::Krb5
               if (!((@bytes[i] & 0xff)).equal?(FILLER))
                 raise GSSException.new(GSSException::DEFECTIVE_TOKEN, -1, (get_token_name(@token_id)).to_s + ":" + "Defective Token Filler!")
               end
-              ((i += 1) - 1)
+              i += 1
             end
           end
           # read EC field

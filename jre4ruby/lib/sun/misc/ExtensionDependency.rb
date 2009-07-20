@@ -242,7 +242,7 @@ module Sun::Misc
             debug_exception(e)
             # let's continue with the next installed extension
           end
-          ((i += 1) - 1)
+          i += 1
         end
       end
       return false
@@ -393,9 +393,9 @@ module Sun::Misc
                 if (f_extension.exists)
                   return f_extension
                 end
-                ((j += 1) - 1)
+                j += 1
               end
-              ((i += 1) - 1)
+              i += 1
             end
             return nil
           rescue Exception => e
@@ -431,7 +431,7 @@ module Sun::Misc
           while i < count
             dirs[i] = JavaFile.new(st.next_token)
             debug("getExtDirs dirs[" + (i).to_s + "] " + (dirs[i]).to_s)
-            ((i += 1) - 1)
+            i += 1
           end
         else
           dirs = Array.typed(JavaFile).new(0) { nil }
@@ -460,10 +460,10 @@ module Sun::Misc
               f = JavaFile.new(dirs[i], files[j])
               urls.add(f)
               debug("getExtFiles f[" + (j).to_s + "] " + (f).to_s)
-              ((j += 1) - 1)
+              j += 1
             end
           end
-          ((i += 1) - 1)
+          i += 1
         end
         ua = Array.typed(JavaFile).new(urls.size) { nil }
         urls.copy_into(ua)
@@ -550,14 +550,14 @@ module Sun::Misc
                 found = true
                 debug("Found !")
               end
-              ((j += 1) - 1)
+              j += 1
             end
             if (!found)
               debug("Not Found ! adding to the classloader " + (inst_url).to_s)
               cl.add_ext_url(inst_url)
             end
           end
-          ((i += 1) - 1)
+          i += 1
         end
       rescue MalformedURLException => e
         e.print_stack_trace

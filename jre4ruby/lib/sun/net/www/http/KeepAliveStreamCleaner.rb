@@ -159,7 +159,7 @@ module Sun::Net::Www::Http
                       remaining_to_read_ = remaining_to_read_ - n
                       n = kas.skip(remaining_to_read_)
                       if ((n).equal?(0))
-                        ((retries += 1) - 1)
+                        retries += 1
                       end
                     end
                     remaining_to_read_ = remaining_to_read_ - n

@@ -1773,7 +1773,7 @@ module Sun::Nio::Cs::Ext
                   da[((dp += 1) - 1)] = output_bytes[1]
                 end
               end
-              ((sp += 1) - 1)
+              sp += 1
             end
             return CoderResult::UNDERFLOW
           ensure
@@ -1924,7 +1924,7 @@ module Sun::Nio::Cs::Ext
                   dst.put(output_bytes[1])
                 end
               end
-              ((mark += 1) - 1)
+              mark += 1
             end
             return CoderResult::UNDERFLOW
           ensure

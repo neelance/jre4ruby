@@ -788,7 +788,7 @@ module Java::Net
           if (c < 0x20 || c >= 0x7f || !(Tspecials.index_of(c)).equal?(-1))
             return false
           end
-          ((i += 1) - 1)
+          i += 1
         end
         return true
       end
@@ -1235,14 +1235,14 @@ module Java::Net
         while p < header.length
           c = header.char_at(p)
           if ((c).equal?(Character.new(?".ord)))
-            ((quote_count += 1) - 1)
+            quote_count += 1
           end
           if ((c).equal?(Character.new(?,.ord)) && ((quote_count % 2).equal?(0)))
             # it is comma and not surrounding by double-quotes
             cookies.add(header.substring(q, p))
             q = p + 1
           end
-          ((p += 1) - 1)
+          p += 1
         end
         cookies.add(header.substring(q))
         return cookies

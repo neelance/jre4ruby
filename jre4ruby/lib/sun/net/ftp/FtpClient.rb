@@ -544,7 +544,7 @@ module Sun::Net::Ftp
           i = 0
           while i < addr.attr_length
             port_cmd = port_cmd + ((addr[i] & 0xff)).to_s + ","
-            ((i += 1) - 1)
+            i += 1
           end
           # append port number
           port_cmd = port_cmd + (((port_socket.get_local_port >> 8) & 0xff)).to_s + "," + ((port_socket.get_local_port & 0xff)).to_s
@@ -645,7 +645,7 @@ module Sun::Net::Ftp
           end
           sb.append(l)
         end
-        ((i += 1) - 1)
+        i += 1
       end
       @welcome_msg = (sb.to_s).to_s
       @logged_in = true

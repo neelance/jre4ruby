@@ -452,7 +452,7 @@ module Java::Lang::Reflect
               if (!(params1[i]).equal?(params2[i]))
                 return false
               end
-              ((i += 1) - 1)
+              i += 1
             end
             return true
           end
@@ -507,7 +507,7 @@ module Java::Lang::Reflect
           if (j < (params.attr_length - 1))
             sb.append(",")
           end
-          ((j += 1) - 1)
+          j += 1
         end
         sb.append(")")
         exceptions = @exception_types # avoid clone
@@ -519,7 +519,7 @@ module Java::Lang::Reflect
             if (k < (exceptions.attr_length - 1))
               sb.append(",")
             end
-            ((k += 1) - 1)
+            k += 1
           end
         end
         return sb.to_s
@@ -594,7 +594,7 @@ module Java::Lang::Reflect
           if (j < (params.attr_length - 1))
             sb.append(",")
           end
-          ((j += 1) - 1)
+          j += 1
         end
         sb.append(")")
         exceptions = get_generic_exception_types
@@ -606,7 +606,7 @@ module Java::Lang::Reflect
             if (k < (exceptions.attr_length - 1))
               sb.append(",")
             end
-            ((k += 1) - 1)
+            k += 1
           end
         end
         return sb.to_s

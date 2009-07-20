@@ -1349,7 +1349,7 @@ module Sun::Security::Jgss::Krb5
           sb.append(JavaInteger.to_hex_string(b1))
           sb.append(JavaInteger.to_hex_string(b2))
           sb.append(Character.new(?\s.ord))
-          ((i += 1) - 1)
+          i += 1
         end
         return sb.to_s
       end

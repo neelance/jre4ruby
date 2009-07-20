@@ -242,7 +242,7 @@ module Sun::Security::Smartcardio
             end
             reader_states[i] = state
             status[i] = state.get
-            ((i += 1) - 1)
+            i += 1
           end
           status = _scard_get_status_change(self.attr_context_id, timeout, status, reader_names)
           @state_map.clear # remove any readers that are no longer available
@@ -251,7 +251,7 @@ module Sun::Security::Smartcardio
             state = reader_states[i_]
             state.update(status[i_])
             @state_map.put(reader_names[i_], state)
-            ((i_ += 1) - 1)
+            i_ += 1
           end
           return true
         rescue PCSCException => e
@@ -308,7 +308,7 @@ module Sun::Security::Smartcardio
                 end
                 results.add(impl_get_terminal(names[i]))
               end
-              ((i += 1) - 1)
+              i += 1
             end
             if (!(results).nil?)
               return Collections.unmodifiable_list(results)

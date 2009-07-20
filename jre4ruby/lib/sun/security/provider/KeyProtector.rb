@@ -158,7 +158,7 @@ module Sun::Security::Provider
       while i < password.attr_length
         @passwd_bytes[((j += 1) - 1)] = (password[i] >> 8)
         @passwd_bytes[((j += 1) - 1)] = password[i]
-        ((i += 1) - 1)
+        i += 1
       end
     end
     
@@ -194,7 +194,7 @@ module Sun::Security::Provider
       # Determine the number of digest rounds
       num_rounds = plain_key.attr_length / DIGEST_LEN
       if (!((plain_key.attr_length % DIGEST_LEN)).equal?(0))
-        ((num_rounds += 1) - 1)
+        num_rounds += 1
       end
       # Create a random salt
       salt = Array.typed(::Java::Byte).new(SALT_LEN) { 0 }
@@ -217,7 +217,7 @@ module Sun::Security::Provider
         else
           System.arraycopy(digest, 0, xor_key, xor_offset, xor_key.attr_length - xor_offset)
         end
-        ((i += 1) - 1)
+        i += 1
         xor_offset += DIGEST_LEN
       end
       # XOR "plainKey" with "xorKey", and store the result in "tmpKey"
@@ -225,7 +225,7 @@ module Sun::Security::Provider
       i = 0
       while i < tmp_key.attr_length
         tmp_key[i] = (plain_key[i] ^ xor_key[i])
-        ((i += 1) - 1)
+        i += 1
       end
       # Store salt and "tmpKey" in "encrKey"
       encr_key = Array.typed(::Java::Byte).new(salt.attr_length + tmp_key.attr_length + DIGEST_LEN) { 0 }
@@ -275,7 +275,7 @@ module Sun::Security::Provider
       encr_key_len = protected_key.attr_length - SALT_LEN - DIGEST_LEN
       num_rounds = encr_key_len / DIGEST_LEN
       if (!((encr_key_len % DIGEST_LEN)).equal?(0))
-        ((num_rounds += 1) - 1)
+        num_rounds += 1
       end
       # Get the encrypted key portion and store it in "encrKey"
       encr_key = Array.typed(::Java::Byte).new(encr_key_len) { 0 }
@@ -297,7 +297,7 @@ module Sun::Security::Provider
         else
           System.arraycopy(digest_, 0, xor_key, xor_offset, xor_key.attr_length - xor_offset)
         end
-        ((i += 1) - 1)
+        i += 1
         xor_offset += DIGEST_LEN
       end
       # XOR "encrKey" with "xorKey", and store the result in "plainKey"
@@ -305,7 +305,7 @@ module Sun::Security::Provider
       i = 0
       while i < plain_key.attr_length
         plain_key[i] = (encr_key[i] ^ xor_key[i])
-        ((i += 1) - 1)
+        i += 1
       end
       # Check the integrity of the recovered key by concatenating it with
       # the password, digesting the concatenation, and comparing the
@@ -323,7 +323,7 @@ module Sun::Security::Provider
         if (!(digest_[i]).equal?(protected_key[SALT_LEN + encr_key_len + i]))
           raise UnrecoverableKeyException.new("Cannot recover key")
         end
-        ((i += 1) - 1)
+        i += 1
       end
       # The parseKey() method of PKCS8Key parses the key
       # algorithm and instantiates the appropriate key factory,

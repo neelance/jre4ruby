@@ -494,9 +494,9 @@ module Java::Util
         while i > 0
           if ((@queue.get(i).attr_state).equal?(TimerTask::CANCELLED))
             @queue.quick_remove(i)
-            ((result += 1) - 1)
+            result += 1
           end
-          ((i -= 1) + 1)
+          i -= 1
         end
         if (!(result).equal?(0))
           @queue.heapify
@@ -713,7 +713,7 @@ module Java::Util
       i = 1
       while i <= @size
         @queue[i] = nil
-        ((i += 1) - 1)
+        i += 1
       end
       @size = 0
     end
@@ -752,7 +752,7 @@ module Java::Util
       j = 0
       while ((j = k << 1) <= @size && j > 0)
         if (j < @size && @queue[j].attr_next_execution_time > @queue[j + 1].attr_next_execution_time)
-          ((j += 1) - 1)
+          j += 1
         end # j indexes smallest kid
         if (@queue[k].attr_next_execution_time <= @queue[j].attr_next_execution_time)
           break
@@ -771,7 +771,7 @@ module Java::Util
       i = @size / 2
       while i >= 1
         fix_down(i)
-        ((i -= 1) + 1)
+        i -= 1
       end
     end
     

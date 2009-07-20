@@ -400,7 +400,7 @@ module Sun::Security::X509
         if (!(@raw_cert_info[i]).equal?(other.attr_raw_cert_info[i]))
           return (false)
         end
-        ((i += 1) - 1)
+        i += 1
       end
       return (true)
     end
@@ -413,7 +413,7 @@ module Sun::Security::X509
       i = 1
       while i < @raw_cert_info.attr_length
         retval += @raw_cert_info[i] * i
-        ((i += 1) - 1)
+        i += 1
       end
       return (retval)
     end
@@ -465,7 +465,7 @@ module Sun::Security::X509
           rescue Exception => e
             sb.append(", Error parsing this extension")
           end
-          ((i += 1) - 1)
+          i += 1
         end
         invalid = @extensions.get_unparseable_extensions
         if ((invalid.is_empty).equal?(false))

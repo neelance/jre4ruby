@@ -92,7 +92,7 @@ module Sun::Security::Ssl
         if (!(i).equal?((len - 1)))
           s.append(", ")
         end
-        ((i += 1) - 1)
+        i += 1
       end
       s.append("}")
       return s.to_s
@@ -105,7 +105,7 @@ module Sun::Security::Ssl
       i = 0
       while i < @session_id.attr_length
         retval += @session_id[i]
-        ((i += 1) - 1)
+        i += 1
       end
       return retval
     end
@@ -126,7 +126,7 @@ module Sun::Security::Ssl
         if (!(b[i]).equal?(@session_id[i]))
           return false
         end
-        ((i += 1) - 1)
+        i += 1
       end
       return true
     end

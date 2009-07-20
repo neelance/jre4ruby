@@ -82,7 +82,7 @@ module Sun::Security::Krb5::Internal::Util
         else
           result |= (bytes[i] & 0xff) << i * 8
         end
-        ((i += 1) - 1)
+        i += 1
       end
       return result
     end

@@ -427,7 +427,7 @@ module Sun::Security::Util
         if (!(Debug).nil?)
           Debug.println("Signature Block Certificate: " + (chain.get(0)).to_s)
         end
-        ((i += 1) - 1)
+        i += 1
       end
       if (!(signers).nil?)
         return signers.to_array(Array.typed(CodeSigner).new(signers.size) { nil })
@@ -495,7 +495,7 @@ module Sun::Security::Util
         while i < data.attr_length
           sb.append(Hexc[(data[i] >> 4) & 0xf])
           sb.append(Hexc[data[i] & 0xf])
-          ((i += 1) - 1)
+          i += 1
         end
         return sb.to_s
       end
@@ -508,7 +508,7 @@ module Sun::Security::Util
           if ((set[i] == signer))
             return true
           end
-          ((i += 1) - 1)
+          i += 1
         end
         return false
       end
@@ -526,7 +526,7 @@ module Sun::Security::Util
           if (!contains(set, subset[i]))
             return false
           end
-          ((i += 1) - 1)
+          i += 1
         end
         return true
       end
@@ -557,7 +557,7 @@ module Sun::Security::Util
           if (!found)
             return false
           end
-          ((i += 1) - 1)
+          i += 1
         end
         return true
       end
@@ -577,7 +577,7 @@ module Sun::Security::Util
           signers.put(name, cached_signers)
           return
         end
-        ((i -= 1) + 1)
+        i -= 1
       end
       if ((old_signers).nil?)
         cached_signers = new_signers

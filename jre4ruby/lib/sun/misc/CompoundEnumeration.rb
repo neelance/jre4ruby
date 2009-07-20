@@ -63,7 +63,7 @@ module Sun::Misc
         if (!(@enums[@index]).nil? && @enums[@index].has_more_elements)
           return true
         end
-        ((@index += 1) - 1)
+        @index += 1
       end
       return false
     end

@@ -172,7 +172,7 @@ module Sun::Security::Krb5::Internal::Rcache
       i = 0
       while i < total.attr_length
         System.out.println("object " + (i).to_s + ": " + ((total[i]).attr_kerberos_time).to_s + "/" + ((total[i]).attr_cusec).to_s)
-        ((i += 1) - 1)
+        i += 1
       end
     end
     

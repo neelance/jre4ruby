@@ -88,7 +88,7 @@ module Sun::Util::Calendar
           if ((@eras[i] == era_name))
             return @eras[i]
           end
-          ((i += 1) - 1)
+          i += 1
         end
       end
       return nil
@@ -116,7 +116,7 @@ module Sun::Util::Calendar
           date.set_era(e)
           return
         end
-        ((i += 1) - 1)
+        i += 1
       end
       raise IllegalArgumentException.new("unknown era name: " + era_name)
     end

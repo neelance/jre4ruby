@@ -1108,7 +1108,7 @@ module Java::Io
       while i < clen
         b[((j += 1) - 1)] = (c[i] >> 8)
         b[((j += 1) - 1)] = (c[i] >> 0)
-        ((i += 1) - 1)
+        i += 1
       end
       write_bytes(b, 0, blen)
     end

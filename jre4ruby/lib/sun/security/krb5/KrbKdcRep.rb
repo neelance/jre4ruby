@@ -70,7 +70,7 @@ module Sun::Security::Krb5
           if (!(req.attr_req_body.attr_kdc_options.get(i)).equal?(rep.attr_enc_kdcrep_part.attr_flags.get(i)))
             raise KrbApErrException.new(Krb5::KRB_AP_ERR_MODIFIED)
           end
-          ((i += 1) - 1)
+          i += 1
         end
         # XXX Can renew a ticket but not ask for a renewable renewed ticket
         # See impl of Credentials.renew().

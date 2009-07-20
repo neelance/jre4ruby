@@ -425,7 +425,7 @@ module Sun::Util::Calendar
     def get_month_length(year, month)
       days = DAYS_IN_MONTH[month]
       if ((month).equal?(FEBRUARY) && is_leap_year(year))
-        ((days += 1) - 1)
+        days += 1
       end
       return days
     end

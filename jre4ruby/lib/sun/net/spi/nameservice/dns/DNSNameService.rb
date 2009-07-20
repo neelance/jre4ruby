@@ -400,7 +400,7 @@ module Sun::Net::Spi::Nameservice::Dns
         if (!(addr).nil?)
           addrs[((count += 1) - 1)] = InetAddress.get_by_address(host, addr)
         end
-        ((i += 1) - 1)
+        i += 1
       end
       # If addresses are filtered then we need to resize the
       # array. Additionally if all addresses are filtered then
@@ -413,7 +413,7 @@ module Sun::Net::Spi::Nameservice::Dns
         i_ = 0
         while i_ < count
           tmp[i_] = addrs[i_]
-          ((i_ += 1) - 1)
+          i_ += 1
         end
         addrs = tmp
       end
@@ -442,7 +442,7 @@ module Sun::Net::Spi::Nameservice::Dns
           i = addr.attr_length - 1
           while i >= 0
             literalip += ((addr[i] & 0xff)).to_s + "."
-            ((i -= 1) + 1)
+            i -= 1
           end
           literalip += "IN-ADDR.ARPA."
           results = resolve(ctx, literalip, ids, 0)
@@ -458,7 +458,7 @@ module Sun::Net::Spi::Nameservice::Dns
             i = addr.attr_length - 1
             while i >= 0
               literalip += (JavaInteger.to_hex_string((addr[i] & 0xf))).to_s + "." + (JavaInteger.to_hex_string((addr[i] & 0xf0) >> 4)).to_s + "."
-              ((i -= 1) + 1)
+              i -= 1
             end
             ip6lit = literalip + "IP6.ARPA."
             begin

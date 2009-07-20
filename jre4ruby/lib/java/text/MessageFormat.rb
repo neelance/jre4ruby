@@ -499,7 +499,7 @@ module Java::Text
               if ((brace_stack).equal?(0))
                 part = 0
                 make_format(i_, format_number, segments)
-                ((format_number += 1) - 1)
+                format_number += 1
               else
                 (brace_stack -= 1)
                 segments[part].append(ch)
@@ -646,7 +646,7 @@ module Java::Text
         if (j < new_formats.attr_length)
           @formats[i] = new_formats[j]
         end
-        ((i += 1) - 1)
+        i += 1
       end
     end
     
@@ -679,7 +679,7 @@ module Java::Text
       i = 0
       while i < runs_to_copy
         @formats[i] = new_formats[i]
-        ((i += 1) - 1)
+        i += 1
       end
     end
     
@@ -706,7 +706,7 @@ module Java::Text
         if ((@argument_numbers[j]).equal?(argument_index))
           @formats[j] = new_format
         end
-        ((j += 1) - 1)
+        j += 1
       end
     end
     
@@ -756,13 +756,13 @@ module Java::Text
         if (@argument_numbers[i] > maximum_argument_number)
           maximum_argument_number = @argument_numbers[i]
         end
-        ((i += 1) - 1)
+        i += 1
       end
       result_array = Array.typed(Format).new(maximum_argument_number + 1) { nil }
       i_ = 0
       while i_ <= @max_offset
         result_array[@argument_numbers[i_]] = @formats[i_]
-        ((i_ += 1) - 1)
+        i_ += 1
       end
       return result_array
     end
@@ -980,7 +980,7 @@ module Java::Text
         if (@argument_numbers[i] > maximum_argument_number)
           maximum_argument_number = @argument_numbers[i]
         end
-        ((i += 1) - 1)
+        i += 1
       end
       result_array = Array.typed(Object).new(maximum_argument_number + 1) { nil }
       pattern_offset = 0

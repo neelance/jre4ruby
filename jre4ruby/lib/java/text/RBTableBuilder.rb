@@ -236,7 +236,7 @@ module Java::Text
                 all_there = false
                 break
               end
-              ((i += 1) - 1)
+              i += 1
             end
             if (all_there)
               add_expand_order(c, s, RBCollationTables::UNMAPPED)
@@ -278,9 +278,9 @@ module Java::Text
                 value_list[j] = real_value
               end
             end
-            ((j += 1) - 1)
+            j += 1
           end
-          ((i += 1) - 1)
+          i += 1
         end
       end
     end
@@ -300,14 +300,14 @@ module Java::Text
         last_value &= RBCollationTables::SECONDARYDIFFERENCEONLY
         # record max # of ignorable chars with secondary difference
         if (!@is_over_ignore)
-          ((@max_sec_order += 1) - 1)
+          @max_sec_order += 1
         end
       when Collator::TERTIARY
         # increment tertiary order
         last_value += TERTIARYORDERINCREMENT
         # record max # of ignorable chars with tertiary difference
         if (!@is_over_ignore)
-          ((@max_ter_order += 1) - 1)
+          @max_ter_order += 1
         end
       end
       return last_value
@@ -511,7 +511,7 @@ module Java::Text
           # can't find it in the table, will be filled in by commit().
           value_list[((j += 1) - 1)] = CHARINDEX + ch
         end
-        ((i += 1) - 1)
+        i += 1
       end
       if (j < value_list.attr_length)
         # we had at least one supplementary character, the size of valueList
@@ -538,7 +538,7 @@ module Java::Text
         c0 = chars.char_at(i)
         c = Character.is_high_surrogate(c0) ? Character.to_code_point(c0, chars.char_at((i += 1))) : c0
         @contract_flags.put(c, 1)
-        ((i += 1) - 1)
+        i += 1
       end
     end
     

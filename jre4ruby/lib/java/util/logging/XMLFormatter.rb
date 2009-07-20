@@ -102,7 +102,7 @@ module Java::Util::Logging
             end
           end
         end
-        ((i += 1) - 1)
+        i += 1
       end
     end
     
@@ -185,7 +185,7 @@ module Java::Util::Logging
             sb.append("???")
           end
           sb.append("</param>\n")
-          ((i += 1) - 1)
+          i += 1
         end
       end
       if (!(record.get_thrown).nil?)
@@ -213,7 +213,7 @@ module Java::Util::Logging
             sb.append("</line>\n")
           end
           sb.append("    </frame>\n")
-          ((i += 1) - 1)
+          i += 1
         end
         sb.append("  </exception>\n")
       end

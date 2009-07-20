@@ -522,7 +522,7 @@ module Java::Util::Concurrent::Locks
             if ((rh).nil? || !(rh.attr_tid).equal?(current.get_id))
               @cached_hold_counter = rh = @read_holds.get
             end
-            ((rh.attr_count += 1) - 1)
+            rh.attr_count += 1
             return 1
           end
           return full_try_acquire_shared(current)
@@ -551,7 +551,7 @@ module Java::Util::Concurrent::Locks
             end
             if (compare_and_set_state(c, c + self.class::SHARED_UNIT))
               @cached_hold_counter = rh # cache for release
-              ((rh.attr_count += 1) - 1)
+              rh.attr_count += 1
               return 1
             end
           end
@@ -599,7 +599,7 @@ module Java::Util::Concurrent::Locks
               if ((rh).nil? || !(rh.attr_tid).equal?(current.get_id))
                 @cached_hold_counter = rh = @read_holds.get
               end
-              ((rh.attr_count += 1) - 1)
+              rh.attr_count += 1
               return true
             end
           end

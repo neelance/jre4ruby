@@ -459,7 +459,7 @@ module Java::Util::Jar
               if (!is_valid(name.char_at(i)))
                 return false
               end
-              ((i += 1) - 1)
+              i += 1
             end
             return true
           end

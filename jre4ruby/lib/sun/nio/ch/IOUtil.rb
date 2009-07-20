@@ -58,7 +58,7 @@ module Sun::Nio::Ch
           if (bufs[i].has_remaining)
             return i
           end
-          ((i += 1) - 1)
+          i += 1
         end
         return -1
       end
@@ -71,7 +71,7 @@ module Sun::Nio::Ch
         i = 0
         while i < new_size
           temp[i] = bufs[i + next_with_remaining]
-          ((i += 1) - 1)
+          i += 1
         end
         return temp
       end
@@ -157,7 +157,7 @@ module Sun::Nio::Ch
           else
             shadow[i] = bufs[i]
           end
-          ((i += 1) - 1)
+          i += 1
         end
         vec = nil
         bytes_written = 0
@@ -174,7 +174,7 @@ module Sun::Nio::Ch
             bytes_ready_to_write += len
             vec.put_base(i_, (next_buffer).address + pos)
             vec.put_len(i_, len)
-            ((i_ += 1) - 1)
+            i_ += 1
           end
           # Invoke native call to fill the buffers
           bytes_written = nd.writev(fd, vec.attr_address, num_bufs)
@@ -203,7 +203,7 @@ module Sun::Nio::Ch
             end
             break
           end
-          ((i__ += 1) - 1)
+          i__ += 1
         end
         return return_val
       end
@@ -276,7 +276,7 @@ module Sun::Nio::Ch
           else
             shadow[i] = bufs[i]
           end
-          ((i += 1) - 1)
+          i += 1
         end
         vec = nil
         bytes_read = 0
@@ -292,7 +292,7 @@ module Sun::Nio::Ch
             len = next_buffer.remaining
             vec.put_base(i_, (next_buffer).address + pos)
             vec.put_len(i_, len)
-            ((i_ += 1) - 1)
+            i_ += 1
           end
           # Invoke native call to fill the buffers
           bytes_read = nd.readv(fd, vec.attr_address, num_bufs)
@@ -320,7 +320,7 @@ module Sun::Nio::Ch
             end
             break
           end
-          ((i__ += 1) - 1)
+          i__ += 1
         end
         # Put results from shadow into the slow buffers
         i___ = 0
@@ -329,7 +329,7 @@ module Sun::Nio::Ch
             shadow[i___].flip
             bufs[i___].put(shadow[i___])
           end
-          ((i___ += 1) - 1)
+          i___ += 1
         end
         return return_val
       end

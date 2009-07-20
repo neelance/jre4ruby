@@ -189,7 +189,7 @@ module Java::Net
               @local_addrs[((@count += 1) - 1)] = self.attr_addrs[j]
             rescue SecurityException => e
             end
-            ((j += 1) - 1)
+            j += 1
           end
         end
         
@@ -237,7 +237,7 @@ module Java::Net
           lst.add(@bindings[j])
         rescue SecurityException => e
         end
-        ((j += 1) - 1)
+        j += 1
       end
       return lst
     end
@@ -624,7 +624,7 @@ module Java::Net
       i = 0
       while new_addrs.has_more_elements
         new_addrs.next_element
-        ((i += 1) - 1)
+        i += 1
       end
       if ((@addrs).nil?)
         if (!(i).equal?(0))
@@ -636,7 +636,7 @@ module Java::Net
         e = get_inet_addresses
         while e.has_more_elements
           e.next_element
-          ((count += 1) - 1)
+          count += 1
         end
         if (!(i).equal?(count))
           return false
@@ -667,7 +667,7 @@ module Java::Net
         i = 0
         while i < @addrs.attr_length
           count += @addrs[i].hash_code
-          ((i += 1) - 1)
+          i += 1
         end
       end
       return count

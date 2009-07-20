@@ -98,12 +98,12 @@ module Sun::Misc
         i = 0
         while i < 255
           Pem_convert_array[i] = -1
-          ((i += 1) - 1)
+          i += 1
         end
         i_ = 0
         while i_ < Pem_array.attr_length
           Pem_convert_array[Pem_array[i_]] = i_
-          ((i_ += 1) - 1)
+          i_ += 1
         end
       end
     }

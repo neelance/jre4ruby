@@ -140,7 +140,7 @@ module Sun::Security::Ssl
           end
         end
         @cipher_suites.add(suite)
-        ((i += 1) - 1)
+        i += 1
       end
     end
     

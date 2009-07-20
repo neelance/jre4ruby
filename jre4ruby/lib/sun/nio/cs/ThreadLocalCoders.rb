@@ -74,7 +74,7 @@ module Sun::Nio::Cs
           j = i
           while j > 0
             oa[j] = oa[j - 1]
-            ((j -= 1) + 1)
+            j -= 1
           end
           oa[0] = ob
         end
@@ -95,7 +95,7 @@ module Sun::Nio::Cs
             while i < oa.attr_length
               ob = oa[i]
               if ((ob).nil?)
-                ((i += 1) - 1)
+                i += 1
                 next
               end
               if (has_name(ob, name))
@@ -104,7 +104,7 @@ module Sun::Nio::Cs
                 end
                 return ob
               end
-              ((i += 1) - 1)
+              i += 1
             end
           end
           # Create a new object

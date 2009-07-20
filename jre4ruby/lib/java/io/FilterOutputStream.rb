@@ -128,7 +128,7 @@ module Java::Io
       i = 0
       while i < len
         write(b[off + i])
-        ((i += 1) - 1)
+        i += 1
       end
     end
     

@@ -126,7 +126,7 @@ module Sun::Security::Ec
       def trim_zeroes(b)
         i = 0
         while ((i < b.attr_length - 1) && ((b[i]).equal?(0)))
-          ((i += 1) - 1)
+          i += 1
         end
         if ((i).equal?(0))
           return b

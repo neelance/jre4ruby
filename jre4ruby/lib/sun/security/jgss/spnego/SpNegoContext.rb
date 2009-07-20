@@ -733,7 +733,7 @@ module Sun::Security::Jgss::Spnego
       while i < mech_set.attr_length
         mech_type = mech_set[i].get_der
         mech.write(mech_type)
-        ((i += 1) - 1)
+        i += 1
       end
       # insert in SEQUENCE
       mech_type_list = DerOutputStream.new
@@ -928,9 +928,9 @@ module Sun::Security::Jgss::Spnego
               end
               return (mech_set[j])
             end
-            ((j += 1) - 1)
+            j += 1
           end
-          ((i += 1) - 1)
+          i += 1
         end
         return nil
       end

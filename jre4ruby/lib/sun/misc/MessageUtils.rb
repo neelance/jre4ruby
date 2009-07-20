@@ -74,18 +74,18 @@ module Sun::Misc
               index = Character.digit(patt.char_at(i + 1), 10)
               if ((index).equal?(-1))
                 result.append(patt.char_at(i + 1))
-                ((i += 1) - 1)
+                i += 1
               else
                 if (index < args.attr_length)
                   result.append(args[index])
-                  ((i += 1) - 1)
+                  i += 1
                 end
               end
             end
           else
             result.append(ch)
           end
-          ((i += 1) - 1)
+          i += 1
         end
         return result.to_s
       end
@@ -142,7 +142,7 @@ module Sun::Misc
         i = 1
         while i < es.attr_length
           to_stderr("\t" + (es[i].to_s).to_s + "\n")
-          ((i += 1) - 1)
+          i += 1
         end
       end
     }

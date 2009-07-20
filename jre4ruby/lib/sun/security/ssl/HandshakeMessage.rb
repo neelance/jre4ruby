@@ -626,7 +626,7 @@ module Sun::Security::Ssl
             i = 0
             while i < @chain.attr_length
               s.println("chain [" + (i).to_s + "] = " + (@chain[i]).to_s)
-              ((i += 1) - 1)
+              i += 1
             end
             s.println("***")
           end
@@ -1369,7 +1369,7 @@ module Sun::Security::Ssl
           while i < ca.attr_length
             x500principal = ca[i].get_subject_x500principal
             @authorities[i] = DistinguishedName.new(x500principal)
-            ((i += 1) - 1)
+            i += 1
           end
           # we support RSA, DSS, and ECDSA client authentication and they
           # can be used with all ciphersuites. If this changes, the code
@@ -1403,7 +1403,7 @@ module Sun::Security::Ssl
           i = 0
           while i < @authorities.attr_length
             ret[i] = @authorities[i].get_x500principal
-            ((i += 1) - 1)
+            i += 1
           end
           return ret
         end
@@ -1415,7 +1415,7 @@ module Sun::Security::Ssl
           i = 0
           while i < @authorities.attr_length
             len += @authorities[i].length
-            ((i += 1) - 1)
+            i += 1
           end
           return len
         end
@@ -1426,14 +1426,14 @@ module Sun::Security::Ssl
           i = 0
           while i < @authorities.attr_length
             len += @authorities[i].length
-            ((i += 1) - 1)
+            i += 1
           end
           output.put_bytes8(@types)
           output.put_int16(len)
           i_ = 0
           while i_ < @authorities.attr_length
             @authorities[i_].send(output)
-            ((i_ += 1) - 1)
+            i_ += 1
           end
         end
         
@@ -1469,14 +1469,14 @@ module Sun::Security::Ssl
               if (!(i).equal?(@types.attr_length - 1))
                 s.print(", ")
               end
-              ((i += 1) - 1)
+              i += 1
             end
             s.println
             s.println("Cert Authorities:")
             i_ = 0
             while i_ < @authorities.attr_length
               @authorities[i_].print(s)
-              ((i_ += 1) - 1)
+              i_ += 1
             end
           end
         end

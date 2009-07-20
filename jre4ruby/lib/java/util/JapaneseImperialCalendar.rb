@@ -265,10 +265,10 @@ module Java::Util
           # Showa 63 January 8, 63 is the actual max value since
           # Showa 64 January 8 doesn't exist.
           if (!((lgd.get_month).equal?(BaseCalendar::JANUARY) && (lgd.get_day_of_month).equal?(1)))
-            ((y -= 1) + 1)
+            y -= 1
           end
           year = Math.min(y, year)
-          ((i += 1) - 1)
+          i += 1
         end
         LEAST_MAX_VALUES[YEAR] = year # Max year could be smaller than this value.
         LEAST_MAX_VALUES[DAY_OF_YEAR] = day_of_year
@@ -452,11 +452,11 @@ module Java::Util
             time_of_day *= 1000
             time_of_day += internal_get(MILLISECOND)
             if (time_of_day >= ONE_DAY)
-              ((fd += 1) - 1)
+              fd += 1
               time_of_day -= ONE_DAY
             else
               if (time_of_day < 0)
-                ((fd -= 1) + 1)
+                fd -= 1
                 time_of_day += ONE_DAY
               end
             end
@@ -644,7 +644,7 @@ module Java::Util
                 if ((transition.get_year).equal?(@jdate.get_normalized_year))
                   max = transition.get_month - 1
                   if ((transition.get_day_of_month).equal?(1))
-                    ((max -= 1) + 1)
+                    max -= 1
                   end
                 end
               end
@@ -704,18 +704,18 @@ module Java::Util
             day1 = fd - (7 * (woy - min_))
             if (!(year).equal?(get_minimum(YEAR)))
               if (!(Gcal.get_year_from_fixed_date(day1)).equal?(y))
-                ((min_ += 1) - 1)
+                min_ += 1
               end
             else
               d = Jcal.get_calendar_date(Long::MIN_VALUE, get_zone)
               if (day1 < Jcal.get_fixed_date(d))
-                ((min_ += 1) - 1)
+                min_ += 1
               end
             end
             # Make sure the same thing for the max week
             fd += 7 * (max - internal_get(WEEK_OF_YEAR))
             if (!(Gcal.get_year_from_fixed_date(fd)).equal?(y))
-              ((max -= 1) + 1)
+              max -= 1
             end
             throw :break_case, :thrown
           end
@@ -725,13 +725,13 @@ module Java::Util
           # Make sure that the min week has the current DAY_OF_WEEK
           d = get_calendar_date(day1)
           if (!((d.get_era).equal?(@jdate.get_era) && (d.get_year).equal?(@jdate.get_year)))
-            ((min_ += 1) - 1)
+            min_ += 1
           end
           # Make sure the same thing for the max week
           fd += 7 * (max - woy)
           Jcal.get_calendar_date_from_fixed_date(d, fd)
           if (!((d.get_era).equal?(@jdate.get_era) && (d.get_year).equal?(@jdate.get_year)))
-            ((max -= 1) + 1)
+            max -= 1
           end
           # value: the new WEEK_OF_YEAR which must be converted
           # to month and day of month.
@@ -854,7 +854,7 @@ module Java::Util
             max = month_length_ / 7
             x = (dom - 1) % 7
             if (x < last_days)
-              ((max += 1) - 1)
+              max += 1
             end
             set(DAY_OF_WEEK, internal_get(DAY_OF_WEEK))
             throw :break_case, :thrown
@@ -867,7 +867,7 @@ module Java::Util
           max = month_length_ / 7
           x = RJava.cast_to_int((fd - month1)) % 7
           if (x < last_days)
-            ((max += 1) - 1)
+            max += 1
           end
           value = get_rolled_value(internal_get(field), amount, min_, max) - 1
           fd = month1 + value * 7 + x
@@ -954,7 +954,7 @@ module Java::Util
           i = 0
           while i < strings.attr_length
             map.put(strings[i], base + i)
-            ((i += 1) - 1)
+            i += 1
           end
           # If strings[] has fewer than eras[], get more names from eras[].
           if ((field).equal?(ERA) && strings.attr_length < Eras.attr_length)
@@ -963,7 +963,7 @@ module Java::Util
               era = Eras[i_]
               name = ((style).equal?(SHORT)) ? era.get_abbreviation : era.get_name
               map.put(name, i_)
-              ((i_ += 1) - 1)
+              i_ += 1
             end
           end
         end
@@ -1127,7 +1127,7 @@ module Java::Util
           Jcal.normalize(jd)
           raise AssertError if not ((jd.is_leap_year).equal?(d.is_leap_year))
           if (get_year_offset_in_millis(jd) < get_year_offset_in_millis(d))
-            ((value += 1) - 1)
+            value += 1
           end
         else
           value = get_minimum(field)
@@ -1142,7 +1142,7 @@ module Java::Util
           jd.set_year(y)
           Jcal.normalize(jd)
           if (get_year_offset_in_millis(jd) < get_year_offset_in_millis(d))
-            ((value += 1) - 1)
+            value += 1
           end
         end
       when MONTH
@@ -1152,7 +1152,7 @@ module Java::Util
           d = Jcal.get_calendar_date(since, get_zone)
           value = d.get_month - 1
           if (jd.get_day_of_month < d.get_day_of_month)
-            ((value += 1) - 1)
+            value += 1
           end
         end
       when WEEK_OF_YEAR
@@ -1169,7 +1169,7 @@ module Java::Util
         woy = get_week_number(jan1, fd)
         day1 = fd - (7 * (woy - 1))
         if ((day1 < jan1) || ((day1).equal?(jan1) && jd.get_time_of_day < d.get_time_of_day))
-          ((value += 1) - 1)
+          value += 1
         end
       end
       return value
@@ -1213,7 +1213,7 @@ module Java::Util
             # TODO: there may be multiple transitions in a year.
             era_index = get_era_index(date)
             if (!(date.get_year).equal?(1))
-              ((era_index += 1) - 1)
+              era_index += 1
               raise AssertError if not (era_index < Eras.attr_length)
             end
             transition = SinceFixedDates[era_index]
@@ -1237,7 +1237,7 @@ module Java::Util
             # TODO: there may be multiple transitions in a year.
             era_index = get_era_index(date)
             if (!(date.get_year).equal?(1))
-              ((era_index += 1) - 1)
+              era_index += 1
               raise AssertError if not (era_index < Eras.attr_length)
             end
             transition = SinceFixedDates[era_index]
@@ -1307,7 +1307,7 @@ module Java::Util
                 value = 52
                 magic = day_of_week + get_minimal_days_in_first_week - 1
                 if (((magic).equal?(6)) || (date.is_leap_year && ((magic).equal?(5) || (magic).equal?(12))))
-                  ((value += 1) - 1)
+                  value += 1
                 end
               end
             end
@@ -1337,13 +1337,13 @@ module Java::Util
             n_days_first_week = 7 - day_of_week # # of days in the first week
             value = 3
             if (n_days_first_week >= get_minimal_days_in_first_week)
-              ((value += 1) - 1)
+              value += 1
             end
             month_length_ -= n_days_first_week + 7 * 3
             if (month_length_ > 0)
-              ((value += 1) - 1)
+              value += 1
               if (month_length_ > 7)
-                ((value += 1) - 1)
+                value += 1
               end
             end
           else
@@ -1387,7 +1387,7 @@ module Java::Util
           end
           Jcal.normalize(jd)
           if (get_year_offset_in_millis(jd) > get_year_offset_in_millis(d))
-            ((value -= 1) + 1)
+            value -= 1
           end
         else
           raise ArrayIndexOutOfBoundsException.new(field)
@@ -1645,7 +1645,7 @@ module Java::Util
             if (week_of_year >= 52)
               next_jan1 = fixed_date_jan1 + 365
               if (@jdate.is_leap_year)
-                ((next_jan1 += 1) - 1)
+                next_jan1 += 1
               end
               next_jan1st = Jcal.get_day_of_week_date_on_or_before(next_jan1 + 6, get_first_day_of_week)
               ndays = RJava.cast_to_int((next_jan1st - next_jan1))
@@ -1732,7 +1732,7 @@ module Java::Util
             end
           end
           @original_fields[field] = value
-          ((field += 1) - 1)
+          field += 1
         end
       end
       # Let the super class determine which calendar fields to be
@@ -1825,7 +1825,7 @@ module Java::Util
         field = 0
         while field < FIELD_COUNT
           if (!is_externally_set(field))
-            ((field += 1) - 1)
+            field += 1
             next
           end
           if (!(@original_fields[field]).equal?(internal_get(field)))
@@ -1834,7 +1834,7 @@ module Java::Util
             System.arraycopy(@original_fields, 0, self.attr_fields, 0, self.attr_fields.attr_length)
             raise IllegalArgumentException.new((get_field_name(field)).to_s + "=" + (wrong_value).to_s + ", expected " + (@original_fields[field]).to_s)
           end
-          ((field += 1) - 1)
+          field += 1
         end
       end
       set_fields_normalized(mask)
@@ -1958,7 +1958,7 @@ module Java::Util
           end
           # Add the offset, then subtract 1. (Make sure to avoid underflow.)
           fixed_date += internal_get(DAY_OF_YEAR)
-          ((fixed_date -= 1) + 1)
+          fixed_date -= 1
         else
           first_day_of_week = Jcal.get_day_of_week_date_on_or_before(fixed_date + 6, get_first_day_of_week)
           # If we have enough days in the first week, then move
@@ -1994,11 +1994,11 @@ module Java::Util
           fd = Gcal.get_fixed_date(d)
           # There might be multiple era transitions in a year.
           if (fd > fixed_date)
-            ((era_index -= 1) + 1)
+            era_index -= 1
             next
           end
           return fd
-          ((era_index -= 1) + 1)
+          era_index -= 1
         end
       end
       d = Gcal.new_calendar_date(TimeZone::NO_TIMEZONE)
@@ -2109,7 +2109,7 @@ module Java::Util
         if (normalized_year > transition_year)
           break
         end
-        ((i -= 1) + 1)
+        i -= 1
       end
       return false
     end
@@ -2123,7 +2123,7 @@ module Java::Util
           if ((Eras[i]).equal?(era))
             return i
           end
-          ((i -= 1) + 1)
+          i -= 1
         end
         return 0
       end

@@ -271,7 +271,7 @@ module Java::Security
           else
             pal_buf.append(")\n")
           end
-          ((i += 1) - 1)
+          i += 1
         end
         pals = (pal_buf.to_s).to_s
       end
@@ -363,7 +363,7 @@ module Java::Security
           e = perms.elements
           while (e.has_more_elements)
             pl_vector.add(e.next_element)
-            ((vcap += 1) - 1)
+            vcap += 1
           end
         end
       end
@@ -390,7 +390,7 @@ module Java::Security
                   break
                 end
               end
-              ((i += 1) - 1)
+              i += 1
             end
           end
         end
@@ -401,14 +401,14 @@ module Java::Security
         i = pl_vector.size - 1
         while i >= 0
           merged_perms.add(pl_vector.get(i))
-          ((i -= 1) + 1)
+          i -= 1
         end
       end
       if (!(@permissions).nil?)
         i = pd_vector.size - 1
         while i >= 0
           merged_perms.add(pd_vector.get(i))
-          ((i -= 1) + 1)
+          i -= 1
         end
       end
       return merged_perms

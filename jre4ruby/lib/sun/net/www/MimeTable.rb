@@ -209,7 +209,7 @@ module Sun::Net::Www
         i = 0
         while i < exts.attr_length
           @extension_map.put(exts[i], m)
-          ((i += 1) - 1)
+          i += 1
         end
       end
     end
@@ -230,7 +230,7 @@ module Sun::Net::Www
           i = 0
           while i < extension_keys.attr_length
             @extension_map.remove(extension_keys[i])
-            ((i += 1) - 1)
+            i += 1
           end
         end
         return @entries.remove(entry.get_type)
@@ -459,7 +459,7 @@ module Sun::Net::Www
       i = 0
       while i < n
         extensions[i] = tokenizer.next_token
-        ((i += 1) - 1)
+        i += 1
       end
       return extensions
     end
@@ -471,7 +471,7 @@ module Sun::Net::Www
         if (action.equals_ignore_case(MimeEntry.attr_action_keywords[i]))
           return i
         end
-        ((i += 1) - 1)
+        i += 1
       end
       return MimeEntry::UNKNOWN
     end

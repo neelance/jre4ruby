@@ -756,7 +756,7 @@ module Java::Text
           if ((i + 1) < length_)
             c = pattern.char_at(i + 1)
             if ((c).equal?(Character.new(?\'.ord)))
-              ((i += 1) - 1)
+              i += 1
               if (!(count).equal?(0))
                 encode(last_tag, count, compiled_pattern)
                 last_tag = -1
@@ -767,7 +767,7 @@ module Java::Text
               else
                 compiled_pattern.append(RJava.cast_to_char((TAG_QUOTE_ASCII_CHAR << 8 | c)))
               end
-              ((i += 1) - 1)
+              i += 1
               next
             end
           end
@@ -799,12 +799,12 @@ module Java::Text
             end
             in_quote = false
           end
-          ((i += 1) - 1)
+          i += 1
           next
         end
         if (in_quote)
           tmp_buffer.append(c)
-          ((i += 1) - 1)
+          i += 1
           next
         end
         if (!(c >= Character.new(?a.ord) && c <= Character.new(?z.ord) || c >= Character.new(?A.ord) && c <= Character.new(?Z.ord)))
@@ -826,16 +826,16 @@ module Java::Text
               if ((d).equal?(Character.new(?\'.ord)) || (d >= Character.new(?a.ord) && d <= Character.new(?z.ord) || d >= Character.new(?A.ord) && d <= Character.new(?Z.ord)))
                 break
               end
-              ((j += 1) - 1)
+              j += 1
             end
             compiled_pattern.append(RJava.cast_to_char((TAG_QUOTE_CHARS << 8 | (j - i))))
             while i < j
               compiled_pattern.append(pattern.char_at(i))
-              ((i += 1) - 1)
+              i += 1
             end
-            ((i -= 1) + 1)
+            i -= 1
           end
-          ((i += 1) - 1)
+          i += 1
           next
         end
         tag = 0
@@ -844,14 +844,14 @@ module Java::Text
         end
         if ((last_tag).equal?(-1) || (last_tag).equal?(tag))
           last_tag = tag
-          ((count += 1) - 1)
-          ((i += 1) - 1)
+          count += 1
+          i += 1
           next
         end
         encode(last_tag, count, compiled_pattern)
         last_tag = tag
         count = 1
-        ((i += 1) - 1)
+        i += 1
       end
       if (in_quote)
         raise IllegalArgumentException.new("Unterminated quote")
@@ -1124,7 +1124,7 @@ module Java::Text
               index = ((self.attr_calendar.get(Calendar::DST_OFFSET)).equal?(0)) ? 1 : 3
               if (count < 4)
                 # Use the short name
-                ((index += 1) - 1)
+                index += 1
               end
               zone_strings = @format_data.get_zone_strings_wrapper
               buffer.append(zone_strings[zone_index][index])
@@ -1143,7 +1143,7 @@ module Java::Text
         if (value >= 0)
           buffer.append(Character.new(?+.ord))
         else
-          ((width += 1) - 1)
+          width += 1
         end
         num = (value / 60) * 100 + (value % 60)
         CalendarUtils.sprintf0d(buffer, num, width)
@@ -1260,7 +1260,7 @@ module Java::Text
             pos.attr_error_index = start
             return nil
           end
-          ((start += 1) - 1)
+          start += 1
         when TAG_QUOTE_CHARS
           while (((count -= 1) + 1) > 0)
             if (start >= text_length || !(text.char_at(start)).equal?(@compiled_pattern[((i += 1) - 1)]))
@@ -1268,7 +1268,7 @@ module Java::Text
               pos.attr_error_index = start
               return nil
             end
-            ((start += 1) - 1)
+            start += 1
           end
         else
           # Peek the next pattern to determine if we need to
@@ -1472,7 +1472,7 @@ module Java::Text
             tz = TimeZone.get_time_zone(zone_strings[i][0])
             break
           end
-          ((i += 1) - 1)
+          i += 1
         end
       end
       if (!(tz).nil?)
@@ -1747,7 +1747,7 @@ module Java::Text
               else
                 num *= 10
                 num += c - Character.new(?0.ord)
-                ((pos.attr_index += 1) - 1)
+                pos.attr_index += 1
               end
             end
             if (num > 23)

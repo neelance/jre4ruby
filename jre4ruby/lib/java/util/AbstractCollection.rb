@@ -151,7 +151,7 @@ module Java::Util
           return Arrays.copy_of(r, i)
         end
         r[i] = it.next
-        ((i += 1) - 1)
+        i += 1
       end
       return it.has_next ? finish_to_array(r, it) : r
     end
@@ -198,7 +198,7 @@ module Java::Util
           return r
         end
         r[i] = it.next
-        ((i += 1) - 1)
+        i += 1
       end
       return it.has_next ? finish_to_array(r, it) : r
     end

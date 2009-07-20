@@ -136,7 +136,7 @@ module Sun::Security::Ssl
               i = 0
               while i < @certificates.attr_length
                 @issuer_x500principals.add(@certificates[i].get_issuer_x500principal)
-                ((i += 1) - 1)
+                i += 1
               end
             end
             return @issuer_x500principals
@@ -185,7 +185,7 @@ module Sun::Security::Ssl
           i = 0
           while i < certs.attr_length
             System.out.println("chain [" + (i).to_s + "] = " + (certs[i]).to_s)
-            ((i += 1) - 1)
+            i += 1
           end
           System.out.println("***")
         end
@@ -241,7 +241,7 @@ module Sun::Security::Ssl
         if ((!(aliases_).nil?) && (aliases_.attr_length > 0))
           return aliases_[0]
         end
-        ((i += 1) - 1)
+        i += 1
       end
       return nil
     end
@@ -388,7 +388,7 @@ module Sun::Security::Ssl
               end
               break
             end
-            ((i += 1) - 1)
+            i += 1
           end
         end
       end
@@ -414,7 +414,7 @@ module Sun::Security::Ssl
               # ignore
             end
           end
-          ((i += 1) - 1)
+          i += 1
         end
         return list.to_array(Array.typed(X500Principal).new(list.size) { nil })
       end

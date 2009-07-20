@@ -588,9 +588,9 @@ module Java::Util
                   sb.append(final_char)
                   self.attr_available.add(get_instance(sb.to_s, default_fraction_digits, numeric_code))
                 end
-                ((c2 += 1) - 1)
+                c2 += 1
               end
-              ((c1 += 1) - 1)
+              c1 += 1
             end
             # Now add other currencies
             st = StringTokenizer.new(self.attr_other_currencies, "-")
@@ -797,7 +797,7 @@ module Java::Util
         i = 0
         while i < count
           ret[i] = dis.read_int
-          ((i += 1) - 1)
+          i += 1
         end
         return ret
       end
@@ -808,7 +808,7 @@ module Java::Util
         i = 0
         while i < count
           ret[i] = dis.read_long
-          ((i += 1) - 1)
+          i += 1
         end
         return ret
       end
@@ -819,7 +819,7 @@ module Java::Util
         i = 0
         while i < count
           ret[i] = dis.read_utf
-          ((i += 1) - 1)
+          i += 1
         end
         return ret
       end
@@ -858,7 +858,7 @@ module Java::Util
           if ((self.attr_sc_old_currencies[index] == code))
             break
           end
-          ((index += 1) - 1)
+          index += 1
         end
         if ((index).equal?(self.attr_sc_old_currencies.attr_length))
           # simple case

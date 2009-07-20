@@ -427,7 +427,7 @@ module Java::Lang::Reflect
           end
           interface_set.add(interface_class)
           interface_names[i] = interface_name
-          ((i += 1) - 1)
+          i += 1
         end
         # Using string representations of the proxy interfaces as
         # keys in the proxy class cache (instead of their Class
@@ -513,7 +513,7 @@ module Java::Lang::Reflect
                 end
               end
             end
-            ((i_ += 1) - 1)
+            i_ += 1
           end
           if ((proxy_pkg).nil?)
             # if no non-public proxy interfaces,

@@ -186,7 +186,7 @@ module Sun::Security::Pkcs11
       def trim_zeroes(b)
         i = 0
         while ((i < b.attr_length - 1) && ((b[i]).equal?(0)))
-          ((i += 1) - 1)
+          i += 1
         end
         if ((i).equal?(0))
           return b
@@ -245,7 +245,7 @@ module Sun::Security::Pkcs11
           end
           sb.append(HexDigits[k >> 4])
           sb.append(HexDigits[k & 0xf])
-          ((i += 1) - 1)
+          i += 1
         end
         return sb.to_s
       end

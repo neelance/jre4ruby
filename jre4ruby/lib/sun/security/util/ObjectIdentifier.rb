@@ -124,7 +124,7 @@ module Sun::Security::Util
         if (values[i] < 0)
           raise IOException.new("ObjectIdentifier() -- " + "oid component #" + ((i + 1)).to_s + " must be non-negative ")
         end
-        ((i += 1) - 1)
+        i += 1
       end
       if (values[0] > MaxFirstComponent)
         raise IOException.new("ObjectIdentifier() -- " + "First oid component is invalid ")
@@ -280,7 +280,7 @@ module Sun::Security::Util
       i = 2
       while i < @component_len
         put_component(bytes, @components[i])
-        ((i += 1) - 1)
+        i += 1
       end
       # Now that we've constructed the component, encode
       # it in the stream we were given.
@@ -305,7 +305,7 @@ module Sun::Security::Util
           if (((tmp & 0x80)).equal?(0))
             return retval
           end
-          ((i += 1) - 1)
+          i += 1
         end
         raise IOException.new("ObjectIdentifier() -- component value too big")
       end
@@ -326,7 +326,7 @@ module Sun::Security::Util
           if ((val).equal?(0))
             break
           end
-          ((i += 1) - 1)
+          i += 1
         end
         while i > 0
           out.write(buf[i] | 0x80)
@@ -360,7 +360,7 @@ module Sun::Security::Util
         if (other.attr_components[i] < @components[i])
           return true
         end
-        ((i += 1) - 1)
+        i += 1
       end
       # identical IDs don't precede each other
       return false
@@ -392,7 +392,7 @@ module Sun::Security::Util
         if (!(@components[i]).equal?(other.attr_components[i]))
           return false
         end
-        ((i += 1) - 1)
+        i += 1
       end
       return true
     end
@@ -403,7 +403,7 @@ module Sun::Security::Util
       i = 0
       while i < @component_len
         h += @components[i] * 37
-        ((i += 1) - 1)
+        i += 1
       end
       return h
     end
@@ -423,7 +423,7 @@ module Sun::Security::Util
             sb.append(Character.new(?..ord))
           end
           sb.append(@components[i])
-          ((i += 1) - 1)
+          i += 1
         end
         s = (sb.to_s).to_s
         @string_form = s

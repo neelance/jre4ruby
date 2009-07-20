@@ -100,7 +100,7 @@ module Sun::Net::Util
                 return nil
               end
               res[i] = (val & 0xff)
-              ((i += 1) - 1)
+              i += 1
             end
             val = JavaInteger.parse_int(s[2])
             if (val < 0 || val > 0xffff)
@@ -119,7 +119,7 @@ module Sun::Net::Util
                 return nil
               end
               res[i] = (val & 0xff)
-              ((i += 1) - 1)
+              i += 1
             end
           else
             return nil
@@ -210,8 +210,8 @@ module Sun::Net::Util
             dot_count = 0
             index = 0
             while (!((index = ia4.index_of(Character.new(?..ord), index))).equal?(-1))
-              ((dot_count += 1) - 1)
-              ((index += 1) - 1)
+              dot_count += 1
+              index += 1
             end
             if (!(dot_count).equal?(3))
               return nil
@@ -223,7 +223,7 @@ module Sun::Net::Util
             k = 0
             while k < INADDR4SZ
               dst[((j += 1) - 1)] = v4addr[k]
-              ((k += 1) - 1)
+              k += 1
             end
             saw_xdigit = false
             break
@@ -247,7 +247,7 @@ module Sun::Net::Util
           while i <= n
             dst[INADDR16SZ - i] = dst[colonp + n - i]
             dst[colonp + n - i] = 0
-            ((i += 1) - 1)
+            i += 1
           end
           j = INADDR16SZ
         end

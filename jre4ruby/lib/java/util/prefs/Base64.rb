@@ -75,7 +75,7 @@ module Java::Util::Prefs
           result.append(int_to_alpha[(byte0 << 4) & 0x3f | (byte1 >> 4)])
           result.append(int_to_alpha[(byte1 << 2) & 0x3f | (byte2 >> 6)])
           result.append(int_to_alpha[byte2 & 0x3f])
-          ((i += 1) - 1)
+          i += 1
         end
         # Translate partial group if present
         if (!(num_bytes_in_partial_group).equal?(0))
@@ -144,11 +144,11 @@ module Java::Util::Prefs
         num_full_groups = num_groups
         if (!(s_len).equal?(0))
           if ((s.char_at(s_len - 1)).equal?(Character.new(?=.ord)))
-            ((missing_bytes_in_last_group += 1) - 1)
-            ((num_full_groups -= 1) + 1)
+            missing_bytes_in_last_group += 1
+            num_full_groups -= 1
           end
           if ((s.char_at(s_len - 2)).equal?(Character.new(?=.ord)))
-            ((missing_bytes_in_last_group += 1) - 1)
+            missing_bytes_in_last_group += 1
           end
         end
         result = Array.typed(::Java::Byte).new(3 * num_groups - missing_bytes_in_last_group) { 0 }
@@ -164,7 +164,7 @@ module Java::Util::Prefs
           result[((out_cursor += 1) - 1)] = ((ch0 << 2) | (ch1 >> 4))
           result[((out_cursor += 1) - 1)] = ((ch1 << 4) | (ch2 >> 2))
           result[((out_cursor += 1) - 1)] = ((ch2 << 6) | ch3)
-          ((i += 1) - 1)
+          i += 1
         end
         # Translate partial group, if present
         if (!(missing_bytes_in_last_group).equal?(0))
@@ -221,7 +221,7 @@ module Java::Util::Prefs
             k = 0
             while k < j
               arr[k] = rnd.next_int
-              ((k += 1) - 1)
+              k += 1
             end
             s = byte_array_to_base64(arr)
             b = base64_to_byte_array(s)
@@ -233,9 +233,9 @@ module Java::Util::Prefs
             if (!(Java::Util::Arrays == arr))
               System.out.println("Alternate dismal failure!")
             end
-            ((j += 1) - 1)
+            j += 1
           end
-          ((i += 1) - 1)
+          i += 1
         end
       end
     }

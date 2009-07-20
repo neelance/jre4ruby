@@ -110,7 +110,7 @@ module Sun::Security::Krb5::Internal::Ktab
           write(service_names[i].get_bytes("8859_1"))
         rescue UnsupportedEncodingException => exc
         end
-        ((i += 1) - 1)
+        i += 1
       end
       write32(entry.attr_service.get_name_type)
       # time is long, but we only use 4 bytes to store the data.

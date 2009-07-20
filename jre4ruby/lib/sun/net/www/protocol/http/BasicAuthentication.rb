@@ -76,7 +76,7 @@ module Sun::Net::Www::Protocol::Http
       i = 0
       while i < passwd.attr_length
         passwd_bytes[i] = passwd[i]
-        ((i += 1) - 1)
+        i += 1
       end
       # concatenate user name and password bytes and encode them
       concat = Array.typed(::Java::Byte).new(name_bytes.attr_length + passwd_bytes.attr_length) { 0 }
@@ -112,7 +112,7 @@ module Sun::Net::Www::Protocol::Http
       i = 0
       while i < passwd.attr_length
         passwd_bytes[i] = passwd[i]
-        ((i += 1) - 1)
+        i += 1
       end
       # concatenate user name and password bytes and encode them
       concat = Array.typed(::Java::Byte).new(name_bytes.attr_length + passwd_bytes.attr_length) { 0 }

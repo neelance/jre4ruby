@@ -208,7 +208,7 @@ module Sun::Security::Validator
             System.arraycopy(chain, 0, new_chain, 0, i)
             return do_validate(new_chain)
           end
-          ((i += 1) - 1)
+          i += 1
         end
         # not self issued and apparently issued by trust anchor?
         last = chain[chain.attr_length - 1]

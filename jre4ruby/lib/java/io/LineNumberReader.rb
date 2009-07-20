@@ -161,11 +161,11 @@ module Java::Io
         when Character.new(?\r.ord)
           @skip_lf = true
           # Fall through
-          ((@line_number += 1) - 1)
+          @line_number += 1
           return Character.new(?\n.ord)
         when Character.new(?\n.ord)
           # Fall through
-          ((@line_number += 1) - 1)
+          @line_number += 1
           return Character.new(?\n.ord)
         end
         return c
@@ -200,7 +200,7 @@ module Java::Io
           if (@skip_lf)
             @skip_lf = false
             if ((c).equal?(Character.new(?\n.ord)))
-              ((i += 1) - 1)
+              i += 1
               next
             end
           end
@@ -208,12 +208,12 @@ module Java::Io
           when Character.new(?\r.ord)
             @skip_lf = true
             # Fall through
-            ((@line_number += 1) - 1)
+            @line_number += 1
           when Character.new(?\n.ord)
             # Fall through
-            ((@line_number += 1) - 1)
+            @line_number += 1
           end
-          ((i += 1) - 1)
+          i += 1
         end
         return n
       end
@@ -234,7 +234,7 @@ module Java::Io
         l = super(@skip_lf)
         @skip_lf = false
         if (!(l).nil?)
-          ((@line_number += 1) - 1)
+          @line_number += 1
         end
         return l
       end

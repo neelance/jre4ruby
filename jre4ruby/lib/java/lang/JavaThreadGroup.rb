@@ -334,7 +334,7 @@ module Java::Lang
       i = 0
       while i < ngroups_snapshot
         groups_snapshot[i].set_max_priority(pri)
-        ((i += 1) - 1)
+        i += 1
       end
     end
     
@@ -409,7 +409,7 @@ module Java::Lang
       i = 0
       while i < ngroups_snapshot
         result += groups_snapshot[i].active_count
-        ((i += 1) - 1)
+        i += 1
       end
       return result
     end
@@ -496,7 +496,7 @@ module Java::Lang
           if (@threads[i].is_alive)
             list[((n += 1) - 1)] = @threads[i]
           end
-          ((i += 1) - 1)
+          i += 1
         end
         if (recurse)
           ngroups_snapshot = @ngroups
@@ -511,7 +511,7 @@ module Java::Lang
         i_ = 0
         while i_ < ngroups_snapshot
           n = groups_snapshot[i_].enumerate(list, n, true)
-          ((i_ += 1) - 1)
+          i_ += 1
         end
       end
       return n
@@ -545,7 +545,7 @@ module Java::Lang
       i = 0
       while i < ngroups_snapshot
         n += groups_snapshot[i].active_group_count
-        ((i += 1) - 1)
+        i += 1
       end
       return n
     end
@@ -643,7 +643,7 @@ module Java::Lang
         i = 0
         while i < ngroups_snapshot
           n = groups_snapshot[i].enumerate(list, n, true)
-          ((i += 1) - 1)
+          i += 1
         end
       end
       return n
@@ -697,7 +697,7 @@ module Java::Lang
         i = 0
         while i < @nthreads
           @threads[i].interrupt
-          ((i += 1) - 1)
+          i += 1
         end
         ngroups_snapshot = @ngroups
         if (!(@groups).nil?)
@@ -709,7 +709,7 @@ module Java::Lang
       i_ = 0
       while i_ < ngroups_snapshot
         groups_snapshot[i_].interrupt
-        ((i_ += 1) - 1)
+        i_ += 1
       end
     end
     
@@ -761,7 +761,7 @@ module Java::Lang
               @threads[i].stop
             end
           end
-          ((i += 1) - 1)
+          i += 1
         end
         ngroups_snapshot = @ngroups
         if (!(@groups).nil?)
@@ -771,7 +771,7 @@ module Java::Lang
       i_ = 0
       while i_ < ngroups_snapshot
         suicide = groups_snapshot[i_].stop_or_suspend(suspend) || suicide
-        ((i_ += 1) - 1)
+        i_ += 1
       end
       return suicide
     end
@@ -804,7 +804,7 @@ module Java::Lang
         i = 0
         while i < @nthreads
           @threads[i].resume
-          ((i += 1) - 1)
+          i += 1
         end
         ngroups_snapshot = @ngroups
         if (!(@groups).nil?)
@@ -816,7 +816,7 @@ module Java::Lang
       i_ = 0
       while i_ < ngroups_snapshot
         groups_snapshot[i_].resume
-        ((i_ += 1) - 1)
+        i_ += 1
       end
     end
     
@@ -885,7 +885,7 @@ module Java::Lang
         @groups[@ngroups] = g
         # This is done last so it doesn't matter in case the
         # thread is killed
-        ((@ngroups += 1) - 1)
+        @ngroups += 1
       end
     end
     
@@ -908,7 +908,7 @@ module Java::Lang
             @groups[@ngroups] = nil
             break
           end
-          ((i += 1) - 1)
+          i += 1
         end
         if ((@nthreads).equal?(0))
           notify_all
@@ -930,7 +930,7 @@ module Java::Lang
         if (@destroyed)
           raise IllegalThreadStateException.new
         end
-        ((@n_unstarted_threads += 1) - 1)
+        @n_unstarted_threads += 1
       end
     end
     
@@ -953,8 +953,8 @@ module Java::Lang
         @threads[@nthreads] = t
         # This is done last so it doesn't matter in case the
         # thread is killed
-        ((@nthreads += 1) - 1)
-        ((@n_unstarted_threads -= 1) + 1)
+        @nthreads += 1
+        @n_unstarted_threads -= 1
       end
     end
     
@@ -976,7 +976,7 @@ module Java::Lang
             @threads[@nthreads] = nil
             break
           end
-          ((i += 1) - 1)
+          i += 1
         end
         if ((@nthreads).equal?(0))
           notify_all
@@ -1004,7 +1004,7 @@ module Java::Lang
         j = 0
         while j < indent
           out.print(" ")
-          ((j += 1) - 1)
+          j += 1
         end
         out.println(self)
         indent += 4
@@ -1013,10 +1013,10 @@ module Java::Lang
           j_ = 0
           while j_ < indent
             out.print(" ")
-            ((j_ += 1) - 1)
+            j_ += 1
           end
           out.println(@threads[i])
-          ((i += 1) - 1)
+          i += 1
         end
         ngroups_snapshot = @ngroups
         if (!(@groups).nil?)
@@ -1028,7 +1028,7 @@ module Java::Lang
       i_ = 0
       while i_ < ngroups_snapshot
         groups_snapshot[i_].list(out, indent)
-        ((i_ += 1) - 1)
+        i_ += 1
       end
     end
     

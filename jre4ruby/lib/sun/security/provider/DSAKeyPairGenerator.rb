@@ -216,7 +216,7 @@ module Sun::Security::Provider
         i = 0
         while i < 5
           seed[i] = random.next_int
-          ((i += 1) - 1)
+          i += 1
         end
         x = generate_x(seed, q)
         if (x.signum > 0 && ((x <=> q) < 0))
@@ -243,9 +243,9 @@ module Sun::Security::Provider
         j = 0
         while j < 4
           tmp_bytes[(i * 4) + j] = (k >> (24 - (j * 8)))
-          ((j += 1) - 1)
+          j += 1
         end
-        ((i += 1) - 1)
+        i += 1
       end
       x = BigInteger.new(1, tmp_bytes).mod(q)
       return x

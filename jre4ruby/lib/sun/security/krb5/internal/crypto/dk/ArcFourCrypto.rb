@@ -287,7 +287,7 @@ module Sun::Security::Krb5::Internal::Crypto::Dk
       i = 0
       while i <= 15
         klocal[i] = (base_key[i] ^ 0xf0)
-        ((i += 1) - 1)
+        i += 1
       end
       salt = Array.typed(::Java::Byte).new(4) { 0 }
       kcrypt = get_hmac(klocal, salt)
@@ -343,7 +343,7 @@ module Sun::Security::Krb5::Internal::Crypto::Dk
             System.err.println("Checksum failed !")
             break
           end
-          ((i += 1) - 1)
+          i += 1
         end
       end
       if (cksum_failed)
@@ -374,7 +374,7 @@ module Sun::Security::Krb5::Internal::Crypto::Dk
       i = 0
       while i <= 15
         klocal[i] = (base_key[i] ^ 0xf0)
-        ((i += 1) - 1)
+        i += 1
       end
       salt = Array.typed(::Java::Byte).new(4) { 0 }
       kcrypt = get_hmac(klocal, salt)

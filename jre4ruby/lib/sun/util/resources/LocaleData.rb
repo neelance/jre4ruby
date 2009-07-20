@@ -308,7 +308,7 @@ module Sun::Util::Resources
             end
           end
           locales[i] = Locale.new(language, country, variant)
-          ((i += 1) - 1)
+          i += 1
         end
         return locales
       end

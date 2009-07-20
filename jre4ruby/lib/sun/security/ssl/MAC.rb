@@ -187,7 +187,7 @@ module Sun::Security::Ssl
     def increment_sequence_number
       k = 7
       while ((k >= 0) && (((@block[k] += 1)).equal?(0)))
-        ((k -= 1) + 1)
+        k -= 1
       end
     end
     

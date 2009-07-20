@@ -132,7 +132,7 @@ module Java::Security::Cert
         i = 1
         while i < cert_data.attr_length
           retval += cert_data[i] * i
-          ((i += 1) - 1)
+          i += 1
         end
         return retval
       rescue CertificateException => e

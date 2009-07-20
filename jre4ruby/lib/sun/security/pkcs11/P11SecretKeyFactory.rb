@@ -164,7 +164,7 @@ module Sun::Security::Pkcs11
           b = key[offset] & 0xfe
           b |= (JavaInteger.bit_count(b) & 1) ^ 1
           key[((offset += 1) - 1)] = b
-          ((i += 1) - 1)
+          i += 1
         end
       end
       

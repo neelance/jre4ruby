@@ -160,7 +160,7 @@ module Sun::Reflect::Misc
           if (!done)
             get_interface_methods(intf, sigs)
           end
-          ((i += 1) - 1)
+          i += 1
         end
       end
       
@@ -194,7 +194,7 @@ module Sun::Reflect::Misc
             done = false
             break
           end
-          ((i += 1) - 1)
+          i += 1
         end
         if (done)
           # We're done. Spray all the methods into
@@ -202,7 +202,7 @@ module Sun::Reflect::Misc
           i_ = 0
           while i_ < methods.attr_length
             add_method(sigs, methods[i_])
-            ((i_ += 1) - 1)
+            i_ += 1
           end
         else
           # Simulate cls.getDeclaredMethods() by
@@ -213,7 +213,7 @@ module Sun::Reflect::Misc
             if ((cls == dc))
               add_method(sigs, methods[i_])
             end
-            ((i_ += 1) - 1)
+            i_ += 1
           end
         end
         return done
@@ -284,7 +284,7 @@ module Sun::Reflect::Misc
             if (!((@arg_classes[i]).equal?(that.attr_arg_classes[i])))
               return false
             end
-            ((i += 1) - 1)
+            i += 1
           end
           return true
         end
@@ -300,7 +300,7 @@ module Sun::Reflect::Misc
               i = 0
               while i < @arg_classes.attr_length
                 result = 37 * result + (((@arg_classes[i]).nil?) ? 0 : @arg_classes[i].hash_code)
-                ((i += 1) - 1)
+                i += 1
               end
             end
             @hash_code = result

@@ -83,7 +83,7 @@ module Sun::Net::Www::Protocol::Http
             raise UnsupportedCallbackException.new(call_back, "Call back not supported")
           end
         end # else
-        ((i += 1) - 1)
+        i += 1
       end # for
     end
     

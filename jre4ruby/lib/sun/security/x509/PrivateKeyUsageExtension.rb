@@ -186,7 +186,7 @@ module Sun::Security::X509
             raise IOException.new("Invalid encoding of " + "PrivateKeyUsageExtension")
           end
         end
-        ((i += 1) - 1)
+        i += 1
       end
     end
     

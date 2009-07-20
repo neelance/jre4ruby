@@ -377,10 +377,10 @@ module Sun::Security::Provider::Certpath
           cache_key = @name + "|" + attr_id
           values = self.attr_value_cache.get(cache_key)
           if (!(values).nil?)
-            ((self.attr_cache_hits += 1) - 1)
+            self.attr_cache_hits += 1
             return values
           end
-          ((self.attr_cache_misses += 1) - 1)
+          self.attr_cache_misses += 1
           attrs = get_value_map
           values = attrs.get(attr_id)
           return values
@@ -405,7 +405,7 @@ module Sun::Security::Provider::Certpath
           end
           if (DEBUG)
             System.out.println("Request: " + @name + ":" + (@requested_attributes).to_s)
-            ((self.attr_requests += 1) - 1)
+            self.attr_requests += 1
             if ((self.attr_requests % 5).equal?(0))
               System.out.println("LDAP requests: " + (self.attr_requests).to_s)
             end
@@ -506,7 +506,7 @@ module Sun::Security::Provider::Certpath
             Debug.println("[ " + (encoder.encode_buffer(encoded_cert[i])).to_s + " ]")
           end
         end
-        ((i += 1) - 1)
+        i += 1
       end
       return certs
     end
@@ -545,7 +545,7 @@ module Sun::Security::Provider::Certpath
             Debug.println("[ " + (encoder.encode_buffer(encoded_cert_pair[i])).to_s + " ]")
           end
         end
-        ((i += 1) - 1)
+        i += 1
       end
       return cert_pairs
     end
@@ -740,7 +740,7 @@ module Sun::Security::Provider::Certpath
             Debug.println("[ " + (encoder.encode_buffer(encoded_crl[i])).to_s + " ]")
           end
         end
-        ((i += 1) - 1)
+        i += 1
       end
       return crls
     end

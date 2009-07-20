@@ -223,7 +223,7 @@ module Java::Lang
         if (si[i] < 0)
           raise NumberFormatException.for_input_string("" + (si[i]).to_s)
         end
-        ((i += 1) - 1)
+        i += 1
       end
       da = desired.split(Regexp.new("\\."))
       di = Array.typed(::Java::Int).new(da.attr_length) { 0 }
@@ -233,7 +233,7 @@ module Java::Lang
         if (di[i_] < 0)
           raise NumberFormatException.for_input_string("" + (di[i_]).to_s)
         end
-        ((i_ += 1) - 1)
+        i_ += 1
       end
       len = Math.max(di.attr_length, si.attr_length)
       i__ = 0
@@ -246,7 +246,7 @@ module Java::Lang
         if (s > d)
           return true
         end
-        ((i__ += 1) - 1)
+        i__ += 1
       end
       return true
     end
@@ -542,7 +542,7 @@ module Java::Lang
           i = 0
           while i < names.attr_length
             define_system_package(names[i], get_system_package0(names[i]))
-            ((i += 1) - 1)
+            i += 1
           end
           return self.attr_pkgs.values.to_array(Array.typed(Package).new(self.attr_pkgs.size) { nil })
         end

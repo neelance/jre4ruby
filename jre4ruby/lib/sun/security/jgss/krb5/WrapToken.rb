@@ -373,7 +373,7 @@ module Sun::Security::Jgss::Krb5
           while i < num_blocks
             read_fully(@is, data_buf, offset, 8)
             offset += 8
-            ((i += 1) - 1)
+            i += 1
           end
           final_block = Array.typed(::Java::Byte).new(8) { 0 }
           read_fully(@is, final_block)

@@ -148,7 +148,7 @@ module Java::Math
       i = 0
       while i < @int_len
         @value[i] = val.attr_value[val.attr_offset + i]
-        ((i += 1) - 1)
+        i += 1
       end
     end
     
@@ -160,7 +160,7 @@ module Java::Math
       n = @value.attr_length
       while index < n
         @value[index] = 0
-        ((index += 1) - 1)
+        index += 1
       end
     end
     
@@ -191,7 +191,7 @@ module Java::Math
         if (b1 > b2)
           return 1
         end
-        ((i += 1) - 1)
+        i += 1
       end
       return 0
     end
@@ -207,7 +207,7 @@ module Java::Math
       b = 0
       j = @int_len - 1
       while (j > 0) && ((@value[j + @offset]).equal?(0))
-        ((j -= 1) + 1)
+        j -= 1
       end
       b = @value[j + @offset]
       if ((b).equal?(0))
@@ -247,7 +247,7 @@ module Java::Math
       end
       index_bound = index + @int_len
       begin
-        ((index += 1) - 1)
+        index += 1
       end while (index < index_bound && (@value[index]).equal?(0))
       num_zeros = index - @offset
       @int_len -= num_zeros
@@ -273,7 +273,7 @@ module Java::Math
       i = 0
       while i < @int_len
         result[i] = @value[@offset + i]
-        ((i += 1) - 1)
+        i += 1
       end
       return result
     end
@@ -306,7 +306,7 @@ module Java::Math
       i = 0
       while i < len
         @value[i] = val.attr_value[val.attr_offset + i]
-        ((i += 1) - 1)
+        i += 1
       end
       @int_len = len
       @offset = 0
@@ -323,7 +323,7 @@ module Java::Math
       i = 0
       while i < len
         @value[i] = val[i]
-        ((i += 1) - 1)
+        i += 1
       end
       @int_len = len
       @offset = 0
@@ -390,7 +390,7 @@ module Java::Math
       bits_in_high_word = BigInteger.bit_len(@value[@offset])
       if (n_bits >= bits_in_high_word)
         self.primitive_left_shift(32 - n_bits)
-        ((@int_len -= 1) + 1)
+        @int_len -= 1
       else
         primitive_right_shift(n_bits)
       end
@@ -416,7 +416,7 @@ module Java::Math
       end
       new_len = @int_len + n_ints + 1
       if (n_bits <= (32 - bits_in_high_word))
-        ((new_len -= 1) + 1)
+        new_len -= 1
       end
       if (@value.attr_length < new_len)
         # The array must grow
@@ -424,7 +424,7 @@ module Java::Math
         i = 0
         while i < @int_len
           result[i] = @value[@offset + i]
-          ((i += 1) - 1)
+          i += 1
         end
         set_value(result, new_len)
       else
@@ -433,19 +433,19 @@ module Java::Math
           i = 0
           while i < new_len - @int_len
             @value[@offset + @int_len + i] = 0
-            ((i += 1) - 1)
+            i += 1
           end
         else
           # Must use space on left
           i = 0
           while i < @int_len
             @value[i] = @value[@offset + i]
-            ((i += 1) - 1)
+            i += 1
           end
           i_ = @int_len
           while i_ < new_len
             @value[i_] = 0
-            ((i_ += 1) - 1)
+            i_ += 1
           end
           @offset = 0
         end
@@ -472,7 +472,7 @@ module Java::Math
         sum = (a[j] & LONG_MASK) + (result[j + offset] & LONG_MASK) + carry
         result[j + offset] = RJava.cast_to_int(sum)
         carry = sum >> 32
-        ((j -= 1) + 1)
+        j -= 1
       end
       return RJava.cast_to_int(carry)
     end
@@ -491,7 +491,7 @@ module Java::Math
         difference = q[offset] - product
         q[((offset -= 1) + 1)] = RJava.cast_to_int(difference)
         carry = (product >> 32) + (((difference & LONG_MASK) > (((~RJava.cast_to_int(product)) & LONG_MASK))) ? 1 : 0)
-        ((j -= 1) + 1)
+        j -= 1
       end
       return RJava.cast_to_int(carry)
     end
@@ -509,7 +509,7 @@ module Java::Math
         b = c
         c = val[i - 1]
         val[i] = (c << n2) | (b >> n)
-        ((i -= 1) + 1)
+        i -= 1
       end
       val[@offset] >>= n
     end
@@ -528,7 +528,7 @@ module Java::Math
         b = c
         c = val[i + 1]
         val[i] = (b << n) | (c >> n2)
-        ((i += 1) - 1)
+        i += 1
       end
       val[@offset + @int_len - 1] <<= n
     end
@@ -546,31 +546,31 @@ module Java::Math
       sum = 0
       # Add common parts of both numbers
       while (x > 0 && y > 0)
-        ((x -= 1) + 1)
-        ((y -= 1) + 1)
+        x -= 1
+        y -= 1
         sum = (@value[x + @offset] & LONG_MASK) + (addend.attr_value[y + addend.attr_offset] & LONG_MASK) + (sum >> 32)
         result[((rstart -= 1) + 1)] = RJava.cast_to_int(sum)
       end
       # Add remainder of the longer number
       while (x > 0)
-        ((x -= 1) + 1)
+        x -= 1
         sum = (@value[x + @offset] & LONG_MASK) + (sum >> 32)
         result[((rstart -= 1) + 1)] = RJava.cast_to_int(sum)
       end
       while (y > 0)
-        ((y -= 1) + 1)
+        y -= 1
         sum = (addend.attr_value[y + addend.attr_offset] & LONG_MASK) + (sum >> 32)
         result[((rstart -= 1) + 1)] = RJava.cast_to_int(sum)
       end
       if ((sum >> 32) > 0)
         # Result must grow in length
-        ((result_len += 1) - 1)
+        result_len += 1
         if (result.attr_length < result_len)
           temp = Array.typed(::Java::Int).new(result_len) { 0 }
           i = result_len - 1
           while i > 0
             temp[i] = result[i - 1]
-            ((i -= 1) + 1)
+            i -= 1
           end
           temp[0] = 1
           result = temp
@@ -609,14 +609,14 @@ module Java::Math
       rstart = result.attr_length - 1
       # Subtract common parts of both numbers
       while (y > 0)
-        ((x -= 1) + 1)
-        ((y -= 1) + 1)
+        x -= 1
+        y -= 1
         diff = (a.attr_value[x + a.attr_offset] & LONG_MASK) - (b.attr_value[y + b.attr_offset] & LONG_MASK) - (RJava.cast_to_int(-(diff >> 32)))
         result[((rstart -= 1) + 1)] = RJava.cast_to_int(diff)
       end
       # Subtract remainder of longer number
       while (x > 0)
-        ((x -= 1) + 1)
+        x -= 1
         diff = (a.attr_value[x + a.attr_offset] & LONG_MASK) - (RJava.cast_to_int(-(diff >> 32)))
         result[((rstart -= 1) + 1)] = RJava.cast_to_int(diff)
       end
@@ -647,14 +647,14 @@ module Java::Math
       y = b.attr_int_len
       # Subtract common parts of both numbers
       while (y > 0)
-        ((x -= 1) + 1)
-        ((y -= 1) + 1)
+        x -= 1
+        y -= 1
         diff = (a.attr_value[a.attr_offset + x] & LONG_MASK) - (b.attr_value[b.attr_offset + y] & LONG_MASK) - (RJava.cast_to_int(-(diff >> 32)))
         a.attr_value[a.attr_offset + x] = RJava.cast_to_int(diff)
       end
       # Subtract remainder of longer number
       while (x > 0)
-        ((x -= 1) + 1)
+        x -= 1
         diff = (a.attr_value[a.attr_offset + x] & LONG_MASK) - (RJava.cast_to_int(-(diff >> 32)))
         a.attr_value[a.attr_offset + x] = RJava.cast_to_int(diff)
       end
@@ -683,8 +683,8 @@ module Java::Math
         product = (y.attr_value[j + y.attr_offset] & LONG_MASK) * (@value[x_len - 1 + @offset] & LONG_MASK) + carry
         z.attr_value[k] = RJava.cast_to_int(product)
         carry = product >> 32
-        ((j -= 1) + 1)
-        ((k -= 1) + 1)
+        j -= 1
+        k -= 1
       end
       z.attr_value[x_len - 1] = RJava.cast_to_int(carry)
       # Perform the multiplication word by word
@@ -697,11 +697,11 @@ module Java::Math
           product = (y.attr_value[j_ + y.attr_offset] & LONG_MASK) * (@value[i + @offset] & LONG_MASK) + (z.attr_value[k_] & LONG_MASK) + carry
           z.attr_value[k_] = RJava.cast_to_int(product)
           carry = product >> 32
-          ((j_ -= 1) + 1)
-          ((k_ -= 1) + 1)
+          j_ -= 1
+          k_ -= 1
         end
         z.attr_value[i] = RJava.cast_to_int(carry)
-        ((i -= 1) + 1)
+        i -= 1
       end
       # Remove leading zeros from product
       z.normalize
@@ -728,7 +728,7 @@ module Java::Math
         product = ylong * (@value[i + @offset] & LONG_MASK) + carry
         zval[i + 1] = RJava.cast_to_int(product)
         carry = product >> 32
-        ((i -= 1) + 1)
+        i -= 1
       end
       if ((carry).equal?(0))
         z.attr_offset = 1
@@ -844,7 +844,7 @@ module Java::Math
       i = 0
       while i < b.attr_int_len
         d[i] = b.attr_value[b.attr_offset + i]
-        ((i += 1) - 1)
+        i += 1
       end
       dlen = b.attr_int_len
       # Remainder starts as dividend with space for a leading zero
@@ -854,7 +854,7 @@ module Java::Math
       i_ = 0
       while i_ < @int_len
         rem.attr_value[i_ + 1] = @value[i_ + @offset]
-        ((i_ += 1) - 1)
+        i_ += 1
       end
       rem.attr_int_len = @int_len
       rem.attr_offset = 1
@@ -879,7 +879,7 @@ module Java::Math
       if ((rem.attr_int_len).equal?(nlen))
         rem.attr_offset = 0
         rem.attr_value[0] = 0
-        ((rem.attr_int_len += 1) - 1)
+        rem.attr_int_len += 1
       end
       dh = d[0]
       dh_long = dh & LONG_MASK
@@ -912,7 +912,7 @@ module Java::Math
           end
         end
         if ((qhat).equal?(0))
-          ((j += 1) - 1)
+          j += 1
           next
         end
         if (!skip_correction)
@@ -921,13 +921,13 @@ module Java::Math
           rs = ((qrem & LONG_MASK) << 32) | nl
           est_product = (dl & LONG_MASK) * (qhat & LONG_MASK)
           if (unsigned_long_compare(est_product, rs))
-            ((qhat -= 1) + 1)
+            qhat -= 1
             qrem = RJava.cast_to_int(((qrem & LONG_MASK) + dh_long))
             if ((qrem & LONG_MASK) >= dh_long)
               est_product = (dl & LONG_MASK) * (qhat & LONG_MASK)
               rs = ((qrem & LONG_MASK) << 32) | nl
               if (unsigned_long_compare(est_product, rs))
-                ((qhat -= 1) + 1)
+                qhat -= 1
               end
             end
           end
@@ -939,11 +939,11 @@ module Java::Math
         if (borrow + -0x80000000 > nh2)
           # D6 Add back
           divadd(d, rem.attr_value, j + 1 + rem.attr_offset)
-          ((qhat -= 1) + 1)
+          qhat -= 1
         end
         # Store the quotient digit
         q[j] = qhat
-        ((j += 1) - 1)
+        j += 1
       end # D7 loop on j
       # D8 Unnormalize
       if (shift > 0)
@@ -977,11 +977,11 @@ module Java::Math
       # Correct the approximation
       while (r < 0)
         r += d_long
-        ((q -= 1) + 1)
+        q -= 1
       end
       while (r >= d_long)
         r -= d_long
-        ((q += 1) - 1)
+        q += 1
       end
       # n - q*dlong == r && 0 <= r <dLong, hence we're done.
       result[0] = RJava.cast_to_int(q)
@@ -1278,8 +1278,8 @@ module Java::Math
           p.mul(v, temp)
           c.add(temp)
           # c = c / 2^j
-          ((c.attr_int_len -= 1) + 1)
-          ((i += 1) - 1)
+          c.attr_int_len -= 1
+          i += 1
         end
         num_bits = k & 0x1f
         if (!(num_bits).equal?(0))

@@ -80,7 +80,7 @@ module Sun::Security::Util
         j = 1
         while j < temp.attr_length
           @places[j - 1] = temp[j]
-          ((j += 1) - 1)
+          j += 1
         end
       end
     end
@@ -128,7 +128,7 @@ module Sun::Security::Util
       i = 0
       while i < @places.attr_length
         retval = (retval << 8) + (RJava.cast_to_int(@places[i]) & 0xff)
-        ((i += 1) - 1)
+        i += 1
       end
       return retval
     end
@@ -181,7 +181,7 @@ module Sun::Security::Util
             buf.append(Character.new(?\s.ord))
           end
         end # space between words
-        ((i += 1) - 1)
+        i += 1
       end
       return buf.to_s
     end
@@ -215,7 +215,7 @@ module Sun::Security::Util
         if (!(@places[i]).equal?(other_places[i]))
           return false
         end
-        ((i += 1) - 1)
+        i += 1
       end
       return true
     end

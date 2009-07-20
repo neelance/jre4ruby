@@ -64,7 +64,7 @@ module Sun::Misc
         else
           @value = (@value << 1) + b
         end
-        ((count -= 1) + 1)
+        count -= 1
       end
       @value = @value & 0xffff
       return

@@ -183,7 +183,7 @@ module Sun::Security::Provider
           i = 0
           while i < @state.attr_length
             @state[i] = 0
-            ((i += 1) - 1)
+            i += 1
           end
         end
         @state = @digest.digest(seed)
@@ -209,11 +209,11 @@ module Sun::Security::Provider
           state[i] = t
           # High 8 bits are carry. Store for next iteration.
           last = v >> 8
-          ((i += 1) - 1)
+          i += 1
         end
         # Make sure at least one bit changes!
         if (!zf)
-          ((state[0] += 1) - 1)
+          state[0] += 1
         end
       end
     }
@@ -246,7 +246,7 @@ module Sun::Security::Provider
           while i < todo
             result[i] = output[r]
             output[((r += 1) - 1)] = 0
-            ((i += 1) - 1)
+            i += 1
           end
           @rem_count += todo
           index += todo
@@ -264,7 +264,7 @@ module Sun::Security::Provider
           while i < todo
             result[((index += 1) - 1)] = output[i]
             output[i] = 0
-            ((i += 1) - 1)
+            i += 1
           end
           @rem_count += todo
         end

@@ -593,7 +593,7 @@ module Java::Lang
         rescue ClassFormatError => cfe2
           # If ClassFormatError occurs, try next transformer
         end
-        ((i += 1) - 1)
+        i += 1
       end
       # Rethrow original ClassFormatError if unable to transform
       # bytecode to well-formed
@@ -867,12 +867,12 @@ module Java::Lang
             match = true
             break
           end
-          ((j += 1) - 1)
+          j += 1
         end
         if (!match)
           return false
         end
-        ((i += 1) - 1)
+        i += 1
       end
       # now do the same for pcerts
       i_ = 0
@@ -884,12 +884,12 @@ module Java::Lang
             match = true
             break
           end
-          ((j += 1) - 1)
+          j += 1
         end
         if (!match)
           return false
         end
-        ((i_ += 1) - 1)
+        i_ += 1
       end
       return true
     end
@@ -1588,7 +1588,7 @@ module Java::Lang
           if ((map.get(pkg_name)).nil?)
             map.put(pkg_name, pkgs[i])
           end
-          ((i += 1) - 1)
+          i += 1
         end
       end
       return map.values.to_array(Array.typed(Package).new(map.size) { nil })
@@ -1702,7 +1702,7 @@ module Java::Lang
                   self.attr_loaded_library_names.remove_element_at(i)
                   break
                 end
-                ((i += 1) - 1)
+                i += 1
               end
               # unload the library.
               ClassLoader.attr_native_library_context.push(self)
@@ -1830,7 +1830,7 @@ module Java::Lang
         i = ldpath.index_of(ps)
         n = 0
         while (i >= 0)
-          ((n += 1) - 1)
+          n += 1
           i = ldpath.index_of(ps, i + 1)
         end
         # allocate the array of paths - n :'s = n + 1 path elements
@@ -1886,7 +1886,7 @@ module Java::Lang
           if (load_library0(from_class, libfile))
             return
           end
-          ((i += 1) - 1)
+          i += 1
         end
         if (!(loader).nil?)
           i_ = 0
@@ -1895,7 +1895,7 @@ module Java::Lang
             if (load_library0(from_class, libfile))
               return
             end
-            ((i_ += 1) - 1)
+            i_ += 1
           end
         end
         # Oops, it failed
@@ -1941,7 +1941,7 @@ module Java::Lang
             if ((name == lib.attr_name))
               return true
             end
-            ((i += 1) - 1)
+            i += 1
           end
           synchronized((self.attr_loaded_library_names)) do
             if (self.attr_loaded_library_names.contains(name))
@@ -1969,7 +1969,7 @@ module Java::Lang
                   raise UnsatisfiedLinkError.new("Native Library " + name + " is being loaded in another classloader")
                 end
               end
-              ((i_ += 1) - 1)
+              i_ += 1
             end
             lib = NativeLibrary.new(from_class, name)
             self.attr_native_library_context.push(lib)
@@ -2001,7 +2001,7 @@ module Java::Lang
             if (!(entry).equal?(0))
               return entry
             end
-            ((i += 1) - 1)
+            i += 1
           end
         end
         return 0
@@ -2217,12 +2217,12 @@ module Java::Lang
       i = 0
       while i < directives.attr_classes.attr_length
         @class_assertion_status.put(directives.attr_classes[i], Boolean.value_of(directives.attr_class_enabled[i]))
-        ((i += 1) - 1)
+        i += 1
       end
       i_ = 0
       while i_ < directives.attr_packages.attr_length
         @package_assertion_status.put(directives.attr_packages[i_], Boolean.value_of(directives.attr_package_enabled[i_]))
-        ((i_ += 1) - 1)
+        i_ += 1
       end
       @default_assertion_status = directives.attr_deflt
     end

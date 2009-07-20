@@ -769,7 +769,7 @@ module Java::Io
           end
         end
         class_objs[i] = cl
-        ((i += 1) - 1)
+        i += 1
       end
       begin
         return Proxy.get_proxy_class(has_non_public_interface ? non_public_loader : latest_loader, class_objs)
@@ -1371,7 +1371,7 @@ module Java::Io
         @bin.read_byte
         handle_reset
       end
-      ((@depth += 1) - 1)
+      @depth += 1
       begin
         case (tc)
         when TC_NULL
@@ -1411,7 +1411,7 @@ module Java::Io
           raise StreamCorruptedException.new(String.format("invalid type code: %02X", tc))
         end
       ensure
-        ((@depth -= 1) + 1)
+        @depth -= 1
         @bin.set_block_data_mode(old_mode)
       end
     end
@@ -1547,7 +1547,7 @@ module Java::Io
       i = 0
       while i < num_ifaces
         ifaces[i] = @bin.read_utf
-        ((i += 1) - 1)
+        i += 1
       end
       cl = nil
       resolve_ex = nil
@@ -1645,7 +1645,7 @@ module Java::Io
         i = 0
         while i < len
           read_object0(false)
-          ((i += 1) - 1)
+          i += 1
         end
       else
         if (ccl.is_primitive)
@@ -1688,7 +1688,7 @@ module Java::Io
           while i < len
             oa[i] = read_object0(false)
             @handles.mark_dependency(array_handle, @pass_handle)
-            ((i += 1) - 1)
+            i += 1
           end
         end
       end
@@ -1860,7 +1860,7 @@ module Java::Io
             slot_desc.invoke_read_object_no_data(obj)
           end
         end
-        ((i += 1) - 1)
+        i += 1
       end
     end
     
@@ -1916,7 +1916,7 @@ module Java::Io
         if (!(f.get_field).nil?)
           @handles.mark_dependency(obj_handle, @pass_handle)
         end
-        ((i += 1) - 1)
+        i += 1
       end
       if (!(obj).nil?)
         desc.set_obj_field_values(obj, obj_vals)
@@ -2112,7 +2112,7 @@ module Java::Io
           while i < @obj_vals.attr_length
             @obj_vals[i] = read_object0(fields[num_prim_fields + i].is_unshared)
             @obj_handles[i] = self.attr_pass_handle
-            ((i += 1) - 1)
+            i += 1
           end
           self.attr_pass_handle = old_handle
         end
@@ -2327,7 +2327,7 @@ module Java::Io
               return @in.read(b, off, len)
             else
               b[((off += 1) - 1)] = @peekb
-              ((len -= 1) + 1)
+              len -= 1
               @peekb = -1
               n = @in.read(b, off, len)
               return (n >= 0) ? (n + 1) : 1
@@ -2355,8 +2355,8 @@ module Java::Io
           skipped = 0
           if (@peekb >= 0)
             @peekb = -1
-            ((skipped += 1) - 1)
-            ((n -= 1) + 1)
+            skipped += 1
+            n -= 1
           end
           return skipped + skip(n)
         end
@@ -3446,7 +3446,7 @@ module Java::Io
               i = 0
               while i < ndeps
                 mark_exception(dlist.get(i), ex)
-                ((i += 1) - 1)
+                i += 1
               end
               @deps[handle] = nil
             end
@@ -3486,7 +3486,7 @@ module Java::Io
             else
               raise InternalError.new
             end
-            ((i += 1) - 1)
+            i += 1
           end
         end
         

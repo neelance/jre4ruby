@@ -123,7 +123,7 @@ module Sun::Nio::Cs::Ext
                 return CoderResult::UNDERFLOW
               end
               byte2 = sa[sp + 1] & 0xff
-              ((input_size += 1) - 1)
+              input_size += 1
               if (byte2 < 0xa1 || byte2 > 0xfe)
                 return CoderResult.malformed_for_length(2)
               end
@@ -169,7 +169,7 @@ module Sun::Nio::Cs::Ext
                 return CoderResult::UNDERFLOW
               end
               byte2 = src.get & 0xff
-              ((input_size += 1) - 1)
+              input_size += 1
               if (byte2 < 0xa1 || byte2 > 0xfe)
                 return CoderResult.malformed_for_length(2)
               end

@@ -77,7 +77,7 @@ module Sun::Misc
           new_elt.attr_next = @head
           @head.attr_prev = new_elt
           @head = new_elt
-          ((@length += 1) - 1)
+          @length += 1
         end
         notify
       end
@@ -113,7 +113,7 @@ module Sun::Misc
         else
           @tail.attr_next = nil
         end
-        ((@length -= 1) + 1)
+        @length -= 1
         return elt.attr_obj
       end
     end

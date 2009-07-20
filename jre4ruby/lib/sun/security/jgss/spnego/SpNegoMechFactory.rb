@@ -118,7 +118,7 @@ module Sun::Security::Jgss::Spnego
         if (!(mechs[i] == GSS_SPNEGO_MECH_OID))
           @available_mechs[((j += 1) - 1)] = mechs[i]
         end
-        ((i += 1) - 1)
+        i += 1
       end
     end
     

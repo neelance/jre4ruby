@@ -205,7 +205,7 @@ module Java::Net
           raise SocketException.new("Malformed reply from SOCKS server")
         end
         received += count
-        ((attempts += 1) - 1)
+        attempts += 1
       end
       return received
     end

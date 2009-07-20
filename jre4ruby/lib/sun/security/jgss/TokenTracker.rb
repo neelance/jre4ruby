@@ -129,7 +129,7 @@ module Sun::Security::Jgss
         if ((entry <=> number) <= 0)
           break
         end
-        ((i -= 1) + 1)
+        i -= 1
       end
       return i
     end
@@ -195,7 +195,7 @@ module Sun::Security::Jgss
         end
         # Optimize for the expected case:
         if ((number).equal?(@expected_number))
-          ((@expected_number += 1) - 1)
+          @expected_number += 1
         else
           # Next trivial case is to check for duplicate
           if (!(entry).nil? && entry.contains(number))
@@ -291,7 +291,7 @@ module Sun::Security::Jgss
             @list.remove(prev_entry_pos)
             # Index of any entry following this gets decremented
             if (@window_start_index > prev_entry_pos)
-              ((@window_start_index -= 1) + 1)
+              @window_start_index -= 1
             end
           end
           prepended = true
@@ -306,7 +306,7 @@ module Sun::Security::Jgss
       if (@list.size < MAX_INTERVALS)
         entry = Entry.new_local(self, number)
         if (prev_entry_pos < @window_start_index)
-          ((@window_start_index += 1) - 1)
+          @window_start_index += 1
         end # due to the insertion which will happen
       else
         # Delete the entry that marks the start of the current window.
@@ -322,7 +322,7 @@ module Sun::Security::Jgss
         entry.set_start(number)
         entry.set_end(number)
         if (prev_entry_pos >= old_window_start_index)
-          ((prev_entry_pos -= 1) + 1) # due to the deletion that just happened
+          prev_entry_pos -= 1 # due to the deletion that just happened
         else
           # If the start of the current window just moved from the
           # end of the list to the front of the list, and if the new
@@ -343,7 +343,7 @@ module Sun::Security::Jgss
             end
           else
             # due to the insertion which will happen:
-            ((@window_start_index += 1) - 1)
+            @window_start_index += 1
           end
         end
       end
@@ -366,7 +366,7 @@ module Sun::Security::Jgss
           buf.append(", ")
         end
         buf.append(@list.get(i).to_s)
-        ((i += 1) - 1)
+        i += 1
       end
       buf.append(Character.new(?}.ord))
       return buf.to_s

@@ -172,7 +172,7 @@ module Java::Lang
       if (@count < new_length)
         while @count < new_length
           @value[@count] = Character.new(?\0.ord)
-          ((@count += 1) - 1)
+          @count += 1
         end
       else
         @count = new_length
@@ -495,7 +495,7 @@ module Java::Lang
       i = start
       while i < end_
         @value[((@count += 1) - 1)] = s.char_at(i)
-        ((i += 1) - 1)
+        i += 1
       end
       @count = new_count
       return self
@@ -746,7 +746,7 @@ module Java::Lang
       end
       n = 1
       if (code_point >= Character::MIN_SUPPLEMENTARY_CODE_POINT)
-        ((n += 1) - 1)
+        n += 1
       end
       new_count = @count + n
       if (new_count > @value.attr_length)
@@ -782,7 +782,7 @@ module Java::Lang
         raise StringIndexOutOfBoundsException.new(index)
       end
       System.arraycopy(@value, index + 1, @value, index, @count - index - 1)
-      ((@count -= 1) + 1)
+      @count -= 1
       return self
     end
     
@@ -1131,7 +1131,7 @@ module Java::Lang
       i = start
       while i < end_
         @value[((dst_offset += 1) - 1)] = s.char_at(i)
-        ((i += 1) - 1)
+        i += 1
       end
       @count = new_count
       return self
@@ -1403,7 +1403,7 @@ module Java::Lang
               @value[i] = c2
             end
           end
-          ((i += 1) - 1)
+          i += 1
         end
       end
       return self

@@ -2492,7 +2492,7 @@ module Java::Util
             fs.print(((args).nil? ? nil : args[last]), l)
           when 0
             # ordinary index
-            ((lasto += 1) - 1)
+            lasto += 1
             last = lasto
             if (!(args).nil? && lasto > args.attr_length - 1)
               raise MissingFormatArgumentException.new(fs.to_s)
@@ -2509,7 +2509,7 @@ module Java::Util
         rescue IOException => x
           @last_exception = x
         end
-        ((i += 1) - 1)
+        i += 1
       end
       return self
     end
@@ -2553,7 +2553,7 @@ module Java::Util
           j = 0
           while j < m.group_count
             sa[j] = m.group(j + 1)
-            ((j += 1) - 1)
+            j += 1
           end
           # System.out.println();
           al.add(FormatSpecifier.new_local(self, self, sa))
@@ -3100,7 +3100,7 @@ module Java::Util
             i = 0
             while i < sp
               sb.append(Character.new(?\s.ord))
-              ((i += 1) - 1)
+              i += 1
             end
           end
           sb.append(s)
@@ -3108,7 +3108,7 @@ module Java::Util
             i_ = 0
             while i_ < sp
               sb.append(Character.new(?\s.ord))
-              ((i_ += 1) - 1)
+              i_ += 1
             end
           end
           return sb.to_s
@@ -3199,7 +3199,7 @@ module Java::Util
             if (@f.contains(bad_flags[i]))
               fail_mismatch(bad_flags[i], @c)
             end
-            ((i += 1) - 1)
+            i += 1
           end
         end
         
@@ -3326,7 +3326,7 @@ module Java::Util
                 i = 0
                 while i < @width - len
                   sb.append(Character.new(?0.ord))
-                  ((i += 1) - 1)
+                  i += 1
                 end
               end
               sb.append(s)
@@ -3343,7 +3343,7 @@ module Java::Util
                   i = 0
                   while i < @width - len
                     sb.append(Character.new(?0.ord))
-                    ((i += 1) - 1)
+                    i += 1
                   end
                 end
                 if (@f.contains(Flags::UPPERCASE))
@@ -3403,18 +3403,18 @@ module Java::Util
               s = v.to_s(8)
               len = s.length + sb.length
               if (neg && @f.contains(Flags::PARENTHESES))
-                ((len += 1) - 1)
+                len += 1
               end
               # apply ALTERNATE (radix indicator for octal) before ZERO_PAD
               if (@f.contains(Flags::ALTERNATE))
-                ((len += 1) - 1)
+                len += 1
                 sb.append(Character.new(?0.ord))
               end
               if (@f.contains(Flags::ZERO_PAD))
                 i = 0
                 while i < @width - len
                   sb.append(Character.new(?0.ord))
-                  ((i += 1) - 1)
+                  i += 1
                 end
               end
               sb.append(s)
@@ -3423,7 +3423,7 @@ module Java::Util
                 s = v.to_s(16)
                 len = s.length + sb.length
                 if (neg && @f.contains(Flags::PARENTHESES))
-                  ((len += 1) - 1)
+                  len += 1
                 end
                 # apply ALTERNATE (radix indicator for hex) before ZERO_PAD
                 if (@f.contains(Flags::ALTERNATE))
@@ -3434,7 +3434,7 @@ module Java::Util
                   i = 0
                   while i < @width - len
                     sb.append(Character.new(?0.ord))
-                    ((i += 1) - 1)
+                    i += 1
                   end
                 end
                 if (@f.contains(Flags::UPPERCASE))
@@ -3592,7 +3592,7 @@ module Java::Util
                     i = 0
                     while i < @width - s.length - 2
                       sb.append(Character.new(?0.ord))
-                      ((i += 1) - 1)
+                      i += 1
                     end
                   end
                   idx = s.index_of(Character.new(?p.ord))
@@ -3620,7 +3620,7 @@ module Java::Util
             if ((v[i]).equal?(Character.new(?e.ord)))
               break
             end
-            ((i += 1) - 1)
+            i += 1
           end
           tmp = CharArray.new(i)
           System.arraycopy(v, 0, tmp, 0, i)
@@ -3635,7 +3635,7 @@ module Java::Util
             if ((v[i]).equal?(Character.new(?e.ord)))
               break
             end
-            ((i -= 1) + 1)
+            i -= 1
           end
           if ((i).equal?(-1))
             return nil
@@ -3656,7 +3656,7 @@ module Java::Util
             if ((v[i]).equal?(Character.new(?..ord)))
               break
             end
-            ((i += 1) - 1)
+            i += 1
           end
           need_dot = false
           if ((i).equal?(v.attr_length))
@@ -3675,13 +3675,13 @@ module Java::Util
           start = v.attr_length
           if (need_dot)
             tmp[v.attr_length] = Character.new(?..ord)
-            ((start += 1) - 1)
+            start += 1
           end
           # Add zeros.
           j = start
           while j < tmp.attr_length
             tmp[j] = Character.new(?0.ord)
-            ((j += 1) - 1)
+            j += 1
           end
           return tmp
         end
@@ -3723,7 +3723,7 @@ module Java::Util
             round = !(((1 << (shift_distance - 1)) & rounding_bits)).equal?(0)
             sticky = shift_distance > 1 && !((~(1 << (shift_distance - 1)) & rounding_bits)).equal?(0)
             if ((least_zero && round && sticky) || (!least_zero && round))
-              ((new_signif += 1) - 1)
+              new_signif += 1
             end
             sign_bit = doppel & DoubleConsts::SIGN_BIT_MASK
             new_signif = sign_bit | (new_signif << shift_distance)
@@ -4008,7 +4008,7 @@ module Java::Util
                   @dot = true
                   while pad > 0
                     @mant.append(Character.new(?0.ord))
-                    ((pad -= 1) + 1)
+                    pad -= 1
                   end
                   @mant.append(coeff)
                 else
@@ -4024,7 +4024,7 @@ module Java::Util
                     i = 0
                     while i < -scale
                       @mant.append(Character.new(?0.ord))
-                      ((i += 1) - 1)
+                      i += 1
                     end
                     @scale = 0
                   end
@@ -4061,7 +4061,7 @@ module Java::Util
         def adjust_width(width_, f, neg)
           new_w = width_
           if (!(new_w).equal?(-1) && neg && f.contains(Flags::PARENTHESES))
-            ((new_w -= 1) + 1)
+            new_w -= 1
           end
           return new_w
         end
@@ -4087,7 +4087,7 @@ module Java::Util
             i = mant.attr_length
             while i < tmp.attr_length
               tmp[i] = Character.new(?0.ord)
-              ((i += 1) - 1)
+              i += 1
             end
           end
           return tmp
@@ -4330,7 +4330,7 @@ module Java::Util
               dot = j
               break
             end
-            ((j += 1) - 1)
+            j += 1
           end
           if (dot < len)
             if ((l).nil? || (l == Locale::US))
@@ -4358,7 +4358,7 @@ module Java::Util
               sb.append(dec_sep)
               # no more group separators after the decimal separator
               grp_sep = Character.new(?\0.ord)
-              ((j_ += 1) - 1)
+              j_ += 1
               next
             end
             c = value[j_]
@@ -4366,7 +4366,7 @@ module Java::Util
             if (!(grp_sep).equal?(Character.new(?\0.ord)) && !(j_).equal?(dot - 1) && (((dot - j_) % grp_size).equal?(1)))
               sb.append(grp_sep)
             end
-            ((j_ += 1) - 1)
+            j_ += 1
           end
           # apply zero padding
           len = sb.length
@@ -4374,7 +4374,7 @@ module Java::Util
             k = 0
             while k < width_ - len
               sb.insert(begin_, zero)
-              ((k += 1) - 1)
+              k += 1
             end
           end
           return sb
@@ -4483,7 +4483,7 @@ module Java::Util
                 raise DuplicateFormatFlagsException.new(v.to_s)
               end
               f.add(v)
-              ((i += 1) - 1)
+              i += 1
             end
             return f
           end

@@ -176,12 +176,12 @@ module Java::Util
       i = 0
       while i < 8
         msb = (msb << 8) | (data[i] & 0xff)
-        ((i += 1) - 1)
+        i += 1
       end
       i_ = 8
       while i_ < 16
         lsb = (lsb << 8) | (data[i_] & 0xff)
-        ((i_ += 1) - 1)
+        i_ += 1
       end
       @most_sig_bits = msb
       @least_sig_bits = lsb
@@ -284,7 +284,7 @@ module Java::Util
         i = 0
         while i < 5
           components[i] = "0x" + (components[i]).to_s
-          ((i += 1) - 1)
+          i += 1
         end
         most_sig_bits = Long.decode(components[0]).long_value
         most_sig_bits <<= 16

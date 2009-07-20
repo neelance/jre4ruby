@@ -702,7 +702,7 @@ module Sun::Misc
         if (Modifier.is_static(fields[i].get_modifiers))
           return static_field_base(fields[i])
         end
-        ((i += 1) - 1)
+        i += 1
       end
       return nil
     end

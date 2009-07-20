@@ -195,11 +195,11 @@ module Sun::Security::Util
         j = 0
         while j < 3
           if (((bytes[j]).equal?(0xff)) && (((bytes[j + 1] & 0x80)).equal?(0x80)))
-            ((start += 1) - 1)
+            start += 1
           else
             break
           end
-          ((j += 1) - 1)
+          j += 1
         end
       else
         if ((bytes[0]).equal?(0x0))
@@ -207,11 +207,11 @@ module Sun::Security::Util
           j = 0
           while j < 3
             if (((bytes[j]).equal?(0x0)) && (((bytes[j + 1] & 0x80)).equal?(0)))
-              ((start += 1) - 1)
+              start += 1
             else
               break
             end
-            ((j += 1) - 1)
+            j += 1
           end
         end
       end
@@ -219,7 +219,7 @@ module Sun::Security::Util
       k = start
       while k < 4
         write(bytes[k])
-        ((k += 1) - 1)
+        k += 1
       end
     end
     
@@ -290,7 +290,7 @@ module Sun::Security::Util
       i = 0
       while i < seq.attr_length
         seq[i].encode(bytes)
-        ((i += 1) - 1)
+        i += 1
       end
       write(DerValue.attr_tag_sequence, bytes)
     end
@@ -307,7 +307,7 @@ module Sun::Security::Util
       i = 0
       while i < set.attr_length
         set[i].encode(bytes)
-        ((i += 1) - 1)
+        i += 1
       end
       write(DerValue.attr_tag_set, bytes)
     end
@@ -377,21 +377,21 @@ module Sun::Security::Util
       while i < set.attr_length
         streams[i] = DerOutputStream.new
         set[i].der_encode(streams[i])
-        ((i += 1) - 1)
+        i += 1
       end
       # order the element encodings
       bufs = Array.typed(::Java::Byte).new(streams.attr_length) { 0 }
       i_ = 0
       while i_ < streams.attr_length
         bufs[i_] = streams[i_].to_byte_array
-        ((i_ += 1) - 1)
+        i_ += 1
       end
       Arrays.sort(bufs, order)
       bytes = DerOutputStream.new
       i__ = 0
       while i__ < streams.attr_length
         bytes.write(bufs[i__])
-        ((i__ += 1) - 1)
+        i__ += 1
       end
       write(tag, bytes)
     end

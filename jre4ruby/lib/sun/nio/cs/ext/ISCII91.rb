@@ -571,7 +571,7 @@ module Sun::Nio::Cs::Ext
                 da[((dp += 1) - 1)] = Character.new(0xfffd)
                 @context_char = self.class::INVALID_CHAR
                 @need_flushing = false
-                ((sp += 1) - 1)
+                sp += 1
                 next
               end
               catch(:break_case) do
@@ -583,12 +583,12 @@ module Sun::Nio::Cs::Ext
                     end
                     da[((dp += 1) - 1)] = @context_char
                     @context_char = current_char
-                    ((sp += 1) - 1)
+                    sp += 1
                     next
                   end
                   @context_char = current_char
                   @need_flushing = true
-                  ((sp += 1) - 1)
+                  sp += 1
                   next
                   if (dl - dp < 1)
                     return CoderResult::OVERFLOW
@@ -614,7 +614,7 @@ module Sun::Nio::Cs::Ext
                     if (@need_flushing)
                       da[((dp += 1) - 1)] = @context_char
                       @context_char = current_char
-                      ((sp += 1) - 1)
+                      sp += 1
                       next
                     end
                     da[((dp += 1) - 1)] = self.class::ZWJ_CHAR
@@ -622,7 +622,7 @@ module Sun::Nio::Cs::Ext
                     if (@need_flushing)
                       da[((dp += 1) - 1)] = @context_char
                       @context_char = current_char
-                      ((sp += 1) - 1)
+                      sp += 1
                       next
                     end
                     da[((dp += 1) - 1)] = NUKTA_CHAR
@@ -644,14 +644,14 @@ module Sun::Nio::Cs::Ext
                     if (@need_flushing)
                       da[((dp += 1) - 1)] = @context_char
                       @context_char = current_char
-                      ((sp += 1) - 1)
+                      sp += 1
                       next
                     end
                     da[((dp += 1) - 1)] = self.class::ZWJ_CHAR
                     if (@need_flushing)
                       da[((dp += 1) - 1)] = @context_char
                       @context_char = current_char
-                      ((sp += 1) - 1)
+                      sp += 1
                       next
                     end
                     da[((dp += 1) - 1)] = NUKTA_CHAR
@@ -666,14 +666,14 @@ module Sun::Nio::Cs::Ext
                     if (@need_flushing)
                       da[((dp += 1) - 1)] = @context_char
                       @context_char = current_char
-                      ((sp += 1) - 1)
+                      sp += 1
                       next
                     end
                     da[((dp += 1) - 1)] = self.class::ZWJ_CHAR
                     if (@need_flushing)
                       da[((dp += 1) - 1)] = @context_char
                       @context_char = current_char
-                      ((sp += 1) - 1)
+                      sp += 1
                       next
                     end
                     da[((dp += 1) - 1)] = NUKTA_CHAR
@@ -687,14 +687,14 @@ module Sun::Nio::Cs::Ext
                     if (@need_flushing)
                       da[((dp += 1) - 1)] = @context_char
                       @context_char = current_char
-                      ((sp += 1) - 1)
+                      sp += 1
                       next
                     end
                     da[((dp += 1) - 1)] = self.class::ZWJ_CHAR
                     if (@need_flushing)
                       da[((dp += 1) - 1)] = @context_char
                       @context_char = current_char
-                      ((sp += 1) - 1)
+                      sp += 1
                       next
                     end
                     da[((dp += 1) - 1)] = NUKTA_CHAR
@@ -707,14 +707,14 @@ module Sun::Nio::Cs::Ext
                     if (@need_flushing)
                       da[((dp += 1) - 1)] = @context_char
                       @context_char = current_char
-                      ((sp += 1) - 1)
+                      sp += 1
                       next
                     end
                     da[((dp += 1) - 1)] = self.class::ZWJ_CHAR
                     if (@need_flushing)
                       da[((dp += 1) - 1)] = @context_char
                       @context_char = current_char
-                      ((sp += 1) - 1)
+                      sp += 1
                       next
                     end
                     da[((dp += 1) - 1)] = NUKTA_CHAR
@@ -726,14 +726,14 @@ module Sun::Nio::Cs::Ext
                     if (@need_flushing)
                       da[((dp += 1) - 1)] = @context_char
                       @context_char = current_char
-                      ((sp += 1) - 1)
+                      sp += 1
                       next
                     end
                     da[((dp += 1) - 1)] = self.class::ZWJ_CHAR
                     if (@need_flushing)
                       da[((dp += 1) - 1)] = @context_char
                       @context_char = current_char
-                      ((sp += 1) - 1)
+                      sp += 1
                       next
                     end
                     da[((dp += 1) - 1)] = NUKTA_CHAR
@@ -744,14 +744,14 @@ module Sun::Nio::Cs::Ext
                     if (@need_flushing)
                       da[((dp += 1) - 1)] = @context_char
                       @context_char = current_char
-                      ((sp += 1) - 1)
+                      sp += 1
                       next
                     end
                     da[((dp += 1) - 1)] = self.class::ZWJ_CHAR
                     if (@need_flushing)
                       da[((dp += 1) - 1)] = @context_char
                       @context_char = current_char
-                      ((sp += 1) - 1)
+                      sp += 1
                       next
                     end
                     da[((dp += 1) - 1)] = NUKTA_CHAR
@@ -761,14 +761,14 @@ module Sun::Nio::Cs::Ext
                     if (@need_flushing)
                       da[((dp += 1) - 1)] = @context_char
                       @context_char = current_char
-                      ((sp += 1) - 1)
+                      sp += 1
                       next
                     end
                     da[((dp += 1) - 1)] = self.class::ZWJ_CHAR
                     if (@need_flushing)
                       da[((dp += 1) - 1)] = @context_char
                       @context_char = current_char
-                      ((sp += 1) - 1)
+                      sp += 1
                       next
                     end
                     da[((dp += 1) - 1)] = NUKTA_CHAR
@@ -777,14 +777,14 @@ module Sun::Nio::Cs::Ext
                     if (@need_flushing)
                       da[((dp += 1) - 1)] = @context_char
                       @context_char = current_char
-                      ((sp += 1) - 1)
+                      sp += 1
                       next
                     end
                     da[((dp += 1) - 1)] = self.class::ZWJ_CHAR
                     if (@need_flushing)
                       da[((dp += 1) - 1)] = @context_char
                       @context_char = current_char
-                      ((sp += 1) - 1)
+                      sp += 1
                       next
                     end
                     da[((dp += 1) - 1)] = NUKTA_CHAR
@@ -792,14 +792,14 @@ module Sun::Nio::Cs::Ext
                     if (@need_flushing)
                       da[((dp += 1) - 1)] = @context_char
                       @context_char = current_char
-                      ((sp += 1) - 1)
+                      sp += 1
                       next
                     end
                     da[((dp += 1) - 1)] = self.class::ZWJ_CHAR
                     if (@need_flushing)
                       da[((dp += 1) - 1)] = @context_char
                       @context_char = current_char
-                      ((sp += 1) - 1)
+                      sp += 1
                       next
                     end
                     da[((dp += 1) - 1)] = NUKTA_CHAR
@@ -807,7 +807,7 @@ module Sun::Nio::Cs::Ext
                     if (@need_flushing)
                       da[((dp += 1) - 1)] = @context_char
                       @context_char = current_char
-                      ((sp += 1) - 1)
+                      sp += 1
                       next
                     end
                     da[((dp += 1) - 1)] = NUKTA_CHAR
@@ -819,7 +819,7 @@ module Sun::Nio::Cs::Ext
                   if (@need_flushing)
                     da[((dp += 1) - 1)] = @context_char
                     @context_char = current_char
-                    ((sp += 1) - 1)
+                    sp += 1
                     next
                   end
                   if ((@context_char).equal?(HALANT_CHAR))
@@ -834,7 +834,7 @@ module Sun::Nio::Cs::Ext
                     end
                     da[((dp += 1) - 1)] = @context_char
                     @context_char = current_char
-                    ((sp += 1) - 1)
+                    sp += 1
                     next
                   end
                   return CoderResult.unmappable_for_length(1)
@@ -845,7 +845,7 @@ module Sun::Nio::Cs::Ext
                   if (@need_flushing)
                     da[((dp += 1) - 1)] = @context_char
                     @context_char = current_char
-                    ((sp += 1) - 1)
+                    sp += 1
                     next
                   end
                   da[((dp += 1) - 1)] = current_char
@@ -854,7 +854,7 @@ module Sun::Nio::Cs::Ext
               # end switch
               @context_char = current_char
               @need_flushing = false
-              ((sp += 1) - 1)
+              sp += 1
             end
             return CoderResult::UNDERFLOW
           ensure
@@ -880,7 +880,7 @@ module Sun::Nio::Cs::Ext
                 dst.put(Character.new(0xfffd))
                 @context_char = self.class::INVALID_CHAR
                 @need_flushing = false
-                ((mark += 1) - 1)
+                mark += 1
                 next
               end
               catch(:break_case) do
@@ -892,12 +892,12 @@ module Sun::Nio::Cs::Ext
                     end
                     dst.put(@context_char)
                     @context_char = current_char
-                    ((mark += 1) - 1)
+                    mark += 1
                     next
                   end
                   @context_char = current_char
                   @need_flushing = true
-                  ((mark += 1) - 1)
+                  mark += 1
                   next
                   if (dst.remaining < 1)
                     return CoderResult::OVERFLOW
@@ -923,7 +923,7 @@ module Sun::Nio::Cs::Ext
                     if (@need_flushing)
                       dst.put(@context_char)
                       @context_char = current_char
-                      ((mark += 1) - 1)
+                      mark += 1
                       next
                     end
                     dst.put(self.class::ZWJ_CHAR)
@@ -931,7 +931,7 @@ module Sun::Nio::Cs::Ext
                     if (@need_flushing)
                       dst.put(@context_char)
                       @context_char = current_char
-                      ((mark += 1) - 1)
+                      mark += 1
                       next
                     end
                     dst.put(NUKTA_CHAR)
@@ -953,14 +953,14 @@ module Sun::Nio::Cs::Ext
                     if (@need_flushing)
                       dst.put(@context_char)
                       @context_char = current_char
-                      ((mark += 1) - 1)
+                      mark += 1
                       next
                     end
                     dst.put(self.class::ZWJ_CHAR)
                     if (@need_flushing)
                       dst.put(@context_char)
                       @context_char = current_char
-                      ((mark += 1) - 1)
+                      mark += 1
                       next
                     end
                     dst.put(NUKTA_CHAR)
@@ -975,14 +975,14 @@ module Sun::Nio::Cs::Ext
                     if (@need_flushing)
                       dst.put(@context_char)
                       @context_char = current_char
-                      ((mark += 1) - 1)
+                      mark += 1
                       next
                     end
                     dst.put(self.class::ZWJ_CHAR)
                     if (@need_flushing)
                       dst.put(@context_char)
                       @context_char = current_char
-                      ((mark += 1) - 1)
+                      mark += 1
                       next
                     end
                     dst.put(NUKTA_CHAR)
@@ -996,14 +996,14 @@ module Sun::Nio::Cs::Ext
                     if (@need_flushing)
                       dst.put(@context_char)
                       @context_char = current_char
-                      ((mark += 1) - 1)
+                      mark += 1
                       next
                     end
                     dst.put(self.class::ZWJ_CHAR)
                     if (@need_flushing)
                       dst.put(@context_char)
                       @context_char = current_char
-                      ((mark += 1) - 1)
+                      mark += 1
                       next
                     end
                     dst.put(NUKTA_CHAR)
@@ -1016,14 +1016,14 @@ module Sun::Nio::Cs::Ext
                     if (@need_flushing)
                       dst.put(@context_char)
                       @context_char = current_char
-                      ((mark += 1) - 1)
+                      mark += 1
                       next
                     end
                     dst.put(self.class::ZWJ_CHAR)
                     if (@need_flushing)
                       dst.put(@context_char)
                       @context_char = current_char
-                      ((mark += 1) - 1)
+                      mark += 1
                       next
                     end
                     dst.put(NUKTA_CHAR)
@@ -1035,14 +1035,14 @@ module Sun::Nio::Cs::Ext
                     if (@need_flushing)
                       dst.put(@context_char)
                       @context_char = current_char
-                      ((mark += 1) - 1)
+                      mark += 1
                       next
                     end
                     dst.put(self.class::ZWJ_CHAR)
                     if (@need_flushing)
                       dst.put(@context_char)
                       @context_char = current_char
-                      ((mark += 1) - 1)
+                      mark += 1
                       next
                     end
                     dst.put(NUKTA_CHAR)
@@ -1053,14 +1053,14 @@ module Sun::Nio::Cs::Ext
                     if (@need_flushing)
                       dst.put(@context_char)
                       @context_char = current_char
-                      ((mark += 1) - 1)
+                      mark += 1
                       next
                     end
                     dst.put(self.class::ZWJ_CHAR)
                     if (@need_flushing)
                       dst.put(@context_char)
                       @context_char = current_char
-                      ((mark += 1) - 1)
+                      mark += 1
                       next
                     end
                     dst.put(NUKTA_CHAR)
@@ -1070,14 +1070,14 @@ module Sun::Nio::Cs::Ext
                     if (@need_flushing)
                       dst.put(@context_char)
                       @context_char = current_char
-                      ((mark += 1) - 1)
+                      mark += 1
                       next
                     end
                     dst.put(self.class::ZWJ_CHAR)
                     if (@need_flushing)
                       dst.put(@context_char)
                       @context_char = current_char
-                      ((mark += 1) - 1)
+                      mark += 1
                       next
                     end
                     dst.put(NUKTA_CHAR)
@@ -1086,14 +1086,14 @@ module Sun::Nio::Cs::Ext
                     if (@need_flushing)
                       dst.put(@context_char)
                       @context_char = current_char
-                      ((mark += 1) - 1)
+                      mark += 1
                       next
                     end
                     dst.put(self.class::ZWJ_CHAR)
                     if (@need_flushing)
                       dst.put(@context_char)
                       @context_char = current_char
-                      ((mark += 1) - 1)
+                      mark += 1
                       next
                     end
                     dst.put(NUKTA_CHAR)
@@ -1101,14 +1101,14 @@ module Sun::Nio::Cs::Ext
                     if (@need_flushing)
                       dst.put(@context_char)
                       @context_char = current_char
-                      ((mark += 1) - 1)
+                      mark += 1
                       next
                     end
                     dst.put(self.class::ZWJ_CHAR)
                     if (@need_flushing)
                       dst.put(@context_char)
                       @context_char = current_char
-                      ((mark += 1) - 1)
+                      mark += 1
                       next
                     end
                     dst.put(NUKTA_CHAR)
@@ -1116,7 +1116,7 @@ module Sun::Nio::Cs::Ext
                     if (@need_flushing)
                       dst.put(@context_char)
                       @context_char = current_char
-                      ((mark += 1) - 1)
+                      mark += 1
                       next
                     end
                     dst.put(NUKTA_CHAR)
@@ -1128,7 +1128,7 @@ module Sun::Nio::Cs::Ext
                   if (@need_flushing)
                     dst.put(@context_char)
                     @context_char = current_char
-                    ((mark += 1) - 1)
+                    mark += 1
                     next
                   end
                   if ((@context_char).equal?(HALANT_CHAR))
@@ -1143,7 +1143,7 @@ module Sun::Nio::Cs::Ext
                     end
                     dst.put(@context_char)
                     @context_char = current_char
-                    ((mark += 1) - 1)
+                    mark += 1
                     next
                   end
                   return CoderResult.unmappable_for_length(1)
@@ -1154,7 +1154,7 @@ module Sun::Nio::Cs::Ext
                   if (@need_flushing)
                     dst.put(@context_char)
                     @context_char = current_char
-                    ((mark += 1) - 1)
+                    mark += 1
                     next
                   end
                   dst.put(current_char)
@@ -1163,7 +1163,7 @@ module Sun::Nio::Cs::Ext
               # end switch
               @context_char = current_char
               @need_flushing = false
-              ((mark += 1) - 1)
+              mark += 1
             end
             return CoderResult::UNDERFLOW
           ensure
@@ -1236,7 +1236,7 @@ module Sun::Nio::Cs::Ext
                   return CoderResult::OVERFLOW
                 end
                 da[((dp += 1) - 1)] = input_char
-                ((sp += 1) - 1)
+                sp += 1
                 next
               end
               # if inputChar == ZWJ replace it with halant
@@ -1272,7 +1272,7 @@ module Sun::Nio::Cs::Ext
                   da[((dp += 1) - 1)] = EncoderMappingTable[index]
                   da[((dp += 1) - 1)] = EncoderMappingTable[index + 1]
                 end
-                ((sp += 1) - 1)
+                sp += 1
               end
             end
             return CoderResult::UNDERFLOW
@@ -1295,7 +1295,7 @@ module Sun::Nio::Cs::Ext
                   return CoderResult::OVERFLOW
                 end
                 dst.put(input_char)
-                ((mark += 1) - 1)
+                mark += 1
                 next
               end
               # if inputChar == ZWJ replace it with halant
@@ -1332,7 +1332,7 @@ module Sun::Nio::Cs::Ext
                   dst.put(EncoderMappingTable[index + 1])
                 end
               end
-              ((mark += 1) - 1)
+              mark += 1
             end
             return CoderResult::UNDERFLOW
           ensure

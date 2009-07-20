@@ -187,12 +187,12 @@ module Sun::Security::Provider::Certpath
         i = 0
         while i < @issuer_name_hash.attr_length
           @myhash += @issuer_name_hash[i] * i
-          ((i += 1) - 1)
+          i += 1
         end
         i_ = 0
         while i_ < @issuer_key_hash.attr_length
           @myhash += @issuer_key_hash[i_] * i_
-          ((i_ += 1) - 1)
+          i_ += 1
         end
         @myhash += @cert_serial_number.get_number.hash_code
       end

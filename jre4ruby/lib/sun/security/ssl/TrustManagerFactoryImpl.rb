@@ -245,7 +245,7 @@ module Sun::Security::Ssl
             i = 0
             while i < passwd.attr_length
               passwd[i] = RJava.cast_to_char(0)
-              ((i += 1) - 1)
+              i += 1
             end
           end
         end

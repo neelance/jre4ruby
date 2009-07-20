@@ -178,7 +178,7 @@ module Sun::Nio::Cs::Ext
                 if (b2 < 0)
                   b2 += 256
                 end
-                ((input_size += 1) - 1)
+                input_size += 1
                 # Check validity of dbcs ebcdic byte pair values
                 if ((!(b1).equal?(0x40) || !(b2).equal?(0x40)) && (b2 < 0x41 || b2 > 0xfe))
                   return CoderResult.malformed_for_length(2)
@@ -248,7 +248,7 @@ module Sun::Nio::Cs::Ext
                 if (b2 < 0)
                   b2 += 256
                 end
-                ((input_size += 1) - 1)
+                input_size += 1
                 # Check validity of dbcs ebcdic byte pair values
                 if ((!(b1).equal?(0x40) || !(b2).equal?(0x40)) && (b2 < 0x41 || b2 > 0xfe))
                   return CoderResult.malformed_for_length(2)

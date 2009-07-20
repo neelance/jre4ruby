@@ -145,7 +145,7 @@ module Sun::Net::Www
             # end of a key
             @tab[i][0] = String.new(ca, beg, end_ - beg).to_lower_case
             in_key = false
-            ((end_ += 1) - 1)
+            end_ += 1
             beg = end_
           else
             if ((c).equal?(Character.new(?\".ord)))
@@ -153,20 +153,20 @@ module Sun::Net::Www
                 @tab[((i += 1) - 1)][1] = String.new(ca, beg, end_ - beg)
                 in_quote = false
                 begin
-                  ((end_ += 1) - 1)
+                  end_ += 1
                 end while (end_ < len && ((ca[end_]).equal?(Character.new(?\s.ord)) || (ca[end_]).equal?(Character.new(?,.ord))))
                 in_key = true
                 beg = end_
               else
                 in_quote = true
-                ((end_ += 1) - 1)
+                end_ += 1
                 beg = end_
               end
             else
               if ((c).equal?(Character.new(?\s.ord)) || (c).equal?(Character.new(?,.ord)))
                 # end key/val, of whatever we're in
                 if (in_quote)
-                  ((end_ += 1) - 1)
+                  end_ += 1
                   next
                 else
                   if (in_key)
@@ -176,12 +176,12 @@ module Sun::Net::Www
                   end
                 end
                 while (end_ < len && ((ca[end_]).equal?(Character.new(?\s.ord)) || (ca[end_]).equal?(Character.new(?,.ord))))
-                  ((end_ += 1) - 1)
+                  end_ += 1
                 end
                 in_key = true
                 beg = end_
               else
-                ((end_ += 1) - 1)
+                end_ += 1
               end
             end
           end
@@ -333,7 +333,7 @@ module Sun::Net::Www
         if (k.has_next)
           sbuf.append(",")
         end
-        ((i += 1) - 1)
+        i += 1
       end
       sbuf.append(" }")
       return String.new(sbuf)

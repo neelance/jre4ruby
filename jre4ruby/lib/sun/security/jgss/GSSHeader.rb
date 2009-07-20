@@ -268,7 +268,7 @@ module Sun::Security::Jgss
         while tmp > 0
           value <<= 8
           value += 0xff & in_.read
-          ((tmp -= 1) + 1)
+          tmp -= 1
         end
       end
       return value
@@ -336,7 +336,7 @@ module Sun::Security::Jgss
         sb.append(JavaInteger.to_hex_string(b1))
         sb.append(JavaInteger.to_hex_string(b2))
         sb.append(Character.new(?\s.ord))
-        ((i += 1) - 1)
+        i += 1
       end
       return sb.to_s
     end

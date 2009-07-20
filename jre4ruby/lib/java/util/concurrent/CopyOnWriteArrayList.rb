@@ -192,7 +192,7 @@ module Java::Util::Concurrent
             if ((elements[i]).nil?)
               return i
             end
-            ((i += 1) - 1)
+            i += 1
           end
         else
           i = index
@@ -200,7 +200,7 @@ module Java::Util::Concurrent
             if ((o == elements[i]))
               return i
             end
-            ((i += 1) - 1)
+            i += 1
           end
         end
         return -1
@@ -219,7 +219,7 @@ module Java::Util::Concurrent
             if ((elements[i]).nil?)
               return i
             end
-            ((i -= 1) + 1)
+            i -= 1
           end
         else
           i = index
@@ -227,7 +227,7 @@ module Java::Util::Concurrent
             if ((o == elements[i]))
               return i
             end
-            ((i -= 1) + 1)
+            i -= 1
           end
         end
         return -1
@@ -872,7 +872,7 @@ module Java::Util::Concurrent
       i = 0
       while i < len
         s.write_object(elements[i])
-        ((i += 1) - 1)
+        i += 1
       end
     end
     
@@ -891,7 +891,7 @@ module Java::Util::Concurrent
       i = 0
       while i < len
         elements[i] = s.read_object
-        ((i += 1) - 1)
+        i += 1
       end
       set_array(elements)
     end
@@ -1257,7 +1257,7 @@ module Java::Util::Concurrent
             end
             @l.add(index + @offset, element)
             @expected_array = @l.get_array
-            ((@size += 1) - 1)
+            @size += 1
           ensure
             lock_.unlock
           end
@@ -1286,7 +1286,7 @@ module Java::Util::Concurrent
             check_for_comodification
             result = @l.remove(index + @offset)
             @expected_array = @l.get_array
-            ((@size -= 1) + 1)
+            @size -= 1
             return result
           ensure
             lock_.unlock

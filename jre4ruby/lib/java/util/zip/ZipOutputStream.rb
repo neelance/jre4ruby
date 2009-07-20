@@ -547,7 +547,7 @@ module Java::Util::Zip
         while i < s.length
           ch = s.char_at(i)
           if (ch <= 0x7f)
-            ((count += 1) - 1)
+            count += 1
           else
             if (ch <= 0x7ff)
               count += 2
@@ -555,7 +555,7 @@ module Java::Util::Zip
               count += 3
             end
           end
-          ((i += 1) - 1)
+          i += 1
         end
         return count
       end
@@ -572,7 +572,7 @@ module Java::Util::Zip
         while i < len
           ch = c[i]
           if (ch <= 0x7f)
-            ((count += 1) - 1)
+            count += 1
           else
             if (ch <= 0x7ff)
               count += 2
@@ -580,7 +580,7 @@ module Java::Util::Zip
               count += 3
             end
           end
-          ((i += 1) - 1)
+          i += 1
         end
         # Now return the encoded bytes...
         b = Array.typed(::Java::Byte).new(count) { 0 }
@@ -600,7 +600,7 @@ module Java::Util::Zip
               b[((off += 1) - 1)] = ((ch & 0x3f) | 0x80)
             end
           end
-          ((i_ += 1) - 1)
+          i_ += 1
         end
         return b
       end

@@ -107,7 +107,7 @@ module Sun::Net::Www::Http
       if (size > 0)
         adjusted_size = size - header_size(size)
         if (adjusted_size + header_size(adjusted_size) < size)
-          ((adjusted_size += 1) - 1)
+          adjusted_size += 1
         end
         size = adjusted_size
       end

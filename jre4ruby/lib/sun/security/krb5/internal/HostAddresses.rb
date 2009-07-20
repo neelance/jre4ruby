@@ -106,7 +106,7 @@ module Sun::Security::Krb5::Internal
           else
             @addresses[i] = new_addresses[i].clone
           end
-          ((i += 1) - 1)
+          i += 1
         end
       end
     end
@@ -139,7 +139,7 @@ module Sun::Security::Krb5::Internal
       i = 0
       while i < addr.attr_length
         h_addrs[i] = HostAddress.new(addr[i])
-        ((i += 1) - 1)
+        i += 1
       end
       @addresses = h_addrs
     end
@@ -152,7 +152,7 @@ module Sun::Security::Krb5::Internal
         i = 0
         while i < @addresses.attr_length
           new_host_addresses.attr_addresses[i] = @addresses[i].clone
-          ((i += 1) - 1)
+          i += 1
         end
       end
       return new_host_addresses
@@ -166,7 +166,7 @@ module Sun::Security::Krb5::Internal
           if ((@addresses[i] == addr))
             return true
           end
-          ((i += 1) - 1)
+          i += 1
         end
       end
       return false
@@ -180,7 +180,7 @@ module Sun::Security::Krb5::Internal
           i = 0
           while i < @addresses.attr_length
             result = 37 * result + @addresses[i].hash_code
-            ((i += 1) - 1)
+            i += 1
           end
         end
         @hash_code = result
@@ -209,7 +209,7 @@ module Sun::Security::Krb5::Internal
           if (!(@addresses[i] == addrs.attr_addresses[i]))
             return false
           end
-          ((i += 1) - 1)
+          i += 1
         end
       end
       return true
@@ -251,7 +251,7 @@ module Sun::Security::Krb5::Internal
         i = 0
         while i < @addresses.attr_length
           bytes.write(@addresses[i].asn1_encode)
-          ((i += 1) - 1)
+          i += 1
         end
       end
       temp.write(DerValue.attr_tag_sequence, bytes)
@@ -299,7 +299,7 @@ module Sun::Security::Krb5::Internal
         cos.write16(@addresses[i].attr_addr_type)
         cos.write32(@addresses[i].attr_address.attr_length)
         cos.write(@addresses[i].attr_address, 0, @addresses[i].attr_address.attr_length)
-        ((i += 1) - 1)
+        i += 1
       end
     end
     
@@ -319,7 +319,7 @@ module Sun::Security::Krb5::Internal
           # Should not happen since IP address given
           return nil
         end
-        ((i += 1) - 1)
+        i += 1
       end
       ret_val = Array.typed(InetAddress).new(ip_addrs.size) { nil }
       return ip_addrs.to_array(ret_val)
@@ -339,7 +339,7 @@ module Sun::Security::Krb5::Internal
           i = 0
           while i < inet_addresses.attr_length
             h_addresses[i] = HostAddress.new(inet_addresses[i])
-            ((i += 1) - 1)
+            i += 1
           end
           if (self.attr_debug)
             System.out.println(">>> KrbKdcReq local addresses for " + hostname + " are: ")
@@ -352,7 +352,7 @@ module Sun::Security::Krb5::Internal
               if (inet_addresses[i_].is_a?(Inet6Address))
                 System.out.println("IPv6 address")
               end
-              ((i_ += 1) - 1)
+              i_ += 1
             end
           end
           return (HostAddresses.new(h_addresses))
@@ -376,7 +376,7 @@ module Sun::Security::Krb5::Internal
       i = 0
       while i < inet_addresses.attr_length
         @addresses[i] = HostAddress.new(inet_addresses[i])
-        ((i += 1) - 1)
+        i += 1
       end
     end
     

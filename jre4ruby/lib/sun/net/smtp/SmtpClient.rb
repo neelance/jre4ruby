@@ -99,10 +99,10 @@ module Sun::Net::Smtp
         c = s.char_at(pos)
         if (parendepth > 0)
           if ((c).equal?(Character.new(?(.ord)))
-            ((parendepth += 1) - 1)
+            parendepth += 1
           else
             if ((c).equal?(Character.new(?).ord)))
-              ((parendepth -= 1) + 1)
+              parendepth -= 1
             end
           end
           if ((parendepth).equal?(0))
@@ -114,7 +114,7 @@ module Sun::Net::Smtp
           end
         else
           if ((c).equal?(Character.new(?(.ord)))
-            ((parendepth += 1) - 1)
+            parendepth += 1
           else
             if ((c).equal?(Character.new(?<.ord)))
               st = lastnonsp = pos + 1
@@ -133,7 +133,7 @@ module Sun::Net::Smtp
                     lastnonsp = pos + 1
                   else
                     if ((st).equal?(pos))
-                      ((st += 1) - 1)
+                      st += 1
                     end
                   end
                 end
@@ -141,7 +141,7 @@ module Sun::Net::Smtp
             end
           end
         end
-        ((pos += 1) - 1)
+        pos += 1
       end
       if (lastnonsp > st)
         to_canonical(s.substring(st, lastnonsp))
@@ -345,7 +345,7 @@ module Sun::Net::Smtp
       i = 0
       while i < len
         write(s.char_at(i))
-        ((i += 1) - 1)
+        i += 1
       end
     end
     

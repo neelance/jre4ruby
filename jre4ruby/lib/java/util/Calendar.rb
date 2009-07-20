@@ -1487,11 +1487,11 @@ module Java::Util
         i = 0
         while i < strings.attr_length
           if ((strings[i].length).equal?(0))
-            ((i += 1) - 1)
+            i += 1
             next
           end
           names.put(strings[i], i)
-          ((i += 1) - 1)
+          i += 1
         end
         return names
       end
@@ -1569,7 +1569,7 @@ module Java::Util
         if (!(@stamp[i]).equal?(UNSET))
           mask |= 1 << i
         end
-        ((i += 1) - 1)
+        i += 1
       end
       return mask
     end
@@ -1592,7 +1592,7 @@ module Java::Util
         while i < @fields.attr_length
           @stamp[i] = COMPUTED
           @is_set[i] = true
-          ((i += 1) - 1)
+          i += 1
         end
         @are_fields_set = @are_all_fields_set = true
       else
@@ -1607,7 +1607,7 @@ module Java::Util
             end
           end
           field_mask >>= 1
-          ((i += 1) - 1)
+          i += 1
         end
       end
     end
@@ -1635,7 +1635,7 @@ module Java::Util
             @is_set[i] = false
           end
           field_mask >>= 1
-          ((i += 1) - 1)
+          i += 1
         end
       end
       # Some or all of the fields are in sync with the
@@ -2009,11 +2009,11 @@ module Java::Util
     def roll(field, amount)
       while (amount > 0)
         roll(field, true)
-        ((amount -= 1) + 1)
+        amount -= 1
       end
       while (amount < 0)
         roll(field, false)
-        ((amount += 1) - 1)
+        amount += 1
       end
     end
     
@@ -2260,7 +2260,7 @@ module Java::Util
           break
         else
           result = field_value
-          ((field_value -= 1) + 1)
+          field_value -= 1
         end
       end while (field_value >= end_value)
       return result
@@ -2313,7 +2313,7 @@ module Java::Util
           break
         else
           result = field_value
-          ((field_value += 1) - 1)
+          field_value += 1
         end
       end while (field_value <= end_value)
       return result
@@ -2334,7 +2334,7 @@ module Java::Util
           other.attr_fields[i] = @fields[i]
           other.attr_stamp[i] = @stamp[i]
           other.attr_is_set[i] = @is_set[i]
-          ((i += 1) - 1)
+          i += 1
         end
         other.attr_zone = @zone.clone
         return other
@@ -2470,7 +2470,7 @@ module Java::Util
           if (max_ < v)
             max_ = v
           end
-          ((i += 1) - 1)
+          i += 1
         end
         if (!(max_).equal?(min) && (min).equal?(JavaInteger::MAX_VALUE))
           break
@@ -2480,9 +2480,9 @@ module Java::Util
           if ((@stamp[i_]).equal?(min))
             @stamp[i_] = new_stamp
           end
-          ((i_ += 1) - 1)
+          i_ += 1
         end
-        ((new_stamp += 1) - 1)
+        new_stamp += 1
         if ((min).equal?(max_))
           break
         end

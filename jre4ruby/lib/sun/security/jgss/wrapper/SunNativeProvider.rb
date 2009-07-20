@@ -137,7 +137,7 @@ module Sun::Security::Jgss::Wrapper
               while i < mechs.attr_length
                 debug("Native MF for " + (mechs[i]).to_s)
                 map.put("GssApiMechanism." + (mechs[i]).to_s, MF_CLASS)
-                ((i += 1) - 1)
+                i += 1
               end
               return map
             end

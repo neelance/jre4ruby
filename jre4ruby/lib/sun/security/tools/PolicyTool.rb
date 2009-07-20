@@ -289,7 +289,7 @@ module Sun::Security::Tools
               source = Array.typed(Object).new([signers[i]])
               @warnings.add_element(form.format(source))
             end
-            ((i += 1) - 1)
+            i += 1
           end
         end
         # check to see if the Principals are valid
@@ -334,7 +334,7 @@ module Sun::Security::Tools
                 source = Array.typed(Object).new([signers[i]])
                 @warnings.add_element(form.format(source))
               end
-              ((i += 1) - 1)
+              i += 1
             end
           end
         end
@@ -492,7 +492,7 @@ module Sun::Security::Tools
         i = 0
         while i < @policy_entries.size
           entries[i] = @policy_entries.element_at(i)
-          ((i += 1) - 1)
+          i += 1
         end
         return entries
       end
@@ -526,7 +526,7 @@ module Sun::Security::Tools
       # first count the number of elements
       while (enum_.has_more_elements)
         enum_.next_element
-        ((num_aliases += 1) - 1)
+        num_aliases += 1
       end
       if (num_aliases > 0)
         # now copy them into an array
@@ -535,7 +535,7 @@ module Sun::Security::Tools
         enum_ = @key_store.aliases
         while (enum_.has_more_elements)
           aliases[num_aliases] = String.new(enum_.next_element)
-          ((num_aliases += 1) - 1)
+          num_aliases += 1
         end
       end
       return aliases
@@ -554,7 +554,7 @@ module Sun::Security::Tools
       while (comma_index >= 0)
         comma_index = signed_by.index_of(Character.new(?,.ord), signed_by_index)
         if (comma_index >= 0)
-          ((num_signers += 1) - 1)
+          num_signers += 1
           signed_by_index = comma_index + 1
         end
       end
@@ -566,7 +566,7 @@ module Sun::Security::Tools
         if ((comma_index = signed_by.index_of(Character.new(?,.ord), signed_by_index)) >= 0)
           # transfer signer and ignore trailing part of the string
           signers[signer_num] = signed_by.substring(signed_by_index, comma_index).trim
-          ((signer_num += 1) - 1)
+          signer_num += 1
           signed_by_index = comma_index + 1
         else
           # we are at the end of the string -- transfer signer
@@ -667,7 +667,7 @@ module Sun::Security::Tools
             System.err.println(form.format(source))
             usage
           end
-          ((n += 1) - 1)
+          n += 1
         end
       end
       
@@ -1010,7 +1010,7 @@ module Sun::Security::Tools
           i = 0
           while i < entries.attr_length
             list.add(entries[i].header_to_string)
-            ((i += 1) - 1)
+            i += 1
           end
         end
         new_filename = get_component(MW_FILENAME_TEXTFIELD)
@@ -1089,7 +1089,7 @@ module Sun::Security::Tools
       i = 0
       while i < new_items.attr_length
         list.add(new_items[i])
-        ((i += 1) - 1)
+        i += 1
       end
     end
     
@@ -1166,7 +1166,7 @@ module Sun::Security::Tools
       while i < @tool.attr_warnings.size
         ta.append(@tool.attr_warnings.element_at(i))
         ta.append(PolicyTool.attr_rb.get_string("\n"))
-        ((i += 1) - 1)
+        i += 1
       end
       add_new_component(wd, ta, 0, 0, 0, 1, 1, 0.0, 0.0, GridBagConstraints::BOTH, BOTTOM_PADDING)
       ta.set_focusable(false)
@@ -1603,7 +1603,7 @@ module Sun::Security::Tools
               return next_
             end
           end
-          ((i += 1) - 1)
+          i += 1
         end
         return nil
       end
@@ -1624,7 +1624,7 @@ module Sun::Security::Tools
               return next_
             end
           end
-          ((i += 1) - 1)
+          i += 1
         end
         return nil
       end
@@ -1691,7 +1691,7 @@ module Sun::Security::Tools
           prin_string = nil
           next_prin = principals.get(i)
           prin_list.add_tagged_item(_principal_entry_to_user_friendly_string(next_prin), next_prin)
-          ((i += 1) - 1)
+          i += 1
         end
         # get permission list
         permissions = entries[list_index].get_grant_entry.attr_permission_entries
@@ -1700,7 +1700,7 @@ module Sun::Security::Tools
           perm_string = nil
           next_perm = permissions.element_at(i_)
           perm_list.add_tagged_item(ToolDialog._permission_entry_to_user_friendly_string(next_perm), next_perm)
-          ((i_ += 1) - 1)
+          i_ += 1
         end
       end
       # codebase label and textfield
@@ -1788,7 +1788,7 @@ module Sun::Security::Tools
       i = 0
       while i < prin_list.get_item_count
         prins.add(prin_list.get_object(i))
-        ((i += 1) - 1)
+        i += 1
       end
       ge.attr_principals = prins
       # get the new Permissions
@@ -1797,7 +1797,7 @@ module Sun::Security::Tools
       i_ = 0
       while i_ < perm_list.get_item_count
         perms.add_element(perm_list.get_object(i_))
-        ((i_ += 1) - 1)
+        i_ += 1
       end
       ge.attr_permission_entries = perms
       # construct a new PolicyEntry object
@@ -1884,7 +1884,7 @@ module Sun::Security::Tools
       while i < self.attr_prin_array.size
         next_ = self.attr_prin_array.get(i)
         choice.add(next_.attr_class)
-        ((i += 1) - 1)
+        i += 1
       end
       choice.add_item_listener(PrincipalTypeMenuListener.new(new_td))
       if (edit)
@@ -1954,7 +1954,7 @@ module Sun::Security::Tools
       while i < self.attr_perm_array.size
         next_ = self.attr_perm_array.get(i)
         choice.add(next_.attr_class)
-        ((i += 1) - 1)
+        i += 1
       end
       choice.add_item_listener(PermissionMenuListener.new(new_td))
       @tw.add_new_component(new_td, choice, PD_PERM_CHOICE, 0, 1, 1, 1, 0.0, 0.0, GridBagConstraints::BOTH, @tw.attr_lr_padding)
@@ -2101,7 +2101,7 @@ module Sun::Security::Tools
           rescue Exception => e
             @tw.display_error_dialog(self, e)
           end
-          ((i += 1) - 1)
+          i += 1
         end
       end
       return pppe
@@ -2137,7 +2137,7 @@ module Sun::Security::Tools
         else
           @tw.add_new_component(self, label, CRPE_LABEL2 + 2 + i, 1, 3 + i, 1, 1, 0.0, 0.0, GridBagConstraints::BOTH)
         end
-        ((i += 1) - 1)
+        i += 1
       end
       # add OK/CANCEL buttons in a new panel
       panel = Panel.new
@@ -2330,7 +2330,7 @@ module Sun::Security::Tools
             i = 0
             while i < entries.attr_length
               self.attr_list.add(entries[i].header_to_string)
-              ((i += 1) - 1)
+              i += 1
             end
           end
           tw.replace_policy_list(self.attr_list)
@@ -2388,7 +2388,7 @@ module Sun::Security::Tools
           i = 0
           while i < input_perm.attr_targets.attr_length
             names.add(input_perm.attr_targets[i])
-            ((i += 1) - 1)
+            i += 1
           end
         end
       end
@@ -2420,7 +2420,7 @@ module Sun::Security::Tools
           i = 0
           while i < input_perm.attr_actions.attr_length
             actions.add(input_perm.attr_actions[i])
-            ((i += 1) - 1)
+            i += 1
           end
         end
       end
@@ -2863,7 +2863,7 @@ module Sun::Security::Tools
               @tool.attr_warnings.add_element(form.format(source))
               @tw.display_status_dialog(@td, form.format(source))
             end
-            ((i += 1) - 1)
+            i += 1
           end
         end
         # add the entry
@@ -3976,7 +3976,7 @@ module Sun::Security::Tools
         i = 0
         while i < entries.attr_length
           list.add(entries[i].header_to_string)
-          ((i += 1) - 1)
+          i += 1
         end
       end
       @tw.replace_policy_list(list)

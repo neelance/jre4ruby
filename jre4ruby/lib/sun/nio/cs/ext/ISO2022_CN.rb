@@ -208,7 +208,7 @@ module Sun::Nio::Cs::Ext
                     return CoderResult::UNDERFLOW
                   end
                   b2 = src.get
-                  ((input_size += 1) - 1)
+                  input_size += 1
                   if (!((b2 & 0x80)).equal?(0))
                     return CoderResult.malformed_for_length(input_size)
                   end
@@ -217,7 +217,7 @@ module Sun::Nio::Cs::Ext
                       return CoderResult::UNDERFLOW
                     end
                     b3 = src.get
-                    ((input_size += 1) - 1)
+                    input_size += 1
                     if (!((b3 & 0x80)).equal?(0))
                       return CoderResult.malformed_for_length(input_size)
                     end
@@ -230,7 +230,7 @@ module Sun::Nio::Cs::Ext
                           return CoderResult::UNDERFLOW
                         end
                         b4 = src.get
-                        ((input_size += 1) - 1)
+                        input_size += 1
                         if ((b4).equal?(Character.new(?A.ord)))
                           # "$)A"
                           @current_sodesig = SODesigGB
@@ -248,7 +248,7 @@ module Sun::Nio::Cs::Ext
                             return CoderResult::UNDERFLOW
                           end
                           b4 = src.get
-                          ((input_size += 1) - 1)
+                          input_size += 1
                           if (!(b4).equal?(Character.new(?H.ord)))
                             # "$*H"
                             # SS2Desig -> CNS-P1
@@ -260,7 +260,7 @@ module Sun::Nio::Cs::Ext
                               return CoderResult::UNDERFLOW
                             end
                             b4 = src.get
-                            ((input_size += 1) - 1)
+                            input_size += 1
                             if (!(b4).equal?(Character.new(?I.ord)))
                               # "$+I"
                               # SS3Desig -> CNS-P2.
@@ -321,7 +321,7 @@ module Sun::Nio::Cs::Ext
                   return CoderResult::UNDERFLOW
                 end
                 b2 = src.get
-                ((input_size += 1) - 1)
+                input_size += 1
                 c = _sodecode(b1, b2, @current_sodesig)
                 if ((c).equal?(REPLACE_CHAR))
                   return CoderResult.unmappable_for_length(input_size)
@@ -366,7 +366,7 @@ module Sun::Nio::Cs::Ext
                     return CoderResult::UNDERFLOW
                   end
                   b2 = sa[sp + 1]
-                  ((input_size += 1) - 1)
+                  input_size += 1
                   if (!((b2 & 0x80)).equal?(0))
                     return CoderResult.malformed_for_length(input_size)
                   end
@@ -375,7 +375,7 @@ module Sun::Nio::Cs::Ext
                       return CoderResult::UNDERFLOW
                     end
                     b3 = sa[sp + 2]
-                    ((input_size += 1) - 1)
+                    input_size += 1
                     if (!((b3 & 0x80)).equal?(0))
                       return CoderResult.malformed_for_length(input_size)
                     end
@@ -392,7 +392,7 @@ module Sun::Nio::Cs::Ext
                           return CoderResult::UNDERFLOW
                         end
                         b4 = sa[sp + 3]
-                        ((input_size += 1) - 1)
+                        input_size += 1
                         if ((b4).equal?(Character.new(?A.ord)))
                           # "$)A"
                           @current_sodesig = SODesigGB
@@ -410,7 +410,7 @@ module Sun::Nio::Cs::Ext
                             return CoderResult::UNDERFLOW
                           end
                           b4 = sa[sp + 3]
-                          ((input_size += 1) - 1)
+                          input_size += 1
                           if (!(b4).equal?(Character.new(?H.ord)))
                             # "$*H"
                             return CoderResult.malformed_for_length(input_size)
@@ -421,7 +421,7 @@ module Sun::Nio::Cs::Ext
                               return CoderResult::UNDERFLOW
                             end
                             b4 = sa[sp + 3]
-                            ((input_size += 1) - 1)
+                            input_size += 1
                             if (!(b4).equal?(Character.new(?I.ord)))
                               # "$+I"
                               return CoderResult.malformed_for_length(input_size)
@@ -479,7 +479,7 @@ module Sun::Nio::Cs::Ext
                   return CoderResult::UNDERFLOW
                 end
                 b2 = sa[sp + 1]
-                ((input_size += 1) - 1)
+                input_size += 1
                 c = _sodecode(b1, b2, @current_sodesig)
                 if ((c).equal?(REPLACE_CHAR))
                   return CoderResult.unmappable_for_length(input_size)

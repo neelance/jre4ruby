@@ -470,7 +470,7 @@ module Java::Lang
         raise IllegalArgumentException.new("nanosecond timeout value out of range")
       end
       if (nanos >= 500000 || (!(nanos).equal?(0) && (timeout).equal?(0)))
-        ((timeout += 1) - 1)
+        timeout += 1
       end
       wait(timeout)
     end

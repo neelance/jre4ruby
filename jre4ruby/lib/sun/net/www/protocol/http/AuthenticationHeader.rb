@@ -246,7 +246,7 @@ module Sun::Net::Www::Protocol::Http
             end
             last_scheme_index = i
           end
-          ((i += 1) - 1)
+          i += 1
         end
         if (i > last_scheme_index)
           hpn = hp.subsequence(last_scheme_index, i)

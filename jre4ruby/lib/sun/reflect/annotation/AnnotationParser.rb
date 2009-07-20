@@ -93,7 +93,7 @@ module Sun::Reflect::Annotation
               end
             end
           end
-          ((i += 1) - 1)
+          i += 1
         end
         return result
       end
@@ -149,10 +149,10 @@ module Sun::Reflect::Annotation
                 annotations.add(a)
               end
             end
-            ((j += 1) - 1)
+            j += 1
           end
           result[i] = annotations.to_array(EMPTY_ANNOTATIONS_ARRAY)
-          ((i += 1) - 1)
+          i += 1
         end
         return result
       end
@@ -233,7 +233,7 @@ module Sun::Reflect::Annotation
             end
             member_values.put(member_name, value)
           end
-          ((i += 1) - 1)
+          i += 1
         end
         return annotation_for_map(annotation_class, member_values)
       end
@@ -485,7 +485,7 @@ module Sun::Reflect::Annotation
             skip_member_value(tag, buf)
             type_mismatch = true
           end
-          ((i += 1) - 1)
+          i += 1
         end
         return type_mismatch ? exception_proxy(tag) : result
       end
@@ -505,7 +505,7 @@ module Sun::Reflect::Annotation
             skip_member_value(tag, buf)
             type_mismatch = true
           end
-          ((i += 1) - 1)
+          i += 1
         end
         return type_mismatch ? exception_proxy(tag) : result
       end
@@ -525,7 +525,7 @@ module Sun::Reflect::Annotation
             skip_member_value(tag, buf)
             type_mismatch = true
           end
-          ((i += 1) - 1)
+          i += 1
         end
         return type_mismatch ? exception_proxy(tag) : result
       end
@@ -545,7 +545,7 @@ module Sun::Reflect::Annotation
             skip_member_value(tag, buf)
             type_mismatch = true
           end
-          ((i += 1) - 1)
+          i += 1
         end
         return type_mismatch ? exception_proxy(tag) : result
       end
@@ -565,7 +565,7 @@ module Sun::Reflect::Annotation
             skip_member_value(tag, buf)
             type_mismatch = true
           end
-          ((i += 1) - 1)
+          i += 1
         end
         return type_mismatch ? exception_proxy(tag) : result
       end
@@ -585,7 +585,7 @@ module Sun::Reflect::Annotation
             skip_member_value(tag, buf)
             type_mismatch = true
           end
-          ((i += 1) - 1)
+          i += 1
         end
         return type_mismatch ? exception_proxy(tag) : result
       end
@@ -605,7 +605,7 @@ module Sun::Reflect::Annotation
             skip_member_value(tag, buf)
             type_mismatch = true
           end
-          ((i += 1) - 1)
+          i += 1
         end
         return type_mismatch ? exception_proxy(tag) : result
       end
@@ -625,7 +625,7 @@ module Sun::Reflect::Annotation
             skip_member_value(tag, buf)
             type_mismatch = true
           end
-          ((i += 1) - 1)
+          i += 1
         end
         return type_mismatch ? exception_proxy(tag) : result
       end
@@ -645,7 +645,7 @@ module Sun::Reflect::Annotation
             skip_member_value(tag, buf)
             type_mismatch = true
           end
-          ((i += 1) - 1)
+          i += 1
         end
         return type_mismatch ? exception_proxy(tag) : result
       end
@@ -664,7 +664,7 @@ module Sun::Reflect::Annotation
             skip_member_value(tag, buf)
             type_mismatch = true
           end
-          ((i += 1) - 1)
+          i += 1
         end
         return type_mismatch ? exception_proxy(tag) : result
       end
@@ -683,7 +683,7 @@ module Sun::Reflect::Annotation
             skip_member_value(tag, buf)
             type_mismatch = true
           end
-          ((i += 1) - 1)
+          i += 1
         end
         return type_mismatch ? exception_proxy(tag) : result
       end
@@ -702,7 +702,7 @@ module Sun::Reflect::Annotation
             skip_member_value(tag, buf)
             type_mismatch = true
           end
-          ((i += 1) - 1)
+          i += 1
         end
         return type_mismatch ? exception_proxy(tag) : result
       end
@@ -731,7 +731,7 @@ module Sun::Reflect::Annotation
         while i < num_members
           buf.get_short # Skip memberNameIndex
           skip_member_value(buf)
-          ((i += 1) - 1)
+          i += 1
         end
       end
       
@@ -772,7 +772,7 @@ module Sun::Reflect::Annotation
         i = 0
         while i < length
           skip_member_value(buf)
-          ((i += 1) - 1)
+          i += 1
         end
       end
     }

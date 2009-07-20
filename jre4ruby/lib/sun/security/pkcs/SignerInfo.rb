@@ -279,12 +279,12 @@ module Sun::Security::Pkcs
               tmp_cert = pkcs_certs[start]
               pkcs_certs[start] = pkcs_certs[i]
               pkcs_certs[i] = tmp_cert
-              ((start += 1) - 1)
+              start += 1
             end
             match = true
             break
           else
-            ((i += 1) - 1)
+            i += 1
           end
         end
         if (!match)
@@ -334,7 +334,7 @@ module Sun::Security::Pkcs
             if (!(message_digest[i]).equal?(computed_message_digest[i]))
               return nil
             end
-            ((i += 1) - 1)
+            i += 1
           end
           # message digest attribute matched
           # digest of original data

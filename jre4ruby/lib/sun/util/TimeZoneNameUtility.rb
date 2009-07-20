@@ -215,7 +215,7 @@ module Sun::Util
               if (i >= 3 && (names[i]).nil?)
                 names[i] = names[i - 2]
               end
-              ((i += 1) - 1)
+              i += 1
             end
             if ((names[1]).nil?)
               # this id seems not localized by this provider

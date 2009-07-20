@@ -632,7 +632,7 @@ module Java::Text
       i = 0
       while i < l_weekdays.attr_length
         @weekdays[i + 1] = l_weekdays[i]
-        ((i += 1) - 1)
+        i += 1
       end
       s_weekdays = resource.get_string_array("DayAbbreviations")
       @short_weekdays = Array.typed(String).new(8) { nil }
@@ -640,7 +640,7 @@ module Java::Text
       i = 0
       while i < s_weekdays.attr_length
         @short_weekdays[i + 1] = s_weekdays[i]
-        ((i += 1) - 1)
+        i += 1
       end
       @ampms = resource.get_string_array("AmPmMarkers")
       @local_pattern_chars = (resource.get_string("DateTimePatternChars")).to_s
@@ -663,7 +663,7 @@ module Java::Text
         if (id.equals_ignore_case(zone_strings[index][0]))
           return index
         end
-        ((index += 1) - 1)
+        index += 1
       end
       return -1
     end

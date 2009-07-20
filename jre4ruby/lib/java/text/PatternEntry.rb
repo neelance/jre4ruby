@@ -306,7 +306,7 @@ module Java::Text
                   end
                 end
               end
-              ((@i += 1) - 1)
+              @i += 1
             end
           end
           if ((new_strength).equal?(UNSET))

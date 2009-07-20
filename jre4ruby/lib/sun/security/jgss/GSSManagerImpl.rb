@@ -133,7 +133,7 @@ module Sun::Security::Jgss
           # Squelch it and just skip over this mechanism
           GSSUtil.debug("Skip " + (mech).to_s + ": error retrieving supported name types")
         end
-        ((i += 1) - 1)
+        i += 1
       end
       # Trim the list if needed
       if (pos < ret_val.attr_length)
@@ -141,7 +141,7 @@ module Sun::Security::Jgss
         i_ = 0
         while i_ < pos
           temp[i_] = ret_val[i_]
-          ((i_ += 1) - 1)
+          i_ += 1
         end
         ret_val = temp
       end
@@ -270,7 +270,7 @@ module Sun::Security::Jgss
             break
           end
         end
-        ((i += 1) - 1)
+        i += 1
       end
       if ((result).nil?)
         raise GSSException.new(GSSException::UNAVAILABLE)

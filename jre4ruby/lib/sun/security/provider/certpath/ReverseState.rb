@@ -337,7 +337,7 @@ module Sun::Security::Provider::Certpath
       @explicit_policy = PolicyChecker.merge_explicit_policy(@explicit_policy, icert, false)
       @policy_mapping = PolicyChecker.merge_policy_mapping(@policy_mapping, icert)
       @inhibit_any_policy = PolicyChecker.merge_inhibit_any_policy(@inhibit_any_policy, icert)
-      ((@cert_index += 1) - 1)
+      @cert_index += 1
       # Update remaining CA certs
       @remaining_cacerts = ConstraintsChecker.merge_basic_constraints(cert, @remaining_cacerts)
       @init = false

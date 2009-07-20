@@ -126,10 +126,10 @@ module Java::Io
         if ((@push_back).equal?(Character.new(?\n.ord)))
           @push_back = -1
         end
-        ((@line_number += 1) - 1)
+        @line_number += 1
         return Character.new(?\n.ord)
       when Character.new(?\n.ord)
-        ((@line_number += 1) - 1)
+        @line_number += 1
         return Character.new(?\n.ord)
       end
       return c
@@ -178,7 +178,7 @@ module Java::Io
           if (!(b).nil?)
             b[off + i] = c
           end
-          ((i += 1) - 1)
+          i += 1
         end
       rescue IOException => ee
       end

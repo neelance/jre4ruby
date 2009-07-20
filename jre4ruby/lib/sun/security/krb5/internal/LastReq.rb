@@ -72,7 +72,7 @@ module Sun::Security::Krb5::Internal
           else
             @entry[i] = entries[i].clone
           end
-          ((i += 1) - 1)
+          i += 1
         end
       end
     end
@@ -109,7 +109,7 @@ module Sun::Security::Krb5::Internal
         i = 0
         while i < @entry.attr_length
           temp.write(@entry[i].asn1_encode)
-          ((i += 1) - 1)
+          i += 1
         end
         bytes.write(DerValue.attr_tag_sequence, temp)
         return bytes.to_byte_array

@@ -460,7 +460,7 @@ module Sun::Security::X509
           if (bad_cert.has_extensions)
             @version = 1
           end
-          ((i += 1) - 1)
+          i += 1
         end
       end
     end
@@ -705,7 +705,7 @@ module Sun::Security::X509
         iter = @revoked_certs.values.iterator
         while iter.has_next
           sb.append("\n[" + (i).to_s + "] " + (iter.next.to_s).to_s)
-          ((i += 1) - 1)
+          i += 1
         end
       end
       if (!(@extensions).nil?)
@@ -733,7 +733,7 @@ module Sun::Security::X509
           rescue Exception => e
             sb.append(", Error parsing this extension")
           end
-          ((i += 1) - 1)
+          i += 1
         end
       end
       if (!(@signature).nil?)
@@ -1272,7 +1272,7 @@ module Sun::Security::X509
           entry.set_certificate_issuer(crl_issuer, bad_cert_issuer)
           issuer_serial = X509IssuerSerial.new(bad_cert_issuer, entry.get_serial_number)
           @revoked_certs.put(issuer_serial, entry)
-          ((i += 1) - 1)
+          i += 1
         end
       end
       if ((der_strm.available).equal?(0))

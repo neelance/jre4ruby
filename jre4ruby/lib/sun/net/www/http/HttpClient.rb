@@ -546,7 +546,7 @@ module Sun::Net::Www::Http
         # will be reused
         return
       end
-      ((@keep_alive_connections -= 1) + 1)
+      @keep_alive_connections -= 1
       @poster = nil
       if (@keep_alive_connections > 0 && is_keeping_alive && !(self.attr_server_output.check_error))
         # This connection is keepingAlive && still valid.
@@ -959,7 +959,7 @@ module Sun::Net::Www::Http
         ind = 0
         ind = resp.index_of(Character.new(?\s.ord))
         while ((resp.char_at(ind)).equal?(Character.new(?\s.ord)))
-          ((ind += 1) - 1)
+          ind += 1
         end
         code = JavaInteger.parse_int(resp.substring(ind, ind + 3))
       rescue Exception => e

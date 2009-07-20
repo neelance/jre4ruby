@@ -135,7 +135,7 @@ module Sun::Net::Www::Protocol::Mailto
           if (!Character.is_whitespace(file.char_at(i)))
             allwhites = false
           end
-          ((i += 1) - 1)
+          i += 1
         end
         if (allwhites)
           nogood = true

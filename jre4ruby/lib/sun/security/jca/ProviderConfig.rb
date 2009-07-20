@@ -296,7 +296,7 @@ module Sun::Security::Jca
         end
         begin
           @is_loading = true
-          ((@tries += 1) - 1)
+          @tries += 1
           p = do_load_provider
         ensure
           @is_loading = false

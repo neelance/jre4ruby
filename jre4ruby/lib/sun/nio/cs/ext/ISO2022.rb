@@ -223,7 +223,7 @@ module Sun::Nio::Cs::Ext
                 rescue Exception => e
                 end
               end
-              ((i += 1) - 1)
+              i += 1
             end
           end
           return REPLACE_CHAR
@@ -239,13 +239,13 @@ module Sun::Nio::Cs::Ext
             if (!(desigs[i]).nil? && sl - sp >= desigs[i].attr_length)
               j = 0
               while (j < desigs[i].attr_length && (in_[sp + j]).equal?(desigs[i][j]))
-                ((j += 1) - 1)
+                j += 1
               end
               if ((j).equal?(desigs[i].attr_length))
                 return i
               end
             end
-            ((i += 1) - 1)
+            i += 1
           end
           return -1
         end
@@ -261,14 +261,14 @@ module Sun::Nio::Cs::Ext
               j = 0
               in_.mark
               while (j < desigs[i].attr_length && (in_.get).equal?(desigs[i][j]))
-                ((j += 1) - 1)
+                j += 1
               end
               if ((j).equal?(desigs[i].attr_length))
                 return i
               end
               in_.reset
             end
-            ((i += 1) - 1)
+            i += 1
           end
           return -1
         end
@@ -337,7 +337,7 @@ module Sun::Nio::Cs::Ext
                       return CoderResult::OVERFLOW
                     end
                     da[dp] = decode(b2, b3, self.class::SS2Flag)
-                    ((dp += 1) - 1)
+                    dp += 1
                     input_size = 4
                   when ISO_SS3_7
                     if (sl - sp < 4)
@@ -349,7 +349,7 @@ module Sun::Nio::Cs::Ext
                       return CoderResult::OVERFLOW
                     end
                     da[dp] = decode(b2, b3, self.class::SS3Flag)
-                    ((dp += 1) - 1)
+                    dp += 1
                     input_size = 4
                   else
                     return CoderResult.malformed_for_length(2)
@@ -773,9 +773,9 @@ module Sun::Nio::Cs::Ext
               i = 0
               while i < output_size
                 da[((dp += 1) - 1)] = output_byte[i]
-                ((i += 1) - 1)
+                i += 1
               end
-              ((sp += 1) - 1)
+              sp += 1
               @shiftout = @newshiftout
               @sodes_defined = @new_sodes_defined
               @ss2des_defined = @new_ss2des_defined
@@ -835,9 +835,9 @@ module Sun::Nio::Cs::Ext
               i = 0
               while i < output_size
                 dst.put(output_byte[i])
-                ((i += 1) - 1)
+                i += 1
               end
-              ((mark += 1) - 1)
+              mark += 1
               @shiftout = @newshiftout
               @sodes_defined = @new_sodes_defined
               @ss2des_defined = @new_ss2des_defined

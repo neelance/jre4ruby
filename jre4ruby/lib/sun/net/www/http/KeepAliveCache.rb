@@ -234,7 +234,7 @@ module Sun::Net::Www::Http
                 else
                   break
                 end
-                ((i += 1) - 1)
+                i += 1
               end
               v.sub_list(0, i).clear
               if ((v.size).equal?(0))

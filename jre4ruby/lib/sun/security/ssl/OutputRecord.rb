@@ -358,7 +358,7 @@ module Sun::Security::Ssl
         byte1 = v3msg[((v3cipher_spec_offset += 1) - 1)]
         byte2 = v3msg[((v3cipher_spec_offset += 1) - 1)]
         v2cipher_spec_len += _v3to_v2cipher_suite(byte1, byte2)
-        ((i += 1) - 1)
+        i += 1
       end
       # Build the first part of the V3 record header from the V2 one
       # that's now buffered up.  (Lengths are fixed up later).

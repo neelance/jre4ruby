@@ -170,7 +170,7 @@ module Sun::Security::Pkcs11
             @buffered = @mix_buffer.attr_length
           end
           b[((ofs += 1) - 1)] ^= @mix_buffer[@mix_buffer.attr_length - @buffered]
-          ((@buffered -= 1) + 1)
+          @buffered -= 1
         end
       end
     end

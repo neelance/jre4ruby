@@ -245,7 +245,7 @@ module Sun::Security::Krb5::Internal::Crypto
           if (!(EncryptionKey.find_key(answer[i], keys)).nil?)
             list.add(answer[i])
           end
-          ((i += 1) - 1)
+          i += 1
         end
         len = list.size
         if (len <= 0)
@@ -254,7 +254,7 @@ module Sun::Security::Krb5::Internal::Crypto
           while i_ < keys.attr_length
             keystr.append(to_s(keys[i_].get_etype))
             keystr.append(" ")
-            ((i_ += 1) - 1)
+            i_ += 1
           end
           raise KrbException.new("Do not have keys of types listed in " + config_name + " available; only have keys of following type: " + (keystr.to_s).to_s)
         else
@@ -262,7 +262,7 @@ module Sun::Security::Krb5::Internal::Crypto
           i_ = 0
           while i_ < len
             answer[i_] = list.get(i_)
-            ((i_ += 1) - 1)
+            i_ += 1
           end
           return answer
         end
@@ -275,7 +275,7 @@ module Sun::Security::Krb5::Internal::Crypto
           if ((e_type_const).equal?(config[i]))
             return true
           end
-          ((i += 1) - 1)
+          i += 1
         end
         return false
       end

@@ -286,7 +286,7 @@ module Sun::Security::Krb5
                     else
                       result += (((ob).element_at(i))).to_s + " "
                     end
-                    ((i += 1) - 1)
+                    i += 1
                   end
                   return result
                 end
@@ -342,7 +342,7 @@ module Sun::Security::Krb5
                       else
                         result += (((object).element_at(i))).to_s + " "
                       end
-                      ((i += 1) - 1)
+                      i += 1
                     end
                   else
                     result = (object).to_s
@@ -453,7 +453,7 @@ module Sun::Security::Krb5
               else
                 raise NumberFormatException.new("Invalid numerical format")
               end
-              ((i += 1) - 1)
+              i += 1
             end
           end
           if (value < 0)
@@ -482,7 +482,7 @@ module Sun::Security::Krb5
         j = 1
         while j < i
           result *= 16
-          ((j += 1) - 1)
+          j += 1
         end
       end
       return result
@@ -620,7 +620,7 @@ module Sun::Security::Krb5
               i = count - 1
               break
             end
-            ((count += 1) - 1)
+            count += 1
           end
         else
           if (line.equals_ignore_case("[capaths]"))
@@ -634,7 +634,7 @@ module Sun::Security::Krb5
                 i = count - 1
                 break
               end
-              ((count += 1) - 1)
+              count += 1
             end
           else
             if (line.starts_with("[") && line.ends_with("]"))
@@ -648,12 +648,12 @@ module Sun::Security::Krb5
                   i = count - 1
                   break
                 end
-                ((count += 1) - 1)
+                count += 1
               end
             end
           end
         end
-        ((i += 1) - 1)
+        i += 1
       end
       return table
     end
@@ -733,9 +733,9 @@ module Sun::Security::Krb5
             table.put(key, value)
             break
           end
-          ((j += 1) - 1)
+          j += 1
         end
-        ((i += 1) - 1)
+        i += 1
       end
       return table
     end
@@ -759,7 +759,7 @@ module Sun::Security::Krb5
               # get the key
               break
             end
-            ((j += 1) - 1)
+            j += 1
           end
           k = i + 1
           while k < end_
@@ -771,7 +771,7 @@ module Sun::Security::Krb5
                 found = true
                 break
               end
-              ((l += 1) - 1)
+              l += 1
             end
             if ((found).equal?(true))
               temp = parse_realm_field_ex(v, i + 1, k)
@@ -780,10 +780,10 @@ module Sun::Security::Krb5
               found = false
               break
             end
-            ((k += 1) - 1)
+            k += 1
           end
         end
-        ((i += 1) - 1)
+        i += 1
       end
       return table
     end
@@ -814,9 +814,9 @@ module Sun::Security::Krb5
             table.put(key, name_vector)
             break
           end
-          ((j += 1) - 1)
+          j += 1
         end
-        ((i += 1) - 1)
+        i += 1
       end
       return table
     end
@@ -830,7 +830,7 @@ module Sun::Security::Krb5
         if ((((v.element_at(i))) == key))
           exists_ = true
         end
-        ((i += 1) - 1)
+        i += 1
       end
       return exists_
     end
@@ -871,7 +871,7 @@ module Sun::Security::Krb5
                 i = 0
                 while i < v.size
                   System.out.println("\t" + key + " = " + (v.element_at(i)).to_s)
-                  ((i += 1) - 1)
+                  i += 1
                 end
               end
             end
@@ -904,7 +904,7 @@ module Sun::Security::Krb5
             delim = ","
             break
           end
-          ((j += 1) - 1)
+          j += 1
         end
         st = StringTokenizer.new(default_enctypes, delim)
         len = st.count_tokens
@@ -916,7 +916,7 @@ module Sun::Security::Krb5
           if ((!(type).equal?(-1)) && (EType.is_supported(type)))
             ls.add(type)
           end
-          ((i += 1) - 1)
+          i += 1
         end
         if ((ls.size).equal?(0))
           if (self.attr_debug)
@@ -928,7 +928,7 @@ module Sun::Security::Krb5
           i_ = 0
           while i_ < etype.attr_length
             etype[i_] = ls.get(i_)
-            ((i_ += 1) - 1)
+            i_ += 1
           end
         end
       end
@@ -937,7 +937,7 @@ module Sun::Security::Krb5
         i = 0
         while i < etype.attr_length
           System.out.print(" " + (etype[i]).to_s)
-          ((i += 1) - 1)
+          i += 1
         end
         System.out.println(".")
       end

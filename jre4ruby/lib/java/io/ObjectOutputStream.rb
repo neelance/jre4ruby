@@ -1172,7 +1172,7 @@ module Java::Io
     # Underlying writeObject/writeUnshared implementation.
     def write_object0(obj, unshared)
       old_mode = @bout.set_block_data_mode(false)
-      ((@depth += 1) - 1)
+      @depth += 1
       begin
         # handle previously written and non-replaceable objects
         h = 0
@@ -1262,7 +1262,7 @@ module Java::Io
           end
         end
       ensure
-        ((@depth -= 1) + 1)
+        @depth -= 1
         @bout.set_block_data_mode(old_mode)
       end
     end
@@ -1318,7 +1318,7 @@ module Java::Io
       i = 0
       while i < ifaces.attr_length
         @bout.write_utf(ifaces[i].get_name)
-        ((i += 1) - 1)
+        i += 1
       end
       @bout.set_block_data_mode(true)
       annotate_proxy_class(cl)
@@ -1439,7 +1439,7 @@ module Java::Io
                 @debug_info_stack.pop
               end
             end
-            ((i += 1) - 1)
+            i += 1
           end
         ensure
           if (ExtendedDebugInfo)
@@ -1550,7 +1550,7 @@ module Java::Io
         else
           default_write_fields(obj, slot_desc)
         end
-        ((i += 1) - 1)
+        i += 1
       end
     end
     
@@ -1583,7 +1583,7 @@ module Java::Io
             @debug_info_stack.pop
           end
         end
-        ((i += 1) - 1)
+        i += 1
       end
     end
     
@@ -1742,7 +1742,7 @@ module Java::Io
               raise IOException.new("cannot write unshared object")
             end
             out.write_object(@obj_vals[i])
-            ((i += 1) - 1)
+            i += 1
           end
         end
         
@@ -1764,7 +1764,7 @@ module Java::Io
                 self.attr_debug_info_stack.pop
               end
             end
-            ((i += 1) - 1)
+            i += 1
           end
         end
         
@@ -2257,7 +2257,7 @@ module Java::Io
             while cpos < csize
               c = @cbuf[cpos]
               if (c >= 0x1 && c <= 0x7f)
-                ((utflen += 1) - 1)
+                utflen += 1
               else
                 if (c > 0x7ff)
                   utflen += 3
@@ -2265,7 +2265,7 @@ module Java::Io
                   utflen += 2
                 end
               end
-              ((cpos += 1) - 1)
+              cpos += 1
             end
             off += csize
           end
@@ -2352,7 +2352,7 @@ module Java::Io
                   end
                 end
               end
-              ((cpos += 1) - 1)
+              cpos += 1
             end
             off += csize
           end
@@ -2492,7 +2492,7 @@ module Java::Io
           i = 0
           while i < @size
             insert(@objs[i], i)
-            ((i += 1) - 1)
+            i += 1
           end
         end
         
@@ -2632,7 +2632,7 @@ module Java::Io
             i = @stack.size
             while i > 0
               buffer.append(@stack.get(i - 1) + ((!(i).equal?(1)) ? "\n" : ""))
-              ((i -= 1) + 1)
+              i -= 1
             end
           end
           return buffer.to_s

@@ -141,7 +141,7 @@ module Sun::Security::Provider
       while t <= 79
         temp = @w[t - 3] ^ @w[t - 8] ^ @w[t - 14] ^ @w[t - 16]
         @w[t] = (temp << 1) | (temp >> 31)
-        ((t += 1) - 1)
+        t += 1
       end
       a = @state[0]
       b = @state[1]
@@ -157,7 +157,7 @@ module Sun::Security::Provider
         c = ((b << 30) | (b >> (32 - 30)))
         b = a
         a = temp
-        ((i += 1) - 1)
+        i += 1
       end
       # Round 2
       i_ = 20
@@ -168,7 +168,7 @@ module Sun::Security::Provider
         c = ((b << 30) | (b >> (32 - 30)))
         b = a
         a = temp
-        ((i_ += 1) - 1)
+        i_ += 1
       end
       # Round 3
       i__ = 40
@@ -179,7 +179,7 @@ module Sun::Security::Provider
         c = ((b << 30) | (b >> (32 - 30)))
         b = a
         a = temp
-        ((i__ += 1) - 1)
+        i__ += 1
       end
       # Round 4
       i___ = 60
@@ -190,7 +190,7 @@ module Sun::Security::Provider
         c = ((b << 30) | (b >> (32 - 30)))
         b = a
         a = temp
-        ((i___ += 1) - 1)
+        i___ += 1
       end
       @state[0] += a
       @state[1] += b

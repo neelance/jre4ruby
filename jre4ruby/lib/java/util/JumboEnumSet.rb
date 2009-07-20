@@ -75,7 +75,7 @@ module Java::Util
         i = from_index + 1
         while i < to_index
           @elements[i] = -1
-          ((i += 1) - 1)
+          i += 1
         end
         @elements[to_index] = -1 >> (63 - to.ordinal)
       end
@@ -87,7 +87,7 @@ module Java::Util
       i = 0
       while i < @elements.attr_length
         @elements[i] = -1
-        ((i += 1) - 1)
+        i += 1
       end
       @elements[@elements.attr_length - 1] >>= -self.attr_universe.attr_length
       @size = self.attr_universe.attr_length
@@ -98,7 +98,7 @@ module Java::Util
       i = 0
       while i < @elements.attr_length
         @elements[i] = ~@elements[i]
-        ((i += 1) - 1)
+        i += 1
       end
       @elements[@elements.attr_length - 1] &= (-1 >> -self.attr_universe.attr_length)
       @size = self.attr_universe.attr_length - @size
@@ -186,7 +186,7 @@ module Java::Util
             raise IllegalStateException.new
           end
           self.attr_elements[@last_returned_index] -= @last_returned
-          ((self.attr_size -= 1) + 1)
+          self.attr_size -= 1
           @last_returned = 0
         end
         
@@ -245,7 +245,7 @@ module Java::Util
       @elements[e_word_num] |= (1 << e_ordinal)
       result = (!(@elements[e_word_num]).equal?(old_elements))
       if (result)
-        ((@size += 1) - 1)
+        @size += 1
       end
       return result
     end
@@ -269,7 +269,7 @@ module Java::Util
       @elements[e_word_num] &= ~(1 << e_ordinal)
       result = (!(@elements[e_word_num]).equal?(old_elements))
       if (result)
-        ((@size -= 1) + 1)
+        @size -= 1
       end
       return result
     end
@@ -297,7 +297,7 @@ module Java::Util
         if (!((es.attr_elements[i] & ~@elements[i])).equal?(0))
           return false
         end
-        ((i += 1) - 1)
+        i += 1
       end
       return true
     end
@@ -324,7 +324,7 @@ module Java::Util
       i = 0
       while i < @elements.attr_length
         @elements[i] |= es.attr_elements[i]
-        ((i += 1) - 1)
+        i += 1
       end
       return recalculate_size
     end
@@ -347,7 +347,7 @@ module Java::Util
       i = 0
       while i < @elements.attr_length
         @elements[i] &= ~es.attr_elements[i]
-        ((i += 1) - 1)
+        i += 1
       end
       return recalculate_size
     end
@@ -372,7 +372,7 @@ module Java::Util
       i = 0
       while i < @elements.attr_length
         @elements[i] &= es.attr_elements[i]
-        ((i += 1) - 1)
+        i += 1
       end
       return recalculate_size
     end

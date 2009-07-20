@@ -305,35 +305,35 @@ module Java::Nio::Charset
         while i < n
           c = s.char_at(i)
           if (c >= Character.new(?A.ord) && c <= Character.new(?Z.ord))
-            ((i += 1) - 1)
+            i += 1
             next
           end
           if (c >= Character.new(?a.ord) && c <= Character.new(?z.ord))
-            ((i += 1) - 1)
+            i += 1
             next
           end
           if (c >= Character.new(?0.ord) && c <= Character.new(?9.ord))
-            ((i += 1) - 1)
+            i += 1
             next
           end
           if ((c).equal?(Character.new(?-.ord)) && !(i).equal?(0))
-            ((i += 1) - 1)
+            i += 1
             next
           end
           if ((c).equal?(Character.new(?:.ord)) && !(i).equal?(0))
-            ((i += 1) - 1)
+            i += 1
             next
           end
           if ((c).equal?(Character.new(?_.ord)) && !(i).equal?(0))
-            ((i += 1) - 1)
+            i += 1
             next
           end
           if ((c).equal?(Character.new(?..ord)) && !(i).equal?(0))
-            ((i += 1) - 1)
+            i += 1
             next
           end
           raise IllegalCharsetNameException.new(s)
-          ((i += 1) - 1)
+          i += 1
         end
       end
       
@@ -835,7 +835,7 @@ module Java::Nio::Charset
       i = 0
       while i < as.attr_length
         check_name(as[i])
-        ((i += 1) - 1)
+        i += 1
       end
       @name = canonical_name
       @aliases = as
@@ -862,7 +862,7 @@ module Java::Nio::Charset
       i = 0
       while i < n
         hs.add(@aliases[i])
-        ((i += 1) - 1)
+        i += 1
       end
       @alias_set = Collections.unmodifiable_set(hs)
       return @alias_set

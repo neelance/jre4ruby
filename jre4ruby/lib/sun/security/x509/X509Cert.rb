@@ -389,7 +389,7 @@ module Sun::Security::X509
         if (!(@signed_cert[i]).equal?(src.attr_signed_cert[i]))
           return false
         end
-        ((i += 1) - 1)
+        i += 1
       end
       return true
     end
@@ -655,7 +655,7 @@ module Sun::Security::X509
       i = 0
       while i < @signed_cert.attr_length
         retval += @signed_cert[i] * i
-        ((i += 1) - 1)
+        i += 1
       end
       return retval
     end

@@ -146,7 +146,7 @@ module Java::Text
       i = 0
       while i < data.attr_length
         @category_flags[i] = ((data[i]).equal?(1)) ? true : false
-        ((i += 1) - 1)
+        i += 1
       end
     end
     
@@ -475,7 +475,7 @@ module Java::Text
       i = 0
       while i < current_break_positions.size
         @cached_break_positions[i + 1] = (current_break_positions.element_at(i)).int_value
-        ((i += 1) - 1)
+        i += 1
       end
       @position_in_cache = 0
     end

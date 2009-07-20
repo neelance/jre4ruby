@@ -462,7 +462,7 @@ module Java::Lang
         if (has_all_permission)
           depth = -1
         else
-          ((depth -= 1) + 1)
+          depth -= 1
         end # make sure we don't include ourself
       end
       return depth
@@ -1535,7 +1535,7 @@ module Java::Lang
           check_permission(RuntimePermission.new("accessClassInPackage." + pkg))
           break # No need to continue; only need to check this once
         end
-        ((i += 1) - 1)
+        i += 1
       end
     end
     
@@ -1606,7 +1606,7 @@ module Java::Lang
           check_permission(RuntimePermission.new("defineClassInPackage." + pkg))
           break # No need to continue; only need to check this once
         end
-        ((i += 1) - 1)
+        i += 1
       end
     end
     

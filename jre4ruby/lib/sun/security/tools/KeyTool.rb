@@ -819,7 +819,7 @@ module Sun::Security::Tools
             end
           end
         end
-        ((i += 1) - 1)
+        i += 1
       end
       if (i < args.attr_length)
         form = MessageFormat.new(Rb.get_string("Usage error, <arg> is not a legal command"))
@@ -1048,7 +1048,7 @@ module Sun::Security::Tools
                     @store_pass = nil
                   end
                 end
-                ((count += 1) - 1)
+                count += 1
               end while (((@store_pass).nil?) && count < 3)
               if ((@store_pass).nil?)
                 System.err.println(Rb.get_string("Too many failures - try later"))
@@ -1423,7 +1423,7 @@ module Sun::Security::Tools
                 @passwords.add(pass_again)
                 if (!(Arrays == entered))
                   System.err.println(Rb.get_string("They don't match. Try again"))
-                  ((count += 1) - 1)
+                  count += 1
                   next
                 end
                 return entered
@@ -1431,7 +1431,7 @@ module Sun::Security::Tools
                 System.err.println(Rb.get_string("Key password is too short - must be at least 6 characters"))
               end
             end
-            ((count += 1) - 1)
+            count += 1
           end
           if ((count).equal?(3))
             if ((@command).equal?(KEYCLONE))
@@ -1717,7 +1717,7 @@ module Sun::Security::Tools
                     dump_cert(chain[i], out)
                   end
                 end
-                ((i += 1) - 1)
+                i += 1
               end
             else
               # Print the digest of the user cert only
@@ -1893,7 +1893,7 @@ module Sun::Security::Tools
         alias_ = e.next_element
         result = do_import_key_store_single(srckeystore, alias_)
         if ((result).equal?(1))
-          ((ok += 1) - 1)
+          ok += 1
           source = Array.typed(Object).new([alias_])
           form = MessageFormat.new(Rb.get_string("Entry for alias <alias> successfully imported."))
           System.err.println(form.format(source))
@@ -1972,7 +1972,7 @@ module Sun::Security::Tools
         if (i < (certs.attr_length - 1))
           out.println
         end
-        ((i += 1) - 1)
+        i += 1
       end
     end
     
@@ -2247,7 +2247,7 @@ module Sun::Security::Tools
           Arrays.fill(reentered, Character.new(?\s.ord))
           reentered = nil
         end
-        ((count += 1) - 1)
+        count += 1
       end
       raise Exception.new(Rb.get_string("Too many failures - try later"))
     end
@@ -2301,7 +2301,7 @@ module Sun::Security::Tools
         if ((key_pass).nil?)
           key_pass = other_key_pass
         end
-        ((count += 1) - 1)
+        count += 1
       end while (((key_pass).nil?) && count < 3)
       if ((key_pass).nil?)
         raise Exception.new(Rb.get_string("Too many failures - try later"))
@@ -2461,7 +2461,7 @@ module Sun::Security::Tools
         if (i < len - 1)
           buf.append(":")
         end
-        ((i += 1) - 1)
+        i += 1
       end
       return buf.to_s
     end
@@ -2597,7 +2597,7 @@ module Sun::Security::Tools
         if ((user_pub_key == reply_certs[i].get_public_key))
           break
         end
-        ((i += 1) - 1)
+        i += 1
       end
       if ((i).equal?(reply_certs.attr_length))
         form = MessageFormat.new(Rb.get_string("Certificate reply does not contain public key for <alias>"))
@@ -2624,12 +2624,12 @@ module Sun::Security::Tools
             issuer = (reply_certs[i]).get_issuer_dn
             break
           end
-          ((j += 1) - 1)
+          j += 1
         end
         if ((j).equal?(reply_certs.attr_length))
           raise Exception.new(Rb.get_string("Incomplete certificate chain in reply"))
         end
-        ((i += 1) - 1)
+        i += 1
       end
       # now verify each cert in the ordered chain
       i = 0
@@ -2640,7 +2640,7 @@ module Sun::Security::Tools
         rescue Exception => e
           raise Exception.new(Rb.get_string("Certificate chain in reply does not verify: ") + e.get_message)
         end
-        ((i += 1) - 1)
+        i += 1
       end
       if (@noprompt)
         return reply_certs
@@ -2738,8 +2738,8 @@ module Sun::Security::Tools
         i = chain.size - 1
         while i >= 0
           new_chain[j] = chain.element_at(i)
-          ((j += 1) - 1)
-          ((i -= 1) + 1)
+          j += 1
+          i -= 1
         end
         return new_chain
       else
@@ -2895,7 +2895,7 @@ module Sun::Security::Tools
                 if (ch < Character.new(?0.ord) || ch > Character.new(?9.ord))
                   break
                 end
-                ((i += 1) - 1)
+                i += 1
               end
               if ((i).equal?(start + 1))
                 raise ioe

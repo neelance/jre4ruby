@@ -141,7 +141,7 @@ module Sun::Security::Krb5::Internal
           else
             @p_adata[i] = new_p_adata[i].clone
           end
-          ((i += 1) - 1)
+          i += 1
         end
       end
       @crealm = new_crealm
@@ -247,7 +247,7 @@ module Sun::Security::Krb5::Internal
         i = 0
         while i < padata.attr_length
           @p_adata[i] = PAData.new(padata[i])
-          ((i += 1) - 1)
+          i += 1
         end
       else
         @p_adata = nil
@@ -279,7 +279,7 @@ module Sun::Security::Krb5::Internal
         i = 0
         while i < @p_adata.attr_length
           padata_stream.write(@p_adata[i].asn1_encode)
-          ((i += 1) - 1)
+          i += 1
         end
         temp = DerOutputStream.new
         temp.write(DerValue.attr_tag_sequence_of, padata_stream)

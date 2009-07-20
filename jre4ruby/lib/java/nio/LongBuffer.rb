@@ -573,7 +573,7 @@ module Java::Nio
       i = offset
       while i < end_
         dst[i] = get
-        ((i += 1) - 1)
+        i += 1
       end
       return self
     end
@@ -650,7 +650,7 @@ module Java::Nio
       i = 0
       while i < n
         put(src.get)
-        ((i += 1) - 1)
+        i += 1
       end
       return self
     end
@@ -713,7 +713,7 @@ module Java::Nio
       i = offset
       while i < end_
         self.put(src[i])
-        ((i += 1) - 1)
+        i += 1
       end
       return self
     end
@@ -898,7 +898,7 @@ module Java::Nio
       i = limit - 1
       while i >= p
         h = 31 * h + RJava.cast_to_int(get(i))
-        ((i -= 1) + 1)
+        i -= 1
       end
       return h
     end
@@ -947,14 +947,14 @@ module Java::Nio
         if (!(v1).equal?(v2))
           if ((!(v1).equal?(v1)) && (!(v2).equal?(v2)))
             # For float and double
-            ((i -= 1) + 1)
-            ((j -= 1) + 1)
+            i -= 1
+            j -= 1
             next
           end
           return false
         end
-        ((i -= 1) + 1)
-        ((j -= 1) + 1)
+        i -= 1
+        j -= 1
       end
       return true
     end
@@ -978,22 +978,22 @@ module Java::Nio
         v1 = self.get(i)
         v2 = that.get(j)
         if ((v1).equal?(v2))
-          ((i += 1) - 1)
-          ((j += 1) - 1)
+          i += 1
+          j += 1
           next
         end
         if ((!(v1).equal?(v1)) && (!(v2).equal?(v2)))
           # For float and double
-          ((i += 1) - 1)
-          ((j += 1) - 1)
+          i += 1
+          j += 1
           next
         end
         if (v1 < v2)
           return -1
         end
         return +1
-        ((i += 1) - 1)
-        ((j += 1) - 1)
+        i += 1
+        j += 1
       end
       return self.remaining - that.remaining
     end

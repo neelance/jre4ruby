@@ -1863,18 +1863,18 @@ module Java::Net
               if (!(c).equal?(d))
                 return false
               end
-              ((i += 1) - 1)
+              i += 1
               next
             end
-            ((i += 1) - 1)
+            i += 1
             if (!(to_lower(s.char_at(i))).equal?(to_lower(t.char_at(i))))
               return false
             end
-            ((i += 1) - 1)
+            i += 1
             if (!(to_lower(s.char_at(i))).equal?(to_lower(t.char_at(i))))
               return false
             end
-            ((i += 1) - 1)
+            i += 1
           end
           return true
         end
@@ -1897,7 +1897,7 @@ module Java::Net
             if (!(to_lower(s.char_at(i))).equal?(to_lower(t.char_at(i))))
               return false
             end
-            ((i += 1) - 1)
+            i += 1
           end
           return true
         end
@@ -1923,7 +1923,7 @@ module Java::Net
         i = 0
         while i < n
           h = 31 * h + to_lower(s.char_at(i))
-          ((i += 1) - 1)
+          i += 1
         end
         return h
       end
@@ -1961,7 +1961,7 @@ module Java::Net
               if (!(c).equal?(0))
                 return c
               end
-              ((i += 1) - 1)
+              i += 1
             end
             return sn - tn
           end
@@ -2320,7 +2320,7 @@ module Java::Net
           if (!(path.char_at(p)).equal?(Character.new(?/.ord)))
             break
           end
-          ((p += 1) - 1)
+          p += 1
         end
         if (p > 1)
           normal = false
@@ -2331,7 +2331,7 @@ module Java::Net
           if (((path.char_at(p)).equal?(Character.new(?..ord))) && (((p).equal?(end_)) || (((path.char_at(p + 1)).equal?(Character.new(?/.ord))) || (((path.char_at(p + 1)).equal?(Character.new(?..ord))) && (((p + 1).equal?(end_)) || ((path.char_at(p + 2)).equal?(Character.new(?/.ord))))))))
             normal = false
           end
-          ((ns += 1) - 1)
+          ns += 1
           # Find beginning of next segment
           while (p <= end_)
             if (!(path.char_at(((p += 1) - 1))).equal?(Character.new(?/.ord)))
@@ -2343,7 +2343,7 @@ module Java::Net
                 break
               end
               normal = false
-              ((p += 1) - 1)
+              p += 1
             end
             break
           end
@@ -2371,7 +2371,7 @@ module Java::Net
             break
           end
           path[p] = Character.new(?\0.ord)
-          ((p += 1) - 1)
+          p += 1
         end
         while (p <= end_)
           # Note start of segment
@@ -2422,13 +2422,13 @@ module Java::Net
           q = segs[i] # Current segment
           if ((q).equal?(-1))
             # Ignore this segment
-            ((i += 1) - 1)
+            i += 1
             next
           end
           if ((p).equal?(q))
             # We're already at this segment, so just skip to its end
             while ((p <= end_) && (!(path[p]).equal?(Character.new(?\0.ord))))
-              ((p += 1) - 1)
+              p += 1
             end
             if (p <= end_)
               # Preserve trailing slash
@@ -2448,7 +2448,7 @@ module Java::Net
               raise InternalError.new
             end
           end # ASSERT false
-          ((i += 1) - 1)
+          i += 1
         end
         return p
       end
@@ -2481,7 +2481,7 @@ module Java::Net
                 end
               end
             end
-            ((i += 1) - 1)
+            i += 1
           end while (i < ns)
           if ((i > ns) || ((dots).equal?(0)))
             break
@@ -2499,7 +2499,7 @@ module Java::Net
               if (!(segs[j]).equal?(-1))
                 break
               end
-              ((j -= 1) + 1)
+              j -= 1
             end
             if (j >= 0)
               q = segs[j]
@@ -2509,7 +2509,7 @@ module Java::Net
               end
             end
           end
-          ((i += 1) - 1)
+          i += 1
         end
       end
       
@@ -2527,7 +2527,7 @@ module Java::Net
           if (segs[f] >= 0)
             break
           end
-          ((f += 1) - 1)
+          f += 1
         end
         if ((f >= ns) || ((f).equal?(0)))
           # The path is empty, or else the original first segment survived,
@@ -2536,7 +2536,7 @@ module Java::Net
         end
         p = segs[f]
         while ((p < path.attr_length) && (!(path[p]).equal?(Character.new(?:.ord))) && (!(path[p]).equal?(Character.new(?\0.ord))))
-          ((p += 1) - 1)
+          p += 1
         end
         if (p >= path.attr_length || (path[p]).equal?(Character.new(?\0.ord)))
           # No colon in first segment, so no "." needed
@@ -2602,7 +2602,7 @@ module Java::Net
           if (c < 64)
             m |= (1 << c)
           end
-          ((i += 1) - 1)
+          i += 1
         end
         return m
       end
@@ -2618,7 +2618,7 @@ module Java::Net
           if ((c >= 64) && (c < 128))
             m |= (1 << (c - 64))
           end
-          ((i += 1) - 1)
+          i += 1
         end
         return m
       end
@@ -2633,7 +2633,7 @@ module Java::Net
         i = f
         while i <= l
           m |= 1 << i
-          ((i += 1) - 1)
+          i += 1
         end
         return m
       end
@@ -2648,7 +2648,7 @@ module Java::Net
         i = f
         while i <= l
           m |= 1 << i
-          ((i += 1) - 1)
+          i += 1
         end
         return m
       end
@@ -2899,7 +2899,7 @@ module Java::Net
               end
             end
           end
-          ((i += 1) - 1)
+          i += 1
         end
         return ((sb).nil?) ? s : sb.to_s
       end
@@ -3114,7 +3114,7 @@ module Java::Net
             if (!(char_at(((p += 1) - 1))).equal?(s.char_at(i)))
               break
             end
-            ((i += 1) - 1)
+            i += 1
           end
           return ((i).equal?(sn))
         end
@@ -3170,7 +3170,7 @@ module Java::Net
             if (stop.index_of(c) >= 0)
               break
             end
-            ((p += 1) - 1)
+            p += 1
           end
           return p
         end
@@ -3206,7 +3206,7 @@ module Java::Net
           while (p < n)
             c = char_at(p)
             if (match(c, low_mask, high_mask))
-              ((p += 1) - 1)
+              p += 1
               next
             end
             if (!((low_mask & L_ESCAPED)).equal?(0))
@@ -3251,7 +3251,7 @@ module Java::Net
             check_char(0, L_ALPHA, H_ALPHA, "scheme name")
             check_chars(1, p, L_SCHEME, H_SCHEME, "scheme name")
             self.attr_scheme = substring(0, p)
-            ((p += 1) - 1) # Skip ':'
+            p += 1 # Skip ':'
             ssp = p
             if (at(p, n, Character.new(?/.ord)))
               p = parse_hierarchical(p, n)
@@ -3313,7 +3313,7 @@ module Java::Net
           self.attr_path = substring(p, q)
           p = q
           if (at(p, n, Character.new(??.ord)))
-            ((p += 1) - 1)
+            p += 1
             q = scan(p, n, "", "#")
             check_chars(p, q, L_URIC, H_URIC, "query")
             self.attr_query = substring(p, q)
@@ -3407,7 +3407,7 @@ module Java::Net
           # hostname, IPv4 address, or IPv6 address
           if (at(p, n, Character.new(?[.ord)))
             # DEVIATION from RFC2396: Support IPv6 addresses, per RFC2732
-            ((p += 1) - 1)
+            p += 1
             q = scan(p, n, "/?#", "]")
             if ((q > p) && at(q, n, Character.new(?].ord)))
               # look for a "%" scope id
@@ -3435,7 +3435,7 @@ module Java::Net
           end
           # port
           if (at(p, n, Character.new(?:.ord)))
-            ((p += 1) - 1)
+            p += 1
             q = scan(p, n, "", "/")
             if (q > p)
               check_chars(p, q, L_DIGIT, H_DIGIT, "port number")
@@ -3708,7 +3708,7 @@ module Java::Net
           if (q > p)
             p = q
             if (at(p, n, Character.new(?:.ord)))
-              ((p += 1) - 1)
+              p += 1
               p = take_ipv4address(p, n, "hex digits or IPv4 address")
               @ipv6byte_count += 4
             end
@@ -3744,14 +3744,14 @@ module Java::Net
             if (at(p + 1, n, Character.new(?:.ord)))
               break
             end # "::"
-            ((p += 1) - 1)
+            p += 1
             q = scan(p, n, L_HEX, H_HEX)
             if (q <= p)
               fail_expecting("digits for an IPv6 address", p)
             end
             if (at(q, n, Character.new(?..ord)))
               # Beginning of IPv4 address
-              ((p -= 1) + 1)
+              p -= 1
               break
             end
             if (q > p + 4)

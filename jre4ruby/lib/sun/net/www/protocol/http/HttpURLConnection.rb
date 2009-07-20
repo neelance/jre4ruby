@@ -501,7 +501,7 @@ module Sun::Net::Www::Protocol::Http
         end
         index = value.index_of(lf)
         while (!(index).equal?(-1))
-          ((index += 1) - 1)
+          index += 1
           if (index < value.length)
             c = value.char_at(index)
             if (((c).equal?(Character.new(?\s.ord))) || ((c).equal?(Character.new(?\t.ord))))
@@ -850,7 +850,7 @@ module Sun::Net::Www::Protocol::Http
               end
               redir = true
               c = target.open_connection
-              ((redirects += 1) - 1)
+              redirects += 1
             end
           end
         end while (redir)
@@ -1263,7 +1263,7 @@ module Sun::Net::Www::Protocol::Http
               if (!@doing_ntlmp2nd_stage)
                 proxy_authentication = reset_proxy_authentication(proxy_authentication, authhdr)
                 if (!(proxy_authentication).nil?)
-                  ((redirects += 1) - 1)
+                  redirects += 1
                   disconnect_internal
                   next
                 end
@@ -1301,7 +1301,7 @@ module Sun::Net::Www::Protocol::Http
                   if (server_authentication.is_authorization_stale(raw_))
                     # we can retry with the current credentials
                     disconnect_internal
-                    ((redirects += 1) - 1)
+                    redirects += 1
                     @requests.set(server_authentication.get_header_name, server_authentication.get_header_value(self.attr_url, self.attr_method))
                     @current_server_credentials = server_authentication
                     set_cookie_header
@@ -1314,7 +1314,7 @@ module Sun::Net::Www::Protocol::Http
                 @current_server_credentials = server_authentication
                 if (!(server_authentication).nil?)
                   disconnect_internal
-                  ((redirects += 1) - 1) # don't let things loop ad nauseum
+                  redirects += 1 # don't let things loop ad nauseum
                   set_cookie_header
                   next
                 end
@@ -1392,7 +1392,7 @@ module Sun::Net::Www::Protocol::Http
               # if we should follow a redirect, then the followRedirects()
               # method will disconnect() and re-connect us to the new
               # location
-              ((redirects += 1) - 1)
+              redirects += 1
               # redirecting HTTP response may have set cookie, so
               # need to re-generate request header
               set_cookie_header
@@ -1589,7 +1589,7 @@ module Sun::Net::Www::Protocol::Http
                   proxy_host = (@http.get_proxy_host_used).to_s
                   proxy_port = @http.get_proxy_port_used
                   disconnect_internal
-                  ((retry_tunnel += 1) - 1)
+                  retry_tunnel += 1
                   next
                 end
               else
@@ -2331,7 +2331,7 @@ module Sun::Net::Www::Protocol::Http
           if (key.equals_ignore_case(EXCLUDE_HEADERS[i]))
             return nil
           end
-          ((i += 1) - 1)
+          i += 1
         end
       end
       return @requests.find_value(key)
@@ -2752,7 +2752,7 @@ module Sun::Net::Www::Protocol::Http
         typesig { [::Java::Int] }
         def write(b)
           check_error
-          ((@written += 1) - 1)
+          @written += 1
           if (!(@expected).equal?(-1) && @written > @expected)
             raise IOException.new("too many bytes written")
           end

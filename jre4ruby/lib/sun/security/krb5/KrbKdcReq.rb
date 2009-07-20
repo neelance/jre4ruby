@@ -295,7 +295,7 @@ module Sun::Security::Krb5
               ensure
                 kdc_client.close
               end
-              ((i += 1) - 1)
+              i += 1
             end
           end
           return ibuf

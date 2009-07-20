@@ -247,13 +247,13 @@ module Sun::Security::X509
       # strip off name@ portion
       at_ndx = subtree.last_index_of(Character.new(?@.ord))
       if (at_ndx >= 0)
-        ((i += 1) - 1)
+        i += 1
         subtree = (subtree.substring(at_ndx + 1)).to_s
       end
       # count dots in dnsname, adding one if dnsname preceded by @
       while subtree.last_index_of(Character.new(?..ord)) >= 0
         subtree = (subtree.substring(0, subtree.last_index_of(Character.new(?..ord)))).to_s
-        ((i += 1) - 1)
+        i += 1
       end
       return i
     end

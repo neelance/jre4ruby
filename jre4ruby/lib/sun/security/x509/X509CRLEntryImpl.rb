@@ -339,7 +339,7 @@ module Sun::Security::X509
           rescue Exception => e
             sb.append(", Error parsing this extension")
           end
-          ((i += 1) - 1)
+          i += 1
         end
       end
       sb.append("\n")

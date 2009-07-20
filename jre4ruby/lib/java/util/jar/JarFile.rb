@@ -367,7 +367,7 @@ module Java::Util::Jar
               get_manifest
               return
             end
-            ((i += 1) - 1)
+            i += 1
           end
         end
         # No signature-related files; don't instantiate a
@@ -399,7 +399,7 @@ module Java::Util::Jar
                 @jv.update(-1, nil, 0, 0, mev)
               end
             end
-            ((i += 1) - 1)
+            i += 1
           end
         end
       rescue IOException => ex
@@ -521,7 +521,7 @@ module Java::Util::Jar
         i = 0
         while i < 9
           self.attr_opto_sft[i] = 10
-          ((i += 1) - 1)
+          i += 1
         end
         self.attr_opto_sft[9] = 1
       end
@@ -543,7 +543,7 @@ module Java::Util::Jar
                 @man_entry = get_jar_entry(names[i])
                 break
               end
-              ((i += 1) - 1)
+              i += 1
             end
           end
         end
@@ -580,7 +580,7 @@ module Java::Util::Jar
                   i += Math.max(j + 1 - self.attr_last_occ[c & 0x7f], self.attr_opto_sft[j])
                   throw :next_next, :thrown
                 end
-                ((j -= 1) + 1)
+                j -= 1
               end
               @has_class_path_attribute = true
               break
@@ -650,7 +650,7 @@ module Java::Util::Jar
           if (name.ends_with(names[i]))
             return true
           end
-          ((i += 1) - 1)
+          i += 1
         end
       end
       return false

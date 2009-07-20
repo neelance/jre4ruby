@@ -261,7 +261,7 @@ module Sun::Net::Www
                 @next = ((@index += 1) - 1)
                 return true
               end
-              ((@index += 1) - 1)
+              @index += 1
             end
             return false
           end
@@ -322,7 +322,7 @@ module Sun::Net::Www
                 skip_it = true
                 break
               end
-              ((j += 1) - 1)
+              j += 1
             end
           end
           if (!skip_it)
@@ -359,7 +359,7 @@ module Sun::Net::Www
           if (!(@keys[i]).nil?)
             p.print((@keys[i] + (!(@values[i]).nil? ? ": " + (@values[i]).to_s : "")).to_s + "\r\n")
           end
-          ((i += 1) - 1)
+          i += 1
         end
         p.print("\r\n")
         p.flush
@@ -374,7 +374,7 @@ module Sun::Net::Www
         grow
         @keys[@nkeys] = k
         @values[@nkeys] = v
-        ((@nkeys += 1) - 1)
+        @nkeys += 1
       end
     end
     
@@ -388,11 +388,11 @@ module Sun::Net::Www
         while i > 0
           @keys[i] = @keys[i - 1]
           @values[i] = @values[i - 1]
-          ((i -= 1) + 1)
+          i -= 1
         end
         @keys[0] = k
         @values[0] = v
-        ((@nkeys += 1) - 1)
+        @nkeys += 1
       end
     end
     
@@ -449,11 +449,11 @@ module Sun::Net::Www
               while j < @nkeys - 1
                 @keys[j] = @keys[j + 1]
                 @values[j] = @values[j + 1]
-                ((j += 1) - 1)
+                j += 1
               end
-              ((@nkeys -= 1) + 1)
+              @nkeys -= 1
             end
-            ((i += 1) - 1)
+            i += 1
           end
         else
           i = 0
@@ -463,11 +463,11 @@ module Sun::Net::Www
               while j < @nkeys - 1
                 @keys[j] = @keys[j + 1]
                 @values[j] = @values[j + 1]
-                ((j += 1) - 1)
+                j += 1
               end
-              ((@nkeys -= 1) + 1)
+              @nkeys -= 1
             end
-            ((i += 1) - 1)
+            i += 1
           end
         end
       end
@@ -515,11 +515,11 @@ module Sun::Net::Www
         substr = false
         c = 0
         while (st < len && (((c = id.char_at(st))).equal?(Character.new(?<.ord)) || c <= Character.new(?\s.ord)))
-          ((st += 1) - 1)
+          st += 1
           substr = true
         end
         while (st < len && (((c = id.char_at(len - 1))).equal?(Character.new(?>.ord)) || c <= Character.new(?\s.ord)))
-          ((len -= 1) + 1)
+          len -= 1
           substr = true
         end
         return substr ? id.substring(st, len) : id
@@ -586,7 +586,7 @@ module Sun::Net::Www
           firstc = -1
         end == :thrown or break
         while (len > 0 && s[len - 1] <= Character.new(?\s.ord))
-          ((len -= 1) + 1)
+          len -= 1
         end
         k = nil
         if (keyend <= 0)
@@ -595,10 +595,10 @@ module Sun::Net::Www
         else
           k = (String.copy_value_of(s, 0, keyend)).to_s
           if (keyend < len && (s[keyend]).equal?(Character.new(?:.ord)))
-            ((keyend += 1) - 1)
+            keyend += 1
           end
           while (keyend < len && s[keyend] <= Character.new(?\s.ord))
-            ((keyend += 1) - 1)
+            keyend += 1
           end
         end
         v = nil
@@ -618,7 +618,7 @@ module Sun::Net::Www
         i = 0
         while i < @keys.attr_length && i < @nkeys
           result += "{" + (@keys[i]).to_s + ": " + (@values[i]).to_s + "}"
-          ((i += 1) - 1)
+          i += 1
         end
         return result
       end

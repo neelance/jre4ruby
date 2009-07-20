@@ -73,7 +73,7 @@ module Sun::Security::Pkcs
       i = 0
       while i < attrs.attr_length
         @map.put(attrs[i].get_attribute_id.to_s, attrs[i])
-        ((i += 1) - 1)
+        i += 1
       end
     end
     
@@ -93,7 +93,7 @@ module Sun::Security::Pkcs
       while i < attrs.attr_length
         attr = PKCS10Attribute.new(attrs[i])
         @map.put(attr.get_attribute_id.to_s, attr)
-        ((i += 1) - 1)
+        i += 1
       end
     end
     
@@ -194,7 +194,7 @@ module Sun::Security::Pkcs
         if (!(this_attr == other_attr))
           return false
         end
-        ((i += 1) - 1)
+        i += 1
       end
       return true
     end

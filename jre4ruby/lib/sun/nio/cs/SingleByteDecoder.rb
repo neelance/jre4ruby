@@ -77,7 +77,7 @@ module Sun::Nio::Cs
             return CoderResult::OVERFLOW
           end
           da[((dp += 1) - 1)] = c
-          ((sp += 1) - 1)
+          sp += 1
         end
         return CoderResult::UNDERFLOW
       ensure
@@ -99,7 +99,7 @@ module Sun::Nio::Cs
           if (!dst.has_remaining)
             return CoderResult::OVERFLOW
           end
-          ((mark += 1) - 1)
+          mark += 1
           dst.put(c)
         end
         return CoderResult::UNDERFLOW

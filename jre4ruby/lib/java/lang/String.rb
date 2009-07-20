@@ -321,7 +321,7 @@ module Java::Lang
             raise IllegalArgumentException.new(JavaInteger.to_s(c))
           end
         end
-        ((i += 1) - 1)
+        i += 1
       end
       # Pass 2: Allocate and fill in char[]
       v = CharArray.new(n)
@@ -335,7 +335,7 @@ module Java::Lang
           Character.to_surrogates(c, v, j)
           j += 2
         end
-        ((i_ += 1) - 1)
+        i_ += 1
       end
       @value = v
       @count = v.attr_length
@@ -1232,7 +1232,7 @@ module Java::Lang
           if (!(c1).equal?(c2))
             return c1 - c2
           end
-          ((k += 1) - 1)
+          k += 1
         end
       else
         while (!(((n -= 1) + 1)).equal?(0))
@@ -1292,7 +1292,7 @@ module Java::Lang
                 end
               end
             end
-            ((i += 1) - 1)
+            i += 1
           end
           return n1 - n2
         end
@@ -1548,7 +1548,7 @@ module Java::Lang
         i = 0
         while i < len
           h = 31 * h + val[((off += 1) - 1)]
-          ((i += 1) - 1)
+          i += 1
         end
         @hash = h
       end
@@ -1639,7 +1639,7 @@ module Java::Lang
           if ((v[i]).equal?(ch))
             return i - @offset
           end
-          ((i += 1) - 1)
+          i += 1
         end
         return -1
       end
@@ -1655,7 +1655,7 @@ module Java::Lang
               return i - @offset
             end
           end
-          ((i += 1) - 1)
+          i += 1
         end
       end
       return -1
@@ -1731,7 +1731,7 @@ module Java::Lang
           if ((v[i]).equal?(ch))
             return i - @offset
           end
-          ((i -= 1) + 1)
+          i -= 1
         end
         return -1
       end
@@ -1748,7 +1748,7 @@ module Java::Lang
               return i - @offset
             end
           end
-          ((i -= 1) + 1)
+          i -= 1
         end
       end
       return -1
@@ -1827,15 +1827,15 @@ module Java::Lang
             end_ = j + target_count - 1
             k = target_offset + 1
             while j < end_ && (source[j]).equal?(target[k])
-              ((j += 1) - 1)
-              ((k += 1) - 1)
+              j += 1
+              k += 1
             end
             if ((j).equal?(end_))
               # Found whole string.
               return i - source_offset
             end
           end
-          ((i += 1) - 1)
+          i += 1
         end
         return -1
       end
@@ -1911,7 +1911,7 @@ module Java::Lang
         while (true)
           catch(:next_start_search_for_last_char) do
             while (i >= min_ && !(source[i]).equal?(str_last_char))
-              ((i -= 1) + 1)
+              i -= 1
             end
             if (i < min_)
               return -1
@@ -1921,7 +1921,7 @@ module Java::Lang
             k = str_last_index - 1
             while (j > start)
               if (!(source[((j -= 1) + 1)]).equal?(target[((k -= 1) + 1)]))
-                ((i -= 1) + 1)
+                i -= 1
                 throw :next_start_search_for_last_char, :thrown
               end
             end
@@ -2092,12 +2092,12 @@ module Java::Lang
           j = 0
           while j < i
             buf[j] = val[off + j]
-            ((j += 1) - 1)
+            j += 1
           end
           while (i < len)
             c = val[off + i]
             buf[i] = ((c).equal?(old_char)) ? new_char : c
-            ((i += 1) - 1)
+            i += 1
           end
           return String.new(0, len, buf)
         end
@@ -2442,7 +2442,7 @@ module Java::Lang
             if (!(c).equal?(Character.to_lower_case(c)))
               throw :break_scan, :thrown
             end
-            ((first_upper += 1) - 1)
+            first_upper += 1
           end
         end
         return self
@@ -2725,10 +2725,10 @@ module Java::Lang
       val = @value
       # avoid getfield opcode
       while ((st < len) && (val[off + st] <= Character.new(?\s.ord)))
-        ((st += 1) - 1)
+        st += 1
       end
       while ((st < len) && (val[off + len - 1] <= Character.new(?\s.ord)))
-        ((len -= 1) + 1)
+        len -= 1
       end
       return ((st > 0) || (len < @count)) ? substring(st, len) : self
     end

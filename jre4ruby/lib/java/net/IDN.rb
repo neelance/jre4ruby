@@ -288,7 +288,7 @@ module Java::Net
             if (!is_ldhchar(c))
               raise IllegalArgumentException.new("Contains non-LDH characters")
             end
-            ((i += 1) - 1)
+            i += 1
           end
           if ((dest.char_at(0)).equal?(Character.new(?-.ord)) || (dest.char_at(dest.length - 1)).equal?(Character.new(?-.ord)))
             raise IllegalArgumentException.new("Has leading or trailing hyphen")
@@ -404,7 +404,7 @@ module Java::Net
           if ((c).equal?(Character.new(?..ord)) || (c).equal?(Character.new(0x3002)) || (c).equal?(Character.new(0xFF0E)) || (c).equal?(Character.new(0xFF61)))
             break
           end
-          ((i += 1) - 1)
+          i += 1
         end
         return i
       end
@@ -420,7 +420,7 @@ module Java::Net
             is_ascii = false
             break
           end
-          ((i += 1) - 1)
+          i += 1
         end
         return is_ascii
       end
@@ -437,7 +437,7 @@ module Java::Net
           if (!(to_asciilower(input.char_at(i))).equal?(ACE_PREFIX.char_at(i)))
             starts_with_prefix = false
           end
-          ((i += 1) - 1)
+          i += 1
         end
         return starts_with_prefix
       end
@@ -456,7 +456,7 @@ module Java::Net
         i = 0
         while i < input.length
           dest.append(to_asciilower(input.char_at(i)))
-          ((i += 1) - 1)
+          i += 1
         end
         return dest
       end

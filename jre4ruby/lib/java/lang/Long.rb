@@ -328,7 +328,7 @@ module Java::Lang
             return i
           end
           p = 10 * p
-          ((i += 1) - 1)
+          i += 1
         end
         return 19
       end
@@ -421,7 +421,7 @@ module Java::Lang
               # Cannot have lone "-"
               raise NumberFormatException.for_input_string(s)
             end
-            ((i += 1) - 1)
+            i += 1
           end
           multmin = limit / radix
           while (i < len)
@@ -539,7 +539,7 @@ module Java::Lang
             i = 0
             while i < self.class::Cache.attr_length
               self.class::Cache[i] = Long.new(i - 128)
-              ((i += 1) - 1)
+              i += 1
             end
           end
         }
@@ -622,7 +622,7 @@ module Java::Lang
         # Handle sign, if present
         if ((first_char).equal?(Character.new(?-.ord)))
           negative = true
-          ((index += 1) - 1)
+          index += 1
         end
         # Handle radix specifier, if present
         if (nm.starts_with("0x", index) || nm.starts_with("0X", index))
@@ -630,11 +630,11 @@ module Java::Lang
           radix = 16
         else
           if (nm.starts_with("#", index))
-            ((index += 1) - 1)
+            index += 1
             radix = 16
           else
             if (nm.starts_with("0", index) && nm.length > 1 + index)
-              ((index += 1) - 1)
+              index += 1
               radix = 8
             end
           end

@@ -185,7 +185,7 @@ module Sun::Misc
         def drop
           SoftReference.instance_method(:clear).bind(self).call
           @key = self.attr_invalid_key
-          ((self.attr_dropped += 1) - 1)
+          self.attr_dropped += 1
         end
         
         private
@@ -218,7 +218,7 @@ module Sun::Misc
         if (vc.is_valid)
           @hash.remove(vc.attr_key)
         else
-          ((ValueCell.attr_dropped -= 1) + 1)
+          ValueCell.attr_dropped -= 1
         end
       end
     end
@@ -547,7 +547,7 @@ module Sun::Misc
           j = 0
           i = iterator
           while i.has_next
-            ((j += 1) - 1)
+            j += 1
             i.next
           end
           return j

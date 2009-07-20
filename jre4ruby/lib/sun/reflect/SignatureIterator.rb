@@ -78,12 +78,12 @@ module Sun::Reflect
       end_idx = @idx
       if ((c).equal?(Character.new(?[.ord)))
         while (((c = @sig.char_at(end_idx))).equal?(Character.new(?[.ord)))
-          ((end_idx += 1) - 1)
+          end_idx += 1
         end
       end
       if ((c).equal?(Character.new(?L.ord)))
         while (!(@sig.char_at(end_idx)).equal?(Character.new(?;.ord)))
-          ((end_idx += 1) - 1)
+          end_idx += 1
         end
       end
       begin_idx = @idx

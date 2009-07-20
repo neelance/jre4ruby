@@ -91,7 +91,7 @@ module Sun::Net::Httpserver
         raise StreamClosedException.new
       end
       self.attr_out.write(b)
-      ((@remaining -= 1) + 1)
+      @remaining -= 1
     end
     
     typesig { [Array.typed(::Java::Byte), ::Java::Int, ::Java::Int] }

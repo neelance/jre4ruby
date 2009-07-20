@@ -375,7 +375,7 @@ module Java::Util
         def record_access(m)
           lm = m
           if (lm.attr_access_order)
-            ((lm.attr_mod_count += 1) - 1)
+            lm.attr_mod_count += 1
             remove
             add_before(lm.attr_header)
           end
@@ -554,7 +554,7 @@ module Java::Util
       e = Entry.new(hash, key, value, old)
       self.attr_table[bucket_index] = e
       e.add_before(@header)
-      ((self.attr_size += 1) - 1)
+      self.attr_size += 1
     end
     
     typesig { [Map::Entry] }

@@ -169,7 +169,7 @@ module Java::Security
             if ((!(context[i]).nil?) && (!v.contains(context[i])))
               v.add(context[i])
             end
-            ((i += 1) - 1)
+            i += 1
           end
           @context = Array.typed(ProtectionDomain).new(v.size) { nil }
           @context = v.to_array(@context)
@@ -320,7 +320,7 @@ module Java::Security
               dump_debug = true
               break
             end
-            ((i += 1) - 1)
+            i += 1
           end
         end
         dump_debug &= !Debug.is_on("permission=") || Debug.is_on("permission=" + (perm.get_class.get_canonical_name).to_s)
@@ -334,7 +334,7 @@ module Java::Security
             i = 0
             while i < @context.attr_length
               self.attr_debug.println("domain " + (i).to_s + " " + (@context[i]).to_s)
-              ((i += 1) - 1)
+              i += 1
             end
           end
         end
@@ -388,7 +388,7 @@ module Java::Security
           end
           raise AccessControlException.new("access denied " + (perm).to_s, perm)
         end
-        ((i += 1) - 1)
+        i += 1
       end
       # allow if all of them allowed access
       if (dump_debug)
@@ -458,12 +458,12 @@ module Java::Security
               if ((sd).equal?(pd[j]))
                 throw :next_outer, :thrown
               end
-              ((j += 1) - 1)
+              j += 1
             end
             pd[((n += 1) - 1)] = sd
           end
         end
-        ((i += 1) - 1)
+        i += 1
       end
       # if length isn't equal, we need to shorten the array
       if (!(n).equal?(pd.attr_length))
@@ -560,7 +560,7 @@ module Java::Security
           j = 0
           while (j < that.attr_context.attr_length) && !match
             match = ((that.attr_context[j]).nil?)
-            ((j += 1) - 1)
+            j += 1
           end
         else
           this_pd_class = this_pd.get_class
@@ -570,13 +570,13 @@ module Java::Security
             that_pd = that.attr_context[j]
             # Class check required to avoid PD exposure (4285406)
             match = (!(that_pd).nil? && (this_pd_class).equal?(that_pd.get_class) && (this_pd == that_pd))
-            ((j += 1) - 1)
+            j += 1
           end
         end
         if (!match)
           return false
         end
-        ((i += 1) - 1)
+        i += 1
       end
       return match
     end
@@ -597,7 +597,7 @@ module Java::Security
         if (!(@context[i]).nil?)
           hash_code ^= @context[i].hash_code
         end
-        ((i += 1) - 1)
+        i += 1
       end
       return hash_code
     end

@@ -389,7 +389,7 @@ module Java::Util
           begin
             @local_class_parent.remove(@last_ret)
             if (@last_ret < @cursor)
-              ((@cursor -= 1) + 1)
+              @cursor -= 1
             end
             @last_ret = -1
             @expected_mod_count = self.attr_mod_count
@@ -612,7 +612,7 @@ module Java::Util
       while i < n
         it.next
         it.remove
-        ((i += 1) - 1)
+        i += 1
       end
     end
     
@@ -730,7 +730,7 @@ module Java::Util
       check_for_comodification
       @l.add(index + @offset, element)
       self.attr_mod_count = @l.attr_mod_count
-      ((@size += 1) - 1)
+      @size += 1
     end
     
     typesig { [::Java::Int] }
@@ -739,7 +739,7 @@ module Java::Util
       check_for_comodification
       result = @l.remove(index + @offset)
       self.attr_mod_count = @l.attr_mod_count
-      ((@size -= 1) + 1)
+      @size -= 1
       return result
     end
     
@@ -832,7 +832,7 @@ module Java::Util
         define_method :remove do
           @i.remove
           @local_class_parent.attr_mod_count = self.attr_l.attr_mod_count
-          ((self.attr_size -= 1) + 1)
+          self.attr_size -= 1
         end
         
         typesig { [Object] }
@@ -844,7 +844,7 @@ module Java::Util
         define_method :add do |e|
           @i.add(e)
           @local_class_parent.attr_mod_count = self.attr_l.attr_mod_count
-          ((self.attr_size += 1) - 1)
+          self.attr_size += 1
         end
         
         typesig { [] }

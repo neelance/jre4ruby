@@ -284,7 +284,7 @@ module Sun::Net::Www
             if (i < (@file_extensions.attr_length - 1))
               extensions_as_string += ","
             end
-            ((i += 1) - 1)
+            i += 1
           end
         end
         return extensions_as_string
@@ -301,7 +301,7 @@ module Sun::Net::Www
         while i < num_exts
           ext = ext_tokens.next_element
           extension_strings[i] = ext.trim
-          ((i += 1) - 1)
+          i += 1
         end
         @file_extensions = extension_strings
       end

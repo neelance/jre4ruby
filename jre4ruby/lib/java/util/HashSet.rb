@@ -309,7 +309,7 @@ module Java::Util
       while i < size_
         e = s.read_object
         @map.put(e, PRESENT)
-        ((i += 1) - 1)
+        i += 1
       end
     end
     

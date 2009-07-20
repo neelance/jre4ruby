@@ -390,7 +390,7 @@ module Sun::Security::X509
             if (@reason_flags[i])
               hash += i
             end
-            ((i += 1) - 1)
+            i += 1
           end
         end
         @hash_code = hash
@@ -426,7 +426,7 @@ module Sun::Security::X509
           if (@reason_flags[i])
             sb.append("    " + (reason_to_string(i)).to_s + "\n")
           end
-          ((i += 1) - 1)
+          i += 1
         end
       end
       if (!(@crl_issuer).nil?)

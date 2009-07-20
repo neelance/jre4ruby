@@ -639,7 +639,7 @@ module Java::Net
           c = 0
           # skip whitespace
           while ((!(i).equal?(-1)) && (((c = a[i])).equal?(Character.new(?\s.ord)) || (c).equal?(Character.new(?\r.ord)) || (c).equal?(Character.new(?\n.ord)) || (c).equal?(Character.new(?\f.ord)) || (c).equal?(Character.new(?\t.ord))))
-            ((i -= 1) + 1)
+            i -= 1
           end
           # check for the known strings
           matchlen = 0
@@ -677,7 +677,7 @@ module Java::Net
             else
               raise IllegalArgumentException.new("invalid permission: " + action)
             end
-            ((i -= 1) + 1)
+            i -= 1
           end
           # point i at the location of the comma minus one (or -1).
           i -= matchlen
@@ -832,7 +832,7 @@ module Java::Net
           sb.append(Character.new(?..ord))
           sb.append(JavaInteger.to_hex_string(((addr[i] >> 4) & 0xf)))
           sb.append(Character.new(?..ord))
-          ((i -= 1) + 1)
+          i -= 1
         end
         auth_host = "auth." + (sb.to_s).to_s + "IP6.ARPA"
         # auth = InetAddress.getAllByName0(authHost, false)[0];
@@ -990,7 +990,7 @@ module Java::Net
               if ((@addresses[0] == that.attr_addresses[i]))
                 return true
               end
-              ((i += 1) - 1)
+              i += 1
             end
           end
           # since "this" was initialized with an IP address, we
@@ -1034,9 +1034,9 @@ module Java::Net
               if ((@addresses[j] == that.attr_addresses[i]))
                 return true
               end
-              ((i += 1) - 1)
+              i += 1
             end
-            ((j += 1) - 1)
+            j += 1
           end
           # XXX: if all else fails, compare hostnames?
           # Do we really want this?
@@ -1342,7 +1342,7 @@ module Java::Net
             end
             needed = (desired ^ effective)
           end
-          ((i += 1) - 1)
+          i += 1
         end
       end
       return false

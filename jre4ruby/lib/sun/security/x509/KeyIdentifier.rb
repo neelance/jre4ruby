@@ -136,7 +136,7 @@ module Sun::Security::X509
       i = 0
       while i < @octet_string.attr_length
         retval += @octet_string[i] * i
-        ((i += 1) - 1)
+        i += 1
       end
       return retval
     end

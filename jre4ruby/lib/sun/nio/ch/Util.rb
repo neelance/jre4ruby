@@ -69,7 +69,7 @@ module Sun::Nio::Ch
         i = 0
         while i < TEMP_BUF_POOL_SIZE
           self.attr_buffer_pool[i] = ThreadLocal.new
-          ((i += 1) - 1)
+          i += 1
         end
       end
       
@@ -86,7 +86,7 @@ module Sun::Nio::Ch
             self.attr_buffer_pool[i].set(nil)
             return buf
           end
-          ((i += 1) - 1)
+          i += 1
         end
         # Make a new one
         return ByteBuffer.allocate_direct(size)
@@ -105,7 +105,7 @@ module Sun::Nio::Ch
             self.attr_buffer_pool[i].set(SoftReference.new(buf))
             return
           end
-          ((i += 1) - 1)
+          i += 1
         end
         # Otherwise replace a smaller one in the cache if such exists
         i_ = 0
@@ -116,7 +116,7 @@ module Sun::Nio::Ch
             self.attr_buffer_pool[i_].set(SoftReference.new(buf))
             return
           end
-          ((i_ += 1) - 1)
+          i_ += 1
         end
       end
       
@@ -237,7 +237,7 @@ module Sun::Nio::Ch
         i = 0
         while i < n
           bs2[i] = bs[offset + i]
-          ((i += 1) - 1)
+          i += 1
         end
         return bs2
       end

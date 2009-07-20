@@ -70,7 +70,7 @@ module Sun::Security::X509
       while i < seq.attr_length
         id = CertificatePolicyId.new(seq[i])
         @ids.add_element(id)
-        ((i += 1) - 1)
+        i += 1
       end
     end
     
@@ -90,7 +90,7 @@ module Sun::Security::X509
       i = 0
       while i < @ids.size
         (@ids.element_at(i)).encode(tmp)
-        ((i += 1) - 1)
+        i += 1
       end
       out.write(DerValue.attr_tag_sequence, tmp)
     end

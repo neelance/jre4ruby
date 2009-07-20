@@ -108,7 +108,7 @@ module Sun::Security::X509
       while i < exts.attr_length
         ext = Extension.new(exts[i])
         parse_extension(ext)
-        ((i += 1) - 1)
+        i += 1
       end
     end
     
@@ -208,7 +208,7 @@ module Sun::Security::X509
             raise CertificateException.new("Illegal extension object")
           end
         end
-        ((i += 1) - 1)
+        i += 1
       end
       seq = DerOutputStream.new
       seq.write(DerValue.attr_tag_sequence, ext_out)
@@ -338,7 +338,7 @@ module Sun::Security::X509
         if (!(this_ext == other_ext))
           return false
         end
-        ((i += 1) - 1)
+        i += 1
       end
       return (self.get_unparseable_extensions == (other).get_unparseable_extensions)
     end

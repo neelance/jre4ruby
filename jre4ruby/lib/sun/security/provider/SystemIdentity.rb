@@ -108,7 +108,7 @@ module Sun::Security::Provider
       i = 0
       while i < certs.attr_length
         remove_certificate(certs[i])
-        ((i += 1) - 1)
+        i += 1
       end
     end
     

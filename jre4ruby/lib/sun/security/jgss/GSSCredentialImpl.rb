@@ -109,7 +109,7 @@ module Sun::Security::Jgss
             raise e
           end # else try the next mechanism
         end
-        ((i += 1) - 1)
+        i += 1
       end
       if (((@hashtable.size).equal?(0)) || (!(usage).equal?(get_usage)))
         raise GSSException.new(GSSException::NO_CRED)
@@ -515,7 +515,7 @@ module Sun::Security::Jgss
               if ((element.is_initiator_credential).equal?(initiate))
                 break
               end
-              ((i += 1) - 1)
+              i += 1
             end # for loop
           end
         end
@@ -589,7 +589,7 @@ module Sun::Security::Jgss
         rescue GSSException => e
           # skip to next element
         end
-        ((i += 1) - 1)
+        i += 1
       end
       buffer.append(Character.new(?].ord))
       return buffer.to_s

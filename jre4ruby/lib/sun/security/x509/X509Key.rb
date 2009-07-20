@@ -442,7 +442,7 @@ module Sun::Security::X509
         i = 0
         while i < b1.attr_length
           r += (b1[i] & 0xff) * 37
-          ((i += 1) - 1)
+          i += 1
         end
         return r
       rescue InvalidKeyException => e

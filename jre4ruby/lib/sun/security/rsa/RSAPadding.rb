@@ -423,12 +423,12 @@ module Sun::Security::Rsa
         if (!(@l_hash[i]).equal?(em[db_start + i]))
           raise BadPaddingException.new("lHash mismatch")
         end
-        ((i += 1) - 1)
+        i += 1
       end
       # skip over padding (0x00 bytes)
       i_ = db_start + h_len
       while ((em[i_]).equal?(0))
-        ((i_ += 1) - 1)
+        i_ += 1
         if (i_ >= em.attr_length)
           raise BadPaddingException.new("Padding string not terminated")
         end
@@ -464,13 +464,13 @@ module Sun::Security::Rsa
         i = 0
         while (i < digest_.attr_length) && (mask_len > 0)
           out[((out_ofs += 1) - 1)] ^= digest_[((i += 1) - 1)]
-          ((mask_len -= 1) + 1)
+          mask_len -= 1
         end
         if (mask_len > 0)
           # increment counter
           i_ = c.attr_length - 1
           while (((c[i_] += 1)).equal?(0)) && (i_ > 0)
-            ((i_ -= 1) + 1)
+            i_ -= 1
           end
         end
       end

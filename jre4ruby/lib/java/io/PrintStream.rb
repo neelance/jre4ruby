@@ -489,7 +489,7 @@ module Java::Io
               if ((buf[i]).equal?(Character.new(?\n.ord)))
                 self.attr_out.flush
               end
-              ((i += 1) - 1)
+              i += 1
             end
           end
         end

@@ -428,7 +428,7 @@ module Java::Lang
           raise IllegalArgumentException.new("nanosecond timeout value out of range")
         end
         if (nanos >= 500000 || (!(nanos).equal?(0) && (millis).equal?(0)))
-          ((millis += 1) - 1)
+          millis += 1
         end
         sleep(millis)
       end
@@ -1463,7 +1463,7 @@ module Java::Lang
           raise IllegalArgumentException.new("nanosecond timeout value out of range")
         end
         if (nanos >= 500000 || (!(nanos).equal?(0) && (millis).equal?(0)))
-          ((millis += 1) - 1)
+          millis += 1
         end
         join(millis)
       end
@@ -1766,7 +1766,7 @@ module Java::Lang
           if (!(stack_trace).nil?)
             m.put(threads[i], stack_trace)
           end
-          ((i += 1) - 1)
+          i += 1
         end
         return m
       end

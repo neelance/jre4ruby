@@ -1216,7 +1216,7 @@ module Java::Text
             attribute = sign_attribute
           end
           delegate.formatted(attribute, attribute, start + fp.get_begin_index, start + fp.get_end_index, result)
-          ((counter += 1) - 1)
+          counter += 1
         end
       end
     end
@@ -2051,7 +2051,7 @@ module Java::Text
             positions.add(fp)
           end
         end
-        ((string_index += 1) - 1)
+        string_index += 1
       end
       if (!(positions).nil?)
         return positions.to_array(self.attr_empty_field_position_array)

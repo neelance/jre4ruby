@@ -104,7 +104,7 @@ module Sun::Security::Krb5::Internal::Ktab
       i = 0
       while i < principal_num
         name_parts[i] = read_name
-        ((i += 1) - 1)
+        i += 1
       end
       name_type = read(4)
       self.attr_index -= 4

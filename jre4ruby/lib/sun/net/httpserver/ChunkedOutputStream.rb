@@ -113,7 +113,7 @@ module Sun::Net::Httpserver
         raise StreamClosedException.new
       end
       @buf[((@pos += 1) - 1)] = b
-      ((@count += 1) - 1)
+      @count += 1
       if ((@count).equal?(CHUNK_SIZE))
         write_chunk
       end
@@ -159,7 +159,7 @@ module Sun::Net::Httpserver
       i = 0
       while i < clen
         @buf[start_byte + i] = c[i]
-        ((i += 1) - 1)
+        i += 1
       end
       @buf[start_byte + (((i += 1) - 1))] = Character.new(?\r.ord)
       @buf[start_byte + (((i += 1) - 1))] = Character.new(?\n.ord)

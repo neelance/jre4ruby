@@ -393,9 +393,9 @@ module Sun::Misc
             # (transducer << (# exponent and sign bits).
             while (transducer < (1 << (DoubleConsts::SIGNIFICAND_WIDTH - 1)))
               transducer *= 2
-              ((exponent -= 1) + 1)
+              exponent -= 1
             end
-            ((exponent += 1) - 1)
+            exponent += 1
             raise AssertError if not ((exponent >= DoubleConsts::MIN_EXPONENT - (DoubleConsts::SIGNIFICAND_WIDTH - 1) && exponent < DoubleConsts::MIN_EXPONENT))
             return exponent
           end
@@ -459,9 +459,9 @@ module Sun::Misc
             # (transducer << (# exponent and sign bits).
             while (transducer < (1 << (FloatConsts::SIGNIFICAND_WIDTH - 1)))
               transducer *= 2
-              ((exponent -= 1) + 1)
+              exponent -= 1
             end
-            ((exponent += 1) - 1)
+            exponent += 1
             raise AssertError if not ((exponent >= FloatConsts::MIN_EXPONENT - (FloatConsts::SIGNIFICAND_WIDTH - 1) && exponent < FloatConsts::MIN_EXPONENT))
             return exponent
           end

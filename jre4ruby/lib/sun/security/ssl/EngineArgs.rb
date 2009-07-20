@@ -178,7 +178,7 @@ module Sun::Security::Ssl
         @app_remaining += app_data[i].remaining
         @app_poss[i] = app_data[i].position
         @app_lims[i] = app_data[i].limit
-        ((i += 1) - 1)
+        i += 1
       end
       # Ok, looks like we have a good set of args, let's
       # store the rest of this stuff.
@@ -201,7 +201,7 @@ module Sun::Security::Ssl
         @app_data[i].limit(@app_data[i].position + amount)
         @net_data.put(@app_data[i])
         space_left -= amount
-        ((i += 1) - 1)
+        i += 1
       end
     end
     
@@ -218,7 +218,7 @@ module Sun::Security::Ssl
         ready_data.limit(ready_data.position + amount)
         @app_data[i].put(ready_data)
         amount_left -= amount
-        ((i += 1) - 1)
+        i += 1
       end
       raise AssertError if not (((ready_data.remaining).equal?(0)))
     end
@@ -243,7 +243,7 @@ module Sun::Security::Ssl
       i = @offset
       while i < @offset + @len
         sum += @app_data[i].position - @app_poss[i]
-        ((i += 1) - 1)
+        i += 1
       end
       return sum
     end
@@ -256,7 +256,7 @@ module Sun::Security::Ssl
       i = @offset
       while i < @offset + @len
         @app_data[i].position(@app_poss[i])
-        ((i += 1) - 1)
+        i += 1
       end
     end
     
@@ -270,7 +270,7 @@ module Sun::Security::Ssl
       i = @offset
       while i < @offset + @len
         @app_data[i].limit(@app_lims[i])
-        ((i += 1) - 1)
+        i += 1
       end
     end
     

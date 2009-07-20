@@ -139,7 +139,7 @@ module Sun::Security::Krb5::Internal
         if (!(self.get(i)).equal?(flags.get(i)))
           return false
         end
-        ((i += 1) - 1)
+        i += 1
       end
       return matched
     end
@@ -179,7 +179,7 @@ module Sun::Security::Krb5::Internal
             sb.append("HW-AUTHENT;")
           end
         end
-        ((i += 1) - 1)
+        i += 1
       end
       result = sb.to_s
       if (result.length > 0)

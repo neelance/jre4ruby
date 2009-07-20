@@ -426,13 +426,13 @@ module Java::Io
         return nil
       end # EOL
       if ((@rcb[len - 1]).equal?(Character.new(?\r.ord)))
-        ((len -= 1) + 1)
+        len -= 1
          # remove CR at end;
       else
         if ((@rcb[len - 1]).equal?(Character.new(?\n.ord)))
-          ((len -= 1) + 1) # remove LF at end;
+          len -= 1 # remove LF at end;
           if (len > 0 && (@rcb[len - 1]).equal?(Character.new(?\r.ord)))
-            ((len -= 1) + 1)
+            len -= 1
           end # remove the CR, if there is one
         end
       end
@@ -551,7 +551,7 @@ module Java::Io
               if (@leftover_lf && (cbuf).equal?(self.attr_rcb) && (@cb[@next_char]).equal?(Character.new(?\n.ord)))
                 # if invoked by our readline, skip the leftover, otherwise
                 # return the LF.
-                ((@next_char += 1) - 1)
+                @next_char += 1
               end
               @leftover_lf = false
               while (@next_char < @n_chars)
@@ -584,7 +584,7 @@ module Java::Io
                     end
                     if (@next_char < @n_chars && (@cb[@next_char]).equal?(Character.new(?\n.ord)))
                       cbuf[((off += 1) - 1)] = Character.new(?\n.ord)
-                      ((@next_char += 1) - 1)
+                      @next_char += 1
                     end
                     return off - offset
                   else

@@ -354,7 +354,7 @@ module Sun::Security::X509
           if ((@names[i]).nil?)
             raise IOException.new("Cannot create an X500Name")
           end
-          ((i += 1) - 1)
+          i += 1
         end
       end
     end
@@ -433,7 +433,7 @@ module Sun::Security::X509
         i = 0
         while i < @names.attr_length
           list.add_all(@names[i].avas)
-          ((i += 1) - 1)
+          i += 1
         end
       end
       return list
@@ -459,7 +459,7 @@ module Sun::Security::X509
         if (!(@names[i].attr_assertion.attr_length).equal?(0))
           return false
         end
-        ((i += 1) - 1)
+        i += 1
       end
       return true
     end
@@ -499,7 +499,7 @@ module Sun::Security::X509
         if (!(r1.attr_assertion.attr_length).equal?(r2.attr_assertion.attr_length))
           return false
         end
-        ((i += 1) - 1)
+        i += 1
       end
       # definite check via canonical form
       this_canonical = self.get_rfc2253canonical_name
@@ -743,7 +743,7 @@ module Sun::Security::X509
           fullname.append(Character.new(?,.ord))
         end
         fullname.append(@names[i].to_rfc2253string(oid_map))
-        ((i -= 1) + 1)
+        i -= 1
       end
       return fullname.to_s
     end
@@ -774,7 +774,7 @@ module Sun::Security::X509
           fullname.append(Character.new(?,.ord))
         end
         fullname.append(@names[i].to_rfc2253string(true))
-        ((i -= 1) + 1)
+        i -= 1
       end
       @canonical_dn = (fullname.to_s).to_s
       return @canonical_dn
@@ -798,7 +798,7 @@ module Sun::Security::X509
           if (!(value).nil?)
             return value
           end
-          ((i += 1) - 1)
+          i += 1
         end
       end
       return nil
@@ -815,7 +815,7 @@ module Sun::Security::X509
           if (!(value).nil?)
             return value
           end
-          ((i -= 1) + 1)
+          i -= 1
         end
       end
       return nil
@@ -846,7 +846,7 @@ module Sun::Security::X509
         i = 0
         while i < nameseq.attr_length
           @names[i] = RDN.new(nameseq[i])
-          ((i += 1) - 1)
+          i += 1
         end
       end
     end
@@ -869,7 +869,7 @@ module Sun::Security::X509
       i = 0
       while i < @names.attr_length
         @names[i].encode(tmp)
-        ((i += 1) - 1)
+        i += 1
       end
       out.write(DerValue.attr_tag_sequence, tmp)
     end
@@ -885,7 +885,7 @@ module Sun::Security::X509
         i = 0
         while i < @names.attr_length
           @names[i].encode(tmp)
-          ((i += 1) - 1)
+          i += 1
         end
         out.write(DerValue.attr_tag_sequence, tmp)
         @encoded = out.to_byte_array
@@ -1016,9 +1016,9 @@ module Sun::Security::X509
         i = from
         while i < to
           if (((string.char_at(i)).equal?(Character.new(?".ord)) && (i).equal?(from)) || ((string.char_at(i)).equal?(Character.new(?".ord)) && !(string.char_at(i - 1)).equal?(Character.new(?\\.ord))))
-            ((count += 1) - 1)
+            count += 1
           end
-          ((i += 1) - 1)
+          i += 1
         end
         return count
       end
@@ -1039,12 +1039,12 @@ module Sun::Security::X509
               # case 3:
               # foo\\\\\,
               count = 0
-              ((rdn_end -= 1) + 1) # back up to last backSlash
+              rdn_end -= 1 # back up to last backSlash
               while (rdn_end >= search_offset)
                 if ((dn_string.char_at(rdn_end)).equal?(Character.new(?\\.ord)))
-                  ((count += 1) - 1) # count consecutive backslashes
+                  count += 1 # count consecutive backslashes
                 end
-                ((rdn_end -= 1) + 1)
+                rdn_end -= 1
               end
               # if count is odd, then rdnEnd is escaped
               return !((count % 2)).equal?(0) ? true : false
@@ -1075,7 +1075,7 @@ module Sun::Security::X509
             sb.append(", ")
           end
           sb.append(@names[i].to_s)
-          ((i -= 1) + 1)
+          i -= 1
         end
       end
       @dn = (sb.to_s).to_s
@@ -1101,7 +1101,7 @@ module Sun::Security::X509
             sb.append(", ")
           end
           sb.append(@names[i].to_rfc1779string(oid_map))
-          ((i -= 1) + 1)
+          i -= 1
         end
       end
       return sb.to_s
@@ -1304,7 +1304,7 @@ module Sun::Security::X509
         if (!(@names[i] == other.attr_names[i]))
           return false
         end
-        ((i += 1) - 1)
+        i += 1
       end
       return true
     end
@@ -1346,14 +1346,14 @@ module Sun::Security::X509
             break
           end
         end
-        ((i += 1) - 1)
+        i += 1
       end
       # Copy matching RDNs into new RDN array
       ancestor = Array.typed(RDN).new(i) { nil }
       j = 0
       while j < i
         ancestor[j] = @names[j]
-        ((j += 1) - 1)
+        j += 1
       end
       common_ancestor = nil
       begin

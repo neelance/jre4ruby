@@ -437,7 +437,7 @@ module Sun::Security::Pkcs11
         engine_update(@buffer, 0, 1)
       when T_DIGEST
         @md.update(b)
-        ((@bytes_processed += 1) - 1)
+        @bytes_processed += 1
       when T_RAW
         if (@bytes_processed >= @buffer.attr_length)
           @bytes_processed = @buffer.attr_length + 1

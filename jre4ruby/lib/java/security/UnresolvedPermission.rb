@@ -185,7 +185,7 @@ module Java::Security
             @certs = certs.clone
             break
           end
-          ((i += 1) - 1)
+          i += 1
         end
         if ((@certs).nil?)
           # Go through the list of certs and see if all the certs are
@@ -193,11 +193,11 @@ module Java::Security
           i_ = 0
           count = 0
           while (i_ < certs.attr_length)
-            ((count += 1) - 1)
+            count += 1
             while (((i_ + 1) < certs.attr_length) && ((certs[i_]).get_issuer_dn == (certs[i_ + 1]).get_subject_dn))
-              ((i_ += 1) - 1)
+              i_ += 1
             end
-            ((i_ += 1) - 1)
+            i_ += 1
           end
           if ((count).equal?(certs.attr_length))
             # All the certs are signer certs, so we store the entire
@@ -211,9 +211,9 @@ module Java::Security
             while (i_ < certs.attr_length)
               signer_certs.add(certs[i_])
               while (((i_ + 1) < certs.attr_length) && ((certs[i_]).get_issuer_dn == (certs[i_ + 1]).get_subject_dn))
-                ((i_ += 1) - 1)
+                i_ += 1
               end
-              ((i_ += 1) - 1)
+              i_ += 1
             end
             @certs = Array.typed(Java::Security::Cert::Certificate).new(signer_certs.size) { nil }
             signer_certs.to_array(@certs)
@@ -253,12 +253,12 @@ module Java::Security
               match = true
               break
             end
-            ((j += 1) - 1)
+            j += 1
           end
           if (!match)
             return nil
           end
-          ((i += 1) - 1)
+          i += 1
         end
       end
       begin
@@ -380,12 +380,12 @@ module Java::Security
             match = true
             break
           end
-          ((j += 1) - 1)
+          j += 1
         end
         if (!match)
           return false
         end
-        ((i += 1) - 1)
+        i += 1
       end
       i = 0
       while !(that.attr_certs).nil? && i < that.attr_certs.attr_length
@@ -396,12 +396,12 @@ module Java::Security
             match = true
             break
           end
-          ((j += 1) - 1)
+          j += 1
         end
         if (!match)
           return false
         end
-        ((i += 1) - 1)
+        i += 1
       end
       return true
     end
@@ -539,7 +539,7 @@ module Java::Security
           rescue CertificateEncodingException => cee
             raise IOException.new(cee.get_message)
           end
-          ((i += 1) - 1)
+          i += 1
         end
       end
     end
@@ -594,7 +594,7 @@ module Java::Security
           raise IOException.new(ce.get_message)
         end
         bais.close
-        ((i += 1) - 1)
+        i += 1
       end
     end
     

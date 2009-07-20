@@ -79,7 +79,7 @@ module Sun::Security::Krb5::Internal
           else
             @entry[i] = new_entries[i].clone
           end
-          ((i += 1) - 1)
+          i += 1
         end
       end
     end
@@ -99,7 +99,7 @@ module Sun::Security::Krb5::Internal
         i = 0
         while i < @entry.attr_length
           new_authorization_data.attr_entry[i] = @entry[i].clone
-          ((i += 1) - 1)
+          i += 1
         end
       end
       return new_authorization_data
@@ -136,7 +136,7 @@ module Sun::Security::Krb5::Internal
       i = 0
       while i < @entry.attr_length
         der[i] = DerValue.new(@entry[i].asn1_encode)
-        ((i += 1) - 1)
+        i += 1
       end
       bytes.put_sequence(der)
       return bytes.to_byte_array
@@ -177,7 +177,7 @@ module Sun::Security::Krb5::Internal
       i = 0
       while i < @entry.attr_length
         @entry[i].write_entry(cos)
-        ((i += 1) - 1)
+        i += 1
       end
     end
     
@@ -187,7 +187,7 @@ module Sun::Security::Krb5::Internal
       i = 0
       while i < @entry.attr_length
         ret_val += (@entry[i].to_s).to_s
-        ((i += 1) - 1)
+        i += 1
       end
       return ret_val
     end

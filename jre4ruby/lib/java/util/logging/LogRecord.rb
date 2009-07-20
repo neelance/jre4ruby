@@ -515,7 +515,7 @@ module Java::Util::Logging
         else
           out.write_object(@parameters[i].to_s)
         end
-        ((i += 1) - 1)
+        i += 1
       end
     end
     
@@ -537,7 +537,7 @@ module Java::Util::Logging
         i = 0
         while i < @parameters.attr_length
           @parameters[i] = in_.read_object
-          ((i += 1) - 1)
+          i += 1
         end
       end
       # If necessary, try to regenerate the resource bundle.
@@ -567,7 +567,7 @@ module Java::Util::Logging
         if ((cname == "java.util.logging.Logger"))
           break
         end
-        ((ix += 1) - 1)
+        ix += 1
       end
       # Now search for the first frame before the "Logger" class.
       while (ix < stack.attr_length)
@@ -579,7 +579,7 @@ module Java::Util::Logging
           set_source_method_name(frame.get_method_name)
           return
         end
-        ((ix += 1) - 1)
+        ix += 1
       end
       # We haven't found a suitable frame, so just punt.  This is
       # OK as we are only committed to making a "best effort" here.

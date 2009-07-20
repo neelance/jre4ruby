@@ -376,7 +376,7 @@ module Java::Util::Prefs
         i = 0
         while i < keys_.attr_length
           remove(keys_[i])
-          ((i += 1) - 1)
+          i += 1
         end
       end
     end
@@ -747,7 +747,7 @@ module Java::Util::Prefs
         i = 0
         while i < kids.attr_length
           s.add(kids[i])
-          ((i += 1) - 1)
+          i += 1
         end
         return s.to_array(EMPTY_STRING_ARRAY)
       end
@@ -1005,7 +1005,7 @@ module Java::Util::Prefs
           if (!@kid_cache.contains_key(kid_names[i]))
             @kid_cache.put(kid_names[i], child_spi(kid_names[i]))
           end
-          ((i += 1) - 1)
+          i += 1
         end
         # Recursively remove all cached children
         i_ = @kid_cache.values.iterator
@@ -1161,7 +1161,7 @@ module Java::Util::Prefs
         # Copy-on-write
         i = 0
         while (i < @node_listeners.attr_length && !(@node_listeners[i]).equal?(ncl))
-          ((i += 1) - 1)
+          i += 1
         end
         if ((i).equal?(@node_listeners.attr_length))
           raise IllegalArgumentException.new("Listener not registered.")
@@ -1326,7 +1326,7 @@ module Java::Util::Prefs
           if ((kid_names[i] == node_name))
             return child_spi(kid_names[i])
           end
-          ((i += 1) - 1)
+          i += 1
         end
       end
       return nil
@@ -1408,7 +1408,7 @@ module Java::Util::Prefs
       i = 0
       while i < cached_kids.attr_length
         cached_kids[i].sync2
-        ((i += 1) - 1)
+        i += 1
       end
     end
     
@@ -1471,7 +1471,7 @@ module Java::Util::Prefs
       i = 0
       while i < cached_kids.attr_length
         cached_kids[i].flush2
-        ((i += 1) - 1)
+        i += 1
       end
     end
     
@@ -1589,7 +1589,7 @@ module Java::Util::Prefs
               i = 0
               while i < listeners.attr_length
                 listeners[i].preference_change(pce)
-                ((i += 1) - 1)
+                i += 1
               end
             else
               nce = event
@@ -1598,14 +1598,14 @@ module Java::Util::Prefs
                 i = 0
                 while i < listeners.attr_length
                   listeners[i].child_added(nce)
-                  ((i += 1) - 1)
+                  i += 1
                 end
               else
                 # assert nce instanceof NodeRemovedEvent;
                 i = 0
                 while i < listeners.attr_length
                   listeners[i].child_removed(nce)
-                  ((i += 1) - 1)
+                  i += 1
                 end
               end
             end

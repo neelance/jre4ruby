@@ -205,7 +205,7 @@ module Sun::Security::Provider::Certpath
         # update traversedCACerts only if this is a non-self-issued
         # intermediate CA cert
         if (!@init && !(cert.get_basic_constraints).equal?(-1))
-          ((@traversed_cacerts += 1) - 1)
+          @traversed_cacerts += 1
         end
       end
       # update subjectNamesTraversed only if this is the EE cert or if

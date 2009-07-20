@@ -144,7 +144,7 @@ module Sun::Security::Ssl
             @key_pair = nil
             return nil
           end
-          ((@uses += 1) - 1)
+          @uses += 1
           return @key_pair
         end
         

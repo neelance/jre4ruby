@@ -179,7 +179,7 @@ module Sun::Security::Util
           else
             num_of_encapsulated_len_bytes += (elem).attr_length - 3
           end
-          ((index -= 1) + 1)
+          index -= 1
         end
         if (index < 0)
           raise IOException.new("EOC does not have matching " + "indefinite-length tag")
@@ -193,7 +193,7 @@ module Sun::Security::Util
         # EOC bytes (2 bytes) for this section
         @num_of_total_len_bytes += (section_len_bytes.attr_length - 3)
       end
-      ((@data_pos += 1) - 1)
+      @data_pos += 1
     end
     
     typesig { [] }
@@ -205,7 +205,7 @@ module Sun::Security::Util
       end
       tag = @data[((@data_pos += 1) - 1)]
       if (is_eoc(tag) && ((@data[@data_pos]).equal?(0)))
-        ((@data_pos += 1) - 1) # skip length
+        @data_pos += 1 # skip length
         write_tag
       else
         @new_data[((@new_data_pos += 1) - 1)] = tag
@@ -236,7 +236,7 @@ module Sun::Security::Util
         i = 0
         while i < len_byte
           cur_len = (cur_len << 8) + (@data[((@data_pos += 1) - 1)] & 0xff)
-          ((i += 1) - 1)
+          i += 1
         end
       else
         cur_len = (len_byte & LEN_MASK)
@@ -266,7 +266,7 @@ module Sun::Security::Util
         i = 0
         while i < len_byte
           cur_len = (cur_len << 8) + (@data[((@data_pos += 1) - 1)] & 0xff)
-          ((i += 1) - 1)
+          i += 1
         end
       else
         cur_len = (len_byte & LEN_MASK)
@@ -382,7 +382,7 @@ module Sun::Security::Util
       i = 0
       while i < cur_len
         @new_data[((@new_data_pos += 1) - 1)] = @data[((@data_pos += 1) - 1)]
-        ((i += 1) - 1)
+        i += 1
       end
     end
     

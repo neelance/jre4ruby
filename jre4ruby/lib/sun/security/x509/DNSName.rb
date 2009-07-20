@@ -119,7 +119,7 @@ module Sun::Security::X509
           if ((AlphaDigitsAndHyphen).index_of(x) < 0)
             raise IOException.new("DNSName components must consist of letters, digits, and hyphens")
           end
-          ((non_start_index += 1) - 1)
+          non_start_index += 1
         end
         start_index = end_index + 1
       end
@@ -259,7 +259,7 @@ module Sun::Security::X509
       # count dots
       while subtree.last_index_of(Character.new(?..ord)) >= 0
         subtree = (subtree.substring(0, subtree.last_index_of(Character.new(?..ord)))).to_s
-        ((i += 1) - 1)
+        i += 1
       end
       return i
     end

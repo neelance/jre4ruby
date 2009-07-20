@@ -195,7 +195,7 @@ module Sun::Security::Krb5::Internal
           else
             @additional_tickets[i] = new_additional_tickets[i].clone
           end
-          ((i += 1) - 1)
+          i += 1
         end
       end
     end
@@ -256,7 +256,7 @@ module Sun::Security::Krb5::Internal
           i = 0
           while i < v.size
             @e_type[i] = v.element_at(i)
-            ((i += 1) - 1)
+            i += 1
           end
         else
           raise Asn1Exception.new(Krb5::ASN1_BAD_ID)
@@ -328,7 +328,7 @@ module Sun::Security::Krb5::Internal
       i = 0
       while i < @e_type.attr_length
         temp.put_integer(BigInteger.value_of(@e_type[i]))
-        ((i += 1) - 1)
+        i += 1
       end
       e_typetemp = DerOutputStream.new
       e_typetemp.write(DerValue.attr_tag_sequence_of, temp)
@@ -344,7 +344,7 @@ module Sun::Security::Krb5::Internal
         i_ = 0
         while i_ < @additional_tickets.attr_length
           temp.write(@additional_tickets[i_].asn1_encode)
-          ((i_ += 1) - 1)
+          i_ += 1
         end
         tickets_temp = DerOutputStream.new
         tickets_temp.write(DerValue.attr_tag_sequence_of, temp)

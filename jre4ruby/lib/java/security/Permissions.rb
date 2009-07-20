@@ -291,9 +291,9 @@ module Java::Security
         j = 0
         while j < signers.attr_length
           if (signers[j].is_a?(Java::Security::Cert::Certificate))
-            ((n += 1) - 1)
+            n += 1
           end
-          ((j += 1) - 1)
+          j += 1
         end
         certs = Array.typed(Java::Security::Cert::Certificate).new(n) { nil }
         n = 0
@@ -302,7 +302,7 @@ module Java::Security
           if (signers[j_].is_a?(Java::Security::Cert::Certificate))
             certs[((n += 1) - 1)] = signers[j_]
           end
-          ((j_ += 1) - 1)
+          j_ += 1
         end
       end
       pc = nil
@@ -321,7 +321,7 @@ module Java::Security
             end
             pc.add(perm)
           end
-          ((i += 1) - 1)
+          i += 1
         end
       end
       return pc

@@ -424,7 +424,7 @@ module Java::Text
       i = 0
       while i < state_table_length
         @state_table[i] = BreakIterator.get_short(buffer, offset)
-        ((i += 1) - 1)
+        i += 1
         offset += 2
       end
       # Read backwardsStateTable[numCategories * numRows]
@@ -432,7 +432,7 @@ module Java::Text
       i_ = 0
       while i_ < backwards_state_table_length
         @backwards_state_table[i_] = BreakIterator.get_short(buffer, offset)
-        ((i_ += 1) - 1)
+        i_ += 1
         offset += 2
       end
       # Read endStates[numRows]
@@ -440,23 +440,23 @@ module Java::Text
       i__ = 0
       while i__ < end_states_length
         @end_states[i__] = (buffer[offset]).equal?(1)
-        ((i__ += 1) - 1)
-        ((offset += 1) - 1)
+        i__ += 1
+        offset += 1
       end
       # Read lookaheadStates[numRows]
       @lookahead_states = Array.typed(::Java::Boolean).new(lookahead_states_length) { false }
       i___ = 0
       while i___ < lookahead_states_length
         @lookahead_states[i___] = (buffer[offset]).equal?(1)
-        ((i___ += 1) - 1)
-        ((offset += 1) - 1)
+        i___ += 1
+        offset += 1
       end
       # Read a category table and indices for BMP characters.
       temp1 = Array.typed(::Java::Short).new(BMP_INDICES_LENGTH) { 0 } # BMPindices
       i____ = 0
       while i____ < BMP_INDICES_LENGTH
         temp1[i____] = BreakIterator.get_short(buffer, offset)
-        ((i____ += 1) - 1)
+        i____ += 1
         offset += 2
       end
       temp2 = Array.typed(::Java::Byte).new(bmpdata_length) { 0 } # BMPdata
@@ -468,7 +468,7 @@ module Java::Text
       i_____ = 0
       while i_____ < non_bmpdata_length
         temp3[i_____] = BreakIterator.get_int(buffer, offset)
-        ((i_____ += 1) - 1)
+        i_____ += 1
         offset += 4
       end
       @supplementary_char_category_table = SupplementaryCharacterData.new(temp3)
@@ -519,8 +519,8 @@ module Java::Text
         if (!(buf[offset]).equal?(LABEL[offset]))
           raise MissingResourceException.new("Wrong magic number", datafile, "")
         end
-        ((i += 1) - 1)
-        ((offset += 1) - 1)
+        i += 1
+        offset += 1
       end
       # Validate the version number.
       if (!(buf[offset]).equal?(SupportedVersion))
@@ -1075,7 +1075,7 @@ module Java::Text
         
         typesig { [] }
         def next
-          ((@current_index += 1) - 1)
+          @current_index += 1
           if (@current_index >= @range_limit)
             @current_index = @range_limit
             return DONE
@@ -1086,7 +1086,7 @@ module Java::Text
         
         typesig { [] }
         def previous
-          ((@current_index -= 1) + 1)
+          @current_index -= 1
           if (@current_index < @range_start)
             @current_index = @range_start
             return DONE

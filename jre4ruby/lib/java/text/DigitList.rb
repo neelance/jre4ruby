@@ -636,7 +636,7 @@ module Java::Text
         if (!(@digits[i]).equal?(other.attr_digits[i]))
           return false
         end
-        ((i += 1) - 1)
+        i += 1
       end
       return true
     end
@@ -648,7 +648,7 @@ module Java::Text
       i = 0
       while i < @count
         hashcode = hashcode * 37 + @digits[i]
-        ((i += 1) - 1)
+        i += 1
       end
       return hashcode
     end
@@ -693,10 +693,10 @@ module Java::Text
         positive = true
         if (((c = str[offset])).equal?(Character.new(?-.ord)))
           positive = false
-          ((offset += 1) - 1)
+          offset += 1
         else
           if ((c).equal?(Character.new(?+.ord)))
-            ((offset += 1) - 1)
+            offset += 1
           end
         end
         value = 0

@@ -599,9 +599,9 @@ module Sun::Misc
         j = 0
         while j < methods.attr_length
           add_proxy_method(methods[j], @interfaces[i])
-          ((j += 1) - 1)
+          j += 1
         end
-        ((i += 1) - 1)
+        i += 1
       end
       # For each set of proxy methods with the same signature,
       # verify that the methods' return types are compatible.
@@ -642,7 +642,7 @@ module Sun::Misc
       i_ = 0
       while i_ < @interfaces.attr_length
         @cp.get_class(dot_to_slash(@interfaces[i_].get_name))
-        ((i_ += 1) - 1)
+        i_ += 1
       end
       # Disallow new constant pool additions beyond this point, since
       # we are about to write the final constant pool table.
@@ -672,7 +672,7 @@ module Sun::Misc
         i__ = 0
         while i__ < @interfaces.attr_length
           dout.write_short(@cp.get_class(dot_to_slash(@interfaces[i__].get_name)))
-          ((i__ += 1) - 1)
+          i__ += 1
         end
         # u2 fields_count;
         dout.write_short(@fields.size)
@@ -1033,7 +1033,7 @@ module Sun::Misc
           i = 0
           while i < @declared_exceptions.attr_length
             out.write_short(@declared_exceptions[i])
-            ((i += 1) - 1)
+            i += 1
           end
         end
         
@@ -1112,7 +1112,7 @@ module Sun::Misc
           while i < parameter_slot.attr_length
             parameter_slot[i] = next_slot
             next_slot += get_words_per_type(@parameter_types[i])
-            ((i += 1) - 1)
+            i += 1
           end
           local_slot0 = next_slot
           pc = 0
@@ -1135,7 +1135,7 @@ module Sun::Misc
               code_ipush(i_, out)
               code_wrap_argument(@parameter_types[i_], parameter_slot[i_], out)
               out.write_byte(Opc_aastore)
-              ((i_ += 1) - 1)
+              i_ += 1
             end
           else
             out.write_byte(Opc_aconst_null)
@@ -1177,7 +1177,7 @@ module Sun::Misc
           i_ = 0
           while i_ < @exception_types.attr_length
             minfo.attr_declared_exceptions[i_] = self.attr_cp.get_class(dot_to_slash(@exception_types[i_].get_name))
-            ((i_ += 1) - 1)
+            i_ += 1
           end
           return minfo
         end
@@ -1273,7 +1273,7 @@ module Sun::Misc
               code_class_for_name(@parameter_types[i], out)
             end
             out.write_byte(Opc_aastore)
-            ((i += 1) - 1)
+            i += 1
           end
           out.write_byte(Opc_invokevirtual)
           out.write_short(self.attr_cp.get_method_ref("java/lang/Class", "getMethod", "(Ljava/lang/String;[Ljava/lang/Class;)" + "Ljava/lang/reflect/Method;"))
@@ -1513,7 +1513,7 @@ module Sun::Misc
         i = 0
         while i < parameter_types.attr_length
           desc.append(get_field_type(parameter_types[i]))
-          ((i += 1) - 1)
+          i += 1
         end
         desc.append(Character.new(?).ord))
         return desc.to_s
@@ -1555,13 +1555,13 @@ module Sun::Misc
           dimensions = 0
           while (parameter_type.is_array)
             parameter_type = parameter_type.get_component_type
-            ((dimensions += 1) - 1)
+            dimensions += 1
           end
           sig.append(parameter_type.get_name)
           while (((dimensions -= 1) + 1) > 0)
             sig.append("[]")
           end
-          ((i += 1) - 1)
+          i += 1
         end
         sig.append(Character.new(?).ord))
         return sig.to_s
@@ -1601,10 +1601,10 @@ module Sun::Misc
                 list.add(from[i])
                 break
               end
-              ((j += 1) - 1)
+              j += 1
             end
           end
-          ((i += 1) - 1)
+          i += 1
         end
       end
       
@@ -1646,7 +1646,7 @@ module Sun::Misc
             else
               if (!Exception.class.is_assignable_from(ex))
                 # Ignore types that cannot be thrown by the invoke method.
-                ((i += 1) - 1)
+                i += 1
                 next
               end
             end
@@ -1665,14 +1665,14 @@ module Sun::Misc
                   # to catch, then remove it;
                   unique_list.remove(j)
                 else
-                  ((j += 1) - 1) # else continue comparing.
+                  j += 1 # else continue comparing.
                 end
               end
             end
             # This exception is unique (so far): add it to the list to catch.
             unique_list.add(ex)
           end
-          ((i += 1) - 1)
+          i += 1
         end
         return unique_list
       end

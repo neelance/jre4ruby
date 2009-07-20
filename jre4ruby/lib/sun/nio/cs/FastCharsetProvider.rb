@@ -100,7 +100,7 @@ module Sun::Nio::Cs
             all_lower = false
             break
           end
-          ((i += 1) - 1)
+          i += 1
         end
         if (all_lower)
           return s
@@ -114,7 +114,7 @@ module Sun::Nio::Cs
           else
             ca[i_] = RJava.cast_to_char(c)
           end
-          ((i_ += 1) - 1)
+          i_ += 1
         end
         return String.new(ca)
       end

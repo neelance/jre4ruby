@@ -361,7 +361,7 @@ module Java::Util::Jar
           i = 0
           while i < signers.attr_length
             cert_chains.add_all(signers[i].get_signer_cert_path.get_certificates)
-            ((i += 1) - 1)
+            i += 1
           end
           # Convert into a Certificate[]
           return cert_chains.to_array(Array.typed(Java::Security::Cert::Certificate).new(cert_chains.size) { nil })
@@ -443,7 +443,7 @@ module Java::Util::Jar
           if (@num_left > 0)
             b = @is.read
             @jv.update(b, @mev)
-            ((@num_left -= 1) + 1)
+            @num_left -= 1
             if ((@num_left).equal?(0))
               @jv.update(-1, @mev)
             end

@@ -166,7 +166,7 @@ module Sun::Security::Krb5::Internal
               rescue Exception => exc
                 new_tgt = nil
               end
-              ((k -= 1) + 1)
+              k -= 1
             end
           end # Ends 'if (newTgt == null)'
           if ((new_tgt).nil?)
@@ -196,7 +196,7 @@ module Sun::Security::Krb5::Internal
             if ((new_tgt_realm == realms[k]))
               break
             end
-            ((k += 1) - 1)
+            k += 1
           end
           if (k < realms.attr_length)
             # (re)set the counter so we start looking

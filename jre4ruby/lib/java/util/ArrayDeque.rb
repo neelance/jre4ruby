@@ -143,7 +143,7 @@ module Java::Util
         initial_capacity |= (initial_capacity >> 4)
         initial_capacity |= (initial_capacity >> 8)
         initial_capacity |= (initial_capacity >> 16)
-        ((initial_capacity += 1) - 1)
+        initial_capacity += 1
         if (initial_capacity < 0)
           # Too many elements, must back off
           initial_capacity >>= 1
@@ -936,7 +936,7 @@ module Java::Util
       i = 0
       while i < size_
         @elements[i] = s.read_object
-        ((i += 1) - 1)
+        i += 1
       end
     end
     

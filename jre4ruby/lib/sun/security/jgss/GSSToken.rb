@@ -92,8 +92,8 @@ module Sun::Security::Jgss
         while (size > 0)
           ret_val += (data[pos] & 0xff) << shifter
           shifter += 8
-          ((pos += 1) - 1)
-          ((size -= 1) + 1)
+          pos += 1
+          size -= 1
         end
         return ret_val
       end
@@ -105,8 +105,8 @@ module Sun::Security::Jgss
         while (size > 0)
           ret_val += (data[pos] & 0xff) << shifter
           shifter -= 8
-          ((pos += 1) - 1)
-          ((size -= 1) + 1)
+          pos += 1
+          size -= 1
         end
         return ret_val
       end
@@ -216,7 +216,7 @@ module Sun::Security::Jgss
           sb.append(JavaInteger.to_hex_string(b1))
           sb.append(JavaInteger.to_hex_string(b2))
           sb.append(Character.new(?\s.ord))
-          ((i += 1) - 1)
+          i += 1
         end
         return sb.to_s
       end

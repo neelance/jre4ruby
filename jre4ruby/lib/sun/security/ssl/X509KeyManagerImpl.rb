@@ -341,7 +341,7 @@ module Sun::Security::Ssl
         rescue Exception => e
           # ignore
         end
-        ((i += 1) - 1)
+        i += 1
       end
       if ((all_results).nil?)
         if (UseDebug)
@@ -383,7 +383,7 @@ module Sun::Security::Ssl
         rescue Exception => e
           # ignore
         end
-        ((i += 1) - 1)
+        i += 1
       end
       if ((all_results).nil? || (all_results.size).equal?(0))
         if (UseDebug)
@@ -738,7 +738,7 @@ module Sun::Security::Ssl
             key_index = j
             break
           end
-          ((j += 1) - 1)
+          j += 1
         end
         if ((key_index).equal?(-1))
           if (UseDebug)

@@ -189,7 +189,7 @@ module Sun::Security::Krb5::Internal::Crypto
           if (!(cksum1[i]).equal?(cksum2[i]))
             return false
           end
-          ((i += 1) - 1)
+          i += 1
         end
         return true
       end

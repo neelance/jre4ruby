@@ -226,9 +226,9 @@ module Java::Util::Logging
         ix = (@start + @count) % @buffer.attr_length
         @buffer[ix] = record
         if (@count < @buffer.attr_length)
-          ((@count += 1) - 1)
+          @count += 1
         else
-          ((@start += 1) - 1)
+          @start += 1
           @start %= @buffer.attr_length
         end
         if (record.get_level.int_value >= @push_level.int_value)
@@ -248,7 +248,7 @@ module Java::Util::Logging
           ix = (@start + i) % @buffer.attr_length
           record = @buffer[ix]
           @target.publish(record)
-          ((i += 1) - 1)
+          i += 1
         end
         # Empty the buffer.
         @start = 0

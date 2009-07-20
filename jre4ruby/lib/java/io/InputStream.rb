@@ -201,7 +201,7 @@ module Java::Io
             break
           end
           b[off + i] = c
-          ((i += 1) - 1)
+          i += 1
         end
       rescue IOException => ee
       end

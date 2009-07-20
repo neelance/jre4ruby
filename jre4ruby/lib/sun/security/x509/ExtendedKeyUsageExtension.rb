@@ -165,7 +165,7 @@ module Sun::Security::X509
       i = 0
       while i < @key_usages.size
         tmp.put_oid(@key_usages.element_at(i))
-        ((i += 1) - 1)
+        i += 1
       end
       os.write(DerValue.attr_tag_sequence, tmp)
       self.attr_extension_value = os.to_byte_array

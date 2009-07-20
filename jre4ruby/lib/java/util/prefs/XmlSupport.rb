@@ -99,7 +99,7 @@ module Java::Util::Prefs
           e.append_child(doc.create_element("map"))
           e = e.append_child(doc.create_element("node"))
           e.set_attribute("name", (ancestors.get(i)).name)
-          ((i -= 1) + 1)
+          i -= 1
         end
         put_preferences_in_xml(e, doc, p, sub_tree)
         write_doc(doc, os)
@@ -138,7 +138,7 @@ module Java::Util::Prefs
             entry.set_attribute("key", keys_[i])
             # NEXT STATEMENT THROWS NULL PTR EXC INSTEAD OF ASSERT FAIL
             entry.set_attribute("value", prefs.get(keys_[i], nil))
-            ((i += 1) - 1)
+            i += 1
           end
           # Recurse if appropriate
           if (sub_tree)
@@ -148,7 +148,7 @@ module Java::Util::Prefs
             i_ = 0
             while i_ < kid_names.attr_length
               kids_copy[i_] = prefs.node(kid_names[i_])
-              ((i_ += 1) - 1)
+              i_ += 1
             end
           end
           # release lock
@@ -159,7 +159,7 @@ module Java::Util::Prefs
             xml_kid = elt.append_child(doc.create_element("node"))
             xml_kid.set_attribute("name", kid_names[i_])
             put_preferences_in_xml(xml_kid, doc, kids_copy[i_], sub_tree)
-            ((i_ += 1) - 1)
+            i_ += 1
           end
         end
       end
@@ -269,14 +269,14 @@ module Java::Util::Prefs
           while i < num_xml_kids
             xml_kid = xml_kids.item(i)
             prefs_kids[i - 1] = prefs_node.node(xml_kid.get_attribute("name"))
-            ((i += 1) - 1)
+            i += 1
           end
         end # unlocked the node
         # import children
         i_ = 1
         while i_ < num_xml_kids
           _import_subtree(prefs_kids[i_ - 1], xml_kids.item(i_))
-          ((i_ += 1) - 1)
+          i_ += 1
         end
       end
       
@@ -291,7 +291,7 @@ module Java::Util::Prefs
         while i < num_entries
           entry = entries.item(i)
           prefs_node.put(entry.get_attribute("key"), entry.get_attribute("value"))
-          ((i += 1) - 1)
+          i += 1
         end
       end
       
@@ -343,7 +343,7 @@ module Java::Util::Prefs
           while i < num_entries
             entry = entries.item(i)
             m.put(entry.get_attribute("key"), entry.get_attribute("value"))
-            ((i += 1) - 1)
+            i += 1
           end
         rescue SAXException => e
           raise InvalidPreferencesFormatException.new(e)

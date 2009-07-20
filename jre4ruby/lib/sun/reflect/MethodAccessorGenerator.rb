@@ -385,7 +385,7 @@ module Sun::Reflect
           self.attr_asm.emit_constant_pool_utf8(get_class_name(c, false))
           self.attr_asm.emit_constant_pool_class(self.attr_asm.cpi)
         end
-        ((i += 1) - 1)
+        i += 1
       end
       # Entries common to FieldAccessor, MethodAccessor and ConstructorAccessor
       emit_common_constant_pool_entries
@@ -625,7 +625,7 @@ module Sun::Reflect
               emit_widening_bytecode_for_primitive_conversion(cb, c, param_type)
               cb.opc_goto(next_param_label)
             end
-            ((j += 1) - 1)
+            j += 1
           end
           if ((l).nil?)
             raise InternalError.new("Must have found at least identity conversion")
@@ -644,7 +644,7 @@ module Sun::Reflect
           param_type_cpidx = add(param_type_cpidx, S2)
           # Fall through to next argument
         end
-        ((i += 1) - 1)
+        i += 1
       end
       # Bind last goto if present
       if (!(next_param_label).nil?)
@@ -731,7 +731,7 @@ module Sun::Reflect
         if (@parameter_types[i].is_primitive)
           return true
         end
-        ((i += 1) - 1)
+        i += 1
       end
       return false
     end
@@ -744,7 +744,7 @@ module Sun::Reflect
         if (!@parameter_types[i].is_primitive)
           (num += 1)
         end
-        ((i += 1) - 1)
+        i += 1
       end
       return num
     end
@@ -761,7 +761,7 @@ module Sun::Reflect
       i = 0
       while i < @parameter_types.attr_length
         buf.append(get_class_name(@parameter_types[i], true))
-        ((i += 1) - 1)
+        i += 1
       end
       buf.append(")")
       buf.append(get_class_name(@return_type, true))

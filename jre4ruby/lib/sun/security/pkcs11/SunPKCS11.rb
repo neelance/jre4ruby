@@ -438,7 +438,7 @@ module Sun::Security::Pkcs11
         while i < longs.attr_length
           sb.append(", ")
           sb.append(longs[i])
-          ((i += 1) - 1)
+          i += 1
         end
         return sb.to_s
       end
@@ -603,7 +603,7 @@ module Sun::Security::Pkcs11
             Descriptors.put(key, list)
           end
           list.add(d)
-          ((i += 1) - 1)
+          i += 1
         end
       end
       
@@ -889,19 +889,19 @@ module Sun::Security::Pkcs11
           System.out.println(mech_info)
         end
         if ((is_enabled_).equal?(false))
-          ((i += 1) - 1)
+          i += 1
           next
         end
         # we do not know of mechs with the upper 32 bits set
         if (!(long_mech >> 32).equal?(0))
-          ((i += 1) - 1)
+          i += 1
           next
         end
         mech = RJava.cast_to_int(long_mech)
         integer_mech = JavaInteger.value_of(mech)
         ds = Descriptors.get(integer_mech)
         if ((ds).nil?)
-          ((i += 1) - 1)
+          i += 1
           next
         end
         ds.each do |d|
@@ -922,10 +922,10 @@ module Sun::Security::Pkcs11
                 break
               end
             end
-            ((j += 1) - 1)
+            j += 1
           end
         end
-        ((i += 1) - 1)
+        i += 1
       end
       AccessController.do_privileged(# register algorithms in provider
       Class.new(PrivilegedAction.class == Class ? PrivilegedAction : Object) do

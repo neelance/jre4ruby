@@ -319,7 +319,7 @@ module Java::Util
       if ((e).nil?)
         raise NullPointerException.new
       end
-      ((@mod_count += 1) - 1)
+      @mod_count += 1
       i = @size
       if (i >= @queue.attr_length)
         grow(i + 1)
@@ -349,7 +349,7 @@ module Java::Util
           if ((o == @queue[i]))
             return i
           end
-          ((i += 1) - 1)
+          i += 1
         end
       end
       return -1
@@ -388,7 +388,7 @@ module Java::Util
           remove_at(i)
           return true
         end
-        ((i += 1) - 1)
+        i += 1
       end
       return false
     end
@@ -564,7 +564,7 @@ module Java::Util
             moved = @local_class_parent.remove_at(@last_ret)
             @last_ret = -1
             if ((moved).nil?)
-              ((@cursor -= 1) + 1)
+              @cursor -= 1
             else
               if ((@forget_me_not).nil?)
                 @forget_me_not = ArrayDeque.new
@@ -605,11 +605,11 @@ module Java::Util
     # Removes all of the elements from this priority queue.
     # The queue will be empty after this call returns.
     def clear
-      ((@mod_count += 1) - 1)
+      @mod_count += 1
       i = 0
       while i < @size
         @queue[i] = nil
-        ((i += 1) - 1)
+        i += 1
       end
       @size = 0
     end
@@ -620,7 +620,7 @@ module Java::Util
         return nil
       end
       s = (@size -= 1)
-      ((@mod_count += 1) - 1)
+      @mod_count += 1
       result = @queue[0]
       x = @queue[s]
       @queue[s] = nil
@@ -643,7 +643,7 @@ module Java::Util
     # avoid missing traversing elements.
     def remove_at(i)
       raise AssertError if not (i >= 0 && i < @size)
-      ((@mod_count += 1) - 1)
+      @mod_count += 1
       s = (@size -= 1)
       if ((s).equal?(i))
         # removed last element
@@ -771,7 +771,7 @@ module Java::Util
       i = (@size >> 1) - 1
       while i >= 0
         sift_down(i, @queue[i])
-        ((i -= 1) + 1)
+        i -= 1
       end
     end
     
@@ -804,7 +804,7 @@ module Java::Util
       i = 0
       while i < @size
         s.write_object(@queue[i])
-        ((i += 1) - 1)
+        i += 1
       end
     end
     
@@ -823,7 +823,7 @@ module Java::Util
       i = 0
       while i < @size
         @queue[i] = s.read_object
-        ((i += 1) - 1)
+        i += 1
       end
       # Elements are guaranteed to be in "proper order", but the
       # spec has never explained what that might be.

@@ -453,7 +453,7 @@ module Sun::Security::Provider::Certpath
             if (idp_reason_flags[i] && point_reason_flags[i])
               interim_reasons_mask[i] = true
             end
-            ((i += 1) - 1)
+            i += 1
           end
         else
           # set interim reasons mask to the value of
@@ -481,7 +481,7 @@ module Sun::Security::Provider::Certpath
         if (!reasons_mask[i] && interim_reasons_mask[i])
           one_or_more = true
         end
-        ((i += 1) - 1)
+        i += 1
       end
       if (!one_or_more)
         return false
@@ -541,7 +541,7 @@ module Sun::Security::Provider::Certpath
         if (!reasons_mask[i_] && interim_reasons_mask[i_])
           reasons_mask[i_] = true
         end
-        ((i_ += 1) - 1)
+        i_ += 1
       end
       return true
     end

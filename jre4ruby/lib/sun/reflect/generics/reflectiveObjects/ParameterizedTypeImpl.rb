@@ -85,7 +85,7 @@ module Sun::Reflect::Generics::ReflectiveObjects
       end
       i = 0
       while i < @actual_type_arguments.attr_length
-        ((i += 1) - 1)
+        i += 1
       end
     end
     

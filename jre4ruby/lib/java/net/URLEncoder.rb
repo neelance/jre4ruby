@@ -150,17 +150,17 @@ module Java::Net
         i = Character.new(?a.ord)
         while i <= Character.new(?z.ord)
           self.attr_dont_need_encoding.set(i)
-          ((i += 1) - 1)
+          i += 1
         end
         i = Character.new(?A.ord)
         while i <= Character.new(?Z.ord)
           self.attr_dont_need_encoding.set(i)
-          ((i += 1) - 1)
+          i += 1
         end
         i = Character.new(?0.ord)
         while i <= Character.new(?9.ord)
           self.attr_dont_need_encoding.set(i)
-          ((i += 1) - 1)
+          i += 1
         end
         self.attr_dont_need_encoding.set(Character.new(?\s.ord))
         # encoding a space to a + is done
@@ -246,7 +246,7 @@ module Java::Net
             end
             # System.out.println("Storing: " + c);
             out.append(RJava.cast_to_char(c))
-            ((i += 1) - 1)
+            i += 1
           else
             # convert to external encoding before hex conversion
             begin
@@ -269,11 +269,11 @@ module Java::Net
                     # + Integer.toHexString(d)
                     # + " is low surrogate");
                     char_array_writer.write(d)
-                    ((i += 1) - 1)
+                    i += 1
                   end
                 end
               end
-              ((i += 1) - 1)
+              i += 1
             end while (i < s.length && !self.attr_dont_need_encoding.get((c = RJava.cast_to_int(s.char_at(i)))))
             char_array_writer.flush
             str = String.new(char_array_writer.to_char_array)
@@ -293,7 +293,7 @@ module Java::Net
                 ch -= CaseDiff
               end
               out.append(ch)
-              ((j += 1) - 1)
+              j += 1
             end
             char_array_writer.reset
             need_to_change = true

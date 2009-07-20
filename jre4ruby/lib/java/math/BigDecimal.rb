@@ -359,13 +359,13 @@ module Java::Math
         isneg = false # assume positive
         if ((in_[offset]).equal?(Character.new(?-.ord)))
           isneg = true # leading minus means negative
-          ((offset += 1) - 1)
-          ((len -= 1) + 1)
+          offset += 1
+          len -= 1
         else
           if ((in_[offset]).equal?(Character.new(?+.ord)))
             # leading + allowed
-            ((offset += 1) - 1)
-            ((len -= 1) + 1)
+            offset += 1
+            len -= 1
           end
         end
         # should now be at numeric part of the significand
@@ -383,9 +383,9 @@ module Java::Math
           if ((c >= Character.new(?0.ord) && c <= Character.new(?9.ord)) || Character.is_digit(c))
             # have digit
             coeff[@precision] = c
-            ((@precision += 1) - 1) # count of digits
-            ((offset += 1) - 1)
-            ((len -= 1) + 1)
+            @precision += 1 # count of digits
+            offset += 1
+            len -= 1
             next
           end
           if ((c).equal?(Character.new(?..ord)))
@@ -395,24 +395,24 @@ module Java::Math
               raise NumberFormatException.new
             end
             dotoff = offset
-            ((offset += 1) - 1)
-            ((len -= 1) + 1)
+            offset += 1
+            len -= 1
             next
           end
           # exponent expected
           if ((!(c).equal?(Character.new(?e.ord))) && (!(c).equal?(Character.new(?E.ord))))
             raise NumberFormatException.new
           end
-          ((offset += 1) - 1)
+          offset += 1
           c = in_[offset]
-          ((len -= 1) + 1)
+          len -= 1
           negexp = false
           # optional sign
           if ((c).equal?(Character.new(?-.ord)) || (c).equal?(Character.new(?+.ord)))
             negexp = ((c).equal?(Character.new(?-.ord)))
-            ((offset += 1) - 1)
+            offset += 1
             c = in_[offset]
-            ((len -= 1) + 1)
+            len -= 1
           end
           if (len <= 0)
             # no exponent digits
@@ -420,9 +420,9 @@ module Java::Math
           end
           # skip leading zeros in the exponent
           while (len > 10 && (Character.digit(c, 10)).equal?(0))
-            ((offset += 1) - 1)
+            offset += 1
             c = in_[offset]
-            ((len -= 1) + 1)
+            len -= 1
           end
           if (len > 10)
             # too many nonzero exponent digits
@@ -444,9 +444,9 @@ module Java::Math
             if ((len).equal?(1))
               break
             end # that was final character
-            ((offset += 1) - 1)
+            offset += 1
             c = in_[offset]
-            ((len -= 1) + 1)
+            len -= 1
           end
           if (negexp)
             # apply sign
@@ -458,8 +458,8 @@ module Java::Math
             raise NumberFormatException.new
           end
           break # [saves a test]
-          ((offset += 1) - 1)
-          ((len -= 1) + 1)
+          offset += 1
+          len -= 1
         end
         # here when no characters left
         if ((@precision).equal?(0))
@@ -482,8 +482,8 @@ module Java::Math
         # Remove leading zeros from precision (digits count)
         first = 0
         while ((coeff[first]).equal?(Character.new(?0.ord)) || (Character.digit(coeff[first], 10)).equal?(0)) && @precision > 1
-          ((@precision -= 1) + 1)
-          ((first += 1) - 1)
+          @precision -= 1
+          first += 1
         end
         # Set the significand ..
         # Copy significand to exact-sized array, with sign if
@@ -795,7 +795,7 @@ module Java::Math
       while (((significand & 1)).equal?(0))
         # i.e., significand is even
         significand >>= 1
-        ((exponent += 1) - 1)
+        exponent += 1
       end
       # Calculate intVal and scale
       @int_val = BigInteger.value_of(sign * significand)
@@ -2058,7 +2058,7 @@ module Java::Math
         if (seenbit)
           acc = acc.multiply(acc, workmc)
         end # acc=acc*acc [square]
-        ((i += 1) - 1)
+        i += 1
       end
       # if negative n, calculate the reciprocal using working precision
       if (n < 0)
@@ -2854,7 +2854,7 @@ module Java::Math
           i = 0
           while i < -insertion_point
             buf.append(Character.new(?0.ord))
-            ((i += 1) - 1)
+            i += 1
           end
           buf.append(int_string)
         end
@@ -3171,7 +3171,7 @@ module Java::Math
           buf.append(Character.new(?..ord))
           while pad > 0
             buf.append(Character.new(?0.ord))
-            ((pad -= 1) + 1)
+            pad -= 1
           end
           buf.append(coeff)
         else
@@ -3197,7 +3197,7 @@ module Java::Math
             sig += 3
           end # [adjusted was negative]
           adjusted -= sig # now a multiple of 3
-          ((sig += 1) - 1)
+          sig += 1
           if ((signum).equal?(0))
             case (sig)
             when 1
@@ -3219,7 +3219,7 @@ module Java::Math
               i = sig - coeff.attr_length
               while i > 0
                 buf.append(Character.new(?0.ord))
-                ((i -= 1) + 1)
+                i -= 1
               end
             else
               # xx.xxE form
@@ -3260,7 +3260,7 @@ module Java::Math
         i = 1
         while i <= n
           tenpow[i] = Character.new(?0.ord)
-          ((i += 1) - 1)
+          i += 1
         end
         return BigInteger.new(tenpow)
       end
@@ -3468,7 +3468,7 @@ module Java::Math
           if (x <= self.attr_ilog_table[i + 1])
             return i + 1
           end
-          ((i += 1) - 1)
+          i += 1
         end
       end
     end
@@ -3502,7 +3502,7 @@ module Java::Math
         @scale = check_scale(@scale - 1) # could Overflow
         if (@precision > 0)
           # adjust precision if known
-          ((@precision -= 1) + 1)
+          @precision -= 1
         end
       end
       if (compact)

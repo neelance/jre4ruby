@@ -173,7 +173,7 @@ module Sun::Misc
                   i = 0
                   while i < len
                     MetaIndex.register_directory(dirs[i])
-                    ((i += 1) - 1)
+                    i += 1
                   end
                   return ExtClassLoader.new(dirs)
                 end
@@ -217,7 +217,7 @@ module Sun::Misc
               i = 0
               while i < count
                 dirs[i] = JavaFile.new(st.next_token)
-                ((i += 1) - 1)
+                i += 1
               end
             else
               dirs = Array.typed(JavaFile).new(0) { nil }
@@ -238,10 +238,10 @@ module Sun::Misc
                     f = JavaFile.new(dirs[i], files[j])
                     urls.add(get_file_url(f))
                   end
-                  ((j += 1) - 1)
+                  j += 1
                 end
               end
-              ((i += 1) - 1)
+              i += 1
             end
             ua = Array.typed(URL).new(urls.size) { nil }
             urls.copy_into(ua)
@@ -272,7 +272,7 @@ module Sun::Misc
             if (file.exists)
               return file.get_absolute_path
             end
-            ((i += 1) - 1)
+            i += 1
           end
           return nil
         end
@@ -414,7 +414,7 @@ module Sun::Misc
                 if (!(cur_entry).nil? && seen_dirs.add(cur_entry))
                   MetaIndex.register_directory(cur_entry)
                 end
-                ((i += 1) - 1)
+                i += 1
               end
               return path_to_urls(class_path)
             end
@@ -439,7 +439,7 @@ module Sun::Misc
         i = 0
         while i < path.attr_length
           urls[i] = get_file_url(path[i])
-          ((i += 1) - 1)
+          i += 1
         end
         # DEBUG
         # for (int i = 0; i < urls.length; i++) {
@@ -458,7 +458,7 @@ module Sun::Misc
           last_pos = 0
           # Count the number of separators first
           while (!((pos = cp.index_of(JavaFile.attr_path_separator, last_pos))).equal?(-1))
-            ((max_count += 1) - 1)
+            max_count += 1
             last_pos = pos + 1
           end
           path = Array.typed(JavaFile).new(max_count) { nil }
@@ -660,7 +660,7 @@ module Sun::Misc
                   # XXX?
                 end
               end
-              ((i += 1) - 1)
+              i += 1
             end
             return nil
           end

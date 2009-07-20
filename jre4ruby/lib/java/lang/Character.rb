@@ -1561,7 +1561,7 @@ module Java::Lang
             i = 0
             while i < self.class::Cache.attr_length
               self.class::Cache[i] = Character.new(RJava.cast_to_char(i))
-              ((i += 1) - 1)
+              i += 1
             end
           end
         }
@@ -2093,10 +2093,10 @@ module Java::Lang
         n = 0
         i = begin_index
         while i < end_index
-          ((n += 1) - 1)
+          n += 1
           if (is_high_surrogate(seq.char_at(((i += 1) - 1))))
             if (i < end_index && is_low_surrogate(seq.char_at(i)))
-              ((i += 1) - 1)
+              i += 1
             end
           end
         end
@@ -2134,10 +2134,10 @@ module Java::Lang
         n = 0
         i = offset
         while i < end_index
-          ((n += 1) - 1)
+          n += 1
           if (is_high_surrogate(a[((i += 1) - 1)]))
             if (i < end_index && is_low_surrogate(a[i]))
-              ((i += 1) - 1)
+              i += 1
             end
           end
         end
@@ -2177,10 +2177,10 @@ module Java::Lang
           while x < length_ && i < code_point_offset
             if (is_high_surrogate(seq.char_at(((x += 1) - 1))))
               if (x < length_ && is_low_surrogate(seq.char_at(x)))
-                ((x += 1) - 1)
+                x += 1
               end
             end
-            ((i += 1) - 1)
+            i += 1
           end
           if (i < code_point_offset)
             raise IndexOutOfBoundsException.new
@@ -2191,10 +2191,10 @@ module Java::Lang
           while x > 0 && i < 0
             if (is_low_surrogate(seq.char_at((x -= 1))))
               if (x > 0 && is_high_surrogate(seq.char_at(x - 1)))
-                ((x -= 1) + 1)
+                x -= 1
               end
             end
-            ((i += 1) - 1)
+            i += 1
           end
           if (i < 0)
             raise IndexOutOfBoundsException.new
@@ -2252,10 +2252,10 @@ module Java::Lang
           while x < limit && i < code_point_offset
             if (is_high_surrogate(a[((x += 1) - 1)]))
               if (x < limit && is_low_surrogate(a[x]))
-                ((x += 1) - 1)
+                x += 1
               end
             end
-            ((i += 1) - 1)
+            i += 1
           end
           if (i < code_point_offset)
             raise IndexOutOfBoundsException.new
@@ -2266,10 +2266,10 @@ module Java::Lang
           while x > start && i < 0
             if (is_low_surrogate(a[(x -= 1)]))
               if (x > start && is_high_surrogate(a[x - 1]))
-                ((x -= 1) + 1)
+                x -= 1
               end
             end
-            ((i += 1) - 1)
+            i += 1
           end
           if (i < 0)
             raise IndexOutOfBoundsException.new

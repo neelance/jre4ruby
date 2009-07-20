@@ -1392,7 +1392,7 @@ module Java::Net
             nm[i] = Character.new(?_.ord)
           end
         end
-        ((i += 1) - 1)
+        i += 1
       end
       return String.new(nm)
     end
@@ -1682,7 +1682,7 @@ module Java::Net
         i = 0
         while i < len
           c[i] = buf[i] & 0xff
-          ((i += 1) - 1)
+          i += 1
         end
         return 0
       end
@@ -1701,7 +1701,7 @@ module Java::Net
             if ((is.read).equal?(-1))
               return skipped
             else
-              ((skipped += 1) - 1)
+              skipped += 1
             end
           end
           skipped += each_skip

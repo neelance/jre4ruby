@@ -289,7 +289,7 @@ module Sun::Security::Pkcs
             bais.close
           end
         end
-        ((i += 1) - 1)
+        i += 1
       end
     end
     
@@ -307,7 +307,7 @@ module Sun::Security::Pkcs
         while i < len
           oid = digest_algorithm_id_vals[i]
           @digest_algorithm_ids[i] = AlgorithmId.parse(oid)
-          ((i += 1) - 1)
+          i += 1
         end
       rescue IOException => e
         pe = ParsingException.new("Error parsing digest AlgorithmId IDs: " + (e.get_message).to_s)
@@ -354,7 +354,7 @@ module Sun::Security::Pkcs
               bais.close
             end
           end
-          ((i_ += 1) - 1)
+          i_ += 1
         end
       end
       # check if crls (implicit tag) are provided (crls are OPTIONAL)
@@ -384,7 +384,7 @@ module Sun::Security::Pkcs
               bais.close
             end
           end
-          ((i_ += 1) - 1)
+          i_ += 1
         end
       end
       # signerInfos
@@ -395,7 +395,7 @@ module Sun::Security::Pkcs
       while i_ < len
         in_ = signer_info_vals[i_].to_der_input_stream
         @signer_infos[i_] = SignerInfo.new(in_)
-        ((i_ += 1) - 1)
+        i_ += 1
       end
     end
     
@@ -415,7 +415,7 @@ module Sun::Security::Pkcs
         while i < len
           oid = digest_algorithm_id_vals[i]
           @digest_algorithm_ids[i] = AlgorithmId.parse(oid)
-          ((i += 1) - 1)
+          i += 1
         end
       rescue IOException => e
         raise ParsingException.new("Error parsing digest AlgorithmId IDs")
@@ -458,7 +458,7 @@ module Sun::Security::Pkcs
             bais.close
           end
         end
-        ((i_ += 1) - 1)
+        i_ += 1
       end
       # crls are ignored.
       dis.get_set(0)
@@ -470,7 +470,7 @@ module Sun::Security::Pkcs
       while i__ < len
         in_ = signer_info_vals[i__].to_der_input_stream
         @signer_infos[i__] = SignerInfo.new(in_, true)
-        ((i__ += 1) - 1)
+        i__ += 1
       end
     end
     
@@ -516,7 +516,7 @@ module Sun::Security::Pkcs
               raise ie
             end
           end
-          ((i += 1) - 1)
+          i += 1
         end
         # Add the certificate set (tagged with [0] IMPLICIT)
         # to the signed data
@@ -560,7 +560,7 @@ module Sun::Security::Pkcs
         if (!(signer_info).nil?)
           int_result.add_element(signer_info)
         end
-        ((i += 1) - 1)
+        i += 1
       end
       if (!(int_result.size).equal?(0))
         result = Array.typed(SignerInfo).new(int_result.size) { nil }
@@ -652,7 +652,7 @@ module Sun::Security::Pkcs
           if ((serial == this_serial) && (issuer_name == @cert_issuer_names[i]))
             return cert
           end
-          ((i += 1) - 1)
+          i += 1
         end
       end
       return nil
@@ -684,7 +684,7 @@ module Sun::Security::Pkcs
           end
         end
         @cert_issuer_names[i] = cert_issuer_name
-        ((i += 1) - 1)
+        i += 1
       end
     end
     
@@ -701,7 +701,7 @@ module Sun::Security::Pkcs
         i = 0
         while i < @digest_algorithm_ids.attr_length
           out += "\t" + (@digest_algorithm_ids[i]).to_s + "\n"
-          ((i += 1) - 1)
+          i += 1
         end
       end
       if (!(@certificates).nil?)
@@ -709,7 +709,7 @@ module Sun::Security::Pkcs
         i = 0
         while i < @certificates.attr_length
           out += "\t" + (i).to_s + ".   " + (@certificates[i]).to_s + "\n"
-          ((i += 1) - 1)
+          i += 1
         end
       end
       if (!(@crls).nil?)
@@ -717,7 +717,7 @@ module Sun::Security::Pkcs
         i = 0
         while i < @crls.attr_length
           out += "\t" + (i).to_s + ".   " + (@crls[i]).to_s + "\n"
-          ((i += 1) - 1)
+          i += 1
         end
       end
       if (!(@signer_infos).nil?)
@@ -725,7 +725,7 @@ module Sun::Security::Pkcs
         i = 0
         while i < @signer_infos.attr_length
           out += (("\t" + (i).to_s + ".  " + (@signer_infos[i]).to_s + "\n")).to_s
-          ((i += 1) - 1)
+          i += 1
         end
       end
       return out

@@ -1184,7 +1184,7 @@ module Java::Util::Concurrent
             end
           ensure
             task = nil
-            ((w.attr_completed_tasks += 1) - 1)
+            w.attr_completed_tasks += 1
             w.unlock
           end
         end

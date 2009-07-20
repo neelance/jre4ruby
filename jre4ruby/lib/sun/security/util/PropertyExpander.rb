@@ -95,12 +95,12 @@ module Sun::Security::Util
               break
             else
               # append as normal text
-              ((pe += 1) - 1)
+              pe += 1
               sb.append(value.substring(p, pe + 1))
             end
           else
             while ((pe < max) && (!(value.char_at(pe)).equal?(Character.new(?}.ord))))
-              ((pe += 1) - 1)
+              pe += 1
             end
             if ((pe).equal?(max))
               # no matching '}' found, just add in as normal text

@@ -294,7 +294,7 @@ module Sun::Net::Www::Protocol::JavaFile
               file_name = @files.get(i)
               buf.append(file_name)
               buf.append("\n")
-              ((i += 1) - 1)
+              i += 1
             end
             # Put it into a (default) locale-specific byte-stream.
             @is = ByteArrayInputStream.new(buf.to_s.get_bytes)

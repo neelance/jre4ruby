@@ -331,7 +331,7 @@ module Sun::Security::Timestamp
         i = 0
         while i < strings.attr_length
           @status_string[i] = strings[i].attr_data.get_utf8string
-          ((i += 1) - 1)
+          i += 1
         end
       end
       # Parse failInfo, if present

@@ -586,7 +586,7 @@ module Java::Net
               i = 0
               while !ok && i < arr.attr_length
                 ok = (addr == arr[i])
-                ((i += 1) - 1)
+                i += 1
               end
             end
             # XXX: if it looks a spoof just return the address?
@@ -1044,7 +1044,7 @@ module Java::Net
           if (!(ns).nil?)
             self.attr_name_services.add(ns)
           end
-          ((n += 1) - 1)
+          n += 1
           provider = (AccessController.do_privileged(GetPropertyAction.new(prop_prefix + (n).to_s))).to_s
         end
         # if not designate any name services provider,
@@ -1271,7 +1271,7 @@ module Java::Net
             return -1
           end
           zone = (zone * 10) + digit_
-          ((i += 1) - 1)
+          i += 1
         end
         return zone
       end
@@ -1371,7 +1371,7 @@ module Java::Net
               if ((addrs[i] == req_addr))
                 break
               end
-              ((i += 1) - 1)
+              i += 1
             end
             # Rotate
             if (i < addrs.attr_length)
@@ -1382,7 +1382,7 @@ module Java::Net
                 tmp = addrs[j]
                 addrs[j] = tmp2
                 tmp2 = tmp
-                ((j += 1) - 1)
+                j += 1
               end
               addrs[i] = tmp2
             end

@@ -569,7 +569,7 @@ module Sun::Security::Provider::Certpath
               verify_revocation_status(cert, prev_key2, sign_flag, true, stacked_certs)
               sign_flag = cert_can_sign_crl(cert)
               prev_key2 = cert.get_public_key
-              ((i -= 1) + 1)
+              i -= 1
             end
           rescue CertPathValidatorException => cpve
             # ignore it and try to get another key

@@ -269,7 +269,7 @@ module Java::Security
             new_entry.attr_provider = prov
             return new_entry
           end
-          ((i += 1) - 1)
+          i += 1
         end
         return entry
       end
@@ -652,7 +652,7 @@ module Java::Security
         i = 0
         while i < result.attr_length
           result[i] = candidates_array[i]
-          ((i += 1) - 1)
+          i += 1
         end
         return result
       end
@@ -873,7 +873,7 @@ module Java::Security
           if (is_criterion_satisfied(all_providers[i], service_name, alg_name, attr_name, filter_value))
             candidates.add(all_providers[i])
           end
-          ((i += 1) - 1)
+          i += 1
         end
         return candidates
       end
@@ -1051,7 +1051,7 @@ module Java::Security
               end
             end
           end
-          ((i += 1) - 1)
+          i += 1
         end
         return Collections.unmodifiable_set(result)
       end

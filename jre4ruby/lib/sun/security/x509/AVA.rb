@@ -280,7 +280,7 @@ module Sun::Security::X509
           else
             b = (c_val)
           end
-          ((c_ndx += 1) - 1)
+          c_ndx += 1
         end
         # throw exception if no hex digits
         if ((c_ndx).equal?(0))
@@ -421,7 +421,7 @@ module Sun::Security::X509
           i = 0
           while i < space_count
             temp.append(" ")
-            ((i += 1) - 1)
+            i += 1
           end
           space_count = 0
           hex_string = get_embedded_hex_string(embedded_hex)
@@ -433,13 +433,13 @@ module Sun::Security::X509
         if ((c).equal?(Character.new(?\s.ord)) && (escape).equal?(false))
           # do not add non-escaped spaces yet
           # (non-escaped trailing spaces are ignored)
-          ((space_count += 1) - 1)
+          space_count += 1
         else
           # add space(s)
           i = 0
           while i < space_count
             temp.append(" ")
-            ((i += 1) - 1)
+            i += 1
           end
           space_count = 0
           temp.append(RJava.cast_to_char(c))
@@ -493,7 +493,7 @@ module Sun::Security::X509
         i = 0
         while i < n
           hex_bytes[i] = hex_list.get(i).byte_value
-          ((i += 1) - 1)
+          i += 1
         end
         return String.new(hex_bytes, "UTF8")
       end
@@ -693,7 +693,7 @@ module Sun::Security::X509
           b = data[j]
           type_and_value.append(Character.for_digit(0xf & (b >> 4), 16))
           type_and_value.append(Character.for_digit(0xf & b, 16))
-          ((j += 1) - 1)
+          j += 1
         end
       else
         # 2.4 (cont): Otherwise, if the AttributeValue is of a type which
@@ -757,14 +757,14 @@ module Sun::Security::X509
                 sbuffer.append(Character.to_upper_case(hex_char))
                 hex_char = Character.for_digit(0xf & (value_bytes[j]), 16)
                 sbuffer.append(Character.to_upper_case(hex_char))
-                ((j += 1) - 1)
+                j += 1
               end
             else
               # append non-printable/non-escaped char
               sbuffer.append(c)
             end
           end
-          ((i += 1) - 1)
+          i += 1
         end
         chars = sbuffer.to_s.to_char_array
         sbuffer = StringBuilder.new
@@ -775,7 +775,7 @@ module Sun::Security::X509
           if (!(chars[lead]).equal?(Character.new(?\s.ord)) && !(chars[lead]).equal?(Character.new(?\r.ord)))
             break
           end
-          ((lead += 1) - 1)
+          lead += 1
         end
         trail = 0 # index of last char that is not trailing whitespace
         trail = chars.attr_length - 1
@@ -783,7 +783,7 @@ module Sun::Security::X509
           if (!(chars[trail]).equal?(Character.new(?\s.ord)) && !(chars[trail]).equal?(Character.new(?\r.ord)))
             break
           end
-          ((trail -= 1) + 1)
+          trail -= 1
         end
         # escape leading and trailing whitespace
         i_ = 0
@@ -793,7 +793,7 @@ module Sun::Security::X509
             sbuffer.append(Character.new(?\\.ord))
           end
           sbuffer.append(c)
-          ((i_ += 1) - 1)
+          i_ += 1
         end
         type_and_value.append(sbuffer.to_s)
       end
@@ -830,7 +830,7 @@ module Sun::Security::X509
           b = data[j]
           type_and_value.append(Character.for_digit(0xf & (b >> 4), 16))
           type_and_value.append(Character.for_digit(0xf & b, 16))
-          ((j += 1) - 1)
+          j += 1
         end
       else
         # 2.4 (cont): Otherwise, if the AttributeValue is of a type which
@@ -883,7 +883,7 @@ module Sun::Security::X509
                 sbuffer.append(c)
               else
                 # ignore subsequent consecutive whitespace
-                ((i += 1) - 1)
+                i += 1
                 next
               end
             end
@@ -903,7 +903,7 @@ module Sun::Security::X509
                 sbuffer.append(Character.new(?\\.ord))
                 sbuffer.append(Character.for_digit(0xf & (value_bytes[j] >> 4), 16))
                 sbuffer.append(Character.for_digit(0xf & (value_bytes[j]), 16))
-                ((j += 1) - 1)
+                j += 1
               end
             else
               # append non-printable/non-escaped char
@@ -911,7 +911,7 @@ module Sun::Security::X509
               sbuffer.append(c)
             end
           end
-          ((i += 1) - 1)
+          i += 1
         end
         # remove leading and trailing whitespace from value
         type_and_value.append(sbuffer.to_s.trim)
@@ -969,7 +969,7 @@ module Sun::Security::X509
           while i < data.attr_length
             retval.append(HexDigits.char_at((data[i] >> 4) & 0xf))
             retval.append(HexDigits.char_at(data[i] & 0xf))
-            ((i += 1) - 1)
+            i += 1
           end
         else
           quote_needed = false
@@ -1015,7 +1015,7 @@ module Sun::Security::X509
                   sbuffer.append(Character.to_upper_case(hex_char))
                   hex_char = Character.for_digit(0xf & (value_bytes[j]), 16)
                   sbuffer.append(Character.to_upper_case(hex_char))
-                  ((j += 1) - 1)
+                  j += 1
                 end
               else
                 # append non-printable/non-escaped char
@@ -1023,7 +1023,7 @@ module Sun::Security::X509
                 sbuffer.append(c)
               end
             end
-            ((i += 1) - 1)
+            i += 1
           end
           # quote if trailing whitespace
           if (sbuffer.length > 0)
@@ -1213,7 +1213,7 @@ module Sun::Security::X509
             if ((c < 65 || c > 122 || (c > 90 && c < 97)) && (c < 48 || c > 57) && !(c).equal?(Character.new(?_.ord)))
               raise IllegalArgumentException.new("keyword character is not a letter, digit, or underscore")
             end
-            ((i += 1) - 1)
+            i += 1
           end
           return keyword_string
         end

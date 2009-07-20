@@ -380,7 +380,7 @@ module Java::Net
           @method = method
           return
         end
-        ((i += 1) - 1)
+        i += 1
       end
       raise ProtocolException.new("Invalid HTTP method: " + method)
     end

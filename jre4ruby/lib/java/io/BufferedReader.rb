@@ -255,7 +255,7 @@ module Java::Io
           if (@skip_lf)
             @skip_lf = false
             if ((@cb[@next_char]).equal?(Character.new(?\n.ord)))
-              ((@next_char += 1) - 1)
+              @next_char += 1
               next
             end
           end
@@ -285,7 +285,7 @@ module Java::Io
       if (@skip_lf)
         @skip_lf = false
         if ((@cb[@next_char]).equal?(Character.new(?\n.ord)))
-          ((@next_char += 1) - 1)
+          @next_char += 1
           if (@next_char >= @n_chars)
             fill
           end
@@ -406,7 +406,7 @@ module Java::Io
           i = 0
           # Skip a leftover '\n', if necessary
           if (omit_lf && ((@cb[@next_char]).equal?(Character.new(?\n.ord))))
-            ((@next_char += 1) - 1)
+            @next_char += 1
           end
           @skip_lf = false
           omit_lf = false
@@ -417,7 +417,7 @@ module Java::Io
               eol = true
               break
             end
-            ((i += 1) - 1)
+            i += 1
           end
           start_char = @next_char
           @next_char = i
@@ -429,7 +429,7 @@ module Java::Io
               s.append(@cb, start_char, i - start_char)
               str = (s.to_s).to_s
             end
-            ((@next_char += 1) - 1)
+            @next_char += 1
             if ((c).equal?(Character.new(?\r.ord)))
               @skip_lf = true
             end
@@ -484,7 +484,7 @@ module Java::Io
           if (@skip_lf)
             @skip_lf = false
             if ((@cb[@next_char]).equal?(Character.new(?\n.ord)))
-              ((@next_char += 1) - 1)
+              @next_char += 1
             end
           end
           d = @n_chars - @next_char
@@ -520,7 +520,7 @@ module Java::Io
           end
           if (@next_char < @n_chars)
             if ((@cb[@next_char]).equal?(Character.new(?\n.ord)))
-              ((@next_char += 1) - 1)
+              @next_char += 1
             end
             @skip_lf = false
           end

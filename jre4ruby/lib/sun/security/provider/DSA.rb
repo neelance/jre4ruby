@@ -480,7 +480,7 @@ module Sun::Security::Provider
         i = 0
         while i < 5
           seed[i] = random.next_int
-          ((i += 1) - 1)
+          i += 1
         end
         k = generate_k(seed, q)
         if (k.signum > 0 && (k <=> q) < 0)
@@ -524,9 +524,9 @@ module Sun::Security::Provider
         j = 0
         while j < 4
           tmp_bytes[(i * 4) + j] = (k >> (24 - (j * 8)))
-          ((j += 1) - 1)
+          j += 1
         end
-        ((i += 1) - 1)
+        i += 1
       end
       k = BigInteger.new(1, tmp_bytes).mod(q)
       return k
@@ -556,7 +556,7 @@ module Sun::Security::Provider
         while t <= 79
           temp = w[t - 3] ^ w[t - 8] ^ w[t - 14] ^ w[t - 16]
           w[t] = ((temp << 1) | (temp >> (32 - 1)))
-          ((t += 1) - 1)
+          t += 1
         end
         a = h[0]
         b = h[1]
@@ -571,7 +571,7 @@ module Sun::Security::Provider
           c = ((b << 30) | (b >> (32 - 30)))
           b = a
           a = temp
-          ((i += 1) - 1)
+          i += 1
         end
         # Round 2
         i_ = 20
@@ -582,7 +582,7 @@ module Sun::Security::Provider
           c = ((b << 30) | (b >> (32 - 30)))
           b = a
           a = temp
-          ((i_ += 1) - 1)
+          i_ += 1
         end
         # Round 3
         i__ = 40
@@ -593,7 +593,7 @@ module Sun::Security::Provider
           c = ((b << 30) | (b >> (32 - 30)))
           b = a
           a = temp
-          ((i__ += 1) - 1)
+          i__ += 1
         end
         # Round 4
         i___ = 60
@@ -604,7 +604,7 @@ module Sun::Security::Provider
           c = ((b << 30) | (b >> (32 - 30)))
           b = a
           a = temp
-          ((i___ += 1) - 1)
+          i___ += 1
         end
         md = Array.typed(::Java::Int).new(5) { 0 }
         md[0] = h[0] + a
@@ -724,7 +724,7 @@ module Sun::Security::Provider
         new_seed[j] |= (new_ba[i + 2] << 8) & 0xff00
         new_seed[j] |= (new_ba[i + 1] << 16) & 0xff0000
         new_seed[j] |= (new_ba[i + 0] << 24) & -0x1000000
-        ((j += 1) - 1)
+        j += 1
         i += 4
       end
       return new_seed

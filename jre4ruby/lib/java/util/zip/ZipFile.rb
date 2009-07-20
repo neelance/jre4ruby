@@ -489,7 +489,7 @@ module Java::Util::Zip
             while i < size_
               inf = @inflaters.get(i)
               inf.end
-              ((i += 1) - 1)
+              i += 1
             end
           end
         end

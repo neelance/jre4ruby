@@ -119,7 +119,7 @@ module Sun::Security::Util
       i = 0
       while i < @length
         set(i, bits[i])
-        ((i += 1) - 1)
+        i += 1
       end
     end
     
@@ -203,7 +203,7 @@ module Sun::Security::Util
       i = 0
       while i < @length
         bits[i] = get(i)
-        ((i += 1) - 1)
+        i += 1
       end
       return bits
     end
@@ -217,7 +217,7 @@ module Sun::Security::Util
       i = 0
       while i < @repn.attr_length
         hash_code = 31 * hash_code + @repn[i]
-        ((i += 1) - 1)
+        i += 1
       end
       return hash_code ^ @length
     end
@@ -248,13 +248,13 @@ module Sun::Security::Util
         else
           out.write(Character.new(?\s.ord))
         end
-        ((i += 1) - 1)
+        i += 1
       end
       # in last byte of repn, use only the valid bits
       i_ = BITS_PER_UNIT * (@repn.attr_length - 1)
       while i_ < @length
         out.write(get(i_) ? Character.new(?1.ord) : Character.new(?0.ord))
-        ((i_ += 1) - 1)
+        i_ += 1
       end
       return String.new(out.to_byte_array)
     end
@@ -266,7 +266,7 @@ module Sun::Security::Util
         if (get(i))
           return BitArray.new(i + 1, Arrays.copy_of(@repn, (i + BITS_PER_UNIT) / BITS_PER_UNIT))
         end
-        ((i -= 1) + 1)
+        i -= 1
       end
       return BitArray.new(1)
     end

@@ -965,7 +965,7 @@ module Java::Lang
         i = 0
         while i < parameter_classes.attr_length
           parameter_classes[i] = to_class(parameter_types[i])
-          ((i += 1) - 1)
+          i += 1
         end
         # Loop over all declared methods; match method name,
         # number of and type of parameters, *and* return
@@ -982,7 +982,7 @@ module Java::Lang
                   matches = false
                   break
                 end
-                ((i_ += 1) - 1)
+                i_ += 1
               end
               if (matches)
                 # finally, check return type
@@ -1133,7 +1133,7 @@ module Java::Lang
         i = 0
         while i < parameter_classes.attr_length
           parameter_classes[i] = to_class(parameter_types[i])
-          ((i += 1) - 1)
+          i += 1
         end
         # Loop over all declared constructors; match number
         # of and type of parameters.
@@ -1147,7 +1147,7 @@ module Java::Lang
                 matches = false
                 break
               end
-              ((i_ += 1) - 1)
+              i_ += 1
             end
             if (matches)
               return c
@@ -1243,7 +1243,7 @@ module Java::Lang
       end
       index = 1
       while (index < length_ && is_ascii_digit(simple_name.char_at(index)))
-        ((index += 1) - 1)
+        index += 1
       end
       # Eventually, this is the empty string iff this is an anonymous class
       return simple_name.substring(index)
@@ -1410,7 +1410,7 @@ module Java::Lang
               if (Modifier.is_public(members[i].get_modifiers))
                 list.add(members[i])
               end
-              ((i += 1) - 1)
+              i += 1
             end
             current_class = current_class.get_superclass
           end
@@ -2500,7 +2500,7 @@ module Java::Lang
           traversed_interfaces.add(c)
           add_all(fields, c.private_get_public_fields(traversed_interfaces))
         end
-        ((i += 1) - 1)
+        i += 1
       end
       # Direct superclass, recursively
       if (!is_interface)
@@ -2523,7 +2523,7 @@ module Java::Lang
         i = 0
         while i < o.attr_length
           c.add(o[i])
-          ((i += 1) - 1)
+          i += 1
         end
       end
     }
@@ -2643,7 +2643,7 @@ module Java::Lang
           i = 0
           while i < ma.attr_length
             add(ma[i])
-            ((i += 1) - 1)
+            i += 1
           end
         end
         
@@ -2652,7 +2652,7 @@ module Java::Lang
           i = 0
           while i < ma.length
             add(ma.get(i))
-            ((i += 1) - 1)
+            i += 1
           end
         end
         
@@ -2664,7 +2664,7 @@ module Java::Lang
             if ((m).equal?(new_method) || (!(m).nil? && (m == new_method)))
               return
             end
-            ((i += 1) - 1)
+            i += 1
           end
           add(new_method)
         end
@@ -2677,7 +2677,7 @@ module Java::Lang
             if (!(m).nil?)
               add_if_not_present(m)
             end
-            ((i += 1) - 1)
+            i += 1
           end
         end
         
@@ -2699,7 +2699,7 @@ module Java::Lang
             if (!(m).nil? && (m.get_return_type).equal?(to_remove.get_return_type) && (m.get_name).equal?(to_remove.get_name) && array_contents_eq(m.get_parameter_types, to_remove.get_parameter_types))
               @methods[i] = nil
             end
-            ((i += 1) - 1)
+            i += 1
           end
         end
         
@@ -2714,9 +2714,9 @@ module Java::Lang
               if (!(pos).equal?(new_pos))
                 @methods[new_pos] = m
               end
-              ((new_pos += 1) - 1)
+              new_pos += 1
             end
-            ((pos += 1) - 1)
+            pos += 1
           end
           if (!(new_pos).equal?(@methods.attr_length))
             @methods = Arrays.copy_of(@methods, new_pos)
@@ -2763,7 +2763,7 @@ module Java::Lang
       i = 0
       while i < interfaces.attr_length
         inherited_methods.add_all(interfaces[i].private_get_public_methods)
-        ((i += 1) - 1)
+        i += 1
       end
       if (!is_interface)
         c = get_superclass
@@ -2778,7 +2778,7 @@ module Java::Lang
             if (!(m).nil? && !Modifier.is_abstract(m.get_modifiers))
               inherited_methods.remove_by_name_and_signature(m)
             end
-            ((i_ += 1) - 1)
+            i_ += 1
           end
           # Insert superclass's inherited methods before
           # superinterfaces' to satisfy getMethod's search
@@ -2792,7 +2792,7 @@ module Java::Lang
       while i_ < methods.length
         m = methods.get(i_)
         inherited_methods.remove_by_name_and_signature(m)
-        ((i_ += 1) - 1)
+        i_ += 1
       end
       methods.add_all_if_not_present(inherited_methods)
       methods.compact_and_trim
@@ -2812,7 +2812,7 @@ module Java::Lang
         if ((fields[i].get_name).equal?(interned_name))
           return get_reflection_factory.copy_field(fields[i])
         end
-        ((i += 1) - 1)
+        i += 1
       end
       return nil
     end
@@ -2839,7 +2839,7 @@ module Java::Lang
         if (!((res = c.get_field0(name))).nil?)
           return res
         end
-        ((i += 1) - 1)
+        i += 1
       end
       # Direct superclass, recursively
       if (!is_interface)
@@ -2864,7 +2864,7 @@ module Java::Lang
           if ((m.get_name).equal?(interned_name) && array_contents_eq(parameter_types, m.get_parameter_types) && ((res).nil? || res.get_return_type.is_assignable_from(m.get_return_type)))
             res = m
           end
-          ((i += 1) - 1)
+          i += 1
         end
         return ((res).nil? ? res : get_reflection_factory.copy_method(res))
       end
@@ -2901,7 +2901,7 @@ module Java::Lang
         if (!((res = c.get_method0(name, parameter_types))).nil?)
           return res
         end
-        ((i += 1) - 1)
+        i += 1
       end
       # Not found
       return nil
@@ -2915,7 +2915,7 @@ module Java::Lang
         if (array_contents_eq(parameter_types, constructors[i].get_parameter_types))
           return get_reflection_factory.copy_constructor(constructors[i])
         end
-        ((i += 1) - 1)
+        i += 1
       end
       raise NoSuchMethodException.new((get_name).to_s + ".<init>" + (argument_types_to_string(parameter_types)).to_s)
     end
@@ -2938,7 +2938,7 @@ module Java::Lang
           if (!(a1[i]).equal?(a2[i]))
             return false
           end
-          ((i += 1) - 1)
+          i += 1
         end
         return true
       end
@@ -2950,7 +2950,7 @@ module Java::Lang
         i = 0
         while i < arg.attr_length
           out[i] = fact.copy_field(arg[i])
-          ((i += 1) - 1)
+          i += 1
         end
         return out
       end
@@ -2962,7 +2962,7 @@ module Java::Lang
         i = 0
         while i < arg.attr_length
           out[i] = fact.copy_method(arg[i])
-          ((i += 1) - 1)
+          i += 1
         end
         return out
       end
@@ -2974,7 +2974,7 @@ module Java::Lang
         i = 0
         while i < arg.attr_length
           out[i] = fact.copy_constructor(arg[i])
-          ((i += 1) - 1)
+          i += 1
         end
         return out
       end
@@ -3017,7 +3017,7 @@ module Java::Lang
             end
             c = arg_types[i]
             buf.append(((c).nil?) ? "null" : c.get_name)
-            ((i += 1) - 1)
+            i += 1
           end
         end
         buf.append(")")

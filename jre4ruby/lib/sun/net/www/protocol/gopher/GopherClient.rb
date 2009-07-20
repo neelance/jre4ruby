@@ -173,11 +173,11 @@ module Sun::Net::Www::Protocol::Gopher
       limit = s.length
       c = Character.new(?1.ord)
       while (i < limit && ((c = s.char_at(i))).equal?(Character.new(?/.ord)))
-        ((i += 1) - 1)
+        i += 1
       end
       @gtype = (c).equal?(Character.new(?/.ord)) ? Character.new(?1.ord) : c
       if (i < limit)
-        ((i += 1) - 1)
+        i += 1
       end
       @gkey = (s.substring(i)).to_s
       open_server(u.get_host, u.get_port <= 0 ? 70 : u.get_port)
@@ -262,7 +262,7 @@ module Sun::Net::Www::Protocol::Gopher
           end
         end
         d[((dp += 1) - 1)] = RJava.cast_to_char(c)
-        ((sp += 1) - 1)
+        sp += 1
       end
       return String.new(d, 0, dp)
     end
@@ -303,9 +303,9 @@ module Sun::Net::Www::Protocol::Gopher
             end
             d[dp] = RJava.cast_to_char(c)
           end
-          ((dp += 1) - 1)
+          dp += 1
         end
-        ((sp += 1) - 1)
+        sp += 1
       end
       return (d).nil? ? s : String.new(d, 0, dp)
     end
@@ -347,7 +347,7 @@ module Sun::Net::Www::Protocol::Gopher
             while (!((s = (ds.read_line).to_s)).nil?)
               len = s.length
               while (len > 0 && s.char_at(len - 1) <= Character.new(?\s.ord))
-                ((len -= 1) + 1)
+                len -= 1
               end
               if (len <= 0)
                 next

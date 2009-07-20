@@ -207,7 +207,7 @@ module Sun::Nio::Cs::Ext
               all_zeroes = false
               break
             end
-            ((i += 1) - 1)
+            i += 1
           end
           if (all_zeroes && !(input_char).equal?(Character.new(0x0000)))
             return CoderResult.unmappable_for_length(1)
@@ -218,7 +218,7 @@ module Sun::Nio::Cs::Ext
             if (!(@output_byte[((oindex += 1) - 1)]).equal?(0x0))
               break
             end
-            ((space_needed -= 1) + 1)
+            space_needed -= 1
           end
           if (dp + space_needed > dl)
             return CoderResult::OVERFLOW
@@ -226,9 +226,9 @@ module Sun::Nio::Cs::Ext
           i = @output_byte.attr_length - space_needed
           while i < @output_byte.attr_length
             da[((dp += 1) - 1)] = @output_byte[i]
-            ((i += 1) - 1)
+            i += 1
           end
-          ((sp += 1) - 1)
+          sp += 1
         end
         return CoderResult::UNDERFLOW
       ensure
@@ -288,7 +288,7 @@ module Sun::Nio::Cs::Ext
               all_zeroes = false
               break
             end
-            ((i += 1) - 1)
+            i += 1
           end
           if (all_zeroes && !(input_char).equal?(Character.new(0x0000)))
             return CoderResult.unmappable_for_length(1)
@@ -299,7 +299,7 @@ module Sun::Nio::Cs::Ext
             if (!(@output_byte[((oindex += 1) - 1)]).equal?(0x0))
               break
             end
-            ((space_needed -= 1) + 1)
+            space_needed -= 1
           end
           if (dst.remaining < space_needed)
             return CoderResult::OVERFLOW
@@ -307,9 +307,9 @@ module Sun::Nio::Cs::Ext
           i = @output_byte.attr_length - space_needed
           while i < @output_byte.attr_length
             dst.put(@output_byte[i])
-            ((i += 1) - 1)
+            i += 1
           end
-          ((mark += 1) - 1)
+          mark += 1
         end
         return CoderResult::UNDERFLOW
       ensure

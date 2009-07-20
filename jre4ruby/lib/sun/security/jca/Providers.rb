@@ -239,7 +239,7 @@ module Sun::Security::Jca
             ProviderList.attr_debug.println("ThreadLocal providers: " + (list).to_s)
           end
           old_list = ThreadLists.get
-          ((self.attr_thread_lists_used += 1) - 1)
+          self.attr_thread_lists_used += 1
           ThreadLists.set(list)
           return old_list
         end
@@ -259,7 +259,7 @@ module Sun::Security::Jca
             end
             ThreadLists.set(list)
           end
-          ((self.attr_thread_lists_used -= 1) + 1)
+          self.attr_thread_lists_used -= 1
         end
       end
     }

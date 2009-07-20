@@ -412,7 +412,7 @@ module Sun::Security::Pkcs
           if (!(b1[i]).equal?(b2[i]))
             return false
           end
-          ((i += 1) - 1)
+          i += 1
         end
         return true
       end
@@ -428,7 +428,7 @@ module Sun::Security::Pkcs
       i = 1
       while i < b1.attr_length
         retval += b1[i] * i
-        ((i += 1) - 1)
+        i += 1
       end
       return (retval)
     end

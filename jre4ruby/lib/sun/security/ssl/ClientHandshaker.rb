@@ -444,7 +444,7 @@ module Sun::Security::Ssl
           if ((!(type_name).nil?) && (!keytypes_tmp.contains(type_name)))
             keytypes_tmp.add(type_name)
           end
-          ((i += 1) - 1)
+          i += 1
         end
         alias_ = nil
         keytypes_tmp_size = keytypes_tmp.size

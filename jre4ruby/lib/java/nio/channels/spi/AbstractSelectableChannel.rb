@@ -131,7 +131,7 @@ module Java::Nio::Channels::Spi
             if ((@keys[i]).nil?)
               break
             end
-            ((i += 1) - 1)
+            i += 1
           end
         else
           if ((@keys).nil?)
@@ -143,14 +143,14 @@ module Java::Nio::Channels::Spi
             i = 0
             while i < @keys.attr_length
               ks[i] = @keys[i]
-              ((i += 1) - 1)
+              i += 1
             end
             @keys = ks
             i = @key_count
           end
         end
         @keys[i] = k
-        ((@key_count += 1) - 1)
+        @key_count += 1
       end
     end
     
@@ -165,7 +165,7 @@ module Java::Nio::Channels::Spi
           if ((!(@keys[i]).nil?) && ((@keys[i].selector).equal?(sel)))
             return @keys[i]
           end
-          ((i += 1) - 1)
+          i += 1
         end
         return nil
       end
@@ -179,9 +179,9 @@ module Java::Nio::Channels::Spi
         while i < @keys.attr_length
           if ((@keys[i]).equal?(k))
             @keys[i] = nil
-            ((@key_count -= 1) + 1)
+            @key_count -= 1
           end
-          ((i += 1) - 1)
+          i += 1
         end
         (k).invalidate
       end
@@ -198,7 +198,7 @@ module Java::Nio::Channels::Spi
           if ((!(@keys[i]).nil?) && @keys[i].is_valid)
             return true
           end
-          ((i += 1) - 1)
+          i += 1
         end
         return false
       end
@@ -278,7 +278,7 @@ module Java::Nio::Channels::Spi
           if (!(k).nil?)
             k.cancel
           end
-          ((i += 1) - 1)
+          i += 1
         end
       end
     end

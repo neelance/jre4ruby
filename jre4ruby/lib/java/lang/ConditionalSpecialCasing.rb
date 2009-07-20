@@ -129,7 +129,7 @@ module Java::Lang
           end
           set.add(cur)
           self.attr_entry_table.put(cp, set)
-          ((i += 1) - 1)
+          i += 1
         end
       end
       

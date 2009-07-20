@@ -130,8 +130,8 @@ module Sun::Security::Provider::Certpath
               if (!(Debug).nil?)
                 Debug.println("-checker" + ((j + 1)).to_s + " validation succeeded")
               end
-              ((j += 1) - 1)
-              ((j += 1) - 1)
+              j += 1
+              j += 1
               next # skip
             end
           rescue CertPathValidatorException => cpve
@@ -163,7 +163,7 @@ module Sun::Security::Provider::Certpath
           if (!(Debug).nil?)
             Debug.println("-checker" + ((j + 1)).to_s + " validation succeeded")
           end
-          ((j += 1) - 1)
+          j += 1
         end
         if (!(Debug).nil?)
           Debug.println("checking for unresolvedCritExts")
@@ -174,7 +174,7 @@ module Sun::Security::Provider::Certpath
         if (!(Debug).nil?)
           Debug.println("\ncert" + ((i + 1)).to_s + " validation succeeded.\n")
         end
-        ((i += 1) - 1)
+        i += 1
       end
       if (!(Debug).nil?)
         Debug.println("Cert path validation succeeded. (PKIX validation " + "algorithm)")

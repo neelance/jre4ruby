@@ -60,7 +60,7 @@ module Sun::Security::Util
         if (!(diff).equal?(0))
           return diff
         end
-        ((i += 1) - 1)
+        i += 1
       end
       # if array entries are equal till the first ends, then the
       # longer is "bigger"

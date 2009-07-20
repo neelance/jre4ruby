@@ -115,7 +115,7 @@ module Sun::Reflect
       i = 0
       while i < vec.get_length
         emit_byte(vec.get(i))
-        ((i += 1) - 1)
+        i += 1
       end
     end
     
@@ -143,16 +143,16 @@ module Sun::Reflect
       i = 0
       while i < bytes.attr_length
         emit_byte(bytes[i])
-        ((i += 1) - 1)
+        i += 1
       end
-      ((@cp_idx += 1) - 1)
+      @cp_idx += 1
     end
     
     typesig { [::Java::Short] }
     def emit_constant_pool_class(index)
       emit_byte(CONSTANT_Class)
       emit_short(index)
-      ((@cp_idx += 1) - 1)
+      @cp_idx += 1
     end
     
     typesig { [::Java::Short, ::Java::Short] }
@@ -160,7 +160,7 @@ module Sun::Reflect
       emit_byte(CONSTANT_NameAndType)
       emit_short(name_index)
       emit_short(type_index)
-      ((@cp_idx += 1) - 1)
+      @cp_idx += 1
     end
     
     typesig { [::Java::Short, ::Java::Short] }
@@ -168,7 +168,7 @@ module Sun::Reflect
       emit_byte(CONSTANT_Fieldref)
       emit_short(class_index)
       emit_short(name_and_type_index)
-      ((@cp_idx += 1) - 1)
+      @cp_idx += 1
     end
     
     typesig { [::Java::Short, ::Java::Short] }
@@ -176,7 +176,7 @@ module Sun::Reflect
       emit_byte(CONSTANT_Methodref)
       emit_short(class_index)
       emit_short(name_and_type_index)
-      ((@cp_idx += 1) - 1)
+      @cp_idx += 1
     end
     
     typesig { [::Java::Short, ::Java::Short] }
@@ -184,14 +184,14 @@ module Sun::Reflect
       emit_byte(CONSTANT_InterfaceMethodref)
       emit_short(class_index)
       emit_short(name_and_type_index)
-      ((@cp_idx += 1) - 1)
+      @cp_idx += 1
     end
     
     typesig { [::Java::Short] }
     def emit_constant_pool_string(utf8index)
       emit_byte(CONSTANT_String)
       emit_short(utf8index)
-      ((@cp_idx += 1) - 1)
+      @cp_idx += 1
     end
     
     # ----------------------------------------------------------------------

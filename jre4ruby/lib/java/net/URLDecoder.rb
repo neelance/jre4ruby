@@ -150,7 +150,7 @@ module Java::Net
           case (c)
           when Character.new(?+.ord)
             sb.append(Character.new(?\s.ord))
-            ((i += 1) - 1)
+            i += 1
             need_to_change = true
           when Character.new(?%.ord)
             # Starting with this instance of %, process all
@@ -189,7 +189,7 @@ module Java::Net
             need_to_change = true
           else
             sb.append(c)
-            ((i += 1) - 1)
+            i += 1
           end
         end
         return (need_to_change ? sb.to_s : s)

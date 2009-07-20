@@ -555,7 +555,7 @@ module Java::Net
       i = 0
       while i < INADDRSZ
         test |= @ipaddress[i]
-        ((i += 1) - 1)
+        i += 1
       end
       return ((test).equal?(0x0))
     end
@@ -571,7 +571,7 @@ module Java::Net
       i = 0
       while i < 15
         test |= @ipaddress[i]
-        ((i += 1) - 1)
+        i += 1
       end
       return ((test).equal?(0x0)) && ((@ipaddress[15]).equal?(0x1))
     end
@@ -715,8 +715,8 @@ module Java::Net
           component = 0
           while (j < 4 && i < INADDRSZ)
             component = (component << 8) + @ipaddress[i]
-            ((j += 1) - 1)
-            ((i += 1) - 1)
+            j += 1
+            i += 1
           end
           hash += component
         end
@@ -751,7 +751,7 @@ module Java::Net
         if (!(@ipaddress[i]).equal?(inet_addr.attr_ipaddress[i]))
           return false
         end
-        ((i += 1) - 1)
+        i += 1
       end
       return true
     end
@@ -790,7 +790,7 @@ module Java::Net
           if (i < (INADDRSZ / INT16SZ) - 1)
             sb.append(":")
           end
-          ((i += 1) - 1)
+          i += 1
         end
         return sb.to_s
       end

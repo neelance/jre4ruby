@@ -244,7 +244,7 @@ module Sun::Security::X509
       i = 0
       while i < avaset.attr_length
         @assertion[i] = AVA.new(avaset[i])
-        ((i += 1) - 1)
+        i += 1
       end
     end
     
@@ -282,7 +282,7 @@ module Sun::Security::X509
         if ((@assertion[i]).nil?)
           raise NullPointerException.new
         end
-        ((i += 1) - 1)
+        i += 1
       end
     end
     
@@ -340,7 +340,7 @@ module Sun::Security::X509
         if ((@assertion[i].attr_oid == oid))
           return @assertion[i].attr_value
         end
-        ((i += 1) - 1)
+        i += 1
       end
       return nil
     end
@@ -369,7 +369,7 @@ module Sun::Security::X509
           sb.append(" + ")
         end
         sb.append(@assertion[i].to_s)
-        ((i += 1) - 1)
+        i += 1
       end
       return sb.to_s
     end
@@ -396,7 +396,7 @@ module Sun::Security::X509
           sb.append(" + ")
         end
         sb.append(@assertion[i].to_rfc1779string(oid_map))
-        ((i += 1) - 1)
+        i += 1
       end
       return sb.to_s
     end
@@ -455,7 +455,7 @@ module Sun::Security::X509
             relname.append(Character.new(?+.ord))
           end
           relname.append(@assertion[i].to_rfc2253string(oid_map))
-          ((i += 1) - 1)
+          i += 1
         end
       else
         # order the string type AVA's alphabetically,
@@ -464,7 +464,7 @@ module Sun::Security::X509
         i = 0
         while i < @assertion.attr_length
           ava_list.add(@assertion[i])
-          ((i += 1) - 1)
+          i += 1
         end
         Java::Util::Collections.sort(ava_list, AVAComparator.get_instance)
         i_ = 0
@@ -473,7 +473,7 @@ module Sun::Security::X509
             relname.append(Character.new(?+.ord))
           end
           relname.append(ava_list.get(i_).to_rfc2253canonical_string)
-          ((i_ += 1) - 1)
+          i_ += 1
         end
       end
       return relname.to_s

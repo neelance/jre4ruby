@@ -155,7 +155,7 @@ module Java::Util
         while j < a.attr_length
           i.next
           i.set(a[j])
-          ((j += 1) - 1)
+          j += 1
         end
       end
       
@@ -198,7 +198,7 @@ module Java::Util
         while j < a.attr_length
           i.next
           i.set(a[j])
-          ((j += 1) - 1)
+          j += 1
         end
       end
       
@@ -408,8 +408,8 @@ module Java::Util
           j = size_ - 1
           while i < mid
             swap(list, i, j)
-            ((i += 1) - 1)
-            ((j -= 1) + 1)
+            i += 1
+            j -= 1
           end
         else
           fwd = list.list_iterator
@@ -420,7 +420,7 @@ module Java::Util
             tmp = fwd.next
             fwd.set(rev.previous)
             rev.set(tmp)
-            ((i += 1) - 1)
+            i += 1
           end
         end
       end
@@ -498,7 +498,7 @@ module Java::Util
           i = size_
           while i > 1
             swap(list, i - 1, rnd.next_int(i))
-            ((i -= 1) + 1)
+            i -= 1
           end
         else
           arr = list.to_array
@@ -506,7 +506,7 @@ module Java::Util
           i = size_
           while i > 1
             swap(arr, i - 1, rnd.next_int(i))
-            ((i -= 1) + 1)
+            i -= 1
           end
           # Dump array back into list
           it = list.list_iterator
@@ -514,7 +514,7 @@ module Java::Util
           while i_ < arr.attr_length
             it.next
             it.set(arr[i_])
-            ((i_ += 1) - 1)
+            i_ += 1
           end
         end
       end
@@ -560,7 +560,7 @@ module Java::Util
           i = 0
           while i < size_
             list.set(i, obj)
-            ((i += 1) - 1)
+            i += 1
           end
         else
           itr = list.list_iterator
@@ -568,7 +568,7 @@ module Java::Util
           while i < size_
             itr.next
             itr.set(obj)
-            ((i += 1) - 1)
+            i += 1
           end
         end
       end
@@ -597,7 +597,7 @@ module Java::Util
           i = 0
           while i < src_size
             dest.set(i, src.get(i))
-            ((i += 1) - 1)
+            i += 1
           end
         else
           di = dest.list_iterator
@@ -606,7 +606,7 @@ module Java::Util
           while i < src_size
             di.next
             di.set(si.next)
-            ((i += 1) - 1)
+            i += 1
           end
         end
       end
@@ -833,9 +833,9 @@ module Java::Util
               i -= size_
             end
             displaced = list.set(i, displaced)
-            ((n_moved += 1) - 1)
+            n_moved += 1
           end while (!(i).equal?(cycle_start))
-          ((cycle_start += 1) - 1)
+          cycle_start += 1
         end
       end
       
@@ -885,7 +885,7 @@ module Java::Util
                 list.set(i, new_val)
                 result = true
               end
-              ((i += 1) - 1)
+              i += 1
             end
           else
             i = 0
@@ -894,7 +894,7 @@ module Java::Util
                 list.set(i, new_val)
                 result = true
               end
-              ((i += 1) - 1)
+              i += 1
             end
           end
         else
@@ -906,7 +906,7 @@ module Java::Util
                 itr.set(new_val)
                 result = true
               end
-              ((i += 1) - 1)
+              i += 1
             end
           else
             i = 0
@@ -915,7 +915,7 @@ module Java::Util
                 itr.set(new_val)
                 result = true
               end
-              ((i += 1) - 1)
+              i += 1
             end
           end
         end
@@ -955,12 +955,12 @@ module Java::Util
                 if (!eq(target.get(i), source.get(j)))
                   throw :next_next_cand, :thrown
                 end
-                ((i += 1) - 1)
-                ((j += 1) - 1)
+                i += 1
+                j += 1
               end # Element mismatch, try next cand
               return candidate # All elements of candidate matched target
             end
-            ((candidate += 1) - 1)
+            candidate += 1
           end
         else
           # Iterator version of above algorithm
@@ -976,15 +976,15 @@ module Java::Util
                   j = 0
                   while j < i
                     si.previous
-                    ((j += 1) - 1)
+                    j += 1
                   end
                   throw :next_next_cand, :thrown
                 end
-                ((i += 1) - 1)
+                i += 1
               end
               return candidate
             end
-            ((candidate += 1) - 1)
+            candidate += 1
           end
         end
         return -1 # No candidate matched the target
@@ -1024,12 +1024,12 @@ module Java::Util
                 if (!eq(target.get(i), source.get(j)))
                   throw :next_next_cand, :thrown
                 end
-                ((i += 1) - 1)
-                ((j += 1) - 1)
+                i += 1
+                j += 1
               end # Element mismatch, try next cand
               return candidate # All elements of candidate matched target
             end
-            ((candidate -= 1) + 1)
+            candidate -= 1
           end
         else
           # Iterator version of above algorithm
@@ -1049,16 +1049,16 @@ module Java::Util
                     j = 0
                     while j <= i + 1
                       si.previous
-                      ((j += 1) - 1)
+                      j += 1
                     end
                   end
                   throw :next_next_cand, :thrown
                 end
-                ((i += 1) - 1)
+                i += 1
               end
               return candidate
             end
-            ((candidate -= 1) + 1)
+            candidate -= 1
           end
         end
         return -1 # No candidate matched the target
@@ -1780,7 +1780,7 @@ module Java::Util
               i = 0
               while i < a.attr_length
                 a[i] = UnmodifiableEntry.new(a[i])
-                ((i += 1) - 1)
+                i += 1
               end
               return a
             end
@@ -1794,7 +1794,7 @@ module Java::Util
               i = 0
               while i < arr.attr_length
                 arr[i] = UnmodifiableEntry.new(arr[i])
-                ((i += 1) - 1)
+                i += 1
               end
               if (arr.attr_length > a.attr_length)
                 return arr
@@ -3840,7 +3840,7 @@ module Java::Util
               i = 0
               while i < source.attr_length
                 dest[i] = checked_entry(source[i], @value_type)
-                ((i += 1) - 1)
+                i += 1
               end
               return dest
             end
@@ -3854,7 +3854,7 @@ module Java::Util
               i = 0
               while i < arr.attr_length
                 arr[i] = checked_entry(arr[i], @value_type)
-                ((i += 1) - 1)
+                i += 1
               end
               if (arr.attr_length > a.attr_length)
                 return arr
@@ -5228,13 +5228,13 @@ module Java::Util
         if ((o).nil?)
           c.each do |e|
             if ((e).nil?)
-              ((result += 1) - 1)
+              result += 1
             end
           end
         else
           c.each do |e|
             if ((o == e))
-              ((result += 1) - 1)
+              result += 1
             end
           end
         end

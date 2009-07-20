@@ -232,7 +232,7 @@ module Java::Text
       i = 0
       while i < l
         temp[i] = BreakIterator.get_short(buf, offset)
-        ((i += 1) - 1)
+        i += 1
         offset += 2
       end
       l = BreakIterator.get_int(buf, offset)
@@ -241,8 +241,8 @@ module Java::Text
       i_ = 0
       while i_ < l
         temp2[i_] = buf[offset]
-        ((i_ += 1) - 1)
-        ((offset += 1) - 1)
+        i_ += 1
+        offset += 1
       end
       @column_map = CompactByteArray.new(temp, temp2)
       # read in numCols and numColGroups
@@ -257,7 +257,7 @@ module Java::Text
       i__ = 0
       while i__ < l
         @row_index[i__] = BreakIterator.get_short(buf, offset)
-        ((i__ += 1) - 1)
+        i__ += 1
         offset += 2
       end
       # load in the populated-cells bitmap: index first, then bitmap list
@@ -267,7 +267,7 @@ module Java::Text
       i___ = 0
       while i___ < l
         @row_index_flags_index[i___] = BreakIterator.get_short(buf, offset)
-        ((i___ += 1) - 1)
+        i___ += 1
         offset += 2
       end
       l = BreakIterator.get_int(buf, offset)
@@ -276,7 +276,7 @@ module Java::Text
       i____ = 0
       while i____ < l
         @row_index_flags[i____] = BreakIterator.get_int(buf, offset)
-        ((i____ += 1) - 1)
+        i____ += 1
         offset += 4
       end
       # load in the row-shift index
@@ -286,8 +286,8 @@ module Java::Text
       i_____ = 0
       while i_____ < l
         @row_index_shifts[i_____] = buf[offset]
-        ((i_____ += 1) - 1)
-        ((offset += 1) - 1)
+        i_____ += 1
+        offset += 1
       end
       # load in the actual state table
       l = BreakIterator.get_int(buf, offset)
@@ -296,7 +296,7 @@ module Java::Text
       i______ = 0
       while i______ < l
         @table[i______] = BreakIterator.get_short(buf, offset)
-        ((i______ += 1) - 1)
+        i______ += 1
         offset += 2
       end
       # finally, prepare the column map for supplementary characters
@@ -306,7 +306,7 @@ module Java::Text
       i_______ = 0
       while i_______ < l
         temp3[i_______] = BreakIterator.get_int(buf, offset)
-        ((i_______ += 1) - 1)
+        i_______ += 1
         offset += 4
       end
       @supplementary_char_column_map = SupplementaryCharacterData.new(temp3)

@@ -210,7 +210,7 @@ module Sun::Misc
           end
         end
         zrf.close
-        ((i += 1) - 1)
+        i += 1
       end
     end
     
@@ -236,7 +236,7 @@ module Sun::Misc
             end
           end
           bw.write("\n")
-          ((i += 1) - 1)
+          i += 1
         end
         bw.flush
       end

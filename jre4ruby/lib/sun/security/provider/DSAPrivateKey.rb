@@ -140,14 +140,14 @@ module Sun::Security::Provider
         i = 0
         while i < self.attr_encoded_key.attr_length
           self.attr_encoded_key[i] = 0x0
-          ((i += 1) - 1)
+          i += 1
         end
       end
       if (!(self.attr_key).nil?)
         i = 0
         while i < self.attr_key.attr_length
           self.attr_key[i] = 0x0
-          ((i += 1) - 1)
+          i += 1
         end
       end
     end

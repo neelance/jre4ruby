@@ -1430,7 +1430,7 @@ module Sun::Nio::Ch
                 list.remove(index)
                 break
               end
-              ((index += 1) - 1)
+              index += 1
             end
           end
         end
@@ -1452,7 +1452,7 @@ module Sun::Nio::Ch
                   ref.clear
                   list.remove(index)
                 else
-                  ((index += 1) - 1)
+                  index += 1
                 end
               end
               # once the lock list is empty we remove it from the map
@@ -1476,7 +1476,7 @@ module Sun::Nio::Ch
                 list.set(index, FileLockReference.new(to_lock, self.attr_queue, @file_key))
                 break
               end
-              ((index += 1) - 1)
+              index += 1
             end
           end
         end

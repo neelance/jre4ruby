@@ -690,7 +690,7 @@ module Sun::Misc
         end
         @next = self.attr_pool
         self.attr_pool = self
-        ((self.attr_cur_pool_size += 1) - 1)
+        self.attr_cur_pool_size += 1
         @timer = nil
       end
       while ((@timer).nil?)
@@ -703,7 +703,7 @@ module Sun::Misc
         end
       end
       synchronized((get_class)) do
-        ((self.attr_cur_pool_size -= 1) + 1)
+        self.attr_cur_pool_size -= 1
       end
       return true
     end

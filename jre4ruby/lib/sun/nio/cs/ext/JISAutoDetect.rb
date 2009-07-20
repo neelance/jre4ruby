@@ -178,7 +178,7 @@ module Sun::Nio::Cs::Ext
             p = start
             while p < limit && is_plain_ascii(b = src.get(p))
               dst.put(RJava.cast_to_char((b & 0xff)))
-              ((p += 1) - 1)
+              p += 1
             end
             src.position(p)
           end

@@ -452,7 +452,7 @@ module Java::Lang
       i = 0
       while st.has_more_tokens
         cmdarray[i] = st.next_token
-        ((i += 1) - 1)
+        i += 1
       end
       return exec(cmdarray, envp, dir)
     end

@@ -172,7 +172,7 @@ module Sun::Security::Ssl
               s.print(", ")
             end
             s.print(data[i] & 0xff)
-            ((i += 1) - 1)
+            i += 1
           end
         end
         s.println(" }")

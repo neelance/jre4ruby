@@ -254,7 +254,7 @@ module Java::Util
           c = 0
           # skip whitespace
           while ((!(i).equal?(-1)) && (((c = a[i])).equal?(Character.new(?\s.ord)) || (c).equal?(Character.new(?\r.ord)) || (c).equal?(Character.new(?\n.ord)) || (c).equal?(Character.new(?\f.ord)) || (c).equal?(Character.new(?\t.ord))))
-            ((i -= 1) + 1)
+            i -= 1
           end
           # check for the known strings
           matchlen = 0
@@ -282,7 +282,7 @@ module Java::Util
             else
               raise IllegalArgumentException.new("invalid permission: " + actions)
             end
-            ((i -= 1) + 1)
+            i -= 1
           end
           # point i at the location of the comma minus one (or -1).
           i -= matchlen

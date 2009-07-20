@@ -136,7 +136,7 @@ module Sun::Misc
         nmids = 0
         pos = firstst
         while (pos < lastst && pos >= 0)
-          ((nmids += 1) - 1)
+          nmids += 1
           pos = s.index_of(Character.new(?*.ord), pos + 1)
         end
         @total_len = @prefix_len + @suffix_len
@@ -145,14 +145,14 @@ module Sun::Misc
           pos = firstst
           i = 0
           while i < nmids
-            ((pos += 1) - 1)
+            pos += 1
             npos = s.index_of(Character.new(?*.ord), pos)
             if (pos < npos)
               @mids[i] = s.substring(pos, npos)
               @total_len += @mids[i].length
             end
             pos = npos
-            ((i += 1) - 1)
+            i += 1
           end
         end
       end
@@ -188,13 +188,13 @@ module Sun::Misc
         ms = @mids[i]
         ml = ms.length
         while (spos + ml <= limit && !ms.region_matches(@ignore_case, 0, s, spos, ml))
-          ((spos += 1) - 1)
+          spos += 1
         end
         if (spos + ml > limit)
           return false
         end
         spos += ml
-        ((i += 1) - 1)
+        i += 1
       end
       return true
     end

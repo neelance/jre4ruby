@@ -163,7 +163,7 @@ module Sun::Misc
         if ((tmp[2]).equal?(Map_array[i]))
           c = i
         end
-        ((i += 1) - 1)
+        i += 1
       end
       high_byte = (((a & 0x38) << 2) + (b & 0x1f))
       low_byte = (((a & 0x7) << 5) + (c & 0x1f))
@@ -172,10 +172,10 @@ module Sun::Misc
       i = 1
       while i < 256
         if (!((high_byte & i)).equal?(0))
-          ((p1 += 1) - 1)
+          p1 += 1
         end
         if (!((low_byte & i)).equal?(0))
-          ((p2 += 1) - 1)
+          p2 += 1
         end
         i = i * 2
       end

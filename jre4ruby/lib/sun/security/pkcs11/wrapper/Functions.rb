@@ -111,7 +111,7 @@ module Sun::Security::Pkcs11::Wrapper
           current_digit = RJava.cast_to_int(current_value) & 0xf
           string_buffer.append(HEX_DIGITS[current_digit])
           current_value >>= 4
-          ((j += 1) - 1)
+          j += 1
         end
         return string_buffer.reverse.to_s
       end
@@ -130,7 +130,7 @@ module Sun::Security::Pkcs11::Wrapper
           current_digit = current_value & 0xf
           string_buffer.append(HEX_DIGITS[current_digit])
           current_value >>= 4
-          ((i += 1) - 1)
+          i += 1
         end
         return string_buffer.reverse.to_s
       end
@@ -164,7 +164,7 @@ module Sun::Security::Pkcs11::Wrapper
             buffer.append(Character.new(?0.ord))
           end
           buffer.append(JavaInteger.to_s(single, 16))
-          ((i += 1) - 1)
+          i += 1
         end
         return buffer.to_s
       end
@@ -227,7 +227,7 @@ module Sun::Security::Pkcs11::Wrapper
               sb.append(@flag_names[i])
               first = false
             end
-            ((i += 1) - 1)
+            i += 1
           end
           return sb.to_s
         end
@@ -444,7 +444,7 @@ module Sun::Security::Pkcs11::Wrapper
           i = 0
           while (i < 4) && (i < array.attr_length)
             hash ^= (RJava.cast_to_int((0xff & array[i]))) << ((i % 4) << 3)
-            ((i += 1) - 1)
+            i += 1
           end
         end
         return hash
@@ -463,7 +463,7 @@ module Sun::Security::Pkcs11::Wrapper
           i = 0
           while (i < 4) && (i < array.attr_length)
             hash ^= (RJava.cast_to_int((0xffff & array[i]))) << ((i % 2) << 4)
-            ((i += 1) - 1)
+            i += 1
           end
         end
         return hash

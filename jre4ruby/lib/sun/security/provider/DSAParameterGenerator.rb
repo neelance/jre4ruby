@@ -181,7 +181,7 @@ module Sun::Security::Provider
         i = 0
         while i < 20
           seed[i] = random.next_int
-          ((i += 1) - 1)
+          i += 1
         end
         result = generate_pand_q(seed, l)
       end
@@ -232,14 +232,14 @@ module Sun::Security::Provider
             k_ = BigInteger.value_of(k)
             tmp = (seed_.add(offset).add(k_)).mod(twog)
             v[k] = BigInteger.new(1, _sha(to_byte_array(tmp)))
-            ((k += 1) - 1)
+            k += 1
           end
           # Step 8
           w = v[0]
           i = 1
           while i < n
             w = w.add(v[i].multiply(TWO.pow(i * 160)))
-            ((i += 1) - 1)
+            i += 1
           end
           w = w.add((v[n].mod(TWO.pow(b))).multiply(TWO.pow(n * 160)))
           twolm1 = TWO.pow(l - 1)
@@ -253,7 +253,7 @@ module Sun::Security::Provider
             return result
           end
           offset = offset.add(BigInteger.value_of(n)).add(ONE)
-          ((counter += 1) - 1)
+          counter += 1
         end
         return nil
       end
@@ -304,7 +304,7 @@ module Sun::Security::Provider
       i = 0
       while i < u1.attr_length
         u1[i] ^= u2[i]
-        ((i += 1) - 1)
+        i += 1
       end
     end
     

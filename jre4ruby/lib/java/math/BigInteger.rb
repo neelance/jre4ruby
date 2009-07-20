@@ -389,7 +389,7 @@ module Java::Math
       end
       # Skip leading zeros and compute number of digits in magnitude
       while (cursor < len && (Character.digit(val.char_at(cursor), radix)).equal?(0))
-        ((cursor += 1) - 1)
+        cursor += 1
       end
       if ((cursor).equal?(len))
         @signum = 0
@@ -458,7 +458,7 @@ module Java::Math
       end
       # Skip leading zeros and compute number of digits in magnitude
       while (cursor < len && (Character.digit(val[cursor], 10)).equal?(0))
-        ((cursor += 1) - 1)
+        cursor += 1
       end
       if ((cursor).equal?(len))
         @signum = 0
@@ -506,7 +506,7 @@ module Java::Math
           raise NumberFormatException.new(String.new(source))
         end
         result = 10 * result + next_val
-        ((index += 1) - 1)
+        index += 1
       end
       return result
     end
@@ -539,7 +539,7 @@ module Java::Math
           product = ylong * (x[i] & LONG_MASK) + carry
           x[i] = RJava.cast_to_int(product)
           carry = product >> 32
-          ((i -= 1) + 1)
+          i -= 1
         end
         # Perform the addition
         sum = (x[len - 1] & LONG_MASK) + zlong
@@ -550,7 +550,7 @@ module Java::Math
           sum = (x[i_] & LONG_MASK) + carry
           x[i_] = RJava.cast_to_int(sum)
           carry = sum >> 32
-          ((i_ -= 1) + 1)
+          i_ -= 1
         end
       end
     }
@@ -693,7 +693,7 @@ module Java::Math
           i = 0
           while i < mag_len
             temp[i] = rnd.next_int
-            ((i += 1) - 1)
+            i += 1
           end
           temp[0] = (temp[0] & high_mask) | high_bit # Ensure exact length
           if (bit_length > 2)
@@ -976,7 +976,7 @@ module Java::Math
             u = u2
             v = v2
           end
-          ((i -= 1) + 1)
+          i -= 1
         end
         return u
       end
@@ -1034,7 +1034,7 @@ module Java::Math
           end
           z = z.mod_pow(TWO, self)
         end
-        ((i += 1) - 1)
+        i += 1
       end
       return true
     end
@@ -1104,7 +1104,7 @@ module Java::Math
         i = 0
         while i < val.attr_int_len
           @mag[i] = val.attr_value[val.attr_offset + i]
-          ((i += 1) - 1)
+          i += 1
         end
       else
         @mag = val.attr_value
@@ -1216,7 +1216,7 @@ module Java::Math
           magnitude[0] = i
           self.attr_pos_const[i] = BigInteger.new(magnitude, 1)
           self.attr_neg_const[i] = BigInteger.new(magnitude, -1)
-          ((i += 1) - 1)
+          i += 1
         end
       end
       
@@ -1307,7 +1307,7 @@ module Java::Math
           i = 1
           while i < new_len
             temp[i] = result[i - 1]
-            ((i += 1) - 1)
+            i += 1
           end
           temp[0] = 0x1
           result = temp
@@ -1400,8 +1400,8 @@ module Java::Math
         product = (y[j] & LONG_MASK) * (x[xstart] & LONG_MASK) + carry
         z[k] = RJava.cast_to_int(product)
         carry = product >> 32
-        ((j -= 1) + 1)
-        ((k -= 1) + 1)
+        j -= 1
+        k -= 1
       end
       z[xstart] = RJava.cast_to_int(carry)
       i = xstart - 1
@@ -1413,11 +1413,11 @@ module Java::Math
           product = (y[j_] & LONG_MASK) * (x[i] & LONG_MASK) + (z[k_] & LONG_MASK) + carry
           z[k_] = RJava.cast_to_int(product)
           carry = product >> 32
-          ((j_ -= 1) + 1)
-          ((k_ -= 1) + 1)
+          j_ -= 1
+          k_ -= 1
         end
         z[i] = RJava.cast_to_int(carry)
-        ((i -= 1) + 1)
+        i -= 1
       end
       return z
     end
@@ -1485,7 +1485,7 @@ module Java::Math
           z[((i += 1) - 1)] = (last_product_low_word << 31) | RJava.cast_to_int((product >> 33))
           z[((i += 1) - 1)] = RJava.cast_to_int((product >> 1))
           last_product_low_word = RJava.cast_to_int(product)
-          ((j += 1) - 1)
+          j += 1
         end
         # Add in off-diagonal sums
         i_ = len
@@ -1494,7 +1494,7 @@ module Java::Math
           t = x[i_ - 1]
           t = mul_add(z, x, offset, i_ - 1, t)
           add_one(z, offset - 1, i_, t)
-          ((i_ -= 1) + 1)
+          i_ -= 1
           offset += 2
         end
         # Shift back up and set low bit
@@ -1629,7 +1629,7 @@ module Java::Math
             i = 0
             while i < len
               result[i] = a[i]
-              ((i += 1) - 1)
+              i += 1
             end
             primitive_left_shift(result, result.attr_length, n_bits)
             return result
@@ -1638,7 +1638,7 @@ module Java::Math
             i = 0
             while i < len
               result[i] = a[i]
-              ((i += 1) - 1)
+              i += 1
             end
             primitive_right_shift(result, result.attr_length, 32 - n_bits)
             return result
@@ -1656,7 +1656,7 @@ module Java::Math
           b = c
           c = a[i - 1]
           a[i] = (c << n2) | (b >> n)
-          ((i -= 1) + 1)
+          i -= 1
         end
         a[0] >>= n
       end
@@ -1675,7 +1675,7 @@ module Java::Math
           b = c
           c = a[i + 1]
           a[i] = (b << n) | (c >> n2)
-          ((i += 1) - 1)
+          i += 1
         end
         a[len - 1] <<= n
       end
@@ -1888,7 +1888,7 @@ module Java::Math
       # if exponent is 65537 (0x10001), use minimum window size
       if ((!(ebits).equal?(17)) || (!(exp[0]).equal?(65537)))
         while (ebits > self.attr_bn_exp_mod_thresh_table[wbits])
-          ((wbits += 1) - 1)
+          wbits += 1
         end
       end
       # Calculate appropriate table size
@@ -1898,7 +1898,7 @@ module Java::Math
       i = 0
       while i < tblmask
         table[i] = Array.typed(::Java::Int).new(mod_len) { 0 }
-        ((i += 1) - 1)
+        i += 1
       end
       # Compute the modular inverse
       inv = -MutableBigInteger.inverse_mod32(mod_[mod_len - 1])
@@ -1917,7 +1917,7 @@ module Java::Math
         i_ = 0
         while i_ < table[0].attr_length
           t2[i_ + offset] = table[0][i_]
-          ((i_ += 1) - 1)
+          i_ += 1
         end
         table[0] = t2
       end
@@ -1929,14 +1929,14 @@ module Java::Math
       i_ = 0
       while i_ < mod_len
         t[i_] = b[i_]
-        ((i_ += 1) - 1)
+        i_ += 1
       end
       # Fill in the table with odd powers of the base
       i__ = 1
       while i__ < tblmask
         prod = multiply_to_len(t, mod_len, table[i__ - 1], mod_len, nil)
         table[i__] = mont_reduce(prod, mod_, mod_len, inv)
-        ((i__ += 1) - 1)
+        i__ += 1
       end
       # Pre load the window that slides over the exponent
       bitpos = 1 << ((ebits - 1) & (32 - 1))
@@ -1948,20 +1948,20 @@ module Java::Math
         buf = (buf << 1) | ((!((exp[e_index] & bitpos)).equal?(0)) ? 1 : 0)
         bitpos >>= 1
         if ((bitpos).equal?(0))
-          ((e_index += 1) - 1)
+          e_index += 1
           bitpos = 1 << (32 - 1)
-          ((elen -= 1) + 1)
+          elen -= 1
         end
-        ((i___ += 1) - 1)
+        i___ += 1
       end
       multpos = ebits
       # The first iteration, which is hoisted out of the main loop
-      ((ebits -= 1) + 1)
+      ebits -= 1
       isone = true
       multpos = ebits - wbits
       while (((buf & 1)).equal?(0))
         buf >>= 1
-        ((multpos += 1) - 1)
+        multpos += 1
       end
       mult = table[buf >> 1]
       buf = 0
@@ -1970,16 +1970,16 @@ module Java::Math
       end
       # The main loop
       while (true)
-        ((ebits -= 1) + 1)
+        ebits -= 1
         # Advance the window
         buf <<= 1
         if (!(elen).equal?(0))
           buf |= (!((exp[e_index] & bitpos)).equal?(0)) ? 1 : 0
           bitpos >>= 1
           if ((bitpos).equal?(0))
-            ((e_index += 1) - 1)
+            e_index += 1
             bitpos = 1 << (32 - 1)
-            ((elen -= 1) + 1)
+            elen -= 1
           end
         end
         # Examine the window for pending multiplies
@@ -1987,7 +1987,7 @@ module Java::Math
           multpos = ebits - wbits
           while (((buf & 1)).equal?(0))
             buf >>= 1
-            ((multpos += 1) - 1)
+            multpos += 1
           end
           mult = table[buf >> 1]
           buf = 0
@@ -2025,14 +2025,14 @@ module Java::Math
       i____ = 0
       while i____ < mod_len
         t2[i____ + mod_len] = b[i____]
-        ((i____ += 1) - 1)
+        i____ += 1
       end
       b = mont_reduce(t2, mod_, mod_len, inv)
       t2 = Array.typed(::Java::Int).new(mod_len) { 0 }
       i_____ = 0
       while i_____ < mod_len
         t2[i_____] = b[i_____]
-        ((i_____ += 1) - 1)
+        i_____ += 1
       end
       return BigInteger.new(1, t2)
     end
@@ -2049,7 +2049,7 @@ module Java::Math
           n_end = n[n.attr_length - 1 - offset]
           carry = mul_add(n, mod_, offset, mlen, inv * n_end)
           c += add_one(n, offset, mlen, carry)
-          ((offset += 1) - 1)
+          offset += 1
         end while ((len -= 1) > 0)
         while (c > 0)
           c += sub_n(n, mod_, mlen)
@@ -2074,7 +2074,7 @@ module Java::Math
           if (b1 > b2)
             return 1
           end
-          ((i += 1) - 1)
+          i += 1
         end
         return 0
       end
@@ -2101,7 +2101,7 @@ module Java::Math
           product = (in_[j] & LONG_MASK) * k_long + (out[offset] & LONG_MASK) + carry
           out[((offset -= 1) + 1)] = RJava.cast_to_int(product)
           carry = product >> 32
-          ((j -= 1) + 1)
+          j -= 1
         end
         return RJava.cast_to_int(carry)
       end
@@ -2121,7 +2121,7 @@ module Java::Math
             # Carry out of number
             return 1
           else
-            ((a[offset] += 1) - 1)
+            a[offset] += 1
             if (!(a[offset]).equal?(0))
               return 0
             end
@@ -2147,7 +2147,7 @@ module Java::Math
         if (exponent.test_bit(exp_offset))
           result = result.multiply(base_to_pow2).mod2(p)
         end
-        ((exp_offset += 1) - 1)
+        exp_offset += 1
         if (exp_offset < limit)
           base_to_pow2 = base_to_pow2.square.mod2(p)
         end
@@ -2168,7 +2168,7 @@ module Java::Math
       i = 0
       while i < num_ints
         mag[i] = @mag[i + (@mag.attr_length - num_ints)]
-        ((i += 1) - 1)
+        i += 1
       end
       # Mask out any excess bits
       excess_bits = (num_ints << 5) - p
@@ -2235,7 +2235,7 @@ module Java::Math
         i = 0
         while i < mag_len
           new_mag[i] = @mag[i]
-          ((i += 1) - 1)
+          i += 1
         end
       else
         i = 0
@@ -2286,7 +2286,7 @@ module Java::Math
         i = 0
         while i < new_mag_len
           new_mag[i] = @mag[i]
-          ((i += 1) - 1)
+          i += 1
         end
       else
         i = 0
@@ -2310,7 +2310,7 @@ module Java::Math
         j = mag_len - n_ints
         while i >= j && !ones_lost
           ones_lost = (!(@mag[i]).equal?(0))
-          ((i -= 1) + 1)
+          i -= 1
         end
         if (!ones_lost && !(n_bits).equal?(0))
           ones_lost = (!(@mag[mag_len - n_ints - 1] << (32 - n_bits)).equal?(0))
@@ -2328,7 +2328,7 @@ module Java::Math
       i = val.attr_length - 1
       while i >= 0 && (last_sum).equal?(0)
         last_sum = (val[i] += 1)
-        ((i -= 1) + 1)
+        i -= 1
       end
       if ((last_sum).equal?(0))
         val = Array.typed(::Java::Int).new(val.attr_length + 1) { 0 }
@@ -2351,7 +2351,7 @@ module Java::Math
       i = 0
       while i < result.attr_length
         result[i] = (get_int(result.attr_length - i - 1) & val.get_int(result.attr_length - i - 1))
-        ((i += 1) - 1)
+        i += 1
       end
       return value_of(result)
     end
@@ -2368,7 +2368,7 @@ module Java::Math
       i = 0
       while i < result.attr_length
         result[i] = (get_int(result.attr_length - i - 1) | val.get_int(result.attr_length - i - 1))
-        ((i += 1) - 1)
+        i += 1
       end
       return value_of(result)
     end
@@ -2385,7 +2385,7 @@ module Java::Math
       i = 0
       while i < result.attr_length
         result[i] = (get_int(result.attr_length - i - 1) ^ val.get_int(result.attr_length - i - 1))
-        ((i += 1) - 1)
+        i += 1
       end
       return value_of(result)
     end
@@ -2401,7 +2401,7 @@ module Java::Math
       i = 0
       while i < result.attr_length
         result[i] = ~get_int(result.attr_length - i - 1)
-        ((i += 1) - 1)
+        i += 1
       end
       return value_of(result)
     end
@@ -2420,7 +2420,7 @@ module Java::Math
       i = 0
       while i < result.attr_length
         result[i] = (get_int(result.attr_length - i - 1) & ~val.get_int(result.attr_length - i - 1))
-        ((i += 1) - 1)
+        i += 1
       end
       return value_of(result)
     end
@@ -2457,7 +2457,7 @@ module Java::Math
       i = 0
       while i < result.attr_length
         result[result.attr_length - i - 1] = get_int(i)
-        ((i += 1) - 1)
+        i += 1
       end
       result[result.attr_length - int_num - 1] |= (1 << (n % 32))
       return value_of(result)
@@ -2480,7 +2480,7 @@ module Java::Math
       i = 0
       while i < result.attr_length
         result[result.attr_length - i - 1] = get_int(i)
-        ((i += 1) - 1)
+        i += 1
       end
       result[result.attr_length - int_num - 1] &= ~(1 << (n % 32))
       return value_of(result)
@@ -2503,7 +2503,7 @@ module Java::Math
       i = 0
       while i < result.attr_length
         result[result.attr_length - i - 1] = get_int(i)
-        ((i += 1) - 1)
+        i += 1
       end
       result[result.attr_length - int_num - 1] ^= (1 << (n % 32))
       return value_of(result)
@@ -2529,7 +2529,7 @@ module Java::Math
           b = 0
           i = 0
           while ((b = get_int(i))).equal?(0)
-            ((i += 1) - 1)
+            i += 1
           end
           @lowest_set_bit = (i << 5) + trailing_zero_cnt(b)
         end
@@ -2564,7 +2564,7 @@ module Java::Math
             i = 1
             while i < @mag.attr_length && pow2
               pow2 = ((@mag[i]).equal?(0))
-              ((i += 1) - 1)
+              i += 1
             end
             @bit_length = (pow2 ? mag_bit_length - 1 : mag_bit_length)
           else
@@ -2606,7 +2606,7 @@ module Java::Math
         i = 0
         while i < @mag.attr_length
           mag_bit_count += bit_cnt(@mag[i])
-          ((i += 1) - 1)
+          i += 1
         end
         if (@signum < 0)
           # Count the trailing zeros in the magnitude
@@ -2615,7 +2615,7 @@ module Java::Math
           j = @mag.attr_length - 1
           while (@mag[j]).equal?(0)
             mag_trailing_zero_count += 32
-            ((j -= 1) + 1)
+            j -= 1
           end
           mag_trailing_zero_count += trailing_zero_cnt(@mag[j])
           @bit_count = mag_bit_count + mag_trailing_zero_count - 1
@@ -2726,7 +2726,7 @@ module Java::Math
           if (b1 > b2)
             return 1
           end
-          ((i += 1) - 1)
+          i += 1
         end
         return 0
       end
@@ -2755,7 +2755,7 @@ module Java::Math
         if (!(x_int.attr_mag[i]).equal?(@mag[i]))
           return false
         end
-        ((i += 1) - 1)
+        i += 1
       end
       return true
     end
@@ -2791,7 +2791,7 @@ module Java::Math
       i = 0
       while i < @mag.attr_length
         hash_code = RJava.cast_to_int((31 * hash_code + (@mag[i] & LONG_MASK)))
-        ((i += 1) - 1)
+        i += 1
       end
       return hash_code * @signum
     end
@@ -2852,7 +2852,7 @@ module Java::Math
           buf.append(self.attr_zeros[num_leading_zeros])
         end
         buf.append(digit_group[i])
-        ((i -= 1) + 1)
+        i -= 1
       end
       return buf.to_s
     end
@@ -2875,7 +2875,7 @@ module Java::Math
         i = 0
         while i < 63
           self.attr_zeros[i] = self.attr_zeros[63].substring(0, i)
-          ((i += 1) - 1)
+          i += 1
         end
       end
     }
@@ -2921,10 +2921,10 @@ module Java::Math
           bytes_copied = 1
         else
           next_int_ >>= 8
-          ((bytes_copied += 1) - 1)
+          bytes_copied += 1
         end
         byte_array[i] = next_int_
-        ((i -= 1) + 1)
+        i -= 1
       end
       return byte_array
     end
@@ -2968,7 +2968,7 @@ module Java::Math
       i = 1
       while i >= 0
         result = (result << 32) + (get_int(i) & LONG_MASK)
-        ((i -= 1) + 1)
+        i -= 1
       end
       return result
     end
@@ -3022,13 +3022,13 @@ module Java::Math
         # Find first nonzero byte
         keep = 0
         while keep < val.attr_length && (val[keep]).equal?(0)
-          ((keep += 1) - 1)
+          keep += 1
         end
         result = Array.typed(::Java::Int).new(val.attr_length - keep) { 0 }
         i = 0
         while i < val.attr_length - keep
           result[i] = val[keep + i]
-          ((i += 1) - 1)
+          i += 1
         end
         return result
       end
@@ -3042,7 +3042,7 @@ module Java::Math
         # Find first nonzero byte
         keep = 0
         while keep < val.attr_length && (val[keep]).equal?(0)
-          ((keep += 1) - 1)
+          keep += 1
         end
         # Only perform copy if necessary
         if (keep > 0)
@@ -3050,7 +3050,7 @@ module Java::Math
           i = 0
           while i < val.attr_length - keep
             result[i] = val[keep + i]
-            ((i += 1) - 1)
+            i += 1
           end
           return result
         end
@@ -3065,7 +3065,7 @@ module Java::Math
         # Find first nonzero byte
         keep = 0
         while keep < a.attr_length && (a[keep]).equal?(0)
-          ((keep += 1) - 1)
+          keep += 1
         end
         # Allocate new array and copy relevant part of input array
         int_length_ = ((byte_length - keep) + 3) / 4
@@ -3081,7 +3081,7 @@ module Java::Math
             result[i] |= ((a[((b -= 1) + 1)] & 0xff) << j)
             j += 8
           end
-          ((i -= 1) + 1)
+          i -= 1
         end
         return result
       end
@@ -3096,13 +3096,13 @@ module Java::Math
         # Find first non-sign (0xff) byte of input
         keep = 0
         while keep < byte_length && (a[keep]).equal?(-1)
-          ((keep += 1) - 1)
+          keep += 1
         end
         # Allocate output array.  If all non-sign bytes are 0x00, we must
         # allocate space for one extra output byte.
         k = keep
         while k < byte_length && (a[k]).equal?(0)
-          ((k += 1) - 1)
+          k += 1
         end
         extra_byte = ((k).equal?(byte_length)) ? 1 : 0
         int_length_ = ((byte_length - keep + extra_byte) + 3) / 4
@@ -3125,7 +3125,7 @@ module Java::Math
           # Mask indicates which bits must be complemented
           mask = -1 >> (8 * (3 - num_bytes_to_transfer))
           result[i] = ~result[i] & mask
-          ((i -= 1) + 1)
+          i -= 1
         end
         # Add one to one's complement to generate two's complement
         i_ = result.attr_length - 1
@@ -3134,7 +3134,7 @@ module Java::Math
           if (!(result[i_]).equal?(0))
             break
           end
-          ((i_ -= 1) + 1)
+          i_ -= 1
         end
         return result
       end
@@ -3148,13 +3148,13 @@ module Java::Math
         # Find first non-sign (0xffffffff) int of input
         keep = 0
         while keep < a.attr_length && (a[keep]).equal?(-1)
-          ((keep += 1) - 1)
+          keep += 1
         end
         # Allocate output array.  If all non-sign ints are 0x00, we must
         # allocate space for one extra output int.
         j = keep
         while j < a.attr_length && (a[j]).equal?(0)
-          ((j += 1) - 1)
+          j += 1
         end
         extra_int = ((j).equal?(a.attr_length) ? 1 : 0)
         result = Array.typed(::Java::Int).new(a.attr_length - keep + extra_int) { 0 }
@@ -3163,12 +3163,12 @@ module Java::Math
         i = keep
         while i < a.attr_length
           result[i - keep + extra_int] = ~a[i]
-          ((i += 1) - 1)
+          i += 1
         end
         # Add one to one's complement to generate two's complement
         i_ = result.attr_length - 1
         while ((result[i_] += 1)).equal?(0)
-          ((i_ -= 1) + 1)
+          i_ -= 1
         end
         return result
       end
@@ -3280,7 +3280,7 @@ module Java::Math
         i = 0
         i = @mag.attr_length - 1
         while i >= 0 && (@mag[i]).equal?(0)
-          ((i -= 1) + 1)
+          i -= 1
         end
         @first_nonzero_int_num = @mag.attr_length - i - 1
       end
@@ -3384,10 +3384,10 @@ module Java::Math
           bytes_copied = 1
         else
           next_int_ >>= 8
-          ((bytes_copied += 1) - 1)
+          bytes_copied += 1
         end
         result[i] = next_int_
-        ((i -= 1) + 1)
+        i -= 1
       end
       return result
     end

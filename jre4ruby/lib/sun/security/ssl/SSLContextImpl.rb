@@ -157,7 +157,7 @@ module Sun::Security::Ssl
           end
           return tm[i]
         end
-        ((i += 1) - 1)
+        i += 1
       end
       # nothing found, return a dummy X509TrustManager.
       return DummyX509TrustManager::INSTANCE
@@ -169,7 +169,7 @@ module Sun::Security::Ssl
       while !(kms).nil? && i < kms.attr_length
         km = kms[i]
         if ((km.is_a?(X509KeyManager)).equal?(false))
-          ((i += 1) - 1)
+          i += 1
           next
         end
         if (SunJSSE.is_fips)
@@ -191,7 +191,7 @@ module Sun::Security::Ssl
           System.out.println("X509KeyManager passed to " + "SSLContext.init():  need an " + "X509ExtendedKeyManager for SSLEngine use")
         end
         return AbstractWrapper.new(km)
-        ((i += 1) - 1)
+        i += 1
       end
       # nothing found, return a dummy X509ExtendedKeyManager
       return DummyX509KeyManager::INSTANCE

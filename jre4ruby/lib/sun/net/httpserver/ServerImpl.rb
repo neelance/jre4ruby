@@ -925,14 +925,14 @@ module Sun::Net::Httpserver
     typesig { [] }
     def start_exchange
       synchronized(self) do
-        ((@exchange_count += 1) - 1)
+        @exchange_count += 1
       end
     end
     
     typesig { [] }
     def end_exchange
       synchronized(self) do
-        ((@exchange_count -= 1) + 1)
+        @exchange_count -= 1
         raise AssertError if not (@exchange_count >= 0)
         return @exchange_count
       end
@@ -953,7 +953,7 @@ module Sun::Net::Httpserver
         def run
           to_close = LinkedList.new
           self.attr_time = System.current_time_millis
-          ((self.attr_ticks += 1) - 1)
+          self.attr_ticks += 1
           synchronized((self.attr_idle_connections)) do
             self.attr_idle_connections.each do |c|
               if (c.attr_time <= self.attr_time)

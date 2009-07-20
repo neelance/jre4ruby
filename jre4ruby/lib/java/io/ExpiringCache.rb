@@ -214,7 +214,7 @@ module Java::Io
       j = 0
       while j < keys.attr_length
         entry_for(keys[j])
-        ((j += 1) - 1)
+        j += 1
       end
       @query_count = 0
     end

@@ -577,7 +577,7 @@ module Sun::Util::Calendar
             System.err.println("ZoneInfo: wrong magic number: " + id)
             return nil
           end
-          ((index += 1) - 1)
+          index += 1
         end
         if (buf[((index += 1) - 1)] > JAVAZI_VERSION)
           System.err.println("ZoneInfo: incompatible version (" + (buf[index - 1]).to_s + "): " + id)
@@ -629,7 +629,7 @@ module Sun::Util::Calendar
                 val = (val << 8) + (buf[((index += 1) - 1)] & 0xff)
                 val = (val << 8) + (buf[((index += 1) - 1)] & 0xff)
                 transitions[i] = val
-                ((i += 1) - 1)
+                i += 1
               end
             when TAG_Offset
               n = len / 4
@@ -641,7 +641,7 @@ module Sun::Util::Calendar
                 val = (val << 8) + (buf[((index += 1) - 1)] & 0xff)
                 val = (val << 8) + (buf[((index += 1) - 1)] & 0xff)
                 offsets[i] = val
-                ((i += 1) - 1)
+                i += 1
               end
             when TAG_SimpleTimeZone
               if (!(len).equal?(32) && !(len).equal?(40))
@@ -657,7 +657,7 @@ module Sun::Util::Calendar
                 val = (val << 8) + (buf[((index += 1) - 1)] & 0xff)
                 val = (val << 8) + (buf[((index += 1) - 1)] & 0xff)
                 simple_time_zone_params[i] = val
-                ((i += 1) - 1)
+                i += 1
               end
             when TAG_GMTOffsetWillChange
               if (!(len).equal?(1))
@@ -719,7 +719,7 @@ module Sun::Util::Calendar
                   m = buf[((index += 1) - 1)]
                   ids.add(String.new(buf, index, m, "UTF-8"))
                   index += m
-                  ((i += 1) - 1)
+                  i += 1
                 end
                 throw :break_loop, :thrown
               else
@@ -761,7 +761,7 @@ module Sun::Util::Calendar
                   real_name = String.new(buf, index, m, "UTF-8")
                   index += m
                   aliases.put(name, real_name)
-                  ((i += 1) - 1)
+                  i += 1
                 end
                 throw :break_loop, :thrown
               else
@@ -833,7 +833,7 @@ module Sun::Util::Calendar
                   name = String.new(buf, index, m, "UTF-8")
                   index += m
                   exclude_list.add(name)
-                  ((i += 1) - 1)
+                  i += 1
                 end
                 throw :break_loop, :thrown
               else
@@ -888,7 +888,7 @@ module Sun::Util::Calendar
                 i = 0
                 while i < len
                   indices[i] = buf[((index += 1) - 1)]
-                  ((i += 1) - 1)
+                  i += 1
                 end
                 throw :break_loop, :thrown
               else
@@ -943,7 +943,7 @@ module Sun::Util::Calendar
                   val = (val << 8) + (buf[((index += 1) - 1)] & 0xff)
                   val = (val << 8) + (buf[((index += 1) - 1)] & 0xff)
                   offsets[i] = val
-                  ((i += 1) - 1)
+                  i += 1
                 end
                 throw :break_loop, :thrown
               else
@@ -990,7 +990,7 @@ module Sun::Util::Calendar
             System.err.println("ZoneInfo: wrong magic number: " + JAVAZM_FILE_NAME)
             return nil
           end
-          ((index += 1) - 1)
+          index += 1
         end
         if (data[((index += 1) - 1)] > JAVAZM_VERSION)
           System.err.println("ZoneInfo: incompatible version (" + (data[index - 1]).to_s + "): " + JAVAZM_FILE_NAME)

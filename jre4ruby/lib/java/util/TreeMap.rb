@@ -606,7 +606,7 @@ module Java::Util
         # compare(key, key); // type check
         @root = Entry.new(key_, value, nil)
         @size = 1
-        ((@mod_count += 1) - 1)
+        @mod_count += 1
         return nil
       end
       cmp = 0
@@ -653,8 +653,8 @@ module Java::Util
         parent.attr_right = e
       end
       fix_after_insertion(e)
-      ((@size += 1) - 1)
-      ((@mod_count += 1) - 1)
+      @size += 1
+      @mod_count += 1
       return nil
     end
     
@@ -685,7 +685,7 @@ module Java::Util
     # Removes all of the mappings from this map.
     # The map will be empty after this call returns.
     def clear
-      ((@mod_count += 1) - 1)
+      @mod_count += 1
       @size = 0
       @root = nil
     end
@@ -1898,7 +1898,7 @@ module Java::Util
                 @size = 0
                 i = iterator
                 while (i.has_next)
-                  ((@size += 1) - 1)
+                  @size += 1
                   i.next
                 end
               end
@@ -2831,8 +2831,8 @@ module Java::Util
     typesig { [Entry] }
     # Delete node p, and then rebalance the tree.
     def delete_entry(p)
-      ((@mod_count += 1) - 1)
-      ((@size -= 1) + 1)
+      @mod_count += 1
+      @size -= 1
       # If strictly internal, copy successor's element to p and then make p
       # point to successor.
       if (!(p.attr_left).nil? && !(p.attr_right).nil?)
@@ -3111,7 +3111,7 @@ module Java::Util
         level = 0
         m = sz - 1
         while m >= 0
-          ((level += 1) - 1)
+          level += 1
           m = m / 2 - 1
         end
         return level

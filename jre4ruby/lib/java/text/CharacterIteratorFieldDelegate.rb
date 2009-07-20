@@ -118,7 +118,7 @@ module Java::Text
       counter = 0
       while counter < i_count
         iterators[counter] = (@attributed_strings.get(counter)).get_iterator
-        ((counter += 1) - 1)
+        counter += 1
       end
       return AttributedString.new(iterators).get_iterator
     end

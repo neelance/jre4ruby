@@ -169,7 +169,7 @@ module Sun::Security::X509
           if (name.equals_ignore_case(self.attr_m_map_data[i].attr_m_name))
             return self.attr_m_map_data[i].attr_m_position
           end
-          ((i += 1) - 1)
+          i += 1
         end
         raise IOException.new("Attribute name [" + name + "] not recognized by CertAttrSet:NetscapeCertType.")
       end

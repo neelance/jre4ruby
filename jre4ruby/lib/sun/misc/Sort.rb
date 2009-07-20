@@ -70,7 +70,7 @@ module Sun::Misc
           if (comp.do_compare(arr[i], arr[left]) < 0)
             swap(arr, (last += 1), i)
           end
-          ((i += 1) - 1)
+          i += 1
         end
         swap(arr, left, last)
         quicksort(arr, left, last - 1, comp)

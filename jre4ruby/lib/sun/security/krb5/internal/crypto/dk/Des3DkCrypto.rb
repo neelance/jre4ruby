@@ -164,7 +164,7 @@ module Sun::Security::Krb5::Internal::Crypto::Dk
           if (!(bit).equal?(0))
             last |= (bit << posn)
           end
-          ((i += 1) - 1)
+          i += 1
         end
         if (self.attr_debug)
           System.out.println("last: " + (JavaInteger.to_hex_string(last)).to_s)
@@ -188,9 +188,9 @@ module Sun::Security::Krb5::Internal::Crypto::Dk
           mask_index = 0
           while mask_index < PARITY_BIT_MASK.attr_length
             if (((key[i] & PARITY_BIT_MASK[mask_index])).equal?(PARITY_BIT_MASK[mask_index]))
-              ((bit_count += 1) - 1)
+              bit_count += 1
             end
-            ((mask_index += 1) - 1)
+            mask_index += 1
           end
           if (((bit_count & 0x1)).equal?(1))
             # Odd number of 1 bits in the top 7 bits. Set parity bit to 0
@@ -199,7 +199,7 @@ module Sun::Security::Krb5::Internal::Crypto::Dk
             # Even number of 1 bits in the top 7 bits. Set parity bit to 1
             key[i] = (key[i] | 1)
           end
-          ((i += 1) - 1)
+          i += 1
         end
       end
     }

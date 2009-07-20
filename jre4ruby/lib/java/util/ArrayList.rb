@@ -176,7 +176,7 @@ module Java::Util
     # list's current size.  An application can use this operation to minimize
     # the storage of an <tt>ArrayList</tt> instance.
     def trim_to_size
-      ((self.attr_mod_count += 1) - 1)
+      self.attr_mod_count += 1
       old_capacity = @element_data.attr_length
       if (@size < old_capacity)
         @element_data = Arrays.copy_of(@element_data, @size)
@@ -190,7 +190,7 @@ module Java::Util
     # 
     # @param   minCapacity   the desired minimum capacity
     def ensure_capacity(min_capacity)
-      ((self.attr_mod_count += 1) - 1)
+      self.attr_mod_count += 1
       old_capacity = @element_data.attr_length
       if (min_capacity > old_capacity)
         old_data = @element_data
@@ -244,7 +244,7 @@ module Java::Util
           if ((@element_data[i]).nil?)
             return i
           end
-          ((i += 1) - 1)
+          i += 1
         end
       else
         i = 0
@@ -252,7 +252,7 @@ module Java::Util
           if ((o == @element_data[i]))
             return i
           end
-          ((i += 1) - 1)
+          i += 1
         end
       end
       return -1
@@ -271,7 +271,7 @@ module Java::Util
           if ((@element_data[i]).nil?)
             return i
           end
-          ((i -= 1) + 1)
+          i -= 1
         end
       else
         i = @size - 1
@@ -279,7 +279,7 @@ module Java::Util
           if ((o == @element_data[i]))
             return i
           end
-          ((i -= 1) + 1)
+          i -= 1
         end
       end
       return -1
@@ -410,7 +410,7 @@ module Java::Util
       ensure_capacity(@size + 1) # Increments modCount!!
       System.arraycopy(@element_data, index, @element_data, index + 1, @size - index)
       @element_data[index] = element
-      ((@size += 1) - 1)
+      @size += 1
     end
     
     typesig { [::Java::Int] }
@@ -423,7 +423,7 @@ module Java::Util
     # @throws IndexOutOfBoundsException {@inheritDoc}
     def remove(index)
       range_check(index)
-      ((self.attr_mod_count += 1) - 1)
+      self.attr_mod_count += 1
       old_value = element_data(index)
       num_moved = @size - index - 1
       if (num_moved > 0)
@@ -453,7 +453,7 @@ module Java::Util
             fast_remove(index)
             return true
           end
-          ((index += 1) - 1)
+          index += 1
         end
       else
         index = 0
@@ -462,7 +462,7 @@ module Java::Util
             fast_remove(index)
             return true
           end
-          ((index += 1) - 1)
+          index += 1
         end
       end
       return false
@@ -472,7 +472,7 @@ module Java::Util
     # Private remove method that skips bounds checking and does not
     # return the value removed.
     def fast_remove(index)
-      ((self.attr_mod_count += 1) - 1)
+      self.attr_mod_count += 1
       num_moved = @size - index - 1
       if (num_moved > 0)
         System.arraycopy(@element_data, index + 1, @element_data, index, num_moved)
@@ -484,12 +484,12 @@ module Java::Util
     # Removes all of the elements from this list.  The list will
     # be empty after this call returns.
     def clear
-      ((self.attr_mod_count += 1) - 1)
+      self.attr_mod_count += 1
       # Let gc do its work
       i = 0
       while i < @size
         @element_data[i] = nil
-        ((i += 1) - 1)
+        i += 1
       end
       @size = 0
     end
@@ -557,7 +557,7 @@ module Java::Util
     # toIndex > size() ||
     # toIndex < fromIndex})
     def remove_range(from_index, to_index)
-      ((self.attr_mod_count += 1) - 1)
+      self.attr_mod_count += 1
       num_moved = @size - to_index
       System.arraycopy(@element_data, to_index, @element_data, from_index, num_moved)
       # Let gc do its work
@@ -638,7 +638,7 @@ module Java::Util
           if ((c.contains(element_data_[r])).equal?(complement))
             element_data_[((w += 1) - 1)] = element_data_[r]
           end
-          ((r += 1) - 1)
+          r += 1
         end
       ensure
         # Preserve behavioral compatibility with AbstractCollection,
@@ -651,7 +651,7 @@ module Java::Util
           i = w
           while i < @size
             element_data_[i] = nil
-            ((i += 1) - 1)
+            i += 1
           end
           self.attr_mod_count += @size - w
           @size = w
@@ -678,7 +678,7 @@ module Java::Util
       i = 0
       while i < @size
         s.write_object(@element_data[i])
-        ((i += 1) - 1)
+        i += 1
       end
       if (!(self.attr_mod_count).equal?(expected_mod_count))
         raise ConcurrentModificationException.new
@@ -698,7 +698,7 @@ module Java::Util
       i = 0
       while i < @size
         a[i] = s.read_object
-        ((i += 1) - 1)
+        i += 1
       end
     end
     
@@ -1014,7 +1014,7 @@ module Java::Util
           check_for_comodification
           @parent.add(@parent_offset + index, e)
           self.attr_mod_count = @parent.attr_mod_count
-          ((@size += 1) - 1)
+          @size += 1
         end
         
         typesig { [::Java::Int] }
@@ -1023,7 +1023,7 @@ module Java::Util
           check_for_comodification
           result = @parent.remove(@parent_offset + index)
           self.attr_mod_count = @parent.attr_mod_count
-          ((@size -= 1) + 1)
+          @size -= 1
           return result
         end
         

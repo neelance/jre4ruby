@@ -100,7 +100,7 @@ module Sun::Security::Krb5::Internal
           else
             @tickets[i] = new_tickets[i].clone
           end
-          ((i += 1) - 1)
+          i += 1
         end
       end
       @enc_part = new_enc_part
@@ -203,7 +203,7 @@ module Sun::Security::Krb5::Internal
       i = 0
       while i < @tickets.attr_length
         temp.write(@tickets[i].asn1_encode)
-        ((i += 1) - 1)
+        i += 1
       end
       bytes = DerOutputStream.new
       bytes.write(DerValue.attr_tag_sequence_of, temp)

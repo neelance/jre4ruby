@@ -288,7 +288,7 @@ module Sun::Security::Provider::Certpath
                   raise IOException.new("Unsupported OCSP critical extension: " + (response_extension[i].get_extension_id).to_s)
                 end
               end
-              ((i += 1) - 1)
+              i += 1
             end
           end
         end
@@ -309,7 +309,7 @@ module Sun::Security::Provider::Certpath
           i = 0
           while i < certs.attr_length
             x509certs[i] = X509CertImpl.new(certs[i].to_byte_array)
-            ((i += 1) - 1)
+            i += 1
           end
         end
         # Check whether the cert returned by the responder is trusted

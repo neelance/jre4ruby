@@ -139,7 +139,7 @@ module Sun::Security::Provider::Certpath
     # does not verify
     def check(cert, unres_crit_exts)
       curr_cert = cert
-      ((@remaining_certs -= 1) + 1)
+      @remaining_certs -= 1
       # if final certificate, check that target constraints are satisfied
       if ((@remaining_certs).equal?(0))
         if ((!(@target_constraints).nil?) && ((@target_constraints.match(curr_cert)).equal?(false)))

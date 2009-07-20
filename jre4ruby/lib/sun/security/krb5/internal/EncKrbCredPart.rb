@@ -118,7 +118,7 @@ module Sun::Security::Krb5::Internal
           else
             @ticket_info[i] = new_ticket_info[i].clone
           end
-          ((i += 1) - 1)
+          i += 1
         end
       end
       @time_stamp = new_time_stamp
@@ -180,7 +180,7 @@ module Sun::Security::Krb5::Internal
         i = 0
         while i < der_values.attr_length
           @ticket_info[i] = KrbCredInfo.new(der_values[i])
-          ((i += 1) - 1)
+          i += 1
         end
       else
         raise Asn1Exception.new(Krb5::ASN1_BAD_ID)
@@ -223,7 +223,7 @@ module Sun::Security::Krb5::Internal
       i = 0
       while i < @ticket_info.attr_length
         tickets[i] = DerValue.new(@ticket_info[i].asn1_encode)
-        ((i += 1) - 1)
+        i += 1
       end
       temp.put_sequence(tickets)
       bytes.write(DerValue.create_tag(DerValue::TAG_CONTEXT, true, 0x0), temp)

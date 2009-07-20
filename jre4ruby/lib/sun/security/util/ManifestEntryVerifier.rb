@@ -189,7 +189,7 @@ module Sun::Security::Util
       i = 0
       while i < @digests.size
         @digests.get(i).update(buffer)
-        ((i += 1) - 1)
+        i += 1
       end
     end
     
@@ -202,7 +202,7 @@ module Sun::Security::Util
       i = 0
       while i < @digests.size
         @digests.get(i).update(buffer, off, len)
-        ((i += 1) - 1)
+        i += 1
       end
     end
     
@@ -238,7 +238,7 @@ module Sun::Security::Util
         if (!MessageDigest.is_equal(the_hash, man_hash))
           raise SecurityException.new((digest.get_algorithm).to_s + " digest error for " + @name)
         end
-        ((i += 1) - 1)
+        i += 1
       end
       # take it out of sigFileSigners and put it in verifiedSigners...
       @signers = sig_file_signers.remove(@name)
@@ -263,7 +263,7 @@ module Sun::Security::Util
         while i < data.attr_length
           sb.append(Hexc[(data[i] >> 4) & 0xf])
           sb.append(Hexc[data[i] & 0xf])
-          ((i += 1) - 1)
+          i += 1
         end
         return sb.to_s
       end

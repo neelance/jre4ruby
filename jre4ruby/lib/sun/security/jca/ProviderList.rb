@@ -163,7 +163,7 @@ module Sun::Security::Jca
         i = 0
         while i < providers.attr_length
           configs[i] = ProviderConfig.new(providers[i])
-          ((i += 1) - 1)
+          i += 1
         end
         return ProviderList.new(configs, true)
       end
@@ -275,7 +275,7 @@ module Sun::Security::Jca
         if ((config_list.contains(config)).equal?(false))
           config_list.add(config)
         end
-        ((i += 1) - 1)
+        i += 1
       end
       @configs = config_list.to_array(PC0)
       if (!(Debug).nil?)
@@ -353,7 +353,7 @@ module Sun::Security::Jca
         if ((p.get_name == name))
           return i
         end
-        ((i += 1) - 1)
+        i += 1
       end
       return -1
     end
@@ -373,9 +373,9 @@ module Sun::Security::Jca
       while i < @configs.attr_length
         p = @configs[i].get_provider
         if (!(p).nil?)
-          ((n += 1) - 1)
+          n += 1
         end
-        ((i += 1) - 1)
+        i += 1
       end
       if ((n).equal?(@configs.attr_length))
         @all_loaded = true
@@ -400,7 +400,7 @@ module Sun::Security::Jca
         if (config.is_loaded)
           new_configs[((j += 1) - 1)] = config
         end
-        ((i += 1) - 1)
+        i += 1
       end
       return ProviderList.new(new_configs, true)
     end
@@ -430,7 +430,7 @@ module Sun::Security::Jca
         if (!(s).nil?)
           return s
         end
-        ((i += 1) - 1)
+        i += 1
       end
       return nil
     end
@@ -610,7 +610,7 @@ module Sun::Security::Jca
             n = (!(@first_service).nil?) ? 1 : 0
           end
           while (!(try_get(n)).nil?)
-            ((n += 1) - 1)
+            n += 1
           end
           return n
         end
@@ -646,7 +646,7 @@ module Sun::Security::Jca
               if ((s).nil?)
                 raise NoSuchElementException.new
               end
-              ((@index += 1) - 1)
+              @index += 1
               return s
             end
             

@@ -116,7 +116,7 @@ module Sun::Misc
       i = 0
       prefix = true
       if (!re.starts_with("*") || !re.ends_with("*"))
-        ((len += 1) - 1)
+        len += 1
       end
       if (len <= 0)
         return nil
@@ -131,7 +131,7 @@ module Sun::Misc
           break
         end
         p = p.find(re.char_at(i))
-        ((i += 1) - 1)
+        i += 1
       end
       # march backward through the suffix machine
       p = @suffix_machine
@@ -196,7 +196,7 @@ module Sun::Misc
       else
         exact = false
         if ((re.char_at(len - 1)).equal?(Character.new(?*.ord)))
-          ((len -= 1) + 1)
+          len -= 1
         else
           exact = true
         end
@@ -204,7 +204,7 @@ module Sun::Misc
         i = 0
         while i < len
           p = p.add(re.char_at(i))
-          ((i += 1) - 1)
+          i += 1
         end
         p.attr_exact = exact
       end
@@ -239,7 +239,7 @@ module Sun::Misc
           break
         end
         p = p.find(s.char_at(i))
-        ((i += 1) - 1)
+        i += 1
       end
       # march backward through the suffix machine
       p = @suffix_machine

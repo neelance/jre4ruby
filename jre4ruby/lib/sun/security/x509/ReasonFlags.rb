@@ -96,7 +96,7 @@ module Sun::Security::X509
           if (NAMES[i].equals_ignore_case(name))
             return i
           end
-          ((i += 1) - 1)
+          i += 1
         end
         raise IOException.new("Name not recognized by ReasonFlags")
       end
@@ -260,7 +260,7 @@ module Sun::Security::X509
       i = 0
       while i < NAMES.attr_length
         elements.add_element(NAMES[i])
-        ((i += 1) - 1)
+        i += 1
       end
       return (elements.elements)
     end

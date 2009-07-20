@@ -96,7 +96,7 @@ module Java::Lang::Reflect
         i = 0
         while i < array.attr_length
           set_accessible0(array[i], flag)
-          ((i += 1) - 1)
+          i += 1
         end
       end
     }

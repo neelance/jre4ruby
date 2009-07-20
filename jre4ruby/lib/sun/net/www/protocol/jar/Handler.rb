@@ -55,7 +55,7 @@ module Sun::Net::Www::Protocol::Jar
         if ((!(index_of_bang).equal?((spec.length - 1))) && ((spec.char_at(index_of_bang + 1)).equal?(Character.new(?/.ord))))
           return index_of_bang + 1
         else
-          ((index_of_bang -= 1) + 1)
+          index_of_bang -= 1
         end
       end
       return -1

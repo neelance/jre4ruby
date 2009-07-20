@@ -197,7 +197,7 @@ module Sun::Security::Smartcardio
           lc = command[4] & 0xff
           if (!(lc).equal?(0))
             if ((n).equal?(lc + 6))
-              ((n -= 1) + 1)
+              n -= 1
             end
           else
             lc = ((command[5] & 0xff) << 8) | (command[6] & 0xff)

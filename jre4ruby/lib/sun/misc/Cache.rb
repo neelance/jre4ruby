@@ -274,7 +274,7 @@ module Sun::Misc
             e.attr_next = new_table[index]
             new_table[index] = e
           else
-            ((@count -= 1) + 1)
+            @count -= 1
           end
         end
       end
@@ -324,7 +324,7 @@ module Sun::Misc
           ne = CacheEntry.new
           ne.attr_next = tab[index]
           tab[index] = ne
-          ((@count += 1) - 1)
+          @count += 1
         end
         ne.attr_hash = hash
         ne.attr_key = key
@@ -352,7 +352,7 @@ module Sun::Misc
             else
               tab[index] = e.attr_next
             end
-            ((@count -= 1) + 1)
+            @count -= 1
             return e.check
           end
           prev = e

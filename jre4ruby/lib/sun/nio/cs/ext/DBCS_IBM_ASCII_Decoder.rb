@@ -133,7 +133,7 @@ module Sun::Nio::Cs::Ext
             if (b2 < 0)
               b2 += 256
             end
-            ((input_size += 1) - 1)
+            input_size += 1
             # Lookup in the two level index
             v = b1 * 256 + b2
             output_char = @index2.char_at(@index1[((v & @mask1) >> @shift)] + (v & @mask2))
@@ -178,7 +178,7 @@ module Sun::Nio::Cs::Ext
             if (b2 < 0)
               b2 += 256
             end
-            ((input_size += 1) - 1)
+            input_size += 1
             # Lookup in the two level index
             v = b1 * 256 + b2
             output_char = @index2.char_at(@index1[((v & @mask1) >> @shift)] + (v & @mask2))

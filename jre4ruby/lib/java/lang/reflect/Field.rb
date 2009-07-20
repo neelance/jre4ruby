@@ -995,7 +995,7 @@ module Java::Lang::Reflect
             cl = type
             dimensions = 0
             while (cl.is_array)
-              ((dimensions += 1) - 1)
+              dimensions += 1
               cl = cl.get_component_type
             end
             sb = StringBuffer.new
@@ -1003,7 +1003,7 @@ module Java::Lang::Reflect
             i = 0
             while i < dimensions
               sb.append("[]")
-              ((i += 1) - 1)
+              i += 1
             end
             return sb.to_s
           rescue Exception => e

@@ -109,7 +109,7 @@ module Sun::Reflect::Generics::Repository
           pts[i].accept(r) # reify subtree
           # extract result from visitor and store it
           ps[i] = r.get_result
-          ((i += 1) - 1)
+          i += 1
         end
         @param_types = ps # cache overall result
       end
@@ -131,7 +131,7 @@ module Sun::Reflect::Generics::Repository
           ets[i].accept(r) # reify subtree
           # extract result from visitor and store it
           es[i] = r.get_result
-          ((i += 1) - 1)
+          i += 1
         end
         @exception_types = es # cache overall result
       end

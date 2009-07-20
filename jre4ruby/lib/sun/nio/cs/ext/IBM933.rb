@@ -2929,7 +2929,7 @@ module Sun::Nio::Cs::Ext
                 end
               end
               # Increment input char position
-              ((sp += 1) - 1)
+              sp += 1
             end
             return CoderResult::UNDERFLOW
           ensure
@@ -3108,7 +3108,7 @@ module Sun::Nio::Cs::Ext
                   dst.put(output_bytes[1])
                 end
               end
-              ((mark += 1) - 1)
+              mark += 1
             end
             return CoderResult::UNDERFLOW
           ensure

@@ -393,7 +393,7 @@ module Sun::Security::Krb5::Internal::Crypto::Dk
               System.err.println("Checksum failed !")
               break
             end
-            ((i += 1) - 1)
+            i += 1
           end
         end
         if (cksum_failed)
@@ -436,8 +436,8 @@ module Sun::Security::Krb5::Internal::Crypto::Dk
         while (size > 0)
           ret_val += (data[pos] & 0xff) << shifter
           shifter -= 8
-          ((pos += 1) - 1)
-          ((size -= 1) + 1)
+          pos += 1
+          size -= 1
         end
         return ret_val
       end

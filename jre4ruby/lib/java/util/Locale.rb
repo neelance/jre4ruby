@@ -514,7 +514,7 @@ module Java::Util
         j = 0
         while i < len
           iso_table[i] = table.substring(j, j + 2)
-          ((i += 1) - 1)
+          i += 1
           j += 5
         end
         return iso_table
@@ -1091,7 +1091,7 @@ module Java::Util
       i = 0
       while i < buf.attr_length
         buf[i] = Character.to_lower_case(str.char_at(i))
-        ((i += 1) - 1)
+        i += 1
       end
       return String.new(buf)
     end
@@ -1105,7 +1105,7 @@ module Java::Util
       i = 0
       while i < buf.attr_length
         buf[i] = Character.to_upper_case(str.char_at(i))
-        ((i += 1) - 1)
+        i += 1
       end
       return String.new(buf)
     end

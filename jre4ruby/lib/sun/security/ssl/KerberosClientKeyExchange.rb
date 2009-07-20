@@ -351,7 +351,7 @@ module Sun::Security::Ssl
           if ((etype).equal?(ktype))
             return keys[i]
           end
-          ((i += 1) - 1)
+          i += 1
         end
         # Key not found.
         # %%% kludge to allow DES keys to be used for diff etypes
@@ -362,7 +362,7 @@ module Sun::Security::Ssl
             if ((ktype).equal?(EncryptedData::ETYPE_DES_CBC_CRC) || (ktype).equal?(EncryptedData::ETYPE_DES_CBC_MD5))
               return KerberosKey.new(keys[i_].get_principal, keys[i_].get_encoded, etype, keys[i_].get_version_number)
             end
-            ((i_ += 1) - 1)
+            i_ += 1
           end
         end
         return nil

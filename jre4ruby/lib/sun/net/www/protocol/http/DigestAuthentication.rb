@@ -171,7 +171,7 @@ module Sun::Net::Www::Protocol::Http
         typesig { [] }
         def increment_nc
           synchronized(self) do
-            ((@nccount += 1) - 1)
+            @nccount += 1
           end
         end
         
@@ -195,7 +195,7 @@ module Sun::Net::Www::Protocol::Http
             if (@cnonce_count >= self.class::CnonceRepeat)
               set_new_cnonce
             end
-            ((@cnonce_count += 1) - 1)
+            @cnonce_count += 1
             return @cnonce
           end
         end
@@ -211,7 +211,7 @@ module Sun::Net::Www::Protocol::Http
               x = bb[i] + 128
               cc[i * 2] = RJava.cast_to_char((Character.new(?A.ord) + x / 16))
               cc[i * 2 + 1] = RJava.cast_to_char((Character.new(?A.ord) + x % 16))
-              ((i += 1) - 1)
+              i += 1
             end
             @cnonce = (String.new(cc, 0, self.class::Cnoncelen)).to_s
             @cnonce_count = 0
@@ -562,7 +562,7 @@ module Sun::Net::Www::Protocol::Http
         i = 0
         while i < passwd.attr_length
           passwd_bytes[i] = passwd[i]
-          ((i += 1) - 1)
+          i += 1
         end
         md.update(passwd_bytes)
         Arrays.fill(passwd_bytes, 0x0)
@@ -575,7 +575,7 @@ module Sun::Net::Www::Protocol::Http
         res.append(CharArray[hashchar])
         hashchar = (digest_[i] & 0xf)
         res.append(CharArray[hashchar])
-        ((i += 1) - 1)
+        i += 1
       end
       return res.to_s
     end

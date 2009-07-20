@@ -156,7 +156,7 @@ module Sun::Security::Pkcs
           if (!(this_encr_info[i]).equal?(other_encr_info[i]))
             return false
           end
-          ((i += 1) - 1)
+          i += 1
         end
         return true
       rescue IOException => e
@@ -173,7 +173,7 @@ module Sun::Security::Pkcs
       i = 0
       while i < @encrypted_data.attr_length
         retval += @encrypted_data[i] * i
-        ((i += 1) - 1)
+        i += 1
       end
       return retval
     end

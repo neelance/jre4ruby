@@ -93,7 +93,7 @@ module Sun::Security::Ssl
           s.print(", ")
         end
         s.print(@random_bytes[i] & 0xff)
-        ((i += 1) - 1)
+        i += 1
       end
       s.println(" }")
     end

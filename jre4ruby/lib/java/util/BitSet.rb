@@ -147,7 +147,7 @@ module Java::Util
         if (!(@words[i]).equal?(0))
           break
         end
-        ((i -= 1) + 1)
+        i -= 1
       end
       @words_in_use = i + 1 # The new logical size
     end
@@ -291,7 +291,7 @@ module Java::Util
         i = start_word_index + 1
         while i < end_word_index
           @words[i] ^= WORD_MASK
-          ((i += 1) - 1)
+          i += 1
         end
         # Handle last word
         @words[end_word_index] ^= last_word_mask
@@ -363,7 +363,7 @@ module Java::Util
         i = start_word_index + 1
         while i < end_word_index
           @words[i] = WORD_MASK
-          ((i += 1) - 1)
+          i += 1
         end
         # Handle last word (restores invariants)
         @words[end_word_index] |= last_word_mask
@@ -446,7 +446,7 @@ module Java::Util
         i = start_word_index + 1
         while i < end_word_index
           @words[i] = 0
-          ((i += 1) - 1)
+          i += 1
         end
         # Handle last word
         @words[end_word_index] &= ~last_word_mask
@@ -514,8 +514,8 @@ module Java::Util
       i = 0
       while i < target_words - 1
         result.attr_words[i] = word_aligned ? @words[source_index] : (@words[source_index] >> from_index) | (@words[source_index + 1] << -from_index)
-        ((i += 1) - 1)
-        ((source_index += 1) - 1)
+        i += 1
+        source_index += 1
       end
       # Process the last word
       last_word_mask = WORD_MASK >> -to_index
@@ -636,7 +636,7 @@ module Java::Util
         if (!((@words[i] & set_.attr_words[i])).equal?(0))
           return true
         end
-        ((i -= 1) + 1)
+        i -= 1
       end
       return false
     end
@@ -651,7 +651,7 @@ module Java::Util
       i = 0
       while i < @words_in_use
         sum += Long.bit_count(@words[i])
-        ((i += 1) - 1)
+        i += 1
       end
       return sum
     end
@@ -675,7 +675,7 @@ module Java::Util
       i = 0
       while i < @words_in_use
         @words[i] &= set_.attr_words[i]
-        ((i += 1) - 1)
+        i += 1
       end
       recalculate_words_in_use
       check_invariants
@@ -702,7 +702,7 @@ module Java::Util
       i = 0
       while i < words_in_common
         @words[i] |= set_.attr_words[i]
-        ((i += 1) - 1)
+        i += 1
       end
       # Copy any remaining words
       if (words_in_common < set_.attr_words_in_use)
@@ -735,7 +735,7 @@ module Java::Util
       i = 0
       while i < words_in_common
         @words[i] ^= set_.attr_words[i]
-        ((i += 1) - 1)
+        i += 1
       end
       # Copy any remaining words
       if (words_in_common < set_.attr_words_in_use)
@@ -757,7 +757,7 @@ module Java::Util
       i = Math.min(@words_in_use, set_.attr_words_in_use) - 1
       while i >= 0
         @words[i] &= ~set_.attr_words[i]
-        ((i -= 1) + 1)
+        i -= 1
       end
       recalculate_words_in_use
       check_invariants
@@ -839,7 +839,7 @@ module Java::Util
         if (!(@words[i]).equal?(set_.attr_words[i]))
           return false
         end
-        ((i += 1) - 1)
+        i += 1
       end
       return true
     end

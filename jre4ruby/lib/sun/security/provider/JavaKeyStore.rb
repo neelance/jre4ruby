@@ -596,7 +596,7 @@ module Sun::Security::Provider
               dos.write_utf((entry).attr_chain[i].get_type)
               dos.write_int(encoded.attr_length)
               dos.write(encoded)
-              ((i += 1) - 1)
+              i += 1
             end
           else
             # Store this entry as a certificate
@@ -724,7 +724,7 @@ module Sun::Security::Provider
               bais = ByteArrayInputStream.new(encoded)
               entry.attr_chain[j] = cf.generate_certificate(bais)
               bais.close
-              ((j += 1) - 1)
+              j += 1
             end
             # Add the entry to the list
             @entries.put(alias_, entry)
@@ -768,7 +768,7 @@ module Sun::Security::Provider
               raise IOException.new("Unrecognized keystore entry")
             end
           end
-          ((i += 1) - 1)
+          i += 1
         end
         # If a password has been provided, we check the keyed digest
         # at the end. If this check fails, the store has been tampered
@@ -785,7 +785,7 @@ module Sun::Security::Provider
               t = UnrecoverableKeyException.new("Password verification failed")
               raise IOException.new("Keystore was tampered with, or " + "password was incorrect").init_cause(t)
             end
-            ((i_ += 1) - 1)
+            i_ += 1
           end
         end
       end
@@ -804,13 +804,13 @@ module Sun::Security::Provider
       while i < password.attr_length
         passwd_bytes[((j += 1) - 1)] = (password[i] >> 8)
         passwd_bytes[((j += 1) - 1)] = password[i]
-        ((i += 1) - 1)
+        i += 1
       end
       md.update(passwd_bytes)
       i = 0
       while i < passwd_bytes.attr_length
         passwd_bytes[i] = 0
-        ((i += 1) - 1)
+        i += 1
       end
       md.update("Mighty Aphrodite".get_bytes("UTF8"))
       return md

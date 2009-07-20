@@ -1528,16 +1528,16 @@ module Java::Security
             con = cons[i]
             param_types = con.get_parameter_types
             if (!(param_types.attr_length).equal?(1))
-              ((i += 1) - 1)
+              i += 1
               next
             end
             if ((param_types[0].is_assignable_from(arg_class)).equal?(false))
-              ((i += 1) - 1)
+              i += 1
               next
             end
             o = con.new_instance(Array.typed(Object).new([constructor_parameter]))
             return o
-            ((i += 1) - 1)
+            i += 1
           end
           raise NoSuchAlgorithmException.new("No constructor matching " + (arg_class.get_name).to_s + " found in class " + @class_name)
         end

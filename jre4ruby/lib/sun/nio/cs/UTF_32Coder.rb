@@ -229,7 +229,7 @@ module Sun::Nio::Cs
                   if (dst.remaining < 4)
                     return CoderResult::OVERFLOW
                   end
-                  ((mark += 1) - 1)
+                  mark += 1
                   put(c, dst)
                 end
               end

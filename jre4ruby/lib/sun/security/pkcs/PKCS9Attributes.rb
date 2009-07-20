@@ -101,7 +101,7 @@ module Sun::Security::Pkcs
         i = 0
         while i < permitted_attributes.attr_length
           @permitted_attributes.put(permitted_attributes[i], permitted_attributes[i])
-          ((i += 1) - 1)
+          i += 1
         end
       else
         @permitted_attributes = nil
@@ -177,7 +177,7 @@ module Sun::Security::Pkcs
           raise IllegalArgumentException.new("PKCSAttribute " + (attribs[i].get_oid).to_s + " duplicated while constructing " + "PKCS9Attributes.")
         end
         @attributes.put(oid, attribs[i])
-        ((i += 1) - 1)
+        i += 1
       end
       @der_encoding = generate_der_encoding
       @permitted_attributes = nil
@@ -210,7 +210,7 @@ module Sun::Security::Pkcs
         rescue ParsingException => e
           if (@ignore_unsupported_attributes)
             reuse_encoding = false # cannot reuse supplied DER encoding
-            ((i += 1) - 1)
+            i += 1
             next # skip
           else
             raise e
@@ -224,7 +224,7 @@ module Sun::Security::Pkcs
           raise IOException.new("Attribute " + (oid).to_s + " not permitted in this attribute set")
         end
         @attributes.put(oid, attrib)
-        ((i += 1) - 1)
+        i += 1
       end
       return reuse_encoding ? der_encoding : generate_der_encoding
     end
@@ -279,9 +279,9 @@ module Sun::Security::Pkcs
       while i < PKCS9Attribute::PKCS9_OIDS.attr_length && j < attribs.attr_length
         attribs[j] = get_attribute(PKCS9Attribute::PKCS9_OIDS[i])
         if (!(attribs[j]).nil?)
-          ((j += 1) - 1)
+          j += 1
         end
-        ((i += 1) - 1)
+        i += 1
       end
       return attribs
     end
@@ -319,7 +319,7 @@ module Sun::Security::Pkcs
       while i < PKCS9Attribute::PKCS9_OIDS.attr_length
         value = get_attribute(PKCS9Attribute::PKCS9_OIDS[i])
         if ((value).nil?)
-          ((i += 1) - 1)
+          i += 1
           next
         end
         # we have a value; print it
@@ -329,7 +329,7 @@ module Sun::Security::Pkcs
           buf.append(";\n\t")
         end
         buf.append(value.to_s)
-        ((i += 1) - 1)
+        i += 1
       end
       buf.append("\n\t] (end PKCS9 Attributes)")
       return buf.to_s
@@ -344,7 +344,7 @@ module Sun::Security::Pkcs
         i = 0
         while i < encoders.attr_length
           encoders[i] = objs[i]
-          ((i += 1) - 1)
+          i += 1
         end
         return encoders
       end

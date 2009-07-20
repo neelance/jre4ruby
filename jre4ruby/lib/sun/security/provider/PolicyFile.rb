@@ -696,7 +696,7 @@ module Sun::Security::Provider
               end
               # ignore that policy
             end
-            ((n += 1) - 1)
+            n += 1
           end
           return Boolean.value_of(loaded_policy_)
         end
@@ -821,7 +821,7 @@ module Sun::Security::Provider
                 # this is probably bad (though not dangerous).
                 # What should we do?
               end
-              ((i += 1) - 1)
+              i += 1
             end
           end
           return nil
@@ -1093,7 +1093,7 @@ module Sun::Security::Provider
       n = 0
       while (st.has_more_tokens)
         alias_ = st.next_token.trim
-        ((n += 1) - 1)
+        n += 1
         cert = nil
         # See if this alias's cert has already been cached
         synchronized((new_info.attr_alias_mapping)) do
@@ -1322,7 +1322,7 @@ module Sun::Security::Provider
               # around we need to add it.
               perms.add(SecurityConstants::ALL_PERMISSION)
             end
-            ((k += 1) - 1)
+            k += 1
           end
         end
       end
@@ -1368,7 +1368,7 @@ module Sun::Security::Provider
           i = 0
           while i < principals.attr_length
             acc_ps.add(PolicyParser::PrincipalEntry.new(principals[i].get_class.get_name, principals[i].get_name))
-            ((i += 1) - 1)
+            i += 1
           end
         end
         Debug.println("evaluate principals:\n" + "\tPolicy Principals: " + (entry_ps).to_s + "\n" + "\tActive Principals: " + (acc_ps).to_s)
@@ -1424,7 +1424,7 @@ module Sun::Security::Provider
             j = 0
             while j < principals.attr_length
               p_set.add(principals[j])
-              ((j += 1) - 1)
+              j += 1
             end
             subject = Subject.new(true, p_set, Collections::EMPTY_SET, Collections::EMPTY_SET)
             if (!pc.implies(subject))
@@ -1451,7 +1451,7 @@ module Sun::Security::Provider
             return
           end
         end
-        ((i += 1) - 1)
+        i += 1
       end
       # all policy entry principals were found in the current ACC -
       # grant the policy permissions
@@ -1475,7 +1475,7 @@ module Sun::Security::Provider
         else
           perms.add(p)
         end
-        ((i += 1) - 1)
+        i += 1
       end
     end
     
@@ -1505,7 +1505,7 @@ module Sun::Security::Provider
             return true
           end
         end
-        ((i += 1) - 1)
+        i += 1
       end
       return false
     end
@@ -1546,7 +1546,7 @@ module Sun::Security::Provider
               sb.append(", ")
             end
             sb.append((principal_info[i][0]).to_s + " " + "\"" + (principal_info[i][1]).to_s + "\"")
-            ((i += 1) - 1)
+            i += 1
           end
           if (pli.has_next)
             sb.append(", ")
@@ -1641,7 +1641,7 @@ module Sun::Security::Provider
             if ((pe.attr_principal_class == pdp[i].get_class.get_name))
               plist.add(pdp[i])
             end
-            ((i += 1) - 1)
+            i += 1
           end
           info = Array.typed(String).new(plist.size) { Array.typed(String).new(2) { nil } }
           i_ = 0
@@ -1650,7 +1650,7 @@ module Sun::Security::Provider
             p = p_iterator.next
             info[i_][0] = p.get_class.get_name
             info[i_][1] = p.get_name
-            ((i_ += 1) - 1)
+            i_ += 1
           end
           return info
         else
@@ -1661,7 +1661,7 @@ module Sun::Security::Provider
           while i < pdp.attr_length
             info[i][0] = pdp[i].get_class.get_name
             info[i][1] = pdp[i].get_name
-            ((i += 1) - 1)
+            i += 1
           end
           return info
         end
@@ -1691,17 +1691,17 @@ module Sun::Security::Provider
         if (!(certs[i].is_a?(X509Certificate)))
           return cs.get_certificates
         end
-        ((i += 1) - 1)
+        i += 1
       end
       # Do we have to do anything?
       i_ = 0
       count = 0
       while (i_ < certs.attr_length)
-        ((count += 1) - 1)
+        count += 1
         while (((i_ + 1) < certs.attr_length) && ((certs[i_]).get_issuer_dn == (certs[i_ + 1]).get_subject_dn))
-          ((i_ += 1) - 1)
+          i_ += 1
         end
-        ((i_ += 1) - 1)
+        i_ += 1
       end
       if ((count).equal?(certs.attr_length))
         # Done
@@ -1712,9 +1712,9 @@ module Sun::Security::Provider
       while (i_ < certs.attr_length)
         user_cert_list.add(certs[i_])
         while (((i_ + 1) < certs.attr_length) && ((certs[i_]).get_issuer_dn == (certs[i_ + 1]).get_subject_dn))
-          ((i_ += 1) - 1)
+          i_ += 1
         end
-        ((i_ += 1) - 1)
+        i_ += 1
       end
       user_certs = Array.typed(Certificate).new(user_cert_list.size) { nil }
       user_cert_list.to_array(user_certs)
@@ -1788,7 +1788,7 @@ module Sun::Security::Provider
           else
             pal_buf.append(")")
           end
-          ((i += 1) - 1)
+          i += 1
         end
         pals = (pal_buf.to_s).to_s
       end
@@ -2137,7 +2137,7 @@ module Sun::Security::Provider
             sb.append(ResourcesMgr.get_string(" "))
             sb.append(p)
             sb.append(ResourcesMgr.get_string("\n"))
-            ((j += 1) - 1)
+            j += 1
           end
           sb.append(ResourcesMgr.get_string(")"))
           sb.append(ResourcesMgr.get_string("\n"))
@@ -2227,7 +2227,7 @@ module Sun::Security::Provider
                 @certs = certs.clone
                 break
               end
-              ((i += 1) - 1)
+              i += 1
             end
             if ((@certs).nil?)
               # Go through the list of certs and see if all the certs are
@@ -2235,11 +2235,11 @@ module Sun::Security::Provider
               i_ = 0
               count = 0
               while (i_ < certs.attr_length)
-                ((count += 1) - 1)
+                count += 1
                 while (((i_ + 1) < certs.attr_length) && ((certs[i_]).get_issuer_dn == (certs[i_ + 1]).get_subject_dn))
-                  ((i_ += 1) - 1)
+                  i_ += 1
                 end
-                ((i_ += 1) - 1)
+                i_ += 1
               end
               if ((count).equal?(certs.attr_length))
                 # All the certs are signer certs, so we store the
@@ -2253,9 +2253,9 @@ module Sun::Security::Provider
                 while (i_ < certs.attr_length)
                   signer_certs.add(certs[i_])
                   while (((i_ + 1) < certs.attr_length) && ((certs[i_]).get_issuer_dn == (certs[i_ + 1]).get_subject_dn))
-                    ((i_ += 1) - 1)
+                    i_ += 1
                   end
-                  ((i_ += 1) - 1)
+                  i_ += 1
                 end
                 @certs = Array.typed(Certificate).new(signer_certs.size) { nil }
                 signer_certs.to_array(@certs)
@@ -2314,12 +2314,12 @@ module Sun::Security::Provider
                 match = true
                 break
               end
-              ((j += 1) - 1)
+              j += 1
             end
             if (!match)
               return false
             end
-            ((i += 1) - 1)
+            i += 1
           end
           i = 0
           while i < that.attr_certs.attr_length
@@ -2330,12 +2330,12 @@ module Sun::Security::Provider
                 match = true
                 break
               end
-              ((j += 1) - 1)
+              j += 1
             end
             if (!match)
               return false
             end
-            ((i += 1) - 1)
+            i += 1
           end
           return true
         end
@@ -2460,7 +2460,7 @@ module Sun::Security::Provider
           i = 0
           while i < num_caches
             @pd_mapping[i] = Collections.synchronized_map(WeakHashMap.new)
-            ((i += 1) - 1)
+            i += 1
           end
           if (num_caches > 1)
             @random = Java::Util::Random.new

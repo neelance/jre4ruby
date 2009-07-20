@@ -236,7 +236,7 @@ module Sun::Security::X509
         i = 0
         while i < @name_value.attr_length
           @myhash = 37 * @myhash + @name_value[i]
-          ((i += 1) - 1)
+          i += 1
         end
       end
       return @myhash

@@ -131,7 +131,7 @@ module Sun::Security::X509
           opt = opt.attr_data.get_der_value
           @party = (opt.get_as_string).to_s
         end
-        ((i += 1) - 1)
+        i += 1
       end
     end
     

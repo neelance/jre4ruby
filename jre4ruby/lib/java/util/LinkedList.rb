@@ -297,7 +297,7 @@ module Java::Util
       if ((num_new).equal?(0))
         return false
       end
-      ((self.attr_mod_count += 1) - 1)
+      self.attr_mod_count += 1
       successor = ((index).equal?(@size) ? @header : entry(index))
       predecessor = successor.attr_previous
       i = 0
@@ -305,7 +305,7 @@ module Java::Util
         e = Entry.new(a[i], successor, predecessor)
         predecessor.attr_next = e
         predecessor = e
-        ((i += 1) - 1)
+        i += 1
       end
       successor.attr_previous = predecessor
       @size += num_new
@@ -324,7 +324,7 @@ module Java::Util
       end
       @header.attr_next = @header.attr_previous = @header
       @size = 0
-      ((self.attr_mod_count += 1) - 1)
+      self.attr_mod_count += 1
     end
     
     typesig { [::Java::Int] }
@@ -389,13 +389,13 @@ module Java::Util
         i = 0
         while i <= index
           e = e.attr_next
-          ((i += 1) - 1)
+          i += 1
         end
       else
         i = @size
         while i > index
           e = e.attr_previous
-          ((i -= 1) + 1)
+          i -= 1
         end
       end
       return e
@@ -421,7 +421,7 @@ module Java::Util
           if ((e.attr_element).nil?)
             return index
           end
-          ((index += 1) - 1)
+          index += 1
           e = e.attr_next
         end
       else
@@ -430,7 +430,7 @@ module Java::Util
           if ((o == e.attr_element))
             return index
           end
-          ((index += 1) - 1)
+          index += 1
           e = e.attr_next
         end
       end
@@ -452,7 +452,7 @@ module Java::Util
       if ((o).nil?)
         e = @header.attr_previous
         while !(e).equal?(@header)
-          ((index -= 1) + 1)
+          index -= 1
           if ((e.attr_element).nil?)
             return index
           end
@@ -461,7 +461,7 @@ module Java::Util
       else
         e = @header.attr_previous
         while !(e).equal?(@header)
-          ((index -= 1) + 1)
+          index -= 1
           if ((o == e.attr_element))
             return index
           end
@@ -741,14 +741,14 @@ module Java::Util
             @next_index = 0
             while @next_index < index
               @next = @next.attr_next
-              ((@next_index += 1) - 1)
+              @next_index += 1
             end
           else
             @next = self.attr_header
             @next_index = self.attr_size
             while @next_index > index
               @next = @next.attr_previous
-              ((@next_index -= 1) + 1)
+              @next_index -= 1
             end
           end
         end
@@ -766,7 +766,7 @@ module Java::Util
           end
           @last_returned = @next
           @next = @next.attr_next
-          ((@next_index += 1) - 1)
+          @next_index += 1
           return @last_returned.attr_element
         end
         
@@ -781,7 +781,7 @@ module Java::Util
             raise NoSuchElementException.new
           end
           @last_returned = @next = @next.attr_previous
-          ((@next_index -= 1) + 1)
+          @next_index -= 1
           check_for_comodification
           return @last_returned.attr_element
         end
@@ -808,10 +808,10 @@ module Java::Util
           if ((@next).equal?(@last_returned))
             @next = last_next
           else
-            ((@next_index -= 1) + 1)
+            @next_index -= 1
           end
           @last_returned = self.attr_header
-          ((@expected_mod_count += 1) - 1)
+          @expected_mod_count += 1
         end
         
         typesig { [E] }
@@ -828,8 +828,8 @@ module Java::Util
           check_for_comodification
           @last_returned = self.attr_header
           add_before(e, @next)
-          ((@next_index += 1) - 1)
-          ((@expected_mod_count += 1) - 1)
+          @next_index += 1
+          @expected_mod_count += 1
         end
         
         typesig { [] }
@@ -884,8 +884,8 @@ module Java::Util
       new_entry = Entry.new(e, entry_, entry_.attr_previous)
       new_entry.attr_previous.attr_next = new_entry
       new_entry.attr_next.attr_previous = new_entry
-      ((@size += 1) - 1)
-      ((self.attr_mod_count += 1) - 1)
+      @size += 1
+      self.attr_mod_count += 1
       return new_entry
     end
     
@@ -899,8 +899,8 @@ module Java::Util
       e.attr_next.attr_previous = e.attr_previous
       e.attr_next = e.attr_previous = nil
       e.attr_element = nil
-      ((@size -= 1) + 1)
-      ((self.attr_mod_count += 1) - 1)
+      @size -= 1
+      self.attr_mod_count += 1
       return result
     end
     
@@ -1092,7 +1092,7 @@ module Java::Util
       i = 0
       while i < size
         add_before(s.read_object, @header)
-        ((i += 1) - 1)
+        i += 1
       end
     end
     

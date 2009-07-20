@@ -134,7 +134,7 @@ module Sun::Nio::Cs
           if ((e).equal?(Character.new(0x0000)) && !(c).equal?(Character.new(0x0000)))
             return CoderResult.unmappable_for_length(1)
           end
-          ((sp += 1) - 1)
+          sp += 1
           da[((dp += 1) - 1)] = e
         end
         return CoderResult::UNDERFLOW
@@ -168,7 +168,7 @@ module Sun::Nio::Cs
           if ((e).equal?(Character.new(0x0000)) && !(c).equal?(Character.new(0x0000)))
             return CoderResult.unmappable_for_length(1)
           end
-          ((mark += 1) - 1)
+          mark += 1
           dst.put(e)
         end
         return CoderResult::UNDERFLOW

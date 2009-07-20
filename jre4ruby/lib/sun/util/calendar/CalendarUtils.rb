@@ -164,13 +164,13 @@ module Sun::Util::Calendar
         i = 2
         while i < width
           n *= 10
-          ((i += 1) - 1)
+          i += 1
         end
         i_ = 1
         while i_ < width && d < n
           sb.append(Character.new(?0.ord))
           n /= 10
-          ((i_ += 1) - 1)
+          i_ += 1
         end
         sb.append(d)
         return sb
@@ -188,13 +188,13 @@ module Sun::Util::Calendar
         i = 2
         while i < width
           n *= 10
-          ((i += 1) - 1)
+          i += 1
         end
         i_ = 1
         while i_ < width && d < n
           sb.append(Character.new(?0.ord))
           n /= 10
-          ((i_ += 1) - 1)
+          i_ += 1
         end
         sb.append(d)
         return sb

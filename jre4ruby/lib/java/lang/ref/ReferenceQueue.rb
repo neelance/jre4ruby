@@ -127,7 +127,7 @@ module Java::Lang::Ref
           r.attr_queue = self.attr_enqueued
           r.attr_next = ((@head).nil?) ? r : @head
           @head = r
-          ((@queue_length += 1) - 1)
+          @queue_length += 1
           if (r.is_a?(FinalReference))
             Sun::Misc::VM.add_final_ref_count(1)
           end
@@ -145,7 +145,7 @@ module Java::Lang::Ref
         @head = ((r.attr_next).equal?(r)) ? nil : r.attr_next
         r.attr_queue = self.attr_null
         r.attr_next = r
-        ((@queue_length -= 1) + 1)
+        @queue_length -= 1
         if (r.is_a?(FinalReference))
           Sun::Misc::VM.add_final_ref_count(-1)
         end

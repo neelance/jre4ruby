@@ -150,10 +150,10 @@ module Sun::Misc
       i = 1
       while i < 256
         if (!((a & i)).equal?(0))
-          ((p1 += 1) - 1)
+          p1 += 1
         end
         if (!((b & i)).equal?(0))
-          ((p2 += 1) - 1)
+          p2 += 1
         end
         i = i * 2
       end

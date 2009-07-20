@@ -418,7 +418,7 @@ module Sun::Nio::Cs::Ext
               end
             end
           end
-          ((i += 1) - 1)
+          i += 1
         end
       end
       if (sjis_is_ms932)

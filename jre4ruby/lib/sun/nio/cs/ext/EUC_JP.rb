@@ -174,7 +174,7 @@ module Sun::Nio::Cs::Ext
                     return CoderResult::UNDERFLOW
                   end
                   b2 = sa[sp + 1] & 0xff
-                  ((input_size += 1) - 1)
+                  input_size += 1
                   output_char = decode_double(b1, b2)
                 end
               end
@@ -225,7 +225,7 @@ module Sun::Nio::Cs::Ext
                     return CoderResult::UNDERFLOW
                   end
                   b2 = src.get & 0xff
-                  ((input_size += 1) - 1)
+                  input_size += 1
                   output_char = decode_double(b1, b2)
                 end
               end
@@ -413,9 +413,9 @@ module Sun::Nio::Cs::Ext
               i = 0
               while i < output_size
                 da[((dp += 1) - 1)] = output_byte[i]
-                ((i += 1) - 1)
+                i += 1
               end
-              ((sp += 1) - 1)
+              sp += 1
             end
             return CoderResult::UNDERFLOW
           ensure
@@ -467,9 +467,9 @@ module Sun::Nio::Cs::Ext
               i = 0
               while i < output_size
                 dst.put(output_byte[i])
-                ((i += 1) - 1)
+                i += 1
               end
-              ((mark += 1) - 1)
+              mark += 1
             end
             return CoderResult::UNDERFLOW
           ensure

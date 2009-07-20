@@ -1030,7 +1030,7 @@ module Java::Io
         if (filter.accept(self, names[i]))
           v.add(names[i])
         end
-        ((i += 1) - 1)
+        i += 1
       end
       return (v.to_array(Array.typed(String).new(v.size) { nil }))
     end
@@ -1076,7 +1076,7 @@ module Java::Io
       i = 0
       while i < n
         fs[i] = JavaFile.new(ss[i], self)
-        ((i += 1) - 1)
+        i += 1
       end
       return fs
     end

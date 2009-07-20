@@ -456,7 +456,7 @@ module Java::Util
         end
         i = next_key_index(i, len)
       end
-      ((@mod_count += 1) - 1)
+      @mod_count += 1
       tab[i] = k
       tab[i + 1] = value
       if ((@size += 1) >= @threshold)
@@ -543,8 +543,8 @@ module Java::Util
       while (true)
         item = tab[i]
         if ((item).equal?(k))
-          ((@mod_count += 1) - 1)
-          ((@size -= 1) + 1)
+          @mod_count += 1
+          @size -= 1
           old_value = tab[i + 1]
           tab[i + 1] = nil
           tab[i] = nil
@@ -576,8 +576,8 @@ module Java::Util
           if (!(tab[i + 1]).equal?(value))
             return false
           end
-          ((@mod_count += 1) - 1)
-          ((@size -= 1) + 1)
+          @mod_count += 1
+          @size -= 1
           tab[i] = nil
           tab[i + 1] = nil
           close_deletion(i)
@@ -629,12 +629,12 @@ module Java::Util
     # Removes all of the mappings from this map.
     # The map will be empty after this call returns.
     def clear
-      ((@mod_count += 1) - 1)
+      @mod_count += 1
       tab = @table
       i = 0
       while i < tab.attr_length
         tab[i] = nil
-        ((i += 1) - 1)
+        i += 1
       end
       @size = 0
     end
@@ -816,7 +816,7 @@ module Java::Util
           @expected_mod_count = (self.attr_mod_count += 1)
           deleted_slot = @last_returned_index
           @last_returned_index = -1
-          ((self.attr_size -= 1) + 1)
+          self.attr_size -= 1
           # back up index to revisit new contents after deletion
           @index = deleted_slot
           @index_valid = false
@@ -1313,7 +1313,7 @@ module Java::Util
           i = 0
           while i < size_
             result[i] = AbstractMap::SimpleEntry.new(it.next)
-            ((i += 1) - 1)
+            i += 1
           end
           return result
         end
@@ -1328,7 +1328,7 @@ module Java::Util
           i = 0
           while i < size_
             a[i] = AbstractMap::SimpleEntry.new(it.next)
-            ((i += 1) - 1)
+            i += 1
           end
           if (a.attr_length > size_)
             a[size_] = nil
@@ -1392,7 +1392,7 @@ module Java::Util
         key = s.read_object
         value = s.read_object
         put_for_create(key, value)
-        ((i += 1) - 1)
+        i += 1
       end
     end
     

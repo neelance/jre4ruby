@@ -537,7 +537,7 @@ module Java::Net
             # thread that releases the fd to close it.
             if (!@close_pending)
               @close_pending = true
-              ((@fd_use_count -= 1) + 1)
+              @fd_use_count -= 1
               socket_pre_close
             end
           end
@@ -601,7 +601,7 @@ module Java::Net
     # FileDescriptor.
     def acquire_fd
       synchronized((@fd_lock)) do
-        ((@fd_use_count += 1) - 1)
+        @fd_use_count += 1
         return self.attr_fd
       end
     end
@@ -612,7 +612,7 @@ module Java::Net
     # If the use count goes to -1 then the socket is closed.
     def release_fd
       synchronized((@fd_lock)) do
-        ((@fd_use_count -= 1) + 1)
+        @fd_use_count -= 1
         if ((@fd_use_count).equal?(-1))
           if (!(self.attr_fd).nil?)
             begin

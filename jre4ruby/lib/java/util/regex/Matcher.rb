@@ -355,12 +355,12 @@ module Java::Util::Regex
       i = 0
       while i < @groups.attr_length
         @groups[i] = -1
-        ((i += 1) - 1)
+        i += 1
       end
       i_ = 0
       while i_ < @locals.attr_length
         @locals[i_] = -1
-        ((i_ += 1) - 1)
+        i_ += 1
       end
       return self
     end
@@ -381,12 +381,12 @@ module Java::Util::Regex
       i = 0
       while i < @groups.attr_length
         @groups[i] = -1
-        ((i += 1) - 1)
+        i += 1
       end
       i_ = 0
       while i_ < @locals.attr_length
         @locals[i_] = -1
-        ((i_ += 1) - 1)
+        i_ += 1
       end
       @last_append_position = 0
       @from = 0
@@ -621,7 +621,7 @@ module Java::Util::Regex
     def find
       next_search_index = @last
       if ((next_search_index).equal?(@first))
-        ((next_search_index += 1) - 1)
+        next_search_index += 1
       end
       # If next search starts before region, start it at region
       if (next_search_index < @from)
@@ -632,7 +632,7 @@ module Java::Util::Regex
         i = 0
         while i < @groups.attr_length
           @groups[i] = -1
-          ((i += 1) - 1)
+          i += 1
         end
         return false
       end
@@ -709,7 +709,7 @@ module Java::Util::Regex
             sb.append(Character.new(?\\.ord))
           end
           sb.append(c)
-          ((i += 1) - 1)
+          i += 1
         end
         return sb.to_s
       end
@@ -799,20 +799,20 @@ module Java::Util::Regex
       while (cursor < replacement.length)
         next_char = replacement.char_at(cursor)
         if ((next_char).equal?(Character.new(?\\.ord)))
-          ((cursor += 1) - 1)
+          cursor += 1
           next_char = replacement.char_at(cursor)
           result.append(next_char)
-          ((cursor += 1) - 1)
+          cursor += 1
         else
           if ((next_char).equal?(Character.new(?$.ord)))
             # Skip past $
-            ((cursor += 1) - 1)
+            cursor += 1
             # The first number is always a group
             ref_num = RJava.cast_to_int(replacement.char_at(cursor)) - Character.new(?0.ord)
             if ((ref_num < 0) || (ref_num > 9))
               raise IllegalArgumentException.new("Illegal group reference")
             end
-            ((cursor += 1) - 1)
+            cursor += 1
             # Capture the largest legal group string
             done = false
             while (!done)
@@ -829,7 +829,7 @@ module Java::Util::Regex
                 done = true
               else
                 ref_num = new_ref_num
-                ((cursor += 1) - 1)
+                cursor += 1
               end
             end
             # Append group
@@ -838,7 +838,7 @@ module Java::Util::Regex
             end
           else
             result.append(next_char)
-            ((cursor += 1) - 1)
+            cursor += 1
           end
         end
       end
@@ -1193,7 +1193,7 @@ module Java::Util::Regex
       i = 0
       while i < @groups.attr_length
         @groups[i] = -1
-        ((i += 1) - 1)
+        i += 1
       end
       @accept_mode = NOANCHOR
       result = @parent_pattern.attr_root.match(self, from, @text)
@@ -1218,7 +1218,7 @@ module Java::Util::Regex
       i = 0
       while i < @groups.attr_length
         @groups[i] = -1
-        ((i += 1) - 1)
+        i += 1
       end
       @accept_mode = anchor
       result = @parent_pattern.attr_match_root.match(self, from, @text)

@@ -134,7 +134,7 @@ module Sun::Nio::Cs
         i = 0
         while i < aliases.attr_length
           put(@alias_map, aliases[i], name)
-          ((i += 1) - 1)
+          i += 1
         end
         put(@alias_name_map, name, aliases)
         @cache.clear
@@ -148,7 +148,7 @@ module Sun::Nio::Cs
         i = 0
         while i < aliases.attr_length
           remove(@alias_map, aliases[i])
-          ((i += 1) - 1)
+          i += 1
         end
         remove(@alias_name_map, name)
         @cache.clear

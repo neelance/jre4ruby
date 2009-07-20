@@ -261,7 +261,7 @@ module Sun::Security::Pkcs11
       end
       id_ = @token.attr_p11._c_open_session(@token.attr_provider.attr_slot_id, @open_session_flags, nil, nil)
       session = Session.new(@token, id_)
-      ((@active_sessions += 1) - 1)
+      @active_sessions += 1
       if (!(Debug).nil?)
         if (@active_sessions > @max_active_sessions)
           @max_active_sessions = @active_sessions
@@ -279,7 +279,7 @@ module Sun::Security::Pkcs11
         raise ProviderException.new("Internal error: close session with active objects")
       end
       @token.attr_p11._c_close_session(session.id)
-      ((@active_sessions -= 1) + 1)
+      @active_sessions -= 1
     end
     
     class_module.module_eval {
@@ -346,7 +346,7 @@ module Sun::Security::Pkcs11
             if (oldest_session.is_live(time))
               break
             end
-            ((i += 1) - 1)
+            i += 1
             begin
               @mgr.close_session(oldest_session)
             rescue PKCS11Exception => e

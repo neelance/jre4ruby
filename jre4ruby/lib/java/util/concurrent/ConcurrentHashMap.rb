@@ -481,7 +481,7 @@ module Java::Util::Concurrent
                 end
                 e = e.attr_next
               end
-              ((i += 1) - 1)
+              i += 1
             end
           end
           return false
@@ -615,7 +615,7 @@ module Java::Util::Concurrent
                 end
               end
             end
-            ((i += 1) - 1)
+            i += 1
           end
           @table = new_table
         end
@@ -667,7 +667,7 @@ module Java::Util::Concurrent
               i = 0
               while i < tab.attr_length
                 tab[i] = nil
-                ((i += 1) - 1)
+                i += 1
               end
               (@mod_count += 1)
               @count = 0 # write-volatile

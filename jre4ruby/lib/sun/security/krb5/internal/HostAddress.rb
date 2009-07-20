@@ -121,7 +121,7 @@ module Sun::Security::Krb5::Internal
           i = 0
           while i < @address.attr_length
             result = 37 * result + @address[i]
-            ((i += 1) - 1)
+            i += 1
           end
         end
         @hash_code = result
@@ -150,7 +150,7 @@ module Sun::Security::Krb5::Internal
           if (!(@address[i]).equal?(h.attr_address[i]))
             return false
           end
-          ((i += 1) - 1)
+          i += 1
         end
       end
       return true

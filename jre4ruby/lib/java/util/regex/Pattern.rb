@@ -1055,7 +1055,7 @@ module Java::Util::Regex
       result_size = match_list.size
       if ((limit).equal?(0))
         while (result_size > 0 && (match_list.get(result_size - 1) == ""))
-          ((result_size -= 1) + 1)
+          result_size -= 1
         end
       end
       result = Array.typed(String).new(result_size) { nil }
@@ -1229,7 +1229,7 @@ module Java::Util::Regex
       eq = nil
       last_code_point = -1
       result = nil
-      ((i += 1) - 1)
+      i += 1
       char_class.append("[")
       while (true)
         c = @normalized_pattern.code_point_at(i)
@@ -1258,7 +1258,7 @@ module Java::Util::Regex
             eq.append(ea)
           else
             char_class.append_code_point(c)
-            ((i += 1) - 1)
+            i += 1
           end
         end
         if ((i).equal?(@normalized_pattern.length))
@@ -1300,7 +1300,7 @@ module Java::Util::Regex
         if (!(next_).nil?)
           result.append("|" + (produce_equivalent_alternation(next_)).to_s)
         end
-        ((x += 1) - 1)
+        x += 1
       end
       return result.to_s
     end
@@ -1336,7 +1336,7 @@ module Java::Util::Regex
       x = 1
       while x < n_code_points
         length_ = length_ * (x + 1)
-        ((x += 1) - 1)
+        x += 1
       end
       temp = Array.typed(String).new(length_) { nil }
       comb_class = Array.typed(::Java::Int).new(n_code_points) { 0 }
@@ -1346,7 +1346,7 @@ module Java::Util::Regex
         c = Character.code_point_at(input, i)
         comb_class[x_] = get_class(c)
         i += Character.char_count(c)
-        ((x_ += 1) - 1)
+        x_ += 1
       end
       # For each char, take it out and add the permutations
       # of the remaining chars
@@ -1364,7 +1364,7 @@ module Java::Util::Regex
             if ((comb_class[y]).equal?(comb_class[x__]))
               throw :next_loop, :thrown
             end
-            ((y -= 1) + 1)
+            y -= 1
           end
           sb = StringBuilder.new(input)
           other_chars = sb.delete(offset, offset + len).to_s
@@ -1373,17 +1373,17 @@ module Java::Util::Regex
           y_ = 0
           while y_ < sub_result.attr_length
             temp[((index += 1) - 1)] = prefix + (sub_result[y_]).to_s
-            ((y_ += 1) - 1)
+            y_ += 1
           end
         end
-        ((x__ += 1) - 1)
+        x__ += 1
         offset += len
       end
       result = Array.typed(String).new(index) { nil }
       x___ = 0
       while x___ < index
         result[x___] = temp[x___]
-        ((x___ += 1) - 1)
+        x___ += 1
       end
       return result
     end
@@ -1450,7 +1450,7 @@ module Java::Util::Regex
           else
             if (in_quote)
               if ((@temp[i]).equal?(Character.new(?E.ord)))
-                ((i += 1) - 1)
+                i += 1
                 in_quote = false
               else
                 newtemp[((j += 1) - 1)] = Character.new(?\\.ord)
@@ -1458,7 +1458,7 @@ module Java::Util::Regex
               end
             else
               if ((@temp[i]).equal?(Character.new(?Q.ord)))
-                ((i += 1) - 1)
+                i += 1
                 in_quote = true
               else
                 newtemp[((j += 1) - 1)] = c
@@ -1788,7 +1788,7 @@ module Java::Util::Regex
     typesig { [] }
     # Unread one next character, and retreat cursor by one.
     def unread
-      ((@cursor -= 1) + 1)
+      @cursor -= 1
     end
     
     typesig { [String] }
@@ -1807,7 +1807,7 @@ module Java::Util::Regex
         if (is_supplementary(@temp[i]))
           return true
         end
-        ((i += 1) - 1)
+        i += 1
       end
       return false
     end
@@ -1995,7 +1995,7 @@ module Java::Util::Regex
           when Character.new(?*.ord), Character.new(?+.ord), Character.new(??.ord), Character.new(?{.ord)
             if (first > 1)
               @cursor = prev # Unwind one character
-              ((first -= 1) + 1)
+              first -= 1
             end
           when Character.new(?$.ord), Character.new(?..ord), Character.new(?^.ord), Character.new(?(.ord), Character.new(?[.ord), Character.new(?|.ord), Character.new(?).ord)
           when Character.new(?\\.ord)
@@ -2024,7 +2024,7 @@ module Java::Util::Regex
             ch = escape(false, (first).equal?(0))
             if (ch >= 0)
               append(ch, first)
-              ((first += 1) - 1)
+              first += 1
               if (is_supplementary(ch))
                 has_supplementary = true
               end
@@ -2043,7 +2043,7 @@ module Java::Util::Regex
           else
             prev = @cursor
             append(ch, first)
-            ((first += 1) - 1)
+            first += 1
             if (is_supplementary(ch))
               has_supplementary = true
             end
@@ -3014,7 +3014,7 @@ module Java::Util::Regex
           raise error("Illegal Unicode escape sequence")
         end
         n = n * 16 + ASCII.to_digit(ch)
-        ((i += 1) - 1)
+        i += 1
       end
       return n
     end
@@ -3044,10 +3044,10 @@ module Java::Util::Regex
           while x_ < length_ && i < length_in_code_points
             if (Character.is_high_surrogate(seq.char_at(((x_ += 1) - 1))))
               if (x_ < length_ && Character.is_low_surrogate(seq.char_at(x_)))
-                ((x_ += 1) - 1)
+                x_ += 1
               end
             end
-            ((i += 1) - 1)
+            i += 1
           end
           return x_ - index
         end
@@ -3060,10 +3060,10 @@ module Java::Util::Regex
         while x_ > 0 && i < len
           if (Character.is_low_surrogate(seq.char_at((x_ -= 1))))
             if (x_ > 0 && Character.is_high_surrogate(seq.char_at(x_ - 1)))
-              ((x_ -= 1) + 1)
+              x_ -= 1
             end
           end
-          ((i += 1) - 1)
+          i += 1
         end
         return index - x_
       end
@@ -3074,10 +3074,10 @@ module Java::Util::Regex
         n = 0
         i = 0
         while i < length_
-          ((n += 1) - 1)
+          n += 1
           if (Character.is_high_surrogate(seq.char_at(((i += 1) - 1))))
             if (i < length_ && Character.is_low_surrogate(seq.char_at(i)))
-              ((i += 1) - 1)
+              i += 1
             end
           end
         end
@@ -3175,21 +3175,21 @@ module Java::Util::Regex
           i = 0
           while i < count
             tmp[i] = Character.to_lower_case(Character.to_upper_case(buf[i]))
-            ((i += 1) - 1)
+            i += 1
           end
           return has_supplementary ? SliceUS.new(tmp) : SliceU.new(tmp)
         end
         i = 0
         while i < count
           tmp[i] = ASCII.to_lower(buf[i])
-          ((i += 1) - 1)
+          i += 1
         end
         return has_supplementary ? SliceIS.new(tmp) : SliceI.new(tmp)
       end
       i = 0
       while i < count
         tmp[i] = buf[i]
-        ((i += 1) - 1)
+        i += 1
       end
       return has_supplementary ? SliceS.new(tmp) : Slice.new(tmp)
     end
@@ -3308,7 +3308,7 @@ module Java::Util::Regex
             if ((i).equal?(guard))
               matcher.attr_hit_end = true
             end
-            ((i += 1) - 1)
+            i += 1
           end
           if (ret)
             matcher.attr_first = i
@@ -3355,7 +3355,7 @@ module Java::Util::Regex
             # faster than countChars(seq, i, 1).
             if (Character.is_high_surrogate(seq.char_at(((i += 1) - 1))))
               if (i < seq.length && Character.is_low_surrogate(seq.char_at(i)))
-                ((i += 1) - 1)
+                i += 1
               end
             end
             if ((i).equal?(guard))
@@ -3722,8 +3722,8 @@ module Java::Util::Regex
         
         typesig { [TreeInfo] }
         def study(info)
-          ((info.attr_min_length += 1) - 1)
-          ((info.attr_max_length += 1) - 1)
+          info.attr_min_length += 1
+          info.attr_max_length += 1
           return self.attr_next.study(info)
         end
         
@@ -3975,7 +3975,7 @@ module Java::Util::Regex
             if (!(buf[j]).equal?(seq.char_at(i + j)))
               return false
             end
-            ((j += 1) - 1)
+            j += 1
           end
           return self.attr_next.match(matcher, i + len, seq)
         end
@@ -4008,7 +4008,7 @@ module Java::Util::Regex
             if (!(buf[j]).equal?(c) && !(buf[j]).equal?(ASCII.to_lower(c)))
               return false
             end
-            ((j += 1) - 1)
+            j += 1
           end
           return self.attr_next.match(matcher, i + len, seq)
         end
@@ -4041,7 +4041,7 @@ module Java::Util::Regex
             if (!(buf[j]).equal?(c) && !(buf[j]).equal?(Character.to_lower_case(Character.to_upper_case(c))))
               return false
             end
-            ((j += 1) - 1)
+            j += 1
           end
           return self.attr_next.match(matcher, i + len, seq)
         end
@@ -4079,7 +4079,7 @@ module Java::Util::Regex
               matcher.attr_hit_end = true
               return false
             end
-            ((j += 1) - 1)
+            j += 1
           end
           return self.attr_next.match(matcher, x, seq)
         end
@@ -4122,7 +4122,7 @@ module Java::Util::Regex
               matcher.attr_hit_end = true
               return false
             end
-            ((j += 1) - 1)
+            j += 1
           end
           return self.attr_next.match(matcher, x, seq)
         end
@@ -4394,11 +4394,11 @@ module Java::Util::Regex
           while j < @cmin
             if (@atom.match(matcher, i, seq))
               i = matcher.attr_last
-              ((j += 1) - 1)
+              j += 1
               next
             end
             return false
-            ((j += 1) - 1)
+            j += 1
           end
           if ((@type).equal?(GREEDY))
             return match0(matcher, i, j, seq)
@@ -4431,7 +4431,7 @@ module Java::Util::Regex
             end
             # Move up index and number matched
             i = matcher.attr_last
-            ((j += 1) - 1)
+            j += 1
             # We are greedy so match as many as we can
             while (j < @cmax)
               if (!@atom.match(matcher, i, seq))
@@ -4444,7 +4444,7 @@ module Java::Util::Regex
                 break
               end
               i += k
-              ((j += 1) - 1)
+              j += 1
             end
             # Handle backing off if match fails
             while (j >= back_limit)
@@ -4452,7 +4452,7 @@ module Java::Util::Regex
                 return true
               end
               i -= k
-              ((j -= 1) + 1)
+              j -= 1
             end
             return false
           end
@@ -4483,7 +4483,7 @@ module Java::Util::Regex
             end
             # Move up index and number matched
             i = matcher.attr_last
-            ((j += 1) - 1)
+            j += 1
           end
         end
         
@@ -4497,7 +4497,7 @@ module Java::Util::Regex
               break
             end
             i = matcher.attr_last
-            ((j += 1) - 1)
+            j += 1
           end
           return self.attr_next.match(matcher, i, seq)
         end
@@ -4634,7 +4634,7 @@ module Java::Util::Regex
               ret = false
               break
             end
-            ((j += 1) - 1)
+            j += 1
           end
           if (ret)
             if ((@type).equal?(GREEDY))
@@ -4717,7 +4717,7 @@ module Java::Util::Regex
                 groups[@group_index] = i - k
               end
               i = i - k
-              ((j -= 1) + 1)
+              j -= 1
             end
             break
           end
@@ -4749,7 +4749,7 @@ module Java::Util::Regex
               matcher.attr_groups[@group_index + 1] = matcher.attr_last
             end
             i = matcher.attr_last
-            ((j += 1) - 1)
+            j += 1
           end
         end
         
@@ -4768,7 +4768,7 @@ module Java::Util::Regex
               break
             end
             i = matcher.attr_last
-            ((j += 1) - 1)
+            j += 1
           end
           return self.attr_next.match(matcher, i, seq)
         end
@@ -4895,7 +4895,7 @@ module Java::Util::Regex
                 return true
               end
             end
-            ((n += 1) - 1)
+            n += 1
           end
           return false
         end
@@ -4916,7 +4916,7 @@ module Java::Util::Regex
             min_l2 = Math.min(min_l2, info.attr_min_length)
             max_l2 = Math.max(max_l2, info.attr_max_length)
             max_v = (max_v & info.attr_max_valid)
-            ((n += 1) - 1)
+            n += 1
           end
           min_l += min_l2
           max_l += max_l2
@@ -5339,7 +5339,7 @@ module Java::Util::Regex
             if (!(seq.char_at(i + index)).equal?(seq.char_at(j + index)))
               return false
             end
-            ((index += 1) - 1)
+            index += 1
           end
           return self.attr_next.match(matcher, i + group_size, seq)
         end
@@ -5414,7 +5414,7 @@ module Java::Util::Regex
             end
             x += Character.char_count(c1)
             j += Character.char_count(c2)
-            ((index += 1) - 1)
+            index += 1
           end
           return self.attr_next.match(matcher, i + group_size, seq)
         end
@@ -5463,7 +5463,7 @@ module Java::Util::Regex
               return self.attr_next.match(matcher, matcher.attr_last, seq)
             end
             i += count_chars(seq, i, 1)
-            ((matcher.attr_first += 1) - 1)
+            matcher.attr_first += 1
           end
         end
         
@@ -5705,7 +5705,7 @@ module Java::Util::Regex
           j = i - @rmin
           while !condition_matched && j >= from
             condition_matched = @cond.match(matcher, j, seq)
-            ((j -= 1) + 1)
+            j -= 1
           end
           matcher.attr_from = saved_from
           matcher.attr_lookbehind_to = saved_lbt
@@ -5803,7 +5803,7 @@ module Java::Util::Regex
           j = i - @rmin
           while !condition_matched && j >= from
             condition_matched = @cond.match(matcher, j, seq)
-            ((j -= 1) + 1)
+            j -= 1
           end
           # Reinstate region boundaries
           matcher.attr_from = saved_from
@@ -6038,11 +6038,11 @@ module Java::Util::Regex
             return true
           end
           if ((Character.get_type(ch)).equal?(Character::NON_SPACING_MARK))
-            ((x_ -= 1) + 1)
+            x_ -= 1
             next
           end
           return false
-          ((x_ -= 1) + 1)
+          x_ -= 1
         end
         return false
       end
@@ -6125,7 +6125,7 @@ module Java::Util::Regex
             i = 0
             while i < pattern_length
               last_occ[src[i] & 0x7f] = i + 1
-              ((i += 1) - 1)
+              i += 1
             end
             # Precalculate the good suffix shift
             # i is the shift amount being considered
@@ -6144,7 +6144,7 @@ module Java::Util::Regex
                     # filled up with correct values before.
                     throw :next_next, :thrown
                   end
-                  ((j -= 1) + 1)
+                  j -= 1
                 end
                 # This fills up the remaining of optoSft
                 # any suffix can not have larger shift amount
@@ -6153,7 +6153,7 @@ module Java::Util::Regex
                   opto_sft[(j -= 1)] = i
                 end
               end
-              ((i -= 1) + 1)
+              i -= 1
             end
             # Set the guard value because of unicode compression
             opto_sft[pattern_length - 1] = 1
@@ -6194,7 +6194,7 @@ module Java::Util::Regex
                   i += Math.max(j + 1 - @last_occ[ch & 0x7f], @opto_sft[j])
                   throw :next_next, :thrown
                 end
-                ((j -= 1) + 1)
+                j -= 1
               end
               # Entire pattern matched starting at i
               matcher.attr_first = i
@@ -6205,7 +6205,7 @@ module Java::Util::Regex
                 matcher.attr_groups[1] = matcher.attr_last
                 return true
               end
-              ((i += 1) - 1)
+              i += 1
             end
           end
           # BnM is only used as the leading node in the unanchored case,
@@ -6244,7 +6244,7 @@ module Java::Util::Regex
           x = 0
           while x < self.attr_buffer.attr_length
             @length_in_chars += Character.char_count(self.attr_buffer[x])
-            ((x += 1) - 1)
+            x += 1
           end
         end
         
@@ -6270,7 +6270,7 @@ module Java::Util::Regex
                   throw :next_next, :thrown
                 end
                 j -= Character.char_count(ch)
-                ((x -= 1) + 1)
+                x -= 1
               end
               # Entire pattern matched starting at i
               matcher.attr_first = i

@@ -259,7 +259,7 @@ module Java::Util::Jar
           @entries.put(name, attr)
         end
         attr.read(fis, lbuf)
-        ((ecount += 1) - 1)
+        ecount += 1
         acount += attr.size
         # XXX: Fix for when the average is 0. When it is 0,
         # you get an Attributes object with an initial

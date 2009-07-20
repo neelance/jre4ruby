@@ -121,7 +121,7 @@ module Sun::Security::Util
             pos.attr_end_of_first_line = i - 1
           end
           if ((i < len) && ((@raw_bytes[i + 1]).equal?(Character.new(?\n.ord))))
-            ((i += 1) - 1)
+            i += 1
           end
           if ((pos.attr_end_of_first_line).equal?(-1))
             pos.attr_end_of_first_line = i - 1
@@ -159,7 +159,7 @@ module Sun::Security::Util
         else
           all_blank = false
         end
-        ((i += 1) - 1)
+        i += 1
       end
       return false
     end
@@ -305,7 +305,7 @@ module Sun::Security::Util
               start = i
             end
             prev = bytes[i]
-            ((i += 1) - 1)
+            i += 1
           end
           md.update(bytes, start, i - start)
         end

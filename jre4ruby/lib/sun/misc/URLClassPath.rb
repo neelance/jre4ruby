@@ -141,7 +141,7 @@ module Sun::Misc
       i = 0
       while i < urls.attr_length
         @path.add(urls[i])
-        ((i += 1) - 1)
+        i += 1
       end
       push(urls)
       if (!(factory).nil?)
@@ -191,7 +191,7 @@ module Sun::Misc
         if (!(url).nil?)
           return url
         end
-        ((i += 1) - 1)
+        i += 1
       end
       return nil
     end
@@ -214,7 +214,7 @@ module Sun::Misc
         if (!(res).nil?)
           return res
         end
-        ((i += 1) - 1)
+        i += 1
       end
       return nil
     end
@@ -795,10 +795,10 @@ module Sun::Misc
                           self.attr_lmap.put(jar_url, nil)
                         end
                       rescue MalformedURLException => e
-                        ((i += 1) - 1)
+                        i += 1
                         next
                       end
-                      ((i += 1) - 1)
+                      i += 1
                     end
                   end
                   return nil
@@ -1123,7 +1123,7 @@ module Sun::Misc
           while (st.has_more_tokens)
             path = st.next_token
             urls[i] = URL.new(base, path)
-            ((i += 1) - 1)
+            i += 1
           end
           return urls
         end

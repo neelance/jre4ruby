@@ -1399,7 +1399,7 @@ module Java::Util
           i = 0
           while valid && i < size_
             valid = (!(a.get(i)).nil?)
-            ((i += 1) - 1)
+            i += 1
           end
         end
         return valid
@@ -1535,7 +1535,7 @@ module Java::Util
             bundle.attr_expired = false
             break
           end
-          ((i += 1) - 1)
+          i += 1
         end
         raise AssertError if not ((UnderConstruction.get(cache_key)).equal?(JavaThread.current_thread))
         return bundle

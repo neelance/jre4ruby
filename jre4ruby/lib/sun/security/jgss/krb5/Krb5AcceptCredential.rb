@@ -84,7 +84,7 @@ module Sun::Security::Jgss::Krb5
       i = 0
       while i < keys.attr_length
         @krb5encryption_keys[i] = EncryptionKey.new(keys[i].get_encoded, keys[i].get_key_type, keys[i].get_version_number)
-        ((i += 1) - 1)
+        i += 1
       end
     end
     
@@ -206,7 +206,7 @@ module Sun::Security::Jgss::Krb5
         i = 0
         while i < @krb5encryption_keys.attr_length
           @krb5encryption_keys[i].destroy
-          ((i += 1) - 1)
+          i += 1
         end
         @krb5encryption_keys = nil
       end

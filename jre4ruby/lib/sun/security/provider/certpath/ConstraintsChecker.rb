@@ -151,7 +151,7 @@ module Sun::Security::Provider::Certpath
     # does not pass the check
     def check(cert, unres_crit_exts)
       curr_cert = cert
-      ((@i += 1) - 1)
+      @i += 1
       # MUST run NC check second, since it depends on BC check to
       # update remainingCerts
       check_basic_constraints(curr_cert)
@@ -255,7 +255,7 @@ module Sun::Security::Provider::Certpath
           if (@max_path_length <= 0)
             raise CertPathValidatorException.new(msg + " check failed: pathLenConstraint violated - " + "this cert must be the last cert in the " + "certification path")
           end
-          ((@max_path_length -= 1) + 1)
+          @max_path_length -= 1
         end
         if (path_len_constraint < @max_path_length)
           @max_path_length = path_len_constraint
@@ -280,7 +280,7 @@ module Sun::Security::Provider::Certpath
       def merge_basic_constraints(cert, max_path_length)
         path_len_constraint = cert.get_basic_constraints
         if (!X509CertImpl.is_self_issued(cert))
-          ((max_path_length -= 1) + 1)
+          max_path_length -= 1
         end
         if (path_len_constraint < max_path_length)
           max_path_length = path_len_constraint

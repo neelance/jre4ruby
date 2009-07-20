@@ -298,7 +298,7 @@ module Java::Util::Logging
           if ((@name == other.attr_name) && (@value).equal?(other.attr_value) && ((@resource_bundle_name).equal?(other.attr_resource_bundle_name) || (!(@resource_bundle_name).nil? && (@resource_bundle_name == other.attr_resource_bundle_name))))
             return other
           end
-          ((i += 1) - 1)
+          i += 1
         end
         # Woops.  Whoever sent us this object knows
         # about a new log level.  Add it to our list.
@@ -344,7 +344,7 @@ module Java::Util::Logging
             if ((name == l.attr_name))
               return l
             end
-            ((i += 1) - 1)
+            i += 1
           end
           # Now, check if the given name is an integer.  If so,
           # first look for a Level with the given value and then
@@ -357,7 +357,7 @@ module Java::Util::Logging
               if ((l.attr_value).equal?(x))
                 return l
               end
-              ((i_ += 1) - 1)
+              i_ += 1
             end
             # Create a new Level.
             return Level.new(name, x)
@@ -374,7 +374,7 @@ module Java::Util::Logging
             if ((name == l.get_localized_name))
               return l
             end
-            ((i__ += 1) - 1)
+            i__ += 1
           end
           # OK, we've tried everything and failed
           raise IllegalArgumentException.new("Bad level \"" + name + "\"")

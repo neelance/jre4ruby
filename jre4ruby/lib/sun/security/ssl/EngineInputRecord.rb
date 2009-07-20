@@ -197,7 +197,7 @@ module Sun::Security::Ssl
             # No BB.equals(byte []); !
             return false
           end
-          ((i += 1) - 1)
+          i += 1
         end
         return true
       ensure

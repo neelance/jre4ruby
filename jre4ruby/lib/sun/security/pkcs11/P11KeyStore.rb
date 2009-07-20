@@ -1577,7 +1577,7 @@ module Sun::Security::Pkcs11
             Debug.println("ignoring duplicate CA cert for [" + (chain[i].get_subject_x500principal).to_s + "]")
           end
         end
-        ((i += 1) - 1)
+        i += 1
       end
     end
     
@@ -1974,7 +1974,7 @@ module Sun::Security::Pkcs11
             printable = false
             break
           end
-          ((i += 1) - 1)
+          i += 1
         end
         if (!printable)
           return "0x" + (Functions.to_hex_string(bytes)).to_s
@@ -2030,7 +2030,7 @@ module Sun::Security::Pkcs11
               if (!(label[0].attr_p_value).nil? && (cka_label == String.new(label[0].get_char_array)))
                 list.add(THandle.new(h[i], ATTR_CLASS_SKEY))
               end
-              ((i += 1) - 1)
+              i += 1
             end
             if ((list.size).equal?(1))
               # yes, there was only one CKA_LABEL that matched

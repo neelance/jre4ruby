@@ -425,7 +425,7 @@ module Java::Security
           if (!(digesta[i]).equal?(digestb[i]))
             return false
           end
-          ((i += 1) - 1)
+          i += 1
         end
         return true
       end

@@ -335,7 +335,7 @@ module Sun::Security::Pkcs12
           i = 0
           while i < @key_id.attr_length
             hash += @key_id[i]
-            ((i += 1) - 1)
+            i += 1
           end
           return hash
         end
@@ -942,7 +942,7 @@ module Sun::Security::Pkcs12
         if (!((issuer_dn == subject_dn)))
           return false
         end
-        ((i += 1) - 1)
+        i += 1
       end
       return true
     end
@@ -1083,7 +1083,7 @@ module Sun::Security::Pkcs12
           end
           # wrap as Sequence
           out.write(DerValue.attr_tag_sequence, safe_bag)
-          ((i += 1) - 1)
+          i += 1
         end # for cert-chain
       end
       # wrap as SequenceOf SafeBag
@@ -1245,7 +1245,7 @@ module Sun::Security::Pkcs12
           else
             if ((content_type == ContentInfo::ENCRYPTED_DATA_OID))
               if ((password).nil?)
-                ((i += 1) - 1)
+                i += 1
                 next
               end
               edi = safe_contents.get_content.to_der_input_stream
@@ -1283,7 +1283,7 @@ module Sun::Security::Pkcs12
           end
           sc = DerInputStream.new(safe_contents_data)
           load_safe_contents(sc, password)
-          ((i += 1) - 1)
+          i += 1
         end
         # The MacData is optional.
         if (!(password).nil? && s.available > 0)
@@ -1330,7 +1330,7 @@ module Sun::Security::Pkcs12
               entry.attr_chain = chain.to_array(Array.typed(Certificate).new(chain.size) { nil })
             end
           end
-          ((m += 1) - 1)
+          m += 1
         end
         @certs.clear
         @key_list.clear
@@ -1359,7 +1359,7 @@ module Sun::Security::Pkcs12
           k_entry = KeyEntry.new
           k_entry.attr_protected_priv_key = bag_value.to_byte_array
           bag_item = k_entry
-          ((@private_key_count += 1) - 1)
+          @private_key_count += 1
         else
           if ((bag_id == self.attr_cert_bag_oid))
             cs = DerInputStream.new(bag_value.to_byte_array)
@@ -1410,7 +1410,7 @@ module Sun::Security::Pkcs12
                 # log error message for "unknown attr"
               end
             end
-            ((j += 1) - 1)
+            j += 1
           end
         end
         # As per PKCS12 v1.0 friendlyname (alias) and localKeyId (keyId)
@@ -1430,7 +1430,7 @@ module Sun::Security::Pkcs12
             if ((@private_key_count).equal?(1))
               key_id = "01".get_bytes("UTF8")
             else
-              ((i += 1) - 1)
+              i += 1
               next
             end
           end
@@ -1487,13 +1487,13 @@ module Sun::Security::Pkcs12
             end
           end
         end
-        ((i += 1) - 1)
+        i += 1
       end
     end
     
     typesig { [] }
     def get_unfriendly_name
-      ((@counter += 1) - 1)
+      @counter += 1
       return (String.value_of(@counter))
     end
     

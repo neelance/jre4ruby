@@ -209,7 +209,7 @@ module Java::Text
           if (length > result && (value_list[length - 1]).equal?(order))
             result = length
           end
-          ((i += 1) - 1)
+          i += 1
         end
       end
       return result
@@ -254,8 +254,8 @@ module Java::Text
           swap = result.char_at(i)
           result.set_char_at(i, result.char_at(j))
           result.set_char_at(j, swap)
-          ((i += 1) - 1)
-          ((j -= 1) + 1)
+          i += 1
+          j -= 1
         end
       end
       
@@ -267,7 +267,7 @@ module Java::Text
           if ((pair.attr_fwd).equal?(fwd) && (pair.attr_entry_name == name))
             return i
           end
-          ((i += 1) - 1)
+          i += 1
         end
         return UNMAPPED
       end

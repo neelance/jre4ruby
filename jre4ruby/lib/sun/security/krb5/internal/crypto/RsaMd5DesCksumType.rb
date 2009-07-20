@@ -107,7 +107,7 @@ module Sun::Security::Krb5::Internal::Crypto
       i = 0
       while i < new_key.attr_length
         new_key[i] = (new_key[i] ^ 0xf0)
-        ((i += 1) - 1)
+        i += 1
       end
       # check for weak keys
       begin
@@ -161,7 +161,7 @@ module Sun::Security::Krb5::Internal::Crypto
       i = 0
       while i < new_key.attr_length
         new_key[i] = (new_key[i] ^ 0xf0)
-        ((i += 1) - 1)
+        i += 1
       end
       # check for weak keys
       begin

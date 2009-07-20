@@ -384,7 +384,7 @@ module Java::Util
           else
             preceding_backslash = false
           end
-          ((key_len += 1) - 1)
+          key_len += 1
         end
         while (value_start < limit)
           c = lr.attr_line_buf[value_start]
@@ -395,7 +395,7 @@ module Java::Util
               break
             end
           end
-          ((value_start += 1) - 1)
+          value_start += 1
         end
         key = load_convert(lr.attr_line_buf, 0, key_len, convt_buf)
         value = load_convert(lr.attr_line_buf, value_start, limit - value_start, convt_buf)
@@ -621,7 +621,7 @@ module Java::Util
               else
                 raise IllegalArgumentException.new("Malformed \\uxxxx encoding.")
               end
-              ((i += 1) - 1)
+              i += 1
             end
             out[((out_len += 1) - 1)] = RJava.cast_to_char(value)
           else
@@ -668,11 +668,11 @@ module Java::Util
           if ((a_char).equal?(Character.new(?\\.ord)))
             out_buffer.append(Character.new(?\\.ord))
             out_buffer.append(Character.new(?\\.ord))
-            ((x += 1) - 1)
+            x += 1
             next
           end
           out_buffer.append(a_char)
-          ((x += 1) - 1)
+          x += 1
           next
         end
         case (a_char)
@@ -711,7 +711,7 @@ module Java::Util
             out_buffer.append(a_char)
           end
         end
-        ((x += 1) - 1)
+        x += 1
       end
       return out_buffer.to_s
     end
@@ -741,7 +741,7 @@ module Java::Util
             else
               bw.new_line
               if ((c).equal?(Character.new(?\r.ord)) && !(current).equal?(len - 1) && (comments.char_at(current + 1)).equal?(Character.new(?\n.ord)))
-                ((current += 1) - 1)
+                current += 1
               end
               if ((current).equal?(len - 1) || (!(comments.char_at(current + 1)).equal?(Character.new(?#.ord)) && !(comments.char_at(current + 1)).equal?(Character.new(?!.ord))))
                 bw.write("#")
@@ -749,7 +749,7 @@ module Java::Util
             end
             last = current + 1
           end
-          ((current += 1) - 1)
+          current += 1
         end
         if (!(last).equal?(current))
           bw.write(comments.substring(last, current))

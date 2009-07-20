@@ -96,7 +96,7 @@ module Sun::Security::Krb5::Internal::Crypto
         i = 0
         while i < 4
           output[i] = ((input >> (i * 8)) & 0xff)
-          ((i += 1) - 1)
+          i += 1
         end
         return output
       end

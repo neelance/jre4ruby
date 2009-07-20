@@ -134,7 +134,7 @@ module Sun::Security::Timestamp
           while (!((header = (connection.get_header_field(i)).to_s)).nil?)
             key = connection.get_header_field_key(i)
             System.out.println("  " + ((((key).nil?) ? "" : key + ": ")).to_s + header)
-            ((i += 1) - 1)
+            i += 1
           end
           System.out.println
         end

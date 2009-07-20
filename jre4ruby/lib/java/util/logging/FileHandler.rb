@@ -216,7 +216,7 @@ module Java::Util::Logging
         typesig { [::Java::Int] }
         def write(b)
           @out.write(b)
-          ((@written += 1) - 1)
+          @written += 1
         end
         
         typesig { [Array.typed(::Java::Byte)] }
@@ -500,7 +500,7 @@ module Java::Util::Logging
       # to our set of output files, as long as we are alive.
       unique = -1
       loop do
-        ((unique += 1) - 1)
+        unique += 1
         if (unique > MAX_LOCKS)
           raise IOException.new("Couldn't get lock for " + @pattern)
         end
@@ -547,7 +547,7 @@ module Java::Util::Logging
       i = 0
       while i < @count
         @files[i] = generate(@pattern, i, unique)
-        ((i += 1) - 1)
+        i += 1
       end
       # Create the initial log file.
       if (@append)
@@ -582,7 +582,7 @@ module Java::Util::Logging
       sawu = false
       while (ix < pattern.length)
         ch = pattern.char_at(ix)
-        ((ix += 1) - 1)
+        ix += 1
         ch2 = 0
         if (ix < pattern.length)
           ch2 = Character.to_lower_case(pattern.char_at(ix))
@@ -603,7 +603,7 @@ module Java::Util::Logging
                 tmp_dir = (System.get_property("user.home")).to_s
               end
               file = JavaFile.new(tmp_dir)
-              ((ix += 1) - 1)
+              ix += 1
               word = ""
               next
             else
@@ -614,25 +614,25 @@ module Java::Util::Logging
                   # we disallow attempts to open files relative to %h.
                   raise IOException.new("can't use %h in set UID program")
                 end
-                ((ix += 1) - 1)
+                ix += 1
                 word = ""
                 next
               else
                 if ((ch2).equal?(Character.new(?g.ord)))
                   word = word + (generation).to_s
                   sawg = true
-                  ((ix += 1) - 1)
+                  ix += 1
                   next
                 else
                   if ((ch2).equal?(Character.new(?u.ord)))
                     word = word + (unique).to_s
                     sawu = true
-                    ((ix += 1) - 1)
+                    ix += 1
                     next
                   else
                     if ((ch2).equal?(Character.new(?%.ord)))
                       word = word + "%"
-                      ((ix += 1) - 1)
+                      ix += 1
                       next
                     end
                   end
@@ -676,7 +676,7 @@ module Java::Util::Logging
             end
             f1.rename_to(f2)
           end
-          ((i -= 1) + 1)
+          i -= 1
         end
         begin
           open(@files[0], false)

@@ -439,7 +439,7 @@ module Sun::Security::Provider::Certpath
         n = get_depth
         while i < n
           sb.append("  ")
-          ((i += 1) - 1)
+          i += 1
         end
         sb.append(policy_to_string(get_valid_policy))
         sb.append("  CRIT: ")

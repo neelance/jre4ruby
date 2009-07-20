@@ -146,7 +146,7 @@ module Sun::Security::Provider::Certpath
           return (result)
         rescue ConcurrentModificationException => e
         end
-        ((c += 1) - 1)
+        c += 1
       end
       raise ConcurrentModificationException.new("Too many " + "ConcurrentModificationExceptions")
     end
@@ -190,7 +190,7 @@ module Sun::Security::Provider::Certpath
           return (result)
         rescue ConcurrentModificationException => e
         end
-        ((c += 1) - 1)
+        c += 1
       end
       raise ConcurrentModificationException.new("Too many " + "ConcurrentModificationExceptions")
     end

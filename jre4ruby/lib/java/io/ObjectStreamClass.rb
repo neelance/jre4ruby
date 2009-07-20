@@ -703,7 +703,7 @@ module Java::Io
         if ((@fields[i].get_field).nil?)
           @default_serialize_ex = InvalidClassException.new(@name, "unmatched serializable field(s) declared")
         end
-        ((i += 1) - 1)
+        i += 1
       end
     end
     
@@ -855,7 +855,7 @@ module Java::Io
         rescue RuntimeException => e
           raise InvalidClassException.new(@name, "invalid descriptor for field " + fname).init_cause(e)
         end
-        ((i += 1) - 1)
+        i += 1
       end
       compute_field_offsets
     end
@@ -893,7 +893,7 @@ module Java::Io
         if (!f.is_primitive)
           out.write_type_string(f.get_type_string)
         end
-        ((i += 1) - 1)
+        i += 1
       end
     end
     
@@ -986,7 +986,7 @@ module Java::Io
             return f
           end
         end
-        ((i += 1) - 1)
+        i += 1
       end
       return nil
     end
@@ -1408,7 +1408,7 @@ module Java::Io
         else
           raise InternalError.new
         end
-        ((i += 1) - 1)
+        i += 1
       end
       if (!(first_obj_index).equal?(-1) && !(first_obj_index + @num_obj_fields).equal?(@fields.attr_length))
         raise InvalidClassException.new(@name, "illegal field order")
@@ -1611,7 +1611,7 @@ module Java::Io
         i = 0
         while i < param_types.attr_length
           sbuf.append(get_class_signature(param_types[i]))
-          ((i += 1) - 1)
+          i += 1
         end
         sbuf.append(Character.new(?).ord))
         sbuf.append(get_class_signature(ret_type))
@@ -1703,7 +1703,7 @@ module Java::Io
           if ((bound_fields[i]).nil?)
             bound_fields[i] = ObjectStreamField.new(fname, spf.get_type, spf.is_unshared)
           end
-          ((i += 1) - 1)
+          i += 1
         end
         return bound_fields
       end
@@ -1722,7 +1722,7 @@ module Java::Io
           if (((cl_fields[i].get_modifiers & mask)).equal?(0))
             list.add(ObjectStreamField.new(cl_fields[i], false, true))
           end
-          ((i += 1) - 1)
+          i += 1
         end
         size_ = list.size
         return ((size_).equal?(0)) ? NO_FIELDS : list.to_array(Array.typed(ObjectStreamField).new(size_) { nil })
@@ -1771,13 +1771,13 @@ module Java::Io
             i = 0
             while i < interfaces.attr_length
               iface_names[i] = interfaces[i].get_name
-              ((i += 1) - 1)
+              i += 1
             end
             Arrays.sort(iface_names)
             i_ = 0
             while i_ < iface_names.attr_length
               dout.write_utf(iface_names[i_])
-              ((i_ += 1) - 1)
+              i_ += 1
             end
           end
           fields = cl.get_declared_fields
@@ -1785,7 +1785,7 @@ module Java::Io
           i = 0
           while i < fields.attr_length
             field_sigs[i] = MemberSignature.new(fields[i])
-            ((i += 1) - 1)
+            i += 1
           end
           Arrays.sort(field_sigs, Class.new(Comparator.class == Class ? Comparator : Object) do
             extend LocalClass
@@ -1816,7 +1816,7 @@ module Java::Io
               dout.write_int(mods)
               dout.write_utf(sig.attr_signature)
             end
-            ((i_ += 1) - 1)
+            i_ += 1
           end
           if (has_static_initializer(cl))
             dout.write_utf("<clinit>")
@@ -1828,7 +1828,7 @@ module Java::Io
           i__ = 0
           while i__ < cons.attr_length
             cons_sigs[i__] = MemberSignature.new(cons[i__])
-            ((i__ += 1) - 1)
+            i__ += 1
           end
           Arrays.sort(cons_sigs, Class.new(Comparator.class == Class ? Comparator : Object) do
             extend LocalClass
@@ -1859,13 +1859,13 @@ module Java::Io
               dout.write_int(mods)
               dout.write_utf(sig.attr_signature.replace(Character.new(?/.ord), Character.new(?..ord)))
             end
-            ((i___ += 1) - 1)
+            i___ += 1
           end
           meth_sigs = Array.typed(MemberSignature).new(methods.attr_length) { nil }
           i____ = 0
           while i____ < methods.attr_length
             meth_sigs[i____] = MemberSignature.new(methods[i____])
-            ((i____ += 1) - 1)
+            i____ += 1
           end
           Arrays.sort(meth_sigs, Class.new(Comparator.class == Class ? Comparator : Object) do
             extend LocalClass
@@ -1900,7 +1900,7 @@ module Java::Io
               dout.write_int(mods)
               dout.write_utf(sig.attr_signature.replace(Character.new(?/.ord), Character.new(?..ord)))
             end
-            ((i_____ += 1) - 1)
+            i_____ += 1
           end
           dout.flush
           md = MessageDigest.get_instance("SHA")
@@ -1909,7 +1909,7 @@ module Java::Io
           i______ = Math.min(hash_bytes.attr_length, 8) - 1
           while i______ >= 0
             hash = (hash << 8) | (hash_bytes[i______] & 0xff)
-            ((i______ -= 1) + 1)
+            i______ -= 1
           end
           return hash
         rescue IOException => ex
@@ -2067,7 +2067,7 @@ module Java::Io
             if (!f.is_primitive)
               type_list.add((!(rf).nil?) ? rf.get_type : nil)
             end
-            ((i += 1) - 1)
+            i += 1
           end
           @types = type_list.to_array(Array.typed(Class).new(type_list.size) { nil })
           @num_prim_fields = nfields - @types.attr_length
@@ -2117,7 +2117,7 @@ module Java::Io
             else
               raise InternalError.new
             end
-            ((i += 1) - 1)
+            i += 1
           end
         end
         
@@ -2133,7 +2133,7 @@ module Java::Io
           while i < @num_prim_fields
             key = @keys[i]
             if ((key).equal?(Unsafe::INVALID_FIELD_OFFSET))
-              ((i += 1) - 1)
+              i += 1
               next # discard value
             end
             off = @offsets[i]
@@ -2157,7 +2157,7 @@ module Java::Io
             else
               raise InternalError.new
             end
-            ((i += 1) - 1)
+            i += 1
           end
         end
         
@@ -2180,7 +2180,7 @@ module Java::Io
             else
               raise InternalError.new
             end
-            ((i += 1) - 1)
+            i += 1
           end
         end
         
@@ -2198,7 +2198,7 @@ module Java::Io
           while i < @fields.attr_length
             key = @keys[i]
             if ((key).equal?(Unsafe::INVALID_FIELD_OFFSET))
-              ((i += 1) - 1)
+              i += 1
               next # discard value
             end
             case (@type_codes[i])
@@ -2212,7 +2212,7 @@ module Java::Io
             else
               raise InternalError.new
             end
-            ((i += 1) - 1)
+            i += 1
           end
         end
         
@@ -2327,7 +2327,7 @@ module Java::Io
           while i < fields.attr_length
             f = fields[i]
             sbuf.append(f.get_name).append(f.get_signature)
-            ((i += 1) - 1)
+            i += 1
           end
           @sigs = (sbuf.to_s).to_s
           @hash = System.identity_hash_code(cl) + @sigs.hash_code
@@ -2394,14 +2394,14 @@ module Java::Io
                 m = ObjectStreamField.new(lf.get_name, lf.get_signature, lf.is_unshared)
               end
             end
-            ((j += 1) - 1)
+            j += 1
           end
           if ((m).nil?)
             m = ObjectStreamField.new(f.get_name, f.get_signature, false)
           end
           m.set_offset(f.get_offset)
           matches[i] = m
-          ((i += 1) - 1)
+          i += 1
         end
         return matches
       end

@@ -274,7 +274,7 @@ module Sun::Security::Util
           end
           sb.append(HexDigits[k >> 4])
           sb.append(HexDigits[k & 0xf])
-          ((i += 1) - 1)
+          i += 1
         end
         return sb.to_s
       end

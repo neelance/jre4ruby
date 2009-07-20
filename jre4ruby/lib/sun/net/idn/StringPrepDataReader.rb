@@ -78,7 +78,7 @@ module Sun::Net::Idn
       i = 0
       while i < mapping_table.attr_length
         mapping_table[i] = @data_input_stream.read_char
-        ((i += 1) - 1)
+        i += 1
       end
     end
     
@@ -99,7 +99,7 @@ module Sun::Net::Idn
       i = 0
       while i < length
         indexes[i] = @data_input_stream.read_int
-        ((i += 1) - 1)
+        i += 1
       end
       return indexes
     end

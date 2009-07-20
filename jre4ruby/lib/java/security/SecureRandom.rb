@@ -501,7 +501,7 @@ module Java::Security
       i = 0
       while i < num_bytes
         next_ = (next_ << 8) + (b[i] & 0xff)
-        ((i += 1) - 1)
+        i += 1
       end
       return next_ >> (num_bytes * 8 - num_bits)
     end
@@ -553,7 +553,7 @@ module Java::Security
         while i < 8
           ret_val[i] = l
           l >>= 8
-          ((i += 1) - 1)
+          i += 1
         end
         return ret_val
       end

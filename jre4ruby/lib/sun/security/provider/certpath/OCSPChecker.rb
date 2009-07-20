@@ -199,7 +199,7 @@ module Sun::Security::Provider::Certpath
         seek_issuer_cert = true
         issuer_cert_impl = nil
         curr_cert_impl = X509CertImpl.to_impl(cert)
-        ((@remaining_certs -= 1) + 1)
+        @remaining_certs -= 1
         # Set the issuer certificate
         if (!(@remaining_certs).equal?(0))
           issuer_cert_impl = X509CertImpl.to_impl(@certs[@remaining_certs])
@@ -447,7 +447,7 @@ module Sun::Security::Provider::Certpath
           if (!(HEX_DIGITS.index_of(chars[i])).equal?(-1))
             hex_number.append(chars[i])
           end
-          ((i += 1) - 1)
+          i += 1
         end
         return hex_number.to_s
       end

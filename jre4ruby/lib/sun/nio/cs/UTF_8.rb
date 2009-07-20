@@ -128,7 +128,7 @@ module Sun::Nio::Cs
               if (is_not_continuation(src.get))
                 return CoderResult.malformed_for_length(i)
               end
-              ((i += 1) - 1)
+              i += 1
             end
             return CoderResult.malformed_for_length(n)
           end
@@ -229,7 +229,7 @@ module Sun::Nio::Cs
                 return xflow(src, sp, sl, dst, dp, 1)
               end
               da[((dp += 1) - 1)] = RJava.cast_to_char(b1)
-              ((sp += 1) - 1)
+              sp += 1
             else
               if (((b1 >> 5)).equal?(-2))
                 # 2 bytes, 11 bits: 110xxxxx 10xxxxxx
@@ -293,7 +293,7 @@ module Sun::Nio::Cs
                 return xflow(src, mark, 1)
               end # overflow
               dst.put(RJava.cast_to_char(b1))
-              ((mark += 1) - 1)
+              mark += 1
             else
               if (((b1 >> 5)).equal?(-2))
                 # 2 bytes, 11 bits: 110xxxxx 10xxxxxx
@@ -445,7 +445,7 @@ module Sun::Nio::Cs
                   da[((dp += 1) - 1)] = (0x80 | ((uc >> 12) & 0x3f))
                   da[((dp += 1) - 1)] = (0x80 | ((uc >> 6) & 0x3f))
                   da[((dp += 1) - 1)] = (0x80 | (uc & 0x3f))
-                  ((sp += 1) - 1) # 2 chars
+                  sp += 1 # 2 chars
                 else
                   # 3 bytes, 16 bits
                   if (dl - dp < 3)
@@ -457,7 +457,7 @@ module Sun::Nio::Cs
                 end
               end
             end
-            ((sp += 1) - 1)
+            sp += 1
           end
           update_positions(src, sp, dst, dp)
           return CoderResult::UNDERFLOW
@@ -500,7 +500,7 @@ module Sun::Nio::Cs
                   dst.put((0x80 | ((uc >> 12) & 0x3f)))
                   dst.put((0x80 | ((uc >> 6) & 0x3f)))
                   dst.put((0x80 | (uc & 0x3f)))
-                  ((mark += 1) - 1) # 2 chars
+                  mark += 1 # 2 chars
                 else
                   # 3 bytes, 16 bits
                   if (dst.remaining < 3)
@@ -512,7 +512,7 @@ module Sun::Nio::Cs
                 end
               end
             end
-            ((mark += 1) - 1)
+            mark += 1
           end
           src.position(mark)
           return CoderResult::UNDERFLOW

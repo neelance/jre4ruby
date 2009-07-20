@@ -158,7 +158,7 @@ module Sun::Security::Validator
         if (!(i).equal?(0))
           check_extensions(cert, i)
         end
-        ((i -= 1) + 1)
+        i -= 1
       end
       return chain
     end
@@ -282,7 +282,7 @@ module Sun::Security::Validator
           return c.to_array(CHAIN0)
         end
         c.add(cert)
-        ((i += 1) - 1)
+        i += 1
       end
       # check if we can append a trusted cert
       cert = chain[chain.attr_length - 1]

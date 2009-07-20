@@ -217,7 +217,7 @@ module Java::Util
     # minimize the storage of a vector.
     def trim_to_size
       synchronized(self) do
-        ((self.attr_mod_count += 1) - 1)
+        self.attr_mod_count += 1
         old_capacity = @element_data.attr_length
         if (@element_count < old_capacity)
           @element_data = Arrays.copy_of(@element_data, @element_count)
@@ -243,7 +243,7 @@ module Java::Util
     # @param minCapacity the desired minimum capacity
     def ensure_capacity(min_capacity)
       synchronized(self) do
-        ((self.attr_mod_count += 1) - 1)
+        self.attr_mod_count += 1
         ensure_capacity_helper(min_capacity)
       end
     end
@@ -277,14 +277,14 @@ module Java::Util
     # @throws ArrayIndexOutOfBoundsException if the new size is negative
     def set_size(new_size)
       synchronized(self) do
-        ((self.attr_mod_count += 1) - 1)
+        self.attr_mod_count += 1
         if (new_size > @element_count)
           ensure_capacity_helper(new_size)
         else
           i = new_size
           while i < @element_count
             @element_data[i] = nil
-            ((i += 1) - 1)
+            i += 1
           end
         end
         @element_count = new_size
@@ -421,7 +421,7 @@ module Java::Util
             if ((@element_data[i]).nil?)
               return i
             end
-            ((i += 1) - 1)
+            i += 1
           end
         else
           i = index
@@ -429,7 +429,7 @@ module Java::Util
             if ((o == @element_data[i]))
               return i
             end
-            ((i += 1) - 1)
+            i += 1
           end
         end
         return -1
@@ -478,7 +478,7 @@ module Java::Util
             if ((@element_data[i]).nil?)
               return i
             end
-            ((i -= 1) + 1)
+            i -= 1
           end
         else
           i = index
@@ -486,7 +486,7 @@ module Java::Util
             if ((o == @element_data[i]))
               return i
             end
-            ((i -= 1) + 1)
+            i -= 1
           end
         end
         return -1
@@ -590,7 +590,7 @@ module Java::Util
     # ({@code index < 0 || index >= size()})
     def remove_element_at(index)
       synchronized(self) do
-        ((self.attr_mod_count += 1) - 1)
+        self.attr_mod_count += 1
         if (index >= @element_count)
           raise ArrayIndexOutOfBoundsException.new((index).to_s + " >= " + (@element_count).to_s)
         else
@@ -602,7 +602,7 @@ module Java::Util
         if (j > 0)
           System.arraycopy(@element_data, index + 1, @element_data, index, j)
         end
-        ((@element_count -= 1) + 1)
+        @element_count -= 1
         @element_data[@element_count] = nil
       end
       # to let gc do its work
@@ -632,14 +632,14 @@ module Java::Util
     # ({@code index < 0 || index > size()})
     def insert_element_at(obj, index)
       synchronized(self) do
-        ((self.attr_mod_count += 1) - 1)
+        self.attr_mod_count += 1
         if (index > @element_count)
           raise ArrayIndexOutOfBoundsException.new((index).to_s + " > " + (@element_count).to_s)
         end
         ensure_capacity_helper(@element_count + 1)
         System.arraycopy(@element_data, index, @element_data, index + 1, @element_count - index)
         @element_data[index] = obj
-        ((@element_count += 1) - 1)
+        @element_count += 1
       end
     end
     
@@ -655,7 +655,7 @@ module Java::Util
     # @param   obj   the component to be added
     def add_element(obj)
       synchronized(self) do
-        ((self.attr_mod_count += 1) - 1)
+        self.attr_mod_count += 1
         ensure_capacity_helper(@element_count + 1)
         @element_data[((@element_count += 1) - 1)] = obj
       end
@@ -677,7 +677,7 @@ module Java::Util
     # vector; {@code false} otherwise.
     def remove_element(obj)
       synchronized(self) do
-        ((self.attr_mod_count += 1) - 1)
+        self.attr_mod_count += 1
         i = index_of(obj)
         if (i >= 0)
           remove_element_at(i)
@@ -694,12 +694,12 @@ module Java::Util
     # method (which is part of the {@link List} interface).
     def remove_all_elements
       synchronized(self) do
-        ((self.attr_mod_count += 1) - 1)
+        self.attr_mod_count += 1
         # Let gc do its work
         i = 0
         while i < @element_count
           @element_data[i] = nil
-          ((i += 1) - 1)
+          i += 1
         end
         @element_count = 0
       end
@@ -823,7 +823,7 @@ module Java::Util
     # @since 1.2
     def add(e)
       synchronized(self) do
-        ((self.attr_mod_count += 1) - 1)
+        self.attr_mod_count += 1
         ensure_capacity_helper(@element_count + 1)
         @element_data[((@element_count += 1) - 1)] = e
         return true
@@ -870,7 +870,7 @@ module Java::Util
     # @since 1.2
     def remove(index)
       synchronized(self) do
-        ((self.attr_mod_count += 1) - 1)
+        self.attr_mod_count += 1
         if (index >= @element_count)
           raise ArrayIndexOutOfBoundsException.new(index)
         end
@@ -924,7 +924,7 @@ module Java::Util
     # @since 1.2
     def add_all(c)
       synchronized(self) do
-        ((self.attr_mod_count += 1) - 1)
+        self.attr_mod_count += 1
         a = c.to_array
         num_new = a.attr_length
         ensure_capacity_helper(@element_count + num_new)
@@ -992,7 +992,7 @@ module Java::Util
     # @since 1.2
     def add_all(index, c)
       synchronized(self) do
-        ((self.attr_mod_count += 1) - 1)
+        self.attr_mod_count += 1
         if (index < 0 || index > @element_count)
           raise ArrayIndexOutOfBoundsException.new(index)
         end
@@ -1090,7 +1090,7 @@ module Java::Util
     # (If {@code toIndex==fromIndex}, this operation has no effect.)
     def remove_range(from_index, to_index)
       synchronized(self) do
-        ((self.attr_mod_count += 1) - 1)
+        self.attr_mod_count += 1
         num_moved = @element_count - to_index
         System.arraycopy(@element_data, to_index, @element_data, from_index, num_moved)
         # Let gc do its work

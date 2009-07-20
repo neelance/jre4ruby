@@ -89,7 +89,7 @@ module Sun::Security::Ssl
         if ((@protocols.contains(version)).equal?(false))
           @protocols.add(version)
         end
-        ((i += 1) - 1)
+        i += 1
       end
       if (((@protocols.size).equal?(1)) && @protocols.contains(ProtocolVersion::SSL20Hello))
         raise IllegalArgumentException.new("SSLv2Hello" + "cannot be enabled unless TLSv1 or SSLv3 is also enabled")

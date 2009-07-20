@@ -350,19 +350,19 @@ module Java::Util::Zip
           case (c >> 4)
           when 0, 1, 2, 3, 4, 5, 6, 7
             # 0xxxxxxx
-            ((count += 1) - 1)
+            count += 1
           when 12, 13
             # 110xxxxx 10xxxxxx
             if (!((b[((i += 1) - 1)] & 0xc0)).equal?(0x80))
               raise IllegalArgumentException.new
             end
-            ((count += 1) - 1)
+            count += 1
           when 14
             # 1110xxxx 10xxxxxx 10xxxxxx
             if ((!((b[((i += 1) - 1)] & 0xc0)).equal?(0x80)) || (!((b[((i += 1) - 1)] & 0xc0)).equal?(0x80)))
               raise IllegalArgumentException.new
             end
-            ((count += 1) - 1)
+            count += 1
           else
             # 10xxxxxx, 1111xxxx
             raise IllegalArgumentException.new

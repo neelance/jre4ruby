@@ -172,7 +172,7 @@ module Sun::Net::Www::Protocol::Https
         i = 0
         while i < ciphers.attr_length
           ciphers[i] = v.element_at(i)
-          ((i += 1) - 1)
+          i += 1
         end
       end
       return ciphers
@@ -196,7 +196,7 @@ module Sun::Net::Www::Protocol::Https
         i = 0
         while i < protocols.attr_length
           protocols[i] = v.element_at(i)
-          ((i += 1) - 1)
+          i += 1
         end
       end
       return protocols

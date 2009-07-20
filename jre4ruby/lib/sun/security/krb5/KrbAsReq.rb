@@ -157,7 +157,7 @@ module Sun::Security::Krb5
         i = 0
         while i < keys.attr_length
           types[i] = keys[i].get_etype
-          ((i += 1) - 1)
+          i += 1
         end
         return types
       end
@@ -235,7 +235,7 @@ module Sun::Security::Krb5
           i = 0
           while i < keys.attr_length
             keys[i].destroy
-            ((i += 1) - 1)
+            i += 1
           end
         end
       end
@@ -400,7 +400,7 @@ module Sun::Security::Krb5
           i = 0
           while i < keys.attr_length
             keys[i].destroy
-            ((i += 1) - 1)
+            i += 1
           end
         end
       end

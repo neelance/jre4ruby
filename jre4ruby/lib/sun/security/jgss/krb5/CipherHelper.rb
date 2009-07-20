@@ -887,7 +887,7 @@ module Sun::Security::Jgss::Krb5
         while i < num_blocks
           des.update(data, offset, block_size, temp, 0)
           offset += block_size
-          ((i += 1) - 1)
+          i += 1
         end
         # Now process the final block
         ret_val = Array.typed(::Java::Byte).new(block_size) { 0 }
@@ -964,7 +964,7 @@ module Sun::Security::Jgss::Krb5
           # + blockSize);
           offset += block_size
           data_offset += block_size
-          ((i += 1) - 1)
+          i += 1
         end
         # Now process the last block
         final_block = Array.typed(::Java::Byte).new(block_size) { 0 }
@@ -1033,7 +1033,7 @@ module Sun::Security::Jgss::Krb5
         # debug("Bytes are: "
         # + getHexBytes(dataOutBuf, dataOffset, temp) + "\n");
         data_offset += block_size
-        ((i += 1) - 1)
+        i += 1
       end
       # Now process the last block
       final_block = Array.typed(::Java::Byte).new(block_size) { 0 }
@@ -1082,7 +1082,7 @@ module Sun::Security::Jgss::Krb5
         i = 0
         while i < key.attr_length
           ret_val[i] = (key[i] ^ 0xf0)
-          ((i += 1) - 1)
+          i += 1
         end # RFC 1964, Section 1.2.2
         return ret_val
       end

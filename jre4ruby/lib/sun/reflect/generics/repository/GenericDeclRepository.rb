@@ -86,7 +86,7 @@ module Sun::Reflect::Generics::Repository
           ftps[i].accept(r) # reify subtree
           # extract result from visitor and store it
           tps[i] = r.get_result
-          ((i += 1) - 1)
+          i += 1
         end
         @type_params = tps # cache overall result
       end

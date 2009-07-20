@@ -614,7 +614,7 @@ module Java::Io
           if (c > 127)
             break
           end
-          ((count += 1) - 1)
+          count += 1
           chararr[((chararr_count += 1) - 1)] = RJava.cast_to_char(c)
         end
         while (count < utflen)
@@ -622,7 +622,7 @@ module Java::Io
           case (c >> 4)
           when 0, 1, 2, 3, 4, 5, 6, 7
             # 0xxxxxxx
-            ((count += 1) - 1)
+            count += 1
             chararr[((chararr_count += 1) - 1)] = RJava.cast_to_char(c)
           when 12, 13
             # 110x xxxx   10xx xxxx

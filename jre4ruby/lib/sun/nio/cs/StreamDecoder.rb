@@ -168,8 +168,8 @@ module Sun::Nio::Cs
         if (@have_leftover_char)
           # Copy the leftover char into the buffer
           cbuf[off] = @leftover_char
-          ((off += 1) - 1)
-          ((len -= 1) + 1)
+          off += 1
+          len -= 1
           @have_leftover_char = false
           n = 1
           if (((len).equal?(0)) || !impl_ready)

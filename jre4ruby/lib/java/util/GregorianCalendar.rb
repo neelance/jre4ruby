@@ -798,7 +798,7 @@ module Java::Util
       # the cutover date to Long.MAX_VALUE will make this calendar
       # a pure Julian calendar. (See 4167995)
       if ((cutover_time).equal?(Long::MAX_VALUE))
-        ((@gregorian_cutover_date += 1) - 1)
+        @gregorian_cutover_date += 1
       end
       d = get_gregorian_cutover_date
       # Set the cutover year (in the Gregorian year numbering)
@@ -1042,11 +1042,11 @@ module Java::Util
             time_of_day *= 1000
             time_of_day += internal_get(MILLISECOND)
             if (time_of_day >= ONE_DAY)
-              ((fd += 1) - 1)
+              fd += 1
               time_of_day -= ONE_DAY
             else
               if (time_of_day < 0)
-                ((fd -= 1) + 1)
+                fd -= 1
                 time_of_day += ONE_DAY
               end
             end
@@ -1238,12 +1238,12 @@ module Java::Util
             # Make sure that the min week has the current DAY_OF_WEEK
             day1 = fd - (7 * (woy - min))
             if (!(@calsys.get_year_from_fixed_date(day1)).equal?(y))
-              ((min += 1) - 1)
+              min += 1
             end
             # Make sure the same thing for the max week
             fd += 7 * (max - internal_get(WEEK_OF_YEAR))
             if (!(@calsys.get_year_from_fixed_date(fd)).equal?(y))
-              ((max -= 1) + 1)
+              max -= 1
             end
             throw :break_case, :thrown
           end
@@ -1262,13 +1262,13 @@ module Java::Util
           day1 = fd - (7 * (woy - min))
           # Make sure that the min week has the current DAY_OF_WEEK
           if (!(cal.get_year_from_fixed_date(day1)).equal?(y))
-            ((min += 1) - 1)
+            min += 1
           end
           # Make sure the same thing for the max week
           fd += 7 * (max - woy)
           cal = (fd >= @gregorian_cutover_date) ? Gcal : get_julian_calendar_system
           if (!(cal.get_year_from_fixed_date(fd)).equal?(y))
-            ((max -= 1) + 1)
+            max -= 1
           end
           # value: the new WEEK_OF_YEAR which must be converted
           # to month and day of month.
@@ -1397,7 +1397,7 @@ module Java::Util
             max = month_length_ / 7
             x = (dom - 1) % 7
             if (x < last_days)
-              ((max += 1) - 1)
+              max += 1
             end
             set(DAY_OF_WEEK, internal_get(DAY_OF_WEEK))
             throw :break_case, :thrown
@@ -1410,7 +1410,7 @@ module Java::Util
           max = month_length_ / 7
           x = RJava.cast_to_int((fd - month1)) % 7
           if (x < last_days)
-            ((max += 1) - 1)
+            max += 1
           end
           value = get_rolled_value(internal_get(field), amount, min, max) - 1
           fd = month1 + value * 7 + x
@@ -1687,7 +1687,7 @@ module Java::Util
             value = 52
             magic = day_of_week + get_minimal_days_in_first_week - 1
             if (((magic).equal?(6)) || (date.is_leap_year && ((magic).equal?(5) || (magic).equal?(12))))
-              ((value += 1) - 1)
+              value += 1
             end
             throw :break_case, :thrown
           end
@@ -1709,13 +1709,13 @@ module Java::Util
             n_days_first_week = 7 - day_of_week # # of days in the first week
             value = 3
             if (n_days_first_week >= get_minimal_days_in_first_week)
-              ((value += 1) - 1)
+              value += 1
             end
             month_length_ -= n_days_first_week + 7 * 3
             if (month_length_ > 0)
-              ((value += 1) - 1)
+              value += 1
               if (month_length_ > 7)
-                ((value += 1) - 1)
+                value += 1
               end
             end
             throw :break_case, :thrown
@@ -1788,7 +1788,7 @@ module Java::Util
             value = gc.get(YEAR)
             max_end = gc.get_year_offset_in_millis
             if (current > max_end)
-              ((value -= 1) + 1)
+              value -= 1
             end
           else
             mincal = gc.get_time_in_millis >= @gregorian_cutover ? Gcal : get_julian_calendar_system
@@ -1806,7 +1806,7 @@ module Java::Util
               value = 1 - value
             end
             if (current < max_end)
-              ((value -= 1) + 1)
+              value -= 1
             end
           end
         else
@@ -2132,7 +2132,7 @@ module Java::Util
             if (week_of_year >= 52)
               next_jan1 = fixed_date_jan1 + 365
               if (@cdate.is_leap_year)
-                ((next_jan1 += 1) - 1)
+                next_jan1 += 1
               end
               next_jan1st = @calsys.get_day_of_week_date_on_or_before(next_jan1 + 6, get_first_day_of_week)
               ndays = RJava.cast_to_int((next_jan1st - next_jan1))
@@ -2219,7 +2219,7 @@ module Java::Util
             end
           end
           @original_fields[field] = value
-          ((field += 1) - 1)
+          field += 1
         end
       end
       # Let the super class determine which calendar fields to be
@@ -2367,7 +2367,7 @@ module Java::Util
         field = 0
         while field < FIELD_COUNT
           if (!is_externally_set(field))
-            ((field += 1) - 1)
+            field += 1
             next
           end
           if (!(@original_fields[field]).equal?(internal_get(field)))
@@ -2375,7 +2375,7 @@ module Java::Util
             System.arraycopy(@original_fields, 0, self.attr_fields, 0, self.attr_fields.attr_length)
             raise IllegalArgumentException.new(get_field_name(field))
           end
-          ((field += 1) - 1)
+          field += 1
         end
       end
       set_fields_normalized(mask)
@@ -2425,7 +2425,7 @@ module Java::Util
             # To avoid underflow with DAY_OF_MONTH-1, add
             # DAY_OF_MONTH, then subtract 1.
             fixed_date += internal_get(DAY_OF_MONTH)
-            ((fixed_date -= 1) + 1)
+            fixed_date -= 1
           end
         else
           if (is_field_set(field_mask, WEEK_OF_MONTH))
@@ -2480,7 +2480,7 @@ module Java::Util
         if (is_field_set(field_mask, DAY_OF_YEAR))
           # Add the offset, then subtract 1. (Make sure to avoid underflow.)
           fixed_date += internal_get(DAY_OF_YEAR)
-          ((fixed_date -= 1) + 1)
+          fixed_date -= 1
         else
           first_day_of_week = cal.get_day_of_week_date_on_or_before(fixed_date + 6, get_first_day_of_week)
           # If we have enough days in the first week, then move

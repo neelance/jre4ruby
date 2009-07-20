@@ -538,7 +538,7 @@ module Sun::Security::X509
                 end
               end
             end
-            ((i += 1) - 1)
+            i += 1
           end
           self.attr_init_oid_table = true
         end

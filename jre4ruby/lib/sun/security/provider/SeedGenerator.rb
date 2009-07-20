@@ -153,7 +153,7 @@ module Sun::Security::Provider
       i = 0
       while i < result.attr_length
         result[i] = get_seed_byte
-        ((i += 1) - 1)
+        i += 1
       end
     end
     
@@ -200,7 +200,7 @@ module Sun::Security::Provider
               i = 0
               while i < sa.attr_length
                 md.update(sa[i].get_bytes)
-                ((i += 1) - 1)
+                i += 1
               end
             rescue Exception => ex
               md.update(ex.hash_code)
@@ -234,7 +234,7 @@ module Sun::Security::Provider
         while i < 8
           ret_val[i] = l
           l >>= 8
-          ((i += 1) - 1)
+          i += 1
         end
         return ret_val
       end
@@ -364,20 +364,20 @@ module Sun::Security::Provider
                 while (System.current_time_millis < l)
                   synchronized((self)) do
                   end
-                  ((latch += 1) - 1)
+                  latch += 1
                 end
                 # Translate the value using the permutation, and xor
                 # it with previous values gathered.
                 v ^= self.attr_rnd_tab[latch % 255]
                 counter += latch
-                ((quanta += 1) - 1)
+                quanta += 1
               end
               # Push it into the queue and notify anybody who might
               # be waiting for it.
               synchronized((self)) do
                 @pool[@end] = v
-                ((@end += 1) - 1)
-                ((@count += 1) - 1)
+                @end += 1
+                @count += 1
                 if (@end >= @pool.attr_length)
                   @end = 0
                 end
@@ -408,8 +408,8 @@ module Sun::Security::Provider
             # Get it from the queue
             b = @pool[@start]
             @pool[@start] = 0
-            ((@start += 1) - 1)
-            ((@count -= 1) + 1)
+            @start += 1
+            @count -= 1
             if ((@start).equal?(@pool.attr_length))
               @start = 0
             end
@@ -449,7 +449,7 @@ module Sun::Security::Provider
                 i = 0
                 while i < 5
                   JavaThread.sleep(50)
-                  ((i += 1) - 1)
+                  i += 1
                 end
                 # System.gc();
               rescue Exception => e

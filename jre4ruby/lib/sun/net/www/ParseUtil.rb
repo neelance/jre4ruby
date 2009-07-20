@@ -91,7 +91,7 @@ module Sun::Net::Www
         i = 0
         while i < 32
           self.attr_encoded_in_path.set(i)
-          ((i += 1) - 1)
+          i += 1
         end
         self.attr_encoded_in_path.set(127)
       end
@@ -155,7 +155,7 @@ module Sun::Net::Www
             System.arraycopy(ret_cc, 0, buf, 0, ret_len)
             ret_cc = buf
           end
-          ((i += 1) - 1)
+          i += 1
         end
         return String.new(ret_cc, 0, ret_len)
       end
@@ -457,7 +457,7 @@ module Sun::Net::Www
               end
             end
           end
-          ((i += 1) - 1)
+          i += 1
         end
         return ((sb).nil?) ? s : sb.to_s
       end
@@ -533,7 +533,7 @@ module Sun::Net::Www
         i = f
         while i <= l
           m |= 1 << i
-          ((i += 1) - 1)
+          i += 1
         end
         return m
       end
@@ -549,7 +549,7 @@ module Sun::Net::Www
           if (c < 64)
             m |= (1 << c)
           end
-          ((i += 1) - 1)
+          i += 1
         end
         return m
       end
@@ -564,7 +564,7 @@ module Sun::Net::Www
         i = f
         while i <= l
           m |= 1 << i
-          ((i += 1) - 1)
+          i += 1
         end
         return m
       end
@@ -580,7 +580,7 @@ module Sun::Net::Www
           if ((c >= 64) && (c < 128))
             m |= (1 << (c - 64))
           end
-          ((i += 1) - 1)
+          i += 1
         end
         return m
       end

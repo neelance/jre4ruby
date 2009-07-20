@@ -280,7 +280,7 @@ module Sun::Security::Provider::Certpath
         @policy_mapping = merge_policy_mapping(@policy_mapping, curr_cert_impl)
         @inhibit_any_policy = merge_inhibit_any_policy(@inhibit_any_policy, curr_cert_impl)
       end
-      ((@cert_index += 1) - 1)
+      @cert_index += 1
       if (!(Debug).nil?)
         Debug.println("PolicyChecker.checkPolicy() AFTER PROCESSING: " + "explicitPolicy = " + (@explicit_policy).to_s)
         Debug.println("PolicyChecker.checkPolicy() AFTER PROCESSING: " + "policyMapping = " + (@policy_mapping).to_s)
@@ -307,7 +307,7 @@ module Sun::Security::Provider::Certpath
       # occurs
       def merge_explicit_policy(explicit_policy, curr_cert, final_cert)
         if ((explicit_policy > 0) && !X509CertImpl.is_self_issued(curr_cert))
-          ((explicit_policy -= 1) + 1)
+          explicit_policy -= 1
         end
         begin
           pol_const_ext = curr_cert.get_policy_constraints_extension
@@ -353,7 +353,7 @@ module Sun::Security::Provider::Certpath
       # occurs
       def merge_policy_mapping(policy_mapping, curr_cert)
         if ((policy_mapping > 0) && !X509CertImpl.is_self_issued(curr_cert))
-          ((policy_mapping -= 1) + 1)
+          policy_mapping -= 1
         end
         begin
           pol_const_ext = curr_cert.get_policy_constraints_extension
@@ -392,7 +392,7 @@ module Sun::Security::Provider::Certpath
       # occurs
       def merge_inhibit_any_policy(inhibit_any_policy, curr_cert)
         if ((inhibit_any_policy > 0) && !X509CertImpl.is_self_issued(curr_cert))
-          ((inhibit_any_policy -= 1) + 1)
+          inhibit_any_policy -= 1
         end
         begin
           inh_any_pol_ext = curr_cert.get_extension(PKIXExtensions::InhibitAnyPolicy_Id)
@@ -740,7 +740,7 @@ module Sun::Security::Provider::Certpath
               end
             end
           end
-          ((j += 1) - 1)
+          j += 1
         end
         if (child_deleted)
           root_node.prune(cert_index)

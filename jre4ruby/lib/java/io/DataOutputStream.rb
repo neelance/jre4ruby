@@ -281,7 +281,7 @@ module Java::Io
       i = 0
       while i < len
         self.attr_out.write(s.char_at(i))
-        ((i += 1) - 1)
+        i += 1
       end
       inc_count(len)
     end
@@ -304,7 +304,7 @@ module Java::Io
         v = s.char_at(i)
         self.attr_out.write((v >> 8) & 0xff)
         self.attr_out.write((v >> 0) & 0xff)
-        ((i += 1) - 1)
+        i += 1
       end
       inc_count(len * 2)
     end
@@ -361,7 +361,7 @@ module Java::Io
         while i < strlen
           c = str.char_at(i)
           if ((c >= 0x1) && (c <= 0x7f))
-            ((utflen += 1) - 1)
+            utflen += 1
           else
             if (c > 0x7ff)
               utflen += 3
@@ -369,7 +369,7 @@ module Java::Io
               utflen += 2
             end
           end
-          ((i += 1) - 1)
+          i += 1
         end
         if (utflen > 65535)
           raise UTFDataFormatException.new("encoded string too long: " + (utflen).to_s + " bytes")
@@ -394,7 +394,7 @@ module Java::Io
             break
           end
           bytearr[((count += 1) - 1)] = c
-          ((i_ += 1) - 1)
+          i_ += 1
         end
         while i_ < strlen
           c = str.char_at(i_)
@@ -410,7 +410,7 @@ module Java::Io
               bytearr[((count += 1) - 1)] = (0x80 | ((c >> 0) & 0x3f))
             end
           end
-          ((i_ += 1) - 1)
+          i_ += 1
         end
         out.write(bytearr, 0, utflen + 2)
         return utflen + 2

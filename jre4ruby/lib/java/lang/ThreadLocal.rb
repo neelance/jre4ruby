@@ -387,10 +387,10 @@ module Java::Lang
                   h = next_index(h, len)
                 end
                 @table[h] = c
-                ((@size += 1) - 1)
+                @size += 1
               end
             end
-            ((j += 1) - 1)
+            j += 1
           end
         end
         
@@ -573,7 +573,7 @@ module Java::Lang
           # expunge entry at staleSlot
           tab[stale_slot].attr_value = nil
           tab[stale_slot] = nil
-          ((@size -= 1) + 1)
+          @size -= 1
           # Rehash until we encounter null
           e = nil
           i = 0
@@ -583,7 +583,7 @@ module Java::Lang
             if ((k).nil?)
               e.attr_value = nil
               tab[i] = nil
-              ((@size -= 1) + 1)
+              @size -= 1
             else
               h = k.attr_thread_local_hash_code & (len - 1)
               if (!(h).equal?(i))
@@ -673,7 +673,7 @@ module Java::Lang
                   h = next_index(h, new_len)
                 end
                 new_tab[h] = e
-                ((count += 1) - 1)
+                count += 1
               end
             end
             (j += 1)
@@ -694,7 +694,7 @@ module Java::Lang
             if (!(e).nil? && (e.get).nil?)
               expunge_stale_entry(j)
             end
-            ((j += 1) - 1)
+            j += 1
           end
         end
         

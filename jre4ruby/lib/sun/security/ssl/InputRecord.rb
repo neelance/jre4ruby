@@ -206,7 +206,7 @@ module Sun::Security::Ssl
         if (!(self.attr_buf[offset + i]).equal?(mac[i]))
           return false
         end
-        ((i += 1) - 1)
+        i += 1
       end
       self.attr_count -= len
       return true
@@ -495,7 +495,7 @@ module Sun::Security::Ssl
           if (!(self.attr_buf[i]).equal?(V2NoCipher[i]))
             raise SSLException.new("Unrecognized SSL message, plaintext connection?")
           end
-          ((i += 1) - 1)
+          i += 1
         end
         raise SSLException.new("SSL V2.0 servers are not supported.")
       end
@@ -550,7 +550,7 @@ module Sun::Security::Ssl
         i = 0
         while i < (32 - nonce_len)
           self.attr_buf[((self.attr_count += 1) - 1)] = 0
-          ((i += 1) - 1)
+          i += 1
         end
         System.arraycopy(v2msg, offset, self.attr_buf, self.attr_count, nonce_len)
         self.attr_count += nonce_len

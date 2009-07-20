@@ -301,7 +301,7 @@ module Sun::Security::Krb5::Internal::Crypto::Dk
               cksum_failed = true
               break
             end
-            ((i += 1) - 1)
+            i += 1
           end
         end
         if (cksum_failed)
@@ -526,7 +526,7 @@ module Sun::Security::Krb5::Internal::Crypto::Dk
           if (Debug)
             System.err.println("carry=" + (thisbyte).to_s)
           end
-          ((i -= 1) + 1)
+          i -= 1
         end
         # if there's a carry bit left over, add it back in
         if (!(thisbyte).equal?(0))
@@ -537,7 +537,7 @@ module Sun::Security::Krb5::Internal::Crypto::Dk
             out[i] = (thisbyte & 0xff)
             # keep around the carry bit, if any
             thisbyte >>= 8
-            ((i -= 1) + 1)
+            i -= 1
           end
         end
         return out
@@ -555,7 +555,7 @@ module Sun::Security::Krb5::Internal::Crypto::Dk
           else
             digest_string.append(JavaInteger.to_hex_string(digest[i] & 0xff))
           end
-          ((i += 1) - 1)
+          i += 1
         end
         return digest_string.to_s
       end
@@ -569,7 +569,7 @@ module Sun::Security::Krb5::Internal::Crypto::Dk
           a = Byte.parse_byte(String.new(usage_str, i * 2, 1), 16)
           b = Byte.parse_byte(String.new(usage_str, i * 2 + 1, 1), 16)
           usage[i] = ((a << 4) | b)
-          ((i += 1) - 1)
+          i += 1
         end
         return usage
       end

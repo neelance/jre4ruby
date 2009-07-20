@@ -199,7 +199,7 @@ module Sun::Security::Provider
       t = 16
       while t < ITERATION
         @w[t] = lf_delta1(@w[t - 2]) + @w[t - 7] + lf_delta0(@w[t - 15]) + @w[t - 16]
-        ((t += 1) - 1)
+        t += 1
       end
       a = @state[0]
       b = @state[1]
@@ -221,7 +221,7 @@ module Sun::Security::Provider
         c = b
         b = a
         a = t1 + t2
-        ((i += 1) - 1)
+        i += 1
       end
       @state[0] += a
       @state[1] += b

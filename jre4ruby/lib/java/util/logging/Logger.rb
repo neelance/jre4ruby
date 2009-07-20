@@ -599,7 +599,7 @@ module Java::Util::Logging
           i = 0
           while i < targets.attr_length
             targets[i].publish(record)
-            ((i += 1) - 1)
+            i += 1
           end
         end
         if (!logger.get_use_parent_handlers)
@@ -1014,7 +1014,7 @@ module Java::Util::Logging
       i = 0
       while i < params.attr_length
         msg = msg + " {" + (i).to_s + "}"
-        ((i += 1) - 1)
+        i += 1
       end
       logp(Level::FINER, source_class, source_method, msg, params)
     end
@@ -1380,7 +1380,7 @@ module Java::Util::Logging
           end
           if ((cl).equal?(cl2))
             # We've already checked this classloader.
-            ((ix += 1) - 1)
+            ix += 1
             next
           end
           cl = cl2
@@ -1393,7 +1393,7 @@ module Java::Util::Logging
             # Ok, this one didn't work either.
             # Drop through, and try the next one.
           end
-          ((ix += 1) - 1)
+          ix += 1
         end
         if ((name == @catalog_name))
           # Return the previous cached value for that name.
@@ -1525,7 +1525,7 @@ module Java::Util::Logging
           if (!(kid).nil?)
             kid.update_effective_level
           end
-          ((i += 1) - 1)
+          i += 1
         end
       end
     end

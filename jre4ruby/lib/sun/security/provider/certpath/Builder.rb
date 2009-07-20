@@ -332,7 +332,7 @@ module Sun::Security::Provider::Certpath
               if ((alt_name == target))
                 return 0
               end
-              ((j += 1) - 1)
+              j += 1
             end
           end
         end
@@ -380,7 +380,7 @@ module Sun::Security::Provider::Certpath
           if (distance_ >= 0)
             return (distance_ + 1)
           end
-          ((i += 1) - 1)
+          i += 1
         end
         # no matching type in permitted; cert holder could certify target
         return -1

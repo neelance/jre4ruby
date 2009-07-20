@@ -184,7 +184,7 @@ module Java::Math
         if (!get(index))
           return index
         end
-        ((index += 1) - 1)
+        index += 1
       end while (index < limit - 1)
       return -1
     end
@@ -218,9 +218,9 @@ module Java::Math
           end
           next_long >>= 1
           offset += 2
-          ((j += 1) - 1)
+          j += 1
         end
-        ((i += 1) - 1)
+        i += 1
       end
       return nil
     end

@@ -413,7 +413,7 @@ module Sun::Security::Provider::Certpath
             user_checkers = ArrayList.new(@build_params.get_cert_path_checkers)
             must_check = 0
             user_checkers.add(must_check, policy_checker)
-            ((must_check += 1) - 1)
+            must_check += 1
             if (next_state.key_params_needed)
               root_key = cert.get_public_key
               if ((builder.attr_trust_anchor.get_trusted_cert).nil?)
@@ -425,10 +425,10 @@ module Sun::Security::Provider::Certpath
               anchor = TrustAnchor.new(cert.get_subject_x500principal, root_key, nil)
               basic_checker = BasicChecker.new(anchor, builder.attr_date, @build_params.get_sig_provider, true)
               user_checkers.add(must_check, basic_checker)
-              ((must_check += 1) - 1)
+              must_check += 1
               if (@build_params.is_revocation_enabled)
                 user_checkers.add(must_check, CrlRevocationChecker.new(anchor, @build_params))
-                ((must_check += 1) - 1)
+                must_check += 1
               end
             end
             i = 0
@@ -458,7 +458,7 @@ module Sun::Security::Provider::Certpath
                     throw :next_vertices, :thrown
                   end
                 end
-                ((j += 1) - 1)
+                j += 1
               end
               # Remove extensions from user checkers that support
               # forward checking. After this step, we will have
@@ -486,7 +486,7 @@ module Sun::Security::Provider::Certpath
                   raise CertPathValidatorException.new("unrecognized " + "critical extension(s)")
                 end
               end
-              ((i += 1) - 1)
+              i += 1
             end
             if (!(Debug).nil?)
               Debug.println("SunCertPathBuilder.depthFirstSearchForward()" + ": final verification succeeded - path completed!")

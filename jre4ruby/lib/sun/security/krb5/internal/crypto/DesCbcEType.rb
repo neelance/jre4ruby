@@ -110,7 +110,7 @@ module Sun::Security::Krb5::Internal::Crypto
       i = new_size
       while i < new_data.attr_length
         new_data[i] = pad
-        ((i += 1) - 1)
+        i += 1
       end
       conf = Confounder.bytes(confounder_size)
       System.arraycopy(conf, 0, new_data, 0, confounder_size)
@@ -164,7 +164,7 @@ module Sun::Security::Krb5::Internal::Crypto
       i = 0
       while i < checksum_size
         data[start_of_checksum + i] = cksum[i]
-        ((i += 1) - 1)
+        i += 1
       end
     end
     
@@ -174,7 +174,7 @@ module Sun::Security::Krb5::Internal::Crypto
       i = 0
       while i < checksum_size
         result[i] = data[start_of_checksum + i]
-        ((i += 1) - 1)
+        i += 1
       end
       return result
     end
@@ -184,7 +184,7 @@ module Sun::Security::Krb5::Internal::Crypto
       i = start_of_checksum
       while i < start_of_checksum + checksum_size
         data[i] = 0
-        ((i += 1) - 1)
+        i += 1
       end
     end
     
@@ -219,7 +219,7 @@ module Sun::Security::Krb5::Internal::Crypto
         if (!(cksum1[i]).equal?(cksum2[i]))
           return false
         end
-        ((i += 1) - 1)
+        i += 1
       end
       return true
     end

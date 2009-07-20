@@ -171,7 +171,7 @@ module Java::Util
       i = arr_local.attr_length - 1
       while i >= 0
         (arr_local[i]).update(self, arg)
-        ((i -= 1) + 1)
+        i -= 1
       end
     end
     

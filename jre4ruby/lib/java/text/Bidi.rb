@@ -342,7 +342,7 @@ module Java::Text
             if (@cws[cwss] >= line_start)
               cwsl = cwss
               while (cwsl < @cws.attr_length && @cws[cwsl] < line_limit)
-                ((cwsl += 1) - 1)
+                cwsl += 1
               end
               ll = line_limit - 1
               while (cwsl > cwss && (@cws[cwsl - 1]).equal?(ll))
@@ -570,21 +570,21 @@ module Java::Text
           if (!((level & 0x1)).equal?(0) && level < lowest_odd_level)
             lowest_odd_level = level
           end
-          ((i += 1) - 1)
+          i += 1
         end
         delta = object_start - level_start
         while (highest_level >= lowest_odd_level)
           i_ = level_start
           loop do
             while (i_ < level_limit && levels[i_] < highest_level)
-              ((i_ += 1) - 1)
+              i_ += 1
             end
             begin_ = ((i_ += 1) - 1)
             if ((begin_).equal?(level_limit))
               break # no more runs at this level
             end
             while (i_ < level_limit && levels[i_] >= highest_level)
-              ((i_ += 1) - 1)
+              i_ += 1
             end
             end_ = i_ - 1
             begin_ += delta

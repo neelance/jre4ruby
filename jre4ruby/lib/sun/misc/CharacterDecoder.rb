@@ -147,7 +147,7 @@ module Sun::Misc
           return (((i).equal?(0)) ? -1 : i)
         end
         buffer[i + offset] = q
-        ((i += 1) - 1)
+        i += 1
       end
       return len
     end

@@ -452,7 +452,7 @@ module Sun::Net::Httpserver
       i = 0
       while i < c.attr_length
         @rspbuf[i] = c[i]
-        ((i += 1) - 1)
+        i += 1
       end
       return @rspbuf
     end

@@ -164,7 +164,7 @@ module Sun::Security::Ssl
       i = 1
       while i < n
         @digests[i] = JsseJce.get_message_digest(algorithm)
-        ((i += 1) - 1)
+        i += 1
       end
     end
     
@@ -209,7 +209,7 @@ module Sun::Security::Ssl
       i = 0
       while (i < @digests.attr_length) && (!(@digests[i]).nil?)
         @digests[i].update(b)
-        ((i += 1) - 1)
+        i += 1
       end
     end
     
@@ -219,7 +219,7 @@ module Sun::Security::Ssl
       i = 0
       while (i < @digests.attr_length) && (!(@digests[i]).nil?)
         @digests[i].update(b, offset, len)
-        ((i += 1) - 1)
+        i += 1
       end
     end
     
@@ -247,7 +247,7 @@ module Sun::Security::Ssl
       i = 1
       while (i < @digests.attr_length) && (!(@digests[i]).nil?)
         @digests[i].reset
-        ((i += 1) - 1)
+        i += 1
       end
     end
     
@@ -257,7 +257,7 @@ module Sun::Security::Ssl
       i = 0
       while (i < @digests.attr_length) && (!(@digests[i]).nil?)
         @digests[i].reset
-        ((i += 1) - 1)
+        i += 1
       end
     end
     
@@ -271,7 +271,7 @@ module Sun::Security::Ssl
           @digests[i] = nil
           return digest
         end
-        ((i -= 1) + 1)
+        i -= 1
       end
       # cannot occur
       raise InternalError.new

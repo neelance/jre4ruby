@@ -259,7 +259,7 @@ module Sun::Security::Util
           is_printable_string = false
           break
         end
-        ((i += 1) - 1)
+        i += 1
       end
       @data = init(is_printable_string ? Tag_PrintableString : Tag_UTF8String, value)
     end

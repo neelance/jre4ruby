@@ -104,7 +104,7 @@ module Sun::Net::Httpserver
           end
         end
         len = len * 16 + val
-        ((i += 1) - 1)
+        i += 1
       end
       return len
     end

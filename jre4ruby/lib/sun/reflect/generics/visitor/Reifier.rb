@@ -87,7 +87,7 @@ module Sun::Reflect::Generics::Visitor
       while i < tas.attr_length
         tas[i].accept(self)
         ts[i] = @result_type
-        ((i += 1) - 1)
+        i += 1
       end
       return ts
     end

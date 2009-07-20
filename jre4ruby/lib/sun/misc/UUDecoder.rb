@@ -144,7 +144,7 @@ module Sun::Misc
         end
         x.append(RJava.cast_to_char(c1))
         @decoder_buffer[i] = ((c1 - Character.new(?\s.ord)) & 0x3f)
-        ((i += 1) - 1)
+        i += 1
       end
       a = ((@decoder_buffer[0] << 2) & 0xfc) | ((@decoder_buffer[1] >> 4) & 3)
       b = ((@decoder_buffer[1] << 4) & 0xf0) | ((@decoder_buffer[2] >> 2) & 0xf)

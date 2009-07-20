@@ -62,7 +62,7 @@ module Sun::Misc
             return c1 - c2
           end
         end
-        ((i += 1) - 1)
+        i += 1
       end
       return n1 - n2
     end
@@ -87,7 +87,7 @@ module Sun::Misc
         i = 0
         while i < len
           h = 31 * h + to_lower(s.char_at(i))
-          ((i += 1) - 1)
+          i += 1
         end
         return h
       end

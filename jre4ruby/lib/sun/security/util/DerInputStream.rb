@@ -383,7 +383,7 @@ module Sun::Security::Util
       i = 0
       while i < max
         retval[i] = vec.element_at(i)
-        ((i += 1) - 1)
+        i += 1
       end
       return retval
     end
@@ -530,7 +530,7 @@ module Sun::Security::Util
           while tmp > 0
             value <<= 8
             value += 0xff & in_.read
-            ((tmp -= 1) + 1)
+            tmp -= 1
           end
         end
         return value

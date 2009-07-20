@@ -227,7 +227,7 @@ module Java::Security::Cert
         string_cert = string_iterator.next
         sb.append(string_cert.to_s)
         sb.append("\n========================================" + "=================Certificate " + (i).to_s + " end.\n\n\n")
-        ((i += 1) - 1)
+        i += 1
       end
       sb.append("\n]")
       return sb.to_s

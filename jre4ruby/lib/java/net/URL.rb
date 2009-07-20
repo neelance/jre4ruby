@@ -554,10 +554,10 @@ module Java::Net
       begin
         limit = spec.length
         while ((limit > 0) && (spec.char_at(limit - 1) <= Character.new(?\s.ord)))
-          ((limit -= 1) + 1) # eliminate trailing whitespace
+          limit -= 1 # eliminate trailing whitespace
         end
         while ((start < limit) && (spec.char_at(start) <= Character.new(?\s.ord)))
-          ((start += 1) - 1) # eliminate leading whitespace
+          start += 1 # eliminate leading whitespace
         end
         if (spec.region_matches(true, start, "url:", 0, 4))
           start += 4
@@ -578,7 +578,7 @@ module Java::Net
             end
             break
           end
-          ((i += 1) - 1)
+          i += 1
         end
         # Only use our context if the protocols match.
         @protocol = new_protocol
@@ -655,7 +655,7 @@ module Java::Net
         if (!Character.is_letter_or_digit(c) && !(c).equal?(Character.new(?..ord)) && !(c).equal?(Character.new(?+.ord)) && !(c).equal?(Character.new(?-.ord)))
           return false
         end
-        ((i += 1) - 1)
+        i += 1
       end
       return true
     end

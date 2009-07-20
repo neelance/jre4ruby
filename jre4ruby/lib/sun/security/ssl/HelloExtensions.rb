@@ -494,7 +494,7 @@ module Sun::Security::Ssl
       i = 0
       while i < @curve_ids.attr_length
         @curve_ids[i] = s.get_int16
-        ((i += 1) - 1)
+        i += 1
       end
     end
     
@@ -643,7 +643,7 @@ module Sun::Security::Ssl
         i = 1
         while i < NAMED_CURVE_OID_TABLE.attr_length
           CurveIndices.put(NAMED_CURVE_OID_TABLE[i], i)
-          ((i += 1) - 1)
+          i += 1
         end
       end
     }

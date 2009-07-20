@@ -502,7 +502,7 @@ module Java::Util::Logging
               System.err.println("" + (ex).to_s)
               ex.print_stack_trace
             end
-            ((i += 1) - 1)
+            i += 1
           end
           return nil
         end
@@ -825,7 +825,7 @@ module Java::Util::Logging
         rescue Exception => ex
           # Problems closing a handler?  Keep going...
         end
-        ((i += 1) - 1)
+        i += 1
       end
       if (!(name).nil? && (name == ""))
         # This is the root logger.
@@ -854,7 +854,7 @@ module Java::Util::Logging
           if ((hands.char_at(end_)).equal?(Character.new(?,.ord)))
             break
           end
-          ((end_ += 1) - 1)
+          end_ += 1
         end
         word = hands.substring(ix, end_)
         ix = end_ + 1
@@ -897,7 +897,7 @@ module Java::Util::Logging
           System.err.println("" + (ex).to_s)
           # ex.printStackTrace();
         end
-        ((i += 1) - 1)
+        i += 1
       end
       # Set levels on any pre-existing loggers, based on the new properties.
       set_levels_on_existing_loggers

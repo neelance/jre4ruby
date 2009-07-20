@@ -310,7 +310,7 @@ module Sun::Net::Www::Http
             if ((@raw_data[pos]).equal?(Character.new(?\n.ord)))
               break
             end
-            ((pos += 1) - 1)
+            pos += 1
           end
           if (pos >= @raw_count)
             return
@@ -322,7 +322,7 @@ module Sun::Net::Www::Http
             if ((Character.digit(header.char_at(i), 16)).equal?(-1))
               break
             end
-            ((i += 1) - 1)
+            i += 1
           end
           begin
             @chunk_size = JavaInteger.parse_int(header.substring(0, i), 16)
@@ -397,7 +397,7 @@ module Sun::Net::Www::Http
             if ((@raw_data[pos]).equal?(Character.new(?\n.ord)))
               break
             end
-            ((pos += 1) - 1)
+            pos += 1
           end
           if (pos >= @raw_count)
             return

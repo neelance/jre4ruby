@@ -400,9 +400,9 @@ module Java::Util
           else
             if ((a[i]).equal?(0) && (Double.double_to_long_bits(a[i])).equal?(neg_zero_bits))
               a[i] = 0.0
-              ((num_neg_zeros += 1) - 1)
+              num_neg_zeros += 1
             end
-            ((i += 1) - 1)
+            i += 1
           end
         end
         # Main sort phase: quicksort everything but the NaN's
@@ -411,13 +411,13 @@ module Java::Util
         if (!(num_neg_zeros).equal?(0))
           j = binary_search0(a, from_index, n, 0.0) # posn of ANY zero
           begin
-            ((j -= 1) + 1)
+            j -= 1
           end while (j >= from_index && (a[j]).equal?(0.0))
           # j is now one less than the index of the FIRST zero
           k = 0
           while k < num_neg_zeros
             a[(j += 1)] = -0.0
-            ((k += 1) - 1)
+            k += 1
           end
         end
       end
@@ -440,9 +440,9 @@ module Java::Util
           else
             if ((a[i]).equal?(0) && (Float.float_to_int_bits(a[i])).equal?(neg_zero_bits))
               a[i] = 0.0
-              ((num_neg_zeros += 1) - 1)
+              num_neg_zeros += 1
             end
-            ((i += 1) - 1)
+            i += 1
           end
         end
         # Main sort phase: quicksort everything but the NaN's
@@ -451,13 +451,13 @@ module Java::Util
         if (!(num_neg_zeros).equal?(0))
           j = binary_search0(a, from_index, n, 0.0) # posn of ANY zero
           begin
-            ((j -= 1) + 1)
+            j -= 1
           end while (j >= from_index && (a[j]).equal?(0.0))
           # j is now one less than the index of the FIRST zero
           k = 0
           while k < num_neg_zeros
             a[(j += 1)] = -0.0
-            ((k += 1) - 1)
+            k += 1
           end
         end
       end
@@ -476,9 +476,9 @@ module Java::Util
             j = i
             while j > off && x[j - 1] > x[j]
               swap(x, j, j - 1)
-              ((j -= 1) + 1)
+              j -= 1
             end
-            ((i += 1) - 1)
+            i += 1
           end
           return
         end
@@ -507,13 +507,13 @@ module Java::Util
             if ((x[b]).equal?(v))
               swap(x, ((a += 1) - 1), b)
             end
-            ((b += 1) - 1)
+            b += 1
           end
           while (c >= b && x[c] >= v)
             if ((x[c]).equal?(v))
               swap(x, c, ((d -= 1) + 1))
             end
-            ((c -= 1) + 1)
+            c -= 1
           end
           if (b > c)
             break
@@ -550,9 +550,9 @@ module Java::Util
         i = 0
         while i < n
           swap(x, a, b)
-          ((i += 1) - 1)
-          ((a += 1) - 1)
-          ((b += 1) - 1)
+          i += 1
+          a += 1
+          b += 1
         end
       end
       
@@ -572,9 +572,9 @@ module Java::Util
             j = i
             while j > off && x[j - 1] > x[j]
               swap(x, j, j - 1)
-              ((j -= 1) + 1)
+              j -= 1
             end
-            ((i += 1) - 1)
+            i += 1
           end
           return
         end
@@ -603,13 +603,13 @@ module Java::Util
             if ((x[b]).equal?(v))
               swap(x, ((a += 1) - 1), b)
             end
-            ((b += 1) - 1)
+            b += 1
           end
           while (c >= b && x[c] >= v)
             if ((x[c]).equal?(v))
               swap(x, c, ((d -= 1) + 1))
             end
-            ((c -= 1) + 1)
+            c -= 1
           end
           if (b > c)
             break
@@ -646,9 +646,9 @@ module Java::Util
         i = 0
         while i < n
           swap(x, a, b)
-          ((i += 1) - 1)
-          ((a += 1) - 1)
-          ((b += 1) - 1)
+          i += 1
+          a += 1
+          b += 1
         end
       end
       
@@ -668,9 +668,9 @@ module Java::Util
             j = i
             while j > off && x[j - 1] > x[j]
               swap(x, j, j - 1)
-              ((j -= 1) + 1)
+              j -= 1
             end
-            ((i += 1) - 1)
+            i += 1
           end
           return
         end
@@ -699,13 +699,13 @@ module Java::Util
             if ((x[b]).equal?(v))
               swap(x, ((a += 1) - 1), b)
             end
-            ((b += 1) - 1)
+            b += 1
           end
           while (c >= b && x[c] >= v)
             if ((x[c]).equal?(v))
               swap(x, c, ((d -= 1) + 1))
             end
-            ((c -= 1) + 1)
+            c -= 1
           end
           if (b > c)
             break
@@ -742,9 +742,9 @@ module Java::Util
         i = 0
         while i < n
           swap(x, a, b)
-          ((i += 1) - 1)
-          ((a += 1) - 1)
-          ((b += 1) - 1)
+          i += 1
+          a += 1
+          b += 1
         end
       end
       
@@ -764,9 +764,9 @@ module Java::Util
             j = i
             while j > off && x[j - 1] > x[j]
               swap(x, j, j - 1)
-              ((j -= 1) + 1)
+              j -= 1
             end
-            ((i += 1) - 1)
+            i += 1
           end
           return
         end
@@ -795,13 +795,13 @@ module Java::Util
             if ((x[b]).equal?(v))
               swap(x, ((a += 1) - 1), b)
             end
-            ((b += 1) - 1)
+            b += 1
           end
           while (c >= b && x[c] >= v)
             if ((x[c]).equal?(v))
               swap(x, c, ((d -= 1) + 1))
             end
-            ((c -= 1) + 1)
+            c -= 1
           end
           if (b > c)
             break
@@ -838,9 +838,9 @@ module Java::Util
         i = 0
         while i < n
           swap(x, a, b)
-          ((i += 1) - 1)
-          ((a += 1) - 1)
-          ((b += 1) - 1)
+          i += 1
+          a += 1
+          b += 1
         end
       end
       
@@ -860,9 +860,9 @@ module Java::Util
             j = i
             while j > off && x[j - 1] > x[j]
               swap(x, j, j - 1)
-              ((j -= 1) + 1)
+              j -= 1
             end
-            ((i += 1) - 1)
+            i += 1
           end
           return
         end
@@ -891,13 +891,13 @@ module Java::Util
             if ((x[b]).equal?(v))
               swap(x, ((a += 1) - 1), b)
             end
-            ((b += 1) - 1)
+            b += 1
           end
           while (c >= b && x[c] >= v)
             if ((x[c]).equal?(v))
               swap(x, c, ((d -= 1) + 1))
             end
-            ((c -= 1) + 1)
+            c -= 1
           end
           if (b > c)
             break
@@ -934,9 +934,9 @@ module Java::Util
         i = 0
         while i < n
           swap(x, a, b)
-          ((i += 1) - 1)
-          ((a += 1) - 1)
-          ((b += 1) - 1)
+          i += 1
+          a += 1
+          b += 1
         end
       end
       
@@ -956,9 +956,9 @@ module Java::Util
             j = i
             while j > off && x[j - 1] > x[j]
               swap(x, j, j - 1)
-              ((j -= 1) + 1)
+              j -= 1
             end
-            ((i += 1) - 1)
+            i += 1
           end
           return
         end
@@ -987,13 +987,13 @@ module Java::Util
             if ((x[b]).equal?(v))
               swap(x, ((a += 1) - 1), b)
             end
-            ((b += 1) - 1)
+            b += 1
           end
           while (c >= b && x[c] >= v)
             if ((x[c]).equal?(v))
               swap(x, c, ((d -= 1) + 1))
             end
-            ((c -= 1) + 1)
+            c -= 1
           end
           if (b > c)
             break
@@ -1030,9 +1030,9 @@ module Java::Util
         i = 0
         while i < n
           swap(x, a, b)
-          ((i += 1) - 1)
-          ((a += 1) - 1)
-          ((b += 1) - 1)
+          i += 1
+          a += 1
+          b += 1
         end
       end
       
@@ -1052,9 +1052,9 @@ module Java::Util
             j = i
             while j > off && x[j - 1] > x[j]
               swap(x, j, j - 1)
-              ((j -= 1) + 1)
+              j -= 1
             end
-            ((i += 1) - 1)
+            i += 1
           end
           return
         end
@@ -1083,13 +1083,13 @@ module Java::Util
             if ((x[b]).equal?(v))
               swap(x, ((a += 1) - 1), b)
             end
-            ((b += 1) - 1)
+            b += 1
           end
           while (c >= b && x[c] >= v)
             if ((x[c]).equal?(v))
               swap(x, c, ((d -= 1) + 1))
             end
-            ((c -= 1) + 1)
+            c -= 1
           end
           if (b > c)
             break
@@ -1126,9 +1126,9 @@ module Java::Util
         i = 0
         while i < n
           swap(x, a, b)
-          ((i += 1) - 1)
-          ((a += 1) - 1)
-          ((b += 1) - 1)
+          i += 1
+          a += 1
+          b += 1
         end
       end
       
@@ -1220,9 +1220,9 @@ module Java::Util
             j = i
             while j > low && ((dest[j - 1]) <=> dest[j]) > 0
               swap(dest, j, j - 1)
-              ((j -= 1) + 1)
+              j -= 1
             end
-            ((i += 1) - 1)
+            i += 1
           end
           return
         end
@@ -1250,7 +1250,7 @@ module Java::Util
           else
             dest[i] = src[((q += 1) - 1)]
           end
-          ((i += 1) - 1)
+          i += 1
         end
       end
       
@@ -1347,9 +1347,9 @@ module Java::Util
             j = i
             while j > low && c.compare(dest[j - 1], dest[j]) > 0
               swap(dest, j, j - 1)
-              ((j -= 1) + 1)
+              j -= 1
             end
-            ((i += 1) - 1)
+            i += 1
           end
           return
         end
@@ -1377,7 +1377,7 @@ module Java::Util
           else
             dest[i] = src[((q += 1) - 1)]
           end
-          ((i += 1) - 1)
+          i += 1
         end
       end
       
@@ -2215,7 +2215,7 @@ module Java::Util
           if (!(a[i]).equal?(a2[i]))
             return false
           end
-          ((i += 1) - 1)
+          i += 1
         end
         return true
       end
@@ -2247,7 +2247,7 @@ module Java::Util
           if (!(a[i]).equal?(a2[i]))
             return false
           end
-          ((i += 1) - 1)
+          i += 1
         end
         return true
       end
@@ -2279,7 +2279,7 @@ module Java::Util
           if (!(a[i]).equal?(a2[i]))
             return false
           end
-          ((i += 1) - 1)
+          i += 1
         end
         return true
       end
@@ -2311,7 +2311,7 @@ module Java::Util
           if (!(a[i]).equal?(a2[i]))
             return false
           end
-          ((i += 1) - 1)
+          i += 1
         end
         return true
       end
@@ -2343,7 +2343,7 @@ module Java::Util
           if (!(a[i]).equal?(a2[i]))
             return false
           end
-          ((i += 1) - 1)
+          i += 1
         end
         return true
       end
@@ -2375,7 +2375,7 @@ module Java::Util
           if (!(a[i]).equal?(a2[i]))
             return false
           end
-          ((i += 1) - 1)
+          i += 1
         end
         return true
       end
@@ -2413,7 +2413,7 @@ module Java::Util
           if (!(Double.double_to_long_bits(a[i])).equal?(Double.double_to_long_bits(a2[i])))
             return false
           end
-          ((i += 1) - 1)
+          i += 1
         end
         return true
       end
@@ -2451,7 +2451,7 @@ module Java::Util
           if (!(Float.float_to_int_bits(a[i])).equal?(Float.float_to_int_bits(a2[i])))
             return false
           end
-          ((i += 1) - 1)
+          i += 1
         end
         return true
       end
@@ -2487,7 +2487,7 @@ module Java::Util
           if (!((o1).nil? ? (o2).nil? : (o1 == o2)))
             return false
           end
-          ((i += 1) - 1)
+          i += 1
         end
         return true
       end
@@ -2505,7 +2505,7 @@ module Java::Util
         len = a.attr_length
         while i < len
           a[i] = val
-          ((i += 1) - 1)
+          i += 1
         end
       end
       
@@ -2530,7 +2530,7 @@ module Java::Util
         i = from_index
         while i < to_index
           a[i] = val
-          ((i += 1) - 1)
+          i += 1
         end
       end
       
@@ -2545,7 +2545,7 @@ module Java::Util
         len = a.attr_length
         while i < len
           a[i] = val
-          ((i += 1) - 1)
+          i += 1
         end
       end
       
@@ -2570,7 +2570,7 @@ module Java::Util
         i = from_index
         while i < to_index
           a[i] = val
-          ((i += 1) - 1)
+          i += 1
         end
       end
       
@@ -2585,7 +2585,7 @@ module Java::Util
         len = a.attr_length
         while i < len
           a[i] = val
-          ((i += 1) - 1)
+          i += 1
         end
       end
       
@@ -2610,7 +2610,7 @@ module Java::Util
         i = from_index
         while i < to_index
           a[i] = val
-          ((i += 1) - 1)
+          i += 1
         end
       end
       
@@ -2625,7 +2625,7 @@ module Java::Util
         len = a.attr_length
         while i < len
           a[i] = val
-          ((i += 1) - 1)
+          i += 1
         end
       end
       
@@ -2650,7 +2650,7 @@ module Java::Util
         i = from_index
         while i < to_index
           a[i] = val
-          ((i += 1) - 1)
+          i += 1
         end
       end
       
@@ -2665,7 +2665,7 @@ module Java::Util
         len = a.attr_length
         while i < len
           a[i] = val
-          ((i += 1) - 1)
+          i += 1
         end
       end
       
@@ -2690,7 +2690,7 @@ module Java::Util
         i = from_index
         while i < to_index
           a[i] = val
-          ((i += 1) - 1)
+          i += 1
         end
       end
       
@@ -2705,7 +2705,7 @@ module Java::Util
         len = a.attr_length
         while i < len
           a[i] = val
-          ((i += 1) - 1)
+          i += 1
         end
       end
       
@@ -2730,7 +2730,7 @@ module Java::Util
         i = from_index
         while i < to_index
           a[i] = val
-          ((i += 1) - 1)
+          i += 1
         end
       end
       
@@ -2745,7 +2745,7 @@ module Java::Util
         len = a.attr_length
         while i < len
           a[i] = val
-          ((i += 1) - 1)
+          i += 1
         end
       end
       
@@ -2770,7 +2770,7 @@ module Java::Util
         i = from_index
         while i < to_index
           a[i] = val
-          ((i += 1) - 1)
+          i += 1
         end
       end
       
@@ -2785,7 +2785,7 @@ module Java::Util
         len = a.attr_length
         while i < len
           a[i] = val
-          ((i += 1) - 1)
+          i += 1
         end
       end
       
@@ -2810,7 +2810,7 @@ module Java::Util
         i = from_index
         while i < to_index
           a[i] = val
-          ((i += 1) - 1)
+          i += 1
         end
       end
       
@@ -2827,7 +2827,7 @@ module Java::Util
         len = a.attr_length
         while i < len
           a[i] = val
-          ((i += 1) - 1)
+          i += 1
         end
       end
       
@@ -2854,7 +2854,7 @@ module Java::Util
         i = from_index
         while i < to_index
           a[i] = val
-          ((i += 1) - 1)
+          i += 1
         end
       end
       
@@ -3526,7 +3526,7 @@ module Java::Util
               if ((@a[i]).nil?)
                 return i
               end
-              ((i += 1) - 1)
+              i += 1
             end
           else
             i = 0
@@ -3534,7 +3534,7 @@ module Java::Util
               if ((o == @a[i]))
                 return i
               end
-              ((i += 1) - 1)
+              i += 1
             end
           end
           return -1
@@ -3918,7 +3918,7 @@ module Java::Util
           e1 = a1[i]
           e2 = a2[i]
           if ((e1).equal?(e2))
-            ((i += 1) - 1)
+            i += 1
             next
           end
           if ((e1).nil?)
@@ -3966,7 +3966,7 @@ module Java::Util
           if (!eq)
             return false
           end
-          ((i += 1) - 1)
+          i += 1
         end
         return true
       end
@@ -4000,7 +4000,7 @@ module Java::Util
             return b.append(Character.new(?].ord)).to_s
           end
           b.append(", ")
-          ((i += 1) - 1)
+          i += 1
         end
       end
       
@@ -4033,7 +4033,7 @@ module Java::Util
             return b.append(Character.new(?].ord)).to_s
           end
           b.append(", ")
-          ((i += 1) - 1)
+          i += 1
         end
       end
       
@@ -4066,7 +4066,7 @@ module Java::Util
             return b.append(Character.new(?].ord)).to_s
           end
           b.append(", ")
-          ((i += 1) - 1)
+          i += 1
         end
       end
       
@@ -4099,7 +4099,7 @@ module Java::Util
             return b.append(Character.new(?].ord)).to_s
           end
           b.append(", ")
-          ((i += 1) - 1)
+          i += 1
         end
       end
       
@@ -4132,7 +4132,7 @@ module Java::Util
             return b.append(Character.new(?].ord)).to_s
           end
           b.append(", ")
-          ((i += 1) - 1)
+          i += 1
         end
       end
       
@@ -4165,7 +4165,7 @@ module Java::Util
             return b.append(Character.new(?].ord)).to_s
           end
           b.append(", ")
-          ((i += 1) - 1)
+          i += 1
         end
       end
       
@@ -4198,7 +4198,7 @@ module Java::Util
             return b.append(Character.new(?].ord)).to_s
           end
           b.append(", ")
-          ((i += 1) - 1)
+          i += 1
         end
       end
       
@@ -4231,7 +4231,7 @@ module Java::Util
             return b.append(Character.new(?].ord)).to_s
           end
           b.append(", ")
-          ((i += 1) - 1)
+          i += 1
         end
       end
       
@@ -4267,7 +4267,7 @@ module Java::Util
             return b.append(Character.new(?].ord)).to_s
           end
           b.append(", ")
-          ((i += 1) - 1)
+          i += 1
         end
       end
       
@@ -4384,7 +4384,7 @@ module Java::Util
             break
           end
           buf.append(", ")
-          ((i += 1) - 1)
+          i += 1
         end
         buf.append(Character.new(?].ord))
         deja_vu.remove(a)

@@ -142,7 +142,7 @@ module Sun::Security::Krb5::Internal
         while i < count
           answer <<= 8
           answer |= (RJava.cast_to_int(buf[start + i]) & 0xff)
-          ((i += 1) - 1)
+          i += 1
         end
         return answer
       end
@@ -158,7 +158,7 @@ module Sun::Security::Krb5::Internal
         while i >= 0
           buf[start + i] = (num & 0xff)
           num >>= 8
-          ((i -= 1) + 1)
+          i -= 1
         end
       end
     }

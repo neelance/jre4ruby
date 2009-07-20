@@ -283,7 +283,7 @@ module Sun::Security::Krb5::Internal::Ccache
                   @credentials_list.add_element(c)
                 end
               end
-              ((i += 1) - 1)
+              i += 1
             end
             if ((matched).equal?(false))
               if (self.attr_debug)
@@ -314,7 +314,7 @@ module Sun::Security::Krb5::Internal::Ccache
           i = 0
           while i < tmp.attr_length
             cos.add_creds(tmp[i])
-            ((i += 1) - 1)
+            i += 1
           end
         end
         cos.close
@@ -331,7 +331,7 @@ module Sun::Security::Krb5::Internal::Ccache
           if (!(s1[i].equals_ignore_case(s2[i])))
             return false
           end
-          ((i += 1) - 1)
+          i += 1
         end
       end
       return true
@@ -348,7 +348,7 @@ module Sun::Security::Krb5::Internal::Ccache
           i = 0
           while i < @credentials_list.size
             tmp[i] = @credentials_list.element_at(i)
-            ((i += 1) - 1)
+            i += 1
           end
           return tmp
         end
@@ -371,7 +371,7 @@ module Sun::Security::Krb5::Internal::Ccache
                 return list[i]
               end
             end
-            ((i += 1) - 1)
+            i += 1
           end
         end
         return nil
@@ -392,7 +392,7 @@ module Sun::Security::Krb5::Internal::Ccache
           if (sname.match(list[i].attr_sname) && ((srealm.to_s == list[i].attr_srealm.to_s)))
             return list[i]
           end
-          ((i += 1) - 1)
+          i += 1
         end
       end
       return nil
@@ -413,7 +413,7 @@ module Sun::Security::Krb5::Internal::Ccache
               return list[i]
             end
           end
-          ((i -= 1) + 1)
+          i -= 1
         end
       end
       return nil
