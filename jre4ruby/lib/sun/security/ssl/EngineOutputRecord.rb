@@ -194,7 +194,7 @@ module Sun::Security::Ssl
       raise AssertError if not (((content_type).equal?(self.attr_ct_application_data)))
       # Have we set the MAC's yet?  If not, we're not ready
       # to process application data yet.
-      if ((write_mac).equal?(MAC::NULL))
+      if ((write_mac).equal?(MAC.attr_null))
         return
       end
       # Don't bother to really write empty records.  We went this
