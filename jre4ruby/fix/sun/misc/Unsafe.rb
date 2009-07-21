@@ -5,7 +5,7 @@ class Sun::Misc::Unsafe
   }
 
   def object_field_offset(f)
-    "@#{f.name}".to_sym
+    "@#{f.attr_name}".to_sym
   end
 
   def compare_and_swap_int(o, offset, expected, x)
