@@ -280,7 +280,7 @@ module Sun::Security::Ssl
       # Grow "buf" if needed
       len = r.available + self.attr_count
       if (self.attr_buf.attr_length < len)
-        newbuf = nil
+        newbuf = 0
         newbuf = Array.typed(::Java::Byte).new(len) { 0 }
         System.arraycopy(self.attr_buf, 0, newbuf, 0, self.attr_count)
         self.attr_buf = newbuf

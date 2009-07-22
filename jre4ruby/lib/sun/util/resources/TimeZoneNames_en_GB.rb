@@ -1,6 +1,6 @@
 require "rjava"
 
-# Copyright 2005 Sun Microsystems, Inc.  All Rights Reserved.
+# Portions Copyright 1996-2007 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
 # This code is free software; you can redistribute it and/or modify it
@@ -22,34 +22,42 @@ require "rjava"
 # Please contact Sun Microsystems, Inc., 4150 Network Circle, Santa Clara,
 # CA 95054 USA or visit www.sun.com if you need additional information or
 # have any questions.
+# 
+# 
+# (C) Copyright Taligent, Inc. 1996, 1997 - All Rights Reserved
+# (C) Copyright IBM Corp. 1996 - 1998 - All Rights Reserved
+# 
+# The original version of this source code and documentation
+# is copyrighted and owned by Taligent, Inc., a wholly-owned
+# subsidiary of IBM. These materials are provided under terms
+# of a License Agreement between Taligent and Sun. This technology
+# is protected by multiple US and International patents.
+# 
+# This notice and attribution to Taligent may not be removed.
+# Taligent is a registered trademark of Taligent, Inc.
 module Sun::Util::Resources
-  module LocaleNames_zh_HKImports
+  module TimeZoneNames_en_GBImports
     class_module.module_eval {
       include ::Java::Lang
       include ::Sun::Util::Resources
-      include_const ::Java::Util, :Locale
-      include_const ::Java::Util, :ResourceBundle
     }
   end
   
-  class LocaleNames_zh_HK < LocaleNames_zh_HKImports.const_get :OpenListResourceBundle
-    include_class_members LocaleNames_zh_HKImports
-    
-    typesig { [] }
-    # reparent to zh_TW for traditional Chinese names
-    def initialize
-      super()
-      bundle = LocaleData.get_locale_names(Locale::TAIWAN)
-      set_parent(bundle)
-    end
+  class TimeZoneNames_en_GB < TimeZoneNames_en_GBImports.const_get :TimeZoneNamesBundle
+    include_class_members TimeZoneNames_en_GBImports
     
     typesig { [] }
     def get_contents
-      return Array.typed(Array.typed(Object)).new([])
+      return Array.typed(Array.typed(Object)).new([Array.typed(Object).new(["Europe/London", Array.typed(String).new(["Greenwich Mean Time", "GMT", "British Summer Time", "BST"])]), ])
+    end
+    
+    typesig { [] }
+    def initialize
+      super()
     end
     
     private
-    alias_method :initialize__locale_names_zh_hk, :initialize
+    alias_method :initialize__time_zone_names_en_gb, :initialize
   end
   
 end

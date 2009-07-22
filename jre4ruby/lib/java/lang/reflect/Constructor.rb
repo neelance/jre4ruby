@@ -727,7 +727,7 @@ module Java::Lang::Reflect
     def get_parameter_annotations
       num_parameters = @parameter_types.attr_length
       if ((@parameter_annotations).nil?)
-        return Array.typed(Annotation).new(num_parameters) { Array.typed(Annotation).new(0) { nil } }
+        return Array.typed(Array.typed(Annotation)).new(num_parameters) { Array.typed(Annotation).new(0) { nil } }
       end
       result = AnnotationParser.parse_parameter_annotations(@parameter_annotations, Sun::Misc::SharedSecrets.get_java_lang_access.get_constant_pool(get_declaring_class), get_declaring_class)
       if (!(result.attr_length).equal?(num_parameters))

@@ -509,7 +509,7 @@ module Java::Text
     # @exception NullPointerException if <code>newZoneStrings</code> is null
     # @see #getZoneStrings()
     def set_zone_strings(new_zone_strings)
-      a_copy = Array.typed(String).new(new_zone_strings.attr_length) { nil }
+      a_copy = Array.typed(Array.typed(String)).new(new_zone_strings.attr_length) { nil }
       i = 0
       while i < new_zone_strings.attr_length
         if (new_zone_strings[i].attr_length < 5)
@@ -686,7 +686,7 @@ module Java::Text
         @zone_strings = TimeZoneNameUtility.get_zone_strings(@locale)
       end
       if (needs_copy)
-        a_copy = Array.typed(String).new(@zone_strings.attr_length) { nil }
+        a_copy = Array.typed(Array.typed(String)).new(@zone_strings.attr_length) { nil }
         i = 0
         while i < @zone_strings.attr_length
           a_copy[i] = duplicate(@zone_strings[i])
@@ -728,7 +728,7 @@ module Java::Text
       dst.attr_ampms = duplicate(src.attr_ampms)
       if (!(src.attr_zone_strings).nil?)
         if ((dst.attr_zone_strings).nil?)
-          dst.attr_zone_strings = Array.typed(String).new(src.attr_zone_strings.attr_length) { nil }
+          dst.attr_zone_strings = Array.typed(Array.typed(String)).new(src.attr_zone_strings.attr_length) { nil }
         end
         i = 0
         while i < dst.attr_zone_strings.attr_length

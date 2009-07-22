@@ -220,7 +220,7 @@ module Sun::Misc
       i = 0
       n_len = 0
       n_seq = 0
-      xtmp = nil
+      xtmp = 0
       c = 0
       @crc.attr_value = 0
       while (true)
@@ -253,7 +253,7 @@ module Sun::Misc
       i = 0
       line_crc = @crc.attr_value
       read_crc = 0
-      tmp = nil
+      tmp = 0
       @line_and_seq.reset
       decode_atom(in_stream, @line_and_seq, 2)
       tmp = @line_and_seq.to_byte_array

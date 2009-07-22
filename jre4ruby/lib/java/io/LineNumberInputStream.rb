@@ -204,7 +204,7 @@ module Java::Io
     def skip(n)
       chunk = 2048
       remaining = n
-      data = nil
+      data = 0
       nr = 0
       if (n <= 0)
         return 0

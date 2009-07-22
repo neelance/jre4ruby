@@ -1626,7 +1626,7 @@ module Sun::Security::Provider
       if (!(pe.attr_principal_class == PolicyParser::PrincipalEntry::WILDCARD_CLASS) && !(pe.attr_principal_name == PolicyParser::PrincipalEntry::WILDCARD_NAME))
         # build an info array for the principal
         # from the Policy entry
-        info = Array.typed(String).new(1) { Array.typed(String).new(2) { nil } }
+        info = Array.typed(Array.typed(String)).new(1) { Array.typed(String).new(2) { nil } }
         info[0][0] = pe.attr_principal_class
         info[0][1] = pe.attr_principal_name
         return info
@@ -1643,7 +1643,7 @@ module Sun::Security::Provider
             end
             i += 1
           end
-          info = Array.typed(String).new(plist.size) { Array.typed(String).new(2) { nil } }
+          info = Array.typed(Array.typed(String)).new(plist.size) { Array.typed(String).new(2) { nil } }
           i_ = 0
           p_iterator = plist.iterator
           while (p_iterator.has_next)
@@ -1656,7 +1656,7 @@ module Sun::Security::Provider
         else
           # build an info array for every
           # one of the current Domain's principals
-          info = Array.typed(String).new(pdp.attr_length) { Array.typed(String).new(2) { nil } }
+          info = Array.typed(Array.typed(String)).new(pdp.attr_length) { Array.typed(String).new(2) { nil } }
           i = 0
           while i < pdp.attr_length
             info[i][0] = pdp[i].get_class.get_name

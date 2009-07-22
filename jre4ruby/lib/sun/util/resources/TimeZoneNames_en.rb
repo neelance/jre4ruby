@@ -53,7 +53,7 @@ module Sun::Util::Resources
     # bundle lookup from falling back to the default
     # locale.
     def get_contents
-      return Array.typed(Object).new([])
+      return Array.typed(Array.typed(Object)).new([])
     end
     
     typesig { [] }

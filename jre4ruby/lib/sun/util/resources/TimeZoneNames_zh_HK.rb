@@ -56,7 +56,7 @@ module Sun::Util::Resources
     
     typesig { [] }
     def get_contents
-      return Array.typed(Object).new([])
+      return Array.typed(Array.typed(Object)).new([])
     end
     
     private

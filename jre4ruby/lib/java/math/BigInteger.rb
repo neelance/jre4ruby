@@ -1894,7 +1894,7 @@ module Java::Math
       # Calculate appropriate table size
       tblmask = 1 << wbits
       # Allocate table for precomputed odd powers of base in Montgomery form
-      table = Array.typed(::Java::Int).new(tblmask) { 0 }
+      table = Array.typed(Array.typed(::Java::Int)).new(tblmask) { nil }
       i = 0
       while i < tblmask
         table[i] = Array.typed(::Java::Int).new(mod_len) { 0 }

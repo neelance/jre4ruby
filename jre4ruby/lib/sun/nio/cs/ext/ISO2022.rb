@@ -659,7 +659,7 @@ module Sun::Nio::Cs::Ext
         typesig { [::Java::Char, Array.typed(::Java::Byte)] }
         def unicode_to_native(unicode, ebyte)
           index = 0
-          tmp_byte = nil
+          tmp_byte = 0
           conv_char = Array.typed(::Java::Char).new([unicode])
           conv_byte = Array.typed(::Java::Byte).new(4) { 0 }
           converted = 0

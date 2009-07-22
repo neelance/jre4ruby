@@ -380,7 +380,7 @@ module Sun::Security::Util
         i += 1
       end
       # order the element encodings
-      bufs = Array.typed(::Java::Byte).new(streams.attr_length) { 0 }
+      bufs = Array.typed(Array.typed(::Java::Byte)).new(streams.attr_length) { nil }
       i_ = 0
       while i_ < streams.attr_length
         bufs[i_] = streams[i_].to_byte_array

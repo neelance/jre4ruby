@@ -483,7 +483,7 @@ module Sun::Security::Krb5
     
     typesig { [] }
     def to_byte_array
-      result = Array.typed(::Java::Byte).new(@name_strings.attr_length) { 0 }
+      result = Array.typed(Array.typed(::Java::Byte)).new(@name_strings.attr_length) { nil }
       i = 0
       while i < @name_strings.attr_length
         result[i] = Array.typed(::Java::Byte).new(@name_strings[i].length) { 0 }

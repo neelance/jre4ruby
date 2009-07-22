@@ -135,7 +135,7 @@ module Sun::Reflect::Annotation
       def parse_parameter_annotations2(raw_annotations, const_pool, container)
         buf = ByteBuffer.wrap(raw_annotations)
         num_parameters = buf.get & 0xff
-        result = Array.typed(Annotation).new(num_parameters) { nil }
+        result = Array.typed(Array.typed(Annotation)).new(num_parameters) { nil }
         i = 0
         while i < num_parameters
           num_annotations = buf.get_short & 0xffff

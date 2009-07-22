@@ -379,8 +379,8 @@ module Sun::Misc
             return
           end
           ts = JavaThread::State.values
-          vm_thread_state_values = Array.typed(::Java::Int).new(ts.attr_length) { 0 }
-          vm_thread_state_names = Array.typed(String).new(ts.attr_length) { nil }
+          vm_thread_state_values = Array.typed(Array.typed(::Java::Int)).new(ts.attr_length) { nil }
+          vm_thread_state_names = Array.typed(Array.typed(String)).new(ts.attr_length) { nil }
           get_thread_state_values(vm_thread_state_values, vm_thread_state_names)
           self.attr_thread_state_map = HashMap.new
           self.attr_thread_state_names = HashMap.new

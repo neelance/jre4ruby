@@ -152,7 +152,7 @@ module Sun::Security::Provider
       const_attr_reader  :S
       
       when_class_loaded do
-        const_set :PADDING, Array.typed(::Java::Byte).new(17) { 0 }
+        const_set :PADDING, Array.typed(Array.typed(::Java::Byte)).new(17) { nil }
         i = 1
         while i < 17
           b = Array.typed(::Java::Byte).new(i) { 0 }
