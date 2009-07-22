@@ -774,8 +774,8 @@ module Sun::Security::Provider
         # at the end. If this check fails, the store has been tampered
         # with
         if (!(password).nil?)
-          computed = nil
-          actual = nil
+          computed = 0
+          actual = 0
           computed = md.digest
           actual = Array.typed(::Java::Byte).new(computed.attr_length) { 0 }
           dis.read_fully(actual)

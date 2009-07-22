@@ -1,6 +1,6 @@
 require "rjava"
 
-# Copyright 2005 Sun Microsystems, Inc.  All Rights Reserved.
+# Copyright 2007 Sun Microsystems, Inc.  All Rights Reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
 # This code is free software; you can redistribute it and/or modify it
@@ -23,7 +23,7 @@ require "rjava"
 # CA 95054 USA or visit www.sun.com if you need additional information or
 # have any questions.
 module Sun::Util::Resources
-  module LocaleNames_zh_HKImports
+  module CurrencyNames_zh_SGImports
     class_module.module_eval {
       include ::Java::Lang
       include ::Sun::Util::Resources
@@ -32,24 +32,24 @@ module Sun::Util::Resources
     }
   end
   
-  class LocaleNames_zh_HK < LocaleNames_zh_HKImports.const_get :OpenListResourceBundle
-    include_class_members LocaleNames_zh_HKImports
+  class CurrencyNames_zh_SG < CurrencyNames_zh_SGImports.const_get :OpenListResourceBundle
+    include_class_members CurrencyNames_zh_SGImports
     
     typesig { [] }
-    # reparent to zh_TW for traditional Chinese names
+    # reparent to zh_CN for simplified Chinese names
     def initialize
       super()
-      bundle = LocaleData.get_locale_names(Locale::TAIWAN)
+      bundle = LocaleData.get_currency_names(Locale::CHINA)
       set_parent(bundle)
     end
     
     typesig { [] }
     def get_contents
-      return Array.typed(Array.typed(Object)).new([])
+      return Array.typed(Array.typed(Object)).new([Array.typed(Object).new(["CNY", "CNY"]), Array.typed(Object).new(["SGD", "S$"]), ])
     end
     
     private
-    alias_method :initialize__locale_names_zh_hk, :initialize
+    alias_method :initialize__currency_names_zh_sg, :initialize
   end
   
 end

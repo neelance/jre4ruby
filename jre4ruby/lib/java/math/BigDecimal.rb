@@ -491,7 +491,7 @@ module Java::Math
         # Later use: BigInteger(coeff, first, precision) for
         # both cases, by allowing an extra char at the front of
         # coeff.
-        quick = nil
+        quick = 0
         if (!isneg)
           quick = CharArray.new(@precision)
           System.arraycopy(coeff, first, quick, 0, @precision)
@@ -3146,7 +3146,7 @@ module Java::Math
         return (!(@int_compact).equal?(INFLATED)) ? Long.to_s(@int_compact) : @int_val.to_s
       end
       # Get the significand as an absolute value
-      coeff = nil
+      coeff = 0
       if (!(@int_compact).equal?(INFLATED))
         coeff = Long.to_s(Math.abs(@int_compact)).to_char_array
       else

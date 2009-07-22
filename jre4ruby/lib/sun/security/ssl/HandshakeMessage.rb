@@ -988,7 +988,7 @@ module Sun::Security::Ssl
           @dh_p = input.get_bytes16
           @dh_g = input.get_bytes16
           @dh_ys = input.get_bytes16
-          signature = nil
+          signature = 0
           if (self.class::DhKeyExchangeFix)
             signature = input.get_bytes16
           else

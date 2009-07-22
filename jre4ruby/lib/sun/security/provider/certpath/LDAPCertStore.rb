@@ -135,7 +135,7 @@ module Sun::Security::Provider::Certpath
       const_set_lazy(:STRING0) { Array.typed(String).new(0) { nil } }
       const_attr_reader  :STRING0
       
-      const_set_lazy(:BB0) { Array.typed(::Java::Byte).new(0) { 0 } }
+      const_set_lazy(:BB0) { Array.typed(Array.typed(::Java::Byte)).new(0) { nil } }
       const_attr_reader  :BB0
       
       const_set_lazy(:EMPTY_ATTRIBUTES) { BasicAttributes.new }
@@ -445,7 +445,7 @@ module Sun::Security::Provider::Certpath
           if ((attr).nil?)
             values = BB0
           else
-            values = Array.typed(::Java::Byte).new(attr.size) { 0 }
+            values = Array.typed(Array.typed(::Java::Byte)).new(attr.size) { nil }
             i = 0
             enum_ = attr.get_all
             while (enum_.has_more)

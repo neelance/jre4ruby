@@ -98,7 +98,7 @@ module Sun::Util
             zones.add(names)
           end
         end
-        zones_array = Array.typed(String).new(zones.size) { nil }
+        zones_array = Array.typed(Array.typed(String)).new(zones.size) { nil }
         return zones.to_array(zones_array)
       end
       

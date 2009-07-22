@@ -98,7 +98,7 @@ module Sun::Net::Www
       @nkeys = 0
       @asize = 10
       @raw = raw
-      @tab = Array.typed(String).new(@asize) { Array.typed(String).new(2) { nil } }
+      @tab = Array.typed(Array.typed(String)).new(@asize) { Array.typed(String).new(2) { nil } }
       parse
     end
     
@@ -121,7 +121,7 @@ module Sun::Net::Www
         raise IllegalArgumentException.new("invalid start or end")
       end
       n = HeaderParser.new
-      n.attr_tab = Array.typed(String).new(@asize) { Array.typed(String).new(2) { nil } }
+      n.attr_tab = Array.typed(Array.typed(String)).new(@asize) { Array.typed(String).new(2) { nil } }
       n.attr_asize = @asize
       System.arraycopy(@tab, start, n.attr_tab, 0, (end_ - start))
       n.attr_nkeys = (end_ - start)
@@ -187,7 +187,7 @@ module Sun::Net::Www
           end
           if ((i).equal?(@asize))
             @asize = @asize * 2
-            ntab = Array.typed(String).new(@asize) { Array.typed(String).new(2) { nil } }
+            ntab = Array.typed(Array.typed(String)).new(@asize) { Array.typed(String).new(2) { nil } }
             System.arraycopy(@tab, 0, ntab, 0, @tab.attr_length)
             @tab = ntab
           end

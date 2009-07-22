@@ -191,7 +191,7 @@ module Java::Io
     # If an I/O error occurs
     def write(str, off, len)
       synchronized((@lock)) do
-        cbuf = nil
+        cbuf = 0
         if (len <= @write_buffer_size)
           if ((@write_buffer).nil?)
             @write_buffer = CharArray.new(@write_buffer_size)

@@ -248,7 +248,7 @@ module Sun::Security::Util
           # Other components are encoded less exotically.  The only
           # potential trouble is the need to grow the array.
           if (@component_len >= @components.attr_length)
-            tmp_components = nil
+            tmp_components = 0
             tmp_components = Array.typed(::Java::Int).new(@components.attr_length + AllocationQuantum) { 0 }
             System.arraycopy(@components, 0, tmp_components, 0, @components.attr_length)
             @components = tmp_components
