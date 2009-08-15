@@ -1,5 +1,16 @@
 class Java::Io::FileDescriptor
+  def initialize
+    @use_count = 0
+  end
+
   def increment_and_get_use_count
+    @use_count += 1
+    @use_count
+  end
+
+  def decrement_and_get_use_count
+    @use_count -= 1
+    @use_count
   end
 
   In = self.new

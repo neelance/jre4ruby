@@ -36,11 +36,13 @@ class Java::Lang::System
       # * <dt>user.name            <dd>User account name
       # * <dt>user.home            <dd>User home directory
       # * <dt>user.dir             <dd>User's current working directory
+      set_property "java.home", File.expand_path("../../../", File.dirname(__FILE__))
       set_property "os.name", RUBY_PLATFORM.split("-").last
       set_property "file.separator", File::SEPARATOR
       set_property "path.separator", File::PATH_SEPARATOR
       set_property "line.separator", "\n"
       set_property "file.encoding", "UTF-8"
+      set_property "sun.boot.class.path", File.expand_path("../../../lib/share/", File.dirname(__FILE__))
     end
 
     def set_in0(in_)
@@ -55,12 +57,16 @@ class Java::Lang::System
       @@err = err
     end
 
+    def load_library(libname)
+      Runtime.get_runtime.load_library0(get_caller_class, libname) unless libname == "zip"
+    end
+
     def map_library_name(libname)
       case RUBY_PLATFORM
-	  when "i386-mingw32"
+	    when "i386-mingw32"
         "#{libname}.dll"
       when "i686-darwin9"
-	    "lib#{libname}.jnilib"
+	      "lib#{libname}.jnilib"
       else
         "lib#{libname}.so"
       end

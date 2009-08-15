@@ -1,7 +1,14 @@
 class Java::Util::Hashtable < Hash
   def initialize(data = nil)
-    if data
+    case data
+    when nil
+      # do nothing
+    when Hash
       self.merge! data
+    when Integer
+      # initial capacity, ignored
+    else
+      raise ArgumentError
     end
   end
 

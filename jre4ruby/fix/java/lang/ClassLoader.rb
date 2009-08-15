@@ -5,11 +5,13 @@ class Java::Lang::ClassLoader
 
     NativeLibrary.class_eval do
       def load(name)
-        unless name == "/libzip.so" or name == "/zip.dll" or name == "/libzip.jnilib"
-          JNI.load_library name
-        end
+        JNI.load_library name
         @handle = 1
       end
     end
   }
+
+  def find_loaded_class0(name)
+    Class.for_name name
+  end
 end

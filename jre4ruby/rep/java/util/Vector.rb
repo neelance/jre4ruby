@@ -14,4 +14,8 @@ class Java::Util::Vector < Array
   def to_a
     self
   end
+
+  def copy_into(array)
+    array[0, self.size] = self
+  end
 end

@@ -1,6 +1,32 @@
 class Java::Util::ArrayList < Array
-  def initialize(initial_capacity = 0)
-    raise ArgumentError if not initial_capacity.is_a? Fixnum
+  class Iterator
+    def initialize(array)
+      @array = array
+      @index = 0
+    end
+
+    def has_next
+      @index < @array.size
+    end
+
+    def next_
+      entry = @array[@index]
+      @index += 1
+      entry
+    end
+  end
+
+  def initialize(data = nil)
+    case data
+    when nil
+      # do nothing
+    when Array
+      self.concat data
+    when Integer
+      # initial capacity, ignored
+    else
+      raise ArgumentError
+    end
   end
 
   alias_method :add, :<<
@@ -8,5 +34,9 @@ class Java::Util::ArrayList < Array
 
   def to_a
     self
+  end
+
+  def iterator
+    Iterator.new self
   end
 end

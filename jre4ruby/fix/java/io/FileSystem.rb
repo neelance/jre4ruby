@@ -30,7 +30,7 @@ class Java::Io::FileSystem
   end
     
   def canonicalize(path)
-    path # TODO FileSystem.canonicalize
+    File.expand_path path
   end
 
   def prefix_length(path)
@@ -38,6 +38,27 @@ class Java::Io::FileSystem
   end
 
   def get_boolean_attributes(f)
-    (File.exist?(f.attr_path) && BA_EXISTS) | (File.file?(f.attr_path) && BA_REGULAR) | (File.directory?(f.attr_path) && BA_DIRECTORY)
+    (File.exist?(f.attr_path) ? BA_EXISTS : 0) | (File.file?(f.attr_path) ? BA_REGULAR : 0) | (File.directory?(f.attr_path) ? BA_DIRECTORY : 0)
+  end
+
+  def check_access(f, access)
+    case access
+    when ACCESS_READ
+			File.readable?(f.attr_path)
+    when ACCESS_WRITE
+			File.writable?(f.attr_path)
+    when ACCESS_EXECUTE
+			File.executable?(f.attr_path)
+    else
+      raise ArgumentError
+    end
+  end
+
+  def get_length(f)
+    File.size f.attr_path
+  end
+
+  def is_absolute(f)
+    f.attr_path =~ /^[\/\\]/
   end
 end
