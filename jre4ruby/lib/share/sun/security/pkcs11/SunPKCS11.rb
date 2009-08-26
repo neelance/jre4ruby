@@ -1077,7 +1077,7 @@ module Sun::Security::Pkcs11
                                 return @token.get_key_store
                               else
                                 if ((type).equal?(AGP))
-                                  return Sun::Security::Ec::self.class::ECParameters.new
+                                  return Sun::Security::Ec::ECParameters.new
                                 else
                                   raise self.class::NoSuchAlgorithmException.new("Unknown type: " + type)
                                 end

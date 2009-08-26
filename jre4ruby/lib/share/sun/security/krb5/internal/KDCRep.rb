@@ -129,7 +129,7 @@ module Sun::Security::Krb5::Internal
       @pvno = 0
       @msg_type = 0
       @p_adata = nil
-      @debug = Krb5.attr_debug
+      @debug = Krb5::DEBUG
       @pvno = Krb5::PVNO
       @msg_type = req_type
       if (!(new_p_adata).nil?)
@@ -160,7 +160,7 @@ module Sun::Security::Krb5::Internal
       @pvno = 0
       @msg_type = 0
       @p_adata = nil
-      @debug = Krb5.attr_debug
+      @debug = Krb5::DEBUG
     end
     
     typesig { [Array.typed(::Java::Byte), ::Java::Int] }
@@ -173,7 +173,7 @@ module Sun::Security::Krb5::Internal
       @pvno = 0
       @msg_type = 0
       @p_adata = nil
-      @debug = Krb5.attr_debug
+      @debug = Krb5::DEBUG
       init(DerValue.new(data), req_type)
     end
     
@@ -187,7 +187,7 @@ module Sun::Security::Krb5::Internal
       @pvno = 0
       @msg_type = 0
       @p_adata = nil
-      @debug = Krb5.attr_debug
+      @debug = Krb5::DEBUG
       init(encoding, req_type)
     end
     

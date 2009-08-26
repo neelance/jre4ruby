@@ -82,7 +82,7 @@ module Java::Util
   class Vector < VectorImports.const_get :AbstractList
     include_class_members VectorImports
     overload_protected {
-      include SwtList
+      include JavaList
       include RandomAccess
       include Cloneable
       include Java::Io::Serializable

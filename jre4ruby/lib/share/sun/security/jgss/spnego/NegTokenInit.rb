@@ -155,7 +155,7 @@ module Sun::Security::Jgss::Spnego
         end
         # mechListMIC with CONTEXT 03
         if (!(@mech_list_mic).nil?)
-          if (self.attr_debug)
+          if (DEBUG)
             System.out.println("SpNegoToken NegTokenInit: " + "sending MechListMIC")
           end
           mic = DerOutputStream.new
@@ -199,7 +199,7 @@ module Sun::Security::Jgss::Spnego
           i = 0
           while i < m_list.attr_length
             mech = m_list[i].get_oid
-            if (self.attr_debug)
+            if (DEBUG)
               System.out.println("SpNegoToken NegTokenInit: " + "reading Mechanism Oid = " + RJava.cast_to_string(mech))
             end
             @mech_type_list[i] = Oid.new(mech.to_s)
@@ -219,14 +219,14 @@ module Sun::Security::Jgss::Spnego
           if (!tmp3.is_context_specific(0x2))
             raise IOException.new("SPNEGO NegoTokenInit : " + "did not have the right context tag for mechToken")
           end
-          if (self.attr_debug)
+          if (DEBUG)
             System.out.println("SpNegoToken NegTokenInit: " + "reading Mech Token")
           end
           @mech_token = tmp3.attr_data.get_octet_string
         end
         # parse mechListMIC, if present and not in MS interop mode
         if (!GSSUtil.use_msinterop && (tmp1.attr_data.available > 0))
-          if (self.attr_debug)
+          if (DEBUG)
             System.out.println("SpNegoToken NegTokenInit: " + "receiving MechListMIC")
           end
           tmp6 = tmp1.attr_data.get_der_value
@@ -234,11 +234,11 @@ module Sun::Security::Jgss::Spnego
             raise IOException.new("SPNEGO NegoTokenInit : " + "did not have the right context tag for MICToken")
           end
           @mech_list_mic = tmp6.attr_data.get_octet_string
-          if (self.attr_debug)
+          if (DEBUG)
             System.out.println("SpNegoToken NegTokenInit: " + "MechListMIC Token = " + RJava.cast_to_string(get_hex_bytes(@mech_list_mic)))
           end
         else
-          if (self.attr_debug)
+          if (DEBUG)
             System.out.println("SpNegoToken NegTokenInit : " + "no MIC token included")
           end
         end

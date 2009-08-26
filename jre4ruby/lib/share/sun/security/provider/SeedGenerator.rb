@@ -301,10 +301,10 @@ module Sun::Security::Provider
             raise self.class::InternalError.new("internal error: SHA-1 not available.")
           end
           finalsg = Array.typed(self.class::JavaThreadGroup).new(1) { nil }
-          t = Java::Security::AccessController.do_privileged(Class.new(Java::Security::self.class::PrivilegedAction.class == Class ? Java::Security::self.class::PrivilegedAction : Object) do
+          t = Java::Security::AccessController.do_privileged(Class.new(Java::Security::PrivilegedAction.class == Class ? Java::Security::PrivilegedAction : Object) do
             extend LocalClass
             include_class_members ThreadedSeedGenerator
-            include Java::Security::self::PrivilegedAction if Java::Security::self::PrivilegedAction.class == Module
+            include Java::Security::PrivilegedAction if Java::Security::PrivilegedAction.class == Module
             
             typesig { [] }
             define_method :run do
@@ -509,10 +509,10 @@ module Sun::Security::Provider
         typesig { [] }
         def init
           device = self.class::URL.new(@device_name)
-          @dev_random = Java::Security::AccessController.do_privileged(Class.new(Java::Security::self.class::PrivilegedAction.class == Class ? Java::Security::self.class::PrivilegedAction : Object) do
+          @dev_random = Java::Security::AccessController.do_privileged(Class.new(Java::Security::PrivilegedAction.class == Class ? Java::Security::PrivilegedAction : Object) do
             extend LocalClass
             include_class_members URLSeedGenerator
-            include Java::Security::self::PrivilegedAction if Java::Security::self::PrivilegedAction.class == Module
+            include Java::Security::PrivilegedAction if Java::Security::PrivilegedAction.class == Module
             
             typesig { [] }
             define_method :run do

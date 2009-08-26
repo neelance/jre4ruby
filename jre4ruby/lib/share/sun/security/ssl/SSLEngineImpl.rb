@@ -519,10 +519,10 @@ module Sun::Security::Ssl
       # default read and write side cipher and MAC support
       # 
       # Note:  compression support would go here too
-      @read_cipher = CipherBox::NULL
-      @read_mac = MAC::NULL
-      @write_cipher = CipherBox::NULL
-      @write_mac = MAC::NULL
+      @read_cipher = CipherBox.attr_null
+      @read_mac = MAC.attr_null
+      @write_cipher = CipherBox.attr_null
+      @write_mac = MAC.attr_null
       @enabled_cipher_suites = CipherSuiteList.get_default
       @enabled_protocols = ProtocolList.get_default
       @wrap_lock = Object.new

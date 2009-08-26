@@ -44,8 +44,8 @@ module Java::Nio
     
     class_module.module_eval {
       # Cached unsafe-access object
-      const_set_lazy(:Unsafe) { Bits.unsafe }
-      const_attr_reader  :Unsafe
+      const_set_lazy(:UnsafeInstance) { Bits.unsafe }
+      const_attr_reader  :UnsafeInstance
       
       # Cached unaligned-access capability
       const_set_lazy(:Unaligned) { Bits.unaligned }
@@ -118,12 +118,12 @@ module Java::Nio
     
     typesig { [] }
     def get
-      return ((Unsafe.get_double(ix(next_get_index))))
+      return ((UnsafeInstance.get_double(ix(next_get_index))))
     end
     
     typesig { [::Java::Int] }
     def get(i)
-      return ((Unsafe.get_double(ix(check_index(i)))))
+      return ((UnsafeInstance.get_double(ix(check_index(i)))))
     end
     
     typesig { [Array.typed(::Java::Double), ::Java::Int, ::Java::Int] }
@@ -151,13 +151,13 @@ module Java::Nio
     
     typesig { [::Java::Double] }
     def put(x)
-      Unsafe.put_double(ix(next_put_index), ((x)))
+      UnsafeInstance.put_double(ix(next_put_index), ((x)))
       return self
     end
     
     typesig { [::Java::Int, ::Java::Double] }
     def put(i, x)
-      Unsafe.put_double(ix(check_index(i)), ((x)))
+      UnsafeInstance.put_double(ix(check_index(i)), ((x)))
       return self
     end
     
@@ -179,7 +179,7 @@ module Java::Nio
         if (srem > rem)
           raise BufferOverflowException.new
         end
-        Unsafe.copy_memory(sb.ix(spos), ix(pos), srem << 3)
+        UnsafeInstance.copy_memory(sb.ix(spos), ix(pos), srem << 3)
         sb.position(spos + srem)
         position(pos + srem)
       else
@@ -226,7 +226,7 @@ module Java::Nio
       lim = limit
       raise AssertError if not ((pos <= lim))
       rem = (pos <= lim ? lim - pos : 0)
-      Unsafe.copy_memory(ix(pos), ix(0), rem << 3)
+      UnsafeInstance.copy_memory(ix(pos), ix(0), rem << 3)
       position(rem)
       limit(capacity)
       discard_mark

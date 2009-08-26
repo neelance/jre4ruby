@@ -304,7 +304,7 @@ module Java::Io
     # @see #checkError()
     def flush
       begin
-        synchronized((PLATFORM_LOCK)) do
+        synchronized((self.attr_lock)) do
           ensure_open
           @out.flush
         end
@@ -320,7 +320,7 @@ module Java::Io
     # @see #checkError()
     def close
       begin
-        synchronized((PLATFORM_LOCK)) do
+        synchronized((self.attr_lock)) do
           if ((@out).nil?)
             return
           end
@@ -384,7 +384,7 @@ module Java::Io
     # @param c int specifying a character to be written.
     def write(c)
       begin
-        synchronized((PLATFORM_LOCK)) do
+        synchronized((self.attr_lock)) do
           ensure_open
           @out.write(c)
         end
@@ -402,7 +402,7 @@ module Java::Io
     # @param len Number of characters to write
     def write(buf, off, len)
       begin
-        synchronized((PLATFORM_LOCK)) do
+        synchronized((self.attr_lock)) do
           ensure_open
           @out.write(buf, off, len)
         end
@@ -428,7 +428,7 @@ module Java::Io
     # @param len Number of characters to write
     def write(s, off, len)
       begin
-        synchronized((PLATFORM_LOCK)) do
+        synchronized((self.attr_lock)) do
           ensure_open
           @out.write(s, off, len)
         end
@@ -450,7 +450,7 @@ module Java::Io
     typesig { [] }
     def new_line
       begin
-        synchronized((PLATFORM_LOCK)) do
+        synchronized((self.attr_lock)) do
           ensure_open
           @out.write(@line_separator)
           if (@auto_flush)
@@ -600,7 +600,7 @@ module Java::Io
     # 
     # @param x the <code>boolean</code> value to be printed
     def println(x)
-      synchronized((PLATFORM_LOCK)) do
+      synchronized((self.attr_lock)) do
         print(x)
         println
       end
@@ -613,7 +613,7 @@ module Java::Io
     # 
     # @param x the <code>char</code> value to be printed
     def println(x)
-      synchronized((PLATFORM_LOCK)) do
+      synchronized((self.attr_lock)) do
         print(x)
         println
       end
@@ -626,7 +626,7 @@ module Java::Io
     # 
     # @param x the <code>int</code> value to be printed
     def println(x)
-      synchronized((PLATFORM_LOCK)) do
+      synchronized((self.attr_lock)) do
         print(x)
         println
       end
@@ -639,7 +639,7 @@ module Java::Io
     # 
     # @param x the <code>long</code> value to be printed
     def println(x)
-      synchronized((PLATFORM_LOCK)) do
+      synchronized((self.attr_lock)) do
         print(x)
         println
       end
@@ -652,7 +652,7 @@ module Java::Io
     # 
     # @param x the <code>float</code> value to be printed
     def println(x)
-      synchronized((PLATFORM_LOCK)) do
+      synchronized((self.attr_lock)) do
         print(x)
         println
       end
@@ -665,7 +665,7 @@ module Java::Io
     # 
     # @param x the <code>double</code> value to be printed
     def println(x)
-      synchronized((PLATFORM_LOCK)) do
+      synchronized((self.attr_lock)) do
         print(x)
         println
       end
@@ -678,7 +678,7 @@ module Java::Io
     # 
     # @param x the array of <code>char</code> values to be printed
     def println(x)
-      synchronized((PLATFORM_LOCK)) do
+      synchronized((self.attr_lock)) do
         print(x)
         println
       end
@@ -691,7 +691,7 @@ module Java::Io
     # 
     # @param x the <code>String</code> value to be printed
     def println(x)
-      synchronized((PLATFORM_LOCK)) do
+      synchronized((self.attr_lock)) do
         print(x)
         println
       end
@@ -707,7 +707,7 @@ module Java::Io
     # @param x  The <code>Object</code> to be printed.
     def println(x)
       s = String.value_of(x)
-      synchronized((PLATFORM_LOCK)) do
+      synchronized((self.attr_lock)) do
         print(s)
         println
       end
@@ -849,7 +849,7 @@ module Java::Io
     # @since  1.5
     def format(format_, *args)
       begin
-        synchronized((PLATFORM_LOCK)) do
+        synchronized((self.attr_lock)) do
           ensure_open
           if (((@formatter).nil?) || (!(@formatter.locale).equal?(Locale.get_default)))
             @formatter = Formatter.new(self)
@@ -909,7 +909,7 @@ module Java::Io
     # @since  1.5
     def format(l, format_, *args)
       begin
-        synchronized((PLATFORM_LOCK)) do
+        synchronized((self.attr_lock)) do
           ensure_open
           if (((@formatter).nil?) || (!(@formatter.locale).equal?(l)))
             @formatter = Formatter.new(self, l)

@@ -113,7 +113,7 @@ module Sun::Security::Provider::Certpath
       @target_cert_constraints = build_params.get_target_cert_constraints
     end
     
-    typesig { [State, SwtList] }
+    typesig { [State, JavaList] }
     # Retrieves certificates from the list of certStores using the buildParams
     # and the currentState as a filter
     # 
@@ -123,7 +123,7 @@ module Sun::Security::Provider::Certpath
       raise NotImplementedError
     end
     
-    typesig { [X509Certificate, State, SwtList] }
+    typesig { [X509Certificate, State, JavaList] }
     # Verifies the cert against the currentState, using the certPathList
     # generated thus far to help with loop detection
     # 

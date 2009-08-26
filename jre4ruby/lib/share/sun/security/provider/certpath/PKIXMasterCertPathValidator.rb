@@ -59,7 +59,7 @@ module Sun::Security::Provider::Certpath
     alias_method :attr_cert_path_checkers=, :cert_path_checkers=
     undef_method :cert_path_checkers=
     
-    typesig { [SwtList] }
+    typesig { [JavaList] }
     # Initializes the list of PKIXCertPathCheckers whose checks
     # will be performed on each certificate in the certpath.
     # 
@@ -69,7 +69,7 @@ module Sun::Security::Provider::Certpath
       @cert_path_checkers = cert_path_checkers
     end
     
-    typesig { [CertPath, SwtList] }
+    typesig { [CertPath, JavaList] }
     # Validates a certification path consisting exclusively of
     # <code>X509Certificate</code>s using the
     # <code>PKIXCertPathChecker</code>s specified
@@ -183,7 +183,7 @@ module Sun::Security::Provider::Certpath
     end
     
     class_module.module_eval {
-      typesig { [PKIXCertPathChecker, ::Java::Int, SwtList] }
+      typesig { [PKIXCertPathChecker, ::Java::Int, JavaList] }
       # Examines the list of PKIX cert path checkers to determine whether
       # both the current checker and the next checker are revocation checkers.
       # OCSPChecker and CrlRevocationChecker are both revocation checkers.

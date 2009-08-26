@@ -766,10 +766,10 @@ module Sun::Misc
         def ensure_open
           if ((@jar).nil?)
             begin
-              Java::Security::AccessController.do_privileged(Class.new(Java::Security::self.class::PrivilegedExceptionAction.class == Class ? Java::Security::self.class::PrivilegedExceptionAction : Object) do
+              Java::Security::AccessController.do_privileged(Class.new(Java::Security::PrivilegedExceptionAction.class == Class ? Java::Security::PrivilegedExceptionAction : Object) do
                 extend LocalClass
                 include_class_members JarLoader
-                include Java::Security::self::PrivilegedExceptionAction if Java::Security::self::PrivilegedExceptionAction.class == Module
+                include Java::Security::PrivilegedExceptionAction if Java::Security::PrivilegedExceptionAction.class == Module
                 
                 typesig { [] }
                 define_method :run do
@@ -812,7 +812,7 @@ module Sun::Misc
                 private
                 alias_method :initialize_anonymous, :initialize
               end.new_local(self))
-            rescue Java::Security::self.class::PrivilegedActionException => pae
+            rescue Java::Security::PrivilegedActionException => pae
               raise pae.get_exception
             end
           end
@@ -1035,7 +1035,7 @@ module Sun::Misc
                   # put it in the global hashtable
                   @lmap.put(url, new_loader)
                 end
-              rescue Java::Security::self.class::PrivilegedActionException => pae
+              rescue Java::Security::PrivilegedActionException => pae
                 next
               rescue self.class::MalformedURLException => e
                 next

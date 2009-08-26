@@ -1025,7 +1025,7 @@ module Sun::Security::Pkcs11
             if ((@encoded).nil?)
               fetch_values
               begin
-                key = Sun::Security::Provider::self.class::DSAPublicKey.new(@y, @params.get_p, @params.get_q, @params.get_g)
+                key = Sun::Security::Provider::DSAPublicKey.new(@y, @params.get_p, @params.get_q, @params.get_g)
                 @encoded = key.get_encoded
               rescue self.class::InvalidKeyException => e
                 raise self.class::ProviderException.new(e)
@@ -1116,7 +1116,7 @@ module Sun::Security::Pkcs11
             if ((@encoded).nil?)
               fetch_values
               begin
-                key = Sun::Security::Provider::self.class::DSAPrivateKey.new(@x, @params.get_p, @params.get_q, @params.get_g)
+                key = Sun::Security::Provider::DSAPrivateKey.new(@x, @params.get_p, @params.get_q, @params.get_g)
                 @encoded = key.get_encoded
               rescue self.class::InvalidKeyException => e
                 raise self.class::ProviderException.new(e)
@@ -1397,7 +1397,7 @@ module Sun::Security::Pkcs11
             if ((@encoded).nil?)
               fetch_values
               begin
-                key = Sun::Security::Ec::self.class::ECPrivateKeyImpl.new(@s, @params)
+                key = Sun::Security::Ec::ECPrivateKeyImpl.new(@s, @params)
                 @encoded = key.get_encoded
               rescue self.class::InvalidKeyException => e
                 raise self.class::ProviderException.new(e)
@@ -1492,7 +1492,7 @@ module Sun::Security::Pkcs11
             if ((@encoded).nil?)
               fetch_values
               begin
-                key = Sun::Security::Ec::self.class::ECPublicKeyImpl.new(@w, @params)
+                key = Sun::Security::Ec::ECPublicKeyImpl.new(@w, @params)
                 @encoded = key.get_encoded
               rescue self.class::InvalidKeyException => e
                 raise self.class::ProviderException.new(e)

@@ -486,7 +486,7 @@ module Sun::Security::X509
         return nil
       end
       
-      typesig { [SwtList] }
+      typesig { [JavaList] }
       def get_embedded_hex_string(hex_list)
         n = hex_list.size
         hex_bytes = Array.typed(::Java::Byte).new(n) { 0 }

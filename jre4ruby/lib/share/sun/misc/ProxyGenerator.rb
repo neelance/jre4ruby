@@ -736,7 +736,7 @@ module Sun::Misc
     end
     
     class_module.module_eval {
-      typesig { [SwtList] }
+      typesig { [JavaList] }
       # For a given set of proxy methods with the same signature, check
       # that their return types are compatible according to the Proxy
       # specification.
@@ -1583,7 +1583,7 @@ module Sun::Misc
         end
       end
       
-      typesig { [Array.typed(Class), Array.typed(Class), SwtList] }
+      typesig { [Array.typed(Class), Array.typed(Class), JavaList] }
       # Add to the given list all of the types in the "from" array that
       # are not already contained in the list and are assignable to at
       # least one of the types in the "with" array.

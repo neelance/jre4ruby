@@ -320,7 +320,7 @@ module Sun::Net::Spi
                         while (st.has_more_tokens)
                           pool.add(st.next_token.to_lower_case, Boolean::TRUE)
                         end
-                      rescue Sun::Misc::self.class::REException => ex
+                      rescue Sun::Misc::REException => ex
                       end
                       nprop.attr_hosts_pool = pool
                       nprop.attr_hosts_source = nphosts

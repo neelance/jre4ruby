@@ -218,10 +218,10 @@ module Java::Lang
                 return
               end
               thread_class = self.class
-              Java::Security::AccessController.do_privileged(Class.new(Java::Security::self.class::PrivilegedAction.class == Class ? Java::Security::self.class::PrivilegedAction : Object) do
+              Java::Security::AccessController.do_privileged(Class.new(Java::Security::PrivilegedAction.class == Class ? Java::Security::PrivilegedAction : Object) do
                 extend LocalClass
                 include_class_members thread_class
-                include Java::Security::self::PrivilegedAction if Java::Security::self::PrivilegedAction.class == Module
+                include Java::Security::PrivilegedAction if Java::Security::PrivilegedAction.class == Module
                 
                 typesig { [] }
                 define_method :run do

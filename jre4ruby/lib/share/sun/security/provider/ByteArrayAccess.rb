@@ -64,14 +64,14 @@ module Sun::Security::Provider
     end
     
     class_module.module_eval {
-      const_set_lazy(:Unsafe) { Unsafe.get_unsafe }
-      const_attr_reader  :Unsafe
+      const_set_lazy(:UnsafeInstance) { Unsafe.get_unsafe }
+      const_attr_reader  :UnsafeInstance
       
-      const_set_lazy(:ByteArrayOfs) { Unsafe.array_base_offset(Array) }
+      const_set_lazy(:ByteArrayOfs) { UnsafeInstance.array_base_offset(Array) }
       const_attr_reader  :ByteArrayOfs
       
       when_class_loaded do
-        scale_ok = (((Unsafe.array_index_scale(Array)).equal?(1)) && ((Unsafe.array_index_scale(Array)).equal?(4)) && ((Unsafe.array_index_scale(Array)).equal?(8)) && (((ByteArrayOfs & 3)).equal?(0)))
+        scale_ok = (((UnsafeInstance.array_index_scale(Array)).equal?(1)) && ((UnsafeInstance.array_index_scale(Array)).equal?(4)) && ((UnsafeInstance.array_index_scale(Array)).equal?(8)) && (((ByteArrayOfs & 3)).equal?(0)))
         byte_order = ByteOrder.native_order
         const_set :LittleEndianUnaligned, scale_ok && unaligned && ((byte_order).equal?(ByteOrder::LITTLE_ENDIAN))
         const_set :BigEndian, scale_ok && ((byte_order).equal?(ByteOrder::BIG_ENDIAN))
@@ -94,7 +94,7 @@ module Sun::Security::Provider
           in_ofs += ByteArrayOfs
           len += in_ofs
           while (in_ofs < len)
-            out[((out_ofs += 1) - 1)] = Unsafe.get_int(in_, in_ofs)
+            out[((out_ofs += 1) - 1)] = UnsafeInstance.get_int(in_, in_ofs)
             in_ofs += 4
           end
         else
@@ -102,7 +102,7 @@ module Sun::Security::Provider
             in_ofs += ByteArrayOfs
             len += in_ofs
             while (in_ofs < len)
-              out[((out_ofs += 1) - 1)] = reverse_bytes(Unsafe.get_int(in_, in_ofs))
+              out[((out_ofs += 1) - 1)] = reverse_bytes(UnsafeInstance.get_int(in_, in_ofs))
               in_ofs += 4
             end
           else
@@ -120,41 +120,41 @@ module Sun::Security::Provider
       def b2i_little64(in_, in_ofs, out)
         if (LittleEndianUnaligned)
           in_ofs += ByteArrayOfs
-          out[0] = Unsafe.get_int(in_, (in_ofs))
-          out[1] = Unsafe.get_int(in_, (in_ofs + 4))
-          out[2] = Unsafe.get_int(in_, (in_ofs + 8))
-          out[3] = Unsafe.get_int(in_, (in_ofs + 12))
-          out[4] = Unsafe.get_int(in_, (in_ofs + 16))
-          out[5] = Unsafe.get_int(in_, (in_ofs + 20))
-          out[6] = Unsafe.get_int(in_, (in_ofs + 24))
-          out[7] = Unsafe.get_int(in_, (in_ofs + 28))
-          out[8] = Unsafe.get_int(in_, (in_ofs + 32))
-          out[9] = Unsafe.get_int(in_, (in_ofs + 36))
-          out[10] = Unsafe.get_int(in_, (in_ofs + 40))
-          out[11] = Unsafe.get_int(in_, (in_ofs + 44))
-          out[12] = Unsafe.get_int(in_, (in_ofs + 48))
-          out[13] = Unsafe.get_int(in_, (in_ofs + 52))
-          out[14] = Unsafe.get_int(in_, (in_ofs + 56))
-          out[15] = Unsafe.get_int(in_, (in_ofs + 60))
+          out[0] = UnsafeInstance.get_int(in_, (in_ofs))
+          out[1] = UnsafeInstance.get_int(in_, (in_ofs + 4))
+          out[2] = UnsafeInstance.get_int(in_, (in_ofs + 8))
+          out[3] = UnsafeInstance.get_int(in_, (in_ofs + 12))
+          out[4] = UnsafeInstance.get_int(in_, (in_ofs + 16))
+          out[5] = UnsafeInstance.get_int(in_, (in_ofs + 20))
+          out[6] = UnsafeInstance.get_int(in_, (in_ofs + 24))
+          out[7] = UnsafeInstance.get_int(in_, (in_ofs + 28))
+          out[8] = UnsafeInstance.get_int(in_, (in_ofs + 32))
+          out[9] = UnsafeInstance.get_int(in_, (in_ofs + 36))
+          out[10] = UnsafeInstance.get_int(in_, (in_ofs + 40))
+          out[11] = UnsafeInstance.get_int(in_, (in_ofs + 44))
+          out[12] = UnsafeInstance.get_int(in_, (in_ofs + 48))
+          out[13] = UnsafeInstance.get_int(in_, (in_ofs + 52))
+          out[14] = UnsafeInstance.get_int(in_, (in_ofs + 56))
+          out[15] = UnsafeInstance.get_int(in_, (in_ofs + 60))
         else
           if (BigEndian && (((in_ofs & 3)).equal?(0)))
             in_ofs += ByteArrayOfs
-            out[0] = reverse_bytes(Unsafe.get_int(in_, (in_ofs)))
-            out[1] = reverse_bytes(Unsafe.get_int(in_, (in_ofs + 4)))
-            out[2] = reverse_bytes(Unsafe.get_int(in_, (in_ofs + 8)))
-            out[3] = reverse_bytes(Unsafe.get_int(in_, (in_ofs + 12)))
-            out[4] = reverse_bytes(Unsafe.get_int(in_, (in_ofs + 16)))
-            out[5] = reverse_bytes(Unsafe.get_int(in_, (in_ofs + 20)))
-            out[6] = reverse_bytes(Unsafe.get_int(in_, (in_ofs + 24)))
-            out[7] = reverse_bytes(Unsafe.get_int(in_, (in_ofs + 28)))
-            out[8] = reverse_bytes(Unsafe.get_int(in_, (in_ofs + 32)))
-            out[9] = reverse_bytes(Unsafe.get_int(in_, (in_ofs + 36)))
-            out[10] = reverse_bytes(Unsafe.get_int(in_, (in_ofs + 40)))
-            out[11] = reverse_bytes(Unsafe.get_int(in_, (in_ofs + 44)))
-            out[12] = reverse_bytes(Unsafe.get_int(in_, (in_ofs + 48)))
-            out[13] = reverse_bytes(Unsafe.get_int(in_, (in_ofs + 52)))
-            out[14] = reverse_bytes(Unsafe.get_int(in_, (in_ofs + 56)))
-            out[15] = reverse_bytes(Unsafe.get_int(in_, (in_ofs + 60)))
+            out[0] = reverse_bytes(UnsafeInstance.get_int(in_, (in_ofs)))
+            out[1] = reverse_bytes(UnsafeInstance.get_int(in_, (in_ofs + 4)))
+            out[2] = reverse_bytes(UnsafeInstance.get_int(in_, (in_ofs + 8)))
+            out[3] = reverse_bytes(UnsafeInstance.get_int(in_, (in_ofs + 12)))
+            out[4] = reverse_bytes(UnsafeInstance.get_int(in_, (in_ofs + 16)))
+            out[5] = reverse_bytes(UnsafeInstance.get_int(in_, (in_ofs + 20)))
+            out[6] = reverse_bytes(UnsafeInstance.get_int(in_, (in_ofs + 24)))
+            out[7] = reverse_bytes(UnsafeInstance.get_int(in_, (in_ofs + 28)))
+            out[8] = reverse_bytes(UnsafeInstance.get_int(in_, (in_ofs + 32)))
+            out[9] = reverse_bytes(UnsafeInstance.get_int(in_, (in_ofs + 36)))
+            out[10] = reverse_bytes(UnsafeInstance.get_int(in_, (in_ofs + 40)))
+            out[11] = reverse_bytes(UnsafeInstance.get_int(in_, (in_ofs + 44)))
+            out[12] = reverse_bytes(UnsafeInstance.get_int(in_, (in_ofs + 48)))
+            out[13] = reverse_bytes(UnsafeInstance.get_int(in_, (in_ofs + 52)))
+            out[14] = reverse_bytes(UnsafeInstance.get_int(in_, (in_ofs + 56)))
+            out[15] = reverse_bytes(UnsafeInstance.get_int(in_, (in_ofs + 60)))
           else
             b2i_little(in_, in_ofs, out, 0, 64)
           end
@@ -168,7 +168,7 @@ module Sun::Security::Provider
           out_ofs += ByteArrayOfs
           len += out_ofs
           while (out_ofs < len)
-            Unsafe.put_int(out, out_ofs, in_[((in_ofs += 1) - 1)])
+            UnsafeInstance.put_int(out, out_ofs, in_[((in_ofs += 1) - 1)])
             out_ofs += 4
           end
         else
@@ -176,7 +176,7 @@ module Sun::Security::Provider
             out_ofs += ByteArrayOfs
             len += out_ofs
             while (out_ofs < len)
-              Unsafe.put_int(out, out_ofs, reverse_bytes(in_[((in_ofs += 1) - 1)]))
+              UnsafeInstance.put_int(out, out_ofs, reverse_bytes(in_[((in_ofs += 1) - 1)]))
               out_ofs += 4
             end
           else
@@ -196,10 +196,10 @@ module Sun::Security::Provider
       # Store one 32-bit value into out[outOfs..outOfs+3] in little endian order.
       def i2b_little4(val, out, out_ofs)
         if (LittleEndianUnaligned)
-          Unsafe.put_int(out, (ByteArrayOfs + out_ofs), val)
+          UnsafeInstance.put_int(out, (ByteArrayOfs + out_ofs), val)
         else
           if (BigEndian && (((out_ofs & 3)).equal?(0)))
-            Unsafe.put_int(out, (ByteArrayOfs + out_ofs), reverse_bytes(val))
+            UnsafeInstance.put_int(out, (ByteArrayOfs + out_ofs), reverse_bytes(val))
           else
             out[out_ofs] = (val)
             out[out_ofs + 1] = (val >> 8)
@@ -216,7 +216,7 @@ module Sun::Security::Provider
           in_ofs += ByteArrayOfs
           len += in_ofs
           while (in_ofs < len)
-            out[((out_ofs += 1) - 1)] = reverse_bytes(Unsafe.get_int(in_, in_ofs))
+            out[((out_ofs += 1) - 1)] = reverse_bytes(UnsafeInstance.get_int(in_, in_ofs))
             in_ofs += 4
           end
         else
@@ -224,7 +224,7 @@ module Sun::Security::Provider
             in_ofs += ByteArrayOfs
             len += in_ofs
             while (in_ofs < len)
-              out[((out_ofs += 1) - 1)] = Unsafe.get_int(in_, in_ofs)
+              out[((out_ofs += 1) - 1)] = UnsafeInstance.get_int(in_, in_ofs)
               in_ofs += 4
             end
           else
@@ -242,41 +242,41 @@ module Sun::Security::Provider
       def b2i_big64(in_, in_ofs, out)
         if (LittleEndianUnaligned)
           in_ofs += ByteArrayOfs
-          out[0] = reverse_bytes(Unsafe.get_int(in_, (in_ofs)))
-          out[1] = reverse_bytes(Unsafe.get_int(in_, (in_ofs + 4)))
-          out[2] = reverse_bytes(Unsafe.get_int(in_, (in_ofs + 8)))
-          out[3] = reverse_bytes(Unsafe.get_int(in_, (in_ofs + 12)))
-          out[4] = reverse_bytes(Unsafe.get_int(in_, (in_ofs + 16)))
-          out[5] = reverse_bytes(Unsafe.get_int(in_, (in_ofs + 20)))
-          out[6] = reverse_bytes(Unsafe.get_int(in_, (in_ofs + 24)))
-          out[7] = reverse_bytes(Unsafe.get_int(in_, (in_ofs + 28)))
-          out[8] = reverse_bytes(Unsafe.get_int(in_, (in_ofs + 32)))
-          out[9] = reverse_bytes(Unsafe.get_int(in_, (in_ofs + 36)))
-          out[10] = reverse_bytes(Unsafe.get_int(in_, (in_ofs + 40)))
-          out[11] = reverse_bytes(Unsafe.get_int(in_, (in_ofs + 44)))
-          out[12] = reverse_bytes(Unsafe.get_int(in_, (in_ofs + 48)))
-          out[13] = reverse_bytes(Unsafe.get_int(in_, (in_ofs + 52)))
-          out[14] = reverse_bytes(Unsafe.get_int(in_, (in_ofs + 56)))
-          out[15] = reverse_bytes(Unsafe.get_int(in_, (in_ofs + 60)))
+          out[0] = reverse_bytes(UnsafeInstance.get_int(in_, (in_ofs)))
+          out[1] = reverse_bytes(UnsafeInstance.get_int(in_, (in_ofs + 4)))
+          out[2] = reverse_bytes(UnsafeInstance.get_int(in_, (in_ofs + 8)))
+          out[3] = reverse_bytes(UnsafeInstance.get_int(in_, (in_ofs + 12)))
+          out[4] = reverse_bytes(UnsafeInstance.get_int(in_, (in_ofs + 16)))
+          out[5] = reverse_bytes(UnsafeInstance.get_int(in_, (in_ofs + 20)))
+          out[6] = reverse_bytes(UnsafeInstance.get_int(in_, (in_ofs + 24)))
+          out[7] = reverse_bytes(UnsafeInstance.get_int(in_, (in_ofs + 28)))
+          out[8] = reverse_bytes(UnsafeInstance.get_int(in_, (in_ofs + 32)))
+          out[9] = reverse_bytes(UnsafeInstance.get_int(in_, (in_ofs + 36)))
+          out[10] = reverse_bytes(UnsafeInstance.get_int(in_, (in_ofs + 40)))
+          out[11] = reverse_bytes(UnsafeInstance.get_int(in_, (in_ofs + 44)))
+          out[12] = reverse_bytes(UnsafeInstance.get_int(in_, (in_ofs + 48)))
+          out[13] = reverse_bytes(UnsafeInstance.get_int(in_, (in_ofs + 52)))
+          out[14] = reverse_bytes(UnsafeInstance.get_int(in_, (in_ofs + 56)))
+          out[15] = reverse_bytes(UnsafeInstance.get_int(in_, (in_ofs + 60)))
         else
           if (BigEndian && (((in_ofs & 3)).equal?(0)))
             in_ofs += ByteArrayOfs
-            out[0] = Unsafe.get_int(in_, (in_ofs))
-            out[1] = Unsafe.get_int(in_, (in_ofs + 4))
-            out[2] = Unsafe.get_int(in_, (in_ofs + 8))
-            out[3] = Unsafe.get_int(in_, (in_ofs + 12))
-            out[4] = Unsafe.get_int(in_, (in_ofs + 16))
-            out[5] = Unsafe.get_int(in_, (in_ofs + 20))
-            out[6] = Unsafe.get_int(in_, (in_ofs + 24))
-            out[7] = Unsafe.get_int(in_, (in_ofs + 28))
-            out[8] = Unsafe.get_int(in_, (in_ofs + 32))
-            out[9] = Unsafe.get_int(in_, (in_ofs + 36))
-            out[10] = Unsafe.get_int(in_, (in_ofs + 40))
-            out[11] = Unsafe.get_int(in_, (in_ofs + 44))
-            out[12] = Unsafe.get_int(in_, (in_ofs + 48))
-            out[13] = Unsafe.get_int(in_, (in_ofs + 52))
-            out[14] = Unsafe.get_int(in_, (in_ofs + 56))
-            out[15] = Unsafe.get_int(in_, (in_ofs + 60))
+            out[0] = UnsafeInstance.get_int(in_, (in_ofs))
+            out[1] = UnsafeInstance.get_int(in_, (in_ofs + 4))
+            out[2] = UnsafeInstance.get_int(in_, (in_ofs + 8))
+            out[3] = UnsafeInstance.get_int(in_, (in_ofs + 12))
+            out[4] = UnsafeInstance.get_int(in_, (in_ofs + 16))
+            out[5] = UnsafeInstance.get_int(in_, (in_ofs + 20))
+            out[6] = UnsafeInstance.get_int(in_, (in_ofs + 24))
+            out[7] = UnsafeInstance.get_int(in_, (in_ofs + 28))
+            out[8] = UnsafeInstance.get_int(in_, (in_ofs + 32))
+            out[9] = UnsafeInstance.get_int(in_, (in_ofs + 36))
+            out[10] = UnsafeInstance.get_int(in_, (in_ofs + 40))
+            out[11] = UnsafeInstance.get_int(in_, (in_ofs + 44))
+            out[12] = UnsafeInstance.get_int(in_, (in_ofs + 48))
+            out[13] = UnsafeInstance.get_int(in_, (in_ofs + 52))
+            out[14] = UnsafeInstance.get_int(in_, (in_ofs + 56))
+            out[15] = UnsafeInstance.get_int(in_, (in_ofs + 60))
           else
             b2i_big(in_, in_ofs, out, 0, 64)
           end
@@ -290,7 +290,7 @@ module Sun::Security::Provider
           out_ofs += ByteArrayOfs
           len += out_ofs
           while (out_ofs < len)
-            Unsafe.put_int(out, out_ofs, reverse_bytes(in_[((in_ofs += 1) - 1)]))
+            UnsafeInstance.put_int(out, out_ofs, reverse_bytes(in_[((in_ofs += 1) - 1)]))
             out_ofs += 4
           end
         else
@@ -298,7 +298,7 @@ module Sun::Security::Provider
             out_ofs += ByteArrayOfs
             len += out_ofs
             while (out_ofs < len)
-              Unsafe.put_int(out, out_ofs, in_[((in_ofs += 1) - 1)])
+              UnsafeInstance.put_int(out, out_ofs, in_[((in_ofs += 1) - 1)])
               out_ofs += 4
             end
           else
@@ -318,10 +318,10 @@ module Sun::Security::Provider
       # Store one 32-bit value into out[outOfs..outOfs+3] in big endian order.
       def i2b_big4(val, out, out_ofs)
         if (LittleEndianUnaligned)
-          Unsafe.put_int(out, (ByteArrayOfs + out_ofs), reverse_bytes(val))
+          UnsafeInstance.put_int(out, (ByteArrayOfs + out_ofs), reverse_bytes(val))
         else
           if (BigEndian && (((out_ofs & 3)).equal?(0)))
-            Unsafe.put_int(out, (ByteArrayOfs + out_ofs), val)
+            UnsafeInstance.put_int(out, (ByteArrayOfs + out_ofs), val)
           else
             out[out_ofs] = (val >> 24)
             out[out_ofs + 1] = (val >> 16)
@@ -338,7 +338,7 @@ module Sun::Security::Provider
           in_ofs += ByteArrayOfs
           len += in_ofs
           while (in_ofs < len)
-            out[((out_ofs += 1) - 1)] = reverse_bytes(Unsafe.get_long(in_, in_ofs))
+            out[((out_ofs += 1) - 1)] = reverse_bytes(UnsafeInstance.get_long(in_, in_ofs))
             in_ofs += 8
           end
         else
@@ -351,7 +351,7 @@ module Sun::Security::Provider
             in_ofs += ByteArrayOfs
             len += in_ofs
             while (in_ofs < len)
-              out[((out_ofs += 1) - 1)] = (Unsafe.get_int(in_, in_ofs) << 32) | (Unsafe.get_int(in_, (in_ofs + 4)) & 0xffffffff)
+              out[((out_ofs += 1) - 1)] = (UnsafeInstance.get_int(in_, in_ofs) << 32) | (UnsafeInstance.get_int(in_, (in_ofs + 4)) & 0xffffffff)
               in_ofs += 8
             end
           else
@@ -372,22 +372,22 @@ module Sun::Security::Provider
       def b2l_big128(in_, in_ofs, out)
         if (LittleEndianUnaligned)
           in_ofs += ByteArrayOfs
-          out[0] = reverse_bytes(Unsafe.get_long(in_, (in_ofs)))
-          out[1] = reverse_bytes(Unsafe.get_long(in_, (in_ofs + 8)))
-          out[2] = reverse_bytes(Unsafe.get_long(in_, (in_ofs + 16)))
-          out[3] = reverse_bytes(Unsafe.get_long(in_, (in_ofs + 24)))
-          out[4] = reverse_bytes(Unsafe.get_long(in_, (in_ofs + 32)))
-          out[5] = reverse_bytes(Unsafe.get_long(in_, (in_ofs + 40)))
-          out[6] = reverse_bytes(Unsafe.get_long(in_, (in_ofs + 48)))
-          out[7] = reverse_bytes(Unsafe.get_long(in_, (in_ofs + 56)))
-          out[8] = reverse_bytes(Unsafe.get_long(in_, (in_ofs + 64)))
-          out[9] = reverse_bytes(Unsafe.get_long(in_, (in_ofs + 72)))
-          out[10] = reverse_bytes(Unsafe.get_long(in_, (in_ofs + 80)))
-          out[11] = reverse_bytes(Unsafe.get_long(in_, (in_ofs + 88)))
-          out[12] = reverse_bytes(Unsafe.get_long(in_, (in_ofs + 96)))
-          out[13] = reverse_bytes(Unsafe.get_long(in_, (in_ofs + 104)))
-          out[14] = reverse_bytes(Unsafe.get_long(in_, (in_ofs + 112)))
-          out[15] = reverse_bytes(Unsafe.get_long(in_, (in_ofs + 120)))
+          out[0] = reverse_bytes(UnsafeInstance.get_long(in_, (in_ofs)))
+          out[1] = reverse_bytes(UnsafeInstance.get_long(in_, (in_ofs + 8)))
+          out[2] = reverse_bytes(UnsafeInstance.get_long(in_, (in_ofs + 16)))
+          out[3] = reverse_bytes(UnsafeInstance.get_long(in_, (in_ofs + 24)))
+          out[4] = reverse_bytes(UnsafeInstance.get_long(in_, (in_ofs + 32)))
+          out[5] = reverse_bytes(UnsafeInstance.get_long(in_, (in_ofs + 40)))
+          out[6] = reverse_bytes(UnsafeInstance.get_long(in_, (in_ofs + 48)))
+          out[7] = reverse_bytes(UnsafeInstance.get_long(in_, (in_ofs + 56)))
+          out[8] = reverse_bytes(UnsafeInstance.get_long(in_, (in_ofs + 64)))
+          out[9] = reverse_bytes(UnsafeInstance.get_long(in_, (in_ofs + 72)))
+          out[10] = reverse_bytes(UnsafeInstance.get_long(in_, (in_ofs + 80)))
+          out[11] = reverse_bytes(UnsafeInstance.get_long(in_, (in_ofs + 88)))
+          out[12] = reverse_bytes(UnsafeInstance.get_long(in_, (in_ofs + 96)))
+          out[13] = reverse_bytes(UnsafeInstance.get_long(in_, (in_ofs + 104)))
+          out[14] = reverse_bytes(UnsafeInstance.get_long(in_, (in_ofs + 112)))
+          out[15] = reverse_bytes(UnsafeInstance.get_long(in_, (in_ofs + 120)))
         else
           # no optimization for big endian, see comments in b2lBig
           b2l_big(in_, in_ofs, out, 0, 128)

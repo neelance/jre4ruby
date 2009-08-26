@@ -49,7 +49,7 @@ module Sun::Security::Jgss::Krb5
     include MechanismFactory
     
     class_module.module_eval {
-      const_set_lazy(:DEBUG) { Krb5Util.attr_debug }
+      const_set_lazy(:DEBUG) { Krb5Util::DEBUG }
       const_attr_reader  :DEBUG
       
       const_set_lazy(:PROVIDER) { Sun::Security::Jgss::SunProvider.new }

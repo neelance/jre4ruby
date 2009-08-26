@@ -207,7 +207,7 @@ module Sun::Security::Provider::Certpath
       return sb.to_s
     end
     
-    typesig { [::Java::Int, ::Java::Boolean, ::Java::Boolean, ::Java::Boolean, SwtList] }
+    typesig { [::Java::Int, ::Java::Boolean, ::Java::Boolean, ::Java::Boolean, JavaList] }
     # Initialize the state.
     # 
     # @param maxPathLen The maximum number of CA certs in a path, where -1

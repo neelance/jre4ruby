@@ -237,7 +237,7 @@ module Sun::Security::Jgss::Krb5
     undef_method :caller=
     
     class_module.module_eval {
-      const_set_lazy(:DEBUG) { Krb5Util.attr_debug }
+      const_set_lazy(:DEBUG) { Krb5Util::DEBUG }
       const_attr_reader  :DEBUG
     }
     

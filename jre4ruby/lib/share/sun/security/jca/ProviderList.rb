@@ -447,7 +447,7 @@ module Sun::Security::Jca
       return ServiceList.new_local(self, type, algorithm)
     end
     
-    typesig { [String, SwtList] }
+    typesig { [String, JavaList] }
     # This method exists for compatibility with JCE only. It will be removed
     # once JCE has been changed to use the replacement method.
     # @deprecated use getServices(List<ServiceId>) instead
@@ -459,7 +459,7 @@ module Sun::Security::Jca
       return get_services(ids)
     end
     
-    typesig { [SwtList] }
+    typesig { [JavaList] }
     def get_services(ids)
       return ServiceList.new_local(self, ids)
     end
@@ -532,7 +532,7 @@ module Sun::Security::Jca
           @ids = nil
         end
         
-        typesig { [SwtList] }
+        typesig { [self::JavaList] }
         def initialize(ids)
           @type = nil
           @algorithm = nil

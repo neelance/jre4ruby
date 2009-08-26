@@ -79,7 +79,7 @@ module Java::Util::Concurrent
   # @param <E> the type of elements held in this collection
   class CopyOnWriteArrayList 
     include_class_members CopyOnWriteArrayListImports
-    include SwtList
+    include JavaList
     include RandomAccess
     include Cloneable
     include Java::Io::Serializable
@@ -927,7 +927,7 @@ module Java::Util::Concurrent
       if ((o).equal?(self))
         return true
       end
-      if (!(o.is_a?(SwtList)))
+      if (!(o.is_a?(JavaList)))
         return false
       end
       list = (o)
@@ -1379,7 +1379,7 @@ module Java::Util::Concurrent
         alias_method :attr_size=, :size=
         undef_method :size=
         
-        typesig { [SwtList, ::Java::Int, ::Java::Int, ::Java::Int] }
+        typesig { [self::JavaList, ::Java::Int, ::Java::Int, ::Java::Int] }
         def initialize(l, index, offset, size)
           @i = nil
           @index = 0
@@ -1449,12 +1449,12 @@ module Java::Util::Concurrent
       end }
       
       # Support for resetting lock while deserializing
-      const_set_lazy(:Unsafe) { Unsafe.get_unsafe }
-      const_attr_reader  :Unsafe
+      const_set_lazy(:UnsafeInstance) { Unsafe.get_unsafe }
+      const_attr_reader  :UnsafeInstance
       
       when_class_loaded do
         begin
-          const_set :LockOffset, Unsafe.object_field_offset(CopyOnWriteArrayList.get_declared_field("lock"))
+          const_set :LockOffset, UnsafeInstance.object_field_offset(CopyOnWriteArrayList.get_declared_field("lock"))
         rescue JavaException => ex
           raise JavaError.new(ex)
         end
@@ -1463,7 +1463,7 @@ module Java::Util::Concurrent
     
     typesig { [] }
     def reset_lock
-      Unsafe.put_object_volatile(self, LockOffset, ReentrantLock.new)
+      UnsafeInstance.put_object_volatile(self, LockOffset, ReentrantLock.new)
     end
     
     private

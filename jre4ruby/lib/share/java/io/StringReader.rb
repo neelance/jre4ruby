@@ -93,7 +93,7 @@ module Java::Io
     # 
     # @exception  IOException  If an I/O error occurs
     def read
-      synchronized((PLATFORM_LOCK)) do
+      synchronized((self.attr_lock)) do
         ensure_open
         if (@next >= @length)
           return -1
@@ -114,7 +114,7 @@ module Java::Io
     # 
     # @exception  IOException  If an I/O error occurs
     def read(cbuf, off, len)
-      synchronized((PLATFORM_LOCK)) do
+      synchronized((self.attr_lock)) do
         ensure_open
         if ((off < 0) || (off > cbuf.attr_length) || (len < 0) || ((off + len) > cbuf.attr_length) || ((off + len) < 0))
           raise IndexOutOfBoundsException.new
@@ -149,7 +149,7 @@ module Java::Io
     # 
     # @exception  IOException  If an I/O error occurs
     def skip(ns)
-      synchronized((PLATFORM_LOCK)) do
+      synchronized((self.attr_lock)) do
         ensure_open
         if (@next >= @length)
           return 0
@@ -169,7 +169,7 @@ module Java::Io
     # 
     # @exception  IOException  If the stream is closed
     def ready
-      synchronized((PLATFORM_LOCK)) do
+      synchronized((self.attr_lock)) do
         ensure_open
         return true
       end
@@ -197,7 +197,7 @@ module Java::Io
       if (read_ahead_limit < 0)
         raise IllegalArgumentException.new("Read-ahead limit < 0")
       end
-      synchronized((PLATFORM_LOCK)) do
+      synchronized((self.attr_lock)) do
         ensure_open
         @mark = @next
       end
@@ -209,7 +209,7 @@ module Java::Io
     # 
     # @exception  IOException  If an I/O error occurs
     def reset
-      synchronized((PLATFORM_LOCK)) do
+      synchronized((self.attr_lock)) do
         ensure_open
         @next = @mark
       end

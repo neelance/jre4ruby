@@ -1401,7 +1401,7 @@ module Java::Lang
         
         typesig { [] }
         define_method :run do
-          list = Java::Util::self.class::ArrayList.new
+          list = Java::Util::ArrayList.new
           current_class = @local_class_parent
           while (!(current_class).nil?)
             members = current_class.get_declared_classes

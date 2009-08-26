@@ -265,7 +265,7 @@ module Sun::Security::Smartcardio
     end
     
     class_module.module_eval {
-      typesig { [SwtList, ::Java::Long, ::Java::Boolean] }
+      typesig { [JavaList, ::Java::Long, ::Java::Boolean] }
       def wait_for_cards(terminals, timeout, want_present)
         # the argument sanity checks are performed in
         # javax.smartcardio.TerminalFactory or TerminalImpl

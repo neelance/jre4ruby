@@ -268,7 +268,7 @@ module Sun::Security::Provider
             synchronized((@lock_get_bytes)) do
               r = @mix_random
               if ((r).nil?)
-                r = Sun::Security::Provider::self.class::SecureRandom.new
+                r = Sun::Security::Provider::SecureRandom.new
                 begin
                   b = Array.typed(::Java::Byte).new(20) { 0 }
                   read_fully(@urandom_in, b)

@@ -186,7 +186,7 @@ module Sun::Misc
                 private
                 alias_method :initialize_anonymous, :initialize
               end.new_local(self))
-            rescue Java::Security::self::PrivilegedActionException => e
+            rescue Java::Security::PrivilegedActionException => e
               raise e.get_exception
             end
           end

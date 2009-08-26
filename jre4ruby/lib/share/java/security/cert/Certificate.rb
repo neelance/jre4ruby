@@ -256,9 +256,9 @@ module Java::Security::Cert
         def read_resolve
           begin
             cf = CertificateFactory.get_instance(@type)
-            return cf.generate_certificate(Java::Io::self.class::ByteArrayInputStream.new(@data))
+            return cf.generate_certificate(Java::Io::ByteArrayInputStream.new(@data))
           rescue self.class::CertificateException => e
-            raise Java::Io::self.class::NotSerializableException.new("java.security.cert.Certificate: " + @type + ": " + RJava.cast_to_string(e.get_message))
+            raise Java::Io::NotSerializableException.new("java.security.cert.Certificate: " + @type + ": " + RJava.cast_to_string(e.get_message))
           end
         end
         
