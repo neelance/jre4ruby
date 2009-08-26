@@ -57,7 +57,7 @@ module Sun::Security::Jgss
           define_method :run do
             osname = System.get_property("os.name")
             if (osname.starts_with("SunOS") || osname.starts_with("Linux"))
-              return self.class::Boolean.new(System.get_property(USE_NATIVE_PROP))
+              return Boolean.new(System.get_property(USE_NATIVE_PROP))
             end
             return Boolean::FALSE
           end

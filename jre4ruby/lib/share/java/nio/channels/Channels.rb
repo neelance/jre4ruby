@@ -262,7 +262,7 @@ module Java::Nio::Channels
           super()
           @buf = Array.typed(::Java::Byte).new(0) { 0 }
           @open = true
-          @read_lock = Object.new
+          @read_lock = self.class::Object.new
           @in = in_
         end
         
@@ -377,7 +377,7 @@ module Java::Nio::Channels
           super()
           @buf = Array.typed(::Java::Byte).new(0) { 0 }
           @open = true
-          @write_lock = Object.new
+          @write_lock = self.class::Object.new
           @out = out
         end
         

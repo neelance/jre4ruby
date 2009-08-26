@@ -64,7 +64,7 @@ module Sun::Security::Jca
         alias_method :attr_impl=, :impl=
         undef_method :impl=
         
-        typesig { [self::Provider, Object] }
+        typesig { [self::Provider, self::Object] }
         def initialize(provider, impl)
           @provider = nil
           @impl = nil
@@ -76,7 +76,7 @@ module Sun::Security::Jca
         # Return Provider and implementation as an array as used in the
         # old Security.getImpl() methods.
         def to_array
-          return Array.typed(Object).new([@impl, @provider])
+          return Array.typed(self.class::Object).new([@impl, @provider])
         end
         
         private

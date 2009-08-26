@@ -341,7 +341,7 @@ module Sun::Security::Provider::Certpath
         alias_method :attr_requested_attributes=, :requested_attributes=
         undef_method :requested_attributes=
         
-        typesig { [self::String] }
+        typesig { [String] }
         def initialize(name)
           @name = nil
           @value_map = nil
@@ -355,7 +355,7 @@ module Sun::Security::Provider::Certpath
           return @name
         end
         
-        typesig { [self::String] }
+        typesig { [String] }
         def add_requested_attribute(attr_id)
           if (!(@value_map).nil?)
             raise self.class::IllegalStateException.new("Request already sent")
@@ -363,7 +363,7 @@ module Sun::Security::Provider::Certpath
           @requested_attributes.add(attr_id)
         end
         
-        typesig { [self::String] }
+        typesig { [String] }
         # Gets one or more binary values from an attribute.
         # 
         # @param name          the location holding the attribute
@@ -429,7 +429,7 @@ module Sun::Security::Provider::Certpath
           return @value_map
         end
         
-        typesig { [self::String, Array.typed(Array.typed(::Java::Byte))] }
+        typesig { [String, Array.typed(Array.typed(::Java::Byte))] }
         # Add the values to the cache.
         def cache_attribute(attr_id, values)
           cache_key = @name + "|" + attr_id
@@ -451,7 +451,7 @@ module Sun::Security::Provider::Certpath
             while (enum_.has_more)
               obj = enum_.next_
               if (!(Debug).nil?)
-                if (obj.is_a?(self.class::String))
+                if (obj.is_a?(String))
                   Debug.println("LDAPCertStore.getAttrValues() " + "enum.next is a string!: " + RJava.cast_to_string(obj))
                 end
               end
@@ -871,14 +871,14 @@ module Sun::Security::Provider::Certpath
         alias_method :attr_hash_code=, :hash_code=
         undef_method :hash_code=
         
-        typesig { [self::String, ::Java::Int] }
+        typesig { [String, ::Java::Int] }
         def initialize(server_name, port)
           @hash_code = 0
           super(server_name, port)
           @hash_code = 0
         end
         
-        typesig { [self::String] }
+        typesig { [String] }
         def initialize(server_name)
           @hash_code = 0
           super(server_name)
@@ -892,7 +892,7 @@ module Sun::Security::Provider::Certpath
           @hash_code = 0
         end
         
-        typesig { [Object] }
+        typesig { [self::Object] }
         def ==(obj)
           if (!(obj.is_a?(self.class::LDAPCertStoreParameters)))
             return false
@@ -949,7 +949,7 @@ module Sun::Security::Provider::Certpath
         alias_method :attr_subject=, :subject=
         undef_method :subject=
         
-        typesig { [self::X509CertSelector, self::X500Principal, self::String] }
+        typesig { [self::X509CertSelector, self::X500Principal, String] }
         # Creates an LDAPCertSelector.
         # 
         # @param selector the X509CertSelector to wrap
@@ -1124,7 +1124,7 @@ module Sun::Security::Provider::Certpath
         alias_method :attr_issuer_names=, :issuer_names=
         undef_method :issuer_names=
         
-        typesig { [self::X509CRLSelector, self::Collection, self::String] }
+        typesig { [self::X509CRLSelector, self::Collection, String] }
         # Creates an LDAPCRLSelector.
         # 
         # @param selector the X509CRLSelector to wrap

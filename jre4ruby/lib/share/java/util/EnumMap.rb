@@ -441,12 +441,12 @@ module Java::Util
           return self.attr_size
         end
         
-        typesig { [Object] }
+        typesig { [self::Object] }
         def contains(o)
           return contains_key(o)
         end
         
-        typesig { [Object] }
+        typesig { [self::Object] }
         def remove(o)
           old_size = self.attr_size
           @local_class_parent.remove(o)
@@ -501,12 +501,12 @@ module Java::Util
           return self.attr_size
         end
         
-        typesig { [Object] }
+        typesig { [self::Object] }
         def contains(o)
           return contains_value(o)
         end
         
-        typesig { [Object] }
+        typesig { [self::Object] }
         def remove(o)
           o = mask_null(o)
           i = 0
@@ -563,7 +563,7 @@ module Java::Util
           return self.class::EntryIterator.new
         end
         
-        typesig { [Object] }
+        typesig { [self::Object] }
         def contains(o)
           if (!(o.is_a?(self.class::Map::Entry)))
             return false
@@ -572,7 +572,7 @@ module Java::Util
           return contains_mapping(entry.get_key, entry.get_value)
         end
         
-        typesig { [Object] }
+        typesig { [self::Object] }
         def remove(o)
           if (!(o.is_a?(self.class::Map::Entry)))
             return false
@@ -593,7 +593,7 @@ module Java::Util
         
         typesig { [] }
         def to_array
-          return fill_entry_array(Array.typed(Object).new(self.attr_size) { nil })
+          return fill_entry_array(Array.typed(self.class::Object).new(self.attr_size) { nil })
         end
         
         typesig { [Array.typed(self::T)] }
@@ -608,7 +608,7 @@ module Java::Util
           return fill_entry_array(a)
         end
         
-        typesig { [Array.typed(Object)] }
+        typesig { [Array.typed(self::Object)] }
         def fill_entry_array(a)
           j = 0
           i = 0
@@ -765,7 +765,7 @@ module Java::Util
           return old_value
         end
         
-        typesig { [Object] }
+        typesig { [self::Object] }
         def ==(o)
           if (self.attr_last_returned_index < 0)
             return (o).equal?(self)

@@ -365,7 +365,7 @@ module Sun::Security::Timestamp
       const_set_lazy(:TimestampException) { Class.new(IOException) do
         include_class_members TSResponse
         
-        typesig { [self::String] }
+        typesig { [String] }
         def initialize(message)
           super(message)
         end

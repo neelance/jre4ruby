@@ -2086,7 +2086,7 @@ module Sun::Security::Tools
         alias_method :attr_block_file_name=, :block_file_name=
         undef_method :block_file_name=
         
-        typesig { [self::SignatureFile, self::PrivateKey, self::String, Array.typed(self::X509Certificate), ::Java::Boolean, self::String, self::X509Certificate, self::ContentSigner, Array.typed(self::String), self::ZipFile] }
+        typesig { [self::SignatureFile, self::PrivateKey, String, Array.typed(self::X509Certificate), ::Java::Boolean, String, self::X509Certificate, self::ContentSigner, Array.typed(String), self::ZipFile] }
         # Construct a new signature block.
         def initialize(sfg, private_key, sigalg, cert_chain, external_sf, tsa_url, tsa_cert, signing_mechanism, args, zip_file)
           @block = nil

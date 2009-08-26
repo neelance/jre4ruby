@@ -52,7 +52,7 @@ module Sun::Security::Util
           const_attr_reader  :SerialVersionUID
         }
         
-        typesig { [self::String] }
+        typesig { [String] }
         def initialize(msg)
           super(msg)
         end

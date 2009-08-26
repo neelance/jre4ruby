@@ -458,7 +458,7 @@ module Sun::Security::Jgss
           @oid = oid
         end
         
-        typesig { [Object] }
+        typesig { [self::Object] }
         def ==(other)
           if ((self).equal?(other))
             return true
@@ -487,7 +487,7 @@ module Sun::Security::Jgss
           return result
         end
         
-        typesig { [Object] }
+        typesig { [self::Object] }
         # Determines if a preference implies another. A preference
         # implies another if the latter is subsumed by the
         # former. e.g., <Provider1, null> implies <Provider1, OidX>

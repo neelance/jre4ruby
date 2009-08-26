@@ -57,7 +57,7 @@ module Sun::Security::Provider
       const_set_lazy(:JKS) { Class.new(JavaKeyStore) do
         include_class_members JavaKeyStore
         
-        typesig { [self::String] }
+        typesig { [String] }
         def convert_alias(alias_)
           return alias_.to_lower_case
         end
@@ -75,7 +75,7 @@ module Sun::Security::Provider
       const_set_lazy(:CaseExactJKS) { Class.new(JavaKeyStore) do
         include_class_members JavaKeyStore
         
-        typesig { [self::String] }
+        typesig { [String] }
         def convert_alias(alias_)
           return alias_
         end

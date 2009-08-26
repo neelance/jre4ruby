@@ -107,7 +107,7 @@ module Sun::Security::Ssl
       initialize__x509key_manager_impl(Collections.singleton_list(builder))
     end
     
-    typesig { [SwtList] }
+    typesig { [JavaList] }
     def initialize(builders)
       @builders = nil
       @uid_counter = nil
@@ -301,7 +301,7 @@ module Sun::Security::Ssl
       end
     }
     
-    typesig { [SwtList, Array.typed(Principal), CheckType] }
+    typesig { [JavaList, Array.typed(Principal), CheckType] }
     # Return the best alias that fits the given parameters.
     # The algorithm we use is:
     # . scan through all the aliases in all builders in order
@@ -400,7 +400,7 @@ module Sun::Security::Ssl
       return to_aliases(all_results)
     end
     
-    typesig { [SwtList] }
+    typesig { [JavaList] }
     # turn candidate entries into unique aliases we can return to JSSE
     def to_aliases(results)
       s = Array.typed(String).new(results.size) { nil }
@@ -689,7 +689,7 @@ module Sun::Security::Ssl
       end
     }
     
-    typesig { [::Java::Int, SwtList, JavaSet, ::Java::Boolean, CheckType] }
+    typesig { [::Java::Int, JavaList, JavaSet, ::Java::Boolean, CheckType] }
     # Return a List of all candidate matches in the specified builder
     # that fit the parameters.
     # We exclude entries in the KeyStore if they are not:

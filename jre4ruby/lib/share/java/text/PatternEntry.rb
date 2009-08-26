@@ -215,7 +215,7 @@ module Java::Text
         alias_method :attr_i=, :i=
         undef_method :i=
         
-        typesig { [self::String] }
+        typesig { [String] }
         def initialize(pattern)
           @pattern = nil
           @i = 0

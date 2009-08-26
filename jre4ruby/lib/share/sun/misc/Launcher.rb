@@ -249,7 +249,7 @@ module Sun::Misc
           end
         }
         
-        typesig { [self::String] }
+        typesig { [String] }
         # Searches the installed extension directories for the specified
         # library name. For each extension directory, we first look for
         # the native library in the subdirectory whose name is the value
@@ -335,7 +335,7 @@ module Sun::Misc
           super(urls, parent, self.attr_factory)
         end
         
-        typesig { [self::String, ::Java::Boolean] }
+        typesig { [String, ::Java::Boolean] }
         # Override loadClass so we can checkPackageAccess.
         def load_class(name, resolve)
           synchronized(self) do
@@ -358,7 +358,7 @@ module Sun::Misc
           return perms
         end
         
-        typesig { [self::String] }
+        typesig { [String] }
         # This class loader supports dynamic additions to the class path
         # at runtime.
         # 
@@ -538,7 +538,7 @@ module Sun::Misc
           alias_method :attr_prefix=, :prefix=
         }
         
-        typesig { [self::String] }
+        typesig { [String] }
         def create_urlstream_handler(protocol)
           name = self.attr_prefix + "." + protocol + ".Handler"
           begin

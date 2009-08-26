@@ -598,7 +598,7 @@ module Java::Security
         alias_method :attr_original_algorithm=, :original_algorithm=
         undef_method :original_algorithm=
         
-        typesig { [self::String, self::String, ::Java::Boolean] }
+        typesig { [String, String, ::Java::Boolean] }
         def initialize(type, algorithm, intern)
           @type = nil
           @algorithm = nil
@@ -614,7 +614,7 @@ module Java::Security
           return @type.hash_code + @algorithm.hash_code
         end
         
-        typesig { [Object] }
+        typesig { [self::Object] }
         def ==(obj)
           if ((self).equal?(obj))
             return true
@@ -626,7 +626,7 @@ module Java::Security
           return (@type == other.attr_type) && (@algorithm == other.attr_algorithm)
         end
         
-        typesig { [self::String, self::String] }
+        typesig { [String, String] }
         def matches(type, algorithm)
           return ((@type).equal?(type)) && ((@original_algorithm).equal?(algorithm))
         end
@@ -1020,7 +1020,7 @@ module Java::Security
         alias_method :attr_lower_string=, :lower_string=
         undef_method :lower_string=
         
-        typesig { [self::String] }
+        typesig { [String] }
         def initialize(s)
           @string = nil
           @lower_string = nil
@@ -1033,7 +1033,7 @@ module Java::Security
           return @lower_string.hash_code
         end
         
-        typesig { [Object] }
+        typesig { [self::Object] }
         def ==(obj)
           if ((self).equal?(obj))
             return true
@@ -1082,7 +1082,7 @@ module Java::Security
         alias_method :attr_constructor_parameter_class=, :constructor_parameter_class=
         undef_method :constructor_parameter_class=
         
-        typesig { [self::String, ::Java::Boolean, self::String] }
+        typesig { [String, ::Java::Boolean, String] }
         def initialize(name, sp, param_name)
           @name = nil
           @supports_parameter = false
@@ -1273,7 +1273,7 @@ module Java::Security
         undef_method :registered=
         
         class_module.module_eval {
-          const_set_lazy(:CLASS0) { Array.typed(self.class::Class).new(0) { nil } }
+          const_set_lazy(:CLASS0) { Array.typed(self::Class).new(0) { nil } }
           const_attr_reader  :CLASS0
         }
         
@@ -1302,7 +1302,7 @@ module Java::Security
           return (!(@type).nil?) && (!(@algorithm).nil?) && (!(@class_name).nil?)
         end
         
-        typesig { [self::String] }
+        typesig { [String] }
         def add_alias(alias_)
           if (@aliases.is_empty)
             @aliases = self.class::ArrayList.new(2)
@@ -1310,7 +1310,7 @@ module Java::Security
           @aliases.add(alias_)
         end
         
-        typesig { [self::String, self::String] }
+        typesig { [String, String] }
         def add_attribute(type, value)
           if (@attributes.is_empty)
             @attributes = self.class::HashMap.new(8)
@@ -1318,7 +1318,7 @@ module Java::Security
           @attributes.put(self.class::UString.new(type), value)
         end
         
-        typesig { [self::Provider, self::String, self::String, self::String, self::JavaList, self::Map] }
+        typesig { [self::Provider, String, String, String, self::JavaList, self::Map] }
         # Construct a new service.
         # 
         # @param provider the provider that offers this service
@@ -1404,7 +1404,7 @@ module Java::Security
           return @aliases
         end
         
-        typesig { [self::String] }
+        typesig { [String] }
         # Return the value of the specified attribute or null if this
         # attribute is not set for this Service.
         # 
@@ -1421,7 +1421,7 @@ module Java::Security
           return @attributes.get(self.class::UString.new(name))
         end
         
-        typesig { [Object] }
+        typesig { [self::Object] }
         # Return a new instance of the implementation described by this
         # service. The security provider framework uses this method to
         # construct implementations. Applications will typically not need
@@ -1509,7 +1509,7 @@ module Java::Security
           end
         end
         
-        typesig { [Object] }
+        typesig { [self::Object] }
         # Generic code path for unknown engine types. Call the
         # no-args constructor if constructorParameter is null, otherwise
         # use the first matching constructor.
@@ -1535,14 +1535,14 @@ module Java::Security
               i += 1
               next
             end
-            o = con.new_instance(Array.typed(Object).new([constructor_parameter]))
+            o = con.new_instance(Array.typed(self.class::Object).new([constructor_parameter]))
             return o
             i += 1
           end
           raise self.class::NoSuchAlgorithmException.new("No constructor matching " + RJava.cast_to_string(arg_class.get_name) + " found in class " + @class_name)
         end
         
-        typesig { [Object] }
+        typesig { [self::Object] }
         # Test whether this Service can use the specified parameter.
         # Returns false if this service cannot use the parameter. Returns
         # true if this service can use the parameter, if a fast test is
@@ -1629,7 +1629,7 @@ module Java::Security
           return b.boolean_value
         end
         
-        typesig { [self::String] }
+        typesig { [String] }
         # get the key class object of the specified name
         def get_key_class(name)
           begin

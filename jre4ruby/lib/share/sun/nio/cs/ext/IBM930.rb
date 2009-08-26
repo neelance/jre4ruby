@@ -1476,7 +1476,7 @@ module Sun::Nio::Cs::Ext
           @index2a = self.class::Index2a
         end
         
-        typesig { [self::Charset, Array.typed(::Java::Short), self::String] }
+        typesig { [self::Charset, Array.typed(::Java::Short), String] }
         def initialize(cs, mod_idx1, mod_idx2a)
           super(cs)
           @mask1 = 0xffe0

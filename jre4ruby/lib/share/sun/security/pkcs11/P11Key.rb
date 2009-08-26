@@ -456,7 +456,7 @@ module Sun::Security::Pkcs11
           include PrivateKey
         }
         
-        typesig { [self::Session, ::Java::Long, self::String, ::Java::Int, Array.typed(self::CK_ATTRIBUTE)] }
+        typesig { [self::Session, ::Java::Long, String, ::Java::Int, Array.typed(self::CK_ATTRIBUTE)] }
         def initialize(session, key_id, algorithm, key_length, attributes)
           super(PRIVATE, session, key_id, algorithm, key_length, attributes)
         end
@@ -490,7 +490,7 @@ module Sun::Security::Pkcs11
         alias_method :attr_encoded=, :encoded=
         undef_method :encoded=
         
-        typesig { [self::Session, ::Java::Long, self::String, ::Java::Int, Array.typed(self::CK_ATTRIBUTE)] }
+        typesig { [self::Session, ::Java::Long, String, ::Java::Int, Array.typed(self::CK_ATTRIBUTE)] }
         def initialize(session, key_id, algorithm, key_length, attributes)
           @encoded = nil
           super(SECRET, session, key_id, algorithm, key_length, attributes)
@@ -557,7 +557,7 @@ module Sun::Security::Pkcs11
         alias_method :attr_minor_version=, :minor_version=
         undef_method :minor_version=
         
-        typesig { [self::Session, ::Java::Long, self::String, ::Java::Int, Array.typed(self::CK_ATTRIBUTE), ::Java::Int, ::Java::Int] }
+        typesig { [self::Session, ::Java::Long, String, ::Java::Int, Array.typed(self::CK_ATTRIBUTE), ::Java::Int, ::Java::Int] }
         def initialize(session, key_id, algorithm, key_length, attributes, major, minor)
           @major_version = 0
           @minor_version = 0
@@ -641,7 +641,7 @@ module Sun::Security::Pkcs11
         alias_method :attr_encoded=, :encoded=
         undef_method :encoded=
         
-        typesig { [self::Session, ::Java::Long, self::String, ::Java::Int, Array.typed(self::CK_ATTRIBUTE)] }
+        typesig { [self::Session, ::Java::Long, String, ::Java::Int, Array.typed(self::CK_ATTRIBUTE)] }
         def initialize(session, key_id, algorithm, key_length, attributes)
           @n = nil
           @e = nil
@@ -801,7 +801,7 @@ module Sun::Security::Pkcs11
         alias_method :attr_encoded=, :encoded=
         undef_method :encoded=
         
-        typesig { [self::Session, ::Java::Long, self::String, ::Java::Int, Array.typed(self::CK_ATTRIBUTE)] }
+        typesig { [self::Session, ::Java::Long, String, ::Java::Int, Array.typed(self::CK_ATTRIBUTE)] }
         def initialize(session, key_id, algorithm, key_length, attributes)
           @n = nil
           @d = nil
@@ -900,7 +900,7 @@ module Sun::Security::Pkcs11
         alias_method :attr_encoded=, :encoded=
         undef_method :encoded=
         
-        typesig { [self::Session, ::Java::Long, self::String, ::Java::Int, Array.typed(self::CK_ATTRIBUTE)] }
+        typesig { [self::Session, ::Java::Long, String, ::Java::Int, Array.typed(self::CK_ATTRIBUTE)] }
         def initialize(session, key_id, algorithm, key_length, attributes)
           @n = nil
           @e = nil
@@ -990,7 +990,7 @@ module Sun::Security::Pkcs11
         alias_method :attr_encoded=, :encoded=
         undef_method :encoded=
         
-        typesig { [self::Session, ::Java::Long, self::String, ::Java::Int, Array.typed(self::CK_ATTRIBUTE)] }
+        typesig { [self::Session, ::Java::Long, String, ::Java::Int, Array.typed(self::CK_ATTRIBUTE)] }
         def initialize(session, key_id, algorithm, key_length, attributes)
           @y = nil
           @params = nil
@@ -1081,7 +1081,7 @@ module Sun::Security::Pkcs11
         alias_method :attr_encoded=, :encoded=
         undef_method :encoded=
         
-        typesig { [self::Session, ::Java::Long, self::String, ::Java::Int, Array.typed(self::CK_ATTRIBUTE)] }
+        typesig { [self::Session, ::Java::Long, String, ::Java::Int, Array.typed(self::CK_ATTRIBUTE)] }
         def initialize(session, key_id, algorithm, key_length, attributes)
           @x = nil
           @params = nil
@@ -1172,7 +1172,7 @@ module Sun::Security::Pkcs11
         alias_method :attr_encoded=, :encoded=
         undef_method :encoded=
         
-        typesig { [self::Session, ::Java::Long, self::String, ::Java::Int, Array.typed(self::CK_ATTRIBUTE)] }
+        typesig { [self::Session, ::Java::Long, String, ::Java::Int, Array.typed(self::CK_ATTRIBUTE)] }
         def initialize(session, key_id, algorithm, key_length, attributes)
           @x = nil
           @params = nil
@@ -1265,7 +1265,7 @@ module Sun::Security::Pkcs11
         alias_method :attr_encoded=, :encoded=
         undef_method :encoded=
         
-        typesig { [self::Session, ::Java::Long, self::String, ::Java::Int, Array.typed(self::CK_ATTRIBUTE)] }
+        typesig { [self::Session, ::Java::Long, String, ::Java::Int, Array.typed(self::CK_ATTRIBUTE)] }
         def initialize(session, key_id, algorithm, key_length, attributes)
           @y = nil
           @params = nil
@@ -1358,7 +1358,7 @@ module Sun::Security::Pkcs11
         alias_method :attr_encoded=, :encoded=
         undef_method :encoded=
         
-        typesig { [self::Session, ::Java::Long, self::String, ::Java::Int, Array.typed(self::CK_ATTRIBUTE)] }
+        typesig { [self::Session, ::Java::Long, String, ::Java::Int, Array.typed(self::CK_ATTRIBUTE)] }
         def initialize(session, key_id, algorithm, key_length, attributes)
           @s = nil
           @params = nil
@@ -1453,7 +1453,7 @@ module Sun::Security::Pkcs11
         alias_method :attr_encoded=, :encoded=
         undef_method :encoded=
         
-        typesig { [self::Session, ::Java::Long, self::String, ::Java::Int, Array.typed(self::CK_ATTRIBUTE)] }
+        typesig { [self::Session, ::Java::Long, String, ::Java::Int, Array.typed(self::CK_ATTRIBUTE)] }
         def initialize(session, key_id, algorithm, key_length, attributes)
           @w = nil
           @params = nil

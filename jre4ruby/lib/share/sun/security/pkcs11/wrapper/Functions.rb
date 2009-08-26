@@ -203,7 +203,7 @@ module Sun::Security::Pkcs11::Wrapper
         alias_method :attr_flag_names=, :flag_names=
         undef_method :flag_names=
         
-        typesig { [Array.typed(::Java::Long), Array.typed(self::String)] }
+        typesig { [Array.typed(::Java::Long), Array.typed(String)] }
         def initialize(flag_ids, flag_names)
           @flag_ids = nil
           @flag_names = nil

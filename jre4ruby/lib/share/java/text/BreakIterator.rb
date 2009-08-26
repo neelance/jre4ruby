@@ -687,11 +687,11 @@ module Java::Text
         include LocaleServiceProviderPool::LocalizedObjectGetter
         
         class_module.module_eval {
-          const_set_lazy(:INSTANCE) { self.class::BreakIteratorGetter.new }
+          const_set_lazy(:INSTANCE) { self::BreakIteratorGetter.new }
           const_attr_reader  :INSTANCE
         }
         
-        typesig { [self::BreakIteratorProvider, self::Locale, self::String, Object] }
+        typesig { [self::BreakIteratorProvider, self::Locale, String, self::Object] }
         def get_object(break_iterator_provider, locale, key, *params)
           raise AssertError if not ((params.attr_length).equal?(1))
           case (params[0])

@@ -457,7 +457,7 @@ module Sun::Security::Ssl
         
         class_module.module_eval {
           # Map BulkCipher -> Boolean(available)
-          const_set_lazy(:AvailableCache) { self.class::HashMap.new(8) }
+          const_set_lazy(:AvailableCache) { self::HashMap.new(8) }
           const_attr_reader  :AvailableCache
         }
         

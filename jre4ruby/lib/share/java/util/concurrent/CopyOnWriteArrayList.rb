@@ -1027,7 +1027,7 @@ module Java::Util::Concurrent
         alias_method :attr_cursor=, :cursor=
         undef_method :cursor=
         
-        typesig { [Array.typed(Object), ::Java::Int] }
+        typesig { [Array.typed(self::Object), ::Java::Int] }
         def initialize(elements, initial_cursor)
           @snapshot = nil
           @cursor = 0
@@ -1295,7 +1295,7 @@ module Java::Util::Concurrent
           end
         end
         
-        typesig { [Object] }
+        typesig { [self::Object] }
         def remove(o)
           index = index_of(o)
           if ((index).equal?(-1))

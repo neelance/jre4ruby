@@ -827,7 +827,7 @@ module Sun::Misc
         alias_method :attr_descriptor=, :descriptor=
         undef_method :descriptor=
         
-        typesig { [self::String, self::String, ::Java::Int] }
+        typesig { [String, String, ::Java::Int] }
         def initialize(name, descriptor, access_flags)
           @access_flags = 0
           @name = nil
@@ -961,7 +961,7 @@ module Sun::Misc
         alias_method :attr_declared_exceptions=, :declared_exceptions=
         undef_method :declared_exceptions=
         
-        typesig { [self::String, self::String, ::Java::Int] }
+        typesig { [String, String, ::Java::Int] }
         def initialize(name, descriptor, access_flags)
           @access_flags = 0
           @name = nil
@@ -1084,7 +1084,7 @@ module Sun::Misc
         alias_method :attr_method_field_name=, :method_field_name=
         undef_method :method_field_name=
         
-        typesig { [self::String, Array.typed(self::Class), self::Class, Array.typed(self::Class), self::Class] }
+        typesig { [String, Array.typed(self::Class), self::Class, Array.typed(self::Class), self::Class] }
         def initialize(method_name, parameter_types, return_type, exception_types, from_class)
           @method_name = nil
           @parameter_types = nil
@@ -1721,7 +1721,7 @@ module Sun::Misc
         class_module.module_eval {
           
           def table
-            defined?(@@table) ? @@table : @@table= self.class::HashMap.new
+            defined?(@@table) ? @@table : @@table= self::HashMap.new
           end
           alias_method :attr_table, :table
           
@@ -1818,7 +1818,7 @@ module Sun::Misc
         alias_method :attr_read_only=, :read_only=
         undef_method :read_only=
         
-        typesig { [self::String] }
+        typesig { [String] }
         # Get or assign the index for a CONSTANT_Utf8 entry.
         def get_utf8(s)
           if ((s).nil?)
@@ -1839,21 +1839,21 @@ module Sun::Misc
           return get_value(self.class::Float.new(f))
         end
         
-        typesig { [self::String] }
+        typesig { [String] }
         # Get or assign the index for a CONSTANT_Class entry.
         def get_class(name)
           utf8index = get_utf8(name)
           return get_indirect(self.class::IndirectEntry.new(CONSTANT_CLASS, utf8index))
         end
         
-        typesig { [self::String] }
+        typesig { [String] }
         # Get or assign the index for a CONSTANT_String entry.
         def get_string(s)
           utf8index = get_utf8(s)
           return get_indirect(self.class::IndirectEntry.new(CONSTANT_STRING, utf8index))
         end
         
-        typesig { [self::String, self::String, self::String] }
+        typesig { [String, String, String] }
         # Get or assign the index for a CONSTANT_FieldRef entry.
         def get_field_ref(class_name, name, descriptor)
           class_index = get_class(class_name)
@@ -1861,7 +1861,7 @@ module Sun::Misc
           return get_indirect(self.class::IndirectEntry.new(CONSTANT_FIELD, class_index, name_and_type_index))
         end
         
-        typesig { [self::String, self::String, self::String] }
+        typesig { [String, String, String] }
         # Get or assign the index for a CONSTANT_MethodRef entry.
         def get_method_ref(class_name, name, descriptor)
           class_index = get_class(class_name)
@@ -1869,7 +1869,7 @@ module Sun::Misc
           return get_indirect(self.class::IndirectEntry.new(CONSTANT_METHOD, class_index, name_and_type_index))
         end
         
-        typesig { [self::String, self::String, self::String] }
+        typesig { [String, String, String] }
         # Get or assign the index for a CONSTANT_InterfaceMethodRef entry.
         def get_interface_method_ref(class_name, name, descriptor)
           class_index = get_class(class_name)
@@ -1877,7 +1877,7 @@ module Sun::Misc
           return get_indirect(self.class::IndirectEntry.new(CONSTANT_INTERFACEMETHOD, class_index, name_and_type_index))
         end
         
-        typesig { [self::String, self::String] }
+        typesig { [String, String] }
         # Get or assign the index for a CONSTANT_NameAndType entry.
         def get_name_and_type(name, descriptor)
           name_index = get_utf8(name)
@@ -1924,7 +1924,7 @@ module Sun::Misc
           return RJava.cast_to_short(@pool.size)
         end
         
-        typesig { [Object] }
+        typesig { [self::Object] }
         # Get or assign the index for an entry of a type that contains
         # a direct value.  The type of the given object determines the
         # type of the desired entry as follows:
@@ -1991,7 +1991,7 @@ module Sun::Misc
           # 
           # ValueEntry objects are not used as keys for their entries in the
           # Map "map", so no useful hashCode or equals methods are defined.
-          const_set_lazy(:ValueEntry) { Class.new(self.class::Entry) do
+          const_set_lazy(:ValueEntry) { Class.new(self::Entry) do
             include_class_members ConstantPool
             
             attr_accessor :value
@@ -2000,7 +2000,7 @@ module Sun::Misc
             alias_method :attr_value=, :value=
             undef_method :value=
             
-            typesig { [Object] }
+            typesig { [self::Object] }
             def initialize(value)
               @value = nil
               super()
@@ -2009,7 +2009,7 @@ module Sun::Misc
             
             typesig { [self::DataOutputStream] }
             def write(out)
-              if (@value.is_a?(self.class::String))
+              if (@value.is_a?(String))
                 out.write_byte(CONSTANT_UTF8)
                 out.write_utf(@value)
               else
@@ -2054,7 +2054,7 @@ module Sun::Misc
           # IndirectEntry objects are used as the keys for their entries in
           # the Map "map", so the hashCode and equals methods are overridden
           # to allow matching.
-          const_set_lazy(:IndirectEntry) { Class.new(self.class::Entry) do
+          const_set_lazy(:IndirectEntry) { Class.new(self::Entry) do
             include_class_members ConstantPool
             
             attr_accessor :tag
@@ -2117,7 +2117,7 @@ module Sun::Misc
               return @tag + @index0 + @index1
             end
             
-            typesig { [Object] }
+            typesig { [self::Object] }
             def ==(obj)
               if (obj.is_a?(self.class::IndirectEntry))
                 other = obj

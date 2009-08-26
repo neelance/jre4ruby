@@ -150,7 +150,7 @@ module Java::Lang
           return @e.get_value
         end
         
-        typesig { [self::String] }
+        typesig { [String] }
         def set_value(value)
           return @e.set_value(validate_value(value))
         end
@@ -160,7 +160,7 @@ module Java::Lang
           return RJava.cast_to_string(get_key) + "=" + RJava.cast_to_string(get_value)
         end
         
-        typesig { [Object] }
+        typesig { [self::Object] }
         def ==(o)
           return (@e == o)
         end
@@ -246,7 +246,7 @@ module Java::Lang
         end
         
         class_module.module_eval {
-          typesig { [Object] }
+          typesig { [self::Object] }
           def checked_entry(o)
             e = o
             non_null_string(e.get_key)
@@ -255,12 +255,12 @@ module Java::Lang
           end
         }
         
-        typesig { [Object] }
+        typesig { [self::Object] }
         def contains(o)
           return @s.contains(checked_entry(o))
         end
         
-        typesig { [Object] }
+        typesig { [self::Object] }
         def remove(o)
           return @s.remove(checked_entry(o))
         end
@@ -305,12 +305,12 @@ module Java::Lang
           return @c.iterator
         end
         
-        typesig { [Object] }
+        typesig { [self::Object] }
         def contains(o)
           return @c.contains(non_null_string(o))
         end
         
-        typesig { [Object] }
+        typesig { [self::Object] }
         def remove(o)
           return @c.remove(non_null_string(o))
         end
@@ -355,12 +355,12 @@ module Java::Lang
           return @s.iterator
         end
         
-        typesig { [Object] }
+        typesig { [self::Object] }
         def contains(o)
           return @s.contains(non_null_string(o))
         end
         
-        typesig { [Object] }
+        typesig { [self::Object] }
         def remove(o)
           return @s.remove(non_null_string(o))
         end
@@ -390,7 +390,7 @@ module Java::Lang
         include_class_members ProcessEnvironment
         include Comparator
         
-        typesig { [self::String, self::String] }
+        typesig { [String, String] }
         def compare(s1, s2)
           # We can't use String.compareToIgnoreCase since it
           # canonicalizes to lower case, while Windows

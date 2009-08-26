@@ -1364,7 +1364,7 @@ module Java::Security
           raise NotImplementedError
         end
         
-        typesig { [self::String] }
+        typesig { [String] }
         # Returns the ProtectionParameters that should be used to obtain
         # the {@link KeyStore.Entry Entry} with the given alias.
         # The <code>getKeyStore</code> method must be invoked before this
@@ -1425,7 +1425,7 @@ module Java::Security
                 return key_store
               end
               
-              typesig { [self::String] }
+              typesig { [String] }
               define_method :get_protection_parameter do |alias_|
                 if ((alias_).nil?)
                   raise self.class::NullPointerException.new
@@ -1447,7 +1447,7 @@ module Java::Security
             end.new_local(self)
           end
           
-          typesig { [self::String, self::Provider, self::JavaFile, self::ProtectionParameter] }
+          typesig { [String, self::Provider, self::JavaFile, self::ProtectionParameter] }
           # Returns a new Builder object.
           # 
           # <p>The first call to the {@link #getKeyStore} method on the returned
@@ -1502,7 +1502,7 @@ module Java::Security
             return self.class::FileBuilder.new(type, provider, file, protection, AccessController.get_context)
           end
           
-          const_set_lazy(:FileBuilder) { Class.new(self.class::Builder) do
+          const_set_lazy(:FileBuilder) { Class.new(self::Builder) do
             include_class_members Builder
             
             attr_accessor :type
@@ -1553,7 +1553,7 @@ module Java::Security
             alias_method :attr_old_exception=, :old_exception=
             undef_method :old_exception=
             
-            typesig { [self::String, self::Provider, self::JavaFile, self::ProtectionParameter, self::AccessControlContext] }
+            typesig { [String, self::Provider, self::JavaFile, self::ProtectionParameter, self::AccessControlContext] }
             def initialize(type, provider, file, protection, context)
               @type = nil
               @provider = nil
@@ -1659,7 +1659,7 @@ module Java::Security
               end
             end
             
-            typesig { [self::String] }
+            typesig { [String] }
             def get_protection_parameter(alias_)
               synchronized(self) do
                 if ((alias_).nil?)
@@ -1676,7 +1676,7 @@ module Java::Security
             alias_method :initialize__file_builder, :initialize
           end }
           
-          typesig { [self::String, self::Provider, self::ProtectionParameter] }
+          typesig { [String, self::Provider, self::ProtectionParameter] }
           # Returns a new Builder object.
           # 
           # <p>Each call to the {@link #getKeyStore} method on the returned
@@ -1745,7 +1745,7 @@ module Java::Security
                 end
               end
               
-              typesig { [self::String] }
+              typesig { [String] }
               define_method :get_protection_parameter do |alias_|
                 if ((alias_).nil?)
                   raise self.class::NullPointerException.new

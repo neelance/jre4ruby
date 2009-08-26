@@ -629,7 +629,7 @@ module Sun::Security::Jgss
           return @usage
         end
         
-        typesig { [Object] }
+        typesig { [self::Object] }
         def ==(other)
           if (!(other.is_a?(self.class::SearchKey)))
             return false

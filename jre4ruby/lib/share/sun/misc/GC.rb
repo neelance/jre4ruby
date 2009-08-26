@@ -323,7 +323,7 @@ module Sun::Misc
           end
         end
         
-        typesig { [Object] }
+        typesig { [self::Object] }
         def compare_to(o)
           r = o
           d = @latency - r.attr_latency

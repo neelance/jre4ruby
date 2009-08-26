@@ -443,7 +443,7 @@ module Sun::Security::Provider
           # At least one instance of this class is generated for every seed byte.
           const_set_lazy(:BogusThread) { Class.new do
             include_class_members ThreadedSeedGenerator
-            include self.class::Runnable
+            include self::Runnable
             
             typesig { [] }
             def run
@@ -486,7 +486,7 @@ module Sun::Security::Provider
         alias_method :attr_dev_random=, :dev_random=
         undef_method :dev_random=
         
-        typesig { [self::String] }
+        typesig { [String] }
         # The constructor is only called once to construct the one
         # instance we actually use. It opens the entropy gathering device
         # which will supply the randomness.

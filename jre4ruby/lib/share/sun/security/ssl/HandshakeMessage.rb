@@ -1187,7 +1187,7 @@ module Sun::Security::Ssl
         end
         
         class_module.module_eval {
-          typesig { [self::String] }
+          typesig { [String] }
           def get_signature(key_algorithm)
             if ((key_algorithm == "EC"))
               return JsseJce.get_signature(JsseJce::SIGNATURE_ECDSA)
@@ -1579,7 +1579,7 @@ module Sun::Security::Ssl
         end
         
         class_module.module_eval {
-          typesig { [self::ProtocolVersion, self::String] }
+          typesig { [self::ProtocolVersion, String] }
           # Get the Signature object appropriate for verification using the
           # given signature algorithm and protocol version.
           def get_signature(protocol_version, algorithm)
@@ -1598,7 +1598,7 @@ module Sun::Security::Ssl
             end
           end
           
-          typesig { [self::Signature, self::ProtocolVersion, self::HandshakeHash, self::String, self::SecretKey] }
+          typesig { [self::Signature, self::ProtocolVersion, self::HandshakeHash, String, self::SecretKey] }
           # Update the Signature with the data appropriate for the given
           # signature algorithm and protocol version so that the object is
           # ready for signing or verifying.
@@ -1689,13 +1689,13 @@ module Sun::Security::Ssl
           end
           
           # ConcurrentHashMap does not allow null values, use this marker object
-          const_set_lazy(:NULL_OBJECT) { Object.new }
+          const_set_lazy(:NULL_OBJECT) { self::Object.new }
           const_attr_reader  :NULL_OBJECT
           
           # cache Method objects per Spi class
           # Note that this will prevent the Spi classes from being GC'd. We assume
           # that is not a problem.
-          const_set_lazy(:MethodCache) { self.class::ConcurrentHashMap.new }
+          const_set_lazy(:MethodCache) { self::ConcurrentHashMap.new }
           const_attr_reader  :MethodCache
           
           typesig { [self::MessageDigest, self::SecretKey] }

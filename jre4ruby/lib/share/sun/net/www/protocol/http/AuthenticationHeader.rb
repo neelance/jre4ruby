@@ -189,7 +189,7 @@ module Sun::Net::Www::Protocol::Http
       const_set_lazy(:SchemeMapValue) { Class.new do
         include_class_members AuthenticationHeader
         
-        typesig { [self::HeaderParser, self::String] }
+        typesig { [self::HeaderParser, String] }
         def initialize(h, r)
           @raw = nil
           @parser = nil

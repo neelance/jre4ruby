@@ -148,7 +148,7 @@ module Sun::Net::Spi
         alias_method :attr_property=, :property=
         undef_method :property=
         
-        typesig { [self::String, self::String, self::RegexpPool] }
+        typesig { [String, String, self::RegexpPool] }
         def initialize(p, s, pool)
           @hosts_source = nil
           @hosts_pool = nil

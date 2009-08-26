@@ -97,11 +97,11 @@ module Java::Text
         
         class_module.module_eval {
           # table of all instances in this class, used by readResolve
-          const_set_lazy(:InstanceMap) { self.class::HashMap.new(7) }
+          const_set_lazy(:InstanceMap) { self::HashMap.new(7) }
           const_attr_reader  :InstanceMap
         }
         
-        typesig { [self::String] }
+        typesig { [String] }
         # Constructs an Attribute with the given name.
         def initialize(name)
           @name = nil
@@ -111,7 +111,7 @@ module Java::Text
           end
         end
         
-        typesig { [Object] }
+        typesig { [self::Object] }
         # Compares two objects for equality. This version only returns true
         # for <code>x.equals(y)</code> if <code>x</code> and <code>y</code> refer
         # to the same object, and guarantees this for all subclasses.
@@ -157,7 +157,7 @@ module Java::Text
           # Attribute key for the language of some text.
           # <p> Values are instances of Locale.
           # @see java.util.Locale
-          const_set_lazy(:LANGUAGE) { self.class::Attribute.new("language") }
+          const_set_lazy(:LANGUAGE) { self::Attribute.new("language") }
           const_attr_reader  :LANGUAGE
           
           # Attribute key for the reading of some text. In languages where the written form
@@ -167,14 +167,14 @@ module Java::Text
           # <p>Values are instances of Annotation holding instances of String.
           # @see Annotation
           # @see java.lang.String
-          const_set_lazy(:READING) { self.class::Attribute.new("reading") }
+          const_set_lazy(:READING) { self::Attribute.new("reading") }
           const_attr_reader  :READING
           
           # Attribute key for input method segments. Input methods often break
           # up text into segments, which usually correspond to words.
           # <p>Values are instances of Annotation holding a null reference.
           # @see Annotation
-          const_set_lazy(:INPUT_METHOD_SEGMENT) { self.class::Attribute.new("input_method_segment") }
+          const_set_lazy(:INPUT_METHOD_SEGMENT) { self::Attribute.new("input_method_segment") }
           const_attr_reader  :INPUT_METHOD_SEGMENT
           
           # make sure the serial version doesn't change between compiler versions

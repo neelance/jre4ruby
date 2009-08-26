@@ -751,7 +751,7 @@ module Sun::Security::Provider::Certpath
       const_set_lazy(:CertificateRevokedException) { Class.new(CertPathValidatorException) do
         include_class_members CrlRevocationChecker
         
-        typesig { [self::String] }
+        typesig { [String] }
         def initialize(msg)
           super(msg)
         end

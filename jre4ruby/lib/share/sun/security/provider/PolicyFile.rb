@@ -1342,7 +1342,7 @@ module Sun::Security::Provider
         
         typesig { [] }
         define_method :run do
-          return self.class::Boolean.new(entry.get_code_source.implies(cs))
+          return Boolean.new(entry.get_code_source.implies(cs))
         end
         
         typesig { [] }
@@ -2193,7 +2193,7 @@ module Sun::Security::Provider
         alias_method :attr_certs=, :certs=
         undef_method :certs=
         
-        typesig { [self::String, self::String, self::String, Array.typed(self::Certificate)] }
+        typesig { [String, String, String, Array.typed(self::Certificate)] }
         # Creates a new SelfPermission containing the permission
         # information needed later to expand the self
         # @param type the class name of the Permission class that will be
@@ -2276,7 +2276,7 @@ module Sun::Security::Provider
           return false
         end
         
-        typesig { [Object] }
+        typesig { [self::Object] }
         # Checks two SelfPermission objects for equality.
         # 
         # Checks that <i>obj</i> is an SelfPermission, and has

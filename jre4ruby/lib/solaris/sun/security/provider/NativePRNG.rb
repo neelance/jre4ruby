@@ -251,9 +251,9 @@ module Sun::Security::Provider
           @urandom_buffer = nil
           @buffered = 0
           @last_read = 0
-          @lock_get_bytes = Object.new
-          @lock_get_seed = Object.new
-          @lock_set_seed = Object.new
+          @lock_get_bytes = self.class::Object.new
+          @lock_get_seed = self.class::Object.new
+          @lock_set_seed = self.class::Object.new
           @random_in = self.class::FileInputStream.new(random_file)
           @urandom_in = self.class::FileInputStream.new(urandom_file)
           @urandom_buffer = Array.typed(::Java::Byte).new(self.class::BUFFER_SIZE) { 0 }

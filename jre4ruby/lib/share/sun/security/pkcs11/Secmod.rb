@@ -980,7 +980,7 @@ module Sun::Security::Pkcs11
           return Arrays.hash_code(@b)
         end
         
-        typesig { [Object] }
+        typesig { [self::Object] }
         def ==(o)
           if ((self).equal?(o))
             return true

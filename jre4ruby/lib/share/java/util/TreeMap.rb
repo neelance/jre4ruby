@@ -1013,12 +1013,12 @@ module Java::Util
           return @local_class_parent.size
         end
         
-        typesig { [Object] }
+        typesig { [self::Object] }
         def contains(o)
           return @local_class_parent.contains_value(o)
         end
         
-        typesig { [Object] }
+        typesig { [self::Object] }
         def remove(o)
           e = get_first_entry
           while !(e).nil?
@@ -1054,7 +1054,7 @@ module Java::Util
           return self.class::EntryIterator.new(get_first_entry)
         end
         
-        typesig { [Object] }
+        typesig { [self::Object] }
         def contains(o)
           if (!(o.is_a?(self.class::Map::Entry)))
             return false
@@ -1065,7 +1065,7 @@ module Java::Util
           return !(p).nil? && val_equals(p.get_value, value)
         end
         
-        typesig { [Object] }
+        typesig { [self::Object] }
         def remove(o)
           if (!(o.is_a?(self.class::Map::Entry)))
             return false
@@ -1163,7 +1163,7 @@ module Java::Util
           return @m.is_empty
         end
         
-        typesig { [Object] }
+        typesig { [self::Object] }
         def contains(o)
           return @m.contains_key(o)
         end
@@ -1220,7 +1220,7 @@ module Java::Util
           return (e).nil? ? nil : e.get_key
         end
         
-        typesig { [Object] }
+        typesig { [self::Object] }
         def remove(o)
           old_size = size
           @m.remove(o)
@@ -1567,7 +1567,7 @@ module Java::Util
           @hi_inclusive = hi_inclusive
         end
         
-        typesig { [Object] }
+        typesig { [self::Object] }
         # internal utilities
         def too_low(key)
           if (!@from_start)
@@ -1579,7 +1579,7 @@ module Java::Util
           return false
         end
         
-        typesig { [Object] }
+        typesig { [self::Object] }
         def too_high(key)
           if (!@to_end)
             c = @m.compare(key, @hi)
@@ -1590,17 +1590,17 @@ module Java::Util
           return false
         end
         
-        typesig { [Object] }
+        typesig { [self::Object] }
         def in_range(key)
           return !too_low(key) && !too_high(key)
         end
         
-        typesig { [Object] }
+        typesig { [self::Object] }
         def in_closed_range(key)
           return (@from_start || @m.compare(key, @lo) >= 0) && (@to_end || @m.compare(@hi, key) >= 0)
         end
         
-        typesig { [Object, ::Java::Boolean] }
+        typesig { [self::Object, ::Java::Boolean] }
         def in_range(key, inclusive)
           return inclusive ? in_range(key) : in_closed_range(key)
         end
@@ -1723,7 +1723,7 @@ module Java::Util
           return (@from_start && @to_end) ? @m.size : entry_set.size
         end
         
-        typesig { [Object] }
+        typesig { [self::Object] }
         def contains_key(key)
           return in_range(key) && @m.contains_key(key)
         end
@@ -1736,12 +1736,12 @@ module Java::Util
           return @m.put(key, value)
         end
         
-        typesig { [Object] }
+        typesig { [self::Object] }
         def get(key)
           return !in_range(key) ? nil : @m.get(key)
         end
         
-        typesig { [Object] }
+        typesig { [self::Object] }
         def remove(key)
           return !in_range(key) ? nil : @m.remove(key)
         end
@@ -1878,7 +1878,7 @@ module Java::Util
         
         class_module.module_eval {
           # View classes
-          const_set_lazy(:EntrySetView) { Class.new(self.class::AbstractSet) do
+          const_set_lazy(:EntrySetView) { Class.new(self::AbstractSet) do
             extend LocalClass
             include_class_members NavigableSubMap
             
@@ -1917,7 +1917,7 @@ module Java::Util
               return (n).nil? || too_high(n.attr_key)
             end
             
-            typesig { [Object] }
+            typesig { [self::Object] }
             def contains(o)
               if (!(o.is_a?(self.class::Map::Entry)))
                 return false
@@ -1931,7 +1931,7 @@ module Java::Util
               return !(node).nil? && val_equals(node.get_value, entry.get_value)
             end
             
-            typesig { [Object] }
+            typesig { [self::Object] }
             def remove(o)
               if (!(o.is_a?(self.class::Map::Entry)))
                 return false
@@ -1965,7 +1965,7 @@ module Java::Util
           const_set_lazy(:SubMapIterator) { Class.new do
             extend LocalClass
             include_class_members NavigableSubMap
-            include self.class::Iterator
+            include self::Iterator
             
             attr_accessor :last_returned
             alias_method :attr_last_returned, :last_returned
@@ -2070,7 +2070,7 @@ module Java::Util
             alias_method :initialize__sub_map_iterator, :initialize
           end }
           
-          const_set_lazy(:SubMapEntryIterator) { Class.new(self.class::SubMapIterator) do
+          const_set_lazy(:SubMapEntryIterator) { Class.new(self::SubMapIterator) do
             extend LocalClass
             include_class_members NavigableSubMap
             
@@ -2093,7 +2093,7 @@ module Java::Util
             alias_method :initialize__sub_map_entry_iterator, :initialize
           end }
           
-          const_set_lazy(:SubMapKeyIterator) { Class.new(self.class::SubMapIterator) do
+          const_set_lazy(:SubMapKeyIterator) { Class.new(self::SubMapIterator) do
             extend LocalClass
             include_class_members NavigableSubMap
             
@@ -2116,7 +2116,7 @@ module Java::Util
             alias_method :initialize__sub_map_key_iterator, :initialize
           end }
           
-          const_set_lazy(:DescendingSubMapEntryIterator) { Class.new(self.class::SubMapIterator) do
+          const_set_lazy(:DescendingSubMapEntryIterator) { Class.new(self::SubMapIterator) do
             extend LocalClass
             include_class_members NavigableSubMap
             
@@ -2139,7 +2139,7 @@ module Java::Util
             alias_method :initialize__descending_sub_map_entry_iterator, :initialize
           end }
           
-          const_set_lazy(:DescendingSubMapKeyIterator) { Class.new(self.class::SubMapIterator) do
+          const_set_lazy(:DescendingSubMapKeyIterator) { Class.new(self::SubMapIterator) do
             extend LocalClass
             include_class_members NavigableSubMap
             
@@ -2230,7 +2230,7 @@ module Java::Util
         end
         
         class_module.module_eval {
-          const_set_lazy(:AscendingEntrySetView) { Class.new(self.class::EntrySetView) do
+          const_set_lazy(:AscendingEntrySetView) { Class.new(self::EntrySetView) do
             extend LocalClass
             include_class_members AscendingSubMap
             
@@ -2360,7 +2360,7 @@ module Java::Util
         end
         
         class_module.module_eval {
-          const_set_lazy(:DescendingEntrySetView) { Class.new(self.class::EntrySetView) do
+          const_set_lazy(:DescendingEntrySetView) { Class.new(self::EntrySetView) do
             extend LocalClass
             include_class_members DescendingSubMap
             
@@ -2610,7 +2610,7 @@ module Java::Util
           return old_value
         end
         
-        typesig { [Object] }
+        typesig { [self::Object] }
         def ==(o)
           if (!(o.is_a?(self.class::Map::Entry)))
             return false

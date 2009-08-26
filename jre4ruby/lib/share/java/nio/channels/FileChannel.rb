@@ -622,15 +622,15 @@ module Java::Nio::Channels
         
         class_module.module_eval {
           # Mode for a read-only mapping.
-          const_set_lazy(:READ_ONLY) { self.class::MapMode.new("READ_ONLY") }
+          const_set_lazy(:READ_ONLY) { self::MapMode.new("READ_ONLY") }
           const_attr_reader  :READ_ONLY
           
           # Mode for a read/write mapping.
-          const_set_lazy(:READ_WRITE) { self.class::MapMode.new("READ_WRITE") }
+          const_set_lazy(:READ_WRITE) { self::MapMode.new("READ_WRITE") }
           const_attr_reader  :READ_WRITE
           
           # Mode for a private (copy-on-write) mapping.
-          const_set_lazy(:PRIVATE) { self.class::MapMode.new("PRIVATE") }
+          const_set_lazy(:PRIVATE) { self::MapMode.new("PRIVATE") }
           const_attr_reader  :PRIVATE
         }
         
@@ -640,7 +640,7 @@ module Java::Nio::Channels
         alias_method :attr_name=, :name=
         undef_method :name=
         
-        typesig { [self::String] }
+        typesig { [String] }
         def initialize(name)
           @name = nil
           @name = name

@@ -768,7 +768,7 @@ module Java::Util::Logging
         alias_method :attr_last_exception=, :last_exception=
         undef_method :last_exception=
         
-        typesig { [self::String, self::JavaException, ::Java::Int] }
+        typesig { [String, self::JavaException, ::Java::Int] }
         def error(msg, ex, code)
           @last_exception = ex
         end

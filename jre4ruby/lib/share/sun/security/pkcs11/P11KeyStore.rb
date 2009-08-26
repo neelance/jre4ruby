@@ -246,7 +246,7 @@ module Sun::Security::Pkcs11
         alias_method :attr_matched=, :matched=
         undef_method :matched=
         
-        typesig { [self::String] }
+        typesig { [String] }
         # SecretKeyEntry
         def initialize(label)
           @type = nil
@@ -260,7 +260,7 @@ module Sun::Security::Pkcs11
           @label = label
         end
         
-        typesig { [self::String, Array.typed(::Java::Byte), ::Java::Boolean, self::X509Certificate] }
+        typesig { [String, Array.typed(::Java::Byte), ::Java::Boolean, self::X509Certificate] }
         # PrivateKeyEntry
         def initialize(label, id, trusted, cert)
           @type = nil

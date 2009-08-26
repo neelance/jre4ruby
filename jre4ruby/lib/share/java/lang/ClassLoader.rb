@@ -1663,13 +1663,13 @@ module Java::Lang
         undef_method :name=
         
         JNI.native_method :Java_java_lang_NativeLibrary_load, [:pointer, :long, :long], :void
-        typesig { [self::String] }
+        typesig { [String] }
         def load(name)
           JNI.__send__(:Java_java_lang_NativeLibrary_load, JNI.env, self.jni_id, name.jni_id)
         end
         
         JNI.native_method :Java_java_lang_NativeLibrary_find, [:pointer, :long, :long], :int64
-        typesig { [self::String] }
+        typesig { [String] }
         def find(name)
           JNI.__send__(:Java_java_lang_NativeLibrary_find, JNI.env, self.jni_id, name.jni_id)
         end
@@ -1680,7 +1680,7 @@ module Java::Lang
           JNI.__send__(:Java_java_lang_NativeLibrary_unload, JNI.env, self.jni_id)
         end
         
-        typesig { [self::Class, self::String] }
+        typesig { [self::Class, String] }
         def initialize(from_class, name)
           @handle = 0
           @jni_version = 0
@@ -1911,7 +1911,7 @@ module Java::Lang
           
           typesig { [] }
           define_method :run do
-            return self.class::Boolean.new(file.exists)
+            return Boolean.new(file.exists)
           end
           
           typesig { [] }

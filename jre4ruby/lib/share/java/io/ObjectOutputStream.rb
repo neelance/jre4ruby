@@ -172,11 +172,11 @@ module Java::Io
         
         class_module.module_eval {
           # cache of subclass security audit results
-          const_set_lazy(:SubclassAudits) { self.class::ConcurrentHashMap.new }
+          const_set_lazy(:SubclassAudits) { self::ConcurrentHashMap.new }
           const_attr_reader  :SubclassAudits
           
           # queue for WeakReferences to audited subclasses
-          const_set_lazy(:SubclassAuditsQueue) { self.class::ReferenceQueue.new }
+          const_set_lazy(:SubclassAuditsQueue) { self::ReferenceQueue.new }
           const_attr_reader  :SubclassAuditsQueue
         }
         
@@ -924,7 +924,7 @@ module Java::Io
       const_set_lazy(:PutField) { Class.new do
         include_class_members ObjectOutputStream
         
-        typesig { [self::String, ::Java::Boolean] }
+        typesig { [String, ::Java::Boolean] }
         # Put the value of the named boolean field into the persistent field.
         # 
         # @param  name the name of the serializable field
@@ -937,7 +937,7 @@ module Java::Io
           raise NotImplementedError
         end
         
-        typesig { [self::String, ::Java::Byte] }
+        typesig { [String, ::Java::Byte] }
         # Put the value of the named byte field into the persistent field.
         # 
         # @param  name the name of the serializable field
@@ -950,7 +950,7 @@ module Java::Io
           raise NotImplementedError
         end
         
-        typesig { [self::String, ::Java::Char] }
+        typesig { [String, ::Java::Char] }
         # Put the value of the named char field into the persistent field.
         # 
         # @param  name the name of the serializable field
@@ -963,7 +963,7 @@ module Java::Io
           raise NotImplementedError
         end
         
-        typesig { [self::String, ::Java::Short] }
+        typesig { [String, ::Java::Short] }
         # Put the value of the named short field into the persistent field.
         # 
         # @param  name the name of the serializable field
@@ -976,7 +976,7 @@ module Java::Io
           raise NotImplementedError
         end
         
-        typesig { [self::String, ::Java::Int] }
+        typesig { [String, ::Java::Int] }
         # Put the value of the named int field into the persistent field.
         # 
         # @param  name the name of the serializable field
@@ -989,7 +989,7 @@ module Java::Io
           raise NotImplementedError
         end
         
-        typesig { [self::String, ::Java::Long] }
+        typesig { [String, ::Java::Long] }
         # Put the value of the named long field into the persistent field.
         # 
         # @param  name the name of the serializable field
@@ -1002,7 +1002,7 @@ module Java::Io
           raise NotImplementedError
         end
         
-        typesig { [self::String, ::Java::Float] }
+        typesig { [String, ::Java::Float] }
         # Put the value of the named float field into the persistent field.
         # 
         # @param  name the name of the serializable field
@@ -1015,7 +1015,7 @@ module Java::Io
           raise NotImplementedError
         end
         
-        typesig { [self::String, ::Java::Double] }
+        typesig { [String, ::Java::Double] }
         # Put the value of the named double field into the persistent field.
         # 
         # @param  name the name of the serializable field
@@ -1028,7 +1028,7 @@ module Java::Io
           raise NotImplementedError
         end
         
-        typesig { [self::String, Object] }
+        typesig { [String, self::Object] }
         # Put the value of the named Object field into the persistent field.
         # 
         # @param  name the name of the serializable field
@@ -1667,50 +1667,50 @@ module Java::Io
           super()
           @desc = desc
           @prim_vals = Array.typed(::Java::Byte).new(desc.get_prim_data_size) { 0 }
-          @obj_vals = Array.typed(Object).new(desc.get_num_obj_fields) { nil }
+          @obj_vals = Array.typed(self.class::Object).new(desc.get_num_obj_fields) { nil }
         end
         
-        typesig { [self::String, ::Java::Boolean] }
+        typesig { [String, ::Java::Boolean] }
         def put(name, val)
           Bits.put_boolean(@prim_vals, get_field_offset(name, Boolean::TYPE), val)
         end
         
-        typesig { [self::String, ::Java::Byte] }
+        typesig { [String, ::Java::Byte] }
         def put(name, val)
           @prim_vals[get_field_offset(name, Byte::TYPE)] = val
         end
         
-        typesig { [self::String, ::Java::Char] }
+        typesig { [String, ::Java::Char] }
         def put(name, val)
           Bits.put_char(@prim_vals, get_field_offset(name, Character::TYPE), val)
         end
         
-        typesig { [self::String, ::Java::Short] }
+        typesig { [String, ::Java::Short] }
         def put(name, val)
           Bits.put_short(@prim_vals, get_field_offset(name, Short::TYPE), val)
         end
         
-        typesig { [self::String, ::Java::Int] }
+        typesig { [String, ::Java::Int] }
         def put(name, val)
           Bits.put_int(@prim_vals, get_field_offset(name, JavaInteger::TYPE), val)
         end
         
-        typesig { [self::String, ::Java::Float] }
+        typesig { [String, ::Java::Float] }
         def put(name, val)
           Bits.put_float(@prim_vals, get_field_offset(name, Float::TYPE), val)
         end
         
-        typesig { [self::String, ::Java::Long] }
+        typesig { [String, ::Java::Long] }
         def put(name, val)
           Bits.put_long(@prim_vals, get_field_offset(name, Long::TYPE), val)
         end
         
-        typesig { [self::String, ::Java::Double] }
+        typesig { [String, ::Java::Double] }
         def put(name, val)
           Bits.put_double(@prim_vals, get_field_offset(name, Double::TYPE), val)
         end
         
-        typesig { [self::String, Object] }
+        typesig { [String, self::Object] }
         def put(name, val)
           @obj_vals[get_field_offset(name, Object)] = val
         end
@@ -1770,7 +1770,7 @@ module Java::Io
           end
         end
         
-        typesig { [self::String, self::Class] }
+        typesig { [String, self::Class] }
         # Returns offset of field with given name and type.  A specified type
         # of null matches all types, Object.class matches all non-primitive
         # types, and any other non-null type matches assignable types only.
@@ -2081,7 +2081,7 @@ module Java::Io
           end
         end
         
-        typesig { [self::String] }
+        typesig { [String] }
         def write_bytes(s)
           endoff = s.length
           cpos = 0
@@ -2105,7 +2105,7 @@ module Java::Io
           end
         end
         
-        typesig { [self::String] }
+        typesig { [String] }
         def write_chars(s)
           endoff = s.length
           off = 0
@@ -2117,7 +2117,7 @@ module Java::Io
           end
         end
         
-        typesig { [self::String] }
+        typesig { [String] }
         def write_utf(s)
           write_utf(s, get_utflength(s))
         end
@@ -2248,7 +2248,7 @@ module Java::Io
           end
         end
         
-        typesig { [self::String] }
+        typesig { [String] }
         # Returns the length in bytes of the UTF encoding of the given string.
         def get_utflength(s)
           len = s.length
@@ -2276,7 +2276,7 @@ module Java::Io
           return utflen
         end
         
-        typesig { [self::String, ::Java::Long] }
+        typesig { [String, ::Java::Long] }
         # Writes the given string in UTF format.  This method is used in
         # situations where the UTF encoding length of the string is already
         # known; specifying it explicitly avoids a prescan of the string to
@@ -2293,7 +2293,7 @@ module Java::Io
           end
         end
         
-        typesig { [self::String] }
+        typesig { [String] }
         # Writes given string in "long" UTF format.  "Long" UTF format is
         # identical to standard UTF, except that it uses an 8 byte header
         # (instead of the standard 2 bytes) to convey the UTF encoding length.
@@ -2301,7 +2301,7 @@ module Java::Io
           write_long_utf(s, get_utflength(s))
         end
         
-        typesig { [self::String, ::Java::Long] }
+        typesig { [String, ::Java::Long] }
         # Writes given string in "long" UTF format, where the UTF encoding
         # length of the string is already known.
         def write_long_utf(s, utflen)
@@ -2313,7 +2313,7 @@ module Java::Io
           end
         end
         
-        typesig { [self::String] }
+        typesig { [String] }
         # Writes the "body" (i.e., the UTF representation minus the 2-byte or
         # 8-byte length header) of the UTF encoding for the given string.
         def write_utfbody(s)
@@ -2425,12 +2425,12 @@ module Java::Io
           @load_factor = load_factor
           @spine = Array.typed(::Java::Int).new(initial_capacity) { 0 }
           @next = Array.typed(::Java::Int).new(initial_capacity) { 0 }
-          @objs = Array.typed(Object).new(initial_capacity) { nil }
+          @objs = Array.typed(self.class::Object).new(initial_capacity) { nil }
           @threshold = RJava.cast_to_int((initial_capacity * load_factor))
           clear
         end
         
-        typesig { [Object] }
+        typesig { [self::Object] }
         # Assigns next available handle to given object, and returns handle
         # value.  Handles are assigned in ascending order starting at 0.
         def assign(obj)
@@ -2444,7 +2444,7 @@ module Java::Io
           return ((@size += 1) - 1)
         end
         
-        typesig { [Object] }
+        typesig { [self::Object] }
         # Looks up and returns handle associated with given object, or -1 if
         # no mapping found.
         def lookup(obj)
@@ -2476,7 +2476,7 @@ module Java::Io
           return @size
         end
         
-        typesig { [Object, ::Java::Int] }
+        typesig { [self::Object, ::Java::Int] }
         # Inserts mapping object -> handle mapping into table.  Assumes table
         # is large enough to accommodate new mapping.
         def insert(obj, handle)
@@ -2507,12 +2507,12 @@ module Java::Io
           new_next = Array.typed(::Java::Int).new(new_length) { 0 }
           System.arraycopy(@next, 0, new_next, 0, @size)
           @next = new_next
-          new_objs = Array.typed(Object).new(new_length) { nil }
+          new_objs = Array.typed(self.class::Object).new(new_length) { nil }
           System.arraycopy(@objs, 0, new_objs, 0, @size)
           @objs = new_objs
         end
         
-        typesig { [Object] }
+        typesig { [self::Object] }
         # Returns hash value for given object.
         def hash(obj)
           return System.identity_hash_code(obj) & 0x7fffffff
@@ -2547,10 +2547,10 @@ module Java::Io
           @htab = nil
           @reps = nil
           @htab = self.class::HandleTable.new(initial_capacity, load_factor)
-          @reps = Array.typed(Object).new(initial_capacity) { nil }
+          @reps = Array.typed(self.class::Object).new(initial_capacity) { nil }
         end
         
-        typesig { [Object, Object] }
+        typesig { [self::Object, self::Object] }
         # Enters mapping from object to replacement object.
         def assign(obj, rep)
           index = @htab.assign(obj)
@@ -2560,7 +2560,7 @@ module Java::Io
           @reps[index] = rep
         end
         
-        typesig { [Object] }
+        typesig { [self::Object] }
         # Looks up and returns replacement for given object.  If no
         # replacement is found, returns the lookup object itself.
         def lookup(obj)
@@ -2584,7 +2584,7 @@ module Java::Io
         typesig { [] }
         # Increases table capacity.
         def grow
-          new_reps = Array.typed(Object).new((@reps.attr_length << 1) + 1) { nil }
+          new_reps = Array.typed(self.class::Object).new((@reps.attr_length << 1) + 1) { nil }
           System.arraycopy(@reps, 0, new_reps, 0, @reps.attr_length)
           @reps = new_reps
         end
@@ -2622,7 +2622,7 @@ module Java::Io
           @stack.remove(@stack.size - 1)
         end
         
-        typesig { [self::String] }
+        typesig { [String] }
         # Pushes a String onto the top of enclosed list.
         def push(entry)
           @stack.add("\t- " + entry)

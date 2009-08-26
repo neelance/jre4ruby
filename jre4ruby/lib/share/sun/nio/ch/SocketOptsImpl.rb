@@ -318,10 +318,10 @@ module Sun::Nio::Ch
         
         class_module.module_eval {
           # TCP-specific IP options
-          const_set_lazy(:TCP) { Class.new(self.class::SocketOptsImpl::IP) do
+          const_set_lazy(:TCP) { Class.new(self::SocketOptsImpl::IP) do
             include_class_members IP
             overload_protected {
-              include self.class::SocketOpts::IP::TCP
+              include self::SocketOpts::IP::TCP
             }
             
             typesig { [self::Dispatcher] }

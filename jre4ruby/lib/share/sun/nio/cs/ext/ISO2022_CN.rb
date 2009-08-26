@@ -123,10 +123,10 @@ module Sun::Nio::Cs::Ext
         undef_method :current_sodesig=
         
         class_module.module_eval {
-          const_set_lazy(:Gb2312) { self.class::EUC_CN.new }
+          const_set_lazy(:Gb2312) { self::EUC_CN.new }
           const_attr_reader  :Gb2312
           
-          const_set_lazy(:Cns) { self.class::EUC_TW.new }
+          const_set_lazy(:Cns) { self::EUC_TW.new }
           const_attr_reader  :Cns
         }
         

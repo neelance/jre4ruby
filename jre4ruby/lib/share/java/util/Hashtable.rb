@@ -681,12 +681,12 @@ module Java::Util
           return self.attr_count
         end
         
-        typesig { [Object] }
+        typesig { [self::Object] }
         def contains(o)
           return contains_key(o)
         end
         
-        typesig { [Object] }
+        typesig { [self::Object] }
         def remove(o)
           return !(@local_class_parent.remove(o)).nil?
         end
@@ -743,7 +743,7 @@ module Java::Util
           return super(o)
         end
         
-        typesig { [Object] }
+        typesig { [self::Object] }
         def contains(o)
           if (!(o.is_a?(self.class::Map::Entry)))
             return false
@@ -763,7 +763,7 @@ module Java::Util
           return false
         end
         
-        typesig { [Object] }
+        typesig { [self::Object] }
         def remove(o)
           if (!(o.is_a?(self.class::Map::Entry)))
             return false
@@ -849,7 +849,7 @@ module Java::Util
           return self.attr_count
         end
         
-        typesig { [Object] }
+        typesig { [self::Object] }
         def contains(o)
           return contains_value(o)
         end
@@ -1112,7 +1112,7 @@ module Java::Util
           return old_value
         end
         
-        typesig { [Object] }
+        typesig { [self::Object] }
         def ==(o)
           if (!(o.is_a?(self.class::Map::Entry)))
             return false

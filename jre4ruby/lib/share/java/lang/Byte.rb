@@ -83,7 +83,7 @@ module Java::Lang
         end
         
         class_module.module_eval {
-          const_set_lazy(:Cache) { Array.typed(self.class::Byte).new(-(-128) + 127 + 1) { nil } }
+          const_set_lazy(:Cache) { Array.typed(self::Byte).new(-(-128) + 127 + 1) { nil } }
           const_attr_reader  :Cache
           
           when_class_loaded do

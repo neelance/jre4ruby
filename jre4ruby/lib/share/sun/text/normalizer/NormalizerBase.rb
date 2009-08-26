@@ -254,7 +254,7 @@ module Sun::Text::Normalizer
           return normalize(src, src_start, src_limit, dest, dest_start, dest_limit, NormalizerImpl.get_nx(options))
         end
         
-        typesig { [self::String, ::Java::Int] }
+        typesig { [String, ::Java::Int] }
         # This method is used for method dispatch
         # @stable ICU 2.6
         def normalize(src, options)
@@ -334,7 +334,7 @@ module Sun::Text::Normalizer
           return NormalizerImpl.decompose(src, src_start, src_limit, dest, dest_start, dest_limit, false, trail_cc, nx)
         end
         
-        typesig { [self::String, ::Java::Int] }
+        typesig { [String, ::Java::Int] }
         def normalize(src, options)
           return decompose(src, false, options)
         end
@@ -392,7 +392,7 @@ module Sun::Text::Normalizer
           return NormalizerImpl.decompose(src, src_start, src_limit, dest, dest_start, dest_limit, true, trail_cc, nx)
         end
         
-        typesig { [self::String, ::Java::Int] }
+        typesig { [String, ::Java::Int] }
         def normalize(src, options)
           return decompose(src, true, options)
         end
@@ -449,7 +449,7 @@ module Sun::Text::Normalizer
           return NormalizerImpl.compose(src, src_start, src_limit, dest, dest_start, dest_limit, 0, nx)
         end
         
-        typesig { [self::String, ::Java::Int] }
+        typesig { [String, ::Java::Int] }
         def normalize(src, options)
           return compose(src, false, options)
         end
@@ -506,7 +506,7 @@ module Sun::Text::Normalizer
           return NormalizerImpl.compose(src, src_start, src_limit, dest, dest_start, dest_limit, NormalizerImpl::OPTIONS_COMPAT, nx)
         end
         
-        typesig { [self::String, ::Java::Int] }
+        typesig { [String, ::Java::Int] }
         def normalize(src, options)
           return compose(src, true, options)
         end

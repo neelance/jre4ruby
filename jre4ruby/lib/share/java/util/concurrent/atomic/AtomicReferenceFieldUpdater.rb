@@ -217,7 +217,7 @@ module Java::Util::Concurrent::Atomic
         alias_method :attr_cclass=, :cclass=
         undef_method :cclass=
         
-        typesig { [self::Class, self::Class, self::String] }
+        typesig { [self::Class, self::Class, String] }
         # Internal type checks within all update methods contain
         # internal inlined optimizations checking for the common
         # cases where the class is final (in which case a simple

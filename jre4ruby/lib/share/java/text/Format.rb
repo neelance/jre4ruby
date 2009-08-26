@@ -337,7 +337,7 @@ module Java::Text
           const_attr_reader  :SerialVersionUID
         }
         
-        typesig { [self::String] }
+        typesig { [String] }
         # Creates a Field with the specified name.
         # 
         # @param name Name of the attribute

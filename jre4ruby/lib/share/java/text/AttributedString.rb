@@ -832,7 +832,7 @@ module Java::Text
           end
         end
         
-        typesig { [Object] }
+        typesig { [self::Object] }
         # Object methods. See documentation in that class.
         def ==(obj)
           if ((self).equal?(obj))
@@ -1180,7 +1180,7 @@ module Java::Text
           return set
         end
         
-        typesig { [Object] }
+        typesig { [self::Object] }
         def get(key)
           return @local_class_parent.get_attribute_check_range(key, @run_index, @begin_index, @end_index)
         end

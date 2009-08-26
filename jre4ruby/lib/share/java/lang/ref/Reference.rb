@@ -157,7 +157,7 @@ module Java::Lang::Ref
       const_set_lazy(:ReferenceHandler) { Class.new(JavaThread) do
         include_class_members Reference
         
-        typesig { [self::JavaThreadGroup, self::String] }
+        typesig { [self::JavaThreadGroup, String] }
         def initialize(g, name)
           super(g, name)
         end

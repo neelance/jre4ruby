@@ -227,13 +227,13 @@ module Sun::Net::Www::Protocol::Http
         alias_method :attr_host=, :host=
         undef_method :host=
         
-        typesig { [self::String] }
+        typesig { [String] }
         def initialize(host)
           @host = nil
           @host = host
         end
         
-        typesig { [self::String] }
+        typesig { [String] }
         def compare_to(domain)
           if (HttpCookie.domain_matches(domain, @host))
             return 0

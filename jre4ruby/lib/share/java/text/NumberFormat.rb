@@ -1038,11 +1038,11 @@ module Java::Text
           const_attr_reader  :SerialVersionUID
           
           # table of all instances in this class, used by readResolve
-          const_set_lazy(:InstanceMap) { self.class::HashMap.new(11) }
+          const_set_lazy(:InstanceMap) { self::HashMap.new(11) }
           const_attr_reader  :InstanceMap
         }
         
-        typesig { [self::String] }
+        typesig { [String] }
         # Creates a Field instance with the specified
         # name.
         # 
@@ -1073,47 +1073,47 @@ module Java::Text
         
         class_module.module_eval {
           # Constant identifying the integer field.
-          const_set_lazy(:INTEGER) { self.class::Field.new("integer") }
+          const_set_lazy(:INTEGER) { self::Field.new("integer") }
           const_attr_reader  :INTEGER
           
           # Constant identifying the fraction field.
-          const_set_lazy(:FRACTION) { self.class::Field.new("fraction") }
+          const_set_lazy(:FRACTION) { self::Field.new("fraction") }
           const_attr_reader  :FRACTION
           
           # Constant identifying the exponent field.
-          const_set_lazy(:EXPONENT) { self.class::Field.new("exponent") }
+          const_set_lazy(:EXPONENT) { self::Field.new("exponent") }
           const_attr_reader  :EXPONENT
           
           # Constant identifying the decimal separator field.
-          const_set_lazy(:DECIMAL_SEPARATOR) { self.class::Field.new("decimal separator") }
+          const_set_lazy(:DECIMAL_SEPARATOR) { self::Field.new("decimal separator") }
           const_attr_reader  :DECIMAL_SEPARATOR
           
           # Constant identifying the sign field.
-          const_set_lazy(:SIGN) { self.class::Field.new("sign") }
+          const_set_lazy(:SIGN) { self::Field.new("sign") }
           const_attr_reader  :SIGN
           
           # Constant identifying the grouping separator field.
-          const_set_lazy(:GROUPING_SEPARATOR) { self.class::Field.new("grouping separator") }
+          const_set_lazy(:GROUPING_SEPARATOR) { self::Field.new("grouping separator") }
           const_attr_reader  :GROUPING_SEPARATOR
           
           # Constant identifying the exponent symbol field.
-          const_set_lazy(:EXPONENT_SYMBOL) { self.class::Field.new("exponent symbol") }
+          const_set_lazy(:EXPONENT_SYMBOL) { self::Field.new("exponent symbol") }
           const_attr_reader  :EXPONENT_SYMBOL
           
           # Constant identifying the percent field.
-          const_set_lazy(:PERCENT) { self.class::Field.new("percent") }
+          const_set_lazy(:PERCENT) { self::Field.new("percent") }
           const_attr_reader  :PERCENT
           
           # Constant identifying the permille field.
-          const_set_lazy(:PERMILLE) { self.class::Field.new("per mille") }
+          const_set_lazy(:PERMILLE) { self::Field.new("per mille") }
           const_attr_reader  :PERMILLE
           
           # Constant identifying the currency field.
-          const_set_lazy(:CURRENCY) { self.class::Field.new("currency") }
+          const_set_lazy(:CURRENCY) { self::Field.new("currency") }
           const_attr_reader  :CURRENCY
           
           # Constant identifying the exponent sign field.
-          const_set_lazy(:EXPONENT_SIGN) { self.class::Field.new("exponent sign") }
+          const_set_lazy(:EXPONENT_SIGN) { self::Field.new("exponent sign") }
           const_attr_reader  :EXPONENT_SIGN
         }
         
@@ -1127,11 +1127,11 @@ module Java::Text
         include LocaleServiceProviderPool::LocalizedObjectGetter
         
         class_module.module_eval {
-          const_set_lazy(:INSTANCE) { self.class::NumberFormatGetter.new }
+          const_set_lazy(:INSTANCE) { self::NumberFormatGetter.new }
           const_attr_reader  :INSTANCE
         }
         
-        typesig { [self::NumberFormatProvider, self::Locale, self::String, Object] }
+        typesig { [self::NumberFormatProvider, self::Locale, String, self::Object] }
         def get_object(number_format_provider, locale, key, *params)
           raise AssertError if not ((params.attr_length).equal?(1))
           choice = params[0]

@@ -354,7 +354,7 @@ module Java::Util::Prefs
         include_class_members XmlSupport
         include EntityResolver
         
-        typesig { [self::String, self::String] }
+        typesig { [String, String] }
         def resolve_entity(pid, sid)
           if ((sid == PREFS_DTD_URI))
             is = nil

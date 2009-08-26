@@ -663,7 +663,7 @@ module Sun::Net::Httpserver
         alias_method :attr_rejected=, :rejected=
         undef_method :rejected=
         
-        typesig { [self::SocketChannel, self::String, self::HttpConnection] }
+        typesig { [self::SocketChannel, String, self::HttpConnection] }
         def initialize(chan, protocol, conn)
           @chan = nil
           @connection = nil
@@ -825,7 +825,7 @@ module Sun::Net::Httpserver
           const_set_lazy(:LinkHandler) { Class.new do
             extend LocalClass
             include_class_members Exchange
-            include self.class::HttpHandler
+            include self::HttpHandler
             
             attr_accessor :next_chain
             alias_method :attr_next_chain, :next_chain
@@ -849,14 +849,14 @@ module Sun::Net::Httpserver
           end }
         }
         
-        typesig { [::Java::Int, self::String, self::String] }
+        typesig { [::Java::Int, String, String] }
         def reject(code, request_str, message)
           @rejected = true
           log_reply(code, request_str, message)
           send_reply(code, true, "<h1>" + RJava.cast_to_string(code) + RJava.cast_to_string(Code.msg(code)) + "</h1>" + message)
         end
         
-        typesig { [::Java::Int, ::Java::Boolean, self::String] }
+        typesig { [::Java::Int, ::Java::Boolean, String] }
         def send_reply(code, close_now, text)
           begin
             s = "HTTP/1.1 " + RJava.cast_to_string(code) + RJava.cast_to_string(Code.msg(code)) + "\r\n"

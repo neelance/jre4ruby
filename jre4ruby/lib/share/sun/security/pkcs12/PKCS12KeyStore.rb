@@ -340,7 +340,7 @@ module Sun::Security::Pkcs12
           return hash
         end
         
-        typesig { [Object] }
+        typesig { [self::Object] }
         def ==(obj)
           if (!(obj.is_a?(self.class::KeyId)))
             return false

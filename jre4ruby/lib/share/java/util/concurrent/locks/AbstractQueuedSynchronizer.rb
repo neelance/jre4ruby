@@ -396,7 +396,7 @@ module Java::Util::Concurrent::Locks
         
         class_module.module_eval {
           # Marker to indicate a node is waiting in shared mode
-          const_set_lazy(:SHARED) { self.class::Node.new }
+          const_set_lazy(:SHARED) { self::Node.new }
           const_attr_reader  :SHARED
           
           # Marker to indicate a node is waiting in exclusive mode

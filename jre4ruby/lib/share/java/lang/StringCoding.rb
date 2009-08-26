@@ -177,7 +177,7 @@ module Java::Lang
         alias_method :attr_cd=, :cd=
         undef_method :cd=
         
-        typesig { [self::Charset, self::String] }
+        typesig { [self::Charset, String] }
         def initialize(cs, rcn)
           @requested_charset_name = nil
           @cs = nil
@@ -302,7 +302,7 @@ module Java::Lang
         alias_method :attr_requested_charset_name=, :requested_charset_name=
         undef_method :requested_charset_name=
         
-        typesig { [self::Charset, self::String] }
+        typesig { [self::Charset, String] }
         def initialize(cs, rcn)
           @cs = nil
           @ce = nil

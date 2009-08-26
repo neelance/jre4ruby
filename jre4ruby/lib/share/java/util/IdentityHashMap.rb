@@ -860,7 +860,7 @@ module Java::Util
               # be used for searching anyway.
               if (i < deleted_slot && d >= deleted_slot && (@traversal_table).equal?(@local_class_parent.attr_table))
                 remaining = len - deleted_slot
-                new_table = Array.typed(Object).new(remaining) { nil }
+                new_table = Array.typed(self.class::Object).new(remaining) { nil }
                 System.arraycopy(tab, deleted_slot, new_table, 0, remaining)
                 @traversal_table = new_table
                 @index = 0
@@ -972,7 +972,7 @@ module Java::Util
           return old_value
         end
         
-        typesig { [Object] }
+        typesig { [self::Object] }
         def ==(o)
           if (self.attr_last_returned_index < 0)
             return super(o)
@@ -1082,12 +1082,12 @@ module Java::Util
           return self.attr_size
         end
         
-        typesig { [Object] }
+        typesig { [self::Object] }
         def contains(o)
           return contains_key(o)
         end
         
-        typesig { [Object] }
+        typesig { [self::Object] }
         def remove(o)
           old_size = self.attr_size
           @local_class_parent.remove(o)
@@ -1177,12 +1177,12 @@ module Java::Util
           return self.attr_size
         end
         
-        typesig { [Object] }
+        typesig { [self::Object] }
         def contains(o)
           return contains_value(o)
         end
         
-        typesig { [Object] }
+        typesig { [self::Object] }
         def remove(o)
           i = iterator
           while i.has_next
@@ -1265,7 +1265,7 @@ module Java::Util
           return self.class::EntryIterator.new
         end
         
-        typesig { [Object] }
+        typesig { [self::Object] }
         def contains(o)
           if (!(o.is_a?(self.class::Map::Entry)))
             return false
@@ -1274,7 +1274,7 @@ module Java::Util
           return contains_mapping(entry.get_key, entry.get_value)
         end
         
-        typesig { [Object] }
+        typesig { [self::Object] }
         def remove(o)
           if (!(o.is_a?(self.class::Map::Entry)))
             return false
@@ -1312,7 +1312,7 @@ module Java::Util
         typesig { [] }
         def to_array
           size_ = size
-          result = Array.typed(Object).new(size_) { nil }
+          result = Array.typed(self.class::Object).new(size_) { nil }
           it = iterator
           i = 0
           while i < size_

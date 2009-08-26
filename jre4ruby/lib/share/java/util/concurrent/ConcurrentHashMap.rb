@@ -430,7 +430,7 @@ module Java::Util::Concurrent
           end
         end
         
-        typesig { [Object, ::Java::Int] }
+        typesig { [self::Object, ::Java::Int] }
         # Specialized implementations of map methods
         def get(key, hash)
           if (!(@count).equal?(0))
@@ -450,7 +450,7 @@ module Java::Util::Concurrent
           return nil
         end
         
-        typesig { [Object, ::Java::Int] }
+        typesig { [self::Object, ::Java::Int] }
         def contains_key(key, hash)
           if (!(@count).equal?(0))
             # read-volatile
@@ -465,7 +465,7 @@ module Java::Util::Concurrent
           return false
         end
         
-        typesig { [Object] }
+        typesig { [self::Object] }
         def contains_value(value)
           if (!(@count).equal?(0))
             # read-volatile
@@ -624,7 +624,7 @@ module Java::Util::Concurrent
           @table = new_table
         end
         
-        typesig { [Object, ::Java::Int, Object] }
+        typesig { [self::Object, ::Java::Int, self::Object] }
         # Remove; match on key only if value null, else match both.
         def remove(key, hash, value)
           lock
@@ -1437,12 +1437,12 @@ module Java::Util::Concurrent
           return @local_class_parent.is_empty
         end
         
-        typesig { [Object] }
+        typesig { [self::Object] }
         def contains(o)
           return @local_class_parent.contains_key(o)
         end
         
-        typesig { [Object] }
+        typesig { [self::Object] }
         def remove(o)
           return !(@local_class_parent.remove(o)).nil?
         end
@@ -1480,7 +1480,7 @@ module Java::Util::Concurrent
           return @local_class_parent.is_empty
         end
         
-        typesig { [Object] }
+        typesig { [self::Object] }
         def contains(o)
           return @local_class_parent.contains_value(o)
         end
@@ -1508,7 +1508,7 @@ module Java::Util::Concurrent
           return self.class::EntryIterator.new
         end
         
-        typesig { [Object] }
+        typesig { [self::Object] }
         def contains(o)
           if (!(o.is_a?(self.class::Map::Entry)))
             return false
@@ -1518,7 +1518,7 @@ module Java::Util::Concurrent
           return !(v).nil? && (v == e.get_value)
         end
         
-        typesig { [Object] }
+        typesig { [self::Object] }
         def remove(o)
           if (!(o.is_a?(self.class::Map::Entry)))
             return false

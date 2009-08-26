@@ -563,7 +563,7 @@ module Sun::Misc
           return @base
         end
         
-        typesig { [self::String, ::Java::Boolean] }
+        typesig { [String, ::Java::Boolean] }
         def find_resource(name, check)
           url = nil
           begin
@@ -595,7 +595,7 @@ module Sun::Misc
           end
         end
         
-        typesig { [self::String, ::Java::Boolean] }
+        typesig { [String, ::Java::Boolean] }
         def get_resource(name, check_)
           url = nil
           begin
@@ -653,7 +653,7 @@ module Sun::Misc
           end.new_local(self)
         end
         
-        typesig { [self::String] }
+        typesig { [String] }
         # Returns the Resource for the specified name, or null if not
         # found or the caller does not have the permission to get the
         # resource.
@@ -844,7 +844,7 @@ module Sun::Misc
           return @index
         end
         
-        typesig { [self::String, ::Java::Boolean, self::JarEntry] }
+        typesig { [String, ::Java::Boolean, self::JarEntry] }
         # Creates the resource and if the check flag is set to true, checks if
         # is its okay to return the resource.
         def check_resource(name, check, entry)
@@ -917,7 +917,7 @@ module Sun::Misc
           end.new_local(self)
         end
         
-        typesig { [self::String] }
+        typesig { [String] }
         # Returns true iff atleast one resource in the jar file has the same
         # package name as that of the specified resource name.
         def valid_index(name)
@@ -942,7 +942,7 @@ module Sun::Misc
           return false
         end
         
-        typesig { [self::String, ::Java::Boolean] }
+        typesig { [String, ::Java::Boolean] }
         # Returns the URL for a resource with the specified name
         def find_resource(name, check_)
           rsc = get_resource(name, check_)
@@ -952,7 +952,7 @@ module Sun::Misc
           return nil
         end
         
-        typesig { [self::String, ::Java::Boolean] }
+        typesig { [String, ::Java::Boolean] }
         # Returns the JAR Resource for the specified name.
         def get_resource(name, check_)
           if (!(@meta_index).nil?)
@@ -976,7 +976,7 @@ module Sun::Misc
           return get_resource(name, check_, visited)
         end
         
-        typesig { [self::String, ::Java::Boolean, self::JavaSet] }
+        typesig { [String, ::Java::Boolean, self::JavaSet] }
         # Version of getResource() that tracks the jar files that have been
         # visited by linking through the index files. This helper method uses
         # a HashSet to store the URLs of jar files that have been searched and
@@ -1113,7 +1113,7 @@ module Sun::Misc
           ExtensionDependency.check_extensions_dependencies(@jar)
         end
         
-        typesig { [self::URL, self::String] }
+        typesig { [self::URL, String] }
         # Parses value of the Class-Path manifest attribute and returns
         # an array of URLs relative to the specified base URL.
         def parse_class_path(base, value)
@@ -1155,7 +1155,7 @@ module Sun::Misc
           @dir = self.class::JavaFile.new(path)
         end
         
-        typesig { [self::String, ::Java::Boolean] }
+        typesig { [String, ::Java::Boolean] }
         # Returns the URL for a resource with the specified name
         def find_resource(name, check)
           rsc = get_resource(name, check)
@@ -1165,7 +1165,7 @@ module Sun::Misc
           return nil
         end
         
-        typesig { [self::String, ::Java::Boolean] }
+        typesig { [String, ::Java::Boolean] }
         def get_resource(name, check)
           url = nil
           begin

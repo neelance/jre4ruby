@@ -864,7 +864,7 @@ module Java::Security
         alias_method :attr_service_iterator=, :service_iterator=
         undef_method :service_iterator=
         
-        typesig { [self::SignatureSpi, self::String] }
+        typesig { [self::SignatureSpi, String] }
         # constructor
         def initialize(sig_spi, algorithm)
           @sig_spi = nil
@@ -876,7 +876,7 @@ module Java::Security
           @lock = nil # no lock needed
         end
         
-        typesig { [self::Service, self::Iterator, self::String] }
+        typesig { [self::Service, self::Iterator, String] }
         # used with delayed provider selection
         def initialize(service, iterator, algorithm)
           @sig_spi = nil
@@ -886,7 +886,7 @@ module Java::Security
           super(algorithm)
           @first_service = service
           @service_iterator = iterator
-          @lock = Object.new
+          @lock = self.class::Object.new
         end
         
         typesig { [] }
@@ -1144,7 +1144,7 @@ module Java::Security
           return @sig_spi.engine_verify(sig_bytes, offset, length)
         end
         
-        typesig { [self::String, Object] }
+        typesig { [String, self::Object] }
         def engine_set_parameter(param, value)
           choose_first_provider
           @sig_spi.engine_set_parameter(param, value)
@@ -1156,7 +1156,7 @@ module Java::Security
           @sig_spi.engine_set_parameter(params)
         end
         
-        typesig { [self::String] }
+        typesig { [String] }
         def engine_get_parameter(param)
           choose_first_provider
           return @sig_spi.engine_get_parameter(param)
@@ -1262,12 +1262,12 @@ module Java::Security
           end
         end
         
-        typesig { [self::String, Object] }
+        typesig { [String, self::Object] }
         def engine_set_parameter(param, value)
           raise self.class::InvalidParameterException.new("Parameters not supported")
         end
         
-        typesig { [self::String] }
+        typesig { [String] }
         def engine_get_parameter(param)
           raise self.class::InvalidParameterException.new("Parameters not supported")
         end

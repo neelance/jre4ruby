@@ -131,7 +131,7 @@ module Sun::Security::X509
         alias_method :attr_m_position=, :m_position=
         undef_method :m_position=
         
-        typesig { [self::String, ::Java::Int] }
+        typesig { [String, ::Java::Int] }
         def initialize(name, position)
           @m_name = nil
           @m_position = 0

@@ -554,7 +554,7 @@ module Java::Security
         alias_method :attr_init_random=, :init_random=
         undef_method :init_random=
         
-        typesig { [self::KeyPairGeneratorSpi, self::String] }
+        typesig { [self::KeyPairGeneratorSpi, String] }
         # constructor
         def initialize(spi, algorithm)
           @spi = nil
@@ -565,11 +565,11 @@ module Java::Security
           @init_params = nil
           @init_random = nil
           super(algorithm)
-          @lock = Object.new
+          @lock = self.class::Object.new
           @spi = spi
         end
         
-        typesig { [self::Instance, self::Iterator, self::String] }
+        typesig { [self::Instance, self::Iterator, String] }
         def initialize(instance, service_iterator, algorithm)
           @spi = nil
           @lock = nil
@@ -579,7 +579,7 @@ module Java::Security
           @init_params = nil
           @init_random = nil
           super(algorithm)
-          @lock = Object.new
+          @lock = self.class::Object.new
           @spi = instance.attr_impl
           self.attr_provider = instance.attr_provider
           @service_iterator = service_iterator

@@ -92,19 +92,19 @@ module Java::Io
         
         class_module.module_eval {
           # cache mapping local classes -> descriptors
-          const_set_lazy(:LocalDescs) { self.class::ConcurrentHashMap.new }
+          const_set_lazy(:LocalDescs) { self::ConcurrentHashMap.new }
           const_attr_reader  :LocalDescs
           
           # cache mapping field group/local desc pairs -> field reflectors
-          const_set_lazy(:Reflectors) { self.class::ConcurrentHashMap.new }
+          const_set_lazy(:Reflectors) { self::ConcurrentHashMap.new }
           const_attr_reader  :Reflectors
           
           # queue for WeakReferences to local classes
-          const_set_lazy(:LocalDescsQueue) { self.class::ReferenceQueue.new }
+          const_set_lazy(:LocalDescsQueue) { self::ReferenceQueue.new }
           const_attr_reader  :LocalDescsQueue
           
           # queue for WeakReferences to field reflectors keys
-          const_set_lazy(:ReflectorsQueue) { self.class::ReferenceQueue.new }
+          const_set_lazy(:ReflectorsQueue) { self::ReferenceQueue.new }
           const_attr_reader  :ReflectorsQueue
         }
         
@@ -506,7 +506,7 @@ module Java::Io
         include_class_members ObjectStreamClass
         
         class_module.module_eval {
-          const_set_lazy(:Unset) { Object.new }
+          const_set_lazy(:Unset) { self::Object.new }
           const_attr_reader  :Unset
         }
         
@@ -522,7 +522,7 @@ module Java::Io
         alias_method :attr_entry=, :entry=
         undef_method :entry=
         
-        typesig { [Object] }
+        typesig { [self::Object] }
         # Attempts to set the value contained by this EntryFuture.  If the
         # EntryFuture's value has not been set already, then the value is
         # saved, any callers blocked in the get() method are notified, and
@@ -2082,7 +2082,7 @@ module Java::Io
           return @fields
         end
         
-        typesig { [Object, Array.typed(::Java::Byte)] }
+        typesig { [self::Object, Array.typed(::Java::Byte)] }
         # Fetches the serializable primitive field values of object obj and
         # marshals them into byte array buf starting at offset 0.  The caller
         # is responsible for ensuring that obj is of the proper type.
@@ -2121,7 +2121,7 @@ module Java::Io
           end
         end
         
-        typesig { [Object, Array.typed(::Java::Byte)] }
+        typesig { [self::Object, Array.typed(::Java::Byte)] }
         # Sets the serializable primitive fields of object obj using values
         # unmarshalled from byte array buf starting at offset 0.  The caller
         # is responsible for ensuring that obj is of the proper type.
@@ -2161,7 +2161,7 @@ module Java::Io
           end
         end
         
-        typesig { [Object, Array.typed(Object)] }
+        typesig { [self::Object, Array.typed(self::Object)] }
         # Fetches the serializable object field values of object obj and
         # stores them in array vals starting at offset 0.  The caller is
         # responsible for ensuring that obj is of the proper type.
@@ -2184,7 +2184,7 @@ module Java::Io
           end
         end
         
-        typesig { [Object, Array.typed(Object)] }
+        typesig { [self::Object, Array.typed(self::Object)] }
         # Sets the serializable object fields of object obj using values from
         # array vals starting at offset 0.  The caller is responsible for
         # ensuring that obj is of the proper type; however, attempts to set a
@@ -2338,7 +2338,7 @@ module Java::Io
           return @hash
         end
         
-        typesig { [Object] }
+        typesig { [self::Object] }
         def ==(obj)
           if ((obj).equal?(self))
             return true
@@ -2443,7 +2443,7 @@ module Java::Io
           return @hash
         end
         
-        typesig { [Object] }
+        typesig { [self::Object] }
         # Returns true if the given object is this identical
         # WeakClassKey instance, or, if this object's referent has not
         # been cleared, if the given object is another WeakClassKey

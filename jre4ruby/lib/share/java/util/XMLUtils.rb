@@ -165,7 +165,7 @@ module Java::Util
         include_class_members XMLUtils
         include EntityResolver
         
-        typesig { [self::String, self::String] }
+        typesig { [String, String] }
         def resolve_entity(pid, sid)
           if ((sid == PROPS_DTD_URI))
             is = nil

@@ -251,7 +251,7 @@ module Sun::Nio::Cs::Ext
         alias_method :attr_decoder0212=, :decoder0212=
         undef_method :decoder0212=
         
-        typesig { [self::Charset, Array.typed(::Java::Short), Array.typed(self::String), self::DoubleByteDecoder] }
+        typesig { [self::Charset, Array.typed(::Java::Short), Array.typed(String), self::DoubleByteDecoder] }
         def initialize(cs, index1, index2, decoder0212)
           @current_state = 0
           @previous_state = 0
@@ -606,7 +606,7 @@ module Sun::Nio::Cs::Ext
         alias_method :attr_do_sbkana=, :do_sbkana=
         undef_method :do_sbkana=
         
-        typesig { [self::Charset, Array.typed(::Java::Short), Array.typed(self::String), self::DoubleByteEncoder, ::Java::Boolean] }
+        typesig { [self::Charset, Array.typed(::Java::Short), Array.typed(String), self::DoubleByteEncoder, ::Java::Boolean] }
         def initialize(cs, index1, index2, encoder0212, do_sbkana)
           @current_mode = 0
           @replace_mode = 0

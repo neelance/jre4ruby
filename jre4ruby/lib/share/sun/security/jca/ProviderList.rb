@@ -518,7 +518,7 @@ module Sun::Security::Jca
         alias_method :attr_provider_index=, :provider_index=
         undef_method :provider_index=
         
-        typesig { [self::String, self::String] }
+        typesig { [String, String] }
         def initialize(type, algorithm)
           @type = nil
           @algorithm = nil

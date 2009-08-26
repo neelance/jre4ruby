@@ -238,7 +238,7 @@ module Sun::Security::Krb5
         alias_method :attr_obuf=, :obuf=
         undef_method :obuf=
         
-        typesig { [self::String, ::Java::Int, ::Java::Boolean, ::Java::Int, Array.typed(::Java::Byte)] }
+        typesig { [String, ::Java::Int, ::Java::Boolean, ::Java::Int, Array.typed(::Java::Byte)] }
         def initialize(kdc, port, use_tcp, timeout, obuf)
           @kdc = nil
           @port = 0

@@ -1100,7 +1100,7 @@ module Sun::Security::Krb5
         alias_method :attr_file_name=, :file_name=
         undef_method :file_name=
         
-        typesig { [self::String] }
+        typesig { [String] }
         def initialize(file_name)
           @file_name = nil
           @file_name = file_name

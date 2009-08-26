@@ -217,7 +217,7 @@ module Sun::Misc
         alias_method :attr_time=, :time=
         undef_method :time=
         
-        typesig { [self::String, ::Java::Long] }
+        typesig { [String, ::Java::Long] }
         def initialize(message, time)
           @message = nil
           @time = 0

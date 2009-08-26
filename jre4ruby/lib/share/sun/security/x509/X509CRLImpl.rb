@@ -1415,7 +1415,7 @@ module Sun::Security::X509
           return @serial
         end
         
-        typesig { [Object] }
+        typesig { [self::Object] }
         # Compares this X509Serial with another and returns true if they
         # are equivalent.
         # 

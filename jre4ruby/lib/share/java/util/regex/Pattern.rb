@@ -6320,7 +6320,7 @@ module Java::Util::Regex
         include_class_members Pattern
         
         class_module.module_eval {
-          typesig { [self::String] }
+          typesig { [String] }
           def char_property_for(name)
             m = self.class::Map.get(name)
             return (m).nil? ? nil : m.make
@@ -6342,7 +6342,7 @@ module Java::Util::Regex
             alias_method :initialize__char_property_factory, :initialize
           end }
           
-          typesig { [self::String, ::Java::Int] }
+          typesig { [String, ::Java::Int] }
           def def_category(name, type_mask)
             self.class::Map.put(name, Class.new(self.class::CharPropertyFactory.class == Class ? self.class::CharPropertyFactory : Object) do
               extend LocalClass
@@ -6364,7 +6364,7 @@ module Java::Util::Regex
             end.new_local(self))
           end
           
-          typesig { [self::String, ::Java::Int, ::Java::Int] }
+          typesig { [String, ::Java::Int, ::Java::Int] }
           def def_range(name, lower, upper)
             self.class::Map.put(name, Class.new(self.class::CharPropertyFactory.class == Class ? self.class::CharPropertyFactory : Object) do
               extend LocalClass
@@ -6386,7 +6386,7 @@ module Java::Util::Regex
             end.new_local(self))
           end
           
-          typesig { [self::String, ::Java::Int] }
+          typesig { [String, ::Java::Int] }
           def def_ctype(name, ctype)
             self.class::Map.put(name, Class.new(self.class::CharPropertyFactory.class == Class ? self.class::CharPropertyFactory : Object) do
               extend LocalClass
@@ -6408,10 +6408,10 @@ module Java::Util::Regex
             end.new_local(self))
           end
           
-          const_set_lazy(:CloneableProperty) { Class.new(self.class::CharProperty) do
+          const_set_lazy(:CloneableProperty) { Class.new(self::CharProperty) do
             include_class_members CharPropertyNames
             overload_protected {
-              include self.class::Cloneable
+              include self::Cloneable
             }
             
             typesig { [] }
@@ -6432,7 +6432,7 @@ module Java::Util::Regex
             alias_method :initialize__cloneable_property, :initialize
           end }
           
-          typesig { [self::String, self::CloneableProperty] }
+          typesig { [String, self::CloneableProperty] }
           def def_clone(name, p)
             self.class::Map.put(name, Class.new(self.class::CharPropertyFactory.class == Class ? self.class::CharPropertyFactory : Object) do
               extend LocalClass
@@ -6454,7 +6454,7 @@ module Java::Util::Regex
             end.new_local(self))
           end
           
-          const_set_lazy(:Map) { self.class::HashMap.new }
+          const_set_lazy(:Map) { self::HashMap.new }
           const_attr_reader  :Map
           
           when_class_loaded do

@@ -197,7 +197,7 @@ module Sun::Security::Pkcs11
         alias_method :attr_key_algorithm=, :key_algorithm=
         undef_method :key_algorithm=
         
-        typesig { [self::String, ::Java::Long, ::Java::Long] }
+        typesig { [String, ::Java::Long, ::Java::Long] }
         def initialize(operation, key_type, key_algorithm)
           @operation = nil
           @key_type = 0
@@ -207,7 +207,7 @@ module Sun::Security::Pkcs11
           @key_algorithm = key_algorithm
         end
         
-        typesig { [Object] }
+        typesig { [self::Object] }
         def ==(obj)
           if ((self).equal?(obj))
             return true
@@ -251,7 +251,7 @@ module Sun::Security::Pkcs11
         include_class_members TemplateManager
         
         class_module.module_eval {
-          const_set_lazy(:A0) { Array.typed(self.class::CK_ATTRIBUTE).new(0) { nil } }
+          const_set_lazy(:A0) { Array.typed(self::CK_ATTRIBUTE).new(0) { nil } }
           const_attr_reader  :A0
         }
         

@@ -276,7 +276,7 @@ module Java::Lang
           # == null) mean that the key is no longer referenced, so the
           # entry can be expunged from table.  Such entries are referred to
           # as "stale entries" in the code that follows.
-          const_set_lazy(:Entry) { Class.new(self.class::WeakReference) do
+          const_set_lazy(:Entry) { Class.new(self::WeakReference) do
             include_class_members ThreadLocalMap
             
             # The value associated with this ThreadLocal.
@@ -286,7 +286,7 @@ module Java::Lang
             alias_method :attr_value=, :value=
             undef_method :value=
             
-            typesig { [self::ThreadLocal, Object] }
+            typesig { [self::ThreadLocal, self::Object] }
             def initialize(k, v)
               @value = nil
               super(k)
@@ -346,7 +346,7 @@ module Java::Lang
           end
         }
         
-        typesig { [self::ThreadLocal, Object] }
+        typesig { [self::ThreadLocal, self::Object] }
         # Construct a new map initially containing (firstKey, firstValue).
         # ThreadLocalMaps are constructed lazily, so we only create
         # one when we have at least one entry to put in it.
@@ -439,7 +439,7 @@ module Java::Lang
           return nil
         end
         
-        typesig { [self::ThreadLocal, Object] }
+        typesig { [self::ThreadLocal, self::Object] }
         # Set the value associated with key.
         # 
         # @param key the thread local object
@@ -489,7 +489,7 @@ module Java::Lang
           end
         end
         
-        typesig { [self::ThreadLocal, Object, ::Java::Int] }
+        typesig { [self::ThreadLocal, self::Object, ::Java::Int] }
         # Replace a stale entry encountered during a set operation
         # with an entry for the specified key.  The value passed in
         # the value parameter is stored in the entry, whether or not

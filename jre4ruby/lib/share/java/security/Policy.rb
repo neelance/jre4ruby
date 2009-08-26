@@ -731,7 +731,7 @@ module Java::Security
         alias_method :attr_params=, :params=
         undef_method :params=
         
-        typesig { [self::PolicySpi, self::Provider, self::String, self::Policy::Parameters] }
+        typesig { [self::PolicySpi, self::Provider, String, self::Policy::Parameters] }
         def initialize(spi, p, type, params)
           @spi = nil
           @p = nil

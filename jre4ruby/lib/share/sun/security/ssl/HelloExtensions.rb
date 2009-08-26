@@ -410,7 +410,7 @@ module Sun::Security::Ssl
           @type = s.get_int8
           @data = s.get_bytes16
           if ((@type).equal?(NAME_HOST_NAME))
-            @hostname = RJava.cast_to_string(self.class::String.new(@data, "UTF8"))
+            @hostname = RJava.cast_to_string(String.new(@data, "UTF8"))
           else
             @hostname = RJava.cast_to_string(nil)
           end

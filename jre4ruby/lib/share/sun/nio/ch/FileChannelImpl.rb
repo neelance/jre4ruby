@@ -1323,7 +1323,7 @@ module Sun::Nio::Ch
           # All access to the list must be synchronized on the list.
           
           def lock_map
-            defined?(@@lock_map) ? @@lock_map : @@lock_map= self.class::ConcurrentHashMap.new
+            defined?(@@lock_map) ? @@lock_map : @@lock_map= self::ConcurrentHashMap.new
           end
           alias_method :attr_lock_map, :lock_map
           
@@ -1335,7 +1335,7 @@ module Sun::Nio::Ch
           # reference queue for cleared refs
           
           def queue
-            defined?(@@queue) ? @@queue : @@queue= self.class::ReferenceQueue.new
+            defined?(@@queue) ? @@queue : @@queue= self::ReferenceQueue.new
           end
           alias_method :attr_queue, :queue
           

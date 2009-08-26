@@ -172,7 +172,7 @@ module Java::Util::Concurrent
       const_set_lazy(:Transferer) { Class.new do
         include_class_members SynchronousQueue
         
-        typesig { [Object, ::Java::Boolean, ::Java::Long] }
+        typesig { [self::Object, ::Java::Boolean, ::Java::Long] }
         # Performs a put or take.
         # 
         # @param e if non-null, the item to be handed to a consumer;
@@ -287,7 +287,7 @@ module Java::Util::Concurrent
             alias_method :attr_mode=, :mode=
             undef_method :mode=
             
-            typesig { [Object] }
+            typesig { [self::Object] }
             # Note: item and mode fields don't need to be volatile
             # since they are always written before, and read after,
             # other volatile/atomic operations.
@@ -369,7 +369,7 @@ module Java::Util::Concurrent
         end
         
         class_module.module_eval {
-          typesig { [self::SNode, Object, self::SNode, ::Java::Int] }
+          typesig { [self::SNode, self::Object, self::SNode, ::Java::Int] }
           # Creates or resets fields of a node. Called only from transfer
           # where the node to push on stack is lazily created and
           # reused when possible to help reduce intervals between reads
@@ -385,7 +385,7 @@ module Java::Util::Concurrent
           end
         }
         
-        typesig { [Object, ::Java::Boolean, ::Java::Long] }
+        typesig { [self::Object, ::Java::Boolean, ::Java::Long] }
         # Puts or takes an item.
         def transfer(e, timed, nanos)
           # Basic algorithm is to loop trying one of three actions:
@@ -648,7 +648,7 @@ module Java::Util::Concurrent
             alias_method :attr_is_data=, :is_data=
             undef_method :is_data=
             
-            typesig { [Object, ::Java::Boolean] }
+            typesig { [self::Object, ::Java::Boolean] }
             def initialize(item, is_data)
               @next = nil
               @item = nil
@@ -673,12 +673,12 @@ module Java::Util::Concurrent
               const_attr_reader  :ItemUpdater
             }
             
-            typesig { [Object, Object] }
+            typesig { [self::Object, self::Object] }
             def cas_item(cmp, val)
               return ((@item).equal?(cmp) && self.class::ItemUpdater.compare_and_set(self, cmp, val))
             end
             
-            typesig { [Object] }
+            typesig { [self::Object] }
             # Tries to cancel by CAS'ing ref to this as item.
             def try_cancel(cmp)
               self.class::ItemUpdater.compare_and_set(self, cmp, self)
@@ -774,7 +774,7 @@ module Java::Util::Concurrent
           return ((@clean_me).equal?(cmp) && self.class::CleanMeUpdater.compare_and_set(self, cmp, val))
         end
         
-        typesig { [Object, ::Java::Boolean, ::Java::Long] }
+        typesig { [self::Object, ::Java::Boolean, ::Java::Long] }
         # Puts or takes an item.
         def transfer(e, timed, nanos)
           # Basic algorithm is to loop trying to take either of
@@ -870,7 +870,7 @@ module Java::Util::Concurrent
           end
         end
         
-        typesig { [self::QNode, Object, ::Java::Boolean, ::Java::Long] }
+        typesig { [self::QNode, self::Object, ::Java::Boolean, ::Java::Long] }
         # Spins/blocks until node s is fulfilled.
         # 
         # @param s the waiting node

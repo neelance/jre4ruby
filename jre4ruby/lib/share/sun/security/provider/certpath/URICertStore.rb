@@ -500,7 +500,7 @@ module Sun::Security::Provider::Certpath
           @uri = uri
         end
         
-        typesig { [Object] }
+        typesig { [self::Object] }
         def ==(obj)
           if (!(obj.is_a?(self.class::URICertStoreParameters)))
             return false
@@ -537,7 +537,7 @@ module Sun::Security::Provider::Certpath
       const_set_lazy(:UCS) { Class.new(CertStore) do
         include_class_members URICertStore
         
-        typesig { [self::CertStoreSpi, self::Provider, self::String, self::CertStoreParameters] }
+        typesig { [self::CertStoreSpi, self::Provider, String, self::CertStoreParameters] }
         def initialize(spi, p, type, params)
           super(spi, p, type, params)
         end

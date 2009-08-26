@@ -112,7 +112,7 @@ module Sun::Nio::Cs::Ext
           init_lookup_tables
         end
         
-        typesig { [self::Charset, self::String] }
+        typesig { [self::Charset, String] }
         def initialize(cs, single_byte_to_char)
           super(cs)
           @single_byte_to_char = single_byte_to_char
@@ -1269,7 +1269,7 @@ module Sun::Nio::Cs::Ext
           @index2a = self.class::Index2a
         end
         
-        typesig { [self::Charset, Array.typed(::Java::Short), self::String] }
+        typesig { [self::Charset, Array.typed(::Java::Short), String] }
         def initialize(cs, mod_idx1, mod_idx2a)
           super(cs)
           @mask1 = 0xffe0

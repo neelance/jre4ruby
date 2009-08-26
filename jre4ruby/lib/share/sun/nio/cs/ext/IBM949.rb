@@ -125,7 +125,7 @@ module Sun::Nio::Cs::Ext
           @single_byte_to_char = self.attr_single_byte_to_char
         end
         
-        typesig { [self::Charset, self::String] }
+        typesig { [self::Charset, String] }
         def initialize(cs, single_byte_to_char)
           super(cs)
           init_lookup_tables
@@ -1589,7 +1589,7 @@ module Sun::Nio::Cs::Ext
           @shift = 3
         end
         
-        typesig { [self::Charset, self::String] }
+        typesig { [self::Charset, String] }
         def initialize(cs, mod_idx2a)
           @char_state = 0
           @l = 0

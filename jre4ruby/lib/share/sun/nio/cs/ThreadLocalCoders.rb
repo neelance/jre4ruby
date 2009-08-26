@@ -63,12 +63,12 @@ module Sun::Nio::Cs
           @size = size
         end
         
-        typesig { [Object] }
+        typesig { [self::Object] }
         def create(name)
           raise NotImplementedError
         end
         
-        typesig { [Array.typed(Object), ::Java::Int] }
+        typesig { [Array.typed(self::Object), ::Java::Int] }
         def move_to_front(oa, i)
           ob = oa[i]
           j = i
@@ -79,16 +79,16 @@ module Sun::Nio::Cs
           oa[0] = ob
         end
         
-        typesig { [Object, Object] }
+        typesig { [self::Object, self::Object] }
         def has_name(ob, name)
           raise NotImplementedError
         end
         
-        typesig { [Object] }
+        typesig { [self::Object] }
         def for_name(name)
           oa = @cache.get
           if ((oa).nil?)
-            oa = Array.typed(Object).new(@size) { nil }
+            oa = Array.typed(self.class::Object).new(@size) { nil }
             @cache.set(oa)
           else
             i = 0
@@ -127,7 +127,7 @@ module Sun::Nio::Cs
           
           typesig { [Object, Object] }
           define_method :has_name do |ob, name|
-            if (name.is_a?(self.class::String))
+            if (name.is_a?(String))
               return (((ob).charset.name == name))
             end
             if (name.is_a?(self.class::Charset))
@@ -138,7 +138,7 @@ module Sun::Nio::Cs
           
           typesig { [Object] }
           define_method :create do |name|
-            if (name.is_a?(self.class::String))
+            if (name.is_a?(String))
               return Charset.for_name(name).new_decoder
             end
             if (name.is_a?(self.class::Charset))
@@ -180,7 +180,7 @@ module Sun::Nio::Cs
           
           typesig { [Object, Object] }
           define_method :has_name do |ob, name|
-            if (name.is_a?(self.class::String))
+            if (name.is_a?(String))
               return (((ob).charset.name == name))
             end
             if (name.is_a?(self.class::Charset))
@@ -191,7 +191,7 @@ module Sun::Nio::Cs
           
           typesig { [Object] }
           define_method :create do |name|
-            if (name.is_a?(self.class::String))
+            if (name.is_a?(String))
               return Charset.for_name(name).new_encoder
             end
             if (name.is_a?(self.class::Charset))

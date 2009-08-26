@@ -528,7 +528,7 @@ module Sun::Security::Pkcs11
         alias_method :attr_mechanisms=, :mechanisms=
         undef_method :mechanisms=
         
-        typesig { [self::String, self::String, self::String, Array.typed(self::String), Array.typed(::Java::Int)] }
+        typesig { [String, String, String, Array.typed(String), Array.typed(::Java::Int)] }
         def initialize(type, algorithm, class_name, aliases, mechanisms)
           @type = nil
           @algorithm = nil
@@ -981,7 +981,7 @@ module Sun::Security::Pkcs11
         alias_method :attr_mechanism=, :mechanism=
         undef_method :mechanism=
         
-        typesig { [self::Token, self::String, self::String, self::String, Array.typed(self::String), ::Java::Long] }
+        typesig { [self::Token, String, String, String, Array.typed(String), ::Java::Long] }
         def initialize(token, type, algorithm, class_name, al, mechanism)
           @token = nil
           @mechanism = 0
@@ -991,13 +991,13 @@ module Sun::Security::Pkcs11
         end
         
         class_module.module_eval {
-          typesig { [Array.typed(self::String)] }
+          typesig { [Array.typed(String)] }
           def to_list(aliases)
             return ((aliases).nil?) ? nil : Arrays.as_list(aliases)
           end
         }
         
-        typesig { [Object] }
+        typesig { [self::Object] }
         def new_instance(param)
           if ((@token.is_valid).equal?(false))
             raise self.class::NoSuchAlgorithmException.new("Token has been removed")
@@ -1009,7 +1009,7 @@ module Sun::Security::Pkcs11
           end
         end
         
-        typesig { [Object] }
+        typesig { [self::Object] }
         def new_instance0(param)
           algorithm = get_algorithm
           type = get_type
@@ -1094,7 +1094,7 @@ module Sun::Security::Pkcs11
           end
         end
         
-        typesig { [Object] }
+        typesig { [self::Object] }
         def supports_parameter(param)
           if (((param).nil?) || ((@token.is_valid).equal?(false)))
             return false

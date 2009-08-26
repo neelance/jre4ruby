@@ -642,7 +642,7 @@ module Java::Util::Concurrent
         include ThreadFactory
         
         class_module.module_eval {
-          const_set_lazy(:PoolNumber) { self.class::AtomicInteger.new(1) }
+          const_set_lazy(:PoolNumber) { self::AtomicInteger.new(1) }
           const_attr_reader  :PoolNumber
         }
         

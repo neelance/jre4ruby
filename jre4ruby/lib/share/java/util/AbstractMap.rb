@@ -725,7 +725,7 @@ module Java::Util
           return old_value
         end
         
-        typesig { [Object] }
+        typesig { [self::Object] }
         # Compares the specified object with this entry for equality.
         # Returns {@code true} if the given object is also a map entry and
         # the two entries represent the same mapping.  More formally, two
@@ -866,7 +866,7 @@ module Java::Util
           raise self.class::UnsupportedOperationException.new
         end
         
-        typesig { [Object] }
+        typesig { [self::Object] }
         # Compares the specified object with this entry for equality.
         # Returns {@code true} if the given object is also a map entry and
         # the two entries represent the same mapping.  More formally, two

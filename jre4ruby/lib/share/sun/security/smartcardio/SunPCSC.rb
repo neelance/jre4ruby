@@ -72,7 +72,7 @@ module Sun::Security::Smartcardio
       const_set_lazy(:Factory) { Class.new(TerminalFactorySpi) do
         include_class_members SunPCSC
         
-        typesig { [Object] }
+        typesig { [self::Object] }
         def initialize(obj)
           super()
           if (!(obj).nil?)

@@ -3050,7 +3050,7 @@ module Java::Net
         alias_method :attr_require_server_authority=, :require_server_authority=
         undef_method :require_server_authority=
         
-        typesig { [self::String] }
+        typesig { [String] }
         def initialize(s)
           @input = nil
           @require_server_authority = false
@@ -3059,23 +3059,23 @@ module Java::Net
           self.attr_string = s
         end
         
-        typesig { [self::String] }
+        typesig { [String] }
         # -- Methods for throwing URISyntaxException in various ways --
         def fail(reason)
           raise self.class::URISyntaxException.new(@input, reason)
         end
         
-        typesig { [self::String, ::Java::Int] }
+        typesig { [String, ::Java::Int] }
         def fail(reason, p)
           raise self.class::URISyntaxException.new(@input, reason, p)
         end
         
-        typesig { [self::String, ::Java::Int] }
+        typesig { [String, ::Java::Int] }
         def fail_expecting(expected, p)
           fail("Expected " + expected, p)
         end
         
-        typesig { [self::String, self::String, ::Java::Int] }
+        typesig { [String, String, ::Java::Int] }
         def fail_expecting(expected, prior, p)
           fail("Expected " + expected + " following " + prior, p)
         end
@@ -3100,7 +3100,7 @@ module Java::Net
           return (start < end_) && ((char_at(start)).equal?(c))
         end
         
-        typesig { [::Java::Int, ::Java::Int, self::String] }
+        typesig { [::Java::Int, ::Java::Int, String] }
         # Tells whether start + s.length() < end and, if so,
         # whether the chars at the start position match s exactly
         def at(start, end_, s)
@@ -3153,7 +3153,7 @@ module Java::Net
           return start
         end
         
-        typesig { [::Java::Int, ::Java::Int, self::String, self::String] }
+        typesig { [::Java::Int, ::Java::Int, String, String] }
         # Scan forward from the given start position.  Stop at the first char
         # in the err string (in which case -1 is returned), or the first char
         # in the stop string (in which case the index of the preceding char is
@@ -3221,7 +3221,7 @@ module Java::Net
           return p
         end
         
-        typesig { [::Java::Int, ::Java::Int, ::Java::Long, ::Java::Long, self::String] }
+        typesig { [::Java::Int, ::Java::Int, ::Java::Long, ::Java::Long, String] }
         # Check that each of the chars in [start, end) matches the given mask
         def check_chars(start, end_, low_mask, high_mask, what)
           p = scan(start, end_, low_mask, high_mask)
@@ -3230,7 +3230,7 @@ module Java::Net
           end
         end
         
-        typesig { [::Java::Int, ::Java::Long, ::Java::Long, self::String] }
+        typesig { [::Java::Int, ::Java::Long, ::Java::Long, String] }
         # Check that the char at position p matches the given mask
         def check_char(p, low_mask, high_mask, what)
           check_chars(p, p + 1, low_mask, high_mask, what)
@@ -3529,7 +3529,7 @@ module Java::Net
           return -1
         end
         
-        typesig { [::Java::Int, ::Java::Int, self::String] }
+        typesig { [::Java::Int, ::Java::Int, String] }
         # Take an IPv4 address: Throw an exception if the given interval
         # contains anything except an IPv4 address
         def take_ipv4address(start, n, expected)

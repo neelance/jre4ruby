@@ -286,7 +286,7 @@ module Java::Text
         alias_method :attr_encountered_field=, :encountered_field=
         undef_method :encountered_field=
         
-        typesig { [self::Format::Field, Object, ::Java::Int, ::Java::Int, self::StringBuffer] }
+        typesig { [self::Format::Field, self::Object, ::Java::Int, ::Java::Int, self::StringBuffer] }
         def formatted(attr, value, start, end_, buffer)
           if (!@encountered_field && matches_field(attr))
             set_begin_index(start)
@@ -295,7 +295,7 @@ module Java::Text
           end
         end
         
-        typesig { [::Java::Int, self::Format::Field, Object, ::Java::Int, ::Java::Int, self::StringBuffer] }
+        typesig { [::Java::Int, self::Format::Field, self::Object, ::Java::Int, ::Java::Int, self::StringBuffer] }
         def formatted(field_id, attr, value, start, end_, buffer)
           if (!@encountered_field && matches_field(attr, field_id))
             set_begin_index(start)

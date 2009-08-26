@@ -537,11 +537,11 @@ module Java::Text
         include LocaleServiceProviderPool::LocalizedObjectGetter
         
         class_module.module_eval {
-          const_set_lazy(:INSTANCE) { self.class::CollatorGetter.new }
+          const_set_lazy(:INSTANCE) { self::CollatorGetter.new }
           const_attr_reader  :INSTANCE
         }
         
-        typesig { [self::CollatorProvider, self::Locale, self::String, Object] }
+        typesig { [self::CollatorProvider, self::Locale, String, self::Object] }
         def get_object(collator_provider, locale, key, *params)
           raise AssertError if not ((params.attr_length).equal?(1))
           result = collator_provider.get_instance(locale)

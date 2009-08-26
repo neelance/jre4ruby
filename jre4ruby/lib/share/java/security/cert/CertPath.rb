@@ -309,7 +309,7 @@ module Java::Security::Cert
         alias_method :attr_data=, :data=
         undef_method :data=
         
-        typesig { [self::String, Array.typed(::Java::Byte)] }
+        typesig { [String, Array.typed(::Java::Byte)] }
         # Creates a <code>CertPathRep</code> with the specified
         # type and encoded form of a certification path.
         # 

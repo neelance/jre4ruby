@@ -103,7 +103,7 @@ module Sun::Net::Www
           typesig { [] }
           define_method :run do
             self.attr_temp_file_template = RJava.cast_to_string(System.get_property("content.types.temp.file.template", "/tmp/%s"))
-            self.attr_mailcap_locations = Array.typed(self.class::String).new([System.get_property("user.mailcap"), RJava.cast_to_string(System.get_property("user.home")) + "/.mailcap", "/etc/mailcap", "/usr/etc/mailcap", "/usr/local/etc/mailcap", RJava.cast_to_string(System.get_property("hotjava.home", "/usr/local/hotjava")) + "/lib/mailcap", ])
+            self.attr_mailcap_locations = Array.typed(String).new([System.get_property("user.mailcap"), RJava.cast_to_string(System.get_property("user.home")) + "/.mailcap", "/etc/mailcap", "/usr/etc/mailcap", "/usr/local/etc/mailcap", RJava.cast_to_string(System.get_property("hotjava.home", "/usr/local/hotjava")) + "/lib/mailcap", ])
             return nil
           end
           

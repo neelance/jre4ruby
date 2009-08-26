@@ -2626,7 +2626,7 @@ module Java::Util
           return -2
         end
         
-        typesig { [Object, self::Locale] }
+        typesig { [self::Object, self::Locale] }
         def print(arg, l)
           self.attr_a.append(@s)
         end
@@ -2886,7 +2886,7 @@ module Java::Util
           end
         end
         
-        typesig { [Object, self::Locale] }
+        typesig { [self::Object, self::Locale] }
         def print(arg, l)
           if (@dt)
             print_date_time(arg, l)
@@ -2917,7 +2917,7 @@ module Java::Util
           end
         end
         
-        typesig { [Object, self::Locale] }
+        typesig { [self::Object, self::Locale] }
         def print_integer(arg, l)
           if ((arg).nil?)
             print("null")
@@ -2946,7 +2946,7 @@ module Java::Util
           end
         end
         
-        typesig { [Object, self::Locale] }
+        typesig { [self::Object, self::Locale] }
         def print_float(arg, l)
           if ((arg).nil?)
             print("null")
@@ -2967,7 +2967,7 @@ module Java::Util
           end
         end
         
-        typesig { [Object, self::Locale] }
+        typesig { [self::Object, self::Locale] }
         def print_date_time(arg, l)
           if ((arg).nil?)
             print("null")
@@ -3001,7 +3001,7 @@ module Java::Util
           print(cal, @c, l)
         end
         
-        typesig { [Object] }
+        typesig { [self::Object] }
         def print_character(arg)
           if ((arg).nil?)
             print("null")
@@ -3043,7 +3043,7 @@ module Java::Util
           print(s)
         end
         
-        typesig { [Object, self::Locale] }
+        typesig { [self::Object, self::Locale] }
         def print_string(arg, l)
           if ((arg).nil?)
             print("null")
@@ -3060,18 +3060,18 @@ module Java::Util
           end
         end
         
-        typesig { [Object] }
+        typesig { [self::Object] }
         def print_boolean(arg)
           s = nil
           if (!(arg).nil?)
-            s = RJava.cast_to_string(((arg.is_a?(self.class::Boolean)) ? (arg).to_s : Boolean.to_s(true)))
+            s = RJava.cast_to_string(((arg.is_a?(Boolean)) ? (arg).to_s : Boolean.to_s(true)))
           else
             s = RJava.cast_to_string(Boolean.to_s(false))
           end
           print(s)
         end
         
-        typesig { [Object] }
+        typesig { [self::Object] }
         def print_hash_code(arg)
           s = ((arg).nil? ? "null" : JavaInteger.to_hex_string(arg.hash_code))
           print(s)
@@ -4291,7 +4291,7 @@ module Java::Util
           raise self.class::FormatFlagsConversionMismatchException.new(fs, c)
         end
         
-        typesig { [::Java::Char, Object] }
+        typesig { [::Java::Char, self::Object] }
         def fail_conversion(c, arg)
           raise self.class::IllegalFormatConversionException.new(c, arg.get_class)
         end
@@ -4394,46 +4394,46 @@ module Java::Util
         undef_method :flags=
         
         class_module.module_eval {
-          const_set_lazy(:NONE) { self.class::Flags.new(0) }
+          const_set_lazy(:NONE) { self::Flags.new(0) }
           const_attr_reader  :NONE
           
           # ''
           # duplicate declarations from Formattable.java
-          const_set_lazy(:LEFT_JUSTIFY) { self.class::Flags.new(1 << 0) }
+          const_set_lazy(:LEFT_JUSTIFY) { self::Flags.new(1 << 0) }
           const_attr_reader  :LEFT_JUSTIFY
           
           # '-'
-          const_set_lazy(:UPPERCASE) { self.class::Flags.new(1 << 1) }
+          const_set_lazy(:UPPERCASE) { self::Flags.new(1 << 1) }
           const_attr_reader  :UPPERCASE
           
           # '^'
-          const_set_lazy(:ALTERNATE) { self.class::Flags.new(1 << 2) }
+          const_set_lazy(:ALTERNATE) { self::Flags.new(1 << 2) }
           const_attr_reader  :ALTERNATE
           
           # '#'
           # numerics
-          const_set_lazy(:PLUS) { self.class::Flags.new(1 << 3) }
+          const_set_lazy(:PLUS) { self::Flags.new(1 << 3) }
           const_attr_reader  :PLUS
           
           # '+'
-          const_set_lazy(:LEADING_SPACE) { self.class::Flags.new(1 << 4) }
+          const_set_lazy(:LEADING_SPACE) { self::Flags.new(1 << 4) }
           const_attr_reader  :LEADING_SPACE
           
           # ' '
-          const_set_lazy(:ZERO_PAD) { self.class::Flags.new(1 << 5) }
+          const_set_lazy(:ZERO_PAD) { self::Flags.new(1 << 5) }
           const_attr_reader  :ZERO_PAD
           
           # '0'
-          const_set_lazy(:GROUP) { self.class::Flags.new(1 << 6) }
+          const_set_lazy(:GROUP) { self::Flags.new(1 << 6) }
           const_attr_reader  :GROUP
           
           # ','
-          const_set_lazy(:PARENTHESES) { self.class::Flags.new(1 << 7) }
+          const_set_lazy(:PARENTHESES) { self::Flags.new(1 << 7) }
           const_attr_reader  :PARENTHESES
           
           # '('
           # indexing
-          const_set_lazy(:PREVIOUS) { self.class::Flags.new(1 << 8) }
+          const_set_lazy(:PREVIOUS) { self::Flags.new(1 << 8) }
           const_attr_reader  :PREVIOUS
         }
         

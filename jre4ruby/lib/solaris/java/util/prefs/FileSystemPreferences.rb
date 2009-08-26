@@ -551,7 +551,7 @@ module Java::Util::Prefs
         alias_method :attr_value=, :value=
         undef_method :value=
         
-        typesig { [self::String, self::String] }
+        typesig { [String, String] }
         def initialize(key, value)
           @key = nil
           @value = nil
@@ -580,7 +580,7 @@ module Java::Util::Prefs
         alias_method :attr_key=, :key=
         undef_method :key=
         
-        typesig { [self::String] }
+        typesig { [String] }
         def initialize(key)
           @key = nil
           super()

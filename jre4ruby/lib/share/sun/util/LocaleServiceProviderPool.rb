@@ -476,7 +476,7 @@ module Sun::Util
         include_class_members LocaleServiceProviderPool
         
         class_module.module_eval {
-          const_set_lazy(:INSTANCE) { self.class::NullProvider.new }
+          const_set_lazy(:INSTANCE) { self::NullProvider.new }
           const_attr_reader  :INSTANCE
         }
         

@@ -356,7 +356,7 @@ module Java::Util::Concurrent::Locks
           
           # ThreadLocal subclass. Easiest to explicitly define for sake
           # of deserialization mechanics.
-          const_set_lazy(:ThreadLocalHoldCounter) { Class.new(self.class::ThreadLocal) do
+          const_set_lazy(:ThreadLocalHoldCounter) { Class.new(self::ThreadLocal) do
             include_class_members Sync
             
             typesig { [] }

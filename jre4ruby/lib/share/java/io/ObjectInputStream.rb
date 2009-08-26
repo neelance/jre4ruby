@@ -241,11 +241,11 @@ module Java::Io
         
         class_module.module_eval {
           # cache of subclass security audit results
-          const_set_lazy(:SubclassAudits) { self.class::ConcurrentHashMap.new }
+          const_set_lazy(:SubclassAudits) { self::ConcurrentHashMap.new }
           const_attr_reader  :SubclassAudits
           
           # queue for WeakReferences to audited subclasses
-          const_set_lazy(:SubclassAuditsQueue) { self.class::ReferenceQueue.new }
+          const_set_lazy(:SubclassAuditsQueue) { self::ReferenceQueue.new }
           const_attr_reader  :SubclassAuditsQueue
         }
         
@@ -1115,7 +1115,7 @@ module Java::Io
           raise NotImplementedError
         end
         
-        typesig { [self::String] }
+        typesig { [String] }
         # Return true if the named field is defaulted and has no value in this
         # stream.
         # 
@@ -1129,7 +1129,7 @@ module Java::Io
           raise NotImplementedError
         end
         
-        typesig { [self::String, ::Java::Boolean] }
+        typesig { [String, ::Java::Boolean] }
         # Get the value of the named boolean field from the persistent field.
         # 
         # @param  name the name of the field
@@ -1144,7 +1144,7 @@ module Java::Io
           raise NotImplementedError
         end
         
-        typesig { [self::String, ::Java::Byte] }
+        typesig { [String, ::Java::Byte] }
         # Get the value of the named byte field from the persistent field.
         # 
         # @param  name the name of the field
@@ -1159,7 +1159,7 @@ module Java::Io
           raise NotImplementedError
         end
         
-        typesig { [self::String, ::Java::Char] }
+        typesig { [String, ::Java::Char] }
         # Get the value of the named char field from the persistent field.
         # 
         # @param  name the name of the field
@@ -1174,7 +1174,7 @@ module Java::Io
           raise NotImplementedError
         end
         
-        typesig { [self::String, ::Java::Short] }
+        typesig { [String, ::Java::Short] }
         # Get the value of the named short field from the persistent field.
         # 
         # @param  name the name of the field
@@ -1189,7 +1189,7 @@ module Java::Io
           raise NotImplementedError
         end
         
-        typesig { [self::String, ::Java::Int] }
+        typesig { [String, ::Java::Int] }
         # Get the value of the named int field from the persistent field.
         # 
         # @param  name the name of the field
@@ -1204,7 +1204,7 @@ module Java::Io
           raise NotImplementedError
         end
         
-        typesig { [self::String, ::Java::Long] }
+        typesig { [String, ::Java::Long] }
         # Get the value of the named long field from the persistent field.
         # 
         # @param  name the name of the field
@@ -1219,7 +1219,7 @@ module Java::Io
           raise NotImplementedError
         end
         
-        typesig { [self::String, ::Java::Float] }
+        typesig { [String, ::Java::Float] }
         # Get the value of the named float field from the persistent field.
         # 
         # @param  name the name of the field
@@ -1234,7 +1234,7 @@ module Java::Io
           raise NotImplementedError
         end
         
-        typesig { [self::String, ::Java::Double] }
+        typesig { [String, ::Java::Double] }
         # Get the value of the named double field from the persistent field.
         # 
         # @param  name the name of the field
@@ -1249,7 +1249,7 @@ module Java::Io
           raise NotImplementedError
         end
         
-        typesig { [self::String, Object] }
+        typesig { [String, self::Object] }
         # Get the value of the named Object field from the persistent field.
         # 
         # @param  name the name of the field
@@ -2029,7 +2029,7 @@ module Java::Io
           super()
           @desc = desc
           @prim_vals = Array.typed(::Java::Byte).new(desc.get_prim_data_size) { 0 }
-          @obj_vals = Array.typed(Object).new(desc.get_num_obj_fields) { nil }
+          @obj_vals = Array.typed(self.class::Object).new(desc.get_num_obj_fields) { nil }
           @obj_handles = Array.typed(::Java::Int).new(@obj_vals.attr_length) { 0 }
         end
         
@@ -2038,60 +2038,60 @@ module Java::Io
           return @desc
         end
         
-        typesig { [self::String] }
+        typesig { [String] }
         def defaulted(name)
           return (get_field_offset(name, nil) < 0)
         end
         
-        typesig { [self::String, ::Java::Boolean] }
+        typesig { [String, ::Java::Boolean] }
         def get(name, val)
           off = get_field_offset(name, Boolean::TYPE)
           return (off >= 0) ? Bits.get_boolean(@prim_vals, off) : val
         end
         
-        typesig { [self::String, ::Java::Byte] }
+        typesig { [String, ::Java::Byte] }
         def get(name, val)
           off = get_field_offset(name, Byte::TYPE)
           return (off >= 0) ? @prim_vals[off] : val
         end
         
-        typesig { [self::String, ::Java::Char] }
+        typesig { [String, ::Java::Char] }
         def get(name, val)
           off = get_field_offset(name, Character::TYPE)
           return (off >= 0) ? Bits.get_char(@prim_vals, off) : val
         end
         
-        typesig { [self::String, ::Java::Short] }
+        typesig { [String, ::Java::Short] }
         def get(name, val)
           off = get_field_offset(name, Short::TYPE)
           return (off >= 0) ? Bits.get_short(@prim_vals, off) : val
         end
         
-        typesig { [self::String, ::Java::Int] }
+        typesig { [String, ::Java::Int] }
         def get(name, val)
           off = get_field_offset(name, JavaInteger::TYPE)
           return (off >= 0) ? Bits.get_int(@prim_vals, off) : val
         end
         
-        typesig { [self::String, ::Java::Float] }
+        typesig { [String, ::Java::Float] }
         def get(name, val)
           off = get_field_offset(name, Float::TYPE)
           return (off >= 0) ? Bits.get_float(@prim_vals, off) : val
         end
         
-        typesig { [self::String, ::Java::Long] }
+        typesig { [String, ::Java::Long] }
         def get(name, val)
           off = get_field_offset(name, Long::TYPE)
           return (off >= 0) ? Bits.get_long(@prim_vals, off) : val
         end
         
-        typesig { [self::String, ::Java::Double] }
+        typesig { [String, ::Java::Double] }
         def get(name, val)
           off = get_field_offset(name, Double::TYPE)
           return (off >= 0) ? Bits.get_double(@prim_vals, off) : val
         end
         
-        typesig { [self::String, Object] }
+        typesig { [String, self::Object] }
         def get(name, val)
           off = get_field_offset(name, Object)
           if (off >= 0)
@@ -2119,7 +2119,7 @@ module Java::Io
           self.attr_pass_handle = old_handle
         end
         
-        typesig { [self::String, self::Class] }
+        typesig { [String, self::Class] }
         # Returns offset of field with given name and type.  A specified type
         # of null matches all types, Object.class matches all non-primitive
         # types, and any other non-null type matches assignable types only.
@@ -3379,11 +3379,11 @@ module Java::Io
           @low_dep = -1
           @size = 0
           @status = Array.typed(::Java::Byte).new(initial_capacity) { 0 }
-          @entries = Array.typed(Object).new(initial_capacity) { nil }
+          @entries = Array.typed(self.class::Object).new(initial_capacity) { nil }
           @deps = Array.typed(self.class::HandleList).new(initial_capacity) { nil }
         end
         
-        typesig { [Object] }
+        typesig { [self::Object] }
         # Assigns next available handle to given object, and returns assigned
         # handle.  Once object has been completely deserialized (and all
         # dependencies on other objects identified), the handle should be
@@ -3494,7 +3494,7 @@ module Java::Io
           end
         end
         
-        typesig { [::Java::Int, Object] }
+        typesig { [::Java::Int, self::Object] }
         # Assigns a new object to the given handle.  The object previously
         # associated with the handle is forgotten.  This method has no effect
         # if the given handle already has an exception associated with it.
@@ -3546,7 +3546,7 @@ module Java::Io
         def grow
           new_capacity = (@entries.attr_length << 1) + 1
           new_status = Array.typed(::Java::Byte).new(new_capacity) { 0 }
-          new_entries = Array.typed(Object).new(new_capacity) { nil }
+          new_entries = Array.typed(self.class::Object).new(new_capacity) { nil }
           new_deps = Array.typed(self.class::HandleList).new(new_capacity) { nil }
           System.arraycopy(@status, 0, new_status, 0, @size)
           System.arraycopy(@entries, 0, new_entries, 0, @size)
@@ -3680,7 +3680,7 @@ module Java::Io
         alias_method :attr_used=, :used=
         undef_method :used=
         
-        typesig { [Object, self::ObjectStreamClass] }
+        typesig { [self::Object, self::ObjectStreamClass] }
         def initialize(obj, desc)
           @obj = nil
           @desc = nil

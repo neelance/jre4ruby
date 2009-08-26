@@ -228,7 +228,7 @@ module Java::Security::Cert
         alias_method :attr_data=, :data=
         undef_method :data=
         
-        typesig { [self::String, Array.typed(::Java::Byte)] }
+        typesig { [String, Array.typed(::Java::Byte)] }
         # Construct the alternate Certificate class with the Certificate
         # type and Certificate encoding bytes.
         # 

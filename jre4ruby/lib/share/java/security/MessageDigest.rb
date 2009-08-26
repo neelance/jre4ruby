@@ -511,7 +511,7 @@ module Java::Security
         alias_method :attr_digest_spi=, :digest_spi=
         undef_method :digest_spi=
         
-        typesig { [self::MessageDigestSpi, self::String] }
+        typesig { [self::MessageDigestSpi, String] }
         # constructor
         def initialize(digest_spi, algorithm)
           @digest_spi = nil

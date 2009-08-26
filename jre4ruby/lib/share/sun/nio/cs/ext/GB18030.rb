@@ -549,7 +549,7 @@ module Sun::Nio::Cs::Ext
         alias_method :attr_sgp=, :sgp=
         undef_method :sgp=
         
-        typesig { [Array.typed(::Java::Short), Array.typed(self::String), ::Java::Char] }
+        typesig { [Array.typed(::Java::Short), Array.typed(String), ::Java::Char] }
         def get_gb18030(outer_index, inner_encoder_index, ch)
           offset = outer_index[((ch & 0xff00) >> 8)] << 8
           return inner_encoder_index[offset >> 12].char_at((offset & 0xfff) + (ch & 0xff))

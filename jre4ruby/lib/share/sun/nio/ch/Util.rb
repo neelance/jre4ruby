@@ -139,7 +139,7 @@ module Sun::Nio::Ch
         class_module.module_eval {
           const_set_lazy(:Closer) { Class.new do
             include_class_members SelectorWrapper
-            include self.class::Runnable
+            include self::Runnable
             
             attr_accessor :sel
             alias_method :attr_sel, :sel
