@@ -11,6 +11,8 @@ end
 controller.add_ruby_constant_name_hook do |converter, name|
   if name == "unsafe"
     "UnsafeInstance"
+  elsif name == "referenceQueue"
+    "ReferenceQueueInstance"
   else
     nil
   end

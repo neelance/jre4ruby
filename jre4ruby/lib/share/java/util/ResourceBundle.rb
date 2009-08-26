@@ -321,8 +321,8 @@ module Java::Util
       const_attr_reader  :UnderConstruction
       
       # Queue for reference objects referring to class loaders or bundles.
-      const_set_lazy(:ReferenceQueue) { ReferenceQueue.new }
-      const_attr_reader  :ReferenceQueue
+      const_set_lazy(:ReferenceQueueInstance) { ReferenceQueue.new }
+      const_attr_reader  :ReferenceQueueInstance
     }
     
     # The parent bundle of this bundle.
@@ -636,7 +636,7 @@ module Java::Util
           if ((loader).nil?)
             @loader_ref = nil
           else
-            @loader_ref = self.class::LoaderReference.new(loader, ReferenceQueue, self)
+            @loader_ref = self.class::LoaderReference.new(loader, ReferenceQueueInstance, self)
           end
           calculate_hash_code
         end
@@ -728,7 +728,7 @@ module Java::Util
           begin
             clone = super
             if (!(@loader_ref).nil?)
-              clone.attr_loader_ref = self.class::LoaderReference.new(@loader_ref.get, ReferenceQueue, clone)
+              clone.attr_loader_ref = self.class::LoaderReference.new(@loader_ref.get, ReferenceQueueInstance, clone)
             end
             # Clear the reference to a Throwable
             clone.attr_cause = nil
@@ -1425,7 +1425,7 @@ module Java::Util
         # resource bundles have been nulled out, remove all related
         # information from the cache.
         ref = nil
-        while (!((ref = ReferenceQueue.poll)).nil?)
+        while (!((ref = ReferenceQueueInstance.poll)).nil?)
           CacheList.remove((ref).get_cache_key)
         end
         # flag indicating the resource bundle has expired in the cache
@@ -1742,7 +1742,7 @@ module Java::Util
         set_expiration_time(cache_key, control)
         if (!(cache_key.attr_expiration_time).equal?(Control::TTL_DONT_CACHE))
           key = cache_key.clone
-          bundle_ref = BundleReference.new(bundle, ReferenceQueue, key)
+          bundle_ref = BundleReference.new(bundle, ReferenceQueueInstance, key)
           bundle.attr_cache_key = key
           # Put the bundle in the cache if it's not been in the cache.
           result = CacheList.put_if_absent(key, bundle_ref)
