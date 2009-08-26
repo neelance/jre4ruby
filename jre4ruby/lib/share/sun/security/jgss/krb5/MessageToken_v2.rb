@@ -650,7 +650,7 @@ module Sun::Security::Jgss::Krb5
           System.arraycopy(self.attr_seq_number_data, 0, @bytes, 8, 8)
         end
         
-        typesig { [InputStream, MessageProp, ::Java::Int] }
+        typesig { [self::InputStream, self::MessageProp, ::Java::Int] }
         # Constructs a MessageTokenHeader by reading it from an InputStream
         # and sets the appropriate confidentiality and quality of protection
         # values in a MessageProp structure.
@@ -670,7 +670,7 @@ module Sun::Security::Jgss::Krb5
           acceptor_flag = (self.attr_initiator ? FLAG_SENDER_IS_ACCEPTOR : 0)
           flag = @bytes[TOKEN_FLAG_POS] & FLAG_SENDER_IS_ACCEPTOR
           if (!((flag).equal?(acceptor_flag)))
-            raise GSSException.new(GSSException::DEFECTIVE_TOKEN, -1, RJava.cast_to_string(get_token_name(@token_id)) + ":" + "Acceptor Flag Missing!")
+            raise self.class::GSSException.new(GSSException::DEFECTIVE_TOKEN, -1, RJava.cast_to_string(get_token_name(@token_id)) + ":" + "Acceptor Flag Missing!")
           end
           # check for confidentiality
           conf_flag = @bytes[TOKEN_FLAG_POS] & FLAG_WRAP_CONFIDENTIAL
@@ -681,18 +681,18 @@ module Sun::Security::Jgss::Krb5
           end
           # validate Token ID
           if (!(@token_id).equal?(tok_id))
-            raise GSSException.new(GSSException::DEFECTIVE_TOKEN, -1, RJava.cast_to_string(get_token_name(@token_id)) + ":" + "Defective Token ID!")
+            raise self.class::GSSException.new(GSSException::DEFECTIVE_TOKEN, -1, RJava.cast_to_string(get_token_name(@token_id)) + ":" + "Defective Token ID!")
           end
           # validate filler
           if (!((@bytes[3] & 0xff)).equal?(FILLER))
-            raise GSSException.new(GSSException::DEFECTIVE_TOKEN, -1, RJava.cast_to_string(get_token_name(@token_id)) + ":" + "Defective Token Filler!")
+            raise self.class::GSSException.new(GSSException::DEFECTIVE_TOKEN, -1, RJava.cast_to_string(get_token_name(@token_id)) + ":" + "Defective Token Filler!")
           end
           # validate next 4 bytes of filler for MIC tokens
           if ((@token_id).equal?(MIC_ID_v2))
             i = 4
             while i < 8
               if (!((@bytes[i] & 0xff)).equal?(FILLER))
-                raise GSSException.new(GSSException::DEFECTIVE_TOKEN, -1, RJava.cast_to_string(get_token_name(@token_id)) + ":" + "Defective Token Filler!")
+                raise self.class::GSSException.new(GSSException::DEFECTIVE_TOKEN, -1, RJava.cast_to_string(get_token_name(@token_id)) + ":" + "Defective Token Filler!")
               end
               i += 1
             end
@@ -708,7 +708,7 @@ module Sun::Security::Jgss::Krb5
           System.arraycopy(@bytes, 8, self.attr_seq_number_data, 0, 8)
         end
         
-        typesig { [OutputStream] }
+        typesig { [self::OutputStream] }
         # Encodes this MessageTokenHeader onto an OutputStream
         # @param os the OutputStream to write to
         # @throws IOException is an error occurs while writing

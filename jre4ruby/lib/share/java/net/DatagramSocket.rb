@@ -356,7 +356,7 @@ module Java::Net
           
           typesig { [] }
           define_method :run do
-            cl = Array.typed(Class).new(1) { nil }
+            cl = Array.typed(self.class::Class).new(1) { nil }
             cl[0] = DatagramPacket
             self.attr_impl.get_class.get_declared_method("peekData", cl)
             return nil

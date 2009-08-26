@@ -80,7 +80,7 @@ module Sun::Nio::Ch
         alias_method :attr_sp=, :sp=
         undef_method :sp=
         
-        typesig { [SelectorProvider] }
+        typesig { [self::SelectorProvider] }
         def initialize(sp)
           @sp = nil
           @sp = sp
@@ -97,10 +97,10 @@ module Sun::Nio::Ch
             raise AssertError if not ((lb.is_loopback_address))
             # bind ServerSocketChannel to a port on the loopback address
             ssc = ServerSocketChannel.open
-            ssc.socket.bind(InetSocketAddress.new(lb, 0))
+            ssc.socket.bind(self.class::InetSocketAddress.new(lb, 0))
             # Establish connection (assumes connections are eagerly
             # accepted)
-            sa = InetSocketAddress.new(lb, ssc.socket.get_local_port)
+            sa = self.class::InetSocketAddress.new(lb, ssc.socket.get_local_port)
             sc1 = SocketChannel.open(sa)
             bb = ByteBuffer.allocate(8)
             secret = Rnd.next_long
@@ -118,9 +118,9 @@ module Sun::Nio::Ch
               sc2.close
             end
             # Create source and sink channels
-            self.attr_source = SourceChannelImpl.new(@sp, sc1)
-            self.attr_sink = SinkChannelImpl.new(@sp, sc2)
-          rescue IOException => e
+            self.attr_source = self.class::SourceChannelImpl.new(@sp, sc1)
+            self.attr_sink = self.class::SinkChannelImpl.new(@sp, sc2)
+          rescue self.class::IOException => e
             begin
               if (!(sc1).nil?)
                 sc1.close
@@ -128,9 +128,9 @@ module Sun::Nio::Ch
               if (!(sc2).nil?)
                 sc2.close
               end
-            rescue IOException => e2
+            rescue self.class::IOException => e2
             end
-            x = IOException.new("Unable to establish" + " loopback connection")
+            x = self.class::IOException.new("Unable to establish" + " loopback connection")
             x.init_cause(e)
             raise x
           ensure
@@ -138,7 +138,7 @@ module Sun::Nio::Ch
               if (!(ssc).nil?)
                 ssc.close
               end
-            rescue IOException => e2
+            rescue self.class::IOException => e2
             end
           end
           return nil

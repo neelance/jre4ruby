@@ -141,7 +141,7 @@ module Java::Lang
             while (!@exited)
               begin
                 self.wait
-              rescue InterruptedException => e
+              rescue self.class::InterruptedException => e
                 interrupted = true
               end
             end
@@ -151,7 +151,7 @@ module Java::Lang
           end
         end
         
-        typesig { [IOException] }
+        typesig { [self::IOException] }
         def set_exception(e)
           @saved_exception = e
         end
@@ -202,32 +202,32 @@ module Java::Lang
         typesig { [] }
         define_method :run do
           privileged_action_class = self.class
-          t = Class.new(JavaThread.class == Class ? JavaThread : Object) do
+          t = Class.new(self.class::JavaThread.class == Class ? self.class::JavaThread : Object) do
             extend LocalClass
             include_class_members privileged_action_class
-            include JavaThread if JavaThread.class == Module
+            include self::JavaThread if self::JavaThread.class == Module
             
             typesig { [] }
             define_method :run do
               begin
                 self.attr_pid = fork_and_exec(prog, arg_block, argc, env_block, envc, dir, redirect_error_stream, self.attr_stdin_fd, self.attr_stdout_fd, self.attr_stderr_fd)
-              rescue IOException => e
+              rescue self.class::IOException => e
                 gate.set_exception(e)
                 # remember to rethrow later
                 gate.exit
                 return
               end
               thread_class = self.class
-              Java::Security::AccessController.do_privileged(Class.new(Java::Security::PrivilegedAction.class == Class ? Java::Security::PrivilegedAction : Object) do
+              Java::Security::AccessController.do_privileged(Class.new(Java::Security::self.class::PrivilegedAction.class == Class ? Java::Security::self.class::PrivilegedAction : Object) do
                 extend LocalClass
                 include_class_members thread_class
-                include Java::Security::PrivilegedAction if Java::Security::PrivilegedAction.class == Module
+                include Java::Security::self::PrivilegedAction if Java::Security::self::PrivilegedAction.class == Module
                 
                 typesig { [] }
                 define_method :run do
-                  self.attr_stdin_stream = BufferedOutputStream.new(FileOutputStream.new(self.attr_stdin_fd))
-                  self.attr_stdout_stream = BufferedInputStream.new(FileInputStream.new(self.attr_stdout_fd))
-                  self.attr_stderr_stream = FileInputStream.new(self.attr_stderr_fd)
+                  self.attr_stdin_stream = self.class::BufferedOutputStream.new(self.class::FileOutputStream.new(self.attr_stdin_fd))
+                  self.attr_stdout_stream = self.class::BufferedInputStream.new(self.class::FileInputStream.new(self.attr_stdout_fd))
+                  self.attr_stderr_stream = self.class::FileInputStream.new(self.attr_stderr_fd)
                   return nil
                 end
                 

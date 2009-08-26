@@ -542,7 +542,7 @@ module Java::Util
         typesig { [] }
         def next_
           if (!(@expected_mod_count).equal?(self.attr_mod_count))
-            raise ConcurrentModificationException.new
+            raise self.class::ConcurrentModificationException.new
           end
           if (@cursor < self.attr_size)
             return self.attr_queue[@last_ret = ((@cursor += 1) - 1)]
@@ -554,13 +554,13 @@ module Java::Util
               return @last_ret_elt
             end
           end
-          raise NoSuchElementException.new
+          raise self.class::NoSuchElementException.new
         end
         
         typesig { [] }
         def remove
           if (!(@expected_mod_count).equal?(self.attr_mod_count))
-            raise ConcurrentModificationException.new
+            raise self.class::ConcurrentModificationException.new
           end
           if (!(@last_ret).equal?(-1))
             moved = @local_class_parent.remove_at(@last_ret)
@@ -569,7 +569,7 @@ module Java::Util
               @cursor -= 1
             else
               if ((@forget_me_not).nil?)
-                @forget_me_not = ArrayDeque.new
+                @forget_me_not = self.class::ArrayDeque.new
               end
               @forget_me_not.add(moved)
             end
@@ -578,7 +578,7 @@ module Java::Util
               @local_class_parent.remove_eq(@last_ret_elt)
               @last_ret_elt = nil
             else
-              raise IllegalStateException.new
+              raise self.class::IllegalStateException.new
             end
           end
           @expected_mod_count = self.attr_mod_count

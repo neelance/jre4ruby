@@ -151,14 +151,14 @@ module Sun::Misc
               # or for notification that the period has changed
               begin
                 self.attr_lock.wait(l - d)
-              rescue InterruptedException => x
+              rescue self.class::InterruptedException => x
                 next
               end
             end
           end
         end
         
-        typesig { [JavaThreadGroup] }
+        typesig { [self::JavaThreadGroup] }
         def initialize(tg)
           super(tg, "GC Daemon")
         end
@@ -167,10 +167,10 @@ module Sun::Misc
           typesig { [] }
           # Create a new daemon thread in the root thread group
           def create
-            pa = Class.new(PrivilegedAction.class == Class ? PrivilegedAction : Object) do
+            pa = Class.new(self.class::PrivilegedAction.class == Class ? self.class::PrivilegedAction : Object) do
               extend LocalClass
               include_class_members Daemon
-              include PrivilegedAction if PrivilegedAction.class == Module
+              include self::PrivilegedAction if self::PrivilegedAction.class == Module
               
               typesig { [] }
               define_method :run do
@@ -180,7 +180,7 @@ module Sun::Misc
                   tg = tgn
                   tgn = tg.get_parent
                 end
-                d = Daemon.new(tg)
+                d = self.class::Daemon.new(tg)
                 d.set_daemon(true)
                 d.set_priority(JavaThread::MIN_PRIORITY + 1)
                 d.start
@@ -289,13 +289,13 @@ module Sun::Misc
           @latency = 0
           @id = 0
           if (ms <= 0)
-            raise IllegalArgumentException.new("Non-positive latency: " + RJava.cast_to_string(ms))
+            raise self.class::IllegalArgumentException.new("Non-positive latency: " + RJava.cast_to_string(ms))
           end
           @latency = ms
           synchronized((self.attr_lock)) do
             @id = (self.attr_counter += 1)
             if ((self.attr_requests).nil?)
-              self.attr_requests = TreeSet.new
+              self.attr_requests = self.class::TreeSet.new
             end
             self.attr_requests.add(self)
             adjust_latency_if_needed
@@ -310,10 +310,10 @@ module Sun::Misc
         def cancel
           synchronized((self.attr_lock)) do
             if ((@latency).equal?(NO_TARGET))
-              raise IllegalStateException.new("Request already" + " cancelled")
+              raise self.class::IllegalStateException.new("Request already" + " cancelled")
             end
             if (!self.attr_requests.remove(self))
-              raise InternalError.new("Latency request " + RJava.cast_to_string(self) + " not found")
+              raise self.class::InternalError.new("Latency request " + RJava.cast_to_string(self) + " not found")
             end
             if (self.attr_requests.is_empty)
               self.attr_requests = nil

@@ -122,7 +122,7 @@ module Sun::Security::Ssl
         alias_method :attr_expiration_time=, :expiration_time=
         undef_method :expiration_time=
         
-        typesig { [KeyPair] }
+        typesig { [self::KeyPair] }
         def initialize(key_pair)
           @key_pair = nil
           @uses = 0

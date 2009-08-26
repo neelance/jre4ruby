@@ -95,7 +95,7 @@ module Sun::Nio::Cs::Ext
       const_set_lazy(:Decoder) { Class.new(SimpleEUCDecoder) do
         include_class_members IBM1383
         
-        typesig { [Charset] }
+        typesig { [self::Charset] }
         def initialize(cs)
           super(cs)
           @byte_to_char_table = self.attr_byte_to_char_table
@@ -116,7 +116,7 @@ module Sun::Nio::Cs::Ext
       const_set_lazy(:Encoder) { Class.new(DBCS_IBM_ASCII_Encoder) do
         include_class_members IBM1383
         
-        typesig { [Charset] }
+        typesig { [self::Charset] }
         def initialize(cs)
           super(cs)
           @mask1 = 0xffe0

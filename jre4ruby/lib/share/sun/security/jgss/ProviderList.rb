@@ -450,7 +450,7 @@ module Sun::Security::Jgss
         alias_method :attr_oid=, :oid=
         undef_method :oid=
         
-        typesig { [Provider, Oid] }
+        typesig { [self::Provider, self::Oid] }
         def initialize(p, oid)
           @p = nil
           @oid = nil
@@ -463,7 +463,7 @@ module Sun::Security::Jgss
           if ((self).equal?(other))
             return true
           end
-          if (!(other.is_a?(PreferencesEntry)))
+          if (!(other.is_a?(self.class::PreferencesEntry)))
             return false
           end
           that = other
@@ -494,7 +494,7 @@ module Sun::Security::Jgss
         # because the null in the former indicates that it should
         # be used for all mechanisms.
         def implies(other)
-          if (other.is_a?(PreferencesEntry))
+          if (other.is_a?(self.class::PreferencesEntry))
             temp = other
             return (self.==(temp) || (@p.get_name == temp.attr_p.get_name) && (@oid).nil?)
           else
@@ -512,7 +512,7 @@ module Sun::Security::Jgss
           return @oid
         end
         
-        typesig { [Oid] }
+        typesig { [self::Oid] }
         # Determines if this entry is applicable to the desired
         # mechanism. The entry is applicable to the desired mech if
         # it contains the same oid or if it contains a null oid
@@ -527,7 +527,7 @@ module Sun::Security::Jgss
         typesig { [] }
         # For debugging
         def to_s
-          buf = StringBuffer.new("<")
+          buf = self.class::StringBuffer.new("<")
           buf.append(@p.get_name)
           buf.append(", ")
           buf.append(@oid)

@@ -246,7 +246,7 @@ module Sun::Security::Rsa
         alias_method :attr_remaining_uses=, :remaining_uses=
         undef_method :remaining_uses=
         
-        typesig { [BigInteger, BigInteger, BigInteger] }
+        typesig { [self::BigInteger, self::BigInteger, self::BigInteger] }
         def initialize(e, re, r_inv)
           @e = nil
           @re = nil
@@ -259,7 +259,7 @@ module Sun::Security::Rsa
           @remaining_uses = BLINDING_MAX_REUSE - 1
         end
         
-        typesig { [BigInteger] }
+        typesig { [self::BigInteger] }
         def valid(e)
           k = ((@remaining_uses -= 1) + 1)
           return (k > 0) && (@e == e)

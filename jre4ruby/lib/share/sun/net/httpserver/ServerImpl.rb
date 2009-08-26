@@ -289,7 +289,7 @@ module Sun::Net::Httpserver
         include_class_members ServerImpl
         include Executor
         
-        typesig { [Runnable] }
+        typesig { [self::Runnable] }
         def execute(task)
           task.run
         end
@@ -441,12 +441,12 @@ module Sun::Net::Httpserver
         include_class_members ServerImpl
         include Runnable
         
-        typesig { [Event] }
+        typesig { [self::Event] }
         def handle_event(r)
           t = r.attr_exchange
           c = t.get_connection
           begin
-            if (r.is_a?(WriteFinishedEvent))
+            if (r.is_a?(self.class::WriteFinishedEvent))
               exchanges = end_exchange
               if (self.attr_terminating && (exchanges).equal?(0))
                 self.attr_finished = true
@@ -474,7 +474,7 @@ module Sun::Net::Httpserver
                 end
               end
             end
-          rescue IOException => e
+          rescue self.class::IOException => e
             self.attr_logger.log(Level::FINER, "Dispatcher (1)", e)
             c.close
           end
@@ -510,7 +510,7 @@ module Sun::Net::Httpserver
                   end
                   chan.configure_blocking(false)
                   newkey = chan.register(self.attr_selector, SelectionKey::OP_READ)
-                  c = HttpConnection.new
+                  c = self.class::HttpConnection.new
                   c.attr_selection_key = newkey
                   c.set_channel(chan)
                   newkey.attach(c)
@@ -527,32 +527,32 @@ module Sun::Net::Httpserver
                     else
                       raise AssertError if not (false)
                     end
-                  rescue IOException => e
+                  rescue self.class::IOException => e
                     conn = key.attachment
                     self.attr_logger.log(Level::FINER, "Dispatcher (2)", e)
                     conn.close
                   end
                 end
               end
-            rescue CancelledKeyException => e
+            rescue self.class::CancelledKeyException => e
               self.attr_logger.log(Level::FINER, "Dispatcher (3)", e)
-            rescue IOException => e
+            rescue self.class::IOException => e
               self.attr_logger.log(Level::FINER, "Dispatcher (4)", e)
-            rescue JavaException => e
+            rescue self.class::JavaException => e
               self.attr_logger.log(Level::FINER, "Dispatcher (7)", e)
             end
           end
         end
         
-        typesig { [SocketChannel, HttpConnection] }
+        typesig { [self::SocketChannel, self::HttpConnection] }
         def handle(chan, conn)
           begin
-            t = Exchange.new(chan, self.attr_protocol, conn)
+            t = self.class::Exchange.new(chan, self.attr_protocol, conn)
             self.attr_executor.execute(t)
-          rescue HttpError => e1
+          rescue self.class::HttpError => e1
             self.attr_logger.log(Level::FINER, "Dispatcher (5)", e1)
             conn.close
-          rescue IOException => e
+          rescue self.class::IOException => e
             self.attr_logger.log(Level::FINER, "Dispatcher (6)", e)
             conn.close
           end
@@ -663,7 +663,7 @@ module Sun::Net::Httpserver
         alias_method :attr_rejected=, :rejected=
         undef_method :rejected=
         
-        typesig { [SocketChannel, String, HttpConnection] }
+        typesig { [self::SocketChannel, self::String, self::HttpConnection] }
         def initialize(chan, protocol, conn)
           @chan = nil
           @connection = nil
@@ -698,21 +698,21 @@ module Sun::Net::Httpserver
               if (self.attr_https)
                 if ((self.attr_ssl_context).nil?)
                   self.attr_logger.warning("SSL connection received. No https contxt created")
-                  raise HttpError.new("No SSL context established")
+                  raise self.class::HttpError.new("No SSL context established")
                 end
-                ssl_streams = SSLStreams.new(@local_class_parent, self.attr_ssl_context, @chan)
+                ssl_streams = self.class::SSLStreams.new(@local_class_parent, self.attr_ssl_context, @chan)
                 @rawin = ssl_streams.get_input_stream
                 @rawout = ssl_streams.get_output_stream
                 engine = ssl_streams.get_sslengine
                 @connection.attr_ssl_streams = ssl_streams
               else
-                @rawin = BufferedInputStream.new(Request::ReadStream.new(@local_class_parent, @chan))
-                @rawout = Request::WriteStream.new(@local_class_parent, @chan)
+                @rawin = self.class::BufferedInputStream.new(self.class::Request::ReadStream.new(@local_class_parent, @chan))
+                @rawout = self.class::Request::WriteStream.new(@local_class_parent, @chan)
               end
               @connection.attr_raw = @rawin
               @connection.attr_rawout = @rawout
             end
-            req = Request.new(@rawin, @rawout)
+            req = self.class::Request.new(@rawin, @rawout)
             request_line = RJava.cast_to_string(req.request_line)
             if ((request_line).nil?)
               # connection closed
@@ -732,7 +732,7 @@ module Sun::Net::Httpserver
               return
             end
             uri_str = request_line.substring(start, space)
-            uri = URI.new(uri_str)
+            uri = self.class::URI.new(uri_str)
             start = space + 1
             version = request_line.substring(start)
             headers_ = req.headers
@@ -756,7 +756,7 @@ module Sun::Net::Httpserver
               reject(Code::HTTP_INTERNAL_ERROR, request_line, "No handler for context")
               return
             end
-            @tx = ExchangeImpl.new(method, uri, req, clen, @connection)
+            @tx = self.class::ExchangeImpl.new(method, uri, req, clen, @connection)
             chdr = headers_.get_first("Connection")
             rheaders = @tx.get_response_headers
             if (!(chdr).nil? && chdr.equals_ignore_case("close"))
@@ -797,24 +797,24 @@ module Sun::Net::Httpserver
             # so that they can both be invoked in one call.
             sf = @ctx.get_system_filters
             uf = @ctx.get_filters
-            sc = Filter::Chain.new(sf, @ctx.get_handler)
-            uc = Filter::Chain.new(uf, LinkHandler.new_local(self, sc))
+            sc = self.class::Filter::Chain.new(sf, @ctx.get_handler)
+            uc = self.class::Filter::Chain.new(uf, self.class::LinkHandler.new_local(self, sc))
             # set up the two stream references
             @tx.get_request_body
             @tx.get_response_body
             if (self.attr_https)
-              uc.do_filter(HttpsExchangeImpl.new(@tx))
+              uc.do_filter(self.class::HttpsExchangeImpl.new(@tx))
             else
-              uc.do_filter(HttpExchangeImpl.new(@tx))
+              uc.do_filter(self.class::HttpExchangeImpl.new(@tx))
             end
-          rescue IOException => e1
+          rescue self.class::IOException => e1
             self.attr_logger.log(Level::FINER, "ServerImpl.Exchange (1)", e1)
             @connection.close
-          rescue NumberFormatException => e3
+          rescue self.class::NumberFormatException => e3
             reject(Code::HTTP_BAD_REQUEST, request_line, "NumberFormatException thrown")
-          rescue URISyntaxException => e
+          rescue self.class::URISyntaxException => e
             reject(Code::HTTP_BAD_REQUEST, request_line, "URISyntaxException thrown")
-          rescue JavaException => e4
+          rescue self.class::JavaException => e4
             self.attr_logger.log(Level::FINER, "ServerImpl.Exchange (2)", e4)
             @connection.close
           end
@@ -825,7 +825,7 @@ module Sun::Net::Httpserver
           const_set_lazy(:LinkHandler) { Class.new do
             extend LocalClass
             include_class_members Exchange
-            include HttpHandler
+            include self.class::HttpHandler
             
             attr_accessor :next_chain
             alias_method :attr_next_chain, :next_chain
@@ -833,13 +833,13 @@ module Sun::Net::Httpserver
             alias_method :attr_next_chain=, :next_chain=
             undef_method :next_chain=
             
-            typesig { [Filter::Chain] }
+            typesig { [self::Filter::Chain] }
             def initialize(next_chain)
               @next_chain = nil
               @next_chain = next_chain
             end
             
-            typesig { [HttpExchange] }
+            typesig { [self::HttpExchange] }
             def handle(exchange)
               @next_chain.do_filter(exchange)
             end
@@ -849,14 +849,14 @@ module Sun::Net::Httpserver
           end }
         }
         
-        typesig { [::Java::Int, String, String] }
+        typesig { [::Java::Int, self::String, self::String] }
         def reject(code, request_str, message)
           @rejected = true
           log_reply(code, request_str, message)
           send_reply(code, true, "<h1>" + RJava.cast_to_string(code) + RJava.cast_to_string(Code.msg(code)) + "</h1>" + message)
         end
         
-        typesig { [::Java::Int, ::Java::Boolean, String] }
+        typesig { [::Java::Int, ::Java::Boolean, self::String] }
         def send_reply(code, close_now, text)
           begin
             s = "HTTP/1.1 " + RJava.cast_to_string(code) + RJava.cast_to_string(Code.msg(code)) + "\r\n"
@@ -877,7 +877,7 @@ module Sun::Net::Httpserver
             if (close_now)
               @connection.close
             end
-          rescue IOException => e
+          rescue self.class::IOException => e
             self.attr_logger.log(Level::FINER, "ServerImpl.sendReply", e)
             @connection.close
           end
@@ -951,7 +951,7 @@ module Sun::Net::Httpserver
         
         typesig { [] }
         def run
-          to_close = LinkedList.new
+          to_close = self.class::LinkedList.new
           self.attr_time = System.current_time_millis
           self.attr_ticks += 1
           synchronized((self.attr_idle_connections)) do

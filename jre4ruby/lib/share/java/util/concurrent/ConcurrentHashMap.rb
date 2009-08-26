@@ -265,7 +265,7 @@ module Java::Util::Concurrent
         alias_method :attr_next=, :next=
         undef_method :next=
         
-        typesig { [Object, ::Java::Int, HashEntry, Object] }
+        typesig { [Object, ::Java::Int, self::HashEntry, Object] }
         def initialize(key, hash, next_, value)
           @key = nil
           @hash = 0
@@ -280,7 +280,7 @@ module Java::Util::Concurrent
         class_module.module_eval {
           typesig { [::Java::Int] }
           def new_array(i)
-            return Array.typed(HashEntry).new(i) { nil }
+            return Array.typed(self.class::HashEntry).new(i) { nil }
           end
         }
         
@@ -396,11 +396,11 @@ module Java::Util::Concurrent
         class_module.module_eval {
           typesig { [::Java::Int] }
           def new_array(i)
-            return Array.typed(Segment).new(i) { nil }
+            return Array.typed(self.class::Segment).new(i) { nil }
           end
         }
         
-        typesig { [Array.typed(HashEntry)] }
+        typesig { [Array.typed(self::HashEntry)] }
         # Sets table to new HashEntry array.
         # Call only while holding lock or in constructor.
         def set_table(new_table)
@@ -415,7 +415,7 @@ module Java::Util::Concurrent
           return tab[hash & (tab.attr_length - 1)]
         end
         
-        typesig { [HashEntry] }
+        typesig { [self::HashEntry] }
         # Reads value field of an entry under lock. Called if value
         # field ever appears to be null. This is possible only if a
         # compiler happens to reorder a HashEntry initialization with
@@ -554,7 +554,7 @@ module Java::Util::Concurrent
             else
               old_value = nil
               (@mod_count += 1)
-              tab[index] = HashEntry.new(key, hash, first, value)
+              tab[index] = self.class::HashEntry.new(key, hash, first, value)
               @count = c # write-volatile
             end
             return old_value
@@ -614,7 +614,7 @@ module Java::Util::Concurrent
                 while !(p).equal?(last_run)
                   k = p.attr_hash & size_mask
                   n = new_table[k]
-                  new_table[k] = HashEntry.new(p.attr_key, p.attr_hash, n, p.attr_value)
+                  new_table[k] = self.class::HashEntry.new(p.attr_key, p.attr_hash, n, p.attr_value)
                   p = p.attr_next
                 end
               end
@@ -649,7 +649,7 @@ module Java::Util::Concurrent
                 new_first = e.attr_next
                 p = first
                 while !(p).equal?(e)
-                  new_first = HashEntry.new(p.attr_key, p.attr_hash, new_first, p.attr_value)
+                  new_first = self.class::HashEntry.new(p.attr_key, p.attr_hash, new_first, p.attr_value)
                   p = p.attr_next
                 end
                 tab[index] = new_first
@@ -1290,7 +1290,7 @@ module Java::Util::Concurrent
         typesig { [] }
         def next_entry
           if ((@next_entry).nil?)
-            raise NoSuchElementException.new
+            raise self.class::NoSuchElementException.new
           end
           @last_returned = @next_entry
           advance
@@ -1300,7 +1300,7 @@ module Java::Util::Concurrent
         typesig { [] }
         def remove
           if ((@last_returned).nil?)
-            raise IllegalStateException.new
+            raise self.class::IllegalStateException.new
           end
           @local_class_parent.remove(@last_returned.attr_key)
           @last_returned = nil
@@ -1370,12 +1370,12 @@ module Java::Util::Concurrent
         extend LocalClass
         include_class_members ConcurrentHashMap
         
-        typesig { [K, V] }
+        typesig { [self::K, self::V] }
         def initialize(k, v)
           super(k, v)
         end
         
-        typesig { [V] }
+        typesig { [self::V] }
         # Set our entry's value and write through to the map. The
         # value to return is somewhat arbitrary here. Since a
         # WriteThroughEntry does not necessarily track asynchronous
@@ -1385,7 +1385,7 @@ module Java::Util::Concurrent
         # and cannot guarantee more.
         def set_value(value)
           if ((value).nil?)
-            raise NullPointerException.new
+            raise self.class::NullPointerException.new
           end
           v = super(value)
           @local_class_parent.put(get_key, value)
@@ -1406,7 +1406,7 @@ module Java::Util::Concurrent
         typesig { [] }
         def next_
           e = HashIterator.instance_method(:next_entry).bind(self).call
-          return WriteThroughEntry.new(e.attr_key, e.attr_value)
+          return self.class::WriteThroughEntry.new(e.attr_key, e.attr_value)
         end
         
         typesig { [] }
@@ -1424,7 +1424,7 @@ module Java::Util::Concurrent
         
         typesig { [] }
         def iterator
-          return KeyIterator.new
+          return self.class::KeyIterator.new
         end
         
         typesig { [] }
@@ -1467,7 +1467,7 @@ module Java::Util::Concurrent
         
         typesig { [] }
         def iterator
-          return ValueIterator.new
+          return self.class::ValueIterator.new
         end
         
         typesig { [] }
@@ -1505,12 +1505,12 @@ module Java::Util::Concurrent
         
         typesig { [] }
         def iterator
-          return EntryIterator.new
+          return self.class::EntryIterator.new
         end
         
         typesig { [Object] }
         def contains(o)
-          if (!(o.is_a?(Map::Entry)))
+          if (!(o.is_a?(self.class::Map::Entry)))
             return false
           end
           e = o
@@ -1520,7 +1520,7 @@ module Java::Util::Concurrent
         
         typesig { [Object] }
         def remove(o)
-          if (!(o.is_a?(Map::Entry)))
+          if (!(o.is_a?(self.class::Map::Entry)))
             return false
           end
           e = o

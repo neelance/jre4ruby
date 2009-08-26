@@ -284,13 +284,13 @@ module Sun::Misc
         alias_method :attr_next_name=, :next_name=
         undef_method :next_name=
         
-        typesig { [Class, ClassLoader] }
+        typesig { [self::Class, self::ClassLoader] }
         def initialize(service, loader)
           @service = nil
           @loader = nil
           @configs = nil
           @pending = nil
-          @returned = TreeSet.new
+          @returned = self.class::TreeSet.new
           @next_name = nil
           @service = service
           @loader = loader
@@ -309,7 +309,7 @@ module Sun::Misc
               else
                 @configs = @loader.get_resources(full_name)
               end
-            rescue IOException => x
+            rescue self.class::IOException => x
               fail(@service, ": " + RJava.cast_to_string(x))
             end
           end
@@ -326,15 +326,15 @@ module Sun::Misc
         typesig { [] }
         def next_
           if (!has_next)
-            raise NoSuchElementException.new
+            raise self.class::NoSuchElementException.new
           end
           cn = @next_name
           @next_name = RJava.cast_to_string(nil)
           begin
             return Class.for_name(cn, true, @loader).new_instance
-          rescue ClassNotFoundException => x
+          rescue self.class::ClassNotFoundException => x
             fail(@service, "Provider " + cn + " not found")
-          rescue JavaException => x
+          rescue self.class::JavaException => x
             fail(@service, "Provider " + cn + " could not be instantiated: " + RJava.cast_to_string(x), x)
           end
           return nil
@@ -343,7 +343,7 @@ module Sun::Misc
         
         typesig { [] }
         def remove
-          raise UnsupportedOperationException.new
+          raise self.class::UnsupportedOperationException.new
         end
         
         private

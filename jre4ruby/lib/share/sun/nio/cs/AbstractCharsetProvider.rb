@@ -235,7 +235,7 @@ module Sun::Nio::Cs
         
         typesig { [] }
         define_method :remove do
-          raise UnsupportedOperationException.new
+          raise self.class::UnsupportedOperationException.new
         end
         
         typesig { [] }

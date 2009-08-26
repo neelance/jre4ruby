@@ -181,7 +181,7 @@ module Sun::Security::Ssl
               
               typesig { [] }
               define_method :run do
-                return FileInputStream.new(default_key_store)
+                return self.class::FileInputStream.new(default_key_store)
               end
               
               typesig { [] }

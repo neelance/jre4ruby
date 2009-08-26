@@ -354,15 +354,15 @@ module Java::Util::Prefs
         include_class_members XmlSupport
         include EntityResolver
         
-        typesig { [String, String] }
+        typesig { [self::String, self::String] }
         def resolve_entity(pid, sid)
           if ((sid == PREFS_DTD_URI))
             is = nil
-            is = InputSource.new(StringReader.new(PREFS_DTD))
+            is = self.class::InputSource.new(self.class::StringReader.new(PREFS_DTD))
             is.set_system_id(PREFS_DTD_URI)
             return is
           end
-          raise SAXException.new("Invalid system identifier: " + sid)
+          raise self.class::SAXException.new("Invalid system identifier: " + sid)
         end
         
         typesig { [] }
@@ -377,17 +377,17 @@ module Java::Util::Prefs
         include_class_members XmlSupport
         include ErrorHandler
         
-        typesig { [SAXParseException] }
+        typesig { [self::SAXParseException] }
         def error(x)
           raise x
         end
         
-        typesig { [SAXParseException] }
+        typesig { [self::SAXParseException] }
         def fatal_error(x)
           raise x
         end
         
-        typesig { [SAXParseException] }
+        typesig { [self::SAXParseException] }
         def warning(x)
           raise x
         end

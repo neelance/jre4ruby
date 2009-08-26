@@ -186,7 +186,7 @@ module Sun::Misc
           typesig { [] }
           define_method :run do
             if (!(System.err).nil?)
-              JavaError.new("Cleaner terminated abnormally", x).print_stack_trace
+              self.class::JavaError.new("Cleaner terminated abnormally", x).print_stack_trace
             end
             System.exit(1)
             return nil

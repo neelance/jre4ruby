@@ -163,7 +163,7 @@ module Sun::Nio::Cs::Ext
         alias_method :attr_tmp_decoder=, :tmp_decoder=
         undef_method :tmp_decoder=
         
-        typesig { [Charset] }
+        typesig { [self::Charset] }
         def initialize(cs)
           @sodesig = nil
           @ss2desig = nil
@@ -220,7 +220,7 @@ module Sun::Nio::Cs::Ext
                   @tmp_decoder[i].decode(bb, cc, true)
                   cc.flip
                   return cc.get
-                rescue JavaException => e
+                rescue self.class::JavaException => e
                 end
               end
               i += 1
@@ -250,7 +250,7 @@ module Sun::Nio::Cs::Ext
           return -1
         end
         
-        typesig { [ByteBuffer, Array.typed(Array.typed(::Java::Byte))] }
+        typesig { [self::ByteBuffer, Array.typed(Array.typed(::Java::Byte))] }
         def find_desig_buf(in_, desigs)
           if ((desigs).nil?)
             return -1
@@ -273,7 +273,7 @@ module Sun::Nio::Cs::Ext
           return -1
         end
         
-        typesig { [ByteBuffer, CharBuffer] }
+        typesig { [self::ByteBuffer, self::CharBuffer] }
         def decode_array_loop(src, dst)
           sa = src.array
           sp = src.array_offset + src.position
@@ -382,7 +382,7 @@ module Sun::Nio::Cs::Ext
           end
         end
         
-        typesig { [ByteBuffer, CharBuffer] }
+        typesig { [self::ByteBuffer, self::CharBuffer] }
         def decode_buffer_loop(src, dst)
           mark_ = src.position
           b1 = 0
@@ -472,7 +472,7 @@ module Sun::Nio::Cs::Ext
               mark_ += input_size
             end
             return CoderResult::UNDERFLOW
-          rescue JavaException => e
+          rescue self.class::JavaException => e
             e.print_stack_trace
             return CoderResult::OVERFLOW
           ensure
@@ -480,7 +480,7 @@ module Sun::Nio::Cs::Ext
           end
         end
         
-        typesig { [ByteBuffer, CharBuffer] }
+        typesig { [self::ByteBuffer, self::CharBuffer] }
         def decode_loop(src, dst)
           if (src.has_array && dst.has_array)
             return decode_array_loop(src, dst)
@@ -604,7 +604,7 @@ module Sun::Nio::Cs::Ext
         alias_method :attr_new_ss3des_defined=, :new_ss3des_defined=
         undef_method :new_ss3des_defined=
         
-        typesig { [Charset] }
+        typesig { [self::Charset] }
         def initialize(cs)
           @sgp = nil
           @ss2 = 0
@@ -625,7 +625,7 @@ module Sun::Nio::Cs::Ext
           @new_ss2des_defined = false
           @new_ss3des_defined = false
           super(cs, 4.0, 8.0)
-          @sgp = Surrogate::Parser.new
+          @sgp = self.class::Surrogate::Parser.new
           @ss2 = 0x8e
           @p2 = 0xa2
           @p3 = 0xa3
@@ -670,7 +670,7 @@ module Sun::Nio::Cs::Ext
             bb.flip
             converted = bb.remaining
             bb.get(conv_byte, 0, converted)
-          rescue JavaException => e
+          rescue self.class::JavaException => e
             return -1
           end
           if ((converted).equal?(2))
@@ -718,7 +718,7 @@ module Sun::Nio::Cs::Ext
           return index
         end
         
-        typesig { [CharBuffer, ByteBuffer] }
+        typesig { [self::CharBuffer, self::ByteBuffer] }
         def encode_array_loop(src, dst)
           sa = src.array
           sp = src.array_offset + src.position
@@ -788,7 +788,7 @@ module Sun::Nio::Cs::Ext
           end
         end
         
-        typesig { [CharBuffer, ByteBuffer] }
+        typesig { [self::CharBuffer, self::ByteBuffer] }
         def encode_buffer_loop(src, dst)
           output_size = 0
           output_byte = Array.typed(::Java::Byte).new(8) { 0 }
@@ -849,7 +849,7 @@ module Sun::Nio::Cs::Ext
           end
         end
         
-        typesig { [CharBuffer, ByteBuffer] }
+        typesig { [self::CharBuffer, self::ByteBuffer] }
         def encode_loop(src, dst)
           if (src.has_array && dst.has_array)
             return encode_array_loop(src, dst)

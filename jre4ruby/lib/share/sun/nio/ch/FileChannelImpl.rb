@@ -1231,7 +1231,7 @@ module Sun::Nio::Ch
         
         typesig { [] }
         def initialize
-          @lock_list = ArrayList.new(2)
+          @lock_list = self.class::ArrayList.new(2)
         end
         
         typesig { [::Java::Long, ::Java::Long] }
@@ -1239,12 +1239,12 @@ module Sun::Nio::Ch
           raise AssertError if not (JavaThread.holds_lock(@lock_list))
           @lock_list.each do |fl|
             if (fl.overlaps(position, size))
-              raise OverlappingFileLockException.new
+              raise self.class::OverlappingFileLockException.new
             end
           end
         end
         
-        typesig { [FileLock] }
+        typesig { [self::FileLock] }
         def add(fl)
           synchronized((@lock_list)) do
             check_list(fl.position, fl.size)
@@ -1252,14 +1252,14 @@ module Sun::Nio::Ch
           end
         end
         
-        typesig { [FileLock] }
+        typesig { [self::FileLock] }
         def remove(fl)
           synchronized((@lock_list)) do
             @lock_list.remove(fl)
           end
         end
         
-        typesig { [Releaser] }
+        typesig { [self::Releaser] }
         def remove_all(releaser)
           synchronized((@lock_list)) do
             i = @lock_list.iterator
@@ -1271,7 +1271,7 @@ module Sun::Nio::Ch
           end
         end
         
-        typesig { [FileLock, FileLock] }
+        typesig { [self::FileLock, self::FileLock] }
         def replace(fl1, fl2)
           synchronized((@lock_list)) do
             @lock_list.remove(fl1)
@@ -1296,7 +1296,7 @@ module Sun::Nio::Ch
         alias_method :attr_file_key=, :file_key=
         undef_method :file_key=
         
-        typesig { [FileLock, ReferenceQueue, FileKey] }
+        typesig { [self::FileLock, self::ReferenceQueue, self::FileKey] }
         def initialize(referent, queue, key)
           @file_key = nil
           super(referent, queue)
@@ -1323,7 +1323,7 @@ module Sun::Nio::Ch
           # All access to the list must be synchronized on the list.
           
           def lock_map
-            defined?(@@lock_map) ? @@lock_map : @@lock_map= ConcurrentHashMap.new
+            defined?(@@lock_map) ? @@lock_map : @@lock_map= self.class::ConcurrentHashMap.new
           end
           alias_method :attr_lock_map, :lock_map
           
@@ -1335,7 +1335,7 @@ module Sun::Nio::Ch
           # reference queue for cleared refs
           
           def queue
-            defined?(@@queue) ? @@queue : @@queue= ReferenceQueue.new
+            defined?(@@queue) ? @@queue : @@queue= self.class::ReferenceQueue.new
           end
           alias_method :attr_queue, :queue
           
@@ -1359,7 +1359,7 @@ module Sun::Nio::Ch
         alias_method :attr_file_key=, :file_key=
         undef_method :file_key=
         
-        typesig { [FileChannelImpl] }
+        typesig { [self::FileChannelImpl] }
         def initialize(fci)
           @fci = nil
           @file_key = nil
@@ -1367,19 +1367,19 @@ module Sun::Nio::Ch
           @file_key = FileKey.create(fci.attr_fd)
         end
         
-        typesig { [FileLock] }
+        typesig { [self::FileLock] }
         def add(fl)
           list = self.attr_lock_map.get(@file_key)
           loop do
             # The key isn't in the map so we try to create it atomically
             if ((list).nil?)
-              list = ArrayList.new(2)
+              list = self.class::ArrayList.new(2)
               prev = nil
               synchronized((list)) do
                 prev = self.attr_lock_map.put_if_absent(@file_key, list)
                 if ((prev).nil?)
                   # we successfully created the key so we add the file lock
-                  list.add(FileLockReference.new(fl, self.attr_queue, @file_key))
+                  list.add(self.class::FileLockReference.new(fl, self.attr_queue, @file_key))
                   break
                 end
               end
@@ -1394,7 +1394,7 @@ module Sun::Nio::Ch
               current = self.attr_lock_map.get(@file_key)
               if ((list).equal?(current))
                 check_list(list, fl.position, fl.size)
-                list.add(FileLockReference.new(fl, self.attr_queue, @file_key))
+                list.add(self.class::FileLockReference.new(fl, self.attr_queue, @file_key))
                 break
               end
               list = current
@@ -1404,7 +1404,7 @@ module Sun::Nio::Ch
           remove_stale_entries
         end
         
-        typesig { [FileKey, ArrayList] }
+        typesig { [self::FileKey, self::ArrayList] }
         def remove_key_if_empty(fk, list)
           raise AssertError if not (JavaThread.holds_lock(list))
           raise AssertError if not ((self.attr_lock_map.get(fk)).equal?(list))
@@ -1413,7 +1413,7 @@ module Sun::Nio::Ch
           end
         end
         
-        typesig { [FileLock] }
+        typesig { [self::FileLock] }
         def remove(fl)
           raise AssertError if not (!(fl).nil?)
           # the lock must exist so the list of locks must be present
@@ -1435,7 +1435,7 @@ module Sun::Nio::Ch
           end
         end
         
-        typesig { [Releaser] }
+        typesig { [self::Releaser] }
         def remove_all(releaser)
           list = self.attr_lock_map.get(@file_key)
           if (!(list).nil?)
@@ -1461,7 +1461,7 @@ module Sun::Nio::Ch
           end
         end
         
-        typesig { [FileLock, FileLock] }
+        typesig { [self::FileLock, self::FileLock] }
         def replace(from_lock, to_lock)
           # the lock must exist so there must be a list
           list = self.attr_lock_map.get(@file_key)
@@ -1473,7 +1473,7 @@ module Sun::Nio::Ch
               lock = ref.get
               if ((lock).equal?(from_lock))
                 ref.clear
-                list.set(index, FileLockReference.new(to_lock, self.attr_queue, @file_key))
+                list.set(index, self.class::FileLockReference.new(to_lock, self.attr_queue, @file_key))
                 break
               end
               index += 1
@@ -1481,14 +1481,14 @@ module Sun::Nio::Ch
           end
         end
         
-        typesig { [JavaList, ::Java::Long, ::Java::Long] }
+        typesig { [self::JavaList, ::Java::Long, ::Java::Long] }
         # Check for overlapping file locks
         def check_list(list, position_, size_)
           raise AssertError if not (JavaThread.holds_lock(list))
           list.each do |ref|
             fl = ref.get
             if (!(fl).nil? && fl.overlaps(position_, size_))
-              raise OverlappingFileLockException.new
+              raise self.class::OverlappingFileLockException.new
             end
           end
         end

@@ -442,7 +442,7 @@ module Java::Util::Concurrent
         alias_method :attr_next=, :next=
         undef_method :next=
         
-        typesig { [Object, Object, Node] }
+        typesig { [Object, Object, self::Node] }
         # Creates a new regular node.
         def initialize(key, value, next_)
           @key = nil
@@ -453,7 +453,7 @@ module Java::Util::Concurrent
           @next = next_
         end
         
-        typesig { [Node] }
+        typesig { [self::Node] }
         # Creates a new marker node. A marker is distinguished by
         # having its value field point to itself.  Marker nodes also
         # have null keys, a fact that is exploited in a few places,
@@ -484,7 +484,7 @@ module Java::Util::Concurrent
           return self.class::ValueUpdater.compare_and_set(self, cmp, val)
         end
         
-        typesig { [Node, Node] }
+        typesig { [self::Node, self::Node] }
         # compareAndSet next field
         def cas_next(cmp, val)
           return self.class::NextUpdater.compare_and_set(self, cmp, val)
@@ -509,15 +509,15 @@ module Java::Util::Concurrent
           return (@value).equal?(BASE_HEADER)
         end
         
-        typesig { [Node] }
+        typesig { [self::Node] }
         # Tries to append a deletion marker to this node.
         # @param f the assumed current successor of this node
         # @return true if successful
         def append_marker(f)
-          return cas_next(f, Node.new(f))
+          return cas_next(f, self.class::Node.new(f))
         end
         
-        typesig { [Node, Node] }
+        typesig { [self::Node, self::Node] }
         # Helps out a deletion by appending marker or unlinking from
         # predecessor. This is called during traversals when value
         # field seen to be null.
@@ -559,7 +559,7 @@ module Java::Util::Concurrent
           if ((v).nil?)
             return nil
           end
-          return AbstractMap::SimpleImmutableEntry.new(@key, v)
+          return self.class::AbstractMap::SimpleImmutableEntry.new(@key, v)
         end
         
         private
@@ -594,7 +594,7 @@ module Java::Util::Concurrent
         alias_method :attr_right=, :right=
         undef_method :right=
         
-        typesig { [Node, Index, Index] }
+        typesig { [self::Node, self::Index, self::Index] }
         # Creates index node with given values.
         def initialize(node, down, right)
           @node = nil
@@ -611,7 +611,7 @@ module Java::Util::Concurrent
           const_attr_reader  :RightUpdater
         }
         
-        typesig { [Index, Index] }
+        typesig { [self::Index, self::Index] }
         # compareAndSet right field
         def cas_right(cmp, val)
           return self.class::RightUpdater.compare_and_set(self, cmp, val)
@@ -624,7 +624,7 @@ module Java::Util::Concurrent
           return (@node.attr_value).nil?
         end
         
-        typesig { [Index, Index] }
+        typesig { [self::Index, self::Index] }
         # Tries to CAS newSucc as successor.  To minimize races with
         # unlink that may lose this index node, if the node being
         # indexed is known to be deleted, it doesn't try to link in.
@@ -637,7 +637,7 @@ module Java::Util::Concurrent
           return !(n.attr_value).nil? && cas_right(succ, new_succ)
         end
         
-        typesig { [Index] }
+        typesig { [self::Index] }
         # Tries to CAS right field to skip over apparent successor
         # succ.  Fails (forcing a retraversal by caller) if this node
         # is known to be deleted.
@@ -663,7 +663,7 @@ module Java::Util::Concurrent
         alias_method :attr_level=, :level=
         undef_method :level=
         
-        typesig { [Node, Index, Index, ::Java::Int] }
+        typesig { [self::Node, self::Index, self::Index, ::Java::Int] }
         def initialize(node, down, right, level)
           @level = 0
           super(node, down, right)
@@ -705,7 +705,7 @@ module Java::Util::Concurrent
         alias_method :attr_cmp=, :cmp=
         undef_method :cmp=
         
-        typesig { [Object, Comparator] }
+        typesig { [Object, self::Comparator] }
         def initialize(key, cmp)
           @actual_key = nil
           @cmp = nil
@@ -2464,7 +2464,7 @@ module Java::Util::Concurrent
         # Advances next to higher entry.
         def advance
           if ((@next).nil?)
-            raise NoSuchElementException.new
+            raise self.class::NoSuchElementException.new
           end
           @last_returned = @next
           loop do
@@ -2484,7 +2484,7 @@ module Java::Util::Concurrent
         def remove
           l = @last_returned
           if ((l).nil?)
-            raise IllegalStateException.new
+            raise self.class::IllegalStateException.new
           end
           # It would not be worth all of the overhead to directly
           # unlink from here. Using remove is fast enough.
@@ -2545,7 +2545,7 @@ module Java::Util::Concurrent
           n = self.attr_next
           v = self.attr_next_value
           advance
-          return AbstractMap::SimpleImmutableEntry.new(n.attr_key, v)
+          return self.class::AbstractMap::SimpleImmutableEntry.new(n.attr_key, v)
         end
         
         typesig { [] }
@@ -2602,7 +2602,7 @@ module Java::Util::Concurrent
         alias_method :attr_m=, :m=
         undef_method :m=
         
-        typesig { [ConcurrentNavigableMap] }
+        typesig { [self::ConcurrentNavigableMap] }
         def initialize(map)
           @m = nil
           super()
@@ -2683,7 +2683,7 @@ module Java::Util::Concurrent
         
         typesig { [] }
         def iterator
-          if (@m.is_a?(ConcurrentSkipListMap))
+          if (@m.is_a?(self.class::ConcurrentSkipListMap))
             return (@m).key_iterator
           else
             return (@m).key_iterator
@@ -2695,15 +2695,15 @@ module Java::Util::Concurrent
           if ((o).equal?(self))
             return true
           end
-          if (!(o.is_a?(JavaSet)))
+          if (!(o.is_a?(self.class::JavaSet)))
             return false
           end
           c = o
           begin
             return contains_all(c) && c.contains_all(self)
-          rescue ClassCastException => unused
+          rescue self.class::ClassCastException => unused
             return false
-          rescue NullPointerException => unused
+          rescue self.class::NullPointerException => unused
             return false
           end
         end
@@ -2713,7 +2713,7 @@ module Java::Util::Concurrent
           return to_list(self).to_array
         end
         
-        typesig { [Array.typed(T)] }
+        typesig { [Array.typed(self::T)] }
         def to_array(a)
           return to_list(self).to_array(a)
         end
@@ -2725,17 +2725,17 @@ module Java::Util::Concurrent
         
         typesig { [Object, ::Java::Boolean, Object, ::Java::Boolean] }
         def sub_set(from_element, from_inclusive, to_element, to_inclusive)
-          return KeySet.new(@m.sub_map(from_element, from_inclusive, to_element, to_inclusive))
+          return self.class::KeySet.new(@m.sub_map(from_element, from_inclusive, to_element, to_inclusive))
         end
         
         typesig { [Object, ::Java::Boolean] }
         def head_set(to_element, inclusive)
-          return KeySet.new(@m.head_map(to_element, inclusive))
+          return self.class::KeySet.new(@m.head_map(to_element, inclusive))
         end
         
         typesig { [Object, ::Java::Boolean] }
         def tail_set(from_element, inclusive)
-          return KeySet.new(@m.tail_map(from_element, inclusive))
+          return self.class::KeySet.new(@m.tail_map(from_element, inclusive))
         end
         
         typesig { [Object, Object] }
@@ -2755,7 +2755,7 @@ module Java::Util::Concurrent
         
         typesig { [] }
         def descending_set
-          return KeySet.new(@m.descending_map)
+          return self.class::KeySet.new(@m.descending_map)
         end
         
         private
@@ -2771,7 +2771,7 @@ module Java::Util::Concurrent
         alias_method :attr_m=, :m=
         undef_method :m=
         
-        typesig { [ConcurrentNavigableMap] }
+        typesig { [self::ConcurrentNavigableMap] }
         def initialize(map)
           @m = nil
           super()
@@ -2780,7 +2780,7 @@ module Java::Util::Concurrent
         
         typesig { [] }
         def iterator
-          if (@m.is_a?(ConcurrentSkipListMap))
+          if (@m.is_a?(self.class::ConcurrentSkipListMap))
             return (@m).value_iterator
           else
             return (@m).value_iterator
@@ -2812,7 +2812,7 @@ module Java::Util::Concurrent
           return to_list(self).to_array
         end
         
-        typesig { [Array.typed(T)] }
+        typesig { [Array.typed(self::T)] }
         def to_array(a)
           return to_list(self).to_array(a)
         end
@@ -2830,7 +2830,7 @@ module Java::Util::Concurrent
         alias_method :attr_m=, :m=
         undef_method :m=
         
-        typesig { [ConcurrentNavigableMap] }
+        typesig { [self::ConcurrentNavigableMap] }
         def initialize(map)
           @m = nil
           super()
@@ -2839,7 +2839,7 @@ module Java::Util::Concurrent
         
         typesig { [] }
         def iterator
-          if (@m.is_a?(ConcurrentSkipListMap))
+          if (@m.is_a?(self.class::ConcurrentSkipListMap))
             return (@m).entry_iterator
           else
             return (@m).entry_iterator
@@ -2848,7 +2848,7 @@ module Java::Util::Concurrent
         
         typesig { [Object] }
         def contains(o)
-          if (!(o.is_a?(Map::Entry)))
+          if (!(o.is_a?(self.class::Map::Entry)))
             return false
           end
           e = o
@@ -2858,7 +2858,7 @@ module Java::Util::Concurrent
         
         typesig { [Object] }
         def remove(o)
-          if (!(o.is_a?(Map::Entry)))
+          if (!(o.is_a?(self.class::Map::Entry)))
             return false
           end
           e = o
@@ -2885,15 +2885,15 @@ module Java::Util::Concurrent
           if ((o).equal?(self))
             return true
           end
-          if (!(o.is_a?(JavaSet)))
+          if (!(o.is_a?(self.class::JavaSet)))
             return false
           end
           c = o
           begin
             return contains_all(c) && c.contains_all(self)
-          rescue ClassCastException => unused
+          rescue self.class::ClassCastException => unused
             return false
-          rescue NullPointerException => unused
+          rescue self.class::NullPointerException => unused
             return false
           end
         end
@@ -2903,7 +2903,7 @@ module Java::Util::Concurrent
           return to_list(self).to_array
         end
         
-        typesig { [Array.typed(T)] }
+        typesig { [Array.typed(self::T)] }
         def to_array(a)
           return to_list(self).to_array(a)
         end
@@ -2996,7 +2996,7 @@ module Java::Util::Concurrent
         alias_method :attr_values_view=, :values_view=
         undef_method :values_view=
         
-        typesig { [ConcurrentSkipListMap, Object, ::Java::Boolean, Object, ::Java::Boolean, ::Java::Boolean] }
+        typesig { [self::ConcurrentSkipListMap, Object, ::Java::Boolean, Object, ::Java::Boolean, ::Java::Boolean] }
         # Creates a new submap, initializing all fields
         def initialize(map, from_key, from_inclusive, to_key, to_inclusive, is_descending)
           @m = nil
@@ -3010,7 +3010,7 @@ module Java::Util::Concurrent
           @values_view = nil
           super()
           if (!(from_key).nil? && !(to_key).nil? && map.compare(from_key, to_key) > 0)
-            raise IllegalArgumentException.new("inconsistent range")
+            raise self.class::IllegalArgumentException.new("inconsistent range")
           end
           @m = map
           @lo = from_key
@@ -3051,14 +3051,14 @@ module Java::Util::Concurrent
         typesig { [Object] }
         def check_key_bounds(key)
           if ((key).nil?)
-            raise NullPointerException.new
+            raise self.class::NullPointerException.new
           end
           if (!in_bounds(key))
-            raise IllegalArgumentException.new("key out of range")
+            raise self.class::IllegalArgumentException.new("key out of range")
           end
         end
         
-        typesig { [ConcurrentSkipListMap::Node] }
+        typesig { [self::ConcurrentSkipListMap::Node] }
         # Returns true if node key is less than upper bound of range
         def is_before_end(n)
           if ((n).nil?)
@@ -3116,7 +3116,7 @@ module Java::Util::Concurrent
           if (is_before_end(n))
             return n.attr_key
           else
-            raise NoSuchElementException.new
+            raise self.class::NoSuchElementException.new
           end
         end
         
@@ -3130,7 +3130,7 @@ module Java::Util::Concurrent
               return last
             end
           end
-          raise NoSuchElementException.new
+          raise self.class::NoSuchElementException.new
         end
         
         typesig { [] }
@@ -3174,7 +3174,7 @@ module Java::Util::Concurrent
             end
             v = @m.do_remove(k, nil)
             if (!(v).nil?)
-              return AbstractMap::SimpleImmutableEntry.new(k, v)
+              return self.class::AbstractMap::SimpleImmutableEntry.new(k, v)
             end
           end
         end
@@ -3192,7 +3192,7 @@ module Java::Util::Concurrent
             end
             v = @m.do_remove(k, nil)
             if (!(v).nil?)
-              return AbstractMap::SimpleImmutableEntry.new(k, v)
+              return self.class::AbstractMap::SimpleImmutableEntry.new(k, v)
             end
           end
         end
@@ -3222,7 +3222,7 @@ module Java::Util::Concurrent
             k = n.attr_key
             v = n.get_valid_value
             if (!(v).nil?)
-              return AbstractMap::SimpleImmutableEntry.new(k, v)
+              return self.class::AbstractMap::SimpleImmutableEntry.new(k, v)
             end
           end
         end
@@ -3276,7 +3276,7 @@ module Java::Util::Concurrent
         # ----------------  Map API methods --------------
         def contains_key(key)
           if ((key).nil?)
-            raise NullPointerException.new
+            raise self.class::NullPointerException.new
           end
           k = key
           return in_bounds(k) && @m.contains_key(k)
@@ -3285,7 +3285,7 @@ module Java::Util::Concurrent
         typesig { [Object] }
         def get(key)
           if ((key).nil?)
-            raise NullPointerException.new
+            raise self.class::NullPointerException.new
           end
           k = key
           return ((!in_bounds(k)) ? nil : @m.get(k))
@@ -3324,7 +3324,7 @@ module Java::Util::Concurrent
         typesig { [Object] }
         def contains_value(value)
           if ((value).nil?)
-            raise NullPointerException.new
+            raise self.class::NullPointerException.new
           end
           n = lo_node
           while is_before_end(n)
@@ -3404,7 +3404,7 @@ module Java::Util::Concurrent
             else
               c = @m.compare(from_key, @lo)
               if (c < 0 || ((c).equal?(0) && !@lo_inclusive && from_inclusive))
-                raise IllegalArgumentException.new("key out of range")
+                raise self.class::IllegalArgumentException.new("key out of range")
               end
             end
           end
@@ -3415,17 +3415,17 @@ module Java::Util::Concurrent
             else
               c = @m.compare(to_key, @hi)
               if (c > 0 || ((c).equal?(0) && !@hi_inclusive && to_inclusive))
-                raise IllegalArgumentException.new("key out of range")
+                raise self.class::IllegalArgumentException.new("key out of range")
               end
             end
           end
-          return SubMap.new(@m, from_key, from_inclusive, to_key, to_inclusive, @is_descending)
+          return self.class::SubMap.new(@m, from_key, from_inclusive, to_key, to_inclusive, @is_descending)
         end
         
         typesig { [Object, ::Java::Boolean, Object, ::Java::Boolean] }
         def sub_map(from_key, from_inclusive, to_key, to_inclusive)
           if ((from_key).nil? || (to_key).nil?)
-            raise NullPointerException.new
+            raise self.class::NullPointerException.new
           end
           return new_sub_map(from_key, from_inclusive, to_key, to_inclusive)
         end
@@ -3433,7 +3433,7 @@ module Java::Util::Concurrent
         typesig { [Object, ::Java::Boolean] }
         def head_map(to_key, inclusive)
           if ((to_key).nil?)
-            raise NullPointerException.new
+            raise self.class::NullPointerException.new
           end
           return new_sub_map(nil, false, to_key, inclusive)
         end
@@ -3441,7 +3441,7 @@ module Java::Util::Concurrent
         typesig { [Object, ::Java::Boolean] }
         def tail_map(from_key, inclusive)
           if ((from_key).nil?)
-            raise NullPointerException.new
+            raise self.class::NullPointerException.new
           end
           return new_sub_map(from_key, inclusive, nil, false)
         end
@@ -3463,7 +3463,7 @@ module Java::Util::Concurrent
         
         typesig { [] }
         def descending_map
-          return SubMap.new(@m, @lo, @lo_inclusive, @hi, @hi_inclusive, !@is_descending)
+          return self.class::SubMap.new(@m, @lo, @lo_inclusive, @hi, @hi_inclusive, !@is_descending)
         end
         
         typesig { [Object] }
@@ -3541,25 +3541,25 @@ module Java::Util::Concurrent
         # ---------------- Submap Views --------------
         def key_set
           ks = @key_set_view
-          return (!(ks).nil?) ? ks : (@key_set_view = KeySet.new(self))
+          return (!(ks).nil?) ? ks : (@key_set_view = self.class::KeySet.new(self))
         end
         
         typesig { [] }
         def navigable_key_set
           ks = @key_set_view
-          return (!(ks).nil?) ? ks : (@key_set_view = KeySet.new(self))
+          return (!(ks).nil?) ? ks : (@key_set_view = self.class::KeySet.new(self))
         end
         
         typesig { [] }
         def values
           vs = @values_view
-          return (!(vs).nil?) ? vs : (@values_view = Values.new(self))
+          return (!(vs).nil?) ? vs : (@values_view = self.class::Values.new(self))
         end
         
         typesig { [] }
         def entry_set
           es = @entry_set_view
-          return (!(es).nil?) ? es : (@entry_set_view = EntrySet.new(self))
+          return (!(es).nil?) ? es : (@entry_set_view = self.class::EntrySet.new(self))
         end
         
         typesig { [] }
@@ -3569,17 +3569,17 @@ module Java::Util::Concurrent
         
         typesig { [] }
         def key_iterator
-          return SubMapKeyIterator.new_local(self)
+          return self.class::SubMapKeyIterator.new_local(self)
         end
         
         typesig { [] }
         def value_iterator
-          return SubMapValueIterator.new_local(self)
+          return self.class::SubMapValueIterator.new_local(self)
         end
         
         typesig { [] }
         def entry_iterator
-          return SubMapEntryIterator.new_local(self)
+          return self.class::SubMapEntryIterator.new_local(self)
         end
         
         class_module.module_eval {
@@ -3587,7 +3587,7 @@ module Java::Util::Concurrent
           const_set_lazy(:SubMapIter) { Class.new do
             extend LocalClass
             include_class_members SubMap
-            include Iterator
+            include self.class::Iterator
             
             # the last node returned by next()
             attr_accessor :last_returned
@@ -3640,7 +3640,7 @@ module Java::Util::Concurrent
             typesig { [] }
             def advance
               if ((@next).nil?)
-                raise NoSuchElementException.new
+                raise self.class::NoSuchElementException.new
               end
               @last_returned = @next
               if (self.attr_is_descending)
@@ -3692,7 +3692,7 @@ module Java::Util::Concurrent
             def remove
               l = @last_returned
               if ((l).nil?)
-                raise IllegalStateException.new
+                raise self.class::IllegalStateException.new
               end
               self.attr_m.remove(l.attr_key)
               @last_returned = nil
@@ -3702,7 +3702,7 @@ module Java::Util::Concurrent
             alias_method :initialize__sub_map_iter, :initialize
           end }
           
-          const_set_lazy(:SubMapValueIterator) { Class.new(SubMapIter) do
+          const_set_lazy(:SubMapValueIterator) { Class.new(self.class::SubMapIter) do
             extend LocalClass
             include_class_members SubMap
             
@@ -3722,7 +3722,7 @@ module Java::Util::Concurrent
             alias_method :initialize__sub_map_value_iterator, :initialize
           end }
           
-          const_set_lazy(:SubMapKeyIterator) { Class.new(SubMapIter) do
+          const_set_lazy(:SubMapKeyIterator) { Class.new(self.class::SubMapIter) do
             extend LocalClass
             include_class_members SubMap
             
@@ -3742,7 +3742,7 @@ module Java::Util::Concurrent
             alias_method :initialize__sub_map_key_iterator, :initialize
           end }
           
-          const_set_lazy(:SubMapEntryIterator) { Class.new(SubMapIter) do
+          const_set_lazy(:SubMapEntryIterator) { Class.new(self.class::SubMapIter) do
             extend LocalClass
             include_class_members SubMap
             
@@ -3751,7 +3751,7 @@ module Java::Util::Concurrent
               n = self.attr_next
               v = self.attr_next_value
               advance
-              return AbstractMap::SimpleImmutableEntry.new(n.attr_key, v)
+              return self.class::AbstractMap::SimpleImmutableEntry.new(n.attr_key, v)
             end
             
             typesig { [] }

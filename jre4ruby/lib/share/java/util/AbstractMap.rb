@@ -332,10 +332,10 @@ module Java::Util
           typesig { [] }
           define_method :iterator do
             abstract_set_class = self.class
-            return Class.new(Iterator.class == Class ? Iterator : Object) do
+            return Class.new(self.class::Iterator.class == Class ? self.class::Iterator : Object) do
               extend LocalClass
               include_class_members abstract_set_class
-              include Iterator if Iterator.class == Module
+              include self::Iterator if self::Iterator.class == Module
               
               attr_accessor :i
               alias_method :attr_i, :i
@@ -426,10 +426,10 @@ module Java::Util
           typesig { [] }
           define_method :iterator do
             abstract_collection_class = self.class
-            return Class.new(Iterator.class == Class ? Iterator : Object) do
+            return Class.new(self.class::Iterator.class == Class ? self.class::Iterator : Object) do
               extend LocalClass
               include_class_members abstract_collection_class
-              include Iterator if Iterator.class == Module
+              include self::Iterator if self::Iterator.class == Module
               
               attr_accessor :i
               alias_method :attr_i, :i
@@ -685,7 +685,7 @@ module Java::Util
           @value = value
         end
         
-        typesig { [Entry] }
+        typesig { [self::Entry] }
         # Creates an entry representing the same mapping as the
         # specified entry.
         # 
@@ -746,7 +746,7 @@ module Java::Util
         # entry
         # @see    #hashCode
         def ==(o)
-          if (!(o.is_a?(Map::Entry)))
+          if (!(o.is_a?(self.class::Map::Entry)))
             return false
           end
           e = o
@@ -825,7 +825,7 @@ module Java::Util
           @value = value
         end
         
-        typesig { [Entry] }
+        typesig { [self::Entry] }
         # Creates an entry representing the same mapping as the
         # specified entry.
         # 
@@ -863,7 +863,7 @@ module Java::Util
         # @return (Does not return)
         # @throws UnsupportedOperationException always
         def set_value(value)
-          raise UnsupportedOperationException.new
+          raise self.class::UnsupportedOperationException.new
         end
         
         typesig { [Object] }
@@ -887,7 +887,7 @@ module Java::Util
         # entry
         # @see    #hashCode
         def ==(o)
-          if (!(o.is_a?(Map::Entry)))
+          if (!(o.is_a?(self.class::Map::Entry)))
             return false
           end
           e = o

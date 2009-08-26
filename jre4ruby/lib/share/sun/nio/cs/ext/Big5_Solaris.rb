@@ -96,7 +96,7 @@ module Sun::Nio::Cs::Ext
           return c
         end
         
-        typesig { [Charset] }
+        typesig { [self::Charset] }
         def initialize(cs)
           super(cs)
         end
@@ -132,7 +132,7 @@ module Sun::Nio::Cs::Ext
           return r
         end
         
-        typesig { [Charset] }
+        typesig { [self::Charset] }
         def initialize(cs)
           super(cs)
         end

@@ -160,10 +160,10 @@ module Sun::Misc
                 typesig { [] }
                 define_method :run do
                   begin
-                    log_file = JavaFile.new(self.attr_log_file_name)
+                    log_file = self.class::JavaFile.new(self.attr_log_file_name)
                     log_file.create_new_file
-                    self.attr_log_writer = FileWriter.new(log_file)
-                  rescue JavaException => e
+                    self.attr_log_writer = self.class::FileWriter.new(log_file)
+                  rescue self.class::JavaException => e
                     System.out.println(RJava.cast_to_string(e) + ": Creating logfile " + self.attr_log_file_name + ".  Log to console")
                   end
                   return nil
@@ -217,7 +217,7 @@ module Sun::Misc
         alias_method :attr_time=, :time=
         undef_method :time=
         
-        typesig { [String, ::Java::Long] }
+        typesig { [self::String, ::Java::Long] }
         def initialize(message, time)
           @message = nil
           @time = 0

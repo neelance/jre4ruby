@@ -76,7 +76,7 @@ module Sun::Security::Smartcardio
         def initialize(obj)
           super()
           if (!(obj).nil?)
-            raise IllegalArgumentException.new("SunPCSC factory does not use parameters")
+            raise self.class::IllegalArgumentException.new("SunPCSC factory does not use parameters")
           end
           # make sure PCSC is available and that we can obtain a context
           PCSC.check_available
@@ -87,7 +87,7 @@ module Sun::Security::Smartcardio
         # Returns the available readers.
         # This must be a new object for each call.
         def engine_terminals
-          return PCSCTerminals.new
+          return self.class::PCSCTerminals.new
         end
         
         private

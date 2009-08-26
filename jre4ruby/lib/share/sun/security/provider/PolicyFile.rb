@@ -642,11 +642,11 @@ module Sun::Security::Provider
               begin
                 extra_policy = RJava.cast_to_string(PropertyExpander.expand(extra_policy))
                 policy_url = nil
-                policy_file = JavaFile.new(extra_policy)
+                policy_file = self.class::JavaFile.new(extra_policy)
                 if (policy_file.exists)
-                  policy_url = ParseUtil.file_to_encoded_url(JavaFile.new(policy_file.get_canonical_path))
+                  policy_url = ParseUtil.file_to_encoded_url(self.class::JavaFile.new(policy_file.get_canonical_path))
                 else
-                  policy_url = URL.new(extra_policy)
+                  policy_url = self.class::URL.new(extra_policy)
                 end
                 if (!(Debug).nil?)
                   Debug.println("reading " + RJava.cast_to_string(policy_url))
@@ -654,7 +654,7 @@ module Sun::Security::Provider
                 if (init(policy_url, new_info))
                   loaded_policy_ = true
                 end
-              rescue JavaException => e
+              rescue self.class::JavaException => e
                 # ignore.
                 if (!(Debug).nil?)
                   Debug.println("caught exception: " + RJava.cast_to_string(e))
@@ -679,9 +679,9 @@ module Sun::Security::Provider
                 # the situation java.home/user.home
                 # expand to a single slash, resulting in
                 # a file://foo URI
-                policy_url = JavaFile.new(expanded_uri.substring(5)).to_uri.to_url
+                policy_url = self.class::JavaFile.new(expanded_uri.substring(5)).to_uri.to_url
               else
-                policy_url = URI.new(expanded_uri).to_url
+                policy_url = self.class::URI.new(expanded_uri).to_url
               end
               if (!(Debug).nil?)
                 Debug.println("reading " + RJava.cast_to_string(policy_url))
@@ -689,7 +689,7 @@ module Sun::Security::Provider
               if (init(policy_url, new_info))
                 loaded_policy_ = true
               end
-            rescue JavaException => e
+            rescue self.class::JavaException => e
               if (!(Debug).nil?)
                 Debug.println("error reading policy " + RJava.cast_to_string(e))
                 e.print_stack_trace
@@ -783,27 +783,27 @@ module Sun::Security::Provider
         
         typesig { [] }
         define_method :run do
-          pe = PolicyEntry.new(CodeSource.new(nil, nil))
+          pe = self.class::PolicyEntry.new(self.class::CodeSource.new(nil, nil))
           pe.add(SecurityConstants::LOCAL_LISTEN_PERMISSION)
-          pe.add(PropertyPermission.new("java.version", SecurityConstants::PROPERTY_READ_ACTION))
-          pe.add(PropertyPermission.new("java.vendor", SecurityConstants::PROPERTY_READ_ACTION))
-          pe.add(PropertyPermission.new("java.vendor.url", SecurityConstants::PROPERTY_READ_ACTION))
-          pe.add(PropertyPermission.new("java.class.version", SecurityConstants::PROPERTY_READ_ACTION))
-          pe.add(PropertyPermission.new("os.name", SecurityConstants::PROPERTY_READ_ACTION))
-          pe.add(PropertyPermission.new("os.version", SecurityConstants::PROPERTY_READ_ACTION))
-          pe.add(PropertyPermission.new("os.arch", SecurityConstants::PROPERTY_READ_ACTION))
-          pe.add(PropertyPermission.new("file.separator", SecurityConstants::PROPERTY_READ_ACTION))
-          pe.add(PropertyPermission.new("path.separator", SecurityConstants::PROPERTY_READ_ACTION))
-          pe.add(PropertyPermission.new("line.separator", SecurityConstants::PROPERTY_READ_ACTION))
-          pe.add(PropertyPermission.new("java.specification.version", SecurityConstants::PROPERTY_READ_ACTION))
-          pe.add(PropertyPermission.new("java.specification.vendor", SecurityConstants::PROPERTY_READ_ACTION))
-          pe.add(PropertyPermission.new("java.specification.name", SecurityConstants::PROPERTY_READ_ACTION))
-          pe.add(PropertyPermission.new("java.vm.specification.version", SecurityConstants::PROPERTY_READ_ACTION))
-          pe.add(PropertyPermission.new("java.vm.specification.vendor", SecurityConstants::PROPERTY_READ_ACTION))
-          pe.add(PropertyPermission.new("java.vm.specification.name", SecurityConstants::PROPERTY_READ_ACTION))
-          pe.add(PropertyPermission.new("java.vm.version", SecurityConstants::PROPERTY_READ_ACTION))
-          pe.add(PropertyPermission.new("java.vm.vendor", SecurityConstants::PROPERTY_READ_ACTION))
-          pe.add(PropertyPermission.new("java.vm.name", SecurityConstants::PROPERTY_READ_ACTION))
+          pe.add(self.class::PropertyPermission.new("java.version", SecurityConstants::PROPERTY_READ_ACTION))
+          pe.add(self.class::PropertyPermission.new("java.vendor", SecurityConstants::PROPERTY_READ_ACTION))
+          pe.add(self.class::PropertyPermission.new("java.vendor.url", SecurityConstants::PROPERTY_READ_ACTION))
+          pe.add(self.class::PropertyPermission.new("java.class.version", SecurityConstants::PROPERTY_READ_ACTION))
+          pe.add(self.class::PropertyPermission.new("os.name", SecurityConstants::PROPERTY_READ_ACTION))
+          pe.add(self.class::PropertyPermission.new("os.version", SecurityConstants::PROPERTY_READ_ACTION))
+          pe.add(self.class::PropertyPermission.new("os.arch", SecurityConstants::PROPERTY_READ_ACTION))
+          pe.add(self.class::PropertyPermission.new("file.separator", SecurityConstants::PROPERTY_READ_ACTION))
+          pe.add(self.class::PropertyPermission.new("path.separator", SecurityConstants::PROPERTY_READ_ACTION))
+          pe.add(self.class::PropertyPermission.new("line.separator", SecurityConstants::PROPERTY_READ_ACTION))
+          pe.add(self.class::PropertyPermission.new("java.specification.version", SecurityConstants::PROPERTY_READ_ACTION))
+          pe.add(self.class::PropertyPermission.new("java.specification.vendor", SecurityConstants::PROPERTY_READ_ACTION))
+          pe.add(self.class::PropertyPermission.new("java.specification.name", SecurityConstants::PROPERTY_READ_ACTION))
+          pe.add(self.class::PropertyPermission.new("java.vm.specification.version", SecurityConstants::PROPERTY_READ_ACTION))
+          pe.add(self.class::PropertyPermission.new("java.vm.specification.vendor", SecurityConstants::PROPERTY_READ_ACTION))
+          pe.add(self.class::PropertyPermission.new("java.vm.specification.name", SecurityConstants::PROPERTY_READ_ACTION))
+          pe.add(self.class::PropertyPermission.new("java.vm.version", SecurityConstants::PROPERTY_READ_ACTION))
+          pe.add(self.class::PropertyPermission.new("java.vm.vendor", SecurityConstants::PROPERTY_READ_ACTION))
+          pe.add(self.class::PropertyPermission.new("java.vm.name", SecurityConstants::PROPERTY_READ_ACTION))
           # No need to sync because noone has access to newInfo yet
           new_info.attr_policy_entries.add(pe)
           # Add AllPermissions for standard extensions
@@ -812,12 +812,12 @@ module Sun::Security::Provider
             i = 0
             while i < ext_codebases.attr_length
               begin
-                pe = PolicyEntry.new(canonicalize_codebase(CodeSource.new(URL.new(ext_codebases[i]), nil), false))
+                pe = self.class::PolicyEntry.new(canonicalize_codebase(self.class::CodeSource.new(self.class::URL.new(ext_codebases[i]), nil), false))
                 pe.add(SecurityConstants::ALL_PERMISSION)
                 # No need to sync because noone has access to
                 # newInfo yet
                 new_info.attr_policy_entries.add(pe)
-              rescue JavaException => e
+              rescue self.class::JavaException => e
                 # this is probably bad (though not dangerous).
                 # What should we do?
               end
@@ -1342,7 +1342,7 @@ module Sun::Security::Provider
         
         typesig { [] }
         define_method :run do
-          return Boolean.new(entry.get_code_source.implies(cs))
+          return self.class::Boolean.new(entry.get_code_source.implies(cs))
         end
         
         typesig { [] }
@@ -2080,7 +2080,7 @@ module Sun::Security::Provider
         alias_method :attr_principals=, :principals=
         undef_method :principals=
         
-        typesig { [CodeSource, JavaList] }
+        typesig { [self::CodeSource, self::JavaList] }
         # Given a Permission and a CodeSource, create a policy entry.
         # 
         # XXX Decide if/how to add validity fields and "purpose" fields to
@@ -2096,11 +2096,11 @@ module Sun::Security::Provider
           @permissions = nil
           @principals = nil
           @codesource = cs
-          @permissions = ArrayList.new
+          @permissions = self.class::ArrayList.new
           @principals = principals # can be null
         end
         
-        typesig { [CodeSource] }
+        typesig { [self::CodeSource] }
         def initialize(cs)
           initialize__policy_entry(cs, nil)
         end
@@ -2110,7 +2110,7 @@ module Sun::Security::Provider
           return @principals # can be null
         end
         
-        typesig { [Permission] }
+        typesig { [self::Permission] }
         # add a Permission object to this entry.
         # No need to sync add op because perms are added to entry only
         # while entry is being initialized
@@ -2126,7 +2126,7 @@ module Sun::Security::Provider
         
         typesig { [] }
         def to_s
-          sb = StringBuilder.new
+          sb = self.class::StringBuilder.new
           sb.append(ResourcesMgr.get_string("("))
           sb.append(get_code_source)
           sb.append("\n")
@@ -2193,7 +2193,7 @@ module Sun::Security::Provider
         alias_method :attr_certs=, :certs=
         undef_method :certs=
         
-        typesig { [String, String, String, Array.typed(Certificate)] }
+        typesig { [self::String, self::String, self::String, Array.typed(self::Certificate)] }
         # Creates a new SelfPermission containing the permission
         # information needed later to expand the self
         # @param type the class name of the Permission class that will be
@@ -2212,7 +2212,7 @@ module Sun::Security::Provider
           @certs = nil
           super(type)
           if ((type).nil?)
-            raise NullPointerException.new(ResourcesMgr.get_string("type can't be null"))
+            raise self.class::NullPointerException.new(ResourcesMgr.get_string("type can't be null"))
           end
           @type = type
           @name = name
@@ -2221,7 +2221,7 @@ module Sun::Security::Provider
             # Extract the signer certs from the list of certificates.
             i = 0
             while i < certs.attr_length
-              if (!(certs[i].is_a?(X509Certificate)))
+              if (!(certs[i].is_a?(self.class::X509Certificate)))
                 # there is no concept of signer certs, so we store the
                 # entire cert array
                 @certs = certs.clone
@@ -2248,7 +2248,7 @@ module Sun::Security::Provider
               end
               if ((@certs).nil?)
                 # extract the signer certs
-                signer_certs = ArrayList.new
+                signer_certs = self.class::ArrayList.new
                 i_ = 0
                 while (i_ < certs.attr_length)
                   signer_certs.add(certs[i_])
@@ -2257,14 +2257,14 @@ module Sun::Security::Provider
                   end
                   i_ += 1
                 end
-                @certs = Array.typed(Certificate).new(signer_certs.size) { nil }
+                @certs = Array.typed(self.class::Certificate).new(signer_certs.size) { nil }
                 signer_certs.to_array(@certs)
               end
             end
           end
         end
         
-        typesig { [Permission] }
+        typesig { [self::Permission] }
         # This method always returns false for SelfPermission permissions.
         # That is, an SelfPermission never considered to
         # imply another permission.
@@ -2292,7 +2292,7 @@ module Sun::Security::Provider
           if ((obj).equal?(self))
             return true
           end
-          if (!(obj.is_a?(SelfPermission)))
+          if (!(obj.is_a?(self.class::SelfPermission)))
             return false
           end
           that = obj
@@ -2453,17 +2453,17 @@ module Sun::Security::Provider
           @alias_mapping = nil
           @pd_mapping = nil
           @random = nil
-          @policy_entries = ArrayList.new
-          @identity_policy_entries = Collections.synchronized_list(ArrayList.new(2))
-          @alias_mapping = Collections.synchronized_map(HashMap.new(11))
-          @pd_mapping = Array.typed(Map).new(num_caches) { nil }
+          @policy_entries = self.class::ArrayList.new
+          @identity_policy_entries = Collections.synchronized_list(self.class::ArrayList.new(2))
+          @alias_mapping = Collections.synchronized_map(self.class::HashMap.new(11))
+          @pd_mapping = Array.typed(self.class::Map).new(num_caches) { nil }
           i = 0
           while i < num_caches
-            @pd_mapping[i] = Collections.synchronized_map(WeakHashMap.new)
+            @pd_mapping[i] = Collections.synchronized_map(self.class::WeakHashMap.new)
             i += 1
           end
           if (num_caches > 1)
-            @random = Java::Util::Random.new
+            @random = Java::Util::self.class::Random.new
           end
         end
         

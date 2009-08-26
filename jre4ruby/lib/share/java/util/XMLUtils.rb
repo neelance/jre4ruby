@@ -165,15 +165,15 @@ module Java::Util
         include_class_members XMLUtils
         include EntityResolver
         
-        typesig { [String, String] }
+        typesig { [self::String, self::String] }
         def resolve_entity(pid, sid)
           if ((sid == PROPS_DTD_URI))
             is = nil
-            is = InputSource.new(StringReader.new(PROPS_DTD))
+            is = self.class::InputSource.new(self.class::StringReader.new(PROPS_DTD))
             is.set_system_id(PROPS_DTD_URI)
             return is
           end
-          raise SAXException.new("Invalid system identifier: " + sid)
+          raise self.class::SAXException.new("Invalid system identifier: " + sid)
         end
         
         typesig { [] }
@@ -188,17 +188,17 @@ module Java::Util
         include_class_members XMLUtils
         include ErrorHandler
         
-        typesig { [SAXParseException] }
+        typesig { [self::SAXParseException] }
         def error(x)
           raise x
         end
         
-        typesig { [SAXParseException] }
+        typesig { [self::SAXParseException] }
         def fatal_error(x)
           raise x
         end
         
-        typesig { [SAXParseException] }
+        typesig { [self::SAXParseException] }
         def warning(x)
           raise x
         end

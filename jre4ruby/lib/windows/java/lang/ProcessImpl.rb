@@ -143,9 +143,9 @@ module Java::Lang
         
         typesig { [] }
         define_method :run do
-          self.attr_stdin_stream = BufferedOutputStream.new(FileOutputStream.new(self.attr_stdin_fd))
-          self.attr_stdout_stream = BufferedInputStream.new(FileInputStream.new(self.attr_stdout_fd))
-          self.attr_stderr_stream = FileInputStream.new(self.attr_stderr_fd)
+          self.attr_stdin_stream = self.class::BufferedOutputStream.new(self.class::FileOutputStream.new(self.attr_stdin_fd))
+          self.attr_stdout_stream = self.class::BufferedInputStream.new(self.class::FileInputStream.new(self.attr_stdout_fd))
+          self.attr_stderr_stream = self.class::FileInputStream.new(self.attr_stderr_fd)
           return nil
         end
         

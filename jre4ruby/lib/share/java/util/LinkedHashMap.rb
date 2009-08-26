@@ -346,7 +346,7 @@ module Java::Util
         alias_method :attr_after=, :after=
         undef_method :after=
         
-        typesig { [::Java::Int, Object, Object, HashMap::Entry] }
+        typesig { [::Java::Int, Object, Object, self::HashMap::Entry] }
         def initialize(hash, key, value, next_)
           @before = nil
           @after = nil
@@ -360,7 +360,7 @@ module Java::Util
           @after.attr_before = @before
         end
         
-        typesig { [Entry] }
+        typesig { [self::Entry] }
         # Inserts this entry before the specified existing entry in the list.
         def add_before(existing_entry)
           @after = existing_entry
@@ -369,7 +369,7 @@ module Java::Util
           @after.attr_before = self
         end
         
-        typesig { [HashMap] }
+        typesig { [self::HashMap] }
         # This method is invoked by the superclass whenever the value
         # of a pre-existing entry is read by Map.get or modified by Map.set.
         # If the enclosing Map is access-ordered, it moves the entry
@@ -383,7 +383,7 @@ module Java::Util
           end
         end
         
-        typesig { [HashMap] }
+        typesig { [self::HashMap] }
         def record_removal(m)
           remove
         end
@@ -426,10 +426,10 @@ module Java::Util
         typesig { [] }
         def remove
           if ((@last_returned).nil?)
-            raise IllegalStateException.new
+            raise self.class::IllegalStateException.new
           end
           if (!(self.attr_mod_count).equal?(@expected_mod_count))
-            raise ConcurrentModificationException.new
+            raise self.class::ConcurrentModificationException.new
           end
           @local_class_parent.remove(@last_returned.attr_key)
           @last_returned = nil
@@ -439,10 +439,10 @@ module Java::Util
         typesig { [] }
         def next_entry
           if (!(self.attr_mod_count).equal?(@expected_mod_count))
-            raise ConcurrentModificationException.new
+            raise self.class::ConcurrentModificationException.new
           end
           if ((@next_entry).equal?(self.attr_header))
-            raise NoSuchElementException.new
+            raise self.class::NoSuchElementException.new
           end
           e = @last_returned = @next_entry
           @next_entry = e.attr_after

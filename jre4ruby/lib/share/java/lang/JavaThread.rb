@@ -1816,15 +1816,15 @@ module Java::Lang
             cl = subcl
             while !(cl).equal?(JavaThread)
               begin
-                cl.get_declared_method("getContextClassLoader", Array.typed(Class).new(0) { nil })
+                cl.get_declared_method("getContextClassLoader", Array.typed(self.class::Class).new(0) { nil })
                 return Boolean::TRUE
-              rescue NoSuchMethodException => ex
+              rescue self.class::NoSuchMethodException => ex
               end
               begin
-                params = Array.typed(Class).new([ClassLoader])
+                params = Array.typed(self.class::Class).new([ClassLoader])
                 cl.get_declared_method("setContextClassLoader", params)
                 return Boolean::TRUE
-              rescue NoSuchMethodException => ex
+              rescue self.class::NoSuchMethodException => ex
               end
               cl = cl.get_superclass
             end

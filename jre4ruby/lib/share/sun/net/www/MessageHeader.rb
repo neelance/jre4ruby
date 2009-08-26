@@ -238,7 +238,7 @@ module Sun::Net::Www
         alias_method :attr_lock=, :lock=
         undef_method :lock=
         
-        typesig { [String, Object] }
+        typesig { [self::String, Object] }
         def initialize(k, lock)
           @index = 0
           @next = -1
@@ -277,14 +277,14 @@ module Sun::Net::Www
             if (has_next)
               return next_
             else
-              raise NoSuchElementException.new("No more elements")
+              raise self.class::NoSuchElementException.new("No more elements")
             end
           end
         end
         
         typesig { [] }
         def remove
-          raise UnsupportedOperationException.new("remove not allowed")
+          raise self.class::UnsupportedOperationException.new("remove not allowed")
         end
         
         private

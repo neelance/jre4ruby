@@ -216,10 +216,10 @@ module Sun::Util
         typesig { [] }
         define_method :iterator do
           abstract_set_class = self.class
-          return Class.new(Iterator.class == Class ? Iterator : Object) do
+          return Class.new(self.class::Iterator.class == Class ? self.class::Iterator : Object) do
             extend LocalClass
             include_class_members abstract_set_class
-            include Iterator if Iterator.class == Module
+            include self::Iterator if self::Iterator.class == Module
             
             attr_accessor :i
             alias_method :attr_i, :i
@@ -278,7 +278,7 @@ module Sun::Util
             define_method :next_ do
               if ((@cur).nil?)
                 if (!find_next)
-                  raise NoSuchElementException.new
+                  raise self.class::NoSuchElementException.new
                 end
               end
               s = @cur
@@ -288,7 +288,7 @@ module Sun::Util
             
             typesig { [] }
             define_method :remove do
-              raise UnsupportedOperationException.new
+              raise self.class::UnsupportedOperationException.new
             end
             
             typesig { [] }
@@ -332,10 +332,10 @@ module Sun::Util
         typesig { [] }
         define_method :iterator do
           abstract_set_class = self.class
-          return Class.new(Iterator.class == Class ? Iterator : Object) do
+          return Class.new(self.class::Iterator.class == Class ? self.class::Iterator : Object) do
             extend LocalClass
             include_class_members abstract_set_class
-            include Iterator if Iterator.class == Module
+            include self::Iterator if self::Iterator.class == Module
             
             attr_accessor :i
             alias_method :attr_i, :i
@@ -351,10 +351,10 @@ module Sun::Util
             typesig { [] }
             define_method :next_ do
               iterator_class = self.class
-              return Class.new(Map::Entry.class == Class ? Map::Entry : Object) do
+              return Class.new(self.class::Map::Entry.class == Class ? self.class::Map::Entry : Object) do
                 extend LocalClass
                 include_class_members iterator_class
-                include Map::Entry if Map::Entry.class == Module
+                include self::Map::Entry if self::Map::Entry.class == Module
                 
                 attr_accessor :k
                 alias_method :attr_k, :k
@@ -383,16 +383,16 @@ module Sun::Util
                   if ((ob).equal?(self))
                     return true
                   end
-                  if (!(ob.is_a?(Map::Entry)))
+                  if (!(ob.is_a?(self.class::Map::Entry)))
                     return false
                   end
                   that = ob
                   return (((self.get_key).nil? ? (that.get_key).nil? : (self.get_key == that.get_key)) && ((self.get_value).nil? ? (that.get_value).nil? : (self.get_value == that.get_value)))
                 end
                 
-                typesig { [V] }
+                typesig { [self::V] }
                 define_method :set_value do |v|
-                  raise UnsupportedOperationException.new
+                  raise self.class::UnsupportedOperationException.new
                 end
                 
                 typesig { [] }
@@ -409,7 +409,7 @@ module Sun::Util
             
             typesig { [] }
             define_method :remove do
-              raise UnsupportedOperationException.new
+              raise self.class::UnsupportedOperationException.new
             end
             
             typesig { [] }

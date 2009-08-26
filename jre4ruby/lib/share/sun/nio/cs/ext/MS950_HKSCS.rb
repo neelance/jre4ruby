@@ -87,11 +87,11 @@ module Sun::Nio::Cs::Ext
           return (!(c).equal?(REPLACE_CHAR)) ? c : @ms950dec.decode_double(byte1, byte2)
         end
         
-        typesig { [Charset] }
+        typesig { [self::Charset] }
         def initialize(cs)
           @ms950dec = nil
           super(cs)
-          @ms950dec = MS950::Decoder.new(cs)
+          @ms950dec = self.class::MS950::Decoder.new(cs)
         end
         
         private
@@ -116,11 +116,11 @@ module Sun::Nio::Cs::Ext
           return (!(r).equal?(0)) ? r : @ms950enc.encode_double(ch)
         end
         
-        typesig { [Charset] }
+        typesig { [self::Charset] }
         def initialize(cs)
           @ms950enc = nil
           super(cs)
-          @ms950enc = MS950::Encoder.new(cs)
+          @ms950enc = self.class::MS950::Encoder.new(cs)
         end
         
         private

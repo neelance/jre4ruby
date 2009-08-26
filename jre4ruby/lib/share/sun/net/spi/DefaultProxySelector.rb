@@ -148,7 +148,7 @@ module Sun::Net::Spi
         alias_method :attr_property=, :property=
         undef_method :property=
         
-        typesig { [String, String, RegexpPool] }
+        typesig { [self::String, self::String, self::RegexpPool] }
         def initialize(p, s, pool)
           @hosts_source = nil
           @hosts_pool = nil
@@ -314,13 +314,13 @@ module Sun::Net::Spi
                     nprop.attr_hosts_pool = nil
                   else
                     if (!(nphosts == nprop.attr_hosts_source))
-                      pool = RegexpPool.new
-                      st = StringTokenizer.new(nphosts, "|", false)
+                      pool = self.class::RegexpPool.new
+                      st = self.class::StringTokenizer.new(nphosts, "|", false)
                       begin
                         while (st.has_more_tokens)
                           pool.add(st.next_token.to_lower_case, Boolean::TRUE)
                         end
-                      rescue Sun::Misc::REException => ex
+                      rescue Sun::Misc::self.class::REException => ex
                       end
                       nprop.attr_hosts_pool = pool
                       nprop.attr_hosts_source = nphosts
@@ -360,9 +360,9 @@ module Sun::Net::Spi
               saddr = InetSocketAddress.create_unresolved(phost, pport)
               # Socks is *always* the last on the list.
               if ((j).equal?((Props[i].attr_length - 1)))
-                return Proxy.new(Proxy::Type::SOCKS, saddr)
+                return self.class::Proxy.new(Proxy::Type::SOCKS, saddr)
               else
-                return Proxy.new(Proxy::Type::HTTP, saddr)
+                return self.class::Proxy.new(Proxy::Type::HTTP, saddr)
               end
             end
             i += 1

@@ -137,7 +137,7 @@ module Java::Util::Concurrent
           @item = x
         end
         
-        typesig { [Object, Node] }
+        typesig { [Object, self::Node] }
         def initialize(x, n)
           @item = nil
           @next = nil
@@ -165,12 +165,12 @@ module Java::Util::Concurrent
           return @next
         end
         
-        typesig { [Node, Node] }
+        typesig { [self::Node, self::Node] }
         def cas_next(cmp, val)
           return self.class::NextUpdater.compare_and_set(self, cmp, val)
         end
         
-        typesig { [Node] }
+        typesig { [self::Node] }
         def set_next(val)
           self.class::NextUpdater.set(self, val)
         end
@@ -617,7 +617,7 @@ module Java::Util::Concurrent
         typesig { [] }
         def next_
           if ((@next_node).nil?)
-            raise NoSuchElementException.new
+            raise self.class::NoSuchElementException.new
           end
           return advance
         end
@@ -626,7 +626,7 @@ module Java::Util::Concurrent
         def remove
           l = @last_ret
           if ((l).nil?)
-            raise IllegalStateException.new
+            raise self.class::IllegalStateException.new
           end
           # rely on a future traversal to relink.
           l.set_item(nil)

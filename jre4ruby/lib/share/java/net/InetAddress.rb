@@ -825,13 +825,13 @@ module Java::Net
           end
         }
         
-        typesig { [Type] }
+        typesig { [self::Type] }
         # Create cache
         def initialize(type)
           @cache = nil
           @type = nil
           @type = type
-          @cache = LinkedHashMap.new
+          @cache = self.class::LinkedHashMap.new
         end
         
         typesig { [] }
@@ -856,7 +856,7 @@ module Java::Net
           if (!(policy).equal?(InetAddressCachePolicy::FOREVER))
             # As we iterate in insertion order we can
             # terminate when a non-expired entry is found.
-            expired = LinkedList.new
+            expired = self.class::LinkedList.new
             i = @cache.key_set.iterator
             now = System.current_time_millis
             while (i.has_next)
@@ -883,7 +883,7 @@ module Java::Net
           else
             expiration = System.current_time_millis + (policy * 1000)
           end
-          entry = CacheEntry.new(address, expiration)
+          entry = self.class::CacheEntry.new(address, expiration)
           @cache.put(host, entry)
           return self
         end
@@ -1007,7 +1007,7 @@ module Java::Net
                   if (provider_name.equals_ignore_case(RJava.cast_to_string(nsd.get_type) + "," + RJava.cast_to_string(nsd.get_provider_name)))
                     begin
                       return nsd.create_name_service
-                    rescue JavaException => e
+                    rescue self.class::JavaException => e
                       e.print_stack_trace
                       System.err.println("Cannot create name service:" + provider_name + ": " + RJava.cast_to_string(e))
                     end

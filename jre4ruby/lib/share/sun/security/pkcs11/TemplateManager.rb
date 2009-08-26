@@ -86,7 +86,7 @@ module Sun::Security::Pkcs11
         alias_method :attr_template=, :template=
         undef_method :template=
         
-        typesig { [TemplateKey, Template] }
+        typesig { [self::TemplateKey, self::Template] }
         def initialize(key, template)
           @key = nil
           @template = nil
@@ -197,7 +197,7 @@ module Sun::Security::Pkcs11
         alias_method :attr_key_algorithm=, :key_algorithm=
         undef_method :key_algorithm=
         
-        typesig { [String, ::Java::Long, ::Java::Long] }
+        typesig { [self::String, ::Java::Long, ::Java::Long] }
         def initialize(operation, key_type, key_algorithm)
           @operation = nil
           @key_type = 0
@@ -212,7 +212,7 @@ module Sun::Security::Pkcs11
           if ((self).equal?(obj))
             return true
           end
-          if ((obj.is_a?(TemplateKey)).equal?(false))
+          if ((obj.is_a?(self.class::TemplateKey)).equal?(false))
             return false
           end
           other = obj
@@ -225,7 +225,7 @@ module Sun::Security::Pkcs11
           return @operation.hash_code + RJava.cast_to_int(@key_type) + RJava.cast_to_int(@key_algorithm)
         end
         
-        typesig { [TemplateKey] }
+        typesig { [self::TemplateKey] }
         def applies_to(key)
           if ((@operation == O_ANY) || (@operation == key.attr_operation))
             if (((@key_type).equal?(PCKO_ANY)) || ((@key_type).equal?(key.attr_key_type)))
@@ -251,7 +251,7 @@ module Sun::Security::Pkcs11
         include_class_members TemplateManager
         
         class_module.module_eval {
-          const_set_lazy(:A0) { Array.typed(CK_ATTRIBUTE).new(0) { nil } }
+          const_set_lazy(:A0) { Array.typed(self.class::CK_ATTRIBUTE).new(0) { nil } }
           const_attr_reader  :A0
         }
         
@@ -267,28 +267,28 @@ module Sun::Security::Pkcs11
           @attributes = self.class::A0
         end
         
-        typesig { [Array.typed(CK_ATTRIBUTE)] }
+        typesig { [Array.typed(self::CK_ATTRIBUTE)] }
         def initialize(attributes)
           @attributes = nil
           @attributes = attributes
         end
         
-        typesig { [Template] }
+        typesig { [self::Template] }
         def add(template)
           @attributes = get_attributes(template.attr_attributes)
         end
         
-        typesig { [Array.typed(CK_ATTRIBUTE)] }
+        typesig { [Array.typed(self::CK_ATTRIBUTE)] }
         def get_attributes(attrs)
           return combine(@attributes, attrs)
         end
         
         class_module.module_eval {
-          typesig { [Array.typed(CK_ATTRIBUTE), Array.typed(CK_ATTRIBUTE)] }
+          typesig { [Array.typed(self::CK_ATTRIBUTE), Array.typed(self::CK_ATTRIBUTE)] }
           # Combine two sets of attributes. The second set has precedence
           # over the first and overrides its settings.
           def combine(attrs1, attrs2)
-            attrs = ArrayList.new
+            attrs = self.class::ArrayList.new
             attrs1.each do |attr|
               if (!(attr.attr_p_value).nil?)
                 attrs.add(attr)

@@ -557,7 +557,7 @@ module Sun::Security::Pkcs11
         alias_method :attr_token_id=, :token_id=
         undef_method :token_id=
         
-        typesig { [Token] }
+        typesig { [self::Token] }
         def initialize(token)
           @token_id = nil
           @token_id = token.get_token_id
@@ -573,7 +573,7 @@ module Sun::Security::Pkcs11
               end
             end
           end
-          raise NotSerializableException.new("Could not find token")
+          raise self.class::NotSerializableException.new("Could not find token")
         end
         
         private

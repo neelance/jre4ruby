@@ -423,8 +423,8 @@ module Java::Nio::Charset
                   return false
                 end
                 @next = @i.next_
-              rescue ServiceConfigurationError => sce
-                if (sce.get_cause.is_a?(SecurityException))
+              rescue self.class::ServiceConfigurationError => sce
+                if (sce.get_cause.is_a?(self.class::SecurityException))
                   # Ignore security exceptions
                   next
                 end
@@ -442,7 +442,7 @@ module Java::Nio::Charset
           typesig { [] }
           define_method :next_ do
             if (!get_next)
-              raise NoSuchElementException.new
+              raise self.class::NoSuchElementException.new
             end
             n = @next
             @next = nil
@@ -451,7 +451,7 @@ module Java::Nio::Charset
           
           typesig { [] }
           define_method :remove do
-            raise UnsupportedOperationException.new
+            raise self.class::UnsupportedOperationException.new
           end
           
           typesig { [] }
@@ -579,13 +579,13 @@ module Java::Nio::Charset
             begin
               epc = Class.for_name("sun.nio.cs.ext.ExtendedCharsets")
               self.attr_extended_provider = epc.new_instance
-            rescue ClassNotFoundException => x
+            rescue self.class::ClassNotFoundException => x
               # Extended charsets not available
               # (charsets.jar not present)
-            rescue InstantiationException => x
-              raise JavaError.new(x)
-            rescue IllegalAccessException => x
-              raise JavaError.new(x)
+            rescue self.class::InstantiationException => x
+              raise self.class::JavaError.new(x)
+            rescue self.class::IllegalAccessException => x
+              raise self.class::JavaError.new(x)
             end
             return nil
           end
@@ -736,7 +736,7 @@ module Java::Nio::Charset
           
           typesig { [] }
           define_method :run do
-            m = TreeMap.new(ASCIICaseInsensitiveComparator::CASE_INSENSITIVE_ORDER)
+            m = self.class::TreeMap.new(ASCIICaseInsensitiveComparator::CASE_INSENSITIVE_ORDER)
             put(self.attr_standard_provider.charsets, m)
             i = providers
             while i.has_next

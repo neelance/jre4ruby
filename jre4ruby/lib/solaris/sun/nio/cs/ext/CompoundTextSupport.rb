@@ -72,7 +72,7 @@ module Sun::Nio::Cs::Ext
           @esc_sequence = nil
           @encoding = nil
           if ((esc_sequence).nil?)
-            raise NullPointerException.new
+            raise self.class::NullPointerException.new
           end
           @esc_sequence = esc_sequence
           @encoding = encoding
@@ -104,7 +104,7 @@ module Sun::Nio::Cs::Ext
           if ((self).equal?(obj))
             return true
           end
-          if (!(obj.is_a?(ControlSequence)))
+          if (!(obj.is_a?(self.class::ControlSequence)))
             return false
           end
           rhs = obj
@@ -140,16 +140,16 @@ module Sun::Nio::Cs::Ext
           return @hash
         end
         
-        typesig { [ControlSequence] }
+        typesig { [self::ControlSequence] }
         def concatenate(rhs)
           if (!(@encoding).nil?)
-            raise IllegalArgumentException.new("cannot concatenate to a non-standard charset escape " + "sequence")
+            raise self.class::IllegalArgumentException.new("cannot concatenate to a non-standard charset escape " + "sequence")
           end
           len = @esc_sequence.attr_length + rhs.attr_esc_sequence.attr_length
           new_esc_sequence = Array.typed(::Java::Byte).new(len) { 0 }
           System.arraycopy(@esc_sequence, 0, new_esc_sequence, 0, @esc_sequence.attr_length)
           System.arraycopy(rhs.attr_esc_sequence, 0, new_esc_sequence, @esc_sequence.attr_length, rhs.attr_esc_sequence.attr_length)
-          return ControlSequence.new(new_esc_sequence, rhs.attr_encoding)
+          return self.class::ControlSequence.new(new_esc_sequence, rhs.attr_encoding)
         end
         
         private

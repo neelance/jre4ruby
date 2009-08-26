@@ -456,7 +456,7 @@ module Sun::Security::Pkcs11
           include PrivateKey
         }
         
-        typesig { [Session, ::Java::Long, String, ::Java::Int, Array.typed(CK_ATTRIBUTE)] }
+        typesig { [self::Session, ::Java::Long, self::String, ::Java::Int, Array.typed(self::CK_ATTRIBUTE)] }
         def initialize(session, key_id, algorithm, key_length, attributes)
           super(PRIVATE, session, key_id, algorithm, key_length, attributes)
         end
@@ -490,7 +490,7 @@ module Sun::Security::Pkcs11
         alias_method :attr_encoded=, :encoded=
         undef_method :encoded=
         
-        typesig { [Session, ::Java::Long, String, ::Java::Int, Array.typed(CK_ATTRIBUTE)] }
+        typesig { [self::Session, ::Java::Long, self::String, ::Java::Int, Array.typed(self::CK_ATTRIBUTE)] }
         def initialize(session, key_id, algorithm, key_length, attributes)
           @encoded = nil
           super(SECRET, session, key_id, algorithm, key_length, attributes)
@@ -520,11 +520,11 @@ module Sun::Security::Pkcs11
                 temp_session = nil
                 begin
                   temp_session = self.attr_token.get_op_session
-                  attributes = Array.typed(CK_ATTRIBUTE).new([CK_ATTRIBUTE.new(CKA_VALUE), ])
+                  attributes = Array.typed(self.class::CK_ATTRIBUTE).new([self.class::CK_ATTRIBUTE.new(CKA_VALUE), ])
                   self.attr_token.attr_p11._c_get_attribute_value(temp_session.id, self.attr_key_id, attributes)
                   b = attributes[0].get_byte_array
-                rescue PKCS11Exception => e
-                  raise ProviderException.new(e)
+                rescue self.class::PKCS11Exception => e
+                  raise self.class::ProviderException.new(e)
                 ensure
                   self.attr_token.release_session(temp_session)
                 end
@@ -557,7 +557,7 @@ module Sun::Security::Pkcs11
         alias_method :attr_minor_version=, :minor_version=
         undef_method :minor_version=
         
-        typesig { [Session, ::Java::Long, String, ::Java::Int, Array.typed(CK_ATTRIBUTE), ::Java::Int, ::Java::Int] }
+        typesig { [self::Session, ::Java::Long, self::String, ::Java::Int, Array.typed(self::CK_ATTRIBUTE), ::Java::Int, ::Java::Int] }
         def initialize(session, key_id, algorithm, key_length, attributes, major, minor)
           @major_version = 0
           @minor_version = 0
@@ -641,7 +641,7 @@ module Sun::Security::Pkcs11
         alias_method :attr_encoded=, :encoded=
         undef_method :encoded=
         
-        typesig { [Session, ::Java::Long, String, ::Java::Int, Array.typed(CK_ATTRIBUTE)] }
+        typesig { [self::Session, ::Java::Long, self::String, ::Java::Int, Array.typed(self::CK_ATTRIBUTE)] }
         def initialize(session, key_id, algorithm, key_length, attributes)
           @n = nil
           @e = nil
@@ -662,7 +662,7 @@ module Sun::Security::Pkcs11
             if (!(@n).nil?)
               return
             end
-            attributes = Array.typed(CK_ATTRIBUTE).new([CK_ATTRIBUTE.new(CKA_MODULUS), CK_ATTRIBUTE.new(CKA_PUBLIC_EXPONENT), CK_ATTRIBUTE.new(CKA_PRIVATE_EXPONENT), CK_ATTRIBUTE.new(CKA_PRIME_1), CK_ATTRIBUTE.new(CKA_PRIME_2), CK_ATTRIBUTE.new(CKA_EXPONENT_1), CK_ATTRIBUTE.new(CKA_EXPONENT_2), CK_ATTRIBUTE.new(CKA_COEFFICIENT), ])
+            attributes = Array.typed(self.class::CK_ATTRIBUTE).new([self.class::CK_ATTRIBUTE.new(CKA_MODULUS), self.class::CK_ATTRIBUTE.new(CKA_PUBLIC_EXPONENT), self.class::CK_ATTRIBUTE.new(CKA_PRIVATE_EXPONENT), self.class::CK_ATTRIBUTE.new(CKA_PRIME_1), self.class::CK_ATTRIBUTE.new(CKA_PRIME_2), self.class::CK_ATTRIBUTE.new(CKA_EXPONENT_1), self.class::CK_ATTRIBUTE.new(CKA_EXPONENT_2), self.class::CK_ATTRIBUTE.new(CKA_COEFFICIENT), ])
             fetch_attributes(attributes)
             @n = attributes[0].get_big_integer
             @e = attributes[1].get_big_integer
@@ -693,8 +693,8 @@ module Sun::Security::Pkcs11
                 factory = KeyFactory.get_instance("RSA", P11Util.get_sun_rsa_sign_provider)
                 new_key = factory.translate_key(self)
                 @encoded = new_key.get_encoded
-              rescue GeneralSecurityException => e
-                raise ProviderException.new(e)
+              rescue self.class::GeneralSecurityException => e
+                raise self.class::ProviderException.new(e)
               end
             end
             return @encoded
@@ -752,7 +752,7 @@ module Sun::Security::Pkcs11
         typesig { [] }
         def to_s
           fetch_values
-          sb = StringBuilder.new(super)
+          sb = self.class::StringBuilder.new(super)
           sb.append("\n  modulus:          ")
           sb.append(@n)
           sb.append("\n  public exponent:  ")
@@ -801,7 +801,7 @@ module Sun::Security::Pkcs11
         alias_method :attr_encoded=, :encoded=
         undef_method :encoded=
         
-        typesig { [Session, ::Java::Long, String, ::Java::Int, Array.typed(CK_ATTRIBUTE)] }
+        typesig { [self::Session, ::Java::Long, self::String, ::Java::Int, Array.typed(self::CK_ATTRIBUTE)] }
         def initialize(session, key_id, algorithm, key_length, attributes)
           @n = nil
           @d = nil
@@ -816,7 +816,7 @@ module Sun::Security::Pkcs11
             if (!(@n).nil?)
               return
             end
-            attributes = Array.typed(CK_ATTRIBUTE).new([CK_ATTRIBUTE.new(CKA_MODULUS), CK_ATTRIBUTE.new(CKA_PRIVATE_EXPONENT), ])
+            attributes = Array.typed(self.class::CK_ATTRIBUTE).new([self.class::CK_ATTRIBUTE.new(CKA_MODULUS), self.class::CK_ATTRIBUTE.new(CKA_PRIVATE_EXPONENT), ])
             fetch_attributes(attributes)
             @n = attributes[0].get_big_integer
             @d = attributes[1].get_big_integer
@@ -841,8 +841,8 @@ module Sun::Security::Pkcs11
                 factory = KeyFactory.get_instance("RSA", P11Util.get_sun_rsa_sign_provider)
                 new_key = factory.translate_key(self)
                 @encoded = new_key.get_encoded
-              rescue GeneralSecurityException => e
-                raise ProviderException.new(e)
+              rescue self.class::GeneralSecurityException => e
+                raise self.class::ProviderException.new(e)
               end
             end
             return @encoded
@@ -864,7 +864,7 @@ module Sun::Security::Pkcs11
         typesig { [] }
         def to_s
           fetch_values
-          sb = StringBuilder.new(super)
+          sb = self.class::StringBuilder.new(super)
           sb.append("\n  modulus:          ")
           sb.append(@n)
           sb.append("\n  private exponent: ")
@@ -900,7 +900,7 @@ module Sun::Security::Pkcs11
         alias_method :attr_encoded=, :encoded=
         undef_method :encoded=
         
-        typesig { [Session, ::Java::Long, String, ::Java::Int, Array.typed(CK_ATTRIBUTE)] }
+        typesig { [self::Session, ::Java::Long, self::String, ::Java::Int, Array.typed(self::CK_ATTRIBUTE)] }
         def initialize(session, key_id, algorithm, key_length, attributes)
           @n = nil
           @e = nil
@@ -915,7 +915,7 @@ module Sun::Security::Pkcs11
             if (!(@n).nil?)
               return
             end
-            attributes = Array.typed(CK_ATTRIBUTE).new([CK_ATTRIBUTE.new(CKA_MODULUS), CK_ATTRIBUTE.new(CKA_PUBLIC_EXPONENT), ])
+            attributes = Array.typed(self.class::CK_ATTRIBUTE).new([self.class::CK_ATTRIBUTE.new(CKA_MODULUS), self.class::CK_ATTRIBUTE.new(CKA_PUBLIC_EXPONENT), ])
             fetch_attributes(attributes)
             @n = attributes[0].get_big_integer
             @e = attributes[1].get_big_integer
@@ -935,9 +935,9 @@ module Sun::Security::Pkcs11
             if ((@encoded).nil?)
               fetch_values
               begin
-                @encoded = RSAPublicKeyImpl.new(@n, @e).get_encoded
-              rescue InvalidKeyException => e
-                raise ProviderException.new(e)
+                @encoded = self.class::RSAPublicKeyImpl.new(@n, @e).get_encoded
+              rescue self.class::InvalidKeyException => e
+                raise self.class::ProviderException.new(e)
               end
             end
             return @encoded
@@ -990,7 +990,7 @@ module Sun::Security::Pkcs11
         alias_method :attr_encoded=, :encoded=
         undef_method :encoded=
         
-        typesig { [Session, ::Java::Long, String, ::Java::Int, Array.typed(CK_ATTRIBUTE)] }
+        typesig { [self::Session, ::Java::Long, self::String, ::Java::Int, Array.typed(self::CK_ATTRIBUTE)] }
         def initialize(session, key_id, algorithm, key_length, attributes)
           @y = nil
           @params = nil
@@ -1005,10 +1005,10 @@ module Sun::Security::Pkcs11
             if (!(@y).nil?)
               return
             end
-            attributes = Array.typed(CK_ATTRIBUTE).new([CK_ATTRIBUTE.new(CKA_VALUE), CK_ATTRIBUTE.new(CKA_PRIME), CK_ATTRIBUTE.new(CKA_SUBPRIME), CK_ATTRIBUTE.new(CKA_BASE), ])
+            attributes = Array.typed(self.class::CK_ATTRIBUTE).new([self.class::CK_ATTRIBUTE.new(CKA_VALUE), self.class::CK_ATTRIBUTE.new(CKA_PRIME), self.class::CK_ATTRIBUTE.new(CKA_SUBPRIME), self.class::CK_ATTRIBUTE.new(CKA_BASE), ])
             fetch_attributes(attributes)
             @y = attributes[0].get_big_integer
-            @params = DSAParameterSpec.new(attributes[1].get_big_integer, attributes[2].get_big_integer, attributes[3].get_big_integer)
+            @params = self.class::DSAParameterSpec.new(attributes[1].get_big_integer, attributes[2].get_big_integer, attributes[3].get_big_integer)
           end
         end
         
@@ -1025,10 +1025,10 @@ module Sun::Security::Pkcs11
             if ((@encoded).nil?)
               fetch_values
               begin
-                key = Sun::Security::Provider::DSAPublicKey.new(@y, @params.get_p, @params.get_q, @params.get_g)
+                key = Sun::Security::Provider::self.class::DSAPublicKey.new(@y, @params.get_p, @params.get_q, @params.get_g)
                 @encoded = key.get_encoded
-              rescue InvalidKeyException => e
-                raise ProviderException.new(e)
+              rescue self.class::InvalidKeyException => e
+                raise self.class::ProviderException.new(e)
               end
             end
             return @encoded
@@ -1081,7 +1081,7 @@ module Sun::Security::Pkcs11
         alias_method :attr_encoded=, :encoded=
         undef_method :encoded=
         
-        typesig { [Session, ::Java::Long, String, ::Java::Int, Array.typed(CK_ATTRIBUTE)] }
+        typesig { [self::Session, ::Java::Long, self::String, ::Java::Int, Array.typed(self::CK_ATTRIBUTE)] }
         def initialize(session, key_id, algorithm, key_length, attributes)
           @x = nil
           @params = nil
@@ -1096,10 +1096,10 @@ module Sun::Security::Pkcs11
             if (!(@x).nil?)
               return
             end
-            attributes = Array.typed(CK_ATTRIBUTE).new([CK_ATTRIBUTE.new(CKA_VALUE), CK_ATTRIBUTE.new(CKA_PRIME), CK_ATTRIBUTE.new(CKA_SUBPRIME), CK_ATTRIBUTE.new(CKA_BASE), ])
+            attributes = Array.typed(self.class::CK_ATTRIBUTE).new([self.class::CK_ATTRIBUTE.new(CKA_VALUE), self.class::CK_ATTRIBUTE.new(CKA_PRIME), self.class::CK_ATTRIBUTE.new(CKA_SUBPRIME), self.class::CK_ATTRIBUTE.new(CKA_BASE), ])
             fetch_attributes(attributes)
             @x = attributes[0].get_big_integer
-            @params = DSAParameterSpec.new(attributes[1].get_big_integer, attributes[2].get_big_integer, attributes[3].get_big_integer)
+            @params = self.class::DSAParameterSpec.new(attributes[1].get_big_integer, attributes[2].get_big_integer, attributes[3].get_big_integer)
           end
         end
         
@@ -1116,10 +1116,10 @@ module Sun::Security::Pkcs11
             if ((@encoded).nil?)
               fetch_values
               begin
-                key = Sun::Security::Provider::DSAPrivateKey.new(@x, @params.get_p, @params.get_q, @params.get_g)
+                key = Sun::Security::Provider::self.class::DSAPrivateKey.new(@x, @params.get_p, @params.get_q, @params.get_g)
                 @encoded = key.get_encoded
-              rescue InvalidKeyException => e
-                raise ProviderException.new(e)
+              rescue self.class::InvalidKeyException => e
+                raise self.class::ProviderException.new(e)
               end
             end
             return @encoded
@@ -1172,7 +1172,7 @@ module Sun::Security::Pkcs11
         alias_method :attr_encoded=, :encoded=
         undef_method :encoded=
         
-        typesig { [Session, ::Java::Long, String, ::Java::Int, Array.typed(CK_ATTRIBUTE)] }
+        typesig { [self::Session, ::Java::Long, self::String, ::Java::Int, Array.typed(self::CK_ATTRIBUTE)] }
         def initialize(session, key_id, algorithm, key_length, attributes)
           @x = nil
           @params = nil
@@ -1187,10 +1187,10 @@ module Sun::Security::Pkcs11
             if (!(@x).nil?)
               return
             end
-            attributes = Array.typed(CK_ATTRIBUTE).new([CK_ATTRIBUTE.new(CKA_VALUE), CK_ATTRIBUTE.new(CKA_PRIME), CK_ATTRIBUTE.new(CKA_BASE), ])
+            attributes = Array.typed(self.class::CK_ATTRIBUTE).new([self.class::CK_ATTRIBUTE.new(CKA_VALUE), self.class::CK_ATTRIBUTE.new(CKA_PRIME), self.class::CK_ATTRIBUTE.new(CKA_BASE), ])
             fetch_attributes(attributes)
             @x = attributes[0].get_big_integer
-            @params = DHParameterSpec.new(attributes[1].get_big_integer, attributes[2].get_big_integer)
+            @params = self.class::DHParameterSpec.new(attributes[1].get_big_integer, attributes[2].get_big_integer)
           end
         end
         
@@ -1207,12 +1207,12 @@ module Sun::Security::Pkcs11
             if ((@encoded).nil?)
               fetch_values
               begin
-                spec = DHPrivateKeySpec.new(@x, @params.get_p, @params.get_g)
+                spec = self.class::DHPrivateKeySpec.new(@x, @params.get_p, @params.get_g)
                 kf = KeyFactory.get_instance("DH", P11Util.get_sun_jce_provider)
                 key = kf.generate_private(spec)
                 @encoded = key.get_encoded
-              rescue GeneralSecurityException => e
-                raise ProviderException.new(e)
+              rescue self.class::GeneralSecurityException => e
+                raise self.class::ProviderException.new(e)
               end
             end
             return @encoded
@@ -1265,7 +1265,7 @@ module Sun::Security::Pkcs11
         alias_method :attr_encoded=, :encoded=
         undef_method :encoded=
         
-        typesig { [Session, ::Java::Long, String, ::Java::Int, Array.typed(CK_ATTRIBUTE)] }
+        typesig { [self::Session, ::Java::Long, self::String, ::Java::Int, Array.typed(self::CK_ATTRIBUTE)] }
         def initialize(session, key_id, algorithm, key_length, attributes)
           @y = nil
           @params = nil
@@ -1280,10 +1280,10 @@ module Sun::Security::Pkcs11
             if (!(@y).nil?)
               return
             end
-            attributes = Array.typed(CK_ATTRIBUTE).new([CK_ATTRIBUTE.new(CKA_VALUE), CK_ATTRIBUTE.new(CKA_PRIME), CK_ATTRIBUTE.new(CKA_BASE), ])
+            attributes = Array.typed(self.class::CK_ATTRIBUTE).new([self.class::CK_ATTRIBUTE.new(CKA_VALUE), self.class::CK_ATTRIBUTE.new(CKA_PRIME), self.class::CK_ATTRIBUTE.new(CKA_BASE), ])
             fetch_attributes(attributes)
             @y = attributes[0].get_big_integer
-            @params = DHParameterSpec.new(attributes[1].get_big_integer, attributes[2].get_big_integer)
+            @params = self.class::DHParameterSpec.new(attributes[1].get_big_integer, attributes[2].get_big_integer)
           end
         end
         
@@ -1300,12 +1300,12 @@ module Sun::Security::Pkcs11
             if ((@encoded).nil?)
               fetch_values
               begin
-                spec = DHPublicKeySpec.new(@y, @params.get_p, @params.get_g)
+                spec = self.class::DHPublicKeySpec.new(@y, @params.get_p, @params.get_g)
                 kf = KeyFactory.get_instance("DH", P11Util.get_sun_jce_provider)
                 key = kf.generate_public(spec)
                 @encoded = key.get_encoded
-              rescue GeneralSecurityException => e
-                raise ProviderException.new(e)
+              rescue self.class::GeneralSecurityException => e
+                raise self.class::ProviderException.new(e)
               end
             end
             return @encoded
@@ -1358,7 +1358,7 @@ module Sun::Security::Pkcs11
         alias_method :attr_encoded=, :encoded=
         undef_method :encoded=
         
-        typesig { [Session, ::Java::Long, String, ::Java::Int, Array.typed(CK_ATTRIBUTE)] }
+        typesig { [self::Session, ::Java::Long, self::String, ::Java::Int, Array.typed(self::CK_ATTRIBUTE)] }
         def initialize(session, key_id, algorithm, key_length, attributes)
           @s = nil
           @params = nil
@@ -1373,13 +1373,13 @@ module Sun::Security::Pkcs11
             if (!(@s).nil?)
               return
             end
-            attributes = Array.typed(CK_ATTRIBUTE).new([CK_ATTRIBUTE.new(CKA_VALUE), CK_ATTRIBUTE.new(CKA_EC_PARAMS, @params), ])
+            attributes = Array.typed(self.class::CK_ATTRIBUTE).new([self.class::CK_ATTRIBUTE.new(CKA_VALUE), self.class::CK_ATTRIBUTE.new(CKA_EC_PARAMS, @params), ])
             fetch_attributes(attributes)
             @s = attributes[0].get_big_integer
             begin
               @params = P11ECKeyFactory.decode_parameters(attributes[1].get_byte_array)
-            rescue JavaException => e
-              raise RuntimeException.new("Could not parse key values", e)
+            rescue self.class::JavaException => e
+              raise self.class::RuntimeException.new("Could not parse key values", e)
             end
           end
         end
@@ -1397,10 +1397,10 @@ module Sun::Security::Pkcs11
             if ((@encoded).nil?)
               fetch_values
               begin
-                key = Sun::Security::Ec::ECPrivateKeyImpl.new(@s, @params)
+                key = Sun::Security::Ec::self.class::ECPrivateKeyImpl.new(@s, @params)
                 @encoded = key.get_encoded
-              rescue InvalidKeyException => e
-                raise ProviderException.new(e)
+              rescue self.class::InvalidKeyException => e
+                raise self.class::ProviderException.new(e)
               end
             end
             return @encoded
@@ -1453,7 +1453,7 @@ module Sun::Security::Pkcs11
         alias_method :attr_encoded=, :encoded=
         undef_method :encoded=
         
-        typesig { [Session, ::Java::Long, String, ::Java::Int, Array.typed(CK_ATTRIBUTE)] }
+        typesig { [self::Session, ::Java::Long, self::String, ::Java::Int, Array.typed(self::CK_ATTRIBUTE)] }
         def initialize(session, key_id, algorithm, key_length, attributes)
           @w = nil
           @params = nil
@@ -1468,13 +1468,13 @@ module Sun::Security::Pkcs11
             if (!(@w).nil?)
               return
             end
-            attributes = Array.typed(CK_ATTRIBUTE).new([CK_ATTRIBUTE.new(CKA_EC_POINT), CK_ATTRIBUTE.new(CKA_EC_PARAMS), ])
+            attributes = Array.typed(self.class::CK_ATTRIBUTE).new([self.class::CK_ATTRIBUTE.new(CKA_EC_POINT), self.class::CK_ATTRIBUTE.new(CKA_EC_PARAMS), ])
             fetch_attributes(attributes)
             begin
               @params = P11ECKeyFactory.decode_parameters(attributes[1].get_byte_array)
               @w = P11ECKeyFactory.decode_point(attributes[0].get_byte_array, @params.get_curve)
-            rescue JavaException => e
-              raise RuntimeException.new("Could not parse key values", e)
+            rescue self.class::JavaException => e
+              raise self.class::RuntimeException.new("Could not parse key values", e)
             end
           end
         end
@@ -1492,10 +1492,10 @@ module Sun::Security::Pkcs11
             if ((@encoded).nil?)
               fetch_values
               begin
-                key = Sun::Security::Ec::ECPublicKeyImpl.new(@w, @params)
+                key = Sun::Security::Ec::self.class::ECPublicKeyImpl.new(@w, @params)
                 @encoded = key.get_encoded
-              rescue InvalidKeyException => e
-                raise ProviderException.new(e)
+              rescue self.class::InvalidKeyException => e
+                raise self.class::ProviderException.new(e)
               end
             end
             return @encoded

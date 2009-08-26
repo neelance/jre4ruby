@@ -195,14 +195,14 @@ module Sun::Security::Provider
               end
               md.update(InetAddress.get_local_host.to_s.get_bytes)
               # The temporary dir
-              f = JavaFile.new(p.get_property("java.io.tmpdir"))
+              f = self.class::JavaFile.new(p.get_property("java.io.tmpdir"))
               sa = f.list
               i = 0
               while i < sa.attr_length
                 md.update(sa[i].get_bytes)
                 i += 1
               end
-            rescue JavaException => ex
+            rescue self.class::JavaException => ex
               md.update(ex.hash_code)
             end
             # get Runtime memory stats
@@ -297,14 +297,14 @@ module Sun::Security::Provider
           digest = nil
           begin
             digest = MessageDigest.get_instance("SHA")
-          rescue NoSuchAlgorithmException => e
-            raise InternalError.new("internal error: SHA-1 not available.")
+          rescue self.class::NoSuchAlgorithmException => e
+            raise self.class::InternalError.new("internal error: SHA-1 not available.")
           end
-          finalsg = Array.typed(JavaThreadGroup).new(1) { nil }
-          t = Java::Security::AccessController.do_privileged(Class.new(Java::Security::PrivilegedAction.class == Class ? Java::Security::PrivilegedAction : Object) do
+          finalsg = Array.typed(self.class::JavaThreadGroup).new(1) { nil }
+          t = Java::Security::AccessController.do_privileged(Class.new(Java::Security::self.class::PrivilegedAction.class == Class ? Java::Security::self.class::PrivilegedAction : Object) do
             extend LocalClass
             include_class_members ThreadedSeedGenerator
-            include Java::Security::PrivilegedAction if Java::Security::PrivilegedAction.class == Module
+            include Java::Security::self::PrivilegedAction if Java::Security::self::PrivilegedAction.class == Module
             
             typesig { [] }
             define_method :run do
@@ -313,8 +313,8 @@ module Sun::Security::Provider
               while (!((parent = group.get_parent)).nil?)
                 group = parent
               end
-              finalsg[0] = JavaThreadGroup.new(group, "SeedGenerator ThreadGroup")
-              new_t = JavaThread.new(finalsg[0], @local_class_parent, "SeedGenerator Thread")
+              finalsg[0] = self.class::JavaThreadGroup.new(group, "SeedGenerator ThreadGroup")
+              new_t = self.class::JavaThread.new(finalsg[0], @local_class_parent, "SeedGenerator Thread")
               new_t.set_priority(JavaThread::MIN_PRIORITY)
               new_t.set_daemon(true)
               return new_t
@@ -352,11 +352,11 @@ module Sun::Security::Provider
               while (counter < 64000) && (quanta < 6)
                 # Start some noisy threads
                 begin
-                  bt = BogusThread.new
-                  t = JavaThread.new(@seed_group, bt, "SeedGenerator Thread")
+                  bt = self.class::BogusThread.new
+                  t = self.class::JavaThread.new(@seed_group, bt, "SeedGenerator Thread")
                   t.start
-                rescue JavaException => e
-                  raise InternalError.new("internal error: " + "SeedGenerator thread creation error.")
+                rescue self.class::JavaException => e
+                  raise self.class::InternalError.new("internal error: " + "SeedGenerator thread creation error.")
                 end
                 # We wait 250milli quanta, so the minimum wait time
                 # cannot be under 250milli.
@@ -386,8 +386,8 @@ module Sun::Security::Provider
                 notify_all
               end
             end
-          rescue JavaException => e
-            raise InternalError.new("internal error: " + "SeedGenerator thread generated an exception.")
+          rescue self.class::JavaException => e
+            raise self.class::InternalError.new("internal error: " + "SeedGenerator thread generated an exception.")
           end
         end
         
@@ -401,9 +401,9 @@ module Sun::Security::Provider
                 wait
               end
             end
-          rescue JavaException => e
+          rescue self.class::JavaException => e
             if (@count <= 0)
-              raise InternalError.new("internal error: " + "SeedGenerator thread generated an exception.")
+              raise self.class::InternalError.new("internal error: " + "SeedGenerator thread generated an exception.")
             end
           end
           synchronized((self)) do
@@ -443,7 +443,7 @@ module Sun::Security::Provider
           # At least one instance of this class is generated for every seed byte.
           const_set_lazy(:BogusThread) { Class.new do
             include_class_members ThreadedSeedGenerator
-            include Runnable
+            include self.class::Runnable
             
             typesig { [] }
             def run
@@ -454,7 +454,7 @@ module Sun::Security::Provider
                   i += 1
                 end
                 # System.gc();
-              rescue JavaException => e
+              rescue self.class::JavaException => e
               end
             end
             
@@ -486,7 +486,7 @@ module Sun::Security::Provider
         alias_method :attr_dev_random=, :dev_random=
         undef_method :dev_random=
         
-        typesig { [String] }
+        typesig { [self::String] }
         # The constructor is only called once to construct the one
         # instance we actually use. It opens the entropy gathering device
         # which will supply the randomness.
@@ -495,7 +495,7 @@ module Sun::Security::Provider
           @dev_random = nil
           super()
           if ((egdurl).nil?)
-            raise IOException.new("No random source specified")
+            raise self.class::IOException.new("No random source specified")
           end
           @device_name = egdurl
           init
@@ -508,17 +508,17 @@ module Sun::Security::Provider
         
         typesig { [] }
         def init
-          device = URL.new(@device_name)
-          @dev_random = Java::Security::AccessController.do_privileged(Class.new(Java::Security::PrivilegedAction.class == Class ? Java::Security::PrivilegedAction : Object) do
+          device = self.class::URL.new(@device_name)
+          @dev_random = Java::Security::AccessController.do_privileged(Class.new(Java::Security::self.class::PrivilegedAction.class == Class ? Java::Security::self.class::PrivilegedAction : Object) do
             extend LocalClass
             include_class_members URLSeedGenerator
-            include Java::Security::PrivilegedAction if Java::Security::PrivilegedAction.class == Module
+            include Java::Security::self::PrivilegedAction if Java::Security::self::PrivilegedAction.class == Module
             
             typesig { [] }
             define_method :run do
               begin
-                return BufferedInputStream.new(device.open_stream)
-              rescue IOException => ioe
+                return self.class::BufferedInputStream.new(device.open_stream)
+              rescue self.class::IOException => ioe
                 return nil
               end
             end
@@ -532,7 +532,7 @@ module Sun::Security::Provider
             alias_method :initialize_anonymous, :initialize
           end.new_local(self))
           if ((@dev_random).nil?)
-            raise IOException.new("failed to open " + RJava.cast_to_string(device))
+            raise self.class::IOException.new("failed to open " + RJava.cast_to_string(device))
           end
         end
         
@@ -542,16 +542,16 @@ module Sun::Security::Provider
           stat = 0
           begin
             stat = @dev_random.read(b, 0, b.attr_length)
-          rescue IOException => ioe
-            raise InternalError.new("URLSeedGenerator " + @device_name + " generated exception: " + RJava.cast_to_string(ioe.get_message))
+          rescue self.class::IOException => ioe
+            raise self.class::InternalError.new("URLSeedGenerator " + @device_name + " generated exception: " + RJava.cast_to_string(ioe.get_message))
           end
           if ((stat).equal?(b.attr_length))
             return b[0]
           else
             if ((stat).equal?(-1))
-              raise InternalError.new("URLSeedGenerator " + @device_name + " reached end of file")
+              raise self.class::InternalError.new("URLSeedGenerator " + @device_name + " reached end of file")
             else
-              raise InternalError.new("URLSeedGenerator " + @device_name + " failed read")
+              raise self.class::InternalError.new("URLSeedGenerator " + @device_name + " failed read")
             end
           end
         end

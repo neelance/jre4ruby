@@ -140,7 +140,7 @@ module Sun::Net::Www::Protocol::Http
           alias_method :attr_random=, :random=
           
           when_class_loaded do
-            self.attr_random = Random.new
+            self.attr_random = self.class::Random.new
           end
         }
         
@@ -213,17 +213,17 @@ module Sun::Net::Www::Protocol::Http
               cc[i * 2 + 1] = RJava.cast_to_char((Character.new(?A.ord) + x % 16))
               i += 1
             end
-            @cnonce = RJava.cast_to_string(String.new(cc, 0, self.class::Cnoncelen))
+            @cnonce = RJava.cast_to_string(self.class::String.new(cc, 0, self.class::Cnoncelen))
             @cnonce_count = 0
             @redo_cached_ha1 = true
           end
         end
         
-        typesig { [String] }
+        typesig { [self::String] }
         def set_qop(qop)
           synchronized(self) do
             if (!(qop).nil?)
-              st = StringTokenizer.new(qop, " ")
+              st = self.class::StringTokenizer.new(qop, " ")
               while (st.has_more_tokens)
                 if (st.next_token.equals_ignore_case("auth"))
                   @server_qop = true
@@ -242,7 +242,7 @@ module Sun::Net::Www::Protocol::Http
           end
         end
         
-        typesig { [String] }
+        typesig { [self::String] }
         def set_opaque(s)
           synchronized(self) do
             @opaque = s
@@ -256,7 +256,7 @@ module Sun::Net::Www::Protocol::Http
           end
         end
         
-        typesig { [String] }
+        typesig { [self::String] }
         def set_nonce(s)
           synchronized(self) do
             if (!(s == @nonce))
@@ -278,7 +278,7 @@ module Sun::Net::Www::Protocol::Http
           end
         end
         
-        typesig { [String] }
+        typesig { [self::String] }
         def set_cached_ha1(s)
           synchronized(self) do
             @cached_ha1 = s
@@ -293,7 +293,7 @@ module Sun::Net::Www::Protocol::Http
           end
         end
         
-        typesig { [String] }
+        typesig { [self::String] }
         def set_algorithm(s)
           synchronized(self) do
             @algorithm = s

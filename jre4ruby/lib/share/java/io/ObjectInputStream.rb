@@ -241,11 +241,11 @@ module Java::Io
         
         class_module.module_eval {
           # cache of subclass security audit results
-          const_set_lazy(:SubclassAudits) { ConcurrentHashMap.new }
+          const_set_lazy(:SubclassAudits) { self.class::ConcurrentHashMap.new }
           const_attr_reader  :SubclassAudits
           
           # queue for WeakReferences to audited subclasses
-          const_set_lazy(:SubclassAuditsQueue) { ReferenceQueue.new }
+          const_set_lazy(:SubclassAuditsQueue) { self.class::ReferenceQueue.new }
           const_attr_reader  :SubclassAuditsQueue
         }
         
@@ -1115,7 +1115,7 @@ module Java::Io
           raise NotImplementedError
         end
         
-        typesig { [String] }
+        typesig { [self::String] }
         # Return true if the named field is defaulted and has no value in this
         # stream.
         # 
@@ -1129,7 +1129,7 @@ module Java::Io
           raise NotImplementedError
         end
         
-        typesig { [String, ::Java::Boolean] }
+        typesig { [self::String, ::Java::Boolean] }
         # Get the value of the named boolean field from the persistent field.
         # 
         # @param  name the name of the field
@@ -1144,7 +1144,7 @@ module Java::Io
           raise NotImplementedError
         end
         
-        typesig { [String, ::Java::Byte] }
+        typesig { [self::String, ::Java::Byte] }
         # Get the value of the named byte field from the persistent field.
         # 
         # @param  name the name of the field
@@ -1159,7 +1159,7 @@ module Java::Io
           raise NotImplementedError
         end
         
-        typesig { [String, ::Java::Char] }
+        typesig { [self::String, ::Java::Char] }
         # Get the value of the named char field from the persistent field.
         # 
         # @param  name the name of the field
@@ -1174,7 +1174,7 @@ module Java::Io
           raise NotImplementedError
         end
         
-        typesig { [String, ::Java::Short] }
+        typesig { [self::String, ::Java::Short] }
         # Get the value of the named short field from the persistent field.
         # 
         # @param  name the name of the field
@@ -1189,7 +1189,7 @@ module Java::Io
           raise NotImplementedError
         end
         
-        typesig { [String, ::Java::Int] }
+        typesig { [self::String, ::Java::Int] }
         # Get the value of the named int field from the persistent field.
         # 
         # @param  name the name of the field
@@ -1204,7 +1204,7 @@ module Java::Io
           raise NotImplementedError
         end
         
-        typesig { [String, ::Java::Long] }
+        typesig { [self::String, ::Java::Long] }
         # Get the value of the named long field from the persistent field.
         # 
         # @param  name the name of the field
@@ -1219,7 +1219,7 @@ module Java::Io
           raise NotImplementedError
         end
         
-        typesig { [String, ::Java::Float] }
+        typesig { [self::String, ::Java::Float] }
         # Get the value of the named float field from the persistent field.
         # 
         # @param  name the name of the field
@@ -1234,7 +1234,7 @@ module Java::Io
           raise NotImplementedError
         end
         
-        typesig { [String, ::Java::Double] }
+        typesig { [self::String, ::Java::Double] }
         # Get the value of the named double field from the persistent field.
         # 
         # @param  name the name of the field
@@ -1249,7 +1249,7 @@ module Java::Io
           raise NotImplementedError
         end
         
-        typesig { [String, Object] }
+        typesig { [self::String, Object] }
         # Get the value of the named Object field from the persistent field.
         # 
         # @param  name the name of the field
@@ -1318,12 +1318,12 @@ module Java::Io
               begin
                 cl.get_declared_method("readUnshared", nil)
                 return Boolean::FALSE
-              rescue NoSuchMethodException => ex
+              rescue self.class::NoSuchMethodException => ex
               end
               begin
                 cl.get_declared_method("readFields", nil)
                 return Boolean::FALSE
-              rescue NoSuchMethodException => ex
+              rescue self.class::NoSuchMethodException => ex
               end
               cl = cl.get_superclass
             end
@@ -2018,7 +2018,7 @@ module Java::Io
         alias_method :attr_obj_handles=, :obj_handles=
         undef_method :obj_handles=
         
-        typesig { [ObjectStreamClass] }
+        typesig { [self::ObjectStreamClass] }
         # Creates GetFieldImpl object for reading fields defined in given
         # class descriptor.
         def initialize(desc)
@@ -2038,60 +2038,60 @@ module Java::Io
           return @desc
         end
         
-        typesig { [String] }
+        typesig { [self::String] }
         def defaulted(name)
           return (get_field_offset(name, nil) < 0)
         end
         
-        typesig { [String, ::Java::Boolean] }
+        typesig { [self::String, ::Java::Boolean] }
         def get(name, val)
           off = get_field_offset(name, Boolean::TYPE)
           return (off >= 0) ? Bits.get_boolean(@prim_vals, off) : val
         end
         
-        typesig { [String, ::Java::Byte] }
+        typesig { [self::String, ::Java::Byte] }
         def get(name, val)
           off = get_field_offset(name, Byte::TYPE)
           return (off >= 0) ? @prim_vals[off] : val
         end
         
-        typesig { [String, ::Java::Char] }
+        typesig { [self::String, ::Java::Char] }
         def get(name, val)
           off = get_field_offset(name, Character::TYPE)
           return (off >= 0) ? Bits.get_char(@prim_vals, off) : val
         end
         
-        typesig { [String, ::Java::Short] }
+        typesig { [self::String, ::Java::Short] }
         def get(name, val)
           off = get_field_offset(name, Short::TYPE)
           return (off >= 0) ? Bits.get_short(@prim_vals, off) : val
         end
         
-        typesig { [String, ::Java::Int] }
+        typesig { [self::String, ::Java::Int] }
         def get(name, val)
           off = get_field_offset(name, JavaInteger::TYPE)
           return (off >= 0) ? Bits.get_int(@prim_vals, off) : val
         end
         
-        typesig { [String, ::Java::Float] }
+        typesig { [self::String, ::Java::Float] }
         def get(name, val)
           off = get_field_offset(name, Float::TYPE)
           return (off >= 0) ? Bits.get_float(@prim_vals, off) : val
         end
         
-        typesig { [String, ::Java::Long] }
+        typesig { [self::String, ::Java::Long] }
         def get(name, val)
           off = get_field_offset(name, Long::TYPE)
           return (off >= 0) ? Bits.get_long(@prim_vals, off) : val
         end
         
-        typesig { [String, ::Java::Double] }
+        typesig { [self::String, ::Java::Double] }
         def get(name, val)
           off = get_field_offset(name, Double::TYPE)
           return (off >= 0) ? Bits.get_double(@prim_vals, off) : val
         end
         
-        typesig { [String, Object] }
+        typesig { [self::String, Object] }
         def get(name, val)
           off = get_field_offset(name, Object)
           if (off >= 0)
@@ -2119,7 +2119,7 @@ module Java::Io
           self.attr_pass_handle = old_handle
         end
         
-        typesig { [String, Class] }
+        typesig { [self::String, self::Class] }
         # Returns offset of field with given name and type.  A specified type
         # of null matches all types, Object.class matches all non-primitive
         # types, and any other non-null type matches assignable types only.
@@ -2135,7 +2135,7 @@ module Java::Io
             if (!(@desc.get_local_desc.get_field(name, type)).nil?)
               return -1
             else
-              raise IllegalArgumentException.new("no such field " + name + " with type " + RJava.cast_to_string(type))
+              raise self.class::IllegalArgumentException.new("no such field " + name + " with type " + RJava.cast_to_string(type))
             end
           end
         end
@@ -2177,7 +2177,7 @@ module Java::Io
             alias_method :attr_acc=, :acc=
             undef_method :acc=
             
-            typesig { [ObjectInputValidation, ::Java::Int, Callback, AccessControlContext] }
+            typesig { [self::ObjectInputValidation, ::Java::Int, self::Callback, self::AccessControlContext] }
             def initialize(obj, priority, next_, acc)
               @obj = nil
               @priority = 0
@@ -2207,12 +2207,12 @@ module Java::Io
           @list = nil
         end
         
-        typesig { [ObjectInputValidation, ::Java::Int] }
+        typesig { [self::ObjectInputValidation, ::Java::Int] }
         # Registers callback.  Throws InvalidObjectException if callback
         # object is null.
         def register(obj, priority)
           if ((obj).nil?)
-            raise InvalidObjectException.new("null callback")
+            raise self.class::InvalidObjectException.new("null callback")
           end
           prev = nil
           cur = @list
@@ -2222,9 +2222,9 @@ module Java::Io
           end
           acc = AccessController.get_context
           if (!(prev).nil?)
-            prev.attr_next = Callback.new(obj, priority, cur, acc)
+            prev.attr_next = self.class::Callback.new(obj, priority, cur, acc)
           else
-            @list = Callback.new(obj, priority, @list, acc)
+            @list = self.class::Callback.new(obj, priority, @list, acc)
           end
         end
         
@@ -2237,10 +2237,10 @@ module Java::Io
         def do_callbacks
           begin
             while (!(@list).nil?)
-              AccessController.do_privileged(Class.new(PrivilegedExceptionAction.class == Class ? PrivilegedExceptionAction : Object) do
+              AccessController.do_privileged(Class.new(self.class::PrivilegedExceptionAction.class == Class ? self.class::PrivilegedExceptionAction : Object) do
                 extend LocalClass
                 include_class_members ValidationList
-                include PrivilegedExceptionAction if PrivilegedExceptionAction.class == Module
+                include self::PrivilegedExceptionAction if self::PrivilegedExceptionAction.class == Module
                 
                 typesig { [] }
                 define_method :run do
@@ -2258,7 +2258,7 @@ module Java::Io
               end.new_local(self), @list.attr_acc)
               @list = @list.attr_next
             end
-          rescue PrivilegedActionException => ex
+          rescue self.class::PrivilegedActionException => ex
             @list = nil
             raise ex.get_exception
           end
@@ -2292,7 +2292,7 @@ module Java::Io
         alias_method :attr_peekb=, :peekb=
         undef_method :peekb=
         
-        typesig { [InputStream] }
+        typesig { [self::InputStream] }
         # Creates new PeekInputStream on top of given underlying stream.
         def initialize(in_)
           @in = nil
@@ -2343,7 +2343,7 @@ module Java::Io
           while (n < len)
             count = read(b, off + n, len - n)
             if (count < 0)
-              raise EOFException.new
+              raise self.class::EOFException.new
             end
             n += count
           end
@@ -2472,7 +2472,7 @@ module Java::Io
         alias_method :attr_din=, :din=
         undef_method :din=
         
-        typesig { [InputStream] }
+        typesig { [self::InputStream] }
         # Creates new BlockDataInputStream on top of given underlying stream.
         # Block data mode is turned off by default.
         def initialize(in_)
@@ -2493,8 +2493,8 @@ module Java::Io
           @pos = 0
           @end = -1
           @unread = 0
-          @in = PeekInputStream.new(in_)
-          @din = DataInputStream.new(self)
+          @in = self.class::PeekInputStream.new(in_)
+          @din = self.class::DataInputStream.new(self)
         end
         
         typesig { [::Java::Boolean] }
@@ -2513,7 +2513,7 @@ module Java::Io
             @unread = 0
           else
             if (@pos < @end)
-              raise IllegalStateException.new("unread block data")
+              raise self.class::IllegalStateException.new("unread block data")
             end
           end
           @blkmode = newmode
@@ -2533,7 +2533,7 @@ module Java::Io
         # mode, throws an IllegalStateException.
         def skip_block_data
           if (!@blkmode)
-            raise IllegalStateException.new("not in block data mode")
+            raise self.class::IllegalStateException.new("not in block data mode")
           end
           while (@end >= 0)
             refill
@@ -2579,7 +2579,7 @@ module Java::Io
                 @in.read_fully(@hbuf, 0, 5)
                 len = Bits.get_int(@hbuf, 1)
                 if (len < 0)
-                  raise StreamCorruptedException.new("illegal block data header length: " + RJava.cast_to_string(len))
+                  raise self.class::StreamCorruptedException.new("illegal block data header length: " + RJava.cast_to_string(len))
                 end
                 return len
               when TC_RESET
@@ -2587,13 +2587,13 @@ module Java::Io
                 handle_reset
               else
                 if (tc >= 0 && (tc < TC_BASE || tc > TC_MAX))
-                  raise StreamCorruptedException.new(String.format("invalid type code: %02X", tc))
+                  raise self.class::StreamCorruptedException.new(String.format("invalid type code: %02X", tc))
                 end
                 return -1
               end
             end
-          rescue EOFException => ex
-            raise StreamCorruptedException.new("unexpected EOF while reading block data header")
+          rescue self.class::EOFException => ex
+            raise self.class::StreamCorruptedException.new("unexpected EOF while reading block data header")
           end
         end
         
@@ -2613,7 +2613,7 @@ module Java::Io
                   @end = n
                   @unread -= n
                 else
-                  raise StreamCorruptedException.new("unexpected EOF in middle of data block")
+                  raise self.class::StreamCorruptedException.new("unexpected EOF in middle of data block")
                 end
               else
                 n = read_block_header(true)
@@ -2626,7 +2626,7 @@ module Java::Io
                 end
               end
             end while ((@pos).equal?(@end))
-          rescue IOException => ex
+          rescue self.class::IOException => ex
             @pos = 0
             @end = -1
             @unread = 0
@@ -2642,7 +2642,7 @@ module Java::Io
           if (@blkmode)
             return (@end >= 0) ? (@end - @pos) + @unread : 0
           else
-            raise IllegalStateException.new
+            raise self.class::IllegalStateException.new
           end
         end
         
@@ -2668,7 +2668,7 @@ module Java::Io
         def peek_byte
           val = peek
           if (val < 0)
-            raise EOFException.new
+            raise self.class::EOFException.new
           end
           return val
         end
@@ -2813,7 +2813,7 @@ module Java::Io
           while (len > 0)
             n = read(b, off, len, copy)
             if (n < 0)
-              raise EOFException.new
+              raise self.class::EOFException.new
             end
             off += n
             len -= n
@@ -2829,7 +2829,7 @@ module Java::Io
         def read_boolean
           v = read
           if (v < 0)
-            raise EOFException.new
+            raise self.class::EOFException.new
           end
           return (!(v).equal?(0))
         end
@@ -2838,7 +2838,7 @@ module Java::Io
         def read_byte
           v = read
           if (v < 0)
-            raise EOFException.new
+            raise self.class::EOFException.new
           end
           return v
         end
@@ -2847,7 +2847,7 @@ module Java::Io
         def read_unsigned_byte
           v = read
           if (v < 0)
-            raise EOFException.new
+            raise self.class::EOFException.new
           end
           return v
         end
@@ -3156,7 +3156,7 @@ module Java::Io
         # or 8-byte length header) of a UTF encoding, which occupies the next
         # utflen bytes.
         def read_utfbody(utflen)
-          sbuf = StringBuilder.new
+          sbuf = self.class::StringBuilder.new
           if (!@blkmode)
             @end = @pos = 0
           end
@@ -3182,7 +3182,7 @@ module Java::Io
           return sbuf.to_s
         end
         
-        typesig { [StringBuilder, ::Java::Long] }
+        typesig { [self::StringBuilder, ::Java::Long] }
         # Reads span of UTF-encoded characters out of internal buffer
         # (starting at offset pos and ending at or before offset end),
         # consuming no more than utflen bytes.  Appends read characters to
@@ -3208,7 +3208,7 @@ module Java::Io
                 # 2 byte format: 110xxxxx 10xxxxxx
                 b2 = @buf[((@pos += 1) - 1)]
                 if (!((b2 & 0xc0)).equal?(0x80))
-                  raise UTFDataFormatException.new
+                  raise self.class::UTFDataFormatException.new
                 end
                 @cbuf[((cpos += 1) - 1)] = RJava.cast_to_char((((b1 & 0x1f) << 6) | ((b2 & 0x3f) << 0)))
               when 14
@@ -3217,15 +3217,15 @@ module Java::Io
                 b2 = @buf[@pos + 0]
                 @pos += 2
                 if (!((b2 & 0xc0)).equal?(0x80) || !((b3 & 0xc0)).equal?(0x80))
-                  raise UTFDataFormatException.new
+                  raise self.class::UTFDataFormatException.new
                 end
                 @cbuf[((cpos += 1) - 1)] = RJava.cast_to_char((((b1 & 0xf) << 12) | ((b2 & 0x3f) << 6) | ((b3 & 0x3f) << 0)))
               else
                 # 10xx xxxx, 1111 xxxx
-                raise UTFDataFormatException.new
+                raise self.class::UTFDataFormatException.new
               end
             end
-          rescue ArrayIndexOutOfBoundsException => ex
+          rescue self.class::ArrayIndexOutOfBoundsException => ex
             out_of_bounds = true
           ensure
             if (out_of_bounds || (@pos - start) > utflen)
@@ -3233,14 +3233,14 @@ module Java::Io
               # conversion loop to scan past the expected end of the utf
               # string, only consume the expected number of utf bytes.
               @pos = start + RJava.cast_to_int(utflen)
-              raise UTFDataFormatException.new
+              raise self.class::UTFDataFormatException.new
             end
           end
           sbuf.append(@cbuf, 0, cpos)
           return @pos - start
         end
         
-        typesig { [StringBuilder, ::Java::Long] }
+        typesig { [self::StringBuilder, ::Java::Long] }
         # Reads in single UTF-encoded character one byte at a time, appends
         # the character to sbuf, and returns the number of bytes consumed.
         # This method is used when reading in UTF strings written in block
@@ -3259,11 +3259,11 @@ module Java::Io
           when 12, 13
             # 2 byte format: 110xxxxx 10xxxxxx
             if (utflen < 2)
-              raise UTFDataFormatException.new
+              raise self.class::UTFDataFormatException.new
             end
             b2 = read_byte
             if (!((b2 & 0xc0)).equal?(0x80))
-              raise UTFDataFormatException.new
+              raise self.class::UTFDataFormatException.new
             end
             sbuf.append(RJava.cast_to_char((((b1 & 0x1f) << 6) | ((b2 & 0x3f) << 0))))
             return 2
@@ -3273,18 +3273,18 @@ module Java::Io
               if ((utflen).equal?(2))
                 read_byte # consume remaining byte
               end
-              raise UTFDataFormatException.new
+              raise self.class::UTFDataFormatException.new
             end
             b2 = read_byte
             b3 = read_byte
             if (!((b2 & 0xc0)).equal?(0x80) || !((b3 & 0xc0)).equal?(0x80))
-              raise UTFDataFormatException.new
+              raise self.class::UTFDataFormatException.new
             end
             sbuf.append(RJava.cast_to_char((((b1 & 0xf) << 12) | ((b2 & 0x3f) << 6) | ((b3 & 0x3f) << 0))))
             return 3
           else
             # 10xx xxxx, 1111 xxxx
-            raise UTFDataFormatException.new
+            raise self.class::UTFDataFormatException.new
           end
         end
         
@@ -3380,7 +3380,7 @@ module Java::Io
           @size = 0
           @status = Array.typed(::Java::Byte).new(initial_capacity) { 0 }
           @entries = Array.typed(Object).new(initial_capacity) { nil }
-          @deps = Array.typed(HandleList).new(initial_capacity) { nil }
+          @deps = Array.typed(self.class::HandleList).new(initial_capacity) { nil }
         end
         
         typesig { [Object] }
@@ -3417,7 +3417,7 @@ module Java::Io
             when self.class::STATUS_UNKNOWN
               # add to dependency list of target
               if ((@deps[target]).nil?)
-                @deps[target] = HandleList.new
+                @deps[target] = self.class::HandleList.new
               end
               @deps[target].add(dependent)
               # remember lowest unresolved target seen
@@ -3425,15 +3425,15 @@ module Java::Io
                 @low_dep = target
               end
             else
-              raise InternalError.new
+              raise self.class::InternalError.new
             end
           when self.class::STATUS_EXCEPTION
           else
-            raise InternalError.new
+            raise self.class::InternalError.new
           end
         end
         
-        typesig { [::Java::Int, ClassNotFoundException] }
+        typesig { [::Java::Int, self::ClassNotFoundException] }
         # Associates a ClassNotFoundException (if one not already associated)
         # with the currently active handle and propagates it to other
         # referencing objects as appropriate.  The specified handle must be
@@ -3456,7 +3456,7 @@ module Java::Io
             end
           when self.class::STATUS_EXCEPTION
           else
-            raise InternalError.new
+            raise self.class::InternalError.new
           end
         end
         
@@ -3488,7 +3488,7 @@ module Java::Io
               @deps[i] = nil
             when self.class::STATUS_OK, self.class::STATUS_EXCEPTION
             else
-              raise InternalError.new
+              raise self.class::InternalError.new
             end
             i += 1
           end
@@ -3505,7 +3505,7 @@ module Java::Io
             @entries[handle] = obj
           when self.class::STATUS_EXCEPTION
           else
-            raise InternalError.new
+            raise self.class::InternalError.new
           end
         end
         
@@ -3547,7 +3547,7 @@ module Java::Io
           new_capacity = (@entries.attr_length << 1) + 1
           new_status = Array.typed(::Java::Byte).new(new_capacity) { 0 }
           new_entries = Array.typed(Object).new(new_capacity) { nil }
-          new_deps = Array.typed(HandleList).new(new_capacity) { nil }
+          new_deps = Array.typed(self.class::HandleList).new(new_capacity) { nil }
           System.arraycopy(@status, 0, new_status, 0, @size)
           System.arraycopy(@entries, 0, new_entries, 0, @size)
           System.arraycopy(@deps, 0, new_deps, 0, @size)
@@ -3592,7 +3592,7 @@ module Java::Io
             typesig { [::Java::Int] }
             def get(index)
               if (index >= @size)
-                raise ArrayIndexOutOfBoundsException.new
+                raise self.class::ArrayIndexOutOfBoundsException.new
               end
               return @list[index]
             end
@@ -3680,11 +3680,11 @@ module Java::Io
         alias_method :attr_used=, :used=
         undef_method :used=
         
-        typesig { [Object, ObjectStreamClass] }
+        typesig { [Object, self::ObjectStreamClass] }
         def initialize(obj, desc)
           @obj = nil
           @desc = nil
-          @used = AtomicBoolean.new
+          @used = self.class::AtomicBoolean.new
           @obj = obj
           @desc = desc
         end
@@ -3703,7 +3703,7 @@ module Java::Io
         typesig { [] }
         def check_and_set_used
           if (!@used.compare_and_set(false, true))
-            raise NotActiveException.new("not in readObject invocation or fields already read")
+            raise self.class::NotActiveException.new("not in readObject invocation or fields already read")
           end
         end
         

@@ -1041,7 +1041,7 @@ module Java::Lang
           @name = nil
           @descriptor = nil
           if (!(enclosing_info.attr_length).equal?(3))
-            raise InternalError.new("Malformed enclosing method information")
+            raise self.class::InternalError.new("Malformed enclosing method information")
           end
           begin
             # The array is expected to have three elements:
@@ -1055,8 +1055,8 @@ module Java::Lang
             # descriptor (null iff name is).
             @descriptor = RJava.cast_to_string(enclosing_info[2])
             raise AssertError if not (((!(@name).nil? && !(@descriptor).nil?) || (@name).equal?(@descriptor)))
-          rescue ClassCastException => cce
-            raise InternalError.new("Invalid type in enclosing method information")
+          rescue self.class::ClassCastException => cce
+            raise self.class::InternalError.new("Invalid type in enclosing method information")
           end
         end
         
@@ -1401,7 +1401,7 @@ module Java::Lang
         
         typesig { [] }
         define_method :run do
-          list = Java::Util::ArrayList.new
+          list = Java::Util::self.class::ArrayList.new
           current_class = @local_class_parent
           while (!(current_class).nil?)
             members = current_class.get_declared_classes
@@ -1414,7 +1414,7 @@ module Java::Lang
             end
             current_class = current_class.get_superclass
           end
-          empty = Array.typed(Class).new([])
+          empty = Array.typed(self.class::Class).new([])
           return list.to_array(empty)
         end
         
@@ -2626,11 +2626,11 @@ module Java::Lang
         def initialize
           @methods = nil
           @length = 0
-          @methods = Array.typed(Method).new(20) { nil }
+          @methods = Array.typed(self.class::Method).new(20) { nil }
           @length = 0
         end
         
-        typesig { [Method] }
+        typesig { [self::Method] }
         def add(m)
           if ((@length).equal?(@methods.attr_length))
             @methods = Arrays.copy_of(@methods, 2 * @methods.attr_length)
@@ -2638,7 +2638,7 @@ module Java::Lang
           @methods[((@length += 1) - 1)] = m
         end
         
-        typesig { [Array.typed(Method)] }
+        typesig { [Array.typed(self::Method)] }
         def add_all(ma)
           i = 0
           while i < ma.attr_length
@@ -2647,7 +2647,7 @@ module Java::Lang
           end
         end
         
-        typesig { [MethodArray] }
+        typesig { [self::MethodArray] }
         def add_all(ma)
           i = 0
           while i < ma.length
@@ -2656,7 +2656,7 @@ module Java::Lang
           end
         end
         
-        typesig { [Method] }
+        typesig { [self::Method] }
         def add_if_not_present(new_method)
           i = 0
           while i < @length
@@ -2669,7 +2669,7 @@ module Java::Lang
           add(new_method)
         end
         
-        typesig { [MethodArray] }
+        typesig { [self::MethodArray] }
         def add_all_if_not_present(new_methods)
           i = 0
           while i < new_methods.length
@@ -2691,7 +2691,7 @@ module Java::Lang
           return @methods[i]
         end
         
-        typesig { [Method] }
+        typesig { [self::Method] }
         def remove_by_name_and_signature(to_remove)
           i = 0
           while i < @length

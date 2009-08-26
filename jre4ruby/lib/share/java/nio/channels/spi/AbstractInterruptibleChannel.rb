@@ -188,7 +188,7 @@ module Java::Nio::Channels::Spi
               self.attr_open = false
               begin
                 @local_class_parent.impl_close_channel
-              rescue IOException => x
+              rescue self.class::IOException => x
               end
             end
           end

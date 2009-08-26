@@ -98,7 +98,7 @@ module Sun::Nio::Ch
       const_set_lazy(:InheritedSocketChannelImpl) { Class.new(SocketChannelImpl) do
         include_class_members InheritedChannel
         
-        typesig { [SelectorProvider, FileDescriptor, InetSocketAddress] }
+        typesig { [self::SelectorProvider, self::FileDescriptor, self::InetSocketAddress] }
         def initialize(sp, fd, remote)
           super(sp, fd, remote)
         end
@@ -116,7 +116,7 @@ module Sun::Nio::Ch
       const_set_lazy(:InheritedServerSocketChannelImpl) { Class.new(ServerSocketChannelImpl) do
         include_class_members InheritedChannel
         
-        typesig { [SelectorProvider, FileDescriptor] }
+        typesig { [self::SelectorProvider, self::FileDescriptor] }
         def initialize(sp, fd)
           super(sp, fd)
         end
@@ -134,7 +134,7 @@ module Sun::Nio::Ch
       const_set_lazy(:InheritedDatagramChannelImpl) { Class.new(DatagramChannelImpl) do
         include_class_members InheritedChannel
         
-        typesig { [SelectorProvider, FileDescriptor] }
+        typesig { [self::SelectorProvider, self::FileDescriptor] }
         def initialize(sp, fd)
           super(sp, fd)
         end

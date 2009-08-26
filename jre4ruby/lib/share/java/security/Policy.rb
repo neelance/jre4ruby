@@ -227,7 +227,7 @@ module Java::Security
                       cl = cl.get_parent
                     end
                     return (!(extcl).nil? ? Class.for_name(pc, true, extcl).new_instance : nil)
-                  rescue JavaException => e_
+                  rescue self.class::JavaException => e_
                     if (!(Debug).nil?)
                       Debug.println("policy provider " + pc + " not available")
                       e_.print_stack_trace
@@ -731,7 +731,7 @@ module Java::Security
         alias_method :attr_params=, :params=
         undef_method :params=
         
-        typesig { [PolicySpi, Provider, String, Policy::Parameters] }
+        typesig { [self::PolicySpi, self::Provider, self::String, self::Policy::Parameters] }
         def initialize(spi, p, type, params)
           @spi = nil
           @p = nil
@@ -759,17 +759,17 @@ module Java::Security
           return @p
         end
         
-        typesig { [CodeSource] }
+        typesig { [self::CodeSource] }
         def get_permissions(codesource)
           return @spi.engine_get_permissions(codesource)
         end
         
-        typesig { [ProtectionDomain] }
+        typesig { [self::ProtectionDomain] }
         def get_permissions(domain)
           return @spi.engine_get_permissions(domain)
         end
         
-        typesig { [ProtectionDomain, Permission] }
+        typesig { [self::ProtectionDomain, self::Permission] }
         def implies(domain, perm)
           return @spi.engine_implies(domain, perm)
         end
@@ -809,11 +809,11 @@ module Java::Security
         def initialize
           @perms = nil
           super()
-          @perms = Permissions.new
+          @perms = self.class::Permissions.new
           @perms.set_read_only
         end
         
-        typesig { [Permission] }
+        typesig { [self::Permission] }
         # Adds a permission object to the current collection of permission
         # objects.
         # 
@@ -825,7 +825,7 @@ module Java::Security
           @perms.add(permission)
         end
         
-        typesig { [Permission] }
+        typesig { [self::Permission] }
         # Checks to see if the specified permission is implied by the
         # collection of Permission objects held in this PermissionCollection.
         # 

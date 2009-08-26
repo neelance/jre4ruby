@@ -439,12 +439,12 @@ module Sun::Misc
             typesig { [] }
             define_method :run do
               begin
-                file = FileOutputStream.new(RJava.cast_to_string(dot_to_slash(name)) + ".class")
+                file = self.class::FileOutputStream.new(RJava.cast_to_string(dot_to_slash(name)) + ".class")
                 file.write(class_file)
                 file.close
                 return nil
-              rescue IOException => e
-                raise InternalError.new("I/O exception saving generated file: " + RJava.cast_to_string(e))
+              rescue self.class::IOException => e
+                raise self.class::InternalError.new("I/O exception saving generated file: " + RJava.cast_to_string(e))
               end
             end
             
@@ -827,7 +827,7 @@ module Sun::Misc
         alias_method :attr_descriptor=, :descriptor=
         undef_method :descriptor=
         
-        typesig { [String, String, ::Java::Int] }
+        typesig { [self::String, self::String, ::Java::Int] }
         def initialize(name, descriptor, access_flags)
           @access_flags = 0
           @name = nil
@@ -841,7 +841,7 @@ module Sun::Misc
           self.attr_cp.get_utf8(descriptor)
         end
         
-        typesig { [DataOutputStream] }
+        typesig { [self::DataOutputStream] }
         def write(out)
           # Write all the items of the "field_info" structure.
           # See JVMS section 4.5.
@@ -961,15 +961,15 @@ module Sun::Misc
         alias_method :attr_declared_exceptions=, :declared_exceptions=
         undef_method :declared_exceptions=
         
-        typesig { [String, String, ::Java::Int] }
+        typesig { [self::String, self::String, ::Java::Int] }
         def initialize(name, descriptor, access_flags)
           @access_flags = 0
           @name = nil
           @descriptor = nil
           @max_stack = 0
           @max_locals = 0
-          @code = ByteArrayOutputStream.new
-          @exception_table = ArrayList.new
+          @code = self.class::ByteArrayOutputStream.new
+          @exception_table = self.class::ArrayList.new
           @declared_exceptions = nil
           @name = name
           @descriptor = descriptor
@@ -982,7 +982,7 @@ module Sun::Misc
           self.attr_cp.get_utf8("Exceptions")
         end
         
-        typesig { [DataOutputStream] }
+        typesig { [self::DataOutputStream] }
         def write(out)
           # Write all the items of the "method_info" structure.
           # See JVMS section 4.6.
@@ -1084,7 +1084,7 @@ module Sun::Misc
         alias_method :attr_method_field_name=, :method_field_name=
         undef_method :method_field_name=
         
-        typesig { [String, Array.typed(Class), Class, Array.typed(Class), Class] }
+        typesig { [self::String, Array.typed(self::Class), self::Class, Array.typed(self::Class), self::Class] }
         def initialize(method_name, parameter_types, return_type, exception_types, from_class)
           @method_name = nil
           @parameter_types = nil
@@ -1105,7 +1105,7 @@ module Sun::Misc
         # the code and exception table entry.
         def generate_method
           desc = get_method_descriptor(@parameter_types, @return_type)
-          minfo = MethodInfo.new(@method_name, desc, ACC_PUBLIC | ACC_FINAL)
+          minfo = self.class::MethodInfo.new(@method_name, desc, ACC_PUBLIC | ACC_FINAL)
           parameter_slot = Array.typed(::Java::Int).new(@parameter_types.attr_length) { 0 }
           next_slot = 1
           i = 0
@@ -1118,7 +1118,7 @@ module Sun::Misc
           pc = 0
           try_begin = 0
           try_end = 0
-          out = DataOutputStream.new(minfo.attr_code)
+          out = self.class::DataOutputStream.new(minfo.attr_code)
           code_aload(0, out)
           out.write_byte(Opc_getfield)
           out.write_short(self.attr_cp.get_field_ref(SuperclassName, HandlerFieldName, "Ljava/lang/reflect/InvocationHandler;"))
@@ -1154,11 +1154,11 @@ module Sun::Misc
           catch_list = compute_unique_catch_list(@exception_types)
           if (catch_list.size > 0)
             catch_list.each do |ex|
-              minfo.attr_exception_table.add(ExceptionTableEntry.new(try_begin, try_end, pc, self.attr_cp.get_class(dot_to_slash(ex.get_name))))
+              minfo.attr_exception_table.add(self.class::ExceptionTableEntry.new(try_begin, try_end, pc, self.attr_cp.get_class(dot_to_slash(ex.get_name))))
             end
             out.write_byte(Opc_athrow)
             pc = RJava.cast_to_short(minfo.attr_code.size)
-            minfo.attr_exception_table.add(ExceptionTableEntry.new(try_begin, try_end, pc, self.attr_cp.get_class("java/lang/Throwable")))
+            minfo.attr_exception_table.add(self.class::ExceptionTableEntry.new(try_begin, try_end, pc, self.attr_cp.get_class("java/lang/Throwable")))
             code_astore(local_slot0, out)
             out.write_byte(Opc_new)
             out.write_short(self.attr_cp.get_class("java/lang/reflect/UndeclaredThrowableException"))
@@ -1169,7 +1169,7 @@ module Sun::Misc
             out.write_byte(Opc_athrow)
           end
           if (minfo.attr_code.size > 65535)
-            raise IllegalArgumentException.new("code size limit exceeded")
+            raise self.class::IllegalArgumentException.new("code size limit exceeded")
           end
           minfo.attr_max_stack = 10
           minfo.attr_max_locals = RJava.cast_to_short((local_slot0 + 1))
@@ -1182,7 +1182,7 @@ module Sun::Misc
           return minfo
         end
         
-        typesig { [Class, ::Java::Int, DataOutputStream] }
+        typesig { [self::Class, ::Java::Int, self::DataOutputStream] }
         # Generate code for wrapping an argument of the given type
         # whose value can be found at the specified local variable
         # index, in order for it to be passed (as an Object) to the
@@ -1203,7 +1203,7 @@ module Sun::Misc
                   if ((type).equal?(Array))
                     code_dload(slot, out)
                   else
-                    raise AssertionError.new
+                    raise self.class::AssertionError.new
                   end
                 end
               end
@@ -1215,7 +1215,7 @@ module Sun::Misc
           end
         end
         
-        typesig { [Class, DataOutputStream] }
+        typesig { [self::Class, self::DataOutputStream] }
         # Generate code for unwrapping a return value of the given
         # type from the invocation handler's "invoke" method (as type
         # Object) to its correct type.  The code is written to the
@@ -1239,7 +1239,7 @@ module Sun::Misc
                   if ((type).equal?(Array))
                     out.write_byte(Opc_dreturn)
                   else
-                    raise AssertionError.new
+                    raise self.class::AssertionError.new
                   end
                 end
               end
@@ -1251,7 +1251,7 @@ module Sun::Misc
           end
         end
         
-        typesig { [DataOutputStream] }
+        typesig { [self::DataOutputStream] }
         # Generate code for initializing the static field that stores
         # the Method object for this proxy method.  The code is written
         # to the supplied stream.
@@ -1721,7 +1721,7 @@ module Sun::Misc
         class_module.module_eval {
           
           def table
-            defined?(@@table) ? @@table : @@table= HashMap.new
+            defined?(@@table) ? @@table : @@table= self.class::HashMap.new
           end
           alias_method :attr_table, :table
           
@@ -1741,13 +1741,13 @@ module Sun::Misc
             add(Array, Boolean)
           end
           
-          typesig { [Class, Class] }
+          typesig { [self::Class, self::Class] }
           def add(primitive_class, wrapper_class)
-            self.attr_table.put(primitive_class, PrimitiveTypeInfo.new(primitive_class, wrapper_class))
+            self.attr_table.put(primitive_class, self.class::PrimitiveTypeInfo.new(primitive_class, wrapper_class))
           end
         }
         
-        typesig { [Class, Class] }
+        typesig { [self::Class, self::Class] }
         def initialize(primitive_class, wrapper_class)
           @base_type_string = nil
           @wrapper_class_name = nil
@@ -1763,7 +1763,7 @@ module Sun::Misc
         end
         
         class_module.module_eval {
-          typesig { [Class] }
+          typesig { [self::Class] }
           def get(cl)
             return self.attr_table.get(cl)
           end
@@ -1818,11 +1818,11 @@ module Sun::Misc
         alias_method :attr_read_only=, :read_only=
         undef_method :read_only=
         
-        typesig { [String] }
+        typesig { [self::String] }
         # Get or assign the index for a CONSTANT_Utf8 entry.
         def get_utf8(s)
           if ((s).nil?)
-            raise NullPointerException.new
+            raise self.class::NullPointerException.new
           end
           return get_value(s)
         end
@@ -1836,53 +1836,53 @@ module Sun::Misc
         typesig { [::Java::Float] }
         # Get or assign the index for a CONSTANT_Float entry.
         def get_float(f)
-          return get_value(Float.new(f))
+          return get_value(self.class::Float.new(f))
         end
         
-        typesig { [String] }
+        typesig { [self::String] }
         # Get or assign the index for a CONSTANT_Class entry.
         def get_class(name)
           utf8index = get_utf8(name)
-          return get_indirect(IndirectEntry.new(CONSTANT_CLASS, utf8index))
+          return get_indirect(self.class::IndirectEntry.new(CONSTANT_CLASS, utf8index))
         end
         
-        typesig { [String] }
+        typesig { [self::String] }
         # Get or assign the index for a CONSTANT_String entry.
         def get_string(s)
           utf8index = get_utf8(s)
-          return get_indirect(IndirectEntry.new(CONSTANT_STRING, utf8index))
+          return get_indirect(self.class::IndirectEntry.new(CONSTANT_STRING, utf8index))
         end
         
-        typesig { [String, String, String] }
+        typesig { [self::String, self::String, self::String] }
         # Get or assign the index for a CONSTANT_FieldRef entry.
         def get_field_ref(class_name, name, descriptor)
           class_index = get_class(class_name)
           name_and_type_index = get_name_and_type(name, descriptor)
-          return get_indirect(IndirectEntry.new(CONSTANT_FIELD, class_index, name_and_type_index))
+          return get_indirect(self.class::IndirectEntry.new(CONSTANT_FIELD, class_index, name_and_type_index))
         end
         
-        typesig { [String, String, String] }
+        typesig { [self::String, self::String, self::String] }
         # Get or assign the index for a CONSTANT_MethodRef entry.
         def get_method_ref(class_name, name, descriptor)
           class_index = get_class(class_name)
           name_and_type_index = get_name_and_type(name, descriptor)
-          return get_indirect(IndirectEntry.new(CONSTANT_METHOD, class_index, name_and_type_index))
+          return get_indirect(self.class::IndirectEntry.new(CONSTANT_METHOD, class_index, name_and_type_index))
         end
         
-        typesig { [String, String, String] }
+        typesig { [self::String, self::String, self::String] }
         # Get or assign the index for a CONSTANT_InterfaceMethodRef entry.
         def get_interface_method_ref(class_name, name, descriptor)
           class_index = get_class(class_name)
           name_and_type_index = get_name_and_type(name, descriptor)
-          return get_indirect(IndirectEntry.new(CONSTANT_INTERFACEMETHOD, class_index, name_and_type_index))
+          return get_indirect(self.class::IndirectEntry.new(CONSTANT_INTERFACEMETHOD, class_index, name_and_type_index))
         end
         
-        typesig { [String, String] }
+        typesig { [self::String, self::String] }
         # Get or assign the index for a CONSTANT_NameAndType entry.
         def get_name_and_type(name, descriptor)
           name_index = get_utf8(name)
           descriptor_index = get_utf8(descriptor)
-          return get_indirect(IndirectEntry.new(CONSTANT_NAMEANDTYPE, name_index, descriptor_index))
+          return get_indirect(self.class::IndirectEntry.new(CONSTANT_NAMEANDTYPE, name_index, descriptor_index))
         end
         
         typesig { [] }
@@ -1895,7 +1895,7 @@ module Sun::Misc
           @read_only = true
         end
         
-        typesig { [OutputStream] }
+        typesig { [self::OutputStream] }
         # Write this constant pool to a stream as part of
         # the class file format.
         # 
@@ -1903,7 +1903,7 @@ module Sun::Misc
         # "constant_pool[]" items of the "ClassFile" structure, as
         # described in JVMS section 4.1.
         def write(out)
-          data_out = DataOutputStream.new(out)
+          data_out = self.class::DataOutputStream.new(out)
           # constant_pool_count: number of entries plus one
           data_out.write_short(@pool.size + 1)
           @pool.each do |e|
@@ -1911,7 +1911,7 @@ module Sun::Misc
           end
         end
         
-        typesig { [Entry] }
+        typesig { [self::Entry] }
         # Add a new constant pool entry and return its index.
         def add_entry(entry)
           @pool.add(entry)
@@ -1919,7 +1919,7 @@ module Sun::Misc
           # added entry is wrong if this pool supports
           # CONSTANT_Long or CONSTANT_Double entries.
           if (@pool.size >= 65535)
-            raise IllegalArgumentException.new("constant pool size limit exceeded")
+            raise self.class::IllegalArgumentException.new("constant pool size limit exceeded")
           end
           return RJava.cast_to_short(@pool.size)
         end
@@ -1940,15 +1940,15 @@ module Sun::Misc
             return index.short_value
           else
             if (@read_only)
-              raise InternalError.new("late constant pool addition: " + RJava.cast_to_string(key))
+              raise self.class::InternalError.new("late constant pool addition: " + RJava.cast_to_string(key))
             end
-            i = add_entry(ValueEntry.new(key))
-            @map.put(key, Short.new(i))
+            i = add_entry(self.class::ValueEntry.new(key))
+            @map.put(key, self.class::Short.new(i))
             return i
           end
         end
         
-        typesig { [IndirectEntry] }
+        typesig { [self::IndirectEntry] }
         # Get or assign the index for an entry of a type that contains
         # references to other constant pool entries.
         def get_indirect(e)
@@ -1957,10 +1957,10 @@ module Sun::Misc
             return index.short_value
           else
             if (@read_only)
-              raise InternalError.new("late constant pool addition")
+              raise self.class::InternalError.new("late constant pool addition")
             end
             i = add_entry(e)
-            @map.put(e, Short.new(i))
+            @map.put(e, self.class::Short.new(i))
             return i
           end
         end
@@ -1972,7 +1972,7 @@ module Sun::Misc
           const_set_lazy(:Entry) { Class.new do
             include_class_members ConstantPool
             
-            typesig { [DataOutputStream] }
+            typesig { [self::DataOutputStream] }
             def write(out)
               raise NotImplementedError
             end
@@ -1991,7 +1991,7 @@ module Sun::Misc
           # 
           # ValueEntry objects are not used as keys for their entries in the
           # Map "map", so no useful hashCode or equals methods are defined.
-          const_set_lazy(:ValueEntry) { Class.new(Entry) do
+          const_set_lazy(:ValueEntry) { Class.new(self.class::Entry) do
             include_class_members ConstantPool
             
             attr_accessor :value
@@ -2007,29 +2007,29 @@ module Sun::Misc
               @value = value
             end
             
-            typesig { [DataOutputStream] }
+            typesig { [self::DataOutputStream] }
             def write(out)
-              if (@value.is_a?(String))
+              if (@value.is_a?(self.class::String))
                 out.write_byte(CONSTANT_UTF8)
                 out.write_utf(@value)
               else
-                if (@value.is_a?(JavaInteger))
+                if (@value.is_a?(self.class::JavaInteger))
                   out.write_byte(CONSTANT_INTEGER)
                   out.write_int((@value).int_value)
                 else
-                  if (@value.is_a?(Float))
+                  if (@value.is_a?(self.class::Float))
                     out.write_byte(CONSTANT_FLOAT)
                     out.write_float((@value).float_value)
                   else
-                    if (@value.is_a?(Long))
+                    if (@value.is_a?(self.class::Long))
                       out.write_byte(CONSTANT_LONG)
                       out.write_long((@value).long_value)
                     else
-                      if (@value.is_a?(Double))
+                      if (@value.is_a?(self.class::Double))
                         out.write_double(CONSTANT_DOUBLE)
                         out.write_double((@value).double_value)
                       else
-                        raise InternalError.new("bogus value entry: " + RJava.cast_to_string(@value))
+                        raise self.class::InternalError.new("bogus value entry: " + RJava.cast_to_string(@value))
                       end
                     end
                   end
@@ -2054,7 +2054,7 @@ module Sun::Misc
           # IndirectEntry objects are used as the keys for their entries in
           # the Map "map", so the hashCode and equals methods are overridden
           # to allow matching.
-          const_set_lazy(:IndirectEntry) { Class.new(Entry) do
+          const_set_lazy(:IndirectEntry) { Class.new(self.class::Entry) do
             include_class_members ConstantPool
             
             attr_accessor :tag
@@ -2101,7 +2101,7 @@ module Sun::Misc
               @index1 = index1
             end
             
-            typesig { [DataOutputStream] }
+            typesig { [self::DataOutputStream] }
             def write(out)
               out.write_byte(@tag)
               out.write_short(@index0)
@@ -2119,7 +2119,7 @@ module Sun::Misc
             
             typesig { [Object] }
             def ==(obj)
-              if (obj.is_a?(IndirectEntry))
+              if (obj.is_a?(self.class::IndirectEntry))
                 other = obj
                 if ((@tag).equal?(other.attr_tag) && (@index0).equal?(other.attr_index0) && (@index1).equal?(other.attr_index1))
                   return true
@@ -2135,8 +2135,8 @@ module Sun::Misc
         
         typesig { [] }
         def initialize
-          @pool = ArrayList.new(32)
-          @map = HashMap.new(16)
+          @pool = self.class::ArrayList.new(32)
+          @map = self.class::HashMap.new(16)
           @read_only = false
         end
         

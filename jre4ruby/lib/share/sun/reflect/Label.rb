@@ -44,7 +44,7 @@ module Sun::Reflect
       const_set_lazy(:PatchInfo) { Class.new do
         include_class_members Label
         
-        typesig { [ClassFileAssembler, ::Java::Short, ::Java::Short, ::Java::Int] }
+        typesig { [self::ClassFileAssembler, ::Java::Short, ::Java::Short, ::Java::Int] }
         def initialize(asm, instr_bci, patch_bci, stack_depth)
           @asm = nil
           @instr_bci = 0

@@ -3219,7 +3219,7 @@ module Java::Util::Regex
           @next = Pattern.attr_accept
         end
         
-        typesig { [Matcher, ::Java::Int, CharSequence] }
+        typesig { [self::Matcher, ::Java::Int, self::CharSequence] }
         # This method implements the classic accept node.
         def match(matcher, i, seq)
           matcher.attr_last = i
@@ -3228,7 +3228,7 @@ module Java::Util::Regex
           return true
         end
         
-        typesig { [TreeInfo] }
+        typesig { [self::TreeInfo] }
         # This method is good for all zero length assertions.
         def study(info)
           if (!(@next).nil?)
@@ -3245,7 +3245,7 @@ module Java::Util::Regex
       const_set_lazy(:LastNode) { Class.new(Node) do
         include_class_members Pattern
         
-        typesig { [Matcher, ::Java::Int, CharSequence] }
+        typesig { [self::Matcher, ::Java::Int, self::CharSequence] }
         # This method implements the classic accept node with
         # the addition of a check to see if the match occurred
         # using all of the input.
@@ -3281,17 +3281,17 @@ module Java::Util::Regex
         alias_method :attr_min_length=, :min_length=
         undef_method :min_length=
         
-        typesig { [Node] }
+        typesig { [self::Node] }
         def initialize(node)
           @min_length = 0
           super()
           self.attr_next = node
-          info = TreeInfo.new
+          info = self.class::TreeInfo.new
           self.attr_next.study(info)
           @min_length = info.attr_min_length
         end
         
-        typesig { [Matcher, ::Java::Int, CharSequence] }
+        typesig { [self::Matcher, ::Java::Int, self::CharSequence] }
         def match(matcher, i, seq)
           if (i > matcher.attr_to - @min_length)
             matcher.attr_hit_end = true
@@ -3316,7 +3316,7 @@ module Java::Util::Regex
           return ret
         end
         
-        typesig { [TreeInfo] }
+        typesig { [self::TreeInfo] }
         def study(info)
           self.attr_next.study(info)
           info.attr_max_valid = false
@@ -3332,12 +3332,12 @@ module Java::Util::Regex
       const_set_lazy(:StartS) { Class.new(Start) do
         include_class_members Pattern
         
-        typesig { [Node] }
+        typesig { [self::Node] }
         def initialize(node)
           super(node)
         end
         
-        typesig { [Matcher, ::Java::Int, CharSequence] }
+        typesig { [self::Matcher, ::Java::Int, self::CharSequence] }
         def match(matcher, i, seq)
           if (i > matcher.attr_to - self.attr_min_length)
             matcher.attr_hit_end = true
@@ -3378,7 +3378,7 @@ module Java::Util::Regex
       const_set_lazy(:Begin) { Class.new(Node) do
         include_class_members Pattern
         
-        typesig { [Matcher, ::Java::Int, CharSequence] }
+        typesig { [self::Matcher, ::Java::Int, self::CharSequence] }
         def match(matcher, i, seq)
           from_index = (matcher.attr_anchoring_bounds) ? matcher.attr_from : 0
           if ((i).equal?(from_index) && self.attr_next.match(matcher, i, seq))
@@ -3405,7 +3405,7 @@ module Java::Util::Regex
       const_set_lazy(:End) { Class.new(Node) do
         include_class_members Pattern
         
-        typesig { [Matcher, ::Java::Int, CharSequence] }
+        typesig { [self::Matcher, ::Java::Int, self::CharSequence] }
         def match(matcher, i, seq)
           end_index = (matcher.attr_anchoring_bounds) ? matcher.attr_to : matcher.get_text_length
           if ((i).equal?(end_index))
@@ -3429,7 +3429,7 @@ module Java::Util::Regex
       const_set_lazy(:Caret) { Class.new(Node) do
         include_class_members Pattern
         
-        typesig { [Matcher, ::Java::Int, CharSequence] }
+        typesig { [self::Matcher, ::Java::Int, self::CharSequence] }
         def match(matcher, i, seq)
           start_index = matcher.attr_from
           end_index = matcher.attr_to
@@ -3468,7 +3468,7 @@ module Java::Util::Regex
       const_set_lazy(:UnixCaret) { Class.new(Node) do
         include_class_members Pattern
         
-        typesig { [Matcher, ::Java::Int, CharSequence] }
+        typesig { [self::Matcher, ::Java::Int, self::CharSequence] }
         def match(matcher, i, seq)
           start_index = matcher.attr_from
           end_index = matcher.attr_to
@@ -3504,7 +3504,7 @@ module Java::Util::Regex
       const_set_lazy(:LastMatch) { Class.new(Node) do
         include_class_members Pattern
         
-        typesig { [Matcher, ::Java::Int, CharSequence] }
+        typesig { [self::Matcher, ::Java::Int, self::CharSequence] }
         def match(matcher, i, seq)
           if (!(i).equal?(matcher.attr_old_last))
             return false
@@ -3548,7 +3548,7 @@ module Java::Util::Regex
           @multiline = mul
         end
         
-        typesig { [Matcher, ::Java::Int, CharSequence] }
+        typesig { [self::Matcher, ::Java::Int, self::CharSequence] }
         def match(matcher, i, seq)
           end_index = (matcher.attr_anchoring_bounds) ? matcher.attr_to : matcher.get_text_length
           if (!@multiline)
@@ -3603,7 +3603,7 @@ module Java::Util::Regex
           return self.attr_next.match(matcher, i, seq)
         end
         
-        typesig { [TreeInfo] }
+        typesig { [self::TreeInfo] }
         def study(info)
           self.attr_next.study(info)
           return info.attr_deterministic
@@ -3631,7 +3631,7 @@ module Java::Util::Regex
           @multiline = mul
         end
         
-        typesig { [Matcher, ::Java::Int, CharSequence] }
+        typesig { [self::Matcher, ::Java::Int, self::CharSequence] }
         def match(matcher, i, seq)
           end_index = (matcher.attr_anchoring_bounds) ? matcher.attr_to : matcher.get_text_length
           if (i < end_index)
@@ -3660,7 +3660,7 @@ module Java::Util::Regex
           return self.attr_next.match(matcher, i, seq)
         end
         
-        typesig { [TreeInfo] }
+        typesig { [self::TreeInfo] }
         def study(info)
           self.attr_next.study(info)
           return info.attr_deterministic
@@ -3682,10 +3682,10 @@ module Java::Util::Regex
         
         typesig { [] }
         def complement
-          return Class.new(CharProperty.class == Class ? CharProperty : Object) do
+          return Class.new(self.class::CharProperty.class == Class ? self.class::CharProperty : Object) do
             extend LocalClass
             include_class_members CharProperty
-            include CharProperty if CharProperty.class == Module
+            include self::CharProperty if self::CharProperty.class == Module
             
             typesig { [::Java::Int] }
             define_method :is_satisfied_by do |ch|
@@ -3707,7 +3707,7 @@ module Java::Util::Regex
           return complement ? complement : self
         end
         
-        typesig { [Matcher, ::Java::Int, CharSequence] }
+        typesig { [self::Matcher, ::Java::Int, self::CharSequence] }
         def match(matcher, i, seq)
           if (i < matcher.attr_to)
             ch = Character.code_point_at(seq, i)
@@ -3718,7 +3718,7 @@ module Java::Util::Regex
           end
         end
         
-        typesig { [TreeInfo] }
+        typesig { [self::TreeInfo] }
         def study(info)
           info.attr_min_length += 1
           info.attr_max_length += 1
@@ -3739,7 +3739,7 @@ module Java::Util::Regex
       const_set_lazy(:BmpCharProperty) { Class.new(CharProperty) do
         include_class_members Pattern
         
-        typesig { [Matcher, ::Java::Int, CharSequence] }
+        typesig { [self::Matcher, ::Java::Int, self::CharSequence] }
         def match(matcher, i, seq)
           if (i < matcher.attr_to)
             return is_satisfied_by(seq.char_at(i)) && self.attr_next.match(matcher, i + 1, seq)
@@ -3939,7 +3939,7 @@ module Java::Util::Regex
           @buffer = buf
         end
         
-        typesig { [TreeInfo] }
+        typesig { [self::TreeInfo] }
         def study(info)
           info.attr_min_length += @buffer.attr_length
           info.attr_max_length += @buffer.attr_length
@@ -3960,7 +3960,7 @@ module Java::Util::Regex
           super(buf)
         end
         
-        typesig { [Matcher, ::Java::Int, CharSequence] }
+        typesig { [self::Matcher, ::Java::Int, self::CharSequence] }
         def match(matcher, i, seq)
           buf = self.attr_buffer
           len = buf.attr_length
@@ -3992,7 +3992,7 @@ module Java::Util::Regex
           super(buf)
         end
         
-        typesig { [Matcher, ::Java::Int, CharSequence] }
+        typesig { [self::Matcher, ::Java::Int, self::CharSequence] }
         def match(matcher, i, seq)
           buf = self.attr_buffer
           len = buf.attr_length
@@ -4025,7 +4025,7 @@ module Java::Util::Regex
           super(buf)
         end
         
-        typesig { [Matcher, ::Java::Int, CharSequence] }
+        typesig { [self::Matcher, ::Java::Int, self::CharSequence] }
         def match(matcher, i, seq)
           buf = self.attr_buffer
           len = buf.attr_length
@@ -4058,7 +4058,7 @@ module Java::Util::Regex
           super(buf)
         end
         
-        typesig { [Matcher, ::Java::Int, CharSequence] }
+        typesig { [self::Matcher, ::Java::Int, self::CharSequence] }
         def match(matcher, i, seq)
           buf = self.attr_buffer
           x = i
@@ -4101,7 +4101,7 @@ module Java::Util::Regex
           return ASCII.to_lower(c)
         end
         
-        typesig { [Matcher, ::Java::Int, CharSequence] }
+        typesig { [self::Matcher, ::Java::Int, self::CharSequence] }
         def match(matcher, i, seq)
           buf = self.attr_buffer
           x = i
@@ -4298,7 +4298,7 @@ module Java::Util::Regex
         alias_method :attr_type=, :type=
         undef_method :type=
         
-        typesig { [Node, ::Java::Int] }
+        typesig { [self::Node, ::Java::Int] }
         def initialize(node, type)
           @atom = nil
           @type = 0
@@ -4307,7 +4307,7 @@ module Java::Util::Regex
           @type = type
         end
         
-        typesig { [Matcher, ::Java::Int, CharSequence] }
+        typesig { [self::Matcher, ::Java::Int, self::CharSequence] }
         def match(matcher, i, seq)
           case (@type)
           when GREEDY
@@ -4324,7 +4324,7 @@ module Java::Util::Regex
           end
         end
         
-        typesig { [TreeInfo] }
+        typesig { [self::TreeInfo] }
         def study(info)
           if (!(@type).equal?(INDEPENDENT))
             min_l = info.attr_min_length
@@ -4372,7 +4372,7 @@ module Java::Util::Regex
         alias_method :attr_cmax=, :cmax=
         undef_method :cmax=
         
-        typesig { [Node, ::Java::Int, ::Java::Int, ::Java::Int] }
+        typesig { [self::Node, ::Java::Int, ::Java::Int, ::Java::Int] }
         def initialize(node, cmin, cmax, type)
           @atom = nil
           @type = 0
@@ -4385,7 +4385,7 @@ module Java::Util::Regex
           @cmax = cmax
         end
         
-        typesig { [Matcher, ::Java::Int, CharSequence] }
+        typesig { [self::Matcher, ::Java::Int, self::CharSequence] }
         def match(matcher, i, seq)
           j = 0
           j = 0
@@ -4409,7 +4409,7 @@ module Java::Util::Regex
           end
         end
         
-        typesig { [Matcher, ::Java::Int, ::Java::Int, CharSequence] }
+        typesig { [self::Matcher, ::Java::Int, ::Java::Int, self::CharSequence] }
         # Greedy match.
         # i is the index to start matching at
         # j is the number of atoms that have matched
@@ -4457,7 +4457,7 @@ module Java::Util::Regex
           return self.attr_next.match(matcher, i, seq)
         end
         
-        typesig { [Matcher, ::Java::Int, ::Java::Int, CharSequence] }
+        typesig { [self::Matcher, ::Java::Int, ::Java::Int, self::CharSequence] }
         # Reluctant match. At this point, the minimum has been satisfied.
         # i is the index to start matching at
         # j is the number of atoms that have matched
@@ -4485,7 +4485,7 @@ module Java::Util::Regex
           end
         end
         
-        typesig { [Matcher, ::Java::Int, ::Java::Int, CharSequence] }
+        typesig { [self::Matcher, ::Java::Int, ::Java::Int, self::CharSequence] }
         def match2(matcher, i, j, seq)
           while j < @cmax
             if (!@atom.match(matcher, i, seq))
@@ -4500,7 +4500,7 @@ module Java::Util::Regex
           return self.attr_next.match(matcher, i, seq)
         end
         
-        typesig { [TreeInfo] }
+        typesig { [self::TreeInfo] }
         def study(info)
           # Save original info
           min_l = info.attr_min_length
@@ -4586,7 +4586,7 @@ module Java::Util::Regex
         alias_method :attr_capture=, :capture=
         undef_method :capture=
         
-        typesig { [Node, ::Java::Int, ::Java::Int, ::Java::Int, ::Java::Int, ::Java::Int, ::Java::Boolean] }
+        typesig { [self::Node, ::Java::Int, ::Java::Int, ::Java::Int, ::Java::Int, ::Java::Int, ::Java::Boolean] }
         def initialize(node, cmin, cmax, type, local, group, capture)
           @atom = nil
           @type = 0
@@ -4605,7 +4605,7 @@ module Java::Util::Regex
           @capture = capture
         end
         
-        typesig { [Matcher, ::Java::Int, CharSequence] }
+        typesig { [self::Matcher, ::Java::Int, self::CharSequence] }
         def match(matcher, i, seq)
           groups = matcher.attr_groups
           locals = matcher.attr_locals
@@ -4655,7 +4655,7 @@ module Java::Util::Regex
           return ret
         end
         
-        typesig { [Matcher, ::Java::Int, ::Java::Int, CharSequence] }
+        typesig { [self::Matcher, ::Java::Int, ::Java::Int, self::CharSequence] }
         # Aggressive group match
         def match0(matcher, i, j, seq)
           groups = matcher.attr_groups
@@ -4726,7 +4726,7 @@ module Java::Util::Regex
           return self.attr_next.match(matcher, i, seq)
         end
         
-        typesig { [Matcher, ::Java::Int, ::Java::Int, CharSequence] }
+        typesig { [self::Matcher, ::Java::Int, ::Java::Int, self::CharSequence] }
         # Reluctant matching
         def match1(matcher, i, j, seq)
           loop do
@@ -4751,7 +4751,7 @@ module Java::Util::Regex
           end
         end
         
-        typesig { [Matcher, ::Java::Int, ::Java::Int, CharSequence] }
+        typesig { [self::Matcher, ::Java::Int, ::Java::Int, self::CharSequence] }
         # Possessive matching
         def match2(matcher, i, j, seq)
           while j < @cmax
@@ -4771,7 +4771,7 @@ module Java::Util::Regex
           return self.attr_next.match(matcher, i, seq)
         end
         
-        typesig { [TreeInfo] }
+        typesig { [self::TreeInfo] }
         def study(info)
           # Save original info
           min_l = info.attr_min_length
@@ -4819,12 +4819,12 @@ module Java::Util::Regex
           super()
         end
         
-        typesig { [Matcher, ::Java::Int, CharSequence] }
+        typesig { [self::Matcher, ::Java::Int, self::CharSequence] }
         def match(matcher, i, seq)
           return self.attr_next.match(matcher, i, seq)
         end
         
-        typesig { [TreeInfo] }
+        typesig { [self::TreeInfo] }
         def study(info)
           return info.attr_deterministic
         end
@@ -4857,30 +4857,30 @@ module Java::Util::Regex
         alias_method :attr_conn=, :conn=
         undef_method :conn=
         
-        typesig { [Node, Node, Node] }
+        typesig { [self::Node, self::Node, self::Node] }
         def initialize(first, second, branch_conn)
           @atoms = nil
           @size = 0
           @conn = nil
           super()
-          @atoms = Array.typed(Node).new(2) { nil }
+          @atoms = Array.typed(self.class::Node).new(2) { nil }
           @size = 2
           @conn = branch_conn
           @atoms[0] = first
           @atoms[1] = second
         end
         
-        typesig { [Node] }
+        typesig { [self::Node] }
         def add(node)
           if (@size >= @atoms.attr_length)
-            tmp = Array.typed(Node).new(@atoms.attr_length * 2) { nil }
+            tmp = Array.typed(self.class::Node).new(@atoms.attr_length * 2) { nil }
             System.arraycopy(@atoms, 0, tmp, 0, @atoms.attr_length)
             @atoms = tmp
           end
           @atoms[((@size += 1) - 1)] = node
         end
         
-        typesig { [Matcher, ::Java::Int, CharSequence] }
+        typesig { [self::Matcher, ::Java::Int, self::CharSequence] }
         def match(matcher, i, seq)
           n = 0
           while n < @size
@@ -4898,7 +4898,7 @@ module Java::Util::Regex
           return false
         end
         
-        typesig { [TreeInfo] }
+        typesig { [self::TreeInfo] }
         def study(info)
           min_l = info.attr_min_length
           max_l = info.attr_max_length
@@ -4954,7 +4954,7 @@ module Java::Util::Regex
           @local_index = local_count
         end
         
-        typesig { [Matcher, ::Java::Int, CharSequence] }
+        typesig { [self::Matcher, ::Java::Int, self::CharSequence] }
         def match(matcher, i, seq)
           save = matcher.attr_locals[@local_index]
           matcher.attr_locals[@local_index] = i
@@ -4963,7 +4963,7 @@ module Java::Util::Regex
           return ret
         end
         
-        typesig { [Matcher, ::Java::Int, CharSequence] }
+        typesig { [self::Matcher, ::Java::Int, self::CharSequence] }
         def match_ref(matcher, i, seq)
           save = matcher.attr_locals[@local_index]
           matcher.attr_locals[@local_index] = ~i # HACK
@@ -4988,19 +4988,19 @@ module Java::Util::Regex
         alias_method :attr_head=, :head=
         undef_method :head=
         
-        typesig { [GroupHead] }
+        typesig { [self::GroupHead] }
         def initialize(head)
           @head = nil
           super()
           @head = head
         end
         
-        typesig { [Matcher, ::Java::Int, CharSequence] }
+        typesig { [self::Matcher, ::Java::Int, self::CharSequence] }
         def match(matcher, i, seq)
           return @head.match_ref(matcher, i, seq) && self.attr_next.match(matcher, matcher.attr_last, seq)
         end
         
-        typesig { [TreeInfo] }
+        typesig { [self::TreeInfo] }
         def study(info)
           info.attr_max_valid = false
           info.attr_deterministic = false
@@ -5041,7 +5041,7 @@ module Java::Util::Regex
           @group_index = group_count + group_count
         end
         
-        typesig { [Matcher, ::Java::Int, CharSequence] }
+        typesig { [self::Matcher, ::Java::Int, self::CharSequence] }
         def match(matcher, i, seq)
           tmp = matcher.attr_locals[@local_index]
           if (tmp >= 0)
@@ -5080,19 +5080,19 @@ module Java::Util::Regex
         alias_method :attr_loop=, :loop=
         undef_method :loop=
         
-        typesig { [Loop] }
+        typesig { [self::Loop] }
         def initialize(loop)
           @loop = nil
           super()
           @loop = loop
         end
         
-        typesig { [Matcher, ::Java::Int, CharSequence] }
+        typesig { [self::Matcher, ::Java::Int, self::CharSequence] }
         def match(matcher, i, seq)
           return @loop.match_init(matcher, i, seq)
         end
         
-        typesig { [TreeInfo] }
+        typesig { [self::TreeInfo] }
         def study(info)
           return @loop.study(info)
         end
@@ -5152,7 +5152,7 @@ module Java::Util::Regex
           @begin_index = begin_index
         end
         
-        typesig { [Matcher, ::Java::Int, CharSequence] }
+        typesig { [self::Matcher, ::Java::Int, self::CharSequence] }
         def match(matcher, i, seq)
           # Avoid infinite loop in zero-length case.
           if (i > matcher.attr_locals[@begin_index])
@@ -5188,7 +5188,7 @@ module Java::Util::Regex
           return self.attr_next.match(matcher, i, seq)
         end
         
-        typesig { [Matcher, ::Java::Int, CharSequence] }
+        typesig { [self::Matcher, ::Java::Int, self::CharSequence] }
         def match_init(matcher, i, seq)
           save = matcher.attr_locals[@count_index]
           ret = false
@@ -5210,7 +5210,7 @@ module Java::Util::Regex
           return ret
         end
         
-        typesig { [TreeInfo] }
+        typesig { [self::TreeInfo] }
         def study(info)
           info.attr_max_valid = false
           info.attr_deterministic = false
@@ -5233,7 +5233,7 @@ module Java::Util::Regex
           super(count_index, begin_index)
         end
         
-        typesig { [Matcher, ::Java::Int, CharSequence] }
+        typesig { [self::Matcher, ::Java::Int, self::CharSequence] }
         def match(matcher, i, seq)
           # Check for zero length group
           if (i > matcher.attr_locals[self.attr_begin_index])
@@ -5266,7 +5266,7 @@ module Java::Util::Regex
           return self.attr_next.match(matcher, i, seq)
         end
         
-        typesig { [Matcher, ::Java::Int, CharSequence] }
+        typesig { [self::Matcher, ::Java::Int, self::CharSequence] }
         def match_init(matcher, i, seq)
           save = matcher.attr_locals[self.attr_count_index]
           ret = false
@@ -5287,7 +5287,7 @@ module Java::Util::Regex
           return ret
         end
         
-        typesig { [TreeInfo] }
+        typesig { [self::TreeInfo] }
         def study(info)
           info.attr_max_valid = false
           info.attr_deterministic = false
@@ -5316,7 +5316,7 @@ module Java::Util::Regex
           @group_index = group_count + group_count
         end
         
-        typesig { [Matcher, ::Java::Int, CharSequence] }
+        typesig { [self::Matcher, ::Java::Int, self::CharSequence] }
         def match(matcher, i, seq)
           j = matcher.attr_groups[@group_index]
           k = matcher.attr_groups[@group_index + 1]
@@ -5342,7 +5342,7 @@ module Java::Util::Regex
           return self.attr_next.match(matcher, i + group_size, seq)
         end
         
-        typesig { [TreeInfo] }
+        typesig { [self::TreeInfo] }
         def study(info)
           info.attr_max_valid = false
           return self.attr_next.study(info)
@@ -5376,7 +5376,7 @@ module Java::Util::Regex
           @do_unicode_case = do_unicode_case
         end
         
-        typesig { [Matcher, ::Java::Int, CharSequence] }
+        typesig { [self::Matcher, ::Java::Int, self::CharSequence] }
         def match(matcher, i, seq)
           j = matcher.attr_groups[@group_index]
           k = matcher.attr_groups[@group_index + 1]
@@ -5417,7 +5417,7 @@ module Java::Util::Regex
           return self.attr_next.match(matcher, i + group_size, seq)
         end
         
-        typesig { [TreeInfo] }
+        typesig { [self::TreeInfo] }
         def study(info)
           info.attr_max_valid = false
           return self.attr_next.study(info)
@@ -5440,16 +5440,16 @@ module Java::Util::Regex
         alias_method :attr_atom=, :atom=
         undef_method :atom=
         
-        typesig { [Node] }
+        typesig { [self::Node] }
         def initialize(node)
           @atom = nil
           super()
           @atom = BnM.optimize(node)
         end
         
-        typesig { [Matcher, ::Java::Int, CharSequence] }
+        typesig { [self::Matcher, ::Java::Int, self::CharSequence] }
         def match(matcher, i, seq)
-          if (@atom.is_a?(BnM))
+          if (@atom.is_a?(self.class::BnM))
             return @atom.match(matcher, i, seq) && self.attr_next.match(matcher, matcher.attr_last, seq)
           end
           loop do
@@ -5465,7 +5465,7 @@ module Java::Util::Regex
           end
         end
         
-        typesig { [TreeInfo] }
+        typesig { [self::TreeInfo] }
         def study(info)
           @atom.study(info)
           info.attr_max_valid = false
@@ -5498,7 +5498,7 @@ module Java::Util::Regex
         alias_method :attr_not=, :not=
         undef_method :not=
         
-        typesig { [Node, Node, Node] }
+        typesig { [self::Node, self::Node, self::Node] }
         def initialize(cond, yes, not_)
           @cond = nil
           @yes = nil
@@ -5509,7 +5509,7 @@ module Java::Util::Regex
           @not = not_
         end
         
-        typesig { [Matcher, ::Java::Int, CharSequence] }
+        typesig { [self::Matcher, ::Java::Int, self::CharSequence] }
         def match(matcher, i, seq)
           if (@cond.match(matcher, i, seq))
             return @yes.match(matcher, i, seq)
@@ -5518,7 +5518,7 @@ module Java::Util::Regex
           end
         end
         
-        typesig { [TreeInfo] }
+        typesig { [self::TreeInfo] }
         def study(info)
           min_l = info.attr_min_length
           max_l = info.attr_max_length
@@ -5551,14 +5551,14 @@ module Java::Util::Regex
         alias_method :attr_cond=, :cond=
         undef_method :cond=
         
-        typesig { [Node] }
+        typesig { [self::Node] }
         def initialize(cond)
           @cond = nil
           super()
           @cond = cond
         end
         
-        typesig { [Matcher, ::Java::Int, CharSequence] }
+        typesig { [self::Matcher, ::Java::Int, self::CharSequence] }
         def match(matcher, i, seq)
           saved_to = matcher.attr_to
           condition_matched = false
@@ -5589,14 +5589,14 @@ module Java::Util::Regex
         alias_method :attr_cond=, :cond=
         undef_method :cond=
         
-        typesig { [Node] }
+        typesig { [self::Node] }
         def initialize(cond)
           @cond = nil
           super()
           @cond = cond
         end
         
-        typesig { [Matcher, ::Java::Int, CharSequence] }
+        typesig { [self::Matcher, ::Java::Int, self::CharSequence] }
         def match(matcher, i, seq)
           saved_to = matcher.attr_to
           condition_matched = false
@@ -5676,7 +5676,7 @@ module Java::Util::Regex
         alias_method :attr_rmin=, :rmin=
         undef_method :rmin=
         
-        typesig { [Node, ::Java::Int, ::Java::Int] }
+        typesig { [self::Node, ::Java::Int, ::Java::Int] }
         def initialize(cond, rmax, rmin)
           @cond = nil
           @rmax = 0
@@ -5687,7 +5687,7 @@ module Java::Util::Regex
           @rmin = rmin
         end
         
-        typesig { [Matcher, ::Java::Int, CharSequence] }
+        typesig { [self::Matcher, ::Java::Int, self::CharSequence] }
         def match(matcher, i, seq)
           saved_from = matcher.attr_from
           condition_matched = false
@@ -5719,12 +5719,12 @@ module Java::Util::Regex
       const_set_lazy(:BehindS) { Class.new(Behind) do
         include_class_members Pattern
         
-        typesig { [Node, ::Java::Int, ::Java::Int] }
+        typesig { [self::Node, ::Java::Int, ::Java::Int] }
         def initialize(cond, rmax, rmin)
           super(cond, rmax, rmin)
         end
         
-        typesig { [Matcher, ::Java::Int, CharSequence] }
+        typesig { [self::Matcher, ::Java::Int, self::CharSequence] }
         def match(matcher, i, seq)
           rmax_chars = count_chars(seq, i, -self.attr_rmax)
           rmin_chars = count_chars(seq, i, -self.attr_rmin)
@@ -5775,7 +5775,7 @@ module Java::Util::Regex
         alias_method :attr_rmin=, :rmin=
         undef_method :rmin=
         
-        typesig { [Node, ::Java::Int, ::Java::Int] }
+        typesig { [self::Node, ::Java::Int, ::Java::Int] }
         def initialize(cond, rmax, rmin)
           @cond = nil
           @rmax = 0
@@ -5786,7 +5786,7 @@ module Java::Util::Regex
           @rmin = rmin
         end
         
-        typesig { [Matcher, ::Java::Int, CharSequence] }
+        typesig { [self::Matcher, ::Java::Int, self::CharSequence] }
         def match(matcher, i, seq)
           saved_lbt = matcher.attr_lookbehind_to
           saved_from = matcher.attr_from
@@ -5818,12 +5818,12 @@ module Java::Util::Regex
       const_set_lazy(:NotBehindS) { Class.new(NotBehind) do
         include_class_members Pattern
         
-        typesig { [Node, ::Java::Int, ::Java::Int] }
+        typesig { [self::Node, ::Java::Int, ::Java::Int] }
         def initialize(cond, rmax, rmin)
           super(cond, rmax, rmin)
         end
         
-        typesig { [Matcher, ::Java::Int, CharSequence] }
+        typesig { [self::Matcher, ::Java::Int, self::CharSequence] }
         def match(matcher, i, seq)
           rmax_chars = count_chars(seq, i, -self.attr_rmax)
           rmin_chars = count_chars(seq, i, -self.attr_rmin)
@@ -5988,7 +5988,7 @@ module Java::Util::Regex
           @type = n
         end
         
-        typesig { [Matcher, ::Java::Int, CharSequence] }
+        typesig { [self::Matcher, ::Java::Int, self::CharSequence] }
         def check(matcher, i, seq)
           ch = 0
           left = false
@@ -6015,7 +6015,7 @@ module Java::Util::Regex
           return ((left ^ right) ? (right ? self.attr_left : self.attr_right) : self.attr_none)
         end
         
-        typesig { [Matcher, ::Java::Int, CharSequence] }
+        typesig { [self::Matcher, ::Java::Int, self::CharSequence] }
         def match(matcher, i, seq)
           return (check(matcher, i, seq) & @type) > 0 && self.attr_next.match(matcher, i, seq)
         end
@@ -6093,14 +6093,14 @@ module Java::Util::Regex
         undef_method :opto_sft=
         
         class_module.module_eval {
-          typesig { [Node] }
+          typesig { [self::Node] }
           # Pre calculates arrays needed to generate the bad character
           # shift and the good suffix shift. Only the last seven bits
           # are used to see if chars match; This keeps the tables small
           # and covers the heavily used ASCII range, but occasionally
           # results in an aliased match for the bad character shift.
           def optimize(node)
-            if (!(node.is_a?(Slice)))
+            if (!(node.is_a?(self.class::Slice)))
               return node
             end
             src = (node).attr_buffer
@@ -6155,14 +6155,14 @@ module Java::Util::Regex
             end
             # Set the guard value because of unicode compression
             opto_sft[pattern_length - 1] = 1
-            if (node.is_a?(SliceS))
-              return BnMS.new(src, last_occ, opto_sft, node.attr_next)
+            if (node.is_a?(self.class::SliceS))
+              return self.class::BnMS.new(src, last_occ, opto_sft, node.attr_next)
             end
-            return BnM.new(src, last_occ, opto_sft, node.attr_next)
+            return self.class::BnM.new(src, last_occ, opto_sft, node.attr_next)
           end
         }
         
-        typesig { [Array.typed(::Java::Int), Array.typed(::Java::Int), Array.typed(::Java::Int), Node] }
+        typesig { [Array.typed(::Java::Int), Array.typed(::Java::Int), Array.typed(::Java::Int), self::Node] }
         def initialize(src, last_occ, opto_sft, next_)
           @buffer = nil
           @last_occ = nil
@@ -6174,7 +6174,7 @@ module Java::Util::Regex
           self.attr_next = next_
         end
         
-        typesig { [Matcher, ::Java::Int, CharSequence] }
+        typesig { [self::Matcher, ::Java::Int, self::CharSequence] }
         def match(matcher, i, seq)
           src = @buffer
           pattern_length = src.attr_length
@@ -6213,7 +6213,7 @@ module Java::Util::Regex
           return false
         end
         
-        typesig { [TreeInfo] }
+        typesig { [self::TreeInfo] }
         def study(info)
           info.attr_min_length += @buffer.attr_length
           info.attr_max_valid = false
@@ -6235,7 +6235,7 @@ module Java::Util::Regex
         alias_method :attr_length_in_chars=, :length_in_chars=
         undef_method :length_in_chars=
         
-        typesig { [Array.typed(::Java::Int), Array.typed(::Java::Int), Array.typed(::Java::Int), Node] }
+        typesig { [Array.typed(::Java::Int), Array.typed(::Java::Int), Array.typed(::Java::Int), self::Node] }
         def initialize(src, last_occ, opto_sft, next_)
           @length_in_chars = 0
           super(src, last_occ, opto_sft, next_)
@@ -6246,7 +6246,7 @@ module Java::Util::Regex
           end
         end
         
-        typesig { [Matcher, ::Java::Int, CharSequence] }
+        typesig { [self::Matcher, ::Java::Int, self::CharSequence] }
         def match(matcher, i, seq)
           src = self.attr_buffer
           pattern_length = src.attr_length
@@ -6320,7 +6320,7 @@ module Java::Util::Regex
         include_class_members Pattern
         
         class_module.module_eval {
-          typesig { [String] }
+          typesig { [self::String] }
           def char_property_for(name)
             m = self.class::Map.get(name)
             return (m).nil? ? nil : m.make
@@ -6342,16 +6342,16 @@ module Java::Util::Regex
             alias_method :initialize__char_property_factory, :initialize
           end }
           
-          typesig { [String, ::Java::Int] }
+          typesig { [self::String, ::Java::Int] }
           def def_category(name, type_mask)
-            self.class::Map.put(name, Class.new(CharPropertyFactory.class == Class ? CharPropertyFactory : Object) do
+            self.class::Map.put(name, Class.new(self.class::CharPropertyFactory.class == Class ? self.class::CharPropertyFactory : Object) do
               extend LocalClass
               include_class_members CharPropertyNames
-              include CharPropertyFactory if CharPropertyFactory.class == Module
+              include self::CharPropertyFactory if self::CharPropertyFactory.class == Module
               
               typesig { [] }
               define_method :make do
-                return Category.new(type_mask)
+                return self.class::Category.new(type_mask)
               end
               
               typesig { [] }
@@ -6364,12 +6364,12 @@ module Java::Util::Regex
             end.new_local(self))
           end
           
-          typesig { [String, ::Java::Int, ::Java::Int] }
+          typesig { [self::String, ::Java::Int, ::Java::Int] }
           def def_range(name, lower, upper)
-            self.class::Map.put(name, Class.new(CharPropertyFactory.class == Class ? CharPropertyFactory : Object) do
+            self.class::Map.put(name, Class.new(self.class::CharPropertyFactory.class == Class ? self.class::CharPropertyFactory : Object) do
               extend LocalClass
               include_class_members CharPropertyNames
-              include CharPropertyFactory if CharPropertyFactory.class == Module
+              include self::CharPropertyFactory if self::CharPropertyFactory.class == Module
               
               typesig { [] }
               define_method :make do
@@ -6386,16 +6386,16 @@ module Java::Util::Regex
             end.new_local(self))
           end
           
-          typesig { [String, ::Java::Int] }
+          typesig { [self::String, ::Java::Int] }
           def def_ctype(name, ctype)
-            self.class::Map.put(name, Class.new(CharPropertyFactory.class == Class ? CharPropertyFactory : Object) do
+            self.class::Map.put(name, Class.new(self.class::CharPropertyFactory.class == Class ? self.class::CharPropertyFactory : Object) do
               extend LocalClass
               include_class_members CharPropertyNames
-              include CharPropertyFactory if CharPropertyFactory.class == Module
+              include self::CharPropertyFactory if self::CharPropertyFactory.class == Module
               
               typesig { [] }
               define_method :make do
-                return Ctype.new(ctype)
+                return self.class::Ctype.new(ctype)
               end
               
               typesig { [] }
@@ -6408,18 +6408,18 @@ module Java::Util::Regex
             end.new_local(self))
           end
           
-          const_set_lazy(:CloneableProperty) { Class.new(CharProperty) do
+          const_set_lazy(:CloneableProperty) { Class.new(self.class::CharProperty) do
             include_class_members CharPropertyNames
             overload_protected {
-              include Cloneable
+              include self.class::Cloneable
             }
             
             typesig { [] }
             def clone
               begin
                 return super
-              rescue CloneNotSupportedException => e
-                raise AssertionError.new(e)
+              rescue self.class::CloneNotSupportedException => e
+                raise self.class::AssertionError.new(e)
               end
             end
             
@@ -6432,12 +6432,12 @@ module Java::Util::Regex
             alias_method :initialize__cloneable_property, :initialize
           end }
           
-          typesig { [String, CloneableProperty] }
+          typesig { [self::String, self::CloneableProperty] }
           def def_clone(name, p)
-            self.class::Map.put(name, Class.new(CharPropertyFactory.class == Class ? CharPropertyFactory : Object) do
+            self.class::Map.put(name, Class.new(self.class::CharPropertyFactory.class == Class ? self.class::CharPropertyFactory : Object) do
               extend LocalClass
               include_class_members CharPropertyNames
-              include CharPropertyFactory if CharPropertyFactory.class == Module
+              include self::CharPropertyFactory if self::CharPropertyFactory.class == Module
               
               typesig { [] }
               define_method :make do
@@ -6454,7 +6454,7 @@ module Java::Util::Regex
             end.new_local(self))
           end
           
-          const_set_lazy(:Map) { HashMap.new }
+          const_set_lazy(:Map) { self.class::HashMap.new }
           const_attr_reader  :Map
           
           when_class_loaded do
@@ -6500,14 +6500,14 @@ module Java::Util::Regex
             def_category("LC", ((1 << Character::UPPERCASE_LETTER) | (1 << Character::LOWERCASE_LETTER) | (1 << Character::TITLECASE_LETTER)))
             def_category("LD", ((1 << Character::UPPERCASE_LETTER) | (1 << Character::LOWERCASE_LETTER) | (1 << Character::TITLECASE_LETTER) | (1 << Character::MODIFIER_LETTER) | (1 << Character::OTHER_LETTER) | (1 << Character::DECIMAL_DIGIT_NUMBER)))
             def_range("L1", 0x0, 0xff) # Latin-1
-            self.class::Map.put("all", Class.new(CharPropertyFactory.class == Class ? CharPropertyFactory : Object) do
+            self.class::Map.put("all", Class.new(self.class::CharPropertyFactory.class == Class ? self.class::CharPropertyFactory : Object) do
               extend LocalClass
               include_class_members CharPropertyNames
-              include CharPropertyFactory if CharPropertyFactory.class == Module
+              include self::CharPropertyFactory if self::CharPropertyFactory.class == Module
               
               typesig { [] }
               define_method :make do
-                return All.new
+                return self.class::All.new
               end
               
               typesig { [] }
@@ -6534,10 +6534,10 @@ module Java::Util::Regex
             def_range("Upper", Character.new(?A.ord), Character.new(?Z.ord)) # Upper-case alphabetic
             def_ctype("XDigit", ASCII::XDIGIT) # hexadecimal digits
             def_clone("javaLowerCase", # Java character properties, defined by methods in Character.java
-            Class.new(CloneableProperty.class == Class ? CloneableProperty : Object) do
+            Class.new(self.class::CloneableProperty.class == Class ? self.class::CloneableProperty : Object) do
               extend LocalClass
               include_class_members CharPropertyNames
-              include CloneableProperty if CloneableProperty.class == Module
+              include self::CloneableProperty if self::CloneableProperty.class == Module
               
               typesig { [::Java::Int] }
               define_method :is_satisfied_by do |ch|
@@ -6552,10 +6552,10 @@ module Java::Util::Regex
               private
               alias_method :initialize_anonymous, :initialize
             end.new_local(self))
-            def_clone("javaUpperCase", Class.new(CloneableProperty.class == Class ? CloneableProperty : Object) do
+            def_clone("javaUpperCase", Class.new(self.class::CloneableProperty.class == Class ? self.class::CloneableProperty : Object) do
               extend LocalClass
               include_class_members CharPropertyNames
-              include CloneableProperty if CloneableProperty.class == Module
+              include self::CloneableProperty if self::CloneableProperty.class == Module
               
               typesig { [::Java::Int] }
               define_method :is_satisfied_by do |ch|
@@ -6570,10 +6570,10 @@ module Java::Util::Regex
               private
               alias_method :initialize_anonymous, :initialize
             end.new_local(self))
-            def_clone("javaTitleCase", Class.new(CloneableProperty.class == Class ? CloneableProperty : Object) do
+            def_clone("javaTitleCase", Class.new(self.class::CloneableProperty.class == Class ? self.class::CloneableProperty : Object) do
               extend LocalClass
               include_class_members CharPropertyNames
-              include CloneableProperty if CloneableProperty.class == Module
+              include self::CloneableProperty if self::CloneableProperty.class == Module
               
               typesig { [::Java::Int] }
               define_method :is_satisfied_by do |ch|
@@ -6588,10 +6588,10 @@ module Java::Util::Regex
               private
               alias_method :initialize_anonymous, :initialize
             end.new_local(self))
-            def_clone("javaDigit", Class.new(CloneableProperty.class == Class ? CloneableProperty : Object) do
+            def_clone("javaDigit", Class.new(self.class::CloneableProperty.class == Class ? self.class::CloneableProperty : Object) do
               extend LocalClass
               include_class_members CharPropertyNames
-              include CloneableProperty if CloneableProperty.class == Module
+              include self::CloneableProperty if self::CloneableProperty.class == Module
               
               typesig { [::Java::Int] }
               define_method :is_satisfied_by do |ch|
@@ -6606,10 +6606,10 @@ module Java::Util::Regex
               private
               alias_method :initialize_anonymous, :initialize
             end.new_local(self))
-            def_clone("javaDefined", Class.new(CloneableProperty.class == Class ? CloneableProperty : Object) do
+            def_clone("javaDefined", Class.new(self.class::CloneableProperty.class == Class ? self.class::CloneableProperty : Object) do
               extend LocalClass
               include_class_members CharPropertyNames
-              include CloneableProperty if CloneableProperty.class == Module
+              include self::CloneableProperty if self::CloneableProperty.class == Module
               
               typesig { [::Java::Int] }
               define_method :is_satisfied_by do |ch|
@@ -6624,10 +6624,10 @@ module Java::Util::Regex
               private
               alias_method :initialize_anonymous, :initialize
             end.new_local(self))
-            def_clone("javaLetter", Class.new(CloneableProperty.class == Class ? CloneableProperty : Object) do
+            def_clone("javaLetter", Class.new(self.class::CloneableProperty.class == Class ? self.class::CloneableProperty : Object) do
               extend LocalClass
               include_class_members CharPropertyNames
-              include CloneableProperty if CloneableProperty.class == Module
+              include self::CloneableProperty if self::CloneableProperty.class == Module
               
               typesig { [::Java::Int] }
               define_method :is_satisfied_by do |ch|
@@ -6642,10 +6642,10 @@ module Java::Util::Regex
               private
               alias_method :initialize_anonymous, :initialize
             end.new_local(self))
-            def_clone("javaLetterOrDigit", Class.new(CloneableProperty.class == Class ? CloneableProperty : Object) do
+            def_clone("javaLetterOrDigit", Class.new(self.class::CloneableProperty.class == Class ? self.class::CloneableProperty : Object) do
               extend LocalClass
               include_class_members CharPropertyNames
-              include CloneableProperty if CloneableProperty.class == Module
+              include self::CloneableProperty if self::CloneableProperty.class == Module
               
               typesig { [::Java::Int] }
               define_method :is_satisfied_by do |ch|
@@ -6660,10 +6660,10 @@ module Java::Util::Regex
               private
               alias_method :initialize_anonymous, :initialize
             end.new_local(self))
-            def_clone("javaJavaIdentifierStart", Class.new(CloneableProperty.class == Class ? CloneableProperty : Object) do
+            def_clone("javaJavaIdentifierStart", Class.new(self.class::CloneableProperty.class == Class ? self.class::CloneableProperty : Object) do
               extend LocalClass
               include_class_members CharPropertyNames
-              include CloneableProperty if CloneableProperty.class == Module
+              include self::CloneableProperty if self::CloneableProperty.class == Module
               
               typesig { [::Java::Int] }
               define_method :is_satisfied_by do |ch|
@@ -6678,10 +6678,10 @@ module Java::Util::Regex
               private
               alias_method :initialize_anonymous, :initialize
             end.new_local(self))
-            def_clone("javaJavaIdentifierPart", Class.new(CloneableProperty.class == Class ? CloneableProperty : Object) do
+            def_clone("javaJavaIdentifierPart", Class.new(self.class::CloneableProperty.class == Class ? self.class::CloneableProperty : Object) do
               extend LocalClass
               include_class_members CharPropertyNames
-              include CloneableProperty if CloneableProperty.class == Module
+              include self::CloneableProperty if self::CloneableProperty.class == Module
               
               typesig { [::Java::Int] }
               define_method :is_satisfied_by do |ch|
@@ -6696,10 +6696,10 @@ module Java::Util::Regex
               private
               alias_method :initialize_anonymous, :initialize
             end.new_local(self))
-            def_clone("javaUnicodeIdentifierStart", Class.new(CloneableProperty.class == Class ? CloneableProperty : Object) do
+            def_clone("javaUnicodeIdentifierStart", Class.new(self.class::CloneableProperty.class == Class ? self.class::CloneableProperty : Object) do
               extend LocalClass
               include_class_members CharPropertyNames
-              include CloneableProperty if CloneableProperty.class == Module
+              include self::CloneableProperty if self::CloneableProperty.class == Module
               
               typesig { [::Java::Int] }
               define_method :is_satisfied_by do |ch|
@@ -6714,10 +6714,10 @@ module Java::Util::Regex
               private
               alias_method :initialize_anonymous, :initialize
             end.new_local(self))
-            def_clone("javaUnicodeIdentifierPart", Class.new(CloneableProperty.class == Class ? CloneableProperty : Object) do
+            def_clone("javaUnicodeIdentifierPart", Class.new(self.class::CloneableProperty.class == Class ? self.class::CloneableProperty : Object) do
               extend LocalClass
               include_class_members CharPropertyNames
-              include CloneableProperty if CloneableProperty.class == Module
+              include self::CloneableProperty if self::CloneableProperty.class == Module
               
               typesig { [::Java::Int] }
               define_method :is_satisfied_by do |ch|
@@ -6732,10 +6732,10 @@ module Java::Util::Regex
               private
               alias_method :initialize_anonymous, :initialize
             end.new_local(self))
-            def_clone("javaIdentifierIgnorable", Class.new(CloneableProperty.class == Class ? CloneableProperty : Object) do
+            def_clone("javaIdentifierIgnorable", Class.new(self.class::CloneableProperty.class == Class ? self.class::CloneableProperty : Object) do
               extend LocalClass
               include_class_members CharPropertyNames
-              include CloneableProperty if CloneableProperty.class == Module
+              include self::CloneableProperty if self::CloneableProperty.class == Module
               
               typesig { [::Java::Int] }
               define_method :is_satisfied_by do |ch|
@@ -6750,10 +6750,10 @@ module Java::Util::Regex
               private
               alias_method :initialize_anonymous, :initialize
             end.new_local(self))
-            def_clone("javaSpaceChar", Class.new(CloneableProperty.class == Class ? CloneableProperty : Object) do
+            def_clone("javaSpaceChar", Class.new(self.class::CloneableProperty.class == Class ? self.class::CloneableProperty : Object) do
               extend LocalClass
               include_class_members CharPropertyNames
-              include CloneableProperty if CloneableProperty.class == Module
+              include self::CloneableProperty if self::CloneableProperty.class == Module
               
               typesig { [::Java::Int] }
               define_method :is_satisfied_by do |ch|
@@ -6768,10 +6768,10 @@ module Java::Util::Regex
               private
               alias_method :initialize_anonymous, :initialize
             end.new_local(self))
-            def_clone("javaWhitespace", Class.new(CloneableProperty.class == Class ? CloneableProperty : Object) do
+            def_clone("javaWhitespace", Class.new(self.class::CloneableProperty.class == Class ? self.class::CloneableProperty : Object) do
               extend LocalClass
               include_class_members CharPropertyNames
-              include CloneableProperty if CloneableProperty.class == Module
+              include self::CloneableProperty if self::CloneableProperty.class == Module
               
               typesig { [::Java::Int] }
               define_method :is_satisfied_by do |ch|
@@ -6786,10 +6786,10 @@ module Java::Util::Regex
               private
               alias_method :initialize_anonymous, :initialize
             end.new_local(self))
-            def_clone("javaISOControl", Class.new(CloneableProperty.class == Class ? CloneableProperty : Object) do
+            def_clone("javaISOControl", Class.new(self.class::CloneableProperty.class == Class ? self.class::CloneableProperty : Object) do
               extend LocalClass
               include_class_members CharPropertyNames
-              include CloneableProperty if CloneableProperty.class == Module
+              include self::CloneableProperty if self::CloneableProperty.class == Module
               
               typesig { [::Java::Int] }
               define_method :is_satisfied_by do |ch|
@@ -6804,10 +6804,10 @@ module Java::Util::Regex
               private
               alias_method :initialize_anonymous, :initialize
             end.new_local(self))
-            def_clone("javaMirrored", Class.new(CloneableProperty.class == Class ? CloneableProperty : Object) do
+            def_clone("javaMirrored", Class.new(self.class::CloneableProperty.class == Class ? self.class::CloneableProperty : Object) do
               extend LocalClass
               include_class_members CharPropertyNames
-              include CloneableProperty if CloneableProperty.class == Module
+              include self::CloneableProperty if self::CloneableProperty.class == Module
               
               typesig { [::Java::Int] }
               define_method :is_satisfied_by do |ch|

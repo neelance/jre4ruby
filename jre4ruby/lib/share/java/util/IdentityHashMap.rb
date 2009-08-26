@@ -796,10 +796,10 @@ module Java::Util
         typesig { [] }
         def next_index
           if (!(self.attr_mod_count).equal?(@expected_mod_count))
-            raise ConcurrentModificationException.new
+            raise self.class::ConcurrentModificationException.new
           end
           if (!@index_valid && !has_next)
-            raise NoSuchElementException.new
+            raise self.class::NoSuchElementException.new
           end
           @index_valid = false
           @last_returned_index = @index
@@ -810,10 +810,10 @@ module Java::Util
         typesig { [] }
         def remove
           if ((@last_returned_index).equal?(-1))
-            raise IllegalStateException.new
+            raise self.class::IllegalStateException.new
           end
           if (!(self.attr_mod_count).equal?(@expected_mod_count))
-            raise ConcurrentModificationException.new
+            raise self.class::ConcurrentModificationException.new
           end
           @expected_mod_count = (self.attr_mod_count += 1)
           deleted_slot = @last_returned_index
@@ -943,7 +943,7 @@ module Java::Util
         def get_key
           # Provide a better exception than out of bounds index
           if (self.attr_last_returned_index < 0)
-            raise IllegalStateException.new("Entry was removed")
+            raise self.class::IllegalStateException.new("Entry was removed")
           end
           return unmask_null(self.attr_traversal_table[self.attr_last_returned_index])
         end
@@ -952,16 +952,16 @@ module Java::Util
         def get_value
           # Provide a better exception than out of bounds index
           if (self.attr_last_returned_index < 0)
-            raise IllegalStateException.new("Entry was removed")
+            raise self.class::IllegalStateException.new("Entry was removed")
           end
           return self.attr_traversal_table[self.attr_last_returned_index + 1]
         end
         
-        typesig { [V] }
+        typesig { [self::V] }
         def set_value(value)
           # It would be mean-spirited to proceed here if remove() called
           if (self.attr_last_returned_index < 0)
-            raise IllegalStateException.new("Entry was removed")
+            raise self.class::IllegalStateException.new("Entry was removed")
           end
           old_value = self.attr_traversal_table[self.attr_last_returned_index + 1]
           self.attr_traversal_table[self.attr_last_returned_index + 1] = value
@@ -977,7 +977,7 @@ module Java::Util
           if (self.attr_last_returned_index < 0)
             return super(o)
           end
-          if (!(o.is_a?(Map::Entry)))
+          if (!(o.is_a?(self.class::Map::Entry)))
             return false
           end
           e = o
@@ -1074,7 +1074,7 @@ module Java::Util
         
         typesig { [] }
         def iterator
-          return KeyIterator.new
+          return self.class::KeyIterator.new
         end
         
         typesig { [] }
@@ -1094,7 +1094,7 @@ module Java::Util
           return !(self.attr_size).equal?(old_size)
         end
         
-        typesig { [Collection] }
+        typesig { [self::Collection] }
         # Must revert from AbstractSet's impl to AbstractCollection's, as
         # the former contains an optimization that results in incorrect
         # behavior when c is a smaller "normal" (non-identity-based) Set.
@@ -1169,7 +1169,7 @@ module Java::Util
         
         typesig { [] }
         def iterator
-          return ValueIterator.new
+          return self.class::ValueIterator.new
         end
         
         typesig { [] }
@@ -1262,12 +1262,12 @@ module Java::Util
         
         typesig { [] }
         def iterator
-          return EntryIterator.new
+          return self.class::EntryIterator.new
         end
         
         typesig { [Object] }
         def contains(o)
-          if (!(o.is_a?(Map::Entry)))
+          if (!(o.is_a?(self.class::Map::Entry)))
             return false
           end
           entry = o
@@ -1276,7 +1276,7 @@ module Java::Util
         
         typesig { [Object] }
         def remove(o)
-          if (!(o.is_a?(Map::Entry)))
+          if (!(o.is_a?(self.class::Map::Entry)))
             return false
           end
           entry = o
@@ -1293,7 +1293,7 @@ module Java::Util
           @local_class_parent.clear
         end
         
-        typesig { [Collection] }
+        typesig { [self::Collection] }
         # Must revert from AbstractSet's impl to AbstractCollection's, as
         # the former contains an optimization that results in incorrect
         # behavior when c is a smaller "normal" (non-identity-based) Set.
@@ -1316,13 +1316,13 @@ module Java::Util
           it = iterator
           i = 0
           while i < size_
-            result[i] = AbstractMap::SimpleEntry.new(it.next_)
+            result[i] = self.class::AbstractMap::SimpleEntry.new(it.next_)
             i += 1
           end
           return result
         end
         
-        typesig { [Array.typed(T)] }
+        typesig { [Array.typed(self::T)] }
         def to_array(a)
           size_ = size
           if (a.attr_length < size_)
@@ -1331,7 +1331,7 @@ module Java::Util
           it = iterator
           i = 0
           while i < size_
-            a[i] = AbstractMap::SimpleEntry.new(it.next_)
+            a[i] = self.class::AbstractMap::SimpleEntry.new(it.next_)
             i += 1
           end
           if (a.attr_length > size_)

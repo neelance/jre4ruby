@@ -239,7 +239,7 @@ module Sun::Nio::Cs::Ext
         alias_method :attr_current_state=, :current_state=
         undef_method :current_state=
         
-        typesig { [Charset] }
+        typesig { [self::Charset] }
         def initialize(cs)
           @current_state = 0
           super(cs, 1.0, 2.0)
@@ -275,7 +275,7 @@ module Sun::Nio::Cs::Ext
           @current_state = GB18030_DOUBLE_BYTE
         end
         
-        typesig { [ByteBuffer, CharBuffer] }
+        typesig { [self::ByteBuffer, self::CharBuffer] }
         def decode_array_loop(src, dst)
           sa = src.array
           sp = src.array_offset + src.position
@@ -397,7 +397,7 @@ module Sun::Nio::Cs::Ext
           end
         end
         
-        typesig { [ByteBuffer, CharBuffer] }
+        typesig { [self::ByteBuffer, self::CharBuffer] }
         def decode_buffer_loop(src, dst)
           mark = src.position
           begin
@@ -507,7 +507,7 @@ module Sun::Nio::Cs::Ext
           end
         end
         
-        typesig { [ByteBuffer, CharBuffer] }
+        typesig { [self::ByteBuffer, self::CharBuffer] }
         def decode_loop(src, dst)
           if (src.has_array && dst.has_array)
             return decode_array_loop(src, dst)
@@ -529,13 +529,13 @@ module Sun::Nio::Cs::Ext
         alias_method :attr_current_state=, :current_state=
         undef_method :current_state=
         
-        typesig { [Charset] }
+        typesig { [self::Charset] }
         def initialize(cs)
           @current_state = 0
           @sgp = nil
           super(cs, 4.0, 4.0)
           @current_state = GB18030_DOUBLE_BYTE
-          @sgp = Surrogate::Parser.new # max of 4 bytes per char
+          @sgp = self.class::Surrogate::Parser.new # max of 4 bytes per char
         end
         
         typesig { [::Java::Char] }
@@ -549,7 +549,7 @@ module Sun::Nio::Cs::Ext
         alias_method :attr_sgp=, :sgp=
         undef_method :sgp=
         
-        typesig { [Array.typed(::Java::Short), Array.typed(String), ::Java::Char] }
+        typesig { [Array.typed(::Java::Short), Array.typed(self::String), ::Java::Char] }
         def get_gb18030(outer_index, inner_encoder_index, ch)
           offset = outer_index[((ch & 0xff00) >> 8)] << 8
           return inner_encoder_index[offset >> 12].char_at((offset & 0xfff) + (ch & 0xff))
@@ -560,7 +560,7 @@ module Sun::Nio::Cs::Ext
           @current_state = GB18030_DOUBLE_BYTE
         end
         
-        typesig { [CharBuffer, ByteBuffer] }
+        typesig { [self::CharBuffer, self::ByteBuffer] }
         def encode_array_loop(src, dst)
           sa = src.array
           sp = src.array_offset + src.position
@@ -666,7 +666,7 @@ module Sun::Nio::Cs::Ext
           end
         end
         
-        typesig { [CharBuffer, ByteBuffer] }
+        typesig { [self::CharBuffer, self::ByteBuffer] }
         def encode_buffer_loop(src, dst)
           condensed_key = 0
           hi_byte = 0
@@ -758,7 +758,7 @@ module Sun::Nio::Cs::Ext
           end
         end
         
-        typesig { [CharBuffer, ByteBuffer] }
+        typesig { [self::CharBuffer, self::ByteBuffer] }
         def encode_loop(src, dst)
           if (src.has_array && dst.has_array)
             return encode_array_loop(src, dst)

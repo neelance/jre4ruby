@@ -307,7 +307,7 @@ module Sun::Misc
           define_method :run do
             begin
               self.attr_instance.detach(b)
-            rescue JavaThrowable => th
+            rescue self.class::JavaThrowable => th
               # avoid crashing the reference handler thread,
               # but provide for some diagnosability
               raise AssertError, RJava.cast_to_string(th.to_s) if not (false)

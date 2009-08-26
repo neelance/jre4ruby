@@ -441,7 +441,7 @@ module Sun::Net::Ftp
             
             typesig { [] }
             define_method :run do
-              return Socket.new(self.attr_proxy)
+              return self.class::Socket.new(self.attr_proxy)
             end
             
             typesig { [] }

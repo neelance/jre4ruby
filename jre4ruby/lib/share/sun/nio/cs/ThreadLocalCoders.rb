@@ -58,7 +58,7 @@ module Sun::Nio::Cs
         
         typesig { [::Java::Int] }
         def initialize(size)
-          @cache = ThreadLocal.new
+          @cache = self.class::ThreadLocal.new
           @size = 0
           @size = size
         end
@@ -127,10 +127,10 @@ module Sun::Nio::Cs
           
           typesig { [Object, Object] }
           define_method :has_name do |ob, name|
-            if (name.is_a?(String))
+            if (name.is_a?(self.class::String))
               return (((ob).charset.name == name))
             end
-            if (name.is_a?(Charset))
+            if (name.is_a?(self.class::Charset))
               return ((ob).charset == name)
             end
             return false
@@ -138,10 +138,10 @@ module Sun::Nio::Cs
           
           typesig { [Object] }
           define_method :create do |name|
-            if (name.is_a?(String))
+            if (name.is_a?(self.class::String))
               return Charset.for_name(name).new_decoder
             end
-            if (name.is_a?(Charset))
+            if (name.is_a?(self.class::Charset))
               return (name).new_decoder
             end
             raise AssertError if not (false)
@@ -180,10 +180,10 @@ module Sun::Nio::Cs
           
           typesig { [Object, Object] }
           define_method :has_name do |ob, name|
-            if (name.is_a?(String))
+            if (name.is_a?(self.class::String))
               return (((ob).charset.name == name))
             end
-            if (name.is_a?(Charset))
+            if (name.is_a?(self.class::Charset))
               return ((ob).charset == name)
             end
             return false
@@ -191,10 +191,10 @@ module Sun::Nio::Cs
           
           typesig { [Object] }
           define_method :create do |name|
-            if (name.is_a?(String))
+            if (name.is_a?(self.class::String))
               return Charset.for_name(name).new_encoder
             end
-            if (name.is_a?(Charset))
+            if (name.is_a?(self.class::Charset))
               return (name).new_encoder
             end
             raise AssertError if not (false)

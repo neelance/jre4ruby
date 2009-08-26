@@ -158,7 +158,7 @@ module Sun::Nio::Cs::Ext
         alias_method :attr_detected_decoder=, :detected_decoder=
         undef_method :detected_decoder=
         
-        typesig { [Charset] }
+        typesig { [self::Charset] }
         def initialize(cs)
           @detected_decoder = nil
           super(cs, 0.5, 1.0)
@@ -171,7 +171,7 @@ module Sun::Nio::Cs::Ext
             return b >= 0 && !(b).equal?(0x1b)
           end
           
-          typesig { [ByteBuffer, CharBuffer] }
+          typesig { [self::ByteBuffer, self::CharBuffer] }
           def copy_leading_ascii(src, dst)
             start = src.position
             limit = start + Math.min(src.remaining, dst.remaining)
@@ -186,13 +186,13 @@ module Sun::Nio::Cs::Ext
           end
         }
         
-        typesig { [Charset, ByteBuffer, CharBuffer] }
+        typesig { [self::Charset, self::ByteBuffer, self::CharBuffer] }
         def decode_loop(cs, src, dst)
           @detected_decoder = cs.new_decoder
           return @detected_decoder.decode_loop(src, dst)
         end
         
-        typesig { [ByteBuffer, CharBuffer] }
+        typesig { [self::ByteBuffer, self::CharBuffer] }
         def decode_loop(src, dst)
           if ((@detected_decoder).nil?)
             copy_leading_ascii(src, dst)
@@ -259,7 +259,7 @@ module Sun::Nio::Cs::Ext
           @detected_decoder = nil
         end
         
-        typesig { [CharBuffer] }
+        typesig { [self::CharBuffer] }
         def impl_flush(out)
           if (!(@detected_decoder).nil?)
             return @detected_decoder.impl_flush(out)
@@ -281,7 +281,7 @@ module Sun::Nio::Cs::Ext
         typesig { [] }
         def detected_charset
           if ((@detected_decoder).nil?)
-            raise IllegalStateException.new("charset not yet detected")
+            raise self.class::IllegalStateException.new("charset not yet detected")
           end
           return (@detected_decoder).charset
         end
@@ -290,7 +290,7 @@ module Sun::Nio::Cs::Ext
           typesig { [] }
           # Returned Shift_JIS Charset name is OS dependent
           def get_sjisname
-            os_name = AccessController.do_privileged(GetPropertyAction.new("os.name"))
+            os_name = AccessController.do_privileged(self.class::GetPropertyAction.new("os.name"))
             if ((os_name == "Solaris") || (os_name == "SunOS"))
               return ("PCK")
             else
@@ -305,7 +305,7 @@ module Sun::Nio::Cs::Ext
           typesig { [] }
           # Returned EUC-JP Charset name is OS dependent
           def get_eucjpname
-            os_name = AccessController.do_privileged(GetPropertyAction.new("os.name"))
+            os_name = AccessController.do_privileged(self.class::GetPropertyAction.new("os.name"))
             if ((os_name == "Solaris") || (os_name == "SunOS"))
               return ("x-eucjp-open")
             else

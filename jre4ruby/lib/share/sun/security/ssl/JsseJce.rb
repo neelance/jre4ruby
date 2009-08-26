@@ -95,13 +95,13 @@ module Sun::Security::Ssl
       const_set_lazy(:SunCertificates) { Class.new(Provider) do
         include_class_members JsseJce
         
-        typesig { [Provider] }
+        typesig { [self::Provider] }
         def initialize(p)
           super("SunCertificates", 1.0, "SunJSSE internal")
-          AccessController.do_privileged(Class.new(PrivilegedAction.class == Class ? PrivilegedAction : Object) do
+          AccessController.do_privileged(Class.new(self.class::PrivilegedAction.class == Class ? self.class::PrivilegedAction : Object) do
             extend LocalClass
             include_class_members SunCertificates
-            include PrivilegedAction if PrivilegedAction.class == Module
+            include self::PrivilegedAction if self::PrivilegedAction.class == Module
             
             typesig { [] }
             define_method :run do

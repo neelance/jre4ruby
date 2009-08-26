@@ -199,7 +199,7 @@ module Sun::Security::Provider
           @data_sha.update(data, off, len)
         end
         
-        typesig { [ByteBuffer] }
+        typesig { [self::ByteBuffer] }
         def engine_update(b)
           @data_sha.update(b)
         end
@@ -276,7 +276,7 @@ module Sun::Security::Provider
         typesig { [] }
         def get_digest
           if (!(@ofs).equal?(self.class::SHA1_LEN))
-            raise SignatureException.new("Data for RawDSA must be exactly 20 bytes long")
+            raise self.class::SignatureException.new("Data for RawDSA must be exactly 20 bytes long")
           end
           @ofs = 0
           return @digest_buffer

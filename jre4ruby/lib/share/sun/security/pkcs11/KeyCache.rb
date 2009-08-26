@@ -89,7 +89,7 @@ module Sun::Security::Pkcs11
           if ((self).equal?(o))
             return true
           end
-          if ((o.is_a?(IdentityWrapper)).equal?(false))
+          if ((o.is_a?(self.class::IdentityWrapper)).equal?(false))
             return false
           end
           other = o

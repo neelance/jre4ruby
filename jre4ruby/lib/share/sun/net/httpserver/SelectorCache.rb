@@ -68,7 +68,7 @@ module Sun::Net::Httpserver
         
         typesig { [] }
         define_method :run do
-          cleaner = CacheCleaner.new
+          cleaner = self.class::CacheCleaner.new
           cleaner.set_daemon(true)
           return cleaner
         end
@@ -111,7 +111,7 @@ module Sun::Net::Httpserver
         alias_method :attr_delete_flag=, :delete_flag=
         undef_method :delete_flag=
         
-        typesig { [Selector] }
+        typesig { [self::Selector] }
         def initialize(sel)
           @sel = nil
           @delete_flag = false
@@ -184,7 +184,7 @@ module Sun::Net::Httpserver
           while (true)
             begin
               JavaThread.sleep(timeout)
-            rescue JavaException => e
+            rescue self.class::JavaException => e
             end
             synchronized((self.attr_free_selectors)) do
               l = self.attr_free_selectors.list_iterator
@@ -194,7 +194,7 @@ module Sun::Net::Httpserver
                   # 2nd pass. Close the selector
                   begin
                     w.get_selector.close
-                  rescue IOException => e
+                  rescue self.class::IOException => e
                   end
                   l.remove
                 else

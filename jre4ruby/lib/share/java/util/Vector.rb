@@ -359,7 +359,7 @@ module Java::Util
               return element_data(((@count += 1) - 1))
             end
           end
-          raise NoSuchElementException.new("Vector Enumeration")
+          raise self.class::NoSuchElementException.new("Vector Enumeration")
         end
         
         typesig { [] }
@@ -1198,7 +1198,7 @@ module Java::Util
             check_for_comodification
             i = @cursor
             if (i >= self.attr_element_count)
-              raise NoSuchElementException.new
+              raise self.class::NoSuchElementException.new
             end
             @cursor = i + 1
             return element_data(@last_ret = i)
@@ -1208,7 +1208,7 @@ module Java::Util
         typesig { [] }
         def remove
           if ((@last_ret).equal?(-1))
-            raise IllegalStateException.new
+            raise self.class::IllegalStateException.new
           end
           synchronized((@local_class_parent)) do
             check_for_comodification
@@ -1222,7 +1222,7 @@ module Java::Util
         typesig { [] }
         def check_for_comodification
           if (!(self.attr_mod_count).equal?(@expected_mod_count))
-            raise ConcurrentModificationException.new
+            raise self.class::ConcurrentModificationException.new
           end
         end
         
@@ -1272,17 +1272,17 @@ module Java::Util
             check_for_comodification
             i = self.attr_cursor - 1
             if (i < 0)
-              raise NoSuchElementException.new
+              raise self.class::NoSuchElementException.new
             end
             self.attr_cursor = i
             return element_data(self.attr_last_ret = i)
           end
         end
         
-        typesig { [E] }
+        typesig { [self::E] }
         def set(e)
           if ((self.attr_last_ret).equal?(-1))
-            raise IllegalStateException.new
+            raise self.class::IllegalStateException.new
           end
           synchronized((@local_class_parent)) do
             check_for_comodification
@@ -1290,7 +1290,7 @@ module Java::Util
           end
         end
         
-        typesig { [E] }
+        typesig { [self::E] }
         def add(e)
           i = self.attr_cursor
           synchronized((@local_class_parent)) do

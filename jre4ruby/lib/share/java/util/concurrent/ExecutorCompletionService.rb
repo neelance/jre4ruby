@@ -134,7 +134,7 @@ module Java::Util::Concurrent
         extend LocalClass
         include_class_members ExecutorCompletionService
         
-        typesig { [RunnableFuture] }
+        typesig { [self::RunnableFuture] }
         def initialize(task)
           @task = nil
           super(task, nil)

@@ -198,11 +198,11 @@ module Java::Lang::Ref
               tg = tgn
               tgn = tg.get_parent
             end
-            sft = JavaThread.new(tg, proc, "Secondary finalizer")
+            sft = self.class::JavaThread.new(tg, proc, "Secondary finalizer")
             sft.start
             begin
               sft.join
-            rescue InterruptedException => x
+            rescue self.class::InterruptedException => x
               # Ignore
             end
             return nil
@@ -284,7 +284,7 @@ module Java::Lang::Ref
       const_set_lazy(:FinalizerThread) { Class.new(JavaThread) do
         include_class_members Finalizer
         
-        typesig { [JavaThreadGroup] }
+        typesig { [self::JavaThreadGroup] }
         def initialize(g)
           super(g, "Finalizer")
         end
@@ -295,7 +295,7 @@ module Java::Lang::Ref
             begin
               f = self.attr_queue.remove
               f.run_finalizer
-            rescue InterruptedException => x
+            rescue self.class::InterruptedException => x
               next
             end
           end

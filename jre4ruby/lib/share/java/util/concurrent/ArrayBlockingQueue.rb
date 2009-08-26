@@ -836,7 +836,7 @@ module Java::Util::Concurrent
           lock.lock
           begin
             if (@next_index < 0)
-              raise NoSuchElementException.new
+              raise self.class::NoSuchElementException.new
             end
             @last_ret = @next_index
             x = @next_item
@@ -855,7 +855,7 @@ module Java::Util::Concurrent
           begin
             i = @last_ret
             if ((i).equal?(-1))
-              raise IllegalStateException.new
+              raise self.class::IllegalStateException.new
             end
             @last_ret = -1
             ti = self.attr_take_index

@@ -94,7 +94,7 @@ module Sun::Nio::Cs
       const_set_lazy(:Decoder) { Class.new(IBM850::Decoder) do
         include_class_members IBM858
         
-        typesig { [Charset] }
+        typesig { [self::Charset] }
         def initialize(cs)
           super(cs)
         end
@@ -111,7 +111,7 @@ module Sun::Nio::Cs
       const_set_lazy(:Encoder) { Class.new(SingleByteEncoder) do
         include_class_members IBM858
         
-        typesig { [Charset] }
+        typesig { [self::Charset] }
         def initialize(cs)
           super(cs, self.class::Index1, self.class::Index2, 0xff00, 0xff, 8)
         end

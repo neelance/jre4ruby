@@ -241,17 +241,17 @@ module Java::Util::Logging
                 begin
                   clz = ClassLoader.get_system_class_loader.load_class(cname)
                   self.attr_manager = clz.new_instance
-                rescue ClassNotFoundException => ex
+                rescue self.class::ClassNotFoundException => ex
                   clz_ = JavaThread.current_thread.get_context_class_loader.load_class(cname)
                   self.attr_manager = clz_.new_instance
                 end
               end
-            rescue JavaException => ex
+            rescue self.class::JavaException => ex
               System.err.println("Could not load Logmanager \"" + cname + "\"")
               ex.print_stack_trace
             end
             if ((self.attr_manager).nil?)
-              self.attr_manager = LogManager.new
+              self.attr_manager = self.class::LogManager.new
             end
             # Create and retain Logger for the root of the namespace.
             self.attr_manager.attr_root_logger = RootLogger.new
@@ -491,13 +491,13 @@ module Java::Util::Logging
                 if (!(levs).nil?)
                   hdl.set_level(Level.parse(levs))
                 end
-              rescue JavaException => ex
+              rescue self.class::JavaException => ex
                 System.err.println("Can't set level for " + word)
                 # Probably a bad level. Drop through.
               end
               # Add this Handler to the logger
               logger.add_handler(hdl)
-            rescue JavaException => ex
+            rescue self.class::JavaException => ex
               System.err.println("Can't load log handler \"" + word + "\"")
               System.err.println("" + RJava.cast_to_string(ex))
               ex.print_stack_trace
@@ -1091,7 +1091,7 @@ module Java::Util::Logging
         alias_method :attr_parent=, :parent=
         undef_method :parent=
         
-        typesig { [LogNode] }
+        typesig { [self::LogNode] }
         def initialize(parent)
           @children = nil
           @logger_ref = nil
@@ -1099,7 +1099,7 @@ module Java::Util::Logging
           @parent = parent
         end
         
-        typesig { [Logger] }
+        typesig { [self::Logger] }
         # Recursive method to walk the tree below a node and set
         # a new parent logger.
         def walk_and_set_parent(parent)
@@ -1136,20 +1136,20 @@ module Java::Util::Logging
           set_level(DefaultLevel)
         end
         
-        typesig { [LogRecord] }
+        typesig { [self::LogRecord] }
         def log(record)
           # Make sure that the global handlers have been instantiated.
           initialize_global_handlers
           super(record)
         end
         
-        typesig { [Handler] }
+        typesig { [self::Handler] }
         def add_handler(h)
           initialize_global_handlers
           super(h)
         end
         
-        typesig { [Handler] }
+        typesig { [self::Handler] }
         def remove_handler(h)
           initialize_global_handlers
           super(h)

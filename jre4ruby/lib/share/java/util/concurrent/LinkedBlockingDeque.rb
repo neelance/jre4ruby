@@ -109,7 +109,7 @@ module Java::Util::Concurrent
         alias_method :attr_next=, :next=
         undef_method :next=
         
-        typesig { [Object, Node, Node] }
+        typesig { [Object, self::Node, self::Node] }
         def initialize(x, p, n)
           @item = nil
           @prev = nil
@@ -1088,7 +1088,7 @@ module Java::Util::Concurrent
         typesig { [] }
         def next_
           if ((@next).nil?)
-            raise NoSuchElementException.new
+            raise self.class::NoSuchElementException.new
           end
           @last_ret = @next
           x = @next_item
@@ -1100,7 +1100,7 @@ module Java::Util::Concurrent
         def remove
           n = @last_ret
           if ((n).nil?)
-            raise IllegalStateException.new
+            raise self.class::IllegalStateException.new
           end
           @last_ret = nil
           # Note: removeNode rescans looking for this node to make

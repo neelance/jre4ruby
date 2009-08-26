@@ -490,7 +490,7 @@ module Java::Io
         alias_method :attr_leftover_lf=, :leftover_lf=
         undef_method :leftover_lf=
         
-        typesig { [Reader] }
+        typesig { [self::Reader] }
         def initialize(in_)
           @in = nil
           @cb = nil
@@ -519,7 +519,7 @@ module Java::Io
           off = offset
           end_ = offset + length
           if (offset < 0 || offset > cbuf.attr_length || length < 0 || end_ < 0 || end_ > cbuf.attr_length)
-            raise IndexOutOfBoundsException.new
+            raise self.class::IndexOutOfBoundsException.new
           end
           synchronized((self.attr_read_lock)) do
             eof = false
@@ -621,7 +621,7 @@ module Java::Io
           define_method :console do
             if (istty)
               if ((self.attr_cons).nil?)
-                self.attr_cons = Console.new
+                self.attr_cons = self.class::Console.new
               end
               return self.attr_cons
             end
@@ -633,10 +633,10 @@ module Java::Io
           # it be necessary.
           define_method :console_restore_hook do
             java_ioaccess_class = self.class
-            return Class.new(Runnable.class == Class ? Runnable : Object) do
+            return Class.new(self.class::Runnable.class == Class ? self.class::Runnable : Object) do
               extend LocalClass
               include_class_members java_ioaccess_class
-              include Runnable if Runnable.class == Module
+              include self::Runnable if self::Runnable.class == Module
               
               typesig { [] }
               define_method :run do
@@ -644,7 +644,7 @@ module Java::Io
                   if (self.attr_echo_off)
                     echo(true)
                   end
-                rescue IOException => x
+                rescue self.class::IOException => x
                 end
               end
               

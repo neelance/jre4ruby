@@ -1005,16 +1005,16 @@ module Sun::Util::Calendar
             
             typesig { [] }
             define_method :run do
-              file = JavaFile.new(fname)
+              file = self.class::JavaFile.new(fname)
               if (!file.can_read)
                 return nil
               end
               filesize = RJava.cast_to_int(file.length)
               buf = Array.typed(::Java::Byte).new(filesize) { 0 }
-              fis = FileInputStream.new(file)
+              fis = self.class::FileInputStream.new(file)
               if (!(fis.read(buf)).equal?(filesize))
                 fis.close
-                raise IOException.new("read error on " + fname)
+                raise self.class::IOException.new("read error on " + fname)
               end
               fis.close
               return buf

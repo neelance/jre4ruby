@@ -298,15 +298,15 @@ module Sun::Security::Pkcs11
         alias_method :attr_pool=, :pool=
         undef_method :pool=
         
-        typesig { [SessionManager] }
+        typesig { [self::SessionManager] }
         def initialize(mgr)
           @mgr = nil
           @pool = nil
           @mgr = mgr
-          @pool = ArrayList.new
+          @pool = self.class::ArrayList.new
         end
         
-        typesig { [Session] }
+        typesig { [self::Session] }
         def remove(session)
           return @pool.remove(session)
         end
@@ -321,7 +321,7 @@ module Sun::Security::Pkcs11
           return session
         end
         
-        typesig { [Session] }
+        typesig { [self::Session] }
         def release(session)
           @pool.add(session)
           # if there are idle sessions, close them
@@ -349,7 +349,7 @@ module Sun::Security::Pkcs11
             i += 1
             begin
               @mgr.close_session(oldest_session)
-            rescue PKCS11Exception => e
+            rescue self.class::PKCS11Exception => e
               exc = e
             end
           end
@@ -359,7 +359,7 @@ module Sun::Security::Pkcs11
           sub_list_ = @pool.sub_list(0, i)
           sub_list_.clear
           if (!(exc).nil?)
-            raise ProviderException.new(exc)
+            raise self.class::ProviderException.new(exc)
           end
         end
         

@@ -107,7 +107,7 @@ module Sun::Security::Ssl
       initialize__x509key_manager_impl(Collections.singleton_list(builder))
     end
     
-    typesig { [JavaList] }
+    typesig { [SwtList] }
     def initialize(builders)
       @builders = nil
       @uid_counter = nil
@@ -124,7 +124,7 @@ module Sun::Security::Ssl
       const_set_lazy(:SizedMap) { Class.new(LinkedHashMap) do
         include_class_members X509KeyManagerImpl
         
-        typesig { [Map::Entry] }
+        typesig { [self::Map::Entry] }
         def remove_eldest_entry(eldest)
           return size > 10
         end
@@ -263,7 +263,7 @@ module Sun::Security::Ssl
           end
         end
         
-        typesig { [Array.typed(Certificate)] }
+        typesig { [Array.typed(self::Certificate)] }
         def matches(chain)
           if (!(chain[0].get_public_key.get_algorithm == @key_algorithm))
             return false
@@ -301,7 +301,7 @@ module Sun::Security::Ssl
       end
     }
     
-    typesig { [JavaList, Array.typed(Principal), CheckType] }
+    typesig { [SwtList, Array.typed(Principal), CheckType] }
     # Return the best alias that fits the given parameters.
     # The algorithm we use is:
     # . scan through all the aliases in all builders in order
@@ -400,7 +400,7 @@ module Sun::Security::Ssl
       return to_aliases(all_results)
     end
     
-    typesig { [JavaList] }
+    typesig { [SwtList] }
     # turn candidate entries into unique aliases we can return to JSSE
     def to_aliases(results)
       s = Array.typed(String).new(results.size) { nil }
@@ -453,7 +453,7 @@ module Sun::Security::Ssl
         alias_method :attr_check_result=, :check_result=
         undef_method :check_result=
         
-        typesig { [::Java::Int, ::Java::Int, String, Array.typed(Certificate), CheckResult] }
+        typesig { [::Java::Int, ::Java::Int, String, Array.typed(self::Certificate), self::CheckResult] }
         def initialize(builder_index, key_index, alias_, chain, check_result)
           @builder_index = 0
           @key_index = 0
@@ -465,7 +465,7 @@ module Sun::Security::Ssl
           @check_result = check_result
         end
         
-        typesig { [EntryStatus] }
+        typesig { [self::EntryStatus] }
         def compare_to(other)
           result = (@check_result <=> other.attr_check_result)
           return ((result).equal?(0)) ? (@key_index - other.attr_key_index) : result
@@ -689,7 +689,7 @@ module Sun::Security::Ssl
       end
     }
     
-    typesig { [::Java::Int, JavaList, JavaSet, ::Java::Boolean, CheckType] }
+    typesig { [::Java::Int, SwtList, JavaSet, ::Java::Boolean, CheckType] }
     # Return a List of all candidate matches in the specified builder
     # that fit the parameters.
     # We exclude entries in the KeyStore if they are not:

@@ -70,13 +70,13 @@ module Sun::Security::Provider
           typesig { [] }
           define_method :run do
             if ((params).nil?)
-              self.attr_cf = ConfigFile.new
+              self.attr_cf = self.class::ConfigFile.new
             else
-              if (!(params.is_a?(URIParameter)))
-                raise IllegalArgumentException.new("Unrecognized parameter: " + RJava.cast_to_string(params))
+              if (!(params.is_a?(self.class::URIParameter)))
+                raise self.class::IllegalArgumentException.new("Unrecognized parameter: " + RJava.cast_to_string(params))
               end
               uri_param = params
-              self.attr_cf = ConfigFile.new(uri_param.get_uri)
+              self.attr_cf = self.class::ConfigFile.new(uri_param.get_uri)
             end
             return nil
           end

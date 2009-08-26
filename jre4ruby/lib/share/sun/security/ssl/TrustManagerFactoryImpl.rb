@@ -137,11 +137,11 @@ module Sun::Security::Ssl
           define_method :run do
             begin
               if (file.exists)
-                return FileInputStream.new(file)
+                return self.class::FileInputStream.new(file)
               else
                 return nil
               end
-            rescue FileNotFoundException => e
+            rescue self.class::FileNotFoundException => e
               # couldn't find it, oh well.
               return nil
             end
@@ -258,14 +258,14 @@ module Sun::Security::Ssl
       const_set_lazy(:SimpleFactory) { Class.new(TrustManagerFactoryImpl) do
         include_class_members TrustManagerFactoryImpl
         
-        typesig { [KeyStore] }
+        typesig { [self::KeyStore] }
         def get_instance(ks)
-          return X509TrustManagerImpl.new(Validator::TYPE_SIMPLE, ks)
+          return self.class::X509TrustManagerImpl.new(Validator::TYPE_SIMPLE, ks)
         end
         
-        typesig { [ManagerFactoryParameters] }
+        typesig { [self::ManagerFactoryParameters] }
         def get_instance(spec)
-          raise InvalidAlgorithmParameterException.new("SunX509 TrustManagerFactory does not use " + "ManagerFactoryParameters")
+          raise self.class::InvalidAlgorithmParameterException.new("SunX509 TrustManagerFactory does not use " + "ManagerFactoryParameters")
         end
         
         typesig { [] }
@@ -280,22 +280,22 @@ module Sun::Security::Ssl
       const_set_lazy(:PKIXFactory) { Class.new(TrustManagerFactoryImpl) do
         include_class_members TrustManagerFactoryImpl
         
-        typesig { [KeyStore] }
+        typesig { [self::KeyStore] }
         def get_instance(ks)
-          return X509TrustManagerImpl.new(Validator::TYPE_PKIX, ks)
+          return self.class::X509TrustManagerImpl.new(Validator::TYPE_PKIX, ks)
         end
         
-        typesig { [ManagerFactoryParameters] }
+        typesig { [self::ManagerFactoryParameters] }
         def get_instance(spec)
-          if ((spec.is_a?(CertPathTrustManagerParameters)).equal?(false))
-            raise InvalidAlgorithmParameterException.new("Parameters must be CertPathTrustManagerParameters")
+          if ((spec.is_a?(self.class::CertPathTrustManagerParameters)).equal?(false))
+            raise self.class::InvalidAlgorithmParameterException.new("Parameters must be CertPathTrustManagerParameters")
           end
           params = (spec).get_parameters
-          if ((params.is_a?(PKIXBuilderParameters)).equal?(false))
-            raise InvalidAlgorithmParameterException.new("Encapsulated parameters must be PKIXBuilderParameters")
+          if ((params.is_a?(self.class::PKIXBuilderParameters)).equal?(false))
+            raise self.class::InvalidAlgorithmParameterException.new("Encapsulated parameters must be PKIXBuilderParameters")
           end
           pkix_params = params
-          return X509TrustManagerImpl.new(Validator::TYPE_PKIX, pkix_params)
+          return self.class::X509TrustManagerImpl.new(Validator::TYPE_PKIX, pkix_params)
         end
         
         typesig { [] }

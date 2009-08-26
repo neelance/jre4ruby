@@ -309,7 +309,7 @@ module Java::Security::Cert
         alias_method :attr_data=, :data=
         undef_method :data=
         
-        typesig { [String, Array.typed(::Java::Byte)] }
+        typesig { [self::String, Array.typed(::Java::Byte)] }
         # Creates a <code>CertPathRep</code> with the specified
         # type and encoded form of a certification path.
         # 
@@ -332,9 +332,9 @@ module Java::Security::Cert
         def read_resolve
           begin
             cf = CertificateFactory.get_instance(@type)
-            return cf.generate_cert_path(ByteArrayInputStream.new(@data))
-          rescue CertificateException => ce
-            nse = NotSerializableException.new("java.security.cert.CertPath: " + @type)
+            return cf.generate_cert_path(self.class::ByteArrayInputStream.new(@data))
+          rescue self.class::CertificateException => ce
+            nse = self.class::NotSerializableException.new("java.security.cert.CertPath: " + @type)
             nse.init_cause(ce)
             raise nse
           end

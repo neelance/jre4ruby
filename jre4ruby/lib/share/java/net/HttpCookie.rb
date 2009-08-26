@@ -970,8 +970,8 @@ module Java::Net
               if ((cookie.get_max_age).equal?(MAX_AGE_UNSPECIFIED))
                 cookie.set_max_age(maxage)
               end
-            rescue NumberFormatException => ignored
-              raise IllegalArgumentException.new("Illegal cookie max-age attribute")
+            rescue self.class::NumberFormatException => ignored
+              raise self.class::IllegalArgumentException.new("Illegal cookie max-age attribute")
             end
           end
           
@@ -1051,8 +1051,8 @@ module Java::Net
             begin
               version = JavaInteger.parse_int(attr_value)
               cookie.set_version(version)
-            rescue NumberFormatException => ignored
-              raise IllegalArgumentException.new("Illegal cookie version attribute")
+            rescue self.class::NumberFormatException => ignored
+              raise self.class::IllegalArgumentException.new("Illegal cookie version attribute")
             end
           end
           

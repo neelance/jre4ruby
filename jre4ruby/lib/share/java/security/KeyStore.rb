@@ -296,7 +296,7 @@ module Java::Security
         def get_password
           synchronized(self) do
             if (@destroyed)
-              raise IllegalStateException.new("password has been cleared")
+              raise self.class::IllegalStateException.new("password has been cleared")
             end
             return @password
           end
@@ -343,7 +343,7 @@ module Java::Security
         alias_method :attr_handler=, :handler=
         undef_method :handler=
         
-        typesig { [CallbackHandler] }
+        typesig { [self::CallbackHandler] }
         # Constructs a new CallbackHandlerProtection from a
         # CallbackHandler.
         # 
@@ -352,7 +352,7 @@ module Java::Security
         def initialize(handler)
           @handler = nil
           if ((handler).nil?)
-            raise NullPointerException.new("handler must not be null")
+            raise self.class::NullPointerException.new("handler must not be null")
           end
           @handler = handler
         end
@@ -396,7 +396,7 @@ module Java::Security
         alias_method :attr_chain=, :chain=
         undef_method :chain=
         
-        typesig { [PrivateKey, Array.typed(Certificate)] }
+        typesig { [self::PrivateKey, Array.typed(self::Certificate)] }
         # Constructs a <code>PrivateKeyEntry</code> with a
         # <code>PrivateKey</code> and corresponding certificate chain.
         # 
@@ -423,26 +423,26 @@ module Java::Security
           @priv_key = nil
           @chain = nil
           if ((private_key).nil? || (chain).nil?)
-            raise NullPointerException.new("invalid null input")
+            raise self.class::NullPointerException.new("invalid null input")
           end
           if ((chain.attr_length).equal?(0))
-            raise IllegalArgumentException.new("invalid zero-length input chain")
+            raise self.class::IllegalArgumentException.new("invalid zero-length input chain")
           end
           cloned_chain = chain.clone
           cert_type = cloned_chain[0].get_type
           i = 1
           while i < cloned_chain.attr_length
             if (!(cert_type == cloned_chain[i].get_type))
-              raise IllegalArgumentException.new("chain does not contain certificates " + "of the same type")
+              raise self.class::IllegalArgumentException.new("chain does not contain certificates " + "of the same type")
             end
             i += 1
           end
           if (!(private_key.get_algorithm == cloned_chain[0].get_public_key.get_algorithm))
-            raise IllegalArgumentException.new("private key algorithm does not match " + "algorithm of public key in end entity " + "certificate (at index 0)")
+            raise self.class::IllegalArgumentException.new("private key algorithm does not match " + "algorithm of public key in end entity " + "certificate (at index 0)")
           end
           @priv_key = private_key
-          if (cloned_chain[0].is_a?(X509Certificate) && !(cloned_chain.is_a?(Array.typed(X509Certificate))))
-            @chain = Array.typed(X509Certificate).new(cloned_chain.attr_length) { nil }
+          if (cloned_chain[0].is_a?(self.class::X509Certificate) && !(cloned_chain.is_a?(Array.typed(self.class::X509Certificate))))
+            @chain = Array.typed(self.class::X509Certificate).new(cloned_chain.attr_length) { nil }
             System.arraycopy(cloned_chain, 0, @chain, 0, cloned_chain.attr_length)
           else
             @chain = cloned_chain
@@ -488,7 +488,7 @@ module Java::Security
         # Returns a string representation of this PrivateKeyEntry.
         # @return a string representation of this PrivateKeyEntry.
         def to_s
-          sb = StringBuilder.new
+          sb = self.class::StringBuilder.new
           sb.append("Private key entry and certificate chain with " + RJava.cast_to_string(@chain.attr_length) + " elements:\r\n")
           @chain.each do |cert|
             sb.append(cert)
@@ -514,7 +514,7 @@ module Java::Security
         alias_method :attr_s_key=, :s_key=
         undef_method :s_key=
         
-        typesig { [SecretKey] }
+        typesig { [self::SecretKey] }
         # Constructs a <code>SecretKeyEntry</code> with a
         # <code>SecretKey</code>.
         # 
@@ -525,7 +525,7 @@ module Java::Security
         def initialize(secret_key)
           @s_key = nil
           if ((secret_key).nil?)
-            raise NullPointerException.new("invalid null input")
+            raise self.class::NullPointerException.new("invalid null input")
           end
           @s_key = secret_key
         end
@@ -563,7 +563,7 @@ module Java::Security
         alias_method :attr_cert=, :cert=
         undef_method :cert=
         
-        typesig { [Certificate] }
+        typesig { [self::Certificate] }
         # Constructs a <code>TrustedCertificateEntry</code> with a
         # trusted <code>Certificate</code>.
         # 
@@ -574,7 +574,7 @@ module Java::Security
         def initialize(trusted_cert)
           @cert = nil
           if ((trusted_cert).nil?)
-            raise NullPointerException.new("invalid null input")
+            raise self.class::NullPointerException.new("invalid null input")
           end
           @cert = trusted_cert
         end
@@ -1364,7 +1364,7 @@ module Java::Security
           raise NotImplementedError
         end
         
-        typesig { [String] }
+        typesig { [self::String] }
         # Returns the ProtectionParameters that should be used to obtain
         # the {@link KeyStore.Entry Entry} with the given alias.
         # The <code>getKeyStore</code> method must be invoked before this
@@ -1383,7 +1383,7 @@ module Java::Security
         end
         
         class_module.module_eval {
-          typesig { [KeyStore, ProtectionParameter] }
+          typesig { [self::KeyStore, self::ProtectionParameter] }
           # Returns a new Builder that encapsulates the given KeyStore.
           # The {@linkplain #getKeyStore} method of the returned object
           # will return <code>keyStore</code>, the {@linkplain
@@ -1403,15 +1403,15 @@ module Java::Security
           # initialized
           def new_instance(key_store, protection_parameter)
             if (((key_store).nil?) || ((protection_parameter).nil?))
-              raise NullPointerException.new
+              raise self.class::NullPointerException.new
             end
             if ((key_store.attr_initialized).equal?(false))
-              raise IllegalArgumentException.new("KeyStore not initialized")
+              raise self.class::IllegalArgumentException.new("KeyStore not initialized")
             end
-            return Class.new(Builder.class == Class ? Builder : Object) do
+            return Class.new(self.class::Builder.class == Class ? self.class::Builder : Object) do
               extend LocalClass
               include_class_members Builder
-              include Builder if Builder.class == Module
+              include self::Builder if self::Builder.class == Module
               
               attr_accessor :get_called
               alias_method :attr_get_called, :get_called
@@ -1425,13 +1425,13 @@ module Java::Security
                 return key_store
               end
               
-              typesig { [String] }
+              typesig { [self::String] }
               define_method :get_protection_parameter do |alias_|
                 if ((alias_).nil?)
-                  raise NullPointerException.new
+                  raise self.class::NullPointerException.new
                 end
                 if ((@get_called).equal?(false))
-                  raise IllegalStateException.new("getKeyStore() must be called first")
+                  raise self.class::IllegalStateException.new("getKeyStore() must be called first")
                 end
                 return protection_parameter
               end
@@ -1447,7 +1447,7 @@ module Java::Security
             end.new_local(self)
           end
           
-          typesig { [String, Provider, JavaFile, ProtectionParameter] }
+          typesig { [self::String, self::Provider, self::JavaFile, self::ProtectionParameter] }
           # Returns a new Builder object.
           # 
           # <p>The first call to the {@link #getKeyStore} method on the returned
@@ -1491,18 +1491,18 @@ module Java::Security
           # if file does not exist or does not refer to a normal file
           def new_instance(type, provider, file, protection)
             if (((type).nil?) || ((file).nil?) || ((protection).nil?))
-              raise NullPointerException.new
+              raise self.class::NullPointerException.new
             end
-            if (((protection.is_a?(PasswordProtection)).equal?(false)) && ((protection.is_a?(CallbackHandlerProtection)).equal?(false)))
-              raise IllegalArgumentException.new("Protection must be PasswordProtection or " + "CallbackHandlerProtection")
+            if (((protection.is_a?(self.class::PasswordProtection)).equal?(false)) && ((protection.is_a?(self.class::CallbackHandlerProtection)).equal?(false)))
+              raise self.class::IllegalArgumentException.new("Protection must be PasswordProtection or " + "CallbackHandlerProtection")
             end
             if ((file.is_file).equal?(false))
-              raise IllegalArgumentException.new("File does not exist or it does not refer " + "to a normal file: " + RJava.cast_to_string(file))
+              raise self.class::IllegalArgumentException.new("File does not exist or it does not refer " + "to a normal file: " + RJava.cast_to_string(file))
             end
-            return FileBuilder.new(type, provider, file, protection, AccessController.get_context)
+            return self.class::FileBuilder.new(type, provider, file, protection, AccessController.get_context)
           end
           
-          const_set_lazy(:FileBuilder) { Class.new(Builder) do
+          const_set_lazy(:FileBuilder) { Class.new(self.class::Builder) do
             include_class_members Builder
             
             attr_accessor :type
@@ -1553,7 +1553,7 @@ module Java::Security
             alias_method :attr_old_exception=, :old_exception=
             undef_method :old_exception=
             
-            typesig { [String, Provider, JavaFile, ProtectionParameter, AccessControlContext] }
+            typesig { [self::String, self::Provider, self::JavaFile, self::ProtectionParameter, self::AccessControlContext] }
             def initialize(type, provider, file, protection, context)
               @type = nil
               @provider = nil
@@ -1578,16 +1578,16 @@ module Java::Security
                   return @key_store
                 end
                 if (!(@old_exception).nil?)
-                  raise KeyStoreException.new("Previous KeyStore instantiation failed", @old_exception)
+                  raise self.class::KeyStoreException.new("Previous KeyStore instantiation failed", @old_exception)
                 end
-                action = Class.new(PrivilegedExceptionAction.class == Class ? PrivilegedExceptionAction : Object) do
+                action = Class.new(self.class::PrivilegedExceptionAction.class == Class ? self.class::PrivilegedExceptionAction : Object) do
                   extend LocalClass
                   include_class_members FileBuilder
-                  include PrivilegedExceptionAction if PrivilegedExceptionAction.class == Module
+                  include self::PrivilegedExceptionAction if self::PrivilegedExceptionAction.class == Module
                   
                   typesig { [] }
                   define_method :run do
-                    if ((self.attr_protection.is_a?(CallbackHandlerProtection)).equal?(false))
+                    if ((self.attr_protection.is_a?(self.class::CallbackHandlerProtection)).equal?(false))
                       return run0
                     end
                     # when using a CallbackHandler,
@@ -1597,8 +1597,8 @@ module Java::Security
                       tries += 1
                       begin
                         return run0
-                      rescue IOException => e
-                        if ((tries < self.class::MAX_CALLBACK_TRIES) && (e.get_cause.is_a?(UnrecoverableKeyException)))
+                      rescue self.class::IOException => e
+                        if ((tries < self.class::MAX_CALLBACK_TRIES) && (e.get_cause.is_a?(self.class::UnrecoverableKeyException)))
                           next
                         end
                         raise e
@@ -1617,20 +1617,20 @@ module Java::Security
                     in_ = nil
                     password = nil
                     begin
-                      in_ = FileInputStream.new(self.attr_file)
-                      if (self.attr_protection.is_a?(PasswordProtection))
+                      in_ = self.class::FileInputStream.new(self.attr_file)
+                      if (self.attr_protection.is_a?(self.class::PasswordProtection))
                         password = (self.attr_protection).get_password
                         self.attr_key_protection = self.attr_protection
                       else
                         handler = (self.attr_protection).get_callback_handler
-                        callback = PasswordCallback.new("Password for keystore " + RJava.cast_to_string(self.attr_file.get_name), false)
-                        handler.handle(Array.typed(Callback).new([callback]))
+                        callback = self.class::PasswordCallback.new("Password for keystore " + RJava.cast_to_string(self.attr_file.get_name), false)
+                        handler.handle(Array.typed(self.class::Callback).new([callback]))
                         password = callback.get_password
                         if ((password).nil?)
-                          raise KeyStoreException.new("No password" + " provided")
+                          raise self.class::KeyStoreException.new("No password" + " provided")
                         end
                         callback.clear_password
-                        self.attr_key_protection = PasswordProtection.new(password)
+                        self.attr_key_protection = self.class::PasswordProtection.new(password)
                       end
                       ks.load(in_, password)
                       return ks
@@ -1652,21 +1652,21 @@ module Java::Security
                 begin
                   @key_store = AccessController.do_privileged(action, @context)
                   return @key_store
-                rescue PrivilegedActionException => e
+                rescue self.class::PrivilegedActionException => e
                   @old_exception = e.get_cause
-                  raise KeyStoreException.new("KeyStore instantiation failed", @old_exception)
+                  raise self.class::KeyStoreException.new("KeyStore instantiation failed", @old_exception)
                 end
               end
             end
             
-            typesig { [String] }
+            typesig { [self::String] }
             def get_protection_parameter(alias_)
               synchronized(self) do
                 if ((alias_).nil?)
-                  raise NullPointerException.new
+                  raise self.class::NullPointerException.new
                 end
                 if ((@key_store).nil?)
-                  raise IllegalStateException.new("getKeyStore() must be called first")
+                  raise self.class::IllegalStateException.new("getKeyStore() must be called first")
                 end
                 return @key_protection
               end
@@ -1676,7 +1676,7 @@ module Java::Security
             alias_method :initialize__file_builder, :initialize
           end }
           
-          typesig { [String, Provider, ProtectionParameter] }
+          typesig { [self::String, self::Provider, self::ProtectionParameter] }
           # Returns a new Builder object.
           # 
           # <p>Each call to the {@link #getKeyStore} method on the returned
@@ -1704,13 +1704,13 @@ module Java::Security
           # @throws NullPointerException if type or protection is null
           def new_instance(type, provider, protection)
             if (((type).nil?) || ((protection).nil?))
-              raise NullPointerException.new
+              raise self.class::NullPointerException.new
             end
             context = AccessController.get_context
-            return Class.new(Builder.class == Class ? Builder : Object) do
+            return Class.new(self.class::Builder.class == Class ? self.class::Builder : Object) do
               extend LocalClass
               include_class_members Builder
-              include Builder if Builder.class == Module
+              include self::Builder if self::Builder.class == Module
               
               attr_accessor :get_called
               alias_method :attr_get_called, :get_called
@@ -1734,24 +1734,24 @@ module Java::Security
               define_method :get_key_store do
                 synchronized(self) do
                   if (!(@old_exception).nil?)
-                    raise KeyStoreException.new("Previous KeyStore instantiation failed", @old_exception)
+                    raise self.class::KeyStoreException.new("Previous KeyStore instantiation failed", @old_exception)
                   end
                   begin
                     return AccessController.do_privileged(@action)
-                  rescue PrivilegedActionException => e
+                  rescue self.class::PrivilegedActionException => e
                     cause = e.get_cause
-                    raise KeyStoreException.new("KeyStore instantiation failed", cause)
+                    raise self.class::KeyStoreException.new("KeyStore instantiation failed", cause)
                   end
                 end
               end
               
-              typesig { [String] }
+              typesig { [self::String] }
               define_method :get_protection_parameter do |alias_|
                 if ((alias_).nil?)
-                  raise NullPointerException.new
+                  raise self.class::NullPointerException.new
                 end
                 if ((@get_called).equal?(false))
-                  raise IllegalStateException.new("getKeyStore() must be called first")
+                  raise self.class::IllegalStateException.new("getKeyStore() must be called first")
                 end
                 return protection
               end
@@ -1763,10 +1763,10 @@ module Java::Security
                 @action = nil
                 super()
                 builder_class = self.class
-                @action = Class.new(PrivilegedExceptionAction.class == Class ? PrivilegedExceptionAction : Object) do
+                @action = Class.new(self.class::PrivilegedExceptionAction.class == Class ? self.class::PrivilegedExceptionAction : Object) do
                   extend LocalClass
                   include_class_members builder_class
-                  include PrivilegedExceptionAction if PrivilegedExceptionAction.class == Module
+                  include self::PrivilegedExceptionAction if self::PrivilegedExceptionAction.class == Module
                   
                   typesig { [] }
                   define_method :run do
@@ -1776,8 +1776,8 @@ module Java::Security
                     else
                       ks = KeyStore.get_instance(type, provider)
                     end
-                    param = SimpleLoadStoreParameter.new(protection)
-                    if ((protection.is_a?(CallbackHandlerProtection)).equal?(false))
+                    param = self.class::SimpleLoadStoreParameter.new(protection)
+                    if ((protection.is_a?(self.class::CallbackHandlerProtection)).equal?(false))
                       ks.load(param)
                     else
                       # when using a CallbackHandler,
@@ -1788,8 +1788,8 @@ module Java::Security
                         begin
                           ks.load(param)
                           break
-                        rescue IOException => e
-                          if (e.get_cause.is_a?(UnrecoverableKeyException))
+                        rescue self.class::IOException => e
+                          if (e.get_cause.is_a?(self.class::UnrecoverableKeyException))
                             if (tries < self.class::MAX_CALLBACK_TRIES)
                               next
                             else
@@ -1834,7 +1834,7 @@ module Java::Security
         alias_method :attr_protection=, :protection=
         undef_method :protection=
         
-        typesig { [ProtectionParameter] }
+        typesig { [self::ProtectionParameter] }
         def initialize(protection)
           @protection = nil
           @protection = protection

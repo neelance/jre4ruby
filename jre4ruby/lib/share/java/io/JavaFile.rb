@@ -1676,7 +1676,7 @@ module Java::Io
         include_class_members JavaFile
         
         class_module.module_eval {
-          const_set_lazy(:Random) { SecureRandom.new }
+          const_set_lazy(:Random) { self.class::SecureRandom.new }
           const_attr_reader  :Random
           
           const_set_lazy(:TemporaryDirectory) { temporary_directory }
@@ -1684,7 +1684,7 @@ module Java::Io
           
           typesig { [] }
           def temporary_directory
-            return self.attr_fs.normalize(AccessController.do_privileged(GetPropertyAction.new("java.io.tmpdir")))
+            return self.attr_fs.normalize(AccessController.do_privileged(self.class::GetPropertyAction.new("java.io.tmpdir")))
           end
         }
         

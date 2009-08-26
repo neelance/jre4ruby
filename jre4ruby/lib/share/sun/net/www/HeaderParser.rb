@@ -299,7 +299,7 @@ module Sun::Net::Www
         
         typesig { [] }
         def remove
-          raise UnsupportedOperationException.new("remove not supported")
+          raise self.class::UnsupportedOperationException.new("remove not supported")
         end
         
         private

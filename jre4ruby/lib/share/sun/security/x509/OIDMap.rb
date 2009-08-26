@@ -188,7 +188,7 @@ module Sun::Security::X509
         alias_method :attr_clazz=, :clazz=
         undef_method :clazz=
         
-        typesig { [String, ObjectIdentifier, String] }
+        typesig { [self::String, self::ObjectIdentifier, self::String] }
         def initialize(name, oid, class_name)
           @oid = nil
           @name = nil
@@ -199,7 +199,7 @@ module Sun::Security::X509
           @class_name = class_name
         end
         
-        typesig { [String, ObjectIdentifier, Class] }
+        typesig { [self::String, self::ObjectIdentifier, self::Class] }
         def initialize(name, oid, clazz)
           @oid = nil
           @name = nil
@@ -221,8 +221,8 @@ module Sun::Security::X509
               @clazz = c
             end
             return c
-          rescue ClassNotFoundException => e
-            raise CertificateException.new("Could not load class: " + RJava.cast_to_string(e)).init_cause(e)
+          rescue self.class::ClassNotFoundException => e
+            raise self.class::CertificateException.new("Could not load class: " + RJava.cast_to_string(e)).init_cause(e)
           end
         end
         

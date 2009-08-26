@@ -618,7 +618,7 @@ module Sun::Security::Provider::Certpath
         alias_method :attr_bad_key_set=, :bad_key_set=
         undef_method :bad_key_set=
         
-        typesig { [JavaSet] }
+        typesig { [self::JavaSet] }
         # Creates a new <code>RejectKeySelector</code>.
         # 
         # @param badPublicKeys a <code>Set</code> of
@@ -631,7 +631,7 @@ module Sun::Security::Provider::Certpath
           @bad_key_set = bad_public_keys
         end
         
-        typesig { [Certificate] }
+        typesig { [self::Certificate] }
         # Decides whether a <code>Certificate</code> should be selected.
         # 
         # @param cert the <code>Certificate</code> to be checked
@@ -659,7 +659,7 @@ module Sun::Security::Provider::Certpath
         # @return a <code>String</code> describing the contents of the
         # <code>CertSelector</code>
         def to_s
-          sb = StringBuilder.new
+          sb = self.class::StringBuilder.new
           sb.append("RejectCertSelector: [\n")
           sb.append(super)
           sb.append(@bad_key_set)
@@ -751,7 +751,7 @@ module Sun::Security::Provider::Certpath
       const_set_lazy(:CertificateRevokedException) { Class.new(CertPathValidatorException) do
         include_class_members CrlRevocationChecker
         
-        typesig { [String] }
+        typesig { [self::String] }
         def initialize(msg)
           super(msg)
         end

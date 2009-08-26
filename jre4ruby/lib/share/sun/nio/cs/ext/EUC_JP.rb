@@ -105,15 +105,15 @@ module Sun::Nio::Cs::Ext
         alias_method :attr_j0208index2=, :j0208index2=
         undef_method :j0208index2=
         
-        typesig { [Charset] }
+        typesig { [self::Charset] }
         def initialize(cs)
           @decoder_j0201 = nil
           @decoder_j0212 = nil
           @j0208index1 = nil
           @j0208index2 = nil
           super(cs)
-          @decoder_j0201 = JIS_X_0201::Decoder.new(cs)
-          @decoder_j0212 = JIS_X_0212_Decoder.new(cs)
+          @decoder_j0201 = self.class::JIS_X_0201::Decoder.new(cs)
+          @decoder_j0212 = self.class::JIS_X_0212_Decoder.new(cs)
           self.attr_start = 0xa1
           self.attr_end = 0xfe
           @j0208index1 = JIS_X_0208_Decoder.instance_method(:get_index1).bind(self).call
@@ -139,7 +139,7 @@ module Sun::Nio::Cs::Ext
           return @j0208index2[@j0208index1[byte1 - 0x80] >> 4].char_at(n)
         end
         
-        typesig { [ByteBuffer, CharBuffer] }
+        typesig { [self::ByteBuffer, self::CharBuffer] }
         def decode_array_loop(src, dst)
           sa = src.array
           sp = src.array_offset + src.position
@@ -199,7 +199,7 @@ module Sun::Nio::Cs::Ext
           end
         end
         
-        typesig { [ByteBuffer, CharBuffer] }
+        typesig { [self::ByteBuffer, self::CharBuffer] }
         def decode_buffer_loop(src, dst)
           mark = src.position
           b1 = 0
@@ -248,7 +248,7 @@ module Sun::Nio::Cs::Ext
           end
         end
         
-        typesig { [ByteBuffer, CharBuffer] }
+        typesig { [self::ByteBuffer, self::CharBuffer] }
         # Make some protected methods public for use by JISAutoDetect
         def decode_loop(src, dst)
           if (src.has_array && dst.has_array)
@@ -263,7 +263,7 @@ module Sun::Nio::Cs::Ext
           super
         end
         
-        typesig { [CharBuffer] }
+        typesig { [self::CharBuffer] }
         def impl_flush(out)
           return super(out)
         end
@@ -305,7 +305,7 @@ module Sun::Nio::Cs::Ext
         alias_method :attr_sgp=, :sgp=
         undef_method :sgp=
         
-        typesig { [Charset] }
+        typesig { [self::Charset] }
         def initialize(cs)
           @encoder_j0201 = nil
           @encoder_j0212 = nil
@@ -313,9 +313,9 @@ module Sun::Nio::Cs::Ext
           @j0208index2 = nil
           @sgp = nil
           super(cs, 3.0, 3.0)
-          @sgp = Surrogate::Parser.new
-          @encoder_j0201 = JIS_X_0201::Encoder.new(cs)
-          @encoder_j0212 = JIS_X_0212_Encoder.new(cs)
+          @sgp = self.class::Surrogate::Parser.new
+          @encoder_j0201 = self.class::JIS_X_0201::Encoder.new(cs)
+          @encoder_j0212 = self.class::JIS_X_0212_Encoder.new(cs)
           @j0208index1 = JIS_X_0208_Encoder.instance_method(:get_index1).bind(self).call
           @j0208index2 = JIS_X_0208_Encoder.instance_method(:get_index2).bind(self).call
         end
@@ -365,7 +365,7 @@ module Sun::Nio::Cs::Ext
           return r + 0x8f8080
         end
         
-        typesig { [CharBuffer, ByteBuffer] }
+        typesig { [self::CharBuffer, self::ByteBuffer] }
         def encode_array_loop(src, dst)
           sa = src.array
           sp = src.array_offset + src.position
@@ -428,7 +428,7 @@ module Sun::Nio::Cs::Ext
           end
         end
         
-        typesig { [CharBuffer, ByteBuffer] }
+        typesig { [self::CharBuffer, self::ByteBuffer] }
         def encode_buffer_loop(src, dst)
           output_size = 0
           output_byte = nil
@@ -481,7 +481,7 @@ module Sun::Nio::Cs::Ext
           end
         end
         
-        typesig { [CharBuffer, ByteBuffer] }
+        typesig { [self::CharBuffer, self::ByteBuffer] }
         def encode_loop(src, dst)
           if (src.has_array && dst.has_array)
             return encode_array_loop(src, dst)

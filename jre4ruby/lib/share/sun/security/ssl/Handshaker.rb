@@ -997,7 +997,7 @@ module Sun::Security::Ssl
         alias_method :attr_pea=, :pea=
         undef_method :pea=
         
-        typesig { [PrivilegedExceptionAction] }
+        typesig { [self::PrivilegedExceptionAction] }
         def initialize(pea)
           @pea = nil
           @pea = pea
@@ -1008,9 +1008,9 @@ module Sun::Security::Ssl
           synchronized((self.attr_engine)) do
             begin
               AccessController.do_privileged(@pea, self.attr_engine.get_acc)
-            rescue PrivilegedActionException => pae
+            rescue self.class::PrivilegedActionException => pae
               self.attr_thrown = pae.get_exception
-            rescue RuntimeException => rte
+            rescue self.class::RuntimeException => rte
               self.attr_thrown = rte
             end
             self.attr_delegated_task = nil

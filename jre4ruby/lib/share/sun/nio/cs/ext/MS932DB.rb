@@ -55,7 +55,7 @@ module Sun::Nio::Cs::Ext
       const_set_lazy(:Decoder) { Class.new(DoubleByteDecoder) do
         include_class_members MS932DB
         
-        typesig { [Charset] }
+        typesig { [self::Charset] }
         def initialize(cs)
           super(cs, self.class::Index1, self.class::Index2, 0x40, 0xfc)
         end
@@ -81,7 +81,7 @@ module Sun::Nio::Cs::Ext
           const_set_lazy(:Index1) { Array.typed(::Java::Short).new([0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 2, 3, 4, 0, 0, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 0, 0, 41, 42, 0, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 0, 0, 0]) }
           const_attr_reader  :Index1
           
-          const_set_lazy(:Index2) { Array.typed(String).new([self.class::InnerIndex0, self.class::InnerIndex1, self.class::InnerIndex2, self.class::InnerIndex3]) }
+          const_set_lazy(:Index2) { Array.typed(self.class::String).new([self.class::InnerIndex0, self.class::InnerIndex1, self.class::InnerIndex2, self.class::InnerIndex3]) }
           const_attr_reader  :Index2
         }
         
@@ -92,7 +92,7 @@ module Sun::Nio::Cs::Ext
       const_set_lazy(:Encoder) { Class.new(DoubleByteEncoder) do
         include_class_members MS932DB
         
-        typesig { [Charset] }
+        typesig { [self::Charset] }
         def initialize(cs)
           super(cs, self.class::Index1, self.class::Index2)
         end
@@ -122,7 +122,7 @@ module Sun::Nio::Cs::Ext
           const_set_lazy(:Index1) { Array.typed(::Java::Short).new([1, 0, 0, 2, 3, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 4, 5, 6, 7, 8, 9, 10, 0, 0, 0, 0, 0, 0, 0, 0, 0, 11, 0, 12, 13, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60, 61, 62, 63, 64, 65, 66, 67, 68, 69, 70, 71, 72, 73, 74, 75, 76, 77, 78, 79, 80, 81, 82, 83, 84, 85, 86, 87, 88, 89, 90, 91, 92, 93, 94, 95, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 96, 97, 98, 99, 100, 101, 102, 103, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 104, 105, 0, 0, 0, 0, 106]) }
           const_attr_reader  :Index1
           
-          const_set_lazy(:Index2) { Array.typed(String).new([self.class::InnerIndex0, self.class::InnerIndex1, self.class::InnerIndex2, self.class::InnerIndex3, self.class::InnerIndex4, self.class::InnerIndex5, self.class::InnerIndex6]) }
+          const_set_lazy(:Index2) { Array.typed(self.class::String).new([self.class::InnerIndex0, self.class::InnerIndex1, self.class::InnerIndex2, self.class::InnerIndex3, self.class::InnerIndex4, self.class::InnerIndex5, self.class::InnerIndex6]) }
           const_attr_reader  :Index2
         }
         

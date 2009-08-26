@@ -90,7 +90,7 @@ module Sun::Net::Spi::Nameservice::Dns
         alias_method :attr_ns_list=, :ns_list=
         undef_method :ns_list=
         
-        typesig { [DirContext, JavaList] }
+        typesig { [self::DirContext, self::JavaList] }
         def initialize(dir_ctxt, ns_list)
           @dir_ctxt = nil
           @ns_list = nil
@@ -163,7 +163,7 @@ module Sun::Net::Spi::Nameservice::Dns
               # the initial context constructor. This avoids having the initial
               # context constructor call itself.
               ctx = NamingManager.get_initial_context(env)
-              if (!(ctx.is_a?(DirContext)))
+              if (!(ctx.is_a?(self.class::DirContext)))
                 return nil # cannot create a DNS context
               end
               return ctx

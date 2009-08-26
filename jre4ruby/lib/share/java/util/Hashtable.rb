@@ -738,14 +738,14 @@ module Java::Util
           return get_iterator(ENTRIES)
         end
         
-        typesig { [Map::Entry] }
+        typesig { [self::Map::Entry] }
         def add(o)
           return super(o)
         end
         
         typesig { [Object] }
         def contains(o)
-          if (!(o.is_a?(Map::Entry)))
+          if (!(o.is_a?(self.class::Map::Entry)))
             return false
           end
           entry = o
@@ -765,7 +765,7 @@ module Java::Util
         
         typesig { [Object] }
         def remove(o)
-          if (!(o.is_a?(Map::Entry)))
+          if (!(o.is_a?(self.class::Map::Entry)))
             return false
           end
           entry = o
@@ -1074,7 +1074,7 @@ module Java::Util
         alias_method :attr_next=, :next=
         undef_method :next=
         
-        typesig { [::Java::Int, Object, Object, Entry] }
+        typesig { [::Java::Int, Object, Object, self::Entry] }
         def initialize(hash, key, value, next_)
           @hash = 0
           @key = nil
@@ -1088,7 +1088,7 @@ module Java::Util
         
         typesig { [] }
         def clone
-          return Entry.new(@hash, @key, @value, ((@next).nil? ? nil : @next.clone))
+          return self.class::Entry.new(@hash, @key, @value, ((@next).nil? ? nil : @next.clone))
         end
         
         typesig { [] }
@@ -1105,7 +1105,7 @@ module Java::Util
         typesig { [Object] }
         def set_value(value)
           if ((value).nil?)
-            raise NullPointerException.new
+            raise self.class::NullPointerException.new
           end
           old_value = @value
           @value = value
@@ -1114,7 +1114,7 @@ module Java::Util
         
         typesig { [Object] }
         def ==(o)
-          if (!(o.is_a?(Map::Entry)))
+          if (!(o.is_a?(self.class::Map::Entry)))
             return false
           end
           e = o
@@ -1246,7 +1246,7 @@ module Java::Util
             @entry = e.attr_next
             return (@type).equal?(KEYS) ? e.attr_key : ((@type).equal?(VALUES) ? e.attr_value : e)
           end
-          raise NoSuchElementException.new("Hashtable Enumerator")
+          raise self.class::NoSuchElementException.new("Hashtable Enumerator")
         end
         
         typesig { [] }
@@ -1258,7 +1258,7 @@ module Java::Util
         typesig { [] }
         def next_
           if (!(self.attr_mod_count).equal?(@expected_mod_count))
-            raise ConcurrentModificationException.new
+            raise self.class::ConcurrentModificationException.new
           end
           return next_element
         end
@@ -1266,13 +1266,13 @@ module Java::Util
         typesig { [] }
         def remove
           if (!@iterator)
-            raise UnsupportedOperationException.new
+            raise self.class::UnsupportedOperationException.new
           end
           if ((@last_returned).nil?)
-            raise IllegalStateException.new("Hashtable Enumerator")
+            raise self.class::IllegalStateException.new("Hashtable Enumerator")
           end
           if (!(self.attr_mod_count).equal?(@expected_mod_count))
-            raise ConcurrentModificationException.new
+            raise self.class::ConcurrentModificationException.new
           end
           synchronized((@local_class_parent)) do
             tab = @local_class_parent.attr_table
@@ -1295,7 +1295,7 @@ module Java::Util
               prev = e
               e = e.attr_next
             end
-            raise ConcurrentModificationException.new
+            raise self.class::ConcurrentModificationException.new
           end
         end
         

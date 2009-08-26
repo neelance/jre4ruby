@@ -159,7 +159,7 @@ module Java::Nio::Channels
           define_method :write do |bs, off, len|
             synchronized(self) do
               if ((off < 0) || (off > bs.attr_length) || (len < 0) || ((off + len) > bs.attr_length) || ((off + len) < 0))
-                raise IndexOutOfBoundsException.new
+                raise self.class::IndexOutOfBoundsException.new
               else
                 if ((len).equal?(0))
                   return
@@ -253,7 +253,7 @@ module Java::Nio::Channels
         alias_method :attr_read_lock=, :read_lock=
         undef_method :read_lock=
         
-        typesig { [InputStream] }
+        typesig { [self::InputStream] }
         def initialize(in_)
           @in = nil
           @buf = nil
@@ -266,7 +266,7 @@ module Java::Nio::Channels
           @in = in_
         end
         
-        typesig { [ByteBuffer] }
+        typesig { [self::ByteBuffer] }
         def read(dst)
           len = dst.remaining
           total_read = 0
@@ -368,7 +368,7 @@ module Java::Nio::Channels
         alias_method :attr_write_lock=, :write_lock=
         undef_method :write_lock=
         
-        typesig { [OutputStream] }
+        typesig { [self::OutputStream] }
         def initialize(out)
           @out = nil
           @buf = nil
@@ -381,7 +381,7 @@ module Java::Nio::Channels
           @out = out
         end
         
-        typesig { [ByteBuffer] }
+        typesig { [self::ByteBuffer] }
         def write(src)
           len = src.remaining
           total_written = 0

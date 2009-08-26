@@ -163,7 +163,7 @@ module Sun::Net::Www::Protocol::Http
             localhost = nil
             begin
               localhost = RJava.cast_to_string(InetAddress.get_local_host.get_host_name.to_upper_case)
-            rescue UnknownHostException => e
+            rescue self.class::UnknownHostException => e
               localhost = "localhost"
             end
             return localhost

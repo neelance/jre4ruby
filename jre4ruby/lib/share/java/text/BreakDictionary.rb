@@ -191,7 +191,7 @@ module Java::Text
           
           typesig { [] }
           define_method :run do
-            return BufferedInputStream.new(get_class.get_resource_as_stream("/sun/text/resources/" + dictionary_name))
+            return self.class::BufferedInputStream.new(get_class.get_resource_as_stream("/sun/text/resources/" + dictionary_name))
           end
           
           typesig { [] }

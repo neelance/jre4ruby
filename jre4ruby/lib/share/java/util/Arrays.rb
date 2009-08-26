@@ -3480,7 +3480,7 @@ module Java::Util
           @a = nil
           super()
           if ((array).nil?)
-            raise NullPointerException.new
+            raise self.class::NullPointerException.new
           end
           @a = array
         end
@@ -3495,7 +3495,7 @@ module Java::Util
           return @a.clone
         end
         
-        typesig { [Array.typed(T)] }
+        typesig { [Array.typed(self::T)] }
         def to_array(a)
           size_ = size
           if (a.attr_length < size_)

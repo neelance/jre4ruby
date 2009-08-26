@@ -157,7 +157,7 @@ module Java::Lang::Ref
       const_set_lazy(:ReferenceHandler) { Class.new(JavaThread) do
         include_class_members Reference
         
-        typesig { [JavaThreadGroup, String] }
+        typesig { [self::JavaThreadGroup, self::String] }
         def initialize(g, name)
           super(g, name)
         end
@@ -175,13 +175,13 @@ module Java::Lang::Ref
               else
                 begin
                   self.attr_lock.wait
-                rescue InterruptedException => x
+                rescue self.class::InterruptedException => x
                 end
                 next
               end
             end
             # Fast path for cleaners
-            if (r.is_a?(Cleaner))
+            if (r.is_a?(self.class::Cleaner))
               (r).clean
               next
             end

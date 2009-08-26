@@ -88,11 +88,11 @@ module Sun::Nio::Cs::Ext
           const_attr_reader  :REPLACE_CHAR
         }
         
-        typesig { [Charset] }
+        typesig { [self::Charset] }
         def initialize(cs)
           @jis0208 = nil
           super(cs)
-          @jis0208 = JIS_X_0208_Solaris_Decoder.new(cs)
+          @jis0208 = self.class::JIS_X_0208_Solaris_Decoder.new(cs)
         end
         
         typesig { [::Java::Int, ::Java::Int] }
@@ -143,15 +143,15 @@ module Sun::Nio::Cs::Ext
         alias_method :attr_j0208index2=, :j0208index2=
         undef_method :j0208index2=
         
-        typesig { [Charset] }
+        typesig { [self::Charset] }
         def initialize(cs)
           @jis0201 = nil
           @jis0208 = nil
           @j0208index1 = nil
           @j0208index2 = nil
           super(cs)
-          @jis0201 = JIS_X_0201::Encoder.new(cs)
-          @jis0208 = JIS_X_0208_Solaris_Encoder.new(cs)
+          @jis0201 = self.class::JIS_X_0201::Encoder.new(cs)
+          @jis0208 = self.class::JIS_X_0208_Solaris_Encoder.new(cs)
           @j0208index1 = @jis0208.get_index1
           @j0208index2 = @jis0208.get_index2
         end

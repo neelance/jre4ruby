@@ -298,7 +298,7 @@ module Java::Util::Concurrent::Atomic
         alias_method :attr_cclass=, :cclass=
         undef_method :cclass=
         
-        typesig { [Class, String] }
+        typesig { [self::Class, self::String] }
         def initialize(tclass, field_name)
           @offset = 0
           @tclass = nil
@@ -313,15 +313,15 @@ module Java::Util::Concurrent::Atomic
             modifiers = field.get_modifiers
             Sun::Reflect::Misc::ReflectUtil.ensure_member_access(caller, tclass, nil, modifiers)
             Sun::Reflect::Misc::ReflectUtil.check_package_access(tclass)
-          rescue JavaException => ex
-            raise RuntimeException.new(ex)
+          rescue self.class::JavaException => ex
+            raise self.class::RuntimeException.new(ex)
           end
           fieldt = field.get_type
           if (!(fieldt).equal?(Array))
-            raise IllegalArgumentException.new("Must be long type")
+            raise self.class::IllegalArgumentException.new("Must be long type")
           end
           if (!Modifier.is_volatile(modifiers))
-            raise IllegalArgumentException.new("Must be volatile type")
+            raise self.class::IllegalArgumentException.new("Must be volatile type")
           end
           @cclass = (Modifier.is_protected(modifiers) && !(caller).equal?(tclass)) ? caller : nil
           @tclass = tclass
@@ -331,7 +331,7 @@ module Java::Util::Concurrent::Atomic
         typesig { [Object] }
         def full_check(obj)
           if (!@tclass.is_instance(obj))
-            raise ClassCastException.new
+            raise self.class::ClassCastException.new
           end
           if (!(@cclass).nil?)
             ensure_protected_access(obj)
@@ -383,7 +383,7 @@ module Java::Util::Concurrent::Atomic
           if (@cclass.is_instance(obj))
             return
           end
-          raise RuntimeException.new(IllegalAccessException.new("Class " + RJava.cast_to_string(@cclass.get_name) + " can not access a protected member of class " + RJava.cast_to_string(@tclass.get_name) + " using an instance of " + RJava.cast_to_string(obj.get_class.get_name)))
+          raise self.class::RuntimeException.new(self.class::IllegalAccessException.new("Class " + RJava.cast_to_string(@cclass.get_name) + " can not access a protected member of class " + RJava.cast_to_string(@tclass.get_name) + " using an instance of " + RJava.cast_to_string(obj.get_class.get_name)))
         end
         
         private
@@ -416,7 +416,7 @@ module Java::Util::Concurrent::Atomic
         alias_method :attr_cclass=, :cclass=
         undef_method :cclass=
         
-        typesig { [Class, String] }
+        typesig { [self::Class, self::String] }
         def initialize(tclass, field_name)
           @offset = 0
           @tclass = nil
@@ -431,15 +431,15 @@ module Java::Util::Concurrent::Atomic
             modifiers = field.get_modifiers
             Sun::Reflect::Misc::ReflectUtil.ensure_member_access(caller, tclass, nil, modifiers)
             Sun::Reflect::Misc::ReflectUtil.check_package_access(tclass)
-          rescue JavaException => ex
-            raise RuntimeException.new(ex)
+          rescue self.class::JavaException => ex
+            raise self.class::RuntimeException.new(ex)
           end
           fieldt = field.get_type
           if (!(fieldt).equal?(Array))
-            raise IllegalArgumentException.new("Must be long type")
+            raise self.class::IllegalArgumentException.new("Must be long type")
           end
           if (!Modifier.is_volatile(modifiers))
-            raise IllegalArgumentException.new("Must be volatile type")
+            raise self.class::IllegalArgumentException.new("Must be volatile type")
           end
           @cclass = (Modifier.is_protected(modifiers) && !(caller).equal?(tclass)) ? caller : nil
           @tclass = tclass
@@ -449,7 +449,7 @@ module Java::Util::Concurrent::Atomic
         typesig { [Object] }
         def full_check(obj)
           if (!@tclass.is_instance(obj))
-            raise ClassCastException.new
+            raise self.class::ClassCastException.new
           end
           if (!(@cclass).nil?)
             ensure_protected_access(obj)
@@ -506,7 +506,7 @@ module Java::Util::Concurrent::Atomic
           if (@cclass.is_instance(obj))
             return
           end
-          raise RuntimeException.new(IllegalAccessException.new("Class " + RJava.cast_to_string(@cclass.get_name) + " can not access a protected member of class " + RJava.cast_to_string(@tclass.get_name) + " using an instance of " + RJava.cast_to_string(obj.get_class.get_name)))
+          raise self.class::RuntimeException.new(self.class::IllegalAccessException.new("Class " + RJava.cast_to_string(@cclass.get_name) + " can not access a protected member of class " + RJava.cast_to_string(@tclass.get_name) + " using an instance of " + RJava.cast_to_string(obj.get_class.get_name)))
         end
         
         private

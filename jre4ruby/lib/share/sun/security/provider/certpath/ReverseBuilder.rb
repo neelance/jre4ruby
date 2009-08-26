@@ -226,7 +226,7 @@ module Sun::Security::Provider::Certpath
         alias_method :attr_debug=, :debug=
         undef_method :debug=
         
-        typesig { [X509Certificate, X509Certificate] }
+        typesig { [self::X509Certificate, self::X509Certificate] }
         def compare(cert1, cert2)
           # if either cert certifies the target, always
           # put at head of list.
@@ -242,12 +242,12 @@ module Sun::Security::Provider::Certpath
             target_subject_name = X500Name.as_x500name(self.attr_target_subject_dn)
             target_dist1 = Builder.target_distance(nil, cert1, target_subject_name)
             target_dist2 = Builder.target_distance(nil, cert2, target_subject_name)
-          rescue IOException => e
+          rescue self.class::IOException => e
             if (!(@debug).nil?)
               @debug.println("IOException in call to Builder.targetDistance")
               e.print_stack_trace
             end
-            raise ClassCastException.new("Invalid target subject distinguished name")
+            raise self.class::ClassCastException.new("Invalid target subject distinguished name")
           end
           if ((target_dist1).equal?(target_dist2))
             return 0

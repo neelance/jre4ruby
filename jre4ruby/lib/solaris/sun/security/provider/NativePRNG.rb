@@ -87,17 +87,17 @@ module Sun::Security::Provider
           
           typesig { [] }
           define_method :run do
-            random_file = JavaFile.new(NAME_RANDOM)
+            random_file = self.class::JavaFile.new(NAME_RANDOM)
             if ((random_file.exists).equal?(false))
               return nil
             end
-            urandom_file = JavaFile.new(NAME_URANDOM)
+            urandom_file = self.class::JavaFile.new(NAME_URANDOM)
             if ((urandom_file.exists).equal?(false))
               return nil
             end
             begin
-              return RandomIO.new(random_file, urandom_file)
-            rescue JavaException => e
+              return self.class::RandomIO.new(random_file, urandom_file)
+            rescue self.class::JavaException => e
               return nil
             end
           end
@@ -240,7 +240,7 @@ module Sun::Security::Provider
         alias_method :attr_lock_set_seed=, :lock_set_seed=
         undef_method :lock_set_seed=
         
-        typesig { [JavaFile, JavaFile] }
+        typesig { [self::JavaFile, self::JavaFile] }
         # constructor, called only once from initIO()
         def initialize(random_file, urandom_file)
           @random_in = nil
@@ -254,8 +254,8 @@ module Sun::Security::Provider
           @lock_get_bytes = Object.new
           @lock_get_seed = Object.new
           @lock_set_seed = Object.new
-          @random_in = FileInputStream.new(random_file)
-          @urandom_in = FileInputStream.new(urandom_file)
+          @random_in = self.class::FileInputStream.new(random_file)
+          @urandom_in = self.class::FileInputStream.new(urandom_file)
           @urandom_buffer = Array.typed(::Java::Byte).new(self.class::BUFFER_SIZE) { 0 }
         end
         
@@ -268,13 +268,13 @@ module Sun::Security::Provider
             synchronized((@lock_get_bytes)) do
               r = @mix_random
               if ((r).nil?)
-                r = Sun::Security::Provider::SecureRandom.new
+                r = Sun::Security::Provider::self.class::SecureRandom.new
                 begin
                   b = Array.typed(::Java::Byte).new(20) { 0 }
                   read_fully(@urandom_in, b)
                   r.engine_set_seed(b)
-                rescue IOException => e
-                  raise ProviderException.new("init failed", e)
+                rescue self.class::IOException => e
+                  raise self.class::ProviderException.new("init failed", e)
                 end
                 @mix_random = r
               end
@@ -284,7 +284,7 @@ module Sun::Security::Provider
         end
         
         class_module.module_eval {
-          typesig { [InputStream, Array.typed(::Java::Byte)] }
+          typesig { [self::InputStream, Array.typed(::Java::Byte)] }
           # read data.length bytes from in
           # /dev/[u]random are not normal files, so we need to loop the read.
           # just keep trying as long as we are making progress
@@ -294,13 +294,13 @@ module Sun::Security::Provider
             while (len > 0)
               k = in_.read(data, ofs, len)
               if (k <= 0)
-                raise EOFException.new("/dev/[u]random closed?")
+                raise self.class::EOFException.new("/dev/[u]random closed?")
               end
               ofs += k
               len -= k
             end
             if (len > 0)
-              raise IOException.new("Could not read from /dev/[u]random")
+              raise self.class::IOException.new("Could not read from /dev/[u]random")
             end
           end
         }
@@ -313,8 +313,8 @@ module Sun::Security::Provider
               b = Array.typed(::Java::Byte).new(num_bytes) { 0 }
               read_fully(@random_in, b)
               return b
-            rescue IOException => e
-              raise ProviderException.new("generateSeed() failed", e)
+            rescue self.class::IOException => e
+              raise self.class::ProviderException.new("generateSeed() failed", e)
             end
           end
         end
@@ -327,16 +327,16 @@ module Sun::Security::Provider
           synchronized((@lock_set_seed)) do
             if ((@random_out_initialized).equal?(false))
               @random_out_initialized = true
-              @random_out = AccessController.do_privileged(Class.new(PrivilegedAction.class == Class ? PrivilegedAction : Object) do
+              @random_out = AccessController.do_privileged(Class.new(self.class::PrivilegedAction.class == Class ? self.class::PrivilegedAction : Object) do
                 extend LocalClass
                 include_class_members RandomIO
-                include PrivilegedAction if PrivilegedAction.class == Module
+                include self::PrivilegedAction if self::PrivilegedAction.class == Module
                 
                 typesig { [] }
                 define_method :run do
                   begin
-                    return FileOutputStream.new(NAME_RANDOM, true)
-                  rescue JavaException => e
+                    return self.class::FileOutputStream.new(NAME_RANDOM, true)
+                  rescue self.class::JavaException => e
                     return nil
                   end
                 end
@@ -353,8 +353,8 @@ module Sun::Security::Provider
             if (!(@random_out).nil?)
               begin
                 @random_out.write(seed)
-              rescue IOException => e
-                raise ProviderException.new("setSeed() failed", e)
+              rescue self.class::IOException => e
+                raise self.class::ProviderException.new("setSeed() failed", e)
               end
             end
             get_mix_random.engine_set_seed(seed)
@@ -393,8 +393,8 @@ module Sun::Security::Provider
                   @buffered -= 1
                 end
               end
-            rescue IOException => e
-              raise ProviderException.new("nextBytes() failed", e)
+            rescue self.class::IOException => e
+              raise self.class::ProviderException.new("nextBytes() failed", e)
             end
           end
         end

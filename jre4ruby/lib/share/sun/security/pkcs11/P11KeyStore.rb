@@ -246,7 +246,7 @@ module Sun::Security::Pkcs11
         alias_method :attr_matched=, :matched=
         undef_method :matched=
         
-        typesig { [String] }
+        typesig { [self::String] }
         # SecretKeyEntry
         def initialize(label)
           @type = nil
@@ -260,7 +260,7 @@ module Sun::Security::Pkcs11
           @label = label
         end
         
-        typesig { [String, Array.typed(::Java::Byte), ::Java::Boolean, X509Certificate] }
+        typesig { [self::String, Array.typed(::Java::Byte), ::Java::Boolean, self::X509Certificate] }
         # PrivateKeyEntry
         def initialize(label, id, trusted, cert)
           @type = nil
@@ -279,7 +279,7 @@ module Sun::Security::Pkcs11
         
         typesig { [] }
         def to_s
-          sb = StringBuilder.new
+          sb = self.class::StringBuilder.new
           if ((@type).equal?(ATTR_CLASS_PKEY))
             sb.append("\ttype=[private key]\n")
           else
@@ -330,10 +330,10 @@ module Sun::Security::Pkcs11
           end
         end
         
-        typesig { [Array.typed(Callback)] }
+        typesig { [Array.typed(self::Callback)] }
         def handle(callbacks)
-          if (!(callbacks[0].is_a?(PasswordCallback)))
-            raise UnsupportedCallbackException.new(callbacks[0])
+          if (!(callbacks[0].is_a?(self.class::PasswordCallback)))
+            raise self.class::UnsupportedCallbackException.new(callbacks[0])
           end
           pc = callbacks[0]
           pc.set_password(@password) # this clones the password if not null
@@ -371,7 +371,7 @@ module Sun::Security::Pkcs11
         alias_method :attr_type=, :type=
         undef_method :type=
         
-        typesig { [::Java::Long, CK_ATTRIBUTE] }
+        typesig { [::Java::Long, self::CK_ATTRIBUTE] }
         # CKA_CLASS
         def initialize(handle, type)
           @handle = 0

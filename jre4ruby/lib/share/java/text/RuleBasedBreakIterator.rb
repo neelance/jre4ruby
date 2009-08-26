@@ -492,7 +492,7 @@ module Java::Text
           
           typesig { [] }
           define_method :run do
-            return BufferedInputStream.new(get_class.get_resource_as_stream("/sun/text/resources/" + datafile))
+            return self.class::BufferedInputStream.new(get_class.get_resource_as_stream("/sun/text/resources/" + datafile))
           end
           
           typesig { [] }
@@ -1042,7 +1042,7 @@ module Java::Text
         alias_method :attr_current_index=, :current_index=
         undef_method :current_index=
         
-        typesig { [CharacterIterator] }
+        typesig { [self::CharacterIterator] }
         def initialize(base)
           @base = nil
           @range_start = 0
@@ -1098,7 +1098,7 @@ module Java::Text
         typesig { [::Java::Int] }
         def set_index(i)
           if (i < @range_start || i > @range_limit)
-            raise IllegalArgumentException.new("Invalid position")
+            raise self.class::IllegalArgumentException.new("Invalid position")
           end
           @current_index = i
           return current
@@ -1124,8 +1124,8 @@ module Java::Text
           copy = nil
           begin
             copy = super
-          rescue CloneNotSupportedException => e
-            raise JavaError.new("Clone not supported: " + RJava.cast_to_string(e))
+          rescue self.class::CloneNotSupportedException => e
+            raise self.class::JavaError.new("Clone not supported: " + RJava.cast_to_string(e))
           end
           copy_of_base = @base.clone
           copy.attr_base = copy_of_base

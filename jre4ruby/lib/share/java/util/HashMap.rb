@@ -744,7 +744,7 @@ module Java::Util
         alias_method :attr_hash=, :hash=
         undef_method :hash=
         
-        typesig { [::Java::Int, Object, Object, Entry] }
+        typesig { [::Java::Int, Object, Object, self::Entry] }
         # Creates new entry.
         def initialize(h, k, v, n)
           @key = nil
@@ -776,7 +776,7 @@ module Java::Util
         
         typesig { [Object] }
         def ==(o)
-          if (!(o.is_a?(Map::Entry)))
+          if (!(o.is_a?(self.class::Map::Entry)))
             return false
           end
           e = o
@@ -802,14 +802,14 @@ module Java::Util
           return RJava.cast_to_string(get_key) + "=" + RJava.cast_to_string(get_value)
         end
         
-        typesig { [HashMap] }
+        typesig { [self::HashMap] }
         # This method is invoked whenever the value in an entry is
         # overwritten by an invocation of put(k,v) for a key k that's already
         # in the HashMap.
         def record_access(m)
         end
         
-        typesig { [HashMap] }
+        typesig { [self::HashMap] }
         # This method is invoked whenever the entry is
         # removed from the table.
         def record_removal(m)
@@ -904,11 +904,11 @@ module Java::Util
         typesig { [] }
         def next_entry
           if (!(self.attr_mod_count).equal?(@expected_mod_count))
-            raise ConcurrentModificationException.new
+            raise self.class::ConcurrentModificationException.new
           end
           e = @next
           if ((e).nil?)
-            raise NoSuchElementException.new
+            raise self.class::NoSuchElementException.new
           end
           if (((@next = e.attr_next)).nil?)
             t = self.attr_table
@@ -922,10 +922,10 @@ module Java::Util
         typesig { [] }
         def remove
           if ((@current).nil?)
-            raise IllegalStateException.new
+            raise self.class::IllegalStateException.new
           end
           if (!(self.attr_mod_count).equal?(@expected_mod_count))
-            raise ConcurrentModificationException.new
+            raise self.class::ConcurrentModificationException.new
           end
           k = @current.attr_key
           @current = nil
@@ -1161,7 +1161,7 @@ module Java::Util
         
         typesig { [Object] }
         def contains(o)
-          if (!(o.is_a?(Map::Entry)))
+          if (!(o.is_a?(self.class::Map::Entry)))
             return false
           end
           e = o

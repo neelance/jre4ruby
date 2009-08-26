@@ -60,7 +60,7 @@ module Sun::Nio::Cs
       const_set_lazy(:Decoder) { Class.new(UnicodeDecoder) do
         include_class_members UTF_16LE_BOM
         
-        typesig { [Charset] }
+        typesig { [self::Charset] }
         def initialize(cs)
           super(cs, NONE, LITTLE)
         end
@@ -72,7 +72,7 @@ module Sun::Nio::Cs
       const_set_lazy(:Encoder) { Class.new(UnicodeEncoder) do
         include_class_members UTF_16LE_BOM
         
-        typesig { [Charset] }
+        typesig { [self::Charset] }
         def initialize(cs)
           super(cs, LITTLE, true)
         end

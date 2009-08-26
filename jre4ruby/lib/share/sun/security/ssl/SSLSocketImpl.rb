@@ -2291,7 +2291,7 @@ module Sun::Security::Ssl
         alias_method :attr_event=, :event=
         undef_method :event=
         
-        typesig { [JavaSet, HandshakeCompletedEvent] }
+        typesig { [self::JavaSet, self::HandshakeCompletedEvent] }
         # the notification
         def initialize(entry_set, e)
           @targets = nil
@@ -2306,10 +2306,10 @@ module Sun::Security::Ssl
           @targets.each do |entry|
             l = entry.get_key
             acc = entry.get_value
-            AccessController.do_privileged(Class.new(PrivilegedAction.class == Class ? PrivilegedAction : Object) do
+            AccessController.do_privileged(Class.new(self.class::PrivilegedAction.class == Class ? self.class::PrivilegedAction : Object) do
               extend LocalClass
               include_class_members NotifyHandshakeThread
-              include PrivilegedAction if PrivilegedAction.class == Module
+              include self::PrivilegedAction if self::PrivilegedAction.class == Module
               
               typesig { [] }
               define_method :run do

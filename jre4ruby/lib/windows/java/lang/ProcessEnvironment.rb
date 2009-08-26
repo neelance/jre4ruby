@@ -134,7 +134,7 @@ module Java::Lang
         alias_method :attr_e=, :e=
         undef_method :e=
         
-        typesig { [Map::Entry] }
+        typesig { [self::Map::Entry] }
         def initialize(e)
           @e = nil
           @e = e
@@ -150,7 +150,7 @@ module Java::Lang
           return @e.get_value
         end
         
-        typesig { [String] }
+        typesig { [self::String] }
         def set_value(value)
           return @e.set_value(validate_value(value))
         end
@@ -183,7 +183,7 @@ module Java::Lang
         alias_method :attr_s=, :s=
         undef_method :s=
         
-        typesig { [JavaSet] }
+        typesig { [self::JavaSet] }
         def initialize(s)
           @s = nil
           super()
@@ -207,10 +207,10 @@ module Java::Lang
         
         typesig { [] }
         def iterator
-          return Class.new(Iterator.class == Class ? Iterator : Object) do
+          return Class.new(self.class::Iterator.class == Class ? self.class::Iterator : Object) do
             extend LocalClass
             include_class_members CheckedEntrySet
-            include Iterator if Iterator.class == Module
+            include self::Iterator if self::Iterator.class == Module
             
             attr_accessor :i
             alias_method :attr_i, :i
@@ -225,7 +225,7 @@ module Java::Lang
             
             typesig { [] }
             define_method :next_ do
-              return CheckedEntry.new(@i.next_)
+              return self.class::CheckedEntry.new(@i.next_)
             end
             
             typesig { [] }
@@ -278,7 +278,7 @@ module Java::Lang
         alias_method :attr_c=, :c=
         undef_method :c=
         
-        typesig { [Collection] }
+        typesig { [self::Collection] }
         def initialize(c)
           @c = nil
           super()
@@ -328,7 +328,7 @@ module Java::Lang
         alias_method :attr_s=, :s=
         undef_method :s=
         
-        typesig { [JavaSet] }
+        typesig { [self::JavaSet] }
         def initialize(s)
           @s = nil
           super()
@@ -390,7 +390,7 @@ module Java::Lang
         include_class_members ProcessEnvironment
         include Comparator
         
-        typesig { [String, String] }
+        typesig { [self::String, self::String] }
         def compare(s1, s2)
           # We can't use String.compareToIgnoreCase since it
           # canonicalizes to lower case, while Windows
@@ -428,7 +428,7 @@ module Java::Lang
         include_class_members ProcessEnvironment
         include Comparator
         
-        typesig { [Map::Entry, Map::Entry] }
+        typesig { [self::Map::Entry, self::Map::Entry] }
         def compare(e1, e2)
           return NameComparator.compare(e1.get_key, e2.get_key)
         end

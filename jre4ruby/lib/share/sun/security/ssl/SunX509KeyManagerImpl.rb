@@ -117,7 +117,7 @@ module Sun::Security::Ssl
         alias_method :attr_issuer_x500principals=, :issuer_x500principals=
         undef_method :issuer_x500principals=
         
-        typesig { [PrivateKey, Array.typed(X509Certificate)] }
+        typesig { [self::PrivateKey, Array.typed(self::X509Certificate)] }
         def initialize(private_key, certificates)
           @private_key = nil
           @certificates = nil
@@ -132,7 +132,7 @@ module Sun::Security::Ssl
           synchronized(self) do
             # lazy initialization
             if ((@issuer_x500principals).nil?)
-              @issuer_x500principals = HashSet.new
+              @issuer_x500principals = self.class::HashSet.new
               i = 0
               while i < @certificates.attr_length
                 @issuer_x500principals.add(@certificates[i].get_issuer_x500principal)

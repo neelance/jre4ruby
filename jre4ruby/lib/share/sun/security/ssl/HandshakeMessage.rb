@@ -215,7 +215,7 @@ module Sun::Security::Ssl
           super()
         end
         
-        typesig { [HandshakeInStream] }
+        typesig { [self::HandshakeInStream] }
         def initialize(in_)
           super()
           # nothing in this message
@@ -226,12 +226,12 @@ module Sun::Security::Ssl
           return 0
         end
         
-        typesig { [HandshakeOutStream] }
+        typesig { [self::HandshakeOutStream] }
         def send(out)
           # nothing in this messaage
         end
         
-        typesig { [PrintStream] }
+        typesig { [self::PrintStream] }
         def print(out)
           out.println("*** HelloRequest (empty)")
         end
@@ -298,7 +298,7 @@ module Sun::Security::Ssl
           const_attr_reader  :NULL_COMPRESSION
         }
         
-        typesig { [SecureRandom, ProtocolVersion] }
+        typesig { [self::SecureRandom, self::ProtocolVersion] }
         def initialize(generator, protocol_version)
           @protocol_version = nil
           @clnt_random = nil
@@ -307,9 +307,9 @@ module Sun::Security::Ssl
           @compression_methods = nil
           @extensions = nil
           super()
-          @extensions = HelloExtensions.new
+          @extensions = self.class::HelloExtensions.new
           @protocol_version = protocol_version
-          @clnt_random = RandomCookie.new(generator)
+          @clnt_random = self.class::RandomCookie.new(generator)
           @compression_methods = self.class::NULL_COMPRESSION
           # sessionId, cipher_suites TBS later
         end
@@ -319,7 +319,7 @@ module Sun::Security::Ssl
           return @cipher_suites
         end
         
-        typesig { [CipherSuiteList] }
+        typesig { [self::CipherSuiteList] }
         # Set the ciphersuites.
         # This method may only be called once.
         def set_cipher_suites(cipher_suites)
@@ -339,7 +339,7 @@ module Sun::Security::Ssl
           return (2 + 32 + 1 + 2 + 1 + @session_id.length + (@cipher_suites.size * 2) + @compression_methods.attr_length) + @extensions.length
         end
         
-        typesig { [HandshakeInStream, ::Java::Int] }
+        typesig { [self::HandshakeInStream, ::Java::Int] }
         def initialize(s, message_length)
           @protocol_version = nil
           @clnt_random = nil
@@ -348,18 +348,18 @@ module Sun::Security::Ssl
           @compression_methods = nil
           @extensions = nil
           super()
-          @extensions = HelloExtensions.new
+          @extensions = self.class::HelloExtensions.new
           @protocol_version = ProtocolVersion.value_of(s.get_int8, s.get_int8)
-          @clnt_random = RandomCookie.new(s)
-          @session_id = SessionId.new(s.get_bytes8)
-          @cipher_suites = CipherSuiteList.new(s)
+          @clnt_random = self.class::RandomCookie.new(s)
+          @session_id = self.class::SessionId.new(s.get_bytes8)
+          @cipher_suites = self.class::CipherSuiteList.new(s)
           @compression_methods = s.get_bytes8
           if (!(message_length).equal?(message_length))
-            @extensions = HelloExtensions.new(s)
+            @extensions = self.class::HelloExtensions.new(s)
           end
         end
         
-        typesig { [HandshakeOutStream] }
+        typesig { [self::HandshakeOutStream] }
         def send(s)
           s.put_int8(@protocol_version.attr_major)
           s.put_int8(@protocol_version.attr_minor)
@@ -370,7 +370,7 @@ module Sun::Security::Ssl
           @extensions.send(s)
         end
         
-        typesig { [PrintStream] }
+        typesig { [self::PrintStream] }
         def print(s)
           s.println("*** ClientHello, " + RJava.cast_to_string(@protocol_version))
           if (!(Debug).nil? && Debug.is_on("verbose"))
@@ -454,11 +454,11 @@ module Sun::Security::Ssl
           @extensions = nil
           @extension_length = 0
           super()
-          @extensions = HelloExtensions.new
+          @extensions = self.class::HelloExtensions.new
           # empty
         end
         
-        typesig { [HandshakeInStream, ::Java::Int] }
+        typesig { [self::HandshakeInStream, ::Java::Int] }
         def initialize(input, message_length)
           @protocol_version = nil
           @svr_random = nil
@@ -468,14 +468,14 @@ module Sun::Security::Ssl
           @extensions = nil
           @extension_length = 0
           super()
-          @extensions = HelloExtensions.new
+          @extensions = self.class::HelloExtensions.new
           @protocol_version = ProtocolVersion.value_of(input.get_int8, input.get_int8)
-          @svr_random = RandomCookie.new(input)
-          @session_id = SessionId.new(input.get_bytes8)
+          @svr_random = self.class::RandomCookie.new(input)
+          @session_id = self.class::SessionId.new(input.get_bytes8)
           @cipher_suite = CipherSuite.value_of(input.get_int8, input.get_int8)
           @compression_method = input.get_int8
           if (!(message_length).equal?(message_length))
-            @extensions = HelloExtensions.new(input)
+            @extensions = self.class::HelloExtensions.new(input)
           end
         end
         
@@ -490,7 +490,7 @@ module Sun::Security::Ssl
           return 38 + @session_id.length + @extensions.length
         end
         
-        typesig { [HandshakeOutStream] }
+        typesig { [self::HandshakeOutStream] }
         def send(s)
           s.put_int8(@protocol_version.attr_major)
           s.put_int8(@protocol_version.attr_minor)
@@ -502,7 +502,7 @@ module Sun::Security::Ssl
           @extensions.send(s)
         end
         
-        typesig { [PrintStream] }
+        typesig { [self::PrintStream] }
         def print(s)
           s.println("*** ServerHello, " + RJava.cast_to_string(@protocol_version))
           if (!(Debug).nil? && Debug.is_on("verbose"))
@@ -559,7 +559,7 @@ module Sun::Security::Ssl
         alias_method :attr_message_length=, :message_length=
         undef_method :message_length=
         
-        typesig { [Array.typed(X509Certificate)] }
+        typesig { [Array.typed(self::X509Certificate)] }
         def initialize(certs)
           @chain = nil
           @encoded_chain = nil
@@ -568,14 +568,14 @@ module Sun::Security::Ssl
           @chain = certs
         end
         
-        typesig { [HandshakeInStream] }
+        typesig { [self::HandshakeInStream] }
         def initialize(input)
           @chain = nil
           @encoded_chain = nil
           @message_length = 0
           super()
           chain_len = input.get_int24
-          v = ArrayList.new(4)
+          v = self.class::ArrayList.new(4)
           cf = nil
           while (chain_len > 0)
             cert = input.get_bytes24
@@ -584,34 +584,34 @@ module Sun::Security::Ssl
               if ((cf).nil?)
                 cf = CertificateFactory.get_instance("X.509")
               end
-              v.add(cf.generate_certificate(ByteArrayInputStream.new(cert)))
-            rescue CertificateException => e
-              raise SSLProtocolException.new(e.get_message).init_cause(e)
+              v.add(cf.generate_certificate(self.class::ByteArrayInputStream.new(cert)))
+            rescue self.class::CertificateException => e
+              raise self.class::SSLProtocolException.new(e.get_message).init_cause(e)
             end
           end
-          @chain = v.to_array(Array.typed(X509Certificate).new(v.size) { nil })
+          @chain = v.to_array(Array.typed(self.class::X509Certificate).new(v.size) { nil })
         end
         
         typesig { [] }
         def message_length
           if ((@encoded_chain).nil?)
             @message_length = 3
-            @encoded_chain = ArrayList.new(@chain.attr_length)
+            @encoded_chain = self.class::ArrayList.new(@chain.attr_length)
             begin
               @chain.each do |cert|
                 b = cert.get_encoded
                 @encoded_chain.add(b)
                 @message_length += b.attr_length + 3
               end
-            rescue CertificateEncodingException => e
+            rescue self.class::CertificateEncodingException => e
               @encoded_chain = nil
-              raise RuntimeException.new("Could not encode certificates", e)
+              raise self.class::RuntimeException.new("Could not encode certificates", e)
             end
           end
           return @message_length
         end
         
-        typesig { [HandshakeOutStream] }
+        typesig { [self::HandshakeOutStream] }
         def send(s)
           s.put_int24(message_length - 3)
           @encoded_chain.each do |b|
@@ -619,7 +619,7 @@ module Sun::Security::Ssl
           end
         end
         
-        typesig { [PrintStream] }
+        typesig { [self::PrintStream] }
         def print(s)
           s.println("*** Certificate chain")
           if (!(Debug).nil? && Debug.is_on("verbose"))
@@ -743,7 +743,7 @@ module Sun::Security::Ssl
           @signature.update(@rsa_exponent)
         end
         
-        typesig { [PublicKey, PrivateKey, RandomCookie, RandomCookie, SecureRandom] }
+        typesig { [self::PublicKey, self::PrivateKey, self::RandomCookie, self::RandomCookie, self::SecureRandom] }
         # Construct an RSA server key exchange message, using data
         # known _only_ to the server.
         # 
@@ -767,7 +767,7 @@ module Sun::Security::Ssl
           @signature_bytes = @signature.sign
         end
         
-        typesig { [HandshakeInStream] }
+        typesig { [self::HandshakeInStream] }
         # Parse an RSA server key exchange message, using data known
         # to the client (and, in some situations, eavesdroppers).
         def initialize(input)
@@ -789,14 +789,14 @@ module Sun::Security::Ssl
           begin
             kfac = JsseJce.get_key_factory("RSA")
             # modulus and exponent are always positive
-            kspec = RSAPublicKeySpec.new(BigInteger.new(1, @rsa_modulus), BigInteger.new(1, @rsa_exponent))
+            kspec = self.class::RSAPublicKeySpec.new(self.class::BigInteger.new(1, @rsa_modulus), self.class::BigInteger.new(1, @rsa_exponent))
             return kfac.generate_public(kspec)
-          rescue JavaException => e
-            raise RuntimeException.new(e)
+          rescue self.class::JavaException => e
+            raise self.class::RuntimeException.new(e)
           end
         end
         
-        typesig { [PublicKey, RandomCookie, RandomCookie] }
+        typesig { [self::PublicKey, self::RandomCookie, self::RandomCookie] }
         # Verify the signed temporary key using the hashes computed
         # from it and the two nonces.  This is called by clients
         # with "exportable" RSA flavors.
@@ -811,14 +811,14 @@ module Sun::Security::Ssl
           return 6 + @rsa_modulus.attr_length + @rsa_exponent.attr_length + @signature_bytes.attr_length
         end
         
-        typesig { [HandshakeOutStream] }
+        typesig { [self::HandshakeOutStream] }
         def send(s)
           s.put_bytes16(@rsa_modulus)
           s.put_bytes16(@rsa_exponent)
           s.put_bytes16(@signature_bytes)
         end
         
-        typesig { [PrintStream] }
+        typesig { [self::PrintStream] }
         def print(s)
           s.println("*** RSA ServerKeyExchange")
           if (!(Debug).nil? && Debug.is_on("verbose"))
@@ -882,22 +882,22 @@ module Sun::Security::Ssl
         typesig { [] }
         # Return the Diffie-Hellman modulus
         def get_modulus
-          return BigInteger.new(1, @dh_p)
+          return self.class::BigInteger.new(1, @dh_p)
         end
         
         typesig { [] }
         # Return the Diffie-Hellman base/generator
         def get_base
-          return BigInteger.new(1, @dh_g)
+          return self.class::BigInteger.new(1, @dh_g)
         end
         
         typesig { [] }
         # Return the server's Diffie-Hellman public key
         def get_server_public_key
-          return BigInteger.new(1, @dh_ys)
+          return self.class::BigInteger.new(1, @dh_ys)
         end
         
-        typesig { [Signature, Array.typed(::Java::Byte), Array.typed(::Java::Byte)] }
+        typesig { [self::Signature, Array.typed(::Java::Byte), Array.typed(::Java::Byte)] }
         # Update sig with nonces and Diffie-Hellman public key.
         def update_signature(sig, clnt_nonce, svr_nonce)
           tmp = 0
@@ -917,7 +917,7 @@ module Sun::Security::Ssl
           sig.update(@dh_ys)
         end
         
-        typesig { [DHCrypt] }
+        typesig { [self::DHCrypt] }
         # Construct from initialized DH key object, for DH_anon
         # key exchange.
         def initialize(obj)
@@ -930,7 +930,7 @@ module Sun::Security::Ssl
           @signature = nil
         end
         
-        typesig { [DHCrypt, PrivateKey, Array.typed(::Java::Byte), Array.typed(::Java::Byte), SecureRandom] }
+        typesig { [self::DHCrypt, self::PrivateKey, Array.typed(::Java::Byte), Array.typed(::Java::Byte), self::SecureRandom] }
         # Construct from initialized DH key object and the key associated
         # with the cert chain which was sent ... for DHE_DSS and DHE_RSA
         # key exchange.  (Constructor called by server.)
@@ -952,14 +952,14 @@ module Sun::Security::Ssl
           @signature = sig.sign
         end
         
-        typesig { [DHCrypt] }
+        typesig { [self::DHCrypt] }
         def get_values(obj)
           @dh_p = to_byte_array(obj.get_modulus)
           @dh_g = to_byte_array(obj.get_base)
           @dh_ys = to_byte_array(obj.get_public_key)
         end
         
-        typesig { [HandshakeInStream] }
+        typesig { [self::HandshakeInStream] }
         # Construct a DH_ServerKeyExchange message from an input
         # stream, as if sent from server to client for use with
         # DH_anon key exchange
@@ -975,7 +975,7 @@ module Sun::Security::Ssl
           @signature = nil
         end
         
-        typesig { [HandshakeInStream, PublicKey, Array.typed(::Java::Byte), Array.typed(::Java::Byte), ::Java::Int] }
+        typesig { [self::HandshakeInStream, self::PublicKey, Array.typed(::Java::Byte), Array.typed(::Java::Byte), ::Java::Int] }
         # Construct a DH_ServerKeyExchange message from an input stream
         # and a certificate, as if sent from server to client for use with
         # DHE_DSS or DHE_RSA key exchange.  (Called by client.)
@@ -1006,13 +1006,13 @@ module Sun::Security::Ssl
             if ((algorithm == "RSA"))
               sig = RSASignature.get_instance
             else
-              raise SSLKeyException.new("neither an RSA or a DSA key")
+              raise self.class::SSLKeyException.new("neither an RSA or a DSA key")
             end
           end
           sig.init_verify(public_key)
           update_signature(sig, clnt_nonce, svr_nonce)
           if ((sig.verify(signature)).equal?(false))
-            raise SSLKeyException.new("Server D-H key verification failed")
+            raise self.class::SSLKeyException.new("Server D-H key verification failed")
           end
         end
         
@@ -1031,7 +1031,7 @@ module Sun::Security::Ssl
           return temp
         end
         
-        typesig { [HandshakeOutStream] }
+        typesig { [self::HandshakeOutStream] }
         def send(s)
           s.put_bytes16(@dh_p)
           s.put_bytes16(@dh_g)
@@ -1045,7 +1045,7 @@ module Sun::Security::Ssl
           end
         end
         
-        typesig { [PrintStream] }
+        typesig { [self::PrintStream] }
         def print(s)
           s.println("*** Diffie-Hellman ServerKeyExchange")
           if (!(Debug).nil? && Debug.is_on("verbose"))
@@ -1112,7 +1112,7 @@ module Sun::Security::Ssl
         alias_method :attr_public_key=, :public_key=
         undef_method :public_key=
         
-        typesig { [ECDHCrypt, PrivateKey, Array.typed(::Java::Byte), Array.typed(::Java::Byte), SecureRandom] }
+        typesig { [self::ECDHCrypt, self::PrivateKey, Array.typed(::Java::Byte), Array.typed(::Java::Byte), self::SecureRandom] }
         def initialize(obj, private_key, clnt_nonce, svr_nonce, sr)
           @curve_id = 0
           @point_bytes = nil
@@ -1134,7 +1134,7 @@ module Sun::Security::Ssl
           @signature_bytes = sig.sign
         end
         
-        typesig { [HandshakeInStream, PublicKey, Array.typed(::Java::Byte), Array.typed(::Java::Byte)] }
+        typesig { [self::HandshakeInStream, self::PublicKey, Array.typed(::Java::Byte), Array.typed(::Java::Byte)] }
         # Parse an ECDH server key exchange message.
         def initialize(input, signing_key, clnt_nonce, svr_nonce)
           @curve_id = 0
@@ -1149,23 +1149,23 @@ module Sun::Security::Ssl
           if ((curve_type).equal?(self.class::CURVE_NAMED_CURVE))
             @curve_id = input.get_int16
             if ((SupportedEllipticCurvesExtension.is_supported(@curve_id)).equal?(false))
-              raise SSLHandshakeException.new("Unsupported curveId: " + RJava.cast_to_string(@curve_id))
+              raise self.class::SSLHandshakeException.new("Unsupported curveId: " + RJava.cast_to_string(@curve_id))
             end
             curve_oid = SupportedEllipticCurvesExtension.get_curve_oid(@curve_id)
             if ((curve_oid).nil?)
-              raise SSLHandshakeException.new("Unknown named curve: " + RJava.cast_to_string(@curve_id))
+              raise self.class::SSLHandshakeException.new("Unknown named curve: " + RJava.cast_to_string(@curve_id))
             end
             parameters = JsseJce.get_ecparameter_spec(curve_oid)
             if ((parameters).nil?)
-              raise SSLHandshakeException.new("Unsupported curve: " + curve_oid)
+              raise self.class::SSLHandshakeException.new("Unsupported curve: " + curve_oid)
             end
           else
-            raise SSLHandshakeException.new("Unsupported ECCurveType: " + RJava.cast_to_string(curve_type))
+            raise self.class::SSLHandshakeException.new("Unsupported ECCurveType: " + RJava.cast_to_string(curve_type))
           end
           @point_bytes = input.get_bytes8
           point = JsseJce.decode_point(@point_bytes, parameters.get_curve)
           factory = JsseJce.get_key_factory("EC")
-          @public_key = factory.generate_public(ECPublicKeySpec.new(point, parameters))
+          @public_key = factory.generate_public(self.class::ECPublicKeySpec.new(point, parameters))
           if ((signing_key).nil?)
             # ECDH_anon
             return
@@ -1176,7 +1176,7 @@ module Sun::Security::Ssl
           sig.init_verify(signing_key)
           update_signature(sig, clnt_nonce, svr_nonce)
           if ((sig.verify(@signature_bytes)).equal?(false))
-            raise SSLKeyException.new("Invalid signature on ECDH server key exchange message")
+            raise self.class::SSLKeyException.new("Invalid signature on ECDH server key exchange message")
           end
         end
         
@@ -1187,7 +1187,7 @@ module Sun::Security::Ssl
         end
         
         class_module.module_eval {
-          typesig { [String] }
+          typesig { [self::String] }
           def get_signature(key_algorithm)
             if ((key_algorithm == "EC"))
               return JsseJce.get_signature(JsseJce::SIGNATURE_ECDSA)
@@ -1195,13 +1195,13 @@ module Sun::Security::Ssl
               if ((key_algorithm == "RSA"))
                 return RSASignature.get_instance
               else
-                raise NoSuchAlgorithmException.new("neither an RSA or a EC key")
+                raise self.class::NoSuchAlgorithmException.new("neither an RSA or a EC key")
               end
             end
           end
         }
         
-        typesig { [Signature, Array.typed(::Java::Byte), Array.typed(::Java::Byte)] }
+        typesig { [self::Signature, Array.typed(::Java::Byte), Array.typed(::Java::Byte)] }
         def update_signature(sig, clnt_nonce, svr_nonce)
           sig.update(clnt_nonce)
           sig.update(svr_nonce)
@@ -1218,7 +1218,7 @@ module Sun::Security::Ssl
           return 4 + @point_bytes.attr_length + sig_len
         end
         
-        typesig { [HandshakeOutStream] }
+        typesig { [self::HandshakeOutStream] }
         def send(s)
           s.put_int8(self.class::CURVE_NAMED_CURVE)
           s.put_int16(@curve_id)
@@ -1228,7 +1228,7 @@ module Sun::Security::Ssl
           end
         end
         
-        typesig { [PrintStream] }
+        typesig { [self::PrintStream] }
         def print(s)
           s.println("*** ECDH ServerKeyExchange")
           if (!(Debug).nil? && Debug.is_on("verbose"))
@@ -1251,13 +1251,13 @@ module Sun::Security::Ssl
         alias_method :attr_name=, :name=
         undef_method :name=
         
-        typesig { [HandshakeInStream] }
+        typesig { [self::HandshakeInStream] }
         def initialize(input)
           @name = nil
           @name = input.get_bytes16
         end
         
-        typesig { [X500Principal] }
+        typesig { [self::X500Principal] }
         def initialize(dn)
           @name = nil
           @name = dn.get_encoded
@@ -1266,9 +1266,9 @@ module Sun::Security::Ssl
         typesig { [] }
         def get_x500principal
           begin
-            return X500Principal.new(@name)
-          rescue IllegalArgumentException => e
-            raise SSLProtocolException.new(e.get_message).init_cause(e)
+            return self.class::X500Principal.new(@name)
+          rescue self.class::IllegalArgumentException => e
+            raise self.class::SSLProtocolException.new(e.get_message).init_cause(e)
           end
         end
         
@@ -1277,14 +1277,14 @@ module Sun::Security::Ssl
           return 2 + @name.attr_length
         end
         
-        typesig { [HandshakeOutStream] }
+        typesig { [self::HandshakeOutStream] }
         def send(output)
           output.put_bytes16(@name)
         end
         
-        typesig { [PrintStream] }
+        typesig { [self::PrintStream] }
         def print(output)
-          principal = X500Principal.new(@name)
+          principal = self.class::X500Principal.new(@name)
           output.println("<" + RJava.cast_to_string(principal.to_s) + ">")
         end
         
@@ -1356,7 +1356,7 @@ module Sun::Security::Ssl
         alias_method :attr_authorities=, :authorities=
         undef_method :authorities=
         
-        typesig { [Array.typed(X509Certificate), KeyExchange] }
+        typesig { [Array.typed(self::X509Certificate), self::KeyExchange] }
         # 3 to 2^16 - 1
         # ... "3" because that's the smallest DER-encoded X500 DN
         def initialize(ca, key_exchange)
@@ -1364,11 +1364,11 @@ module Sun::Security::Ssl
           @authorities = nil
           super()
           # always use X500Principal
-          @authorities = Array.typed(DistinguishedName).new(ca.attr_length) { nil }
+          @authorities = Array.typed(self.class::DistinguishedName).new(ca.attr_length) { nil }
           i = 0
           while i < ca.attr_length
             x500principal = ca[i].get_subject_x500principal
-            @authorities[i] = DistinguishedName.new(x500principal)
+            @authorities[i] = self.class::DistinguishedName.new(x500principal)
             i += 1
           end
           # we support RSA, DSS, and ECDSA client authentication and they
@@ -1378,28 +1378,28 @@ module Sun::Security::Ssl
           @types = JsseJce.is_ec_available ? self.class::TYPES_ECC : self.class::TYPES_NO_ECC
         end
         
-        typesig { [HandshakeInStream] }
+        typesig { [self::HandshakeInStream] }
         def initialize(input)
           @types = nil
           @authorities = nil
           super()
           @types = input.get_bytes8
           len = input.get_int16
-          v = ArrayList.new
+          v = self.class::ArrayList.new
           while (len >= 3)
-            dn = DistinguishedName.new(input)
+            dn = self.class::DistinguishedName.new(input)
             v.add(dn)
             len -= dn.length
           end
           if (!(len).equal?(0))
-            raise SSLProtocolException.new("Bad CertificateRequest DN length")
+            raise self.class::SSLProtocolException.new("Bad CertificateRequest DN length")
           end
-          @authorities = v.to_array(Array.typed(DistinguishedName).new(v.size) { nil })
+          @authorities = v.to_array(Array.typed(self.class::DistinguishedName).new(v.size) { nil })
         end
         
         typesig { [] }
         def get_authorities
-          ret = Array.typed(X500Principal).new(@authorities.attr_length) { nil }
+          ret = Array.typed(self.class::X500Principal).new(@authorities.attr_length) { nil }
           i = 0
           while i < @authorities.attr_length
             ret[i] = @authorities[i].get_x500principal
@@ -1420,7 +1420,7 @@ module Sun::Security::Ssl
           return len
         end
         
-        typesig { [HandshakeOutStream] }
+        typesig { [self::HandshakeOutStream] }
         def send(output)
           len = 0
           i = 0
@@ -1437,7 +1437,7 @@ module Sun::Security::Ssl
           end
         end
         
-        typesig { [PrintStream] }
+        typesig { [self::PrintStream] }
         def print(s)
           s.println("*** CertificateRequest")
           if (!(Debug).nil? && Debug.is_on("verbose"))
@@ -1504,7 +1504,7 @@ module Sun::Security::Ssl
           super()
         end
         
-        typesig { [HandshakeInStream] }
+        typesig { [self::HandshakeInStream] }
         def initialize(input)
           super()
           # nothing to do
@@ -1515,12 +1515,12 @@ module Sun::Security::Ssl
           return 0
         end
         
-        typesig { [HandshakeOutStream] }
+        typesig { [self::HandshakeOutStream] }
         def send(s)
           # nothing to send
         end
         
-        typesig { [PrintStream] }
+        typesig { [self::PrintStream] }
         def print(s)
           s.println("*** ServerHelloDone")
         end
@@ -1547,7 +1547,7 @@ module Sun::Security::Ssl
         alias_method :attr_signature=, :signature=
         undef_method :signature=
         
-        typesig { [ProtocolVersion, HandshakeHash, PrivateKey, SecretKey, SecureRandom] }
+        typesig { [self::ProtocolVersion, self::HandshakeHash, self::PrivateKey, self::SecretKey, self::SecureRandom] }
         # Create an RSA or DSA signed certificate verify message.
         def initialize(protocol_version, handshake_hash, private_key, master_secret, sr)
           @signature = nil
@@ -1559,7 +1559,7 @@ module Sun::Security::Ssl
           @signature = sig.sign
         end
         
-        typesig { [HandshakeInStream] }
+        typesig { [self::HandshakeInStream] }
         # Unmarshal the signed data from the input stream.
         def initialize(input)
           @signature = nil
@@ -1567,7 +1567,7 @@ module Sun::Security::Ssl
           @signature = input.get_bytes16
         end
         
-        typesig { [ProtocolVersion, HandshakeHash, PublicKey, SecretKey] }
+        typesig { [self::ProtocolVersion, self::HandshakeHash, self::PublicKey, self::SecretKey] }
         # Verify a certificate verify message. Return the result of verification,
         # if there is a problem throw a GeneralSecurityException.
         def verify(protocol_version, handshake_hash, public_key, master_secret)
@@ -1579,7 +1579,7 @@ module Sun::Security::Ssl
         end
         
         class_module.module_eval {
-          typesig { [ProtocolVersion, String] }
+          typesig { [self::ProtocolVersion, self::String] }
           # Get the Signature object appropriate for verification using the
           # given signature algorithm and protocol version.
           def get_signature(protocol_version, algorithm)
@@ -1592,13 +1592,13 @@ module Sun::Security::Ssl
                 if ((algorithm == "EC"))
                   return JsseJce.get_signature(JsseJce::SIGNATURE_RAWECDSA)
                 else
-                  raise SignatureException.new("Unrecognized algorithm: " + algorithm)
+                  raise self.class::SignatureException.new("Unrecognized algorithm: " + algorithm)
                 end
               end
             end
           end
           
-          typesig { [Signature, ProtocolVersion, HandshakeHash, String, SecretKey] }
+          typesig { [self::Signature, self::ProtocolVersion, self::HandshakeHash, self::String, self::SecretKey] }
           # Update the Signature with the data appropriate for the given
           # signature algorithm and protocol version so that the object is
           # ready for signing or verifying.
@@ -1628,7 +1628,7 @@ module Sun::Security::Ssl
             end
           end
           
-          typesig { [MessageDigest, Array.typed(::Java::Byte), Array.typed(::Java::Byte), SecretKey] }
+          typesig { [self::MessageDigest, Array.typed(::Java::Byte), Array.typed(::Java::Byte), self::SecretKey] }
           # Update the MessageDigest for SSLv3 certificate verify or finished
           # message calculation. The digest must already have been updated with
           # all preceding handshake messages.
@@ -1659,18 +1659,18 @@ module Sun::Security::Ssl
             begin
               const_set :Delegate, Class.for_name("java.security.MessageDigest$Delegate")
               const_set :SpiField, self.class::Delegate.get_declared_field("digestSpi")
-            rescue JavaException => e
-              raise RuntimeException.new("Reflection failed", e)
+            rescue self.class::JavaException => e
+              raise self.class::RuntimeException.new("Reflection failed", e)
             end
             make_accessible(self.class::SpiField)
           end
           
-          typesig { [AccessibleObject] }
+          typesig { [self::AccessibleObject] }
           def make_accessible(o)
-            AccessController.do_privileged(Class.new(PrivilegedAction.class == Class ? PrivilegedAction : Object) do
+            AccessController.do_privileged(Class.new(self.class::PrivilegedAction.class == Class ? self.class::PrivilegedAction : Object) do
               extend LocalClass
               include_class_members CertificateVerify
-              include PrivilegedAction if PrivilegedAction.class == Module
+              include self::PrivilegedAction if self::PrivilegedAction.class == Module
               
               typesig { [] }
               define_method :run do
@@ -1695,16 +1695,16 @@ module Sun::Security::Ssl
           # cache Method objects per Spi class
           # Note that this will prevent the Spi classes from being GC'd. We assume
           # that is not a problem.
-          const_set_lazy(:MethodCache) { ConcurrentHashMap.new }
+          const_set_lazy(:MethodCache) { self.class::ConcurrentHashMap.new }
           const_attr_reader  :MethodCache
           
-          typesig { [MessageDigest, SecretKey] }
+          typesig { [self::MessageDigest, self::SecretKey] }
           def digest_key(md, key)
             begin
               # Verify that md is implemented via MessageDigestSpi, not
               # via JDK 1.1 style MessageDigest subclassing.
               if (!(md.get_class).equal?(self.class::Delegate))
-                raise JavaException.new("Digest is not a MessageDigestSpi")
+                raise self.class::JavaException.new("Digest is not a MessageDigestSpi")
               end
               spi = self.class::SpiField.get(md)
               clazz = spi.get_class
@@ -1713,18 +1713,18 @@ module Sun::Security::Ssl
                 begin
                   r = clazz.get_declared_method("implUpdate", SecretKey)
                   make_accessible(r)
-                rescue NoSuchMethodException => e
+                rescue self.class::NoSuchMethodException => e
                   r = self.class::NULL_OBJECT
                 end
                 self.class::MethodCache.put(clazz, r)
               end
               if ((r).equal?(self.class::NULL_OBJECT))
-                raise JavaException.new("Digest does not support implUpdate(SecretKey)")
+                raise self.class::JavaException.new("Digest does not support implUpdate(SecretKey)")
               end
               update_ = r
               update_.invoke(spi, key)
-            rescue JavaException => e
-              raise RuntimeException.new("Could not obtain encoded key and MessageDigest cannot digest key", e)
+            rescue self.class::JavaException => e
+              raise self.class::RuntimeException.new("Could not obtain encoded key and MessageDigest cannot digest key", e)
             end
           end
         }
@@ -1734,12 +1734,12 @@ module Sun::Security::Ssl
           return 2 + @signature.attr_length
         end
         
-        typesig { [HandshakeOutStream] }
+        typesig { [self::HandshakeOutStream] }
         def send(s)
           s.put_bytes16(@signature)
         end
         
-        typesig { [PrintStream] }
+        typesig { [self::PrintStream] }
         def print(s)
           s.println("*** CertificateVerify")
         end
@@ -1794,7 +1794,7 @@ module Sun::Security::Ssl
         alias_method :attr_verify_data=, :verify_data=
         undef_method :verify_data=
         
-        typesig { [ProtocolVersion, HandshakeHash, ::Java::Int, SecretKey] }
+        typesig { [self::ProtocolVersion, self::HandshakeHash, ::Java::Int, self::SecretKey] }
         # Create a finished message to send to the remote peer.
         def initialize(protocol_version, handshake_hash, sender, master)
           @verify_data = nil
@@ -1802,7 +1802,7 @@ module Sun::Security::Ssl
           @verify_data = get_finished(protocol_version, handshake_hash, sender, master)
         end
         
-        typesig { [ProtocolVersion, HandshakeInStream] }
+        typesig { [self::ProtocolVersion, self::HandshakeInStream] }
         # Constructor that reads FINISHED message from stream.
         def initialize(protocol_version, input)
           @verify_data = nil
@@ -1812,7 +1812,7 @@ module Sun::Security::Ssl
           input.read(@verify_data)
         end
         
-        typesig { [ProtocolVersion, HandshakeHash, ::Java::Int, SecretKey] }
+        typesig { [self::ProtocolVersion, self::HandshakeHash, ::Java::Int, self::SecretKey] }
         # Verify that the hashes here are what would have been produced
         # according to a given set of inputs.  This is used to ensure that
         # both client and server are fully in sync, and that the handshake
@@ -1823,7 +1823,7 @@ module Sun::Security::Ssl
         end
         
         class_module.module_eval {
-          typesig { [ProtocolVersion, HandshakeHash, ::Java::Int, SecretKey] }
+          typesig { [self::ProtocolVersion, self::HandshakeHash, ::Java::Int, self::SecretKey] }
           # Perform the actual finished message calculation.
           def get_finished(protocol_version, handshake_hash, sender, master_key)
             ssl_label = nil
@@ -1836,7 +1836,7 @@ module Sun::Security::Ssl
                 ssl_label = self.class::SSL_SERVER
                 tls_label = "server finished"
               else
-                raise RuntimeException.new("Invalid sender: " + RJava.cast_to_string(sender))
+                raise self.class::RuntimeException.new("Invalid sender: " + RJava.cast_to_string(sender))
               end
             end
             md5clone = handshake_hash.get_md5clone
@@ -1847,17 +1847,17 @@ module Sun::Security::Ssl
                 seed = Array.typed(::Java::Byte).new(36) { 0 }
                 md5clone.digest(seed, 0, 16)
                 sha_clone.digest(seed, 16, 20)
-                spec = TlsPrfParameterSpec.new(master_key, tls_label, seed, 12)
+                spec = self.class::TlsPrfParameterSpec.new(master_key, tls_label, seed, 12)
                 prf = JsseJce.get_key_generator("SunTlsPrf")
                 prf.init(spec)
                 prf_key = prf.generate_key
                 if ((("RAW" == prf_key.get_format)).equal?(false))
-                  raise ProviderException.new("Invalid PRF output, format must be RAW")
+                  raise self.class::ProviderException.new("Invalid PRF output, format must be RAW")
                 end
                 finished = prf_key.get_encoded
                 return finished
-              rescue GeneralSecurityException => e
-                raise RuntimeException.new("PRF failed", e)
+              rescue self.class::GeneralSecurityException => e
+                raise self.class::RuntimeException.new("PRF failed", e)
               end
             else
               # SSLv3
@@ -1867,15 +1867,15 @@ module Sun::Security::Ssl
               begin
                 md5clone.digest(finished, 0, 16)
                 sha_clone.digest(finished, 16, 20)
-              rescue DigestException => e
+              rescue self.class::DigestException => e
                 # cannot occur
-                raise RuntimeException.new("Digest failed", e)
+                raise self.class::RuntimeException.new("Digest failed", e)
               end
               return finished
             end
           end
           
-          typesig { [MessageDigest, Array.typed(::Java::Byte), Array.typed(::Java::Byte), Array.typed(::Java::Byte), SecretKey] }
+          typesig { [self::MessageDigest, Array.typed(::Java::Byte), Array.typed(::Java::Byte), Array.typed(::Java::Byte), self::SecretKey] }
           # Update the MessageDigest for SSLv3 finished message calculation.
           # The digest must already have been updated with all preceding handshake
           # messages. This operation is almost identical to the certificate verify
@@ -1891,12 +1891,12 @@ module Sun::Security::Ssl
           return @verify_data.attr_length
         end
         
-        typesig { [HandshakeOutStream] }
+        typesig { [self::HandshakeOutStream] }
         def send(out)
           out.write(@verify_data)
         end
         
-        typesig { [PrintStream] }
+        typesig { [self::PrintStream] }
         def print(s)
           s.println("*** Finished")
           if (!(Debug).nil? && Debug.is_on("verbose"))

@@ -840,8 +840,8 @@ module Java::Net
                 
                 typesig { [] }
                 define_method :run do
-                  self.attr_cmdsock = Socket.new(PlainSocketImpl.new)
-                  self.attr_cmdsock.connect(InetSocketAddress.new(self.attr_server, self.attr_port))
+                  self.attr_cmdsock = self.class::Socket.new(self.class::PlainSocketImpl.new)
+                  self.attr_cmdsock.connect(self.class::InetSocketAddress.new(self.attr_server, self.attr_port))
                   self.attr_cmd_in = self.attr_cmdsock.get_input_stream
                   self.attr_cmd_out = self.attr_cmdsock.get_output_stream
                   return nil
@@ -879,8 +879,8 @@ module Java::Net
               
               typesig { [] }
               define_method :run do
-                self.attr_cmdsock = Socket.new(PlainSocketImpl.new)
-                self.attr_cmdsock.connect(InetSocketAddress.new(self.attr_server, self.attr_port))
+                self.attr_cmdsock = self.class::Socket.new(self.class::PlainSocketImpl.new)
+                self.attr_cmdsock.connect(self.class::InetSocketAddress.new(self.attr_server, self.attr_port))
                 self.attr_cmd_in = self.attr_cmdsock.get_input_stream
                 self.attr_cmd_out = self.attr_cmdsock.get_output_stream
                 return nil

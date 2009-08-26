@@ -168,7 +168,7 @@ module Sun::Util::Resources
           # Singlton instance of ResourceBundle.Control.
           
           def rb_control_instance
-            defined?(@@rb_control_instance) ? @@rb_control_instance : @@rb_control_instance= LocaleDataResourceBundleControl.new
+            defined?(@@rb_control_instance) ? @@rb_control_instance : @@rb_control_instance= self.class::LocaleDataResourceBundleControl.new
           end
           alias_method :attr_rb_control_instance, :rb_control_instance
           
@@ -183,7 +183,7 @@ module Sun::Util::Resources
           end
         }
         
-        typesig { [String, Locale] }
+        typesig { [self::String, self::Locale] }
         # This method overrides the default implementation to search
         # from a prebaked locale string list to determin the candidate
         # locale list.
@@ -213,7 +213,7 @@ module Sun::Util::Resources
           return candidates
         end
         
-        typesig { [String, Locale] }
+        typesig { [self::String, self::Locale] }
         # Overrides "getFallbackLocale" to return null so
         # that the fallback locale will be null.
         # @param baseName the resource bundle base name.
@@ -222,7 +222,7 @@ module Sun::Util::Resources
         # @exception NullPointerException if baseName or locale is null.
         def get_fallback_locale(base_name, locale)
           if ((base_name).nil? || (locale).nil?)
-            raise NullPointerException.new
+            raise self.class::NullPointerException.new
           end
           return nil
         end

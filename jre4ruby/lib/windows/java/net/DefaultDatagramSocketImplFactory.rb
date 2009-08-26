@@ -109,7 +109,7 @@ module Java::Net
             begin
               self.attr_version = Float.parse_float(System.get_properties.get_property("os.version"))
               self.attr_prefer_ipv4stack = Boolean.parse_boolean(System.get_properties.get_property("java.net.preferIPv4Stack"))
-            rescue NumberFormatException => e
+            rescue self.class::NumberFormatException => e
               raise AssertError, RJava.cast_to_string(e) if not (false)
             end
             return nil # nothing to return

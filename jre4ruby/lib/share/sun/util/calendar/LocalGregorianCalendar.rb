@@ -70,7 +70,7 @@ module Sun::Util::Calendar
           @gregorian_year = FIELD_UNDEFINED
         end
         
-        typesig { [TimeZone] }
+        typesig { [self::TimeZone] }
         def initialize(zone)
           @gregorian_year = 0
           super(zone)
@@ -83,7 +83,7 @@ module Sun::Util::Calendar
         alias_method :attr_gregorian_year=, :gregorian_year=
         undef_method :gregorian_year=
         
-        typesig { [Era] }
+        typesig { [self::Era] }
         def set_era(era)
           if (!(get_era).equal?(era))
             super(era)
@@ -118,7 +118,7 @@ module Sun::Util::Calendar
           @gregorian_year = normalized_year
         end
         
-        typesig { [Era] }
+        typesig { [self::Era] }
         def set_local_era(era)
           BaseCalendar::Date.instance_method(:set_era).bind(self).call(era)
         end
@@ -132,7 +132,7 @@ module Sun::Util::Calendar
         def to_s
           time = super
           time = RJava.cast_to_string(time.substring(time.index_of(Character.new(?T.ord))))
-          sb = StringBuffer.new
+          sb = self.class::StringBuffer.new
           era = get_era
           if (!(era).nil?)
             abbr = era.get_abbreviation
@@ -164,8 +164,8 @@ module Sun::Util::Calendar
             
             typesig { [] }
             define_method :run do
-              props = Properties.new
-              props.load(FileInputStream.new(fname))
+              props = self.class::Properties.new
+              props.load(self.class::FileInputStream.new(fname))
               return props
             end
             

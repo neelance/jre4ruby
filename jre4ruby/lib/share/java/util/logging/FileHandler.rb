@@ -204,7 +204,7 @@ module Java::Util::Logging
         alias_method :attr_written=, :written=
         undef_method :written=
         
-        typesig { [OutputStream, ::Java::Int] }
+        typesig { [self::OutputStream, ::Java::Int] }
         def initialize(out, written)
           @out = nil
           @written = 0
@@ -768,7 +768,7 @@ module Java::Util::Logging
         alias_method :attr_last_exception=, :last_exception=
         undef_method :last_exception=
         
-        typesig { [String, JavaException, ::Java::Int] }
+        typesig { [self::String, self::JavaException, ::Java::Int] }
         def error(msg, ex, code)
           @last_exception = ex
         end

@@ -63,7 +63,7 @@ module Sun::Nio::Cs::Ext
       const_set_lazy(:Decoder) { Class.new(DBCS_ONLY_IBM_EBCDIC_Decoder) do
         include_class_members IBM834
         
-        typesig { [Charset] }
+        typesig { [self::Charset] }
         def initialize(cs)
           super(cs)
           @mask1 = 0xfff0
@@ -80,12 +80,12 @@ module Sun::Nio::Cs::Ext
       const_set_lazy(:Encoder) { Class.new(IBM933::Encoder) do
         include_class_members IBM834
         
-        typesig { [Charset] }
+        typesig { [self::Charset] }
         def initialize(cs)
           super(cs, Array.typed(::Java::Byte).new([0xfe, 0xfe]), false)
         end
         
-        typesig { [ByteBuffer] }
+        typesig { [self::ByteBuffer] }
         def impl_flush(out)
           impl_reset
           return CoderResult::UNDERFLOW

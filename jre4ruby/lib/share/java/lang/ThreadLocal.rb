@@ -276,7 +276,7 @@ module Java::Lang
           # == null) mean that the key is no longer referenced, so the
           # entry can be expunged from table.  Such entries are referred to
           # as "stale entries" in the code that follows.
-          const_set_lazy(:Entry) { Class.new(WeakReference) do
+          const_set_lazy(:Entry) { Class.new(self.class::WeakReference) do
             include_class_members ThreadLocalMap
             
             # The value associated with this ThreadLocal.
@@ -286,7 +286,7 @@ module Java::Lang
             alias_method :attr_value=, :value=
             undef_method :value=
             
-            typesig { [ThreadLocal, Object] }
+            typesig { [self::ThreadLocal, Object] }
             def initialize(k, v)
               @value = nil
               super(k)
@@ -346,7 +346,7 @@ module Java::Lang
           end
         }
         
-        typesig { [ThreadLocal, Object] }
+        typesig { [self::ThreadLocal, Object] }
         # Construct a new map initially containing (firstKey, firstValue).
         # ThreadLocalMaps are constructed lazily, so we only create
         # one when we have at least one entry to put in it.
@@ -354,14 +354,14 @@ module Java::Lang
           @table = nil
           @size = 0
           @threshold = 0
-          @table = Array.typed(Entry).new(self.class::INITIAL_CAPACITY) { nil }
+          @table = Array.typed(self.class::Entry).new(self.class::INITIAL_CAPACITY) { nil }
           i = first_key.attr_thread_local_hash_code & (self.class::INITIAL_CAPACITY - 1)
-          @table[i] = Entry.new(first_key, first_value)
+          @table[i] = self.class::Entry.new(first_key, first_value)
           @size = 1
           set_threshold(self.class::INITIAL_CAPACITY)
         end
         
-        typesig { [ThreadLocalMap] }
+        typesig { [self::ThreadLocalMap] }
         # Construct a new map including all Inheritable ThreadLocals
         # from given parent map. Called only by createInheritedMap.
         # 
@@ -373,7 +373,7 @@ module Java::Lang
           parent_table = parent_map.attr_table
           len = parent_table.attr_length
           set_threshold(len)
-          @table = Array.typed(Entry).new(len) { nil }
+          @table = Array.typed(self.class::Entry).new(len) { nil }
           j = 0
           while j < len
             e = parent_table[j]
@@ -381,7 +381,7 @@ module Java::Lang
               key = e.get
               if (!(key).nil?)
                 value = key.child_value(e.attr_value)
-                c = Entry.new(key, value)
+                c = self.class::Entry.new(key, value)
                 h = key.attr_thread_local_hash_code & (len - 1)
                 while (!(@table[h]).nil?)
                   h = next_index(h, len)
@@ -394,7 +394,7 @@ module Java::Lang
           end
         end
         
-        typesig { [ThreadLocal] }
+        typesig { [self::ThreadLocal] }
         # Get the entry associated with key.  This method
         # itself handles only the fast path: a direct hit of existing
         # key. It otherwise relays to getEntryAfterMiss.  This is
@@ -413,7 +413,7 @@ module Java::Lang
           end
         end
         
-        typesig { [ThreadLocal, ::Java::Int, Entry] }
+        typesig { [self::ThreadLocal, ::Java::Int, self::Entry] }
         # Version of getEntry method for use when key is not found in
         # its direct hash slot.
         # 
@@ -439,7 +439,7 @@ module Java::Lang
           return nil
         end
         
-        typesig { [ThreadLocal, Object] }
+        typesig { [self::ThreadLocal, Object] }
         # Set the value associated with key.
         # 
         # @param key the thread local object
@@ -465,14 +465,14 @@ module Java::Lang
             end
             e = tab[i = next_index(i, len)]
           end
-          tab[i] = Entry.new(key, value)
+          tab[i] = self.class::Entry.new(key, value)
           sz = (@size += 1)
           if (!clean_some_slots(i, sz) && sz >= @threshold)
             rehash
           end
         end
         
-        typesig { [ThreadLocal] }
+        typesig { [self::ThreadLocal] }
         # Remove the entry for key.
         def remove(key)
           tab = @table
@@ -489,7 +489,7 @@ module Java::Lang
           end
         end
         
-        typesig { [ThreadLocal, Object, ::Java::Int] }
+        typesig { [self::ThreadLocal, Object, ::Java::Int] }
         # Replace a stale entry encountered during a set operation
         # with an entry for the specified key.  The value passed in
         # the value parameter is stored in the entry, whether or not
@@ -550,7 +550,7 @@ module Java::Lang
           end
           # If key not found, put new entry in stale slot
           tab[stale_slot].attr_value = nil
-          tab[stale_slot] = Entry.new(key, value)
+          tab[stale_slot] = self.class::Entry.new(key, value)
           # If there are any other stale entries in run, expunge them
           if (!(slot_to_expunge).equal?(stale_slot))
             clean_some_slots(expunge_stale_entry(slot_to_expunge), len)
@@ -658,7 +658,7 @@ module Java::Lang
           old_tab = @table
           old_len = old_tab.attr_length
           new_len = old_len * 2
-          new_tab = Array.typed(Entry).new(new_len) { nil }
+          new_tab = Array.typed(self.class::Entry).new(new_len) { nil }
           count = 0
           j = 0
           while j < old_len

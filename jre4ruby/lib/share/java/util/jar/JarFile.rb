@@ -281,7 +281,7 @@ module Java::Util::Jar
         typesig { [] }
         define_method :next_element do
           ze = enum_.next_element
-          return JarFileEntry.new(ze)
+          return self.class::JarFileEntry.new(ze)
         end
         
         typesig { [] }
@@ -299,7 +299,7 @@ module Java::Util::Jar
         extend LocalClass
         include_class_members JarFile
         
-        typesig { [ZipEntry] }
+        typesig { [self::ZipEntry] }
         def initialize(ze)
           super(ze)
         end
@@ -318,8 +318,8 @@ module Java::Util::Jar
         def get_certificates
           begin
             maybe_instantiate_verifier
-          rescue IOException => e
-            raise RuntimeException.new(e)
+          rescue self.class::IOException => e
+            raise self.class::RuntimeException.new(e)
           end
           if ((self.attr_certs).nil? && !(self.attr_jv).nil?)
             self.attr_certs = self.attr_jv.get_certs(get_name)
@@ -331,8 +331,8 @@ module Java::Util::Jar
         def get_code_signers
           begin
             maybe_instantiate_verifier
-          rescue IOException => e
-            raise RuntimeException.new(e)
+          rescue self.class::IOException => e
+            raise self.class::RuntimeException.new(e)
           end
           if ((self.attr_signers).nil? && !(self.attr_jv).nil?)
             self.attr_signers = self.attr_jv.get_code_signers(get_name)

@@ -477,17 +477,17 @@ module Sun::Security::Provider::Certpath
         alias_method :attr_next_update=, :next_update=
         undef_method :next_update=
         
-        typesig { [DerValue] }
+        typesig { [self::DerValue] }
         def initialize(der)
           @cert_id = nil
           @cert_status = 0
           @this_update = nil
           @next_update = nil
           if (!(der.attr_tag).equal?(DerValue.attr_tag_sequence))
-            raise IOException.new("Bad ASN.1 encoding in SingleResponse")
+            raise self.class::IOException.new("Bad ASN.1 encoding in SingleResponse")
           end
           tmp = der.attr_data
-          @cert_id = CertId.new(tmp.get_der_value.attr_data)
+          @cert_id = self.class::CertId.new(tmp.get_der_value.attr_data)
           der_val = tmp.get_der_value
           tag = (der_val.attr_tag & 0x1f)
           if ((tag).equal?(CERT_STATUS_GOOD))
@@ -504,7 +504,7 @@ module Sun::Security::Provider::Certpath
               if ((tag).equal?(CERT_STATUS_UNKNOWN))
                 @cert_status = CERT_STATUS_UNKNOWN
               else
-                raise IOException.new("Invalid certificate status")
+                raise self.class::IOException.new("Invalid certificate status")
               end
             end
           end
@@ -526,7 +526,7 @@ module Sun::Security::Provider::Certpath
             end
             # ignore extensions
           end
-          now = Date.new
+          now = self.class::Date.new
           if (!(DEBUG).nil?)
             until_ = ""
             if (!(@next_update).nil?)
@@ -539,7 +539,7 @@ module Sun::Security::Provider::Certpath
             if (!(DEBUG).nil?)
               DEBUG.println("Response is unreliable: its validity " + "interval is out-of-date")
             end
-            raise IOException.new("Response is unreliable: its validity " + "interval is out-of-date")
+            raise self.class::IOException.new("Response is unreliable: its validity " + "interval is out-of-date")
           end
         end
         
@@ -557,7 +557,7 @@ module Sun::Security::Provider::Certpath
         typesig { [] }
         # Construct a string representation of a single OCSP response.
         def to_s
-          sb = StringBuilder.new
+          sb = self.class::StringBuilder.new
           sb.append("SingleResponse:  \n")
           sb.append(@cert_id)
           sb.append("\nCertStatus: " + RJava.cast_to_string(cert_status_to_text(get_cert_status(nil))) + "\n")

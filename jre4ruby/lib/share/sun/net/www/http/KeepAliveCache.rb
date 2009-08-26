@@ -132,7 +132,7 @@ module Sun::Net::Www::Http
               while (!((parent = grp.get_parent)).nil?)
                 grp = parent
               end
-              self.attr_keep_alive_timer = JavaThread.new(grp, cache, "Keep-Alive-Timer")
+              self.attr_keep_alive_timer = self.class::JavaThread.new(grp, cache, "Keep-Alive-Timer")
               self.attr_keep_alive_timer.set_daemon(true)
               self.attr_keep_alive_timer.set_priority(JavaThread::MAX_PRIORITY - 2)
               self.attr_keep_alive_timer.start

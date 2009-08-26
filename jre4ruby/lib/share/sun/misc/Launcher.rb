@@ -162,10 +162,10 @@ module Sun::Misc
               return AccessController.do_privileged(# Prior implementations of this doPrivileged() block supplied
               # aa synthesized ACC via a call to the private method
               # ExtClassLoader.getContext().
-              Class.new(PrivilegedExceptionAction.class == Class ? PrivilegedExceptionAction : Object) do
+              Class.new(self.class::PrivilegedExceptionAction.class == Class ? self.class::PrivilegedExceptionAction : Object) do
                 extend LocalClass
                 include_class_members ExtClassLoader
-                include PrivilegedExceptionAction if PrivilegedExceptionAction.class == Module
+                include self::PrivilegedExceptionAction if self::PrivilegedExceptionAction.class == Module
                 
                 typesig { [] }
                 define_method :run do
@@ -175,7 +175,7 @@ module Sun::Misc
                     MetaIndex.register_directory(dirs[i])
                     i += 1
                   end
-                  return ExtClassLoader.new(dirs)
+                  return self.class::ExtClassLoader.new(dirs)
                 end
                 
                 typesig { [] }
@@ -186,18 +186,18 @@ module Sun::Misc
                 private
                 alias_method :initialize_anonymous, :initialize
               end.new_local(self))
-            rescue Java::Security::PrivilegedActionException => e
+            rescue Java::Security::self.class::PrivilegedActionException => e
               raise e.get_exception
             end
           end
         }
         
-        typesig { [URL] }
+        typesig { [self::URL] }
         def add_ext_url(url)
           URLClassLoader.instance_method(:add_url).bind(self).call(url)
         end
         
-        typesig { [Array.typed(JavaFile)] }
+        typesig { [Array.typed(self::JavaFile)] }
         # Creates a new ExtClassLoader for the specified directories.
         def initialize(dirs)
           @dirs = nil
@@ -211,23 +211,23 @@ module Sun::Misc
             s = System.get_property("java.ext.dirs")
             dirs = nil
             if (!(s).nil?)
-              st = StringTokenizer.new(s, JavaFile.attr_path_separator)
+              st = self.class::StringTokenizer.new(s, JavaFile.attr_path_separator)
               count = st.count_tokens
-              dirs = Array.typed(JavaFile).new(count) { nil }
+              dirs = Array.typed(self.class::JavaFile).new(count) { nil }
               i = 0
               while i < count
-                dirs[i] = JavaFile.new(st.next_token)
+                dirs[i] = self.class::JavaFile.new(st.next_token)
                 i += 1
               end
             else
-              dirs = Array.typed(JavaFile).new(0) { nil }
+              dirs = Array.typed(self.class::JavaFile).new(0) { nil }
             end
             return dirs
           end
           
-          typesig { [Array.typed(JavaFile)] }
+          typesig { [Array.typed(self::JavaFile)] }
           def get_ext_urls(dirs)
-            urls = Vector.new
+            urls = self.class::Vector.new
             i = 0
             while i < dirs.attr_length
               files = dirs[i].list
@@ -235,7 +235,7 @@ module Sun::Misc
                 j = 0
                 while j < files.attr_length
                   if (!(files[j] == "meta-index"))
-                    f = JavaFile.new(dirs[i], files[j])
+                    f = self.class::JavaFile.new(dirs[i], files[j])
                     urls.add(get_file_url(f))
                   end
                   j += 1
@@ -243,13 +243,13 @@ module Sun::Misc
               end
               i += 1
             end
-            ua = Array.typed(URL).new(urls.size) { nil }
+            ua = Array.typed(self.class::URL).new(urls.size) { nil }
             urls.copy_into(ua)
             return ua
           end
         }
         
-        typesig { [String] }
+        typesig { [self::String] }
         # Searches the installed extension directories for the specified
         # library name. For each extension directory, we first look for
         # the native library in the subdirectory whose name is the value
@@ -262,13 +262,13 @@ module Sun::Misc
             # Look in architecture-specific subdirectory first
             arch = System.get_property("os.arch")
             if (!(arch).nil?)
-              file = JavaFile.new(JavaFile.new(@dirs[i], arch), name)
+              file = self.class::JavaFile.new(self.class::JavaFile.new(@dirs[i], arch), name)
               if (file.exists)
                 return file.get_absolute_path
               end
             end
             # Then check the extension directory
-            file = JavaFile.new(@dirs[i], name)
+            file = self.class::JavaFile.new(@dirs[i], name)
             if (file.exists)
               return file.get_absolute_path
             end
@@ -278,11 +278,11 @@ module Sun::Misc
         end
         
         class_module.module_eval {
-          typesig { [Array.typed(JavaFile)] }
+          typesig { [Array.typed(self::JavaFile)] }
           def get_context(dirs)
-            perms = PathPermissions.new(dirs)
-            domain = ProtectionDomain.new(CodeSource.new(perms.get_code_base, nil), perms)
-            acc = AccessControlContext.new(Array.typed(ProtectionDomain).new([domain]))
+            perms = self.class::PathPermissions.new(dirs)
+            domain = self.class::ProtectionDomain.new(self.class::CodeSource.new(perms.get_code_base, nil), perms)
+            acc = self.class::AccessControlContext.new(Array.typed(self.class::ProtectionDomain).new([domain]))
             return acc
           end
         }
@@ -297,25 +297,25 @@ module Sun::Misc
         include_class_members Launcher
         
         class_module.module_eval {
-          typesig { [ClassLoader] }
+          typesig { [self::ClassLoader] }
           def get_app_class_loader(extcl)
             s = System.get_property("java.class.path")
-            path = ((s).nil?) ? Array.typed(JavaFile).new(0) { nil } : get_class_path(s)
+            path = ((s).nil?) ? Array.typed(self.class::JavaFile).new(0) { nil } : get_class_path(s)
             return AccessController.do_privileged(# Note: on bugid 4256530
             # Prior implementations of this doPrivileged() block supplied
             # a rather restrictive ACC via a call to the private method
             # AppClassLoader.getContext(). This proved overly restrictive
             # when loading  classes. Specifically it prevent
             # accessClassInPackage.sun.* grants from being honored.
-            Class.new(PrivilegedAction.class == Class ? PrivilegedAction : Object) do
+            Class.new(self.class::PrivilegedAction.class == Class ? self.class::PrivilegedAction : Object) do
               extend LocalClass
               include_class_members AppClassLoader
-              include PrivilegedAction if PrivilegedAction.class == Module
+              include self::PrivilegedAction if self::PrivilegedAction.class == Module
               
               typesig { [] }
               define_method :run do
-                urls = ((s).nil?) ? Array.typed(URL).new(0) { nil } : path_to_urls(path)
-                return AppClassLoader.new(urls, extcl)
+                urls = ((s).nil?) ? Array.typed(self.class::URL).new(0) { nil } : path_to_urls(path)
+                return self.class::AppClassLoader.new(urls, extcl)
               end
               
               typesig { [] }
@@ -329,13 +329,13 @@ module Sun::Misc
           end
         }
         
-        typesig { [Array.typed(URL), ClassLoader] }
+        typesig { [Array.typed(self::URL), self::ClassLoader] }
         # Creates a new AppClassLoader
         def initialize(urls, parent)
           super(urls, parent, self.attr_factory)
         end
         
-        typesig { [String, ::Java::Boolean] }
+        typesig { [self::String, ::Java::Boolean] }
         # Override loadClass so we can checkPackageAccess.
         def load_class(name, resolve)
           synchronized(self) do
@@ -350,15 +350,15 @@ module Sun::Misc
           end
         end
         
-        typesig { [CodeSource] }
+        typesig { [self::CodeSource] }
         # allow any classes loaded from classpath to exit the VM.
         def get_permissions(codesource)
           perms = super(codesource)
-          perms.add(RuntimePermission.new("exitVM"))
+          perms.add(self.class::RuntimePermission.new("exitVM"))
           return perms
         end
         
-        typesig { [String] }
+        typesig { [self::String] }
         # This class loader supports dynamic additions to the class path
         # at runtime.
         # 
@@ -366,19 +366,19 @@ module Sun::Misc
         def append_to_class_path_for_instrumentation(path)
           raise AssertError if not ((JavaThread.holds_lock(self)))
           # addURL is a no-op if path already contains the URL
-          URLClassLoader.instance_method(:add_url).bind(self).call(get_file_url(JavaFile.new(path)))
+          URLClassLoader.instance_method(:add_url).bind(self).call(get_file_url(self.class::JavaFile.new(path)))
         end
         
         class_module.module_eval {
-          typesig { [Array.typed(JavaFile)] }
+          typesig { [Array.typed(self::JavaFile)] }
           # create a context that can read any directories (recursively)
           # mentioned in the class path. In the case of a jar, it has to
           # be the directory containing the jar, not just the jar, as jar
           # files might refer to other jar files.
           def get_context(cp)
-            perms = PathPermissions.new(cp)
-            domain = ProtectionDomain.new(CodeSource.new(perms.get_code_base, nil), perms)
-            acc = AccessControlContext.new(Array.typed(ProtectionDomain).new([domain]))
+            perms = self.class::PathPermissions.new(cp)
+            domain = self.class::ProtectionDomain.new(self.class::CodeSource.new(perms.get_code_base, nil), perms)
+            acc = self.class::AccessControlContext.new(Array.typed(self.class::ProtectionDomain).new([domain]))
             return acc
           end
         }
@@ -402,7 +402,7 @@ module Sun::Misc
             define_method :run do
               class_path = get_class_path(path)
               len = class_path.attr_length
-              seen_dirs = HashSet.new
+              seen_dirs = self.class::HashSet.new
               i = 0
               while i < len
                 cur_entry = class_path[i]
@@ -538,20 +538,20 @@ module Sun::Misc
           alias_method :attr_prefix=, :prefix=
         }
         
-        typesig { [String] }
+        typesig { [self::String] }
         def create_urlstream_handler(protocol)
           name = self.attr_prefix + "." + protocol + ".Handler"
           begin
             c = Class.for_name(name)
             return c.new_instance
-          rescue ClassNotFoundException => e
+          rescue self.class::ClassNotFoundException => e
             e.print_stack_trace
-          rescue InstantiationException => e
+          rescue self.class::InstantiationException => e
             e.print_stack_trace
-          rescue IllegalAccessException => e
+          rescue self.class::IllegalAccessException => e
             e.print_stack_trace
           end
-          raise InternalError.new("could not load " + protocol + "system protocol handler")
+          raise self.class::InternalError.new("could not load " + protocol + "system protocol handler")
         end
         
         typesig { [] }
@@ -639,23 +639,23 @@ module Sun::Misc
               path = nil
               begin
                 path = RJava.cast_to_string(f.get_canonical_path)
-              rescue IOException => ioe
+              rescue self.class::IOException => ioe
                 path = RJava.cast_to_string(f.get_absolute_path)
               end
               if ((i).equal?(0))
-                self.attr_code_base = Launcher.get_file_url(JavaFile.new(path))
+                self.attr_code_base = Launcher.get_file_url(self.class::JavaFile.new(path))
               end
               if (f.is_directory)
                 if (path.ends_with(JavaFile.attr_separator))
-                  self.attr_perms.add(FilePermission.new(path + "-", SecurityConstants::FILE_READ_ACTION))
+                  self.attr_perms.add(self.class::FilePermission.new(path + "-", SecurityConstants::FILE_READ_ACTION))
                 else
-                  self.attr_perms.add(FilePermission.new(path + RJava.cast_to_string(JavaFile.attr_separator) + "-", SecurityConstants::FILE_READ_ACTION))
+                  self.attr_perms.add(self.class::FilePermission.new(path + RJava.cast_to_string(JavaFile.attr_separator) + "-", SecurityConstants::FILE_READ_ACTION))
                 end
               else
                 end_index = path.last_index_of(JavaFile.attr_separator_char)
                 if (!(end_index).equal?(-1))
                   path = RJava.cast_to_string(path.substring(0, end_index + 1)) + "-"
-                  self.attr_perms.add(FilePermission.new(path, SecurityConstants::FILE_READ_ACTION))
+                  self.attr_perms.add(self.class::FilePermission.new(path, SecurityConstants::FILE_READ_ACTION))
                 else
                   # XXX?
                 end

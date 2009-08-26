@@ -114,7 +114,7 @@ module Sun::Nio::Cs::Ext
         alias_method :attr_replace_char=, :replace_char=
         undef_method :replace_char=
         
-        typesig { [Charset] }
+        typesig { [self::Charset] }
         def initialize(cs)
           @decoder_j0201 = nil
           @decode_mapping_j0212 = nil
@@ -124,9 +124,9 @@ module Sun::Nio::Cs::Ext
           @replace_char = 0
           super(cs)
           @replace_char = Character.new(0xFFFD)
-          @decoder_j0201 = JIS_X_0201::Decoder.new(cs)
-          @decode_mapping_j0212 = JIS_X_0212_Solaris_Decoder.new(cs)
-          @decode_mapping_j0208 = JIS_X_0208_Solaris_Decoder.new(cs)
+          @decoder_j0201 = self.class::JIS_X_0201::Decoder.new(cs)
+          @decode_mapping_j0212 = self.class::JIS_X_0212_Solaris_Decoder.new(cs)
+          @decode_mapping_j0208 = self.class::JIS_X_0208_Solaris_Decoder.new(cs)
           @decode_mapping_j0208.attr_start = 0xa1
           @decode_mapping_j0208.attr_end = 0xfe
           @j0208index1 = @decode_mapping_j0208.get_index1
@@ -198,7 +198,7 @@ module Sun::Nio::Cs::Ext
         alias_method :attr_sgp=, :sgp=
         undef_method :sgp=
         
-        typesig { [Charset] }
+        typesig { [self::Charset] }
         def initialize(cs)
           @encoder_j0201 = nil
           @encoder_j0212 = nil
@@ -207,10 +207,10 @@ module Sun::Nio::Cs::Ext
           @j0208index2 = nil
           @sgp = nil
           super(cs)
-          @sgp = Surrogate::Parser.new
-          @encoder_j0201 = JIS_X_0201::Encoder.new(cs)
-          @encoder_j0212 = JIS_X_0212_Solaris_Encoder.new(cs)
-          @encoder_j0208 = JIS_X_0208_Solaris_Encoder.new(cs)
+          @sgp = self.class::Surrogate::Parser.new
+          @encoder_j0201 = self.class::JIS_X_0201::Encoder.new(cs)
+          @encoder_j0212 = self.class::JIS_X_0212_Solaris_Encoder.new(cs)
+          @encoder_j0208 = self.class::JIS_X_0208_Solaris_Encoder.new(cs)
           @j0208index1 = @encoder_j0208.get_index1
           @j0208index2 = @encoder_j0208.get_index2
         end

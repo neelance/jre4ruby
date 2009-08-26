@@ -385,13 +385,13 @@ module Sun::Security::Provider::Certpath
         alias_method :attr_trusted_subject_dns=, :trusted_subject_dns=
         undef_method :trusted_subject_dns=
         
-        typesig { [JavaSet] }
+        typesig { [self::JavaSet] }
         def initialize(trusted_subject_dns)
           @trusted_subject_dns = nil
           @trusted_subject_dns = trusted_subject_dns
         end
         
-        typesig { [X509Certificate, X509Certificate] }
+        typesig { [self::X509Certificate, self::X509Certificate] }
         # @param oCert1 First X509Certificate to be compared
         # @param oCert2 Second X509Certificate to be compared
         # @return -1 if oCert1 is preferable to oCert2, or

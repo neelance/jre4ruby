@@ -92,19 +92,19 @@ module Java::Io
         
         class_module.module_eval {
           # cache mapping local classes -> descriptors
-          const_set_lazy(:LocalDescs) { ConcurrentHashMap.new }
+          const_set_lazy(:LocalDescs) { self.class::ConcurrentHashMap.new }
           const_attr_reader  :LocalDescs
           
           # cache mapping field group/local desc pairs -> field reflectors
-          const_set_lazy(:Reflectors) { ConcurrentHashMap.new }
+          const_set_lazy(:Reflectors) { self.class::ConcurrentHashMap.new }
           const_attr_reader  :Reflectors
           
           # queue for WeakReferences to local classes
-          const_set_lazy(:LocalDescsQueue) { ReferenceQueue.new }
+          const_set_lazy(:LocalDescsQueue) { self.class::ReferenceQueue.new }
           const_attr_reader  :LocalDescsQueue
           
           # queue for WeakReferences to field reflectors keys
-          const_set_lazy(:ReflectorsQueue) { ReferenceQueue.new }
+          const_set_lazy(:ReflectorsQueue) { self.class::ReferenceQueue.new }
           const_attr_reader  :ReflectorsQueue
         }
         
@@ -548,15 +548,15 @@ module Java::Io
             while ((@entry).equal?(self.class::Unset))
               begin
                 wait
-              rescue InterruptedException => ex
+              rescue self.class::InterruptedException => ex
                 interrupted = true
               end
             end
             if (interrupted)
-              AccessController.do_privileged(Class.new(PrivilegedAction.class == Class ? PrivilegedAction : Object) do
+              AccessController.do_privileged(Class.new(self.class::PrivilegedAction.class == Class ? self.class::PrivilegedAction : Object) do
                 extend LocalClass
                 include_class_members EntryFuture
-                include PrivilegedAction if PrivilegedAction.class == Module
+                include self::PrivilegedAction if self::PrivilegedAction.class == Module
                 
                 typesig { [] }
                 define_method :run do
@@ -653,7 +653,7 @@ module Java::Io
             begin
               self.attr_fields = get_serial_fields(cl)
               compute_field_offsets
-            rescue InvalidClassException => e
+            rescue self.class::InvalidClassException => e
               self.attr_serialize_ex = self.attr_deserialize_ex = e
               self.attr_fields = NO_FIELDS
             end
@@ -661,8 +661,8 @@ module Java::Io
               self.attr_cons = get_externalizable_constructor(cl)
             else
               self.attr_cons = get_serializable_constructor(cl)
-              self.attr_write_object_method = get_private_method(cl, "writeObject", Array.typed(Class).new([ObjectOutputStream]), Void::TYPE)
-              self.attr_read_object_method = get_private_method(cl, "readObject", Array.typed(Class).new([ObjectInputStream]), Void::TYPE)
+              self.attr_write_object_method = get_private_method(cl, "writeObject", Array.typed(self.class::Class).new([ObjectOutputStream]), Void::TYPE)
+              self.attr_read_object_method = get_private_method(cl, "readObject", Array.typed(self.class::Class).new([ObjectInputStream]), Void::TYPE)
               self.attr_read_object_no_data_method = get_private_method(cl, "readObjectNoData", nil, Void::TYPE)
               self.attr_has_write_object_data = (!(self.attr_write_object_method).nil?)
             end
@@ -1256,7 +1256,7 @@ module Java::Io
         alias_method :attr_has_data=, :has_data=
         undef_method :has_data=
         
-        typesig { [ObjectStreamClass, ::Java::Boolean] }
+        typesig { [self::ObjectStreamClass, ::Java::Boolean] }
         def initialize(desc, has_data)
           @desc = nil
           @has_data = false
@@ -1950,7 +1950,7 @@ module Java::Io
         alias_method :attr_signature=, :signature=
         undef_method :signature=
         
-        typesig { [Field] }
+        typesig { [self::Field] }
         def initialize(field)
           @member = nil
           @name = nil
@@ -1960,7 +1960,7 @@ module Java::Io
           @signature = RJava.cast_to_string(get_class_signature(field.get_type))
         end
         
-        typesig { [Constructor] }
+        typesig { [self::Constructor] }
         def initialize(cons)
           @member = nil
           @name = nil
@@ -1970,7 +1970,7 @@ module Java::Io
           @signature = RJava.cast_to_string(get_method_signature(cons.get_parameter_types, Void::TYPE))
         end
         
-        typesig { [Method] }
+        typesig { [self::Method] }
         def initialize(meth)
           @member = nil
           @name = nil
@@ -2038,7 +2038,7 @@ module Java::Io
         alias_method :attr_types=, :types=
         undef_method :types=
         
-        typesig { [Array.typed(ObjectStreamField)] }
+        typesig { [Array.typed(self::ObjectStreamField)] }
         # Constructs FieldReflector capable of setting/getting values from the
         # subset of fields whose ObjectStreamFields contain non-null
         # reflective Field objects.  ObjectStreamFields with null Fields are
@@ -2056,7 +2056,7 @@ module Java::Io
           @keys = Array.typed(::Java::Long).new(nfields) { 0 }
           @offsets = Array.typed(::Java::Int).new(nfields) { 0 }
           @type_codes = CharArray.new(nfields)
-          type_list = ArrayList.new
+          type_list = self.class::ArrayList.new
           i = 0
           while i < nfields
             f = fields[i]
@@ -2069,7 +2069,7 @@ module Java::Io
             end
             i += 1
           end
-          @types = type_list.to_array(Array.typed(Class).new(type_list.size) { nil })
+          @types = type_list.to_array(Array.typed(self.class::Class).new(type_list.size) { nil })
           @num_prim_fields = nfields - @types.attr_length
         end
         
@@ -2088,7 +2088,7 @@ module Java::Io
         # is responsible for ensuring that obj is of the proper type.
         def get_prim_field_values(obj, buf)
           if ((obj).nil?)
-            raise NullPointerException.new
+            raise self.class::NullPointerException.new
           end
           # assuming checkDefaultSerialize() has been called on the class
           # descriptor this FieldReflector was obtained from, no field keys
@@ -2115,7 +2115,7 @@ module Java::Io
             when Character.new(?D.ord)
               Bits.put_double(buf, off, self.class::UnsafeInstance.get_double(obj, key))
             else
-              raise InternalError.new
+              raise self.class::InternalError.new
             end
             i += 1
           end
@@ -2127,7 +2127,7 @@ module Java::Io
         # is responsible for ensuring that obj is of the proper type.
         def set_prim_field_values(obj, buf)
           if ((obj).nil?)
-            raise NullPointerException.new
+            raise self.class::NullPointerException.new
           end
           i = 0
           while i < @num_prim_fields
@@ -2155,7 +2155,7 @@ module Java::Io
             when Character.new(?D.ord)
               self.class::UnsafeInstance.put_double(obj, key, Bits.get_double(buf, off))
             else
-              raise InternalError.new
+              raise self.class::InternalError.new
             end
             i += 1
           end
@@ -2167,7 +2167,7 @@ module Java::Io
         # responsible for ensuring that obj is of the proper type.
         def get_obj_field_values(obj, vals)
           if ((obj).nil?)
-            raise NullPointerException.new
+            raise self.class::NullPointerException.new
           end
           # assuming checkDefaultSerialize() has been called on the class
           # descriptor this FieldReflector was obtained from, no field keys
@@ -2178,7 +2178,7 @@ module Java::Io
             when Character.new(?L.ord), Character.new(?[.ord)
               vals[@offsets[i]] = self.class::UnsafeInstance.get_object(obj, @keys[i])
             else
-              raise InternalError.new
+              raise self.class::InternalError.new
             end
             i += 1
           end
@@ -2192,7 +2192,7 @@ module Java::Io
         # ClassCastException.
         def set_obj_field_values(obj, vals)
           if ((obj).nil?)
-            raise NullPointerException.new
+            raise self.class::NullPointerException.new
           end
           i = @num_prim_fields
           while i < @fields.attr_length
@@ -2206,11 +2206,11 @@ module Java::Io
               val = vals[@offsets[i]]
               if (!(val).nil? && !@types[i - @num_prim_fields].is_instance(val))
                 f = @fields[i].get_field
-                raise ClassCastException.new("cannot assign instance of " + RJava.cast_to_string(val.get_class.get_name) + " to field " + RJava.cast_to_string(f.get_declaring_class.get_name) + "." + RJava.cast_to_string(f.get_name) + " of type " + RJava.cast_to_string(f.get_type.get_name) + " in instance of " + RJava.cast_to_string(obj.get_class.get_name))
+                raise self.class::ClassCastException.new("cannot assign instance of " + RJava.cast_to_string(val.get_class.get_name) + " to field " + RJava.cast_to_string(f.get_declaring_class.get_name) + "." + RJava.cast_to_string(f.get_name) + " of type " + RJava.cast_to_string(f.get_type.get_name) + " in instance of " + RJava.cast_to_string(obj.get_class.get_name))
               end
               self.class::UnsafeInstance.put_object(obj, key, val)
             else
-              raise InternalError.new
+              raise self.class::InternalError.new
             end
             i += 1
           end
@@ -2315,14 +2315,14 @@ module Java::Io
         alias_method :attr_null_class=, :null_class=
         undef_method :null_class=
         
-        typesig { [Class, Array.typed(ObjectStreamField), ReferenceQueue] }
+        typesig { [self::Class, Array.typed(self::ObjectStreamField), self::ReferenceQueue] }
         def initialize(cl, fields, queue)
           @sigs = nil
           @hash = 0
           @null_class = false
           super(cl, queue)
           @null_class = ((cl).nil?)
-          sbuf = StringBuilder.new
+          sbuf = self.class::StringBuilder.new
           i = 0
           while i < fields.attr_length
             f = fields[i]
@@ -2343,7 +2343,7 @@ module Java::Io
           if ((obj).equal?(self))
             return true
           end
-          if (obj.is_a?(FieldReflectorKey))
+          if (obj.is_a?(self.class::FieldReflectorKey))
             other = obj
             referent = nil
             return (@null_class ? other.attr_null_class : (!((referent = get)).nil?) && ((referent).equal?(other.get))) && (@sigs == other.attr_sigs)
@@ -2428,7 +2428,7 @@ module Java::Io
         alias_method :attr_hash=, :hash=
         undef_method :hash=
         
-        typesig { [Class, ReferenceQueue] }
+        typesig { [self::Class, self::ReferenceQueue] }
         # Create a new WeakClassKey to the given object, registered
         # with a queue.
         def initialize(cl, ref_queue)
@@ -2452,7 +2452,7 @@ module Java::Io
           if ((obj).equal?(self))
             return true
           end
-          if (obj.is_a?(WeakClassKey))
+          if (obj.is_a?(self.class::WeakClassKey))
             referent = get
             return (!(referent).nil?) && ((referent).equal?((obj).get))
           else

@@ -119,7 +119,7 @@ module Sun::Nio::Cs::Ext
           
           
           def index2
-            defined?(@@index2) ? @@index2 : @@index2= Array.typed(String).new([self.class::InnerIndex0, self.class::InnerIndex1, self.class::InnerIndex2, self.class::InnerIndex3, self.class::InnerIndex4, self.class::InnerIndex5])
+            defined?(@@index2) ? @@index2 : @@index2= Array.typed(self.class::String).new([self.class::InnerIndex0, self.class::InnerIndex1, self.class::InnerIndex2, self.class::InnerIndex3, self.class::InnerIndex4, self.class::InnerIndex5])
           end
           alias_method :attr_index2, :index2
           
@@ -129,7 +129,7 @@ module Sun::Nio::Cs::Ext
           alias_method :attr_index2=, :index2=
         }
         
-        typesig { [Charset] }
+        typesig { [self::Charset] }
         def initialize(cs)
           super(cs, self.class::Index1, self.attr_index2, 0xa1, 0xfe)
         end
@@ -177,7 +177,7 @@ module Sun::Nio::Cs::Ext
           
           
           def index2
-            defined?(@@index2) ? @@index2 : @@index2= Array.typed(String).new([self.class::InnerIndex0, self.class::InnerIndex1, self.class::InnerIndex2, self.class::InnerIndex3, self.class::InnerIndex4, self.class::InnerIndex5, self.class::InnerIndex6, self.class::InnerIndex7, self.class::InnerIndex8, self.class::InnerIndex9])
+            defined?(@@index2) ? @@index2 : @@index2= Array.typed(self.class::String).new([self.class::InnerIndex0, self.class::InnerIndex1, self.class::InnerIndex2, self.class::InnerIndex3, self.class::InnerIndex4, self.class::InnerIndex5, self.class::InnerIndex6, self.class::InnerIndex7, self.class::InnerIndex8, self.class::InnerIndex9])
           end
           alias_method :attr_index2, :index2
           
@@ -187,7 +187,7 @@ module Sun::Nio::Cs::Ext
           alias_method :attr_index2=, :index2=
         }
         
-        typesig { [Charset] }
+        typesig { [self::Charset] }
         def initialize(cs)
           super(cs, self.class::Index1, self.attr_index2)
         end

@@ -88,14 +88,14 @@ module Sun::Nio::Cs::Ext
       const_set_lazy(:Decoder) { Class.new(ISO2022::Decoder) do
         include_class_members ISO2022_KR
         
-        typesig { [Charset] }
+        typesig { [self::Charset] }
         def initialize(cs)
           super(cs)
           SODesig = Array.typed(Array.typed(::Java::Byte)).new([Array.typed(::Java::Byte).new([Character.new(?$.ord), Character.new(?).ord), Character.new(?C.ord)])])
-          SODecoder = Array.typed(CharsetDecoder).new(1) { nil }
+          SODecoder = Array.typed(self.class::CharsetDecoder).new(1) { nil }
           begin
             SODecoder[0] = self.attr_ksc5601_cs.new_decoder
-          rescue JavaException => e
+          rescue self.class::JavaException => e
           end
         end
         
@@ -106,13 +106,13 @@ module Sun::Nio::Cs::Ext
       const_set_lazy(:Encoder) { Class.new(ISO2022::Encoder) do
         include_class_members ISO2022_KR
         
-        typesig { [Charset] }
+        typesig { [self::Charset] }
         def initialize(cs)
           super(cs)
           SODesig = "$)C"
           begin
             ISOEncoder = self.attr_ksc5601_cs.new_encoder
-          rescue JavaException => e
+          rescue self.class::JavaException => e
           end
         end
         

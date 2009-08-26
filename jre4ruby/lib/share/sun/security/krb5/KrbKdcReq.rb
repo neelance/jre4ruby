@@ -238,7 +238,7 @@ module Sun::Security::Krb5
         alias_method :attr_obuf=, :obuf=
         undef_method :obuf=
         
-        typesig { [String, ::Java::Int, ::Java::Boolean, ::Java::Int, Array.typed(::Java::Byte)] }
+        typesig { [self::String, ::Java::Int, ::Java::Boolean, ::Java::Int, Array.typed(::Java::Byte)] }
         def initialize(kdc, port, use_tcp, timeout, obuf)
           @kdc = nil
           @port = 0
@@ -258,7 +258,7 @@ module Sun::Security::Krb5
         def run
           ibuf = nil
           if (@use_tcp)
-            kdc_client = TCPClient.new(@kdc, @port)
+            kdc_client = self.class::TCPClient.new(@kdc, @port)
             begin
               # Send the data to the kdc.
               kdc_client.send(@obuf)
@@ -272,7 +272,7 @@ module Sun::Security::Krb5
             # get the response
             i = 1
             while i <= DEFAULT_KDC_RETRY_LIMIT
-              kdc_client = UDPClient.new(@kdc, @port, @timeout)
+              kdc_client = self.class::UDPClient.new(@kdc, @port, @timeout)
               if (DEBUG)
                 System.out.println(">>> KDCCommunication: kdc=" + @kdc + RJava.cast_to_string((@use_tcp ? " TCP:" : " UDP:")) + RJava.cast_to_string(@port) + ", timeout=" + RJava.cast_to_string(@timeout) + ",Attempt =" + RJava.cast_to_string(i) + ", #bytes=" + RJava.cast_to_string(@obuf.attr_length))
               end
@@ -283,7 +283,7 @@ module Sun::Security::Krb5
                 begin
                   ibuf = kdc_client.receive
                   break
-                rescue SocketTimeoutException => se
+                rescue self.class::SocketTimeoutException => se
                   if (DEBUG)
                     System.out.println("SocketTimeOutException with " + "attempt: " + RJava.cast_to_string(i))
                   end

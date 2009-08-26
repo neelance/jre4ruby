@@ -231,11 +231,11 @@ module Sun::Nio::Ch
           super(self.attr_sc)
         end
         
-        typesig { [ByteBuffer] }
+        typesig { [self::ByteBuffer] }
         def read(bb)
           synchronized((self.attr_sc.blocking_lock)) do
             if (!self.attr_sc.is_blocking)
-              raise IllegalBlockingModeException.new
+              raise self.class::IllegalBlockingModeException.new
             end
             if ((self.attr_timeout).equal?(0))
               return self.attr_sc.read(bb)
@@ -254,7 +254,7 @@ module Sun::Nio::Ch
               to = self.attr_timeout
               loop do
                 if (!self.attr_sc.is_open)
-                  raise ClosedChannelException.new
+                  raise self.class::ClosedChannelException.new
                 end
                 st = System.current_time_millis
                 ns = sel.select(to)
@@ -266,7 +266,7 @@ module Sun::Nio::Ch
                 sel.selected_keys.remove(sk)
                 to -= System.current_time_millis - st
                 if (to <= 0)
-                  raise SocketTimeoutException.new
+                  raise self.class::SocketTimeoutException.new
                 end
               end
             ensure
@@ -314,7 +314,7 @@ module Sun::Nio::Ch
             
             typesig { [] }
             define_method :run do
-              return SocketInputStream.new
+              return self.class::SocketInputStream.new
             end
             
             typesig { [] }

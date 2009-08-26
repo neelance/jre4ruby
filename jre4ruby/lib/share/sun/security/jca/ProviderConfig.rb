@@ -197,7 +197,7 @@ module Sun::Security::Jca
         
         typesig { [] }
         define_method :run do
-          file = JavaFile.new("/usr/lib/libpkcs11.so")
+          file = self.class::JavaFile.new("/usr/lib/libpkcs11.so")
           if ((file.exists).equal?(false))
             return Boolean::FALSE
           end
@@ -341,7 +341,7 @@ module Sun::Security::Jca
               cons = prov_class.get_constructor(CL_STRING)
               obj = cons.new_instance(self.attr_argument)
             end
-            if (obj.is_a?(Provider))
+            if (obj.is_a?(self.class::Provider))
               if (!(Debug).nil?)
                 Debug.println("Loaded provider " + RJava.cast_to_string(obj))
               end
@@ -353,9 +353,9 @@ module Sun::Security::Jca
               disable_load
               return nil
             end
-          rescue JavaException => e
+          rescue self.class::JavaException => e
             t = nil
-            if (e.is_a?(InvocationTargetException))
+            if (e.is_a?(self.class::InvocationTargetException))
               t = (e).get_cause
             else
               t = e
@@ -365,11 +365,11 @@ module Sun::Security::Jca
               t.print_stack_trace
             end
             # provider indicates fatal error, pass through exception
-            if (t.is_a?(ProviderException))
+            if (t.is_a?(self.class::ProviderException))
               raise t
             end
             # provider indicates that loading should not be retried
-            if (t.is_a?(UnsupportedOperationException))
+            if (t.is_a?(self.class::UnsupportedOperationException))
               disable_load
             end
             return nil
@@ -405,8 +405,8 @@ module Sun::Security::Jca
           define_method :run do
             begin
               return PropertyExpander.expand(value)
-            rescue GeneralSecurityException => e
-              raise ProviderException.new(e)
+            rescue self.class::GeneralSecurityException => e
+              raise self.class::ProviderException.new(e)
             end
           end
           

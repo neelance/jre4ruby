@@ -126,7 +126,7 @@ module Sun::Security::Jgss::Krb5
         alias_method :attr_flags=, :flags=
         undef_method :flags=
         
-        typesig { [Krb5Context, Credentials, Credentials] }
+        typesig { [self::Krb5Context, self::Credentials, self::Credentials] }
         # Called on the initiator side when creating the
         # InitSecContextToken.
         def initialize(context, tgt, service_ticket)
@@ -150,9 +150,9 @@ module Sun::Security::Jgss::Krb5
                 krb_cred = nil
                 cipher_helper = context.get_cipher_helper(service_ticket.get_session_key)
                 if (use_null_key(cipher_helper))
-                  krb_cred = KrbCred.new(tgt, service_ticket, EncryptionKey::NULL_KEY)
+                  krb_cred = self.class::KrbCred.new(tgt, service_ticket, EncryptionKey::NULL_KEY)
                 else
-                  krb_cred = KrbCred.new(tgt, service_ticket, service_ticket.get_session_key)
+                  krb_cred = self.class::KrbCred.new(tgt, service_ticket, service_ticket.get_session_key)
                 end
                 krb_cred_message = krb_cred.get_message
                 size += CHECKSUM_DELEG_OPT_SIZE + CHECKSUM_DELEG_LGTH_SIZE + krb_cred_message.attr_length
@@ -200,14 +200,14 @@ module Sun::Security::Jgss::Krb5
             delegate_to = service_ticket.get_server
             # Cannot use '\"' instead of "\"" in constructor because
             # it is interpreted as suggested length!
-            buf = StringBuffer.new("\"")
+            buf = self.class::StringBuffer.new("\"")
             buf.append(delegate_to.get_name).append(Character.new(?\".ord))
             realm = delegate_to.get_realm_as_string
             buf.append(" \"krbtgt/").append(realm).append(Character.new(?@.ord))
             buf.append(realm).append(Character.new(?\".ord))
             sm = System.get_security_manager
             if (!(sm).nil?)
-              perm = DelegationPermission.new(buf.to_s)
+              perm = self.class::DelegationPermission.new(buf.to_s)
               sm.check_permission(perm)
             end
             # Write 1 in little endian but in two bytes
@@ -217,7 +217,7 @@ module Sun::Security::Jgss::Krb5
             # Write the length of the delegated credential in little
             # endian but in two bytes for Dlgth
             if (krb_cred_message.attr_length > 0xffff)
-              raise GSSException.new(GSSException::FAILURE, -1, "Incorrect messsage length")
+              raise self.class::GSSException.new(GSSException::FAILURE, -1, "Incorrect messsage length")
             end
             write_little_endian(krb_cred_message.attr_length, temp)
             @checksum_bytes[((pos += 1) - 1)] = temp[0]
@@ -226,7 +226,7 @@ module Sun::Security::Jgss::Krb5
           end
         end
         
-        typesig { [Krb5Context, Checksum, EncryptionKey] }
+        typesig { [self::Krb5Context, self::Checksum, self::EncryptionKey] }
         # Called on the acceptor side when reading an InitSecContextToken.
         # 
         # XXX Passing in Checksum is not required. byte[] can
@@ -240,7 +240,7 @@ module Sun::Security::Jgss::Krb5
           pos = 0
           @checksum_bytes = checksum.get_bytes
           if ((!(@checksum_bytes[0]).equal?(CHECKSUM_FIRST_BYTES[0])) || (!(@checksum_bytes[1]).equal?(CHECKSUM_FIRST_BYTES[1])) || (!(@checksum_bytes[2]).equal?(CHECKSUM_FIRST_BYTES[2])) || (!(@checksum_bytes[3]).equal?(CHECKSUM_FIRST_BYTES[3])))
-            raise GSSException.new(GSSException::FAILURE, -1, "Incorrect checksum")
+            raise self.class::GSSException.new(GSSException::FAILURE, -1, "Incorrect checksum")
           end
           remote_binding_bytes = Array.typed(::Java::Byte).new(CHECKSUM_BINDINGS_SIZE) { 0 }
           System.arraycopy(@checksum_bytes, 4, remote_binding_bytes, 0, CHECKSUM_BINDINGS_SIZE)
@@ -266,7 +266,7 @@ module Sun::Security::Jgss::Krb5
               end
             end
             if (bad_bindings)
-              raise GSSException.new(GSSException::BAD_BINDINGS, -1, error_message)
+              raise self.class::GSSException.new(GSSException::BAD_BINDINGS, -1, error_message)
             end
           end
           @flags = read_little_endian(@checksum_bytes, 20, 4)
@@ -279,14 +279,14 @@ module Sun::Security::Jgss::Krb5
             System.arraycopy(@checksum_bytes, 28, cred_bytes, 0, cred_len)
             cipher_helper = context.get_cipher_helper(key)
             if (use_null_key(cipher_helper))
-              @deleg_creds = KrbCred.new(cred_bytes, EncryptionKey::NULL_KEY).get_delegated_creds[0]
+              @deleg_creds = self.class::KrbCred.new(cred_bytes, EncryptionKey::NULL_KEY).get_delegated_creds[0]
             else
-              @deleg_creds = KrbCred.new(cred_bytes, key).get_delegated_creds[0]
+              @deleg_creds = self.class::KrbCred.new(cred_bytes, key).get_delegated_creds[0]
             end
           end
         end
         
-        typesig { [CipherHelper] }
+        typesig { [self::CipherHelper] }
         # check if KRB-CRED message should use NULL_KEY for encryption
         def use_null_key(ch)
           flag = true
@@ -299,7 +299,7 @@ module Sun::Security::Jgss::Krb5
         
         typesig { [] }
         def get_checksum
-          return Checksum.new(@checksum_bytes, CHECKSUM_TYPE)
+          return self.class::Checksum.new(@checksum_bytes, CHECKSUM_TYPE)
         end
         
         typesig { [] }
@@ -307,7 +307,7 @@ module Sun::Security::Jgss::Krb5
           return @deleg_creds
         end
         
-        typesig { [Krb5Context] }
+        typesig { [self::Krb5Context] }
         def set_context_flags(context)
           # default for cred delegation is false
           if ((@flags & CHECKSUM_DELEG_FLAG) > 0)

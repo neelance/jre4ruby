@@ -736,7 +736,7 @@ module Java::Util
           @next_index = 0
           @expected_mod_count = self.attr_mod_count
           if (index < 0 || index > self.attr_size)
-            raise IndexOutOfBoundsException.new("Index: " + RJava.cast_to_string(index) + ", Size: " + RJava.cast_to_string(self.attr_size))
+            raise self.class::IndexOutOfBoundsException.new("Index: " + RJava.cast_to_string(index) + ", Size: " + RJava.cast_to_string(self.attr_size))
           end
           if (index < (self.attr_size >> 1))
             @next = self.attr_header.attr_next
@@ -764,7 +764,7 @@ module Java::Util
         def next_
           check_for_comodification
           if ((@next_index).equal?(self.attr_size))
-            raise NoSuchElementException.new
+            raise self.class::NoSuchElementException.new
           end
           @last_returned = @next
           @next = @next.attr_next
@@ -780,7 +780,7 @@ module Java::Util
         typesig { [] }
         def previous
           if ((@next_index).equal?(0))
-            raise NoSuchElementException.new
+            raise self.class::NoSuchElementException.new
           end
           @last_returned = @next = @next.attr_previous
           @next_index -= 1
@@ -804,8 +804,8 @@ module Java::Util
           last_next = @last_returned.attr_next
           begin
             @local_class_parent.remove(@last_returned)
-          rescue NoSuchElementException => e
-            raise IllegalStateException.new
+          rescue self.class::NoSuchElementException => e
+            raise self.class::IllegalStateException.new
           end
           if ((@next).equal?(@last_returned))
             @next = last_next
@@ -816,16 +816,16 @@ module Java::Util
           @expected_mod_count += 1
         end
         
-        typesig { [E] }
+        typesig { [self::E] }
         def set(e)
           if ((@last_returned).equal?(self.attr_header))
-            raise IllegalStateException.new
+            raise self.class::IllegalStateException.new
           end
           check_for_comodification
           @last_returned.attr_element = e
         end
         
-        typesig { [E] }
+        typesig { [self::E] }
         def add(e)
           check_for_comodification
           @last_returned = self.attr_header
@@ -837,7 +837,7 @@ module Java::Util
         typesig { [] }
         def check_for_comodification
           if (!(self.attr_mod_count).equal?(@expected_mod_count))
-            raise ConcurrentModificationException.new
+            raise self.class::ConcurrentModificationException.new
           end
         end
         
@@ -866,7 +866,7 @@ module Java::Util
         alias_method :attr_previous=, :previous=
         undef_method :previous=
         
-        typesig { [Object, Entry, Entry] }
+        typesig { [Object, self::Entry, self::Entry] }
         def initialize(element, next_, previous)
           @element = nil
           @next = nil
@@ -942,7 +942,7 @@ module Java::Util
         
         typesig { [] }
         def initialize
-          @itr = ListItr.new(size)
+          @itr = self.class::ListItr.new(size)
         end
         
         private

@@ -1271,7 +1271,7 @@ module Java::Lang
           const_attr_reader  :SerialVersionUID
         }
         
-        typesig { [String, String] }
+        typesig { [self::String, self::String] }
         def compare(s1, s2)
           n1 = s1.length
           n2 = s2.length

@@ -215,12 +215,12 @@ module Java::Text
         alias_method :attr_i=, :i=
         undef_method :i=
         
-        typesig { [String] }
+        typesig { [self::String] }
         def initialize(pattern)
           @pattern = nil
           @i = 0
-          @new_chars = StringBuffer.new
-          @new_extension = StringBuffer.new
+          @new_chars = self.class::StringBuffer.new
+          @new_extension = self.class::StringBuffer.new
           @pattern = pattern
           @i = 0
         end
@@ -293,10 +293,10 @@ module Java::Text
                 end
               else
                 if ((new_strength).equal?(UNSET))
-                  raise ParseException.new("missing char (=,;<&) : " + RJava.cast_to_string(@pattern.substring(@i, (@i + 10 < @pattern.length) ? @i + 10 : @pattern.length)), @i)
+                  raise self.class::ParseException.new("missing char (=,;<&) : " + RJava.cast_to_string(@pattern.substring(@i, (@i + 10 < @pattern.length) ? @i + 10 : @pattern.length)), @i)
                 end
                 if (PatternEntry.is_special_char(ch) && ((in_quote).equal?(false)))
-                  raise ParseException.new("Unquoted punctuation character : " + RJava.cast_to_string(JavaInteger.to_s(ch, 16)), @i)
+                  raise self.class::ParseException.new("Unquoted punctuation character : " + RJava.cast_to_string(JavaInteger.to_s(ch, 16)), @i)
                 end
                 if (in_chars)
                   @new_chars.append(ch)
@@ -311,9 +311,9 @@ module Java::Text
             return nil
           end
           if ((@new_chars.length).equal?(0))
-            raise ParseException.new("missing chars (=,;<&): " + RJava.cast_to_string(@pattern.substring(@i, (@i + 10 < @pattern.length) ? @i + 10 : @pattern.length)), @i)
+            raise self.class::ParseException.new("missing chars (=,;<&): " + RJava.cast_to_string(@pattern.substring(@i, (@i + 10 < @pattern.length) ? @i + 10 : @pattern.length)), @i)
           end
-          return PatternEntry.new(new_strength, @new_chars, @new_extension)
+          return self.class::PatternEntry.new(new_strength, @new_chars, @new_extension)
         end
         
         # We re-use these objects in order to improve performance

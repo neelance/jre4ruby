@@ -147,11 +147,11 @@ module Sun::Util
         include LocaleServiceProviderPool::LocalizedObjectGetter
         
         class_module.module_eval {
-          const_set_lazy(:INSTANCE) { TimeZoneNameGetter.new }
+          const_set_lazy(:INSTANCE) { self.class::TimeZoneNameGetter.new }
           const_attr_reader  :INSTANCE
         }
         
-        typesig { [TimeZoneNameProvider, Locale, String, Object] }
+        typesig { [self::TimeZoneNameProvider, self::Locale, self::String, Object] }
         def get_object(time_zone_name_provider, locale, request_id, *params)
           raise AssertError if not ((params.attr_length).equal?(0))
           names = nil
@@ -185,7 +185,7 @@ module Sun::Util
         end
         
         class_module.module_eval {
-          typesig { [TimeZoneNameProvider, Locale, String, Map, JavaSet] }
+          typesig { [self::TimeZoneNameProvider, self::Locale, self::String, self::Map, self::JavaSet] }
           def examine_aliases(tznp, locale, id, aliases, aliases_set)
             if (aliases.contains_value(id))
               aliases_set.each do |entry|
@@ -206,9 +206,9 @@ module Sun::Util
             return nil
           end
           
-          typesig { [TimeZoneNameProvider, Locale, String] }
+          typesig { [self::TimeZoneNameProvider, self::Locale, self::String] }
           def build_zone_strings(tznp, locale, id)
-            names = Array.typed(String).new(5) { nil }
+            names = Array.typed(self.class::String).new(5) { nil }
             i = 1
             while i <= 4
               names[i] = tznp.get_display_name(id, i >= 3, i % 2, locale)

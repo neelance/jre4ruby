@@ -161,13 +161,13 @@ module Java::Util::Prefs
           
           typesig { [] }
           define_method :run do
-            self.attr_user_root_dir = JavaFile.new(System.get_property("java.util.prefs.userRoot", System.get_property("user.home")), ".java/.userPrefs")
+            self.attr_user_root_dir = self.class::JavaFile.new(System.get_property("java.util.prefs.userRoot", System.get_property("user.home")), ".java/.userPrefs")
             # Attempt to create root dir if it does not yet exist.
             if (!self.attr_user_root_dir.exists)
               if (self.attr_user_root_dir.mkdirs)
                 begin
                   chmod(self.attr_user_root_dir.get_canonical_path, USER_RWX)
-                rescue IOException => e
+                rescue self.class::IOException => e
                   get_logger.warning("Could not change permissions" + " on userRoot directory. ")
                 end
                 get_logger.info("Created user preferences directory.")
@@ -177,8 +177,8 @@ module Java::Util::Prefs
             end
             self.attr_is_user_root_writable = self.attr_user_root_dir.can_write
             user_name = System.get_property("user.name")
-            self.attr_user_lock_file = JavaFile.new(self.attr_user_root_dir, ".user.lock." + user_name)
-            self.attr_user_root_mod_file = JavaFile.new(self.attr_user_root_dir, ".userRootModFile." + user_name)
+            self.attr_user_lock_file = self.class::JavaFile.new(self.attr_user_root_dir, ".user.lock." + user_name)
+            self.attr_user_root_mod_file = self.class::JavaFile.new(self.attr_user_root_dir, ".userRootModFile." + user_name)
             if (!self.attr_user_root_mod_file.exists)
               begin
                 # create if does not exist.
@@ -188,7 +188,7 @@ module Java::Util::Prefs
                 if (!(result).equal?(0))
                   get_logger.warning("Problem creating userRoot " + "mod file. Chmod failed on " + RJava.cast_to_string(self.attr_user_root_mod_file.get_canonical_path) + " Unix error code " + RJava.cast_to_string(result))
                 end
-              rescue IOException => e
+              rescue self.class::IOException => e
                 get_logger.warning(e.to_s)
               end
             end
@@ -239,18 +239,18 @@ module Java::Util::Prefs
           typesig { [] }
           define_method :run do
             system_prefs_dir_name = System.get_property("java.util.prefs.systemRoot", "/etc/.java")
-            self.attr_system_root_dir = JavaFile.new(system_prefs_dir_name, ".systemPrefs")
+            self.attr_system_root_dir = self.class::JavaFile.new(system_prefs_dir_name, ".systemPrefs")
             # Attempt to create root dir if it does not yet exist.
             if (!self.attr_system_root_dir.exists)
               # system root does not exist in /etc/.java
               # Switching  to java.home
-              self.attr_system_root_dir = JavaFile.new(System.get_property("java.home"), ".systemPrefs")
+              self.attr_system_root_dir = self.class::JavaFile.new(System.get_property("java.home"), ".systemPrefs")
               if (!self.attr_system_root_dir.exists)
                 if (self.attr_system_root_dir.mkdirs)
                   get_logger.info("Created system preferences directory " + "in java.home.")
                   begin
                     chmod(self.attr_system_root_dir.get_canonical_path, USER_RWX_ALL_RX)
-                  rescue IOException => e
+                  rescue self.class::IOException => e
                   end
                 else
                   get_logger.warning("Could not create " + "system preferences directory. System " + "preferences are unusable.")
@@ -258,8 +258,8 @@ module Java::Util::Prefs
               end
             end
             self.attr_is_system_root_writable = self.attr_system_root_dir.can_write
-            self.attr_system_lock_file = JavaFile.new(self.attr_system_root_dir, ".system.lock")
-            self.attr_system_root_mod_file = JavaFile.new(self.attr_system_root_dir, ".systemRootModFile")
+            self.attr_system_lock_file = self.class::JavaFile.new(self.attr_system_root_dir, ".system.lock")
+            self.attr_system_root_mod_file = self.class::JavaFile.new(self.attr_system_root_dir, ".systemRootModFile")
             if (!self.attr_system_root_mod_file.exists && self.attr_is_system_root_writable)
               begin
                 # create if does not exist.
@@ -268,7 +268,7 @@ module Java::Util::Prefs
                 if (!(result).equal?(0))
                   get_logger.warning("Chmod failed on " + RJava.cast_to_string(self.attr_system_root_mod_file.get_canonical_path) + " Unix error code " + RJava.cast_to_string(result))
                 end
-              rescue IOException => e
+              rescue self.class::IOException => e
                 get_logger.warning(e.to_s)
               end
             end
@@ -551,7 +551,7 @@ module Java::Util::Prefs
         alias_method :attr_value=, :value=
         undef_method :value=
         
-        typesig { [String, String] }
+        typesig { [self::String, self::String] }
         def initialize(key, value)
           @key = nil
           @value = nil
@@ -580,7 +580,7 @@ module Java::Util::Prefs
         alias_method :attr_key=, :key=
         undef_method :key=
         
-        typesig { [String] }
+        typesig { [self::String] }
         def initialize(key)
           @key = nil
           super()
@@ -678,10 +678,10 @@ module Java::Util::Prefs
           typesig { [] }
           define_method :run do
             privileged_action_class = self.class
-            Runtime.get_runtime.add_shutdown_hook(Class.new(JavaThread.class == Class ? JavaThread : Object) do
+            Runtime.get_runtime.add_shutdown_hook(Class.new(self.class::JavaThread.class == Class ? self.class::JavaThread : Object) do
               extend LocalClass
               include_class_members privileged_action_class
-              include JavaThread if JavaThread.class == Module
+              include self::JavaThread if self::JavaThread.class == Module
               
               typesig { [] }
               define_method :run do
@@ -875,23 +875,23 @@ module Java::Util::Prefs
           
           typesig { [] }
           define_method :run do
-            m = TreeMap.new
+            m = self.class::TreeMap.new
             new_last_sync_time = 0
             begin
               new_last_sync_time = self.attr_prefs_file.last_modified
-              fis = FileInputStream.new(self.attr_prefs_file)
+              fis = self.class::FileInputStream.new(self.attr_prefs_file)
               XmlSupport.import_map(fis, m)
               fis.close
-            rescue JavaException => e
-              if (e.is_a?(InvalidPreferencesFormatException))
+            rescue self.class::JavaException => e
+              if (e.is_a?(self.class::InvalidPreferencesFormatException))
                 get_logger.warning("Invalid preferences format in " + RJava.cast_to_string(self.attr_prefs_file.get_path))
-                self.attr_prefs_file.rename_to(JavaFile.new(self.attr_prefs_file.get_parent_file, "IncorrectFormatPrefs.xml"))
-                m = TreeMap.new
+                self.attr_prefs_file.rename_to(self.class::JavaFile.new(self.attr_prefs_file.get_parent_file, "IncorrectFormatPrefs.xml"))
+                m = self.class::TreeMap.new
               else
-                if (e.is_a?(FileNotFoundException))
+                if (e.is_a?(self.class::FileNotFoundException))
                   get_logger.warning("Prefs file removed in background " + RJava.cast_to_string(self.attr_prefs_file.get_path))
                 else
-                  raise BackingStoreException.new(e)
+                  raise self.class::BackingStoreException.new(e)
                 end
               end
             end
@@ -933,19 +933,19 @@ module Java::Util::Prefs
           define_method :run do
             begin
               if (!self.attr_dir.exists && !self.attr_dir.mkdirs)
-                raise BackingStoreException.new(RJava.cast_to_string(self.attr_dir) + " create failed.")
+                raise self.class::BackingStoreException.new(RJava.cast_to_string(self.attr_dir) + " create failed.")
               end
-              fos = FileOutputStream.new(self.attr_tmp_file)
+              fos = self.class::FileOutputStream.new(self.attr_tmp_file)
               XmlSupport.export_map(fos, self.attr_prefs_cache)
               fos.close
               if (!self.attr_tmp_file.rename_to(self.attr_prefs_file))
-                raise BackingStoreException.new("Can't rename " + RJava.cast_to_string(self.attr_tmp_file) + " to " + RJava.cast_to_string(self.attr_prefs_file))
+                raise self.class::BackingStoreException.new("Can't rename " + RJava.cast_to_string(self.attr_tmp_file) + " to " + RJava.cast_to_string(self.attr_prefs_file))
               end
-            rescue JavaException => e
-              if (e.is_a?(BackingStoreException))
+            rescue self.class::JavaException => e
+              if (e.is_a?(self.class::BackingStoreException))
                 raise e
               end
-              raise BackingStoreException.new(e)
+              raise self.class::BackingStoreException.new(e)
             end
             return nil
           end
@@ -978,7 +978,7 @@ module Java::Util::Prefs
         
         typesig { [] }
         define_method :run do
-          result = ArrayList.new
+          result = self.class::ArrayList.new
           dir_contents = self.attr_dir.list_files
           if (!(dir_contents).nil?)
             i = 0
@@ -1059,7 +1059,7 @@ module Java::Util::Prefs
               end
             end
             if (!self.attr_dir.delete)
-              raise BackingStoreException.new("Couldn't delete dir: " + RJava.cast_to_string(self.attr_dir))
+              raise self.class::BackingStoreException.new("Couldn't delete dir: " + RJava.cast_to_string(self.attr_dir))
             end
             return nil
           end
@@ -1109,7 +1109,7 @@ module Java::Util::Prefs
                 nmt = self.attr_system_root_mod_file.last_modified
                 self.attr_is_system_root_modified = (self.attr_system_root_mod_time).equal?(nmt)
               end
-              return Long.new(nmt)
+              return self.class::Long.new(nmt)
             end
             
             typesig { [] }

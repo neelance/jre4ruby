@@ -81,11 +81,11 @@ module Sun::Nio::Cs::Ext
           return (!(c).equal?(REPLACE_CHAR)) ? c : @big5dec.decode_double(byte1, byte2)
         end
         
-        typesig { [Charset] }
+        typesig { [self::Charset] }
         def initialize(cs)
           @big5dec = nil
           super(cs)
-          @big5dec = Big5::Decoder.new(cs)
+          @big5dec = self.class::Big5::Decoder.new(cs)
         end
         
         private
@@ -107,11 +107,11 @@ module Sun::Nio::Cs::Ext
           return (!(r).equal?(0)) ? r : @big5enc.encode_double(ch)
         end
         
-        typesig { [Charset] }
+        typesig { [self::Charset] }
         def initialize(cs)
           @big5enc = nil
           super(cs)
-          @big5enc = Big5::Encoder.new(cs)
+          @big5enc = self.class::Big5::Encoder.new(cs)
         end
         
         private

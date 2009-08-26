@@ -269,7 +269,7 @@ module Sun::Net::Www::Protocol::Jar
                 begin
                   tmp_file = JavaFile.create_temp_file("jar_cache", nil)
                   tmp_file.delete_on_exit
-                  out = FileOutputStream.new(tmp_file)
+                  out = self.class::FileOutputStream.new(tmp_file)
                   read = 0
                   buf = Array.typed(::Java::Byte).new(self.attr_buf_size) { 0 }
                   while (!((read = in_.read(buf))).equal?(-1))
@@ -277,8 +277,8 @@ module Sun::Net::Www::Protocol::Jar
                   end
                   out.close
                   out = nil
-                  return URLJarFile.new(tmp_file, close_controller)
-                rescue IOException => e
+                  return self.class::URLJarFile.new(tmp_file, close_controller)
+                rescue self.class::IOException => e
                   if (!(tmp_file).nil?)
                     tmp_file.delete
                   end
@@ -325,7 +325,7 @@ module Sun::Net::Www::Protocol::Jar
         alias_method :attr_je=, :je=
         undef_method :je=
         
-        typesig { [JarEntry] }
+        typesig { [self::JarEntry] }
         def initialize(je)
           @je = nil
           super(je)

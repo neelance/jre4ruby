@@ -74,12 +74,12 @@ module Sun::Nio::Cs
       const_set_lazy(:Decoder) { Class.new(CharsetDecoder) do
         include_class_members US_ASCII
         
-        typesig { [Charset] }
+        typesig { [self::Charset] }
         def initialize(cs)
           super(cs, 1.0, 1.0)
         end
         
-        typesig { [ByteBuffer, CharBuffer] }
+        typesig { [self::ByteBuffer, self::CharBuffer] }
         def decode_array_loop(src, dst)
           sa = src.array
           sp = src.array_offset + src.position
@@ -111,7 +111,7 @@ module Sun::Nio::Cs
           end
         end
         
-        typesig { [ByteBuffer, CharBuffer] }
+        typesig { [self::ByteBuffer, self::CharBuffer] }
         def decode_buffer_loop(src, dst)
           mark = src.position
           begin
@@ -133,7 +133,7 @@ module Sun::Nio::Cs
           end
         end
         
-        typesig { [ByteBuffer, CharBuffer] }
+        typesig { [self::ByteBuffer, self::CharBuffer] }
         def decode_loop(src, dst)
           if (src.has_array && dst.has_array)
             return decode_array_loop(src, dst)
@@ -149,11 +149,11 @@ module Sun::Nio::Cs
       const_set_lazy(:Encoder) { Class.new(CharsetEncoder) do
         include_class_members US_ASCII
         
-        typesig { [Charset] }
+        typesig { [self::Charset] }
         def initialize(cs)
           @sgp = nil
           super(cs, 1.0, 1.0)
-          @sgp = Surrogate::Parser.new
+          @sgp = self.class::Surrogate::Parser.new
         end
         
         typesig { [::Java::Char] }
@@ -167,7 +167,7 @@ module Sun::Nio::Cs
         alias_method :attr_sgp=, :sgp=
         undef_method :sgp=
         
-        typesig { [CharBuffer, ByteBuffer] }
+        typesig { [self::CharBuffer, self::ByteBuffer] }
         def encode_array_loop(src, dst)
           sa = src.array
           sp = src.array_offset + src.position
@@ -203,7 +203,7 @@ module Sun::Nio::Cs
           end
         end
         
-        typesig { [CharBuffer, ByteBuffer] }
+        typesig { [self::CharBuffer, self::ByteBuffer] }
         def encode_buffer_loop(src, dst)
           mark = src.position
           begin
@@ -228,7 +228,7 @@ module Sun::Nio::Cs
           end
         end
         
-        typesig { [CharBuffer, ByteBuffer] }
+        typesig { [self::CharBuffer, self::ByteBuffer] }
         def encode_loop(src, dst)
           if (src.has_array && dst.has_array)
             return encode_array_loop(src, dst)

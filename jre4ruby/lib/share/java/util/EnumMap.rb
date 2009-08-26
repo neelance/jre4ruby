@@ -433,7 +433,7 @@ module Java::Util
         
         typesig { [] }
         def iterator
-          return KeyIterator.new
+          return self.class::KeyIterator.new
         end
         
         typesig { [] }
@@ -493,7 +493,7 @@ module Java::Util
         
         typesig { [] }
         def iterator
-          return ValueIterator.new
+          return self.class::ValueIterator.new
         end
         
         typesig { [] }
@@ -560,12 +560,12 @@ module Java::Util
         
         typesig { [] }
         def iterator
-          return EntryIterator.new
+          return self.class::EntryIterator.new
         end
         
         typesig { [Object] }
         def contains(o)
-          if (!(o.is_a?(Map::Entry)))
+          if (!(o.is_a?(self.class::Map::Entry)))
             return false
           end
           entry = o
@@ -574,7 +574,7 @@ module Java::Util
         
         typesig { [Object] }
         def remove(o)
-          if (!(o.is_a?(Map::Entry)))
+          if (!(o.is_a?(self.class::Map::Entry)))
             return false
           end
           entry = o
@@ -596,7 +596,7 @@ module Java::Util
           return fill_entry_array(Array.typed(Object).new(self.attr_size) { nil })
         end
         
-        typesig { [Array.typed(T)] }
+        typesig { [Array.typed(self::T)] }
         def to_array(a)
           size_ = size
           if (a.attr_length < size_)
@@ -614,7 +614,7 @@ module Java::Util
           i = 0
           while i < self.attr_vals.attr_length
             if (!(self.attr_vals[i]).nil?)
-              a[((j += 1) - 1)] = AbstractMap::SimpleEntry.new(self.attr_key_universe[i], unmask_null(self.attr_vals[i]))
+              a[((j += 1) - 1)] = self.class::AbstractMap::SimpleEntry.new(self.attr_key_universe[i], unmask_null(self.attr_vals[i]))
             end
             i += 1
           end
@@ -670,7 +670,7 @@ module Java::Util
         typesig { [] }
         def check_last_returned_index
           if (@last_returned_index < 0)
-            raise IllegalStateException.new
+            raise self.class::IllegalStateException.new
           end
         end
         
@@ -691,7 +691,7 @@ module Java::Util
         typesig { [] }
         def next_
           if (!has_next)
-            raise NoSuchElementException.new
+            raise self.class::NoSuchElementException.new
           end
           self.attr_last_returned_index = ((self.attr_index += 1) - 1)
           return self.attr_key_universe[self.attr_last_returned_index]
@@ -713,7 +713,7 @@ module Java::Util
         typesig { [] }
         def next_
           if (!has_next)
-            raise NoSuchElementException.new
+            raise self.class::NoSuchElementException.new
           end
           self.attr_last_returned_index = ((self.attr_index += 1) - 1)
           return unmask_null(self.attr_vals[self.attr_last_returned_index])
@@ -739,7 +739,7 @@ module Java::Util
         typesig { [] }
         def next_
           if (!has_next)
-            raise NoSuchElementException.new
+            raise self.class::NoSuchElementException.new
           end
           self.attr_last_returned_index = ((self.attr_index += 1) - 1)
           return self
@@ -757,7 +757,7 @@ module Java::Util
           return unmask_null(self.attr_vals[self.attr_last_returned_index])
         end
         
-        typesig { [V] }
+        typesig { [self::V] }
         def set_value(value)
           check_last_returned_index_for_entry_use
           old_value = unmask_null(self.attr_vals[self.attr_last_returned_index])
@@ -770,7 +770,7 @@ module Java::Util
           if (self.attr_last_returned_index < 0)
             return (o).equal?(self)
           end
-          if (!(o.is_a?(Map::Entry)))
+          if (!(o.is_a?(self.class::Map::Entry)))
             return false
           end
           e = o
@@ -799,7 +799,7 @@ module Java::Util
         typesig { [] }
         def check_last_returned_index_for_entry_use
           if (self.attr_last_returned_index < 0)
-            raise IllegalStateException.new("Entry was removed")
+            raise self.class::IllegalStateException.new("Entry was removed")
           end
         end
         

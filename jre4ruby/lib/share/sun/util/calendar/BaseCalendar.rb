@@ -195,7 +195,7 @@ module Sun::Util::Calendar
           @cached_fixed_date_next_jan1 = @cached_fixed_date_jan1 + 366
         end
         
-        typesig { [TimeZone] }
+        typesig { [self::TimeZone] }
         def initialize(zone)
           @cached_year = 0
           @cached_fixed_date_jan1 = 0

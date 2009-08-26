@@ -490,7 +490,7 @@ module Sun::Security::Pkcs11
             else
               type = ModuleType::FIPS
               if (!(slot).equal?(0))
-                raise RuntimeException.new("Slot index should be 0 for FIPS slot")
+                raise self.class::RuntimeException.new("Slot index should be 0 for FIPS slot")
               end
             end
           else
@@ -500,7 +500,7 @@ module Sun::Security::Pkcs11
               type = ModuleType::EXTERNAL
             end
             if (fips)
-              raise RuntimeException.new("FIPS flag set for non-internal " + "module: " + library_name + ", " + common_name)
+              raise self.class::RuntimeException.new("FIPS flag set for non-internal " + "module: " + library_name + ", " + common_name)
             end
           end
           @library_name = library_name
@@ -524,7 +524,7 @@ module Sun::Security::Pkcs11
           when TRUSTANCHOR
             @config = RJava.cast_to_string(String.format(TEMPLATE_TRUSTANCHOR, @library_name))
           else
-            raise RuntimeException.new("Unknown module type: " + RJava.cast_to_string(@type))
+            raise self.class::RuntimeException.new("Unknown module type: " + RJava.cast_to_string(@type))
           end
         end
         
@@ -547,7 +547,7 @@ module Sun::Security::Pkcs11
         def set_configuration(config)
           synchronized(self) do
             if (!(@provider).nil?)
-              raise IllegalStateException.new("Provider instance already created")
+              raise self.class::IllegalStateException.new("Provider instance already created")
             end
             @config = config
           end
@@ -586,10 +586,10 @@ module Sun::Security::Pkcs11
           end
         end
         
-        typesig { [SunPKCS11] }
+        typesig { [self::SunPKCS11] }
         def set_provider(p)
           if (!(@provider).nil?)
-            raise ProviderException.new("Secmod provider already initialized")
+            raise self.class::ProviderException.new("Secmod provider already initialized")
           end
           @provider = p
         end
@@ -597,33 +597,33 @@ module Sun::Security::Pkcs11
         typesig { [] }
         def new_provider
           begin
-            in_ = ByteArrayInputStream.new(@config.get_bytes("UTF8"))
-            return SunPKCS11.new(in_)
-          rescue JavaException => e
+            in_ = self.class::ByteArrayInputStream.new(@config.get_bytes("UTF8"))
+            return self.class::SunPKCS11.new(in_)
+          rescue self.class::JavaException => e
             # XXX
-            raise ProviderException.new(e)
+            raise self.class::ProviderException.new(e)
           end
         end
         
-        typesig { [Token, X509Certificate] }
+        typesig { [self::Token, self::X509Certificate] }
         def set_trust(token, cert)
           synchronized(self) do
-            bytes = Bytes.new(get_digest(cert, "SHA-1"))
+            bytes = self.class::Bytes.new(get_digest(cert, "SHA-1"))
             attr = get_trust(bytes)
             if ((attr).nil?)
-              attr = TrustAttributes.new(token, cert, bytes, CKT_NETSCAPE_TRUSTED_DELEGATOR)
+              attr = self.class::TrustAttributes.new(token, cert, bytes, CKT_NETSCAPE_TRUSTED_DELEGATOR)
               @trust.put(bytes, attr)
             else
               # does it already have the correct trust settings?
               if ((attr.is_trusted(TrustType::ALL)).equal?(false))
                 # XXX not yet implemented
-                raise ProviderException.new("Cannot change existing trust attributes")
+                raise self.class::ProviderException.new("Cannot change existing trust attributes")
               end
             end
           end
         end
         
-        typesig { [Bytes] }
+        typesig { [self::Bytes] }
         def get_trust(hash)
           if ((@trust).nil?)
             # If provider is not set, create a temporary provider to
@@ -641,8 +641,8 @@ module Sun::Security::Pkcs11
               end
               begin
                 @trust = Secmod.get_trust(p)
-              rescue PKCS11Exception => e
-                raise RuntimeException.new(e)
+              rescue self.class::PKCS11Exception => e
+                raise self.class::RuntimeException.new(e)
               end
             end
           end
@@ -803,17 +803,17 @@ module Sun::Security::Pkcs11
         alias_method :attr_protection=, :protection=
         undef_method :protection=
         
-        typesig { [TrustType, Array.typed(::Java::Char)] }
+        typesig { [self::TrustType, Array.typed(::Java::Char)] }
         def initialize(trust_type, password)
-          initialize__key_store_load_parameter(trust_type, PasswordProtection.new(password))
+          initialize__key_store_load_parameter(trust_type, self.class::PasswordProtection.new(password))
         end
         
-        typesig { [TrustType, ProtectionParameter] }
+        typesig { [self::TrustType, self::ProtectionParameter] }
         def initialize(trust_type, prot)
           @trust_type = nil
           @protection = nil
           if ((trust_type).nil?)
-            raise NullPointerException.new("trustType must not be null")
+            raise self.class::NullPointerException.new("trustType must not be null")
           end
           @trust_type = trust_type
           @protection = prot
@@ -872,7 +872,7 @@ module Sun::Security::Pkcs11
         alias_method :attr_sha_hash=, :sha_hash=
         undef_method :sha_hash=
         
-        typesig { [Token, X509Certificate, Bytes, ::Java::Long] }
+        typesig { [self::Token, self::X509Certificate, self::Bytes, ::Java::Long] }
         def initialize(token, cert, bytes, trust_value)
           @handle = 0
           @client_auth = 0
@@ -886,21 +886,21 @@ module Sun::Security::Pkcs11
             # XXX use KeyStore TrustType settings to determine which
             # attributes to set
             # XXX per PKCS#11 spec, the serial number should be in ASN.1
-            attrs = Array.typed(CK_ATTRIBUTE).new([CK_ATTRIBUTE.new(CKA_TOKEN, true), CK_ATTRIBUTE.new(CKA_CLASS, CKO_NETSCAPE_TRUST), CK_ATTRIBUTE.new(CKA_NETSCAPE_TRUST_SERVER_AUTH, trust_value), CK_ATTRIBUTE.new(CKA_NETSCAPE_TRUST_CODE_SIGNING, trust_value), CK_ATTRIBUTE.new(CKA_NETSCAPE_TRUST_EMAIL_PROTECTION, trust_value), CK_ATTRIBUTE.new(CKA_NETSCAPE_TRUST_CLIENT_AUTH, trust_value), CK_ATTRIBUTE.new(CKA_NETSCAPE_CERT_SHA1_HASH, bytes.attr_b), CK_ATTRIBUTE.new(CKA_NETSCAPE_CERT_MD5_HASH, get_digest(cert, "MD5")), CK_ATTRIBUTE.new(CKA_ISSUER, cert.get_issuer_x500principal.get_encoded), CK_ATTRIBUTE.new(CKA_SERIAL_NUMBER, cert.get_serial_number.to_byte_array), ])
+            attrs = Array.typed(self.class::CK_ATTRIBUTE).new([self.class::CK_ATTRIBUTE.new(CKA_TOKEN, true), self.class::CK_ATTRIBUTE.new(CKA_CLASS, CKO_NETSCAPE_TRUST), self.class::CK_ATTRIBUTE.new(CKA_NETSCAPE_TRUST_SERVER_AUTH, trust_value), self.class::CK_ATTRIBUTE.new(CKA_NETSCAPE_TRUST_CODE_SIGNING, trust_value), self.class::CK_ATTRIBUTE.new(CKA_NETSCAPE_TRUST_EMAIL_PROTECTION, trust_value), self.class::CK_ATTRIBUTE.new(CKA_NETSCAPE_TRUST_CLIENT_AUTH, trust_value), self.class::CK_ATTRIBUTE.new(CKA_NETSCAPE_CERT_SHA1_HASH, bytes.attr_b), self.class::CK_ATTRIBUTE.new(CKA_NETSCAPE_CERT_MD5_HASH, get_digest(cert, "MD5")), self.class::CK_ATTRIBUTE.new(CKA_ISSUER, cert.get_issuer_x500principal.get_encoded), self.class::CK_ATTRIBUTE.new(CKA_SERIAL_NUMBER, cert.get_serial_number.to_byte_array), ])
             @handle = token.attr_p11._c_create_object(session.id, attrs)
             @sha_hash = bytes.attr_b
             @client_auth = trust_value
             @server_auth = trust_value
             @code_signing = trust_value
             @email_protection = trust_value
-          rescue PKCS11Exception => e
-            raise ProviderException.new("Could not create trust object", e)
+          rescue self.class::PKCS11Exception => e
+            raise self.class::ProviderException.new("Could not create trust object", e)
           ensure
             token.release_session(session)
           end
         end
         
-        typesig { [Token, Session, ::Java::Long] }
+        typesig { [self::Token, self::Session, ::Java::Long] }
         def initialize(token, session, handle)
           @handle = 0
           @client_auth = 0
@@ -909,18 +909,18 @@ module Sun::Security::Pkcs11
           @email_protection = 0
           @sha_hash = nil
           @handle = handle
-          attrs = Array.typed(CK_ATTRIBUTE).new([CK_ATTRIBUTE.new(CKA_NETSCAPE_TRUST_SERVER_AUTH), CK_ATTRIBUTE.new(CKA_NETSCAPE_TRUST_CODE_SIGNING), CK_ATTRIBUTE.new(CKA_NETSCAPE_TRUST_EMAIL_PROTECTION), CK_ATTRIBUTE.new(CKA_NETSCAPE_CERT_SHA1_HASH), ])
+          attrs = Array.typed(self.class::CK_ATTRIBUTE).new([self.class::CK_ATTRIBUTE.new(CKA_NETSCAPE_TRUST_SERVER_AUTH), self.class::CK_ATTRIBUTE.new(CKA_NETSCAPE_TRUST_CODE_SIGNING), self.class::CK_ATTRIBUTE.new(CKA_NETSCAPE_TRUST_EMAIL_PROTECTION), self.class::CK_ATTRIBUTE.new(CKA_NETSCAPE_CERT_SHA1_HASH), ])
           token.attr_p11._c_get_attribute_value(session.id, handle, attrs)
           @server_auth = attrs[0].get_long
           @code_signing = attrs[1].get_long
           @email_protection = attrs[2].get_long
           @sha_hash = attrs[3].get_byte_array
-          attrs = Array.typed(CK_ATTRIBUTE).new([CK_ATTRIBUTE.new(CKA_NETSCAPE_TRUST_CLIENT_AUTH), ])
+          attrs = Array.typed(self.class::CK_ATTRIBUTE).new([self.class::CK_ATTRIBUTE.new(CKA_NETSCAPE_TRUST_CLIENT_AUTH), ])
           c = 0
           begin
             token.attr_p11._c_get_attribute_value(session.id, handle, attrs)
             c = attrs[0].get_long
-          rescue PKCS11Exception => e
+          rescue self.class::PKCS11Exception => e
             # trust anchor module does not support this attribute
             c = @server_auth
           end
@@ -929,10 +929,10 @@ module Sun::Security::Pkcs11
         
         typesig { [] }
         def get_hash
-          return Bytes.new(@sha_hash)
+          return self.class::Bytes.new(@sha_hash)
         end
         
-        typesig { [TrustType] }
+        typesig { [self::TrustType] }
         def is_trusted(type)
           case (type)
           when CLIENT_AUTH
@@ -985,7 +985,7 @@ module Sun::Security::Pkcs11
           if ((self).equal?(o))
             return true
           end
-          if ((o.is_a?(Bytes)).equal?(false))
+          if ((o.is_a?(self.class::Bytes)).equal?(false))
             return false
           end
           other = o

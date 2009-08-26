@@ -223,11 +223,11 @@ module Java::Net
             if (!(res).nil?)
               begin
                 return define_class(name, res)
-              rescue IOException => e
-                raise ClassNotFoundException.new(name, e)
+              rescue self.class::IOException => e
+                raise self.class::ClassNotFoundException.new(name, e)
               end
             else
-              raise ClassNotFoundException.new(name)
+              raise self.class::ClassNotFoundException.new(name)
             end
           end
           
@@ -432,10 +432,10 @@ module Java::Net
           end
           begin
             enumeration_class = self.class
-            u = AccessController.do_privileged(Class.new(PrivilegedAction.class == Class ? PrivilegedAction : Object) do
+            u = AccessController.do_privileged(Class.new(self.class::PrivilegedAction.class == Class ? self.class::PrivilegedAction : Object) do
               extend LocalClass
               include_class_members enumeration_class
-              include PrivilegedAction if PrivilegedAction.class == Module
+              include self::PrivilegedAction if self::PrivilegedAction.class == Module
               
               typesig { [] }
               define_method :run do
@@ -464,7 +464,7 @@ module Java::Net
         typesig { [] }
         define_method :next_element do
           if (!next_)
-            raise NoSuchElementException.new
+            raise self.class::NoSuchElementException.new
           end
           u = @url
           @url = nil
@@ -605,7 +605,7 @@ module Java::Net
           
           typesig { [] }
           define_method :run do
-            return FactoryURLClassLoader.new(urls, parent)
+            return self.class::FactoryURLClassLoader.new(urls, parent)
           end
           
           typesig { [] }
@@ -643,7 +643,7 @@ module Java::Net
           
           typesig { [] }
           define_method :run do
-            return FactoryURLClassLoader.new(urls)
+            return self.class::FactoryURLClassLoader.new(urls)
           end
           
           typesig { [] }

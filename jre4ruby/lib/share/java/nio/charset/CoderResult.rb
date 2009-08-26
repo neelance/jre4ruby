@@ -225,13 +225,13 @@ module Java::Nio::Charset
         def get(len)
           synchronized(self) do
             if (len <= 0)
-              raise IllegalArgumentException.new("Non-positive length")
+              raise self.class::IllegalArgumentException.new("Non-positive length")
             end
             k = len
             w = nil
             e = nil
             if ((@cache).nil?)
-              @cache = HashMap.new
+              @cache = self.class::HashMap.new
             else
               if (!((w = @cache.get(k))).nil?)
                 e = w.get
@@ -239,7 +239,7 @@ module Java::Nio::Charset
             end
             if ((e).nil?)
               e = create(len)
-              @cache.put(k, WeakReference.new(e))
+              @cache.put(k, self.class::WeakReference.new(e))
             end
             return e
           end
@@ -263,7 +263,7 @@ module Java::Nio::Charset
           
           typesig { [::Java::Int] }
           define_method :create do |len|
-            return CoderResult.new(CR_MALFORMED, len)
+            return self.class::CoderResult.new(CR_MALFORMED, len)
           end
           
           typesig { [] }
@@ -300,7 +300,7 @@ module Java::Nio::Charset
           
           typesig { [::Java::Int] }
           define_method :create do |len|
-            return CoderResult.new(CR_UNMAPPABLE, len)
+            return self.class::CoderResult.new(CR_UNMAPPABLE, len)
           end
           
           typesig { [] }

@@ -364,7 +364,7 @@ module Sun::Net::Httpserver
           end
         }
         
-        typesig { [ServerImpl, SocketChannel] }
+        typesig { [self::ServerImpl, self::SocketChannel] }
         def initialize(server, chan)
           @channel = nil
           @sc = nil
@@ -419,7 +419,7 @@ module Sun::Net::Httpserver
             canreturn = 0
             willreturn = 0
             if (@closed)
-              raise IOException.new("Stream closed")
+              raise self.class::IOException.new("Stream closed")
             end
             if (@eof)
               return -1
@@ -449,7 +449,7 @@ module Sun::Net::Httpserver
                 # copy into markBuf
                 begin
                   @mark_buf.put(b, off, willreturn)
-                rescue BufferOverflowException => e
+                rescue self.class::BufferOverflowException => e
                   @marked = false
                 end
               end
@@ -462,7 +462,7 @@ module Sun::Net::Httpserver
         def available
           synchronized(self) do
             if (@closed)
-              raise IOException.new("Stream is closed")
+              raise self.class::IOException.new("Stream is closed")
             end
             if (@eof)
               return -1
@@ -501,7 +501,7 @@ module Sun::Net::Httpserver
               end
               currtime = @server.get_time
             end
-            raise SocketTimeoutException.new("no data received")
+            raise self.class::SocketTimeoutException.new("no data received")
           end
         end
         
@@ -536,7 +536,7 @@ module Sun::Net::Httpserver
               return
             end
             if (!@marked)
-              raise IOException.new("Stream not marked")
+              raise self.class::IOException.new("Stream not marked")
             end
             @marked = false
             @reset = true
@@ -616,7 +616,7 @@ module Sun::Net::Httpserver
           end
         }
         
-        typesig { [ServerImpl, SocketChannel] }
+        typesig { [self::ServerImpl, self::SocketChannel] }
         def initialize(server, channel)
           @channel = nil
           @buf = nil
@@ -657,7 +657,7 @@ module Sun::Net::Httpserver
           synchronized(self) do
             l = len
             if (@closed)
-              raise IOException.new("stream is closed")
+              raise self.class::IOException.new("stream is closed")
             end
             cap = @buf.capacity
             if (cap < len)
@@ -689,7 +689,7 @@ module Sun::Net::Httpserver
             end
             currtime = @server.get_time
           end
-          raise SocketTimeoutException.new("write blocked too long")
+          raise self.class::SocketTimeoutException.new("write blocked too long")
         end
         
         typesig { [] }

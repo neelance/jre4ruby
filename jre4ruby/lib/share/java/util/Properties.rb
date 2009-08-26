@@ -413,7 +413,7 @@ module Java::Util
         extend LocalClass
         include_class_members Properties
         
-        typesig { [InputStream] }
+        typesig { [self::InputStream] }
         def initialize(in_stream)
           @in_byte_buf = nil
           @in_char_buf = nil
@@ -426,7 +426,7 @@ module Java::Util
           @in_byte_buf = Array.typed(::Java::Byte).new(8192) { 0 }
         end
         
-        typesig { [Reader] }
+        typesig { [self::Reader] }
         def initialize(reader)
           @in_byte_buf = nil
           @in_char_buf = nil

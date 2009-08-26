@@ -2970,10 +2970,10 @@ module Java::Math
           const_set_lazy(:LONGMAX) { BigInteger.value_of(Long::MAX_VALUE) }
           const_attr_reader  :LONGMAX
           
-          typesig { [BigDecimal] }
+          typesig { [self::BigDecimal] }
           def check(num)
             if (((num.attr_int_val <=> self.class::LONGMIN) < 0) || ((num.attr_int_val <=> self.class::LONGMAX) > 0))
-              raise Java::Lang::ArithmeticException.new("Overflow")
+              raise Java::Lang::self.class::ArithmeticException.new("Overflow")
             end
           end
         }

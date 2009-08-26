@@ -528,7 +528,7 @@ module Sun::Security::Pkcs11
         alias_method :attr_mechanisms=, :mechanisms=
         undef_method :mechanisms=
         
-        typesig { [String, String, String, Array.typed(String), Array.typed(::Java::Int)] }
+        typesig { [self::String, self::String, self::String, Array.typed(self::String), Array.typed(::Java::Int)] }
         def initialize(type, algorithm, class_name, aliases, mechanisms)
           @type = nil
           @algorithm = nil
@@ -542,9 +542,9 @@ module Sun::Security::Pkcs11
           @mechanisms = mechanisms
         end
         
-        typesig { [Token, ::Java::Int] }
+        typesig { [self::Token, ::Java::Int] }
         def service(token, mechanism)
-          return P11Service.new(token, @type, @algorithm, @class_name, @aliases, mechanism)
+          return self.class::P11Service.new(token, @type, @algorithm, @class_name, @aliases, mechanism)
         end
         
         typesig { [] }
@@ -744,7 +744,7 @@ module Sun::Security::Pkcs11
         alias_method :attr_enabled=, :enabled=
         undef_method :enabled=
         
-        typesig { [SunPKCS11] }
+        typesig { [self::SunPKCS11] }
         def initialize(provider)
           @provider = nil
           @enabled = false
@@ -758,7 +758,7 @@ module Sun::Security::Pkcs11
           while (@enabled)
             begin
               JavaThread.sleep(interval)
-            rescue InterruptedException => e
+            rescue self.class::InterruptedException => e
               break
             end
             if ((@enabled).equal?(false))
@@ -766,7 +766,7 @@ module Sun::Security::Pkcs11
             end
             begin
               @provider.init_token(nil)
-            rescue PKCS11Exception => e
+            rescue self.class::PKCS11Exception => e
               # ignore
             end
           end
@@ -946,10 +946,10 @@ module Sun::Security::Pkcs11
             # not support many sessions. if we did, we might
             # run out of sessions in the middle of a
             # nextBytes() call where we cannot fail over.
-            put_service(P11Service.new(token, SR, "PKCS11", "sun.security.pkcs11.P11SecureRandom", nil, PCKM_SECURERANDOM))
+            put_service(self.class::P11Service.new(token, SR, "PKCS11", "sun.security.pkcs11.P11SecureRandom", nil, PCKM_SECURERANDOM))
           end
           if (self.attr_config.is_enabled(PCKM_KEYSTORE))
-            put_service(P11Service.new(token, KS, "PKCS11", "sun.security.pkcs11.P11KeyStore", s("PKCS11-" + RJava.cast_to_string(self.attr_config.get_name)), PCKM_KEYSTORE))
+            put_service(self.class::P11Service.new(token, KS, "PKCS11", "sun.security.pkcs11.P11KeyStore", s("PKCS11-" + RJava.cast_to_string(self.attr_config.get_name)), PCKM_KEYSTORE))
           end
           return nil
         end
@@ -981,7 +981,7 @@ module Sun::Security::Pkcs11
         alias_method :attr_mechanism=, :mechanism=
         undef_method :mechanism=
         
-        typesig { [Token, String, String, String, Array.typed(String), ::Java::Long] }
+        typesig { [self::Token, self::String, self::String, self::String, Array.typed(self::String), ::Java::Long] }
         def initialize(token, type, algorithm, class_name, al, mechanism)
           @token = nil
           @mechanism = 0
@@ -991,7 +991,7 @@ module Sun::Security::Pkcs11
         end
         
         class_module.module_eval {
-          typesig { [Array.typed(String)] }
+          typesig { [Array.typed(self::String)] }
           def to_list(aliases)
             return ((aliases).nil?) ? nil : Arrays.as_list(aliases)
           end
@@ -1000,12 +1000,12 @@ module Sun::Security::Pkcs11
         typesig { [Object] }
         def new_instance(param)
           if ((@token.is_valid).equal?(false))
-            raise NoSuchAlgorithmException.new("Token has been removed")
+            raise self.class::NoSuchAlgorithmException.new("Token has been removed")
           end
           begin
             return new_instance0(param)
-          rescue PKCS11Exception => e
-            raise NoSuchAlgorithmException.new(e)
+          rescue self.class::PKCS11Exception => e
+            raise self.class::NoSuchAlgorithmException.new(e)
           end
         end
         
@@ -1014,32 +1014,32 @@ module Sun::Security::Pkcs11
           algorithm = get_algorithm
           type = get_type
           if ((type).equal?(MD))
-            return P11Digest.new(@token, algorithm, @mechanism)
+            return self.class::P11Digest.new(@token, algorithm, @mechanism)
           else
             if ((type).equal?(CIP))
               verify_self_integrity(get_class)
               if (algorithm.starts_with("RSA"))
-                return P11RSACipher.new(@token, algorithm, @mechanism)
+                return self.class::P11RSACipher.new(@token, algorithm, @mechanism)
               else
-                return P11Cipher.new(@token, algorithm, @mechanism)
+                return self.class::P11Cipher.new(@token, algorithm, @mechanism)
               end
             else
               if ((type).equal?(SIG))
-                return P11Signature.new(@token, algorithm, @mechanism)
+                return self.class::P11Signature.new(@token, algorithm, @mechanism)
               else
                 if ((type).equal?(MAC))
                   verify_self_integrity(get_class)
-                  return P11Mac.new(@token, algorithm, @mechanism)
+                  return self.class::P11Mac.new(@token, algorithm, @mechanism)
                 else
                   if ((type).equal?(KPG))
-                    return P11KeyPairGenerator.new(@token, algorithm, @mechanism)
+                    return self.class::P11KeyPairGenerator.new(@token, algorithm, @mechanism)
                   else
                     if ((type).equal?(KA))
                       verify_self_integrity(get_class)
                       if ((algorithm == "ECDH"))
-                        return P11ECDHKeyAgreement.new(@token, algorithm, @mechanism)
+                        return self.class::P11ECDHKeyAgreement.new(@token, algorithm, @mechanism)
                       else
-                        return P11KeyAgreement.new(@token, algorithm, @mechanism)
+                        return self.class::P11KeyAgreement.new(@token, algorithm, @mechanism)
                       end
                     else
                       if ((type).equal?(KF))
@@ -1047,24 +1047,24 @@ module Sun::Security::Pkcs11
                       else
                         if ((type).equal?(SKF))
                           verify_self_integrity(get_class)
-                          return P11SecretKeyFactory.new(@token, algorithm)
+                          return self.class::P11SecretKeyFactory.new(@token, algorithm)
                         else
                           if ((type).equal?(KG))
                             verify_self_integrity(get_class)
                             # reference equality
                             if ((algorithm).equal?("SunTlsRsaPremasterSecret"))
-                              return P11TlsRsaPremasterSecretGenerator.new(@token, algorithm, @mechanism)
+                              return self.class::P11TlsRsaPremasterSecretGenerator.new(@token, algorithm, @mechanism)
                             else
                               if ((algorithm).equal?("SunTlsMasterSecret"))
-                                return P11TlsMasterSecretGenerator.new(@token, algorithm, @mechanism)
+                                return self.class::P11TlsMasterSecretGenerator.new(@token, algorithm, @mechanism)
                               else
                                 if ((algorithm).equal?("SunTlsKeyMaterial"))
-                                  return P11TlsKeyMaterialGenerator.new(@token, algorithm, @mechanism)
+                                  return self.class::P11TlsKeyMaterialGenerator.new(@token, algorithm, @mechanism)
                                 else
                                   if ((algorithm).equal?("SunTlsPrf"))
-                                    return P11TlsPrfGenerator.new(@token, algorithm, @mechanism)
+                                    return self.class::P11TlsPrfGenerator.new(@token, algorithm, @mechanism)
                                   else
-                                    return P11KeyGenerator.new(@token, algorithm, @mechanism)
+                                    return self.class::P11KeyGenerator.new(@token, algorithm, @mechanism)
                                   end
                                 end
                               end
@@ -1077,9 +1077,9 @@ module Sun::Security::Pkcs11
                                 return @token.get_key_store
                               else
                                 if ((type).equal?(AGP))
-                                  return Sun::Security::Ec::ECParameters.new
+                                  return Sun::Security::Ec::self.class::ECParameters.new
                                 else
-                                  raise NoSuchAlgorithmException.new("Unknown type: " + type)
+                                  raise self.class::NoSuchAlgorithmException.new("Unknown type: " + type)
                                 end
                               end
                             end
@@ -1099,8 +1099,8 @@ module Sun::Security::Pkcs11
           if (((param).nil?) || ((@token.is_valid).equal?(false)))
             return false
           end
-          if ((param.is_a?(Key)).equal?(false))
-            raise InvalidParameterException.new("Parameter must be a Key")
+          if ((param.is_a?(self.class::Key)).equal?(false))
+            raise self.class::InvalidParameterException.new("Parameter must be a Key")
           end
           algorithm = get_algorithm
           type = get_type
@@ -1111,21 +1111,21 @@ module Sun::Security::Pkcs11
             if (((key_algorithm == "RSA")).equal?(false))
               return false
             end
-            return is_local_key(key) || (key.is_a?(RSAPrivateKey)) || (key.is_a?(RSAPublicKey))
+            return is_local_key(key) || (key.is_a?(self.class::RSAPrivateKey)) || (key.is_a?(self.class::RSAPublicKey))
           end
           # EC
           if ((((type).equal?(KA)) && (algorithm == "ECDH")) || (((type).equal?(SIG)) && algorithm.ends_with("ECDSA")))
             if (((key_algorithm == "EC")).equal?(false))
               return false
             end
-            return is_local_key(key) || (key.is_a?(ECPrivateKey)) || (key.is_a?(ECPublicKey))
+            return is_local_key(key) || (key.is_a?(self.class::ECPrivateKey)) || (key.is_a?(self.class::ECPublicKey))
           end
           # DSA signatures
           if (((type).equal?(SIG)) && algorithm.ends_with("DSA"))
             if (((key_algorithm == "DSA")).equal?(false))
               return false
             end
-            return is_local_key(key) || (key.is_a?(DSAPrivateKey)) || (key.is_a?(DSAPublicKey))
+            return is_local_key(key) || (key.is_a?(self.class::DSAPrivateKey)) || (key.is_a?(self.class::DSAPublicKey))
           end
           # MACs and symmetric ciphers
           if (((type).equal?(CIP)) || ((type).equal?(MAC)))
@@ -1137,16 +1137,16 @@ module Sun::Security::Pkcs11
             if (((key_algorithm == "DH")).equal?(false))
               return false
             end
-            return is_local_key(key) || (key.is_a?(DHPrivateKey)) || (key.is_a?(DHPublicKey))
+            return is_local_key(key) || (key.is_a?(self.class::DHPrivateKey)) || (key.is_a?(self.class::DHPublicKey))
           end
           # should not reach here,
           # unknown engine type or algorithm
-          raise AssertionError.new("SunPKCS11 error: " + type + ", " + algorithm)
+          raise self.class::AssertionError.new("SunPKCS11 error: " + type + ", " + algorithm)
         end
         
-        typesig { [Key] }
+        typesig { [self::Key] }
         def is_local_key(key)
-          return (key.is_a?(P11Key)) && (((key).attr_token).equal?(@token))
+          return (key.is_a?(self.class::P11Key)) && (((key).attr_token).equal?(@token))
         end
         
         typesig { [] }
@@ -1451,14 +1451,14 @@ module Sun::Security::Pkcs11
         alias_method :attr_config_name=, :config_name=
         undef_method :config_name=
         
-        typesig { [SunPKCS11] }
+        typesig { [self::SunPKCS11] }
         def initialize(provider)
           @provider_name = nil
           @config_name = nil
           @provider_name = RJava.cast_to_string(provider.get_name)
           @config_name = RJava.cast_to_string(provider.attr_config_name)
           if (!(Security.get_provider(@provider_name)).equal?(provider))
-            raise NotSerializableException.new("Only SunPKCS11 providers " + "installed in java.security.Security can be serialized")
+            raise self.class::NotSerializableException.new("Only SunPKCS11 providers " + "installed in java.security.Security can be serialized")
           end
         end
         
@@ -1466,7 +1466,7 @@ module Sun::Security::Pkcs11
         def read_resolve
           p = Security.get_provider(@provider_name)
           if (((p).nil?) || (((p.attr_config_name == @config_name)).equal?(false)))
-            raise NotSerializableException.new("Could not find " + @provider_name + " in installed providers")
+            raise self.class::NotSerializableException.new("Could not find " + @provider_name + " in installed providers")
           end
           return p
         end

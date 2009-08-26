@@ -862,7 +862,7 @@ module Java::Util::Concurrent
           take_lock.lock
           begin
             if ((@current).nil?)
-              raise NoSuchElementException.new
+              raise self.class::NoSuchElementException.new
             end
             x = @current_element
             @last_ret = @current
@@ -880,7 +880,7 @@ module Java::Util::Concurrent
         typesig { [] }
         def remove
           if ((@last_ret).nil?)
-            raise IllegalStateException.new
+            raise self.class::IllegalStateException.new
           end
           put_lock = @local_class_parent.attr_put_lock
           take_lock = @local_class_parent.attr_take_lock

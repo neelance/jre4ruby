@@ -86,11 +86,11 @@ module Sun::Nio::Cs::Ext
         alias_method :attr_jis0201=, :jis0201=
         undef_method :jis0201=
         
-        typesig { [Charset] }
+        typesig { [self::Charset] }
         def initialize(cs)
           @jis0201 = nil
           super(cs)
-          @jis0201 = JIS_X_0201::Decoder.new(cs)
+          @jis0201 = self.class::JIS_X_0201::Decoder.new(cs)
         end
         
         typesig { [::Java::Int] }
@@ -112,7 +112,7 @@ module Sun::Nio::Cs::Ext
           return super(b1, b2)
         end
         
-        typesig { [ByteBuffer, CharBuffer] }
+        typesig { [self::ByteBuffer, self::CharBuffer] }
         # Make some protected methods public for use by JISAutoDetect
         def decode_loop(src, dst)
           return super(src, dst)
@@ -123,7 +123,7 @@ module Sun::Nio::Cs::Ext
           super
         end
         
-        typesig { [CharBuffer] }
+        typesig { [self::CharBuffer] }
         def impl_flush(out)
           return super(out)
         end
@@ -153,13 +153,13 @@ module Sun::Nio::Cs::Ext
         alias_method :attr_j0208index2=, :j0208index2=
         undef_method :j0208index2=
         
-        typesig { [Charset] }
+        typesig { [self::Charset] }
         def initialize(cs)
           @jis0201 = nil
           @j0208index1 = nil
           @j0208index2 = nil
           super(cs)
-          @jis0201 = JIS_X_0201::Encoder.new(cs)
+          @jis0201 = self.class::JIS_X_0201::Encoder.new(cs)
           @j0208index1 = JIS_X_0208_Encoder.instance_method(:get_index1).bind(self).call
           @j0208index2 = JIS_X_0208_Encoder.instance_method(:get_index2).bind(self).call
         end

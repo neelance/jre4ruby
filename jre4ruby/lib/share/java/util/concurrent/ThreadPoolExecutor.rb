@@ -655,7 +655,7 @@ module Java::Util::Concurrent
         alias_method :attr_completed_tasks=, :completed_tasks=
         undef_method :completed_tasks=
         
-        typesig { [Runnable] }
+        typesig { [self::Runnable] }
         # Creates with given first task and thread from ThreadFactory.
         # @param firstTask the first task (null if none)
         def initialize(first_task)
@@ -1980,7 +1980,7 @@ module Java::Util::Concurrent
         def initialize
         end
         
-        typesig { [Runnable, ThreadPoolExecutor] }
+        typesig { [self::Runnable, self::ThreadPoolExecutor] }
         # Executes task r in the caller's thread, unless the executor
         # has been shut down, in which case the task is discarded.
         # 
@@ -2007,14 +2007,14 @@ module Java::Util::Concurrent
         def initialize
         end
         
-        typesig { [Runnable, ThreadPoolExecutor] }
+        typesig { [self::Runnable, self::ThreadPoolExecutor] }
         # Always throws RejectedExecutionException.
         # 
         # @param r the runnable task requested to be executed
         # @param e the executor attempting to execute this task
         # @throws RejectedExecutionException always.
         def rejected_execution(r, e)
-          raise RejectedExecutionException.new
+          raise self.class::RejectedExecutionException.new
         end
         
         private
@@ -2032,7 +2032,7 @@ module Java::Util::Concurrent
         def initialize
         end
         
-        typesig { [Runnable, ThreadPoolExecutor] }
+        typesig { [self::Runnable, self::ThreadPoolExecutor] }
         # Does nothing, which has the effect of discarding task r.
         # 
         # @param r the runnable task requested to be executed
@@ -2056,7 +2056,7 @@ module Java::Util::Concurrent
         def initialize
         end
         
-        typesig { [Runnable, ThreadPoolExecutor] }
+        typesig { [self::Runnable, self::ThreadPoolExecutor] }
         # Obtains and ignores the next task that the executor
         # would otherwise execute, if one is immediately available,
         # and then retries execution of task r, unless the executor

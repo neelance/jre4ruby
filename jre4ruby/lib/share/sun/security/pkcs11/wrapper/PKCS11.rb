@@ -1515,7 +1515,7 @@ module Sun::Security::Pkcs11::Wrapper
       const_set_lazy(:SynchronizedPKCS11) { Class.new(PKCS11) do
         include_class_members PKCS11
         
-        typesig { [String, String] }
+        typesig { [self::String, self::String] }
         def initialize(pkcs11module_path, function_list_name)
           super(pkcs11module_path, function_list_name)
         end
@@ -1576,7 +1576,7 @@ module Sun::Security::Pkcs11::Wrapper
           end
         end
         
-        typesig { [::Java::Long, ::Java::Long, Object, CK_NOTIFY] }
+        typesig { [::Java::Long, ::Java::Long, Object, self::CK_NOTIFY] }
         def _c_open_session(slot_id, flags, p_application, notify)
           synchronized(self) do
             return super(slot_id, flags, p_application, notify)
@@ -1611,14 +1611,14 @@ module Sun::Security::Pkcs11::Wrapper
           end
         end
         
-        typesig { [::Java::Long, Array.typed(CK_ATTRIBUTE)] }
+        typesig { [::Java::Long, Array.typed(self::CK_ATTRIBUTE)] }
         def _c_create_object(h_session, p_template)
           synchronized(self) do
             return super(h_session, p_template)
           end
         end
         
-        typesig { [::Java::Long, ::Java::Long, Array.typed(CK_ATTRIBUTE)] }
+        typesig { [::Java::Long, ::Java::Long, Array.typed(self::CK_ATTRIBUTE)] }
         def _c_copy_object(h_session, h_object, p_template)
           synchronized(self) do
             return super(h_session, h_object, p_template)
@@ -1632,21 +1632,21 @@ module Sun::Security::Pkcs11::Wrapper
           end
         end
         
-        typesig { [::Java::Long, ::Java::Long, Array.typed(CK_ATTRIBUTE)] }
+        typesig { [::Java::Long, ::Java::Long, Array.typed(self::CK_ATTRIBUTE)] }
         def _c_get_attribute_value(h_session, h_object, p_template)
           synchronized(self) do
             super(h_session, h_object, p_template)
           end
         end
         
-        typesig { [::Java::Long, ::Java::Long, Array.typed(CK_ATTRIBUTE)] }
+        typesig { [::Java::Long, ::Java::Long, Array.typed(self::CK_ATTRIBUTE)] }
         def _c_set_attribute_value(h_session, h_object, p_template)
           synchronized(self) do
             super(h_session, h_object, p_template)
           end
         end
         
-        typesig { [::Java::Long, Array.typed(CK_ATTRIBUTE)] }
+        typesig { [::Java::Long, Array.typed(self::CK_ATTRIBUTE)] }
         def _c_find_objects_init(h_session, p_template)
           synchronized(self) do
             super(h_session, p_template)
@@ -1667,7 +1667,7 @@ module Sun::Security::Pkcs11::Wrapper
           end
         end
         
-        typesig { [::Java::Long, CK_MECHANISM, ::Java::Long] }
+        typesig { [::Java::Long, self::CK_MECHANISM, ::Java::Long] }
         def _c_encrypt_init(h_session, p_mechanism, h_key)
           synchronized(self) do
             super(h_session, p_mechanism, h_key)
@@ -1695,7 +1695,7 @@ module Sun::Security::Pkcs11::Wrapper
           end
         end
         
-        typesig { [::Java::Long, CK_MECHANISM, ::Java::Long] }
+        typesig { [::Java::Long, self::CK_MECHANISM, ::Java::Long] }
         def _c_decrypt_init(h_session, p_mechanism, h_key)
           synchronized(self) do
             super(h_session, p_mechanism, h_key)
@@ -1723,14 +1723,14 @@ module Sun::Security::Pkcs11::Wrapper
           end
         end
         
-        typesig { [::Java::Long, CK_MECHANISM] }
+        typesig { [::Java::Long, self::CK_MECHANISM] }
         def _c_digest_init(h_session, p_mechanism)
           synchronized(self) do
             super(h_session, p_mechanism)
           end
         end
         
-        typesig { [::Java::Long, CK_MECHANISM, Array.typed(::Java::Byte), ::Java::Int, ::Java::Int, Array.typed(::Java::Byte), ::Java::Int, ::Java::Int] }
+        typesig { [::Java::Long, self::CK_MECHANISM, Array.typed(::Java::Byte), ::Java::Int, ::Java::Int, Array.typed(::Java::Byte), ::Java::Int, ::Java::Int] }
         def _c_digest_single(h_session, p_mechanism, in_, in_ofs, in_len, digest, digest_ofs, digest_len)
           synchronized(self) do
             return super(h_session, p_mechanism, in_, in_ofs, in_len, digest, digest_ofs, digest_len)
@@ -1758,7 +1758,7 @@ module Sun::Security::Pkcs11::Wrapper
           end
         end
         
-        typesig { [::Java::Long, CK_MECHANISM, ::Java::Long] }
+        typesig { [::Java::Long, self::CK_MECHANISM, ::Java::Long] }
         def _c_sign_init(h_session, p_mechanism, h_key)
           synchronized(self) do
             super(h_session, p_mechanism, h_key)
@@ -1786,7 +1786,7 @@ module Sun::Security::Pkcs11::Wrapper
           end
         end
         
-        typesig { [::Java::Long, CK_MECHANISM, ::Java::Long] }
+        typesig { [::Java::Long, self::CK_MECHANISM, ::Java::Long] }
         def _c_sign_recover_init(h_session, p_mechanism, h_key)
           synchronized(self) do
             super(h_session, p_mechanism, h_key)
@@ -1800,7 +1800,7 @@ module Sun::Security::Pkcs11::Wrapper
           end
         end
         
-        typesig { [::Java::Long, CK_MECHANISM, ::Java::Long] }
+        typesig { [::Java::Long, self::CK_MECHANISM, ::Java::Long] }
         def _c_verify_init(h_session, p_mechanism, h_key)
           synchronized(self) do
             super(h_session, p_mechanism, h_key)
@@ -1828,7 +1828,7 @@ module Sun::Security::Pkcs11::Wrapper
           end
         end
         
-        typesig { [::Java::Long, CK_MECHANISM, ::Java::Long] }
+        typesig { [::Java::Long, self::CK_MECHANISM, ::Java::Long] }
         def _c_verify_recover_init(h_session, p_mechanism, h_key)
           synchronized(self) do
             super(h_session, p_mechanism, h_key)
@@ -1842,35 +1842,35 @@ module Sun::Security::Pkcs11::Wrapper
           end
         end
         
-        typesig { [::Java::Long, CK_MECHANISM, Array.typed(CK_ATTRIBUTE)] }
+        typesig { [::Java::Long, self::CK_MECHANISM, Array.typed(self::CK_ATTRIBUTE)] }
         def _c_generate_key(h_session, p_mechanism, p_template)
           synchronized(self) do
             return super(h_session, p_mechanism, p_template)
           end
         end
         
-        typesig { [::Java::Long, CK_MECHANISM, Array.typed(CK_ATTRIBUTE), Array.typed(CK_ATTRIBUTE)] }
+        typesig { [::Java::Long, self::CK_MECHANISM, Array.typed(self::CK_ATTRIBUTE), Array.typed(self::CK_ATTRIBUTE)] }
         def _c_generate_key_pair(h_session, p_mechanism, p_public_key_template, p_private_key_template)
           synchronized(self) do
             return super(h_session, p_mechanism, p_public_key_template, p_private_key_template)
           end
         end
         
-        typesig { [::Java::Long, CK_MECHANISM, ::Java::Long, ::Java::Long] }
+        typesig { [::Java::Long, self::CK_MECHANISM, ::Java::Long, ::Java::Long] }
         def _c_wrap_key(h_session, p_mechanism, h_wrapping_key, h_key)
           synchronized(self) do
             return super(h_session, p_mechanism, h_wrapping_key, h_key)
           end
         end
         
-        typesig { [::Java::Long, CK_MECHANISM, ::Java::Long, Array.typed(::Java::Byte), Array.typed(CK_ATTRIBUTE)] }
+        typesig { [::Java::Long, self::CK_MECHANISM, ::Java::Long, Array.typed(::Java::Byte), Array.typed(self::CK_ATTRIBUTE)] }
         def _c_unwrap_key(h_session, p_mechanism, h_unwrapping_key, p_wrapped_key, p_template)
           synchronized(self) do
             return super(h_session, p_mechanism, h_unwrapping_key, p_wrapped_key, p_template)
           end
         end
         
-        typesig { [::Java::Long, CK_MECHANISM, ::Java::Long, Array.typed(CK_ATTRIBUTE)] }
+        typesig { [::Java::Long, self::CK_MECHANISM, ::Java::Long, Array.typed(self::CK_ATTRIBUTE)] }
         def _c_derive_key(h_session, p_mechanism, h_base_key, p_template)
           synchronized(self) do
             return super(h_session, p_mechanism, h_base_key, p_template)

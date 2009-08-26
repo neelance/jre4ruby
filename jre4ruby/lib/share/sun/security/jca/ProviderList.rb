@@ -106,7 +106,7 @@ module Sun::Security::Jca
           
           typesig { [] }
           define_method :run do
-            return ProviderList.new
+            return self.class::ProviderList.new
           end
           
           typesig { [] }
@@ -518,7 +518,7 @@ module Sun::Security::Jca
         alias_method :attr_provider_index=, :provider_index=
         undef_method :provider_index=
         
-        typesig { [String, String] }
+        typesig { [self::String, self::String] }
         def initialize(type, algorithm)
           @type = nil
           @algorithm = nil
@@ -532,7 +532,7 @@ module Sun::Security::Jca
           @ids = nil
         end
         
-        typesig { [JavaList] }
+        typesig { [self::JavaList] }
         def initialize(ids)
           @type = nil
           @algorithm = nil
@@ -546,13 +546,13 @@ module Sun::Security::Jca
           @ids = ids
         end
         
-        typesig { [Service] }
+        typesig { [self::Service] }
         def add_service(s)
           if ((@first_service).nil?)
             @first_service = s
           else
             if ((@services).nil?)
-              @services = ArrayList.new(4)
+              @services = self.class::ArrayList.new(4)
               @services.add(@first_service)
             end
             @services.add(s)
@@ -596,7 +596,7 @@ module Sun::Security::Jca
         def get(index)
           s = try_get(index)
           if ((s).nil?)
-            raise IndexOutOfBoundsException.new
+            raise self.class::IndexOutOfBoundsException.new
           end
           return s
         end
@@ -624,10 +624,10 @@ module Sun::Security::Jca
         
         typesig { [] }
         def iterator
-          return Class.new(Iterator.class == Class ? Iterator : Object) do
+          return Class.new(self.class::Iterator.class == Class ? self.class::Iterator : Object) do
             extend LocalClass
             include_class_members ServiceList
-            include Iterator if Iterator.class == Module
+            include self::Iterator if self::Iterator.class == Module
             
             attr_accessor :index
             alias_method :attr_index, :index
@@ -644,7 +644,7 @@ module Sun::Security::Jca
             define_method :next_ do
               s = try_get(@index)
               if ((s).nil?)
-                raise NoSuchElementException.new
+                raise self.class::NoSuchElementException.new
               end
               @index += 1
               return s
@@ -652,7 +652,7 @@ module Sun::Security::Jca
             
             typesig { [] }
             define_method :remove do
-              raise UnsupportedOperationException.new
+              raise self.class::UnsupportedOperationException.new
             end
             
             typesig { [] }

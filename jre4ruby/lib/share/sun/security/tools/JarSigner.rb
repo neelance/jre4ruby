@@ -2086,18 +2086,18 @@ module Sun::Security::Tools
         alias_method :attr_block_file_name=, :block_file_name=
         undef_method :block_file_name=
         
-        typesig { [SignatureFile, PrivateKey, String, Array.typed(X509Certificate), ::Java::Boolean, String, X509Certificate, ContentSigner, Array.typed(String), ZipFile] }
+        typesig { [self::SignatureFile, self::PrivateKey, self::String, Array.typed(self::X509Certificate), ::Java::Boolean, self::String, self::X509Certificate, self::ContentSigner, Array.typed(self::String), self::ZipFile] }
         # Construct a new signature block.
         def initialize(sfg, private_key, sigalg, cert_chain, external_sf, tsa_url, tsa_cert, signing_mechanism, args, zip_file)
           @block = nil
           @block_file_name = nil
           issuer_name = cert_chain[0].get_issuer_dn
-          if (!(issuer_name.is_a?(X500Name)))
+          if (!(issuer_name.is_a?(self.class::X500Name)))
             # must extract the original encoded form of DN for subsequent
             # name comparison checks (converting to a String and back to
             # an encoded DN could cause the types of String attribute
             # values to be changed)
-            tbs_cert = X509CertInfo.new(cert_chain[0].get_tbscertificate)
+            tbs_cert = self.class::X509CertInfo.new(cert_chain[0].get_tbscertificate)
             issuer_name = tbs_cert.get(RJava.cast_to_string(CertificateIssuerName::NAME) + "." + RJava.cast_to_string(CertificateIssuerName::DN_NAME))
           end
           serial = cert_chain[0].get_serial_number
@@ -2113,7 +2113,7 @@ module Sun::Security::Tools
               if (key_algorithm.equals_ignore_case("RSA"))
                 digest_algorithm = "SHA1"
               else
-                raise RuntimeException.new("private key is not a DSA or " + "RSA key")
+                raise self.class::RuntimeException.new("private key is not a DSA or " + "RSA key")
               end
             end
             signature_algorithm = digest_algorithm + "with" + key_algorithm
@@ -2123,34 +2123,34 @@ module Sun::Security::Tools
           # check common invalid key/signature algorithm combinations
           sig_alg_upper_case = signature_algorithm.to_upper_case
           if ((sig_alg_upper_case.ends_with("WITHRSA") && !key_algorithm.equals_ignore_case("RSA")) || (sig_alg_upper_case.ends_with("WITHDSA") && !key_algorithm.equals_ignore_case("DSA")))
-            raise SignatureException.new("private key algorithm is not compatible with signature algorithm")
+            raise self.class::SignatureException.new("private key algorithm is not compatible with signature algorithm")
           end
           @block_file_name = "META-INF/" + RJava.cast_to_string(sfg.get_base_name) + "." + key_algorithm
           sig_alg = AlgorithmId.get(signature_algorithm)
           dig_encr_alg = AlgorithmId.get(key_algorithm)
           sig = Signature.get_instance(signature_algorithm)
           sig.init_sign(private_key)
-          baos = ByteArrayOutputStream.new
+          baos = self.class::ByteArrayOutputStream.new
           sfg.write(baos)
           content = baos.to_byte_array
           sig.update(content)
           signature = sig.sign
           # Timestamp the signature and generate the signature block file
           if ((signing_mechanism).nil?)
-            signing_mechanism = TimestampedSigner.new
+            signing_mechanism = self.class::TimestampedSigner.new
           end
           tsa_uri = nil
           begin
             if (!(tsa_url).nil?)
-              tsa_uri = URI.new(tsa_url)
+              tsa_uri = self.class::URI.new(tsa_url)
             end
-          rescue URISyntaxException => e
-            ioe = IOException.new
+          rescue self.class::URISyntaxException => e
+            ioe = self.class::IOException.new
             ioe.init_cause(e)
             raise ioe
           end
           # Assemble parameters for the signing mechanism
-          params = JarSignerParameters.new(args, tsa_uri, tsa_cert, signature, signature_algorithm, cert_chain, content, zip_file)
+          params = self.class::JarSignerParameters.new(args, tsa_uri, tsa_cert, signature, signature_algorithm, cert_chain, content, zip_file)
           # Generate the signature block
           @block = signing_mechanism.generate_signed_data(params, external_sf, (!(tsa_url).nil? || !(tsa_cert).nil?))
         end
@@ -2161,7 +2161,7 @@ module Sun::Security::Tools
           return @block_file_name
         end
         
-        typesig { [OutputStream] }
+        typesig { [self::OutputStream] }
         # Writes the block file to the specified OutputStream.
         # 
         # @param out the output stream

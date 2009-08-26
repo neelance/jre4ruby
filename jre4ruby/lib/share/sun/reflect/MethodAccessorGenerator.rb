@@ -429,10 +429,10 @@ module Sun::Reflect
         define_method :run do
           begin
             return ClassDefiner.define_class(generated_name, bytes, 0, bytes.attr_length, declaring_class.get_class_loader).new_instance
-          rescue InstantiationException => e
-            raise InternalError.new.init_cause(e)
-          rescue IllegalAccessException => e
-            raise InternalError.new.init_cause(e)
+          rescue self.class::InstantiationException => e
+            raise self.class::InternalError.new.init_cause(e)
+          rescue self.class::IllegalAccessException => e
+            raise self.class::InternalError.new.init_cause(e)
           end
         end
         

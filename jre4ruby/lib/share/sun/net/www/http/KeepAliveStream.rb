@@ -243,7 +243,7 @@ module Sun::Net::Www::Http
                 while (!((parent = grp.get_parent)).nil?)
                   grp = parent
                 end
-                self.attr_cleaner_thread = JavaThread.new(grp, self.attr_queue, "Keep-Alive-SocketCleaner")
+                self.attr_cleaner_thread = self.class::JavaThread.new(grp, self.attr_queue, "Keep-Alive-SocketCleaner")
                 self.attr_cleaner_thread.set_daemon(true)
                 self.attr_cleaner_thread.set_priority(JavaThread::MAX_PRIORITY - 2)
                 self.attr_cleaner_thread.start

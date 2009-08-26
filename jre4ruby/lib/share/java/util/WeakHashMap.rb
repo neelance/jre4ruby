@@ -728,7 +728,7 @@ module Java::Util
         alias_method :attr_next=, :next=
         undef_method :next=
         
-        typesig { [Object, Object, ReferenceQueue, ::Java::Int, Entry] }
+        typesig { [Object, Object, self::ReferenceQueue, ::Java::Int, self::Entry] }
         # Creates new entry.
         def initialize(key, value, queue, hash, next_)
           @value = nil
@@ -759,7 +759,7 @@ module Java::Util
         
         typesig { [Object] }
         def ==(o)
-          if (!(o.is_a?(Map::Entry)))
+          if (!(o.is_a?(self.class::Map::Entry)))
             return false
           end
           e = o
@@ -874,10 +874,10 @@ module Java::Util
         # The common parts of next() across different types of iterators
         def next_entry
           if (!(self.attr_mod_count).equal?(@expected_mod_count))
-            raise ConcurrentModificationException.new
+            raise self.class::ConcurrentModificationException.new
           end
           if ((@next_key).nil? && !has_next)
-            raise NoSuchElementException.new
+            raise self.class::NoSuchElementException.new
           end
           @last_returned = @entry
           @entry = @entry.attr_next
@@ -889,10 +889,10 @@ module Java::Util
         typesig { [] }
         def remove
           if ((@last_returned).nil?)
-            raise IllegalStateException.new
+            raise self.class::IllegalStateException.new
           end
           if (!(self.attr_mod_count).equal?(@expected_mod_count))
-            raise ConcurrentModificationException.new
+            raise self.class::ConcurrentModificationException.new
           end
           @local_class_parent.remove(@current_key)
           @expected_mod_count = self.attr_mod_count
@@ -990,7 +990,7 @@ module Java::Util
         
         typesig { [] }
         def iterator
-          return KeyIterator.new
+          return self.class::KeyIterator.new
         end
         
         typesig { [] }
@@ -1052,7 +1052,7 @@ module Java::Util
         
         typesig { [] }
         def iterator
-          return ValueIterator.new
+          return self.class::ValueIterator.new
         end
         
         typesig { [] }
@@ -1105,12 +1105,12 @@ module Java::Util
         
         typesig { [] }
         def iterator
-          return EntryIterator.new
+          return self.class::EntryIterator.new
         end
         
         typesig { [Object] }
         def contains(o)
-          if (!(o.is_a?(Map::Entry)))
+          if (!(o.is_a?(self.class::Map::Entry)))
             return false
           end
           e = o
@@ -1135,9 +1135,9 @@ module Java::Util
         
         typesig { [] }
         def deep_copy
-          list = ArrayList.new(size)
+          list = self.class::ArrayList.new(size)
           self.each do |e|
-            list.add(AbstractMap::SimpleEntry.new(e))
+            list.add(self.class::AbstractMap::SimpleEntry.new(e))
           end
           return list
         end
@@ -1147,7 +1147,7 @@ module Java::Util
           return deep_copy.to_array
         end
         
-        typesig { [Array.typed(T)] }
+        typesig { [Array.typed(self::T)] }
         def to_array(a)
           return deep_copy.to_array(a)
         end

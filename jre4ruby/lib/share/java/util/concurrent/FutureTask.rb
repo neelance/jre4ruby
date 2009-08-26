@@ -247,7 +247,7 @@ module Java::Util::Concurrent
         alias_method :attr_runner=, :runner=
         undef_method :runner=
         
-        typesig { [Callable] }
+        typesig { [self::Callable] }
         def initialize(callable)
           @callable = nil
           @result = nil
@@ -290,10 +290,10 @@ module Java::Util::Concurrent
         def inner_get
           acquire_shared_interruptibly(0)
           if ((get_state).equal?(self.class::CANCELLED))
-            raise CancellationException.new
+            raise self.class::CancellationException.new
           end
           if (!(@exception).nil?)
-            raise ExecutionException.new(@exception)
+            raise self.class::ExecutionException.new(@exception)
           end
           return @result
         end
@@ -301,18 +301,18 @@ module Java::Util::Concurrent
         typesig { [::Java::Long] }
         def inner_get(nanos_timeout)
           if (!try_acquire_shared_nanos(0, nanos_timeout))
-            raise TimeoutException.new
+            raise self.class::TimeoutException.new
           end
           if ((get_state).equal?(self.class::CANCELLED))
-            raise CancellationException.new
+            raise self.class::CancellationException.new
           end
           if (!(@exception).nil?)
-            raise ExecutionException.new(@exception)
+            raise self.class::ExecutionException.new(@exception)
           end
           return @result
         end
         
-        typesig { [V] }
+        typesig { [self::V] }
         def inner_set(v)
           loop do
             s = get_state
@@ -335,7 +335,7 @@ module Java::Util::Concurrent
           end
         end
         
-        typesig { [JavaThrowable] }
+        typesig { [self::JavaThrowable] }
         def inner_set_exception(t)
           loop do
             s = get_state
@@ -391,7 +391,7 @@ module Java::Util::Concurrent
             result = nil
             begin
               result = @callable.call
-            rescue JavaThrowable => ex
+            rescue self.class::JavaThrowable => ex
               set_exception(ex)
               return
             end
@@ -413,7 +413,7 @@ module Java::Util::Concurrent
             end # don't set result
             @runner = nil
             return compare_and_set_state(self.class::RUNNING, self.class::READY)
-          rescue JavaThrowable => ex
+          rescue self.class::JavaThrowable => ex
             set_exception(ex)
             return false
           end

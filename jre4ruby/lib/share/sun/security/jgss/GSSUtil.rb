@@ -303,7 +303,7 @@ module Sun::Security::Jgss
               acc_subj = Subject.get_subject(acc)
               result = nil
               if (!(acc_subj).nil?)
-                result = Vector.new
+                result = self.class::Vector.new
                 iterator_ = acc_subj.get_private_credentials(GSSCredentialImpl).iterator
                 while (iterator_.has_next)
                   cred = iterator_.next_
@@ -316,7 +316,7 @@ module Sun::Security::Jgss
                     else
                       debug("......Discard element")
                     end
-                  rescue GSSException => ge
+                  rescue self.class::GSSException => ge
                     debug("...Discard cred (" + RJava.cast_to_string(ge) + ")")
                   end
                 end

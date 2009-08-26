@@ -1005,7 +1005,7 @@ module Java::Util
         
         typesig { [] }
         def iterator
-          return ValueIterator.new(get_first_entry)
+          return self.class::ValueIterator.new(get_first_entry)
         end
         
         typesig { [] }
@@ -1051,12 +1051,12 @@ module Java::Util
         
         typesig { [] }
         def iterator
-          return EntryIterator.new(get_first_entry)
+          return self.class::EntryIterator.new(get_first_entry)
         end
         
         typesig { [Object] }
         def contains(o)
-          if (!(o.is_a?(Map::Entry)))
+          if (!(o.is_a?(self.class::Map::Entry)))
             return false
           end
           entry = o
@@ -1067,7 +1067,7 @@ module Java::Util
         
         typesig { [Object] }
         def remove(o)
-          if (!(o.is_a?(Map::Entry)))
+          if (!(o.is_a?(self.class::Map::Entry)))
             return false
           end
           entry = o
@@ -1128,7 +1128,7 @@ module Java::Util
         alias_method :attr_m=, :m=
         undef_method :m=
         
-        typesig { [NavigableMap] }
+        typesig { [self::NavigableMap] }
         def initialize(map)
           @m = nil
           super()
@@ -1137,7 +1137,7 @@ module Java::Util
         
         typesig { [] }
         def iterator
-          if (@m.is_a?(TreeMap))
+          if (@m.is_a?(self.class::TreeMap))
             return (@m).key_iterator
           else
             return ((@m).key_iterator)
@@ -1146,7 +1146,7 @@ module Java::Util
         
         typesig { [] }
         def descending_iterator
-          if (@m.is_a?(TreeMap))
+          if (@m.is_a?(self.class::TreeMap))
             return (@m).descending_key_iterator
           else
             return ((@m).descending_key_iterator)
@@ -1229,17 +1229,17 @@ module Java::Util
         
         typesig { [Object, ::Java::Boolean, Object, ::Java::Boolean] }
         def sub_set(from_element, from_inclusive, to_element, to_inclusive)
-          return KeySet.new(@m.sub_map(from_element, from_inclusive, to_element, to_inclusive))
+          return self.class::KeySet.new(@m.sub_map(from_element, from_inclusive, to_element, to_inclusive))
         end
         
         typesig { [Object, ::Java::Boolean] }
         def head_set(to_element, inclusive)
-          return KeySet.new(@m.head_map(to_element, inclusive))
+          return self.class::KeySet.new(@m.head_map(to_element, inclusive))
         end
         
         typesig { [Object, ::Java::Boolean] }
         def tail_set(from_element, inclusive)
-          return KeySet.new(@m.tail_map(from_element, inclusive))
+          return self.class::KeySet.new(@m.tail_map(from_element, inclusive))
         end
         
         typesig { [Object, Object] }
@@ -1259,7 +1259,7 @@ module Java::Util
         
         typesig { [] }
         def descending_set
-          return KeySet.new(@m.descending_map)
+          return self.class::KeySet.new(@m.descending_map)
         end
         
         private
@@ -1290,7 +1290,7 @@ module Java::Util
         alias_method :attr_expected_mod_count=, :expected_mod_count=
         undef_method :expected_mod_count=
         
-        typesig { [Entry] }
+        typesig { [self::Entry] }
         def initialize(first)
           @next = nil
           @last_returned = nil
@@ -1309,10 +1309,10 @@ module Java::Util
         def next_entry
           e = @next
           if ((e).nil?)
-            raise NoSuchElementException.new
+            raise self.class::NoSuchElementException.new
           end
           if (!(self.attr_mod_count).equal?(@expected_mod_count))
-            raise ConcurrentModificationException.new
+            raise self.class::ConcurrentModificationException.new
           end
           @next = successor(e)
           @last_returned = e
@@ -1323,10 +1323,10 @@ module Java::Util
         def prev_entry
           e = @next
           if ((e).nil?)
-            raise NoSuchElementException.new
+            raise self.class::NoSuchElementException.new
           end
           if (!(self.attr_mod_count).equal?(@expected_mod_count))
-            raise ConcurrentModificationException.new
+            raise self.class::ConcurrentModificationException.new
           end
           @next = predecessor(e)
           @last_returned = e
@@ -1336,10 +1336,10 @@ module Java::Util
         typesig { [] }
         def remove
           if ((@last_returned).nil?)
-            raise IllegalStateException.new
+            raise self.class::IllegalStateException.new
           end
           if (!(self.attr_mod_count).equal?(@expected_mod_count))
-            raise ConcurrentModificationException.new
+            raise self.class::ConcurrentModificationException.new
           end
           # deleted entries are replaced by their successors
           if (!(@last_returned.attr_left).nil? && !(@last_returned.attr_right).nil?)
@@ -1358,7 +1358,7 @@ module Java::Util
         extend LocalClass
         include_class_members TreeMap
         
-        typesig { [Entry] }
+        typesig { [self::Entry] }
         def initialize(first)
           super(first)
         end
@@ -1376,7 +1376,7 @@ module Java::Util
         extend LocalClass
         include_class_members TreeMap
         
-        typesig { [Entry] }
+        typesig { [self::Entry] }
         def initialize(first)
           super(first)
         end
@@ -1394,7 +1394,7 @@ module Java::Util
         extend LocalClass
         include_class_members TreeMap
         
-        typesig { [Entry] }
+        typesig { [self::Entry] }
         def initialize(first)
           super(first)
         end
@@ -1412,7 +1412,7 @@ module Java::Util
         extend LocalClass
         include_class_members TreeMap
         
-        typesig { [Entry] }
+        typesig { [self::Entry] }
         def initialize(first)
           super(first)
         end
@@ -1529,7 +1529,7 @@ module Java::Util
         alias_method :attr_hi_inclusive=, :hi_inclusive=
         undef_method :hi_inclusive=
         
-        typesig { [TreeMap, ::Java::Boolean, Object, ::Java::Boolean, ::Java::Boolean, Object, ::Java::Boolean] }
+        typesig { [self::TreeMap, ::Java::Boolean, Object, ::Java::Boolean, ::Java::Boolean, Object, ::Java::Boolean] }
         def initialize(m, from_start, lo, lo_inclusive, to_end, hi, hi_inclusive)
           @m = nil
           @lo = nil
@@ -1547,7 +1547,7 @@ module Java::Util
           @navigable_key_set_view = nil
           if (!from_start && !to_end)
             if (m.compare(lo, hi) > 0)
-              raise IllegalArgumentException.new("fromKey > toKey")
+              raise self.class::IllegalArgumentException.new("fromKey > toKey")
             end
           else
             if (!from_start)
@@ -1731,7 +1731,7 @@ module Java::Util
         typesig { [Object, Object] }
         def put(key, value)
           if (!in_range(key))
-            raise IllegalArgumentException.new("key out of range")
+            raise self.class::IllegalArgumentException.new("key out of range")
           end
           return @m.put(key, value)
         end
@@ -1848,7 +1848,7 @@ module Java::Util
         typesig { [] }
         def navigable_key_set
           nksv = @navigable_key_set_view
-          return (!(nksv).nil?) ? nksv : (@navigable_key_set_view = TreeMap::KeySet.new(self))
+          return (!(nksv).nil?) ? nksv : (@navigable_key_set_view = self.class::TreeMap::KeySet.new(self))
         end
         
         typesig { [] }
@@ -1878,7 +1878,7 @@ module Java::Util
         
         class_module.module_eval {
           # View classes
-          const_set_lazy(:EntrySetView) { Class.new(AbstractSet) do
+          const_set_lazy(:EntrySetView) { Class.new(self.class::AbstractSet) do
             extend LocalClass
             include_class_members NavigableSubMap
             
@@ -1919,7 +1919,7 @@ module Java::Util
             
             typesig { [Object] }
             def contains(o)
-              if (!(o.is_a?(Map::Entry)))
+              if (!(o.is_a?(self.class::Map::Entry)))
                 return false
               end
               entry = o
@@ -1933,7 +1933,7 @@ module Java::Util
             
             typesig { [Object] }
             def remove(o)
-              if (!(o.is_a?(Map::Entry)))
+              if (!(o.is_a?(self.class::Map::Entry)))
                 return false
               end
               entry = o
@@ -1965,7 +1965,7 @@ module Java::Util
           const_set_lazy(:SubMapIterator) { Class.new do
             extend LocalClass
             include_class_members NavigableSubMap
-            include Iterator
+            include self.class::Iterator
             
             attr_accessor :last_returned
             alias_method :attr_last_returned, :last_returned
@@ -1991,7 +1991,7 @@ module Java::Util
             alias_method :attr_expected_mod_count=, :expected_mod_count=
             undef_method :expected_mod_count=
             
-            typesig { [TreeMap::Entry, TreeMap::Entry] }
+            typesig { [self::TreeMap::Entry, self::TreeMap::Entry] }
             def initialize(first, fence)
               @last_returned = nil
               @next = nil
@@ -2012,10 +2012,10 @@ module Java::Util
             def next_entry
               e = @next
               if ((e).nil? || (e.attr_key).equal?(@fence_key))
-                raise NoSuchElementException.new
+                raise self.class::NoSuchElementException.new
               end
               if (!(self.attr_m.attr_mod_count).equal?(@expected_mod_count))
-                raise ConcurrentModificationException.new
+                raise self.class::ConcurrentModificationException.new
               end
               @next = successor(e)
               @last_returned = e
@@ -2026,10 +2026,10 @@ module Java::Util
             def prev_entry
               e = @next
               if ((e).nil? || (e.attr_key).equal?(@fence_key))
-                raise NoSuchElementException.new
+                raise self.class::NoSuchElementException.new
               end
               if (!(self.attr_m.attr_mod_count).equal?(@expected_mod_count))
-                raise ConcurrentModificationException.new
+                raise self.class::ConcurrentModificationException.new
               end
               @next = predecessor(e)
               @last_returned = e
@@ -2039,10 +2039,10 @@ module Java::Util
             typesig { [] }
             def remove_ascending
               if ((@last_returned).nil?)
-                raise IllegalStateException.new
+                raise self.class::IllegalStateException.new
               end
               if (!(self.attr_m.attr_mod_count).equal?(@expected_mod_count))
-                raise ConcurrentModificationException.new
+                raise self.class::ConcurrentModificationException.new
               end
               # deleted entries are replaced by their successors
               if (!(@last_returned.attr_left).nil? && !(@last_returned.attr_right).nil?)
@@ -2056,10 +2056,10 @@ module Java::Util
             typesig { [] }
             def remove_descending
               if ((@last_returned).nil?)
-                raise IllegalStateException.new
+                raise self.class::IllegalStateException.new
               end
               if (!(self.attr_m.attr_mod_count).equal?(@expected_mod_count))
-                raise ConcurrentModificationException.new
+                raise self.class::ConcurrentModificationException.new
               end
               self.attr_m.delete_entry(@last_returned)
               @last_returned = nil
@@ -2070,11 +2070,11 @@ module Java::Util
             alias_method :initialize__sub_map_iterator, :initialize
           end }
           
-          const_set_lazy(:SubMapEntryIterator) { Class.new(SubMapIterator) do
+          const_set_lazy(:SubMapEntryIterator) { Class.new(self.class::SubMapIterator) do
             extend LocalClass
             include_class_members NavigableSubMap
             
-            typesig { [TreeMap::Entry, TreeMap::Entry] }
+            typesig { [self::TreeMap::Entry, self::TreeMap::Entry] }
             def initialize(first, fence)
               super(first, fence)
             end
@@ -2093,11 +2093,11 @@ module Java::Util
             alias_method :initialize__sub_map_entry_iterator, :initialize
           end }
           
-          const_set_lazy(:SubMapKeyIterator) { Class.new(SubMapIterator) do
+          const_set_lazy(:SubMapKeyIterator) { Class.new(self.class::SubMapIterator) do
             extend LocalClass
             include_class_members NavigableSubMap
             
-            typesig { [TreeMap::Entry, TreeMap::Entry] }
+            typesig { [self::TreeMap::Entry, self::TreeMap::Entry] }
             def initialize(first, fence)
               super(first, fence)
             end
@@ -2116,11 +2116,11 @@ module Java::Util
             alias_method :initialize__sub_map_key_iterator, :initialize
           end }
           
-          const_set_lazy(:DescendingSubMapEntryIterator) { Class.new(SubMapIterator) do
+          const_set_lazy(:DescendingSubMapEntryIterator) { Class.new(self.class::SubMapIterator) do
             extend LocalClass
             include_class_members NavigableSubMap
             
-            typesig { [TreeMap::Entry, TreeMap::Entry] }
+            typesig { [self::TreeMap::Entry, self::TreeMap::Entry] }
             def initialize(last, fence)
               super(last, fence)
             end
@@ -2139,11 +2139,11 @@ module Java::Util
             alias_method :initialize__descending_sub_map_entry_iterator, :initialize
           end }
           
-          const_set_lazy(:DescendingSubMapKeyIterator) { Class.new(SubMapIterator) do
+          const_set_lazy(:DescendingSubMapKeyIterator) { Class.new(self.class::SubMapIterator) do
             extend LocalClass
             include_class_members NavigableSubMap
             
-            typesig { [TreeMap::Entry, TreeMap::Entry] }
+            typesig { [self::TreeMap::Entry, self::TreeMap::Entry] }
             def initialize(last, fence)
               super(last, fence)
             end
@@ -2176,7 +2176,7 @@ module Java::Util
           const_attr_reader  :SerialVersionUID
         }
         
-        typesig { [TreeMap, ::Java::Boolean, Object, ::Java::Boolean, ::Java::Boolean, Object, ::Java::Boolean] }
+        typesig { [self::TreeMap, ::Java::Boolean, Object, ::Java::Boolean, ::Java::Boolean, Object, ::Java::Boolean] }
         def initialize(m, from_start, lo, lo_inclusive, to_end, hi, hi_inclusive)
           super(m, from_start, lo, lo_inclusive, to_end, hi, hi_inclusive)
         end
@@ -2189,54 +2189,54 @@ module Java::Util
         typesig { [Object, ::Java::Boolean, Object, ::Java::Boolean] }
         def sub_map(from_key, from_inclusive, to_key, to_inclusive)
           if (!in_range(from_key, from_inclusive))
-            raise IllegalArgumentException.new("fromKey out of range")
+            raise self.class::IllegalArgumentException.new("fromKey out of range")
           end
           if (!in_range(to_key, to_inclusive))
-            raise IllegalArgumentException.new("toKey out of range")
+            raise self.class::IllegalArgumentException.new("toKey out of range")
           end
-          return AscendingSubMap.new(self.attr_m, false, from_key, from_inclusive, false, to_key, to_inclusive)
+          return self.class::AscendingSubMap.new(self.attr_m, false, from_key, from_inclusive, false, to_key, to_inclusive)
         end
         
         typesig { [Object, ::Java::Boolean] }
         def head_map(to_key, inclusive)
           if (!in_range(to_key, inclusive))
-            raise IllegalArgumentException.new("toKey out of range")
+            raise self.class::IllegalArgumentException.new("toKey out of range")
           end
-          return AscendingSubMap.new(self.attr_m, self.attr_from_start, self.attr_lo, self.attr_lo_inclusive, false, to_key, inclusive)
+          return self.class::AscendingSubMap.new(self.attr_m, self.attr_from_start, self.attr_lo, self.attr_lo_inclusive, false, to_key, inclusive)
         end
         
         typesig { [Object, ::Java::Boolean] }
         def tail_map(from_key, inclusive)
           if (!in_range(from_key, inclusive))
-            raise IllegalArgumentException.new("fromKey out of range")
+            raise self.class::IllegalArgumentException.new("fromKey out of range")
           end
-          return AscendingSubMap.new(self.attr_m, false, from_key, inclusive, self.attr_to_end, self.attr_hi, self.attr_hi_inclusive)
+          return self.class::AscendingSubMap.new(self.attr_m, false, from_key, inclusive, self.attr_to_end, self.attr_hi, self.attr_hi_inclusive)
         end
         
         typesig { [] }
         def descending_map
           mv = self.attr_descending_map_view
-          return (!(mv).nil?) ? mv : (self.attr_descending_map_view = DescendingSubMap.new(self.attr_m, self.attr_from_start, self.attr_lo, self.attr_lo_inclusive, self.attr_to_end, self.attr_hi, self.attr_hi_inclusive))
+          return (!(mv).nil?) ? mv : (self.attr_descending_map_view = self.class::DescendingSubMap.new(self.attr_m, self.attr_from_start, self.attr_lo, self.attr_lo_inclusive, self.attr_to_end, self.attr_hi, self.attr_hi_inclusive))
         end
         
         typesig { [] }
         def key_iterator
-          return SubMapKeyIterator.new(abs_lowest, abs_high_fence)
+          return self.class::SubMapKeyIterator.new(abs_lowest, abs_high_fence)
         end
         
         typesig { [] }
         def descending_key_iterator
-          return DescendingSubMapKeyIterator.new(abs_highest, abs_low_fence)
+          return self.class::DescendingSubMapKeyIterator.new(abs_highest, abs_low_fence)
         end
         
         class_module.module_eval {
-          const_set_lazy(:AscendingEntrySetView) { Class.new(EntrySetView) do
+          const_set_lazy(:AscendingEntrySetView) { Class.new(self.class::EntrySetView) do
             extend LocalClass
             include_class_members AscendingSubMap
             
             typesig { [] }
             def iterator
-              return SubMapEntryIterator.new(abs_lowest, abs_high_fence)
+              return self.class::SubMapEntryIterator.new(abs_lowest, abs_high_fence)
             end
             
             typesig { [] }
@@ -2252,7 +2252,7 @@ module Java::Util
         typesig { [] }
         def entry_set
           es = self.attr_entry_set_view
-          return (!(es).nil?) ? es : AscendingEntrySetView.new_local(self)
+          return (!(es).nil?) ? es : self.class::AscendingEntrySetView.new_local(self)
         end
         
         typesig { [] }
@@ -2298,7 +2298,7 @@ module Java::Util
           const_attr_reader  :SerialVersionUID
         }
         
-        typesig { [TreeMap, ::Java::Boolean, Object, ::Java::Boolean, ::Java::Boolean, Object, ::Java::Boolean] }
+        typesig { [self::TreeMap, ::Java::Boolean, Object, ::Java::Boolean, ::Java::Boolean, Object, ::Java::Boolean] }
         def initialize(m, from_start, lo, lo_inclusive, to_end, hi, hi_inclusive)
           @reverse_comparator = nil
           super(m, from_start, lo, lo_inclusive, to_end, hi, hi_inclusive)
@@ -2319,54 +2319,54 @@ module Java::Util
         typesig { [Object, ::Java::Boolean, Object, ::Java::Boolean] }
         def sub_map(from_key, from_inclusive, to_key, to_inclusive)
           if (!in_range(from_key, from_inclusive))
-            raise IllegalArgumentException.new("fromKey out of range")
+            raise self.class::IllegalArgumentException.new("fromKey out of range")
           end
           if (!in_range(to_key, to_inclusive))
-            raise IllegalArgumentException.new("toKey out of range")
+            raise self.class::IllegalArgumentException.new("toKey out of range")
           end
-          return DescendingSubMap.new(self.attr_m, false, to_key, to_inclusive, false, from_key, from_inclusive)
+          return self.class::DescendingSubMap.new(self.attr_m, false, to_key, to_inclusive, false, from_key, from_inclusive)
         end
         
         typesig { [Object, ::Java::Boolean] }
         def head_map(to_key, inclusive)
           if (!in_range(to_key, inclusive))
-            raise IllegalArgumentException.new("toKey out of range")
+            raise self.class::IllegalArgumentException.new("toKey out of range")
           end
-          return DescendingSubMap.new(self.attr_m, false, to_key, inclusive, self.attr_to_end, self.attr_hi, self.attr_hi_inclusive)
+          return self.class::DescendingSubMap.new(self.attr_m, false, to_key, inclusive, self.attr_to_end, self.attr_hi, self.attr_hi_inclusive)
         end
         
         typesig { [Object, ::Java::Boolean] }
         def tail_map(from_key, inclusive)
           if (!in_range(from_key, inclusive))
-            raise IllegalArgumentException.new("fromKey out of range")
+            raise self.class::IllegalArgumentException.new("fromKey out of range")
           end
-          return DescendingSubMap.new(self.attr_m, self.attr_from_start, self.attr_lo, self.attr_lo_inclusive, false, from_key, inclusive)
+          return self.class::DescendingSubMap.new(self.attr_m, self.attr_from_start, self.attr_lo, self.attr_lo_inclusive, false, from_key, inclusive)
         end
         
         typesig { [] }
         def descending_map
           mv = self.attr_descending_map_view
-          return (!(mv).nil?) ? mv : (self.attr_descending_map_view = AscendingSubMap.new(self.attr_m, self.attr_from_start, self.attr_lo, self.attr_lo_inclusive, self.attr_to_end, self.attr_hi, self.attr_hi_inclusive))
+          return (!(mv).nil?) ? mv : (self.attr_descending_map_view = self.class::AscendingSubMap.new(self.attr_m, self.attr_from_start, self.attr_lo, self.attr_lo_inclusive, self.attr_to_end, self.attr_hi, self.attr_hi_inclusive))
         end
         
         typesig { [] }
         def key_iterator
-          return DescendingSubMapKeyIterator.new(abs_highest, abs_low_fence)
+          return self.class::DescendingSubMapKeyIterator.new(abs_highest, abs_low_fence)
         end
         
         typesig { [] }
         def descending_key_iterator
-          return SubMapKeyIterator.new(abs_lowest, abs_high_fence)
+          return self.class::SubMapKeyIterator.new(abs_lowest, abs_high_fence)
         end
         
         class_module.module_eval {
-          const_set_lazy(:DescendingEntrySetView) { Class.new(EntrySetView) do
+          const_set_lazy(:DescendingEntrySetView) { Class.new(self.class::EntrySetView) do
             extend LocalClass
             include_class_members DescendingSubMap
             
             typesig { [] }
             def iterator
-              return DescendingSubMapEntryIterator.new(abs_highest, abs_low_fence)
+              return self.class::DescendingSubMapEntryIterator.new(abs_highest, abs_low_fence)
             end
             
             typesig { [] }
@@ -2382,7 +2382,7 @@ module Java::Util
         typesig { [] }
         def entry_set
           es = self.attr_entry_set_view
-          return (!(es).nil?) ? es : DescendingEntrySetView.new_local(self)
+          return (!(es).nil?) ? es : self.class::DescendingEntrySetView.new_local(self)
         end
         
         typesig { [] }
@@ -2465,42 +2465,42 @@ module Java::Util
         
         typesig { [] }
         def read_resolve
-          return AscendingSubMap.new(@local_class_parent, @from_start, @from_key, true, @to_end, @to_key, false)
+          return self.class::AscendingSubMap.new(@local_class_parent, @from_start, @from_key, true, @to_end, @to_key, false)
         end
         
         typesig { [] }
         def entry_set
-          raise InternalError.new
+          raise self.class::InternalError.new
         end
         
         typesig { [] }
         def last_key
-          raise InternalError.new
+          raise self.class::InternalError.new
         end
         
         typesig { [] }
         def first_key
-          raise InternalError.new
+          raise self.class::InternalError.new
         end
         
-        typesig { [K, K] }
+        typesig { [self::K, self::K] }
         def sub_map(from_key, to_key)
-          raise InternalError.new
+          raise self.class::InternalError.new
         end
         
-        typesig { [K] }
+        typesig { [self::K] }
         def head_map(to_key)
-          raise InternalError.new
+          raise self.class::InternalError.new
         end
         
-        typesig { [K] }
+        typesig { [self::K] }
         def tail_map(from_key)
-          raise InternalError.new
+          raise self.class::InternalError.new
         end
         
         typesig { [] }
         def comparator
-          raise InternalError.new
+          raise self.class::InternalError.new
         end
         
         typesig { [] }
@@ -2567,7 +2567,7 @@ module Java::Util
         alias_method :attr_color=, :color=
         undef_method :color=
         
-        typesig { [Object, Object, Entry] }
+        typesig { [Object, Object, self::Entry] }
         # Make a new cell with given key, value, and parent, and with
         # <tt>null</tt> child links, and BLACK color.
         def initialize(key, value, parent)
@@ -2612,7 +2612,7 @@ module Java::Util
         
         typesig { [Object] }
         def ==(o)
-          if (!(o.is_a?(Map::Entry)))
+          if (!(o.is_a?(self.class::Map::Entry)))
             return false
           end
           e = o

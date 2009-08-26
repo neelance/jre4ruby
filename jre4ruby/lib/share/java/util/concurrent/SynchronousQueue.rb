@@ -305,7 +305,7 @@ module Java::Util::Concurrent
               const_attr_reader  :NextUpdater
             }
             
-            typesig { [SNode, SNode] }
+            typesig { [self::SNode, self::SNode] }
             def cas_next(cmp, val)
               return ((cmp).equal?(@next) && self.class::NextUpdater.compare_and_set(self, cmp, val))
             end
@@ -315,7 +315,7 @@ module Java::Util::Concurrent
               const_attr_reader  :MatchUpdater
             }
             
-            typesig { [SNode] }
+            typesig { [self::SNode] }
             # Tries to match node s to this node, if so, waking up thread.
             # Fulfillers call tryMatch to identify their waiters.
             # Waiters block until they have been matched.
@@ -363,13 +363,13 @@ module Java::Util::Concurrent
           const_attr_reader  :HeadUpdater
         }
         
-        typesig { [SNode, SNode] }
+        typesig { [self::SNode, self::SNode] }
         def cas_head(h, nh)
           return (h).equal?(@head) && self.class::HeadUpdater.compare_and_set(self, h, nh)
         end
         
         class_module.module_eval {
-          typesig { [SNode, Object, SNode, ::Java::Int] }
+          typesig { [self::SNode, Object, self::SNode, ::Java::Int] }
           # Creates or resets fields of a node. Called only from transfer
           # where the node to push on stack is lazily created and
           # reused when possible to help reduce intervals between reads
@@ -377,7 +377,7 @@ module Java::Util::Concurrent
           # to push nodes fail due to contention.
           def snode(s, e, next_, mode)
             if ((s).nil?)
-              s = SNode.new(e)
+              s = self.class::SNode.new(e)
             end
             s.attr_mode = mode
             s.attr_next = next_
@@ -486,7 +486,7 @@ module Java::Util::Concurrent
           end
         end
         
-        typesig { [SNode, ::Java::Boolean, ::Java::Long] }
+        typesig { [self::SNode, ::Java::Boolean, ::Java::Long] }
         # Spins/blocks until node s is matched by a fulfill operation.
         # 
         # @param s the waiting node
@@ -554,7 +554,7 @@ module Java::Util::Concurrent
           end
         end
         
-        typesig { [SNode] }
+        typesig { [self::SNode] }
         # Returns true if node s is at head or there is an active
         # fulfiller.
         def should_spin(s)
@@ -562,7 +562,7 @@ module Java::Util::Concurrent
           return ((h).equal?(s) || (h).nil? || is_fulfilling(h.attr_mode))
         end
         
-        typesig { [SNode] }
+        typesig { [self::SNode] }
         # Unlinks s from the stack.
         def clean(s)
           s.attr_item = nil # forget item
@@ -663,7 +663,7 @@ module Java::Util::Concurrent
               const_attr_reader  :NextUpdater
             }
             
-            typesig { [QNode, QNode] }
+            typesig { [self::QNode, self::QNode] }
             def cas_next(cmp, val)
               return ((@next).equal?(cmp) && self.class::NextUpdater.compare_and_set(self, cmp, val))
             end
@@ -731,7 +731,7 @@ module Java::Util::Concurrent
           @tail = nil
           @clean_me = nil
           super()
-          h = QNode.new(nil, false) # initialize to dummy node.
+          h = self.class::QNode.new(nil, false) # initialize to dummy node.
           @head = h
           @tail = h
         end
@@ -741,7 +741,7 @@ module Java::Util::Concurrent
           const_attr_reader  :HeadUpdater
         }
         
-        typesig { [QNode, QNode] }
+        typesig { [self::QNode, self::QNode] }
         # Tries to cas nh as new head; if successful, unlink
         # old head's next node to avoid garbage retention.
         def advance_head(h, nh)
@@ -755,7 +755,7 @@ module Java::Util::Concurrent
           const_attr_reader  :TailUpdater
         }
         
-        typesig { [QNode, QNode] }
+        typesig { [self::QNode, self::QNode] }
         # Tries to cas nt as new tail.
         def advance_tail(t, nt)
           if ((@tail).equal?(t))
@@ -768,7 +768,7 @@ module Java::Util::Concurrent
           const_attr_reader  :CleanMeUpdater
         }
         
-        typesig { [QNode, QNode] }
+        typesig { [self::QNode, self::QNode] }
         # Tries to CAS cleanMe slot.
         def cas_clean_me(cmp, val)
           return ((@clean_me).equal?(cmp) && self.class::CleanMeUpdater.compare_and_set(self, cmp, val))
@@ -826,7 +826,7 @@ module Java::Util::Concurrent
                 return nil
               end
               if ((s).nil?)
-                s = QNode.new(e, is_data)
+                s = self.class::QNode.new(e, is_data)
               end
               if (!t.cas_next(nil, s))
                 # failed to link in
@@ -870,7 +870,7 @@ module Java::Util::Concurrent
           end
         end
         
-        typesig { [QNode, Object, ::Java::Boolean, ::Java::Long] }
+        typesig { [self::QNode, Object, ::Java::Boolean, ::Java::Long] }
         # Spins/blocks until node s is fulfilled.
         # 
         # @param s the waiting node
@@ -918,7 +918,7 @@ module Java::Util::Concurrent
           end
         end
         
-        typesig { [QNode, QNode] }
+        typesig { [self::QNode, self::QNode] }
         # Gets rid of cancelled node s with original predecessor pred.
         def clean(pred, s)
           s.attr_waiter = nil # forget thread

@@ -148,7 +148,7 @@ module Sun::Misc
         alias_method :attr_key=, :key=
         undef_method :key=
         
-        typesig { [Object, Object, ReferenceQueue] }
+        typesig { [Object, Object, self::ReferenceQueue] }
         def initialize(key, value, queue)
           @key = nil
           super(value, queue)
@@ -156,12 +156,12 @@ module Sun::Misc
         end
         
         class_module.module_eval {
-          typesig { [Object, Object, ReferenceQueue] }
+          typesig { [Object, Object, self::ReferenceQueue] }
           def create(key, value, queue)
             if ((value).nil?)
               return nil
             end
-            return ValueCell.new(key, value, queue)
+            return self.class::ValueCell.new(key, value, queue)
           end
           
           typesig { [Object, ::Java::Boolean] }
@@ -419,7 +419,7 @@ module Sun::Misc
         alias_method :attr_value=, :value=
         undef_method :value=
         
-        typesig { [Map::Entry, Object] }
+        typesig { [self::Map::Entry, Object] }
         # Strong reference to value, to prevent the GC
         # from flushing the value while this Entry
         # exists
@@ -447,7 +447,7 @@ module Sun::Misc
         
         typesig { [Object] }
         def ==(o)
-          if (!(o.is_a?(Map::Entry)))
+          if (!(o.is_a?(self.class::Map::Entry)))
             return false
           end
           e = o
@@ -477,10 +477,10 @@ module Sun::Misc
         
         typesig { [] }
         def iterator
-          return Class.new(Iterator.class == Class ? Iterator : Object) do
+          return Class.new(self.class::Iterator.class == Class ? self.class::Iterator : Object) do
             extend LocalClass
             include_class_members EntrySet
-            include Iterator if Iterator.class == Module
+            include self::Iterator if self::Iterator.class == Module
             
             attr_accessor :hash_iterator
             alias_method :attr_hash_iterator, :hash_iterator
@@ -504,7 +504,7 @@ module Sun::Misc
                   # Value has been flushed by GC
                   next
                 end
-                @next = Entry.new(ent, v)
+                @next = self.class::Entry.new(ent, v)
                 return true
               end
               return false
@@ -513,7 +513,7 @@ module Sun::Misc
             typesig { [] }
             define_method :next_ do
               if (((@next).nil?) && !has_next)
-                raise NoSuchElementException.new
+                raise self.class::NoSuchElementException.new
               end
               e = @next
               @next = nil
@@ -558,7 +558,7 @@ module Sun::Misc
         typesig { [Object] }
         def remove(o)
           process_queue
-          if (o.is_a?(Entry))
+          if (o.is_a?(self.class::Entry))
             return @hash_entries.remove((o).attr_ent)
           else
             return false

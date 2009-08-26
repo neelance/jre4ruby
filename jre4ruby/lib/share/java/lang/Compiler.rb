@@ -83,7 +83,7 @@ module Java::Lang
                 System.load_library(jit)
                 initialize_
                 loaded = true
-              rescue UnsatisfiedLinkError => e
+              rescue self.class::UnsatisfiedLinkError => e
                 System.err.println("Warning: JIT compiler \"" + jit + "\" not found. Will use interpreter.")
               end
             end

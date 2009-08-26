@@ -111,7 +111,7 @@ module Sun::Security::Jgss::Wrapper
             self.attr_debug = Boolean.parse_boolean(System.get_property(DEBUG_PROP))
             begin
               System.load_library("j2gss")
-            rescue JavaError => err
+            rescue self.class::JavaError => err
               debug("No j2gss library found!")
               if (self.attr_debug)
                 err.print_stack_trace
@@ -132,7 +132,7 @@ module Sun::Security::Jgss::Wrapper
             if (GSSLibStub.init(gss_lib))
               debug("Loaded GSS library: " + gss_lib)
               mechs = GSSLibStub.indicate_mechs
-              map = HashMap.new
+              map = self.class::HashMap.new
               i = 0
               while i < mechs.attr_length
                 debug("Native MF for " + RJava.cast_to_string(mechs[i]))

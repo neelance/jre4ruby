@@ -271,7 +271,7 @@ module Java::Net
           
           typesig { [] }
           define_method :run do
-            cl = Array.typed(Class).new(2) { nil }
+            cl = Array.typed(self.class::Class).new(2) { nil }
             cl[0] = SocketAddress
             cl[1] = JavaInteger::TYPE
             self.attr_impl.get_class.get_declared_method("connect", cl)

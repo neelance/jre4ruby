@@ -376,7 +376,7 @@ module Java::Util
         alias_method :attr_next_name=, :next_name=
         undef_method :next_name=
         
-        typesig { [Class, ClassLoader] }
+        typesig { [self::Class, self::ClassLoader] }
         def initialize(service, loader)
           @service = nil
           @loader = nil
@@ -400,7 +400,7 @@ module Java::Util
               else
                 @configs = @loader.get_resources(full_name)
               end
-            rescue IOException => x
+            rescue self.class::IOException => x
               fail(@service, "Error locating configuration files", x)
             end
           end
@@ -417,7 +417,7 @@ module Java::Util
         typesig { [] }
         def next_
           if (!has_next)
-            raise NoSuchElementException.new
+            raise self.class::NoSuchElementException.new
           end
           cn = @next_name
           @next_name = RJava.cast_to_string(nil)
@@ -425,17 +425,17 @@ module Java::Util
             p = @service.cast(Class.for_name(cn, true, @loader).new_instance)
             self.attr_providers.put(cn, p)
             return p
-          rescue ClassNotFoundException => x
+          rescue self.class::ClassNotFoundException => x
             fail(@service, "Provider " + cn + " not found")
-          rescue JavaThrowable => x
+          rescue self.class::JavaThrowable => x
             fail(@service, "Provider " + cn + " could not be instantiated: " + RJava.cast_to_string(x), x)
           end
-          raise JavaError.new # This cannot happen
+          raise self.class::JavaError.new # This cannot happen
         end
         
         typesig { [] }
         def remove
-          raise UnsupportedOperationException.new
+          raise self.class::UnsupportedOperationException.new
         end
         
         private
@@ -512,7 +512,7 @@ module Java::Util
         
         typesig { [] }
         define_method :remove do
-          raise UnsupportedOperationException.new
+          raise self.class::UnsupportedOperationException.new
         end
         
         typesig { [] }

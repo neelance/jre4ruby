@@ -342,7 +342,7 @@ module Sun::Security::Pkcs12
         
         typesig { [Object] }
         def ==(obj)
-          if (!(obj.is_a?(KeyId)))
+          if (!(obj.is_a?(self.class::KeyId)))
             return false
           end
           that = obj

@@ -228,7 +228,7 @@ module Java::Security::Cert
         alias_method :attr_data=, :data=
         undef_method :data=
         
-        typesig { [String, Array.typed(::Java::Byte)] }
+        typesig { [self::String, Array.typed(::Java::Byte)] }
         # Construct the alternate Certificate class with the Certificate
         # type and Certificate encoding bytes.
         # 
@@ -256,9 +256,9 @@ module Java::Security::Cert
         def read_resolve
           begin
             cf = CertificateFactory.get_instance(@type)
-            return cf.generate_certificate(Java::Io::ByteArrayInputStream.new(@data))
-          rescue CertificateException => e
-            raise Java::Io::NotSerializableException.new("java.security.cert.Certificate: " + @type + ": " + RJava.cast_to_string(e.get_message))
+            return cf.generate_certificate(Java::Io::self.class::ByteArrayInputStream.new(@data))
+          rescue self.class::CertificateException => e
+            raise Java::Io::self.class::NotSerializableException.new("java.security.cert.Certificate: " + @type + ": " + RJava.cast_to_string(e.get_message))
           end
         end
         

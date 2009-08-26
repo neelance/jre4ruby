@@ -537,7 +537,7 @@ module Sun::Security::Krb5
             
             typesig { [] }
             define_method :run do
-              return FileInputStream.new(file_name)
+              return self.class::FileInputStream.new(file_name)
             end
             
             typesig { [] }
@@ -1100,7 +1100,7 @@ module Sun::Security::Krb5
         alias_method :attr_file_name=, :file_name=
         undef_method :file_name=
         
-        typesig { [String] }
+        typesig { [self::String] }
         def initialize(file_name)
           @file_name = nil
           @file_name = file_name
@@ -1108,7 +1108,7 @@ module Sun::Security::Krb5
         
         typesig { [] }
         def run
-          return JavaFile.new(@file_name).exists
+          return self.class::JavaFile.new(@file_name).exists
         end
         
         private

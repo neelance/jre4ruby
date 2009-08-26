@@ -376,16 +376,16 @@ module Java::Util
             @last_ret = i
             @cursor = i + 1
             return next_
-          rescue IndexOutOfBoundsException => e
+          rescue self.class::IndexOutOfBoundsException => e
             check_for_comodification
-            raise NoSuchElementException.new
+            raise self.class::NoSuchElementException.new
           end
         end
         
         typesig { [] }
         def remove
           if (@last_ret < 0)
-            raise IllegalStateException.new
+            raise self.class::IllegalStateException.new
           end
           check_for_comodification
           begin
@@ -395,15 +395,15 @@ module Java::Util
             end
             @last_ret = -1
             @expected_mod_count = self.attr_mod_count
-          rescue IndexOutOfBoundsException => e
-            raise ConcurrentModificationException.new
+          rescue self.class::IndexOutOfBoundsException => e
+            raise self.class::ConcurrentModificationException.new
           end
         end
         
         typesig { [] }
         def check_for_comodification
           if (!(self.attr_mod_count).equal?(@expected_mod_count))
-            raise ConcurrentModificationException.new
+            raise self.class::ConcurrentModificationException.new
           end
         end
         
@@ -444,9 +444,9 @@ module Java::Util
             previous = get(i)
             self.attr_last_ret = self.attr_cursor = i
             return previous
-          rescue IndexOutOfBoundsException => e
+          rescue self.class::IndexOutOfBoundsException => e
             check_for_comodification
-            raise NoSuchElementException.new
+            raise self.class::NoSuchElementException.new
           end
         end
         
@@ -460,21 +460,21 @@ module Java::Util
           return self.attr_cursor - 1
         end
         
-        typesig { [E] }
+        typesig { [self::E] }
         def set(e)
           if (self.attr_last_ret < 0)
-            raise IllegalStateException.new
+            raise self.class::IllegalStateException.new
           end
           check_for_comodification
           begin
             @local_class_parent.set(self.attr_last_ret, e)
             self.attr_expected_mod_count = self.attr_mod_count
-          rescue IndexOutOfBoundsException => ex
-            raise ConcurrentModificationException.new
+          rescue self.class::IndexOutOfBoundsException => ex
+            raise self.class::ConcurrentModificationException.new
           end
         end
         
-        typesig { [E] }
+        typesig { [self::E] }
         def add(e)
           check_for_comodification
           begin
@@ -483,8 +483,8 @@ module Java::Util
             self.attr_last_ret = -1
             self.attr_cursor = i + 1
             self.attr_expected_mod_count = self.attr_mod_count
-          rescue IndexOutOfBoundsException => ex
-            raise ConcurrentModificationException.new
+          rescue self.class::IndexOutOfBoundsException => ex
+            raise self.class::ConcurrentModificationException.new
           end
         end
         
@@ -804,7 +804,7 @@ module Java::Util
           if (has_next)
             return @i.next_
           else
-            raise NoSuchElementException.new
+            raise self.class::NoSuchElementException.new
           end
         end
         
@@ -818,7 +818,7 @@ module Java::Util
           if (has_previous)
             return @i.previous
           else
-            raise NoSuchElementException.new
+            raise self.class::NoSuchElementException.new
           end
         end
         

@@ -73,7 +73,7 @@ module Sun::Nio::Cs::Ext
       const_set_lazy(:Encoder) { Class.new(ISO2022::Encoder) do
         include_class_members ISO2022_CN_CNS
         
-        typesig { [Charset] }
+        typesig { [self::Charset] }
         def initialize(cs)
           super(cs)
           SODesig = "$)G"
@@ -82,7 +82,7 @@ module Sun::Nio::Cs::Ext
           begin
             cset = Charset.for_name("EUC_TW") # CNS11643
             ISOEncoder = cset.new_encoder
-          rescue JavaException => e
+          rescue self.class::JavaException => e
           end
         end
         

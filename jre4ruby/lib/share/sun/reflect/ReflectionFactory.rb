@@ -387,8 +387,8 @@ module Sun::Reflect
             if (!(val).nil?)
               begin
                 self.attr_inflation_threshold = JavaInteger.parse_int(val)
-              rescue NumberFormatException => e
-                raise RuntimeException.new("Unable to parse property sun.reflect.inflationThreshold").init_cause(e)
+              rescue self.class::NumberFormatException => e
+                raise self.class::RuntimeException.new("Unable to parse property sun.reflect.inflationThreshold").init_cause(e)
               end
             end
             self.attr_initted = true

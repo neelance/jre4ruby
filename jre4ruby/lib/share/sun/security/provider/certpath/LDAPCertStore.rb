@@ -341,13 +341,13 @@ module Sun::Security::Provider::Certpath
         alias_method :attr_requested_attributes=, :requested_attributes=
         undef_method :requested_attributes=
         
-        typesig { [String] }
+        typesig { [self::String] }
         def initialize(name)
           @name = nil
           @value_map = nil
           @requested_attributes = nil
           @name = name
-          @requested_attributes = ArrayList.new(5)
+          @requested_attributes = self.class::ArrayList.new(5)
         end
         
         typesig { [] }
@@ -355,15 +355,15 @@ module Sun::Security::Provider::Certpath
           return @name
         end
         
-        typesig { [String] }
+        typesig { [self::String] }
         def add_requested_attribute(attr_id)
           if (!(@value_map).nil?)
-            raise IllegalStateException.new("Request already sent")
+            raise self.class::IllegalStateException.new("Request already sent")
           end
           @requested_attributes.add(attr_id)
         end
         
-        typesig { [String] }
+        typesig { [self::String] }
         # Gets one or more binary values from an attribute.
         # 
         # @param name          the location holding the attribute
@@ -410,12 +410,12 @@ module Sun::Security::Provider::Certpath
               System.out.println("LDAP requests: " + RJava.cast_to_string(self.attr_requests))
             end
           end
-          @value_map = HashMap.new(8)
+          @value_map = self.class::HashMap.new(8)
           attr_ids = @requested_attributes.to_array(STRING0)
           attrs = nil
           begin
             attrs = self.attr_ctx.get_attributes(@name, attr_ids)
-          rescue NameNotFoundException => e
+          rescue self.class::NameNotFoundException => e
             # name does not exist on this LDAP server
             # treat same as not attributes found
             attrs = EMPTY_ATTRIBUTES
@@ -429,14 +429,14 @@ module Sun::Security::Provider::Certpath
           return @value_map
         end
         
-        typesig { [String, Array.typed(Array.typed(::Java::Byte))] }
+        typesig { [self::String, Array.typed(Array.typed(::Java::Byte))] }
         # Add the values to the cache.
         def cache_attribute(attr_id, values)
           cache_key = @name + "|" + attr_id
           self.attr_value_cache.put(cache_key, values)
         end
         
-        typesig { [Attribute] }
+        typesig { [self::Attribute] }
         # Get the values for the given attribute. If the attribute is null
         # or does not contain any values, a zero length byte array is
         # returned. NOTE that it is assumed that all values are byte arrays.
@@ -451,7 +451,7 @@ module Sun::Security::Provider::Certpath
             while (enum_.has_more)
               obj = enum_.next_
               if (!(Debug).nil?)
-                if (obj.is_a?(String))
+                if (obj.is_a?(self.class::String))
                   Debug.println("LDAPCertStore.getAttrValues() " + "enum.next is a string!: " + RJava.cast_to_string(obj))
                 end
               end
@@ -871,14 +871,14 @@ module Sun::Security::Provider::Certpath
         alias_method :attr_hash_code=, :hash_code=
         undef_method :hash_code=
         
-        typesig { [String, ::Java::Int] }
+        typesig { [self::String, ::Java::Int] }
         def initialize(server_name, port)
           @hash_code = 0
           super(server_name, port)
           @hash_code = 0
         end
         
-        typesig { [String] }
+        typesig { [self::String] }
         def initialize(server_name)
           @hash_code = 0
           super(server_name)
@@ -894,7 +894,7 @@ module Sun::Security::Provider::Certpath
         
         typesig { [Object] }
         def ==(obj)
-          if (!(obj.is_a?(LDAPCertStoreParameters)))
+          if (!(obj.is_a?(self.class::LDAPCertStoreParameters)))
             return false
           end
           params = obj
@@ -949,7 +949,7 @@ module Sun::Security::Provider::Certpath
         alias_method :attr_subject=, :subject=
         undef_method :subject=
         
-        typesig { [X509CertSelector, X500Principal, String] }
+        typesig { [self::X509CertSelector, self::X500Principal, self::String] }
         # Creates an LDAPCertSelector.
         # 
         # @param selector the X509CertSelector to wrap
@@ -961,9 +961,9 @@ module Sun::Security::Provider::Certpath
           @selector = nil
           @subject = nil
           super()
-          @selector = (selector).nil? ? X509CertSelector.new : selector
+          @selector = (selector).nil? ? self.class::X509CertSelector.new : selector
           @cert_subject = cert_subject
-          @subject = X500Name.new(ldap_dn).as_x500principal
+          @subject = self.class::X500Name.new(ldap_dn).as_x500principal
         end
         
         typesig { [] }
@@ -1081,7 +1081,7 @@ module Sun::Security::Provider::Certpath
           return @selector.get_path_to_names
         end
         
-        typesig { [Certificate] }
+        typesig { [self::Certificate] }
         def match(cert)
           # temporarily set the subject criterion to the certSubject
           # so that match will not reject the desired certificates
@@ -1124,7 +1124,7 @@ module Sun::Security::Provider::Certpath
         alias_method :attr_issuer_names=, :issuer_names=
         undef_method :issuer_names=
         
-        typesig { [X509CRLSelector, Collection, String] }
+        typesig { [self::X509CRLSelector, self::Collection, self::String] }
         # Creates an LDAPCRLSelector.
         # 
         # @param selector the X509CRLSelector to wrap
@@ -1137,12 +1137,12 @@ module Sun::Security::Provider::Certpath
           @issuers = nil
           @issuer_names = nil
           super()
-          @selector = (selector).nil? ? X509CRLSelector.new : selector
+          @selector = (selector).nil? ? self.class::X509CRLSelector.new : selector
           @cert_issuers = cert_issuers
-          @issuer_names = HashSet.new
+          @issuer_names = self.class::HashSet.new
           @issuer_names.add(ldap_dn)
-          @issuers = HashSet.new
-          @issuers.add(X500Name.new(ldap_dn).as_x500principal)
+          @issuers = self.class::HashSet.new
+          @issuers.add(self.class::X500Name.new(ldap_dn).as_x500principal)
         end
         
         typesig { [] }
@@ -1179,7 +1179,7 @@ module Sun::Security::Provider::Certpath
           return @selector.get_certificate_checking
         end
         
-        typesig { [CRL] }
+        typesig { [self::CRL] }
         def match(crl)
           # temporarily set the issuer criterion to the certIssuers
           # so that match will not reject the desired CRL

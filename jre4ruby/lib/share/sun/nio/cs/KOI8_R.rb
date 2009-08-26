@@ -97,7 +97,7 @@ module Sun::Nio::Cs
       const_set_lazy(:Decoder) { Class.new(SingleByteDecoder) do
         include_class_members KOI8_R
         
-        typesig { [Charset] }
+        typesig { [self::Charset] }
         def initialize(cs)
           super(cs, self.class::ByteToCharTable)
         end
@@ -145,7 +145,7 @@ module Sun::Nio::Cs
       const_set_lazy(:Encoder) { Class.new(SingleByteEncoder) do
         include_class_members KOI8_R
         
-        typesig { [Charset] }
+        typesig { [self::Charset] }
         def initialize(cs)
           super(cs, self.class::Index1, self.class::Index2, 0xff00, 0xff, 8)
         end

@@ -611,7 +611,7 @@ module Sun::Security::Jgss
         alias_method :attr_usage=, :usage=
         undef_method :usage=
         
-        typesig { [Oid, ::Java::Int] }
+        typesig { [self::Oid, ::Java::Int] }
         def initialize(mech_oid, usage)
           @mech_oid = nil
           @usage = GSSCredential::INITIATE_AND_ACCEPT
@@ -631,7 +631,7 @@ module Sun::Security::Jgss
         
         typesig { [Object] }
         def ==(other)
-          if (!(other.is_a?(SearchKey)))
+          if (!(other.is_a?(self.class::SearchKey)))
             return false
           end
           that = other

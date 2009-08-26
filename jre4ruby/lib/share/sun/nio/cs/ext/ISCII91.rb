@@ -520,7 +520,7 @@ module Sun::Nio::Cs::Ext
         alias_method :attr_need_flushing=, :need_flushing=
         undef_method :need_flushing=
         
-        typesig { [Charset] }
+        typesig { [self::Charset] }
         def initialize(cs)
           @context_char = 0
           @need_flushing = false
@@ -529,7 +529,7 @@ module Sun::Nio::Cs::Ext
           @need_flushing = false
         end
         
-        typesig { [CharBuffer] }
+        typesig { [self::CharBuffer] }
         def impl_flush(out)
           if (@need_flushing)
             if (out.remaining < 1)
@@ -543,7 +543,7 @@ module Sun::Nio::Cs::Ext
           return CoderResult::UNDERFLOW
         end
         
-        typesig { [ByteBuffer, CharBuffer] }
+        typesig { [self::ByteBuffer, self::CharBuffer] }
         # Rules:
         # 1)ATR,EXT,following character to be replaced with '\ufffd'
         # 2)Halant + Halant => '\u094d' (Virama) + '\u200c'(ZWNJ)
@@ -865,7 +865,7 @@ module Sun::Nio::Cs::Ext
           end
         end
         
-        typesig { [ByteBuffer, CharBuffer] }
+        typesig { [self::ByteBuffer, self::CharBuffer] }
         def decode_buffer_loop(src, dst)
           mark = src.position
           begin
@@ -1173,7 +1173,7 @@ module Sun::Nio::Cs::Ext
           end
         end
         
-        typesig { [ByteBuffer, CharBuffer] }
+        typesig { [self::ByteBuffer, self::CharBuffer] }
         def decode_loop(src, dst)
           if (src.has_array && dst.has_array)
             return decode_array_loop(src, dst)
@@ -1202,11 +1202,11 @@ module Sun::Nio::Cs::Ext
         alias_method :attr_sgp=, :sgp=
         undef_method :sgp=
         
-        typesig { [Charset] }
+        typesig { [self::Charset] }
         def initialize(cs)
           @sgp = nil
           super(cs, 2.0, 2.0)
-          @sgp = Surrogate::Parser.new
+          @sgp = self.class::Surrogate::Parser.new
         end
         
         typesig { [::Java::Char] }
@@ -1215,7 +1215,7 @@ module Sun::Nio::Cs::Ext
           return ((ch >= Character.new(0x0900) && ch <= Character.new(0x097f) && !(EncoderMappingTable[2 * (ch - Character.new(0x0900))]).equal?(self.class::NO_CHAR)) || ((ch).equal?(Character.new(0x200d))) || ((ch).equal?(Character.new(0x200c))) || (ch <= Character.new(0x007f)))
         end
         
-        typesig { [CharBuffer, ByteBuffer] }
+        typesig { [self::CharBuffer, self::ByteBuffer] }
         def encode_array_loop(src, dst)
           sa = src.array
           sp = src.array_offset + src.position
@@ -1284,7 +1284,7 @@ module Sun::Nio::Cs::Ext
           end
         end
         
-        typesig { [CharBuffer, ByteBuffer] }
+        typesig { [self::CharBuffer, self::ByteBuffer] }
         def encode_buffer_loop(src, dst)
           mark = src.position
           begin
@@ -1342,7 +1342,7 @@ module Sun::Nio::Cs::Ext
           end
         end
         
-        typesig { [CharBuffer, ByteBuffer] }
+        typesig { [self::CharBuffer, self::ByteBuffer] }
         def encode_loop(src, dst)
           if (src.has_array && dst.has_array)
             return encode_array_loop(src, dst)

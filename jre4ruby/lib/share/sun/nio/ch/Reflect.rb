@@ -51,7 +51,7 @@ module Sun::Nio::Ch
           const_attr_reader  :SerialVersionUID
         }
         
-        typesig { [JavaThrowable] }
+        typesig { [self::JavaThrowable] }
         def initialize(x)
           super(x)
         end

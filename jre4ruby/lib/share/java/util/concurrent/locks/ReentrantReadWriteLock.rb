@@ -356,12 +356,12 @@ module Java::Util::Concurrent::Locks
           
           # ThreadLocal subclass. Easiest to explicitly define for sake
           # of deserialization mechanics.
-          const_set_lazy(:ThreadLocalHoldCounter) { Class.new(ThreadLocal) do
+          const_set_lazy(:ThreadLocalHoldCounter) { Class.new(self.class::ThreadLocal) do
             include_class_members Sync
             
             typesig { [] }
             def initial_value
-              return HoldCounter.new
+              return self.class::HoldCounter.new
             end
             
             typesig { [] }
@@ -398,7 +398,7 @@ module Java::Util::Concurrent::Locks
           @read_holds = nil
           @cached_hold_counter = nil
           super()
-          @read_holds = ThreadLocalHoldCounter.new
+          @read_holds = self.class::ThreadLocalHoldCounter.new
           set_state(get_state) # ensures visibility of readHolds
         end
         
@@ -430,7 +430,7 @@ module Java::Util::Concurrent::Locks
         # condition wait and re-established in tryAcquire.
         def try_release(releases)
           if (!is_held_exclusively)
-            raise IllegalMonitorStateException.new
+            raise self.class::IllegalMonitorStateException.new
           end
           nextc = get_state - releases
           free = (exclusive_count(nextc)).equal?(0)
@@ -461,7 +461,7 @@ module Java::Util::Concurrent::Locks
               return false
             end
             if (w + exclusive_count(acquires) > self.class::MAX_COUNT)
-              raise JavaError.new("Maximum lock count exceeded")
+              raise self.class::JavaError.new("Maximum lock count exceeded")
             end
             # Reentrant acquire
             set_state(c + acquires)
@@ -482,7 +482,7 @@ module Java::Util::Concurrent::Locks
             rh = @read_holds.get
           end
           if (rh.try_decrement <= 0)
-            raise IllegalMonitorStateException.new
+            raise self.class::IllegalMonitorStateException.new
           end
           loop do
             c = get_state
@@ -515,7 +515,7 @@ module Java::Util::Concurrent::Locks
             return -1
           end
           if ((shared_count(c)).equal?(self.class::MAX_COUNT))
-            raise JavaError.new("Maximum lock count exceeded")
+            raise self.class::JavaError.new("Maximum lock count exceeded")
           end
           if (!reader_should_block && compare_and_set_state(c, c + self.class::SHARED_UNIT))
             rh = @cached_hold_counter
@@ -528,7 +528,7 @@ module Java::Util::Concurrent::Locks
           return full_try_acquire_shared(current)
         end
         
-        typesig { [JavaThread] }
+        typesig { [self::JavaThread] }
         # Full version of acquire for reads, that handles CAS misses
         # and reentrant reads not dealt with in tryAcquireShared.
         def full_try_acquire_shared(current)
@@ -547,7 +547,7 @@ module Java::Util::Concurrent::Locks
               return -1
             end
             if ((shared_count(c)).equal?(self.class::MAX_COUNT))
-              raise JavaError.new("Maximum lock count exceeded")
+              raise self.class::JavaError.new("Maximum lock count exceeded")
             end
             if (compare_and_set_state(c, c + self.class::SHARED_UNIT))
               @cached_hold_counter = rh # cache for release
@@ -570,7 +570,7 @@ module Java::Util::Concurrent::Locks
               return false
             end
             if ((w).equal?(self.class::MAX_COUNT))
-              raise JavaError.new("Maximum lock count exceeded")
+              raise self.class::JavaError.new("Maximum lock count exceeded")
             end
           end
           if (!compare_and_set_state(c, c + 1))
@@ -592,7 +592,7 @@ module Java::Util::Concurrent::Locks
               return false
             end
             if ((shared_count(c)).equal?(self.class::MAX_COUNT))
-              raise JavaError.new("Maximum lock count exceeded")
+              raise self.class::JavaError.new("Maximum lock count exceeded")
             end
             if (compare_and_set_state(c, c + self.class::SHARED_UNIT))
               rh = @cached_hold_counter
@@ -615,7 +615,7 @@ module Java::Util::Concurrent::Locks
         typesig { [] }
         # Methods relayed to outer class
         def new_condition
-          return ConditionObject.new
+          return self.class::ConditionObject.new
         end
         
         typesig { [] }
@@ -644,12 +644,12 @@ module Java::Util::Concurrent::Locks
           return (get_read_lock_count).equal?(0) ? 0 : @read_holds.get.attr_count
         end
         
-        typesig { [Java::Io::ObjectInputStream] }
+        typesig { [Java::Io::self::ObjectInputStream] }
         # Reconstitute this lock instance from a stream
         # @param s the stream
         def read_object(s)
           s.default_read_object
-          @read_holds = ThreadLocalHoldCounter.new
+          @read_holds = self.class::ThreadLocalHoldCounter.new
           set_state(0) # reset to unlocked state
         end
         
@@ -741,7 +741,7 @@ module Java::Util::Concurrent::Locks
         alias_method :attr_sync=, :sync=
         undef_method :sync=
         
-        typesig { [ReentrantReadWriteLock] }
+        typesig { [self::ReentrantReadWriteLock] }
         # Constructor for use by subclasses
         # 
         # @param lock the outer lock object
@@ -834,7 +834,7 @@ module Java::Util::Concurrent::Locks
           return @sync.try_read_lock
         end
         
-        typesig { [::Java::Long, TimeUnit] }
+        typesig { [::Java::Long, self::TimeUnit] }
         # Acquires the read lock if the write lock is not held by
         # another thread within the given waiting time and the
         # current thread has not been {@linkplain Thread#interrupt
@@ -916,7 +916,7 @@ module Java::Util::Concurrent::Locks
         # 
         # @throws UnsupportedOperationException always
         def new_condition
-          raise UnsupportedOperationException.new
+          raise self.class::UnsupportedOperationException.new
         end
         
         typesig { [] }
@@ -951,7 +951,7 @@ module Java::Util::Concurrent::Locks
         alias_method :attr_sync=, :sync=
         undef_method :sync=
         
-        typesig { [ReentrantReadWriteLock] }
+        typesig { [self::ReentrantReadWriteLock] }
         # Constructor for use by subclasses
         # 
         # @param lock the outer lock object
@@ -1067,7 +1067,7 @@ module Java::Util::Concurrent::Locks
           return @sync.try_write_lock
         end
         
-        typesig { [::Java::Long, TimeUnit] }
+        typesig { [::Java::Long, self::TimeUnit] }
         # Acquires the write lock if it is not held by another thread
         # within the given waiting time and the current thread has
         # not been {@linkplain Thread#interrupt interrupted}.

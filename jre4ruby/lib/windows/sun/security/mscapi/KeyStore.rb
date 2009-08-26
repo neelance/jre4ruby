@@ -107,12 +107,12 @@ module Sun::Security::Mscapi
         alias_method :attr_alias=, :alias=
         undef_method :alias=
         
-        typesig { [Key, Array.typed(X509Certificate)] }
+        typesig { [self::Key, Array.typed(self::X509Certificate)] }
         def initialize(key, chain)
           initialize__key_entry(nil, key, chain)
         end
         
-        typesig { [String, Key, Array.typed(X509Certificate)] }
+        typesig { [self::String, self::Key, Array.typed(self::X509Certificate)] }
         def initialize(alias_, key, chain)
           @private_key = nil
           @cert_chain = nil
@@ -134,7 +134,7 @@ module Sun::Security::Mscapi
           return @alias
         end
         
-        typesig { [String] }
+        typesig { [self::String] }
         # Sets the alias for the keystore entry.
         def set_alias(alias_)
           # TODO - set friendly name prop in cert store
@@ -147,7 +147,7 @@ module Sun::Security::Mscapi
           return @private_key
         end
         
-        typesig { [RSAPrivateCrtKey] }
+        typesig { [self::RSAPrivateCrtKey] }
         # Sets the private key for the keystore entry.
         def set_private_key(key)
           modulus_bytes = key.get_modulus.to_byte_array
@@ -163,7 +163,7 @@ module Sun::Security::Mscapi
           return @cert_chain
         end
         
-        typesig { [Array.typed(X509Certificate)] }
+        typesig { [Array.typed(self::X509Certificate)] }
         # Sets the certificate chain for the keystore entry.
         def set_certificate_chain(chain)
           i = 0

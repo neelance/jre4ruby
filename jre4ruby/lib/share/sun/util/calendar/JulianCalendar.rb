@@ -60,25 +60,25 @@ module Sun::Util::Calendar
           set_cache(1, -1, 365) # January 1, 1 CE (Julian)
         end
         
-        typesig { [TimeZone] }
+        typesig { [self::TimeZone] }
         def initialize(zone)
           super(zone)
           set_cache(1, -1, 365) # January 1, 1 CE (Julian)
         end
         
-        typesig { [Era] }
+        typesig { [self::Era] }
         def set_era(era)
           if ((era).nil?)
-            raise NullPointerException.new
+            raise self.class::NullPointerException.new
           end
           if (!(era).equal?(Eras[0]) || !(era).equal?(Eras[1]))
-            raise IllegalArgumentException.new("unknown era: " + RJava.cast_to_string(era))
+            raise self.class::IllegalArgumentException.new("unknown era: " + RJava.cast_to_string(era))
           end
           super(era)
           return self
         end
         
-        typesig { [Era] }
+        typesig { [self::Era] }
         def set_known_era(era)
           BaseCalendar::Date.instance_method(:set_era).bind(self).call(era)
         end
@@ -110,7 +110,7 @@ module Sun::Util::Calendar
         def to_s
           time = super
           time = RJava.cast_to_string(time.substring(time.index_of(Character.new(?T.ord))))
-          sb = StringBuffer.new
+          sb = self.class::StringBuffer.new
           era = get_era
           if (!(era).nil?)
             n = era.get_abbreviation

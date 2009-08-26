@@ -47,7 +47,7 @@ module Sun::Util::Calendar
           super()
         end
         
-        typesig { [TimeZone] }
+        typesig { [self::TimeZone] }
         def initialize(zone)
           super(zone)
         end

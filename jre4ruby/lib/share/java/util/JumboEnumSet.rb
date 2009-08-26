@@ -172,7 +172,7 @@ module Java::Util
         typesig { [] }
         def next_
           if (!has_next)
-            raise NoSuchElementException.new
+            raise self.class::NoSuchElementException.new
           end
           @last_returned = @unseen & -@unseen
           @last_returned_index = @unseen_index
@@ -183,7 +183,7 @@ module Java::Util
         typesig { [] }
         def remove
           if ((@last_returned).equal?(0))
-            raise IllegalStateException.new
+            raise self.class::IllegalStateException.new
           end
           self.attr_elements[@last_returned_index] -= @last_returned
           self.attr_size -= 1

@@ -613,7 +613,7 @@ module Java::Util::Concurrent
         typesig { [] }
         def next_
           if (@cursor >= @array.attr_length)
-            raise NoSuchElementException.new
+            raise self.class::NoSuchElementException.new
           end
           @last_ret = @cursor
           return @array[((@cursor += 1) - 1)]
@@ -622,7 +622,7 @@ module Java::Util::Concurrent
         typesig { [] }
         def remove
           if (@last_ret < 0)
-            raise IllegalStateException.new
+            raise self.class::IllegalStateException.new
           end
           x = @array[@last_ret]
           @last_ret = -1

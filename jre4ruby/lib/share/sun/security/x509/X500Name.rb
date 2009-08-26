@@ -1376,7 +1376,7 @@ module Sun::Security::X509
           typesig { [] }
           define_method :run do
             p_class = X500Principal
-            args = Array.typed(Class).new([X500Name])
+            args = Array.typed(self.class::Class).new([X500Name])
             cons = (p_class).get_declared_constructor(args)
             cons.set_accessible(true)
             field = p_class.get_declared_field("thisX500Name")

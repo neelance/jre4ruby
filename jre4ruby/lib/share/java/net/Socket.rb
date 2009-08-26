@@ -475,7 +475,7 @@ module Java::Net
         
         typesig { [] }
         define_method :run do
-          cl = Array.typed(Class).new(2) { nil }
+          cl = Array.typed(self.class::Class).new(2) { nil }
           cl[0] = SocketAddress
           cl[1] = JavaInteger::TYPE
           clazz = self.attr_impl.get_class
@@ -483,7 +483,7 @@ module Java::Net
             begin
               clazz.get_declared_method("connect", cl)
               return Boolean::FALSE
-            rescue NoSuchMethodException => e
+            rescue self.class::NoSuchMethodException => e
               clazz = clazz.get_superclass
               # java.net.SocketImpl class will always have this abstract method.
               # If we have not found it by now in the hierarchy then it does not

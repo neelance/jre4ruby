@@ -817,7 +817,7 @@ module Java::Security
                 end
                 f.set_boolean(f, false)
                 f.set_accessible(accessible)
-              rescue JavaException => e1
+              rescue self.class::JavaException => e1
                 # If we couldn't get the class, it hasn't
                 # been loaded yet.  If there is no such
                 # field, we shouldn't try to set it.  There

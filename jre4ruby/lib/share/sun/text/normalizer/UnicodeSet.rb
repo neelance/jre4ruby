@@ -1986,7 +1986,7 @@ module Sun::Text::Normalizer
         alias_method :attr_version=, :version=
         undef_method :version=
         
-        typesig { [VersionInfo] }
+        typesig { [self::VersionInfo] }
         def initialize(version)
           @version = nil
           @version = version

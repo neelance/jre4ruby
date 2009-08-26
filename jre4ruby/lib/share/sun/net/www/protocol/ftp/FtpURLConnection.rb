@@ -217,10 +217,10 @@ module Sun::Net::Www::Protocol::Ftp
         alias_method :attr_ftp=, :ftp=
         undef_method :ftp=
         
-        typesig { [FtpClient, InputStream] }
+        typesig { [self::FtpClient, self::InputStream] }
         def initialize(cl, fd)
           @ftp = nil
-          super(BufferedInputStream.new(fd))
+          super(self.class::BufferedInputStream.new(fd))
           @ftp = cl
         end
         
@@ -231,7 +231,7 @@ module Sun::Net::Www::Protocol::Ftp
             if (!(@ftp).nil?)
               @ftp.close_server
             end
-          rescue IOException => ex
+          rescue self.class::IOException => ex
           end
         end
         
@@ -254,7 +254,7 @@ module Sun::Net::Www::Protocol::Ftp
         alias_method :attr_ftp=, :ftp=
         undef_method :ftp=
         
-        typesig { [FtpClient, OutputStream] }
+        typesig { [self::FtpClient, self::OutputStream] }
         def initialize(cl, fd)
           @ftp = nil
           super(fd)
@@ -268,7 +268,7 @@ module Sun::Net::Www::Protocol::Ftp
             if (!(@ftp).nil?)
               @ftp.close_server
             end
-          rescue IOException => ex
+          rescue self.class::IOException => ex
           end
         end
         

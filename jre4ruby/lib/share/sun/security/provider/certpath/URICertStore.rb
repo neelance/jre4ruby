@@ -493,7 +493,7 @@ module Sun::Security::Provider::Certpath
         alias_method :attr_hash_code=, :hash_code=
         undef_method :hash_code=
         
-        typesig { [URI] }
+        typesig { [self::URI] }
         def initialize(uri)
           @uri = nil
           @hash_code = 0
@@ -502,7 +502,7 @@ module Sun::Security::Provider::Certpath
         
         typesig { [Object] }
         def ==(obj)
-          if (!(obj.is_a?(URICertStoreParameters)))
+          if (!(obj.is_a?(self.class::URICertStoreParameters)))
             return false
           end
           params = obj
@@ -523,9 +523,9 @@ module Sun::Security::Provider::Certpath
         def clone
           begin
             return super
-          rescue CloneNotSupportedException => e
+          rescue self.class::CloneNotSupportedException => e
             # Cannot happen
-            raise InternalError.new(e.to_s)
+            raise self.class::InternalError.new(e.to_s)
           end
         end
         
@@ -537,7 +537,7 @@ module Sun::Security::Provider::Certpath
       const_set_lazy(:UCS) { Class.new(CertStore) do
         include_class_members URICertStore
         
-        typesig { [CertStoreSpi, Provider, String, CertStoreParameters] }
+        typesig { [self::CertStoreSpi, self::Provider, self::String, self::CertStoreParameters] }
         def initialize(spi, p, type, params)
           super(spi, p, type, params)
         end

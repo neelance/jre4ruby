@@ -1380,7 +1380,7 @@ module Sun::Security::X509
         alias_method :attr_hashcode=, :hashcode=
         undef_method :hashcode=
         
-        typesig { [X500Principal, BigInteger] }
+        typesig { [self::X500Principal, self::BigInteger] }
         # Create an X509IssuerSerial.
         # 
         # @param issuer the issuer DN
@@ -1393,7 +1393,7 @@ module Sun::Security::X509
           @serial = serial
         end
         
-        typesig { [X509Certificate] }
+        typesig { [self::X509Certificate] }
         # Construct an X509IssuerSerial from an X509Certificate.
         def initialize(cert)
           initialize__x509issuer_serial(cert.get_issuer_x500principal, cert.get_serial_number)
@@ -1425,7 +1425,7 @@ module Sun::Security::X509
           if ((o).equal?(self))
             return true
           end
-          if (!(o.is_a?(X509IssuerSerial)))
+          if (!(o.is_a?(self.class::X509IssuerSerial)))
             return false
           end
           other = o

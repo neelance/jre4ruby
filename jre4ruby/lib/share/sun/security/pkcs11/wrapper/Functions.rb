@@ -203,12 +203,12 @@ module Sun::Security::Pkcs11::Wrapper
         alias_method :attr_flag_names=, :flag_names=
         undef_method :flag_names=
         
-        typesig { [Array.typed(::Java::Long), Array.typed(String)] }
+        typesig { [Array.typed(::Java::Long), Array.typed(self::String)] }
         def initialize(flag_ids, flag_names)
           @flag_ids = nil
           @flag_names = nil
           if (!(flag_ids.attr_length).equal?(flag_names.attr_length))
-            raise AssertionError.new("Array lengths do not match")
+            raise self.class::AssertionError.new("Array lengths do not match")
           end
           @flag_ids = flag_ids
           @flag_names = flag_names
@@ -216,7 +216,7 @@ module Sun::Security::Pkcs11::Wrapper
         
         typesig { [::Java::Long] }
         def to_s(val)
-          sb = StringBuilder.new
+          sb = self.class::StringBuilder.new
           first = true
           i = 0
           while i < @flag_ids.attr_length

@@ -105,7 +105,7 @@ module Sun::Nio::Cs::Ext
       const_set_lazy(:Decoder) { Class.new(DBCS_IBM_ASCII_Decoder) do
         include_class_members IBM1381
         
-        typesig { [Charset] }
+        typesig { [self::Charset] }
         def initialize(cs)
           super(cs)
           @mask1 = 0xffe0
@@ -1384,7 +1384,7 @@ module Sun::Nio::Cs::Ext
       const_set_lazy(:Encoder) { Class.new(DBCS_IBM_ASCII_Encoder) do
         include_class_members IBM1381
         
-        typesig { [Charset] }
+        typesig { [self::Charset] }
         def initialize(cs)
           super(cs)
           @mask1 = 0xffe0
@@ -1395,7 +1395,7 @@ module Sun::Nio::Cs::Ext
           @index2a = self.class::Index2a
         end
         
-        typesig { [Charset, Array.typed(::Java::Short), String] }
+        typesig { [self::Charset, Array.typed(::Java::Short), self::String] }
         def initialize(cs, mod_idx1, mod_idx2a)
           super(cs)
           @mask1 = 0xffe0

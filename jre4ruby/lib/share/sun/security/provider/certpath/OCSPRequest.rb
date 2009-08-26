@@ -167,16 +167,16 @@ module Sun::Security::Provider::Certpath
         alias_method :attr_cert_id=, :cert_id=
         undef_method :cert_id=
         
-        typesig { [X509CertImpl, SerialNumber] }
+        typesig { [self::X509CertImpl, self::SerialNumber] }
         # No extensions are set
         def initialize(cert, serial_no)
           @cert_id = nil
-          @cert_id = CertId.new(cert, serial_no)
+          @cert_id = self.class::CertId.new(cert, serial_no)
         end
         
-        typesig { [DerOutputStream] }
+        typesig { [self::DerOutputStream] }
         def encode(out)
-          tmp = DerOutputStream.new
+          tmp = self.class::DerOutputStream.new
           @cert_id.encode(tmp)
           out.write(DerValue.attr_tag_sequence, tmp)
         end

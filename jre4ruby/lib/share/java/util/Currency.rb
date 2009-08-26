@@ -369,13 +369,13 @@ module Java::Util
             home_dir = System.get_property("java.home")
             begin
               data_file = home_dir + RJava.cast_to_string(JavaFile.attr_separator) + "lib" + RJava.cast_to_string(JavaFile.attr_separator) + "currency.data"
-              dis = DataInputStream.new(BufferedInputStream.new(FileInputStream.new(data_file)))
+              dis = self.class::DataInputStream.new(self.class::BufferedInputStream.new(self.class::FileInputStream.new(data_file)))
               if (!(dis.read_int).equal?(MAGIC_NUMBER))
-                raise InternalError.new("Currency data is possibly corrupted")
+                raise self.class::InternalError.new("Currency data is possibly corrupted")
               end
               self.attr_format_version = dis.read_int
               if (!(self.attr_format_version).equal?(VALID_FORMAT_VERSION))
-                raise InternalError.new("Currency data format is incorrect")
+                raise self.class::InternalError.new("Currency data format is incorrect")
               end
               self.attr_data_version = dis.read_int
               self.attr_main_table = read_int_array(dis, A_TO_Z * A_TO_Z)
@@ -392,25 +392,25 @@ module Java::Util
               self.attr_other_currencies_dfd = read_int_array(dis, oc_count)
               self.attr_other_currencies_numeric_code = read_int_array(dis, oc_count)
               dis.close
-            rescue IOException => e
-              ie = InternalError.new
+            rescue self.class::IOException => e
+              ie = self.class::InternalError.new
               ie.init_cause(e)
               raise ie
             end
             if (false)
               # look for the properties file for overrides
               begin
-                prop_file = JavaFile.new(home_dir + RJava.cast_to_string(JavaFile.attr_separator) + "lib" + RJava.cast_to_string(JavaFile.attr_separator) + "currency.properties")
+                prop_file = self.class::JavaFile.new(home_dir + RJava.cast_to_string(JavaFile.attr_separator) + "lib" + RJava.cast_to_string(JavaFile.attr_separator) + "currency.properties")
                 if (prop_file.exists)
-                  props = Properties.new
-                  props.load(FileReader.new(prop_file))
+                  props = self.class::Properties.new
+                  props.load(self.class::FileReader.new(prop_file))
                   keys = props.string_property_names
                   properties_pattern = Pattern.compile("([A-Z]{3})\\s*,\\s*(\\d{3})\\s*,\\s*([0-3])")
                   keys.each do |key|
                     replace_currency_data(properties_pattern, key.to_upper_case(Locale::ROOT), props.get_property(key).to_upper_case(Locale::ROOT))
                   end
                 end
-              rescue IOException => e
+              rescue self.class::IOException => e
                 log(Level::INFO, "currency.properties is ignored because of an IOException", e)
               end
             end
@@ -764,11 +764,11 @@ module Java::Util
         include LocaleServiceProviderPool::LocalizedObjectGetter
         
         class_module.module_eval {
-          const_set_lazy(:INSTANCE) { CurrencyNameGetter.new }
+          const_set_lazy(:INSTANCE) { self.class::CurrencyNameGetter.new }
           const_attr_reader  :INSTANCE
         }
         
-        typesig { [CurrencyNameProvider, Locale, String, Object] }
+        typesig { [self::CurrencyNameProvider, self::Locale, self::String, Object] }
         def get_object(currency_name_provider, locale, key, *params)
           raise AssertError if not ((params.attr_length).equal?(1))
           type = params[0]

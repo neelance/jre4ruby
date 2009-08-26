@@ -887,8 +887,8 @@ module Sun::Net::Www::Protocol::Http
               a1 = InetAddress.get_by_name(h1)
               a2 = InetAddress.get_by_name(h2)
               result[0] = (a1 == a2)
-            rescue UnknownHostException => e
-            rescue SecurityException => e
+            rescue self.class::UnknownHostException => e
+            rescue self.class::SecurityException => e
             end
             return nil
           end
@@ -2493,7 +2493,7 @@ module Sun::Net::Www::Protocol::Http
         alias_method :attr_mark_count=, :mark_count=
         undef_method :mark_count=
         
-        typesig { [InputStream] }
+        typesig { [self::InputStream] }
         def initialize(is)
           @cache_request = nil
           @output_stream = nil
@@ -2509,7 +2509,7 @@ module Sun::Net::Www::Protocol::Http
           @output_stream = nil
         end
         
-        typesig { [InputStream, CacheRequest] }
+        typesig { [self::InputStream, self::CacheRequest] }
         def initialize(is, cache_request)
           @cache_request = nil
           @output_stream = nil
@@ -2524,7 +2524,7 @@ module Sun::Net::Www::Protocol::Http
           @cache_request = cache_request
           begin
             @output_stream = cache_request.get_body
-          rescue IOException => ioex
+          rescue self.class::IOException => ioex
             @cache_request.abort
             @cache_request = nil
             @output_stream = nil
@@ -2593,7 +2593,7 @@ module Sun::Net::Www::Protocol::Http
             b = Array.typed(::Java::Byte).new(1) { 0 }
             ret = read(b)
             return ((ret).equal?(-1) ? ret : (b[0] & 0xff))
-          rescue IOException => ioex
+          rescue self.class::IOException => ioex
             if (!(@cache_request).nil?)
               @cache_request.abort
             end
@@ -2630,7 +2630,7 @@ module Sun::Net::Www::Protocol::Http
               @mark_count += new_len
             end
             return new_len
-          rescue IOException => ioex
+          rescue self.class::IOException => ioex
             if (!(@cache_request).nil?)
               @cache_request.abort
             end
@@ -2649,7 +2649,7 @@ module Sun::Net::Www::Protocol::Http
               end
             end
             super
-          rescue IOException => ioex
+          rescue self.class::IOException => ioex
             if (!(@cache_request).nil?)
               @cache_request.abort
             end
@@ -2731,7 +2731,7 @@ module Sun::Net::Www::Protocol::Http
         alias_method :attr_error_excp=, :error_excp=
         undef_method :error_excp=
         
-        typesig { [OutputStream, ::Java::Int] }
+        typesig { [self::OutputStream, ::Java::Int] }
         # expectedLength == -1 if the stream is chunked
         # expectedLength > 0 if the stream is fixed content-length
         # In the 2nd case, we make sure the expected number of
@@ -2754,7 +2754,7 @@ module Sun::Net::Www::Protocol::Http
           check_error
           @written += 1
           if (!(@expected).equal?(-1) && @written > @expected)
-            raise IOException.new("too many bytes written")
+            raise self.class::IOException.new("too many bytes written")
           end
           self.attr_out.write(b)
         end
@@ -2770,7 +2770,7 @@ module Sun::Net::Www::Protocol::Http
           @written += len
           if (!(@expected).equal?(-1) && @written > @expected)
             self.attr_out.close
-            raise IOException.new("too many bytes written")
+            raise self.class::IOException.new("too many bytes written")
           end
           self.attr_out.write(b, off, len)
         end
@@ -2778,13 +2778,13 @@ module Sun::Net::Www::Protocol::Http
         typesig { [] }
         def check_error
           if (@closed)
-            raise IOException.new("Stream is closed")
+            raise self.class::IOException.new("Stream is closed")
           end
           if (@error)
             raise @error_excp
           end
           if ((self.attr_out).check_error)
-            raise IOException.new("Error writing request body to server")
+            raise self.class::IOException.new("Error writing request body to server")
           end
         end
         
@@ -2806,7 +2806,7 @@ module Sun::Net::Www::Protocol::Http
             # not chunked
             if (!(@written).equal?(@expected))
               @error = true
-              @error_excp = IOException.new("insufficient data written")
+              @error_excp = self.class::IOException.new("insufficient data written")
               self.attr_out.close
               raise @error_excp
             end
@@ -2843,7 +2843,7 @@ module Sun::Net::Www::Protocol::Http
         alias_method :attr_is=, :is=
         undef_method :is=
         
-        typesig { [ByteBuffer] }
+        typesig { [self::ByteBuffer] }
         def initialize(buf)
           @buffer = nil
           @is = nil
@@ -2852,7 +2852,7 @@ module Sun::Net::Www::Protocol::Http
           @is = nil
         end
         
-        typesig { [ByteBuffer, InputStream] }
+        typesig { [self::ByteBuffer, self::InputStream] }
         def initialize(buf, is)
           @buffer = nil
           @is = nil
@@ -2862,7 +2862,7 @@ module Sun::Net::Www::Protocol::Http
         end
         
         class_module.module_eval {
-          typesig { [InputStream, ::Java::Int, HttpClient] }
+          typesig { [self::InputStream, ::Java::Int, self::HttpClient] }
           # when this method is called, it's either the case that cl > 0, or
           # if chunk-encoded, cl = -1; in other words, cl can't be 0
           def get_error_stream(is, cl, http)
@@ -2899,10 +2899,10 @@ module Sun::Net::Www::Protocol::Http
                         break
                       end
                       # the server sends less than cl bytes of data
-                      raise IOException.new("the server closes" + " before sending " + RJava.cast_to_string(cl) + " bytes of data")
+                      raise self.class::IOException.new("the server closes" + " before sending " + RJava.cast_to_string(cl) + " bytes of data")
                     end
                     count += len
-                  rescue SocketTimeoutException => ex
+                  rescue self.class::SocketTimeoutException => ex
                     time += self.attr_timeout4esbuffer / 5
                   end
                 end while (count < expected && time < self.attr_timeout4esbuffer)
@@ -2920,15 +2920,15 @@ module Sun::Net::Www::Protocol::Http
                     # put the connection into keep-alive cache
                     # the inputstream will try to do the right thing
                     is.close
-                    return ErrorStream.new(ByteBuffer.wrap(buffer, 0, count))
+                    return self.class::ErrorStream.new(ByteBuffer.wrap(buffer, 0, count))
                   else
                     # we read part of the response body
-                    return ErrorStream.new(ByteBuffer.wrap(buffer, 0, count), is)
+                    return self.class::ErrorStream.new(ByteBuffer.wrap(buffer, 0, count), is)
                   end
                 end
               end
               return nil
-            rescue IOException => ioex
+            rescue self.class::IOException => ioex
               # ioex.printStackTrace();
               return nil
             end

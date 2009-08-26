@@ -178,7 +178,7 @@ module Java::Net
           @i = 0
           @count = 0
           @local_addrs = nil
-          @local_addrs = Array.typed(InetAddress).new(self.attr_addrs.attr_length) { nil }
+          @local_addrs = Array.typed(self.class::InetAddress).new(self.attr_addrs.attr_length) { nil }
           sec = System.get_security_manager
           j = 0
           while j < self.attr_addrs.attr_length
@@ -187,7 +187,7 @@ module Java::Net
                 sec.check_connect(self.attr_addrs[j].get_host_address, -1)
               end
               @local_addrs[((@count += 1) - 1)] = self.attr_addrs[j]
-            rescue SecurityException => e
+            rescue self.class::SecurityException => e
             end
             j += 1
           end
@@ -198,7 +198,7 @@ module Java::Net
           if (@i < @count)
             return @local_addrs[((@i += 1) - 1)]
           else
-            raise NoSuchElementException.new
+            raise self.class::NoSuchElementException.new
           end
         end
         
@@ -273,7 +273,7 @@ module Java::Net
           if (@i < self.attr_childs.attr_length)
             return self.attr_childs[((@i += 1) - 1)]
           else
-            raise NoSuchElementException.new
+            raise self.class::NoSuchElementException.new
           end
         end
         
@@ -412,7 +412,7 @@ module Java::Net
               netif = netifs[((@i += 1) - 1)]
               return netif
             else
-              raise NoSuchElementException.new
+              raise self.class::NoSuchElementException.new
             end
           end
           

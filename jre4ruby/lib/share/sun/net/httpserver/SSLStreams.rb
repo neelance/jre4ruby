@@ -204,7 +204,7 @@ module Sun::Net::Httpserver
         alias_method :attr_cfg=, :cfg=
         undef_method :cfg=
         
-        typesig { [HttpsConfigurator, InetSocketAddress] }
+        typesig { [self::HttpsConfigurator, self::InetSocketAddress] }
         def initialize(cfg, addr)
           @addr = nil
           @params = nil
@@ -224,7 +224,7 @@ module Sun::Net::Httpserver
           return @cfg
         end
         
-        typesig { [SSLParameters] }
+        typesig { [self::SSLParameters] }
         def set_sslparameters(p)
           @params = p
         end
@@ -507,7 +507,7 @@ module Sun::Net::Httpserver
         alias_method :attr_u_remaining=, :u_remaining=
         undef_method :u_remaining=
         
-        typesig { [SocketChannel, SSLEngine] }
+        typesig { [self::SocketChannel, self::SSLEngine] }
         # the number of bytes left in unwrap_src after an unwrap()
         def initialize(chan, engine)
           @chan = nil
@@ -542,7 +542,7 @@ module Sun::Net::Httpserver
           @sc.free_selector(@read_selector)
         end
         
-        typesig { [ByteBuffer] }
+        typesig { [self::ByteBuffer] }
         # try to wrap and send the data in src. Handles OVERFLOW.
         # Might block if there is an outbound blockage or if another
         # thread is calling wrap(). Also, might not send any data
@@ -551,13 +551,13 @@ module Sun::Net::Httpserver
           return wrap_and_send_x(src, false)
         end
         
-        typesig { [ByteBuffer, ::Java::Boolean] }
+        typesig { [self::ByteBuffer, ::Java::Boolean] }
         def wrap_and_send_x(src, ignore_close)
           if (@closed && !ignore_close)
-            raise IOException.new("Engine is closed")
+            raise self.class::IOException.new("Engine is closed")
           end
           status = nil
-          r = WrapperResult.new
+          r = self.class::WrapperResult.new
           synchronized((@wrap_lock)) do
             @wrap_dst.clear
             begin
@@ -581,7 +581,7 @@ module Sun::Net::Httpserver
                 @write_selector.select(self.attr_write_timeout) # timeout
                 currtime = self.attr_time.get_time
                 if (currtime > maxtime)
-                  raise SocketTimeoutException.new("write timed out")
+                  raise self.class::SocketTimeoutException.new("write timed out")
                 end
                 @write_selector.selected_keys.clear
                 l -= @chan.write(@wrap_dst)
@@ -591,17 +591,17 @@ module Sun::Net::Httpserver
           return r
         end
         
-        typesig { [ByteBuffer] }
+        typesig { [self::ByteBuffer] }
         # block until a complete message is available and return it
         # in dst, together with the Result. dst may have been re-allocated
         # so caller should check the returned value in Result
         # If handshaking is in progress then, possibly no data is returned
         def recv_and_unwrap(dst)
           status = Status::OK
-          r = WrapperResult.new
+          r = self.class::WrapperResult.new
           r.attr_buf = dst
           if (@closed)
-            raise IOException.new("Engine is closed")
+            raise self.class::IOException.new("Engine is closed")
           end
           need_data = false
           if (@u_remaining > 0)
@@ -621,7 +621,7 @@ module Sun::Net::Httpserver
                 maxtime = curr_time + self.attr_read_timeout
                 begin
                   if (curr_time > maxtime)
-                    raise SocketTimeoutException.new("read timedout")
+                    raise self.class::SocketTimeoutException.new("read timedout")
                   end
                   y = @read_selector.select(self.attr_read_timeout)
                   curr_time = self.attr_time.get_time
@@ -629,7 +629,7 @@ module Sun::Net::Httpserver
                 @read_selector.selected_keys.clear
                 x = @chan.read(@unwrap_src)
                 if ((x).equal?(-1))
-                  raise IOException.new("connection closed for reading")
+                  raise self.class::IOException.new("connection closed for reading")
                 end
                 @unwrap_src.flip
               end
@@ -829,7 +829,7 @@ module Sun::Net::Httpserver
         typesig { [Array.typed(::Java::Byte), ::Java::Int, ::Java::Int] }
         def read(buf, off, len)
           if (@closed)
-            raise IOException.new("SSL stream is closed")
+            raise self.class::IOException.new("SSL stream is closed")
           end
           if (@eof)
             return 0
@@ -871,14 +871,14 @@ module Sun::Net::Httpserver
         
         typesig { [] }
         def reset
-          raise IOException.new("mark/reset not supported")
+          raise self.class::IOException.new("mark/reset not supported")
         end
         
         typesig { [::Java::Long] }
         def skip(s)
           n = RJava.cast_to_int(s)
           if (@closed)
-            raise IOException.new("SSL stream is closed")
+            raise self.class::IOException.new("SSL stream is closed")
           end
           if (@eof)
             return 0
@@ -983,7 +983,7 @@ module Sun::Net::Httpserver
         typesig { [Array.typed(::Java::Byte), ::Java::Int, ::Java::Int] }
         def write(b, off, len)
           if (@closed)
-            raise IOException.new("output stream is closed")
+            raise self.class::IOException.new("output stream is closed")
           end
           while (len > 0)
             l = len > @buf.capacity ? @buf.capacity : len
@@ -996,7 +996,7 @@ module Sun::Net::Httpserver
             if ((r.attr_result.get_status).equal?(Status::CLOSED))
               @closed = true
               if (len > 0)
-                raise IOException.new("output stream is closed")
+                raise self.class::IOException.new("output stream is closed")
               end
             end
           end

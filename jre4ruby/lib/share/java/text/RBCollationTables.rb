@@ -105,7 +105,7 @@ module Java::Text
         def initialize
         end
         
-        typesig { [::Java::Boolean, ::Java::Boolean, UCompactIntArray, Vector, Vector, IntHashtable, ::Java::Short, ::Java::Short] }
+        typesig { [::Java::Boolean, ::Java::Boolean, self::UCompactIntArray, self::Vector, self::Vector, self::IntHashtable, ::Java::Short, ::Java::Short] }
         # This function is used by RBTableBuilder to fill in all the members of this
         # object.  (Effectively, the builder class functions as a "friend" of this
         # class, but to avoid changing too much of the logic, it carries around "shadow"

@@ -66,7 +66,7 @@ module Sun::Reflect
           
           typesig { [] }
           define_method :run do
-            return DelegatingClassLoader.new(parent_class_loader)
+            return self.class::DelegatingClassLoader.new(parent_class_loader)
           end
           
           typesig { [] }

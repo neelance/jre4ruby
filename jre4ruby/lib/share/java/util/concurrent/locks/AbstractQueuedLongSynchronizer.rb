@@ -168,7 +168,7 @@ module Java::Util::Concurrent::Locks
         
         class_module.module_eval {
           # Marker to indicate a node is waiting in shared mode
-          const_set_lazy(:SHARED) { Node.new }
+          const_set_lazy(:SHARED) { self.class::Node.new }
           const_attr_reader  :SHARED
           
           # Marker to indicate a node is waiting in exclusive mode
@@ -300,7 +300,7 @@ module Java::Util::Concurrent::Locks
         def predecessor
           p = @prev
           if ((p).nil?)
-            raise NullPointerException.new
+            raise self.class::NullPointerException.new
           else
             return p
           end
@@ -315,7 +315,7 @@ module Java::Util::Concurrent::Locks
           @next_waiter = nil # Used to establish initial head or SHARED marker
         end
         
-        typesig { [JavaThread, Node] }
+        typesig { [self::JavaThread, self::Node] }
         def initialize(thread, mode)
           @wait_status = 0
           @prev = nil
@@ -326,7 +326,7 @@ module Java::Util::Concurrent::Locks
           @thread = thread
         end
         
-        typesig { [JavaThread, ::Java::Int] }
+        typesig { [self::JavaThread, ::Java::Int] }
         def initialize(thread, wait_status)
           @wait_status = 0
           @prev = nil
@@ -1668,7 +1668,7 @@ module Java::Util::Concurrent::Locks
             unlink_cancelled_waiters
             t = @last_waiter
           end
-          node = Node.new(JavaThread.current_thread, Node::CONDITION)
+          node = self.class::Node.new(JavaThread.current_thread, Node::CONDITION)
           if ((t).nil?)
             @first_waiter = node
           else
@@ -1678,7 +1678,7 @@ module Java::Util::Concurrent::Locks
           return node
         end
         
-        typesig { [Node] }
+        typesig { [self::Node] }
         # Removes and transfers nodes until hit non-cancelled one or
         # null. Split out from signal in part to encourage compilers
         # to inline the case of no waiters.
@@ -1692,7 +1692,7 @@ module Java::Util::Concurrent::Locks
           end while (!transfer_for_signal(first) && !((first = @first_waiter)).nil?)
         end
         
-        typesig { [Node] }
+        typesig { [self::Node] }
         # Removes and transfers all nodes.
         # @param first (non-null) the first node on condition queue
         def do_signal_all(first)
@@ -1751,7 +1751,7 @@ module Java::Util::Concurrent::Locks
         # returns {@code false}
         def signal
           if (!is_held_exclusively)
-            raise IllegalMonitorStateException.new
+            raise self.class::IllegalMonitorStateException.new
           end
           first = @first_waiter
           if (!(first).nil?)
@@ -1767,7 +1767,7 @@ module Java::Util::Concurrent::Locks
         # returns {@code false}
         def signal_all
           if (!is_held_exclusively)
-            raise IllegalMonitorStateException.new
+            raise self.class::IllegalMonitorStateException.new
           end
           first = @first_waiter
           if (!(first).nil?)
@@ -1816,7 +1816,7 @@ module Java::Util::Concurrent::Locks
           const_attr_reader  :THROW_IE
         }
         
-        typesig { [Node] }
+        typesig { [self::Node] }
         # Checks for interrupt, returning THROW_IE if interrupted
         # before signalled, REINTERRUPT if after signalled, or
         # 0 if not interrupted.
@@ -1829,7 +1829,7 @@ module Java::Util::Concurrent::Locks
         # does nothing, depending on mode.
         def report_interrupt_after_wait(interrupt_mode)
           if ((interrupt_mode).equal?(self.class::THROW_IE))
-            raise InterruptedException.new
+            raise self.class::InterruptedException.new
           else
             if ((interrupt_mode).equal?(self.class::REINTERRUPT))
               self_interrupt
@@ -1852,7 +1852,7 @@ module Java::Util::Concurrent::Locks
         # </ol>
         def await
           if (JavaThread.interrupted)
-            raise InterruptedException.new
+            raise self.class::InterruptedException.new
           end
           node = add_condition_waiter
           saved_state = fully_release(node)
@@ -1890,7 +1890,7 @@ module Java::Util::Concurrent::Locks
         # </ol>
         def await_nanos(nanos_timeout)
           if (JavaThread.interrupted)
-            raise InterruptedException.new
+            raise self.class::InterruptedException.new
           end
           node = add_condition_waiter
           saved_state = fully_release(node)
@@ -1921,7 +1921,7 @@ module Java::Util::Concurrent::Locks
           return nanos_timeout - (System.nano_time - last_time)
         end
         
-        typesig { [Date] }
+        typesig { [self::Date] }
         # Implements absolute timed condition wait.
         # <ol>
         # <li> If current thread is interrupted, throw InterruptedException.
@@ -1937,11 +1937,11 @@ module Java::Util::Concurrent::Locks
         # </ol>
         def await_until(deadline)
           if ((deadline).nil?)
-            raise NullPointerException.new
+            raise self.class::NullPointerException.new
           end
           abstime = deadline.get_time
           if (JavaThread.interrupted)
-            raise InterruptedException.new
+            raise self.class::InterruptedException.new
           end
           node = add_condition_waiter
           saved_state = fully_release(node)
@@ -1969,7 +1969,7 @@ module Java::Util::Concurrent::Locks
           return !timedout
         end
         
-        typesig { [::Java::Long, TimeUnit] }
+        typesig { [::Java::Long, self::TimeUnit] }
         # Implements timed condition wait.
         # <ol>
         # <li> If current thread is interrupted, throw InterruptedException.
@@ -1985,11 +1985,11 @@ module Java::Util::Concurrent::Locks
         # </ol>
         def await(time, unit)
           if ((unit).nil?)
-            raise NullPointerException.new
+            raise self.class::NullPointerException.new
           end
           nanos_timeout = unit.to_nanos(time)
           if (JavaThread.interrupted)
-            raise InterruptedException.new
+            raise self.class::InterruptedException.new
           end
           node = add_condition_waiter
           saved_state = fully_release(node)
@@ -2023,7 +2023,7 @@ module Java::Util::Concurrent::Locks
           return !timedout
         end
         
-        typesig { [AbstractQueuedLongSynchronizer] }
+        typesig { [self::AbstractQueuedLongSynchronizer] }
         # support for instrumentation
         # 
         # Returns true if this condition was created by the given
@@ -2043,7 +2043,7 @@ module Java::Util::Concurrent::Locks
         # returns {@code false}
         def has_waiters
           if (!is_held_exclusively)
-            raise IllegalMonitorStateException.new
+            raise self.class::IllegalMonitorStateException.new
           end
           w = @first_waiter
           while !(w).nil?
@@ -2065,7 +2065,7 @@ module Java::Util::Concurrent::Locks
         # returns {@code false}
         def get_wait_queue_length
           if (!is_held_exclusively)
-            raise IllegalMonitorStateException.new
+            raise self.class::IllegalMonitorStateException.new
           end
           n = 0
           w = @first_waiter
@@ -2088,9 +2088,9 @@ module Java::Util::Concurrent::Locks
         # returns {@code false}
         def get_waiting_threads
           if (!is_held_exclusively)
-            raise IllegalMonitorStateException.new
+            raise self.class::IllegalMonitorStateException.new
           end
-          list = ArrayList.new
+          list = self.class::ArrayList.new
           w = @first_waiter
           while !(w).nil?
             if ((w.attr_wait_status).equal?(Node::CONDITION))

@@ -81,11 +81,11 @@ module Sun::Nio::Cs::Ext
         alias_method :attr_jis_dec0201=, :jis_dec0201=
         undef_method :jis_dec0201=
         
-        typesig { [Charset] }
+        typesig { [self::Charset] }
         def initialize(cs)
           @jis_dec0201 = nil
           super(cs)
-          @jis_dec0201 = JIS_X_0201::Decoder.new(cs)
+          @jis_dec0201 = self.class::JIS_X_0201::Decoder.new(cs)
         end
         
         typesig { [::Java::Int] }
@@ -97,7 +97,7 @@ module Sun::Nio::Cs::Ext
           return @jis_dec0201.decode(b)
         end
         
-        typesig { [ByteBuffer, CharBuffer] }
+        typesig { [self::ByteBuffer, self::CharBuffer] }
         # Make some protected methods public for use by JISAutoDetect
         def decode_loop(src, dst)
           return super(src, dst)
@@ -108,7 +108,7 @@ module Sun::Nio::Cs::Ext
           super
         end
         
-        typesig { [CharBuffer] }
+        typesig { [self::CharBuffer] }
         def impl_flush(out)
           return super(out)
         end
@@ -126,11 +126,11 @@ module Sun::Nio::Cs::Ext
         alias_method :attr_jis_enc0201=, :jis_enc0201=
         undef_method :jis_enc0201=
         
-        typesig { [Charset] }
+        typesig { [self::Charset] }
         def initialize(cs)
           @jis_enc0201 = nil
           super(cs)
-          @jis_enc0201 = JIS_X_0201::Encoder.new(cs)
+          @jis_enc0201 = self.class::JIS_X_0201::Encoder.new(cs)
         end
         
         typesig { [::Java::Char] }

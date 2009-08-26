@@ -131,12 +131,12 @@ module Sun::Nio::Ch
           return get(desc)
         end
         
-        typesig { [SelectionKeyImpl] }
+        typesig { [self::SelectionKeyImpl] }
         def put(ski)
-          return put(ski.attr_channel.get_fdval, MapEntry.new(ski))
+          return put(ski.attr_channel.get_fdval, self.class::MapEntry.new(ski))
         end
         
-        typesig { [SelectionKeyImpl] }
+        typesig { [self::SelectionKeyImpl] }
         def remove(ski)
           fd = ski.attr_channel.get_fdval
           x = get(fd)
@@ -177,7 +177,7 @@ module Sun::Nio::Ch
         alias_method :attr_cleared_count=, :cleared_count=
         undef_method :cleared_count=
         
-        typesig { [SelectionKeyImpl] }
+        typesig { [self::SelectionKeyImpl] }
         def initialize(ski)
           @ski = nil
           @update_count = 0
@@ -338,7 +338,7 @@ module Sun::Nio::Ch
           end # wake up threads.
         end
         
-        typesig { [SelectThread] }
+        typesig { [self::SelectThread] }
         # This function is called by a helper thread to wait for the
         # next round of poll(). It also checks, if this thread became
         # redundant. If yes, it returns true, notifying the thread
@@ -349,7 +349,7 @@ module Sun::Nio::Ch
               while ((@runs_counter).equal?(thread.attr_last_run))
                 begin
                   self.attr_start_lock.wait
-                rescue InterruptedException => e
+                rescue self.class::InterruptedException => e
                   JavaThread.current_thread.interrupt
                 end
               end
@@ -437,7 +437,7 @@ module Sun::Nio::Ch
             while (!(@threads_to_finish).equal?(0))
               begin
                 self.attr_finish_lock.wait
-              rescue InterruptedException => e
+              rescue self.class::InterruptedException => e
                 # Interrupted - set interrupted state.
                 JavaThread.current_thread.interrupt
               end
@@ -445,7 +445,7 @@ module Sun::Nio::Ch
           end
         end
         
-        typesig { [IOException] }
+        typesig { [self::IOException] }
         # sets IOException for this run
         def set_exception(e)
           synchronized(self) do
@@ -460,11 +460,11 @@ module Sun::Nio::Ch
           if ((@exception).nil?)
             return
           end
-          message = StringBuffer.new("An exception occured" + " during the execution of select(): \n")
+          message = self.class::StringBuffer.new("An exception occured" + " during the execution of select(): \n")
           message.append(@exception)
           message.append(Character.new(?\n.ord))
           @exception = nil
-          raise IOException.new(message.to_s)
+          raise self.class::IOException.new(message.to_s)
         end
         
         typesig { [] }
@@ -659,7 +659,7 @@ module Sun::Nio::Ch
           super()
           @last_run = 0
           @index = i
-          @sub_selector = SubSelector.new(i)
+          @sub_selector = self.class::SubSelector.new(i)
           # make sure we wait for next round of poll
           @last_run = self.attr_start_lock.attr_runs_counter
         end
@@ -676,7 +676,7 @@ module Sun::Nio::Ch
             # call poll()
             begin
               @sub_selector.poll(@index)
-            rescue IOException => e
+            rescue self.class::IOException => e
               # Save this exception and let other threads finish.
               self.attr_finish_lock.set_exception(e)
             end

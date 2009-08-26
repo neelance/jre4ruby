@@ -421,7 +421,7 @@ module Java::Util::Jar
         alias_method :attr_num_left=, :num_left=
         undef_method :num_left=
         
-        typesig { [Manifest, JarEntry, InputStream, JarVerifier] }
+        typesig { [self::Manifest, self::JarEntry, self::InputStream, self::JarVerifier] }
         def initialize(man, je, is, jv)
           @is = nil
           @jv = nil
@@ -430,7 +430,7 @@ module Java::Util::Jar
           super()
           @is = is
           @jv = jv
-          @mev = ManifestEntryVerifier.new(man)
+          @mev = self.class::ManifestEntryVerifier.new(man)
           @jv.begin_entry(je, @mev)
           @num_left = je.get_size
           if ((@num_left).equal?(0))

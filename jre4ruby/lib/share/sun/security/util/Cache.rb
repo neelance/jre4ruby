@@ -190,7 +190,7 @@ module Sun::Security::Util
           if ((self).equal?(obj))
             return true
           end
-          if ((obj.is_a?(EqualByteArray)).equal?(false))
+          if ((obj.is_a?(self.class::EqualByteArray)).equal?(false))
             return false
           end
           other = obj
@@ -560,7 +560,7 @@ module Sun::Security::Util
         alias_method :attr_expiration_time=, :expiration_time=
         undef_method :expiration_time=
         
-        typesig { [Object, Object, ::Java::Long, ReferenceQueue] }
+        typesig { [Object, Object, ::Java::Long, self::ReferenceQueue] }
         def initialize(key, value, expiration_time, queue)
           @key = nil
           @expiration_time = 0

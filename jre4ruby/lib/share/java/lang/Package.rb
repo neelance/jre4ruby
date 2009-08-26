@@ -562,10 +562,10 @@ module Java::Lang
             url = self.attr_urls.get(fn)
             if ((url).nil?)
               # URL not found, so create one
-              file = JavaFile.new(fn)
+              file = self.class::JavaFile.new(fn)
               begin
                 url = ParseUtil.file_to_encoded_url(file)
-              rescue MalformedURLException => e
+              rescue self.class::MalformedURLException => e
               end
               if (!(url).nil?)
                 self.attr_urls.put(fn, url)
@@ -580,9 +580,9 @@ module Java::Lang
             pkg = nil
             man = self.attr_mans.get(fn)
             if (!(man).nil?)
-              pkg = Package.new(name, man, url, nil)
+              pkg = self.class::Package.new(name, man, url, nil)
             else
-              pkg = Package.new(name, nil, nil, nil, nil, nil, nil, nil, nil)
+              pkg = self.class::Package.new(name, nil, nil, nil, nil, nil, nil, nil, nil)
             end
             self.attr_pkgs.put(name, pkg)
             return pkg

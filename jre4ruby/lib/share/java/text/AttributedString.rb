@@ -810,7 +810,7 @@ module Java::Text
         alias_method :attr_current_run_limit=, :current_run_limit=
         undef_method :current_run_limit=
         
-        typesig { [Array.typed(Attribute), ::Java::Int, ::Java::Int] }
+        typesig { [Array.typed(self::Attribute), ::Java::Int, ::Java::Int] }
         # constructor
         def initialize(attributes, begin_index, end_index)
           @begin_index = 0
@@ -821,7 +821,7 @@ module Java::Text
           @current_run_start = 0
           @current_run_limit = 0
           if (begin_index < 0 || begin_index > end_index || end_index > length)
-            raise IllegalArgumentException.new("Invalid substring range")
+            raise self.class::IllegalArgumentException.new("Invalid substring range")
           end
           @begin_index = begin_index
           @end_index = end_index
@@ -838,7 +838,7 @@ module Java::Text
           if ((self).equal?(obj))
             return true
           end
-          if (!(obj.is_a?(AttributedStringIterator)))
+          if (!(obj.is_a?(self.class::AttributedStringIterator)))
             return false
           end
           that = obj
@@ -861,8 +861,8 @@ module Java::Text
           begin
             other = super
             return other
-          rescue CloneNotSupportedException => e
-            raise InternalError.new
+          rescue self.class::CloneNotSupportedException => e
+            raise self.class::InternalError.new
           end
         end
         
@@ -911,7 +911,7 @@ module Java::Text
         typesig { [::Java::Int] }
         def set_index(position)
           if (position < @begin_index || position > @end_index)
-            raise IllegalArgumentException.new("Invalid index")
+            raise self.class::IllegalArgumentException.new("Invalid index")
           end
           return internal_set_index(position)
         end
@@ -937,7 +937,7 @@ module Java::Text
           return @current_run_start
         end
         
-        typesig { [Attribute] }
+        typesig { [self::Attribute] }
         def get_run_start(attribute)
           if ((@current_run_start).equal?(@begin_index) || (@current_run_index).equal?(-1))
             return @current_run_start
@@ -956,7 +956,7 @@ module Java::Text
           end
         end
         
-        typesig { [JavaSet] }
+        typesig { [self::JavaSet] }
         def get_run_start(attributes)
           if ((@current_run_start).equal?(@begin_index) || (@current_run_index).equal?(-1))
             return @current_run_start
@@ -979,7 +979,7 @@ module Java::Text
           return @current_run_limit
         end
         
-        typesig { [Attribute] }
+        typesig { [self::Attribute] }
         def get_run_limit(attribute)
           if ((@current_run_limit).equal?(@end_index) || (@current_run_index).equal?(-1))
             return @current_run_limit
@@ -998,7 +998,7 @@ module Java::Text
           end
         end
         
-        typesig { [JavaSet] }
+        typesig { [self::JavaSet] }
         def get_run_limit(attributes)
           if ((@current_run_limit).equal?(@end_index) || (@current_run_index).equal?(-1))
             return @current_run_limit
@@ -1021,9 +1021,9 @@ module Java::Text
           if ((self.attr_run_attributes).nil? || (@current_run_index).equal?(-1) || (self.attr_run_attributes[@current_run_index]).nil?)
             # ??? would be nice to return null, but current spec doesn't allow it
             # returning Hashtable saves AttributeMap from dealing with emptiness
-            return Hashtable.new
+            return self.class::Hashtable.new
           end
-          return AttributeMap.new(@current_run_index, @begin_index, @end_index)
+          return self.class::AttributeMap.new(@current_run_index, @begin_index, @end_index)
         end
         
         typesig { [] }
@@ -1032,12 +1032,12 @@ module Java::Text
           if ((self.attr_run_attributes).nil?)
             # ??? would be nice to return null, but current spec doesn't allow it
             # returning HashSet saves us from dealing with emptiness
-            return HashSet.new
+            return self.class::HashSet.new
           end
           synchronized((@local_class_parent)) do
             # ??? should try to create this only once, then update if necessary,
             # and give callers read-only view
-            keys = HashSet.new
+            keys = self.class::HashSet.new
             i = 0
             while (i < self.attr_run_count)
               if (self.attr_run_starts[i] < @end_index && ((i).equal?(self.attr_run_count - 1) || self.attr_run_starts[i + 1] > @begin_index))
@@ -1055,7 +1055,7 @@ module Java::Text
           end
         end
         
-        typesig { [Attribute] }
+        typesig { [self::Attribute] }
         def get_attribute(attribute)
           run_index = @current_run_index
           if (run_index < 0)
@@ -1158,21 +1158,21 @@ module Java::Text
         
         typesig { [] }
         def entry_set
-          set = HashSet.new
+          set = self.class::HashSet.new
           synchronized((@local_class_parent)) do
             size = self.attr_run_attributes[@run_index].size
             i = 0
             while i < size
               key = self.attr_run_attributes[@run_index].get(i)
               value = self.attr_run_attribute_values[@run_index].get(i)
-              if (value.is_a?(Annotation))
+              if (value.is_a?(self.class::Annotation))
                 value = @local_class_parent.get_attribute_check_range(key, @run_index, @begin_index, @end_index)
                 if ((value).nil?)
                   i += 1
                   next
                 end
               end
-              entry = AttributeEntry.new(key, value)
+              entry = self.class::AttributeEntry.new(key, value)
               set.add(entry)
               i += 1
             end

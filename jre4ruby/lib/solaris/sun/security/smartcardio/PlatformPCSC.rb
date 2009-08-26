@@ -79,7 +79,7 @@ module Sun::Security::Smartcardio
               end
               initialize_(library)
               return nil
-            rescue JavaThrowable => e
+            rescue self.class::JavaThrowable => e
               return e
             end
           end

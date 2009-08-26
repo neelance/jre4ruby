@@ -226,7 +226,7 @@ module Java::Io
         define_method :run do
           begin
             return Sun::Security::Provider::PolicyFile.canon_path(self.attr_cpath)
-          rescue IOException => ioe
+          rescue self.class::IOException => ioe
             return self.attr_cpath
           end
         end

@@ -72,20 +72,20 @@ module Sun::Security::Ssl
       const_set_lazy(:SunX509) { Class.new(KeyManagerFactoryImpl) do
         include_class_members KeyManagerFactoryImpl
         
-        typesig { [KeyStore, Array.typed(::Java::Char)] }
+        typesig { [self::KeyStore, Array.typed(::Java::Char)] }
         def engine_init(ks, password)
           if ((!(ks).nil?) && SunJSSE.is_fips)
             if (!(ks.get_provider).equal?(SunJSSE.attr_crypto_provider))
-              raise KeyStoreException.new("FIPS mode: KeyStore must be " + "from provider " + RJava.cast_to_string(SunJSSE.attr_crypto_provider.get_name))
+              raise self.class::KeyStoreException.new("FIPS mode: KeyStore must be " + "from provider " + RJava.cast_to_string(SunJSSE.attr_crypto_provider.get_name))
             end
           end
-          self.attr_key_manager = SunX509KeyManagerImpl.new(ks, password)
+          self.attr_key_manager = self.class::SunX509KeyManagerImpl.new(ks, password)
           self.attr_is_initialized = true
         end
         
-        typesig { [ManagerFactoryParameters] }
+        typesig { [self::ManagerFactoryParameters] }
         def engine_init(spec)
-          raise InvalidAlgorithmParameterException.new("SunX509KeyManager does not use ManagerFactoryParameters")
+          raise self.class::InvalidAlgorithmParameterException.new("SunX509KeyManager does not use ManagerFactoryParameters")
         end
         
         typesig { [] }
@@ -101,35 +101,35 @@ module Sun::Security::Ssl
       const_set_lazy(:X509) { Class.new(KeyManagerFactoryImpl) do
         include_class_members KeyManagerFactoryImpl
         
-        typesig { [KeyStore, Array.typed(::Java::Char)] }
+        typesig { [self::KeyStore, Array.typed(::Java::Char)] }
         def engine_init(ks, password)
           if ((ks).nil?)
-            self.attr_key_manager = X509KeyManagerImpl.new(Collections.empty_list)
+            self.attr_key_manager = self.class::X509KeyManagerImpl.new(Collections.empty_list)
           else
             if (SunJSSE.is_fips && (!(ks.get_provider).equal?(SunJSSE.attr_crypto_provider)))
-              raise KeyStoreException.new("FIPS mode: KeyStore must be " + "from provider " + RJava.cast_to_string(SunJSSE.attr_crypto_provider.get_name))
+              raise self.class::KeyStoreException.new("FIPS mode: KeyStore must be " + "from provider " + RJava.cast_to_string(SunJSSE.attr_crypto_provider.get_name))
             end
             begin
-              builder = Builder.new_instance(ks, PasswordProtection.new(password))
-              self.attr_key_manager = X509KeyManagerImpl.new(builder)
-            rescue RuntimeException => e
-              raise KeyStoreException.new("initialization failed", e)
+              builder = Builder.new_instance(ks, self.class::PasswordProtection.new(password))
+              self.attr_key_manager = self.class::X509KeyManagerImpl.new(builder)
+            rescue self.class::RuntimeException => e
+              raise self.class::KeyStoreException.new("initialization failed", e)
             end
           end
           self.attr_is_initialized = true
         end
         
-        typesig { [ManagerFactoryParameters] }
+        typesig { [self::ManagerFactoryParameters] }
         def engine_init(params)
-          if ((params.is_a?(KeyStoreBuilderParameters)).equal?(false))
-            raise InvalidAlgorithmParameterException.new("Parameters must be instance of KeyStoreBuilderParameters")
+          if ((params.is_a?(self.class::KeyStoreBuilderParameters)).equal?(false))
+            raise self.class::InvalidAlgorithmParameterException.new("Parameters must be instance of KeyStoreBuilderParameters")
           end
           if (SunJSSE.is_fips)
             # XXX should be fixed
-            raise InvalidAlgorithmParameterException.new("FIPS mode: KeyStoreBuilderParameters not supported")
+            raise self.class::InvalidAlgorithmParameterException.new("FIPS mode: KeyStoreBuilderParameters not supported")
           end
           builders = (params).get_parameters
-          self.attr_key_manager = X509KeyManagerImpl.new(builders)
+          self.attr_key_manager = self.class::X509KeyManagerImpl.new(builders)
           self.attr_is_initialized = true
         end
         

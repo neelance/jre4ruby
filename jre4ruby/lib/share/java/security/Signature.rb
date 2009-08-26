@@ -864,7 +864,7 @@ module Java::Security
         alias_method :attr_service_iterator=, :service_iterator=
         undef_method :service_iterator=
         
-        typesig { [SignatureSpi, String] }
+        typesig { [self::SignatureSpi, self::String] }
         # constructor
         def initialize(sig_spi, algorithm)
           @sig_spi = nil
@@ -876,7 +876,7 @@ module Java::Security
           @lock = nil # no lock needed
         end
         
-        typesig { [Service, Iterator, String] }
+        typesig { [self::Service, self::Iterator, self::String] }
         # used with delayed provider selection
         def initialize(service, iterator, algorithm)
           @sig_spi = nil
@@ -898,34 +898,34 @@ module Java::Security
         # delegate that does not support <code>Cloneable</code>.
         def clone
           choose_first_provider
-          if (@sig_spi.is_a?(Cloneable))
+          if (@sig_spi.is_a?(self.class::Cloneable))
             sig_spi_clone = @sig_spi.clone
             # Because 'algorithm' and 'provider' are private
             # members of our supertype, we must perform a cast to
             # access them.
-            that = Delegate.new(sig_spi_clone, (self).attr_algorithm)
+            that = self.class::Delegate.new(sig_spi_clone, (self).attr_algorithm)
             that.attr_provider = (self).attr_provider
             return that
           else
-            raise CloneNotSupportedException.new
+            raise self.class::CloneNotSupportedException.new
           end
         end
         
         class_module.module_eval {
-          typesig { [Service] }
+          typesig { [self::Service] }
           def new_instance(s)
             if ((s.get_type == "Cipher"))
               # must be NONEwithRSA
               begin
                 c = Cipher.get_instance(RSA_CIPHER, s.get_provider)
-                return CipherAdapter.new(c)
-              rescue NoSuchPaddingException => e
-                raise NoSuchAlgorithmException.new(e)
+                return self.class::CipherAdapter.new(c)
+              rescue self.class::NoSuchPaddingException => e
+                raise self.class::NoSuchAlgorithmException.new(e)
               end
             else
               o = s.new_instance(nil)
-              if ((o.is_a?(SignatureSpi)).equal?(false))
-                raise NoSuchAlgorithmException.new("Not a SignatureSpi: " + RJava.cast_to_string(o.get_class.get_name))
+              if ((o.is_a?(self.class::SignatureSpi)).equal?(false))
+                raise self.class::NoSuchAlgorithmException.new("Not a SignatureSpi: " + RJava.cast_to_string(o.get_class.get_name))
               end
               return o
             end
@@ -963,7 +963,7 @@ module Java::Security
                 if ((w).equal?(0))
                   Debug.println("Further warnings of this type will " + "be suppressed")
                 end
-                JavaException.new("Call trace").print_stack_trace
+                self.class::JavaException.new("Call trace").print_stack_trace
               end
             end
             last_exception = nil
@@ -985,11 +985,11 @@ module Java::Security
                 @first_service = nil
                 @service_iterator = nil
                 return
-              rescue NoSuchAlgorithmException => e
+              rescue self.class::NoSuchAlgorithmException => e
                 last_exception = e
               end
             end
-            e = ProviderException.new("Could not construct SignatureSpi instance")
+            e = self.class::ProviderException.new("Could not construct SignatureSpi instance")
             if (!(last_exception).nil?)
               e.init_cause(last_exception)
             end
@@ -997,7 +997,7 @@ module Java::Security
           end
         end
         
-        typesig { [::Java::Int, Key, SecureRandom] }
+        typesig { [::Java::Int, self::Key, self::SecureRandom] }
         def choose_provider(type, key, random)
           synchronized((@lock)) do
             if (!(@sig_spi).nil?)
@@ -1029,7 +1029,7 @@ module Java::Security
                 @first_service = nil
                 @service_iterator = nil
                 return
-              rescue JavaException => e
+              rescue self.class::JavaException => e
                 # NoSuchAlgorithmException from newInstance()
                 # InvalidKeyException from init()
                 # RuntimeException (ProviderException) from init()
@@ -1039,14 +1039,14 @@ module Java::Security
               end
             end
             # no working provider found, fail
-            if (last_exception.is_a?(InvalidKeyException))
+            if (last_exception.is_a?(self.class::InvalidKeyException))
               raise last_exception
             end
-            if (last_exception.is_a?(RuntimeException))
+            if (last_exception.is_a?(self.class::RuntimeException))
               raise last_exception
             end
             k = (!(key).nil?) ? key.get_class.get_name : "(null)"
-            raise InvalidKeyException.new("No installed provider supports this key: " + k, last_exception)
+            raise self.class::InvalidKeyException.new("No installed provider supports this key: " + k, last_exception)
           end
         end
         
@@ -1061,7 +1061,7 @@ module Java::Security
           const_attr_reader  :I_PRIV_SR
         }
         
-        typesig { [SignatureSpi, ::Java::Int, Key, SecureRandom] }
+        typesig { [self::SignatureSpi, ::Java::Int, self::Key, self::SecureRandom] }
         def init(spi, type, key, random)
           case (type)
           when self.class::I_PUB
@@ -1071,11 +1071,11 @@ module Java::Security
           when self.class::I_PRIV_SR
             spi.engine_init_sign(key, random)
           else
-            raise AssertionError.new("Internal error: " + RJava.cast_to_string(type))
+            raise self.class::AssertionError.new("Internal error: " + RJava.cast_to_string(type))
           end
         end
         
-        typesig { [PublicKey] }
+        typesig { [self::PublicKey] }
         def engine_init_verify(public_key)
           if (!(@sig_spi).nil?)
             @sig_spi.engine_init_verify(public_key)
@@ -1084,7 +1084,7 @@ module Java::Security
           end
         end
         
-        typesig { [PrivateKey] }
+        typesig { [self::PrivateKey] }
         def engine_init_sign(private_key)
           if (!(@sig_spi).nil?)
             @sig_spi.engine_init_sign(private_key)
@@ -1093,7 +1093,7 @@ module Java::Security
           end
         end
         
-        typesig { [PrivateKey, SecureRandom] }
+        typesig { [self::PrivateKey, self::SecureRandom] }
         def engine_init_sign(private_key, sr)
           if (!(@sig_spi).nil?)
             @sig_spi.engine_init_sign(private_key, sr)
@@ -1114,7 +1114,7 @@ module Java::Security
           @sig_spi.engine_update(b, off, len)
         end
         
-        typesig { [ByteBuffer] }
+        typesig { [self::ByteBuffer] }
         def engine_update(data)
           choose_first_provider
           @sig_spi.engine_update(data)
@@ -1144,19 +1144,19 @@ module Java::Security
           return @sig_spi.engine_verify(sig_bytes, offset, length)
         end
         
-        typesig { [String, Object] }
+        typesig { [self::String, Object] }
         def engine_set_parameter(param, value)
           choose_first_provider
           @sig_spi.engine_set_parameter(param, value)
         end
         
-        typesig { [AlgorithmParameterSpec] }
+        typesig { [self::AlgorithmParameterSpec] }
         def engine_set_parameter(params)
           choose_first_provider
           @sig_spi.engine_set_parameter(params)
         end
         
-        typesig { [String] }
+        typesig { [self::String] }
         def engine_get_parameter(param)
           choose_first_provider
           return @sig_spi.engine_get_parameter(param)
@@ -1188,7 +1188,7 @@ module Java::Security
         alias_method :attr_data=, :data=
         undef_method :data=
         
-        typesig { [Cipher] }
+        typesig { [self::Cipher] }
         def initialize(cipher)
           @cipher = nil
           @data = nil
@@ -1196,23 +1196,23 @@ module Java::Security
           @cipher = cipher
         end
         
-        typesig { [PublicKey] }
+        typesig { [self::PublicKey] }
         def engine_init_verify(public_key)
           @cipher.init(Cipher::DECRYPT_MODE, public_key)
           if ((@data).nil?)
-            @data = ByteArrayOutputStream.new(128)
+            @data = self.class::ByteArrayOutputStream.new(128)
           else
             @data.reset
           end
         end
         
-        typesig { [PrivateKey] }
+        typesig { [self::PrivateKey] }
         def engine_init_sign(private_key)
           @cipher.init(Cipher::ENCRYPT_MODE, private_key)
           @data = nil
         end
         
-        typesig { [PrivateKey, SecureRandom] }
+        typesig { [self::PrivateKey, self::SecureRandom] }
         def engine_init_sign(private_key, random)
           @cipher.init(Cipher::ENCRYPT_MODE, private_key, random)
           @data = nil
@@ -1231,7 +1231,7 @@ module Java::Security
           end
           out = @cipher.update(b, off, len)
           if ((!(out).nil?) && (!(out.attr_length).equal?(0)))
-            raise SignatureException.new("Cipher unexpectedly returned data")
+            raise self.class::SignatureException.new("Cipher unexpectedly returned data")
           end
         end
         
@@ -1239,10 +1239,10 @@ module Java::Security
         def engine_sign
           begin
             return @cipher.do_final
-          rescue IllegalBlockSizeException => e
-            raise SignatureException.new("doFinal() failed", e)
-          rescue BadPaddingException => e
-            raise SignatureException.new("doFinal() failed", e)
+          rescue self.class::IllegalBlockSizeException => e
+            raise self.class::SignatureException.new("doFinal() failed", e)
+          rescue self.class::BadPaddingException => e
+            raise self.class::SignatureException.new("doFinal() failed", e)
           end
         end
         
@@ -1253,23 +1253,23 @@ module Java::Security
             data_bytes = @data.to_byte_array
             @data.reset
             return (Arrays == out)
-          rescue BadPaddingException => e
+          rescue self.class::BadPaddingException => e
             # e.g. wrong public key used
             # return false rather than throwing exception
             return false
-          rescue IllegalBlockSizeException => e
-            raise SignatureException.new("doFinal() failed", e)
+          rescue self.class::IllegalBlockSizeException => e
+            raise self.class::SignatureException.new("doFinal() failed", e)
           end
         end
         
-        typesig { [String, Object] }
+        typesig { [self::String, Object] }
         def engine_set_parameter(param, value)
-          raise InvalidParameterException.new("Parameters not supported")
+          raise self.class::InvalidParameterException.new("Parameters not supported")
         end
         
-        typesig { [String] }
+        typesig { [self::String] }
         def engine_get_parameter(param)
-          raise InvalidParameterException.new("Parameters not supported")
+          raise self.class::InvalidParameterException.new("Parameters not supported")
         end
         
         private

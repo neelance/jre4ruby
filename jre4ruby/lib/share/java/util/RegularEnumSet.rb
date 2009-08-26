@@ -124,7 +124,7 @@ module Java::Util
         typesig { [] }
         def next_
           if ((@unseen).equal?(0))
-            raise NoSuchElementException.new
+            raise self.class::NoSuchElementException.new
           end
           @last_returned = @unseen & -@unseen
           @unseen -= @last_returned
@@ -134,7 +134,7 @@ module Java::Util
         typesig { [] }
         def remove
           if ((@last_returned).equal?(0))
-            raise IllegalStateException.new
+            raise self.class::IllegalStateException.new
           end
           self.attr_elements -= @last_returned
           @last_returned = 0

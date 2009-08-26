@@ -302,7 +302,7 @@ module Java::Util::Zip
           # using the "nowrap" Inflater option.
           define_method :fill do
             if (@eof)
-              raise EOFException.new("Unexpected end of ZLIB input stream")
+              raise self.class::EOFException.new("Unexpected end of ZLIB input stream")
             end
             self.attr_len = self.attr_in.read(self.attr_buf, 0, self.attr_buf.attr_length)
             if ((self.attr_len).equal?(-1))
@@ -420,7 +420,7 @@ module Java::Util::Zip
           synchronized((@local_class_parent)) do
             ensure_open
             if (@i >= self.attr_total)
-              raise NoSuchElementException.new
+              raise self.class::NoSuchElementException.new
             end
             jzentry = get_next_entry(self.attr_jzfile, ((@i += 1) - 1))
             if ((jzentry).equal?(0))
@@ -430,9 +430,9 @@ module Java::Util::Zip
               else
                 message = RJava.cast_to_string(get_zip_message(@local_class_parent.attr_jzfile))
               end
-              raise ZipError.new("jzentry == 0" + ",\n jzfile = " + RJava.cast_to_string(@local_class_parent.attr_jzfile) + ",\n total = " + RJava.cast_to_string(@local_class_parent.attr_total) + ",\n name = " + RJava.cast_to_string(@local_class_parent.attr_name) + ",\n i = " + RJava.cast_to_string(@i) + ",\n message = " + message)
+              raise self.class::ZipError.new("jzentry == 0" + ",\n jzfile = " + RJava.cast_to_string(@local_class_parent.attr_jzfile) + ",\n total = " + RJava.cast_to_string(@local_class_parent.attr_total) + ",\n name = " + RJava.cast_to_string(@local_class_parent.attr_name) + ",\n i = " + RJava.cast_to_string(@i) + ",\n message = " + message)
             end
-            ze = ZipEntry.new(jzentry)
+            ze = self.class::ZipEntry.new(jzentry)
             free_entry(self.attr_jzfile, jzentry)
             return ze
           end

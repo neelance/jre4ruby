@@ -511,7 +511,7 @@ module Java::Security
         alias_method :attr_digest_spi=, :digest_spi=
         undef_method :digest_spi=
         
-        typesig { [MessageDigestSpi, String] }
+        typesig { [self::MessageDigestSpi, self::String] }
         # constructor
         def initialize(digest_spi, algorithm)
           @digest_spi = nil
@@ -527,17 +527,17 @@ module Java::Security
         # @exception CloneNotSupportedException if this is called on a
         # delegate that does not support <code>Cloneable</code>.
         def clone
-          if (@digest_spi.is_a?(Cloneable))
+          if (@digest_spi.is_a?(self.class::Cloneable))
             digest_spi_clone = @digest_spi.clone
             # Because 'algorithm', 'provider', and 'state' are private
             # members of our supertype, we must perform a cast to
             # access them.
-            that = Delegate.new(digest_spi_clone, (self).attr_algorithm)
+            that = self.class::Delegate.new(digest_spi_clone, (self).attr_algorithm)
             that.attr_provider = (self).attr_provider
             that.attr_state = (self).attr_state
             return that
           else
-            raise CloneNotSupportedException.new
+            raise self.class::CloneNotSupportedException.new
           end
         end
         
@@ -556,7 +556,7 @@ module Java::Security
           @digest_spi.engine_update(input, offset, len)
         end
         
-        typesig { [ByteBuffer] }
+        typesig { [self::ByteBuffer] }
         def engine_update(input)
           @digest_spi.engine_update(input)
         end

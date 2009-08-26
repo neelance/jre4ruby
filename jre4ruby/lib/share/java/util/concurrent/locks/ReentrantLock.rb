@@ -161,7 +161,7 @@ module Java::Util::Concurrent::Locks
               nextc = c + acquires
               if (nextc < 0)
                 # overflow
-                raise JavaError.new("Maximum lock count exceeded")
+                raise self.class::JavaError.new("Maximum lock count exceeded")
               end
               set_state(nextc)
               return true
@@ -174,7 +174,7 @@ module Java::Util::Concurrent::Locks
         def try_release(releases)
           c = get_state - releases
           if (!(JavaThread.current_thread).equal?(get_exclusive_owner_thread))
-            raise IllegalMonitorStateException.new
+            raise self.class::IllegalMonitorStateException.new
           end
           free = false
           if ((c).equal?(0))
@@ -194,7 +194,7 @@ module Java::Util::Concurrent::Locks
         
         typesig { [] }
         def new_condition
-          return ConditionObject.new
+          return self.class::ConditionObject.new
         end
         
         typesig { [] }
@@ -213,7 +213,7 @@ module Java::Util::Concurrent::Locks
           return !(get_state).equal?(0)
         end
         
-        typesig { [Java::Io::ObjectInputStream] }
+        typesig { [Java::Io::self::ObjectInputStream] }
         # Reconstitutes this lock instance from a stream.
         # @param s the stream
         def read_object(s)
@@ -293,7 +293,7 @@ module Java::Util::Concurrent::Locks
             if ((current).equal?(get_exclusive_owner_thread))
               nextc = c + acquires
               if (nextc < 0)
-                raise JavaError.new("Maximum lock count exceeded")
+                raise self.class::JavaError.new("Maximum lock count exceeded")
               end
               set_state(nextc)
               return true

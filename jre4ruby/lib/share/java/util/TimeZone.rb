@@ -401,7 +401,7 @@ module Java::Util
           # Cache for managing display names per timezone per locale
           # The structure is:
           # Map(key=id, value=SoftReference(Map(key=locale, value=displaynames)))
-          const_set_lazy(:CACHE) { ConcurrentHashMap.new }
+          const_set_lazy(:CACHE) { self.class::ConcurrentHashMap.new }
           const_attr_reader  :CACHE
         }
         

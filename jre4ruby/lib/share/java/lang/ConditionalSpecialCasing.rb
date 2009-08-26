@@ -480,7 +480,7 @@ module Java::Lang
         alias_method :attr_condition=, :condition=
         undef_method :condition=
         
-        typesig { [::Java::Int, Array.typed(::Java::Char), Array.typed(::Java::Char), String, ::Java::Int] }
+        typesig { [::Java::Int, Array.typed(::Java::Char), Array.typed(::Java::Char), self::String, ::Java::Int] }
         def initialize(ch, lower, upper, lang, condition)
           @ch = 0
           @lower = nil

@@ -129,17 +129,17 @@ module Sun::Nio::Ch
         alias_method :attr_sel=, :sel=
         undef_method :sel=
         
-        typesig { [Selector] }
+        typesig { [self::Selector] }
         def initialize(sel)
           @sel = nil
           @sel = sel
-          Cleaner.create(self, Closer.new(sel))
+          Cleaner.create(self, self.class::Closer.new(sel))
         end
         
         class_module.module_eval {
           const_set_lazy(:Closer) { Class.new do
             include_class_members SelectorWrapper
-            include Runnable
+            include self.class::Runnable
             
             attr_accessor :sel
             alias_method :attr_sel, :sel
@@ -147,7 +147,7 @@ module Sun::Nio::Ch
             alias_method :attr_sel=, :sel=
             undef_method :sel=
             
-            typesig { [Selector] }
+            typesig { [self::Selector] }
             def initialize(sel)
               @sel = nil
               @sel = sel
@@ -157,8 +157,8 @@ module Sun::Nio::Ch
             def run
               begin
                 @sel.close
-              rescue JavaThrowable => th
-                raise JavaError.new(th)
+              rescue self.class::JavaThrowable => th
+                raise self.class::JavaError.new(th)
               end
             end
             
@@ -321,12 +321,12 @@ module Sun::Nio::Ch
           
           typesig { [E] }
           define_method :add do |o|
-            raise UnsupportedOperationException.new
+            raise self.class::UnsupportedOperationException.new
           end
           
           typesig { [Collection] }
           define_method :add_all do |coll|
-            raise UnsupportedOperationException.new
+            raise self.class::UnsupportedOperationException.new
           end
           
           typesig { [] }
@@ -412,17 +412,17 @@ module Sun::Nio::Ch
           define_method :run do
             begin
               cl = Class.for_name("java.nio.DirectByteBuffer")
-              ctor = cl.get_declared_constructor(Array.typed(Class).new([Array, Array, Runnable]))
+              ctor = cl.get_declared_constructor(Array.typed(self.class::Class).new([Array, Array, Runnable]))
               ctor.set_accessible(true)
               self.attr_direct_byte_buffer_constructor = ctor
-            rescue ClassNotFoundException => x
-              raise InternalError.new
-            rescue NoSuchMethodException => x
-              raise InternalError.new
-            rescue IllegalArgumentException => x
-              raise InternalError.new
-            rescue ClassCastException => x
-              raise InternalError.new
+            rescue self.class::ClassNotFoundException => x
+              raise self.class::InternalError.new
+            rescue self.class::NoSuchMethodException => x
+              raise self.class::InternalError.new
+            rescue self.class::IllegalArgumentException => x
+              raise self.class::InternalError.new
+            rescue self.class::ClassCastException => x
+              raise self.class::InternalError.new
             end
             return nil
           end
@@ -477,17 +477,17 @@ module Sun::Nio::Ch
           define_method :run do
             begin
               cl = Class.for_name("java.nio.DirectByteBufferR")
-              ctor = cl.get_declared_constructor(Array.typed(Class).new([Array, Array, Runnable]))
+              ctor = cl.get_declared_constructor(Array.typed(self.class::Class).new([Array, Array, Runnable]))
               ctor.set_accessible(true)
               self.attr_direct_byte_buffer_rconstructor = ctor
-            rescue ClassNotFoundException => x
-              raise InternalError.new
-            rescue NoSuchMethodException => x
-              raise InternalError.new
-            rescue IllegalArgumentException => x
-              raise InternalError.new
-            rescue ClassCastException => x
-              raise InternalError.new
+            rescue self.class::ClassNotFoundException => x
+              raise self.class::InternalError.new
+            rescue self.class::NoSuchMethodException => x
+              raise self.class::InternalError.new
+            rescue self.class::IllegalArgumentException => x
+              raise self.class::InternalError.new
+            rescue self.class::ClassCastException => x
+              raise self.class::InternalError.new
             end
             return nil
           end

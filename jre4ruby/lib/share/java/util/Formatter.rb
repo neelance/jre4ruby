@@ -2626,7 +2626,7 @@ module Java::Util
           return -2
         end
         
-        typesig { [Object, Locale] }
+        typesig { [Object, self::Locale] }
         def print(arg, l)
           self.attr_a.append(@s)
         end
@@ -2742,7 +2742,7 @@ module Java::Util
           if (!(s).nil?)
             begin
               @index = JavaInteger.parse_int(s.substring(0, s.length - 1))
-            rescue NumberFormatException => x
+            rescue self.class::NumberFormatException => x
               raise AssertError if not ((false))
             end
           else
@@ -2777,9 +2777,9 @@ module Java::Util
             begin
               @width = JavaInteger.parse_int(s)
               if (@width < 0)
-                raise IllegalFormatWidthException.new(@width)
+                raise self.class::IllegalFormatWidthException.new(@width)
               end
-            rescue NumberFormatException => x
+            rescue self.class::NumberFormatException => x
               raise AssertError if not ((false))
             end
           end
@@ -2799,9 +2799,9 @@ module Java::Util
               # remove the '.'
               @precision = JavaInteger.parse_int(s.substring(1))
               if (@precision < 0)
-                raise IllegalFormatPrecisionException.new(@precision)
+                raise self.class::IllegalFormatPrecisionException.new(@precision)
               end
-            rescue NumberFormatException => x
+            rescue self.class::NumberFormatException => x
               raise AssertError if not ((false))
             end
           end
@@ -2818,7 +2818,7 @@ module Java::Util
           @c = s.char_at(0)
           if (!@dt)
             if (!Conversion.is_valid(@c))
-              raise UnknownFormatConversionException.new(String.value_of(@c))
+              raise self.class::UnknownFormatConversionException.new(String.value_of(@c))
             end
             if (Character.is_upper_case(@c))
               @f.add(Flags::UPPERCASE)
@@ -2836,7 +2836,7 @@ module Java::Util
           return @c
         end
         
-        typesig { [Formatter, Array.typed(String)] }
+        typesig { [self::Formatter, Array.typed(String)] }
         def initialize(formatter, sa)
           @index = -1
           @f = Flags::NONE
@@ -2877,7 +2877,7 @@ module Java::Util
                     if (Conversion.is_text(@c))
                       check_text
                     else
-                      raise UnknownFormatConversionException.new(String.value_of(@c))
+                      raise self.class::UnknownFormatConversionException.new(String.value_of(@c))
                     end
                   end
                 end
@@ -2886,7 +2886,7 @@ module Java::Util
           end
         end
         
-        typesig { [Object, Locale] }
+        typesig { [Object, self::Locale] }
         def print(arg, l)
           if (@dt)
             print_date_time(arg, l)
@@ -2917,24 +2917,24 @@ module Java::Util
           end
         end
         
-        typesig { [Object, Locale] }
+        typesig { [Object, self::Locale] }
         def print_integer(arg, l)
           if ((arg).nil?)
             print("null")
           else
-            if (arg.is_a?(Byte))
+            if (arg.is_a?(self.class::Byte))
               print((arg).byte_value, l)
             else
-              if (arg.is_a?(Short))
+              if (arg.is_a?(self.class::Short))
                 print((arg).short_value, l)
               else
-                if (arg.is_a?(JavaInteger))
+                if (arg.is_a?(self.class::JavaInteger))
                   print((arg).int_value, l)
                 else
-                  if (arg.is_a?(Long))
+                  if (arg.is_a?(self.class::Long))
                     print((arg).long_value, l)
                   else
-                    if (arg.is_a?(BigInteger))
+                    if (arg.is_a?(self.class::BigInteger))
                       print((arg), l)
                     else
                       fail_conversion(@c, arg)
@@ -2946,18 +2946,18 @@ module Java::Util
           end
         end
         
-        typesig { [Object, Locale] }
+        typesig { [Object, self::Locale] }
         def print_float(arg, l)
           if ((arg).nil?)
             print("null")
           else
-            if (arg.is_a?(Float))
+            if (arg.is_a?(self.class::Float))
               print((arg).float_value, l)
             else
-              if (arg.is_a?(Double))
+              if (arg.is_a?(self.class::Double))
                 print((arg).double_value, l)
               else
-                if (arg.is_a?(BigDecimal))
+                if (arg.is_a?(self.class::BigDecimal))
                   print((arg), l)
                 else
                   fail_conversion(@c, arg)
@@ -2967,7 +2967,7 @@ module Java::Util
           end
         end
         
-        typesig { [Object, Locale] }
+        typesig { [Object, self::Locale] }
         def print_date_time(arg, l)
           if ((arg).nil?)
             print("null")
@@ -2976,19 +2976,19 @@ module Java::Util
           cal = nil
           # Instead of Calendar.setLenient(true), perhaps we should
           # wrap the IllegalArgumentException that might be thrown?
-          if (arg.is_a?(Long))
+          if (arg.is_a?(self.class::Long))
             # Note that the following method uses an instance of the
             # default time zone (TimeZone.getDefaultRef().
             cal = Calendar.get_instance((l).nil? ? Locale::US : l)
             cal.set_time_in_millis(arg)
           else
-            if (arg.is_a?(Date))
+            if (arg.is_a?(self.class::Date))
               # Note that the following method uses an instance of the
               # default time zone (TimeZone.getDefaultRef().
               cal = Calendar.get_instance((l).nil? ? Locale::US : l)
               cal.set_time(arg)
             else
-              if (arg.is_a?(Calendar))
+              if (arg.is_a?(self.class::Calendar))
                 cal = (arg).clone
                 cal.set_lenient(true)
               else
@@ -3008,31 +3008,31 @@ module Java::Util
             return
           end
           s = nil
-          if (arg.is_a?(Character))
+          if (arg.is_a?(self.class::Character))
             s = RJava.cast_to_string((arg).to_s)
           else
-            if (arg.is_a?(Byte))
+            if (arg.is_a?(self.class::Byte))
               i = (arg).byte_value
               if (Character.is_valid_code_point(i))
                 s = RJava.cast_to_string(String.new(Character.to_chars(i)))
               else
-                raise IllegalFormatCodePointException.new(i)
+                raise self.class::IllegalFormatCodePointException.new(i)
               end
             else
-              if (arg.is_a?(Short))
+              if (arg.is_a?(self.class::Short))
                 i = (arg).short_value
                 if (Character.is_valid_code_point(i))
                   s = RJava.cast_to_string(String.new(Character.to_chars(i)))
                 else
-                  raise IllegalFormatCodePointException.new(i)
+                  raise self.class::IllegalFormatCodePointException.new(i)
                 end
               else
-                if (arg.is_a?(JavaInteger))
+                if (arg.is_a?(self.class::JavaInteger))
                   i = (arg).int_value
                   if (Character.is_valid_code_point(i))
                     s = RJava.cast_to_string(String.new(Character.to_chars(i)))
                   else
-                    raise IllegalFormatCodePointException.new(i)
+                    raise self.class::IllegalFormatCodePointException.new(i)
                   end
                 else
                   fail_conversion(@c, arg)
@@ -3043,15 +3043,15 @@ module Java::Util
           print(s)
         end
         
-        typesig { [Object, Locale] }
+        typesig { [Object, self::Locale] }
         def print_string(arg, l)
           if ((arg).nil?)
             print("null")
           else
-            if (arg.is_a?(Formattable))
+            if (arg.is_a?(self.class::Formattable))
               fmt = @formatter
               if (!(@formatter.locale).equal?(l))
-                fmt = Formatter.new(@formatter.out, l)
+                fmt = self.class::Formatter.new(@formatter.out, l)
               end
               (arg).format_to(fmt, @f.value_of, @width, @precision)
             else
@@ -3064,7 +3064,7 @@ module Java::Util
         def print_boolean(arg)
           s = nil
           if (!(arg).nil?)
-            s = RJava.cast_to_string(((arg.is_a?(Boolean)) ? (arg).to_s : Boolean.to_s(true)))
+            s = RJava.cast_to_string(((arg.is_a?(self.class::Boolean)) ? (arg).to_s : Boolean.to_s(true)))
           else
             s = RJava.cast_to_string(Boolean.to_s(false))
           end
@@ -3093,7 +3093,7 @@ module Java::Util
           if ((@width).equal?(-1))
             return s
           end
-          sb = StringBuilder.new
+          sb = self.class::StringBuilder.new
           pad = @f.contains(Flags::LEFT_JUSTIFY)
           sp = @width - s.length
           if (!pad)
@@ -3116,7 +3116,7 @@ module Java::Util
         
         typesig { [] }
         def to_s
-          sb = StringBuilder.new(Character.new(?%.ord))
+          sb = self.class::StringBuilder.new(Character.new(?%.ord))
           # Flags.UPPERCASE is set internally for legal conversions.
           dupf = @f.dup.remove(Flags::UPPERCASE)
           sb.append(dupf.to_s)
@@ -3143,7 +3143,7 @@ module Java::Util
           end
           # '-' requires a width
           if ((@width).equal?(-1) && @f.contains(Flags::LEFT_JUSTIFY))
-            raise MissingFormatWidthException.new(to_s)
+            raise self.class::MissingFormatWidthException.new(to_s)
           end
           check_bad_flags(Flags::PLUS, Flags::LEADING_SPACE, Flags::ZERO_PAD, Flags::GROUP, Flags::PARENTHESES)
         end
@@ -3151,27 +3151,27 @@ module Java::Util
         typesig { [] }
         def check_date_time
           if (!(@precision).equal?(-1))
-            raise IllegalFormatPrecisionException.new(@precision)
+            raise self.class::IllegalFormatPrecisionException.new(@precision)
           end
           if (!DateTime.is_valid(@c))
-            raise UnknownFormatConversionException.new("t" + RJava.cast_to_string(@c))
+            raise self.class::UnknownFormatConversionException.new("t" + RJava.cast_to_string(@c))
           end
           check_bad_flags(Flags::ALTERNATE, Flags::PLUS, Flags::LEADING_SPACE, Flags::ZERO_PAD, Flags::GROUP, Flags::PARENTHESES)
           # '-' requires a width
           if ((@width).equal?(-1) && @f.contains(Flags::LEFT_JUSTIFY))
-            raise MissingFormatWidthException.new(to_s)
+            raise self.class::MissingFormatWidthException.new(to_s)
           end
         end
         
         typesig { [] }
         def check_character
           if (!(@precision).equal?(-1))
-            raise IllegalFormatPrecisionException.new(@precision)
+            raise self.class::IllegalFormatPrecisionException.new(@precision)
           end
           check_bad_flags(Flags::ALTERNATE, Flags::PLUS, Flags::LEADING_SPACE, Flags::ZERO_PAD, Flags::GROUP, Flags::PARENTHESES)
           # '-' requires a width
           if ((@width).equal?(-1) && @f.contains(Flags::LEFT_JUSTIFY))
-            raise MissingFormatWidthException.new(to_s)
+            raise self.class::MissingFormatWidthException.new(to_s)
           end
         end
         
@@ -3179,7 +3179,7 @@ module Java::Util
         def check_integer
           check_numeric
           if (!(@precision).equal?(-1))
-            raise IllegalFormatPrecisionException.new(@precision)
+            raise self.class::IllegalFormatPrecisionException.new(@precision)
           end
           if ((@c).equal?(Conversion::DECIMAL_INTEGER))
             check_bad_flags(Flags::ALTERNATE)
@@ -3192,7 +3192,7 @@ module Java::Util
           end
         end
         
-        typesig { [Flags] }
+        typesig { [self::Flags] }
         def check_bad_flags(*bad_flags)
           i = 0
           while i < bad_flags.attr_length
@@ -3225,48 +3225,48 @@ module Java::Util
         typesig { [] }
         def check_numeric
           if (!(@width).equal?(-1) && @width < 0)
-            raise IllegalFormatWidthException.new(@width)
+            raise self.class::IllegalFormatWidthException.new(@width)
           end
           if (!(@precision).equal?(-1) && @precision < 0)
-            raise IllegalFormatPrecisionException.new(@precision)
+            raise self.class::IllegalFormatPrecisionException.new(@precision)
           end
           # '-' and '0' require a width
           if ((@width).equal?(-1) && (@f.contains(Flags::LEFT_JUSTIFY) || @f.contains(Flags::ZERO_PAD)))
-            raise MissingFormatWidthException.new(to_s)
+            raise self.class::MissingFormatWidthException.new(to_s)
           end
           # bad combination
           if ((@f.contains(Flags::PLUS) && @f.contains(Flags::LEADING_SPACE)) || (@f.contains(Flags::LEFT_JUSTIFY) && @f.contains(Flags::ZERO_PAD)))
-            raise IllegalFormatFlagsException.new(@f.to_s)
+            raise self.class::IllegalFormatFlagsException.new(@f.to_s)
           end
         end
         
         typesig { [] }
         def check_text
           if (!(@precision).equal?(-1))
-            raise IllegalFormatPrecisionException.new(@precision)
+            raise self.class::IllegalFormatPrecisionException.new(@precision)
           end
           case (@c)
           when Conversion::PERCENT_SIGN
             if (!(@f.value_of).equal?(Flags::LEFT_JUSTIFY.value_of) && !(@f.value_of).equal?(Flags::NONE.value_of))
-              raise IllegalFormatFlagsException.new(@f.to_s)
+              raise self.class::IllegalFormatFlagsException.new(@f.to_s)
             end
             # '-' requires a width
             if ((@width).equal?(-1) && @f.contains(Flags::LEFT_JUSTIFY))
-              raise MissingFormatWidthException.new(to_s)
+              raise self.class::MissingFormatWidthException.new(to_s)
             end
           when Conversion::LINE_SEPARATOR
             if (!(@width).equal?(-1))
-              raise IllegalFormatWidthException.new(@width)
+              raise self.class::IllegalFormatWidthException.new(@width)
             end
             if (!(@f.value_of).equal?(Flags::NONE.value_of))
-              raise IllegalFormatFlagsException.new(@f.to_s)
+              raise self.class::IllegalFormatFlagsException.new(@f.to_s)
             end
           else
             raise AssertError if not (false)
           end
         end
         
-        typesig { [::Java::Byte, Locale] }
+        typesig { [::Java::Byte, self::Locale] }
         def print(value, l)
           v = value
           if (value < 0 && ((@c).equal?(Conversion::OCTAL_INTEGER) || (@c).equal?(Conversion::HEXADECIMAL_INTEGER)))
@@ -3276,7 +3276,7 @@ module Java::Util
           print(v, l)
         end
         
-        typesig { [::Java::Short, Locale] }
+        typesig { [::Java::Short, self::Locale] }
         def print(value, l)
           v = value
           if (value < 0 && ((@c).equal?(Conversion::OCTAL_INTEGER) || (@c).equal?(Conversion::HEXADECIMAL_INTEGER)))
@@ -3286,7 +3286,7 @@ module Java::Util
           print(v, l)
         end
         
-        typesig { [::Java::Int, Locale] }
+        typesig { [::Java::Int, self::Locale] }
         def print(value, l)
           v = value
           if (value < 0 && ((@c).equal?(Conversion::OCTAL_INTEGER) || (@c).equal?(Conversion::HEXADECIMAL_INTEGER)))
@@ -3296,9 +3296,9 @@ module Java::Util
           print(v, l)
         end
         
-        typesig { [::Java::Long, Locale] }
+        typesig { [::Java::Long, self::Locale] }
         def print(value, l)
-          sb = StringBuilder.new
+          sb = self.class::StringBuilder.new
           if ((@c).equal?(Conversion::DECIMAL_INTEGER))
             neg = value < 0
             va = nil
@@ -3357,7 +3357,7 @@ module Java::Util
           self.attr_a.append(justify(sb.to_s))
         end
         
-        typesig { [StringBuilder, ::Java::Boolean] }
+        typesig { [self::StringBuilder, ::Java::Boolean] }
         # neg := val < 0
         def leading_sign(sb, neg)
           if (!neg)
@@ -3378,7 +3378,7 @@ module Java::Util
           return sb
         end
         
-        typesig { [StringBuilder, ::Java::Boolean] }
+        typesig { [self::StringBuilder, ::Java::Boolean] }
         # neg := val < 0
         def trailing_sign(sb, neg)
           if (neg && @f.contains(Flags::PARENTHESES))
@@ -3387,9 +3387,9 @@ module Java::Util
           return sb
         end
         
-        typesig { [BigInteger, Locale] }
+        typesig { [self::BigInteger, self::Locale] }
         def print(value, l)
-          sb = StringBuilder.new
+          sb = self.class::StringBuilder.new
           neg = (value.signum).equal?(-1)
           v = value.abs
           # leading sign indicator
@@ -3450,14 +3450,14 @@ module Java::Util
           self.attr_a.append(justify(sb.to_s))
         end
         
-        typesig { [::Java::Float, Locale] }
+        typesig { [::Java::Float, self::Locale] }
         def print(value, l)
           print((value).to_f, l)
         end
         
-        typesig { [::Java::Double, Locale] }
+        typesig { [::Java::Double, self::Locale] }
         def print(value, l)
-          sb = StringBuilder.new
+          sb = self.class::StringBuilder.new
           neg = (Double.compare(value, 0.0)).equal?(-1)
           if (!Double.is_na_n(value))
             v = Math.abs(value)
@@ -3478,14 +3478,14 @@ module Java::Util
           self.attr_a.append(justify(sb.to_s))
         end
         
-        typesig { [StringBuilder, ::Java::Double, Locale, Flags, ::Java::Char, ::Java::Int, ::Java::Boolean] }
+        typesig { [self::StringBuilder, ::Java::Double, self::Locale, self::Flags, ::Java::Char, ::Java::Int, ::Java::Boolean] }
         # !Double.isInfinite(value) && !Double.isNaN(value)
         def print(sb, value, l, f, c, precision_, neg)
           if ((c).equal?(Conversion::SCIENTIFIC))
             # Create a new FormattedFloatingDecimal with the desired
             # precision.
             prec = ((precision_).equal?(-1) ? 6 : precision_)
-            fd = FormattedFloatingDecimal.new(value, prec, FormattedFloatingDecimal::Form::SCIENTIFIC)
+            fd = self.class::FormattedFloatingDecimal.new(value, prec, FormattedFloatingDecimal::Form::SCIENTIFIC)
             v = CharArray.new(MAX_FD_CHARS)
             len = fd.get_chars(v)
             mant = add_zeros(mantissa(v, len), prec)
@@ -3513,7 +3513,7 @@ module Java::Util
               # Create a new FormattedFloatingDecimal with the desired
               # precision.
               prec = ((precision_).equal?(-1) ? 6 : precision_)
-              fd = FormattedFloatingDecimal.new(value, prec, FormattedFloatingDecimal::Form::DECIMAL_FLOAT)
+              fd = self.class::FormattedFloatingDecimal.new(value, prec, FormattedFloatingDecimal::Form::DECIMAL_FLOAT)
               # MAX_FD_CHARS + 1 (round?)
               v = CharArray.new(MAX_FD_CHARS + 1 + Math.abs(fd.get_exponent))
               len = fd.get_chars(v)
@@ -3538,7 +3538,7 @@ module Java::Util
                     prec = 1
                   end
                 end
-                fd = FormattedFloatingDecimal.new(value, prec, FormattedFloatingDecimal::Form::GENERAL)
+                fd = self.class::FormattedFloatingDecimal.new(value, prec, FormattedFloatingDecimal::Form::GENERAL)
                 # MAX_FD_CHARS + 1 (round?)
                 v = CharArray.new(MAX_FD_CHARS + 1 + Math.abs(fd.get_exponent))
                 len = fd.get_chars(v)
@@ -3753,12 +3753,12 @@ module Java::Util
           end
         end
         
-        typesig { [BigDecimal, Locale] }
+        typesig { [self::BigDecimal, self::Locale] }
         def print(value, l)
           if ((@c).equal?(Conversion::HEXADECIMAL_FLOAT))
             fail_conversion(@c, value)
           end
-          sb = StringBuilder.new
+          sb = self.class::StringBuilder.new
           neg = (value.signum).equal?(-1)
           v = value.abs
           # leading sign indicator
@@ -3771,7 +3771,7 @@ module Java::Util
           self.attr_a.append(justify(sb.to_s))
         end
         
-        typesig { [StringBuilder, BigDecimal, Locale, Flags, ::Java::Char, ::Java::Int, ::Java::Boolean] }
+        typesig { [self::StringBuilder, self::BigDecimal, self::Locale, self::Flags, ::Java::Char, ::Java::Int, ::Java::Boolean] }
         # value > 0
         def print(sb, value, l, f, c, precision_, neg)
           if ((c).equal?(Conversion::SCIENTIFIC))
@@ -3787,9 +3787,9 @@ module Java::Util
             else
               comp_prec = prec + 1
             end
-            mc = MathContext.new(comp_prec)
-            v = BigDecimal.new(value.unscaled_value, scale_, mc)
-            bdl = BigDecimalLayout.new_local(self, v.unscaled_value, v.scale, BigDecimalLayoutForm::SCIENTIFIC)
+            mc = self.class::MathContext.new(comp_prec)
+            v = self.class::BigDecimal.new(value.unscaled_value, scale_, mc)
+            bdl = self.class::BigDecimalLayout.new_local(self, v.unscaled_value, v.scale, BigDecimalLayoutForm::SCIENTIFIC)
             mant = bdl.mantissa
             # Add a decimal point if necessary.  The mantissa may not
             # contain a decimal point if the scale is zero (the internal
@@ -3825,9 +3825,9 @@ module Java::Util
               if (scale_ > prec)
                 comp_prec -= (scale_ - prec)
               end
-              mc = MathContext.new(comp_prec)
-              v = BigDecimal.new(value.unscaled_value, scale_, mc)
-              bdl = BigDecimalLayout.new_local(self, v.unscaled_value, v.scale, BigDecimalLayoutForm::DECIMAL_FLOAT)
+              mc = self.class::MathContext.new(comp_prec)
+              v = self.class::BigDecimal.new(value.unscaled_value, scale_, mc)
+              bdl = self.class::BigDecimalLayout.new_local(self, v.unscaled_value, v.scale, BigDecimalLayoutForm::DECIMAL_FLOAT)
               mant = bdl.mantissa
               nzeros = (bdl.scale < prec ? prec - bdl.scale : 0)
               # Add a decimal point if necessary.  The mantissa may not
@@ -3911,7 +3911,7 @@ module Java::Util
             alias_method :attr_scale=, :scale=
             undef_method :scale=
             
-            typesig { [BigInteger, ::Java::Int, BigDecimalLayoutForm] }
+            typesig { [self::BigInteger, ::Java::Int, self::BigDecimalLayoutForm] }
             def initialize(int_val, scale, form)
               @mant = nil
               @exp = nil
@@ -3933,7 +3933,7 @@ module Java::Util
             typesig { [] }
             # char[] with canonical string representation
             def layout_chars
-              sb = StringBuilder.new(@mant)
+              sb = self.class::StringBuilder.new(@mant)
               if (!(@exp).nil?)
                 sb.append(Character.new(?E.ord))
                 sb.append(@exp)
@@ -3953,7 +3953,7 @@ module Java::Util
               return to_char_array(@exp)
             end
             
-            typesig { [StringBuilder] }
+            typesig { [self::StringBuilder] }
             def to_char_array(sb)
               if ((sb).nil?)
                 return nil
@@ -3963,7 +3963,7 @@ module Java::Util
               return result
             end
             
-            typesig { [BigInteger, ::Java::Int, BigDecimalLayoutForm] }
+            typesig { [self::BigInteger, ::Java::Int, self::BigDecimalLayoutForm] }
             def layout(int_val, scale, form)
               coeff = int_val.to_s.to_char_array
               @scale = scale
@@ -3972,7 +3972,7 @@ module Java::Util
               # if '.' needed, +2 for "E+", + up to 10 for adjusted
               # exponent.  Otherwise it could have +1 if negative, plus
               # leading "0.00000"
-              @mant = StringBuilder.new(coeff.attr_length + 14)
+              @mant = self.class::StringBuilder.new(coeff.attr_length + 14)
               if ((scale).equal?(0))
                 len = coeff.attr_length
                 if (len > 1)
@@ -3981,7 +3981,7 @@ module Java::Util
                     @mant.append(Character.new(?..ord))
                     @dot = true
                     @mant.append(coeff, 1, len - 1)
-                    @exp = StringBuilder.new("+")
+                    @exp = self.class::StringBuilder.new("+")
                     if (len < 10)
                       @exp.append("0").append(len - 1)
                     else
@@ -3993,7 +3993,7 @@ module Java::Util
                 else
                   @mant.append(coeff)
                   if ((form).equal?(BigDecimalLayoutForm::SCIENTIFIC))
-                    @exp = StringBuilder.new("+00")
+                    @exp = self.class::StringBuilder.new("+00")
                   end
                 end
                 return
@@ -4037,7 +4037,7 @@ module Java::Util
                   @dot = true
                   @mant.append(coeff, 1, coeff.attr_length - 1)
                 end
-                @exp = StringBuilder.new
+                @exp = self.class::StringBuilder.new
                 if (!(adjusted).equal?(0))
                   abs_ = Math.abs(adjusted)
                   # require sign
@@ -4057,7 +4057,7 @@ module Java::Util
           end }
         }
         
-        typesig { [::Java::Int, Flags, ::Java::Boolean] }
+        typesig { [::Java::Int, self::Flags, ::Java::Boolean] }
         def adjust_width(width_, f, neg)
           new_w = width_
           if (!(new_w).equal?(-1) && neg && f.contains(Flags::PARENTHESES))
@@ -4093,9 +4093,9 @@ module Java::Util
           return tmp
         end
         
-        typesig { [Calendar, ::Java::Char, Locale] }
+        typesig { [self::Calendar, ::Java::Char, self::Locale] }
         def print(t, c, l)
-          sb = StringBuilder.new
+          sb = self.class::StringBuilder.new
           print(sb, t, c, l)
           # justify based on width
           s = justify(sb.to_s)
@@ -4105,11 +4105,11 @@ module Java::Util
           self.attr_a.append(s)
         end
         
-        typesig { [StringBuilder, Calendar, ::Java::Char, Locale] }
+        typesig { [self::StringBuilder, self::Calendar, ::Java::Char, self::Locale] }
         def print(sb, t, c, l)
           raise AssertError if not (((@width).equal?(-1)))
           if ((sb).nil?)
-            sb = StringBuilder.new
+            sb = self.class::StringBuilder.new
           end
           case (c)
           # 'H' (00 - 23)
@@ -4254,7 +4254,7 @@ module Java::Util
             print(sb, t, DateTime::MINUTE, l).append(sep)
             print(sb, t, DateTime::SECOND, l).append(Character.new(?\s.ord))
             # this may be in wrong place for some locales
-            tsb = StringBuilder.new
+            tsb = self.class::StringBuilder.new
             print(tsb, t, DateTime::AM_PM, l)
             sb.append(tsb.to_s.to_upper_case(!(l).nil? ? l : Locale::US))
           when DateTime::DATE_TIME
@@ -4284,19 +4284,19 @@ module Java::Util
           return sb
         end
         
-        typesig { [Flags, ::Java::Char] }
+        typesig { [self::Flags, ::Java::Char] }
         # -- Methods to support throwing exceptions --
         def fail_mismatch(f, c)
           fs = f.to_s
-          raise FormatFlagsConversionMismatchException.new(fs, c)
+          raise self.class::FormatFlagsConversionMismatchException.new(fs, c)
         end
         
         typesig { [::Java::Char, Object] }
         def fail_conversion(c, arg)
-          raise IllegalFormatConversionException.new(c, arg.get_class)
+          raise self.class::IllegalFormatConversionException.new(c, arg.get_class)
         end
         
-        typesig { [Locale] }
+        typesig { [self::Locale] }
         def get_zero(l)
           if ((!(l).nil?) && !(l == locale))
             dfs = DecimalFormatSymbols.get_instance(l)
@@ -4305,16 +4305,16 @@ module Java::Util
           return self.attr_zero
         end
         
-        typesig { [StringBuilder, ::Java::Long, Flags, ::Java::Int, Locale] }
+        typesig { [self::StringBuilder, ::Java::Long, self::Flags, ::Java::Int, self::Locale] }
         def localized_magnitude(sb, value, f, width_, l)
           va = Long.to_s(value, 10).to_char_array
           return localized_magnitude(sb, va, f, width_, l)
         end
         
-        typesig { [StringBuilder, Array.typed(::Java::Char), Flags, ::Java::Int, Locale] }
+        typesig { [self::StringBuilder, Array.typed(::Java::Char), self::Flags, ::Java::Int, self::Locale] }
         def localized_magnitude(sb, value, f, width_, l)
           if ((sb).nil?)
-            sb = StringBuilder.new
+            sb = self.class::StringBuilder.new
           end
           begin_ = sb.length
           zero = get_zero(l)
@@ -4394,46 +4394,46 @@ module Java::Util
         undef_method :flags=
         
         class_module.module_eval {
-          const_set_lazy(:NONE) { Flags.new(0) }
+          const_set_lazy(:NONE) { self.class::Flags.new(0) }
           const_attr_reader  :NONE
           
           # ''
           # duplicate declarations from Formattable.java
-          const_set_lazy(:LEFT_JUSTIFY) { Flags.new(1 << 0) }
+          const_set_lazy(:LEFT_JUSTIFY) { self.class::Flags.new(1 << 0) }
           const_attr_reader  :LEFT_JUSTIFY
           
           # '-'
-          const_set_lazy(:UPPERCASE) { Flags.new(1 << 1) }
+          const_set_lazy(:UPPERCASE) { self.class::Flags.new(1 << 1) }
           const_attr_reader  :UPPERCASE
           
           # '^'
-          const_set_lazy(:ALTERNATE) { Flags.new(1 << 2) }
+          const_set_lazy(:ALTERNATE) { self.class::Flags.new(1 << 2) }
           const_attr_reader  :ALTERNATE
           
           # '#'
           # numerics
-          const_set_lazy(:PLUS) { Flags.new(1 << 3) }
+          const_set_lazy(:PLUS) { self.class::Flags.new(1 << 3) }
           const_attr_reader  :PLUS
           
           # '+'
-          const_set_lazy(:LEADING_SPACE) { Flags.new(1 << 4) }
+          const_set_lazy(:LEADING_SPACE) { self.class::Flags.new(1 << 4) }
           const_attr_reader  :LEADING_SPACE
           
           # ' '
-          const_set_lazy(:ZERO_PAD) { Flags.new(1 << 5) }
+          const_set_lazy(:ZERO_PAD) { self.class::Flags.new(1 << 5) }
           const_attr_reader  :ZERO_PAD
           
           # '0'
-          const_set_lazy(:GROUP) { Flags.new(1 << 6) }
+          const_set_lazy(:GROUP) { self.class::Flags.new(1 << 6) }
           const_attr_reader  :GROUP
           
           # ','
-          const_set_lazy(:PARENTHESES) { Flags.new(1 << 7) }
+          const_set_lazy(:PARENTHESES) { self.class::Flags.new(1 << 7) }
           const_attr_reader  :PARENTHESES
           
           # '('
           # indexing
-          const_set_lazy(:PREVIOUS) { Flags.new(1 << 8) }
+          const_set_lazy(:PREVIOUS) { self.class::Flags.new(1 << 8) }
           const_attr_reader  :PREVIOUS
         }
         
@@ -4449,23 +4449,23 @@ module Java::Util
           return @flags
         end
         
-        typesig { [Flags] }
+        typesig { [self::Flags] }
         def contains(f)
           return ((@flags & f.value_of)).equal?(f.value_of)
         end
         
         typesig { [] }
         def dup
-          return Flags.new(@flags)
+          return self.class::Flags.new(@flags)
         end
         
-        typesig { [Flags] }
+        typesig { [self::Flags] }
         def add(f)
           @flags |= f.value_of
           return self
         end
         
-        typesig { [Flags] }
+        typesig { [self::Flags] }
         def remove(f)
           @flags &= ~f.value_of
           return self
@@ -4475,12 +4475,12 @@ module Java::Util
           typesig { [String] }
           def parse(s)
             ca = s.to_char_array
-            f = Flags.new(0)
+            f = self.class::Flags.new(0)
             i = 0
             while i < ca.attr_length
               v = parse(ca[i])
               if (f.contains(v))
-                raise DuplicateFormatFlagsException.new(v.to_s)
+                raise self.class::DuplicateFormatFlagsException.new(v.to_s)
               end
               f.add(v)
               i += 1
@@ -4509,11 +4509,11 @@ module Java::Util
             when Character.new(?<.ord)
               return self.class::PREVIOUS
             else
-              raise UnknownFormatFlagsException.new(String.value_of(c))
+              raise self.class::UnknownFormatFlagsException.new(String.value_of(c))
             end
           end
           
-          typesig { [Flags] }
+          typesig { [self::Flags] }
           # Returns a string representation of the current <tt>Flags</tt>.
           def to_s(f)
             return f.to_s
@@ -4522,7 +4522,7 @@ module Java::Util
         
         typesig { [] }
         def to_s
-          sb = StringBuilder.new
+          sb = self.class::StringBuilder.new
           if (contains(self.class::LEFT_JUSTIFY))
             sb.append(Character.new(?-.ord))
           end

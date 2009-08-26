@@ -554,7 +554,7 @@ module Java::Security
         alias_method :attr_init_random=, :init_random=
         undef_method :init_random=
         
-        typesig { [KeyPairGeneratorSpi, String] }
+        typesig { [self::KeyPairGeneratorSpi, self::String] }
         # constructor
         def initialize(spi, algorithm)
           @spi = nil
@@ -569,7 +569,7 @@ module Java::Security
           @spi = spi
         end
         
-        typesig { [Instance, Iterator, String] }
+        typesig { [self::Instance, self::Iterator, self::String] }
         def initialize(instance, service_iterator, algorithm)
           @spi = nil
           @lock = nil
@@ -586,7 +586,7 @@ module Java::Security
           @init_type = self.class::I_NONE
         end
         
-        typesig { [KeyPairGeneratorSpi, ::Java::Boolean] }
+        typesig { [self::KeyPairGeneratorSpi, ::Java::Boolean] }
         # Update the active spi of this class and return the next
         # implementation for failover. If no more implemenations are
         # available, this method returns null. However, the active spi of
@@ -606,10 +606,10 @@ module Java::Security
               begin
                 inst = s.new_instance(nil)
                 # ignore non-spis
-                if ((inst.is_a?(KeyPairGeneratorSpi)).equal?(false))
+                if ((inst.is_a?(self.class::KeyPairGeneratorSpi)).equal?(false))
                   next
                 end
-                if (inst.is_a?(KeyPairGenerator))
+                if (inst.is_a?(self.class::KeyPairGenerator))
                   next
                 end
                 spi = inst
@@ -621,7 +621,7 @@ module Java::Security
                       spi.initialize_(@init_params, @init_random)
                     else
                       if (!(@init_type).equal?(self.class::I_NONE))
-                        raise AssertionError.new("KeyPairGenerator initType: " + RJava.cast_to_string(@init_type))
+                        raise self.class::AssertionError.new("KeyPairGenerator initType: " + RJava.cast_to_string(@init_type))
                       end
                     end
                   end
@@ -629,7 +629,7 @@ module Java::Security
                 self.attr_provider = s.get_provider
                 @spi = spi
                 return spi
-              rescue JavaException => e
+              rescue self.class::JavaException => e
                 # ignore
               end
             end
@@ -646,7 +646,7 @@ module Java::Security
           @init_random = nil
         end
         
-        typesig { [::Java::Int, SecureRandom] }
+        typesig { [::Java::Int, self::SecureRandom] }
         # engine method
         def initialize_(keysize, random)
           if ((@service_iterator).nil?)
@@ -663,7 +663,7 @@ module Java::Security
               @init_params = nil
               @init_random = random
               return
-            rescue RuntimeException => e
+            rescue self.class::RuntimeException => e
               if ((failure).nil?)
                 failure = e
               end
@@ -673,7 +673,7 @@ module Java::Security
           raise failure
         end
         
-        typesig { [AlgorithmParameterSpec, SecureRandom] }
+        typesig { [self::AlgorithmParameterSpec, self::SecureRandom] }
         # engine method
         def initialize_(params, random)
           if ((@service_iterator).nil?)
@@ -690,14 +690,14 @@ module Java::Security
               @init_params = params
               @init_random = random
               return
-            rescue JavaException => e
+            rescue self.class::JavaException => e
               if ((failure).nil?)
                 failure = e
               end
               my_spi = next_spi(my_spi, false)
             end
           end while (!(my_spi).nil?)
-          if (failure.is_a?(RuntimeException))
+          if (failure.is_a?(self.class::RuntimeException))
             raise failure
           end
           # must be an InvalidAlgorithmParameterException
@@ -715,7 +715,7 @@ module Java::Security
           begin
             begin
               return my_spi.generate_key_pair
-            rescue RuntimeException => e
+            rescue self.class::RuntimeException => e
               if ((failure).nil?)
                 failure = e
               end

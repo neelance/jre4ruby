@@ -84,7 +84,7 @@ module Java::Io
         alias_method :attr_val=, :val=
         undef_method :val=
         
-        typesig { [::Java::Long, String] }
+        typesig { [::Java::Long, self::String] }
         def initialize(timestamp, val)
           @timestamp = 0
           @val = nil
@@ -107,7 +107,7 @@ module Java::Io
           return @val
         end
         
-        typesig { [String] }
+        typesig { [self::String] }
         def set_val(val)
           @val = val
         end

@@ -258,7 +258,7 @@ module Sun::Reflect::Misc
         alias_method :attr_hash_code=, :hash_code=
         undef_method :hash_code=
         
-        typesig { [Method] }
+        typesig { [self::Method] }
         def initialize(m)
           @method_name = nil
           @arg_classes = nil
@@ -359,7 +359,7 @@ module Sun::Reflect::Misc
               types = nil
               t = get_trampoline_class
               b = nil
-              types = Array.typed(Class).new([Method, Object, Array[]])
+              types = Array.typed(self.class::Class).new([Method, Object, Array[]])
               b = t.get_declared_method("invoke", types)
               (b).set_accessible(true)
               return b

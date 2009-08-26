@@ -1533,7 +1533,7 @@ module Java::Util::Prefs
           const_attr_reader  :SerialVersionUID
         }
         
-        typesig { [Preferences, Preferences] }
+        typesig { [self::Preferences, self::Preferences] }
         def initialize(parent, child)
           super(parent, child)
         end
@@ -1551,7 +1551,7 @@ module Java::Util::Prefs
           const_attr_reader  :SerialVersionUID
         }
         
-        typesig { [Preferences, Preferences] }
+        typesig { [self::Preferences, self::Preferences] }
         def initialize(parent, child)
           super(parent, child)
         end
@@ -1576,14 +1576,14 @@ module Java::Util::Prefs
                   EventQueue.wait
                 end
                 event = EventQueue.remove(0)
-              rescue InterruptedException => e
+              rescue self.class::InterruptedException => e
                 # XXX Log "Event dispatch thread interrupted. Exiting"
                 return
               end
             end
             # Now we have event & hold no locks; deliver evt to listeners
             src = event.get_source
-            if (event.is_a?(PreferenceChangeEvent))
+            if (event.is_a?(self.class::PreferenceChangeEvent))
               pce = event
               listeners = src.pref_listeners
               i = 0
@@ -1594,7 +1594,7 @@ module Java::Util::Prefs
             else
               nce = event
               listeners = src.node_listeners
-              if (nce.is_a?(NodeAddedEvent))
+              if (nce.is_a?(self.class::NodeAddedEvent))
                 i = 0
                 while i < listeners.attr_length
                   listeners[i].child_added(nce)

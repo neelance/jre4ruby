@@ -172,11 +172,11 @@ module Java::Io
         
         class_module.module_eval {
           # cache of subclass security audit results
-          const_set_lazy(:SubclassAudits) { ConcurrentHashMap.new }
+          const_set_lazy(:SubclassAudits) { self.class::ConcurrentHashMap.new }
           const_attr_reader  :SubclassAudits
           
           # queue for WeakReferences to audited subclasses
-          const_set_lazy(:SubclassAuditsQueue) { ReferenceQueue.new }
+          const_set_lazy(:SubclassAuditsQueue) { self.class::ReferenceQueue.new }
           const_attr_reader  :SubclassAuditsQueue
         }
         
@@ -924,7 +924,7 @@ module Java::Io
       const_set_lazy(:PutField) { Class.new do
         include_class_members ObjectOutputStream
         
-        typesig { [String, ::Java::Boolean] }
+        typesig { [self::String, ::Java::Boolean] }
         # Put the value of the named boolean field into the persistent field.
         # 
         # @param  name the name of the serializable field
@@ -937,7 +937,7 @@ module Java::Io
           raise NotImplementedError
         end
         
-        typesig { [String, ::Java::Byte] }
+        typesig { [self::String, ::Java::Byte] }
         # Put the value of the named byte field into the persistent field.
         # 
         # @param  name the name of the serializable field
@@ -950,7 +950,7 @@ module Java::Io
           raise NotImplementedError
         end
         
-        typesig { [String, ::Java::Char] }
+        typesig { [self::String, ::Java::Char] }
         # Put the value of the named char field into the persistent field.
         # 
         # @param  name the name of the serializable field
@@ -963,7 +963,7 @@ module Java::Io
           raise NotImplementedError
         end
         
-        typesig { [String, ::Java::Short] }
+        typesig { [self::String, ::Java::Short] }
         # Put the value of the named short field into the persistent field.
         # 
         # @param  name the name of the serializable field
@@ -976,7 +976,7 @@ module Java::Io
           raise NotImplementedError
         end
         
-        typesig { [String, ::Java::Int] }
+        typesig { [self::String, ::Java::Int] }
         # Put the value of the named int field into the persistent field.
         # 
         # @param  name the name of the serializable field
@@ -989,7 +989,7 @@ module Java::Io
           raise NotImplementedError
         end
         
-        typesig { [String, ::Java::Long] }
+        typesig { [self::String, ::Java::Long] }
         # Put the value of the named long field into the persistent field.
         # 
         # @param  name the name of the serializable field
@@ -1002,7 +1002,7 @@ module Java::Io
           raise NotImplementedError
         end
         
-        typesig { [String, ::Java::Float] }
+        typesig { [self::String, ::Java::Float] }
         # Put the value of the named float field into the persistent field.
         # 
         # @param  name the name of the serializable field
@@ -1015,7 +1015,7 @@ module Java::Io
           raise NotImplementedError
         end
         
-        typesig { [String, ::Java::Double] }
+        typesig { [self::String, ::Java::Double] }
         # Put the value of the named double field into the persistent field.
         # 
         # @param  name the name of the serializable field
@@ -1028,7 +1028,7 @@ module Java::Io
           raise NotImplementedError
         end
         
-        typesig { [String, Object] }
+        typesig { [self::String, Object] }
         # Put the value of the named Object field into the persistent field.
         # 
         # @param  name the name of the serializable field
@@ -1042,7 +1042,7 @@ module Java::Io
           raise NotImplementedError
         end
         
-        typesig { [ObjectOutput] }
+        typesig { [self::ObjectOutput] }
         # Write the data and fields to the specified ObjectOutput stream,
         # which must be the same stream that produced this
         # <code>PutField</code> object.
@@ -1137,14 +1137,14 @@ module Java::Io
             cl = subcl
             while !(cl).equal?(ObjectOutputStream)
               begin
-                cl.get_declared_method("writeUnshared", Array.typed(Class).new([Object]))
+                cl.get_declared_method("writeUnshared", Array.typed(self.class::Class).new([Object]))
                 return Boolean::FALSE
-              rescue NoSuchMethodException => ex
+              rescue self.class::NoSuchMethodException => ex
               end
               begin
                 cl.get_declared_method("putFields", nil)
                 return Boolean::FALSE
-              rescue NoSuchMethodException => ex
+              rescue self.class::NoSuchMethodException => ex
               end
               cl = cl.get_superclass
             end
@@ -1657,7 +1657,7 @@ module Java::Io
         alias_method :attr_obj_vals=, :obj_vals=
         undef_method :obj_vals=
         
-        typesig { [ObjectStreamClass] }
+        typesig { [self::ObjectStreamClass] }
         # Creates PutFieldImpl object for writing fields defined in given
         # class descriptor.
         def initialize(desc)
@@ -1670,52 +1670,52 @@ module Java::Io
           @obj_vals = Array.typed(Object).new(desc.get_num_obj_fields) { nil }
         end
         
-        typesig { [String, ::Java::Boolean] }
+        typesig { [self::String, ::Java::Boolean] }
         def put(name, val)
           Bits.put_boolean(@prim_vals, get_field_offset(name, Boolean::TYPE), val)
         end
         
-        typesig { [String, ::Java::Byte] }
+        typesig { [self::String, ::Java::Byte] }
         def put(name, val)
           @prim_vals[get_field_offset(name, Byte::TYPE)] = val
         end
         
-        typesig { [String, ::Java::Char] }
+        typesig { [self::String, ::Java::Char] }
         def put(name, val)
           Bits.put_char(@prim_vals, get_field_offset(name, Character::TYPE), val)
         end
         
-        typesig { [String, ::Java::Short] }
+        typesig { [self::String, ::Java::Short] }
         def put(name, val)
           Bits.put_short(@prim_vals, get_field_offset(name, Short::TYPE), val)
         end
         
-        typesig { [String, ::Java::Int] }
+        typesig { [self::String, ::Java::Int] }
         def put(name, val)
           Bits.put_int(@prim_vals, get_field_offset(name, JavaInteger::TYPE), val)
         end
         
-        typesig { [String, ::Java::Float] }
+        typesig { [self::String, ::Java::Float] }
         def put(name, val)
           Bits.put_float(@prim_vals, get_field_offset(name, Float::TYPE), val)
         end
         
-        typesig { [String, ::Java::Long] }
+        typesig { [self::String, ::Java::Long] }
         def put(name, val)
           Bits.put_long(@prim_vals, get_field_offset(name, Long::TYPE), val)
         end
         
-        typesig { [String, ::Java::Double] }
+        typesig { [self::String, ::Java::Double] }
         def put(name, val)
           Bits.put_double(@prim_vals, get_field_offset(name, Double::TYPE), val)
         end
         
-        typesig { [String, Object] }
+        typesig { [self::String, Object] }
         def put(name, val)
           @obj_vals[get_field_offset(name, Object)] = val
         end
         
-        typesig { [ObjectOutput] }
+        typesig { [self::ObjectOutput] }
         # deprecated in ObjectOutputStream.PutField
         def write(out)
           # Applications should *not* use this method to write PutField
@@ -1732,7 +1732,7 @@ module Java::Io
           # instance.  Applications which write unshared objects using the
           # PutField API must use OOS.writeFields().
           if (!(@local_class_parent).equal?(out))
-            raise IllegalArgumentException.new("wrong stream")
+            raise self.class::IllegalArgumentException.new("wrong stream")
           end
           out.write(@prim_vals, 0, @prim_vals.attr_length)
           fields = @desc.get_fields(false)
@@ -1741,7 +1741,7 @@ module Java::Io
           i = 0
           while i < @obj_vals.attr_length
             if (fields[num_prim_fields + i].is_unshared)
-              raise IOException.new("cannot write unshared object")
+              raise self.class::IOException.new("cannot write unshared object")
             end
             out.write_object(@obj_vals[i])
             i += 1
@@ -1770,7 +1770,7 @@ module Java::Io
           end
         end
         
-        typesig { [String, Class] }
+        typesig { [self::String, self::Class] }
         # Returns offset of field with given name and type.  A specified type
         # of null matches all types, Object.class matches all non-primitive
         # types, and any other non-null type matches assignable types only.
@@ -1778,7 +1778,7 @@ module Java::Io
         def get_field_offset(name, type)
           field = @desc.get_field(name, type)
           if ((field).nil?)
-            raise IllegalArgumentException.new("no such field " + name + " with type " + RJava.cast_to_string(type))
+            raise self.class::IllegalArgumentException.new("no such field " + name + " with type " + RJava.cast_to_string(type))
           end
           return field.get_offset
         end
@@ -1860,7 +1860,7 @@ module Java::Io
         alias_method :attr_dout=, :dout=
         undef_method :dout=
         
-        typesig { [OutputStream] }
+        typesig { [self::OutputStream] }
         # Creates new BlockDataOutputStream on top of given underlying stream.
         # Block data mode is turned off by default.
         def initialize(out)
@@ -1878,7 +1878,7 @@ module Java::Io
           @blkmode = false
           @pos = 0
           @out = out
-          @dout = DataOutputStream.new(self)
+          @dout = self.class::DataOutputStream.new(self)
         end
         
         typesig { [::Java::Boolean] }
@@ -2081,7 +2081,7 @@ module Java::Io
           end
         end
         
-        typesig { [String] }
+        typesig { [self::String] }
         def write_bytes(s)
           endoff = s.length
           cpos = 0
@@ -2105,7 +2105,7 @@ module Java::Io
           end
         end
         
-        typesig { [String] }
+        typesig { [self::String] }
         def write_chars(s)
           endoff = s.length
           off = 0
@@ -2117,7 +2117,7 @@ module Java::Io
           end
         end
         
-        typesig { [String] }
+        typesig { [self::String] }
         def write_utf(s)
           write_utf(s, get_utflength(s))
         end
@@ -2248,7 +2248,7 @@ module Java::Io
           end
         end
         
-        typesig { [String] }
+        typesig { [self::String] }
         # Returns the length in bytes of the UTF encoding of the given string.
         def get_utflength(s)
           len = s.length
@@ -2276,14 +2276,14 @@ module Java::Io
           return utflen
         end
         
-        typesig { [String, ::Java::Long] }
+        typesig { [self::String, ::Java::Long] }
         # Writes the given string in UTF format.  This method is used in
         # situations where the UTF encoding length of the string is already
         # known; specifying it explicitly avoids a prescan of the string to
         # determine its UTF length.
         def write_utf(s, utflen)
           if (utflen > 0xffff)
-            raise UTFDataFormatException.new
+            raise self.class::UTFDataFormatException.new
           end
           write_short(RJava.cast_to_int(utflen))
           if ((utflen).equal?(s.length))
@@ -2293,7 +2293,7 @@ module Java::Io
           end
         end
         
-        typesig { [String] }
+        typesig { [self::String] }
         # Writes given string in "long" UTF format.  "Long" UTF format is
         # identical to standard UTF, except that it uses an 8 byte header
         # (instead of the standard 2 bytes) to convey the UTF encoding length.
@@ -2301,7 +2301,7 @@ module Java::Io
           write_long_utf(s, get_utflength(s))
         end
         
-        typesig { [String, ::Java::Long] }
+        typesig { [self::String, ::Java::Long] }
         # Writes given string in "long" UTF format, where the UTF encoding
         # length of the string is already known.
         def write_long_utf(s, utflen)
@@ -2313,7 +2313,7 @@ module Java::Io
           end
         end
         
-        typesig { [String] }
+        typesig { [self::String] }
         # Writes the "body" (i.e., the UTF representation minus the 2-byte or
         # 8-byte length header) of the UTF encoding for the given string.
         def write_utfbody(s)
@@ -2546,7 +2546,7 @@ module Java::Io
         def initialize(initial_capacity, load_factor)
           @htab = nil
           @reps = nil
-          @htab = HandleTable.new(initial_capacity, load_factor)
+          @htab = self.class::HandleTable.new(initial_capacity, load_factor)
           @reps = Array.typed(Object).new(initial_capacity) { nil }
         end
         
@@ -2607,7 +2607,7 @@ module Java::Io
         typesig { [] }
         def initialize
           @stack = nil
-          @stack = ArrayList.new
+          @stack = self.class::ArrayList.new
         end
         
         typesig { [] }
@@ -2622,7 +2622,7 @@ module Java::Io
           @stack.remove(@stack.size - 1)
         end
         
-        typesig { [String] }
+        typesig { [self::String] }
         # Pushes a String onto the top of enclosed list.
         def push(entry)
           @stack.add("\t- " + entry)
@@ -2631,7 +2631,7 @@ module Java::Io
         typesig { [] }
         # Returns a string representation of this object
         def to_s
-          buffer = StringBuilder.new
+          buffer = self.class::StringBuilder.new
           if (!@stack.is_empty)
             i = @stack.size
             while i > 0

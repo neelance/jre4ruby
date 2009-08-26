@@ -50,7 +50,7 @@ module Java::Lang::Ref
       const_set_lazy(:Null) { Class.new(ReferenceQueue) do
         include_class_members ReferenceQueue
         
-        typesig { [Reference] }
+        typesig { [self::Reference] }
         def enqueue(r)
           return false
         end

@@ -64,7 +64,7 @@ module Sun::Security::Jca
         alias_method :attr_impl=, :impl=
         undef_method :impl=
         
-        typesig { [Provider, Object] }
+        typesig { [self::Provider, Object] }
         def initialize(provider, impl)
           @provider = nil
           @impl = nil

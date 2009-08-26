@@ -1146,7 +1146,7 @@ module Java::Text
           const_attr_reader  :SerialVersionUID
         }
         
-        typesig { [String] }
+        typesig { [self::String] }
         # Creates a Field with the specified name.
         # 
         # @param name Name of the attribute
@@ -1162,7 +1162,7 @@ module Java::Text
         # @return resolved MessageFormat.Field constant
         def read_resolve
           if (!(self.get_class).equal?(MessageFormat::Field))
-            raise InvalidObjectException.new("subclass didn't correctly implement readResolve")
+            raise self.class::InvalidObjectException.new("subclass didn't correctly implement readResolve")
           end
           return self.class::ARGUMENT
         end
@@ -1176,7 +1176,7 @@ module Java::Text
           # The value associated with the key will be an <code>Integer</code>
           # indicating the index in the <code>arguments</code> array of the
           # argument from which the text was generated.
-          const_set_lazy(:ARGUMENT) { Field.new("message argument field") }
+          const_set_lazy(:ARGUMENT) { self.class::Field.new("message argument field") }
           const_attr_reader  :ARGUMENT
         }
         

@@ -256,7 +256,7 @@ module Sun::Security::Ssl
               hostname = nil
               begin
                 hostname = RJava.cast_to_string(InetAddress.get_local_host.get_host_name)
-              rescue Java::Net::UnknownHostException => e
+              rescue Java::Net::self.class::UnknownHostException => e
                 hostname = "localhost"
               end
               return hostname

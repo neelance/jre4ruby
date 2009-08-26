@@ -657,13 +657,13 @@ module Java::Util
         typesig { [] }
         def next_
           if ((@cursor).equal?(@fence))
-            raise NoSuchElementException.new
+            raise self.class::NoSuchElementException.new
           end
           result = self.attr_elements[@cursor]
           # This check doesn't catch all possible comodifications,
           # but does catch the ones that corrupt traversal
           if (!(self.attr_tail).equal?(@fence) || (result).nil?)
-            raise ConcurrentModificationException.new
+            raise self.class::ConcurrentModificationException.new
           end
           @last_ret = @cursor
           @cursor = (@cursor + 1) & (self.attr_elements.attr_length - 1)
@@ -673,7 +673,7 @@ module Java::Util
         typesig { [] }
         def remove
           if (@last_ret < 0)
-            raise IllegalStateException.new
+            raise self.class::IllegalStateException.new
           end
           if (delete(@last_ret))
             # if left-shifted, undo increment in next()
@@ -728,12 +728,12 @@ module Java::Util
         typesig { [] }
         def next_
           if ((@cursor).equal?(@fence))
-            raise NoSuchElementException.new
+            raise self.class::NoSuchElementException.new
           end
           @cursor = (@cursor - 1) & (self.attr_elements.attr_length - 1)
           result = self.attr_elements[@cursor]
           if (!(self.attr_head).equal?(@fence) || (result).nil?)
-            raise ConcurrentModificationException.new
+            raise self.class::ConcurrentModificationException.new
           end
           @last_ret = @cursor
           return result
@@ -742,7 +742,7 @@ module Java::Util
         typesig { [] }
         def remove
           if (@last_ret < 0)
-            raise IllegalStateException.new
+            raise self.class::IllegalStateException.new
           end
           if (!delete(@last_ret))
             @cursor = (@cursor + 1) & (self.attr_elements.attr_length - 1)

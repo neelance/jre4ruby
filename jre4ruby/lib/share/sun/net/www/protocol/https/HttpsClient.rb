@@ -228,7 +228,7 @@ module Sun::Net::Www::Protocol::Https
             
             typesig { [] }
             define_method :run do
-              return InetSocketAddress.new(phost, pport)
+              return self.class::InetSocketAddress.new(phost, pport)
             end
             
             typesig { [] }

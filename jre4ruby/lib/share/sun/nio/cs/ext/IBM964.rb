@@ -146,7 +146,7 @@ module Sun::Nio::Cs::Ext
         alias_method :attr_mapping_table_g2=, :mapping_table_g2=
         undef_method :mapping_table_g2=
         
-        typesig { [Charset] }
+        typesig { [self::Charset] }
         def initialize(cs)
           @ss2 = 0
           @ss3 = 0
@@ -156,7 +156,7 @@ module Sun::Nio::Cs::Ext
           @ss3 = 0x8f
         end
         
-        typesig { [ByteBuffer, CharBuffer] }
+        typesig { [self::ByteBuffer, self::CharBuffer] }
         def decode_array_loop(src, dst)
           sa = src.array
           sp = src.array_offset + src.position
@@ -246,7 +246,7 @@ module Sun::Nio::Cs::Ext
           end
         end
         
-        typesig { [ByteBuffer, CharBuffer] }
+        typesig { [self::ByteBuffer, self::CharBuffer] }
         def decode_buffer_loop(src, dst)
           mark = src.position
           begin
@@ -326,7 +326,7 @@ module Sun::Nio::Cs::Ext
           end
         end
         
-        typesig { [ByteBuffer, CharBuffer] }
+        typesig { [self::ByteBuffer, self::CharBuffer] }
         def decode_loop(src, dst)
           if (true && src.has_array && dst.has_array)
             return decode_array_loop(src, dst)
@@ -352,7 +352,7 @@ module Sun::Nio::Cs::Ext
       const_set_lazy(:Encoder) { Class.new(SimpleEUCEncoder) do
         include_class_members IBM964
         
-        typesig { [Charset] }
+        typesig { [self::Charset] }
         def initialize(cs)
           super(cs)
           @mask1 = 0xffc0

@@ -267,7 +267,7 @@ module Sun::Misc
         typesig { [] }
         define_method :next_element do
           if (!next_)
-            raise NoSuchElementException.new
+            raise self.class::NoSuchElementException.new
           end
           u = @url
           @url = nil
@@ -341,7 +341,7 @@ module Sun::Misc
         typesig { [] }
         define_method :next_element do
           if (!next_)
-            raise NoSuchElementException.new
+            raise self.class::NoSuchElementException.new
           end
           r = @res
           @res = nil
@@ -427,12 +427,12 @@ module Sun::Misc
             file = url.get_file
             if (!(file).nil? && file.ends_with("/"))
               if (("file" == url.get_protocol))
-                return FileLoader.new(url)
+                return self.class::FileLoader.new(url)
               else
-                return Loader.new(url)
+                return self.class::Loader.new(url)
               end
             else
-              return JarLoader.new(url, self.attr_jar_handler, self.attr_lmap)
+              return self.class::JarLoader.new(url, self.attr_jar_handler, self.attr_lmap)
             end
           end
           
@@ -550,7 +550,7 @@ module Sun::Misc
         alias_method :attr_base=, :base=
         undef_method :base=
         
-        typesig { [URL] }
+        typesig { [self::URL] }
         # Creates a new Loader for the specified URL.
         def initialize(url)
           @base = nil
@@ -563,13 +563,13 @@ module Sun::Misc
           return @base
         end
         
-        typesig { [String, ::Java::Boolean] }
+        typesig { [self::String, ::Java::Boolean] }
         def find_resource(name, check)
           url = nil
           begin
-            url = URL.new(@base, ParseUtil.encode_path(name, false))
-          rescue MalformedURLException => e
-            raise IllegalArgumentException.new("name")
+            url = self.class::URL.new(@base, ParseUtil.encode_path(name, false))
+          rescue self.class::MalformedURLException => e
+            raise self.class::IllegalArgumentException.new("name")
           end
           begin
             if (check)
@@ -578,7 +578,7 @@ module Sun::Misc
             # For a HTTP connection we use the HEAD method to
             # check if the resource exists.
             uc = url.open_connection
-            if (uc.is_a?(HttpURLConnection))
+            if (uc.is_a?(self.class::HttpURLConnection))
               hconn = uc
               hconn.set_request_method("HEAD")
               if (hconn.get_response_code >= HttpURLConnection::HTTP_BAD_REQUEST)
@@ -590,18 +590,18 @@ module Sun::Misc
               is.close
             end
             return url
-          rescue JavaException => e
+          rescue self.class::JavaException => e
             return nil
           end
         end
         
-        typesig { [String, ::Java::Boolean] }
+        typesig { [self::String, ::Java::Boolean] }
         def get_resource(name, check_)
           url = nil
           begin
-            url = URL.new(@base, ParseUtil.encode_path(name, false))
-          rescue MalformedURLException => e
-            raise IllegalArgumentException.new("name")
+            url = self.class::URL.new(@base, ParseUtil.encode_path(name, false))
+          rescue self.class::MalformedURLException => e
+            raise self.class::IllegalArgumentException.new("name")
           end
           uc = nil
           begin
@@ -610,13 +610,13 @@ module Sun::Misc
             end
             uc = url.open_connection
             in_ = uc.get_input_stream
-          rescue JavaException => e
+          rescue self.class::JavaException => e
             return nil
           end
-          return Class.new(Resource.class == Class ? Resource : Object) do
+          return Class.new(self.class::Resource.class == Class ? self.class::Resource : Object) do
             extend LocalClass
             include_class_members Loader
-            include Resource if Resource.class == Module
+            include self::Resource if self::Resource.class == Module
             
             typesig { [] }
             define_method :get_name do
@@ -653,7 +653,7 @@ module Sun::Misc
           end.new_local(self)
         end
         
-        typesig { [String] }
+        typesig { [self::String] }
         # Returns the Resource for the specified name, or null if not
         # found or the caller does not have the permission to get the
         # resource.
@@ -711,7 +711,7 @@ module Sun::Misc
         alias_method :attr_lmap=, :lmap=
         undef_method :lmap=
         
-        typesig { [URL, URLStreamHandler, HashMap] }
+        typesig { [self::URL, self::URLStreamHandler, self::HashMap] }
         # Creates a new JarLoader for the specified URL referring to
         # a JAR file.
         def initialize(url, jar_handler, loader_map)
@@ -721,7 +721,7 @@ module Sun::Misc
           @meta_index = nil
           @handler = nil
           @lmap = nil
-          super(URL.new("jar", "", -1, RJava.cast_to_string(url) + "!/", jar_handler))
+          super(self.class::URL.new("jar", "", -1, RJava.cast_to_string(url) + "!/", jar_handler))
           @csu = url
           @handler = jar_handler
           @lmap = loader_map
@@ -731,7 +731,7 @@ module Sun::Misc
             file_name = url.get_file
             if (!(file_name).nil?)
               file_name = RJava.cast_to_string(ParseUtil.decode(file_name))
-              f = JavaFile.new(file_name)
+              f = self.class::JavaFile.new(file_name)
               @meta_index = MetaIndex.for_jar(f)
               # If the meta index is found but the file is not
               # installed, set metaIndex to null. A typical
@@ -757,7 +757,7 @@ module Sun::Misc
           return @jar
         end
         
-        typesig { [URL] }
+        typesig { [self::URL] }
         def is_optimizable(url)
           return ("file" == url.get_protocol)
         end
@@ -766,10 +766,10 @@ module Sun::Misc
         def ensure_open
           if ((@jar).nil?)
             begin
-              Java::Security::AccessController.do_privileged(Class.new(Java::Security::PrivilegedExceptionAction.class == Class ? Java::Security::PrivilegedExceptionAction : Object) do
+              Java::Security::AccessController.do_privileged(Class.new(Java::Security::self.class::PrivilegedExceptionAction.class == Class ? Java::Security::self.class::PrivilegedExceptionAction : Object) do
                 extend LocalClass
                 include_class_members JarLoader
-                include Java::Security::PrivilegedExceptionAction if Java::Security::PrivilegedExceptionAction.class == Module
+                include Java::Security::self::PrivilegedExceptionAction if Java::Security::self::PrivilegedExceptionAction.class == Module
                 
                 typesig { [] }
                 define_method :run do
@@ -789,12 +789,12 @@ module Sun::Misc
                     i = 0
                     while i < jarfiles.attr_length
                       begin
-                        jar_url = URL.new(self.attr_csu, jarfiles[i])
+                        jar_url = self.class::URL.new(self.attr_csu, jarfiles[i])
                         # If a non-null loader already exists, leave it alone.
                         if (!self.attr_lmap.contains_key(jar_url))
                           self.attr_lmap.put(jar_url, nil)
                         end
-                      rescue MalformedURLException => e
+                      rescue self.class::MalformedURLException => e
                         i += 1
                         next
                       end
@@ -812,21 +812,21 @@ module Sun::Misc
                 private
                 alias_method :initialize_anonymous, :initialize
               end.new_local(self))
-            rescue Java::Security::PrivilegedActionException => pae
+            rescue Java::Security::self.class::PrivilegedActionException => pae
               raise pae.get_exception
             end
           end
         end
         
-        typesig { [URL] }
+        typesig { [self::URL] }
         def get_jar_file(url)
           # Optimize case where url refers to a local jar file
           if (is_optimizable(url))
-            p = FileURLMapper.new(url)
+            p = self.class::FileURLMapper.new(url)
             if (!p.exists)
-              raise FileNotFoundException.new(p.get_path)
+              raise self.class::FileNotFoundException.new(p.get_path)
             end
-            return JarFile.new(p.get_path)
+            return self.class::JarFile.new(p.get_path)
           end
           uc = get_base_url.open_connection
           uc.set_request_property(USER_AGENT_JAVA_VERSION, JAVA_VERSION)
@@ -838,34 +838,34 @@ module Sun::Misc
         def get_index
           begin
             ensure_open
-          rescue IOException => e
-            raise InternalError.new.init_cause(e)
+          rescue self.class::IOException => e
+            raise self.class::InternalError.new.init_cause(e)
           end
           return @index
         end
         
-        typesig { [String, ::Java::Boolean, JarEntry] }
+        typesig { [self::String, ::Java::Boolean, self::JarEntry] }
         # Creates the resource and if the check flag is set to true, checks if
         # is its okay to return the resource.
         def check_resource(name, check, entry)
           url = nil
           begin
-            url = URL.new(get_base_url, ParseUtil.encode_path(name, false))
+            url = self.class::URL.new(get_base_url, ParseUtil.encode_path(name, false))
             if (check)
               URLClassPath.check(url)
             end
-          rescue MalformedURLException => e
+          rescue self.class::MalformedURLException => e
             return nil
             # throw new IllegalArgumentException("name");
-          rescue IOException => e
+          rescue self.class::IOException => e
             return nil
-          rescue AccessControlException => e
+          rescue self.class::AccessControlException => e
             return nil
           end
-          return Class.new(Resource.class == Class ? Resource : Object) do
+          return Class.new(self.class::Resource.class == Class ? self.class::Resource : Object) do
             extend LocalClass
             include_class_members JarLoader
-            include Resource if Resource.class == Module
+            include self::Resource if self::Resource.class == Module
             
             typesig { [] }
             define_method :get_name do
@@ -917,7 +917,7 @@ module Sun::Misc
           end.new_local(self)
         end
         
-        typesig { [String] }
+        typesig { [self::String] }
         # Returns true iff atleast one resource in the jar file has the same
         # package name as that of the specified resource name.
         def valid_index(name)
@@ -942,7 +942,7 @@ module Sun::Misc
           return false
         end
         
-        typesig { [String, ::Java::Boolean] }
+        typesig { [self::String, ::Java::Boolean] }
         # Returns the URL for a resource with the specified name
         def find_resource(name, check_)
           rsc = get_resource(name, check_)
@@ -952,7 +952,7 @@ module Sun::Misc
           return nil
         end
         
-        typesig { [String, ::Java::Boolean] }
+        typesig { [self::String, ::Java::Boolean] }
         # Returns the JAR Resource for the specified name.
         def get_resource(name, check_)
           if (!(@meta_index).nil?)
@@ -962,8 +962,8 @@ module Sun::Misc
           end
           begin
             ensure_open
-          rescue IOException => e
-            raise InternalError.new.init_cause(e)
+          rescue self.class::IOException => e
+            raise self.class::InternalError.new.init_cause(e)
           end
           entry = @jar.get_jar_entry(name)
           if (!(entry).nil?)
@@ -972,11 +972,11 @@ module Sun::Misc
           if ((@index).nil?)
             return nil
           end
-          visited = HashSet.new
+          visited = self.class::HashSet.new
           return get_resource(name, check_, visited)
         end
         
-        typesig { [String, ::Java::Boolean, JavaSet] }
+        typesig { [self::String, ::Java::Boolean, self::JavaSet] }
         # Version of getResource() that tracks the jar files that have been
         # visited by linking through the index files. This helper method uses
         # a HashSet to store the URLs of jar files that have been searched and
@@ -1002,18 +1002,18 @@ module Sun::Misc
               new_loader = nil
               url = nil
               begin
-                url = URL.new(@csu, jar_name)
+                url = self.class::URL.new(@csu, jar_name)
                 if (((new_loader = @lmap.get(url))).nil?)
                   new_loader = AccessController.do_privileged(# no loader has been set up for this jar file
                   # before
-                  Class.new(PrivilegedExceptionAction.class == Class ? PrivilegedExceptionAction : Object) do
+                  Class.new(self.class::PrivilegedExceptionAction.class == Class ? self.class::PrivilegedExceptionAction : Object) do
                     extend LocalClass
                     include_class_members JarLoader
-                    include PrivilegedExceptionAction if PrivilegedExceptionAction.class == Module
+                    include self::PrivilegedExceptionAction if self::PrivilegedExceptionAction.class == Module
                     
                     typesig { [] }
                     define_method :run do
-                      return JarLoader.new(url, self.attr_handler, self.attr_lmap)
+                      return self.class::JarLoader.new(url, self.attr_handler, self.attr_lmap)
                     end
                     
                     typesig { [] }
@@ -1035,9 +1035,9 @@ module Sun::Misc
                   # put it in the global hashtable
                   @lmap.put(url, new_loader)
                 end
-              rescue Java::Security::PrivilegedActionException => pae
+              rescue Java::Security::self.class::PrivilegedActionException => pae
                 next
-              rescue MalformedURLException => e
+              rescue self.class::MalformedURLException => e
                 next
               end
               # Note that the addition of the url to the list of visited
@@ -1046,8 +1046,8 @@ module Sun::Misc
               if (!visited_url)
                 begin
                   new_loader.ensure_open
-                rescue IOException => e
-                  raise InternalError.new.init_cause(e)
+                rescue self.class::IOException => e
+                  raise self.class::InternalError.new.init_cause(e)
                 end
                 entry = new_loader.attr_jar.get_jar_entry(name)
                 if (!(entry).nil?)
@@ -1058,7 +1058,7 @@ module Sun::Misc
                 # present in the new jar
                 if (!new_loader.valid_index(name))
                   # the mapping is wrong
-                  raise InvalidJarIndexException.new("Invalid index")
+                  raise self.class::InvalidJarIndexException.new("Invalid index")
                 end
               end
               # If newLoader is the current loader or if it is a
@@ -1113,16 +1113,16 @@ module Sun::Misc
           ExtensionDependency.check_extensions_dependencies(@jar)
         end
         
-        typesig { [URL, String] }
+        typesig { [self::URL, self::String] }
         # Parses value of the Class-Path manifest attribute and returns
         # an array of URLs relative to the specified base URL.
         def parse_class_path(base, value)
-          st = StringTokenizer.new(value)
-          urls = Array.typed(URL).new(st.count_tokens) { nil }
+          st = self.class::StringTokenizer.new(value)
+          urls = Array.typed(self.class::URL).new(st.count_tokens) { nil }
           i = 0
           while (st.has_more_tokens)
             path = st.next_token
-            urls[i] = URL.new(base, path)
+            urls[i] = self.class::URL.new(base, path)
             i += 1
           end
           return urls
@@ -1143,19 +1143,19 @@ module Sun::Misc
         alias_method :attr_dir=, :dir=
         undef_method :dir=
         
-        typesig { [URL] }
+        typesig { [self::URL] }
         def initialize(url)
           @dir = nil
           super(url)
           if (!("file" == url.get_protocol))
-            raise IllegalArgumentException.new("url")
+            raise self.class::IllegalArgumentException.new("url")
           end
           path = url.get_file.replace(Character.new(?/.ord), JavaFile.attr_separator_char)
           path = RJava.cast_to_string(ParseUtil.decode(path))
-          @dir = JavaFile.new(path)
+          @dir = self.class::JavaFile.new(path)
         end
         
-        typesig { [String, ::Java::Boolean] }
+        typesig { [self::String, ::Java::Boolean] }
         # Returns the URL for a resource with the specified name
         def find_resource(name, check)
           rsc = get_resource(name, check)
@@ -1165,12 +1165,12 @@ module Sun::Misc
           return nil
         end
         
-        typesig { [String, ::Java::Boolean] }
+        typesig { [self::String, ::Java::Boolean] }
         def get_resource(name, check)
           url = nil
           begin
-            normalized_base = URL.new(get_base_url, ".")
-            url = URL.new(get_base_url, ParseUtil.encode_path(name, false))
+            normalized_base = self.class::URL.new(get_base_url, ".")
+            url = self.class::URL.new(get_base_url, ParseUtil.encode_path(name, false))
             if ((url.get_file.starts_with(normalized_base.get_file)).equal?(false))
               # requested resource had ../..'s in path
               return nil
@@ -1178,12 +1178,12 @@ module Sun::Misc
             if (check)
               URLClassPath.check(url)
             end
-            file = JavaFile.new(@dir, name.replace(Character.new(?/.ord), JavaFile.attr_separator_char))
+            file = self.class::JavaFile.new(@dir, name.replace(Character.new(?/.ord), JavaFile.attr_separator_char))
             if (file.exists)
-              return Class.new(Resource.class == Class ? Resource : Object) do
+              return Class.new(self.class::Resource.class == Class ? self.class::Resource : Object) do
                 extend LocalClass
                 include_class_members FileLoader
-                include Resource if Resource.class == Module
+                include self::Resource if self::Resource.class == Module
                 
                 typesig { [] }
                 define_method :get_name do
@@ -1202,7 +1202,7 @@ module Sun::Misc
                 
                 typesig { [] }
                 define_method :get_input_stream do
-                  return FileInputStream.new(file)
+                  return self.class::FileInputStream.new(file)
                 end
                 
                 typesig { [] }
@@ -1219,7 +1219,7 @@ module Sun::Misc
                 alias_method :initialize_anonymous, :initialize
               end.new_local(self)
             end
-          rescue JavaException => e
+          rescue self.class::JavaException => e
             return nil
           end
           return nil

@@ -272,9 +272,9 @@ module Sun::Misc
           typesig { [] }
           define_method :run do
             if (!file.exists)
-              raise FileNotFoundException.new(file.get_name)
+              raise self.class::FileNotFoundException.new(file.get_name)
             end
-            jar_file = JarFile.new(file)
+            jar_file = self.class::JarFile.new(file)
             return jar_file.get_manifest
           end
           
@@ -385,9 +385,9 @@ module Sun::Misc
               j = 0
               while j < file_ext.attr_length
                 if (ext_name.to_lower_case.ends_with(file_ext[j]))
-                  f_extension = JavaFile.new(dirs[i], ext_name)
+                  f_extension = self.class::JavaFile.new(dirs[i], ext_name)
                 else
-                  f_extension = JavaFile.new(dirs[i], ext_name + RJava.cast_to_string(file_ext[j]))
+                  f_extension = self.class::JavaFile.new(dirs[i], ext_name + RJava.cast_to_string(file_ext[j]))
                 end
                 debug("checkExtensionExists:fileName " + RJava.cast_to_string(f_extension.get_name))
                 if (f_extension.exists)
@@ -398,7 +398,7 @@ module Sun::Misc
               i += 1
             end
             return nil
-          rescue JavaException => e
+          rescue self.class::JavaException => e
             debug_exception(e)
             return nil
           end
@@ -486,10 +486,10 @@ module Sun::Misc
         define_method :run do
           begin
             return get_ext_files(get_ext_dirs)
-          rescue IOException => e
+          rescue self.class::IOException => e
             debug("Cannot get list of installed extensions")
             debug_exception(e)
-            return Array.typed(URL).new(0) { nil }
+            return Array.typed(self.class::URL).new(0) { nil }
           end
         end
         
@@ -526,7 +526,7 @@ module Sun::Misc
             define_method :run do
               begin
                 return ParseUtil.file_to_encoded_url(inst_file)
-              rescue MalformedURLException => e
+              rescue self.class::MalformedURLException => e
                 debug_exception(e)
                 return nil
               end

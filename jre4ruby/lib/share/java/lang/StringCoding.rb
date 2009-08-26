@@ -177,7 +177,7 @@ module Java::Lang
         alias_method :attr_cd=, :cd=
         undef_method :cd=
         
-        typesig { [Charset, String] }
+        typesig { [self::Charset, self::String] }
         def initialize(cs, rcn)
           @requested_charset_name = nil
           @cs = nil
@@ -189,7 +189,7 @@ module Java::Lang
         
         typesig { [] }
         def charset_name
-          if (@cs.is_a?(HistoricallyNamedCharset))
+          if (@cs.is_a?(self.class::HistoricallyNamedCharset))
             return (@cs).historical_name
           end
           return @cs.name
@@ -219,10 +219,10 @@ module Java::Lang
             if (!cr.is_underflow)
               cr.throw_exception
             end
-          rescue CharacterCodingException => x
+          rescue self.class::CharacterCodingException => x
             # Substitution is always enabled,
             # so this shouldn't happen
-            raise JavaError.new(x)
+            raise self.class::JavaError.new(x)
           end
           return safe_trim(ca, cb.position, @cs)
         end
@@ -302,7 +302,7 @@ module Java::Lang
         alias_method :attr_requested_charset_name=, :requested_charset_name=
         undef_method :requested_charset_name=
         
-        typesig { [Charset, String] }
+        typesig { [self::Charset, self::String] }
         def initialize(cs, rcn)
           @cs = nil
           @ce = nil
@@ -314,7 +314,7 @@ module Java::Lang
         
         typesig { [] }
         def charset_name
-          if (@cs.is_a?(HistoricallyNamedCharset))
+          if (@cs.is_a?(self.class::HistoricallyNamedCharset))
             return (@cs).historical_name
           end
           return @cs.name
@@ -344,10 +344,10 @@ module Java::Lang
             if (!cr.is_underflow)
               cr.throw_exception
             end
-          rescue CharacterCodingException => x
+          rescue self.class::CharacterCodingException => x
             # Substitution is always enabled,
             # so this shouldn't happen
-            raise JavaError.new(x)
+            raise self.class::JavaError.new(x)
           end
           return safe_trim(ba, bb.position, @cs)
         end

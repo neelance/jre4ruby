@@ -598,7 +598,7 @@ module Java::Security
         alias_method :attr_original_algorithm=, :original_algorithm=
         undef_method :original_algorithm=
         
-        typesig { [String, String, ::Java::Boolean] }
+        typesig { [self::String, self::String, ::Java::Boolean] }
         def initialize(type, algorithm, intern)
           @type = nil
           @algorithm = nil
@@ -619,14 +619,14 @@ module Java::Security
           if ((self).equal?(obj))
             return true
           end
-          if ((obj.is_a?(ServiceKey)).equal?(false))
+          if ((obj.is_a?(self.class::ServiceKey)).equal?(false))
             return false
           end
           other = obj
           return (@type == other.attr_type) && (@algorithm == other.attr_algorithm)
         end
         
-        typesig { [String, String] }
+        typesig { [self::String, self::String] }
         def matches(type, algorithm)
           return ((@type).equal?(type)) && ((@original_algorithm).equal?(algorithm))
         end
@@ -1020,7 +1020,7 @@ module Java::Security
         alias_method :attr_lower_string=, :lower_string=
         undef_method :lower_string=
         
-        typesig { [String] }
+        typesig { [self::String] }
         def initialize(s)
           @string = nil
           @lower_string = nil
@@ -1038,7 +1038,7 @@ module Java::Security
           if ((self).equal?(obj))
             return true
           end
-          if ((obj.is_a?(UString)).equal?(false))
+          if ((obj.is_a?(self.class::UString)).equal?(false))
             return false
           end
           other = obj
@@ -1082,7 +1082,7 @@ module Java::Security
         alias_method :attr_constructor_parameter_class=, :constructor_parameter_class=
         undef_method :constructor_parameter_class=
         
-        typesig { [String, ::Java::Boolean, String] }
+        typesig { [self::String, ::Java::Boolean, self::String] }
         def initialize(name, sp, param_name)
           @name = nil
           @supports_parameter = false
@@ -1273,11 +1273,11 @@ module Java::Security
         undef_method :registered=
         
         class_module.module_eval {
-          const_set_lazy(:CLASS0) { Array.typed(Class).new(0) { nil } }
+          const_set_lazy(:CLASS0) { Array.typed(self.class::Class).new(0) { nil } }
           const_attr_reader  :CLASS0
         }
         
-        typesig { [Provider] }
+        typesig { [self::Provider] }
         # this constructor and these methods are used for parsing
         # the legacy string properties.
         def initialize(provider)
@@ -1302,23 +1302,23 @@ module Java::Security
           return (!(@type).nil?) && (!(@algorithm).nil?) && (!(@class_name).nil?)
         end
         
-        typesig { [String] }
+        typesig { [self::String] }
         def add_alias(alias_)
           if (@aliases.is_empty)
-            @aliases = ArrayList.new(2)
+            @aliases = self.class::ArrayList.new(2)
           end
           @aliases.add(alias_)
         end
         
-        typesig { [String, String] }
+        typesig { [self::String, self::String] }
         def add_attribute(type, value)
           if (@attributes.is_empty)
-            @attributes = HashMap.new(8)
+            @attributes = self.class::HashMap.new(8)
           end
-          @attributes.put(UString.new(type), value)
+          @attributes.put(self.class::UString.new(type), value)
         end
         
-        typesig { [Provider, String, String, String, JavaList, Map] }
+        typesig { [self::Provider, self::String, self::String, self::String, self::JavaList, self::Map] }
         # Construct a new service.
         # 
         # @param provider the provider that offers this service
@@ -1344,7 +1344,7 @@ module Java::Security
           @supported_classes = nil
           @registered = false
           if (((provider).nil?) || ((type).nil?) || ((algorithm).nil?) || ((class_name).nil?))
-            raise NullPointerException.new
+            raise self.class::NullPointerException.new
           end
           @provider = provider
           @type = get_engine_name(type)
@@ -1353,14 +1353,14 @@ module Java::Security
           if ((aliases).nil?)
             @aliases = Collections.empty_list
           else
-            @aliases = ArrayList.new(aliases)
+            @aliases = self.class::ArrayList.new(aliases)
           end
           if ((attributes).nil?)
             @attributes = Collections.empty_map
           else
-            @attributes = HashMap.new
+            @attributes = self.class::HashMap.new
             attributes.entry_set.each do |entry|
-              @attributes.put(UString.new(entry.get_key), entry.get_value)
+              @attributes.put(self.class::UString.new(entry.get_key), entry.get_value)
             end
           end
         end
@@ -1404,7 +1404,7 @@ module Java::Security
           return @aliases
         end
         
-        typesig { [String] }
+        typesig { [self::String] }
         # Return the value of the specified attribute or null if this
         # attribute is not set for this Service.
         # 
@@ -1416,9 +1416,9 @@ module Java::Security
         # @throws NullPointerException if name is null
         def get_attribute(name)
           if ((name).nil?)
-            raise NullPointerException.new
+            raise self.class::NullPointerException.new
           end
-          return @attributes.get(UString.new(name))
+          return @attributes.get(self.class::UString.new(name))
         end
         
         typesig { [Object] }
@@ -1449,7 +1449,7 @@ module Java::Security
         def new_instance(constructor_parameter)
           if ((@registered).equal?(false))
             if (!(@provider.get_service(@type, @algorithm)).equal?(self))
-              raise NoSuchAlgorithmException.new("Service not registered with Provider " + RJava.cast_to_string(@provider.get_name) + ": " + RJava.cast_to_string(self))
+              raise self.class::NoSuchAlgorithmException.new("Service not registered with Provider " + RJava.cast_to_string(@provider.get_name) + ": " + RJava.cast_to_string(self))
             end
             @registered = true
           end
@@ -1463,7 +1463,7 @@ module Java::Security
             end
             if ((cap.attr_constructor_parameter_class_name).nil?)
               if (!(constructor_parameter).nil?)
-                raise InvalidParameterException.new("constructorParameter not used with " + @type + " engines")
+                raise self.class::InvalidParameterException.new("constructorParameter not used with " + @type + " engines")
               end
               clazz = get_impl_class
               return clazz.new_instance
@@ -1472,19 +1472,19 @@ module Java::Security
               if (!(constructor_parameter).nil?)
                 arg_class = constructor_parameter.get_class
                 if ((param_class.is_assignable_from(arg_class)).equal?(false))
-                  raise InvalidParameterException.new("constructorParameter must be instanceof " + RJava.cast_to_string(cap.attr_constructor_parameter_class_name.replace(Character.new(?$.ord), Character.new(?..ord))) + " for engine type " + @type)
+                  raise self.class::InvalidParameterException.new("constructorParameter must be instanceof " + RJava.cast_to_string(cap.attr_constructor_parameter_class_name.replace(Character.new(?$.ord), Character.new(?..ord))) + " for engine type " + @type)
                 end
               end
               clazz = get_impl_class
               cons = clazz.get_constructor(param_class)
               return cons.new_instance(constructor_parameter)
             end
-          rescue NoSuchAlgorithmException => e
+          rescue self.class::NoSuchAlgorithmException => e
             raise e
-          rescue InvocationTargetException => e
-            raise NoSuchAlgorithmException.new("Error constructing implementation (algorithm: " + @algorithm + ", provider: " + RJava.cast_to_string(@provider.get_name) + ", class: " + @class_name + ")", e.get_cause)
-          rescue JavaException => e
-            raise NoSuchAlgorithmException.new("Error constructing implementation (algorithm: " + @algorithm + ", provider: " + RJava.cast_to_string(@provider.get_name) + ", class: " + @class_name + ")", e)
+          rescue self.class::InvocationTargetException => e
+            raise self.class::NoSuchAlgorithmException.new("Error constructing implementation (algorithm: " + @algorithm + ", provider: " + RJava.cast_to_string(@provider.get_name) + ", class: " + @class_name + ")", e.get_cause)
+          rescue self.class::JavaException => e
+            raise self.class::NoSuchAlgorithmException.new("Error constructing implementation (algorithm: " + @algorithm + ", provider: " + RJava.cast_to_string(@provider.get_name) + ", class: " + @class_name + ")", e)
           end
         end
         
@@ -1501,11 +1501,11 @@ module Java::Security
               else
                 clazz = cl.load_class(@class_name)
               end
-              @class_ref = WeakReference.new(clazz)
+              @class_ref = self.class::WeakReference.new(clazz)
             end
             return clazz
-          rescue ClassNotFoundException => e
-            raise NoSuchAlgorithmException.new("class configured for " + @type + "(provider: " + RJava.cast_to_string(@provider.get_name) + ")" + "cannot be found.", e)
+          rescue self.class::ClassNotFoundException => e
+            raise self.class::NoSuchAlgorithmException.new("class configured for " + @type + "(provider: " + RJava.cast_to_string(@provider.get_name) + ")" + "cannot be found.", e)
           end
         end
         
@@ -1539,7 +1539,7 @@ module Java::Security
             return o
             i += 1
           end
-          raise NoSuchAlgorithmException.new("No constructor matching " + RJava.cast_to_string(arg_class.get_name) + " found in class " + @class_name)
+          raise self.class::NoSuchAlgorithmException.new("No constructor matching " + RJava.cast_to_string(arg_class.get_name) + " found in class " + @class_name)
         end
         
         typesig { [Object] }
@@ -1575,11 +1575,11 @@ module Java::Security
             return true
           end
           if ((cap.attr_supports_parameter).equal?(false))
-            raise InvalidParameterException.new("supportsParameter() not " + "used with " + @type + " engines")
+            raise self.class::InvalidParameterException.new("supportsParameter() not " + "used with " + @type + " engines")
           end
           # allow null for keys without attributes for compatibility
-          if ((!(parameter).nil?) && ((parameter.is_a?(Key)).equal?(false)))
-            raise InvalidParameterException.new("Parameter must be instanceof Key for engine " + @type)
+          if ((!(parameter).nil?) && ((parameter.is_a?(self.class::Key)).equal?(false)))
+            raise self.class::InvalidParameterException.new("Parameter must be instanceof Key for engine " + @type)
           end
           if ((has_key_attributes).equal?(false))
             return true
@@ -1612,7 +1612,7 @@ module Java::Security
               s = RJava.cast_to_string(get_attribute("SupportedKeyClasses"))
               if (!(s).nil?)
                 class_names = s.split(Regexp.new("\\|"))
-                class_list = ArrayList.new(class_names.attr_length)
+                class_list = self.class::ArrayList.new(class_names.attr_length)
                 class_names.each do |className|
                   clazz = get_key_class(class_name)
                   if (!(clazz).nil?)
@@ -1629,12 +1629,12 @@ module Java::Security
           return b.boolean_value
         end
         
-        typesig { [String] }
+        typesig { [self::String] }
         # get the key class object of the specified name
         def get_key_class(name)
           begin
             return Class.for_name(name)
-          rescue ClassNotFoundException => e
+          rescue self.class::ClassNotFoundException => e
             # ignore
           end
           begin
@@ -1642,13 +1642,13 @@ module Java::Security
             if (!(cl).nil?)
               return cl.load_class(name)
             end
-          rescue ClassNotFoundException => e
+          rescue self.class::ClassNotFoundException => e
             # ignore
           end
           return nil
         end
         
-        typesig { [Key] }
+        typesig { [self::Key] }
         def supports_key_format(key)
           if ((@supported_formats).nil?)
             return false
@@ -1665,7 +1665,7 @@ module Java::Security
           return false
         end
         
-        typesig { [Key] }
+        typesig { [self::Key] }
         def supports_key_class(key)
           if ((@supported_classes).nil?)
             return false

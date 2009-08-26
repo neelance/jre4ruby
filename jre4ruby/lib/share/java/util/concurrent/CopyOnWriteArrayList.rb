@@ -1048,7 +1048,7 @@ module Java::Util::Concurrent
         typesig { [] }
         def next_
           if (!has_next)
-            raise NoSuchElementException.new
+            raise self.class::NoSuchElementException.new
           end
           return @snapshot[((@cursor += 1) - 1)]
         end
@@ -1056,7 +1056,7 @@ module Java::Util::Concurrent
         typesig { [] }
         def previous
           if (!has_previous)
-            raise NoSuchElementException.new
+            raise self.class::NoSuchElementException.new
           end
           return @snapshot[(@cursor -= 1)]
         end
@@ -1076,7 +1076,7 @@ module Java::Util::Concurrent
         # @throws UnsupportedOperationException always; <tt>remove</tt>
         # is not supported by this iterator.
         def remove
-          raise UnsupportedOperationException.new
+          raise self.class::UnsupportedOperationException.new
         end
         
         typesig { [Object] }
@@ -1084,7 +1084,7 @@ module Java::Util::Concurrent
         # @throws UnsupportedOperationException always; <tt>set</tt>
         # is not supported by this iterator.
         def set(e)
-          raise UnsupportedOperationException.new
+          raise self.class::UnsupportedOperationException.new
         end
         
         typesig { [Object] }
@@ -1092,7 +1092,7 @@ module Java::Util::Concurrent
         # @throws UnsupportedOperationException always; <tt>add</tt>
         # is not supported by this iterator.
         def add(e)
-          raise UnsupportedOperationException.new
+          raise self.class::UnsupportedOperationException.new
         end
         
         private
@@ -1178,7 +1178,7 @@ module Java::Util::Concurrent
         alias_method :attr_expected_array=, :expected_array=
         undef_method :expected_array=
         
-        typesig { [CopyOnWriteArrayList, ::Java::Int, ::Java::Int] }
+        typesig { [self::CopyOnWriteArrayList, ::Java::Int, ::Java::Int] }
         # only call this holding l's lock
         def initialize(list, from_index, to_index)
           @l = nil
@@ -1196,7 +1196,7 @@ module Java::Util::Concurrent
         # only call this holding l's lock
         def check_for_comodification
           if (!(@l.get_array).equal?(@expected_array))
-            raise ConcurrentModificationException.new
+            raise self.class::ConcurrentModificationException.new
           end
         end
         
@@ -1204,7 +1204,7 @@ module Java::Util::Concurrent
         # only call this holding l's lock
         def range_check(index)
           if (index < 0 || index >= @size)
-            raise IndexOutOfBoundsException.new("Index: " + RJava.cast_to_string(index) + ",Size: " + RJava.cast_to_string(@size))
+            raise self.class::IndexOutOfBoundsException.new("Index: " + RJava.cast_to_string(index) + ",Size: " + RJava.cast_to_string(@size))
           end
         end
         
@@ -1255,7 +1255,7 @@ module Java::Util::Concurrent
           begin
             check_for_comodification
             if (index < 0 || index > @size)
-              raise IndexOutOfBoundsException.new
+              raise self.class::IndexOutOfBoundsException.new
             end
             @l.add(index + @offset, element)
             @expected_array = @l.get_array
@@ -1311,7 +1311,7 @@ module Java::Util::Concurrent
           lock_.lock
           begin
             check_for_comodification
-            return COWSubListIterator.new(@l, 0, @offset, @size)
+            return self.class::COWSubListIterator.new(@l, 0, @offset, @size)
           ensure
             lock_.unlock
           end
@@ -1324,9 +1324,9 @@ module Java::Util::Concurrent
           begin
             check_for_comodification
             if (index < 0 || index > @size)
-              raise IndexOutOfBoundsException.new("Index: " + RJava.cast_to_string(index) + ", Size: " + RJava.cast_to_string(@size))
+              raise self.class::IndexOutOfBoundsException.new("Index: " + RJava.cast_to_string(index) + ", Size: " + RJava.cast_to_string(@size))
             end
-            return COWSubListIterator.new(@l, index, @offset, @size)
+            return self.class::COWSubListIterator.new(@l, index, @offset, @size)
           ensure
             lock_.unlock
           end
@@ -1339,9 +1339,9 @@ module Java::Util::Concurrent
           begin
             check_for_comodification
             if (from_index < 0 || to_index > @size)
-              raise IndexOutOfBoundsException.new
+              raise self.class::IndexOutOfBoundsException.new
             end
-            return COWSubList.new(@l, from_index + @offset, to_index + @offset)
+            return self.class::COWSubList.new(@l, from_index + @offset, to_index + @offset)
           ensure
             lock_.unlock
           end
@@ -1379,7 +1379,7 @@ module Java::Util::Concurrent
         alias_method :attr_size=, :size=
         undef_method :size=
         
-        typesig { [JavaList, ::Java::Int, ::Java::Int, ::Java::Int] }
+        typesig { [self::JavaList, ::Java::Int, ::Java::Int, ::Java::Int] }
         def initialize(l, index, offset, size)
           @i = nil
           @index = 0
@@ -1401,7 +1401,7 @@ module Java::Util::Concurrent
           if (has_next)
             return @i.next_
           else
-            raise NoSuchElementException.new
+            raise self.class::NoSuchElementException.new
           end
         end
         
@@ -1415,7 +1415,7 @@ module Java::Util::Concurrent
           if (has_previous)
             return @i.previous
           else
-            raise NoSuchElementException.new
+            raise self.class::NoSuchElementException.new
           end
         end
         
@@ -1431,17 +1431,17 @@ module Java::Util::Concurrent
         
         typesig { [] }
         def remove
-          raise UnsupportedOperationException.new
+          raise self.class::UnsupportedOperationException.new
         end
         
         typesig { [Object] }
         def set(e)
-          raise UnsupportedOperationException.new
+          raise self.class::UnsupportedOperationException.new
         end
         
         typesig { [Object] }
         def add(e)
-          raise UnsupportedOperationException.new
+          raise self.class::UnsupportedOperationException.new
         end
         
         private

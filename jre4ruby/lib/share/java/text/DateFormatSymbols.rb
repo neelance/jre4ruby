@@ -778,11 +778,11 @@ module Java::Text
         include LocaleServiceProviderPool::LocalizedObjectGetter
         
         class_module.module_eval {
-          const_set_lazy(:INSTANCE) { DateFormatSymbolsGetter.new }
+          const_set_lazy(:INSTANCE) { self.class::DateFormatSymbolsGetter.new }
           const_attr_reader  :INSTANCE
         }
         
-        typesig { [DateFormatSymbolsProvider, Locale, String, Object] }
+        typesig { [self::DateFormatSymbolsProvider, self::Locale, self::String, Object] }
         def get_object(date_format_symbols_provider, locale, key, *params)
           raise AssertError if not ((params.attr_length).equal?(0))
           return date_format_symbols_provider.get_instance(locale)
