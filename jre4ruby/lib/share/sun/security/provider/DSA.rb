@@ -199,7 +199,7 @@ module Sun::Security::Provider
           @data_sha.update(data, off, len)
         end
         
-        typesig { [self::ByteBuffer] }
+        typesig { [class_self::ByteBuffer] }
         def engine_update(b)
           @data_sha.update(b)
         end

@@ -460,7 +460,7 @@ module Java::Util
           return self.attr_cursor - 1
         end
         
-        typesig { [self::E] }
+        typesig { [class_self::E] }
         def set(e)
           if (self.attr_last_ret < 0)
             raise self.class::IllegalStateException.new
@@ -474,7 +474,7 @@ module Java::Util
           end
         end
         
-        typesig { [self::E] }
+        typesig { [class_self::E] }
         def add(e)
           check_for_comodification
           begin

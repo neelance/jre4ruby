@@ -241,11 +241,11 @@ module Java::Io
         
         class_module.module_eval {
           # cache of subclass security audit results
-          const_set_lazy(:SubclassAudits) { self::ConcurrentHashMap.new }
+          const_set_lazy(:SubclassAudits) { class_self::ConcurrentHashMap.new }
           const_attr_reader  :SubclassAudits
           
           # queue for WeakReferences to audited subclasses
-          const_set_lazy(:SubclassAuditsQueue) { self::ReferenceQueue.new }
+          const_set_lazy(:SubclassAuditsQueue) { class_self::ReferenceQueue.new }
           const_attr_reader  :SubclassAuditsQueue
         }
         
@@ -2018,7 +2018,7 @@ module Java::Io
         alias_method :attr_obj_handles=, :obj_handles=
         undef_method :obj_handles=
         
-        typesig { [self::ObjectStreamClass] }
+        typesig { [class_self::ObjectStreamClass] }
         # Creates GetFieldImpl object for reading fields defined in given
         # class descriptor.
         def initialize(desc)
@@ -2119,7 +2119,7 @@ module Java::Io
           self.attr_pass_handle = old_handle
         end
         
-        typesig { [String, self::Class] }
+        typesig { [String, class_self::Class] }
         # Returns offset of field with given name and type.  A specified type
         # of null matches all types, Object.class matches all non-primitive
         # types, and any other non-null type matches assignable types only.
@@ -2177,7 +2177,7 @@ module Java::Io
             alias_method :attr_acc=, :acc=
             undef_method :acc=
             
-            typesig { [self::ObjectInputValidation, ::Java::Int, self::Callback, self::AccessControlContext] }
+            typesig { [class_self::ObjectInputValidation, ::Java::Int, class_self::Callback, class_self::AccessControlContext] }
             def initialize(obj, priority, next_, acc)
               @obj = nil
               @priority = 0
@@ -2207,7 +2207,7 @@ module Java::Io
           @list = nil
         end
         
-        typesig { [self::ObjectInputValidation, ::Java::Int] }
+        typesig { [class_self::ObjectInputValidation, ::Java::Int] }
         # Registers callback.  Throws InvalidObjectException if callback
         # object is null.
         def register(obj, priority)
@@ -2240,7 +2240,7 @@ module Java::Io
               AccessController.do_privileged(Class.new(self.class::PrivilegedExceptionAction.class == Class ? self.class::PrivilegedExceptionAction : Object) do
                 extend LocalClass
                 include_class_members ValidationList
-                include self::PrivilegedExceptionAction if self::PrivilegedExceptionAction.class == Module
+                include class_self::PrivilegedExceptionAction if class_self::PrivilegedExceptionAction.class == Module
                 
                 typesig { [] }
                 define_method :run do
@@ -2292,7 +2292,7 @@ module Java::Io
         alias_method :attr_peekb=, :peekb=
         undef_method :peekb=
         
-        typesig { [self::InputStream] }
+        typesig { [class_self::InputStream] }
         # Creates new PeekInputStream on top of given underlying stream.
         def initialize(in_)
           @in = nil
@@ -2472,7 +2472,7 @@ module Java::Io
         alias_method :attr_din=, :din=
         undef_method :din=
         
-        typesig { [self::InputStream] }
+        typesig { [class_self::InputStream] }
         # Creates new BlockDataInputStream on top of given underlying stream.
         # Block data mode is turned off by default.
         def initialize(in_)
@@ -3182,7 +3182,7 @@ module Java::Io
           return sbuf.to_s
         end
         
-        typesig { [self::StringBuilder, ::Java::Long] }
+        typesig { [class_self::StringBuilder, ::Java::Long] }
         # Reads span of UTF-encoded characters out of internal buffer
         # (starting at offset pos and ending at or before offset end),
         # consuming no more than utflen bytes.  Appends read characters to
@@ -3240,7 +3240,7 @@ module Java::Io
           return @pos - start
         end
         
-        typesig { [self::StringBuilder, ::Java::Long] }
+        typesig { [class_self::StringBuilder, ::Java::Long] }
         # Reads in single UTF-encoded character one byte at a time, appends
         # the character to sbuf, and returns the number of bytes consumed.
         # This method is used when reading in UTF strings written in block
@@ -3433,7 +3433,7 @@ module Java::Io
           end
         end
         
-        typesig { [::Java::Int, self::ClassNotFoundException] }
+        typesig { [::Java::Int, class_self::ClassNotFoundException] }
         # Associates a ClassNotFoundException (if one not already associated)
         # with the currently active handle and propagates it to other
         # referencing objects as appropriate.  The specified handle must be
@@ -3680,7 +3680,7 @@ module Java::Io
         alias_method :attr_used=, :used=
         undef_method :used=
         
-        typesig { [Object, self::ObjectStreamClass] }
+        typesig { [Object, class_self::ObjectStreamClass] }
         def initialize(obj, desc)
           @obj = nil
           @desc = nil

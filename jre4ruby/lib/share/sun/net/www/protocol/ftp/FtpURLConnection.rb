@@ -217,7 +217,7 @@ module Sun::Net::Www::Protocol::Ftp
         alias_method :attr_ftp=, :ftp=
         undef_method :ftp=
         
-        typesig { [self::FtpClient, self::InputStream] }
+        typesig { [class_self::FtpClient, class_self::InputStream] }
         def initialize(cl, fd)
           @ftp = nil
           super(self.class::BufferedInputStream.new(fd))
@@ -254,7 +254,7 @@ module Sun::Net::Www::Protocol::Ftp
         alias_method :attr_ftp=, :ftp=
         undef_method :ftp=
         
-        typesig { [self::FtpClient, self::OutputStream] }
+        typesig { [class_self::FtpClient, class_self::OutputStream] }
         def initialize(cl, fd)
           @ftp = nil
           super(fd)

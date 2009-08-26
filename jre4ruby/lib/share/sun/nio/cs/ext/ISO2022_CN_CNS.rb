@@ -73,7 +73,7 @@ module Sun::Nio::Cs::Ext
       const_set_lazy(:Encoder) { Class.new(ISO2022::Encoder) do
         include_class_members ISO2022_CN_CNS
         
-        typesig { [self::Charset] }
+        typesig { [class_self::Charset] }
         def initialize(cs)
           super(cs)
           SODesig = "$)G"

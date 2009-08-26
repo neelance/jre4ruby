@@ -124,7 +124,7 @@ module Sun::Security::Ssl
       const_set_lazy(:SizedMap) { Class.new(LinkedHashMap) do
         include_class_members X509KeyManagerImpl
         
-        typesig { [self::Map::Entry] }
+        typesig { [class_self::Map::Entry] }
         def remove_eldest_entry(eldest)
           return size > 10
         end
@@ -263,7 +263,7 @@ module Sun::Security::Ssl
           end
         end
         
-        typesig { [Array.typed(self::Certificate)] }
+        typesig { [Array.typed(class_self::Certificate)] }
         def matches(chain)
           if (!(chain[0].get_public_key.get_algorithm == @key_algorithm))
             return false
@@ -453,7 +453,7 @@ module Sun::Security::Ssl
         alias_method :attr_check_result=, :check_result=
         undef_method :check_result=
         
-        typesig { [::Java::Int, ::Java::Int, String, Array.typed(self::Certificate), self::CheckResult] }
+        typesig { [::Java::Int, ::Java::Int, String, Array.typed(class_self::Certificate), class_self::CheckResult] }
         def initialize(builder_index, key_index, alias_, chain, check_result)
           @builder_index = 0
           @key_index = 0
@@ -465,7 +465,7 @@ module Sun::Security::Ssl
           @check_result = check_result
         end
         
-        typesig { [self::EntryStatus] }
+        typesig { [class_self::EntryStatus] }
         def compare_to(other)
           result = (@check_result <=> other.attr_check_result)
           return ((result).equal?(0)) ? (@key_index - other.attr_key_index) : result

@@ -681,7 +681,7 @@ module Java::Util::Prefs
             Runtime.get_runtime.add_shutdown_hook(Class.new(self.class::JavaThread.class == Class ? self.class::JavaThread : Object) do
               extend LocalClass
               include_class_members privileged_action_class
-              include self::JavaThread if self::JavaThread.class == Module
+              include class_self::JavaThread if class_self::JavaThread.class == Module
               
               typesig { [] }
               define_method :run do

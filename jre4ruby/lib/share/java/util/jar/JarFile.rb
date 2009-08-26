@@ -299,7 +299,7 @@ module Java::Util::Jar
         extend LocalClass
         include_class_members JarFile
         
-        typesig { [self::ZipEntry] }
+        typesig { [class_self::ZipEntry] }
         def initialize(ze)
           super(ze)
         end

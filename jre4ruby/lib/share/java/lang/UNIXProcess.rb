@@ -151,7 +151,7 @@ module Java::Lang
           end
         end
         
-        typesig { [self::IOException] }
+        typesig { [class_self::IOException] }
         def set_exception(e)
           @saved_exception = e
         end
@@ -205,7 +205,7 @@ module Java::Lang
           t = Class.new(self.class::JavaThread.class == Class ? self.class::JavaThread : Object) do
             extend LocalClass
             include_class_members privileged_action_class
-            include self::JavaThread if self::JavaThread.class == Module
+            include class_self::JavaThread if class_self::JavaThread.class == Module
             
             typesig { [] }
             define_method :run do

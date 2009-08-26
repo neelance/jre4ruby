@@ -234,7 +234,7 @@ module Sun::Text::Normalizer
           @mode_value = value
         end
         
-        typesig { [Array.typed(::Java::Char), ::Java::Int, ::Java::Int, Array.typed(::Java::Char), ::Java::Int, ::Java::Int, self::UnicodeSet] }
+        typesig { [Array.typed(::Java::Char), ::Java::Int, ::Java::Int, Array.typed(::Java::Char), ::Java::Int, ::Java::Int, class_self::UnicodeSet] }
         # This method is used for method dispatch
         # @stable ICU 2.6
         def normalize(src, src_start, src_limit, dest, dest_start, dest_limit, nx)
@@ -289,7 +289,7 @@ module Sun::Text::Normalizer
           return nil
         end
         
-        typesig { [Array.typed(::Java::Char), ::Java::Int, ::Java::Int, ::Java::Boolean, self::UnicodeSet] }
+        typesig { [Array.typed(::Java::Char), ::Java::Int, ::Java::Int, ::Java::Boolean, class_self::UnicodeSet] }
         # This method is used for method dispatch
         # @stable ICU 2.6
         def quick_check(src, start, limit, allow_maybe, nx)
@@ -328,7 +328,7 @@ module Sun::Text::Normalizer
           super(value)
         end
         
-        typesig { [Array.typed(::Java::Char), ::Java::Int, ::Java::Int, Array.typed(::Java::Char), ::Java::Int, ::Java::Int, self::UnicodeSet] }
+        typesig { [Array.typed(::Java::Char), ::Java::Int, ::Java::Int, Array.typed(::Java::Char), ::Java::Int, ::Java::Int, class_self::UnicodeSet] }
         def normalize(src, src_start, src_limit, dest, dest_start, dest_limit, nx)
           trail_cc = Array.typed(::Java::Int).new(1) { 0 }
           return NormalizerImpl.decompose(src, src_start, src_limit, dest, dest_start, dest_limit, false, trail_cc, nx)
@@ -359,7 +359,7 @@ module Sun::Text::Normalizer
           return (NormalizerImpl::CC_MASK | NormalizerImpl::QC_NFD)
         end
         
-        typesig { [Array.typed(::Java::Char), ::Java::Int, ::Java::Int, ::Java::Boolean, self::UnicodeSet] }
+        typesig { [Array.typed(::Java::Char), ::Java::Int, ::Java::Int, ::Java::Boolean, class_self::UnicodeSet] }
         def quick_check(src, start, limit, allow_maybe, nx)
           return NormalizerImpl.quick_check(src, start, limit, NormalizerImpl.get_from_indexes_arr(NormalizerImpl::INDEX_MIN_NFD_NO_MAYBE), NormalizerImpl::QC_NFD, 0, allow_maybe, nx)
         end
@@ -386,7 +386,7 @@ module Sun::Text::Normalizer
           super(value)
         end
         
-        typesig { [Array.typed(::Java::Char), ::Java::Int, ::Java::Int, Array.typed(::Java::Char), ::Java::Int, ::Java::Int, self::UnicodeSet] }
+        typesig { [Array.typed(::Java::Char), ::Java::Int, ::Java::Int, Array.typed(::Java::Char), ::Java::Int, ::Java::Int, class_self::UnicodeSet] }
         def normalize(src, src_start, src_limit, dest, dest_start, dest_limit, nx)
           trail_cc = Array.typed(::Java::Int).new(1) { 0 }
           return NormalizerImpl.decompose(src, src_start, src_limit, dest, dest_start, dest_limit, true, trail_cc, nx)
@@ -417,7 +417,7 @@ module Sun::Text::Normalizer
           return (NormalizerImpl::CC_MASK | NormalizerImpl::QC_NFKD)
         end
         
-        typesig { [Array.typed(::Java::Char), ::Java::Int, ::Java::Int, ::Java::Boolean, self::UnicodeSet] }
+        typesig { [Array.typed(::Java::Char), ::Java::Int, ::Java::Int, ::Java::Boolean, class_self::UnicodeSet] }
         def quick_check(src, start, limit, allow_maybe, nx)
           return NormalizerImpl.quick_check(src, start, limit, NormalizerImpl.get_from_indexes_arr(NormalizerImpl::INDEX_MIN_NFKD_NO_MAYBE), NormalizerImpl::QC_NFKD, NormalizerImpl::OPTIONS_COMPAT, allow_maybe, nx)
         end
@@ -444,7 +444,7 @@ module Sun::Text::Normalizer
           super(value)
         end
         
-        typesig { [Array.typed(::Java::Char), ::Java::Int, ::Java::Int, Array.typed(::Java::Char), ::Java::Int, ::Java::Int, self::UnicodeSet] }
+        typesig { [Array.typed(::Java::Char), ::Java::Int, ::Java::Int, Array.typed(::Java::Char), ::Java::Int, ::Java::Int, class_self::UnicodeSet] }
         def normalize(src, src_start, src_limit, dest, dest_start, dest_limit, nx)
           return NormalizerImpl.compose(src, src_start, src_limit, dest, dest_start, dest_limit, 0, nx)
         end
@@ -474,7 +474,7 @@ module Sun::Text::Normalizer
           return (NormalizerImpl::CC_MASK | NormalizerImpl::QC_NFC)
         end
         
-        typesig { [Array.typed(::Java::Char), ::Java::Int, ::Java::Int, ::Java::Boolean, self::UnicodeSet] }
+        typesig { [Array.typed(::Java::Char), ::Java::Int, ::Java::Int, ::Java::Boolean, class_self::UnicodeSet] }
         def quick_check(src, start, limit, allow_maybe, nx)
           return NormalizerImpl.quick_check(src, start, limit, NormalizerImpl.get_from_indexes_arr(NormalizerImpl::INDEX_MIN_NFC_NO_MAYBE), NormalizerImpl::QC_NFC, 0, allow_maybe, nx)
         end
@@ -501,7 +501,7 @@ module Sun::Text::Normalizer
           super(value)
         end
         
-        typesig { [Array.typed(::Java::Char), ::Java::Int, ::Java::Int, Array.typed(::Java::Char), ::Java::Int, ::Java::Int, self::UnicodeSet] }
+        typesig { [Array.typed(::Java::Char), ::Java::Int, ::Java::Int, Array.typed(::Java::Char), ::Java::Int, ::Java::Int, class_self::UnicodeSet] }
         def normalize(src, src_start, src_limit, dest, dest_start, dest_limit, nx)
           return NormalizerImpl.compose(src, src_start, src_limit, dest, dest_start, dest_limit, NormalizerImpl::OPTIONS_COMPAT, nx)
         end
@@ -531,7 +531,7 @@ module Sun::Text::Normalizer
           return (NormalizerImpl::CC_MASK | NormalizerImpl::QC_NFKC)
         end
         
-        typesig { [Array.typed(::Java::Char), ::Java::Int, ::Java::Int, ::Java::Boolean, self::UnicodeSet] }
+        typesig { [Array.typed(::Java::Char), ::Java::Int, ::Java::Int, ::Java::Boolean, class_self::UnicodeSet] }
         def quick_check(src, start, limit, allow_maybe, nx)
           return NormalizerImpl.quick_check(src, start, limit, NormalizerImpl.get_from_indexes_arr(NormalizerImpl::INDEX_MIN_NFKC_NO_MAYBE), NormalizerImpl::QC_NFKC, NormalizerImpl::OPTIONS_COMPAT, allow_maybe, nx)
         end
@@ -1109,7 +1109,7 @@ module Sun::Text::Normalizer
         include_class_members NormalizerBase
         include IsPrevBoundary
         
-        typesig { [self::UCharacterIterator, ::Java::Int, ::Java::Int, Array.typed(::Java::Char)] }
+        typesig { [class_self::UCharacterIterator, ::Java::Int, ::Java::Int, Array.typed(::Java::Char)] }
         # for NF*D:
         # read backwards and check if the lead combining class is 0
         # if c2!=0 then (c2, c) is a surrogate pair (reversed - c2 is first
@@ -1133,7 +1133,7 @@ module Sun::Text::Normalizer
         include_class_members NormalizerBase
         include IsPrevBoundary
         
-        typesig { [self::UCharacterIterator, ::Java::Int, ::Java::Int, Array.typed(::Java::Char)] }
+        typesig { [class_self::UCharacterIterator, ::Java::Int, ::Java::Int, Array.typed(::Java::Char)] }
         # read backwards and check if the character is (or its decomposition
         # begins with) a "true starter" (cc==0 and NF*C_YES)
         # if c2!=0 then (c2, c) is a surrogate pair (reversed - c2 is first
@@ -1316,7 +1316,7 @@ module Sun::Text::Normalizer
         include_class_members NormalizerBase
         include IsNextBoundary
         
-        typesig { [self::UCharacterIterator, ::Java::Int, ::Java::Int, Array.typed(::Java::Int)] }
+        typesig { [class_self::UCharacterIterator, ::Java::Int, ::Java::Int, Array.typed(::Java::Int)] }
         # unsigned
         # unsigned
         def is_next_boundary(src, min_c, cc_or_qcmask, chars)
@@ -1339,7 +1339,7 @@ module Sun::Text::Normalizer
         include_class_members NormalizerBase
         include IsNextBoundary
         
-        typesig { [self::UCharacterIterator, ::Java::Int, ::Java::Int, Array.typed(::Java::Int)] }
+        typesig { [class_self::UCharacterIterator, ::Java::Int, ::Java::Int, Array.typed(::Java::Int)] }
         # unsigned
         # unsigned
         def is_next_boundary(src, min_c, cc_or_qcmask, chars)

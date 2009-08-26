@@ -231,7 +231,7 @@ module Sun::Nio::Ch
           super(self.attr_sc)
         end
         
-        typesig { [self::ByteBuffer] }
+        typesig { [class_self::ByteBuffer] }
         def read(bb)
           synchronized((self.attr_sc.blocking_lock)) do
             if (!self.attr_sc.is_blocking)

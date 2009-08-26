@@ -325,7 +325,7 @@ module Sun::Net::Www::Protocol::Jar
         alias_method :attr_je=, :je=
         undef_method :je=
         
-        typesig { [self::JarEntry] }
+        typesig { [class_self::JarEntry] }
         def initialize(je)
           @je = nil
           super(je)

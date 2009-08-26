@@ -226,7 +226,7 @@ module Sun::Security::Provider::Certpath
         alias_method :attr_debug=, :debug=
         undef_method :debug=
         
-        typesig { [self::X509Certificate, self::X509Certificate] }
+        typesig { [class_self::X509Certificate, class_self::X509Certificate] }
         def compare(cert1, cert2)
           # if either cert certifies the target, always
           # put at head of list.

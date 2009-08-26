@@ -1334,7 +1334,7 @@ module Sun::Security::Jgss::Krb5
         alias_method :attr_temp=, :temp=
         undef_method :temp=
         
-        typesig { [self::InputStream, ::Java::Int] }
+        typesig { [class_self::InputStream, ::Java::Int] }
         def initialize(is, length)
           @is = nil
           @length = 0

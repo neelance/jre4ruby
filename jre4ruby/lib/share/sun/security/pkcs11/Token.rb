@@ -557,7 +557,7 @@ module Sun::Security::Pkcs11
         alias_method :attr_token_id=, :token_id=
         undef_method :token_id=
         
-        typesig { [self::Token] }
+        typesig { [class_self::Token] }
         def initialize(token)
           @token_id = nil
           @token_id = token.get_token_id

@@ -240,7 +240,7 @@ module Sun::Security::Provider
         alias_method :attr_lock_set_seed=, :lock_set_seed=
         undef_method :lock_set_seed=
         
-        typesig { [self::JavaFile, self::JavaFile] }
+        typesig { [class_self::JavaFile, class_self::JavaFile] }
         # constructor, called only once from initIO()
         def initialize(random_file, urandom_file)
           @random_in = nil
@@ -284,7 +284,7 @@ module Sun::Security::Provider
         end
         
         class_module.module_eval {
-          typesig { [self::InputStream, Array.typed(::Java::Byte)] }
+          typesig { [class_self::InputStream, Array.typed(::Java::Byte)] }
           # read data.length bytes from in
           # /dev/[u]random are not normal files, so we need to loop the read.
           # just keep trying as long as we are making progress
@@ -294,13 +294,13 @@ module Sun::Security::Provider
             while (len > 0)
               k = in_.read(data, ofs, len)
               if (k <= 0)
-                raise self::EOFException.new("/dev/[u]random closed?")
+                raise class_self::EOFException.new("/dev/[u]random closed?")
               end
               ofs += k
               len -= k
             end
             if (len > 0)
-              raise self::IOException.new("Could not read from /dev/[u]random")
+              raise class_self::IOException.new("Could not read from /dev/[u]random")
             end
           end
         }
@@ -330,7 +330,7 @@ module Sun::Security::Provider
               @random_out = AccessController.do_privileged(Class.new(self.class::PrivilegedAction.class == Class ? self.class::PrivilegedAction : Object) do
                 extend LocalClass
                 include_class_members RandomIO
-                include self::PrivilegedAction if self::PrivilegedAction.class == Module
+                include class_self::PrivilegedAction if class_self::PrivilegedAction.class == Module
                 
                 typesig { [] }
                 define_method :run do

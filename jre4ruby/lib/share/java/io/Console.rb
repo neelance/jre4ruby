@@ -490,7 +490,7 @@ module Java::Io
         alias_method :attr_leftover_lf=, :leftover_lf=
         undef_method :leftover_lf=
         
-        typesig { [self::Reader] }
+        typesig { [class_self::Reader] }
         def initialize(in_)
           @in = nil
           @cb = nil
@@ -636,7 +636,7 @@ module Java::Io
             return Class.new(self.class::Runnable.class == Class ? self.class::Runnable : Object) do
               extend LocalClass
               include_class_members java_ioaccess_class
-              include self::Runnable if self::Runnable.class == Module
+              include class_self::Runnable if class_self::Runnable.class == Module
               
               typesig { [] }
               define_method :run do

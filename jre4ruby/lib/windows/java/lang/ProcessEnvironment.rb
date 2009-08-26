@@ -134,7 +134,7 @@ module Java::Lang
         alias_method :attr_e=, :e=
         undef_method :e=
         
-        typesig { [self::Map::Entry] }
+        typesig { [class_self::Map::Entry] }
         def initialize(e)
           @e = nil
           @e = e
@@ -183,7 +183,7 @@ module Java::Lang
         alias_method :attr_s=, :s=
         undef_method :s=
         
-        typesig { [self::JavaSet] }
+        typesig { [class_self::JavaSet] }
         def initialize(s)
           @s = nil
           super()
@@ -210,7 +210,7 @@ module Java::Lang
           return Class.new(self.class::Iterator.class == Class ? self.class::Iterator : Object) do
             extend LocalClass
             include_class_members CheckedEntrySet
-            include self::Iterator if self::Iterator.class == Module
+            include class_self::Iterator if class_self::Iterator.class == Module
             
             attr_accessor :i
             alias_method :attr_i, :i
@@ -278,7 +278,7 @@ module Java::Lang
         alias_method :attr_c=, :c=
         undef_method :c=
         
-        typesig { [self::Collection] }
+        typesig { [class_self::Collection] }
         def initialize(c)
           @c = nil
           super()
@@ -328,7 +328,7 @@ module Java::Lang
         alias_method :attr_s=, :s=
         undef_method :s=
         
-        typesig { [self::JavaSet] }
+        typesig { [class_self::JavaSet] }
         def initialize(s)
           @s = nil
           super()
@@ -428,7 +428,7 @@ module Java::Lang
         include_class_members ProcessEnvironment
         include Comparator
         
-        typesig { [self::Map::Entry, self::Map::Entry] }
+        typesig { [class_self::Map::Entry, class_self::Map::Entry] }
         def compare(e1, e2)
           return NameComparator.compare(e1.get_key, e2.get_key)
         end

@@ -105,14 +105,14 @@ module Sun::Nio::Cs::Ext
           @index2 = self.attr_index2
         end
         
-        typesig { [self::Charset] }
+        typesig { [class_self::Charset] }
         def initialize(cs)
           super(cs)
           @single_byte_to_char = self.attr_single_byte_to_char
           init_lookup_tables
         end
         
-        typesig { [self::Charset, String] }
+        typesig { [class_self::Charset, String] }
         def initialize(cs, single_byte_to_char)
           super(cs)
           @single_byte_to_char = single_byte_to_char
@@ -1356,7 +1356,7 @@ module Sun::Nio::Cs::Ext
       const_set_lazy(:Encoder) { Class.new(DBCS_IBM_ASCII_Encoder) do
         include_class_members IBM943
         
-        typesig { [self::Charset] }
+        typesig { [class_self::Charset] }
         def initialize(cs)
           super(cs)
           @mask1 = 0xffc0
@@ -1367,7 +1367,7 @@ module Sun::Nio::Cs::Ext
           @index2a = self.class::Index2a
         end
         
-        typesig { [self::Charset, Array.typed(::Java::Short), String] }
+        typesig { [class_self::Charset, Array.typed(::Java::Short), String] }
         def initialize(cs, mod_idx1, mod_idx2a)
           super(cs)
           @mask1 = 0xffc0

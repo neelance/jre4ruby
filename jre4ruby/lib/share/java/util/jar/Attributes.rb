@@ -515,19 +515,19 @@ module Java::Util::Jar
           # of the manifest standard to which a JAR file's manifest conforms.
           # @see <a href="../../../../technotes/guides/jar/jar.html#JAR Manifest">
           # Manifest and Signature Specification</a>
-          const_set_lazy(:MANIFEST_VERSION) { self::Name.new("Manifest-Version") }
+          const_set_lazy(:MANIFEST_VERSION) { class_self::Name.new("Manifest-Version") }
           const_attr_reader  :MANIFEST_VERSION
           
           # <code>Name</code> object for <code>Signature-Version</code>
           # manifest attribute used when signing JAR files.
           # @see <a href="../../../../technotes/guides/jar/jar.html#JAR Manifest">
           # Manifest and Signature Specification</a>
-          const_set_lazy(:SIGNATURE_VERSION) { self::Name.new("Signature-Version") }
+          const_set_lazy(:SIGNATURE_VERSION) { class_self::Name.new("Signature-Version") }
           const_attr_reader  :SIGNATURE_VERSION
           
           # <code>Name</code> object for <code>Content-Type</code>
           # manifest attribute.
-          const_set_lazy(:CONTENT_TYPE) { self::Name.new("Content-Type") }
+          const_set_lazy(:CONTENT_TYPE) { class_self::Name.new("Content-Type") }
           const_attr_reader  :CONTENT_TYPE
           
           # <code>Name</code> object for <code>Class-Path</code>
@@ -535,7 +535,7 @@ module Java::Util::Jar
           # to find other JAR files containing needed classes.
           # @see <a href="../../../../technotes/guides/extensions/spec.html#bundled">
           # Extensions Specification</a>
-          const_set_lazy(:CLASS_PATH) { self::Name.new("Class-Path") }
+          const_set_lazy(:CLASS_PATH) { class_self::Name.new("Class-Path") }
           const_attr_reader  :CLASS_PATH
           
           # <code>Name</code> object for <code>Main-Class</code> manifest
@@ -543,91 +543,91 @@ module Java::Util::Jar
           # The <code>Main-Class</code> attribute is used in conjunction
           # with the <code>-jar</code> command-line option of the
           # <tt>java</tt> application launcher.
-          const_set_lazy(:MAIN_CLASS) { self::Name.new("Main-Class") }
+          const_set_lazy(:MAIN_CLASS) { class_self::Name.new("Main-Class") }
           const_attr_reader  :MAIN_CLASS
           
           # <code>Name</code> object for <code>Sealed</code> manifest attribute
           # used for sealing.
           # @see <a href="../../../../technotes/guides/extensions/spec.html#sealing">
           # Extension Sealing</a>
-          const_set_lazy(:SEALED) { self::Name.new("Sealed") }
+          const_set_lazy(:SEALED) { class_self::Name.new("Sealed") }
           const_attr_reader  :SEALED
           
           # <code>Name</code> object for <code>Extension-List</code> manifest attribute
           # used for declaring dependencies on installed extensions.
           # @see <a href="../../../../technotes/guides/extensions/spec.html#dependency">
           # Installed extension dependency</a>
-          const_set_lazy(:EXTENSION_LIST) { self::Name.new("Extension-List") }
+          const_set_lazy(:EXTENSION_LIST) { class_self::Name.new("Extension-List") }
           const_attr_reader  :EXTENSION_LIST
           
           # <code>Name</code> object for <code>Extension-Name</code> manifest attribute
           # used for declaring dependencies on installed extensions.
           # @see <a href="../../../../technotes/guides/extensions/spec.html#dependency">
           # Installed extension dependency</a>
-          const_set_lazy(:EXTENSION_NAME) { self::Name.new("Extension-Name") }
+          const_set_lazy(:EXTENSION_NAME) { class_self::Name.new("Extension-Name") }
           const_attr_reader  :EXTENSION_NAME
           
           # <code>Name</code> object for <code>Extension-Name</code> manifest attribute
           # used for declaring dependencies on installed extensions.
           # @see <a href="../../../../technotes/guides/extensions/spec.html#dependency">
           # Installed extension dependency</a>
-          const_set_lazy(:EXTENSION_INSTALLATION) { self::Name.new("Extension-Installation") }
+          const_set_lazy(:EXTENSION_INSTALLATION) { class_self::Name.new("Extension-Installation") }
           const_attr_reader  :EXTENSION_INSTALLATION
           
           # <code>Name</code> object for <code>Implementation-Title</code>
           # manifest attribute used for package versioning.
           # @see <a href="../../../../technotes/guides/versioning/spec/versioning2.html#wp90779">
           # Java Product Versioning Specification</a>
-          const_set_lazy(:IMPLEMENTATION_TITLE) { self::Name.new("Implementation-Title") }
+          const_set_lazy(:IMPLEMENTATION_TITLE) { class_self::Name.new("Implementation-Title") }
           const_attr_reader  :IMPLEMENTATION_TITLE
           
           # <code>Name</code> object for <code>Implementation-Version</code>
           # manifest attribute used for package versioning.
           # @see <a href="../../../../technotes/guides/versioning/spec/versioning2.html#wp90779">
           # Java Product Versioning Specification</a>
-          const_set_lazy(:IMPLEMENTATION_VERSION) { self::Name.new("Implementation-Version") }
+          const_set_lazy(:IMPLEMENTATION_VERSION) { class_self::Name.new("Implementation-Version") }
           const_attr_reader  :IMPLEMENTATION_VERSION
           
           # <code>Name</code> object for <code>Implementation-Vendor</code>
           # manifest attribute used for package versioning.
           # @see <a href="../../../../technotes/guides/versioning/spec/versioning2.html#wp90779">
           # Java Product Versioning Specification</a>
-          const_set_lazy(:IMPLEMENTATION_VENDOR) { self::Name.new("Implementation-Vendor") }
+          const_set_lazy(:IMPLEMENTATION_VENDOR) { class_self::Name.new("Implementation-Vendor") }
           const_attr_reader  :IMPLEMENTATION_VENDOR
           
           # <code>Name</code> object for <code>Implementation-Vendor-Id</code>
           # manifest attribute used for package versioning.
           # @see <a href="../../../../technotes/guides/versioning/spec/versioning2.html#wp90779">
           # Java Product Versioning Specification</a>
-          const_set_lazy(:IMPLEMENTATION_VENDOR_ID) { self::Name.new("Implementation-Vendor-Id") }
+          const_set_lazy(:IMPLEMENTATION_VENDOR_ID) { class_self::Name.new("Implementation-Vendor-Id") }
           const_attr_reader  :IMPLEMENTATION_VENDOR_ID
           
           # <code>Name</code> object for <code>Implementation-Vendor-URL</code>
           # manifest attribute used for package versioning.
           # @see <a href="../../../../technotes/guides/versioning/spec/versioning2.html#wp90779">
           # Java Product Versioning Specification</a>
-          const_set_lazy(:IMPLEMENTATION_URL) { self::Name.new("Implementation-URL") }
+          const_set_lazy(:IMPLEMENTATION_URL) { class_self::Name.new("Implementation-URL") }
           const_attr_reader  :IMPLEMENTATION_URL
           
           # <code>Name</code> object for <code>Specification-Title</code>
           # manifest attribute used for package versioning.
           # @see <a href="../../../../technotes/guides/versioning/spec/versioning2.html#wp90779">
           # Java Product Versioning Specification</a>
-          const_set_lazy(:SPECIFICATION_TITLE) { self::Name.new("Specification-Title") }
+          const_set_lazy(:SPECIFICATION_TITLE) { class_self::Name.new("Specification-Title") }
           const_attr_reader  :SPECIFICATION_TITLE
           
           # <code>Name</code> object for <code>Specification-Version</code>
           # manifest attribute used for package versioning.
           # @see <a href="../../../../technotes/guides/versioning/spec/versioning2.html#wp90779">
           # Java Product Versioning Specification</a>
-          const_set_lazy(:SPECIFICATION_VERSION) { self::Name.new("Specification-Version") }
+          const_set_lazy(:SPECIFICATION_VERSION) { class_self::Name.new("Specification-Version") }
           const_attr_reader  :SPECIFICATION_VERSION
           
           # <code>Name</code> object for <code>Specification-Vendor</code>
           # manifest attribute used for package versioning.
           # @see <a href="../../../../technotes/guides/versioning/spec/versioning2.html#wp90779">
           # Java Product Versioning Specification</a>
-          const_set_lazy(:SPECIFICATION_VENDOR) { self::Name.new("Specification-Vendor") }
+          const_set_lazy(:SPECIFICATION_VENDOR) { class_self::Name.new("Specification-Vendor") }
           const_attr_reader  :SPECIFICATION_VENDOR
         }
         

@@ -87,7 +87,7 @@ module Sun::Nio::Cs
       const_set_lazy(:Decoder) { Class.new(CharsetDecoder) do
         include_class_members UTF_8
         
-        typesig { [self::Charset] }
+        typesig { [class_self::Charset] }
         def initialize(cs)
           super(cs, 1.0, 1.0)
         end
@@ -121,7 +121,7 @@ module Sun::Nio::Cs
             return !((b2 & 0xc0)).equal?(0x80) || !((b3 & 0xc0)).equal?(0x80) || !((b4 & 0xc0)).equal?(0x80)
           end
           
-          typesig { [self::ByteBuffer, ::Java::Int] }
+          typesig { [class_self::ByteBuffer, ::Java::Int] }
           def lookup_n(src, n)
             i = 1
             while i < n
@@ -133,7 +133,7 @@ module Sun::Nio::Cs
             return CoderResult.malformed_for_length(n)
           end
           
-          typesig { [self::ByteBuffer, ::Java::Int] }
+          typesig { [class_self::ByteBuffer, ::Java::Int] }
           def malformed_n(src, nb)
             case (nb)
             when 1
@@ -177,7 +177,7 @@ module Sun::Nio::Cs
             end
           end
           
-          typesig { [self::ByteBuffer, ::Java::Int, self::CharBuffer, ::Java::Int, ::Java::Int] }
+          typesig { [class_self::ByteBuffer, ::Java::Int, class_self::CharBuffer, ::Java::Int, ::Java::Int] }
           def malformed(src, sp, dst, dp, nb)
             src.position(sp - src.array_offset)
             cr = malformed_n(src, nb)
@@ -185,7 +185,7 @@ module Sun::Nio::Cs
             return cr
           end
           
-          typesig { [self::ByteBuffer, ::Java::Int, ::Java::Int] }
+          typesig { [class_self::ByteBuffer, ::Java::Int, ::Java::Int] }
           def malformed(src, mark, nb)
             src.position(mark)
             cr = malformed_n(src, nb)
@@ -193,13 +193,13 @@ module Sun::Nio::Cs
             return cr
           end
           
-          typesig { [self::Buffer, ::Java::Int, ::Java::Int, self::Buffer, ::Java::Int, ::Java::Int] }
+          typesig { [class_self::Buffer, ::Java::Int, ::Java::Int, class_self::Buffer, ::Java::Int, ::Java::Int] }
           def xflow(src, sp, sl, dst, dp, nb)
             update_positions(src, sp, dst, dp)
             return ((nb).equal?(0) || sl - sp < nb) ? CoderResult::UNDERFLOW : CoderResult::OVERFLOW
           end
           
-          typesig { [self::Buffer, ::Java::Int, ::Java::Int] }
+          typesig { [class_self::Buffer, ::Java::Int, ::Java::Int] }
           def xflow(src, mark, nb)
             cr = ((nb).equal?(0) || src.remaining < (nb - 1)) ? CoderResult::UNDERFLOW : CoderResult::OVERFLOW
             src.position(mark)
@@ -207,7 +207,7 @@ module Sun::Nio::Cs
           end
         }
         
-        typesig { [self::ByteBuffer, self::CharBuffer] }
+        typesig { [class_self::ByteBuffer, class_self::CharBuffer] }
         def decode_array_loop(src, dst)
           # This method is optimized for ASCII input.
           sa = src.array
@@ -281,7 +281,7 @@ module Sun::Nio::Cs
           return xflow(src, sp, sl, dst, dp, 0)
         end
         
-        typesig { [self::ByteBuffer, self::CharBuffer] }
+        typesig { [class_self::ByteBuffer, class_self::CharBuffer] }
         def decode_buffer_loop(src, dst)
           mark = src.position
           limit_ = src.limit
@@ -346,7 +346,7 @@ module Sun::Nio::Cs
           return xflow(src, mark, 0)
         end
         
-        typesig { [self::ByteBuffer, self::CharBuffer] }
+        typesig { [class_self::ByteBuffer, class_self::CharBuffer] }
         def decode_loop(src, dst)
           if (src.has_array && dst.has_array)
             return decode_array_loop(src, dst)
@@ -362,7 +362,7 @@ module Sun::Nio::Cs
       const_set_lazy(:Encoder) { Class.new(CharsetEncoder) do
         include_class_members UTF_8
         
-        typesig { [self::Charset] }
+        typesig { [class_self::Charset] }
         def initialize(cs)
           @sgp = nil
           super(cs, 1.1, 4.0)
@@ -379,13 +379,13 @@ module Sun::Nio::Cs
         end
         
         class_module.module_eval {
-          typesig { [self::CharBuffer, ::Java::Int, self::ByteBuffer, ::Java::Int] }
+          typesig { [class_self::CharBuffer, ::Java::Int, class_self::ByteBuffer, ::Java::Int] }
           def overflow(src, sp, dst, dp)
             update_positions(src, sp, dst, dp)
             return CoderResult::OVERFLOW
           end
           
-          typesig { [self::CharBuffer, ::Java::Int] }
+          typesig { [class_self::CharBuffer, ::Java::Int] }
           def overflow(src, mark)
             src.position(mark)
             return CoderResult::OVERFLOW
@@ -398,7 +398,7 @@ module Sun::Nio::Cs
         alias_method :attr_sgp=, :sgp=
         undef_method :sgp=
         
-        typesig { [self::CharBuffer, self::ByteBuffer] }
+        typesig { [class_self::CharBuffer, class_self::ByteBuffer] }
         def encode_array_loop(src, dst)
           sa = src.array
           sp = src.array_offset + src.position
@@ -463,7 +463,7 @@ module Sun::Nio::Cs
           return CoderResult::UNDERFLOW
         end
         
-        typesig { [self::CharBuffer, self::ByteBuffer] }
+        typesig { [class_self::CharBuffer, class_self::ByteBuffer] }
         def encode_buffer_loop(src, dst)
           mark = src.position
           while (src.has_remaining)
@@ -518,7 +518,7 @@ module Sun::Nio::Cs
           return CoderResult::UNDERFLOW
         end
         
-        typesig { [self::CharBuffer, self::ByteBuffer] }
+        typesig { [class_self::CharBuffer, class_self::ByteBuffer] }
         def encode_loop(src, dst)
           if (src.has_array && dst.has_array)
             return encode_array_loop(src, dst)

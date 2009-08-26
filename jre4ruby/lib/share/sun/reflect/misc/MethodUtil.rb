@@ -258,7 +258,7 @@ module Sun::Reflect::Misc
         alias_method :attr_hash_code=, :hash_code=
         undef_method :hash_code=
         
-        typesig { [self::Method] }
+        typesig { [class_self::Method] }
         def initialize(m)
           @method_name = nil
           @arg_classes = nil

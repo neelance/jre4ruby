@@ -95,7 +95,7 @@ module Sun::Nio::Cs::Ext
       const_set_lazy(:Decoder) { Class.new(DBCS_IBM_ASCII_Decoder) do
         include_class_members IBM950
         
-        typesig { [self::Charset] }
+        typesig { [class_self::Charset] }
         def initialize(cs)
           super(cs)
           @mask1 = 0xffe0
@@ -2475,7 +2475,7 @@ module Sun::Nio::Cs::Ext
       const_set_lazy(:Encoder) { Class.new(DBCS_IBM_ASCII_Encoder) do
         include_class_members IBM950
         
-        typesig { [self::Charset] }
+        typesig { [class_self::Charset] }
         def initialize(cs)
           super(cs)
           @mask1 = 0xffc0

@@ -810,7 +810,7 @@ module Java::Text
         alias_method :attr_current_run_limit=, :current_run_limit=
         undef_method :current_run_limit=
         
-        typesig { [Array.typed(self::Attribute), ::Java::Int, ::Java::Int] }
+        typesig { [Array.typed(class_self::Attribute), ::Java::Int, ::Java::Int] }
         # constructor
         def initialize(attributes, begin_index, end_index)
           @begin_index = 0
@@ -937,7 +937,7 @@ module Java::Text
           return @current_run_start
         end
         
-        typesig { [self::Attribute] }
+        typesig { [class_self::Attribute] }
         def get_run_start(attribute)
           if ((@current_run_start).equal?(@begin_index) || (@current_run_index).equal?(-1))
             return @current_run_start
@@ -956,7 +956,7 @@ module Java::Text
           end
         end
         
-        typesig { [self::JavaSet] }
+        typesig { [class_self::JavaSet] }
         def get_run_start(attributes)
           if ((@current_run_start).equal?(@begin_index) || (@current_run_index).equal?(-1))
             return @current_run_start
@@ -979,7 +979,7 @@ module Java::Text
           return @current_run_limit
         end
         
-        typesig { [self::Attribute] }
+        typesig { [class_self::Attribute] }
         def get_run_limit(attribute)
           if ((@current_run_limit).equal?(@end_index) || (@current_run_index).equal?(-1))
             return @current_run_limit
@@ -998,7 +998,7 @@ module Java::Text
           end
         end
         
-        typesig { [self::JavaSet] }
+        typesig { [class_self::JavaSet] }
         def get_run_limit(attributes)
           if ((@current_run_limit).equal?(@end_index) || (@current_run_index).equal?(-1))
             return @current_run_limit
@@ -1055,7 +1055,7 @@ module Java::Text
           end
         end
         
-        typesig { [self::Attribute] }
+        typesig { [class_self::Attribute] }
         def get_attribute(attribute)
           run_index = @current_run_index
           if (run_index < 0)

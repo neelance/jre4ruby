@@ -2086,7 +2086,7 @@ module Sun::Security::Tools
         alias_method :attr_block_file_name=, :block_file_name=
         undef_method :block_file_name=
         
-        typesig { [self::SignatureFile, self::PrivateKey, String, Array.typed(self::X509Certificate), ::Java::Boolean, String, self::X509Certificate, self::ContentSigner, Array.typed(String), self::ZipFile] }
+        typesig { [class_self::SignatureFile, class_self::PrivateKey, String, Array.typed(class_self::X509Certificate), ::Java::Boolean, String, class_self::X509Certificate, class_self::ContentSigner, Array.typed(String), class_self::ZipFile] }
         # Construct a new signature block.
         def initialize(sfg, private_key, sigalg, cert_chain, external_sf, tsa_url, tsa_cert, signing_mechanism, args, zip_file)
           @block = nil
@@ -2161,7 +2161,7 @@ module Sun::Security::Tools
           return @block_file_name
         end
         
-        typesig { [self::OutputStream] }
+        typesig { [class_self::OutputStream] }
         # Writes the block file to the specified OutputStream.
         # 
         # @param out the output stream

@@ -2626,7 +2626,7 @@ module Java::Util
           return -2
         end
         
-        typesig { [Object, self::Locale] }
+        typesig { [Object, class_self::Locale] }
         def print(arg, l)
           self.attr_a.append(@s)
         end
@@ -2836,7 +2836,7 @@ module Java::Util
           return @c
         end
         
-        typesig { [self::Formatter, Array.typed(String)] }
+        typesig { [class_self::Formatter, Array.typed(String)] }
         def initialize(formatter, sa)
           @index = -1
           @f = Flags::NONE
@@ -2886,7 +2886,7 @@ module Java::Util
           end
         end
         
-        typesig { [Object, self::Locale] }
+        typesig { [Object, class_self::Locale] }
         def print(arg, l)
           if (@dt)
             print_date_time(arg, l)
@@ -2917,7 +2917,7 @@ module Java::Util
           end
         end
         
-        typesig { [Object, self::Locale] }
+        typesig { [Object, class_self::Locale] }
         def print_integer(arg, l)
           if ((arg).nil?)
             print("null")
@@ -2946,7 +2946,7 @@ module Java::Util
           end
         end
         
-        typesig { [Object, self::Locale] }
+        typesig { [Object, class_self::Locale] }
         def print_float(arg, l)
           if ((arg).nil?)
             print("null")
@@ -2967,7 +2967,7 @@ module Java::Util
           end
         end
         
-        typesig { [Object, self::Locale] }
+        typesig { [Object, class_self::Locale] }
         def print_date_time(arg, l)
           if ((arg).nil?)
             print("null")
@@ -3043,7 +3043,7 @@ module Java::Util
           print(s)
         end
         
-        typesig { [Object, self::Locale] }
+        typesig { [Object, class_self::Locale] }
         def print_string(arg, l)
           if ((arg).nil?)
             print("null")
@@ -3192,7 +3192,7 @@ module Java::Util
           end
         end
         
-        typesig { [self::Flags] }
+        typesig { [class_self::Flags] }
         def check_bad_flags(*bad_flags)
           i = 0
           while i < bad_flags.attr_length
@@ -3266,7 +3266,7 @@ module Java::Util
           end
         end
         
-        typesig { [::Java::Byte, self::Locale] }
+        typesig { [::Java::Byte, class_self::Locale] }
         def print(value, l)
           v = value
           if (value < 0 && ((@c).equal?(Conversion::OCTAL_INTEGER) || (@c).equal?(Conversion::HEXADECIMAL_INTEGER)))
@@ -3276,7 +3276,7 @@ module Java::Util
           print(v, l)
         end
         
-        typesig { [::Java::Short, self::Locale] }
+        typesig { [::Java::Short, class_self::Locale] }
         def print(value, l)
           v = value
           if (value < 0 && ((@c).equal?(Conversion::OCTAL_INTEGER) || (@c).equal?(Conversion::HEXADECIMAL_INTEGER)))
@@ -3286,7 +3286,7 @@ module Java::Util
           print(v, l)
         end
         
-        typesig { [::Java::Int, self::Locale] }
+        typesig { [::Java::Int, class_self::Locale] }
         def print(value, l)
           v = value
           if (value < 0 && ((@c).equal?(Conversion::OCTAL_INTEGER) || (@c).equal?(Conversion::HEXADECIMAL_INTEGER)))
@@ -3296,7 +3296,7 @@ module Java::Util
           print(v, l)
         end
         
-        typesig { [::Java::Long, self::Locale] }
+        typesig { [::Java::Long, class_self::Locale] }
         def print(value, l)
           sb = self.class::StringBuilder.new
           if ((@c).equal?(Conversion::DECIMAL_INTEGER))
@@ -3357,7 +3357,7 @@ module Java::Util
           self.attr_a.append(justify(sb.to_s))
         end
         
-        typesig { [self::StringBuilder, ::Java::Boolean] }
+        typesig { [class_self::StringBuilder, ::Java::Boolean] }
         # neg := val < 0
         def leading_sign(sb, neg)
           if (!neg)
@@ -3378,7 +3378,7 @@ module Java::Util
           return sb
         end
         
-        typesig { [self::StringBuilder, ::Java::Boolean] }
+        typesig { [class_self::StringBuilder, ::Java::Boolean] }
         # neg := val < 0
         def trailing_sign(sb, neg)
           if (neg && @f.contains(Flags::PARENTHESES))
@@ -3387,7 +3387,7 @@ module Java::Util
           return sb
         end
         
-        typesig { [self::BigInteger, self::Locale] }
+        typesig { [class_self::BigInteger, class_self::Locale] }
         def print(value, l)
           sb = self.class::StringBuilder.new
           neg = (value.signum).equal?(-1)
@@ -3450,12 +3450,12 @@ module Java::Util
           self.attr_a.append(justify(sb.to_s))
         end
         
-        typesig { [::Java::Float, self::Locale] }
+        typesig { [::Java::Float, class_self::Locale] }
         def print(value, l)
           print((value).to_f, l)
         end
         
-        typesig { [::Java::Double, self::Locale] }
+        typesig { [::Java::Double, class_self::Locale] }
         def print(value, l)
           sb = self.class::StringBuilder.new
           neg = (Double.compare(value, 0.0)).equal?(-1)
@@ -3478,7 +3478,7 @@ module Java::Util
           self.attr_a.append(justify(sb.to_s))
         end
         
-        typesig { [self::StringBuilder, ::Java::Double, self::Locale, self::Flags, ::Java::Char, ::Java::Int, ::Java::Boolean] }
+        typesig { [class_self::StringBuilder, ::Java::Double, class_self::Locale, class_self::Flags, ::Java::Char, ::Java::Int, ::Java::Boolean] }
         # !Double.isInfinite(value) && !Double.isNaN(value)
         def print(sb, value, l, f, c, precision_, neg)
           if ((c).equal?(Conversion::SCIENTIFIC))
@@ -3753,7 +3753,7 @@ module Java::Util
           end
         end
         
-        typesig { [self::BigDecimal, self::Locale] }
+        typesig { [class_self::BigDecimal, class_self::Locale] }
         def print(value, l)
           if ((@c).equal?(Conversion::HEXADECIMAL_FLOAT))
             fail_conversion(@c, value)
@@ -3771,7 +3771,7 @@ module Java::Util
           self.attr_a.append(justify(sb.to_s))
         end
         
-        typesig { [self::StringBuilder, self::BigDecimal, self::Locale, self::Flags, ::Java::Char, ::Java::Int, ::Java::Boolean] }
+        typesig { [class_self::StringBuilder, class_self::BigDecimal, class_self::Locale, class_self::Flags, ::Java::Char, ::Java::Int, ::Java::Boolean] }
         # value > 0
         def print(sb, value, l, f, c, precision_, neg)
           if ((c).equal?(Conversion::SCIENTIFIC))
@@ -3911,7 +3911,7 @@ module Java::Util
             alias_method :attr_scale=, :scale=
             undef_method :scale=
             
-            typesig { [self::BigInteger, ::Java::Int, self::BigDecimalLayoutForm] }
+            typesig { [class_self::BigInteger, ::Java::Int, class_self::BigDecimalLayoutForm] }
             def initialize(int_val, scale, form)
               @mant = nil
               @exp = nil
@@ -3953,7 +3953,7 @@ module Java::Util
               return to_char_array(@exp)
             end
             
-            typesig { [self::StringBuilder] }
+            typesig { [class_self::StringBuilder] }
             def to_char_array(sb)
               if ((sb).nil?)
                 return nil
@@ -3963,7 +3963,7 @@ module Java::Util
               return result
             end
             
-            typesig { [self::BigInteger, ::Java::Int, self::BigDecimalLayoutForm] }
+            typesig { [class_self::BigInteger, ::Java::Int, class_self::BigDecimalLayoutForm] }
             def layout(int_val, scale, form)
               coeff = int_val.to_s.to_char_array
               @scale = scale
@@ -4057,7 +4057,7 @@ module Java::Util
           end }
         }
         
-        typesig { [::Java::Int, self::Flags, ::Java::Boolean] }
+        typesig { [::Java::Int, class_self::Flags, ::Java::Boolean] }
         def adjust_width(width_, f, neg)
           new_w = width_
           if (!(new_w).equal?(-1) && neg && f.contains(Flags::PARENTHESES))
@@ -4093,7 +4093,7 @@ module Java::Util
           return tmp
         end
         
-        typesig { [self::Calendar, ::Java::Char, self::Locale] }
+        typesig { [class_self::Calendar, ::Java::Char, class_self::Locale] }
         def print(t, c, l)
           sb = self.class::StringBuilder.new
           print(sb, t, c, l)
@@ -4105,7 +4105,7 @@ module Java::Util
           self.attr_a.append(s)
         end
         
-        typesig { [self::StringBuilder, self::Calendar, ::Java::Char, self::Locale] }
+        typesig { [class_self::StringBuilder, class_self::Calendar, ::Java::Char, class_self::Locale] }
         def print(sb, t, c, l)
           raise AssertError if not (((@width).equal?(-1)))
           if ((sb).nil?)
@@ -4284,7 +4284,7 @@ module Java::Util
           return sb
         end
         
-        typesig { [self::Flags, ::Java::Char] }
+        typesig { [class_self::Flags, ::Java::Char] }
         # -- Methods to support throwing exceptions --
         def fail_mismatch(f, c)
           fs = f.to_s
@@ -4296,7 +4296,7 @@ module Java::Util
           raise self.class::IllegalFormatConversionException.new(c, arg.get_class)
         end
         
-        typesig { [self::Locale] }
+        typesig { [class_self::Locale] }
         def get_zero(l)
           if ((!(l).nil?) && !(l == locale))
             dfs = DecimalFormatSymbols.get_instance(l)
@@ -4305,13 +4305,13 @@ module Java::Util
           return self.attr_zero
         end
         
-        typesig { [self::StringBuilder, ::Java::Long, self::Flags, ::Java::Int, self::Locale] }
+        typesig { [class_self::StringBuilder, ::Java::Long, class_self::Flags, ::Java::Int, class_self::Locale] }
         def localized_magnitude(sb, value, f, width_, l)
           va = Long.to_s(value, 10).to_char_array
           return localized_magnitude(sb, va, f, width_, l)
         end
         
-        typesig { [self::StringBuilder, Array.typed(::Java::Char), self::Flags, ::Java::Int, self::Locale] }
+        typesig { [class_self::StringBuilder, Array.typed(::Java::Char), class_self::Flags, ::Java::Int, class_self::Locale] }
         def localized_magnitude(sb, value, f, width_, l)
           if ((sb).nil?)
             sb = self.class::StringBuilder.new
@@ -4394,46 +4394,46 @@ module Java::Util
         undef_method :flags=
         
         class_module.module_eval {
-          const_set_lazy(:NONE) { self::Flags.new(0) }
+          const_set_lazy(:NONE) { class_self::Flags.new(0) }
           const_attr_reader  :NONE
           
           # ''
           # duplicate declarations from Formattable.java
-          const_set_lazy(:LEFT_JUSTIFY) { self::Flags.new(1 << 0) }
+          const_set_lazy(:LEFT_JUSTIFY) { class_self::Flags.new(1 << 0) }
           const_attr_reader  :LEFT_JUSTIFY
           
           # '-'
-          const_set_lazy(:UPPERCASE) { self::Flags.new(1 << 1) }
+          const_set_lazy(:UPPERCASE) { class_self::Flags.new(1 << 1) }
           const_attr_reader  :UPPERCASE
           
           # '^'
-          const_set_lazy(:ALTERNATE) { self::Flags.new(1 << 2) }
+          const_set_lazy(:ALTERNATE) { class_self::Flags.new(1 << 2) }
           const_attr_reader  :ALTERNATE
           
           # '#'
           # numerics
-          const_set_lazy(:PLUS) { self::Flags.new(1 << 3) }
+          const_set_lazy(:PLUS) { class_self::Flags.new(1 << 3) }
           const_attr_reader  :PLUS
           
           # '+'
-          const_set_lazy(:LEADING_SPACE) { self::Flags.new(1 << 4) }
+          const_set_lazy(:LEADING_SPACE) { class_self::Flags.new(1 << 4) }
           const_attr_reader  :LEADING_SPACE
           
           # ' '
-          const_set_lazy(:ZERO_PAD) { self::Flags.new(1 << 5) }
+          const_set_lazy(:ZERO_PAD) { class_self::Flags.new(1 << 5) }
           const_attr_reader  :ZERO_PAD
           
           # '0'
-          const_set_lazy(:GROUP) { self::Flags.new(1 << 6) }
+          const_set_lazy(:GROUP) { class_self::Flags.new(1 << 6) }
           const_attr_reader  :GROUP
           
           # ','
-          const_set_lazy(:PARENTHESES) { self::Flags.new(1 << 7) }
+          const_set_lazy(:PARENTHESES) { class_self::Flags.new(1 << 7) }
           const_attr_reader  :PARENTHESES
           
           # '('
           # indexing
-          const_set_lazy(:PREVIOUS) { self::Flags.new(1 << 8) }
+          const_set_lazy(:PREVIOUS) { class_self::Flags.new(1 << 8) }
           const_attr_reader  :PREVIOUS
         }
         
@@ -4449,7 +4449,7 @@ module Java::Util
           return @flags
         end
         
-        typesig { [self::Flags] }
+        typesig { [class_self::Flags] }
         def contains(f)
           return ((@flags & f.value_of)).equal?(f.value_of)
         end
@@ -4459,13 +4459,13 @@ module Java::Util
           return self.class::Flags.new(@flags)
         end
         
-        typesig { [self::Flags] }
+        typesig { [class_self::Flags] }
         def add(f)
           @flags |= f.value_of
           return self
         end
         
-        typesig { [self::Flags] }
+        typesig { [class_self::Flags] }
         def remove(f)
           @flags &= ~f.value_of
           return self
@@ -4475,12 +4475,12 @@ module Java::Util
           typesig { [String] }
           def parse(s)
             ca = s.to_char_array
-            f = self::Flags.new(0)
+            f = class_self::Flags.new(0)
             i = 0
             while i < ca.attr_length
               v = parse(ca[i])
               if (f.contains(v))
-                raise self::DuplicateFormatFlagsException.new(v.to_s)
+                raise class_self::DuplicateFormatFlagsException.new(v.to_s)
               end
               f.add(v)
               i += 1
@@ -4509,11 +4509,11 @@ module Java::Util
             when Character.new(?<.ord)
               return self.class::PREVIOUS
             else
-              raise self::UnknownFormatFlagsException.new(String.value_of(c))
+              raise class_self::UnknownFormatFlagsException.new(String.value_of(c))
             end
           end
           
-          typesig { [self::Flags] }
+          typesig { [class_self::Flags] }
           # Returns a string representation of the current <tt>Flags</tt>.
           def to_s(f)
             return f.to_s

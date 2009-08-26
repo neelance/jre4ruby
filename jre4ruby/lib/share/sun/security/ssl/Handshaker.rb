@@ -997,7 +997,7 @@ module Sun::Security::Ssl
         alias_method :attr_pea=, :pea=
         undef_method :pea=
         
-        typesig { [self::PrivilegedExceptionAction] }
+        typesig { [class_self::PrivilegedExceptionAction] }
         def initialize(pea)
           @pea = nil
           @pea = pea

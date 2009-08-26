@@ -346,7 +346,7 @@ module Java::Util
         alias_method :attr_after=, :after=
         undef_method :after=
         
-        typesig { [::Java::Int, Object, Object, self::HashMap::Entry] }
+        typesig { [::Java::Int, Object, Object, class_self::HashMap::Entry] }
         def initialize(hash, key, value, next_)
           @before = nil
           @after = nil
@@ -360,7 +360,7 @@ module Java::Util
           @after.attr_before = @before
         end
         
-        typesig { [self::Entry] }
+        typesig { [class_self::Entry] }
         # Inserts this entry before the specified existing entry in the list.
         def add_before(existing_entry)
           @after = existing_entry
@@ -369,7 +369,7 @@ module Java::Util
           @after.attr_before = self
         end
         
-        typesig { [self::HashMap] }
+        typesig { [class_self::HashMap] }
         # This method is invoked by the superclass whenever the value
         # of a pre-existing entry is read by Map.get or modified by Map.set.
         # If the enclosing Map is access-ordered, it moves the entry
@@ -383,7 +383,7 @@ module Java::Util
           end
         end
         
-        typesig { [self::HashMap] }
+        typesig { [class_self::HashMap] }
         def record_removal(m)
           remove
         end

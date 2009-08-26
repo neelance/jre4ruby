@@ -299,7 +299,7 @@ module Java::Net
         include_class_members CookieManager
         include Comparator
         
-        typesig { [self::HttpCookie, self::HttpCookie] }
+        typesig { [class_self::HttpCookie, class_self::HttpCookie] }
         def compare(c1, c2)
           if ((c1).equal?(c2))
             return 0

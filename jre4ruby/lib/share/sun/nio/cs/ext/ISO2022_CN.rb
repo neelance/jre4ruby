@@ -123,10 +123,10 @@ module Sun::Nio::Cs::Ext
         undef_method :current_sodesig=
         
         class_module.module_eval {
-          const_set_lazy(:Gb2312) { self::EUC_CN.new }
+          const_set_lazy(:Gb2312) { class_self::EUC_CN.new }
           const_attr_reader  :Gb2312
           
-          const_set_lazy(:Cns) { self::EUC_TW.new }
+          const_set_lazy(:Cns) { class_self::EUC_TW.new }
           const_attr_reader  :Cns
         }
         
@@ -142,7 +142,7 @@ module Sun::Nio::Cs::Ext
         alias_method :attr_cns_decoder=, :cns_decoder=
         undef_method :cns_decoder=
         
-        typesig { [self::Charset] }
+        typesig { [class_self::Charset] }
         def initialize(cs)
           @shift_out = false
           @current_sodesig = 0
@@ -189,7 +189,7 @@ module Sun::Nio::Cs::Ext
           end
         end
         
-        typesig { [self::ByteBuffer, self::CharBuffer] }
+        typesig { [class_self::ByteBuffer, class_self::CharBuffer] }
         def decode_buffer_loop(src, dst)
           mark = src.position
           b1 = 0
@@ -338,7 +338,7 @@ module Sun::Nio::Cs::Ext
           end
         end
         
-        typesig { [self::ByteBuffer, self::CharBuffer] }
+        typesig { [class_self::ByteBuffer, class_self::CharBuffer] }
         def decode_array_loop(src, dst)
           input_size = 0
           b1 = 0
@@ -497,7 +497,7 @@ module Sun::Nio::Cs::Ext
           end
         end
         
-        typesig { [self::ByteBuffer, self::CharBuffer] }
+        typesig { [class_self::ByteBuffer, class_self::CharBuffer] }
         def decode_loop(src, dst)
           if (src.has_array && dst.has_array)
             return decode_array_loop(src, dst)

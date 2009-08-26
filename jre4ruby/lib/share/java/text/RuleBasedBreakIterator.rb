@@ -1042,7 +1042,7 @@ module Java::Text
         alias_method :attr_current_index=, :current_index=
         undef_method :current_index=
         
-        typesig { [self::CharacterIterator] }
+        typesig { [class_self::CharacterIterator] }
         def initialize(base)
           @base = nil
           @range_start = 0

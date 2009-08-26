@@ -107,12 +107,12 @@ module Sun::Security::Mscapi
         alias_method :attr_alias=, :alias=
         undef_method :alias=
         
-        typesig { [self::Key, Array.typed(self::X509Certificate)] }
+        typesig { [class_self::Key, Array.typed(class_self::X509Certificate)] }
         def initialize(key, chain)
           initialize__key_entry(nil, key, chain)
         end
         
-        typesig { [String, self::Key, Array.typed(self::X509Certificate)] }
+        typesig { [String, class_self::Key, Array.typed(class_self::X509Certificate)] }
         def initialize(alias_, key, chain)
           @private_key = nil
           @cert_chain = nil
@@ -147,7 +147,7 @@ module Sun::Security::Mscapi
           return @private_key
         end
         
-        typesig { [self::RSAPrivateCrtKey] }
+        typesig { [class_self::RSAPrivateCrtKey] }
         # Sets the private key for the keystore entry.
         def set_private_key(key)
           modulus_bytes = key.get_modulus.to_byte_array
@@ -163,7 +163,7 @@ module Sun::Security::Mscapi
           return @cert_chain
         end
         
-        typesig { [Array.typed(self::X509Certificate)] }
+        typesig { [Array.typed(class_self::X509Certificate)] }
         # Sets the certificate chain for the keystore entry.
         def set_certificate_chain(chain)
           i = 0

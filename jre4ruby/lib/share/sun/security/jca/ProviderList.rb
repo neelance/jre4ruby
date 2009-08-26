@@ -532,7 +532,7 @@ module Sun::Security::Jca
           @ids = nil
         end
         
-        typesig { [self::JavaList] }
+        typesig { [class_self::JavaList] }
         def initialize(ids)
           @type = nil
           @algorithm = nil
@@ -546,7 +546,7 @@ module Sun::Security::Jca
           @ids = ids
         end
         
-        typesig { [self::Service] }
+        typesig { [class_self::Service] }
         def add_service(s)
           if ((@first_service).nil?)
             @first_service = s
@@ -627,7 +627,7 @@ module Sun::Security::Jca
           return Class.new(self.class::Iterator.class == Class ? self.class::Iterator : Object) do
             extend LocalClass
             include_class_members ServiceList
-            include self::Iterator if self::Iterator.class == Module
+            include class_self::Iterator if class_self::Iterator.class == Module
             
             attr_accessor :index
             alias_method :attr_index, :index

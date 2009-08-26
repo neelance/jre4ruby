@@ -256,7 +256,7 @@ module Sun::Security::Provider
           super("SHA-512", 64, self.class::INITIAL_HASHES)
         end
         
-        typesig { [self::SHA512] }
+        typesig { [class_self::SHA512] }
         def initialize(base)
           super(base)
         end
@@ -284,7 +284,7 @@ module Sun::Security::Provider
           super("SHA-384", 48, self.class::INITIAL_HASHES)
         end
         
-        typesig { [self::SHA384] }
+        typesig { [class_self::SHA384] }
         def initialize(base)
           super(base)
         end

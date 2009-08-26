@@ -265,7 +265,7 @@ module Java::Util::Concurrent
         alias_method :attr_next=, :next=
         undef_method :next=
         
-        typesig { [Object, ::Java::Int, self::HashEntry, Object] }
+        typesig { [Object, ::Java::Int, class_self::HashEntry, Object] }
         def initialize(key, hash, next_, value)
           @key = nil
           @hash = 0
@@ -280,7 +280,7 @@ module Java::Util::Concurrent
         class_module.module_eval {
           typesig { [::Java::Int] }
           def new_array(i)
-            return Array.typed(self::HashEntry).new(i) { nil }
+            return Array.typed(class_self::HashEntry).new(i) { nil }
           end
         }
         
@@ -396,11 +396,11 @@ module Java::Util::Concurrent
         class_module.module_eval {
           typesig { [::Java::Int] }
           def new_array(i)
-            return Array.typed(self::Segment).new(i) { nil }
+            return Array.typed(class_self::Segment).new(i) { nil }
           end
         }
         
-        typesig { [Array.typed(self::HashEntry)] }
+        typesig { [Array.typed(class_self::HashEntry)] }
         # Sets table to new HashEntry array.
         # Call only while holding lock or in constructor.
         def set_table(new_table)
@@ -415,7 +415,7 @@ module Java::Util::Concurrent
           return tab[hash & (tab.attr_length - 1)]
         end
         
-        typesig { [self::HashEntry] }
+        typesig { [class_self::HashEntry] }
         # Reads value field of an entry under lock. Called if value
         # field ever appears to be null. This is possible only if a
         # compiler happens to reorder a HashEntry initialization with
@@ -1370,12 +1370,12 @@ module Java::Util::Concurrent
         extend LocalClass
         include_class_members ConcurrentHashMap
         
-        typesig { [self::K, self::V] }
+        typesig { [class_self::K, class_self::V] }
         def initialize(k, v)
           super(k, v)
         end
         
-        typesig { [self::V] }
+        typesig { [class_self::V] }
         # Set our entry's value and write through to the map. The
         # value to return is somewhat arbitrary here. Since a
         # WriteThroughEntry does not necessarily track asynchronous

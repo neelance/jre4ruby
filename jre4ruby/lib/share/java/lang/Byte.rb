@@ -83,13 +83,13 @@ module Java::Lang
         end
         
         class_module.module_eval {
-          const_set_lazy(:Cache) { Array.typed(self::Byte).new(-(-128) + 127 + 1) { nil } }
+          const_set_lazy(:Cache) { Array.typed(class_self::Byte).new(-(-128) + 127 + 1) { nil } }
           const_attr_reader  :Cache
           
           when_class_loaded do
             i = 0
             while i < self.class::Cache.attr_length
-              self.class::Cache[i] = self::Byte.new((i - 128))
+              self.class::Cache[i] = class_self::Byte.new((i - 128))
               i += 1
             end
           end

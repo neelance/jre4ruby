@@ -438,7 +438,7 @@ module Java::Util
         alias_method :attr_elements=, :elements=
         undef_method :elements=
         
-        typesig { [self::EnumSet] }
+        typesig { [class_self::EnumSet] }
         def initialize(set)
           @element_type = nil
           @elements = nil

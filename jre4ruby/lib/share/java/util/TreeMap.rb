@@ -1128,7 +1128,7 @@ module Java::Util
         alias_method :attr_m=, :m=
         undef_method :m=
         
-        typesig { [self::NavigableMap] }
+        typesig { [class_self::NavigableMap] }
         def initialize(map)
           @m = nil
           super()
@@ -1290,7 +1290,7 @@ module Java::Util
         alias_method :attr_expected_mod_count=, :expected_mod_count=
         undef_method :expected_mod_count=
         
-        typesig { [self::Entry] }
+        typesig { [class_self::Entry] }
         def initialize(first)
           @next = nil
           @last_returned = nil
@@ -1358,7 +1358,7 @@ module Java::Util
         extend LocalClass
         include_class_members TreeMap
         
-        typesig { [self::Entry] }
+        typesig { [class_self::Entry] }
         def initialize(first)
           super(first)
         end
@@ -1376,7 +1376,7 @@ module Java::Util
         extend LocalClass
         include_class_members TreeMap
         
-        typesig { [self::Entry] }
+        typesig { [class_self::Entry] }
         def initialize(first)
           super(first)
         end
@@ -1394,7 +1394,7 @@ module Java::Util
         extend LocalClass
         include_class_members TreeMap
         
-        typesig { [self::Entry] }
+        typesig { [class_self::Entry] }
         def initialize(first)
           super(first)
         end
@@ -1412,7 +1412,7 @@ module Java::Util
         extend LocalClass
         include_class_members TreeMap
         
-        typesig { [self::Entry] }
+        typesig { [class_self::Entry] }
         def initialize(first)
           super(first)
         end
@@ -1529,7 +1529,7 @@ module Java::Util
         alias_method :attr_hi_inclusive=, :hi_inclusive=
         undef_method :hi_inclusive=
         
-        typesig { [self::TreeMap, ::Java::Boolean, Object, ::Java::Boolean, ::Java::Boolean, Object, ::Java::Boolean] }
+        typesig { [class_self::TreeMap, ::Java::Boolean, Object, ::Java::Boolean, ::Java::Boolean, Object, ::Java::Boolean] }
         def initialize(m, from_start, lo, lo_inclusive, to_end, hi, hi_inclusive)
           @m = nil
           @lo = nil
@@ -1878,7 +1878,7 @@ module Java::Util
         
         class_module.module_eval {
           # View classes
-          const_set_lazy(:EntrySetView) { Class.new(self::AbstractSet) do
+          const_set_lazy(:EntrySetView) { Class.new(class_self::AbstractSet) do
             extend LocalClass
             include_class_members NavigableSubMap
             
@@ -1965,7 +1965,7 @@ module Java::Util
           const_set_lazy(:SubMapIterator) { Class.new do
             extend LocalClass
             include_class_members NavigableSubMap
-            include self::Iterator
+            include class_self::Iterator
             
             attr_accessor :last_returned
             alias_method :attr_last_returned, :last_returned
@@ -1991,7 +1991,7 @@ module Java::Util
             alias_method :attr_expected_mod_count=, :expected_mod_count=
             undef_method :expected_mod_count=
             
-            typesig { [self::TreeMap::Entry, self::TreeMap::Entry] }
+            typesig { [class_self::TreeMap::Entry, class_self::TreeMap::Entry] }
             def initialize(first, fence)
               @last_returned = nil
               @next = nil
@@ -2070,11 +2070,11 @@ module Java::Util
             alias_method :initialize__sub_map_iterator, :initialize
           end }
           
-          const_set_lazy(:SubMapEntryIterator) { Class.new(self::SubMapIterator) do
+          const_set_lazy(:SubMapEntryIterator) { Class.new(class_self::SubMapIterator) do
             extend LocalClass
             include_class_members NavigableSubMap
             
-            typesig { [self::TreeMap::Entry, self::TreeMap::Entry] }
+            typesig { [class_self::TreeMap::Entry, class_self::TreeMap::Entry] }
             def initialize(first, fence)
               super(first, fence)
             end
@@ -2093,11 +2093,11 @@ module Java::Util
             alias_method :initialize__sub_map_entry_iterator, :initialize
           end }
           
-          const_set_lazy(:SubMapKeyIterator) { Class.new(self::SubMapIterator) do
+          const_set_lazy(:SubMapKeyIterator) { Class.new(class_self::SubMapIterator) do
             extend LocalClass
             include_class_members NavigableSubMap
             
-            typesig { [self::TreeMap::Entry, self::TreeMap::Entry] }
+            typesig { [class_self::TreeMap::Entry, class_self::TreeMap::Entry] }
             def initialize(first, fence)
               super(first, fence)
             end
@@ -2116,11 +2116,11 @@ module Java::Util
             alias_method :initialize__sub_map_key_iterator, :initialize
           end }
           
-          const_set_lazy(:DescendingSubMapEntryIterator) { Class.new(self::SubMapIterator) do
+          const_set_lazy(:DescendingSubMapEntryIterator) { Class.new(class_self::SubMapIterator) do
             extend LocalClass
             include_class_members NavigableSubMap
             
-            typesig { [self::TreeMap::Entry, self::TreeMap::Entry] }
+            typesig { [class_self::TreeMap::Entry, class_self::TreeMap::Entry] }
             def initialize(last, fence)
               super(last, fence)
             end
@@ -2139,11 +2139,11 @@ module Java::Util
             alias_method :initialize__descending_sub_map_entry_iterator, :initialize
           end }
           
-          const_set_lazy(:DescendingSubMapKeyIterator) { Class.new(self::SubMapIterator) do
+          const_set_lazy(:DescendingSubMapKeyIterator) { Class.new(class_self::SubMapIterator) do
             extend LocalClass
             include_class_members NavigableSubMap
             
-            typesig { [self::TreeMap::Entry, self::TreeMap::Entry] }
+            typesig { [class_self::TreeMap::Entry, class_self::TreeMap::Entry] }
             def initialize(last, fence)
               super(last, fence)
             end
@@ -2176,7 +2176,7 @@ module Java::Util
           const_attr_reader  :SerialVersionUID
         }
         
-        typesig { [self::TreeMap, ::Java::Boolean, Object, ::Java::Boolean, ::Java::Boolean, Object, ::Java::Boolean] }
+        typesig { [class_self::TreeMap, ::Java::Boolean, Object, ::Java::Boolean, ::Java::Boolean, Object, ::Java::Boolean] }
         def initialize(m, from_start, lo, lo_inclusive, to_end, hi, hi_inclusive)
           super(m, from_start, lo, lo_inclusive, to_end, hi, hi_inclusive)
         end
@@ -2230,7 +2230,7 @@ module Java::Util
         end
         
         class_module.module_eval {
-          const_set_lazy(:AscendingEntrySetView) { Class.new(self::EntrySetView) do
+          const_set_lazy(:AscendingEntrySetView) { Class.new(class_self::EntrySetView) do
             extend LocalClass
             include_class_members AscendingSubMap
             
@@ -2298,7 +2298,7 @@ module Java::Util
           const_attr_reader  :SerialVersionUID
         }
         
-        typesig { [self::TreeMap, ::Java::Boolean, Object, ::Java::Boolean, ::Java::Boolean, Object, ::Java::Boolean] }
+        typesig { [class_self::TreeMap, ::Java::Boolean, Object, ::Java::Boolean, ::Java::Boolean, Object, ::Java::Boolean] }
         def initialize(m, from_start, lo, lo_inclusive, to_end, hi, hi_inclusive)
           @reverse_comparator = nil
           super(m, from_start, lo, lo_inclusive, to_end, hi, hi_inclusive)
@@ -2360,7 +2360,7 @@ module Java::Util
         end
         
         class_module.module_eval {
-          const_set_lazy(:DescendingEntrySetView) { Class.new(self::EntrySetView) do
+          const_set_lazy(:DescendingEntrySetView) { Class.new(class_self::EntrySetView) do
             extend LocalClass
             include_class_members DescendingSubMap
             
@@ -2483,17 +2483,17 @@ module Java::Util
           raise self.class::InternalError.new
         end
         
-        typesig { [self::K, self::K] }
+        typesig { [class_self::K, class_self::K] }
         def sub_map(from_key, to_key)
           raise self.class::InternalError.new
         end
         
-        typesig { [self::K] }
+        typesig { [class_self::K] }
         def head_map(to_key)
           raise self.class::InternalError.new
         end
         
-        typesig { [self::K] }
+        typesig { [class_self::K] }
         def tail_map(from_key)
           raise self.class::InternalError.new
         end
@@ -2567,7 +2567,7 @@ module Java::Util
         alias_method :attr_color=, :color=
         undef_method :color=
         
-        typesig { [Object, Object, self::Entry] }
+        typesig { [Object, Object, class_self::Entry] }
         # Make a new cell with given key, value, and parent, and with
         # <tt>null</tt> child links, and BLACK color.
         def initialize(key, value, parent)

@@ -82,7 +82,7 @@ module Sun::Nio::Cs::Ext
           end
         }
         
-        typesig { [self::Charset] }
+        typesig { [class_self::Charset] }
         def initialize(cs)
           super(cs, self.class::SingleByteToChar)
         end
@@ -117,7 +117,7 @@ module Sun::Nio::Cs::Ext
           end
         }
         
-        typesig { [self::Charset] }
+        typesig { [class_self::Charset] }
         def initialize(cs)
           super(cs, self.class::Index1, self.class::Index2a)
         end

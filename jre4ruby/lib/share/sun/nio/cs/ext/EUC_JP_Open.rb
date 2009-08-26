@@ -114,7 +114,7 @@ module Sun::Nio::Cs::Ext
         alias_method :attr_replace_char=, :replace_char=
         undef_method :replace_char=
         
-        typesig { [self::Charset] }
+        typesig { [class_self::Charset] }
         def initialize(cs)
           @decoder_j0201 = nil
           @decode_mapping_j0212 = nil
@@ -198,7 +198,7 @@ module Sun::Nio::Cs::Ext
         alias_method :attr_sgp=, :sgp=
         undef_method :sgp=
         
-        typesig { [self::Charset] }
+        typesig { [class_self::Charset] }
         def initialize(cs)
           @encoder_j0201 = nil
           @encoder_j0212 = nil

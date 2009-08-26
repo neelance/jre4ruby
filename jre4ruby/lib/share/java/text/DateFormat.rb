@@ -704,12 +704,12 @@ module Java::Text
           const_attr_reader  :SerialVersionUID
           
           # table of all instances in this class, used by readResolve
-          const_set_lazy(:InstanceMap) { self::HashMap.new(18) }
+          const_set_lazy(:InstanceMap) { class_self::HashMap.new(18) }
           const_attr_reader  :InstanceMap
           
           # Maps from Calendar constant (such as Calendar.ERA) to Field
           # constant (such as Field.ERA).
-          const_set_lazy(:CalendarToFieldMapping) { Array.typed(self::Field).new(Calendar::FIELD_COUNT) { nil } }
+          const_set_lazy(:CalendarToFieldMapping) { Array.typed(class_self::Field).new(Calendar::FIELD_COUNT) { nil } }
           const_attr_reader  :CalendarToFieldMapping
         }
         
@@ -734,7 +734,7 @@ module Java::Text
           # @see java.util.Calendar
           def of_calendar_field(calendar_field)
             if (calendar_field < 0 || calendar_field >= self.class::CalendarToFieldMapping.attr_length)
-              raise self::IllegalArgumentException.new("Unknown Calendar constant " + RJava.cast_to_string(calendar_field))
+              raise class_self::IllegalArgumentException.new("Unknown Calendar constant " + RJava.cast_to_string(calendar_field))
             end
             return self.class::CalendarToFieldMapping[calendar_field]
           end
@@ -798,80 +798,80 @@ module Java::Text
           # 
           # 
           # Constant identifying the era field.
-          const_set_lazy(:ERA) { self::Field.new("era", Calendar::ERA) }
+          const_set_lazy(:ERA) { class_self::Field.new("era", Calendar::ERA) }
           const_attr_reader  :ERA
           
           # Constant identifying the year field.
-          const_set_lazy(:YEAR) { self::Field.new("year", Calendar::YEAR) }
+          const_set_lazy(:YEAR) { class_self::Field.new("year", Calendar::YEAR) }
           const_attr_reader  :YEAR
           
           # Constant identifying the month field.
-          const_set_lazy(:MONTH) { self::Field.new("month", Calendar::MONTH) }
+          const_set_lazy(:MONTH) { class_self::Field.new("month", Calendar::MONTH) }
           const_attr_reader  :MONTH
           
           # Constant identifying the day of month field.
-          const_set_lazy(:DAY_OF_MONTH) { self::Field.new("day of month", Calendar::DAY_OF_MONTH) }
+          const_set_lazy(:DAY_OF_MONTH) { class_self::Field.new("day of month", Calendar::DAY_OF_MONTH) }
           const_attr_reader  :DAY_OF_MONTH
           
           # Constant identifying the hour of day field, where the legal values
           # are 1 to 24.
-          const_set_lazy(:HOUR_OF_DAY1) { self::Field.new("hour of day 1", -1) }
+          const_set_lazy(:HOUR_OF_DAY1) { class_self::Field.new("hour of day 1", -1) }
           const_attr_reader  :HOUR_OF_DAY1
           
           # Constant identifying the hour of day field, where the legal values
           # are 0 to 23.
-          const_set_lazy(:HOUR_OF_DAY0) { self::Field.new("hour of day", Calendar::HOUR_OF_DAY) }
+          const_set_lazy(:HOUR_OF_DAY0) { class_self::Field.new("hour of day", Calendar::HOUR_OF_DAY) }
           const_attr_reader  :HOUR_OF_DAY0
           
           # Constant identifying the minute field.
-          const_set_lazy(:MINUTE) { self::Field.new("minute", Calendar::MINUTE) }
+          const_set_lazy(:MINUTE) { class_self::Field.new("minute", Calendar::MINUTE) }
           const_attr_reader  :MINUTE
           
           # Constant identifying the second field.
-          const_set_lazy(:SECOND) { self::Field.new("second", Calendar::SECOND) }
+          const_set_lazy(:SECOND) { class_self::Field.new("second", Calendar::SECOND) }
           const_attr_reader  :SECOND
           
           # Constant identifying the millisecond field.
-          const_set_lazy(:MILLISECOND) { self::Field.new("millisecond", Calendar::MILLISECOND) }
+          const_set_lazy(:MILLISECOND) { class_self::Field.new("millisecond", Calendar::MILLISECOND) }
           const_attr_reader  :MILLISECOND
           
           # Constant identifying the day of week field.
-          const_set_lazy(:DAY_OF_WEEK) { self::Field.new("day of week", Calendar::DAY_OF_WEEK) }
+          const_set_lazy(:DAY_OF_WEEK) { class_self::Field.new("day of week", Calendar::DAY_OF_WEEK) }
           const_attr_reader  :DAY_OF_WEEK
           
           # Constant identifying the day of year field.
-          const_set_lazy(:DAY_OF_YEAR) { self::Field.new("day of year", Calendar::DAY_OF_YEAR) }
+          const_set_lazy(:DAY_OF_YEAR) { class_self::Field.new("day of year", Calendar::DAY_OF_YEAR) }
           const_attr_reader  :DAY_OF_YEAR
           
           # Constant identifying the day of week field.
-          const_set_lazy(:DAY_OF_WEEK_IN_MONTH) { self::Field.new("day of week in month", Calendar::DAY_OF_WEEK_IN_MONTH) }
+          const_set_lazy(:DAY_OF_WEEK_IN_MONTH) { class_self::Field.new("day of week in month", Calendar::DAY_OF_WEEK_IN_MONTH) }
           const_attr_reader  :DAY_OF_WEEK_IN_MONTH
           
           # Constant identifying the week of year field.
-          const_set_lazy(:WEEK_OF_YEAR) { self::Field.new("week of year", Calendar::WEEK_OF_YEAR) }
+          const_set_lazy(:WEEK_OF_YEAR) { class_self::Field.new("week of year", Calendar::WEEK_OF_YEAR) }
           const_attr_reader  :WEEK_OF_YEAR
           
           # Constant identifying the week of month field.
-          const_set_lazy(:WEEK_OF_MONTH) { self::Field.new("week of month", Calendar::WEEK_OF_MONTH) }
+          const_set_lazy(:WEEK_OF_MONTH) { class_self::Field.new("week of month", Calendar::WEEK_OF_MONTH) }
           const_attr_reader  :WEEK_OF_MONTH
           
           # Constant identifying the time of day indicator
           # (e.g. "a.m." or "p.m.") field.
-          const_set_lazy(:AM_PM) { self::Field.new("am pm", Calendar::AM_PM) }
+          const_set_lazy(:AM_PM) { class_self::Field.new("am pm", Calendar::AM_PM) }
           const_attr_reader  :AM_PM
           
           # Constant identifying the hour field, where the legal values are
           # 1 to 12.
-          const_set_lazy(:HOUR1) { self::Field.new("hour 1", -1) }
+          const_set_lazy(:HOUR1) { class_self::Field.new("hour 1", -1) }
           const_attr_reader  :HOUR1
           
           # Constant identifying the hour field, where the legal values are
           # 0 to 11.
-          const_set_lazy(:HOUR0) { self::Field.new("hour", Calendar::HOUR) }
+          const_set_lazy(:HOUR0) { class_self::Field.new("hour", Calendar::HOUR) }
           const_attr_reader  :HOUR0
           
           # Constant identifying the time zone field.
-          const_set_lazy(:TIME_ZONE) { self::Field.new("time zone", -1) }
+          const_set_lazy(:TIME_ZONE) { class_self::Field.new("time zone", -1) }
           const_attr_reader  :TIME_ZONE
         }
         
@@ -886,11 +886,11 @@ module Java::Text
         include LocaleServiceProviderPool::LocalizedObjectGetter
         
         class_module.module_eval {
-          const_set_lazy(:INSTANCE) { self::DateFormatGetter.new }
+          const_set_lazy(:INSTANCE) { class_self::DateFormatGetter.new }
           const_attr_reader  :INSTANCE
         }
         
-        typesig { [self::DateFormatProvider, self::Locale, String, Object] }
+        typesig { [class_self::DateFormatProvider, class_self::Locale, String, Object] }
         def get_object(date_format_provider, locale, key, *params)
           raise AssertError if not ((params.attr_length).equal?(3))
           time_style = params[0]

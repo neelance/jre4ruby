@@ -72,7 +72,7 @@ module Sun::Security::Ssl
       const_set_lazy(:SunX509) { Class.new(KeyManagerFactoryImpl) do
         include_class_members KeyManagerFactoryImpl
         
-        typesig { [self::KeyStore, Array.typed(::Java::Char)] }
+        typesig { [class_self::KeyStore, Array.typed(::Java::Char)] }
         def engine_init(ks, password)
           if ((!(ks).nil?) && SunJSSE.is_fips)
             if (!(ks.get_provider).equal?(SunJSSE.attr_crypto_provider))
@@ -83,7 +83,7 @@ module Sun::Security::Ssl
           self.attr_is_initialized = true
         end
         
-        typesig { [self::ManagerFactoryParameters] }
+        typesig { [class_self::ManagerFactoryParameters] }
         def engine_init(spec)
           raise self.class::InvalidAlgorithmParameterException.new("SunX509KeyManager does not use ManagerFactoryParameters")
         end
@@ -101,7 +101,7 @@ module Sun::Security::Ssl
       const_set_lazy(:X509) { Class.new(KeyManagerFactoryImpl) do
         include_class_members KeyManagerFactoryImpl
         
-        typesig { [self::KeyStore, Array.typed(::Java::Char)] }
+        typesig { [class_self::KeyStore, Array.typed(::Java::Char)] }
         def engine_init(ks, password)
           if ((ks).nil?)
             self.attr_key_manager = self.class::X509KeyManagerImpl.new(Collections.empty_list)
@@ -119,7 +119,7 @@ module Sun::Security::Ssl
           self.attr_is_initialized = true
         end
         
-        typesig { [self::ManagerFactoryParameters] }
+        typesig { [class_self::ManagerFactoryParameters] }
         def engine_init(params)
           if ((params.is_a?(self.class::KeyStoreBuilderParameters)).equal?(false))
             raise self.class::InvalidAlgorithmParameterException.new("Parameters must be instance of KeyStoreBuilderParameters")

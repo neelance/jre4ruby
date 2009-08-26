@@ -764,11 +764,11 @@ module Java::Util
         include LocaleServiceProviderPool::LocalizedObjectGetter
         
         class_module.module_eval {
-          const_set_lazy(:INSTANCE) { self::CurrencyNameGetter.new }
+          const_set_lazy(:INSTANCE) { class_self::CurrencyNameGetter.new }
           const_attr_reader  :INSTANCE
         }
         
-        typesig { [self::CurrencyNameProvider, self::Locale, String, Object] }
+        typesig { [class_self::CurrencyNameProvider, class_self::Locale, String, Object] }
         def get_object(currency_name_provider, locale, key, *params)
           raise AssertError if not ((params.attr_length).equal?(1))
           type = params[0]

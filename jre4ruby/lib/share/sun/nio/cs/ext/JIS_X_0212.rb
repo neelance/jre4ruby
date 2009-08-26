@@ -65,7 +65,7 @@ module Sun::Nio::Cs::Ext
           return DoubleByteDecoder::REPLACE_CHAR
         end
         
-        typesig { [self::Charset] }
+        typesig { [class_self::Charset] }
         def initialize(cs)
           super(cs)
         end

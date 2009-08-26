@@ -158,7 +158,7 @@ module Sun::Misc
           end
         end
         
-        typesig { [self::JavaThreadGroup] }
+        typesig { [class_self::JavaThreadGroup] }
         def initialize(tg)
           super(tg, "GC Daemon")
         end
@@ -167,10 +167,10 @@ module Sun::Misc
           typesig { [] }
           # Create a new daemon thread in the root thread group
           def create
-            pa = Class.new(self::PrivilegedAction.class == Class ? self::PrivilegedAction : Object) do
+            pa = Class.new(class_self::PrivilegedAction.class == Class ? class_self::PrivilegedAction : Object) do
               extend LocalClass
               include_class_members Daemon
-              include self::PrivilegedAction if self::PrivilegedAction.class == Module
+              include class_self::PrivilegedAction if class_self::PrivilegedAction.class == Module
               
               typesig { [] }
               define_method :run do

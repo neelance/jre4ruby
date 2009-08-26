@@ -554,7 +554,7 @@ module Java::Security
         alias_method :attr_init_random=, :init_random=
         undef_method :init_random=
         
-        typesig { [self::KeyPairGeneratorSpi, String] }
+        typesig { [class_self::KeyPairGeneratorSpi, String] }
         # constructor
         def initialize(spi, algorithm)
           @spi = nil
@@ -569,7 +569,7 @@ module Java::Security
           @spi = spi
         end
         
-        typesig { [self::Instance, self::Iterator, String] }
+        typesig { [class_self::Instance, class_self::Iterator, String] }
         def initialize(instance, service_iterator, algorithm)
           @spi = nil
           @lock = nil
@@ -586,7 +586,7 @@ module Java::Security
           @init_type = self.class::I_NONE
         end
         
-        typesig { [self::KeyPairGeneratorSpi, ::Java::Boolean] }
+        typesig { [class_self::KeyPairGeneratorSpi, ::Java::Boolean] }
         # Update the active spi of this class and return the next
         # implementation for failover. If no more implemenations are
         # available, this method returns null. However, the active spi of
@@ -646,7 +646,7 @@ module Java::Security
           @init_random = nil
         end
         
-        typesig { [::Java::Int, self::SecureRandom] }
+        typesig { [::Java::Int, class_self::SecureRandom] }
         # engine method
         def initialize_(keysize, random)
           if ((@service_iterator).nil?)
@@ -673,7 +673,7 @@ module Java::Security
           raise failure
         end
         
-        typesig { [self::AlgorithmParameterSpec, self::SecureRandom] }
+        typesig { [class_self::AlgorithmParameterSpec, class_self::SecureRandom] }
         # engine method
         def initialize_(params, random)
           if ((@service_iterator).nil?)

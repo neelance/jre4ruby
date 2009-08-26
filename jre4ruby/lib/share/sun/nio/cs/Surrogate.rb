@@ -187,7 +187,7 @@ module Sun::Nio::Cs
           return CoderResult.unmappable_for_length(@is_pair ? 2 : 1)
         end
         
-        typesig { [::Java::Char, self::CharBuffer] }
+        typesig { [::Java::Char, class_self::CharBuffer] }
         # Parses a UCS-4 character from the given source buffer, handling
         # surrogates.
         # 
@@ -295,7 +295,7 @@ module Sun::Nio::Cs
           return @error
         end
         
-        typesig { [::Java::Int, ::Java::Int, self::CharBuffer] }
+        typesig { [::Java::Int, ::Java::Int, class_self::CharBuffer] }
         # Generates one or two UTF-16 characters to represent the given UCS-4
         # character.
         # 

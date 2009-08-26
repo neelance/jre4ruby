@@ -511,7 +511,7 @@ module Java::Security
         alias_method :attr_digest_spi=, :digest_spi=
         undef_method :digest_spi=
         
-        typesig { [self::MessageDigestSpi, String] }
+        typesig { [class_self::MessageDigestSpi, String] }
         # constructor
         def initialize(digest_spi, algorithm)
           @digest_spi = nil
@@ -556,7 +556,7 @@ module Java::Security
           @digest_spi.engine_update(input, offset, len)
         end
         
-        typesig { [self::ByteBuffer] }
+        typesig { [class_self::ByteBuffer] }
         def engine_update(input)
           @digest_spi.engine_update(input)
         end

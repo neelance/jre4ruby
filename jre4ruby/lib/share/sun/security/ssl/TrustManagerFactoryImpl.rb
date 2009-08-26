@@ -258,12 +258,12 @@ module Sun::Security::Ssl
       const_set_lazy(:SimpleFactory) { Class.new(TrustManagerFactoryImpl) do
         include_class_members TrustManagerFactoryImpl
         
-        typesig { [self::KeyStore] }
+        typesig { [class_self::KeyStore] }
         def get_instance(ks)
           return self.class::X509TrustManagerImpl.new(Validator::TYPE_SIMPLE, ks)
         end
         
-        typesig { [self::ManagerFactoryParameters] }
+        typesig { [class_self::ManagerFactoryParameters] }
         def get_instance(spec)
           raise self.class::InvalidAlgorithmParameterException.new("SunX509 TrustManagerFactory does not use " + "ManagerFactoryParameters")
         end
@@ -280,12 +280,12 @@ module Sun::Security::Ssl
       const_set_lazy(:PKIXFactory) { Class.new(TrustManagerFactoryImpl) do
         include_class_members TrustManagerFactoryImpl
         
-        typesig { [self::KeyStore] }
+        typesig { [class_self::KeyStore] }
         def get_instance(ks)
           return self.class::X509TrustManagerImpl.new(Validator::TYPE_PKIX, ks)
         end
         
-        typesig { [self::ManagerFactoryParameters] }
+        typesig { [class_self::ManagerFactoryParameters] }
         def get_instance(spec)
           if ((spec.is_a?(self.class::CertPathTrustManagerParameters)).equal?(false))
             raise self.class::InvalidAlgorithmParameterException.new("Parameters must be CertPathTrustManagerParameters")

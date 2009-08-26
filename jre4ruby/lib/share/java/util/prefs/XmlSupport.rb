@@ -377,17 +377,17 @@ module Java::Util::Prefs
         include_class_members XmlSupport
         include ErrorHandler
         
-        typesig { [self::SAXParseException] }
+        typesig { [class_self::SAXParseException] }
         def error(x)
           raise x
         end
         
-        typesig { [self::SAXParseException] }
+        typesig { [class_self::SAXParseException] }
         def fatal_error(x)
           raise x
         end
         
-        typesig { [self::SAXParseException] }
+        typesig { [class_self::SAXParseException] }
         def warning(x)
           raise x
         end

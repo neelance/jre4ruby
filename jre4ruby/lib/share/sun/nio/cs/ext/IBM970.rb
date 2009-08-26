@@ -103,7 +103,7 @@ module Sun::Nio::Cs::Ext
       const_set_lazy(:Decoder) { Class.new(SimpleEUCDecoder) do
         include_class_members IBM970
         
-        typesig { [self::Charset] }
+        typesig { [class_self::Charset] }
         def initialize(cs)
           super(cs)
           @byte_to_char_table = self.class::ByteToCharTable
@@ -204,7 +204,7 @@ module Sun::Nio::Cs::Ext
         alias_method :attr_sgp=, :sgp=
         undef_method :sgp=
         
-        typesig { [self::Charset] }
+        typesig { [class_self::Charset] }
         def initialize(cs)
           @char_state = 0
           @l = 0
@@ -247,7 +247,7 @@ module Sun::Nio::Cs::Ext
           return ((ch).equal?(Character.new(0x0000)))
         end
         
-        typesig { [self::CharBuffer, self::ByteBuffer] }
+        typesig { [class_self::CharBuffer, class_self::ByteBuffer] }
         def encode_array_loop(src, dst)
           sa = src.array
           sp = src.array_offset + src.position
@@ -401,7 +401,7 @@ module Sun::Nio::Cs::Ext
           end
         end
         
-        typesig { [self::CharBuffer, self::ByteBuffer] }
+        typesig { [class_self::CharBuffer, class_self::ByteBuffer] }
         def encode_buffer_loop(src, dst)
           mark = src.position
           output_size = 0
@@ -609,7 +609,7 @@ module Sun::Nio::Cs::Ext
           return output_bytes
         end
         
-        typesig { [self::CharBuffer, self::ByteBuffer] }
+        typesig { [class_self::CharBuffer, class_self::ByteBuffer] }
         def encode_loop(src, dst)
           if (true && src.has_array && dst.has_array)
             return encode_array_loop(src, dst)

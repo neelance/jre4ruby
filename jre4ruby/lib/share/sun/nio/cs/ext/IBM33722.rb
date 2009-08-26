@@ -172,7 +172,7 @@ module Sun::Nio::Cs::Ext
         alias_method :attr_state=, :state=
         undef_method :state=
         
-        typesig { [self::Charset] }
+        typesig { [class_self::Charset] }
         def initialize(cs)
           @g0 = 0
           @g1 = 0
@@ -193,7 +193,7 @@ module Sun::Nio::Cs::Ext
           @ss3 = 0x8f
         end
         
-        typesig { [self::ByteBuffer, self::CharBuffer] }
+        typesig { [class_self::ByteBuffer, class_self::CharBuffer] }
         def decode_array_loop(src, dst)
           sa = src.array
           sp = src.array_offset + src.position
@@ -278,7 +278,7 @@ module Sun::Nio::Cs::Ext
           end
         end
         
-        typesig { [self::ByteBuffer, self::CharBuffer] }
+        typesig { [class_self::ByteBuffer, class_self::CharBuffer] }
         def decode_buffer_loop(src, dst)
           mark = src.position
           begin
@@ -353,7 +353,7 @@ module Sun::Nio::Cs::Ext
           end
         end
         
-        typesig { [self::ByteBuffer, self::CharBuffer] }
+        typesig { [class_self::ByteBuffer, class_self::CharBuffer] }
         def decode_loop(src, dst)
           if (true && src.has_array && dst.has_array)
             return decode_array_loop(src, dst)
@@ -378,7 +378,7 @@ module Sun::Nio::Cs::Ext
       const_set_lazy(:Encoder) { Class.new(SimpleEUCEncoder) do
         include_class_members IBM33722
         
-        typesig { [self::Charset] }
+        typesig { [class_self::Charset] }
         def initialize(cs)
           super(cs)
           @mask1 = 0xffe0

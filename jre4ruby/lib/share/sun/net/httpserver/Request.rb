@@ -364,7 +364,7 @@ module Sun::Net::Httpserver
           end
         }
         
-        typesig { [self::ServerImpl, self::SocketChannel] }
+        typesig { [class_self::ServerImpl, class_self::SocketChannel] }
         def initialize(server, chan)
           @channel = nil
           @sc = nil
@@ -616,7 +616,7 @@ module Sun::Net::Httpserver
           end
         }
         
-        typesig { [self::ServerImpl, self::SocketChannel] }
+        typesig { [class_self::ServerImpl, class_self::SocketChannel] }
         def initialize(server, channel)
           @channel = nil
           @buf = nil

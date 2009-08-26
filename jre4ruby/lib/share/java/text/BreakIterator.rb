@@ -629,7 +629,7 @@ module Java::Text
         alias_method :attr_locale=, :locale=
         undef_method :locale=
         
-        typesig { [self::Locale, self::BreakIterator] }
+        typesig { [class_self::Locale, class_self::BreakIterator] }
         def initialize(locale, iter)
           @iter = nil
           @locale = nil
@@ -687,11 +687,11 @@ module Java::Text
         include LocaleServiceProviderPool::LocalizedObjectGetter
         
         class_module.module_eval {
-          const_set_lazy(:INSTANCE) { self::BreakIteratorGetter.new }
+          const_set_lazy(:INSTANCE) { class_self::BreakIteratorGetter.new }
           const_attr_reader  :INSTANCE
         }
         
-        typesig { [self::BreakIteratorProvider, self::Locale, String, Object] }
+        typesig { [class_self::BreakIteratorProvider, class_self::Locale, String, Object] }
         def get_object(break_iterator_provider, locale, key, *params)
           raise AssertError if not ((params.attr_length).equal?(1))
           case (params[0])

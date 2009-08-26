@@ -154,7 +154,7 @@ module Sun::Net::Www::Protocol::Jar
         extend LocalClass
         include_class_members JarURLConnection
         
-        typesig { [self::InputStream] }
+        typesig { [class_self::InputStream] }
         def initialize(src)
           super(src)
         end

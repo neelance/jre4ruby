@@ -188,17 +188,17 @@ module Java::Util
         include_class_members XMLUtils
         include ErrorHandler
         
-        typesig { [self::SAXParseException] }
+        typesig { [class_self::SAXParseException] }
         def error(x)
           raise x
         end
         
-        typesig { [self::SAXParseException] }
+        typesig { [class_self::SAXParseException] }
         def fatal_error(x)
           raise x
         end
         
-        typesig { [self::SAXParseException] }
+        typesig { [class_self::SAXParseException] }
         def warning(x)
           raise x
         end

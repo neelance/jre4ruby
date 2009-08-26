@@ -219,7 +219,7 @@ module Sun::Util
           return Class.new(self.class::Iterator.class == Class ? self.class::Iterator : Object) do
             extend LocalClass
             include_class_members abstract_set_class
-            include self::Iterator if self::Iterator.class == Module
+            include class_self::Iterator if class_self::Iterator.class == Module
             
             attr_accessor :i
             alias_method :attr_i, :i
@@ -335,7 +335,7 @@ module Sun::Util
           return Class.new(self.class::Iterator.class == Class ? self.class::Iterator : Object) do
             extend LocalClass
             include_class_members abstract_set_class
-            include self::Iterator if self::Iterator.class == Module
+            include class_self::Iterator if class_self::Iterator.class == Module
             
             attr_accessor :i
             alias_method :attr_i, :i
@@ -354,7 +354,7 @@ module Sun::Util
               return Class.new(self.class::Map::Entry.class == Class ? self.class::Map::Entry : Object) do
                 extend LocalClass
                 include_class_members iterator_class
-                include self::Map::Entry if self::Map::Entry.class == Module
+                include class_self::Map::Entry if class_self::Map::Entry.class == Module
                 
                 attr_accessor :k
                 alias_method :attr_k, :k
@@ -390,7 +390,7 @@ module Sun::Util
                   return (((self.get_key).nil? ? (that.get_key).nil? : (self.get_key == that.get_key)) && ((self.get_value).nil? ? (that.get_value).nil? : (self.get_value == that.get_value)))
                 end
                 
-                typesig { [self::V] }
+                typesig { [class_self::V] }
                 define_method :set_value do |v|
                   raise self.class::UnsupportedOperationException.new
                 end

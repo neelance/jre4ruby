@@ -550,7 +550,7 @@ module Sun::Misc
         alias_method :attr_base=, :base=
         undef_method :base=
         
-        typesig { [self::URL] }
+        typesig { [class_self::URL] }
         # Creates a new Loader for the specified URL.
         def initialize(url)
           @base = nil
@@ -616,7 +616,7 @@ module Sun::Misc
           return Class.new(self.class::Resource.class == Class ? self.class::Resource : Object) do
             extend LocalClass
             include_class_members Loader
-            include self::Resource if self::Resource.class == Module
+            include class_self::Resource if class_self::Resource.class == Module
             
             typesig { [] }
             define_method :get_name do
@@ -711,7 +711,7 @@ module Sun::Misc
         alias_method :attr_lmap=, :lmap=
         undef_method :lmap=
         
-        typesig { [self::URL, self::URLStreamHandler, self::HashMap] }
+        typesig { [class_self::URL, class_self::URLStreamHandler, class_self::HashMap] }
         # Creates a new JarLoader for the specified URL referring to
         # a JAR file.
         def initialize(url, jar_handler, loader_map)
@@ -757,7 +757,7 @@ module Sun::Misc
           return @jar
         end
         
-        typesig { [self::URL] }
+        typesig { [class_self::URL] }
         def is_optimizable(url)
           return ("file" == url.get_protocol)
         end
@@ -818,7 +818,7 @@ module Sun::Misc
           end
         end
         
-        typesig { [self::URL] }
+        typesig { [class_self::URL] }
         def get_jar_file(url)
           # Optimize case where url refers to a local jar file
           if (is_optimizable(url))
@@ -844,7 +844,7 @@ module Sun::Misc
           return @index
         end
         
-        typesig { [String, ::Java::Boolean, self::JarEntry] }
+        typesig { [String, ::Java::Boolean, class_self::JarEntry] }
         # Creates the resource and if the check flag is set to true, checks if
         # is its okay to return the resource.
         def check_resource(name, check, entry)
@@ -865,7 +865,7 @@ module Sun::Misc
           return Class.new(self.class::Resource.class == Class ? self.class::Resource : Object) do
             extend LocalClass
             include_class_members JarLoader
-            include self::Resource if self::Resource.class == Module
+            include class_self::Resource if class_self::Resource.class == Module
             
             typesig { [] }
             define_method :get_name do
@@ -976,7 +976,7 @@ module Sun::Misc
           return get_resource(name, check_, visited)
         end
         
-        typesig { [String, ::Java::Boolean, self::JavaSet] }
+        typesig { [String, ::Java::Boolean, class_self::JavaSet] }
         # Version of getResource() that tracks the jar files that have been
         # visited by linking through the index files. This helper method uses
         # a HashSet to store the URLs of jar files that have been searched and
@@ -1009,7 +1009,7 @@ module Sun::Misc
                   Class.new(self.class::PrivilegedExceptionAction.class == Class ? self.class::PrivilegedExceptionAction : Object) do
                     extend LocalClass
                     include_class_members JarLoader
-                    include self::PrivilegedExceptionAction if self::PrivilegedExceptionAction.class == Module
+                    include class_self::PrivilegedExceptionAction if class_self::PrivilegedExceptionAction.class == Module
                     
                     typesig { [] }
                     define_method :run do
@@ -1113,7 +1113,7 @@ module Sun::Misc
           ExtensionDependency.check_extensions_dependencies(@jar)
         end
         
-        typesig { [self::URL, String] }
+        typesig { [class_self::URL, String] }
         # Parses value of the Class-Path manifest attribute and returns
         # an array of URLs relative to the specified base URL.
         def parse_class_path(base, value)
@@ -1143,7 +1143,7 @@ module Sun::Misc
         alias_method :attr_dir=, :dir=
         undef_method :dir=
         
-        typesig { [self::URL] }
+        typesig { [class_self::URL] }
         def initialize(url)
           @dir = nil
           super(url)
@@ -1183,7 +1183,7 @@ module Sun::Misc
               return Class.new(self.class::Resource.class == Class ? self.class::Resource : Object) do
                 extend LocalClass
                 include_class_members FileLoader
-                include self::Resource if self::Resource.class == Module
+                include class_self::Resource if class_self::Resource.class == Module
                 
                 typesig { [] }
                 define_method :get_name do

@@ -356,7 +356,7 @@ module Java::Util::Concurrent::Locks
           
           # ThreadLocal subclass. Easiest to explicitly define for sake
           # of deserialization mechanics.
-          const_set_lazy(:ThreadLocalHoldCounter) { Class.new(self::ThreadLocal) do
+          const_set_lazy(:ThreadLocalHoldCounter) { Class.new(class_self::ThreadLocal) do
             include_class_members Sync
             
             typesig { [] }
@@ -528,7 +528,7 @@ module Java::Util::Concurrent::Locks
           return full_try_acquire_shared(current)
         end
         
-        typesig { [self::JavaThread] }
+        typesig { [class_self::JavaThread] }
         # Full version of acquire for reads, that handles CAS misses
         # and reentrant reads not dealt with in tryAcquireShared.
         def full_try_acquire_shared(current)
@@ -741,7 +741,7 @@ module Java::Util::Concurrent::Locks
         alias_method :attr_sync=, :sync=
         undef_method :sync=
         
-        typesig { [self::ReentrantReadWriteLock] }
+        typesig { [class_self::ReentrantReadWriteLock] }
         # Constructor for use by subclasses
         # 
         # @param lock the outer lock object
@@ -834,7 +834,7 @@ module Java::Util::Concurrent::Locks
           return @sync.try_read_lock
         end
         
-        typesig { [::Java::Long, self::TimeUnit] }
+        typesig { [::Java::Long, class_self::TimeUnit] }
         # Acquires the read lock if the write lock is not held by
         # another thread within the given waiting time and the
         # current thread has not been {@linkplain Thread#interrupt
@@ -951,7 +951,7 @@ module Java::Util::Concurrent::Locks
         alias_method :attr_sync=, :sync=
         undef_method :sync=
         
-        typesig { [self::ReentrantReadWriteLock] }
+        typesig { [class_self::ReentrantReadWriteLock] }
         # Constructor for use by subclasses
         # 
         # @param lock the outer lock object
@@ -1067,7 +1067,7 @@ module Java::Util::Concurrent::Locks
           return @sync.try_write_lock
         end
         
-        typesig { [::Java::Long, self::TimeUnit] }
+        typesig { [::Java::Long, class_self::TimeUnit] }
         # Acquires the write lock if it is not held by another thread
         # within the given waiting time and the current thread has
         # not been {@linkplain Thread#interrupt interrupted}.

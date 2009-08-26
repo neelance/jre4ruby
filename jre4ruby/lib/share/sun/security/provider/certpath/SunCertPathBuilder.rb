@@ -673,7 +673,7 @@ module Sun::Security::Provider::Certpath
         include_class_members SunCertPathBuilder
         include Comparator
         
-        typesig { [self::CertStore, self::CertStore] }
+        typesig { [class_self::CertStore, class_self::CertStore] }
         def compare(store1, store2)
           if (Builder.is_local_cert_store(store1))
             return -1

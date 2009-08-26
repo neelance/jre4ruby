@@ -277,7 +277,7 @@ module Sun::Security::Util
           @raw_bytes = raw_bytes
         end
         
-        typesig { [self::MessageDigest] }
+        typesig { [class_self::MessageDigest] }
         def digest(md)
           md.reset
           if (@old_style)
@@ -288,7 +288,7 @@ module Sun::Security::Util
           return md.digest
         end
         
-        typesig { [self::MessageDigest, Array.typed(::Java::Byte), ::Java::Int, ::Java::Int] }
+        typesig { [class_self::MessageDigest, Array.typed(::Java::Byte), ::Java::Int, ::Java::Int] }
         def do_old_style(md, bytes, offset, length)
           # this is too gross to even document, but here goes
           # the 1.1 jar verification code ignored spaces at the
@@ -310,7 +310,7 @@ module Sun::Security::Util
           md.update(bytes, start, i - start)
         end
         
-        typesig { [self::MessageDigest] }
+        typesig { [class_self::MessageDigest] }
         # Netscape doesn't include the new line. Intel and JavaSoft do
         def digest_workaround(md)
           md.reset

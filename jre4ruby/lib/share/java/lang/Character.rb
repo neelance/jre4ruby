@@ -569,7 +569,7 @@ module Java::Lang
         class_module.module_eval {
           
           def map
-            defined?(@@map) ? @@map : @@map= self::HashMap.new
+            defined?(@@map) ? @@map : @@map= class_self::HashMap.new
           end
           alias_method :attr_map, :map
           
@@ -612,37 +612,37 @@ module Java::Lang
         class_module.module_eval {
           # Constant for the "Basic Latin" Unicode character block.
           # @since 1.2
-          const_set_lazy(:BASIC_LATIN) { self::UnicodeBlock.new("BASIC_LATIN", Array.typed(String).new(["Basic Latin", "BasicLatin"])) }
+          const_set_lazy(:BASIC_LATIN) { class_self::UnicodeBlock.new("BASIC_LATIN", Array.typed(String).new(["Basic Latin", "BasicLatin"])) }
           const_attr_reader  :BASIC_LATIN
           
           # Constant for the "Latin-1 Supplement" Unicode character block.
           # @since 1.2
-          const_set_lazy(:LATIN_1_SUPPLEMENT) { self::UnicodeBlock.new("LATIN_1_SUPPLEMENT", Array.typed(String).new(["Latin-1 Supplement", "Latin-1Supplement"])) }
+          const_set_lazy(:LATIN_1_SUPPLEMENT) { class_self::UnicodeBlock.new("LATIN_1_SUPPLEMENT", Array.typed(String).new(["Latin-1 Supplement", "Latin-1Supplement"])) }
           const_attr_reader  :LATIN_1_SUPPLEMENT
           
           # Constant for the "Latin Extended-A" Unicode character block.
           # @since 1.2
-          const_set_lazy(:LATIN_EXTENDED_A) { self::UnicodeBlock.new("LATIN_EXTENDED_A", Array.typed(String).new(["Latin Extended-A", "LatinExtended-A"])) }
+          const_set_lazy(:LATIN_EXTENDED_A) { class_self::UnicodeBlock.new("LATIN_EXTENDED_A", Array.typed(String).new(["Latin Extended-A", "LatinExtended-A"])) }
           const_attr_reader  :LATIN_EXTENDED_A
           
           # Constant for the "Latin Extended-B" Unicode character block.
           # @since 1.2
-          const_set_lazy(:LATIN_EXTENDED_B) { self::UnicodeBlock.new("LATIN_EXTENDED_B", Array.typed(String).new(["Latin Extended-B", "LatinExtended-B"])) }
+          const_set_lazy(:LATIN_EXTENDED_B) { class_self::UnicodeBlock.new("LATIN_EXTENDED_B", Array.typed(String).new(["Latin Extended-B", "LatinExtended-B"])) }
           const_attr_reader  :LATIN_EXTENDED_B
           
           # Constant for the "IPA Extensions" Unicode character block.
           # @since 1.2
-          const_set_lazy(:IPA_EXTENSIONS) { self::UnicodeBlock.new("IPA_EXTENSIONS", Array.typed(String).new(["IPA Extensions", "IPAExtensions"])) }
+          const_set_lazy(:IPA_EXTENSIONS) { class_self::UnicodeBlock.new("IPA_EXTENSIONS", Array.typed(String).new(["IPA Extensions", "IPAExtensions"])) }
           const_attr_reader  :IPA_EXTENSIONS
           
           # Constant for the "Spacing Modifier Letters" Unicode character block.
           # @since 1.2
-          const_set_lazy(:SPACING_MODIFIER_LETTERS) { self::UnicodeBlock.new("SPACING_MODIFIER_LETTERS", Array.typed(String).new(["Spacing Modifier Letters", "SpacingModifierLetters"])) }
+          const_set_lazy(:SPACING_MODIFIER_LETTERS) { class_self::UnicodeBlock.new("SPACING_MODIFIER_LETTERS", Array.typed(String).new(["Spacing Modifier Letters", "SpacingModifierLetters"])) }
           const_attr_reader  :SPACING_MODIFIER_LETTERS
           
           # Constant for the "Combining Diacritical Marks" Unicode character block.
           # @since 1.2
-          const_set_lazy(:COMBINING_DIACRITICAL_MARKS) { self::UnicodeBlock.new("COMBINING_DIACRITICAL_MARKS", Array.typed(String).new(["Combining Diacritical Marks", "CombiningDiacriticalMarks"])) }
+          const_set_lazy(:COMBINING_DIACRITICAL_MARKS) { class_self::UnicodeBlock.new("COMBINING_DIACRITICAL_MARKS", Array.typed(String).new(["Combining Diacritical Marks", "CombiningDiacriticalMarks"])) }
           const_attr_reader  :COMBINING_DIACRITICAL_MARKS
           
           # Constant for the "Greek and Coptic" Unicode character block.
@@ -650,294 +650,294 @@ module Java::Lang
           # This block was previously known as the "Greek" block.
           # 
           # @since 1.2
-          const_set_lazy(:GREEK) { self::UnicodeBlock.new("GREEK", Array.typed(String).new(["Greek and Coptic", "GreekandCoptic"])) }
+          const_set_lazy(:GREEK) { class_self::UnicodeBlock.new("GREEK", Array.typed(String).new(["Greek and Coptic", "GreekandCoptic"])) }
           const_attr_reader  :GREEK
           
           # Constant for the "Cyrillic" Unicode character block.
           # @since 1.2
-          const_set_lazy(:CYRILLIC) { self::UnicodeBlock.new("CYRILLIC") }
+          const_set_lazy(:CYRILLIC) { class_self::UnicodeBlock.new("CYRILLIC") }
           const_attr_reader  :CYRILLIC
           
           # Constant for the "Armenian" Unicode character block.
           # @since 1.2
-          const_set_lazy(:ARMENIAN) { self::UnicodeBlock.new("ARMENIAN") }
+          const_set_lazy(:ARMENIAN) { class_self::UnicodeBlock.new("ARMENIAN") }
           const_attr_reader  :ARMENIAN
           
           # Constant for the "Hebrew" Unicode character block.
           # @since 1.2
-          const_set_lazy(:HEBREW) { self::UnicodeBlock.new("HEBREW") }
+          const_set_lazy(:HEBREW) { class_self::UnicodeBlock.new("HEBREW") }
           const_attr_reader  :HEBREW
           
           # Constant for the "Arabic" Unicode character block.
           # @since 1.2
-          const_set_lazy(:ARABIC) { self::UnicodeBlock.new("ARABIC") }
+          const_set_lazy(:ARABIC) { class_self::UnicodeBlock.new("ARABIC") }
           const_attr_reader  :ARABIC
           
           # Constant for the "Devanagari" Unicode character block.
           # @since 1.2
-          const_set_lazy(:DEVANAGARI) { self::UnicodeBlock.new("DEVANAGARI") }
+          const_set_lazy(:DEVANAGARI) { class_self::UnicodeBlock.new("DEVANAGARI") }
           const_attr_reader  :DEVANAGARI
           
           # Constant for the "Bengali" Unicode character block.
           # @since 1.2
-          const_set_lazy(:BENGALI) { self::UnicodeBlock.new("BENGALI") }
+          const_set_lazy(:BENGALI) { class_self::UnicodeBlock.new("BENGALI") }
           const_attr_reader  :BENGALI
           
           # Constant for the "Gurmukhi" Unicode character block.
           # @since 1.2
-          const_set_lazy(:GURMUKHI) { self::UnicodeBlock.new("GURMUKHI") }
+          const_set_lazy(:GURMUKHI) { class_self::UnicodeBlock.new("GURMUKHI") }
           const_attr_reader  :GURMUKHI
           
           # Constant for the "Gujarati" Unicode character block.
           # @since 1.2
-          const_set_lazy(:GUJARATI) { self::UnicodeBlock.new("GUJARATI") }
+          const_set_lazy(:GUJARATI) { class_self::UnicodeBlock.new("GUJARATI") }
           const_attr_reader  :GUJARATI
           
           # Constant for the "Oriya" Unicode character block.
           # @since 1.2
-          const_set_lazy(:ORIYA) { self::UnicodeBlock.new("ORIYA") }
+          const_set_lazy(:ORIYA) { class_self::UnicodeBlock.new("ORIYA") }
           const_attr_reader  :ORIYA
           
           # Constant for the "Tamil" Unicode character block.
           # @since 1.2
-          const_set_lazy(:TAMIL) { self::UnicodeBlock.new("TAMIL") }
+          const_set_lazy(:TAMIL) { class_self::UnicodeBlock.new("TAMIL") }
           const_attr_reader  :TAMIL
           
           # Constant for the "Telugu" Unicode character block.
           # @since 1.2
-          const_set_lazy(:TELUGU) { self::UnicodeBlock.new("TELUGU") }
+          const_set_lazy(:TELUGU) { class_self::UnicodeBlock.new("TELUGU") }
           const_attr_reader  :TELUGU
           
           # Constant for the "Kannada" Unicode character block.
           # @since 1.2
-          const_set_lazy(:KANNADA) { self::UnicodeBlock.new("KANNADA") }
+          const_set_lazy(:KANNADA) { class_self::UnicodeBlock.new("KANNADA") }
           const_attr_reader  :KANNADA
           
           # Constant for the "Malayalam" Unicode character block.
           # @since 1.2
-          const_set_lazy(:MALAYALAM) { self::UnicodeBlock.new("MALAYALAM") }
+          const_set_lazy(:MALAYALAM) { class_self::UnicodeBlock.new("MALAYALAM") }
           const_attr_reader  :MALAYALAM
           
           # Constant for the "Thai" Unicode character block.
           # @since 1.2
-          const_set_lazy(:THAI) { self::UnicodeBlock.new("THAI") }
+          const_set_lazy(:THAI) { class_self::UnicodeBlock.new("THAI") }
           const_attr_reader  :THAI
           
           # Constant for the "Lao" Unicode character block.
           # @since 1.2
-          const_set_lazy(:LAO) { self::UnicodeBlock.new("LAO") }
+          const_set_lazy(:LAO) { class_self::UnicodeBlock.new("LAO") }
           const_attr_reader  :LAO
           
           # Constant for the "Tibetan" Unicode character block.
           # @since 1.2
-          const_set_lazy(:TIBETAN) { self::UnicodeBlock.new("TIBETAN") }
+          const_set_lazy(:TIBETAN) { class_self::UnicodeBlock.new("TIBETAN") }
           const_attr_reader  :TIBETAN
           
           # Constant for the "Georgian" Unicode character block.
           # @since 1.2
-          const_set_lazy(:GEORGIAN) { self::UnicodeBlock.new("GEORGIAN") }
+          const_set_lazy(:GEORGIAN) { class_self::UnicodeBlock.new("GEORGIAN") }
           const_attr_reader  :GEORGIAN
           
           # Constant for the "Hangul Jamo" Unicode character block.
           # @since 1.2
-          const_set_lazy(:HANGUL_JAMO) { self::UnicodeBlock.new("HANGUL_JAMO", Array.typed(String).new(["Hangul Jamo", "HangulJamo"])) }
+          const_set_lazy(:HANGUL_JAMO) { class_self::UnicodeBlock.new("HANGUL_JAMO", Array.typed(String).new(["Hangul Jamo", "HangulJamo"])) }
           const_attr_reader  :HANGUL_JAMO
           
           # Constant for the "Latin Extended Additional" Unicode character block.
           # @since 1.2
-          const_set_lazy(:LATIN_EXTENDED_ADDITIONAL) { self::UnicodeBlock.new("LATIN_EXTENDED_ADDITIONAL", Array.typed(String).new(["Latin Extended Additional", "LatinExtendedAdditional"])) }
+          const_set_lazy(:LATIN_EXTENDED_ADDITIONAL) { class_self::UnicodeBlock.new("LATIN_EXTENDED_ADDITIONAL", Array.typed(String).new(["Latin Extended Additional", "LatinExtendedAdditional"])) }
           const_attr_reader  :LATIN_EXTENDED_ADDITIONAL
           
           # Constant for the "Greek Extended" Unicode character block.
           # @since 1.2
-          const_set_lazy(:GREEK_EXTENDED) { self::UnicodeBlock.new("GREEK_EXTENDED", Array.typed(String).new(["Greek Extended", "GreekExtended"])) }
+          const_set_lazy(:GREEK_EXTENDED) { class_self::UnicodeBlock.new("GREEK_EXTENDED", Array.typed(String).new(["Greek Extended", "GreekExtended"])) }
           const_attr_reader  :GREEK_EXTENDED
           
           # Constant for the "General Punctuation" Unicode character block.
           # @since 1.2
-          const_set_lazy(:GENERAL_PUNCTUATION) { self::UnicodeBlock.new("GENERAL_PUNCTUATION", Array.typed(String).new(["General Punctuation", "GeneralPunctuation"])) }
+          const_set_lazy(:GENERAL_PUNCTUATION) { class_self::UnicodeBlock.new("GENERAL_PUNCTUATION", Array.typed(String).new(["General Punctuation", "GeneralPunctuation"])) }
           const_attr_reader  :GENERAL_PUNCTUATION
           
           # Constant for the "Superscripts and Subscripts" Unicode character block.
           # @since 1.2
-          const_set_lazy(:SUPERSCRIPTS_AND_SUBSCRIPTS) { self::UnicodeBlock.new("SUPERSCRIPTS_AND_SUBSCRIPTS", Array.typed(String).new(["Superscripts and Subscripts", "SuperscriptsandSubscripts"])) }
+          const_set_lazy(:SUPERSCRIPTS_AND_SUBSCRIPTS) { class_self::UnicodeBlock.new("SUPERSCRIPTS_AND_SUBSCRIPTS", Array.typed(String).new(["Superscripts and Subscripts", "SuperscriptsandSubscripts"])) }
           const_attr_reader  :SUPERSCRIPTS_AND_SUBSCRIPTS
           
           # Constant for the "Currency Symbols" Unicode character block.
           # @since 1.2
-          const_set_lazy(:CURRENCY_SYMBOLS) { self::UnicodeBlock.new("CURRENCY_SYMBOLS", Array.typed(String).new(["Currency Symbols", "CurrencySymbols"])) }
+          const_set_lazy(:CURRENCY_SYMBOLS) { class_self::UnicodeBlock.new("CURRENCY_SYMBOLS", Array.typed(String).new(["Currency Symbols", "CurrencySymbols"])) }
           const_attr_reader  :CURRENCY_SYMBOLS
           
           # Constant for the "Combining Diacritical Marks for Symbols" Unicode character block.
           # <p>
           # This block was previously known as "Combining Marks for Symbols".
           # @since 1.2
-          const_set_lazy(:COMBINING_MARKS_FOR_SYMBOLS) { self::UnicodeBlock.new("COMBINING_MARKS_FOR_SYMBOLS", Array.typed(String).new(["Combining Diacritical Marks for Symbols", "CombiningDiacriticalMarksforSymbols", "Combining Marks for Symbols", "CombiningMarksforSymbols"])) }
+          const_set_lazy(:COMBINING_MARKS_FOR_SYMBOLS) { class_self::UnicodeBlock.new("COMBINING_MARKS_FOR_SYMBOLS", Array.typed(String).new(["Combining Diacritical Marks for Symbols", "CombiningDiacriticalMarksforSymbols", "Combining Marks for Symbols", "CombiningMarksforSymbols"])) }
           const_attr_reader  :COMBINING_MARKS_FOR_SYMBOLS
           
           # Constant for the "Letterlike Symbols" Unicode character block.
           # @since 1.2
-          const_set_lazy(:LETTERLIKE_SYMBOLS) { self::UnicodeBlock.new("LETTERLIKE_SYMBOLS", Array.typed(String).new(["Letterlike Symbols", "LetterlikeSymbols"])) }
+          const_set_lazy(:LETTERLIKE_SYMBOLS) { class_self::UnicodeBlock.new("LETTERLIKE_SYMBOLS", Array.typed(String).new(["Letterlike Symbols", "LetterlikeSymbols"])) }
           const_attr_reader  :LETTERLIKE_SYMBOLS
           
           # Constant for the "Number Forms" Unicode character block.
           # @since 1.2
-          const_set_lazy(:NUMBER_FORMS) { self::UnicodeBlock.new("NUMBER_FORMS", Array.typed(String).new(["Number Forms", "NumberForms"])) }
+          const_set_lazy(:NUMBER_FORMS) { class_self::UnicodeBlock.new("NUMBER_FORMS", Array.typed(String).new(["Number Forms", "NumberForms"])) }
           const_attr_reader  :NUMBER_FORMS
           
           # Constant for the "Arrows" Unicode character block.
           # @since 1.2
-          const_set_lazy(:ARROWS) { self::UnicodeBlock.new("ARROWS") }
+          const_set_lazy(:ARROWS) { class_self::UnicodeBlock.new("ARROWS") }
           const_attr_reader  :ARROWS
           
           # Constant for the "Mathematical Operators" Unicode character block.
           # @since 1.2
-          const_set_lazy(:MATHEMATICAL_OPERATORS) { self::UnicodeBlock.new("MATHEMATICAL_OPERATORS", Array.typed(String).new(["Mathematical Operators", "MathematicalOperators"])) }
+          const_set_lazy(:MATHEMATICAL_OPERATORS) { class_self::UnicodeBlock.new("MATHEMATICAL_OPERATORS", Array.typed(String).new(["Mathematical Operators", "MathematicalOperators"])) }
           const_attr_reader  :MATHEMATICAL_OPERATORS
           
           # Constant for the "Miscellaneous Technical" Unicode character block.
           # @since 1.2
-          const_set_lazy(:MISCELLANEOUS_TECHNICAL) { self::UnicodeBlock.new("MISCELLANEOUS_TECHNICAL", Array.typed(String).new(["Miscellaneous Technical", "MiscellaneousTechnical"])) }
+          const_set_lazy(:MISCELLANEOUS_TECHNICAL) { class_self::UnicodeBlock.new("MISCELLANEOUS_TECHNICAL", Array.typed(String).new(["Miscellaneous Technical", "MiscellaneousTechnical"])) }
           const_attr_reader  :MISCELLANEOUS_TECHNICAL
           
           # Constant for the "Control Pictures" Unicode character block.
           # @since 1.2
-          const_set_lazy(:CONTROL_PICTURES) { self::UnicodeBlock.new("CONTROL_PICTURES", Array.typed(String).new(["Control Pictures", "ControlPictures"])) }
+          const_set_lazy(:CONTROL_PICTURES) { class_self::UnicodeBlock.new("CONTROL_PICTURES", Array.typed(String).new(["Control Pictures", "ControlPictures"])) }
           const_attr_reader  :CONTROL_PICTURES
           
           # Constant for the "Optical Character Recognition" Unicode character block.
           # @since 1.2
-          const_set_lazy(:OPTICAL_CHARACTER_RECOGNITION) { self::UnicodeBlock.new("OPTICAL_CHARACTER_RECOGNITION", Array.typed(String).new(["Optical Character Recognition", "OpticalCharacterRecognition"])) }
+          const_set_lazy(:OPTICAL_CHARACTER_RECOGNITION) { class_self::UnicodeBlock.new("OPTICAL_CHARACTER_RECOGNITION", Array.typed(String).new(["Optical Character Recognition", "OpticalCharacterRecognition"])) }
           const_attr_reader  :OPTICAL_CHARACTER_RECOGNITION
           
           # Constant for the "Enclosed Alphanumerics" Unicode character block.
           # @since 1.2
-          const_set_lazy(:ENCLOSED_ALPHANUMERICS) { self::UnicodeBlock.new("ENCLOSED_ALPHANUMERICS", Array.typed(String).new(["Enclosed Alphanumerics", "EnclosedAlphanumerics"])) }
+          const_set_lazy(:ENCLOSED_ALPHANUMERICS) { class_self::UnicodeBlock.new("ENCLOSED_ALPHANUMERICS", Array.typed(String).new(["Enclosed Alphanumerics", "EnclosedAlphanumerics"])) }
           const_attr_reader  :ENCLOSED_ALPHANUMERICS
           
           # Constant for the "Box Drawing" Unicode character block.
           # @since 1.2
-          const_set_lazy(:BOX_DRAWING) { self::UnicodeBlock.new("BOX_DRAWING", Array.typed(String).new(["Box Drawing", "BoxDrawing"])) }
+          const_set_lazy(:BOX_DRAWING) { class_self::UnicodeBlock.new("BOX_DRAWING", Array.typed(String).new(["Box Drawing", "BoxDrawing"])) }
           const_attr_reader  :BOX_DRAWING
           
           # Constant for the "Block Elements" Unicode character block.
           # @since 1.2
-          const_set_lazy(:BLOCK_ELEMENTS) { self::UnicodeBlock.new("BLOCK_ELEMENTS", Array.typed(String).new(["Block Elements", "BlockElements"])) }
+          const_set_lazy(:BLOCK_ELEMENTS) { class_self::UnicodeBlock.new("BLOCK_ELEMENTS", Array.typed(String).new(["Block Elements", "BlockElements"])) }
           const_attr_reader  :BLOCK_ELEMENTS
           
           # Constant for the "Geometric Shapes" Unicode character block.
           # @since 1.2
-          const_set_lazy(:GEOMETRIC_SHAPES) { self::UnicodeBlock.new("GEOMETRIC_SHAPES", Array.typed(String).new(["Geometric Shapes", "GeometricShapes"])) }
+          const_set_lazy(:GEOMETRIC_SHAPES) { class_self::UnicodeBlock.new("GEOMETRIC_SHAPES", Array.typed(String).new(["Geometric Shapes", "GeometricShapes"])) }
           const_attr_reader  :GEOMETRIC_SHAPES
           
           # Constant for the "Miscellaneous Symbols" Unicode character block.
           # @since 1.2
-          const_set_lazy(:MISCELLANEOUS_SYMBOLS) { self::UnicodeBlock.new("MISCELLANEOUS_SYMBOLS", Array.typed(String).new(["Miscellaneous Symbols", "MiscellaneousSymbols"])) }
+          const_set_lazy(:MISCELLANEOUS_SYMBOLS) { class_self::UnicodeBlock.new("MISCELLANEOUS_SYMBOLS", Array.typed(String).new(["Miscellaneous Symbols", "MiscellaneousSymbols"])) }
           const_attr_reader  :MISCELLANEOUS_SYMBOLS
           
           # Constant for the "Dingbats" Unicode character block.
           # @since 1.2
-          const_set_lazy(:DINGBATS) { self::UnicodeBlock.new("DINGBATS") }
+          const_set_lazy(:DINGBATS) { class_self::UnicodeBlock.new("DINGBATS") }
           const_attr_reader  :DINGBATS
           
           # Constant for the "CJK Symbols and Punctuation" Unicode character block.
           # @since 1.2
-          const_set_lazy(:CJK_SYMBOLS_AND_PUNCTUATION) { self::UnicodeBlock.new("CJK_SYMBOLS_AND_PUNCTUATION", Array.typed(String).new(["CJK Symbols and Punctuation", "CJKSymbolsandPunctuation"])) }
+          const_set_lazy(:CJK_SYMBOLS_AND_PUNCTUATION) { class_self::UnicodeBlock.new("CJK_SYMBOLS_AND_PUNCTUATION", Array.typed(String).new(["CJK Symbols and Punctuation", "CJKSymbolsandPunctuation"])) }
           const_attr_reader  :CJK_SYMBOLS_AND_PUNCTUATION
           
           # Constant for the "Hiragana" Unicode character block.
           # @since 1.2
-          const_set_lazy(:HIRAGANA) { self::UnicodeBlock.new("HIRAGANA") }
+          const_set_lazy(:HIRAGANA) { class_self::UnicodeBlock.new("HIRAGANA") }
           const_attr_reader  :HIRAGANA
           
           # Constant for the "Katakana" Unicode character block.
           # @since 1.2
-          const_set_lazy(:KATAKANA) { self::UnicodeBlock.new("KATAKANA") }
+          const_set_lazy(:KATAKANA) { class_self::UnicodeBlock.new("KATAKANA") }
           const_attr_reader  :KATAKANA
           
           # Constant for the "Bopomofo" Unicode character block.
           # @since 1.2
-          const_set_lazy(:BOPOMOFO) { self::UnicodeBlock.new("BOPOMOFO") }
+          const_set_lazy(:BOPOMOFO) { class_self::UnicodeBlock.new("BOPOMOFO") }
           const_attr_reader  :BOPOMOFO
           
           # Constant for the "Hangul Compatibility Jamo" Unicode character block.
           # @since 1.2
-          const_set_lazy(:HANGUL_COMPATIBILITY_JAMO) { self::UnicodeBlock.new("HANGUL_COMPATIBILITY_JAMO", Array.typed(String).new(["Hangul Compatibility Jamo", "HangulCompatibilityJamo"])) }
+          const_set_lazy(:HANGUL_COMPATIBILITY_JAMO) { class_self::UnicodeBlock.new("HANGUL_COMPATIBILITY_JAMO", Array.typed(String).new(["Hangul Compatibility Jamo", "HangulCompatibilityJamo"])) }
           const_attr_reader  :HANGUL_COMPATIBILITY_JAMO
           
           # Constant for the "Kanbun" Unicode character block.
           # @since 1.2
-          const_set_lazy(:KANBUN) { self::UnicodeBlock.new("KANBUN") }
+          const_set_lazy(:KANBUN) { class_self::UnicodeBlock.new("KANBUN") }
           const_attr_reader  :KANBUN
           
           # Constant for the "Enclosed CJK Letters and Months" Unicode character block.
           # @since 1.2
-          const_set_lazy(:ENCLOSED_CJK_LETTERS_AND_MONTHS) { self::UnicodeBlock.new("ENCLOSED_CJK_LETTERS_AND_MONTHS", Array.typed(String).new(["Enclosed CJK Letters and Months", "EnclosedCJKLettersandMonths"])) }
+          const_set_lazy(:ENCLOSED_CJK_LETTERS_AND_MONTHS) { class_self::UnicodeBlock.new("ENCLOSED_CJK_LETTERS_AND_MONTHS", Array.typed(String).new(["Enclosed CJK Letters and Months", "EnclosedCJKLettersandMonths"])) }
           const_attr_reader  :ENCLOSED_CJK_LETTERS_AND_MONTHS
           
           # Constant for the "CJK Compatibility" Unicode character block.
           # @since 1.2
-          const_set_lazy(:CJK_COMPATIBILITY) { self::UnicodeBlock.new("CJK_COMPATIBILITY", Array.typed(String).new(["CJK Compatibility", "CJKCompatibility"])) }
+          const_set_lazy(:CJK_COMPATIBILITY) { class_self::UnicodeBlock.new("CJK_COMPATIBILITY", Array.typed(String).new(["CJK Compatibility", "CJKCompatibility"])) }
           const_attr_reader  :CJK_COMPATIBILITY
           
           # Constant for the "CJK Unified Ideographs" Unicode character block.
           # @since 1.2
-          const_set_lazy(:CJK_UNIFIED_IDEOGRAPHS) { self::UnicodeBlock.new("CJK_UNIFIED_IDEOGRAPHS", Array.typed(String).new(["CJK Unified Ideographs", "CJKUnifiedIdeographs"])) }
+          const_set_lazy(:CJK_UNIFIED_IDEOGRAPHS) { class_self::UnicodeBlock.new("CJK_UNIFIED_IDEOGRAPHS", Array.typed(String).new(["CJK Unified Ideographs", "CJKUnifiedIdeographs"])) }
           const_attr_reader  :CJK_UNIFIED_IDEOGRAPHS
           
           # Constant for the "Hangul Syllables" Unicode character block.
           # @since 1.2
-          const_set_lazy(:HANGUL_SYLLABLES) { self::UnicodeBlock.new("HANGUL_SYLLABLES", Array.typed(String).new(["Hangul Syllables", "HangulSyllables"])) }
+          const_set_lazy(:HANGUL_SYLLABLES) { class_self::UnicodeBlock.new("HANGUL_SYLLABLES", Array.typed(String).new(["Hangul Syllables", "HangulSyllables"])) }
           const_attr_reader  :HANGUL_SYLLABLES
           
           # Constant for the "Private Use Area" Unicode character block.
           # @since 1.2
-          const_set_lazy(:PRIVATE_USE_AREA) { self::UnicodeBlock.new("PRIVATE_USE_AREA", Array.typed(String).new(["Private Use Area", "PrivateUseArea"])) }
+          const_set_lazy(:PRIVATE_USE_AREA) { class_self::UnicodeBlock.new("PRIVATE_USE_AREA", Array.typed(String).new(["Private Use Area", "PrivateUseArea"])) }
           const_attr_reader  :PRIVATE_USE_AREA
           
           # Constant for the "CJK Compatibility Ideographs" Unicode character block.
           # @since 1.2
-          const_set_lazy(:CJK_COMPATIBILITY_IDEOGRAPHS) { self::UnicodeBlock.new("CJK_COMPATIBILITY_IDEOGRAPHS", Array.typed(String).new(["CJK Compatibility Ideographs", "CJKCompatibilityIdeographs"])) }
+          const_set_lazy(:CJK_COMPATIBILITY_IDEOGRAPHS) { class_self::UnicodeBlock.new("CJK_COMPATIBILITY_IDEOGRAPHS", Array.typed(String).new(["CJK Compatibility Ideographs", "CJKCompatibilityIdeographs"])) }
           const_attr_reader  :CJK_COMPATIBILITY_IDEOGRAPHS
           
           # Constant for the "Alphabetic Presentation Forms" Unicode character block.
           # @since 1.2
-          const_set_lazy(:ALPHABETIC_PRESENTATION_FORMS) { self::UnicodeBlock.new("ALPHABETIC_PRESENTATION_FORMS", Array.typed(String).new(["Alphabetic Presentation Forms", "AlphabeticPresentationForms"])) }
+          const_set_lazy(:ALPHABETIC_PRESENTATION_FORMS) { class_self::UnicodeBlock.new("ALPHABETIC_PRESENTATION_FORMS", Array.typed(String).new(["Alphabetic Presentation Forms", "AlphabeticPresentationForms"])) }
           const_attr_reader  :ALPHABETIC_PRESENTATION_FORMS
           
           # Constant for the "Arabic Presentation Forms-A" Unicode character block.
           # @since 1.2
-          const_set_lazy(:ARABIC_PRESENTATION_FORMS_A) { self::UnicodeBlock.new("ARABIC_PRESENTATION_FORMS_A", Array.typed(String).new(["Arabic Presentation Forms-A", "ArabicPresentationForms-A"])) }
+          const_set_lazy(:ARABIC_PRESENTATION_FORMS_A) { class_self::UnicodeBlock.new("ARABIC_PRESENTATION_FORMS_A", Array.typed(String).new(["Arabic Presentation Forms-A", "ArabicPresentationForms-A"])) }
           const_attr_reader  :ARABIC_PRESENTATION_FORMS_A
           
           # Constant for the "Combining Half Marks" Unicode character block.
           # @since 1.2
-          const_set_lazy(:COMBINING_HALF_MARKS) { self::UnicodeBlock.new("COMBINING_HALF_MARKS", Array.typed(String).new(["Combining Half Marks", "CombiningHalfMarks"])) }
+          const_set_lazy(:COMBINING_HALF_MARKS) { class_self::UnicodeBlock.new("COMBINING_HALF_MARKS", Array.typed(String).new(["Combining Half Marks", "CombiningHalfMarks"])) }
           const_attr_reader  :COMBINING_HALF_MARKS
           
           # Constant for the "CJK Compatibility Forms" Unicode character block.
           # @since 1.2
-          const_set_lazy(:CJK_COMPATIBILITY_FORMS) { self::UnicodeBlock.new("CJK_COMPATIBILITY_FORMS", Array.typed(String).new(["CJK Compatibility Forms", "CJKCompatibilityForms"])) }
+          const_set_lazy(:CJK_COMPATIBILITY_FORMS) { class_self::UnicodeBlock.new("CJK_COMPATIBILITY_FORMS", Array.typed(String).new(["CJK Compatibility Forms", "CJKCompatibilityForms"])) }
           const_attr_reader  :CJK_COMPATIBILITY_FORMS
           
           # Constant for the "Small Form Variants" Unicode character block.
           # @since 1.2
-          const_set_lazy(:SMALL_FORM_VARIANTS) { self::UnicodeBlock.new("SMALL_FORM_VARIANTS", Array.typed(String).new(["Small Form Variants", "SmallFormVariants"])) }
+          const_set_lazy(:SMALL_FORM_VARIANTS) { class_self::UnicodeBlock.new("SMALL_FORM_VARIANTS", Array.typed(String).new(["Small Form Variants", "SmallFormVariants"])) }
           const_attr_reader  :SMALL_FORM_VARIANTS
           
           # Constant for the "Arabic Presentation Forms-B" Unicode character block.
           # @since 1.2
-          const_set_lazy(:ARABIC_PRESENTATION_FORMS_B) { self::UnicodeBlock.new("ARABIC_PRESENTATION_FORMS_B", Array.typed(String).new(["Arabic Presentation Forms-B", "ArabicPresentationForms-B"])) }
+          const_set_lazy(:ARABIC_PRESENTATION_FORMS_B) { class_self::UnicodeBlock.new("ARABIC_PRESENTATION_FORMS_B", Array.typed(String).new(["Arabic Presentation Forms-B", "ArabicPresentationForms-B"])) }
           const_attr_reader  :ARABIC_PRESENTATION_FORMS_B
           
           # Constant for the "Halfwidth and Fullwidth Forms" Unicode character block.
           # @since 1.2
-          const_set_lazy(:HALFWIDTH_AND_FULLWIDTH_FORMS) { self::UnicodeBlock.new("HALFWIDTH_AND_FULLWIDTH_FORMS", Array.typed(String).new(["Halfwidth and Fullwidth Forms", "HalfwidthandFullwidthForms"])) }
+          const_set_lazy(:HALFWIDTH_AND_FULLWIDTH_FORMS) { class_self::UnicodeBlock.new("HALFWIDTH_AND_FULLWIDTH_FORMS", Array.typed(String).new(["Halfwidth and Fullwidth Forms", "HalfwidthandFullwidthForms"])) }
           const_attr_reader  :HALFWIDTH_AND_FULLWIDTH_FORMS
           
           # Constant for the "Specials" Unicode character block.
           # @since 1.2
-          const_set_lazy(:SPECIALS) { self::UnicodeBlock.new("SPECIALS") }
+          const_set_lazy(:SPECIALS) { class_self::UnicodeBlock.new("SPECIALS") }
           const_attr_reader  :SPECIALS
           
           # @deprecated As of J2SE 5, use {@link #HIGH_SURROGATES},
@@ -946,292 +946,292 @@ module Java::Lang
           # the block definitions of the Unicode Standard.
           # The {@link #of(char)} and {@link #of(int)} methods
           # return the new constants, not SURROGATES_AREA.
-          const_set_lazy(:SURROGATES_AREA) { self::UnicodeBlock.new("SURROGATES_AREA") }
+          const_set_lazy(:SURROGATES_AREA) { class_self::UnicodeBlock.new("SURROGATES_AREA") }
           const_attr_reader  :SURROGATES_AREA
           
           # Constant for the "Syriac" Unicode character block.
           # @since 1.4
-          const_set_lazy(:SYRIAC) { self::UnicodeBlock.new("SYRIAC") }
+          const_set_lazy(:SYRIAC) { class_self::UnicodeBlock.new("SYRIAC") }
           const_attr_reader  :SYRIAC
           
           # Constant for the "Thaana" Unicode character block.
           # @since 1.4
-          const_set_lazy(:THAANA) { self::UnicodeBlock.new("THAANA") }
+          const_set_lazy(:THAANA) { class_self::UnicodeBlock.new("THAANA") }
           const_attr_reader  :THAANA
           
           # Constant for the "Sinhala" Unicode character block.
           # @since 1.4
-          const_set_lazy(:SINHALA) { self::UnicodeBlock.new("SINHALA") }
+          const_set_lazy(:SINHALA) { class_self::UnicodeBlock.new("SINHALA") }
           const_attr_reader  :SINHALA
           
           # Constant for the "Myanmar" Unicode character block.
           # @since 1.4
-          const_set_lazy(:MYANMAR) { self::UnicodeBlock.new("MYANMAR") }
+          const_set_lazy(:MYANMAR) { class_self::UnicodeBlock.new("MYANMAR") }
           const_attr_reader  :MYANMAR
           
           # Constant for the "Ethiopic" Unicode character block.
           # @since 1.4
-          const_set_lazy(:ETHIOPIC) { self::UnicodeBlock.new("ETHIOPIC") }
+          const_set_lazy(:ETHIOPIC) { class_self::UnicodeBlock.new("ETHIOPIC") }
           const_attr_reader  :ETHIOPIC
           
           # Constant for the "Cherokee" Unicode character block.
           # @since 1.4
-          const_set_lazy(:CHEROKEE) { self::UnicodeBlock.new("CHEROKEE") }
+          const_set_lazy(:CHEROKEE) { class_self::UnicodeBlock.new("CHEROKEE") }
           const_attr_reader  :CHEROKEE
           
           # Constant for the "Unified Canadian Aboriginal Syllabics" Unicode character block.
           # @since 1.4
-          const_set_lazy(:UNIFIED_CANADIAN_ABORIGINAL_SYLLABICS) { self::UnicodeBlock.new("UNIFIED_CANADIAN_ABORIGINAL_SYLLABICS", Array.typed(String).new(["Unified Canadian Aboriginal Syllabics", "UnifiedCanadianAboriginalSyllabics"])) }
+          const_set_lazy(:UNIFIED_CANADIAN_ABORIGINAL_SYLLABICS) { class_self::UnicodeBlock.new("UNIFIED_CANADIAN_ABORIGINAL_SYLLABICS", Array.typed(String).new(["Unified Canadian Aboriginal Syllabics", "UnifiedCanadianAboriginalSyllabics"])) }
           const_attr_reader  :UNIFIED_CANADIAN_ABORIGINAL_SYLLABICS
           
           # Constant for the "Ogham" Unicode character block.
           # @since 1.4
-          const_set_lazy(:OGHAM) { self::UnicodeBlock.new("OGHAM") }
+          const_set_lazy(:OGHAM) { class_self::UnicodeBlock.new("OGHAM") }
           const_attr_reader  :OGHAM
           
           # Constant for the "Runic" Unicode character block.
           # @since 1.4
-          const_set_lazy(:RUNIC) { self::UnicodeBlock.new("RUNIC") }
+          const_set_lazy(:RUNIC) { class_self::UnicodeBlock.new("RUNIC") }
           const_attr_reader  :RUNIC
           
           # Constant for the "Khmer" Unicode character block.
           # @since 1.4
-          const_set_lazy(:KHMER) { self::UnicodeBlock.new("KHMER") }
+          const_set_lazy(:KHMER) { class_self::UnicodeBlock.new("KHMER") }
           const_attr_reader  :KHMER
           
           # Constant for the "Mongolian" Unicode character block.
           # @since 1.4
-          const_set_lazy(:MONGOLIAN) { self::UnicodeBlock.new("MONGOLIAN") }
+          const_set_lazy(:MONGOLIAN) { class_self::UnicodeBlock.new("MONGOLIAN") }
           const_attr_reader  :MONGOLIAN
           
           # Constant for the "Braille Patterns" Unicode character block.
           # @since 1.4
-          const_set_lazy(:BRAILLE_PATTERNS) { self::UnicodeBlock.new("BRAILLE_PATTERNS", Array.typed(String).new(["Braille Patterns", "BraillePatterns"])) }
+          const_set_lazy(:BRAILLE_PATTERNS) { class_self::UnicodeBlock.new("BRAILLE_PATTERNS", Array.typed(String).new(["Braille Patterns", "BraillePatterns"])) }
           const_attr_reader  :BRAILLE_PATTERNS
           
           # Constant for the "CJK Radicals Supplement" Unicode character block.
           # @since 1.4
-          const_set_lazy(:CJK_RADICALS_SUPPLEMENT) { self::UnicodeBlock.new("CJK_RADICALS_SUPPLEMENT", Array.typed(String).new(["CJK Radicals Supplement", "CJKRadicalsSupplement"])) }
+          const_set_lazy(:CJK_RADICALS_SUPPLEMENT) { class_self::UnicodeBlock.new("CJK_RADICALS_SUPPLEMENT", Array.typed(String).new(["CJK Radicals Supplement", "CJKRadicalsSupplement"])) }
           const_attr_reader  :CJK_RADICALS_SUPPLEMENT
           
           # Constant for the "Kangxi Radicals" Unicode character block.
           # @since 1.4
-          const_set_lazy(:KANGXI_RADICALS) { self::UnicodeBlock.new("KANGXI_RADICALS", Array.typed(String).new(["Kangxi Radicals", "KangxiRadicals"])) }
+          const_set_lazy(:KANGXI_RADICALS) { class_self::UnicodeBlock.new("KANGXI_RADICALS", Array.typed(String).new(["Kangxi Radicals", "KangxiRadicals"])) }
           const_attr_reader  :KANGXI_RADICALS
           
           # Constant for the "Ideographic Description Characters" Unicode character block.
           # @since 1.4
-          const_set_lazy(:IDEOGRAPHIC_DESCRIPTION_CHARACTERS) { self::UnicodeBlock.new("IDEOGRAPHIC_DESCRIPTION_CHARACTERS", Array.typed(String).new(["Ideographic Description Characters", "IdeographicDescriptionCharacters"])) }
+          const_set_lazy(:IDEOGRAPHIC_DESCRIPTION_CHARACTERS) { class_self::UnicodeBlock.new("IDEOGRAPHIC_DESCRIPTION_CHARACTERS", Array.typed(String).new(["Ideographic Description Characters", "IdeographicDescriptionCharacters"])) }
           const_attr_reader  :IDEOGRAPHIC_DESCRIPTION_CHARACTERS
           
           # Constant for the "Bopomofo Extended" Unicode character block.
           # @since 1.4
-          const_set_lazy(:BOPOMOFO_EXTENDED) { self::UnicodeBlock.new("BOPOMOFO_EXTENDED", Array.typed(String).new(["Bopomofo Extended", "BopomofoExtended"])) }
+          const_set_lazy(:BOPOMOFO_EXTENDED) { class_self::UnicodeBlock.new("BOPOMOFO_EXTENDED", Array.typed(String).new(["Bopomofo Extended", "BopomofoExtended"])) }
           const_attr_reader  :BOPOMOFO_EXTENDED
           
           # Constant for the "CJK Unified Ideographs Extension A" Unicode character block.
           # @since 1.4
-          const_set_lazy(:CJK_UNIFIED_IDEOGRAPHS_EXTENSION_A) { self::UnicodeBlock.new("CJK_UNIFIED_IDEOGRAPHS_EXTENSION_A", Array.typed(String).new(["CJK Unified Ideographs Extension A", "CJKUnifiedIdeographsExtensionA"])) }
+          const_set_lazy(:CJK_UNIFIED_IDEOGRAPHS_EXTENSION_A) { class_self::UnicodeBlock.new("CJK_UNIFIED_IDEOGRAPHS_EXTENSION_A", Array.typed(String).new(["CJK Unified Ideographs Extension A", "CJKUnifiedIdeographsExtensionA"])) }
           const_attr_reader  :CJK_UNIFIED_IDEOGRAPHS_EXTENSION_A
           
           # Constant for the "Yi Syllables" Unicode character block.
           # @since 1.4
-          const_set_lazy(:YI_SYLLABLES) { self::UnicodeBlock.new("YI_SYLLABLES", Array.typed(String).new(["Yi Syllables", "YiSyllables"])) }
+          const_set_lazy(:YI_SYLLABLES) { class_self::UnicodeBlock.new("YI_SYLLABLES", Array.typed(String).new(["Yi Syllables", "YiSyllables"])) }
           const_attr_reader  :YI_SYLLABLES
           
           # Constant for the "Yi Radicals" Unicode character block.
           # @since 1.4
-          const_set_lazy(:YI_RADICALS) { self::UnicodeBlock.new("YI_RADICALS", Array.typed(String).new(["Yi Radicals", "YiRadicals"])) }
+          const_set_lazy(:YI_RADICALS) { class_self::UnicodeBlock.new("YI_RADICALS", Array.typed(String).new(["Yi Radicals", "YiRadicals"])) }
           const_attr_reader  :YI_RADICALS
           
           # Constant for the "Cyrillic Supplementary" Unicode character block.
           # @since 1.5
-          const_set_lazy(:CYRILLIC_SUPPLEMENTARY) { self::UnicodeBlock.new("CYRILLIC_SUPPLEMENTARY", Array.typed(String).new(["Cyrillic Supplementary", "CyrillicSupplementary"])) }
+          const_set_lazy(:CYRILLIC_SUPPLEMENTARY) { class_self::UnicodeBlock.new("CYRILLIC_SUPPLEMENTARY", Array.typed(String).new(["Cyrillic Supplementary", "CyrillicSupplementary"])) }
           const_attr_reader  :CYRILLIC_SUPPLEMENTARY
           
           # Constant for the "Tagalog" Unicode character block.
           # @since 1.5
-          const_set_lazy(:TAGALOG) { self::UnicodeBlock.new("TAGALOG") }
+          const_set_lazy(:TAGALOG) { class_self::UnicodeBlock.new("TAGALOG") }
           const_attr_reader  :TAGALOG
           
           # Constant for the "Hanunoo" Unicode character block.
           # @since 1.5
-          const_set_lazy(:HANUNOO) { self::UnicodeBlock.new("HANUNOO") }
+          const_set_lazy(:HANUNOO) { class_self::UnicodeBlock.new("HANUNOO") }
           const_attr_reader  :HANUNOO
           
           # Constant for the "Buhid" Unicode character block.
           # @since 1.5
-          const_set_lazy(:BUHID) { self::UnicodeBlock.new("BUHID") }
+          const_set_lazy(:BUHID) { class_self::UnicodeBlock.new("BUHID") }
           const_attr_reader  :BUHID
           
           # Constant for the "Tagbanwa" Unicode character block.
           # @since 1.5
-          const_set_lazy(:TAGBANWA) { self::UnicodeBlock.new("TAGBANWA") }
+          const_set_lazy(:TAGBANWA) { class_self::UnicodeBlock.new("TAGBANWA") }
           const_attr_reader  :TAGBANWA
           
           # Constant for the "Limbu" Unicode character block.
           # @since 1.5
-          const_set_lazy(:LIMBU) { self::UnicodeBlock.new("LIMBU") }
+          const_set_lazy(:LIMBU) { class_self::UnicodeBlock.new("LIMBU") }
           const_attr_reader  :LIMBU
           
           # Constant for the "Tai Le" Unicode character block.
           # @since 1.5
-          const_set_lazy(:TAI_LE) { self::UnicodeBlock.new("TAI_LE", Array.typed(String).new(["Tai Le", "TaiLe"])) }
+          const_set_lazy(:TAI_LE) { class_self::UnicodeBlock.new("TAI_LE", Array.typed(String).new(["Tai Le", "TaiLe"])) }
           const_attr_reader  :TAI_LE
           
           # Constant for the "Khmer Symbols" Unicode character block.
           # @since 1.5
-          const_set_lazy(:KHMER_SYMBOLS) { self::UnicodeBlock.new("KHMER_SYMBOLS", Array.typed(String).new(["Khmer Symbols", "KhmerSymbols"])) }
+          const_set_lazy(:KHMER_SYMBOLS) { class_self::UnicodeBlock.new("KHMER_SYMBOLS", Array.typed(String).new(["Khmer Symbols", "KhmerSymbols"])) }
           const_attr_reader  :KHMER_SYMBOLS
           
           # Constant for the "Phonetic Extensions" Unicode character block.
           # @since 1.5
-          const_set_lazy(:PHONETIC_EXTENSIONS) { self::UnicodeBlock.new("PHONETIC_EXTENSIONS", Array.typed(String).new(["Phonetic Extensions", "PhoneticExtensions"])) }
+          const_set_lazy(:PHONETIC_EXTENSIONS) { class_self::UnicodeBlock.new("PHONETIC_EXTENSIONS", Array.typed(String).new(["Phonetic Extensions", "PhoneticExtensions"])) }
           const_attr_reader  :PHONETIC_EXTENSIONS
           
           # Constant for the "Miscellaneous Mathematical Symbols-A" Unicode character block.
           # @since 1.5
-          const_set_lazy(:MISCELLANEOUS_MATHEMATICAL_SYMBOLS_A) { self::UnicodeBlock.new("MISCELLANEOUS_MATHEMATICAL_SYMBOLS_A", Array.typed(String).new(["Miscellaneous Mathematical Symbols-A", "MiscellaneousMathematicalSymbols-A"])) }
+          const_set_lazy(:MISCELLANEOUS_MATHEMATICAL_SYMBOLS_A) { class_self::UnicodeBlock.new("MISCELLANEOUS_MATHEMATICAL_SYMBOLS_A", Array.typed(String).new(["Miscellaneous Mathematical Symbols-A", "MiscellaneousMathematicalSymbols-A"])) }
           const_attr_reader  :MISCELLANEOUS_MATHEMATICAL_SYMBOLS_A
           
           # Constant for the "Supplemental Arrows-A" Unicode character block.
           # @since 1.5
-          const_set_lazy(:SUPPLEMENTAL_ARROWS_A) { self::UnicodeBlock.new("SUPPLEMENTAL_ARROWS_A", Array.typed(String).new(["Supplemental Arrows-A", "SupplementalArrows-A"])) }
+          const_set_lazy(:SUPPLEMENTAL_ARROWS_A) { class_self::UnicodeBlock.new("SUPPLEMENTAL_ARROWS_A", Array.typed(String).new(["Supplemental Arrows-A", "SupplementalArrows-A"])) }
           const_attr_reader  :SUPPLEMENTAL_ARROWS_A
           
           # Constant for the "Supplemental Arrows-B" Unicode character block.
           # @since 1.5
-          const_set_lazy(:SUPPLEMENTAL_ARROWS_B) { self::UnicodeBlock.new("SUPPLEMENTAL_ARROWS_B", Array.typed(String).new(["Supplemental Arrows-B", "SupplementalArrows-B"])) }
+          const_set_lazy(:SUPPLEMENTAL_ARROWS_B) { class_self::UnicodeBlock.new("SUPPLEMENTAL_ARROWS_B", Array.typed(String).new(["Supplemental Arrows-B", "SupplementalArrows-B"])) }
           const_attr_reader  :SUPPLEMENTAL_ARROWS_B
           
           # Constant for the "Miscellaneous Mathematical Symbols-B" Unicode character block.
           # @since 1.5
-          const_set_lazy(:MISCELLANEOUS_MATHEMATICAL_SYMBOLS_B) { self::UnicodeBlock.new("MISCELLANEOUS_MATHEMATICAL_SYMBOLS_B", Array.typed(String).new(["Miscellaneous Mathematical Symbols-B", "MiscellaneousMathematicalSymbols-B"])) }
+          const_set_lazy(:MISCELLANEOUS_MATHEMATICAL_SYMBOLS_B) { class_self::UnicodeBlock.new("MISCELLANEOUS_MATHEMATICAL_SYMBOLS_B", Array.typed(String).new(["Miscellaneous Mathematical Symbols-B", "MiscellaneousMathematicalSymbols-B"])) }
           const_attr_reader  :MISCELLANEOUS_MATHEMATICAL_SYMBOLS_B
           
           # Constant for the "Supplemental Mathematical Operators" Unicode character block.
           # @since 1.5
-          const_set_lazy(:SUPPLEMENTAL_MATHEMATICAL_OPERATORS) { self::UnicodeBlock.new("SUPPLEMENTAL_MATHEMATICAL_OPERATORS", Array.typed(String).new(["Supplemental Mathematical Operators", "SupplementalMathematicalOperators"])) }
+          const_set_lazy(:SUPPLEMENTAL_MATHEMATICAL_OPERATORS) { class_self::UnicodeBlock.new("SUPPLEMENTAL_MATHEMATICAL_OPERATORS", Array.typed(String).new(["Supplemental Mathematical Operators", "SupplementalMathematicalOperators"])) }
           const_attr_reader  :SUPPLEMENTAL_MATHEMATICAL_OPERATORS
           
           # Constant for the "Miscellaneous Symbols and Arrows" Unicode character block.
           # @since 1.5
-          const_set_lazy(:MISCELLANEOUS_SYMBOLS_AND_ARROWS) { self::UnicodeBlock.new("MISCELLANEOUS_SYMBOLS_AND_ARROWS", Array.typed(String).new(["Miscellaneous Symbols and Arrows", "MiscellaneousSymbolsandArrows"])) }
+          const_set_lazy(:MISCELLANEOUS_SYMBOLS_AND_ARROWS) { class_self::UnicodeBlock.new("MISCELLANEOUS_SYMBOLS_AND_ARROWS", Array.typed(String).new(["Miscellaneous Symbols and Arrows", "MiscellaneousSymbolsandArrows"])) }
           const_attr_reader  :MISCELLANEOUS_SYMBOLS_AND_ARROWS
           
           # Constant for the "Katakana Phonetic Extensions" Unicode character block.
           # @since 1.5
-          const_set_lazy(:KATAKANA_PHONETIC_EXTENSIONS) { self::UnicodeBlock.new("KATAKANA_PHONETIC_EXTENSIONS", Array.typed(String).new(["Katakana Phonetic Extensions", "KatakanaPhoneticExtensions"])) }
+          const_set_lazy(:KATAKANA_PHONETIC_EXTENSIONS) { class_self::UnicodeBlock.new("KATAKANA_PHONETIC_EXTENSIONS", Array.typed(String).new(["Katakana Phonetic Extensions", "KatakanaPhoneticExtensions"])) }
           const_attr_reader  :KATAKANA_PHONETIC_EXTENSIONS
           
           # Constant for the "Yijing Hexagram Symbols" Unicode character block.
           # @since 1.5
-          const_set_lazy(:YIJING_HEXAGRAM_SYMBOLS) { self::UnicodeBlock.new("YIJING_HEXAGRAM_SYMBOLS", Array.typed(String).new(["Yijing Hexagram Symbols", "YijingHexagramSymbols"])) }
+          const_set_lazy(:YIJING_HEXAGRAM_SYMBOLS) { class_self::UnicodeBlock.new("YIJING_HEXAGRAM_SYMBOLS", Array.typed(String).new(["Yijing Hexagram Symbols", "YijingHexagramSymbols"])) }
           const_attr_reader  :YIJING_HEXAGRAM_SYMBOLS
           
           # Constant for the "Variation Selectors" Unicode character block.
           # @since 1.5
-          const_set_lazy(:VARIATION_SELECTORS) { self::UnicodeBlock.new("VARIATION_SELECTORS", Array.typed(String).new(["Variation Selectors", "VariationSelectors"])) }
+          const_set_lazy(:VARIATION_SELECTORS) { class_self::UnicodeBlock.new("VARIATION_SELECTORS", Array.typed(String).new(["Variation Selectors", "VariationSelectors"])) }
           const_attr_reader  :VARIATION_SELECTORS
           
           # Constant for the "Linear B Syllabary" Unicode character block.
           # @since 1.5
-          const_set_lazy(:LINEAR_B_SYLLABARY) { self::UnicodeBlock.new("LINEAR_B_SYLLABARY", Array.typed(String).new(["Linear B Syllabary", "LinearBSyllabary"])) }
+          const_set_lazy(:LINEAR_B_SYLLABARY) { class_self::UnicodeBlock.new("LINEAR_B_SYLLABARY", Array.typed(String).new(["Linear B Syllabary", "LinearBSyllabary"])) }
           const_attr_reader  :LINEAR_B_SYLLABARY
           
           # Constant for the "Linear B Ideograms" Unicode character block.
           # @since 1.5
-          const_set_lazy(:LINEAR_B_IDEOGRAMS) { self::UnicodeBlock.new("LINEAR_B_IDEOGRAMS", Array.typed(String).new(["Linear B Ideograms", "LinearBIdeograms"])) }
+          const_set_lazy(:LINEAR_B_IDEOGRAMS) { class_self::UnicodeBlock.new("LINEAR_B_IDEOGRAMS", Array.typed(String).new(["Linear B Ideograms", "LinearBIdeograms"])) }
           const_attr_reader  :LINEAR_B_IDEOGRAMS
           
           # Constant for the "Aegean Numbers" Unicode character block.
           # @since 1.5
-          const_set_lazy(:AEGEAN_NUMBERS) { self::UnicodeBlock.new("AEGEAN_NUMBERS", Array.typed(String).new(["Aegean Numbers", "AegeanNumbers"])) }
+          const_set_lazy(:AEGEAN_NUMBERS) { class_self::UnicodeBlock.new("AEGEAN_NUMBERS", Array.typed(String).new(["Aegean Numbers", "AegeanNumbers"])) }
           const_attr_reader  :AEGEAN_NUMBERS
           
           # Constant for the "Old Italic" Unicode character block.
           # @since 1.5
-          const_set_lazy(:OLD_ITALIC) { self::UnicodeBlock.new("OLD_ITALIC", Array.typed(String).new(["Old Italic", "OldItalic"])) }
+          const_set_lazy(:OLD_ITALIC) { class_self::UnicodeBlock.new("OLD_ITALIC", Array.typed(String).new(["Old Italic", "OldItalic"])) }
           const_attr_reader  :OLD_ITALIC
           
           # Constant for the "Gothic" Unicode character block.
           # @since 1.5
-          const_set_lazy(:GOTHIC) { self::UnicodeBlock.new("GOTHIC") }
+          const_set_lazy(:GOTHIC) { class_self::UnicodeBlock.new("GOTHIC") }
           const_attr_reader  :GOTHIC
           
           # Constant for the "Ugaritic" Unicode character block.
           # @since 1.5
-          const_set_lazy(:UGARITIC) { self::UnicodeBlock.new("UGARITIC") }
+          const_set_lazy(:UGARITIC) { class_self::UnicodeBlock.new("UGARITIC") }
           const_attr_reader  :UGARITIC
           
           # Constant for the "Deseret" Unicode character block.
           # @since 1.5
-          const_set_lazy(:DESERET) { self::UnicodeBlock.new("DESERET") }
+          const_set_lazy(:DESERET) { class_self::UnicodeBlock.new("DESERET") }
           const_attr_reader  :DESERET
           
           # Constant for the "Shavian" Unicode character block.
           # @since 1.5
-          const_set_lazy(:SHAVIAN) { self::UnicodeBlock.new("SHAVIAN") }
+          const_set_lazy(:SHAVIAN) { class_self::UnicodeBlock.new("SHAVIAN") }
           const_attr_reader  :SHAVIAN
           
           # Constant for the "Osmanya" Unicode character block.
           # @since 1.5
-          const_set_lazy(:OSMANYA) { self::UnicodeBlock.new("OSMANYA") }
+          const_set_lazy(:OSMANYA) { class_self::UnicodeBlock.new("OSMANYA") }
           const_attr_reader  :OSMANYA
           
           # Constant for the "Cypriot Syllabary" Unicode character block.
           # @since 1.5
-          const_set_lazy(:CYPRIOT_SYLLABARY) { self::UnicodeBlock.new("CYPRIOT_SYLLABARY", Array.typed(String).new(["Cypriot Syllabary", "CypriotSyllabary"])) }
+          const_set_lazy(:CYPRIOT_SYLLABARY) { class_self::UnicodeBlock.new("CYPRIOT_SYLLABARY", Array.typed(String).new(["Cypriot Syllabary", "CypriotSyllabary"])) }
           const_attr_reader  :CYPRIOT_SYLLABARY
           
           # Constant for the "Byzantine Musical Symbols" Unicode character block.
           # @since 1.5
-          const_set_lazy(:BYZANTINE_MUSICAL_SYMBOLS) { self::UnicodeBlock.new("BYZANTINE_MUSICAL_SYMBOLS", Array.typed(String).new(["Byzantine Musical Symbols", "ByzantineMusicalSymbols"])) }
+          const_set_lazy(:BYZANTINE_MUSICAL_SYMBOLS) { class_self::UnicodeBlock.new("BYZANTINE_MUSICAL_SYMBOLS", Array.typed(String).new(["Byzantine Musical Symbols", "ByzantineMusicalSymbols"])) }
           const_attr_reader  :BYZANTINE_MUSICAL_SYMBOLS
           
           # Constant for the "Musical Symbols" Unicode character block.
           # @since 1.5
-          const_set_lazy(:MUSICAL_SYMBOLS) { self::UnicodeBlock.new("MUSICAL_SYMBOLS", Array.typed(String).new(["Musical Symbols", "MusicalSymbols"])) }
+          const_set_lazy(:MUSICAL_SYMBOLS) { class_self::UnicodeBlock.new("MUSICAL_SYMBOLS", Array.typed(String).new(["Musical Symbols", "MusicalSymbols"])) }
           const_attr_reader  :MUSICAL_SYMBOLS
           
           # Constant for the "Tai Xuan Jing Symbols" Unicode character block.
           # @since 1.5
-          const_set_lazy(:TAI_XUAN_JING_SYMBOLS) { self::UnicodeBlock.new("TAI_XUAN_JING_SYMBOLS", Array.typed(String).new(["Tai Xuan Jing Symbols", "TaiXuanJingSymbols"])) }
+          const_set_lazy(:TAI_XUAN_JING_SYMBOLS) { class_self::UnicodeBlock.new("TAI_XUAN_JING_SYMBOLS", Array.typed(String).new(["Tai Xuan Jing Symbols", "TaiXuanJingSymbols"])) }
           const_attr_reader  :TAI_XUAN_JING_SYMBOLS
           
           # Constant for the "Mathematical Alphanumeric Symbols" Unicode character block.
           # @since 1.5
-          const_set_lazy(:MATHEMATICAL_ALPHANUMERIC_SYMBOLS) { self::UnicodeBlock.new("MATHEMATICAL_ALPHANUMERIC_SYMBOLS", Array.typed(String).new(["Mathematical Alphanumeric Symbols", "MathematicalAlphanumericSymbols"])) }
+          const_set_lazy(:MATHEMATICAL_ALPHANUMERIC_SYMBOLS) { class_self::UnicodeBlock.new("MATHEMATICAL_ALPHANUMERIC_SYMBOLS", Array.typed(String).new(["Mathematical Alphanumeric Symbols", "MathematicalAlphanumericSymbols"])) }
           const_attr_reader  :MATHEMATICAL_ALPHANUMERIC_SYMBOLS
           
           # Constant for the "CJK Unified Ideographs Extension B" Unicode character block.
           # @since 1.5
-          const_set_lazy(:CJK_UNIFIED_IDEOGRAPHS_EXTENSION_B) { self::UnicodeBlock.new("CJK_UNIFIED_IDEOGRAPHS_EXTENSION_B", Array.typed(String).new(["CJK Unified Ideographs Extension B", "CJKUnifiedIdeographsExtensionB"])) }
+          const_set_lazy(:CJK_UNIFIED_IDEOGRAPHS_EXTENSION_B) { class_self::UnicodeBlock.new("CJK_UNIFIED_IDEOGRAPHS_EXTENSION_B", Array.typed(String).new(["CJK Unified Ideographs Extension B", "CJKUnifiedIdeographsExtensionB"])) }
           const_attr_reader  :CJK_UNIFIED_IDEOGRAPHS_EXTENSION_B
           
           # Constant for the "CJK Compatibility Ideographs Supplement" Unicode character block.
           # @since 1.5
-          const_set_lazy(:CJK_COMPATIBILITY_IDEOGRAPHS_SUPPLEMENT) { self::UnicodeBlock.new("CJK_COMPATIBILITY_IDEOGRAPHS_SUPPLEMENT", Array.typed(String).new(["CJK Compatibility Ideographs Supplement", "CJKCompatibilityIdeographsSupplement"])) }
+          const_set_lazy(:CJK_COMPATIBILITY_IDEOGRAPHS_SUPPLEMENT) { class_self::UnicodeBlock.new("CJK_COMPATIBILITY_IDEOGRAPHS_SUPPLEMENT", Array.typed(String).new(["CJK Compatibility Ideographs Supplement", "CJKCompatibilityIdeographsSupplement"])) }
           const_attr_reader  :CJK_COMPATIBILITY_IDEOGRAPHS_SUPPLEMENT
           
           # Constant for the "Tags" Unicode character block.
           # @since 1.5
-          const_set_lazy(:TAGS) { self::UnicodeBlock.new("TAGS") }
+          const_set_lazy(:TAGS) { class_self::UnicodeBlock.new("TAGS") }
           const_attr_reader  :TAGS
           
           # Constant for the "Variation Selectors Supplement" Unicode character block.
           # @since 1.5
-          const_set_lazy(:VARIATION_SELECTORS_SUPPLEMENT) { self::UnicodeBlock.new("VARIATION_SELECTORS_SUPPLEMENT", Array.typed(String).new(["Variation Selectors Supplement", "VariationSelectorsSupplement"])) }
+          const_set_lazy(:VARIATION_SELECTORS_SUPPLEMENT) { class_self::UnicodeBlock.new("VARIATION_SELECTORS_SUPPLEMENT", Array.typed(String).new(["Variation Selectors Supplement", "VariationSelectorsSupplement"])) }
           const_attr_reader  :VARIATION_SELECTORS_SUPPLEMENT
           
           # Constant for the "Supplementary Private Use Area-A" Unicode character block.
           # @since 1.5
-          const_set_lazy(:SUPPLEMENTARY_PRIVATE_USE_AREA_A) { self::UnicodeBlock.new("SUPPLEMENTARY_PRIVATE_USE_AREA_A", Array.typed(String).new(["Supplementary Private Use Area-A", "SupplementaryPrivateUseArea-A"])) }
+          const_set_lazy(:SUPPLEMENTARY_PRIVATE_USE_AREA_A) { class_self::UnicodeBlock.new("SUPPLEMENTARY_PRIVATE_USE_AREA_A", Array.typed(String).new(["Supplementary Private Use Area-A", "SupplementaryPrivateUseArea-A"])) }
           const_attr_reader  :SUPPLEMENTARY_PRIVATE_USE_AREA_A
           
           # Constant for the "Supplementary Private Use Area-B" Unicode character block.
           # @since 1.5
-          const_set_lazy(:SUPPLEMENTARY_PRIVATE_USE_AREA_B) { self::UnicodeBlock.new("SUPPLEMENTARY_PRIVATE_USE_AREA_B", Array.typed(String).new(["Supplementary Private Use Area-B", "SupplementaryPrivateUseArea-B"])) }
+          const_set_lazy(:SUPPLEMENTARY_PRIVATE_USE_AREA_B) { class_self::UnicodeBlock.new("SUPPLEMENTARY_PRIVATE_USE_AREA_B", Array.typed(String).new(["Supplementary Private Use Area-B", "SupplementaryPrivateUseArea-B"])) }
           const_attr_reader  :SUPPLEMENTARY_PRIVATE_USE_AREA_B
           
           # Constant for the "High Surrogates" Unicode character block.
@@ -1239,7 +1239,7 @@ module Java::Lang
           # range: 0xD800 through 0xDB7F
           # 
           # @since 1.5
-          const_set_lazy(:HIGH_SURROGATES) { self::UnicodeBlock.new("HIGH_SURROGATES", Array.typed(String).new(["High Surrogates", "HighSurrogates"])) }
+          const_set_lazy(:HIGH_SURROGATES) { class_self::UnicodeBlock.new("HIGH_SURROGATES", Array.typed(String).new(["High Surrogates", "HighSurrogates"])) }
           const_attr_reader  :HIGH_SURROGATES
           
           # Constant for the "High Private Use Surrogates" Unicode character block.
@@ -1247,7 +1247,7 @@ module Java::Lang
           # range: 0xDB80 through 0xDBFF
           # 
           # @since 1.5
-          const_set_lazy(:HIGH_PRIVATE_USE_SURROGATES) { self::UnicodeBlock.new("HIGH_PRIVATE_USE_SURROGATES", Array.typed(String).new(["High Private Use Surrogates", "HighPrivateUseSurrogates"])) }
+          const_set_lazy(:HIGH_PRIVATE_USE_SURROGATES) { class_self::UnicodeBlock.new("HIGH_PRIVATE_USE_SURROGATES", Array.typed(String).new(["High Private Use Surrogates", "HighPrivateUseSurrogates"])) }
           const_attr_reader  :HIGH_PRIVATE_USE_SURROGATES
           
           # Constant for the "Low Surrogates" Unicode character block.
@@ -1255,7 +1255,7 @@ module Java::Lang
           # range: 0xDC00 through 0xDFFF
           # 
           # @since 1.5
-          const_set_lazy(:LOW_SURROGATES) { self::UnicodeBlock.new("LOW_SURROGATES", Array.typed(String).new(["Low Surrogates", "LowSurrogates"])) }
+          const_set_lazy(:LOW_SURROGATES) { class_self::UnicodeBlock.new("LOW_SURROGATES", Array.typed(String).new(["Low Surrogates", "LowSurrogates"])) }
           const_attr_reader  :LOW_SURROGATES
           
           # Basic Latin
@@ -1451,7 +1451,7 @@ module Java::Lang
           # @since   1.5
           def of(code_point)
             if (!is_valid_code_point(code_point))
-              raise self::IllegalArgumentException.new
+              raise class_self::IllegalArgumentException.new
             end
             top = 0
             bottom = 0
@@ -1509,7 +1509,7 @@ module Java::Lang
           def for_name(block_name)
             block = self.attr_map.get(block_name.to_upper_case(Locale::US))
             if ((block).nil?)
-              raise self::IllegalArgumentException.new
+              raise class_self::IllegalArgumentException.new
             end
             return block
           end
@@ -1556,13 +1556,13 @@ module Java::Lang
         end
         
         class_module.module_eval {
-          const_set_lazy(:Cache) { Array.typed(self::Character).new(127 + 1) { nil } }
+          const_set_lazy(:Cache) { Array.typed(class_self::Character).new(127 + 1) { nil } }
           const_attr_reader  :Cache
           
           when_class_loaded do
             i = 0
             while i < self.class::Cache.attr_length
-              self.class::Cache[i] = self::Character.new(RJava.cast_to_char(i))
+              self.class::Cache[i] = class_self::Character.new(RJava.cast_to_char(i))
               i += 1
             end
           end

@@ -586,7 +586,7 @@ module Sun::Security::Pkcs11
           end
         end
         
-        typesig { [self::SunPKCS11] }
+        typesig { [class_self::SunPKCS11] }
         def set_provider(p)
           if (!(@provider).nil?)
             raise self.class::ProviderException.new("Secmod provider already initialized")
@@ -605,7 +605,7 @@ module Sun::Security::Pkcs11
           end
         end
         
-        typesig { [self::Token, self::X509Certificate] }
+        typesig { [class_self::Token, class_self::X509Certificate] }
         def set_trust(token, cert)
           synchronized(self) do
             bytes = self.class::Bytes.new(get_digest(cert, "SHA-1"))
@@ -623,7 +623,7 @@ module Sun::Security::Pkcs11
           end
         end
         
-        typesig { [self::Bytes] }
+        typesig { [class_self::Bytes] }
         def get_trust(hash)
           if ((@trust).nil?)
             # If provider is not set, create a temporary provider to
@@ -803,12 +803,12 @@ module Sun::Security::Pkcs11
         alias_method :attr_protection=, :protection=
         undef_method :protection=
         
-        typesig { [self::TrustType, Array.typed(::Java::Char)] }
+        typesig { [class_self::TrustType, Array.typed(::Java::Char)] }
         def initialize(trust_type, password)
           initialize__key_store_load_parameter(trust_type, self.class::PasswordProtection.new(password))
         end
         
-        typesig { [self::TrustType, self::ProtectionParameter] }
+        typesig { [class_self::TrustType, class_self::ProtectionParameter] }
         def initialize(trust_type, prot)
           @trust_type = nil
           @protection = nil
@@ -872,7 +872,7 @@ module Sun::Security::Pkcs11
         alias_method :attr_sha_hash=, :sha_hash=
         undef_method :sha_hash=
         
-        typesig { [self::Token, self::X509Certificate, self::Bytes, ::Java::Long] }
+        typesig { [class_self::Token, class_self::X509Certificate, class_self::Bytes, ::Java::Long] }
         def initialize(token, cert, bytes, trust_value)
           @handle = 0
           @client_auth = 0
@@ -900,7 +900,7 @@ module Sun::Security::Pkcs11
           end
         end
         
-        typesig { [self::Token, self::Session, ::Java::Long] }
+        typesig { [class_self::Token, class_self::Session, ::Java::Long] }
         def initialize(token, session, handle)
           @handle = 0
           @client_auth = 0
@@ -932,7 +932,7 @@ module Sun::Security::Pkcs11
           return self.class::Bytes.new(@sha_hash)
         end
         
-        typesig { [self::TrustType] }
+        typesig { [class_self::TrustType] }
         def is_trusted(type)
           case (type)
           when CLIENT_AUTH

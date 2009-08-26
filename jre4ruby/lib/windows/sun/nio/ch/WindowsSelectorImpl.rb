@@ -131,12 +131,12 @@ module Sun::Nio::Ch
           return get(desc)
         end
         
-        typesig { [self::SelectionKeyImpl] }
+        typesig { [class_self::SelectionKeyImpl] }
         def put(ski)
           return put(ski.attr_channel.get_fdval, self.class::MapEntry.new(ski))
         end
         
-        typesig { [self::SelectionKeyImpl] }
+        typesig { [class_self::SelectionKeyImpl] }
         def remove(ski)
           fd = ski.attr_channel.get_fdval
           x = get(fd)
@@ -177,7 +177,7 @@ module Sun::Nio::Ch
         alias_method :attr_cleared_count=, :cleared_count=
         undef_method :cleared_count=
         
-        typesig { [self::SelectionKeyImpl] }
+        typesig { [class_self::SelectionKeyImpl] }
         def initialize(ski)
           @ski = nil
           @update_count = 0
@@ -338,7 +338,7 @@ module Sun::Nio::Ch
           end # wake up threads.
         end
         
-        typesig { [self::SelectThread] }
+        typesig { [class_self::SelectThread] }
         # This function is called by a helper thread to wait for the
         # next round of poll(). It also checks, if this thread became
         # redundant. If yes, it returns true, notifying the thread
@@ -445,7 +445,7 @@ module Sun::Nio::Ch
           end
         end
         
-        typesig { [self::IOException] }
+        typesig { [class_self::IOException] }
         # sets IOException for this run
         def set_exception(e)
           synchronized(self) do

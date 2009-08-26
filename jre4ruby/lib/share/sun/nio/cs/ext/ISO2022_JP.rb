@@ -251,7 +251,7 @@ module Sun::Nio::Cs::Ext
         alias_method :attr_decoder0212=, :decoder0212=
         undef_method :decoder0212=
         
-        typesig { [self::Charset, Array.typed(::Java::Short), Array.typed(String), self::DoubleByteDecoder] }
+        typesig { [class_self::Charset, Array.typed(::Java::Short), Array.typed(String), class_self::DoubleByteDecoder] }
         def initialize(cs, index1, index2, decoder0212)
           @current_state = 0
           @previous_state = 0
@@ -273,7 +273,7 @@ module Sun::Nio::Cs::Ext
           @previous_state = ASCII
         end
         
-        typesig { [self::ByteBuffer, self::CharBuffer] }
+        typesig { [class_self::ByteBuffer, class_self::CharBuffer] }
         def decode_array_loop(src, dst)
           input_size = 0
           b1 = 0
@@ -411,7 +411,7 @@ module Sun::Nio::Cs::Ext
           end
         end
         
-        typesig { [self::ByteBuffer, self::CharBuffer] }
+        typesig { [class_self::ByteBuffer, class_self::CharBuffer] }
         def decode_buffer_loop(src, dst)
           mark = src.position
           b1 = 0
@@ -547,7 +547,7 @@ module Sun::Nio::Cs::Ext
           end
         end
         
-        typesig { [self::ByteBuffer, self::CharBuffer] }
+        typesig { [class_self::ByteBuffer, class_self::CharBuffer] }
         # Make some protected methods public for use by JISAutoDetect
         def decode_loop(src, dst)
           if (src.has_array && dst.has_array)
@@ -557,7 +557,7 @@ module Sun::Nio::Cs::Ext
           end
         end
         
-        typesig { [self::CharBuffer] }
+        typesig { [class_self::CharBuffer] }
         def impl_flush(out)
           return super(out)
         end
@@ -606,7 +606,7 @@ module Sun::Nio::Cs::Ext
         alias_method :attr_do_sbkana=, :do_sbkana=
         undef_method :do_sbkana=
         
-        typesig { [self::Charset, Array.typed(::Java::Short), Array.typed(String), self::DoubleByteEncoder, ::Java::Boolean] }
+        typesig { [class_self::Charset, Array.typed(::Java::Short), Array.typed(String), class_self::DoubleByteEncoder, ::Java::Boolean] }
         def initialize(cs, index1, index2, encoder0212, do_sbkana)
           @current_mode = 0
           @replace_mode = 0
@@ -646,7 +646,7 @@ module Sun::Nio::Cs::Ext
           end
         end
         
-        typesig { [self::ByteBuffer] }
+        typesig { [class_self::ByteBuffer] }
         def impl_flush(out)
           if (!(@current_mode).equal?(ASCII))
             if (out.remaining < 3)
@@ -671,7 +671,7 @@ module Sun::Nio::Cs::Ext
         alias_method :attr_sgp=, :sgp=
         undef_method :sgp=
         
-        typesig { [self::CharBuffer, self::ByteBuffer] }
+        typesig { [class_self::CharBuffer, class_self::ByteBuffer] }
         def encode_array_loop(src, dst)
           sa = src.array
           sp = src.array_offset + src.position
@@ -803,7 +803,7 @@ module Sun::Nio::Cs::Ext
           end
         end
         
-        typesig { [self::CharBuffer, self::ByteBuffer] }
+        typesig { [class_self::CharBuffer, class_self::ByteBuffer] }
         def encode_buffer_loop(src, dst)
           mark = src.position
           begin
@@ -924,7 +924,7 @@ module Sun::Nio::Cs::Ext
           end
         end
         
-        typesig { [self::CharBuffer, self::ByteBuffer] }
+        typesig { [class_self::CharBuffer, class_self::ByteBuffer] }
         def encode_loop(src, dst)
           if (src.has_array && dst.has_array)
             return encode_array_loop(src, dst)

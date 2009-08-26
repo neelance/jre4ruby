@@ -202,7 +202,7 @@ module Java::Lang
           
           typesig { [String] }
           def value_of_query_only(str)
-            return self::Variable.new(str, str.get_bytes)
+            return class_self::Variable.new(str, str.get_bytes)
           end
           
           typesig { [String] }
@@ -213,11 +213,11 @@ module Java::Lang
           
           typesig { [Array.typed(::Java::Byte)] }
           def value_of(bytes)
-            return self::Variable.new(String.new(bytes), bytes)
+            return class_self::Variable.new(String.new(bytes), bytes)
           end
         }
         
-        typesig { [self::Variable] }
+        typesig { [class_self::Variable] }
         def compare_to(variable)
           return array_compare(get_bytes, variable.get_bytes)
         end
@@ -250,7 +250,7 @@ module Java::Lang
           
           typesig { [String] }
           def value_of_query_only(str)
-            return self::Value.new(str, str.get_bytes)
+            return class_self::Value.new(str, str.get_bytes)
           end
           
           typesig { [String] }
@@ -261,11 +261,11 @@ module Java::Lang
           
           typesig { [Array.typed(::Java::Byte)] }
           def value_of(bytes)
-            return self::Value.new(String.new(bytes), bytes)
+            return class_self::Value.new(String.new(bytes), bytes)
           end
         }
         
-        typesig { [self::Value] }
+        typesig { [class_self::Value] }
         def compare_to(value)
           return array_compare(get_bytes, value.get_bytes)
         end
@@ -290,13 +290,13 @@ module Java::Lang
         undef_method :m=
         
         class_module.module_eval {
-          typesig { [self::Value] }
+          typesig { [class_self::Value] }
           def to_s(v)
             return (v).nil? ? nil : v.to_s
           end
         }
         
-        typesig { [self::Map] }
+        typesig { [class_self::Map] }
         def initialize(m)
           @m = nil
           super()
@@ -409,7 +409,7 @@ module Java::Lang
         alias_method :attr_e=, :e=
         undef_method :e=
         
-        typesig { [self::Map::Entry] }
+        typesig { [class_self::Map::Entry] }
         def initialize(e)
           @e = nil
           @e = e
@@ -458,7 +458,7 @@ module Java::Lang
         alias_method :attr_s=, :s=
         undef_method :s=
         
-        typesig { [self::JavaSet] }
+        typesig { [class_self::JavaSet] }
         def initialize(s)
           @s = nil
           super()
@@ -485,7 +485,7 @@ module Java::Lang
           return Class.new(self.class::Iterator.class == Class ? self.class::Iterator : Object) do
             extend LocalClass
             include_class_members StringEntrySet
-            include self::Iterator if self::Iterator.class == Module
+            include class_self::Iterator if class_self::Iterator.class == Module
             
             attr_accessor :i
             alias_method :attr_i, :i
@@ -523,13 +523,13 @@ module Java::Lang
         class_module.module_eval {
           typesig { [Object] }
           def vv_entry(o)
-            if (o.is_a?(self::StringEntry))
+            if (o.is_a?(class_self::StringEntry))
               return (o).attr_e
             end
-            return Class.new(self::Map::Entry.class == Class ? self::Map::Entry : Object) do
+            return Class.new(class_self::Map::Entry.class == Class ? class_self::Map::Entry : Object) do
               extend LocalClass
               include_class_members StringEntrySet
-              include self::Map::Entry if self::Map::Entry.class == Module
+              include class_self::Map::Entry if class_self::Map::Entry.class == Module
               
               typesig { [] }
               define_method :get_key do
@@ -541,7 +541,7 @@ module Java::Lang
                 return Value.value_of_query_only((o).get_value)
               end
               
-              typesig { [self::Value] }
+              typesig { [class_self::Value] }
               define_method :set_value do |value|
                 raise self.class::UnsupportedOperationException.new
               end
@@ -590,7 +590,7 @@ module Java::Lang
         alias_method :attr_c=, :c=
         undef_method :c=
         
-        typesig { [self::Collection] }
+        typesig { [class_self::Collection] }
         def initialize(c)
           @c = nil
           super()
@@ -617,7 +617,7 @@ module Java::Lang
           return Class.new(self.class::Iterator.class == Class ? self.class::Iterator : Object) do
             extend LocalClass
             include_class_members StringValues
-            include self::Iterator if self::Iterator.class == Module
+            include class_self::Iterator if class_self::Iterator.class == Module
             
             attr_accessor :i
             alias_method :attr_i, :i
@@ -685,7 +685,7 @@ module Java::Lang
         alias_method :attr_s=, :s=
         undef_method :s=
         
-        typesig { [self::JavaSet] }
+        typesig { [class_self::JavaSet] }
         def initialize(s)
           @s = nil
           super()
@@ -712,7 +712,7 @@ module Java::Lang
           return Class.new(self.class::Iterator.class == Class ? self.class::Iterator : Object) do
             extend LocalClass
             include_class_members StringKeySet
-            include self::Iterator if self::Iterator.class == Module
+            include class_self::Iterator if class_self::Iterator.class == Module
             
             attr_accessor :i
             alias_method :attr_i, :i

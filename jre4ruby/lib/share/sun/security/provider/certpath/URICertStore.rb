@@ -493,7 +493,7 @@ module Sun::Security::Provider::Certpath
         alias_method :attr_hash_code=, :hash_code=
         undef_method :hash_code=
         
-        typesig { [self::URI] }
+        typesig { [class_self::URI] }
         def initialize(uri)
           @uri = nil
           @hash_code = 0
@@ -537,7 +537,7 @@ module Sun::Security::Provider::Certpath
       const_set_lazy(:UCS) { Class.new(CertStore) do
         include_class_members URICertStore
         
-        typesig { [self::CertStoreSpi, self::Provider, String, self::CertStoreParameters] }
+        typesig { [class_self::CertStoreSpi, class_self::Provider, String, class_self::CertStoreParameters] }
         def initialize(spi, p, type, params)
           super(spi, p, type, params)
         end

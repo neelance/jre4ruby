@@ -618,7 +618,7 @@ module Sun::Security::Provider::Certpath
         alias_method :attr_bad_key_set=, :bad_key_set=
         undef_method :bad_key_set=
         
-        typesig { [self::JavaSet] }
+        typesig { [class_self::JavaSet] }
         # Creates a new <code>RejectKeySelector</code>.
         # 
         # @param badPublicKeys a <code>Set</code> of
@@ -631,7 +631,7 @@ module Sun::Security::Provider::Certpath
           @bad_key_set = bad_public_keys
         end
         
-        typesig { [self::Certificate] }
+        typesig { [class_self::Certificate] }
         # Decides whether a <code>Certificate</code> should be selected.
         # 
         # @param cert the <code>Certificate</code> to be checked

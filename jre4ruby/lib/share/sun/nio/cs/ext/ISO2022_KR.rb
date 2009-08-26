@@ -88,7 +88,7 @@ module Sun::Nio::Cs::Ext
       const_set_lazy(:Decoder) { Class.new(ISO2022::Decoder) do
         include_class_members ISO2022_KR
         
-        typesig { [self::Charset] }
+        typesig { [class_self::Charset] }
         def initialize(cs)
           super(cs)
           SODesig = Array.typed(Array.typed(::Java::Byte)).new([Array.typed(::Java::Byte).new([Character.new(?$.ord), Character.new(?).ord), Character.new(?C.ord)])])
@@ -106,7 +106,7 @@ module Sun::Nio::Cs::Ext
       const_set_lazy(:Encoder) { Class.new(ISO2022::Encoder) do
         include_class_members ISO2022_KR
         
-        typesig { [self::Charset] }
+        typesig { [class_self::Charset] }
         def initialize(cs)
           super(cs)
           SODesig = "$)C"

@@ -2493,7 +2493,7 @@ module Sun::Net::Www::Protocol::Http
         alias_method :attr_mark_count=, :mark_count=
         undef_method :mark_count=
         
-        typesig { [self::InputStream] }
+        typesig { [class_self::InputStream] }
         def initialize(is)
           @cache_request = nil
           @output_stream = nil
@@ -2509,7 +2509,7 @@ module Sun::Net::Www::Protocol::Http
           @output_stream = nil
         end
         
-        typesig { [self::InputStream, self::CacheRequest] }
+        typesig { [class_self::InputStream, class_self::CacheRequest] }
         def initialize(is, cache_request)
           @cache_request = nil
           @output_stream = nil
@@ -2731,7 +2731,7 @@ module Sun::Net::Www::Protocol::Http
         alias_method :attr_error_excp=, :error_excp=
         undef_method :error_excp=
         
-        typesig { [self::OutputStream, ::Java::Int] }
+        typesig { [class_self::OutputStream, ::Java::Int] }
         # expectedLength == -1 if the stream is chunked
         # expectedLength > 0 if the stream is fixed content-length
         # In the 2nd case, we make sure the expected number of
@@ -2843,7 +2843,7 @@ module Sun::Net::Www::Protocol::Http
         alias_method :attr_is=, :is=
         undef_method :is=
         
-        typesig { [self::ByteBuffer] }
+        typesig { [class_self::ByteBuffer] }
         def initialize(buf)
           @buffer = nil
           @is = nil
@@ -2852,7 +2852,7 @@ module Sun::Net::Www::Protocol::Http
           @is = nil
         end
         
-        typesig { [self::ByteBuffer, self::InputStream] }
+        typesig { [class_self::ByteBuffer, class_self::InputStream] }
         def initialize(buf, is)
           @buffer = nil
           @is = nil
@@ -2862,7 +2862,7 @@ module Sun::Net::Www::Protocol::Http
         end
         
         class_module.module_eval {
-          typesig { [self::InputStream, ::Java::Int, self::HttpClient] }
+          typesig { [class_self::InputStream, ::Java::Int, class_self::HttpClient] }
           # when this method is called, it's either the case that cl > 0, or
           # if chunk-encoded, cl = -1; in other words, cl can't be 0
           def get_error_stream(is, cl, http)
@@ -2899,10 +2899,10 @@ module Sun::Net::Www::Protocol::Http
                         break
                       end
                       # the server sends less than cl bytes of data
-                      raise self::IOException.new("the server closes" + " before sending " + RJava.cast_to_string(cl) + " bytes of data")
+                      raise class_self::IOException.new("the server closes" + " before sending " + RJava.cast_to_string(cl) + " bytes of data")
                     end
                     count += len
-                  rescue self::SocketTimeoutException => ex
+                  rescue class_self::SocketTimeoutException => ex
                     time += self.attr_timeout4esbuffer / 5
                   end
                 end while (count < expected && time < self.attr_timeout4esbuffer)
@@ -2920,15 +2920,15 @@ module Sun::Net::Www::Protocol::Http
                     # put the connection into keep-alive cache
                     # the inputstream will try to do the right thing
                     is.close
-                    return self::ErrorStream.new(ByteBuffer.wrap(buffer, 0, count))
+                    return class_self::ErrorStream.new(ByteBuffer.wrap(buffer, 0, count))
                   else
                     # we read part of the response body
-                    return self::ErrorStream.new(ByteBuffer.wrap(buffer, 0, count), is)
+                    return class_self::ErrorStream.new(ByteBuffer.wrap(buffer, 0, count), is)
                   end
                 end
               end
               return nil
-            rescue self::IOException => ioex
+            rescue class_self::IOException => ioex
               # ioex.printStackTrace();
               return nil
             end

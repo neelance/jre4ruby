@@ -663,7 +663,7 @@ module Sun::Security::Jgss::Krb5
           @bytes[7] = (MessageToken::FILLER)
         end
         
-        typesig { [self::InputStream, self::MessageProp] }
+        typesig { [class_self::InputStream, class_self::MessageProp] }
         # Constructs a MessageTokenHeader by reading it from an InputStream
         # and sets the appropriate confidentiality and quality of protection
         # values in a MessageProp structure.
@@ -695,7 +695,7 @@ module Sun::Security::Jgss::Krb5
           prop.set_qop(0) # default
         end
         
-        typesig { [self::OutputStream] }
+        typesig { [class_self::OutputStream] }
         # Encodes this MessageTokenHeader onto an OutputStream
         # @param os the OutputStream to write to
         # @throws IOException is an error occurs while writing

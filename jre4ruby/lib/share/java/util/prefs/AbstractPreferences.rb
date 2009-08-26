@@ -1533,7 +1533,7 @@ module Java::Util::Prefs
           const_attr_reader  :SerialVersionUID
         }
         
-        typesig { [self::Preferences, self::Preferences] }
+        typesig { [class_self::Preferences, class_self::Preferences] }
         def initialize(parent, child)
           super(parent, child)
         end
@@ -1551,7 +1551,7 @@ module Java::Util::Prefs
           const_attr_reader  :SerialVersionUID
         }
         
-        typesig { [self::Preferences, self::Preferences] }
+        typesig { [class_self::Preferences, class_self::Preferences] }
         def initialize(parent, child)
           super(parent, child)
         end

@@ -70,7 +70,7 @@ module Sun::Nio::Cs
         alias_method :attr_expected_bo=, :expected_bo=
         undef_method :expected_bo=
         
-        typesig { [self::Charset, ::Java::Int] }
+        typesig { [class_self::Charset, ::Java::Int] }
         def initialize(cs, bo)
           @current_bo = 0
           @expected_bo = 0
@@ -79,12 +79,12 @@ module Sun::Nio::Cs
           @current_bo = NONE
         end
         
-        typesig { [self::ByteBuffer] }
+        typesig { [class_self::ByteBuffer] }
         def get_cp(src)
           return ((@current_bo).equal?(BIG)) ? (((src.get & 0xff) << 24) | ((src.get & 0xff) << 16) | ((src.get & 0xff) << 8) | (src.get & 0xff)) : ((src.get & 0xff) | ((src.get & 0xff) << 8) | ((src.get & 0xff) << 16) | ((src.get & 0xff) << 24))
         end
         
-        typesig { [self::ByteBuffer, self::CharBuffer] }
+        typesig { [class_self::ByteBuffer, class_self::CharBuffer] }
         def decode_loop(src, dst)
           if (src.remaining < 4)
             return CoderResult::UNDERFLOW
@@ -167,7 +167,7 @@ module Sun::Nio::Cs
         alias_method :attr_byte_order=, :byte_order=
         undef_method :byte_order=
         
-        typesig { [::Java::Int, self::ByteBuffer] }
+        typesig { [::Java::Int, class_self::ByteBuffer] }
         def put(cp, dst)
           if ((@byte_order).equal?(BIG))
             dst.put((cp >> 24))
@@ -182,7 +182,7 @@ module Sun::Nio::Cs
           end
         end
         
-        typesig { [self::Charset, ::Java::Int, ::Java::Boolean] }
+        typesig { [class_self::Charset, ::Java::Int, ::Java::Boolean] }
         def initialize(cs, byte_order, do_bom)
           @do_bom = false
           @done_bom = false
@@ -195,7 +195,7 @@ module Sun::Nio::Cs
           @done_bom = !do_bom
         end
         
-        typesig { [self::CharBuffer, self::ByteBuffer] }
+        typesig { [class_self::CharBuffer, class_self::ByteBuffer] }
         def encode_loop(src, dst)
           mark = src.position
           if (!@done_bom)

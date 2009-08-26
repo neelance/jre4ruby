@@ -457,7 +457,7 @@ module Sun::Security::Ssl
         
         class_module.module_eval {
           # Map BulkCipher -> Boolean(available)
-          const_set_lazy(:AvailableCache) { self::HashMap.new(8) }
+          const_set_lazy(:AvailableCache) { class_self::HashMap.new(8) }
           const_attr_reader  :AvailableCache
         }
         
@@ -558,7 +558,7 @@ module Sun::Security::Ssl
           @exportable = false
         end
         
-        typesig { [self::ProtocolVersion, self::SecretKey, self::IvParameterSpec, ::Java::Boolean] }
+        typesig { [class_self::ProtocolVersion, class_self::SecretKey, class_self::IvParameterSpec, ::Java::Boolean] }
         # Return an initialized CipherBox for this BulkCipher.
         # IV must be null for stream ciphers.
         # 
@@ -597,17 +597,17 @@ module Sun::Security::Ssl
             end
           end
           
-          typesig { [self::BulkCipher] }
+          typesig { [class_self::BulkCipher] }
           def is_available(cipher)
             synchronized(self) do
               b = self.class::AvailableCache.get(cipher)
               if ((b).nil?)
                 begin
-                  key = self::SecretKeySpec.new(Array.typed(::Java::Byte).new(cipher.attr_expanded_key_size) { 0 }, cipher.attr_algorithm)
-                  iv = self::IvParameterSpec.new(Array.typed(::Java::Byte).new(cipher.attr_iv_size) { 0 })
+                  key = class_self::SecretKeySpec.new(Array.typed(::Java::Byte).new(cipher.attr_expanded_key_size) { 0 }, cipher.attr_algorithm)
+                  iv = class_self::IvParameterSpec.new(Array.typed(::Java::Byte).new(cipher.attr_iv_size) { 0 })
                   cipher.new_cipher(ProtocolVersion::DEFAULT, key, iv, true)
                   b = Boolean::TRUE
-                rescue self::NoSuchAlgorithmException => e
+                rescue class_self::NoSuchAlgorithmException => e
                   b = Boolean::FALSE
                 end
                 self.class::AvailableCache.put(cipher, b)
@@ -655,7 +655,7 @@ module Sun::Security::Ssl
           @size = size
         end
         
-        typesig { [self::ProtocolVersion, self::SecretKey] }
+        typesig { [class_self::ProtocolVersion, class_self::SecretKey] }
         # Return an initialized MAC for this MacAlg. ProtocolVersion
         # must either be SSL30 (SSLv3 custom MAC) or TLS10 (std. HMAC).
         # 

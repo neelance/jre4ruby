@@ -80,7 +80,7 @@ module Sun::Nio::Ch
         alias_method :attr_sp=, :sp=
         undef_method :sp=
         
-        typesig { [self::SelectorProvider] }
+        typesig { [class_self::SelectorProvider] }
         def initialize(sp)
           @sp = nil
           @sp = sp

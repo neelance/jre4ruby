@@ -129,7 +129,7 @@ module Sun::Nio::Cs::Ext
           alias_method :attr_index2=, :index2=
         }
         
-        typesig { [self::Charset] }
+        typesig { [class_self::Charset] }
         def initialize(cs)
           super(cs, self.class::Index1, self.attr_index2, 0xa1, 0xfe)
         end
@@ -187,7 +187,7 @@ module Sun::Nio::Cs::Ext
           alias_method :attr_index2=, :index2=
         }
         
-        typesig { [self::Charset] }
+        typesig { [class_self::Charset] }
         def initialize(cs)
           super(cs, self.class::Index1, self.attr_index2)
         end

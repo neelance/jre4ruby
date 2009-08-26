@@ -622,15 +622,15 @@ module Java::Nio::Channels
         
         class_module.module_eval {
           # Mode for a read-only mapping.
-          const_set_lazy(:READ_ONLY) { self::MapMode.new("READ_ONLY") }
+          const_set_lazy(:READ_ONLY) { class_self::MapMode.new("READ_ONLY") }
           const_attr_reader  :READ_ONLY
           
           # Mode for a read/write mapping.
-          const_set_lazy(:READ_WRITE) { self::MapMode.new("READ_WRITE") }
+          const_set_lazy(:READ_WRITE) { class_self::MapMode.new("READ_WRITE") }
           const_attr_reader  :READ_WRITE
           
           # Mode for a private (copy-on-write) mapping.
-          const_set_lazy(:PRIVATE) { self::MapMode.new("PRIVATE") }
+          const_set_lazy(:PRIVATE) { class_self::MapMode.new("PRIVATE") }
           const_attr_reader  :PRIVATE
         }
         

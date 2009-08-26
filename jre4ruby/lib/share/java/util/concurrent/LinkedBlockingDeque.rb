@@ -109,7 +109,7 @@ module Java::Util::Concurrent
         alias_method :attr_next=, :next=
         undef_method :next=
         
-        typesig { [Object, self::Node, self::Node] }
+        typesig { [Object, class_self::Node, class_self::Node] }
         def initialize(x, p, n)
           @item = nil
           @prev = nil

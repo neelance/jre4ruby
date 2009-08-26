@@ -611,7 +611,7 @@ module Sun::Security::Jgss
         alias_method :attr_usage=, :usage=
         undef_method :usage=
         
-        typesig { [self::Oid, ::Java::Int] }
+        typesig { [class_self::Oid, ::Java::Int] }
         def initialize(mech_oid, usage)
           @mech_oid = nil
           @usage = GSSCredential::INITIATE_AND_ACCEPT

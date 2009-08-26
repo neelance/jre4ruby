@@ -80,7 +80,7 @@ module Sun::Nio::Cs::Ext
       const_set_lazy(:Decoder) { Class.new(DoubleByteDecoder) do
         include_class_members HKSCS_2001
         
-        typesig { [self::Charset] }
+        typesig { [class_self::Charset] }
         def initialize(cs)
           @surrogate_mappings = nil
           super(cs, self.class::Index1, self.attr_index2, 0x40, 0xfe)
@@ -146,7 +146,7 @@ module Sun::Nio::Cs::Ext
         alias_method :attr_encoded=, :encoded=
         undef_method :encoded=
         
-        typesig { [self::Charset] }
+        typesig { [class_self::Charset] }
         def initialize(cs)
           @encoded = nil
           @unicode_search_tab = nil

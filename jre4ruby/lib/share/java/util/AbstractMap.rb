@@ -335,7 +335,7 @@ module Java::Util
             return Class.new(self.class::Iterator.class == Class ? self.class::Iterator : Object) do
               extend LocalClass
               include_class_members abstract_set_class
-              include self::Iterator if self::Iterator.class == Module
+              include class_self::Iterator if class_self::Iterator.class == Module
               
               attr_accessor :i
               alias_method :attr_i, :i
@@ -429,7 +429,7 @@ module Java::Util
             return Class.new(self.class::Iterator.class == Class ? self.class::Iterator : Object) do
               extend LocalClass
               include_class_members abstract_collection_class
-              include self::Iterator if self::Iterator.class == Module
+              include class_self::Iterator if class_self::Iterator.class == Module
               
               attr_accessor :i
               alias_method :attr_i, :i
@@ -685,7 +685,7 @@ module Java::Util
           @value = value
         end
         
-        typesig { [self::Entry] }
+        typesig { [class_self::Entry] }
         # Creates an entry representing the same mapping as the
         # specified entry.
         # 
@@ -825,7 +825,7 @@ module Java::Util
           @value = value
         end
         
-        typesig { [self::Entry] }
+        typesig { [class_self::Entry] }
         # Creates an entry representing the same mapping as the
         # specified entry.
         # 

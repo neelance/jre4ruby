@@ -172,11 +172,11 @@ module Java::Io
         
         class_module.module_eval {
           # cache of subclass security audit results
-          const_set_lazy(:SubclassAudits) { self::ConcurrentHashMap.new }
+          const_set_lazy(:SubclassAudits) { class_self::ConcurrentHashMap.new }
           const_attr_reader  :SubclassAudits
           
           # queue for WeakReferences to audited subclasses
-          const_set_lazy(:SubclassAuditsQueue) { self::ReferenceQueue.new }
+          const_set_lazy(:SubclassAuditsQueue) { class_self::ReferenceQueue.new }
           const_attr_reader  :SubclassAuditsQueue
         }
         
@@ -1042,7 +1042,7 @@ module Java::Io
           raise NotImplementedError
         end
         
-        typesig { [self::ObjectOutput] }
+        typesig { [class_self::ObjectOutput] }
         # Write the data and fields to the specified ObjectOutput stream,
         # which must be the same stream that produced this
         # <code>PutField</code> object.
@@ -1657,7 +1657,7 @@ module Java::Io
         alias_method :attr_obj_vals=, :obj_vals=
         undef_method :obj_vals=
         
-        typesig { [self::ObjectStreamClass] }
+        typesig { [class_self::ObjectStreamClass] }
         # Creates PutFieldImpl object for writing fields defined in given
         # class descriptor.
         def initialize(desc)
@@ -1715,7 +1715,7 @@ module Java::Io
           @obj_vals[get_field_offset(name, Object)] = val
         end
         
-        typesig { [self::ObjectOutput] }
+        typesig { [class_self::ObjectOutput] }
         # deprecated in ObjectOutputStream.PutField
         def write(out)
           # Applications should *not* use this method to write PutField
@@ -1770,7 +1770,7 @@ module Java::Io
           end
         end
         
-        typesig { [String, self::Class] }
+        typesig { [String, class_self::Class] }
         # Returns offset of field with given name and type.  A specified type
         # of null matches all types, Object.class matches all non-primitive
         # types, and any other non-null type matches assignable types only.
@@ -1860,7 +1860,7 @@ module Java::Io
         alias_method :attr_dout=, :dout=
         undef_method :dout=
         
-        typesig { [self::OutputStream] }
+        typesig { [class_self::OutputStream] }
         # Creates new BlockDataOutputStream on top of given underlying stream.
         # Block data mode is turned off by default.
         def initialize(out)

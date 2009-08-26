@@ -117,7 +117,7 @@ module Sun::Security::Ssl
         alias_method :attr_issuer_x500principals=, :issuer_x500principals=
         undef_method :issuer_x500principals=
         
-        typesig { [self::PrivateKey, Array.typed(self::X509Certificate)] }
+        typesig { [class_self::PrivateKey, Array.typed(class_self::X509Certificate)] }
         def initialize(private_key, certificates)
           @private_key = nil
           @certificates = nil

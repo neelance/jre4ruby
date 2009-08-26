@@ -140,7 +140,7 @@ module Sun::Nio::Cs::Ext
           return @hash
         end
         
-        typesig { [self::ControlSequence] }
+        typesig { [class_self::ControlSequence] }
         def concatenate(rhs)
           if (!(@encoding).nil?)
             raise self.class::IllegalArgumentException.new("cannot concatenate to a non-standard charset escape " + "sequence")

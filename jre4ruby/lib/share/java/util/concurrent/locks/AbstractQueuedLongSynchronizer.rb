@@ -168,7 +168,7 @@ module Java::Util::Concurrent::Locks
         
         class_module.module_eval {
           # Marker to indicate a node is waiting in shared mode
-          const_set_lazy(:SHARED) { self::Node.new }
+          const_set_lazy(:SHARED) { class_self::Node.new }
           const_attr_reader  :SHARED
           
           # Marker to indicate a node is waiting in exclusive mode
@@ -315,7 +315,7 @@ module Java::Util::Concurrent::Locks
           @next_waiter = nil # Used to establish initial head or SHARED marker
         end
         
-        typesig { [self::JavaThread, self::Node] }
+        typesig { [class_self::JavaThread, class_self::Node] }
         def initialize(thread, mode)
           @wait_status = 0
           @prev = nil
@@ -326,7 +326,7 @@ module Java::Util::Concurrent::Locks
           @thread = thread
         end
         
-        typesig { [self::JavaThread, ::Java::Int] }
+        typesig { [class_self::JavaThread, ::Java::Int] }
         def initialize(thread, wait_status)
           @wait_status = 0
           @prev = nil
@@ -1678,7 +1678,7 @@ module Java::Util::Concurrent::Locks
           return node
         end
         
-        typesig { [self::Node] }
+        typesig { [class_self::Node] }
         # Removes and transfers nodes until hit non-cancelled one or
         # null. Split out from signal in part to encourage compilers
         # to inline the case of no waiters.
@@ -1692,7 +1692,7 @@ module Java::Util::Concurrent::Locks
           end while (!transfer_for_signal(first) && !((first = @first_waiter)).nil?)
         end
         
-        typesig { [self::Node] }
+        typesig { [class_self::Node] }
         # Removes and transfers all nodes.
         # @param first (non-null) the first node on condition queue
         def do_signal_all(first)
@@ -1816,7 +1816,7 @@ module Java::Util::Concurrent::Locks
           const_attr_reader  :THROW_IE
         }
         
-        typesig { [self::Node] }
+        typesig { [class_self::Node] }
         # Checks for interrupt, returning THROW_IE if interrupted
         # before signalled, REINTERRUPT if after signalled, or
         # 0 if not interrupted.
@@ -1921,7 +1921,7 @@ module Java::Util::Concurrent::Locks
           return nanos_timeout - (System.nano_time - last_time)
         end
         
-        typesig { [self::Date] }
+        typesig { [class_self::Date] }
         # Implements absolute timed condition wait.
         # <ol>
         # <li> If current thread is interrupted, throw InterruptedException.
@@ -1969,7 +1969,7 @@ module Java::Util::Concurrent::Locks
           return !timedout
         end
         
-        typesig { [::Java::Long, self::TimeUnit] }
+        typesig { [::Java::Long, class_self::TimeUnit] }
         # Implements timed condition wait.
         # <ol>
         # <li> If current thread is interrupted, throw InterruptedException.
@@ -2023,7 +2023,7 @@ module Java::Util::Concurrent::Locks
           return !timedout
         end
         
-        typesig { [self::AbstractQueuedLongSynchronizer] }
+        typesig { [class_self::AbstractQueuedLongSynchronizer] }
         # support for instrumentation
         # 
         # Returns true if this condition was created by the given

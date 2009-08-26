@@ -483,10 +483,10 @@ module Java::Util
         include_class_members ResourceBundle
         
         class_module.module_eval {
-          const_set_lazy(:INSTANCE) { AccessController.do_privileged(Class.new(self::PrivilegedAction.class == Class ? self::PrivilegedAction : Object) do
+          const_set_lazy(:INSTANCE) { AccessController.do_privileged(Class.new(class_self::PrivilegedAction.class == Class ? class_self::PrivilegedAction : Object) do
             extend LocalClass
             include_class_members RBClassLoader
-            include self::PrivilegedAction if self::PrivilegedAction.class == Module
+            include class_self::PrivilegedAction if class_self::PrivilegedAction.class == Module
             
             typesig { [] }
             define_method :run do
@@ -621,7 +621,7 @@ module Java::Util
         alias_method :attr_hash_code_cache=, :hash_code_cache=
         undef_method :hash_code_cache=
         
-        typesig { [String, self::Locale, self::ClassLoader] }
+        typesig { [String, class_self::Locale, class_self::ClassLoader] }
         def initialize(base_name, locale, loader)
           @name = nil
           @locale = nil
@@ -660,7 +660,7 @@ module Java::Util
           return @locale
         end
         
-        typesig { [self::Locale] }
+        typesig { [class_self::Locale] }
         def set_locale(locale)
           if (!(@locale == locale))
             @locale = locale
@@ -749,7 +749,7 @@ module Java::Util
           @format = format
         end
         
-        typesig { [self::JavaThrowable] }
+        typesig { [class_self::JavaThrowable] }
         def set_cause(cause)
           if ((@cause).nil?)
             @cause = cause
@@ -810,7 +810,7 @@ module Java::Util
         alias_method :attr_cache_key=, :cache_key=
         undef_method :cache_key=
         
-        typesig { [self::ClassLoader, self::ReferenceQueue, self::CacheKey] }
+        typesig { [class_self::ClassLoader, class_self::ReferenceQueue, class_self::CacheKey] }
         def initialize(referent, q, key)
           @cache_key = nil
           super(referent, q)
@@ -840,7 +840,7 @@ module Java::Util
         alias_method :attr_cache_key=, :cache_key=
         undef_method :cache_key=
         
-        typesig { [self::ResourceBundle, self::ReferenceQueue, self::CacheKey] }
+        typesig { [class_self::ResourceBundle, class_self::ReferenceQueue, class_self::CacheKey] }
         def initialize(referent, q, key)
           @cache_key = nil
           super(referent, q)
@@ -2104,7 +2104,7 @@ module Java::Util
           const_set_lazy(:TTL_NO_EXPIRATION_CONTROL) { -2 }
           const_attr_reader  :TTL_NO_EXPIRATION_CONTROL
           
-          const_set_lazy(:INSTANCE) { self::Control.new }
+          const_set_lazy(:INSTANCE) { class_self::Control.new }
           const_attr_reader  :INSTANCE
         }
         
@@ -2115,7 +2115,7 @@ module Java::Util
         end
         
         class_module.module_eval {
-          typesig { [self::JavaList] }
+          typesig { [class_self::JavaList] }
           # Returns a <code>ResourceBundle.Control</code> in which the {@link
           # #getFormats(String) getFormats} method returns the specified
           # <code>formats</code>. The <code>formats</code> must be equal to
@@ -2147,10 +2147,10 @@ module Java::Util
             if ((formats == Control::FORMAT_DEFAULT))
               return Control::INSTANCE
             end
-            raise self::IllegalArgumentException.new
+            raise class_self::IllegalArgumentException.new
           end
           
-          typesig { [self::JavaList] }
+          typesig { [class_self::JavaList] }
           # Returns a <code>ResourceBundle.Control</code> in which the {@link
           # #getFormats(String) getFormats} method returns the specified
           # <code>formats</code> and the {@link
@@ -2181,7 +2181,7 @@ module Java::Util
             if ((formats == Control::FORMAT_CLASS))
               return NoFallbackControl::CLASS_ONLY_NO_FALLBACK
             end
-            raise self::IllegalArgumentException.new
+            raise class_self::IllegalArgumentException.new
           end
         }
         
@@ -2225,7 +2225,7 @@ module Java::Util
           return self.class::FORMAT_DEFAULT
         end
         
-        typesig { [String, self::Locale] }
+        typesig { [String, class_self::Locale] }
         # Returns a <code>List</code> of <code>Locale</code>s as candidate
         # locales for <code>baseName</code> and <code>locale</code>. This
         # method is called by the <code>ResourceBundle.getBundle</code>
@@ -2316,7 +2316,7 @@ module Java::Util
           return locales
         end
         
-        typesig { [String, self::Locale] }
+        typesig { [String, class_self::Locale] }
         # Returns a <code>Locale</code> to be used as a fallback locale for
         # further resource bundle searches by the
         # <code>ResourceBundle.getBundle</code> factory method. This method
@@ -2359,7 +2359,7 @@ module Java::Util
           return (locale == default_locale) ? nil : default_locale
         end
         
-        typesig { [String, self::Locale, String, self::ClassLoader, ::Java::Boolean] }
+        typesig { [String, class_self::Locale, String, class_self::ClassLoader, ::Java::Boolean] }
         # Instantiates a resource bundle for the given bundle name of the
         # given format and locale, using the given class loader if
         # necessary. This method returns <code>null</code> if there is no
@@ -2479,7 +2479,7 @@ module Java::Util
                 stream = AccessController.do_privileged(Class.new(self.class::PrivilegedExceptionAction.class == Class ? self.class::PrivilegedExceptionAction : Object) do
                   extend LocalClass
                   include_class_members Control
-                  include self::PrivilegedExceptionAction if self::PrivilegedExceptionAction.class == Module
+                  include class_self::PrivilegedExceptionAction if class_self::PrivilegedExceptionAction.class == Module
                   
                   typesig { [] }
                   define_method :run do
@@ -2526,7 +2526,7 @@ module Java::Util
           return bundle
         end
         
-        typesig { [String, self::Locale] }
+        typesig { [String, class_self::Locale] }
         # Returns the time-to-live (TTL) value for resource bundles that
         # are loaded under this
         # <code>ResourceBundle.Control</code>. Positive time-to-live values
@@ -2578,7 +2578,7 @@ module Java::Util
           return self.class::TTL_NO_EXPIRATION_CONTROL
         end
         
-        typesig { [String, self::Locale, String, self::ClassLoader, self::ResourceBundle, ::Java::Long] }
+        typesig { [String, class_self::Locale, String, class_self::ClassLoader, class_self::ResourceBundle, ::Java::Long] }
         # Determines if the expired <code>bundle</code> in the cache needs
         # to be reloaded based on the loading time given by
         # <code>loadTime</code> or some other criteria. The method returns
@@ -2664,7 +2664,7 @@ module Java::Util
           return result
         end
         
-        typesig { [String, self::Locale] }
+        typesig { [String, class_self::Locale] }
         # Converts the given <code>baseName</code> and <code>locale</code>
         # to the bundle name. This method is called from the default
         # implementation of the {@link #newBundle(String, Locale, String,
@@ -2761,10 +2761,10 @@ module Java::Util
         include_class_members ResourceBundle
         
         class_module.module_eval {
-          const_set_lazy(:PROPERTIES_ONLY) { self::SingleFormatControl.new(FORMAT_PROPERTIES) }
+          const_set_lazy(:PROPERTIES_ONLY) { class_self::SingleFormatControl.new(FORMAT_PROPERTIES) }
           const_attr_reader  :PROPERTIES_ONLY
           
-          const_set_lazy(:CLASS_ONLY) { self::SingleFormatControl.new(FORMAT_CLASS) }
+          const_set_lazy(:CLASS_ONLY) { class_self::SingleFormatControl.new(FORMAT_CLASS) }
           const_attr_reader  :CLASS_ONLY
         }
         
@@ -2774,7 +2774,7 @@ module Java::Util
         alias_method :attr_formats=, :formats=
         undef_method :formats=
         
-        typesig { [self::JavaList] }
+        typesig { [class_self::JavaList] }
         def initialize(formats)
           @formats = nil
           super()
@@ -2797,22 +2797,22 @@ module Java::Util
         include_class_members ResourceBundle
         
         class_module.module_eval {
-          const_set_lazy(:NO_FALLBACK) { self::NoFallbackControl.new(FORMAT_DEFAULT) }
+          const_set_lazy(:NO_FALLBACK) { class_self::NoFallbackControl.new(FORMAT_DEFAULT) }
           const_attr_reader  :NO_FALLBACK
           
-          const_set_lazy(:PROPERTIES_ONLY_NO_FALLBACK) { self::NoFallbackControl.new(FORMAT_PROPERTIES) }
+          const_set_lazy(:PROPERTIES_ONLY_NO_FALLBACK) { class_self::NoFallbackControl.new(FORMAT_PROPERTIES) }
           const_attr_reader  :PROPERTIES_ONLY_NO_FALLBACK
           
-          const_set_lazy(:CLASS_ONLY_NO_FALLBACK) { self::NoFallbackControl.new(FORMAT_CLASS) }
+          const_set_lazy(:CLASS_ONLY_NO_FALLBACK) { class_self::NoFallbackControl.new(FORMAT_CLASS) }
           const_attr_reader  :CLASS_ONLY_NO_FALLBACK
         }
         
-        typesig { [self::JavaList] }
+        typesig { [class_self::JavaList] }
         def initialize(formats)
           super(formats)
         end
         
-        typesig { [String, self::Locale] }
+        typesig { [String, class_self::Locale] }
         def get_fallback_locale(base_name, locale)
           if ((base_name).nil? || (locale).nil?)
             raise self.class::NullPointerException.new

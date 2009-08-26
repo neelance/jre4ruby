@@ -298,7 +298,7 @@ module Java::Util::Concurrent::Atomic
         alias_method :attr_cclass=, :cclass=
         undef_method :cclass=
         
-        typesig { [self::Class, String] }
+        typesig { [class_self::Class, String] }
         def initialize(tclass, field_name)
           @offset = 0
           @tclass = nil
@@ -416,7 +416,7 @@ module Java::Util::Concurrent::Atomic
         alias_method :attr_cclass=, :cclass=
         undef_method :cclass=
         
-        typesig { [self::Class, String] }
+        typesig { [class_self::Class, String] }
         def initialize(tclass, field_name)
           @offset = 0
           @tclass = nil

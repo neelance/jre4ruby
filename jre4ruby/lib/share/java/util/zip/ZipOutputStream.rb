@@ -67,7 +67,7 @@ module Java::Util::Zip
         alias_method :attr_flag=, :flag=
         undef_method :flag=
         
-        typesig { [self::ZipEntry, ::Java::Long] }
+        typesig { [class_self::ZipEntry, ::Java::Long] }
         def initialize(entry, offset)
           @entry = nil
           @offset = 0

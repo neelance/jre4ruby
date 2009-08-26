@@ -90,7 +90,7 @@ module Sun::Net::Spi::Nameservice::Dns
         alias_method :attr_ns_list=, :ns_list=
         undef_method :ns_list=
         
-        typesig { [self::DirContext, self::JavaList] }
+        typesig { [class_self::DirContext, class_self::JavaList] }
         def initialize(dir_ctxt, ns_list)
           @dir_ctxt = nil
           @ns_list = nil

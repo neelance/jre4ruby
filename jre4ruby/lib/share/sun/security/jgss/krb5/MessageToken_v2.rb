@@ -650,7 +650,7 @@ module Sun::Security::Jgss::Krb5
           System.arraycopy(self.attr_seq_number_data, 0, @bytes, 8, 8)
         end
         
-        typesig { [self::InputStream, self::MessageProp, ::Java::Int] }
+        typesig { [class_self::InputStream, class_self::MessageProp, ::Java::Int] }
         # Constructs a MessageTokenHeader by reading it from an InputStream
         # and sets the appropriate confidentiality and quality of protection
         # values in a MessageProp structure.
@@ -708,7 +708,7 @@ module Sun::Security::Jgss::Krb5
           System.arraycopy(@bytes, 8, self.attr_seq_number_data, 0, 8)
         end
         
-        typesig { [self::OutputStream] }
+        typesig { [class_self::OutputStream] }
         # Encodes this MessageTokenHeader onto an OutputStream
         # @param os the OutputStream to write to
         # @throws IOException is an error occurs while writing

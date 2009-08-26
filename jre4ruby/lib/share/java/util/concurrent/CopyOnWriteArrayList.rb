@@ -1178,7 +1178,7 @@ module Java::Util::Concurrent
         alias_method :attr_expected_array=, :expected_array=
         undef_method :expected_array=
         
-        typesig { [self::CopyOnWriteArrayList, ::Java::Int, ::Java::Int] }
+        typesig { [class_self::CopyOnWriteArrayList, ::Java::Int, ::Java::Int] }
         # only call this holding l's lock
         def initialize(list, from_index, to_index)
           @l = nil
@@ -1379,7 +1379,7 @@ module Java::Util::Concurrent
         alias_method :attr_size=, :size=
         undef_method :size=
         
-        typesig { [self::JavaList, ::Java::Int, ::Java::Int, ::Java::Int] }
+        typesig { [class_self::JavaList, ::Java::Int, ::Java::Int, ::Java::Int] }
         def initialize(l, index, offset, size)
           @i = nil
           @index = 0

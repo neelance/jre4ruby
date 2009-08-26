@@ -731,7 +731,7 @@ module Java::Security
         alias_method :attr_params=, :params=
         undef_method :params=
         
-        typesig { [self::PolicySpi, self::Provider, String, self::Policy::Parameters] }
+        typesig { [class_self::PolicySpi, class_self::Provider, String, class_self::Policy::Parameters] }
         def initialize(spi, p, type, params)
           @spi = nil
           @p = nil
@@ -759,17 +759,17 @@ module Java::Security
           return @p
         end
         
-        typesig { [self::CodeSource] }
+        typesig { [class_self::CodeSource] }
         def get_permissions(codesource)
           return @spi.engine_get_permissions(codesource)
         end
         
-        typesig { [self::ProtectionDomain] }
+        typesig { [class_self::ProtectionDomain] }
         def get_permissions(domain)
           return @spi.engine_get_permissions(domain)
         end
         
-        typesig { [self::ProtectionDomain, self::Permission] }
+        typesig { [class_self::ProtectionDomain, class_self::Permission] }
         def implies(domain, perm)
           return @spi.engine_implies(domain, perm)
         end
@@ -813,7 +813,7 @@ module Java::Security
           @perms.set_read_only
         end
         
-        typesig { [self::Permission] }
+        typesig { [class_self::Permission] }
         # Adds a permission object to the current collection of permission
         # objects.
         # 
@@ -825,7 +825,7 @@ module Java::Security
           @perms.add(permission)
         end
         
-        typesig { [self::Permission] }
+        typesig { [class_self::Permission] }
         # Checks to see if the specified permission is implied by the
         # collection of Permission objects held in this PermissionCollection.
         # 

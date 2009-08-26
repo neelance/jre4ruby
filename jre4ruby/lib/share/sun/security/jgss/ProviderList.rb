@@ -450,7 +450,7 @@ module Sun::Security::Jgss
         alias_method :attr_oid=, :oid=
         undef_method :oid=
         
-        typesig { [self::Provider, self::Oid] }
+        typesig { [class_self::Provider, class_self::Oid] }
         def initialize(p, oid)
           @p = nil
           @oid = nil
@@ -512,7 +512,7 @@ module Sun::Security::Jgss
           return @oid
         end
         
-        typesig { [self::Oid] }
+        typesig { [class_self::Oid] }
         # Determines if this entry is applicable to the desired
         # mechanism. The entry is applicable to the desired mech if
         # it contains the same oid or if it contains a null oid

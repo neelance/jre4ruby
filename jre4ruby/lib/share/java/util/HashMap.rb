@@ -744,7 +744,7 @@ module Java::Util
         alias_method :attr_hash=, :hash=
         undef_method :hash=
         
-        typesig { [::Java::Int, Object, Object, self::Entry] }
+        typesig { [::Java::Int, Object, Object, class_self::Entry] }
         # Creates new entry.
         def initialize(h, k, v, n)
           @key = nil
@@ -802,14 +802,14 @@ module Java::Util
           return RJava.cast_to_string(get_key) + "=" + RJava.cast_to_string(get_value)
         end
         
-        typesig { [self::HashMap] }
+        typesig { [class_self::HashMap] }
         # This method is invoked whenever the value in an entry is
         # overwritten by an invocation of put(k,v) for a key k that's already
         # in the HashMap.
         def record_access(m)
         end
         
-        typesig { [self::HashMap] }
+        typesig { [class_self::HashMap] }
         # This method is invoked whenever the entry is
         # removed from the table.
         def record_removal(m)

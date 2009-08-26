@@ -137,7 +137,7 @@ module Java::Util::Concurrent
           @item = x
         end
         
-        typesig { [Object, self::Node] }
+        typesig { [Object, class_self::Node] }
         def initialize(x, n)
           @item = nil
           @next = nil
@@ -165,12 +165,12 @@ module Java::Util::Concurrent
           return @next
         end
         
-        typesig { [self::Node, self::Node] }
+        typesig { [class_self::Node, class_self::Node] }
         def cas_next(cmp, val)
           return self.class::NextUpdater.compare_and_set(self, cmp, val)
         end
         
-        typesig { [self::Node] }
+        typesig { [class_self::Node] }
         def set_next(val)
           self.class::NextUpdater.set(self, val)
         end

@@ -55,7 +55,7 @@ module Sun::Nio::Cs::Ext
       const_set_lazy(:Decoder) { Class.new(DoubleByteDecoder) do
         include_class_members MS932DB
         
-        typesig { [self::Charset] }
+        typesig { [class_self::Charset] }
         def initialize(cs)
           super(cs, self.class::Index1, self.class::Index2, 0x40, 0xfc)
         end
@@ -92,7 +92,7 @@ module Sun::Nio::Cs::Ext
       const_set_lazy(:Encoder) { Class.new(DoubleByteEncoder) do
         include_class_members MS932DB
         
-        typesig { [self::Charset] }
+        typesig { [class_self::Charset] }
         def initialize(cs)
           super(cs, self.class::Index1, self.class::Index2)
         end

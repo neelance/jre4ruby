@@ -841,7 +841,7 @@ module Sun::Misc
           self.attr_cp.get_utf8(descriptor)
         end
         
-        typesig { [self::DataOutputStream] }
+        typesig { [class_self::DataOutputStream] }
         def write(out)
           # Write all the items of the "field_info" structure.
           # See JVMS section 4.5.
@@ -982,7 +982,7 @@ module Sun::Misc
           self.attr_cp.get_utf8("Exceptions")
         end
         
-        typesig { [self::DataOutputStream] }
+        typesig { [class_self::DataOutputStream] }
         def write(out)
           # Write all the items of the "method_info" structure.
           # See JVMS section 4.6.
@@ -1084,7 +1084,7 @@ module Sun::Misc
         alias_method :attr_method_field_name=, :method_field_name=
         undef_method :method_field_name=
         
-        typesig { [String, Array.typed(self::Class), self::Class, Array.typed(self::Class), self::Class] }
+        typesig { [String, Array.typed(class_self::Class), class_self::Class, Array.typed(class_self::Class), class_self::Class] }
         def initialize(method_name, parameter_types, return_type, exception_types, from_class)
           @method_name = nil
           @parameter_types = nil
@@ -1182,7 +1182,7 @@ module Sun::Misc
           return minfo
         end
         
-        typesig { [self::Class, ::Java::Int, self::DataOutputStream] }
+        typesig { [class_self::Class, ::Java::Int, class_self::DataOutputStream] }
         # Generate code for wrapping an argument of the given type
         # whose value can be found at the specified local variable
         # index, in order for it to be passed (as an Object) to the
@@ -1215,7 +1215,7 @@ module Sun::Misc
           end
         end
         
-        typesig { [self::Class, self::DataOutputStream] }
+        typesig { [class_self::Class, class_self::DataOutputStream] }
         # Generate code for unwrapping a return value of the given
         # type from the invocation handler's "invoke" method (as type
         # Object) to its correct type.  The code is written to the
@@ -1251,7 +1251,7 @@ module Sun::Misc
           end
         end
         
-        typesig { [self::DataOutputStream] }
+        typesig { [class_self::DataOutputStream] }
         # Generate code for initializing the static field that stores
         # the Method object for this proxy method.  The code is written
         # to the supplied stream.
@@ -1721,7 +1721,7 @@ module Sun::Misc
         class_module.module_eval {
           
           def table
-            defined?(@@table) ? @@table : @@table= self::HashMap.new
+            defined?(@@table) ? @@table : @@table= class_self::HashMap.new
           end
           alias_method :attr_table, :table
           
@@ -1741,13 +1741,13 @@ module Sun::Misc
             add(Array, Boolean)
           end
           
-          typesig { [self::Class, self::Class] }
+          typesig { [class_self::Class, class_self::Class] }
           def add(primitive_class, wrapper_class)
-            self.attr_table.put(primitive_class, self::PrimitiveTypeInfo.new(primitive_class, wrapper_class))
+            self.attr_table.put(primitive_class, class_self::PrimitiveTypeInfo.new(primitive_class, wrapper_class))
           end
         }
         
-        typesig { [self::Class, self::Class] }
+        typesig { [class_self::Class, class_self::Class] }
         def initialize(primitive_class, wrapper_class)
           @base_type_string = nil
           @wrapper_class_name = nil
@@ -1763,7 +1763,7 @@ module Sun::Misc
         end
         
         class_module.module_eval {
-          typesig { [self::Class] }
+          typesig { [class_self::Class] }
           def get(cl)
             return self.attr_table.get(cl)
           end
@@ -1895,7 +1895,7 @@ module Sun::Misc
           @read_only = true
         end
         
-        typesig { [self::OutputStream] }
+        typesig { [class_self::OutputStream] }
         # Write this constant pool to a stream as part of
         # the class file format.
         # 
@@ -1911,7 +1911,7 @@ module Sun::Misc
           end
         end
         
-        typesig { [self::Entry] }
+        typesig { [class_self::Entry] }
         # Add a new constant pool entry and return its index.
         def add_entry(entry)
           @pool.add(entry)
@@ -1948,7 +1948,7 @@ module Sun::Misc
           end
         end
         
-        typesig { [self::IndirectEntry] }
+        typesig { [class_self::IndirectEntry] }
         # Get or assign the index for an entry of a type that contains
         # references to other constant pool entries.
         def get_indirect(e)
@@ -1972,7 +1972,7 @@ module Sun::Misc
           const_set_lazy(:Entry) { Class.new do
             include_class_members ConstantPool
             
-            typesig { [self::DataOutputStream] }
+            typesig { [class_self::DataOutputStream] }
             def write(out)
               raise NotImplementedError
             end
@@ -1991,7 +1991,7 @@ module Sun::Misc
           # 
           # ValueEntry objects are not used as keys for their entries in the
           # Map "map", so no useful hashCode or equals methods are defined.
-          const_set_lazy(:ValueEntry) { Class.new(self::Entry) do
+          const_set_lazy(:ValueEntry) { Class.new(class_self::Entry) do
             include_class_members ConstantPool
             
             attr_accessor :value
@@ -2007,7 +2007,7 @@ module Sun::Misc
               @value = value
             end
             
-            typesig { [self::DataOutputStream] }
+            typesig { [class_self::DataOutputStream] }
             def write(out)
               if (@value.is_a?(String))
                 out.write_byte(CONSTANT_UTF8)
@@ -2054,7 +2054,7 @@ module Sun::Misc
           # IndirectEntry objects are used as the keys for their entries in
           # the Map "map", so the hashCode and equals methods are overridden
           # to allow matching.
-          const_set_lazy(:IndirectEntry) { Class.new(self::Entry) do
+          const_set_lazy(:IndirectEntry) { Class.new(class_self::Entry) do
             include_class_members ConstantPool
             
             attr_accessor :tag
@@ -2101,7 +2101,7 @@ module Sun::Misc
               @index1 = index1
             end
             
-            typesig { [self::DataOutputStream] }
+            typesig { [class_self::DataOutputStream] }
             def write(out)
               out.write_byte(@tag)
               out.write_short(@index0)

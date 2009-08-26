@@ -118,7 +118,7 @@ module Sun::Nio::Cs::Ext
           const_attr_reader  :Index2
         }
         
-        typesig { [self::Charset] }
+        typesig { [class_self::Charset] }
         def initialize(cs)
           super(cs, self.class::Index1, self.class::Index2, 0x40, 0xfe)
         end
@@ -159,7 +159,7 @@ module Sun::Nio::Cs::Ext
           const_attr_reader  :Index2
         }
         
-        typesig { [self::Charset] }
+        typesig { [class_self::Charset] }
         def initialize(cs)
           super(cs, self.class::Index1, self.class::Index2)
         end

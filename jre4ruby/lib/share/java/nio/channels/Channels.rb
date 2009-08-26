@@ -253,7 +253,7 @@ module Java::Nio::Channels
         alias_method :attr_read_lock=, :read_lock=
         undef_method :read_lock=
         
-        typesig { [self::InputStream] }
+        typesig { [class_self::InputStream] }
         def initialize(in_)
           @in = nil
           @buf = nil
@@ -266,7 +266,7 @@ module Java::Nio::Channels
           @in = in_
         end
         
-        typesig { [self::ByteBuffer] }
+        typesig { [class_self::ByteBuffer] }
         def read(dst)
           len = dst.remaining
           total_read = 0
@@ -368,7 +368,7 @@ module Java::Nio::Channels
         alias_method :attr_write_lock=, :write_lock=
         undef_method :write_lock=
         
-        typesig { [self::OutputStream] }
+        typesig { [class_self::OutputStream] }
         def initialize(out)
           @out = nil
           @buf = nil
@@ -381,7 +381,7 @@ module Java::Nio::Channels
           @out = out
         end
         
-        typesig { [self::ByteBuffer] }
+        typesig { [class_self::ByteBuffer] }
         def write(src)
           len = src.remaining
           total_written = 0

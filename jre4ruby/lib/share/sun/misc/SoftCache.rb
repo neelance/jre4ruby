@@ -148,7 +148,7 @@ module Sun::Misc
         alias_method :attr_key=, :key=
         undef_method :key=
         
-        typesig { [Object, Object, self::ReferenceQueue] }
+        typesig { [Object, Object, class_self::ReferenceQueue] }
         def initialize(key, value, queue)
           @key = nil
           super(value, queue)
@@ -156,12 +156,12 @@ module Sun::Misc
         end
         
         class_module.module_eval {
-          typesig { [Object, Object, self::ReferenceQueue] }
+          typesig { [Object, Object, class_self::ReferenceQueue] }
           def create(key, value, queue)
             if ((value).nil?)
               return nil
             end
-            return self::ValueCell.new(key, value, queue)
+            return class_self::ValueCell.new(key, value, queue)
           end
           
           typesig { [Object, ::Java::Boolean] }
@@ -419,7 +419,7 @@ module Sun::Misc
         alias_method :attr_value=, :value=
         undef_method :value=
         
-        typesig { [self::Map::Entry, Object] }
+        typesig { [class_self::Map::Entry, Object] }
         # Strong reference to value, to prevent the GC
         # from flushing the value while this Entry
         # exists
@@ -480,7 +480,7 @@ module Sun::Misc
           return Class.new(self.class::Iterator.class == Class ? self.class::Iterator : Object) do
             extend LocalClass
             include_class_members EntrySet
-            include self::Iterator if self::Iterator.class == Module
+            include class_self::Iterator if class_self::Iterator.class == Module
             
             attr_accessor :hash_iterator
             alias_method :attr_hash_iterator, :hash_iterator

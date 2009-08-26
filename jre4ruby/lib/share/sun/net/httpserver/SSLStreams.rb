@@ -204,7 +204,7 @@ module Sun::Net::Httpserver
         alias_method :attr_cfg=, :cfg=
         undef_method :cfg=
         
-        typesig { [self::HttpsConfigurator, self::InetSocketAddress] }
+        typesig { [class_self::HttpsConfigurator, class_self::InetSocketAddress] }
         def initialize(cfg, addr)
           @addr = nil
           @params = nil
@@ -224,7 +224,7 @@ module Sun::Net::Httpserver
           return @cfg
         end
         
-        typesig { [self::SSLParameters] }
+        typesig { [class_self::SSLParameters] }
         def set_sslparameters(p)
           @params = p
         end
@@ -507,7 +507,7 @@ module Sun::Net::Httpserver
         alias_method :attr_u_remaining=, :u_remaining=
         undef_method :u_remaining=
         
-        typesig { [self::SocketChannel, self::SSLEngine] }
+        typesig { [class_self::SocketChannel, class_self::SSLEngine] }
         # the number of bytes left in unwrap_src after an unwrap()
         def initialize(chan, engine)
           @chan = nil
@@ -542,7 +542,7 @@ module Sun::Net::Httpserver
           @sc.free_selector(@read_selector)
         end
         
-        typesig { [self::ByteBuffer] }
+        typesig { [class_self::ByteBuffer] }
         # try to wrap and send the data in src. Handles OVERFLOW.
         # Might block if there is an outbound blockage or if another
         # thread is calling wrap(). Also, might not send any data
@@ -551,7 +551,7 @@ module Sun::Net::Httpserver
           return wrap_and_send_x(src, false)
         end
         
-        typesig { [self::ByteBuffer, ::Java::Boolean] }
+        typesig { [class_self::ByteBuffer, ::Java::Boolean] }
         def wrap_and_send_x(src, ignore_close)
           if (@closed && !ignore_close)
             raise self.class::IOException.new("Engine is closed")
@@ -591,7 +591,7 @@ module Sun::Net::Httpserver
           return r
         end
         
-        typesig { [self::ByteBuffer] }
+        typesig { [class_self::ByteBuffer] }
         # block until a complete message is available and return it
         # in dst, together with the Result. dst may have been re-allocated
         # so caller should check the returned value in Result

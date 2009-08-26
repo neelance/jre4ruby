@@ -97,7 +97,7 @@ module Sun::Nio::Cs::Ext
           end
         }
         
-        typesig { [self::Charset] }
+        typesig { [class_self::Charset] }
         def initialize(cs)
           super(cs, self.class::SingleByteToChar)
         end
@@ -909,7 +909,7 @@ module Sun::Nio::Cs::Ext
           alias_method :attr_index2a=, :index2a=
         }
         
-        typesig { [self::Charset] }
+        typesig { [class_self::Charset] }
         def initialize(cs)
           super(cs, self.attr_index2a)
         end

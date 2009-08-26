@@ -247,7 +247,7 @@ module Java::Util::Concurrent
         alias_method :attr_runner=, :runner=
         undef_method :runner=
         
-        typesig { [self::Callable] }
+        typesig { [class_self::Callable] }
         def initialize(callable)
           @callable = nil
           @result = nil
@@ -312,7 +312,7 @@ module Java::Util::Concurrent
           return @result
         end
         
-        typesig { [self::V] }
+        typesig { [class_self::V] }
         def inner_set(v)
           loop do
             s = get_state
@@ -335,7 +335,7 @@ module Java::Util::Concurrent
           end
         end
         
-        typesig { [self::JavaThrowable] }
+        typesig { [class_self::JavaThrowable] }
         def inner_set_exception(t)
           loop do
             s = get_state

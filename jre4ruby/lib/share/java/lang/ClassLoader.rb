@@ -1680,7 +1680,7 @@ module Java::Lang
           JNI.__send__(:Java_java_lang_NativeLibrary_unload, JNI.env, self.jni_id)
         end
         
-        typesig { [self::Class, String] }
+        typesig { [class_self::Class, String] }
         def initialize(from_class, name)
           @handle = 0
           @jni_version = 0

@@ -111,7 +111,7 @@ module Sun::Net::Httpserver
         alias_method :attr_delete_flag=, :delete_flag=
         undef_method :delete_flag=
         
-        typesig { [self::Selector] }
+        typesig { [class_self::Selector] }
         def initialize(sel)
           @sel = nil
           @delete_flag = false

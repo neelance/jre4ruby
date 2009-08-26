@@ -2568,10 +2568,10 @@ module Java::Util
         
         class_module.module_eval {
           when_class_loaded do
-            perm = self::RuntimePermission.new("accessClassInPackage.sun.util.calendar")
+            perm = class_self::RuntimePermission.new("accessClassInPackage.sun.util.calendar")
             perms = perm.new_permission_collection
             perms.add(perm)
-            const_set :INSTANCE, self::AccessControlContext.new(Array.typed(self.class::ProtectionDomain).new([self::ProtectionDomain.new(nil, perms)]))
+            const_set :INSTANCE, class_self::AccessControlContext.new(Array.typed(self.class::ProtectionDomain).new([class_self::ProtectionDomain.new(nil, perms)]))
           end
         }
         

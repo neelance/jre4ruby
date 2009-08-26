@@ -864,7 +864,7 @@ module Java::Security
         alias_method :attr_service_iterator=, :service_iterator=
         undef_method :service_iterator=
         
-        typesig { [self::SignatureSpi, String] }
+        typesig { [class_self::SignatureSpi, String] }
         # constructor
         def initialize(sig_spi, algorithm)
           @sig_spi = nil
@@ -876,7 +876,7 @@ module Java::Security
           @lock = nil # no lock needed
         end
         
-        typesig { [self::Service, self::Iterator, String] }
+        typesig { [class_self::Service, class_self::Iterator, String] }
         # used with delayed provider selection
         def initialize(service, iterator, algorithm)
           @sig_spi = nil
@@ -912,20 +912,20 @@ module Java::Security
         end
         
         class_module.module_eval {
-          typesig { [self::Service] }
+          typesig { [class_self::Service] }
           def new_instance(s)
             if ((s.get_type == "Cipher"))
               # must be NONEwithRSA
               begin
                 c = Cipher.get_instance(RSA_CIPHER, s.get_provider)
-                return self::CipherAdapter.new(c)
-              rescue self::NoSuchPaddingException => e
-                raise self::NoSuchAlgorithmException.new(e)
+                return class_self::CipherAdapter.new(c)
+              rescue class_self::NoSuchPaddingException => e
+                raise class_self::NoSuchAlgorithmException.new(e)
               end
             else
               o = s.new_instance(nil)
-              if ((o.is_a?(self::SignatureSpi)).equal?(false))
-                raise self::NoSuchAlgorithmException.new("Not a SignatureSpi: " + RJava.cast_to_string(o.get_class.get_name))
+              if ((o.is_a?(class_self::SignatureSpi)).equal?(false))
+                raise class_self::NoSuchAlgorithmException.new("Not a SignatureSpi: " + RJava.cast_to_string(o.get_class.get_name))
               end
               return o
             end
@@ -997,7 +997,7 @@ module Java::Security
           end
         end
         
-        typesig { [::Java::Int, self::Key, self::SecureRandom] }
+        typesig { [::Java::Int, class_self::Key, class_self::SecureRandom] }
         def choose_provider(type, key, random)
           synchronized((@lock)) do
             if (!(@sig_spi).nil?)
@@ -1061,7 +1061,7 @@ module Java::Security
           const_attr_reader  :I_PRIV_SR
         }
         
-        typesig { [self::SignatureSpi, ::Java::Int, self::Key, self::SecureRandom] }
+        typesig { [class_self::SignatureSpi, ::Java::Int, class_self::Key, class_self::SecureRandom] }
         def init(spi, type, key, random)
           case (type)
           when self.class::I_PUB
@@ -1075,7 +1075,7 @@ module Java::Security
           end
         end
         
-        typesig { [self::PublicKey] }
+        typesig { [class_self::PublicKey] }
         def engine_init_verify(public_key)
           if (!(@sig_spi).nil?)
             @sig_spi.engine_init_verify(public_key)
@@ -1084,7 +1084,7 @@ module Java::Security
           end
         end
         
-        typesig { [self::PrivateKey] }
+        typesig { [class_self::PrivateKey] }
         def engine_init_sign(private_key)
           if (!(@sig_spi).nil?)
             @sig_spi.engine_init_sign(private_key)
@@ -1093,7 +1093,7 @@ module Java::Security
           end
         end
         
-        typesig { [self::PrivateKey, self::SecureRandom] }
+        typesig { [class_self::PrivateKey, class_self::SecureRandom] }
         def engine_init_sign(private_key, sr)
           if (!(@sig_spi).nil?)
             @sig_spi.engine_init_sign(private_key, sr)
@@ -1114,7 +1114,7 @@ module Java::Security
           @sig_spi.engine_update(b, off, len)
         end
         
-        typesig { [self::ByteBuffer] }
+        typesig { [class_self::ByteBuffer] }
         def engine_update(data)
           choose_first_provider
           @sig_spi.engine_update(data)
@@ -1150,7 +1150,7 @@ module Java::Security
           @sig_spi.engine_set_parameter(param, value)
         end
         
-        typesig { [self::AlgorithmParameterSpec] }
+        typesig { [class_self::AlgorithmParameterSpec] }
         def engine_set_parameter(params)
           choose_first_provider
           @sig_spi.engine_set_parameter(params)
@@ -1188,7 +1188,7 @@ module Java::Security
         alias_method :attr_data=, :data=
         undef_method :data=
         
-        typesig { [self::Cipher] }
+        typesig { [class_self::Cipher] }
         def initialize(cipher)
           @cipher = nil
           @data = nil
@@ -1196,7 +1196,7 @@ module Java::Security
           @cipher = cipher
         end
         
-        typesig { [self::PublicKey] }
+        typesig { [class_self::PublicKey] }
         def engine_init_verify(public_key)
           @cipher.init(Cipher::DECRYPT_MODE, public_key)
           if ((@data).nil?)
@@ -1206,13 +1206,13 @@ module Java::Security
           end
         end
         
-        typesig { [self::PrivateKey] }
+        typesig { [class_self::PrivateKey] }
         def engine_init_sign(private_key)
           @cipher.init(Cipher::ENCRYPT_MODE, private_key)
           @data = nil
         end
         
-        typesig { [self::PrivateKey, self::SecureRandom] }
+        typesig { [class_self::PrivateKey, class_self::SecureRandom] }
         def engine_init_sign(private_key, random)
           @cipher.init(Cipher::ENCRYPT_MODE, private_key, random)
           @data = nil

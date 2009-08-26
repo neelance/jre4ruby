@@ -60,13 +60,13 @@ module Sun::Util::Calendar
           set_cache(1, -1, 365) # January 1, 1 CE (Julian)
         end
         
-        typesig { [self::TimeZone] }
+        typesig { [class_self::TimeZone] }
         def initialize(zone)
           super(zone)
           set_cache(1, -1, 365) # January 1, 1 CE (Julian)
         end
         
-        typesig { [self::Era] }
+        typesig { [class_self::Era] }
         def set_era(era)
           if ((era).nil?)
             raise self.class::NullPointerException.new
@@ -78,7 +78,7 @@ module Sun::Util::Calendar
           return self
         end
         
-        typesig { [self::Era] }
+        typesig { [class_self::Era] }
         def set_known_era(era)
           BaseCalendar::Date.instance_method(:set_era).bind(self).call(era)
         end

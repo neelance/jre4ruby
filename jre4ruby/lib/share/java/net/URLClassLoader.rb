@@ -435,7 +435,7 @@ module Java::Net
             u = AccessController.do_privileged(Class.new(self.class::PrivilegedAction.class == Class ? self.class::PrivilegedAction : Object) do
               extend LocalClass
               include_class_members enumeration_class
-              include self::PrivilegedAction if self::PrivilegedAction.class == Module
+              include class_self::PrivilegedAction if class_self::PrivilegedAction.class == Module
               
               typesig { [] }
               define_method :run do

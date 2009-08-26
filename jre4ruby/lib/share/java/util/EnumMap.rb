@@ -596,7 +596,7 @@ module Java::Util
           return fill_entry_array(Array.typed(Object).new(self.attr_size) { nil })
         end
         
-        typesig { [Array.typed(self::T)] }
+        typesig { [Array.typed(class_self::T)] }
         def to_array(a)
           size_ = size
           if (a.attr_length < size_)
@@ -757,7 +757,7 @@ module Java::Util
           return unmask_null(self.attr_vals[self.attr_last_returned_index])
         end
         
-        typesig { [self::V] }
+        typesig { [class_self::V] }
         def set_value(value)
           check_last_returned_index_for_entry_use
           old_value = unmask_null(self.attr_vals[self.attr_last_returned_index])

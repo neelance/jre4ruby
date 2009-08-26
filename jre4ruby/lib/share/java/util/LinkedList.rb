@@ -816,7 +816,7 @@ module Java::Util
           @expected_mod_count += 1
         end
         
-        typesig { [self::E] }
+        typesig { [class_self::E] }
         def set(e)
           if ((@last_returned).equal?(self.attr_header))
             raise self.class::IllegalStateException.new
@@ -825,7 +825,7 @@ module Java::Util
           @last_returned.attr_element = e
         end
         
-        typesig { [self::E] }
+        typesig { [class_self::E] }
         def add(e)
           check_for_comodification
           @last_returned = self.attr_header
@@ -866,7 +866,7 @@ module Java::Util
         alias_method :attr_previous=, :previous=
         undef_method :previous=
         
-        typesig { [Object, self::Entry, self::Entry] }
+        typesig { [Object, class_self::Entry, class_self::Entry] }
         def initialize(element, next_, previous)
           @element = nil
           @next = nil

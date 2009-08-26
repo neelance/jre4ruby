@@ -70,7 +70,7 @@ module Sun::Util::Calendar
           @gregorian_year = FIELD_UNDEFINED
         end
         
-        typesig { [self::TimeZone] }
+        typesig { [class_self::TimeZone] }
         def initialize(zone)
           @gregorian_year = 0
           super(zone)
@@ -83,7 +83,7 @@ module Sun::Util::Calendar
         alias_method :attr_gregorian_year=, :gregorian_year=
         undef_method :gregorian_year=
         
-        typesig { [self::Era] }
+        typesig { [class_self::Era] }
         def set_era(era)
           if (!(get_era).equal?(era))
             super(era)
@@ -118,7 +118,7 @@ module Sun::Util::Calendar
           @gregorian_year = normalized_year
         end
         
-        typesig { [self::Era] }
+        typesig { [class_self::Era] }
         def set_local_era(era)
           BaseCalendar::Date.instance_method(:set_era).bind(self).call(era)
         end

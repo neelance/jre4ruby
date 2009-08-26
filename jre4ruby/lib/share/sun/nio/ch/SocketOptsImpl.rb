@@ -263,7 +263,7 @@ module Sun::Nio::Ch
           include SocketOpts::IP
         }
         
-        typesig { [self::Dispatcher] }
+        typesig { [class_self::Dispatcher] }
         def initialize(d)
           super(d)
         end
@@ -275,7 +275,7 @@ module Sun::Nio::Ch
           return get_network_interface(SocketOptions::IP_MULTICAST_IF2)
         end
         
-        typesig { [self::NetworkInterface] }
+        typesig { [class_self::NetworkInterface] }
         def multicast_interface(ni)
           set_network_interface(SocketOptions::IP_MULTICAST_IF2, ni)
           return self
@@ -305,7 +305,7 @@ module Sun::Nio::Ch
           return self
         end
         
-        typesig { [self::StringBuffer] }
+        typesig { [class_self::StringBuffer] }
         # toString
         def to_s(sb)
           super(sb)
@@ -318,13 +318,13 @@ module Sun::Nio::Ch
         
         class_module.module_eval {
           # TCP-specific IP options
-          const_set_lazy(:TCP) { Class.new(self::SocketOptsImpl::IP) do
+          const_set_lazy(:TCP) { Class.new(class_self::SocketOptsImpl::IP) do
             include_class_members IP
             overload_protected {
-              include self::SocketOpts::IP::TCP
+              include class_self::SocketOpts::IP::TCP
             }
             
-            typesig { [self::Dispatcher] }
+            typesig { [class_self::Dispatcher] }
             def initialize(d)
               super(d)
             end
@@ -341,7 +341,7 @@ module Sun::Nio::Ch
               return self
             end
             
-            typesig { [self::StringBuffer] }
+            typesig { [class_self::StringBuffer] }
             # toString
             def to_s(sb)
               super(sb)

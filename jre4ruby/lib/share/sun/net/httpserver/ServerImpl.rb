@@ -289,7 +289,7 @@ module Sun::Net::Httpserver
         include_class_members ServerImpl
         include Executor
         
-        typesig { [self::Runnable] }
+        typesig { [class_self::Runnable] }
         def execute(task)
           task.run
         end
@@ -441,7 +441,7 @@ module Sun::Net::Httpserver
         include_class_members ServerImpl
         include Runnable
         
-        typesig { [self::Event] }
+        typesig { [class_self::Event] }
         def handle_event(r)
           t = r.attr_exchange
           c = t.get_connection
@@ -544,7 +544,7 @@ module Sun::Net::Httpserver
           end
         end
         
-        typesig { [self::SocketChannel, self::HttpConnection] }
+        typesig { [class_self::SocketChannel, class_self::HttpConnection] }
         def handle(chan, conn)
           begin
             t = self.class::Exchange.new(chan, self.attr_protocol, conn)
@@ -663,7 +663,7 @@ module Sun::Net::Httpserver
         alias_method :attr_rejected=, :rejected=
         undef_method :rejected=
         
-        typesig { [self::SocketChannel, String, self::HttpConnection] }
+        typesig { [class_self::SocketChannel, String, class_self::HttpConnection] }
         def initialize(chan, protocol, conn)
           @chan = nil
           @connection = nil
@@ -825,7 +825,7 @@ module Sun::Net::Httpserver
           const_set_lazy(:LinkHandler) { Class.new do
             extend LocalClass
             include_class_members Exchange
-            include self::HttpHandler
+            include class_self::HttpHandler
             
             attr_accessor :next_chain
             alias_method :attr_next_chain, :next_chain
@@ -833,13 +833,13 @@ module Sun::Net::Httpserver
             alias_method :attr_next_chain=, :next_chain=
             undef_method :next_chain=
             
-            typesig { [self::Filter::Chain] }
+            typesig { [class_self::Filter::Chain] }
             def initialize(next_chain)
               @next_chain = nil
               @next_chain = next_chain
             end
             
-            typesig { [self::HttpExchange] }
+            typesig { [class_self::HttpExchange] }
             def handle(exchange)
               @next_chain.do_filter(exchange)
             end

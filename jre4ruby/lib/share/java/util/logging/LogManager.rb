@@ -1091,7 +1091,7 @@ module Java::Util::Logging
         alias_method :attr_parent=, :parent=
         undef_method :parent=
         
-        typesig { [self::LogNode] }
+        typesig { [class_self::LogNode] }
         def initialize(parent)
           @children = nil
           @logger_ref = nil
@@ -1099,7 +1099,7 @@ module Java::Util::Logging
           @parent = parent
         end
         
-        typesig { [self::Logger] }
+        typesig { [class_self::Logger] }
         # Recursive method to walk the tree below a node and set
         # a new parent logger.
         def walk_and_set_parent(parent)
@@ -1136,20 +1136,20 @@ module Java::Util::Logging
           set_level(DefaultLevel)
         end
         
-        typesig { [self::LogRecord] }
+        typesig { [class_self::LogRecord] }
         def log(record)
           # Make sure that the global handlers have been instantiated.
           initialize_global_handlers
           super(record)
         end
         
-        typesig { [self::Handler] }
+        typesig { [class_self::Handler] }
         def add_handler(h)
           initialize_global_handlers
           super(h)
         end
         
-        typesig { [self::Handler] }
+        typesig { [class_self::Handler] }
         def remove_handler(h)
           initialize_global_handlers
           super(h)

@@ -64,7 +64,7 @@ module Java::Nio::Channels
           include ScatteringByteChannel
         }
         
-        typesig { [self::SelectorProvider] }
+        typesig { [class_self::SelectorProvider] }
         # Constructs a new instance of this class.
         def initialize(provider)
           super(provider)
@@ -96,7 +96,7 @@ module Java::Nio::Channels
           include GatheringByteChannel
         }
         
-        typesig { [self::SelectorProvider] }
+        typesig { [class_self::SelectorProvider] }
         # Initializes a new instance of this class.
         def initialize(provider)
           super(provider)

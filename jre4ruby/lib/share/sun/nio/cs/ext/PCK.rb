@@ -88,7 +88,7 @@ module Sun::Nio::Cs::Ext
           const_attr_reader  :REPLACE_CHAR
         }
         
-        typesig { [self::Charset] }
+        typesig { [class_self::Charset] }
         def initialize(cs)
           @jis0208 = nil
           super(cs)
@@ -143,7 +143,7 @@ module Sun::Nio::Cs::Ext
         alias_method :attr_j0208index2=, :j0208index2=
         undef_method :j0208index2=
         
-        typesig { [self::Charset] }
+        typesig { [class_self::Charset] }
         def initialize(cs)
           @jis0201 = nil
           @jis0208 = nil

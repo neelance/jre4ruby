@@ -126,7 +126,7 @@ module Sun::Security::Jgss::Krb5
         alias_method :attr_flags=, :flags=
         undef_method :flags=
         
-        typesig { [self::Krb5Context, self::Credentials, self::Credentials] }
+        typesig { [class_self::Krb5Context, class_self::Credentials, class_self::Credentials] }
         # Called on the initiator side when creating the
         # InitSecContextToken.
         def initialize(context, tgt, service_ticket)
@@ -226,7 +226,7 @@ module Sun::Security::Jgss::Krb5
           end
         end
         
-        typesig { [self::Krb5Context, self::Checksum, self::EncryptionKey] }
+        typesig { [class_self::Krb5Context, class_self::Checksum, class_self::EncryptionKey] }
         # Called on the acceptor side when reading an InitSecContextToken.
         # 
         # XXX Passing in Checksum is not required. byte[] can
@@ -286,7 +286,7 @@ module Sun::Security::Jgss::Krb5
           end
         end
         
-        typesig { [self::CipherHelper] }
+        typesig { [class_self::CipherHelper] }
         # check if KRB-CRED message should use NULL_KEY for encryption
         def use_null_key(ch)
           flag = true
@@ -307,7 +307,7 @@ module Sun::Security::Jgss::Krb5
           return @deleg_creds
         end
         
-        typesig { [self::Krb5Context] }
+        typesig { [class_self::Krb5Context] }
         def set_context_flags(context)
           # default for cred delegation is false
           if ((@flags & CHECKSUM_DELEG_FLAG) > 0)

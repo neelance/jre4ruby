@@ -1176,7 +1176,7 @@ module Java::Text
           # The value associated with the key will be an <code>Integer</code>
           # indicating the index in the <code>arguments</code> array of the
           # argument from which the text was generated.
-          const_set_lazy(:ARGUMENT) { self::Field.new("message argument field") }
+          const_set_lazy(:ARGUMENT) { class_self::Field.new("message argument field") }
           const_attr_reader  :ARGUMENT
         }
         

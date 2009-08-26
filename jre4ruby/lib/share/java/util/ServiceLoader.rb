@@ -376,7 +376,7 @@ module Java::Util
         alias_method :attr_next_name=, :next_name=
         undef_method :next_name=
         
-        typesig { [self::Class, self::ClassLoader] }
+        typesig { [class_self::Class, class_self::ClassLoader] }
         def initialize(service, loader)
           @service = nil
           @loader = nil

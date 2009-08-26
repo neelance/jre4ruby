@@ -825,7 +825,7 @@ module Java::Net
           end
         }
         
-        typesig { [self::Type] }
+        typesig { [class_self::Type] }
         # Create cache
         def initialize(type)
           @cache = nil

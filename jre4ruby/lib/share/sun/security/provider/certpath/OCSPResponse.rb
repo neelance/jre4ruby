@@ -477,7 +477,7 @@ module Sun::Security::Provider::Certpath
         alias_method :attr_next_update=, :next_update=
         undef_method :next_update=
         
-        typesig { [self::DerValue] }
+        typesig { [class_self::DerValue] }
         def initialize(der)
           @cert_id = nil
           @cert_status = 0

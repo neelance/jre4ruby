@@ -1273,11 +1273,11 @@ module Java::Security
         undef_method :registered=
         
         class_module.module_eval {
-          const_set_lazy(:CLASS0) { Array.typed(self::Class).new(0) { nil } }
+          const_set_lazy(:CLASS0) { Array.typed(class_self::Class).new(0) { nil } }
           const_attr_reader  :CLASS0
         }
         
-        typesig { [self::Provider] }
+        typesig { [class_self::Provider] }
         # this constructor and these methods are used for parsing
         # the legacy string properties.
         def initialize(provider)
@@ -1318,7 +1318,7 @@ module Java::Security
           @attributes.put(self.class::UString.new(type), value)
         end
         
-        typesig { [self::Provider, String, String, String, self::JavaList, self::Map] }
+        typesig { [class_self::Provider, String, String, String, class_self::JavaList, class_self::Map] }
         # Construct a new service.
         # 
         # @param provider the provider that offers this service
@@ -1648,7 +1648,7 @@ module Java::Security
           return nil
         end
         
-        typesig { [self::Key] }
+        typesig { [class_self::Key] }
         def supports_key_format(key)
           if ((@supported_formats).nil?)
             return false
@@ -1665,7 +1665,7 @@ module Java::Security
           return false
         end
         
-        typesig { [self::Key] }
+        typesig { [class_self::Key] }
         def supports_key_class(key)
           if ((@supported_classes).nil?)
             return false

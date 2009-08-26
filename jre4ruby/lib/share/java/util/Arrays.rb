@@ -3495,7 +3495,7 @@ module Java::Util
           return @a.clone
         end
         
-        typesig { [Array.typed(self::T)] }
+        typesig { [Array.typed(class_self::T)] }
         def to_array(a)
           size_ = size
           if (a.attr_length < size_)

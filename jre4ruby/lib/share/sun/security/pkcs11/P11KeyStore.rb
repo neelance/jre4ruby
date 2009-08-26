@@ -260,7 +260,7 @@ module Sun::Security::Pkcs11
           @label = label
         end
         
-        typesig { [String, Array.typed(::Java::Byte), ::Java::Boolean, self::X509Certificate] }
+        typesig { [String, Array.typed(::Java::Byte), ::Java::Boolean, class_self::X509Certificate] }
         # PrivateKeyEntry
         def initialize(label, id, trusted, cert)
           @type = nil
@@ -330,7 +330,7 @@ module Sun::Security::Pkcs11
           end
         end
         
-        typesig { [Array.typed(self::Callback)] }
+        typesig { [Array.typed(class_self::Callback)] }
         def handle(callbacks)
           if (!(callbacks[0].is_a?(self.class::PasswordCallback)))
             raise self.class::UnsupportedCallbackException.new(callbacks[0])
@@ -371,7 +371,7 @@ module Sun::Security::Pkcs11
         alias_method :attr_type=, :type=
         undef_method :type=
         
-        typesig { [::Java::Long, self::CK_ATTRIBUTE] }
+        typesig { [::Java::Long, class_self::CK_ATTRIBUTE] }
         # CKA_CLASS
         def initialize(handle, type)
           @handle = 0

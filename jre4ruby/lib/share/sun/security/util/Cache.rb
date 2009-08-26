@@ -560,7 +560,7 @@ module Sun::Security::Util
         alias_method :attr_expiration_time=, :expiration_time=
         undef_method :expiration_time=
         
-        typesig { [Object, Object, ::Java::Long, self::ReferenceQueue] }
+        typesig { [Object, Object, ::Java::Long, class_self::ReferenceQueue] }
         def initialize(key, value, expiration_time, queue)
           @key = nil
           @expiration_time = 0

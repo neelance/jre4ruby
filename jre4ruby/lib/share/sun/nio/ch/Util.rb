@@ -129,7 +129,7 @@ module Sun::Nio::Ch
         alias_method :attr_sel=, :sel=
         undef_method :sel=
         
-        typesig { [self::Selector] }
+        typesig { [class_self::Selector] }
         def initialize(sel)
           @sel = nil
           @sel = sel
@@ -139,7 +139,7 @@ module Sun::Nio::Ch
         class_module.module_eval {
           const_set_lazy(:Closer) { Class.new do
             include_class_members SelectorWrapper
-            include self::Runnable
+            include class_self::Runnable
             
             attr_accessor :sel
             alias_method :attr_sel, :sel
@@ -147,7 +147,7 @@ module Sun::Nio::Ch
             alias_method :attr_sel=, :sel=
             undef_method :sel=
             
-            typesig { [self::Selector] }
+            typesig { [class_self::Selector] }
             def initialize(sel)
               @sel = nil
               @sel = sel

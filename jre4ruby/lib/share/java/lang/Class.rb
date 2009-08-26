@@ -2630,7 +2630,7 @@ module Java::Lang
           @length = 0
         end
         
-        typesig { [self::Method] }
+        typesig { [class_self::Method] }
         def add(m)
           if ((@length).equal?(@methods.attr_length))
             @methods = Arrays.copy_of(@methods, 2 * @methods.attr_length)
@@ -2638,7 +2638,7 @@ module Java::Lang
           @methods[((@length += 1) - 1)] = m
         end
         
-        typesig { [Array.typed(self::Method)] }
+        typesig { [Array.typed(class_self::Method)] }
         def add_all(ma)
           i = 0
           while i < ma.attr_length
@@ -2647,7 +2647,7 @@ module Java::Lang
           end
         end
         
-        typesig { [self::MethodArray] }
+        typesig { [class_self::MethodArray] }
         def add_all(ma)
           i = 0
           while i < ma.length
@@ -2656,7 +2656,7 @@ module Java::Lang
           end
         end
         
-        typesig { [self::Method] }
+        typesig { [class_self::Method] }
         def add_if_not_present(new_method)
           i = 0
           while i < @length
@@ -2669,7 +2669,7 @@ module Java::Lang
           add(new_method)
         end
         
-        typesig { [self::MethodArray] }
+        typesig { [class_self::MethodArray] }
         def add_all_if_not_present(new_methods)
           i = 0
           while i < new_methods.length
@@ -2691,7 +2691,7 @@ module Java::Lang
           return @methods[i]
         end
         
-        typesig { [self::Method] }
+        typesig { [class_self::Method] }
         def remove_by_name_and_signature(to_remove)
           i = 0
           while i < @length

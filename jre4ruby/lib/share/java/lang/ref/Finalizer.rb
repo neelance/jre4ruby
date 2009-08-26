@@ -284,7 +284,7 @@ module Java::Lang::Ref
       const_set_lazy(:FinalizerThread) { Class.new(JavaThread) do
         include_class_members Finalizer
         
-        typesig { [self::JavaThreadGroup] }
+        typesig { [class_self::JavaThreadGroup] }
         def initialize(g)
           super(g, "Finalizer")
         end

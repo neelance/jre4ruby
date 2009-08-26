@@ -239,7 +239,7 @@ module Sun::Nio::Cs::Ext
         alias_method :attr_current_state=, :current_state=
         undef_method :current_state=
         
-        typesig { [self::Charset] }
+        typesig { [class_self::Charset] }
         def initialize(cs)
           @current_state = 0
           super(cs, 1.0, 2.0)
@@ -275,7 +275,7 @@ module Sun::Nio::Cs::Ext
           @current_state = GB18030_DOUBLE_BYTE
         end
         
-        typesig { [self::ByteBuffer, self::CharBuffer] }
+        typesig { [class_self::ByteBuffer, class_self::CharBuffer] }
         def decode_array_loop(src, dst)
           sa = src.array
           sp = src.array_offset + src.position
@@ -397,7 +397,7 @@ module Sun::Nio::Cs::Ext
           end
         end
         
-        typesig { [self::ByteBuffer, self::CharBuffer] }
+        typesig { [class_self::ByteBuffer, class_self::CharBuffer] }
         def decode_buffer_loop(src, dst)
           mark = src.position
           begin
@@ -507,7 +507,7 @@ module Sun::Nio::Cs::Ext
           end
         end
         
-        typesig { [self::ByteBuffer, self::CharBuffer] }
+        typesig { [class_self::ByteBuffer, class_self::CharBuffer] }
         def decode_loop(src, dst)
           if (src.has_array && dst.has_array)
             return decode_array_loop(src, dst)
@@ -529,7 +529,7 @@ module Sun::Nio::Cs::Ext
         alias_method :attr_current_state=, :current_state=
         undef_method :current_state=
         
-        typesig { [self::Charset] }
+        typesig { [class_self::Charset] }
         def initialize(cs)
           @current_state = 0
           @sgp = nil
@@ -560,7 +560,7 @@ module Sun::Nio::Cs::Ext
           @current_state = GB18030_DOUBLE_BYTE
         end
         
-        typesig { [self::CharBuffer, self::ByteBuffer] }
+        typesig { [class_self::CharBuffer, class_self::ByteBuffer] }
         def encode_array_loop(src, dst)
           sa = src.array
           sp = src.array_offset + src.position
@@ -666,7 +666,7 @@ module Sun::Nio::Cs::Ext
           end
         end
         
-        typesig { [self::CharBuffer, self::ByteBuffer] }
+        typesig { [class_self::CharBuffer, class_self::ByteBuffer] }
         def encode_buffer_loop(src, dst)
           condensed_key = 0
           hi_byte = 0
@@ -758,7 +758,7 @@ module Sun::Nio::Cs::Ext
           end
         end
         
-        typesig { [self::CharBuffer, self::ByteBuffer] }
+        typesig { [class_self::CharBuffer, class_self::ByteBuffer] }
         def encode_loop(src, dst)
           if (src.has_array && dst.has_array)
             return encode_array_loop(src, dst)

@@ -400,7 +400,7 @@ module Sun::Security::Ssl
         alias_method :attr_hostname=, :hostname=
         undef_method :hostname=
         
-        typesig { [self::HandshakeInStream] }
+        typesig { [class_self::HandshakeInStream] }
         def initialize(s)
           @length = 0
           @type = 0

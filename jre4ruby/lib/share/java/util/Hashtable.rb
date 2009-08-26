@@ -738,7 +738,7 @@ module Java::Util
           return get_iterator(ENTRIES)
         end
         
-        typesig { [self::Map::Entry] }
+        typesig { [class_self::Map::Entry] }
         def add(o)
           return super(o)
         end
@@ -1074,7 +1074,7 @@ module Java::Util
         alias_method :attr_next=, :next=
         undef_method :next=
         
-        typesig { [::Java::Int, Object, Object, self::Entry] }
+        typesig { [::Java::Int, Object, Object, class_self::Entry] }
         def initialize(hash, key, value, next_)
           @hash = 0
           @key = nil

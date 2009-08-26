@@ -342,12 +342,12 @@ module Java::Util::Jar
         alias_method :attr_pos=, :pos=
         undef_method :pos=
         
-        typesig { [self::InputStream] }
+        typesig { [class_self::InputStream] }
         def initialize(in_)
           initialize__fast_input_stream(in_, 8192)
         end
         
-        typesig { [self::InputStream, ::Java::Int] }
+        typesig { [class_self::InputStream, ::Java::Int] }
         def initialize(in_, size)
           @buf = nil
           @count = 0

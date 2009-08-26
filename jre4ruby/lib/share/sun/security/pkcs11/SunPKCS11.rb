@@ -542,7 +542,7 @@ module Sun::Security::Pkcs11
           @mechanisms = mechanisms
         end
         
-        typesig { [self::Token, ::Java::Int] }
+        typesig { [class_self::Token, ::Java::Int] }
         def service(token, mechanism)
           return self.class::P11Service.new(token, @type, @algorithm, @class_name, @aliases, mechanism)
         end
@@ -744,7 +744,7 @@ module Sun::Security::Pkcs11
         alias_method :attr_enabled=, :enabled=
         undef_method :enabled=
         
-        typesig { [self::SunPKCS11] }
+        typesig { [class_self::SunPKCS11] }
         def initialize(provider)
           @provider = nil
           @enabled = false
@@ -981,7 +981,7 @@ module Sun::Security::Pkcs11
         alias_method :attr_mechanism=, :mechanism=
         undef_method :mechanism=
         
-        typesig { [self::Token, String, String, String, Array.typed(String), ::Java::Long] }
+        typesig { [class_self::Token, String, String, String, Array.typed(String), ::Java::Long] }
         def initialize(token, type, algorithm, class_name, al, mechanism)
           @token = nil
           @mechanism = 0
@@ -1144,7 +1144,7 @@ module Sun::Security::Pkcs11
           raise self.class::AssertionError.new("SunPKCS11 error: " + type + ", " + algorithm)
         end
         
-        typesig { [self::Key] }
+        typesig { [class_self::Key] }
         def is_local_key(key)
           return (key.is_a?(self.class::P11Key)) && (((key).attr_token).equal?(@token))
         end
@@ -1451,7 +1451,7 @@ module Sun::Security::Pkcs11
         alias_method :attr_config_name=, :config_name=
         undef_method :config_name=
         
-        typesig { [self::SunPKCS11] }
+        typesig { [class_self::SunPKCS11] }
         def initialize(provider)
           @provider_name = nil
           @config_name = nil

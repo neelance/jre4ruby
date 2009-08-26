@@ -86,7 +86,7 @@ module Sun::Nio::Cs::Ext
         alias_method :attr_jis0201=, :jis0201=
         undef_method :jis0201=
         
-        typesig { [self::Charset] }
+        typesig { [class_self::Charset] }
         def initialize(cs)
           @jis0201 = nil
           super(cs)
@@ -112,7 +112,7 @@ module Sun::Nio::Cs::Ext
           return super(b1, b2)
         end
         
-        typesig { [self::ByteBuffer, self::CharBuffer] }
+        typesig { [class_self::ByteBuffer, class_self::CharBuffer] }
         # Make some protected methods public for use by JISAutoDetect
         def decode_loop(src, dst)
           return super(src, dst)
@@ -123,7 +123,7 @@ module Sun::Nio::Cs::Ext
           super
         end
         
-        typesig { [self::CharBuffer] }
+        typesig { [class_self::CharBuffer] }
         def impl_flush(out)
           return super(out)
         end
@@ -153,7 +153,7 @@ module Sun::Nio::Cs::Ext
         alias_method :attr_j0208index2=, :j0208index2=
         undef_method :j0208index2=
         
-        typesig { [self::Charset] }
+        typesig { [class_self::Charset] }
         def initialize(cs)
           @jis0201 = nil
           @j0208index1 = nil

@@ -957,7 +957,7 @@ module Java::Util
           return self.attr_traversal_table[self.attr_last_returned_index + 1]
         end
         
-        typesig { [self::V] }
+        typesig { [class_self::V] }
         def set_value(value)
           # It would be mean-spirited to proceed here if remove() called
           if (self.attr_last_returned_index < 0)
@@ -1094,7 +1094,7 @@ module Java::Util
           return !(self.attr_size).equal?(old_size)
         end
         
-        typesig { [self::Collection] }
+        typesig { [class_self::Collection] }
         # Must revert from AbstractSet's impl to AbstractCollection's, as
         # the former contains an optimization that results in incorrect
         # behavior when c is a smaller "normal" (non-identity-based) Set.
@@ -1293,7 +1293,7 @@ module Java::Util
           @local_class_parent.clear
         end
         
-        typesig { [self::Collection] }
+        typesig { [class_self::Collection] }
         # Must revert from AbstractSet's impl to AbstractCollection's, as
         # the former contains an optimization that results in incorrect
         # behavior when c is a smaller "normal" (non-identity-based) Set.
@@ -1322,7 +1322,7 @@ module Java::Util
           return result
         end
         
-        typesig { [Array.typed(self::T)] }
+        typesig { [Array.typed(class_self::T)] }
         def to_array(a)
           size_ = size
           if (a.attr_length < size_)

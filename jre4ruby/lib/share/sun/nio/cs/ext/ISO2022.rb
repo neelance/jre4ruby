@@ -163,7 +163,7 @@ module Sun::Nio::Cs::Ext
         alias_method :attr_tmp_decoder=, :tmp_decoder=
         undef_method :tmp_decoder=
         
-        typesig { [self::Charset] }
+        typesig { [class_self::Charset] }
         def initialize(cs)
           @sodesig = nil
           @ss2desig = nil
@@ -250,7 +250,7 @@ module Sun::Nio::Cs::Ext
           return -1
         end
         
-        typesig { [self::ByteBuffer, Array.typed(Array.typed(::Java::Byte))] }
+        typesig { [class_self::ByteBuffer, Array.typed(Array.typed(::Java::Byte))] }
         def find_desig_buf(in_, desigs)
           if ((desigs).nil?)
             return -1
@@ -273,7 +273,7 @@ module Sun::Nio::Cs::Ext
           return -1
         end
         
-        typesig { [self::ByteBuffer, self::CharBuffer] }
+        typesig { [class_self::ByteBuffer, class_self::CharBuffer] }
         def decode_array_loop(src, dst)
           sa = src.array
           sp = src.array_offset + src.position
@@ -382,7 +382,7 @@ module Sun::Nio::Cs::Ext
           end
         end
         
-        typesig { [self::ByteBuffer, self::CharBuffer] }
+        typesig { [class_self::ByteBuffer, class_self::CharBuffer] }
         def decode_buffer_loop(src, dst)
           mark_ = src.position
           b1 = 0
@@ -480,7 +480,7 @@ module Sun::Nio::Cs::Ext
           end
         end
         
-        typesig { [self::ByteBuffer, self::CharBuffer] }
+        typesig { [class_self::ByteBuffer, class_self::CharBuffer] }
         def decode_loop(src, dst)
           if (src.has_array && dst.has_array)
             return decode_array_loop(src, dst)
@@ -604,7 +604,7 @@ module Sun::Nio::Cs::Ext
         alias_method :attr_new_ss3des_defined=, :new_ss3des_defined=
         undef_method :new_ss3des_defined=
         
-        typesig { [self::Charset] }
+        typesig { [class_self::Charset] }
         def initialize(cs)
           @sgp = nil
           @ss2 = 0
@@ -718,7 +718,7 @@ module Sun::Nio::Cs::Ext
           return index
         end
         
-        typesig { [self::CharBuffer, self::ByteBuffer] }
+        typesig { [class_self::CharBuffer, class_self::ByteBuffer] }
         def encode_array_loop(src, dst)
           sa = src.array
           sp = src.array_offset + src.position
@@ -788,7 +788,7 @@ module Sun::Nio::Cs::Ext
           end
         end
         
-        typesig { [self::CharBuffer, self::ByteBuffer] }
+        typesig { [class_self::CharBuffer, class_self::ByteBuffer] }
         def encode_buffer_loop(src, dst)
           output_size = 0
           output_byte = Array.typed(::Java::Byte).new(8) { 0 }
@@ -849,7 +849,7 @@ module Sun::Nio::Cs::Ext
           end
         end
         
-        typesig { [self::CharBuffer, self::ByteBuffer] }
+        typesig { [class_self::CharBuffer, class_self::ByteBuffer] }
         def encode_loop(src, dst)
           if (src.has_array && dst.has_array)
             return encode_array_loop(src, dst)

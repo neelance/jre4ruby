@@ -92,19 +92,19 @@ module Java::Io
         
         class_module.module_eval {
           # cache mapping local classes -> descriptors
-          const_set_lazy(:LocalDescs) { self::ConcurrentHashMap.new }
+          const_set_lazy(:LocalDescs) { class_self::ConcurrentHashMap.new }
           const_attr_reader  :LocalDescs
           
           # cache mapping field group/local desc pairs -> field reflectors
-          const_set_lazy(:Reflectors) { self::ConcurrentHashMap.new }
+          const_set_lazy(:Reflectors) { class_self::ConcurrentHashMap.new }
           const_attr_reader  :Reflectors
           
           # queue for WeakReferences to local classes
-          const_set_lazy(:LocalDescsQueue) { self::ReferenceQueue.new }
+          const_set_lazy(:LocalDescsQueue) { class_self::ReferenceQueue.new }
           const_attr_reader  :LocalDescsQueue
           
           # queue for WeakReferences to field reflectors keys
-          const_set_lazy(:ReflectorsQueue) { self::ReferenceQueue.new }
+          const_set_lazy(:ReflectorsQueue) { class_self::ReferenceQueue.new }
           const_attr_reader  :ReflectorsQueue
         }
         
@@ -556,7 +556,7 @@ module Java::Io
               AccessController.do_privileged(Class.new(self.class::PrivilegedAction.class == Class ? self.class::PrivilegedAction : Object) do
                 extend LocalClass
                 include_class_members EntryFuture
-                include self::PrivilegedAction if self::PrivilegedAction.class == Module
+                include class_self::PrivilegedAction if class_self::PrivilegedAction.class == Module
                 
                 typesig { [] }
                 define_method :run do
@@ -1256,7 +1256,7 @@ module Java::Io
         alias_method :attr_has_data=, :has_data=
         undef_method :has_data=
         
-        typesig { [self::ObjectStreamClass, ::Java::Boolean] }
+        typesig { [class_self::ObjectStreamClass, ::Java::Boolean] }
         def initialize(desc, has_data)
           @desc = nil
           @has_data = false
@@ -1950,7 +1950,7 @@ module Java::Io
         alias_method :attr_signature=, :signature=
         undef_method :signature=
         
-        typesig { [self::Field] }
+        typesig { [class_self::Field] }
         def initialize(field)
           @member = nil
           @name = nil
@@ -1960,7 +1960,7 @@ module Java::Io
           @signature = RJava.cast_to_string(get_class_signature(field.get_type))
         end
         
-        typesig { [self::Constructor] }
+        typesig { [class_self::Constructor] }
         def initialize(cons)
           @member = nil
           @name = nil
@@ -1970,7 +1970,7 @@ module Java::Io
           @signature = RJava.cast_to_string(get_method_signature(cons.get_parameter_types, Void::TYPE))
         end
         
-        typesig { [self::Method] }
+        typesig { [class_self::Method] }
         def initialize(meth)
           @member = nil
           @name = nil
@@ -2038,7 +2038,7 @@ module Java::Io
         alias_method :attr_types=, :types=
         undef_method :types=
         
-        typesig { [Array.typed(self::ObjectStreamField)] }
+        typesig { [Array.typed(class_self::ObjectStreamField)] }
         # Constructs FieldReflector capable of setting/getting values from the
         # subset of fields whose ObjectStreamFields contain non-null
         # reflective Field objects.  ObjectStreamFields with null Fields are
@@ -2315,7 +2315,7 @@ module Java::Io
         alias_method :attr_null_class=, :null_class=
         undef_method :null_class=
         
-        typesig { [self::Class, Array.typed(self::ObjectStreamField), self::ReferenceQueue] }
+        typesig { [class_self::Class, Array.typed(class_self::ObjectStreamField), class_self::ReferenceQueue] }
         def initialize(cl, fields, queue)
           @sigs = nil
           @hash = 0
@@ -2428,7 +2428,7 @@ module Java::Io
         alias_method :attr_hash=, :hash=
         undef_method :hash=
         
-        typesig { [self::Class, self::ReferenceQueue] }
+        typesig { [class_self::Class, class_self::ReferenceQueue] }
         # Create a new WeakClassKey to the given object, registered
         # with a queue.
         def initialize(cl, ref_queue)

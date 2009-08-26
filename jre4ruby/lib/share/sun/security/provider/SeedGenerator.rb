@@ -443,7 +443,7 @@ module Sun::Security::Provider
           # At least one instance of this class is generated for every seed byte.
           const_set_lazy(:BogusThread) { Class.new do
             include_class_members ThreadedSeedGenerator
-            include self::Runnable
+            include class_self::Runnable
             
             typesig { [] }
             def run

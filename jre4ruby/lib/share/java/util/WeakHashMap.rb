@@ -728,7 +728,7 @@ module Java::Util
         alias_method :attr_next=, :next=
         undef_method :next=
         
-        typesig { [Object, Object, self::ReferenceQueue, ::Java::Int, self::Entry] }
+        typesig { [Object, Object, class_self::ReferenceQueue, ::Java::Int, class_self::Entry] }
         # Creates new entry.
         def initialize(key, value, queue, hash, next_)
           @value = nil
@@ -1147,7 +1147,7 @@ module Java::Util
           return deep_copy.to_array
         end
         
-        typesig { [Array.typed(self::T)] }
+        typesig { [Array.typed(class_self::T)] }
         def to_array(a)
           return deep_copy.to_array(a)
         end

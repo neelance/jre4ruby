@@ -1107,7 +1107,7 @@ module Java::Util
         alias_method :attr_c=, :c=
         undef_method :c=
         
-        typesig { [self::Collection] }
+        typesig { [class_self::Collection] }
         def initialize(c)
           @c = nil
           if ((c).nil?)
@@ -1136,7 +1136,7 @@ module Java::Util
           return @c.to_array
         end
         
-        typesig { [Array.typed(self::T)] }
+        typesig { [Array.typed(class_self::T)] }
         def to_array(a)
           return @c.to_array(a)
         end
@@ -1151,7 +1151,7 @@ module Java::Util
           return Class.new(self.class::Iterator.class == Class ? self.class::Iterator : Object) do
             extend LocalClass
             include_class_members UnmodifiableCollection
-            include self::Iterator if self::Iterator.class == Module
+            include class_self::Iterator if class_self::Iterator.class == Module
             
             attr_accessor :i
             alias_method :attr_i, :i
@@ -1196,22 +1196,22 @@ module Java::Util
           raise self.class::UnsupportedOperationException.new
         end
         
-        typesig { [self::Collection] }
+        typesig { [class_self::Collection] }
         def contains_all(coll)
           return @c.contains_all(coll)
         end
         
-        typesig { [self::Collection] }
+        typesig { [class_self::Collection] }
         def add_all(coll)
           raise self.class::UnsupportedOperationException.new
         end
         
-        typesig { [self::Collection] }
+        typesig { [class_self::Collection] }
         def remove_all(coll)
           raise self.class::UnsupportedOperationException.new
         end
         
-        typesig { [self::Collection] }
+        typesig { [class_self::Collection] }
         def retain_all(coll)
           raise self.class::UnsupportedOperationException.new
         end
@@ -1254,7 +1254,7 @@ module Java::Util
           const_attr_reader  :SerialVersionUID
         }
         
-        typesig { [self::JavaSet] }
+        typesig { [class_self::JavaSet] }
         def initialize(s)
           super(s)
         end
@@ -1311,7 +1311,7 @@ module Java::Util
         alias_method :attr_ss=, :ss=
         undef_method :ss=
         
-        typesig { [self::SortedSet] }
+        typesig { [class_self::SortedSet] }
         def initialize(s)
           @ss = nil
           super(s)
@@ -1388,7 +1388,7 @@ module Java::Util
         alias_method :attr_list=, :list=
         undef_method :list=
         
-        typesig { [self::JavaList] }
+        typesig { [class_self::JavaList] }
         def initialize(list)
           @list = nil
           super(list)
@@ -1435,7 +1435,7 @@ module Java::Util
           return @list.last_index_of(o)
         end
         
-        typesig { [::Java::Int, self::Collection] }
+        typesig { [::Java::Int, class_self::Collection] }
         def add_all(index, c)
           raise self.class::UnsupportedOperationException.new
         end
@@ -1450,7 +1450,7 @@ module Java::Util
           return Class.new(self.class::ListIterator.class == Class ? self.class::ListIterator : Object) do
             extend LocalClass
             include_class_members UnmodifiableList
-            include self::ListIterator if self::ListIterator.class == Module
+            include class_self::ListIterator if class_self::ListIterator.class == Module
             
             attr_accessor :i
             alias_method :attr_i, :i
@@ -1546,7 +1546,7 @@ module Java::Util
           include RandomAccess
         }
         
-        typesig { [self::JavaList] }
+        typesig { [class_self::JavaList] }
         def initialize(list)
           super(list)
         end
@@ -1608,7 +1608,7 @@ module Java::Util
         alias_method :attr_m=, :m=
         undef_method :m=
         
-        typesig { [self::Map] }
+        typesig { [class_self::Map] }
         def initialize(m)
           @m = nil
           @key_set = nil
@@ -1655,7 +1655,7 @@ module Java::Util
           raise self.class::UnsupportedOperationException.new
         end
         
-        typesig { [self::Map] }
+        typesig { [class_self::Map] }
         def put_all(m)
           raise self.class::UnsupportedOperationException.new
         end
@@ -1729,7 +1729,7 @@ module Java::Util
           # many possible attacks that must be thwarted.
           # 
           # @serial include
-          const_set_lazy(:UnmodifiableEntrySet) { Class.new(self::UnmodifiableSet) do
+          const_set_lazy(:UnmodifiableEntrySet) { Class.new(class_self::UnmodifiableSet) do
             include_class_members UnmodifiableMap
             
             class_module.module_eval {
@@ -1737,7 +1737,7 @@ module Java::Util
               const_attr_reader  :SerialVersionUID
             }
             
-            typesig { [self::JavaSet] }
+            typesig { [class_self::JavaSet] }
             def initialize(s)
               super(s)
             end
@@ -1747,7 +1747,7 @@ module Java::Util
               return Class.new(self.class::Iterator.class == Class ? self.class::Iterator : Object) do
                 extend LocalClass
                 include_class_members UnmodifiableEntrySet
-                include self::Iterator if self::Iterator.class == Module
+                include class_self::Iterator if class_self::Iterator.class == Module
                 
                 attr_accessor :i
                 alias_method :attr_i, :i
@@ -1793,7 +1793,7 @@ module Java::Util
               return a
             end
             
-            typesig { [Array.typed(self::T)] }
+            typesig { [Array.typed(class_self::T)] }
             def to_array(a)
               # We don't pass a to c.toArray, to avoid window of
               # vulnerability wherein an unscrupulous multithreaded client
@@ -1826,7 +1826,7 @@ module Java::Util
               return self.attr_c.contains(self.class::UnmodifiableEntry.new(o))
             end
             
-            typesig { [self::Collection] }
+            typesig { [class_self::Collection] }
             # The next two methods are overridden to protect against
             # an unscrupulous List whose contains(Object o) method senses
             # when o is a Map.Entry, and calls o.setValue.
@@ -1864,7 +1864,7 @@ module Java::Util
               # Map Entry when asked to perform an equality check.
               const_set_lazy(:UnmodifiableEntry) { Class.new do
                 include_class_members UnmodifiableEntrySet
-                include self::Map::Entry
+                include class_self::Map::Entry
                 
                 attr_accessor :e
                 alias_method :attr_e, :e
@@ -1872,7 +1872,7 @@ module Java::Util
                 alias_method :attr_e=, :e=
                 undef_method :e=
                 
-                typesig { [self::Map::Entry] }
+                typesig { [class_self::Map::Entry] }
                 def initialize(e)
                   @e = nil
                   @e = e
@@ -1964,7 +1964,7 @@ module Java::Util
         alias_method :attr_sm=, :sm=
         undef_method :sm=
         
-        typesig { [self::SortedMap] }
+        typesig { [class_self::SortedMap] }
         def initialize(m)
           @sm = nil
           super(m)
@@ -2070,7 +2070,7 @@ module Java::Util
         alias_method :attr_mutex=, :mutex=
         undef_method :mutex=
         
-        typesig { [self::Collection] }
+        typesig { [class_self::Collection] }
         # Object on which to synchronize
         def initialize(c)
           @c = nil
@@ -2082,7 +2082,7 @@ module Java::Util
           @mutex = self
         end
         
-        typesig { [self::Collection, Object] }
+        typesig { [class_self::Collection, Object] }
         def initialize(c, mutex)
           @c = nil
           @mutex = nil
@@ -2118,7 +2118,7 @@ module Java::Util
           end
         end
         
-        typesig { [Array.typed(self::T)] }
+        typesig { [Array.typed(class_self::T)] }
         def to_array(a)
           synchronized((@mutex)) do
             return @c.to_array(a)
@@ -2144,28 +2144,28 @@ module Java::Util
           end
         end
         
-        typesig { [self::Collection] }
+        typesig { [class_self::Collection] }
         def contains_all(coll)
           synchronized((@mutex)) do
             return @c.contains_all(coll)
           end
         end
         
-        typesig { [self::Collection] }
+        typesig { [class_self::Collection] }
         def add_all(coll)
           synchronized((@mutex)) do
             return @c.add_all(coll)
           end
         end
         
-        typesig { [self::Collection] }
+        typesig { [class_self::Collection] }
         def remove_all(coll)
           synchronized((@mutex)) do
             return @c.remove_all(coll)
           end
         end
         
-        typesig { [self::Collection] }
+        typesig { [class_self::Collection] }
         def retain_all(coll)
           synchronized((@mutex)) do
             return @c.retain_all(coll)
@@ -2186,7 +2186,7 @@ module Java::Util
           end
         end
         
-        typesig { [self::ObjectOutputStream] }
+        typesig { [class_self::ObjectOutputStream] }
         def write_object(s)
           synchronized((@mutex)) do
             s.default_write_object
@@ -2242,12 +2242,12 @@ module Java::Util
           const_attr_reader  :SerialVersionUID
         }
         
-        typesig { [self::JavaSet] }
+        typesig { [class_self::JavaSet] }
         def initialize(s)
           super(s)
         end
         
-        typesig { [self::JavaSet, Object] }
+        typesig { [class_self::JavaSet, Object] }
         def initialize(s, mutex)
           super(s, mutex)
         end
@@ -2328,14 +2328,14 @@ module Java::Util
         alias_method :attr_ss=, :ss=
         undef_method :ss=
         
-        typesig { [self::SortedSet] }
+        typesig { [class_self::SortedSet] }
         def initialize(s)
           @ss = nil
           super(s)
           @ss = s
         end
         
-        typesig { [self::SortedSet, Object] }
+        typesig { [class_self::SortedSet, Object] }
         def initialize(s, mutex)
           @ss = nil
           super(s, mutex)
@@ -2439,14 +2439,14 @@ module Java::Util
         alias_method :attr_list=, :list=
         undef_method :list=
         
-        typesig { [self::JavaList] }
+        typesig { [class_self::JavaList] }
         def initialize(list)
           @list = nil
           super(list)
           @list = list
         end
         
-        typesig { [self::JavaList, Object] }
+        typesig { [class_self::JavaList, Object] }
         def initialize(list, mutex)
           @list = nil
           super(list, mutex)
@@ -2509,7 +2509,7 @@ module Java::Util
           end
         end
         
-        typesig { [::Java::Int, self::Collection] }
+        typesig { [::Java::Int, class_self::Collection] }
         def add_all(index, c)
           synchronized((self.attr_mutex)) do
             return @list.add_all(index, c)
@@ -2559,12 +2559,12 @@ module Java::Util
           include RandomAccess
         }
         
-        typesig { [self::JavaList] }
+        typesig { [class_self::JavaList] }
         def initialize(list)
           super(list)
         end
         
-        typesig { [self::JavaList, Object] }
+        typesig { [class_self::JavaList, Object] }
         def initialize(list, mutex)
           super(list, mutex)
         end
@@ -2648,7 +2648,7 @@ module Java::Util
         alias_method :attr_mutex=, :mutex=
         undef_method :mutex=
         
-        typesig { [self::Map] }
+        typesig { [class_self::Map] }
         # Object on which to synchronize
         def initialize(m)
           @m = nil
@@ -2663,7 +2663,7 @@ module Java::Util
           @mutex = self
         end
         
-        typesig { [self::Map, Object] }
+        typesig { [class_self::Map, Object] }
         def initialize(m, mutex)
           @m = nil
           @mutex = nil
@@ -2723,7 +2723,7 @@ module Java::Util
           end
         end
         
-        typesig { [self::Map] }
+        typesig { [class_self::Map] }
         def put_all(map)
           synchronized((@mutex)) do
             @m.put_all(map)
@@ -2806,7 +2806,7 @@ module Java::Util
           end
         end
         
-        typesig { [self::ObjectOutputStream] }
+        typesig { [class_self::ObjectOutputStream] }
         def write_object(s)
           synchronized((@mutex)) do
             s.default_write_object
@@ -2880,14 +2880,14 @@ module Java::Util
         alias_method :attr_sm=, :sm=
         undef_method :sm=
         
-        typesig { [self::SortedMap] }
+        typesig { [class_self::SortedMap] }
         def initialize(m)
           @sm = nil
           super(m)
           @sm = m
         end
         
-        typesig { [self::SortedMap, Object] }
+        typesig { [class_self::SortedMap, Object] }
         def initialize(m, mutex)
           @sm = nil
           super(m, mutex)
@@ -3045,7 +3045,7 @@ module Java::Util
           return "Attempt to insert " + RJava.cast_to_string(o.get_class) + " element into collection with element type " + RJava.cast_to_string(@type)
         end
         
-        typesig { [self::Collection, self::Class] }
+        typesig { [class_self::Collection, class_self::Class] }
         def initialize(c, type)
           @c = nil
           @type = nil
@@ -3077,7 +3077,7 @@ module Java::Util
           return @c.to_array
         end
         
-        typesig { [Array.typed(self::T)] }
+        typesig { [Array.typed(class_self::T)] }
         def to_array(a)
           return @c.to_array(a)
         end
@@ -3097,17 +3097,17 @@ module Java::Util
           @c.clear
         end
         
-        typesig { [self::Collection] }
+        typesig { [class_self::Collection] }
         def contains_all(coll)
           return @c.contains_all(coll)
         end
         
-        typesig { [self::Collection] }
+        typesig { [class_self::Collection] }
         def remove_all(coll)
           return @c.remove_all(coll)
         end
         
-        typesig { [self::Collection] }
+        typesig { [class_self::Collection] }
         def retain_all(coll)
           return @c.retain_all(coll)
         end
@@ -3118,7 +3118,7 @@ module Java::Util
           return Class.new(self.class::Iterator.class == Class ? self.class::Iterator : Object) do
             extend LocalClass
             include_class_members CheckedCollection
-            include self::Iterator if self::Iterator.class == Module
+            include class_self::Iterator if class_self::Iterator.class == Module
             
             typesig { [] }
             define_method :has_next do
@@ -3163,7 +3163,7 @@ module Java::Util
           return !(@zero_length_element_array).nil? ? @zero_length_element_array : (@zero_length_element_array = zero_length_array(@type))
         end
         
-        typesig { [self::Collection] }
+        typesig { [class_self::Collection] }
         def checked_copy_of(coll)
           a = nil
           begin
@@ -3188,7 +3188,7 @@ module Java::Util
           return Arrays.as_list(a)
         end
         
-        typesig { [self::Collection] }
+        typesig { [class_self::Collection] }
         def add_all(coll)
           # Doing things this way insulates us from concurrent changes
           # in the contents of coll and provides all-or-nothing
@@ -3243,7 +3243,7 @@ module Java::Util
           const_attr_reader  :SerialVersionUID
         }
         
-        typesig { [self::JavaSet, self::Class] }
+        typesig { [class_self::JavaSet, class_self::Class] }
         def initialize(s, element_type)
           super(s, element_type)
         end
@@ -3311,7 +3311,7 @@ module Java::Util
         alias_method :attr_ss=, :ss=
         undef_method :ss=
         
-        typesig { [self::SortedSet, self::Class] }
+        typesig { [class_self::SortedSet, class_self::Class] }
         def initialize(s, type)
           @ss = nil
           super(s, type)
@@ -3399,7 +3399,7 @@ module Java::Util
         alias_method :attr_list=, :list=
         undef_method :list=
         
-        typesig { [self::JavaList, self::Class] }
+        typesig { [class_self::JavaList, class_self::Class] }
         def initialize(list, type)
           @list = nil
           super(list, type)
@@ -3448,7 +3448,7 @@ module Java::Util
           @list.add(index, element)
         end
         
-        typesig { [::Java::Int, self::Collection] }
+        typesig { [::Java::Int, class_self::Collection] }
         def add_all(index, c)
           return @list.add_all(index, checked_copy_of(c))
         end
@@ -3464,7 +3464,7 @@ module Java::Util
           return Class.new(self.class::ListIterator.class == Class ? self.class::ListIterator : Object) do
             extend LocalClass
             include_class_members CheckedList
-            include self::ListIterator if self::ListIterator.class == Module
+            include class_self::ListIterator if class_self::ListIterator.class == Module
             
             typesig { [] }
             define_method :has_next do
@@ -3544,7 +3544,7 @@ module Java::Util
           const_attr_reader  :SerialVersionUID
         }
         
-        typesig { [self::JavaList, self::Class] }
+        typesig { [class_self::JavaList, class_self::Class] }
         def initialize(list, type)
           super(list, type)
         end
@@ -3644,7 +3644,7 @@ module Java::Util
           return "Attempt to insert " + RJava.cast_to_string(value.get_class) + " value into map with value type " + RJava.cast_to_string(@value_type)
         end
         
-        typesig { [self::Map, self::Class, self::Class] }
+        typesig { [class_self::Map, class_self::Class, class_self::Class] }
         def initialize(m, key_type, value_type)
           @m = nil
           @key_type = nil
@@ -3724,7 +3724,7 @@ module Java::Util
           return @m.put(key, value)
         end
         
-        typesig { [self::Map] }
+        typesig { [class_self::Map] }
         def put_all(t)
           # Satisfy the following goals:
           # - good diagnostics in case of type mismatch
@@ -3768,7 +3768,7 @@ module Java::Util
           # @serial exclude
           const_set_lazy(:CheckedEntrySet) { Class.new do
             include_class_members CheckedMap
-            include self::JavaSet
+            include class_self::JavaSet
             
             attr_accessor :s
             alias_method :attr_s, :s
@@ -3782,7 +3782,7 @@ module Java::Util
             alias_method :attr_value_type=, :value_type=
             undef_method :value_type=
             
-            typesig { [self::JavaSet, self::Class] }
+            typesig { [class_self::JavaSet, class_self::Class] }
             def initialize(s, value_type)
               @s = nil
               @value_type = nil
@@ -3815,12 +3815,12 @@ module Java::Util
               @s.clear
             end
             
-            typesig { [self::Map::Entry] }
+            typesig { [class_self::Map::Entry] }
             def add(e)
               raise self.class::UnsupportedOperationException.new
             end
             
-            typesig { [self::Collection] }
+            typesig { [class_self::Collection] }
             def add_all(coll)
               raise self.class::UnsupportedOperationException.new
             end
@@ -3832,7 +3832,7 @@ module Java::Util
               return Class.new(self.class::Iterator.class == Class ? self.class::Iterator : Object) do
                 extend LocalClass
                 include_class_members CheckedEntrySet
-                include self::Iterator if self::Iterator.class == Module
+                include class_self::Iterator if class_self::Iterator.class == Module
                 
                 typesig { [] }
                 define_method :has_next do
@@ -3873,7 +3873,7 @@ module Java::Util
               return dest
             end
             
-            typesig { [Array.typed(self::T)] }
+            typesig { [Array.typed(class_self::T)] }
             def to_array(a)
               # We don't pass a to s.toArray, to avoid window of
               # vulnerability wherein an unscrupulous multithreaded client
@@ -3907,7 +3907,7 @@ module Java::Util
               return @s.contains((e.is_a?(self.class::CheckedEntry)) ? e : checked_entry(e, @value_type))
             end
             
-            typesig { [self::Collection] }
+            typesig { [class_self::Collection] }
             # The bulk collection methods are overridden to protect
             # against an unscrupulous collection whose contains(Object o)
             # method senses when o is a Map.Entry, and calls o.setValue.
@@ -3929,17 +3929,17 @@ module Java::Util
               return @s.remove(self.class::AbstractMap::SimpleImmutableEntry.new(o))
             end
             
-            typesig { [self::Collection] }
+            typesig { [class_self::Collection] }
             def remove_all(c)
               return batch_remove(c, false)
             end
             
-            typesig { [self::Collection] }
+            typesig { [class_self::Collection] }
             def retain_all(c)
               return batch_remove(c, true)
             end
             
-            typesig { [self::Collection, ::Java::Boolean] }
+            typesig { [class_self::Collection, ::Java::Boolean] }
             def batch_remove(c, complement)
               modified = false
               it = iterator
@@ -3965,9 +3965,9 @@ module Java::Util
             end
             
             class_module.module_eval {
-              typesig { [self::Map::Entry, self::Class] }
+              typesig { [class_self::Map::Entry, class_self::Class] }
               def checked_entry(e, value_type)
-                return self::CheckedEntry.new(e, value_type)
+                return class_self::CheckedEntry.new(e, value_type)
               end
               
               # This "wrapper class" serves two purposes: it prevents
@@ -3977,7 +3977,7 @@ module Java::Util
               # Map.Entry when asked to perform an equality check.
               const_set_lazy(:CheckedEntry) { Class.new do
                 include_class_members CheckedEntrySet
-                include self::Map::Entry
+                include class_self::Map::Entry
                 
                 attr_accessor :e
                 alias_method :attr_e, :e
@@ -3991,7 +3991,7 @@ module Java::Util
                 alias_method :attr_value_type=, :value_type=
                 undef_method :value_type=
                 
-                typesig { [self::Map::Entry, self::Class] }
+                typesig { [class_self::Map::Entry, class_self::Class] }
                 def initialize(e, value_type)
                   @e = nil
                   @value_type = nil
@@ -4113,7 +4113,7 @@ module Java::Util
         alias_method :attr_sm=, :sm=
         undef_method :sm=
         
-        typesig { [self::SortedMap, self::Class, self::Class] }
+        typesig { [class_self::SortedMap, class_self::Class, class_self::Class] }
         def initialize(m, key_type, value_type)
           @sm = nil
           super(m, key_type, value_type)
@@ -4186,7 +4186,7 @@ module Java::Util
         include Iterator
         
         class_module.module_eval {
-          const_set_lazy(:EMPTY_ITERATOR) { self::EmptyIterator.new }
+          const_set_lazy(:EMPTY_ITERATOR) { class_self::EmptyIterator.new }
           const_attr_reader  :EMPTY_ITERATOR
         }
         
@@ -4255,7 +4255,7 @@ module Java::Util
         }
         
         class_module.module_eval {
-          const_set_lazy(:EMPTY_ITERATOR) { self::EmptyListIterator.new }
+          const_set_lazy(:EMPTY_ITERATOR) { class_self::EmptyListIterator.new }
           const_attr_reader  :EMPTY_ITERATOR
         }
         
@@ -4325,7 +4325,7 @@ module Java::Util
         include Enumeration
         
         class_module.module_eval {
-          const_set_lazy(:EMPTY_ENUMERATION) { self::EmptyEnumeration.new }
+          const_set_lazy(:EMPTY_ENUMERATION) { class_self::EmptyEnumeration.new }
           const_attr_reader  :EMPTY_ENUMERATION
         }
         
@@ -4404,7 +4404,7 @@ module Java::Util
           return false
         end
         
-        typesig { [self::Collection] }
+        typesig { [class_self::Collection] }
         def contains_all(c)
           return c.is_empty
         end
@@ -4414,7 +4414,7 @@ module Java::Util
           return Array.typed(Object).new(0) { nil }
         end
         
-        typesig { [Array.typed(self::T)] }
+        typesig { [Array.typed(class_self::T)] }
         def to_array(a)
           if (a.attr_length > 0)
             a[0] = nil
@@ -4499,7 +4499,7 @@ module Java::Util
           return false
         end
         
-        typesig { [self::Collection] }
+        typesig { [class_self::Collection] }
         def contains_all(c)
           return c.is_empty
         end
@@ -4509,7 +4509,7 @@ module Java::Util
           return Array.typed(Object).new(0) { nil }
         end
         
-        typesig { [Array.typed(self::T)] }
+        typesig { [Array.typed(class_self::T)] }
         def to_array(a)
           if (a.attr_length > 0)
             a[0] = nil
@@ -5028,7 +5028,7 @@ module Java::Util
           return a
         end
         
-        typesig { [Array.typed(self::T)] }
+        typesig { [Array.typed(class_self::T)] }
         def to_array(a)
           n = @n
           if (a.attr_length < n)
@@ -5095,11 +5095,11 @@ module Java::Util
           const_set_lazy(:SerialVersionUID) { 7207038068494060240 }
           const_attr_reader  :SerialVersionUID
           
-          const_set_lazy(:REVERSE_ORDER) { self::ReverseComparator.new }
+          const_set_lazy(:REVERSE_ORDER) { class_self::ReverseComparator.new }
           const_attr_reader  :REVERSE_ORDER
         }
         
-        typesig { [self::JavaComparable, self::JavaComparable] }
+        typesig { [class_self::JavaComparable, class_self::JavaComparable] }
         def compare(c1, c2)
           return (c2 <=> c1)
         end
@@ -5162,7 +5162,7 @@ module Java::Util
         alias_method :attr_cmp=, :cmp=
         undef_method :cmp=
         
-        typesig { [self::Comparator] }
+        typesig { [class_self::Comparator] }
         def initialize(cmp)
           @cmp = nil
           raise AssertError if not (!(cmp).nil?)
@@ -5412,7 +5412,7 @@ module Java::Util
         alias_method :attr_s=, :s=
         undef_method :s=
         
-        typesig { [self::Map] }
+        typesig { [class_self::Map] }
         # Its keySet
         def initialize(map)
           @m = nil
@@ -5465,7 +5465,7 @@ module Java::Util
           return @s.to_array
         end
         
-        typesig { [Array.typed(self::T)] }
+        typesig { [Array.typed(class_self::T)] }
         def to_array(a)
           return @s.to_array(a)
         end
@@ -5485,17 +5485,17 @@ module Java::Util
           return (o).equal?(self) || (@s == o)
         end
         
-        typesig { [self::Collection] }
+        typesig { [class_self::Collection] }
         def contains_all(c)
           return @s.contains_all(c)
         end
         
-        typesig { [self::Collection] }
+        typesig { [class_self::Collection] }
         def remove_all(c)
           return @s.remove_all(c)
         end
         
-        typesig { [self::Collection] }
+        typesig { [class_self::Collection] }
         def retain_all(c)
           return @s.retain_all(c)
         end
@@ -5555,7 +5555,7 @@ module Java::Util
         alias_method :attr_q=, :q=
         undef_method :q=
         
-        typesig { [self::Deque] }
+        typesig { [class_self::Deque] }
         def initialize(q)
           @q = nil
           super()
@@ -5628,7 +5628,7 @@ module Java::Util
           return @q.to_array
         end
         
-        typesig { [Array.typed(self::T)] }
+        typesig { [Array.typed(class_self::T)] }
         def to_array(a)
           return @q.to_array(a)
         end
@@ -5638,17 +5638,17 @@ module Java::Util
           return @q.to_s
         end
         
-        typesig { [self::Collection] }
+        typesig { [class_self::Collection] }
         def contains_all(c)
           return @q.contains_all(c)
         end
         
-        typesig { [self::Collection] }
+        typesig { [class_self::Collection] }
         def remove_all(c)
           return @q.remove_all(c)
         end
         
-        typesig { [self::Collection] }
+        typesig { [class_self::Collection] }
         def retain_all(c)
           return @q.retain_all(c)
         end

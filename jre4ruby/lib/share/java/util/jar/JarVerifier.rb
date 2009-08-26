@@ -421,7 +421,7 @@ module Java::Util::Jar
         alias_method :attr_num_left=, :num_left=
         undef_method :num_left=
         
-        typesig { [self::Manifest, self::JarEntry, self::InputStream, self::JarVerifier] }
+        typesig { [class_self::Manifest, class_self::JarEntry, class_self::InputStream, class_self::JarVerifier] }
         def initialize(man, je, is, jv)
           @is = nil
           @jv = nil

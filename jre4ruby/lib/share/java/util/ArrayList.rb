@@ -868,7 +868,7 @@ module Java::Util
           return element_data[self.attr_last_ret = i]
         end
         
-        typesig { [self::E] }
+        typesig { [class_self::E] }
         def set(e)
           if (self.attr_last_ret < 0)
             raise self.class::IllegalStateException.new
@@ -881,7 +881,7 @@ module Java::Util
           end
         end
         
-        typesig { [self::E] }
+        typesig { [class_self::E] }
         def add(e)
           check_for_comodification
           begin
@@ -978,7 +978,7 @@ module Java::Util
         alias_method :attr_size=, :size=
         undef_method :size=
         
-        typesig { [self::AbstractList, ::Java::Int, ::Java::Int, ::Java::Int] }
+        typesig { [class_self::AbstractList, ::Java::Int, ::Java::Int, ::Java::Int] }
         def initialize(parent, offset, from_index, to_index)
           @parent = nil
           @parent_offset = 0
@@ -992,7 +992,7 @@ module Java::Util
           self.attr_mod_count = @local_class_parent.attr_mod_count
         end
         
-        typesig { [::Java::Int, self::E] }
+        typesig { [::Java::Int, class_self::E] }
         def set(index, e)
           range_check(index)
           check_for_comodification
@@ -1014,7 +1014,7 @@ module Java::Util
           return @size
         end
         
-        typesig { [::Java::Int, self::E] }
+        typesig { [::Java::Int, class_self::E] }
         def add(index, e)
           range_check_for_add(index)
           check_for_comodification
@@ -1041,12 +1041,12 @@ module Java::Util
           @size -= to_index - from_index
         end
         
-        typesig { [self::Collection] }
+        typesig { [class_self::Collection] }
         def add_all(c)
           return add_all(@size, c)
         end
         
-        typesig { [::Java::Int, self::Collection] }
+        typesig { [::Java::Int, class_self::Collection] }
         def add_all(index, c)
           range_check_for_add(index)
           c_size = c.size
@@ -1072,7 +1072,7 @@ module Java::Util
           return Class.new(self.class::ListIterator.class == Class ? self.class::ListIterator : Object) do
             extend LocalClass
             include_class_members SubList
-            include self::ListIterator if self::ListIterator.class == Module
+            include class_self::ListIterator if class_self::ListIterator.class == Module
             
             attr_accessor :cursor
             alias_method :attr_cursor, :cursor
@@ -1158,7 +1158,7 @@ module Java::Util
               end
             end
             
-            typesig { [self::E] }
+            typesig { [class_self::E] }
             define_method :set do |e|
               if (@last_ret < 0)
                 raise self.class::IllegalStateException.new
@@ -1171,7 +1171,7 @@ module Java::Util
               end
             end
             
-            typesig { [self::E] }
+            typesig { [class_self::E] }
             define_method :add do |e|
               check_for_comodification
               begin

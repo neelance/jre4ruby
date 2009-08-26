@@ -476,7 +476,7 @@ module Java::Util::Concurrent
         alias_method :attr_result=, :result=
         undef_method :result=
         
-        typesig { [self::Runnable, Object] }
+        typesig { [class_self::Runnable, Object] }
         def initialize(task, result)
           @task = nil
           @result = nil
@@ -511,7 +511,7 @@ module Java::Util::Concurrent
         alias_method :attr_acc=, :acc=
         undef_method :acc=
         
-        typesig { [self::Callable] }
+        typesig { [class_self::Callable] }
         def initialize(task)
           @task = nil
           @acc = nil
@@ -525,7 +525,7 @@ module Java::Util::Concurrent
             return AccessController.do_privileged(Class.new(self.class::PrivilegedExceptionAction.class == Class ? self.class::PrivilegedExceptionAction : Object) do
               extend LocalClass
               include_class_members PrivilegedCallable
-              include self::PrivilegedExceptionAction if self::PrivilegedExceptionAction.class == Module
+              include class_self::PrivilegedExceptionAction if class_self::PrivilegedExceptionAction.class == Module
               
               typesig { [] }
               define_method :run do
@@ -573,7 +573,7 @@ module Java::Util::Concurrent
         alias_method :attr_ccl=, :ccl=
         undef_method :ccl=
         
-        typesig { [self::Callable] }
+        typesig { [class_self::Callable] }
         def initialize(task)
           @task = nil
           @acc = nil
@@ -599,7 +599,7 @@ module Java::Util::Concurrent
             return AccessController.do_privileged(Class.new(self.class::PrivilegedExceptionAction.class == Class ? self.class::PrivilegedExceptionAction : Object) do
               extend LocalClass
               include_class_members PrivilegedCallableUsingCurrentClassLoader
-              include self::PrivilegedExceptionAction if self::PrivilegedExceptionAction.class == Module
+              include class_self::PrivilegedExceptionAction if class_self::PrivilegedExceptionAction.class == Module
               
               typesig { [] }
               define_method :run do
@@ -642,7 +642,7 @@ module Java::Util::Concurrent
         include ThreadFactory
         
         class_module.module_eval {
-          const_set_lazy(:PoolNumber) { self::AtomicInteger.new(1) }
+          const_set_lazy(:PoolNumber) { class_self::AtomicInteger.new(1) }
           const_attr_reader  :PoolNumber
         }
         
@@ -674,7 +674,7 @@ module Java::Util::Concurrent
           @name_prefix = "pool-" + RJava.cast_to_string(self.class::PoolNumber.get_and_increment) + "-thread-"
         end
         
-        typesig { [self::Runnable] }
+        typesig { [class_self::Runnable] }
         def new_thread(r)
           t = self.class::JavaThread.new(@group, r, @name_prefix + RJava.cast_to_string(@thread_number.get_and_increment), 0)
           if (t.is_daemon)
@@ -724,12 +724,12 @@ module Java::Util::Concurrent
           @ccl = JavaThread.current_thread.get_context_class_loader
         end
         
-        typesig { [self::Runnable] }
+        typesig { [class_self::Runnable] }
         def new_thread(r)
           return super(Class.new(self.class::Runnable.class == Class ? self.class::Runnable : Object) do
             extend LocalClass
             include_class_members PrivilegedThreadFactory
-            include self::Runnable if self::Runnable.class == Module
+            include class_self::Runnable if class_self::Runnable.class == Module
             
             typesig { [] }
             define_method :run do
@@ -737,7 +737,7 @@ module Java::Util::Concurrent
               AccessController.do_privileged(Class.new(self.class::PrivilegedAction.class == Class ? self.class::PrivilegedAction : Object) do
                 extend LocalClass
                 include_class_members runnable_class
-                include self::PrivilegedAction if self::PrivilegedAction.class == Module
+                include class_self::PrivilegedAction if class_self::PrivilegedAction.class == Module
                 
                 typesig { [] }
                 define_method :run do
@@ -781,14 +781,14 @@ module Java::Util::Concurrent
         alias_method :attr_e=, :e=
         undef_method :e=
         
-        typesig { [self::ExecutorService] }
+        typesig { [class_self::ExecutorService] }
         def initialize(executor)
           @e = nil
           super()
           @e = executor
         end
         
-        typesig { [self::Runnable] }
+        typesig { [class_self::Runnable] }
         def execute(command)
           @e.execute(command)
         end
@@ -813,42 +813,42 @@ module Java::Util::Concurrent
           return @e.is_terminated
         end
         
-        typesig { [::Java::Long, self::TimeUnit] }
+        typesig { [::Java::Long, class_self::TimeUnit] }
         def await_termination(timeout, unit)
           return @e.await_termination(timeout, unit)
         end
         
-        typesig { [self::Runnable] }
+        typesig { [class_self::Runnable] }
         def submit(task)
           return @e.submit(task)
         end
         
-        typesig { [self::Callable] }
+        typesig { [class_self::Callable] }
         def submit(task)
           return @e.submit(task)
         end
         
-        typesig { [self::Runnable, self::T] }
+        typesig { [class_self::Runnable, class_self::T] }
         def submit(task, result)
           return @e.submit(task, result)
         end
         
-        typesig { [self::Collection] }
+        typesig { [class_self::Collection] }
         def invoke_all(tasks)
           return @e.invoke_all(tasks)
         end
         
-        typesig { [self::Collection, ::Java::Long, self::TimeUnit] }
+        typesig { [class_self::Collection, ::Java::Long, class_self::TimeUnit] }
         def invoke_all(tasks, timeout, unit)
           return @e.invoke_all(tasks, timeout, unit)
         end
         
-        typesig { [self::Collection] }
+        typesig { [class_self::Collection] }
         def invoke_any(tasks)
           return @e.invoke_any(tasks)
         end
         
-        typesig { [self::Collection, ::Java::Long, self::TimeUnit] }
+        typesig { [class_self::Collection, ::Java::Long, class_self::TimeUnit] }
         def invoke_any(tasks, timeout, unit)
           return @e.invoke_any(tasks, timeout, unit)
         end
@@ -860,7 +860,7 @@ module Java::Util::Concurrent
       const_set_lazy(:FinalizableDelegatedExecutorService) { Class.new(DelegatedExecutorService) do
         include_class_members Executors
         
-        typesig { [self::ExecutorService] }
+        typesig { [class_self::ExecutorService] }
         def initialize(executor)
           super(executor)
         end
@@ -888,29 +888,29 @@ module Java::Util::Concurrent
         alias_method :attr_e=, :e=
         undef_method :e=
         
-        typesig { [self::ScheduledExecutorService] }
+        typesig { [class_self::ScheduledExecutorService] }
         def initialize(executor)
           @e = nil
           super(executor)
           @e = executor
         end
         
-        typesig { [self::Runnable, ::Java::Long, self::TimeUnit] }
+        typesig { [class_self::Runnable, ::Java::Long, class_self::TimeUnit] }
         def schedule(command, delay, unit)
           return @e.schedule(command, delay, unit)
         end
         
-        typesig { [self::Callable, ::Java::Long, self::TimeUnit] }
+        typesig { [class_self::Callable, ::Java::Long, class_self::TimeUnit] }
         def schedule(callable, delay, unit)
           return @e.schedule(callable, delay, unit)
         end
         
-        typesig { [self::Runnable, ::Java::Long, ::Java::Long, self::TimeUnit] }
+        typesig { [class_self::Runnable, ::Java::Long, ::Java::Long, class_self::TimeUnit] }
         def schedule_at_fixed_rate(command, initial_delay, period, unit)
           return @e.schedule_at_fixed_rate(command, initial_delay, period, unit)
         end
         
-        typesig { [self::Runnable, ::Java::Long, ::Java::Long, self::TimeUnit] }
+        typesig { [class_self::Runnable, ::Java::Long, ::Java::Long, class_self::TimeUnit] }
         def schedule_with_fixed_delay(command, initial_delay, delay, unit)
           return @e.schedule_with_fixed_delay(command, initial_delay, delay, unit)
         end

@@ -188,7 +188,7 @@ module Sun::Security::X509
         alias_method :attr_clazz=, :clazz=
         undef_method :clazz=
         
-        typesig { [String, self::ObjectIdentifier, String] }
+        typesig { [String, class_self::ObjectIdentifier, String] }
         def initialize(name, oid, class_name)
           @oid = nil
           @name = nil
@@ -199,7 +199,7 @@ module Sun::Security::X509
           @class_name = class_name
         end
         
-        typesig { [String, self::ObjectIdentifier, self::Class] }
+        typesig { [String, class_self::ObjectIdentifier, class_self::Class] }
         def initialize(name, oid, clazz)
           @oid = nil
           @name = nil

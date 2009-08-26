@@ -343,7 +343,7 @@ module Java::Security
         alias_method :attr_handler=, :handler=
         undef_method :handler=
         
-        typesig { [self::CallbackHandler] }
+        typesig { [class_self::CallbackHandler] }
         # Constructs a new CallbackHandlerProtection from a
         # CallbackHandler.
         # 
@@ -396,7 +396,7 @@ module Java::Security
         alias_method :attr_chain=, :chain=
         undef_method :chain=
         
-        typesig { [self::PrivateKey, Array.typed(self::Certificate)] }
+        typesig { [class_self::PrivateKey, Array.typed(class_self::Certificate)] }
         # Constructs a <code>PrivateKeyEntry</code> with a
         # <code>PrivateKey</code> and corresponding certificate chain.
         # 
@@ -514,7 +514,7 @@ module Java::Security
         alias_method :attr_s_key=, :s_key=
         undef_method :s_key=
         
-        typesig { [self::SecretKey] }
+        typesig { [class_self::SecretKey] }
         # Constructs a <code>SecretKeyEntry</code> with a
         # <code>SecretKey</code>.
         # 
@@ -563,7 +563,7 @@ module Java::Security
         alias_method :attr_cert=, :cert=
         undef_method :cert=
         
-        typesig { [self::Certificate] }
+        typesig { [class_self::Certificate] }
         # Constructs a <code>TrustedCertificateEntry</code> with a
         # trusted <code>Certificate</code>.
         # 
@@ -1383,7 +1383,7 @@ module Java::Security
         end
         
         class_module.module_eval {
-          typesig { [self::KeyStore, self::ProtectionParameter] }
+          typesig { [class_self::KeyStore, class_self::ProtectionParameter] }
           # Returns a new Builder that encapsulates the given KeyStore.
           # The {@linkplain #getKeyStore} method of the returned object
           # will return <code>keyStore</code>, the {@linkplain
@@ -1403,15 +1403,15 @@ module Java::Security
           # initialized
           def new_instance(key_store, protection_parameter)
             if (((key_store).nil?) || ((protection_parameter).nil?))
-              raise self::NullPointerException.new
+              raise class_self::NullPointerException.new
             end
             if ((key_store.attr_initialized).equal?(false))
-              raise self::IllegalArgumentException.new("KeyStore not initialized")
+              raise class_self::IllegalArgumentException.new("KeyStore not initialized")
             end
-            return Class.new(self::Builder.class == Class ? self::Builder : Object) do
+            return Class.new(class_self::Builder.class == Class ? class_self::Builder : Object) do
               extend LocalClass
               include_class_members Builder
-              include self::Builder if self::Builder.class == Module
+              include class_self::Builder if class_self::Builder.class == Module
               
               attr_accessor :get_called
               alias_method :attr_get_called, :get_called
@@ -1447,7 +1447,7 @@ module Java::Security
             end.new_local(self)
           end
           
-          typesig { [String, self::Provider, self::JavaFile, self::ProtectionParameter] }
+          typesig { [String, class_self::Provider, class_self::JavaFile, class_self::ProtectionParameter] }
           # Returns a new Builder object.
           # 
           # <p>The first call to the {@link #getKeyStore} method on the returned
@@ -1491,18 +1491,18 @@ module Java::Security
           # if file does not exist or does not refer to a normal file
           def new_instance(type, provider, file, protection)
             if (((type).nil?) || ((file).nil?) || ((protection).nil?))
-              raise self::NullPointerException.new
+              raise class_self::NullPointerException.new
             end
-            if (((protection.is_a?(self::PasswordProtection)).equal?(false)) && ((protection.is_a?(self::CallbackHandlerProtection)).equal?(false)))
-              raise self::IllegalArgumentException.new("Protection must be PasswordProtection or " + "CallbackHandlerProtection")
+            if (((protection.is_a?(class_self::PasswordProtection)).equal?(false)) && ((protection.is_a?(class_self::CallbackHandlerProtection)).equal?(false)))
+              raise class_self::IllegalArgumentException.new("Protection must be PasswordProtection or " + "CallbackHandlerProtection")
             end
             if ((file.is_file).equal?(false))
-              raise self::IllegalArgumentException.new("File does not exist or it does not refer " + "to a normal file: " + RJava.cast_to_string(file))
+              raise class_self::IllegalArgumentException.new("File does not exist or it does not refer " + "to a normal file: " + RJava.cast_to_string(file))
             end
-            return self::FileBuilder.new(type, provider, file, protection, AccessController.get_context)
+            return class_self::FileBuilder.new(type, provider, file, protection, AccessController.get_context)
           end
           
-          const_set_lazy(:FileBuilder) { Class.new(self::Builder) do
+          const_set_lazy(:FileBuilder) { Class.new(class_self::Builder) do
             include_class_members Builder
             
             attr_accessor :type
@@ -1553,7 +1553,7 @@ module Java::Security
             alias_method :attr_old_exception=, :old_exception=
             undef_method :old_exception=
             
-            typesig { [String, self::Provider, self::JavaFile, self::ProtectionParameter, self::AccessControlContext] }
+            typesig { [String, class_self::Provider, class_self::JavaFile, class_self::ProtectionParameter, class_self::AccessControlContext] }
             def initialize(type, provider, file, protection, context)
               @type = nil
               @provider = nil
@@ -1583,7 +1583,7 @@ module Java::Security
                 action = Class.new(self.class::PrivilegedExceptionAction.class == Class ? self.class::PrivilegedExceptionAction : Object) do
                   extend LocalClass
                   include_class_members FileBuilder
-                  include self::PrivilegedExceptionAction if self::PrivilegedExceptionAction.class == Module
+                  include class_self::PrivilegedExceptionAction if class_self::PrivilegedExceptionAction.class == Module
                   
                   typesig { [] }
                   define_method :run do
@@ -1676,7 +1676,7 @@ module Java::Security
             alias_method :initialize__file_builder, :initialize
           end }
           
-          typesig { [String, self::Provider, self::ProtectionParameter] }
+          typesig { [String, class_self::Provider, class_self::ProtectionParameter] }
           # Returns a new Builder object.
           # 
           # <p>Each call to the {@link #getKeyStore} method on the returned
@@ -1704,13 +1704,13 @@ module Java::Security
           # @throws NullPointerException if type or protection is null
           def new_instance(type, provider, protection)
             if (((type).nil?) || ((protection).nil?))
-              raise self::NullPointerException.new
+              raise class_self::NullPointerException.new
             end
             context = AccessController.get_context
-            return Class.new(self::Builder.class == Class ? self::Builder : Object) do
+            return Class.new(class_self::Builder.class == Class ? class_self::Builder : Object) do
               extend LocalClass
               include_class_members Builder
-              include self::Builder if self::Builder.class == Module
+              include class_self::Builder if class_self::Builder.class == Module
               
               attr_accessor :get_called
               alias_method :attr_get_called, :get_called
@@ -1766,7 +1766,7 @@ module Java::Security
                 @action = Class.new(self.class::PrivilegedExceptionAction.class == Class ? self.class::PrivilegedExceptionAction : Object) do
                   extend LocalClass
                   include_class_members builder_class
-                  include self::PrivilegedExceptionAction if self::PrivilegedExceptionAction.class == Module
+                  include class_self::PrivilegedExceptionAction if class_self::PrivilegedExceptionAction.class == Module
                   
                   typesig { [] }
                   define_method :run do
@@ -1834,7 +1834,7 @@ module Java::Security
         alias_method :attr_protection=, :protection=
         undef_method :protection=
         
-        typesig { [self::ProtectionParameter] }
+        typesig { [class_self::ProtectionParameter] }
         def initialize(protection)
           @protection = nil
           @protection = protection

@@ -436,7 +436,7 @@ module Sun::Security::Provider::Certpath
           self.attr_value_cache.put(cache_key, values)
         end
         
-        typesig { [self::Attribute] }
+        typesig { [class_self::Attribute] }
         # Get the values for the given attribute. If the attribute is null
         # or does not contain any values, a zero length byte array is
         # returned. NOTE that it is assumed that all values are byte arrays.
@@ -949,7 +949,7 @@ module Sun::Security::Provider::Certpath
         alias_method :attr_subject=, :subject=
         undef_method :subject=
         
-        typesig { [self::X509CertSelector, self::X500Principal, String] }
+        typesig { [class_self::X509CertSelector, class_self::X500Principal, String] }
         # Creates an LDAPCertSelector.
         # 
         # @param selector the X509CertSelector to wrap
@@ -1081,7 +1081,7 @@ module Sun::Security::Provider::Certpath
           return @selector.get_path_to_names
         end
         
-        typesig { [self::Certificate] }
+        typesig { [class_self::Certificate] }
         def match(cert)
           # temporarily set the subject criterion to the certSubject
           # so that match will not reject the desired certificates
@@ -1124,7 +1124,7 @@ module Sun::Security::Provider::Certpath
         alias_method :attr_issuer_names=, :issuer_names=
         undef_method :issuer_names=
         
-        typesig { [self::X509CRLSelector, self::Collection, String] }
+        typesig { [class_self::X509CRLSelector, class_self::Collection, String] }
         # Creates an LDAPCRLSelector.
         # 
         # @param selector the X509CRLSelector to wrap
@@ -1179,7 +1179,7 @@ module Sun::Security::Provider::Certpath
           return @selector.get_certificate_checking
         end
         
-        typesig { [self::CRL] }
+        typesig { [class_self::CRL] }
         def match(crl)
           # temporarily set the issuer criterion to the certIssuers
           # so that match will not reject the desired CRL

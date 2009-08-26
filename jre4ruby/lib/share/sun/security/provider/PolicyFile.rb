@@ -2080,7 +2080,7 @@ module Sun::Security::Provider
         alias_method :attr_principals=, :principals=
         undef_method :principals=
         
-        typesig { [self::CodeSource, self::JavaList] }
+        typesig { [class_self::CodeSource, class_self::JavaList] }
         # Given a Permission and a CodeSource, create a policy entry.
         # 
         # XXX Decide if/how to add validity fields and "purpose" fields to
@@ -2100,7 +2100,7 @@ module Sun::Security::Provider
           @principals = principals # can be null
         end
         
-        typesig { [self::CodeSource] }
+        typesig { [class_self::CodeSource] }
         def initialize(cs)
           initialize__policy_entry(cs, nil)
         end
@@ -2110,7 +2110,7 @@ module Sun::Security::Provider
           return @principals # can be null
         end
         
-        typesig { [self::Permission] }
+        typesig { [class_self::Permission] }
         # add a Permission object to this entry.
         # No need to sync add op because perms are added to entry only
         # while entry is being initialized
@@ -2193,7 +2193,7 @@ module Sun::Security::Provider
         alias_method :attr_certs=, :certs=
         undef_method :certs=
         
-        typesig { [String, String, String, Array.typed(self::Certificate)] }
+        typesig { [String, String, String, Array.typed(class_self::Certificate)] }
         # Creates a new SelfPermission containing the permission
         # information needed later to expand the self
         # @param type the class name of the Permission class that will be
@@ -2264,7 +2264,7 @@ module Sun::Security::Provider
           end
         end
         
-        typesig { [self::Permission] }
+        typesig { [class_self::Permission] }
         # This method always returns false for SelfPermission permissions.
         # That is, an SelfPermission never considered to
         # imply another permission.

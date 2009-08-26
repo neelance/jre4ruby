@@ -442,7 +442,7 @@ module Java::Util::Concurrent
         alias_method :attr_next=, :next=
         undef_method :next=
         
-        typesig { [Object, Object, self::Node] }
+        typesig { [Object, Object, class_self::Node] }
         # Creates a new regular node.
         def initialize(key, value, next_)
           @key = nil
@@ -453,7 +453,7 @@ module Java::Util::Concurrent
           @next = next_
         end
         
-        typesig { [self::Node] }
+        typesig { [class_self::Node] }
         # Creates a new marker node. A marker is distinguished by
         # having its value field point to itself.  Marker nodes also
         # have null keys, a fact that is exploited in a few places,
@@ -484,7 +484,7 @@ module Java::Util::Concurrent
           return self.class::ValueUpdater.compare_and_set(self, cmp, val)
         end
         
-        typesig { [self::Node, self::Node] }
+        typesig { [class_self::Node, class_self::Node] }
         # compareAndSet next field
         def cas_next(cmp, val)
           return self.class::NextUpdater.compare_and_set(self, cmp, val)
@@ -509,7 +509,7 @@ module Java::Util::Concurrent
           return (@value).equal?(BASE_HEADER)
         end
         
-        typesig { [self::Node] }
+        typesig { [class_self::Node] }
         # Tries to append a deletion marker to this node.
         # @param f the assumed current successor of this node
         # @return true if successful
@@ -517,7 +517,7 @@ module Java::Util::Concurrent
           return cas_next(f, self.class::Node.new(f))
         end
         
-        typesig { [self::Node, self::Node] }
+        typesig { [class_self::Node, class_self::Node] }
         # Helps out a deletion by appending marker or unlinking from
         # predecessor. This is called during traversals when value
         # field seen to be null.
@@ -594,7 +594,7 @@ module Java::Util::Concurrent
         alias_method :attr_right=, :right=
         undef_method :right=
         
-        typesig { [self::Node, self::Index, self::Index] }
+        typesig { [class_self::Node, class_self::Index, class_self::Index] }
         # Creates index node with given values.
         def initialize(node, down, right)
           @node = nil
@@ -611,7 +611,7 @@ module Java::Util::Concurrent
           const_attr_reader  :RightUpdater
         }
         
-        typesig { [self::Index, self::Index] }
+        typesig { [class_self::Index, class_self::Index] }
         # compareAndSet right field
         def cas_right(cmp, val)
           return self.class::RightUpdater.compare_and_set(self, cmp, val)
@@ -624,7 +624,7 @@ module Java::Util::Concurrent
           return (@node.attr_value).nil?
         end
         
-        typesig { [self::Index, self::Index] }
+        typesig { [class_self::Index, class_self::Index] }
         # Tries to CAS newSucc as successor.  To minimize races with
         # unlink that may lose this index node, if the node being
         # indexed is known to be deleted, it doesn't try to link in.
@@ -637,7 +637,7 @@ module Java::Util::Concurrent
           return !(n.attr_value).nil? && cas_right(succ, new_succ)
         end
         
-        typesig { [self::Index] }
+        typesig { [class_self::Index] }
         # Tries to CAS right field to skip over apparent successor
         # succ.  Fails (forcing a retraversal by caller) if this node
         # is known to be deleted.
@@ -663,7 +663,7 @@ module Java::Util::Concurrent
         alias_method :attr_level=, :level=
         undef_method :level=
         
-        typesig { [self::Node, self::Index, self::Index, ::Java::Int] }
+        typesig { [class_self::Node, class_self::Index, class_self::Index, ::Java::Int] }
         def initialize(node, down, right, level)
           @level = 0
           super(node, down, right)
@@ -705,7 +705,7 @@ module Java::Util::Concurrent
         alias_method :attr_cmp=, :cmp=
         undef_method :cmp=
         
-        typesig { [Object, self::Comparator] }
+        typesig { [Object, class_self::Comparator] }
         def initialize(key, cmp)
           @actual_key = nil
           @cmp = nil
@@ -2602,7 +2602,7 @@ module Java::Util::Concurrent
         alias_method :attr_m=, :m=
         undef_method :m=
         
-        typesig { [self::ConcurrentNavigableMap] }
+        typesig { [class_self::ConcurrentNavigableMap] }
         def initialize(map)
           @m = nil
           super()
@@ -2713,7 +2713,7 @@ module Java::Util::Concurrent
           return to_list(self).to_array
         end
         
-        typesig { [Array.typed(self::T)] }
+        typesig { [Array.typed(class_self::T)] }
         def to_array(a)
           return to_list(self).to_array(a)
         end
@@ -2771,7 +2771,7 @@ module Java::Util::Concurrent
         alias_method :attr_m=, :m=
         undef_method :m=
         
-        typesig { [self::ConcurrentNavigableMap] }
+        typesig { [class_self::ConcurrentNavigableMap] }
         def initialize(map)
           @m = nil
           super()
@@ -2812,7 +2812,7 @@ module Java::Util::Concurrent
           return to_list(self).to_array
         end
         
-        typesig { [Array.typed(self::T)] }
+        typesig { [Array.typed(class_self::T)] }
         def to_array(a)
           return to_list(self).to_array(a)
         end
@@ -2830,7 +2830,7 @@ module Java::Util::Concurrent
         alias_method :attr_m=, :m=
         undef_method :m=
         
-        typesig { [self::ConcurrentNavigableMap] }
+        typesig { [class_self::ConcurrentNavigableMap] }
         def initialize(map)
           @m = nil
           super()
@@ -2903,7 +2903,7 @@ module Java::Util::Concurrent
           return to_list(self).to_array
         end
         
-        typesig { [Array.typed(self::T)] }
+        typesig { [Array.typed(class_self::T)] }
         def to_array(a)
           return to_list(self).to_array(a)
         end
@@ -2996,7 +2996,7 @@ module Java::Util::Concurrent
         alias_method :attr_values_view=, :values_view=
         undef_method :values_view=
         
-        typesig { [self::ConcurrentSkipListMap, Object, ::Java::Boolean, Object, ::Java::Boolean, ::Java::Boolean] }
+        typesig { [class_self::ConcurrentSkipListMap, Object, ::Java::Boolean, Object, ::Java::Boolean, ::Java::Boolean] }
         # Creates a new submap, initializing all fields
         def initialize(map, from_key, from_inclusive, to_key, to_inclusive, is_descending)
           @m = nil
@@ -3058,7 +3058,7 @@ module Java::Util::Concurrent
           end
         end
         
-        typesig { [self::ConcurrentSkipListMap::Node] }
+        typesig { [class_self::ConcurrentSkipListMap::Node] }
         # Returns true if node key is less than upper bound of range
         def is_before_end(n)
           if ((n).nil?)
@@ -3587,7 +3587,7 @@ module Java::Util::Concurrent
           const_set_lazy(:SubMapIter) { Class.new do
             extend LocalClass
             include_class_members SubMap
-            include self::Iterator
+            include class_self::Iterator
             
             # the last node returned by next()
             attr_accessor :last_returned
@@ -3702,7 +3702,7 @@ module Java::Util::Concurrent
             alias_method :initialize__sub_map_iter, :initialize
           end }
           
-          const_set_lazy(:SubMapValueIterator) { Class.new(self::SubMapIter) do
+          const_set_lazy(:SubMapValueIterator) { Class.new(class_self::SubMapIter) do
             extend LocalClass
             include_class_members SubMap
             
@@ -3722,7 +3722,7 @@ module Java::Util::Concurrent
             alias_method :initialize__sub_map_value_iterator, :initialize
           end }
           
-          const_set_lazy(:SubMapKeyIterator) { Class.new(self::SubMapIter) do
+          const_set_lazy(:SubMapKeyIterator) { Class.new(class_self::SubMapIter) do
             extend LocalClass
             include_class_members SubMap
             
@@ -3742,7 +3742,7 @@ module Java::Util::Concurrent
             alias_method :initialize__sub_map_key_iterator, :initialize
           end }
           
-          const_set_lazy(:SubMapEntryIterator) { Class.new(self::SubMapIter) do
+          const_set_lazy(:SubMapEntryIterator) { Class.new(class_self::SubMapIter) do
             extend LocalClass
             include_class_members SubMap
             
