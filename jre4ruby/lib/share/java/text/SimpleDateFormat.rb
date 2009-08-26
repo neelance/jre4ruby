@@ -42,7 +42,7 @@ module Java::Text
       include_const ::Java::Io, :InvalidObjectException
       include_const ::Java::Io, :ObjectInputStream
       include_const ::Java::Util, :Calendar
-      include_const ::Java::Util, :Date
+      include_const ::Java::Util, :JavaDate
       include_const ::Java::Util, :GregorianCalendar
       include_const ::Java::Util, :Hashtable
       include_const ::Java::Util, :Locale
@@ -884,12 +884,12 @@ module Java::Text
     # Initialize the fields we use to disambiguate ambiguous years. Separate
     # so we can call it from readObject().
     def initialize_default_century
-      self.attr_calendar.set_time(Date.new)
+      self.attr_calendar.set_time(JavaDate.new)
       self.attr_calendar.add(Calendar::YEAR, -80)
       parse_ambiguous_dates_as_after(self.attr_calendar.get_time)
     end
     
-    typesig { [Date] }
+    typesig { [JavaDate] }
     # Define one-century window into which to disambiguate dates using
     # two-digit years.
     def parse_ambiguous_dates_as_after(start_date)
@@ -898,7 +898,7 @@ module Java::Text
       @default_century_start_year = self.attr_calendar.get(Calendar::YEAR)
     end
     
-    typesig { [Date] }
+    typesig { [JavaDate] }
     # Sets the 100-year period 2-digit years will be interpreted as being in
     # to begin on the date the user specifies.
     # 
@@ -922,7 +922,7 @@ module Java::Text
       return @default_century_start
     end
     
-    typesig { [Date, StringBuffer, FieldPosition] }
+    typesig { [JavaDate, StringBuffer, FieldPosition] }
     # Formats the given <code>Date</code> into a date/time string and appends
     # the result to the given <code>StringBuffer</code>.
     # 
@@ -937,7 +937,7 @@ module Java::Text
       return format(date, to_append_to, pos.get_field_delegate)
     end
     
-    typesig { [Date, StringBuffer, FieldDelegate] }
+    typesig { [JavaDate, StringBuffer, FieldDelegate] }
     # Called from Format after creating a FieldDelegate
     def format(date, to_append_to, delegate)
       # Convert input date to time field list
@@ -983,11 +983,11 @@ module Java::Text
     def format_to_character_iterator(obj)
       sb = StringBuffer.new
       delegate = CharacterIteratorFieldDelegate.new
-      if (obj.is_a?(Date))
+      if (obj.is_a?(JavaDate))
         format(obj, sb, delegate)
       else
         if (obj.is_a?(Numeric))
-          format(Date.new((obj).long_value), sb, delegate)
+          format(JavaDate.new((obj).long_value), sb, delegate)
         else
           if ((obj).nil?)
             raise NullPointerException.new("formatToCharacterIterator must be passed non-null object")

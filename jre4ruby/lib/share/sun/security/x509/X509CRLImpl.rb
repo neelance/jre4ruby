@@ -364,7 +364,7 @@ module Sun::Security::X509
       end
     end
     
-    typesig { [X500Name, Date, Date] }
+    typesig { [X500Name, JavaDate, JavaDate] }
     # Initial CRL constructor, no revoked certs, and no extensions.
     # 
     # @param issuer the name of the CA issuing this CRL.
@@ -403,7 +403,7 @@ module Sun::Security::X509
       @next_update = next_date
     end
     
-    typesig { [X500Name, Date, Date, Array.typed(X509CRLEntry)] }
+    typesig { [X500Name, JavaDate, JavaDate, Array.typed(X509CRLEntry)] }
     # CRL constructor, revoked certs, no extensions.
     # 
     # @param issuer the name of the CA issuing this CRL.
@@ -465,7 +465,7 @@ module Sun::Security::X509
       end
     end
     
-    typesig { [X500Name, Date, Date, Array.typed(X509CRLEntry), CRLExtensions] }
+    typesig { [X500Name, JavaDate, JavaDate, Array.typed(X509CRLEntry), CRLExtensions] }
     # CRL constructor, revoked certs and extensions.
     # 
     # @param issuer the name of the CA issuing this CRL.
@@ -820,7 +820,7 @@ module Sun::Security::X509
     # 
     # @return the thisUpdate date from the CRL.
     def get_this_update
-      return (Date.new(@this_update.get_time))
+      return (JavaDate.new(@this_update.get_time))
     end
     
     typesig { [] }
@@ -832,7 +832,7 @@ module Sun::Security::X509
       if ((@next_update).nil?)
         return nil
       end
-      return (Date.new(@next_update.get_time))
+      return (JavaDate.new(@next_update.get_time))
     end
     
     typesig { [BigInteger] }

@@ -29,7 +29,7 @@ module Sun::Security::Util
       include ::Sun::Security::Util
       include ::Java::Io
       include_const ::Java::Math, :BigInteger
-      include_const ::Java::Util, :Date
+      include_const ::Java::Util, :JavaDate
     }
   end
   

@@ -32,7 +32,7 @@ module Sun::Util::Calendar
     }
   end
   
-  class ImmutableGregorianDate < ImmutableGregorianDateImports.const_get :BaseCalendar::Date
+  class ImmutableGregorianDate < ImmutableGregorianDateImports.const_get :BaseCalendar::JavaDate
     include_class_members ImmutableGregorianDateImports
     
     attr_accessor :date
@@ -41,7 +41,7 @@ module Sun::Util::Calendar
     alias_method :attr_date=, :date=
     undef_method :date=
     
-    typesig { [BaseCalendar::Date] }
+    typesig { [BaseCalendar::JavaDate] }
     def initialize(date)
       @date = nil
       super()

@@ -30,7 +30,7 @@ module Sun::Security::Util
       include_const ::Java::Io, :InputStream
       include_const ::Java::Io, :IOException
       include_const ::Java::Io, :EOFException
-      include_const ::Java::Util, :Date
+      include_const ::Java::Util, :JavaDate
       include_const ::Java::Util, :Vector
       include_const ::Java::Math, :BigInteger
       include_const ::Java::Io, :DataInputStream

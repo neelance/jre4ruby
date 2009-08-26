@@ -33,7 +33,7 @@ module Sun::Security::X509
       include_const ::Java::Security::Cert, :CertificateParsingException
       include_const ::Java::Security::Cert, :CertificateExpiredException
       include_const ::Java::Security::Cert, :CertificateNotYetValidException
-      include_const ::Java::Util, :Date
+      include_const ::Java::Util, :JavaDate
       include_const ::Java::Util, :Enumeration
       include ::Sun::Security::Util
     }
@@ -124,7 +124,7 @@ module Sun::Security::X509
       self.attr_extension_value = seq.to_byte_array
     end
     
-    typesig { [Date, Date] }
+    typesig { [JavaDate, JavaDate] }
     # The default constructor for PrivateKeyUsageExtension.
     # 
     # @param notBefore the date/time before which the private key
@@ -205,11 +205,11 @@ module Sun::Security::X509
     # @exception CertificateNotYetValidException if the certificate is not
     # yet valid.
     def valid
-      now = Date.new
+      now = JavaDate.new
       valid(now)
     end
     
-    typesig { [Date] }
+    typesig { [JavaDate] }
     # Verify that that the passed time is within the validity period.
     # 
     # @exception CertificateExpiredException if the certificate has expired
@@ -248,7 +248,7 @@ module Sun::Security::X509
     # Set the attribute value.
     # @exception CertificateException on attribute handling errors.
     def set(name, obj)
-      if (!(obj.is_a?(Date)))
+      if (!(obj.is_a?(JavaDate)))
         raise CertificateException.new("Attribute must be of type Date.")
       end
       if (name.equals_ignore_case(NOT_BEFORE))
@@ -268,10 +268,10 @@ module Sun::Security::X509
     # @exception CertificateException on attribute handling errors.
     def get(name)
       if (name.equals_ignore_case(NOT_BEFORE))
-        return (Date.new(@not_before.get_time))
+        return (JavaDate.new(@not_before.get_time))
       else
         if (name.equals_ignore_case(NOT_AFTER))
-          return (Date.new(@not_after.get_time))
+          return (JavaDate.new(@not_after.get_time))
         else
           raise CertificateException.new("Attribute name not recognized by" + " CertAttrSet:PrivateKeyUsage.")
         end

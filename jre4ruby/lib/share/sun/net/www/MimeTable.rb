@@ -29,7 +29,7 @@ module Sun::Net::Www
       include ::Sun::Net::Www
       include ::Java::Io
       include_const ::Java::Util, :Calendar
-      include_const ::Java::Util, :Date
+      include_const ::Java::Util, :JavaDate
       include_const ::Java::Text, :SimpleDateFormat
       include_const ::Java::Net, :URL
       include_const ::Java::Net, :FileNameMap

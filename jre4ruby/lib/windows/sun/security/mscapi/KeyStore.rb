@@ -46,7 +46,7 @@ module Sun::Security::Mscapi
       include_const ::Java::Security::Interfaces, :RSAPrivateCrtKey
       include_const ::Java::Util, :ArrayList
       include_const ::Java::Util, :Collection
-      include_const ::Java::Util, :Date
+      include_const ::Java::Util, :JavaDate
       include_const ::Java::Util, :Enumeration
       include_const ::Java::Util, :Iterator
       include_const ::Java::Util, :UUID
@@ -342,7 +342,7 @@ module Sun::Security::Mscapi
       if ((alias_).nil?)
         return nil
       end
-      return Date.new
+      return JavaDate.new
     end
     
     typesig { [String, Java::Security::Key, Array.typed(::Java::Char), Array.typed(Certificate)] }

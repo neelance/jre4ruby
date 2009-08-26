@@ -35,7 +35,7 @@ module Java::Security::Cert
       include_const ::Java::Security, :PublicKey
       include_const ::Javax::Security::Auth::X500, :X500Principal
       include_const ::Java::Math, :BigInteger
-      include_const ::Java::Util, :Date
+      include_const ::Java::Util, :JavaDate
       include_const ::Java::Util, :JavaSet
       include_const ::Java::Util, :Arrays
       include_const ::Sun::Security::X509, :X509CRLImpl

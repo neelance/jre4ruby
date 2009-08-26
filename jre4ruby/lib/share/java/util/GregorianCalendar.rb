@@ -763,7 +763,7 @@ module Java::Util
       self.internal_set(MILLISECOND, millis)
     end
     
-    typesig { [Date] }
+    typesig { [JavaDate] }
     # ///////////////
     # Public methods
     # ///////////////
@@ -822,7 +822,7 @@ module Java::Util
     # 
     # @return the Gregorian cutover date for this <code>GregorianCalendar</code> object.
     def get_gregorian_change
-      return Date.new(@gregorian_cutover)
+      return JavaDate.new(@gregorian_cutover)
     end
     
     typesig { [::Java::Int] }
@@ -2554,7 +2554,7 @@ module Java::Util
       return (normalized_year).equal?(cutover_year)
     end
     
-    typesig { [BaseCalendar::Date, ::Java::Long] }
+    typesig { [BaseCalendar::JavaDate, ::Java::Long] }
     # Returns the fixed date of the first day of the year (usually
     # January 1) before the specified date.
     # 
@@ -2578,7 +2578,7 @@ module Java::Util
       return jcal.get_fixed_date(date.get_normalized_year, BaseCalendar::JANUARY, 1, nil)
     end
     
-    typesig { [BaseCalendar::Date, ::Java::Long] }
+    typesig { [BaseCalendar::JavaDate, ::Java::Long] }
     # Returns the fixed date of the first date of the month (usually
     # the 1st of the month) before the specified date.
     # 

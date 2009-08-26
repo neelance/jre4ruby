@@ -39,7 +39,7 @@ module Sun::Util::Calendar
     include_class_members GregorianImports
     
     class_module.module_eval {
-      const_set_lazy(:Date) { Class.new(BaseCalendar::Date) do
+      const_set_lazy(:JavaDate) { Class.new(BaseCalendar::JavaDate) do
         include_class_members Gregorian
         
         typesig { [] }
@@ -99,12 +99,12 @@ module Sun::Util::Calendar
     
     typesig { [] }
     def new_calendar_date
-      return Date.new
+      return JavaDate.new
     end
     
     typesig { [TimeZone] }
     def new_calendar_date(zone)
-      return Date.new(zone)
+      return JavaDate.new(zone)
     end
     
     private

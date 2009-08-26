@@ -250,7 +250,7 @@ module Sun::Security::Validator
       raise NotImplementedError
     end
     
-    typesig { [Date] }
+    typesig { [JavaDate] }
     # Set the date to be used for subsequent validations. NOTE that
     # this is not a supported API, it is provided to simplify
     # writing tests only.

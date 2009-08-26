@@ -498,7 +498,7 @@ module Sun::Security::Pkcs12
     def engine_get_creation_date(alias_)
       entry = @entries.get(alias_.to_lower_case)
       if (!(entry).nil?)
-        return Date.new(entry.attr_date.get_time)
+        return JavaDate.new(entry.attr_date.get_time)
       else
         return nil
       end
@@ -529,7 +529,7 @@ module Sun::Security::Pkcs12
       synchronized(self) do
         begin
           entry = KeyEntry.new
-          entry.attr_date = Date.new
+          entry.attr_date = JavaDate.new
           if (key.is_a?(PrivateKey))
             if (((key.get_format == "PKCS#8")) || ((key.get_format == "PKCS8")))
               # Encrypt the private key
@@ -596,7 +596,7 @@ module Sun::Security::Pkcs12
           raise ke
         end
         entry = KeyEntry.new
-        entry.attr_date = Date.new
+        entry.attr_date = JavaDate.new
         entry.attr_protected_priv_key = key.clone
         if (!(chain).nil?)
           entry.attr_chain = chain.clone
@@ -1440,13 +1440,13 @@ module Sun::Security::Pkcs12
           date = nil
           if (key_id_str.starts_with("Time "))
             begin
-              date = Date.new(Long.parse_long(key_id_str.substring(5)))
+              date = JavaDate.new(Long.parse_long(key_id_str.substring(5)))
             rescue JavaException => e
               date = nil
             end
           end
           if ((date).nil?)
-            date = Date.new
+            date = JavaDate.new
           end
           entry.attr_date = date
           @key_list.add(entry)

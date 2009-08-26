@@ -36,7 +36,7 @@ module Sun::Security::Pkcs11
       include_const ::Java::Util, :Arrays
       include_const ::Java::Util, :Collection
       include_const ::Java::Util, :Collections
-      include_const ::Java::Util, :Date
+      include_const ::Java::Util, :JavaDate
       include_const ::Java::Util, :Enumeration
       include_const ::Java::Util, :Iterator
       include_const ::Java::Util, :JavaList

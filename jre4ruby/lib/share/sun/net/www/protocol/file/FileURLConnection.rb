@@ -227,7 +227,7 @@ module Sun::Net::Www::Protocol::JavaFile
           # Internet standard - ie: fixed-length subset of that
           # defined by RFC 1123
           if (!(@last_modified).equal?(0))
-            date = Date.new(@last_modified)
+            date = JavaDate.new(@last_modified)
             fo = SimpleDateFormat.new("EEE, dd MMM yyyy HH:mm:ss 'GMT'", Locale::US)
             fo.set_time_zone(TimeZone.get_time_zone("GMT"))
             self.attr_properties.add(self.attr_last_modified, fo.format(date))

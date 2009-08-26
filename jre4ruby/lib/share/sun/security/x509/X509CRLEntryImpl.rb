@@ -34,7 +34,7 @@ module Sun::Security::X509
       include_const ::Java::Security::Cert, :X509CRLEntry
       include_const ::Java::Math, :BigInteger
       include_const ::Java::Util, :Collection
-      include_const ::Java::Util, :Date
+      include_const ::Java::Util, :JavaDate
       include_const ::Java::Util, :Enumeration
       include_const ::Java::Util, :JavaSet
       include_const ::Java::Util, :HashSet
@@ -112,7 +112,7 @@ module Sun::Security::X509
       const_attr_reader  :YR_2050
     }
     
-    typesig { [BigInteger, Date] }
+    typesig { [BigInteger, JavaDate] }
     # Constructs a revoked certificate entry using the given
     # serial number and revocation date.
     # 
@@ -133,7 +133,7 @@ module Sun::Security::X509
       @revocation_date = date
     end
     
-    typesig { [BigInteger, Date, CRLExtensions] }
+    typesig { [BigInteger, JavaDate, CRLExtensions] }
     # Constructs a revoked certificate entry using the given
     # serial number, revocation date and the entry
     # extensions.
@@ -286,7 +286,7 @@ module Sun::Security::X509
     # 
     # @return the revocation date.
     def get_revocation_date
-      return Date.new(@revocation_date.get_time)
+      return JavaDate.new(@revocation_date.get_time)
     end
     
     typesig { [] }

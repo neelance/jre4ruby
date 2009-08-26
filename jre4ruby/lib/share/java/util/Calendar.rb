@@ -1105,10 +1105,10 @@ module Java::Util
     # @see #setTime(Date)
     # @see #getTimeInMillis()
     def get_time
-      return Date.new(get_time_in_millis)
+      return JavaDate.new(get_time_in_millis)
     end
     
-    typesig { [Date] }
+    typesig { [JavaDate] }
     # Sets this Calendar's time with the given <code>Date</code>.
     # <p>
     # Note: Calling <code>setTime()</code> with

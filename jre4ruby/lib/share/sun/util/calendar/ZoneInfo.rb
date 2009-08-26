@@ -31,7 +31,7 @@ module Sun::Util::Calendar
       include_const ::Java::Io, :ObjectInputStream
       include_const ::Java::Lang::Ref, :SoftReference
       include_const ::Java::Util, :ArrayList
-      include_const ::Java::Util, :Date
+      include_const ::Java::Util, :JavaDate
       include_const ::Java::Util, :HashMap
       include_const ::Java::Util, :JavaList
       include_const ::Java::Util, :Map
@@ -344,7 +344,7 @@ module Sun::Util::Calendar
         if (!(type).equal?(UTC_TIME))
           msec -= @raw_offset
         end
-        dstoffset = tz.in_daylight_time(Date.new(msec)) ? tz.get_dstsavings : 0
+        dstoffset = tz.in_daylight_time(JavaDate.new(msec)) ? tz.get_dstsavings : 0
         if (!(offsets).nil?)
           offsets[0] = rawoffset
           offsets[1] = dstoffset
@@ -494,7 +494,7 @@ module Sun::Util::Calendar
       return (!(@simple_time_zone_params).nil?)
     end
     
-    typesig { [Date] }
+    typesig { [JavaDate] }
     # Queries if the specified date is in Daylight Saving Time.
     def in_daylight_time(date)
       if ((date).nil?)

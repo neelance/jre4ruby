@@ -1978,7 +1978,7 @@ module Java::Util
       return fixed_date
     end
     
-    typesig { [LocalGregorianCalendar::Date, ::Java::Long] }
+    typesig { [LocalGregorianCalendar::JavaDate, ::Java::Long] }
     # Returns the fixed date of the first day of the year (usually
     # January 1) before the specified date.
     # 
@@ -2006,7 +2006,7 @@ module Java::Util
       return Gcal.get_fixed_date(d)
     end
     
-    typesig { [LocalGregorianCalendar::Date, ::Java::Long] }
+    typesig { [LocalGregorianCalendar::JavaDate, ::Java::Long] }
     # Returns the fixed date of the first date of the month (usually
     # the 1st of the month) before the specified date.
     # 
@@ -2075,7 +2075,7 @@ module Java::Util
     end
     
     class_module.module_eval {
-      typesig { [LocalGregorianCalendar::Date] }
+      typesig { [LocalGregorianCalendar::JavaDate] }
       # Returns the index to the new era if the given date is in a
       # transition month.  For example, if the give date is Heisei 1
       # (1989) January 20, then the era index for Heisei is
@@ -2115,7 +2115,7 @@ module Java::Util
     end
     
     class_module.module_eval {
-      typesig { [LocalGregorianCalendar::Date] }
+      typesig { [LocalGregorianCalendar::JavaDate] }
       def get_era_index(date)
         era = date.get_era
         i = Eras.attr_length - 1
@@ -2146,7 +2146,7 @@ module Java::Util
       return jc
     end
     
-    typesig { [LocalGregorianCalendar::Date] }
+    typesig { [LocalGregorianCalendar::JavaDate] }
     # After adjustments such as add(MONTH), add(YEAR), we don't want the
     # month to jump around.  E.g., we don't want Jan 31 + 1 month to go to Mar
     # 3, we want it to go to Feb 28.  Adjustments which might run into this

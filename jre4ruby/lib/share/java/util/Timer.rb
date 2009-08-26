@@ -27,7 +27,7 @@ module Java::Util
     class_module.module_eval {
       include ::Java::Lang
       include ::Java::Util
-      include_const ::Java::Util, :Date
+      include_const ::Java::Util, :JavaDate
     }
   end
   
@@ -250,7 +250,7 @@ module Java::Util
       sched(task, System.current_time_millis + delay, 0)
     end
     
-    typesig { [TimerTask, Date] }
+    typesig { [TimerTask, JavaDate] }
     # Schedules the specified task for execution at the specified time.  If
     # the time is in the past, the task is scheduled for immediate execution.
     # 
@@ -302,7 +302,7 @@ module Java::Util
       sched(task, System.current_time_millis + delay, -period)
     end
     
-    typesig { [TimerTask, Date, ::Java::Long] }
+    typesig { [TimerTask, JavaDate, ::Java::Long] }
     # Schedules the specified task for repeated <i>fixed-delay execution</i>,
     # beginning at the specified time. Subsequent executions take place at
     # approximately regular intervals, separated by the specified period.
@@ -377,7 +377,7 @@ module Java::Util
       sched(task, System.current_time_millis + delay, period)
     end
     
-    typesig { [TimerTask, Date, ::Java::Long] }
+    typesig { [TimerTask, JavaDate, ::Java::Long] }
     # Schedules the specified task for repeated <i>fixed-rate execution</i>,
     # beginning at the specified time. Subsequent executions take place at
     # approximately regular intervals, separated by the specified period.

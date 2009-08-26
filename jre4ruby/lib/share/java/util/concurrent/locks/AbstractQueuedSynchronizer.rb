@@ -2147,7 +2147,7 @@ module Java::Util::Concurrent::Locks
           return nanos_timeout - (System.nano_time - last_time)
         end
         
-        typesig { [class_self::Date] }
+        typesig { [class_self::JavaDate] }
         # Implements absolute timed condition wait.
         # <ol>
         # <li> If current thread is interrupted, throw InterruptedException.

@@ -228,7 +228,7 @@ module Java::Util
     # @see Calendar#DST_OFFSET
     # @since 1.4
     def get_offset(date)
-      if (in_daylight_time(Date.new(date)))
+      if (in_daylight_time(JavaDate.new(date)))
         return get_raw_offset + get_dstsavings
       end
       return get_raw_offset
@@ -252,7 +252,7 @@ module Java::Util
     def get_offsets(date, offsets)
       rawoffset = get_raw_offset
       dstoffset = 0
-      if (in_daylight_time(Date.new(date)))
+      if (in_daylight_time(JavaDate.new(date)))
         dstoffset = get_dstsavings
       end
       if (!(offsets).nil?)
@@ -477,7 +477,7 @@ module Java::Util
       raise NotImplementedError
     end
     
-    typesig { [Date] }
+    typesig { [JavaDate] }
     # Queries if the given date is in daylight savings time in
     # this time zone.
     # @param date the given Date.

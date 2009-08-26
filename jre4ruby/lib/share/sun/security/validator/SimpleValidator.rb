@@ -132,7 +132,7 @@ module Sun::Security::Validator
       chain = build_trusted_chain(chain)
       date = self.attr_validation_date
       if ((date).nil?)
-        date = Date.new
+        date = JavaDate.new
       end
       # verify top down, starting at the certificate issued by
       # the trust anchor

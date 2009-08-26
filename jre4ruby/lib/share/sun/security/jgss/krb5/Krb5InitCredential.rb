@@ -35,7 +35,7 @@ module Sun::Security::Jgss::Krb5
       include ::Javax::Security::Auth::Kerberos
       include_const ::Java::Net, :InetAddress
       include_const ::Java::Io, :IOException
-      include_const ::Java::Util, :Date
+      include_const ::Java::Util, :JavaDate
       include_const ::Java::Security, :AccessController
       include_const ::Java::Security, :AccessControlContext
       include_const ::Java::Security, :PrivilegedExceptionAction
@@ -71,7 +71,7 @@ module Sun::Security::Jgss::Krb5
     alias_method :attr_krb5credentials=, :krb5credentials=
     undef_method :krb5credentials=
     
-    typesig { [Krb5NameElement, Array.typed(::Java::Byte), KerberosPrincipal, KerberosPrincipal, Array.typed(::Java::Byte), ::Java::Int, Array.typed(::Java::Boolean), Date, Date, Date, Date, Array.typed(InetAddress)] }
+    typesig { [Krb5NameElement, Array.typed(::Java::Byte), KerberosPrincipal, KerberosPrincipal, Array.typed(::Java::Byte), ::Java::Int, Array.typed(::Java::Boolean), JavaDate, JavaDate, JavaDate, JavaDate, Array.typed(InetAddress)] }
     def initialize(name, asn1encoding, client, server, session_key, key_type, flags, auth_time, start_time, end_time, renew_till, client_addresses)
       @name = nil
       @krb5credentials = nil
@@ -87,7 +87,7 @@ module Sun::Security::Jgss::Krb5
       end
     end
     
-    typesig { [Krb5NameElement, Credentials, Array.typed(::Java::Byte), KerberosPrincipal, KerberosPrincipal, Array.typed(::Java::Byte), ::Java::Int, Array.typed(::Java::Boolean), Date, Date, Date, Date, Array.typed(InetAddress)] }
+    typesig { [Krb5NameElement, Credentials, Array.typed(::Java::Byte), KerberosPrincipal, KerberosPrincipal, Array.typed(::Java::Byte), ::Java::Int, Array.typed(::Java::Boolean), JavaDate, JavaDate, JavaDate, JavaDate, Array.typed(InetAddress)] }
     def initialize(name, delegated_cred, asn1encoding, client, server, session_key, key_type, flags, auth_time, start_time, end_time, renew_till, client_addresses)
       @name = nil
       @krb5credentials = nil
@@ -152,7 +152,7 @@ module Sun::Security::Jgss::Krb5
     # @exception GSSException may be thrown
     def get_init_lifetime
       ret_val = 0
-      ret_val = RJava.cast_to_int((get_end_time.get_time - (Date.new.get_time)))
+      ret_val = RJava.cast_to_int((get_end_time.get_time - (JavaDate.new.get_time)))
       return ret_val
     end
     

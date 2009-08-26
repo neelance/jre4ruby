@@ -37,7 +37,7 @@ module Java::Util::Concurrent::Locks
       include ::Java::Lang
       include ::Java::Util::Concurrent::Locks
       include ::Java::Util::Concurrent
-      include_const ::Java::Util, :Date
+      include_const ::Java::Util, :JavaDate
     }
   end
   
@@ -377,7 +377,7 @@ module Java::Util::Concurrent::Locks
       raise NotImplementedError
     end
     
-    typesig { [Date] }
+    typesig { [JavaDate] }
     # Causes the current thread to wait until it is signalled or interrupted,
     # or the specified deadline elapses.
     # 

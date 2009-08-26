@@ -37,7 +37,7 @@ module Sun::Security::Krb5::Internal
       include ::Sun::Security::Krb5::Internal::Ktab
       include_const ::Java::Io, :JavaFile
       include_const ::Java::Io, :IOException
-      include_const ::Java::Util, :Date
+      include_const ::Java::Util, :JavaDate
       include_const ::Java::Util, :Vector
       include_const ::Java::Io, :BufferedReader
       include_const ::Java::Io, :InputStreamReader

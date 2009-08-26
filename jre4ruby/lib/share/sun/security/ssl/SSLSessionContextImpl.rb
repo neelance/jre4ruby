@@ -29,7 +29,7 @@ module Sun::Security::Ssl
       include ::Sun::Security::Ssl
       include ::Java::Io
       include ::Java::Net
-      include_const ::Java::Util, :Date
+      include_const ::Java::Util, :JavaDate
       include_const ::Java::Util, :Enumeration
       include_const ::Java::Util, :Hashtable
       include_const ::Java::Util, :NoSuchElementException

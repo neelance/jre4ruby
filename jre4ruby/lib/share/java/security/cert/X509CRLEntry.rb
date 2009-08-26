@@ -28,7 +28,7 @@ module Java::Security::Cert
       include ::Java::Lang
       include ::Java::Security::Cert
       include_const ::Java::Math, :BigInteger
-      include_const ::Java::Util, :Date
+      include_const ::Java::Util, :JavaDate
       include_const ::Javax::Security::Auth::X500, :X500Principal
     }
   end

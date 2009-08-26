@@ -47,7 +47,7 @@ module Sun::Net::Www::Protocol::Http
       include_const ::Java::Net, :CacheRequest
       include_const ::Java::Net::Authenticator, :RequestorType
       include ::Java::Io
-      include_const ::Java::Util, :Date
+      include_const ::Java::Util, :JavaDate
       include_const ::Java::Util, :Map
       include_const ::Java::Util, :JavaList
       include_const ::Java::Util, :Locale
@@ -574,7 +574,7 @@ module Sun::Net::Www::Protocol::Http
         # Set modified since if necessary
         mod_time = get_if_modified_since
         if (!(mod_time).equal?(0))
-          date = Date.new(mod_time)
+          date = JavaDate.new(mod_time)
           # use the preferred date format according to RFC 2068(HTTP1.1),
           # RFC 822 and RFC 1123
           fo = SimpleDateFormat.new("EEE, dd MMM yyyy HH:mm:ss 'GMT'", Locale::US)

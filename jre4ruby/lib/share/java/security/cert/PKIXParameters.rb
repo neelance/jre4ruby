@@ -32,7 +32,7 @@ module Java::Security::Cert
       include_const ::Java::Security, :KeyStoreException
       include_const ::Java::Util, :ArrayList
       include_const ::Java::Util, :Collections
-      include_const ::Java::Util, :Date
+      include_const ::Java::Util, :JavaDate
       include_const ::Java::Util, :Enumeration
       include_const ::Java::Util, :HashSet
       include_const ::Java::Util, :Iterator
@@ -546,7 +546,7 @@ module Java::Security::Cert
       end
     end
     
-    typesig { [Date] }
+    typesig { [JavaDate] }
     # Sets the time for which the validity of the certification path
     # should be determined. If <code>null</code>, the current time is used.
     # <p>

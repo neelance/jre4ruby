@@ -31,7 +31,7 @@ module Sun::Security::Util
       include_const ::Java::Io, :IOException
       include_const ::Java::Io, :OutputStream
       include_const ::Java::Math, :BigInteger
-      include_const ::Java::Util, :Date
+      include_const ::Java::Util, :JavaDate
       include_const ::Sun::Util::Calendar, :CalendarDate
       include_const ::Sun::Util::Calendar, :CalendarSystem
     }
@@ -402,7 +402,7 @@ module Sun::Security::Util
       else
         raise IOException.new("Parse " + type + " time, garbage offset")
       end
-      return Date.new(time)
+      return JavaDate.new(time)
     end
     
     private

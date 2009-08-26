@@ -879,7 +879,7 @@ module Java::Util
       if (!(comments).nil?)
         write_comments(bw, comments)
       end
-      bw.write("#" + RJava.cast_to_string(Date.new.to_s))
+      bw.write("#" + RJava.cast_to_string(JavaDate.new.to_s))
       bw.new_line
       synchronized((self)) do
         e = keys

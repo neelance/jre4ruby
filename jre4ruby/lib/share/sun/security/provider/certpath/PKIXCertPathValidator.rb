@@ -47,7 +47,7 @@ module Sun::Security::Provider::Certpath
       include_const ::Java::Util, :Collections
       include_const ::Java::Util, :JavaList
       include_const ::Java::Util, :ArrayList
-      include_const ::Java::Util, :Date
+      include_const ::Java::Util, :JavaDate
       include_const ::Java::Util, :JavaSet
       include_const ::Java::Util, :HashSet
       include_const ::Javax::Security::Auth::X500, :X500Principal
@@ -235,7 +235,7 @@ module Sun::Security::Provider::Certpath
       # default value for testDate is current time
       @test_date = pkix_param.get_date
       if ((@test_date).nil?)
-        @test_date = Date.new(System.current_time_millis)
+        @test_date = JavaDate.new(System.current_time_millis)
       end
       @user_checkers = pkix_param.get_cert_path_checkers
       @sig_provider = RJava.cast_to_string(pkix_param.get_sig_provider)

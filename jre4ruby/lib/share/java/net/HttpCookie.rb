@@ -32,7 +32,7 @@ module Java::Net
       include_const ::Java::Util, :NoSuchElementException
       include_const ::Java::Text, :SimpleDateFormat
       include_const ::Java::Util, :TimeZone
-      include_const ::Java::Util, :Date
+      include_const ::Java::Util, :JavaDate
       include_const ::Java::Lang, :NullPointerException
     }
   end

@@ -35,7 +35,7 @@ module Sun::Security::X509
       include_const ::Java::Io, :Serializable
       include_const ::Java::Math, :BigInteger
       include ::Java::Security
-      include_const ::Java::Util, :Date
+      include_const ::Java::Util, :JavaDate
       include_const ::Java::Util, :Enumeration
       include ::Sun::Security::Util
     }
@@ -279,7 +279,7 @@ module Sun::Security::X509
       @signed_cert = der_val.to_byte_array
     end
     
-    typesig { [X500Name, X509Key, Date, Date] }
+    typesig { [X500Name, X509Key, JavaDate, JavaDate] }
     # Partially constructs a certificate from descriptive parameters.
     # This constructor may be used by Certificate Authority (CA) code,
     # which later <a href="#signAndEncode">signs and encodes</a> the
@@ -439,7 +439,7 @@ module Sun::Security::X509
     # @param issuerPublicKey the public key of the issuing CA
     # @exception CertException when the certificate is not valid.
     def verify(issuer_public_key)
-      now = Date.new
+      now = JavaDate.new
       if (now.before(@notbefore))
         raise CertException.new(CertException.attr_verf_invalid_notbefore)
       end
@@ -612,13 +612,13 @@ module Sun::Security::X509
     typesig { [] }
     # Returns the first time the certificate is valid.
     def get_not_before
-      return Date.new(@notbefore.get_time)
+      return JavaDate.new(@notbefore.get_time)
     end
     
     typesig { [] }
     # Returns the last time the certificate is valid.
     def get_not_after
-      return Date.new(@notafter.get_time)
+      return JavaDate.new(@notafter.get_time)
     end
     
     typesig { [] }

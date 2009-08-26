@@ -29,7 +29,7 @@ module Sun::Security::Provider::Certpath
       include ::Sun::Security::Provider::Certpath
       include_const ::Java::Math, :BigInteger
       include_const ::Java::Util, :Collection
-      include_const ::Java::Util, :Date
+      include_const ::Java::Util, :JavaDate
       include_const ::Java::Util, :JavaSet
       include_const ::Java::Security, :KeyFactory
       include_const ::Java::Security, :PublicKey
@@ -103,7 +103,7 @@ module Sun::Security::Provider::Certpath
     alias_method :attr_prev_pub_key=, :prev_pub_key=
     undef_method :prev_pub_key=
     
-    typesig { [TrustAnchor, Date, String, ::Java::Boolean] }
+    typesig { [TrustAnchor, JavaDate, String, ::Java::Boolean] }
     # Constructor that initializes the input parameters.
     # 
     # @param anchor the anchor selected to validate the target certificate
@@ -202,7 +202,7 @@ module Sun::Security::Provider::Certpath
       end
     end
     
-    typesig { [X509Certificate, Date] }
+    typesig { [X509Certificate, JavaDate] }
     # Internal method to verify the timestamp on a certificate
     def verify_timestamp(cert, date)
       msg = "timestamp"

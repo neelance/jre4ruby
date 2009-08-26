@@ -47,7 +47,7 @@ module Java::Util
       include_const ::Java::Text, :DecimalFormatSymbols
       include_const ::Java::Text, :NumberFormat
       include_const ::Java::Util, :Calendar
-      include_const ::Java::Util, :Date
+      include_const ::Java::Util, :JavaDate
       include_const ::Java::Util, :Locale
       include_const ::Java::Util::Regex, :Matcher
       include_const ::Java::Util::Regex, :Pattern
@@ -2982,7 +2982,7 @@ module Java::Util
             cal = Calendar.get_instance((l).nil? ? Locale::US : l)
             cal.set_time_in_millis(arg)
           else
-            if (arg.is_a?(self.class::Date))
+            if (arg.is_a?(self.class::JavaDate))
               # Note that the following method uses an instance of the
               # default time zone (TimeZone.getDefaultRef().
               cal = Calendar.get_instance((l).nil? ? Locale::US : l)

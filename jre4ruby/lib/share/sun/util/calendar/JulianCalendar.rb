@@ -51,7 +51,7 @@ module Sun::Util::Calendar
       const_set_lazy(:JULIAN_EPOCH) { -1 }
       const_attr_reader  :JULIAN_EPOCH
       
-      const_set_lazy(:Date) { Class.new(BaseCalendar::Date) do
+      const_set_lazy(:JavaDate) { Class.new(BaseCalendar::JavaDate) do
         include_class_members JulianCalendar
         
         typesig { [] }
@@ -80,7 +80,7 @@ module Sun::Util::Calendar
         
         typesig { [class_self::Era] }
         def set_known_era(era)
-          BaseCalendar::Date.instance_method(:set_era).bind(self).call(era)
+          BaseCalendar::JavaDate.instance_method(:set_era).bind(self).call(era)
         end
         
         typesig { [] }
@@ -163,15 +163,15 @@ module Sun::Util::Calendar
     
     typesig { [] }
     def new_calendar_date
-      return Date.new
+      return JavaDate.new
     end
     
     typesig { [TimeZone] }
     def new_calendar_date(zone)
-      return Date.new(zone)
+      return JavaDate.new(zone)
     end
     
-    typesig { [::Java::Int, ::Java::Int, ::Java::Int, BaseCalendar::Date] }
+    typesig { [::Java::Int, ::Java::Int, ::Java::Int, BaseCalendar::JavaDate] }
     # @param jyear normalized Julian year
     def get_fixed_date(jyear, month, day_of_month, cache)
       is_jan1 = (month).equal?(JANUARY) && (day_of_month).equal?(1)

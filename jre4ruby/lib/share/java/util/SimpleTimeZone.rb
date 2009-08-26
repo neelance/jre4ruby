@@ -661,7 +661,7 @@ module Java::Util
       return get_offset(cal, cdate, y, time)
     end
     
-    typesig { [BaseCalendar, BaseCalendar::Date, ::Java::Int, ::Java::Long] }
+    typesig { [BaseCalendar, BaseCalendar::JavaDate, ::Java::Int, ::Java::Long] }
     def get_offset(cal, cdate, year, time)
       synchronized((self)) do
         if (!(@cache_start).equal?(0))
@@ -715,7 +715,7 @@ module Java::Util
       return offset
     end
     
-    typesig { [BaseCalendar, BaseCalendar::Date, ::Java::Int] }
+    typesig { [BaseCalendar, BaseCalendar::JavaDate, ::Java::Int] }
     def get_start(cal, cdate, year)
       time = @start_time
       if (!(@start_time_mode).equal?(UTC_TIME))
@@ -724,7 +724,7 @@ module Java::Util
       return get_transition(cal, cdate, @start_mode, year, @start_month, @start_day, @start_day_of_week, time)
     end
     
-    typesig { [BaseCalendar, BaseCalendar::Date, ::Java::Int] }
+    typesig { [BaseCalendar, BaseCalendar::JavaDate, ::Java::Int] }
     def get_end(cal, cdate, year)
       time = @end_time
       if (!(@end_time_mode).equal?(UTC_TIME))
@@ -736,7 +736,7 @@ module Java::Util
       return get_transition(cal, cdate, @end_mode, year, @end_month, @end_day, @end_day_of_week, time)
     end
     
-    typesig { [BaseCalendar, BaseCalendar::Date, ::Java::Int, ::Java::Int, ::Java::Int, ::Java::Int, ::Java::Int, ::Java::Int] }
+    typesig { [BaseCalendar, BaseCalendar::JavaDate, ::Java::Int, ::Java::Int, ::Java::Int, ::Java::Int, ::Java::Int, ::Java::Int] }
     def get_transition(cal, cdate, mode, year, month, day_of_month, day_of_week, time_of_day)
       cdate.set_normalized_year(year)
       cdate.set_month(month + 1)
@@ -818,7 +818,7 @@ module Java::Util
       return @use_daylight
     end
     
-    typesig { [Date] }
+    typesig { [JavaDate] }
     # Queries if the given date is in daylight saving time.
     # @return true if daylight saving time is in effective at the
     # given date; false otherwise.

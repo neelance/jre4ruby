@@ -60,7 +60,7 @@ module Sun::Util::Calendar
     undef_method :eras=
     
     class_module.module_eval {
-      const_set_lazy(:Date) { Class.new(BaseCalendar::Date) do
+      const_set_lazy(:JavaDate) { Class.new(BaseCalendar::JavaDate) do
         include_class_members LocalGregorianCalendar
         
         typesig { [] }
@@ -120,12 +120,12 @@ module Sun::Util::Calendar
         
         typesig { [class_self::Era] }
         def set_local_era(era)
-          BaseCalendar::Date.instance_method(:set_era).bind(self).call(era)
+          BaseCalendar::JavaDate.instance_method(:set_era).bind(self).call(era)
         end
         
         typesig { [::Java::Int] }
         def set_local_year(year)
-          BaseCalendar::Date.instance_method(:set_year).bind(self).call(year)
+          BaseCalendar::JavaDate.instance_method(:set_year).bind(self).call(year)
         end
         
         typesig { [] }
@@ -267,7 +267,7 @@ module Sun::Util::Calendar
       return adjust_year(ldate, millis, ldate.get_zone_offset)
     end
     
-    typesig { [Date, ::Java::Long, ::Java::Int] }
+    typesig { [JavaDate, ::Java::Long, ::Java::Int] }
     def adjust_year(ldate, millis, zone_offset)
       i = 0
       i = @eras.attr_length - 1
@@ -295,12 +295,12 @@ module Sun::Util::Calendar
     
     typesig { [] }
     def new_calendar_date
-      return Date.new
+      return JavaDate.new
     end
     
     typesig { [TimeZone] }
     def new_calendar_date(zone)
-      return Date.new(zone)
+      return JavaDate.new(zone)
     end
     
     typesig { [CalendarDate] }

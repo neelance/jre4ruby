@@ -64,7 +64,7 @@ module Java::Util::Logging
     typesig { [StringBuffer, ::Java::Long] }
     # Append the time and date in ISO 8601 format
     def append_iso8601(sb, millis)
-      date = Date.new(millis)
+      date = JavaDate.new(millis)
       sb.append(date.get_year + 1900)
       sb.append(Character.new(?-.ord))
       a2(sb, date.get_month + 1)

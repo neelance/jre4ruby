@@ -2026,7 +2026,7 @@ module Sun::Security::Tools
       cert_info = cert_impl.get(RJava.cast_to_string(X509CertImpl::NAME) + "." + RJava.cast_to_string(X509CertImpl::INFO))
       # Extend its validity
       first_date = get_start_date(@start_date)
-      last_date = Date.new
+      last_date = JavaDate.new
       last_date.set_time(first_date.get_time + @validity * 1000 * 24 * 60 * 60)
       interval = CertificateValidity.new(first_date, last_date)
       cert_info.set(X509CertInfo::VALIDITY, interval)

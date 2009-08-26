@@ -32,7 +32,7 @@ module Sun::Security::X509
       include_const ::Java::Security::Cert, :CertificateException
       include_const ::Java::Security::Cert, :CertificateEncodingException
       include ::Java::Security
-      include_const ::Java::Util, :Date
+      include_const ::Java::Util, :JavaDate
       include_const ::Sun::Security::Pkcs, :PKCS10
     }
   end
@@ -209,7 +209,7 @@ module Sun::Security::X509
       end
     end
     
-    typesig { [X500Name, Date, ::Java::Long] }
+    typesig { [X500Name, JavaDate, ::Java::Long] }
     # Returns a self-signed X.509v3 certificate for the public key.
     # The certificate is immediately valid. No extensions.
     # 
@@ -233,7 +233,7 @@ module Sun::Security::X509
       last_date = nil
       begin
         issuer = get_signer(myname)
-        last_date = Date.new
+        last_date = JavaDate.new
         last_date.set_time(first_date.get_time + validity * 1000)
         interval = CertificateValidity.new(first_date, last_date)
         info = X509CertInfo.new
@@ -262,7 +262,7 @@ module Sun::Security::X509
     typesig { [X500Name, ::Java::Long] }
     # Keep the old method
     def get_self_certificate(myname, validity)
-      return get_self_certificate(myname, Date.new, validity)
+      return get_self_certificate(myname, JavaDate.new, validity)
     end
     
     typesig { [X500Name] }

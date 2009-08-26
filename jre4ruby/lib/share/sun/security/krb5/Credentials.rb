@@ -38,7 +38,7 @@ module Sun::Security::Krb5
       include_const ::Sun::Security::Krb5::Internal::Crypto, :EType
       include_const ::Java::Io, :JavaFile
       include_const ::Java::Io, :IOException
-      include_const ::Java::Util, :Date
+      include_const ::Java::Util, :JavaDate
       include_const ::Java::Util, :Vector
       include_const ::Java::Io, :BufferedReader
       include_const ::Java::Io, :InputStreamReader
@@ -196,7 +196,7 @@ module Sun::Security::Krb5
       @c_addr = c_addr
     end
     
-    typesig { [Array.typed(::Java::Byte), String, String, Array.typed(::Java::Byte), ::Java::Int, Array.typed(::Java::Boolean), Date, Date, Date, Date, Array.typed(InetAddress)] }
+    typesig { [Array.typed(::Java::Byte), String, String, Array.typed(::Java::Byte), ::Java::Int, Array.typed(::Java::Boolean), JavaDate, JavaDate, JavaDate, JavaDate, Array.typed(InetAddress)] }
     def initialize(encoding, client, server, key_bytes, key_type, flags, auth_time, start_time, end_time, renew_till, c_addrs)
       initialize__credentials(Ticket.new(encoding), PrincipalName.new(client, PrincipalName::KRB_NT_PRINCIPAL), PrincipalName.new(server, PrincipalName::KRB_NT_SRV_INST), EncryptionKey.new(key_type, key_bytes), ((flags).nil? ? nil : TicketFlags.new(flags)), ((auth_time).nil? ? nil : KerberosTime.new(auth_time)), ((start_time).nil? ? nil : KerberosTime.new(start_time)), ((end_time).nil? ? nil : KerberosTime.new(end_time)), ((renew_till).nil? ? nil : KerberosTime.new(renew_till)), nil) # caddrs are in the encoding at this point
     end

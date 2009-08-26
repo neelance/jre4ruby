@@ -109,7 +109,7 @@ module Sun::Security::Provider::Certpath
       @target_subject_dn = target_subject_dn
       # Initialize date if not specified
       params_date = build_params.get_date
-      @date = !(params_date).nil? ? params_date : Date.new
+      @date = !(params_date).nil? ? params_date : JavaDate.new
       @target_cert_constraints = build_params.get_target_cert_constraints
     end
     

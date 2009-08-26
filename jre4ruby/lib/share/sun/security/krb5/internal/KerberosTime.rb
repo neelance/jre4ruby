@@ -35,7 +35,7 @@ module Sun::Security::Krb5::Internal
       include_const ::Sun::Security::Krb5, :Config
       include_const ::Sun::Security::Krb5, :KrbException
       include_const ::Sun::Security::Krb5, :Asn1Exception
-      include_const ::Java::Util, :Date
+      include_const ::Java::Util, :JavaDate
       include_const ::Java::Util, :GregorianCalendar
       include_const ::Java::Util, :Calendar
       include_const ::Java::Io, :IOException
@@ -176,7 +176,7 @@ module Sun::Security::Krb5::Internal
       end
     }
     
-    typesig { [Date] }
+    typesig { [JavaDate] }
     def initialize(time)
       @kerberos_time = 0
       @kerberos_time = time.get_time # (time.getTimezoneOffset() * 60000L);
@@ -186,7 +186,7 @@ module Sun::Security::Krb5::Internal
     def initialize(init_to_now)
       @kerberos_time = 0
       if (init_to_now)
-        temp = Date.new
+        temp = JavaDate.new
         set_time(temp)
       else
         @kerberos_time = 0
@@ -219,7 +219,7 @@ module Sun::Security::Krb5::Internal
       return @kerberos_time
     end
     
-    typesig { [Date] }
+    typesig { [JavaDate] }
     def set_time(time)
       @kerberos_time = time.get_time # (time.getTimezoneOffset() * 60000L);
     end
@@ -231,14 +231,14 @@ module Sun::Security::Krb5::Internal
     
     typesig { [] }
     def to_date
-      temp = Date.new(@kerberos_time)
+      temp = JavaDate.new(@kerberos_time)
       temp.set_time(temp.get_time)
       return temp
     end
     
     typesig { [] }
     def set_now
-      temp = Date.new
+      temp = JavaDate.new
       set_time(temp)
     end
     

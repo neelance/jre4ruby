@@ -31,7 +31,7 @@ module Java::Net
       include_const ::Java::Io, :InputStream
       include_const ::Java::Io, :OutputStream
       include_const ::Java::Util, :Hashtable
-      include_const ::Java::Util, :Date
+      include_const ::Java::Util, :JavaDate
       include_const ::Java::Util, :StringTokenizer
       include_const ::Java::Util, :Collections
       include_const ::Java::Util, :Map
@@ -700,7 +700,7 @@ module Java::Net
     def get_header_field_date(name, default)
       value = get_header_field(name)
       begin
-        return Date.parse(value)
+        return JavaDate.parse(value)
       rescue JavaException => e
       end
       return default

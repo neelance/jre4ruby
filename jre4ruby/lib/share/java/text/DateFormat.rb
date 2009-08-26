@@ -41,7 +41,7 @@ module Java::Text
       include_const ::Java::Io, :InvalidObjectException
       include_const ::Java::Text::Spi, :DateFormatProvider
       include_const ::Java::Util, :Calendar
-      include_const ::Java::Util, :Date
+      include_const ::Java::Util, :JavaDate
       include_const ::Java::Util, :GregorianCalendar
       include_const ::Java::Util, :HashMap
       include_const ::Java::Util, :Locale
@@ -293,18 +293,18 @@ module Java::Text
     # pattern character 'z'.
     # @see java.text.Format
     def format(obj, to_append_to, field_position)
-      if (obj.is_a?(Date))
+      if (obj.is_a?(JavaDate))
         return format(obj, to_append_to, field_position)
       else
         if (obj.is_a?(Numeric))
-          return format(Date.new((obj).long_value), to_append_to, field_position)
+          return format(JavaDate.new((obj).long_value), to_append_to, field_position)
         else
           raise IllegalArgumentException.new("Cannot format given Object as a Date")
         end
       end
     end
     
-    typesig { [Date, StringBuffer, FieldPosition] }
+    typesig { [JavaDate, StringBuffer, FieldPosition] }
     # Formats a Date into a date/time string.
     # @param date a Date to be formatted into a date/time string.
     # @param toAppendTo the string buffer for the returning date/time string.
@@ -329,7 +329,7 @@ module Java::Text
       raise NotImplementedError
     end
     
-    typesig { [Date] }
+    typesig { [JavaDate] }
     # Formats a Date into a date/time string.
     # @param date the time value to be formatted into a time string.
     # @return the formatted time string.

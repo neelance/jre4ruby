@@ -36,7 +36,7 @@ module Sun::Security::Provider::Certpath
       include_const ::Java::Security::Cert, :X509Certificate
       include_const ::Java::Security::Cert, :PKIXParameters
       include_const ::Javax::Security::Auth::X500, :X500Principal
-      include_const ::Java::Util, :Date
+      include_const ::Java::Util, :JavaDate
       include_const ::Java::Util, :JavaList
       include_const ::Java::Util, :JavaSet
       include_const ::Java::Util, :Iterator
@@ -526,7 +526,7 @@ module Sun::Security::Provider::Certpath
             end
             # ignore extensions
           end
-          now = self.class::Date.new
+          now = self.class::JavaDate.new
           if (!(DEBUG).nil?)
             until_ = ""
             if (!(@next_update).nil?)

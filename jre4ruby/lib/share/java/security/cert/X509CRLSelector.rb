@@ -429,7 +429,7 @@ module Java::Security::Cert
       @max_crl = max_crl
     end
     
-    typesig { [Date] }
+    typesig { [JavaDate] }
     # Sets the dateAndTime criterion. The specified date must be
     # equal to or later than the value of the thisUpdate component
     # of the <code>X509CRL</code> and earlier than the value of the

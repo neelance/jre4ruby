@@ -768,7 +768,7 @@ module Sun::Security::Tools
                 sb.append(Character.new(?\s.ord))
                 (i -= 1)
               end
-              sb.append(s).append(Character.new(?\s.ord)).append(Date.new(je.get_time).to_s)
+              sb.append(s).append(Character.new(?\s.ord)).append(JavaDate.new(je.get_time).to_s)
               sb.append(Character.new(?\s.ord)).append(je.get_name)
               System.out.println(sb.to_s)
               if (!(signers).nil? && @showcerts)

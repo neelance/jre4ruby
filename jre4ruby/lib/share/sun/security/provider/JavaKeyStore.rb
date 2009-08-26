@@ -282,9 +282,9 @@ module Sun::Security::Provider
       entry = @entries.get(convert_alias(alias_))
       if (!(entry).nil?)
         if (entry.is_a?(TrustedCertEntry))
-          return Date.new((entry).attr_date.get_time)
+          return JavaDate.new((entry).attr_date.get_time)
         else
-          return Date.new((entry).attr_date.get_time)
+          return JavaDate.new((entry).attr_date.get_time)
         end
       else
         return nil
@@ -320,7 +320,7 @@ module Sun::Security::Provider
       begin
         synchronized((@entries)) do
           entry = KeyEntry.new
-          entry.attr_date = Date.new
+          entry.attr_date = JavaDate.new
           # Protect the encoding of the key
           key_protector = KeyProtector.new(password)
           entry.attr_protected_priv_key = key_protector.protect(key)
@@ -371,7 +371,7 @@ module Sun::Security::Provider
           raise KeyStoreException.new("key is not encoded as " + "EncryptedPrivateKeyInfo")
         end
         entry = KeyEntry.new
-        entry.attr_date = Date.new
+        entry.attr_date = JavaDate.new
         entry.attr_protected_priv_key = key.clone
         if ((!(chain).nil?) && (!(chain.attr_length).equal?(0)))
           entry.attr_chain = chain.clone
@@ -403,7 +403,7 @@ module Sun::Security::Provider
         end
         trusted_cert_entry = TrustedCertEntry.new
         trusted_cert_entry.attr_cert = cert
-        trusted_cert_entry.attr_date = Date.new
+        trusted_cert_entry.attr_date = JavaDate.new
         @entries.put(convert_alias(alias_), trusted_cert_entry)
       end
     end
@@ -679,7 +679,7 @@ module Sun::Security::Provider
             # Read the alias
             alias_ = RJava.cast_to_string(dis.read_utf)
             # Read the (entry creation) date
-            entry.attr_date = Date.new(dis.read_long)
+            entry.attr_date = JavaDate.new(dis.read_long)
             # Read the private key
             begin
               entry.attr_protected_priv_key = Array.typed(::Java::Byte).new(dis.read_int) { 0 }
@@ -735,7 +735,7 @@ module Sun::Security::Provider
               # Read the alias
               alias_ = RJava.cast_to_string(dis.read_utf)
               # Read the (entry creation) date
-              entry.attr_date = Date.new(dis.read_long)
+              entry.attr_date = JavaDate.new(dis.read_long)
               # Read the trusted certificate
               if ((x_version).equal?(2))
                 # read the certificate type, and instantiate a

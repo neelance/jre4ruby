@@ -29,7 +29,7 @@ module Java::Util::Logging
       include ::Java::Util::Logging
       include ::Java::Io
       include ::Java::Text
-      include_const ::Java::Util, :Date
+      include_const ::Java::Util, :JavaDate
     }
   end
   
@@ -129,7 +129,7 @@ module Java::Util::Logging
       @args = nil
       @line_separator = nil
       super()
-      @dat = Date.new
+      @dat = JavaDate.new
       @args = Array.typed(Object).new(1) { nil }
       @line_separator = Java::Security::AccessController.do_privileged(Sun::Security::Action::GetPropertyAction.new("line.separator"))
     end

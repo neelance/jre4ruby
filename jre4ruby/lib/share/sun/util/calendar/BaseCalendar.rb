@@ -181,7 +181,7 @@ module Sun::Util::Calendar
       const_set_lazy(:FIXED_DATES) { Array.typed(::Java::Int).new([719163, 719528, 719893, 720259, 720624, 720989, 721354, 721720, 722085, 722450, 722815, 723181, 723546, 723911, 724276, 724642, 725007, 725372, 725737, 726103, 726468, 726833, 727198, 727564, 727929, 728294, 728659, 729025, 729390, 729755, 730120, 730486, 730851, 731216, 731581, 731947, 732312, 732677, 733042, 733408, 733773, 734138, 734503, 734869, 735234, 735599, 735964, 736330, 736695, 737060, 737425, 737791, 738156, 738521, 738886, 739252, 739617, 739982, 740347, 740713, 741078, 741443, 741808, 742174, 742539, 742904, 743269, 743635, 744000, 744365, ]) }
       const_attr_reader  :FIXED_DATES
       
-      const_set_lazy(:Date) { Class.new(CalendarDate) do
+      const_set_lazy(:JavaDate) { Class.new(CalendarDate) do
         include_class_members BaseCalendar
         
         typesig { [] }
@@ -449,7 +449,7 @@ module Sun::Util::Calendar
       return get_fixed_date((date).get_normalized_year, date.get_month, date.get_day_of_month, date)
     end
     
-    typesig { [::Java::Int, ::Java::Int, ::Java::Int, BaseCalendar::Date] }
+    typesig { [::Java::Int, ::Java::Int, ::Java::Int, BaseCalendar::JavaDate] }
     # public for java.util.GregorianCalendar
     def get_fixed_date(year, month, day_of_month, cache)
       is_jan1 = (month).equal?(JANUARY) && (day_of_month).equal?(1)

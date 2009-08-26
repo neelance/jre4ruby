@@ -44,7 +44,7 @@ module Java::Text
       include_const ::Java::Text, :DecimalFormat
       include_const ::Java::Util, :ArrayList
       include_const ::Java::Util, :Arrays
-      include_const ::Java::Util, :Date
+      include_const ::Java::Util, :JavaDate
       include_const ::Java::Util, :JavaList
       include_const ::Java::Util, :Locale
     }
@@ -1301,7 +1301,7 @@ module Java::Text
                 # format number if can
                 sub_formatter = NumberFormat.get_instance(@locale)
               else
-                if (obj.is_a?(Date))
+                if (obj.is_a?(JavaDate))
                   # format a Date if can
                   sub_formatter = DateFormat.get_date_time_instance(DateFormat::SHORT, DateFormat::SHORT, @locale) # fix
                 else

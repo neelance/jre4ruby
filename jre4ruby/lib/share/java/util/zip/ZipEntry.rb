@@ -27,7 +27,7 @@ module Java::Util::Zip
     class_module.module_eval {
       include ::Java::Lang
       include ::Java::Util::Zip
-      include_const ::Java::Util, :Date
+      include_const ::Java::Util, :JavaDate
     }
   end
   
@@ -369,14 +369,14 @@ module Java::Util::Zip
       typesig { [::Java::Long] }
       # Converts DOS time to Java time (number of milliseconds since epoch).
       def dos_to_java_time(dtime)
-        d = Date.new(RJava.cast_to_int((((dtime >> 25) & 0x7f) + 80)), RJava.cast_to_int((((dtime >> 21) & 0xf) - 1)), RJava.cast_to_int(((dtime >> 16) & 0x1f)), RJava.cast_to_int(((dtime >> 11) & 0x1f)), RJava.cast_to_int(((dtime >> 5) & 0x3f)), RJava.cast_to_int(((dtime << 1) & 0x3e)))
+        d = JavaDate.new(RJava.cast_to_int((((dtime >> 25) & 0x7f) + 80)), RJava.cast_to_int((((dtime >> 21) & 0xf) - 1)), RJava.cast_to_int(((dtime >> 16) & 0x1f)), RJava.cast_to_int(((dtime >> 11) & 0x1f)), RJava.cast_to_int(((dtime >> 5) & 0x3f)), RJava.cast_to_int(((dtime << 1) & 0x3e)))
         return d.get_time
       end
       
       typesig { [::Java::Long] }
       # Converts Java time to DOS time.
       def java_to_dos_time(time)
-        d = Date.new(time)
+        d = JavaDate.new(time)
         year = d.get_year + 1900
         if (year < 1980)
           return (1 << 21) | (1 << 16)

@@ -536,7 +536,7 @@ module Sun::Security::Ssl
           end
         }
         
-        typesig { [X509Certificate, Date] }
+        typesig { [X509Certificate, JavaDate] }
         # check if this certificate is appropriate for this type of use
         # first check extensions, if they match, check expiration
         # note: we may want to move this code into the sun.security.validator
@@ -770,7 +770,7 @@ module Sun::Security::Ssl
           end
         end
         if ((date).nil?)
-          date = Date.new
+          date = JavaDate.new
         end
         check_result = check_type.check(chain[0], date)
         status = EntryStatus.new(builder_index, key_index, alias_, chain, check_result)

@@ -28,7 +28,7 @@ module Java::Security
       include ::Java::Lang
       include ::Java::Security
       include ::Java::Io
-      include_const ::Java::Util, :Date
+      include_const ::Java::Util, :JavaDate
     }
   end
   

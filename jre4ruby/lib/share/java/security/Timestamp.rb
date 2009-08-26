@@ -30,7 +30,7 @@ module Java::Security
       include_const ::Java::Io, :Serializable
       include_const ::Java::Security::Cert, :CertPath
       include_const ::Java::Security::Cert, :X509Extension
-      include_const ::Java::Util, :Date
+      include_const ::Java::Util, :JavaDate
     }
   end
   
@@ -75,7 +75,7 @@ module Java::Security
     alias_method :attr_myhash=, :myhash=
     undef_method :myhash=
     
-    typesig { [Date, CertPath] }
+    typesig { [JavaDate, CertPath] }
     # Constructs a Timestamp.
     # 
     # @param timestamp is the timestamp's date and time. It must not be null.
@@ -88,7 +88,7 @@ module Java::Security
       if ((timestamp).nil? || (signer_cert_path).nil?)
         raise NullPointerException.new
       end
-      @timestamp = Date.new(timestamp.get_time) # clone
+      @timestamp = JavaDate.new(timestamp.get_time) # clone
       @signer_cert_path = signer_cert_path
     end
     
@@ -97,7 +97,7 @@ module Java::Security
     # 
     # @return The timestamp's date and time.
     def get_timestamp
-      return Date.new(@timestamp.get_time) # clone
+      return JavaDate.new(@timestamp.get_time) # clone
     end
     
     typesig { [] }

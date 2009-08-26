@@ -31,7 +31,7 @@ module Java::Security::Cert
       include_const ::Java::Security, :Principal
       include_const ::Java::Security, :PublicKey
       include_const ::Java::Util, :Collection
-      include_const ::Java::Util, :Date
+      include_const ::Java::Util, :JavaDate
       include_const ::Java::Util, :JavaList
       include_const ::Javax::Security::Auth::X500, :X500Principal
       include_const ::Sun::Security::X509, :X509CertImpl
@@ -166,7 +166,7 @@ module Java::Security::Cert
       raise NotImplementedError
     end
     
-    typesig { [Date] }
+    typesig { [JavaDate] }
     # Checks that the given date is within the certificate's
     # validity period. In other words, this determines whether the
     # certificate would be valid at the given date/time.

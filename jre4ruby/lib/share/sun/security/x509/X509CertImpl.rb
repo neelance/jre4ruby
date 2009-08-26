@@ -673,11 +673,11 @@ module Sun::Security::X509
     # @exception CertificateNotYetValidException if the certificate is not
     # yet valid.
     def check_validity
-      date = Date.new
+      date = JavaDate.new
       check_validity(date)
     end
     
-    typesig { [Date] }
+    typesig { [JavaDate] }
     # Checks that the specified date is within the certificate's
     # validity period, or basically if the certificate would be
     # valid at the specified date/time.

@@ -29,7 +29,7 @@ module Sun::Security::Timestamp
       include ::Sun::Security::Timestamp
       include_const ::Java::Io, :IOException
       include_const ::Java::Math, :BigInteger
-      include_const ::Java::Util, :Date
+      include_const ::Java::Util, :JavaDate
       include_const ::Sun::Security::Util, :DerValue
       include_const ::Sun::Security::Util, :ObjectIdentifier
       include_const ::Sun::Security::X509, :AlgorithmId

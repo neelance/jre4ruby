@@ -32,7 +32,7 @@ module Sun::Security::Util
       include_const ::Java::Io, :OutputStream
       include_const ::Java::Io, :IOException
       include_const ::Java::Text, :SimpleDateFormat
-      include_const ::Java::Util, :Date
+      include_const ::Java::Util, :JavaDate
       include_const ::Java::Util, :TimeZone
       include_const ::Java::Util, :Vector
       include_const ::Java::Util, :Comparator
@@ -450,7 +450,7 @@ module Sun::Security::Util
       write(data)
     end
     
-    typesig { [Date] }
+    typesig { [JavaDate] }
     # Marshals a DER UTC time/date value.
     # 
     # <P>YYMMDDhhmmss{Z|+hhmm|-hhmm} ... emits only using Zulu time
@@ -459,7 +459,7 @@ module Sun::Security::Util
       put_time(d, DerValue.attr_tag_utc_time)
     end
     
-    typesig { [Date] }
+    typesig { [JavaDate] }
     # Marshals a DER Generalized Time/date value.
     # 
     # <P>YYYYMMDDhhmmss{Z|+hhmm|-hhmm} ... emits only using Zulu time
@@ -468,7 +468,7 @@ module Sun::Security::Util
       put_time(d, DerValue.attr_tag_generalized_time)
     end
     
-    typesig { [Date, ::Java::Byte] }
+    typesig { [JavaDate, ::Java::Byte] }
     # Private helper routine for marshalling a DER UTC/Generalized
     # time/date value. If the tag specified is not that for UTC Time
     # then it defaults to Generalized Time.

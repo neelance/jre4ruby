@@ -30,7 +30,7 @@ module Sun::Security::X509
       include_const ::Java::Io, :IOException
       include_const ::Java::Io, :OutputStream
       include ::Java::Security::Cert
-      include_const ::Java::Util, :Date
+      include_const ::Java::Util, :JavaDate
       include_const ::Java::Util, :Enumeration
       include ::Sun::Security::Util
     }
@@ -81,13 +81,13 @@ module Sun::Security::X509
     typesig { [] }
     # Returns the first time the certificate is valid.
     def get_not_before
-      return (Date.new(@not_before.get_time))
+      return (JavaDate.new(@not_before.get_time))
     end
     
     typesig { [] }
     # Returns the last time the certificate is valid.
     def get_not_after
-      return (Date.new(@not_after.get_time))
+      return (JavaDate.new(@not_after.get_time))
     end
     
     typesig { [DerValue] }
@@ -132,7 +132,7 @@ module Sun::Security::X509
       @not_after = nil
     end
     
-    typesig { [Date, Date] }
+    typesig { [JavaDate, JavaDate] }
     # The default constructor for this class for the specified interval.
     # 
     # @param notBefore the date and time before which the certificate
@@ -197,7 +197,7 @@ module Sun::Security::X509
     typesig { [String, Object] }
     # Set the attribute value.
     def set(name, obj)
-      if (!(obj.is_a?(Date)))
+      if (!(obj.is_a?(JavaDate)))
         raise IOException.new("Attribute must be of type Date.")
       end
       if (name.equals_ignore_case(NOT_BEFORE))
@@ -262,11 +262,11 @@ module Sun::Security::X509
     # @exception CertificateNotYetValidException if the certificate is not
     # yet valid.
     def valid
-      now = Date.new
+      now = JavaDate.new
       valid(now)
     end
     
-    typesig { [Date] }
+    typesig { [JavaDate] }
     # Verify that the passed time is within the validity period.
     # @param now the Date against which to compare the validity
     # period.

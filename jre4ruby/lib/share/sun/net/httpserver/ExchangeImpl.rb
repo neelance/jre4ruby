@@ -372,7 +372,7 @@ module Sun::Net::Httpserver
       o = get_placeholder_response_body
       tmpout.write(bytes(status_line, 0), 0, status_line.length)
       no_content_to_send = false # assume there is content
-      @rsp_hdrs.set("Date", self.attr_df.format(Date.new))
+      @rsp_hdrs.set("Date", self.attr_df.format(JavaDate.new))
       if ((content_len).equal?(0))
         if (@http10)
           o.set_wrapped_stream(UndefLengthOutputStream.new(self, @ros))

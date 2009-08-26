@@ -30,7 +30,7 @@ module Java::Net
       include_const ::Java::Io, :InputStream
       include_const ::Java::Io, :IOException
       include_const ::Java::Security, :Permission
-      include_const ::Java::Util, :Date
+      include_const ::Java::Util, :JavaDate
     }
   end
   
@@ -484,7 +484,7 @@ module Java::Net
         if ((date_string.index_of("GMT")).equal?(-1))
           date_string = date_string + " GMT"
         end
-        return Date.parse(date_string)
+        return JavaDate.parse(date_string)
       rescue JavaException => e
       end
       return default

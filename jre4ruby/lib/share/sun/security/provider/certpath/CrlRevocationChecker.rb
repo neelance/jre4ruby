@@ -32,7 +32,7 @@ module Sun::Security::Provider::Certpath
       include_const ::Java::Util, :ArrayList
       include_const ::Java::Util, :Collection
       include_const ::Java::Util, :Collections
-      include_const ::Java::Util, :Date
+      include_const ::Java::Util, :JavaDate
       include_const ::Java::Util, :JavaList
       include_const ::Java::Util, :HashSet
       include_const ::Java::Util, :JavaSet
@@ -185,7 +185,7 @@ module Sun::Security::Provider::Certpath
         end
       end
       test_date = params.get_date
-      @m_current_time = (!(test_date).nil? ? test_date : Date.new)
+      @m_current_time = (!(test_date).nil? ? test_date : JavaDate.new)
       init(false)
     end
     

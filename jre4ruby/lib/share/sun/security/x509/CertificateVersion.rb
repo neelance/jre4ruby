@@ -30,7 +30,7 @@ module Sun::Security::X509
       include_const ::Java::Io, :IOException
       include_const ::Java::Io, :InputStream
       include_const ::Java::Io, :OutputStream
-      include_const ::Java::Util, :Date
+      include_const ::Java::Util, :JavaDate
       include_const ::Java::Util, :Enumeration
       include ::Sun::Security::Util
     }
