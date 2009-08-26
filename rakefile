@@ -1,15 +1,23 @@
+require "rake/rdoctask"
+
+files = ["jre4ruby.rb", "LICENSE"] + Dir.glob("jre4ruby/lib/**/*.*") + Dir.glob("jre4ruby/fix/**/*.*") + Dir.glob("jre4ruby/rep/**/*.*")
+
 task :gemspec do
   File.open("jre4ruby.gemspec", "w") do |file|
     file.write Gem::Specification.new { |s|
       s.name = "jre4ruby"
       s.version = "1.0.5"
-      s.files = ["jre4ruby.rb", "LICENSE"] + Dir.glob("jre4ruby/lib/**/*.*") + Dir.glob("jre4ruby/fix/**/*.*") + Dir.glob("jre4ruby/rep/**/*.*")
+      s.files = files
       s.homepage = %q{http://github.com/neelance/jre4ruby/}
-      s.has_rdoc = true
-      s.rdoc_options = ["--charset=UTF-8"]
+      s.has_rdoc = false
       s.require_paths = ["."]
       s.summary = "Converted Java Runtime Environment (JRE)."
       s.add_dependency "neelance-java2ruby"
     }.to_yaml
   end
+end
+
+Rake::RDocTask.new do |rd|
+  rd.rdoc_files.include(*files.select { |file| (file =~ /\.rb$/) && !(file =~ /\/sun\//) })
+  rd.rdoc_dir = "doc"
 end
