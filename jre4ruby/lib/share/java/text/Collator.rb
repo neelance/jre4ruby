@@ -541,7 +541,7 @@ module Java::Text
           const_attr_reader  :INSTANCE
         }
         
-        typesig { [self::CollatorProvider, self::Locale, String, self::Object] }
+        typesig { [self::CollatorProvider, self::Locale, String, Object] }
         def get_object(collator_provider, locale, key, *params)
           raise AssertError if not ((params.attr_length).equal?(1))
           result = collator_provider.get_instance(locale)

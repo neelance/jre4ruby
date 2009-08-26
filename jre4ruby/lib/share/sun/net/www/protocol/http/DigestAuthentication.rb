@@ -140,7 +140,7 @@ module Sun::Net::Www::Protocol::Http
           alias_method :attr_random=, :random=
           
           when_class_loaded do
-            self.attr_random = self.class::Random.new
+            self.attr_random = self::Random.new
           end
         }
         

@@ -63,12 +63,12 @@ module Sun::Nio::Cs
           @size = size
         end
         
-        typesig { [self::Object] }
+        typesig { [Object] }
         def create(name)
           raise NotImplementedError
         end
         
-        typesig { [Array.typed(self::Object), ::Java::Int] }
+        typesig { [Array.typed(Object), ::Java::Int] }
         def move_to_front(oa, i)
           ob = oa[i]
           j = i
@@ -79,16 +79,16 @@ module Sun::Nio::Cs
           oa[0] = ob
         end
         
-        typesig { [self::Object, self::Object] }
+        typesig { [Object, Object] }
         def has_name(ob, name)
           raise NotImplementedError
         end
         
-        typesig { [self::Object] }
+        typesig { [Object] }
         def for_name(name)
           oa = @cache.get
           if ((oa).nil?)
-            oa = Array.typed(self.class::Object).new(@size) { nil }
+            oa = Array.typed(Object).new(@size) { nil }
             @cache.set(oa)
           else
             i = 0

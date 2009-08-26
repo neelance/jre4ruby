@@ -105,7 +105,7 @@ module Sun::Security::Krb5::Internal::Ccache
       
       
       def debug
-        defined?(@@debug) ? @@debug : @@debug= Krb5.attr_debug
+        defined?(@@debug) ? @@debug : @@debug= Krb5::DEBUG
       end
       alias_method :attr_debug, :debug
       

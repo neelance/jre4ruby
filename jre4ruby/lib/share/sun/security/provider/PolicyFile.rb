@@ -2276,7 +2276,7 @@ module Sun::Security::Provider
           return false
         end
         
-        typesig { [self::Object] }
+        typesig { [Object] }
         # Checks two SelfPermission objects for equality.
         # 
         # Checks that <i>obj</i> is an SelfPermission, and has

@@ -41,8 +41,8 @@ module Sun::Nio::Ch
     
     class_module.module_eval {
       # package-private
-      const_set_lazy(:Unsafe) { Unsafe.get_unsafe }
-      const_attr_reader  :Unsafe
+      const_set_lazy(:UnsafeInstance) { Unsafe.get_unsafe }
+      const_attr_reader  :UnsafeInstance
     }
     
     # Native allocation address;
@@ -85,11 +85,11 @@ module Sun::Nio::Ch
       @allocation_address = 0
       @address = 0
       if (!page_aligned)
-        @allocation_address = Unsafe.allocate_memory(size)
+        @allocation_address = UnsafeInstance.allocate_memory(size)
         @address = @allocation_address
       else
         ps = page_size
-        a = Unsafe.allocate_memory(size + ps)
+        a = UnsafeInstance.allocate_memory(size + ps)
         @allocation_address = a
         @address = a + ps - (a & (ps - 1))
       end
@@ -135,9 +135,9 @@ module Sun::Nio::Ch
       new_address = 0
       case (address_size)
       when 8
-        new_address = Unsafe.get_long(offset + @address)
+        new_address = UnsafeInstance.get_long(offset + @address)
       when 4
-        new_address = Unsafe.get_int(offset + @address) & -0x1
+        new_address = UnsafeInstance.get_int(offset + @address) & -0x1
       else
         raise InternalError.new("Address size not supported")
       end
@@ -176,7 +176,7 @@ module Sun::Nio::Ch
     # 
     # @return The byte value read
     def get_byte(offset)
-      return Unsafe.get_byte(offset + @address)
+      return UnsafeInstance.get_byte(offset + @address)
     end
     
     typesig { [::Java::Int, ::Java::Byte] }
@@ -189,7 +189,7 @@ module Sun::Nio::Ch
     # @param  value
     # The byte value to be written
     def put_byte(offset, value)
-      Unsafe.put_byte(offset + @address, value)
+      UnsafeInstance.put_byte(offset + @address, value)
     end
     
     typesig { [::Java::Int] }
@@ -201,7 +201,7 @@ module Sun::Nio::Ch
     # 
     # @return The short value read
     def get_short(offset)
-      return Unsafe.get_short(offset + @address)
+      return UnsafeInstance.get_short(offset + @address)
     end
     
     typesig { [::Java::Int, ::Java::Short] }
@@ -214,7 +214,7 @@ module Sun::Nio::Ch
     # @param  value
     # The short value to be written
     def put_short(offset, value)
-      Unsafe.put_short(offset + @address, value)
+      UnsafeInstance.put_short(offset + @address, value)
     end
     
     typesig { [::Java::Int] }
@@ -226,7 +226,7 @@ module Sun::Nio::Ch
     # 
     # @return The char value read
     def get_char(offset)
-      return Unsafe.get_char(offset + @address)
+      return UnsafeInstance.get_char(offset + @address)
     end
     
     typesig { [::Java::Int, ::Java::Char] }
@@ -239,7 +239,7 @@ module Sun::Nio::Ch
     # @param  value
     # The char value to be written
     def put_char(offset, value)
-      Unsafe.put_char(offset + @address, value)
+      UnsafeInstance.put_char(offset + @address, value)
     end
     
     typesig { [::Java::Int] }
@@ -251,7 +251,7 @@ module Sun::Nio::Ch
     # 
     # @return The int value read
     def get_int(offset)
-      return Unsafe.get_int(offset + @address)
+      return UnsafeInstance.get_int(offset + @address)
     end
     
     typesig { [::Java::Int, ::Java::Int] }
@@ -264,7 +264,7 @@ module Sun::Nio::Ch
     # @param  value
     # The int value to be written
     def put_int(offset, value)
-      Unsafe.put_int(offset + @address, value)
+      UnsafeInstance.put_int(offset + @address, value)
     end
     
     typesig { [::Java::Int] }
@@ -276,7 +276,7 @@ module Sun::Nio::Ch
     # 
     # @return The long value read
     def get_long(offset)
-      return Unsafe.get_long(offset + @address)
+      return UnsafeInstance.get_long(offset + @address)
     end
     
     typesig { [::Java::Int, ::Java::Long] }
@@ -289,7 +289,7 @@ module Sun::Nio::Ch
     # @param  value
     # The long value to be written
     def put_long(offset, value)
-      Unsafe.put_long(offset + @address, value)
+      UnsafeInstance.put_long(offset + @address, value)
     end
     
     typesig { [::Java::Int] }
@@ -301,7 +301,7 @@ module Sun::Nio::Ch
     # 
     # @return The float value read
     def get_float(offset)
-      return Unsafe.get_float(offset + @address)
+      return UnsafeInstance.get_float(offset + @address)
     end
     
     typesig { [::Java::Int, ::Java::Float] }
@@ -314,7 +314,7 @@ module Sun::Nio::Ch
     # @param  value
     # The float value to be written
     def put_float(offset, value)
-      Unsafe.put_float(offset + @address, value)
+      UnsafeInstance.put_float(offset + @address, value)
     end
     
     typesig { [::Java::Int] }
@@ -326,7 +326,7 @@ module Sun::Nio::Ch
     # 
     # @return The double value read
     def get_double(offset)
-      return Unsafe.get_double(offset + @address)
+      return UnsafeInstance.get_double(offset + @address)
     end
     
     typesig { [::Java::Int, ::Java::Double] }
@@ -339,7 +339,7 @@ module Sun::Nio::Ch
     # @param  value
     # The double value to be written
     def put_double(offset, value)
-      Unsafe.put_double(offset + @address, value)
+      UnsafeInstance.put_double(offset + @address, value)
     end
     
     class_module.module_eval {
@@ -348,7 +348,7 @@ module Sun::Nio::Ch
       # 
       # @return The address size of the native architecture
       def address_size
-        return Unsafe.address_size
+        return UnsafeInstance.address_size
       end
       
       # Cache for byte order
@@ -371,10 +371,10 @@ module Sun::Nio::Ch
         if (!(self.attr_byte_order).nil?)
           return self.attr_byte_order
         end
-        a = Unsafe.allocate_memory(8)
+        a = UnsafeInstance.allocate_memory(8)
         begin
-          Unsafe.put_long(a, 0x102030405060708)
-          b = Unsafe.get_byte(a)
+          UnsafeInstance.put_long(a, 0x102030405060708)
+          b = UnsafeInstance.get_byte(a)
           case (b)
           when 0x1
             self.attr_byte_order = ByteOrder::BIG_ENDIAN
@@ -384,7 +384,7 @@ module Sun::Nio::Ch
             raise AssertError if not (false)
           end
         ensure
-          Unsafe.free_memory(a)
+          UnsafeInstance.free_memory(a)
         end
         return self.attr_byte_order
       end
@@ -407,7 +407,7 @@ module Sun::Nio::Ch
       # @return  The page size, in bytes
       def page_size
         if ((self.attr_page_size).equal?(-1))
-          self.attr_page_size = Unsafe.page_size
+          self.attr_page_size = UnsafeInstance.page_size
         end
         return self.attr_page_size
       end

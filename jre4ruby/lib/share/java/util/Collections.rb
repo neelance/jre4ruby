@@ -1126,7 +1126,7 @@ module Java::Util
           return @c.is_empty
         end
         
-        typesig { [self::Object] }
+        typesig { [Object] }
         def contains(o)
           return @c.contains(o)
         end
@@ -1191,7 +1191,7 @@ module Java::Util
           raise self.class::UnsupportedOperationException.new
         end
         
-        typesig { [self::Object] }
+        typesig { [Object] }
         def remove(o)
           raise self.class::UnsupportedOperationException.new
         end
@@ -1259,7 +1259,7 @@ module Java::Util
           super(s)
         end
         
-        typesig { [self::Object] }
+        typesig { [Object] }
         def ==(o)
           return (o).equal?(self) || (self.attr_c == o)
         end
@@ -1395,7 +1395,7 @@ module Java::Util
           @list = list
         end
         
-        typesig { [self::Object] }
+        typesig { [Object] }
         def ==(o)
           return (o).equal?(self) || (@list == o)
         end
@@ -1425,12 +1425,12 @@ module Java::Util
           raise self.class::UnsupportedOperationException.new
         end
         
-        typesig { [self::Object] }
+        typesig { [Object] }
         def index_of(o)
           return @list.index_of(o)
         end
         
-        typesig { [self::Object] }
+        typesig { [Object] }
         def last_index_of(o)
           return @list.last_index_of(o)
         end
@@ -1630,17 +1630,17 @@ module Java::Util
           return @m.is_empty
         end
         
-        typesig { [self::Object] }
+        typesig { [Object] }
         def contains_key(key)
           return @m.contains_key(key)
         end
         
-        typesig { [self::Object] }
+        typesig { [Object] }
         def contains_value(val)
           return @m.contains_value(val)
         end
         
-        typesig { [self::Object] }
+        typesig { [Object] }
         def get(key)
           return @m.get(key)
         end
@@ -1650,7 +1650,7 @@ module Java::Util
           raise self.class::UnsupportedOperationException.new
         end
         
-        typesig { [self::Object] }
+        typesig { [Object] }
         def remove(key)
           raise self.class::UnsupportedOperationException.new
         end
@@ -1707,7 +1707,7 @@ module Java::Util
           return @values
         end
         
-        typesig { [self::Object] }
+        typesig { [Object] }
         def ==(o)
           return (o).equal?(self) || (@m == o)
         end
@@ -1814,7 +1814,7 @@ module Java::Util
               return a
             end
             
-            typesig { [self::Object] }
+            typesig { [Object] }
             # This method is overridden to protect the backing set against
             # an object with a nefarious equals function that senses
             # that the equality-candidate is Map.Entry and calls its
@@ -1841,7 +1841,7 @@ module Java::Util
               return true
             end
             
-            typesig { [self::Object] }
+            typesig { [Object] }
             def ==(o)
               if ((o).equal?(self))
                 return true
@@ -1898,7 +1898,7 @@ module Java::Util
                   return @e.hash_code
                 end
                 
-                typesig { [self::Object] }
+                typesig { [Object] }
                 def ==(o)
                   if (!(o.is_a?(self.class::Map::Entry)))
                     return false
@@ -2082,7 +2082,7 @@ module Java::Util
           @mutex = self
         end
         
-        typesig { [self::Collection, self::Object] }
+        typesig { [self::Collection, Object] }
         def initialize(c, mutex)
           @c = nil
           @mutex = nil
@@ -2104,7 +2104,7 @@ module Java::Util
           end
         end
         
-        typesig { [self::Object] }
+        typesig { [Object] }
         def contains(o)
           synchronized((@mutex)) do
             return @c.contains(o)
@@ -2137,7 +2137,7 @@ module Java::Util
           end
         end
         
-        typesig { [self::Object] }
+        typesig { [Object] }
         def remove(o)
           synchronized((@mutex)) do
             return @c.remove(o)
@@ -2247,12 +2247,12 @@ module Java::Util
           super(s)
         end
         
-        typesig { [self::JavaSet, self::Object] }
+        typesig { [self::JavaSet, Object] }
         def initialize(s, mutex)
           super(s, mutex)
         end
         
-        typesig { [self::Object] }
+        typesig { [Object] }
         def ==(o)
           synchronized((self.attr_mutex)) do
             return (self.attr_c == o)
@@ -2335,7 +2335,7 @@ module Java::Util
           @ss = s
         end
         
-        typesig { [self::SortedSet, self::Object] }
+        typesig { [self::SortedSet, Object] }
         def initialize(s, mutex)
           @ss = nil
           super(s, mutex)
@@ -2446,14 +2446,14 @@ module Java::Util
           @list = list
         end
         
-        typesig { [self::JavaList, self::Object] }
+        typesig { [self::JavaList, Object] }
         def initialize(list, mutex)
           @list = nil
           super(list, mutex)
           @list = list
         end
         
-        typesig { [self::Object] }
+        typesig { [Object] }
         def ==(o)
           synchronized((self.attr_mutex)) do
             return (@list == o)
@@ -2495,14 +2495,14 @@ module Java::Util
           end
         end
         
-        typesig { [self::Object] }
+        typesig { [Object] }
         def index_of(o)
           synchronized((self.attr_mutex)) do
             return @list.index_of(o)
           end
         end
         
-        typesig { [self::Object] }
+        typesig { [Object] }
         def last_index_of(o)
           synchronized((self.attr_mutex)) do
             return @list.last_index_of(o)
@@ -2564,7 +2564,7 @@ module Java::Util
           super(list)
         end
         
-        typesig { [self::JavaList, self::Object] }
+        typesig { [self::JavaList, Object] }
         def initialize(list, mutex)
           super(list, mutex)
         end
@@ -2663,7 +2663,7 @@ module Java::Util
           @mutex = self
         end
         
-        typesig { [self::Map, self::Object] }
+        typesig { [self::Map, Object] }
         def initialize(m, mutex)
           @m = nil
           @mutex = nil
@@ -2688,21 +2688,21 @@ module Java::Util
           end
         end
         
-        typesig { [self::Object] }
+        typesig { [Object] }
         def contains_key(key)
           synchronized((@mutex)) do
             return @m.contains_key(key)
           end
         end
         
-        typesig { [self::Object] }
+        typesig { [Object] }
         def contains_value(value)
           synchronized((@mutex)) do
             return @m.contains_value(value)
           end
         end
         
-        typesig { [self::Object] }
+        typesig { [Object] }
         def get(key)
           synchronized((@mutex)) do
             return @m.get(key)
@@ -2716,7 +2716,7 @@ module Java::Util
           end
         end
         
-        typesig { [self::Object] }
+        typesig { [Object] }
         def remove(key)
           synchronized((@mutex)) do
             return @m.remove(key)
@@ -2785,7 +2785,7 @@ module Java::Util
           end
         end
         
-        typesig { [self::Object] }
+        typesig { [Object] }
         def ==(o)
           synchronized((@mutex)) do
             return (@m == o)
@@ -2887,7 +2887,7 @@ module Java::Util
           @sm = m
         end
         
-        typesig { [self::SortedMap, self::Object] }
+        typesig { [self::SortedMap, Object] }
         def initialize(m, mutex)
           @sm = nil
           super(m, mutex)
@@ -3033,14 +3033,14 @@ module Java::Util
         alias_method :attr_type=, :type=
         undef_method :type=
         
-        typesig { [self::Object] }
+        typesig { [Object] }
         def type_check(o)
           if (!(o).nil? && !@type.is_instance(o))
             raise self.class::ClassCastException.new(bad_element_msg(o))
           end
         end
         
-        typesig { [self::Object] }
+        typesig { [Object] }
         def bad_element_msg(o)
           return "Attempt to insert " + RJava.cast_to_string(o.get_class) + " element into collection with element type " + RJava.cast_to_string(@type)
         end
@@ -3067,7 +3067,7 @@ module Java::Util
           return @c.is_empty
         end
         
-        typesig { [self::Object] }
+        typesig { [Object] }
         def contains(o)
           return @c.contains(o)
         end
@@ -3087,7 +3087,7 @@ module Java::Util
           return @c.to_s
         end
         
-        typesig { [self::Object] }
+        typesig { [Object] }
         def remove(o)
           return @c.remove(o)
         end
@@ -3248,7 +3248,7 @@ module Java::Util
           super(s, element_type)
         end
         
-        typesig { [self::Object] }
+        typesig { [Object] }
         def ==(o)
           return (o).equal?(self) || (self.attr_c == o)
         end
@@ -3406,7 +3406,7 @@ module Java::Util
           @list = list
         end
         
-        typesig { [self::Object] }
+        typesig { [Object] }
         def ==(o)
           return (o).equal?(self) || (@list == o)
         end
@@ -3426,12 +3426,12 @@ module Java::Util
           return @list.remove(index)
         end
         
-        typesig { [self::Object] }
+        typesig { [Object] }
         def index_of(o)
           return @list.index_of(o)
         end
         
-        typesig { [self::Object] }
+        typesig { [Object] }
         def last_index_of(o)
           return @list.last_index_of(o)
         end
@@ -3624,7 +3624,7 @@ module Java::Util
         alias_method :attr_value_type=, :value_type=
         undef_method :value_type=
         
-        typesig { [self::Object, self::Object] }
+        typesig { [Object, Object] }
         def type_check(key, value)
           if (!(key).nil? && !@key_type.is_instance(key))
             raise self.class::ClassCastException.new(bad_key_msg(key))
@@ -3634,12 +3634,12 @@ module Java::Util
           end
         end
         
-        typesig { [self::Object] }
+        typesig { [Object] }
         def bad_key_msg(key)
           return "Attempt to insert " + RJava.cast_to_string(key.get_class) + " key into map with key type " + RJava.cast_to_string(@key_type)
         end
         
-        typesig { [self::Object] }
+        typesig { [Object] }
         def bad_value_msg(value)
           return "Attempt to insert " + RJava.cast_to_string(value.get_class) + " value into map with value type " + RJava.cast_to_string(@value_type)
         end
@@ -3668,22 +3668,22 @@ module Java::Util
           return @m.is_empty
         end
         
-        typesig { [self::Object] }
+        typesig { [Object] }
         def contains_key(key)
           return @m.contains_key(key)
         end
         
-        typesig { [self::Object] }
+        typesig { [Object] }
         def contains_value(v)
           return @m.contains_value(v)
         end
         
-        typesig { [self::Object] }
+        typesig { [Object] }
         def get(key)
           return @m.get(key)
         end
         
-        typesig { [self::Object] }
+        typesig { [Object] }
         def remove(key)
           return @m.remove(key)
         end
@@ -3703,7 +3703,7 @@ module Java::Util
           return @m.values
         end
         
-        typesig { [self::Object] }
+        typesig { [Object] }
         def ==(o)
           return (o).equal?(self) || (@m == o)
         end
@@ -3864,7 +3864,7 @@ module Java::Util
               source = @s.to_array
               # Ensure that we don't get an ArrayStoreException even if
               # s.toArray returns an array of something other than Object
-              dest = (CheckedEntry.is_instance(source.get_class.get_component_type) ? source : Array.typed(self.class::Object).new(source.attr_length) { nil })
+              dest = (CheckedEntry.is_instance(source.get_class.get_component_type) ? source : Array.typed(Object).new(source.attr_length) { nil })
               i = 0
               while i < source.attr_length
                 dest[i] = checked_entry(source[i], @value_type)
@@ -3894,7 +3894,7 @@ module Java::Util
               return a
             end
             
-            typesig { [self::Object] }
+            typesig { [Object] }
             # This method is overridden to protect the backing set against
             # an object with a nefarious equals function that senses
             # that the equality-candidate is Map.Entry and calls its
@@ -3921,7 +3921,7 @@ module Java::Util
               return true
             end
             
-            typesig { [self::Object] }
+            typesig { [Object] }
             def remove(o)
               if (!(o.is_a?(self.class::Map::Entry)))
                 return false
@@ -3952,7 +3952,7 @@ module Java::Util
               return modified
             end
             
-            typesig { [self::Object] }
+            typesig { [Object] }
             def ==(o)
               if ((o).equal?(self))
                 return true
@@ -3967,7 +3967,7 @@ module Java::Util
             class_module.module_eval {
               typesig { [self::Map::Entry, self::Class] }
               def checked_entry(e, value_type)
-                return self.class::CheckedEntry.new(e, value_type)
+                return self::CheckedEntry.new(e, value_type)
               end
               
               # This "wrapper class" serves two purposes: it prevents
@@ -4027,12 +4027,12 @@ module Java::Util
                   return @e.set_value(value)
                 end
                 
-                typesig { [self::Object] }
+                typesig { [Object] }
                 def bad_value_msg(value)
                   return "Attempt to insert " + RJava.cast_to_string(value.get_class) + " value into map with value type " + RJava.cast_to_string(@value_type)
                 end
                 
-                typesig { [self::Object] }
+                typesig { [Object] }
                 def ==(o)
                   if ((o).equal?(self))
                     return true
@@ -4399,7 +4399,7 @@ module Java::Util
           return true
         end
         
-        typesig { [self::Object] }
+        typesig { [Object] }
         def contains(obj)
           return false
         end
@@ -4411,7 +4411,7 @@ module Java::Util
         
         typesig { [] }
         def to_array
-          return Array.typed(self.class::Object).new(0) { nil }
+          return Array.typed(Object).new(0) { nil }
         end
         
         typesig { [Array.typed(self::T)] }
@@ -4494,7 +4494,7 @@ module Java::Util
           return true
         end
         
-        typesig { [self::Object] }
+        typesig { [Object] }
         def contains(obj)
           return false
         end
@@ -4506,7 +4506,7 @@ module Java::Util
         
         typesig { [] }
         def to_array
-          return Array.typed(self.class::Object).new(0) { nil }
+          return Array.typed(Object).new(0) { nil }
         end
         
         typesig { [Array.typed(self::T)] }
@@ -4522,7 +4522,7 @@ module Java::Util
           raise self.class::IndexOutOfBoundsException.new("Index: " + RJava.cast_to_string(index))
         end
         
-        typesig { [self::Object] }
+        typesig { [Object] }
         def ==(o)
           return (o.is_a?(self.class::JavaList)) && (o).is_empty
         end
@@ -4593,17 +4593,17 @@ module Java::Util
           return true
         end
         
-        typesig { [self::Object] }
+        typesig { [Object] }
         def contains_key(key)
           return false
         end
         
-        typesig { [self::Object] }
+        typesig { [Object] }
         def contains_value(value)
           return false
         end
         
-        typesig { [self::Object] }
+        typesig { [Object] }
         def get(key)
           return nil
         end
@@ -4623,7 +4623,7 @@ module Java::Util
           return empty_set
         end
         
-        typesig { [self::Object] }
+        typesig { [Object] }
         def ==(o)
           return (o.is_a?(self.class::Map)) && (o).is_empty
         end
@@ -4739,7 +4739,7 @@ module Java::Util
           return 1
         end
         
-        typesig { [self::Object] }
+        typesig { [Object] }
         def contains(o)
           return eq(o, @element)
         end
@@ -4794,7 +4794,7 @@ module Java::Util
           return 1
         end
         
-        typesig { [self::Object] }
+        typesig { [Object] }
         def contains(obj)
           return eq(obj, @element)
         end
@@ -4872,17 +4872,17 @@ module Java::Util
           return false
         end
         
-        typesig { [self::Object] }
+        typesig { [Object] }
         def contains_key(key)
           return eq(key, @k)
         end
         
-        typesig { [self::Object] }
+        typesig { [Object] }
         def contains_value(value)
           return eq(value, @v)
         end
         
-        typesig { [self::Object] }
+        typesig { [Object] }
         def get(key)
           return (eq(key, @k) ? @v : nil)
         end
@@ -4996,17 +4996,17 @@ module Java::Util
           return @n
         end
         
-        typesig { [self::Object] }
+        typesig { [Object] }
         def contains(obj)
           return !(@n).equal?(0) && eq(obj, @element)
         end
         
-        typesig { [self::Object] }
+        typesig { [Object] }
         def index_of(o)
           return contains(o) ? 0 : -1
         end
         
-        typesig { [self::Object] }
+        typesig { [Object] }
         def last_index_of(o)
           return contains(o) ? @n - 1 : -1
         end
@@ -5021,7 +5021,7 @@ module Java::Util
         
         typesig { [] }
         def to_array
-          a = Array.typed(self.class::Object).new(@n) { nil }
+          a = Array.typed(Object).new(@n) { nil }
           if (!(@element).nil?)
             Arrays.fill(a, 0, @n, @element)
           end
@@ -5174,7 +5174,7 @@ module Java::Util
           return @cmp.compare(t2, t1)
         end
         
-        typesig { [self::Object] }
+        typesig { [Object] }
         def ==(o)
           return ((o).equal?(self)) || (o.is_a?(self.class::ReverseComparator2) && (@cmp == (o).attr_cmp))
         end
@@ -5440,12 +5440,12 @@ module Java::Util
           return @m.is_empty
         end
         
-        typesig { [self::Object] }
+        typesig { [Object] }
         def contains(o)
           return @m.contains_key(o)
         end
         
-        typesig { [self::Object] }
+        typesig { [Object] }
         def remove(o)
           return !(@m.remove(o)).nil?
         end
@@ -5480,7 +5480,7 @@ module Java::Util
           return @s.hash_code
         end
         
-        typesig { [self::Object] }
+        typesig { [Object] }
         def ==(o)
           return (o).equal?(self) || (@s == o)
         end
@@ -5608,12 +5608,12 @@ module Java::Util
           return @q.is_empty
         end
         
-        typesig { [self::Object] }
+        typesig { [Object] }
         def contains(o)
           return @q.contains(o)
         end
         
-        typesig { [self::Object] }
+        typesig { [Object] }
         def remove(o)
           return @q.remove(o)
         end

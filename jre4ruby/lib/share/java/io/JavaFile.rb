@@ -1684,7 +1684,7 @@ module Java::Io
           
           typesig { [] }
           def temporary_directory
-            return self.attr_fs.normalize(AccessController.do_privileged(self.class::GetPropertyAction.new("java.io.tmpdir")))
+            return self.attr_fs.normalize(AccessController.do_privileged(self::GetPropertyAction.new("java.io.tmpdir")))
           end
         }
         

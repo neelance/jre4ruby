@@ -603,11 +603,11 @@ module Sun::Security::Ssl
               b = self.class::AvailableCache.get(cipher)
               if ((b).nil?)
                 begin
-                  key = self.class::SecretKeySpec.new(Array.typed(::Java::Byte).new(cipher.attr_expanded_key_size) { 0 }, cipher.attr_algorithm)
-                  iv = self.class::IvParameterSpec.new(Array.typed(::Java::Byte).new(cipher.attr_iv_size) { 0 })
+                  key = self::SecretKeySpec.new(Array.typed(::Java::Byte).new(cipher.attr_expanded_key_size) { 0 }, cipher.attr_algorithm)
+                  iv = self::IvParameterSpec.new(Array.typed(::Java::Byte).new(cipher.attr_iv_size) { 0 })
                   cipher.new_cipher(ProtocolVersion::DEFAULT, key, iv, true)
                   b = Boolean::TRUE
-                rescue self.class::NoSuchAlgorithmException => e
+                rescue self::NoSuchAlgorithmException => e
                   b = Boolean::FALSE
                 end
                 self.class::AvailableCache.put(cipher, b)

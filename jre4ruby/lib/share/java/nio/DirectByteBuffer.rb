@@ -44,8 +44,8 @@ module Java::Nio
     
     class_module.module_eval {
       # Cached unsafe-access object
-      const_set_lazy(:Unsafe) { Bits.unsafe }
-      const_attr_reader  :Unsafe
+      const_set_lazy(:UnsafeInstance) { Bits.unsafe }
+      const_attr_reader  :UnsafeInstance
       
       # Cached unaligned-access capability
       const_set_lazy(:Unaligned) { Bits.unaligned }
@@ -146,12 +146,12 @@ module Java::Nio
       ps = Bits.page_size
       base = 0
       begin
-        base = Unsafe.allocate_memory(cap + ps)
+        base = UnsafeInstance.allocate_memory(cap + ps)
       rescue OutOfMemoryError => x
         Bits.unreserve_memory(cap)
         raise x
       end
-      Unsafe.set_memory(base, cap + ps, 0)
+      UnsafeInstance.set_memory(base, cap + ps, 0)
       if (!(base % ps).equal?(0))
         # Round up to page boundary
         self.attr_address = base + ps - (base & (ps - 1))
@@ -231,12 +231,12 @@ module Java::Nio
     
     typesig { [] }
     def get
-      return ((Unsafe.get_byte(ix(next_get_index))))
+      return ((UnsafeInstance.get_byte(ix(next_get_index))))
     end
     
     typesig { [::Java::Int] }
     def get(i)
-      return ((Unsafe.get_byte(ix(check_index(i)))))
+      return ((UnsafeInstance.get_byte(ix(check_index(i)))))
     end
     
     typesig { [Array.typed(::Java::Byte), ::Java::Int, ::Java::Int] }
@@ -264,13 +264,13 @@ module Java::Nio
     
     typesig { [::Java::Byte] }
     def put(x)
-      Unsafe.put_byte(ix(next_put_index), ((x)))
+      UnsafeInstance.put_byte(ix(next_put_index), ((x)))
       return self
     end
     
     typesig { [::Java::Int, ::Java::Byte] }
     def put(i, x)
-      Unsafe.put_byte(ix(check_index(i)), ((x)))
+      UnsafeInstance.put_byte(ix(check_index(i)), ((x)))
       return self
     end
     
@@ -292,7 +292,7 @@ module Java::Nio
         if (srem > rem)
           raise BufferOverflowException.new
         end
-        Unsafe.copy_memory(sb.ix(spos), ix(pos), srem << 0)
+        UnsafeInstance.copy_memory(sb.ix(spos), ix(pos), srem << 0)
         sb.position(spos + srem)
         position(pos + srem)
       else
@@ -339,7 +339,7 @@ module Java::Nio
       lim = limit
       raise AssertError if not ((pos <= lim))
       rem = (pos <= lim ? lim - pos : 0)
-      Unsafe.copy_memory(ix(pos), ix(0), rem << 0)
+      UnsafeInstance.copy_memory(ix(pos), ix(0), rem << 0)
       position(rem)
       limit(capacity)
       discard_mark
@@ -359,19 +359,19 @@ module Java::Nio
     typesig { [::Java::Int] }
     def __get(i)
       # package-private
-      return Unsafe.get_byte(self.attr_address + i)
+      return UnsafeInstance.get_byte(self.attr_address + i)
     end
     
     typesig { [::Java::Int, ::Java::Byte] }
     def __put(i, b)
       # package-private
-      Unsafe.put_byte(self.attr_address + i, b)
+      UnsafeInstance.put_byte(self.attr_address + i, b)
     end
     
     typesig { [::Java::Long] }
     def get_char(a)
       if (Unaligned)
-        x = Unsafe.get_char(a)
+        x = UnsafeInstance.get_char(a)
         return (self.attr_native_byte_order ? x : Bits.swap(x))
       end
       return Bits.get_char(a, self.attr_big_endian)
@@ -391,7 +391,7 @@ module Java::Nio
     def put_char(a, x)
       if (Unaligned)
         y = (x)
-        Unsafe.put_char(a, (self.attr_native_byte_order ? y : Bits.swap(y)))
+        UnsafeInstance.put_char(a, (self.attr_native_byte_order ? y : Bits.swap(y)))
       else
         Bits.put_char(a, x, self.attr_big_endian)
       end
@@ -427,7 +427,7 @@ module Java::Nio
     typesig { [::Java::Long] }
     def get_short(a)
       if (Unaligned)
-        x = Unsafe.get_short(a)
+        x = UnsafeInstance.get_short(a)
         return (self.attr_native_byte_order ? x : Bits.swap(x))
       end
       return Bits.get_short(a, self.attr_big_endian)
@@ -447,7 +447,7 @@ module Java::Nio
     def put_short(a, x)
       if (Unaligned)
         y = (x)
-        Unsafe.put_short(a, (self.attr_native_byte_order ? y : Bits.swap(y)))
+        UnsafeInstance.put_short(a, (self.attr_native_byte_order ? y : Bits.swap(y)))
       else
         Bits.put_short(a, x, self.attr_big_endian)
       end
@@ -483,7 +483,7 @@ module Java::Nio
     typesig { [::Java::Long] }
     def get_int(a)
       if (Unaligned)
-        x = Unsafe.get_int(a)
+        x = UnsafeInstance.get_int(a)
         return (self.attr_native_byte_order ? x : Bits.swap(x))
       end
       return Bits.get_int(a, self.attr_big_endian)
@@ -503,7 +503,7 @@ module Java::Nio
     def put_int(a, x)
       if (Unaligned)
         y = (x)
-        Unsafe.put_int(a, (self.attr_native_byte_order ? y : Bits.swap(y)))
+        UnsafeInstance.put_int(a, (self.attr_native_byte_order ? y : Bits.swap(y)))
       else
         Bits.put_int(a, x, self.attr_big_endian)
       end
@@ -539,7 +539,7 @@ module Java::Nio
     typesig { [::Java::Long] }
     def get_long(a)
       if (Unaligned)
-        x = Unsafe.get_long(a)
+        x = UnsafeInstance.get_long(a)
         return (self.attr_native_byte_order ? x : Bits.swap(x))
       end
       return Bits.get_long(a, self.attr_big_endian)
@@ -559,7 +559,7 @@ module Java::Nio
     def put_long(a, x)
       if (Unaligned)
         y = (x)
-        Unsafe.put_long(a, (self.attr_native_byte_order ? y : Bits.swap(y)))
+        UnsafeInstance.put_long(a, (self.attr_native_byte_order ? y : Bits.swap(y)))
       else
         Bits.put_long(a, x, self.attr_big_endian)
       end
@@ -595,7 +595,7 @@ module Java::Nio
     typesig { [::Java::Long] }
     def get_float(a)
       if (Unaligned)
-        x = Unsafe.get_int(a)
+        x = UnsafeInstance.get_int(a)
         return Float.int_bits_to_float(self.attr_native_byte_order ? x : Bits.swap(x))
       end
       return Bits.get_float(a, self.attr_big_endian)
@@ -615,7 +615,7 @@ module Java::Nio
     def put_float(a, x)
       if (Unaligned)
         y = Float.float_to_raw_int_bits(x)
-        Unsafe.put_int(a, (self.attr_native_byte_order ? y : Bits.swap(y)))
+        UnsafeInstance.put_int(a, (self.attr_native_byte_order ? y : Bits.swap(y)))
       else
         Bits.put_float(a, x, self.attr_big_endian)
       end
@@ -651,7 +651,7 @@ module Java::Nio
     typesig { [::Java::Long] }
     def get_double(a)
       if (Unaligned)
-        x = Unsafe.get_long(a)
+        x = UnsafeInstance.get_long(a)
         return Double.long_bits_to_double(self.attr_native_byte_order ? x : Bits.swap(x))
       end
       return Bits.get_double(a, self.attr_big_endian)
@@ -671,7 +671,7 @@ module Java::Nio
     def put_double(a, x)
       if (Unaligned)
         y = Double.double_to_raw_long_bits(x)
-        Unsafe.put_long(a, (self.attr_native_byte_order ? y : Bits.swap(y)))
+        UnsafeInstance.put_long(a, (self.attr_native_byte_order ? y : Bits.swap(y)))
       else
         Bits.put_double(a, x, self.attr_big_endian)
       end

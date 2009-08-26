@@ -1195,7 +1195,7 @@ module Sun::Security::Ssl
               if ((key_algorithm == "RSA"))
                 return RSASignature.get_instance
               else
-                raise self.class::NoSuchAlgorithmException.new("neither an RSA or a EC key")
+                raise self::NoSuchAlgorithmException.new("neither an RSA or a EC key")
               end
             end
           end
@@ -1592,7 +1592,7 @@ module Sun::Security::Ssl
                 if ((algorithm == "EC"))
                   return JsseJce.get_signature(JsseJce::SIGNATURE_RAWECDSA)
                 else
-                  raise self.class::SignatureException.new("Unrecognized algorithm: " + algorithm)
+                  raise self::SignatureException.new("Unrecognized algorithm: " + algorithm)
                 end
               end
             end
@@ -1659,15 +1659,15 @@ module Sun::Security::Ssl
             begin
               const_set :Delegate, Class.for_name("java.security.MessageDigest$Delegate")
               const_set :SpiField, self.class::Delegate.get_declared_field("digestSpi")
-            rescue self.class::JavaException => e
-              raise self.class::RuntimeException.new("Reflection failed", e)
+            rescue self::JavaException => e
+              raise self::RuntimeException.new("Reflection failed", e)
             end
             make_accessible(self.class::SpiField)
           end
           
           typesig { [self::AccessibleObject] }
           def make_accessible(o)
-            AccessController.do_privileged(Class.new(self.class::PrivilegedAction.class == Class ? self.class::PrivilegedAction : Object) do
+            AccessController.do_privileged(Class.new(self::PrivilegedAction.class == Class ? self::PrivilegedAction : Object) do
               extend LocalClass
               include_class_members CertificateVerify
               include self::PrivilegedAction if self::PrivilegedAction.class == Module
@@ -1689,7 +1689,7 @@ module Sun::Security::Ssl
           end
           
           # ConcurrentHashMap does not allow null values, use this marker object
-          const_set_lazy(:NULL_OBJECT) { self::Object.new }
+          const_set_lazy(:NULL_OBJECT) { Object.new }
           const_attr_reader  :NULL_OBJECT
           
           # cache Method objects per Spi class
@@ -1704,7 +1704,7 @@ module Sun::Security::Ssl
               # Verify that md is implemented via MessageDigestSpi, not
               # via JDK 1.1 style MessageDigest subclassing.
               if (!(md.get_class).equal?(self.class::Delegate))
-                raise self.class::JavaException.new("Digest is not a MessageDigestSpi")
+                raise self::JavaException.new("Digest is not a MessageDigestSpi")
               end
               spi = self.class::SpiField.get(md)
               clazz = spi.get_class
@@ -1713,18 +1713,18 @@ module Sun::Security::Ssl
                 begin
                   r = clazz.get_declared_method("implUpdate", SecretKey)
                   make_accessible(r)
-                rescue self.class::NoSuchMethodException => e
+                rescue self::NoSuchMethodException => e
                   r = self.class::NULL_OBJECT
                 end
                 self.class::MethodCache.put(clazz, r)
               end
               if ((r).equal?(self.class::NULL_OBJECT))
-                raise self.class::JavaException.new("Digest does not support implUpdate(SecretKey)")
+                raise self::JavaException.new("Digest does not support implUpdate(SecretKey)")
               end
               update_ = r
               update_.invoke(spi, key)
-            rescue self.class::JavaException => e
-              raise self.class::RuntimeException.new("Could not obtain encoded key and MessageDigest cannot digest key", e)
+            rescue self::JavaException => e
+              raise self::RuntimeException.new("Could not obtain encoded key and MessageDigest cannot digest key", e)
             end
           end
         }
@@ -1836,7 +1836,7 @@ module Sun::Security::Ssl
                 ssl_label = self.class::SSL_SERVER
                 tls_label = "server finished"
               else
-                raise self.class::RuntimeException.new("Invalid sender: " + RJava.cast_to_string(sender))
+                raise self::RuntimeException.new("Invalid sender: " + RJava.cast_to_string(sender))
               end
             end
             md5clone = handshake_hash.get_md5clone
@@ -1847,17 +1847,17 @@ module Sun::Security::Ssl
                 seed = Array.typed(::Java::Byte).new(36) { 0 }
                 md5clone.digest(seed, 0, 16)
                 sha_clone.digest(seed, 16, 20)
-                spec = self.class::TlsPrfParameterSpec.new(master_key, tls_label, seed, 12)
+                spec = self::TlsPrfParameterSpec.new(master_key, tls_label, seed, 12)
                 prf = JsseJce.get_key_generator("SunTlsPrf")
                 prf.init(spec)
                 prf_key = prf.generate_key
                 if ((("RAW" == prf_key.get_format)).equal?(false))
-                  raise self.class::ProviderException.new("Invalid PRF output, format must be RAW")
+                  raise self::ProviderException.new("Invalid PRF output, format must be RAW")
                 end
                 finished = prf_key.get_encoded
                 return finished
-              rescue self.class::GeneralSecurityException => e
-                raise self.class::RuntimeException.new("PRF failed", e)
+              rescue self::GeneralSecurityException => e
+                raise self::RuntimeException.new("PRF failed", e)
               end
             else
               # SSLv3
@@ -1867,9 +1867,9 @@ module Sun::Security::Ssl
               begin
                 md5clone.digest(finished, 0, 16)
                 sha_clone.digest(finished, 16, 20)
-              rescue self.class::DigestException => e
+              rescue self::DigestException => e
                 # cannot occur
-                raise self.class::RuntimeException.new("Digest failed", e)
+                raise self::RuntimeException.new("Digest failed", e)
               end
               return finished
             end

@@ -2626,7 +2626,7 @@ module Java::Util
           return -2
         end
         
-        typesig { [self::Object, self::Locale] }
+        typesig { [Object, self::Locale] }
         def print(arg, l)
           self.attr_a.append(@s)
         end
@@ -2886,7 +2886,7 @@ module Java::Util
           end
         end
         
-        typesig { [self::Object, self::Locale] }
+        typesig { [Object, self::Locale] }
         def print(arg, l)
           if (@dt)
             print_date_time(arg, l)
@@ -2917,7 +2917,7 @@ module Java::Util
           end
         end
         
-        typesig { [self::Object, self::Locale] }
+        typesig { [Object, self::Locale] }
         def print_integer(arg, l)
           if ((arg).nil?)
             print("null")
@@ -2946,7 +2946,7 @@ module Java::Util
           end
         end
         
-        typesig { [self::Object, self::Locale] }
+        typesig { [Object, self::Locale] }
         def print_float(arg, l)
           if ((arg).nil?)
             print("null")
@@ -2967,7 +2967,7 @@ module Java::Util
           end
         end
         
-        typesig { [self::Object, self::Locale] }
+        typesig { [Object, self::Locale] }
         def print_date_time(arg, l)
           if ((arg).nil?)
             print("null")
@@ -3001,7 +3001,7 @@ module Java::Util
           print(cal, @c, l)
         end
         
-        typesig { [self::Object] }
+        typesig { [Object] }
         def print_character(arg)
           if ((arg).nil?)
             print("null")
@@ -3043,7 +3043,7 @@ module Java::Util
           print(s)
         end
         
-        typesig { [self::Object, self::Locale] }
+        typesig { [Object, self::Locale] }
         def print_string(arg, l)
           if ((arg).nil?)
             print("null")
@@ -3060,7 +3060,7 @@ module Java::Util
           end
         end
         
-        typesig { [self::Object] }
+        typesig { [Object] }
         def print_boolean(arg)
           s = nil
           if (!(arg).nil?)
@@ -3071,7 +3071,7 @@ module Java::Util
           print(s)
         end
         
-        typesig { [self::Object] }
+        typesig { [Object] }
         def print_hash_code(arg)
           s = ((arg).nil? ? "null" : JavaInteger.to_hex_string(arg.hash_code))
           print(s)
@@ -4291,7 +4291,7 @@ module Java::Util
           raise self.class::FormatFlagsConversionMismatchException.new(fs, c)
         end
         
-        typesig { [::Java::Char, self::Object] }
+        typesig { [::Java::Char, Object] }
         def fail_conversion(c, arg)
           raise self.class::IllegalFormatConversionException.new(c, arg.get_class)
         end
@@ -4475,12 +4475,12 @@ module Java::Util
           typesig { [String] }
           def parse(s)
             ca = s.to_char_array
-            f = self.class::Flags.new(0)
+            f = self::Flags.new(0)
             i = 0
             while i < ca.attr_length
               v = parse(ca[i])
               if (f.contains(v))
-                raise self.class::DuplicateFormatFlagsException.new(v.to_s)
+                raise self::DuplicateFormatFlagsException.new(v.to_s)
               end
               f.add(v)
               i += 1
@@ -4509,7 +4509,7 @@ module Java::Util
             when Character.new(?<.ord)
               return self.class::PREVIOUS
             else
-              raise self.class::UnknownFormatFlagsException.new(String.value_of(c))
+              raise self::UnknownFormatFlagsException.new(String.value_of(c))
             end
           end
           

@@ -1743,7 +1743,7 @@ module Sun::Misc
           
           typesig { [self::Class, self::Class] }
           def add(primitive_class, wrapper_class)
-            self.attr_table.put(primitive_class, self.class::PrimitiveTypeInfo.new(primitive_class, wrapper_class))
+            self.attr_table.put(primitive_class, self::PrimitiveTypeInfo.new(primitive_class, wrapper_class))
           end
         }
         
@@ -1924,7 +1924,7 @@ module Sun::Misc
           return RJava.cast_to_short(@pool.size)
         end
         
-        typesig { [self::Object] }
+        typesig { [Object] }
         # Get or assign the index for an entry of a type that contains
         # a direct value.  The type of the given object determines the
         # type of the desired entry as follows:
@@ -2000,7 +2000,7 @@ module Sun::Misc
             alias_method :attr_value=, :value=
             undef_method :value=
             
-            typesig { [self::Object] }
+            typesig { [Object] }
             def initialize(value)
               @value = nil
               super()
@@ -2117,7 +2117,7 @@ module Sun::Misc
               return @tag + @index0 + @index1
             end
             
-            typesig { [self::Object] }
+            typesig { [Object] }
             def ==(obj)
               if (obj.is_a?(self.class::IndirectEntry))
                 other = obj

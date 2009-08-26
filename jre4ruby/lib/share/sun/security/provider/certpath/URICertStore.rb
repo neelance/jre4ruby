@@ -500,7 +500,7 @@ module Sun::Security::Provider::Certpath
           @uri = uri
         end
         
-        typesig { [self::Object] }
+        typesig { [Object] }
         def ==(obj)
           if (!(obj.is_a?(self.class::URICertStoreParameters)))
             return false

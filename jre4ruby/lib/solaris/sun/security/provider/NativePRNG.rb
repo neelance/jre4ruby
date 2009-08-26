@@ -251,9 +251,9 @@ module Sun::Security::Provider
           @urandom_buffer = nil
           @buffered = 0
           @last_read = 0
-          @lock_get_bytes = self.class::Object.new
-          @lock_get_seed = self.class::Object.new
-          @lock_set_seed = self.class::Object.new
+          @lock_get_bytes = Object.new
+          @lock_get_seed = Object.new
+          @lock_set_seed = Object.new
           @random_in = self.class::FileInputStream.new(random_file)
           @urandom_in = self.class::FileInputStream.new(urandom_file)
           @urandom_buffer = Array.typed(::Java::Byte).new(self.class::BUFFER_SIZE) { 0 }
@@ -294,13 +294,13 @@ module Sun::Security::Provider
             while (len > 0)
               k = in_.read(data, ofs, len)
               if (k <= 0)
-                raise self.class::EOFException.new("/dev/[u]random closed?")
+                raise self::EOFException.new("/dev/[u]random closed?")
               end
               ofs += k
               len -= k
             end
             if (len > 0)
-              raise self.class::IOException.new("Could not read from /dev/[u]random")
+              raise self::IOException.new("Could not read from /dev/[u]random")
             end
           end
         }

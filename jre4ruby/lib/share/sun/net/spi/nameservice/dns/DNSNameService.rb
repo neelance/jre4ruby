@@ -90,7 +90,7 @@ module Sun::Net::Spi::Nameservice::Dns
         alias_method :attr_ns_list=, :ns_list=
         undef_method :ns_list=
         
-        typesig { [self::DirContext, SwtList] }
+        typesig { [self::DirContext, self::JavaList] }
         def initialize(dir_ctxt, ns_list)
           @dir_ctxt = nil
           @ns_list = nil
@@ -502,7 +502,7 @@ module Sun::Net::Spi::Nameservice::Dns
         end
       end
       
-      typesig { [SwtList] }
+      typesig { [JavaList] }
       # @return String containing the JNDI-DNS provider URL
       # corresponding to the supplied List of nameservers.
       def create_provider_url(ns_list)

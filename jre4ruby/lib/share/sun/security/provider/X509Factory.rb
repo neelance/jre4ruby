@@ -380,7 +380,7 @@ module Sun::Security::Provider
       end
     end
     
-    typesig { [SwtList] }
+    typesig { [JavaList] }
     # Generates a <code>CertPath</code> object and initializes it with
     # a <code>List</code> of <code>Certificate</code>s.
     # <p>

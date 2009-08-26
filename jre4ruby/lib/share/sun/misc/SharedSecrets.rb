@@ -46,8 +46,8 @@ module Sun::Misc
     include_class_members SharedSecretsImports
     
     class_module.module_eval {
-      const_set_lazy(:Unsafe) { Unsafe.get_unsafe }
-      const_attr_reader  :Unsafe
+      const_set_lazy(:UnsafeInstance) { Unsafe.get_unsafe }
+      const_attr_reader  :UnsafeInstance
       
       
       def java_util_jar_access
@@ -120,7 +120,7 @@ module Sun::Misc
         if ((self.attr_java_util_jar_access).nil?)
           # Ensure JarFile is initialized; we know that that class
           # provides the shared secret
-          Unsafe.ensure_class_initialized(JarFile)
+          UnsafeInstance.ensure_class_initialized(JarFile)
         end
         return self.attr_java_util_jar_access
       end
@@ -158,7 +158,7 @@ module Sun::Misc
       typesig { [] }
       def get_java_ioaccess
         if ((self.attr_java_ioaccess).nil?)
-          Unsafe.ensure_class_initialized(Console)
+          UnsafeInstance.ensure_class_initialized(Console)
         end
         return self.attr_java_ioaccess
       end
@@ -171,7 +171,7 @@ module Sun::Misc
       typesig { [] }
       def get_java_iodelete_on_exit_access
         if ((self.attr_java_iodelete_on_exit_access).nil?)
-          Unsafe.ensure_class_initialized(JavaFile)
+          UnsafeInstance.ensure_class_initialized(JavaFile)
         end
         return self.attr_java_iodelete_on_exit_access
       end
@@ -184,7 +184,7 @@ module Sun::Misc
       typesig { [] }
       def get_java_iofile_descriptor_access
         if ((self.attr_java_iofile_descriptor_access).nil?)
-          Unsafe.ensure_class_initialized(FileDescriptor)
+          UnsafeInstance.ensure_class_initialized(FileDescriptor)
         end
         return self.attr_java_iofile_descriptor_access
       end

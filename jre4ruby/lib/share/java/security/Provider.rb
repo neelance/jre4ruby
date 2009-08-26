@@ -614,7 +614,7 @@ module Java::Security
           return @type.hash_code + @algorithm.hash_code
         end
         
-        typesig { [self::Object] }
+        typesig { [Object] }
         def ==(obj)
           if ((self).equal?(obj))
             return true
@@ -1033,7 +1033,7 @@ module Java::Security
           return @lower_string.hash_code
         end
         
-        typesig { [self::Object] }
+        typesig { [Object] }
         def ==(obj)
           if ((self).equal?(obj))
             return true
@@ -1421,7 +1421,7 @@ module Java::Security
           return @attributes.get(self.class::UString.new(name))
         end
         
-        typesig { [self::Object] }
+        typesig { [Object] }
         # Return a new instance of the implementation described by this
         # service. The security provider framework uses this method to
         # construct implementations. Applications will typically not need
@@ -1509,7 +1509,7 @@ module Java::Security
           end
         end
         
-        typesig { [self::Object] }
+        typesig { [Object] }
         # Generic code path for unknown engine types. Call the
         # no-args constructor if constructorParameter is null, otherwise
         # use the first matching constructor.
@@ -1535,14 +1535,14 @@ module Java::Security
               i += 1
               next
             end
-            o = con.new_instance(Array.typed(self.class::Object).new([constructor_parameter]))
+            o = con.new_instance(Array.typed(Object).new([constructor_parameter]))
             return o
             i += 1
           end
           raise self.class::NoSuchAlgorithmException.new("No constructor matching " + RJava.cast_to_string(arg_class.get_name) + " found in class " + @class_name)
         end
         
-        typesig { [self::Object] }
+        typesig { [Object] }
         # Test whether this Service can use the specified parameter.
         # Returns false if this service cannot use the parameter. Returns
         # true if this service can use the parameter, if a fast test is

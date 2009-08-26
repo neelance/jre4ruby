@@ -290,7 +290,7 @@ module Sun::Nio::Cs::Ext
           typesig { [] }
           # Returned Shift_JIS Charset name is OS dependent
           def get_sjisname
-            os_name = AccessController.do_privileged(self.class::GetPropertyAction.new("os.name"))
+            os_name = AccessController.do_privileged(self::GetPropertyAction.new("os.name"))
             if ((os_name == "Solaris") || (os_name == "SunOS"))
               return ("PCK")
             else
@@ -305,7 +305,7 @@ module Sun::Nio::Cs::Ext
           typesig { [] }
           # Returned EUC-JP Charset name is OS dependent
           def get_eucjpname
-            os_name = AccessController.do_privileged(self.class::GetPropertyAction.new("os.name"))
+            os_name = AccessController.do_privileged(self::GetPropertyAction.new("os.name"))
             if ((os_name == "Solaris") || (os_name == "SunOS"))
               return ("x-eucjp-open")
             else

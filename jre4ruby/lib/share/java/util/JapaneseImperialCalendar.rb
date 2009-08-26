@@ -881,7 +881,7 @@ module Java::Util
     
     typesig { [::Java::Int, ::Java::Int, Locale] }
     def get_display_name(field, style, locale)
-      if (!check_display_name_params(field, style, SHORT, SwtLONG, locale, ERA_MASK | YEAR_MASK | MONTH_MASK | DAY_OF_WEEK_MASK | AM_PM_MASK))
+      if (!check_display_name_params(field, style, SHORT, LONG, locale, ERA_MASK | YEAR_MASK | MONTH_MASK | DAY_OF_WEEK_MASK | AM_PM_MASK))
         return nil
       end
       # "GanNen" is supported only in the LONG style.
@@ -917,7 +917,7 @@ module Java::Util
     
     typesig { [::Java::Int, ::Java::Int, Locale] }
     def get_display_names(field, style, locale)
-      if (!check_display_name_params(field, style, ALL_STYLES, SwtLONG, locale, ERA_MASK | YEAR_MASK | MONTH_MASK | DAY_OF_WEEK_MASK | AM_PM_MASK))
+      if (!check_display_name_params(field, style, ALL_STYLES, LONG, locale, ERA_MASK | YEAR_MASK | MONTH_MASK | DAY_OF_WEEK_MASK | AM_PM_MASK))
         return nil
       end
       if ((style).equal?(ALL_STYLES))
@@ -925,7 +925,7 @@ module Java::Util
         if ((field).equal?(AM_PM))
           return short_names
         end
-        long_names = get_display_names_impl(field, SwtLONG, locale)
+        long_names = get_display_names_impl(field, LONG, locale)
         if ((short_names).nil?)
           return long_names
         end

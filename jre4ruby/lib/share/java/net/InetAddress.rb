@@ -739,7 +739,7 @@ module Java::Net
       const_set_lazy(:CacheEntry) { Class.new do
         include_class_members InetAddress
         
-        typesig { [self::Object, ::Java::Long] }
+        typesig { [Object, ::Java::Long] }
         def initialize(address, expiration)
           @address = nil
           @expiration = 0
@@ -843,7 +843,7 @@ module Java::Net
           end
         end
         
-        typesig { [String, self::Object] }
+        typesig { [String, Object] }
         # Add an entry to the cache. If there's already an
         # entry then for this host then the entry will be
         # replaced.

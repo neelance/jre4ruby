@@ -774,7 +774,7 @@ module Java::Util
           return old_value
         end
         
-        typesig { [self::Object] }
+        typesig { [Object] }
         def ==(o)
           if (!(o.is_a?(self.class::Map::Entry)))
             return false
@@ -1047,12 +1047,12 @@ module Java::Util
           return self.attr_size
         end
         
-        typesig { [self::Object] }
+        typesig { [Object] }
         def contains(o)
           return contains_key(o)
         end
         
-        typesig { [self::Object] }
+        typesig { [Object] }
         def remove(o)
           return !(@local_class_parent.remove_entry_for_key(o)).nil?
         end
@@ -1104,7 +1104,7 @@ module Java::Util
           return self.attr_size
         end
         
-        typesig { [self::Object] }
+        typesig { [Object] }
         def contains(o)
           return contains_value(o)
         end
@@ -1159,7 +1159,7 @@ module Java::Util
           return new_entry_iterator
         end
         
-        typesig { [self::Object] }
+        typesig { [Object] }
         def contains(o)
           if (!(o.is_a?(self.class::Map::Entry)))
             return false
@@ -1169,7 +1169,7 @@ module Java::Util
           return !(candidate).nil? && (candidate == e)
         end
         
-        typesig { [self::Object] }
+        typesig { [Object] }
         def remove(o)
           return !(remove_mapping(o)).nil?
         end

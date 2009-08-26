@@ -442,7 +442,7 @@ module Java::Util::Concurrent
         alias_method :attr_next=, :next=
         undef_method :next=
         
-        typesig { [Object, self::Object, self::Node] }
+        typesig { [Object, Object, self::Node] }
         # Creates a new regular node.
         def initialize(key, value, next_)
           @key = nil
@@ -478,7 +478,7 @@ module Java::Util::Concurrent
           const_attr_reader  :ValueUpdater
         }
         
-        typesig { [self::Object, self::Object] }
+        typesig { [Object, Object] }
         # compareAndSet value field
         def cas_value(cmp, val)
           return self.class::ValueUpdater.compare_and_set(self, cmp, val)
@@ -2619,12 +2619,12 @@ module Java::Util::Concurrent
           return @m.is_empty
         end
         
-        typesig { [self::Object] }
+        typesig { [Object] }
         def contains(o)
           return @m.contains_key(o)
         end
         
-        typesig { [self::Object] }
+        typesig { [Object] }
         def remove(o)
           return !(@m.remove(o)).nil?
         end
@@ -2690,7 +2690,7 @@ module Java::Util::Concurrent
           end
         end
         
-        typesig { [self::Object] }
+        typesig { [Object] }
         def ==(o)
           if ((o).equal?(self))
             return true
@@ -2797,7 +2797,7 @@ module Java::Util::Concurrent
           return @m.size
         end
         
-        typesig { [self::Object] }
+        typesig { [Object] }
         def contains(o)
           return @m.contains_value(o)
         end
@@ -2846,7 +2846,7 @@ module Java::Util::Concurrent
           end
         end
         
-        typesig { [self::Object] }
+        typesig { [Object] }
         def contains(o)
           if (!(o.is_a?(self.class::Map::Entry)))
             return false
@@ -2856,7 +2856,7 @@ module Java::Util::Concurrent
           return !(v).nil? && (v == e.get_value)
         end
         
-        typesig { [self::Object] }
+        typesig { [Object] }
         def remove(o)
           if (!(o.is_a?(self.class::Map::Entry)))
             return false
@@ -2880,7 +2880,7 @@ module Java::Util::Concurrent
           @m.clear
         end
         
-        typesig { [self::Object] }
+        typesig { [Object] }
         def ==(o)
           if ((o).equal?(self))
             return true
@@ -3272,7 +3272,7 @@ module Java::Util::Concurrent
           end
         end
         
-        typesig { [self::Object] }
+        typesig { [Object] }
         # ----------------  Map API methods --------------
         def contains_key(key)
           if ((key).nil?)
@@ -3282,7 +3282,7 @@ module Java::Util::Concurrent
           return in_bounds(k) && @m.contains_key(k)
         end
         
-        typesig { [self::Object] }
+        typesig { [Object] }
         def get(key)
           if ((key).nil?)
             raise self.class::NullPointerException.new
@@ -3297,7 +3297,7 @@ module Java::Util::Concurrent
           return @m.put(key, value)
         end
         
-        typesig { [self::Object] }
+        typesig { [Object] }
         def remove(key)
           k = key
           return (!in_bounds(k)) ? nil : @m.remove(k)
@@ -3321,7 +3321,7 @@ module Java::Util::Concurrent
           return !is_before_end(lo_node)
         end
         
-        typesig { [self::Object] }
+        typesig { [Object] }
         def contains_value(value)
           if ((value).nil?)
             raise self.class::NullPointerException.new
@@ -3355,7 +3355,7 @@ module Java::Util::Concurrent
           return @m.put_if_absent(key, value)
         end
         
-        typesig { [self::Object, self::Object] }
+        typesig { [Object, Object] }
         def remove(key, value)
           k = key
           return in_bounds(k) && @m.remove(k, value)

@@ -892,7 +892,7 @@ module Sun::Security::Provider::Certpath
           @hash_code = 0
         end
         
-        typesig { [self::Object] }
+        typesig { [Object] }
         def ==(obj)
           if (!(obj.is_a?(self.class::LDAPCertStoreParameters)))
             return false

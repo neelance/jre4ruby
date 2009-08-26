@@ -2899,10 +2899,10 @@ module Sun::Net::Www::Protocol::Http
                         break
                       end
                       # the server sends less than cl bytes of data
-                      raise self.class::IOException.new("the server closes" + " before sending " + RJava.cast_to_string(cl) + " bytes of data")
+                      raise self::IOException.new("the server closes" + " before sending " + RJava.cast_to_string(cl) + " bytes of data")
                     end
                     count += len
-                  rescue self.class::SocketTimeoutException => ex
+                  rescue self::SocketTimeoutException => ex
                     time += self.attr_timeout4esbuffer / 5
                   end
                 end while (count < expected && time < self.attr_timeout4esbuffer)
@@ -2920,15 +2920,15 @@ module Sun::Net::Www::Protocol::Http
                     # put the connection into keep-alive cache
                     # the inputstream will try to do the right thing
                     is.close
-                    return self.class::ErrorStream.new(ByteBuffer.wrap(buffer, 0, count))
+                    return self::ErrorStream.new(ByteBuffer.wrap(buffer, 0, count))
                   else
                     # we read part of the response body
-                    return self.class::ErrorStream.new(ByteBuffer.wrap(buffer, 0, count), is)
+                    return self::ErrorStream.new(ByteBuffer.wrap(buffer, 0, count), is)
                   end
                 end
               end
               return nil
-            rescue self.class::IOException => ioex
+            rescue self::IOException => ioex
               # ioex.printStackTrace();
               return nil
             end

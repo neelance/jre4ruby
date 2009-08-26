@@ -40,8 +40,8 @@ module Sun::Reflect
     include_class_members ClassDefinerImports
     
     class_module.module_eval {
-      const_set_lazy(:Unsafe) { Unsafe.get_unsafe }
-      const_attr_reader  :Unsafe
+      const_set_lazy(:UnsafeInstance) { Unsafe.get_unsafe }
+      const_attr_reader  :UnsafeInstance
       
       typesig { [String, Array.typed(::Java::Byte), ::Java::Int, ::Java::Int, ClassLoader] }
       # <P> We define generated code into a new class loader which
@@ -77,7 +77,7 @@ module Sun::Reflect
           private
           alias_method :initialize_anonymous, :initialize
         end.new_local(self))
-        return Unsafe.define_class(name, bytes, off, len, new_loader, nil)
+        return UnsafeInstance.define_class(name, bytes, off, len, new_loader, nil)
       end
     }
     

@@ -3520,7 +3520,7 @@ module Java::Util
           return old_value
         end
         
-        typesig { [self::Object] }
+        typesig { [Object] }
         def index_of(o)
           if ((o).nil?)
             i = 0
@@ -3542,7 +3542,7 @@ module Java::Util
           return -1
         end
         
-        typesig { [self::Object] }
+        typesig { [Object] }
         def contains(o)
           return !(index_of(o)).equal?(-1)
         end

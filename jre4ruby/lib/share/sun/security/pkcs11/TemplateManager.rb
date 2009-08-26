@@ -207,7 +207,7 @@ module Sun::Security::Pkcs11
           @key_algorithm = key_algorithm
         end
         
-        typesig { [self::Object] }
+        typesig { [Object] }
         def ==(obj)
           if ((self).equal?(obj))
             return true
@@ -288,7 +288,7 @@ module Sun::Security::Pkcs11
           # Combine two sets of attributes. The second set has precedence
           # over the first and overrides its settings.
           def combine(attrs1, attrs2)
-            attrs = self.class::ArrayList.new
+            attrs = self::ArrayList.new
             attrs1.each do |attr|
               if (!(attr.attr_p_value).nil?)
                 attrs.add(attr)

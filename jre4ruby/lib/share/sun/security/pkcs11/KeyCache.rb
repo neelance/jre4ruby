@@ -78,13 +78,13 @@ module Sun::Security::Pkcs11
         alias_method :attr_obj=, :obj=
         undef_method :obj=
         
-        typesig { [self::Object] }
+        typesig { [Object] }
         def initialize(obj)
           @obj = nil
           @obj = obj
         end
         
-        typesig { [self::Object] }
+        typesig { [Object] }
         def ==(o)
           if ((self).equal?(o))
             return true

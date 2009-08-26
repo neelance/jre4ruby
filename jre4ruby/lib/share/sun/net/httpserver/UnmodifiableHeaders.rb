@@ -78,7 +78,7 @@ module Sun::Net::Httpserver
       return @map.get_first(key)
     end
     
-    typesig { [String, SwtList] }
+    typesig { [String, JavaList] }
     def put(key, value)
       return @map.put(key, value)
     end

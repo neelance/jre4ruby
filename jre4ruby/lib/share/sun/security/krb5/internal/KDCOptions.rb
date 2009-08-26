@@ -205,7 +205,7 @@ module Sun::Security::Krb5::Internal
       @kdc_opt_proxiable = 0x10000000
       @kdc_opt_renewable_ok = 0x10
       @kdc_opt_forwardable = 0x40000000
-      @debug = Krb5.attr_debug
+      @debug = Krb5::DEBUG
       set_default
     end
     
@@ -219,7 +219,7 @@ module Sun::Security::Krb5::Internal
       @kdc_opt_proxiable = 10000000
       @kdc_opt_renewable_ok = 10
       @kdc_opt_forwardable = 40000000
-      @debug = Krb5.attr_debug
+      @debug = Krb5::DEBUG
       if ((size > data.attr_length * BITS_PER_UNIT) || (size > Krb5::KDC_OPTS_MAX + 1))
         raise Asn1Exception.new(Krb5::BITSTRING_BAD_LENGTH)
       end
@@ -240,7 +240,7 @@ module Sun::Security::Krb5::Internal
       @kdc_opt_proxiable = 10000000
       @kdc_opt_renewable_ok = 10
       @kdc_opt_forwardable = 40000000
-      @debug = Krb5.attr_debug
+      @debug = Krb5::DEBUG
       if (data.attr_length > Krb5::KDC_OPTS_MAX + 1)
         raise Asn1Exception.new(Krb5::BITSTRING_BAD_LENGTH)
       end
@@ -264,7 +264,7 @@ module Sun::Security::Krb5::Internal
       @kdc_opt_proxiable = 10000000
       @kdc_opt_renewable_ok = 10
       @kdc_opt_forwardable = 40000000
-      @debug = Krb5.attr_debug
+      @debug = Krb5::DEBUG
     end
     
     class_module.module_eval {

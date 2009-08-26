@@ -886,7 +886,7 @@ module Java::Security
           super(algorithm)
           @first_service = service
           @service_iterator = iterator
-          @lock = self.class::Object.new
+          @lock = Object.new
         end
         
         typesig { [] }
@@ -918,14 +918,14 @@ module Java::Security
               # must be NONEwithRSA
               begin
                 c = Cipher.get_instance(RSA_CIPHER, s.get_provider)
-                return self.class::CipherAdapter.new(c)
-              rescue self.class::NoSuchPaddingException => e
-                raise self.class::NoSuchAlgorithmException.new(e)
+                return self::CipherAdapter.new(c)
+              rescue self::NoSuchPaddingException => e
+                raise self::NoSuchAlgorithmException.new(e)
               end
             else
               o = s.new_instance(nil)
-              if ((o.is_a?(self.class::SignatureSpi)).equal?(false))
-                raise self.class::NoSuchAlgorithmException.new("Not a SignatureSpi: " + RJava.cast_to_string(o.get_class.get_name))
+              if ((o.is_a?(self::SignatureSpi)).equal?(false))
+                raise self::NoSuchAlgorithmException.new("Not a SignatureSpi: " + RJava.cast_to_string(o.get_class.get_name))
               end
               return o
             end
@@ -1144,7 +1144,7 @@ module Java::Security
           return @sig_spi.engine_verify(sig_bytes, offset, length)
         end
         
-        typesig { [String, self::Object] }
+        typesig { [String, Object] }
         def engine_set_parameter(param, value)
           choose_first_provider
           @sig_spi.engine_set_parameter(param, value)
@@ -1262,7 +1262,7 @@ module Java::Security
           end
         end
         
-        typesig { [String, self::Object] }
+        typesig { [String, Object] }
         def engine_set_parameter(param, value)
           raise self.class::InvalidParameterException.new("Parameters not supported")
         end

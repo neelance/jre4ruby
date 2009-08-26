@@ -674,7 +674,7 @@ module Java::Util
           return (!(@loader_ref).nil?) ? @loader_ref.get : nil
         end
         
-        typesig { [self::Object] }
+        typesig { [Object] }
         def ==(other)
           if ((self).equal?(other))
             return true
@@ -1393,7 +1393,7 @@ module Java::Util
         return bundle
       end
       
-      typesig { [SwtList] }
+      typesig { [JavaList] }
       # Checks if the given <code>List</code> is not null, not empty,
       # not having null in its elements.
       def check_list(a)
@@ -1409,7 +1409,7 @@ module Java::Util
         return valid
       end
       
-      typesig { [CacheKey, SwtList, SwtList, ::Java::Int, Control, ResourceBundle] }
+      typesig { [CacheKey, JavaList, JavaList, ::Java::Int, Control, ResourceBundle] }
       def find_bundle(cache_key, candidate_locales, formats, index, control, base_bundle)
         target_locale = candidate_locales.get(index)
         parent = nil
@@ -1507,7 +1507,7 @@ module Java::Util
         return parent
       end
       
-      typesig { [CacheKey, SwtList, Control, ::Java::Boolean] }
+      typesig { [CacheKey, JavaList, Control, ::Java::Boolean] }
       def load_bundle(cache_key, formats, control, reload)
         raise AssertError if not ((UnderConstruction.get(cache_key)).equal?(JavaThread.current_thread))
         # Here we actually load the bundle in the order of formats
@@ -2115,7 +2115,7 @@ module Java::Util
         end
         
         class_module.module_eval {
-          typesig { [SwtList] }
+          typesig { [self::JavaList] }
           # Returns a <code>ResourceBundle.Control</code> in which the {@link
           # #getFormats(String) getFormats} method returns the specified
           # <code>formats</code>. The <code>formats</code> must be equal to
@@ -2147,10 +2147,10 @@ module Java::Util
             if ((formats == Control::FORMAT_DEFAULT))
               return Control::INSTANCE
             end
-            raise self.class::IllegalArgumentException.new
+            raise self::IllegalArgumentException.new
           end
           
-          typesig { [SwtList] }
+          typesig { [self::JavaList] }
           # Returns a <code>ResourceBundle.Control</code> in which the {@link
           # #getFormats(String) getFormats} method returns the specified
           # <code>formats</code> and the {@link
@@ -2181,7 +2181,7 @@ module Java::Util
             if ((formats == Control::FORMAT_CLASS))
               return NoFallbackControl::CLASS_ONLY_NO_FALLBACK
             end
-            raise self.class::IllegalArgumentException.new
+            raise self::IllegalArgumentException.new
           end
         }
         
@@ -2774,7 +2774,7 @@ module Java::Util
         alias_method :attr_formats=, :formats=
         undef_method :formats=
         
-        typesig { [SwtList] }
+        typesig { [self::JavaList] }
         def initialize(formats)
           @formats = nil
           super()
@@ -2807,7 +2807,7 @@ module Java::Util
           const_attr_reader  :CLASS_ONLY_NO_FALLBACK
         }
         
-        typesig { [SwtList] }
+        typesig { [self::JavaList] }
         def initialize(formats)
           super(formats)
         end

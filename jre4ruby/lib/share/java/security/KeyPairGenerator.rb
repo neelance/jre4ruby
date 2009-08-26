@@ -565,7 +565,7 @@ module Java::Security
           @init_params = nil
           @init_random = nil
           super(algorithm)
-          @lock = self.class::Object.new
+          @lock = Object.new
           @spi = spi
         end
         
@@ -579,7 +579,7 @@ module Java::Security
           @init_params = nil
           @init_random = nil
           super(algorithm)
-          @lock = self.class::Object.new
+          @lock = Object.new
           @spi = instance.attr_impl
           self.attr_provider = instance.attr_provider
           @service_iterator = service_iterator

@@ -480,7 +480,7 @@ module Java::Util::Jar
           end
         }
         
-        typesig { [self::Object] }
+        typesig { [Object] }
         # Compares this attribute name to another for equality.
         # @param o the object to compare
         # @return true if this attribute name is equal to the

@@ -55,13 +55,13 @@ module Java::Util::Concurrent::Atomic
       const_attr_reader  :SerialVersionUID
       
       # setup to use Unsafe.compareAndSwapInt for updates
-      const_set_lazy(:Unsafe) { Unsafe.get_unsafe }
-      const_attr_reader  :Unsafe
+      const_set_lazy(:UnsafeInstance) { Unsafe.get_unsafe }
+      const_attr_reader  :UnsafeInstance
       
-      const_set_lazy(:Base) { Unsafe.array_base_offset(Array) }
+      const_set_lazy(:Base) { UnsafeInstance.array_base_offset(Array) }
       const_attr_reader  :Base
       
-      const_set_lazy(:Scale) { Unsafe.array_index_scale(Array) }
+      const_set_lazy(:Scale) { UnsafeInstance.array_index_scale(Array) }
       const_attr_reader  :Scale
     }
     
@@ -88,7 +88,7 @@ module Java::Util::Concurrent::Atomic
       @array = Array.typed(::Java::Long).new(length) { 0 }
       # must perform at least one volatile write to conform to JMM
       if (length > 0)
-        Unsafe.put_long_volatile(@array, raw_index(0), 0)
+        UnsafeInstance.put_long_volatile(@array, raw_index(0), 0)
       end
     end
     
@@ -113,7 +113,7 @@ module Java::Util::Concurrent::Atomic
           (i += 1)
         end
         # Do the last write as volatile
-        Unsafe.put_long_volatile(@array, raw_index(last), array[last])
+        UnsafeInstance.put_long_volatile(@array, raw_index(last), array[last])
       end
     end
     
@@ -131,7 +131,7 @@ module Java::Util::Concurrent::Atomic
     # @param i the index
     # @return the current value
     def get(i)
-      return Unsafe.get_long_volatile(@array, raw_index(i))
+      return UnsafeInstance.get_long_volatile(@array, raw_index(i))
     end
     
     typesig { [::Java::Int, ::Java::Long] }
@@ -140,7 +140,7 @@ module Java::Util::Concurrent::Atomic
     # @param i the index
     # @param newValue the new value
     def set(i, new_value)
-      Unsafe.put_long_volatile(@array, raw_index(i), new_value)
+      UnsafeInstance.put_long_volatile(@array, raw_index(i), new_value)
     end
     
     typesig { [::Java::Int, ::Java::Long] }
@@ -150,7 +150,7 @@ module Java::Util::Concurrent::Atomic
     # @param newValue the new value
     # @since 1.6
     def lazy_set(i, new_value)
-      Unsafe.put_ordered_long(@array, raw_index(i), new_value)
+      UnsafeInstance.put_ordered_long(@array, raw_index(i), new_value)
     end
     
     typesig { [::Java::Int, ::Java::Long] }
@@ -179,7 +179,7 @@ module Java::Util::Concurrent::Atomic
     # @return true if successful. False return indicates that
     # the actual value was not equal to the expected value.
     def compare_and_set(i, expect, update)
-      return Unsafe.compare_and_swap_long(@array, raw_index(i), expect, update)
+      return UnsafeInstance.compare_and_swap_long(@array, raw_index(i), expect, update)
     end
     
     typesig { [::Java::Int, ::Java::Long, ::Java::Long] }

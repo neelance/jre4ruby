@@ -527,7 +527,7 @@ module Java::Lang
           @name = name
         end
         
-        typesig { [self::Object] }
+        typesig { [Object] }
         # Compares two <code>Subset</code> objects for equality.
         # This method returns <code>true</code> if and only if
         # <code>this</code> and the argument refer to the same
@@ -1451,7 +1451,7 @@ module Java::Lang
           # @since   1.5
           def of(code_point)
             if (!is_valid_code_point(code_point))
-              raise self.class::IllegalArgumentException.new
+              raise self::IllegalArgumentException.new
             end
             top = 0
             bottom = 0
@@ -1509,7 +1509,7 @@ module Java::Lang
           def for_name(block_name)
             block = self.attr_map.get(block_name.to_upper_case(Locale::US))
             if ((block).nil?)
-              raise self.class::IllegalArgumentException.new
+              raise self::IllegalArgumentException.new
             end
             return block
           end
@@ -1562,7 +1562,7 @@ module Java::Lang
           when_class_loaded do
             i = 0
             while i < self.class::Cache.attr_length
-              self.class::Cache[i] = self.class::Character.new(RJava.cast_to_char(i))
+              self.class::Cache[i] = self::Character.new(RJava.cast_to_char(i))
               i += 1
             end
           end

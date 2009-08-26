@@ -525,8 +525,8 @@ module Sun::Net::Httpserver
           @u_remaining = 0
           @chan = chan
           @engine = engine
-          @wrap_lock = self.class::Object.new
-          @unwrap_lock = self.class::Object.new
+          @wrap_lock = Object.new
+          @unwrap_lock = Object.new
           @unwrap_src = allocate(BufType::PACKET)
           @wrap_dst = allocate(BufType::PACKET)
           @sc = SelectorCache.get_selector_cache

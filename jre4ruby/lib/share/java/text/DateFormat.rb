@@ -734,7 +734,7 @@ module Java::Text
           # @see java.util.Calendar
           def of_calendar_field(calendar_field)
             if (calendar_field < 0 || calendar_field >= self.class::CalendarToFieldMapping.attr_length)
-              raise self.class::IllegalArgumentException.new("Unknown Calendar constant " + RJava.cast_to_string(calendar_field))
+              raise self::IllegalArgumentException.new("Unknown Calendar constant " + RJava.cast_to_string(calendar_field))
             end
             return self.class::CalendarToFieldMapping[calendar_field]
           end
@@ -890,7 +890,7 @@ module Java::Text
           const_attr_reader  :INSTANCE
         }
         
-        typesig { [self::DateFormatProvider, self::Locale, String, self::Object] }
+        typesig { [self::DateFormatProvider, self::Locale, String, Object] }
         def get_object(date_format_provider, locale, key, *params)
           raise AssertError if not ((params.attr_length).equal?(3))
           time_style = params[0]

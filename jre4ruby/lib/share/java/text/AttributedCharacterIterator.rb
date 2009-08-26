@@ -111,7 +111,7 @@ module Java::Text
           end
         end
         
-        typesig { [self::Object] }
+        typesig { [Object] }
         # Compares two objects for equality. This version only returns true
         # for <code>x.equals(y)</code> if <code>x</code> and <code>y</code> refer
         # to the same object, and guarantees this for all subclasses.

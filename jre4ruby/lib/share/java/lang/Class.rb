@@ -1035,7 +1035,7 @@ module Java::Lang
         alias_method :attr_descriptor=, :descriptor=
         undef_method :descriptor=
         
-        typesig { [Array.typed(self::Object)] }
+        typesig { [Array.typed(Object)] }
         def initialize(enclosing_info)
           @enclosing_class = nil
           @name = nil

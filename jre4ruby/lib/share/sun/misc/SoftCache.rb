@@ -121,7 +121,7 @@ module Sun::Misc
         class_module.module_eval {
           
           def invalid_key
-            defined?(@@invalid_key) ? @@invalid_key : @@invalid_key= self::Object.new
+            defined?(@@invalid_key) ? @@invalid_key : @@invalid_key= Object.new
           end
           alias_method :attr_invalid_key, :invalid_key
           
@@ -148,7 +148,7 @@ module Sun::Misc
         alias_method :attr_key=, :key=
         undef_method :key=
         
-        typesig { [self::Object, self::Object, self::ReferenceQueue] }
+        typesig { [Object, Object, self::ReferenceQueue] }
         def initialize(key, value, queue)
           @key = nil
           super(value, queue)
@@ -156,15 +156,15 @@ module Sun::Misc
         end
         
         class_module.module_eval {
-          typesig { [self::Object, self::Object, self::ReferenceQueue] }
+          typesig { [Object, Object, self::ReferenceQueue] }
           def create(key, value, queue)
             if ((value).nil?)
               return nil
             end
-            return self.class::ValueCell.new(key, value, queue)
+            return self::ValueCell.new(key, value, queue)
           end
           
-          typesig { [self::Object, ::Java::Boolean] }
+          typesig { [Object, ::Java::Boolean] }
           def strip(val, drop)
             if ((val).nil?)
               return nil
@@ -419,7 +419,7 @@ module Sun::Misc
         alias_method :attr_value=, :value=
         undef_method :value=
         
-        typesig { [self::Map::Entry, self::Object] }
+        typesig { [self::Map::Entry, Object] }
         # Strong reference to value, to prevent the GC
         # from flushing the value while this Entry
         # exists
@@ -440,12 +440,12 @@ module Sun::Misc
           return @value
         end
         
-        typesig { [self::Object] }
+        typesig { [Object] }
         def set_value(value)
           return @ent.set_value(ValueCell.create(@ent.get_key, value, self.attr_queue))
         end
         
-        typesig { [self::Object] }
+        typesig { [Object] }
         def ==(o)
           if (!(o.is_a?(self.class::Map::Entry)))
             return false
@@ -555,7 +555,7 @@ module Sun::Misc
           return j
         end
         
-        typesig { [self::Object] }
+        typesig { [Object] }
         def remove(o)
           process_queue
           if (o.is_a?(self.class::Entry))

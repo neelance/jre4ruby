@@ -275,7 +275,7 @@ module Java::Net
       return false
     end
     
-    typesig { [SwtList] }
+    typesig { [JavaList] }
     # sort cookies with respect to their path: those with more specific Path attributes
     # precede those with less specific, as defined in RFC 2965 sec. 3.3.4
     def sort_by_path(cookies)

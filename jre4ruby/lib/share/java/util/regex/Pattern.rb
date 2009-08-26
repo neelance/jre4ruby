@@ -6100,7 +6100,7 @@ module Java::Util::Regex
           # and covers the heavily used ASCII range, but occasionally
           # results in an aliased match for the bad character shift.
           def optimize(node)
-            if (!(node.is_a?(self.class::Slice)))
+            if (!(node.is_a?(self::Slice)))
               return node
             end
             src = (node).attr_buffer
@@ -6155,10 +6155,10 @@ module Java::Util::Regex
             end
             # Set the guard value because of unicode compression
             opto_sft[pattern_length - 1] = 1
-            if (node.is_a?(self.class::SliceS))
-              return self.class::BnMS.new(src, last_occ, opto_sft, node.attr_next)
+            if (node.is_a?(self::SliceS))
+              return self::BnMS.new(src, last_occ, opto_sft, node.attr_next)
             end
-            return self.class::BnM.new(src, last_occ, opto_sft, node.attr_next)
+            return self::BnM.new(src, last_occ, opto_sft, node.attr_next)
           end
         }
         
@@ -6344,7 +6344,7 @@ module Java::Util::Regex
           
           typesig { [String, ::Java::Int] }
           def def_category(name, type_mask)
-            self.class::Map.put(name, Class.new(self.class::CharPropertyFactory.class == Class ? self.class::CharPropertyFactory : Object) do
+            self.class::Map.put(name, Class.new(self::CharPropertyFactory.class == Class ? self::CharPropertyFactory : Object) do
               extend LocalClass
               include_class_members CharPropertyNames
               include self::CharPropertyFactory if self::CharPropertyFactory.class == Module
@@ -6366,7 +6366,7 @@ module Java::Util::Regex
           
           typesig { [String, ::Java::Int, ::Java::Int] }
           def def_range(name, lower, upper)
-            self.class::Map.put(name, Class.new(self.class::CharPropertyFactory.class == Class ? self.class::CharPropertyFactory : Object) do
+            self.class::Map.put(name, Class.new(self::CharPropertyFactory.class == Class ? self::CharPropertyFactory : Object) do
               extend LocalClass
               include_class_members CharPropertyNames
               include self::CharPropertyFactory if self::CharPropertyFactory.class == Module
@@ -6388,7 +6388,7 @@ module Java::Util::Regex
           
           typesig { [String, ::Java::Int] }
           def def_ctype(name, ctype)
-            self.class::Map.put(name, Class.new(self.class::CharPropertyFactory.class == Class ? self.class::CharPropertyFactory : Object) do
+            self.class::Map.put(name, Class.new(self::CharPropertyFactory.class == Class ? self::CharPropertyFactory : Object) do
               extend LocalClass
               include_class_members CharPropertyNames
               include self::CharPropertyFactory if self::CharPropertyFactory.class == Module
@@ -6434,7 +6434,7 @@ module Java::Util::Regex
           
           typesig { [String, self::CloneableProperty] }
           def def_clone(name, p)
-            self.class::Map.put(name, Class.new(self.class::CharPropertyFactory.class == Class ? self.class::CharPropertyFactory : Object) do
+            self.class::Map.put(name, Class.new(self::CharPropertyFactory.class == Class ? self::CharPropertyFactory : Object) do
               extend LocalClass
               include_class_members CharPropertyNames
               include self::CharPropertyFactory if self::CharPropertyFactory.class == Module
@@ -6500,7 +6500,7 @@ module Java::Util::Regex
             def_category("LC", ((1 << Character::UPPERCASE_LETTER) | (1 << Character::LOWERCASE_LETTER) | (1 << Character::TITLECASE_LETTER)))
             def_category("LD", ((1 << Character::UPPERCASE_LETTER) | (1 << Character::LOWERCASE_LETTER) | (1 << Character::TITLECASE_LETTER) | (1 << Character::MODIFIER_LETTER) | (1 << Character::OTHER_LETTER) | (1 << Character::DECIMAL_DIGIT_NUMBER)))
             def_range("L1", 0x0, 0xff) # Latin-1
-            self.class::Map.put("all", Class.new(self.class::CharPropertyFactory.class == Class ? self.class::CharPropertyFactory : Object) do
+            self.class::Map.put("all", Class.new(self::CharPropertyFactory.class == Class ? self::CharPropertyFactory : Object) do
               extend LocalClass
               include_class_members CharPropertyNames
               include self::CharPropertyFactory if self::CharPropertyFactory.class == Module
@@ -6534,7 +6534,7 @@ module Java::Util::Regex
             def_range("Upper", Character.new(?A.ord), Character.new(?Z.ord)) # Upper-case alphabetic
             def_ctype("XDigit", ASCII::XDIGIT) # hexadecimal digits
             def_clone("javaLowerCase", # Java character properties, defined by methods in Character.java
-            Class.new(self.class::CloneableProperty.class == Class ? self.class::CloneableProperty : Object) do
+            Class.new(self::CloneableProperty.class == Class ? self::CloneableProperty : Object) do
               extend LocalClass
               include_class_members CharPropertyNames
               include self::CloneableProperty if self::CloneableProperty.class == Module
@@ -6552,7 +6552,7 @@ module Java::Util::Regex
               private
               alias_method :initialize_anonymous, :initialize
             end.new_local(self))
-            def_clone("javaUpperCase", Class.new(self.class::CloneableProperty.class == Class ? self.class::CloneableProperty : Object) do
+            def_clone("javaUpperCase", Class.new(self::CloneableProperty.class == Class ? self::CloneableProperty : Object) do
               extend LocalClass
               include_class_members CharPropertyNames
               include self::CloneableProperty if self::CloneableProperty.class == Module
@@ -6570,7 +6570,7 @@ module Java::Util::Regex
               private
               alias_method :initialize_anonymous, :initialize
             end.new_local(self))
-            def_clone("javaTitleCase", Class.new(self.class::CloneableProperty.class == Class ? self.class::CloneableProperty : Object) do
+            def_clone("javaTitleCase", Class.new(self::CloneableProperty.class == Class ? self::CloneableProperty : Object) do
               extend LocalClass
               include_class_members CharPropertyNames
               include self::CloneableProperty if self::CloneableProperty.class == Module
@@ -6588,7 +6588,7 @@ module Java::Util::Regex
               private
               alias_method :initialize_anonymous, :initialize
             end.new_local(self))
-            def_clone("javaDigit", Class.new(self.class::CloneableProperty.class == Class ? self.class::CloneableProperty : Object) do
+            def_clone("javaDigit", Class.new(self::CloneableProperty.class == Class ? self::CloneableProperty : Object) do
               extend LocalClass
               include_class_members CharPropertyNames
               include self::CloneableProperty if self::CloneableProperty.class == Module
@@ -6606,7 +6606,7 @@ module Java::Util::Regex
               private
               alias_method :initialize_anonymous, :initialize
             end.new_local(self))
-            def_clone("javaDefined", Class.new(self.class::CloneableProperty.class == Class ? self.class::CloneableProperty : Object) do
+            def_clone("javaDefined", Class.new(self::CloneableProperty.class == Class ? self::CloneableProperty : Object) do
               extend LocalClass
               include_class_members CharPropertyNames
               include self::CloneableProperty if self::CloneableProperty.class == Module
@@ -6624,7 +6624,7 @@ module Java::Util::Regex
               private
               alias_method :initialize_anonymous, :initialize
             end.new_local(self))
-            def_clone("javaLetter", Class.new(self.class::CloneableProperty.class == Class ? self.class::CloneableProperty : Object) do
+            def_clone("javaLetter", Class.new(self::CloneableProperty.class == Class ? self::CloneableProperty : Object) do
               extend LocalClass
               include_class_members CharPropertyNames
               include self::CloneableProperty if self::CloneableProperty.class == Module
@@ -6642,7 +6642,7 @@ module Java::Util::Regex
               private
               alias_method :initialize_anonymous, :initialize
             end.new_local(self))
-            def_clone("javaLetterOrDigit", Class.new(self.class::CloneableProperty.class == Class ? self.class::CloneableProperty : Object) do
+            def_clone("javaLetterOrDigit", Class.new(self::CloneableProperty.class == Class ? self::CloneableProperty : Object) do
               extend LocalClass
               include_class_members CharPropertyNames
               include self::CloneableProperty if self::CloneableProperty.class == Module
@@ -6660,7 +6660,7 @@ module Java::Util::Regex
               private
               alias_method :initialize_anonymous, :initialize
             end.new_local(self))
-            def_clone("javaJavaIdentifierStart", Class.new(self.class::CloneableProperty.class == Class ? self.class::CloneableProperty : Object) do
+            def_clone("javaJavaIdentifierStart", Class.new(self::CloneableProperty.class == Class ? self::CloneableProperty : Object) do
               extend LocalClass
               include_class_members CharPropertyNames
               include self::CloneableProperty if self::CloneableProperty.class == Module
@@ -6678,7 +6678,7 @@ module Java::Util::Regex
               private
               alias_method :initialize_anonymous, :initialize
             end.new_local(self))
-            def_clone("javaJavaIdentifierPart", Class.new(self.class::CloneableProperty.class == Class ? self.class::CloneableProperty : Object) do
+            def_clone("javaJavaIdentifierPart", Class.new(self::CloneableProperty.class == Class ? self::CloneableProperty : Object) do
               extend LocalClass
               include_class_members CharPropertyNames
               include self::CloneableProperty if self::CloneableProperty.class == Module
@@ -6696,7 +6696,7 @@ module Java::Util::Regex
               private
               alias_method :initialize_anonymous, :initialize
             end.new_local(self))
-            def_clone("javaUnicodeIdentifierStart", Class.new(self.class::CloneableProperty.class == Class ? self.class::CloneableProperty : Object) do
+            def_clone("javaUnicodeIdentifierStart", Class.new(self::CloneableProperty.class == Class ? self::CloneableProperty : Object) do
               extend LocalClass
               include_class_members CharPropertyNames
               include self::CloneableProperty if self::CloneableProperty.class == Module
@@ -6714,7 +6714,7 @@ module Java::Util::Regex
               private
               alias_method :initialize_anonymous, :initialize
             end.new_local(self))
-            def_clone("javaUnicodeIdentifierPart", Class.new(self.class::CloneableProperty.class == Class ? self.class::CloneableProperty : Object) do
+            def_clone("javaUnicodeIdentifierPart", Class.new(self::CloneableProperty.class == Class ? self::CloneableProperty : Object) do
               extend LocalClass
               include_class_members CharPropertyNames
               include self::CloneableProperty if self::CloneableProperty.class == Module
@@ -6732,7 +6732,7 @@ module Java::Util::Regex
               private
               alias_method :initialize_anonymous, :initialize
             end.new_local(self))
-            def_clone("javaIdentifierIgnorable", Class.new(self.class::CloneableProperty.class == Class ? self.class::CloneableProperty : Object) do
+            def_clone("javaIdentifierIgnorable", Class.new(self::CloneableProperty.class == Class ? self::CloneableProperty : Object) do
               extend LocalClass
               include_class_members CharPropertyNames
               include self::CloneableProperty if self::CloneableProperty.class == Module
@@ -6750,7 +6750,7 @@ module Java::Util::Regex
               private
               alias_method :initialize_anonymous, :initialize
             end.new_local(self))
-            def_clone("javaSpaceChar", Class.new(self.class::CloneableProperty.class == Class ? self.class::CloneableProperty : Object) do
+            def_clone("javaSpaceChar", Class.new(self::CloneableProperty.class == Class ? self::CloneableProperty : Object) do
               extend LocalClass
               include_class_members CharPropertyNames
               include self::CloneableProperty if self::CloneableProperty.class == Module
@@ -6768,7 +6768,7 @@ module Java::Util::Regex
               private
               alias_method :initialize_anonymous, :initialize
             end.new_local(self))
-            def_clone("javaWhitespace", Class.new(self.class::CloneableProperty.class == Class ? self.class::CloneableProperty : Object) do
+            def_clone("javaWhitespace", Class.new(self::CloneableProperty.class == Class ? self::CloneableProperty : Object) do
               extend LocalClass
               include_class_members CharPropertyNames
               include self::CloneableProperty if self::CloneableProperty.class == Module
@@ -6786,7 +6786,7 @@ module Java::Util::Regex
               private
               alias_method :initialize_anonymous, :initialize
             end.new_local(self))
-            def_clone("javaISOControl", Class.new(self.class::CloneableProperty.class == Class ? self.class::CloneableProperty : Object) do
+            def_clone("javaISOControl", Class.new(self::CloneableProperty.class == Class ? self::CloneableProperty : Object) do
               extend LocalClass
               include_class_members CharPropertyNames
               include self::CloneableProperty if self::CloneableProperty.class == Module
@@ -6804,7 +6804,7 @@ module Java::Util::Regex
               private
               alias_method :initialize_anonymous, :initialize
             end.new_local(self))
-            def_clone("javaMirrored", Class.new(self.class::CloneableProperty.class == Class ? self.class::CloneableProperty : Object) do
+            def_clone("javaMirrored", Class.new(self::CloneableProperty.class == Class ? self::CloneableProperty : Object) do
               extend LocalClass
               include_class_members CharPropertyNames
               include self::CloneableProperty if self::CloneableProperty.class == Module

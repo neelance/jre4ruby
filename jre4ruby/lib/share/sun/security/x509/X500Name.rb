@@ -1381,7 +1381,7 @@ module Sun::Security::X509
             cons.set_accessible(true)
             field = p_class.get_declared_field("thisX500Name")
             field.set_accessible(true)
-            return Array.typed(self.class::Object).new([cons, field])
+            return Array.typed(Object).new([cons, field])
           end
           
           typesig { [] }

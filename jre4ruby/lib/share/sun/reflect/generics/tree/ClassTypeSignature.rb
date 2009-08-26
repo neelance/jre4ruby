@@ -43,14 +43,14 @@ module Sun::Reflect::Generics::Tree
     alias_method :attr_path=, :path=
     undef_method :path=
     
-    typesig { [SwtList] }
+    typesig { [JavaList] }
     def initialize(p)
       @path = nil
       @path = p
     end
     
     class_module.module_eval {
-      typesig { [SwtList] }
+      typesig { [JavaList] }
       def make(p)
         return ClassTypeSignature.new(p)
       end

@@ -127,12 +127,12 @@ module Java::Util::Concurrent::Locks
     class_module.module_eval {
       # Cannot be instantiated.
       # Hotspot implementation via intrinsics API
-      const_set_lazy(:Unsafe) { Unsafe.get_unsafe }
-      const_attr_reader  :Unsafe
+      const_set_lazy(:UnsafeInstance) { Unsafe.get_unsafe }
+      const_attr_reader  :UnsafeInstance
       
       when_class_loaded do
         begin
-          const_set :ParkBlockerOffset, Unsafe.object_field_offset(Java::Lang::JavaThread.get_declared_field("parkBlocker"))
+          const_set :ParkBlockerOffset, UnsafeInstance.object_field_offset(Java::Lang::JavaThread.get_declared_field("parkBlocker"))
         rescue JavaException => ex
           raise JavaError.new(ex)
         end
@@ -141,7 +141,7 @@ module Java::Util::Concurrent::Locks
       typesig { [JavaThread, Object] }
       def set_blocker(t, arg)
         # Even though volatile, hotspot doesn't need a write barrier here.
-        Unsafe.put_object(t, ParkBlockerOffset, arg)
+        UnsafeInstance.put_object(t, ParkBlockerOffset, arg)
       end
       
       typesig { [JavaThread] }
@@ -156,7 +156,7 @@ module Java::Util::Concurrent::Locks
       # this operation has no effect
       def unpark(thread)
         if (!(thread).nil?)
-          Unsafe.unpark(thread)
+          UnsafeInstance.unpark(thread)
         end
       end
       
@@ -190,7 +190,7 @@ module Java::Util::Concurrent::Locks
       def park(blocker)
         t = JavaThread.current_thread
         set_blocker(t, blocker)
-        Unsafe.park(false, 0)
+        UnsafeInstance.park(false, 0)
         set_blocker(t, nil)
       end
       
@@ -229,7 +229,7 @@ module Java::Util::Concurrent::Locks
         if (nanos > 0)
           t = JavaThread.current_thread
           set_blocker(t, blocker)
-          Unsafe.park(false, nanos)
+          UnsafeInstance.park(false, nanos)
           set_blocker(t, nil)
         end
       end
@@ -269,7 +269,7 @@ module Java::Util::Concurrent::Locks
       def park_until(blocker, deadline)
         t = JavaThread.current_thread
         set_blocker(t, blocker)
-        Unsafe.park(true, deadline)
+        UnsafeInstance.park(true, deadline)
         set_blocker(t, nil)
       end
       
@@ -283,7 +283,7 @@ module Java::Util::Concurrent::Locks
       # @return the blocker
       # @since 1.6
       def get_blocker(t)
-        return Unsafe.get_object_volatile(t, ParkBlockerOffset)
+        return UnsafeInstance.get_object_volatile(t, ParkBlockerOffset)
       end
       
       typesig { [] }
@@ -311,7 +311,7 @@ module Java::Util::Concurrent::Locks
       # the thread to park in the first place. Callers may also determine,
       # for example, the interrupt status of the thread upon return.
       def park
-        Unsafe.park(false, 0)
+        UnsafeInstance.park(false, 0)
       end
       
       typesig { [::Java::Long] }
@@ -344,7 +344,7 @@ module Java::Util::Concurrent::Locks
       # @param nanos the maximum number of nanoseconds to wait
       def park_nanos(nanos)
         if (nanos > 0)
-          Unsafe.park(false, nanos)
+          UnsafeInstance.park(false, nanos)
         end
       end
       
@@ -378,7 +378,7 @@ module Java::Util::Concurrent::Locks
       # @param deadline the absolute time, in milliseconds from the Epoch,
       # to wait until
       def park_until(deadline)
-        Unsafe.park(true, deadline)
+        UnsafeInstance.park(true, deadline)
       end
     }
     

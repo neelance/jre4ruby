@@ -1028,7 +1028,7 @@ module Java::Io
           raise NotImplementedError
         end
         
-        typesig { [String, self::Object] }
+        typesig { [String, Object] }
         # Put the value of the named Object field into the persistent field.
         # 
         # @param  name the name of the serializable field
@@ -1667,7 +1667,7 @@ module Java::Io
           super()
           @desc = desc
           @prim_vals = Array.typed(::Java::Byte).new(desc.get_prim_data_size) { 0 }
-          @obj_vals = Array.typed(self.class::Object).new(desc.get_num_obj_fields) { nil }
+          @obj_vals = Array.typed(Object).new(desc.get_num_obj_fields) { nil }
         end
         
         typesig { [String, ::Java::Boolean] }
@@ -1710,7 +1710,7 @@ module Java::Io
           Bits.put_double(@prim_vals, get_field_offset(name, Double::TYPE), val)
         end
         
-        typesig { [String, self::Object] }
+        typesig { [String, Object] }
         def put(name, val)
           @obj_vals[get_field_offset(name, Object)] = val
         end
@@ -2425,12 +2425,12 @@ module Java::Io
           @load_factor = load_factor
           @spine = Array.typed(::Java::Int).new(initial_capacity) { 0 }
           @next = Array.typed(::Java::Int).new(initial_capacity) { 0 }
-          @objs = Array.typed(self.class::Object).new(initial_capacity) { nil }
+          @objs = Array.typed(Object).new(initial_capacity) { nil }
           @threshold = RJava.cast_to_int((initial_capacity * load_factor))
           clear
         end
         
-        typesig { [self::Object] }
+        typesig { [Object] }
         # Assigns next available handle to given object, and returns handle
         # value.  Handles are assigned in ascending order starting at 0.
         def assign(obj)
@@ -2444,7 +2444,7 @@ module Java::Io
           return ((@size += 1) - 1)
         end
         
-        typesig { [self::Object] }
+        typesig { [Object] }
         # Looks up and returns handle associated with given object, or -1 if
         # no mapping found.
         def lookup(obj)
@@ -2476,7 +2476,7 @@ module Java::Io
           return @size
         end
         
-        typesig { [self::Object, ::Java::Int] }
+        typesig { [Object, ::Java::Int] }
         # Inserts mapping object -> handle mapping into table.  Assumes table
         # is large enough to accommodate new mapping.
         def insert(obj, handle)
@@ -2507,12 +2507,12 @@ module Java::Io
           new_next = Array.typed(::Java::Int).new(new_length) { 0 }
           System.arraycopy(@next, 0, new_next, 0, @size)
           @next = new_next
-          new_objs = Array.typed(self.class::Object).new(new_length) { nil }
+          new_objs = Array.typed(Object).new(new_length) { nil }
           System.arraycopy(@objs, 0, new_objs, 0, @size)
           @objs = new_objs
         end
         
-        typesig { [self::Object] }
+        typesig { [Object] }
         # Returns hash value for given object.
         def hash(obj)
           return System.identity_hash_code(obj) & 0x7fffffff
@@ -2547,10 +2547,10 @@ module Java::Io
           @htab = nil
           @reps = nil
           @htab = self.class::HandleTable.new(initial_capacity, load_factor)
-          @reps = Array.typed(self.class::Object).new(initial_capacity) { nil }
+          @reps = Array.typed(Object).new(initial_capacity) { nil }
         end
         
-        typesig { [self::Object, self::Object] }
+        typesig { [Object, Object] }
         # Enters mapping from object to replacement object.
         def assign(obj, rep)
           index = @htab.assign(obj)
@@ -2560,7 +2560,7 @@ module Java::Io
           @reps[index] = rep
         end
         
-        typesig { [self::Object] }
+        typesig { [Object] }
         # Looks up and returns replacement for given object.  If no
         # replacement is found, returns the lookup object itself.
         def lookup(obj)
@@ -2584,7 +2584,7 @@ module Java::Io
         typesig { [] }
         # Increases table capacity.
         def grow
-          new_reps = Array.typed(self.class::Object).new((@reps.attr_length << 1) + 1) { nil }
+          new_reps = Array.typed(Object).new((@reps.attr_length << 1) + 1) { nil }
           System.arraycopy(@reps, 0, new_reps, 0, @reps.attr_length)
           @reps = new_reps
         end

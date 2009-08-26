@@ -82,7 +82,7 @@ module Sun::Security::Jgss::Krb5
       const_attr_reader  :KG_USAGE_SIGN_MS
       
       # debug flag
-      const_set_lazy(:DEBUG) { Krb5Util.attr_debug }
+      const_set_lazy(:DEBUG) { Krb5Util::DEBUG }
       const_attr_reader  :DEBUG
       
       # A zero initial vector to be used for checksum calculation and for

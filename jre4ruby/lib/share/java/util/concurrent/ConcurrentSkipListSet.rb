@@ -461,12 +461,12 @@ module Java::Util::Concurrent
     
     class_module.module_eval {
       # Support for resetting map in clone
-      const_set_lazy(:Unsafe) { Unsafe.get_unsafe }
-      const_attr_reader  :Unsafe
+      const_set_lazy(:UnsafeInstance) { Unsafe.get_unsafe }
+      const_attr_reader  :UnsafeInstance
       
       when_class_loaded do
         begin
-          const_set :MapOffset, Unsafe.object_field_offset(ConcurrentSkipListSet.get_declared_field("m"))
+          const_set :MapOffset, UnsafeInstance.object_field_offset(ConcurrentSkipListSet.get_declared_field("m"))
         rescue JavaException => ex
           raise JavaError.new(ex)
         end
@@ -475,7 +475,7 @@ module Java::Util::Concurrent
     
     typesig { [ConcurrentNavigableMap] }
     def set_map(map)
-      Unsafe.put_object_volatile(self, MapOffset, map)
+      UnsafeInstance.put_object_volatile(self, MapOffset, map)
     end
     
     private
