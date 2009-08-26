@@ -378,7 +378,7 @@ module Sun::Util
                   return (@k.hash_code + ((v).nil? ? 0 : v.hash_code))
                 end
                 
-                typesig { [self::Object] }
+                typesig { [Object] }
                 define_method :== do |ob|
                   if ((ob).equal?(self))
                     return true

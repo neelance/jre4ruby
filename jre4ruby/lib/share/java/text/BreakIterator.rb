@@ -691,7 +691,7 @@ module Java::Text
           const_attr_reader  :INSTANCE
         }
         
-        typesig { [self::BreakIteratorProvider, self::Locale, String, self::Object] }
+        typesig { [self::BreakIteratorProvider, self::Locale, String, Object] }
         def get_object(break_iterator_provider, locale, key, *params)
           raise AssertError if not ((params.attr_length).equal?(1))
           case (params[0])

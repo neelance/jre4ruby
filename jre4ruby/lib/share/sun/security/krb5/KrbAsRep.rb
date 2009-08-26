@@ -68,7 +68,7 @@ module Sun::Security::Krb5
       @creds = nil
       @debug = false
       super()
-      @debug = Krb5::DEBUG
+      @debug = Krb5.attr_debug
       if ((keys).nil?)
         raise KrbException.new(Krb5::API_INVALID_ARG)
       end

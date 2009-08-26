@@ -160,7 +160,7 @@ module Java::Lang
           return RJava.cast_to_string(get_key) + "=" + RJava.cast_to_string(get_value)
         end
         
-        typesig { [self::Object] }
+        typesig { [Object] }
         def ==(o)
           return (@e == o)
         end
@@ -246,7 +246,7 @@ module Java::Lang
         end
         
         class_module.module_eval {
-          typesig { [self::Object] }
+          typesig { [Object] }
           def checked_entry(o)
             e = o
             non_null_string(e.get_key)
@@ -255,12 +255,12 @@ module Java::Lang
           end
         }
         
-        typesig { [self::Object] }
+        typesig { [Object] }
         def contains(o)
           return @s.contains(checked_entry(o))
         end
         
-        typesig { [self::Object] }
+        typesig { [Object] }
         def remove(o)
           return @s.remove(checked_entry(o))
         end
@@ -305,12 +305,12 @@ module Java::Lang
           return @c.iterator
         end
         
-        typesig { [self::Object] }
+        typesig { [Object] }
         def contains(o)
           return @c.contains(non_null_string(o))
         end
         
-        typesig { [self::Object] }
+        typesig { [Object] }
         def remove(o)
           return @c.remove(non_null_string(o))
         end
@@ -355,12 +355,12 @@ module Java::Lang
           return @s.iterator
         end
         
-        typesig { [self::Object] }
+        typesig { [Object] }
         def contains(o)
           return @s.contains(non_null_string(o))
         end
         
-        typesig { [self::Object] }
+        typesig { [Object] }
         def remove(o)
           return @s.remove(non_null_string(o))
         end

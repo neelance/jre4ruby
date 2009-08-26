@@ -95,7 +95,7 @@ module Sun::Security::Krb5
       
       
       def debug
-        defined?(@@debug) ? @@debug : @@debug= Krb5::DEBUG
+        defined?(@@debug) ? @@debug : @@debug= Krb5.attr_debug
       end
       alias_method :attr_debug, :debug
       

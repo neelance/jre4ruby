@@ -44,8 +44,8 @@ module Java::Nio
     
     class_module.module_eval {
       # Cached unsafe-access object
-      const_set_lazy(:UnsafeInstance) { Bits.unsafe }
-      const_attr_reader  :UnsafeInstance
+      const_set_lazy(:Unsafe) { Bits.unsafe }
+      const_attr_reader  :Unsafe
       
       # Cached unaligned-access capability
       const_set_lazy(:Unaligned) { Bits.unaligned }
@@ -118,12 +118,12 @@ module Java::Nio
     
     typesig { [] }
     def get
-      return Float.int_bits_to_float(Bits.swap(UnsafeInstance.get_int(ix(next_get_index))))
+      return Float.int_bits_to_float(Bits.swap(Unsafe.get_int(ix(next_get_index))))
     end
     
     typesig { [::Java::Int] }
     def get(i)
-      return Float.int_bits_to_float(Bits.swap(UnsafeInstance.get_int(ix(check_index(i)))))
+      return Float.int_bits_to_float(Bits.swap(Unsafe.get_int(ix(check_index(i)))))
     end
     
     typesig { [Array.typed(::Java::Float), ::Java::Int, ::Java::Int] }
@@ -151,13 +151,13 @@ module Java::Nio
     
     typesig { [::Java::Float] }
     def put(x)
-      UnsafeInstance.put_int(ix(next_put_index), Bits.swap(Float.float_to_raw_int_bits(x)))
+      Unsafe.put_int(ix(next_put_index), Bits.swap(Float.float_to_raw_int_bits(x)))
       return self
     end
     
     typesig { [::Java::Int, ::Java::Float] }
     def put(i, x)
-      UnsafeInstance.put_int(ix(check_index(i)), Bits.swap(Float.float_to_raw_int_bits(x)))
+      Unsafe.put_int(ix(check_index(i)), Bits.swap(Float.float_to_raw_int_bits(x)))
       return self
     end
     
@@ -179,7 +179,7 @@ module Java::Nio
         if (srem > rem)
           raise BufferOverflowException.new
         end
-        UnsafeInstance.copy_memory(sb.ix(spos), ix(pos), srem << 2)
+        Unsafe.copy_memory(sb.ix(spos), ix(pos), srem << 2)
         sb.position(spos + srem)
         position(pos + srem)
       else
@@ -226,7 +226,7 @@ module Java::Nio
       lim = limit
       raise AssertError if not ((pos <= lim))
       rem = (pos <= lim ? lim - pos : 0)
-      UnsafeInstance.copy_memory(ix(pos), ix(0), rem << 2)
+      Unsafe.copy_memory(ix(pos), ix(0), rem << 2)
       position(rem)
       limit(capacity)
       discard_mark

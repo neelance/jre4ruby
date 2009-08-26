@@ -1520,14 +1520,14 @@ module Sun::Security::Pkcs11::Wrapper
           super(pkcs11module_path, function_list_name)
         end
         
-        typesig { [self::Object] }
+        typesig { [Object] }
         def _c_initialize(p_init_args)
           synchronized(self) do
             super(p_init_args)
           end
         end
         
-        typesig { [self::Object] }
+        typesig { [Object] }
         def _c_finalize(p_reserved)
           synchronized(self) do
             super(p_reserved)
@@ -1576,7 +1576,7 @@ module Sun::Security::Pkcs11::Wrapper
           end
         end
         
-        typesig { [::Java::Long, ::Java::Long, self::Object, self::CK_NOTIFY] }
+        typesig { [::Java::Long, ::Java::Long, Object, self::CK_NOTIFY] }
         def _c_open_session(slot_id, flags, p_application, notify)
           synchronized(self) do
             return super(slot_id, flags, p_application, notify)

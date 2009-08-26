@@ -186,7 +186,7 @@ module Java::Lang::Ref
               next
             end
             q = r.attr_queue
-            if (!(q).equal?(ReferenceQueue.attr_null))
+            if (!(q).equal?(ReferenceQueue::NULL))
               q.enqueue(r)
             end
           end
@@ -249,7 +249,7 @@ module Java::Lang::Ref
       # In terms of the internal states, this predicate actually tests
       # whether the instance is either Pending or Enqueued
       synchronized((self)) do
-        return (!(@queue).equal?(ReferenceQueue.attr_null)) && (!(@next).nil?)
+        return (!(@queue).equal?(ReferenceQueue::NULL)) && (!(@next).nil?)
       end
     end
     
@@ -280,7 +280,7 @@ module Java::Lang::Ref
       @next = nil
       @discovered = nil
       @referent = referent
-      @queue = ((queue).nil?) ? ReferenceQueue.attr_null : queue
+      @queue = ((queue).nil?) ? ReferenceQueue::NULL : queue
     end
     
     private

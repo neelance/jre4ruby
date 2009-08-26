@@ -997,7 +997,7 @@ module Sun::Security::Pkcs11
           end
         }
         
-        typesig { [self::Object] }
+        typesig { [Object] }
         def new_instance(param)
           if ((@token.is_valid).equal?(false))
             raise self.class::NoSuchAlgorithmException.new("Token has been removed")
@@ -1009,7 +1009,7 @@ module Sun::Security::Pkcs11
           end
         end
         
-        typesig { [self::Object] }
+        typesig { [Object] }
         def new_instance0(param)
           algorithm = get_algorithm
           type = get_type
@@ -1094,7 +1094,7 @@ module Sun::Security::Pkcs11
           end
         end
         
-        typesig { [self::Object] }
+        typesig { [Object] }
         def supports_parameter(param)
           if (((param).nil?) || ((@token.is_valid).equal?(false)))
             return false

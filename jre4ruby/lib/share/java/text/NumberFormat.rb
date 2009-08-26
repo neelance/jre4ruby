@@ -1131,7 +1131,7 @@ module Java::Text
           const_attr_reader  :INSTANCE
         }
         
-        typesig { [self::NumberFormatProvider, self::Locale, String, self::Object] }
+        typesig { [self::NumberFormatProvider, self::Locale, String, Object] }
         def get_object(number_format_provider, locale, key, *params)
           raise AssertError if not ((params.attr_length).equal?(1))
           choice = params[0]

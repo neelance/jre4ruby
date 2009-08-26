@@ -231,7 +231,7 @@ module Sun::Security::Provider::Certpath
       return result
     end
     
-    typesig { [::Java::Boolean, ::Java::Boolean, JavaList] }
+    typesig { [::Java::Boolean, ::Java::Boolean, SwtList] }
     def build_cert_path(build_forward, search_all_cert_stores, adj_list)
       # Init shared variables and build certification path
       @path_completed = false
@@ -274,7 +274,7 @@ module Sun::Security::Provider::Certpath
       return nil
     end
     
-    typesig { [JavaList, LinkedList] }
+    typesig { [SwtList, LinkedList] }
     # Private build reverse method.
     def build_reverse(adjacency_list, cert_path_list)
       if (!(Debug).nil?)
@@ -321,7 +321,7 @@ module Sun::Security::Provider::Certpath
       end
     end
     
-    typesig { [JavaList, LinkedList, ::Java::Boolean] }
+    typesig { [SwtList, LinkedList, ::Java::Boolean] }
     # Private build forward method.
     def build_forward(adjacency_list, cert_path_list, search_all_cert_stores)
       if (!(Debug).nil?)
@@ -338,7 +338,7 @@ module Sun::Security::Provider::Certpath
       depth_first_search_forward(@target_subject_dn, current_state, ForwardBuilder.new(@build_params, @target_subject_dn, search_all_cert_stores), adjacency_list, cert_path_list)
     end
     
-    typesig { [X500Principal, ForwardState, ForwardBuilder, JavaList, LinkedList] }
+    typesig { [X500Principal, ForwardState, ForwardBuilder, SwtList, LinkedList] }
     # This method performs a depth first search for a certification
     # path while building forward which meets the requirements set in
     # the parameters object.
@@ -542,7 +542,7 @@ module Sun::Security::Provider::Certpath
       end
     end
     
-    typesig { [X500Principal, ReverseState, ReverseBuilder, JavaList, LinkedList] }
+    typesig { [X500Principal, ReverseState, ReverseBuilder, SwtList, LinkedList] }
     # This method performs a depth first search for a certification
     # path while building reverse which meets the requirements set in
     # the parameters object.
@@ -643,7 +643,7 @@ module Sun::Security::Provider::Certpath
       end
     end
     
-    typesig { [Collection, JavaList] }
+    typesig { [Collection, SwtList] }
     # Adds a collection of matching certificates to the
     # adjacency list.
     def add_vertices(certs, adj_list)
@@ -691,7 +691,7 @@ module Sun::Security::Provider::Certpath
       end }
     }
     
-    typesig { [JavaList, X509CertSelector] }
+    typesig { [SwtList, X509CertSelector] }
     # Returns the target subject DN from the first X509Certificate that
     # is fetched that matches the specified X509CertSelector.
     def get_target_subject_dn(stores, target_sel)

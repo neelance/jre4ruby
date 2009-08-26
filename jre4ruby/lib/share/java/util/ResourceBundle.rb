@@ -1393,7 +1393,7 @@ module Java::Util
         return bundle
       end
       
-      typesig { [JavaList] }
+      typesig { [SwtList] }
       # Checks if the given <code>List</code> is not null, not empty,
       # not having null in its elements.
       def check_list(a)
@@ -1409,7 +1409,7 @@ module Java::Util
         return valid
       end
       
-      typesig { [CacheKey, JavaList, JavaList, ::Java::Int, Control, ResourceBundle] }
+      typesig { [CacheKey, SwtList, SwtList, ::Java::Int, Control, ResourceBundle] }
       def find_bundle(cache_key, candidate_locales, formats, index, control, base_bundle)
         target_locale = candidate_locales.get(index)
         parent = nil
@@ -1507,7 +1507,7 @@ module Java::Util
         return parent
       end
       
-      typesig { [CacheKey, JavaList, Control, ::Java::Boolean] }
+      typesig { [CacheKey, SwtList, Control, ::Java::Boolean] }
       def load_bundle(cache_key, formats, control, reload)
         raise AssertError if not ((UnderConstruction.get(cache_key)).equal?(JavaThread.current_thread))
         # Here we actually load the bundle in the order of formats
@@ -2115,7 +2115,7 @@ module Java::Util
         end
         
         class_module.module_eval {
-          typesig { [self::JavaList] }
+          typesig { [SwtList] }
           # Returns a <code>ResourceBundle.Control</code> in which the {@link
           # #getFormats(String) getFormats} method returns the specified
           # <code>formats</code>. The <code>formats</code> must be equal to
@@ -2150,7 +2150,7 @@ module Java::Util
             raise self.class::IllegalArgumentException.new
           end
           
-          typesig { [self::JavaList] }
+          typesig { [SwtList] }
           # Returns a <code>ResourceBundle.Control</code> in which the {@link
           # #getFormats(String) getFormats} method returns the specified
           # <code>formats</code> and the {@link
@@ -2774,7 +2774,7 @@ module Java::Util
         alias_method :attr_formats=, :formats=
         undef_method :formats=
         
-        typesig { [self::JavaList] }
+        typesig { [SwtList] }
         def initialize(formats)
           @formats = nil
           super()
@@ -2807,7 +2807,7 @@ module Java::Util
           const_attr_reader  :CLASS_ONLY_NO_FALLBACK
         }
         
-        typesig { [self::JavaList] }
+        typesig { [SwtList] }
         def initialize(formats)
           super(formats)
         end

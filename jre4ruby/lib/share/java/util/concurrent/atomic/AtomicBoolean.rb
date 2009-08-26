@@ -58,12 +58,12 @@ module Java::Util::Concurrent::Atomic
       const_attr_reader  :SerialVersionUID
       
       # setup to use Unsafe.compareAndSwapInt for updates
-      const_set_lazy(:UnsafeInstance) { Unsafe.get_unsafe }
-      const_attr_reader  :UnsafeInstance
+      const_set_lazy(:Unsafe) { Unsafe.get_unsafe }
+      const_attr_reader  :Unsafe
       
       when_class_loaded do
         begin
-          const_set :ValueOffset, UnsafeInstance.object_field_offset(AtomicBoolean.get_declared_field("value"))
+          const_set :ValueOffset, Unsafe.object_field_offset(AtomicBoolean.get_declared_field("value"))
         rescue JavaException => ex
           raise JavaError.new(ex)
         end
@@ -110,7 +110,7 @@ module Java::Util::Concurrent::Atomic
     def compare_and_set(expect, update)
       e = expect ? 1 : 0
       u = update ? 1 : 0
-      return UnsafeInstance.compare_and_swap_int(self, ValueOffset, e, u)
+      return Unsafe.compare_and_swap_int(self, ValueOffset, e, u)
     end
     
     typesig { [::Java::Boolean, ::Java::Boolean] }
@@ -127,7 +127,7 @@ module Java::Util::Concurrent::Atomic
     def weak_compare_and_set(expect, update)
       e = expect ? 1 : 0
       u = update ? 1 : 0
-      return UnsafeInstance.compare_and_swap_int(self, ValueOffset, e, u)
+      return Unsafe.compare_and_swap_int(self, ValueOffset, e, u)
     end
     
     typesig { [::Java::Boolean] }
@@ -145,7 +145,7 @@ module Java::Util::Concurrent::Atomic
     # @since 1.6
     def lazy_set(new_value)
       v = new_value ? 1 : 0
-      UnsafeInstance.put_ordered_int(self, ValueOffset, v)
+      Unsafe.put_ordered_int(self, ValueOffset, v)
     end
     
     typesig { [::Java::Boolean] }

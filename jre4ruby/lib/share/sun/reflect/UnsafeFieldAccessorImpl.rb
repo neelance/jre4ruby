@@ -43,8 +43,8 @@ module Sun::Reflect
     include_class_members UnsafeFieldAccessorImplImports
     
     class_module.module_eval {
-      const_set_lazy(:UnsafeInstance) { Unsafe.get_unsafe }
-      const_attr_reader  :UnsafeInstance
+      const_set_lazy(:Unsafe) { Unsafe.get_unsafe }
+      const_attr_reader  :Unsafe
     }
     
     attr_accessor :field
@@ -72,7 +72,7 @@ module Sun::Reflect
       @is_final = false
       super()
       @field = field
-      @field_offset = UnsafeInstance.field_offset(field)
+      @field_offset = Unsafe.field_offset(field)
       @is_final = Modifier.is_final(field.get_modifiers)
     end
     

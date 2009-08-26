@@ -185,7 +185,7 @@ module Sun::Security::Util
           return h
         end
         
-        typesig { [self::Object] }
+        typesig { [Object] }
         def ==(obj)
           if ((self).equal?(obj))
             return true
@@ -502,7 +502,7 @@ module Sun::Security::Util
         alias_method :attr_expiration_time=, :expiration_time=
         undef_method :expiration_time=
         
-        typesig { [self::Object, self::Object, ::Java::Long] }
+        typesig { [Object, Object, ::Java::Long] }
         def initialize(key, value, expiration_time)
           @key = nil
           @value = nil
@@ -560,7 +560,7 @@ module Sun::Security::Util
         alias_method :attr_expiration_time=, :expiration_time=
         undef_method :expiration_time=
         
-        typesig { [self::Object, self::Object, ::Java::Long, self::ReferenceQueue] }
+        typesig { [Object, Object, ::Java::Long, self::ReferenceQueue] }
         def initialize(key, value, expiration_time, queue)
           @key = nil
           @expiration_time = 0

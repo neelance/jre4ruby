@@ -50,7 +50,7 @@ module Sun::Security::Krb5::Internal::Crypto
     include_class_members ETypeImports
     
     class_module.module_eval {
-      const_set_lazy(:DEBUG) { Krb5::DEBUG }
+      const_set_lazy(:DEBUG) { Krb5.attr_debug }
       const_attr_reader  :DEBUG
       
       typesig { [::Java::Int] }

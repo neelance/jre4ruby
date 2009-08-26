@@ -1013,12 +1013,12 @@ module Java::Util
           return @local_class_parent.size
         end
         
-        typesig { [self::Object] }
+        typesig { [Object] }
         def contains(o)
           return @local_class_parent.contains_value(o)
         end
         
-        typesig { [self::Object] }
+        typesig { [Object] }
         def remove(o)
           e = get_first_entry
           while !(e).nil?
@@ -1054,7 +1054,7 @@ module Java::Util
           return self.class::EntryIterator.new(get_first_entry)
         end
         
-        typesig { [self::Object] }
+        typesig { [Object] }
         def contains(o)
           if (!(o.is_a?(self.class::Map::Entry)))
             return false
@@ -1065,7 +1065,7 @@ module Java::Util
           return !(p).nil? && val_equals(p.get_value, value)
         end
         
-        typesig { [self::Object] }
+        typesig { [Object] }
         def remove(o)
           if (!(o.is_a?(self.class::Map::Entry)))
             return false
@@ -1163,7 +1163,7 @@ module Java::Util
           return @m.is_empty
         end
         
-        typesig { [self::Object] }
+        typesig { [Object] }
         def contains(o)
           return @m.contains_key(o)
         end
@@ -1220,7 +1220,7 @@ module Java::Util
           return (e).nil? ? nil : e.get_key
         end
         
-        typesig { [self::Object] }
+        typesig { [Object] }
         def remove(o)
           old_size = size
           @m.remove(o)
@@ -1567,7 +1567,7 @@ module Java::Util
           @hi_inclusive = hi_inclusive
         end
         
-        typesig { [self::Object] }
+        typesig { [Object] }
         # internal utilities
         def too_low(key)
           if (!@from_start)
@@ -1579,7 +1579,7 @@ module Java::Util
           return false
         end
         
-        typesig { [self::Object] }
+        typesig { [Object] }
         def too_high(key)
           if (!@to_end)
             c = @m.compare(key, @hi)
@@ -1590,17 +1590,17 @@ module Java::Util
           return false
         end
         
-        typesig { [self::Object] }
+        typesig { [Object] }
         def in_range(key)
           return !too_low(key) && !too_high(key)
         end
         
-        typesig { [self::Object] }
+        typesig { [Object] }
         def in_closed_range(key)
           return (@from_start || @m.compare(key, @lo) >= 0) && (@to_end || @m.compare(@hi, key) >= 0)
         end
         
-        typesig { [self::Object, ::Java::Boolean] }
+        typesig { [Object, ::Java::Boolean] }
         def in_range(key, inclusive)
           return inclusive ? in_range(key) : in_closed_range(key)
         end
@@ -1723,7 +1723,7 @@ module Java::Util
           return (@from_start && @to_end) ? @m.size : entry_set.size
         end
         
-        typesig { [self::Object] }
+        typesig { [Object] }
         def contains_key(key)
           return in_range(key) && @m.contains_key(key)
         end
@@ -1736,12 +1736,12 @@ module Java::Util
           return @m.put(key, value)
         end
         
-        typesig { [self::Object] }
+        typesig { [Object] }
         def get(key)
           return !in_range(key) ? nil : @m.get(key)
         end
         
-        typesig { [self::Object] }
+        typesig { [Object] }
         def remove(key)
           return !in_range(key) ? nil : @m.remove(key)
         end
@@ -1917,7 +1917,7 @@ module Java::Util
               return (n).nil? || too_high(n.attr_key)
             end
             
-            typesig { [self::Object] }
+            typesig { [Object] }
             def contains(o)
               if (!(o.is_a?(self.class::Map::Entry)))
                 return false
@@ -1931,7 +1931,7 @@ module Java::Util
               return !(node).nil? && val_equals(node.get_value, entry.get_value)
             end
             
-            typesig { [self::Object] }
+            typesig { [Object] }
             def remove(o)
               if (!(o.is_a?(self.class::Map::Entry)))
                 return false
@@ -2610,7 +2610,7 @@ module Java::Util
           return old_value
         end
         
-        typesig { [self::Object] }
+        typesig { [Object] }
         def ==(o)
           if (!(o.is_a?(self.class::Map::Entry)))
             return false

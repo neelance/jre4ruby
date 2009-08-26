@@ -94,7 +94,7 @@ module Sun::Security::Krb5::Internal::Ktab
       @key_version = 0
       @key_type = 0
       @keyblock = nil
-      @debug = Krb5::DEBUG
+      @debug = Krb5.attr_debug
       @service = new_service
       @realm = new_realm
       @timestamp = new_time

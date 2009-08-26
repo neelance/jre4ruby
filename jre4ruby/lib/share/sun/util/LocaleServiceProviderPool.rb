@@ -175,12 +175,12 @@ module Sun::Util
         class_module.module_eval {
           when_class_loaded do
             provider_classes = Array.typed(self.class::Class).new([Java::Text::Spi::BreakIteratorProvider, Java::Text::Spi::CollatorProvider, Java::Text::Spi::DateFormatProvider, Java::Text::Spi::DateFormatSymbolsProvider, Java::Text::Spi::DecimalFormatSymbolsProvider, Java::Text::Spi::NumberFormatProvider, Java::Util::Spi::CurrencyNameProvider, Java::Util::Spi::LocaleNameProvider, Java::Util::Spi::TimeZoneNameProvider])
-            all = self.class::HashSet.new(Arrays.as_list(LocaleData.get_available_locales))
+            all = self::HashSet.new(Arrays.as_list(LocaleData.get_available_locales))
             provider_classes.each do |providerClass|
               pool = LocaleServiceProviderPool.get_pool(provider_class)
               all.add_all(pool.get_provider_locales)
             end
-            const_set :AllAvailableLocales, all.to_array(Array.typed(self.class::Locale).new(0) { nil })
+            const_set :AllAvailableLocales, all.to_array(Array.typed(self::Locale).new(0) { nil })
           end
         }
         

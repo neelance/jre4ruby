@@ -89,7 +89,7 @@ module Java::Lang
           when_class_loaded do
             i = 0
             while i < self.class::Cache.attr_length
-              self.class::Cache[i] = self.class::Byte.new((i - 128))
+              self.class::Cache[i] = self::Byte.new((i - 128))
               i += 1
             end
           end

@@ -167,7 +167,7 @@ module Sun::Misc
           typesig { [] }
           # Create a new daemon thread in the root thread group
           def create
-            pa = Class.new(self.class::PrivilegedAction.class == Class ? self.class::PrivilegedAction : Object) do
+            pa = Class.new(self::PrivilegedAction.class == Class ? self::PrivilegedAction : Object) do
               extend LocalClass
               include_class_members Daemon
               include self::PrivilegedAction if self::PrivilegedAction.class == Module
@@ -323,7 +323,7 @@ module Sun::Misc
           end
         end
         
-        typesig { [self::Object] }
+        typesig { [Object] }
         def compare_to(o)
           r = o
           d = @latency - r.attr_latency

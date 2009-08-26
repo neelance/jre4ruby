@@ -169,7 +169,7 @@ module Java::Lang
           return @str
         end
         
-        typesig { [self::Object] }
+        typesig { [Object] }
         def ==(o)
           return o.is_a?(self.class::ExternalData) && array_equals(get_bytes, (o).get_bytes)
         end
@@ -195,14 +195,14 @@ module Java::Lang
         end
         
         class_module.module_eval {
-          typesig { [self::Object] }
+          typesig { [Object] }
           def value_of_query_only(str)
             return value_of_query_only(str)
           end
           
           typesig { [String] }
           def value_of_query_only(str)
-            return self.class::Variable.new(str, str.get_bytes)
+            return self::Variable.new(str, str.get_bytes)
           end
           
           typesig { [String] }
@@ -213,7 +213,7 @@ module Java::Lang
           
           typesig { [Array.typed(::Java::Byte)] }
           def value_of(bytes)
-            return self.class::Variable.new(String.new(bytes), bytes)
+            return self::Variable.new(String.new(bytes), bytes)
           end
         }
         
@@ -222,7 +222,7 @@ module Java::Lang
           return array_compare(get_bytes, variable.get_bytes)
         end
         
-        typesig { [self::Object] }
+        typesig { [Object] }
         def ==(o)
           return o.is_a?(self.class::Variable) && super(o)
         end
@@ -243,14 +243,14 @@ module Java::Lang
         end
         
         class_module.module_eval {
-          typesig { [self::Object] }
+          typesig { [Object] }
           def value_of_query_only(str)
             return value_of_query_only(str)
           end
           
           typesig { [String] }
           def value_of_query_only(str)
-            return self.class::Value.new(str, str.get_bytes)
+            return self::Value.new(str, str.get_bytes)
           end
           
           typesig { [String] }
@@ -261,7 +261,7 @@ module Java::Lang
           
           typesig { [Array.typed(::Java::Byte)] }
           def value_of(bytes)
-            return self.class::Value.new(String.new(bytes), bytes)
+            return self::Value.new(String.new(bytes), bytes)
           end
         }
         
@@ -270,7 +270,7 @@ module Java::Lang
           return array_compare(get_bytes, value.get_bytes)
         end
         
-        typesig { [self::Object] }
+        typesig { [Object] }
         def ==(o)
           return o.is_a?(self.class::Value) && super(o)
         end
@@ -318,17 +318,17 @@ module Java::Lang
           @m.clear
         end
         
-        typesig { [self::Object] }
+        typesig { [Object] }
         def contains_key(key)
           return @m.contains_key(Variable.value_of_query_only(key))
         end
         
-        typesig { [self::Object] }
+        typesig { [Object] }
         def contains_value(value)
           return @m.contains_value(Value.value_of_query_only(value))
         end
         
-        typesig { [self::Object] }
+        typesig { [Object] }
         def get(key)
           return to_s(@m.get(Variable.value_of_query_only(key)))
         end
@@ -338,7 +338,7 @@ module Java::Lang
           return to_s(@m.put(Variable.value_of(key), Value.value_of(value)))
         end
         
-        typesig { [self::Object] }
+        typesig { [Object] }
         def remove(key)
           return to_s(@m.remove(Variable.value_of_query_only(key)))
         end
@@ -435,7 +435,7 @@ module Java::Lang
           return RJava.cast_to_string(get_key) + "=" + RJava.cast_to_string(get_value)
         end
         
-        typesig { [self::Object] }
+        typesig { [Object] }
         def ==(o)
           return o.is_a?(self.class::StringEntry) && (@e == (o).attr_e)
         end
@@ -521,12 +521,12 @@ module Java::Lang
         end
         
         class_module.module_eval {
-          typesig { [self::Object] }
+          typesig { [Object] }
           def vv_entry(o)
-            if (o.is_a?(self.class::StringEntry))
+            if (o.is_a?(self::StringEntry))
               return (o).attr_e
             end
-            return Class.new(self.class::Map::Entry.class == Class ? self.class::Map::Entry : Object) do
+            return Class.new(self::Map::Entry.class == Class ? self::Map::Entry : Object) do
               extend LocalClass
               include_class_members StringEntrySet
               include self::Map::Entry if self::Map::Entry.class == Module
@@ -557,17 +557,17 @@ module Java::Lang
           end
         }
         
-        typesig { [self::Object] }
+        typesig { [Object] }
         def contains(o)
           return @s.contains(vv_entry(o))
         end
         
-        typesig { [self::Object] }
+        typesig { [Object] }
         def remove(o)
           return @s.remove(vv_entry(o))
         end
         
-        typesig { [self::Object] }
+        typesig { [Object] }
         def ==(o)
           return o.is_a?(self.class::StringEntrySet) && (@s == (o).attr_s)
         end
@@ -652,17 +652,17 @@ module Java::Lang
           end.new_local(self)
         end
         
-        typesig { [self::Object] }
+        typesig { [Object] }
         def contains(o)
           return @c.contains(Value.value_of_query_only(o))
         end
         
-        typesig { [self::Object] }
+        typesig { [Object] }
         def remove(o)
           return @c.remove(Value.value_of_query_only(o))
         end
         
-        typesig { [self::Object] }
+        typesig { [Object] }
         def ==(o)
           return o.is_a?(self.class::StringValues) && (@c == (o).attr_c)
         end
@@ -747,12 +747,12 @@ module Java::Lang
           end.new_local(self)
         end
         
-        typesig { [self::Object] }
+        typesig { [Object] }
         def contains(o)
           return @s.contains(Variable.value_of_query_only(o))
         end
         
-        typesig { [self::Object] }
+        typesig { [Object] }
         def remove(o)
           return @s.remove(Variable.value_of_query_only(o))
         end

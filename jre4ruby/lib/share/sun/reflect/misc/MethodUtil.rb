@@ -267,7 +267,7 @@ module Sun::Reflect::Misc
           @arg_classes = m.get_parameter_types
         end
         
-        typesig { [self::Object] }
+        typesig { [Object] }
         def ==(o2)
           if ((self).equal?(o2))
             return true

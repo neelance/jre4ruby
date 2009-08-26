@@ -782,7 +782,7 @@ module Java::Text
           const_attr_reader  :INSTANCE
         }
         
-        typesig { [self::DateFormatSymbolsProvider, self::Locale, String, self::Object] }
+        typesig { [self::DateFormatSymbolsProvider, self::Locale, String, Object] }
         def get_object(date_format_symbols_provider, locale, key, *params)
           raise AssertError if not ((params.attr_length).equal?(0))
           return date_format_symbols_provider.get_instance(locale)

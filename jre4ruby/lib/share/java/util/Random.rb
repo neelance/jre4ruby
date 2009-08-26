@@ -566,12 +566,12 @@ module Java::Util
     
     class_module.module_eval {
       # Support for resetting seed while deserializing
-      const_set_lazy(:UnsafeInstance) { Unsafe.get_unsafe }
-      const_attr_reader  :UnsafeInstance
+      const_set_lazy(:Unsafe) { Unsafe.get_unsafe }
+      const_attr_reader  :Unsafe
       
       when_class_loaded do
         begin
-          const_set :SeedOffset, UnsafeInstance.object_field_offset(Random.get_declared_field("seed"))
+          const_set :SeedOffset, Unsafe.object_field_offset(Random.get_declared_field("seed"))
         rescue JavaException => ex
           raise JavaError.new(ex)
         end
@@ -580,7 +580,7 @@ module Java::Util
     
     typesig { [::Java::Long] }
     def reset_seed(seed_val)
-      UnsafeInstance.put_object_volatile(self, SeedOffset, AtomicLong.new(seed_val))
+      Unsafe.put_object_volatile(self, SeedOffset, AtomicLong.new(seed_val))
     end
     
     private

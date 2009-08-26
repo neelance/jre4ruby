@@ -1992,8 +1992,8 @@ module Java::Io
         
         class_module.module_eval {
           # handle for performing unsafe operations
-          const_set_lazy(:UnsafeInstance) { Unsafe.get_unsafe }
-          const_attr_reader  :UnsafeInstance
+          const_set_lazy(:Unsafe) { Unsafe.get_unsafe }
+          const_attr_reader  :Unsafe
         }
         
         # fields to operate on
@@ -2061,7 +2061,7 @@ module Java::Io
           while i < nfields
             f = fields[i]
             rf = f.get_field
-            @keys[i] = (!(rf).nil?) ? self.class::UnsafeInstance.object_field_offset(rf) : Unsafe::INVALID_FIELD_OFFSET
+            @keys[i] = (!(rf).nil?) ? self.class::Unsafe.object_field_offset(rf) : Unsafe::INVALID_FIELD_OFFSET
             @offsets[i] = f.get_offset
             @type_codes[i] = f.get_type_code
             if (!f.is_primitive)
@@ -2099,21 +2099,21 @@ module Java::Io
             off = @offsets[i]
             case (@type_codes[i])
             when Character.new(?Z.ord)
-              Bits.put_boolean(buf, off, self.class::UnsafeInstance.get_boolean(obj, key))
+              Bits.put_boolean(buf, off, self.class::Unsafe.get_boolean(obj, key))
             when Character.new(?B.ord)
-              buf[off] = self.class::UnsafeInstance.get_byte(obj, key)
+              buf[off] = self.class::Unsafe.get_byte(obj, key)
             when Character.new(?C.ord)
-              Bits.put_char(buf, off, self.class::UnsafeInstance.get_char(obj, key))
+              Bits.put_char(buf, off, self.class::Unsafe.get_char(obj, key))
             when Character.new(?S.ord)
-              Bits.put_short(buf, off, self.class::UnsafeInstance.get_short(obj, key))
+              Bits.put_short(buf, off, self.class::Unsafe.get_short(obj, key))
             when Character.new(?I.ord)
-              Bits.put_int(buf, off, self.class::UnsafeInstance.get_int(obj, key))
+              Bits.put_int(buf, off, self.class::Unsafe.get_int(obj, key))
             when Character.new(?F.ord)
-              Bits.put_float(buf, off, self.class::UnsafeInstance.get_float(obj, key))
+              Bits.put_float(buf, off, self.class::Unsafe.get_float(obj, key))
             when Character.new(?J.ord)
-              Bits.put_long(buf, off, self.class::UnsafeInstance.get_long(obj, key))
+              Bits.put_long(buf, off, self.class::Unsafe.get_long(obj, key))
             when Character.new(?D.ord)
-              Bits.put_double(buf, off, self.class::UnsafeInstance.get_double(obj, key))
+              Bits.put_double(buf, off, self.class::Unsafe.get_double(obj, key))
             else
               raise self.class::InternalError.new
             end
@@ -2139,21 +2139,21 @@ module Java::Io
             off = @offsets[i]
             case (@type_codes[i])
             when Character.new(?Z.ord)
-              self.class::UnsafeInstance.put_boolean(obj, key, Bits.get_boolean(buf, off))
+              self.class::Unsafe.put_boolean(obj, key, Bits.get_boolean(buf, off))
             when Character.new(?B.ord)
-              self.class::UnsafeInstance.put_byte(obj, key, buf[off])
+              self.class::Unsafe.put_byte(obj, key, buf[off])
             when Character.new(?C.ord)
-              self.class::UnsafeInstance.put_char(obj, key, Bits.get_char(buf, off))
+              self.class::Unsafe.put_char(obj, key, Bits.get_char(buf, off))
             when Character.new(?S.ord)
-              self.class::UnsafeInstance.put_short(obj, key, Bits.get_short(buf, off))
+              self.class::Unsafe.put_short(obj, key, Bits.get_short(buf, off))
             when Character.new(?I.ord)
-              self.class::UnsafeInstance.put_int(obj, key, Bits.get_int(buf, off))
+              self.class::Unsafe.put_int(obj, key, Bits.get_int(buf, off))
             when Character.new(?F.ord)
-              self.class::UnsafeInstance.put_float(obj, key, Bits.get_float(buf, off))
+              self.class::Unsafe.put_float(obj, key, Bits.get_float(buf, off))
             when Character.new(?J.ord)
-              self.class::UnsafeInstance.put_long(obj, key, Bits.get_long(buf, off))
+              self.class::Unsafe.put_long(obj, key, Bits.get_long(buf, off))
             when Character.new(?D.ord)
-              self.class::UnsafeInstance.put_double(obj, key, Bits.get_double(buf, off))
+              self.class::Unsafe.put_double(obj, key, Bits.get_double(buf, off))
             else
               raise self.class::InternalError.new
             end
@@ -2176,7 +2176,7 @@ module Java::Io
           while i < @fields.attr_length
             case (@type_codes[i])
             when Character.new(?L.ord), Character.new(?[.ord)
-              vals[@offsets[i]] = self.class::UnsafeInstance.get_object(obj, @keys[i])
+              vals[@offsets[i]] = self.class::Unsafe.get_object(obj, @keys[i])
             else
               raise self.class::InternalError.new
             end
@@ -2208,7 +2208,7 @@ module Java::Io
                 f = @fields[i].get_field
                 raise self.class::ClassCastException.new("cannot assign instance of " + RJava.cast_to_string(val.get_class.get_name) + " to field " + RJava.cast_to_string(f.get_declaring_class.get_name) + "." + RJava.cast_to_string(f.get_name) + " of type " + RJava.cast_to_string(f.get_type.get_name) + " in instance of " + RJava.cast_to_string(obj.get_class.get_name))
               end
-              self.class::UnsafeInstance.put_object(obj, key, val)
+              self.class::Unsafe.put_object(obj, key, val)
             else
               raise self.class::InternalError.new
             end

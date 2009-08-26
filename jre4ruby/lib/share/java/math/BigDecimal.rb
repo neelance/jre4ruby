@@ -2973,7 +2973,7 @@ module Java::Math
           typesig { [self::BigDecimal] }
           def check(num)
             if (((num.attr_int_val <=> self.class::LONGMIN) < 0) || ((num.attr_int_val <=> self.class::LONGMAX) > 0))
-              raise Java::Lang::self.class::ArithmeticException.new("Overflow")
+              raise Java::Lang::self::ArithmeticException.new("Overflow")
             end
           end
         }

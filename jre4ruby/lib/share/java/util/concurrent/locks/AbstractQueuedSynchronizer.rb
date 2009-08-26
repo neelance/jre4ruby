@@ -623,7 +623,7 @@ module Java::Util::Concurrent::Locks
     # value was not equal to the expected value.
     def compare_and_set_state(expect, update)
       # See below for intrinsics setup to support this
-      return UnsafeInstance.compare_and_swap_int(self, StateOffset, expect, update)
+      return Unsafe.compare_and_swap_int(self, StateOffset, expect, update)
     end
     
     class_module.module_eval {
@@ -2341,16 +2341,16 @@ module Java::Util::Concurrent::Locks
       # natively implement using hotspot intrinsics API. And while we
       # are at it, we do the same for other CASable fields (which could
       # otherwise be done with atomic field updaters).
-      const_set_lazy(:UnsafeInstance) { Unsafe.get_unsafe }
-      const_attr_reader  :UnsafeInstance
+      const_set_lazy(:Unsafe) { Unsafe.get_unsafe }
+      const_attr_reader  :Unsafe
       
       when_class_loaded do
         begin
-          const_set :StateOffset, UnsafeInstance.object_field_offset(AbstractQueuedSynchronizer.get_declared_field("state"))
-          const_set :HeadOffset, UnsafeInstance.object_field_offset(AbstractQueuedSynchronizer.get_declared_field("head"))
-          const_set :TailOffset, UnsafeInstance.object_field_offset(AbstractQueuedSynchronizer.get_declared_field("tail"))
-          const_set :WaitStatusOffset, UnsafeInstance.object_field_offset(Node.get_declared_field("waitStatus"))
-          const_set :NextOffset, UnsafeInstance.object_field_offset(Node.get_declared_field("next"))
+          const_set :StateOffset, Unsafe.object_field_offset(AbstractQueuedSynchronizer.get_declared_field("state"))
+          const_set :HeadOffset, Unsafe.object_field_offset(AbstractQueuedSynchronizer.get_declared_field("head"))
+          const_set :TailOffset, Unsafe.object_field_offset(AbstractQueuedSynchronizer.get_declared_field("tail"))
+          const_set :WaitStatusOffset, Unsafe.object_field_offset(Node.get_declared_field("waitStatus"))
+          const_set :NextOffset, Unsafe.object_field_offset(Node.get_declared_field("next"))
         rescue JavaException => ex
           raise JavaError.new(ex)
         end
@@ -2360,26 +2360,26 @@ module Java::Util::Concurrent::Locks
     typesig { [Node] }
     # CAS head field. Used only by enq.
     def compare_and_set_head(update)
-      return UnsafeInstance.compare_and_swap_object(self, HeadOffset, nil, update)
+      return Unsafe.compare_and_swap_object(self, HeadOffset, nil, update)
     end
     
     typesig { [Node, Node] }
     # CAS tail field. Used only by enq.
     def compare_and_set_tail(expect, update)
-      return UnsafeInstance.compare_and_swap_object(self, TailOffset, expect, update)
+      return Unsafe.compare_and_swap_object(self, TailOffset, expect, update)
     end
     
     class_module.module_eval {
       typesig { [Node, ::Java::Int, ::Java::Int] }
       # CAS waitStatus field of a node.
       def compare_and_set_wait_status(node, expect, update)
-        return UnsafeInstance.compare_and_swap_int(node, WaitStatusOffset, expect, update)
+        return Unsafe.compare_and_swap_int(node, WaitStatusOffset, expect, update)
       end
       
       typesig { [Node, Node, Node] }
       # CAS next field of a node.
       def compare_and_set_next(node, expect, update)
-        return UnsafeInstance.compare_and_swap_object(node, NextOffset, expect, update)
+        return Unsafe.compare_and_swap_object(node, NextOffset, expect, update)
       end
     }
     

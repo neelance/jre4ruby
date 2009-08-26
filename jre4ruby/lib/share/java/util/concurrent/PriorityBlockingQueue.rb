@@ -595,7 +595,7 @@ module Java::Util::Concurrent
         alias_method :attr_last_ret=, :last_ret=
         undef_method :last_ret=
         
-        typesig { [Array.typed(self::Object)] }
+        typesig { [Array.typed(Object)] }
         # index of last element, or -1 if no such
         def initialize(array)
           @array = nil

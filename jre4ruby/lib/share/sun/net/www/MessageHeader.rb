@@ -238,7 +238,7 @@ module Sun::Net::Www
         alias_method :attr_lock=, :lock=
         undef_method :lock=
         
-        typesig { [String, self::Object] }
+        typesig { [String, Object] }
         def initialize(k, lock)
           @index = 0
           @next = -1

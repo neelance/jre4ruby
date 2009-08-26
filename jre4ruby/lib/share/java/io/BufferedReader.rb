@@ -243,7 +243,7 @@ module Java::Io
     # end of the stream has been reached
     # @exception  IOException  If an I/O error occurs
     def read
-      synchronized((self.attr_lock)) do
+      synchronized((PLATFORM_LOCK)) do
         ensure_open
         loop do
           if (@next_char >= @n_chars)
@@ -345,7 +345,7 @@ module Java::Io
     # 
     # @exception  IOException  If an I/O error occurs
     def read(cbuf, off, len)
-      synchronized((self.attr_lock)) do
+      synchronized((PLATFORM_LOCK)) do
         ensure_open
         if ((off < 0) || (off > cbuf.attr_length) || (len < 0) || ((off + len) > cbuf.attr_length) || ((off + len) < 0))
           raise IndexOutOfBoundsException.new
@@ -386,7 +386,7 @@ module Java::Io
     def read_line(ignore_lf)
       s = nil
       start_char = 0
-      synchronized((self.attr_lock)) do
+      synchronized((PLATFORM_LOCK)) do
         ensure_open
         omit_lf = ignore_lf || @skip_lf
         loop do
@@ -470,7 +470,7 @@ module Java::Io
       if (n < 0)
         raise IllegalArgumentException.new("skip value is negative")
       end
-      synchronized((self.attr_lock)) do
+      synchronized((PLATFORM_LOCK)) do
         ensure_open
         r = n
         while (r > 0)
@@ -508,7 +508,7 @@ module Java::Io
     # 
     # @exception  IOException  If an I/O error occurs
     def ready
-      synchronized((self.attr_lock)) do
+      synchronized((PLATFORM_LOCK)) do
         ensure_open
         # If newline needs to be skipped and the next char to be read
         # is a newline character, then just skip it right away.
@@ -554,7 +554,7 @@ module Java::Io
       if (read_ahead_limit < 0)
         raise IllegalArgumentException.new("Read-ahead limit < 0")
       end
-      synchronized((self.attr_lock)) do
+      synchronized((PLATFORM_LOCK)) do
         ensure_open
         @read_ahead_limit = read_ahead_limit
         @marked_char = @next_char
@@ -568,7 +568,7 @@ module Java::Io
     # @exception  IOException  If the stream has never been marked,
     # or if the mark has been invalidated
     def reset
-      synchronized((self.attr_lock)) do
+      synchronized((PLATFORM_LOCK)) do
         ensure_open
         if (@marked_char < 0)
           raise IOException.new(((@marked_char).equal?(INVALIDATED)) ? "Mark invalid" : "Stream not marked")
@@ -580,7 +580,7 @@ module Java::Io
     
     typesig { [] }
     def close
-      synchronized((self.attr_lock)) do
+      synchronized((PLATFORM_LOCK)) do
         if ((@in).nil?)
           return
         end

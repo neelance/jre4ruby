@@ -38,8 +38,8 @@ module Sun::Reflect
     include ClassFileConstants
     
     class_module.module_eval {
-      const_set_lazy(:UnsafeInstance) { Unsafe.get_unsafe }
-      const_attr_reader  :UnsafeInstance
+      const_set_lazy(:Unsafe) { Unsafe.get_unsafe }
+      const_attr_reader  :Unsafe
       
       # Constants because there's no way to say "short integer constant",
       # i.e., "1S"

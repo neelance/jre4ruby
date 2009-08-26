@@ -104,7 +104,7 @@ module Sun::Security::Provider::Certpath
       end
     }
     
-    typesig { [X509CRLSelector, ::Java::Boolean, PublicKey, String, JavaList, Array.typed(::Java::Boolean), TrustAnchor] }
+    typesig { [X509CRLSelector, ::Java::Boolean, PublicKey, String, SwtList, Array.typed(::Java::Boolean), TrustAnchor] }
     # Return the X509CRLs matching this selector. The selector must be
     # an X509CRLSelector with certificateChecking set.
     # 
@@ -149,7 +149,7 @@ module Sun::Security::Provider::Certpath
       end
     end
     
-    typesig { [X509CRLSelector, X509CertImpl, DistributionPoint, Array.typed(::Java::Boolean), ::Java::Boolean, PublicKey, String, JavaList, TrustAnchor] }
+    typesig { [X509CRLSelector, X509CertImpl, DistributionPoint, Array.typed(::Java::Boolean), ::Java::Boolean, PublicKey, String, SwtList, TrustAnchor] }
     # Download CRLs from the given distribution point, verify and return them.
     # See the top of the class for current limitations.
     def get_crls(selector, cert_impl, point, reasons_mask, sign_flag, prev_key, provider, cert_stores, anchor)
@@ -238,7 +238,7 @@ module Sun::Security::Provider::Certpath
       return nil
     end
     
-    typesig { [X500Name, X500Principal, JavaList] }
+    typesig { [X500Name, X500Principal, SwtList] }
     # Fetch CRLs from certStores.
     def get_crls(name, cert_issuer, cert_stores)
       if (!(Debug).nil?)
@@ -264,7 +264,7 @@ module Sun::Security::Provider::Certpath
       return crls
     end
     
-    typesig { [X509CertImpl, DistributionPoint, X509CRL, Array.typed(::Java::Boolean), ::Java::Boolean, PublicKey, String, TrustAnchor, JavaList] }
+    typesig { [X509CertImpl, DistributionPoint, X509CRL, Array.typed(::Java::Boolean), ::Java::Boolean, PublicKey, String, TrustAnchor, SwtList] }
     # Verifies a CRL for the given certificate's Distribution Point to
     # ensure it is appropriate for checking the revocation status.
     # 

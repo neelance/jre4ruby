@@ -291,7 +291,7 @@ module Java::Util::Concurrent
         alias_method :attr_waiter=, :waiter=
         undef_method :waiter=
         
-        typesig { [self::Object] }
+        typesig { [Object] }
         # Creates node with given item and empty hole.
         # @param item the item
         def initialize(item)

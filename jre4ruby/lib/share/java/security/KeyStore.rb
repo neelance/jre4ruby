@@ -1403,12 +1403,12 @@ module Java::Security
           # initialized
           def new_instance(key_store, protection_parameter)
             if (((key_store).nil?) || ((protection_parameter).nil?))
-              raise self.class::NullPointerException.new
+              raise self::NullPointerException.new
             end
             if ((key_store.attr_initialized).equal?(false))
-              raise self.class::IllegalArgumentException.new("KeyStore not initialized")
+              raise self::IllegalArgumentException.new("KeyStore not initialized")
             end
-            return Class.new(self.class::Builder.class == Class ? self.class::Builder : Object) do
+            return Class.new(self::Builder.class == Class ? self::Builder : Object) do
               extend LocalClass
               include_class_members Builder
               include self::Builder if self::Builder.class == Module
@@ -1491,15 +1491,15 @@ module Java::Security
           # if file does not exist or does not refer to a normal file
           def new_instance(type, provider, file, protection)
             if (((type).nil?) || ((file).nil?) || ((protection).nil?))
-              raise self.class::NullPointerException.new
+              raise self::NullPointerException.new
             end
-            if (((protection.is_a?(self.class::PasswordProtection)).equal?(false)) && ((protection.is_a?(self.class::CallbackHandlerProtection)).equal?(false)))
-              raise self.class::IllegalArgumentException.new("Protection must be PasswordProtection or " + "CallbackHandlerProtection")
+            if (((protection.is_a?(self::PasswordProtection)).equal?(false)) && ((protection.is_a?(self::CallbackHandlerProtection)).equal?(false)))
+              raise self::IllegalArgumentException.new("Protection must be PasswordProtection or " + "CallbackHandlerProtection")
             end
             if ((file.is_file).equal?(false))
-              raise self.class::IllegalArgumentException.new("File does not exist or it does not refer " + "to a normal file: " + RJava.cast_to_string(file))
+              raise self::IllegalArgumentException.new("File does not exist or it does not refer " + "to a normal file: " + RJava.cast_to_string(file))
             end
-            return self.class::FileBuilder.new(type, provider, file, protection, AccessController.get_context)
+            return self::FileBuilder.new(type, provider, file, protection, AccessController.get_context)
           end
           
           const_set_lazy(:FileBuilder) { Class.new(self::Builder) do
@@ -1704,10 +1704,10 @@ module Java::Security
           # @throws NullPointerException if type or protection is null
           def new_instance(type, provider, protection)
             if (((type).nil?) || ((protection).nil?))
-              raise self.class::NullPointerException.new
+              raise self::NullPointerException.new
             end
             context = AccessController.get_context
-            return Class.new(self.class::Builder.class == Class ? self.class::Builder : Object) do
+            return Class.new(self::Builder.class == Class ? self::Builder : Object) do
               extend LocalClass
               include_class_members Builder
               include self::Builder if self::Builder.class == Module

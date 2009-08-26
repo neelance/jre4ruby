@@ -62,8 +62,8 @@ module Java::Util::Concurrent::Atomic
       const_attr_reader  :SerialVersionUID
       
       # setup to use Unsafe.compareAndSwapLong for updates
-      const_set_lazy(:UnsafeInstance) { Unsafe.get_unsafe }
-      const_attr_reader  :UnsafeInstance
+      const_set_lazy(:Unsafe) { Unsafe.get_unsafe }
+      const_attr_reader  :Unsafe
       
       # Records whether the underlying JVM supports lockless
       # compareAndSwap for longs. While the Unsafe.compareAndSwapLong
@@ -82,7 +82,7 @@ module Java::Util::Concurrent::Atomic
       
       when_class_loaded do
         begin
-          const_set :ValueOffset, UnsafeInstance.object_field_offset(AtomicLong.get_declared_field("value"))
+          const_set :ValueOffset, Unsafe.object_field_offset(AtomicLong.get_declared_field("value"))
         rescue JavaException => ex
           raise JavaError.new(ex)
         end
@@ -134,7 +134,7 @@ module Java::Util::Concurrent::Atomic
     # @param newValue the new value
     # @since 1.6
     def lazy_set(new_value)
-      UnsafeInstance.put_ordered_long(self, ValueOffset, new_value)
+      Unsafe.put_ordered_long(self, ValueOffset, new_value)
     end
     
     typesig { [::Java::Long] }
@@ -160,7 +160,7 @@ module Java::Util::Concurrent::Atomic
     # @return true if successful. False return indicates that
     # the actual value was not equal to the expected value.
     def compare_and_set(expect, update)
-      return UnsafeInstance.compare_and_swap_long(self, ValueOffset, expect, update)
+      return Unsafe.compare_and_swap_long(self, ValueOffset, expect, update)
     end
     
     typesig { [::Java::Long, ::Java::Long] }
@@ -175,7 +175,7 @@ module Java::Util::Concurrent::Atomic
     # @param update the new value
     # @return true if successful.
     def weak_compare_and_set(expect, update)
-      return UnsafeInstance.compare_and_swap_long(self, ValueOffset, expect, update)
+      return Unsafe.compare_and_swap_long(self, ValueOffset, expect, update)
     end
     
     typesig { [] }

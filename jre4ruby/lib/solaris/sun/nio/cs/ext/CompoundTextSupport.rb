@@ -99,7 +99,7 @@ module Sun::Nio::Cs::Ext
           end
         end
         
-        typesig { [self::Object] }
+        typesig { [Object] }
         def ==(obj)
           if ((self).equal?(obj))
             return true

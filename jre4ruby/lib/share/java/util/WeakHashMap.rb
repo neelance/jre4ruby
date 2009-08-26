@@ -728,7 +728,7 @@ module Java::Util
         alias_method :attr_next=, :next=
         undef_method :next=
         
-        typesig { [self::Object, Object, self::ReferenceQueue, ::Java::Int, self::Entry] }
+        typesig { [Object, Object, self::ReferenceQueue, ::Java::Int, self::Entry] }
         # Creates new entry.
         def initialize(key, value, queue, hash, next_)
           @value = nil
@@ -757,7 +757,7 @@ module Java::Util
           return old_value
         end
         
-        typesig { [self::Object] }
+        typesig { [Object] }
         def ==(o)
           if (!(o.is_a?(self.class::Map::Entry)))
             return false
@@ -998,12 +998,12 @@ module Java::Util
           return @local_class_parent.size
         end
         
-        typesig { [self::Object] }
+        typesig { [Object] }
         def contains(o)
           return contains_key(o)
         end
         
-        typesig { [self::Object] }
+        typesig { [Object] }
         def remove(o)
           if (contains_key(o))
             @local_class_parent.remove(o)
@@ -1060,7 +1060,7 @@ module Java::Util
           return @local_class_parent.size
         end
         
-        typesig { [self::Object] }
+        typesig { [Object] }
         def contains(o)
           return contains_value(o)
         end
@@ -1108,7 +1108,7 @@ module Java::Util
           return self.class::EntryIterator.new
         end
         
-        typesig { [self::Object] }
+        typesig { [Object] }
         def contains(o)
           if (!(o.is_a?(self.class::Map::Entry)))
             return false
@@ -1118,7 +1118,7 @@ module Java::Util
           return !(candidate).nil? && (candidate == e)
         end
         
-        typesig { [self::Object] }
+        typesig { [Object] }
         def remove(o)
           return remove_mapping(o)
         end

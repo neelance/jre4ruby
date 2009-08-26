@@ -1249,7 +1249,7 @@ module Java::Io
           raise NotImplementedError
         end
         
-        typesig { [String, self::Object] }
+        typesig { [String, Object] }
         # Get the value of the named Object field from the persistent field.
         # 
         # @param  name the name of the field
@@ -2029,7 +2029,7 @@ module Java::Io
           super()
           @desc = desc
           @prim_vals = Array.typed(::Java::Byte).new(desc.get_prim_data_size) { 0 }
-          @obj_vals = Array.typed(self.class::Object).new(desc.get_num_obj_fields) { nil }
+          @obj_vals = Array.typed(Object).new(desc.get_num_obj_fields) { nil }
           @obj_handles = Array.typed(::Java::Int).new(@obj_vals.attr_length) { 0 }
         end
         
@@ -2091,7 +2091,7 @@ module Java::Io
           return (off >= 0) ? Bits.get_double(@prim_vals, off) : val
         end
         
-        typesig { [String, self::Object] }
+        typesig { [String, Object] }
         def get(name, val)
           off = get_field_offset(name, Object)
           if (off >= 0)
@@ -3379,11 +3379,11 @@ module Java::Io
           @low_dep = -1
           @size = 0
           @status = Array.typed(::Java::Byte).new(initial_capacity) { 0 }
-          @entries = Array.typed(self.class::Object).new(initial_capacity) { nil }
+          @entries = Array.typed(Object).new(initial_capacity) { nil }
           @deps = Array.typed(self.class::HandleList).new(initial_capacity) { nil }
         end
         
-        typesig { [self::Object] }
+        typesig { [Object] }
         # Assigns next available handle to given object, and returns assigned
         # handle.  Once object has been completely deserialized (and all
         # dependencies on other objects identified), the handle should be
@@ -3494,7 +3494,7 @@ module Java::Io
           end
         end
         
-        typesig { [::Java::Int, self::Object] }
+        typesig { [::Java::Int, Object] }
         # Assigns a new object to the given handle.  The object previously
         # associated with the handle is forgotten.  This method has no effect
         # if the given handle already has an exception associated with it.
@@ -3546,7 +3546,7 @@ module Java::Io
         def grow
           new_capacity = (@entries.attr_length << 1) + 1
           new_status = Array.typed(::Java::Byte).new(new_capacity) { 0 }
-          new_entries = Array.typed(self.class::Object).new(new_capacity) { nil }
+          new_entries = Array.typed(Object).new(new_capacity) { nil }
           new_deps = Array.typed(self.class::HandleList).new(new_capacity) { nil }
           System.arraycopy(@status, 0, new_status, 0, @size)
           System.arraycopy(@entries, 0, new_entries, 0, @size)
@@ -3680,7 +3680,7 @@ module Java::Io
         alias_method :attr_used=, :used=
         undef_method :used=
         
-        typesig { [self::Object, self::ObjectStreamClass] }
+        typesig { [Object, self::ObjectStreamClass] }
         def initialize(obj, desc)
           @obj = nil
           @desc = nil
