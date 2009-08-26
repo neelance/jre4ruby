@@ -318,7 +318,7 @@ module Sun::Reflect::Generics::Parser
       end
     end
     
-    typesig { [JavaList] }
+    typesig { [SwtList] }
     def parse_class_type_signature_suffix(scts)
       while ((current).equal?(Character.new(?/.ord)) || (current).equal?(Character.new(?..ord)))
         dollar = ((current).equal?(Character.new(?..ord)))

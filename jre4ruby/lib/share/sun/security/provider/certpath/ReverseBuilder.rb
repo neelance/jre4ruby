@@ -103,7 +103,7 @@ module Sun::Security::Provider::Certpath
       end
     end
     
-    typesig { [State, JavaList] }
+    typesig { [State, SwtList] }
     # Retrieves all certs from the specified CertStores that satisfy the
     # requirements specified in the parameters and the current
     # PKIX state (name constraints, policy constraints, etc).
@@ -127,7 +127,7 @@ module Sun::Security::Provider::Certpath
       return certs
     end
     
-    typesig { [ReverseState, JavaList] }
+    typesig { [ReverseState, SwtList] }
     # Retrieves all end-entity certificates which satisfy constraints
     # and requirements specified in the parameters and PKIX state.
     def get_matching_eecerts(current_state, cert_stores)
@@ -166,7 +166,7 @@ module Sun::Security::Provider::Certpath
       return ee_certs
     end
     
-    typesig { [ReverseState, JavaList] }
+    typesig { [ReverseState, SwtList] }
     # Retrieves all CA certificates which satisfy constraints
     # and requirements specified in the parameters and PKIX state.
     def get_matching_cacerts(current_state, cert_stores)
@@ -271,7 +271,7 @@ module Sun::Security::Provider::Certpath
       end }
     }
     
-    typesig { [X509Certificate, State, JavaList] }
+    typesig { [X509Certificate, State, SwtList] }
     # Verifies a matching certificate.
     # 
     # This method executes any of the validation steps in the PKIX path validation

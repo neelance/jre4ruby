@@ -54,7 +54,7 @@ module Sun::Misc
         release_loader(class_loader, nil)
       end
       
-      typesig { [URLClassLoader, JavaList] }
+      typesig { [URLClassLoader, SwtList] }
       # Releases resources held by a URLClassLoader.  Notably, close the jars
       # opened by the loader. Initializes and updates the List of
       # jars that have been successfully closed.

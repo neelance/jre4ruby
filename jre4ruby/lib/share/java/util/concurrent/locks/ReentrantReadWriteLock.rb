@@ -644,7 +644,7 @@ module Java::Util::Concurrent::Locks
           return (get_read_lock_count).equal?(0) ? 0 : @read_holds.get.attr_count
         end
         
-        typesig { [Java::Io::self::ObjectInputStream] }
+        typesig { [Java::Io::ObjectInputStream] }
         # Reconstitute this lock instance from a stream
         # @param s the stream
         def read_object(s)

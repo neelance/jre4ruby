@@ -528,7 +528,7 @@ module Sun::Security::Krb5::Internal::Ccache
             define_method :run do
               begin
                 return (Runtime.get_runtime.exec(command))
-              rescue Java::Io::self.class::IOException => e
+              rescue Java::Io::IOException => e
                 if (self.attr_debug)
                   e.print_stack_trace
                 end

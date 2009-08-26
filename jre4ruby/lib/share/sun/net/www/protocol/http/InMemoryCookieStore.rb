@@ -247,7 +247,7 @@ module Sun::Net::Www::Protocol::Http
       end }
     }
     
-    typesig { [JavaList, Map, JavaComparable] }
+    typesig { [SwtList, Map, JavaComparable] }
     # @param cookies           [OUT] contains the found cookies
     # @param cookieIndex       the index
     # @param comparator        the prediction to decide whether or not

@@ -93,7 +93,7 @@ module Java::Io
     # 
     # @exception  IOException  If an I/O error occurs
     def read
-      synchronized((self.attr_lock)) do
+      synchronized((PLATFORM_LOCK)) do
         ensure_open
         if (@pos < @buf.attr_length)
           return @buf[((@pos += 1) - 1)]
@@ -115,7 +115,7 @@ module Java::Io
     # 
     # @exception  IOException  If an I/O error occurs
     def read(cbuf, off, len)
-      synchronized((self.attr_lock)) do
+      synchronized((PLATFORM_LOCK)) do
         ensure_open
         begin
           if (len <= 0)
@@ -162,7 +162,7 @@ module Java::Io
     # @exception  IOException  If the pushback buffer is full,
     # or if some other I/O error occurs
     def unread(c)
-      synchronized((self.attr_lock)) do
+      synchronized((PLATFORM_LOCK)) do
         ensure_open
         if ((@pos).equal?(0))
           raise IOException.new("Pushback buffer overflow")
@@ -185,7 +185,7 @@ module Java::Io
     # @exception  IOException  If there is insufficient room in the pushback
     # buffer, or if some other I/O error occurs
     def unread(cbuf, off, len)
-      synchronized((self.attr_lock)) do
+      synchronized((PLATFORM_LOCK)) do
         ensure_open
         if (len > @pos)
           raise IOException.new("Pushback buffer overflow")
@@ -214,7 +214,7 @@ module Java::Io
     # 
     # @exception  IOException  If an I/O error occurs
     def ready
-      synchronized((self.attr_lock)) do
+      synchronized((PLATFORM_LOCK)) do
         ensure_open
         return (@pos < @buf.attr_length) || super
       end
@@ -271,7 +271,7 @@ module Java::Io
       if (n < 0)
         raise IllegalArgumentException.new("skip value is negative")
       end
-      synchronized((self.attr_lock)) do
+      synchronized((PLATFORM_LOCK)) do
         ensure_open
         avail = @buf.attr_length - @pos
         if (avail > 0)

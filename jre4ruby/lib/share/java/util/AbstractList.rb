@@ -73,7 +73,7 @@ module Java::Util
   class AbstractList < AbstractListImports.const_get :AbstractCollection
     include_class_members AbstractListImports
     overload_protected {
-      include JavaList
+      include SwtList
     }
     
     typesig { [] }
@@ -557,7 +557,7 @@ module Java::Util
       if ((o).equal?(self))
         return true
       end
-      if (!(o.is_a?(JavaList)))
+      if (!(o.is_a?(SwtList)))
         return false
       end
       e1 = list_iterator

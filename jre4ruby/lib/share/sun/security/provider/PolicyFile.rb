@@ -1510,7 +1510,7 @@ module Sun::Security::Provider
       return false
     end
     
-    typesig { [SelfPermission, JavaList, Array.typed(Principal), Permissions] }
+    typesig { [SelfPermission, SwtList, Array.typed(Principal), Permissions] }
     # <p>
     # 
     # @param sp the SelfPermission that needs to be expanded <p>
@@ -1795,7 +1795,7 @@ module Sun::Security::Provider
       return "PD CodeSource: " + RJava.cast_to_string(pd.get_code_source) + "\n\t" + "PD ClassLoader: " + RJava.cast_to_string(pd.get_class_loader) + "\n\t" + "PD Principals: " + pals
     end
     
-    typesig { [JavaList, KeyStore] }
+    typesig { [SwtList, KeyStore] }
     # return true if no replacement was performed,
     # or if replacement succeeded.
     def replace_principals(principals, keystore)
@@ -2080,7 +2080,7 @@ module Sun::Security::Provider
         alias_method :attr_principals=, :principals=
         undef_method :principals=
         
-        typesig { [self::CodeSource, self::JavaList] }
+        typesig { [self::CodeSource, SwtList] }
         # Given a Permission and a CodeSource, create a policy entry.
         # 
         # XXX Decide if/how to add validity fields and "purpose" fields to

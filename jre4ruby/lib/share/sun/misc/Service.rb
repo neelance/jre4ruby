@@ -155,7 +155,7 @@ module Sun::Misc
         fail(service, RJava.cast_to_string(u) + ":" + RJava.cast_to_string(line) + ": " + msg)
       end
       
-      typesig { [Class, URL, BufferedReader, ::Java::Int, JavaList, JavaSet] }
+      typesig { [Class, URL, BufferedReader, ::Java::Int, SwtList, JavaSet] }
       # Parse a single line from the given configuration file, adding the name
       # on the line to both the names list and the returned set iff the name is
       # not already a member of the returned set.

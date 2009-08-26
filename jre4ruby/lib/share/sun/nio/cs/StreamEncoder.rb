@@ -103,7 +103,7 @@ module Sun::Nio::Cs
     
     typesig { [] }
     def flush_buffer
-      synchronized((self.attr_lock)) do
+      synchronized((PLATFORM_LOCK)) do
         if (is_open)
           impl_flush_buffer
         else
@@ -121,7 +121,7 @@ module Sun::Nio::Cs
     
     typesig { [Array.typed(::Java::Char), ::Java::Int, ::Java::Int] }
     def write(cbuf, off, len)
-      synchronized((self.attr_lock)) do
+      synchronized((PLATFORM_LOCK)) do
         ensure_open
         if ((off < 0) || (off > cbuf.attr_length) || (len < 0) || ((off + len) > cbuf.attr_length) || ((off + len) < 0))
           raise IndexOutOfBoundsException.new
@@ -147,7 +147,7 @@ module Sun::Nio::Cs
     
     typesig { [] }
     def flush
-      synchronized((self.attr_lock)) do
+      synchronized((PLATFORM_LOCK)) do
         ensure_open
         impl_flush
       end
@@ -155,7 +155,7 @@ module Sun::Nio::Cs
     
     typesig { [] }
     def close
-      synchronized((self.attr_lock)) do
+      synchronized((PLATFORM_LOCK)) do
         if (!@is_open)
           return
         end

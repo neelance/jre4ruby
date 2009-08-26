@@ -54,12 +54,12 @@ module Java::Util::Concurrent::Atomic
       const_set_lazy(:SerialVersionUID) { -1848883965231344442 }
       const_attr_reader  :SerialVersionUID
       
-      const_set_lazy(:UnsafeInstance) { Unsafe.get_unsafe }
-      const_attr_reader  :UnsafeInstance
+      const_set_lazy(:Unsafe) { Unsafe.get_unsafe }
+      const_attr_reader  :Unsafe
       
       when_class_loaded do
         begin
-          const_set :ValueOffset, UnsafeInstance.object_field_offset(AtomicReference.get_declared_field("value"))
+          const_set :ValueOffset, Unsafe.object_field_offset(AtomicReference.get_declared_field("value"))
         rescue JavaException => ex
           raise JavaError.new(ex)
         end
@@ -109,7 +109,7 @@ module Java::Util::Concurrent::Atomic
     # @param newValue the new value
     # @since 1.6
     def lazy_set(new_value)
-      UnsafeInstance.put_ordered_object(self, ValueOffset, new_value)
+      Unsafe.put_ordered_object(self, ValueOffset, new_value)
     end
     
     typesig { [Object, Object] }
@@ -120,7 +120,7 @@ module Java::Util::Concurrent::Atomic
     # @return true if successful. False return indicates that
     # the actual value was not equal to the expected value.
     def compare_and_set(expect, update)
-      return UnsafeInstance.compare_and_swap_object(self, ValueOffset, expect, update)
+      return Unsafe.compare_and_swap_object(self, ValueOffset, expect, update)
     end
     
     typesig { [Object, Object] }
@@ -135,7 +135,7 @@ module Java::Util::Concurrent::Atomic
     # @param update the new value
     # @return true if successful.
     def weak_compare_and_set(expect, update)
-      return UnsafeInstance.compare_and_swap_object(self, ValueOffset, expect, update)
+      return Unsafe.compare_and_swap_object(self, ValueOffset, expect, update)
     end
     
     typesig { [Object] }

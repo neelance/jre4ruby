@@ -106,7 +106,7 @@ module Java::Util
   # @see AbstractList
   # @see AbstractSequentialList
   # @since 1.2
-  module JavaList
+  module SwtList
     include_class_members ListImports
     include Collection
     

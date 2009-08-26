@@ -276,8 +276,8 @@ module Java::Util::Concurrent::Atomic
         include_class_members AtomicLongFieldUpdater
         
         class_module.module_eval {
-          const_set_lazy(:UnsafeInstance) { Unsafe.get_unsafe }
-          const_attr_reader  :UnsafeInstance
+          const_set_lazy(:Unsafe) { Unsafe.get_unsafe }
+          const_attr_reader  :Unsafe
         }
         
         attr_accessor :offset
@@ -325,7 +325,7 @@ module Java::Util::Concurrent::Atomic
           end
           @cclass = (Modifier.is_protected(modifiers) && !(caller).equal?(tclass)) ? caller : nil
           @tclass = tclass
-          @offset = self.class::UnsafeInstance.object_field_offset(field)
+          @offset = self.class::Unsafe.object_field_offset(field)
         end
         
         typesig { [Object] }
@@ -343,7 +343,7 @@ module Java::Util::Concurrent::Atomic
           if ((obj).nil? || !(obj.get_class).equal?(@tclass) || !(@cclass).nil?)
             full_check(obj)
           end
-          return self.class::UnsafeInstance.compare_and_swap_long(obj, @offset, expect, update)
+          return self.class::Unsafe.compare_and_swap_long(obj, @offset, expect, update)
         end
         
         typesig { [Object, ::Java::Long, ::Java::Long] }
@@ -351,7 +351,7 @@ module Java::Util::Concurrent::Atomic
           if ((obj).nil? || !(obj.get_class).equal?(@tclass) || !(@cclass).nil?)
             full_check(obj)
           end
-          return self.class::UnsafeInstance.compare_and_swap_long(obj, @offset, expect, update)
+          return self.class::Unsafe.compare_and_swap_long(obj, @offset, expect, update)
         end
         
         typesig { [Object, ::Java::Long] }
@@ -359,7 +359,7 @@ module Java::Util::Concurrent::Atomic
           if ((obj).nil? || !(obj.get_class).equal?(@tclass) || !(@cclass).nil?)
             full_check(obj)
           end
-          self.class::UnsafeInstance.put_long_volatile(obj, @offset, new_value)
+          self.class::Unsafe.put_long_volatile(obj, @offset, new_value)
         end
         
         typesig { [Object, ::Java::Long] }
@@ -367,7 +367,7 @@ module Java::Util::Concurrent::Atomic
           if ((obj).nil? || !(obj.get_class).equal?(@tclass) || !(@cclass).nil?)
             full_check(obj)
           end
-          self.class::UnsafeInstance.put_ordered_long(obj, @offset, new_value)
+          self.class::Unsafe.put_ordered_long(obj, @offset, new_value)
         end
         
         typesig { [Object] }
@@ -375,7 +375,7 @@ module Java::Util::Concurrent::Atomic
           if ((obj).nil? || !(obj.get_class).equal?(@tclass) || !(@cclass).nil?)
             full_check(obj)
           end
-          return self.class::UnsafeInstance.get_long_volatile(obj, @offset)
+          return self.class::Unsafe.get_long_volatile(obj, @offset)
         end
         
         typesig { [Object] }
@@ -394,8 +394,8 @@ module Java::Util::Concurrent::Atomic
         include_class_members AtomicLongFieldUpdater
         
         class_module.module_eval {
-          const_set_lazy(:UnsafeInstance) { Unsafe.get_unsafe }
-          const_attr_reader  :UnsafeInstance
+          const_set_lazy(:Unsafe) { Unsafe.get_unsafe }
+          const_attr_reader  :Unsafe
         }
         
         attr_accessor :offset
@@ -443,7 +443,7 @@ module Java::Util::Concurrent::Atomic
           end
           @cclass = (Modifier.is_protected(modifiers) && !(caller).equal?(tclass)) ? caller : nil
           @tclass = tclass
-          @offset = self.class::UnsafeInstance.object_field_offset(field)
+          @offset = self.class::Unsafe.object_field_offset(field)
         end
         
         typesig { [Object] }
@@ -462,11 +462,11 @@ module Java::Util::Concurrent::Atomic
             full_check(obj)
           end
           synchronized((self)) do
-            v = self.class::UnsafeInstance.get_long(obj, @offset)
+            v = self.class::Unsafe.get_long(obj, @offset)
             if (!(v).equal?(expect))
               return false
             end
-            self.class::UnsafeInstance.put_long(obj, @offset, update)
+            self.class::Unsafe.put_long(obj, @offset, update)
             return true
           end
         end
@@ -482,7 +482,7 @@ module Java::Util::Concurrent::Atomic
             full_check(obj)
           end
           synchronized((self)) do
-            self.class::UnsafeInstance.put_long(obj, @offset, new_value)
+            self.class::Unsafe.put_long(obj, @offset, new_value)
           end
         end
         
@@ -497,7 +497,7 @@ module Java::Util::Concurrent::Atomic
             full_check(obj)
           end
           synchronized((self)) do
-            return self.class::UnsafeInstance.get_long(obj, @offset)
+            return self.class::Unsafe.get_long(obj, @offset)
           end
         end
         

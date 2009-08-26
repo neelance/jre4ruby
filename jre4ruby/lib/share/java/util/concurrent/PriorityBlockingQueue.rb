@@ -628,7 +628,7 @@ module Java::Util::Concurrent
           @last_ret = -1
           # Traverse underlying queue to find == element,
           # not just a .equals element.
-          self.attr_lock.lock
+          PLATFORM_LOCK.lock
           begin
             it = self.attr_q.iterator
             while it.has_next
@@ -638,7 +638,7 @@ module Java::Util::Concurrent
               end
             end
           ensure
-            self.attr_lock.unlock
+            PLATFORM_LOCK.unlock
           end
         end
         

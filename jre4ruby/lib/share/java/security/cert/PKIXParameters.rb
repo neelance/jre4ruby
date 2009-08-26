@@ -333,7 +333,7 @@ module Java::Security::Cert
       end
     end
     
-    typesig { [JavaList] }
+    typesig { [SwtList] }
     # Sets the list of <code>CertStore</code>s to be used in finding
     # certificates and CRLs. May be <code>null</code>, in which case
     # no <code>CertStore</code>s will be used. The first
@@ -564,7 +564,7 @@ module Java::Security::Cert
       end
     end
     
-    typesig { [JavaList] }
+    typesig { [SwtList] }
     # Sets a <code>List</code> of additional certification path checkers. If
     # the specified <code>List</code> contains an object that is not a
     # <code>PKIXCertPathChecker</code>, it is ignored.

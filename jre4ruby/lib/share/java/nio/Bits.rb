@@ -628,22 +628,22 @@ module Java::Nio
       end
       
       # -- Unsafe access --
-      const_set_lazy(:UnsafeInstance) { Unsafe.get_unsafe }
-      const_attr_reader  :UnsafeInstance
+      const_set_lazy(:Unsafe) { Unsafe.get_unsafe }
+      const_attr_reader  :Unsafe
       
       typesig { [::Java::Long] }
       def __get(a)
-        return UnsafeInstance.get_byte(a)
+        return Unsafe.get_byte(a)
       end
       
       typesig { [::Java::Long, ::Java::Byte] }
       def __put(a, b)
-        UnsafeInstance.put_byte(a, b)
+        Unsafe.put_byte(a, b)
       end
       
       typesig { [] }
       def unsafe
-        return UnsafeInstance
+        return Unsafe
       end
       
       typesig { [] }
@@ -655,10 +655,10 @@ module Java::Nio
       end
       
       when_class_loaded do
-        a = UnsafeInstance.allocate_memory(8)
+        a = Unsafe.allocate_memory(8)
         begin
-          UnsafeInstance.put_long(a, 0x102030405060708)
-          b = UnsafeInstance.get_byte(a)
+          Unsafe.put_long(a, 0x102030405060708)
+          b = Unsafe.get_byte(a)
           case (b)
           when 0x1
             const_set :ByteOrder, ByteOrder::BIG_ENDIAN
@@ -669,7 +669,7 @@ module Java::Nio
             const_set :ByteOrder, nil
           end
         ensure
-          UnsafeInstance.free_memory(a)
+          Unsafe.free_memory(a)
         end
       end
       

@@ -93,7 +93,7 @@ module Java::Util
   class LinkedList < LinkedListImports.const_get :AbstractSequentialList
     include_class_members LinkedListImports
     overload_protected {
-      include JavaList
+      include SwtList
       include Deque
       include Cloneable
       include Java::Io::Serializable

@@ -213,7 +213,7 @@ module Java::Util::Concurrent::Locks
           return !(get_state).equal?(0)
         end
         
-        typesig { [Java::Io::self::ObjectInputStream] }
+        typesig { [Java::Io::ObjectInputStream] }
         # Reconstitutes this lock instance from a stream.
         # @param s the stream
         def read_object(s)

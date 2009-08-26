@@ -90,7 +90,7 @@ module Sun::Security::Krb5
     undef_method :tgs_req_key=
     
     class_module.module_eval {
-      const_set_lazy(:DEBUG) { Krb5::DEBUG }
+      const_set_lazy(:DEBUG) { Krb5.attr_debug }
       const_attr_reader  :DEBUG
     }
     

@@ -158,7 +158,7 @@ module Java::Io
     # flushing the stream itself.  This method is non-private only so that it
     # may be invoked by PrintStream.
     def flush_buffer
-      synchronized((self.attr_lock)) do
+      synchronized((PLATFORM_LOCK)) do
         ensure_open
         if ((@next_char).equal?(0))
           return
@@ -173,7 +173,7 @@ module Java::Io
     # 
     # @exception  IOException  If an I/O error occurs
     def write(c)
-      synchronized((self.attr_lock)) do
+      synchronized((PLATFORM_LOCK)) do
         ensure_open
         if (@next_char >= @n_chars)
           flush_buffer
@@ -208,7 +208,7 @@ module Java::Io
     # 
     # @exception  IOException  If an I/O error occurs
     def write(cbuf, off, len)
-      synchronized((self.attr_lock)) do
+      synchronized((PLATFORM_LOCK)) do
         ensure_open
         if ((off < 0) || (off > cbuf.attr_length) || (len < 0) || ((off + len) > cbuf.attr_length) || ((off + len) < 0))
           raise IndexOutOfBoundsException.new
@@ -254,7 +254,7 @@ module Java::Io
     # 
     # @exception  IOException  If an I/O error occurs
     def write(s, off, len)
-      synchronized((self.attr_lock)) do
+      synchronized((PLATFORM_LOCK)) do
         ensure_open
         b = off
         t = off + len
@@ -285,7 +285,7 @@ module Java::Io
     # 
     # @exception  IOException  If an I/O error occurs
     def flush
-      synchronized((self.attr_lock)) do
+      synchronized((PLATFORM_LOCK)) do
         flush_buffer
         @out.flush
       end
@@ -293,7 +293,7 @@ module Java::Io
     
     typesig { [] }
     def close
-      synchronized((self.attr_lock)) do
+      synchronized((PLATFORM_LOCK)) do
         if ((@out).nil?)
           return
         end

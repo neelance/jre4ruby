@@ -189,8 +189,8 @@ module Java::Util::Concurrent::Atomic
         include_class_members AtomicReferenceFieldUpdater
         
         class_module.module_eval {
-          const_set_lazy(:UnsafeInstance) { Unsafe.get_unsafe }
-          const_attr_reader  :UnsafeInstance
+          const_set_lazy(:Unsafe) { Unsafe.get_unsafe }
+          const_attr_reader  :Unsafe
         }
         
         attr_accessor :offset
@@ -260,7 +260,7 @@ module Java::Util::Concurrent::Atomic
           else
             @vclass = vclass
           end
-          @offset = self.class::UnsafeInstance.object_field_offset(field)
+          @offset = self.class::Unsafe.object_field_offset(field)
         end
         
         typesig { [Object] }
@@ -288,7 +288,7 @@ module Java::Util::Concurrent::Atomic
           if ((obj).nil? || !(obj.get_class).equal?(@tclass) || !(@cclass).nil? || (!(update).nil? && !(@vclass).nil? && !(@vclass).equal?(update.get_class)))
             update_check(obj, update)
           end
-          return self.class::UnsafeInstance.compare_and_swap_object(obj, @offset, expect, update)
+          return self.class::Unsafe.compare_and_swap_object(obj, @offset, expect, update)
         end
         
         typesig { [Object, Object, Object] }
@@ -297,7 +297,7 @@ module Java::Util::Concurrent::Atomic
           if ((obj).nil? || !(obj.get_class).equal?(@tclass) || !(@cclass).nil? || (!(update).nil? && !(@vclass).nil? && !(@vclass).equal?(update.get_class)))
             update_check(obj, update)
           end
-          return self.class::UnsafeInstance.compare_and_swap_object(obj, @offset, expect, update)
+          return self.class::Unsafe.compare_and_swap_object(obj, @offset, expect, update)
         end
         
         typesig { [Object, Object] }
@@ -305,7 +305,7 @@ module Java::Util::Concurrent::Atomic
           if ((obj).nil? || !(obj.get_class).equal?(@tclass) || !(@cclass).nil? || (!(new_value).nil? && !(@vclass).nil? && !(@vclass).equal?(new_value.get_class)))
             update_check(obj, new_value)
           end
-          self.class::UnsafeInstance.put_object_volatile(obj, @offset, new_value)
+          self.class::Unsafe.put_object_volatile(obj, @offset, new_value)
         end
         
         typesig { [Object, Object] }
@@ -313,7 +313,7 @@ module Java::Util::Concurrent::Atomic
           if ((obj).nil? || !(obj.get_class).equal?(@tclass) || !(@cclass).nil? || (!(new_value).nil? && !(@vclass).nil? && !(@vclass).equal?(new_value.get_class)))
             update_check(obj, new_value)
           end
-          self.class::UnsafeInstance.put_ordered_object(obj, @offset, new_value)
+          self.class::Unsafe.put_ordered_object(obj, @offset, new_value)
         end
         
         typesig { [Object] }
@@ -321,7 +321,7 @@ module Java::Util::Concurrent::Atomic
           if ((obj).nil? || !(obj.get_class).equal?(@tclass) || !(@cclass).nil?)
             target_check(obj)
           end
-          return self.class::UnsafeInstance.get_object_volatile(obj, @offset)
+          return self.class::Unsafe.get_object_volatile(obj, @offset)
         end
         
         typesig { [Object] }

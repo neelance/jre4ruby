@@ -208,7 +208,7 @@ module Sun::Security::Krb5
       @pa_s2kparams = nil
       @kdc_empty_addresses_allowed = false
       super()
-      @debug = Krb5::DEBUG
+      @debug = Krb5.attr_debug
       @pa_enc_timestamp_required = false
       @pa_exists = false
       @pa_etype = 0
@@ -267,7 +267,7 @@ module Sun::Security::Krb5
       @pa_s2kparams = nil
       @kdc_empty_addresses_allowed = false
       super()
-      @debug = Krb5::DEBUG
+      @debug = Krb5.attr_debug
       @pa_enc_timestamp_required = false
       @pa_exists = false
       @pa_etype = 0

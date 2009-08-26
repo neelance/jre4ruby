@@ -1481,7 +1481,7 @@ module Sun::Nio::Ch
           end
         end
         
-        typesig { [self::JavaList, ::Java::Long, ::Java::Long] }
+        typesig { [SwtList, ::Java::Long, ::Java::Long] }
         # Check for overlapping file locks
         def check_list(list, position_, size_)
           raise AssertError if not (JavaThread.holds_lock(list))

@@ -5506,7 +5506,7 @@ module Java::Util
           const_attr_reader  :SerialVersionUID
         }
         
-        typesig { [Java::Io::self::ObjectInputStream] }
+        typesig { [Java::Io::ObjectInputStream] }
         def read_object(stream)
           stream.default_read_object
           @s = @m.key_set

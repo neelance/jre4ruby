@@ -110,7 +110,7 @@ module Sun::Security::X509
       end
     end
     
-    typesig { [JavaList] }
+    typesig { [SwtList] }
     # Create a CertificatePoliciesExtension object from
     # a List of PolicyInformation; the criticality is set to false.
     # 
@@ -119,7 +119,7 @@ module Sun::Security::X509
       initialize__certificate_policies_extension(Boolean::FALSE, cert_policies)
     end
     
-    typesig { [Boolean, JavaList] }
+    typesig { [Boolean, SwtList] }
     # Create a CertificatePoliciesExtension object from
     # a List of PolicyInformation with specified criticality.
     # 
@@ -194,7 +194,7 @@ module Sun::Security::X509
     # Set the attribute value.
     def set(name, obj)
       if (name.equals_ignore_case(POLICIES))
-        if (!(obj.is_a?(JavaList)))
+        if (!(obj.is_a?(SwtList)))
           raise IOException.new("Attribute value should be of type List.")
         end
         @cert_policies = obj
