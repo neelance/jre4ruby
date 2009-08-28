@@ -17,6 +17,10 @@ class Java::Lang::JavaThread
     def current_thread
       @@thread_mappings[Thread.current]
     end
+
+    def sleep(millis)
+      Kernel.sleep millis / 1000
+    end
   }
 
   def set_priority(priority)
