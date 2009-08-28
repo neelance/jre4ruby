@@ -1,0 +1,7 @@
+---
+no_constants:
+- NULL
+- ENQUEUED
+constant_name_mapping:
+  unsafe: UnsafeInstance
+  referenceQueue: ReferenceQueueInstance
