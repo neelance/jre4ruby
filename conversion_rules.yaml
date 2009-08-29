@@ -1,6 +1,6 @@
 ---
 no_constants:
-- NULL
+- "NULL"
 - ENQUEUED
 constant_name_mapping:
   unsafe: UnsafeInstance
