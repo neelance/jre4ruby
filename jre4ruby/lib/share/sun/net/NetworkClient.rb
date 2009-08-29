@@ -23,7 +23,7 @@ require "rjava"
 # CA 95054 USA or visit www.sun.com if you need additional information or
 # have any questions.
 module Sun::Net
-  module NetworkClientImports
+  module NetworkClientImports #:nodoc:
     class_module.module_eval {
       include ::Java::Lang
       include ::Sun::Net

@@ -27,7 +27,7 @@ require "rjava"
 # 
 # -- This file was mechanically generated: Do not edit! -- //
 module Java::Nio
-  module ReadOnlyBufferExceptionImports
+  module ReadOnlyBufferExceptionImports #:nodoc:
     class_module.module_eval {
       include ::Java::Lang
       include ::Java::Nio

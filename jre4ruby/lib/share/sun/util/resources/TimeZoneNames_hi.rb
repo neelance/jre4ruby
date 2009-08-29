@@ -27,7 +27,7 @@ require "rjava"
 # Copyright (c) 1998 International Business Machines.
 # All Rights Reserved.
 module Sun::Util::Resources
-  module TimeZoneNames_hiImports
+  module TimeZoneNames_hiImports #:nodoc:
     class_module.module_eval {
       include ::Java::Lang
       include ::Sun::Util::Resources

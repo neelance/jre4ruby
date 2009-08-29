@@ -32,7 +32,7 @@ require "rjava"
 # JSR-166 Expert Group and released to the public domain, as explained at
 # http://creativecommons.org/licenses/publicdomain
 module Java::Util
-  module NavigableMapImports
+  module NavigableMapImports #:nodoc:
     class_module.module_eval {
       include ::Java::Lang
       include ::Java::Util

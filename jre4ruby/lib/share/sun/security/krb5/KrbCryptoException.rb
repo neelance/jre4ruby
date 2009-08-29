@@ -26,7 +26,7 @@ require "rjava"
 # (C) Copyright IBM Corp. 1999 All Rights Reserved.
 # Copyright 1997 The Open Group Research Institute.  All rights reserved.
 module Sun::Security::Krb5
-  module KrbCryptoExceptionImports
+  module KrbCryptoExceptionImports #:nodoc:
     class_module.module_eval {
       include ::Java::Lang
       include ::Sun::Security::Krb5

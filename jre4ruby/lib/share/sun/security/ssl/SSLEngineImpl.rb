@@ -23,7 +23,7 @@ require "rjava"
 # CA 95054 USA or visit www.sun.com if you need additional information or
 # have any questions.
 module Sun::Security::Ssl
-  module SSLEngineImplImports
+  module SSLEngineImplImports #:nodoc:
     class_module.module_eval {
       include ::Java::Lang
       include ::Sun::Security::Ssl
@@ -519,10 +519,10 @@ module Sun::Security::Ssl
       # default read and write side cipher and MAC support
       # 
       # Note:  compression support would go here too
-      @read_cipher = CipherBox.attr_null
-      @read_mac = MAC.attr_null
-      @write_cipher = CipherBox.attr_null
-      @write_mac = MAC.attr_null
+      @read_cipher = CipherBox::NULL
+      @read_mac = MAC::NULL
+      @write_cipher = CipherBox::NULL
+      @write_mac = MAC::NULL
       @enabled_cipher_suites = CipherSuiteList.get_default
       @enabled_protocols = ProtocolList.get_default
       @wrap_lock = Object.new

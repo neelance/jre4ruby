@@ -27,7 +27,7 @@ require "rjava"
 # Basic .aiff audio handler.
 # @author  Jeff Nisewanger
 module Sun::Net::Www::Content::Audio
-  module X_aiffImports
+  module X_aiffImports #:nodoc:
     class_module.module_eval {
       include ::Java::Lang
       include ::Sun::Net::Www::Content::Audio

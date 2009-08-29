@@ -31,7 +31,7 @@ require "rjava"
 # Written by Josh Bloch of Google Inc. and released to the public domain,
 # as explained at http://creativecommons.org/licenses/publicdomain.
 module Java::Util
-  module ArrayDequeImports
+  module ArrayDequeImports #:nodoc:
     class_module.module_eval {
       include ::Java::Lang
       include ::Java::Util

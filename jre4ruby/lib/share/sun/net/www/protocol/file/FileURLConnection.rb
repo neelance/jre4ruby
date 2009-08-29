@@ -28,7 +28,7 @@ require "rjava"
 # @author      James Gosling
 # @author      Steven B. Byrne
 module Sun::Net::Www::Protocol::JavaFile
-  module FileURLConnectionImports
+  module FileURLConnectionImports #:nodoc:
     class_module.module_eval {
       include ::Java::Lang
       include ::Sun::Net::Www::Protocol::JavaFile

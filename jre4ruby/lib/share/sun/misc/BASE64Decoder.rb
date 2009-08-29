@@ -23,7 +23,7 @@ require "rjava"
 # CA 95054 USA or visit www.sun.com if you need additional information or
 # have any questions.
 module Sun::Misc
-  module BASE64DecoderImports
+  module BASE64DecoderImports #:nodoc:
     class_module.module_eval {
       include ::Java::Lang
       include ::Sun::Misc

@@ -46,7 +46,7 @@ require "rjava"
 # 
 # @since JDK1.1
 module Java::Lang::Reflect
-  module Package-infoImports
+  module Package-infoImports #:nodoc:
     class_module.module_eval {
       include ::Java::Lang
       include ::Java::Lang::Reflect

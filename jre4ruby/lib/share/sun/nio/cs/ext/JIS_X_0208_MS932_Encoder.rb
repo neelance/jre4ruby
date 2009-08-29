@@ -23,7 +23,7 @@ require "rjava"
 # CA 95054 USA or visit www.sun.com if you need additional information or
 # have any questions.
 module Sun::Nio::Cs::Ext
-  module JIS_X_0208_MS932_EncoderImports
+  module JIS_X_0208_MS932_EncoderImports #:nodoc:
     class_module.module_eval {
       include ::Java::Lang
       include ::Sun::Nio::Cs::Ext

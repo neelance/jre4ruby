@@ -27,7 +27,7 @@ require "rjava"
 # Basic .au and .snd audio handler.
 # @author  Jeff Nisewanger
 module Sun::Net::Www::Content::Audio
-  module BasicImports
+  module BasicImports #:nodoc:
     class_module.module_eval {
       include ::Java::Lang
       include ::Sun::Net::Www::Content::Audio

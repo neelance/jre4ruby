@@ -34,7 +34,7 @@ require "rjava"
 # patents. This notice and attribution to Taligent may not be removed.
 # Taligent is a registered trademark of Taligent, Inc.
 module Java::Util
-  module TimeZoneImports
+  module TimeZoneImports #:nodoc:
     class_module.module_eval {
       include ::Java::Lang
       include ::Java::Util

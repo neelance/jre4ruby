@@ -31,7 +31,7 @@ require "rjava"
 # 
 # @author Steven B. Byrne
 module Sun::Net::Www::Protocol::Netdoc
-  module HandlerImports
+  module HandlerImports #:nodoc:
     class_module.module_eval {
       include ::Java::Lang
       include ::Sun::Net::Www::Protocol::Netdoc

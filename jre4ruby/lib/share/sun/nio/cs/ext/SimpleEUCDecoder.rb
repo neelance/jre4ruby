@@ -27,7 +27,7 @@ require "rjava"
 # Simple EUC-like decoder used by IBM01383 and IBM970
 # supports G1 - no support for G2 or G3
 module Sun::Nio::Cs::Ext
-  module SimpleEUCDecoderImports
+  module SimpleEUCDecoderImports #:nodoc:
     class_module.module_eval {
       include ::Java::Lang
       include ::Sun::Nio::Cs::Ext

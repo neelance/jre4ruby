@@ -27,7 +27,7 @@ require "rjava"
 # Copyright (c) 1998 International Business Machines.
 # All Rights Reserved.
 module Sun::Text::Resources
-  module CollationData_hiImports
+  module CollationData_hiImports #:nodoc:
     class_module.module_eval {
       include ::Java::Lang
       include ::Sun::Text::Resources

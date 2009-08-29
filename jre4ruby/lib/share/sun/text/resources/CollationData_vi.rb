@@ -39,7 +39,7 @@ require "rjava"
 # 
 # http://oss.software.ibm.com/cvs/icu/icu/source/data/locales/vi.txt?rev=1.38
 module Sun::Text::Resources
-  module CollationData_viImports
+  module CollationData_viImports #:nodoc:
     class_module.module_eval {
       include ::Java::Lang
       include ::Sun::Text::Resources

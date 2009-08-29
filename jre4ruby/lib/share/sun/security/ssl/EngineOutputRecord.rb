@@ -23,7 +23,7 @@ require "rjava"
 # CA 95054 USA or visit www.sun.com if you need additional information or
 # have any questions.
 module Sun::Security::Ssl
-  module EngineOutputRecordImports
+  module EngineOutputRecordImports #:nodoc:
     class_module.module_eval {
       include ::Java::Lang
       include ::Sun::Security::Ssl
@@ -194,7 +194,7 @@ module Sun::Security::Ssl
       raise AssertError if not (((content_type).equal?(self.attr_ct_application_data)))
       # Have we set the MAC's yet?  If not, we're not ready
       # to process application data yet.
-      if ((write_mac).equal?(MAC.attr_null))
+      if ((write_mac).equal?(MAC::NULL))
         return
       end
       # Don't bother to really write empty records.  We went this

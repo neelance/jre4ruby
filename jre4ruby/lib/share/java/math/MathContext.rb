@@ -26,7 +26,7 @@ require "rjava"
 # 
 # Portions Copyright IBM Corporation, 1997, 2001. All Rights Reserved.
 module Java::Math
-  module MathContextImports
+  module MathContextImports #:nodoc:
     class_module.module_eval {
       include ::Java::Lang
       include ::Java::Math

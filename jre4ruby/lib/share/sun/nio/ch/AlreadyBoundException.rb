@@ -27,7 +27,7 @@ require "rjava"
 # 
 # -- This file was mechanically generated: Do not edit! -- //
 module Sun::Nio::Ch
-  module AlreadyBoundExceptionImports
+  module AlreadyBoundExceptionImports #:nodoc:
     class_module.module_eval {
       include ::Java::Lang
       include ::Sun::Nio::Ch

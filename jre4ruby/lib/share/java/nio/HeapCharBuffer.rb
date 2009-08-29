@@ -25,7 +25,7 @@ require "rjava"
 # 
 # -- This file was mechanically generated: Do not edit! -- //
 module Java::Nio
-  module HeapCharBufferImports
+  module HeapCharBufferImports #:nodoc:
     class_module.module_eval {
       include ::Java::Lang
       include ::Java::Nio

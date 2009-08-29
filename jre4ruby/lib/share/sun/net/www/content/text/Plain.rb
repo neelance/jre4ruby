@@ -27,7 +27,7 @@ require "rjava"
 # Plain text file handler.
 # @author  Steven B. Byrne
 module Sun::Net::Www::Content::Text
-  module PlainImports
+  module PlainImports #:nodoc:
     class_module.module_eval {
       include ::Java::Lang
       include ::Sun::Net::Www::Content::Text

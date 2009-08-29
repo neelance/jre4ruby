@@ -36,7 +36,7 @@ require "rjava"
 # This notice and attribution to Taligent may not be removed.
 # Taligent is a registered trademark of Taligent, Inc.
 module Java::Util
-  module PropertyResourceBundleImports
+  module PropertyResourceBundleImports #:nodoc:
     class_module.module_eval {
       include ::Java::Lang
       include ::Java::Util

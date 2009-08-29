@@ -45,7 +45,7 @@ require "rjava"
 # OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
 # POSSIBILITY  OF SUCH DAMAGE.
 module Sun::Security::Pkcs11::Wrapper
-  module CK_LOCKMUTEXImports
+  module CK_LOCKMUTEXImports #:nodoc:
     class_module.module_eval {
       include ::Java::Lang
       include ::Sun::Security::Pkcs11::Wrapper

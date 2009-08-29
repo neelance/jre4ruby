@@ -23,7 +23,7 @@ require "rjava"
 # CA 95054 USA or visit www.sun.com if you need additional information or
 # have any questions.
 module Sun::Reflect::Generics::Parser
-  module SignatureParserImports
+  module SignatureParserImports #:nodoc:
     class_module.module_eval {
       include ::Java::Lang
       include ::Sun::Reflect::Generics::Parser

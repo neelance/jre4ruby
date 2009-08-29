@@ -26,7 +26,7 @@ require "rjava"
 # -
 # FTP stream opener
 module Sun::Net::Www::Protocol::Ftp
-  module HandlerImports
+  module HandlerImports #:nodoc:
     class_module.module_eval {
       include ::Java::Lang
       include ::Sun::Net::Www::Protocol::Ftp

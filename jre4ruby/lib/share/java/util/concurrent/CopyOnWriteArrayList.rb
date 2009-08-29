@@ -32,7 +32,7 @@ require "rjava"
 # 901 San Antonio Road, Palo Alto, California, 94303, U.S.A.
 # All rights reserved.
 module Java::Util::Concurrent
-  module CopyOnWriteArrayListImports
+  module CopyOnWriteArrayListImports #:nodoc:
     class_module.module_eval {
       include ::Java::Lang
       include ::Java::Util::Concurrent

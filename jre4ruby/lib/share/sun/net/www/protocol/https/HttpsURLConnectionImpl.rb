@@ -32,7 +32,7 @@ require "rjava"
 # 
 # For both copies of the file, uncomment one line and comment the other
 module Sun::Net::Www::Protocol::Https
-  module HttpsURLConnectionImplImports
+  module HttpsURLConnectionImplImports #:nodoc:
     class_module.module_eval {
       include ::Java::Lang
       include ::Sun::Net::Www::Protocol::Https

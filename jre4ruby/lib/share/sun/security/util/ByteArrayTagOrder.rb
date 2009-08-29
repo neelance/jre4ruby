@@ -29,7 +29,7 @@ require "rjava"
 # 
 # @author D. N. Hoover
 module Sun::Security::Util
-  module ByteArrayTagOrderImports
+  module ByteArrayTagOrderImports #:nodoc:
     class_module.module_eval {
       include ::Java::Lang
       include ::Sun::Security::Util

@@ -40,7 +40,7 @@ require "rjava"
 # 2007-08-14 Martin Buchholz
 # - remove redundant casts
 module Sun::Net::Idn
-  module StringPrepImports
+  module StringPrepImports #:nodoc:
     class_module.module_eval {
       include ::Java::Lang
       include ::Sun::Net::Idn

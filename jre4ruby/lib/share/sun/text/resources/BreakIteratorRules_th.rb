@@ -41,7 +41,7 @@ require "rjava"
 # build phase in order to create [Word|Line]BreakIteratorData_th files which
 # are used on runtime instead.
 module Sun::Text::Resources
-  module BreakIteratorRules_thImports
+  module BreakIteratorRules_thImports #:nodoc:
     class_module.module_eval {
       include ::Java::Lang
       include ::Sun::Text::Resources

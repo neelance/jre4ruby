@@ -38,7 +38,7 @@ require "rjava"
 # IBM has been advised of the possibility of their occurrence. IBM
 # will not be liable for any third party claims against you.
 module Sun::Text::Resources
-  module BreakIteratorInfoImports
+  module BreakIteratorInfoImports #:nodoc:
     class_module.module_eval {
       include ::Java::Lang
       include ::Sun::Text::Resources

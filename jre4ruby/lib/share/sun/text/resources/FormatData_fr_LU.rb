@@ -33,7 +33,7 @@ require "rjava"
 # 
 # This notice and attribution to IBM may not be removed.
 module Sun::Text::Resources
-  module FormatData_fr_LUImports
+  module FormatData_fr_LUImports #:nodoc:
     class_module.module_eval {
       include ::Java::Lang
       include ::Sun::Text::Resources

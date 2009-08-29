@@ -24,7 +24,7 @@ require "rjava"
 # have any questions.
 module Sun::Nio::Ch
   # package-private
-  module AllocatedNativeObjectImports
+  module AllocatedNativeObjectImports #:nodoc:
     class_module.module_eval {
       include ::Java::Lang
       include ::Sun::Nio::Ch

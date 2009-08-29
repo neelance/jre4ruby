@@ -29,7 +29,7 @@ require "rjava"
 # whose individual component submappings do not need an association with
 # an enclosing charset
 module Sun::Nio::Cs::Ext
-  module DBCSDecoderMappingImports
+  module DBCSDecoderMappingImports #:nodoc:
     class_module.module_eval {
       include ::Java::Lang
       include ::Sun::Nio::Cs::Ext

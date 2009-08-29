@@ -23,7 +23,7 @@ require "rjava"
 # CA 95054 USA or visit www.sun.com if you need additional information or
 # have any questions.
 module Java::Nio::Charset::Spi
-  module CharsetProviderImports
+  module CharsetProviderImports #:nodoc:
     class_module.module_eval {
       include ::Java::Lang
       include ::Java::Nio::Charset::Spi

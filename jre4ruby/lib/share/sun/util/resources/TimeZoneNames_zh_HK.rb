@@ -34,7 +34,7 @@ require "rjava"
 # patents. This notice and attribution to Taligent may not be removed.
 # Taligent is a registered trademark of Taligent, Inc.
 module Sun::Util::Resources
-  module TimeZoneNames_zh_HKImports
+  module TimeZoneNames_zh_HKImports #:nodoc:
     class_module.module_eval {
       include ::Java::Lang
       include ::Sun::Util::Resources

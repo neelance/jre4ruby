@@ -27,7 +27,7 @@ require "rjava"
 # Basic .wav audio handler.
 # @author  Jeff Nisewanger
 module Sun::Net::Www::Content::Audio
-  module X_wavImports
+  module X_wavImports #:nodoc:
     class_module.module_eval {
       include ::Java::Lang
       include ::Sun::Net::Www::Content::Audio

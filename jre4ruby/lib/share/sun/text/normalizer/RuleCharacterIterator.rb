@@ -40,7 +40,7 @@ require "rjava"
 # Created: September 23 2003
 # Since: ICU 2.8
 module Sun::Text::Normalizer
-  module RuleCharacterIteratorImports
+  module RuleCharacterIteratorImports #:nodoc:
     class_module.module_eval {
       include ::Java::Lang
       include ::Sun::Text::Normalizer

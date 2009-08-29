@@ -26,7 +26,7 @@ require "rjava"
 # 
 # Portions Copyright IBM Corporation, 2001. All Rights Reserved.
 module Java::Math
-  module BigDecimalImports
+  module BigDecimalImports #:nodoc:
     class_module.module_eval {
       include ::Java::Lang
       include ::Java::Math

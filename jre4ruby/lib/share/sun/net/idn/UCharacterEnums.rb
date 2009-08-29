@@ -34,7 +34,7 @@ require "rjava"
 # - copy this file from icu4jsrc_3_2/src/com/ibm/icu/lang/UCharacterEnums.java
 # - move from package com.ibm.icu.lang to package sun.net.idn
 module Sun::Net::Idn
-  module UCharacterEnumsImports
+  module UCharacterEnumsImports #:nodoc:
     class_module.module_eval {
       include ::Java::Lang
       include ::Sun::Net::Idn

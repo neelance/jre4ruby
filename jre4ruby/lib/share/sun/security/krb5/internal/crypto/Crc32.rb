@@ -28,7 +28,7 @@ require "rjava"
 # 
 # crc32.java
 module Sun::Security::Krb5::Internal::Crypto
-  module Crc32Imports
+  module Crc32Imports #:nodoc:
     class_module.module_eval {
       include ::Java::Lang
       include ::Sun::Security::Krb5::Internal::Crypto

@@ -26,7 +26,7 @@ require "rjava"
 # -
 # news stream opener
 module Sun::Net::Www
-  module MessageHeaderImports
+  module MessageHeaderImports #:nodoc:
     class_module.module_eval {
       include ::Java::Lang
       include ::Sun::Net::Www

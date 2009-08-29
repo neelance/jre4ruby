@@ -32,7 +32,7 @@ require "rjava"
 # 
 # @since 1.6
 module Sun::Util
-  module LocaleDataMetaInfoImports
+  module LocaleDataMetaInfoImports #:nodoc:
     class_module.module_eval {
       include ::Java::Lang
       include ::Sun::Util

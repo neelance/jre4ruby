@@ -27,7 +27,7 @@ require "rjava"
 # 
 # -- This file was mechanically generated: Do not edit! -- //
 module Java::Nio
-  module BufferUnderflowExceptionImports
+  module BufferUnderflowExceptionImports #:nodoc:
     class_module.module_eval {
       include ::Java::Lang
       include ::Java::Nio

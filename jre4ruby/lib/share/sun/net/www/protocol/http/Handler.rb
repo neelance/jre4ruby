@@ -26,7 +26,7 @@ require "rjava"
 # -
 # HTTP stream opener
 module Sun::Net::Www::Protocol::Http
-  module HandlerImports
+  module HandlerImports #:nodoc:
     class_module.module_eval {
       include ::Java::Lang
       include ::Sun::Net::Www::Protocol::Http

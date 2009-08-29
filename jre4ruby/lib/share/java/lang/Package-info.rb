@@ -68,7 +68,7 @@ require "rjava"
 # 
 # @since JDK1.0
 module Java::Lang
-  module Package-infoImports
+  module Package-infoImports #:nodoc:
     class_module.module_eval {
       include ::Java::Lang
     }

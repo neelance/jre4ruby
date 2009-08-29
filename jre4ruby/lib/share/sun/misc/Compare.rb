@@ -29,7 +29,7 @@ require "rjava"
 # 
 # @author Sunita Mani
 module Sun::Misc
-  module CompareImports
+  module CompareImports #:nodoc:
     class_module.module_eval {
       include ::Java::Lang
       include ::Sun::Misc

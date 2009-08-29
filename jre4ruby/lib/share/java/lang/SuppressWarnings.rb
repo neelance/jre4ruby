@@ -34,7 +34,7 @@ module Java::Lang
   # <p>Compiler vendors should document the warning names they support in
   # conjunction with this annotation type. They are encouraged to cooperate
   # to ensure that the same names work across multiple compilers.
-  module SuppressWarningsImports
+  module SuppressWarningsImports #:nodoc:
     class_module.module_eval {
       include ::Java::Lang
       include ::Java::Lang::Annotation

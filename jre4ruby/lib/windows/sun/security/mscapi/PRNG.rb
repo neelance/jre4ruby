@@ -23,7 +23,7 @@ require "rjava"
 # CA 95054 USA or visit www.sun.com if you need additional information or
 # have any questions.
 module Sun::Security::Mscapi
-  module PRNGImports
+  module PRNGImports #:nodoc:
     class_module.module_eval {
       include ::Java::Lang
       include ::Sun::Security::Mscapi

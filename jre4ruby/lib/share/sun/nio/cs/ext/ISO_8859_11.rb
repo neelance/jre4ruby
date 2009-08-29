@@ -27,7 +27,7 @@ require "rjava"
 # NIO charset Support for Latin/Thai x-ISO-8859-11 charset
 # (Currently not IANA registered)
 module Sun::Nio::Cs::Ext
-  module ISO_8859_11Imports
+  module ISO_8859_11Imports #:nodoc:
     class_module.module_eval {
       include ::Java::Lang
       include ::Sun::Nio::Cs::Ext

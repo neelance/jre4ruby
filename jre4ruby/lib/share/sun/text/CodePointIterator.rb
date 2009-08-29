@@ -32,7 +32,7 @@ require "rjava"
 # This technology is protected by multiple US and International
 # patents. This notice and attribution to IBM may not be removed.
 module Sun::Text
-  module CodePointIteratorImports
+  module CodePointIteratorImports #:nodoc:
     class_module.module_eval {
       include ::Java::Lang
       include ::Sun::Text

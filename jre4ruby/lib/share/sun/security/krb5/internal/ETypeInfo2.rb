@@ -23,7 +23,7 @@ require "rjava"
 # CA 95054 USA or visit www.sun.com if you need additional information or
 # have any questions.
 module Sun::Security::Krb5::Internal
-  module ETypeInfo2Imports
+  module ETypeInfo2Imports #:nodoc:
     class_module.module_eval {
       include ::Java::Lang
       include ::Sun::Security::Krb5::Internal

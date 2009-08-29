@@ -39,7 +39,7 @@ require "rjava"
 # - copy this file from icu4jsrc_3_2/src/com/ibm/icu/impl/StringPrepDataReader.java
 # - move from package com.ibm.icu.impl to package sun.net.idn
 module Sun::Net::Idn
-  module StringPrepDataReaderImports
+  module StringPrepDataReaderImports #:nodoc:
     class_module.module_eval {
       include ::Java::Lang
       include ::Sun::Net::Idn

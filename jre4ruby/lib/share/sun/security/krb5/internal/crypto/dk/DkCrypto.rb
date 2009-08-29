@@ -27,7 +27,7 @@ require "rjava"
 # IMPLIED WARRANTIES, INCLUDING, WITHOUT LIMITATION, THE IMPLIED
 # WARRANTIES OF MERCHANTIBILITY AND FITNESS FOR A PARTICULAR PURPOSE.
 module Sun::Security::Krb5::Internal::Crypto::Dk
-  module DkCryptoImports
+  module DkCryptoImports #:nodoc:
     class_module.module_eval {
       include ::Java::Lang
       include ::Sun::Security::Krb5::Internal::Crypto::Dk

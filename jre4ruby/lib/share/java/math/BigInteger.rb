@@ -26,7 +26,7 @@ require "rjava"
 # 
 # Portions Copyright (c) 1995  Colin Plumb.  All rights reserved.
 module Java::Math
-  module BigIntegerImports
+  module BigIntegerImports #:nodoc:
     class_module.module_eval {
       include ::Java::Lang
       include ::Java::Math

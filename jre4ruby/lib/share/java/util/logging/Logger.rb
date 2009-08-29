@@ -23,7 +23,7 @@ require "rjava"
 # CA 95054 USA or visit www.sun.com if you need additional information or
 # have any questions.
 module Java::Util::Logging
-  module LoggerImports
+  module LoggerImports #:nodoc:
     class_module.module_eval {
       include ::Java::Lang
       include ::Java::Util::Logging

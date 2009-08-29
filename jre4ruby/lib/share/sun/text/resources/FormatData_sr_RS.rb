@@ -39,7 +39,7 @@ require "rjava"
 # 
 # Generated automatically from the Common Locale Data Repository. DO NOT EDIT!
 module Sun::Text::Resources
-  module FormatData_sr_RSImports
+  module FormatData_sr_RSImports #:nodoc:
     class_module.module_eval {
       include ::Java::Lang
       include ::Sun::Text::Resources

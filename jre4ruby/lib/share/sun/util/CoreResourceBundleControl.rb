@@ -25,7 +25,7 @@ require "rjava"
 # 
 # -- This file was mechanically generated: Do not edit! -- //
 module Sun::Util
-  module CoreResourceBundleControlImports
+  module CoreResourceBundleControlImports #:nodoc:
     class_module.module_eval {
       include ::Java::Lang
       include ::Sun::Util

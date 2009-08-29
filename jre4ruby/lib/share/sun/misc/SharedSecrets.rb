@@ -23,7 +23,7 @@ require "rjava"
 # CA 95054 USA or visit www.sun.com if you need additional information or
 # have any questions.
 module Sun::Misc
-  module SharedSecretsImports
+  module SharedSecretsImports #:nodoc:
     class_module.module_eval {
       include ::Java::Lang
       include ::Sun::Misc

@@ -23,7 +23,7 @@ require "rjava"
 # CA 95054 USA or visit www.sun.com if you need additional information or
 # have any questions.
 module Sun::Net::Util
-  module IPAddressUtilImports
+  module IPAddressUtilImports #:nodoc:
     class_module.module_eval {
       include ::Java::Lang
       include ::Sun::Net::Util

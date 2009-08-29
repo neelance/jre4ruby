@@ -26,7 +26,7 @@ require "rjava"
 # -
 # mailto stream opener
 module Sun::Net::Www::Protocol::Mailto
-  module HandlerImports
+  module HandlerImports #:nodoc:
     class_module.module_eval {
       include ::Java::Lang
       include ::Sun::Net::Www::Protocol::Mailto

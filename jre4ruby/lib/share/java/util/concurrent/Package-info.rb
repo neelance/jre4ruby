@@ -268,7 +268,7 @@ require "rjava"
 # 
 # @since 1.5
 module Java::Util::Concurrent
-  module Package-infoImports
+  module Package-infoImports #:nodoc:
     class_module.module_eval {
       include ::Java::Lang
       include ::Java::Util::Concurrent

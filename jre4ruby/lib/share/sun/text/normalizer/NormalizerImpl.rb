@@ -33,7 +33,7 @@ require "rjava"
 # US and International patents. This notice and attribution to IBM may not    *
 # to removed.                                                                 *
 module Sun::Text::Normalizer
-  module NormalizerImplImports
+  module NormalizerImplImports #:nodoc:
     class_module.module_eval {
       include ::Java::Lang
       include ::Sun::Text::Normalizer

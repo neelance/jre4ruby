@@ -24,7 +24,7 @@ require "rjava"
 # have any questions.
 module Java::Nio
   # package-private
-  module StringCharBufferImports
+  module StringCharBufferImports #:nodoc:
     class_module.module_eval {
       include ::Java::Lang
       include ::Java::Nio

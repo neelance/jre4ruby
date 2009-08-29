@@ -35,7 +35,7 @@ require "rjava"
 # This notice and attribution to Taligent may not be removed.
 # Taligent is a registered trademark of Taligent, Inc.
 module Sun::Text::Resources
-  module FormatData_ar_KWImports
+  module FormatData_ar_KWImports #:nodoc:
     class_module.module_eval {
       include ::Java::Lang
       include ::Sun::Text::Resources

@@ -32,7 +32,7 @@ require "rjava"
 # Expert Group and released to the public domain, as explained at
 # http://creativecommons.org/licenses/publicdomain
 module Java::Util::Concurrent::Atomic
-  module AtomicBooleanImports
+  module AtomicBooleanImports #:nodoc:
     class_module.module_eval {
       include ::Java::Lang
       include ::Java::Util::Concurrent::Atomic

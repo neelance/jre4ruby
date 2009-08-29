@@ -23,7 +23,7 @@ require "rjava"
 # CA 95054 USA or visit www.sun.com if you need additional information or
 # have any questions.
 module Sun::Security::X509
-  module X509CertImplImports
+  module X509CertImplImports #:nodoc:
     class_module.module_eval {
       include ::Java::Lang
       include ::Sun::Security::X509

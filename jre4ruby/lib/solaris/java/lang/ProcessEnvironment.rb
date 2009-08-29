@@ -51,7 +51,7 @@ require "rjava"
 # @author  Martin Buchholz
 # @since   1.5
 module Java::Lang
-  module ProcessEnvironmentImports
+  module ProcessEnvironmentImports #:nodoc:
     class_module.module_eval {
       include ::Java::Lang
       include ::Java::Io

@@ -30,7 +30,7 @@ require "rjava"
 # @author Josh Bloch
 # @since 1.5
 module Java::Lang::Annotation
-  module Package-infoImports
+  module Package-infoImports #:nodoc:
     class_module.module_eval {
       include ::Java::Lang
       include ::Java::Lang::Annotation

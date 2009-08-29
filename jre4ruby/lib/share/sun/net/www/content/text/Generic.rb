@@ -26,7 +26,7 @@ require "rjava"
 # 
 # Generic text file handler
 module Sun::Net::Www::Content::Text
-  module GenericImports
+  module GenericImports #:nodoc:
     class_module.module_eval {
       include ::Java::Lang
       include ::Sun::Net::Www::Content::Text

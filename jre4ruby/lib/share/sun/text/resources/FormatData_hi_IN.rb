@@ -27,7 +27,7 @@ require "rjava"
 # Copyright (c) 1998 International Business Machines.
 # All Rights Reserved.
 module Sun::Text::Resources
-  module FormatData_hi_INImports
+  module FormatData_hi_INImports #:nodoc:
     class_module.module_eval {
       include ::Java::Lang
       include ::Sun::Text::Resources

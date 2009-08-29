@@ -26,7 +26,7 @@ require "rjava"
 # -- This file was mechanically generated: Do not edit! -- //
 module Java::Nio
   # package-private
-  module ByteBufferAsCharBufferBImports
+  module ByteBufferAsCharBufferBImports #:nodoc:
     class_module.module_eval {
       include ::Java::Lang
       include ::Java::Nio

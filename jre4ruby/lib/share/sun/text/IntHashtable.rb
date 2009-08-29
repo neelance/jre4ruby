@@ -27,7 +27,7 @@ require "rjava"
 # (C) Copyright Taligent, Inc. 1996,1997 - All Rights Reserved
 # (C) Copyright IBM Corp. 1996, 1997 - All Rights Reserved
 module Sun::Text
-  module IntHashtableImports
+  module IntHashtableImports #:nodoc:
     class_module.module_eval {
       include ::Java::Lang
       include ::Sun::Text

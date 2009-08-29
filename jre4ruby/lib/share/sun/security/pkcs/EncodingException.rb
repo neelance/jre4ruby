@@ -28,7 +28,7 @@ require "rjava"
 # 
 # @author Benjamin Renaud
 module Sun::Security::Pkcs
-  module EncodingExceptionImports
+  module EncodingExceptionImports #:nodoc:
     class_module.module_eval {
       include ::Java::Lang
       include ::Sun::Security::Pkcs

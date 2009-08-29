@@ -38,7 +38,7 @@ require "rjava"
 # Copyright 1997 The Open Group Research Institute.  All rights reserved.
 # ===========================================================================
 module Sun::Security::Jgss::Spi
-  module GSSContextSpiImports
+  module GSSContextSpiImports #:nodoc:
     class_module.module_eval {
       include ::Java::Lang
       include ::Sun::Security::Jgss::Spi

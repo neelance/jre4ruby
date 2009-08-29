@@ -23,7 +23,7 @@ require "rjava"
 # CA 95054 USA or visit www.sun.com if you need additional information or
 # have any questions.
 module Sun::Security::Util
-  module AuthResources_frImports
+  module AuthResources_frImports #:nodoc:
     class_module.module_eval {
       include ::Java::Lang
       include ::Sun::Security::Util

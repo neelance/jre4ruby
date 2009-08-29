@@ -33,7 +33,7 @@ require "rjava"
 # the public domain, as explained at
 # http://creativecommons.org/licenses/publicdomain
 module Java::Util::Concurrent
-  module ExchangerImports
+  module ExchangerImports #:nodoc:
     class_module.module_eval {
       include ::Java::Lang
       include ::Java::Util::Concurrent

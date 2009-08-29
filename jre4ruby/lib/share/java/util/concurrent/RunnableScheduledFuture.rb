@@ -32,7 +32,7 @@ require "rjava"
 # Expert Group and released to the public domain, as explained at
 # http://creativecommons.org/licenses/publicdomain
 module Java::Util::Concurrent
-  module RunnableScheduledFutureImports
+  module RunnableScheduledFutureImports #:nodoc:
     class_module.module_eval {
       include ::Java::Lang
       include ::Java::Util::Concurrent
