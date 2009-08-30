@@ -1,4 +1,8 @@
 class Java::Util::ArrayList < Array
+  overload_protected {
+    include Java::Util::JavaList
+  }
+
   class Iterator
     def initialize(array)
       @array = array
@@ -34,6 +38,17 @@ class Java::Util::ArrayList < Array
 
   def to_a
     self
+  end
+
+  def to_array(target_array = nil)
+    target_array ||= Array.typed(Object).new
+    if target_array.size <= self.size
+      target_array.replace self
+    else
+      target_array[0, self.size] = self
+      target_array[self.size] = nil
+    end
+    target_array
   end
 
   def iterator
