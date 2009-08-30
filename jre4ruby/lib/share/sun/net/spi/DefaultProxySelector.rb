@@ -108,9 +108,9 @@ module Sun::Net::Spi
             return NetProperties.get_boolean(key)
           end
           
-          typesig { [] }
-          define_method :initialize do
-            super()
+          typesig { [Object] }
+          define_method :initialize do |*args|
+            super(*args)
           end
           
           private
@@ -370,9 +370,9 @@ module Sun::Net::Spi
           return Proxy::NO_PROXY
         end
         
-        typesig { [] }
-        define_method :initialize do
-          super()
+        typesig { [Object] }
+        define_method :initialize do |*args|
+          super(*args)
         end
         
         private

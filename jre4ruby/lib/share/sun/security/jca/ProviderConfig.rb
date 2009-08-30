@@ -100,9 +100,9 @@ module Sun::Security::Jca
             return ClassLoader.get_system_class_loader
           end
           
-          typesig { [] }
-          define_method :initialize do
-            super()
+          typesig { [Object] }
+          define_method :initialize do |*args|
+            super(*args)
           end
           
           private
@@ -207,9 +207,9 @@ module Sun::Security::Jca
           return Boolean::TRUE
         end
         
-        typesig { [] }
-        define_method :initialize do
-          super()
+        typesig { [Object] }
+        define_method :initialize do |*args|
+          super(*args)
         end
         
         private
@@ -376,9 +376,9 @@ module Sun::Security::Jca
           end
         end
         
-        typesig { [] }
-        define_method :initialize do
-          super()
+        typesig { [Object] }
+        define_method :initialize do |*args|
+          super(*args)
         end
         
         private
@@ -410,9 +410,9 @@ module Sun::Security::Jca
             end
           end
           
-          typesig { [] }
-          define_method :initialize do
-            super()
+          typesig { [Object] }
+          define_method :initialize do |*args|
+            super(*args)
           end
           
           private

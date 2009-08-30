@@ -251,9 +251,9 @@ module Sun::Security::Ssl
             return System.get_property("javax.net.ssl.sessionCacheSize")
           end
           
-          typesig { [] }
-          define_method :initialize do
-            super()
+          typesig { [Object] }
+          define_method :initialize do |*args|
+            super(*args)
           end
           
           private

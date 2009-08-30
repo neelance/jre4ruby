@@ -396,10 +396,10 @@ module Java::Net
               return @map.get_content_type_for(file_name)
             end
             
-            typesig { [] }
-            define_method :initialize do
+            typesig { [Object] }
+            define_method :initialize do |*args|
               @map = nil
-              super()
+              super(*args)
               @map = self.attr_file_name_map
             end
             

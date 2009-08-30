@@ -358,10 +358,10 @@ module Java::Util
                 @i.remove
               end
               
-              typesig { [] }
-              define_method :initialize do
+              typesig { [Object] }
+              define_method :initialize do |*args|
                 @i = nil
-                super()
+                super(*args)
                 @i = entry_set.iterator
               end
               
@@ -390,9 +390,9 @@ module Java::Util
             return @local_class_parent.contains_key(k)
           end
           
-          typesig { [] }
-          define_method :initialize do
-            super()
+          typesig { [Object] }
+          define_method :initialize do |*args|
+            super(*args)
           end
           
           private
@@ -452,10 +452,10 @@ module Java::Util
                 @i.remove
               end
               
-              typesig { [] }
-              define_method :initialize do
+              typesig { [Object] }
+              define_method :initialize do |*args|
                 @i = nil
-                super()
+                super(*args)
                 @i = entry_set.iterator
               end
               
@@ -484,9 +484,9 @@ module Java::Util
             return @local_class_parent.contains_value(v)
           end
           
-          typesig { [] }
-          define_method :initialize do
-            super()
+          typesig { [Object] }
+          define_method :initialize do |*args|
+            super(*args)
           end
           
           private

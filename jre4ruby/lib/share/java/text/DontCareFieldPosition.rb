@@ -65,9 +65,9 @@ module Java::Text
         define_method :formatted do |field_id, attr, value, start, end_, buffer|
         end
         
-        typesig { [] }
-        define_method :initialize do
-          super()
+        typesig { [Object] }
+        define_method :initialize do |*args|
+          super(*args)
         end
         
         private

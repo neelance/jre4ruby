@@ -334,9 +334,9 @@ module Java::Security
           return p.get_permissions(@local_class_parent)
         end
         
-        typesig { [] }
-        define_method :initialize do
-          super()
+        typesig { [Object] }
+        define_method :initialize do |*args|
+          super(*args)
         end
         
         private

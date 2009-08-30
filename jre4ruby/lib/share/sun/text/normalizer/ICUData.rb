@@ -64,9 +64,9 @@ module Sun::Text::Normalizer
               return root.get_resource_as_stream(resource_name)
             end
             
-            typesig { [] }
-            define_method :initialize do
-              super()
+            typesig { [Object] }
+            define_method :initialize do |*args|
+              super(*args)
             end
             
             private

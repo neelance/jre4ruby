@@ -95,9 +95,9 @@ module Java::Security
             return Security.get_property("system.scope")
           end
           
-          typesig { [] }
-          define_method :initialize do
-            super()
+          typesig { [Object] }
+          define_method :initialize do |*args|
+            super(*args)
           end
           
           private
@@ -176,7 +176,7 @@ module Java::Security
       # @see SecurityManager#checkSecurityAccess
       def set_system_scope(scope)
         check("setSystemScope")
-        self.attr_scope.attr_scope = scope
+        self.attr_scope = scope
       end
     }
     

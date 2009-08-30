@@ -233,10 +233,10 @@ module Java::Lang
               @i.remove
             end
             
-            typesig { [] }
-            define_method :initialize do
+            typesig { [Object] }
+            define_method :initialize do |*args|
               @i = nil
-              super()
+              super(*args)
               @i = self.attr_s.iterator
             end
             

@@ -742,9 +742,9 @@ module Sun::Security::Jgss::Krb5
                   return Krb5Util.get_ticket(GSSUtil::CALLER_UNKNOWN, self.attr_my_name.get_krb5principal_name.get_name, self.attr_peer_name.get_krb5principal_name.get_name, acc)
                 end
                 
-                typesig { [] }
-                define_method :initialize do
-                  super()
+                typesig { [Object] }
+                define_method :initialize do |*args|
+                  super(*args)
                 end
                 
                 private
@@ -784,9 +784,9 @@ module Sun::Security::Jgss::Krb5
                   return (Subject.get_subject(acc))
                 end
                 
-                typesig { [] }
-                define_method :initialize do
-                  super()
+                typesig { [Object] }
+                define_method :initialize do |*args|
+                  super(*args)
                 end
                 
                 private
@@ -810,9 +810,9 @@ module Sun::Security::Jgss::Krb5
                     return nil
                   end
                   
-                  typesig { [] }
-                  define_method :initialize do
-                    super()
+                  typesig { [Object] }
+                  define_method :initialize do |*args|
+                    super(*args)
                   end
                   
                   private

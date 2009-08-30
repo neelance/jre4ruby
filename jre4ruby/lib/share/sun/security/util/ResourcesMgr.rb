@@ -72,9 +72,9 @@ module Sun::Security::Util
               return (Java::Util::ResourceBundle.get_bundle("sun.security.util.Resources"))
             end
             
-            typesig { [] }
-            define_method :initialize do
-              super()
+            typesig { [Object] }
+            define_method :initialize do |*args|
+              super(*args)
             end
             
             private
@@ -98,9 +98,9 @@ module Sun::Security::Util
               return (Java::Util::ResourceBundle.get_bundle(alt_bundle_name))
             end
             
-            typesig { [] }
-            define_method :initialize do
-              super()
+            typesig { [Object] }
+            define_method :initialize do |*args|
+              super(*args)
             end
             
             private

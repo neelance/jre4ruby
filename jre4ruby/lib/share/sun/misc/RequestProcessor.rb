@@ -115,7 +115,7 @@ module Sun::Misc
       def lazy_initialize
         synchronized(self) do
           if ((self.attr_request_queue).nil?)
-            self.attr_request_queue = Queue.new
+            self.attr_request_queue = JavaQueue.new
           end
         end
       end

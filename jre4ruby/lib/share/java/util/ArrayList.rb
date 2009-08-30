@@ -1192,12 +1192,12 @@ module Java::Util
               end
             end
             
-            typesig { [] }
-            define_method :initialize do
+            typesig { [Object] }
+            define_method :initialize do |*args|
               @cursor = 0
               @last_ret = 0
               @expected_mod_count = 0
-              super()
+              super(*args)
               @cursor = index
               @last_ret = -1
               @expected_mod_count = @local_class_parent.local_class_parent.attr_mod_count

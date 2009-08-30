@@ -474,9 +474,9 @@ module Sun::Nio::Ch
         define_method :set_option do |opt_id, value|
         end
         
-        typesig { [] }
-        define_method :initialize do
-          super()
+        typesig { [Object] }
+        define_method :initialize do |*args|
+          super(*args)
         end
         
         private

@@ -84,9 +84,9 @@ module Sun::Security::Jca
           return nil
         end
         
-        typesig { [] }
-        define_method :initialize do
-          super()
+        typesig { [Object] }
+        define_method :initialize do |*args|
+          super(*args)
         end
         
         private
@@ -109,9 +109,9 @@ module Sun::Security::Jca
             return self.class::ProviderList.new
           end
           
-          typesig { [] }
-          define_method :initialize do
-            super()
+          typesig { [Object] }
+          define_method :initialize do |*args|
+            super(*args)
           end
           
           private
@@ -210,9 +210,9 @@ module Sun::Security::Jca
           return get_provider(index)
         end
         
-        typesig { [] }
-        define_method :initialize do
-          super()
+        typesig { [Object] }
+        define_method :initialize do |*args|
+          super(*args)
         end
         
         private
@@ -242,9 +242,9 @@ module Sun::Security::Jca
           return get_provider(index)
         end
         
-        typesig { [] }
-        define_method :initialize do
-          super()
+        typesig { [Object] }
+        define_method :initialize do |*args|
+          super(*args)
         end
         
         private
@@ -655,10 +655,10 @@ module Sun::Security::Jca
               raise self.class::UnsupportedOperationException.new
             end
             
-            typesig { [] }
-            define_method :initialize do
+            typesig { [Object] }
+            define_method :initialize do |*args|
               @index = 0
-              super()
+              super(*args)
             end
             
             private

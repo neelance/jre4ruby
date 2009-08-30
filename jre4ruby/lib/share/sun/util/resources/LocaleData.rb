@@ -151,9 +151,9 @@ module Sun::Util::Resources
             return ResourceBundle.get_bundle(base_name, locale, LocaleDataResourceBundleControl.get_rbcontrol_instance)
           end
           
-          typesig { [] }
-          define_method :initialize do
-            super()
+          typesig { [Object] }
+          define_method :initialize do |*args|
+            super(*args)
           end
           
           private
@@ -256,9 +256,9 @@ module Sun::Util::Resources
             return Boolean.value_of(f.exists)
           end
           
-          typesig { [] }
-          define_method :initialize do
-            super()
+          typesig { [Object] }
+          define_method :initialize do |*args|
+            super(*args)
           end
           
           private

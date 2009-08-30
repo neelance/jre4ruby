@@ -1513,9 +1513,9 @@ module Java::Lang
               return Java::Security::Security.get_property("package.access")
             end
             
-            typesig { [] }
-            define_method :initialize do
-              super()
+            typesig { [Object] }
+            define_method :initialize do |*args|
+              super(*args)
             end
             
             private
@@ -1584,9 +1584,9 @@ module Java::Lang
               return Java::Security::Security.get_property("package.definition")
             end
             
-            typesig { [] }
-            define_method :initialize do
-              super()
+            typesig { [Object] }
+            define_method :initialize do |*args|
+              super(*args)
             end
             
             private

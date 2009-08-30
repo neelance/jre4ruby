@@ -303,9 +303,9 @@ module Java::Security::Cert
             return Security.get_property(CPV_TYPE)
           end
           
-          typesig { [] }
-          define_method :initialize do
-            super()
+          typesig { [Object] }
+          define_method :initialize do |*args|
+            super(*args)
           end
           
           private

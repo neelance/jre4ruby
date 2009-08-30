@@ -197,9 +197,9 @@ module Sun::Nio::Ch
             release0(self.attr_fd, fl.position, fl.size)
           end
           
-          typesig { [] }
-          define_method :initialize do
-            super()
+          typesig { [Object] }
+          define_method :initialize do |*args|
+            super(*args)
           end
           
           private

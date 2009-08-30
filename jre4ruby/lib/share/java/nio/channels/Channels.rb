@@ -179,12 +179,12 @@ module Java::Nio::Channels
             ch.close
           end
           
-          typesig { [] }
-          define_method :initialize do
+          typesig { [Object] }
+          define_method :initialize do |*args|
             @bb = nil
             @bs = nil
             @b1 = nil
-            super()
+            super(*args)
             @bb = nil
             @bs = nil
             @b1 = nil

@@ -234,10 +234,10 @@ module Java::Security
           return SecurityConstants::ALL_PERMISSION
         end
         
-        typesig { [] }
-        define_method :initialize do
+        typesig { [Object] }
+        define_method :initialize do |*args|
           @has_more = false
-          super()
+          super(*args)
           @has_more = self.attr_all_allowed
         end
         

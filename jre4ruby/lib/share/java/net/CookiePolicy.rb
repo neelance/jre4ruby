@@ -53,9 +53,9 @@ module Java::Net
           return true
         end
         
-        typesig { [] }
-        define_method :initialize do
-          super()
+        typesig { [Object] }
+        define_method :initialize do |*args|
+          super(*args)
         end
         
         private
@@ -74,9 +74,9 @@ module Java::Net
           return false
         end
         
-        typesig { [] }
-        define_method :initialize do
-          super()
+        typesig { [Object] }
+        define_method :initialize do |*args|
+          super(*args)
         end
         
         private
@@ -95,9 +95,9 @@ module Java::Net
           return HttpCookie.domain_matches(cookie.get_domain, uri.get_host)
         end
         
-        typesig { [] }
-        define_method :initialize do
-          super()
+        typesig { [Object] }
+        define_method :initialize do |*args|
+          super(*args)
         end
         
         private

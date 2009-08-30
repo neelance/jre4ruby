@@ -266,9 +266,9 @@ module Java::Nio::Charset
             return self.class::CoderResult.new(CR_MALFORMED, len)
           end
           
-          typesig { [] }
-          define_method :initialize do
-            super()
+          typesig { [Object] }
+          define_method :initialize do |*args|
+            super(*args)
           end
           
           private
@@ -303,9 +303,9 @@ module Java::Nio::Charset
             return self.class::CoderResult.new(CR_UNMAPPABLE, len)
           end
           
-          typesig { [] }
-          define_method :initialize do
-            super()
+          typesig { [Object] }
+          define_method :initialize do |*args|
+            super(*args)
           end
           
           private

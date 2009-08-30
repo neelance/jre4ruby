@@ -64,9 +64,9 @@ module Java::Util::Prefs
           return System.get_property("java.util.prefs.syncInterval", "30")
         end
         
-        typesig { [] }
-        define_method :initialize do
-          super()
+        typesig { [Object] }
+        define_method :initialize do |*args|
+          super(*args)
         end
         
         private
@@ -196,9 +196,9 @@ module Java::Util::Prefs
             return nil
           end
           
-          typesig { [] }
-          define_method :initialize do
-            super()
+          typesig { [Object] }
+          define_method :initialize do |*args|
+            super(*args)
           end
           
           private
@@ -276,9 +276,9 @@ module Java::Util::Prefs
             return nil
           end
           
-          typesig { [] }
-          define_method :initialize do
-            super()
+          typesig { [Object] }
+          define_method :initialize do |*args|
+            super(*args)
           end
           
           private
@@ -661,9 +661,9 @@ module Java::Util::Prefs
             sync_world
           end
           
-          typesig { [] }
-          define_method :initialize do
-            super()
+          typesig { [Object] }
+          define_method :initialize do |*args|
+            super(*args)
           end
           
           private
@@ -689,9 +689,9 @@ module Java::Util::Prefs
                 sync_world
               end
               
-              typesig { [] }
-              define_method :initialize do
-                super()
+              typesig { [Object] }
+              define_method :initialize do |*args|
+                super(*args)
               end
               
               private
@@ -700,9 +700,9 @@ module Java::Util::Prefs
             return nil
           end
           
-          typesig { [] }
-          define_method :initialize do
-            super()
+          typesig { [Object] }
+          define_method :initialize do |*args|
+            super(*args)
           end
           
           private
@@ -799,9 +799,9 @@ module Java::Util::Prefs
           return nil
         end
         
-        typesig { [] }
-        define_method :initialize do
-          super()
+        typesig { [Object] }
+        define_method :initialize do |*args|
+          super(*args)
         end
         
         private
@@ -901,9 +901,9 @@ module Java::Util::Prefs
             return nil
           end
           
-          typesig { [] }
-          define_method :initialize do
-            super()
+          typesig { [Object] }
+          define_method :initialize do |*args|
+            super(*args)
           end
           
           private
@@ -950,9 +950,9 @@ module Java::Util::Prefs
             return nil
           end
           
-          typesig { [] }
-          define_method :initialize do
-            super()
+          typesig { [Object] }
+          define_method :initialize do |*args|
+            super(*args)
           end
           
           private
@@ -992,9 +992,9 @@ module Java::Util::Prefs
           return result.to_array(EMPTY_STRING_ARRAY)
         end
         
-        typesig { [] }
-        define_method :initialize do
-          super()
+        typesig { [Object] }
+        define_method :initialize do |*args|
+          super(*args)
         end
         
         private
@@ -1064,9 +1064,9 @@ module Java::Util::Prefs
             return nil
           end
           
-          typesig { [] }
-          define_method :initialize do
-            super()
+          typesig { [Object] }
+          define_method :initialize do |*args|
+            super(*args)
           end
           
           private
@@ -1112,9 +1112,9 @@ module Java::Util::Prefs
               return self.class::Long.new(nmt)
             end
             
-            typesig { [] }
-            define_method :initialize do
-              super()
+            typesig { [Object] }
+            define_method :initialize do |*args|
+              super(*args)
             end
             
             private
@@ -1139,9 +1139,9 @@ module Java::Util::Prefs
                 return nil
               end
               
-              typesig { [] }
-              define_method :initialize do
-                super()
+              typesig { [Object] }
+              define_method :initialize do |*args|
+                super(*args)
               end
               
               private
@@ -1168,9 +1168,9 @@ module Java::Util::Prefs
             return nil
           end
           
-          typesig { [] }
-          define_method :initialize do
-            super()
+          typesig { [Object] }
+          define_method :initialize do |*args|
+            super(*args)
           end
           
           private

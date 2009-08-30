@@ -37,7 +37,7 @@ module Java::Util::Concurrent
       include ::Java::Lang
       include ::Java::Util::Concurrent
       include_const ::Java::Util, :Collection
-      include_const ::Java::Util, :Queue
+      include_const ::Java::Util, :JavaQueue
     }
   end
   
@@ -181,7 +181,7 @@ module Java::Util::Concurrent
   # @param <E> the type of elements held in this collection
   module BlockingQueue
     include_class_members BlockingQueueImports
-    include Queue
+    include JavaQueue
     
     typesig { [Object] }
     # Inserts the specified element into this queue if it is possible to do

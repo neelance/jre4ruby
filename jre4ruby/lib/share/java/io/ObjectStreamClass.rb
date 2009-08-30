@@ -368,9 +368,9 @@ module Java::Io
             return Long.value_of(compute_default_suid(self.attr_cl))
           end
           
-          typesig { [] }
-          define_method :initialize do
-            super()
+          typesig { [Object] }
+          define_method :initialize do |*args|
+            super(*args)
           end
           
           private
@@ -564,9 +564,9 @@ module Java::Io
                   return nil
                 end
                 
-                typesig { [] }
-                define_method :initialize do
-                  super()
+                typesig { [Object] }
+                define_method :initialize do |*args|
+                  super(*args)
                 end
                 
                 private
@@ -671,9 +671,9 @@ module Java::Io
             return nil
           end
           
-          typesig { [] }
-          define_method :initialize do
-            super()
+          typesig { [Object] }
+          define_method :initialize do |*args|
+            super(*args)
           end
           
           private
@@ -1799,9 +1799,9 @@ module Java::Io
               return (name1 <=> name2)
             end
             
-            typesig { [] }
-            define_method :initialize do
-              super()
+            typesig { [Object] }
+            define_method :initialize do |*args|
+              super(*args)
             end
             
             private
@@ -1842,9 +1842,9 @@ module Java::Io
               return (sig1 <=> sig2)
             end
             
-            typesig { [] }
-            define_method :initialize do
-              super()
+            typesig { [Object] }
+            define_method :initialize do |*args|
+              super(*args)
             end
             
             private
@@ -1883,9 +1883,9 @@ module Java::Io
               return comp
             end
             
-            typesig { [] }
-            define_method :initialize do
-              super()
+            typesig { [Object] }
+            define_method :initialize do |*args|
+              super(*args)
             end
             
             private

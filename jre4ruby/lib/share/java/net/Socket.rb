@@ -495,9 +495,9 @@ module Java::Net
           end
         end
         
-        typesig { [] }
-        define_method :initialize do
-          super()
+        typesig { [Object] }
+        define_method :initialize do |*args|
+          super(*args)
         end
         
         private
@@ -870,9 +870,9 @@ module Java::Net
             return self.attr_impl.get_input_stream
           end
           
-          typesig { [] }
-          define_method :initialize do
-            super()
+          typesig { [Object] }
+          define_method :initialize do |*args|
+            super(*args)
           end
           
           private
@@ -924,9 +924,9 @@ module Java::Net
             return self.attr_impl.get_output_stream
           end
           
-          typesig { [] }
-          define_method :initialize do
-            super()
+          typesig { [Object] }
+          define_method :initialize do |*args|
+            super(*args)
           end
           
           private

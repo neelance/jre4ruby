@@ -194,7 +194,7 @@ module Java::Util
   # @param <E> the type of elements held in this collection
   module Deque
     include_class_members DequeImports
-    include Queue
+    include JavaQueue
     
     typesig { [Object] }
     # Inserts the specified element at the front of this deque if it is

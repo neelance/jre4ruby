@@ -852,10 +852,10 @@ module Java::Util::Concurrent
               @it.remove
             end
             
-            typesig { [] }
-            define_method :initialize do
+            typesig { [Object] }
+            define_method :initialize do |*args|
               @it = nil
-              super()
+              super(*args)
               @it = self.attr_dq.iterator
             end
             

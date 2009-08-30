@@ -1204,9 +1204,9 @@ module Sun::Security::Tools
           tw.dispose
         end
         
-        typesig { [] }
-        define_method :initialize do
-          super()
+        typesig { [Object] }
+        define_method :initialize do |*args|
+          super(*args)
         end
         
         private
@@ -1226,9 +1226,9 @@ module Sun::Security::Tools
           tw.dispose
         end
         
-        typesig { [] }
-        define_method :initialize do
-          super()
+        typesig { [Object] }
+        define_method :initialize do |*args|
+          super(*args)
         end
         
         private
@@ -2170,9 +2170,9 @@ module Sun::Security::Tools
           e.get_window.set_visible(false)
         end
         
-        typesig { [] }
-        define_method :initialize do
-          super()
+        typesig { [Object] }
+        define_method :initialize do |*args|
+          super(*args)
         end
         
         private
@@ -2304,9 +2304,9 @@ module Sun::Security::Tools
             e.get_window.set_visible(false)
           end
           
-          typesig { [] }
-          define_method :initialize do
-            super()
+          typesig { [Object] }
+          define_method :initialize do |*args|
+            super(*args)
           end
           
           private

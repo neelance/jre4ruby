@@ -555,9 +555,9 @@ module Java::Text
             return ResourceBundle.get_bundle(base_name, locale)
           end
           
-          typesig { [] }
-          define_method :initialize do
-            super()
+          typesig { [Object] }
+          define_method :initialize do |*args|
+            super(*args)
           end
           
           private

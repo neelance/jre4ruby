@@ -274,11 +274,11 @@ module Sun::Misc
           return u
         end
         
-        typesig { [] }
-        define_method :initialize do
+        typesig { [Object] }
+        define_method :initialize do |*args|
           @index = 0
           @url = nil
-          super()
+          super(*args)
           @index = 0
           @url = nil
         end
@@ -348,11 +348,11 @@ module Sun::Misc
           return r
         end
         
-        typesig { [] }
-        define_method :initialize do
+        typesig { [Object] }
+        define_method :initialize do |*args|
           @index = 0
           @res = nil
-          super()
+          super(*args)
           @index = 0
           @res = nil
         end
@@ -436,9 +436,9 @@ module Sun::Misc
             end
           end
           
-          typesig { [] }
-          define_method :initialize do
-            super()
+          typesig { [Object] }
+          define_method :initialize do |*args|
+            super(*args)
           end
           
           private
@@ -643,9 +643,9 @@ module Sun::Misc
               return uc.get_content_length
             end
             
-            typesig { [] }
-            define_method :initialize do
-              super()
+            typesig { [Object] }
+            define_method :initialize do |*args|
+              super(*args)
             end
             
             private
@@ -804,9 +804,9 @@ module Sun::Misc
                   return nil
                 end
                 
-                typesig { [] }
-                define_method :initialize do
-                  super()
+                typesig { [Object] }
+                define_method :initialize do |*args|
+                  super(*args)
                 end
                 
                 private
@@ -907,9 +907,9 @@ module Sun::Misc
               return entry.get_code_signers
             end
             
-            typesig { [] }
-            define_method :initialize do
-              super()
+            typesig { [Object] }
+            define_method :initialize do |*args|
+              super(*args)
             end
             
             private
@@ -1016,9 +1016,9 @@ module Sun::Misc
                       return self.class::JarLoader.new(url, self.attr_handler, self.attr_lmap)
                     end
                     
-                    typesig { [] }
-                    define_method :initialize do
-                      super()
+                    typesig { [Object] }
+                    define_method :initialize do |*args|
+                      super(*args)
                     end
                     
                     private
@@ -1210,9 +1210,9 @@ module Sun::Misc
                   return RJava.cast_to_int(file.length)
                 end
                 
-                typesig { [] }
-                define_method :initialize do
-                  super()
+                typesig { [Object] }
+                define_method :initialize do |*args|
+                  super(*args)
                 end
                 
                 private

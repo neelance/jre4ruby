@@ -1072,9 +1072,9 @@ module Java::Util::Prefs
           return Boolean.value_of((self.attr_root).equal?(Preferences.user_root))
         end
         
-        typesig { [] }
-        define_method :initialize do
-          super()
+        typesig { [Object] }
+        define_method :initialize do |*args|
+          super(*args)
         end
         
         private

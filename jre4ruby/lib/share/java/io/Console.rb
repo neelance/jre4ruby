@@ -648,9 +648,9 @@ module Java::Io
                 end
               end
               
-              typesig { [] }
-              define_method :initialize do
-                super()
+              typesig { [Object] }
+              define_method :initialize do |*args|
+                super(*args)
               end
               
               private
@@ -665,9 +665,9 @@ module Java::Io
             return self.attr_cons.attr_cs
           end
           
-          typesig { [] }
-          define_method :initialize do
-            super()
+          typesig { [Object] }
+          define_method :initialize do |*args|
+            super(*args)
           end
           
           private
@@ -725,9 +725,9 @@ module Java::Io
         define_method :close do
         end
         
-        typesig { [] }
-        define_method :initialize do
-          super()
+        typesig { [Object] }
+        define_method :initialize do |*args|
+          super(*args)
         end
         
         private

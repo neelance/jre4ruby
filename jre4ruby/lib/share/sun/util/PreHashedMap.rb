@@ -291,12 +291,12 @@ module Sun::Util
               raise self.class::UnsupportedOperationException.new
             end
             
-            typesig { [] }
-            define_method :initialize do
+            typesig { [Object] }
+            define_method :initialize do |*args|
               @i = 0
               @a = nil
               @cur = nil
-              super()
+              super(*args)
               @i = -1
               @a = nil
               @cur = nil
@@ -307,9 +307,9 @@ module Sun::Util
           end.new_local(self)
         end
         
-        typesig { [] }
-        define_method :initialize do
-          super()
+        typesig { [Object] }
+        define_method :initialize do |*args|
+          super(*args)
         end
         
         private
@@ -395,10 +395,10 @@ module Sun::Util
                   raise self.class::UnsupportedOperationException.new
                 end
                 
-                typesig { [] }
-                define_method :initialize do
+                typesig { [Object] }
+                define_method :initialize do |*args|
                   @k = nil
-                  super()
+                  super(*args)
                   @k = self.attr_i.next_
                 end
                 
@@ -412,10 +412,10 @@ module Sun::Util
               raise self.class::UnsupportedOperationException.new
             end
             
-            typesig { [] }
-            define_method :initialize do
+            typesig { [Object] }
+            define_method :initialize do |*args|
               @i = nil
-              super()
+              super(*args)
               @i = key_set.iterator
             end
             
@@ -424,9 +424,9 @@ module Sun::Util
           end.new_local(self)
         end
         
-        typesig { [] }
-        define_method :initialize do
-          super()
+        typesig { [Object] }
+        define_method :initialize do |*args|
+          super(*args)
         end
         
         private

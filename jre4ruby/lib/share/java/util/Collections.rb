@@ -1174,10 +1174,10 @@ module Java::Util
               raise self.class::UnsupportedOperationException.new
             end
             
-            typesig { [] }
-            define_method :initialize do
+            typesig { [Object] }
+            define_method :initialize do |*args|
               @i = nil
-              super()
+              super(*args)
               @i = self.attr_c.iterator
             end
             
@@ -1503,10 +1503,10 @@ module Java::Util
               raise self.class::UnsupportedOperationException.new
             end
             
-            typesig { [] }
-            define_method :initialize do
+            typesig { [Object] }
+            define_method :initialize do |*args|
               @i = nil
-              super()
+              super(*args)
               @i = self.attr_list.list_iterator(index)
             end
             
@@ -1770,10 +1770,10 @@ module Java::Util
                   raise self.class::UnsupportedOperationException.new
                 end
                 
-                typesig { [] }
-                define_method :initialize do
+                typesig { [Object] }
+                define_method :initialize do |*args|
                   @i = nil
-                  super()
+                  super(*args)
                   @i = self.attr_c.iterator
                 end
                 
@@ -3135,9 +3135,9 @@ module Java::Util
               it.remove
             end
             
-            typesig { [] }
-            define_method :initialize do
-              super()
+            typesig { [Object] }
+            define_method :initialize do |*args|
+              super(*args)
             end
             
             private
@@ -3513,9 +3513,9 @@ module Java::Util
               i.add(e)
             end
             
-            typesig { [] }
-            define_method :initialize do
-              super()
+            typesig { [Object] }
+            define_method :initialize do |*args|
+              super(*args)
             end
             
             private
@@ -3849,9 +3849,9 @@ module Java::Util
                   return checked_entry(i.next_, value_type)
                 end
                 
-                typesig { [] }
-                define_method :initialize do
-                  super()
+                typesig { [Object] }
+                define_method :initialize do |*args|
+                  super(*args)
                 end
                 
                 private
@@ -4692,10 +4692,10 @@ module Java::Util
             raise self.class::UnsupportedOperationException.new
           end
           
-          typesig { [] }
-          define_method :initialize do
+          typesig { [Object] }
+          define_method :initialize do |*args|
             @has_next = false
-            super()
+            super(*args)
             @has_next = true
           end
           
@@ -5218,10 +5218,10 @@ module Java::Util
             return @i.next_
           end
           
-          typesig { [] }
-          define_method :initialize do
+          typesig { [Object] }
+          define_method :initialize do |*args|
             @i = nil
-            super()
+            super(*args)
             @i = c.iterator
           end
           
@@ -5540,7 +5540,7 @@ module Java::Util
       const_set_lazy(:AsLIFOQueue) { Class.new(AbstractQueue) do
         include_class_members Collections
         overload_protected {
-          include Queue
+          include JavaQueue
           include Serializable
         }
         

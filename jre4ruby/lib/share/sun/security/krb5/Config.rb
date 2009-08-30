@@ -540,9 +540,9 @@ module Sun::Security::Krb5
               return self.class::FileInputStream.new(file_name)
             end
             
-            typesig { [] }
-            define_method :initialize do
-              super()
+            typesig { [Object] }
+            define_method :initialize do |*args|
+              super(*args)
             end
             
             private

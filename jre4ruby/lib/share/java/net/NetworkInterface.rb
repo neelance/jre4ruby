@@ -421,10 +421,10 @@ module Java::Net
             return (!(netifs).nil? && @i < netifs.attr_length)
           end
           
-          typesig { [] }
-          define_method :initialize do
+          typesig { [Object] }
+          define_method :initialize do |*args|
             @i = 0
-            super()
+            super(*args)
             @i = 0
           end
           

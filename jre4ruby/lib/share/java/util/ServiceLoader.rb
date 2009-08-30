@@ -515,10 +515,10 @@ module Java::Util
           raise self.class::UnsupportedOperationException.new
         end
         
-        typesig { [] }
-        define_method :initialize do
+        typesig { [Object] }
+        define_method :initialize do |*args|
           @known_providers = nil
-          super()
+          super(*args)
           @known_providers = self.attr_providers.entry_set.iterator
         end
         

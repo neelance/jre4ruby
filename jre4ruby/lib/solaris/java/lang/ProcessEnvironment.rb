@@ -508,10 +508,10 @@ module Java::Lang
               @i.remove
             end
             
-            typesig { [] }
-            define_method :initialize do
+            typesig { [Object] }
+            define_method :initialize do |*args|
               @i = nil
-              super()
+              super(*args)
               @i = self.attr_s.iterator
             end
             
@@ -546,9 +546,9 @@ module Java::Lang
                 raise self.class::UnsupportedOperationException.new
               end
               
-              typesig { [] }
-              define_method :initialize do
-                super()
+              typesig { [Object] }
+              define_method :initialize do |*args|
+                super(*args)
               end
               
               private
@@ -640,10 +640,10 @@ module Java::Lang
               @i.remove
             end
             
-            typesig { [] }
-            define_method :initialize do
+            typesig { [Object] }
+            define_method :initialize do |*args|
               @i = nil
-              super()
+              super(*args)
               @i = self.attr_c.iterator
             end
             
@@ -735,10 +735,10 @@ module Java::Lang
               @i.remove
             end
             
-            typesig { [] }
-            define_method :initialize do
+            typesig { [Object] }
+            define_method :initialize do |*args|
               @i = nil
-              super()
+              super(*args)
               @i = self.attr_s.iterator
             end
             

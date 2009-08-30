@@ -545,9 +545,9 @@ module Sun::Security::Provider
           return System.get_property("sun.security.policy.numcaches")
         end
         
-        typesig { [] }
-        define_method :initialize do
-          super()
+        typesig { [Object] }
+        define_method :initialize do |*args|
+          super(*args)
         end
         
         private
@@ -591,9 +591,9 @@ module Sun::Security::Provider
             return nil
           end
           
-          typesig { [] }
-          define_method :initialize do
-            super()
+          typesig { [Object] }
+          define_method :initialize do |*args|
+            super(*args)
           end
           
           private
@@ -701,9 +701,9 @@ module Sun::Security::Provider
           return Boolean.value_of(loaded_policy_)
         end
         
-        typesig { [] }
-        define_method :initialize do
-          super()
+        typesig { [Object] }
+        define_method :initialize do |*args|
+          super(*args)
         end
         
         private
@@ -827,9 +827,9 @@ module Sun::Security::Provider
           return nil
         end
         
-        typesig { [] }
-        define_method :initialize do
-          super()
+        typesig { [Object] }
+        define_method :initialize do |*args|
+          super(*args)
         end
         
         private
@@ -1251,9 +1251,9 @@ module Sun::Security::Provider
           return canonicalize_codebase(cs, true)
         end
         
-        typesig { [] }
-        define_method :initialize do
-          super()
+        typesig { [Object] }
+        define_method :initialize do |*args|
+          super(*args)
         end
         
         private
@@ -1284,9 +1284,9 @@ module Sun::Security::Provider
           return canonicalize_codebase(cs, true)
         end
         
-        typesig { [] }
-        define_method :initialize do
-          super()
+        typesig { [Object] }
+        define_method :initialize do |*args|
+          super(*args)
         end
         
         private
@@ -1345,9 +1345,9 @@ module Sun::Security::Provider
           return Boolean.new(entry.get_code_source.implies(cs))
         end
         
-        typesig { [] }
-        define_method :initialize do
-          super()
+        typesig { [Object] }
+        define_method :initialize do |*args|
+          super(*args)
         end
         
         private
@@ -1952,9 +1952,9 @@ module Sun::Security::Provider
           return self.attr_scope.get_identity(cert.get_public_key)
         end
         
-        typesig { [] }
-        define_method :initialize do
-          super()
+        typesig { [Object] }
+        define_method :initialize do |*args|
+          super(*args)
         end
         
         private
@@ -1975,9 +1975,9 @@ module Sun::Security::Provider
               return nil
             end
             
-            typesig { [] }
-            define_method :initialize do
-              super()
+            typesig { [Object] }
+            define_method :initialize do |*args|
+              super(*args)
             end
             
             private

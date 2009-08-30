@@ -289,9 +289,9 @@ module Java::Util
           return "NONEXISTENT_BUNDLE"
         end
         
-        typesig { [] }
-        define_method :initialize do
-          super()
+        typesig { [Object] }
+        define_method :initialize do |*args|
+          super(*args)
         end
         
         private
@@ -493,9 +493,9 @@ module Java::Util
               return self.class::RBClassLoader.new
             end
             
-            typesig { [] }
-            define_method :initialize do
-              super()
+            typesig { [Object] }
+            define_method :initialize do |*args|
+              super(*args)
             end
             
             private
@@ -2501,9 +2501,9 @@ module Java::Util
                     return is
                   end
                   
-                  typesig { [] }
-                  define_method :initialize do
-                    super()
+                  typesig { [Object] }
+                  define_method :initialize do |*args|
+                    super(*args)
                   end
                   
                   private

@@ -188,9 +188,9 @@ module Java::Security
                 return Security.get_property("policy.provider")
               end
               
-              typesig { [] }
-              define_method :initialize do
-                super()
+              typesig { [Object] }
+              define_method :initialize do |*args|
+                super(*args)
               end
               
               private
@@ -236,9 +236,9 @@ module Java::Security
                   end
                 end
                 
-                typesig { [] }
-                define_method :initialize do
-                  super()
+                typesig { [Object] }
+                define_method :initialize do |*args|
+                  super(*args)
                 end
                 
                 private
@@ -283,7 +283,7 @@ module Java::Security
           init_policy(p)
         end
         synchronized((Policy)) do
-          self.attr_policy.attr_policy = p
+          self.attr_policy = p
         end
       end
       
@@ -321,9 +321,9 @@ module Java::Security
             return p.get_class.get_protection_domain
           end
           
-          typesig { [] }
-          define_method :initialize do
-            super()
+          typesig { [Object] }
+          define_method :initialize do |*args|
+            super(*args)
           end
           
           private

@@ -454,13 +454,13 @@ module Java::Nio::Charset
             raise self.class::UnsupportedOperationException.new
           end
           
-          typesig { [] }
-          define_method :initialize do
+          typesig { [Object] }
+          define_method :initialize do |*args|
             @cl = nil
             @sl = nil
             @i = nil
             @next = nil
-            super()
+            super(*args)
             @cl = ClassLoader.get_system_class_loader
             @sl = ServiceLoader.load(CharsetProvider, @cl)
             @i = @sl.iterator
@@ -520,9 +520,9 @@ module Java::Nio::Charset
               return nil
             end
             
-            typesig { [] }
-            define_method :initialize do
-              super()
+            typesig { [Object] }
+            define_method :initialize do |*args|
+              super(*args)
             end
             
             private
@@ -590,9 +590,9 @@ module Java::Nio::Charset
             return nil
           end
           
-          typesig { [] }
-          define_method :initialize do
-            super()
+          typesig { [Object] }
+          define_method :initialize do |*args|
+            super(*args)
           end
           
           private
@@ -746,9 +746,9 @@ module Java::Nio::Charset
             return Collections.unmodifiable_sorted_map(m)
           end
           
-          typesig { [] }
-          define_method :initialize do
-            super()
+          typesig { [Object] }
+          define_method :initialize do |*args|
+            super(*args)
           end
           
           private

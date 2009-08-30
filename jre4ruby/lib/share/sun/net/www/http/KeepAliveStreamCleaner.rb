@@ -95,9 +95,9 @@ module Sun::Net::Www::Http
             return NetProperties.get_integer(max_data_key, self.attr_max_data_remaining)
           end
           
-          typesig { [] }
-          define_method :initialize do
-            super()
+          typesig { [Object] }
+          define_method :initialize do |*args|
+            super(*args)
           end
           
           private
@@ -115,9 +115,9 @@ module Sun::Net::Www::Http
             return NetProperties.get_integer(max_capacity_key, self.attr_max_capacity)
           end
           
-          typesig { [] }
-          define_method :initialize do
-            super()
+          typesig { [Object] }
+          define_method :initialize do |*args|
+            super(*args)
           end
           
           private

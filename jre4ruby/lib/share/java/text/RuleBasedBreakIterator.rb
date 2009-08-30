@@ -495,9 +495,9 @@ module Java::Text
             return self.class::BufferedInputStream.new(get_class.get_resource_as_stream("/sun/text/resources/" + datafile))
           end
           
-          typesig { [] }
-          define_method :initialize do
-            super()
+          typesig { [Object] }
+          define_method :initialize do |*args|
+            super(*args)
           end
           
           private

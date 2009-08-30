@@ -525,11 +525,11 @@ module Sun::Misc
               @hash_iterator.remove
             end
             
-            typesig { [] }
-            define_method :initialize do
+            typesig { [Object] }
+            define_method :initialize do |*args|
               @hash_iterator = nil
               @next = nil
-              super()
+              super(*args)
               @hash_iterator = self.attr_hash_entries.iterator
               @next = nil
             end

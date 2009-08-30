@@ -587,9 +587,9 @@ module Sun::Nio::Ch
               Net.set_int_option(self.attr_fd, opt, arg)
             end
             
-            typesig { [] }
-            define_method :initialize do
-              super()
+            typesig { [Object] }
+            define_method :initialize do |*args|
+              super(*args)
             end
             
             private

@@ -243,9 +243,9 @@ module Java::Util::Prefs
             return System.get_property("java.util.prefs.PreferencesFactory")
           end
           
-          typesig { [] }
-          define_method :initialize do
-            super()
+          typesig { [Object] }
+          define_method :initialize do |*args|
+            super(*args)
           end
           
           private
@@ -284,9 +284,9 @@ module Java::Util::Prefs
             return factory1
           end
           
-          typesig { [] }
-          define_method :initialize do
-            super()
+          typesig { [Object] }
+          define_method :initialize do |*args|
+            super(*args)
           end
           
           private

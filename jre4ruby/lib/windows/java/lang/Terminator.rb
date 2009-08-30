@@ -68,9 +68,9 @@ module Java::Lang
             Shutdown.exit(sig.get_number + 200)
           end
           
-          typesig { [] }
-          define_method :initialize do
-            super()
+          typesig { [Object] }
+          define_method :initialize do |*args|
+            super(*args)
           end
           
           private

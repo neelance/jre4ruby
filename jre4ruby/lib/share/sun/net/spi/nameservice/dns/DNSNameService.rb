@@ -169,9 +169,9 @@ module Sun::Net::Spi::Nameservice::Dns
               return ctx
             end
             
-            typesig { [] }
-            define_method :initialize do
-              super()
+            typesig { [Object] }
+            define_method :initialize do |*args|
+              super(*args)
             end
             
             private
@@ -216,9 +216,9 @@ module Sun::Net::Spi::Nameservice::Dns
             return ctx.get_attributes(name, ids)
           end
           
-          typesig { [] }
-          define_method :initialize do
-            super()
+          typesig { [Object] }
+          define_method :initialize do |*args|
+            super(*args)
           end
           
           private

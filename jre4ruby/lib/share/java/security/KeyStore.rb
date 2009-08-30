@@ -770,9 +770,9 @@ module Java::Security
             return Security.get_property(KEYSTORE_TYPE)
           end
           
-          typesig { [] }
-          define_method :initialize do
-            super()
+          typesig { [Object] }
+          define_method :initialize do |*args|
+            super(*args)
           end
           
           private
@@ -1436,10 +1436,10 @@ module Java::Security
                 return protection_parameter
               end
               
-              typesig { [] }
-              define_method :initialize do
+              typesig { [Object] }
+              define_method :initialize do |*args|
                 @get_called = false
-                super()
+                super(*args)
               end
               
               private
@@ -1641,9 +1641,9 @@ module Java::Security
                     end
                   end
                   
-                  typesig { [] }
-                  define_method :initialize do
-                    super()
+                  typesig { [Object] }
+                  define_method :initialize do |*args|
+                    super(*args)
                   end
                   
                   private
@@ -1756,12 +1756,12 @@ module Java::Security
                 return protection
               end
               
-              typesig { [] }
-              define_method :initialize do
+              typesig { [Object] }
+              define_method :initialize do |*args|
                 @get_called = false
                 @old_exception = nil
                 @action = nil
-                super()
+                super(*args)
                 builder_class = self.class
                 @action = Class.new(self.class::PrivilegedExceptionAction.class == Class ? self.class::PrivilegedExceptionAction : Object) do
                   extend LocalClass
@@ -1804,9 +1804,9 @@ module Java::Security
                     return ks
                   end
                   
-                  typesig { [] }
-                  define_method :initialize do
-                    super()
+                  typesig { [Object] }
+                  define_method :initialize do |*args|
+                    super(*args)
                   end
                   
                   private

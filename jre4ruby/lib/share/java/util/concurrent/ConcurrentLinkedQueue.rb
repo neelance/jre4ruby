@@ -85,7 +85,7 @@ module Java::Util::Concurrent
   class ConcurrentLinkedQueue < ConcurrentLinkedQueueImports.const_get :AbstractQueue
     include_class_members ConcurrentLinkedQueueImports
     overload_protected {
-      include Queue
+      include JavaQueue
       include Java::Io::Serializable
     }
     

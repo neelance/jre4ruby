@@ -177,9 +177,9 @@ module Java::Net
               return nil
             end
             
-            typesig { [] }
-            define_method :initialize do
-              super()
+            typesig { [Object] }
+            define_method :initialize do |*args|
+              super(*args)
             end
             
             private
@@ -240,9 +240,9 @@ module Java::Net
             return Authenticator.request_password_authentication(self.attr_server, addr, self.attr_port, "SOCKS5", "SOCKS authentication", nil)
           end
           
-          typesig { [] }
-          define_method :initialize do
-            super()
+          typesig { [Object] }
+          define_method :initialize do |*args|
+            super(*args)
           end
           
           private
@@ -264,9 +264,9 @@ module Java::Net
                 return prefs.get("username", nil)
               end
               
-              typesig { [] }
-              define_method :initialize do
-                super()
+              typesig { [Object] }
+              define_method :initialize do |*args|
+                super(*args)
               end
               
               private
@@ -287,9 +287,9 @@ module Java::Net
                   return prefs.get("password", nil)
                 end
                 
-                typesig { [] }
-                define_method :initialize do
-                  super()
+                typesig { [Object] }
+                define_method :initialize do |*args|
+                  super(*args)
                 end
                 
                 private
@@ -478,9 +478,9 @@ module Java::Net
             return ProxySelector.get_default
           end
           
-          typesig { [] }
-          define_method :initialize do
-            super()
+          typesig { [Object] }
+          define_method :initialize do |*args|
+            super(*args)
           end
           
           private
@@ -785,9 +785,9 @@ module Java::Net
               return ProxySelector.get_default
             end
             
-            typesig { [] }
-            define_method :initialize do
-              super()
+            typesig { [Object] }
+            define_method :initialize do |*args|
+              super(*args)
             end
             
             private
@@ -847,9 +847,9 @@ module Java::Net
                   return nil
                 end
                 
-                typesig { [] }
-                define_method :initialize do
-                  super()
+                typesig { [Object] }
+                define_method :initialize do |*args|
+                  super(*args)
                 end
                 
                 private
@@ -886,9 +886,9 @@ module Java::Net
                 return nil
               end
               
-              typesig { [] }
-              define_method :initialize do
-                super()
+              typesig { [Object] }
+              define_method :initialize do |*args|
+                super(*args)
               end
               
               private

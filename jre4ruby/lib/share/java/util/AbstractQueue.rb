@@ -67,7 +67,7 @@ module Java::Util
   class AbstractQueue < AbstractQueueImports.const_get :AbstractCollection
     include_class_members AbstractQueueImports
     overload_protected {
-      include Queue
+      include JavaQueue
     }
     
     typesig { [] }

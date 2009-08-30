@@ -851,10 +851,10 @@ module Java::Util
           self.attr_size += 1
         end
         
-        typesig { [] }
-        define_method :initialize do
+        typesig { [Object] }
+        define_method :initialize do |*args|
           @i = nil
-          super()
+          super(*args)
           @i = self.attr_l.list_iterator(index + self.attr_offset)
         end
         

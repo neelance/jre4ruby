@@ -262,9 +262,9 @@ module Sun::Security::Ssl
               return hostname
             end
             
-            typesig { [] }
-            define_method :initialize do
-              super()
+            typesig { [Object] }
+            define_method :initialize do |*args|
+              super(*args)
             end
             
             private
@@ -306,9 +306,9 @@ module Sun::Security::Ssl
               return Krb5Util.get_ticket_from_subject_and_tgs(GSSUtil::CALLER_SSL_CLIENT, client_principal, server_principal, tgs_principal, acc)
             end
             
-            typesig { [] }
-            define_method :initialize do
-              super()
+            typesig { [Object] }
+            define_method :initialize do |*args|
+              super(*args)
             end
             
             private

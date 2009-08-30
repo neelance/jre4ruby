@@ -476,9 +476,9 @@ module Sun::Net::Www::Protocol::Http
             return Authenticator.request_password_authentication(host, addr, port, protocol, prompt, scheme, url, auth_type)
           end
           
-          typesig { [] }
-          define_method :initialize do
-            super()
+          typesig { [Object] }
+          define_method :initialize do |*args|
+            super(*args)
           end
           
           private
@@ -784,9 +784,9 @@ module Sun::Net::Www::Protocol::Http
           return CookieHandler.get_default
         end
         
-        typesig { [] }
-        define_method :initialize do
-          super()
+        typesig { [Object] }
+        define_method :initialize do |*args|
+          super(*args)
         end
         
         private
@@ -802,9 +802,9 @@ module Sun::Net::Www::Protocol::Http
           return ResponseCache.get_default
         end
         
-        typesig { [] }
-        define_method :initialize do
-          super()
+        typesig { [Object] }
+        define_method :initialize do |*args|
+          super(*args)
         end
         
         private
@@ -893,9 +893,9 @@ module Sun::Net::Www::Protocol::Http
             return nil
           end
           
-          typesig { [] }
-          define_method :initialize do
-            super()
+          typesig { [Object] }
+          define_method :initialize do |*args|
+            super(*args)
           end
           
           private
@@ -977,9 +977,9 @@ module Sun::Net::Www::Protocol::Http
               return ProxySelector.get_default
             end
             
-            typesig { [] }
-            define_method :initialize do
-              super()
+            typesig { [Object] }
+            define_method :initialize do |*args|
+              super(*args)
             end
             
             private
@@ -1500,9 +1500,9 @@ module Sun::Net::Www::Protocol::Http
             return ctr.new_instance(args)
           end
           
-          typesig { [] }
-          define_method :initialize do
-            super()
+          typesig { [Object] }
+          define_method :initialize do |*args|
+            super(*args)
           end
           
           private
@@ -1729,9 +1729,9 @@ module Sun::Net::Www::Protocol::Http
                   return InetAddress.get_by_name(final_host)
                 end
                 
-                typesig { [] }
-                define_method :initialize do
-                  super()
+                typesig { [Object] }
+                define_method :initialize do |*args|
+                  super(*args)
                 end
                 
                 private
