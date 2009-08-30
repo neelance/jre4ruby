@@ -319,7 +319,7 @@ module Sun::Nio::Ch
             return s.retain_all(coll)
           end
           
-          typesig { [E] }
+          typesig { [Object] }
           define_method :add do |o|
             raise self.class::UnsupportedOperationException.new
           end
