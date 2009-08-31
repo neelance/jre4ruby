@@ -283,7 +283,7 @@ module Sun::Net::Www::Protocol::Http
       end # end of cookieIndex iteration
     end
     
-    typesig { [Map, T, HttpCookie] }
+    typesig { [Map, Object, HttpCookie] }
     # add 'cookie' indexed by 'index' into 'indexStore'
     def add_index(index_store, index, cookie)
       if (!(index).nil?)

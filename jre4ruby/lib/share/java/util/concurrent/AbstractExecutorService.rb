@@ -74,7 +74,7 @@ module Java::Util::Concurrent
     include_class_members AbstractExecutorServiceImports
     include ExecutorService
     
-    typesig { [Runnable, T] }
+    typesig { [Runnable, Object] }
     # Returns a <tt>RunnableFuture</tt> for the given runnable and default
     # value.
     # 
@@ -112,7 +112,7 @@ module Java::Util::Concurrent
       return ftask
     end
     
-    typesig { [Runnable, T] }
+    typesig { [Runnable, Object] }
     def submit(task, result)
       if ((task).nil?)
         raise NullPointerException.new

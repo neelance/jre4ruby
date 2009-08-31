@@ -422,7 +422,7 @@ module Java::Util
       return Arrays.copy_of(@queue, @size)
     end
     
-    typesig { [Array.typed(T)] }
+    typesig { [Array.typed(Object)] }
     # Returns an array containing all of the elements in this queue; the
     # runtime type of the returned array is that of the specified array.
     # The returned array elements are in no particular order.

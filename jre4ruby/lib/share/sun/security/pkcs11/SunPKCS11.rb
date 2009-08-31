@@ -177,7 +177,7 @@ module Sun::Security::Pkcs11
     end
     
     class_module.module_eval {
-      typesig { [T] }
+      typesig { [Object] }
       def check_null(obj)
         if ((obj).nil?)
           raise NullPointerException.new

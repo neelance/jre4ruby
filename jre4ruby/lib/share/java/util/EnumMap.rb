@@ -596,7 +596,7 @@ module Java::Util
           return fill_entry_array(Array.typed(Object).new(self.attr_size) { nil })
         end
         
-        typesig { [Array.typed(class_self::T)] }
+        typesig { [Array.typed(Object)] }
         def to_array(a)
           size_ = size
           if (a.attr_length < size_)

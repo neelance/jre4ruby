@@ -99,7 +99,7 @@ module Sun::Reflect::Generics::ReflectiveObjects
     end
     
     class_module.module_eval {
-      typesig { [T, String, Array.typed(FieldTypeSignature), GenericsFactory] }
+      typesig { [Object, String, Array.typed(FieldTypeSignature), GenericsFactory] }
       # Factory method.
       # @param decl - the reflective object that declared the type variable
       # that this method should create

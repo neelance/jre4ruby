@@ -738,7 +738,7 @@ module Java::Util
       end
     end
     
-    typesig { [Array.typed(T)] }
+    typesig { [Array.typed(Object)] }
     # Returns an array containing all of the elements in this Vector in the
     # correct order; the runtime type of the returned array is that of the
     # specified array.  If the Vector fits in the specified array, it is

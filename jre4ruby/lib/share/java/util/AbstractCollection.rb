@@ -156,7 +156,7 @@ module Java::Util
       return it.has_next ? finish_to_array(r, it) : r
     end
     
-    typesig { [Array.typed(T)] }
+    typesig { [Array.typed(Object)] }
     # {@inheritDoc}
     # 
     # <p>This implementation returns an array containing all the elements
@@ -204,7 +204,7 @@ module Java::Util
     end
     
     class_module.module_eval {
-      typesig { [Array.typed(T), Iterator] }
+      typesig { [Array.typed(Object), Iterator] }
       # Reallocates the array being used within toArray when the iterator
       # returned more elements than expected, and finishes filling it from
       # the iterator.

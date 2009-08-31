@@ -202,7 +202,7 @@ module Java::Util
         end
       end
       
-      typesig { [JavaList, T] }
+      typesig { [JavaList, Object] }
       # Searches the specified list for the specified object using the binary
       # search algorithm.  The list must be sorted into ascending order
       # according to the {@linkplain Comparable natural ordering} of its
@@ -239,7 +239,7 @@ module Java::Util
         end
       end
       
-      typesig { [JavaList, T] }
+      typesig { [JavaList, Object] }
       def indexed_binary_search(list, key)
         low = 0
         high = list.size - 1
@@ -260,7 +260,7 @@ module Java::Util
         return -(low + 1) # key not found
       end
       
-      typesig { [JavaList, T] }
+      typesig { [JavaList, Object] }
       def iterator_binary_search(list, key)
         low = 0
         high = list.size - 1
@@ -300,7 +300,7 @@ module Java::Util
         return obj
       end
       
-      typesig { [JavaList, T, Comparator] }
+      typesig { [JavaList, Object, Comparator] }
       # Searches the specified list for the specified object using the binary
       # search algorithm.  The list must be sorted into ascending order
       # according to the specified comparator (as by the
@@ -344,7 +344,7 @@ module Java::Util
         end
       end
       
-      typesig { [JavaList, T, Comparator] }
+      typesig { [JavaList, Object, Comparator] }
       def indexed_binary_search(l, key, c)
         low = 0
         high = l.size - 1
@@ -365,7 +365,7 @@ module Java::Util
         return -(low + 1) # key not found
       end
       
-      typesig { [JavaList, T, Comparator] }
+      typesig { [JavaList, Object, Comparator] }
       def iterator_binary_search(l, key, c)
         low = 0
         high = l.size - 1
@@ -544,7 +544,7 @@ module Java::Util
         arr[j] = tmp
       end
       
-      typesig { [JavaList, T] }
+      typesig { [JavaList, Object] }
       # Replaces all of the elements of the specified list with the specified
       # element. <p>
       # 
@@ -857,7 +857,7 @@ module Java::Util
         reverse(list)
       end
       
-      typesig { [JavaList, T, T] }
+      typesig { [JavaList, Object, Object] }
       # Replaces all occurrences of one specified value in a list with another.
       # More formally, replaces with <tt>newVal</tt> each element <tt>e</tt>
       # in <tt>list</tt> such that
@@ -1136,7 +1136,7 @@ module Java::Util
           return @c.to_array
         end
         
-        typesig { [Array.typed(class_self::T)] }
+        typesig { [Array.typed(Object)] }
         def to_array(a)
           return @c.to_array(a)
         end
@@ -1793,7 +1793,7 @@ module Java::Util
               return a
             end
             
-            typesig { [Array.typed(class_self::T)] }
+            typesig { [Array.typed(Object)] }
             def to_array(a)
               # We don't pass a to c.toArray, to avoid window of
               # vulnerability wherein an unscrupulous multithreaded client
@@ -2118,7 +2118,7 @@ module Java::Util
           end
         end
         
-        typesig { [Array.typed(class_self::T)] }
+        typesig { [Array.typed(Object)] }
         def to_array(a)
           synchronized((@mutex)) do
             return @c.to_array(a)
@@ -3077,7 +3077,7 @@ module Java::Util
           return @c.to_array
         end
         
-        typesig { [Array.typed(class_self::T)] }
+        typesig { [Array.typed(Object)] }
         def to_array(a)
           return @c.to_array(a)
         end
@@ -3873,7 +3873,7 @@ module Java::Util
               return dest
             end
             
-            typesig { [Array.typed(class_self::T)] }
+            typesig { [Array.typed(Object)] }
             def to_array(a)
               # We don't pass a to s.toArray, to avoid window of
               # vulnerability wherein an unscrupulous multithreaded client
@@ -4414,7 +4414,7 @@ module Java::Util
           return Array.typed(Object).new(0) { nil }
         end
         
-        typesig { [Array.typed(class_self::T)] }
+        typesig { [Array.typed(Object)] }
         def to_array(a)
           if (a.attr_length > 0)
             a[0] = nil
@@ -4509,7 +4509,7 @@ module Java::Util
           return Array.typed(Object).new(0) { nil }
         end
         
-        typesig { [Array.typed(class_self::T)] }
+        typesig { [Array.typed(Object)] }
         def to_array(a)
           if (a.attr_length > 0)
             a[0] = nil
@@ -4648,7 +4648,7 @@ module Java::Util
         alias_method :initialize__empty_map, :initialize
       end }
       
-      typesig { [T] }
+      typesig { [Object] }
       # Singleton collections
       # 
       # Returns an immutable set containing only the specified object.
@@ -4660,7 +4660,7 @@ module Java::Util
         return SingletonSet.new(o)
       end
       
-      typesig { [E] }
+      typesig { [Object] }
       def singleton_iterator(e)
         return Class.new(Iterator.class == Class ? Iterator : Object) do
           extend LocalClass
@@ -4748,7 +4748,7 @@ module Java::Util
         alias_method :initialize__singleton_set, :initialize
       end }
       
-      typesig { [T] }
+      typesig { [Object] }
       # Returns an immutable list containing only the specified object.
       # The returned list is serializable.
       # 
@@ -4811,7 +4811,7 @@ module Java::Util
         alias_method :initialize__singleton_list, :initialize
       end }
       
-      typesig { [K, V] }
+      typesig { [Object, Object] }
       # Returns an immutable map, mapping only the specified key to the
       # specified value.  The returned map is serializable.
       # 
@@ -4933,7 +4933,7 @@ module Java::Util
         alias_method :initialize__singleton_map, :initialize
       end }
       
-      typesig { [::Java::Int, T] }
+      typesig { [::Java::Int, Object] }
       # Miscellaneous
       # 
       # Returns an immutable list consisting of <tt>n</tt> copies of the
@@ -5028,7 +5028,7 @@ module Java::Util
           return a
         end
         
-        typesig { [Array.typed(class_self::T)] }
+        typesig { [Array.typed(Object)] }
         def to_array(a)
           n = @n
           if (a.attr_length < n)
@@ -5327,7 +5327,7 @@ module Java::Util
         return true
       end
       
-      typesig { [Collection, T] }
+      typesig { [Collection, Object] }
       # Adds all of the specified elements to the specified collection.
       # Elements to be added may be specified individually or as an array.
       # The behavior of this convenience method is identical to that of
@@ -5465,7 +5465,7 @@ module Java::Util
           return @s.to_array
         end
         
-        typesig { [Array.typed(class_self::T)] }
+        typesig { [Array.typed(Object)] }
         def to_array(a)
           return @s.to_array(a)
         end
@@ -5628,7 +5628,7 @@ module Java::Util
           return @q.to_array
         end
         
-        typesig { [Array.typed(class_self::T)] }
+        typesig { [Array.typed(Object)] }
         def to_array(a)
           return @q.to_array(a)
         end

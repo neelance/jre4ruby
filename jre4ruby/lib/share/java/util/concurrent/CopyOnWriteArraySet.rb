@@ -174,7 +174,7 @@ module Java::Util::Concurrent
       return @al.to_array
     end
     
-    typesig { [Array.typed(T)] }
+    typesig { [Array.typed(Object)] }
     # Returns an array containing all of the elements in this set; the
     # runtime type of the returned array is that of the specified array.
     # If the set fits in the specified array, it is returned therein.

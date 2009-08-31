@@ -1147,7 +1147,7 @@ module Java::Util
           return deep_copy.to_array
         end
         
-        typesig { [Array.typed(class_self::T)] }
+        typesig { [Array.typed(Object)] }
         def to_array(a)
           return deep_copy.to_array(a)
         end

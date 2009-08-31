@@ -1262,7 +1262,7 @@ module Java::Util
         x[b] = t
       end
       
-      typesig { [Array.typed(T), Comparator] }
+      typesig { [Array.typed(Object), Comparator] }
       # Sorts the specified array of objects according to the order induced by
       # the specified comparator.  All elements in the array must be
       # <i>mutually comparable</i> by the specified comparator (that is,
@@ -1292,7 +1292,7 @@ module Java::Util
         end
       end
       
-      typesig { [Array.typed(T), ::Java::Int, ::Java::Int, Comparator] }
+      typesig { [Array.typed(Object), ::Java::Int, ::Java::Int, Comparator] }
       # Sorts the specified range of the specified array of objects according
       # to the order induced by the specified comparator.  The range to be
       # sorted extends from index <tt>fromIndex</tt>, inclusive, to index
@@ -2084,7 +2084,7 @@ module Java::Util
         return -(low + 1) # key not found.
       end
       
-      typesig { [Array.typed(T), T, Comparator] }
+      typesig { [Array.typed(Object), Object, Comparator] }
       # Searches the specified array for the specified object using the binary
       # search algorithm.  The array must be sorted into ascending order
       # according to the specified comparator (as by the
@@ -2116,7 +2116,7 @@ module Java::Util
         return binary_search0(a, 0, a.attr_length, key, c)
       end
       
-      typesig { [Array.typed(T), ::Java::Int, ::Java::Int, T, Comparator] }
+      typesig { [Array.typed(Object), ::Java::Int, ::Java::Int, Object, Comparator] }
       # Searches a range of
       # the specified array for the specified object using the binary
       # search algorithm.
@@ -2161,7 +2161,7 @@ module Java::Util
         return binary_search0(a, from_index, to_index, key, c)
       end
       
-      typesig { [Array.typed(T), ::Java::Int, ::Java::Int, T, Comparator] }
+      typesig { [Array.typed(Object), ::Java::Int, ::Java::Int, Object, Comparator] }
       # Like public version, but without range checks.
       def binary_search0(a, from_index, to_index, key, c)
         if ((c).nil?)
@@ -2858,7 +2858,7 @@ module Java::Util
         end
       end
       
-      typesig { [Array.typed(T), ::Java::Int] }
+      typesig { [Array.typed(Object), ::Java::Int] }
       # Cloning
       # 
       # Copies the specified array, truncating or padding with nulls (if necessary)
@@ -2881,7 +2881,7 @@ module Java::Util
         return copy_of(original, new_length, original.get_class)
       end
       
-      typesig { [Array.typed(U), ::Java::Int, Class] }
+      typesig { [Array.typed(Object), ::Java::Int, Class] }
       # Copies the specified array, truncating or padding with nulls (if necessary)
       # so the copy has the specified length.  For all indices that are
       # valid in both the original array and the copy, the two arrays will
@@ -3084,7 +3084,7 @@ module Java::Util
         return copy
       end
       
-      typesig { [Array.typed(T), ::Java::Int, ::Java::Int] }
+      typesig { [Array.typed(Object), ::Java::Int, ::Java::Int] }
       # Copies the specified range of the specified array into a new array.
       # The initial index of the range (<tt>from</tt>) must lie between zero
       # and <tt>original.length</tt>, inclusive.  The value at
@@ -3115,7 +3115,7 @@ module Java::Util
         return copy_of_range(original, from, to, original.get_class)
       end
       
-      typesig { [Array.typed(U), ::Java::Int, ::Java::Int, Class] }
+      typesig { [Array.typed(Object), ::Java::Int, ::Java::Int, Class] }
       # Copies the specified range of the specified array into a new array.
       # The initial index of the range (<tt>from</tt>) must lie between zero
       # and <tt>original.length</tt>, inclusive.  The value at
@@ -3435,7 +3435,7 @@ module Java::Util
         return copy
       end
       
-      typesig { [T] }
+      typesig { [Object] }
       # Misc
       # 
       # Returns a fixed-size list backed by the specified array.  (Changes to
@@ -3495,7 +3495,7 @@ module Java::Util
           return @a.clone
         end
         
-        typesig { [Array.typed(class_self::T)] }
+        typesig { [Array.typed(Object)] }
         def to_array(a)
           size_ = size
           if (a.attr_length < size_)

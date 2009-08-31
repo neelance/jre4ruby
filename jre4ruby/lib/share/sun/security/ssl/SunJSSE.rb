@@ -166,7 +166,7 @@ module Sun::Security::Ssl
     end
     
     class_module.module_eval {
-      typesig { [T] }
+      typesig { [Object] }
       def check_null(t)
         if ((t).nil?)
           raise ProviderException.new("cryptoProvider must not be null")

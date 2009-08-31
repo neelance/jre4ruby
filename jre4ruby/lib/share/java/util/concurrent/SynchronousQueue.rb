@@ -1219,7 +1219,7 @@ module Java::Util::Concurrent
       return Array.typed(Object).new(0) { nil }
     end
     
-    typesig { [Array.typed(T)] }
+    typesig { [Array.typed(Object)] }
     # Sets the zeroeth element of the specified array to <tt>null</tt>
     # (if the array has non-zero length) and returns it.
     # 

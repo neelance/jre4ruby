@@ -239,7 +239,7 @@ module Java::Util::Concurrent
       raise NotImplementedError
     end
     
-    typesig { [Runnable, T] }
+    typesig { [Runnable, Object] }
     # Submits a Runnable task for execution and returns a Future
     # representing that task. The Future's <tt>get</tt> method will
     # return the given result upon successful completion.

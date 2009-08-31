@@ -174,7 +174,7 @@ module Java::Util
       @tail = n
     end
     
-    typesig { [Array.typed(T)] }
+    typesig { [Array.typed(Object)] }
     # Copies the elements from our element array into the specified array,
     # in order (from first to last element in the deque).  It is assumed
     # that the array is large enough to hold all elements in the deque.
@@ -836,7 +836,7 @@ module Java::Util
       return copy_elements(Array.typed(Object).new(size) { nil })
     end
     
-    typesig { [Array.typed(T)] }
+    typesig { [Array.typed(Object)] }
     # Returns an array containing all of the elements in this deque in
     # proper sequence (from first to last element); the runtime type of the
     # returned array is that of the specified array.  If the deque fits in

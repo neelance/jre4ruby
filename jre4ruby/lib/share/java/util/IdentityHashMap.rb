@@ -1322,7 +1322,7 @@ module Java::Util
           return result
         end
         
-        typesig { [Array.typed(class_self::T)] }
+        typesig { [Array.typed(Object)] }
         def to_array(a)
           size_ = size
           if (a.attr_length < size_)

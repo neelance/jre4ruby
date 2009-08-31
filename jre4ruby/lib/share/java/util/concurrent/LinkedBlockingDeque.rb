@@ -926,7 +926,7 @@ module Java::Util::Concurrent
       end
     end
     
-    typesig { [Array.typed(T)] }
+    typesig { [Array.typed(Object)] }
     # Returns an array containing all of the elements in this deque, in
     # proper sequence; the runtime type of the returned array is that of
     # the specified array.  If the deque fits in the specified array, it

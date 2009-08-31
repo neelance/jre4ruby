@@ -324,7 +324,7 @@ module Java::Util::Concurrent
         return PrivilegedThreadFactory.new
       end
       
-      typesig { [Runnable, T] }
+      typesig { [Runnable, Object] }
       # Returns a {@link Callable} object that, when
       # called, runs the given task and returns the given result.  This
       # can be useful when applying methods requiring a
@@ -828,7 +828,7 @@ module Java::Util::Concurrent
           return @e.submit(task)
         end
         
-        typesig { [class_self::Runnable, class_self::T] }
+        typesig { [class_self::Runnable, Object] }
         def submit(task, result)
           return @e.submit(task, result)
         end

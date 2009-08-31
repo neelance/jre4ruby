@@ -2713,7 +2713,7 @@ module Java::Util::Concurrent
           return to_list(self).to_array
         end
         
-        typesig { [Array.typed(class_self::T)] }
+        typesig { [Array.typed(Object)] }
         def to_array(a)
           return to_list(self).to_array(a)
         end
@@ -2812,7 +2812,7 @@ module Java::Util::Concurrent
           return to_list(self).to_array
         end
         
-        typesig { [Array.typed(class_self::T)] }
+        typesig { [Array.typed(Object)] }
         def to_array(a)
           return to_list(self).to_array(a)
         end
@@ -2903,7 +2903,7 @@ module Java::Util::Concurrent
           return to_list(self).to_array
         end
         
-        typesig { [Array.typed(class_self::T)] }
+        typesig { [Array.typed(Object)] }
         def to_array(a)
           return to_list(self).to_array(a)
         end

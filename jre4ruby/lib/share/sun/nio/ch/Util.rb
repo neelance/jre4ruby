@@ -269,7 +269,7 @@ module Sun::Nio::Ch
             return s.to_array
           end
           
-          typesig { [Array.typed(T)] }
+          typesig { [Array.typed(Object)] }
           define_method :to_array do |a|
             return s.to_array(a)
           end
@@ -319,7 +319,7 @@ module Sun::Nio::Ch
             return s.retain_all(coll)
           end
           
-          typesig { [Object] }
+          typesig { [E] }
           define_method :add do |o|
             raise self.class::UnsupportedOperationException.new
           end

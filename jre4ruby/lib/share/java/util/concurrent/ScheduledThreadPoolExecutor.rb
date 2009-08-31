@@ -590,7 +590,7 @@ module Java::Util::Concurrent
       return schedule(task, 0, TimeUnit::NANOSECONDS)
     end
     
-    typesig { [Runnable, T] }
+    typesig { [Runnable, Object] }
     def submit(task, result)
       return schedule(Executors.callable(task, result), 0, TimeUnit::NANOSECONDS)
     end
@@ -819,7 +819,7 @@ module Java::Util::Concurrent
           return @dq.to_array
         end
         
-        typesig { [Array.typed(class_self::T)] }
+        typesig { [Array.typed(Object)] }
         def to_array(array)
           return @dq.to_array(array)
         end
