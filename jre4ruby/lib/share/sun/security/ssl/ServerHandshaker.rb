@@ -343,7 +343,7 @@ module Sun::Security::Ssl
                     return Krb5Util.get_subject(GSSUtil::CALLER_SSL_SERVER, get_acc_se)
                   end
                   
-                  typesig { [Object] }
+                  typesig { [Vararg.new(Object)] }
                   define_method :initialize do |*args|
                     super(*args)
                   end
@@ -810,7 +810,7 @@ module Sun::Security::Ssl
             return Krb5Util.get_keys(GSSUtil::CALLER_SSL_SERVER, nil, acc)
           end
           
-          typesig { [Object] }
+          typesig { [Vararg.new(Object)] }
           define_method :initialize do |*args|
             super(*args)
           end

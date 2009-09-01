@@ -713,7 +713,7 @@ module Java::Io
       end
     end
     
-    typesig { [String, Object] }
+    typesig { [String, Vararg.new(Object)] }
     # A convenience method to write a formatted string to this writer using
     # the specified format string and arguments.  If automatic flushing is
     # enabled, calls to this method will flush the output buffer.
@@ -758,7 +758,12 @@ module Java::Io
       return format(format, args)
     end
     
-    typesig { [Locale, String, Object] }
+    typesig { [String, Array.typed(Object)] }
+    def printf(format_, args)
+      printf(format_, *args)
+    end
+    
+    typesig { [Locale, String, Vararg.new(Object)] }
     # A convenience method to write a formatted string to this writer using
     # the specified format string and arguments.  If automatic flushing is
     # enabled, calls to this method will flush the output buffer.
@@ -808,7 +813,12 @@ module Java::Io
       return format(l, format_, args)
     end
     
-    typesig { [String, Object] }
+    typesig { [Locale, String, Array.typed(Object)] }
+    def printf(l, format_, args)
+      printf(l, format_, *args)
+    end
+    
+    typesig { [String, Vararg.new(Object)] }
     # Writes a formatted string to this writer using the specified format
     # string and arguments.  If automatic flushing is enabled, calls to this
     # method will flush the output buffer.
@@ -867,7 +877,12 @@ module Java::Io
       return self
     end
     
-    typesig { [Locale, String, Object] }
+    typesig { [String, Array.typed(Object)] }
+    def format(format_, args)
+      format(format_, *args)
+    end
+    
+    typesig { [Locale, String, Vararg.new(Object)] }
     # Writes a formatted string to this writer using the specified format
     # string and arguments.  If automatic flushing is enabled, calls to this
     # method will flush the output buffer.
@@ -925,6 +940,11 @@ module Java::Io
         @trouble = true
       end
       return self
+    end
+    
+    typesig { [Locale, String, Array.typed(Object)] }
+    def format(l, format_, args)
+      format(l, format_, *args)
     end
     
     typesig { [CharSequence] }

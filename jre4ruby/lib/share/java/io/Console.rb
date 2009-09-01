@@ -135,7 +135,7 @@ module Java::Io
       return @reader
     end
     
-    typesig { [String, Object] }
+    typesig { [String, Vararg.new(Object)] }
     # Writes a formatted string to this console's output stream using
     # the specified format string and arguments.
     # 
@@ -169,7 +169,12 @@ module Java::Io
       return self
     end
     
-    typesig { [String, Object] }
+    typesig { [String, Array.typed(Object)] }
+    def format(fmt, args)
+      format(fmt, *args)
+    end
+    
+    typesig { [String, Vararg.new(Object)] }
     # A convenience method to write a formatted string to this console's
     # output stream using the specified format string and arguments.
     # 
@@ -206,7 +211,12 @@ module Java::Io
       return format(format_, args)
     end
     
-    typesig { [String, Object] }
+    typesig { [String, Array.typed(Object)] }
+    def printf(format_, args)
+      printf(format_, *args)
+    end
+    
+    typesig { [String, Vararg.new(Object)] }
     # Provides a formatted prompt, then reads a single line of text from the
     # console.
     # 
@@ -257,6 +267,11 @@ module Java::Io
       return line
     end
     
+    typesig { [String, Array.typed(Object)] }
+    def read_line(fmt, args)
+      read_line(fmt, *args)
+    end
+    
     typesig { [] }
     # Reads a single line of text from the console.
     # 
@@ -270,7 +285,7 @@ module Java::Io
       return read_line("")
     end
     
-    typesig { [String, Object] }
+    typesig { [String, Vararg.new(Object)] }
     # Provides a formatted prompt, then reads a password or passphrase from
     # the console with echoing disabled.
     # 
@@ -324,6 +339,11 @@ module Java::Io
         end
       end
       return passwd
+    end
+    
+    typesig { [String, Array.typed(Object)] }
+    def read_password(fmt, args)
+      read_password(fmt, *args)
     end
     
     typesig { [] }
@@ -648,7 +668,7 @@ module Java::Io
                 end
               end
               
-              typesig { [Object] }
+              typesig { [Vararg.new(Object)] }
               define_method :initialize do |*args|
                 super(*args)
               end
@@ -665,7 +685,7 @@ module Java::Io
             return self.attr_cons.attr_cs
           end
           
-          typesig { [Object] }
+          typesig { [Vararg.new(Object)] }
           define_method :initialize do |*args|
             super(*args)
           end
@@ -725,7 +745,7 @@ module Java::Io
         define_method :close do
         end
         
-        typesig { [Object] }
+        typesig { [Vararg.new(Object)] }
         define_method :initialize do |*args|
           super(*args)
         end

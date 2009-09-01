@@ -148,7 +148,7 @@ module Java::Lang::Instrument
       raise NotImplementedError
     end
     
-    typesig { [Class] }
+    typesig { [Vararg.new(Class)] }
     # Retransform the supplied set of classes.
     # 
     # <P>
@@ -260,6 +260,11 @@ module Java::Lang::Instrument
       raise NotImplementedError
     end
     
+    typesig { [Array.typed(Class)] }
+    def retransform_classes(classes)
+      retransform_classes(*classes)
+    end
+    
     typesig { [] }
     # Returns whether or not the current JVM configuration supports redefinition
     # of classes.
@@ -279,7 +284,7 @@ module Java::Lang::Instrument
       raise NotImplementedError
     end
     
-    typesig { [ClassDefinition] }
+    typesig { [Vararg.new(ClassDefinition)] }
     # Redefine the supplied set of classes using the supplied class files.
     # 
     # <P>
@@ -345,6 +350,11 @@ module Java::Lang::Instrument
     # @see java.lang.instrument.ClassFileTransformer
     def redefine_classes(*definitions)
       raise NotImplementedError
+    end
+    
+    typesig { [Array.typed(ClassDefinition)] }
+    def redefine_classes(definitions)
+      redefine_classes(*definitions)
     end
     
     typesig { [Class] }

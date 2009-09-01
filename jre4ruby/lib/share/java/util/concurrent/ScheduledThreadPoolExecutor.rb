@@ -852,7 +852,7 @@ module Java::Util::Concurrent
               @it.remove
             end
             
-            typesig { [Object] }
+            typesig { [Vararg.new(Object)] }
             define_method :initialize do |*args|
               @it = nil
               super(*args)

@@ -851,7 +851,7 @@ module Java::Util
           self.attr_size += 1
         end
         
-        typesig { [Object] }
+        typesig { [Vararg.new(Object)] }
         define_method :initialize do |*args|
           @i = nil
           super(*args)

@@ -69,7 +69,7 @@ module Sun::Reflect
             return self.class::DelegatingClassLoader.new(parent_class_loader)
           end
           
-          typesig { [Object] }
+          typesig { [Vararg.new(Object)] }
           define_method :initialize do |*args|
             super(*args)
           end

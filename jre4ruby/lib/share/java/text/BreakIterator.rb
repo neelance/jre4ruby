@@ -555,7 +555,7 @@ module Java::Text
             return ResourceBundle.get_bundle(base_name, locale)
           end
           
-          typesig { [Object] }
+          typesig { [Vararg.new(Object)] }
           define_method :initialize do |*args|
             super(*args)
           end
@@ -691,7 +691,7 @@ module Java::Text
           const_attr_reader  :INSTANCE
         }
         
-        typesig { [class_self::BreakIteratorProvider, class_self::Locale, String, Object] }
+        typesig { [class_self::BreakIteratorProvider, class_self::Locale, String, Vararg.new(Object)] }
         def get_object(break_iterator_provider, locale, key, *params)
           raise AssertError if not ((params.attr_length).equal?(1))
           case (params[0])
@@ -707,6 +707,11 @@ module Java::Text
             raise AssertError, "should not happen" if not (false)
           end
           return nil
+        end
+        
+        typesig { [class_self::BreakIteratorProvider, class_self::Locale, String, Array.typed(Object)] }
+        def get_object(break_iterator_provider, locale, key, params)
+          get_object(break_iterator_provider, locale, key, *params)
         end
         
         typesig { [] }

@@ -1142,7 +1142,7 @@ module Java::Util
           const_attr_reader  :INSTANCE
         }
         
-        typesig { [class_self::LocaleNameProvider, class_self::Locale, String, Object] }
+        typesig { [class_self::LocaleNameProvider, class_self::Locale, String, Vararg.new(Object)] }
         def get_object(locale_name_provider, locale, key, *params)
           raise AssertError if not ((params.attr_length).equal?(2))
           type = params[0]
@@ -1158,6 +1158,11 @@ module Java::Util
             raise AssertError if not (false)
           end # shouldn't happen
           return nil
+        end
+        
+        typesig { [class_self::LocaleNameProvider, class_self::Locale, String, Array.typed(Object)] }
+        def get_object(locale_name_provider, locale, key, params)
+          get_object(locale_name_provider, locale, key, *params)
         end
         
         typesig { [] }

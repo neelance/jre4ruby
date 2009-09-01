@@ -107,7 +107,7 @@ module Sun::Security::Jgss::Krb5
               return Krb5Util.get_keys((caller).equal?(GSSUtil::CALLER_UNKNOWN) ? GSSUtil::CALLER_ACCEPT : caller, server_princ, acc)
             end
             
-            typesig { [Object] }
+            typesig { [Vararg.new(Object)] }
             define_method :initialize do |*args|
               super(*args)
             end

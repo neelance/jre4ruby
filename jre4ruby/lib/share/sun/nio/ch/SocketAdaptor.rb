@@ -317,7 +317,7 @@ module Sun::Nio::Ch
               return self.class::SocketInputStream.new
             end
             
-            typesig { [Object] }
+            typesig { [Vararg.new(Object)] }
             define_method :initialize do |*args|
               super(*args)
             end
@@ -355,7 +355,7 @@ module Sun::Nio::Ch
             return Channels.new_output_stream(self.attr_sc)
           end
           
-          typesig { [Object] }
+          typesig { [Vararg.new(Object)] }
           define_method :initialize do |*args|
             super(*args)
           end

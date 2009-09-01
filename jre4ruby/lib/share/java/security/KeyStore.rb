@@ -770,7 +770,7 @@ module Java::Security
             return Security.get_property(KEYSTORE_TYPE)
           end
           
-          typesig { [Object] }
+          typesig { [Vararg.new(Object)] }
           define_method :initialize do |*args|
             super(*args)
           end
@@ -1436,7 +1436,7 @@ module Java::Security
                 return protection_parameter
               end
               
-              typesig { [Object] }
+              typesig { [Vararg.new(Object)] }
               define_method :initialize do |*args|
                 @get_called = false
                 super(*args)
@@ -1641,7 +1641,7 @@ module Java::Security
                     end
                   end
                   
-                  typesig { [Object] }
+                  typesig { [Vararg.new(Object)] }
                   define_method :initialize do |*args|
                     super(*args)
                   end
@@ -1756,7 +1756,7 @@ module Java::Security
                 return protection
               end
               
-              typesig { [Object] }
+              typesig { [Vararg.new(Object)] }
               define_method :initialize do |*args|
                 @get_called = false
                 @old_exception = nil
@@ -1804,7 +1804,7 @@ module Java::Security
                     return ks
                   end
                   
-                  typesig { [Object] }
+                  typesig { [Vararg.new(Object)] }
                   define_method :initialize do |*args|
                     super(*args)
                   end

@@ -151,7 +151,7 @@ module Sun::Util::Resources
             return ResourceBundle.get_bundle(base_name, locale, LocaleDataResourceBundleControl.get_rbcontrol_instance)
           end
           
-          typesig { [Object] }
+          typesig { [Vararg.new(Object)] }
           define_method :initialize do |*args|
             super(*args)
           end
@@ -256,7 +256,7 @@ module Sun::Util::Resources
             return Boolean.value_of(f.exists)
           end
           
-          typesig { [Object] }
+          typesig { [Vararg.new(Object)] }
           define_method :initialize do |*args|
             super(*args)
           end

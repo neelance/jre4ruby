@@ -64,7 +64,7 @@ module Java::Util::Prefs
           return System.get_property("java.util.prefs.syncInterval", "30")
         end
         
-        typesig { [Object] }
+        typesig { [Vararg.new(Object)] }
         define_method :initialize do |*args|
           super(*args)
         end
@@ -196,7 +196,7 @@ module Java::Util::Prefs
             return nil
           end
           
-          typesig { [Object] }
+          typesig { [Vararg.new(Object)] }
           define_method :initialize do |*args|
             super(*args)
           end
@@ -276,7 +276,7 @@ module Java::Util::Prefs
             return nil
           end
           
-          typesig { [Object] }
+          typesig { [Vararg.new(Object)] }
           define_method :initialize do |*args|
             super(*args)
           end
@@ -661,7 +661,7 @@ module Java::Util::Prefs
             sync_world
           end
           
-          typesig { [Object] }
+          typesig { [Vararg.new(Object)] }
           define_method :initialize do |*args|
             super(*args)
           end
@@ -689,7 +689,7 @@ module Java::Util::Prefs
                 sync_world
               end
               
-              typesig { [Object] }
+              typesig { [Vararg.new(Object)] }
               define_method :initialize do |*args|
                 super(*args)
               end
@@ -700,7 +700,7 @@ module Java::Util::Prefs
             return nil
           end
           
-          typesig { [Object] }
+          typesig { [Vararg.new(Object)] }
           define_method :initialize do |*args|
             super(*args)
           end
@@ -799,7 +799,7 @@ module Java::Util::Prefs
           return nil
         end
         
-        typesig { [Object] }
+        typesig { [Vararg.new(Object)] }
         define_method :initialize do |*args|
           super(*args)
         end
@@ -901,7 +901,7 @@ module Java::Util::Prefs
             return nil
           end
           
-          typesig { [Object] }
+          typesig { [Vararg.new(Object)] }
           define_method :initialize do |*args|
             super(*args)
           end
@@ -950,7 +950,7 @@ module Java::Util::Prefs
             return nil
           end
           
-          typesig { [Object] }
+          typesig { [Vararg.new(Object)] }
           define_method :initialize do |*args|
             super(*args)
           end
@@ -992,7 +992,7 @@ module Java::Util::Prefs
           return result.to_array(EMPTY_STRING_ARRAY)
         end
         
-        typesig { [Object] }
+        typesig { [Vararg.new(Object)] }
         define_method :initialize do |*args|
           super(*args)
         end
@@ -1064,7 +1064,7 @@ module Java::Util::Prefs
             return nil
           end
           
-          typesig { [Object] }
+          typesig { [Vararg.new(Object)] }
           define_method :initialize do |*args|
             super(*args)
           end
@@ -1112,7 +1112,7 @@ module Java::Util::Prefs
               return self.class::Long.new(nmt)
             end
             
-            typesig { [Object] }
+            typesig { [Vararg.new(Object)] }
             define_method :initialize do |*args|
               super(*args)
             end
@@ -1139,7 +1139,7 @@ module Java::Util::Prefs
                 return nil
               end
               
-              typesig { [Object] }
+              typesig { [Vararg.new(Object)] }
               define_method :initialize do |*args|
                 super(*args)
               end
@@ -1168,7 +1168,7 @@ module Java::Util::Prefs
             return nil
           end
           
-          typesig { [Object] }
+          typesig { [Vararg.new(Object)] }
           define_method :initialize do |*args|
             super(*args)
           end

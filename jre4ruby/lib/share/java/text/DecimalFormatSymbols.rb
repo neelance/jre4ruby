@@ -834,10 +834,15 @@ module Java::Text
           const_attr_reader  :INSTANCE
         }
         
-        typesig { [class_self::DecimalFormatSymbolsProvider, class_self::Locale, String, Object] }
+        typesig { [class_self::DecimalFormatSymbolsProvider, class_self::Locale, String, Vararg.new(Object)] }
         def get_object(decimal_format_symbols_provider, locale, key, *params)
           raise AssertError if not ((params.attr_length).equal?(0))
           return decimal_format_symbols_provider.get_instance(locale)
+        end
+        
+        typesig { [class_self::DecimalFormatSymbolsProvider, class_self::Locale, String, Array.typed(Object)] }
+        def get_object(decimal_format_symbols_provider, locale, key, params)
+          get_object(decimal_format_symbols_provider, locale, key, *params)
         end
         
         typesig { [] }

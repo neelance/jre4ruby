@@ -188,7 +188,7 @@ module Java::Security
                 return Security.get_property("policy.provider")
               end
               
-              typesig { [Object] }
+              typesig { [Vararg.new(Object)] }
               define_method :initialize do |*args|
                 super(*args)
               end
@@ -236,7 +236,7 @@ module Java::Security
                   end
                 end
                 
-                typesig { [Object] }
+                typesig { [Vararg.new(Object)] }
                 define_method :initialize do |*args|
                   super(*args)
                 end
@@ -321,7 +321,7 @@ module Java::Security
             return p.get_class.get_protection_domain
           end
           
-          typesig { [Object] }
+          typesig { [Vararg.new(Object)] }
           define_method :initialize do |*args|
             super(*args)
           end

@@ -189,7 +189,7 @@ module Sun::Nio::Cs
           raise self.class::UnsupportedOperationException.new
         end
         
-        typesig { [Object] }
+        typesig { [Vararg.new(Object)] }
         define_method :initialize do |*args|
           @i = nil
           super(*args)

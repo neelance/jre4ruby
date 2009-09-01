@@ -3435,7 +3435,7 @@ module Java::Util
         return copy
       end
       
-      typesig { [Object] }
+      typesig { [Vararg.new(Object)] }
       # Misc
       # 
       # Returns a fixed-size list backed by the specified array.  (Changes to
@@ -3454,6 +3454,11 @@ module Java::Util
       # @return a list view of the specified array
       def as_list(*a)
         return ArrayList.new(a)
+      end
+      
+      typesig { [Array.typed(Object)] }
+      def as_list(a)
+        as_list(*a)
       end
       
       # @serial include

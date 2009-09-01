@@ -306,7 +306,7 @@ module Sun::Security::Ssl
                   return Krb5Util.get_subject(GSSUtil::CALLER_SSL_CLIENT, get_acc_se)
                 end
                 
-                typesig { [Object] }
+                typesig { [Vararg.new(Object)] }
                 define_method :initialize do |*args|
                   super(*args)
                 end

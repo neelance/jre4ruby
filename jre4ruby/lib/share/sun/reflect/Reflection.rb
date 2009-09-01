@@ -244,7 +244,7 @@ module Sun::Reflect
         return false
       end
       
-      typesig { [Class, String] }
+      typesig { [Class, Vararg.new(String)] }
       # fieldNames must contain only interned Strings
       def register_fields_to_filter(containing_class, *field_names)
         synchronized(self) do
@@ -252,7 +252,12 @@ module Sun::Reflect
         end
       end
       
-      typesig { [Class, String] }
+      typesig { [Class, Array.typed(String)] }
+      def register_fields_to_filter(containing_class, field_names)
+        register_fields_to_filter(containing_class, *field_names)
+      end
+      
+      typesig { [Class, Vararg.new(String)] }
       # methodNames must contain only interned Strings
       def register_methods_to_filter(containing_class, *method_names)
         synchronized(self) do
@@ -260,7 +265,12 @@ module Sun::Reflect
         end
       end
       
-      typesig { [Map, Class, String] }
+      typesig { [Class, Array.typed(String)] }
+      def register_methods_to_filter(containing_class, method_names)
+        register_methods_to_filter(containing_class, *method_names)
+      end
+      
+      typesig { [Map, Class, Vararg.new(String)] }
       def register_filter(map, containing_class, *names)
         if (!(map.get(containing_class)).nil?)
           raise IllegalArgumentException.new("Filter already registered: " + RJava.cast_to_string(containing_class))
@@ -268,6 +278,11 @@ module Sun::Reflect
         map = HashMap.new(map)
         map.put(containing_class, names)
         return map
+      end
+      
+      typesig { [Map, Class, Array.typed(String)] }
+      def register_filter(map, containing_class, names)
+        register_filter(map, containing_class, *names)
       end
       
       typesig { [Class, Array.typed(Field)] }

@@ -249,7 +249,7 @@ module Sun::Security::Jgss::Krb5
               return Krb5Util.get_ticket(real_caller, client_principal, tgs_principal, acc)
             end
             
-            typesig { [Object] }
+            typesig { [Vararg.new(Object)] }
             define_method :initialize do |*args|
               super(*args)
             end

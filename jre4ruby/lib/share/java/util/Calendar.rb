@@ -2624,7 +2624,7 @@ module Java::Util
             return input.read_object
           end
           
-          typesig { [Object] }
+          typesig { [Vararg.new(Object)] }
           define_method :initialize do |*args|
             super(*args)
           end

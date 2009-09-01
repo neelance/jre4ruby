@@ -274,7 +274,7 @@ module Sun::Misc
           return u
         end
         
-        typesig { [Object] }
+        typesig { [Vararg.new(Object)] }
         define_method :initialize do |*args|
           @index = 0
           @url = nil
@@ -348,7 +348,7 @@ module Sun::Misc
           return r
         end
         
-        typesig { [Object] }
+        typesig { [Vararg.new(Object)] }
         define_method :initialize do |*args|
           @index = 0
           @res = nil
@@ -436,7 +436,7 @@ module Sun::Misc
             end
           end
           
-          typesig { [Object] }
+          typesig { [Vararg.new(Object)] }
           define_method :initialize do |*args|
             super(*args)
           end
@@ -643,7 +643,7 @@ module Sun::Misc
               return uc.get_content_length
             end
             
-            typesig { [Object] }
+            typesig { [Vararg.new(Object)] }
             define_method :initialize do |*args|
               super(*args)
             end
@@ -804,7 +804,7 @@ module Sun::Misc
                   return nil
                 end
                 
-                typesig { [Object] }
+                typesig { [Vararg.new(Object)] }
                 define_method :initialize do |*args|
                   super(*args)
                 end
@@ -907,7 +907,7 @@ module Sun::Misc
               return entry.get_code_signers
             end
             
-            typesig { [Object] }
+            typesig { [Vararg.new(Object)] }
             define_method :initialize do |*args|
               super(*args)
             end
@@ -1016,7 +1016,7 @@ module Sun::Misc
                       return self.class::JarLoader.new(url, self.attr_handler, self.attr_lmap)
                     end
                     
-                    typesig { [Object] }
+                    typesig { [Vararg.new(Object)] }
                     define_method :initialize do |*args|
                       super(*args)
                     end
@@ -1210,7 +1210,7 @@ module Sun::Misc
                   return RJava.cast_to_int(file.length)
                 end
                 
-                typesig { [Object] }
+                typesig { [Vararg.new(Object)] }
                 define_method :initialize do |*args|
                   super(*args)
                 end

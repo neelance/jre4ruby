@@ -153,7 +153,7 @@ module Sun::Security::Ssl
               return nil
             end
             
-            typesig { [Object] }
+            typesig { [Vararg.new(Object)] }
             define_method :initialize do |*args|
               super(*args)
             end
@@ -184,7 +184,7 @@ module Sun::Security::Ssl
                 return self.class::FileInputStream.new(default_key_store)
               end
               
-              typesig { [Object] }
+              typesig { [Vararg.new(Object)] }
               define_method :initialize do |*args|
                 super(*args)
               end

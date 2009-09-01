@@ -178,7 +178,7 @@ module Sun::Misc
                   return self.class::ExtClassLoader.new(dirs)
                 end
                 
-                typesig { [Object] }
+                typesig { [Vararg.new(Object)] }
                 define_method :initialize do |*args|
                   super(*args)
                 end
@@ -318,7 +318,7 @@ module Sun::Misc
                 return self.class::AppClassLoader.new(urls, extcl)
               end
               
-              typesig { [Object] }
+              typesig { [Vararg.new(Object)] }
               define_method :initialize do |*args|
                 super(*args)
               end
@@ -419,7 +419,7 @@ module Sun::Misc
               return path_to_urls(class_path)
             end
             
-            typesig { [Object] }
+            typesig { [Vararg.new(Object)] }
             define_method :initialize do |*args|
               super(*args)
             end
@@ -665,7 +665,7 @@ module Sun::Misc
             return nil
           end
           
-          typesig { [Object] }
+          typesig { [Vararg.new(Object)] }
           define_method :initialize do |*args|
             super(*args)
           end

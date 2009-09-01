@@ -231,7 +231,7 @@ module Java::Net
             end
           end
           
-          typesig { [Object] }
+          typesig { [Vararg.new(Object)] }
           define_method :initialize do |*args|
             super(*args)
           end
@@ -394,7 +394,7 @@ module Java::Net
           return self.attr_ucp.find_resource(name, true)
         end
         
-        typesig { [Object] }
+        typesig { [Vararg.new(Object)] }
         define_method :initialize do |*args|
           super(*args)
         end
@@ -445,7 +445,7 @@ module Java::Net
                 return e.next_element
               end
               
-              typesig { [Object] }
+              typesig { [Vararg.new(Object)] }
               define_method :initialize do |*args|
                 super(*args)
               end
@@ -476,7 +476,7 @@ module Java::Net
           return next_
         end
         
-        typesig { [Object] }
+        typesig { [Vararg.new(Object)] }
         define_method :initialize do |*args|
           @url = nil
           super(*args)
@@ -568,7 +568,7 @@ module Java::Net
               return nil
             end
             
-            typesig { [Object] }
+            typesig { [Vararg.new(Object)] }
             define_method :initialize do |*args|
               super(*args)
             end
@@ -608,7 +608,7 @@ module Java::Net
             return self.class::FactoryURLClassLoader.new(urls, parent)
           end
           
-          typesig { [Object] }
+          typesig { [Vararg.new(Object)] }
           define_method :initialize do |*args|
             super(*args)
           end
@@ -646,7 +646,7 @@ module Java::Net
             return self.class::FactoryURLClassLoader.new(urls)
           end
           
-          typesig { [Object] }
+          typesig { [Vararg.new(Object)] }
           define_method :initialize do |*args|
             super(*args)
           end
@@ -671,7 +671,7 @@ module Java::Net
             return u.attr_ucp
           end
           
-          typesig { [Object] }
+          typesig { [Vararg.new(Object)] }
           define_method :initialize do |*args|
             super(*args)
           end

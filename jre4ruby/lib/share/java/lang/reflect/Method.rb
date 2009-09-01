@@ -617,7 +617,7 @@ module Java::Lang::Reflect
       end
     end
     
-    typesig { [Object, Object] }
+    typesig { [Object, Vararg.new(Object)] }
     # Invokes the underlying method represented by this {@code Method}
     # object, on the specified object with the specified parameters.
     # Individual parameters are automatically unwrapped to match
@@ -695,6 +695,11 @@ module Java::Lang::Reflect
         acquire_method_accessor
       end
       return @method_accessor.invoke(obj, args)
+    end
+    
+    typesig { [Object, Array.typed(Object)] }
+    def invoke(obj, args)
+      invoke(obj, *args)
     end
     
     typesig { [] }

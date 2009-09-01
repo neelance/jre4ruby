@@ -102,7 +102,7 @@ module Sun::Security::Provider
           include_class_members MD4
           include Provider if Provider.class == Module
           
-          typesig { [Object] }
+          typesig { [Vararg.new(Object)] }
           define_method :initialize do |*args|
             super(*args)
           end
@@ -121,7 +121,7 @@ module Sun::Security::Provider
             return nil
           end
           
-          typesig { [Object] }
+          typesig { [Vararg.new(Object)] }
           define_method :initialize do |*args|
             super(*args)
           end

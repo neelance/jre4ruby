@@ -288,7 +288,7 @@ module Sun::Security::Ssl
         alias_method :initialize__key_type, :initialize
       end }
       
-      typesig { [String] }
+      typesig { [Vararg.new(String)] }
       def get_key_types(*key_types)
         if (((key_types).nil?) || ((key_types.attr_length).equal?(0)) || ((key_types[0]).nil?))
           return nil
@@ -298,6 +298,11 @@ module Sun::Security::Ssl
           list.add(KeyType.new(key_type))
         end
         return list
+      end
+      
+      typesig { [Array.typed(String)] }
+      def get_key_types(key_types)
+        get_key_types(*key_types)
       end
     }
     

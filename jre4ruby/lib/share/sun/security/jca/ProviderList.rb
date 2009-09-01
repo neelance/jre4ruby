@@ -84,7 +84,7 @@ module Sun::Security::Jca
           return nil
         end
         
-        typesig { [Object] }
+        typesig { [Vararg.new(Object)] }
         define_method :initialize do |*args|
           super(*args)
         end
@@ -109,7 +109,7 @@ module Sun::Security::Jca
             return self.class::ProviderList.new
           end
           
-          typesig { [Object] }
+          typesig { [Vararg.new(Object)] }
           define_method :initialize do |*args|
             super(*args)
           end
@@ -155,7 +155,7 @@ module Sun::Security::Jca
         return ProviderList.new(configs, true)
       end
       
-      typesig { [Provider] }
+      typesig { [Vararg.new(Provider)] }
       # Create a new ProviderList from the specified Providers.
       # This method is for use by SunJSSE.
       def new_list(*providers)
@@ -166,6 +166,11 @@ module Sun::Security::Jca
           i += 1
         end
         return ProviderList.new(configs, true)
+      end
+      
+      typesig { [Array.typed(Provider)] }
+      def new_list(providers)
+        new_list(*providers)
       end
     }
     
@@ -210,7 +215,7 @@ module Sun::Security::Jca
           return get_provider(index)
         end
         
-        typesig { [Object] }
+        typesig { [Vararg.new(Object)] }
         define_method :initialize do |*args|
           super(*args)
         end
@@ -242,7 +247,7 @@ module Sun::Security::Jca
           return get_provider(index)
         end
         
-        typesig { [Object] }
+        typesig { [Vararg.new(Object)] }
         define_method :initialize do |*args|
           super(*args)
         end
@@ -655,7 +660,7 @@ module Sun::Security::Jca
               raise self.class::UnsupportedOperationException.new
             end
             
-            typesig { [Object] }
+            typesig { [Vararg.new(Object)] }
             define_method :initialize do |*args|
               @index = 0
               super(*args)

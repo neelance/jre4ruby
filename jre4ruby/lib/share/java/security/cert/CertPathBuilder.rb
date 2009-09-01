@@ -293,7 +293,7 @@ module Java::Security::Cert
             return Security.get_property(CPB_TYPE)
           end
           
-          typesig { [Object] }
+          typesig { [Vararg.new(Object)] }
           define_method :initialize do |*args|
             super(*args)
           end

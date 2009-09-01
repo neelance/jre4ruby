@@ -857,7 +857,7 @@ module Java::Text
     end
     
     class_module.module_eval {
-      typesig { [String, Object] }
+      typesig { [String, Vararg.new(Object)] }
       # Creates a MessageFormat with the given pattern and uses it
       # to format the given arguments. This is equivalent to
       # <blockquote>
@@ -871,6 +871,11 @@ module Java::Text
       def format(pattern, *arguments)
         temp = MessageFormat.new(pattern)
         return temp.format(arguments)
+      end
+      
+      typesig { [String, Array.typed(Object)] }
+      def format(pattern, arguments)
+        format(pattern, *arguments)
       end
     }
     

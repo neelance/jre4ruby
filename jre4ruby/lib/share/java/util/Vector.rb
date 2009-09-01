@@ -362,7 +362,7 @@ module Java::Util
           raise self.class::NoSuchElementException.new("Vector Enumeration")
         end
         
-        typesig { [Object] }
+        typesig { [Vararg.new(Object)] }
         define_method :initialize do |*args|
           @count = 0
           super(*args)

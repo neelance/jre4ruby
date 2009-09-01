@@ -396,7 +396,7 @@ module Java::Net
               return @map.get_content_type_for(file_name)
             end
             
-            typesig { [Object] }
+            typesig { [Vararg.new(Object)] }
             define_method :initialize do |*args|
               @map = nil
               super(*args)

@@ -235,7 +235,7 @@ module Java::Nio::Channels::Spi
             @local_class_parent.wakeup
           end
           
-          typesig { [Object] }
+          typesig { [Vararg.new(Object)] }
           define_method :initialize do |*args|
             super(*args)
           end

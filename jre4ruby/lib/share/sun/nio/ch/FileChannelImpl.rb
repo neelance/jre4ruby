@@ -197,7 +197,7 @@ module Sun::Nio::Ch
             release0(self.attr_fd, fl.position, fl.size)
           end
           
-          typesig { [Object] }
+          typesig { [Vararg.new(Object)] }
           define_method :initialize do |*args|
             super(*args)
           end

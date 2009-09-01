@@ -421,7 +421,7 @@ module Java::Net
             return (!(netifs).nil? && @i < netifs.attr_length)
           end
           
-          typesig { [Object] }
+          typesig { [Vararg.new(Object)] }
           define_method :initialize do |*args|
             @i = 0
             super(*args)

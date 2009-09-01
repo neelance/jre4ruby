@@ -322,7 +322,7 @@ module Java::Lang::Reflect
     end
     
     class_module.module_eval {
-      typesig { [ClassLoader, Class] }
+      typesig { [ClassLoader, Vararg.new(Class)] }
       # Returns the {@code java.lang.Class} object for a proxy class
       # given a class loader and an array of interfaces.  The proxy class
       # will be defined by the specified class loader and will implement
@@ -559,6 +559,11 @@ module Java::Lang::Reflect
           end
         end
         return proxy_class
+      end
+      
+      typesig { [ClassLoader, Array.typed(Class)] }
+      def get_proxy_class(loader, interfaces)
+        get_proxy_class(loader, *interfaces)
       end
       
       typesig { [ClassLoader, Array.typed(Class), InvocationHandler] }
