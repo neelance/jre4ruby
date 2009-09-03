@@ -233,7 +233,7 @@ module Java::Lang
               @i.remove
             end
             
-            typesig { [Object] }
+            typesig { [Vararg.new(Object)] }
             define_method :initialize do |*args|
               @i = nil
               super(*args)

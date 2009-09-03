@@ -416,7 +416,7 @@ module Sun::Net::Www::Http
           return CookieHandler.get_default
         end
         
-        typesig { [Object] }
+        typesig { [Vararg.new(Object)] }
         define_method :initialize do |*args|
           super(*args)
         end
@@ -639,7 +639,7 @@ module Sun::Net::Www::Http
               return nil
             end
             
-            typesig { [Object] }
+            typesig { [Vararg.new(Object)] }
             define_method :initialize do |*args|
               super(*args)
             end
@@ -675,7 +675,7 @@ module Sun::Net::Www::Http
               return nil
             end
             
-            typesig { [Object] }
+            typesig { [Vararg.new(Object)] }
             define_method :initialize do |*args|
               super(*args)
             end

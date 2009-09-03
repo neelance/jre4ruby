@@ -142,7 +142,7 @@ module Sun::Net
               return Security.get_property(CachePolicyProp)
             end
             
-            typesig { [Object] }
+            typesig { [Vararg.new(Object)] }
             define_method :initialize do |*args|
               super(*args)
             end
@@ -180,7 +180,7 @@ module Sun::Net
               return Security.get_property(NegativeCachePolicyProp)
             end
             
-            typesig { [Object] }
+            typesig { [Vararg.new(Object)] }
             define_method :initialize do |*args|
               super(*args)
             end

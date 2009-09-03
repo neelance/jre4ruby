@@ -234,7 +234,7 @@ module Java::Security
           return SecurityConstants::ALL_PERMISSION
         end
         
-        typesig { [Object] }
+        typesig { [Vararg.new(Object)] }
         define_method :initialize do |*args|
           @has_more = false
           super(*args)

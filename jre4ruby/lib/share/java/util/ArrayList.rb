@@ -1192,7 +1192,7 @@ module Java::Util
               end
             end
             
-            typesig { [Object] }
+            typesig { [Vararg.new(Object)] }
             define_method :initialize do |*args|
               @cursor = 0
               @last_ret = 0

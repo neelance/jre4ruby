@@ -131,7 +131,7 @@ module Sun::Reflect::Generics::Parser
       @index += 1
     end
     
-    typesig { [::Java::Char, ::Java::Char] }
+    typesig { [::Java::Char, Vararg.new(::Java::Char)] }
     # Match c against a "set" of characters
     def matches(c, *set)
       set.each do |e|
@@ -140,6 +140,11 @@ module Sun::Reflect::Generics::Parser
         end
       end
       return false
+    end
+    
+    typesig { [::Java::Char, Array.typed(::Java::Char)] }
+    def matches(c, set)
+      matches(c, *set)
     end
     
     typesig { [String] }

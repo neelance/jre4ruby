@@ -72,7 +72,7 @@ module Sun::Security::Util
               return (Java::Util::ResourceBundle.get_bundle("sun.security.util.Resources"))
             end
             
-            typesig { [Object] }
+            typesig { [Vararg.new(Object)] }
             define_method :initialize do |*args|
               super(*args)
             end
@@ -98,7 +98,7 @@ module Sun::Security::Util
               return (Java::Util::ResourceBundle.get_bundle(alt_bundle_name))
             end
             
-            typesig { [Object] }
+            typesig { [Vararg.new(Object)] }
             define_method :initialize do |*args|
               super(*args)
             end

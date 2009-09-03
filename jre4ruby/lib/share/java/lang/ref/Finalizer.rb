@@ -208,7 +208,7 @@ module Java::Lang::Ref
             return nil
           end
           
-          typesig { [Object] }
+          typesig { [Vararg.new(Object)] }
           define_method :initialize do |*args|
             super(*args)
           end
@@ -238,7 +238,7 @@ module Java::Lang::Ref
             end
           end
           
-          typesig { [Object] }
+          typesig { [Vararg.new(Object)] }
           define_method :initialize do |*args|
             super(*args)
           end
@@ -271,7 +271,7 @@ module Java::Lang::Ref
             end
           end
           
-          typesig { [Object] }
+          typesig { [Vararg.new(Object)] }
           define_method :initialize do |*args|
             super(*args)
           end

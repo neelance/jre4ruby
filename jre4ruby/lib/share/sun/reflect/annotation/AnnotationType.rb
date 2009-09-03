@@ -125,7 +125,7 @@ module Sun::Reflect::Annotation
           return annotation_class.get_declared_methods
         end
         
-        typesig { [Object] }
+        typesig { [Vararg.new(Object)] }
         define_method :initialize do |*args|
           super(*args)
         end

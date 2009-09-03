@@ -1513,7 +1513,7 @@ module Java::Lang
               return Java::Security::Security.get_property("package.access")
             end
             
-            typesig { [Object] }
+            typesig { [Vararg.new(Object)] }
             define_method :initialize do |*args|
               super(*args)
             end
@@ -1584,7 +1584,7 @@ module Java::Lang
               return Java::Security::Security.get_property("package.definition")
             end
             
-            typesig { [Object] }
+            typesig { [Vararg.new(Object)] }
             define_method :initialize do |*args|
               super(*args)
             end

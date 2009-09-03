@@ -72,7 +72,7 @@ module Java::Lang::Reflect
         return new_array(component_type, length)
       end
       
-      typesig { [Class, ::Java::Int] }
+      typesig { [Class, Vararg.new(::Java::Int)] }
       # Creates a new array
       # with the specified component type and dimensions.
       # If {@code componentType}
@@ -106,6 +106,11 @@ module Java::Lang::Reflect
       # the specified {@code dimensions} argument is negative.
       def new_instance(component_type, *dimensions)
         return multi_new_array(component_type, dimensions)
+      end
+      
+      typesig { [Class, Array.typed(::Java::Int)] }
+      def new_instance(component_type, dimensions)
+        new_instance(component_type, *dimensions)
       end
       
       JNI.native_method :Java_java_lang_reflect_Array_getLength, [:pointer, :long, :long], :int32

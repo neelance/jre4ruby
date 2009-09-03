@@ -231,7 +231,7 @@ module Sun::Net::Www::Protocol::Https
               return self.class::InetSocketAddress.new(phost, pport)
             end
             
-            typesig { [Object] }
+            typesig { [Vararg.new(Object)] }
             define_method :initialize do |*args|
               super(*args)
             end
@@ -308,7 +308,7 @@ module Sun::Net::Www::Protocol::Https
           return CookieHandler.get_default
         end
         
-        typesig { [Object] }
+        typesig { [Vararg.new(Object)] }
         define_method :initialize do |*args|
           super(*args)
         end

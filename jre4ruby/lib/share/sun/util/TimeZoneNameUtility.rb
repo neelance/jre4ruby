@@ -151,7 +151,7 @@ module Sun::Util
           const_attr_reader  :INSTANCE
         }
         
-        typesig { [class_self::TimeZoneNameProvider, class_self::Locale, String, Object] }
+        typesig { [class_self::TimeZoneNameProvider, class_self::Locale, String, Vararg.new(Object)] }
         def get_object(time_zone_name_provider, locale, request_id, *params)
           raise AssertError if not ((params.attr_length).equal?(0))
           names = nil
@@ -182,6 +182,11 @@ module Sun::Util
             names[0] = request_id
           end
           return names
+        end
+        
+        typesig { [class_self::TimeZoneNameProvider, class_self::Locale, String, Array.typed(Object)] }
+        def get_object(time_zone_name_provider, locale, request_id, params)
+          get_object(time_zone_name_provider, locale, request_id, *params)
         end
         
         class_module.module_eval {

@@ -515,7 +515,7 @@ module Java::Util
           raise self.class::UnsupportedOperationException.new
         end
         
-        typesig { [Object] }
+        typesig { [Vararg.new(Object)] }
         define_method :initialize do |*args|
           @known_providers = nil
           super(*args)

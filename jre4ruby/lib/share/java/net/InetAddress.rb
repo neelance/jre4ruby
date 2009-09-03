@@ -983,7 +983,7 @@ module Java::Net
               return self.attr_impl.get_host_by_addr(addr)
             end
             
-            typesig { [Object] }
+            typesig { [Vararg.new(Object)] }
             define_method :initialize do |*args|
               super(*args)
             end
@@ -1016,7 +1016,7 @@ module Java::Net
                 return nil
               end
               
-              typesig { [Object] }
+              typesig { [Vararg.new(Object)] }
               define_method :initialize do |*args|
                 super(*args)
               end

@@ -334,7 +334,7 @@ module Java::Security
           return p.get_permissions(@local_class_parent)
         end
         
-        typesig { [Object] }
+        typesig { [Vararg.new(Object)] }
         define_method :initialize do |*args|
           super(*args)
         end

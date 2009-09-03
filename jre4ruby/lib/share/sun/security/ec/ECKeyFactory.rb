@@ -61,7 +61,7 @@ module Sun::Security::Ec
           include_class_members ECKeyFactory
           include Provider if Provider.class == Module
           
-          typesig { [Object] }
+          typesig { [Vararg.new(Object)] }
           define_method :initialize do |*args|
             super(*args)
           end
@@ -82,7 +82,7 @@ module Sun::Security::Ec
             return nil
           end
           
-          typesig { [Object] }
+          typesig { [Vararg.new(Object)] }
           define_method :initialize do |*args|
             super(*args)
           end

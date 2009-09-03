@@ -291,7 +291,7 @@ module Sun::Util
               raise self.class::UnsupportedOperationException.new
             end
             
-            typesig { [Object] }
+            typesig { [Vararg.new(Object)] }
             define_method :initialize do |*args|
               @i = 0
               @a = nil
@@ -307,7 +307,7 @@ module Sun::Util
           end.new_local(self)
         end
         
-        typesig { [Object] }
+        typesig { [Vararg.new(Object)] }
         define_method :initialize do |*args|
           super(*args)
         end
@@ -395,7 +395,7 @@ module Sun::Util
                   raise self.class::UnsupportedOperationException.new
                 end
                 
-                typesig { [Object] }
+                typesig { [Vararg.new(Object)] }
                 define_method :initialize do |*args|
                   @k = nil
                   super(*args)
@@ -412,7 +412,7 @@ module Sun::Util
               raise self.class::UnsupportedOperationException.new
             end
             
-            typesig { [Object] }
+            typesig { [Vararg.new(Object)] }
             define_method :initialize do |*args|
               @i = nil
               super(*args)
@@ -424,7 +424,7 @@ module Sun::Util
           end.new_local(self)
         end
         
-        typesig { [Object] }
+        typesig { [Vararg.new(Object)] }
         define_method :initialize do |*args|
           super(*args)
         end

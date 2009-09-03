@@ -525,7 +525,7 @@ module Java::Lang::Reflect
       end
     end
     
-    typesig { [Object] }
+    typesig { [Vararg.new(Object)] }
     # Uses the constructor represented by this {@code Constructor} object to
     # create and initialize a new instance of the constructor's
     # declaring class, with the specified initialization parameters.
@@ -589,6 +589,11 @@ module Java::Lang::Reflect
         acquire_constructor_accessor
       end
       return @constructor_accessor.new_instance(initargs)
+    end
+    
+    typesig { [Array.typed(Object)] }
+    def new_instance(initargs)
+      new_instance(*initargs)
     end
     
     typesig { [] }

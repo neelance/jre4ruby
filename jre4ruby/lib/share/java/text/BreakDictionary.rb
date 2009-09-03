@@ -194,7 +194,7 @@ module Java::Text
             return self.class::BufferedInputStream.new(get_class.get_resource_as_stream("/sun/text/resources/" + dictionary_name))
           end
           
-          typesig { [Object] }
+          typesig { [Vararg.new(Object)] }
           define_method :initialize do |*args|
             super(*args)
           end

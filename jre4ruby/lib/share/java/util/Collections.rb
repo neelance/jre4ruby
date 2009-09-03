@@ -1174,7 +1174,7 @@ module Java::Util
               raise self.class::UnsupportedOperationException.new
             end
             
-            typesig { [Object] }
+            typesig { [Vararg.new(Object)] }
             define_method :initialize do |*args|
               @i = nil
               super(*args)
@@ -1503,7 +1503,7 @@ module Java::Util
               raise self.class::UnsupportedOperationException.new
             end
             
-            typesig { [Object] }
+            typesig { [Vararg.new(Object)] }
             define_method :initialize do |*args|
               @i = nil
               super(*args)
@@ -1770,7 +1770,7 @@ module Java::Util
                   raise self.class::UnsupportedOperationException.new
                 end
                 
-                typesig { [Object] }
+                typesig { [Vararg.new(Object)] }
                 define_method :initialize do |*args|
                   @i = nil
                   super(*args)
@@ -3135,7 +3135,7 @@ module Java::Util
               it.remove
             end
             
-            typesig { [Object] }
+            typesig { [Vararg.new(Object)] }
             define_method :initialize do |*args|
               super(*args)
             end
@@ -3513,7 +3513,7 @@ module Java::Util
               i.add(e)
             end
             
-            typesig { [Object] }
+            typesig { [Vararg.new(Object)] }
             define_method :initialize do |*args|
               super(*args)
             end
@@ -3849,7 +3849,7 @@ module Java::Util
                   return checked_entry(i.next_, value_type)
                 end
                 
-                typesig { [Object] }
+                typesig { [Vararg.new(Object)] }
                 define_method :initialize do |*args|
                   super(*args)
                 end
@@ -4692,7 +4692,7 @@ module Java::Util
             raise self.class::UnsupportedOperationException.new
           end
           
-          typesig { [Object] }
+          typesig { [Vararg.new(Object)] }
           define_method :initialize do |*args|
             @has_next = false
             super(*args)
@@ -5218,7 +5218,7 @@ module Java::Util
             return @i.next_
           end
           
-          typesig { [Object] }
+          typesig { [Vararg.new(Object)] }
           define_method :initialize do |*args|
             @i = nil
             super(*args)
@@ -5327,7 +5327,7 @@ module Java::Util
         return true
       end
       
-      typesig { [Collection, Object] }
+      typesig { [Collection, Vararg.new(Object)] }
       # Adds all of the specified elements to the specified collection.
       # Elements to be added may be specified individually or as an array.
       # The behavior of this convenience method is identical to that of
@@ -5358,6 +5358,11 @@ module Java::Util
           result |= c.add(element)
         end
         return result
+      end
+      
+      typesig { [Collection, Array.typed(Object)] }
+      def add_all(c, elements)
+        add_all(c, *elements)
       end
       
       typesig { [Map] }

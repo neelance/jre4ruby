@@ -413,7 +413,7 @@ module Java::Lang
               return nil
             end
             
-            typesig { [Object] }
+            typesig { [Vararg.new(Object)] }
             define_method :initialize do |*args|
               super(*args)
             end
@@ -1202,7 +1202,7 @@ module Java::Lang
             return e.has_more_elements
           end
           
-          typesig { [Object] }
+          typesig { [Vararg.new(Object)] }
           define_method :initialize do |*args|
             super(*args)
           end
@@ -1914,7 +1914,7 @@ module Java::Lang
             return Boolean.new(file.exists)
           end
           
-          typesig { [Object] }
+          typesig { [Vararg.new(Object)] }
           define_method :initialize do |*args|
             super(*args)
           end

@@ -53,7 +53,7 @@ module Java::Net
           return true
         end
         
-        typesig { [Object] }
+        typesig { [Vararg.new(Object)] }
         define_method :initialize do |*args|
           super(*args)
         end
@@ -74,7 +74,7 @@ module Java::Net
           return false
         end
         
-        typesig { [Object] }
+        typesig { [Vararg.new(Object)] }
         define_method :initialize do |*args|
           super(*args)
         end
@@ -95,7 +95,7 @@ module Java::Net
           return HttpCookie.domain_matches(cookie.get_domain, uri.get_host)
         end
         
-        typesig { [Object] }
+        typesig { [Vararg.new(Object)] }
         define_method :initialize do |*args|
           super(*args)
         end

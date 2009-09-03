@@ -545,9 +545,14 @@ module Sun::Security::X509
         return self.attr_oid_table.get(name.to_upper_case)
       end
       
-      typesig { [::Java::Int] }
+      typesig { [Vararg.new(::Java::Int)] }
       def oid(*values)
         return ObjectIdentifier.new_internal(values)
+      end
+      
+      typesig { [Array.typed(::Java::Int)] }
+      def oid(values)
+        oid(*values)
       end
       
       

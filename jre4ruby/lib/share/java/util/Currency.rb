@@ -417,7 +417,7 @@ module Java::Util
             return nil
           end
           
-          typesig { [Object] }
+          typesig { [Vararg.new(Object)] }
           define_method :initialize do |*args|
             super(*args)
           end
@@ -768,7 +768,7 @@ module Java::Util
           const_attr_reader  :INSTANCE
         }
         
-        typesig { [class_self::CurrencyNameProvider, class_self::Locale, String, Object] }
+        typesig { [class_self::CurrencyNameProvider, class_self::Locale, String, Vararg.new(Object)] }
         def get_object(currency_name_provider, locale, key, *params)
           raise AssertError if not ((params.attr_length).equal?(1))
           type = params[0]
@@ -781,6 +781,11 @@ module Java::Util
             raise AssertError if not (false)
           end # shouldn't happen
           return nil
+        end
+        
+        typesig { [class_self::CurrencyNameProvider, class_self::Locale, String, Array.typed(Object)] }
+        def get_object(currency_name_provider, locale, key, params)
+          get_object(currency_name_provider, locale, key, *params)
         end
         
         typesig { [] }

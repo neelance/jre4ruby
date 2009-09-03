@@ -2399,7 +2399,7 @@ module Java::Util
       return @last_exception
     end
     
-    typesig { [String, Object] }
+    typesig { [String, Vararg.new(Object)] }
     # Writes a formatted string to this object's destination using the
     # specified format string and arguments.  The locale used is the one
     # defined during the construction of this formatter.
@@ -2433,7 +2433,12 @@ module Java::Util
       return format(@l, format, args)
     end
     
-    typesig { [Locale, String, Object] }
+    typesig { [String, Array.typed(Object)] }
+    def format(format_, args)
+      format(format_, *args)
+    end
+    
+    typesig { [Locale, String, Vararg.new(Object)] }
     # Writes a formatted string to this object's destination using the
     # specified locale, format string, and arguments.
     # 
@@ -2512,6 +2517,11 @@ module Java::Util
         i += 1
       end
       return self
+    end
+    
+    typesig { [Locale, String, Array.typed(Object)] }
+    def format(l, format_, args)
+      format(l, format_, *args)
     end
     
     class_module.module_eval {
@@ -3192,7 +3202,7 @@ module Java::Util
           end
         end
         
-        typesig { [class_self::Flags] }
+        typesig { [Vararg.new(class_self::Flags)] }
         def check_bad_flags(*bad_flags)
           i = 0
           while i < bad_flags.attr_length
@@ -3201,6 +3211,11 @@ module Java::Util
             end
             i += 1
           end
+        end
+        
+        typesig { [Array.typed(class_self::Flags)] }
+        def check_bad_flags(bad_flags)
+          check_bad_flags(*bad_flags)
         end
         
         typesig { [] }

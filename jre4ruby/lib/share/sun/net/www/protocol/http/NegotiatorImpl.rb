@@ -91,7 +91,7 @@ module Sun::Net::Www::Protocol::Http
             return System.get_property("http.auth.preference", "spnego")
           end
           
-          typesig { [Object] }
+          typesig { [Vararg.new(Object)] }
           define_method :initialize do |*args|
             super(*args)
           end

@@ -2602,7 +2602,7 @@ module Java::Util::Regex
           return (block).equal?(Character::UnicodeBlock.of(ch))
         end
         
-        typesig { [Object] }
+        typesig { [Vararg.new(Object)] }
         define_method :initialize do |*args|
           super(*args)
         end
@@ -3692,7 +3692,7 @@ module Java::Util::Regex
               return !@local_class_parent.is_satisfied_by(ch)
             end
             
-            typesig { [Object] }
+            typesig { [Vararg.new(Object)] }
             define_method :initialize do |*args|
               super(*args)
             end
@@ -4166,7 +4166,7 @@ module Java::Util::Regex
             return in_range(lower, ch, upper)
           end
           
-          typesig { [Object] }
+          typesig { [Vararg.new(Object)] }
           define_method :initialize do |*args|
             super(*args)
           end
@@ -4196,7 +4196,7 @@ module Java::Util::Regex
             return in_range(lower, up, upper) || in_range(lower, Character.to_lower_case(up), upper)
           end
           
-          typesig { [Object] }
+          typesig { [Vararg.new(Object)] }
           define_method :initialize do |*args|
             super(*args)
           end
@@ -4215,7 +4215,7 @@ module Java::Util::Regex
           return in_range(lower, ch, upper) || ASCII.is_ascii(ch) && (in_range(lower, ASCII.to_upper(ch), upper) || in_range(lower, ASCII.to_lower(ch), upper))
         end
         
-        typesig { [Object] }
+        typesig { [Vararg.new(Object)] }
         define_method :initialize do |*args|
           super(*args)
         end
@@ -5638,7 +5638,7 @@ module Java::Util::Regex
             return (i).equal?(matcher.attr_lookbehind_to)
           end
           
-          typesig { [Object] }
+          typesig { [Vararg.new(Object)] }
           define_method :initialize do |*args|
             super(*args)
           end
@@ -5865,7 +5865,7 @@ module Java::Util::Regex
             return lhs.is_satisfied_by(ch) || rhs.is_satisfied_by(ch)
           end
           
-          typesig { [Object] }
+          typesig { [Vararg.new(Object)] }
           define_method :initialize do |*args|
             super(*args)
           end
@@ -5888,7 +5888,7 @@ module Java::Util::Regex
             return lhs.is_satisfied_by(ch) && rhs.is_satisfied_by(ch)
           end
           
-          typesig { [Object] }
+          typesig { [Vararg.new(Object)] }
           define_method :initialize do |*args|
             super(*args)
           end
@@ -5911,7 +5911,7 @@ module Java::Util::Regex
             return !rhs.is_satisfied_by(ch) && lhs.is_satisfied_by(ch)
           end
           
-          typesig { [Object] }
+          typesig { [Vararg.new(Object)] }
           define_method :initialize do |*args|
             super(*args)
           end
@@ -6354,7 +6354,7 @@ module Java::Util::Regex
                 return self.class::Category.new(type_mask)
               end
               
-              typesig { [Object] }
+              typesig { [Vararg.new(Object)] }
               define_method :initialize do |*args|
                 super(*args)
               end
@@ -6376,7 +6376,7 @@ module Java::Util::Regex
                 return range_for(lower, upper)
               end
               
-              typesig { [Object] }
+              typesig { [Vararg.new(Object)] }
               define_method :initialize do |*args|
                 super(*args)
               end
@@ -6398,7 +6398,7 @@ module Java::Util::Regex
                 return self.class::Ctype.new(ctype)
               end
               
-              typesig { [Object] }
+              typesig { [Vararg.new(Object)] }
               define_method :initialize do |*args|
                 super(*args)
               end
@@ -6444,7 +6444,7 @@ module Java::Util::Regex
                 return p.clone
               end
               
-              typesig { [Object] }
+              typesig { [Vararg.new(Object)] }
               define_method :initialize do |*args|
                 super(*args)
               end
@@ -6510,7 +6510,7 @@ module Java::Util::Regex
                 return self.class::All.new
               end
               
-              typesig { [Object] }
+              typesig { [Vararg.new(Object)] }
               define_method :initialize do |*args|
                 super(*args)
               end
@@ -6544,7 +6544,7 @@ module Java::Util::Regex
                 return Character.is_lower_case(ch)
               end
               
-              typesig { [Object] }
+              typesig { [Vararg.new(Object)] }
               define_method :initialize do |*args|
                 super(*args)
               end
@@ -6562,7 +6562,7 @@ module Java::Util::Regex
                 return Character.is_upper_case(ch)
               end
               
-              typesig { [Object] }
+              typesig { [Vararg.new(Object)] }
               define_method :initialize do |*args|
                 super(*args)
               end
@@ -6580,7 +6580,7 @@ module Java::Util::Regex
                 return Character.is_title_case(ch)
               end
               
-              typesig { [Object] }
+              typesig { [Vararg.new(Object)] }
               define_method :initialize do |*args|
                 super(*args)
               end
@@ -6598,7 +6598,7 @@ module Java::Util::Regex
                 return Character.is_digit(ch)
               end
               
-              typesig { [Object] }
+              typesig { [Vararg.new(Object)] }
               define_method :initialize do |*args|
                 super(*args)
               end
@@ -6616,7 +6616,7 @@ module Java::Util::Regex
                 return Character.is_defined(ch)
               end
               
-              typesig { [Object] }
+              typesig { [Vararg.new(Object)] }
               define_method :initialize do |*args|
                 super(*args)
               end
@@ -6634,7 +6634,7 @@ module Java::Util::Regex
                 return Character.is_letter(ch)
               end
               
-              typesig { [Object] }
+              typesig { [Vararg.new(Object)] }
               define_method :initialize do |*args|
                 super(*args)
               end
@@ -6652,7 +6652,7 @@ module Java::Util::Regex
                 return Character.is_letter_or_digit(ch)
               end
               
-              typesig { [Object] }
+              typesig { [Vararg.new(Object)] }
               define_method :initialize do |*args|
                 super(*args)
               end
@@ -6670,7 +6670,7 @@ module Java::Util::Regex
                 return Character.is_java_identifier_start(ch)
               end
               
-              typesig { [Object] }
+              typesig { [Vararg.new(Object)] }
               define_method :initialize do |*args|
                 super(*args)
               end
@@ -6688,7 +6688,7 @@ module Java::Util::Regex
                 return Character.is_java_identifier_part(ch)
               end
               
-              typesig { [Object] }
+              typesig { [Vararg.new(Object)] }
               define_method :initialize do |*args|
                 super(*args)
               end
@@ -6706,7 +6706,7 @@ module Java::Util::Regex
                 return Character.is_unicode_identifier_start(ch)
               end
               
-              typesig { [Object] }
+              typesig { [Vararg.new(Object)] }
               define_method :initialize do |*args|
                 super(*args)
               end
@@ -6724,7 +6724,7 @@ module Java::Util::Regex
                 return Character.is_unicode_identifier_part(ch)
               end
               
-              typesig { [Object] }
+              typesig { [Vararg.new(Object)] }
               define_method :initialize do |*args|
                 super(*args)
               end
@@ -6742,7 +6742,7 @@ module Java::Util::Regex
                 return Character.is_identifier_ignorable(ch)
               end
               
-              typesig { [Object] }
+              typesig { [Vararg.new(Object)] }
               define_method :initialize do |*args|
                 super(*args)
               end
@@ -6760,7 +6760,7 @@ module Java::Util::Regex
                 return Character.is_space_char(ch)
               end
               
-              typesig { [Object] }
+              typesig { [Vararg.new(Object)] }
               define_method :initialize do |*args|
                 super(*args)
               end
@@ -6778,7 +6778,7 @@ module Java::Util::Regex
                 return Character.is_whitespace(ch)
               end
               
-              typesig { [Object] }
+              typesig { [Vararg.new(Object)] }
               define_method :initialize do |*args|
                 super(*args)
               end
@@ -6796,7 +6796,7 @@ module Java::Util::Regex
                 return Character.is_isocontrol(ch)
               end
               
-              typesig { [Object] }
+              typesig { [Vararg.new(Object)] }
               define_method :initialize do |*args|
                 super(*args)
               end
@@ -6814,7 +6814,7 @@ module Java::Util::Regex
                 return Character.is_mirrored(ch)
               end
               
-              typesig { [Object] }
+              typesig { [Vararg.new(Object)] }
               define_method :initialize do |*args|
                 super(*args)
               end

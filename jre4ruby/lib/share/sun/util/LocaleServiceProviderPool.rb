@@ -153,7 +153,7 @@ module Sun::Util
             return nil
           end
           
-          typesig { [Object] }
+          typesig { [Vararg.new(Object)] }
           define_method :initialize do |*args|
             super(*args)
           end
@@ -279,7 +279,7 @@ module Sun::Util
       return locales.contains(locale)
     end
     
-    typesig { [LocalizedObjectGetter, Locale, Object] }
+    typesig { [LocalizedObjectGetter, Locale, Vararg.new(Object)] }
     # Returns the provider's localized object for the specified
     # locale.
     # 
@@ -292,7 +292,12 @@ module Sun::Util
       return get_localized_object_impl(getter, locale, true, nil, nil, nil, params)
     end
     
-    typesig { [LocalizedObjectGetter, Locale, OpenListResourceBundle, String, Object] }
+    typesig { [LocalizedObjectGetter, Locale, Array.typed(Object)] }
+    def get_localized_object(getter, locale, params)
+      get_localized_object(getter, locale, *params)
+    end
+    
+    typesig { [LocalizedObjectGetter, Locale, OpenListResourceBundle, String, Vararg.new(Object)] }
     # Returns the provider's localized name for the specified
     # locale.
     # 
@@ -308,7 +313,12 @@ module Sun::Util
       return get_localized_object_impl(getter, locale, false, nil, bundle, key, params)
     end
     
-    typesig { [LocalizedObjectGetter, Locale, String, OpenListResourceBundle, String, Object] }
+    typesig { [LocalizedObjectGetter, Locale, OpenListResourceBundle, String, Array.typed(Object)] }
+    def get_localized_object(getter, locale, bundle, key, params)
+      get_localized_object(getter, locale, bundle, key, *params)
+    end
+    
+    typesig { [LocalizedObjectGetter, Locale, String, OpenListResourceBundle, String, Vararg.new(Object)] }
     # Returns the provider's localized name for the specified
     # locale.
     # 
@@ -326,7 +336,12 @@ module Sun::Util
       return get_localized_object_impl(getter, locale, false, bundle_key, bundle, key, params)
     end
     
-    typesig { [LocalizedObjectGetter, Locale, ::Java::Boolean, String, OpenListResourceBundle, String, Object] }
+    typesig { [LocalizedObjectGetter, Locale, String, OpenListResourceBundle, String, Array.typed(Object)] }
+    def get_localized_object(getter, locale, bundle_key, bundle, key, params)
+      get_localized_object(getter, locale, bundle_key, bundle, key, *params)
+    end
+    
+    typesig { [LocalizedObjectGetter, Locale, ::Java::Boolean, String, OpenListResourceBundle, String, Vararg.new(Object)] }
     def get_localized_object_impl(getter, locale, is_object_provider, bundle_key, bundle, key, *params)
       if (has_providers)
         if ((bundle_key).nil?)
@@ -376,6 +391,11 @@ module Sun::Util
       end
       # not found.
       return nil
+    end
+    
+    typesig { [LocalizedObjectGetter, Locale, ::Java::Boolean, String, OpenListResourceBundle, String, Array.typed(Object)] }
+    def get_localized_object_impl(getter, locale, is_object_provider, bundle_key, bundle, key, params)
+      get_localized_object_impl(getter, locale, is_object_provider, bundle_key, bundle, key, *params)
     end
     
     typesig { [Locale] }
@@ -499,7 +519,7 @@ module Sun::Util
       const_set_lazy(:LocalizedObjectGetter) { Module.new do
         include_class_members LocaleServiceProviderPool
         
-        typesig { [Object, Locale, String, Object] }
+        typesig { [Object, Locale, String, Vararg.new(Object)] }
         # Returns an object from the provider
         # 
         # @param lsp the provider
@@ -510,6 +530,11 @@ module Sun::Util
         # @return localized object from the provider
         def get_object(lsp, locale, key, *params)
           raise NotImplementedError
+        end
+        
+        typesig { [Object, Locale, String, Array.typed(Object)] }
+        def get_object(lsp, locale, key, params)
+          get_object(lsp, locale, key, *params)
         end
       end }
     }

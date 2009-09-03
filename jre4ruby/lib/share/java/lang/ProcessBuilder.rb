@@ -169,7 +169,7 @@ module Java::Lang
       @command = command
     end
     
-    typesig { [String] }
+    typesig { [Vararg.new(String)] }
     # Constructs a process builder with the specified operating
     # system program and arguments.  This is a convenience
     # constructor that sets the process builder's command to a string
@@ -211,7 +211,7 @@ module Java::Lang
       return self
     end
     
-    typesig { [String] }
+    typesig { [Vararg.new(String)] }
     # Sets this process builder's operating system program and
     # arguments.  This is a convenience method that sets the command
     # to a string list containing the same strings as the
@@ -227,6 +227,11 @@ module Java::Lang
         @command.add(arg)
       end
       return self
+    end
+    
+    typesig { [Array.typed(String)] }
+    def command(command)
+      command(*command)
     end
     
     typesig { [] }

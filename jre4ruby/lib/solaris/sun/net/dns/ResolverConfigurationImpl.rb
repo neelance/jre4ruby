@@ -164,7 +164,7 @@ module Sun::Net::Dns
           return resolvconf("nameserver", 1, 5)
         end
         
-        typesig { [Object] }
+        typesig { [Vararg.new(Object)] }
         define_method :initialize do |*args|
           super(*args)
         end
@@ -200,7 +200,7 @@ module Sun::Net::Dns
           return nil
         end
         
-        typesig { [Object] }
+        typesig { [Vararg.new(Object)] }
         define_method :initialize do |*args|
           super(*args)
         end
@@ -236,7 +236,7 @@ module Sun::Net::Dns
           return nil
         end
         
-        typesig { [Object] }
+        typesig { [Vararg.new(Object)] }
         define_method :initialize do |*args|
           super(*args)
         end

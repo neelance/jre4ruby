@@ -179,7 +179,7 @@ module Java::Nio::Channels
             ch.close
           end
           
-          typesig { [Object] }
+          typesig { [Vararg.new(Object)] }
           define_method :initialize do |*args|
             @bb = nil
             @bs = nil

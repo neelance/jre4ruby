@@ -606,7 +606,7 @@ module Java::Lang::Management
             return interface_class.get_class_loader
           end
           
-          typesig { [Object] }
+          typesig { [Vararg.new(Object)] }
           define_method :initialize do |*args|
             super(*args)
           end

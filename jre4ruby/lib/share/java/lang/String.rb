@@ -2754,7 +2754,7 @@ module Java::Lang
     end
     
     class_module.module_eval {
-      typesig { [String, Object] }
+      typesig { [String, Vararg.new(Object)] }
       # Returns a formatted string using the specified format string and
       # arguments.
       # 
@@ -2795,7 +2795,12 @@ module Java::Lang
         return Formatter.new.format(format, args).to_s
       end
       
-      typesig { [Locale, String, Object] }
+      typesig { [String, Array.typed(Object)] }
+      def format(format, args)
+        format(format, *args)
+      end
+      
+      typesig { [Locale, String, Vararg.new(Object)] }
       # Returns a formatted string using the specified locale, format string,
       # and arguments.
       # 
@@ -2836,6 +2841,11 @@ module Java::Lang
       # @since  1.5
       def format(l, format, *args)
         return Formatter.new(l).format(format, args).to_s
+      end
+      
+      typesig { [Locale, String, Array.typed(Object)] }
+      def format(l, format, args)
+        format(l, format, *args)
       end
       
       typesig { [Object] }

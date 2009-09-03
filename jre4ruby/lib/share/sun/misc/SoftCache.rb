@@ -525,7 +525,7 @@ module Sun::Misc
               @hash_iterator.remove
             end
             
-            typesig { [Object] }
+            typesig { [Vararg.new(Object)] }
             define_method :initialize do |*args|
               @hash_iterator = nil
               @next = nil

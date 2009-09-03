@@ -303,7 +303,7 @@ module Java::Security::Cert
             return Security.get_property(CPV_TYPE)
           end
           
-          typesig { [Object] }
+          typesig { [Vararg.new(Object)] }
           define_method :initialize do |*args|
             super(*args)
           end

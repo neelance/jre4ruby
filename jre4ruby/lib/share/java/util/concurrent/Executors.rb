@@ -373,7 +373,7 @@ module Java::Util::Concurrent
             return action.run
           end
           
-          typesig { [Object] }
+          typesig { [Vararg.new(Object)] }
           define_method :initialize do |*args|
             super(*args)
           end
@@ -404,7 +404,7 @@ module Java::Util::Concurrent
             return action.run
           end
           
-          typesig { [Object] }
+          typesig { [Vararg.new(Object)] }
           define_method :initialize do |*args|
             super(*args)
           end
@@ -532,7 +532,7 @@ module Java::Util::Concurrent
                 return self.attr_task.call
               end
               
-              typesig { [Object] }
+              typesig { [Vararg.new(Object)] }
               define_method :initialize do |*args|
                 super(*args)
               end
@@ -619,7 +619,7 @@ module Java::Util::Concurrent
                 end
               end
               
-              typesig { [Object] }
+              typesig { [Vararg.new(Object)] }
               define_method :initialize do |*args|
                 super(*args)
               end
@@ -746,7 +746,7 @@ module Java::Util::Concurrent
                   return nil
                 end
                 
-                typesig { [Object] }
+                typesig { [Vararg.new(Object)] }
                 define_method :initialize do |*args|
                   super(*args)
                 end
@@ -756,7 +756,7 @@ module Java::Util::Concurrent
               end.new_local(self), self.attr_acc)
             end
             
-            typesig { [Object] }
+            typesig { [Vararg.new(Object)] }
             define_method :initialize do |*args|
               super(*args)
             end

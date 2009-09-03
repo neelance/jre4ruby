@@ -169,7 +169,7 @@ module Sun::Net::Spi::Nameservice::Dns
               return ctx
             end
             
-            typesig { [Object] }
+            typesig { [Vararg.new(Object)] }
             define_method :initialize do |*args|
               super(*args)
             end
@@ -216,7 +216,7 @@ module Sun::Net::Spi::Nameservice::Dns
             return ctx.get_attributes(name, ids)
           end
           
-          typesig { [Object] }
+          typesig { [Vararg.new(Object)] }
           define_method :initialize do |*args|
             super(*args)
           end

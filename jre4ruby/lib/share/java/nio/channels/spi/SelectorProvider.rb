@@ -199,7 +199,7 @@ module Java::Nio::Channels::Spi
               return self.attr_provider
             end
             
-            typesig { [Object] }
+            typesig { [Vararg.new(Object)] }
             define_method :initialize do |*args|
               super(*args)
             end

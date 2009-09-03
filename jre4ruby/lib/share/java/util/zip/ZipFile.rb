@@ -328,7 +328,7 @@ module Java::Util::Zip
             return avail > JavaInteger::MAX_VALUE ? JavaInteger::MAX_VALUE : RJava.cast_to_int(avail)
           end
           
-          typesig { [Object] }
+          typesig { [Vararg.new(Object)] }
           define_method :initialize do |*args|
             @is_closed = false
             @eof = false
@@ -438,7 +438,7 @@ module Java::Util::Zip
           end
         end
         
-        typesig { [Object] }
+        typesig { [Vararg.new(Object)] }
         define_method :initialize do |*args|
           @i = 0
           super(*args)

@@ -1384,7 +1384,7 @@ module Sun::Security::X509
             return Array.typed(Object).new([cons, field])
           end
           
-          typesig { [Object] }
+          typesig { [Vararg.new(Object)] }
           define_method :initialize do |*args|
             super(*args)
           end

@@ -508,7 +508,7 @@ module Java::Lang
               @i.remove
             end
             
-            typesig { [Object] }
+            typesig { [Vararg.new(Object)] }
             define_method :initialize do |*args|
               @i = nil
               super(*args)
@@ -546,7 +546,7 @@ module Java::Lang
                 raise self.class::UnsupportedOperationException.new
               end
               
-              typesig { [Object] }
+              typesig { [Vararg.new(Object)] }
               define_method :initialize do |*args|
                 super(*args)
               end
@@ -640,7 +640,7 @@ module Java::Lang
               @i.remove
             end
             
-            typesig { [Object] }
+            typesig { [Vararg.new(Object)] }
             define_method :initialize do |*args|
               @i = nil
               super(*args)
@@ -735,7 +735,7 @@ module Java::Lang
               @i.remove
             end
             
-            typesig { [Object] }
+            typesig { [Vararg.new(Object)] }
             define_method :initialize do |*args|
               @i = nil
               super(*args)

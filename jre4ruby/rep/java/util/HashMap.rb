@@ -1,4 +1,8 @@
 class Java::Util::HashMap < Hash
+  overload_protected {
+    include Java::Util::Map
+  }
+
   def initialize(data = nil)
     case data
     when nil

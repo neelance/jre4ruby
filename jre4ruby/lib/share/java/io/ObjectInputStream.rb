@@ -1330,7 +1330,7 @@ module Java::Io
             return Boolean::TRUE
           end
           
-          typesig { [Object] }
+          typesig { [Vararg.new(Object)] }
           define_method :initialize do |*args|
             super(*args)
           end
@@ -2248,7 +2248,7 @@ module Java::Io
                   return nil
                 end
                 
-                typesig { [Object] }
+                typesig { [Vararg.new(Object)] }
                 define_method :initialize do |*args|
                   super(*args)
                 end

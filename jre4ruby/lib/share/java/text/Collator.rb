@@ -541,7 +541,7 @@ module Java::Text
           const_attr_reader  :INSTANCE
         }
         
-        typesig { [class_self::CollatorProvider, class_self::Locale, String, Object] }
+        typesig { [class_self::CollatorProvider, class_self::Locale, String, Vararg.new(Object)] }
         def get_object(collator_provider, locale, key, *params)
           raise AssertError if not ((params.attr_length).equal?(1))
           result = collator_provider.get_instance(locale)
@@ -554,6 +554,11 @@ module Java::Text
             return result.clone
           end
           return nil
+        end
+        
+        typesig { [class_self::CollatorProvider, class_self::Locale, String, Array.typed(Object)] }
+        def get_object(collator_provider, locale, key, params)
+          get_object(collator_provider, locale, key, *params)
         end
         
         typesig { [] }

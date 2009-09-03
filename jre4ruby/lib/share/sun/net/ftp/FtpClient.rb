@@ -195,7 +195,7 @@ module Sun::Net::Ftp
             return result
           end
           
-          typesig { [Object] }
+          typesig { [Vararg.new(Object)] }
           define_method :initialize do |*args|
             super(*args)
           end
@@ -234,7 +234,7 @@ module Sun::Net::Ftp
             return nil
           end
           
-          typesig { [Object] }
+          typesig { [Vararg.new(Object)] }
           define_method :initialize do |*args|
             super(*args)
           end
@@ -444,7 +444,7 @@ module Sun::Net::Ftp
               return self.class::Socket.new(self.attr_proxy)
             end
             
-            typesig { [Object] }
+            typesig { [Vararg.new(Object)] }
             define_method :initialize do |*args|
               super(*args)
             end

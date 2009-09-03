@@ -266,7 +266,7 @@ module Java::Util::Logging
             return nil
           end
           
-          typesig { [Object] }
+          typesig { [Vararg.new(Object)] }
           define_method :initialize do |*args|
             super(*args)
           end
@@ -367,7 +367,7 @@ module Java::Util::Logging
                   return nil
                 end
                 
-                typesig { [Object] }
+                typesig { [Vararg.new(Object)] }
                 define_method :initialize do |*args|
                   super(*args)
                 end
@@ -507,7 +507,7 @@ module Java::Util::Logging
           return nil
         end
         
-        typesig { [Object] }
+        typesig { [Vararg.new(Object)] }
         define_method :initialize do |*args|
           super(*args)
         end
@@ -610,7 +610,7 @@ module Java::Util::Logging
             return nil
           end
           
-          typesig { [Object] }
+          typesig { [Vararg.new(Object)] }
           define_method :initialize do |*args|
             super(*args)
           end
@@ -643,7 +643,7 @@ module Java::Util::Logging
             return nil
           end
           
-          typesig { [Object] }
+          typesig { [Vararg.new(Object)] }
           define_method :initialize do |*args|
             super(*args)
           end

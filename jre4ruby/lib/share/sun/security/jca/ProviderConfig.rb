@@ -100,7 +100,7 @@ module Sun::Security::Jca
             return ClassLoader.get_system_class_loader
           end
           
-          typesig { [Object] }
+          typesig { [Vararg.new(Object)] }
           define_method :initialize do |*args|
             super(*args)
           end
@@ -207,7 +207,7 @@ module Sun::Security::Jca
           return Boolean::TRUE
         end
         
-        typesig { [Object] }
+        typesig { [Vararg.new(Object)] }
         define_method :initialize do |*args|
           super(*args)
         end
@@ -376,7 +376,7 @@ module Sun::Security::Jca
           end
         end
         
-        typesig { [Object] }
+        typesig { [Vararg.new(Object)] }
         define_method :initialize do |*args|
           super(*args)
         end
@@ -410,7 +410,7 @@ module Sun::Security::Jca
             end
           end
           
-          typesig { [Object] }
+          typesig { [Vararg.new(Object)] }
           define_method :initialize do |*args|
             super(*args)
           end

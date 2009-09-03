@@ -324,7 +324,7 @@ module Java::Util
         return result
       end
       
-      typesig { [Object, Object] }
+      typesig { [Object, Vararg.new(Object)] }
       # Creates an enum set initially containing the specified elements.
       # This factory, whose parameter list uses the varargs feature, may
       # be used to create an enum set initially containing an arbitrary
@@ -343,6 +343,11 @@ module Java::Util
           result.add(e)
         end
         return result
+      end
+      
+      typesig { [Object, Array.typed(Object)] }
+      def of(first, rest)
+        of(first, *rest)
       end
       
       typesig { [Object, Object] }

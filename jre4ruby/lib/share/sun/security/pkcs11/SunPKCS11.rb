@@ -839,7 +839,7 @@ module Sun::Security::Pkcs11
             return nil
           end
           
-          typesig { [Object] }
+          typesig { [Vararg.new(Object)] }
           define_method :initialize do |*args|
             super(*args)
           end
@@ -954,7 +954,7 @@ module Sun::Security::Pkcs11
           return nil
         end
         
-        typesig { [Object] }
+        typesig { [Vararg.new(Object)] }
         define_method :initialize do |*args|
           super(*args)
         end
@@ -1401,7 +1401,7 @@ module Sun::Security::Pkcs11
               return c.new_instance
             end
             
-            typesig { [Object] }
+            typesig { [Vararg.new(Object)] }
             define_method :initialize do |*args|
               super(*args)
             end

@@ -374,7 +374,7 @@ module Java::Lang
               return nil
             end
             
-            typesig { [Object] }
+            typesig { [Vararg.new(Object)] }
             define_method :initialize do |*args|
               super(*args)
             end
@@ -1418,7 +1418,7 @@ module Java::Lang
           return list.to_array(empty)
         end
         
-        typesig { [Object] }
+        typesig { [Vararg.new(Object)] }
         define_method :initialize do |*args|
           super(*args)
         end
@@ -1635,7 +1635,7 @@ module Java::Lang
       return field
     end
     
-    typesig { [String, Class] }
+    typesig { [String, Vararg.new(Class)] }
     # Returns a {@code Method} object that reflects the specified public
     # member method of the class or interface represented by this
     # {@code Class} object. The {@code name} parameter is a
@@ -1717,7 +1717,12 @@ module Java::Lang
       return method
     end
     
-    typesig { [Class] }
+    typesig { [String, Array.typed(Class)] }
+    def get_method(name, parameter_types)
+      get_method(name, *parameter_types)
+    end
+    
+    typesig { [Vararg.new(Class)] }
     # Returns a {@code Constructor} object that reflects the specified
     # public constructor of the class represented by this {@code Class}
     # object. The {@code parameterTypes} parameter is an array of
@@ -1762,6 +1767,11 @@ module Java::Lang
       # see java.lang.SecurityManager.checkMemberAccess
       check_member_access(Member::PUBLIC, ClassLoader.get_caller_class_loader)
       return get_constructor0(parameter_types, Member::PUBLIC)
+    end
+    
+    typesig { [Array.typed(Class)] }
+    def get_constructor(parameter_types)
+      get_constructor(*parameter_types)
     end
     
     typesig { [] }
@@ -1980,7 +1990,7 @@ module Java::Lang
       return field
     end
     
-    typesig { [String, Class] }
+    typesig { [String, Vararg.new(Class)] }
     # Returns a {@code Method} object that reflects the specified
     # declared method of the class or interface represented by this
     # {@code Class} object. The {@code name} parameter is a
@@ -2032,7 +2042,12 @@ module Java::Lang
       return method
     end
     
-    typesig { [Class] }
+    typesig { [String, Array.typed(Class)] }
+    def get_declared_method(name, parameter_types)
+      get_declared_method(name, *parameter_types)
+    end
+    
+    typesig { [Vararg.new(Class)] }
     # Returns a {@code Constructor} object that reflects the specified
     # constructor of the class or interface represented by this
     # {@code Class} object.  The {@code parameterTypes} parameter is
@@ -2073,6 +2088,11 @@ module Java::Lang
       # see java.lang.SecurityManager.checkMemberAccess
       check_member_access(Member::DECLARED, ClassLoader.get_caller_class_loader)
       return get_constructor0(parameter_types, Member::DECLARED)
+    end
+    
+    typesig { [Array.typed(Class)] }
+    def get_declared_constructor(parameter_types)
+      get_declared_constructor(*parameter_types)
     end
     
     typesig { [String] }
@@ -3171,7 +3191,7 @@ module Java::Lang
             return nil
           end
           
-          typesig { [Object] }
+          typesig { [Vararg.new(Object)] }
           define_method :initialize do |*args|
             super(*args)
           end
@@ -3219,7 +3239,7 @@ module Java::Lang
               return nil
             end
             
-            typesig { [Object] }
+            typesig { [Vararg.new(Object)] }
             define_method :initialize do |*args|
               super(*args)
             end

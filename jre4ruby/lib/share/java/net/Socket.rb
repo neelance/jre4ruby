@@ -495,7 +495,7 @@ module Java::Net
           end
         end
         
-        typesig { [Object] }
+        typesig { [Vararg.new(Object)] }
         define_method :initialize do |*args|
           super(*args)
         end
@@ -870,7 +870,7 @@ module Java::Net
             return self.attr_impl.get_input_stream
           end
           
-          typesig { [Object] }
+          typesig { [Vararg.new(Object)] }
           define_method :initialize do |*args|
             super(*args)
           end
@@ -924,7 +924,7 @@ module Java::Net
             return self.attr_impl.get_output_stream
           end
           
-          typesig { [Object] }
+          typesig { [Vararg.new(Object)] }
           define_method :initialize do |*args|
             super(*args)
           end

@@ -538,7 +538,7 @@ module Sun::Security::Mscapi
           return entry.get_alias
         end
         
-        typesig { [Object] }
+        typesig { [Vararg.new(Object)] }
         define_method :initialize do |*args|
           super(*args)
         end
