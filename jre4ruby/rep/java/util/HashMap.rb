@@ -14,5 +14,8 @@ class Java::Util::HashMap < Hash
 
   alias_method :put, :[]=
   alias_method :get, :[]
+  alias_method :remove, :delete
+  alias_method :contains, :has_value?
   alias_method :contains_key, :has_key?
+  alias_method :contains_value, :has_value?
 end

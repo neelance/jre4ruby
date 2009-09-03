@@ -35,6 +35,15 @@ class Java::Util::ArrayList < Array
 
   alias_method :add, :<<
   alias_method :get, :[]
+  alias_method :contains, :include?
+
+  def remove(o)
+    if o.is_a? Integer
+      delete_at o
+    else
+      delete o
+    end
+  end
 
   def to_a
     self

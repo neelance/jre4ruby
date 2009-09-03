@@ -39,6 +39,7 @@ class Java::Lang::Character
   
   alias_method :to_i, :char_value
   alias_method :to_int, :char_value
+  alias_method :int_value, :char_value
   
   def chr
     @value.chr
