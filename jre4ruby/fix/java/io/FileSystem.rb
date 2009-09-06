@@ -59,6 +59,6 @@ class Java::Io::FileSystem
   end
 
   def is_absolute(f)
-    f.attr_path =~ /^[\/\\]/
+    f.attr_path =~ /^(\w:)?[\/\\]/
   end
 end

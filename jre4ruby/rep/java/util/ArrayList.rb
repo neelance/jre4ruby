@@ -36,6 +36,7 @@ class Java::Util::ArrayList < Array
   alias_method :add, :<<
   alias_method :get, :[]
   alias_method :contains, :include?
+  alias_method :is_empty, :empty?
 
   def remove(o)
     if o.is_a? Integer
