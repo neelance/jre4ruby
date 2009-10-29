@@ -41,8 +41,8 @@ class Java::Lang::Character
   alias_method :to_int, :char_value
   alias_method :int_value, :char_value
   
-  def chr
-    @value.chr
+  def chr(encoding = nil)
+    @value.chr encoding
   end
   
   def is_a?(type)
