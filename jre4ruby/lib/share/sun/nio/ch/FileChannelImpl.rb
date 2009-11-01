@@ -1514,80 +1514,80 @@ module Sun::Nio::Ch
       end }
     }
     
-    JNI.native_method :Java_sun_nio_ch_FileChannelImpl_lock0, [:pointer, :long, :long, :int8, :int64, :int64, :int8], :int32
+    JNI.load_native_method :Java_sun_nio_ch_FileChannelImpl_lock0, [:pointer, :long, :long, :int8, :int64, :int64, :int8], :int32
     typesig { [FileDescriptor, ::Java::Boolean, ::Java::Long, ::Java::Long, ::Java::Boolean] }
     # -- Native methods --
     # Grabs a file lock
     def lock0(fd, blocking, pos, size_, shared)
-      JNI.__send__(:Java_sun_nio_ch_FileChannelImpl_lock0, JNI.env, self.jni_id, fd.jni_id, blocking ? 1 : 0, pos.to_int, size_.to_int, shared ? 1 : 0)
+      JNI.call_native_method(:Java_sun_nio_ch_FileChannelImpl_lock0, JNI.env, self.jni_id, fd.jni_id, blocking ? 1 : 0, pos.to_int, size_.to_int, shared ? 1 : 0)
     end
     
-    JNI.native_method :Java_sun_nio_ch_FileChannelImpl_release0, [:pointer, :long, :long, :int64, :int64], :void
+    JNI.load_native_method :Java_sun_nio_ch_FileChannelImpl_release0, [:pointer, :long, :long, :int64, :int64], :void
     typesig { [FileDescriptor, ::Java::Long, ::Java::Long] }
     # Releases a file lock
     def release0(fd, pos, size_)
-      JNI.__send__(:Java_sun_nio_ch_FileChannelImpl_release0, JNI.env, self.jni_id, fd.jni_id, pos.to_int, size_.to_int)
+      JNI.call_native_method(:Java_sun_nio_ch_FileChannelImpl_release0, JNI.env, self.jni_id, fd.jni_id, pos.to_int, size_.to_int)
     end
     
-    JNI.native_method :Java_sun_nio_ch_FileChannelImpl_map0, [:pointer, :long, :int32, :int64, :int64], :int64
+    JNI.load_native_method :Java_sun_nio_ch_FileChannelImpl_map0, [:pointer, :long, :int32, :int64, :int64], :int64
     typesig { [::Java::Int, ::Java::Long, ::Java::Long] }
     # Creates a new mapping
     def map0(prot, position_, length)
-      JNI.__send__(:Java_sun_nio_ch_FileChannelImpl_map0, JNI.env, self.jni_id, prot.to_int, position_.to_int, length.to_int)
+      JNI.call_native_method(:Java_sun_nio_ch_FileChannelImpl_map0, JNI.env, self.jni_id, prot.to_int, position_.to_int, length.to_int)
     end
     
     class_module.module_eval {
-      JNI.native_method :Java_sun_nio_ch_FileChannelImpl_unmap0, [:pointer, :long, :int64, :int64], :int32
+      JNI.load_native_method :Java_sun_nio_ch_FileChannelImpl_unmap0, [:pointer, :long, :int64, :int64], :int32
       typesig { [::Java::Long, ::Java::Long] }
       # Removes an existing mapping
       def unmap0(address, length)
-        JNI.__send__(:Java_sun_nio_ch_FileChannelImpl_unmap0, JNI.env, self.jni_id, address.to_int, length.to_int)
+        JNI.call_native_method(:Java_sun_nio_ch_FileChannelImpl_unmap0, JNI.env, self.jni_id, address.to_int, length.to_int)
       end
     }
     
-    JNI.native_method :Java_sun_nio_ch_FileChannelImpl_force0, [:pointer, :long, :long, :int8], :int32
+    JNI.load_native_method :Java_sun_nio_ch_FileChannelImpl_force0, [:pointer, :long, :long, :int8], :int32
     typesig { [FileDescriptor, ::Java::Boolean] }
     # Forces output to device
     def force0(fd, meta_data)
-      JNI.__send__(:Java_sun_nio_ch_FileChannelImpl_force0, JNI.env, self.jni_id, fd.jni_id, meta_data ? 1 : 0)
+      JNI.call_native_method(:Java_sun_nio_ch_FileChannelImpl_force0, JNI.env, self.jni_id, fd.jni_id, meta_data ? 1 : 0)
     end
     
-    JNI.native_method :Java_sun_nio_ch_FileChannelImpl_truncate0, [:pointer, :long, :long, :int64], :int32
+    JNI.load_native_method :Java_sun_nio_ch_FileChannelImpl_truncate0, [:pointer, :long, :long, :int64], :int32
     typesig { [FileDescriptor, ::Java::Long] }
     # Truncates a file
     def truncate0(fd, size_)
-      JNI.__send__(:Java_sun_nio_ch_FileChannelImpl_truncate0, JNI.env, self.jni_id, fd.jni_id, size_.to_int)
+      JNI.call_native_method(:Java_sun_nio_ch_FileChannelImpl_truncate0, JNI.env, self.jni_id, fd.jni_id, size_.to_int)
     end
     
-    JNI.native_method :Java_sun_nio_ch_FileChannelImpl_transferTo0, [:pointer, :long, :int32, :int64, :int64, :int32], :int64
+    JNI.load_native_method :Java_sun_nio_ch_FileChannelImpl_transferTo0, [:pointer, :long, :int32, :int64, :int64, :int32], :int64
     typesig { [::Java::Int, ::Java::Long, ::Java::Long, ::Java::Int] }
     # Transfers from src to dst, or returns -2 if kernel can't do that
     def transfer_to0(src, position_, count, dst)
-      JNI.__send__(:Java_sun_nio_ch_FileChannelImpl_transferTo0, JNI.env, self.jni_id, src.to_int, position_.to_int, count.to_int, dst.to_int)
+      JNI.call_native_method(:Java_sun_nio_ch_FileChannelImpl_transferTo0, JNI.env, self.jni_id, src.to_int, position_.to_int, count.to_int, dst.to_int)
     end
     
-    JNI.native_method :Java_sun_nio_ch_FileChannelImpl_position0, [:pointer, :long, :long, :int64], :int64
+    JNI.load_native_method :Java_sun_nio_ch_FileChannelImpl_position0, [:pointer, :long, :long, :int64], :int64
     typesig { [FileDescriptor, ::Java::Long] }
     # Sets or reports this file's position
     # If offset is -1, the current position is returned
     # otherwise the position is set to offset
     def position0(fd, offset)
-      JNI.__send__(:Java_sun_nio_ch_FileChannelImpl_position0, JNI.env, self.jni_id, fd.jni_id, offset.to_int)
+      JNI.call_native_method(:Java_sun_nio_ch_FileChannelImpl_position0, JNI.env, self.jni_id, fd.jni_id, offset.to_int)
     end
     
-    JNI.native_method :Java_sun_nio_ch_FileChannelImpl_size0, [:pointer, :long, :long], :int64
+    JNI.load_native_method :Java_sun_nio_ch_FileChannelImpl_size0, [:pointer, :long, :long], :int64
     typesig { [FileDescriptor] }
     # Reports this file's size
     def size0(fd)
-      JNI.__send__(:Java_sun_nio_ch_FileChannelImpl_size0, JNI.env, self.jni_id, fd.jni_id)
+      JNI.call_native_method(:Java_sun_nio_ch_FileChannelImpl_size0, JNI.env, self.jni_id, fd.jni_id)
     end
     
     class_module.module_eval {
-      JNI.native_method :Java_sun_nio_ch_FileChannelImpl_initIDs, [:pointer, :long], :int64
+      JNI.load_native_method :Java_sun_nio_ch_FileChannelImpl_initIDs, [:pointer, :long], :int64
       typesig { [] }
       # Caches fieldIDs
       def init_ids
-        JNI.__send__(:Java_sun_nio_ch_FileChannelImpl_initIDs, JNI.env, self.jni_id)
+        JNI.call_native_method(:Java_sun_nio_ch_FileChannelImpl_initIDs, JNI.env, self.jni_id)
       end
       
       when_class_loaded do

@@ -1356,29 +1356,29 @@ module Java::Util::Prefs
     end
     
     class_module.module_eval {
-      JNI.native_method :Java_java_util_prefs_FileSystemPreferences_lockFile0, [:pointer, :long, :long, :int32, :int8], :long
+      JNI.load_native_method :Java_java_util_prefs_FileSystemPreferences_lockFile0, [:pointer, :long, :long, :int32, :int8], :long
       typesig { [String, ::Java::Int, ::Java::Boolean] }
       # Locks file using UNIX file locking.
       # @param fileName Absolute file name of the lock file.
       # @return Returns a lock handle, used to unlock the file.
       def lock_file0(file_name, permission, shared)
-        JNI.__send__(:Java_java_util_prefs_FileSystemPreferences_lockFile0, JNI.env, self.jni_id, file_name.jni_id, permission.to_int, shared ? 1 : 0)
+        JNI.call_native_method(:Java_java_util_prefs_FileSystemPreferences_lockFile0, JNI.env, self.jni_id, file_name.jni_id, permission.to_int, shared ? 1 : 0)
       end
       
-      JNI.native_method :Java_java_util_prefs_FileSystemPreferences_unlockFile0, [:pointer, :long, :int32], :int32
+      JNI.load_native_method :Java_java_util_prefs_FileSystemPreferences_unlockFile0, [:pointer, :long, :int32], :int32
       typesig { [::Java::Int] }
       # Unlocks file previously locked by lockFile0().
       # @param lockHandle Handle to the file lock.
       # @return Returns zero if OK, UNIX error code if failure.
       def unlock_file0(lock_handle)
-        JNI.__send__(:Java_java_util_prefs_FileSystemPreferences_unlockFile0, JNI.env, self.jni_id, lock_handle.to_int)
+        JNI.call_native_method(:Java_java_util_prefs_FileSystemPreferences_unlockFile0, JNI.env, self.jni_id, lock_handle.to_int)
       end
       
-      JNI.native_method :Java_java_util_prefs_FileSystemPreferences_chmod, [:pointer, :long, :long, :int32], :int32
+      JNI.load_native_method :Java_java_util_prefs_FileSystemPreferences_chmod, [:pointer, :long, :long, :int32], :int32
       typesig { [String, ::Java::Int] }
       # Changes UNIX file permissions.
       def chmod(file_name, permission)
-        JNI.__send__(:Java_java_util_prefs_FileSystemPreferences_chmod, JNI.env, self.jni_id, file_name.jni_id, permission.to_int)
+        JNI.call_native_method(:Java_java_util_prefs_FileSystemPreferences_chmod, JNI.env, self.jni_id, file_name.jni_id, permission.to_int)
       end
       
       # Initial time between lock attempts, in ms.  The time is doubled

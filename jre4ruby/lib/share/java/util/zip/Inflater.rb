@@ -396,60 +396,60 @@ module Java::Util::Zip
     end
     
     class_module.module_eval {
-      JNI.native_method :Java_java_util_zip_Inflater_initIDs, [:pointer, :long], :void
+      JNI.load_native_method :Java_java_util_zip_Inflater_initIDs, [:pointer, :long], :void
       typesig { [] }
       def init_ids
-        JNI.__send__(:Java_java_util_zip_Inflater_initIDs, JNI.env, self.jni_id)
+        JNI.call_native_method(:Java_java_util_zip_Inflater_initIDs, JNI.env, self.jni_id)
       end
       
-      JNI.native_method :Java_java_util_zip_Inflater_init, [:pointer, :long, :int8], :int64
+      JNI.load_native_method :Java_java_util_zip_Inflater_init, [:pointer, :long, :int8], :int64
       typesig { [::Java::Boolean] }
       def init(nowrap)
-        JNI.__send__(:Java_java_util_zip_Inflater_init, JNI.env, self.jni_id, nowrap ? 1 : 0)
+        JNI.call_native_method(:Java_java_util_zip_Inflater_init, JNI.env, self.jni_id, nowrap ? 1 : 0)
       end
       
-      JNI.native_method :Java_java_util_zip_Inflater_setDictionary, [:pointer, :long, :int64, :long, :int32, :int32], :void
+      JNI.load_native_method :Java_java_util_zip_Inflater_setDictionary, [:pointer, :long, :int64, :long, :int32, :int32], :void
       typesig { [::Java::Long, Array.typed(::Java::Byte), ::Java::Int, ::Java::Int] }
       def set_dictionary(strm, b, off, len)
-        JNI.__send__(:Java_java_util_zip_Inflater_setDictionary, JNI.env, self.jni_id, strm.to_int, b.jni_id, off.to_int, len.to_int)
+        JNI.call_native_method(:Java_java_util_zip_Inflater_setDictionary, JNI.env, self.jni_id, strm.to_int, b.jni_id, off.to_int, len.to_int)
       end
     }
     
-    JNI.native_method :Java_java_util_zip_Inflater_inflateBytes, [:pointer, :long, :long, :int32, :int32], :int32
+    JNI.load_native_method :Java_java_util_zip_Inflater_inflateBytes, [:pointer, :long, :long, :int32, :int32], :int32
     typesig { [Array.typed(::Java::Byte), ::Java::Int, ::Java::Int] }
     def inflate_bytes(b, off, len)
-      JNI.__send__(:Java_java_util_zip_Inflater_inflateBytes, JNI.env, self.jni_id, b.jni_id, off.to_int, len.to_int)
+      JNI.call_native_method(:Java_java_util_zip_Inflater_inflateBytes, JNI.env, self.jni_id, b.jni_id, off.to_int, len.to_int)
     end
     
     class_module.module_eval {
-      JNI.native_method :Java_java_util_zip_Inflater_getAdler, [:pointer, :long, :int64], :int32
+      JNI.load_native_method :Java_java_util_zip_Inflater_getAdler, [:pointer, :long, :int64], :int32
       typesig { [::Java::Long] }
       def get_adler(strm)
-        JNI.__send__(:Java_java_util_zip_Inflater_getAdler, JNI.env, self.jni_id, strm.to_int)
+        JNI.call_native_method(:Java_java_util_zip_Inflater_getAdler, JNI.env, self.jni_id, strm.to_int)
       end
       
-      JNI.native_method :Java_java_util_zip_Inflater_getBytesRead, [:pointer, :long, :int64], :int64
+      JNI.load_native_method :Java_java_util_zip_Inflater_getBytesRead, [:pointer, :long, :int64], :int64
       typesig { [::Java::Long] }
       def get_bytes_read(strm)
-        JNI.__send__(:Java_java_util_zip_Inflater_getBytesRead, JNI.env, self.jni_id, strm.to_int)
+        JNI.call_native_method(:Java_java_util_zip_Inflater_getBytesRead, JNI.env, self.jni_id, strm.to_int)
       end
       
-      JNI.native_method :Java_java_util_zip_Inflater_getBytesWritten, [:pointer, :long, :int64], :int64
+      JNI.load_native_method :Java_java_util_zip_Inflater_getBytesWritten, [:pointer, :long, :int64], :int64
       typesig { [::Java::Long] }
       def get_bytes_written(strm)
-        JNI.__send__(:Java_java_util_zip_Inflater_getBytesWritten, JNI.env, self.jni_id, strm.to_int)
+        JNI.call_native_method(:Java_java_util_zip_Inflater_getBytesWritten, JNI.env, self.jni_id, strm.to_int)
       end
       
-      JNI.native_method :Java_java_util_zip_Inflater_reset, [:pointer, :long, :int64], :void
+      JNI.load_native_method :Java_java_util_zip_Inflater_reset, [:pointer, :long, :int64], :void
       typesig { [::Java::Long] }
       def reset(strm)
-        JNI.__send__(:Java_java_util_zip_Inflater_reset, JNI.env, self.jni_id, strm.to_int)
+        JNI.call_native_method(:Java_java_util_zip_Inflater_reset, JNI.env, self.jni_id, strm.to_int)
       end
       
-      JNI.native_method :Java_java_util_zip_Inflater_end, [:pointer, :long, :int64], :void
+      JNI.load_native_method :Java_java_util_zip_Inflater_end, [:pointer, :long, :int64], :void
       typesig { [::Java::Long] }
       def end_(strm)
-        JNI.__send__(:Java_java_util_zip_Inflater_end, JNI.env, self.jni_id, strm.to_int)
+        JNI.call_native_method(:Java_java_util_zip_Inflater_end, JNI.env, self.jni_id, strm.to_int)
       end
     }
     

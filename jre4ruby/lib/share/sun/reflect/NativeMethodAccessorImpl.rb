@@ -78,10 +78,10 @@ module Sun::Reflect
     end
     
     class_module.module_eval {
-      JNI.native_method :Java_sun_reflect_NativeMethodAccessorImpl_invoke0, [:pointer, :long, :long, :long, :long], :long
+      JNI.load_native_method :Java_sun_reflect_NativeMethodAccessorImpl_invoke0, [:pointer, :long, :long, :long, :long], :long
       typesig { [Method, Object, Array.typed(Object)] }
       def invoke0(m, obj, args)
-        JNI.__send__(:Java_sun_reflect_NativeMethodAccessorImpl_invoke0, JNI.env, self.jni_id, m.jni_id, obj.jni_id, args.jni_id)
+        JNI.call_native_method(:Java_sun_reflect_NativeMethodAccessorImpl_invoke0, JNI.env, self.jni_id, m.jni_id, obj.jni_id, args.jni_id)
       end
     }
     

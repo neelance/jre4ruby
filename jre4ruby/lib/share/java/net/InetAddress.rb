@@ -1553,11 +1553,11 @@ module Java::Net
         end
       end
       
-      JNI.native_method :Java_java_net_InetAddress_init, [:pointer, :long], :void
+      JNI.load_native_method :Java_java_net_InetAddress_init, [:pointer, :long], :void
       typesig { [] }
       # Perform class load-time initializations.
       def init
-        JNI.__send__(:Java_java_net_InetAddress_init, JNI.env, self.jni_id)
+        JNI.call_native_method(:Java_java_net_InetAddress_init, JNI.env, self.jni_id)
       end
       
       typesig { [] }
@@ -1618,10 +1618,10 @@ module Java::Net
         return o
       end
       
-      JNI.native_method :Java_java_net_InetAddressImplFactory_isIPv6Supported, [:pointer, :long], :int8
+      JNI.load_native_method :Java_java_net_InetAddressImplFactory_isIPv6Supported, [:pointer, :long], :int8
       typesig { [] }
       def is_ipv6supported
-        JNI.__send__(:Java_java_net_InetAddressImplFactory_isIPv6Supported, JNI.env, self.jni_id) != 0
+        JNI.call_native_method(:Java_java_net_InetAddressImplFactory_isIPv6Supported, JNI.env, self.jni_id) != 0
       end
     }
     

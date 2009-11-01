@@ -812,19 +812,19 @@ module Java::Nio
       const_set_lazy(:JNI_COPY_FROM_ARRAY_THRESHOLD) { 6 }
       const_attr_reader  :JNI_COPY_FROM_ARRAY_THRESHOLD
       
-      JNI.native_method :Java_java_nio_Bits_copyFromByteArray, [:pointer, :long, :long, :int64, :int64, :int64], :void
+      JNI.load_native_method :Java_java_nio_Bits_copyFromByteArray, [:pointer, :long, :long, :int64, :int64, :int64], :void
       typesig { [Object, ::Java::Long, ::Java::Long, ::Java::Long] }
       # These methods do no bounds checking.  Verification that the copy will not
       # result in memory corruption should be done prior to invocation.
       # All positions and lengths are specified in bytes.
       def copy_from_byte_array(src, src_pos, dst_addr, length)
-        JNI.__send__(:Java_java_nio_Bits_copyFromByteArray, JNI.env, self.jni_id, src.jni_id, src_pos.to_int, dst_addr.to_int, length.to_int)
+        JNI.call_native_method(:Java_java_nio_Bits_copyFromByteArray, JNI.env, self.jni_id, src.jni_id, src_pos.to_int, dst_addr.to_int, length.to_int)
       end
       
-      JNI.native_method :Java_java_nio_Bits_copyToByteArray, [:pointer, :long, :int64, :long, :int64, :int64], :void
+      JNI.load_native_method :Java_java_nio_Bits_copyToByteArray, [:pointer, :long, :int64, :long, :int64, :int64], :void
       typesig { [::Java::Long, Object, ::Java::Long, ::Java::Long] }
       def copy_to_byte_array(src_addr, dst, dst_pos, length)
-        JNI.__send__(:Java_java_nio_Bits_copyToByteArray, JNI.env, self.jni_id, src_addr.to_int, dst.jni_id, dst_pos.to_int, length.to_int)
+        JNI.call_native_method(:Java_java_nio_Bits_copyToByteArray, JNI.env, self.jni_id, src_addr.to_int, dst.jni_id, dst_pos.to_int, length.to_int)
       end
       
       typesig { [Object, ::Java::Long, ::Java::Long, ::Java::Long] }
@@ -837,40 +837,40 @@ module Java::Nio
         copy_to_short_array(src_addr, dst, dst_pos, length)
       end
       
-      JNI.native_method :Java_java_nio_Bits_copyFromShortArray, [:pointer, :long, :long, :int64, :int64, :int64], :void
+      JNI.load_native_method :Java_java_nio_Bits_copyFromShortArray, [:pointer, :long, :long, :int64, :int64, :int64], :void
       typesig { [Object, ::Java::Long, ::Java::Long, ::Java::Long] }
       def copy_from_short_array(src, src_pos, dst_addr, length)
-        JNI.__send__(:Java_java_nio_Bits_copyFromShortArray, JNI.env, self.jni_id, src.jni_id, src_pos.to_int, dst_addr.to_int, length.to_int)
+        JNI.call_native_method(:Java_java_nio_Bits_copyFromShortArray, JNI.env, self.jni_id, src.jni_id, src_pos.to_int, dst_addr.to_int, length.to_int)
       end
       
-      JNI.native_method :Java_java_nio_Bits_copyToShortArray, [:pointer, :long, :int64, :long, :int64, :int64], :void
+      JNI.load_native_method :Java_java_nio_Bits_copyToShortArray, [:pointer, :long, :int64, :long, :int64, :int64], :void
       typesig { [::Java::Long, Object, ::Java::Long, ::Java::Long] }
       def copy_to_short_array(src_addr, dst, dst_pos, length)
-        JNI.__send__(:Java_java_nio_Bits_copyToShortArray, JNI.env, self.jni_id, src_addr.to_int, dst.jni_id, dst_pos.to_int, length.to_int)
+        JNI.call_native_method(:Java_java_nio_Bits_copyToShortArray, JNI.env, self.jni_id, src_addr.to_int, dst.jni_id, dst_pos.to_int, length.to_int)
       end
       
-      JNI.native_method :Java_java_nio_Bits_copyFromIntArray, [:pointer, :long, :long, :int64, :int64, :int64], :void
+      JNI.load_native_method :Java_java_nio_Bits_copyFromIntArray, [:pointer, :long, :long, :int64, :int64, :int64], :void
       typesig { [Object, ::Java::Long, ::Java::Long, ::Java::Long] }
       def copy_from_int_array(src, src_pos, dst_addr, length)
-        JNI.__send__(:Java_java_nio_Bits_copyFromIntArray, JNI.env, self.jni_id, src.jni_id, src_pos.to_int, dst_addr.to_int, length.to_int)
+        JNI.call_native_method(:Java_java_nio_Bits_copyFromIntArray, JNI.env, self.jni_id, src.jni_id, src_pos.to_int, dst_addr.to_int, length.to_int)
       end
       
-      JNI.native_method :Java_java_nio_Bits_copyToIntArray, [:pointer, :long, :int64, :long, :int64, :int64], :void
+      JNI.load_native_method :Java_java_nio_Bits_copyToIntArray, [:pointer, :long, :int64, :long, :int64, :int64], :void
       typesig { [::Java::Long, Object, ::Java::Long, ::Java::Long] }
       def copy_to_int_array(src_addr, dst, dst_pos, length)
-        JNI.__send__(:Java_java_nio_Bits_copyToIntArray, JNI.env, self.jni_id, src_addr.to_int, dst.jni_id, dst_pos.to_int, length.to_int)
+        JNI.call_native_method(:Java_java_nio_Bits_copyToIntArray, JNI.env, self.jni_id, src_addr.to_int, dst.jni_id, dst_pos.to_int, length.to_int)
       end
       
-      JNI.native_method :Java_java_nio_Bits_copyFromLongArray, [:pointer, :long, :long, :int64, :int64, :int64], :void
+      JNI.load_native_method :Java_java_nio_Bits_copyFromLongArray, [:pointer, :long, :long, :int64, :int64, :int64], :void
       typesig { [Object, ::Java::Long, ::Java::Long, ::Java::Long] }
       def copy_from_long_array(src, src_pos, dst_addr, length)
-        JNI.__send__(:Java_java_nio_Bits_copyFromLongArray, JNI.env, self.jni_id, src.jni_id, src_pos.to_int, dst_addr.to_int, length.to_int)
+        JNI.call_native_method(:Java_java_nio_Bits_copyFromLongArray, JNI.env, self.jni_id, src.jni_id, src_pos.to_int, dst_addr.to_int, length.to_int)
       end
       
-      JNI.native_method :Java_java_nio_Bits_copyToLongArray, [:pointer, :long, :int64, :long, :int64, :int64], :void
+      JNI.load_native_method :Java_java_nio_Bits_copyToLongArray, [:pointer, :long, :int64, :long, :int64, :int64], :void
       typesig { [::Java::Long, Object, ::Java::Long, ::Java::Long] }
       def copy_to_long_array(src_addr, dst, dst_pos, length)
-        JNI.__send__(:Java_java_nio_Bits_copyToLongArray, JNI.env, self.jni_id, src_addr.to_int, dst.jni_id, dst_pos.to_int, length.to_int)
+        JNI.call_native_method(:Java_java_nio_Bits_copyToLongArray, JNI.env, self.jni_id, src_addr.to_int, dst.jni_id, dst_pos.to_int, length.to_int)
       end
     }
     

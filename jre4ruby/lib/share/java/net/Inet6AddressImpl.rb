@@ -43,28 +43,28 @@ module Java::Net
     include_class_members Inet6AddressImplImports
     include InetAddressImpl
     
-    JNI.native_method :Java_java_net_Inet6AddressImpl_getLocalHostName, [:pointer, :long], :long
+    JNI.load_native_method :Java_java_net_Inet6AddressImpl_getLocalHostName, [:pointer, :long], :long
     typesig { [] }
     def get_local_host_name
-      JNI.__send__(:Java_java_net_Inet6AddressImpl_getLocalHostName, JNI.env, self.jni_id)
+      JNI.call_native_method(:Java_java_net_Inet6AddressImpl_getLocalHostName, JNI.env, self.jni_id)
     end
     
-    JNI.native_method :Java_java_net_Inet6AddressImpl_lookupAllHostAddr, [:pointer, :long, :long], :long
+    JNI.load_native_method :Java_java_net_Inet6AddressImpl_lookupAllHostAddr, [:pointer, :long, :long], :long
     typesig { [String] }
     def lookup_all_host_addr(hostname)
-      JNI.__send__(:Java_java_net_Inet6AddressImpl_lookupAllHostAddr, JNI.env, self.jni_id, hostname.jni_id)
+      JNI.call_native_method(:Java_java_net_Inet6AddressImpl_lookupAllHostAddr, JNI.env, self.jni_id, hostname.jni_id)
     end
     
-    JNI.native_method :Java_java_net_Inet6AddressImpl_getHostByAddr, [:pointer, :long, :long], :long
+    JNI.load_native_method :Java_java_net_Inet6AddressImpl_getHostByAddr, [:pointer, :long, :long], :long
     typesig { [Array.typed(::Java::Byte)] }
     def get_host_by_addr(addr)
-      JNI.__send__(:Java_java_net_Inet6AddressImpl_getHostByAddr, JNI.env, self.jni_id, addr.jni_id)
+      JNI.call_native_method(:Java_java_net_Inet6AddressImpl_getHostByAddr, JNI.env, self.jni_id, addr.jni_id)
     end
     
-    JNI.native_method :Java_java_net_Inet6AddressImpl_isReachable0, [:pointer, :long, :long, :int32, :int32, :long, :int32, :int32], :int8
+    JNI.load_native_method :Java_java_net_Inet6AddressImpl_isReachable0, [:pointer, :long, :long, :int32, :int32, :long, :int32, :int32], :int8
     typesig { [Array.typed(::Java::Byte), ::Java::Int, ::Java::Int, Array.typed(::Java::Byte), ::Java::Int, ::Java::Int] }
     def is_reachable0(addr, scope, timeout, inf, ttl, if_scope)
-      JNI.__send__(:Java_java_net_Inet6AddressImpl_isReachable0, JNI.env, self.jni_id, addr.jni_id, scope.to_int, timeout.to_int, inf.jni_id, ttl.to_int, if_scope.to_int) != 0
+      JNI.call_native_method(:Java_java_net_Inet6AddressImpl_isReachable0, JNI.env, self.jni_id, addr.jni_id, scope.to_int, timeout.to_int, inf.jni_id, ttl.to_int, if_scope.to_int) != 0
     end
     
     typesig { [InetAddress, ::Java::Int, NetworkInterface, ::Java::Int] }

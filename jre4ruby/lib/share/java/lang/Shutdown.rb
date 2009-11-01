@@ -185,17 +185,17 @@ module Java::Lang
         end
       end
       
-      JNI.native_method :Java_java_lang_Shutdown_halt0, [:pointer, :long, :int32], :void
+      JNI.load_native_method :Java_java_lang_Shutdown_halt0, [:pointer, :long, :int32], :void
       typesig { [::Java::Int] }
       def halt0(status)
-        JNI.__send__(:Java_java_lang_Shutdown_halt0, JNI.env, self.jni_id, status.to_int)
+        JNI.call_native_method(:Java_java_lang_Shutdown_halt0, JNI.env, self.jni_id, status.to_int)
       end
       
-      JNI.native_method :Java_java_lang_Shutdown_runAllFinalizers, [:pointer, :long], :void
+      JNI.load_native_method :Java_java_lang_Shutdown_runAllFinalizers, [:pointer, :long], :void
       typesig { [] }
       # Wormhole for invoking java.lang.ref.Finalizer.runAllFinalizers
       def run_all_finalizers
-        JNI.__send__(:Java_java_lang_Shutdown_runAllFinalizers, JNI.env, self.jni_id)
+        JNI.call_native_method(:Java_java_lang_Shutdown_runAllFinalizers, JNI.env, self.jni_id)
       end
       
       typesig { [] }

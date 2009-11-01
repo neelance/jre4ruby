@@ -40,10 +40,10 @@ module Java::Lang
     include_class_members ObjectImports
     
     class_module.module_eval {
-      JNI.native_method :Java_java_lang_Object_registerNatives, [:pointer, :long], :void
+      JNI.load_native_method :Java_java_lang_Object_registerNatives, [:pointer, :long], :void
       typesig { [] }
       def register_natives
-        JNI.__send__(:Java_java_lang_Object_registerNatives, JNI.env, self.jni_id)
+        JNI.call_native_method(:Java_java_lang_Object_registerNatives, JNI.env, self.jni_id)
       end
       
       when_class_loaded do
@@ -51,7 +51,7 @@ module Java::Lang
       end
     }
     
-    JNI.native_method :Java_java_lang_Object_getClass, [:pointer, :long], :long
+    JNI.load_native_method :Java_java_lang_Object_getClass, [:pointer, :long], :long
     typesig { [] }
     # Returns the runtime class of this {@code Object}. The returned
     # {@code Class} object is the object that is locked by {@code
@@ -73,10 +73,10 @@ module Java::Lang
     # Language Specification, Third Edition (15.8.2 Class
     # Literals)</a>
     def get_class
-      JNI.__send__(:Java_java_lang_Object_getClass, JNI.env, self.jni_id)
+      JNI.call_native_method(:Java_java_lang_Object_getClass, JNI.env, self.jni_id)
     end
     
-    JNI.native_method :Java_java_lang_Object_hashCode, [:pointer, :long], :int32
+    JNI.load_native_method :Java_java_lang_Object_hashCode, [:pointer, :long], :int32
     typesig { [] }
     # Returns a hash code value for the object. This method is
     # supported for the benefit of hashtables such as those provided by
@@ -112,7 +112,7 @@ module Java::Lang
     # @see     java.lang.Object#equals(java.lang.Object)
     # @see     java.util.Hashtable
     def hash_code
-      JNI.__send__(:Java_java_lang_Object_hashCode, JNI.env, self.jni_id)
+      JNI.call_native_method(:Java_java_lang_Object_hashCode, JNI.env, self.jni_id)
     end
     
     typesig { [Object] }
@@ -164,7 +164,7 @@ module Java::Lang
       return ((self).equal?(obj))
     end
     
-    JNI.native_method :Java_java_lang_Object_clone, [:pointer, :long], :long
+    JNI.load_native_method :Java_java_lang_Object_clone, [:pointer, :long], :long
     typesig { [] }
     # Creates and returns a copy of this object.  The precise meaning
     # of "copy" may depend on the class of the object. The general
@@ -223,7 +223,7 @@ module Java::Lang
     # be cloned.
     # @see java.lang.Cloneable
     def clone
-      JNI.__send__(:Java_java_lang_Object_clone, JNI.env, self.jni_id)
+      JNI.call_native_method(:Java_java_lang_Object_clone, JNI.env, self.jni_id)
     end
     
     typesig { [] }
@@ -250,7 +250,7 @@ module Java::Lang
       return RJava.cast_to_string(get_class.get_name) + "@" + RJava.cast_to_string(JavaInteger.to_hex_string(hash_code))
     end
     
-    JNI.native_method :Java_java_lang_Object_notify, [:pointer, :long], :void
+    JNI.load_native_method :Java_java_lang_Object_notify, [:pointer, :long], :void
     typesig { [] }
     # Wakes up a single thread that is waiting on this object's
     # monitor. If any threads are waiting on this object, one of them
@@ -283,10 +283,10 @@ module Java::Lang
     # @see        java.lang.Object#notifyAll()
     # @see        java.lang.Object#wait()
     def notify
-      JNI.__send__(:Java_java_lang_Object_notify, JNI.env, self.jni_id)
+      JNI.call_native_method(:Java_java_lang_Object_notify, JNI.env, self.jni_id)
     end
     
-    JNI.native_method :Java_java_lang_Object_notifyAll, [:pointer, :long], :void
+    JNI.load_native_method :Java_java_lang_Object_notifyAll, [:pointer, :long], :void
     typesig { [] }
     # Wakes up all threads that are waiting on this object's monitor. A
     # thread waits on an object's monitor by calling one of the
@@ -309,10 +309,10 @@ module Java::Lang
     # @see        java.lang.Object#notify()
     # @see        java.lang.Object#wait()
     def notify_all
-      JNI.__send__(:Java_java_lang_Object_notifyAll, JNI.env, self.jni_id)
+      JNI.call_native_method(:Java_java_lang_Object_notifyAll, JNI.env, self.jni_id)
     end
     
-    JNI.native_method :Java_java_lang_Object_wait, [:pointer, :long, :int64], :void
+    JNI.load_native_method :Java_java_lang_Object_wait, [:pointer, :long, :int64], :void
     typesig { [::Java::Long] }
     # Causes the current thread to wait until either another thread invokes the
     # {@link java.lang.Object#notify()} method or the
@@ -398,7 +398,7 @@ module Java::Lang
     # @see        java.lang.Object#notify()
     # @see        java.lang.Object#notifyAll()
     def wait(timeout)
-      JNI.__send__(:Java_java_lang_Object_wait, JNI.env, self.jni_id, timeout.to_int)
+      JNI.call_native_method(:Java_java_lang_Object_wait, JNI.env, self.jni_id, timeout.to_int)
     end
     
     typesig { [::Java::Long, ::Java::Int] }

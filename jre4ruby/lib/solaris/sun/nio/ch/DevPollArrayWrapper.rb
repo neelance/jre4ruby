@@ -397,41 +397,41 @@ module Sun::Nio::Ch
       @interrupted = false
     end
     
-    JNI.native_method :Java_sun_nio_ch_DevPollArrayWrapper_init, [:pointer, :long], :int32
+    JNI.load_native_method :Java_sun_nio_ch_DevPollArrayWrapper_init, [:pointer, :long], :int32
     typesig { [] }
     def init
-      JNI.__send__(:Java_sun_nio_ch_DevPollArrayWrapper_init, JNI.env, self.jni_id)
+      JNI.call_native_method(:Java_sun_nio_ch_DevPollArrayWrapper_init, JNI.env, self.jni_id)
     end
     
-    JNI.native_method :Java_sun_nio_ch_DevPollArrayWrapper_register, [:pointer, :long, :int32, :int32, :int32], :void
+    JNI.load_native_method :Java_sun_nio_ch_DevPollArrayWrapper_register, [:pointer, :long, :int32, :int32, :int32], :void
     typesig { [::Java::Int, ::Java::Int, ::Java::Int] }
     def register(wfd, fd, mask)
-      JNI.__send__(:Java_sun_nio_ch_DevPollArrayWrapper_register, JNI.env, self.jni_id, wfd.to_int, fd.to_int, mask.to_int)
+      JNI.call_native_method(:Java_sun_nio_ch_DevPollArrayWrapper_register, JNI.env, self.jni_id, wfd.to_int, fd.to_int, mask.to_int)
     end
     
-    JNI.native_method :Java_sun_nio_ch_DevPollArrayWrapper_registerMultiple, [:pointer, :long, :int32, :int64, :int32], :void
+    JNI.load_native_method :Java_sun_nio_ch_DevPollArrayWrapper_registerMultiple, [:pointer, :long, :int32, :int64, :int32], :void
     typesig { [::Java::Int, ::Java::Long, ::Java::Int] }
     def register_multiple(wfd, address_, len)
-      JNI.__send__(:Java_sun_nio_ch_DevPollArrayWrapper_registerMultiple, JNI.env, self.jni_id, wfd.to_int, address_.to_int, len.to_int)
+      JNI.call_native_method(:Java_sun_nio_ch_DevPollArrayWrapper_registerMultiple, JNI.env, self.jni_id, wfd.to_int, address_.to_int, len.to_int)
     end
     
-    JNI.native_method :Java_sun_nio_ch_DevPollArrayWrapper_poll0, [:pointer, :long, :int64, :int32, :int64, :int32], :int32
+    JNI.load_native_method :Java_sun_nio_ch_DevPollArrayWrapper_poll0, [:pointer, :long, :int64, :int32, :int64, :int32], :int32
     typesig { [::Java::Long, ::Java::Int, ::Java::Long, ::Java::Int] }
     def poll0(poll_address, numfds, timeout, wfd)
-      JNI.__send__(:Java_sun_nio_ch_DevPollArrayWrapper_poll0, JNI.env, self.jni_id, poll_address.to_int, numfds.to_int, timeout.to_int, wfd.to_int)
+      JNI.call_native_method(:Java_sun_nio_ch_DevPollArrayWrapper_poll0, JNI.env, self.jni_id, poll_address.to_int, numfds.to_int, timeout.to_int, wfd.to_int)
     end
     
     class_module.module_eval {
-      JNI.native_method :Java_sun_nio_ch_DevPollArrayWrapper_interrupt, [:pointer, :long, :int32], :void
+      JNI.load_native_method :Java_sun_nio_ch_DevPollArrayWrapper_interrupt, [:pointer, :long, :int32], :void
       typesig { [::Java::Int] }
       def interrupt(fd)
-        JNI.__send__(:Java_sun_nio_ch_DevPollArrayWrapper_interrupt, JNI.env, self.jni_id, fd.to_int)
+        JNI.call_native_method(:Java_sun_nio_ch_DevPollArrayWrapper_interrupt, JNI.env, self.jni_id, fd.to_int)
       end
       
-      JNI.native_method :Java_sun_nio_ch_DevPollArrayWrapper_fdLimit, [:pointer, :long], :int32
+      JNI.load_native_method :Java_sun_nio_ch_DevPollArrayWrapper_fdLimit, [:pointer, :long], :int32
       typesig { [] }
       def fd_limit
-        JNI.__send__(:Java_sun_nio_ch_DevPollArrayWrapper_fdLimit, JNI.env, self.jni_id)
+        JNI.call_native_method(:Java_sun_nio_ch_DevPollArrayWrapper_fdLimit, JNI.env, self.jni_id)
       end
     }
     

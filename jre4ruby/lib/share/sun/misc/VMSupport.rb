@@ -65,10 +65,10 @@ module Sun::Misc
         end
       end
       
-      JNI.native_method :Java_sun_misc_VMSupport_initAgentProperties, [:pointer, :long, :long], :long
+      JNI.load_native_method :Java_sun_misc_VMSupport_initAgentProperties, [:pointer, :long, :long], :long
       typesig { [Properties] }
       def init_agent_properties(props)
-        JNI.__send__(:Java_sun_misc_VMSupport_initAgentProperties, JNI.env, self.jni_id, props.jni_id)
+        JNI.call_native_method(:Java_sun_misc_VMSupport_initAgentProperties, JNI.env, self.jni_id, props.jni_id)
       end
       
       typesig { [Properties] }

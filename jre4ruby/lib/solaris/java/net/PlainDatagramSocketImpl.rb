@@ -43,114 +43,114 @@ module Java::Net
       end
     }
     
-    JNI.native_method :Java_java_net_PlainDatagramSocketImpl_bind0, [:pointer, :long, :int32, :long], :void
+    JNI.load_native_method :Java_java_net_PlainDatagramSocketImpl_bind0, [:pointer, :long, :int32, :long], :void
     typesig { [::Java::Int, InetAddress] }
     def bind0(lport, laddr)
-      JNI.__send__(:Java_java_net_PlainDatagramSocketImpl_bind0, JNI.env, self.jni_id, lport.to_int, laddr.jni_id)
+      JNI.call_native_method(:Java_java_net_PlainDatagramSocketImpl_bind0, JNI.env, self.jni_id, lport.to_int, laddr.jni_id)
     end
     
-    JNI.native_method :Java_java_net_PlainDatagramSocketImpl_send, [:pointer, :long, :long], :void
+    JNI.load_native_method :Java_java_net_PlainDatagramSocketImpl_send, [:pointer, :long, :long], :void
     typesig { [DatagramPacket] }
     def send(p)
-      JNI.__send__(:Java_java_net_PlainDatagramSocketImpl_send, JNI.env, self.jni_id, p.jni_id)
+      JNI.call_native_method(:Java_java_net_PlainDatagramSocketImpl_send, JNI.env, self.jni_id, p.jni_id)
     end
     
-    JNI.native_method :Java_java_net_PlainDatagramSocketImpl_peek, [:pointer, :long, :long], :int32
+    JNI.load_native_method :Java_java_net_PlainDatagramSocketImpl_peek, [:pointer, :long, :long], :int32
     typesig { [InetAddress] }
     def peek(i)
-      JNI.__send__(:Java_java_net_PlainDatagramSocketImpl_peek, JNI.env, self.jni_id, i.jni_id)
+      JNI.call_native_method(:Java_java_net_PlainDatagramSocketImpl_peek, JNI.env, self.jni_id, i.jni_id)
     end
     
-    JNI.native_method :Java_java_net_PlainDatagramSocketImpl_peekData, [:pointer, :long, :long], :int32
+    JNI.load_native_method :Java_java_net_PlainDatagramSocketImpl_peekData, [:pointer, :long, :long], :int32
     typesig { [DatagramPacket] }
     def peek_data(p)
-      JNI.__send__(:Java_java_net_PlainDatagramSocketImpl_peekData, JNI.env, self.jni_id, p.jni_id)
+      JNI.call_native_method(:Java_java_net_PlainDatagramSocketImpl_peekData, JNI.env, self.jni_id, p.jni_id)
     end
     
-    JNI.native_method :Java_java_net_PlainDatagramSocketImpl_receive0, [:pointer, :long, :long], :void
+    JNI.load_native_method :Java_java_net_PlainDatagramSocketImpl_receive0, [:pointer, :long, :long], :void
     typesig { [DatagramPacket] }
     def receive0(p)
-      JNI.__send__(:Java_java_net_PlainDatagramSocketImpl_receive0, JNI.env, self.jni_id, p.jni_id)
+      JNI.call_native_method(:Java_java_net_PlainDatagramSocketImpl_receive0, JNI.env, self.jni_id, p.jni_id)
     end
     
-    JNI.native_method :Java_java_net_PlainDatagramSocketImpl_setTimeToLive, [:pointer, :long, :int32], :void
+    JNI.load_native_method :Java_java_net_PlainDatagramSocketImpl_setTimeToLive, [:pointer, :long, :int32], :void
     typesig { [::Java::Int] }
     def set_time_to_live(ttl)
-      JNI.__send__(:Java_java_net_PlainDatagramSocketImpl_setTimeToLive, JNI.env, self.jni_id, ttl.to_int)
+      JNI.call_native_method(:Java_java_net_PlainDatagramSocketImpl_setTimeToLive, JNI.env, self.jni_id, ttl.to_int)
     end
     
-    JNI.native_method :Java_java_net_PlainDatagramSocketImpl_getTimeToLive, [:pointer, :long], :int32
+    JNI.load_native_method :Java_java_net_PlainDatagramSocketImpl_getTimeToLive, [:pointer, :long], :int32
     typesig { [] }
     def get_time_to_live
-      JNI.__send__(:Java_java_net_PlainDatagramSocketImpl_getTimeToLive, JNI.env, self.jni_id)
+      JNI.call_native_method(:Java_java_net_PlainDatagramSocketImpl_getTimeToLive, JNI.env, self.jni_id)
     end
     
-    JNI.native_method :Java_java_net_PlainDatagramSocketImpl_setTTL, [:pointer, :long, :int8], :void
+    JNI.load_native_method :Java_java_net_PlainDatagramSocketImpl_setTTL, [:pointer, :long, :int8], :void
     typesig { [::Java::Byte] }
     def set_ttl(ttl)
-      JNI.__send__(:Java_java_net_PlainDatagramSocketImpl_setTTL, JNI.env, self.jni_id, ttl.to_int)
+      JNI.call_native_method(:Java_java_net_PlainDatagramSocketImpl_setTTL, JNI.env, self.jni_id, ttl.to_int)
     end
     
-    JNI.native_method :Java_java_net_PlainDatagramSocketImpl_getTTL, [:pointer, :long], :int8
+    JNI.load_native_method :Java_java_net_PlainDatagramSocketImpl_getTTL, [:pointer, :long], :int8
     typesig { [] }
     def get_ttl
-      JNI.__send__(:Java_java_net_PlainDatagramSocketImpl_getTTL, JNI.env, self.jni_id)
+      JNI.call_native_method(:Java_java_net_PlainDatagramSocketImpl_getTTL, JNI.env, self.jni_id)
     end
     
-    JNI.native_method :Java_java_net_PlainDatagramSocketImpl_join, [:pointer, :long, :long, :long], :void
+    JNI.load_native_method :Java_java_net_PlainDatagramSocketImpl_join, [:pointer, :long, :long, :long], :void
     typesig { [InetAddress, NetworkInterface] }
     def join(inetaddr, net_if)
-      JNI.__send__(:Java_java_net_PlainDatagramSocketImpl_join, JNI.env, self.jni_id, inetaddr.jni_id, net_if.jni_id)
+      JNI.call_native_method(:Java_java_net_PlainDatagramSocketImpl_join, JNI.env, self.jni_id, inetaddr.jni_id, net_if.jni_id)
     end
     
-    JNI.native_method :Java_java_net_PlainDatagramSocketImpl_leave, [:pointer, :long, :long, :long], :void
+    JNI.load_native_method :Java_java_net_PlainDatagramSocketImpl_leave, [:pointer, :long, :long, :long], :void
     typesig { [InetAddress, NetworkInterface] }
     def leave(inetaddr, net_if)
-      JNI.__send__(:Java_java_net_PlainDatagramSocketImpl_leave, JNI.env, self.jni_id, inetaddr.jni_id, net_if.jni_id)
+      JNI.call_native_method(:Java_java_net_PlainDatagramSocketImpl_leave, JNI.env, self.jni_id, inetaddr.jni_id, net_if.jni_id)
     end
     
-    JNI.native_method :Java_java_net_PlainDatagramSocketImpl_datagramSocketCreate, [:pointer, :long], :void
+    JNI.load_native_method :Java_java_net_PlainDatagramSocketImpl_datagramSocketCreate, [:pointer, :long], :void
     typesig { [] }
     def datagram_socket_create
-      JNI.__send__(:Java_java_net_PlainDatagramSocketImpl_datagramSocketCreate, JNI.env, self.jni_id)
+      JNI.call_native_method(:Java_java_net_PlainDatagramSocketImpl_datagramSocketCreate, JNI.env, self.jni_id)
     end
     
-    JNI.native_method :Java_java_net_PlainDatagramSocketImpl_datagramSocketClose, [:pointer, :long], :void
+    JNI.load_native_method :Java_java_net_PlainDatagramSocketImpl_datagramSocketClose, [:pointer, :long], :void
     typesig { [] }
     def datagram_socket_close
-      JNI.__send__(:Java_java_net_PlainDatagramSocketImpl_datagramSocketClose, JNI.env, self.jni_id)
+      JNI.call_native_method(:Java_java_net_PlainDatagramSocketImpl_datagramSocketClose, JNI.env, self.jni_id)
     end
     
-    JNI.native_method :Java_java_net_PlainDatagramSocketImpl_socketSetOption, [:pointer, :long, :int32, :long], :void
+    JNI.load_native_method :Java_java_net_PlainDatagramSocketImpl_socketSetOption, [:pointer, :long, :int32, :long], :void
     typesig { [::Java::Int, Object] }
     def socket_set_option(opt, val)
-      JNI.__send__(:Java_java_net_PlainDatagramSocketImpl_socketSetOption, JNI.env, self.jni_id, opt.to_int, val.jni_id)
+      JNI.call_native_method(:Java_java_net_PlainDatagramSocketImpl_socketSetOption, JNI.env, self.jni_id, opt.to_int, val.jni_id)
     end
     
-    JNI.native_method :Java_java_net_PlainDatagramSocketImpl_socketGetOption, [:pointer, :long, :int32], :long
+    JNI.load_native_method :Java_java_net_PlainDatagramSocketImpl_socketGetOption, [:pointer, :long, :int32], :long
     typesig { [::Java::Int] }
     def socket_get_option(opt)
-      JNI.__send__(:Java_java_net_PlainDatagramSocketImpl_socketGetOption, JNI.env, self.jni_id, opt.to_int)
+      JNI.call_native_method(:Java_java_net_PlainDatagramSocketImpl_socketGetOption, JNI.env, self.jni_id, opt.to_int)
     end
     
-    JNI.native_method :Java_java_net_PlainDatagramSocketImpl_connect0, [:pointer, :long, :long, :int32], :void
+    JNI.load_native_method :Java_java_net_PlainDatagramSocketImpl_connect0, [:pointer, :long, :long, :int32], :void
     typesig { [InetAddress, ::Java::Int] }
     def connect0(address, port)
-      JNI.__send__(:Java_java_net_PlainDatagramSocketImpl_connect0, JNI.env, self.jni_id, address.jni_id, port.to_int)
+      JNI.call_native_method(:Java_java_net_PlainDatagramSocketImpl_connect0, JNI.env, self.jni_id, address.jni_id, port.to_int)
     end
     
-    JNI.native_method :Java_java_net_PlainDatagramSocketImpl_disconnect0, [:pointer, :long, :int32], :void
+    JNI.load_native_method :Java_java_net_PlainDatagramSocketImpl_disconnect0, [:pointer, :long, :int32], :void
     typesig { [::Java::Int] }
     def disconnect0(family)
-      JNI.__send__(:Java_java_net_PlainDatagramSocketImpl_disconnect0, JNI.env, self.jni_id, family.to_int)
+      JNI.call_native_method(:Java_java_net_PlainDatagramSocketImpl_disconnect0, JNI.env, self.jni_id, family.to_int)
     end
     
     class_module.module_eval {
-      JNI.native_method :Java_java_net_PlainDatagramSocketImpl_init, [:pointer, :long], :void
+      JNI.load_native_method :Java_java_net_PlainDatagramSocketImpl_init, [:pointer, :long], :void
       typesig { [] }
       # Perform class load-time initializations.
       def init
-        JNI.__send__(:Java_java_net_PlainDatagramSocketImpl_init, JNI.env, self.jni_id)
+        JNI.call_native_method(:Java_java_net_PlainDatagramSocketImpl_init, JNI.env, self.jni_id)
       end
     }
     

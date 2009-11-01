@@ -301,7 +301,7 @@ module Java::Lang
       end
     end
     
-    JNI.native_method :Java_java_lang_SecurityManager_getClassContext, [:pointer, :long], :long
+    JNI.load_native_method :Java_java_lang_SecurityManager_getClassContext, [:pointer, :long], :long
     typesig { [] }
     # Returns the current execution stack as an array of classes.
     # <p>
@@ -312,7 +312,7 @@ module Java::Lang
     # 
     # @return  the execution stack.
     def get_class_context
-      JNI.__send__(:Java_java_lang_SecurityManager_getClassContext, JNI.env, self.jni_id)
+      JNI.call_native_method(:Java_java_lang_SecurityManager_getClassContext, JNI.env, self.jni_id)
     end
     
     typesig { [] }
@@ -358,10 +358,10 @@ module Java::Lang
       return cl
     end
     
-    JNI.native_method :Java_java_lang_SecurityManager_currentClassLoader0, [:pointer, :long], :long
+    JNI.load_native_method :Java_java_lang_SecurityManager_currentClassLoader0, [:pointer, :long], :long
     typesig { [] }
     def current_class_loader0
-      JNI.__send__(:Java_java_lang_SecurityManager_currentClassLoader0, JNI.env, self.jni_id)
+      JNI.call_native_method(:Java_java_lang_SecurityManager_currentClassLoader0, JNI.env, self.jni_id)
     end
     
     typesig { [] }
@@ -407,7 +407,7 @@ module Java::Lang
       return c
     end
     
-    JNI.native_method :Java_java_lang_SecurityManager_classDepth, [:pointer, :long, :long], :int32
+    JNI.load_native_method :Java_java_lang_SecurityManager_classDepth, [:pointer, :long, :long], :int32
     typesig { [String] }
     # Returns the stack depth of the specified class.
     # 
@@ -419,7 +419,7 @@ module Java::Lang
     # It is recommended that the <code>checkPermission</code>
     # call be used instead.
     def class_depth(name)
-      JNI.__send__(:Java_java_lang_SecurityManager_classDepth, JNI.env, self.jni_id, name.jni_id)
+      JNI.call_native_method(:Java_java_lang_SecurityManager_classDepth, JNI.env, self.jni_id, name.jni_id)
     end
     
     typesig { [] }
@@ -468,10 +468,10 @@ module Java::Lang
       return depth
     end
     
-    JNI.native_method :Java_java_lang_SecurityManager_classLoaderDepth0, [:pointer, :long], :int32
+    JNI.load_native_method :Java_java_lang_SecurityManager_classLoaderDepth0, [:pointer, :long], :int32
     typesig { [] }
     def class_loader_depth0
-      JNI.__send__(:Java_java_lang_SecurityManager_classLoaderDepth0, JNI.env, self.jni_id)
+      JNI.call_native_method(:Java_java_lang_SecurityManager_classLoaderDepth0, JNI.env, self.jni_id)
     end
     
     typesig { [String] }
@@ -1717,10 +1717,10 @@ module Java::Lang
       check_permission(SecurityPermission.new(target))
     end
     
-    JNI.native_method :Java_java_lang_SecurityManager_currentLoadedClass0, [:pointer, :long], :long
+    JNI.load_native_method :Java_java_lang_SecurityManager_currentLoadedClass0, [:pointer, :long], :long
     typesig { [] }
     def current_loaded_class0
-      JNI.__send__(:Java_java_lang_SecurityManager_currentLoadedClass0, JNI.env, self.jni_id)
+      JNI.call_native_method(:Java_java_lang_SecurityManager_currentLoadedClass0, JNI.env, self.jni_id)
     end
     
     typesig { [] }

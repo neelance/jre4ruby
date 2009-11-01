@@ -130,10 +130,10 @@ module Java::Lang
       const_set_lazy(:SYNTHETIC) { 0x1000 }
       const_attr_reader  :SYNTHETIC
       
-      JNI.native_method :Java_java_lang_Class_registerNatives, [:pointer, :long], :void
+      JNI.load_native_method :Java_java_lang_Class_registerNatives, [:pointer, :long], :void
       typesig { [] }
       def register_natives
-        JNI.__send__(:Java_java_lang_Class_registerNatives, JNI.env, self.jni_id)
+        JNI.call_native_method(:Java_java_lang_Class_registerNatives, JNI.env, self.jni_id)
       end
       
       when_class_loaded do
@@ -287,11 +287,11 @@ module Java::Lang
         return for_name0(name, initialize, loader)
       end
       
-      JNI.native_method :Java_java_lang_Class_forName0, [:pointer, :long, :long, :int8, :long], :long
+      JNI.load_native_method :Java_java_lang_Class_forName0, [:pointer, :long, :long, :int8, :long], :long
       typesig { [String, ::Java::Boolean, ClassLoader] }
       # Called after security checks have been made.
       def for_name0(name, initialize, loader)
-        JNI.__send__(:Java_java_lang_Class_forName0, JNI.env, self.jni_id, name.jni_id, initialize ? 1 : 0, loader.jni_id)
+        JNI.call_native_method(:Java_java_lang_Class_forName0, JNI.env, self.jni_id, name.jni_id, initialize ? 1 : 0, loader.jni_id)
       end
     }
     
@@ -419,7 +419,7 @@ module Java::Lang
     alias_method :attr_new_instance_caller_cache=, :new_instance_caller_cache=
     undef_method :new_instance_caller_cache=
     
-    JNI.native_method :Java_java_lang_Class_isInstance, [:pointer, :long, :long], :int8
+    JNI.load_native_method :Java_java_lang_Class_isInstance, [:pointer, :long, :long], :int8
     typesig { [Object] }
     # Determines if the specified {@code Object} is assignment-compatible
     # with the object represented by this {@code Class}.  This method is
@@ -450,10 +450,10 @@ module Java::Lang
     # 
     # @since JDK1.1
     def is_instance(obj)
-      JNI.__send__(:Java_java_lang_Class_isInstance, JNI.env, self.jni_id, obj.jni_id) != 0
+      JNI.call_native_method(:Java_java_lang_Class_isInstance, JNI.env, self.jni_id, obj.jni_id) != 0
     end
     
-    JNI.native_method :Java_java_lang_Class_isAssignableFrom, [:pointer, :long, :long], :int8
+    JNI.load_native_method :Java_java_lang_Class_isAssignableFrom, [:pointer, :long, :long], :int8
     typesig { [Class] }
     # Determines if the class or interface represented by this
     # {@code Class} object is either the same as, or is a superclass or
@@ -478,10 +478,10 @@ module Java::Lang
     # null.
     # @since JDK1.1
     def is_assignable_from(cls)
-      JNI.__send__(:Java_java_lang_Class_isAssignableFrom, JNI.env, self.jni_id, cls.jni_id) != 0
+      JNI.call_native_method(:Java_java_lang_Class_isAssignableFrom, JNI.env, self.jni_id, cls.jni_id) != 0
     end
     
-    JNI.native_method :Java_java_lang_Class_isInterface, [:pointer, :long], :int8
+    JNI.load_native_method :Java_java_lang_Class_isInterface, [:pointer, :long], :int8
     typesig { [] }
     # Determines if the specified {@code Class} object represents an
     # interface type.
@@ -489,10 +489,10 @@ module Java::Lang
     # @return  {@code true} if this object represents an interface;
     # {@code false} otherwise.
     def is_interface
-      JNI.__send__(:Java_java_lang_Class_isInterface, JNI.env, self.jni_id) != 0
+      JNI.call_native_method(:Java_java_lang_Class_isInterface, JNI.env, self.jni_id) != 0
     end
     
-    JNI.native_method :Java_java_lang_Class_isArray, [:pointer, :long], :int8
+    JNI.load_native_method :Java_java_lang_Class_isArray, [:pointer, :long], :int8
     typesig { [] }
     # Determines if this {@code Class} object represents an array class.
     # 
@@ -500,10 +500,10 @@ module Java::Lang
     # {@code false} otherwise.
     # @since   JDK1.1
     def is_array
-      JNI.__send__(:Java_java_lang_Class_isArray, JNI.env, self.jni_id) != 0
+      JNI.call_native_method(:Java_java_lang_Class_isArray, JNI.env, self.jni_id) != 0
     end
     
-    JNI.native_method :Java_java_lang_Class_isPrimitive, [:pointer, :long], :int8
+    JNI.load_native_method :Java_java_lang_Class_isPrimitive, [:pointer, :long], :int8
     typesig { [] }
     # Determines if the specified {@code Class} object represents a
     # primitive type.
@@ -532,7 +532,7 @@ module Java::Lang
     # @see     java.lang.Void#TYPE
     # @since JDK1.1
     def is_primitive
-      JNI.__send__(:Java_java_lang_Class_isPrimitive, JNI.env, self.jni_id) != 0
+      JNI.call_native_method(:Java_java_lang_Class_isPrimitive, JNI.env, self.jni_id) != 0
     end
     
     typesig { [] }
@@ -620,10 +620,10 @@ module Java::Lang
     alias_method :attr_name=, :name=
     undef_method :name=
     
-    JNI.native_method :Java_java_lang_Class_getName0, [:pointer, :long], :long
+    JNI.load_native_method :Java_java_lang_Class_getName0, [:pointer, :long], :long
     typesig { [] }
     def get_name0
-      JNI.__send__(:Java_java_lang_Class_getName0, JNI.env, self.jni_id)
+      JNI.call_native_method(:Java_java_lang_Class_getName0, JNI.env, self.jni_id)
     end
     
     typesig { [] }
@@ -666,11 +666,11 @@ module Java::Lang
       return cl
     end
     
-    JNI.native_method :Java_java_lang_Class_getClassLoader0, [:pointer, :long], :long
+    JNI.load_native_method :Java_java_lang_Class_getClassLoader0, [:pointer, :long], :long
     typesig { [] }
     # Package-private to allow ClassLoader access
     def get_class_loader0
-      JNI.__send__(:Java_java_lang_Class_getClassLoader0, JNI.env, self.jni_id)
+      JNI.call_native_method(:Java_java_lang_Class_getClassLoader0, JNI.env, self.jni_id)
     end
     
     typesig { [] }
@@ -695,7 +695,7 @@ module Java::Lang
       end
     end
     
-    JNI.native_method :Java_java_lang_Class_getSuperclass, [:pointer, :long], :long
+    JNI.load_native_method :Java_java_lang_Class_getSuperclass, [:pointer, :long], :long
     typesig { [] }
     # Returns the {@code Class} representing the superclass of the entity
     # (class, interface, primitive type or void) represented by this
@@ -707,7 +707,7 @@ module Java::Lang
     # 
     # @return the superclass of the class represented by this object.
     def get_superclass
-      JNI.__send__(:Java_java_lang_Class_getSuperclass, JNI.env, self.jni_id)
+      JNI.call_native_method(:Java_java_lang_Class_getSuperclass, JNI.env, self.jni_id)
     end
     
     typesig { [] }
@@ -770,7 +770,7 @@ module Java::Lang
       return Package.get_package(self)
     end
     
-    JNI.native_method :Java_java_lang_Class_getInterfaces, [:pointer, :long], :long
+    JNI.load_native_method :Java_java_lang_Class_getInterfaces, [:pointer, :long], :long
     typesig { [] }
     # Determines the interfaces implemented by the class or interface
     # represented by this object.
@@ -811,7 +811,7 @@ module Java::Lang
     # 
     # @return an array of interfaces implemented by this class.
     def get_interfaces
-      JNI.__send__(:Java_java_lang_Class_getInterfaces, JNI.env, self.jni_id)
+      JNI.call_native_method(:Java_java_lang_Class_getInterfaces, JNI.env, self.jni_id)
     end
     
     typesig { [] }
@@ -869,7 +869,7 @@ module Java::Lang
       end
     end
     
-    JNI.native_method :Java_java_lang_Class_getComponentType, [:pointer, :long], :long
+    JNI.load_native_method :Java_java_lang_Class_getComponentType, [:pointer, :long], :long
     typesig { [] }
     # Returns the {@code Class} representing the component type of an
     # array.  If this class does not represent an array class this method
@@ -880,10 +880,10 @@ module Java::Lang
     # @see     java.lang.reflect.Array
     # @since JDK1.1
     def get_component_type
-      JNI.__send__(:Java_java_lang_Class_getComponentType, JNI.env, self.jni_id)
+      JNI.call_native_method(:Java_java_lang_Class_getComponentType, JNI.env, self.jni_id)
     end
     
-    JNI.native_method :Java_java_lang_Class_getModifiers, [:pointer, :long], :int32
+    JNI.load_native_method :Java_java_lang_Class_getModifiers, [:pointer, :long], :int32
     typesig { [] }
     # Returns the Java language modifiers for this class or interface, encoded
     # in an integer. The modifiers consist of the Java Virtual Machine's
@@ -911,10 +911,10 @@ module Java::Lang
     # @see     java.lang.reflect.Modifier
     # @since JDK1.1
     def get_modifiers
-      JNI.__send__(:Java_java_lang_Class_getModifiers, JNI.env, self.jni_id)
+      JNI.call_native_method(:Java_java_lang_Class_getModifiers, JNI.env, self.jni_id)
     end
     
-    JNI.native_method :Java_java_lang_Class_getSigners, [:pointer, :long], :long
+    JNI.load_native_method :Java_java_lang_Class_getSigners, [:pointer, :long], :long
     typesig { [] }
     # Gets the signers of this class.
     # 
@@ -923,14 +923,14 @@ module Java::Lang
     # a primitive type or void.
     # @since   JDK1.1
     def get_signers
-      JNI.__send__(:Java_java_lang_Class_getSigners, JNI.env, self.jni_id)
+      JNI.call_native_method(:Java_java_lang_Class_getSigners, JNI.env, self.jni_id)
     end
     
-    JNI.native_method :Java_java_lang_Class_setSigners, [:pointer, :long, :long], :void
+    JNI.load_native_method :Java_java_lang_Class_setSigners, [:pointer, :long, :long], :void
     typesig { [Array.typed(Object)] }
     # Set the signers of this class.
     def set_signers(signers)
-      JNI.__send__(:Java_java_lang_Class_setSigners, JNI.env, self.jni_id, signers.jni_id)
+      JNI.call_native_method(:Java_java_lang_Class_setSigners, JNI.env, self.jni_id, signers.jni_id)
     end
     
     typesig { [] }
@@ -997,10 +997,10 @@ module Java::Lang
       end
     end
     
-    JNI.native_method :Java_java_lang_Class_getEnclosingMethod0, [:pointer, :long], :long
+    JNI.load_native_method :Java_java_lang_Class_getEnclosingMethod0, [:pointer, :long], :long
     typesig { [] }
     def get_enclosing_method0
-      JNI.__send__(:Java_java_lang_Class_getEnclosingMethod0, JNI.env, self.jni_id)
+      JNI.call_native_method(:Java_java_lang_Class_getEnclosingMethod0, JNI.env, self.jni_id)
     end
     
     typesig { [] }
@@ -1158,7 +1158,7 @@ module Java::Lang
       end
     end
     
-    JNI.native_method :Java_java_lang_Class_getDeclaringClass, [:pointer, :long], :long
+    JNI.load_native_method :Java_java_lang_Class_getDeclaringClass, [:pointer, :long], :long
     typesig { [] }
     # If the class or interface represented by this {@code Class} object
     # is a member of another class, returns the {@code Class} object
@@ -1170,7 +1170,7 @@ module Java::Lang
     # @return the declaring class for this class
     # @since JDK1.1
     def get_declaring_class
-      JNI.__send__(:Java_java_lang_Class_getDeclaringClass, JNI.env, self.jni_id)
+      JNI.call_native_method(:Java_java_lang_Class_getDeclaringClass, JNI.env, self.jni_id)
     end
     
     typesig { [] }
@@ -2232,28 +2232,28 @@ module Java::Lang
       return pd
     end
     
-    JNI.native_method :Java_java_lang_Class_getProtectionDomain0, [:pointer, :long], :long
+    JNI.load_native_method :Java_java_lang_Class_getProtectionDomain0, [:pointer, :long], :long
     typesig { [] }
     # Returns the ProtectionDomain of this class.
     def get_protection_domain0
-      JNI.__send__(:Java_java_lang_Class_getProtectionDomain0, JNI.env, self.jni_id)
+      JNI.call_native_method(:Java_java_lang_Class_getProtectionDomain0, JNI.env, self.jni_id)
     end
     
-    JNI.native_method :Java_java_lang_Class_setProtectionDomain0, [:pointer, :long, :long], :void
+    JNI.load_native_method :Java_java_lang_Class_setProtectionDomain0, [:pointer, :long, :long], :void
     typesig { [Java::Security::ProtectionDomain] }
     # Set the ProtectionDomain for this class. Called by
     # ClassLoader.defineClass.
     def set_protection_domain0(pd)
-      JNI.__send__(:Java_java_lang_Class_setProtectionDomain0, JNI.env, self.jni_id, pd.jni_id)
+      JNI.call_native_method(:Java_java_lang_Class_setProtectionDomain0, JNI.env, self.jni_id, pd.jni_id)
     end
     
     class_module.module_eval {
-      JNI.native_method :Java_java_lang_Class_getPrimitiveClass, [:pointer, :long, :long], :long
+      JNI.load_native_method :Java_java_lang_Class_getPrimitiveClass, [:pointer, :long, :long], :long
       typesig { [String] }
       # Return the Virtual Machine's Class object for the named
       # primitive type.
       def get_primitive_class(name)
-        JNI.__send__(:Java_java_lang_Class_getPrimitiveClass, JNI.env, self.jni_id, name.jni_id)
+        JNI.call_native_method(:Java_java_lang_Class_getPrimitiveClass, JNI.env, self.jni_id, name.jni_id)
       end
     }
     
@@ -2404,11 +2404,11 @@ module Java::Lang
       end
     end
     
-    JNI.native_method :Java_java_lang_Class_getGenericSignature, [:pointer, :long], :long
+    JNI.load_native_method :Java_java_lang_Class_getGenericSignature, [:pointer, :long], :long
     typesig { [] }
     # Generic signature handling
     def get_generic_signature
-      JNI.__send__(:Java_java_lang_Class_getGenericSignature, JNI.env, self.jni_id)
+      JNI.call_native_method(:Java_java_lang_Class_getGenericSignature, JNI.env, self.jni_id)
     end
     
     # Generic info repository; lazily initialized
@@ -2436,17 +2436,17 @@ module Java::Lang
       return @generic_info # return cached repository
     end
     
-    JNI.native_method :Java_java_lang_Class_getRawAnnotations, [:pointer, :long], :long
+    JNI.load_native_method :Java_java_lang_Class_getRawAnnotations, [:pointer, :long], :long
     typesig { [] }
     # Annotations handling
     def get_raw_annotations
-      JNI.__send__(:Java_java_lang_Class_getRawAnnotations, JNI.env, self.jni_id)
+      JNI.call_native_method(:Java_java_lang_Class_getRawAnnotations, JNI.env, self.jni_id)
     end
     
-    JNI.native_method :Java_java_lang_Class_getConstantPool, [:pointer, :long], :long
+    JNI.load_native_method :Java_java_lang_Class_getConstantPool, [:pointer, :long], :long
     typesig { [] }
     def get_constant_pool
-      JNI.__send__(:Java_java_lang_Class_getConstantPool, JNI.env, self.jni_id)
+      JNI.call_native_method(:Java_java_lang_Class_getConstantPool, JNI.env, self.jni_id)
     end
     
     typesig { [::Java::Boolean] }
@@ -3000,28 +3000,28 @@ module Java::Lang
       end
     }
     
-    JNI.native_method :Java_java_lang_Class_getDeclaredFields0, [:pointer, :long, :int8], :long
+    JNI.load_native_method :Java_java_lang_Class_getDeclaredFields0, [:pointer, :long, :int8], :long
     typesig { [::Java::Boolean] }
     def get_declared_fields0(public_only)
-      JNI.__send__(:Java_java_lang_Class_getDeclaredFields0, JNI.env, self.jni_id, public_only ? 1 : 0)
+      JNI.call_native_method(:Java_java_lang_Class_getDeclaredFields0, JNI.env, self.jni_id, public_only ? 1 : 0)
     end
     
-    JNI.native_method :Java_java_lang_Class_getDeclaredMethods0, [:pointer, :long, :int8], :long
+    JNI.load_native_method :Java_java_lang_Class_getDeclaredMethods0, [:pointer, :long, :int8], :long
     typesig { [::Java::Boolean] }
     def get_declared_methods0(public_only)
-      JNI.__send__(:Java_java_lang_Class_getDeclaredMethods0, JNI.env, self.jni_id, public_only ? 1 : 0)
+      JNI.call_native_method(:Java_java_lang_Class_getDeclaredMethods0, JNI.env, self.jni_id, public_only ? 1 : 0)
     end
     
-    JNI.native_method :Java_java_lang_Class_getDeclaredConstructors0, [:pointer, :long, :int8], :long
+    JNI.load_native_method :Java_java_lang_Class_getDeclaredConstructors0, [:pointer, :long, :int8], :long
     typesig { [::Java::Boolean] }
     def get_declared_constructors0(public_only)
-      JNI.__send__(:Java_java_lang_Class_getDeclaredConstructors0, JNI.env, self.jni_id, public_only ? 1 : 0)
+      JNI.call_native_method(:Java_java_lang_Class_getDeclaredConstructors0, JNI.env, self.jni_id, public_only ? 1 : 0)
     end
     
-    JNI.native_method :Java_java_lang_Class_getDeclaredClasses0, [:pointer, :long], :long
+    JNI.load_native_method :Java_java_lang_Class_getDeclaredClasses0, [:pointer, :long], :long
     typesig { [] }
     def get_declared_classes0
-      JNI.__send__(:Java_java_lang_Class_getDeclaredClasses0, JNI.env, self.jni_id)
+      JNI.call_native_method(:Java_java_lang_Class_getDeclaredClasses0, JNI.env, self.jni_id)
     end
     
     class_module.module_eval {
@@ -3104,11 +3104,11 @@ module Java::Lang
     end
     
     class_module.module_eval {
-      JNI.native_method :Java_java_lang_Class_desiredAssertionStatus0, [:pointer, :long, :long], :int8
+      JNI.load_native_method :Java_java_lang_Class_desiredAssertionStatus0, [:pointer, :long, :long], :int8
       typesig { [Class] }
       # Retrieves the desired assertion status of this class from the VM
       def desired_assertion_status0(clazz)
-        JNI.__send__(:Java_java_lang_Class_desiredAssertionStatus0, JNI.env, self.jni_id, clazz.jni_id) != 0
+        JNI.call_native_method(:Java_java_lang_Class_desiredAssertionStatus0, JNI.env, self.jni_id, clazz.jni_id) != 0
       end
     }
     

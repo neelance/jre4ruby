@@ -235,23 +235,23 @@ module Sun::Net::Dns
         alias_method :initialize__address_change_listener, :initialize
       end }
       
-      JNI.native_method :Java_sun_net_dns_ResolverConfigurationImpl_init0, [:pointer, :long], :void
+      JNI.load_native_method :Java_sun_net_dns_ResolverConfigurationImpl_init0, [:pointer, :long], :void
       typesig { [] }
       # --- Native methods --
       def init0
-        JNI.__send__(:Java_sun_net_dns_ResolverConfigurationImpl_init0, JNI.env, self.jni_id)
+        JNI.call_native_method(:Java_sun_net_dns_ResolverConfigurationImpl_init0, JNI.env, self.jni_id)
       end
       
-      JNI.native_method :Java_sun_net_dns_ResolverConfigurationImpl_loadDNSconfig0, [:pointer, :long], :void
+      JNI.load_native_method :Java_sun_net_dns_ResolverConfigurationImpl_loadDNSconfig0, [:pointer, :long], :void
       typesig { [] }
       def load_dnsconfig0
-        JNI.__send__(:Java_sun_net_dns_ResolverConfigurationImpl_loadDNSconfig0, JNI.env, self.jni_id)
+        JNI.call_native_method(:Java_sun_net_dns_ResolverConfigurationImpl_loadDNSconfig0, JNI.env, self.jni_id)
       end
       
-      JNI.native_method :Java_sun_net_dns_ResolverConfigurationImpl_notifyAddrChange0, [:pointer, :long], :int32
+      JNI.load_native_method :Java_sun_net_dns_ResolverConfigurationImpl_notifyAddrChange0, [:pointer, :long], :int32
       typesig { [] }
       def notify_addr_change0
-        JNI.__send__(:Java_sun_net_dns_ResolverConfigurationImpl_notifyAddrChange0, JNI.env, self.jni_id)
+        JNI.call_native_method(:Java_sun_net_dns_ResolverConfigurationImpl_notifyAddrChange0, JNI.env, self.jni_id)
       end
       
       when_class_loaded do

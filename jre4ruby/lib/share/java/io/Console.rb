@@ -415,16 +415,16 @@ module Java::Io
     undef_method :rcb=
     
     class_module.module_eval {
-      JNI.native_method :Java_java_io_Console_encoding, [:pointer, :long], :long
+      JNI.load_native_method :Java_java_io_Console_encoding, [:pointer, :long], :long
       typesig { [] }
       def encoding
-        JNI.__send__(:Java_java_io_Console_encoding, JNI.env, self.jni_id)
+        JNI.call_native_method(:Java_java_io_Console_encoding, JNI.env, self.jni_id)
       end
       
-      JNI.native_method :Java_java_io_Console_echo, [:pointer, :long, :int8], :int8
+      JNI.load_native_method :Java_java_io_Console_echo, [:pointer, :long, :int8], :int8
       typesig { [::Java::Boolean] }
       def echo(on)
-        JNI.__send__(:Java_java_io_Console_echo, JNI.env, self.jni_id, on ? 1 : 0) != 0
+        JNI.call_native_method(:Java_java_io_Console_echo, JNI.env, self.jni_id, on ? 1 : 0) != 0
       end
       
       
@@ -706,10 +706,10 @@ module Java::Io
       end
       alias_method :attr_cons=, :cons=
       
-      JNI.native_method :Java_java_io_Console_istty, [:pointer, :long], :int8
+      JNI.load_native_method :Java_java_io_Console_istty, [:pointer, :long], :int8
       typesig { [] }
       def istty
-        JNI.__send__(:Java_java_io_Console_istty, JNI.env, self.jni_id) != 0
+        JNI.call_native_method(:Java_java_io_Console_istty, JNI.env, self.jni_id) != 0
       end
     }
     

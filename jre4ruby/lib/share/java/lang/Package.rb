@@ -648,16 +648,16 @@ module Java::Lang
       end
       alias_method :attr_mans=, :mans=
       
-      JNI.native_method :Java_java_lang_Package_getSystemPackage0, [:pointer, :long, :long], :long
+      JNI.load_native_method :Java_java_lang_Package_getSystemPackage0, [:pointer, :long, :long], :long
       typesig { [String] }
       def get_system_package0(name)
-        JNI.__send__(:Java_java_lang_Package_getSystemPackage0, JNI.env, self.jni_id, name.jni_id)
+        JNI.call_native_method(:Java_java_lang_Package_getSystemPackage0, JNI.env, self.jni_id, name.jni_id)
       end
       
-      JNI.native_method :Java_java_lang_Package_getSystemPackages0, [:pointer, :long], :long
+      JNI.load_native_method :Java_java_lang_Package_getSystemPackages0, [:pointer, :long], :long
       typesig { [] }
       def get_system_packages0
-        JNI.__send__(:Java_java_lang_Package_getSystemPackages0, JNI.env, self.jni_id)
+        JNI.call_native_method(:Java_java_lang_Package_getSystemPackages0, JNI.env, self.jni_id)
       end
     }
     

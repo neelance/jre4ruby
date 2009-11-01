@@ -284,23 +284,23 @@ module Java::Io
       @fd.increment_and_get_use_count
     end
     
-    JNI.native_method :Java_java_io_FileOutputStream_open, [:pointer, :long, :long], :void
+    JNI.load_native_method :Java_java_io_FileOutputStream_open, [:pointer, :long, :long], :void
     typesig { [String] }
     # Opens a file, with the specified name, for writing.
     # @param name name of file to be opened
     def open(name)
-      JNI.__send__(:Java_java_io_FileOutputStream_open, JNI.env, self.jni_id, name.jni_id)
+      JNI.call_native_method(:Java_java_io_FileOutputStream_open, JNI.env, self.jni_id, name.jni_id)
     end
     
-    JNI.native_method :Java_java_io_FileOutputStream_openAppend, [:pointer, :long, :long], :void
+    JNI.load_native_method :Java_java_io_FileOutputStream_openAppend, [:pointer, :long, :long], :void
     typesig { [String] }
     # Opens a file, with the specified name, for appending.
     # @param name name of file to be opened
     def open_append(name)
-      JNI.__send__(:Java_java_io_FileOutputStream_openAppend, JNI.env, self.jni_id, name.jni_id)
+      JNI.call_native_method(:Java_java_io_FileOutputStream_openAppend, JNI.env, self.jni_id, name.jni_id)
     end
     
-    JNI.native_method :Java_java_io_FileOutputStream_write, [:pointer, :long, :int32], :void
+    JNI.load_native_method :Java_java_io_FileOutputStream_write, [:pointer, :long, :int32], :void
     typesig { [::Java::Int] }
     # Writes the specified byte to this file output stream. Implements
     # the <code>write</code> method of <code>OutputStream</code>.
@@ -308,10 +308,10 @@ module Java::Io
     # @param      b   the byte to be written.
     # @exception  IOException  if an I/O error occurs.
     def write(b)
-      JNI.__send__(:Java_java_io_FileOutputStream_write, JNI.env, self.jni_id, b.to_int)
+      JNI.call_native_method(:Java_java_io_FileOutputStream_write, JNI.env, self.jni_id, b.to_int)
     end
     
-    JNI.native_method :Java_java_io_FileOutputStream_writeBytes, [:pointer, :long, :long, :int32, :int32], :void
+    JNI.load_native_method :Java_java_io_FileOutputStream_writeBytes, [:pointer, :long, :long, :int32, :int32], :void
     typesig { [Array.typed(::Java::Byte), ::Java::Int, ::Java::Int] }
     # Writes a sub array as a sequence of bytes.
     # @param b the data to be written
@@ -319,7 +319,7 @@ module Java::Io
     # @param len the number of bytes that are written
     # @exception IOException If an I/O error has occurred.
     def write_bytes(b, off, len)
-      JNI.__send__(:Java_java_io_FileOutputStream_writeBytes, JNI.env, self.jni_id, b.jni_id, off.to_int, len.to_int)
+      JNI.call_native_method(:Java_java_io_FileOutputStream_writeBytes, JNI.env, self.jni_id, b.jni_id, off.to_int, len.to_int)
     end
     
     typesig { [Array.typed(::Java::Byte)] }
@@ -449,17 +449,17 @@ module Java::Io
       end
     end
     
-    JNI.native_method :Java_java_io_FileOutputStream_close0, [:pointer, :long], :void
+    JNI.load_native_method :Java_java_io_FileOutputStream_close0, [:pointer, :long], :void
     typesig { [] }
     def close0
-      JNI.__send__(:Java_java_io_FileOutputStream_close0, JNI.env, self.jni_id)
+      JNI.call_native_method(:Java_java_io_FileOutputStream_close0, JNI.env, self.jni_id)
     end
     
     class_module.module_eval {
-      JNI.native_method :Java_java_io_FileOutputStream_initIDs, [:pointer, :long], :void
+      JNI.load_native_method :Java_java_io_FileOutputStream_initIDs, [:pointer, :long], :void
       typesig { [] }
       def init_ids
-        JNI.__send__(:Java_java_io_FileOutputStream_initIDs, JNI.env, self.jni_id)
+        JNI.call_native_method(:Java_java_io_FileOutputStream_initIDs, JNI.env, self.jni_id)
       end
       
       when_class_loaded do

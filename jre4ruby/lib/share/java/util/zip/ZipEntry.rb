@@ -110,10 +110,10 @@ module Java::Util::Zip
         init_ids
       end
       
-      JNI.native_method :Java_java_util_zip_ZipEntry_initIDs, [:pointer, :long], :void
+      JNI.load_native_method :Java_java_util_zip_ZipEntry_initIDs, [:pointer, :long], :void
       typesig { [] }
       def init_ids
-        JNI.__send__(:Java_java_util_zip_ZipEntry_initIDs, JNI.env, self.jni_id)
+        JNI.call_native_method(:Java_java_util_zip_ZipEntry_initIDs, JNI.env, self.jni_id)
       end
     }
     
@@ -181,10 +181,10 @@ module Java::Util::Zip
       init_fields(jzentry)
     end
     
-    JNI.native_method :Java_java_util_zip_ZipEntry_initFields, [:pointer, :long, :int64], :void
+    JNI.load_native_method :Java_java_util_zip_ZipEntry_initFields, [:pointer, :long, :int64], :void
     typesig { [::Java::Long] }
     def init_fields(jzentry)
-      JNI.__send__(:Java_java_util_zip_ZipEntry_initFields, JNI.env, self.jni_id, jzentry.to_int)
+      JNI.call_native_method(:Java_java_util_zip_ZipEntry_initFields, JNI.env, self.jni_id, jzentry.to_int)
     end
     
     typesig { [::Java::Long] }

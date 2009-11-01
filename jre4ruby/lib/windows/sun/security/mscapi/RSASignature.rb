@@ -280,19 +280,19 @@ module Sun::Security::Mscapi
     end
     
     class_module.module_eval {
-      JNI.native_method :Java_sun_security_mscapi_RSASignature_signHash, [:pointer, :long, :long, :int32, :long, :int64, :int64], :long
+      JNI.load_native_method :Java_sun_security_mscapi_RSASignature_signHash, [:pointer, :long, :long, :int32, :long, :int64, :int64], :long
       typesig { [Array.typed(::Java::Byte), ::Java::Int, String, ::Java::Long, ::Java::Long] }
       # Sign hash using Microsoft Crypto API with HCRYPTKEY.
       # The returned data is in little-endian.
       def sign_hash(hash, hash_size, hash_algorithm, h_crypt_prov, h_crypt_key)
-        JNI.__send__(:Java_sun_security_mscapi_RSASignature_signHash, JNI.env, self.jni_id, hash.jni_id, hash_size.to_int, hash_algorithm.jni_id, h_crypt_prov.to_int, h_crypt_key.to_int)
+        JNI.call_native_method(:Java_sun_security_mscapi_RSASignature_signHash, JNI.env, self.jni_id, hash.jni_id, hash_size.to_int, hash_algorithm.jni_id, h_crypt_prov.to_int, h_crypt_key.to_int)
       end
       
-      JNI.native_method :Java_sun_security_mscapi_RSASignature_verifySignedHash, [:pointer, :long, :long, :int32, :long, :long, :int32, :int64, :int64], :int8
+      JNI.load_native_method :Java_sun_security_mscapi_RSASignature_verifySignedHash, [:pointer, :long, :long, :int32, :long, :long, :int32, :int64, :int64], :int8
       typesig { [Array.typed(::Java::Byte), ::Java::Int, String, Array.typed(::Java::Byte), ::Java::Int, ::Java::Long, ::Java::Long] }
       # Verify a signed hash using Microsoft Crypto API with HCRYPTKEY.
       def verify_signed_hash(hash, hash_size, hash_algorithm, signature, signature_size, h_crypt_prov, h_crypt_key)
-        JNI.__send__(:Java_sun_security_mscapi_RSASignature_verifySignedHash, JNI.env, self.jni_id, hash.jni_id, hash_size.to_int, hash_algorithm.jni_id, signature.jni_id, signature_size.to_int, h_crypt_prov.to_int, h_crypt_key.to_int) != 0
+        JNI.call_native_method(:Java_sun_security_mscapi_RSASignature_verifySignedHash, JNI.env, self.jni_id, hash.jni_id, hash_size.to_int, hash_algorithm.jni_id, signature.jni_id, signature_size.to_int, h_crypt_prov.to_int, h_crypt_key.to_int) != 0
       end
     }
     
@@ -365,18 +365,18 @@ module Sun::Security::Mscapi
       raise InvalidParameterException.new("Parameter not supported")
     end
     
-    JNI.native_method :Java_sun_security_mscapi_RSASignature_generatePublicKeyBlob, [:pointer, :long, :int32, :long, :long], :long
+    JNI.load_native_method :Java_sun_security_mscapi_RSASignature_generatePublicKeyBlob, [:pointer, :long, :int32, :long, :long], :long
     typesig { [::Java::Int, Array.typed(::Java::Byte), Array.typed(::Java::Byte)] }
     # Generates a public-key BLOB from a key's components.
     def generate_public_key_blob(key_bit_length, modulus, public_exponent)
-      JNI.__send__(:Java_sun_security_mscapi_RSASignature_generatePublicKeyBlob, JNI.env, self.jni_id, key_bit_length.to_int, modulus.jni_id, public_exponent.jni_id)
+      JNI.call_native_method(:Java_sun_security_mscapi_RSASignature_generatePublicKeyBlob, JNI.env, self.jni_id, key_bit_length.to_int, modulus.jni_id, public_exponent.jni_id)
     end
     
-    JNI.native_method :Java_sun_security_mscapi_RSASignature_importPublicKey, [:pointer, :long, :long, :int32], :long
+    JNI.load_native_method :Java_sun_security_mscapi_RSASignature_importPublicKey, [:pointer, :long, :long, :int32], :long
     typesig { [Array.typed(::Java::Byte), ::Java::Int] }
     # Imports a public-key BLOB.
     def import_public_key(key_blob, key_size)
-      JNI.__send__(:Java_sun_security_mscapi_RSASignature_importPublicKey, JNI.env, self.jni_id, key_blob.jni_id, key_size.to_int)
+      JNI.call_native_method(:Java_sun_security_mscapi_RSASignature_importPublicKey, JNI.env, self.jni_id, key_blob.jni_id, key_size.to_int)
     end
     
     private

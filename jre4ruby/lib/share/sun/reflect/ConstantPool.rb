@@ -127,88 +127,88 @@ module Sun::Reflect
     alias_method :attr_constant_pool_oop=, :constant_pool_oop=
     undef_method :constant_pool_oop=
     
-    JNI.native_method :Java_sun_reflect_ConstantPool_getSize0, [:pointer, :long, :long], :int32
+    JNI.load_native_method :Java_sun_reflect_ConstantPool_getSize0, [:pointer, :long, :long], :int32
     typesig { [Object] }
     def get_size0(constant_pool_oop)
-      JNI.__send__(:Java_sun_reflect_ConstantPool_getSize0, JNI.env, self.jni_id, constant_pool_oop.jni_id)
+      JNI.call_native_method(:Java_sun_reflect_ConstantPool_getSize0, JNI.env, self.jni_id, constant_pool_oop.jni_id)
     end
     
-    JNI.native_method :Java_sun_reflect_ConstantPool_getClassAt0, [:pointer, :long, :long, :int32], :long
+    JNI.load_native_method :Java_sun_reflect_ConstantPool_getClassAt0, [:pointer, :long, :long, :int32], :long
     typesig { [Object, ::Java::Int] }
     def get_class_at0(constant_pool_oop, index)
-      JNI.__send__(:Java_sun_reflect_ConstantPool_getClassAt0, JNI.env, self.jni_id, constant_pool_oop.jni_id, index.to_int)
+      JNI.call_native_method(:Java_sun_reflect_ConstantPool_getClassAt0, JNI.env, self.jni_id, constant_pool_oop.jni_id, index.to_int)
     end
     
-    JNI.native_method :Java_sun_reflect_ConstantPool_getClassAtIfLoaded0, [:pointer, :long, :long, :int32], :long
+    JNI.load_native_method :Java_sun_reflect_ConstantPool_getClassAtIfLoaded0, [:pointer, :long, :long, :int32], :long
     typesig { [Object, ::Java::Int] }
     def get_class_at_if_loaded0(constant_pool_oop, index)
-      JNI.__send__(:Java_sun_reflect_ConstantPool_getClassAtIfLoaded0, JNI.env, self.jni_id, constant_pool_oop.jni_id, index.to_int)
+      JNI.call_native_method(:Java_sun_reflect_ConstantPool_getClassAtIfLoaded0, JNI.env, self.jni_id, constant_pool_oop.jni_id, index.to_int)
     end
     
-    JNI.native_method :Java_sun_reflect_ConstantPool_getMethodAt0, [:pointer, :long, :long, :int32], :long
+    JNI.load_native_method :Java_sun_reflect_ConstantPool_getMethodAt0, [:pointer, :long, :long, :int32], :long
     typesig { [Object, ::Java::Int] }
     def get_method_at0(constant_pool_oop, index)
-      JNI.__send__(:Java_sun_reflect_ConstantPool_getMethodAt0, JNI.env, self.jni_id, constant_pool_oop.jni_id, index.to_int)
+      JNI.call_native_method(:Java_sun_reflect_ConstantPool_getMethodAt0, JNI.env, self.jni_id, constant_pool_oop.jni_id, index.to_int)
     end
     
-    JNI.native_method :Java_sun_reflect_ConstantPool_getMethodAtIfLoaded0, [:pointer, :long, :long, :int32], :long
+    JNI.load_native_method :Java_sun_reflect_ConstantPool_getMethodAtIfLoaded0, [:pointer, :long, :long, :int32], :long
     typesig { [Object, ::Java::Int] }
     def get_method_at_if_loaded0(constant_pool_oop, index)
-      JNI.__send__(:Java_sun_reflect_ConstantPool_getMethodAtIfLoaded0, JNI.env, self.jni_id, constant_pool_oop.jni_id, index.to_int)
+      JNI.call_native_method(:Java_sun_reflect_ConstantPool_getMethodAtIfLoaded0, JNI.env, self.jni_id, constant_pool_oop.jni_id, index.to_int)
     end
     
-    JNI.native_method :Java_sun_reflect_ConstantPool_getFieldAt0, [:pointer, :long, :long, :int32], :long
+    JNI.load_native_method :Java_sun_reflect_ConstantPool_getFieldAt0, [:pointer, :long, :long, :int32], :long
     typesig { [Object, ::Java::Int] }
     def get_field_at0(constant_pool_oop, index)
-      JNI.__send__(:Java_sun_reflect_ConstantPool_getFieldAt0, JNI.env, self.jni_id, constant_pool_oop.jni_id, index.to_int)
+      JNI.call_native_method(:Java_sun_reflect_ConstantPool_getFieldAt0, JNI.env, self.jni_id, constant_pool_oop.jni_id, index.to_int)
     end
     
-    JNI.native_method :Java_sun_reflect_ConstantPool_getFieldAtIfLoaded0, [:pointer, :long, :long, :int32], :long
+    JNI.load_native_method :Java_sun_reflect_ConstantPool_getFieldAtIfLoaded0, [:pointer, :long, :long, :int32], :long
     typesig { [Object, ::Java::Int] }
     def get_field_at_if_loaded0(constant_pool_oop, index)
-      JNI.__send__(:Java_sun_reflect_ConstantPool_getFieldAtIfLoaded0, JNI.env, self.jni_id, constant_pool_oop.jni_id, index.to_int)
+      JNI.call_native_method(:Java_sun_reflect_ConstantPool_getFieldAtIfLoaded0, JNI.env, self.jni_id, constant_pool_oop.jni_id, index.to_int)
     end
     
-    JNI.native_method :Java_sun_reflect_ConstantPool_getMemberRefInfoAt0, [:pointer, :long, :long, :int32], :long
+    JNI.load_native_method :Java_sun_reflect_ConstantPool_getMemberRefInfoAt0, [:pointer, :long, :long, :int32], :long
     typesig { [Object, ::Java::Int] }
     def get_member_ref_info_at0(constant_pool_oop, index)
-      JNI.__send__(:Java_sun_reflect_ConstantPool_getMemberRefInfoAt0, JNI.env, self.jni_id, constant_pool_oop.jni_id, index.to_int)
+      JNI.call_native_method(:Java_sun_reflect_ConstantPool_getMemberRefInfoAt0, JNI.env, self.jni_id, constant_pool_oop.jni_id, index.to_int)
     end
     
-    JNI.native_method :Java_sun_reflect_ConstantPool_getIntAt0, [:pointer, :long, :long, :int32], :int32
+    JNI.load_native_method :Java_sun_reflect_ConstantPool_getIntAt0, [:pointer, :long, :long, :int32], :int32
     typesig { [Object, ::Java::Int] }
     def get_int_at0(constant_pool_oop, index)
-      JNI.__send__(:Java_sun_reflect_ConstantPool_getIntAt0, JNI.env, self.jni_id, constant_pool_oop.jni_id, index.to_int)
+      JNI.call_native_method(:Java_sun_reflect_ConstantPool_getIntAt0, JNI.env, self.jni_id, constant_pool_oop.jni_id, index.to_int)
     end
     
-    JNI.native_method :Java_sun_reflect_ConstantPool_getLongAt0, [:pointer, :long, :long, :int32], :int64
+    JNI.load_native_method :Java_sun_reflect_ConstantPool_getLongAt0, [:pointer, :long, :long, :int32], :int64
     typesig { [Object, ::Java::Int] }
     def get_long_at0(constant_pool_oop, index)
-      JNI.__send__(:Java_sun_reflect_ConstantPool_getLongAt0, JNI.env, self.jni_id, constant_pool_oop.jni_id, index.to_int)
+      JNI.call_native_method(:Java_sun_reflect_ConstantPool_getLongAt0, JNI.env, self.jni_id, constant_pool_oop.jni_id, index.to_int)
     end
     
-    JNI.native_method :Java_sun_reflect_ConstantPool_getFloatAt0, [:pointer, :long, :long, :int32], :float
+    JNI.load_native_method :Java_sun_reflect_ConstantPool_getFloatAt0, [:pointer, :long, :long, :int32], :float
     typesig { [Object, ::Java::Int] }
     def get_float_at0(constant_pool_oop, index)
-      JNI.__send__(:Java_sun_reflect_ConstantPool_getFloatAt0, JNI.env, self.jni_id, constant_pool_oop.jni_id, index.to_int)
+      JNI.call_native_method(:Java_sun_reflect_ConstantPool_getFloatAt0, JNI.env, self.jni_id, constant_pool_oop.jni_id, index.to_int)
     end
     
-    JNI.native_method :Java_sun_reflect_ConstantPool_getDoubleAt0, [:pointer, :long, :long, :int32], :double
+    JNI.load_native_method :Java_sun_reflect_ConstantPool_getDoubleAt0, [:pointer, :long, :long, :int32], :double
     typesig { [Object, ::Java::Int] }
     def get_double_at0(constant_pool_oop, index)
-      JNI.__send__(:Java_sun_reflect_ConstantPool_getDoubleAt0, JNI.env, self.jni_id, constant_pool_oop.jni_id, index.to_int)
+      JNI.call_native_method(:Java_sun_reflect_ConstantPool_getDoubleAt0, JNI.env, self.jni_id, constant_pool_oop.jni_id, index.to_int)
     end
     
-    JNI.native_method :Java_sun_reflect_ConstantPool_getStringAt0, [:pointer, :long, :long, :int32], :long
+    JNI.load_native_method :Java_sun_reflect_ConstantPool_getStringAt0, [:pointer, :long, :long, :int32], :long
     typesig { [Object, ::Java::Int] }
     def get_string_at0(constant_pool_oop, index)
-      JNI.__send__(:Java_sun_reflect_ConstantPool_getStringAt0, JNI.env, self.jni_id, constant_pool_oop.jni_id, index.to_int)
+      JNI.call_native_method(:Java_sun_reflect_ConstantPool_getStringAt0, JNI.env, self.jni_id, constant_pool_oop.jni_id, index.to_int)
     end
     
-    JNI.native_method :Java_sun_reflect_ConstantPool_getUTF8At0, [:pointer, :long, :long, :int32], :long
+    JNI.load_native_method :Java_sun_reflect_ConstantPool_getUTF8At0, [:pointer, :long, :long, :int32], :long
     typesig { [Object, ::Java::Int] }
     def get_utf8at0(constant_pool_oop, index)
-      JNI.__send__(:Java_sun_reflect_ConstantPool_getUTF8At0, JNI.env, self.jni_id, constant_pool_oop.jni_id, index.to_int)
+      JNI.call_native_method(:Java_sun_reflect_ConstantPool_getUTF8At0, JNI.env, self.jni_id, constant_pool_oop.jni_id, index.to_int)
     end
     
     typesig { [] }

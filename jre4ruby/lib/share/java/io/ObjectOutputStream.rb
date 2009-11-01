@@ -1613,22 +1613,22 @@ module Java::Io
     end
     
     class_module.module_eval {
-      JNI.native_method :Java_java_io_ObjectOutputStream_floatsToBytes, [:pointer, :long, :long, :int32, :long, :int32, :int32], :void
+      JNI.load_native_method :Java_java_io_ObjectOutputStream_floatsToBytes, [:pointer, :long, :long, :int32, :long, :int32, :int32], :void
       typesig { [Array.typed(::Java::Float), ::Java::Int, Array.typed(::Java::Byte), ::Java::Int, ::Java::Int] }
       # Converts specified span of float values into byte values.
       # 
       # REMIND: remove once hotspot inlines Float.floatToIntBits
       def floats_to_bytes(src, srcpos, dst, dstpos, nfloats)
-        JNI.__send__(:Java_java_io_ObjectOutputStream_floatsToBytes, JNI.env, self.jni_id, src.jni_id, srcpos.to_int, dst.jni_id, dstpos.to_int, nfloats.to_int)
+        JNI.call_native_method(:Java_java_io_ObjectOutputStream_floatsToBytes, JNI.env, self.jni_id, src.jni_id, srcpos.to_int, dst.jni_id, dstpos.to_int, nfloats.to_int)
       end
       
-      JNI.native_method :Java_java_io_ObjectOutputStream_doublesToBytes, [:pointer, :long, :long, :int32, :long, :int32, :int32], :void
+      JNI.load_native_method :Java_java_io_ObjectOutputStream_doublesToBytes, [:pointer, :long, :long, :int32, :long, :int32, :int32], :void
       typesig { [Array.typed(::Java::Double), ::Java::Int, Array.typed(::Java::Byte), ::Java::Int, ::Java::Int] }
       # Converts specified span of double values into byte values.
       # 
       # REMIND: remove once hotspot inlines Double.doubleToLongBits
       def doubles_to_bytes(src, srcpos, dst, dstpos, ndoubles)
-        JNI.__send__(:Java_java_io_ObjectOutputStream_doublesToBytes, JNI.env, self.jni_id, src.jni_id, srcpos.to_int, dst.jni_id, dstpos.to_int, ndoubles.to_int)
+        JNI.call_native_method(:Java_java_io_ObjectOutputStream_doublesToBytes, JNI.env, self.jni_id, src.jni_id, srcpos.to_int, dst.jni_id, dstpos.to_int, ndoubles.to_int)
       end
       
       # Default PutField implementation.

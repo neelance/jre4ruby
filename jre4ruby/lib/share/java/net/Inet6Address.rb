@@ -795,11 +795,11 @@ module Java::Net
         return sb.to_s
       end
       
-      JNI.native_method :Java_java_net_Inet6Address_init, [:pointer, :long], :void
+      JNI.load_native_method :Java_java_net_Inet6Address_init, [:pointer, :long], :void
       typesig { [] }
       # Perform class load-time initializations.
       def init
-        JNI.__send__(:Java_java_net_Inet6Address_init, JNI.env, self.jni_id)
+        JNI.call_native_method(:Java_java_net_Inet6Address_init, JNI.env, self.jni_id)
       end
     }
     

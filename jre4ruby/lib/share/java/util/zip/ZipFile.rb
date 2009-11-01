@@ -99,10 +99,10 @@ module Java::Util::Zip
         init_ids
       end
       
-      JNI.native_method :Java_java_util_zip_ZipFile_initIDs, [:pointer, :long], :void
+      JNI.load_native_method :Java_java_util_zip_ZipFile_initIDs, [:pointer, :long], :void
       typesig { [] }
       def init_ids
-        JNI.__send__(:Java_java_util_zip_ZipFile_initIDs, JNI.env, self.jni_id)
+        JNI.call_native_method(:Java_java_util_zip_ZipFile_initIDs, JNI.env, self.jni_id)
       end
     }
     
@@ -168,16 +168,16 @@ module Java::Util::Zip
     end
     
     class_module.module_eval {
-      JNI.native_method :Java_java_util_zip_ZipFile_open, [:pointer, :long, :long, :int32, :int64], :int64
+      JNI.load_native_method :Java_java_util_zip_ZipFile_open, [:pointer, :long, :long, :int32, :int64], :int64
       typesig { [String, ::Java::Int, ::Java::Long] }
       def open(name, mode, last_modified_)
-        JNI.__send__(:Java_java_util_zip_ZipFile_open, JNI.env, self.jni_id, name.jni_id, mode.to_int, last_modified_.to_int)
+        JNI.call_native_method(:Java_java_util_zip_ZipFile_open, JNI.env, self.jni_id, name.jni_id, mode.to_int, last_modified_.to_int)
       end
       
-      JNI.native_method :Java_java_util_zip_ZipFile_getTotal, [:pointer, :long, :int64], :int32
+      JNI.load_native_method :Java_java_util_zip_ZipFile_getTotal, [:pointer, :long, :int64], :int32
       typesig { [::Java::Long] }
       def get_total(jzfile)
-        JNI.__send__(:Java_java_util_zip_ZipFile_getTotal, JNI.env, self.jni_id, jzfile.to_int)
+        JNI.call_native_method(:Java_java_util_zip_ZipFile_getTotal, JNI.env, self.jni_id, jzfile.to_int)
       end
     }
     
@@ -215,17 +215,17 @@ module Java::Util::Zip
     end
     
     class_module.module_eval {
-      JNI.native_method :Java_java_util_zip_ZipFile_getEntry, [:pointer, :long, :int64, :long, :int8], :int64
+      JNI.load_native_method :Java_java_util_zip_ZipFile_getEntry, [:pointer, :long, :int64, :long, :int8], :int64
       typesig { [::Java::Long, String, ::Java::Boolean] }
       def get_entry(jzfile, name, add_slash)
-        JNI.__send__(:Java_java_util_zip_ZipFile_getEntry, JNI.env, self.jni_id, jzfile.to_int, name.jni_id, add_slash ? 1 : 0)
+        JNI.call_native_method(:Java_java_util_zip_ZipFile_getEntry, JNI.env, self.jni_id, jzfile.to_int, name.jni_id, add_slash ? 1 : 0)
       end
       
-      JNI.native_method :Java_java_util_zip_ZipFile_freeEntry, [:pointer, :long, :int64, :int64], :void
+      JNI.load_native_method :Java_java_util_zip_ZipFile_freeEntry, [:pointer, :long, :int64, :int64], :void
       typesig { [::Java::Long, ::Java::Long] }
       # freeEntry releases the C jzentry struct.
       def free_entry(jzfile, jzentry)
-        JNI.__send__(:Java_java_util_zip_ZipFile_freeEntry, JNI.env, self.jni_id, jzfile.to_int, jzentry.to_int)
+        JNI.call_native_method(:Java_java_util_zip_ZipFile_freeEntry, JNI.env, self.jni_id, jzfile.to_int, jzentry.to_int)
       end
     }
     
@@ -345,10 +345,10 @@ module Java::Util::Zip
     end
     
     class_module.module_eval {
-      JNI.native_method :Java_java_util_zip_ZipFile_getMethod, [:pointer, :long, :int64], :int32
+      JNI.load_native_method :Java_java_util_zip_ZipFile_getMethod, [:pointer, :long, :int64], :int32
       typesig { [::Java::Long] }
       def get_method(jzentry)
-        JNI.__send__(:Java_java_util_zip_ZipFile_getMethod, JNI.env, self.jni_id, jzentry.to_int)
+        JNI.call_native_method(:Java_java_util_zip_ZipFile_getMethod, JNI.env, self.jni_id, jzentry.to_int)
       end
     }
     
@@ -451,10 +451,10 @@ module Java::Util::Zip
     end
     
     class_module.module_eval {
-      JNI.native_method :Java_java_util_zip_ZipFile_getNextEntry, [:pointer, :long, :int64, :int32], :int64
+      JNI.load_native_method :Java_java_util_zip_ZipFile_getNextEntry, [:pointer, :long, :int64, :int32], :int64
       typesig { [::Java::Long, ::Java::Int] }
       def get_next_entry(jzfile, i)
-        JNI.__send__(:Java_java_util_zip_ZipFile_getNextEntry, JNI.env, self.jni_id, jzfile.to_int, i.to_int)
+        JNI.call_native_method(:Java_java_util_zip_ZipFile_getNextEntry, JNI.env, self.jni_id, jzfile.to_int, i.to_int)
       end
     }
     
@@ -514,10 +514,10 @@ module Java::Util::Zip
     end
     
     class_module.module_eval {
-      JNI.native_method :Java_java_util_zip_ZipFile_close, [:pointer, :long, :int64], :void
+      JNI.load_native_method :Java_java_util_zip_ZipFile_close, [:pointer, :long, :int64], :void
       typesig { [::Java::Long] }
       def close(jzfile)
-        JNI.__send__(:Java_java_util_zip_ZipFile_close, JNI.env, self.jni_id, jzfile.to_int)
+        JNI.call_native_method(:Java_java_util_zip_ZipFile_close, JNI.env, self.jni_id, jzfile.to_int)
       end
     }
     
@@ -659,29 +659,29 @@ module Java::Util::Zip
         alias_method :initialize__zip_file_input_stream, :initialize
       end }
       
-      JNI.native_method :Java_java_util_zip_ZipFile_read, [:pointer, :long, :int64, :int64, :int64, :long, :int32, :int32], :int32
+      JNI.load_native_method :Java_java_util_zip_ZipFile_read, [:pointer, :long, :int64, :int64, :int64, :long, :int32, :int32], :int32
       typesig { [::Java::Long, ::Java::Long, ::Java::Long, Array.typed(::Java::Byte), ::Java::Int, ::Java::Int] }
       def read(jzfile, jzentry, pos, b, off, len)
-        JNI.__send__(:Java_java_util_zip_ZipFile_read, JNI.env, self.jni_id, jzfile.to_int, jzentry.to_int, pos.to_int, b.jni_id, off.to_int, len.to_int)
+        JNI.call_native_method(:Java_java_util_zip_ZipFile_read, JNI.env, self.jni_id, jzfile.to_int, jzentry.to_int, pos.to_int, b.jni_id, off.to_int, len.to_int)
       end
       
-      JNI.native_method :Java_java_util_zip_ZipFile_getCSize, [:pointer, :long, :int64], :int64
+      JNI.load_native_method :Java_java_util_zip_ZipFile_getCSize, [:pointer, :long, :int64], :int64
       typesig { [::Java::Long] }
       def get_csize(jzentry)
-        JNI.__send__(:Java_java_util_zip_ZipFile_getCSize, JNI.env, self.jni_id, jzentry.to_int)
+        JNI.call_native_method(:Java_java_util_zip_ZipFile_getCSize, JNI.env, self.jni_id, jzentry.to_int)
       end
       
-      JNI.native_method :Java_java_util_zip_ZipFile_getSize, [:pointer, :long, :int64], :int64
+      JNI.load_native_method :Java_java_util_zip_ZipFile_getSize, [:pointer, :long, :int64], :int64
       typesig { [::Java::Long] }
       def get_size(jzentry)
-        JNI.__send__(:Java_java_util_zip_ZipFile_getSize, JNI.env, self.jni_id, jzentry.to_int)
+        JNI.call_native_method(:Java_java_util_zip_ZipFile_getSize, JNI.env, self.jni_id, jzentry.to_int)
       end
       
-      JNI.native_method :Java_java_util_zip_ZipFile_getZipMessage, [:pointer, :long, :int64], :long
+      JNI.load_native_method :Java_java_util_zip_ZipFile_getZipMessage, [:pointer, :long, :int64], :long
       typesig { [::Java::Long] }
       # Temporary add on for bug troubleshooting
       def get_zip_message(jzfile)
-        JNI.__send__(:Java_java_util_zip_ZipFile_getZipMessage, JNI.env, self.jni_id, jzfile.to_int)
+        JNI.call_native_method(:Java_java_util_zip_ZipFile_getZipMessage, JNI.env, self.jni_id, jzfile.to_int)
       end
     }
     

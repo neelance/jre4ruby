@@ -58,10 +58,10 @@ module Sun::Misc
     end
     
     class_module.module_eval {
-      JNI.native_method :Java_sun_misc_NativeSignalHandler_handle0, [:pointer, :long, :int32, :int64], :void
+      JNI.load_native_method :Java_sun_misc_NativeSignalHandler_handle0, [:pointer, :long, :int32, :int64], :void
       typesig { [::Java::Int, ::Java::Long] }
       def handle0(number, handler)
-        JNI.__send__(:Java_sun_misc_NativeSignalHandler_handle0, JNI.env, self.jni_id, number.to_int, handler.to_int)
+        JNI.call_native_method(:Java_sun_misc_NativeSignalHandler_handle0, JNI.env, self.jni_id, number.to_int, handler.to_int)
       end
     }
     

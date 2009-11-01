@@ -106,12 +106,12 @@ module Sun::Security::Krb5
     undef_method :default_realm=
     
     class_module.module_eval {
-      JNI.native_method :Java_sun_security_krb5_Config_getWindowsDirectory, [:pointer, :long], :long
+      JNI.load_native_method :Java_sun_security_krb5_Config_getWindowsDirectory, [:pointer, :long], :long
       typesig { [] }
       # default kdc realm.
       # used for native interface
       def get_windows_directory
-        JNI.__send__(:Java_sun_security_krb5_Config_getWindowsDirectory, JNI.env, self.jni_id)
+        JNI.call_native_method(:Java_sun_security_krb5_Config_getWindowsDirectory, JNI.env, self.jni_id)
       end
       
       typesig { [] }

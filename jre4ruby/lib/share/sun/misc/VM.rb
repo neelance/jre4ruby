@@ -414,7 +414,7 @@ module Sun::Misc
         end
       end
       
-      JNI.native_method :Java_sun_misc_VM_getThreadStateValues, [:pointer, :long, :long, :long], :void
+      JNI.load_native_method :Java_sun_misc_VM_getThreadStateValues, [:pointer, :long, :long, :long], :void
       typesig { [Array.typed(Array.typed(::Java::Int)), Array.typed(Array.typed(String))] }
       # Fill in vmThreadStateValues with int arrays, each of which contains
       # the threadStatus values mapping to the Thread.State enum constant.
@@ -423,17 +423,17 @@ module Sun::Misc
       # <Thread.State.name()>[.<Substate name>]
       # e.g. WAITING.OBJECT_WAIT
       def get_thread_state_values(vm_thread_state_values, vm_thread_state_names)
-        JNI.__send__(:Java_sun_misc_VM_getThreadStateValues, JNI.env, self.jni_id, vm_thread_state_values.jni_id, vm_thread_state_names.jni_id)
+        JNI.call_native_method(:Java_sun_misc_VM_getThreadStateValues, JNI.env, self.jni_id, vm_thread_state_values.jni_id, vm_thread_state_names.jni_id)
       end
       
       when_class_loaded do
         initialize_
       end
       
-      JNI.native_method :Java_sun_misc_VM_initialize, [:pointer, :long], :void
+      JNI.load_native_method :Java_sun_misc_VM_initialize, [:pointer, :long], :void
       typesig { [] }
       def initialize_
-        JNI.__send__(:Java_sun_misc_VM_initialize, JNI.env, self.jni_id)
+        JNI.call_native_method(:Java_sun_misc_VM_initialize, JNI.env, self.jni_id)
       end
     }
     

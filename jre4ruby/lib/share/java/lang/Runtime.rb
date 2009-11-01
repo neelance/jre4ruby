@@ -614,7 +614,7 @@ module Java::Lang
       return ProcessBuilder.new(cmdarray).environment(envp).directory(dir).start
     end
     
-    JNI.native_method :Java_java_lang_Runtime_availableProcessors, [:pointer, :long], :int32
+    JNI.load_native_method :Java_java_lang_Runtime_availableProcessors, [:pointer, :long], :int32
     typesig { [] }
     # Returns the number of processors available to the Java virtual machine.
     # 
@@ -627,10 +627,10 @@ module Java::Lang
     # machine; never smaller than one
     # @since 1.4
     def available_processors
-      JNI.__send__(:Java_java_lang_Runtime_availableProcessors, JNI.env, self.jni_id)
+      JNI.call_native_method(:Java_java_lang_Runtime_availableProcessors, JNI.env, self.jni_id)
     end
     
-    JNI.native_method :Java_java_lang_Runtime_freeMemory, [:pointer, :long], :int64
+    JNI.load_native_method :Java_java_lang_Runtime_freeMemory, [:pointer, :long], :int64
     typesig { [] }
     # Returns the amount of free memory in the Java Virtual Machine.
     # Calling the
@@ -640,10 +640,10 @@ module Java::Lang
     # @return  an approximation to the total amount of memory currently
     # available for future allocated objects, measured in bytes.
     def free_memory
-      JNI.__send__(:Java_java_lang_Runtime_freeMemory, JNI.env, self.jni_id)
+      JNI.call_native_method(:Java_java_lang_Runtime_freeMemory, JNI.env, self.jni_id)
     end
     
-    JNI.native_method :Java_java_lang_Runtime_totalMemory, [:pointer, :long], :int64
+    JNI.load_native_method :Java_java_lang_Runtime_totalMemory, [:pointer, :long], :int64
     typesig { [] }
     # Returns the total amount of memory in the Java virtual machine.
     # The value returned by this method may vary over time, depending on
@@ -655,10 +655,10 @@ module Java::Lang
     # @return  the total amount of memory currently available for current
     # and future objects, measured in bytes.
     def total_memory
-      JNI.__send__(:Java_java_lang_Runtime_totalMemory, JNI.env, self.jni_id)
+      JNI.call_native_method(:Java_java_lang_Runtime_totalMemory, JNI.env, self.jni_id)
     end
     
-    JNI.native_method :Java_java_lang_Runtime_maxMemory, [:pointer, :long], :int64
+    JNI.load_native_method :Java_java_lang_Runtime_maxMemory, [:pointer, :long], :int64
     typesig { [] }
     # Returns the maximum amount of memory that the Java virtual machine will
     # attempt to use.  If there is no inherent limit then the value {@link
@@ -668,10 +668,10 @@ module Java::Lang
     # attempt to use, measured in bytes
     # @since 1.4
     def max_memory
-      JNI.__send__(:Java_java_lang_Runtime_maxMemory, JNI.env, self.jni_id)
+      JNI.call_native_method(:Java_java_lang_Runtime_maxMemory, JNI.env, self.jni_id)
     end
     
-    JNI.native_method :Java_java_lang_Runtime_gc, [:pointer, :long], :void
+    JNI.load_native_method :Java_java_lang_Runtime_gc, [:pointer, :long], :void
     typesig { [] }
     # Runs the garbage collector.
     # Calling this method suggests that the Java virtual machine expend
@@ -688,15 +688,15 @@ module Java::Lang
     # The method {@link System#gc()} is the conventional and convenient
     # means of invoking this method.
     def gc
-      JNI.__send__(:Java_java_lang_Runtime_gc, JNI.env, self.jni_id)
+      JNI.call_native_method(:Java_java_lang_Runtime_gc, JNI.env, self.jni_id)
     end
     
     class_module.module_eval {
-      JNI.native_method :Java_java_lang_Runtime_runFinalization0, [:pointer, :long], :void
+      JNI.load_native_method :Java_java_lang_Runtime_runFinalization0, [:pointer, :long], :void
       typesig { [] }
       # Wormhole for calling java.lang.ref.Finalizer.runFinalization
       def run_finalization0
-        JNI.__send__(:Java_java_lang_Runtime_runFinalization0, JNI.env, self.jni_id)
+        JNI.call_native_method(:Java_java_lang_Runtime_runFinalization0, JNI.env, self.jni_id)
       end
     }
     
@@ -721,7 +721,7 @@ module Java::Lang
       run_finalization0
     end
     
-    JNI.native_method :Java_java_lang_Runtime_traceInstructions, [:pointer, :long, :int8], :void
+    JNI.load_native_method :Java_java_lang_Runtime_traceInstructions, [:pointer, :long, :int8], :void
     typesig { [::Java::Boolean] }
     # Enables/Disables tracing of instructions.
     # If the <code>boolean</code> argument is <code>true</code>, this
@@ -740,10 +740,10 @@ module Java::Lang
     # @param   on   <code>true</code> to enable instruction tracing;
     # <code>false</code> to disable this feature.
     def trace_instructions(on)
-      JNI.__send__(:Java_java_lang_Runtime_traceInstructions, JNI.env, self.jni_id, on ? 1 : 0)
+      JNI.call_native_method(:Java_java_lang_Runtime_traceInstructions, JNI.env, self.jni_id, on ? 1 : 0)
     end
     
-    JNI.native_method :Java_java_lang_Runtime_traceMethodCalls, [:pointer, :long, :int8], :void
+    JNI.load_native_method :Java_java_lang_Runtime_traceMethodCalls, [:pointer, :long, :int8], :void
     typesig { [::Java::Boolean] }
     # Enables/Disables tracing of method calls.
     # If the <code>boolean</code> argument is <code>true</code>, this
@@ -760,7 +760,7 @@ module Java::Lang
     # @param   on   <code>true</code> to enable instruction tracing;
     # <code>false</code> to disable this feature.
     def trace_method_calls(on)
-      JNI.__send__(:Java_java_lang_Runtime_traceMethodCalls, JNI.env, self.jni_id, on ? 1 : 0)
+      JNI.call_native_method(:Java_java_lang_Runtime_traceMethodCalls, JNI.env, self.jni_id, on ? 1 : 0)
     end
     
     typesig { [String] }

@@ -72,12 +72,12 @@ module Java::Util::Concurrent::Atomic
       const_set_lazy(:VM_SUPPORTS_LONG_CAS) { _vmsupports_cs8 }
       const_attr_reader  :VM_SUPPORTS_LONG_CAS
       
-      JNI.native_method :Java_java_util_concurrent_atomic_AtomicLong_VMSupportsCS8, [:pointer, :long], :int8
+      JNI.load_native_method :Java_java_util_concurrent_atomic_AtomicLong_VMSupportsCS8, [:pointer, :long], :int8
       typesig { [] }
       # Returns whether underlying JVM supports lockless CompareAndSet
       # for longs. Called only once and cached in VM_SUPPORTS_LONG_CAS.
       def _vmsupports_cs8
-        JNI.__send__(:Java_java_util_concurrent_atomic_AtomicLong_VMSupportsCS8, JNI.env, self.jni_id) != 0
+        JNI.call_native_method(:Java_java_util_concurrent_atomic_AtomicLong_VMSupportsCS8, JNI.env, self.jni_id) != 0
       end
       
       when_class_loaded do

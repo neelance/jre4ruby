@@ -43,28 +43,28 @@ module Sun::Nio::Ch
     include_class_members NativeThreadImports
     
     class_module.module_eval {
-      JNI.native_method :Java_sun_nio_ch_NativeThread_current, [:pointer, :long], :int64
+      JNI.load_native_method :Java_sun_nio_ch_NativeThread_current, [:pointer, :long], :int64
       typesig { [] }
       # Returns an opaque token representing the native thread underlying the
       # invoking Java thread.  On systems that do not require signalling, this
       # method always returns -1.
       def current
-        JNI.__send__(:Java_sun_nio_ch_NativeThread_current, JNI.env, self.jni_id)
+        JNI.call_native_method(:Java_sun_nio_ch_NativeThread_current, JNI.env, self.jni_id)
       end
       
-      JNI.native_method :Java_sun_nio_ch_NativeThread_signal, [:pointer, :long, :int64], :void
+      JNI.load_native_method :Java_sun_nio_ch_NativeThread_signal, [:pointer, :long, :int64], :void
       typesig { [::Java::Long] }
       # Signals the given native thread so as to release it from a blocking I/O
       # operation.  On systems that do not require signalling, this method has
       # no effect.
       def signal(nt)
-        JNI.__send__(:Java_sun_nio_ch_NativeThread_signal, JNI.env, self.jni_id, nt.to_int)
+        JNI.call_native_method(:Java_sun_nio_ch_NativeThread_signal, JNI.env, self.jni_id, nt.to_int)
       end
       
-      JNI.native_method :Java_sun_nio_ch_NativeThread_init, [:pointer, :long], :void
+      JNI.load_native_method :Java_sun_nio_ch_NativeThread_init, [:pointer, :long], :void
       typesig { [] }
       def init
-        JNI.__send__(:Java_sun_nio_ch_NativeThread_init, JNI.env, self.jni_id)
+        JNI.call_native_method(:Java_sun_nio_ch_NativeThread_init, JNI.env, self.jni_id)
       end
       
       when_class_loaded do

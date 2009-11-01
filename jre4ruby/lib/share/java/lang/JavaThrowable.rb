@@ -604,7 +604,7 @@ module Java::Lang
       end
     end
     
-    JNI.native_method :Java_java_lang_Throwable_fillInStackTrace, [:pointer, :long], :long
+    JNI.load_native_method :Java_java_lang_Throwable_fillInStackTrace, [:pointer, :long], :long
     typesig { [] }
     # Fills in the execution stack trace. This method records within this
     # <code>Throwable</code> object information about the current state of
@@ -613,7 +613,7 @@ module Java::Lang
     # @return  a reference to this <code>Throwable</code> instance.
     # @see     java.lang.Throwable#printStackTrace()
     def fill_in_stack_trace
-      JNI.__send__(:Java_java_lang_Throwable_fillInStackTrace, JNI.env, self.jni_id)
+      JNI.call_native_method(:Java_java_lang_Throwable_fillInStackTrace, JNI.env, self.jni_id)
     end
     
     typesig { [] }
@@ -693,15 +693,15 @@ module Java::Lang
       @stack_trace = defensive_copy
     end
     
-    JNI.native_method :Java_java_lang_Throwable_getStackTraceDepth, [:pointer, :long], :int32
+    JNI.load_native_method :Java_java_lang_Throwable_getStackTraceDepth, [:pointer, :long], :int32
     typesig { [] }
     # Returns the number of elements in the stack trace (or 0 if the stack
     # trace is unavailable).
     def get_stack_trace_depth
-      JNI.__send__(:Java_java_lang_Throwable_getStackTraceDepth, JNI.env, self.jni_id)
+      JNI.call_native_method(:Java_java_lang_Throwable_getStackTraceDepth, JNI.env, self.jni_id)
     end
     
-    JNI.native_method :Java_java_lang_Throwable_getStackTraceElement, [:pointer, :long, :int32], :long
+    JNI.load_native_method :Java_java_lang_Throwable_getStackTraceElement, [:pointer, :long, :int32], :long
     typesig { [::Java::Int] }
     # Returns the specified element of the stack trace.
     # 
@@ -709,7 +709,7 @@ module Java::Lang
     # @throws IndexOutOfBoundsException if <tt>index &lt; 0 ||
     # index &gt;= getStackTraceDepth() </tt>
     def get_stack_trace_element(index)
-      JNI.__send__(:Java_java_lang_Throwable_getStackTraceElement, JNI.env, self.jni_id, index.to_int)
+      JNI.call_native_method(:Java_java_lang_Throwable_getStackTraceElement, JNI.env, self.jni_id, index.to_int)
     end
     
     typesig { [Java::Io::ObjectOutputStream] }

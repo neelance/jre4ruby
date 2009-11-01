@@ -55,68 +55,68 @@ module Sun::Security::Smartcardio
         end
       end
       
-      JNI.native_method :Java_sun_security_smartcardio_PCSC_SCardEstablishContext, [:pointer, :long, :int32], :int64
+      JNI.load_native_method :Java_sun_security_smartcardio_PCSC_SCardEstablishContext, [:pointer, :long, :int32], :int64
       typesig { [::Java::Int] }
       # returns SCARDCONTEXT (contextId)
       def _scard_establish_context(scope)
-        JNI.__send__(:Java_sun_security_smartcardio_PCSC_SCardEstablishContext, JNI.env, self.jni_id, scope.to_int)
+        JNI.call_native_method(:Java_sun_security_smartcardio_PCSC_SCardEstablishContext, JNI.env, self.jni_id, scope.to_int)
       end
       
-      JNI.native_method :Java_sun_security_smartcardio_PCSC_SCardListReaders, [:pointer, :long, :int64], :long
+      JNI.load_native_method :Java_sun_security_smartcardio_PCSC_SCardListReaders, [:pointer, :long, :int64], :long
       typesig { [::Java::Long] }
       def _scard_list_readers(context_id)
-        JNI.__send__(:Java_sun_security_smartcardio_PCSC_SCardListReaders, JNI.env, self.jni_id, context_id.to_int)
+        JNI.call_native_method(:Java_sun_security_smartcardio_PCSC_SCardListReaders, JNI.env, self.jni_id, context_id.to_int)
       end
       
-      JNI.native_method :Java_sun_security_smartcardio_PCSC_SCardConnect, [:pointer, :long, :int64, :long, :int32, :int32], :int64
+      JNI.load_native_method :Java_sun_security_smartcardio_PCSC_SCardConnect, [:pointer, :long, :int64, :long, :int32, :int32], :int64
       typesig { [::Java::Long, String, ::Java::Int, ::Java::Int] }
       # returns SCARDHANDLE (cardId)
       def _scard_connect(context_id, reader_name, share_mode, preferred_protocols)
-        JNI.__send__(:Java_sun_security_smartcardio_PCSC_SCardConnect, JNI.env, self.jni_id, context_id.to_int, reader_name.jni_id, share_mode.to_int, preferred_protocols.to_int)
+        JNI.call_native_method(:Java_sun_security_smartcardio_PCSC_SCardConnect, JNI.env, self.jni_id, context_id.to_int, reader_name.jni_id, share_mode.to_int, preferred_protocols.to_int)
       end
       
-      JNI.native_method :Java_sun_security_smartcardio_PCSC_SCardTransmit, [:pointer, :long, :int64, :int32, :long, :int32, :int32], :long
+      JNI.load_native_method :Java_sun_security_smartcardio_PCSC_SCardTransmit, [:pointer, :long, :int64, :int32, :long, :int32, :int32], :long
       typesig { [::Java::Long, ::Java::Int, Array.typed(::Java::Byte), ::Java::Int, ::Java::Int] }
       def _scard_transmit(card_id, protocol, buf, ofs, len)
-        JNI.__send__(:Java_sun_security_smartcardio_PCSC_SCardTransmit, JNI.env, self.jni_id, card_id.to_int, protocol.to_int, buf.jni_id, ofs.to_int, len.to_int)
+        JNI.call_native_method(:Java_sun_security_smartcardio_PCSC_SCardTransmit, JNI.env, self.jni_id, card_id.to_int, protocol.to_int, buf.jni_id, ofs.to_int, len.to_int)
       end
       
-      JNI.native_method :Java_sun_security_smartcardio_PCSC_SCardStatus, [:pointer, :long, :int64, :long], :long
+      JNI.load_native_method :Java_sun_security_smartcardio_PCSC_SCardStatus, [:pointer, :long, :int64, :long], :long
       typesig { [::Java::Long, Array.typed(::Java::Byte)] }
       # returns the ATR of the card, updates status[] with reader state and protocol
       def _scard_status(card_id, status)
-        JNI.__send__(:Java_sun_security_smartcardio_PCSC_SCardStatus, JNI.env, self.jni_id, card_id.to_int, status.jni_id)
+        JNI.call_native_method(:Java_sun_security_smartcardio_PCSC_SCardStatus, JNI.env, self.jni_id, card_id.to_int, status.jni_id)
       end
       
-      JNI.native_method :Java_sun_security_smartcardio_PCSC_SCardDisconnect, [:pointer, :long, :int64, :int32], :void
+      JNI.load_native_method :Java_sun_security_smartcardio_PCSC_SCardDisconnect, [:pointer, :long, :int64, :int32], :void
       typesig { [::Java::Long, ::Java::Int] }
       def _scard_disconnect(card_id, disposition)
-        JNI.__send__(:Java_sun_security_smartcardio_PCSC_SCardDisconnect, JNI.env, self.jni_id, card_id.to_int, disposition.to_int)
+        JNI.call_native_method(:Java_sun_security_smartcardio_PCSC_SCardDisconnect, JNI.env, self.jni_id, card_id.to_int, disposition.to_int)
       end
       
-      JNI.native_method :Java_sun_security_smartcardio_PCSC_SCardGetStatusChange, [:pointer, :long, :int64, :int64, :long, :long], :long
+      JNI.load_native_method :Java_sun_security_smartcardio_PCSC_SCardGetStatusChange, [:pointer, :long, :int64, :int64, :long, :long], :long
       typesig { [::Java::Long, ::Java::Long, Array.typed(::Java::Int), Array.typed(String)] }
       # returns dwEventState[] of the same size and order as readerNames[]
       def _scard_get_status_change(context_id, timeout, current_state, reader_names)
-        JNI.__send__(:Java_sun_security_smartcardio_PCSC_SCardGetStatusChange, JNI.env, self.jni_id, context_id.to_int, timeout.to_int, current_state.jni_id, reader_names.jni_id)
+        JNI.call_native_method(:Java_sun_security_smartcardio_PCSC_SCardGetStatusChange, JNI.env, self.jni_id, context_id.to_int, timeout.to_int, current_state.jni_id, reader_names.jni_id)
       end
       
-      JNI.native_method :Java_sun_security_smartcardio_PCSC_SCardBeginTransaction, [:pointer, :long, :int64], :void
+      JNI.load_native_method :Java_sun_security_smartcardio_PCSC_SCardBeginTransaction, [:pointer, :long, :int64], :void
       typesig { [::Java::Long] }
       def _scard_begin_transaction(card_id)
-        JNI.__send__(:Java_sun_security_smartcardio_PCSC_SCardBeginTransaction, JNI.env, self.jni_id, card_id.to_int)
+        JNI.call_native_method(:Java_sun_security_smartcardio_PCSC_SCardBeginTransaction, JNI.env, self.jni_id, card_id.to_int)
       end
       
-      JNI.native_method :Java_sun_security_smartcardio_PCSC_SCardEndTransaction, [:pointer, :long, :int64, :int32], :void
+      JNI.load_native_method :Java_sun_security_smartcardio_PCSC_SCardEndTransaction, [:pointer, :long, :int64, :int32], :void
       typesig { [::Java::Long, ::Java::Int] }
       def _scard_end_transaction(card_id, disposition)
-        JNI.__send__(:Java_sun_security_smartcardio_PCSC_SCardEndTransaction, JNI.env, self.jni_id, card_id.to_int, disposition.to_int)
+        JNI.call_native_method(:Java_sun_security_smartcardio_PCSC_SCardEndTransaction, JNI.env, self.jni_id, card_id.to_int, disposition.to_int)
       end
       
-      JNI.native_method :Java_sun_security_smartcardio_PCSC_SCardControl, [:pointer, :long, :int64, :int32, :long], :long
+      JNI.load_native_method :Java_sun_security_smartcardio_PCSC_SCardControl, [:pointer, :long, :int64, :int32, :long], :long
       typesig { [::Java::Long, ::Java::Int, Array.typed(::Java::Byte)] }
       def _scard_control(card_id, control_code, send_buffer)
-        JNI.__send__(:Java_sun_security_smartcardio_PCSC_SCardControl, JNI.env, self.jni_id, card_id.to_int, control_code.to_int, send_buffer.jni_id)
+        JNI.call_native_method(:Java_sun_security_smartcardio_PCSC_SCardControl, JNI.env, self.jni_id, card_id.to_int, control_code.to_int, send_buffer.jni_id)
       end
       
       # PCSC success/error/failure/warning codes

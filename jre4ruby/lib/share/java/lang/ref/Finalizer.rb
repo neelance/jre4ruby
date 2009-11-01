@@ -36,7 +36,7 @@ module Java::Lang::Ref
     include_class_members FinalizerImports
     
     class_module.module_eval {
-      JNI.native_method :Java_java_lang_ref_Finalizer_invokeFinalizeMethod, [:pointer, :long, :long], :void
+      JNI.load_native_method :Java_java_lang_ref_Finalizer_invokeFinalizeMethod, [:pointer, :long, :long], :void
       typesig { [Object] }
       # Package-private; must be in
       # same package as the Reference
@@ -44,7 +44,7 @@ module Java::Lang::Ref
       # A native method that invokes an arbitrary object's finalize method is
       # required since the finalize method is protected
       def invoke_finalize_method(o)
-        JNI.__send__(:Java_java_lang_ref_Finalizer_invokeFinalizeMethod, JNI.env, self.jni_id, o.jni_id)
+        JNI.call_native_method(:Java_java_lang_ref_Finalizer_invokeFinalizeMethod, JNI.env, self.jni_id, o.jni_id)
       end
       
       

@@ -433,12 +433,12 @@ module Sun::Security::Mscapi
         return SecretKeySpec.new(encoded_key, encoded_key_algorithm)
       end
       
-      JNI.native_method :Java_sun_security_mscapi_RSACipher_encryptDecrypt, [:pointer, :long, :long, :int32, :int64, :int8], :long
+      JNI.load_native_method :Java_sun_security_mscapi_RSACipher_encryptDecrypt, [:pointer, :long, :long, :int32, :int64, :int8], :long
       typesig { [Array.typed(::Java::Byte), ::Java::Int, ::Java::Long, ::Java::Boolean] }
       # Encrypt/decrypt a data buffer using Microsoft Crypto API with HCRYPTKEY.
       # It expects and returns ciphertext data in big-endian form.
       def encrypt_decrypt(data, data_size, h_crypt_key, do_encrypt)
-        JNI.__send__(:Java_sun_security_mscapi_RSACipher_encryptDecrypt, JNI.env, self.jni_id, data.jni_id, data_size.to_int, h_crypt_key.to_int, do_encrypt ? 1 : 0)
+        JNI.call_native_method(:Java_sun_security_mscapi_RSACipher_encryptDecrypt, JNI.env, self.jni_id, data.jni_id, data_size.to_int, h_crypt_key.to_int, do_encrypt ? 1 : 0)
       end
     }
     

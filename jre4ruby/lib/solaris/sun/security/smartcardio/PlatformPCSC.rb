@@ -139,10 +139,10 @@ module Sun::Security::Smartcardio
         raise IOException.new("No PC/SC library found on this system")
       end
       
-      JNI.native_method :Java_sun_security_smartcardio_PlatformPCSC_initialize, [:pointer, :long, :long], :void
+      JNI.load_native_method :Java_sun_security_smartcardio_PlatformPCSC_initialize, [:pointer, :long, :long], :void
       typesig { [String] }
       def initialize_(library_name)
-        JNI.__send__(:Java_sun_security_smartcardio_PlatformPCSC_initialize, JNI.env, self.jni_id, library_name.jni_id)
+        JNI.call_native_method(:Java_sun_security_smartcardio_PlatformPCSC_initialize, JNI.env, self.jni_id, library_name.jni_id)
       end
       
       # PCSC constants defined differently under Windows and MUSCLE

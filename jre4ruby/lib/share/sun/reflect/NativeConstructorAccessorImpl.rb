@@ -78,10 +78,10 @@ module Sun::Reflect
     end
     
     class_module.module_eval {
-      JNI.native_method :Java_sun_reflect_NativeConstructorAccessorImpl_newInstance0, [:pointer, :long, :long, :long], :long
+      JNI.load_native_method :Java_sun_reflect_NativeConstructorAccessorImpl_newInstance0, [:pointer, :long, :long, :long], :long
       typesig { [Constructor, Array.typed(Object)] }
       def new_instance0(c, args)
-        JNI.__send__(:Java_sun_reflect_NativeConstructorAccessorImpl_newInstance0, JNI.env, self.jni_id, c.jni_id, args.jni_id)
+        JNI.call_native_method(:Java_sun_reflect_NativeConstructorAccessorImpl_newInstance0, JNI.env, self.jni_id, c.jni_id, args.jni_id)
       end
     }
     

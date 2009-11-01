@@ -341,7 +341,7 @@ module Java::Net
         return get_by_name0(name)
       end
       
-      JNI.native_method :Java_java_net_NetworkInterface_getByIndex, [:pointer, :long, :int32], :long
+      JNI.load_native_method :Java_java_net_NetworkInterface_getByIndex, [:pointer, :long, :int32], :long
       typesig { [::Java::Int] }
       # Get a network interface given its index.
       # 
@@ -349,7 +349,7 @@ module Java::Net
       # @return the NetworkInterface obtained from its index
       # @exception  SocketException  if an I/O error occurs.
       def get_by_index(index)
-        JNI.__send__(:Java_java_net_NetworkInterface_getByIndex, JNI.env, self.jni_id, index.to_int)
+        JNI.call_native_method(:Java_java_net_NetworkInterface_getByIndex, JNI.env, self.jni_id, index.to_int)
       end
       
       typesig { [InetAddress] }
@@ -433,22 +433,22 @@ module Java::Net
         end.new_local(self)
       end
       
-      JNI.native_method :Java_java_net_NetworkInterface_getAll, [:pointer, :long], :long
+      JNI.load_native_method :Java_java_net_NetworkInterface_getAll, [:pointer, :long], :long
       typesig { [] }
       def get_all
-        JNI.__send__(:Java_java_net_NetworkInterface_getAll, JNI.env, self.jni_id)
+        JNI.call_native_method(:Java_java_net_NetworkInterface_getAll, JNI.env, self.jni_id)
       end
       
-      JNI.native_method :Java_java_net_NetworkInterface_getByName0, [:pointer, :long, :long], :long
+      JNI.load_native_method :Java_java_net_NetworkInterface_getByName0, [:pointer, :long, :long], :long
       typesig { [String] }
       def get_by_name0(name)
-        JNI.__send__(:Java_java_net_NetworkInterface_getByName0, JNI.env, self.jni_id, name.jni_id)
+        JNI.call_native_method(:Java_java_net_NetworkInterface_getByName0, JNI.env, self.jni_id, name.jni_id)
       end
       
-      JNI.native_method :Java_java_net_NetworkInterface_getByInetAddress0, [:pointer, :long, :long], :long
+      JNI.load_native_method :Java_java_net_NetworkInterface_getByInetAddress0, [:pointer, :long, :long], :long
       typesig { [InetAddress] }
       def get_by_inet_address0(addr)
-        JNI.__send__(:Java_java_net_NetworkInterface_getByInetAddress0, JNI.env, self.jni_id, addr.jni_id)
+        JNI.call_native_method(:Java_java_net_NetworkInterface_getByInetAddress0, JNI.env, self.jni_id, addr.jni_id)
       end
     }
     
@@ -539,52 +539,52 @@ module Java::Net
     end
     
     class_module.module_eval {
-      JNI.native_method :Java_java_net_NetworkInterface_getSubnet0, [:pointer, :long, :long, :int32], :int64
+      JNI.load_native_method :Java_java_net_NetworkInterface_getSubnet0, [:pointer, :long, :long, :int32], :int64
       typesig { [String, ::Java::Int] }
       def get_subnet0(name, ind)
-        JNI.__send__(:Java_java_net_NetworkInterface_getSubnet0, JNI.env, self.jni_id, name.jni_id, ind.to_int)
+        JNI.call_native_method(:Java_java_net_NetworkInterface_getSubnet0, JNI.env, self.jni_id, name.jni_id, ind.to_int)
       end
       
-      JNI.native_method :Java_java_net_NetworkInterface_getBroadcast0, [:pointer, :long, :long, :int32], :long
+      JNI.load_native_method :Java_java_net_NetworkInterface_getBroadcast0, [:pointer, :long, :long, :int32], :long
       typesig { [String, ::Java::Int] }
       def get_broadcast0(name, ind)
-        JNI.__send__(:Java_java_net_NetworkInterface_getBroadcast0, JNI.env, self.jni_id, name.jni_id, ind.to_int)
+        JNI.call_native_method(:Java_java_net_NetworkInterface_getBroadcast0, JNI.env, self.jni_id, name.jni_id, ind.to_int)
       end
       
-      JNI.native_method :Java_java_net_NetworkInterface_isUp0, [:pointer, :long, :long, :int32], :int8
+      JNI.load_native_method :Java_java_net_NetworkInterface_isUp0, [:pointer, :long, :long, :int32], :int8
       typesig { [String, ::Java::Int] }
       def is_up0(name, ind)
-        JNI.__send__(:Java_java_net_NetworkInterface_isUp0, JNI.env, self.jni_id, name.jni_id, ind.to_int) != 0
+        JNI.call_native_method(:Java_java_net_NetworkInterface_isUp0, JNI.env, self.jni_id, name.jni_id, ind.to_int) != 0
       end
       
-      JNI.native_method :Java_java_net_NetworkInterface_isLoopback0, [:pointer, :long, :long, :int32], :int8
+      JNI.load_native_method :Java_java_net_NetworkInterface_isLoopback0, [:pointer, :long, :long, :int32], :int8
       typesig { [String, ::Java::Int] }
       def is_loopback0(name, ind)
-        JNI.__send__(:Java_java_net_NetworkInterface_isLoopback0, JNI.env, self.jni_id, name.jni_id, ind.to_int) != 0
+        JNI.call_native_method(:Java_java_net_NetworkInterface_isLoopback0, JNI.env, self.jni_id, name.jni_id, ind.to_int) != 0
       end
       
-      JNI.native_method :Java_java_net_NetworkInterface_supportsMulticast0, [:pointer, :long, :long, :int32], :int8
+      JNI.load_native_method :Java_java_net_NetworkInterface_supportsMulticast0, [:pointer, :long, :long, :int32], :int8
       typesig { [String, ::Java::Int] }
       def supports_multicast0(name, ind)
-        JNI.__send__(:Java_java_net_NetworkInterface_supportsMulticast0, JNI.env, self.jni_id, name.jni_id, ind.to_int) != 0
+        JNI.call_native_method(:Java_java_net_NetworkInterface_supportsMulticast0, JNI.env, self.jni_id, name.jni_id, ind.to_int) != 0
       end
       
-      JNI.native_method :Java_java_net_NetworkInterface_isP2P0, [:pointer, :long, :long, :int32], :int8
+      JNI.load_native_method :Java_java_net_NetworkInterface_isP2P0, [:pointer, :long, :long, :int32], :int8
       typesig { [String, ::Java::Int] }
       def is_p2p0(name, ind)
-        JNI.__send__(:Java_java_net_NetworkInterface_isP2P0, JNI.env, self.jni_id, name.jni_id, ind.to_int) != 0
+        JNI.call_native_method(:Java_java_net_NetworkInterface_isP2P0, JNI.env, self.jni_id, name.jni_id, ind.to_int) != 0
       end
       
-      JNI.native_method :Java_java_net_NetworkInterface_getMacAddr0, [:pointer, :long, :long, :long, :int32], :long
+      JNI.load_native_method :Java_java_net_NetworkInterface_getMacAddr0, [:pointer, :long, :long, :long, :int32], :long
       typesig { [Array.typed(::Java::Byte), String, ::Java::Int] }
       def get_mac_addr0(in_addr, name, ind)
-        JNI.__send__(:Java_java_net_NetworkInterface_getMacAddr0, JNI.env, self.jni_id, in_addr.jni_id, name.jni_id, ind.to_int)
+        JNI.call_native_method(:Java_java_net_NetworkInterface_getMacAddr0, JNI.env, self.jni_id, in_addr.jni_id, name.jni_id, ind.to_int)
       end
       
-      JNI.native_method :Java_java_net_NetworkInterface_getMTU0, [:pointer, :long, :long, :int32], :int32
+      JNI.load_native_method :Java_java_net_NetworkInterface_getMTU0, [:pointer, :long, :long, :int32], :int32
       typesig { [String, ::Java::Int] }
       def get_mtu0(name, ind)
-        JNI.__send__(:Java_java_net_NetworkInterface_getMTU0, JNI.env, self.jni_id, name.jni_id, ind.to_int)
+        JNI.call_native_method(:Java_java_net_NetworkInterface_getMTU0, JNI.env, self.jni_id, name.jni_id, ind.to_int)
       end
     }
     
@@ -690,10 +690,10 @@ module Java::Net
     end
     
     class_module.module_eval {
-      JNI.native_method :Java_java_net_NetworkInterface_init, [:pointer, :long], :void
+      JNI.load_native_method :Java_java_net_NetworkInterface_init, [:pointer, :long], :void
       typesig { [] }
       def init
-        JNI.__send__(:Java_java_net_NetworkInterface_init, JNI.env, self.jni_id)
+        JNI.call_native_method(:Java_java_net_NetworkInterface_init, JNI.env, self.jni_id)
       end
     }
     

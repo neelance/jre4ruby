@@ -193,11 +193,11 @@ module Java::Util::Prefs
     undef_method :is_backing_store_available=
     
     class_module.module_eval {
-      JNI.native_method :Java_java_util_prefs_WindowsPreferences_WindowsRegOpenKey, [:pointer, :long, :int32, :long, :int32], :long
+      JNI.load_native_method :Java_java_util_prefs_WindowsPreferences_WindowsRegOpenKey, [:pointer, :long, :int32, :long, :int32], :long
       typesig { [::Java::Int, Array.typed(::Java::Byte), ::Java::Int] }
       # Java wrapper for Windows registry API RegOpenKey()
       def _windows_reg_open_key(h_key, sub_key, security_mask)
-        JNI.__send__(:Java_java_util_prefs_WindowsPreferences_WindowsRegOpenKey, JNI.env, self.jni_id, h_key.to_int, sub_key.jni_id, security_mask.to_int)
+        JNI.call_native_method(:Java_java_util_prefs_WindowsPreferences_WindowsRegOpenKey, JNI.env, self.jni_id, h_key.to_int, sub_key.jni_id, security_mask.to_int)
       end
       
       typesig { [::Java::Int, Array.typed(::Java::Byte), ::Java::Int] }
@@ -236,18 +236,18 @@ module Java::Util::Prefs
         return result
       end
       
-      JNI.native_method :Java_java_util_prefs_WindowsPreferences_WindowsRegCloseKey, [:pointer, :long, :int32], :int32
+      JNI.load_native_method :Java_java_util_prefs_WindowsPreferences_WindowsRegCloseKey, [:pointer, :long, :int32], :int32
       typesig { [::Java::Int] }
       # Java wrapper for Windows registry API RegCloseKey()
       def _windows_reg_close_key(h_key)
-        JNI.__send__(:Java_java_util_prefs_WindowsPreferences_WindowsRegCloseKey, JNI.env, self.jni_id, h_key.to_int)
+        JNI.call_native_method(:Java_java_util_prefs_WindowsPreferences_WindowsRegCloseKey, JNI.env, self.jni_id, h_key.to_int)
       end
       
-      JNI.native_method :Java_java_util_prefs_WindowsPreferences_WindowsRegCreateKeyEx, [:pointer, :long, :int32, :long], :long
+      JNI.load_native_method :Java_java_util_prefs_WindowsPreferences_WindowsRegCreateKeyEx, [:pointer, :long, :int32, :long], :long
       typesig { [::Java::Int, Array.typed(::Java::Byte)] }
       # Java wrapper for Windows registry API RegCreateKeyEx()
       def _windows_reg_create_key_ex(h_key, sub_key)
-        JNI.__send__(:Java_java_util_prefs_WindowsPreferences_WindowsRegCreateKeyEx, JNI.env, self.jni_id, h_key.to_int, sub_key.jni_id)
+        JNI.call_native_method(:Java_java_util_prefs_WindowsPreferences_WindowsRegCreateKeyEx, JNI.env, self.jni_id, h_key.to_int, sub_key.jni_id)
       end
       
       typesig { [::Java::Int, Array.typed(::Java::Byte)] }
@@ -276,18 +276,18 @@ module Java::Util::Prefs
         return result
       end
       
-      JNI.native_method :Java_java_util_prefs_WindowsPreferences_WindowsRegDeleteKey, [:pointer, :long, :int32, :long], :int32
+      JNI.load_native_method :Java_java_util_prefs_WindowsPreferences_WindowsRegDeleteKey, [:pointer, :long, :int32, :long], :int32
       typesig { [::Java::Int, Array.typed(::Java::Byte)] }
       # Java wrapper for Windows registry API RegDeleteKey()
       def _windows_reg_delete_key(h_key, sub_key)
-        JNI.__send__(:Java_java_util_prefs_WindowsPreferences_WindowsRegDeleteKey, JNI.env, self.jni_id, h_key.to_int, sub_key.jni_id)
+        JNI.call_native_method(:Java_java_util_prefs_WindowsPreferences_WindowsRegDeleteKey, JNI.env, self.jni_id, h_key.to_int, sub_key.jni_id)
       end
       
-      JNI.native_method :Java_java_util_prefs_WindowsPreferences_WindowsRegFlushKey, [:pointer, :long, :int32], :int32
+      JNI.load_native_method :Java_java_util_prefs_WindowsPreferences_WindowsRegFlushKey, [:pointer, :long, :int32], :int32
       typesig { [::Java::Int] }
       # Java wrapper for Windows registry API RegFlushKey()
       def _windows_reg_flush_key(h_key)
-        JNI.__send__(:Java_java_util_prefs_WindowsPreferences_WindowsRegFlushKey, JNI.env, self.jni_id, h_key.to_int)
+        JNI.call_native_method(:Java_java_util_prefs_WindowsPreferences_WindowsRegFlushKey, JNI.env, self.jni_id, h_key.to_int)
       end
       
       typesig { [::Java::Int] }
@@ -316,18 +316,18 @@ module Java::Util::Prefs
         return result
       end
       
-      JNI.native_method :Java_java_util_prefs_WindowsPreferences_WindowsRegQueryValueEx, [:pointer, :long, :int32, :long], :long
+      JNI.load_native_method :Java_java_util_prefs_WindowsPreferences_WindowsRegQueryValueEx, [:pointer, :long, :int32, :long], :long
       typesig { [::Java::Int, Array.typed(::Java::Byte)] }
       # Java wrapper for Windows registry API RegQueryValueEx()
       def _windows_reg_query_value_ex(h_key, value_name)
-        JNI.__send__(:Java_java_util_prefs_WindowsPreferences_WindowsRegQueryValueEx, JNI.env, self.jni_id, h_key.to_int, value_name.jni_id)
+        JNI.call_native_method(:Java_java_util_prefs_WindowsPreferences_WindowsRegQueryValueEx, JNI.env, self.jni_id, h_key.to_int, value_name.jni_id)
       end
       
-      JNI.native_method :Java_java_util_prefs_WindowsPreferences_WindowsRegSetValueEx, [:pointer, :long, :int32, :long, :long], :int32
+      JNI.load_native_method :Java_java_util_prefs_WindowsPreferences_WindowsRegSetValueEx, [:pointer, :long, :int32, :long, :long], :int32
       typesig { [::Java::Int, Array.typed(::Java::Byte), Array.typed(::Java::Byte)] }
       # Java wrapper for Windows registry API RegSetValueEx()
       def _windows_reg_set_value_ex(h_key, value_name, value)
-        JNI.__send__(:Java_java_util_prefs_WindowsPreferences_WindowsRegSetValueEx, JNI.env, self.jni_id, h_key.to_int, value_name.jni_id, value.jni_id)
+        JNI.call_native_method(:Java_java_util_prefs_WindowsPreferences_WindowsRegSetValueEx, JNI.env, self.jni_id, h_key.to_int, value_name.jni_id, value.jni_id)
       end
       
       typesig { [::Java::Int, Array.typed(::Java::Byte), Array.typed(::Java::Byte)] }
@@ -356,18 +356,18 @@ module Java::Util::Prefs
         return result
       end
       
-      JNI.native_method :Java_java_util_prefs_WindowsPreferences_WindowsRegDeleteValue, [:pointer, :long, :int32, :long], :int32
+      JNI.load_native_method :Java_java_util_prefs_WindowsPreferences_WindowsRegDeleteValue, [:pointer, :long, :int32, :long], :int32
       typesig { [::Java::Int, Array.typed(::Java::Byte)] }
       # Java wrapper for Windows registry API RegDeleteValue()
       def _windows_reg_delete_value(h_key, value_name)
-        JNI.__send__(:Java_java_util_prefs_WindowsPreferences_WindowsRegDeleteValue, JNI.env, self.jni_id, h_key.to_int, value_name.jni_id)
+        JNI.call_native_method(:Java_java_util_prefs_WindowsPreferences_WindowsRegDeleteValue, JNI.env, self.jni_id, h_key.to_int, value_name.jni_id)
       end
       
-      JNI.native_method :Java_java_util_prefs_WindowsPreferences_WindowsRegQueryInfoKey, [:pointer, :long, :int32], :long
+      JNI.load_native_method :Java_java_util_prefs_WindowsPreferences_WindowsRegQueryInfoKey, [:pointer, :long, :int32], :long
       typesig { [::Java::Int] }
       # Java wrapper for Windows registry API RegQueryInfoKey()
       def _windows_reg_query_info_key(h_key)
-        JNI.__send__(:Java_java_util_prefs_WindowsPreferences_WindowsRegQueryInfoKey, JNI.env, self.jni_id, h_key.to_int)
+        JNI.call_native_method(:Java_java_util_prefs_WindowsPreferences_WindowsRegQueryInfoKey, JNI.env, self.jni_id, h_key.to_int)
       end
       
       typesig { [::Java::Int] }
@@ -396,11 +396,11 @@ module Java::Util::Prefs
         return result
       end
       
-      JNI.native_method :Java_java_util_prefs_WindowsPreferences_WindowsRegEnumKeyEx, [:pointer, :long, :int32, :int32, :int32], :long
+      JNI.load_native_method :Java_java_util_prefs_WindowsPreferences_WindowsRegEnumKeyEx, [:pointer, :long, :int32, :int32, :int32], :long
       typesig { [::Java::Int, ::Java::Int, ::Java::Int] }
       # Java wrapper for Windows registry API RegEnumKeyEx()
       def _windows_reg_enum_key_ex(h_key, sub_key_index, max_key_length)
-        JNI.__send__(:Java_java_util_prefs_WindowsPreferences_WindowsRegEnumKeyEx, JNI.env, self.jni_id, h_key.to_int, sub_key_index.to_int, max_key_length.to_int)
+        JNI.call_native_method(:Java_java_util_prefs_WindowsPreferences_WindowsRegEnumKeyEx, JNI.env, self.jni_id, h_key.to_int, sub_key_index.to_int, max_key_length.to_int)
       end
       
       typesig { [::Java::Int, ::Java::Int, ::Java::Int] }
@@ -429,11 +429,11 @@ module Java::Util::Prefs
         return result
       end
       
-      JNI.native_method :Java_java_util_prefs_WindowsPreferences_WindowsRegEnumValue, [:pointer, :long, :int32, :int32, :int32], :long
+      JNI.load_native_method :Java_java_util_prefs_WindowsPreferences_WindowsRegEnumValue, [:pointer, :long, :int32, :int32, :int32], :long
       typesig { [::Java::Int, ::Java::Int, ::Java::Int] }
       # Java wrapper for Windows registry API RegEnumValue()
       def _windows_reg_enum_value(h_key, value_index, max_value_name_length)
-        JNI.__send__(:Java_java_util_prefs_WindowsPreferences_WindowsRegEnumValue, JNI.env, self.jni_id, h_key.to_int, value_index.to_int, max_value_name_length.to_int)
+        JNI.call_native_method(:Java_java_util_prefs_WindowsPreferences_WindowsRegEnumValue, JNI.env, self.jni_id, h_key.to_int, value_index.to_int, max_value_name_length.to_int)
       end
       
       typesig { [::Java::Int, ::Java::Int, ::Java::Int] }

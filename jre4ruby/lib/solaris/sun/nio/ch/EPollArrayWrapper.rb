@@ -378,41 +378,41 @@ module Sun::Nio::Ch
       end
     }
     
-    JNI.native_method :Java_sun_nio_ch_EPollArrayWrapper_epollCreate, [:pointer, :long], :int32
+    JNI.load_native_method :Java_sun_nio_ch_EPollArrayWrapper_epollCreate, [:pointer, :long], :int32
     typesig { [] }
     def epoll_create
-      JNI.__send__(:Java_sun_nio_ch_EPollArrayWrapper_epollCreate, JNI.env, self.jni_id)
+      JNI.call_native_method(:Java_sun_nio_ch_EPollArrayWrapper_epollCreate, JNI.env, self.jni_id)
     end
     
-    JNI.native_method :Java_sun_nio_ch_EPollArrayWrapper_epollCtl, [:pointer, :long, :int32, :int32, :int32, :int32], :void
+    JNI.load_native_method :Java_sun_nio_ch_EPollArrayWrapper_epollCtl, [:pointer, :long, :int32, :int32, :int32, :int32], :void
     typesig { [::Java::Int, ::Java::Int, ::Java::Int, ::Java::Int] }
     def epoll_ctl(epfd, opcode, fd, events)
-      JNI.__send__(:Java_sun_nio_ch_EPollArrayWrapper_epollCtl, JNI.env, self.jni_id, epfd.to_int, opcode.to_int, fd.to_int, events.to_int)
+      JNI.call_native_method(:Java_sun_nio_ch_EPollArrayWrapper_epollCtl, JNI.env, self.jni_id, epfd.to_int, opcode.to_int, fd.to_int, events.to_int)
     end
     
-    JNI.native_method :Java_sun_nio_ch_EPollArrayWrapper_epollWait, [:pointer, :long, :int64, :int32, :int64, :int32], :int32
+    JNI.load_native_method :Java_sun_nio_ch_EPollArrayWrapper_epollWait, [:pointer, :long, :int64, :int32, :int64, :int32], :int32
     typesig { [::Java::Long, ::Java::Int, ::Java::Long, ::Java::Int] }
     def epoll_wait(poll_address, numfds, timeout, epfd)
-      JNI.__send__(:Java_sun_nio_ch_EPollArrayWrapper_epollWait, JNI.env, self.jni_id, poll_address.to_int, numfds.to_int, timeout.to_int, epfd.to_int)
+      JNI.call_native_method(:Java_sun_nio_ch_EPollArrayWrapper_epollWait, JNI.env, self.jni_id, poll_address.to_int, numfds.to_int, timeout.to_int, epfd.to_int)
     end
     
     class_module.module_eval {
-      JNI.native_method :Java_sun_nio_ch_EPollArrayWrapper_fdLimit, [:pointer, :long], :int32
+      JNI.load_native_method :Java_sun_nio_ch_EPollArrayWrapper_fdLimit, [:pointer, :long], :int32
       typesig { [] }
       def fd_limit
-        JNI.__send__(:Java_sun_nio_ch_EPollArrayWrapper_fdLimit, JNI.env, self.jni_id)
+        JNI.call_native_method(:Java_sun_nio_ch_EPollArrayWrapper_fdLimit, JNI.env, self.jni_id)
       end
       
-      JNI.native_method :Java_sun_nio_ch_EPollArrayWrapper_interrupt, [:pointer, :long, :int32], :void
+      JNI.load_native_method :Java_sun_nio_ch_EPollArrayWrapper_interrupt, [:pointer, :long, :int32], :void
       typesig { [::Java::Int] }
       def interrupt(fd)
-        JNI.__send__(:Java_sun_nio_ch_EPollArrayWrapper_interrupt, JNI.env, self.jni_id, fd.to_int)
+        JNI.call_native_method(:Java_sun_nio_ch_EPollArrayWrapper_interrupt, JNI.env, self.jni_id, fd.to_int)
       end
       
-      JNI.native_method :Java_sun_nio_ch_EPollArrayWrapper_init, [:pointer, :long], :void
+      JNI.load_native_method :Java_sun_nio_ch_EPollArrayWrapper_init, [:pointer, :long], :void
       typesig { [] }
       def init
-        JNI.__send__(:Java_sun_nio_ch_EPollArrayWrapper_init, JNI.env, self.jni_id)
+        JNI.call_native_method(:Java_sun_nio_ch_EPollArrayWrapper_init, JNI.env, self.jni_id)
       end
     }
     

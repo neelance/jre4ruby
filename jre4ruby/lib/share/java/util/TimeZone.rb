@@ -539,19 +539,19 @@ module Java::Util
         end
       end
       
-      JNI.native_method :Java_java_util_TimeZone_getSystemTimeZoneID, [:pointer, :long, :long, :long], :long
+      JNI.load_native_method :Java_java_util_TimeZone_getSystemTimeZoneID, [:pointer, :long, :long, :long], :long
       typesig { [String, String] }
       # Gets the platform defined TimeZone ID.
       def get_system_time_zone_id(java_home, country)
-        JNI.__send__(:Java_java_util_TimeZone_getSystemTimeZoneID, JNI.env, self.jni_id, java_home.jni_id, country.jni_id)
+        JNI.call_native_method(:Java_java_util_TimeZone_getSystemTimeZoneID, JNI.env, self.jni_id, java_home.jni_id, country.jni_id)
       end
       
-      JNI.native_method :Java_java_util_TimeZone_getSystemGMTOffsetID, [:pointer, :long], :long
+      JNI.load_native_method :Java_java_util_TimeZone_getSystemGMTOffsetID, [:pointer, :long], :long
       typesig { [] }
       # Gets the custom time zone ID based on the GMT offset of the
       # platform. (e.g., "GMT+08:00")
       def get_system_gmtoffset_id
-        JNI.__send__(:Java_java_util_TimeZone_getSystemGMTOffsetID, JNI.env, self.jni_id)
+        JNI.call_native_method(:Java_java_util_TimeZone_getSystemGMTOffsetID, JNI.env, self.jni_id)
       end
       
       typesig { [] }

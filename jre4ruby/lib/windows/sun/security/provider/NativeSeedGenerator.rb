@@ -49,11 +49,11 @@ module Sun::Security::Provider
     end
     
     class_module.module_eval {
-      JNI.native_method :Java_sun_security_provider_NativeSeedGenerator_nativeGenerateSeed, [:pointer, :long, :long], :int8
+      JNI.load_native_method :Java_sun_security_provider_NativeSeedGenerator_nativeGenerateSeed, [:pointer, :long, :long], :int8
       typesig { [Array.typed(::Java::Byte)] }
       # Native method to do the actual work.
       def native_generate_seed(result)
-        JNI.__send__(:Java_sun_security_provider_NativeSeedGenerator_nativeGenerateSeed, JNI.env, self.jni_id, result.jni_id) != 0
+        JNI.call_native_method(:Java_sun_security_provider_NativeSeedGenerator_nativeGenerateSeed, JNI.env, self.jni_id, result.jni_id) != 0
       end
     }
     

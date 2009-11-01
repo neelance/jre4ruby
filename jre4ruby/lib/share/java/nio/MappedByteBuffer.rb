@@ -172,22 +172,22 @@ module Java::Nio
       return self
     end
     
-    JNI.native_method :Java_java_nio_MappedByteBuffer_isLoaded0, [:pointer, :long, :int64, :int64], :int8
+    JNI.load_native_method :Java_java_nio_MappedByteBuffer_isLoaded0, [:pointer, :long, :int64, :int64], :int8
     typesig { [::Java::Long, ::Java::Long] }
     def is_loaded0(address, length)
-      JNI.__send__(:Java_java_nio_MappedByteBuffer_isLoaded0, JNI.env, self.jni_id, address.to_int, length.to_int) != 0
+      JNI.call_native_method(:Java_java_nio_MappedByteBuffer_isLoaded0, JNI.env, self.jni_id, address.to_int, length.to_int) != 0
     end
     
-    JNI.native_method :Java_java_nio_MappedByteBuffer_load0, [:pointer, :long, :int64, :int64, :int32], :int32
+    JNI.load_native_method :Java_java_nio_MappedByteBuffer_load0, [:pointer, :long, :int64, :int64, :int32], :int32
     typesig { [::Java::Long, ::Java::Long, ::Java::Int] }
     def load0(address, length, page_size_)
-      JNI.__send__(:Java_java_nio_MappedByteBuffer_load0, JNI.env, self.jni_id, address.to_int, length.to_int, page_size_.to_int)
+      JNI.call_native_method(:Java_java_nio_MappedByteBuffer_load0, JNI.env, self.jni_id, address.to_int, length.to_int, page_size_.to_int)
     end
     
-    JNI.native_method :Java_java_nio_MappedByteBuffer_force0, [:pointer, :long, :int64, :int64], :void
+    JNI.load_native_method :Java_java_nio_MappedByteBuffer_force0, [:pointer, :long, :int64, :int64], :void
     typesig { [::Java::Long, ::Java::Long] }
     def force0(address, length)
-      JNI.__send__(:Java_java_nio_MappedByteBuffer_force0, JNI.env, self.jni_id, address.to_int, length.to_int)
+      JNI.call_native_method(:Java_java_nio_MappedByteBuffer_force0, JNI.env, self.jni_id, address.to_int, length.to_int)
     end
     
     private

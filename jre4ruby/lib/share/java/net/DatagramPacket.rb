@@ -427,11 +427,11 @@ module Java::Net
     end
     
     class_module.module_eval {
-      JNI.native_method :Java_java_net_DatagramPacket_init, [:pointer, :long], :void
+      JNI.load_native_method :Java_java_net_DatagramPacket_init, [:pointer, :long], :void
       typesig { [] }
       # Perform class load-time initializations.
       def init
-        JNI.__send__(:Java_java_net_DatagramPacket_init, JNI.env, self.jni_id)
+        JNI.call_native_method(:Java_java_net_DatagramPacket_init, JNI.env, self.jni_id)
       end
     }
     

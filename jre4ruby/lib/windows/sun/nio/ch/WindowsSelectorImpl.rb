@@ -539,10 +539,10 @@ module Sun::Nio::Ch
           return poll0(self.attr_poll_wrapper.attr_poll_array_address + (@poll_array_index * PollArrayWrapper::SIZE_POLLFD), Math.min(MAX_SELECTABLE_FDS, self.attr_total_channels - (index + 1) * MAX_SELECTABLE_FDS), @read_fds, @write_fds, @except_fds, self.attr_timeout)
         end
         
-        JNI.native_method :Java_sun_nio_ch_SubSelector_poll0, [:pointer, :long, :int64, :int32, :long, :long, :long, :int64], :int32
+        JNI.load_native_method :Java_sun_nio_ch_SubSelector_poll0, [:pointer, :long, :int64, :int32, :long, :long, :long, :int64], :int32
         typesig { [::Java::Long, ::Java::Int, Array.typed(::Java::Int), Array.typed(::Java::Int), Array.typed(::Java::Int), ::Java::Long] }
         def poll0(poll_address, numfds, read_fds, write_fds, except_fds, timeout)
-          JNI.__send__(:Java_sun_nio_ch_SubSelector_poll0, JNI.env, self.jni_id, poll_address.to_int, numfds.to_int, read_fds.jni_id, write_fds.jni_id, except_fds.jni_id, timeout.to_int)
+          JNI.call_native_method(:Java_sun_nio_ch_SubSelector_poll0, JNI.env, self.jni_id, poll_address.to_int, numfds.to_int, read_fds.jni_id, write_fds.jni_id, except_fds.jni_id, timeout.to_int)
         end
         
         typesig { [::Java::Long] }
@@ -723,10 +723,10 @@ module Sun::Nio::Ch
       set_wakeup_socket0(@wakeup_sink_fd)
     end
     
-    JNI.native_method :Java_sun_nio_ch_WindowsSelectorImpl_setWakeupSocket0, [:pointer, :long, :int32], :void
+    JNI.load_native_method :Java_sun_nio_ch_WindowsSelectorImpl_setWakeupSocket0, [:pointer, :long, :int32], :void
     typesig { [::Java::Int] }
     def set_wakeup_socket0(wakeup_sink_fd)
-      JNI.__send__(:Java_sun_nio_ch_WindowsSelectorImpl_setWakeupSocket0, JNI.env, self.jni_id, wakeup_sink_fd.to_int)
+      JNI.call_native_method(:Java_sun_nio_ch_WindowsSelectorImpl_setWakeupSocket0, JNI.env, self.jni_id, wakeup_sink_fd.to_int)
     end
     
     typesig { [] }
@@ -741,10 +741,10 @@ module Sun::Nio::Ch
       end
     end
     
-    JNI.native_method :Java_sun_nio_ch_WindowsSelectorImpl_resetWakeupSocket0, [:pointer, :long, :int32], :void
+    JNI.load_native_method :Java_sun_nio_ch_WindowsSelectorImpl_resetWakeupSocket0, [:pointer, :long, :int32], :void
     typesig { [::Java::Int] }
     def reset_wakeup_socket0(wakeup_source_fd)
-      JNI.__send__(:Java_sun_nio_ch_WindowsSelectorImpl_resetWakeupSocket0, JNI.env, self.jni_id, wakeup_source_fd.to_int)
+      JNI.call_native_method(:Java_sun_nio_ch_WindowsSelectorImpl_resetWakeupSocket0, JNI.env, self.jni_id, wakeup_source_fd.to_int)
     end
     
     # We increment this counter on each call to updateSelectedKeys()

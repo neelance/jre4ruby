@@ -319,7 +319,7 @@ module Java::Io
       end
     end
     
-    JNI.native_method :Java_java_io_RandomAccessFile_open, [:pointer, :long, :long, :int32], :void
+    JNI.load_native_method :Java_java_io_RandomAccessFile_open, [:pointer, :long, :long, :int32], :void
     typesig { [String, ::Java::Int] }
     # Opens a file and returns the file descriptor.  The file is
     # opened in read-write mode if the O_RDWR bit in <code>mode</code>
@@ -331,10 +331,10 @@ module Java::Io
     # @param mode the mode flags, a combination of the O_ constants
     # defined above
     def open(name, mode)
-      JNI.__send__(:Java_java_io_RandomAccessFile_open, JNI.env, self.jni_id, name.jni_id, mode.to_int)
+      JNI.call_native_method(:Java_java_io_RandomAccessFile_open, JNI.env, self.jni_id, name.jni_id, mode.to_int)
     end
     
-    JNI.native_method :Java_java_io_RandomAccessFile_read, [:pointer, :long], :int32
+    JNI.load_native_method :Java_java_io_RandomAccessFile_read, [:pointer, :long], :int32
     typesig { [] }
     # 'Read' primitives
     # 
@@ -352,10 +352,10 @@ module Java::Io
     # @exception  IOException  if an I/O error occurs. Not thrown if
     # end-of-file has been reached.
     def read
-      JNI.__send__(:Java_java_io_RandomAccessFile_read, JNI.env, self.jni_id)
+      JNI.call_native_method(:Java_java_io_RandomAccessFile_read, JNI.env, self.jni_id)
     end
     
-    JNI.native_method :Java_java_io_RandomAccessFile_readBytes, [:pointer, :long, :long, :int32, :int32], :int32
+    JNI.load_native_method :Java_java_io_RandomAccessFile_readBytes, [:pointer, :long, :long, :int32, :int32], :int32
     typesig { [Array.typed(::Java::Byte), ::Java::Int, ::Java::Int] }
     # Reads a sub array as a sequence of bytes.
     # @param b the buffer into which the data is read.
@@ -363,7 +363,7 @@ module Java::Io
     # @param len the number of bytes to read.
     # @exception IOException If an I/O error has occurred.
     def read_bytes(b, off, len)
-      JNI.__send__(:Java_java_io_RandomAccessFile_readBytes, JNI.env, self.jni_id, b.jni_id, off.to_int, len.to_int)
+      JNI.call_native_method(:Java_java_io_RandomAccessFile_readBytes, JNI.env, self.jni_id, b.jni_id, off.to_int, len.to_int)
     end
     
     typesig { [Array.typed(::Java::Byte), ::Java::Int, ::Java::Int] }
@@ -488,7 +488,7 @@ module Java::Io
       return RJava.cast_to_int((newpos - pos))
     end
     
-    JNI.native_method :Java_java_io_RandomAccessFile_write, [:pointer, :long, :int32], :void
+    JNI.load_native_method :Java_java_io_RandomAccessFile_write, [:pointer, :long, :int32], :void
     typesig { [::Java::Int] }
     # 'Write' primitives
     # 
@@ -498,10 +498,10 @@ module Java::Io
     # @param      b   the <code>byte</code> to be written.
     # @exception  IOException  if an I/O error occurs.
     def write(b)
-      JNI.__send__(:Java_java_io_RandomAccessFile_write, JNI.env, self.jni_id, b.to_int)
+      JNI.call_native_method(:Java_java_io_RandomAccessFile_write, JNI.env, self.jni_id, b.to_int)
     end
     
-    JNI.native_method :Java_java_io_RandomAccessFile_writeBytes, [:pointer, :long, :long, :int32, :int32], :void
+    JNI.load_native_method :Java_java_io_RandomAccessFile_writeBytes, [:pointer, :long, :long, :int32, :int32], :void
     typesig { [Array.typed(::Java::Byte), ::Java::Int, ::Java::Int] }
     # Writes a sub array as a sequence of bytes.
     # @param b the data to be written
@@ -510,7 +510,7 @@ module Java::Io
     # @param len the number of bytes that are written
     # @exception IOException If an I/O error has occurred.
     def write_bytes(b, off, len)
-      JNI.__send__(:Java_java_io_RandomAccessFile_writeBytes, JNI.env, self.jni_id, b.jni_id, off.to_int, len.to_int)
+      JNI.call_native_method(:Java_java_io_RandomAccessFile_writeBytes, JNI.env, self.jni_id, b.jni_id, off.to_int, len.to_int)
     end
     
     typesig { [Array.typed(::Java::Byte)] }
@@ -535,7 +535,7 @@ module Java::Io
       write_bytes(b, off, len)
     end
     
-    JNI.native_method :Java_java_io_RandomAccessFile_getFilePointer, [:pointer, :long], :int64
+    JNI.load_native_method :Java_java_io_RandomAccessFile_getFilePointer, [:pointer, :long], :int64
     typesig { [] }
     # 'Random access' stuff
     # 
@@ -545,10 +545,10 @@ module Java::Io
     # at which the next read or write occurs.
     # @exception  IOException  if an I/O error occurs.
     def get_file_pointer
-      JNI.__send__(:Java_java_io_RandomAccessFile_getFilePointer, JNI.env, self.jni_id)
+      JNI.call_native_method(:Java_java_io_RandomAccessFile_getFilePointer, JNI.env, self.jni_id)
     end
     
-    JNI.native_method :Java_java_io_RandomAccessFile_seek, [:pointer, :long, :int64], :void
+    JNI.load_native_method :Java_java_io_RandomAccessFile_seek, [:pointer, :long, :int64], :void
     typesig { [::Java::Long] }
     # Sets the file-pointer offset, measured from the beginning of this
     # file, at which the next read or write occurs.  The offset may be
@@ -563,20 +563,20 @@ module Java::Io
     # @exception  IOException  if <code>pos</code> is less than
     # <code>0</code> or if an I/O error occurs.
     def seek(pos)
-      JNI.__send__(:Java_java_io_RandomAccessFile_seek, JNI.env, self.jni_id, pos.to_int)
+      JNI.call_native_method(:Java_java_io_RandomAccessFile_seek, JNI.env, self.jni_id, pos.to_int)
     end
     
-    JNI.native_method :Java_java_io_RandomAccessFile_length, [:pointer, :long], :int64
+    JNI.load_native_method :Java_java_io_RandomAccessFile_length, [:pointer, :long], :int64
     typesig { [] }
     # Returns the length of this file.
     # 
     # @return     the length of this file, measured in bytes.
     # @exception  IOException  if an I/O error occurs.
     def length
-      JNI.__send__(:Java_java_io_RandomAccessFile_length, JNI.env, self.jni_id)
+      JNI.call_native_method(:Java_java_io_RandomAccessFile_length, JNI.env, self.jni_id)
     end
     
-    JNI.native_method :Java_java_io_RandomAccessFile_setLength, [:pointer, :long, :int64], :void
+    JNI.load_native_method :Java_java_io_RandomAccessFile_setLength, [:pointer, :long, :int64], :void
     typesig { [::Java::Long] }
     # Sets the length of this file.
     # 
@@ -596,7 +596,7 @@ module Java::Io
     # @exception  IOException  If an I/O error occurs
     # @since      1.2
     def set_length(new_length)
-      JNI.__send__(:Java_java_io_RandomAccessFile_setLength, JNI.env, self.jni_id, new_length.to_int)
+      JNI.call_native_method(:Java_java_io_RandomAccessFile_setLength, JNI.env, self.jni_id, new_length.to_int)
     end
     
     typesig { [] }
@@ -1133,17 +1133,17 @@ module Java::Io
     end
     
     class_module.module_eval {
-      JNI.native_method :Java_java_io_RandomAccessFile_initIDs, [:pointer, :long], :void
+      JNI.load_native_method :Java_java_io_RandomAccessFile_initIDs, [:pointer, :long], :void
       typesig { [] }
       def init_ids
-        JNI.__send__(:Java_java_io_RandomAccessFile_initIDs, JNI.env, self.jni_id)
+        JNI.call_native_method(:Java_java_io_RandomAccessFile_initIDs, JNI.env, self.jni_id)
       end
     }
     
-    JNI.native_method :Java_java_io_RandomAccessFile_close0, [:pointer, :long], :void
+    JNI.load_native_method :Java_java_io_RandomAccessFile_close0, [:pointer, :long], :void
     typesig { [] }
     def close0
-      JNI.__send__(:Java_java_io_RandomAccessFile_close0, JNI.env, self.jni_id)
+      JNI.call_native_method(:Java_java_io_RandomAccessFile_close0, JNI.env, self.jni_id)
     end
     
     class_module.module_eval {

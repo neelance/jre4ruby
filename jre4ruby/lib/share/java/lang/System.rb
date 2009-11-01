@@ -58,11 +58,11 @@ module Java::Lang
     include_class_members SystemImports
     
     class_module.module_eval {
-      JNI.native_method :Java_java_lang_System_registerNatives, [:pointer, :long], :void
+      JNI.load_native_method :Java_java_lang_System_registerNatives, [:pointer, :long], :void
       typesig { [] }
       # First thing---register the natives
       def register_natives
-        JNI.__send__(:Java_java_lang_System_registerNatives, JNI.env, self.jni_id)
+        JNI.call_native_method(:Java_java_lang_System_registerNatives, JNI.env, self.jni_id)
       end
       
       when_class_loaded do
@@ -291,22 +291,22 @@ module Java::Lang
         end
       end
       
-      JNI.native_method :Java_java_lang_System_setIn0, [:pointer, :long, :long], :void
+      JNI.load_native_method :Java_java_lang_System_setIn0, [:pointer, :long, :long], :void
       typesig { [InputStream] }
       def set_in0(in_)
-        JNI.__send__(:Java_java_lang_System_setIn0, JNI.env, self.jni_id, in_.jni_id)
+        JNI.call_native_method(:Java_java_lang_System_setIn0, JNI.env, self.jni_id, in_.jni_id)
       end
       
-      JNI.native_method :Java_java_lang_System_setOut0, [:pointer, :long, :long], :void
+      JNI.load_native_method :Java_java_lang_System_setOut0, [:pointer, :long, :long], :void
       typesig { [PrintStream] }
       def set_out0(out)
-        JNI.__send__(:Java_java_lang_System_setOut0, JNI.env, self.jni_id, out.jni_id)
+        JNI.call_native_method(:Java_java_lang_System_setOut0, JNI.env, self.jni_id, out.jni_id)
       end
       
-      JNI.native_method :Java_java_lang_System_setErr0, [:pointer, :long, :long], :void
+      JNI.load_native_method :Java_java_lang_System_setErr0, [:pointer, :long, :long], :void
       typesig { [PrintStream] }
       def set_err0(err)
-        JNI.__send__(:Java_java_lang_System_setErr0, JNI.env, self.jni_id, err.jni_id)
+        JNI.call_native_method(:Java_java_lang_System_setErr0, JNI.env, self.jni_id, err.jni_id)
       end
       
       typesig { [SecurityManager] }
@@ -394,7 +394,7 @@ module Java::Lang
         return self.attr_security
       end
       
-      JNI.native_method :Java_java_lang_System_currentTimeMillis, [:pointer, :long], :int64
+      JNI.load_native_method :Java_java_lang_System_currentTimeMillis, [:pointer, :long], :int64
       typesig { [] }
       # Returns the current time in milliseconds.  Note that
       # while the unit of time of the return value is a millisecond,
@@ -411,10 +411,10 @@ module Java::Lang
       # the current time and midnight, January 1, 1970 UTC.
       # @see     java.util.Date
       def current_time_millis
-        JNI.__send__(:Java_java_lang_System_currentTimeMillis, JNI.env, self.jni_id)
+        JNI.call_native_method(:Java_java_lang_System_currentTimeMillis, JNI.env, self.jni_id)
       end
       
-      JNI.native_method :Java_java_lang_System_nanoTime, [:pointer, :long], :int64
+      JNI.load_native_method :Java_java_lang_System_nanoTime, [:pointer, :long], :int64
       typesig { [] }
       # Returns the current value of the most precise available system
       # timer, in nanoseconds.
@@ -440,10 +440,10 @@ module Java::Lang
       # @return The current value of the system timer, in nanoseconds.
       # @since 1.5
       def nano_time
-        JNI.__send__(:Java_java_lang_System_nanoTime, JNI.env, self.jni_id)
+        JNI.call_native_method(:Java_java_lang_System_nanoTime, JNI.env, self.jni_id)
       end
       
-      JNI.native_method :Java_java_lang_System_arraycopy, [:pointer, :long, :long, :int32, :long, :int32, :int32], :void
+      JNI.load_native_method :Java_java_lang_System_arraycopy, [:pointer, :long, :long, :int32, :long, :int32, :int32], :void
       typesig { [Object, ::Java::Int, Object, ::Java::Int, ::Java::Int] }
       # Copies an array from the specified source array, beginning at the
       # specified position, to the specified position of the destination array.
@@ -536,10 +536,10 @@ module Java::Lang
       # @exception  NullPointerException if either <code>src</code> or
       # <code>dest</code> is <code>null</code>.
       def arraycopy(src, src_pos, dest, dest_pos, length)
-        JNI.__send__(:Java_java_lang_System_arraycopy, JNI.env, self.jni_id, src.jni_id, src_pos.to_int, dest.jni_id, dest_pos.to_int, length.to_int)
+        JNI.call_native_method(:Java_java_lang_System_arraycopy, JNI.env, self.jni_id, src.jni_id, src_pos.to_int, dest.jni_id, dest_pos.to_int, length.to_int)
       end
       
-      JNI.native_method :Java_java_lang_System_identityHashCode, [:pointer, :long, :long], :int32
+      JNI.load_native_method :Java_java_lang_System_identityHashCode, [:pointer, :long, :long], :int32
       typesig { [Object] }
       # Returns the same hash code for the given object as
       # would be returned by the default method hashCode(),
@@ -551,7 +551,7 @@ module Java::Lang
       # @return  the hashCode
       # @since   JDK1.1
       def identity_hash_code(x)
-        JNI.__send__(:Java_java_lang_System_identityHashCode, JNI.env, self.jni_id, x.jni_id)
+        JNI.call_native_method(:Java_java_lang_System_identityHashCode, JNI.env, self.jni_id, x.jni_id)
       end
       
       # System properties. The following properties are guaranteed to be defined:
@@ -583,10 +583,10 @@ module Java::Lang
       end
       alias_method :attr_props=, :props=
       
-      JNI.native_method :Java_java_lang_System_initProperties, [:pointer, :long, :long], :long
+      JNI.load_native_method :Java_java_lang_System_initProperties, [:pointer, :long, :long], :long
       typesig { [Properties] }
       def init_properties(props)
-        JNI.__send__(:Java_java_lang_System_initProperties, JNI.env, self.jni_id, props.jni_id)
+        JNI.call_native_method(:Java_java_lang_System_initProperties, JNI.env, self.jni_id, props.jni_id)
       end
       
       typesig { [] }
@@ -1110,7 +1110,7 @@ module Java::Lang
         Runtime.get_runtime.load_library0(get_caller_class, libname)
       end
       
-      JNI.native_method :Java_java_lang_System_mapLibraryName, [:pointer, :long, :long], :long
+      JNI.load_native_method :Java_java_lang_System_mapLibraryName, [:pointer, :long, :long], :long
       typesig { [String] }
       # Maps a library name into a platform-specific string representing
       # a native library.
@@ -1123,7 +1123,7 @@ module Java::Lang
       # @see        java.lang.ClassLoader#findLibrary(java.lang.String)
       # @since      1.2
       def map_library_name(libname)
-        JNI.__send__(:Java_java_lang_System_mapLibraryName, JNI.env, self.jni_id, libname.jni_id)
+        JNI.call_native_method(:Java_java_lang_System_mapLibraryName, JNI.env, self.jni_id, libname.jni_id)
       end
       
       typesig { [] }

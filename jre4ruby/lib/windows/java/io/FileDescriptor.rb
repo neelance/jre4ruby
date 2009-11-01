@@ -146,7 +146,7 @@ module Java::Io
       return ((!(@handle).equal?(-1)) || (!(@fd).equal?(-1)))
     end
     
-    JNI.native_method :Java_java_io_FileDescriptor_sync, [:pointer, :long], :void
+    JNI.load_native_method :Java_java_io_FileDescriptor_sync, [:pointer, :long], :void
     typesig { [] }
     # Force all system buffers to synchronize with the underlying
     # device.  This method returns after all modified data and
@@ -175,21 +175,21 @@ module Java::Io
     # buffers have been synchronized with physical media.
     # @since     JDK1.1
     def sync
-      JNI.__send__(:Java_java_io_FileDescriptor_sync, JNI.env, self.jni_id)
+      JNI.call_native_method(:Java_java_io_FileDescriptor_sync, JNI.env, self.jni_id)
     end
     
     class_module.module_eval {
-      JNI.native_method :Java_java_io_FileDescriptor_initIDs, [:pointer, :long], :void
+      JNI.load_native_method :Java_java_io_FileDescriptor_initIDs, [:pointer, :long], :void
       typesig { [] }
       # This routine initializes JNI field offsets for the class
       def init_ids
-        JNI.__send__(:Java_java_io_FileDescriptor_initIDs, JNI.env, self.jni_id)
+        JNI.call_native_method(:Java_java_io_FileDescriptor_initIDs, JNI.env, self.jni_id)
       end
       
-      JNI.native_method :Java_java_io_FileDescriptor_set, [:pointer, :long, :int32], :int64
+      JNI.load_native_method :Java_java_io_FileDescriptor_set, [:pointer, :long, :int32], :int64
       typesig { [::Java::Int] }
       def set(d)
-        JNI.__send__(:Java_java_io_FileDescriptor_set, JNI.env, self.jni_id, d.to_int)
+        JNI.call_native_method(:Java_java_io_FileDescriptor_set, JNI.env, self.jni_id, d.to_int)
       end
       
       typesig { [::Java::Int] }

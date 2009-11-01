@@ -651,10 +651,10 @@ module Java::Lang::Reflect
         return p.attr_h
       end
       
-      JNI.native_method :Java_java_lang_reflect_Proxy_defineClass0, [:pointer, :long, :long, :long, :long, :int32, :int32], :long
+      JNI.load_native_method :Java_java_lang_reflect_Proxy_defineClass0, [:pointer, :long, :long, :long, :long, :int32, :int32], :long
       typesig { [ClassLoader, String, Array.typed(::Java::Byte), ::Java::Int, ::Java::Int] }
       def define_class0(loader, name, b, off, len)
-        JNI.__send__(:Java_java_lang_reflect_Proxy_defineClass0, JNI.env, self.jni_id, loader.jni_id, name.jni_id, b.jni_id, off.to_int, len.to_int)
+        JNI.call_native_method(:Java_java_lang_reflect_Proxy_defineClass0, JNI.env, self.jni_id, loader.jni_id, name.jni_id, b.jni_id, off.to_int, len.to_int)
       end
     }
     

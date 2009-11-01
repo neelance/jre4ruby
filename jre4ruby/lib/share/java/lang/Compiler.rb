@@ -54,17 +54,17 @@ module Java::Lang
     end
     
     class_module.module_eval {
-      JNI.native_method :Java_java_lang_Compiler_initialize, [:pointer, :long], :void
+      JNI.load_native_method :Java_java_lang_Compiler_initialize, [:pointer, :long], :void
       typesig { [] }
       # don't make instances
       def initialize_
-        JNI.__send__(:Java_java_lang_Compiler_initialize, JNI.env, self.jni_id)
+        JNI.call_native_method(:Java_java_lang_Compiler_initialize, JNI.env, self.jni_id)
       end
       
-      JNI.native_method :Java_java_lang_Compiler_registerNatives, [:pointer, :long], :void
+      JNI.load_native_method :Java_java_lang_Compiler_registerNatives, [:pointer, :long], :void
       typesig { [] }
       def register_natives
-        JNI.__send__(:Java_java_lang_Compiler_registerNatives, JNI.env, self.jni_id)
+        JNI.call_native_method(:Java_java_lang_Compiler_registerNatives, JNI.env, self.jni_id)
       end
       
       when_class_loaded do
@@ -106,7 +106,7 @@ module Java::Lang
         end.new_local(self))
       end
       
-      JNI.native_method :Java_java_lang_Compiler_compileClass, [:pointer, :long, :long], :int8
+      JNI.load_native_method :Java_java_lang_Compiler_compileClass, [:pointer, :long, :long], :int8
       typesig { [Class] }
       # Compiles the specified class.
       # 
@@ -119,10 +119,10 @@ module Java::Lang
       # @throws  NullPointerException
       # If {@code clazz} is {@code null}
       def compile_class(clazz)
-        JNI.__send__(:Java_java_lang_Compiler_compileClass, JNI.env, self.jni_id, clazz.jni_id) != 0
+        JNI.call_native_method(:Java_java_lang_Compiler_compileClass, JNI.env, self.jni_id, clazz.jni_id) != 0
       end
       
-      JNI.native_method :Java_java_lang_Compiler_compileClasses, [:pointer, :long, :long], :int8
+      JNI.load_native_method :Java_java_lang_Compiler_compileClasses, [:pointer, :long, :long], :int8
       typesig { [String] }
       # Compiles all classes whose name matches the specified string.
       # 
@@ -135,10 +135,10 @@ module Java::Lang
       # @throws  NullPointerException
       # If {@code string} is {@code null}
       def compile_classes(string)
-        JNI.__send__(:Java_java_lang_Compiler_compileClasses, JNI.env, self.jni_id, string.jni_id) != 0
+        JNI.call_native_method(:Java_java_lang_Compiler_compileClasses, JNI.env, self.jni_id, string.jni_id) != 0
       end
       
-      JNI.native_method :Java_java_lang_Compiler_command, [:pointer, :long, :long], :long
+      JNI.load_native_method :Java_java_lang_Compiler_command, [:pointer, :long, :long], :long
       typesig { [Object] }
       # Examines the argument type and its fields and perform some documented
       # operation.  No specific operations are required.
@@ -152,21 +152,21 @@ module Java::Lang
       # @throws  NullPointerException
       # If {@code any} is {@code null}
       def command(any)
-        JNI.__send__(:Java_java_lang_Compiler_command, JNI.env, self.jni_id, any.jni_id)
+        JNI.call_native_method(:Java_java_lang_Compiler_command, JNI.env, self.jni_id, any.jni_id)
       end
       
-      JNI.native_method :Java_java_lang_Compiler_enable, [:pointer, :long], :void
+      JNI.load_native_method :Java_java_lang_Compiler_enable, [:pointer, :long], :void
       typesig { [] }
       # Cause the Compiler to resume operation.
       def enable
-        JNI.__send__(:Java_java_lang_Compiler_enable, JNI.env, self.jni_id)
+        JNI.call_native_method(:Java_java_lang_Compiler_enable, JNI.env, self.jni_id)
       end
       
-      JNI.native_method :Java_java_lang_Compiler_disable, [:pointer, :long], :void
+      JNI.load_native_method :Java_java_lang_Compiler_disable, [:pointer, :long], :void
       typesig { [] }
       # Cause the Compiler to cease operation.
       def disable
-        JNI.__send__(:Java_java_lang_Compiler_disable, JNI.env, self.jni_id)
+        JNI.call_native_method(:Java_java_lang_Compiler_disable, JNI.env, self.jni_id)
       end
     }
     

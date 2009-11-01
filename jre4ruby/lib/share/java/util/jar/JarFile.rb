@@ -222,10 +222,10 @@ module Java::Util::Jar
       return man
     end
     
-    JNI.native_method :Java_java_util_jar_JarFile_getMetaInfEntryNames, [:pointer, :long], :long
+    JNI.load_native_method :Java_java_util_jar_JarFile_getMetaInfEntryNames, [:pointer, :long], :long
     typesig { [] }
     def get_meta_inf_entry_names
-      JNI.__send__(:Java_java_util_jar_JarFile_getMetaInfEntryNames, JNI.env, self.jni_id)
+      JNI.call_native_method(:Java_java_util_jar_JarFile_getMetaInfEntryNames, JNI.env, self.jni_id)
     end
     
     typesig { [String] }

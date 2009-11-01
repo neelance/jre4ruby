@@ -84,65 +84,65 @@ module Sun::Nio::Ch
     end
     
     class_module.module_eval {
-      JNI.native_method :Java_sun_nio_ch_FileDispatcher_read0, [:pointer, :long, :long, :int64, :int32], :int32
+      JNI.load_native_method :Java_sun_nio_ch_FileDispatcher_read0, [:pointer, :long, :long, :int64, :int32], :int32
       typesig { [FileDescriptor, ::Java::Long, ::Java::Int] }
       # -- Native methods --
       def read0(fd, address, len)
-        JNI.__send__(:Java_sun_nio_ch_FileDispatcher_read0, JNI.env, self.jni_id, fd.jni_id, address.to_int, len.to_int)
+        JNI.call_native_method(:Java_sun_nio_ch_FileDispatcher_read0, JNI.env, self.jni_id, fd.jni_id, address.to_int, len.to_int)
       end
       
-      JNI.native_method :Java_sun_nio_ch_FileDispatcher_pread0, [:pointer, :long, :long, :int64, :int32, :int64], :int32
+      JNI.load_native_method :Java_sun_nio_ch_FileDispatcher_pread0, [:pointer, :long, :long, :int64, :int32, :int64], :int32
       typesig { [FileDescriptor, ::Java::Long, ::Java::Int, ::Java::Long] }
       def pread0(fd, address, len, position)
-        JNI.__send__(:Java_sun_nio_ch_FileDispatcher_pread0, JNI.env, self.jni_id, fd.jni_id, address.to_int, len.to_int, position.to_int)
+        JNI.call_native_method(:Java_sun_nio_ch_FileDispatcher_pread0, JNI.env, self.jni_id, fd.jni_id, address.to_int, len.to_int, position.to_int)
       end
       
-      JNI.native_method :Java_sun_nio_ch_FileDispatcher_readv0, [:pointer, :long, :long, :int64, :int32], :int64
+      JNI.load_native_method :Java_sun_nio_ch_FileDispatcher_readv0, [:pointer, :long, :long, :int64, :int32], :int64
       typesig { [FileDescriptor, ::Java::Long, ::Java::Int] }
       def readv0(fd, address, len)
-        JNI.__send__(:Java_sun_nio_ch_FileDispatcher_readv0, JNI.env, self.jni_id, fd.jni_id, address.to_int, len.to_int)
+        JNI.call_native_method(:Java_sun_nio_ch_FileDispatcher_readv0, JNI.env, self.jni_id, fd.jni_id, address.to_int, len.to_int)
       end
       
-      JNI.native_method :Java_sun_nio_ch_FileDispatcher_write0, [:pointer, :long, :long, :int64, :int32], :int32
+      JNI.load_native_method :Java_sun_nio_ch_FileDispatcher_write0, [:pointer, :long, :long, :int64, :int32], :int32
       typesig { [FileDescriptor, ::Java::Long, ::Java::Int] }
       def write0(fd, address, len)
-        JNI.__send__(:Java_sun_nio_ch_FileDispatcher_write0, JNI.env, self.jni_id, fd.jni_id, address.to_int, len.to_int)
+        JNI.call_native_method(:Java_sun_nio_ch_FileDispatcher_write0, JNI.env, self.jni_id, fd.jni_id, address.to_int, len.to_int)
       end
       
-      JNI.native_method :Java_sun_nio_ch_FileDispatcher_pwrite0, [:pointer, :long, :long, :int64, :int32, :int64], :int32
+      JNI.load_native_method :Java_sun_nio_ch_FileDispatcher_pwrite0, [:pointer, :long, :long, :int64, :int32, :int64], :int32
       typesig { [FileDescriptor, ::Java::Long, ::Java::Int, ::Java::Long] }
       def pwrite0(fd, address, len, position)
-        JNI.__send__(:Java_sun_nio_ch_FileDispatcher_pwrite0, JNI.env, self.jni_id, fd.jni_id, address.to_int, len.to_int, position.to_int)
+        JNI.call_native_method(:Java_sun_nio_ch_FileDispatcher_pwrite0, JNI.env, self.jni_id, fd.jni_id, address.to_int, len.to_int, position.to_int)
       end
       
-      JNI.native_method :Java_sun_nio_ch_FileDispatcher_writev0, [:pointer, :long, :long, :int64, :int32], :int64
+      JNI.load_native_method :Java_sun_nio_ch_FileDispatcher_writev0, [:pointer, :long, :long, :int64, :int32], :int64
       typesig { [FileDescriptor, ::Java::Long, ::Java::Int] }
       def writev0(fd, address, len)
-        JNI.__send__(:Java_sun_nio_ch_FileDispatcher_writev0, JNI.env, self.jni_id, fd.jni_id, address.to_int, len.to_int)
+        JNI.call_native_method(:Java_sun_nio_ch_FileDispatcher_writev0, JNI.env, self.jni_id, fd.jni_id, address.to_int, len.to_int)
       end
       
-      JNI.native_method :Java_sun_nio_ch_FileDispatcher_close0, [:pointer, :long, :long], :void
+      JNI.load_native_method :Java_sun_nio_ch_FileDispatcher_close0, [:pointer, :long, :long], :void
       typesig { [FileDescriptor] }
       def close0(fd)
-        JNI.__send__(:Java_sun_nio_ch_FileDispatcher_close0, JNI.env, self.jni_id, fd.jni_id)
+        JNI.call_native_method(:Java_sun_nio_ch_FileDispatcher_close0, JNI.env, self.jni_id, fd.jni_id)
       end
       
-      JNI.native_method :Java_sun_nio_ch_FileDispatcher_preClose0, [:pointer, :long, :long], :void
+      JNI.load_native_method :Java_sun_nio_ch_FileDispatcher_preClose0, [:pointer, :long, :long], :void
       typesig { [FileDescriptor] }
       def pre_close0(fd)
-        JNI.__send__(:Java_sun_nio_ch_FileDispatcher_preClose0, JNI.env, self.jni_id, fd.jni_id)
+        JNI.call_native_method(:Java_sun_nio_ch_FileDispatcher_preClose0, JNI.env, self.jni_id, fd.jni_id)
       end
       
-      JNI.native_method :Java_sun_nio_ch_FileDispatcher_closeIntFD, [:pointer, :long, :int32], :void
+      JNI.load_native_method :Java_sun_nio_ch_FileDispatcher_closeIntFD, [:pointer, :long, :int32], :void
       typesig { [::Java::Int] }
       def close_int_fd(fd)
-        JNI.__send__(:Java_sun_nio_ch_FileDispatcher_closeIntFD, JNI.env, self.jni_id, fd.to_int)
+        JNI.call_native_method(:Java_sun_nio_ch_FileDispatcher_closeIntFD, JNI.env, self.jni_id, fd.to_int)
       end
       
-      JNI.native_method :Java_sun_nio_ch_FileDispatcher_init, [:pointer, :long], :void
+      JNI.load_native_method :Java_sun_nio_ch_FileDispatcher_init, [:pointer, :long], :void
       typesig { [] }
       def init
-        JNI.__send__(:Java_sun_nio_ch_FileDispatcher_init, JNI.env, self.jni_id)
+        JNI.call_native_method(:Java_sun_nio_ch_FileDispatcher_init, JNI.env, self.jni_id)
       end
     }
     

@@ -1021,34 +1021,34 @@ module Sun::Security::Pkcs11
         return trust_map
       end
       
-      JNI.native_method :Java_sun_security_pkcs11_Secmod_nssGetLibraryHandle, [:pointer, :long, :long], :int64
+      JNI.load_native_method :Java_sun_security_pkcs11_Secmod_nssGetLibraryHandle, [:pointer, :long, :long], :int64
       typesig { [String] }
       def nss_get_library_handle(library_name)
-        JNI.__send__(:Java_sun_security_pkcs11_Secmod_nssGetLibraryHandle, JNI.env, self.jni_id, library_name.jni_id)
+        JNI.call_native_method(:Java_sun_security_pkcs11_Secmod_nssGetLibraryHandle, JNI.env, self.jni_id, library_name.jni_id)
       end
       
-      JNI.native_method :Java_sun_security_pkcs11_Secmod_nssLoadLibrary, [:pointer, :long, :long], :int64
+      JNI.load_native_method :Java_sun_security_pkcs11_Secmod_nssLoadLibrary, [:pointer, :long, :long], :int64
       typesig { [String] }
       def nss_load_library(name)
-        JNI.__send__(:Java_sun_security_pkcs11_Secmod_nssLoadLibrary, JNI.env, self.jni_id, name.jni_id)
+        JNI.call_native_method(:Java_sun_security_pkcs11_Secmod_nssLoadLibrary, JNI.env, self.jni_id, name.jni_id)
       end
       
-      JNI.native_method :Java_sun_security_pkcs11_Secmod_nssVersionCheck, [:pointer, :long, :int64, :long], :int8
+      JNI.load_native_method :Java_sun_security_pkcs11_Secmod_nssVersionCheck, [:pointer, :long, :int64, :long], :int8
       typesig { [::Java::Long, String] }
       def nss_version_check(handle, min_version)
-        JNI.__send__(:Java_sun_security_pkcs11_Secmod_nssVersionCheck, JNI.env, self.jni_id, handle.to_int, min_version.jni_id) != 0
+        JNI.call_native_method(:Java_sun_security_pkcs11_Secmod_nssVersionCheck, JNI.env, self.jni_id, handle.to_int, min_version.jni_id) != 0
       end
       
-      JNI.native_method :Java_sun_security_pkcs11_Secmod_nssInit, [:pointer, :long, :long, :int64, :long], :int8
+      JNI.load_native_method :Java_sun_security_pkcs11_Secmod_nssInit, [:pointer, :long, :long, :int64, :long], :int8
       typesig { [String, ::Java::Long, String] }
       def nss_init(function_name, handle, config_dir)
-        JNI.__send__(:Java_sun_security_pkcs11_Secmod_nssInit, JNI.env, self.jni_id, function_name.jni_id, handle.to_int, config_dir.jni_id) != 0
+        JNI.call_native_method(:Java_sun_security_pkcs11_Secmod_nssInit, JNI.env, self.jni_id, function_name.jni_id, handle.to_int, config_dir.jni_id) != 0
       end
       
-      JNI.native_method :Java_sun_security_pkcs11_Secmod_nssGetModuleList, [:pointer, :long, :int64], :long
+      JNI.load_native_method :Java_sun_security_pkcs11_Secmod_nssGetModuleList, [:pointer, :long, :int64], :long
       typesig { [::Java::Long] }
       def nss_get_module_list(handle)
-        JNI.__send__(:Java_sun_security_pkcs11_Secmod_nssGetModuleList, JNI.env, self.jni_id, handle.to_int)
+        JNI.call_native_method(:Java_sun_security_pkcs11_Secmod_nssGetModuleList, JNI.env, self.jni_id, handle.to_int)
       end
     }
     

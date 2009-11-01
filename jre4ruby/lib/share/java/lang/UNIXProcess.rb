@@ -91,17 +91,17 @@ module Java::Lang
     alias_method :attr_stderr_stream=, :stderr_stream=
     undef_method :stderr_stream=
     
-    JNI.native_method :Java_java_lang_UNIXProcess_waitForProcessExit, [:pointer, :long, :int32], :int32
+    JNI.load_native_method :Java_java_lang_UNIXProcess_waitForProcessExit, [:pointer, :long, :int32], :int32
     typesig { [::Java::Int] }
     # this is for the reaping thread
     def wait_for_process_exit(pid)
-      JNI.__send__(:Java_java_lang_UNIXProcess_waitForProcessExit, JNI.env, self.jni_id, pid.to_int)
+      JNI.call_native_method(:Java_java_lang_UNIXProcess_waitForProcessExit, JNI.env, self.jni_id, pid.to_int)
     end
     
-    JNI.native_method :Java_java_lang_UNIXProcess_forkAndExec, [:pointer, :long, :long, :long, :int32, :long, :int32, :long, :int8, :long, :long, :long], :int32
+    JNI.load_native_method :Java_java_lang_UNIXProcess_forkAndExec, [:pointer, :long, :long, :long, :int32, :long, :int32, :long, :int8, :long, :long, :long], :int32
     typesig { [Array.typed(::Java::Byte), Array.typed(::Java::Byte), ::Java::Int, Array.typed(::Java::Byte), ::Java::Int, Array.typed(::Java::Byte), ::Java::Boolean, FileDescriptor, FileDescriptor, FileDescriptor] }
     def fork_and_exec(prog, arg_block, argc, env_block, envc, dir, redirect_error_stream, stdin_fd, stdout_fd, stderr_fd)
-      JNI.__send__(:Java_java_lang_UNIXProcess_forkAndExec, JNI.env, self.jni_id, prog.jni_id, arg_block.jni_id, argc.to_int, env_block.jni_id, envc.to_int, dir.jni_id, redirect_error_stream ? 1 : 0, stdin_fd.jni_id, stdout_fd.jni_id, stderr_fd.jni_id)
+      JNI.call_native_method(:Java_java_lang_UNIXProcess_forkAndExec, JNI.env, self.jni_id, prog.jni_id, arg_block.jni_id, argc.to_int, env_block.jni_id, envc.to_int, dir.jni_id, redirect_error_stream ? 1 : 0, stdin_fd.jni_id, stdout_fd.jni_id, stderr_fd.jni_id)
     end
     
     class_module.module_eval {
@@ -313,10 +313,10 @@ module Java::Lang
     end
     
     class_module.module_eval {
-      JNI.native_method :Java_java_lang_UNIXProcess_destroyProcess, [:pointer, :long, :int32], :void
+      JNI.load_native_method :Java_java_lang_UNIXProcess_destroyProcess, [:pointer, :long, :int32], :void
       typesig { [::Java::Int] }
       def destroy_process(pid)
-        JNI.__send__(:Java_java_lang_UNIXProcess_destroyProcess, JNI.env, self.jni_id, pid.to_int)
+        JNI.call_native_method(:Java_java_lang_UNIXProcess_destroyProcess, JNI.env, self.jni_id, pid.to_int)
       end
     }
     
@@ -343,11 +343,11 @@ module Java::Lang
     end
     
     class_module.module_eval {
-      JNI.native_method :Java_java_lang_UNIXProcess_initIDs, [:pointer, :long], :void
+      JNI.load_native_method :Java_java_lang_UNIXProcess_initIDs, [:pointer, :long], :void
       typesig { [] }
       # This routine initializes JNI field offsets for the class
       def init_ids
-        JNI.__send__(:Java_java_lang_UNIXProcess_initIDs, JNI.env, self.jni_id)
+        JNI.call_native_method(:Java_java_lang_UNIXProcess_initIDs, JNI.env, self.jni_id)
       end
       
       when_class_loaded do

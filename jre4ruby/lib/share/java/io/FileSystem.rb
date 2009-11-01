@@ -35,12 +35,12 @@ module Java::Io
     include_class_members FileSystemImports
     
     class_module.module_eval {
-      JNI.native_method :Java_java_io_FileSystem_getFileSystem, [:pointer, :long], :long
+      JNI.load_native_method :Java_java_io_FileSystem_getFileSystem, [:pointer, :long], :long
       typesig { [] }
       # Return the FileSystem object representing this platform's local
       # filesystem.
       def get_file_system
-        JNI.__send__(:Java_java_io_FileSystem_getFileSystem, JNI.env, self.jni_id)
+        JNI.call_native_method(:Java_java_io_FileSystem_getFileSystem, JNI.env, self.jni_id)
       end
     }
     

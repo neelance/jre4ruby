@@ -1950,25 +1950,25 @@ module Java::Io
     end
     
     class_module.module_eval {
-      JNI.native_method :Java_java_io_ObjectInputStream_bytesToFloats, [:pointer, :long, :long, :int32, :long, :int32, :int32], :void
+      JNI.load_native_method :Java_java_io_ObjectInputStream_bytesToFloats, [:pointer, :long, :long, :int32, :long, :int32, :int32], :void
       typesig { [Array.typed(::Java::Byte), ::Java::Int, Array.typed(::Java::Float), ::Java::Int, ::Java::Int] }
       # Converts specified span of bytes into float values.
       # 
       # REMIND: remove once hotspot inlines Float.intBitsToFloat
       def bytes_to_floats(src, srcpos, dst, dstpos, nfloats)
-        JNI.__send__(:Java_java_io_ObjectInputStream_bytesToFloats, JNI.env, self.jni_id, src.jni_id, srcpos.to_int, dst.jni_id, dstpos.to_int, nfloats.to_int)
+        JNI.call_native_method(:Java_java_io_ObjectInputStream_bytesToFloats, JNI.env, self.jni_id, src.jni_id, srcpos.to_int, dst.jni_id, dstpos.to_int, nfloats.to_int)
       end
       
-      JNI.native_method :Java_java_io_ObjectInputStream_bytesToDoubles, [:pointer, :long, :long, :int32, :long, :int32, :int32], :void
+      JNI.load_native_method :Java_java_io_ObjectInputStream_bytesToDoubles, [:pointer, :long, :long, :int32, :long, :int32, :int32], :void
       typesig { [Array.typed(::Java::Byte), ::Java::Int, Array.typed(::Java::Double), ::Java::Int, ::Java::Int] }
       # Converts specified span of bytes into double values.
       # 
       # REMIND: remove once hotspot inlines Double.longBitsToDouble
       def bytes_to_doubles(src, srcpos, dst, dstpos, ndoubles)
-        JNI.__send__(:Java_java_io_ObjectInputStream_bytesToDoubles, JNI.env, self.jni_id, src.jni_id, srcpos.to_int, dst.jni_id, dstpos.to_int, ndoubles.to_int)
+        JNI.call_native_method(:Java_java_io_ObjectInputStream_bytesToDoubles, JNI.env, self.jni_id, src.jni_id, srcpos.to_int, dst.jni_id, dstpos.to_int, ndoubles.to_int)
       end
       
-      JNI.native_method :Java_java_io_ObjectInputStream_latestUserDefinedLoader, [:pointer, :long], :long
+      JNI.load_native_method :Java_java_io_ObjectInputStream_latestUserDefinedLoader, [:pointer, :long], :long
       typesig { [] }
       # Returns the first non-null class loader (not counting class loaders of
       # generated reflection implementation classes) up the execution stack, or
@@ -1982,7 +1982,7 @@ module Java::Io
       # 
       # REMIND: change name to something more accurate?
       def latest_user_defined_loader
-        JNI.__send__(:Java_java_io_ObjectInputStream_latestUserDefinedLoader, JNI.env, self.jni_id)
+        JNI.call_native_method(:Java_java_io_ObjectInputStream_latestUserDefinedLoader, JNI.env, self.jni_id)
       end
       
       # Default GetField implementation.

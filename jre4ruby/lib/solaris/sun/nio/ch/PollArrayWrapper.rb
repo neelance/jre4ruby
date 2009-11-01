@@ -136,17 +136,17 @@ module Sun::Nio::Ch
       interrupt(@interrupt_fd)
     end
     
-    JNI.native_method :Java_sun_nio_ch_PollArrayWrapper_poll0, [:pointer, :long, :int64, :int32, :int64], :int32
+    JNI.load_native_method :Java_sun_nio_ch_PollArrayWrapper_poll0, [:pointer, :long, :int64, :int32, :int64], :int32
     typesig { [::Java::Long, ::Java::Int, ::Java::Long] }
     def poll0(poll_address, numfds, timeout)
-      JNI.__send__(:Java_sun_nio_ch_PollArrayWrapper_poll0, JNI.env, self.jni_id, poll_address.to_int, numfds.to_int, timeout.to_int)
+      JNI.call_native_method(:Java_sun_nio_ch_PollArrayWrapper_poll0, JNI.env, self.jni_id, poll_address.to_int, numfds.to_int, timeout.to_int)
     end
     
     class_module.module_eval {
-      JNI.native_method :Java_sun_nio_ch_PollArrayWrapper_interrupt, [:pointer, :long, :int32], :void
+      JNI.load_native_method :Java_sun_nio_ch_PollArrayWrapper_interrupt, [:pointer, :long, :int32], :void
       typesig { [::Java::Int] }
       def interrupt(fd)
-        JNI.__send__(:Java_sun_nio_ch_PollArrayWrapper_interrupt, JNI.env, self.jni_id, fd.to_int)
+        JNI.call_native_method(:Java_sun_nio_ch_PollArrayWrapper_interrupt, JNI.env, self.jni_id, fd.to_int)
       end
     }
     

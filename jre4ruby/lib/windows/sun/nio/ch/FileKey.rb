@@ -94,17 +94,17 @@ module Sun::Nio::Ch
       return true
     end
     
-    JNI.native_method :Java_sun_nio_ch_FileKey_init, [:pointer, :long, :long], :void
+    JNI.load_native_method :Java_sun_nio_ch_FileKey_init, [:pointer, :long, :long], :void
     typesig { [FileDescriptor] }
     def init(fd)
-      JNI.__send__(:Java_sun_nio_ch_FileKey_init, JNI.env, self.jni_id, fd.jni_id)
+      JNI.call_native_method(:Java_sun_nio_ch_FileKey_init, JNI.env, self.jni_id, fd.jni_id)
     end
     
     class_module.module_eval {
-      JNI.native_method :Java_sun_nio_ch_FileKey_initIDs, [:pointer, :long], :void
+      JNI.load_native_method :Java_sun_nio_ch_FileKey_initIDs, [:pointer, :long], :void
       typesig { [] }
       def init_ids
-        JNI.__send__(:Java_sun_nio_ch_FileKey_initIDs, JNI.env, self.jni_id)
+        JNI.call_native_method(:Java_sun_nio_ch_FileKey_initIDs, JNI.env, self.jni_id)
       end
       
       when_class_loaded do

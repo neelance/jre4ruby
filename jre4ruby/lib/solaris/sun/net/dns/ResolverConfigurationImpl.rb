@@ -291,17 +291,17 @@ module Sun::Net::Dns
     end
     
     class_module.module_eval {
-      JNI.native_method :Java_sun_net_dns_ResolverConfigurationImpl_localDomain0, [:pointer, :long], :long
+      JNI.load_native_method :Java_sun_net_dns_ResolverConfigurationImpl_localDomain0, [:pointer, :long], :long
       typesig { [] }
       # --- Native methods --
       def local_domain0
-        JNI.__send__(:Java_sun_net_dns_ResolverConfigurationImpl_localDomain0, JNI.env, self.jni_id)
+        JNI.call_native_method(:Java_sun_net_dns_ResolverConfigurationImpl_localDomain0, JNI.env, self.jni_id)
       end
       
-      JNI.native_method :Java_sun_net_dns_ResolverConfigurationImpl_fallbackDomain0, [:pointer, :long], :long
+      JNI.load_native_method :Java_sun_net_dns_ResolverConfigurationImpl_fallbackDomain0, [:pointer, :long], :long
       typesig { [] }
       def fallback_domain0
-        JNI.__send__(:Java_sun_net_dns_ResolverConfigurationImpl_fallbackDomain0, JNI.env, self.jni_id)
+        JNI.call_native_method(:Java_sun_net_dns_ResolverConfigurationImpl_fallbackDomain0, JNI.env, self.jni_id)
       end
       
       when_class_loaded do

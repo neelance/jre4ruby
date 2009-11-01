@@ -251,47 +251,47 @@ module Sun::Nio::Ch
         end
       end
       
-      JNI.native_method :Java_sun_nio_ch_InheritedChannel_dup, [:pointer, :long, :int32], :int32
+      JNI.load_native_method :Java_sun_nio_ch_InheritedChannel_dup, [:pointer, :long, :int32], :int32
       typesig { [::Java::Int] }
       # -- Native methods --
       def dup(fd)
-        JNI.__send__(:Java_sun_nio_ch_InheritedChannel_dup, JNI.env, self.jni_id, fd.to_int)
+        JNI.call_native_method(:Java_sun_nio_ch_InheritedChannel_dup, JNI.env, self.jni_id, fd.to_int)
       end
       
-      JNI.native_method :Java_sun_nio_ch_InheritedChannel_dup2, [:pointer, :long, :int32, :int32], :void
+      JNI.load_native_method :Java_sun_nio_ch_InheritedChannel_dup2, [:pointer, :long, :int32, :int32], :void
       typesig { [::Java::Int, ::Java::Int] }
       def dup2(fd, fd2)
-        JNI.__send__(:Java_sun_nio_ch_InheritedChannel_dup2, JNI.env, self.jni_id, fd.to_int, fd2.to_int)
+        JNI.call_native_method(:Java_sun_nio_ch_InheritedChannel_dup2, JNI.env, self.jni_id, fd.to_int, fd2.to_int)
       end
       
-      JNI.native_method :Java_sun_nio_ch_InheritedChannel_open0, [:pointer, :long, :long, :int32], :int32
+      JNI.load_native_method :Java_sun_nio_ch_InheritedChannel_open0, [:pointer, :long, :long, :int32], :int32
       typesig { [String, ::Java::Int] }
       def open0(path, oflag)
-        JNI.__send__(:Java_sun_nio_ch_InheritedChannel_open0, JNI.env, self.jni_id, path.jni_id, oflag.to_int)
+        JNI.call_native_method(:Java_sun_nio_ch_InheritedChannel_open0, JNI.env, self.jni_id, path.jni_id, oflag.to_int)
       end
       
-      JNI.native_method :Java_sun_nio_ch_InheritedChannel_close0, [:pointer, :long, :int32], :void
+      JNI.load_native_method :Java_sun_nio_ch_InheritedChannel_close0, [:pointer, :long, :int32], :void
       typesig { [::Java::Int] }
       def close0(fd)
-        JNI.__send__(:Java_sun_nio_ch_InheritedChannel_close0, JNI.env, self.jni_id, fd.to_int)
+        JNI.call_native_method(:Java_sun_nio_ch_InheritedChannel_close0, JNI.env, self.jni_id, fd.to_int)
       end
       
-      JNI.native_method :Java_sun_nio_ch_InheritedChannel_soType0, [:pointer, :long, :int32], :int32
+      JNI.load_native_method :Java_sun_nio_ch_InheritedChannel_soType0, [:pointer, :long, :int32], :int32
       typesig { [::Java::Int] }
       def so_type0(fd)
-        JNI.__send__(:Java_sun_nio_ch_InheritedChannel_soType0, JNI.env, self.jni_id, fd.to_int)
+        JNI.call_native_method(:Java_sun_nio_ch_InheritedChannel_soType0, JNI.env, self.jni_id, fd.to_int)
       end
       
-      JNI.native_method :Java_sun_nio_ch_InheritedChannel_peerAddress0, [:pointer, :long, :int32], :long
+      JNI.load_native_method :Java_sun_nio_ch_InheritedChannel_peerAddress0, [:pointer, :long, :int32], :long
       typesig { [::Java::Int] }
       def peer_address0(fd)
-        JNI.__send__(:Java_sun_nio_ch_InheritedChannel_peerAddress0, JNI.env, self.jni_id, fd.to_int)
+        JNI.call_native_method(:Java_sun_nio_ch_InheritedChannel_peerAddress0, JNI.env, self.jni_id, fd.to_int)
       end
       
-      JNI.native_method :Java_sun_nio_ch_InheritedChannel_peerPort0, [:pointer, :long, :int32], :int32
+      JNI.load_native_method :Java_sun_nio_ch_InheritedChannel_peerPort0, [:pointer, :long, :int32], :int32
       typesig { [::Java::Int] }
       def peer_port0(fd)
-        JNI.__send__(:Java_sun_nio_ch_InheritedChannel_peerPort0, JNI.env, self.jni_id, fd.to_int)
+        JNI.call_native_method(:Java_sun_nio_ch_InheritedChannel_peerPort0, JNI.env, self.jni_id, fd.to_int)
       end
       
       when_class_loaded do

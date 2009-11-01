@@ -42,7 +42,7 @@ module Sun::Security::Mscapi
     }
     
     class_module.module_eval {
-      JNI.native_method :Java_sun_security_mscapi_PRNG_generateSeed, [:pointer, :long, :int32, :long], :long
+      JNI.load_native_method :Java_sun_security_mscapi_PRNG_generateSeed, [:pointer, :long, :int32, :long], :long
       typesig { [::Java::Int, Array.typed(::Java::Byte)] }
       # TODO - generate the serialVersionUID
       # private static final long serialVersionUID = XXX;
@@ -50,7 +50,7 @@ module Sun::Security::Mscapi
       # The CryptGenRandom function fills a buffer with cryptographically random
       # bytes.
       def generate_seed(length, seed)
-        JNI.__send__(:Java_sun_security_mscapi_PRNG_generateSeed, JNI.env, self.jni_id, length.to_int, seed.jni_id)
+        JNI.call_native_method(:Java_sun_security_mscapi_PRNG_generateSeed, JNI.env, self.jni_id, length.to_int, seed.jni_id)
       end
     }
     

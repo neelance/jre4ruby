@@ -101,7 +101,7 @@ module Java::Net
       return nil
     end
     
-    JNI.native_method :Java_java_net_SocketOutputStream_socketWrite0, [:pointer, :long, :long, :long, :int32, :int32], :void
+    JNI.load_native_method :Java_java_net_SocketOutputStream_socketWrite0, [:pointer, :long, :long, :long, :int32, :int32], :void
     typesig { [FileDescriptor, Array.typed(::Java::Byte), ::Java::Int, ::Java::Int] }
     # Writes to the socket.
     # @param fd the FileDescriptor
@@ -110,7 +110,7 @@ module Java::Net
     # @param len the number of bytes that are written
     # @exception IOException If an I/O error has occurred.
     def socket_write0(fd, b, off, len)
-      JNI.__send__(:Java_java_net_SocketOutputStream_socketWrite0, JNI.env, self.jni_id, fd.jni_id, b.jni_id, off.to_int, len.to_int)
+      JNI.call_native_method(:Java_java_net_SocketOutputStream_socketWrite0, JNI.env, self.jni_id, fd.jni_id, b.jni_id, off.to_int, len.to_int)
     end
     
     typesig { [Array.typed(::Java::Byte), ::Java::Int, ::Java::Int] }
@@ -203,11 +203,11 @@ module Java::Net
     end
     
     class_module.module_eval {
-      JNI.native_method :Java_java_net_SocketOutputStream_init, [:pointer, :long], :void
+      JNI.load_native_method :Java_java_net_SocketOutputStream_init, [:pointer, :long], :void
       typesig { [] }
       # Perform class load-time initializations.
       def init
-        JNI.__send__(:Java_java_net_SocketOutputStream_init, JNI.env, self.jni_id)
+        JNI.call_native_method(:Java_java_net_SocketOutputStream_init, JNI.env, self.jni_id)
       end
     }
     

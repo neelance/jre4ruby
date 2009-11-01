@@ -341,46 +341,46 @@ module Sun::Nio::Ch
         return fd
       end
       
-      JNI.native_method :Java_sun_nio_ch_IOUtil_randomBytes, [:pointer, :long, :long], :int8
+      JNI.load_native_method :Java_sun_nio_ch_IOUtil_randomBytes, [:pointer, :long, :long], :int8
       typesig { [Array.typed(::Java::Byte)] }
       def random_bytes(some_bytes)
-        JNI.__send__(:Java_sun_nio_ch_IOUtil_randomBytes, JNI.env, self.jni_id, some_bytes.jni_id) != 0
+        JNI.call_native_method(:Java_sun_nio_ch_IOUtil_randomBytes, JNI.env, self.jni_id, some_bytes.jni_id) != 0
       end
       
-      JNI.native_method :Java_sun_nio_ch_IOUtil_initPipe, [:pointer, :long, :long, :int8], :void
+      JNI.load_native_method :Java_sun_nio_ch_IOUtil_initPipe, [:pointer, :long, :long, :int8], :void
       typesig { [Array.typed(::Java::Int), ::Java::Boolean] }
       def init_pipe(fda, blocking)
-        JNI.__send__(:Java_sun_nio_ch_IOUtil_initPipe, JNI.env, self.jni_id, fda.jni_id, blocking ? 1 : 0)
+        JNI.call_native_method(:Java_sun_nio_ch_IOUtil_initPipe, JNI.env, self.jni_id, fda.jni_id, blocking ? 1 : 0)
       end
       
-      JNI.native_method :Java_sun_nio_ch_IOUtil_drain, [:pointer, :long, :int32], :int8
+      JNI.load_native_method :Java_sun_nio_ch_IOUtil_drain, [:pointer, :long, :int32], :int8
       typesig { [::Java::Int] }
       def drain(fd)
-        JNI.__send__(:Java_sun_nio_ch_IOUtil_drain, JNI.env, self.jni_id, fd.to_int) != 0
+        JNI.call_native_method(:Java_sun_nio_ch_IOUtil_drain, JNI.env, self.jni_id, fd.to_int) != 0
       end
       
-      JNI.native_method :Java_sun_nio_ch_IOUtil_configureBlocking, [:pointer, :long, :long, :int8], :void
+      JNI.load_native_method :Java_sun_nio_ch_IOUtil_configureBlocking, [:pointer, :long, :long, :int8], :void
       typesig { [FileDescriptor, ::Java::Boolean] }
       def configure_blocking(fd, blocking)
-        JNI.__send__(:Java_sun_nio_ch_IOUtil_configureBlocking, JNI.env, self.jni_id, fd.jni_id, blocking ? 1 : 0)
+        JNI.call_native_method(:Java_sun_nio_ch_IOUtil_configureBlocking, JNI.env, self.jni_id, fd.jni_id, blocking ? 1 : 0)
       end
       
-      JNI.native_method :Java_sun_nio_ch_IOUtil_fdVal, [:pointer, :long, :long], :int32
+      JNI.load_native_method :Java_sun_nio_ch_IOUtil_fdVal, [:pointer, :long, :long], :int32
       typesig { [FileDescriptor] }
       def fd_val(fd)
-        JNI.__send__(:Java_sun_nio_ch_IOUtil_fdVal, JNI.env, self.jni_id, fd.jni_id)
+        JNI.call_native_method(:Java_sun_nio_ch_IOUtil_fdVal, JNI.env, self.jni_id, fd.jni_id)
       end
       
-      JNI.native_method :Java_sun_nio_ch_IOUtil_setfdVal, [:pointer, :long, :long, :int32], :void
+      JNI.load_native_method :Java_sun_nio_ch_IOUtil_setfdVal, [:pointer, :long, :long, :int32], :void
       typesig { [FileDescriptor, ::Java::Int] }
       def setfd_val(fd, value)
-        JNI.__send__(:Java_sun_nio_ch_IOUtil_setfdVal, JNI.env, self.jni_id, fd.jni_id, value.to_int)
+        JNI.call_native_method(:Java_sun_nio_ch_IOUtil_setfdVal, JNI.env, self.jni_id, fd.jni_id, value.to_int)
       end
       
-      JNI.native_method :Java_sun_nio_ch_IOUtil_initIDs, [:pointer, :long], :void
+      JNI.load_native_method :Java_sun_nio_ch_IOUtil_initIDs, [:pointer, :long], :void
       typesig { [] }
       def init_ids
-        JNI.__send__(:Java_sun_nio_ch_IOUtil_initIDs, JNI.env, self.jni_id)
+        JNI.call_native_method(:Java_sun_nio_ch_IOUtil_initIDs, JNI.env, self.jni_id)
       end
       
       when_class_loaded do

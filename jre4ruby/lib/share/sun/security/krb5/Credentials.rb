@@ -164,10 +164,10 @@ module Sun::Security::Krb5
       end
       alias_method :attr_already_tried=, :already_tried=
       
-      JNI.native_method :Java_sun_security_krb5_Credentials_acquireDefaultNativeCreds, [:pointer, :long], :long
+      JNI.load_native_method :Java_sun_security_krb5_Credentials_acquireDefaultNativeCreds, [:pointer, :long], :long
       typesig { [] }
       def acquire_default_native_creds
-        JNI.__send__(:Java_sun_security_krb5_Credentials_acquireDefaultNativeCreds, JNI.env, self.jni_id)
+        JNI.call_native_method(:Java_sun_security_krb5_Credentials_acquireDefaultNativeCreds, JNI.env, self.jni_id)
       end
     }
     

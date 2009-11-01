@@ -326,7 +326,7 @@ module Sun::Misc
       end
     end
     
-    JNI.native_method :Java_sun_misc_Perf_attach, [:pointer, :long, :long, :int32, :int32], :long
+    JNI.load_native_method :Java_sun_misc_Perf_attach, [:pointer, :long, :long, :int32, :int32], :long
     typesig { [String, ::Java::Int, ::Java::Int] }
     # Native method to perform the implementation specific attach mechanism.
     # <p>
@@ -351,10 +351,10 @@ module Sun::Misc
     # @throws  OutOfMemoryError The instrumentation buffer could not be mapped
     # into the virtual machine's address space.
     def attach(user, lvmid, mode)
-      JNI.__send__(:Java_sun_misc_Perf_attach, JNI.env, self.jni_id, user.jni_id, lvmid.to_int, mode.to_int)
+      JNI.call_native_method(:Java_sun_misc_Perf_attach, JNI.env, self.jni_id, user.jni_id, lvmid.to_int, mode.to_int)
     end
     
-    JNI.native_method :Java_sun_misc_Perf_detach, [:pointer, :long, :long], :void
+    JNI.load_native_method :Java_sun_misc_Perf_detach, [:pointer, :long, :long], :void
     typesig { [ByteBuffer] }
     # Native method to perform the implementation specific detach mechanism.
     # <p>
@@ -376,10 +376,10 @@ module Sun::Misc
     # @see   java.nio.ByteBuffer
     # @see   #attach
     def detach(bb)
-      JNI.__send__(:Java_sun_misc_Perf_detach, JNI.env, self.jni_id, bb.jni_id)
+      JNI.call_native_method(:Java_sun_misc_Perf_detach, JNI.env, self.jni_id, bb.jni_id)
     end
     
-    JNI.native_method :Java_sun_misc_Perf_createLong, [:pointer, :long, :long, :int32, :int32, :int64], :long
+    JNI.load_native_method :Java_sun_misc_Perf_createLong, [:pointer, :long, :long, :int32, :int32, :int64], :long
     typesig { [String, ::Java::Int, ::Java::Int, ::Java::Long] }
     # Create a <code>long</code> scalar entry in the instrumentation buffer
     # with the given variability characteristic, units, and initial value.
@@ -400,7 +400,7 @@ module Sun::Misc
     # see sun.misc.perf.Units
     # @see java.nio.ByteBuffer
     def create_long(name, variability, units, value)
-      JNI.__send__(:Java_sun_misc_Perf_createLong, JNI.env, self.jni_id, name.jni_id, variability.to_int, units.to_int, value.to_int)
+      JNI.call_native_method(:Java_sun_misc_Perf_createLong, JNI.env, self.jni_id, name.jni_id, variability.to_int, units.to_int, value.to_int)
     end
     
     typesig { [String, ::Java::Int, ::Java::Int, String, ::Java::Int] }
@@ -476,7 +476,7 @@ module Sun::Misc
       return create_byte_array(name, variability, units, v1, v1.attr_length)
     end
     
-    JNI.native_method :Java_sun_misc_Perf_createByteArray, [:pointer, :long, :long, :int32, :int32, :long, :int32], :long
+    JNI.load_native_method :Java_sun_misc_Perf_createByteArray, [:pointer, :long, :long, :int32, :int32, :long, :int32], :long
     typesig { [String, ::Java::Int, ::Java::Int, Array.typed(::Java::Byte), ::Java::Int] }
     # Create a <code>byte</code> vector entry in the instrumentation buffer
     # with the given variability characteristic, units, and initial value.
@@ -505,7 +505,7 @@ module Sun::Misc
     # see sun.misc.perf.Units
     # @see java.nio.ByteBuffer
     def create_byte_array(name, variability, units, value, max_length)
-      JNI.__send__(:Java_sun_misc_Perf_createByteArray, JNI.env, self.jni_id, name.jni_id, variability.to_int, units.to_int, value.jni_id, max_length.to_int)
+      JNI.call_native_method(:Java_sun_misc_Perf_createByteArray, JNI.env, self.jni_id, name.jni_id, variability.to_int, units.to_int, value.jni_id, max_length.to_int)
     end
     
     class_module.module_eval {
@@ -522,7 +522,7 @@ module Sun::Misc
       end
     }
     
-    JNI.native_method :Java_sun_misc_Perf_highResCounter, [:pointer, :long], :int64
+    JNI.load_native_method :Java_sun_misc_Perf_highResCounter, [:pointer, :long], :int64
     typesig { [] }
     # Return the value of the High Resolution Counter.
     # 
@@ -537,10 +537,10 @@ module Sun::Misc
     # @see #highResFrequency
     # @see java.lang.System#currentTimeMillis()
     def high_res_counter
-      JNI.__send__(:Java_sun_misc_Perf_highResCounter, JNI.env, self.jni_id)
+      JNI.call_native_method(:Java_sun_misc_Perf_highResCounter, JNI.env, self.jni_id)
     end
     
-    JNI.native_method :Java_sun_misc_Perf_highResFrequency, [:pointer, :long], :int64
+    JNI.load_native_method :Java_sun_misc_Perf_highResFrequency, [:pointer, :long], :int64
     typesig { [] }
     # Returns the frequency of the High Resolution Counter, in ticks per
     # second.
@@ -552,14 +552,14 @@ module Sun::Misc
     # @return  the frequency of the High Resolution Counter.
     # @see #highResCounter
     def high_res_frequency
-      JNI.__send__(:Java_sun_misc_Perf_highResFrequency, JNI.env, self.jni_id)
+      JNI.call_native_method(:Java_sun_misc_Perf_highResFrequency, JNI.env, self.jni_id)
     end
     
     class_module.module_eval {
-      JNI.native_method :Java_sun_misc_Perf_registerNatives, [:pointer, :long], :void
+      JNI.load_native_method :Java_sun_misc_Perf_registerNatives, [:pointer, :long], :void
       typesig { [] }
       def register_natives
-        JNI.__send__(:Java_sun_misc_Perf_registerNatives, JNI.env, self.jni_id)
+        JNI.call_native_method(:Java_sun_misc_Perf_registerNatives, JNI.env, self.jni_id)
       end
       
       when_class_loaded do

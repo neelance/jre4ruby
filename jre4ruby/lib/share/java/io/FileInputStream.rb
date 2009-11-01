@@ -214,15 +214,15 @@ module Java::Io
       @fd.increment_and_get_use_count
     end
     
-    JNI.native_method :Java_java_io_FileInputStream_open, [:pointer, :long, :long], :void
+    JNI.load_native_method :Java_java_io_FileInputStream_open, [:pointer, :long, :long], :void
     typesig { [String] }
     # Opens the specified file for reading.
     # @param name the name of the file
     def open(name)
-      JNI.__send__(:Java_java_io_FileInputStream_open, JNI.env, self.jni_id, name.jni_id)
+      JNI.call_native_method(:Java_java_io_FileInputStream_open, JNI.env, self.jni_id, name.jni_id)
     end
     
-    JNI.native_method :Java_java_io_FileInputStream_read, [:pointer, :long], :int32
+    JNI.load_native_method :Java_java_io_FileInputStream_read, [:pointer, :long], :int32
     typesig { [] }
     # Reads a byte of data from this input stream. This method blocks
     # if no input is yet available.
@@ -231,10 +231,10 @@ module Java::Io
     # file is reached.
     # @exception  IOException  if an I/O error occurs.
     def read
-      JNI.__send__(:Java_java_io_FileInputStream_read, JNI.env, self.jni_id)
+      JNI.call_native_method(:Java_java_io_FileInputStream_read, JNI.env, self.jni_id)
     end
     
-    JNI.native_method :Java_java_io_FileInputStream_readBytes, [:pointer, :long, :long, :int32, :int32], :int32
+    JNI.load_native_method :Java_java_io_FileInputStream_readBytes, [:pointer, :long, :long, :int32, :int32], :int32
     typesig { [Array.typed(::Java::Byte), ::Java::Int, ::Java::Int] }
     # Reads a subarray as a sequence of bytes.
     # @param b the data to be written
@@ -242,7 +242,7 @@ module Java::Io
     # @param len the number of bytes that are written
     # @exception IOException If an I/O error has occurred.
     def read_bytes(b, off, len)
-      JNI.__send__(:Java_java_io_FileInputStream_readBytes, JNI.env, self.jni_id, b.jni_id, off.to_int, len.to_int)
+      JNI.call_native_method(:Java_java_io_FileInputStream_readBytes, JNI.env, self.jni_id, b.jni_id, off.to_int, len.to_int)
     end
     
     typesig { [Array.typed(::Java::Byte)] }
@@ -280,7 +280,7 @@ module Java::Io
       return read_bytes(b, off, len)
     end
     
-    JNI.native_method :Java_java_io_FileInputStream_skip, [:pointer, :long, :int64], :int64
+    JNI.load_native_method :Java_java_io_FileInputStream_skip, [:pointer, :long, :int64], :int64
     typesig { [::Java::Long] }
     # Skips over and discards <code>n</code> bytes of data from the
     # input stream.
@@ -303,10 +303,10 @@ module Java::Io
     # @exception  IOException  if n is negative, if the stream does not
     # support seek, or if an I/O error occurs.
     def skip(n)
-      JNI.__send__(:Java_java_io_FileInputStream_skip, JNI.env, self.jni_id, n.to_int)
+      JNI.call_native_method(:Java_java_io_FileInputStream_skip, JNI.env, self.jni_id, n.to_int)
     end
     
-    JNI.native_method :Java_java_io_FileInputStream_available, [:pointer, :long], :int32
+    JNI.load_native_method :Java_java_io_FileInputStream_available, [:pointer, :long], :int32
     typesig { [] }
     # Returns an estimate of the number of remaining bytes that can be read (or
     # skipped over) from this input stream without blocking by the next
@@ -323,7 +323,7 @@ module Java::Io
     # @exception  IOException  if this file input stream has been closed by calling
     # {@code close} or an I/O error occurs.
     def available
-      JNI.__send__(:Java_java_io_FileInputStream_available, JNI.env, self.jni_id)
+      JNI.call_native_method(:Java_java_io_FileInputStream_available, JNI.env, self.jni_id)
     end
     
     typesig { [] }
@@ -405,17 +405,17 @@ module Java::Io
     end
     
     class_module.module_eval {
-      JNI.native_method :Java_java_io_FileInputStream_initIDs, [:pointer, :long], :void
+      JNI.load_native_method :Java_java_io_FileInputStream_initIDs, [:pointer, :long], :void
       typesig { [] }
       def init_ids
-        JNI.__send__(:Java_java_io_FileInputStream_initIDs, JNI.env, self.jni_id)
+        JNI.call_native_method(:Java_java_io_FileInputStream_initIDs, JNI.env, self.jni_id)
       end
     }
     
-    JNI.native_method :Java_java_io_FileInputStream_close0, [:pointer, :long], :void
+    JNI.load_native_method :Java_java_io_FileInputStream_close0, [:pointer, :long], :void
     typesig { [] }
     def close0
-      JNI.__send__(:Java_java_io_FileInputStream_close0, JNI.env, self.jni_id)
+      JNI.call_native_method(:Java_java_io_FileInputStream_close0, JNI.env, self.jni_id)
     end
     
     class_module.module_eval {

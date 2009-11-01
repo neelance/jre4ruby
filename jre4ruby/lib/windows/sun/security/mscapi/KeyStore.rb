@@ -773,17 +773,17 @@ module Sun::Security::Mscapi
       return @store_name
     end
     
-    JNI.native_method :Java_sun_security_mscapi_KeyStore_loadKeysOrCertificateChains, [:pointer, :long, :long, :long], :void
+    JNI.load_native_method :Java_sun_security_mscapi_KeyStore_loadKeysOrCertificateChains, [:pointer, :long, :long, :long], :void
     typesig { [String, Collection] }
     # Load keys and/or certificates from keystore into Collection.
     # 
     # @param name Name of keystore.
     # @param entries Collection of key/certificate.
     def load_keys_or_certificate_chains(name, entries)
-      JNI.__send__(:Java_sun_security_mscapi_KeyStore_loadKeysOrCertificateChains, JNI.env, self.jni_id, name.jni_id, entries.jni_id)
+      JNI.call_native_method(:Java_sun_security_mscapi_KeyStore_loadKeysOrCertificateChains, JNI.env, self.jni_id, name.jni_id, entries.jni_id)
     end
     
-    JNI.native_method :Java_sun_security_mscapi_KeyStore_storeCertificate, [:pointer, :long, :long, :long, :long, :int32, :int64, :int64], :void
+    JNI.load_native_method :Java_sun_security_mscapi_KeyStore_storeCertificate, [:pointer, :long, :long, :long, :long, :int32, :int64, :int64], :void
     typesig { [String, String, Array.typed(::Java::Byte), ::Java::Int, ::Java::Long, ::Java::Long] }
     # Stores a DER-encoded certificate into the certificate store
     # 
@@ -791,10 +791,10 @@ module Sun::Security::Mscapi
     # @param alias Name of the certificate.
     # @param encoding DER-encoded certificate.
     def store_certificate(name, alias_, encoding, encoding_length, h_crypt_provider, h_crypt_key)
-      JNI.__send__(:Java_sun_security_mscapi_KeyStore_storeCertificate, JNI.env, self.jni_id, name.jni_id, alias_.jni_id, encoding.jni_id, encoding_length.to_int, h_crypt_provider.to_int, h_crypt_key.to_int)
+      JNI.call_native_method(:Java_sun_security_mscapi_KeyStore_storeCertificate, JNI.env, self.jni_id, name.jni_id, alias_.jni_id, encoding.jni_id, encoding_length.to_int, h_crypt_provider.to_int, h_crypt_key.to_int)
     end
     
-    JNI.native_method :Java_sun_security_mscapi_KeyStore_removeCertificate, [:pointer, :long, :long, :long, :long, :int32], :void
+    JNI.load_native_method :Java_sun_security_mscapi_KeyStore_removeCertificate, [:pointer, :long, :long, :long, :long, :int32], :void
     typesig { [String, String, Array.typed(::Java::Byte), ::Java::Int] }
     # Removes the certificate from the certificate store
     # 
@@ -802,29 +802,29 @@ module Sun::Security::Mscapi
     # @param alias Name of the certificate.
     # @param encoding DER-encoded certificate.
     def remove_certificate(name, alias_, encoding, encoding_length)
-      JNI.__send__(:Java_sun_security_mscapi_KeyStore_removeCertificate, JNI.env, self.jni_id, name.jni_id, alias_.jni_id, encoding.jni_id, encoding_length.to_int)
+      JNI.call_native_method(:Java_sun_security_mscapi_KeyStore_removeCertificate, JNI.env, self.jni_id, name.jni_id, alias_.jni_id, encoding.jni_id, encoding_length.to_int)
     end
     
-    JNI.native_method :Java_sun_security_mscapi_KeyStore_destroyKeyContainer, [:pointer, :long, :long], :void
+    JNI.load_native_method :Java_sun_security_mscapi_KeyStore_destroyKeyContainer, [:pointer, :long, :long], :void
     typesig { [String] }
     # Destroys the key container.
     # 
     # @param keyContainerName The name of the key container.
     def destroy_key_container(key_container_name)
-      JNI.__send__(:Java_sun_security_mscapi_KeyStore_destroyKeyContainer, JNI.env, self.jni_id, key_container_name.jni_id)
+      JNI.call_native_method(:Java_sun_security_mscapi_KeyStore_destroyKeyContainer, JNI.env, self.jni_id, key_container_name.jni_id)
     end
     
-    JNI.native_method :Java_sun_security_mscapi_KeyStore_generatePrivateKeyBlob, [:pointer, :long, :int32, :long, :long, :long, :long, :long, :long, :long, :long], :long
+    JNI.load_native_method :Java_sun_security_mscapi_KeyStore_generatePrivateKeyBlob, [:pointer, :long, :int32, :long, :long, :long, :long, :long, :long, :long, :long], :long
     typesig { [::Java::Int, Array.typed(::Java::Byte), Array.typed(::Java::Byte), Array.typed(::Java::Byte), Array.typed(::Java::Byte), Array.typed(::Java::Byte), Array.typed(::Java::Byte), Array.typed(::Java::Byte), Array.typed(::Java::Byte)] }
     # Generates a private-key BLOB from a key's components.
     def generate_private_key_blob(key_bit_length, modulus, public_exponent, private_exponent, prime_p, prime_q, exponent_p, exponent_q, crt_coefficient)
-      JNI.__send__(:Java_sun_security_mscapi_KeyStore_generatePrivateKeyBlob, JNI.env, self.jni_id, key_bit_length.to_int, modulus.jni_id, public_exponent.jni_id, private_exponent.jni_id, prime_p.jni_id, prime_q.jni_id, exponent_p.jni_id, exponent_q.jni_id, crt_coefficient.jni_id)
+      JNI.call_native_method(:Java_sun_security_mscapi_KeyStore_generatePrivateKeyBlob, JNI.env, self.jni_id, key_bit_length.to_int, modulus.jni_id, public_exponent.jni_id, private_exponent.jni_id, prime_p.jni_id, prime_q.jni_id, exponent_p.jni_id, exponent_q.jni_id, crt_coefficient.jni_id)
     end
     
-    JNI.native_method :Java_sun_security_mscapi_KeyStore_storePrivateKey, [:pointer, :long, :long, :long, :int32], :long
+    JNI.load_native_method :Java_sun_security_mscapi_KeyStore_storePrivateKey, [:pointer, :long, :long, :long, :int32], :long
     typesig { [Array.typed(::Java::Byte), String, ::Java::Int] }
     def store_private_key(key_blob, key_container_name, key_size)
-      JNI.__send__(:Java_sun_security_mscapi_KeyStore_storePrivateKey, JNI.env, self.jni_id, key_blob.jni_id, key_container_name.jni_id, key_size.to_int)
+      JNI.call_native_method(:Java_sun_security_mscapi_KeyStore_storePrivateKey, JNI.env, self.jni_id, key_blob.jni_id, key_container_name.jni_id, key_size.to_int)
     end
     
     private

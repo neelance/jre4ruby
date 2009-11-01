@@ -113,23 +113,23 @@ module Sun::Net::Www::Protocol::Http
     end
     
     class_module.module_eval {
-      JNI.native_method :Java_sun_net_www_protocol_http_NTLMAuthSequence_initFirst, [:pointer, :long], :void
+      JNI.load_native_method :Java_sun_net_www_protocol_http_NTLMAuthSequence_initFirst, [:pointer, :long], :void
       typesig { [] }
       def init_first
-        JNI.__send__(:Java_sun_net_www_protocol_http_NTLMAuthSequence_initFirst, JNI.env, self.jni_id)
+        JNI.call_native_method(:Java_sun_net_www_protocol_http_NTLMAuthSequence_initFirst, JNI.env, self.jni_id)
       end
     }
     
-    JNI.native_method :Java_sun_net_www_protocol_http_NTLMAuthSequence_getCredentialsHandle, [:pointer, :long, :long, :long, :long], :int64
+    JNI.load_native_method :Java_sun_net_www_protocol_http_NTLMAuthSequence_getCredentialsHandle, [:pointer, :long, :long, :long, :long], :int64
     typesig { [String, String, String] }
     def get_credentials_handle(user, domain, password)
-      JNI.__send__(:Java_sun_net_www_protocol_http_NTLMAuthSequence_getCredentialsHandle, JNI.env, self.jni_id, user.jni_id, domain.jni_id, password.jni_id)
+      JNI.call_native_method(:Java_sun_net_www_protocol_http_NTLMAuthSequence_getCredentialsHandle, JNI.env, self.jni_id, user.jni_id, domain.jni_id, password.jni_id)
     end
     
-    JNI.native_method :Java_sun_net_www_protocol_http_NTLMAuthSequence_getNextToken, [:pointer, :long, :int64, :long], :long
+    JNI.load_native_method :Java_sun_net_www_protocol_http_NTLMAuthSequence_getNextToken, [:pointer, :long, :int64, :long], :long
     typesig { [::Java::Long, Array.typed(::Java::Byte)] }
     def get_next_token(crd_handle, last_token)
-      JNI.__send__(:Java_sun_net_www_protocol_http_NTLMAuthSequence_getNextToken, JNI.env, self.jni_id, crd_handle.to_int, last_token.jni_id)
+      JNI.call_native_method(:Java_sun_net_www_protocol_http_NTLMAuthSequence_getNextToken, JNI.env, self.jni_id, crd_handle.to_int, last_token.jni_id)
     end
     
     private

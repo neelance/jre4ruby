@@ -38,28 +38,28 @@ module Java::Net
     include_class_members Inet4AddressImplImports
     include InetAddressImpl
     
-    JNI.native_method :Java_java_net_Inet4AddressImpl_getLocalHostName, [:pointer, :long], :long
+    JNI.load_native_method :Java_java_net_Inet4AddressImpl_getLocalHostName, [:pointer, :long], :long
     typesig { [] }
     def get_local_host_name
-      JNI.__send__(:Java_java_net_Inet4AddressImpl_getLocalHostName, JNI.env, self.jni_id)
+      JNI.call_native_method(:Java_java_net_Inet4AddressImpl_getLocalHostName, JNI.env, self.jni_id)
     end
     
-    JNI.native_method :Java_java_net_Inet4AddressImpl_lookupAllHostAddr, [:pointer, :long, :long], :long
+    JNI.load_native_method :Java_java_net_Inet4AddressImpl_lookupAllHostAddr, [:pointer, :long, :long], :long
     typesig { [String] }
     def lookup_all_host_addr(hostname)
-      JNI.__send__(:Java_java_net_Inet4AddressImpl_lookupAllHostAddr, JNI.env, self.jni_id, hostname.jni_id)
+      JNI.call_native_method(:Java_java_net_Inet4AddressImpl_lookupAllHostAddr, JNI.env, self.jni_id, hostname.jni_id)
     end
     
-    JNI.native_method :Java_java_net_Inet4AddressImpl_getHostByAddr, [:pointer, :long, :long], :long
+    JNI.load_native_method :Java_java_net_Inet4AddressImpl_getHostByAddr, [:pointer, :long, :long], :long
     typesig { [Array.typed(::Java::Byte)] }
     def get_host_by_addr(addr)
-      JNI.__send__(:Java_java_net_Inet4AddressImpl_getHostByAddr, JNI.env, self.jni_id, addr.jni_id)
+      JNI.call_native_method(:Java_java_net_Inet4AddressImpl_getHostByAddr, JNI.env, self.jni_id, addr.jni_id)
     end
     
-    JNI.native_method :Java_java_net_Inet4AddressImpl_isReachable0, [:pointer, :long, :long, :int32, :long, :int32], :int8
+    JNI.load_native_method :Java_java_net_Inet4AddressImpl_isReachable0, [:pointer, :long, :long, :int32, :long, :int32], :int8
     typesig { [Array.typed(::Java::Byte), ::Java::Int, Array.typed(::Java::Byte), ::Java::Int] }
     def is_reachable0(addr, timeout, ifaddr, ttl)
-      JNI.__send__(:Java_java_net_Inet4AddressImpl_isReachable0, JNI.env, self.jni_id, addr.jni_id, timeout.to_int, ifaddr.jni_id, ttl.to_int) != 0
+      JNI.call_native_method(:Java_java_net_Inet4AddressImpl_isReachable0, JNI.env, self.jni_id, addr.jni_id, timeout.to_int, ifaddr.jni_id, ttl.to_int) != 0
     end
     
     typesig { [] }

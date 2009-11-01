@@ -472,10 +472,10 @@ module Java::Util
         return cl
       end
       
-      JNI.native_method :Java_java_util_ResourceBundle_getClassContext, [:pointer, :long], :long
+      JNI.load_native_method :Java_java_util_ResourceBundle_getClassContext, [:pointer, :long], :long
       typesig { [] }
       def get_class_context
-        JNI.__send__(:Java_java_util_ResourceBundle_getClassContext, JNI.env, self.jni_id)
+        JNI.call_native_method(:Java_java_util_ResourceBundle_getClassContext, JNI.env, self.jni_id)
       end
       
       # A wrapper of ClassLoader.getSystemClassLoader().

@@ -119,10 +119,10 @@ module Sun::Security::Mscapi
     end
     
     class_module.module_eval {
-      JNI.native_method :Java_sun_security_mscapi_RSAKeyPairGenerator_generateRSAKeyPair, [:pointer, :long, :int32, :long], :long
+      JNI.load_native_method :Java_sun_security_mscapi_RSAKeyPairGenerator_generateRSAKeyPair, [:pointer, :long, :int32, :long], :long
       typesig { [::Java::Int, String] }
       def generate_rsakey_pair(key_size, key_container_name)
-        JNI.__send__(:Java_sun_security_mscapi_RSAKeyPairGenerator_generateRSAKeyPair, JNI.env, self.jni_id, key_size.to_int, key_container_name.jni_id)
+        JNI.call_native_method(:Java_sun_security_mscapi_RSAKeyPairGenerator_generateRSAKeyPair, JNI.env, self.jni_id, key_size.to_int, key_container_name.jni_id)
       end
     }
     

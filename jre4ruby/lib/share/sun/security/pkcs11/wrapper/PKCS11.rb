@@ -123,7 +123,7 @@ module Sun::Security::Pkcs11::Wrapper
     undef_method :p_native_data=
     
     class_module.module_eval {
-      JNI.native_method :Java_sun_security_pkcs11_wrapper_PKCS11_initializeLibrary, [:pointer, :long], :void
+      JNI.load_native_method :Java_sun_security_pkcs11_wrapper_PKCS11_initializeLibrary, [:pointer, :long], :void
       typesig { [] }
       # This method does the initialization of the native library. It is called
       # exactly once for this class.
@@ -131,10 +131,10 @@ module Sun::Security::Pkcs11::Wrapper
       # @preconditions
       # @postconditions
       def initialize_library
-        JNI.__send__(:Java_sun_security_pkcs11_wrapper_PKCS11_initializeLibrary, JNI.env, self.jni_id)
+        JNI.call_native_method(:Java_sun_security_pkcs11_wrapper_PKCS11_initializeLibrary, JNI.env, self.jni_id)
       end
       
-      JNI.native_method :Java_sun_security_pkcs11_wrapper_PKCS11_finalizeLibrary, [:pointer, :long], :void
+      JNI.load_native_method :Java_sun_security_pkcs11_wrapper_PKCS11_finalizeLibrary, [:pointer, :long], :void
       typesig { [] }
       # XXX
       # 
@@ -145,7 +145,7 @@ module Sun::Security::Pkcs11::Wrapper
       # @preconditions
       # @postconditions
       def finalize_library
-        JNI.__send__(:Java_sun_security_pkcs11_wrapper_PKCS11_finalizeLibrary, JNI.env, self.jni_id)
+        JNI.call_native_method(:Java_sun_security_pkcs11_wrapper_PKCS11_finalizeLibrary, JNI.env, self.jni_id)
       end
       
       const_set_lazy(:ModuleMap) { HashMap.new }
@@ -197,7 +197,7 @@ module Sun::Security::Pkcs11::Wrapper
       end
     }
     
-    JNI.native_method :Java_sun_security_pkcs11_wrapper_PKCS11_connect, [:pointer, :long, :long, :long], :void
+    JNI.load_native_method :Java_sun_security_pkcs11_wrapper_PKCS11_connect, [:pointer, :long, :long, :long], :void
     typesig { [String, String] }
     # Connects this object to the specified PKCS#11 library. This method is for
     # internal use only.
@@ -208,10 +208,10 @@ module Sun::Security::Pkcs11::Wrapper
     # @preconditions (pkcs11ModulePath <> null)
     # @postconditions
     def connect(pkcs11module_path, function_list_name)
-      JNI.__send__(:Java_sun_security_pkcs11_wrapper_PKCS11_connect, JNI.env, self.jni_id, pkcs11module_path.jni_id, function_list_name.jni_id)
+      JNI.call_native_method(:Java_sun_security_pkcs11_wrapper_PKCS11_connect, JNI.env, self.jni_id, pkcs11module_path.jni_id, function_list_name.jni_id)
     end
     
-    JNI.native_method :Java_sun_security_pkcs11_wrapper_PKCS11_disconnect, [:pointer, :long], :void
+    JNI.load_native_method :Java_sun_security_pkcs11_wrapper_PKCS11_disconnect, [:pointer, :long], :void
     typesig { [] }
     # Disconnects the PKCS#11 library from this object. After calling this
     # method, this object is no longer connected to a native PKCS#11 module
@@ -223,10 +223,10 @@ module Sun::Security::Pkcs11::Wrapper
     # @preconditions
     # @postconditions
     def disconnect
-      JNI.__send__(:Java_sun_security_pkcs11_wrapper_PKCS11_disconnect, JNI.env, self.jni_id)
+      JNI.call_native_method(:Java_sun_security_pkcs11_wrapper_PKCS11_disconnect, JNI.env, self.jni_id)
     end
     
-    JNI.native_method :Java_sun_security_pkcs11_wrapper_PKCS11_C_1Initialize, [:pointer, :long, :long], :void
+    JNI.load_native_method :Java_sun_security_pkcs11_wrapper_PKCS11_C_1Initialize, [:pointer, :long, :long], :void
     typesig { [Object] }
     # Implementation of PKCS11 methods delegated to native pkcs11wrapper library
     # *****************************************************************************
@@ -243,10 +243,10 @@ module Sun::Security::Pkcs11::Wrapper
     # @preconditions
     # @postconditions
     def _c_initialize(p_init_args)
-      JNI.__send__(:Java_sun_security_pkcs11_wrapper_PKCS11_C_1Initialize, JNI.env, self.jni_id, p_init_args.jni_id)
+      JNI.call_native_method(:Java_sun_security_pkcs11_wrapper_PKCS11_C_1Initialize, JNI.env, self.jni_id, p_init_args.jni_id)
     end
     
-    JNI.native_method :Java_sun_security_pkcs11_wrapper_PKCS11_C_1Finalize, [:pointer, :long, :long], :void
+    JNI.load_native_method :Java_sun_security_pkcs11_wrapper_PKCS11_C_1Finalize, [:pointer, :long, :long], :void
     typesig { [Object] }
     # C_Finalize indicates that an application is done with the
     # Cryptoki library
@@ -258,10 +258,10 @@ module Sun::Security::Pkcs11::Wrapper
     # @preconditions (pReserved == null)
     # @postconditions
     def _c_finalize(p_reserved)
-      JNI.__send__(:Java_sun_security_pkcs11_wrapper_PKCS11_C_1Finalize, JNI.env, self.jni_id, p_reserved.jni_id)
+      JNI.call_native_method(:Java_sun_security_pkcs11_wrapper_PKCS11_C_1Finalize, JNI.env, self.jni_id, p_reserved.jni_id)
     end
     
-    JNI.native_method :Java_sun_security_pkcs11_wrapper_PKCS11_C_1GetInfo, [:pointer, :long], :long
+    JNI.load_native_method :Java_sun_security_pkcs11_wrapper_PKCS11_C_1GetInfo, [:pointer, :long], :long
     typesig { [] }
     # C_GetInfo returns general information about Cryptoki.
     # (General-purpose)
@@ -272,10 +272,10 @@ module Sun::Security::Pkcs11::Wrapper
     # @preconditions
     # @postconditions (result <> null)
     def _c_get_info
-      JNI.__send__(:Java_sun_security_pkcs11_wrapper_PKCS11_C_1GetInfo, JNI.env, self.jni_id)
+      JNI.call_native_method(:Java_sun_security_pkcs11_wrapper_PKCS11_C_1GetInfo, JNI.env, self.jni_id)
     end
     
-    JNI.native_method :Java_sun_security_pkcs11_wrapper_PKCS11_C_1GetSlotList, [:pointer, :long, :int8], :long
+    JNI.load_native_method :Java_sun_security_pkcs11_wrapper_PKCS11_C_1GetSlotList, [:pointer, :long, :int8], :long
     typesig { [::Java::Boolean] }
     # *****************************************************************************
     # Slot and token management
@@ -292,10 +292,10 @@ module Sun::Security::Pkcs11::Wrapper
     # @preconditions
     # @postconditions (result <> null)
     def _c_get_slot_list(token_present)
-      JNI.__send__(:Java_sun_security_pkcs11_wrapper_PKCS11_C_1GetSlotList, JNI.env, self.jni_id, token_present ? 1 : 0)
+      JNI.call_native_method(:Java_sun_security_pkcs11_wrapper_PKCS11_C_1GetSlotList, JNI.env, self.jni_id, token_present ? 1 : 0)
     end
     
-    JNI.native_method :Java_sun_security_pkcs11_wrapper_PKCS11_C_1GetSlotInfo, [:pointer, :long, :int64], :long
+    JNI.load_native_method :Java_sun_security_pkcs11_wrapper_PKCS11_C_1GetSlotInfo, [:pointer, :long, :int64], :long
     typesig { [::Java::Long] }
     # C_GetSlotInfo obtains information about a particular slot in
     # the system.
@@ -309,10 +309,10 @@ module Sun::Security::Pkcs11::Wrapper
     # @preconditions
     # @postconditions (result <> null)
     def _c_get_slot_info(slot_id)
-      JNI.__send__(:Java_sun_security_pkcs11_wrapper_PKCS11_C_1GetSlotInfo, JNI.env, self.jni_id, slot_id.to_int)
+      JNI.call_native_method(:Java_sun_security_pkcs11_wrapper_PKCS11_C_1GetSlotInfo, JNI.env, self.jni_id, slot_id.to_int)
     end
     
-    JNI.native_method :Java_sun_security_pkcs11_wrapper_PKCS11_C_1GetTokenInfo, [:pointer, :long, :int64], :long
+    JNI.load_native_method :Java_sun_security_pkcs11_wrapper_PKCS11_C_1GetTokenInfo, [:pointer, :long, :int64], :long
     typesig { [::Java::Long] }
     # C_GetTokenInfo obtains information about a particular token
     # in the system.
@@ -326,10 +326,10 @@ module Sun::Security::Pkcs11::Wrapper
     # @preconditions
     # @postconditions (result <> null)
     def _c_get_token_info(slot_id)
-      JNI.__send__(:Java_sun_security_pkcs11_wrapper_PKCS11_C_1GetTokenInfo, JNI.env, self.jni_id, slot_id.to_int)
+      JNI.call_native_method(:Java_sun_security_pkcs11_wrapper_PKCS11_C_1GetTokenInfo, JNI.env, self.jni_id, slot_id.to_int)
     end
     
-    JNI.native_method :Java_sun_security_pkcs11_wrapper_PKCS11_C_1GetMechanismList, [:pointer, :long, :int64], :long
+    JNI.load_native_method :Java_sun_security_pkcs11_wrapper_PKCS11_C_1GetMechanismList, [:pointer, :long, :int64], :long
     typesig { [::Java::Long] }
     # C_GetMechanismList obtains a list of mechanism types
     # supported by a token.
@@ -344,10 +344,10 @@ module Sun::Security::Pkcs11::Wrapper
     # @preconditions
     # @postconditions (result <> null)
     def _c_get_mechanism_list(slot_id)
-      JNI.__send__(:Java_sun_security_pkcs11_wrapper_PKCS11_C_1GetMechanismList, JNI.env, self.jni_id, slot_id.to_int)
+      JNI.call_native_method(:Java_sun_security_pkcs11_wrapper_PKCS11_C_1GetMechanismList, JNI.env, self.jni_id, slot_id.to_int)
     end
     
-    JNI.native_method :Java_sun_security_pkcs11_wrapper_PKCS11_C_1GetMechanismInfo, [:pointer, :long, :int64, :int64], :long
+    JNI.load_native_method :Java_sun_security_pkcs11_wrapper_PKCS11_C_1GetMechanismInfo, [:pointer, :long, :int64, :int64], :long
     typesig { [::Java::Long, ::Java::Long] }
     # C_GetMechanismInfo obtains information about a particular
     # mechanism possibly supported by a token.
@@ -363,10 +363,10 @@ module Sun::Security::Pkcs11::Wrapper
     # @preconditions
     # @postconditions (result <> null)
     def _c_get_mechanism_info(slot_id, type)
-      JNI.__send__(:Java_sun_security_pkcs11_wrapper_PKCS11_C_1GetMechanismInfo, JNI.env, self.jni_id, slot_id.to_int, type.to_int)
+      JNI.call_native_method(:Java_sun_security_pkcs11_wrapper_PKCS11_C_1GetMechanismInfo, JNI.env, self.jni_id, slot_id.to_int, type.to_int)
     end
     
-    JNI.native_method :Java_sun_security_pkcs11_wrapper_PKCS11_C_1OpenSession, [:pointer, :long, :int64, :int64, :long, :long], :int64
+    JNI.load_native_method :Java_sun_security_pkcs11_wrapper_PKCS11_C_1OpenSession, [:pointer, :long, :int64, :int64, :long, :long], :int64
     typesig { [::Java::Long, ::Java::Long, Object, CK_NOTIFY] }
     # C_InitToken initializes a token.
     # (Slot and token management)
@@ -432,10 +432,10 @@ module Sun::Security::Pkcs11::Wrapper
     # @preconditions
     # @postconditions
     def _c_open_session(slot_id, flags, p_application, notify)
-      JNI.__send__(:Java_sun_security_pkcs11_wrapper_PKCS11_C_1OpenSession, JNI.env, self.jni_id, slot_id.to_int, flags.to_int, p_application.jni_id, notify.jni_id)
+      JNI.call_native_method(:Java_sun_security_pkcs11_wrapper_PKCS11_C_1OpenSession, JNI.env, self.jni_id, slot_id.to_int, flags.to_int, p_application.jni_id, notify.jni_id)
     end
     
-    JNI.native_method :Java_sun_security_pkcs11_wrapper_PKCS11_C_1CloseSession, [:pointer, :long, :int64], :void
+    JNI.load_native_method :Java_sun_security_pkcs11_wrapper_PKCS11_C_1CloseSession, [:pointer, :long, :int64], :void
     typesig { [::Java::Long] }
     # C_CloseSession closes a session between an application and a
     # token.
@@ -447,10 +447,10 @@ module Sun::Security::Pkcs11::Wrapper
     # @preconditions
     # @postconditions
     def _c_close_session(h_session)
-      JNI.__send__(:Java_sun_security_pkcs11_wrapper_PKCS11_C_1CloseSession, JNI.env, self.jni_id, h_session.to_int)
+      JNI.call_native_method(:Java_sun_security_pkcs11_wrapper_PKCS11_C_1CloseSession, JNI.env, self.jni_id, h_session.to_int)
     end
     
-    JNI.native_method :Java_sun_security_pkcs11_wrapper_PKCS11_C_1GetSessionInfo, [:pointer, :long, :int64], :long
+    JNI.load_native_method :Java_sun_security_pkcs11_wrapper_PKCS11_C_1GetSessionInfo, [:pointer, :long, :int64], :long
     typesig { [::Java::Long] }
     # C_CloseAllSessions closes all sessions with a token.
     # (Session management)
@@ -474,10 +474,10 @@ module Sun::Security::Pkcs11::Wrapper
     # @preconditions
     # @postconditions (result <> null)
     def _c_get_session_info(h_session)
-      JNI.__send__(:Java_sun_security_pkcs11_wrapper_PKCS11_C_1GetSessionInfo, JNI.env, self.jni_id, h_session.to_int)
+      JNI.call_native_method(:Java_sun_security_pkcs11_wrapper_PKCS11_C_1GetSessionInfo, JNI.env, self.jni_id, h_session.to_int)
     end
     
-    JNI.native_method :Java_sun_security_pkcs11_wrapper_PKCS11_C_1Login, [:pointer, :long, :int64, :int64, :long], :void
+    JNI.load_native_method :Java_sun_security_pkcs11_wrapper_PKCS11_C_1Login, [:pointer, :long, :int64, :int64, :long], :void
     typesig { [::Java::Long, ::Java::Long, Array.typed(::Java::Char)] }
     # C_GetOperationState obtains the state of the cryptographic operation
     # in a session.
@@ -526,10 +526,10 @@ module Sun::Security::Pkcs11::Wrapper
     # @preconditions
     # @postconditions
     def _c_login(h_session, user_type, p_pin)
-      JNI.__send__(:Java_sun_security_pkcs11_wrapper_PKCS11_C_1Login, JNI.env, self.jni_id, h_session.to_int, user_type.to_int, p_pin.jni_id)
+      JNI.call_native_method(:Java_sun_security_pkcs11_wrapper_PKCS11_C_1Login, JNI.env, self.jni_id, h_session.to_int, user_type.to_int, p_pin.jni_id)
     end
     
-    JNI.native_method :Java_sun_security_pkcs11_wrapper_PKCS11_C_1Logout, [:pointer, :long, :int64], :void
+    JNI.load_native_method :Java_sun_security_pkcs11_wrapper_PKCS11_C_1Logout, [:pointer, :long, :int64], :void
     typesig { [::Java::Long] }
     # C_Logout logs a user out from a token.
     # (Session management)
@@ -540,10 +540,10 @@ module Sun::Security::Pkcs11::Wrapper
     # @preconditions
     # @postconditions
     def _c_logout(h_session)
-      JNI.__send__(:Java_sun_security_pkcs11_wrapper_PKCS11_C_1Logout, JNI.env, self.jni_id, h_session.to_int)
+      JNI.call_native_method(:Java_sun_security_pkcs11_wrapper_PKCS11_C_1Logout, JNI.env, self.jni_id, h_session.to_int)
     end
     
-    JNI.native_method :Java_sun_security_pkcs11_wrapper_PKCS11_C_1CreateObject, [:pointer, :long, :int64, :long], :int64
+    JNI.load_native_method :Java_sun_security_pkcs11_wrapper_PKCS11_C_1CreateObject, [:pointer, :long, :int64, :long], :int64
     typesig { [::Java::Long, Array.typed(CK_ATTRIBUTE)] }
     # *****************************************************************************
     # Object management
@@ -563,10 +563,10 @@ module Sun::Security::Pkcs11::Wrapper
     # @preconditions
     # @postconditions
     def _c_create_object(h_session, p_template)
-      JNI.__send__(:Java_sun_security_pkcs11_wrapper_PKCS11_C_1CreateObject, JNI.env, self.jni_id, h_session.to_int, p_template.jni_id)
+      JNI.call_native_method(:Java_sun_security_pkcs11_wrapper_PKCS11_C_1CreateObject, JNI.env, self.jni_id, h_session.to_int, p_template.jni_id)
     end
     
-    JNI.native_method :Java_sun_security_pkcs11_wrapper_PKCS11_C_1CopyObject, [:pointer, :long, :int64, :int64, :long], :int64
+    JNI.load_native_method :Java_sun_security_pkcs11_wrapper_PKCS11_C_1CopyObject, [:pointer, :long, :int64, :int64, :long], :int64
     typesig { [::Java::Long, ::Java::Long, Array.typed(CK_ATTRIBUTE)] }
     # C_CopyObject copies an object, creating a new object for the
     # copy.
@@ -585,10 +585,10 @@ module Sun::Security::Pkcs11::Wrapper
     # @preconditions
     # @postconditions
     def _c_copy_object(h_session, h_object, p_template)
-      JNI.__send__(:Java_sun_security_pkcs11_wrapper_PKCS11_C_1CopyObject, JNI.env, self.jni_id, h_session.to_int, h_object.to_int, p_template.jni_id)
+      JNI.call_native_method(:Java_sun_security_pkcs11_wrapper_PKCS11_C_1CopyObject, JNI.env, self.jni_id, h_session.to_int, h_object.to_int, p_template.jni_id)
     end
     
-    JNI.native_method :Java_sun_security_pkcs11_wrapper_PKCS11_C_1DestroyObject, [:pointer, :long, :int64, :int64], :void
+    JNI.load_native_method :Java_sun_security_pkcs11_wrapper_PKCS11_C_1DestroyObject, [:pointer, :long, :int64, :int64], :void
     typesig { [::Java::Long, ::Java::Long] }
     # C_DestroyObject destroys an object.
     # (Object management)
@@ -601,10 +601,10 @@ module Sun::Security::Pkcs11::Wrapper
     # @preconditions
     # @postconditions
     def _c_destroy_object(h_session, h_object)
-      JNI.__send__(:Java_sun_security_pkcs11_wrapper_PKCS11_C_1DestroyObject, JNI.env, self.jni_id, h_session.to_int, h_object.to_int)
+      JNI.call_native_method(:Java_sun_security_pkcs11_wrapper_PKCS11_C_1DestroyObject, JNI.env, self.jni_id, h_session.to_int, h_object.to_int)
     end
     
-    JNI.native_method :Java_sun_security_pkcs11_wrapper_PKCS11_C_1GetAttributeValue, [:pointer, :long, :int64, :int64, :long], :void
+    JNI.load_native_method :Java_sun_security_pkcs11_wrapper_PKCS11_C_1GetAttributeValue, [:pointer, :long, :int64, :int64, :long], :void
     typesig { [::Java::Long, ::Java::Long, Array.typed(CK_ATTRIBUTE)] }
     # C_GetObjectSize gets the size of an object in bytes.
     # (Object management)
@@ -637,10 +637,10 @@ module Sun::Security::Pkcs11::Wrapper
     # @preconditions (pTemplate <> null)
     # @postconditions (result <> null)
     def _c_get_attribute_value(h_session, h_object, p_template)
-      JNI.__send__(:Java_sun_security_pkcs11_wrapper_PKCS11_C_1GetAttributeValue, JNI.env, self.jni_id, h_session.to_int, h_object.to_int, p_template.jni_id)
+      JNI.call_native_method(:Java_sun_security_pkcs11_wrapper_PKCS11_C_1GetAttributeValue, JNI.env, self.jni_id, h_session.to_int, h_object.to_int, p_template.jni_id)
     end
     
-    JNI.native_method :Java_sun_security_pkcs11_wrapper_PKCS11_C_1SetAttributeValue, [:pointer, :long, :int64, :int64, :long], :void
+    JNI.load_native_method :Java_sun_security_pkcs11_wrapper_PKCS11_C_1SetAttributeValue, [:pointer, :long, :int64, :int64, :long], :void
     typesig { [::Java::Long, ::Java::Long, Array.typed(CK_ATTRIBUTE)] }
     # C_SetAttributeValue modifies the value of one or more object
     # attributes
@@ -657,10 +657,10 @@ module Sun::Security::Pkcs11::Wrapper
     # @preconditions (pTemplate <> null)
     # @postconditions
     def _c_set_attribute_value(h_session, h_object, p_template)
-      JNI.__send__(:Java_sun_security_pkcs11_wrapper_PKCS11_C_1SetAttributeValue, JNI.env, self.jni_id, h_session.to_int, h_object.to_int, p_template.jni_id)
+      JNI.call_native_method(:Java_sun_security_pkcs11_wrapper_PKCS11_C_1SetAttributeValue, JNI.env, self.jni_id, h_session.to_int, h_object.to_int, p_template.jni_id)
     end
     
-    JNI.native_method :Java_sun_security_pkcs11_wrapper_PKCS11_C_1FindObjectsInit, [:pointer, :long, :int64, :long], :void
+    JNI.load_native_method :Java_sun_security_pkcs11_wrapper_PKCS11_C_1FindObjectsInit, [:pointer, :long, :int64, :long], :void
     typesig { [::Java::Long, Array.typed(CK_ATTRIBUTE)] }
     # C_FindObjectsInit initializes a search for token and session
     # objects that match a template.
@@ -675,10 +675,10 @@ module Sun::Security::Pkcs11::Wrapper
     # @preconditions
     # @postconditions
     def _c_find_objects_init(h_session, p_template)
-      JNI.__send__(:Java_sun_security_pkcs11_wrapper_PKCS11_C_1FindObjectsInit, JNI.env, self.jni_id, h_session.to_int, p_template.jni_id)
+      JNI.call_native_method(:Java_sun_security_pkcs11_wrapper_PKCS11_C_1FindObjectsInit, JNI.env, self.jni_id, h_session.to_int, p_template.jni_id)
     end
     
-    JNI.native_method :Java_sun_security_pkcs11_wrapper_PKCS11_C_1FindObjects, [:pointer, :long, :int64, :int64], :long
+    JNI.load_native_method :Java_sun_security_pkcs11_wrapper_PKCS11_C_1FindObjects, [:pointer, :long, :int64, :int64], :long
     typesig { [::Java::Long, ::Java::Long] }
     # C_FindObjects continues a search for token and session
     # objects that match a template, obtaining additional object
@@ -695,10 +695,10 @@ module Sun::Security::Pkcs11::Wrapper
     # @preconditions
     # @postconditions (result <> null)
     def _c_find_objects(h_session, ul_max_object_count)
-      JNI.__send__(:Java_sun_security_pkcs11_wrapper_PKCS11_C_1FindObjects, JNI.env, self.jni_id, h_session.to_int, ul_max_object_count.to_int)
+      JNI.call_native_method(:Java_sun_security_pkcs11_wrapper_PKCS11_C_1FindObjects, JNI.env, self.jni_id, h_session.to_int, ul_max_object_count.to_int)
     end
     
-    JNI.native_method :Java_sun_security_pkcs11_wrapper_PKCS11_C_1FindObjectsFinal, [:pointer, :long, :int64], :void
+    JNI.load_native_method :Java_sun_security_pkcs11_wrapper_PKCS11_C_1FindObjectsFinal, [:pointer, :long, :int64], :void
     typesig { [::Java::Long] }
     # C_FindObjectsFinal finishes a search for token and session
     # objects.
@@ -710,10 +710,10 @@ module Sun::Security::Pkcs11::Wrapper
     # @preconditions
     # @postconditions
     def _c_find_objects_final(h_session)
-      JNI.__send__(:Java_sun_security_pkcs11_wrapper_PKCS11_C_1FindObjectsFinal, JNI.env, self.jni_id, h_session.to_int)
+      JNI.call_native_method(:Java_sun_security_pkcs11_wrapper_PKCS11_C_1FindObjectsFinal, JNI.env, self.jni_id, h_session.to_int)
     end
     
-    JNI.native_method :Java_sun_security_pkcs11_wrapper_PKCS11_C_1EncryptInit, [:pointer, :long, :int64, :long, :int64], :void
+    JNI.load_native_method :Java_sun_security_pkcs11_wrapper_PKCS11_C_1EncryptInit, [:pointer, :long, :int64, :long, :int64], :void
     typesig { [::Java::Long, CK_MECHANISM, ::Java::Long] }
     # *****************************************************************************
     # Encryption and decryption
@@ -732,10 +732,10 @@ module Sun::Security::Pkcs11::Wrapper
     # @preconditions
     # @postconditions
     def _c_encrypt_init(h_session, p_mechanism, h_key)
-      JNI.__send__(:Java_sun_security_pkcs11_wrapper_PKCS11_C_1EncryptInit, JNI.env, self.jni_id, h_session.to_int, p_mechanism.jni_id, h_key.to_int)
+      JNI.call_native_method(:Java_sun_security_pkcs11_wrapper_PKCS11_C_1EncryptInit, JNI.env, self.jni_id, h_session.to_int, p_mechanism.jni_id, h_key.to_int)
     end
     
-    JNI.native_method :Java_sun_security_pkcs11_wrapper_PKCS11_C_1Encrypt, [:pointer, :long, :int64, :long, :int32, :int32, :long, :int32, :int32], :int32
+    JNI.load_native_method :Java_sun_security_pkcs11_wrapper_PKCS11_C_1Encrypt, [:pointer, :long, :int64, :long, :int32, :int32, :long, :int32, :int32], :int32
     typesig { [::Java::Long, Array.typed(::Java::Byte), ::Java::Int, ::Java::Int, Array.typed(::Java::Byte), ::Java::Int, ::Java::Int] }
     # C_Encrypt encrypts single-part data.
     # (Encryption and decryption)
@@ -751,10 +751,10 @@ module Sun::Security::Pkcs11::Wrapper
     # @preconditions (pData <> null)
     # @postconditions (result <> null)
     def _c_encrypt(h_session, in_, in_ofs, in_len, out, out_ofs, out_len)
-      JNI.__send__(:Java_sun_security_pkcs11_wrapper_PKCS11_C_1Encrypt, JNI.env, self.jni_id, h_session.to_int, in_.jni_id, in_ofs.to_int, in_len.to_int, out.jni_id, out_ofs.to_int, out_len.to_int)
+      JNI.call_native_method(:Java_sun_security_pkcs11_wrapper_PKCS11_C_1Encrypt, JNI.env, self.jni_id, h_session.to_int, in_.jni_id, in_ofs.to_int, in_len.to_int, out.jni_id, out_ofs.to_int, out_len.to_int)
     end
     
-    JNI.native_method :Java_sun_security_pkcs11_wrapper_PKCS11_C_1EncryptUpdate, [:pointer, :long, :int64, :int64, :long, :int32, :int32, :int64, :long, :int32, :int32], :int32
+    JNI.load_native_method :Java_sun_security_pkcs11_wrapper_PKCS11_C_1EncryptUpdate, [:pointer, :long, :int64, :int64, :long, :int32, :int32, :int64, :long, :int32, :int32], :int32
     typesig { [::Java::Long, ::Java::Long, Array.typed(::Java::Byte), ::Java::Int, ::Java::Int, ::Java::Long, Array.typed(::Java::Byte), ::Java::Int, ::Java::Int] }
     # C_EncryptUpdate continues a multiple-part encryption
     # operation.
@@ -771,10 +771,10 @@ module Sun::Security::Pkcs11::Wrapper
     # @preconditions (pPart <> null)
     # @postconditions
     def _c_encrypt_update(h_session, direct_in, in_, in_ofs, in_len, direct_out, out, out_ofs, out_len)
-      JNI.__send__(:Java_sun_security_pkcs11_wrapper_PKCS11_C_1EncryptUpdate, JNI.env, self.jni_id, h_session.to_int, direct_in.to_int, in_.jni_id, in_ofs.to_int, in_len.to_int, direct_out.to_int, out.jni_id, out_ofs.to_int, out_len.to_int)
+      JNI.call_native_method(:Java_sun_security_pkcs11_wrapper_PKCS11_C_1EncryptUpdate, JNI.env, self.jni_id, h_session.to_int, direct_in.to_int, in_.jni_id, in_ofs.to_int, in_len.to_int, direct_out.to_int, out.jni_id, out_ofs.to_int, out_len.to_int)
     end
     
-    JNI.native_method :Java_sun_security_pkcs11_wrapper_PKCS11_C_1EncryptFinal, [:pointer, :long, :int64, :int64, :long, :int32, :int32], :int32
+    JNI.load_native_method :Java_sun_security_pkcs11_wrapper_PKCS11_C_1EncryptFinal, [:pointer, :long, :int64, :int64, :long, :int32, :int32], :int32
     typesig { [::Java::Long, ::Java::Long, Array.typed(::Java::Byte), ::Java::Int, ::Java::Int] }
     # C_EncryptFinal finishes a multiple-part encryption
     # operation.
@@ -789,10 +789,10 @@ module Sun::Security::Pkcs11::Wrapper
     # @preconditions
     # @postconditions (result <> null)
     def _c_encrypt_final(h_session, direct_out, out, out_ofs, out_len)
-      JNI.__send__(:Java_sun_security_pkcs11_wrapper_PKCS11_C_1EncryptFinal, JNI.env, self.jni_id, h_session.to_int, direct_out.to_int, out.jni_id, out_ofs.to_int, out_len.to_int)
+      JNI.call_native_method(:Java_sun_security_pkcs11_wrapper_PKCS11_C_1EncryptFinal, JNI.env, self.jni_id, h_session.to_int, direct_out.to_int, out.jni_id, out_ofs.to_int, out_len.to_int)
     end
     
-    JNI.native_method :Java_sun_security_pkcs11_wrapper_PKCS11_C_1DecryptInit, [:pointer, :long, :int64, :long, :int64], :void
+    JNI.load_native_method :Java_sun_security_pkcs11_wrapper_PKCS11_C_1DecryptInit, [:pointer, :long, :int64, :long, :int64], :void
     typesig { [::Java::Long, CK_MECHANISM, ::Java::Long] }
     # C_DecryptInit initializes a decryption operation.
     # (Encryption and decryption)
@@ -807,10 +807,10 @@ module Sun::Security::Pkcs11::Wrapper
     # @preconditions
     # @postconditions
     def _c_decrypt_init(h_session, p_mechanism, h_key)
-      JNI.__send__(:Java_sun_security_pkcs11_wrapper_PKCS11_C_1DecryptInit, JNI.env, self.jni_id, h_session.to_int, p_mechanism.jni_id, h_key.to_int)
+      JNI.call_native_method(:Java_sun_security_pkcs11_wrapper_PKCS11_C_1DecryptInit, JNI.env, self.jni_id, h_session.to_int, p_mechanism.jni_id, h_key.to_int)
     end
     
-    JNI.native_method :Java_sun_security_pkcs11_wrapper_PKCS11_C_1Decrypt, [:pointer, :long, :int64, :long, :int32, :int32, :long, :int32, :int32], :int32
+    JNI.load_native_method :Java_sun_security_pkcs11_wrapper_PKCS11_C_1Decrypt, [:pointer, :long, :int64, :long, :int32, :int32, :long, :int32, :int32], :int32
     typesig { [::Java::Long, Array.typed(::Java::Byte), ::Java::Int, ::Java::Int, Array.typed(::Java::Byte), ::Java::Int, ::Java::Int] }
     # C_Decrypt decrypts encrypted data in a single part.
     # (Encryption and decryption)
@@ -827,10 +827,10 @@ module Sun::Security::Pkcs11::Wrapper
     # @preconditions (pEncryptedPart <> null)
     # @postconditions (result <> null)
     def _c_decrypt(h_session, in_, in_ofs, in_len, out, out_ofs, out_len)
-      JNI.__send__(:Java_sun_security_pkcs11_wrapper_PKCS11_C_1Decrypt, JNI.env, self.jni_id, h_session.to_int, in_.jni_id, in_ofs.to_int, in_len.to_int, out.jni_id, out_ofs.to_int, out_len.to_int)
+      JNI.call_native_method(:Java_sun_security_pkcs11_wrapper_PKCS11_C_1Decrypt, JNI.env, self.jni_id, h_session.to_int, in_.jni_id, in_ofs.to_int, in_len.to_int, out.jni_id, out_ofs.to_int, out_len.to_int)
     end
     
-    JNI.native_method :Java_sun_security_pkcs11_wrapper_PKCS11_C_1DecryptUpdate, [:pointer, :long, :int64, :int64, :long, :int32, :int32, :int64, :long, :int32, :int32], :int32
+    JNI.load_native_method :Java_sun_security_pkcs11_wrapper_PKCS11_C_1DecryptUpdate, [:pointer, :long, :int64, :int64, :long, :int32, :int32, :int64, :long, :int32, :int32], :int32
     typesig { [::Java::Long, ::Java::Long, Array.typed(::Java::Byte), ::Java::Int, ::Java::Int, ::Java::Long, Array.typed(::Java::Byte), ::Java::Int, ::Java::Int] }
     # C_DecryptUpdate continues a multiple-part decryption
     # operation.
@@ -848,10 +848,10 @@ module Sun::Security::Pkcs11::Wrapper
     # @preconditions (pEncryptedPart <> null)
     # @postconditions
     def _c_decrypt_update(h_session, direct_in, in_, in_ofs, in_len, direct_out, out, out_ofs, out_len)
-      JNI.__send__(:Java_sun_security_pkcs11_wrapper_PKCS11_C_1DecryptUpdate, JNI.env, self.jni_id, h_session.to_int, direct_in.to_int, in_.jni_id, in_ofs.to_int, in_len.to_int, direct_out.to_int, out.jni_id, out_ofs.to_int, out_len.to_int)
+      JNI.call_native_method(:Java_sun_security_pkcs11_wrapper_PKCS11_C_1DecryptUpdate, JNI.env, self.jni_id, h_session.to_int, direct_in.to_int, in_.jni_id, in_ofs.to_int, in_len.to_int, direct_out.to_int, out.jni_id, out_ofs.to_int, out_len.to_int)
     end
     
-    JNI.native_method :Java_sun_security_pkcs11_wrapper_PKCS11_C_1DecryptFinal, [:pointer, :long, :int64, :int64, :long, :int32, :int32], :int32
+    JNI.load_native_method :Java_sun_security_pkcs11_wrapper_PKCS11_C_1DecryptFinal, [:pointer, :long, :int64, :int64, :long, :int32, :int32], :int32
     typesig { [::Java::Long, ::Java::Long, Array.typed(::Java::Byte), ::Java::Int, ::Java::Int] }
     # C_DecryptFinal finishes a multiple-part decryption
     # operation.
@@ -866,10 +866,10 @@ module Sun::Security::Pkcs11::Wrapper
     # @preconditions
     # @postconditions (result <> null)
     def _c_decrypt_final(h_session, direct_out, out, out_ofs, out_len)
-      JNI.__send__(:Java_sun_security_pkcs11_wrapper_PKCS11_C_1DecryptFinal, JNI.env, self.jni_id, h_session.to_int, direct_out.to_int, out.jni_id, out_ofs.to_int, out_len.to_int)
+      JNI.call_native_method(:Java_sun_security_pkcs11_wrapper_PKCS11_C_1DecryptFinal, JNI.env, self.jni_id, h_session.to_int, direct_out.to_int, out.jni_id, out_ofs.to_int, out_len.to_int)
     end
     
-    JNI.native_method :Java_sun_security_pkcs11_wrapper_PKCS11_C_1DigestInit, [:pointer, :long, :int64, :long], :void
+    JNI.load_native_method :Java_sun_security_pkcs11_wrapper_PKCS11_C_1DigestInit, [:pointer, :long, :int64, :long], :void
     typesig { [::Java::Long, CK_MECHANISM] }
     # *****************************************************************************
     # Message digesting
@@ -886,10 +886,10 @@ module Sun::Security::Pkcs11::Wrapper
     # @preconditions
     # @postconditions
     def _c_digest_init(h_session, p_mechanism)
-      JNI.__send__(:Java_sun_security_pkcs11_wrapper_PKCS11_C_1DigestInit, JNI.env, self.jni_id, h_session.to_int, p_mechanism.jni_id)
+      JNI.call_native_method(:Java_sun_security_pkcs11_wrapper_PKCS11_C_1DigestInit, JNI.env, self.jni_id, h_session.to_int, p_mechanism.jni_id)
     end
     
-    JNI.native_method :Java_sun_security_pkcs11_wrapper_PKCS11_C_1DigestSingle, [:pointer, :long, :int64, :long, :long, :int32, :int32, :long, :int32, :int32], :int32
+    JNI.load_native_method :Java_sun_security_pkcs11_wrapper_PKCS11_C_1DigestSingle, [:pointer, :long, :int64, :long, :long, :int32, :int32, :long, :int32, :int32], :int32
     typesig { [::Java::Long, CK_MECHANISM, Array.typed(::Java::Byte), ::Java::Int, ::Java::Int, Array.typed(::Java::Byte), ::Java::Int, ::Java::Int] }
     # note that C_DigestSingle does not exist in PKCS#11
     # we combined the C_DigestInit and C_Digest into a single function
@@ -909,10 +909,10 @@ module Sun::Security::Pkcs11::Wrapper
     # @preconditions (data <> null)
     # @postconditions (result <> null)
     def _c_digest_single(h_session, p_mechanism, in_, in_ofs, in_len, digest, digest_ofs, digest_len)
-      JNI.__send__(:Java_sun_security_pkcs11_wrapper_PKCS11_C_1DigestSingle, JNI.env, self.jni_id, h_session.to_int, p_mechanism.jni_id, in_.jni_id, in_ofs.to_int, in_len.to_int, digest.jni_id, digest_ofs.to_int, digest_len.to_int)
+      JNI.call_native_method(:Java_sun_security_pkcs11_wrapper_PKCS11_C_1DigestSingle, JNI.env, self.jni_id, h_session.to_int, p_mechanism.jni_id, in_.jni_id, in_ofs.to_int, in_len.to_int, digest.jni_id, digest_ofs.to_int, digest_len.to_int)
     end
     
-    JNI.native_method :Java_sun_security_pkcs11_wrapper_PKCS11_C_1DigestUpdate, [:pointer, :long, :int64, :int64, :long, :int32, :int32], :void
+    JNI.load_native_method :Java_sun_security_pkcs11_wrapper_PKCS11_C_1DigestUpdate, [:pointer, :long, :int64, :int64, :long, :int32, :int32], :void
     typesig { [::Java::Long, ::Java::Long, Array.typed(::Java::Byte), ::Java::Int, ::Java::Int] }
     # C_DigestUpdate continues a multiple-part message-digesting
     # operation.
@@ -926,10 +926,10 @@ module Sun::Security::Pkcs11::Wrapper
     # @preconditions (pPart <> null)
     # @postconditions
     def _c_digest_update(h_session, direct_in, in_, in_ofs, in_len)
-      JNI.__send__(:Java_sun_security_pkcs11_wrapper_PKCS11_C_1DigestUpdate, JNI.env, self.jni_id, h_session.to_int, direct_in.to_int, in_.jni_id, in_ofs.to_int, in_len.to_int)
+      JNI.call_native_method(:Java_sun_security_pkcs11_wrapper_PKCS11_C_1DigestUpdate, JNI.env, self.jni_id, h_session.to_int, direct_in.to_int, in_.jni_id, in_ofs.to_int, in_len.to_int)
     end
     
-    JNI.native_method :Java_sun_security_pkcs11_wrapper_PKCS11_C_1DigestKey, [:pointer, :long, :int64, :int64], :void
+    JNI.load_native_method :Java_sun_security_pkcs11_wrapper_PKCS11_C_1DigestKey, [:pointer, :long, :int64, :int64], :void
     typesig { [::Java::Long, ::Java::Long] }
     # C_DigestKey continues a multi-part message-digesting
     # operation, by digesting the value of a secret key as part of
@@ -944,10 +944,10 @@ module Sun::Security::Pkcs11::Wrapper
     # @preconditions
     # @postconditions
     def _c_digest_key(h_session, h_key)
-      JNI.__send__(:Java_sun_security_pkcs11_wrapper_PKCS11_C_1DigestKey, JNI.env, self.jni_id, h_session.to_int, h_key.to_int)
+      JNI.call_native_method(:Java_sun_security_pkcs11_wrapper_PKCS11_C_1DigestKey, JNI.env, self.jni_id, h_session.to_int, h_key.to_int)
     end
     
-    JNI.native_method :Java_sun_security_pkcs11_wrapper_PKCS11_C_1DigestFinal, [:pointer, :long, :int64, :long, :int32, :int32], :int32
+    JNI.load_native_method :Java_sun_security_pkcs11_wrapper_PKCS11_C_1DigestFinal, [:pointer, :long, :int64, :long, :int32, :int32], :int32
     typesig { [::Java::Long, Array.typed(::Java::Byte), ::Java::Int, ::Java::Int] }
     # C_DigestFinal finishes a multiple-part message-digesting
     # operation.
@@ -961,10 +961,10 @@ module Sun::Security::Pkcs11::Wrapper
     # @preconditions
     # @postconditions (result <> null)
     def _c_digest_final(h_session, p_digest, digest_ofs, digest_len)
-      JNI.__send__(:Java_sun_security_pkcs11_wrapper_PKCS11_C_1DigestFinal, JNI.env, self.jni_id, h_session.to_int, p_digest.jni_id, digest_ofs.to_int, digest_len.to_int)
+      JNI.call_native_method(:Java_sun_security_pkcs11_wrapper_PKCS11_C_1DigestFinal, JNI.env, self.jni_id, h_session.to_int, p_digest.jni_id, digest_ofs.to_int, digest_len.to_int)
     end
     
-    JNI.native_method :Java_sun_security_pkcs11_wrapper_PKCS11_C_1SignInit, [:pointer, :long, :int64, :long, :int64], :void
+    JNI.load_native_method :Java_sun_security_pkcs11_wrapper_PKCS11_C_1SignInit, [:pointer, :long, :int64, :long, :int64], :void
     typesig { [::Java::Long, CK_MECHANISM, ::Java::Long] }
     # *****************************************************************************
     # Signing and MACing
@@ -986,10 +986,10 @@ module Sun::Security::Pkcs11::Wrapper
     # @preconditions
     # @postconditions
     def _c_sign_init(h_session, p_mechanism, h_key)
-      JNI.__send__(:Java_sun_security_pkcs11_wrapper_PKCS11_C_1SignInit, JNI.env, self.jni_id, h_session.to_int, p_mechanism.jni_id, h_key.to_int)
+      JNI.call_native_method(:Java_sun_security_pkcs11_wrapper_PKCS11_C_1SignInit, JNI.env, self.jni_id, h_session.to_int, p_mechanism.jni_id, h_key.to_int)
     end
     
-    JNI.native_method :Java_sun_security_pkcs11_wrapper_PKCS11_C_1Sign, [:pointer, :long, :int64, :long], :long
+    JNI.load_native_method :Java_sun_security_pkcs11_wrapper_PKCS11_C_1Sign, [:pointer, :long, :int64, :long], :long
     typesig { [::Java::Long, Array.typed(::Java::Byte)] }
     # C_Sign signs (encrypts with private key) data in a single
     # part, where the signature is (will be) an appendix to the
@@ -1007,10 +1007,10 @@ module Sun::Security::Pkcs11::Wrapper
     # @preconditions (pData <> null)
     # @postconditions (result <> null)
     def _c_sign(h_session, p_data)
-      JNI.__send__(:Java_sun_security_pkcs11_wrapper_PKCS11_C_1Sign, JNI.env, self.jni_id, h_session.to_int, p_data.jni_id)
+      JNI.call_native_method(:Java_sun_security_pkcs11_wrapper_PKCS11_C_1Sign, JNI.env, self.jni_id, h_session.to_int, p_data.jni_id)
     end
     
-    JNI.native_method :Java_sun_security_pkcs11_wrapper_PKCS11_C_1SignUpdate, [:pointer, :long, :int64, :int64, :long, :int32, :int32], :void
+    JNI.load_native_method :Java_sun_security_pkcs11_wrapper_PKCS11_C_1SignUpdate, [:pointer, :long, :int64, :int64, :long, :int32, :int32], :void
     typesig { [::Java::Long, ::Java::Long, Array.typed(::Java::Byte), ::Java::Int, ::Java::Int] }
     # C_SignUpdate continues a multiple-part signature operation,
     # where the signature is (will be) an appendix to the data,
@@ -1025,10 +1025,10 @@ module Sun::Security::Pkcs11::Wrapper
     # @preconditions (pPart <> null)
     # @postconditions
     def _c_sign_update(h_session, direct_in, in_, in_ofs, in_len)
-      JNI.__send__(:Java_sun_security_pkcs11_wrapper_PKCS11_C_1SignUpdate, JNI.env, self.jni_id, h_session.to_int, direct_in.to_int, in_.jni_id, in_ofs.to_int, in_len.to_int)
+      JNI.call_native_method(:Java_sun_security_pkcs11_wrapper_PKCS11_C_1SignUpdate, JNI.env, self.jni_id, h_session.to_int, direct_in.to_int, in_.jni_id, in_ofs.to_int, in_len.to_int)
     end
     
-    JNI.native_method :Java_sun_security_pkcs11_wrapper_PKCS11_C_1SignFinal, [:pointer, :long, :int64, :int32], :long
+    JNI.load_native_method :Java_sun_security_pkcs11_wrapper_PKCS11_C_1SignFinal, [:pointer, :long, :int64, :int32], :long
     typesig { [::Java::Long, ::Java::Int] }
     # C_SignFinal finishes a multiple-part signature operation,
     # returning the signature.
@@ -1043,10 +1043,10 @@ module Sun::Security::Pkcs11::Wrapper
     # @preconditions
     # @postconditions (result <> null)
     def _c_sign_final(h_session, expected_len)
-      JNI.__send__(:Java_sun_security_pkcs11_wrapper_PKCS11_C_1SignFinal, JNI.env, self.jni_id, h_session.to_int, expected_len.to_int)
+      JNI.call_native_method(:Java_sun_security_pkcs11_wrapper_PKCS11_C_1SignFinal, JNI.env, self.jni_id, h_session.to_int, expected_len.to_int)
     end
     
-    JNI.native_method :Java_sun_security_pkcs11_wrapper_PKCS11_C_1SignRecoverInit, [:pointer, :long, :int64, :long, :int64], :void
+    JNI.load_native_method :Java_sun_security_pkcs11_wrapper_PKCS11_C_1SignRecoverInit, [:pointer, :long, :int64, :long, :int64], :void
     typesig { [::Java::Long, CK_MECHANISM, ::Java::Long] }
     # C_SignRecoverInit initializes a signature operation, where
     # the data can be recovered from the signature.
@@ -1062,10 +1062,10 @@ module Sun::Security::Pkcs11::Wrapper
     # @preconditions
     # @postconditions
     def _c_sign_recover_init(h_session, p_mechanism, h_key)
-      JNI.__send__(:Java_sun_security_pkcs11_wrapper_PKCS11_C_1SignRecoverInit, JNI.env, self.jni_id, h_session.to_int, p_mechanism.jni_id, h_key.to_int)
+      JNI.call_native_method(:Java_sun_security_pkcs11_wrapper_PKCS11_C_1SignRecoverInit, JNI.env, self.jni_id, h_session.to_int, p_mechanism.jni_id, h_key.to_int)
     end
     
-    JNI.native_method :Java_sun_security_pkcs11_wrapper_PKCS11_C_1SignRecover, [:pointer, :long, :int64, :long, :int32, :int32, :long, :int32, :int32], :int32
+    JNI.load_native_method :Java_sun_security_pkcs11_wrapper_PKCS11_C_1SignRecover, [:pointer, :long, :int64, :long, :int32, :int32, :long, :int32, :int32], :int32
     typesig { [::Java::Long, Array.typed(::Java::Byte), ::Java::Int, ::Java::Int, Array.typed(::Java::Byte), ::Java::Int, ::Java::Int] }
     # C_SignRecover signs data in a single operation, where the
     # data can be recovered from the signature.
@@ -1082,10 +1082,10 @@ module Sun::Security::Pkcs11::Wrapper
     # @preconditions (pData <> null)
     # @postconditions (result <> null)
     def _c_sign_recover(h_session, in_, in_ofs, in_len, out, out_oufs, out_len)
-      JNI.__send__(:Java_sun_security_pkcs11_wrapper_PKCS11_C_1SignRecover, JNI.env, self.jni_id, h_session.to_int, in_.jni_id, in_ofs.to_int, in_len.to_int, out.jni_id, out_oufs.to_int, out_len.to_int)
+      JNI.call_native_method(:Java_sun_security_pkcs11_wrapper_PKCS11_C_1SignRecover, JNI.env, self.jni_id, h_session.to_int, in_.jni_id, in_ofs.to_int, in_len.to_int, out.jni_id, out_oufs.to_int, out_len.to_int)
     end
     
-    JNI.native_method :Java_sun_security_pkcs11_wrapper_PKCS11_C_1VerifyInit, [:pointer, :long, :int64, :long, :int64], :void
+    JNI.load_native_method :Java_sun_security_pkcs11_wrapper_PKCS11_C_1VerifyInit, [:pointer, :long, :int64, :long, :int64], :void
     typesig { [::Java::Long, CK_MECHANISM, ::Java::Long] }
     # *****************************************************************************
     # Verifying signatures and MACs
@@ -1106,10 +1106,10 @@ module Sun::Security::Pkcs11::Wrapper
     # @preconditions
     # @postconditions
     def _c_verify_init(h_session, p_mechanism, h_key)
-      JNI.__send__(:Java_sun_security_pkcs11_wrapper_PKCS11_C_1VerifyInit, JNI.env, self.jni_id, h_session.to_int, p_mechanism.jni_id, h_key.to_int)
+      JNI.call_native_method(:Java_sun_security_pkcs11_wrapper_PKCS11_C_1VerifyInit, JNI.env, self.jni_id, h_session.to_int, p_mechanism.jni_id, h_key.to_int)
     end
     
-    JNI.native_method :Java_sun_security_pkcs11_wrapper_PKCS11_C_1Verify, [:pointer, :long, :int64, :long, :long], :void
+    JNI.load_native_method :Java_sun_security_pkcs11_wrapper_PKCS11_C_1Verify, [:pointer, :long, :int64, :long, :long], :void
     typesig { [::Java::Long, Array.typed(::Java::Byte), Array.typed(::Java::Byte)] }
     # C_Verify verifies a signature in a single-part operation,
     # where the signature is an appendix to the data, and plaintext
@@ -1126,10 +1126,10 @@ module Sun::Security::Pkcs11::Wrapper
     # @preconditions (pData <> null) and (pSignature <> null)
     # @postconditions
     def _c_verify(h_session, p_data, p_signature)
-      JNI.__send__(:Java_sun_security_pkcs11_wrapper_PKCS11_C_1Verify, JNI.env, self.jni_id, h_session.to_int, p_data.jni_id, p_signature.jni_id)
+      JNI.call_native_method(:Java_sun_security_pkcs11_wrapper_PKCS11_C_1Verify, JNI.env, self.jni_id, h_session.to_int, p_data.jni_id, p_signature.jni_id)
     end
     
-    JNI.native_method :Java_sun_security_pkcs11_wrapper_PKCS11_C_1VerifyUpdate, [:pointer, :long, :int64, :int64, :long, :int32, :int32], :void
+    JNI.load_native_method :Java_sun_security_pkcs11_wrapper_PKCS11_C_1VerifyUpdate, [:pointer, :long, :int64, :int64, :long, :int32, :int32], :void
     typesig { [::Java::Long, ::Java::Long, Array.typed(::Java::Byte), ::Java::Int, ::Java::Int] }
     # C_VerifyUpdate continues a multiple-part verification
     # operation, where the signature is an appendix to the data,
@@ -1144,10 +1144,10 @@ module Sun::Security::Pkcs11::Wrapper
     # @preconditions (pPart <> null)
     # @postconditions
     def _c_verify_update(h_session, direct_in, in_, in_ofs, in_len)
-      JNI.__send__(:Java_sun_security_pkcs11_wrapper_PKCS11_C_1VerifyUpdate, JNI.env, self.jni_id, h_session.to_int, direct_in.to_int, in_.jni_id, in_ofs.to_int, in_len.to_int)
+      JNI.call_native_method(:Java_sun_security_pkcs11_wrapper_PKCS11_C_1VerifyUpdate, JNI.env, self.jni_id, h_session.to_int, direct_in.to_int, in_.jni_id, in_ofs.to_int, in_len.to_int)
     end
     
-    JNI.native_method :Java_sun_security_pkcs11_wrapper_PKCS11_C_1VerifyFinal, [:pointer, :long, :int64, :long], :void
+    JNI.load_native_method :Java_sun_security_pkcs11_wrapper_PKCS11_C_1VerifyFinal, [:pointer, :long, :int64, :long], :void
     typesig { [::Java::Long, Array.typed(::Java::Byte)] }
     # C_VerifyFinal finishes a multiple-part verification
     # operation, checking the signature.
@@ -1161,10 +1161,10 @@ module Sun::Security::Pkcs11::Wrapper
     # @preconditions (pSignature <> null)
     # @postconditions
     def _c_verify_final(h_session, p_signature)
-      JNI.__send__(:Java_sun_security_pkcs11_wrapper_PKCS11_C_1VerifyFinal, JNI.env, self.jni_id, h_session.to_int, p_signature.jni_id)
+      JNI.call_native_method(:Java_sun_security_pkcs11_wrapper_PKCS11_C_1VerifyFinal, JNI.env, self.jni_id, h_session.to_int, p_signature.jni_id)
     end
     
-    JNI.native_method :Java_sun_security_pkcs11_wrapper_PKCS11_C_1VerifyRecoverInit, [:pointer, :long, :int64, :long, :int64], :void
+    JNI.load_native_method :Java_sun_security_pkcs11_wrapper_PKCS11_C_1VerifyRecoverInit, [:pointer, :long, :int64, :long, :int64], :void
     typesig { [::Java::Long, CK_MECHANISM, ::Java::Long] }
     # C_VerifyRecoverInit initializes a signature verification
     # operation, where the data is recovered from the signature.
@@ -1180,10 +1180,10 @@ module Sun::Security::Pkcs11::Wrapper
     # @preconditions
     # @postconditions
     def _c_verify_recover_init(h_session, p_mechanism, h_key)
-      JNI.__send__(:Java_sun_security_pkcs11_wrapper_PKCS11_C_1VerifyRecoverInit, JNI.env, self.jni_id, h_session.to_int, p_mechanism.jni_id, h_key.to_int)
+      JNI.call_native_method(:Java_sun_security_pkcs11_wrapper_PKCS11_C_1VerifyRecoverInit, JNI.env, self.jni_id, h_session.to_int, p_mechanism.jni_id, h_key.to_int)
     end
     
-    JNI.native_method :Java_sun_security_pkcs11_wrapper_PKCS11_C_1VerifyRecover, [:pointer, :long, :int64, :long, :int32, :int32, :long, :int32, :int32], :int32
+    JNI.load_native_method :Java_sun_security_pkcs11_wrapper_PKCS11_C_1VerifyRecover, [:pointer, :long, :int64, :long, :int32, :int32, :long, :int32, :int32], :int32
     typesig { [::Java::Long, Array.typed(::Java::Byte), ::Java::Int, ::Java::Int, Array.typed(::Java::Byte), ::Java::Int, ::Java::Int] }
     # C_VerifyRecover verifies a signature in a single-part
     # operation, where the data is recovered from the signature.
@@ -1199,10 +1199,10 @@ module Sun::Security::Pkcs11::Wrapper
     # @preconditions (pSignature <> null)
     # @postconditions (result <> null)
     def _c_verify_recover(h_session, in_, in_ofs, in_len, out, out_oufs, out_len)
-      JNI.__send__(:Java_sun_security_pkcs11_wrapper_PKCS11_C_1VerifyRecover, JNI.env, self.jni_id, h_session.to_int, in_.jni_id, in_ofs.to_int, in_len.to_int, out.jni_id, out_oufs.to_int, out_len.to_int)
+      JNI.call_native_method(:Java_sun_security_pkcs11_wrapper_PKCS11_C_1VerifyRecover, JNI.env, self.jni_id, h_session.to_int, in_.jni_id, in_ofs.to_int, in_len.to_int, out.jni_id, out_oufs.to_int, out_len.to_int)
     end
     
-    JNI.native_method :Java_sun_security_pkcs11_wrapper_PKCS11_C_1GenerateKey, [:pointer, :long, :int64, :long, :long], :int64
+    JNI.load_native_method :Java_sun_security_pkcs11_wrapper_PKCS11_C_1GenerateKey, [:pointer, :long, :int64, :long, :long], :int64
     typesig { [::Java::Long, CK_MECHANISM, Array.typed(CK_ATTRIBUTE)] }
     # *****************************************************************************
     # Dual-function cryptographic operations
@@ -1299,10 +1299,10 @@ module Sun::Security::Pkcs11::Wrapper
     # @preconditions
     # @postconditions
     def _c_generate_key(h_session, p_mechanism, p_template)
-      JNI.__send__(:Java_sun_security_pkcs11_wrapper_PKCS11_C_1GenerateKey, JNI.env, self.jni_id, h_session.to_int, p_mechanism.jni_id, p_template.jni_id)
+      JNI.call_native_method(:Java_sun_security_pkcs11_wrapper_PKCS11_C_1GenerateKey, JNI.env, self.jni_id, h_session.to_int, p_mechanism.jni_id, p_template.jni_id)
     end
     
-    JNI.native_method :Java_sun_security_pkcs11_wrapper_PKCS11_C_1GenerateKeyPair, [:pointer, :long, :int64, :long, :long, :long], :long
+    JNI.load_native_method :Java_sun_security_pkcs11_wrapper_PKCS11_C_1GenerateKeyPair, [:pointer, :long, :int64, :long, :long, :long], :long
     typesig { [::Java::Long, CK_MECHANISM, Array.typed(CK_ATTRIBUTE), Array.typed(CK_ATTRIBUTE)] }
     # C_GenerateKeyPair generates a public-key/private-key pair,
     # creating new key objects.
@@ -1329,10 +1329,10 @@ module Sun::Security::Pkcs11::Wrapper
     # @preconditions (pMechanism <> null)
     # @postconditions (result <> null) and (result.length == 2)
     def _c_generate_key_pair(h_session, p_mechanism, p_public_key_template, p_private_key_template)
-      JNI.__send__(:Java_sun_security_pkcs11_wrapper_PKCS11_C_1GenerateKeyPair, JNI.env, self.jni_id, h_session.to_int, p_mechanism.jni_id, p_public_key_template.jni_id, p_private_key_template.jni_id)
+      JNI.call_native_method(:Java_sun_security_pkcs11_wrapper_PKCS11_C_1GenerateKeyPair, JNI.env, self.jni_id, h_session.to_int, p_mechanism.jni_id, p_public_key_template.jni_id, p_private_key_template.jni_id)
     end
     
-    JNI.native_method :Java_sun_security_pkcs11_wrapper_PKCS11_C_1WrapKey, [:pointer, :long, :int64, :long, :int64, :int64], :long
+    JNI.load_native_method :Java_sun_security_pkcs11_wrapper_PKCS11_C_1WrapKey, [:pointer, :long, :int64, :long, :int64, :int64], :long
     typesig { [::Java::Long, CK_MECHANISM, ::Java::Long, ::Java::Long] }
     # C_WrapKey wraps (i.e., encrypts) a key.
     # (Key management)
@@ -1352,10 +1352,10 @@ module Sun::Security::Pkcs11::Wrapper
     # @preconditions
     # @postconditions (result <> null)
     def _c_wrap_key(h_session, p_mechanism, h_wrapping_key, h_key)
-      JNI.__send__(:Java_sun_security_pkcs11_wrapper_PKCS11_C_1WrapKey, JNI.env, self.jni_id, h_session.to_int, p_mechanism.jni_id, h_wrapping_key.to_int, h_key.to_int)
+      JNI.call_native_method(:Java_sun_security_pkcs11_wrapper_PKCS11_C_1WrapKey, JNI.env, self.jni_id, h_session.to_int, p_mechanism.jni_id, h_wrapping_key.to_int, h_key.to_int)
     end
     
-    JNI.native_method :Java_sun_security_pkcs11_wrapper_PKCS11_C_1UnwrapKey, [:pointer, :long, :int64, :long, :int64, :long, :long], :int64
+    JNI.load_native_method :Java_sun_security_pkcs11_wrapper_PKCS11_C_1UnwrapKey, [:pointer, :long, :int64, :long, :int64, :long, :long], :int64
     typesig { [::Java::Long, CK_MECHANISM, ::Java::Long, Array.typed(::Java::Byte), Array.typed(CK_ATTRIBUTE)] }
     # C_UnwrapKey unwraps (decrypts) a wrapped key, creating a new
     # key object.
@@ -1378,10 +1378,10 @@ module Sun::Security::Pkcs11::Wrapper
     # @preconditions (pWrappedKey <> null)
     # @postconditions
     def _c_unwrap_key(h_session, p_mechanism, h_unwrapping_key, p_wrapped_key, p_template)
-      JNI.__send__(:Java_sun_security_pkcs11_wrapper_PKCS11_C_1UnwrapKey, JNI.env, self.jni_id, h_session.to_int, p_mechanism.jni_id, h_unwrapping_key.to_int, p_wrapped_key.jni_id, p_template.jni_id)
+      JNI.call_native_method(:Java_sun_security_pkcs11_wrapper_PKCS11_C_1UnwrapKey, JNI.env, self.jni_id, h_session.to_int, p_mechanism.jni_id, h_unwrapping_key.to_int, p_wrapped_key.jni_id, p_template.jni_id)
     end
     
-    JNI.native_method :Java_sun_security_pkcs11_wrapper_PKCS11_C_1DeriveKey, [:pointer, :long, :int64, :long, :int64, :long], :int64
+    JNI.load_native_method :Java_sun_security_pkcs11_wrapper_PKCS11_C_1DeriveKey, [:pointer, :long, :int64, :long, :int64, :long], :int64
     typesig { [::Java::Long, CK_MECHANISM, ::Java::Long, Array.typed(CK_ATTRIBUTE)] }
     # C_DeriveKey derives a key from a base key, creating a new key
     # object.
@@ -1402,10 +1402,10 @@ module Sun::Security::Pkcs11::Wrapper
     # @preconditions
     # @postconditions
     def _c_derive_key(h_session, p_mechanism, h_base_key, p_template)
-      JNI.__send__(:Java_sun_security_pkcs11_wrapper_PKCS11_C_1DeriveKey, JNI.env, self.jni_id, h_session.to_int, p_mechanism.jni_id, h_base_key.to_int, p_template.jni_id)
+      JNI.call_native_method(:Java_sun_security_pkcs11_wrapper_PKCS11_C_1DeriveKey, JNI.env, self.jni_id, h_session.to_int, p_mechanism.jni_id, h_base_key.to_int, p_template.jni_id)
     end
     
-    JNI.native_method :Java_sun_security_pkcs11_wrapper_PKCS11_C_1SeedRandom, [:pointer, :long, :int64, :long], :void
+    JNI.load_native_method :Java_sun_security_pkcs11_wrapper_PKCS11_C_1SeedRandom, [:pointer, :long, :int64, :long], :void
     typesig { [::Java::Long, Array.typed(::Java::Byte)] }
     # *****************************************************************************
     # Random number generation
@@ -1423,10 +1423,10 @@ module Sun::Security::Pkcs11::Wrapper
     # @preconditions (pSeed <> null)
     # @postconditions
     def _c_seed_random(h_session, p_seed)
-      JNI.__send__(:Java_sun_security_pkcs11_wrapper_PKCS11_C_1SeedRandom, JNI.env, self.jni_id, h_session.to_int, p_seed.jni_id)
+      JNI.call_native_method(:Java_sun_security_pkcs11_wrapper_PKCS11_C_1SeedRandom, JNI.env, self.jni_id, h_session.to_int, p_seed.jni_id)
     end
     
-    JNI.native_method :Java_sun_security_pkcs11_wrapper_PKCS11_C_1GenerateRandom, [:pointer, :long, :int64, :long], :void
+    JNI.load_native_method :Java_sun_security_pkcs11_wrapper_PKCS11_C_1GenerateRandom, [:pointer, :long, :int64, :long], :void
     typesig { [::Java::Long, Array.typed(::Java::Byte)] }
     # C_GenerateRandom generates random data.
     # (Random number generation)
@@ -1440,7 +1440,7 @@ module Sun::Security::Pkcs11::Wrapper
     # @preconditions (randomData <> null)
     # @postconditions
     def _c_generate_random(h_session, random_data)
-      JNI.__send__(:Java_sun_security_pkcs11_wrapper_PKCS11_C_1GenerateRandom, JNI.env, self.jni_id, h_session.to_int, random_data.jni_id)
+      JNI.call_native_method(:Java_sun_security_pkcs11_wrapper_PKCS11_C_1GenerateRandom, JNI.env, self.jni_id, h_session.to_int, random_data.jni_id)
     end
     
     typesig { [] }

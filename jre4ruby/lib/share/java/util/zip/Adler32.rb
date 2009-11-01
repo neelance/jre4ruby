@@ -91,16 +91,16 @@ module Java::Util::Zip
     end
     
     class_module.module_eval {
-      JNI.native_method :Java_java_util_zip_Adler32_update, [:pointer, :long, :int32, :int32], :int32
+      JNI.load_native_method :Java_java_util_zip_Adler32_update, [:pointer, :long, :int32, :int32], :int32
       typesig { [::Java::Int, ::Java::Int] }
       def update(adler, b)
-        JNI.__send__(:Java_java_util_zip_Adler32_update, JNI.env, self.jni_id, adler.to_int, b.to_int)
+        JNI.call_native_method(:Java_java_util_zip_Adler32_update, JNI.env, self.jni_id, adler.to_int, b.to_int)
       end
       
-      JNI.native_method :Java_java_util_zip_Adler32_updateBytes, [:pointer, :long, :int32, :long, :int32, :int32], :int32
+      JNI.load_native_method :Java_java_util_zip_Adler32_updateBytes, [:pointer, :long, :int32, :long, :int32, :int32], :int32
       typesig { [::Java::Int, Array.typed(::Java::Byte), ::Java::Int, ::Java::Int] }
       def update_bytes(adler, b, off, len)
-        JNI.__send__(:Java_java_util_zip_Adler32_updateBytes, JNI.env, self.jni_id, adler.to_int, b.jni_id, off.to_int, len.to_int)
+        JNI.call_native_method(:Java_java_util_zip_Adler32_updateBytes, JNI.env, self.jni_id, adler.to_int, b.jni_id, off.to_int, len.to_int)
       end
     }
     

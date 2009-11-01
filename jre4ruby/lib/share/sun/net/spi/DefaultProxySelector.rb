@@ -555,17 +555,17 @@ module Sun::Net::Spi
     end
     
     class_module.module_eval {
-      JNI.native_method :Java_sun_net_spi_DefaultProxySelector_init, [:pointer, :long], :int8
+      JNI.load_native_method :Java_sun_net_spi_DefaultProxySelector_init, [:pointer, :long], :int8
       typesig { [] }
       def init
-        JNI.__send__(:Java_sun_net_spi_DefaultProxySelector_init, JNI.env, self.jni_id) != 0
+        JNI.call_native_method(:Java_sun_net_spi_DefaultProxySelector_init, JNI.env, self.jni_id) != 0
       end
     }
     
-    JNI.native_method :Java_sun_net_spi_DefaultProxySelector_getSystemProxy, [:pointer, :long, :long, :long], :long
+    JNI.load_native_method :Java_sun_net_spi_DefaultProxySelector_getSystemProxy, [:pointer, :long, :long, :long], :long
     typesig { [String, String] }
     def get_system_proxy(protocol, host)
-      JNI.__send__(:Java_sun_net_spi_DefaultProxySelector_getSystemProxy, JNI.env, self.jni_id, protocol.jni_id, host.jni_id)
+      JNI.call_native_method(:Java_sun_net_spi_DefaultProxySelector_getSystemProxy, JNI.env, self.jni_id, protocol.jni_id, host.jni_id)
     end
     
     typesig { [] }

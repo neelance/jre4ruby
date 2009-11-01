@@ -162,10 +162,10 @@ module Java::Lang
     include_class_members ClassLoaderImports
     
     class_module.module_eval {
-      JNI.native_method :Java_java_lang_ClassLoader_registerNatives, [:pointer, :long], :void
+      JNI.load_native_method :Java_java_lang_ClassLoader_registerNatives, [:pointer, :long], :void
       typesig { [] }
       def register_natives
-        JNI.__send__(:Java_java_lang_ClassLoader_registerNatives, JNI.env, self.jni_id)
+        JNI.call_native_method(:Java_java_lang_ClassLoader_registerNatives, JNI.env, self.jni_id)
       end
       
       when_class_loaded do
@@ -781,22 +781,22 @@ module Java::Lang
       return c
     end
     
-    JNI.native_method :Java_java_lang_ClassLoader_defineClass0, [:pointer, :long, :long, :long, :int32, :int32, :long], :long
+    JNI.load_native_method :Java_java_lang_ClassLoader_defineClass0, [:pointer, :long, :long, :long, :int32, :int32, :long], :long
     typesig { [String, Array.typed(::Java::Byte), ::Java::Int, ::Java::Int, ProtectionDomain] }
     def define_class0(name, b, off, len, pd)
-      JNI.__send__(:Java_java_lang_ClassLoader_defineClass0, JNI.env, self.jni_id, name.jni_id, b.jni_id, off.to_int, len.to_int, pd.jni_id)
+      JNI.call_native_method(:Java_java_lang_ClassLoader_defineClass0, JNI.env, self.jni_id, name.jni_id, b.jni_id, off.to_int, len.to_int, pd.jni_id)
     end
     
-    JNI.native_method :Java_java_lang_ClassLoader_defineClass1, [:pointer, :long, :long, :long, :int32, :int32, :long, :long], :long
+    JNI.load_native_method :Java_java_lang_ClassLoader_defineClass1, [:pointer, :long, :long, :long, :int32, :int32, :long, :long], :long
     typesig { [String, Array.typed(::Java::Byte), ::Java::Int, ::Java::Int, ProtectionDomain, String] }
     def define_class1(name, b, off, len, pd, source)
-      JNI.__send__(:Java_java_lang_ClassLoader_defineClass1, JNI.env, self.jni_id, name.jni_id, b.jni_id, off.to_int, len.to_int, pd.jni_id, source.jni_id)
+      JNI.call_native_method(:Java_java_lang_ClassLoader_defineClass1, JNI.env, self.jni_id, name.jni_id, b.jni_id, off.to_int, len.to_int, pd.jni_id, source.jni_id)
     end
     
-    JNI.native_method :Java_java_lang_ClassLoader_defineClass2, [:pointer, :long, :long, :long, :int32, :int32, :long, :long], :long
+    JNI.load_native_method :Java_java_lang_ClassLoader_defineClass2, [:pointer, :long, :long, :long, :int32, :int32, :long, :long], :long
     typesig { [String, Java::Nio::ByteBuffer, ::Java::Int, ::Java::Int, ProtectionDomain, String] }
     def define_class2(name, b, off, len, pd, source)
-      JNI.__send__(:Java_java_lang_ClassLoader_defineClass2, JNI.env, self.jni_id, name.jni_id, b.jni_id, off.to_int, len.to_int, pd.jni_id, source.jni_id)
+      JNI.call_native_method(:Java_java_lang_ClassLoader_defineClass2, JNI.env, self.jni_id, name.jni_id, b.jni_id, off.to_int, len.to_int, pd.jni_id, source.jni_id)
     end
     
     typesig { [String] }
@@ -915,10 +915,10 @@ module Java::Lang
       resolve_class0(c)
     end
     
-    JNI.native_method :Java_java_lang_ClassLoader_resolveClass0, [:pointer, :long, :long], :void
+    JNI.load_native_method :Java_java_lang_ClassLoader_resolveClass0, [:pointer, :long, :long], :void
     typesig { [Class] }
     def resolve_class0(c)
-      JNI.__send__(:Java_java_lang_ClassLoader_resolveClass0, JNI.env, self.jni_id, c.jni_id)
+      JNI.call_native_method(:Java_java_lang_ClassLoader_resolveClass0, JNI.env, self.jni_id, c.jni_id)
     end
     
     typesig { [String] }
@@ -963,10 +963,10 @@ module Java::Lang
       return find_bootstrap_class(name)
     end
     
-    JNI.native_method :Java_java_lang_ClassLoader_findBootstrapClass, [:pointer, :long, :long], :long
+    JNI.load_native_method :Java_java_lang_ClassLoader_findBootstrapClass, [:pointer, :long, :long], :long
     typesig { [String] }
     def find_bootstrap_class(name)
-      JNI.__send__(:Java_java_lang_ClassLoader_findBootstrapClass, JNI.env, self.jni_id, name.jni_id)
+      JNI.call_native_method(:Java_java_lang_ClassLoader_findBootstrapClass, JNI.env, self.jni_id, name.jni_id)
     end
     
     typesig { [] }
@@ -998,10 +998,10 @@ module Java::Lang
       return find_loaded_class0(name)
     end
     
-    JNI.native_method :Java_java_lang_ClassLoader_findLoadedClass0, [:pointer, :long, :long], :long
+    JNI.load_native_method :Java_java_lang_ClassLoader_findLoadedClass0, [:pointer, :long, :long], :long
     typesig { [String] }
     def find_loaded_class0(name)
-      JNI.__send__(:Java_java_lang_ClassLoader_findLoadedClass0, JNI.env, self.jni_id, name.jni_id)
+      JNI.call_native_method(:Java_java_lang_ClassLoader_findLoadedClass0, JNI.env, self.jni_id, name.jni_id)
     end
     
     typesig { [Class, Array.typed(Object)] }
@@ -1662,22 +1662,22 @@ module Java::Lang
         alias_method :attr_name=, :name=
         undef_method :name=
         
-        JNI.native_method :Java_java_lang_NativeLibrary_load, [:pointer, :long, :long], :void
+        JNI.load_native_method :Java_java_lang_NativeLibrary_load, [:pointer, :long, :long], :void
         typesig { [String] }
         def load(name)
-          JNI.__send__(:Java_java_lang_NativeLibrary_load, JNI.env, self.jni_id, name.jni_id)
+          JNI.call_native_method(:Java_java_lang_NativeLibrary_load, JNI.env, self.jni_id, name.jni_id)
         end
         
-        JNI.native_method :Java_java_lang_NativeLibrary_find, [:pointer, :long, :long], :int64
+        JNI.load_native_method :Java_java_lang_NativeLibrary_find, [:pointer, :long, :long], :int64
         typesig { [String] }
         def find(name)
-          JNI.__send__(:Java_java_lang_NativeLibrary_find, JNI.env, self.jni_id, name.jni_id)
+          JNI.call_native_method(:Java_java_lang_NativeLibrary_find, JNI.env, self.jni_id, name.jni_id)
         end
         
-        JNI.native_method :Java_java_lang_NativeLibrary_unload, [:pointer, :long], :void
+        JNI.load_native_method :Java_java_lang_NativeLibrary_unload, [:pointer, :long], :void
         typesig { [] }
         def unload
-          JNI.__send__(:Java_java_lang_NativeLibrary_unload, JNI.env, self.jni_id)
+          JNI.call_native_method(:Java_java_lang_NativeLibrary_unload, JNI.env, self.jni_id)
         end
         
         typesig { [class_self::Class, String] }
@@ -2228,11 +2228,11 @@ module Java::Lang
     end
     
     class_module.module_eval {
-      JNI.native_method :Java_java_lang_ClassLoader_retrieveDirectives, [:pointer, :long], :long
+      JNI.load_native_method :Java_java_lang_ClassLoader_retrieveDirectives, [:pointer, :long], :long
       typesig { [] }
       # Retrieves the assertion directives from the VM.
       def retrieve_directives
-        JNI.__send__(:Java_java_lang_ClassLoader_retrieveDirectives, JNI.env, self.jni_id)
+        JNI.call_native_method(:Java_java_lang_ClassLoader_retrieveDirectives, JNI.env, self.jni_id)
       end
     }
     

@@ -2998,7 +2998,7 @@ module Java::Lang
       end
     }
     
-    JNI.native_method :Java_java_lang_String_intern, [:pointer, :long], :long
+    JNI.load_native_method :Java_java_lang_String_intern, [:pointer, :long], :long
     typesig { [] }
     # Returns a canonical representation for the string object.
     # <p>
@@ -3023,7 +3023,7 @@ module Java::Lang
     # @return  a string that has the same contents as this string, but is
     # guaranteed to be from a pool of unique strings.
     def intern
-      JNI.__send__(:Java_java_lang_String_intern, JNI.env, self.jni_id)
+      JNI.call_native_method(:Java_java_lang_String_intern, JNI.env, self.jni_id)
     end
     
     private

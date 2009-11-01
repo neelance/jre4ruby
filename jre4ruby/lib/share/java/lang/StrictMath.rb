@@ -82,7 +82,7 @@ module Java::Lang
       const_set_lazy(:PI) { 3.14159265358979323846 }
       const_attr_reader  :PI
       
-      JNI.native_method :Java_java_lang_StrictMath_sin, [:pointer, :long, :double], :double
+      JNI.load_native_method :Java_java_lang_StrictMath_sin, [:pointer, :long, :double], :double
       typesig { [::Java::Double] }
       # Returns the trigonometric sine of an angle. Special cases:
       # <ul><li>If the argument is NaN or an infinity, then the
@@ -93,10 +93,10 @@ module Java::Lang
       # @param   a   an angle, in radians.
       # @return  the sine of the argument.
       def sin(a)
-        JNI.__send__(:Java_java_lang_StrictMath_sin, JNI.env, self.jni_id, a)
+        JNI.call_native_method(:Java_java_lang_StrictMath_sin, JNI.env, self.jni_id, a)
       end
       
-      JNI.native_method :Java_java_lang_StrictMath_cos, [:pointer, :long, :double], :double
+      JNI.load_native_method :Java_java_lang_StrictMath_cos, [:pointer, :long, :double], :double
       typesig { [::Java::Double] }
       # Returns the trigonometric cosine of an angle. Special cases:
       # <ul><li>If the argument is NaN or an infinity, then the
@@ -105,10 +105,10 @@ module Java::Lang
       # @param   a   an angle, in radians.
       # @return  the cosine of the argument.
       def cos(a)
-        JNI.__send__(:Java_java_lang_StrictMath_cos, JNI.env, self.jni_id, a)
+        JNI.call_native_method(:Java_java_lang_StrictMath_cos, JNI.env, self.jni_id, a)
       end
       
-      JNI.native_method :Java_java_lang_StrictMath_tan, [:pointer, :long, :double], :double
+      JNI.load_native_method :Java_java_lang_StrictMath_tan, [:pointer, :long, :double], :double
       typesig { [::Java::Double] }
       # Returns the trigonometric tangent of an angle. Special cases:
       # <ul><li>If the argument is NaN or an infinity, then the result
@@ -119,10 +119,10 @@ module Java::Lang
       # @param   a   an angle, in radians.
       # @return  the tangent of the argument.
       def tan(a)
-        JNI.__send__(:Java_java_lang_StrictMath_tan, JNI.env, self.jni_id, a)
+        JNI.call_native_method(:Java_java_lang_StrictMath_tan, JNI.env, self.jni_id, a)
       end
       
-      JNI.native_method :Java_java_lang_StrictMath_asin, [:pointer, :long, :double], :double
+      JNI.load_native_method :Java_java_lang_StrictMath_asin, [:pointer, :long, :double], :double
       typesig { [::Java::Double] }
       # Returns the arc sine of a value; the returned angle is in the
       # range -<i>pi</i>/2 through <i>pi</i>/2.  Special cases:
@@ -134,10 +134,10 @@ module Java::Lang
       # @param   a   the value whose arc sine is to be returned.
       # @return  the arc sine of the argument.
       def asin(a)
-        JNI.__send__(:Java_java_lang_StrictMath_asin, JNI.env, self.jni_id, a)
+        JNI.call_native_method(:Java_java_lang_StrictMath_asin, JNI.env, self.jni_id, a)
       end
       
-      JNI.native_method :Java_java_lang_StrictMath_acos, [:pointer, :long, :double], :double
+      JNI.load_native_method :Java_java_lang_StrictMath_acos, [:pointer, :long, :double], :double
       typesig { [::Java::Double] }
       # Returns the arc cosine of a value; the returned angle is in the
       # range 0.0 through <i>pi</i>.  Special case:
@@ -147,10 +147,10 @@ module Java::Lang
       # @param   a   the value whose arc cosine is to be returned.
       # @return  the arc cosine of the argument.
       def acos(a)
-        JNI.__send__(:Java_java_lang_StrictMath_acos, JNI.env, self.jni_id, a)
+        JNI.call_native_method(:Java_java_lang_StrictMath_acos, JNI.env, self.jni_id, a)
       end
       
-      JNI.native_method :Java_java_lang_StrictMath_atan, [:pointer, :long, :double], :double
+      JNI.load_native_method :Java_java_lang_StrictMath_atan, [:pointer, :long, :double], :double
       typesig { [::Java::Double] }
       # Returns the arc tangent of a value; the returned angle is in the
       # range -<i>pi</i>/2 through <i>pi</i>/2.  Special cases:
@@ -161,7 +161,7 @@ module Java::Lang
       # @param   a   the value whose arc tangent is to be returned.
       # @return  the arc tangent of the argument.
       def atan(a)
-        JNI.__send__(:Java_java_lang_StrictMath_atan, JNI.env, self.jni_id, a)
+        JNI.call_native_method(:Java_java_lang_StrictMath_atan, JNI.env, self.jni_id, a)
       end
       
       typesig { [::Java::Double] }
@@ -190,7 +190,7 @@ module Java::Lang
         return angrad * 180.0 / PI
       end
       
-      JNI.native_method :Java_java_lang_StrictMath_exp, [:pointer, :long, :double], :double
+      JNI.load_native_method :Java_java_lang_StrictMath_exp, [:pointer, :long, :double], :double
       typesig { [::Java::Double] }
       # Returns Euler's number <i>e</i> raised to the power of a
       # {@code double} value. Special cases:
@@ -204,10 +204,10 @@ module Java::Lang
       # @return  the value <i>e</i><sup>{@code a}</sup>,
       # where <i>e</i> is the base of the natural logarithms.
       def exp(a)
-        JNI.__send__(:Java_java_lang_StrictMath_exp, JNI.env, self.jni_id, a)
+        JNI.call_native_method(:Java_java_lang_StrictMath_exp, JNI.env, self.jni_id, a)
       end
       
-      JNI.native_method :Java_java_lang_StrictMath_log, [:pointer, :long, :double], :double
+      JNI.load_native_method :Java_java_lang_StrictMath_log, [:pointer, :long, :double], :double
       typesig { [::Java::Double] }
       # Returns the natural logarithm (base <i>e</i>) of a {@code double}
       # value. Special cases:
@@ -222,10 +222,10 @@ module Java::Lang
       # @return  the value ln&nbsp;{@code a}, the natural logarithm of
       # {@code a}.
       def log(a)
-        JNI.__send__(:Java_java_lang_StrictMath_log, JNI.env, self.jni_id, a)
+        JNI.call_native_method(:Java_java_lang_StrictMath_log, JNI.env, self.jni_id, a)
       end
       
-      JNI.native_method :Java_java_lang_StrictMath_log10, [:pointer, :long, :double], :double
+      JNI.load_native_method :Java_java_lang_StrictMath_log10, [:pointer, :long, :double], :double
       typesig { [::Java::Double] }
       # Returns the base 10 logarithm of a {@code double} value.
       # Special cases:
@@ -244,10 +244,10 @@ module Java::Lang
       # @return  the base 10 logarithm of  {@code a}.
       # @since 1.5
       def log10(a)
-        JNI.__send__(:Java_java_lang_StrictMath_log10, JNI.env, self.jni_id, a)
+        JNI.call_native_method(:Java_java_lang_StrictMath_log10, JNI.env, self.jni_id, a)
       end
       
-      JNI.native_method :Java_java_lang_StrictMath_sqrt, [:pointer, :long, :double], :double
+      JNI.load_native_method :Java_java_lang_StrictMath_sqrt, [:pointer, :long, :double], :double
       typesig { [::Java::Double] }
       # Returns the correctly rounded positive square root of a
       # {@code double} value.
@@ -264,10 +264,10 @@ module Java::Lang
       # @param   a   a value.
       # @return  the positive square root of {@code a}.
       def sqrt(a)
-        JNI.__send__(:Java_java_lang_StrictMath_sqrt, JNI.env, self.jni_id, a)
+        JNI.call_native_method(:Java_java_lang_StrictMath_sqrt, JNI.env, self.jni_id, a)
       end
       
-      JNI.native_method :Java_java_lang_StrictMath_cbrt, [:pointer, :long, :double], :double
+      JNI.load_native_method :Java_java_lang_StrictMath_cbrt, [:pointer, :long, :double], :double
       typesig { [::Java::Double] }
       # Returns the cube root of a {@code double} value.  For
       # positive finite {@code x}, {@code cbrt(-x) ==
@@ -291,10 +291,10 @@ module Java::Lang
       # @return  the cube root of {@code a}.
       # @since 1.5
       def cbrt(a)
-        JNI.__send__(:Java_java_lang_StrictMath_cbrt, JNI.env, self.jni_id, a)
+        JNI.call_native_method(:Java_java_lang_StrictMath_cbrt, JNI.env, self.jni_id, a)
       end
       
-      JNI.native_method :Java_java_lang_StrictMath_IEEEremainder, [:pointer, :long, :double, :double], :double
+      JNI.load_native_method :Java_java_lang_StrictMath_IEEEremainder, [:pointer, :long, :double, :double], :double
       typesig { [::Java::Double, ::Java::Double] }
       # Computes the remainder operation on two arguments as prescribed
       # by the IEEE 754 standard.
@@ -317,10 +317,10 @@ module Java::Lang
       # @return  the remainder when {@code f1} is divided by
       # {@code f2}.
       def _ieeeremainder(f1, f2)
-        JNI.__send__(:Java_java_lang_StrictMath_IEEEremainder, JNI.env, self.jni_id, f1, f2)
+        JNI.call_native_method(:Java_java_lang_StrictMath_IEEEremainder, JNI.env, self.jni_id, f1, f2)
       end
       
-      JNI.native_method :Java_java_lang_StrictMath_ceil, [:pointer, :long, :double], :double
+      JNI.load_native_method :Java_java_lang_StrictMath_ceil, [:pointer, :long, :double], :double
       typesig { [::Java::Double] }
       # Returns the smallest (closest to negative infinity)
       # {@code double} value that is greater than or equal to the
@@ -339,10 +339,10 @@ module Java::Lang
       # floating-point value that is greater than or equal to
       # the argument and is equal to a mathematical integer.
       def ceil(a)
-        JNI.__send__(:Java_java_lang_StrictMath_ceil, JNI.env, self.jni_id, a)
+        JNI.call_native_method(:Java_java_lang_StrictMath_ceil, JNI.env, self.jni_id, a)
       end
       
-      JNI.native_method :Java_java_lang_StrictMath_floor, [:pointer, :long, :double], :double
+      JNI.load_native_method :Java_java_lang_StrictMath_floor, [:pointer, :long, :double], :double
       typesig { [::Java::Double] }
       # Returns the largest (closest to positive infinity)
       # {@code double} value that is less than or equal to the
@@ -358,7 +358,7 @@ module Java::Lang
       # floating-point value that less than or equal to the argument
       # and is equal to a mathematical integer.
       def floor(a)
-        JNI.__send__(:Java_java_lang_StrictMath_floor, JNI.env, self.jni_id, a)
+        JNI.call_native_method(:Java_java_lang_StrictMath_floor, JNI.env, self.jni_id, a)
       end
       
       typesig { [::Java::Double] }
@@ -410,7 +410,7 @@ module Java::Lang
         return sign * a # restore original sign
       end
       
-      JNI.native_method :Java_java_lang_StrictMath_atan2, [:pointer, :long, :double, :double], :double
+      JNI.load_native_method :Java_java_lang_StrictMath_atan2, [:pointer, :long, :double, :double], :double
       typesig { [::Java::Double, ::Java::Double] }
       # Returns the angle <i>theta</i> from the conversion of rectangular
       # coordinates ({@code x},&nbsp;{@code y}) to polar
@@ -460,10 +460,10 @@ module Java::Lang
       # in polar coordinates that corresponds to the point
       # (<i>x</i>,&nbsp;<i>y</i>) in Cartesian coordinates.
       def atan2(y, x)
-        JNI.__send__(:Java_java_lang_StrictMath_atan2, JNI.env, self.jni_id, y, x)
+        JNI.call_native_method(:Java_java_lang_StrictMath_atan2, JNI.env, self.jni_id, y, x)
       end
       
-      JNI.native_method :Java_java_lang_StrictMath_pow, [:pointer, :long, :double, :double], :double
+      JNI.load_native_method :Java_java_lang_StrictMath_pow, [:pointer, :long, :double, :double], :double
       typesig { [::Java::Double, ::Java::Double] }
       # Returns the value of the first argument raised to the power of the
       # second argument. Special cases:
@@ -584,7 +584,7 @@ module Java::Lang
       # @param   b   the exponent.
       # @return  the value {@code a}<sup>{@code b}</sup>.
       def pow(a, b)
-        JNI.__send__(:Java_java_lang_StrictMath_pow, JNI.env, self.jni_id, a, b)
+        JNI.call_native_method(:Java_java_lang_StrictMath_pow, JNI.env, self.jni_id, a, b)
       end
       
       typesig { [::Java::Float] }
@@ -1011,7 +1011,7 @@ module Java::Lang
         return Sun::Misc::FpUtils.signum(f)
       end
       
-      JNI.native_method :Java_java_lang_StrictMath_sinh, [:pointer, :long, :double], :double
+      JNI.load_native_method :Java_java_lang_StrictMath_sinh, [:pointer, :long, :double], :double
       typesig { [::Java::Double] }
       # Returns the hyperbolic sine of a {@code double} value.
       # The hyperbolic sine of <i>x</i> is defined to be
@@ -1035,10 +1035,10 @@ module Java::Lang
       # @return  The hyperbolic sine of {@code x}.
       # @since 1.5
       def sinh(x)
-        JNI.__send__(:Java_java_lang_StrictMath_sinh, JNI.env, self.jni_id, x)
+        JNI.call_native_method(:Java_java_lang_StrictMath_sinh, JNI.env, self.jni_id, x)
       end
       
-      JNI.native_method :Java_java_lang_StrictMath_cosh, [:pointer, :long, :double], :double
+      JNI.load_native_method :Java_java_lang_StrictMath_cosh, [:pointer, :long, :double], :double
       typesig { [::Java::Double] }
       # Returns the hyperbolic cosine of a {@code double} value.
       # The hyperbolic cosine of <i>x</i> is defined to be
@@ -1061,10 +1061,10 @@ module Java::Lang
       # @return  The hyperbolic cosine of {@code x}.
       # @since 1.5
       def cosh(x)
-        JNI.__send__(:Java_java_lang_StrictMath_cosh, JNI.env, self.jni_id, x)
+        JNI.call_native_method(:Java_java_lang_StrictMath_cosh, JNI.env, self.jni_id, x)
       end
       
-      JNI.native_method :Java_java_lang_StrictMath_tanh, [:pointer, :long, :double], :double
+      JNI.load_native_method :Java_java_lang_StrictMath_tanh, [:pointer, :long, :double], :double
       typesig { [::Java::Double] }
       # Returns the hyperbolic tangent of a {@code double} value.
       # The hyperbolic tangent of <i>x</i> is defined to be
@@ -1094,10 +1094,10 @@ module Java::Lang
       # @return  The hyperbolic tangent of {@code x}.
       # @since 1.5
       def tanh(x)
-        JNI.__send__(:Java_java_lang_StrictMath_tanh, JNI.env, self.jni_id, x)
+        JNI.call_native_method(:Java_java_lang_StrictMath_tanh, JNI.env, self.jni_id, x)
       end
       
-      JNI.native_method :Java_java_lang_StrictMath_hypot, [:pointer, :long, :double, :double], :double
+      JNI.load_native_method :Java_java_lang_StrictMath_hypot, [:pointer, :long, :double, :double], :double
       typesig { [::Java::Double, ::Java::Double] }
       # Returns sqrt(<i>x</i><sup>2</sup>&nbsp;+<i>y</i><sup>2</sup>)
       # without intermediate overflow or underflow.
@@ -1119,10 +1119,10 @@ module Java::Lang
       # without intermediate overflow or underflow
       # @since 1.5
       def hypot(x, y)
-        JNI.__send__(:Java_java_lang_StrictMath_hypot, JNI.env, self.jni_id, x, y)
+        JNI.call_native_method(:Java_java_lang_StrictMath_hypot, JNI.env, self.jni_id, x, y)
       end
       
-      JNI.native_method :Java_java_lang_StrictMath_expm1, [:pointer, :long, :double], :double
+      JNI.load_native_method :Java_java_lang_StrictMath_expm1, [:pointer, :long, :double], :double
       typesig { [::Java::Double] }
       # Returns <i>e</i><sup>x</sup>&nbsp;-1.  Note that for values of
       # <i>x</i> near 0, the exact sum of
@@ -1149,10 +1149,10 @@ module Java::Lang
       # @return  the value <i>e</i><sup>{@code x}</sup>&nbsp;-&nbsp;1.
       # @since 1.5
       def expm1(x)
-        JNI.__send__(:Java_java_lang_StrictMath_expm1, JNI.env, self.jni_id, x)
+        JNI.call_native_method(:Java_java_lang_StrictMath_expm1, JNI.env, self.jni_id, x)
       end
       
-      JNI.native_method :Java_java_lang_StrictMath_log1p, [:pointer, :long, :double], :double
+      JNI.load_native_method :Java_java_lang_StrictMath_log1p, [:pointer, :long, :double], :double
       typesig { [::Java::Double] }
       # Returns the natural logarithm of the sum of the argument and 1.
       # Note that for small values {@code x}, the result of
@@ -1182,7 +1182,7 @@ module Java::Lang
       # log of {@code x}&nbsp;+&nbsp;1
       # @since 1.5
       def log1p(x)
-        JNI.__send__(:Java_java_lang_StrictMath_log1p, JNI.env, self.jni_id, x)
+        JNI.call_native_method(:Java_java_lang_StrictMath_log1p, JNI.env, self.jni_id, x)
       end
       
       typesig { [::Java::Double, ::Java::Double] }

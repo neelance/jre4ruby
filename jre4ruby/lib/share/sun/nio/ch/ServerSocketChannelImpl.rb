@@ -428,29 +428,29 @@ module Sun::Nio::Ch
     end
     
     class_module.module_eval {
-      JNI.native_method :Java_sun_nio_ch_ServerSocketChannelImpl_listen, [:pointer, :long, :long, :int32], :void
+      JNI.load_native_method :Java_sun_nio_ch_ServerSocketChannelImpl_listen, [:pointer, :long, :long, :int32], :void
       typesig { [FileDescriptor, ::Java::Int] }
       # -- Native methods --
       def listen(fd, backlog)
-        JNI.__send__(:Java_sun_nio_ch_ServerSocketChannelImpl_listen, JNI.env, self.jni_id, fd.jni_id, backlog.to_int)
+        JNI.call_native_method(:Java_sun_nio_ch_ServerSocketChannelImpl_listen, JNI.env, self.jni_id, fd.jni_id, backlog.to_int)
       end
     }
     
-    JNI.native_method :Java_sun_nio_ch_ServerSocketChannelImpl_accept0, [:pointer, :long, :long, :long, :long], :int32
+    JNI.load_native_method :Java_sun_nio_ch_ServerSocketChannelImpl_accept0, [:pointer, :long, :long, :long, :long], :int32
     typesig { [FileDescriptor, FileDescriptor, Array.typed(InetSocketAddress)] }
     # Accepts a new connection, setting the given file descriptor to refer to
     # the new socket and setting isaa[0] to the socket's remote address.
     # Returns 1 on success, or IOStatus.UNAVAILABLE (if non-blocking and no
     # connections are pending) or IOStatus.INTERRUPTED.
     def accept0(ssfd, newfd, isaa)
-      JNI.__send__(:Java_sun_nio_ch_ServerSocketChannelImpl_accept0, JNI.env, self.jni_id, ssfd.jni_id, newfd.jni_id, isaa.jni_id)
+      JNI.call_native_method(:Java_sun_nio_ch_ServerSocketChannelImpl_accept0, JNI.env, self.jni_id, ssfd.jni_id, newfd.jni_id, isaa.jni_id)
     end
     
     class_module.module_eval {
-      JNI.native_method :Java_sun_nio_ch_ServerSocketChannelImpl_initIDs, [:pointer, :long], :void
+      JNI.load_native_method :Java_sun_nio_ch_ServerSocketChannelImpl_initIDs, [:pointer, :long], :void
       typesig { [] }
       def init_ids
-        JNI.__send__(:Java_sun_nio_ch_ServerSocketChannelImpl_initIDs, JNI.env, self.jni_id)
+        JNI.call_native_method(:Java_sun_nio_ch_ServerSocketChannelImpl_initIDs, JNI.env, self.jni_id)
       end
       
       when_class_loaded do

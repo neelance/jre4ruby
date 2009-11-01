@@ -292,10 +292,10 @@ module Sun::Misc
         end
       end
       
-      JNI.native_method :Java_sun_misc_Version_getJvmSpecialVersion, [:pointer, :long], :long
+      JNI.load_native_method :Java_sun_misc_Version_getJvmSpecialVersion, [:pointer, :long], :long
       typesig { [] }
       def get_jvm_special_version
-        JNI.__send__(:Java_sun_misc_Version_getJvmSpecialVersion, JNI.env, self.jni_id)
+        JNI.call_native_method(:Java_sun_misc_Version_getJvmSpecialVersion, JNI.env, self.jni_id)
       end
       
       typesig { [] }
@@ -374,10 +374,10 @@ module Sun::Misc
         end
       end
       
-      JNI.native_method :Java_sun_misc_Version_getJdkSpecialVersion, [:pointer, :long], :long
+      JNI.load_native_method :Java_sun_misc_Version_getJdkSpecialVersion, [:pointer, :long], :long
       typesig { [] }
       def get_jdk_special_version
-        JNI.__send__(:Java_sun_misc_Version_getJdkSpecialVersion, JNI.env, self.jni_id)
+        JNI.call_native_method(:Java_sun_misc_Version_getJdkSpecialVersion, JNI.env, self.jni_id)
       end
       
       typesig { [] }
@@ -461,20 +461,20 @@ module Sun::Misc
         end
       end
       
-      JNI.native_method :Java_sun_misc_Version_getJvmVersionInfo, [:pointer, :long], :int8
+      JNI.load_native_method :Java_sun_misc_Version_getJvmVersionInfo, [:pointer, :long], :int8
       typesig { [] }
       # Gets the JVM version info if available and sets the jvm_*_version fields
       # and its capabilities.
       # 
       # Return false if not available which implies an old VM (Tiger or before).
       def get_jvm_version_info
-        JNI.__send__(:Java_sun_misc_Version_getJvmVersionInfo, JNI.env, self.jni_id) != 0
+        JNI.call_native_method(:Java_sun_misc_Version_getJvmVersionInfo, JNI.env, self.jni_id) != 0
       end
       
-      JNI.native_method :Java_sun_misc_Version_getJdkVersionInfo, [:pointer, :long], :void
+      JNI.load_native_method :Java_sun_misc_Version_getJdkVersionInfo, [:pointer, :long], :void
       typesig { [] }
       def get_jdk_version_info
-        JNI.__send__(:Java_sun_misc_Version_getJdkVersionInfo, JNI.env, self.jni_id)
+        JNI.call_native_method(:Java_sun_misc_Version_getJdkVersionInfo, JNI.env, self.jni_id)
       end
     }
     

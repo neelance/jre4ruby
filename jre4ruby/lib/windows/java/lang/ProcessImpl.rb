@@ -183,10 +183,10 @@ module Java::Lang
       const_set_lazy(:STILL_ACTIVE) { get_still_active }
       const_attr_reader  :STILL_ACTIVE
       
-      JNI.native_method :Java_java_lang_ProcessImpl_getStillActive, [:pointer, :long], :int32
+      JNI.load_native_method :Java_java_lang_ProcessImpl_getStillActive, [:pointer, :long], :int32
       typesig { [] }
       def get_still_active
-        JNI.__send__(:Java_java_lang_ProcessImpl_getStillActive, JNI.env, self.jni_id)
+        JNI.call_native_method(:Java_java_lang_ProcessImpl_getStillActive, JNI.env, self.jni_id)
       end
     }
     
@@ -200,10 +200,10 @@ module Java::Lang
     end
     
     class_module.module_eval {
-      JNI.native_method :Java_java_lang_ProcessImpl_getExitCodeProcess, [:pointer, :long, :int64], :int32
+      JNI.load_native_method :Java_java_lang_ProcessImpl_getExitCodeProcess, [:pointer, :long, :int64], :int32
       typesig { [::Java::Long] }
       def get_exit_code_process(handle)
-        JNI.__send__(:Java_java_lang_ProcessImpl_getExitCodeProcess, JNI.env, self.jni_id, handle.to_int)
+        JNI.call_native_method(:Java_java_lang_ProcessImpl_getExitCodeProcess, JNI.env, self.jni_id, handle.to_int)
       end
     }
     
@@ -217,10 +217,10 @@ module Java::Lang
     end
     
     class_module.module_eval {
-      JNI.native_method :Java_java_lang_ProcessImpl_waitForInterruptibly, [:pointer, :long, :int64], :void
+      JNI.load_native_method :Java_java_lang_ProcessImpl_waitForInterruptibly, [:pointer, :long, :int64], :void
       typesig { [::Java::Long] }
       def wait_for_interruptibly(handle)
-        JNI.__send__(:Java_java_lang_ProcessImpl_waitForInterruptibly, JNI.env, self.jni_id, handle.to_int)
+        JNI.call_native_method(:Java_java_lang_ProcessImpl_waitForInterruptibly, JNI.env, self.jni_id, handle.to_int)
       end
     }
     
@@ -230,22 +230,22 @@ module Java::Lang
     end
     
     class_module.module_eval {
-      JNI.native_method :Java_java_lang_ProcessImpl_terminateProcess, [:pointer, :long, :int64], :void
+      JNI.load_native_method :Java_java_lang_ProcessImpl_terminateProcess, [:pointer, :long, :int64], :void
       typesig { [::Java::Long] }
       def terminate_process(handle)
-        JNI.__send__(:Java_java_lang_ProcessImpl_terminateProcess, JNI.env, self.jni_id, handle.to_int)
+        JNI.call_native_method(:Java_java_lang_ProcessImpl_terminateProcess, JNI.env, self.jni_id, handle.to_int)
       end
       
-      JNI.native_method :Java_java_lang_ProcessImpl_create, [:pointer, :long, :long, :long, :long, :int8, :long, :long, :long], :int64
+      JNI.load_native_method :Java_java_lang_ProcessImpl_create, [:pointer, :long, :long, :long, :long, :int8, :long, :long, :long], :int64
       typesig { [String, String, String, ::Java::Boolean, FileDescriptor, FileDescriptor, FileDescriptor] }
       def create(cmdstr, envblock, dir, redirect_error_stream, in_fd, out_fd, err_fd)
-        JNI.__send__(:Java_java_lang_ProcessImpl_create, JNI.env, self.jni_id, cmdstr.jni_id, envblock.jni_id, dir.jni_id, redirect_error_stream ? 1 : 0, in_fd.jni_id, out_fd.jni_id, err_fd.jni_id)
+        JNI.call_native_method(:Java_java_lang_ProcessImpl_create, JNI.env, self.jni_id, cmdstr.jni_id, envblock.jni_id, dir.jni_id, redirect_error_stream ? 1 : 0, in_fd.jni_id, out_fd.jni_id, err_fd.jni_id)
       end
       
-      JNI.native_method :Java_java_lang_ProcessImpl_closeHandle, [:pointer, :long, :int64], :int8
+      JNI.load_native_method :Java_java_lang_ProcessImpl_closeHandle, [:pointer, :long, :int64], :int8
       typesig { [::Java::Long] }
       def close_handle(handle)
-        JNI.__send__(:Java_java_lang_ProcessImpl_closeHandle, JNI.env, self.jni_id, handle.to_int) != 0
+        JNI.call_native_method(:Java_java_lang_ProcessImpl_closeHandle, JNI.env, self.jni_id, handle.to_int) != 0
       end
     }
     

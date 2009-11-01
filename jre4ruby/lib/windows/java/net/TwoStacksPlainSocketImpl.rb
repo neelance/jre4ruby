@@ -198,84 +198,84 @@ module Java::Net
     end
     
     class_module.module_eval {
-      JNI.native_method :Java_java_net_TwoStacksPlainSocketImpl_initProto, [:pointer, :long], :void
+      JNI.load_native_method :Java_java_net_TwoStacksPlainSocketImpl_initProto, [:pointer, :long], :void
       typesig { [] }
       # Native methods
       def init_proto
-        JNI.__send__(:Java_java_net_TwoStacksPlainSocketImpl_initProto, JNI.env, self.jni_id)
+        JNI.call_native_method(:Java_java_net_TwoStacksPlainSocketImpl_initProto, JNI.env, self.jni_id)
       end
     }
     
-    JNI.native_method :Java_java_net_TwoStacksPlainSocketImpl_socketCreate, [:pointer, :long, :int8], :void
+    JNI.load_native_method :Java_java_net_TwoStacksPlainSocketImpl_socketCreate, [:pointer, :long, :int8], :void
     typesig { [::Java::Boolean] }
     def socket_create(is_server)
-      JNI.__send__(:Java_java_net_TwoStacksPlainSocketImpl_socketCreate, JNI.env, self.jni_id, is_server ? 1 : 0)
+      JNI.call_native_method(:Java_java_net_TwoStacksPlainSocketImpl_socketCreate, JNI.env, self.jni_id, is_server ? 1 : 0)
     end
     
-    JNI.native_method :Java_java_net_TwoStacksPlainSocketImpl_socketConnect, [:pointer, :long, :long, :int32, :int32], :void
+    JNI.load_native_method :Java_java_net_TwoStacksPlainSocketImpl_socketConnect, [:pointer, :long, :long, :int32, :int32], :void
     typesig { [InetAddress, ::Java::Int, ::Java::Int] }
     def socket_connect(address, port, timeout)
-      JNI.__send__(:Java_java_net_TwoStacksPlainSocketImpl_socketConnect, JNI.env, self.jni_id, address.jni_id, port.to_int, timeout.to_int)
+      JNI.call_native_method(:Java_java_net_TwoStacksPlainSocketImpl_socketConnect, JNI.env, self.jni_id, address.jni_id, port.to_int, timeout.to_int)
     end
     
-    JNI.native_method :Java_java_net_TwoStacksPlainSocketImpl_socketBind, [:pointer, :long, :long, :int32], :void
+    JNI.load_native_method :Java_java_net_TwoStacksPlainSocketImpl_socketBind, [:pointer, :long, :long, :int32], :void
     typesig { [InetAddress, ::Java::Int] }
     def socket_bind(address, port)
-      JNI.__send__(:Java_java_net_TwoStacksPlainSocketImpl_socketBind, JNI.env, self.jni_id, address.jni_id, port.to_int)
+      JNI.call_native_method(:Java_java_net_TwoStacksPlainSocketImpl_socketBind, JNI.env, self.jni_id, address.jni_id, port.to_int)
     end
     
-    JNI.native_method :Java_java_net_TwoStacksPlainSocketImpl_socketListen, [:pointer, :long, :int32], :void
+    JNI.load_native_method :Java_java_net_TwoStacksPlainSocketImpl_socketListen, [:pointer, :long, :int32], :void
     typesig { [::Java::Int] }
     def socket_listen(count)
-      JNI.__send__(:Java_java_net_TwoStacksPlainSocketImpl_socketListen, JNI.env, self.jni_id, count.to_int)
+      JNI.call_native_method(:Java_java_net_TwoStacksPlainSocketImpl_socketListen, JNI.env, self.jni_id, count.to_int)
     end
     
-    JNI.native_method :Java_java_net_TwoStacksPlainSocketImpl_socketAccept, [:pointer, :long, :long], :void
+    JNI.load_native_method :Java_java_net_TwoStacksPlainSocketImpl_socketAccept, [:pointer, :long, :long], :void
     typesig { [SocketImpl] }
     def socket_accept(s)
-      JNI.__send__(:Java_java_net_TwoStacksPlainSocketImpl_socketAccept, JNI.env, self.jni_id, s.jni_id)
+      JNI.call_native_method(:Java_java_net_TwoStacksPlainSocketImpl_socketAccept, JNI.env, self.jni_id, s.jni_id)
     end
     
-    JNI.native_method :Java_java_net_TwoStacksPlainSocketImpl_socketAvailable, [:pointer, :long], :int32
+    JNI.load_native_method :Java_java_net_TwoStacksPlainSocketImpl_socketAvailable, [:pointer, :long], :int32
     typesig { [] }
     def socket_available
-      JNI.__send__(:Java_java_net_TwoStacksPlainSocketImpl_socketAvailable, JNI.env, self.jni_id)
+      JNI.call_native_method(:Java_java_net_TwoStacksPlainSocketImpl_socketAvailable, JNI.env, self.jni_id)
     end
     
-    JNI.native_method :Java_java_net_TwoStacksPlainSocketImpl_socketClose0, [:pointer, :long, :int8], :void
+    JNI.load_native_method :Java_java_net_TwoStacksPlainSocketImpl_socketClose0, [:pointer, :long, :int8], :void
     typesig { [::Java::Boolean] }
     def socket_close0(use_deferred_close)
-      JNI.__send__(:Java_java_net_TwoStacksPlainSocketImpl_socketClose0, JNI.env, self.jni_id, use_deferred_close ? 1 : 0)
+      JNI.call_native_method(:Java_java_net_TwoStacksPlainSocketImpl_socketClose0, JNI.env, self.jni_id, use_deferred_close ? 1 : 0)
     end
     
-    JNI.native_method :Java_java_net_TwoStacksPlainSocketImpl_socketShutdown, [:pointer, :long, :int32], :void
+    JNI.load_native_method :Java_java_net_TwoStacksPlainSocketImpl_socketShutdown, [:pointer, :long, :int32], :void
     typesig { [::Java::Int] }
     def socket_shutdown(howto)
-      JNI.__send__(:Java_java_net_TwoStacksPlainSocketImpl_socketShutdown, JNI.env, self.jni_id, howto.to_int)
+      JNI.call_native_method(:Java_java_net_TwoStacksPlainSocketImpl_socketShutdown, JNI.env, self.jni_id, howto.to_int)
     end
     
-    JNI.native_method :Java_java_net_TwoStacksPlainSocketImpl_socketSetOption, [:pointer, :long, :int32, :int8, :long], :void
+    JNI.load_native_method :Java_java_net_TwoStacksPlainSocketImpl_socketSetOption, [:pointer, :long, :int32, :int8, :long], :void
     typesig { [::Java::Int, ::Java::Boolean, Object] }
     def socket_set_option(cmd, on, value)
-      JNI.__send__(:Java_java_net_TwoStacksPlainSocketImpl_socketSetOption, JNI.env, self.jni_id, cmd.to_int, on ? 1 : 0, value.jni_id)
+      JNI.call_native_method(:Java_java_net_TwoStacksPlainSocketImpl_socketSetOption, JNI.env, self.jni_id, cmd.to_int, on ? 1 : 0, value.jni_id)
     end
     
-    JNI.native_method :Java_java_net_TwoStacksPlainSocketImpl_socketGetOption, [:pointer, :long, :int32, :long], :int32
+    JNI.load_native_method :Java_java_net_TwoStacksPlainSocketImpl_socketGetOption, [:pointer, :long, :int32, :long], :int32
     typesig { [::Java::Int, Object] }
     def socket_get_option(opt, ia_container_obj)
-      JNI.__send__(:Java_java_net_TwoStacksPlainSocketImpl_socketGetOption, JNI.env, self.jni_id, opt.to_int, ia_container_obj.jni_id)
+      JNI.call_native_method(:Java_java_net_TwoStacksPlainSocketImpl_socketGetOption, JNI.env, self.jni_id, opt.to_int, ia_container_obj.jni_id)
     end
     
-    JNI.native_method :Java_java_net_TwoStacksPlainSocketImpl_socketGetOption1, [:pointer, :long, :int32, :long, :long], :int32
+    JNI.load_native_method :Java_java_net_TwoStacksPlainSocketImpl_socketGetOption1, [:pointer, :long, :int32, :long, :long], :int32
     typesig { [::Java::Int, Object, FileDescriptor] }
     def socket_get_option1(opt, ia_container_obj, fd)
-      JNI.__send__(:Java_java_net_TwoStacksPlainSocketImpl_socketGetOption1, JNI.env, self.jni_id, opt.to_int, ia_container_obj.jni_id, fd.jni_id)
+      JNI.call_native_method(:Java_java_net_TwoStacksPlainSocketImpl_socketGetOption1, JNI.env, self.jni_id, opt.to_int, ia_container_obj.jni_id, fd.jni_id)
     end
     
-    JNI.native_method :Java_java_net_TwoStacksPlainSocketImpl_socketSendUrgentData, [:pointer, :long, :int32], :void
+    JNI.load_native_method :Java_java_net_TwoStacksPlainSocketImpl_socketSendUrgentData, [:pointer, :long, :int32], :void
     typesig { [::Java::Int] }
     def socket_send_urgent_data(data)
-      JNI.__send__(:Java_java_net_TwoStacksPlainSocketImpl_socketSendUrgentData, JNI.env, self.jni_id, data.to_int)
+      JNI.call_native_method(:Java_java_net_TwoStacksPlainSocketImpl_socketSendUrgentData, JNI.env, self.jni_id, data.to_int)
     end
     
     private

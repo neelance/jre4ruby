@@ -783,11 +783,11 @@ module Java::Util::Logging
         alias_method :initialize__initialization_error_manager, :initialize
       end }
       
-      JNI.native_method :Java_java_util_logging_FileHandler_isSetUID, [:pointer, :long], :int8
+      JNI.load_native_method :Java_java_util_logging_FileHandler_isSetUID, [:pointer, :long], :int8
       typesig { [] }
       # Private native method to check if we are in a set UID program.
       def is_set_uid
-        JNI.__send__(:Java_java_util_logging_FileHandler_isSetUID, JNI.env, self.jni_id) != 0
+        JNI.call_native_method(:Java_java_util_logging_FileHandler_isSetUID, JNI.env, self.jni_id) != 0
       end
     }
     

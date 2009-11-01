@@ -102,7 +102,7 @@ module Sun::Misc
       end
       alias_method :attr_lock=, :lock=
       
-      JNI.native_method :Java_sun_misc_GC_maxObjectInspectionAge, [:pointer, :long], :int64
+      JNI.load_native_method :Java_sun_misc_GC_maxObjectInspectionAge, [:pointer, :long], :int64
       typesig { [] }
       # Returns the maximum <em>object-inspection age</em>, which is the number
       # of real-time milliseconds that have elapsed since the
@@ -119,7 +119,7 @@ module Sun::Misc
       # is no longer strongly reachable may have to be inspected multiple times
       # before it can be reclaimed.
       def max_object_inspection_age
-        JNI.__send__(:Java_sun_misc_GC_maxObjectInspectionAge, JNI.env, self.jni_id)
+        JNI.call_native_method(:Java_sun_misc_GC_maxObjectInspectionAge, JNI.env, self.jni_id)
       end
       
       const_set_lazy(:Daemon) { Class.new(JavaThread) do

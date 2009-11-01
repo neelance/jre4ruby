@@ -1050,17 +1050,17 @@ module Sun::Nio::Ch
     end
     
     class_module.module_eval {
-      JNI.native_method :Java_sun_nio_ch_SocketChannelImpl_checkConnect, [:pointer, :long, :long, :int8, :int8], :int32
+      JNI.load_native_method :Java_sun_nio_ch_SocketChannelImpl_checkConnect, [:pointer, :long, :long, :int8, :int8], :int32
       typesig { [FileDescriptor, ::Java::Boolean, ::Java::Boolean] }
       # -- Native methods --
       def check_connect(fd, block, ready)
-        JNI.__send__(:Java_sun_nio_ch_SocketChannelImpl_checkConnect, JNI.env, self.jni_id, fd.jni_id, block ? 1 : 0, ready ? 1 : 0)
+        JNI.call_native_method(:Java_sun_nio_ch_SocketChannelImpl_checkConnect, JNI.env, self.jni_id, fd.jni_id, block ? 1 : 0, ready ? 1 : 0)
       end
       
-      JNI.native_method :Java_sun_nio_ch_SocketChannelImpl_shutdown, [:pointer, :long, :long, :int32], :void
+      JNI.load_native_method :Java_sun_nio_ch_SocketChannelImpl_shutdown, [:pointer, :long, :long, :int32], :void
       typesig { [FileDescriptor, ::Java::Int] }
       def shutdown(fd, how)
-        JNI.__send__(:Java_sun_nio_ch_SocketChannelImpl_shutdown, JNI.env, self.jni_id, fd.jni_id, how.to_int)
+        JNI.call_native_method(:Java_sun_nio_ch_SocketChannelImpl_shutdown, JNI.env, self.jni_id, fd.jni_id, how.to_int)
       end
       
       when_class_loaded do

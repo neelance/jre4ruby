@@ -105,10 +105,10 @@ module Java::Lang
         return StringEnvironment.new(HashMap.new(capacity))
       end
       
-      JNI.native_method :Java_java_lang_ProcessEnvironment_environ, [:pointer, :long], :long
+      JNI.load_native_method :Java_java_lang_ProcessEnvironment_environ, [:pointer, :long], :long
       typesig { [] }
       def environ
-        JNI.__send__(:Java_java_lang_ProcessEnvironment_environ, JNI.env, self.jni_id)
+        JNI.call_native_method(:Java_java_lang_ProcessEnvironment_environ, JNI.env, self.jni_id)
       end
     }
     

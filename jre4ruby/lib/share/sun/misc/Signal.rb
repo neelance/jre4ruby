@@ -264,14 +264,14 @@ module Sun::Misc
         end
       end
       
-      JNI.native_method :Java_sun_misc_Signal_findSignal, [:pointer, :long, :long], :int32
+      JNI.load_native_method :Java_sun_misc_Signal_findSignal, [:pointer, :long, :long], :int32
       typesig { [String] }
       # Find the signal number, given a name. Returns -1 for unknown signals.
       def find_signal(sig_name)
-        JNI.__send__(:Java_sun_misc_Signal_findSignal, JNI.env, self.jni_id, sig_name.jni_id)
+        JNI.call_native_method(:Java_sun_misc_Signal_findSignal, JNI.env, self.jni_id, sig_name.jni_id)
       end
       
-      JNI.native_method :Java_sun_misc_Signal_handle0, [:pointer, :long, :int32, :int64], :int64
+      JNI.load_native_method :Java_sun_misc_Signal_handle0, [:pointer, :long, :int32, :int64], :int64
       typesig { [::Java::Int, ::Java::Long] }
       # Registers a native signal handler, and returns the old handler.
       # Handler values:
@@ -280,14 +280,14 @@ module Sun::Misc
       # 2     call back to Signal.dispatch
       # other arbitrary native signal handlers
       def handle0(sig, native_h)
-        JNI.__send__(:Java_sun_misc_Signal_handle0, JNI.env, self.jni_id, sig.to_int, native_h.to_int)
+        JNI.call_native_method(:Java_sun_misc_Signal_handle0, JNI.env, self.jni_id, sig.to_int, native_h.to_int)
       end
       
-      JNI.native_method :Java_sun_misc_Signal_raise0, [:pointer, :long, :int32], :void
+      JNI.load_native_method :Java_sun_misc_Signal_raise0, [:pointer, :long, :int32], :void
       typesig { [::Java::Int] }
       # Raise a given signal number
       def raise0(sig)
-        JNI.__send__(:Java_sun_misc_Signal_raise0, JNI.env, self.jni_id, sig.to_int)
+        JNI.call_native_method(:Java_sun_misc_Signal_raise0, JNI.env, self.jni_id, sig.to_int)
       end
     }
     

@@ -108,7 +108,7 @@ module Java::Net
       return nil
     end
     
-    JNI.native_method :Java_java_net_SocketInputStream_socketRead0, [:pointer, :long, :long, :long, :int32, :int32, :int32], :int32
+    JNI.load_native_method :Java_java_net_SocketInputStream_socketRead0, [:pointer, :long, :long, :long, :int32, :int32, :int32], :int32
     typesig { [FileDescriptor, Array.typed(::Java::Byte), ::Java::Int, ::Java::Int, ::Java::Int] }
     # Reads into an array of bytes at the specified offset using
     # the received socket primitive.
@@ -121,7 +121,7 @@ module Java::Net
     # returned when the end of the stream is reached.
     # @exception IOException If an I/O error has occurred.
     def socket_read0(fd, b, off, len, timeout)
-      JNI.__send__(:Java_java_net_SocketInputStream_socketRead0, JNI.env, self.jni_id, fd.jni_id, b.jni_id, off.to_int, len.to_int, timeout.to_int)
+      JNI.call_native_method(:Java_java_net_SocketInputStream_socketRead0, JNI.env, self.jni_id, fd.jni_id, b.jni_id, off.to_int, len.to_int, timeout.to_int)
     end
     
     typesig { [Array.typed(::Java::Byte)] }
@@ -281,11 +281,11 @@ module Java::Net
     end
     
     class_module.module_eval {
-      JNI.native_method :Java_java_net_SocketInputStream_init, [:pointer, :long], :void
+      JNI.load_native_method :Java_java_net_SocketInputStream_init, [:pointer, :long], :void
       typesig { [] }
       # Perform class load-time initializations.
       def init
-        JNI.__send__(:Java_java_net_SocketInputStream_init, JNI.env, self.jni_id)
+        JNI.call_native_method(:Java_java_net_SocketInputStream_init, JNI.env, self.jni_id)
       end
     }
     

@@ -74,7 +74,7 @@ module Sun::Reflect
         self.attr_method_filter_map = HashMap.new
       end
       
-      JNI.native_method :Java_sun_reflect_Reflection_getCallerClass, [:pointer, :long, :int32], :long
+      JNI.load_native_method :Java_sun_reflect_Reflection_getCallerClass, [:pointer, :long, :int32], :long
       typesig { [::Java::Int] }
       # Returns the class of the method <code>realFramesToSkip</code>
       # frames up the stack (zero-based), ignoring frames associated
@@ -86,10 +86,10 @@ module Sun::Reflect
       # completely ignored and do not count toward the number of "real"
       # frames skipped.
       def get_caller_class(real_frames_to_skip)
-        JNI.__send__(:Java_sun_reflect_Reflection_getCallerClass, JNI.env, self.jni_id, real_frames_to_skip.to_int)
+        JNI.call_native_method(:Java_sun_reflect_Reflection_getCallerClass, JNI.env, self.jni_id, real_frames_to_skip.to_int)
       end
       
-      JNI.native_method :Java_sun_reflect_Reflection_getClassAccessFlags, [:pointer, :long, :long], :int32
+      JNI.load_native_method :Java_sun_reflect_Reflection_getClassAccessFlags, [:pointer, :long, :long], :int32
       typesig { [Class] }
       # Retrieves the access flags written to the class file. For
       # inner classes these flags may differ from those returned by
@@ -100,7 +100,7 @@ module Sun::Reflect
       # low 13 bits (i.e., a mask of 0x1FFF) are guaranteed to be
       # valid.
       def get_class_access_flags(c)
-        JNI.__send__(:Java_sun_reflect_Reflection_getClassAccessFlags, JNI.env, self.jni_id, c.jni_id)
+        JNI.call_native_method(:Java_sun_reflect_Reflection_getClassAccessFlags, JNI.env, self.jni_id, c.jni_id)
       end
       
       typesig { [Class, ::Java::Int] }

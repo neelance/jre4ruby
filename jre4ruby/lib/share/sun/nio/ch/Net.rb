@@ -135,35 +135,35 @@ module Sun::Nio::Ch
         return IOUtil.new_fd(socket0(stream, true))
       end
       
-      JNI.native_method :Java_sun_nio_ch_Net_socket0, [:pointer, :long, :int8, :int8], :int32
+      JNI.load_native_method :Java_sun_nio_ch_Net_socket0, [:pointer, :long, :int8, :int8], :int32
       typesig { [::Java::Boolean, ::Java::Boolean] }
       # Due to oddities SO_REUSEADDR on windows reuse is ignored
       def socket0(stream, reuse)
-        JNI.__send__(:Java_sun_nio_ch_Net_socket0, JNI.env, self.jni_id, stream ? 1 : 0, reuse ? 1 : 0)
+        JNI.call_native_method(:Java_sun_nio_ch_Net_socket0, JNI.env, self.jni_id, stream ? 1 : 0, reuse ? 1 : 0)
       end
       
-      JNI.native_method :Java_sun_nio_ch_Net_bind, [:pointer, :long, :long, :long, :int32], :void
+      JNI.load_native_method :Java_sun_nio_ch_Net_bind, [:pointer, :long, :long, :long, :int32], :void
       typesig { [FileDescriptor, InetAddress, ::Java::Int] }
       def bind(fd, addr, port)
-        JNI.__send__(:Java_sun_nio_ch_Net_bind, JNI.env, self.jni_id, fd.jni_id, addr.jni_id, port.to_int)
+        JNI.call_native_method(:Java_sun_nio_ch_Net_bind, JNI.env, self.jni_id, fd.jni_id, addr.jni_id, port.to_int)
       end
       
-      JNI.native_method :Java_sun_nio_ch_Net_connect, [:pointer, :long, :long, :long, :int32, :int32], :int32
+      JNI.load_native_method :Java_sun_nio_ch_Net_connect, [:pointer, :long, :long, :long, :int32, :int32], :int32
       typesig { [FileDescriptor, InetAddress, ::Java::Int, ::Java::Int] }
       def connect(fd, remote, remote_port, traffic_class)
-        JNI.__send__(:Java_sun_nio_ch_Net_connect, JNI.env, self.jni_id, fd.jni_id, remote.jni_id, remote_port.to_int, traffic_class.to_int)
+        JNI.call_native_method(:Java_sun_nio_ch_Net_connect, JNI.env, self.jni_id, fd.jni_id, remote.jni_id, remote_port.to_int, traffic_class.to_int)
       end
       
-      JNI.native_method :Java_sun_nio_ch_Net_localPort, [:pointer, :long, :long], :int32
+      JNI.load_native_method :Java_sun_nio_ch_Net_localPort, [:pointer, :long, :long], :int32
       typesig { [FileDescriptor] }
       def local_port(fd)
-        JNI.__send__(:Java_sun_nio_ch_Net_localPort, JNI.env, self.jni_id, fd.jni_id)
+        JNI.call_native_method(:Java_sun_nio_ch_Net_localPort, JNI.env, self.jni_id, fd.jni_id)
       end
       
-      JNI.native_method :Java_sun_nio_ch_Net_localInetAddress, [:pointer, :long, :long], :long
+      JNI.load_native_method :Java_sun_nio_ch_Net_localInetAddress, [:pointer, :long, :long], :long
       typesig { [FileDescriptor] }
       def local_inet_address(fd)
-        JNI.__send__(:Java_sun_nio_ch_Net_localInetAddress, JNI.env, self.jni_id, fd.jni_id)
+        JNI.call_native_method(:Java_sun_nio_ch_Net_localInetAddress, JNI.env, self.jni_id, fd.jni_id)
       end
       
       typesig { [FileDescriptor] }
@@ -184,10 +184,10 @@ module Sun::Nio::Ch
         end
       end
       
-      JNI.native_method :Java_sun_nio_ch_Net_getIntOption0, [:pointer, :long, :long, :int32], :int32
+      JNI.load_native_method :Java_sun_nio_ch_Net_getIntOption0, [:pointer, :long, :long, :int32], :int32
       typesig { [FileDescriptor, ::Java::Int] }
       def get_int_option0(fd, opt)
-        JNI.__send__(:Java_sun_nio_ch_Net_getIntOption0, JNI.env, self.jni_id, fd.jni_id, opt.to_int)
+        JNI.call_native_method(:Java_sun_nio_ch_Net_getIntOption0, JNI.env, self.jni_id, fd.jni_id, opt.to_int)
       end
       
       typesig { [FileDescriptor, ::Java::Int] }
@@ -195,10 +195,10 @@ module Sun::Nio::Ch
         return get_int_option0(fd, opt)
       end
       
-      JNI.native_method :Java_sun_nio_ch_Net_setIntOption0, [:pointer, :long, :long, :int32, :int32], :void
+      JNI.load_native_method :Java_sun_nio_ch_Net_setIntOption0, [:pointer, :long, :long, :int32, :int32], :void
       typesig { [FileDescriptor, ::Java::Int, ::Java::Int] }
       def set_int_option0(fd, opt, arg)
-        JNI.__send__(:Java_sun_nio_ch_Net_setIntOption0, JNI.env, self.jni_id, fd.jni_id, opt.to_int, arg.to_int)
+        JNI.call_native_method(:Java_sun_nio_ch_Net_setIntOption0, JNI.env, self.jni_id, fd.jni_id, opt.to_int, arg.to_int)
       end
       
       typesig { [FileDescriptor, ::Java::Int, ::Java::Int] }
@@ -206,10 +206,10 @@ module Sun::Nio::Ch
         set_int_option0(fd, opt, arg)
       end
       
-      JNI.native_method :Java_sun_nio_ch_Net_initIDs, [:pointer, :long], :void
+      JNI.load_native_method :Java_sun_nio_ch_Net_initIDs, [:pointer, :long], :void
       typesig { [] }
       def init_ids
-        JNI.__send__(:Java_sun_nio_ch_Net_initIDs, JNI.env, self.jni_id)
+        JNI.call_native_method(:Java_sun_nio_ch_Net_initIDs, JNI.env, self.jni_id)
       end
       
       when_class_loaded do

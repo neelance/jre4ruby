@@ -105,22 +105,22 @@ module Sun::Misc
         return subst(System.get_property(prop_name), arg1, arg2, arg3)
       end
       
-      JNI.native_method :Java_sun_misc_MessageUtils_toStderr, [:pointer, :long, :long], :void
+      JNI.load_native_method :Java_sun_misc_MessageUtils_toStderr, [:pointer, :long, :long], :void
       typesig { [String] }
       # Print a message directly to stderr, bypassing all the
       # character conversion methods.
       # @param msg   message to print
       def to_stderr(msg)
-        JNI.__send__(:Java_sun_misc_MessageUtils_toStderr, JNI.env, self.jni_id, msg.jni_id)
+        JNI.call_native_method(:Java_sun_misc_MessageUtils_toStderr, JNI.env, self.jni_id, msg.jni_id)
       end
       
-      JNI.native_method :Java_sun_misc_MessageUtils_toStdout, [:pointer, :long, :long], :void
+      JNI.load_native_method :Java_sun_misc_MessageUtils_toStdout, [:pointer, :long, :long], :void
       typesig { [String] }
       # Print a message directly to stdout, bypassing all the
       # character conversion methods.
       # @param msg   message to print
       def to_stdout(msg)
-        JNI.__send__(:Java_sun_misc_MessageUtils_toStdout, JNI.env, self.jni_id, msg.jni_id)
+        JNI.call_native_method(:Java_sun_misc_MessageUtils_toStdout, JNI.env, self.jni_id, msg.jni_id)
       end
       
       typesig { [String] }

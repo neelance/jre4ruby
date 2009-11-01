@@ -88,11 +88,11 @@ module Sun::Security::Mscapi
     end
     
     class_module.module_eval {
-      JNI.native_method :Java_sun_security_mscapi_Key_cleanUp, [:pointer, :long, :int64, :int64], :void
+      JNI.load_native_method :Java_sun_security_mscapi_Key_cleanUp, [:pointer, :long, :int64, :int64], :void
       typesig { [::Java::Long, ::Java::Long] }
       # Native method to cleanup the key handle.
       def clean_up(h_crypt_prov, h_crypt_key)
-        JNI.__send__(:Java_sun_security_mscapi_Key_cleanUp, JNI.env, self.jni_id, h_crypt_prov.to_int, h_crypt_key.to_int)
+        JNI.call_native_method(:Java_sun_security_mscapi_Key_cleanUp, JNI.env, self.jni_id, h_crypt_prov.to_int, h_crypt_key.to_int)
       end
     }
     
@@ -158,16 +158,16 @@ module Sun::Security::Mscapi
     end
     
     class_module.module_eval {
-      JNI.native_method :Java_sun_security_mscapi_Key_getContainerName, [:pointer, :long, :int64], :long
+      JNI.load_native_method :Java_sun_security_mscapi_Key_getContainerName, [:pointer, :long, :int64], :long
       typesig { [::Java::Long] }
       def get_container_name(h_crypt_prov)
-        JNI.__send__(:Java_sun_security_mscapi_Key_getContainerName, JNI.env, self.jni_id, h_crypt_prov.to_int)
+        JNI.call_native_method(:Java_sun_security_mscapi_Key_getContainerName, JNI.env, self.jni_id, h_crypt_prov.to_int)
       end
       
-      JNI.native_method :Java_sun_security_mscapi_Key_getKeyType, [:pointer, :long, :int64], :long
+      JNI.load_native_method :Java_sun_security_mscapi_Key_getKeyType, [:pointer, :long, :int64], :long
       typesig { [::Java::Long] }
       def get_key_type(h_crypt_key)
-        JNI.__send__(:Java_sun_security_mscapi_Key_getKeyType, JNI.env, self.jni_id, h_crypt_key.to_int)
+        JNI.call_native_method(:Java_sun_security_mscapi_Key_getKeyType, JNI.env, self.jni_id, h_crypt_key.to_int)
       end
     }
     

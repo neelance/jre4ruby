@@ -133,11 +133,11 @@ module Java::Lang
     include Runnable
     
     class_module.module_eval {
-      JNI.native_method :Java_java_lang_Thread_registerNatives, [:pointer, :long], :void
+      JNI.load_native_method :Java_java_lang_Thread_registerNatives, [:pointer, :long], :void
       typesig { [] }
       # Make sure registerNatives is the first thing <clinit> does.
       def register_natives
-        JNI.__send__(:Java_java_lang_Thread_registerNatives, JNI.env, self.jni_id)
+        JNI.call_native_method(:Java_java_lang_Thread_registerNatives, JNI.env, self.jni_id)
       end
       
       when_class_loaded do
@@ -371,24 +371,24 @@ module Java::Lang
     undef_method :throwable_from_stop=
     
     class_module.module_eval {
-      JNI.native_method :Java_java_lang_Thread_currentThread, [:pointer, :long], :long
+      JNI.load_native_method :Java_java_lang_Thread_currentThread, [:pointer, :long], :long
       typesig { [] }
       # Returns a reference to the currently executing thread object.
       # 
       # @return  the currently executing thread.
       def current_thread
-        JNI.__send__(:Java_java_lang_Thread_currentThread, JNI.env, self.jni_id)
+        JNI.call_native_method(:Java_java_lang_Thread_currentThread, JNI.env, self.jni_id)
       end
       
-      JNI.native_method :Java_java_lang_Thread_yield, [:pointer, :long], :void
+      JNI.load_native_method :Java_java_lang_Thread_yield, [:pointer, :long], :void
       typesig { [] }
       # Causes the currently executing thread object to temporarily pause
       # and allow other threads to execute.
       def yield_
-        JNI.__send__(:Java_java_lang_Thread_yield, JNI.env, self.jni_id)
+        JNI.call_native_method(:Java_java_lang_Thread_yield, JNI.env, self.jni_id)
       end
       
-      JNI.native_method :Java_java_lang_Thread_sleep, [:pointer, :long, :int64], :void
+      JNI.load_native_method :Java_java_lang_Thread_sleep, [:pointer, :long, :int64], :void
       typesig { [::Java::Long] }
       # Causes the currently executing thread to sleep (temporarily cease
       # execution) for the specified number of milliseconds, subject to
@@ -401,7 +401,7 @@ module Java::Lang
       # current thread is cleared when this exception is thrown.
       # @see        Object#notify()
       def sleep(millis)
-        JNI.__send__(:Java_java_lang_Thread_sleep, JNI.env, self.jni_id, millis.to_int)
+        JNI.call_native_method(:Java_java_lang_Thread_sleep, JNI.env, self.jni_id, millis.to_int)
       end
       
       typesig { [::Java::Long, ::Java::Int] }
@@ -900,10 +900,10 @@ module Java::Lang
       end
     end
     
-    JNI.native_method :Java_java_lang_Thread_start0, [:pointer, :long], :void
+    JNI.load_native_method :Java_java_lang_Thread_start0, [:pointer, :long], :void
     typesig { [] }
     def start0
-      JNI.__send__(:Java_java_lang_Thread_start0, JNI.env, self.jni_id)
+      JNI.call_native_method(:Java_java_lang_Thread_start0, JNI.env, self.jni_id)
     end
     
     typesig { [] }
@@ -1187,13 +1187,13 @@ module Java::Lang
       return is_interrupted(false)
     end
     
-    JNI.native_method :Java_java_lang_Thread_isInterrupted, [:pointer, :long, :int8], :int8
+    JNI.load_native_method :Java_java_lang_Thread_isInterrupted, [:pointer, :long, :int8], :int8
     typesig { [::Java::Boolean] }
     # Tests if some Thread has been interrupted.  The interrupted state
     # is reset or not based on the value of ClearInterrupted that is
     # passed.
     def is_interrupted(clear_interrupted)
-      JNI.__send__(:Java_java_lang_Thread_isInterrupted, JNI.env, self.jni_id, clear_interrupted ? 1 : 0) != 0
+      JNI.call_native_method(:Java_java_lang_Thread_isInterrupted, JNI.env, self.jni_id, clear_interrupted ? 1 : 0) != 0
     end
     
     typesig { [] }
@@ -1216,7 +1216,7 @@ module Java::Lang
       raise NoSuchMethodError.new
     end
     
-    JNI.native_method :Java_java_lang_Thread_isAlive, [:pointer, :long], :int8
+    JNI.load_native_method :Java_java_lang_Thread_isAlive, [:pointer, :long], :int8
     typesig { [] }
     # Tests if this thread is alive. A thread is alive if it has
     # been started and has not yet died.
@@ -1224,7 +1224,7 @@ module Java::Lang
     # @return  <code>true</code> if this thread is alive;
     # <code>false</code> otherwise.
     def is_alive
-      JNI.__send__(:Java_java_lang_Thread_isAlive, JNI.env, self.jni_id) != 0
+      JNI.call_native_method(:Java_java_lang_Thread_isAlive, JNI.env, self.jni_id) != 0
     end
     
     typesig { [] }
@@ -1396,7 +1396,7 @@ module Java::Lang
       end
     }
     
-    JNI.native_method :Java_java_lang_Thread_countStackFrames, [:pointer, :long], :int32
+    JNI.load_native_method :Java_java_lang_Thread_countStackFrames, [:pointer, :long], :int32
     typesig { [] }
     # Counts the number of stack frames in this thread. The thread must
     # be suspended.
@@ -1408,7 +1408,7 @@ module Java::Lang
     # which is deprecated.  Further, the results of this call
     # were never well-defined.
     def count_stack_frames
-      JNI.__send__(:Java_java_lang_Thread_countStackFrames, JNI.env, self.jni_id)
+      JNI.call_native_method(:Java_java_lang_Thread_countStackFrames, JNI.env, self.jni_id)
     end
     
     typesig { [::Java::Long] }
@@ -1630,7 +1630,7 @@ module Java::Lang
     end
     
     class_module.module_eval {
-      JNI.native_method :Java_java_lang_Thread_holdsLock, [:pointer, :long, :long], :int8
+      JNI.load_native_method :Java_java_lang_Thread_holdsLock, [:pointer, :long, :long], :int8
       typesig { [Object] }
       # Returns <tt>true</tt> if and only if the current thread holds the
       # monitor lock on the specified object.
@@ -1647,7 +1647,7 @@ module Java::Lang
       # the specified object.
       # @since 1.4
       def holds_lock(obj)
-        JNI.__send__(:Java_java_lang_Thread_holdsLock, JNI.env, self.jni_id, obj.jni_id) != 0
+        JNI.call_native_method(:Java_java_lang_Thread_holdsLock, JNI.env, self.jni_id, obj.jni_id) != 0
       end
       
       const_set_lazy(:EMPTY_STACK_TRACE) { Array.typed(StackTraceElement).new(0) { nil } }
@@ -1842,16 +1842,16 @@ module Java::Lang
         return result.boolean_value
       end
       
-      JNI.native_method :Java_java_lang_Thread_dumpThreads, [:pointer, :long, :long], :long
+      JNI.load_native_method :Java_java_lang_Thread_dumpThreads, [:pointer, :long, :long], :long
       typesig { [Array.typed(JavaThread)] }
       def dump_threads(threads)
-        JNI.__send__(:Java_java_lang_Thread_dumpThreads, JNI.env, self.jni_id, threads.jni_id)
+        JNI.call_native_method(:Java_java_lang_Thread_dumpThreads, JNI.env, self.jni_id, threads.jni_id)
       end
       
-      JNI.native_method :Java_java_lang_Thread_getThreads, [:pointer, :long], :long
+      JNI.load_native_method :Java_java_lang_Thread_getThreads, [:pointer, :long], :long
       typesig { [] }
       def get_threads
-        JNI.__send__(:Java_java_lang_Thread_getThreads, JNI.env, self.jni_id)
+        JNI.call_native_method(:Java_java_lang_Thread_getThreads, JNI.env, self.jni_id)
       end
     }
     
@@ -2167,35 +2167,35 @@ module Java::Lang
       get_uncaught_exception_handler.uncaught_exception(self, e)
     end
     
-    JNI.native_method :Java_java_lang_Thread_setPriority0, [:pointer, :long, :int32], :void
+    JNI.load_native_method :Java_java_lang_Thread_setPriority0, [:pointer, :long, :int32], :void
     typesig { [::Java::Int] }
     # Some private helper methods
     def set_priority0(new_priority)
-      JNI.__send__(:Java_java_lang_Thread_setPriority0, JNI.env, self.jni_id, new_priority.to_int)
+      JNI.call_native_method(:Java_java_lang_Thread_setPriority0, JNI.env, self.jni_id, new_priority.to_int)
     end
     
-    JNI.native_method :Java_java_lang_Thread_stop0, [:pointer, :long, :long], :void
+    JNI.load_native_method :Java_java_lang_Thread_stop0, [:pointer, :long, :long], :void
     typesig { [Object] }
     def stop0(o)
-      JNI.__send__(:Java_java_lang_Thread_stop0, JNI.env, self.jni_id, o.jni_id)
+      JNI.call_native_method(:Java_java_lang_Thread_stop0, JNI.env, self.jni_id, o.jni_id)
     end
     
-    JNI.native_method :Java_java_lang_Thread_suspend0, [:pointer, :long], :void
+    JNI.load_native_method :Java_java_lang_Thread_suspend0, [:pointer, :long], :void
     typesig { [] }
     def suspend0
-      JNI.__send__(:Java_java_lang_Thread_suspend0, JNI.env, self.jni_id)
+      JNI.call_native_method(:Java_java_lang_Thread_suspend0, JNI.env, self.jni_id)
     end
     
-    JNI.native_method :Java_java_lang_Thread_resume0, [:pointer, :long], :void
+    JNI.load_native_method :Java_java_lang_Thread_resume0, [:pointer, :long], :void
     typesig { [] }
     def resume0
-      JNI.__send__(:Java_java_lang_Thread_resume0, JNI.env, self.jni_id)
+      JNI.call_native_method(:Java_java_lang_Thread_resume0, JNI.env, self.jni_id)
     end
     
-    JNI.native_method :Java_java_lang_Thread_interrupt0, [:pointer, :long], :void
+    JNI.load_native_method :Java_java_lang_Thread_interrupt0, [:pointer, :long], :void
     typesig { [] }
     def interrupt0
-      JNI.__send__(:Java_java_lang_Thread_interrupt0, JNI.env, self.jni_id)
+      JNI.call_native_method(:Java_java_lang_Thread_interrupt0, JNI.env, self.jni_id)
     end
     
     private

@@ -303,11 +303,11 @@ module Java::Io
     undef_method :super_desc=
     
     class_module.module_eval {
-      JNI.native_method :Java_java_io_ObjectStreamClass_initNative, [:pointer, :long], :void
+      JNI.load_native_method :Java_java_io_ObjectStreamClass_initNative, [:pointer, :long], :void
       typesig { [] }
       # Initializes native code.
       def init_native
-        JNI.__send__(:Java_java_io_ObjectStreamClass_initNative, JNI.env, self.jni_id)
+        JNI.call_native_method(:Java_java_io_ObjectStreamClass_initNative, JNI.env, self.jni_id)
       end
       
       when_class_loaded do
@@ -1919,12 +1919,12 @@ module Java::Io
         end
       end
       
-      JNI.native_method :Java_java_io_ObjectStreamClass_hasStaticInitializer, [:pointer, :long, :long], :int8
+      JNI.load_native_method :Java_java_io_ObjectStreamClass_hasStaticInitializer, [:pointer, :long, :long], :int8
       typesig { [Class] }
       # Returns true if the given class defines a static initializer method,
       # false otherwise.
       def has_static_initializer(cl)
-        JNI.__send__(:Java_java_io_ObjectStreamClass_hasStaticInitializer, JNI.env, self.jni_id, cl.jni_id) != 0
+        JNI.call_native_method(:Java_java_io_ObjectStreamClass_hasStaticInitializer, JNI.env, self.jni_id, cl.jni_id) != 0
       end
       
       # Class for computing and caching field/constructor/method signatures

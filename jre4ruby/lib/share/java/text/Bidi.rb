@@ -612,18 +612,18 @@ module Java::Text
       const_set_lazy(:RMASK) { (1 << 1) | (1 << 5) | (1 << 13) | (1 << 14) | (1 << 15) }
       const_attr_reader  :RMASK
       
-      JNI.native_method :Java_java_text_Bidi_nativeGetDirectionCode, [:pointer, :long, :int32], :int32
+      JNI.load_native_method :Java_java_text_Bidi_nativeGetDirectionCode, [:pointer, :long, :int32], :int32
       typesig { [::Java::Int] }
       # Access native bidi implementation.
       def native_get_direction_code(cp)
-        JNI.__send__(:Java_java_text_Bidi_nativeGetDirectionCode, JNI.env, self.jni_id, cp.to_int)
+        JNI.call_native_method(:Java_java_text_Bidi_nativeGetDirectionCode, JNI.env, self.jni_id, cp.to_int)
       end
       
-      JNI.native_method :Java_java_text_Bidi_nativeBidiChars, [:pointer, :long, :long, :long, :int32, :long, :int32, :int32, :int32], :void
+      JNI.load_native_method :Java_java_text_Bidi_nativeBidiChars, [:pointer, :long, :long, :long, :int32, :long, :int32, :int32, :int32], :void
       typesig { [Bidi, Array.typed(::Java::Char), ::Java::Int, Array.typed(::Java::Byte), ::Java::Int, ::Java::Int, ::Java::Int] }
       # Access native bidi implementation.
       def native_bidi_chars(bidi, text, text_start, embeddings, embedding_start, length_, flags)
-        JNI.__send__(:Java_java_text_Bidi_nativeBidiChars, JNI.env, self.jni_id, bidi.jni_id, text.jni_id, text_start.to_int, embeddings.jni_id, embedding_start.to_int, length_.to_int, flags.to_int)
+        JNI.call_native_method(:Java_java_text_Bidi_nativeBidiChars, JNI.env, self.jni_id, bidi.jni_id, text.jni_id, text_start.to_int, embeddings.jni_id, embedding_start.to_int, length_.to_int, flags.to_int)
       end
     }
     

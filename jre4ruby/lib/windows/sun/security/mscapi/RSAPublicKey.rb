@@ -165,25 +165,25 @@ module Sun::Security::Mscapi
       return KeyRep.new(KeyRep::Type::PUBLIC, get_algorithm, get_format, get_encoded)
     end
     
-    JNI.native_method :Java_sun_security_mscapi_RSAPublicKey_getPublicKeyBlob, [:pointer, :long, :int64], :long
+    JNI.load_native_method :Java_sun_security_mscapi_RSAPublicKey_getPublicKeyBlob, [:pointer, :long, :int64], :long
     typesig { [::Java::Long] }
     # Returns the Microsoft CryptoAPI representation of the key.
     def get_public_key_blob(h_crypt_key)
-      JNI.__send__(:Java_sun_security_mscapi_RSAPublicKey_getPublicKeyBlob, JNI.env, self.jni_id, h_crypt_key.to_int)
+      JNI.call_native_method(:Java_sun_security_mscapi_RSAPublicKey_getPublicKeyBlob, JNI.env, self.jni_id, h_crypt_key.to_int)
     end
     
-    JNI.native_method :Java_sun_security_mscapi_RSAPublicKey_getExponent, [:pointer, :long, :long], :long
+    JNI.load_native_method :Java_sun_security_mscapi_RSAPublicKey_getExponent, [:pointer, :long, :long], :long
     typesig { [Array.typed(::Java::Byte)] }
     # Returns the key's public exponent (in big-endian 2's complement format).
     def get_exponent(key_blob)
-      JNI.__send__(:Java_sun_security_mscapi_RSAPublicKey_getExponent, JNI.env, self.jni_id, key_blob.jni_id)
+      JNI.call_native_method(:Java_sun_security_mscapi_RSAPublicKey_getExponent, JNI.env, self.jni_id, key_blob.jni_id)
     end
     
-    JNI.native_method :Java_sun_security_mscapi_RSAPublicKey_getModulus, [:pointer, :long, :long], :long
+    JNI.load_native_method :Java_sun_security_mscapi_RSAPublicKey_getModulus, [:pointer, :long, :long], :long
     typesig { [Array.typed(::Java::Byte)] }
     # Returns the key's modulus (in big-endian 2's complement format).
     def get_modulus(key_blob)
-      JNI.__send__(:Java_sun_security_mscapi_RSAPublicKey_getModulus, JNI.env, self.jni_id, key_blob.jni_id)
+      JNI.call_native_method(:Java_sun_security_mscapi_RSAPublicKey_getModulus, JNI.env, self.jni_id, key_blob.jni_id)
     end
     
     private

@@ -511,10 +511,10 @@ module Java::Lang
         return ProcessEnvironment.new(capacity)
       end
       
-      JNI.native_method :Java_java_lang_ProcessEnvironment_environmentBlock, [:pointer, :long], :long
+      JNI.load_native_method :Java_java_lang_ProcessEnvironment_environmentBlock, [:pointer, :long], :long
       typesig { [] }
       def environment_block
-        JNI.__send__(:Java_java_lang_ProcessEnvironment_environmentBlock, JNI.env, self.jni_id)
+        JNI.call_native_method(:Java_java_lang_ProcessEnvironment_environmentBlock, JNI.env, self.jni_id)
       end
     }
     
