@@ -100,7 +100,7 @@ module Sun::Misc
       end
     }
     
-    JNI.load_native_method "Java_sun_misc_Unsafe_getInt__L#{Object.jni_name}_2J".to_sym, [:pointer, :long, :long, :int64], :int32
+    JNI.load_native_method "Java_sun_misc_Unsafe_getInt__L#{Object.jni_package_name}_Object_2J".to_sym, [:pointer, :long, :long, :int64], :int32
     typesig { [Object, ::Java::Long] }
     # / peek and poke operations
     # / (compilers should optimize these to memory ops)
@@ -160,10 +160,10 @@ module Sun::Misc
     # @throws RuntimeException No defined exceptions are thrown, not even
     # {@link NullPointerException}
     def get_int(o, offset)
-      JNI.call_native_method("Java_sun_misc_Unsafe_getInt__L#{Object.jni_name}_2J".to_sym, JNI.env, self.jni_id, o.jni_id, offset.to_int)
+      JNI.call_native_method("Java_sun_misc_Unsafe_getInt__L#{Object.jni_package_name}_Object_2J".to_sym, JNI.env, self.jni_id, o.jni_id, offset.to_int)
     end
     
-    JNI.load_native_method "Java_sun_misc_Unsafe_putInt__L#{Object.jni_name}_2JI".to_sym, [:pointer, :long, :long, :int64, :int32], :void
+    JNI.load_native_method "Java_sun_misc_Unsafe_putInt__L#{Object.jni_package_name}_Object_2JI".to_sym, [:pointer, :long, :long, :int64, :int32], :void
     typesig { [Object, ::Java::Long, ::Java::Int] }
     # Stores a value into a given Java variable.
     # <p>
@@ -184,7 +184,7 @@ module Sun::Misc
     # @throws RuntimeException No defined exceptions are thrown, not even
     # {@link NullPointerException}
     def put_int(o, offset, x)
-      JNI.call_native_method("Java_sun_misc_Unsafe_putInt__L#{Object.jni_name}_2JI".to_sym, JNI.env, self.jni_id, o.jni_id, offset.to_int, x.to_int)
+      JNI.call_native_method("Java_sun_misc_Unsafe_putInt__L#{Object.jni_package_name}_Object_2JI".to_sym, JNI.env, self.jni_id, o.jni_id, offset.to_int, x.to_int)
     end
     
     JNI.load_native_method :Java_sun_misc_Unsafe_getObject, [:pointer, :long, :long, :int64], :long
@@ -223,88 +223,88 @@ module Sun::Misc
       JNI.call_native_method(:Java_sun_misc_Unsafe_putBoolean, JNI.env, self.jni_id, o.jni_id, offset.to_int, x ? 1 : 0)
     end
     
-    JNI.load_native_method "Java_sun_misc_Unsafe_getByte__L#{Object.jni_name}_2J".to_sym, [:pointer, :long, :long, :int64], :int8
+    JNI.load_native_method "Java_sun_misc_Unsafe_getByte__L#{Object.jni_package_name}_Object_2J".to_sym, [:pointer, :long, :long, :int64], :int8
     typesig { [Object, ::Java::Long] }
     # @see #getInt(Object, long)
     def get_byte(o, offset)
-      JNI.call_native_method("Java_sun_misc_Unsafe_getByte__L#{Object.jni_name}_2J".to_sym, JNI.env, self.jni_id, o.jni_id, offset.to_int)
+      JNI.call_native_method("Java_sun_misc_Unsafe_getByte__L#{Object.jni_package_name}_Object_2J".to_sym, JNI.env, self.jni_id, o.jni_id, offset.to_int)
     end
     
-    JNI.load_native_method "Java_sun_misc_Unsafe_putByte__L#{Object.jni_name}_2JB".to_sym, [:pointer, :long, :long, :int64, :int8], :void
+    JNI.load_native_method "Java_sun_misc_Unsafe_putByte__L#{Object.jni_package_name}_Object_2JB".to_sym, [:pointer, :long, :long, :int64, :int8], :void
     typesig { [Object, ::Java::Long, ::Java::Byte] }
     # @see #putInt(Object, int, int)
     def put_byte(o, offset, x)
-      JNI.call_native_method("Java_sun_misc_Unsafe_putByte__L#{Object.jni_name}_2JB".to_sym, JNI.env, self.jni_id, o.jni_id, offset.to_int, x.to_int)
+      JNI.call_native_method("Java_sun_misc_Unsafe_putByte__L#{Object.jni_package_name}_Object_2JB".to_sym, JNI.env, self.jni_id, o.jni_id, offset.to_int, x.to_int)
     end
     
-    JNI.load_native_method "Java_sun_misc_Unsafe_getShort__L#{Object.jni_name}_2J".to_sym, [:pointer, :long, :long, :int64], :int16
+    JNI.load_native_method "Java_sun_misc_Unsafe_getShort__L#{Object.jni_package_name}_Object_2J".to_sym, [:pointer, :long, :long, :int64], :int16
     typesig { [Object, ::Java::Long] }
     # @see #getInt(Object, long)
     def get_short(o, offset)
-      JNI.call_native_method("Java_sun_misc_Unsafe_getShort__L#{Object.jni_name}_2J".to_sym, JNI.env, self.jni_id, o.jni_id, offset.to_int)
+      JNI.call_native_method("Java_sun_misc_Unsafe_getShort__L#{Object.jni_package_name}_Object_2J".to_sym, JNI.env, self.jni_id, o.jni_id, offset.to_int)
     end
     
-    JNI.load_native_method "Java_sun_misc_Unsafe_putShort__L#{Object.jni_name}_2JS".to_sym, [:pointer, :long, :long, :int64, :int16], :void
+    JNI.load_native_method "Java_sun_misc_Unsafe_putShort__L#{Object.jni_package_name}_Object_2JS".to_sym, [:pointer, :long, :long, :int64, :int16], :void
     typesig { [Object, ::Java::Long, ::Java::Short] }
     # @see #putInt(Object, int, int)
     def put_short(o, offset, x)
-      JNI.call_native_method("Java_sun_misc_Unsafe_putShort__L#{Object.jni_name}_2JS".to_sym, JNI.env, self.jni_id, o.jni_id, offset.to_int, x.to_int)
+      JNI.call_native_method("Java_sun_misc_Unsafe_putShort__L#{Object.jni_package_name}_Object_2JS".to_sym, JNI.env, self.jni_id, o.jni_id, offset.to_int, x.to_int)
     end
     
-    JNI.load_native_method "Java_sun_misc_Unsafe_getChar__L#{Object.jni_name}_2J".to_sym, [:pointer, :long, :long, :int64], :unknown
+    JNI.load_native_method "Java_sun_misc_Unsafe_getChar__L#{Object.jni_package_name}_Object_2J".to_sym, [:pointer, :long, :long, :int64], :unknown
     typesig { [Object, ::Java::Long] }
     # @see #getInt(Object, long)
     def get_char(o, offset)
-      JNI.call_native_method("Java_sun_misc_Unsafe_getChar__L#{Object.jni_name}_2J".to_sym, JNI.env, self.jni_id, o.jni_id, offset.to_int)
+      JNI.call_native_method("Java_sun_misc_Unsafe_getChar__L#{Object.jni_package_name}_Object_2J".to_sym, JNI.env, self.jni_id, o.jni_id, offset.to_int)
     end
     
-    JNI.load_native_method "Java_sun_misc_Unsafe_putChar__L#{Object.jni_name}_2JC".to_sym, [:pointer, :long, :long, :int64, :unknown], :void
+    JNI.load_native_method "Java_sun_misc_Unsafe_putChar__L#{Object.jni_package_name}_Object_2JC".to_sym, [:pointer, :long, :long, :int64, :unknown], :void
     typesig { [Object, ::Java::Long, ::Java::Char] }
     # @see #putInt(Object, int, int)
     def put_char(o, offset, x)
-      JNI.call_native_method("Java_sun_misc_Unsafe_putChar__L#{Object.jni_name}_2JC".to_sym, JNI.env, self.jni_id, o.jni_id, offset.to_int, x.to_int)
+      JNI.call_native_method("Java_sun_misc_Unsafe_putChar__L#{Object.jni_package_name}_Object_2JC".to_sym, JNI.env, self.jni_id, o.jni_id, offset.to_int, x.to_int)
     end
     
-    JNI.load_native_method "Java_sun_misc_Unsafe_getLong__L#{Object.jni_name}_2J".to_sym, [:pointer, :long, :long, :int64], :int64
+    JNI.load_native_method "Java_sun_misc_Unsafe_getLong__L#{Object.jni_package_name}_Object_2J".to_sym, [:pointer, :long, :long, :int64], :int64
     typesig { [Object, ::Java::Long] }
     # @see #getInt(Object, long)
     def get_long(o, offset)
-      JNI.call_native_method("Java_sun_misc_Unsafe_getLong__L#{Object.jni_name}_2J".to_sym, JNI.env, self.jni_id, o.jni_id, offset.to_int)
+      JNI.call_native_method("Java_sun_misc_Unsafe_getLong__L#{Object.jni_package_name}_Object_2J".to_sym, JNI.env, self.jni_id, o.jni_id, offset.to_int)
     end
     
-    JNI.load_native_method "Java_sun_misc_Unsafe_putLong__L#{Object.jni_name}_2JJ".to_sym, [:pointer, :long, :long, :int64, :int64], :void
+    JNI.load_native_method "Java_sun_misc_Unsafe_putLong__L#{Object.jni_package_name}_Object_2JJ".to_sym, [:pointer, :long, :long, :int64, :int64], :void
     typesig { [Object, ::Java::Long, ::Java::Long] }
     # @see #putInt(Object, int, int)
     def put_long(o, offset, x)
-      JNI.call_native_method("Java_sun_misc_Unsafe_putLong__L#{Object.jni_name}_2JJ".to_sym, JNI.env, self.jni_id, o.jni_id, offset.to_int, x.to_int)
+      JNI.call_native_method("Java_sun_misc_Unsafe_putLong__L#{Object.jni_package_name}_Object_2JJ".to_sym, JNI.env, self.jni_id, o.jni_id, offset.to_int, x.to_int)
     end
     
-    JNI.load_native_method "Java_sun_misc_Unsafe_getFloat__L#{Object.jni_name}_2J".to_sym, [:pointer, :long, :long, :int64], :float
+    JNI.load_native_method "Java_sun_misc_Unsafe_getFloat__L#{Object.jni_package_name}_Object_2J".to_sym, [:pointer, :long, :long, :int64], :float
     typesig { [Object, ::Java::Long] }
     # @see #getInt(Object, long)
     def get_float(o, offset)
-      JNI.call_native_method("Java_sun_misc_Unsafe_getFloat__L#{Object.jni_name}_2J".to_sym, JNI.env, self.jni_id, o.jni_id, offset.to_int)
+      JNI.call_native_method("Java_sun_misc_Unsafe_getFloat__L#{Object.jni_package_name}_Object_2J".to_sym, JNI.env, self.jni_id, o.jni_id, offset.to_int)
     end
     
-    JNI.load_native_method "Java_sun_misc_Unsafe_putFloat__L#{Object.jni_name}_2JXfloatX".to_sym, [:pointer, :long, :long, :int64, :float], :void
+    JNI.load_native_method "Java_sun_misc_Unsafe_putFloat__L#{Object.jni_package_name}_Object_2JXfloatX".to_sym, [:pointer, :long, :long, :int64, :float], :void
     typesig { [Object, ::Java::Long, ::Java::Float] }
     # @see #putInt(Object, int, int)
     def put_float(o, offset, x)
-      JNI.call_native_method("Java_sun_misc_Unsafe_putFloat__L#{Object.jni_name}_2JXfloatX".to_sym, JNI.env, self.jni_id, o.jni_id, offset.to_int, x)
+      JNI.call_native_method("Java_sun_misc_Unsafe_putFloat__L#{Object.jni_package_name}_Object_2JXfloatX".to_sym, JNI.env, self.jni_id, o.jni_id, offset.to_int, x)
     end
     
-    JNI.load_native_method "Java_sun_misc_Unsafe_getDouble__L#{Object.jni_name}_2J".to_sym, [:pointer, :long, :long, :int64], :double
+    JNI.load_native_method "Java_sun_misc_Unsafe_getDouble__L#{Object.jni_package_name}_Object_2J".to_sym, [:pointer, :long, :long, :int64], :double
     typesig { [Object, ::Java::Long] }
     # @see #getInt(Object, long)
     def get_double(o, offset)
-      JNI.call_native_method("Java_sun_misc_Unsafe_getDouble__L#{Object.jni_name}_2J".to_sym, JNI.env, self.jni_id, o.jni_id, offset.to_int)
+      JNI.call_native_method("Java_sun_misc_Unsafe_getDouble__L#{Object.jni_package_name}_Object_2J".to_sym, JNI.env, self.jni_id, o.jni_id, offset.to_int)
     end
     
-    JNI.load_native_method "Java_sun_misc_Unsafe_putDouble__L#{Object.jni_name}_2JXdoubleX".to_sym, [:pointer, :long, :long, :int64, :double], :void
+    JNI.load_native_method "Java_sun_misc_Unsafe_putDouble__L#{Object.jni_package_name}_Object_2JXdoubleX".to_sym, [:pointer, :long, :long, :int64, :double], :void
     typesig { [Object, ::Java::Long, ::Java::Double] }
     # @see #putInt(Object, int, int)
     def put_double(o, offset, x)
-      JNI.call_native_method("Java_sun_misc_Unsafe_putDouble__L#{Object.jni_name}_2JXdoubleX".to_sym, JNI.env, self.jni_id, o.jni_id, offset.to_int, x)
+      JNI.call_native_method("Java_sun_misc_Unsafe_putDouble__L#{Object.jni_package_name}_Object_2JXdoubleX".to_sym, JNI.env, self.jni_id, o.jni_id, offset.to_int, x)
     end
     
     typesig { [Object, ::Java::Int] }
@@ -820,20 +820,20 @@ module Sun::Misc
       JNI.call_native_method(:Java_sun_misc_Unsafe_pageSize, JNI.env, self.jni_id)
     end
     
-    JNI.load_native_method "Java_sun_misc_Unsafe_defineClass__L#{String.jni_name}_2_3BIIL#{ClassLoader.jni_name}_2L#{ProtectionDomain.jni_name}_2".to_sym, [:pointer, :long, :long, :long, :int32, :int32, :long, :long], :long
+    JNI.load_native_method "Java_sun_misc_Unsafe_defineClass__L#{String.jni_package_name}_String_2_3BIIL#{ClassLoader.jni_package_name}_ClassLoader_2L#{ProtectionDomain.jni_package_name}_ProtectionDomain_2".to_sym, [:pointer, :long, :long, :long, :int32, :int32, :long, :long], :long
     typesig { [String, Array.typed(::Java::Byte), ::Java::Int, ::Java::Int, ClassLoader, ProtectionDomain] }
     # / random trusted operations from JNI:
     # 
     # Tell the VM to define a class, without security checks.  By default, the
     # class loader and protection domain come from the caller's class.
     def define_class(name, b, off, len, loader, protection_domain)
-      JNI.call_native_method("Java_sun_misc_Unsafe_defineClass__L#{String.jni_name}_2_3BIIL#{ClassLoader.jni_name}_2L#{ProtectionDomain.jni_name}_2".to_sym, JNI.env, self.jni_id, name.jni_id, b.jni_id, off.to_int, len.to_int, loader.jni_id, protection_domain.jni_id)
+      JNI.call_native_method("Java_sun_misc_Unsafe_defineClass__L#{String.jni_package_name}_String_2_3BIIL#{ClassLoader.jni_package_name}_ClassLoader_2L#{ProtectionDomain.jni_package_name}_ProtectionDomain_2".to_sym, JNI.env, self.jni_id, name.jni_id, b.jni_id, off.to_int, len.to_int, loader.jni_id, protection_domain.jni_id)
     end
     
-    JNI.load_native_method "Java_sun_misc_Unsafe_defineClass__L#{String.jni_name}_2_3BII".to_sym, [:pointer, :long, :long, :long, :int32, :int32], :long
+    JNI.load_native_method "Java_sun_misc_Unsafe_defineClass__L#{String.jni_package_name}_String_2_3BII".to_sym, [:pointer, :long, :long, :long, :int32, :int32], :long
     typesig { [String, Array.typed(::Java::Byte), ::Java::Int, ::Java::Int] }
     def define_class(name, b, off, len)
-      JNI.call_native_method("Java_sun_misc_Unsafe_defineClass__L#{String.jni_name}_2_3BII".to_sym, JNI.env, self.jni_id, name.jni_id, b.jni_id, off.to_int, len.to_int)
+      JNI.call_native_method("Java_sun_misc_Unsafe_defineClass__L#{String.jni_package_name}_String_2_3BII".to_sym, JNI.env, self.jni_id, name.jni_id, b.jni_id, off.to_int, len.to_int)
     end
     
     JNI.load_native_method :Java_sun_misc_Unsafe_allocateInstance, [:pointer, :long, :long], :long

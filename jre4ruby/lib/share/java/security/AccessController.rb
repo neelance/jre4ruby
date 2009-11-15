@@ -244,7 +244,7 @@ module Java::Security
     end
     
     class_module.module_eval {
-      JNI.load_native_method "Java_java_security_AccessController_doPrivileged__L#{PrivilegedAction.jni_name}_2".to_sym, [:pointer, :long, :long], :long
+      JNI.load_native_method "Java_java_security_AccessController_doPrivileged__L#{PrivilegedAction.jni_package_name}_PrivilegedAction_2".to_sym, [:pointer, :long, :long], :long
       typesig { [PrivilegedAction] }
       # Performs the specified <code>PrivilegedAction</code> with privileges
       # enabled. The action is performed with <i>all</i> of the permissions
@@ -267,7 +267,7 @@ module Java::Security
       # @see #doPrivilegedWithCombiner(PrivilegedAction)
       # @see java.security.DomainCombiner
       def do_privileged(action)
-        JNI.call_native_method("Java_java_security_AccessController_doPrivileged__L#{PrivilegedAction.jni_name}_2".to_sym, JNI.env, self.jni_id, action.jni_id)
+        JNI.call_native_method("Java_java_security_AccessController_doPrivileged__L#{PrivilegedAction.jni_package_name}_PrivilegedAction_2".to_sym, JNI.env, self.jni_id, action.jni_id)
       end
       
       typesig { [PrivilegedAction] }
@@ -300,7 +300,7 @@ module Java::Security
         return AccessController.do_privileged(action, preserve_combiner(dc))
       end
       
-      JNI.load_native_method "Java_java_security_AccessController_doPrivileged__L#{PrivilegedAction.jni_name}_2L#{AccessControlContext.jni_name}_2".to_sym, [:pointer, :long, :long, :long], :long
+      JNI.load_native_method "Java_java_security_AccessController_doPrivileged__L#{PrivilegedAction.jni_package_name}_PrivilegedAction_2L#{AccessControlContext.jni_package_name}_AccessControlContext_2".to_sym, [:pointer, :long, :long, :long], :long
       typesig { [PrivilegedAction, AccessControlContext] }
       # Performs the specified <code>PrivilegedAction</code> with privileges
       # enabled and restricted by the specified
@@ -328,10 +328,10 @@ module Java::Security
       # @see #doPrivileged(PrivilegedAction)
       # @see #doPrivileged(PrivilegedExceptionAction,AccessControlContext)
       def do_privileged(action, context)
-        JNI.call_native_method("Java_java_security_AccessController_doPrivileged__L#{PrivilegedAction.jni_name}_2L#{AccessControlContext.jni_name}_2".to_sym, JNI.env, self.jni_id, action.jni_id, context.jni_id)
+        JNI.call_native_method("Java_java_security_AccessController_doPrivileged__L#{PrivilegedAction.jni_package_name}_PrivilegedAction_2L#{AccessControlContext.jni_package_name}_AccessControlContext_2".to_sym, JNI.env, self.jni_id, action.jni_id, context.jni_id)
       end
       
-      JNI.load_native_method "Java_java_security_AccessController_doPrivileged__L#{PrivilegedExceptionAction.jni_name}_2".to_sym, [:pointer, :long, :long], :long
+      JNI.load_native_method "Java_java_security_AccessController_doPrivileged__L#{PrivilegedExceptionAction.jni_package_name}_PrivilegedExceptionAction_2".to_sym, [:pointer, :long, :long], :long
       typesig { [PrivilegedExceptionAction] }
       # Performs the specified <code>PrivilegedExceptionAction</code> with
       # privileges enabled.  The action is performed with <i>all</i> of the
@@ -356,7 +356,7 @@ module Java::Security
       # @see #doPrivilegedWithCombiner(PrivilegedExceptionAction)
       # @see java.security.DomainCombiner
       def do_privileged(action)
-        JNI.call_native_method("Java_java_security_AccessController_doPrivileged__L#{PrivilegedExceptionAction.jni_name}_2".to_sym, JNI.env, self.jni_id, action.jni_id)
+        JNI.call_native_method("Java_java_security_AccessController_doPrivileged__L#{PrivilegedExceptionAction.jni_package_name}_PrivilegedExceptionAction_2".to_sym, JNI.env, self.jni_id, action.jni_id)
       end
       
       typesig { [PrivilegedExceptionAction] }
@@ -424,7 +424,7 @@ module Java::Security
         return AccessControlContext.new(combiner.combine(pds, nil), combiner)
       end
       
-      JNI.load_native_method "Java_java_security_AccessController_doPrivileged__L#{PrivilegedExceptionAction.jni_name}_2L#{AccessControlContext.jni_name}_2".to_sym, [:pointer, :long, :long, :long], :long
+      JNI.load_native_method "Java_java_security_AccessController_doPrivileged__L#{PrivilegedExceptionAction.jni_package_name}_PrivilegedExceptionAction_2L#{AccessControlContext.jni_package_name}_AccessControlContext_2".to_sym, [:pointer, :long, :long, :long], :long
       typesig { [PrivilegedExceptionAction, AccessControlContext] }
       # Performs the specified <code>PrivilegedExceptionAction</code> with
       # privileges enabled and restricted by the specified
@@ -454,7 +454,7 @@ module Java::Security
       # @see #doPrivileged(PrivilegedAction)
       # @see #doPrivileged(PrivilegedExceptionAction,AccessControlContext)
       def do_privileged(action, context)
-        JNI.call_native_method("Java_java_security_AccessController_doPrivileged__L#{PrivilegedExceptionAction.jni_name}_2L#{AccessControlContext.jni_name}_2".to_sym, JNI.env, self.jni_id, action.jni_id, context.jni_id)
+        JNI.call_native_method("Java_java_security_AccessController_doPrivileged__L#{PrivilegedExceptionAction.jni_package_name}_PrivilegedExceptionAction_2L#{AccessControlContext.jni_package_name}_AccessControlContext_2".to_sym, JNI.env, self.jni_id, action.jni_id, context.jni_id)
       end
       
       JNI.load_native_method :Java_java_security_AccessController_getStackAccessControlContext, [:pointer, :long], :long
