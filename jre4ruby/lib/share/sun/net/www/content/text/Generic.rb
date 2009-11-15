@@ -34,7 +34,7 @@ module Sun::Net::Www::Content::Text
   end
   
   # nothing to do since Generic is identical to plain!
-  class Generic < Plain
+  class Generic < GenericImports.const_get :Plain
     include_class_members GenericImports
     
     typesig { [] }

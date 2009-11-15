@@ -210,7 +210,7 @@ module Java::Net
         private
         alias_method :initialize_checked_addresses, :initialize
       end
-      return CheckedAddresses.new
+      return checked_addresses_class.new
     end
     
     typesig { [] }
@@ -285,7 +285,7 @@ module Java::Net
         private
         alias_method :initialize_sub_ifs, :initialize
       end
-      return SubIFs.new
+      return sub_ifs_class.new
     end
     
     typesig { [] }
