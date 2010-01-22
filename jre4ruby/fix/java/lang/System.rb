@@ -38,6 +38,7 @@ class Java::Lang::System
       # * <dt>user.dir             <dd>User's current working directory
       set_property "java.home", File.expand_path("../../../", File.dirname(__FILE__))
       set_property "os.name", RUBY_PLATFORM.split("-").last
+      set_property "os.arch", ""
       set_property "file.separator", File::SEPARATOR
       set_property "path.separator", File::PATH_SEPARATOR
       set_property "line.separator", "\n"

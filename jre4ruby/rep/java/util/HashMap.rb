@@ -22,4 +22,18 @@ class Java::Util::HashMap < Hash
   alias_method :contains, :has_value?
   alias_method :contains_key, :has_key?
   alias_method :contains_value, :has_value?
+  alias_method :is_empty, :empty?
+
+  alias_method :array_values, :values
+  def values
+    ArrayList.new array_values
+  end
+
+  def key_set
+    ArrayList.new keys
+  end
+  
+  def entry_set
+    ArrayList.new values
+  end
 end
