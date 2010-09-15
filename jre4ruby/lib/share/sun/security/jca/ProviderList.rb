@@ -74,7 +74,7 @@ module Sun::Security::Jca
       const_set_lazy(:EMPTY_PROVIDER) { # dummy provider object to use during initialization
       # used to avoid explicit null checks in various places
       Class.new(Provider.class == Class ? Provider : Object) do
-        extend LocalClass
+        local_class_in ProviderList
         include_class_members ProviderList
         include Provider if Provider.class == Module
         
@@ -100,7 +100,7 @@ module Sun::Security::Jca
       def from_security_properties
         return AccessController.do_privileged(# doPrivileged() because of Security.getProperty()
         Class.new(PrivilegedAction.class == Class ? PrivilegedAction : Object) do
-          extend LocalClass
+          local_class_in ProviderList
           include_class_members ProviderList
           include PrivilegedAction if PrivilegedAction.class == Module
           
@@ -201,7 +201,7 @@ module Sun::Security::Jca
       @configs = nil
       @all_loaded = false
       @user_list = Class.new(AbstractList.class == Class ? AbstractList : Object) do
-        extend LocalClass
+        local_class_in ProviderList
         include_class_members ProviderList
         include AbstractList if AbstractList.class == Module
         
@@ -233,7 +233,7 @@ module Sun::Security::Jca
       @configs = nil
       @all_loaded = false
       @user_list = Class.new(AbstractList.class == Class ? AbstractList : Object) do
-        extend LocalClass
+        local_class_in ProviderList
         include_class_members ProviderList
         include AbstractList if AbstractList.class == Module
         
@@ -474,7 +474,7 @@ module Sun::Security::Jca
       # order to delay Provider initialization and lookup.
       # Not thread safe.
       const_set_lazy(:ServiceList) { Class.new(AbstractList) do
-        extend LocalClass
+        local_class_in ProviderList
         include_class_members ProviderList
         
         # type and algorithm for simple lookup
@@ -630,7 +630,7 @@ module Sun::Security::Jca
         typesig { [] }
         def iterator
           return Class.new(self.class::Iterator.class == Class ? self.class::Iterator : Object) do
-            extend LocalClass
+            local_class_in ServiceList
             include_class_members ServiceList
             include class_self::Iterator if class_self::Iterator.class == Module
             

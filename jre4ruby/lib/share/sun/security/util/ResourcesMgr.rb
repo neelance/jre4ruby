@@ -63,7 +63,7 @@ module Sun::Security::Util
         if ((self.attr_bundle).nil?)
           self.attr_bundle = Java::Security::AccessController.do_privileged(# only load if/when needed
           Class.new(Java::Security::PrivilegedAction.class == Class ? Java::Security::PrivilegedAction : Object) do
-            extend LocalClass
+            local_class_in ResourcesMgr
             include_class_members ResourcesMgr
             include Java::Security::PrivilegedAction if Java::Security::PrivilegedAction.class == Module
             
@@ -89,7 +89,7 @@ module Sun::Security::Util
         if ((self.attr_alt_bundle).nil?)
           self.attr_alt_bundle = Java::Security::AccessController.do_privileged(# only load if/when needed
           Class.new(Java::Security::PrivilegedAction.class == Class ? Java::Security::PrivilegedAction : Object) do
-            extend LocalClass
+            local_class_in ResourcesMgr
             include_class_members ResourcesMgr
             include Java::Security::PrivilegedAction if Java::Security::PrivilegedAction.class == Module
             

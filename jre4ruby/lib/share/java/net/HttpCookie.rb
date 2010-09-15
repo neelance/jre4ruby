@@ -881,7 +881,7 @@ module Java::Net
       when_class_loaded do
         self.attr_assignors = Java::Util::HashMap.new
         self.attr_assignors.put("comment", Class.new(CookieAttributeAssignor.class == Class ? CookieAttributeAssignor : Object) do
-          extend LocalClass
+          local_class_in HttpCookie
           include_class_members HttpCookie
           include CookieAttributeAssignor if CookieAttributeAssignor.class == Module
           
@@ -901,7 +901,7 @@ module Java::Net
           alias_method :initialize_anonymous, :initialize
         end.new_local(self))
         self.attr_assignors.put("commenturl", Class.new(CookieAttributeAssignor.class == Class ? CookieAttributeAssignor : Object) do
-          extend LocalClass
+          local_class_in HttpCookie
           include_class_members HttpCookie
           include CookieAttributeAssignor if CookieAttributeAssignor.class == Module
           
@@ -921,7 +921,7 @@ module Java::Net
           alias_method :initialize_anonymous, :initialize
         end.new_local(self))
         self.attr_assignors.put("discard", Class.new(CookieAttributeAssignor.class == Class ? CookieAttributeAssignor : Object) do
-          extend LocalClass
+          local_class_in HttpCookie
           include_class_members HttpCookie
           include CookieAttributeAssignor if CookieAttributeAssignor.class == Module
           
@@ -939,7 +939,7 @@ module Java::Net
           alias_method :initialize_anonymous, :initialize
         end.new_local(self))
         self.attr_assignors.put("domain", Class.new(CookieAttributeAssignor.class == Class ? CookieAttributeAssignor : Object) do
-          extend LocalClass
+          local_class_in HttpCookie
           include_class_members HttpCookie
           include CookieAttributeAssignor if CookieAttributeAssignor.class == Module
           
@@ -959,7 +959,7 @@ module Java::Net
           alias_method :initialize_anonymous, :initialize
         end.new_local(self))
         self.attr_assignors.put("max-age", Class.new(CookieAttributeAssignor.class == Class ? CookieAttributeAssignor : Object) do
-          extend LocalClass
+          local_class_in HttpCookie
           include_class_members HttpCookie
           include CookieAttributeAssignor if CookieAttributeAssignor.class == Module
           
@@ -984,7 +984,7 @@ module Java::Net
           alias_method :initialize_anonymous, :initialize
         end.new_local(self))
         self.attr_assignors.put("path", Class.new(CookieAttributeAssignor.class == Class ? CookieAttributeAssignor : Object) do
-          extend LocalClass
+          local_class_in HttpCookie
           include_class_members HttpCookie
           include CookieAttributeAssignor if CookieAttributeAssignor.class == Module
           
@@ -1004,7 +1004,7 @@ module Java::Net
           alias_method :initialize_anonymous, :initialize
         end.new_local(self))
         self.attr_assignors.put("port", Class.new(CookieAttributeAssignor.class == Class ? CookieAttributeAssignor : Object) do
-          extend LocalClass
+          local_class_in HttpCookie
           include_class_members HttpCookie
           include CookieAttributeAssignor if CookieAttributeAssignor.class == Module
           
@@ -1024,7 +1024,7 @@ module Java::Net
           alias_method :initialize_anonymous, :initialize
         end.new_local(self))
         self.attr_assignors.put("secure", Class.new(CookieAttributeAssignor.class == Class ? CookieAttributeAssignor : Object) do
-          extend LocalClass
+          local_class_in HttpCookie
           include_class_members HttpCookie
           include CookieAttributeAssignor if CookieAttributeAssignor.class == Module
           
@@ -1042,7 +1042,7 @@ module Java::Net
           alias_method :initialize_anonymous, :initialize
         end.new_local(self))
         self.attr_assignors.put("version", Class.new(CookieAttributeAssignor.class == Class ? CookieAttributeAssignor : Object) do
-          extend LocalClass
+          local_class_in HttpCookie
           include_class_members HttpCookie
           include CookieAttributeAssignor if CookieAttributeAssignor.class == Module
           
@@ -1065,7 +1065,7 @@ module Java::Net
           alias_method :initialize_anonymous, :initialize
         end.new_local(self))
         self.attr_assignors.put("expires", Class.new(CookieAttributeAssignor.class == Class ? CookieAttributeAssignor : Object) do
-          extend LocalClass
+          local_class_in HttpCookie
           include_class_members HttpCookie
           include CookieAttributeAssignor if CookieAttributeAssignor.class == Module
           

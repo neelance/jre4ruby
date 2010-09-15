@@ -531,7 +531,7 @@ module Sun::Security::Krb5
         file_name = get_file_name
         if (!(file_name == ""))
           br = BufferedReader.new(InputStreamReader.new(Java::Security::AccessController.do_privileged(Class.new(Java::Security::PrivilegedExceptionAction.class == Class ? Java::Security::PrivilegedExceptionAction : Object) do
-            extend LocalClass
+            local_class_in Config
             include_class_members Config
             include Java::Security::PrivilegedExceptionAction if Java::Security::PrivilegedExceptionAction.class == Module
             

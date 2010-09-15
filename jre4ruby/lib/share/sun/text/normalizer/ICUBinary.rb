@@ -150,7 +150,7 @@ module Sun::Text::Normalizer
           raise IOException.new("Internal Error: Header size error")
         end
         input.skip_bytes(headersize - readcount)
-        if (!(bigendian).equal?(BIG_ENDIAN_) || !(charset).equal?(CHAR_SET_) || !(charsize).equal?(CHAR_SIZE_) || !(Arrays == data_format_idexpected) || (!(authenticate).nil? && !authenticate.is_data_version_acceptable(data_version)))
+        if (!(bigendian).equal?(BIG_ENDIAN_) || !(charset).equal?(CHAR_SET_) || !(charsize).equal?(CHAR_SIZE_) || !Arrays.==(data_format_idexpected, data_format_id) || (!(authenticate).nil? && !authenticate.is_data_version_acceptable(data_version)))
           raise IOException.new(HEADER_AUTHENTICATION_FAILED_)
         end
         return unicode_version

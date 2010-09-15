@@ -381,7 +381,7 @@ module Java::Net
             self.attr_file_name_map_loaded = true
           end
           return Class.new(FileNameMap.class == Class ? FileNameMap : Object) do
-            extend LocalClass
+            local_class_in URLConnection
             include_class_members URLConnection
             include FileNameMap if FileNameMap.class == Module
             

@@ -165,7 +165,7 @@ module Java::Net
       synchronized(self) do
         begin
           AccessController.do_privileged(Class.new(Java::Security::PrivilegedExceptionAction.class == Class ? Java::Security::PrivilegedExceptionAction : Object) do
-            extend LocalClass
+            local_class_in SocksSocketImpl
             include_class_members SocksSocketImpl
             include Java::Security::PrivilegedExceptionAction if Java::Security::PrivilegedExceptionAction.class == Module
             
@@ -231,7 +231,7 @@ module Java::Net
         password = nil
         addr = InetAddress.get_by_name(@server)
         pw = Java::Security::AccessController.do_privileged(Class.new(Java::Security::PrivilegedAction.class == Class ? Java::Security::PrivilegedAction : Object) do
-          extend LocalClass
+          local_class_in SocksSocketImpl
           include_class_members SocksSocketImpl
           include Java::Security::PrivilegedAction if Java::Security::PrivilegedAction.class == Module
           
@@ -255,7 +255,7 @@ module Java::Net
           prefs = Preferences.user_root.node("/java/net/socks")
           begin
             user_name = RJava.cast_to_string(AccessController.do_privileged(Class.new(Java::Security::PrivilegedExceptionAction.class == Class ? Java::Security::PrivilegedExceptionAction : Object) do
-              extend LocalClass
+              local_class_in SocksSocketImpl
               include_class_members SocksSocketImpl
               include Java::Security::PrivilegedExceptionAction if Java::Security::PrivilegedExceptionAction.class == Module
               
@@ -278,7 +278,7 @@ module Java::Net
           if (!(user_name).nil?)
             begin
               password = RJava.cast_to_string(AccessController.do_privileged(Class.new(Java::Security::PrivilegedExceptionAction.class == Class ? Java::Security::PrivilegedExceptionAction : Object) do
-                extend LocalClass
+                local_class_in SocksSocketImpl
                 include_class_members SocksSocketImpl
                 include Java::Security::PrivilegedExceptionAction if Java::Security::PrivilegedExceptionAction.class == Module
                 
@@ -469,7 +469,7 @@ module Java::Net
         # server is not null only when the socket was created with a
         # specified proxy in which case it does bypass the ProxySelector
         Class.new(Java::Security::PrivilegedAction.class == Class ? Java::Security::PrivilegedAction : Object) do
-          extend LocalClass
+          local_class_in SocksSocketImpl
           include_class_members SocksSocketImpl
           include Java::Security::PrivilegedAction if Java::Security::PrivilegedAction.class == Module
           
@@ -776,7 +776,7 @@ module Java::Net
           # server is not null only when the socket was created with a
           # specified proxy in which case it does bypass the ProxySelector
           Class.new(Java::Security::PrivilegedAction.class == Class ? Java::Security::PrivilegedAction : Object) do
-            extend LocalClass
+            local_class_in SocksSocketImpl
             include_class_members SocksSocketImpl
             include Java::Security::PrivilegedAction if Java::Security::PrivilegedAction.class == Module
             
@@ -834,7 +834,7 @@ module Java::Net
             # Connects to the SOCKS server
             begin
               AccessController.do_privileged(Class.new(PrivilegedExceptionAction.class == Class ? PrivilegedExceptionAction : Object) do
-                extend LocalClass
+                local_class_in SocksSocketImpl
                 include_class_members SocksSocketImpl
                 include PrivilegedExceptionAction if PrivilegedExceptionAction.class == Module
                 
@@ -873,7 +873,7 @@ module Java::Net
         else
           begin
             AccessController.do_privileged(Class.new(PrivilegedExceptionAction.class == Class ? PrivilegedExceptionAction : Object) do
-              extend LocalClass
+              local_class_in SocksSocketImpl
               include_class_members SocksSocketImpl
               include PrivilegedExceptionAction if PrivilegedExceptionAction.class == Module
               

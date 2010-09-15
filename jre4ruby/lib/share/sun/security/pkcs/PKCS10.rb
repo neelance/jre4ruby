@@ -304,7 +304,7 @@ module Sun::Security::Pkcs
       if ((other_encoded).nil?)
         return false
       end
-      return (Java::Util::Arrays == @encoded)
+      return Java::Util::Arrays.==(@encoded, other_encoded)
     end
     
     typesig { [] }

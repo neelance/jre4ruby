@@ -223,7 +223,7 @@ module Sun::Nio::Ch
     
     class_module.module_eval {
       const_set_lazy(:SocketInputStream) { Class.new(ChannelInputStream) do
-        extend LocalClass
+        local_class_in SocketAdaptor
         include_class_members SocketAdaptor
         
         typesig { [] }
@@ -308,7 +308,7 @@ module Sun::Nio::Ch
       if ((@socket_input_stream).nil?)
         begin
           @socket_input_stream = AccessController.do_privileged(Class.new(PrivilegedExceptionAction.class == Class ? PrivilegedExceptionAction : Object) do
-            extend LocalClass
+            local_class_in SocketAdaptor
             include_class_members SocketAdaptor
             include PrivilegedExceptionAction if PrivilegedExceptionAction.class == Module
             
@@ -346,7 +346,7 @@ module Sun::Nio::Ch
       os = nil
       begin
         os = AccessController.do_privileged(Class.new(PrivilegedExceptionAction.class == Class ? PrivilegedExceptionAction : Object) do
-          extend LocalClass
+          local_class_in SocketAdaptor
           include_class_members SocketAdaptor
           include PrivilegedExceptionAction if PrivilegedExceptionAction.class == Module
           

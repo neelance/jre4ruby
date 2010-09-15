@@ -98,7 +98,7 @@ module Sun::Security::Provider
       
       when_class_loaded do
         const_set :Md4Provider, Class.new(Provider.class == Class ? Provider : Object) do
-          extend LocalClass
+          local_class_in MD4
           include_class_members MD4
           include Provider if Provider.class == Module
           
@@ -111,7 +111,7 @@ module Sun::Security::Provider
           alias_method :initialize_anonymous, :initialize
         end.new_local(self, "MD4Provider", 1.0, "MD4 MessageDigest")
         AccessController.do_privileged(Class.new(PrivilegedAction.class == Class ? PrivilegedAction : Object) do
-          extend LocalClass
+          local_class_in MD4
           include_class_members MD4
           include PrivilegedAction if PrivilegedAction.class == Module
           

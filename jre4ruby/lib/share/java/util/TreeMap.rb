@@ -1000,7 +1000,7 @@ module Java::Util
     class_module.module_eval {
       # View class support
       const_set_lazy(:Values) { Class.new(AbstractCollection) do
-        extend LocalClass
+        local_class_in TreeMap
         include_class_members TreeMap
         
         typesig { [] }
@@ -1046,7 +1046,7 @@ module Java::Util
       end }
       
       const_set_lazy(:EntrySet) { Class.new(AbstractSet) do
-        extend LocalClass
+        local_class_in TreeMap
         include_class_members TreeMap
         
         typesig { [] }
@@ -1268,7 +1268,7 @@ module Java::Util
       
       # Base class for TreeMap Iterators
       const_set_lazy(:PrivateEntryIterator) { Class.new do
-        extend LocalClass
+        local_class_in TreeMap
         include_class_members TreeMap
         include Iterator
         
@@ -1355,7 +1355,7 @@ module Java::Util
       end }
       
       const_set_lazy(:EntryIterator) { Class.new(PrivateEntryIterator) do
-        extend LocalClass
+        local_class_in TreeMap
         include_class_members TreeMap
         
         typesig { [class_self::Entry] }
@@ -1373,7 +1373,7 @@ module Java::Util
       end }
       
       const_set_lazy(:ValueIterator) { Class.new(PrivateEntryIterator) do
-        extend LocalClass
+        local_class_in TreeMap
         include_class_members TreeMap
         
         typesig { [class_self::Entry] }
@@ -1391,7 +1391,7 @@ module Java::Util
       end }
       
       const_set_lazy(:KeyIterator) { Class.new(PrivateEntryIterator) do
-        extend LocalClass
+        local_class_in TreeMap
         include_class_members TreeMap
         
         typesig { [class_self::Entry] }
@@ -1409,7 +1409,7 @@ module Java::Util
       end }
       
       const_set_lazy(:DescendingKeyIterator) { Class.new(PrivateEntryIterator) do
-        extend LocalClass
+        local_class_in TreeMap
         include_class_members TreeMap
         
         typesig { [class_self::Entry] }
@@ -1879,7 +1879,7 @@ module Java::Util
         class_module.module_eval {
           # View classes
           const_set_lazy(:EntrySetView) { Class.new(class_self::AbstractSet) do
-            extend LocalClass
+            local_class_in NavigableSubMap
             include_class_members NavigableSubMap
             
             attr_accessor :size
@@ -1963,7 +1963,7 @@ module Java::Util
           
           # Iterators for SubMaps
           const_set_lazy(:SubMapIterator) { Class.new do
-            extend LocalClass
+            local_class_in NavigableSubMap
             include_class_members NavigableSubMap
             include class_self::Iterator
             
@@ -2071,7 +2071,7 @@ module Java::Util
           end }
           
           const_set_lazy(:SubMapEntryIterator) { Class.new(class_self::SubMapIterator) do
-            extend LocalClass
+            local_class_in NavigableSubMap
             include_class_members NavigableSubMap
             
             typesig { [class_self::TreeMap::Entry, class_self::TreeMap::Entry] }
@@ -2094,7 +2094,7 @@ module Java::Util
           end }
           
           const_set_lazy(:SubMapKeyIterator) { Class.new(class_self::SubMapIterator) do
-            extend LocalClass
+            local_class_in NavigableSubMap
             include_class_members NavigableSubMap
             
             typesig { [class_self::TreeMap::Entry, class_self::TreeMap::Entry] }
@@ -2117,7 +2117,7 @@ module Java::Util
           end }
           
           const_set_lazy(:DescendingSubMapEntryIterator) { Class.new(class_self::SubMapIterator) do
-            extend LocalClass
+            local_class_in NavigableSubMap
             include_class_members NavigableSubMap
             
             typesig { [class_self::TreeMap::Entry, class_self::TreeMap::Entry] }
@@ -2140,7 +2140,7 @@ module Java::Util
           end }
           
           const_set_lazy(:DescendingSubMapKeyIterator) { Class.new(class_self::SubMapIterator) do
-            extend LocalClass
+            local_class_in NavigableSubMap
             include_class_members NavigableSubMap
             
             typesig { [class_self::TreeMap::Entry, class_self::TreeMap::Entry] }
@@ -2231,7 +2231,7 @@ module Java::Util
         
         class_module.module_eval {
           const_set_lazy(:AscendingEntrySetView) { Class.new(class_self::EntrySetView) do
-            extend LocalClass
+            local_class_in AscendingSubMap
             include_class_members AscendingSubMap
             
             typesig { [] }
@@ -2361,7 +2361,7 @@ module Java::Util
         
         class_module.module_eval {
           const_set_lazy(:DescendingEntrySetView) { Class.new(class_self::EntrySetView) do
-            extend LocalClass
+            local_class_in DescendingSubMap
             include_class_members DescendingSubMap
             
             typesig { [] }
@@ -2427,7 +2427,7 @@ module Java::Util
       # 
       # @serial include
       const_set_lazy(:SubMap) { Class.new(AbstractMap) do
-        extend LocalClass
+        local_class_in TreeMap
         include_class_members TreeMap
         overload_protected {
           include SortedMap

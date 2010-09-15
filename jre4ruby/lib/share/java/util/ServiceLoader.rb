@@ -342,7 +342,7 @@ module Java::Util
     class_module.module_eval {
       # Private inner class implementing fully-lazy provider lookup
       const_set_lazy(:LazyIterator) { Class.new do
-        extend LocalClass
+        local_class_in ServiceLoader
         include_class_members ServiceLoader
         include Iterator
         
@@ -484,7 +484,7 @@ module Java::Util
     # service
     def iterator
       return Class.new(Iterator.class == Class ? Iterator : Object) do
-        extend LocalClass
+        local_class_in ServiceLoader
         include_class_members ServiceLoader
         include Iterator if Iterator.class == Module
         

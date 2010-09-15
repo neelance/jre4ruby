@@ -467,7 +467,7 @@ module Sun::Net::Www::Protocol::Http
       # privileged request password authentication
       def privileged_request_password_authentication(host, addr, port, protocol, prompt, scheme, url, auth_type)
         return Java::Security::AccessController.do_privileged(Class.new(Java::Security::PrivilegedAction.class == Class ? Java::Security::PrivilegedAction : Object) do
-          extend LocalClass
+          local_class_in HttpURLConnection
           include_class_members HttpURLConnection
           include Java::Security::PrivilegedAction if Java::Security::PrivilegedAction.class == Module
           
@@ -775,7 +775,7 @@ module Sun::Net::Www::Protocol::Http
       @handler = handler
       @inst_proxy = p
       @cookie_handler = Java::Security::AccessController.do_privileged(Class.new(Java::Security::PrivilegedAction.class == Class ? Java::Security::PrivilegedAction : Object) do
-        extend LocalClass
+        local_class_in HttpURLConnection
         include_class_members HttpURLConnection
         include Java::Security::PrivilegedAction if Java::Security::PrivilegedAction.class == Module
         
@@ -793,7 +793,7 @@ module Sun::Net::Www::Protocol::Http
         alias_method :initialize_anonymous, :initialize
       end.new_local(self))
       @cache_handler = Java::Security::AccessController.do_privileged(Class.new(Java::Security::PrivilegedAction.class == Class ? Java::Security::PrivilegedAction : Object) do
-        extend LocalClass
+        local_class_in HttpURLConnection
         include_class_members HttpURLConnection
         include Java::Security::PrivilegedAction if Java::Security::PrivilegedAction.class == Module
         
@@ -877,7 +877,7 @@ module Sun::Net::Www::Protocol::Http
         # names like tachyon and tachyon.eng would compare different
         result = Array.typed(::Java::Boolean).new([false])
         Java::Security::AccessController.do_privileged(Class.new(Java::Security::PrivilegedAction.class == Class ? Java::Security::PrivilegedAction : Object) do
-          extend LocalClass
+          local_class_in HttpURLConnection
           include_class_members HttpURLConnection
           include Java::Security::PrivilegedAction if Java::Security::PrivilegedAction.class == Module
           
@@ -968,7 +968,7 @@ module Sun::Net::Www::Protocol::Http
           # 
           # Do we have to use a proxy?
           Class.new(Java::Security::PrivilegedAction.class == Class ? Java::Security::PrivilegedAction : Object) do
-            extend LocalClass
+            local_class_in HttpURLConnection
             include_class_members HttpURLConnection
             include Java::Security::PrivilegedAction if Java::Security::PrivilegedAction.class == Module
             
@@ -1490,7 +1490,7 @@ module Sun::Net::Www::Protocol::Http
         args = Array.typed(String).new(1) { nil }
         args[0] = original_exception.get_message
         chained_exception = Java::Security::AccessController.do_privileged(Class.new(Java::Security::PrivilegedExceptionAction.class == Class ? Java::Security::PrivilegedExceptionAction : Object) do
-          extend LocalClass
+          local_class_in HttpURLConnection
           include_class_members HttpURLConnection
           include Java::Security::PrivilegedExceptionAction if Java::Security::PrivilegedExceptionAction.class == Module
           
@@ -1720,7 +1720,7 @@ module Sun::Net::Www::Protocol::Http
             begin
               final_host = host
               addr = Java::Security::AccessController.do_privileged(Class.new(Java::Security::PrivilegedExceptionAction.class == Class ? Java::Security::PrivilegedExceptionAction : Object) do
-                extend LocalClass
+                local_class_in HttpURLConnection
                 include_class_members HttpURLConnection
                 include Java::Security::PrivilegedExceptionAction if Java::Security::PrivilegedExceptionAction.class == Module
                 
@@ -2460,7 +2460,7 @@ module Sun::Net::Www::Protocol::Http
       # so we can check authentication information that may have
       # arrived in a Trailer field and to write data to a cache
       const_set_lazy(:HttpInputStream) { Class.new(FilterInputStream) do
-        extend LocalClass
+        local_class_in HttpURLConnection
         include_class_members HttpURLConnection
         
         attr_accessor :cache_request
@@ -2698,7 +2698,7 @@ module Sun::Net::Www::Protocol::Http
       end }
       
       const_set_lazy(:StreamingOutputStream) { Class.new(FilterOutputStream) do
-        extend LocalClass
+        local_class_in HttpURLConnection
         include_class_members HttpURLConnection
         
         attr_accessor :expected

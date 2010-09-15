@@ -617,7 +617,7 @@ module Java::Util
           raise AssertError if not (!(tz).nil?)
           id = zone_id
           AccessController.do_privileged(Class.new(PrivilegedAction.class == Class ? PrivilegedAction : Object) do
-            extend LocalClass
+            local_class_in TimeZone
             include_class_members TimeZone
             include PrivilegedAction if PrivilegedAction.class == Module
             

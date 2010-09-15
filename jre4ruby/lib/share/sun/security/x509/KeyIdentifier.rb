@@ -150,7 +150,7 @@ module Sun::Security::X509
       if (!(other.is_a?(KeyIdentifier)))
         return false
       end
-      return (Java::Util::Arrays == @octet_string)
+      return Java::Util::Arrays.==(@octet_string, (other).get_identifier)
     end
     
     private

@@ -118,7 +118,7 @@ module Java::Util
     
     class_module.module_eval {
       const_set_lazy(:EnumSetIterator) { Class.new do
-        extend LocalClass
+        local_class_in JumboEnumSet
         include_class_members JumboEnumSet
         include Iterator
         
@@ -400,7 +400,7 @@ module Java::Util
       if (!(es.attr_element_type).equal?(self.attr_element_type))
         return (@size).equal?(0) && (es.attr_size).equal?(0)
       end
-      return (Arrays == es.attr_elements)
+      return Arrays.==(es.attr_elements, @elements)
     end
     
     typesig { [] }

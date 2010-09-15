@@ -96,7 +96,7 @@ module Sun::Net::Www
       
       when_class_loaded do
         Java::Security::AccessController.do_privileged(Class.new(Java::Security::PrivilegedAction.class == Class ? Java::Security::PrivilegedAction : Object) do
-          extend LocalClass
+          local_class_in MimeTable
           include_class_members MimeTable
           include Java::Security::PrivilegedAction if Java::Security::PrivilegedAction.class == Module
           
@@ -149,7 +149,7 @@ module Sun::Net::Www
       def get_default_table
         if ((self.attr_default_instance).nil?)
           Java::Security::AccessController.do_privileged(Class.new(Java::Security::PrivilegedAction.class == Class ? Java::Security::PrivilegedAction : Object) do
-            extend LocalClass
+            local_class_in MimeTable
             include_class_members MimeTable
             include Java::Security::PrivilegedAction if Java::Security::PrivilegedAction.class == Module
             

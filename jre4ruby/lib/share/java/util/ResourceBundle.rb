@@ -270,7 +270,7 @@ module Java::Util
       
       const_set_lazy(:NONEXISTENT_BUNDLE) { # constant indicating that no resource bundle exists
       Class.new(ResourceBundle.class == Class ? ResourceBundle : Object) do
-        extend LocalClass
+        local_class_in ResourceBundle
         include_class_members ResourceBundle
         include ResourceBundle if ResourceBundle.class == Module
         
@@ -484,7 +484,7 @@ module Java::Util
         
         class_module.module_eval {
           const_set_lazy(:INSTANCE) { AccessController.do_privileged(Class.new(class_self::PrivilegedAction.class == Class ? class_self::PrivilegedAction : Object) do
-            extend LocalClass
+            local_class_in RBClassLoader
             include_class_members RBClassLoader
             include class_self::PrivilegedAction if class_self::PrivilegedAction.class == Module
             
@@ -2477,7 +2477,7 @@ module Java::Util
               stream = nil
               begin
                 stream = AccessController.do_privileged(Class.new(self.class::PrivilegedExceptionAction.class == Class ? self.class::PrivilegedExceptionAction : Object) do
-                  extend LocalClass
+                  local_class_in Control
                   include_class_members Control
                   include class_self::PrivilegedExceptionAction if class_self::PrivilegedExceptionAction.class == Module
                   

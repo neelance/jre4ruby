@@ -82,7 +82,7 @@ module Sun::Net::Www::Protocol::Http
         oid = GSSUtil::GSS_KRB5_MECH_OID
       else
         pref = Java::Security::AccessController.do_privileged(Class.new(Java::Security::PrivilegedAction.class == Class ? Java::Security::PrivilegedAction : Object) do
-          extend LocalClass
+          local_class_in NegotiatorImpl
           include_class_members NegotiatorImpl
           include Java::Security::PrivilegedAction if Java::Security::PrivilegedAction.class == Module
           

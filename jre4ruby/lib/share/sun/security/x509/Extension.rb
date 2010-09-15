@@ -247,7 +247,7 @@ module Sun::Security::X509
       if (!(@extension_id == other_ext.attr_extension_id))
         return false
       end
-      return (Arrays == @extension_value)
+      return Arrays.==(@extension_value, other_ext.attr_extension_value)
     end
     
     private

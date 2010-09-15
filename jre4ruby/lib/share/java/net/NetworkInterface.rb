@@ -151,7 +151,7 @@ module Java::Net
     # bound to this network interface
     def get_inet_addresses
       checked_addresses_class = Class.new do
-        extend LocalClass
+        local_class_in NetworkInterface
         include_class_members NetworkInterface
         include Enumeration
         
@@ -253,7 +253,7 @@ module Java::Net
     # @since 1.6
     def get_sub_interfaces
       sub_ifs_class = Class.new do
-        extend LocalClass
+        local_class_in NetworkInterface
         include_class_members NetworkInterface
         include Enumeration
         
@@ -396,7 +396,7 @@ module Java::Net
           return nil
         end
         return Class.new(Enumeration.class == Class ? Enumeration : Object) do
-          extend LocalClass
+          local_class_in NetworkInterface
           include_class_members NetworkInterface
           include Enumeration if Enumeration.class == Module
           

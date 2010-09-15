@@ -183,7 +183,7 @@ module Sun::Net::Httpserver
     
     class_module.module_eval {
       const_set_lazy(:Parameters) { Class.new(HttpsParameters) do
-        extend LocalClass
+        local_class_in SSLStreams
         include_class_members SSLStreams
         
         attr_accessor :addr
@@ -278,7 +278,7 @@ module Sun::Net::Httpserver
     
     class_module.module_eval {
       const_set_lazy(:WrapperResult) { Class.new do
-        extend LocalClass
+        local_class_in SSLStreams
         include_class_members SSLStreams
         
         attr_accessor :result
@@ -426,7 +426,7 @@ module Sun::Net::Httpserver
       # will get an exception.  The overall result is returned.
       # It functions synchronously/blocking
       const_set_lazy(:EngineWrapper) { Class.new do
-        extend LocalClass
+        local_class_in SSLStreams
         include_class_members SSLStreams
         
         attr_accessor :chan
@@ -783,7 +783,7 @@ module Sun::Net::Httpserver
       # be sent over one stream. closing this stream causes an SSL close
       # input.
       const_set_lazy(:InputStream) { Class.new(Java::Io::InputStream) do
-        extend LocalClass
+        local_class_in SSLStreams
         include_class_members SSLStreams
         
         attr_accessor :bbuf
@@ -937,7 +937,7 @@ module Sun::Net::Httpserver
       # is encrypted by the stream. Multiple HTTPS responses can be sent on
       # one stream. closing this stream initiates an SSL closure
       const_set_lazy(:OutputStream) { Class.new(Java::Io::OutputStream) do
-        extend LocalClass
+        local_class_in SSLStreams
         include_class_members SSLStreams
         
         attr_accessor :buf

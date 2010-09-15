@@ -481,7 +481,7 @@ module Java::Util
     
     class_module.module_eval {
       const_set_lazy(:Itr) { Class.new do
-        extend LocalClass
+        local_class_in PriorityQueue
         include_class_members PriorityQueue
         include Iterator
         

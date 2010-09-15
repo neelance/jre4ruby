@@ -364,7 +364,7 @@ module Sun::Security::X509
       else
         # Two IPv4 host addresses or two IPv6 host addresses
         # Compare bytes
-        return (Arrays == other)
+        return Arrays.==(other, @address)
       end
     end
     

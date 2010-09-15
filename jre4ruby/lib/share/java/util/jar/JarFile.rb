@@ -269,7 +269,7 @@ module Java::Util::Jar
     def entries
       enum_ = super
       return Class.new(Enumeration.class == Class ? Enumeration : Object) do
-        extend LocalClass
+        local_class_in JarFile
         include_class_members JarFile
         include Enumeration if Enumeration.class == Module
         
@@ -296,7 +296,7 @@ module Java::Util::Jar
     
     class_module.module_eval {
       const_set_lazy(:JarFileEntry) { Class.new(JarEntry) do
-        extend LocalClass
+        local_class_in JarFile
         include_class_members JarFile
         
         typesig { [class_self::ZipEntry] }

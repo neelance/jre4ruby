@@ -63,7 +63,7 @@ module Sun::Security::Provider
       # ConfigFile because it is a public com.sun class
       begin
         AccessController.do_privileged(Class.new(PrivilegedAction.class == Class ? PrivilegedAction : Object) do
-          extend LocalClass
+          local_class_in ConfigSpiFile
           include_class_members ConfigSpiFile
           include PrivilegedAction if PrivilegedAction.class == Module
           

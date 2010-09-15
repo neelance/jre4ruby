@@ -1206,7 +1206,7 @@ module Java::Util::Concurrent
     class_module.module_eval {
       # ---------------- Iterator Support --------------
       const_set_lazy(:HashIterator) { Class.new do
-        extend LocalClass
+        local_class_in ConcurrentHashMap
         include_class_members ConcurrentHashMap
         
         attr_accessor :next_segment_index
@@ -1311,7 +1311,7 @@ module Java::Util::Concurrent
       end }
       
       const_set_lazy(:KeyIterator) { Class.new(HashIterator) do
-        extend LocalClass
+        local_class_in ConcurrentHashMap
         include_class_members ConcurrentHashMap
         overload_protected {
           include Iterator
@@ -1338,7 +1338,7 @@ module Java::Util::Concurrent
       end }
       
       const_set_lazy(:ValueIterator) { Class.new(HashIterator) do
-        extend LocalClass
+        local_class_in ConcurrentHashMap
         include_class_members ConcurrentHashMap
         overload_protected {
           include Iterator
@@ -1367,7 +1367,7 @@ module Java::Util::Concurrent
       # Custom Entry class used by EntryIterator.next(), that relays
       # setValue changes to the underlying map.
       const_set_lazy(:WriteThroughEntry) { Class.new(AbstractMap::SimpleEntry) do
-        extend LocalClass
+        local_class_in ConcurrentHashMap
         include_class_members ConcurrentHashMap
         
         typesig { [class_self::K, class_self::V] }
@@ -1397,7 +1397,7 @@ module Java::Util::Concurrent
       end }
       
       const_set_lazy(:EntryIterator) { Class.new(HashIterator) do
-        extend LocalClass
+        local_class_in ConcurrentHashMap
         include_class_members ConcurrentHashMap
         overload_protected {
           include Iterator
@@ -1419,7 +1419,7 @@ module Java::Util::Concurrent
       end }
       
       const_set_lazy(:KeySet) { Class.new(AbstractSet) do
-        extend LocalClass
+        local_class_in ConcurrentHashMap
         include_class_members ConcurrentHashMap
         
         typesig { [] }
@@ -1462,7 +1462,7 @@ module Java::Util::Concurrent
       end }
       
       const_set_lazy(:Values) { Class.new(AbstractCollection) do
-        extend LocalClass
+        local_class_in ConcurrentHashMap
         include_class_members ConcurrentHashMap
         
         typesig { [] }
@@ -1500,7 +1500,7 @@ module Java::Util::Concurrent
       end }
       
       const_set_lazy(:EntrySet) { Class.new(AbstractSet) do
-        extend LocalClass
+        local_class_in ConcurrentHashMap
         include_class_members ConcurrentHashMap
         
         typesig { [] }

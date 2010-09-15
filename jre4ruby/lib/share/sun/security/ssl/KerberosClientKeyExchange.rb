@@ -247,7 +247,7 @@ module Sun::Security::Ssl
         server_name = srv_name
         if (is_loopback)
           local_host = Java::Security::AccessController.do_privileged(Class.new(Java::Security::PrivilegedAction.class == Class ? Java::Security::PrivilegedAction : Object) do
-            extend LocalClass
+            local_class_in KerberosClientKeyExchange
             include_class_members KerberosClientKeyExchange
             include Java::Security::PrivilegedAction if Java::Security::PrivilegedAction.class == Module
             
@@ -297,7 +297,7 @@ module Sun::Security::Ssl
         end
         begin
           ticket = AccessController.do_privileged(Class.new(PrivilegedExceptionAction.class == Class ? PrivilegedExceptionAction : Object) do
-            extend LocalClass
+            local_class_in KerberosClientKeyExchange
             include_class_members KerberosClientKeyExchange
             include PrivilegedExceptionAction if PrivilegedExceptionAction.class == Module
             

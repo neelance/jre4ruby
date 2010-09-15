@@ -477,7 +477,7 @@ module Java::Io
     
     class_module.module_eval {
       const_set_lazy(:LineReader) { Class.new(Reader) do
-        extend LocalClass
+        local_class_in Console
         include_class_members Console
         
         attr_accessor :in
@@ -633,7 +633,7 @@ module Java::Io
       # Set up JavaIOAccess in SharedSecrets
       when_class_loaded do
         Sun::Misc::SharedSecrets.set_java_ioaccess(Class.new(Sun::Misc::JavaIOAccess.class == Class ? Sun::Misc::JavaIOAccess : Object) do
-          extend LocalClass
+          local_class_in Console
           include_class_members Console
           include Sun::Misc::JavaIOAccess if Sun::Misc::JavaIOAccess.class == Module
           
@@ -654,7 +654,7 @@ module Java::Io
           define_method :console_restore_hook do
             java_ioaccess_class = self.class
             return Class.new(self.class::Runnable.class == Class ? self.class::Runnable : Object) do
-              extend LocalClass
+              local_class_in java_ioaccess_class
               include_class_members java_ioaccess_class
               include class_self::Runnable if class_self::Runnable.class == Module
               
@@ -737,7 +737,7 @@ module Java::Io
       end
       @out = StreamEncoder.for_output_stream_writer(FileOutputStream.new(FileDescriptor.attr_out), @write_lock, @cs)
       @pw = Class.new(PrintWriter.class == Class ? PrintWriter : Object) do
-        extend LocalClass
+        local_class_in Console
         include_class_members Console
         include PrintWriter if PrintWriter.class == Module
         

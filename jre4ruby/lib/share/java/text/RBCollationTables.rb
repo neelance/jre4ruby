@@ -96,7 +96,7 @@ module Java::Text
     
     class_module.module_eval {
       const_set_lazy(:BuildAPI) { Class.new do
-        extend LocalClass
+        local_class_in RBCollationTables
         include_class_members RBCollationTables
         
         typesig { [] }

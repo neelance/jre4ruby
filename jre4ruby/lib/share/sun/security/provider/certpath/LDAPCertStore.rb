@@ -320,7 +320,7 @@ module Sun::Security::Provider::Certpath
       # are always added to the cache irrespective of whether the getValues()
       # method is called.
       const_set_lazy(:LDAPRequest) { Class.new do
-        extend LocalClass
+        local_class_in LDAPCertStore
         include_class_members LDAPCertStore
         
         attr_accessor :name

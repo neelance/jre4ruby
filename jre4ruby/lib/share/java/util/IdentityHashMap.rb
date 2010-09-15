@@ -738,7 +738,7 @@ module Java::Util
     
     class_module.module_eval {
       const_set_lazy(:IdentityHashMapIterator) { Class.new do
-        extend LocalClass
+        local_class_in IdentityHashMap
         include_class_members IdentityHashMap
         include Iterator
         
@@ -889,7 +889,7 @@ module Java::Util
       end }
       
       const_set_lazy(:KeyIterator) { Class.new(IdentityHashMapIterator) do
-        extend LocalClass
+        local_class_in IdentityHashMap
         include_class_members IdentityHashMap
         
         typesig { [] }
@@ -907,7 +907,7 @@ module Java::Util
       end }
       
       const_set_lazy(:ValueIterator) { Class.new(IdentityHashMapIterator) do
-        extend LocalClass
+        local_class_in IdentityHashMap
         include_class_members IdentityHashMap
         
         typesig { [] }
@@ -927,7 +927,7 @@ module Java::Util
       # Since we don't use Entry objects, we use the Iterator
       # itself as an entry.
       const_set_lazy(:EntryIterator) { Class.new(IdentityHashMapIterator) do
-        extend LocalClass
+        local_class_in IdentityHashMap
         include_class_members IdentityHashMap
         overload_protected {
           include Map::Entry
@@ -1069,7 +1069,7 @@ module Java::Util
     
     class_module.module_eval {
       const_set_lazy(:KeySet) { Class.new(AbstractSet) do
-        extend LocalClass
+        local_class_in IdentityHashMap
         include_class_members IdentityHashMap
         
         typesig { [] }
@@ -1164,7 +1164,7 @@ module Java::Util
     
     class_module.module_eval {
       const_set_lazy(:Values) { Class.new(AbstractCollection) do
-        extend LocalClass
+        local_class_in IdentityHashMap
         include_class_members IdentityHashMap
         
         typesig { [] }
@@ -1257,7 +1257,7 @@ module Java::Util
     
     class_module.module_eval {
       const_set_lazy(:EntrySet) { Class.new(AbstractSet) do
-        extend LocalClass
+        local_class_in IdentityHashMap
         include_class_members IdentityHashMap
         
         typesig { [] }

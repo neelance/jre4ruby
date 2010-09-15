@@ -129,7 +129,7 @@ module Sun::Security::Ssl
       # Try to get an InputStream based on the file we pass in.
       def get_file_input_stream(file)
         return AccessController.do_privileged(Class.new(PrivilegedExceptionAction.class == Class ? PrivilegedExceptionAction : Object) do
-          extend LocalClass
+          local_class_in TrustManagerFactoryImpl
           include_class_members TrustManagerFactoryImpl
           include PrivilegedExceptionAction if PrivilegedExceptionAction.class == Module
           
@@ -169,7 +169,7 @@ module Sun::Security::Ssl
         sep = JavaFile.attr_separator
         ks = nil
         AccessController.do_privileged(Class.new(PrivilegedExceptionAction.class == Class ? PrivilegedExceptionAction : Object) do
-          extend LocalClass
+          local_class_in TrustManagerFactoryImpl
           include_class_members TrustManagerFactoryImpl
           include PrivilegedExceptionAction if PrivilegedExceptionAction.class == Module
           

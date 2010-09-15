@@ -341,7 +341,7 @@ module Sun::Security::Provider::Certpath
       end
       # make sure that we have at least one CRL that _could_ cover
       # the certificate in question and all reasons are covered
-      if (@m_approved_crls.is_empty || !(Arrays == reasons_mask))
+      if (@m_approved_crls.is_empty || !Arrays.==(reasons_mask, ALL_REASONS))
         if (allow_separate_key)
           verify_with_separate_signing_key(curr_cert, prev_key, sign_flag, stacked_certs)
           return
@@ -728,7 +728,7 @@ module Sun::Security::Provider::Certpath
         results = HashSet.new
         dpf = DistributionPointFetcher.get_instance
         t = points.iterator
-        while t.has_next && !(Arrays == reasons_mask)
+        while t.has_next && !Arrays.==(reasons_mask, ALL_REASONS)
           point = t.next_
           crls.each do |crl|
             if (dpf.verify_crl(cert_impl, point, crl, reasons_mask, sign_flag, prev_key, @m_sig_provider, @m_anchor, @m_stores))

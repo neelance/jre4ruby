@@ -63,7 +63,7 @@ module Sun::Nio::Ch
       typesig { [AccessibleObject] }
       def set_accessible(ao)
         AccessController.do_privileged(Class.new(PrivilegedAction.class == Class ? PrivilegedAction : Object) do
-          extend LocalClass
+          local_class_in Reflect
           include_class_members Reflect
           include PrivilegedAction if PrivilegedAction.class == Module
           

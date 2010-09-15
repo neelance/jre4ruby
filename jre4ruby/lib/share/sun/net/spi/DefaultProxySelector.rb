@@ -99,7 +99,7 @@ module Sun::Net::Spi
       when_class_loaded do
         key = "java.net.useSystemProxies"
         b = AccessController.do_privileged(Class.new(PrivilegedAction.class == Class ? PrivilegedAction : Object) do
-          extend LocalClass
+          local_class_in DefaultProxySelector
           include_class_members DefaultProxySelector
           include PrivilegedAction if PrivilegedAction.class == Module
           
@@ -258,7 +258,7 @@ module Sun::Net::Spi
       # System properties it does help having only 1 call to doPrivileged.
       # Be mindful what you do in here though!
       Class.new(PrivilegedAction.class == Class ? PrivilegedAction : Object) do
-        extend LocalClass
+        local_class_in DefaultProxySelector
         include_class_members DefaultProxySelector
         include PrivilegedAction if PrivilegedAction.class == Module
         

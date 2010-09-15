@@ -2327,7 +2327,7 @@ module Java::Lang
     # @since 1.4
     # @spec JSR-51
     def split(regex, limit)
-      return Pattern.compile(regex).split(Regexp.new(self))
+      return Pattern.compile(regex).split(self, limit)
     end
     
     typesig { [String] }

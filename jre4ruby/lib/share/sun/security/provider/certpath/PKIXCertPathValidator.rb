@@ -261,7 +261,7 @@ module Sun::Security::Provider::Certpath
       if (pkix_param.is_revocation_enabled)
         ocsp_property = AccessController.do_privileged(# Examine OCSP security property
         Class.new(PrivilegedAction.class == Class ? PrivilegedAction : Object) do
-          extend LocalClass
+          local_class_in PKIXCertPathValidator
           include_class_members PKIXCertPathValidator
           include PrivilegedAction if PrivilegedAction.class == Module
           

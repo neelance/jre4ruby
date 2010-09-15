@@ -225,12 +225,12 @@ module Java::Util::Prefs
             end
             s = byte_array_to_base64(arr)
             b = base64_to_byte_array(s)
-            if (!(Java::Util::Arrays == arr))
+            if (!Java::Util::Arrays.==(arr, b))
               System.out.println("Dismal failure!")
             end
             s = RJava.cast_to_string(byte_array_to_alt_base64(arr))
             b = alt_base64to_byte_array(s)
-            if (!(Java::Util::Arrays == arr))
+            if (!Java::Util::Arrays.==(arr, b))
               System.out.println("Alternate dismal failure!")
             end
             j += 1

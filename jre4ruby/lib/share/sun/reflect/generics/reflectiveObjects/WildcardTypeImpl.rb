@@ -243,7 +243,7 @@ module Sun::Reflect::Generics::ReflectiveObjects
     def ==(o)
       if (o.is_a?(WildcardType))
         that = o
-        return (Arrays == self.get_lower_bounds) && (Arrays == self.get_upper_bounds)
+        return Arrays.==(self.get_lower_bounds, that.get_lower_bounds) && Arrays.==(self.get_upper_bounds, that.get_upper_bounds)
       else
         return false
       end

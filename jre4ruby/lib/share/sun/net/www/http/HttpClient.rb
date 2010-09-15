@@ -407,7 +407,7 @@ module Sun::Net::Www::Http
       set_connect_timeout(to)
       @cookie_handler = Java::Security::AccessController.do_privileged(# get the cookieHandler if there is any
       Class.new(Java::Security::PrivilegedAction.class == Class ? Java::Security::PrivilegedAction : Object) do
-        extend LocalClass
+        local_class_in HttpClient
         include_class_members HttpClient
         include Java::Security::PrivilegedAction if Java::Security::PrivilegedAction.class == Module
         
@@ -629,7 +629,7 @@ module Sun::Net::Www::Http
       synchronized(self) do
         begin
           Java::Security::AccessController.do_privileged(Class.new(Java::Security::PrivilegedExceptionAction.class == Class ? Java::Security::PrivilegedExceptionAction : Object) do
-            extend LocalClass
+            local_class_in HttpClient
             include_class_members HttpClient
             include Java::Security::PrivilegedExceptionAction if Java::Security::PrivilegedExceptionAction.class == Module
             
@@ -665,7 +665,7 @@ module Sun::Net::Www::Http
       synchronized(self) do
         begin
           Java::Security::AccessController.do_privileged(Class.new(Java::Security::PrivilegedExceptionAction.class == Class ? Java::Security::PrivilegedExceptionAction : Object) do
-            extend LocalClass
+            local_class_in HttpClient
             include_class_members HttpClient
             include Java::Security::PrivilegedExceptionAction if Java::Security::PrivilegedExceptionAction.class == Module
             

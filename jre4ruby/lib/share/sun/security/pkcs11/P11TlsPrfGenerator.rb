@@ -125,7 +125,7 @@ module Sun::Security::Pkcs11
     class_module.module_eval {
       const_set_lazy(:NULL_KEY) { # SecretKeySpec does not allow zero length keys, so we define our own class.
       Class.new(SecretKey.class == Class ? SecretKey : Object) do
-        extend LocalClass
+        local_class_in P11TlsPrfGenerator
         include_class_members P11TlsPrfGenerator
         include SecretKey if SecretKey.class == Module
         

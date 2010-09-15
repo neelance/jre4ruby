@@ -437,7 +437,7 @@ module Sun::Net::Httpserver
     class_module.module_eval {
       # main server listener task
       const_set_lazy(:Dispatcher) { Class.new do
-        extend LocalClass
+        local_class_in ServerImpl
         include_class_members ServerImpl
         include Runnable
         
@@ -605,7 +605,7 @@ module Sun::Net::Httpserver
     class_module.module_eval {
       # per exchange task
       const_set_lazy(:Exchange) { Class.new do
-        extend LocalClass
+        local_class_in ServerImpl
         include_class_members ServerImpl
         include Runnable
         
@@ -823,7 +823,7 @@ module Sun::Net::Httpserver
         class_module.module_eval {
           # used to link to 2 or more Filter.Chains together
           const_set_lazy(:LinkHandler) { Class.new do
-            extend LocalClass
+            local_class_in Exchange
             include_class_members Exchange
             include class_self::HttpHandler
             
@@ -946,7 +946,7 @@ module Sun::Net::Httpserver
     class_module.module_eval {
       # TimerTask run every CLOCK_TICK ms
       const_set_lazy(:ServerTimerTask) { Class.new(TimerTask) do
-        extend LocalClass
+        local_class_in ServerImpl
         include_class_members ServerImpl
         
         typesig { [] }

@@ -568,7 +568,7 @@ module Sun::Security::Pkcs11
           SerializedTokens.each do |tokenRef|
             token = token_ref.get
             if ((!(token).nil?) && token.is_valid)
-              if ((Arrays == token.get_token_id))
+              if (Arrays.==(token.get_token_id, @token_id))
                 return token
               end
             end

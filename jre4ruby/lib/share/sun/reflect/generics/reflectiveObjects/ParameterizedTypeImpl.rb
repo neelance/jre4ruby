@@ -187,7 +187,7 @@ module Sun::Reflect::Generics::ReflectiveObjects
           owner_equality = ((@owner_type).nil? ? (that_owner).nil? : (@owner_type == that_owner))
           raw_equality = ((@raw_type).nil? ? (that_raw_type).nil? : (@raw_type == that_raw_type))
           # avoid clone
-          type_arg_equality = (Arrays == @actual_type_arguments)
+          type_arg_equality = Arrays.==(@actual_type_arguments, that.get_actual_type_arguments)
           @actual_type_arguments.each do |t|
             System.out.printf("\t\t%s%s%n", t, t.get_class)
           end
@@ -195,7 +195,7 @@ module Sun::Reflect::Generics::ReflectiveObjects
           return owner_equality && raw_equality && type_arg_equality
         end
         # avoid clone
-        return ((@owner_type).nil? ? (that_owner).nil? : (@owner_type == that_owner)) && ((@raw_type).nil? ? (that_raw_type).nil? : (@raw_type == that_raw_type)) && (Arrays == @actual_type_arguments)
+        return ((@owner_type).nil? ? (that_owner).nil? : (@owner_type == that_owner)) && ((@raw_type).nil? ? (that_raw_type).nil? : (@raw_type == that_raw_type)) && Arrays.==(@actual_type_arguments, that.get_actual_type_arguments)
       else
         return false
       end

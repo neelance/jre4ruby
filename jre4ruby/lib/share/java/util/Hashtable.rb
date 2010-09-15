@@ -668,7 +668,7 @@ module Java::Util
     
     class_module.module_eval {
       const_set_lazy(:KeySet) { Class.new(AbstractSet) do
-        extend LocalClass
+        local_class_in Hashtable
         include_class_members Hashtable
         
         typesig { [] }
@@ -730,7 +730,7 @@ module Java::Util
     
     class_module.module_eval {
       const_set_lazy(:EntrySet) { Class.new(AbstractSet) do
-        extend LocalClass
+        local_class_in Hashtable
         include_class_members Hashtable
         
         typesig { [] }
@@ -836,7 +836,7 @@ module Java::Util
     
     class_module.module_eval {
       const_set_lazy(:ValueCollection) { Class.new(AbstractCollection) do
-        extend LocalClass
+        local_class_in Hashtable
         include_class_members Hashtable
         
         typesig { [] }
@@ -1151,7 +1151,7 @@ module Java::Util
       # to avoid unintentionally increasing the capabilities granted a user
       # by passing an Enumeration.
       const_set_lazy(:Enumerator) { Class.new do
-        extend LocalClass
+        local_class_in Hashtable
         include_class_members Hashtable
         include Enumeration
         include Iterator

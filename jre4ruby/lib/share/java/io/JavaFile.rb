@@ -1950,7 +1950,7 @@ module Java::Io
       # Added here as DeleteOnExitHook is package-private and SharedSecrets cannot easily access it.
       when_class_loaded do
         Sun::Misc::SharedSecrets.set_java_iodelete_on_exit_access(Class.new(Sun::Misc::JavaIODeleteOnExitAccess.class == Class ? Sun::Misc::JavaIODeleteOnExitAccess : Object) do
-          extend LocalClass
+          local_class_in JavaFile
           include_class_members JavaFile
           include Sun::Misc::JavaIODeleteOnExitAccess if Sun::Misc::JavaIODeleteOnExitAccess.class == Module
           

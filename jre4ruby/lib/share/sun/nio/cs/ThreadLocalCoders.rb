@@ -121,7 +121,7 @@ module Sun::Nio::Cs
       
       def decoder_cache
         defined?(@@decoder_cache) ? @@decoder_cache : @@decoder_cache= Class.new(Cache.class == Class ? Cache : Object) do
-          extend LocalClass
+          local_class_in ThreadLocalCoders
           include_class_members ThreadLocalCoders
           include Cache if Cache.class == Module
           
@@ -174,7 +174,7 @@ module Sun::Nio::Cs
       
       def encoder_cache
         defined?(@@encoder_cache) ? @@encoder_cache : @@encoder_cache= Class.new(Cache.class == Class ? Cache : Object) do
-          extend LocalClass
+          local_class_in ThreadLocalCoders
           include_class_members ThreadLocalCoders
           include Cache if Cache.class == Module
           

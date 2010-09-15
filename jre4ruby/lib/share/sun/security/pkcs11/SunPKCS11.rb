@@ -829,7 +829,7 @@ module Sun::Security::Pkcs11
         @token = nil
         AccessController.do_privileged(# unregister all algorithms
         Class.new(PrivilegedAction.class == Class ? PrivilegedAction : Object) do
-          extend LocalClass
+          local_class_in SunPKCS11
           include_class_members SunPKCS11
           include PrivilegedAction if PrivilegedAction.class == Module
           
@@ -929,7 +929,7 @@ module Sun::Security::Pkcs11
       end
       AccessController.do_privileged(# register algorithms in provider
       Class.new(PrivilegedAction.class == Class ? PrivilegedAction : Object) do
-        extend LocalClass
+        local_class_in SunPKCS11
         include_class_members SunPKCS11
         include PrivilegedAction if PrivilegedAction.class == Module
         
@@ -1383,7 +1383,7 @@ module Sun::Security::Pkcs11
             Debug.println("getting default callback handler")
           end
           my_handler = AccessController.do_privileged(Class.new(PrivilegedExceptionAction.class == Class ? PrivilegedExceptionAction : Object) do
-            extend LocalClass
+            local_class_in SunPKCS11
             include_class_members SunPKCS11
             include PrivilegedExceptionAction if PrivilegedExceptionAction.class == Module
             

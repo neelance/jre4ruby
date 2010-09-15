@@ -86,7 +86,7 @@ module Sun::Security::Mscapi
       end }
       
       const_set_lazy(:KeyEntry) { Class.new do
-        extend LocalClass
+        local_class_in KeyStore
         include_class_members KeyStore
         
         attr_accessor :private_key
@@ -523,7 +523,7 @@ module Sun::Security::Mscapi
     def engine_aliases
       iter = @entries.iterator
       return Class.new(Enumeration.class == Class ? Enumeration : Object) do
-        extend LocalClass
+        local_class_in KeyStore
         include_class_members KeyStore
         include Enumeration if Enumeration.class == Module
         

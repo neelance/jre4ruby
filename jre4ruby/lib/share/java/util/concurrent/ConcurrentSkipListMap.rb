@@ -2411,7 +2411,7 @@ module Java::Util::Concurrent
       # 
       # Base of iterator classes:
       const_set_lazy(:Iter) { Class.new do
-        extend LocalClass
+        local_class_in ConcurrentSkipListMap
         include_class_members ConcurrentSkipListMap
         include Iterator
         
@@ -2497,7 +2497,7 @@ module Java::Util::Concurrent
       end }
       
       const_set_lazy(:ValueIterator) { Class.new(Iter) do
-        extend LocalClass
+        local_class_in ConcurrentSkipListMap
         include_class_members ConcurrentSkipListMap
         
         typesig { [] }
@@ -2517,7 +2517,7 @@ module Java::Util::Concurrent
       end }
       
       const_set_lazy(:KeyIterator) { Class.new(Iter) do
-        extend LocalClass
+        local_class_in ConcurrentSkipListMap
         include_class_members ConcurrentSkipListMap
         
         typesig { [] }
@@ -2537,7 +2537,7 @@ module Java::Util::Concurrent
       end }
       
       const_set_lazy(:EntryIterator) { Class.new(Iter) do
-        extend LocalClass
+        local_class_in ConcurrentSkipListMap
         include_class_members ConcurrentSkipListMap
         
         typesig { [] }
@@ -3585,7 +3585,7 @@ module Java::Util::Concurrent
         class_module.module_eval {
           # Variant of main Iter class to traverse through submaps.
           const_set_lazy(:SubMapIter) { Class.new do
-            extend LocalClass
+            local_class_in SubMap
             include_class_members SubMap
             include class_self::Iterator
             
@@ -3703,7 +3703,7 @@ module Java::Util::Concurrent
           end }
           
           const_set_lazy(:SubMapValueIterator) { Class.new(class_self::SubMapIter) do
-            extend LocalClass
+            local_class_in SubMap
             include_class_members SubMap
             
             typesig { [] }
@@ -3723,7 +3723,7 @@ module Java::Util::Concurrent
           end }
           
           const_set_lazy(:SubMapKeyIterator) { Class.new(class_self::SubMapIter) do
-            extend LocalClass
+            local_class_in SubMap
             include_class_members SubMap
             
             typesig { [] }
@@ -3743,7 +3743,7 @@ module Java::Util::Concurrent
           end }
           
           const_set_lazy(:SubMapEntryIterator) { Class.new(class_self::SubMapIter) do
-            extend LocalClass
+            local_class_in SubMap
             include_class_members SubMap
             
             typesig { [] }

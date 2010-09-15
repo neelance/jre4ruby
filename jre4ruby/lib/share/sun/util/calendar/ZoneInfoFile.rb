@@ -999,7 +999,7 @@ module Sun::Util::Calendar
           home_dir = AccessController.do_privileged(Sun::Security::Action::GetPropertyAction.new("java.home"))
           fname = home_dir + RJava.cast_to_string(JavaFile.attr_separator) + "lib" + RJava.cast_to_string(JavaFile.attr_separator) + "zi" + RJava.cast_to_string(JavaFile.attr_separator) + file_name
           buffer = AccessController.do_privileged(Class.new(PrivilegedExceptionAction.class == Class ? PrivilegedExceptionAction : Object) do
-            extend LocalClass
+            local_class_in ZoneInfoFile
             include_class_members ZoneInfoFile
             include PrivilegedExceptionAction if PrivilegedExceptionAction.class == Module
             

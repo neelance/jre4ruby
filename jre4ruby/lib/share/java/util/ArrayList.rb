@@ -746,7 +746,7 @@ module Java::Util
     class_module.module_eval {
       # An optimized version of AbstractList.Itr
       const_set_lazy(:Itr) { Class.new do
-        extend LocalClass
+        local_class_in ArrayList
         include_class_members ArrayList
         include Iterator
         
@@ -826,7 +826,7 @@ module Java::Util
       
       # An optimized version of AbstractList.ListItr
       const_set_lazy(:ListItr) { Class.new(Itr) do
-        extend LocalClass
+        local_class_in ArrayList
         include_class_members ArrayList
         overload_protected {
           include ListIterator
@@ -948,7 +948,7 @@ module Java::Util
       end
       
       const_set_lazy(:SubList) { Class.new(AbstractList) do
-        extend LocalClass
+        local_class_in ArrayList
         include_class_members ArrayList
         overload_protected {
           include RandomAccess
@@ -1070,7 +1070,7 @@ module Java::Util
           check_for_comodification
           range_check_for_add(index)
           return Class.new(self.class::ListIterator.class == Class ? self.class::ListIterator : Object) do
-            extend LocalClass
+            local_class_in SubList
             include_class_members SubList
             include class_self::ListIterator if class_self::ListIterator.class == Module
             

@@ -397,7 +397,7 @@ module Sun::Nio::Ch
       # DatagramSocket constructor so that no native resources are allocated in
       # super class.
       Class.new(DatagramSocketImpl.class == Class ? DatagramSocketImpl : Object) do
-        extend LocalClass
+        local_class_in DatagramSocketAdaptor
         include_class_members DatagramSocketAdaptor
         include DatagramSocketImpl if DatagramSocketImpl.class == Module
         

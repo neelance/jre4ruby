@@ -151,7 +151,7 @@ module Sun::Net::Www::Protocol::Jar
     
     class_module.module_eval {
       const_set_lazy(:JarURLInputStream) { Class.new(Java::Io::FilterInputStream) do
-        extend LocalClass
+        local_class_in JarURLConnection
         include_class_members JarURLConnection
         
         typesig { [class_self::InputStream] }

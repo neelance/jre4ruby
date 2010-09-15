@@ -215,7 +215,7 @@ module Sun::Security::Provider::Certpath
         return false
       end
       that = other
-      if ((@hash_alg_id == that.get_hash_algorithm) && (Arrays == @issuer_name_hash) && (Arrays == @issuer_key_hash) && (@cert_serial_number.get_number == that.get_serial_number))
+      if ((@hash_alg_id == that.get_hash_algorithm) && Arrays.==(@issuer_name_hash, that.get_issuer_name_hash) && Arrays.==(@issuer_key_hash, that.get_issuer_key_hash) && (@cert_serial_number.get_number == that.get_serial_number))
         return true
       else
         return false

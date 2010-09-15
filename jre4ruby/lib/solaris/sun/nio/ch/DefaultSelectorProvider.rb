@@ -54,7 +54,7 @@ module Sun::Nio::Ch
         # use EPollSelectorProvider for Linux kernels >= 2.6
         if (("Linux" == osname))
           osversion = AccessController.do_privileged(GetPropertyAction.new("os.version"))
-          vers = osversion.split(Regexp.new("\\."))
+          vers = osversion.split("\\.", 0)
           if (vers.attr_length >= 2)
             begin
               major = JavaInteger.parse_int(vers[0])

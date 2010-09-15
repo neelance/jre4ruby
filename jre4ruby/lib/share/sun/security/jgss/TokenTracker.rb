@@ -377,7 +377,7 @@ module Sun::Security::Jgss
       # tokens. Each entry is actaully an interval of numbers, all of which
       # have been received.
       const_set_lazy(:Entry) { Class.new do
-        extend LocalClass
+        local_class_in TokenTracker
         include_class_members TokenTracker
         
         attr_accessor :start

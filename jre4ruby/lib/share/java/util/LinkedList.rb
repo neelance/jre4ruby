@@ -701,7 +701,7 @@ module Java::Util
     
     class_module.module_eval {
       const_set_lazy(:ListItr) { Class.new do
-        extend LocalClass
+        local_class_in LinkedList
         include_class_members LinkedList
         include ListIterator
         
@@ -915,7 +915,7 @@ module Java::Util
     class_module.module_eval {
       # Adapter to provide descending iterators via ListItr.previous
       const_set_lazy(:DescendingIterator) { Class.new do
-        extend LocalClass
+        local_class_in LinkedList
         include_class_members LinkedList
         include Iterator
         

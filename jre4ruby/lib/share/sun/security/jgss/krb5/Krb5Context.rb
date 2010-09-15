@@ -726,7 +726,7 @@ module Sun::Security::Jgss::Krb5
             begin
               kerb_ticket = AccessController.do_privileged(# get service ticket from caller's subject
               Class.new(PrivilegedExceptionAction.class == Class ? PrivilegedExceptionAction : Object) do
-                extend LocalClass
+                local_class_in Krb5Context
                 include_class_members Krb5Context
                 include PrivilegedExceptionAction if PrivilegedExceptionAction.class == Module
                 
@@ -775,7 +775,7 @@ module Sun::Security::Jgss::Krb5
             @service_creds = Credentials.acquire_service_creds(@peer_name.get_krb5principal_name.get_name, tgt)
             if (GSSUtil.use_subject_creds_only(@caller))
               subject = AccessController.do_privileged(Class.new(Java::Security::PrivilegedAction.class == Class ? Java::Security::PrivilegedAction : Object) do
-                extend LocalClass
+                local_class_in Krb5Context
                 include_class_members Krb5Context
                 include Java::Security::PrivilegedAction if Java::Security::PrivilegedAction.class == Module
                 
@@ -800,7 +800,7 @@ module Sun::Security::Jgss::Krb5
                 # to do here and there is no harm indoing it here.
                 kt = Krb5Util.creds_to_ticket(@service_creds)
                 AccessController.do_privileged(Class.new(Java::Security::PrivilegedAction.class == Class ? Java::Security::PrivilegedAction : Object) do
-                  extend LocalClass
+                  local_class_in Krb5Context
                   include_class_members Krb5Context
                   include Java::Security::PrivilegedAction if Java::Security::PrivilegedAction.class == Module
                   

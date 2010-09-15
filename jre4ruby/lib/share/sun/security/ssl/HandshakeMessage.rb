@@ -1668,7 +1668,7 @@ module Sun::Security::Ssl
           typesig { [class_self::AccessibleObject] }
           def make_accessible(o)
             AccessController.do_privileged(Class.new(class_self::PrivilegedAction.class == Class ? class_self::PrivilegedAction : Object) do
-              extend LocalClass
+              local_class_in CertificateVerify
               include_class_members CertificateVerify
               include class_self::PrivilegedAction if class_self::PrivilegedAction.class == Module
               
@@ -1819,7 +1819,7 @@ module Sun::Security::Ssl
         # computations have been successful.
         def verify(protocol_version, handshake_hash, sender, master)
           my_finished = get_finished(protocol_version, handshake_hash, sender, master)
-          return (Arrays == my_finished)
+          return Arrays.==(my_finished, @verify_data)
         end
         
         class_module.module_eval {

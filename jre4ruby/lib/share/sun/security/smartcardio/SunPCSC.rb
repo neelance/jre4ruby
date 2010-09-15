@@ -48,7 +48,7 @@ module Sun::Security::Smartcardio
     def initialize
       super("SunPCSC", 1.6, "Sun PC/SC provider")
       AccessController.do_privileged(Class.new(PrivilegedAction.class == Class ? PrivilegedAction : Object) do
-        extend LocalClass
+        local_class_in SunPCSC
         include_class_members SunPCSC
         include PrivilegedAction if PrivilegedAction.class == Module
         

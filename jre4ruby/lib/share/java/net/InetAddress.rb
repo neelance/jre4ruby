@@ -969,7 +969,7 @@ module Java::Net
         if ((provider == "default"))
           name_service = # initialize the default name service
           Class.new(NameService.class == Class ? NameService : Object) do
-            extend LocalClass
+            local_class_in InetAddress
             include_class_members InetAddress
             include NameService if NameService.class == Module
             
@@ -995,7 +995,7 @@ module Java::Net
           provider_name = provider
           begin
             name_service = Java::Security::AccessController.do_privileged(Class.new(Java::Security::PrivilegedExceptionAction.class == Class ? Java::Security::PrivilegedExceptionAction : Object) do
-              extend LocalClass
+              local_class_in InetAddress
               include_class_members InetAddress
               include Java::Security::PrivilegedExceptionAction if Java::Security::PrivilegedExceptionAction.class == Module
               

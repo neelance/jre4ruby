@@ -80,7 +80,7 @@ module Sun::Net::Www::Protocol::Http
     typesig { [] }
     def init0
       @hostname = RJava.cast_to_string(Java::Security::AccessController.do_privileged(Class.new(Java::Security::PrivilegedAction.class == Class ? Java::Security::PrivilegedAction : Object) do
-        extend LocalClass
+        local_class_in NTLMAuthentication
         include_class_members NTLMAuthentication
         include Java::Security::PrivilegedAction if Java::Security::PrivilegedAction.class == Module
         

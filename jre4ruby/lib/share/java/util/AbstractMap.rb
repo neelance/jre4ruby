@@ -325,7 +325,7 @@ module Java::Util
     def key_set
       if ((@key_set).nil?)
         @key_set = Class.new(AbstractSet.class == Class ? AbstractSet : Object) do
-          extend LocalClass
+          local_class_in AbstractMap
           include_class_members AbstractMap
           include AbstractSet if AbstractSet.class == Module
           
@@ -333,7 +333,7 @@ module Java::Util
           define_method :iterator do
             abstract_set_class = self.class
             return Class.new(self.class::Iterator.class == Class ? self.class::Iterator : Object) do
-              extend LocalClass
+              local_class_in abstract_set_class
               include_class_members abstract_set_class
               include class_self::Iterator if class_self::Iterator.class == Module
               
@@ -419,7 +419,7 @@ module Java::Util
     def values
       if ((@values).nil?)
         @values = Class.new(AbstractCollection.class == Class ? AbstractCollection : Object) do
-          extend LocalClass
+          local_class_in AbstractMap
           include_class_members AbstractMap
           include AbstractCollection if AbstractCollection.class == Module
           
@@ -427,7 +427,7 @@ module Java::Util
           define_method :iterator do
             abstract_collection_class = self.class
             return Class.new(self.class::Iterator.class == Class ? self.class::Iterator : Object) do
-              extend LocalClass
+              local_class_in abstract_collection_class
               include_class_members abstract_collection_class
               include class_self::Iterator if class_self::Iterator.class == Module
               

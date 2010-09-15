@@ -1807,7 +1807,7 @@ module Java::Lang
       # subclass overrides any of the methods, false otherwise.
       def audit_subclass(subcl)
         result = AccessController.do_privileged(Class.new(PrivilegedAction.class == Class ? PrivilegedAction : Object) do
-          extend LocalClass
+          local_class_in JavaThread
           include_class_members JavaThread
           include PrivilegedAction if PrivilegedAction.class == Module
           

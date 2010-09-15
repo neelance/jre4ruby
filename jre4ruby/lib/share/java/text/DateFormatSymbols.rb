@@ -573,7 +573,7 @@ module Java::Text
         return false
       end
       that = obj
-      return ((Arrays == @eras) && (Arrays == @months) && (Arrays == @short_months) && (Arrays == @weekdays) && (Arrays == @short_weekdays) && (Arrays == @ampms) && Arrays.deep_equals(get_zone_strings_wrapper, that.get_zone_strings_wrapper) && ((!(@local_pattern_chars).nil? && (@local_pattern_chars == that.attr_local_pattern_chars)) || ((@local_pattern_chars).nil? && (that.attr_local_pattern_chars).nil?)))
+      return (Arrays.==(@eras, that.attr_eras) && Arrays.==(@months, that.attr_months) && Arrays.==(@short_months, that.attr_short_months) && Arrays.==(@weekdays, that.attr_weekdays) && Arrays.==(@short_weekdays, that.attr_short_weekdays) && Arrays.==(@ampms, that.attr_ampms) && Arrays.deep_equals(get_zone_strings_wrapper, that.get_zone_strings_wrapper) && ((!(@local_pattern_chars).nil? && (@local_pattern_chars == that.attr_local_pattern_chars)) || ((@local_pattern_chars).nil? && (that.attr_local_pattern_chars).nil?)))
     end
     
     class_module.module_eval {

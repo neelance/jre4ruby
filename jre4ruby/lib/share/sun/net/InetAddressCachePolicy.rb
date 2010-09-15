@@ -133,7 +133,7 @@ module Sun::Net
         tmp = nil
         begin
           tmp = Java::Security::AccessController.do_privileged(Class.new(PrivilegedAction.class == Class ? PrivilegedAction : Object) do
-            extend LocalClass
+            local_class_in InetAddressCachePolicy
             include_class_members InetAddressCachePolicy
             include PrivilegedAction if PrivilegedAction.class == Module
             
@@ -171,7 +171,7 @@ module Sun::Net
         end
         begin
           tmp = Java::Security::AccessController.do_privileged(Class.new(PrivilegedAction.class == Class ? PrivilegedAction : Object) do
-            extend LocalClass
+            local_class_in InetAddressCachePolicy
             include_class_members InetAddressCachePolicy
             include PrivilegedAction if PrivilegedAction.class == Module
             

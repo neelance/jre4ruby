@@ -360,7 +360,7 @@ module Java::Util
       
       when_class_loaded do
         AccessController.do_privileged(Class.new(PrivilegedAction.class == Class ? PrivilegedAction : Object) do
-          extend LocalClass
+          local_class_in Currency
           include_class_members Currency
           include PrivilegedAction if PrivilegedAction.class == Module
           

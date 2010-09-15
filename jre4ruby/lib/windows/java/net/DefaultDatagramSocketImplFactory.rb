@@ -99,7 +99,7 @@ module Java::Net
       when_class_loaded do
         Java::Security::AccessController.do_privileged(# Determine Windows Version.
         Class.new(PrivilegedAction.class == Class ? PrivilegedAction : Object) do
-          extend LocalClass
+          local_class_in DefaultDatagramSocketImplFactory
           include_class_members DefaultDatagramSocketImplFactory
           include PrivilegedAction if PrivilegedAction.class == Module
           

@@ -2307,7 +2307,7 @@ module Sun::Security::Ssl
             l = entry.get_key
             acc = entry.get_value
             AccessController.do_privileged(Class.new(self.class::PrivilegedAction.class == Class ? self.class::PrivilegedAction : Object) do
-              extend LocalClass
+              local_class_in NotifyHandshakeThread
               include_class_members NotifyHandshakeThread
               include class_self::PrivilegedAction if class_self::PrivilegedAction.class == Module
               

@@ -137,7 +137,7 @@ module Java::Lang
       @stderr_fd = FileDescriptor.new
       @handle = create(cmdstr, envblock, path, redirect_error_stream, @stdin_fd, @stdout_fd, @stderr_fd)
       Java::Security::AccessController.do_privileged(Class.new(Java::Security::PrivilegedAction.class == Class ? Java::Security::PrivilegedAction : Object) do
-        extend LocalClass
+        local_class_in ProcessImpl
         include_class_members ProcessImpl
         include Java::Security::PrivilegedAction if Java::Security::PrivilegedAction.class == Module
         

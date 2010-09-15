@@ -204,7 +204,7 @@ module Sun::Net::Www
     
     class_module.module_eval {
       const_set_lazy(:HeaderIterator) { Class.new do
-        extend LocalClass
+        local_class_in MessageHeader
         include_class_members MessageHeader
         include Iterator
         

@@ -175,7 +175,7 @@ module Sun::Net::Ftp
       # @return the host to use, or null if none has been specified
       def get_ftp_proxy_host
         return Java::Security::AccessController.do_privileged(Class.new(Java::Security::PrivilegedAction.class == Class ? Java::Security::PrivilegedAction : Object) do
-          extend LocalClass
+          local_class_in FtpClient
           include_class_members FtpClient
           include Java::Security::PrivilegedAction if Java::Security::PrivilegedAction.class == Module
           
@@ -210,7 +210,7 @@ module Sun::Net::Ftp
       def get_ftp_proxy_port
         result = Array.typed(::Java::Int).new([80])
         Java::Security::AccessController.do_privileged(Class.new(Java::Security::PrivilegedAction.class == Class ? Java::Security::PrivilegedAction : Object) do
-          extend LocalClass
+          local_class_in FtpClient
           include_class_members FtpClient
           include Java::Security::PrivilegedAction if Java::Security::PrivilegedAction.class == Module
           
@@ -435,7 +435,7 @@ module Sun::Net::Ftp
       if (!(self.attr_proxy).nil?)
         if ((self.attr_proxy.type).equal?(Proxy::Type::SOCKS))
           s = AccessController.do_privileged(Class.new(PrivilegedAction.class == Class ? PrivilegedAction : Object) do
-            extend LocalClass
+            local_class_in FtpClient
             include_class_members FtpClient
             include PrivilegedAction if PrivilegedAction.class == Module
             

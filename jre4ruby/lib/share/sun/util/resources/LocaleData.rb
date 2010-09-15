@@ -142,7 +142,7 @@ module Sun::Util::Resources
       typesig { [String, Locale] }
       def get_bundle(base_name, locale)
         return AccessController.do_privileged(Class.new(PrivilegedAction.class == Class ? PrivilegedAction : Object) do
-          extend LocalClass
+          local_class_in LocaleData
           include_class_members LocaleData
           include PrivilegedAction if PrivilegedAction.class == Module
           
@@ -247,7 +247,7 @@ module Sun::Util::Resources
         # localedata.jar is installed or not.
         f = JavaFile.new(locale_data_jar)
         is_non_euro_res_jar_exist = AccessController.do_privileged(Class.new(PrivilegedAction.class == Class ? PrivilegedAction : Object) do
-          extend LocalClass
+          local_class_in LocaleData
           include_class_members LocaleData
           include PrivilegedAction if PrivilegedAction.class == Module
           

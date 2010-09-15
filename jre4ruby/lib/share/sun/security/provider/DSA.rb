@@ -463,7 +463,7 @@ module Sun::Security::Provider
       k = nil
       # The application specified a Kseed for us to use.
       # Note that we do not allow usage of the same Kseed twice in a row
-      if (!(@kseed).nil? && !(Arrays == @kseed))
+      if (!(@kseed).nil? && !Arrays.==(@kseed, @previous_kseed))
         k = generate_k(@kseed, q)
         if (k.signum > 0 && (k <=> q) < 0)
           @previous_kseed = Array.typed(::Java::Int).new(@kseed.attr_length) { 0 }

@@ -245,7 +245,7 @@ module Sun::Nio::Ch
       typesig { [JavaSet] }
       def ungrowable_set(s)
         return Class.new(JavaSet.class == Class ? JavaSet : Object) do
-          extend LocalClass
+          local_class_in Util
           include_class_members Util
           include JavaSet if JavaSet.class == Module
           
@@ -404,7 +404,7 @@ module Sun::Nio::Ch
       typesig { [] }
       def init_dbbconstructor
         AccessController.do_privileged(Class.new(PrivilegedAction.class == Class ? PrivilegedAction : Object) do
-          extend LocalClass
+          local_class_in Util
           include_class_members Util
           include PrivilegedAction if PrivilegedAction.class == Module
           
@@ -469,7 +469,7 @@ module Sun::Nio::Ch
       typesig { [] }
       def init_dbbrconstructor
         AccessController.do_privileged(Class.new(PrivilegedAction.class == Class ? PrivilegedAction : Object) do
-          extend LocalClass
+          local_class_in Util
           include_class_members Util
           include PrivilegedAction if PrivilegedAction.class == Module
           

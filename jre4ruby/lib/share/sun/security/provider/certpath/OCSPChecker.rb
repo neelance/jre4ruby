@@ -413,7 +413,7 @@ module Sun::Security::Provider::Certpath
       def get_ocspproperties
         properties = Array.typed(String).new(4) { nil }
         AccessController.do_privileged(Class.new(PrivilegedAction.class == Class ? PrivilegedAction : Object) do
-          extend LocalClass
+          local_class_in OCSPChecker
           include_class_members OCSPChecker
           include PrivilegedAction if PrivilegedAction.class == Module
           

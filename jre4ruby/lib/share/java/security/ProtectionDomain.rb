@@ -324,7 +324,7 @@ module Java::Security
         return @permissions
       end
       perms = Java::Security::AccessController.do_privileged(Class.new(Java::Security::PrivilegedAction.class == Class ? Java::Security::PrivilegedAction : Object) do
-        extend LocalClass
+        local_class_in ProtectionDomain
         include_class_members ProtectionDomain
         include Java::Security::PrivilegedAction if Java::Security::PrivilegedAction.class == Module
         

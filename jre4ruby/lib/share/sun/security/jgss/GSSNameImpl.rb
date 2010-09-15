@@ -308,7 +308,7 @@ module Sun::Security::Jgss
         rescue UnsupportedEncodingException => e
           # Won't happen
         end
-        return (Arrays == my_bytes)
+        return Arrays.==(my_bytes, bytes)
       end
       return false
     end

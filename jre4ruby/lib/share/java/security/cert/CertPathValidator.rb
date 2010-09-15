@@ -294,7 +294,7 @@ module Java::Security::Cert
       def get_default_type
         cpvtype = nil
         cpvtype = RJava.cast_to_string(AccessController.do_privileged(Class.new(PrivilegedAction.class == Class ? PrivilegedAction : Object) do
-          extend LocalClass
+          local_class_in CertPathValidator
           include_class_members CertPathValidator
           include PrivilegedAction if PrivilegedAction.class == Module
           

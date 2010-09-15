@@ -141,7 +141,7 @@ module Java::Security
       end
       begin
         AccessController.do_privileged(Class.new(PrivilegedExceptionAction.class == Class ? PrivilegedExceptionAction : Object) do
-          extend LocalClass
+          local_class_in Signer
           include_class_members Signer
           include PrivilegedExceptionAction if PrivilegedExceptionAction.class == Module
           

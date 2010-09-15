@@ -153,7 +153,7 @@ module Java::Security::Cert
       begin
         this_crl = X509CRLImpl.get_encoded_internal(self)
         other_crl = X509CRLImpl.get_encoded_internal(other)
-        return (Arrays == this_crl)
+        return Arrays.==(this_crl, other_crl)
       rescue CRLException => e
         return false
       end

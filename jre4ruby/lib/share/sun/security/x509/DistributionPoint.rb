@@ -366,7 +366,7 @@ module Sun::Security::X509
         return false
       end
       other = obj
-      equal = self.==(@full_name, other.attr_full_name) && self.==(@relative_name, other.attr_relative_name) && self.==(@crl_issuer, other.attr_crl_issuer) && (Arrays == @reason_flags)
+      equal = self.==(@full_name, other.attr_full_name) && self.==(@relative_name, other.attr_relative_name) && self.==(@crl_issuer, other.attr_crl_issuer) && Arrays.==(@reason_flags, other.attr_reason_flags)
       return equal
     end
     

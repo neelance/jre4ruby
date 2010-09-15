@@ -171,7 +171,7 @@ module Java::Util::Concurrent
     
     class_module.module_eval {
       const_set_lazy(:ScheduledFutureTask) { Class.new(FutureTask) do
-        extend LocalClass
+        local_class_in ScheduledThreadPoolExecutor
         include_class_members ScheduledThreadPoolExecutor
         overload_protected {
           include RunnableScheduledFuture
@@ -827,7 +827,7 @@ module Java::Util::Concurrent
         typesig { [] }
         def iterator
           return Class.new(self.class::Iterator.class == Class ? self.class::Iterator : Object) do
-            extend LocalClass
+            local_class_in DelayedWorkQueue
             include_class_members DelayedWorkQueue
             include class_self::Iterator if class_self::Iterator.class == Module
             

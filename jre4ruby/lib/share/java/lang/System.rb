@@ -81,15 +81,15 @@ module Java::Lang
       # corresponds to keyboard input or another input source specified by
       # the host environment or user.
       
-      def in
+      def in_
         defined?(@@in) ? @@in : @@in= null_input_stream
       end
-      alias_method :attr_in, :in
+      alias_method :attr_in, :in_
       
-      def in=(value)
+      def in_=(value)
         @@in = value
       end
-      alias_method :attr_in=, :in=
+      alias_method :attr_in=, :in_=
       
       # The "standard" output stream. This stream is already
       # open and ready to accept output data. Typically this stream
@@ -359,7 +359,7 @@ module Java::Lang
             # which will loop infinitely if there is a non-system class
             # (in this case: the new security manager class) on the stack).
             Class.new(PrivilegedAction.class == Class ? PrivilegedAction : Object) do
-              extend LocalClass
+              local_class_in System
               include_class_members System
               include PrivilegedAction if PrivilegedAction.class == Module
               
@@ -1194,7 +1194,7 @@ module Java::Lang
         current.get_thread_group.add(current)
         Sun::Misc::SharedSecrets.set_java_lang_access(# Allow privileged classes outside of java.lang
         Class.new(Sun::Misc::JavaLangAccess.class == Class ? Sun::Misc::JavaLangAccess : Object) do
-          extend LocalClass
+          local_class_in System
           include_class_members System
           include Sun::Misc::JavaLangAccess if Sun::Misc::JavaLangAccess.class == Module
           

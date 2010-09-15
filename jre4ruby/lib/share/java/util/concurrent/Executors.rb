@@ -364,7 +364,7 @@ module Java::Util::Concurrent
           raise NullPointerException.new
         end
         return Class.new(Callable.class == Class ? Callable : Object) do
-          extend LocalClass
+          local_class_in Executors
           include_class_members Executors
           include Callable if Callable.class == Module
           
@@ -395,7 +395,7 @@ module Java::Util::Concurrent
           raise NullPointerException.new
         end
         return Class.new(Callable.class == Class ? Callable : Object) do
-          extend LocalClass
+          local_class_in Executors
           include_class_members Executors
           include Callable if Callable.class == Module
           
@@ -523,7 +523,7 @@ module Java::Util::Concurrent
         def call
           begin
             return AccessController.do_privileged(Class.new(self.class::PrivilegedExceptionAction.class == Class ? self.class::PrivilegedExceptionAction : Object) do
-              extend LocalClass
+              local_class_in PrivilegedCallable
               include_class_members PrivilegedCallable
               include class_self::PrivilegedExceptionAction if class_self::PrivilegedExceptionAction.class == Module
               
@@ -597,7 +597,7 @@ module Java::Util::Concurrent
         def call
           begin
             return AccessController.do_privileged(Class.new(self.class::PrivilegedExceptionAction.class == Class ? self.class::PrivilegedExceptionAction : Object) do
-              extend LocalClass
+              local_class_in PrivilegedCallableUsingCurrentClassLoader
               include_class_members PrivilegedCallableUsingCurrentClassLoader
               include class_self::PrivilegedExceptionAction if class_self::PrivilegedExceptionAction.class == Module
               
@@ -727,7 +727,7 @@ module Java::Util::Concurrent
         typesig { [class_self::Runnable] }
         def new_thread(r)
           return super(Class.new(self.class::Runnable.class == Class ? self.class::Runnable : Object) do
-            extend LocalClass
+            local_class_in PrivilegedThreadFactory
             include_class_members PrivilegedThreadFactory
             include class_self::Runnable if class_self::Runnable.class == Module
             
@@ -735,7 +735,7 @@ module Java::Util::Concurrent
             define_method :run do
               runnable_class = self.class
               AccessController.do_privileged(Class.new(self.class::PrivilegedAction.class == Class ? self.class::PrivilegedAction : Object) do
-                extend LocalClass
+                local_class_in runnable_class
                 include_class_members runnable_class
                 include class_self::PrivilegedAction if class_self::PrivilegedAction.class == Module
                 

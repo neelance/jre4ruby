@@ -218,7 +218,7 @@ module Java::Io
       end
       @cpath = RJava.cast_to_string(AccessController.do_privileged(# store only the canonical cpath if possible
       Class.new(PrivilegedAction.class == Class ? PrivilegedAction : Object) do
-        extend LocalClass
+        local_class_in FilePermission
         include_class_members FilePermission
         include PrivilegedAction if PrivilegedAction.class == Module
         

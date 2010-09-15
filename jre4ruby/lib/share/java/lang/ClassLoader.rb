@@ -403,7 +403,7 @@ module Java::Lang
         i = name.last_index_of(Character.new(?..ord))
         if (!(i).equal?(-1))
           AccessController.do_privileged(Class.new(PrivilegedAction.class == Class ? PrivilegedAction : Object) do
-            extend LocalClass
+            local_class_in ClassLoader
             include_class_members ClassLoader
             include PrivilegedAction if PrivilegedAction.class == Module
             
@@ -1188,7 +1188,7 @@ module Java::Lang
       def get_bootstrap_resources(name)
         e = get_bootstrap_class_path.get_resources(name)
         return Class.new(Enumeration.class == Class ? Enumeration : Object) do
-          extend LocalClass
+          local_class_in ClassLoader
           include_class_members ClassLoader
           include Enumeration if Enumeration.class == Module
           
@@ -1905,7 +1905,7 @@ module Java::Lang
       typesig { [Class, JavaFile] }
       def load_library0(from_class, file)
         exists = AccessController.do_privileged(Class.new(PrivilegedAction.class == Class ? PrivilegedAction : Object) do
-          extend LocalClass
+          local_class_in ClassLoader
           include_class_members ClassLoader
           include PrivilegedAction if PrivilegedAction.class == Module
           

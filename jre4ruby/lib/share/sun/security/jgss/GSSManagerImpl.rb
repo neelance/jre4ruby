@@ -49,7 +49,7 @@ module Sun::Security::Jgss
       
       when_class_loaded do
         const_set :USE_NATIVE, AccessController.do_privileged(Class.new(PrivilegedAction.class == Class ? PrivilegedAction : Object) do
-          extend LocalClass
+          local_class_in GSSManagerImpl
           include_class_members GSSManagerImpl
           include PrivilegedAction if PrivilegedAction.class == Module
           

@@ -426,7 +426,7 @@ module Sun::Security::X509
         else
           other_encoded = (obj).get_encoded
         end
-        return (Arrays == this_encoded)
+        return Arrays.==(this_encoded, other_encoded)
       rescue InvalidKeyException => e
         return false
       end

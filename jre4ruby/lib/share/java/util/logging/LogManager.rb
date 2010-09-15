@@ -228,7 +228,7 @@ module Java::Util::Logging
     class_module.module_eval {
       when_class_loaded do
         AccessController.do_privileged(Class.new(PrivilegedAction.class == Class ? PrivilegedAction : Object) do
-          extend LocalClass
+          local_class_in LogManager
           include_class_members LogManager
           include PrivilegedAction if PrivilegedAction.class == Module
           
@@ -279,7 +279,7 @@ module Java::Util::Logging
       # This private class is used as a shutdown hook.
       # It does a "reset" to close all open handlers.
       const_set_lazy(:Cleaner) { Class.new(JavaThread) do
-        extend LocalClass
+        local_class_in LogManager
         include_class_members LogManager
         
         typesig { [] }
@@ -357,7 +357,7 @@ module Java::Util::Logging
             @read_primordial_configuration = true
             begin
               AccessController.do_privileged(Class.new(PrivilegedExceptionAction.class == Class ? PrivilegedExceptionAction : Object) do
-                extend LocalClass
+                local_class_in LogManager
                 include_class_members LogManager
                 include PrivilegedExceptionAction if PrivilegedExceptionAction.class == Module
                 
@@ -465,7 +465,7 @@ module Java::Util::Logging
     # only be modified by trusted code.
     def load_logger_handlers(logger, name, handlers_property_name)
       AccessController.do_privileged(Class.new(PrivilegedAction.class == Class ? PrivilegedAction : Object) do
-        extend LocalClass
+        local_class_in LogManager
         include_class_members LogManager
         include PrivilegedAction if PrivilegedAction.class == Module
         
@@ -600,7 +600,7 @@ module Java::Util::Logging
         AccessController.do_privileged(# There is a security manager.  Raise privilege before
         # calling setLevel.
         Class.new(PrivilegedAction.class == Class ? PrivilegedAction : Object) do
-          extend LocalClass
+          local_class_in LogManager
           include_class_members LogManager
           include PrivilegedAction if PrivilegedAction.class == Module
           
@@ -633,7 +633,7 @@ module Java::Util::Logging
         AccessController.do_privileged(# There is a security manager.  Raise privilege before
         # calling setParent.
         Class.new(PrivilegedAction.class == Class ? PrivilegedAction : Object) do
-          extend LocalClass
+          local_class_in LogManager
           include_class_members LogManager
           include PrivilegedAction if PrivilegedAction.class == Module
           
@@ -1127,7 +1127,7 @@ module Java::Util::Logging
       # that we only instantiate the global handlers when they
       # are first needed.
       const_set_lazy(:RootLogger) { Class.new(Logger) do
-        extend LocalClass
+        local_class_in LogManager
         include_class_members LogManager
         
         typesig { [] }

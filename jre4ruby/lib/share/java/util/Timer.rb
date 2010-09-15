@@ -172,7 +172,7 @@ module Java::Util
       @queue = TaskQueue.new
       @thread = TimerThread.new(@queue)
       @thread_reaper = Class.new(Object.class == Class ? Object : Object) do
-        extend LocalClass
+        local_class_in Timer
         include_class_members Timer
         include Object if Object.class == Module
         
@@ -209,7 +209,7 @@ module Java::Util
       @queue = TaskQueue.new
       @thread = TimerThread.new(@queue)
       @thread_reaper = Class.new(Object.class == Class ? Object : Object) do
-        extend LocalClass
+        local_class_in Timer
         include_class_members Timer
         include Object if Object.class == Module
         

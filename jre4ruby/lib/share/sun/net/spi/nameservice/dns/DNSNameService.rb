@@ -153,7 +153,7 @@ module Sun::Net::Spi::Nameservice::Dns
         dir_ctxt = nil
         begin
           dir_ctxt = Java::Security::AccessController.do_privileged(Class.new(Java::Security::PrivilegedExceptionAction.class == Class ? Java::Security::PrivilegedExceptionAction : Object) do
-            extend LocalClass
+            local_class_in DNSNameService
             include_class_members DNSNameService
             include Java::Security::PrivilegedExceptionAction if Java::Security::PrivilegedExceptionAction.class == Module
             
@@ -207,7 +207,7 @@ module Sun::Net::Spi::Nameservice::Dns
       # do the query
       begin
         attrs = Java::Security::AccessController.do_privileged(Class.new(Java::Security::PrivilegedExceptionAction.class == Class ? Java::Security::PrivilegedExceptionAction : Object) do
-          extend LocalClass
+          local_class_in DNSNameService
           include_class_members DNSNameService
           include Java::Security::PrivilegedExceptionAction if Java::Security::PrivilegedExceptionAction.class == Module
           

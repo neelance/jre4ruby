@@ -62,7 +62,7 @@ module Sun::Net::Httpserver
       @free_selectors = nil
       @free_selectors = LinkedList.new
       c = AccessController.do_privileged(Class.new(PrivilegedAction.class == Class ? PrivilegedAction : Object) do
-        extend LocalClass
+        local_class_in SelectorCache
         include_class_members SelectorCache
         include PrivilegedAction if PrivilegedAction.class == Module
         
@@ -175,7 +175,7 @@ module Sun::Net::Httpserver
       # remain there for at least 2 minutes and no longer
       # than 4 minutes.
       const_set_lazy(:CacheCleaner) { Class.new(JavaThread) do
-        extend LocalClass
+        local_class_in SelectorCache
         include_class_members SelectorCache
         
         typesig { [] }

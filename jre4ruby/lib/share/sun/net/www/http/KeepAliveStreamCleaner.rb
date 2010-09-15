@@ -86,7 +86,7 @@ module Sun::Net::Www::Http
       when_class_loaded do
         max_data_key = "http.KeepAlive.remainingData"
         max_data = (AccessController.do_privileged(Class.new(PrivilegedAction.class == Class ? PrivilegedAction : Object) do
-          extend LocalClass
+          local_class_in KeepAliveStreamCleaner
           include_class_members KeepAliveStreamCleaner
           include PrivilegedAction if PrivilegedAction.class == Module
           
@@ -106,7 +106,7 @@ module Sun::Net::Www::Http
         self.attr_max_data_remaining = max_data
         max_capacity_key = "http.KeepAlive.queuedConnections"
         max_capacity = (AccessController.do_privileged(Class.new(PrivilegedAction.class == Class ? PrivilegedAction : Object) do
-          extend LocalClass
+          local_class_in KeepAliveStreamCleaner
           include_class_members KeepAliveStreamCleaner
           include PrivilegedAction if PrivilegedAction.class == Module
           

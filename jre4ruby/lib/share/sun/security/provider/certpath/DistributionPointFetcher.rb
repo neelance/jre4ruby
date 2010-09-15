@@ -133,7 +133,7 @@ module Sun::Security::Provider::Certpath
         points = ext.get(CRLDistributionPointsExtension::POINTS)
         results = HashSet.new
         t = points.iterator
-        while t.has_next && !(Arrays == reasons_mask)
+        while t.has_next && !Arrays.==(reasons_mask, ALL_REASONS)
           point = t.next_
           crls = get_crls(selector, cert_impl, point, reasons_mask, sign_flag, prev_key, provider, cert_stores, anchor)
           results.add_all(crls)

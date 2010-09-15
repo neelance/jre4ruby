@@ -609,7 +609,7 @@ module Sun::Security::Jgss::Krb5
       # 6..7           Filler          Contains ff ff
       # </pre>
       const_set_lazy(:MessageTokenHeader) { Class.new do
-        extend LocalClass
+        local_class_in MessageToken
         include_class_members MessageToken
         
         attr_accessor :token_id

@@ -410,7 +410,7 @@ module Java::Util
       # Method returns the char length of the "logical line" and stores
       # the line in "lineBuf".
       const_set_lazy(:LineReader) { Class.new do
-        extend LocalClass
+        local_class_in Properties
         include_class_members Properties
         
         typesig { [class_self::InputStream] }

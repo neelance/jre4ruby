@@ -1149,7 +1149,7 @@ module Java::Util
         typesig { [] }
         def iterator
           return Class.new(self.class::Iterator.class == Class ? self.class::Iterator : Object) do
-            extend LocalClass
+            local_class_in UnmodifiableCollection
             include_class_members UnmodifiableCollection
             include class_self::Iterator if class_self::Iterator.class == Module
             
@@ -1448,7 +1448,7 @@ module Java::Util
         typesig { [::Java::Int] }
         def list_iterator(index)
           return Class.new(self.class::ListIterator.class == Class ? self.class::ListIterator : Object) do
-            extend LocalClass
+            local_class_in UnmodifiableList
             include_class_members UnmodifiableList
             include class_self::ListIterator if class_self::ListIterator.class == Module
             
@@ -1745,7 +1745,7 @@ module Java::Util
             typesig { [] }
             def iterator
               return Class.new(self.class::Iterator.class == Class ? self.class::Iterator : Object) do
-                extend LocalClass
+                local_class_in UnmodifiableEntrySet
                 include_class_members UnmodifiableEntrySet
                 include class_self::Iterator if class_self::Iterator.class == Module
                 
@@ -3116,7 +3116,7 @@ module Java::Util
         def iterator
           it = @c.iterator
           return Class.new(self.class::Iterator.class == Class ? self.class::Iterator : Object) do
-            extend LocalClass
+            local_class_in CheckedCollection
             include_class_members CheckedCollection
             include class_self::Iterator if class_self::Iterator.class == Module
             
@@ -3462,7 +3462,7 @@ module Java::Util
         def list_iterator(index)
           i = @list.list_iterator(index)
           return Class.new(self.class::ListIterator.class == Class ? self.class::ListIterator : Object) do
-            extend LocalClass
+            local_class_in CheckedList
             include_class_members CheckedList
             include class_self::ListIterator if class_self::ListIterator.class == Module
             
@@ -3830,7 +3830,7 @@ module Java::Util
               i = @s.iterator
               value_type = @value_type
               return Class.new(self.class::Iterator.class == Class ? self.class::Iterator : Object) do
-                extend LocalClass
+                local_class_in CheckedEntrySet
                 include_class_members CheckedEntrySet
                 include class_self::Iterator if class_self::Iterator.class == Module
                 
@@ -4663,7 +4663,7 @@ module Java::Util
       typesig { [Object] }
       def singleton_iterator(e)
         return Class.new(Iterator.class == Class ? Iterator : Object) do
-          extend LocalClass
+          local_class_in Collections
           include_class_members Collections
           include Iterator if Iterator.class == Module
           
@@ -5198,7 +5198,7 @@ module Java::Util
       # @see Enumeration
       def enumeration(c)
         return Class.new(Enumeration.class == Class ? Enumeration : Object) do
-          extend LocalClass
+          local_class_in Collections
           include_class_members Collections
           include Enumeration if Enumeration.class == Module
           

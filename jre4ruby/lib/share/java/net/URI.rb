@@ -3034,7 +3034,7 @@ module Java::Net
       # following internal class.  This saves always having to pass the input
       # string as an argument to each internal scan/parse method.
       const_set_lazy(:Parser) { Class.new do
-        extend LocalClass
+        local_class_in URI
         include_class_members URI
         
         attr_accessor :input

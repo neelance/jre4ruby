@@ -216,7 +216,7 @@ module Sun::Security::Provider::Certpath
       # ranked higher. Later, we may want to consider other components,
       # such as key identifiers.
       const_set_lazy(:PKIXCertComparator) { Class.new do
-        extend LocalClass
+        local_class_in ReverseBuilder
         include_class_members ReverseBuilder
         include Comparator
         

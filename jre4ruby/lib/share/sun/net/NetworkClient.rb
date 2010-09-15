@@ -126,7 +126,7 @@ module Sun::Net
         vals = Array.typed(::Java::Int).new([0, 0])
         encs = Array.typed(String).new([nil])
         AccessController.do_privileged(Class.new(PrivilegedAction.class == Class ? PrivilegedAction : Object) do
-          extend LocalClass
+          local_class_in NetworkClient
           include_class_members NetworkClient
           include PrivilegedAction if PrivilegedAction.class == Module
           
@@ -188,7 +188,7 @@ module Sun::Net
         # Expected byte sequence for string above
         chk_b = Array.typed(::Java::Byte).new([48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 65, 66, 67, 68, 69, 70, 71, 72, 73, 74, 75, 76, 77, 78, 79, 80, 81, 82, 83, 84, 85, 86, 87, 88, 89, 90, 97, 98, 99, 100, 101, 102, 103, 104, 105, 106, 107, 108, 109, 110, 111, 112, 113, 114, 115, 116, 117, 118, 119, 120, 121, 122, 45, 95, 46, 33, 126, 42, 39, 40, 41, 59, 47, 63, 58, 64, 38, 61, 43, 36, 44])
         b = chk_s.get_bytes(encoding)
-        return (Arrays == b)
+        return Arrays.==(b, chk_b)
       end
     }
     
@@ -215,7 +215,7 @@ module Sun::Net
       if (!(@proxy).nil?)
         if ((@proxy.type).equal?(Proxy::Type::SOCKS))
           s = AccessController.do_privileged(Class.new(PrivilegedAction.class == Class ? PrivilegedAction : Object) do
-            extend LocalClass
+            local_class_in NetworkClient
             include_class_members NetworkClient
             include PrivilegedAction if PrivilegedAction.class == Module
             

@@ -98,7 +98,7 @@ module Sun::Security::Jgss::Krb5
         keys = nil
         begin
           keys = AccessController.do_privileged(Class.new(PrivilegedExceptionAction.class == Class ? PrivilegedExceptionAction : Object) do
-            extend LocalClass
+            local_class_in Krb5AcceptCredential
             include_class_members Krb5AcceptCredential
             include PrivilegedExceptionAction if PrivilegedExceptionAction.class == Module
             

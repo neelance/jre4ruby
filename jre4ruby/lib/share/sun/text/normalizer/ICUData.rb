@@ -55,7 +55,7 @@ module Sun::Text::Normalizer
         i = nil
         if (!(System.get_security_manager).nil?)
           i = AccessController.do_privileged(Class.new(PrivilegedAction.class == Class ? PrivilegedAction : Object) do
-            extend LocalClass
+            local_class_in ICUData
             include_class_members ICUData
             include PrivilegedAction if PrivilegedAction.class == Module
             

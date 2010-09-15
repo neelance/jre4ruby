@@ -79,7 +79,7 @@ module Sun::Security::Pkcs11::Wrapper
         # library available to the bootclassloader, but we run in the
         # extension classloader.
         Class.new(PrivilegedAction.class == Class ? PrivilegedAction : Object) do
-          extend LocalClass
+          local_class_in PKCS11
           include_class_members PKCS11
           include PrivilegedAction if PrivilegedAction.class == Module
           

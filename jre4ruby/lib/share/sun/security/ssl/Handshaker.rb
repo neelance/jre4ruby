@@ -631,7 +631,7 @@ module Sun::Security::Ssl
         process_loop
       else
         delegate_task(Class.new(PrivilegedExceptionAction.class == Class ? PrivilegedExceptionAction : Object) do
-          extend LocalClass
+          local_class_in Handshaker
           include_class_members Handshaker
           include PrivilegedExceptionAction if PrivilegedExceptionAction.class == Module
           
@@ -987,7 +987,7 @@ module Sun::Security::Ssl
       # benefit from this, where ClientKeyExchange/CertificateVerify
       # could be carried out in parallel.
       const_set_lazy(:DelegatedTask) { Class.new do
-        extend LocalClass
+        local_class_in Handshaker
         include_class_members Handshaker
         include Runnable
         

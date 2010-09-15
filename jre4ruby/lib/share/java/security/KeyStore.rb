@@ -761,7 +761,7 @@ module Java::Security
       def get_default_type
         kstype = nil
         kstype = RJava.cast_to_string(AccessController.do_privileged(Class.new(PrivilegedAction.class == Class ? PrivilegedAction : Object) do
-          extend LocalClass
+          local_class_in KeyStore
           include_class_members KeyStore
           include PrivilegedAction if PrivilegedAction.class == Module
           
@@ -1409,7 +1409,7 @@ module Java::Security
               raise class_self::IllegalArgumentException.new("KeyStore not initialized")
             end
             return Class.new(class_self::Builder.class == Class ? class_self::Builder : Object) do
-              extend LocalClass
+              local_class_in Builder
               include_class_members Builder
               include class_self::Builder if class_self::Builder.class == Module
               
@@ -1581,7 +1581,7 @@ module Java::Security
                   raise self.class::KeyStoreException.new("Previous KeyStore instantiation failed", @old_exception)
                 end
                 action = Class.new(self.class::PrivilegedExceptionAction.class == Class ? self.class::PrivilegedExceptionAction : Object) do
-                  extend LocalClass
+                  local_class_in FileBuilder
                   include_class_members FileBuilder
                   include class_self::PrivilegedExceptionAction if class_self::PrivilegedExceptionAction.class == Module
                   
@@ -1708,7 +1708,7 @@ module Java::Security
             end
             context = AccessController.get_context
             return Class.new(class_self::Builder.class == Class ? class_self::Builder : Object) do
-              extend LocalClass
+              local_class_in Builder
               include_class_members Builder
               include class_self::Builder if class_self::Builder.class == Module
               
@@ -1764,7 +1764,7 @@ module Java::Security
                 super(*args)
                 builder_class = self.class
                 @action = Class.new(self.class::PrivilegedExceptionAction.class == Class ? self.class::PrivilegedExceptionAction : Object) do
-                  extend LocalClass
+                  local_class_in builder_class
                   include_class_members builder_class
                   include class_self::PrivilegedExceptionAction if class_self::PrivilegedExceptionAction.class == Module
                   

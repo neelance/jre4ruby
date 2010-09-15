@@ -57,7 +57,7 @@ module Sun::Security::Ec
     class_module.module_eval {
       when_class_loaded do
         p = Class.new(Provider.class == Class ? Provider : Object) do
-          extend LocalClass
+          local_class_in ECKeyFactory
           include_class_members ECKeyFactory
           include Provider if Provider.class == Module
           
@@ -70,7 +70,7 @@ module Sun::Security::Ec
           alias_method :initialize_anonymous, :initialize
         end.new_local(self, "SunEC-Internal", 1.0, nil)
         AccessController.do_privileged(Class.new(PrivilegedAction.class == Class ? PrivilegedAction : Object) do
-          extend LocalClass
+          local_class_in ECKeyFactory
           include_class_members ECKeyFactory
           include PrivilegedAction if PrivilegedAction.class == Module
           

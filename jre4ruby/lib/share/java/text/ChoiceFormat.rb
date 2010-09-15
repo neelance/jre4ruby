@@ -510,7 +510,7 @@ module Java::Text
         return false
       end
       other = obj
-      return ((Arrays == @choice_limits) && (Arrays == @choice_formats))
+      return (Arrays.==(@choice_limits, other.attr_choice_limits) && Arrays.==(@choice_formats, other.attr_choice_formats))
     end
     
     typesig { [ObjectInputStream] }

@@ -789,7 +789,7 @@ module Java::Util
       @default_radix = 10
       @locale = nil
       @pattern_cache = Class.new(LRUCache.class == Class ? LRUCache : Object) do
-        extend LocalClass
+        local_class_in Scanner
         include_class_members Scanner
         include LRUCache if LRUCache.class == Module
         

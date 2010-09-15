@@ -195,7 +195,7 @@ module Java::Lang
       # exitStatus() to be safely executed in parallel (and they
       # need no native code).
       Class.new(Java::Security::PrivilegedAction.class == Class ? Java::Security::PrivilegedAction : Object) do
-        extend LocalClass
+        local_class_in UNIXProcess
         include_class_members UNIXProcess
         include Java::Security::PrivilegedAction if Java::Security::PrivilegedAction.class == Module
         
@@ -203,7 +203,7 @@ module Java::Lang
         define_method :run do
           privileged_action_class = self.class
           t = Class.new(self.class::JavaThread.class == Class ? self.class::JavaThread : Object) do
-            extend LocalClass
+            local_class_in privileged_action_class
             include_class_members privileged_action_class
             include class_self::JavaThread if class_self::JavaThread.class == Module
             
@@ -219,7 +219,7 @@ module Java::Lang
               end
               thread_class = self.class
               Java::Security::AccessController.do_privileged(Class.new(Java::Security::PrivilegedAction.class == Class ? Java::Security::PrivilegedAction : Object) do
-                extend LocalClass
+                local_class_in thread_class
                 include_class_members thread_class
                 include Java::Security::PrivilegedAction if Java::Security::PrivilegedAction.class == Module
                 

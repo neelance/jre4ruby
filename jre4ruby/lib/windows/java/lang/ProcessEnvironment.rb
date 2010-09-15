@@ -208,7 +208,7 @@ module Java::Lang
         typesig { [] }
         def iterator
           return Class.new(self.class::Iterator.class == Class ? self.class::Iterator : Object) do
-            extend LocalClass
+            local_class_in CheckedEntrySet
             include_class_members CheckedEntrySet
             include class_self::Iterator if class_self::Iterator.class == Module
             

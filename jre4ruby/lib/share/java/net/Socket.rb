@@ -469,7 +469,7 @@ module Java::Net
       @old_impl = AccessController.do_privileged(# SocketImpl.connect() is a protected method, therefore we need to use
       # getDeclaredMethod, therefore we need permission to access the member
       Class.new(PrivilegedAction.class == Class ? PrivilegedAction : Object) do
-        extend LocalClass
+        local_class_in Socket
         include_class_members Socket
         include PrivilegedAction if PrivilegedAction.class == Module
         
@@ -861,7 +861,7 @@ module Java::Net
       is = nil
       begin
         is = AccessController.do_privileged(Class.new(PrivilegedExceptionAction.class == Class ? PrivilegedExceptionAction : Object) do
-          extend LocalClass
+          local_class_in Socket
           include_class_members Socket
           include PrivilegedExceptionAction if PrivilegedExceptionAction.class == Module
           
@@ -915,7 +915,7 @@ module Java::Net
       os = nil
       begin
         os = AccessController.do_privileged(Class.new(PrivilegedExceptionAction.class == Class ? PrivilegedExceptionAction : Object) do
-          extend LocalClass
+          local_class_in Socket
           include_class_members Socket
           include PrivilegedExceptionAction if PrivilegedExceptionAction.class == Module
           

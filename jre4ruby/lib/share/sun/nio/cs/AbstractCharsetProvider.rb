@@ -212,7 +212,7 @@ module Sun::Nio::Cs
         ks = ArrayList.new(@class_map.key_set)
       end
       return Class.new(Iterator.class == Class ? Iterator : Object) do
-        extend LocalClass
+        local_class_in AbstractCharsetProvider
         include_class_members AbstractCharsetProvider
         include Iterator if Iterator.class == Module
         

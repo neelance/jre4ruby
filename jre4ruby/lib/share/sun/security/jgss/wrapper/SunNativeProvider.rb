@@ -102,7 +102,7 @@ module Sun::Security::Jgss::Wrapper
       
       when_class_loaded do
         self.attr_mech_map = AccessController.do_privileged(Class.new(PrivilegedAction.class == Class ? PrivilegedAction : Object) do
-          extend LocalClass
+          local_class_in SunNativeProvider
           include_class_members SunNativeProvider
           include PrivilegedAction if PrivilegedAction.class == Module
           

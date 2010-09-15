@@ -2615,7 +2615,7 @@ module Java::Util
       zi = nil
       begin
         zi = AccessController.do_privileged(Class.new(PrivilegedExceptionAction.class == Class ? PrivilegedExceptionAction : Object) do
-          extend LocalClass
+          local_class_in Calendar
           include_class_members Calendar
           include PrivilegedExceptionAction if PrivilegedExceptionAction.class == Module
           

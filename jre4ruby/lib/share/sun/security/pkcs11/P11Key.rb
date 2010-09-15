@@ -223,7 +223,7 @@ module Sun::Security::Pkcs11
       else
         other_enc = other.get_encoded
       end
-      return (Arrays == this_enc)
+      return Arrays.==(this_enc, other_enc)
     end
     
     typesig { [] }

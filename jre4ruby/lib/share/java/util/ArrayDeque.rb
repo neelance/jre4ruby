@@ -622,7 +622,7 @@ module Java::Util
     
     class_module.module_eval {
       const_set_lazy(:DeqIterator) { Class.new do
-        extend LocalClass
+        local_class_in ArrayDeque
         include_class_members ArrayDeque
         include Iterator
         
@@ -695,7 +695,7 @@ module Java::Util
       end }
       
       const_set_lazy(:DescendingIterator) { Class.new do
-        extend LocalClass
+        local_class_in ArrayDeque
         include_class_members ArrayDeque
         include Iterator
         

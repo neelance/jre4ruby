@@ -131,7 +131,7 @@ module Java::Io
       @max_entries = 200
       @millis_until_expiration = millis_until_expiration
       @map = Class.new(LinkedHashMap.class == Class ? LinkedHashMap : Object) do
-        extend LocalClass
+        local_class_in ExpiringCache
         include_class_members ExpiringCache
         include LinkedHashMap if LinkedHashMap.class == Module
         

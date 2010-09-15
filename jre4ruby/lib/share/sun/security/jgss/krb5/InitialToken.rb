@@ -105,7 +105,7 @@ module Sun::Security::Jgss::Krb5
       const_attr_reader  :Inet6_ADDRSZ
       
       const_set_lazy(:OverloadedChecksum) { Class.new do
-        extend LocalClass
+        local_class_in InitialToken
         include_class_members InitialToken
         
         attr_accessor :checksum_bytes
@@ -245,7 +245,7 @@ module Sun::Security::Jgss::Krb5
           remote_binding_bytes = Array.typed(::Java::Byte).new(CHECKSUM_BINDINGS_SIZE) { 0 }
           System.arraycopy(@checksum_bytes, 4, remote_binding_bytes, 0, CHECKSUM_BINDINGS_SIZE)
           no_bindings = Array.typed(::Java::Byte).new(CHECKSUM_BINDINGS_SIZE) { 0 }
-          token_contains_bindings = (!(Java::Util::Arrays == no_bindings))
+          token_contains_bindings = (!Java::Util::Arrays.==(no_bindings, remote_binding_bytes))
           local_bindings = context.get_channel_binding
           if (token_contains_bindings || !(local_bindings).nil?)
             bad_bindings = false
@@ -254,7 +254,7 @@ module Sun::Security::Jgss::Krb5
               local_bindings_bytes = compute_channel_binding(local_bindings)
               # System.out.println("ChannelBinding hash: "
               # + getHexBytes(localBindingsBytes));
-              bad_bindings = (!(Java::Util::Arrays == local_bindings_bytes))
+              bad_bindings = (!Java::Util::Arrays.==(local_bindings_bytes, remote_binding_bytes))
               error_message = "Bytes mismatch!"
             else
               if ((local_bindings).nil?)

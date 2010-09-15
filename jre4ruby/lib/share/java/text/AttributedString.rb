@@ -756,7 +756,7 @@ module Java::Text
       
       # the iterator class associated with this string class
       const_set_lazy(:AttributedStringIterator) { Class.new do
-        extend LocalClass
+        local_class_in AttributedString
         include_class_members AttributedString
         include AttributedCharacterIterator
         
@@ -1124,7 +1124,7 @@ module Java::Text
       
       # the map class associated with this string class, giving access to the attributes of one run
       const_set_lazy(:AttributeMap) { Class.new(AbstractMap) do
-        extend LocalClass
+        local_class_in AttributedString
         include_class_members AttributedString
         
         attr_accessor :run_index

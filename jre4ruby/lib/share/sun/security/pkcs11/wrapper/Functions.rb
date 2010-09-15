@@ -388,7 +388,7 @@ module Sun::Security::Pkcs11::Wrapper
       # @preconditions
       # @postconditions
       def ==(array1, array2)
-        return (Arrays == array1)
+        return Arrays.==(array1, array2)
       end
       
       typesig { [Array.typed(::Java::Char), Array.typed(::Java::Char)] }
@@ -403,7 +403,7 @@ module Sun::Security::Pkcs11::Wrapper
       # @preconditions
       # @postconditions
       def ==(array1, array2)
-        return (Arrays == array1)
+        return Arrays.==(array1, array2)
       end
       
       typesig { [CK_DATE, CK_DATE] }

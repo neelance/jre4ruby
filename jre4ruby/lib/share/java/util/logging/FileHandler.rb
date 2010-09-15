@@ -189,7 +189,7 @@ module Java::Util::Logging
       # (a) forwards all its output to a target stream
       # (b) keeps track of how many bytes have been written
       const_set_lazy(:MeteredStream) { Class.new(OutputStream) do
-        extend LocalClass
+        local_class_in FileHandler
         include_class_members FileHandler
         
         attr_accessor :out
@@ -708,7 +708,7 @@ module Java::Util::Logging
           # currently being called from untrusted code.
           # So it is safe to raise privilege here.
           Class.new(PrivilegedAction.class == Class ? PrivilegedAction : Object) do
-            extend LocalClass
+            local_class_in FileHandler
             include_class_members FileHandler
             include PrivilegedAction if PrivilegedAction.class == Module
             

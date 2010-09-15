@@ -153,7 +153,7 @@ module Sun::Misc
           if (!(self.attr_log_file_name).nil?)
             if ((self.attr_log_writer).nil?)
               Java::Security::AccessController.do_privileged(Class.new(Java::Security::PrivilegedAction.class == Class ? Java::Security::PrivilegedAction : Object) do
-                extend LocalClass
+                local_class_in PerformanceLogger
                 include_class_members PerformanceLogger
                 include Java::Security::PrivilegedAction if Java::Security::PrivilegedAction.class == Module
                 

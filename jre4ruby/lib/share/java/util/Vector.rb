@@ -337,7 +337,7 @@ module Java::Util
     # @see     Iterator
     def elements
       return Class.new(Enumeration.class == Class ? Enumeration : Object) do
-        extend LocalClass
+        local_class_in Vector
         include_class_members Vector
         include Enumeration if Enumeration.class == Module
         
@@ -1161,7 +1161,7 @@ module Java::Util
     class_module.module_eval {
       # An optimized version of AbstractList.Itr
       const_set_lazy(:Itr) { Class.new do
-        extend LocalClass
+        local_class_in Vector
         include_class_members Vector
         include Iterator
         
@@ -1239,7 +1239,7 @@ module Java::Util
       
       # An optimized version of AbstractList.ListItr
       const_set_lazy(:ListItr) { Class.new(Itr) do
-        extend LocalClass
+        local_class_in Vector
         include_class_members Vector
         overload_protected {
           include ListIterator

@@ -168,7 +168,7 @@ module Sun::Misc
           # Create a new daemon thread in the root thread group
           def create
             pa = Class.new(class_self::PrivilegedAction.class == Class ? class_self::PrivilegedAction : Object) do
-              extend LocalClass
+              local_class_in Daemon
               include_class_members Daemon
               include class_self::PrivilegedAction if class_self::PrivilegedAction.class == Module
               

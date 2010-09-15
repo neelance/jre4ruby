@@ -1128,7 +1128,7 @@ module Java::Io
       # is "safe", false otherwise.
       def audit_subclass(subcl)
         result = AccessController.do_privileged(Class.new(PrivilegedAction.class == Class ? PrivilegedAction : Object) do
-          extend LocalClass
+          local_class_in ObjectOutputStream
           include_class_members ObjectOutputStream
           include PrivilegedAction if PrivilegedAction.class == Module
           
@@ -1633,7 +1633,7 @@ module Java::Io
       
       # Default PutField implementation.
       const_set_lazy(:PutFieldImpl) { Class.new(PutField) do
-        extend LocalClass
+        local_class_in ObjectOutputStream
         include_class_members ObjectOutputStream
         
         # class descriptor describing serializable fields

@@ -140,7 +140,7 @@ module Sun::Security::Ssl
           end
           props = HashMap.new
           AccessController.do_privileged(Class.new(PrivilegedExceptionAction.class == Class ? PrivilegedExceptionAction : Object) do
-            extend LocalClass
+            local_class_in DefaultSSLContextImpl
             include_class_members DefaultSSLContextImpl
             include PrivilegedExceptionAction if PrivilegedExceptionAction.class == Module
             
@@ -175,7 +175,7 @@ module Sun::Security::Ssl
           fs = nil
           if (!(default_key_store.length).equal?(0) && !(NONE == default_key_store))
             fs = AccessController.do_privileged(Class.new(PrivilegedExceptionAction.class == Class ? PrivilegedExceptionAction : Object) do
-              extend LocalClass
+              local_class_in DefaultSSLContextImpl
               include_class_members DefaultSSLContextImpl
               include PrivilegedExceptionAction if PrivilegedExceptionAction.class == Module
               

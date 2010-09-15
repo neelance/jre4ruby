@@ -81,7 +81,7 @@ module Sun::Security::Jgss
         raise IllegalArgumentException.new(RJava.cast_to_string(mech.to_s) + " not supported")
       end
       @config = Java::Security::AccessController.do_privileged(Class.new(Java::Security::PrivilegedAction.class == Class ? Java::Security::PrivilegedAction : Object) do
-        extend LocalClass
+        local_class_in LoginConfigImpl
         include_class_members LoginConfigImpl
         include Java::Security::PrivilegedAction if Java::Security::PrivilegedAction.class == Module
         

@@ -79,7 +79,7 @@ module Sun::Text::Normalizer
     class_module.module_eval {
       # Java friend implementation
       const_set_lazy(:FriendAgent) { Class.new do
-        extend LocalClass
+        local_class_in CharTrie
         include_class_members CharTrie
         
         typesig { [] }

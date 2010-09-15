@@ -194,7 +194,7 @@ module Sun::Security::Util
             return false
           end
           other = obj
-          return (Arrays == @b)
+          return Arrays.==(@b, other.attr_b)
         end
         
         private

@@ -54,7 +54,7 @@ module Sun::Net::Util
           return nil
         end
         res = Array.typed(::Java::Byte).new(INADDR4SZ) { 0 }
-        s = src.split(Regexp.new("\\."))
+        s = src.split("\\.", -1)
         val = 0
         begin
           case (s.attr_length)

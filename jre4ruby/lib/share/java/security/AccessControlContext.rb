@@ -367,7 +367,7 @@ module Java::Security
             pd = @context[i]
             db = self.attr_debug
             AccessController.do_privileged(Class.new(PrivilegedAction.class == Class ? PrivilegedAction : Object) do
-              extend LocalClass
+              local_class_in AccessControlContext
               include_class_members AccessControlContext
               include PrivilegedAction if PrivilegedAction.class == Module
               

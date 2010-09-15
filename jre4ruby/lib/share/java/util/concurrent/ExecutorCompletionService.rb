@@ -131,7 +131,7 @@ module Java::Util::Concurrent
     class_module.module_eval {
       # FutureTask extension to enqueue upon completion
       const_set_lazy(:QueueingFuture) { Class.new(FutureTask) do
-        extend LocalClass
+        local_class_in ExecutorCompletionService
         include_class_members ExecutorCompletionService
         
         typesig { [class_self::RunnableFuture] }

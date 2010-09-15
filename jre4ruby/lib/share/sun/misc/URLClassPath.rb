@@ -227,7 +227,7 @@ module Sun::Misc
     # @return an Enumeration of all the urls having the specified name
     def find_resources(name, check)
       return Class.new(Enumeration.class == Class ? Enumeration : Object) do
-        extend LocalClass
+        local_class_in URLClassPath
         include_class_members URLClassPath
         include Enumeration if Enumeration.class == Module
         
@@ -301,7 +301,7 @@ module Sun::Misc
     # @return an Enumeration of all the resources having the specified name
     def get_resources(name, check)
       return Class.new(Enumeration.class == Class ? Enumeration : Object) do
-        extend LocalClass
+        local_class_in URLClassPath
         include_class_members URLClassPath
         include Enumeration if Enumeration.class == Module
         
@@ -418,7 +418,7 @@ module Sun::Misc
     def get_loader(url)
       begin
         return Java::Security::AccessController.do_privileged(Class.new(Java::Security::PrivilegedExceptionAction.class == Class ? Java::Security::PrivilegedExceptionAction : Object) do
-          extend LocalClass
+          local_class_in URLClassPath
           include_class_members URLClassPath
           include Java::Security::PrivilegedExceptionAction if Java::Security::PrivilegedExceptionAction.class == Module
           
@@ -614,7 +614,7 @@ module Sun::Misc
             return nil
           end
           return Class.new(self.class::Resource.class == Class ? self.class::Resource : Object) do
-            extend LocalClass
+            local_class_in Loader
             include_class_members Loader
             include class_self::Resource if class_self::Resource.class == Module
             
@@ -767,7 +767,7 @@ module Sun::Misc
           if ((@jar).nil?)
             begin
               Java::Security::AccessController.do_privileged(Class.new(Java::Security::PrivilegedExceptionAction.class == Class ? Java::Security::PrivilegedExceptionAction : Object) do
-                extend LocalClass
+                local_class_in JarLoader
                 include_class_members JarLoader
                 include Java::Security::PrivilegedExceptionAction if Java::Security::PrivilegedExceptionAction.class == Module
                 
@@ -863,7 +863,7 @@ module Sun::Misc
             return nil
           end
           return Class.new(self.class::Resource.class == Class ? self.class::Resource : Object) do
-            extend LocalClass
+            local_class_in JarLoader
             include_class_members JarLoader
             include class_self::Resource if class_self::Resource.class == Module
             
@@ -1007,7 +1007,7 @@ module Sun::Misc
                   new_loader = AccessController.do_privileged(# no loader has been set up for this jar file
                   # before
                   Class.new(self.class::PrivilegedExceptionAction.class == Class ? self.class::PrivilegedExceptionAction : Object) do
-                    extend LocalClass
+                    local_class_in JarLoader
                     include_class_members JarLoader
                     include class_self::PrivilegedExceptionAction if class_self::PrivilegedExceptionAction.class == Module
                     
@@ -1181,7 +1181,7 @@ module Sun::Misc
             file = self.class::JavaFile.new(@dir, name.replace(Character.new(?/.ord), JavaFile.attr_separator_char))
             if (file.exists)
               return Class.new(self.class::Resource.class == Class ? self.class::Resource : Object) do
-                extend LocalClass
+                local_class_in FileLoader
                 include_class_members FileLoader
                 include class_self::Resource if class_self::Resource.class == Module
                 

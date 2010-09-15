@@ -183,7 +183,7 @@ module Java::Nio::Channels::Spi
             return self.attr_provider
           end
           return AccessController.do_privileged(Class.new(PrivilegedAction.class == Class ? PrivilegedAction : Object) do
-            extend LocalClass
+            local_class_in SelectorProvider
             include_class_members SelectorProvider
             include PrivilegedAction if PrivilegedAction.class == Module
             

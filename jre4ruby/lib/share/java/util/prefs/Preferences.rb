@@ -234,7 +234,7 @@ module Java::Util::Prefs
       def factory
         factory_name = AccessController.do_privileged(# 1. Try user-specified system property
         Class.new(PrivilegedAction.class == Class ? PrivilegedAction : Object) do
-          extend LocalClass
+          local_class_in Preferences
           include_class_members Preferences
           include PrivilegedAction if PrivilegedAction.class == Module
           
@@ -275,7 +275,7 @@ module Java::Util::Prefs
           end
         end
         return AccessController.do_privileged(Class.new(PrivilegedAction.class == Class ? PrivilegedAction : Object) do
-          extend LocalClass
+          local_class_in Preferences
           include_class_members Preferences
           include PrivilegedAction if PrivilegedAction.class == Module
           

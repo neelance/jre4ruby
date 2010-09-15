@@ -242,7 +242,7 @@ module Sun::Security::Ssl
       cache_limit = 0
       begin
         s = Java::Security::AccessController.do_privileged(Class.new(Java::Security::PrivilegedAction.class == Class ? Java::Security::PrivilegedAction : Object) do
-          extend LocalClass
+          local_class_in SSLSessionContextImpl
           include_class_members SSLSessionContextImpl
           include Java::Security::PrivilegedAction if Java::Security::PrivilegedAction.class == Module
           

@@ -280,7 +280,7 @@ module Java::Security
           return false
         end
       end
-      return (Java::Util::Arrays == a_key.get_encoded)
+      return Java::Util::Arrays.==(a_key.get_encoded, another_key.get_encoded)
     end
     
     typesig { [Certificate] }

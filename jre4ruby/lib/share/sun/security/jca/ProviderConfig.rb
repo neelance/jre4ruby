@@ -91,7 +91,7 @@ module Sun::Security::Jca
           return o
         end
         cl = AccessController.do_privileged(Class.new(PrivilegedAction.class == Class ? PrivilegedAction : Object) do
-          extend LocalClass
+          local_class_in ProviderConfig
           include_class_members ProviderConfig
           include PrivilegedAction if PrivilegedAction.class == Module
           
@@ -191,7 +191,7 @@ module Sun::Security::Jca
     # or if disabled via system property
     def check_sun_pkcs11solaris
       o = AccessController.do_privileged(Class.new(PrivilegedAction.class == Class ? PrivilegedAction : Object) do
-        extend LocalClass
+        local_class_in ProviderConfig
         include_class_members ProviderConfig
         include PrivilegedAction if PrivilegedAction.class == Module
         
@@ -317,7 +317,7 @@ module Sun::Security::Jca
     # throws a ProviderException. All other Exceptions are ignored.
     def do_load_provider
       return AccessController.do_privileged(Class.new(PrivilegedAction.class == Class ? PrivilegedAction : Object) do
-        extend LocalClass
+        local_class_in ProviderConfig
         include_class_members ProviderConfig
         include PrivilegedAction if PrivilegedAction.class == Module
         
@@ -397,7 +397,7 @@ module Sun::Security::Jca
           return value
         end
         return AccessController.do_privileged(Class.new(PrivilegedAction.class == Class ? PrivilegedAction : Object) do
-          extend LocalClass
+          local_class_in ProviderConfig
           include_class_members ProviderConfig
           include PrivilegedAction if PrivilegedAction.class == Module
           

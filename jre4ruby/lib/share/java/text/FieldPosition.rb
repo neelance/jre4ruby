@@ -273,7 +273,7 @@ module Java::Text
       # of the FieldPosition if the arguments match the field of
       # the FieldPosition.
       const_set_lazy(:Delegate) { Class.new do
-        extend LocalClass
+        local_class_in FieldPosition
         include_class_members FieldPosition
         include Format::FieldDelegate
         

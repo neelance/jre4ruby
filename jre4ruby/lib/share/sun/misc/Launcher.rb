@@ -163,7 +163,7 @@ module Sun::Misc
               # aa synthesized ACC via a call to the private method
               # ExtClassLoader.getContext().
               Class.new(class_self::PrivilegedExceptionAction.class == Class ? class_self::PrivilegedExceptionAction : Object) do
-                extend LocalClass
+                local_class_in ExtClassLoader
                 include_class_members ExtClassLoader
                 include class_self::PrivilegedExceptionAction if class_self::PrivilegedExceptionAction.class == Module
                 
@@ -308,7 +308,7 @@ module Sun::Misc
             # when loading  classes. Specifically it prevent
             # accessClassInPackage.sun.* grants from being honored.
             Class.new(class_self::PrivilegedAction.class == Class ? class_self::PrivilegedAction : Object) do
-              extend LocalClass
+              local_class_in AppClassLoader
               include_class_members AppClassLoader
               include class_self::PrivilegedAction if class_self::PrivilegedAction.class == Module
               
@@ -394,7 +394,7 @@ module Sun::Misc
         if (!(prop).nil?)
           path = prop
           urls = AccessController.do_privileged(Class.new(PrivilegedAction.class == Class ? PrivilegedAction : Object) do
-            extend LocalClass
+            local_class_in Launcher
             include_class_members Launcher
             include PrivilegedAction if PrivilegedAction.class == Module
             
@@ -627,7 +627,7 @@ module Sun::Misc
         # add permission to read any "java.*" property
         @perms.add(Java::Util::PropertyPermission.new("java.*", SecurityConstants::PROPERTY_READ_ACTION))
         AccessController.do_privileged(Class.new(PrivilegedAction.class == Class ? PrivilegedAction : Object) do
-          extend LocalClass
+          local_class_in PathPermissions
           include_class_members PathPermissions
           include PrivilegedAction if PrivilegedAction.class == Module
           

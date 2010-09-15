@@ -548,7 +548,7 @@ module Java::Util::Concurrent
     
     class_module.module_eval {
       const_set_lazy(:Itr) { Class.new do
-        extend LocalClass
+        local_class_in ConcurrentLinkedQueue
         include_class_members ConcurrentLinkedQueue
         include Iterator
         

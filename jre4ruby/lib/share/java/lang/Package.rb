@@ -215,7 +215,7 @@ module Java::Lang
       if ((@spec_version).nil? || @spec_version.length < 1)
         raise NumberFormatException.new("Empty version string")
       end
-      sa = @spec_version.split(Regexp.new("\\."))
+      sa = @spec_version.split("\\.", -1)
       si = Array.typed(::Java::Int).new(sa.attr_length) { 0 }
       i = 0
       while i < sa.attr_length
@@ -225,7 +225,7 @@ module Java::Lang
         end
         i += 1
       end
-      da = desired.split(Regexp.new("\\."))
+      da = desired.split("\\.", -1)
       di = Array.typed(::Java::Int).new(da.attr_length) { 0 }
       i_ = 0
       while i_ < da.attr_length
@@ -367,7 +367,7 @@ module Java::Lang
         rescue ClassNotFoundException => ex
           package_info_proxy_class = # store a proxy for the package info that has no annotations
           Class.new do
-            extend LocalClass
+            local_class_in Package
             include_class_members Package
             
             typesig { [] }
@@ -551,7 +551,7 @@ module Java::Lang
       typesig { [String, String] }
       def define_system_package(iname, fn)
         return AccessController.do_privileged(Class.new(PrivilegedAction.class == Class ? PrivilegedAction : Object) do
-          extend LocalClass
+          local_class_in Package
           include_class_members Package
           include PrivilegedAction if PrivilegedAction.class == Module
           

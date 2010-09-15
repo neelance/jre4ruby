@@ -59,7 +59,7 @@ module Java::Lang
           return
         end
         sh = Class.new(SignalHandler.class == Class ? SignalHandler : Object) do
-          extend LocalClass
+          local_class_in Terminator
           include_class_members Terminator
           include SignalHandler if SignalHandler.class == Module
           

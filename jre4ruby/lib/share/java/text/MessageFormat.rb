@@ -1127,7 +1127,7 @@ module Java::Text
         return false
       end
       other = obj
-      return ((@max_offset).equal?(other.attr_max_offset) && (@pattern == other.attr_pattern) && ((!(@locale).nil? && (@locale == other.attr_locale)) || ((@locale).nil? && (other.attr_locale).nil?)) && (Arrays == @offsets) && (Arrays == @argument_numbers) && (Arrays == @formats))
+      return ((@max_offset).equal?(other.attr_max_offset) && (@pattern == other.attr_pattern) && ((!(@locale).nil? && (@locale == other.attr_locale)) || ((@locale).nil? && (other.attr_locale).nil?)) && Arrays.==(@offsets, other.attr_offsets) && Arrays.==(@argument_numbers, other.attr_argument_numbers) && Arrays.==(@formats, other.attr_formats))
     end
     
     typesig { [] }

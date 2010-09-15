@@ -359,7 +359,7 @@ module Java::Io
       # REMIND: synchronize instead of relying on volatile?
       if ((@suid).nil?)
         @suid = AccessController.do_privileged(Class.new(PrivilegedAction.class == Class ? PrivilegedAction : Object) do
-          extend LocalClass
+          local_class_in ObjectStreamClass
           include_class_members ObjectStreamClass
           include PrivilegedAction if PrivilegedAction.class == Module
           
@@ -554,7 +554,7 @@ module Java::Io
             end
             if (interrupted)
               AccessController.do_privileged(Class.new(self.class::PrivilegedAction.class == Class ? self.class::PrivilegedAction : Object) do
-                extend LocalClass
+                local_class_in EntryFuture
                 include_class_members EntryFuture
                 include class_self::PrivilegedAction if class_self::PrivilegedAction.class == Module
                 
@@ -634,7 +634,7 @@ module Java::Io
       @local_desc = self
       if (@serializable)
         AccessController.do_privileged(Class.new(PrivilegedAction.class == Class ? PrivilegedAction : Object) do
-          extend LocalClass
+          local_class_in ObjectStreamClass
           include_class_members ObjectStreamClass
           include PrivilegedAction if PrivilegedAction.class == Module
           
@@ -1788,7 +1788,7 @@ module Java::Io
             i += 1
           end
           Arrays.sort(field_sigs, Class.new(Comparator.class == Class ? Comparator : Object) do
-            extend LocalClass
+            local_class_in ObjectStreamClass
             include_class_members ObjectStreamClass
             include Comparator if Comparator.class == Module
             
@@ -1831,7 +1831,7 @@ module Java::Io
             i__ += 1
           end
           Arrays.sort(cons_sigs, Class.new(Comparator.class == Class ? Comparator : Object) do
-            extend LocalClass
+            local_class_in ObjectStreamClass
             include_class_members ObjectStreamClass
             include Comparator if Comparator.class == Module
             
@@ -1868,7 +1868,7 @@ module Java::Io
             i____ += 1
           end
           Arrays.sort(meth_sigs, Class.new(Comparator.class == Class ? Comparator : Object) do
-            extend LocalClass
+            local_class_in ObjectStreamClass
             include_class_members ObjectStreamClass
             include Comparator if Comparator.class == Module
             

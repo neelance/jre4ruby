@@ -333,7 +333,7 @@ module Java::Util
     
     class_module.module_eval {
       const_set_lazy(:Itr) { Class.new do
-        extend LocalClass
+        local_class_in AbstractList
         include_class_members AbstractList
         include Iterator
         
@@ -419,7 +419,7 @@ module Java::Util
       end }
       
       const_set_lazy(:ListItr) { Class.new(Itr) do
-        extend LocalClass
+        local_class_in AbstractList
         include_class_members AbstractList
         overload_protected {
           include ListIterator
@@ -784,7 +784,7 @@ module Java::Util
       check_for_comodification
       range_check_for_add(index)
       return Class.new(ListIterator.class == Class ? ListIterator : Object) do
-        extend LocalClass
+        local_class_in SubList
         include_class_members SubList
         include ListIterator if ListIterator.class == Module
         

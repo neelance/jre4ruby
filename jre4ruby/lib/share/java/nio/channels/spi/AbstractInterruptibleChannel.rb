@@ -174,7 +174,7 @@ module Java::Nio::Channels::Spi
     def begin_
       if ((@interruptor).nil?)
         @interruptor = Class.new(Interruptible.class == Class ? Interruptible : Object) do
-          extend LocalClass
+          local_class_in AbstractInterruptibleChannel
           include_class_members AbstractInterruptibleChannel
           include Interruptible if Interruptible.class == Module
           

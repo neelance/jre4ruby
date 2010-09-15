@@ -393,7 +393,7 @@ module Java::Util
       end }
       
       const_set_lazy(:LinkedHashIterator) { Class.new do
-        extend LocalClass
+        local_class_in LinkedHashMap
         include_class_members LinkedHashMap
         include Iterator
         
@@ -461,7 +461,7 @@ module Java::Util
       end }
       
       const_set_lazy(:KeyIterator) { Class.new(LinkedHashIterator) do
-        extend LocalClass
+        local_class_in LinkedHashMap
         include_class_members LinkedHashMap
         
         typesig { [] }
@@ -479,7 +479,7 @@ module Java::Util
       end }
       
       const_set_lazy(:ValueIterator) { Class.new(LinkedHashIterator) do
-        extend LocalClass
+        local_class_in LinkedHashMap
         include_class_members LinkedHashMap
         
         typesig { [] }
@@ -497,7 +497,7 @@ module Java::Util
       end }
       
       const_set_lazy(:EntryIterator) { Class.new(LinkedHashIterator) do
-        extend LocalClass
+        local_class_in LinkedHashMap
         include_class_members LinkedHashMap
         
         typesig { [] }

@@ -401,7 +401,7 @@ module Java::Security
         # callerClass[3] = caller
         caller_class = Sun::Reflect::Reflection.get_caller_class(3)
         caller_pd = do_privileged(Class.new(PrivilegedAction.class == Class ? PrivilegedAction : Object) do
-          extend LocalClass
+          local_class_in AccessController
           include_class_members AccessController
           include PrivilegedAction if PrivilegedAction.class == Module
           

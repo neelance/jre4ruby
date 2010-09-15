@@ -450,7 +450,7 @@ module Sun::Security::Provider::Certpath
       
       # A class representing a single OCSP response.
       const_set_lazy(:SingleResponse) { Class.new do
-        extend LocalClass
+        local_class_in OCSPResponse
         include_class_members OCSPResponse
         
         attr_accessor :cert_id

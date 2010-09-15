@@ -220,7 +220,7 @@ module Java::Net
           idn_profile = "uidna.spp"
           if (!(System.get_security_manager).nil?)
             stream = AccessController.do_privileged(Class.new(PrivilegedAction.class == Class ? PrivilegedAction : Object) do
-              extend LocalClass
+              local_class_in IDN
               include_class_members IDN
               include PrivilegedAction if PrivilegedAction.class == Module
               

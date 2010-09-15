@@ -346,7 +346,7 @@ module Sun::Security::Pkcs12
             return false
           end
           that = obj
-          return ((Arrays == @key_id))
+          return (Arrays.==(@key_id, that.attr_key_id))
         end
         
         private
@@ -1300,7 +1300,7 @@ module Sun::Security::Pkcs12
             m.init(key, params)
             m.update(auth_safe_data)
             mac_result = m.do_final
-            if (!(Arrays == mac_data.get_digest))
+            if (!Arrays.==(mac_data.get_digest, mac_result))
               raise SecurityException.new("Failed PKCS12" + " integrity checking")
             end
           rescue JavaException => e

@@ -185,7 +185,7 @@ module Java::Text
       in_ = nil
       begin
         in_ = AccessController.do_privileged(Class.new(PrivilegedExceptionAction.class == Class ? PrivilegedExceptionAction : Object) do
-          extend LocalClass
+          local_class_in BreakDictionary
           include_class_members BreakDictionary
           include PrivilegedExceptionAction if PrivilegedExceptionAction.class == Module
           

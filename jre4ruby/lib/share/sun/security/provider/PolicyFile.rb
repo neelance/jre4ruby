@@ -532,7 +532,7 @@ module Sun::Security::Provider
       num_cache_str = AccessController.do_privileged(# Properties are set once for each init(); ignore changes between
       # between diff invocations of initPolicyFile(policy, url, info).
       Class.new(PrivilegedAction.class == Class ? PrivilegedAction : Object) do
-        extend LocalClass
+        local_class_in PolicyFile
         include_class_members PolicyFile
         include PrivilegedAction if PrivilegedAction.class == Module
         
@@ -578,7 +578,7 @@ module Sun::Security::Provider
           Debug.println("reading " + RJava.cast_to_string(url))
         end
         AccessController.do_privileged(Class.new(PrivilegedAction.class == Class ? PrivilegedAction : Object) do
-          extend LocalClass
+          local_class_in PolicyFile
           include_class_members PolicyFile
           include PrivilegedAction if PrivilegedAction.class == Module
           
@@ -624,7 +624,7 @@ module Sun::Security::Provider
     typesig { [String, String, PolicyInfo] }
     def init_policy_file(propname, urlname, new_info)
       loaded_policy = AccessController.do_privileged(Class.new(PrivilegedAction.class == Class ? PrivilegedAction : Object) do
-        extend LocalClass
+        local_class_in PolicyFile
         include_class_members PolicyFile
         include PrivilegedAction if PrivilegedAction.class == Module
         
@@ -777,7 +777,7 @@ module Sun::Security::Provider
     typesig { [PolicyInfo] }
     def init_static_policy(new_info)
       AccessController.do_privileged(Class.new(PrivilegedAction.class == Class ? PrivilegedAction : Object) do
-        extend LocalClass
+        local_class_in PolicyFile
         include_class_members PolicyFile
         include PrivilegedAction if PrivilegedAction.class == Module
         
@@ -1242,7 +1242,7 @@ module Sun::Security::Provider
         return perms
       end
       canon_code_source = AccessController.do_privileged(Class.new(Java::Security::PrivilegedAction.class == Class ? Java::Security::PrivilegedAction : Object) do
-        extend LocalClass
+        local_class_in PolicyFile
         include_class_members PolicyFile
         include Java::Security::PrivilegedAction if Java::Security::PrivilegedAction.class == Module
         
@@ -1275,7 +1275,7 @@ module Sun::Security::Provider
     # @return the set of permissions according to the policy.
     def get_permissions(perms, cs)
       canon_code_source = AccessController.do_privileged(Class.new(Java::Security::PrivilegedAction.class == Class ? Java::Security::PrivilegedAction : Object) do
-        extend LocalClass
+        local_class_in PolicyFile
         include_class_members PolicyFile
         include Java::Security::PrivilegedAction if Java::Security::PrivilegedAction.class == Module
         
@@ -1336,7 +1336,7 @@ module Sun::Security::Provider
       end
       imp = AccessController.do_privileged(# check to see if the CodeSource implies
       Class.new(PrivilegedAction.class == Class ? PrivilegedAction : Object) do
-        extend LocalClass
+        local_class_in PolicyFile
         include_class_members PolicyFile
         include PrivilegedAction if PrivilegedAction.class == Module
         
@@ -1943,7 +1943,7 @@ module Sun::Security::Provider
       id = AccessController.do_privileged(# need privileged block for getIdentity in case we are trying
       # to get a signer
       Class.new(Java::Security::PrivilegedAction.class == Class ? Java::Security::PrivilegedAction : Object) do
-        extend LocalClass
+        local_class_in PolicyFile
         include_class_members PolicyFile
         include Java::Security::PrivilegedAction if Java::Security::PrivilegedAction.class == Module
         
@@ -1965,7 +1965,7 @@ module Sun::Security::Provider
           Debug.println("Adding policy entry for trusted Identity: ")
           AccessController.do_privileged(# needed for identity toString!
           Class.new(Java::Security::PrivilegedAction.class == Class ? Java::Security::PrivilegedAction : Object) do
-            extend LocalClass
+            local_class_in PolicyFile
             include_class_members PolicyFile
             include Java::Security::PrivilegedAction if Java::Security::PrivilegedAction.class == Module
             

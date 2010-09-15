@@ -324,7 +324,7 @@ module Sun::Security::Tools
       if (!(tst.get_hash_algorithm == AlgorithmId.new(ObjectIdentifier.new("1.3.14.3.2.26"))))
         raise IOException.new("Digest algorithm not SHA-1 in timestamp token")
       end
-      if (!(Arrays == tst.get_hashed_message))
+      if (!Arrays.==(tst.get_hashed_message, digest_))
         raise IOException.new("Digest octets changed in timestamp token")
       end
       reply_nonce = tst.get_nonce

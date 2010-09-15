@@ -294,7 +294,7 @@ module Sun::Security::Jgss
         acc = AccessController.get_context
         begin
           creds = AccessController.do_privileged(Class.new(PrivilegedExceptionAction.class == Class ? PrivilegedExceptionAction : Object) do
-            extend LocalClass
+            local_class_in GSSUtil
             include_class_members GSSUtil
             include PrivilegedExceptionAction if PrivilegedExceptionAction.class == Module
             

@@ -428,7 +428,7 @@ module Java::Util
     
     class_module.module_eval {
       const_set_lazy(:KeySet) { Class.new(AbstractSet) do
-        extend LocalClass
+        local_class_in EnumMap
         include_class_members EnumMap
         
         typesig { [] }
@@ -488,7 +488,7 @@ module Java::Util
     
     class_module.module_eval {
       const_set_lazy(:Values) { Class.new(AbstractCollection) do
-        extend LocalClass
+        local_class_in EnumMap
         include_class_members EnumMap
         
         typesig { [] }
@@ -555,7 +555,7 @@ module Java::Util
     
     class_module.module_eval {
       const_set_lazy(:EntrySet) { Class.new(AbstractSet) do
-        extend LocalClass
+        local_class_in EnumMap
         include_class_members EnumMap
         
         typesig { [] }
@@ -631,7 +631,7 @@ module Java::Util
       end }
       
       const_set_lazy(:EnumMapIterator) { Class.new do
-        extend LocalClass
+        local_class_in EnumMap
         include_class_members EnumMap
         include Iterator
         
@@ -685,7 +685,7 @@ module Java::Util
       end }
       
       const_set_lazy(:KeyIterator) { Class.new(EnumMapIterator) do
-        extend LocalClass
+        local_class_in EnumMap
         include_class_members EnumMap
         
         typesig { [] }
@@ -707,7 +707,7 @@ module Java::Util
       end }
       
       const_set_lazy(:ValueIterator) { Class.new(EnumMapIterator) do
-        extend LocalClass
+        local_class_in EnumMap
         include_class_members EnumMap
         
         typesig { [] }
@@ -730,7 +730,7 @@ module Java::Util
       
       # Since we don't use Entry objects, we use the Iterator itself as entry.
       const_set_lazy(:EntryIterator) { Class.new(EnumMapIterator) do
-        extend LocalClass
+        local_class_in EnumMap
         include_class_members EnumMap
         overload_protected {
           include Map::Entry

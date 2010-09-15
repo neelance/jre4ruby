@@ -792,7 +792,7 @@ module Java::Util
       end }
       
       const_set_lazy(:HashIterator) { Class.new do
-        extend LocalClass
+        local_class_in WeakHashMap
         include_class_members WeakHashMap
         include Iterator
         
@@ -905,7 +905,7 @@ module Java::Util
       end }
       
       const_set_lazy(:ValueIterator) { Class.new(HashIterator) do
-        extend LocalClass
+        local_class_in WeakHashMap
         include_class_members WeakHashMap
         
         typesig { [] }
@@ -923,7 +923,7 @@ module Java::Util
       end }
       
       const_set_lazy(:KeyIterator) { Class.new(HashIterator) do
-        extend LocalClass
+        local_class_in WeakHashMap
         include_class_members WeakHashMap
         
         typesig { [] }
@@ -941,7 +941,7 @@ module Java::Util
       end }
       
       const_set_lazy(:EntryIterator) { Class.new(HashIterator) do
-        extend LocalClass
+        local_class_in WeakHashMap
         include_class_members WeakHashMap
         
         typesig { [] }
@@ -985,7 +985,7 @@ module Java::Util
     
     class_module.module_eval {
       const_set_lazy(:KeySet) { Class.new(AbstractSet) do
-        extend LocalClass
+        local_class_in WeakHashMap
         include_class_members WeakHashMap
         
         typesig { [] }
@@ -1047,7 +1047,7 @@ module Java::Util
     
     class_module.module_eval {
       const_set_lazy(:Values) { Class.new(AbstractCollection) do
-        extend LocalClass
+        local_class_in WeakHashMap
         include_class_members WeakHashMap
         
         typesig { [] }
@@ -1100,7 +1100,7 @@ module Java::Util
     
     class_module.module_eval {
       const_set_lazy(:EntrySet) { Class.new(AbstractSet) do
-        extend LocalClass
+        local_class_in WeakHashMap
         include_class_members WeakHashMap
         
         typesig { [] }

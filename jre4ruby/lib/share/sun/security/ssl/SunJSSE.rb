@@ -194,7 +194,7 @@ module Sun::Security::Ssl
     typesig { [::Java::Boolean] }
     def register_algorithms(isfips)
       AccessController.do_privileged(Class.new(PrivilegedAction.class == Class ? PrivilegedAction : Object) do
-        extend LocalClass
+        local_class_in SunJSSE
         include_class_members SunJSSE
         include PrivilegedAction if PrivilegedAction.class == Module
         

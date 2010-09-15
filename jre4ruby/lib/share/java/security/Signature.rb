@@ -1252,7 +1252,7 @@ module Java::Security
             out = @cipher.do_final(sig_bytes)
             data_bytes = @data.to_byte_array
             @data.reset
-            return (Arrays == out)
+            return Arrays.==(out, data_bytes)
           rescue self.class::BadPaddingException => e
             # e.g. wrong public key used
             # return false rather than throwing exception

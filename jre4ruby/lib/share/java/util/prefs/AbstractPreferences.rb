@@ -1063,7 +1063,7 @@ module Java::Util::Prefs
     # preference tree.
     def is_user_node
       result = AccessController.do_privileged(Class.new(PrivilegedAction.class == Class ? PrivilegedAction : Object) do
-        extend LocalClass
+        local_class_in AbstractPreferences
         include_class_members AbstractPreferences
         include PrivilegedAction if PrivilegedAction.class == Module
         
@@ -1525,7 +1525,7 @@ module Java::Util::Prefs
       # eventQueue so the event dispatch thread knows whether to call
       # childAdded or childRemoved.
       const_set_lazy(:NodeAddedEvent) { Class.new(NodeChangeEvent) do
-        extend LocalClass
+        local_class_in AbstractPreferences
         include_class_members AbstractPreferences
         
         class_module.module_eval {
@@ -1543,7 +1543,7 @@ module Java::Util::Prefs
       end }
       
       const_set_lazy(:NodeRemovedEvent) { Class.new(NodeChangeEvent) do
-        extend LocalClass
+        local_class_in AbstractPreferences
         include_class_members AbstractPreferences
         
         class_module.module_eval {

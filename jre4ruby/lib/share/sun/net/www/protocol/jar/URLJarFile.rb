@@ -258,7 +258,7 @@ module Sun::Net::Www::Protocol::Jar
           in_ = url.open_connection.get_input_stream
           begin
             result = AccessController.do_privileged(Class.new(PrivilegedExceptionAction.class == Class ? PrivilegedExceptionAction : Object) do
-              extend LocalClass
+              local_class_in URLJarFile
               include_class_members URLJarFile
               include PrivilegedExceptionAction if PrivilegedExceptionAction.class == Module
               
@@ -316,7 +316,7 @@ module Sun::Net::Www::Protocol::Jar
       end
       
       const_set_lazy(:URLJarFileEntry) { Class.new(JarEntry) do
-        extend LocalClass
+        local_class_in URLJarFile
         include_class_members URLJarFile
         
         attr_accessor :je

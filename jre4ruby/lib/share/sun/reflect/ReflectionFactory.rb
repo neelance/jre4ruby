@@ -361,7 +361,7 @@ module Sun::Reflect
           return
         end
         AccessController.do_privileged(Class.new(PrivilegedAction.class == Class ? PrivilegedAction : Object) do
-          extend LocalClass
+          local_class_in ReflectionFactory
           include_class_members ReflectionFactory
           include PrivilegedAction if PrivilegedAction.class == Module
           

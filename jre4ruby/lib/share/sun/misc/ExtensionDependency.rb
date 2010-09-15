@@ -265,7 +265,7 @@ module Sun::Misc
       man = nil
       begin
         man = AccessController.do_privileged(Class.new(PrivilegedExceptionAction.class == Class ? PrivilegedExceptionAction : Object) do
-          extend LocalClass
+          local_class_in ExtensionDependency
           include_class_members ExtensionDependency
           include PrivilegedExceptionAction if PrivilegedExceptionAction.class == Module
           
@@ -369,7 +369,7 @@ module Sun::Misc
       ext_name = extension_name
       file_ext = Array.typed(String).new([".jar", ".zip"])
       return AccessController.do_privileged(Class.new(PrivilegedAction.class == Class ? PrivilegedAction : Object) do
-        extend LocalClass
+        local_class_in ExtensionDependency
         include_class_members ExtensionDependency
         include PrivilegedAction if PrivilegedAction.class == Module
         
@@ -478,7 +478,7 @@ module Sun::Misc
     # </p>
     def get_installed_extensions
       return AccessController.do_privileged(Class.new(PrivilegedAction.class == Class ? PrivilegedAction : Object) do
-        extend LocalClass
+        local_class_in ExtensionDependency
         include_class_members ExtensionDependency
         include PrivilegedAction if PrivilegedAction.class == Module
         
@@ -518,7 +518,7 @@ module Sun::Misc
         while i < installed_exts.attr_length
           inst_file = installed_exts[i]
           inst_url = AccessController.do_privileged(Class.new(PrivilegedAction.class == Class ? PrivilegedAction : Object) do
-            extend LocalClass
+            local_class_in ExtensionDependency
             include_class_members ExtensionDependency
             include PrivilegedAction if PrivilegedAction.class == Module
             

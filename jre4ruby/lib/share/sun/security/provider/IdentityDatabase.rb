@@ -310,7 +310,7 @@ module Sun::Security::Provider
       # This block initializes the system database, if there is one.
       when_class_loaded do
         Java::Security::AccessController.do_privileged(Class.new(Java::Security::PrivilegedAction.class == Class ? Java::Security::PrivilegedAction : Object) do
-          extend LocalClass
+          local_class_in IdentityDatabase
           include_class_members IdentityDatabase
           include Java::Security::PrivilegedAction if Java::Security::PrivilegedAction.class == Module
           

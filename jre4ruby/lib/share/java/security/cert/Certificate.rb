@@ -114,7 +114,7 @@ module Java::Security::Cert
       begin
         this_cert = X509CertImpl.get_encoded_internal(self)
         other_cert = X509CertImpl.get_encoded_internal(other)
-        return (Arrays == this_cert)
+        return Arrays.==(this_cert, other_cert)
       rescue CertificateException => e
         return false
       end

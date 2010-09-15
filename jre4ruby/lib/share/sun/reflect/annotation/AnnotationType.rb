@@ -115,7 +115,7 @@ module Sun::Reflect::Annotation
         raise IllegalArgumentException.new("Not an annotation type")
       end
       methods = AccessController.do_privileged(Class.new(PrivilegedAction.class == Class ? PrivilegedAction : Object) do
-        extend LocalClass
+        local_class_in AnnotationType
         include_class_members AnnotationType
         include PrivilegedAction if PrivilegedAction.class == Module
         

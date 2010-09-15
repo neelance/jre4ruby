@@ -1625,7 +1625,7 @@ module Java::Util::Concurrent::Locks
       # 
       # @since 1.6
       const_set_lazy(:ConditionObject) { Class.new do
-        extend LocalClass
+        local_class_in AbstractQueuedLongSynchronizer
         include_class_members AbstractQueuedLongSynchronizer
         include Condition
         include Java::Io::Serializable

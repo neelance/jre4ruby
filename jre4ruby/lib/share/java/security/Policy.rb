@@ -179,7 +179,7 @@ module Java::Security
           if ((self.attr_policy).nil?)
             policy_class = nil
             policy_class = RJava.cast_to_string(AccessController.do_privileged(Class.new(PrivilegedAction.class == Class ? PrivilegedAction : Object) do
-              extend LocalClass
+              local_class_in Policy
               include_class_members Policy
               include PrivilegedAction if PrivilegedAction.class == Module
               
@@ -212,7 +212,7 @@ module Java::Security
               self.attr_policy = Sun::Security::Provider::PolicyFile.new
               pc = policy_class
               p = AccessController.do_privileged(Class.new(PrivilegedAction.class == Class ? PrivilegedAction : Object) do
-                extend LocalClass
+                local_class_in Policy
                 include_class_members Policy
                 include PrivilegedAction if PrivilegedAction.class == Module
                 
@@ -312,7 +312,7 @@ module Java::Security
         # statically binds permissions so that legacy Policy
         # implementations will continue to function.
         Class.new(PrivilegedAction.class == Class ? PrivilegedAction : Object) do
-          extend LocalClass
+          local_class_in Policy
           include_class_members Policy
           include PrivilegedAction if PrivilegedAction.class == Module
           

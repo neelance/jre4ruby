@@ -1043,7 +1043,7 @@ module Sun::Security::Tools
                   System.err.print(Rb.get_string("Re-enter new password: "))
                   store_pass_again = Password.read_password(System.in)
                   @passwords.add(store_pass_again)
-                  if (!(Arrays == @store_pass))
+                  if (!Arrays.==(@store_pass, store_pass_again))
                     System.err.println(Rb.get_string("They don't match. Try again"))
                     @store_pass = nil
                   end
@@ -1079,17 +1079,17 @@ module Sun::Security::Tools
       end
       if (!(@store_pass).nil? && P12KEYSTORE.equals_ignore_case(@storetype))
         form = MessageFormat.new(Rb.get_string("Warning:  Different store and key passwords not supported " + "for PKCS12 KeyStores. Ignoring user-specified <command> value."))
-        if (!(@key_pass).nil? && !(Arrays == @store_pass))
+        if (!(@key_pass).nil? && !Arrays.==(@store_pass, @key_pass))
           source = Array.typed(Object).new(["-keypass"])
           System.err.println(form.format(source))
           @key_pass = @store_pass
         end
-        if (!(@new_pass).nil? && !(Arrays == @store_pass))
+        if (!(@new_pass).nil? && !Arrays.==(@store_pass, @new_pass))
           source = Array.typed(Object).new(["-new"])
           System.err.println(form.format(source))
           @new_pass = @store_pass
         end
-        if (!(@dest_key_pass).nil? && !(Arrays == @store_pass))
+        if (!(@dest_key_pass).nil? && !Arrays.==(@store_pass, @dest_key_pass))
           source = Array.typed(Object).new(["-destkeypass"])
           System.err.println(form.format(source))
           @dest_key_pass = @store_pass
@@ -1421,7 +1421,7 @@ module Sun::Security::Tools
                 System.err.print(Rb.get_string("Re-enter new password: "))
                 pass_again = Password.read_password(System.in)
                 @passwords.add(pass_again)
-                if (!(Arrays == entered))
+                if (!Arrays.==(entered, pass_again))
                   System.err.println(Rb.get_string("They don't match. Try again"))
                   count += 1
                   next
@@ -1790,7 +1790,7 @@ module Sun::Security::Tools
         end
         # always let keypass be storepass when using pkcs12
         if (P12KEYSTORE.equals_ignore_case(@srcstoretype))
-          if (!(@srckey_pass).nil? && !(@srcstore_pass).nil? && !(Arrays == @srcstore_pass))
+          if (!(@srckey_pass).nil? && !(@srcstore_pass).nil? && !Arrays.==(@srcstore_pass, @srckey_pass))
             form = MessageFormat.new(Rb.get_string("Warning:  Different store and key passwords not supported " + "for PKCS12 KeyStores. Ignoring user-specified <command> value."))
             source = Array.typed(Object).new(["-srckeypass"])
             System.err.println(form.format(source))
@@ -2223,7 +2223,7 @@ module Sun::Security::Tools
         if ((entered).nil? || entered.attr_length < 6)
           System.err.println(Rb.get_string("Password is too short - must be at least 6 characters"))
         else
-          if ((Arrays == entered))
+          if (Arrays.==(entered, old_passwd))
             System.err.println(Rb.get_string("Passwords must differ"))
           else
             form = MessageFormat.new(Rb.get_string("Re-enter new prompt: "))
@@ -2231,7 +2231,7 @@ module Sun::Security::Tools
             System.err.print(form.format(src))
             reentered = Password.read_password(System.in)
             @passwords.add(reentered)
-            if (!(Arrays == entered))
+            if (!Arrays.==(entered, reentered))
               System.err.println(Rb.get_string("They don't match. Try again"))
             else
               Arrays.fill(reentered, Character.new(?\s.ord))

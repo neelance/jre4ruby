@@ -1307,7 +1307,7 @@ module Sun::Security::Jgss::Krb5
       # the CipherInputStream from treating the bytes of the following token
       # as part fo the ciphertext for this token.
       const_set_lazy(:WrapTokenInputStream) { Class.new(InputStream) do
-        extend LocalClass
+        local_class_in CipherHelper
         include_class_members CipherHelper
         
         attr_accessor :is

@@ -95,7 +95,7 @@ module Java::Security
         # (the FileInputStream call and the File.exists call,
         # the securityPropFile call, etc)
         Class.new(PrivilegedAction.class == Class ? PrivilegedAction : Object) do
-          extend LocalClass
+          local_class_in Security
           include_class_members Security
           include PrivilegedAction if PrivilegedAction.class == Module
           
@@ -795,7 +795,7 @@ module Java::Security
         if (pa || pd)
           # run
           AccessController.do_privileged(Class.new(PrivilegedAction.class == Class ? PrivilegedAction : Object) do
-            extend LocalClass
+            local_class_in Security
             include_class_members Security
             include PrivilegedAction if PrivilegedAction.class == Module
             

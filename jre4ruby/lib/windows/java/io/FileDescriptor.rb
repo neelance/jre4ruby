@@ -88,7 +88,7 @@ module Java::Io
       # Set up JavaIOFileDescriptorAccess in SharedSecrets
       when_class_loaded do
         Sun::Misc::SharedSecrets.set_java_iofile_descriptor_access(Class.new(Sun::Misc::JavaIOFileDescriptorAccess.class == Class ? Sun::Misc::JavaIOFileDescriptorAccess : Object) do
-          extend LocalClass
+          local_class_in FileDescriptor
           include_class_members FileDescriptor
           include Sun::Misc::JavaIOFileDescriptorAccess if Sun::Misc::JavaIOFileDescriptorAccess.class == Module
           

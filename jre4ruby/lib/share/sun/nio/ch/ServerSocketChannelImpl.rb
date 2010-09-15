@@ -293,7 +293,7 @@ module Sun::Nio::Ch
       synchronized((@state_lock)) do
         if ((@options).nil?)
           d = Class.new(SocketOptsImpl::Dispatcher.class == Class ? SocketOptsImpl::Dispatcher : Object) do
-            extend LocalClass
+            local_class_in ServerSocketChannelImpl
             include_class_members ServerSocketChannelImpl
             include SocketOptsImpl::Dispatcher if SocketOptsImpl::Dispatcher.class == Module
             

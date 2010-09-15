@@ -265,7 +265,7 @@ module Java::Net
       # getDeclaredMethod, therefore we need permission to access the member
       begin
         AccessController.do_privileged(Class.new(PrivilegedExceptionAction.class == Class ? PrivilegedExceptionAction : Object) do
-          extend LocalClass
+          local_class_in ServerSocket
           include_class_members ServerSocket
           include PrivilegedExceptionAction if PrivilegedExceptionAction.class == Module
           

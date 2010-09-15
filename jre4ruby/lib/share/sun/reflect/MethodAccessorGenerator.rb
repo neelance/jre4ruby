@@ -421,7 +421,7 @@ module Sun::Reflect
       # is privileged anyway, the protection domain probably doesn't
       # matter.
       Class.new(PrivilegedAction.class == Class ? PrivilegedAction : Object) do
-        extend LocalClass
+        local_class_in MethodAccessorGenerator
         include_class_members MethodAccessorGenerator
         include PrivilegedAction if PrivilegedAction.class == Module
         

@@ -387,7 +387,7 @@ module Java::Nio::Charset
       # thrown.  Should be invoked with full privileges.
       def providers
         return Class.new(Iterator.class == Class ? Iterator : Object) do
-          extend LocalClass
+          local_class_in Charset
           include_class_members Charset
           include Iterator if Iterator.class == Module
           
@@ -503,7 +503,7 @@ module Java::Nio::Charset
         begin
           self.attr_gate.set(self.attr_gate)
           return AccessController.do_privileged(Class.new(PrivilegedAction.class == Class ? PrivilegedAction : Object) do
-            extend LocalClass
+            local_class_in Charset
             include_class_members Charset
             include PrivilegedAction if PrivilegedAction.class == Module
             
@@ -570,7 +570,7 @@ module Java::Nio::Charset
       typesig { [] }
       def probe_extended_provider
         AccessController.do_privileged(Class.new(PrivilegedAction.class == Class ? PrivilegedAction : Object) do
-          extend LocalClass
+          local_class_in Charset
           include_class_members Charset
           include PrivilegedAction if PrivilegedAction.class == Module
           
@@ -730,7 +730,7 @@ module Java::Nio::Charset
       # to charset objects
       def available_charsets
         return AccessController.do_privileged(Class.new(PrivilegedAction.class == Class ? PrivilegedAction : Object) do
-          extend LocalClass
+          local_class_in Charset
           include_class_members Charset
           include PrivilegedAction if PrivilegedAction.class == Module
           

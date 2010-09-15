@@ -212,7 +212,7 @@ module Java::Net
     def find_class(name)
       begin
         return AccessController.do_privileged(Class.new(PrivilegedExceptionAction.class == Class ? PrivilegedExceptionAction : Object) do
-          extend LocalClass
+          local_class_in URLClassLoader
           include_class_members URLClassLoader
           include PrivilegedExceptionAction if PrivilegedExceptionAction.class == Module
           
@@ -385,7 +385,7 @@ module Java::Net
     def find_resource(name)
       url = AccessController.do_privileged(# The same restriction to finding classes applies to resources
       Class.new(PrivilegedAction.class == Class ? PrivilegedAction : Object) do
-        extend LocalClass
+        local_class_in URLClassLoader
         include_class_members URLClassLoader
         include PrivilegedAction if PrivilegedAction.class == Module
         
@@ -415,7 +415,7 @@ module Java::Net
     def find_resources(name)
       e = @ucp.find_resources(name, true)
       return Class.new(Enumeration.class == Class ? Enumeration : Object) do
-        extend LocalClass
+        local_class_in URLClassLoader
         include_class_members URLClassLoader
         include Enumeration if Enumeration.class == Module
         
@@ -433,7 +433,7 @@ module Java::Net
           begin
             enumeration_class = self.class
             u = AccessController.do_privileged(Class.new(self.class::PrivilegedAction.class == Class ? self.class::PrivilegedAction : Object) do
-              extend LocalClass
+              local_class_in enumeration_class
               include_class_members enumeration_class
               include class_self::PrivilegedAction if class_self::PrivilegedAction.class == Module
               
@@ -558,7 +558,7 @@ module Java::Net
         if (!(sm).nil?)
           fp = p
           AccessController.do_privileged(Class.new(PrivilegedAction.class == Class ? PrivilegedAction : Object) do
-            extend LocalClass
+            local_class_in URLClassLoader
             include_class_members URLClassLoader
             include PrivilegedAction if PrivilegedAction.class == Module
             
@@ -599,7 +599,7 @@ module Java::Net
         acc = AccessController.get_context
         ucl = AccessController.do_privileged(# Need a privileged block to create the class loader
         Class.new(PrivilegedAction.class == Class ? PrivilegedAction : Object) do
-          extend LocalClass
+          local_class_in URLClassLoader
           include_class_members URLClassLoader
           include PrivilegedAction if PrivilegedAction.class == Module
           
@@ -637,7 +637,7 @@ module Java::Net
         acc = AccessController.get_context
         ucl = AccessController.do_privileged(# Need a privileged block to create the class loader
         Class.new(PrivilegedAction.class == Class ? PrivilegedAction : Object) do
-          extend LocalClass
+          local_class_in URLClassLoader
           include_class_members URLClassLoader
           include PrivilegedAction if PrivilegedAction.class == Module
           
@@ -662,7 +662,7 @@ module Java::Net
       
       when_class_loaded do
         Sun::Misc::SharedSecrets.set_java_net_access(Class.new(Sun::Misc::JavaNetAccess.class == Class ? Sun::Misc::JavaNetAccess : Object) do
-          extend LocalClass
+          local_class_in URLClassLoader
           include_class_members URLClassLoader
           include Sun::Misc::JavaNetAccess if Sun::Misc::JavaNetAccess.class == Module
           

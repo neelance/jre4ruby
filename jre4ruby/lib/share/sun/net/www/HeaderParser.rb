@@ -263,7 +263,7 @@ module Sun::Net::Www
     
     class_module.module_eval {
       const_set_lazy(:ParserIterator) { Class.new do
-        extend LocalClass
+        local_class_in HeaderParser
         include_class_members HeaderParser
         include Iterator
         

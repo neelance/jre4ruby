@@ -158,7 +158,7 @@ module Sun::Util::Calendar
           home_dir = AccessController.do_privileged(Sun::Security::Action::GetPropertyAction.new("java.home"))
           fname = home_dir + RJava.cast_to_string(JavaFile.attr_separator) + "lib" + RJava.cast_to_string(JavaFile.attr_separator) + "calendars.properties"
           calendar_props = AccessController.do_privileged(Class.new(PrivilegedExceptionAction.class == Class ? PrivilegedExceptionAction : Object) do
-            extend LocalClass
+            local_class_in LocalGregorianCalendar
             include_class_members LocalGregorianCalendar
             include PrivilegedExceptionAction if PrivilegedExceptionAction.class == Module
             

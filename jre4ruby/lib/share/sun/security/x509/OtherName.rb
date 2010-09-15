@@ -221,7 +221,7 @@ module Sun::Security::X509
           result = false
         end
       else
-        result = (Arrays == @name_value)
+        result = Arrays.==(@name_value, other_other.attr_name_value)
       end
       return result
     end

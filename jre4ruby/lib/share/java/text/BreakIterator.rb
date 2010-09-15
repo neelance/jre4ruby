@@ -546,7 +546,7 @@ module Java::Text
       typesig { [String, Locale] }
       def get_bundle(base_name, locale)
         return AccessController.do_privileged(Class.new(PrivilegedAction.class == Class ? PrivilegedAction : Object) do
-          extend LocalClass
+          local_class_in BreakIterator
           include_class_members BreakIterator
           include PrivilegedAction if PrivilegedAction.class == Module
           

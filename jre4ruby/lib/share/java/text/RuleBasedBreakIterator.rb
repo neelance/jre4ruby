@@ -486,7 +486,7 @@ module Java::Text
       is = nil
       begin
         is = AccessController.do_privileged(Class.new(PrivilegedExceptionAction.class == Class ? PrivilegedExceptionAction : Object) do
-          extend LocalClass
+          local_class_in RuleBasedBreakIterator
           include_class_members RuleBasedBreakIterator
           include PrivilegedExceptionAction if PrivilegedExceptionAction.class == Module
           

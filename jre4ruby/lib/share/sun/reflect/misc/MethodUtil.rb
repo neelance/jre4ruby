@@ -350,7 +350,7 @@ module Sun::Reflect::Misc
         tramp = nil
         begin
           tramp = AccessController.do_privileged(Class.new(PrivilegedExceptionAction.class == Class ? PrivilegedExceptionAction : Object) do
-            extend LocalClass
+            local_class_in MethodUtil
             include_class_members MethodUtil
             include PrivilegedExceptionAction if PrivilegedExceptionAction.class == Module
             

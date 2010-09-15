@@ -177,7 +177,7 @@ module Sun::Security::Provider
         b = System.current_time_millis
         md.update(b)
         Java::Security::AccessController.do_privileged(Class.new(Java::Security::PrivilegedAction.class == Class ? Java::Security::PrivilegedAction : Object) do
-          extend LocalClass
+          local_class_in SeedGenerator
           include_class_members SeedGenerator
           include Java::Security::PrivilegedAction if Java::Security::PrivilegedAction.class == Module
           
@@ -302,7 +302,7 @@ module Sun::Security::Provider
           end
           finalsg = Array.typed(self.class::JavaThreadGroup).new(1) { nil }
           t = Java::Security::AccessController.do_privileged(Class.new(Java::Security::PrivilegedAction.class == Class ? Java::Security::PrivilegedAction : Object) do
-            extend LocalClass
+            local_class_in ThreadedSeedGenerator
             include_class_members ThreadedSeedGenerator
             include Java::Security::PrivilegedAction if Java::Security::PrivilegedAction.class == Module
             
@@ -510,7 +510,7 @@ module Sun::Security::Provider
         def init
           device = self.class::URL.new(@device_name)
           @dev_random = Java::Security::AccessController.do_privileged(Class.new(Java::Security::PrivilegedAction.class == Class ? Java::Security::PrivilegedAction : Object) do
-            extend LocalClass
+            local_class_in URLSeedGenerator
             include_class_members URLSeedGenerator
             include Java::Security::PrivilegedAction if Java::Security::PrivilegedAction.class == Module
             

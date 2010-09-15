@@ -56,7 +56,7 @@ module Sun::Net
       
       when_class_loaded do
         AccessController.do_privileged(Class.new(PrivilegedAction.class == Class ? PrivilegedAction : Object) do
-          extend LocalClass
+          local_class_in NetProperties
           include_class_members NetProperties
           include PrivilegedAction if PrivilegedAction.class == Module
           

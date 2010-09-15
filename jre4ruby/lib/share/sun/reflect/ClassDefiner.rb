@@ -60,7 +60,7 @@ module Sun::Reflect
       # footprint. </P>
       def define_class(name, bytes, off, len, parent_class_loader)
         new_loader = AccessController.do_privileged(Class.new(PrivilegedAction.class == Class ? PrivilegedAction : Object) do
-          extend LocalClass
+          local_class_in ClassDefiner
           include_class_members ClassDefiner
           include PrivilegedAction if PrivilegedAction.class == Module
           

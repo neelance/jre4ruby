@@ -89,7 +89,7 @@ module Java::Util
     
     class_module.module_eval {
       const_set_lazy(:EnumSetIterator) { Class.new do
-        extend LocalClass
+        local_class_in RegularEnumSet
         include_class_members RegularEnumSet
         include Iterator
         

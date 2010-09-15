@@ -299,7 +299,7 @@ module Sun::Misc
         # be released.
         dup = b.duplicate
         Cleaner.create(dup, Class.new(Runnable.class == Class ? Runnable : Object) do
-          extend LocalClass
+          local_class_in Perf
           include_class_members Perf
           include Runnable if Runnable.class == Module
           

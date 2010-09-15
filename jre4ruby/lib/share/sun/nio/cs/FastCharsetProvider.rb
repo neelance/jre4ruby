@@ -163,7 +163,7 @@ module Sun::Nio::Cs
     typesig { [] }
     def charsets
       return Class.new(Iterator.class == Class ? Iterator : Object) do
-        extend LocalClass
+        local_class_in FastCharsetProvider
         include_class_members FastCharsetProvider
         include Iterator if Iterator.class == Module
         

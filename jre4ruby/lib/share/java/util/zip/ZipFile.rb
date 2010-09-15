@@ -277,7 +277,7 @@ module Java::Util::Zip
           size = 4096
         end
         return Class.new(InflaterInputStream.class == Class ? InflaterInputStream : Object) do
-          extend LocalClass
+          local_class_in ZipFile
           include_class_members ZipFile
           include InflaterInputStream if InflaterInputStream.class == Module
           
@@ -397,7 +397,7 @@ module Java::Util::Zip
     def entries
       ensure_open
       return Class.new(Enumeration.class == Class ? Enumeration : Object) do
-        extend LocalClass
+        local_class_in ZipFile
         include_class_members ZipFile
         include Enumeration if Enumeration.class == Module
         
@@ -542,7 +542,7 @@ module Java::Util::Zip
       # Inner class implementing the input stream used to read a
       # (possibly compressed) zip file entry.
       const_set_lazy(:ZipFileInputStream) { Class.new(InputStream) do
-        extend LocalClass
+        local_class_in ZipFile
         include_class_members ZipFile
         
         attr_accessor :jzentry

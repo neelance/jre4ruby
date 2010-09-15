@@ -153,7 +153,7 @@ module Sun::Net::Dns
       # run
       @nameservers = Java::Security::AccessController.do_privileged(# get the name servers from /etc/resolv.conf
       Class.new(Java::Security::PrivilegedAction.class == Class ? Java::Security::PrivilegedAction : Object) do
-        extend LocalClass
+        local_class_in ResolverConfigurationImpl
         include_class_members ResolverConfigurationImpl
         include Java::Security::PrivilegedAction if Java::Security::PrivilegedAction.class == Module
         
@@ -185,7 +185,7 @@ module Sun::Net::Dns
       # run
       sl = Java::Security::AccessController.do_privileged(# first try the search keyword in /etc/resolv.conf
       Class.new(Java::Security::PrivilegedAction.class == Class ? Java::Security::PrivilegedAction : Object) do
-        extend LocalClass
+        local_class_in ResolverConfigurationImpl
         include_class_members ResolverConfigurationImpl
         include Java::Security::PrivilegedAction if Java::Security::PrivilegedAction.class == Module
         
@@ -222,7 +222,7 @@ module Sun::Net::Dns
       # run
       sl = Java::Security::AccessController.do_privileged(# try domain keyword in /etc/resolv.conf
       Class.new(Java::Security::PrivilegedAction.class == Class ? Java::Security::PrivilegedAction : Object) do
-        extend LocalClass
+        local_class_in ResolverConfigurationImpl
         include_class_members ResolverConfigurationImpl
         include Java::Security::PrivilegedAction if Java::Security::PrivilegedAction.class == Module
         

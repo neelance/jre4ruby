@@ -204,7 +204,7 @@ module Sun::Util
     typesig { [] }
     def key_set
       return Class.new(AbstractSet.class == Class ? AbstractSet : Object) do
-        extend LocalClass
+        local_class_in PreHashedMap
         include_class_members PreHashedMap
         include AbstractSet if AbstractSet.class == Module
         
@@ -217,7 +217,7 @@ module Sun::Util
         define_method :iterator do
           abstract_set_class = self.class
           return Class.new(self.class::Iterator.class == Class ? self.class::Iterator : Object) do
-            extend LocalClass
+            local_class_in abstract_set_class
             include_class_members abstract_set_class
             include class_self::Iterator if class_self::Iterator.class == Module
             
@@ -320,7 +320,7 @@ module Sun::Util
     typesig { [] }
     def entry_set
       return Class.new(AbstractSet.class == Class ? AbstractSet : Object) do
-        extend LocalClass
+        local_class_in PreHashedMap
         include_class_members PreHashedMap
         include AbstractSet if AbstractSet.class == Module
         
@@ -333,7 +333,7 @@ module Sun::Util
         define_method :iterator do
           abstract_set_class = self.class
           return Class.new(self.class::Iterator.class == Class ? self.class::Iterator : Object) do
-            extend LocalClass
+            local_class_in abstract_set_class
             include_class_members abstract_set_class
             include class_self::Iterator if class_self::Iterator.class == Module
             
@@ -352,7 +352,7 @@ module Sun::Util
             define_method :next_ do
               iterator_class = self.class
               return Class.new(self.class::Map::Entry.class == Class ? self.class::Map::Entry : Object) do
-                extend LocalClass
+                local_class_in iterator_class
                 include_class_members iterator_class
                 include class_self::Map::Entry if class_self::Map::Entry.class == Module
                 

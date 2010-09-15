@@ -196,7 +196,7 @@ module Sun::Security::Provider
       
       when_class_loaded do
         const_set :SeedSource, RJava.cast_to_string(AccessController.do_privileged(Class.new(PrivilegedAction.class == Class ? PrivilegedAction : Object) do
-          extend LocalClass
+          local_class_in SunEntries
           include_class_members SunEntries
           include PrivilegedAction if PrivilegedAction.class == Module
           

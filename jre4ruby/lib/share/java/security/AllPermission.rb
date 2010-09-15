@@ -213,7 +213,7 @@ module Java::Security
     # @return an enumeration of all the AllPermission objects.
     def elements
       return Class.new(Enumeration.class == Class ? Enumeration : Object) do
-        extend LocalClass
+        local_class_in AllPermissionCollection
         include_class_members AllPermissionCollection
         include Enumeration if Enumeration.class == Module
         

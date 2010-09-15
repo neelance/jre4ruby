@@ -861,7 +861,7 @@ module Java::Net
         return false
       end
       u2 = obj
-      return (@handler == self)
+      return @handler.==(self, u2)
     end
     
     typesig { [] }

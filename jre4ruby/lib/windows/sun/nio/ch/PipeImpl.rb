@@ -70,7 +70,7 @@ module Sun::Nio::Ch
       end
       
       const_set_lazy(:Initializer) { Class.new do
-        extend LocalClass
+        local_class_in PipeImpl
         include_class_members PipeImpl
         include PrivilegedExceptionAction
         

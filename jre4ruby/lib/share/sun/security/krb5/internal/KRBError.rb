@@ -676,7 +676,7 @@ module Sun::Security::Krb5::Internal
         return false
       end
       other = obj
-      return (@pvno).equal?(other.attr_pvno) && (@msg_type).equal?(other.attr_msg_type) && is_equal(@c_time, other.attr_c_time) && is_equal(@cu_sec, other.attr_cu_sec) && is_equal(@s_time, other.attr_s_time) && is_equal(@su_sec, other.attr_su_sec) && (@error_code).equal?(other.attr_error_code) && is_equal(@crealm, other.attr_crealm) && is_equal(@cname, other.attr_cname) && is_equal(@realm, other.attr_realm) && is_equal(@sname, other.attr_sname) && is_equal(@e_text, other.attr_e_text) && (Java::Util::Arrays == @e_data) && is_equal(@e_cksum, other.attr_e_cksum)
+      return (@pvno).equal?(other.attr_pvno) && (@msg_type).equal?(other.attr_msg_type) && is_equal(@c_time, other.attr_c_time) && is_equal(@cu_sec, other.attr_cu_sec) && is_equal(@s_time, other.attr_s_time) && is_equal(@su_sec, other.attr_su_sec) && (@error_code).equal?(other.attr_error_code) && is_equal(@crealm, other.attr_crealm) && is_equal(@cname, other.attr_cname) && is_equal(@realm, other.attr_realm) && is_equal(@sname, other.attr_sname) && is_equal(@e_text, other.attr_e_text) && Java::Util::Arrays.==(@e_data, other.attr_e_data) && is_equal(@e_cksum, other.attr_e_cksum)
     end
     
     class_module.module_eval {

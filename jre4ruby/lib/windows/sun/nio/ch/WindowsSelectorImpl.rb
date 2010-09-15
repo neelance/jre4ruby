@@ -317,7 +317,7 @@ module Sun::Nio::Ch
     
     class_module.module_eval {
       const_set_lazy(:StartLock) { Class.new do
-        extend LocalClass
+        local_class_in WindowsSelectorImpl
         include_class_members WindowsSelectorImpl
         
         # A variable which distinguishes the current run of doSelect from the
@@ -384,7 +384,7 @@ module Sun::Nio::Ch
     
     class_module.module_eval {
       const_set_lazy(:FinishLock) { Class.new do
-        extend LocalClass
+        local_class_in WindowsSelectorImpl
         include_class_members WindowsSelectorImpl
         
         # Number of helper threads, that did not finish yet.
@@ -478,7 +478,7 @@ module Sun::Nio::Ch
       end }
       
       const_set_lazy(:SubSelector) { Class.new do
-        extend LocalClass
+        local_class_in WindowsSelectorImpl
         include_class_members WindowsSelectorImpl
         
         attr_accessor :poll_array_index
@@ -627,7 +627,7 @@ module Sun::Nio::Ch
       
       # Represents a helper thread used for select.
       const_set_lazy(:SelectThread) { Class.new(JavaThread) do
-        extend LocalClass
+        local_class_in WindowsSelectorImpl
         include_class_members WindowsSelectorImpl
         
         attr_accessor :index

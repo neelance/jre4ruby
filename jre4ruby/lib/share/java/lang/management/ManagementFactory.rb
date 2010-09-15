@@ -597,7 +597,7 @@ module Java::Lang::Management
         loader = AccessController.do_privileged(# Only allow MXBean interfaces from rt.jar loaded by the
         # bootstrap class loader
         Class.new(PrivilegedAction.class == Class ? PrivilegedAction : Object) do
-          extend LocalClass
+          local_class_in ManagementFactory
           include_class_members ManagementFactory
           include PrivilegedAction if PrivilegedAction.class == Module
           

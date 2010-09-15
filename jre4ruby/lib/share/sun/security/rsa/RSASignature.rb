@@ -228,7 +228,7 @@ module Sun::Security::Rsa
         decrypted = RSACore.rsa(sig_bytes, @public_key)
         unpadded = @padding.unpad(decrypted)
         decoded_digest = decode_signature(@digest_oid, unpadded)
-        return (Arrays == digest_)
+        return Arrays.==(digest_, decoded_digest)
       rescue Javax::Crypto::BadPaddingException => e
         # occurs if the app has used the wrong RSA public key
         # or if sigBytes is invalid

@@ -257,7 +257,7 @@ module Java::Nio::Charset
       
       def malformed_cache
         defined?(@@malformed_cache) ? @@malformed_cache : @@malformed_cache= Class.new(Cache.class == Class ? Cache : Object) do
-          extend LocalClass
+          local_class_in CoderResult
           include_class_members CoderResult
           include Cache if Cache.class == Module
           
@@ -294,7 +294,7 @@ module Java::Nio::Charset
       
       def unmappable_cache
         defined?(@@unmappable_cache) ? @@unmappable_cache : @@unmappable_cache= Class.new(Cache.class == Class ? Cache : Object) do
-          extend LocalClass
+          local_class_in CoderResult
           include_class_members CoderResult
           include Cache if Cache.class == Module
           

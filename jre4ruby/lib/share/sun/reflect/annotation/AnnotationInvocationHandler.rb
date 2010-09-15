@@ -264,7 +264,7 @@ module Sun::Reflect::Annotation
         # Check for array of string, class, enum const, annotation,
         # or ExceptionProxy
         if (v1.is_a?(Array.typed(Object)) && v2.is_a?(Array.typed(Object)))
-          return (Arrays == v1)
+          return Arrays.==(v1, v2)
         end
         # Check for ill formed annotation(s)
         if (!(v2.get_class).equal?(type))
@@ -272,28 +272,28 @@ module Sun::Reflect::Annotation
         end
         # Deal with array of primitives
         if ((type).equal?(Array))
-          return (Arrays == v1)
+          return Arrays.==(v1, v2)
         end
         if ((type).equal?(Array))
-          return (Arrays == v1)
+          return Arrays.==(v1, v2)
         end
         if ((type).equal?(Array))
-          return (Arrays == v1)
+          return Arrays.==(v1, v2)
         end
         if ((type).equal?(Array))
-          return (Arrays == v1)
+          return Arrays.==(v1, v2)
         end
         if ((type).equal?(Array))
-          return (Arrays == v1)
+          return Arrays.==(v1, v2)
         end
         if ((type).equal?(Array))
-          return (Arrays == v1)
+          return Arrays.==(v1, v2)
         end
         if ((type).equal?(Array))
-          return (Arrays == v1)
+          return Arrays.==(v1, v2)
         end
         raise AssertError if not ((type).equal?(Array))
-        return (Arrays == v1)
+        return Arrays.==(v1, v2)
       end
     }
     
@@ -305,7 +305,7 @@ module Sun::Reflect::Annotation
     def get_member_methods
       if ((@member_methods).nil?)
         @member_methods = AccessController.do_privileged(Class.new(PrivilegedAction.class == Class ? PrivilegedAction : Object) do
-          extend LocalClass
+          local_class_in AnnotationInvocationHandler
           include_class_members AnnotationInvocationHandler
           include PrivilegedAction if PrivilegedAction.class == Module
           

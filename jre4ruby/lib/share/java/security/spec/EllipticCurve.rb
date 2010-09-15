@@ -200,7 +200,7 @@ module Java::Security::Spec
       end
       if (obj.is_a?(EllipticCurve))
         curve = obj
-        if (((@field == curve.attr_field)) && ((@a == curve.attr_a)) && ((@b == curve.attr_b)) && ((Arrays == @seed)))
+        if (((@field == curve.attr_field)) && ((@a == curve.attr_a)) && ((@b == curve.attr_b)) && (Arrays.==(@seed, curve.attr_seed)))
           return true
         end
       end

@@ -44,7 +44,7 @@ module Java::Net
     class_module.module_eval {
       const_set_lazy(:ACCEPT_ALL) { # One pre-defined policy which accepts all cookies.
       Class.new(CookiePolicy.class == Class ? CookiePolicy : Object) do
-        extend LocalClass
+        local_class_in CookiePolicy
         include_class_members CookiePolicy
         include CookiePolicy if CookiePolicy.class == Module
         
@@ -65,7 +65,7 @@ module Java::Net
       
       const_set_lazy(:ACCEPT_NONE) { # One pre-defined policy which accepts no cookies.
       Class.new(CookiePolicy.class == Class ? CookiePolicy : Object) do
-        extend LocalClass
+        local_class_in CookiePolicy
         include_class_members CookiePolicy
         include CookiePolicy if CookiePolicy.class == Module
         
@@ -86,7 +86,7 @@ module Java::Net
       
       const_set_lazy(:ACCEPT_ORIGINAL_SERVER) { # One pre-defined policy which only accepts cookies from original server.
       Class.new(CookiePolicy.class == Class ? CookiePolicy : Object) do
-        extend LocalClass
+        local_class_in CookiePolicy
         include_class_members CookiePolicy
         include CookiePolicy if CookiePolicy.class == Module
         

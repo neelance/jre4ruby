@@ -1036,7 +1036,7 @@ module Java::Util::Concurrent
     class_module.module_eval {
       # Base class for Iterators for LinkedBlockingDeque
       const_set_lazy(:AbstractItr) { Class.new do
-        extend LocalClass
+        local_class_in LinkedBlockingDeque
         include_class_members LinkedBlockingDeque
         include Iterator
         
@@ -1115,7 +1115,7 @@ module Java::Util::Concurrent
       
       # Forward iterator
       const_set_lazy(:Itr) { Class.new(AbstractItr) do
-        extend LocalClass
+        local_class_in LinkedBlockingDeque
         include_class_members LinkedBlockingDeque
         
         typesig { [] }
@@ -1141,7 +1141,7 @@ module Java::Util::Concurrent
       
       # Descending iterator for LinkedBlockingDeque
       const_set_lazy(:DescendingItr) { Class.new(AbstractItr) do
-        extend LocalClass
+        local_class_in LinkedBlockingDeque
         include_class_members LinkedBlockingDeque
         
         typesig { [] }

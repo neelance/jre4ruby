@@ -238,7 +238,7 @@ module Sun::Misc
         sig = self.attr_signals.get(number)
         handler = self.attr_handlers.get(sig)
         runnable = Class.new(Runnable.class == Class ? Runnable : Object) do
-          extend LocalClass
+          local_class_in Signal
           include_class_members Signal
           include Runnable if Runnable.class == Module
           

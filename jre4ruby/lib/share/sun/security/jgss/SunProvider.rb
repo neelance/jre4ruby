@@ -71,7 +71,7 @@ module Sun::Security::Jgss
       # We are the Sun JGSS provider
       super("SunJGSS", 1.0, INFO)
       AccessController.do_privileged(Class.new(Java::Security::PrivilegedAction.class == Class ? Java::Security::PrivilegedAction : Object) do
-        extend LocalClass
+        local_class_in SunProvider
         include_class_members SunProvider
         include Java::Security::PrivilegedAction if Java::Security::PrivilegedAction.class == Module
         

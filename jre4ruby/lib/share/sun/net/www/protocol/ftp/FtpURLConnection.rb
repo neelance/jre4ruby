@@ -208,7 +208,7 @@ module Sun::Net::Www::Protocol::Ftp
       # - The command socket (FtpClient).
       # Since that's the only class that needs to see that, it is an inner class.
       const_set_lazy(:FtpInputStream) { Class.new(FilterInputStream) do
-        extend LocalClass
+        local_class_in FtpURLConnection
         include_class_members FtpURLConnection
         
         attr_accessor :ftp
@@ -245,7 +245,7 @@ module Sun::Net::Www::Protocol::Ftp
       # - The command socket (FtpClient).
       # Since that's the only class that needs to see that, it is an inner class.
       const_set_lazy(:FtpOutputStream) { Class.new(FilterOutputStream) do
-        extend LocalClass
+        local_class_in FtpURLConnection
         include_class_members FtpURLConnection
         
         attr_accessor :ftp
@@ -360,7 +360,7 @@ module Sun::Net::Www::Protocol::Ftp
           # 
           # Do we have to use a proxie?
           Class.new(Java::Security::PrivilegedAction.class == Class ? Java::Security::PrivilegedAction : Object) do
-            extend LocalClass
+            local_class_in FtpURLConnection
             include_class_members FtpURLConnection
             include Java::Security::PrivilegedAction if Java::Security::PrivilegedAction.class == Module
             

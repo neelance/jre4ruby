@@ -91,7 +91,7 @@ module Java::Net
       
       when_class_loaded do
         Java::Security::AccessController.do_privileged(Class.new(PrivilegedAction.class == Class ? PrivilegedAction : Object) do
-          extend LocalClass
+          local_class_in PlainSocketImpl
           include_class_members PlainSocketImpl
           include PrivilegedAction if PrivilegedAction.class == Module
           

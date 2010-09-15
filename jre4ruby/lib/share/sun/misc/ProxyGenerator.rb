@@ -432,7 +432,7 @@ module Sun::Misc
         class_file = gen.generate_class_file
         if (SaveGeneratedFiles)
           Java::Security::AccessController.do_privileged(Class.new(Java::Security::PrivilegedAction.class == Class ? Java::Security::PrivilegedAction : Object) do
-            extend LocalClass
+            local_class_in ProxyGenerator
             include_class_members ProxyGenerator
             include Java::Security::PrivilegedAction if Java::Security::PrivilegedAction.class == Module
             
@@ -806,7 +806,7 @@ module Sun::Misc
       # in the class being generated.  The class mirrors the data items of
       # the "field_info" structure of the class file format (see JVMS 4.5).
       const_set_lazy(:FieldInfo) { Class.new do
-        extend LocalClass
+        local_class_in ProxyGenerator
         include_class_members ProxyGenerator
         
         attr_accessor :access_flags
@@ -910,7 +910,7 @@ module Sun::Misc
       # in the class being generated.  This class mirrors the data items of
       # the "method_info" structure of the class file format (see JVMS 4.6).
       const_set_lazy(:MethodInfo) { Class.new do
-        extend LocalClass
+        local_class_in ProxyGenerator
         include_class_members ProxyGenerator
         
         attr_accessor :access_flags
@@ -1045,7 +1045,7 @@ module Sun::Misc
       # being generated: a method whose implementation will encode and
       # dispatch invocations to the proxy instance's invocation handler.
       const_set_lazy(:ProxyMethod) { Class.new do
-        extend LocalClass
+        local_class_in ProxyGenerator
         include_class_members ProxyGenerator
         
         attr_accessor :method_name

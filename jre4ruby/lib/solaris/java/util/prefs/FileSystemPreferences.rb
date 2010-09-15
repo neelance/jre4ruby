@@ -55,7 +55,7 @@ module Java::Util::Prefs
     class_module.module_eval {
       const_set_lazy(:SYNC_INTERVAL) { Math.max(1, JavaInteger.parse_int(AccessController.do_privileged(# Sync interval in seconds.
       Class.new(PrivilegedAction.class == Class ? PrivilegedAction : Object) do
-        extend LocalClass
+        local_class_in FileSystemPreferences
         include_class_members FileSystemPreferences
         include PrivilegedAction if PrivilegedAction.class == Module
         
@@ -155,7 +155,7 @@ module Java::Util::Prefs
       typesig { [] }
       def setup_user_root
         AccessController.do_privileged(Class.new(PrivilegedAction.class == Class ? PrivilegedAction : Object) do
-          extend LocalClass
+          local_class_in FileSystemPreferences
           include_class_members FileSystemPreferences
           include PrivilegedAction if PrivilegedAction.class == Module
           
@@ -232,7 +232,7 @@ module Java::Util::Prefs
       typesig { [] }
       def setup_system_root
         AccessController.do_privileged(Class.new(PrivilegedAction.class == Class ? PrivilegedAction : Object) do
-          extend LocalClass
+          local_class_in FileSystemPreferences
           include_class_members FileSystemPreferences
           include PrivilegedAction if PrivilegedAction.class == Module
           
@@ -517,7 +517,7 @@ module Java::Util::Prefs
     class_module.module_eval {
       # Represents a change to a preference.
       const_set_lazy(:Change) { Class.new do
-        extend LocalClass
+        local_class_in FileSystemPreferences
         include_class_members FileSystemPreferences
         
         typesig { [] }
@@ -536,7 +536,7 @@ module Java::Util::Prefs
       
       # Represents a preference put.
       const_set_lazy(:Put) { Class.new(Change) do
-        extend LocalClass
+        local_class_in FileSystemPreferences
         include_class_members FileSystemPreferences
         
         attr_accessor :key
@@ -571,7 +571,7 @@ module Java::Util::Prefs
       
       # Represents a preference remove.
       const_set_lazy(:Remove) { Class.new(Change) do
-        extend LocalClass
+        local_class_in FileSystemPreferences
         include_class_members FileSystemPreferences
         
         attr_accessor :key
@@ -598,7 +598,7 @@ module Java::Util::Prefs
       
       # Represents the creation of this node.
       const_set_lazy(:NodeCreate) { Class.new(Change) do
-        extend LocalClass
+        local_class_in FileSystemPreferences
         include_class_members FileSystemPreferences
         
         typesig { [] }
@@ -652,7 +652,7 @@ module Java::Util::Prefs
       when_class_loaded do
         self.attr_sync_timer.schedule(# Add periodic timer task to periodically sync cached prefs
         Class.new(TimerTask.class == Class ? TimerTask : Object) do
-          extend LocalClass
+          local_class_in FileSystemPreferences
           include_class_members FileSystemPreferences
           include TimerTask if TimerTask.class == Module
           
@@ -671,7 +671,7 @@ module Java::Util::Prefs
         end.new_local(self), SYNC_INTERVAL * 1000, SYNC_INTERVAL * 1000)
         AccessController.do_privileged(# Add shutdown hook to flush cached prefs on normal termination
         Class.new(PrivilegedAction.class == Class ? PrivilegedAction : Object) do
-          extend LocalClass
+          local_class_in FileSystemPreferences
           include_class_members FileSystemPreferences
           include PrivilegedAction if PrivilegedAction.class == Module
           
@@ -679,7 +679,7 @@ module Java::Util::Prefs
           define_method :run do
             privileged_action_class = self.class
             Runtime.get_runtime.add_shutdown_hook(Class.new(self.class::JavaThread.class == Class ? self.class::JavaThread : Object) do
-              extend LocalClass
+              local_class_in privileged_action_class
               include_class_members privileged_action_class
               include class_self::JavaThread if class_self::JavaThread.class == Module
               
@@ -789,7 +789,7 @@ module Java::Util::Prefs
       @prefs_file = JavaFile.new(@dir, "prefs.xml")
       @tmp_file = JavaFile.new(@dir, "prefs.tmp")
       AccessController.do_privileged(Class.new(PrivilegedAction.class == Class ? PrivilegedAction : Object) do
-        extend LocalClass
+        local_class_in FileSystemPreferences
         include_class_members FileSystemPreferences
         include PrivilegedAction if PrivilegedAction.class == Module
         
@@ -869,7 +869,7 @@ module Java::Util::Prefs
     def load_cache
       begin
         AccessController.do_privileged(Class.new(PrivilegedExceptionAction.class == Class ? PrivilegedExceptionAction : Object) do
-          extend LocalClass
+          local_class_in FileSystemPreferences
           include_class_members FileSystemPreferences
           include PrivilegedExceptionAction if PrivilegedExceptionAction.class == Module
           
@@ -925,7 +925,7 @@ module Java::Util::Prefs
     def write_back_cache
       begin
         AccessController.do_privileged(Class.new(PrivilegedExceptionAction.class == Class ? PrivilegedExceptionAction : Object) do
-          extend LocalClass
+          local_class_in FileSystemPreferences
           include_class_members FileSystemPreferences
           include PrivilegedExceptionAction if PrivilegedExceptionAction.class == Module
           
@@ -972,7 +972,7 @@ module Java::Util::Prefs
     typesig { [] }
     def children_names_spi
       return AccessController.do_privileged(Class.new(PrivilegedAction.class == Class ? PrivilegedAction : Object) do
-        extend LocalClass
+        local_class_in FileSystemPreferences
         include_class_members FileSystemPreferences
         include PrivilegedAction if PrivilegedAction.class == Module
         
@@ -1032,7 +1032,7 @@ module Java::Util::Prefs
     def remove_node_spi
       begin
         AccessController.do_privileged(Class.new(PrivilegedExceptionAction.class == Class ? PrivilegedExceptionAction : Object) do
-          extend LocalClass
+          local_class_in FileSystemPreferences
           include_class_members FileSystemPreferences
           include PrivilegedExceptionAction if PrivilegedExceptionAction.class == Module
           
@@ -1095,7 +1095,7 @@ module Java::Util::Prefs
             raise (BackingStoreException.new("Couldn't get file lock."))
           end
           new_mod_time = AccessController.do_privileged(Class.new(PrivilegedAction.class == Class ? PrivilegedAction : Object) do
-            extend LocalClass
+            local_class_in FileSystemPreferences
             include_class_members FileSystemPreferences
             include PrivilegedAction if PrivilegedAction.class == Module
             
@@ -1123,7 +1123,7 @@ module Java::Util::Prefs
           begin
             super
             AccessController.do_privileged(Class.new(PrivilegedAction.class == Class ? PrivilegedAction : Object) do
-              extend LocalClass
+              local_class_in FileSystemPreferences
               include_class_members FileSystemPreferences
               include PrivilegedAction if PrivilegedAction.class == Module
               
@@ -1158,7 +1158,7 @@ module Java::Util::Prefs
     def sync_spi
       begin
         AccessController.do_privileged(Class.new(PrivilegedExceptionAction.class == Class ? PrivilegedExceptionAction : Object) do
-          extend LocalClass
+          local_class_in FileSystemPreferences
           include_class_members FileSystemPreferences
           include PrivilegedExceptionAction if PrivilegedExceptionAction.class == Module
           

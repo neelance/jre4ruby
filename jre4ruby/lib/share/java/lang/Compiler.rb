@@ -70,7 +70,7 @@ module Java::Lang
       when_class_loaded do
         register_natives
         Java::Security::AccessController.do_privileged(Class.new(Java::Security::PrivilegedAction.class == Class ? Java::Security::PrivilegedAction : Object) do
-          extend LocalClass
+          local_class_in Compiler
           include_class_members Compiler
           include Java::Security::PrivilegedAction if Java::Security::PrivilegedAction.class == Module
           

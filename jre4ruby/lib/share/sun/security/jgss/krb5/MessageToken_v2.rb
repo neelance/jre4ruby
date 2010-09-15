@@ -597,7 +597,7 @@ module Sun::Security::Jgss::Krb5
       # expressed in big endian order.
       # </pre>
       const_set_lazy(:MessageTokenHeader) { Class.new do
-        extend LocalClass
+        local_class_in MessageToken_v2
         include_class_members MessageToken_v2
         
         attr_accessor :token_id

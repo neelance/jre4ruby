@@ -284,7 +284,7 @@ module Java::Security::Cert
       def get_default_type
         cpbtype = nil
         cpbtype = RJava.cast_to_string(AccessController.do_privileged(Class.new(PrivilegedAction.class == Class ? PrivilegedAction : Object) do
-          extend LocalClass
+          local_class_in CertPathBuilder
           include_class_members CertPathBuilder
           include PrivilegedAction if PrivilegedAction.class == Module
           

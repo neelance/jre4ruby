@@ -1504,7 +1504,7 @@ module Java::Lang
         # Do we need to update our property array?
         if (!self.attr_package_access_valid)
           tmp_property_str = AccessController.do_privileged(Class.new(PrivilegedAction.class == Class ? PrivilegedAction : Object) do
-            extend LocalClass
+            local_class_in SecurityManager
             include_class_members SecurityManager
             include PrivilegedAction if PrivilegedAction.class == Module
             
@@ -1575,7 +1575,7 @@ module Java::Lang
         # Do we need to update our property array?
         if (!self.attr_package_definition_valid)
           tmp_property_str = AccessController.do_privileged(Class.new(PrivilegedAction.class == Class ? PrivilegedAction : Object) do
-            extend LocalClass
+            local_class_in SecurityManager
             include_class_members SecurityManager
             include PrivilegedAction if PrivilegedAction.class == Module
             

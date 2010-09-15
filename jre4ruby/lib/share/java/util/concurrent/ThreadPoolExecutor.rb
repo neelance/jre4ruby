@@ -621,7 +621,7 @@ module Java::Util::Concurrent
       # because we do not want worker tasks to be able to reacquire the
       # lock when they invoke pool control methods like setCorePoolSize.
       const_set_lazy(:Worker) { Class.new(AbstractQueuedSynchronizer) do
-        extend LocalClass
+        local_class_in ThreadPoolExecutor
         include_class_members ThreadPoolExecutor
         overload_protected {
           include Runnable

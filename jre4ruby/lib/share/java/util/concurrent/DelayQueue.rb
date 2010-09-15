@@ -501,7 +501,7 @@ module Java::Util::Concurrent
     class_module.module_eval {
       # Snapshot iterator that works off copy of underlying q array.
       const_set_lazy(:Itr) { Class.new do
-        extend LocalClass
+        local_class_in DelayQueue
         include_class_members DelayQueue
         include Iterator
         

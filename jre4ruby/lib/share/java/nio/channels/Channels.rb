@@ -121,7 +121,7 @@ module Java::Nio::Channels
       # @return  A new output stream
       def new_output_stream(ch)
         return Class.new(OutputStream.class == Class ? OutputStream : Object) do
-          extend LocalClass
+          local_class_in Channels
           include_class_members Channels
           include OutputStream if OutputStream.class == Module
           

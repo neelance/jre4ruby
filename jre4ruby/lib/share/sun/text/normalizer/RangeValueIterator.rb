@@ -87,7 +87,7 @@ module Sun::Text::Normalizer
       # common value all integers between [start, limit - 1] has.
       # @stable ICU 2.6
       const_set_lazy(:Element) { Class.new do
-        extend LocalClass
+        local_class_in RangeValueIterator
         include_class_members RangeValueIterator
         
         # public data member ---------------------------------------------

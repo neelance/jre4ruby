@@ -483,7 +483,7 @@ module Java::Lang
         typesig { [] }
         def iterator
           return Class.new(self.class::Iterator.class == Class ? self.class::Iterator : Object) do
-            extend LocalClass
+            local_class_in StringEntrySet
             include_class_members StringEntrySet
             include class_self::Iterator if class_self::Iterator.class == Module
             
@@ -527,7 +527,7 @@ module Java::Lang
               return (o).attr_e
             end
             return Class.new(class_self::Map::Entry.class == Class ? class_self::Map::Entry : Object) do
-              extend LocalClass
+              local_class_in StringEntrySet
               include_class_members StringEntrySet
               include class_self::Map::Entry if class_self::Map::Entry.class == Module
               
@@ -615,7 +615,7 @@ module Java::Lang
         typesig { [] }
         def iterator
           return Class.new(self.class::Iterator.class == Class ? self.class::Iterator : Object) do
-            extend LocalClass
+            local_class_in StringValues
             include_class_members StringValues
             include class_self::Iterator if class_self::Iterator.class == Module
             
@@ -710,7 +710,7 @@ module Java::Lang
         typesig { [] }
         def iterator
           return Class.new(self.class::Iterator.class == Class ? self.class::Iterator : Object) do
-            extend LocalClass
+            local_class_in StringKeySet
             include_class_members StringKeySet
             include class_self::Iterator if class_self::Iterator.class == Module
             

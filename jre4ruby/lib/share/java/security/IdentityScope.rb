@@ -86,7 +86,7 @@ module Java::Security
       # initialize the system scope
       def initialize_system_scope
         classname = AccessController.do_privileged(Class.new(PrivilegedAction.class == Class ? PrivilegedAction : Object) do
-          extend LocalClass
+          local_class_in IdentityScope
           include_class_members IdentityScope
           include PrivilegedAction if PrivilegedAction.class == Module
           

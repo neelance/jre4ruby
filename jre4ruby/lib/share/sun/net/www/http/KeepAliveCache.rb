@@ -119,7 +119,7 @@ module Sun::Net::Www::Http
           # The robustness to to get around this is in HttpClient.parseHTTP()
           cache = self
           Java::Security::AccessController.do_privileged(Class.new(Java::Security::PrivilegedAction.class == Class ? Java::Security::PrivilegedAction : Object) do
-            extend LocalClass
+            local_class_in KeepAliveCache
             include_class_members KeepAliveCache
             include Java::Security::PrivilegedAction if Java::Security::PrivilegedAction.class == Module
             

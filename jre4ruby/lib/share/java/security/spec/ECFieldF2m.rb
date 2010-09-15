@@ -243,7 +243,7 @@ module Java::Security::Spec
       if (obj.is_a?(ECFieldF2m))
         # no need to compare rp here since ks and rp
         # should be equivalent
-        return (((@m).equal?((obj).attr_m)) && ((Arrays == @ks)))
+        return (((@m).equal?((obj).attr_m)) && (Arrays.==(@ks, (obj).attr_ks)))
       end
       return false
     end

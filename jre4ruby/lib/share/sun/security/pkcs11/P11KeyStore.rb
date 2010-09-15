@@ -2209,7 +2209,7 @@ module Sun::Security::Pkcs11
           # get cert CKA_IDs (if present) for each cert
           info_set = cert_map.get(cert_label)
           info_set.each do |aliasInfo|
-            if ((Arrays == pkey_id))
+            if (Arrays.==(pkey_id, alias_info.attr_id))
               # found private key with matching cert
               if ((info_set.size).equal?(1))
                 # unique CKA_LABEL - use certLabel as alias

@@ -193,7 +193,7 @@ module Java::Util::Concurrent
       # 
       # Uses AQS sync state to represent run status
       const_set_lazy(:Sync) { Class.new(AbstractQueuedSynchronizer) do
-        extend LocalClass
+        local_class_in FutureTask
         include_class_members FutureTask
         
         class_module.module_eval {

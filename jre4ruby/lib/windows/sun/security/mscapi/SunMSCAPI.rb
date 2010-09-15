@@ -53,7 +53,7 @@ module Sun::Security::Mscapi
       
       when_class_loaded do
         AccessController.do_privileged(Class.new(PrivilegedAction.class == Class ? PrivilegedAction : Object) do
-          extend LocalClass
+          local_class_in SunMSCAPI
           include_class_members SunMSCAPI
           include PrivilegedAction if PrivilegedAction.class == Module
           

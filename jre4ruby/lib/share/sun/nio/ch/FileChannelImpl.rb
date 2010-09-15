@@ -187,7 +187,7 @@ module Sun::Nio::Ch
       # Invalidate and release any locks that we still hold
       if (!(@file_lock_table).nil?)
         @file_lock_table.remove_all(Class.new(FileLockTable::Releaser.class == Class ? FileLockTable::Releaser : Object) do
-          extend LocalClass
+          local_class_in FileChannelImpl
           include_class_members FileChannelImpl
           include FileLockTable::Releaser if FileLockTable::Releaser.class == Module
           

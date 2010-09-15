@@ -2615,7 +2615,7 @@ module Java::Util
       end }
       
       const_set_lazy(:FixedString) { Class.new do
-        extend LocalClass
+        local_class_in Formatter
         include_class_members Formatter
         include FormatString
         
@@ -2694,7 +2694,7 @@ module Java::Util
       end
       
       const_set_lazy(:FormatSpecifier) { Class.new do
-        extend LocalClass
+        local_class_in Formatter
         include_class_members Formatter
         include FormatString
         
@@ -3899,7 +3899,7 @@ module Java::Util
         
         class_module.module_eval {
           const_set_lazy(:BigDecimalLayout) { Class.new do
-            extend LocalClass
+            local_class_in FormatSpecifier
             include_class_members FormatSpecifier
             
             attr_accessor :mant

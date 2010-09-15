@@ -53,7 +53,7 @@ module Java::Text
       @no_delegate = nil
       super(0)
       @no_delegate = Class.new(Format::FieldDelegate.class == Class ? Format::FieldDelegate : Object) do
-        extend LocalClass
+        local_class_in DontCareFieldPosition
         include_class_members DontCareFieldPosition
         include Format::FieldDelegate if Format::FieldDelegate.class == Module
         

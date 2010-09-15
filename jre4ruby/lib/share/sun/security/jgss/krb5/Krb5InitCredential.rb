@@ -240,7 +240,7 @@ module Sun::Security::Jgss::Krb5
         begin
           real_caller = ((caller).equal?(GSSUtil::CALLER_UNKNOWN)) ? GSSUtil::CALLER_INITIATE : caller
           return AccessController.do_privileged(Class.new(PrivilegedExceptionAction.class == Class ? PrivilegedExceptionAction : Object) do
-            extend LocalClass
+            local_class_in Krb5InitCredential
             include_class_members Krb5InitCredential
             include PrivilegedExceptionAction if PrivilegedExceptionAction.class == Module
             

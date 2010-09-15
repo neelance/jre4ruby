@@ -186,7 +186,7 @@ module Java::Lang::Ref
       # invokers of these methods from a stalled or deadlocked finalizer thread.
       def fork_secondary_finalizer(proc)
         pa = Class.new(PrivilegedAction.class == Class ? PrivilegedAction : Object) do
-          extend LocalClass
+          local_class_in Finalizer
           include_class_members Finalizer
           include PrivilegedAction if PrivilegedAction.class == Module
           
@@ -223,7 +223,7 @@ module Java::Lang::Ref
       # Called by Runtime.runFinalization()
       def run_finalization
         fork_secondary_finalizer(Class.new(Runnable.class == Class ? Runnable : Object) do
-          extend LocalClass
+          local_class_in Finalizer
           include_class_members Finalizer
           include Runnable if Runnable.class == Module
           
@@ -252,7 +252,7 @@ module Java::Lang::Ref
       # Invoked by java.lang.Shutdown
       def run_all_finalizers
         fork_secondary_finalizer(Class.new(Runnable.class == Class ? Runnable : Object) do
-          extend LocalClass
+          local_class_in Finalizer
           include_class_members Finalizer
           include Runnable if Runnable.class == Module
           

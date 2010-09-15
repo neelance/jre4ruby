@@ -637,7 +637,7 @@ module Sun::Security::Krb5
       typesig { [] }
       def ensure_loaded
         Java::Security::AccessController.do_privileged(Class.new(Java::Security::PrivilegedAction.class == Class ? Java::Security::PrivilegedAction : Object) do
-          extend LocalClass
+          local_class_in Credentials
           include_class_members Credentials
           include Java::Security::PrivilegedAction if Java::Security::PrivilegedAction.class == Module
           

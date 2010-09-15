@@ -1851,7 +1851,7 @@ module Java::Util::Concurrent::Locks
       # <p>This class is Serializable, but all fields are transient,
       # so deserialized conditions have no waiters.
       const_set_lazy(:ConditionObject) { Class.new do
-        extend LocalClass
+        local_class_in AbstractQueuedSynchronizer
         include_class_members AbstractQueuedSynchronizer
         include Condition
         include Java::Io::Serializable

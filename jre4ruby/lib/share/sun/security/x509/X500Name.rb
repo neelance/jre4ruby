@@ -1369,7 +1369,7 @@ module Sun::Security::X509
       # and make them accessible.
       when_class_loaded do
         pa = Class.new(PrivilegedExceptionAction.class == Class ? PrivilegedExceptionAction : Object) do
-          extend LocalClass
+          local_class_in X500Name
           include_class_members X500Name
           include PrivilegedExceptionAction if PrivilegedExceptionAction.class == Module
           

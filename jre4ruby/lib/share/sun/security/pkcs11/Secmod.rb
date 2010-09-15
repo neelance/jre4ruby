@@ -989,7 +989,7 @@ module Sun::Security::Pkcs11
             return false
           end
           other = o
-          return (Arrays == @b)
+          return Arrays.==(@b, other.attr_b)
         end
         
         private

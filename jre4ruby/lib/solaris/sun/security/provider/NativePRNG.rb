@@ -81,7 +81,7 @@ module Sun::Security::Provider
       typesig { [] }
       def init_io
         o = AccessController.do_privileged(Class.new(PrivilegedAction.class == Class ? PrivilegedAction : Object) do
-          extend LocalClass
+          local_class_in NativePRNG
           include_class_members NativePRNG
           include PrivilegedAction if PrivilegedAction.class == Module
           
@@ -328,7 +328,7 @@ module Sun::Security::Provider
             if ((@random_out_initialized).equal?(false))
               @random_out_initialized = true
               @random_out = AccessController.do_privileged(Class.new(self.class::PrivilegedAction.class == Class ? self.class::PrivilegedAction : Object) do
-                extend LocalClass
+                local_class_in RandomIO
                 include_class_members RandomIO
                 include class_self::PrivilegedAction if class_self::PrivilegedAction.class == Module
                 

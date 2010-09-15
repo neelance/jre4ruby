@@ -403,7 +403,7 @@ module Sun::Misc
       # Internal class for entries.
       # Because it uses SoftCache.this.queue, this class cannot be static.
       const_set_lazy(:Entry) { Class.new do
-        extend LocalClass
+        local_class_in SoftCache
         include_class_members SoftCache
         include Map::Entry
         
@@ -466,7 +466,7 @@ module Sun::Misc
       
       # Internal class for entry sets
       const_set_lazy(:EntrySet) { Class.new(AbstractSet) do
-        extend LocalClass
+        local_class_in SoftCache
         include_class_members SoftCache
         
         attr_accessor :hash_entries
@@ -478,7 +478,7 @@ module Sun::Misc
         typesig { [] }
         def iterator
           return Class.new(self.class::Iterator.class == Class ? self.class::Iterator : Object) do
-            extend LocalClass
+            local_class_in EntrySet
             include_class_members EntrySet
             include class_self::Iterator if class_self::Iterator.class == Module
             

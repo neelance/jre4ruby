@@ -141,7 +141,7 @@ module Sun::Util
       @provider_locales = nil
       begin
         AccessController.do_privileged(Class.new(PrivilegedExceptionAction.class == Class ? PrivilegedExceptionAction : Object) do
-          extend LocalClass
+          local_class_in LocaleServiceProviderPool
           include_class_members LocaleServiceProviderPool
           include PrivilegedExceptionAction if PrivilegedExceptionAction.class == Module
           

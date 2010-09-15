@@ -1307,7 +1307,7 @@ module Java::Io
       # is "safe", false otherwise.
       def audit_subclass(subcl)
         result = AccessController.do_privileged(Class.new(PrivilegedAction.class == Class ? PrivilegedAction : Object) do
-          extend LocalClass
+          local_class_in ObjectInputStream
           include_class_members ObjectInputStream
           include PrivilegedAction if PrivilegedAction.class == Module
           
@@ -1987,7 +1987,7 @@ module Java::Io
       
       # Default GetField implementation.
       const_set_lazy(:GetFieldImpl) { Class.new(GetField) do
-        extend LocalClass
+        local_class_in ObjectInputStream
         include_class_members ObjectInputStream
         
         # class descriptor describing serializable fields
@@ -2238,7 +2238,7 @@ module Java::Io
           begin
             while (!(@list).nil?)
               AccessController.do_privileged(Class.new(self.class::PrivilegedExceptionAction.class == Class ? self.class::PrivilegedExceptionAction : Object) do
-                extend LocalClass
+                local_class_in ValidationList
                 include_class_members ValidationList
                 include class_self::PrivilegedExceptionAction if class_self::PrivilegedExceptionAction.class == Module
                 
@@ -2384,7 +2384,7 @@ module Java::Io
       # mode, no data is buffered in advance; when in block data mode, all data
       # for the current data block is read in at once (and buffered).
       const_set_lazy(:BlockDataInputStream) { Class.new(InputStream) do
-        extend LocalClass
+        local_class_in ObjectInputStream
         include_class_members ObjectInputStream
         overload_protected {
           include DataInput

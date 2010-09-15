@@ -334,7 +334,7 @@ module Sun::Security::Ssl
               subject = nil
               begin
                 subject = AccessController.do_privileged(Class.new(PrivilegedExceptionAction.class == Class ? PrivilegedExceptionAction : Object) do
-                  extend LocalClass
+                  local_class_in ServerHandshaker
                   include_class_members ServerHandshaker
                   include PrivilegedExceptionAction if PrivilegedExceptionAction.class == Module
                   
@@ -800,7 +800,7 @@ module Sun::Security::Ssl
       begin
         acc = get_acc_se
         @kerberos_keys = AccessController.do_privileged(Class.new(PrivilegedExceptionAction.class == Class ? PrivilegedExceptionAction : Object) do
-          extend LocalClass
+          local_class_in ServerHandshaker
           include_class_members ServerHandshaker
           include PrivilegedExceptionAction if PrivilegedExceptionAction.class == Module
           

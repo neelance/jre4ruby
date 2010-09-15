@@ -65,7 +65,7 @@ module Sun::Security::Smartcardio
     class_module.module_eval {
       when_class_loaded do
         const_set :InitException, AccessController.do_privileged(Class.new(PrivilegedAction.class == Class ? PrivilegedAction : Object) do
-          extend LocalClass
+          local_class_in PlatformPCSC
           include_class_members PlatformPCSC
           include PrivilegedAction if PrivilegedAction.class == Module
           

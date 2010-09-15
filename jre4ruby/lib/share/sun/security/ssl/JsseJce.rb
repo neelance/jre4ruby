@@ -99,7 +99,7 @@ module Sun::Security::Ssl
         def initialize(p)
           super("SunCertificates", 1.0, "SunJSSE internal")
           AccessController.do_privileged(Class.new(self.class::PrivilegedAction.class == Class ? self.class::PrivilegedAction : Object) do
-            extend LocalClass
+            local_class_in SunCertificates
             include_class_members SunCertificates
             include class_self::PrivilegedAction if class_self::PrivilegedAction.class == Module
             

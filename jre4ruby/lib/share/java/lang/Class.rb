@@ -274,7 +274,7 @@ module Java::Lang
       # @see       java.lang.Class#forName(String)
       # @see       java.lang.ClassLoader
       # @since     1.2
-      def for_name(name, initialize, loader)
+      def for_name(name, initialize_, loader)
         if ((loader).nil?)
           sm = System.get_security_manager
           if (!(sm).nil?)
@@ -284,14 +284,14 @@ module Java::Lang
             end
           end
         end
-        return for_name0(name, initialize, loader)
+        return for_name0(name, initialize_, loader)
       end
       
       JNI.load_native_method :Java_java_lang_Class_forName0, [:pointer, :long, :long, :int8, :long], :long
       typesig { [String, ::Java::Boolean, ClassLoader] }
       # Called after security checks have been made.
-      def for_name0(name, initialize, loader)
-        JNI.call_native_method(:Java_java_lang_Class_forName0, JNI.env, self.jni_id, name.jni_id, initialize ? 1 : 0, loader.jni_id)
+      def for_name0(name, initialize_, loader)
+        JNI.call_native_method(:Java_java_lang_Class_forName0, JNI.env, self.jni_id, name.jni_id, initialize_ ? 1 : 0, loader.jni_id)
       end
     }
     
@@ -364,7 +364,7 @@ module Java::Lang
           # (the stack depth is wrong for the Constructor's
           # security check to work)
           Class.new(Java::Security::PrivilegedAction.class == Class ? Java::Security::PrivilegedAction : Object) do
-            extend LocalClass
+            local_class_in Class
             include_class_members Class
             include Java::Security::PrivilegedAction if Java::Security::PrivilegedAction.class == Module
             
@@ -1395,7 +1395,7 @@ module Java::Lang
       # out anything other than public members and (2) public member access
       # has already been ok'd by the SecurityManager.
       Class.new(Java::Security::PrivilegedAction.class == Class ? Java::Security::PrivilegedAction : Object) do
-        extend LocalClass
+        local_class_in Class
         include_class_members Class
         include Java::Security::PrivilegedAction if Java::Security::PrivilegedAction.class == Module
         
@@ -3165,7 +3165,7 @@ module Java::Lang
           return
         end
         AccessController.do_privileged(Class.new(PrivilegedAction.class == Class ? PrivilegedAction : Object) do
-          extend LocalClass
+          local_class_in Class
           include_class_members Class
           include PrivilegedAction if PrivilegedAction.class == Module
           
@@ -3229,7 +3229,7 @@ module Java::Lang
         begin
           values = get_method("values")
           Java::Security::AccessController.do_privileged(Class.new(Java::Security::PrivilegedAction.class == Class ? Java::Security::PrivilegedAction : Object) do
-            extend LocalClass
+            local_class_in Class
             include_class_members Class
             include Java::Security::PrivilegedAction if Java::Security::PrivilegedAction.class == Module
             

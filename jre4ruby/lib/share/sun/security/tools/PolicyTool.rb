@@ -1193,7 +1193,7 @@ module Sun::Security::Tools
       choose_result = StringBuffer.new
       button = Button.new(yes)
       button.add_action_listener(Class.new(ActionListener.class == Class ? ActionListener : Object) do
-        extend LocalClass
+        local_class_in ToolWindow
         include_class_members ToolWindow
         include ActionListener if ActionListener.class == Module
         
@@ -1215,7 +1215,7 @@ module Sun::Security::Tools
       add_new_component(panel, button, 0, 0, 0, 1, 1, 0.0, 0.0, GridBagConstraints::VERTICAL, LR_PADDING)
       button = Button.new(no)
       button.add_action_listener(Class.new(ActionListener.class == Class ? ActionListener : Object) do
-        extend LocalClass
+        local_class_in ToolWindow
         include_class_members ToolWindow
         include ActionListener if ActionListener.class == Module
         
@@ -2161,7 +2161,7 @@ module Sun::Security::Tools
       # pop up a dialog box for the user to enter a filename.
       fd = FileDialog.new(@tw, PolicyTool.attr_rb.get_string("Save As"), FileDialog::SAVE)
       fd.add_window_listener(Class.new(WindowAdapter.class == Class ? WindowAdapter : Object) do
-        extend LocalClass
+        local_class_in ToolDialog
         include_class_members ToolDialog
         include WindowAdapter if WindowAdapter.class == Module
         
@@ -2295,7 +2295,7 @@ module Sun::Security::Tools
         # pop up a dialog box for the user to enter a filename.
         fd = FileDialog.new(tw, PolicyTool.attr_rb.get_string("Open"), FileDialog::LOAD)
         fd.add_window_listener(Class.new(WindowAdapter.class == Class ? WindowAdapter : Object) do
-          extend LocalClass
+          local_class_in ToolDialog
           include_class_members ToolDialog
           include WindowAdapter if WindowAdapter.class == Module
           

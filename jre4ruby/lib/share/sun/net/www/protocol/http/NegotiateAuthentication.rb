@@ -271,7 +271,7 @@ module Sun::Net::Www::Protocol::Http
     
     class_module.module_eval {
       const_set_lazy(:B64Encoder) { Class.new(BASE64Encoder) do
-        extend LocalClass
+        local_class_in NegotiateAuthentication
         include_class_members NegotiateAuthentication
         
         typesig { [] }

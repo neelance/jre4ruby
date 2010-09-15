@@ -222,7 +222,7 @@ module Sun::Net::Www::Protocol::Https
         pport = proxy_port < 0 ? HttpsPortNumber : proxy_port
         begin
           saddr = Java::Security::AccessController.do_privileged(Class.new(Java::Security::PrivilegedExceptionAction.class == Class ? Java::Security::PrivilegedExceptionAction : Object) do
-            extend LocalClass
+            local_class_in HttpsClient
             include_class_members HttpsClient
             include Java::Security::PrivilegedExceptionAction if Java::Security::PrivilegedExceptionAction.class == Module
             
@@ -299,7 +299,7 @@ module Sun::Net::Www::Protocol::Https
       set_connect_timeout(connect_timeout)
       self.attr_cookie_handler = Java::Security::AccessController.do_privileged(# get the cookieHandler if there is any
       Class.new(Java::Security::PrivilegedAction.class == Class ? Java::Security::PrivilegedAction : Object) do
-        extend LocalClass
+        local_class_in HttpsClient
         include_class_members HttpsClient
         include Java::Security::PrivilegedAction if Java::Security::PrivilegedAction.class == Module
         

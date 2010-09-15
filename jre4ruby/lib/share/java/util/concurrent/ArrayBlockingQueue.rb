@@ -763,7 +763,7 @@ module Java::Util::Concurrent
     class_module.module_eval {
       # Iterator for ArrayBlockingQueue
       const_set_lazy(:Itr) { Class.new do
-        extend LocalClass
+        local_class_in ArrayBlockingQueue
         include_class_members ArrayBlockingQueue
         include Iterator
         
